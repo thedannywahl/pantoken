@@ -392,7 +392,11 @@ ${s} hr {
 }
 ${s} img { max-width: 100%; border-radius: var(--instui-border-radius-md); }
 
-${s} table {
+/* Prose only styles RAW markdown tables — i.e. classless \`<table>\` output. A classed table
+   (\`.instui-table\` and friends) owns its own layout via its component CSS, so \`:not([class])\` keeps
+   prose from injecting borders/backgrounds into it (prose is for typography of rendered markup, not
+   table layout of components). */
+${s} table:not([class]) {
   border-collapse: collapse;
   width: 100%;
   margin: var(--instui-spacing-space-md) 0;
@@ -401,7 +405,7 @@ ${s} table {
   font-family: var(--instui-component-table-font-family);
   font-size: var(--instui-component-table-font-size);
 }
-${s} th {
+${s} table:not([class]) th {
   text-align: start;
   background: var(--instui-component-table-col-header-background);
   color: var(--instui-component-table-col-header-color);
@@ -409,7 +413,7 @@ ${s} th {
   padding: var(--instui-component-table-col-header-padding-vertical) var(--instui-component-table-col-header-padding-horizontal);
   border-bottom: var(--instui-border-width-md) solid var(--instui-component-table-row-border-color);
 }
-${s} td {
+${s} table:not([class]) td {
   color: var(--instui-component-table-cell-color);
   line-height: var(--instui-component-table-cell-line-height);
   padding: var(--instui-component-table-cell-padding-vertical) var(--instui-component-table-cell-padding-horizontal);
@@ -1347,6 +1351,12 @@ function tableRules(p: string): string {
   font-family: var(--instui-component-table-font-family);
   font-size: var(--instui-component-table-font-size);
 }
+.${p}table caption {
+  text-align: start;
+  padding: var(--instui-component-table-cell-padding-vertical) var(--instui-component-table-cell-padding-horizontal);
+  color: var(--instui-component-table-col-header-color);
+  font-weight: var(--instui-component-table-head-font-weight);
+}
 /* layout="fixed": columns size to the header/first row, not content (InstUI \`layout\`). */
 .${p}table.-layout-fixed { table-layout: fixed; }
 .${p}table thead { background: var(--instui-component-table-head-background); }
@@ -1357,8 +1367,9 @@ function tableRules(p: string): string {
   font-weight: var(--instui-component-table-head-font-weight);
   line-height: var(--instui-component-table-col-header-line-height);
   padding: var(--instui-component-table-col-header-padding-vertical) var(--instui-component-table-col-header-padding-horizontal);
-  border-bottom: var(--instui-border-width-md) solid var(--instui-component-table-row-border-color);
 }
+/* The column-header underline lives on the head only — a distinct 2px rule under the header row. */
+.${p}table thead th { border-bottom: var(--instui-border-width-md) solid var(--instui-component-table-row-border-color); }
 /* A row-header cell (th scope=row) — styled from the row-header tokens, not the column-header ones. */
 .${p}table tbody th,
 .${p}table th[scope="row"] {
@@ -1372,9 +1383,55 @@ function tableRules(p: string): string {
   color: var(--instui-component-table-cell-color);
   line-height: var(--instui-component-table-cell-line-height);
   padding: var(--instui-component-table-cell-padding-vertical) var(--instui-component-table-cell-padding-horizontal);
-  border-bottom: var(--instui-border-width-sm) solid var(--instui-component-table-row-border-color);
 }
-.${p}table tbody tr:hover { outline: var(--instui-border-width-sm) solid var(--instui-component-table-row-hover-border-color); outline-offset: -1px; }
+/* Body cells carry no border of their own — the separator lives on the row. Reset with tbody
+   specificity (0,1,2) so a host stylesheet's cell borders (e.g. \`.pantoken-prose td\`, 0,1,1) can't leak
+   in and double the row line (very visible in the stacked layout, where cells are display:block). */
+.${p}table tbody td,
+.${p}table tbody th { border: 0; }
+/* The row separator is a single border on the ROW (InstUI puts it there), so it's uniform across the
+   row-header and data cells — no mismatched per-cell borders. */
+.${p}table tbody tr { border-bottom: var(--instui-border-width-sm) solid var(--instui-component-table-row-border-color); }
+/* hover="true" (InstUI's opt-in \`hover\` prop): every row reserves a transparent 3px inline border and
+   colours it with the brand hover-border on hover — a vertical bar on each edge, NOT a full box, and
+   no layout shift. Only rows in a \`.-hover\` table react. */
+.${p}table.-hover tbody tr { border-inline: 0.1875rem solid transparent; }
+.${p}table.-hover tbody tr:hover { border-inline-color: var(--instui-component-table-row-hover-border-color); }
+/* layout="stacked": each row becomes a card and cells stack, labelled by their column. InstUI does this
+   by re-rendering the DOM; pure CSS can't pull the <th> text into each cell, so the author supplies a
+   \`data-label\` per cell and it's shown via ::before. Always-on (toggle the class responsively). */
+.${p}table.-layout-stacked thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.${p}table.-layout-stacked,
+.${p}table.-layout-stacked tbody,
+.${p}table.-layout-stacked tr,
+.${p}table.-layout-stacked td,
+.${p}table.-layout-stacked th {
+  display: block;
+  width: auto;
+}
+/* InstUI's stacked row is just padding + the single bottom-border separator (the row's existing
+   border-bottom carries over) — NOT a full card box. */
+.${p}table.-layout-stacked tbody tr {
+  padding: var(--instui-component-table-row-padding-vertical) var(--instui-component-table-row-padding-horizontal);
+}
+.${p}table.-layout-stacked tbody td[data-label]::before,
+.${p}table.-layout-stacked tbody th[data-label]::before {
+  content: attr(data-label);
+  display: block;
+  font-weight: var(--instui-component-table-head-font-weight);
+  color: var(--instui-component-table-col-header-color);
+}
 `;
 }
 

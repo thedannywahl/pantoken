@@ -1,22 +1,64 @@
-<table class="instui-table">
-  <thead>
-    <tr>
-      <th>Package</th>
-      <th>Bucket</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">@pantoken/css</th>
-      <td>formats</td>
-    </tr>
-    <tr>
-      <th scope="row">@pantoken/react</th>
-      <td>renderers</td>
-    </tr>
-    <tr>
-      <th scope="row">@pantoken/pendo</th>
-      <td>renderers</td>
-    </tr>
-  </tbody>
-</table>
+<div class="instui-card">
+  <!-- hover="true": rows highlight with a brand vertical bar on each edge (not a full box) -->
+  <table class="instui-table -hover">
+    <caption>
+      Top-rated films
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>The Shawshank Redemption</td>
+        <td>1994</td>
+        <td>9.3</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>The Godfather</td>
+        <td>1972</td>
+        <td>9.2</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>The Godfather: Part II</td>
+        <td>1974</td>
+        <td>9.0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- layout="stacked": each row's cells stack and show their column via data-label, separated by a rule -->
+<div class="instui-card" style="max-width: 340px; margin-top: 24px">
+  <table class="instui-table -layout-stacked">
+    <caption>
+      Films (stacked)
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Title">The Shawshank Redemption</td>
+        <td data-label="Year">1994</td>
+        <td data-label="Rating">9.3</td>
+      </tr>
+      <tr>
+        <td data-label="Title">The Godfather</td>
+        <td data-label="Year">1972</td>
+        <td data-label="Rating">9.2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

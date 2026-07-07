@@ -222,7 +222,18 @@ test("table styles row-header cells and a row hover; menu has active/group parts
   const table = tableCss({ prefix: "instui" });
   expect(table).toContain('.instui-table th[scope="row"]');
   expect(table).toContain("var(--instui-component-table-row-header-background)");
+  // Hover is opt-in (`-hover`) and paints inline (left/right) borders — NOT a full-box outline.
+  expect(table).toContain(".instui-table.-hover tbody tr:hover");
   expect(table).toContain("var(--instui-component-table-row-hover-border-color)");
+  expect(table).not.toContain("outline:");
+  expect(table).not.toContain("tbody tr:hover { outline");
+  // The row separator sits on the row (uniform), not mismatched per-cell borders.
+  expect(table).toContain(".instui-table tbody tr { border-bottom: var(--instui-border-width-sm)");
+  // Caption + layout=stacked (each row a card; cells labelled via data-label).
+  expect(table).toContain(".instui-table caption");
+  expect(table).toContain(".instui-table.-layout-stacked");
+  expect(table).toContain("td[data-label]::before");
+  expect(table).toContain("content: attr(data-label)");
   const menu = menuCss({ prefix: "instui" });
   expect(menu).toContain("@scope (.instui-menu)");
   expect(menu).toContain(".item.-active");
