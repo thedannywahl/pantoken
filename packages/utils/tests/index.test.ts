@@ -2,10 +2,12 @@ import { expect, test } from "vite-plus/test";
 import {
   VAR_RE,
   camelCase,
+  colorUtilitiesCss,
   danglingReferences,
   makeResolver,
   parseHexColor,
   resolveTokens,
+  tokenUtilitiesCss,
   unknownReferences,
 } from "../src/index.ts";
 import type { Token } from "@pantoken/model";
@@ -76,4 +78,40 @@ test("danglingReferences flags var() refs a stylesheet never defines", () => {
   const dangling =
     ":root { --instui-a: red; } .b { color: var(--instui-a); background: var(--instui-b); }";
   expect(danglingReferences(dangling)).toEqual(["--instui-b"]);
+});
+
+test("colorUtilitiesCss maps bg/fg/border to semantic colour tokens only", () => {
+  const css = colorUtilitiesCss(
+    {
+      background: ["brand", "success"],
+      text: ["secondary"],
+      stroke: ["base"],
+    },
+    { prefix: "instui" },
+  );
+  expect(css).toContain(".instui-bg-brand { background: var(--instui-color-background-brand); }");
+  expect(css).toContain(".instui-fg-secondary { color: var(--instui-color-text-secondary); }");
+  expect(css).toContain(".instui-border-base { border-color: var(--instui-color-stroke-base); }");
+});
+
+test("tokenUtilitiesCss maps each token to its property; class name is the token tail", () => {
+  const css = tokenUtilitiesCss(
+    [
+      { property: "font-weight", tokens: ["--instui-font-weight-body-strong"] },
+      { property: "border-radius", tokens: ["--instui-border-radius-md"] },
+    ],
+    { prefix: "instui" },
+  );
+  expect(css).toContain(
+    ".instui-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }",
+  );
+  expect(css).toContain(
+    ".instui-border-radius-md { border-radius: var(--instui-border-radius-md); }",
+  );
+  // Unprefixed opt-out drops the prefix but keeps the full token tail.
+  expect(
+    tokenUtilitiesCss([{ property: "font-weight", tokens: ["--instui-font-weight-body-strong"] }], {
+      prefix: null,
+    }),
+  ).toContain(".font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }");
 });

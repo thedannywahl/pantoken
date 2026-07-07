@@ -29,7 +29,6 @@
     "@pantoken/components": "workspace:*",
     "@pantoken/css": "workspace:*",
     "@pantoken/model": "workspace:*",
-    "@pantoken/plugin-focus-outline": "workspace:*",
     "@pantoken/plugin-prune-custom-props": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "postcss": "catalog:"

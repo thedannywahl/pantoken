@@ -12,7 +12,6 @@ import {
   bylineCss,
   checkboxCss,
   closeButtonCss,
-  colorUtilitiesCss,
   componentsCss,
   fileDropCss,
   headingCss,
@@ -40,16 +39,18 @@ import {
   tabsCss,
   tagCss,
   toggleDetailsCss,
-  tokenUtilitiesCss,
   truncateCss,
   viewCss,
 } from "../src/index.ts";
 
 test("every token referenced by every stylesheet exists in the IR (no drift)", () => {
   const all = `${baseCss()}\n${componentsCss({ prefix: "instui" })}\n${proseCss()}`;
-  // --instui-elevation-* are defined by elevationCss (in components.css), not the base token IR, so
-  // they're locally-resolved but still "unknown" to the IR-drift check — filter them out.
-  const drift = unknownReferences(all, tokens).filter((r) => !r.startsWith("--instui-elevation-"));
+  // --instui-elevation-* (elevationCss, components.css) and --instui-focus-outline-* (focusOutlineCss,
+  // base.css) are defined by those sheets, not the base token IR — locally-resolved but still "unknown"
+  // to the IR-drift check, so filter them out.
+  const drift = unknownReferences(all, tokens).filter(
+    (r) => !r.startsWith("--instui-elevation-") && !r.startsWith("--instui-focus-outline-"),
+  );
   expect(drift).toEqual([]);
 });
 
@@ -461,42 +462,6 @@ test("spacing utilities: logical per-side classes on the spacing scale, auto for
   expect(css).toContain(".instui-marginx-auto { margin-inline: auto; }");
 });
 
-test("colour utilities map bg/fg/border to semantic colour tokens only", () => {
-  const css = colorUtilitiesCss(
-    {
-      background: ["brand", "success"],
-      text: ["secondary"],
-      stroke: ["base"],
-    },
-    { prefix: "instui" },
-  );
-  expect(css).toContain(".instui-bg-brand { background: var(--instui-color-background-brand); }");
-  expect(css).toContain(".instui-fg-secondary { color: var(--instui-color-text-secondary); }");
-  expect(css).toContain(".instui-border-base { border-color: var(--instui-color-stroke-base); }");
-});
-
-test("tokenUtilitiesCss maps each token to its property; class name is the token tail", () => {
-  const css = tokenUtilitiesCss(
-    [
-      { property: "font-weight", tokens: ["--instui-font-weight-body-strong"] },
-      { property: "border-radius", tokens: ["--instui-border-radius-md"] },
-    ],
-    { prefix: "instui" },
-  );
-  expect(css).toContain(
-    ".instui-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }",
-  );
-  expect(css).toContain(
-    ".instui-border-radius-md { border-radius: var(--instui-border-radius-md); }",
-  );
-  // Unprefixed opt-out drops the prefix but keeps the full token tail.
-  expect(
-    tokenUtilitiesCss([{ property: "font-weight", tokens: ["--instui-font-weight-body-strong"] }], {
-      prefix: null,
-    }),
-  ).toContain(".font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }");
-});
-
 test("layout utilities cover display and text-align (InstUI cross-cutting props)", () => {
   const css = layoutUtilitiesCss({ prefix: "instui" });
   expect(css).toContain(".instui-display-flex { display: flex; }");
@@ -531,6 +496,18 @@ test("base is an opt-in global reset painting the page surface from tokens", () 
   expect(css).toContain("var(--instui-font-family-base)");
   // Base is a global reset only — it must not carry component classes.
   expect(css).not.toContain(".instui-");
+});
+
+test("base carries the focus-outline ring for focusables out of the box", () => {
+  const css = baseCss();
+  // Token defs + a zero-specificity ring on the common focusables, revealed on :focus-visible.
+  expect(css).toContain(
+    "--instui-focus-outline-color: var(--instui-component-shared-tokens-focus-outline-info-color)",
+  );
+  expect(css).toContain(":where(a, button, input, select, textarea, summary, [tabindex])");
+  expect(css).toContain(":where(:focus-visible)");
+  expect(css).toContain(":where(.-focus-color-danger):where(:focus-visible)");
+  expect(css).toContain(":where(.-without-focus-animation)");
 });
 
 test("heading levels are the single source of truth shared with prose", () => {

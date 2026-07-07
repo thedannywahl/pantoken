@@ -47,37 +47,32 @@ copyFileSync(require.resolve("@pantoken/components/icons.css"), join(assets, "ic
 copyFileSync(require.resolve("@pantoken/components/utilities.css"), join(assets, "utilities.css"));
 
 // One token stylesheet per theme, so the runner's theme switcher can swap them at runtime. Each
-// carries the focus-outline ring, the named elevation shadows (for alert --shadow etc.), and the
-// transition state classes, so those components resolve their tokens per theme.
+// carries the transition state classes and stacking/debug tokens. The focus-outline ring and the
+// named elevation shadows are NOT plugins — they ship in @pantoken/components (base.css / components.css),
+// which the runner already loads, so they resolve per theme from there.
 const { toCss } = require("@pantoken/css") as typeof import("@pantoken/css");
 const { byTheme, themes } = require("@pantoken/tokens") as typeof import("@pantoken/tokens");
-const { focusOutline } =
-  require("@pantoken/plugin-focus-outline") as typeof import("@pantoken/plugin-focus-outline");
+const { focusOutlineCss } =
+  require("@pantoken/components") as typeof import("@pantoken/components");
 const { transition } =
   require("@pantoken/plugin-transition") as typeof import("@pantoken/plugin-transition");
 const { stacking } =
   require("@pantoken/plugin-stacking") as typeof import("@pantoken/plugin-stacking");
 const { visualDebug } =
   require("@pantoken/plugin-visual-debug") as typeof import("@pantoken/plugin-visual-debug");
-// Elevation is not a plugin — it ships in @pantoken/components (components.css), so the runner already
-// has the `--instui-elevation-*` tokens.
 for (const theme of Object.keys(themes)) {
   writeFileSync(
     join(assets, `tokens-${theme}.css`),
     toCss(byTheme(theme as keyof typeof themes), {
-      plugins: [
-        focusOutline({ theme: theme as keyof typeof themes }),
-        transition(),
-        stacking(),
-        visualDebug(),
-      ],
+      plugins: [transition(), stacking(), visualDebug()],
     }),
   );
 }
 
 // Standalone sheets for the main docs site (its token sheet is @pantoken/css, built without the
-// plugins), added via <head> links in the VitePress config.
-writeFileSync(join(assets, "focus-outline.css"), toCss([], { plugins: [focusOutline()] }));
+// plugins), added via <head> links in the VitePress config. The focus-outline ring comes from
+// @pantoken/components (base.css isn't loaded on the prose pages, so ship its ring standalone here).
+writeFileSync(join(assets, "focus-outline.css"), focusOutlineCss());
 writeFileSync(join(assets, "transition.css"), toCss([], { plugins: [transition()] }));
 writeFileSync(join(assets, "stacking.css"), toCss([], { plugins: [stacking()] }));
 writeFileSync(join(assets, "visual-debug.css"), toCss([], { plugins: [visualDebug()] }));

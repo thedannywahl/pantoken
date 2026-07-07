@@ -4,7 +4,7 @@ import * as pantoken from "../src/index.ts";
 
 test("the meta barrel namespace-exports every target", () => {
   const keys = Object.keys(pantoken);
-  for (const key of ["tokens", "css", "icons", "astro", "rehype", "focusOutline", "simpleIcons"]) {
+  for (const key of ["tokens", "css", "icons", "astro", "rehype", "transition", "simpleIcons"]) {
     expect(keys).toContain(key);
   }
 });

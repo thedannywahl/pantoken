@@ -58,15 +58,16 @@ expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 
 ## The bundled plugins
 
-- `@pantoken/plugin-focus-outline` — a focus-ring token set plus the rules that apply it.
 - `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
 - `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
   image tokens.
 - `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
   unused custom properties from a stylesheet.
 
-The Instructure brand fonts (Atkinson Hyperlegible Next) ship in `@pantoken/components`, not a plugin:
-`base.css` applies `--instui-font-family-base`, and the opt-in `@pantoken/components/fonts.css` loads
-the `@font-face` woff2s.
+A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
+them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
+ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
+fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
+`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
 
 See the [API reference](/api/) for each plugin's exports.

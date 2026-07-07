@@ -1,8 +1,11 @@
 /**
  * `@pantoken/utils` — shared, upstream-free helpers used across the pantoken packages: the token
  * reference resolver (with `light-dark()` handling), the two token regexes (typed via `arkregex`),
- * kebab→camel case, and hex-colour parsing. Depends only on `@pantoken/model` (types) + `arkregex`,
- * so any package can use it without pulling the GitHub-only upstream.
+ * kebab→camel case, hex-colour parsing, and the generic token→utility-class emitters
+ * ({@link colorUtilitiesCss}, {@link tokenUtilitiesCss}) that both `@pantoken/components` (semantic
+ * tier) and `@pantoken/plugin-primitives` (raw-palette tier) build on. Depends only on
+ * `@pantoken/model` (types) + `arkregex`, so any package can use it without pulling the GitHub-only
+ * upstream.
  *
  * @module
  */
@@ -278,4 +281,92 @@ export function danglingReferences(css: string): string[] {
   for (const m of css.matchAll(/@property\s+(--instui-[\w-]+)/g)) defined.add(m[1]);
   for (const m of css.matchAll(/(--instui-[\w-]+)\s*:/g)) defined.add(m[1]);
   return [...referenced].filter((name) => !defined.has(name)).sort();
+}
+
+// Token → utility-class emitters. Pure string transforms (token name → `.class { prop: var(--token) }`),
+// with no InstUI-look opinion — the caller supplies which token names to render. `@pantoken/components`
+// feeds them a curated *semantic* allowlist; `@pantoken/plugin-primitives` feeds the raw palette. They
+// live here (not in a format) so the primitive tier doesn't have to reach up into the component library.
+
+/** Options shared by the utility-class emitters. */
+export interface UtilityOptions {
+  /**
+   * The class prefix. Any truthy string namespaces every class (`"instui"` → `.instui-bg-…`); any
+   * falsy value (`null`/`undefined`/`""`) drops the prefix entirely (`.bg-…`).
+   */
+  prefix?: string | null;
+}
+
+/** The semantic colour token names (without the `--instui-color-<family>-` prefix) per family. */
+export interface ColorUtilityNames {
+  background: readonly string[];
+  text: readonly string[];
+  stroke: readonly string[];
+}
+
+/**
+ * Build the semantic-colour utility stylesheet: `.<prefix>-bg-<name>` (background),
+ * `.<prefix>-fg-<name>` (text colour), `.<prefix>-border-<name>` (border colour), one per semantic
+ * colour token. Overrides are therefore only ever token-valid — no primitives, no arbitrary hex. Pass
+ * the token names per family (e.g. from `@pantoken/tokens`).
+ *
+ * @param names - {@link ColorUtilityNames}.
+ * @param options - {@link UtilityOptions}.
+ * @returns The CSS string.
+ *
+ * @demo self:color-utilities
+ */
+export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOptions = {}): string {
+  const prefix = options.prefix || "";
+  const p = prefix ? `${prefix}-` : "";
+  const emit = (family: string, util: string, prop: string, list: readonly string[]): string =>
+    list
+      .map((n) => `.${p}${util}-${n} { ${prop}: var(--instui-color-${family}-${n}); }`)
+      .join("\n");
+  const rules = [
+    emit("background", "bg", "background", names.background),
+    emit("text", "fg", "color", names.text),
+    emit("stroke", "border", "border-color", names.stroke),
+  ].join("\n");
+  return `/* InstUI semantic colour utilities (@pantoken/utils) — prefix: ${prefix} */\n${rules}\n`;
+}
+
+/** A set of tokens that all map to one CSS property (e.g. every `--instui-font-weight-*` → `font-weight`). */
+export interface TokenUtilityGroup {
+  /** The CSS property the tokens set (e.g. `"font-weight"`, `"border-radius"`, `"box-shadow"`). */
+  property: string;
+  /** Full token names (e.g. `"--instui-font-weight-body-strong"`); the `--instui-` tail becomes the class. */
+  tokens: readonly string[];
+}
+
+/**
+ * Build token-driven utility classes: one class per token, applying it to its natural CSS property. The
+ * token's `--instui-` tail is the class name, so `--instui-font-weight-body-strong` under property
+ * `font-weight` yields
+ * `.<prefix>-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }`. Use it for
+ * every "one token → one property" family (font-family/weight, line-height, border-radius, border-width,
+ * opacity, box-shadow). Colour and spacing keep their own builders — one token maps to several
+ * properties there. Pass the token names per property (e.g. filtered from `@pantoken/tokens`).
+ *
+ * @param groups - one {@link TokenUtilityGroup} per CSS property.
+ * @param options - {@link UtilityOptions}.
+ * @returns The CSS string.
+ *
+ * @demo self:token-utilities
+ */
+export function tokenUtilitiesCss(
+  groups: readonly TokenUtilityGroup[],
+  options: UtilityOptions = {},
+): string {
+  const prefix = options.prefix || "";
+  const p = prefix ? `${prefix}-` : "";
+  const rules = groups
+    .flatMap(({ property, tokens }) =>
+      tokens.map((token) => {
+        const name = token.replace(/^--instui-/, "");
+        return `.${p}${name} { ${property}: var(${token}); }`;
+      }),
+    )
+    .join("\n");
+  return `/* InstUI token utilities (@pantoken/utils) — prefix: ${prefix} */\n${rules}\n`;
 }

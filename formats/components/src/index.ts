@@ -151,6 +151,95 @@ export function elevationCss(options: { selector?: string } = {}): string {
   return `${selector} {\n${body}\n}\n`;
 }
 
+// ---------------------------------------------------------------------------------------------------
+// Focus outline — the InstUI focus ring, intrinsic to base.css so every focusable gets it out of the
+// box when pantoken owns the page. The resting element carries a transparent ring + a transition, and
+// `:focus-visible` reveals the colour and grows the offset (the way InstUI animates it). All rules are
+// zero-specificity `:where()`, so any component style overrides without `!important`. Colours/width/
+// offset reference the themed `--instui-component-shared-tokens-focus-outline-*` tokens (so the ring
+// tracks the theme); `style` (solid) and `inset` (0) are constants InstUI doesn't vary.
+// ---------------------------------------------------------------------------------------------------
+
+/** The elements the ring applies to by default (the common interactive/focusable elements). */
+export const FOCUSABLE_SELECTOR = "a, button, input, select, textarea, summary, [tabindex]";
+
+const focusShared = (name: string): string =>
+  `var(--instui-component-shared-tokens-focus-outline-${name})`;
+
+/**
+ * The `--instui-focus-outline-*` name/value pairs the ring rules read. Colour/width/offset reference
+ * the themed shared focus tokens; the transition, line style, and inset are constants.
+ *
+ * @returns One `[customProperty, value]` pair per focus-ring variable.
+ */
+export function focusOutlineDeclarations(): [name: string, value: string][] {
+  return [
+    ["--instui-focus-outline-color", focusShared("info-color")],
+    ["--instui-focus-outline-color-start", "transparent"],
+    ["--instui-focus-outline-width", focusShared("width")],
+    ["--instui-focus-outline-offset", focusShared("offset")],
+    ["--instui-focus-outline-radius", "var(--instui-border-radius-md)"],
+    ["--instui-focus-outline-style", "solid"],
+    ["--instui-focus-outline-transition", "outline-color 0.2s, outline-offset 0.25s"],
+    ["--instui-focus-outline-color-success", focusShared("success-color")],
+    ["--instui-focus-outline-color-danger", focusShared("danger-color")],
+    ["--instui-focus-outline-color-inverse", focusShared("on-color")],
+    ["--instui-focus-outline-inset", "0rem"],
+  ];
+}
+
+/**
+ * The focus-ring rules for a given focusable selector: a transparent resting ring that transitions in
+ * on `:focus-visible`, plus the `-focus-color-*` / `-focus-position-inset` / `-focus-within` /
+ * `-without-focus-animation` modifiers. All `:where()`-wrapped, so zero-specificity.
+ *
+ * @param selector - The focusable selector the base ring applies to (default {@link FOCUSABLE_SELECTOR}).
+ * @returns The CSS rules string.
+ */
+export function focusOutlineRules(selector: string = FOCUSABLE_SELECTOR): string {
+  return [
+    `:where(${selector}) {`,
+    `  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color-start);`,
+    `  outline-offset: 0;`,
+    `  transition: var(--instui-focus-outline-transition);`,
+    `}`,
+    `:where(${selector}):where(:focus-visible) {`,
+    `  outline-color: var(--instui-focus-outline-color);`,
+    `  outline-offset: var(--instui-focus-outline-offset);`,
+    `  border-radius: var(--instui-focus-outline-radius);`,
+    `}`,
+    `:where(.-focus-color-success):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-success); }`,
+    `:where(.-focus-color-danger):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-danger); }`,
+    `:where(.-focus-color-inverse):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-inverse); }`,
+    `:where(.-focus-position-inset):where(:focus-visible) { outline-offset: var(--instui-focus-outline-inset); }`,
+    `:where(.-focus-within):where(:focus-within) {`,
+    `  outline-color: var(--instui-focus-outline-color);`,
+    `  outline-offset: var(--instui-focus-outline-offset);`,
+    `  border-radius: var(--instui-focus-outline-radius);`,
+    `}`,
+    `:where(.-without-focus-animation) { transition: none; }`,
+  ].join("\n");
+}
+
+/**
+ * Build the focus-outline block: the `--instui-focus-outline-*` token defs plus the ring rules.
+ * Baked into `base.css` (so focusables get the ring out of the box), and reusable by other layered
+ * outputs (e.g. the Pendo renderer) via the `selector`/`tokenSelector` options.
+ *
+ * @param options - `selector` — the focusable selector; `tokenSelector` — where the token defs land
+ *   (default `:where(:root)`).
+ * @returns The CSS string.
+ */
+export function focusOutlineCss(
+  options: { selector?: string; tokenSelector?: string } = {},
+): string {
+  const tokenSelector = options.tokenSelector ?? ":where(:root)";
+  const decls = focusOutlineDeclarations()
+    .map(([name, value]) => `  ${name}: ${value};`)
+    .join("\n");
+  return `${tokenSelector} {\n${decls}\n}\n\n${focusOutlineRules(options.selector)}\n`;
+}
+
 /** The six document heading levels, in order. */
 const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
 
@@ -364,7 +453,9 @@ export function proseCss(options: ProseOptions = {}): string {
  * @demo self:base
  */
 export function baseCss(): string {
-  return `/* InstUI-look base/reset (@pantoken/components) */\n${baseRules().trim()}\n`;
+  // The focus ring is a document-level default (it targets bare focusables), so it lives in the reset:
+  // load base.css and every focusable gets the InstUI ring out of the box.
+  return `/* InstUI-look base/reset (@pantoken/components) */\n${baseRules().trim()}\n\n${focusOutlineCss()}`;
 }
 
 // ─── Components ───────────────────────────────────────────────────────────────
@@ -1421,82 +1512,10 @@ export function spacingUtilitiesCss(options: ComponentOptions = {}): string {
   return `/* InstUI spacing utilities (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n")}\n`;
 }
 
-/** The semantic colour token names (without the `--instui-color-<family>-` prefix) per family. */
-export interface ColorUtilityNames {
-  background: readonly string[];
-  text: readonly string[];
-  stroke: readonly string[];
-}
-
-/**
- * Build the semantic-colour utility stylesheet: `.<prefix>-bg-<name>` (background),
- * `.<prefix>-fg-<name>` (text colour), `.<prefix>-border-<name>` (border colour), one per semantic
- * colour token. Overrides are therefore only ever token-valid — no primitives, no arbitrary hex. Pass
- * the token names per family (e.g. from `@pantoken/tokens`).
- *
- * @param names - {@link ColorUtilityNames}.
- * @param options - {@link ComponentOptions}.
- * @returns The CSS string.
- *
- * @demo self:color-utilities
- */
-export function colorUtilitiesCss(
-  names: ColorUtilityNames,
-  options: ComponentOptions = {},
-): string {
-  const prefix = options.prefix || "";
-  const p = ns(prefix);
-  const emit = (family: string, util: string, prop: string, list: readonly string[]): string =>
-    list
-      .map((n) => `.${p}${util}-${n} { ${prop}: var(--instui-color-${family}-${n}); }`)
-      .join("\n");
-  const rules = [
-    emit("background", "bg", "background", names.background),
-    emit("text", "fg", "color", names.text),
-    emit("stroke", "border", "border-color", names.stroke),
-  ].join("\n");
-  return `/* InstUI semantic colour utilities (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
-}
-
-/** A set of tokens that all map to one CSS property (e.g. every `--instui-font-weight-*` → `font-weight`). */
-export interface TokenUtilityGroup {
-  /** The CSS property the tokens set (e.g. `"font-weight"`, `"border-radius"`, `"box-shadow"`). */
-  property: string;
-  /** Full token names (e.g. `"--instui-font-weight-body-strong"`); the `--instui-` tail becomes the class. */
-  tokens: readonly string[];
-}
-
-/**
- * Build token-driven utility classes: one class per token, applying it to its natural CSS property. The
- * token's `--instui-` tail is the class name, so `--instui-font-weight-body-strong` under property
- * `font-weight` yields
- * `.<prefix>-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }`. Use it for
- * every "one token → one property" family (font-family/weight, line-height, border-radius, border-width,
- * opacity, box-shadow). Colour and spacing keep their own builders — one token maps to several
- * properties there. Pass the token names per property (e.g. filtered from `@pantoken/tokens`).
- *
- * @param groups - one {@link TokenUtilityGroup} per CSS property.
- * @param options - {@link ComponentOptions}.
- * @returns The CSS string.
- *
- * @demo self:token-utilities
- */
-export function tokenUtilitiesCss(
-  groups: readonly TokenUtilityGroup[],
-  options: ComponentOptions = {},
-): string {
-  const prefix = options.prefix || "";
-  const p = ns(prefix);
-  const rules = groups
-    .flatMap(({ property, tokens }) =>
-      tokens.map((token) => {
-        const name = token.replace(/^--instui-/, "");
-        return `.${p}${name} { ${property}: var(${token}); }`;
-      }),
-    )
-    .join("\n");
-  return `/* InstUI token utilities (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
-}
+// The generic token → utility-class emitters (`colorUtilitiesCss`, `tokenUtilitiesCss`) now live in
+// `@pantoken/utils` — they carry no InstUI-look opinion, and the primitive tier
+// (`@pantoken/plugin-primitives`) consumes them from there too, so it no longer reaches up into this
+// format. `generate.ts` imports them from `@pantoken/utils` and feeds the curated *semantic* names.
 
 /**
  * Build the View primitive: `.<prefix>-view`, InstUI's `View`. Beyond the neutral box, it carries

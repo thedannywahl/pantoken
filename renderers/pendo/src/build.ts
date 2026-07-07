@@ -11,8 +11,7 @@
  */
 import postcss from "postcss";
 import { toCss } from "@pantoken/css";
-import { elevationCss } from "@pantoken/components";
-import { focusOutline } from "@pantoken/plugin-focus-outline";
+import { elevationCss, focusOutlineDeclarations, focusOutlineRules } from "@pantoken/components";
 import { byTheme } from "@pantoken/tokens";
 import { pruneCustomProps } from "@pantoken/plugin-prune-custom-props";
 import { COMPONENTS, LAYER_ORDER, MANUAL_CSS } from "./layers.ts";
@@ -24,7 +23,8 @@ import type { Theme } from "@pantoken/model";
 const GUIDE_SELECTOR = '[class*="instui"]';
 
 /**
- * The pure-outline focusables whose ring is delegated to `@pantoken/plugin-focus-outline`. Elements
+ * The pure-outline focusables whose ring is delegated to the focus-outline rules from
+ * `@pantoken/components`. Elements
  * with custom focus behaviour (select/textarea background resets, radio and number-scale sibling
  * outlines, the card's `:focus-visible` reset) keep their own rules and are left off this list.
  */
@@ -35,14 +35,13 @@ function elevationLayer(): string {
   return `@layer instui.elevation {\n${elevationCss({ selector: GUIDE_SELECTOR })}}`;
 }
 
-/** Build the `instui.focusOutline` layer from the focus-outline plugin (ring + its token defs). */
-function focusLayer(theme: Theme): string {
-  const contribution = focusOutline({ theme, selector: FOCUSABLES }).css?.({
-    tokens: byTheme(theme),
-    css: "",
-  });
-  const decls = (contribution?.declarations ?? []).map(([n, v]) => `  ${n}: ${v};`).join("\n");
-  return `@layer instui.focusOutline {\n${GUIDE_SELECTOR} {\n${decls}\n}\n\n${contribution?.append ?? ""}\n}`;
+/** Build the `instui.focusOutline` layer: the `--instui-focus-outline-*` token defs + the ring rules
+ *  (from @pantoken/components), scoped to Pendo's focusables. */
+function focusLayer(): string {
+  const decls = focusOutlineDeclarations()
+    .map(([n, v]) => `  ${n}: ${v};`)
+    .join("\n");
+  return `@layer instui.focusOutline {\n${GUIDE_SELECTOR} {\n${decls}\n}\n\n${focusOutlineRules(FOCUSABLES)}\n}`;
 }
 
 /** Options for {@link buildPendoCss}. */
@@ -92,7 +91,7 @@ export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
   const order = `@layer ${LAYER_ORDER.map((l) => `instui.${l}`).join(", ")};`;
   const tokenLayer = `@layer instui.tokens {\n${tokenCss}\n\n${MANUAL_CSS}\n}`;
   const components = COMPONENTS.map((c) => `@layer instui.${c.layer} {\n${c.css}\n}`).join("\n\n");
-  const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer()}\n\n${components}\n\n${focusLayer(theme)}`;
+  const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer()}\n\n${components}\n\n${focusLayer()}`;
 
   // One pass over the whole stylesheet: !important on component rules, prune the unused token set,
   // then wrap everything in @scope (last, so it contains the pruned result).

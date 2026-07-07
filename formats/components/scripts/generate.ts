@@ -14,17 +14,16 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { icons } from "@pantoken/icons";
 import { tokens } from "@pantoken/tokens";
+import { colorUtilitiesCss, tokenUtilitiesCss } from "@pantoken/utils";
 import { fontsCss } from "./fonts.ts";
 import {
   baseCss,
-  colorUtilitiesCss,
   componentsCss,
   ELEVATION_NAMES,
   iconGlyphsCss,
   layoutUtilitiesCss,
   proseCss,
   spacingUtilitiesCss,
-  tokenUtilitiesCss,
   viewCss,
 } from "../src/index.ts";
 

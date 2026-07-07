@@ -1,5 +1,5 @@
 import { expect, test } from "vite-plus/test";
-import { focusOutline } from "@pantoken/plugin-focus-outline";
+import { transition } from "@pantoken/plugin-transition";
 import { InstUI, pantokenCss } from "../src/index.ts";
 
 test("pantokenCss emits the token stylesheet for a theme", () => {
@@ -9,8 +9,8 @@ test("pantokenCss emits the token stylesheet for a theme", () => {
 });
 
 test("plugins contribute CSS to the injected sheet", () => {
-  const css = pantokenCss({ plugins: [focusOutline()] });
-  expect(css).toContain(":focus-visible");
+  const css = pantokenCss({ plugins: [transition()] });
+  expect(css).toContain(".instui-transition");
 });
 
 test("InstUI is a Starlight plugin that injects a head style entry", () => {

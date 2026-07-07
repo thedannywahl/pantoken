@@ -22,7 +22,7 @@
  *
  * @module
  */
-import { tokenUtilitiesCss } from "@pantoken/components";
+import { tokenUtilitiesCss } from "@pantoken/utils";
 
 /** Full primitive token names per family (e.g. `"--instui-primitive-color-white"`). */
 export interface PrimitiveTokenNames {

@@ -66,13 +66,13 @@ export function pantokenCss(options: InstUIOptions = {}): string {
  * ```ts
  * import starlight from "@astrojs/starlight";
  * import { InstUI } from "@pantoken/astro";
- * import { focusOutline } from "@pantoken/plugin-focus-outline";
+ * import { transition } from "@pantoken/plugin-transition";
  *
  * export default defineConfig({
  *   integrations: [
  *     starlight({
  *       title: "Docs",
- *       plugins: [InstUI({ theme: "rebrand", plugins: [focusOutline()] })],
+ *       plugins: [InstUI({ theme: "rebrand", plugins: [transition()] })],
  *     }),
  *   ],
  * });

@@ -8,7 +8,6 @@ export * as css from "@pantoken/css";
 export * as cssInJs from "@pantoken/css-in-js";
 export * as docusaurus from "@pantoken/docusaurus";
 export * as dtcg from "@pantoken/dtcg";
-export * as focusOutline from "@pantoken/plugin-focus-outline";
 export * as foundation from "@pantoken/foundation";
 export * as icons from "@pantoken/icons";
 export * as less from "@pantoken/less";
