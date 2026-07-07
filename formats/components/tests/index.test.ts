@@ -277,7 +277,7 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
   expect(css).toContain(".instui-progress-circle.-size-lg");
   expect(css).toContain(".instui-progress-circle.-color-success");
   expect(css).toContain("var(--instui-component-progress-circle-meter-color-brand-inverse)");
-  expect(css).toContain(".instui-progress-circle.-color-inverse");
+  expect(css).toContain(".instui-progress-circle.-color-primary-inverse");
 });
 
 test("tabs have a secondary variant; link has sizes, on-color, inline and unstyled", () => {
@@ -856,7 +856,9 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   expect(css).toContain(".instui-progress.-color-info .bar");
   expect(css).toContain(".instui-progress.-color-warning .bar");
   expect(css).toContain(".instui-progress.-color-danger .bar");
-  expect(css).toContain(".instui-progress.-color-inverse");
+  // color="primary-inverse": full border + inverse track/meter, overriding meterColor.
+  expect(css).toContain(".instui-progress.-color-primary-inverse");
+  expect(css).toContain("var(--instui-component-progress-bar-border-color)");
   expect(css).toContain("var(--instui-component-progress-bar-track-color-inverse)");
   expect(css).toContain(".instui-progress-value");
 });

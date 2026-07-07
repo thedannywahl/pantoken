@@ -2163,21 +2163,31 @@ function progressRules(p: string): string {
     `${root}.-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
   return `
 ${root} {
+  position: relative;
   display: block;
   width: 100%;
   height: var(--instui-component-progress-bar-medium-height);
   background: var(--instui-component-progress-bar-track-color);
-  border-bottom: var(--instui-component-progress-bar-track-bottom-border-width) solid var(--instui-component-progress-bar-track-bottom-border-color);
+  /* The full border (InstUI trackLayout.border) frames the track on all sides. */
+  border: var(--instui-component-progress-bar-track-bottom-border-width) solid var(--instui-component-progress-bar-border-color);
   border-radius: var(--instui-component-progress-bar-border-radius);
   overflow: hidden;
+}
+/* InstUI layers a distinct bottom rule (trackBottomBorderColor) over the meter, separate from the full
+   border. In legacy Canvas the full border is transparent so only this rule shows; in the newer themes
+   the full border shows and this rule is transparent. A pseudo keeps both layers independent. */
+${root}::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--instui-component-progress-bar-track-bottom-border-width);
+  background: var(--instui-component-progress-bar-track-bottom-border-color);
+  pointer-events: none;
 }
 .${p}progress.-size-xs { height: var(--instui-component-progress-bar-x-small-height); }
 .${p}progress.-size-sm { height: var(--instui-component-progress-bar-small-height); }
 .${p}progress.-size-lg { height: var(--instui-component-progress-bar-large-height); }
-.${p}progress.-color-inverse {
-  background: var(--instui-component-progress-bar-track-color-inverse);
-  border-bottom-color: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
-}
 ${scope(
   root,
   `
@@ -2195,6 +2205,16 @@ ${meter("info", "info")}
 ${meter("success", "success")}
 ${meter("warning", "warning")}
 ${meter("danger", "error")}
+/* color="primary-inverse": the on-dark scheme. It's a distinct axis from meterColor and overrides it —
+   InstUI's inverse meter tokens all collapse to background-base — so it comes AFTER the meter rules and
+   wins at equal specificity. Pair it with a dark surface. */
+${root}.-color-primary-inverse {
+  background: var(--instui-component-progress-bar-track-color-inverse);
+  border-color: var(--instui-component-progress-bar-border-color-inverse);
+  color: var(--instui-component-progress-bar-text-color-inverse);
+}
+${root}.-color-primary-inverse::after { background: var(--instui-component-progress-bar-track-bottom-border-color-inverse); }
+${root}.-color-primary-inverse .bar { background: var(--instui-component-progress-bar-meter-color-brand-inverse); }
 .${p}progress-value {
   padding: 0 var(--instui-component-progress-bar-value-padding);
   color: var(--instui-component-progress-bar-text-color);
@@ -2567,7 +2587,7 @@ function progressCircleRules(p: string): string {
   // the circle's `progress-circle-meter-color-*` tokens are distinct upstream, so we paint from them.
   const meter = (mod: string, token: string): string =>
     `${root}.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}); }
-${root}.-color-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
+${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
   const size = (mod: string, key: string): string =>
     `${root}.-${mod} {
   width: var(--instui-component-progress-circle-${key}-size);
@@ -2618,7 +2638,7 @@ ${meter("info", "info")}
 ${meter("success", "success")}
 ${meter("warning", "warning")}
 ${meter("danger", "danger")}
-${root}.-color-inverse {
+${root}.-color-primary-inverse {
   --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
   --pantoken-pc-track: var(--instui-component-progress-circle-track-color-inverse);
   color: var(--instui-component-progress-circle-color-inverse);
@@ -2870,6 +2890,7 @@ const wrap = (name: string, prefix: string, rules: string): string =>
  * ```
  *
  * @demo self:button
+ * @demo self:button-group
  */
 export function buttonCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";

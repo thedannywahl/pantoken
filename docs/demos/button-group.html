@@ -1,0 +1,19 @@
+<div class="instui-card">
+  <div class="instui-button-group" role="group" aria-label="Text alignment" id="bg-demo">
+    <button class="instui-button -toggle" type="button" aria-pressed="true">Left</button>
+    <button class="instui-button -toggle" type="button" aria-pressed="false">Center</button>
+    <button class="instui-button -toggle" type="button" aria-pressed="false">Right</button>
+  </div>
+</div>
+
+<script>
+  // A single-select segmented control: pressing one button releases the others.
+  const group = document.getElementById("bg-demo");
+  group.querySelectorAll(".-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      group
+        .querySelectorAll(".-toggle")
+        .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    });
+  });
+</script>

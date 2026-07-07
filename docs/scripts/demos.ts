@@ -97,6 +97,24 @@ writeFileSync(
     `    var(--instui-component-view-background-primary),\n` +
     `    var(--instui-component-view-background-secondary)\n` +
     `  );\n` +
+    `}\n` +
+    // Docs-only seamed button group. InstUI has no ButtonGroup CSS component (the reworked
+    // .instui-toggle-group is now a bordered disclosure), so this composition — buttons joined into one
+    // segmented control by a shared outer border with hairline seams between them — lives here, not in
+    // the shipped package. Pair with `.instui-button.-toggle` children for a single-select segmented look.
+    `.instui-button-group {\n` +
+    `  display: inline-flex;\n` +
+    `  border: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);\n` +
+    `  border-radius: var(--instui-border-radius-md);\n` +
+    `  overflow: hidden;\n` +
+    `}\n` +
+    `.instui-button-group > .instui-button {\n` +
+    `  border-radius: 0;\n` +
+    `  border-top-width: 0;\n` +
+    `  border-bottom-width: 0;\n` +
+    `}\n` +
+    `.instui-button-group > .instui-button + .instui-button {\n` +
+    `  border-inline-start: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);\n` +
     `}\n`,
 );
 
