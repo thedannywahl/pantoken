@@ -1,10 +1,10 @@
 # @pantoken/utils
 
 Shared, upstream-free helpers used across the pantoken packages: the token reference resolver
-(with `light-dark()` handling), the two token regexes, kebab→camel case, hex-colour parsing, and
-the drift/reference-integrity checks. Depends only on `@pantoken/model` (types) and
-[`arkregex`](https://www.npmjs.com/package/arkregex), so any package can use it without pulling the
-GitHub-only upstream token source.
+(with `light-dark()` handling), the two token regexes, kebab→camel case, hex-colour parsing, the
+drift/reference-integrity checks, and the generic token→utility-class emitters. Depends only on
+`@pantoken/model` (types) and [`arkregex`](https://www.npmjs.com/package/arkregex), so any package can
+use it without pulling the GitHub-only upstream token source.
 
 ## Install
 
@@ -46,9 +46,17 @@ const byName = resolveTokens(tokens, { mode: "dark" });
   `pendo`).
 - **`extractInstuiRefs(text)` / `tokenNames(ir)`** — the primitives the two checks build on,
   exposed for custom assertions.
+- **`colorUtilitiesCss(names, options?)`** — the semantic-colour utility emitter:
+  `.<prefix>-bg-<name>` / `-fg-` / `-border-` from `--instui-color-<family>-<name>`, one per token.
+- **`tokenUtilitiesCss(groups, options?)`** — the generic token→class emitter: one class per token,
+  applied to its CSS property (the `--instui-` tail is the class name). Both emitters carry no
+  InstUI-look opinion — the caller supplies the names. `@pantoken/components` feeds them a curated
+  _semantic_ allowlist; `@pantoken/plugin-primitives` feeds the raw palette. `options.prefix` sets the
+  class prefix; any falsy value drops it.
 - **`VAR_RE` / `LIGHT_DARK_RE`** — the two token regexes, built with `arkregex`'s `regex()` so
   their capture groups are typed on `.exec()` / `.matchAll()`. They're real `RegExp` instances.
-- **`Mode`, `ResolveOptions`, `Rgba`** — the supporting types.
+- **`Mode`, `ResolveOptions`, `Rgba`, `UtilityOptions`, `ColorUtilityNames`, `TokenUtilityGroup`** —
+  the supporting types.
 
 For value fidelity (an emitted, resolved value equals the IR's resolved value), compare against
 `resolveTokens(ir, { mode })` directly — see `@pantoken/scss`'s test.

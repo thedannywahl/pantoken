@@ -201,6 +201,9 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   const metric = metricCss({ prefix: "instui" });
   expect(metric).toContain("@scope (.instui-metric)");
   expect(metric).toContain(".value {");
+  // textAlign maps to align-items on the flex column (text-align alone is a no-op on the shrink box).
+  expect(metric).toContain(".instui-metric.-text-align-center { align-items: center;");
+  expect(metric).toContain(".instui-metric.-text-align-end { align-items: flex-end;");
   const byline = bylineCss({ prefix: "instui" });
   expect(byline).toContain("@scope (.instui-byline)");
   expect(byline).toContain(".title {");
@@ -601,9 +604,31 @@ test("radio is a custom-appearance control with an inset dot and sizes", () => {
   expect(css).toContain("appearance: none");
   expect(css).toContain("var(--instui-component-radio-input-border-selected-color)");
   expect(css).toContain("var(--instui-component-radio-input-checked-inset-md)");
-  expect(css).toContain(".instui-radio.-size-sm");
-  expect(css).toContain(".instui-radio.-size-lg");
+  // The dot-control sizes are scoped away from the toggle variant.
+  expect(css).toContain(".instui-radio:not(.-variant-toggle):not(.-toggle).-size-sm");
+  expect(css).toContain(".instui-radio:not(.-variant-toggle):not(.-toggle).-size-lg");
   expect(css).toContain("var(--instui-component-radio-input-background-disabled-color)");
+});
+
+test("radio has a variant=toggle segmented-button form with context colours and readonly", () => {
+  const css = radioCss({ prefix: "instui" });
+  // Dot-control rules are scoped away from the toggle variant (and its deprecated -toggle alias).
+  expect(css).toContain('.instui-radio:not(.-variant-toggle):not(.-toggle) input[type="radio"]');
+  // Toggle button + the four context fills.
+  expect(css).toContain(".instui-radio.-variant-toggle");
+  expect(css).toContain("var(--instui-component-radio-input-toggle-background-off)");
+  expect(css).toContain(".instui-radio.-variant-toggle.-context-success");
+  expect(css).toContain("var(--instui-component-radio-input-toggle-background-danger)");
+  expect(css).toContain("var(--instui-component-radio-input-toggle-background-warning)");
+  expect(css).toContain("var(--instui-component-radio-input-toggle-handle-text)");
+  // Readonly (standard form).
+  expect(css).toContain("var(--instui-component-radio-input-label-readonly-color)");
+});
+
+test("the deprecated -toggle alias mirrors radio's -variant-toggle in componentsCss", () => {
+  const css = componentsCss({ prefix: "instui" });
+  expect(css).toContain(".instui-radio.-toggle");
+  expect(css).toMatch(/@deprecated → use \.-variant-toggle/);
 });
 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {

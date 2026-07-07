@@ -1,5 +1,5 @@
 [class*="instui"] {
-  /* Focus outline is provided by @pantoken/plugin-focus-outline (the instui.focusOutline layer). */
+  /* Focus outline is provided by @pantoken/components (the instui.focusOutline layer). */
 
   /* Components: Alert */
   --manual-light-pendo-embedded-pendo-step-container-styles-width: 59.25rem;

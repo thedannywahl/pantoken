@@ -1,4 +1,4 @@
-/* Use InstUI's font, Atkinson Hyperlegible Next (from @pantoken/plugin-font-families), for the
+/* Use InstUI's font, Atkinson Hyperlegible Next (from @pantoken/components/fonts.css), for the
    whole site. The token carries its own fallback chain: Atkinson, then system-ui. */
 :root {
   --vp-font-family-base: var(--instui-font-family-atkinson-hyperlegible-next);

@@ -70,7 +70,7 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-`@pantoken/plugin-focus-outline` follows this — its tests assert no dangling `var()` and that resolved
+`@pantoken/plugin-stacking` follows this — its tests assert no dangling `var()` and that resolved
 values match the IR.
 
 ## Not this

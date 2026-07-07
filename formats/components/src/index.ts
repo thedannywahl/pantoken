@@ -1,17 +1,28 @@
 /**
  * `@pantoken/components` — an InstUI-look CSS component library, built from the `--instui-*` tokens.
  *
- * Three layers:
+ * The shipped stylesheets:
  *
  * - **Base** ({@link baseCss}) — opt-in global document defaults from the tokens (box-sizing, body
- *   reset, page surface, base text colour/font, `color-scheme`). Load it when pantoken owns the page.
+ *   reset, page surface, base text colour/font, `color-scheme`). It also carries the focus-outline
+ *   ring, so every focusable gets an accessible `:focus-visible` outline out of the box. Load it when
+ *   pantoken owns the page.
  * - **Prose** ({@link proseCss}) — styles rendered markdown/prose HTML (tables, headings, links,
  *   lists, code) scoped to a content root, so a docs page or content region looks like InstUI
  *   without swapping the DOM for components. This is what the site renderers ship as their
  *   `components.css`.
  * - **Components** ({@link buttonCss}, {@link alertCss}, {@link badgeCss}, aggregated by
  *   {@link componentsCss}) — class-based component styles you apply to your own markup
- *   (`<button class="instui-button">`), for the InstUI look outside a component framework.
+ *   (`<button class="instui-button">`), for the InstUI look outside a component framework. The
+ *   `--instui-elevation-*` shadow scale ({@link elevationCss}) leads this sheet, since enough
+ *   components float that shadows are an intrinsic design attribute rather than an add-on.
+ * - **Utilities** ({@link viewCss}, {@link spacingUtilitiesCss}, {@link layoutUtilitiesCss}, plus a
+ *   curated semantic-colour/token set) — an opt-in layer of cross-cutting classes. The generic
+ *   token→class emitters (`colorUtilitiesCss`, `tokenUtilitiesCss`) live in `@pantoken/utils`; this
+ *   package feeds them the curated *semantic* names, while `@pantoken/plugin-primitives` feeds the raw
+ *   palette.
+ * - **Fonts** (opt-in `fonts.css`) — the `@font-face` rules for the Instructure brand fonts. Base
+ *   *applies* the font; `fonts.css` *loads* the woff2s, so text degrades gracefully without it.
  *
  * Everything is pure CSS derived from the token IR, so it tracks InstUI through the tokens with no
  * dependency on the InstUI React packages. For the real, interactive components, use
@@ -142,6 +153,8 @@ export function elevationDeclarations(): [name: string, value: string][] {
  *
  * elevationCss(); // ":root { --instui-elevation-resting: …; --instui-elevation-above: …; … }"
  * ```
+ *
+ * @demo self:elevation
  */
 export function elevationCss(options: { selector?: string } = {}): string {
   const selector = options.selector ?? ":root";
@@ -229,6 +242,8 @@ export function focusOutlineRules(selector: string = FOCUSABLE_SELECTOR): string
  * @param options - `selector` — the focusable selector; `tokenSelector` — where the token defs land
  *   (default `:where(:root)`).
  * @returns The CSS string.
+ *
+ * @demo self:focus-outline
  */
 export function focusOutlineCss(
   options: { selector?: string; tokenSelector?: string } = {},
@@ -1259,6 +1274,12 @@ ${scope(
 `,
   ["value", "label"],
 )}
+/* textAlign: the value/label are flex items in a column, so cross-axis alignment (align-items) is what
+   actually positions them — text-align alone is a no-op on the shrink-wrapped box. Set both so it also
+   covers wrapped multi-line text. */
+${root}.-text-align-start { align-items: flex-start; text-align: start; }
+${root}.-text-align-center { align-items: center; text-align: center; }
+${root}.-text-align-end { align-items: flex-end; text-align: end; }
 `;
 }
 
@@ -1853,11 +1874,21 @@ ${scope(`.${p}checkbox`, `.${p}checkbox.-required .asterisk { color: var(--instu
 }
 
 /**
- * Radio rules: a native radio restyled via appearance:none so the InstUI border/background tokens
- * apply, with the selected dot masked in by a ::before sized from the `checked-inset` token. Sizes
- * `--sm`/`--lg`; disabled and readonly states mirror Checkbox.
+ * Radio rules. Two forms:
+ * - **Standard** (default): a native radio restyled via appearance:none so the InstUI border/background
+ *   tokens apply, with the selected dot masked in by a ::before sized from the `checked-inset` token.
+ *   Sizes `-size-sm`/`-lg`; disabled and readonly states mirror Checkbox.
+ * - **`-variant-toggle`**: InstUI's RadioInputGroup `variant="toggle"` — each radio renders as a
+ *   segmented button, the selected one filled with a context colour (`-context-{off,success,danger,
+ *   warning}`; success is the default). The native control is clipped (kept focusable + in the a11y
+ *   tree) and the label is the button. `-toggle` is a deprecated alias for `-variant-toggle`.
+ *
+ * The dot-control rules are scoped away from the toggle variant (both `-variant-toggle` and its
+ * deprecated `-toggle` alias) so the toggle button keeps its own chrome.
  */
 function radioRules(p: string): string {
+  const std = `.${p}radio:not(.-variant-toggle):not(.-toggle)`;
+  const tog = `.${p}radio.-variant-toggle`;
   return `
 .${p}radio {
   display: inline-flex;
@@ -1869,7 +1900,7 @@ function radioRules(p: string): string {
   font-weight: var(--instui-component-radio-input-font-weight);
   line-height: var(--instui-component-radio-input-line-height-md);
 }
-.${p}radio input[type="radio"] {
+${std} input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   display: inline-grid;
@@ -1884,7 +1915,7 @@ function radioRules(p: string): string {
   cursor: pointer;
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
-.${p}radio input[type="radio"]::before {
+${std} input[type="radio"]::before {
   content: "";
   width: calc(var(--instui-component-radio-input-control-size-md) - 2 * var(--instui-component-radio-input-checked-inset-md));
   height: calc(var(--instui-component-radio-input-control-size-md) - 2 * var(--instui-component-radio-input-checked-inset-md));
@@ -1893,49 +1924,105 @@ function radioRules(p: string): string {
   transform: scale(0);
   transition: transform 0.1s ease;
 }
-.${p}radio input[type="radio"]:hover {
+${std} input[type="radio"]:hover {
   border-color: var(--instui-component-radio-input-border-hover-color);
   background: var(--instui-component-radio-input-background-hover-color);
 }
-.${p}radio input[type="radio"]:checked { border-color: var(--instui-component-radio-input-border-selected-color); }
-.${p}radio input[type="radio"]:checked::before { transform: scale(1); }
-.${p}radio input[type="radio"]:disabled {
+${std} input[type="radio"]:checked { border-color: var(--instui-component-radio-input-border-selected-color); }
+${std} input[type="radio"]:checked::before { transform: scale(1); }
+${std} input[type="radio"]:disabled {
   border-color: var(--instui-component-radio-input-border-disabled-color);
   background: var(--instui-component-radio-input-background-disabled-color);
   cursor: not-allowed;
 }
-.${p}radio:has(input:disabled) { color: var(--instui-component-radio-input-label-disabled-color); }
-.${p}radio:hover { color: var(--instui-component-radio-input-label-hover-color); }
-.${p}radio.-size-sm {
+${std}:has(input:disabled) { color: var(--instui-component-radio-input-label-disabled-color); }
+${std}:hover { color: var(--instui-component-radio-input-label-hover-color); }
+${std}.-size-sm {
   font-size: var(--instui-component-radio-input-font-size-sm);
   line-height: var(--instui-component-radio-input-line-height-sm);
 }
-.${p}radio.-size-sm input[type="radio"] {
+${std}.-size-sm input[type="radio"] {
   width: var(--instui-component-radio-input-control-size-sm);
   height: var(--instui-component-radio-input-control-size-sm);
 }
-.${p}radio.-size-sm input[type="radio"]::before {
+${std}.-size-sm input[type="radio"]::before {
   width: calc(var(--instui-component-radio-input-control-size-sm) - 2 * var(--instui-component-radio-input-checked-inset-sm));
   height: calc(var(--instui-component-radio-input-control-size-sm) - 2 * var(--instui-component-radio-input-checked-inset-sm));
 }
-.${p}radio.-size-lg {
+${std}.-size-lg {
   font-size: var(--instui-component-radio-input-font-size-lg);
   line-height: var(--instui-component-radio-input-line-height-lg);
 }
-.${p}radio.-size-lg input[type="radio"] {
+${std}.-size-lg input[type="radio"] {
   width: var(--instui-component-radio-input-control-size-lg);
   height: var(--instui-component-radio-input-control-size-lg);
 }
-.${p}radio.-size-lg input[type="radio"]::before {
+${std}.-size-lg input[type="radio"]::before {
   width: calc(var(--instui-component-radio-input-control-size-lg) - 2 * var(--instui-component-radio-input-checked-inset-lg));
   height: calc(var(--instui-component-radio-input-control-size-lg) - 2 * var(--instui-component-radio-input-checked-inset-lg));
 }
-.${p}radio.-readonly {
+${std}.-readonly {
   color: var(--instui-component-radio-input-label-readonly-color);
 }
-.${p}radio.-readonly input[type="radio"] {
+${std}.-readonly input[type="radio"] {
   border-color: var(--instui-component-radio-input-border-readonly-color);
   background: var(--instui-component-radio-input-background-readonly-color);
+}
+/* variant=toggle — the segmented-button look. The selected fill is a context colour, indirected
+   through --pantoken-rt-fill so -context-* is a one-line override (default success/green). */
+${tog} {
+  --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-success);
+  position: relative;
+  justify-content: center;
+  gap: 0;
+  height: var(--instui-component-radio-input-toggle-medium-height);
+  padding-inline: var(--instui-spacing-space-md);
+  border: var(--instui-component-radio-input-toggle-border-width) solid var(--instui-color-stroke-base);
+  border-radius: var(--instui-component-radio-input-toggle-border-radius);
+  /* Unselected fill is the neutral muted surface: the toggle-background-off token resolves to the same
+     green as success in-theme, so it can't read as "off" — the -context-* fills below drive selection. */
+  background: var(--instui-color-background-muted);
+  color: var(--instui-component-radio-input-label-base-color);
+  font-size: var(--instui-component-radio-input-toggle-medium-font-size);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+/* Clip the native control (still focusable + in the a11y tree); the label is the button. */
+${tog} input[type="radio"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+${tog}.-context-off { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-off); }
+${tog}.-context-success { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-success); }
+${tog}.-context-danger { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-danger); }
+${tog}.-context-warning { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-warning); }
+${tog}:has(input:checked) {
+  background: var(--pantoken-rt-fill);
+  border-color: var(--pantoken-rt-fill);
+  color: var(--instui-component-radio-input-toggle-handle-text);
+}
+${tog}:has(input:focus-visible) {
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+}
+${tog}:has(input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+${tog}.-size-sm {
+  height: var(--instui-component-radio-input-toggle-small-height);
+  font-size: var(--instui-component-radio-input-toggle-small-font-size);
+}
+${tog}.-size-lg {
+  height: var(--instui-component-radio-input-toggle-large-height);
+  font-size: var(--instui-component-radio-input-toggle-large-font-size);
 }
 `;
 }
@@ -2729,7 +2816,8 @@ export function tabsCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the metric stylesheet: `.<prefix>-metric` scoping `.value` and `.label`.
+ * Build the metric stylesheet: `.<prefix>-metric` scoping `.value` and `.label`, plus
+ * `-text-align-{start,center,end}` (InstUI's `textAlign`, applied as `align-items` on the flex column).
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -2885,7 +2973,8 @@ export function checkboxCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the radio stylesheet: `.<prefix>-radio` (labeled native radio).
+ * Build the radio stylesheet: `.<prefix>-radio` (labeled native radio), plus the `-variant-toggle`
+ * segmented-button form with `-context-{off,success,danger,warning}` and `-size-{sm,lg}`.
  *
  * @example
  * ```ts
@@ -2893,6 +2982,8 @@ export function checkboxCss(options: ComponentOptions = {}): string {
  *
  * const css = radioCss();
  * // <label class="instui-radio"><input type="radio" name="plan" /> Free</label>
+ * // Toggle buttons (variant="toggle"), selected fill picked by -context-*:
+ * // <label class="instui-radio -variant-toggle -context-success"><input type="radio" name="size" checked /> Small</label>
  * ```
  *
  * @demo self:radio
@@ -3332,10 +3423,10 @@ ${headingLevelRules((l) => `.${p}heading.-level-${l}`)}
  * import { headingCss } from "@pantoken/components";
  *
  * const css = headingCss();
- * // <h2 class="instui-heading instui-heading--title-section">Section</h2>
+ * // <h2 class="instui-heading -variant-title-section">Section</h2>
  * ```
  *
- * @demo self:typography
+ * @demo self:heading
  */
 export function headingCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
@@ -3393,10 +3484,10 @@ ${mod("transform-capitalize", "text-transform: capitalize;")}
  * import { textCss } from "@pantoken/components";
  *
  * const css = textCss();
- * // <span class="instui-text -small -secondary">Caption</span>
+ * // <span class="instui-text -size-sm -color-secondary">Caption</span>
  * ```
  *
- * @demo self:typography
+ * @demo self:text
  */
 export function textCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
@@ -3457,30 +3548,6 @@ export function closeButtonCss(options: ComponentOptions = {}): string {
   return wrap("close-button", prefix, closeButtonRules(ns(prefix)));
 }
 
-/**
- * Build the full component stylesheet: every class-based component (button, alert, badge) under the
- * configured prefix. Prose is separate — use {@link proseCss}.
- *
- * @param options - {@link ComponentOptions}.
- * @returns The CSS string.
- *
- * @example Write the default stylesheet
- * ```ts
- * import { componentsCss } from "@pantoken/components";
- * import { writeFileSync } from "node:fs";
- *
- * writeFileSync("ui.css", componentsCss()); // .instui-button, .instui-alert, …
- * ```
- *
- * @example Emit every component under a custom prefix
- * ```ts
- * import { componentsCss } from "@pantoken/components";
- *
- * const css = componentsCss({ prefix: "ui" }); // .ui-button, .ui-alert, …
- * ```
- *
- * @demo self:components
- */
 /** Long-form spellings for the size scale — emitted as first-class aliases beside the short forms. */
 const SIZE_LONG: Record<string, string> = {
   xs: "x-small",
@@ -3528,6 +3595,8 @@ function withDeprecatedAliases(css: string, p: string): string {
     [`${p}avatar.-color-orange`, `${p}avatar.-color-accent4`],
     [`${p}avatar.-color-ash`, `${p}avatar.-color-accent5`],
     [`${p}avatar.-color-grey`, `${p}avatar.-color-accent6`],
+    // Radio: `variant="toggle"` renders as segmented buttons; keep the bare `-toggle` shorthand working.
+    [`${p}radio.-variant-toggle`, `${p}radio.-toggle`],
   ];
   const extra: string[] = [];
   for (const [canonical, deprecated] of pairs) {
@@ -3549,6 +3618,46 @@ function withDeprecatedAliases(css: string, p: string): string {
     : css;
 }
 
+/**
+ * Build the full component stylesheet: every class-based component (button, alert, badge, and the
+ * rest) concatenated under one prefix. This is what ships as `components.css`. Prose, the base reset,
+ * and the utilities are separate sheets — use {@link proseCss}, {@link baseCss}, and the utility
+ * builders.
+ *
+ * Beyond concatenating the per-component rules, it:
+ * - **leads with the elevation scale** ({@link elevationCss}) — the `--instui-elevation-*` shadow
+ *   custom properties, so components that float (modal, alert, menu) resolve their shadows from this
+ *   sheet plus a token layer, with no separate elevation stylesheet;
+ * - **adds size aliases** — every `-size-sm` rule gets a first-class `-size-small` twin (and so on
+ *   across the `xs`…`xl` scale), so both spellings work;
+ * - **adds deprecated InstUI aliases** — where a canonical modifier renames an InstUI prop/value
+ *   (Alert `variant`→`color`, Avatar `accent1`…`accent6`→named colours), the old form is kept working
+ *   and marked `@deprecated`;
+ * - **wraps element rules in `@scope`** — nested sub-elements (e.g. `.instui-menu .item`) are scoped
+ *   to their component for intent and proximity.
+ *
+ * @param options - {@link ComponentOptions}. `options.prefix` sets the class prefix; any falsy value
+ *   (`null`/`undefined`/`""`/omitted) drops it entirely (`.button`, `.alert`).
+ * @returns The CSS string.
+ *
+ * @example Write the default stylesheet
+ * ```ts
+ * import { componentsCss } from "@pantoken/components";
+ * import { writeFileSync } from "node:fs";
+ *
+ * writeFileSync("ui.css", componentsCss()); // .instui-button, .instui-alert, …
+ * ```
+ *
+ * @example Emit every component under a custom prefix (or none)
+ * ```ts
+ * import { componentsCss } from "@pantoken/components";
+ *
+ * componentsCss({ prefix: "ui" }); // .ui-button, .ui-alert, …
+ * componentsCss({ prefix: null }); // .button, .alert — unprefixed
+ * ```
+ *
+ * @demo self:components
+ */
 export function componentsCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   const rules = [

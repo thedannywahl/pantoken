@@ -18,13 +18,13 @@ Also available as `pantoken/astro`.
 // astro.config.mjs
 import starlight from "@astrojs/starlight";
 import { InstUI } from "@pantoken/astro";
-import { focusOutline } from "@pantoken/plugin-focus-outline";
+import { transition } from "@pantoken/plugin-transition";
 
 export default defineConfig({
   integrations: [
     starlight({
       title: "Docs",
-      plugins: [InstUI({ theme: "rebrand", plugins: [focusOutline()] })],
+      plugins: [InstUI({ theme: "rebrand", plugins: [transition()] })],
     }),
   ],
 });
@@ -48,7 +48,7 @@ const css = pantokenCss({ theme: "canvas" });
 ## Related
 
 - Builds on `@pantoken/css` and `@pantoken/tokens` for the token-to-CSS pipeline.
-- Accepts pantoken plugins such as `@pantoken/plugin-focus-outline`.
+- Accepts pantoken plugins such as `@pantoken/plugin-transition`.
 
 ## License
 

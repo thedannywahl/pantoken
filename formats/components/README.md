@@ -1,16 +1,30 @@
 # @pantoken/components
 
-An InstUI-look CSS component library, built from the `--instui-*` tokens. Two layers:
+An InstUI-look CSS component library, built from the `--instui-*` tokens. The shipped stylesheets:
 
-- **Prose** — styles rendered markdown/prose HTML (tables, headings, links, lists, code) scoped to a
-  content root, so a docs page or content region looks like InstUI. This is what the site renderers
-  ship as their `components.css`.
-- **Components** — class-based component styles you apply to your own markup
-  (`<button class="instui-button">`), for the InstUI look outside a component framework.
+- **`base.css`** — opt-in global document defaults from the tokens (box-sizing, body reset, page
+  surface, base text/font, `color-scheme`). It also carries the focus-outline ring, so every focusable
+  gets an accessible `:focus-visible` outline out of the box.
+- **`prose.css`** — styles rendered markdown/prose HTML (tables, headings, links, lists, code) scoped
+  to a content root, so a docs page or content region looks like InstUI. This is what the site
+  renderers ship as their `components.css`.
+- **`components.css`** — class-based component styles you apply to your own markup
+  (`<button class="instui-button">`), for the InstUI look outside a component framework. The
+  `--instui-elevation-*` shadow scale leads this sheet — enough components float that shadows are an
+  intrinsic design attribute, not an add-on.
+- **`utilities.css`** — an opt-in layer of cross-cutting classes: a `View` primitive, spacing, layout,
+  and curated semantic colour/token utilities.
+- **`fonts.css`** — opt-in `@font-face` rules for the Instructure brand fonts. `base.css` _applies_ the
+  font; `fonts.css` _loads_ the woff2s, so text degrades gracefully without it.
+- **`icons.css`** — one `.instui-icon-<name>` glyph class per icon.
 
 It's pure CSS derived from the tokens, so it tracks InstUI through the token IR with no dependency on
 the InstUI React packages. For the real, interactive components, use `@pantoken/react-markdown`
 (content) or `@instructure/ui-*` (apps).
+
+Elevation and the focus ring used to be separate plugins; they now ship here because so many
+components need them out of the box. The generic token→utility-class emitters, by contrast, live in
+`@pantoken/utils` (this package feeds them the curated semantic names).
 
 ## Install
 
@@ -25,8 +39,11 @@ Also available as `pantoken/components`.
 Import the ready stylesheets:
 
 ```ts
-import "@pantoken/components/components.css"; // .instui-button, .instui-alert, .instui-badge
+import "@pantoken/components/base.css"; // opt-in reset + focus ring (when pantoken owns the page)
+import "@pantoken/components/components.css"; // .instui-button, .instui-alert, .instui-badge (+ elevation)
 import "@pantoken/components/prose.css"; // styles content in a .pantoken-prose region
+import "@pantoken/components/utilities.css"; // opt-in View, spacing, layout, colour/token utilities
+import "@pantoken/components/fonts.css"; // opt-in: loads the Instructure brand woff2s
 ```
 
 ```html
@@ -53,14 +70,20 @@ namespace every class.
 
 ## API
 
-- **`componentsCss(options?): string`** — every class-based component (button, alert, badge).
-  `options.prefix` sets the class prefix; any falsy value drops it (`.button`).
+- **`componentsCss(options?): string`** — every class-based component (button, alert, badge), led by
+  the elevation shadow scale. `options.prefix` sets the class prefix; any falsy value drops it
+  (`.button`).
 - **`buttonCss` / `alertCss` / `badgeCss` (options?)** — one component's stylesheet.
+- **`baseCss(): string`** — the global reset plus the focus-outline ring.
 - **`proseCss(options?): string`** — the prose/content stylesheet. `options.scope` sets the
   content-root selector (default `".pantoken-prose"`).
+- **`elevationCss(options?)`, `focusOutlineCss(options?)`** — the shadow scale and focus ring, exposed
+  for renderers that compose their own sheets (`@pantoken/pendo` does this).
+- **`viewCss`, `spacingUtilitiesCss`, `layoutUtilitiesCss` (options?)** — the utility builders. The
+  generic token→class emitters (`colorUtilitiesCss`, `tokenUtilitiesCss`) come from `@pantoken/utils`.
 - **`ComponentOptions`, `ProseOptions`** — the option types.
-- **`./components.css`** — the components at the default `instui` prefix.
-- **`./prose.css`** — the prose layer at the default `.pantoken-prose` scope.
+- **`./base.css`**, **`./components.css`**, **`./prose.css`**, **`./utilities.css`**, **`./fonts.css`**,
+  **`./icons.css`** — the prebuilt sheets at the default `instui` prefix / `.pantoken-prose` scope.
 
 ## Components
 

@@ -28,3 +28,7 @@ import "@pantoken/plugin-primitives/primitives.css";
 - **`primitivesCss(names, options?): string`** — build the stylesheet. Pass the primitive token names
   per family (e.g. filtered from `@pantoken/tokens`). `options.prefix` sets the class prefix; any falsy
   value drops it (`.bg-…`). The shipped `primitives.css` uses `instui`.
+
+The font utilities are built on `tokenUtilitiesCss` from `@pantoken/utils` — the same generic
+token→class emitter the semantic utilities in `@pantoken/components` use — so this package depends only
+on the shared utils tier, not on the component library.

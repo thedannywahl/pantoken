@@ -51,7 +51,7 @@ The monorepo is organized into buckets. A few highlights:
 | `bundlers/`  | Build-tool plugins and presets       | `@pantoken/vite`, `@pantoken/next`, `@pantoken/tailwind`, `@pantoken/panda` |
 | `platforms/` | Native and site-generator targets    | `@pantoken/swift`, `@pantoken/wordpress`, `@pantoken/rust`                  |
 | `design/`    | Design-tool payloads                 | `@pantoken/figma`, `@pantoken/swatches`                                     |
-| `plugins/`   | Optional token and CSS transforms    | `@pantoken/plugin-focus-outline`, `@pantoken/plugin-simple-icons`           |
+| `plugins/`   | Optional token and CSS transforms    | `@pantoken/plugin-stacking`, `@pantoken/plugin-simple-icons`                |
 | `tools/`     | Private build tooling                | `@pantoken/aggregate`, `@pantoken/validate-generated`                       |
 
 The docs site has the [full package map](https://instructure.github.io/pantoken/guide/packages).

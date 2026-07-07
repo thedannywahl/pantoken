@@ -8,30 +8,30 @@ fits your task, or install the unified `pantoken` package and import from its su
 
 The shared model and the transformer everything else builds on.
 
-| Package                                                 | What it does                                                                           |
-| ------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.           |
-| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.         |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source. |
-| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, and drift checks.       |
-| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                |
-| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                        |
+| Package                                                 | What it does                                                                                                       |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.                                       |
+| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.                                     |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source.                             |
+| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, drift checks, and the token→utility-class emitters. |
+| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
+| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
 
 ## Formats
 
 Turn the tokens into a file format.
 
-| Package                                                | Output                                                                                                                         |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                  |
-| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                     |
-| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                |
-| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                              |
-| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                           |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                        |
-| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                        |
-| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                    |
-| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus prose styling. See [Components](/guide/components). |
+| Package                                                | Output                                                                                                                                                                                                     |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                                                                                              |
+| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                                                                                                 |
+| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                            |
+| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                          |
+| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                                                                                                       |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                                                                                                    |
+| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |
+| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
+| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
 
 ## Renderers
 
