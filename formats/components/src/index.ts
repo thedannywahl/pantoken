@@ -631,8 +631,9 @@ function badgeRules(p: string): string {
   from { transform: scale(1); opacity: 0.7; }
   to { transform: scale(1.8); opacity: 0; }
 }
-/* Wrap a target in this so a placed badge can sit over its corner. */
-.${p}badge__wrapper {
+/* Wrap a target in this so a placed badge can sit over its corner. It contains the badge (rather than
+   being contained by it), so it's a flat prefixed class, not a scoped element. */
+.${p}badge-wrapper {
   position: relative;
   display: inline-flex;
 }
@@ -677,7 +678,7 @@ function badgeRules(p: string): string {
   border-radius: inherit;
   animation: pantoken-badge-pulse 1.2s ease-out infinite;
 }
-/* Placement: position the badge over a \`__wrapper\` target. InstUI's countOffset is 0.5rem. */
+/* Placement: position the badge over a \`.badge-wrapper\` target. InstUI's countOffset is 0.5rem. */
 .${p}badge.-placement-top-end,
 .${p}badge.-placement-top-start,
 .${p}badge.-placement-bottom-end,
@@ -702,8 +703,9 @@ function badgeRules(p: string): string {
 }
 
 /**
- * Pill rules: a bordered status label, base by default, plus `--info`/`--success`/`--warning`/
- * `--danger`. A leading `__icon` (InstUI's `renderIcon`) sits before the text and inherits its colour.
+ * Pill rules: a bordered status label, base by default, plus `-color-info`/`-color-success`/
+ * `-color-warning`/`-color-danger`. A leading `-icon-<name>` glyph (InstUI's `renderIcon`) sits before
+ * the text and inherits its colour.
  */
 function pillRules(p: string): string {
   return `
@@ -905,7 +907,7 @@ ${color("red")}
 }
 
 /**
- * Tabs rules: a container (`.tabs`), a tab list (`__list`), tabs (`__tab`), and panels (`__panel`).
+ * Tabs rules: a container (`.tabs`) scoping a tab list (`.list`), tabs (`.tab`), and panels (`.panel`).
  * Two variants (InstUI's `variant` prop, set on the container): the default underline style, and a
  * `-variant-secondary` "folder" style whose selected tab connects into the panel. Per-tab state is
  * `-selected`/`[aria-selected]` and `-disabled`/`[aria-disabled]`; `-overflow-scroll` (InstUI
@@ -921,18 +923,18 @@ function tabsRules(p: string): string {
   flex-direction: column;
   background: var(--instui-component-tabs-default-background);
 }
-.${p}tabs__list {
+.${p}tabs .list {
   display: flex;
   width: 100%;
   flex-flow: row wrap;
 }
-.${p}tabs.-overflow-scroll .${p}tabs__list {
+.${p}tabs.-overflow-scroll .list {
   flex-wrap: nowrap;
   overflow-x: auto;
   scrollbar-width: none;
 }
-.${p}tabs.-overflow-scroll .${p}tabs__list::-webkit-scrollbar { display: none; }
-.${p}tabs__tab {
+.${p}tabs.-overflow-scroll .list::-webkit-scrollbar { display: none; }
+.${p}tabs .tab {
   appearance: none;
   -webkit-appearance: none;
   background: transparent;
@@ -952,23 +954,23 @@ function tabsRules(p: string): string {
   border-bottom: 0.25rem solid transparent;
   margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
 }
-.${p}tabs__tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not([aria-disabled="true"]) {
+.${p}tabs .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not([aria-disabled="true"]) {
   border-bottom-color: var(--instui-component-tabs-tab-default-hover-border-color);
 }
-.${p}tabs__tab.-selected,
-.${p}tabs__tab[aria-selected="true"] {
+.${p}tabs .tab.-selected,
+.${p}tabs .tab[aria-selected="true"] {
   border-bottom-color: var(--instui-component-tabs-tab-default-selected-border-color);
 }
-.${p}tabs__tab.-disabled,
-.${p}tabs__tab[aria-disabled="true"],
-.${p}tabs__tab:disabled {
+.${p}tabs .tab.-disabled,
+.${p}tabs .tab[aria-disabled="true"],
+.${p}tabs .tab:disabled {
   opacity: 0.5;
   font-weight: normal;
   cursor: default;
 }
 /* Secondary variant: rounded "folder" tabs; the selected tab's bottom border matches the panel
    background so it visually connects into the panel below. */
-.${p}tabs.-variant-secondary .${p}tabs__tab {
+.${p}tabs.-variant-secondary .tab {
   padding: 0.75rem 1rem;
   line-height: var(--instui-component-tabs-tab-line-height);
   color: var(--instui-component-tabs-tab-secondary-text-color);
@@ -977,20 +979,20 @@ function tabsRules(p: string): string {
   border: var(--instui-component-tabs-panel-border-width) solid transparent;
   border-radius: 0.1875rem 0.1875rem 0 0;
 }
-.${p}tabs.-variant-secondary .${p}tabs__tab:first-of-type { margin-inline-start: 0; }
-.${p}tabs.-variant-secondary .${p}tabs__tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not([aria-disabled="true"]) {
+.${p}tabs.-variant-secondary .tab:first-of-type { margin-inline-start: 0; }
+.${p}tabs.-variant-secondary .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not([aria-disabled="true"]) {
   background: var(--instui-component-tabs-tab-secondary-selected-background);
   border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
   color: var(--instui-component-tabs-tab-secondary-selected-text-color);
 }
-.${p}tabs.-variant-secondary .${p}tabs__tab.-selected,
-.${p}tabs.-variant-secondary .${p}tabs__tab[aria-selected="true"] {
+.${p}tabs.-variant-secondary .tab.-selected,
+.${p}tabs.-variant-secondary .tab[aria-selected="true"] {
   background: var(--instui-component-tabs-tab-secondary-selected-background);
   border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
   border-bottom-color: var(--instui-component-tabs-tab-secondary-selected-background);
   color: var(--instui-component-tabs-tab-secondary-selected-text-color);
 }
-.${p}tabs__panel {
+.${p}tabs .panel {
   box-sizing: border-box;
   border-top: var(--instui-component-tabs-panel-border-width) solid var(--instui-component-tabs-panel-border-color);
   background: var(--instui-component-tabs-panel-background);
@@ -1001,7 +1003,7 @@ function tabsRules(p: string): string {
   line-height: var(--instui-component-tabs-panel-line-height);
   padding: var(--instui-spacing-space-sm) var(--instui-spacing-space-md) var(--instui-spacing-space-md);
 }
-.${p}tabs__panel[hidden] { display: none; }
+.${p}tabs .panel[hidden] { display: none; }
 `;
 }
 
@@ -1014,14 +1016,14 @@ function metricRules(p: string): string {
   gap: var(--instui-component-metric-gap-texts);
   padding: 0 var(--instui-component-metric-padding-horizontal);
 }
-.${p}metric__value {
+.${p}metric .value {
   color: var(--instui-component-metric-value-color);
   font-family: var(--instui-component-metric-value-font-family);
   font-size: var(--instui-component-metric-value-font-size);
   font-weight: var(--instui-component-metric-value-font-weight);
   line-height: var(--instui-component-metric-value-line-height);
 }
-.${p}metric__label {
+.${p}metric .label {
   color: var(--instui-component-metric-label-color);
   font-family: var(--instui-component-metric-label-font-family);
   font-size: var(--instui-component-metric-label-font-size);
@@ -1042,13 +1044,13 @@ function bylineRules(p: string): string {
   color: var(--instui-component-byline-color);
   font-family: var(--instui-component-byline-font-family);
 }
-.${p}byline__title {
+.${p}byline .title {
   margin: 0 0 var(--instui-component-byline-title-margin);
   font-size: var(--instui-component-byline-title-font-size);
   font-weight: var(--instui-component-byline-title-font-weight);
   line-height: var(--instui-component-byline-title-line-height);
 }
-.${p}byline__description {
+.${p}byline .description {
   font-size: var(--instui-component-byline-description-font-size);
   font-weight: var(--instui-component-byline-description-font-weight);
   line-height: var(--instui-component-byline-description-line-height);
@@ -1617,7 +1619,7 @@ ${base}.${p}checkbox.-readonly input[type="checkbox"] {
   border-color: var(--instui-component-checkbox-border-readonly-color);
   background: var(--instui-component-checkbox-background-readonly-color);
 }
-.${p}checkbox.-required .${p}checkbox__asterisk { color: var(--instui-component-checkbox-asterisk-color); }
+.${p}checkbox.-required .asterisk { color: var(--instui-component-checkbox-asterisk-color); }
 .${p}checkbox.-variant-toggle input[type="checkbox"] {
   /* InstUI's toggle facade is a fixed 40x24 switch: the switch height is the small choice-control
      size (24px), while the toggle-medium-height token (40px) is the track width. Its border is the
@@ -1810,12 +1812,13 @@ function spinnerRules(p: string): string {
 /**
  * Progress rules: a track + meter bar. Sizes `--x-small`/`--sm`/`--lg` set the track height, the meter
  * carries the full status palette (brand/info/success/warning/alert/danger), `--inverse` swaps in the
- * on-dark track and meter colors, and `__value` styles an adjacent numeric label.
+ * on-dark track and meter colors, and `.progress-value` (a flat class, since it sits as a sibling
+ * not a child) styles an adjacent numeric label.
  */
 function progressRules(p: string): string {
   const meter = (name: string, token: string): string =>
-    `.${p}progress__bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}); }
-.${p}progress.-color-inverse .${p}progress__bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}-inverse); }`;
+    `.${p}progress .bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}); }
+.${p}progress.-color-inverse .bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}-inverse); }`;
   return `
 .${p}progress {
   display: block;
@@ -1829,7 +1832,7 @@ function progressRules(p: string): string {
 .${p}progress.-size-xs { height: var(--instui-component-progress-bar-x-small-height); }
 .${p}progress.-size-sm { height: var(--instui-component-progress-bar-small-height); }
 .${p}progress.-size-lg { height: var(--instui-component-progress-bar-large-height); }
-.${p}progress__bar {
+.${p}progress .bar {
   height: 100%;
   background: var(--instui-component-progress-bar-meter-color-brand);
   border-radius: var(--instui-component-progress-bar-border-radius);
@@ -1843,8 +1846,8 @@ ${meter("color-danger", "danger")}
   background: var(--instui-component-progress-bar-track-color-inverse);
   border-bottom-color: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
 }
-.${p}progress.-color-inverse .${p}progress__bar { background: var(--instui-component-progress-bar-meter-color-brand-inverse); }
-.${p}progress__value {
+.${p}progress.-color-inverse .bar { background: var(--instui-component-progress-bar-meter-color-brand-inverse); }
+.${p}progress-value {
   padding: 0 var(--instui-component-progress-bar-value-padding);
   color: var(--instui-component-progress-bar-text-color);
   font-family: var(--instui-component-progress-bar-font-family);
@@ -1852,8 +1855,8 @@ ${meter("color-danger", "danger")}
   font-weight: var(--instui-component-progress-bar-font-weight);
   line-height: var(--instui-component-progress-bar-line-height);
 }
-.${p}progress.-color-inverse ~ .${p}progress__value,
-.${p}progress__value.-color-inverse { color: var(--instui-component-progress-bar-text-color-inverse); }
+.${p}progress.-color-inverse ~ .${p}progress-value,
+.${p}progress-value.-color-inverse { color: var(--instui-component-progress-bar-text-color-inverse); }
 `;
 }
 
@@ -1868,7 +1871,7 @@ function menuRules(p: string): string {
   border-radius: var(--instui-border-radius-md);
   padding: var(--instui-spacing-space-xs) 0;
 }
-.${p}menu__item {
+.${p}menu .item {
   display: block;
   padding: var(--instui-component-menu-item-padding-vertical) var(--instui-component-menu-item-padding-horizontal);
   color: var(--instui-component-menu-item-label-color);
@@ -1879,31 +1882,31 @@ function menuRules(p: string): string {
   cursor: pointer;
 }
 /* A disabled item (InstUI Menu.Item \`disabled\`): muted, non-interactive. */
-.${p}menu__item.-disabled {
+.${p}menu .item.-disabled {
   opacity: var(--instui-opacity-disabled);
   pointer-events: none;
   cursor: not-allowed;
 }
-.${p}menu__item:hover,
-.${p}menu__item.-highlighted {
+.${p}menu .item:hover,
+.${p}menu .item.-highlighted {
   background: var(--instui-component-menu-item-highlighted-background);
   color: var(--instui-component-menu-item-highlighted-label-color);
 }
-.${p}menu__item.-active,
-.${p}menu__item[aria-checked="true"] {
+.${p}menu .item.-active,
+.${p}menu .item[aria-checked="true"] {
   background: var(--instui-component-menu-item-active-background);
   color: var(--instui-component-menu-item-active-label-color);
 }
-.${p}menu__item.-active:hover,
-.${p}menu__item[aria-checked="true"]:hover {
+.${p}menu .item.-active:hover,
+.${p}menu .item[aria-checked="true"]:hover {
   background: var(--instui-component-menu-item-selected-highlighted-background);
 }
 /* Secondary line inside an item (a description or shortcut). */
-.${p}menu__item-info { color: var(--instui-component-menu-item-label-info-color); }
-.${p}menu__item:hover .${p}menu__item-info,
-.${p}menu__item.-highlighted .${p}menu__item-info { color: var(--instui-component-menu-item-highlighted-label-info-color); }
+.${p}menu .item-info { color: var(--instui-component-menu-item-label-info-color); }
+.${p}menu .item:hover .item-info,
+.${p}menu .item.-highlighted .item-info { color: var(--instui-component-menu-item-highlighted-label-info-color); }
 /* A labelled group of items. */
-.${p}menu__group {
+.${p}menu .group {
   padding: var(--instui-component-menu-group-padding-vertical) var(--instui-component-menu-group-padding-horizontal);
   background: var(--instui-component-menu-group-background);
   color: var(--instui-component-menu-group-color);
@@ -1911,7 +1914,7 @@ function menuRules(p: string): string {
   font-size: var(--instui-component-menu-group-font-size);
   font-weight: var(--instui-component-menu-group-font-weight);
 }
-.${p}menu__separator {
+.${p}menu .separator {
   height: var(--instui-component-menu-separator-height);
   background: var(--instui-component-menu-separator-background);
   margin: var(--instui-component-menu-separator-margin-vertical) var(--instui-component-menu-separator-margin-horizontal);
@@ -1952,33 +1955,33 @@ function modalRules(p: string): string {
   flex-direction: column;
   max-block-size: calc(100dvh - var(--instui-spacing-space-xl) * 2);
 }
-.${p}modal.-overflow-fit .${p}modal__body { overflow-y: auto; }
-.${p}modal__header {
+.${p}modal.-overflow-fit .body { overflow-y: auto; }
+.${p}modal .header {
   padding: var(--instui-component-modal-header-padding);
   background: var(--instui-component-modal-header-background-color);
   border-bottom: var(--instui-component-modal-header-border-width) solid var(--instui-component-modal-header-border-color);
 }
-.${p}modal__body { padding: var(--instui-component-modal-body-padding); }
-.${p}modal__footer {
+.${p}modal .body { padding: var(--instui-component-modal-body-padding); }
+.${p}modal .footer {
   padding: var(--instui-component-modal-footer-padding);
   background: var(--instui-component-modal-footer-background-color);
   border-top: var(--instui-component-modal-footer-border-width) solid var(--instui-component-modal-footer-border-color);
   border-radius: 0 0 var(--instui-component-modal-footer-border-radius) var(--instui-component-modal-footer-border-radius);
 }
-.${p}modal.-density-compact .${p}modal__header { padding: var(--instui-component-modal-header-padding-compact); }
-.${p}modal.-density-compact .${p}modal__body { padding: var(--instui-component-modal-body-padding-compact); }
-.${p}modal.-density-compact .${p}modal__footer { padding: var(--instui-component-modal-footer-padding-compact); }
+.${p}modal.-density-compact .header { padding: var(--instui-component-modal-header-padding-compact); }
+.${p}modal.-density-compact .body { padding: var(--instui-component-modal-body-padding-compact); }
+.${p}modal.-density-compact .footer { padding: var(--instui-component-modal-footer-padding-compact); }
 .${p}modal.-color-inverse {
   background: var(--instui-component-modal-inverse-background-color);
   color: var(--instui-component-modal-inverse-text-color);
   border-color: var(--instui-component-modal-inverse-border-color);
 }
-.${p}modal.-color-inverse .${p}modal__header {
+.${p}modal.-color-inverse .header {
   background: var(--instui-component-modal-header-inverse-background-color);
   border-bottom-color: var(--instui-component-modal-header-inverse-border-color);
 }
-.${p}modal.-color-inverse .${p}modal__body { background: var(--instui-component-modal-body-inverse-background-color); }
-.${p}modal.-color-inverse .${p}modal__footer {
+.${p}modal.-color-inverse .body { background: var(--instui-component-modal-body-inverse-background-color); }
+.${p}modal.-color-inverse .footer {
   background: var(--instui-component-modal-footer-inverse-background-color);
   border-top-color: var(--instui-component-modal-footer-inverse-border-color);
 }
@@ -1998,11 +2001,11 @@ function breadcrumbRules(p: string): string {
 }
 .${p}breadcrumb.-size-sm { gap: var(--instui-component-breadcrumb-gap-sm); font-size: var(--instui-component-link-font-size-sm); }
 .${p}breadcrumb.-size-lg { gap: var(--instui-component-breadcrumb-gap-lg); font-size: var(--instui-component-link-font-size-lg); }
-.${p}breadcrumb.-size-sm .${p}breadcrumb__item:not(:last-child)::after { margin-inline-start: var(--instui-component-breadcrumb-gap-sm); }
-.${p}breadcrumb.-size-lg .${p}breadcrumb__item:not(:last-child)::after { margin-inline-start: var(--instui-component-breadcrumb-gap-lg); }
+.${p}breadcrumb.-size-sm .item:not(:last-child)::after { margin-inline-start: var(--instui-component-breadcrumb-gap-sm); }
+.${p}breadcrumb.-size-lg .item:not(:last-child)::after { margin-inline-start: var(--instui-component-breadcrumb-gap-lg); }
 .${p}breadcrumb a { color: var(--instui-component-link-text-color); text-decoration: none; }
 .${p}breadcrumb a:hover { color: var(--instui-component-link-text-hover-color); text-decoration: underline; }
-.${p}breadcrumb__item:not(:last-child)::after {
+.${p}breadcrumb .item:not(:last-child)::after {
   content: "/";
   margin-inline-start: var(--instui-component-breadcrumb-gap-md);
   color: var(--instui-color-text-muted);
@@ -2032,18 +2035,18 @@ function billboardRules(p: string): string {
   padding: var(--instui-component-billboard-padding-large);
   margin: var(--instui-component-billboard-large-margin);
 }
-.${p}billboard__message {
+.${p}billboard .message {
   color: var(--instui-component-billboard-message-color);
   font-size: var(--instui-component-billboard-message-font-size-medium);
 }
-.${p}billboard.-size-sm .${p}billboard__message { font-size: var(--instui-component-billboard-message-font-size-small); }
-.${p}billboard.-size-lg .${p}billboard__message { font-size: var(--instui-component-billboard-message-font-size-large); }
+.${p}billboard.-size-sm .message { font-size: var(--instui-component-billboard-message-font-size-small); }
+.${p}billboard.-size-lg .message { font-size: var(--instui-component-billboard-message-font-size-large); }
 .${p}billboard.-clickable {
   cursor: pointer;
   border: var(--instui-component-billboard-button-border-width) var(--instui-component-billboard-button-border-style) transparent;
   border-radius: var(--instui-component-billboard-button-border-radius);
 }
-.${p}billboard.-clickable .${p}billboard__message { color: var(--instui-component-billboard-message-color-clickable); }
+.${p}billboard.-clickable .message { color: var(--instui-component-billboard-message-color-clickable); }
 .${p}billboard.-clickable:hover { border-style: var(--instui-component-billboard-button-hover-border-style); }
 .${p}billboard.-clickable:active {
   background: var(--instui-component-billboard-clickable-active-bg);
@@ -2063,8 +2066,8 @@ function ratingRules(p: string): string {
 }
 .${p}rating.-size-sm { font-size: var(--instui-component-rating-icon-small-icon-font-size); }
 .${p}rating.-size-lg { font-size: var(--instui-component-rating-icon-large-icon-font-size); }
-.${p}rating__star { color: var(--instui-component-rating-icon-icon-empty-color); opacity: 0.35; }
-.${p}rating__star.-filled { color: var(--instui-component-rating-icon-icon-filled-color); opacity: 1; }
+.${p}rating .star { color: var(--instui-component-rating-icon-icon-empty-color); opacity: 0.35; }
+.${p}rating .star.-filled { color: var(--instui-component-rating-icon-icon-filled-color); opacity: 1; }
 `;
 }
 
@@ -2164,7 +2167,7 @@ function paginationRules(p: string): string {
   gap: var(--instui-component-pagination-page-indicator-gap);
   font-family: var(--instui-font-family-base);
 }
-.${p}pagination__page {
+.${p}pagination .page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2175,8 +2178,8 @@ function paginationRules(p: string): string {
   text-decoration: none;
   cursor: pointer;
 }
-.${p}pagination__page:hover { background: var(--instui-color-background-muted); }
-.${p}pagination__page[aria-current] {
+.${p}pagination .page:hover { background: var(--instui-color-background-muted); }
+.${p}pagination .page[aria-current] {
   background: var(--instui-color-background-interactive-action-secondary-base);
   color: var(--instui-color-text-interactive-action-secondary-base);
 }
@@ -2253,7 +2256,7 @@ function fileDropRules(p: string): string {
 
 /**
  * Range rules: a styled `input[type="range"]` (track + handle, both engines) with hover/focus handle
- * states, and a `__value` bubble styled from the value tokens.
+ * states, and a `.range-value` bubble (a flat class, since it sits as a sibling) styled from the value tokens.
  */
 function rangeRules(p: string): string {
   const track = `
@@ -2298,19 +2301,19 @@ function rangeRules(p: string): string {
   background: var(--instui-component-range-input-handle-focus-background);
   box-shadow: 0 0 0 var(--instui-component-range-input-handle-focus-outline-width) var(--instui-component-range-input-handle-focus-outline-color);
 }
-.${p}range__value {
+.${p}range-value {
   padding: var(--instui-component-range-input-value-medium-padding);
   font-family: var(--instui-component-range-input-value-font-family);
   font-size: var(--instui-component-range-input-value-medium-font-size);
   font-weight: var(--instui-component-range-input-value-font-weight);
   line-height: var(--instui-component-range-input-value-medium-line-height);
 }
-.${p}range__value.-size-sm {
+.${p}range-value.-size-sm {
   padding: var(--instui-component-range-input-value-small-padding);
   font-size: var(--instui-component-range-input-value-small-font-size);
   line-height: var(--instui-component-range-input-value-small-line-height);
 }
-.${p}range__value.-size-lg {
+.${p}range-value.-size-lg {
   padding: var(--instui-component-range-input-value-large-padding);
   font-size: var(--instui-component-range-input-value-large-font-size);
   line-height: var(--instui-component-range-input-value-large-line-height);
@@ -2458,9 +2461,9 @@ export function avatarCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the tabs stylesheet: a `.<prefix>-tabs` container with `__list`, `__tab` (`-selected`,
- * `-disabled`), and `__panel` sub-elements. The `-variant-secondary` and `-overflow-scroll`
- * modifiers go on the container.
+ * Build the tabs stylesheet: a `.<prefix>-tabs` container scoping `.list`, `.tab` (`-selected`,
+ * `-disabled`), and `.panel` elements. The `-variant-secondary` and `-overflow-scroll` modifiers go
+ * on the container.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -2471,11 +2474,11 @@ export function avatarCss(options: ComponentOptions = {}): string {
  *
  * const css = tabsCss();
  * // <div class="instui-tabs">
- * //   <div class="instui-tabs__list" role="tablist">
- * //     <button class="instui-tabs__tab -selected" role="tab" aria-selected="true">First</button>
- * //     <button class="instui-tabs__tab" role="tab">Second</button>
+ * //   <div class="list" role="tablist">
+ * //     <button class="tab -selected" role="tab" aria-selected="true">First</button>
+ * //     <button class="tab" role="tab">Second</button>
  * //   </div>
- * //   <div class="instui-tabs__panel" role="tabpanel">…</div>
+ * //   <div class="panel" role="tabpanel">…</div>
  * // </div>
  * ```
  *
@@ -2487,7 +2490,7 @@ export function tabsCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the metric stylesheet: `.<prefix>-metric` with `__value` and `__label`.
+ * Build the metric stylesheet: `.<prefix>-metric` scoping `.value` and `.label`.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -2498,8 +2501,8 @@ export function tabsCss(options: ComponentOptions = {}): string {
  *
  * const css = metricCss();
  * // <div class="instui-metric">
- * //   <span class="instui-metric__value">1,024</span>
- * //   <span class="instui-metric__label">Students</span>
+ * //   <span class="value">1,024</span>
+ * //   <span class="label">Students</span>
  * // </div>
  * ```
  *
@@ -2511,7 +2514,7 @@ export function metricCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the byline stylesheet: `.<prefix>-byline` with `__title` and `__description`.
+ * Build the byline stylesheet: `.<prefix>-byline` scoping `.title` and `.description`.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -2522,8 +2525,8 @@ export function metricCss(options: ComponentOptions = {}): string {
  *
  * const css = bylineCss();
  * // <div class="instui-byline">
- * //   <span class="instui-byline__title">Ada Lovelace</span>
- * //   <span class="instui-byline__description">Mathematician</span>
+ * //   <span class="title">Ada Lovelace</span>
+ * //   <span class="description">Mathematician</span>
  * // </div>
  * ```
  *
@@ -2679,7 +2682,7 @@ export function spinnerCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the progress stylesheet: `.<prefix>-progress` + `__bar` with `--success`/`--danger`.
+ * Build the progress stylesheet: `.<prefix>-progress` scoping `.bar` (`-color-success`/`-color-danger`).
  *
  * @example
  * ```ts
@@ -2687,7 +2690,7 @@ export function spinnerCss(options: ComponentOptions = {}): string {
  *
  * const css = progressCss();
  * // <div class="instui-progress">
- * //   <div class="instui-progress__bar instui-progress__bar--success" style="width: 60%"></div>
+ * //   <div class="bar -color-success" style="width: 60%"></div>
  * // </div>
  * ```
  *
@@ -2699,7 +2702,7 @@ export function progressCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the menu stylesheet: `.<prefix>-menu` with `__item` and `__separator`.
+ * Build the menu stylesheet: `.<prefix>-menu` scoping `.item` and `.separator`.
  *
  * @example
  * ```ts
@@ -2707,8 +2710,8 @@ export function progressCss(options: ComponentOptions = {}): string {
  *
  * const css = menuCss();
  * // <ul class="instui-menu">
- * //   <li class="instui-menu__item">Edit</li>
- * //   <li class="instui-menu__separator"></li>
+ * //   <li class="item">Edit</li>
+ * //   <li class="separator"></li>
  * // </ul>
  * ```
  *
@@ -2720,7 +2723,7 @@ export function menuCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the modal stylesheet: `.<prefix>-modal` with `__header`, `__body`, `__footer`.
+ * Build the modal stylesheet: `.<prefix>-modal` scoping `.header`, `.body`, `.footer`.
  *
  * @example
  * ```ts
@@ -2728,9 +2731,9 @@ export function menuCss(options: ComponentOptions = {}): string {
  *
  * const css = modalCss();
  * // <div class="instui-modal">
- * //   <div class="instui-modal__header">Title</div>
- * //   <div class="instui-modal__body">…</div>
- * //   <div class="instui-modal__footer">…</div>
+ * //   <div class="header">Title</div>
+ * //   <div class="body">…</div>
+ * //   <div class="footer">…</div>
  * // </div>
  * ```
  *
@@ -2742,7 +2745,7 @@ export function modalCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the breadcrumb stylesheet: `.<prefix>-breadcrumb` with `__item` separators.
+ * Build the breadcrumb stylesheet: `.<prefix>-breadcrumb` scoping `.item` separators.
  *
  * @example
  * ```ts
@@ -2750,8 +2753,8 @@ export function modalCss(options: ComponentOptions = {}): string {
  *
  * const css = breadcrumbCss();
  * // <nav class="instui-breadcrumb">
- * //   <a class="instui-breadcrumb__item" href="/">Home</a>
- * //   <span class="instui-breadcrumb__item">Docs</span>
+ * //   <a class="item" href="/">Home</a>
+ * //   <span class="item">Docs</span>
  * // </nav>
  * ```
  *
@@ -2763,7 +2766,7 @@ export function breadcrumbCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the billboard stylesheet: `.<prefix>-billboard` with `__message`.
+ * Build the billboard stylesheet: `.<prefix>-billboard` scoping `.message`.
  *
  * @example
  * ```ts
@@ -2771,7 +2774,7 @@ export function breadcrumbCss(options: ComponentOptions = {}): string {
  *
  * const css = billboardCss();
  * // <div class="instui-billboard">
- * //   <p class="instui-billboard__message">Nothing here yet</p>
+ * //   <p class="message">Nothing here yet</p>
  * // </div>
  * ```
  *
@@ -2783,7 +2786,7 @@ export function billboardCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the rating stylesheet: `.<prefix>-rating` with `__star` (`--filled`).
+ * Build the rating stylesheet: `.<prefix>-rating` scoping `.star` (`-filled`).
  *
  * @example
  * ```ts
@@ -2791,8 +2794,8 @@ export function billboardCss(options: ComponentOptions = {}): string {
  *
  * const css = ratingCss();
  * // <div class="instui-rating">
- * //   <span class="instui-rating__star instui-rating__star--filled"></span>
- * //   <span class="instui-rating__star"></span>
+ * //   <span class="star -filled"></span>
+ * //   <span class="star"></span>
  * // </div>
  * ```
  *
@@ -2861,7 +2864,7 @@ export function progressCircleCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the pagination stylesheet: `.<prefix>-pagination` + `__page` (with `[aria-current]`).
+ * Build the pagination stylesheet: `.<prefix>-pagination` scoping `.page` (with `[aria-current]`).
  *
  * @example
  * ```ts
@@ -2869,8 +2872,8 @@ export function progressCircleCss(options: ComponentOptions = {}): string {
  *
  * const css = paginationCss();
  * // <nav class="instui-pagination">
- * //   <a class="instui-pagination__page" aria-current="page">1</a>
- * //   <a class="instui-pagination__page">2</a>
+ * //   <a class="page" aria-current="page">1</a>
+ * //   <a class="page">2</a>
  * // </nav>
  * ```
  *

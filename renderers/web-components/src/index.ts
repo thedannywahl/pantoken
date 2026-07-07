@@ -228,7 +228,7 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
     (host) => {
       const value = Math.max(0, Math.min(100, Number(host.getAttribute("value") ?? "0")));
       const variant = frag(host.getAttribute("variant"));
-      const bar = variant ? `instui-progress__bar -color-${variant}` : "instui-progress__bar";
+      const bar = variant ? `bar -color-${variant}` : "bar";
       return `<div class="instui-progress" role="progressbar" part="progress"><div class="${bar}" style="width:${String(value)}%"></div></div>`;
     },
     "block",
@@ -237,7 +237,7 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
   wrapper("instui-metric", metricCss(I), (host) => {
     const value = esc(host.getAttribute("value") ?? "");
     const label = esc(host.getAttribute("label") ?? "");
-    return `<div class="instui-metric" part="metric"><span class="instui-metric__value">${value}</span><span class="instui-metric__label">${label}</span></div>`;
+    return `<div class="instui-metric" part="metric"><span class="value">${value}</span><span class="label">${label}</span></div>`;
   });
 
   wrapper("instui-rating", ratingCss(I), (host) => {
@@ -245,7 +245,7 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
     const max = Math.max(1, Number(host.getAttribute("max") ?? "5"));
     const stars = Array.from({ length: max }, (_, i) => {
       const filled = i < value ? " -filled" : "";
-      return `<span class="instui-rating__star${filled}">★</span>`;
+      return `<span class="star${filled}">★</span>`;
     }).join("");
     return `<span class="instui-rating" part="rating">${stars}</span>`;
   });

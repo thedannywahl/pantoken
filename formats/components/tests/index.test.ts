@@ -150,7 +150,7 @@ test("badge supports standalone, notification, pulse, and placement", () => {
   // Animation identifiers use a constant internal namespace, decoupled from the class prefix.
   expect(css).toContain("@keyframes pantoken-badge-pulse");
   // Placement over a positioned wrapper.
-  expect(css).toContain(".instui-badge__wrapper");
+  expect(css).toContain(".instui-badge-wrapper");
   for (const place of [
     "top-end",
     "top-start",
@@ -192,10 +192,10 @@ test("spinner has sizes and an inverse track", () => {
 test("avatar has color/size modifiers, tabs/metric/byline use sub-elements, table styles cells", () => {
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-color-blue");
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-size-lg");
-  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs__tab.-selected");
-  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs__tab.-disabled");
-  expect(metricCss({ prefix: "instui" })).toContain(".instui-metric__value");
-  expect(bylineCss({ prefix: "instui" })).toContain(".instui-byline__title");
+  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs .tab.-selected");
+  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs .tab.-disabled");
+  expect(metricCss({ prefix: "instui" })).toContain(".instui-metric .value");
+  expect(bylineCss({ prefix: "instui" })).toContain(".instui-byline .title");
   expect(tableCss({ prefix: "instui" })).toContain(".instui-table th");
 });
 
@@ -205,10 +205,10 @@ test("table styles row-header cells and a row hover; menu has active/group parts
   expect(table).toContain("var(--instui-component-table-row-header-background)");
   expect(table).toContain("var(--instui-component-table-row-hover-border-color)");
   const menu = menuCss({ prefix: "instui" });
-  expect(menu).toContain(".instui-menu__item.-active");
+  expect(menu).toContain(".instui-menu .item.-active");
   expect(menu).toContain("var(--instui-component-menu-item-active-background)");
-  expect(menu).toContain(".instui-menu__group");
-  expect(menu).toContain(".instui-menu__item-info");
+  expect(menu).toContain(".instui-menu .group");
+  expect(menu).toContain(".instui-menu .item-info");
 });
 
 test("modal has sizes, a compact density, and an inverse scheme", () => {
@@ -233,9 +233,7 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
 });
 
 test("tabs have a secondary variant; link has sizes, on-color, inline and unstyled", () => {
-  expect(tabsCss({ prefix: "instui" })).toContain(
-    ".instui-tabs.-variant-secondary .instui-tabs__tab",
-  );
+  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs.-variant-secondary .tab");
   expect(tabsCss({ prefix: "instui" })).toContain(
     "var(--instui-component-tabs-tab-secondary-selected-background)",
   );
@@ -265,7 +263,7 @@ test("billboard has sizes and a clickable variant; range has handle states and a
   const range = rangeCss({ prefix: "instui" });
   expect(range).toContain(":hover::-webkit-slider-thumb");
   expect(range).toContain("var(--instui-component-range-input-handle-focus-outline-color)");
-  expect(range).toContain(".instui-range__value");
+  expect(range).toContain(".instui-range-value");
 });
 
 test("componentsCss bundles every component; proseCss scopes to a content root", () => {
@@ -491,7 +489,7 @@ test("InstUI prop-coverage gaps: text-transform, list unstyled/inline, table fix
   expect(tableCss({ prefix: "instui" })).toContain(
     ".instui-table.-layout-fixed { table-layout: fixed; }",
   );
-  expect(menuCss({ prefix: "instui" })).toContain(".instui-menu__item.-disabled");
+  expect(menuCss({ prefix: "instui" })).toContain(".instui-menu .item.-disabled");
   expect(modalCss({ prefix: "instui" })).toContain(".instui-modal.-overflow-fit");
 });
 
@@ -546,11 +544,13 @@ test("text exposes sizes, weights, colours, and content variants (dash-prefixed 
   expect(css).toContain(".instui-text.-variant-legend");
 });
 
-test("the whole library uses dash-prefixed compound modifiers, never BEM `--`", () => {
+test("the whole library uses RSCSS: dash-prefixed modifiers and scoped elements, never BEM `--`/`__`", () => {
+  const css = `${componentsCss({ prefix: "instui" })}\n${proseCss()}`;
   // No `.instui-<comp>--<mod>` anywhere; var(--instui-…) token refs are unaffected by this pattern.
-  expect(`${componentsCss({ prefix: "instui" })}\n${proseCss()}`).not.toMatch(
-    /\.instui-[a-z0-9_-]+--[a-z]/,
-  );
+  expect(css).not.toMatch(/\.instui-[a-z0-9_-]+--[a-z]/);
+  // No BEM `__` element classes: sub-elements are scoped short classes (`.instui-menu .item`) or, for
+  // non-nested parts, flat prefixed classes (`.instui-badge-wrapper`).
+  expect(css).not.toMatch(/__/);
 });
 
 test("mask overlays from the mask token; screen-reader-content is visually hidden", () => {
@@ -606,12 +606,12 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   const css = progressCss({ prefix: "instui" });
   expect(css).toContain(".instui-progress.-size-sm");
   expect(css).toContain(".instui-progress.-size-lg");
-  expect(css).toContain(".instui-progress__bar.-color-info");
-  expect(css).toContain(".instui-progress__bar.-color-warning");
-  expect(css).toContain(".instui-progress__bar.-color-alert");
+  expect(css).toContain(".instui-progress .bar.-color-info");
+  expect(css).toContain(".instui-progress .bar.-color-warning");
+  expect(css).toContain(".instui-progress .bar.-color-alert");
   expect(css).toContain(".instui-progress.-color-inverse");
   expect(css).toContain("var(--instui-component-progress-bar-meter-color-brand-inverse)");
-  expect(css).toContain(".instui-progress__value");
+  expect(css).toContain(".instui-progress-value");
 });
 
 test("prose styles GFM strikethrough and task lists", () => {

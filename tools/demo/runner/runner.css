@@ -45,8 +45,8 @@ body {
 .runner__theme-menu[hidden] {
   display: none;
 }
-/* .instui-menu__item is authored for non-interactive elements; reset it as a full-width button. */
-.runner__theme-menu .instui-menu__item {
+/* the menu .item is authored for non-interactive elements; reset it as a full-width button. */
+.runner__theme-menu .item {
   display: block;
   inline-size: 100%;
   font: inherit;

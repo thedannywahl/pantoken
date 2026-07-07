@@ -302,7 +302,7 @@ async function main(): Promise<void> {
     themeLabel.textContent = themes[0].label;
     for (const theme of themes) {
       const item = document.createElement("button");
-      item.className = "instui-menu__item";
+      item.className = "item";
       item.type = "button";
       item.setAttribute("role", "menuitem");
       item.textContent = theme.label;
