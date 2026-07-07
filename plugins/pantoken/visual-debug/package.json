@@ -1,0 +1,38 @@
+{
+  "name": "@pantoken/plugin-visual-debug",
+  "version": "0.0.0",
+  "description": "pantoken plugin: the CSS for InstUI's withVisualDebug prop — a `-with-visual-debug` modifier that outlines an element and its children for layout debugging.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "visualDebug",
+    "kind": "namespace"
+  }
+}

@@ -275,7 +275,8 @@ inherits the pill's color.
 </div>
 
 Sizes are `-size-sm` and `-size-lg`. The `-inline` variant is dismissible — it adds a trailing close glyph, so
-use it on a `<button>` (or wire a click handler) to remove the tag.
+use it on a `<button>` (or wire a click handler) to remove the tag. Add `-readonly` for a static tag
+(no hover affordance, and the dismiss glyph is dropped).
 
 ```html
 <span class="instui-tag">design</span> <button class="instui-tag -inline">dismissible</button>
@@ -287,12 +288,20 @@ use it on a `<button>` (or wire a click handler) to remove the tag.
   <span class="instui-avatar">DW</span>
   <span class="instui-avatar -color-blue">AB</span>
   <span class="instui-avatar -color-green">CD</span>
-  <span class="instui-avatar -color-orange -size-lg">EF</span>
-  <span class="instui-avatar -shape-rectangle">GH</span>
+  <span class="instui-avatar -color-ai -size-lg">EF</span>
+  <span class="instui-avatar -shape-rectangle -show-border">GH</span>
 </div>
+
+Grey by default. Colors are the InstUI avatar palette — `-color-ash`/`-blue`/`-green`/`-orange`/`-red`/`-grey`,
+plus `-color-ai` (the gradient). InstUI documents these as `accent1`–`accent6`, so
+`-color-accent1`…`-color-accent6` also work (deprecated aliases: accent1→blue, 2→green, 3→red,
+4→orange, 5→ash, 6→grey). Sizes span `-size-2xs` through `-size-2xl`. Add `-shape-rectangle`,
+`-show-border`, `-has-inverse-color` (light text for a dark backdrop), or a `-icon-<name>` glyph. For a
+photo, nest an `<img>` — it fills the chip and covers the initials.
 
 ```html
 <span class="instui-avatar -color-blue">AB</span>
+<span class="instui-avatar -show-border"><img src="/avatar.jpg" alt="" /></span>
 ```
 
 ## Tabs
@@ -462,17 +471,6 @@ and active states.
 
 Sizes are `-size-sm` and `-size-lg`.
 
-## Card
-
-<div class="instui-card" style="max-width:360px;">
-  <h3 class="instui-heading -variant-title-card-section">Card</h3>
-  <p class="instui-text">A raised surface to sit content on.</p>
-</div>
-
-`.instui-card` is InstUI's View as a card — the primary elevated surface, a large radius, and the
-lowest (`resting`) shadow. Add `-color-secondary` for the secondary surface. The shadow comes from
-`@pantoken/plugin-elevation`.
-
 ## Context view
 
 <div class="instui-context-view" style="max-width:320px;">
@@ -597,8 +595,12 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view instui-bg-muted instui-p-sm instui-mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is a neutral block box (`display: block; box-sizing: border-box`). It's the
-base you layer spacing and color onto.
+**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
+carries key-value modifiers for its own visual props so you don't have to reach for utilities:
+`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+`-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*`. Free-value props
+(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
 
 **Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
 margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a

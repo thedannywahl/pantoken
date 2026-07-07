@@ -10,7 +10,6 @@ import {
   breadcrumbCss,
   buttonCss,
   bylineCss,
-  cardCss,
   checkboxCss,
   closeButtonCss,
   colorUtilitiesCss,
@@ -79,9 +78,12 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
   // Size scale is emitted with both short and long spellings.
   expect(css).toContain(".instui-button.-size-sm");
   expect(css).toContain(".instui-button.-size-small");
-  // Deviations from InstUI (alert variant→color) keep a deprecated InstUI-semantic shim.
+  // Deviations from InstUI keep a deprecated InstUI-semantic shim: alert variant→color, and the
+  // avatar accent1–6 names (InstUI-documented) aliasing our token-named colours.
   expect(css).toContain(".instui-alert.-variant-info");
   expect(css).toContain(".instui-alert.-variant-error");
+  expect(css).toContain(".instui-avatar.-color-accent1");
+  expect(css).toContain(".instui-avatar.-color-accent6");
   expect(css).toContain("@deprecated");
   // Old bare shorthands are gone as canonical.
   expect(css).not.toContain(".instui-button.-secondary {");
@@ -288,7 +290,6 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "billboard",
     "rating",
     "toggle-group",
-    "card",
     "context-view",
     "progress-circle",
     "pagination",
@@ -303,19 +304,10 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "close-button",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(35);
+  expect(components).toHaveLength(34);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
-});
-
-test("card is a raised View surface from the tokens", () => {
-  const css = cardCss({ prefix: "instui" });
-  expect(css).toContain(".instui-card");
-  expect(css).toContain("var(--instui-component-view-background-primary)");
-  expect(css).toContain("var(--instui-border-radius-lg)");
-  expect(css).toContain("var(--instui-elevation-resting)");
-  expect(css).toContain(".instui-card.-color-secondary");
 });
 
 test("button gains icon, condensed, and toggle modifiers", () => {

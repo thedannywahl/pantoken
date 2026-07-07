@@ -98,13 +98,15 @@ For design tools.
 
 Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
 
-| Package                                                                               | What it adds                                                        |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| [`@pantoken/plugin-focus-outline`](/api/plugins/pantoken/focus-outline/src/)          | A focus-ring token set and rules.                                   |
-| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                      |
-| [`@pantoken/plugin-font-families`](/api/plugins/pantoken/font-families/src/)          | The Instructure fonts as `@font-face` rules and font-family tokens. |
-| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens.     |
-| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.               |
+| Package                                                                               | What it adds                                                                  |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| [`@pantoken/plugin-focus-outline`](/api/plugins/pantoken/focus-outline/src/)          | A focus-ring token set and rules, with focus-color/position/within modifiers. |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as tokens + `.instui-stack-*` classes.                   |
+| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.                            |
+| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                                |
+| [`@pantoken/plugin-font-families`](/api/plugins/pantoken/font-families/src/)          | The Instructure fonts as `@font-face` rules and font-family tokens.           |
+| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens.               |
+| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.                         |
 
 ## Tools
 

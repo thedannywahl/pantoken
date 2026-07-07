@@ -131,6 +131,24 @@ export function focusOutline(options: FocusOutlineOptions = {}): PantokenPlugin 
         name: "--instui-focus-outline-transition",
         value: `outline-color ${transitionColor}, outline-offset ${transitionOffset}`,
       },
+      // The `focusColor` palette + the `focusPosition="inset"` offset, resolved so the variant rules
+      // below stand alone in the css-hook output too.
+      {
+        name: "--instui-focus-outline-color-success",
+        value: resolve("var(--instui-component-shared-tokens-focus-outline-success-color)"),
+      },
+      {
+        name: "--instui-focus-outline-color-danger",
+        value: resolve("var(--instui-component-shared-tokens-focus-outline-danger-color)"),
+      },
+      {
+        name: "--instui-focus-outline-color-inverse",
+        value: resolve("var(--instui-component-shared-tokens-focus-outline-on-color)"),
+      },
+      {
+        name: "--instui-focus-outline-inset",
+        value: resolve("var(--instui-component-shared-tokens-focus-outline-inset)"),
+      },
     ];
   }
 
@@ -150,6 +168,24 @@ export function focusOutline(options: FocusOutlineOptions = {}): PantokenPlugin 
     `  outline-offset: var(--instui-focus-outline-offset);`,
     `  border-radius: var(--instui-focus-outline-radius);`,
     `}`,
+    ``,
+    // focusColor: recolour the ring (default is info). Dash-prefixed modifiers, zero-specificity.
+    `:where(.-focus-color-success):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-success); }`,
+    `:where(.-focus-color-danger):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-danger); }`,
+    `:where(.-focus-color-inverse):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-inverse); }`,
+    ``,
+    // focusPosition: draw the ring inside the element's edge instead of outside.
+    `:where(.-focus-position-inset):where(:focus-visible) { outline-offset: var(--instui-focus-outline-inset); }`,
+    ``,
+    // focusWithin: reveal the ring when a descendant is focused (not just the element itself).
+    `:where(.-focus-within):where(:focus-within) {`,
+    `  outline-color: var(--instui-focus-outline-color);`,
+    `  outline-offset: var(--instui-focus-outline-offset);`,
+    `  border-radius: var(--instui-focus-outline-radius);`,
+    `}`,
+    ``,
+    // shouldAnimateFocus={false}: the ring snaps in with no transition (animation is on by default).
+    `:where(.-without-focus-animation) { transition: none; }`,
   ].join("\n");
 
   return definePlugin({

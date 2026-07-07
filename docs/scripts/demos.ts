@@ -57,11 +57,21 @@ const { elevation } =
   require("@pantoken/plugin-elevation") as typeof import("@pantoken/plugin-elevation");
 const { transition } =
   require("@pantoken/plugin-transition") as typeof import("@pantoken/plugin-transition");
+const { stacking } =
+  require("@pantoken/plugin-stacking") as typeof import("@pantoken/plugin-stacking");
+const { visualDebug } =
+  require("@pantoken/plugin-visual-debug") as typeof import("@pantoken/plugin-visual-debug");
 for (const theme of Object.keys(themes)) {
   writeFileSync(
     join(assets, `tokens-${theme}.css`),
     toCss(byTheme(theme as keyof typeof themes), {
-      plugins: [focusOutline({ theme: theme as keyof typeof themes }), elevation(), transition()],
+      plugins: [
+        focusOutline({ theme: theme as keyof typeof themes }),
+        elevation(),
+        transition(),
+        stacking(),
+        visualDebug(),
+      ],
     }),
   );
 }
@@ -71,15 +81,22 @@ for (const theme of Object.keys(themes)) {
 writeFileSync(join(assets, "focus-outline.css"), toCss([], { plugins: [focusOutline()] }));
 writeFileSync(join(assets, "elevation.css"), toCss([], { plugins: [elevation()] }));
 writeFileSync(join(assets, "transition.css"), toCss([], { plugins: [transition()] }));
+writeFileSync(join(assets, "stacking.css"), toCss([], { plugins: [stacking()] }));
+writeFileSync(join(assets, "visual-debug.css"), toCss([], { plugins: [visualDebug()] }));
 
 // Docs-only demo tweaks — NOT shipped in @pantoken/components. Injected last into the runner result
-// (after components.css) so it overrides. Here: dark-mode cards use the secondary View surface. The
-// nested light-dark() keeps light on primary and picks secondary only in dark (each inner var is
-// itself a light-dark() that resolves to the current scheme).
+// (after components.css) so it overrides. `.instui-card` is the demo wrapper only — a View composed
+// with a surface, radius, and the resting elevation (it's not an InstUI component, so it doesn't ship
+// in the package). Dark mode uses the secondary surface via a nested light-dark().
 writeFileSync(
   join(assets, "demo-overrides.css"),
   `/* Docs-only demo overrides (not part of @pantoken/components). */\n` +
     `.instui-card {\n` +
+    `  display: block;\n` +
+    `  padding: var(--instui-spacing-space-md);\n` +
+    `  color: var(--instui-color-text-base);\n` +
+    `  border-radius: var(--instui-border-radius-lg);\n` +
+    `  box-shadow: var(--instui-elevation-resting);\n` +
     `  background: light-dark(\n` +
     `    var(--instui-component-view-background-primary),\n` +
     `    var(--instui-component-view-background-secondary)\n` +

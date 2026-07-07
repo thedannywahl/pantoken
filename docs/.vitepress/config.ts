@@ -124,6 +124,8 @@ export default defineConfig({
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/elevation.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/transition.css` }],
+    ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
+    ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],
   ],
   locales: localesConfig,
   cleanUrls: true,

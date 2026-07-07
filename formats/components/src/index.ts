@@ -799,16 +799,28 @@ function tagRules(p: string): string {
   mask: ${CLOSE_ICON};
 }
 .${p}tag.-inline:hover::after { background: var(--instui-component-tag-inline-icon-hover-color); }
+/* readOnly (InstUI): a static tag — no hover affordance, and the dismiss glyph is dropped. */
+.${p}tag.-readonly {
+  cursor: default;
+  background: var(--instui-component-tag-default-background);
+}
+.${p}tag.-readonly.-inline::after { display: none; }
 `;
 }
 
-/** Avatar rules: a circular initials chip (grey by default) with color and size modifiers. */
+/**
+ * Avatar rules: a circular chip. By default (InstUI's `showBorder="auto"`) it's the base surface with
+ * a subtle border and coloured initials — `-color-<name>` recolours the initials/border
+ * (ash/blue/green/grey/orange/red, default blue/accent1). `-has-inverse-color` flips to a solid fill of
+ * the colour with on-colour (white) initials. Sizes span `2xs`–`2xl`; plus `-shape-rectangle`,
+ * `-show-border`, a `-icon-<name>` glyph (shared painter), and an `<img>` child for a photo.
+ */
 function avatarRules(p: string): string {
+  // Default mode: the colour tints the initials (transparent surface). Inverse mode: the colour fills
+  // the surface and the initials go on-colour (that rule is more specific, so it wins when combined).
   const color = (name: string): string =>
-    `.${p}avatar.-color-${name} {
-  background: var(--instui-component-avatar-${name}-background-color);
-  color: var(--instui-component-avatar-${name}-text-color);
-}`;
+    `.${p}avatar.-color-${name} { color: var(--instui-component-avatar-${name}-text-color); }
+.${p}avatar.-color-${name}.-has-inverse-color { background: var(--instui-component-avatar-${name}-background-color); }`;
   return `
 .${p}avatar {
   display: inline-flex;
@@ -818,8 +830,9 @@ function avatarRules(p: string): string {
   height: var(--instui-component-avatar-size-md);
   border-radius: 50%;
   overflow: hidden;
-  background: var(--instui-component-avatar-grey-background-color);
-  color: var(--instui-component-avatar-grey-text-color);
+  background: var(--instui-component-avatar-background-color);
+  color: var(--instui-component-avatar-blue-text-color);
+  border: var(--instui-component-avatar-border-width-sm) solid var(--instui-component-avatar-border-color);
   font-family: var(--instui-component-avatar-font-family);
   font-size: var(--instui-component-avatar-font-size-md);
   font-weight: var(--instui-component-avatar-font-weight);
@@ -830,15 +843,63 @@ function avatarRules(p: string): string {
   height: var(--instui-component-avatar-size-sm);
   font-size: var(--instui-component-avatar-font-size-sm);
 }
+.${p}avatar.-size-2xs {
+  width: var(--instui-component-avatar-size2xs);
+  height: var(--instui-component-avatar-size2xs);
+  font-size: var(--instui-component-avatar-font-size2xs);
+}
+.${p}avatar.-size-xs {
+  width: var(--instui-component-avatar-size-xs);
+  height: var(--instui-component-avatar-size-xs);
+  font-size: var(--instui-component-avatar-font-size-xs);
+}
 .${p}avatar.-size-lg {
   width: var(--instui-component-avatar-size-lg);
   height: var(--instui-component-avatar-size-lg);
   font-size: var(--instui-component-avatar-font-size-lg);
 }
+.${p}avatar.-size-xl {
+  width: var(--instui-component-avatar-size-xl);
+  height: var(--instui-component-avatar-size-xl);
+  font-size: var(--instui-component-avatar-font-size-xl);
+}
+.${p}avatar.-size-2xl {
+  width: var(--instui-component-avatar-size2xl);
+  height: var(--instui-component-avatar-size2xl);
+  font-size: var(--instui-component-avatar-font-size2xl);
+}
+${color("ash")}
 ${color("blue")}
 ${color("green")}
-${color("red")}
+${color("grey")}
 ${color("orange")}
+${color("red")}
+/* ai: always the violet→sea gradient fill with on-colour text (no border). */
+.${p}avatar.-color-ai {
+  background: linear-gradient(to bottom, var(--instui-component-avatar-ai-top-gradient-color), var(--instui-component-avatar-ai-bottom-gradient-color));
+  color: var(--instui-component-avatar-text-on-color);
+  border-color: transparent;
+}
+/* hasInverseColor: solid fill (default the accent1/blue surface) + on-colour initials, no ring. A
+   \`-color-*\` companion overrides the fill per colour (that rule is more specific). */
+.${p}avatar.-has-inverse-color {
+  background: var(--instui-component-avatar-blue-background-color);
+  color: var(--instui-component-avatar-text-on-color);
+  border-color: transparent;
+}
+/* showBorder="always": force the ring back on, even over an inverse fill or a photo. */
+.${p}avatar.-show-border {
+  border-width: var(--instui-component-avatar-border-width-md);
+  border-style: solid;
+  border-color: var(--instui-component-avatar-border-color);
+}
+/* A photo: an <img> child fills the chip and covers the initials (image takes priority). */
+.${p}avatar > img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
 `;
 }
 
@@ -1082,10 +1143,12 @@ function iconRules(p: string): string {
  * import { iconGlyphsCss } from "@pantoken/components";
  * import { icons } from "@pantoken/icons";
  *
- * const css = iconGlyphsCss(icons.map((i) => i.name)); // .instui-icon-megaphone { … }
+ * const css = iconGlyphsCss(icons.map((i) => i.name)); // .-icon-megaphone { --pantoken-glyph: … }
  * ```
  *
- * @demo self:icon
+ * This is the glyph-token half of the icon system (the `.-icon-<name>` modifiers, shipped as
+ * `icons.css`); {@link iconCss} is the painter half (the shared `::before`). They share the `icon`
+ * demo. See {@link iconCss}.
  */
 export function iconGlyphsCss(names: readonly string[], options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
@@ -1236,8 +1299,11 @@ export function tokenUtilitiesCss(
 }
 
 /**
- * Build the View primitive: `.<prefix>-view`, a neutral block box (InstUI's `View`). Compose the
- * spacing and colour utilities onto it, or onto any element.
+ * Build the View primitive: `.<prefix>-view`, InstUI's `View`. Beyond the neutral box, it carries
+ * key-value modifiers for View's own visual props — `-background-*`, `-border-radius-*`,
+ * `-border-width-*`, `-border-color-*`, `-shadow-*`, `-display-*`, `-position-*`, `-overflow-x-*`,
+ * `-overflow-y-*`, `-cursor-*` — so it has the same modifier devex as the other components. Free-value
+ * props (width/height/inset) stay inline styles; the spacing utilities cover `margin`/`padding`.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -1247,7 +1313,78 @@ export function tokenUtilitiesCss(
 export function viewCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   const p = ns(prefix);
-  return `/* InstUI View primitive (@pantoken/components) — prefix: ${prefix} */\n.${p}view { display: block; box-sizing: border-box; }\n`;
+  const rule = (mod: string, decls: string): string => `.${p}view.-${mod} { ${decls} }`;
+  const rules: string[] = [`.${p}view { display: block; box-sizing: border-box; }`];
+  // background — InstUI View's surfaces (its own component-view-background-* tokens).
+  for (const bg of [
+    "primary",
+    "secondary",
+    "primary-inverse",
+    "brand",
+    "info",
+    "alert",
+    "success",
+    "danger",
+    "warning",
+  ]) {
+    rules.push(
+      rule(`background-${bg}`, `background: var(--instui-component-view-background-${bg});`),
+    );
+  }
+  rules.push(rule("background-transparent", "background: transparent;"));
+  // border-radius — InstUI View's named radii (circle/pill are shape values).
+  for (const [name, value] of [
+    ["small", "var(--instui-border-radius-sm)"],
+    ["medium", "var(--instui-border-radius-md)"],
+    ["large", "var(--instui-border-radius-lg)"],
+    ["circle", "50%"],
+    ["pill", "var(--instui-border-radius-full)"],
+  ] as const) {
+    rules.push(rule(`border-radius-${name}`, `border-radius: ${value};`));
+  }
+  // border-width — sets a solid border in the base stroke colour (override with -border-color-*).
+  for (const [name, size] of [
+    ["small", "sm"],
+    ["medium", "md"],
+    ["large", "lg"],
+  ] as const) {
+    rules.push(
+      rule(
+        `border-width-${name}`,
+        `border-style: solid; border-width: var(--instui-border-width-${size}); border-color: var(--instui-color-stroke-base);`,
+      ),
+    );
+  }
+  // border-color — semantic stroke colours (danger maps to the error stroke token).
+  for (const [name, token] of [
+    ["primary", "base"],
+    ["brand", "brand"],
+    ["success", "success"],
+    ["info", "info"],
+    ["warning", "warning"],
+    ["danger", "error"],
+  ] as const) {
+    rules.push(rule(`border-color-${name}`, `border-color: var(--instui-color-stroke-${token});`));
+  }
+  // shadow — the named elevations (from @pantoken/plugin-elevation).
+  for (const s of ["resting", "above", "topmost"]) {
+    rules.push(rule(`shadow-${s}`, `box-shadow: var(--instui-elevation-${s});`));
+  }
+  // display / position / overflow / cursor — plain CSS enums.
+  for (const d of ["block", "inline-block", "inline", "flex", "inline-flex", "none"]) {
+    rules.push(rule(`display-${d}`, `display: ${d};`));
+  }
+  for (const pos of ["static", "relative", "absolute", "fixed", "sticky"]) {
+    rules.push(rule(`position-${pos}`, `position: ${pos};`));
+  }
+  for (const o of ["visible", "hidden", "auto", "scroll", "clip"]) {
+    rules.push(rule(`overflow-x-${o}`, `overflow-x: ${o};`));
+    rules.push(rule(`overflow-y-${o}`, `overflow-y: ${o};`));
+  }
+  for (const c of ["auto", "default", "pointer", "not-allowed", "text", "move", "grab", "wait"]) {
+    rules.push(rule(`cursor-${c}`, `cursor: ${c};`));
+  }
+  return `/* InstUI View primitive (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n")}\n`;
 }
 
 /**
@@ -1257,6 +1394,8 @@ export function viewCss(options: ComponentOptions = {}): string {
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
+ *
+ * @demo self:layout
  */
 export function layoutUtilitiesCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
@@ -1892,25 +2031,6 @@ function toggleGroupRules(p: string): string {
 .${p}toggle-group > .${p}button + .${p}button {
   border-inline-start: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);
 }
-`;
-}
-
-/**
- * Card rules: InstUI's View as a raised surface — the primary elevated background, a large radius, and
- * the lowest (`resting`) elevation shadow. A plain container to sit content on. `--secondary` swaps to
- * the secondary surface; the shadow comes from `@pantoken/plugin-elevation` (a soft dependency).
- */
-function cardRules(p: string): string {
-  return `
-.${p}card {
-  display: block;
-  padding: var(--instui-spacing-space-md);
-  background: var(--instui-component-view-background-primary);
-  color: var(--instui-color-text-base);
-  border-radius: var(--instui-border-radius-lg);
-  box-shadow: var(--instui-elevation-resting);
-}
-.${p}card.-color-secondary { background: var(--instui-component-view-background-secondary); }
 `;
 }
 
@@ -2645,24 +2765,6 @@ export function toggleGroupCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the card stylesheet: `.<prefix>-card` (a raised View surface) with a `--secondary` variant.
- *
- * @example
- * ```ts
- * import { cardCss } from "@pantoken/components";
- *
- * const css = cardCss();
- * // <div class="instui-card">Card content</div>
- * ```
- *
- * @demo self:card
- */
-export function cardCss(options: ComponentOptions = {}): string {
-  const prefix = options.prefix || "";
-  return wrap("card", prefix, cardRules(ns(prefix)));
-}
-
-/**
  * Build the context-view stylesheet: `.<prefix>-context-view` (callout with a caret).
  *
  * @example
@@ -3108,10 +3210,19 @@ function withSizeAliases(css: string): string {
  */
 function withDeprecatedAliases(css: string, p: string): string {
   const pairs: [canonical: string, deprecated: string][] = [
+    // Alert: InstUI's prop is `variant` (value `error`), which we normalize to `color`/`danger`.
     [`${p}alert.-color-info`, `${p}alert.-variant-info`],
     [`${p}alert.-color-success`, `${p}alert.-variant-success`],
     [`${p}alert.-color-warning`, `${p}alert.-variant-warning`],
     [`${p}alert.-color-danger`, `${p}alert.-variant-error`],
+    // Avatar: InstUI documents the palette as accent1–accent6; we name them (blue…grey) after the
+    // tokens. accent1 blue, accent2 green, accent3 red, accent4 orange, accent5 ash, accent6 grey.
+    [`${p}avatar.-color-blue`, `${p}avatar.-color-accent1`],
+    [`${p}avatar.-color-green`, `${p}avatar.-color-accent2`],
+    [`${p}avatar.-color-red`, `${p}avatar.-color-accent3`],
+    [`${p}avatar.-color-orange`, `${p}avatar.-color-accent4`],
+    [`${p}avatar.-color-ash`, `${p}avatar.-color-accent5`],
+    [`${p}avatar.-color-grey`, `${p}avatar.-color-accent6`],
   ];
   const extra: string[] = [];
   for (const [canonical, deprecated] of pairs) {
@@ -3159,7 +3270,6 @@ export function componentsCss(options: ComponentOptions = {}): string {
     billboardRules(ns(prefix)),
     ratingRules(ns(prefix)),
     toggleGroupRules(ns(prefix)),
-    cardRules(ns(prefix)),
     contextViewRules(ns(prefix)),
     progressCircleRules(ns(prefix)),
     paginationRules(ns(prefix)),

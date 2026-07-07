@@ -1,23 +1,36 @@
 <div class="instui-card">
   <h2 class="instui-heading -level-h3">View</h2>
   <p class="instui-text">
-    <code>.instui-view</code> is a neutral block box (InstUI's <code>View</code>) —
-    <code>display: block</code> and <code>box-sizing: border-box</code>, nothing else. Compose the
-    spacing, color, and token utilities onto it, or onto any element.
+    <code>.instui-view</code> is InstUI's <code>View</code>. Beyond the neutral box it carries
+    key-value modifiers for its own visual props, so it has the same devex as the other components —
+    no need to reach for utilities for the basics.
   </p>
+
+  <h3 class="instui-heading -level-h5 instui-mt-lg">Native modifiers</h3>
   <div
-    class="instui-view instui-bg-muted instui-p-md"
-    style="border-radius: var(--instui-border-radius-md)"
+    class="instui-view instui-p-md instui-mb-sm -background-primary -border-radius-large -shadow-resting"
   >
-    <span class="instui-text">A plain View with <code>bg-muted</code> and <code>p-md</code>.</span>
+    <span class="instui-text">-background-primary -border-radius-large -shadow-resting</span>
   </div>
-  <p class="instui-text -color-secondary instui-mt-sm">
-    Composed onto a View: <code>instui-bg-accent-blue</code> + <code>instui-fg-on-color</code> +
-    <code>instui-p-md</code> + <code>instui-mt-sm</code>.
+  <div
+    class="instui-view instui-p-md instui-mb-sm -border-width-small -border-color-brand -border-radius-medium"
+  >
+    <span class="instui-text">-border-width-small -border-color-brand -border-radius-medium</span>
+  </div>
+  <div
+    class="instui-view instui-p-md -background-brand -border-radius-medium instui-fg-on-color"
+    style="color: var(--instui-color-text-on-color)"
+  >
+    <span class="instui-text instui-fg-on-color">-background-brand</span>
+  </div>
+
+  <h3 class="instui-heading -level-h5 instui-mt-lg">Compose utilities too</h3>
+  <p class="instui-text -color-secondary">
+    Spacing, color, and token utilities still layer onto a View — e.g.
+    <code>instui-bg-accent-blue</code> + <code>instui-fg-on-color</code> + <code>instui-p-md</code>.
   </p>
   <div
-    class="instui-view instui-bg-accent-blue instui-fg-on-color instui-p-md"
-    style="border-radius: var(--instui-border-radius-md)"
+    class="instui-view instui-bg-accent-blue instui-fg-on-color instui-p-md -border-radius-medium"
   >
     <span class="instui-text instui-fg-on-color">bg-accent-blue surface with on-color text.</span>
   </div>
