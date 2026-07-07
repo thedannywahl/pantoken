@@ -214,3 +214,45 @@ Browser support: the popover API and `popovertarget` are Baseline 2024; invoker 
 (`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
 as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
 supported (Chromium); elsewhere it centers in the top layer.
+
+## Forms
+
+**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
+messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
+areas — `label`, `controls`, `messages`:
+
+```html
+<label class="instui-form-field">
+  <span class="label">Email address</span>
+  <span class="controls"><input class="instui-text-input" type="email" required /></span>
+  <div class="instui-form-field-messages">
+    <span class="instui-form-field-message -type-hint">We'll never share it.</span>
+  </div>
+</label>
+```
+
+`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
+with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+
+The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
+native `required` control inside it — so you can just set `required` on the input and the mark shows.
+It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
+"fields marked \* are required" unless the form is self-evident.
+
+**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
+`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
+`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
+`-col-spacing-*` and `-v-align-*` to tune the grid.
+
+**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
+`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
+(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
+The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
+deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
+`aria-invalid` on the control when there's an error.
+
+**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
+resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
+states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
+`-size-{sm,md,lg}`. The focus ring comes from `base.css`. For a rich combobox with a listbox popover,
+reach for `@instructure/ui` — this library covers the native controls.

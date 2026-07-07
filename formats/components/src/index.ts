@@ -520,6 +520,22 @@ const MINUS_ICON = strokeMask("%3Cpath d='M5 12h14'/%3E");
 const CHECK_URL = strokeUrl("%3Cpath d='M20 6 9 17l-5-5'/%3E");
 const CLOSE_URL = strokeUrl("%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E");
 
+/** Lucide `circle-alert`, masked — the FormFieldMessage error glyph (painted in `currentColor`). */
+const ALERT_CIRCLE_ICON = strokeMask(
+  "%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E",
+);
+
+/** Lucide `circle-check`, masked — the FormFieldMessage success glyph (painted in `currentColor`). */
+const CHECK_CIRCLE_ICON = strokeMask(
+  "%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E",
+);
+
+/** Lucide `chevron-down` in the InstUI icon grey — the SimpleSelect caret. A native `<select>` is a
+ *  replaced element (no pseudo-elements), so the caret is a `background-image`, not `::after`; a data-URI
+ *  background can't read `currentColor`, so the stroke is a fixed neutral grey that reads in both modes. */
+const SELECT_CHEVRON =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a7883' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")";
+
 /**
  * InstUI's `ai` glyph (Solid), inlined as a mask so it paints in the button's own colour — solid
  * white on `--ai`, the violet→sea gradient on `--ai-secondary`. Source: `@instructure/ui-icons`.
@@ -3548,6 +3564,410 @@ export function closeButtonCss(options: ComponentOptions = {}): string {
   return wrap("close-button", prefix, closeButtonRules(ns(prefix)));
 }
 
+// ─── Forms ──────────────────────────────────────────────────────────────────
+// FormField (layout wrapper) + FormFieldGroup + FormFieldMessages/Message, and the styled text controls
+// TextInput / TextArea / SimpleSelect. TextInput and SimpleSelect share the `text-input-*` token family;
+// TextArea has its own parallel `text-area-*` family — so the base control declarations come from one
+// shared helper parameterised by the token family.
+
+/**
+ * The shared text-control base: box/typography/background/border + hover/disabled/readonly/invalid/
+ * success states, painted from a `--instui-component-<fam>-*` family (TextInput and SimpleSelect pass
+ * `text-input`; TextArea passes `text-area`). Uses `background-color` (longhand, not the `background`
+ * shorthand) so SimpleSelect's caret `background-image` survives the hover/state rules.
+ */
+function fieldControlBase(p: string, cls: string, fam: string): string {
+  const t = (s: string): string => `var(--instui-component-${fam}-${s})`;
+  const root = `.${p}${cls}`;
+  return `
+${root} {
+  display: block;
+  inline-size: 100%;
+  box-sizing: border-box;
+  font-family: ${t("font-family")};
+  font-weight: ${t("font-weight")};
+  color: ${t("text-color")};
+  background-color: ${t("background-color")};
+  border: ${t("border-width")} solid ${t("border-color")};
+  border-radius: ${t("border-radius")};
+}
+${root}::placeholder { color: ${t("placeholder-color")}; }
+${root}:hover {
+  background-color: ${t("background-hover-color")};
+  border-color: ${t("border-hover-color")};
+}
+${root}:hover::placeholder { color: ${t("placeholder-hover-color")}; }
+${root}:disabled,
+${root}.-disabled {
+  background-color: ${t("background-disabled-color")};
+  border-color: ${t("border-disabled-color")};
+  color: ${t("text-disabled-color")};
+  cursor: not-allowed;
+}
+${root}.-readonly {
+  background-color: ${t("background-readonly-color")};
+  border-color: ${t("border-readonly-color")};
+  color: ${t("text-readonly-color")};
+}
+${root}.-invalid { border-color: ${t("error-border-color")}; }
+${root}.-success { border-color: ${t("success-border-color")}; }
+`;
+}
+
+/** TextInput rules: a native `<input>` styled from the `text-input-*` family, with `-size-{sm,md,lg}`. */
+function textInputRules(p: string): string {
+  const t = (s: string): string => `var(--instui-component-text-input-${s})`;
+  return `
+${fieldControlBase(p, "text-input", "text-input")}
+.${p}text-input {
+  block-size: ${t("height-md")};
+  padding-inline: ${t("padding-horizontal-md")};
+  font-size: ${t("font-size-md")};
+}
+.${p}text-input.-size-sm { block-size: ${t("height-sm")}; padding-inline: ${t("padding-horizontal-sm")}; font-size: ${t("font-size-sm")}; }
+.${p}text-input.-size-lg { block-size: ${t("height-lg")}; padding-inline: ${t("padding-horizontal-lg")}; font-size: ${t("font-size-lg")}; }
+`;
+}
+
+/** TextArea rules: a native `<textarea>` from the `text-area-*` family — resizable, min-height, sizes. */
+function textAreaRules(p: string): string {
+  const t = (s: string): string => `var(--instui-component-text-area-${s})`;
+  return `
+${fieldControlBase(p, "text-area", "text-area")}
+.${p}text-area {
+  padding: ${t("padding")};
+  font-size: ${t("font-size-md")};
+  line-height: 1.5;
+  min-block-size: 4rem;
+  resize: vertical;
+}
+.${p}text-area.-size-sm { font-size: ${t("font-size-sm")}; }
+.${p}text-area.-size-lg { font-size: ${t("font-size-lg")}; }
+`;
+}
+
+/** SimpleSelect rules: a native `<select>` styled like TextInput (`text-input-*`) with a caret. */
+function simpleSelectRules(p: string): string {
+  const t = (s: string): string => `var(--instui-component-text-input-${s})`;
+  return `
+${fieldControlBase(p, "simple-select", "text-input")}
+.${p}simple-select {
+  block-size: ${t("height-md")};
+  padding-inline: ${t("padding-horizontal-md")};
+  padding-inline-end: calc(${t("padding-horizontal-md")} + 1.5rem);
+  font-size: ${t("font-size-md")};
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: ${SELECT_CHEVRON};
+  background-repeat: no-repeat;
+  background-position: right ${t("padding-horizontal-md")} center;
+  background-size: 1em;
+}
+.${p}simple-select.-size-sm { block-size: ${t("height-sm")}; padding-inline: ${t("padding-horizontal-sm")}; padding-inline-end: calc(${t("padding-horizontal-sm")} + 1.5rem); font-size: ${t("font-size-sm")}; }
+.${p}simple-select.-size-lg { block-size: ${t("height-lg")}; padding-inline: ${t("padding-horizontal-lg")}; padding-inline-end: calc(${t("padding-horizontal-lg")} + 1.5rem); font-size: ${t("font-size-lg")}; }
+`;
+}
+
+/**
+ * FormFieldMessages (container) + FormFieldMessage (item). Types `-type-{hint,error,success,
+ * screenreader-only}` from the `form-field-message-*` tokens; error/success paint a masked circle glyph
+ * on `::before` in `currentColor` (= the type colour, so no colour plumbing). `newError` is a deprecated
+ * alias of `error` (added by `withDeprecatedAliases`). Both classes are flat-prefixed (not scoped), so
+ * the messages region can live inside a FormField or a FormFieldGroup, or stand alone.
+ */
+function formFieldMessagesRules(p: string): string {
+  const m = (s: string): string => `var(--instui-component-form-field-message-${s})`;
+  return `
+.${p}form-field-messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-component-form-field-layout-gap-primitives);
+}
+.${p}form-field-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: ${m("font-family")};
+  font-size: ${m("font-size")};
+  font-weight: ${m("font-weight")};
+  line-height: ${m("line-height")};
+  color: ${m("hint-text-color")};
+}
+.${p}form-field-message.-type-hint { color: ${m("hint-text-color")}; }
+.${p}form-field-message.-type-error { color: ${m("error-text-color")}; }
+.${p}form-field-message.-type-success { color: ${m("success-text-color")}; }
+.${p}form-field-message.-type-error::before,
+.${p}form-field-message.-type-success::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+}
+.${p}form-field-message.-type-error::before { -webkit-mask: ${ALERT_CIRCLE_ICON}; mask: ${ALERT_CIRCLE_ICON}; }
+.${p}form-field-message.-type-success::before { -webkit-mask: ${CHECK_CIRCLE_ICON}; mask: ${CHECK_CIRCLE_ICON}; }
+.${p}form-field-message.-type-screenreader-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+`;
+}
+
+/**
+ * FormField: the InstUI FormFieldLayout as CSS Grid with named areas (`label`/`controls`/`messages`).
+ * `-layout-stacked` (default) stacks them; `-layout-inline` puts the label beside the controls. The
+ * required asterisk renders from EITHER the `-required` class OR a native `:required` control inside the
+ * field (decorative `::after` on the label, so it's out of the a11y tree). `.label`/`.controls` are
+ * scoped to the field; the messages-placement rule stays OUTSIDE `@scope` because
+ * `.instui-form-field-messages` shares the `form-field` prefix (the split would corrupt it).
+ */
+function formFieldRules(p: string): string {
+  const root = `.${p}form-field`;
+  const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
+  return `
+${root} {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "label" "controls" "messages";
+  gap: ${L("gap-inputs")};
+  color: ${L("text-color")};
+  font-family: ${L("font-family")};
+}
+${scope(
+  root,
+  `
+${root} .label {
+  grid-area: label;
+  color: ${L("text-color")};
+  font-family: ${L("font-family")};
+  font-weight: ${L("font-weight")};
+  font-size: ${L("font-size")};
+  line-height: ${L("line-height")};
+}
+${root} .controls { grid-area: controls; }
+`,
+  ["label", "controls"],
+)}
+/* Messages region — kept OUTSIDE @scope: the messages class shares the form-field prefix. */
+${root} > .${p}form-field-messages { grid-area: messages; }
+/* Required indicator: native [required] control OR the -required class; decorative (aria-hidden). */
+${root}:is(.-required, :has(:required)) .label::after {
+  content: "*";
+  margin-inline-start: 0.25rem;
+  color: ${L("asterisk-color")};
+}
+${root}.-readonly .label { color: ${L("readonly-text-color")}; }
+${root}.-layout-stacked { grid-template-columns: 1fr; grid-template-areas: "label" "controls" "messages"; }
+${root}.-layout-inline {
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "label controls" ". messages";
+  align-items: center;
+  column-gap: ${L("gap-primitives")};
+}
+${root}.-layout-inline.-v-align-top { align-items: start; }
+${root}.-layout-inline.-v-align-bottom { align-items: end; }
+${root}.-layout-inline.-label-align-start .label { text-align: start; }
+${root}.-layout-inline.-label-align-end .label { text-align: end; }
+${root}.-inline { display: inline-grid; inline-size: auto; }
+`;
+}
+
+/**
+ * FormFieldGroup: a `<fieldset>` grouping several FormFields under a `<legend>`. No dedicated tokens —
+ * pure composition on the spacing scale. Default stacks; `-layout-columns`/`-layout-inline` flow the
+ * fields into responsive columns (the legend spans all columns). `-row-spacing-*`/`-col-spacing-*` and
+ * `-v-align-*` tune the grid.
+ */
+function formFieldGroupRules(p: string): string {
+  const root = `.${p}form-field-group`;
+  const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
+  return `
+${root} {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: ${L("gap-inputs")};
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+${root} > legend {
+  grid-column: 1 / -1;
+  padding: 0;
+  margin-block-end: ${L("gap-primitives")};
+  color: ${L("text-color")};
+  font-family: ${L("font-family")};
+  font-weight: ${L("font-weight")};
+  font-size: ${L("font-size")};
+  line-height: ${L("line-height")};
+}
+${root}.-required > legend::after {
+  content: "*";
+  margin-inline-start: 0.25rem;
+  color: ${L("asterisk-color")};
+}
+${root}.-layout-columns,
+${root}.-layout-inline {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+${root}.-row-spacing-none { row-gap: 0; }
+${root}.-row-spacing-small { row-gap: var(--instui-spacing-space-sm); }
+${root}.-row-spacing-medium { row-gap: var(--instui-spacing-space-md); }
+${root}.-row-spacing-large { row-gap: var(--instui-spacing-space-lg); }
+${root}.-col-spacing-none { column-gap: 0; }
+${root}.-col-spacing-small { column-gap: var(--instui-spacing-space-sm); }
+${root}.-col-spacing-medium { column-gap: var(--instui-spacing-space-md); }
+${root}.-col-spacing-large { column-gap: var(--instui-spacing-space-lg); }
+${root}.-v-align-top { align-items: start; }
+${root}.-v-align-middle { align-items: center; }
+${root}.-v-align-bottom { align-items: end; }
+`;
+}
+
+/**
+ * Build the FormField stylesheet: `.<prefix>-form-field`, a Grid label/controls/messages layout.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { formFieldCss } from "@pantoken/components";
+ *
+ * const css = formFieldCss();
+ * // <label class="instui-form-field -required">
+ * //   <span class="label">Email</span>
+ * //   <span class="controls"><input class="instui-text-input" required /></span>
+ * //   <div class="instui-form-field-messages">…</div>
+ * // </label>
+ * ```
+ *
+ * @demo self:form-field
+ */
+export function formFieldCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("form-field", prefix, formFieldRules(ns(prefix)));
+}
+
+/**
+ * Build the FormFieldGroup stylesheet: `.<prefix>-form-field-group` (a `<fieldset>`/`<legend>` group).
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { formFieldGroupCss } from "@pantoken/components";
+ *
+ * const css = formFieldGroupCss();
+ * // <fieldset class="instui-form-field-group"><legend>Address</legend> …fields… </fieldset>
+ * ```
+ *
+ * @demo self:form-field-group
+ */
+export function formFieldGroupCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("form-field-group", prefix, formFieldGroupRules(ns(prefix)));
+}
+
+/**
+ * Build the FormFieldMessages stylesheet: `.<prefix>-form-field-messages` (container) +
+ * `.<prefix>-form-field-message` with `-type-{hint,error,success,screenreader-only}`.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { formFieldMessagesCss } from "@pantoken/components";
+ *
+ * const css = formFieldMessagesCss();
+ * // <div class="instui-form-field-messages">
+ * //   <span class="instui-form-field-message -type-error">Required.</span>
+ * // </div>
+ * ```
+ *
+ * @demo self:form-messages
+ */
+export function formFieldMessagesCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("form-field-messages", prefix, formFieldMessagesRules(ns(prefix)));
+}
+
+/**
+ * Build the TextInput stylesheet: `.<prefix>-text-input` (a styled native `<input>`), with
+ * `-invalid`/`-success`/`-readonly`/`-disabled` and `-size-{sm,md,lg}`.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { textInputCss } from "@pantoken/components";
+ *
+ * const css = textInputCss();
+ * // <input class="instui-text-input" placeholder="Name" />
+ * ```
+ *
+ * @demo self:text-input
+ */
+export function textInputCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("text-input", prefix, textInputRules(ns(prefix)));
+}
+
+/**
+ * Build the TextArea stylesheet: `.<prefix>-text-area` (a styled native `<textarea>`), resizable, with
+ * the same states/sizes as TextInput.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { textAreaCss } from "@pantoken/components";
+ *
+ * const css = textAreaCss();
+ * // <textarea class="instui-text-area" rows="4"></textarea>
+ * ```
+ *
+ * @demo self:text-area
+ */
+export function textAreaCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("text-area", prefix, textAreaRules(ns(prefix)));
+}
+
+/**
+ * Build the SimpleSelect stylesheet: `.<prefix>-simple-select` (a styled native `<select>` with a
+ * caret), sharing the TextInput look and states.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { simpleSelectCss } from "@pantoken/components";
+ *
+ * const css = simpleSelectCss();
+ * // <select class="instui-simple-select"><option>One</option></select>
+ * ```
+ *
+ * @demo self:simple-select
+ */
+export function simpleSelectCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("simple-select", prefix, simpleSelectRules(ns(prefix)));
+}
+
 /** Long-form spellings for the size scale — emitted as first-class aliases beside the short forms. */
 const SIZE_LONG: Record<string, string> = {
   xs: "x-small",
@@ -3597,6 +4017,8 @@ function withDeprecatedAliases(css: string, p: string): string {
     [`${p}avatar.-color-grey`, `${p}avatar.-color-accent6`],
     // Radio: `variant="toggle"` renders as segmented buttons; keep the bare `-toggle` shorthand working.
     [`${p}radio.-variant-toggle`, `${p}radio.-toggle`],
+    // FormFieldMessage: InstUI's `newError` type is deprecated and behaves exactly like `error`.
+    [`${p}form-field-message.-type-error`, `${p}form-field-message.-type-new-error`],
   ];
   const extra: string[] = [];
   for (const [canonical, deprecated] of pairs) {
@@ -3696,6 +4118,12 @@ export function componentsCss(options: ComponentOptions = {}): string {
     headingRules(ns(prefix)),
     textRules(ns(prefix)),
     closeButtonRules(ns(prefix)),
+    formFieldRules(ns(prefix)),
+    formFieldGroupRules(ns(prefix)),
+    formFieldMessagesRules(ns(prefix)),
+    textInputRules(ns(prefix)),
+    textAreaRules(ns(prefix)),
+    simpleSelectRules(ns(prefix)),
   ].map((r) => r.trim());
   const body = withDeprecatedAliases(withSizeAliases(rules.join("\n\n")), ns(prefix));
   // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve

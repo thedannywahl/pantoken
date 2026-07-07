@@ -14,6 +14,9 @@ import {
   closeButtonCss,
   componentsCss,
   fileDropCss,
+  formFieldCss,
+  formFieldGroupCss,
+  formFieldMessagesCss,
   headingCss,
   iconCss,
   iconGlyphsCss,
@@ -32,9 +35,12 @@ import {
   rangeCss,
   ratingCss,
   screenReaderContentCss,
+  simpleSelectCss,
   spacingUtilitiesCss,
   spinnerCss,
+  textAreaCss,
   textCss,
+  textInputCss,
   tableCss,
   tabsCss,
   tagCss,
@@ -330,9 +336,16 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "heading",
     "text",
     "close-button",
+    "form-field",
+    "form-field-group",
+    "form-field-messages",
+    "form-field-message",
+    "text-input",
+    "text-area",
+    "simple-select",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(34);
+  expect(components).toHaveLength(41);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
@@ -629,6 +642,80 @@ test("the deprecated -toggle alias mirrors radio's -variant-toggle in components
   const css = componentsCss({ prefix: "instui" });
   expect(css).toContain(".instui-radio.-toggle");
   expect(css).toMatch(/@deprecated → use \.-variant-toggle/);
+});
+
+test("form-field is a grid with label/controls/messages areas and inline layout", () => {
+  const css = formFieldCss({ prefix: "instui" });
+  expect(css).toContain('grid-template-areas: "label" "controls" "messages"');
+  expect(css).toContain("@scope (.instui-form-field)");
+  expect(css).toContain(":scope > .label");
+  expect(css).toContain(".instui-form-field.-layout-inline");
+  // Messages placement stays flat (outside @scope — shared form-field prefix).
+  expect(css).toContain(".instui-form-field > .instui-form-field-messages { grid-area: messages;");
+  expect(css).not.toContain(":scope-messages");
+});
+
+test("form-field required fires from both -required and native :required, in the asterisk colour", () => {
+  const css = formFieldCss({ prefix: "instui" });
+  expect(css).toContain(".instui-form-field:is(.-required, :has(:required)) .label::after");
+  expect(css).toContain('content: "*"');
+  expect(css).toContain("var(--instui-component-form-field-layout-asterisk-color)");
+  expect(css).toContain("var(--instui-component-form-field-layout-readonly-text-color)");
+});
+
+test("form-field-group is a token-less fieldset composition with layouts and spacing", () => {
+  const css = formFieldGroupCss({ prefix: "instui" });
+  expect(css).toContain(".instui-form-field-group {");
+  expect(css).toContain(".instui-form-field-group > legend");
+  expect(css).toContain(".instui-form-field-group.-layout-columns");
+  expect(css).toContain(".instui-form-field-group.-row-spacing-medium");
+  expect(css).toContain("var(--instui-spacing-space-md)");
+});
+
+test("form-field messages colour by type and paint circle glyphs for error/success", () => {
+  const css = formFieldMessagesCss({ prefix: "instui" });
+  expect(css).toContain("var(--instui-component-form-field-message-hint-text-color)");
+  expect(css).toContain(
+    ".instui-form-field-message.-type-error { color: var(--instui-component-form-field-message-error-text-color)",
+  );
+  expect(css).toContain(
+    ".instui-form-field-message.-type-success { color: var(--instui-component-form-field-message-success-text-color)",
+  );
+  // error/success get a masked circle glyph painted in currentColor.
+  expect(css).toContain(".instui-form-field-message.-type-error::before");
+  expect(css).toContain("background: currentColor");
+  // screenreader-only is visually clipped.
+  expect(css).toContain(".instui-form-field-message.-type-screenreader-only");
+  expect(css).toContain("clip-path: inset(50%)");
+});
+
+test("the deprecated -type-new-error alias mirrors -type-error in componentsCss", () => {
+  const css = componentsCss({ prefix: "instui" });
+  expect(css).toContain(".instui-form-field-message.-type-new-error");
+});
+
+test("text-input and text-area style a native control with states and sizes", () => {
+  const input = textInputCss({ prefix: "instui" });
+  expect(input).toContain(".instui-text-input {");
+  expect(input).toContain("var(--instui-component-text-input-border-color)");
+  expect(input).toContain(
+    ".instui-text-input.-invalid { border-color: var(--instui-component-text-input-error-border-color)",
+  );
+  expect(input).toContain(".instui-text-input.-size-sm");
+  expect(input).toContain("var(--instui-component-text-input-height-lg)");
+  const area = textAreaCss({ prefix: "instui" });
+  expect(area).toContain(".instui-text-area {");
+  expect(area).toContain("resize: vertical");
+  expect(area).toContain("var(--instui-component-text-area-error-border-color)");
+});
+
+test("simple-select shares the text-input look with a background caret and appearance:none", () => {
+  const css = simpleSelectCss({ prefix: "instui" });
+  expect(css).toContain(".instui-simple-select {");
+  expect(css).toContain("appearance: none");
+  expect(css).toContain("background-image:");
+  expect(css).toContain("var(--instui-component-text-input-border-color)");
+  expect(css).toContain(".instui-simple-select.-invalid");
 });
 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {

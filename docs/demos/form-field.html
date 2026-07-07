@@ -1,0 +1,41 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 24px; max-width: 520px">
+    <!-- Required via the native `required` attribute — the asterisk shows with no extra class -->
+    <label class="instui-form-field">
+      <span class="label">Email address</span>
+      <span class="controls">
+        <input class="instui-text-input" type="email" required placeholder="you@example.com" />
+      </span>
+      <div class="instui-form-field-messages">
+        <span class="instui-form-field-message -type-hint">We'll never share it.</span>
+      </div>
+    </label>
+
+    <!-- A field in the error state, with a message -->
+    <label class="instui-form-field">
+      <span class="label">Username</span>
+      <span class="controls">
+        <input class="instui-text-input -invalid" value="a" />
+      </span>
+      <div class="instui-form-field-messages">
+        <span class="instui-form-field-message -type-error">Must be at least 3 characters.</span>
+      </div>
+    </label>
+
+    <!-- Inline layout: label beside the control -->
+    <label class="instui-form-field -layout-inline -label-align-end">
+      <span class="label">Nickname</span>
+      <span class="controls">
+        <input class="instui-text-input" placeholder="Optional" />
+      </span>
+    </label>
+
+    <!-- Readonly + required-by-class -->
+    <label class="instui-form-field -readonly -required">
+      <span class="label">Account ID</span>
+      <span class="controls">
+        <input class="instui-text-input -readonly" value="ACME-00421" readonly />
+      </span>
+    </label>
+  </div>
+</div>
