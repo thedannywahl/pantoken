@@ -5,8 +5,10 @@
  * wrap the `@pantoken/components` CSS: `<instui-button>`, `<instui-alert>`, `<instui-badge>`,
  * `<instui-pill>`, `<instui-tag>`, `<instui-avatar>`, `<instui-spinner>`, `<instui-progress>`,
  * `<instui-progress-circle>`, `<instui-metric>`, `<instui-rating>`, `<instui-icon-button>`,
- * `<instui-toggle-button>`, and `<instui-truncate>`. Each renders the matching `.instui-*` markup into its
- * shadow root with the component stylesheet inlined, so the look is exactly `@pantoken/components`
+ * `<instui-toggle-button>`, and `<instui-truncate>`, plus two behavioral elements: `<instui-modal>`
+ * (a real `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a native popover).
+ * Each renders the matching `.instui-*` markup into its shadow root with the component stylesheet
+ * inlined, so the look is exactly `@pantoken/components`
  * with nothing to import but this module. Tokens are inherited custom properties, so they pierce the
  * shadow boundary — load `@pantoken/css` (or any pantoken token sheet) in the document to color them.
  *
@@ -20,7 +22,9 @@ import {
   avatarCss,
   badgeCss,
   buttonCss,
+  contextViewCss,
   metricCss,
+  modalCss,
   pillCss,
   progressCircleCss,
   progressCss,
@@ -49,6 +53,8 @@ export const ELEMENTS = [
   "instui-icon-button",
   "instui-toggle-button",
   "instui-truncate",
+  "instui-modal",
+  "instui-context-view",
 ] as const;
 
 /**
@@ -277,6 +283,67 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
     },
     "block",
   );
+
+  // Modal: a real <dialog>, so it gets focus trapping, Esc-to-close, and a ::backdrop for free. The
+  // `open` attribute drives showModal()/close(); a native dismissal (Esc / backdrop click) reflects
+  // back to the attribute and re-fires as a bubbling `close` event. This is bespoke, not `wrapper()`,
+  // because repainting innerHTML on every attribute change would tear down the dialog's open state.
+  if (!registry.get("instui-modal")) {
+    registry.define(
+      "instui-modal",
+      class extends HTMLElement {
+        static observedAttributes = ["open"];
+        constructor() {
+          super();
+          this.attachShadow({ mode: "open" });
+        }
+        connectedCallback(): void {
+          const root = this.shadowRoot;
+          if (root && !root.querySelector("dialog")) {
+            root.innerHTML = `<style>:host{display:contents}${modalCss(I)}</style><dialog class="instui-modal" part="modal"><slot></slot></dialog>`;
+            root.querySelector("dialog")?.addEventListener("close", () => {
+              if (this.hasAttribute("open")) this.removeAttribute("open");
+              this.dispatchEvent(new CustomEvent("close", { bubbles: true }));
+            });
+          }
+          this.syncOpen();
+        }
+        attributeChangedCallback(): void {
+          this.syncOpen();
+        }
+        syncOpen(): void {
+          const dialog = this.shadowRoot?.querySelector("dialog");
+          if (!(dialog instanceof HTMLDialogElement)) return;
+          const wantOpen = this.hasAttribute("open");
+          if (wantOpen && !dialog.open) dialog.showModal();
+          else if (!wantOpen && dialog.open) dialog.close();
+        }
+      },
+    );
+  }
+
+  // Context view: the host itself is the popover (top layer + light-dismiss), so a light-DOM
+  // `popovertarget`/`command` can toggle it by id. The shadow resets the UA popover box on :host and
+  // renders the styled surface + caret inside. Position it near its trigger with CSS anchor
+  // positioning where supported; otherwise it centres in the top layer.
+  if (!registry.get("instui-context-view")) {
+    registry.define(
+      "instui-context-view",
+      class extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: "open" });
+        }
+        connectedCallback(): void {
+          if (!this.hasAttribute("popover")) this.setAttribute("popover", "auto");
+          const root = this.shadowRoot;
+          if (root && !root.querySelector("span")) {
+            root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;overflow:visible;background:transparent}${contextViewCss(I)}</style><span class="instui-context-view" part="context-view"><slot></slot></span>`;
+          }
+        }
+      },
+    );
+  }
 }
 
 // Auto-register in the browser; a no-op everywhere else.

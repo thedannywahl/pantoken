@@ -53,21 +53,20 @@ const { toCss } = require("@pantoken/css") as typeof import("@pantoken/css");
 const { byTheme, themes } = require("@pantoken/tokens") as typeof import("@pantoken/tokens");
 const { focusOutline } =
   require("@pantoken/plugin-focus-outline") as typeof import("@pantoken/plugin-focus-outline");
-const { elevation } =
-  require("@pantoken/plugin-elevation") as typeof import("@pantoken/plugin-elevation");
 const { transition } =
   require("@pantoken/plugin-transition") as typeof import("@pantoken/plugin-transition");
 const { stacking } =
   require("@pantoken/plugin-stacking") as typeof import("@pantoken/plugin-stacking");
 const { visualDebug } =
   require("@pantoken/plugin-visual-debug") as typeof import("@pantoken/plugin-visual-debug");
+// Elevation is not a plugin — it ships in @pantoken/components (components.css), so the runner already
+// has the `--instui-elevation-*` tokens.
 for (const theme of Object.keys(themes)) {
   writeFileSync(
     join(assets, `tokens-${theme}.css`),
     toCss(byTheme(theme as keyof typeof themes), {
       plugins: [
         focusOutline({ theme: theme as keyof typeof themes }),
-        elevation(),
         transition(),
         stacking(),
         visualDebug(),
@@ -79,7 +78,6 @@ for (const theme of Object.keys(themes)) {
 // Standalone sheets for the main docs site (its token sheet is @pantoken/css, built without the
 // plugins), added via <head> links in the VitePress config.
 writeFileSync(join(assets, "focus-outline.css"), toCss([], { plugins: [focusOutline()] }));
-writeFileSync(join(assets, "elevation.css"), toCss([], { plugins: [elevation()] }));
 writeFileSync(join(assets, "transition.css"), toCss([], { plugins: [transition()] }));
 writeFileSync(join(assets, "stacking.css"), toCss([], { plugins: [stacking()] }));
 writeFileSync(join(assets, "visual-debug.css"), toCss([], { plugins: [visualDebug()] }));

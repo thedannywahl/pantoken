@@ -122,7 +122,6 @@ export default defineConfig({
   // (staged by scripts/demos.ts) over the site's @pantoken/css token sheet.
   head: [
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
-    ["link", { rel: "stylesheet", href: `${base}demos-assets/elevation.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/transition.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],

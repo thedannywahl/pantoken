@@ -11,7 +11,7 @@
  */
 import postcss from "postcss";
 import { toCss } from "@pantoken/css";
-import { elevation } from "@pantoken/plugin-elevation";
+import { elevationCss } from "@pantoken/components";
 import { focusOutline } from "@pantoken/plugin-focus-outline";
 import { byTheme } from "@pantoken/tokens";
 import { pruneCustomProps } from "@pantoken/plugin-prune-custom-props";
@@ -31,10 +31,8 @@ const GUIDE_SELECTOR = '[class*="instui"]';
 const FOCUSABLES = "._pendo-button, ._pendo-close-guide, ._pendo-text-link";
 
 /** Build the `instui.elevation` layer: the named `--instui-elevation-*` box-shadow custom props. */
-function elevationLayer(theme: Theme): string {
-  const contribution = elevation({ theme }).css?.({ tokens: byTheme(theme), css: "" });
-  const decls = (contribution?.declarations ?? []).map(([n, v]) => `  ${n}: ${v};`).join("\n");
-  return `@layer instui.elevation {\n${GUIDE_SELECTOR} {\n${decls}\n}\n}`;
+function elevationLayer(): string {
+  return `@layer instui.elevation {\n${elevationCss({ selector: GUIDE_SELECTOR })}}`;
 }
 
 /** Build the `instui.focusOutline` layer from the focus-outline plugin (ring + its token defs). */
@@ -94,7 +92,7 @@ export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
   const order = `@layer ${LAYER_ORDER.map((l) => `instui.${l}`).join(", ")};`;
   const tokenLayer = `@layer instui.tokens {\n${tokenCss}\n\n${MANUAL_CSS}\n}`;
   const components = COMPONENTS.map((c) => `@layer instui.${c.layer} {\n${c.css}\n}`).join("\n\n");
-  const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer(theme)}\n\n${components}\n\n${focusLayer(theme)}`;
+  const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer()}\n\n${components}\n\n${focusLayer(theme)}`;
 
   // One pass over the whole stylesheet: !important on component rules, prune the unused token set,
   // then wrap everything in @scope (last, so it contains the pruned result).

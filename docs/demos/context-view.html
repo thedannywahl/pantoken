@@ -1,3 +1,15 @@
-<div class="instui-context-view" style="max-width: 320px">
-  A context view frames a callout with a caret. Point it at the thing it explains.
+<div class="instui-card">
+  <!-- The `popovertarget` attribute toggles a native popover with no JavaScript: it opens in the top
+       layer and light-dismisses on Esc or an outside click. -->
+  <button class="instui-button -color-secondary" popovertarget="cv-popover">Show details</button>
+
+  <div id="cv-popover" popover class="instui-context-view" style="max-width: 320px">
+    A context view frames a callout with a caret. Point it at the thing it explains. As a popover it
+    rides the top layer and closes when you click away or press Esc.
+  </div>
+
+  <p class="instui-text instui-fg-muted" style="margin-top: 12px">
+    Positioning next to the trigger uses CSS anchor positioning where supported; elsewhere the
+    popover centers in the top layer.
+  </p>
 </div>

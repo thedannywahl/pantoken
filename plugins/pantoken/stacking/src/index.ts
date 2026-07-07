@@ -4,8 +4,8 @@
  * InstUI's `View` exposes a stacking scale (`deepest`, `below`, `above`, `topmost`) so layers stack
  * predictably instead of by hand-tuned magic numbers. This plugin surfaces that scale two ways: it
  * emits `--instui-stacking-<level>` tokens (resolved to concrete z-index values from the shipped
- * `--instui-component-view-stacking-*` tokens, like `@pantoken/plugin-elevation` does for shadows),
- * and a matching set of `.instui-stack-<level>` utility classes.
+ * `--instui-component-view-stacking-*` tokens), and a matching set of `.instui-stack-<level>` utility
+ * classes.
  *
  * Both hooks are defined, so the consumer chooses the layer: add it to `buildTokens` to bake the
  * `--instui-stacking-*` records into every output, or to `toCss` (the css hook self-defines them, so

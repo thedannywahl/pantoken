@@ -13,12 +13,13 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { icons } from "@pantoken/icons";
-import { ELEVATION_NAMES } from "@pantoken/plugin-elevation";
 import { tokens } from "@pantoken/tokens";
+import { fontsCss } from "./fonts.ts";
 import {
   baseCss,
   colorUtilitiesCss,
   componentsCss,
+  ELEVATION_NAMES,
   iconGlyphsCss,
   layoutUtilitiesCss,
   proseCss,
@@ -86,12 +87,14 @@ const tokenGroups = [
   { property: "border-radius", tokens: family("--instui-border-radius-") },
   { property: "border-width", tokens: family("--instui-border-width-") },
   { property: "opacity", tokens: family("--instui-opacity-") },
-  // Elevation shadows come from @pantoken/plugin-elevation (not the base IR); reference them by name.
+  // Elevation shadows are defined by elevationCss (in components.css), not the base IR; reference them.
   { property: "box-shadow", tokens: ELEVATION_NAMES.map((n) => `--instui-elevation-${n}`) },
 ];
 
 writeFileSync(join(outDir, "base.css"), baseCss());
 writeFileSync(join(outDir, "components.css"), componentsCss(opts));
+// Opt-in font loading — @font-face rules for the brand typeface, src → the shipped assets/fonts/.
+writeFileSync(join(outDir, "fonts.css"), fontsCss(resolve(import.meta.dirname, "../assets/fonts")));
 writeFileSync(join(outDir, "prose.css"), proseCss());
 writeFileSync(
   join(outDir, "icons.css"),
@@ -108,5 +111,5 @@ writeFileSync(
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
 );
 console.log(
-  "✓ components: wrote base.css + components.css + prose.css + icons.css + utilities.css",
+  "✓ components: wrote base.css + components.css + fonts.css + prose.css + icons.css + utilities.css",
 );

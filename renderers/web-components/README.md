@@ -42,6 +42,9 @@ inherited custom properties, so they pierce the shadow boundary — load `@panto
 - `<instui-metric value="…" label="…">`, `<instui-rating value="3" max="5">`.
 - `<instui-icon-button label="…">`, `<instui-toggle-button pressed="true|false">`.
 - `<instui-truncate lines="2">` — omit `lines` for a single-line ellipsis.
+- `<instui-modal open>` — renders a real `<dialog>`; the `open` attribute drives `showModal()`/`close()`,
+  and native dismissal (`Esc`/backdrop) reflects back and fires a `close` event.
+- `<instui-context-view>` — a native popover; toggle it from a button with `popovertarget`/`command`.
 
 The module is Node-safe: element classes are defined inside `register()`, which no-ops when there is
 no DOM. Call `register(customElements)` manually if you need to control timing.

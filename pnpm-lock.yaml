@@ -584,15 +584,9 @@ importers:
       '@pantoken/demo':
         specifier: workspace:*
         version: link:../tools/demo
-      '@pantoken/plugin-elevation':
-        specifier: workspace:*
-        version: link:../plugins/pantoken/elevation
       '@pantoken/plugin-focus-outline':
         specifier: workspace:*
         version: link:../plugins/pantoken/focus-outline
-      '@pantoken/plugin-font-families':
-        specifier: workspace:*
-        version: link:../plugins/pantoken/font-families
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../plugins/pantoken/logos
@@ -660,9 +654,6 @@ importers:
       '@pantoken/icons':
         specifier: workspace:*
         version: link:../icons
-      '@pantoken/plugin-elevation':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/elevation
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../tokens
@@ -1075,15 +1066,9 @@ importers:
       '@pantoken/plugin-colors':
         specifier: workspace:*
         version: link:../../plugins/pantoken/colors
-      '@pantoken/plugin-elevation':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/elevation
       '@pantoken/plugin-focus-outline':
         specifier: workspace:*
         version: link:../../plugins/pantoken/focus-outline
-      '@pantoken/plugin-font-families':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/font-families
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../../plugins/pantoken/logos
@@ -1528,31 +1513,6 @@ importers:
         specifier: 'catalog:'
         version: 0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(jiti@2.7.0)(publint@0.3.21)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
 
-  plugins/pantoken/elevation:
-    dependencies:
-      '@pantoken/model':
-        specifier: workspace:*
-        version: link:../../../packages/model
-      '@pantoken/plugin-kit':
-        specifier: workspace:*
-        version: link:../../../packages/plugin-kit
-      '@pantoken/tokens':
-        specifier: workspace:*
-        version: link:../../../formats/tokens
-    devDependencies:
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.13.2
-      typescript:
-        specifier: 'catalog:'
-        version: 6.0.3
-      vite:
-        specifier: npm:@voidzero-dev/vite-plus-core@0.2.2
-        version: '@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(esbuild@0.25.12)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)'
-      vite-plus:
-        specifier: 'catalog:'
-        version: 0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(jiti@2.7.0)(publint@0.3.21)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
-
   plugins/pantoken/focus-outline:
     dependencies:
       '@pantoken/model':
@@ -1564,28 +1524,6 @@ importers:
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../../../formats/tokens
-    devDependencies:
-      '@types/node':
-        specifier: 'catalog:'
-        version: 24.13.2
-      typescript:
-        specifier: 'catalog:'
-        version: 6.0.3
-      vite:
-        specifier: npm:@voidzero-dev/vite-plus-core@0.2.2
-        version: '@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(esbuild@0.25.12)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)'
-      vite-plus:
-        specifier: 'catalog:'
-        version: 0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(jiti@2.7.0)(publint@0.3.21)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
-
-  plugins/pantoken/font-families:
-    dependencies:
-      '@pantoken/model':
-        specifier: workspace:*
-        version: link:../../../packages/model
-      '@pantoken/plugin-kit':
-        specifier: workspace:*
-        version: link:../../../packages/plugin-kit
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -2035,15 +1973,15 @@ importers:
 
   renderers/pendo:
     dependencies:
+      '@pantoken/components':
+        specifier: workspace:*
+        version: link:../../formats/components
       '@pantoken/css':
         specifier: workspace:*
         version: link:../../formats/css
       '@pantoken/model':
         specifier: workspace:*
         version: link:../../packages/model
-      '@pantoken/plugin-elevation':
-        specifier: workspace:*
-        version: link:../../plugins/pantoken/elevation
       '@pantoken/plugin-focus-outline':
         specifier: workspace:*
         version: link:../../plugins/pantoken/focus-outline

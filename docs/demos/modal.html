@@ -1,8 +1,76 @@
-<div class="instui-modal" style="max-width: 420px">
-  <div class="header"><strong>Confirm</strong></div>
-  <div class="body">Are you sure you want to continue?</div>
-  <div class="footer" style="display: flex; gap: 12px; justify-content: flex-end">
-    <button class="instui-button -color-secondary">Cancel</button>
-    <button class="instui-button">Confirm</button>
+<div class="instui-card">
+  <!-- Invoker commands open/close a native <dialog> with no JavaScript. The dialog gets focus
+       trapping, Esc-to-close, and a dimmed ::backdrop (the modal's "mask") for free. Size comes from
+       the -size-* modifiers (medium is the default); each trigger opens its matching dialog. -->
+  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+    <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-sm">
+      Small
+    </button>
+    <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-md">
+      Medium
+    </button>
+    <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-lg">
+      Large
+    </button>
+    <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-auto">
+      Auto
+    </button>
+    <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-full">
+      Full screen
+    </button>
   </div>
+
+  <dialog id="modal-sm" class="instui-modal -size-sm">
+    <div class="header"><strong>Small</strong></div>
+    <div class="body"><code>-size-sm</code> — a narrow modal.</div>
+    <div class="footer" style="display: flex; justify-content: flex-end">
+      <button class="instui-button" command="close" commandfor="modal-sm">Close</button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-md" class="instui-modal">
+    <div class="header"><strong>Medium</strong></div>
+    <div class="body">The default size — no modifier needed.</div>
+    <div class="footer" style="display: flex; justify-content: flex-end">
+      <button class="instui-button" command="close" commandfor="modal-md">Close</button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-lg" class="instui-modal -size-lg">
+    <div class="header"><strong>Large</strong></div>
+    <div class="body"><code>-size-lg</code> — a wider modal for denser content.</div>
+    <div class="footer" style="display: flex; justify-content: flex-end">
+      <button class="instui-button" command="close" commandfor="modal-lg">Close</button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-auto" class="instui-modal -size-auto">
+    <div class="header"><strong>Auto</strong></div>
+    <div class="body"><code>-size-auto</code> sizes to its content.</div>
+    <div class="footer" style="display: flex; justify-content: flex-end">
+      <button class="instui-button" command="close" commandfor="modal-auto">Close</button>
+    </div>
+  </dialog>
+
+  <dialog id="modal-full" class="instui-modal -size-fullscreen">
+    <div class="header"><strong>Full screen</strong></div>
+    <div class="body"><code>-size-fullscreen</code> fills the viewport.</div>
+    <div class="footer" style="display: flex; justify-content: flex-end">
+      <button class="instui-button" command="close" commandfor="modal-full">Close</button>
+    </div>
+  </dialog>
 </div>
+
+<script>
+  // Progressive enhancement: invoker commands (command="show-modal"/"close") are Baseline 2025. On
+  // older browsers, wire the same buttons to the <dialog> API so the demo still works.
+  if (!("command" in HTMLButtonElement.prototype)) {
+    document.querySelectorAll("[command][commandfor]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const dialog = document.getElementById(btn.getAttribute("commandfor"));
+        if (btn.getAttribute("command") === "show-modal") dialog.showModal();
+        else dialog.close();
+      });
+    });
+  }
+</script>

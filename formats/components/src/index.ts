@@ -71,6 +71,86 @@ const scope = (root: string, body: string, children: string[] = []): string => {
   return `@scope (${root}) {\n${scoped}\n}`;
 };
 
+// ---------------------------------------------------------------------------------------------------
+// Elevation — named box-shadow depths, intrinsic to the component set (many components float: modal,
+// alert, menu, the demo card). A shadow at a given depth is TWO stacked layers (a tight contact shadow
+// + a softer ambient one), so each level is a multi-layer value held in one `--instui-elevation-<name>`
+// custom property; a component just writes `box-shadow: var(--instui-elevation-topmost)`. The geometry
+// is InstUI's ui-view shadow scale; the colours are pantoken's themed `--instui-color-drop-shadow-*`
+// tokens (referenced as var(), so shadows deepen correctly in dark mode via their light-dark()).
+// ---------------------------------------------------------------------------------------------------
+
+/** Per-level geometry (`offset-x offset-y blur`) for the [tighter, wider] shadow layers. */
+const ELEVATION_GEOMETRY: Record<string, [tight: string, wide: string]> = {
+  resting: ["0 0.0625rem 0.125rem", "0 0.0625rem 0.1875rem"],
+  above: ["0 0.1875rem 0.375rem", "0 0.1875rem 0.375rem"],
+  topmost: ["0 0.375rem 0.4375rem", "0 0.625rem 1.75rem"],
+};
+
+/** Aliases InstUI ships alongside the primary level names. */
+const ELEVATION_ALIASES: Record<string, keyof typeof ELEVATION_GEOMETRY> = {
+  depth1: "resting",
+  depth2: "above",
+  depth3: "topmost",
+  card: "resting",
+  cardHover: "topmost",
+};
+
+/**
+ * Every elevation level and alias emitted as `--instui-elevation-<name>` (`resting`, `above`,
+ * `topmost`, `depth1`–`depth3`, `card`, `cardHover`). Derived from the geometry + alias maps.
+ */
+export const ELEVATION_NAMES: readonly string[] = [
+  ...Object.keys(ELEVATION_GEOMETRY),
+  ...Object.keys(ELEVATION_ALIASES),
+];
+
+// The tighter layer takes the softer colour, the wider layer the stronger one — InstUI's "lifted" look.
+const ELEVATION_COLOR_STRONG = "var(--instui-color-drop-shadow-shadow-color1)";
+const ELEVATION_COLOR_SOFT = "var(--instui-color-drop-shadow-shadow-color2)";
+const elevationShadow = ([tight, wide]: [string, string]): string =>
+  `${tight} ${ELEVATION_COLOR_SOFT}, ${wide} ${ELEVATION_COLOR_STRONG}`;
+
+/**
+ * The `--instui-elevation-*` name/value pairs (each a multi-layer `box-shadow`). Values reference the
+ * themed drop-shadow colour tokens, so they adapt per theme wherever a token sheet is loaded.
+ *
+ * @returns One `[customProperty, value]` pair per level and alias.
+ */
+export function elevationDeclarations(): [name: string, value: string][] {
+  const levels: [string, [string, string]][] = [
+    ...Object.entries(ELEVATION_GEOMETRY),
+    ...Object.entries(ELEVATION_ALIASES).map(([alias, base]): [string, [string, string]] => [
+      alias,
+      ELEVATION_GEOMETRY[base],
+    ]),
+  ];
+  return levels.map(([name, geo]) => [`--instui-elevation-${name}`, elevationShadow(geo)]);
+}
+
+/**
+ * Build the elevation token block: `<selector> { --instui-elevation-*: … }`. Shipped inside
+ * `components.css` (so shadows are intrinsic — no plugin, no extra import), and reusable by other
+ * layered outputs (e.g. the Pendo renderer) via the `selector` option.
+ *
+ * @param options - `selector` — the rule selector (default `:root`).
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { elevationCss } from "@pantoken/components";
+ *
+ * elevationCss(); // ":root { --instui-elevation-resting: …; --instui-elevation-above: …; … }"
+ * ```
+ */
+export function elevationCss(options: { selector?: string } = {}): string {
+  const selector = options.selector ?? ":root";
+  const body = elevationDeclarations()
+    .map(([name, value]) => `  ${name}: ${value};`)
+    .join("\n");
+  return `${selector} {\n${body}\n}\n`;
+}
+
 /** The six document heading levels, in order. */
 const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
 
@@ -1486,7 +1566,7 @@ export function viewCss(options: ComponentOptions = {}): string {
   ] as const) {
     rules.push(rule(`border-color-${name}`, `border-color: var(--instui-color-stroke-${token});`));
   }
-  // shadow — the named elevations (from @pantoken/plugin-elevation).
+  // shadow — the named elevations (defined by elevationCss, shipped in components.css).
   for (const s of ["resting", "above", "topmost"]) {
     rules.push(rule(`shadow-${s}`, `box-shadow: var(--instui-elevation-${s});`));
   }
@@ -2016,16 +2096,34 @@ ${root} {
   border-radius: var(--instui-component-modal-border-radius);
   font-family: var(--instui-component-modal-font-family);
   overflow: hidden;
+  /* Modals float above the page; the elevation tokens are defined at the top of components.css. */
+  box-shadow: var(--instui-elevation-topmost);
 }
+/* On a native <dialog>, drop the UA padding and centre it; \`showModal()\` puts it in the top layer, so
+   no z-index is needed. The dialog's ::backdrop IS the modal's mask — dim it with the Mask token; the
+   optional -blur modifier frosts it (mirrors .${p}mask.-blur). */
+dialog${root} { margin: auto; padding: 0; }
+dialog${root}::backdrop { background: var(--instui-component-mask-background-color); }
+dialog${root}.-blur::backdrop { backdrop-filter: blur(0.5rem); }
 .${p}modal.-size-sm { max-width: var(--instui-component-modal-small-max-width); }
 .${p}modal.-size-lg { max-width: var(--instui-component-modal-large-max-width); }
 .${p}modal.-size-auto {
   max-width: none;
   min-width: var(--instui-component-modal-auto-min-width);
 }
+/* Fullscreen is truly edge-to-edge (InstUI has no inset). It pins itself fixed and stretches via
+   inset:0 + auto sizing, overriding both a <dialog>'s UA \`width: fit-content\`/\`margin: auto\` and its
+   \`:modal\` max-width cap, so it works on a native dialog or a plain positioned div. No rounded corners
+   at the viewport edge. */
 .${p}modal.-size-fullscreen {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  height: auto;
   max-width: none;
-  margin: var(--instui-component-modal-full-screen-margin);
+  max-height: none;
+  margin: 0;
+  border-radius: 0;
 }
 /* overflow="fit" (InstUI): cap the modal to the viewport and scroll the body, so the header/footer
    stay pinned. The default (overflow="scroll") lets the whole modal grow and the overlay scroll. */
@@ -2221,6 +2319,11 @@ function contextViewRules(p: string): string {
   border: var(--instui-component-context-view-arrow-size) solid transparent;
   border-top-color: var(--instui-component-context-view-arrow-background-color);
 }
+/* Works as a native popover: the class already supplies the box (it out-specifies the UA popover
+   border/padding), so we only keep \`overflow: visible\` for the caret and let the UA centre it in the
+   top layer as the fallback. To point it at a trigger, the consumer opts in with standard CSS anchor
+   positioning (\`anchor-name\` on the trigger + \`position-anchor\` here) where supported (Chromium). */
+[popover].${p}context-view { position: fixed; overflow: visible; }
 `;
 }
 
@@ -3087,6 +3190,9 @@ export function rangeCss(options: ComponentOptions = {}): string {
 /** Mask rules: a translucent overlay that covers its positioned parent, plus fullscreen and blur. */
 function maskRules(p: string): string {
   return `
+/* An in-flow overlay for non-modal cases (e.g. a spinner over a card). For a modal, prefer a native
+   <dialog>: its ::backdrop is the mask and reuses the same \`--instui-component-mask-background-color\`
+   token (see modalRules). */
 .${p}mask {
   position: absolute;
   inset: 0;
@@ -3464,5 +3570,7 @@ export function componentsCss(options: ComponentOptions = {}): string {
     closeButtonRules(ns(prefix)),
   ].map((r) => r.trim());
   const body = withDeprecatedAliases(withSizeAliases(rules.join("\n\n")), ns(prefix));
-  return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${body}\n`;
+  // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve
+  // from components.css alone — elevation is an intrinsic design attribute here, not an add-on.
+  return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${elevationCss()}\n${body}\n`;
 }

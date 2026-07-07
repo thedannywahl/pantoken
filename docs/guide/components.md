@@ -81,6 +81,16 @@ Skip it when you're embedding components into a host that already themes its own
 the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
 low-specificity `:where()` selectors, so your own rules always win.
 
+`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
+fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
+Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
+self-hosting fonts is a deliberate choice.
+
+```ts
+import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
+import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
+```
+
 ## Screen reader content
 
 <p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
@@ -164,3 +174,43 @@ so those aren't per-component modifiers.
 
 Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
 layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+
+## Overlays: dialog and popover
+
+The overlay components ride native platform primitives, so they behave accessibly with little or no
+JavaScript.
+
+**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
+`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
+token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+
+```html
+<button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
+<dialog id="dlg" class="instui-modal">
+  <div class="header">Title</div>
+  <div class="body">…</div>
+  <div class="footer">
+    <button class="instui-button" command="close" commandfor="dlg">Close</button>
+  </div>
+</dialog>
+```
+
+**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
+`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+
+```html
+<button class="instui-button" popovertarget="cv">Details</button>
+<div id="cv" popover class="instui-context-view">…</div>
+```
+
+**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
+covers the modal case.
+
+Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
+`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
+native popover).
+
+Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
+(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
+as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
+supported (Chromium); elsewhere it centers in the top layer.

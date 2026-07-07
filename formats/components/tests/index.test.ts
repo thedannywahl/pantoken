@@ -47,8 +47,8 @@ import {
 
 test("every token referenced by every stylesheet exists in the IR (no drift)", () => {
   const all = `${baseCss()}\n${componentsCss({ prefix: "instui" })}\n${proseCss()}`;
-  // --instui-elevation-* comes from @pantoken/plugin-elevation (a soft dependency of alert --shadow),
-  // not the base IR, so it's expected to be "unknown" here.
+  // --instui-elevation-* are defined by elevationCss (in components.css), not the base token IR, so
+  // they're locally-resolved but still "unknown" to the IR-drift check — filter them out.
   const drift = unknownReferences(all, tokens).filter((r) => !r.startsWith("--instui-elevation-"));
   expect(drift).toEqual([]);
 });
@@ -228,6 +228,21 @@ test("modal has sizes, a compact density, and an inverse scheme", () => {
   expect(css).toContain("var(--instui-component-modal-body-padding-compact)");
   expect(css).toContain(".instui-modal.-color-inverse");
   expect(css).toContain("var(--instui-component-modal-inverse-background-color)");
+  // Modals float, so they carry elevation (from the elevation plugin, like alert's shadow).
+  expect(css).toContain("box-shadow: var(--instui-elevation-topmost)");
+  // Native <dialog> support: UA reset + a ::backdrop dimmed by the Mask token.
+  expect(css).toContain("dialog.instui-modal");
+  expect(css).toContain("dialog.instui-modal::backdrop");
+  expect(css).toContain(
+    "dialog.instui-modal::backdrop { background: var(--instui-component-mask-background-color); }",
+  );
+});
+
+test("context-view resets the UA popover box so it works as a native [popover]", () => {
+  const css = componentsCss({ prefix: "instui" });
+  // Works as a native popover: restore position:fixed (the base sets relative for the caret) so the
+  // UA can centre it in the top layer; keep overflow visible for the caret.
+  expect(css).toContain("[popover].instui-context-view { position: fixed; overflow: visible; }");
 });
 
 test("progress circle has sizes, the meter palette, and an inverse scheme via custom props", () => {

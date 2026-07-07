@@ -15,5 +15,5 @@ const css = toCss(byTheme("rebrand"), { plugins: [stacking()] });
 <div class="instui-view -position-relative instui-stack-above">…</div>
 ```
 
-Like `@pantoken/plugin-elevation`, it defines both a `tokens` hook (bake `--instui-stacking-*` into any
-output) and a `css` hook (self-contained `.instui-stack-*` classes), so you pick the layer.
+It defines both a `tokens` hook (bake `--instui-stacking-*` into any output) and a `css` hook
+(self-contained `.instui-stack-*` classes), so you pick the layer.

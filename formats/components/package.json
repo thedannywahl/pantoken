@@ -7,15 +7,18 @@
     "dist",
     "generated/base.css",
     "generated/components.css",
+    "generated/fonts.css",
     "generated/prose.css",
     "generated/icons.css",
-    "generated/utilities.css"
+    "generated/utilities.css",
+    "assets/fonts"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
     "./base.css": "./generated/base.css",
     "./components.css": "./generated/components.css",
+    "./fonts.css": "./generated/fonts.css",
     "./prose.css": "./generated/prose.css",
     "./icons.css": "./generated/icons.css",
     "./utilities.css": "./generated/utilities.css",
@@ -37,7 +40,6 @@
   },
   "devDependencies": {
     "@pantoken/icons": "workspace:*",
-    "@pantoken/plugin-elevation": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
