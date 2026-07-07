@@ -1,0 +1,48 @@
+{
+  "name": "@pantoken/pendo",
+  "version": "0.0.0",
+  "description": "Instructure-styled global CSS for Pendo guides, built on pantoken tokens (ported from @instructure/pendo-global-css).",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "generated/global.css"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./global.css": "./generated/global.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "embed": "node scripts/embed.ts",
+    "generate": "node scripts/generate.ts",
+    "build": "pnpm run embed && vp pack && pnpm run generate",
+    "dev": "vp pack --watch",
+    "test": "pnpm run embed && vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/css": "workspace:*",
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-elevation": "workspace:*",
+    "@pantoken/plugin-focus-outline": "workspace:*",
+    "@pantoken/plugin-prune-custom-props": "workspace:*",
+    "@pantoken/tokens": "workspace:*",
+    "postcss": "catalog:"
+  },
+  "devDependencies": {
+    "@pantoken/utils": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "pendo",
+    "kind": "subpath"
+  }
+}

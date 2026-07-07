@@ -1,0 +1,16 @@
+ignores:
+  - node_modules
+  - "**/node_modules"
+  - dist
+  - "**/dist"
+  - coverage
+  - "**/coverage"
+  - "**/style.css"
+  # Generated TypeDoc API reference, including per-locale copies (rebuilt by `docs:build`); not
+  # hand-edited.
+  - "docs/api"
+  - "docs/api/**"
+  - "docs/*/api"
+  - "docs/*/api/**"
+  # Tool-managed by `vp config`; not hand-edited.
+  - ".github/copilot-instructions.md"

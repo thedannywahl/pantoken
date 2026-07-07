@@ -1,0 +1,38 @@
+{
+  "name": "@pantoken/core",
+  "version": "0.0.0",
+  "description": "The pantoken transformer: resolves Instructure design tokens + ui-icons into the canonical @property-aligned token IR.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@instructure/instructure-design-tokens": "catalog:",
+    "@instructure/ui-icons": "catalog:",
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*",
+    "@pantoken/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  }
+}

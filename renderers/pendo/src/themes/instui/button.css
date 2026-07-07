@@ -1,0 +1,114 @@
+/* Shared button base styles */
+[class*="instui"] {
+  ._pendo-button {
+    height: var(--instui-component-base-button-small-height);
+    min-height: var(--instui-component-base-button-small-height);
+    padding: var(--instui-component-base-button-padding-vertical)
+      var(--instui-component-base-button-small-padding-horizontal);
+    border-width: var(--instui-component-base-button-border-width);
+    border-radius: var(--instui-component-base-button-border-radius);
+    border-style: var(--instui-component-base-button-border-style);
+    font-family: var(--instui-component-base-button-font-family);
+    font-size: var(--instui-component-base-button-small-font-size);
+    font-weight: var(--instui-component-base-button-font-weight);
+    line-height: var(--instui-component-base-button-line-height);
+    letter-spacing: var(--instui-component-base-button-letter-spacing);
+    cursor: pointer;
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none)
+      var(--instui-component-base-button-gap-button-content-md)
+      var(--instui-component-shared-tokens-spacing-general-space-none)
+      var(--instui-component-shared-tokens-spacing-general-space-none);
+
+    .pendo-mock-flexbox-element:last-child > & {
+      margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+    }
+  }
+
+  /* Primary/Custom button variant */
+  ._pendo-button-primaryButton,
+  ._pendo-button-custom {
+    background: var(--instui-component-base-button-primary-background);
+    border-color: var(--instui-component-base-button-primary-border-color);
+    color: var(--instui-component-base-button-primary-color);
+
+    &:hover {
+      background: var(--instui-component-base-button-primary-hover-background);
+      border-color: var(--instui-component-base-button-primary-hover-border-color);
+      color: var(--instui-component-base-button-primary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-active-background);
+      border-color: var(--instui-component-base-button-primary-active-border-color);
+      color: var(--instui-component-base-button-primary-active-text-color);
+    }
+
+    &:disabled {
+      background: var(--instui-component-base-button-primary-disabled-background-color);
+      border-color: var(--instui-component-base-button-primary-disabled-border-color);
+      color: var(--instui-component-base-button-primary-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+
+  /* Secondary button variant */
+  ._pendo-button-secondaryButton {
+    background: var(--instui-component-base-button-secondary-background);
+    border-color: var(--instui-component-base-button-secondary-border-color);
+    color: var(--instui-component-base-button-secondary-color);
+
+    &:hover {
+      background: var(--instui-component-base-button-secondary-hover-background);
+      border-color: var(--instui-component-base-button-secondary-hover-border-color);
+      color: var(--instui-component-base-button-secondary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-secondary-active-background);
+      border-color: var(--instui-component-base-button-secondary-active-border-color);
+      color: var(--instui-component-base-button-secondary-active-text-color);
+    }
+
+    &:disabled {
+      background: var(--instui-component-base-button-secondary-disabled-background-color);
+      border-color: var(--instui-component-base-button-secondary-disabled-border-color);
+      color: var(--instui-component-base-button-secondary-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+
+  /* Tertiary button variant */
+  ._pendo-button-tertiaryButton {
+    background: transparent;
+    border-color: var(--instui-color-stroke-interactive-action-tertiary-base);
+    color: var(--instui-color-text-interactive-action-tertiary-base);
+
+    &:hover {
+      background: var(--instui-color-background-interactive-action-tertiary-hover);
+      border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+      color: var(--instui-component-base-button-tertiary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-color-background-interactive-action-tertiary-active);
+      border-color: var(--instui-component-base-button-tertiary-active-border-color);
+      color: var(--instui-component-base-button-tertiary-active-text-color);
+    }
+
+    &:disabled {
+      background: transparent;
+      border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+      color: var(--instui-component-base-button-tertiary-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+
+  /* Surveys: Submit / Finish buttons */
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+    /* Submit / Finish buttons: Center only if they're the only button in the container */
+    div:has(> ._pendo-button-primaryButton):not(:has(> :not(._pendo-button-primaryButton))) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

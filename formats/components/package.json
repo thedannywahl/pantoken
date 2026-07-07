@@ -1,0 +1,52 @@
+{
+  "name": "@pantoken/components",
+  "version": "0.0.0",
+  "description": "An InstUI-look CSS component library from the pantoken tokens: prose/content styling plus class-based components (button, alert, badge).",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "generated/base.css",
+    "generated/components.css",
+    "generated/prose.css",
+    "generated/icons.css",
+    "generated/utilities.css"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./base.css": "./generated/base.css",
+    "./components.css": "./generated/components.css",
+    "./prose.css": "./generated/prose.css",
+    "./icons.css": "./generated/icons.css",
+    "./utilities.css": "./generated/utilities.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "vp pack && pnpm run generate",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/plugin-colors": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/icons": "workspace:*",
+    "@pantoken/plugin-elevation": "workspace:*",
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/utils": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "components",
+    "kind": "namespace"
+  }
+}

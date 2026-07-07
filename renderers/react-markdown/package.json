@@ -1,0 +1,79 @@
+{
+  "name": "@pantoken/react-markdown",
+  "version": "0.0.0",
+  "description": "react-markdown integration for pantoken: render Markdown with Instructure UI components and pantoken icons.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./mdx": "./dist/mdx.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/icons": "workspace:*",
+    "@pantoken/model": "workspace:*",
+    "@pantoken/rehype": "workspace:*",
+    "unist-util-visit": "catalog:"
+  },
+  "devDependencies": {
+    "@instructure/ui-alerts": "catalog:",
+    "@instructure/ui-heading": "catalog:",
+    "@instructure/ui-img": "catalog:",
+    "@instructure/ui-link": "catalog:",
+    "@instructure/ui-list": "catalog:",
+    "@instructure/ui-table": "catalog:",
+    "@instructure/ui-text": "catalog:",
+    "@instructure/ui-view": "catalog:",
+    "@mdx-js/react": "catalog:",
+    "@pantoken/plugin-simple-icons": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "core-js": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-markdown": "catalog:",
+    "remark-gfm": "catalog:",
+    "simple-icons": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@instructure/ui-alerts": "*",
+    "@instructure/ui-heading": "*",
+    "@instructure/ui-img": "*",
+    "@instructure/ui-link": "*",
+    "@instructure/ui-list": "*",
+    "@instructure/ui-table": "*",
+    "@instructure/ui-text": "*",
+    "@instructure/ui-view": "*",
+    "@mdx-js/react": "*",
+    "core-js": ">=3",
+    "react": ">=18",
+    "react-markdown": ">=9",
+    "remark-gfm": ">=4"
+  },
+  "peerDependenciesMeta": {
+    "@mdx-js/react": {
+      "optional": true
+    }
+  },
+  "pantoken": {
+    "key": "react-markdown",
+    "kind": "subpath"
+  }
+}

@@ -1,0 +1,171 @@
+/*
+ * Pendo Number Scale Poll is an HTML radio input with labels styled like buttons,
+ * so we implement it like a Pagination component with colors set to
+ * secondary / tertiary instead of primary / secondary.
+ */
+
+[class*="instui"] {
+  ._pendo-number-scale-poll-wrapper {
+    padding: var(--instui-component-shared-tokens-spacing-general-space-none);
+  }
+
+  .pendo-survey-wrapper > div:has(input[type="radio"]),
+  ._pendo-nps-poll-wrapper,
+  [id*="survey-pmf-answers"],
+  [id*="survey-single-choice"] {
+    padding: var(--instui-component-shared-tokens-spacing-general-space-none)
+      var(--instui-component-shared-tokens-spacing-general-space-none)
+      var(--instui-component-shared-tokens-spacing-general-space-lg);
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+  }
+
+  ._pendo-number-scale-poll-wrapper > div[role*="radiogroup"],
+  ._pendo-nps-poll-wrapper > div[role*="radiogroup"],
+  .pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(input[type="radio"]) {
+    gap: var(--instui-component-shared-tokens-spacing-general-space-md);
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+  }
+
+  /*
+   * UX-Lite (and similar) surveys emit radio inputs without id/for linkage
+   * between input and label. Expand the hidden input to cover its container
+   * so clicking the visible label area actually activates the radio.
+   */
+  .pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(input[type="radio"]) > span {
+    position: relative;
+  }
+
+  .pendo-survey-wrapper
+    > div:not([id*="survey-single-choice"]):has(input[type="radio"])
+    > span
+    > input[type="radio"] {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  ._pendo-nps-poll-wrapper > div[role*="radiogroup"] {
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  label.pendo-radio[class*="_pendo-number-scale-poll-"],
+  label.pendo-radio[class*="_pendo-nps-poll-"],
+  .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label {
+    height: var(--instui-component-base-button-small-height);
+    min-height: var(--instui-component-base-button-small-height);
+    width: var(--instui-component-base-button-small-height);
+    aspect-ratio: 1 / 1;
+    border-width: var(--instui-component-base-button-border-width);
+    border-radius: var(--instui-component-base-button-border-radius);
+    border-style: var(--instui-component-base-button-border-style);
+    font-size: var(--instui-component-base-button-small-font-size);
+    /* Line height is set to the button height to center the text vertically, and because the text will always be one line. */
+    line-height: var(--instui-component-base-button-small-height);
+    letter-spacing: var(--instui-component-base-button-letter-spacing);
+    font-family: var(--instui-component-base-button-font-family);
+    font-weight: var(--instui-component-base-button-font-weight);
+    text-align: center;
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    background: var(--instui-component-base-button-secondary-background);
+    border-color: var(--instui-component-base-button-secondary-border-color);
+    color: var(--instui-component-base-button-secondary-color);
+    transition: var(--instui-focus-outline-transition);
+
+    &:hover {
+      background: var(--instui-component-base-button-secondary-hover-background);
+      border-color: var(--instui-component-base-button-secondary-hover-border-color);
+      color: var(--instui-component-base-button-secondary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-secondary-active-background);
+      border-color: var(--instui-component-base-button-secondary-active-border-color);
+      color: var(--instui-component-base-button-secondary-active-text-color);
+    }
+  }
+
+  /* Number scale description */
+  label.pendo-radio[class*="_pendo-number-scale-poll-"] + [class$="-description"],
+  .pendo-survey-wrapper > :not([id*="survey-single-choice"]) label + div {
+    width: var(--instui-component-base-button-small-height);
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    font-weight: var(--instui-component-metric-label-font-weight);
+    line-height: var(--instui-line-height-standalone-text-xs);
+    font-size: var(--instui-component-metric-label-font-size);
+    color: var(--instui-component-text-muted-color);
+  }
+
+  /* Right-align the last description so it anchors to the last button's right edge */
+  [class*="-wrapper"]:last-child,
+  .pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(> span) > span:last-child {
+    position: relative;
+  }
+
+  [class*="-wrapper"]:last-child > [class$="-description"],
+  .pendo-survey-wrapper
+    div:not([id*="survey-single-choice"]):has(> span):last-child
+    > span:last-child
+    > div {
+    position: absolute;
+    width: auto;
+    text-align: right;
+    right: 0;
+  }
+
+  /* NPS label sits left/right of scale, not below */
+  ._pendo-nps-poll-lowerbound-label,
+  ._pendo-nps-poll-upperbound-label {
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+  }
+
+  input.pendo-radio:focus + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+  input.pendo-radio:focus + label.pendo-radio[class*="_pendo-nps-poll-"],
+  .pendo-survey-wrapper
+    > :not([id*="survey-single-choice"])
+    input.pendo-radio:focus
+    + label.pendo-radio,
+  .pendo-survey-wrapper > :not([id*="survey-single-choice"]) input[type="radio"]:focus + label {
+    outline-color: var(--instui-focus-outline-color-start);
+    outline-width: var(--instui-component-shared-tokens-focus-outline-width);
+    outline-style: var(--instui-component-shared-tokens-focus-outline-style);
+    outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+    outline-color: light-dark(
+      var(--instui-component-shared-tokens-focus-outline-info-color),
+      var(--instui-component-shared-tokens-focus-outline-on-color)
+    );
+  }
+
+  input.pendo-radio:checked + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+  input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
+  .pendo-survey-wrapper
+    > :not([id*="survey-single-choice"])
+    input.pendo-radio:checked
+    + label.pendo-radio,
+  .pendo-survey-wrapper > :not([id*="survey-single-choice"]) input[type="radio"]:checked + label {
+    background: var(--instui-component-base-button-primary-background);
+    border-color: var(--instui-component-base-button-primary-border-color);
+    color: var(--instui-component-base-button-primary-color);
+
+    &:hover {
+      background: var(--instui-component-base-button-primary-hover-background);
+      border-color: var(--instui-component-base-button-primary-hover-border-color);
+      color: var(--instui-component-base-button-primary-hover-text-color);
+    }
+
+    &:active {
+      background: var(--instui-component-base-button-primary-active-background);
+      border-color: var(--instui-component-base-button-primary-active-border-color);
+      color: var(--instui-component-base-button-primary-active-text-color);
+    }
+  }
+
+  [class$="-poll-question"] + ._pendo-row [class$="-description"] {
+    padding-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
+    color: var(--instui-component-text-muted-color);
+  }
+}

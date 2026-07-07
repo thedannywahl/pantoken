@@ -1,0 +1,38 @@
+{
+  "name": "@pantoken/icons",
+  "version": "0.0.0",
+  "description": "An ergonomic view over the pantoken IR's <image> tokens: decoded SVGs and per-icon metadata.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "icons",
+    "kind": "namespace"
+  }
+}

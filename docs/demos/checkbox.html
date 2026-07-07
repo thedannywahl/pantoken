@@ -1,0 +1,32 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+    <label class="instui-checkbox"><input type="checkbox" checked /> Checked</label>
+    <label class="instui-checkbox"><input type="checkbox" /> Unchecked</label>
+    <label class="instui-checkbox"
+      ><input type="checkbox" data-indeterminate /> Indeterminate</label
+    >
+    <label class="instui-checkbox -size-sm"><input type="checkbox" checked /> Small</label>
+    <label class="instui-checkbox -invalid"><input type="checkbox" /> Error state</label>
+    <label class="instui-checkbox"><input type="checkbox" checked disabled /> Disabled</label>
+    <label class="instui-checkbox -variant-toggle">
+      <input type="checkbox" checked /> Toggle switch
+    </label>
+
+    <div style="display: flex; gap: 24px; align-items: flex-start; margin-top: 4px">
+      <label class="instui-checkbox -variant-toggle -label-placement-top">
+        <input type="checkbox" checked /> Label on top
+      </label>
+      <label class="instui-checkbox -variant-toggle -label-placement-start">
+        <input type="checkbox" /> Label at start
+      </label>
+      <label class="instui-checkbox -variant-toggle -label-placement-end">
+        <input type="checkbox" checked /> Label at end
+      </label>
+    </div>
+  </div>
+</div>
+
+<script>
+  // The mixed state is a DOM property, not an attribute, so set it in script.
+  document.querySelectorAll("[data-indeterminate]").forEach((el) => (el.indeterminate = true));
+</script>

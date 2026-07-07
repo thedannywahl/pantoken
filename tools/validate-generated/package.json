@@ -1,0 +1,22 @@
+{
+  "name": "@pantoken/validate-generated",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Validate pantoken's generated output: every generator wrote its generated/ dir, the CLI emits for every target, and no CSS reference drifts from the token IR.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "validate": "node index.ts",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  }
+}

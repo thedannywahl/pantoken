@@ -1,0 +1,41 @@
+{
+  "name": "@pantoken/rehype",
+  "version": "0.0.0",
+  "description": "Rehype plugin: render :icon: codes as inline SVG using the pantoken icon set (and plugin resolvers).",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/icons": "workspace:*",
+    "@pantoken/model": "workspace:*",
+    "unist-util-visit": "catalog:"
+  },
+  "devDependencies": {
+    "@pantoken/plugin-simple-icons": "workspace:*",
+    "@types/node": "catalog:",
+    "simple-icons": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "rehype",
+    "kind": "namespace"
+  }
+}

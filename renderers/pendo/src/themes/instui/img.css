@@ -1,0 +1,6 @@
+[class*="instui"] {
+  ._pendo-image {
+    max-width: 100%;
+    height: auto;
+  }
+}

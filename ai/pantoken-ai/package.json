@@ -1,0 +1,37 @@
+{
+  "name": "@pantoken/ai",
+  "version": "0.0.0",
+  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and a Claude Code bootstrap skill, with an installer CLI.",
+  "license": "MIT",
+  "bin": {
+    "pantoken-ai": "bin/pantoken-ai.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "assets",
+    "skills"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "pnpm run generate && vp pack",
+    "dev": "vp pack --watch",
+    "test": "pnpm run generate && vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  }
+}

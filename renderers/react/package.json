@@ -1,0 +1,48 @@
+{
+  "name": "@pantoken/react",
+  "version": "0.0.0",
+  "description": "React helpers for pantoken: <Icon>, useToken, and TokenProvider over the web components + token CSS.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "generated/components.css"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./components.css": "./generated/components.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "vp pack && pnpm run generate",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/web-components": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/components": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "pantoken": {
+    "key": "react",
+    "kind": "subpath"
+  }
+}

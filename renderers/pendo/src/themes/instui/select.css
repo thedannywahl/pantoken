@@ -1,0 +1,176 @@
+[class*="instui"] {
+  ._pendo-multi-choice-poll-select-border[id^="pendo-select-container-"]:has(> select) {
+    border: 0 none;
+    background: none;
+    padding: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    position: relative;
+
+    /* Chevron icon — mask-image approach for automatic light/dark theming */
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: var(--instui-component-text-input-padding-horizontal-sm);
+      top: var(--instui-component-shared-tokens-spacing-general-space-lg);
+      transform: translateY(-50%);
+      width: var(--instui-component-icon-size-sm);
+      height: var(--instui-component-icon-size-sm);
+      mask-image: var(--instui-icon-chevron-down);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      pointer-events: none;
+      background-color: var(--instui-component-text-input-text-color);
+    }
+  }
+
+  /* Select input */
+  select._pendo-multi-choice-poll-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: var(--instui-component-text-input-height-sm);
+    border-radius: var(--instui-component-text-input-border-radius);
+    border-width: var(--instui-component-text-input-border-width);
+    /* @TODO: Text input border style token missing upstream */
+    border-style: solid;
+    padding: var(--instui-component-shared-tokens-spacing-general-space-none)
+      calc(var(--instui-component-text-input-padding-horizontal-sm) + 24px)
+      var(--instui-component-shared-tokens-spacing-general-space-none)
+      var(--instui-component-text-input-padding-horizontal-sm);
+    font-family: var(--instui-component-text-input-font-family);
+    font-weight: var(--instui-component-text-input-font-weight);
+    font-size: var(--instui-component-text-input-font-size-sm);
+    /* Chromium needs larger line-height to visually center vertically */
+    line-height: calc(var(--instui-line-height-standalone-text-base) * 2);
+    letter-spacing: normal;
+    font-style: normal;
+    background-color: var(--instui-component-text-input-background-color);
+    color: var(--instui-component-text-input-text-color);
+    border-color: var(--instui-component-text-input-border-color);
+    transition: var(--instui-focus-outline-transition);
+
+    &:hover {
+      background-color: var(--instui-component-text-input-background-hover-color);
+      border-color: var(--instui-component-text-input-border-hover-color);
+    }
+
+    &:focus {
+      outline-color: var(--instui-focus-outline-color-start);
+      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
+      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
+      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+      outline-color: var(--instui-component-shared-tokens-focus-outline-info-color);
+      background-color: var(--instui-component-text-input-background-color);
+    }
+  }
+
+  /* ─── Select Option | Light/Dark (fallback) ─── */
+  /* <option> elements are OS-rendered; light-dark() provides the fallback before @supports base-select */
+  select._pendo-multi-choice-poll-select option {
+    font-family: var(--instui-component-text-input-font-family);
+    font-weight: var(--instui-component-text-input-font-weight);
+    font-size: var(--instui-component-text-input-font-size-sm);
+    background-color: var(--instui-component-view-background-primary);
+    color: var(--instui-component-text-base-color);
+  }
+
+  /* ─── Select Option | Chromium: customizable select (appearance: base-select) ─── */
+  @supports (appearance: base-select) {
+    /* Rotate chevron when open */
+    ._pendo-multi-choice-poll-select-border[id^="pendo-select-container-"]:has(
+      > select:open
+    )::after {
+      mask-image: var(--instui-icon-chevron-up);
+    }
+
+    /* Opt the <select> into the new model */
+    select._pendo-multi-choice-poll-select,
+    select._pendo-multi-choice-poll-select::picker(select) {
+      appearance: base-select;
+    }
+
+    /* Hide the browser-generated picker icon — we supply our own via mask-image on the container */
+    select._pendo-multi-choice-poll-select::picker-icon {
+      display: none;
+    }
+
+    /* ─── Picker panel ─── */
+    select._pendo-multi-choice-poll-select::picker(select) {
+      border-radius: var(--instui-component-popover-border-radius);
+      border-width: var(--instui-component-shared-tokens-stroke-width-sm);
+      border-style: solid;
+      overflow: hidden;
+      padding: var(--instui-component-shared-tokens-spacing-general-space-none);
+      margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+      background-color: var(--instui-component-options-item-background);
+      border-color: var(--instui-component-popover-border-color);
+      box-shadow: var(--instui-elevation-above);
+    }
+
+    /* ─── Options ─── */
+    select._pendo-multi-choice-poll-select option {
+      border-radius: 0;
+      margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+      font-family: var(--instui-component-options-item-font-family);
+      font-weight: var(--instui-component-options-item-font-weight);
+      font-size: var(--instui-font-size-text-sm);
+      letter-spacing: var(--instui-component-text-letter-spacing-normal);
+      cursor: pointer;
+      line-height: var(--instui-component-options-item-line-height);
+      height: var(--instui-size-interactive-height-sm);
+      background-color: var(--instui-component-options-item-background);
+      color: var(--instui-component-options-item-color);
+
+      /* Hide default browser checkmark — custom icon applied via mask-image on :checked::after */
+      &::checkmark {
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--instui-component-options-item-highlighted-background);
+        color: var(--instui-component-options-item-highlighted-label-color);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:checked {
+        font-weight: var(--instui-component-options-item-font-weight-selected);
+        border-radius: 0;
+        padding-right: calc(
+          var(--instui-component-options-item-padding-horizontal) +
+            var(--instui-spacing-padding-interactive-horizontal-sm)
+        );
+        position: relative;
+        background-color: var(--instui-component-options-item-selected-background);
+        color: var(--instui-component-options-item-selected-label-color);
+
+        /* Check icon — mask-image approach for automatic light/dark theming */
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          right: var(--instui-component-options-item-padding-horizontal);
+          top: 50%;
+          transform: translateY(-50%);
+          width: var(--instui-component-icon-size-sm);
+          height: var(--instui-component-icon-size-sm);
+          mask-image: var(--instui-icon-check);
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          mask-position: center;
+          pointer-events: none;
+          background-color: var(--instui-component-options-item-selected-label-color);
+        }
+
+        &:hover {
+          background-color: var(--instui-component-menu-item-selected-highlighted-background);
+        }
+      }
+    }
+  }
+}

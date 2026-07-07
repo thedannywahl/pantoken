@@ -1,0 +1,123 @@
+[class*="instui"] {
+  /* ─── Row spacing ─── */
+
+  /* Row spacing in Popover layout */
+  ._pendo-row {
+    margin-top: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-bottom: var(--instui-component-shared-tokens-spacing-general-space-sm);
+    margin-left: var(--instui-component-shared-tokens-spacing-general-space-none);
+    line-height: var(--instui-component-shared-tokens-spacing-general-space-none);
+  }
+
+  /* Row spacing in Alert layout */
+  &[data-layout="lightboxBlank"] ._pendo-row {
+    margin-top: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-bottom: var(--instui-component-shared-tokens-spacing-gap-cards-sm);
+    margin-left: var(--instui-component-shared-tokens-spacing-general-space-none);
+  }
+
+  /* Close button spacing in Popover layout */
+  [id*="guide-components"] > :first-child ._pendo-row {
+    margin-right: calc(
+      var(--instui-component-base-button-gap-button-content-sm) +
+        var(--instui-component-base-button-small-height)
+    );
+  }
+
+  /* Close button spacing in Alert layout */
+  &[data-layout="lightboxBlank"] [id*="guide-components"] > :first-child ._pendo-row {
+    margin-right: calc(
+      var(--instui-component-base-button-gap-button-content-sm) +
+        var(--instui-component-base-button-small-height) / 2
+    );
+  }
+
+  /* @TODO: Close button spacing in surveys */
+
+  /* Content spacing */
+  .pendo-block-wrapper {
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+  }
+
+  ._pendo-text-paragraph._pendo-multi-choice-poll-question
+    + ._pendo-row
+    .pendo-mock-flexbox-element,
+  ._pendo-multi-choice-poll-select-border,
+  ._pendo-multi-choice-poll-select {
+    width: 100%;
+  }
+
+  /* Flexbox
+   * Pendo simulates flexbox with position:absolute on children, which collapses
+   * the row height. Replace it with real flexbox derived from the
+   * data-pendo-justify-content attribute so the row sizes to its content.
+   */
+  [data-pendo-justify-content] .pendo-mock-flexbox-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 0;
+  }
+
+  [data-pendo-justify-content="flex-start"] .pendo-mock-flexbox-row {
+    justify-content: flex-start;
+  }
+
+  [data-pendo-justify-content="center"] .pendo-mock-flexbox-row {
+    justify-content: center;
+  }
+
+  [data-pendo-justify-content="flex-end"] .pendo-mock-flexbox-row {
+    justify-content: flex-end;
+  }
+
+  [data-pendo-justify-content="space-between"] .pendo-mock-flexbox-row {
+    justify-content: space-between;
+  }
+
+  /* Reset the absolute positioning Pendo inlines on each child element */
+  [data-pendo-justify-content] .pendo-mock-flexbox-row .pendo-mock-flexbox-element {
+    position: static;
+  }
+
+  /* Card container */
+  ._pendo-step-container-styles {
+    background-color: var(--instui-component-view-background-primary);
+    color: var(--instui-component-view-color);
+    transition: var(--instui-focus-outline-transition);
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &:focus {
+      outline-color: var(--instui-focus-outline-color-start);
+      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
+      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
+      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+      outline-color: light-dark(
+        var(--instui-component-shared-tokens-focus-outline-info-color),
+        var(--instui-component-shared-tokens-focus-outline-on-color)
+      );
+    }
+  }
+
+  /* Surveys */
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+    /* Some surveys don't use `._pendo-row` for spacing, so add margin to direct children that aren't rows. */
+    ._pendo-step-container-styles > :is(div, form, textarea, h2):not(._pendo-row) {
+      margin: var(--instui-component-shared-tokens-spacing-general-space-none) auto
+        var(--instui-component-shared-tokens-spacing-general-space-sm) auto;
+      width: 100%;
+      max-width: var(--manual-light-pendo-embedded-pendo-step-container-styles-width);
+    }
+
+    ._pendo-step-container-styles > ._pendo-row {
+      max-width: var(--manual-light-pendo-embedded-pendo-step-container-styles-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

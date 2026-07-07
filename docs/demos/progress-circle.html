@@ -1,0 +1,68 @@
+<div class="instui-card">
+  <div class="ring-row">
+    <span
+      class="instui-progress-circle -size-sm"
+      style="--value: 25"
+      role="img"
+      aria-label="25 percent"
+    ></span>
+    <span
+      class="instui-progress-circle -color-success"
+      style="--value: 60"
+      role="img"
+      aria-label="60 percent"
+    ></span>
+    <span
+      class="instui-progress-circle -color-warning"
+      style="--value: 75"
+      role="img"
+      aria-label="75 percent"
+    ></span>
+    <span
+      class="instui-progress-circle -size-lg -color-danger"
+      style="--value: 90"
+      role="img"
+      aria-label="90 percent"
+    ></span>
+  </div>
+
+  <div class="ring-demo">
+    <span
+      id="ring"
+      class="instui-progress-circle"
+      style="--value: 0"
+      role="img"
+      aria-label="progress"
+    ></span>
+    <button class="instui-button" id="animate" type="button">Animate</button>
+  </div>
+</div>
+
+<style>
+  .ring-row {
+    display: flex;
+    align-items: center;
+    gap: var(--instui-spacing-space-md, 1rem);
+    margin-block-end: var(--instui-spacing-space-md, 1rem);
+  }
+  .ring-demo {
+    display: flex;
+    align-items: center;
+    gap: var(--instui-spacing-space-md, 1rem);
+  }
+</style>
+
+<script>
+  const ring = document.getElementById("ring");
+  const button = document.getElementById("animate");
+  button.addEventListener("click", () => {
+    let value = 0;
+    const step = () => {
+      value = Math.min(100, value + 2);
+      ring.style.setProperty("--value", String(value));
+      ring.setAttribute("aria-label", `${value} percent`);
+      if (value < 100) requestAnimationFrame(step);
+    };
+    step();
+  });
+</script>

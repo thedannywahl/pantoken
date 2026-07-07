@@ -1,0 +1,41 @@
+{
+  "name": "@pantoken/tokens",
+  "version": "0.0.0",
+  "description": "The npm-published, semver'd home for Instructure design tokens: the resolved @property-aligned IR plus the raw Tokens Studio JSON.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./raw": "./dist/raw.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "pnpm run generate && vp pack",
+    "dev": "vp pack --watch",
+    "test": "pnpm run generate && vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*"
+  },
+  "devDependencies": {
+    "@instructure/instructure-design-tokens": "catalog:",
+    "@pantoken/core": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "tokens",
+    "kind": "namespace"
+  }
+}

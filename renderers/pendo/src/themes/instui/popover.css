@@ -1,0 +1,95 @@
+/* Popover container (Overlay guides + surveys) */
+[class*="instui"]:is([data-layout="tooltipBlank"], ._pendo-guide-walkthrough_) {
+  ._pendo-step-container-size {
+    height: auto;
+  }
+
+  ._pendo-step-container-styles {
+    min-height: 2.75rem;
+    /* @TODO: overflow-y causes scrollbar to break border-radius */
+    /* 2x border radius + 2x caret size */
+    border-radius: var(--instui-component-popover-border-radius);
+    border-color: var(--instui-component-popover-border-color);
+    box-shadow: var(--instui-elevation-above);
+    /* gap-cards-md + box-shadow y + box-shadow spread */
+    margin-bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md));
+    margin-left: var(--instui-component-shared-tokens-spacing-general-space-md);
+    margin-right: var(--instui-component-shared-tokens-spacing-general-space-md);
+    margin-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
+  }
+
+  .pendo-tooltip-caret {
+    --caret-color: var(--instui-component-view-background-primary);
+
+    /* Pendo positions carets against _pendo-step-container-size, but our box
+     * carries margins (for box-shadow room + spacing), so the caret lands at the
+     * margin edge instead of touching the box. Pull each caret back toward the
+     * box by its margin so it sits flush (1px overlap under the border). The
+     * build adds !important, which overrides Pendo's dynamic inline offsets. */
+    &.pendo-tooltip-caret--top {
+      border-top-color: var(--caret-color);
+      /* sits below the box: shift up by margin-bottom */
+      bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 15px);
+
+      & + .pendo-tooltip-caret-border {
+        bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 16px);
+      }
+    }
+
+    &.pendo-tooltip-caret--right {
+      border-right-color: var(--caret-color);
+      left: -3px;
+
+      & + .pendo-tooltip-caret-border {
+        left: -4px;
+      }
+    }
+
+    &.pendo-tooltip-caret--bottom {
+      border-bottom-color: var(--caret-color);
+      /* sits above the box: shift down by margin-top */
+      top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 15px);
+
+      & + .pendo-tooltip-caret-border {
+        top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 16px);
+      }
+    }
+
+    &.pendo-tooltip-caret--left {
+      border-left-color: var(--caret-color);
+      right: -3px;
+
+      & + .pendo-tooltip-caret-border {
+        right: -4px;
+      }
+    }
+  }
+
+  /* Overlay Guides */
+  &[data-layout="tooltipBlank"] {
+    ._pendo-step-container-styles {
+      width: var(--manual-light-pendo-overlay-pendo-step-container-styles-width);
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-sm)
+        var(--instui-component-shared-tokens-spacing-padding-card-sm)
+        var(--instui-component-shared-tokens-spacing-general-space-none);
+    }
+  }
+
+  /* Surveys */
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+    ._pendo-step-container-styles {
+      width: auto;
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-lg)
+        var(--instui-component-shared-tokens-spacing-padding-card-lg)
+        var(--instui-component-shared-tokens-spacing-general-space-sm);
+      /* Cuts off box-shadow, but Surveys are anchored to bottom of viewport */
+      margin-bottom: var(--instui-component-shared-tokens-spacing-general-space-md);
+    }
+
+    &:not(:has(._pendo-row)) {
+      ._pendo-step-container-styles {
+        padding-bottom: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@pantoken/demo",
+  "version": "0.0.0",
+  "description": "Self-hosted, token-themed live-demo runner for docs: resolve a @demo <provider>:<ref> spec to an embeddable iframe, and render bare HTML/CSS/JS demos same-origin.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "assets"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./demo.css": "./assets/demo.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack && vp build -c vite.runner.config.ts",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "devDependencies": {
+    "@codemirror/lang-css": "^6.3.0",
+    "@codemirror/lang-html": "^6.4.9",
+    "@codemirror/lang-javascript": "^6.2.2",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@types/markdown-it": "catalog:",
+    "@types/node": "catalog:",
+    "codemirror": "^6.0.1",
+    "dompurify": "^3.2.4",
+    "markdown-it": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "markdown-it": ">=14"
+  },
+  "peerDependenciesMeta": {
+    "markdown-it": {
+      "optional": true
+    }
+  }
+}

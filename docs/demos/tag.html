@@ -1,0 +1,15 @@
+<div class="instui-card">
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-tag -size-sm">small</span>
+    <span class="instui-tag">design</span>
+    <span class="instui-tag -size-lg">large</span>
+    <button class="instui-tag -inline" data-dismiss>dismissible</button>
+  </div>
+</div>
+
+<script>
+  // The --inline tag is dismissible: clicking its close glyph removes it.
+  document.querySelectorAll(".-inline[data-dismiss]").forEach((tag) => {
+    tag.addEventListener("click", () => tag.remove());
+  });
+</script>

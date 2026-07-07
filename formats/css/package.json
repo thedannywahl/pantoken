@@ -1,0 +1,44 @@
+{
+  "name": "@pantoken/css",
+  "version": "0.0.0",
+  "description": "Emit Instructure design tokens as @property-typed CSS with light-dark() and icon data-URIs, from the pantoken IR.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "generated/style.css"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./inject": "./dist/inject.mjs",
+    "./style.css": "./generated/style.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "vp pack && pnpm run generate",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/utils": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "css",
+    "kind": "sideEffect"
+  }
+}

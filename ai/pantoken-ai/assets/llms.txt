@@ -1,0 +1,38 @@
+# pantoken
+
+> Instructure UI design tokens and icons, exported once and re-shaped for many platforms — CSS, JS,
+> native (Swift/Android/Compose/Flutter), design tools (Figma), and framework integrations. Tokens
+> are CSS custom properties named `--instui-*`; icons come from Lucide + Instructure custom glyphs.
+
+## Getting started
+
+- [Unified package](https://www.npmjs.com/package/pantoken): `npm i pantoken` — every target under one import; subpaths like `pantoken/css`, `pantoken/react`, `pantoken/tailwind`.
+- Web CSS: `@pantoken/css` — `import "@pantoken/css/inject"` defines all `--instui-*` properties.
+- Tokens as data: `@pantoken/tokens` — `import { tokens, byTheme } from "@pantoken/tokens"`.
+- Icons: `@pantoken/icons`, or `@pantoken/web-components` for `<instui-icon>`.
+
+## Frameworks
+
+- React: `@pantoken/react` · Vue: `@pantoken/vue` · Svelte: `@pantoken/svelte` · Angular: `@pantoken/angular` · React Native: `@pantoken/react-native`
+- Markdown: `@pantoken/react-markdown`, `@pantoken/rehype`
+
+## Build tools
+
+- `@pantoken/vite` · `@pantoken/next` · `@pantoken/webpack` · `@pantoken/tailwind` · `@pantoken/postcss`
+
+## Theming other systems
+
+- `@pantoken/shadcn` · `@pantoken/bootstrap` · `@pantoken/storybook`
+
+## Native & other ecosystems (CLI: `pantoken generate <target>`)
+
+- swift, android, compose, flutter, wordpress, vanilla, drupal — add `--icons`, `--theme`, `--out`.
+
+## Design & interchange
+
+- `@pantoken/dtcg` (W3C DTCG JSON) · `@pantoken/scss` · `@pantoken/figma` (Figma Variables) · `@pantoken/email`
+
+## Conventions
+
+- Token names: `--instui-<group>-<name>` (e.g. `--instui-color-background-brand`).
+- Themes: rebrand (default), canvas, canvasHighContrast. Prefer `var(--instui-*)` references for theming.

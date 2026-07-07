@@ -1,0 +1,44 @@
+{
+  "name": "@pantoken/astro",
+  "version": "0.0.0",
+  "description": "Astro / Starlight integration for pantoken: inject Instructure design tokens and icons as CSS.",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "generated/components.css"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./components.css": "./generated/components.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "vp pack && pnpm run generate",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/css": "workspace:*",
+    "@pantoken/model": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/components": "workspace:*",
+    "@pantoken/plugin-focus-outline": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "astro",
+    "kind": "namespace"
+  }
+}

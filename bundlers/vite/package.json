@@ -1,0 +1,41 @@
+{
+  "name": "@pantoken/vite",
+  "version": "0.0.0",
+  "description": "Vite plugin for pantoken: virtual modules for tokens and CSS, plus optional stylesheet injection.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/css": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "vite": ">=5"
+  },
+  "pantoken": {
+    "key": "vite",
+    "kind": "subpath"
+  }
+}

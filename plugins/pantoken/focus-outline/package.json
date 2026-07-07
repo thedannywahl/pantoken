@@ -1,0 +1,39 @@
+{
+  "name": "@pantoken/plugin-focus-outline",
+  "version": "0.0.0",
+  "description": "pantoken plugin: inject the InstUI focus-outline ring (not in the source tokens) at the token layer OR the CSS layer.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*",
+    "@pantoken/tokens": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "focusOutline",
+    "kind": "namespace"
+  }
+}

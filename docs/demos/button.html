@@ -1,0 +1,129 @@
+<div class="instui-card">
+  <div class="button-demo">
+    <section>
+      <h4>Colors</h4>
+      <div class="row">
+        <button class="instui-button">Primary</button>
+        <button class="instui-button -color-secondary">Secondary</button>
+        <button class="instui-button -color-tertiary">Tertiary</button>
+        <button class="instui-button -color-success">Success</button>
+        <button class="instui-button -color-danger">Danger</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>AI</h4>
+      <div class="row">
+        <button class="instui-button -color-ai">AI primary</button>
+        <button class="instui-button -color-ai-secondary">AI secondary</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Primary inverse (on a colored surface)</h4>
+      <div class="row on-brand">
+        <button class="instui-button -color-primary-inverse">Primary inverse</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Ghost (no background)</h4>
+      <div class="row">
+        <button class="instui-button -without-background">Primary ghost</button>
+        <button class="instui-button -color-secondary -without-background">Secondary ghost</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Block (full width)</h4>
+      <button class="instui-button -display-block">Block button</button>
+    </section>
+
+    <section>
+      <h4>Sizes</h4>
+      <div class="row">
+        <button class="instui-button -size-sm">Small</button>
+        <button class="instui-button">Medium</button>
+        <button class="instui-button -size-lg">Large</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Icons and shapes</h4>
+      <div class="row">
+        <button class="instui-button">
+          Continue
+          <span class="instui-icon -icon-arrow-right"></span>
+        </button>
+        <button class="instui-button -color-secondary">
+          <span class="instui-icon -icon-download"></span>
+          Download
+        </button>
+        <button class="instui-button -color-secondary" id="star" aria-pressed="false">
+          <span class="instui-icon -icon-star"></span>
+          <span id="star-label">Star</span>
+        </button>
+        <button class="instui-button -shape-square" aria-label="Next">
+          <span class="instui-icon -icon-arrow-right"></span>
+        </button>
+        <button class="instui-button -shape-circle" aria-label="Add">
+          <span class="instui-icon -icon-plus"></span>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Condensed and states</h4>
+      <div class="row">
+        <button class="instui-button -condensed">Condensed</button>
+        <button class="instui-button -condensed -size-sm">Condensed small</button>
+        <button class="instui-button -toggle" id="toggle" aria-pressed="false">Toggle</button>
+        <button class="instui-button" disabled>Disabled</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .button-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .button-demo .row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  /*
+   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
+   * light-scheme (dark navy) value in both site modes — otherwise the surface flips light in dark
+   * mode and the white button disappears.
+   */
+  .button-demo .on-brand {
+    color-scheme: light;
+    padding: 12px;
+    border-radius: var(--instui-border-radius-md, 6px);
+    background: var(--instui-color-background-brand, #0770a3);
+  }
+</style>
+
+<script>
+  const star = document.getElementById("star");
+  const starLabel = document.getElementById("star-label");
+  let starred = false;
+  star.addEventListener("click", () => {
+    starred = !starred;
+    starLabel.textContent = starred ? "Starred" : "Star";
+    star.setAttribute("aria-pressed", String(starred));
+  });
+
+  const toggle = document.getElementById("toggle");
+  toggle.addEventListener("click", () => {
+    toggle.setAttribute(
+      "aria-pressed",
+      toggle.getAttribute("aria-pressed") === "true" ? "false" : "true",
+    );
+  });
+</script>

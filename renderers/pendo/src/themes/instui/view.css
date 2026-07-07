@@ -1,0 +1,15 @@
+/* Divider */
+[class*="instui"] {
+  .pendo-mock-flexbox-element:has(._pendo-divider) {
+    width: 100%;
+  }
+
+  hr {
+    border-width: var(--instui-component-shared-tokens-stroke-width-sm);
+    border-style: var(--instui-component-view-border-style);
+    margin: var(--instui-component-shared-tokens-spacing-general-space-xs)
+      var(--instui-component-shared-tokens-spacing-general-space-none);
+    border-radius: var(--instui-component-shared-tokens-border-radius-full);
+    border-color: var(--instui-component-tabs-panel-border-color);
+  }
+}

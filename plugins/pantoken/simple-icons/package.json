@@ -1,0 +1,42 @@
+{
+  "name": "@pantoken/plugin-simple-icons",
+  "version": "0.0.0",
+  "description": "pantoken plugin: add Simple Icons brand glyphs as <image> tokens (token layer) OR resolve them at render (rehype layer).",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "simple-icons": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "simple-icons": ">=13"
+  },
+  "pantoken": {
+    "key": "simpleIcons",
+    "kind": "namespace"
+  }
+}

@@ -1,0 +1,92 @@
+<div class="instui-card">
+  <div class="typography-demo">
+    <section>
+      <h4>Heading levels</h4>
+      <div class="stack">
+        <div class="instui-heading -level-h1">Heading h1</div>
+        <div class="instui-heading -level-h2">Heading h2</div>
+        <div class="instui-heading -level-h3">Heading h3</div>
+        <div class="instui-heading -level-h4">Heading h4</div>
+        <div class="instui-heading -level-h5">Heading h5</div>
+        <div class="instui-heading -level-h6">Heading h6</div>
+      </div>
+    </section>
+
+    <section>
+      <h4>Heading type variants</h4>
+      <div class="stack">
+        <div class="instui-heading -variant-title-page">Title page</div>
+        <div class="instui-heading -variant-title-section">Title section</div>
+        <div class="instui-heading -variant-title-card-section">Title card section</div>
+        <div class="instui-heading -variant-title-card-regular">Title card regular</div>
+        <div class="instui-heading -variant-title-card-mini">Title card mini</div>
+        <div class="instui-heading -variant-label">Label</div>
+      </div>
+    </section>
+
+    <section>
+      <h4>Heading color and treatment</h4>
+      <div class="stack">
+        <div class="instui-heading -level-h3">Primary (default)</div>
+        <div class="instui-heading -level-h3 -color-secondary">Secondary</div>
+        <div class="instui-heading -level-h3 -color-ai">AI gradient</div>
+        <div class="instui-heading -level-h3 -border-bottom">With bottom border</div>
+      </div>
+    </section>
+
+    <section>
+      <h4>Text sizes</h4>
+      <div class="stack">
+        <span class="instui-text -size-xs">x-small text</span>
+        <span class="instui-text -size-sm">small text</span>
+        <span class="instui-text">medium text (default)</span>
+        <span class="instui-text -size-lg">large text</span>
+        <span class="instui-text -size-xl">x-large text</span>
+      </div>
+    </section>
+
+    <section>
+      <h4>Text weight, style, and color</h4>
+      <div class="stack">
+        <span class="instui-text -weight-bold">Bold</span>
+        <span class="instui-text -style-italic">Italic</span>
+        <span class="instui-text -color-brand">Brand</span>
+        <span class="instui-text -color-success">Success</span>
+        <span class="instui-text -color-danger">Danger</span>
+        <span class="instui-text -color-warning">Warning</span>
+        <span class="instui-text -weight-bold -color-danger">Bold danger (stacked)</span>
+        <span class="instui-text -color-secondary">Secondary</span>
+      </div>
+    </section>
+
+    <section>
+      <h4>Text content variants</h4>
+      <div class="stack">
+        <span class="instui-text -variant-description-page">Description page</span>
+        <span class="instui-text -variant-description-section">Description section</span>
+        <span class="instui-text -variant-content-small">Content small</span>
+        <span class="instui-text -variant-legend">Legend</span>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .typography-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .typography-demo h4 {
+    margin: 0 0 8px;
+    font: inherit;
+    font-weight: var(--instui-font-weight-body-strong, 700);
+    color: var(--instui-color-text-secondary, #6a7883);
+  }
+  .typography-demo .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+</style>

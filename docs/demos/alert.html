@@ -1,0 +1,83 @@
+<div class="alert-demo">
+  <div class="alert-list">
+    <div class="instui-alert -color-info instui-transition">
+      Dismissable with <code>transition="fade"</code> — I fade out when closed.
+      <button class="instui-close-button -size-sm" aria-label="Close"></button>
+    </div>
+    <div class="instui-alert -color-success">
+      Dismissable with <code>transition="none"</code> — I close instantly.
+      <button class="instui-close-button -size-sm" aria-label="Close"></button>
+    </div>
+    <div class="instui-alert -color-warning">Not dismissable — no close button.</div>
+    <div class="instui-alert -color-info -has-shadow alert-announce instui-transition">
+      A custom icon (InstUI's megaphone glyph) via <code>--pantoken-alert-glyph</code>, elevated
+      with a shadow.
+      <button class="instui-close-button -size-sm" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <button class="instui-button -color-secondary -size-sm" data-role="restore" disabled>
+    Restore alerts
+  </button>
+</div>
+
+<style>
+  .alert-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: stretch;
+  }
+  /* A custom alert glyph: InstUI's megaphone icon token, masked into the icon bar. */
+  .alert-announce {
+    --pantoken-alert-glyph: var(--instui-icon-megaphone);
+  }
+</style>
+
+<script>
+  const list = document.querySelector(".alert-list");
+  const restore = document.querySelector('[data-role="restore"]');
+  const initial = list.innerHTML;
+
+  // Dismiss an alert. With the transition prop (the .instui-transition base) it fades out first,
+  // backed by a timeout in case transitionend is missed; otherwise it's removed immediately.
+  function wireCloses(root) {
+    root.querySelectorAll(".instui-close-button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const alert = btn.closest(".instui-alert");
+        restore.disabled = false;
+        if (alert.classList.contains("instui-transition")) {
+          alert.classList.add("-fade-exiting");
+          const drop = () => alert.remove();
+          alert.addEventListener("transitionend", drop, { once: true });
+          setTimeout(drop, 500);
+        } else {
+          alert.remove();
+        }
+      });
+    });
+  }
+  wireCloses(list);
+
+  // Re-render the alerts; fade the transition-enabled ones back in.
+  restore.addEventListener("click", () => {
+    list.innerHTML = initial;
+    list.querySelectorAll(".instui-alert.instui-transition").forEach((a) => {
+      a.classList.add("-fade-exited");
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          a.classList.remove("-fade-exited");
+          a.classList.add("-fade-entered");
+        }),
+      );
+    });
+    wireCloses(list);
+    restore.disabled = true;
+  });
+</script>

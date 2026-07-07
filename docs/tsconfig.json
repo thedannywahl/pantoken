@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": false,
+    "noEmit": true,
+    "strict": true,
+    "types": ["node", "vite/client"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+  },
+  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue", ".vitepress/**/*.d.ts"]
+}

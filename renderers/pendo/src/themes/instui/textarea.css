@@ -1,0 +1,69 @@
+[class*="instui"] {
+  ._pendo-row:has(._pendo-open-text-poll-input) {
+    height: auto;
+  }
+
+  ._pendo-row:has(._pendo-open-text-poll-input) .pendo-mock-flexbox-row {
+    height: auto;
+    min-height: unset;
+  }
+
+  ._pendo-row:has(._pendo-open-text-poll-input) .pendo-mock-flexbox-element {
+    position: static;
+    width: 100%;
+  }
+
+  /* TextArea */
+  ._pendo-open-text-poll-input {
+    border-radius: var(--instui-component-text-area-border-radius);
+    border-width: var(--instui-component-text-area-border-width);
+    border-style: solid;
+    padding: var(--instui-component-text-area-padding);
+    gap: var(--instui-component-text-area-gap-content);
+    min-height: var(--instui-component-text-area-min-height);
+    height: auto;
+    max-height: var(--instui-component-text-area-max-height);
+    width: 100%;
+    font-family: var(--instui-component-text-area-font-family);
+    font-weight: var(--instui-component-text-area-font-weight);
+    font-size: var(--instui-component-text-area-font-size-sm);
+    line-height: var(--instui-line-height-standalone-text-base);
+    letter-spacing: normal;
+    font-style: normal;
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    background-color: var(--instui-component-text-area-background-color);
+    color: var(--instui-component-text-area-text-color);
+    border-color: var(--instui-component-text-area-border-color);
+    transition: var(--instui-focus-outline-transition);
+
+    &:hover {
+      background: var(--instui-component-text-area-background-hover-color);
+      border-color: var(--instui-component-text-area-border-hover-color);
+    }
+
+    &:focus {
+      outline-color: var(--instui-focus-outline-color-start);
+      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
+      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
+      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+      outline-color: var(--instui-component-shared-tokens-focus-outline-info-color);
+      background-color: var(--instui-component-text-area-background-color);
+      border-color: var(--instui-component-text-area-border-color);
+    }
+
+    &::placeholder {
+      color: var(--instui-component-text-area-placeholder-color);
+    }
+
+    &:hover::placeholder {
+      color: var(--instui-component-text-area-placeholder-hover-color);
+    }
+  }
+
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+    ._pendo-open-text-poll-input {
+      /* PMF Survey does not have `rows` attribute, so manually set to match other surveys */
+      min-height: 100px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+[class*="instui"] {
+  ._pendo-backdrop {
+    background-color: var(--instui-component-mask-background-color);
+  }
+}

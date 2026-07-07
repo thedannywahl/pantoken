@@ -1,0 +1,42 @@
+{
+  "name": "@pantoken/docusaurus",
+  "version": "0.0.0",
+  "description": "Theme a Docusaurus site with Instructure tokens: maps Infima's --ifm-* CSS variables to var(--instui-*).",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "generated/custom.css",
+    "generated/components.css"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./custom.css": "./generated/custom.css",
+    "./components.css": "./generated/components.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "vp pack && pnpm run generate",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "devDependencies": {
+    "@pantoken/components": "workspace:*",
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/utils": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "docusaurus",
+    "kind": "namespace"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "@pantoken/cli",
+  "version": "0.0.0",
+  "description": "pantoken generate <target> — emit native design-token source (Swift now; Kotlin/Dart/Drupal to follow).",
+  "license": "MIT",
+  "bin": {
+    "pantoken": "bin/pantoken.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/android": "workspace:*",
+    "@pantoken/compose": "workspace:*",
+    "@pantoken/drupal": "workspace:*",
+    "@pantoken/flutter": "workspace:*",
+    "@pantoken/hugo": "workspace:*",
+    "@pantoken/icon-font": "workspace:*",
+    "@pantoken/jekyll": "workspace:*",
+    "@pantoken/mintlify": "workspace:*",
+    "@pantoken/model": "workspace:*",
+    "@pantoken/pendo": "workspace:*",
+    "@pantoken/rust": "workspace:*",
+    "@pantoken/swatches": "workspace:*",
+    "@pantoken/swift": "workspace:*",
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/vanilla": "workspace:*",
+    "@pantoken/wordpress": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  }
+}

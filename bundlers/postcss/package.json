@@ -1,0 +1,41 @@
+{
+  "name": "@pantoken/postcss",
+  "version": "0.0.0",
+  "description": "PostCSS plugin for pantoken: expands an @pantoken at-rule into the token stylesheet.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/css": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "postcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "postcss": ">=8"
+  },
+  "pantoken": {
+    "key": "postcss",
+    "kind": "subpath"
+  }
+}

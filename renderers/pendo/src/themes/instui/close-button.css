@@ -1,0 +1,35 @@
+[class*="instui"] {
+  ._pendo-close-guide {
+    padding-bottom: var(--instui-component-shared-tokens-spacing-general-space-xs);
+    height: var(--instui-component-base-button-small-height);
+    aspect-ratio: 1;
+    border-radius: var(--instui-component-base-button-border-radius);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-width: var(--instui-component-shared-tokens-spacing-general-space-none);
+    background-size: var(--instui-component-icon-size-sm);
+    position: absolute;
+    inset-inline: auto var(--instui-component-shared-tokens-spacing-general-space-xs);
+    inset-block-start: var(--instui-component-shared-tokens-spacing-general-space-xs);
+    font-size: var(--instui-font-size-text-lg);
+    font-family: var(--instui-component-base-button-font-family);
+    font-weight: var(--instui-primitive-font-weight-medium);
+    color: var(--instui-component-text-base-color);
+
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--instui-component-base-button-primary-ghost-hover-background);
+    }
+
+    &:active {
+      background-color: var(--instui-component-base-button-primary-ghost-active-background);
+    }
+  }
+
+  &[data-layout="lightboxBlank"] ._pendo-close-guide {
+    inset-block-start: var(--instui-component-alert-close-button-margin-top);
+    inset-inline-end: var(--instui-component-alert-close-button-margin-right);
+  }
+}

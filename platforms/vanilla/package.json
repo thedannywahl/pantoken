@@ -1,0 +1,40 @@
+{
+  "name": "@pantoken/vanilla",
+  "version": "0.0.0",
+  "description": "Emit Instructure design tokens as a Vanilla Forums (Foundation) theme variables.json.",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "build": "pnpm run generate && vp pack",
+    "dev": "vp pack --watch",
+    "test": "pnpm run generate && vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/tokens": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "vanilla",
+    "kind": "subpath"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+  "noStandardTags": false,
+  "tagDefinitions": [
+    { "tagName": "@property", "syntaxKind": "block" },
+    { "tagName": "@module", "syntaxKind": "block" }
+  ]
+}

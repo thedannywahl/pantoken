@@ -1,0 +1,103 @@
+[class*="instui"] {
+  /* Radio label */
+  ._pendo-multi-choice-poll-select-border label.pendo-radio,
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"])
+    :is([id*="survey-pmf-answers"], [id*="survey-single-choice"])
+    label.pendo-radio {
+    font-family: var(--instui-component-radio-input-font-family);
+    font-weight: var(--instui-component-radio-input-font-weight);
+    font-size: var(--instui-component-radio-input-font-size-sm);
+    line-height: var(--instui-component-radio-input-line-height-sm);
+    letter-spacing: normal;
+    font-style: normal;
+    /* @TODO: --instui-component-radio-input-control-size-sm should not scale, remove override. */
+    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    background-color: var(--instui-color-transparent-color);
+    color: var(--instui-component-radio-input-label-base-color);
+
+    &:hover {
+      color: var(--instui-component-radio-input-label-hover-color);
+    }
+  }
+
+  /* Radio input */
+  ._pendo-multi-choice-poll-select-border input.pendo-radio,
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"])
+    :is([id*="survey-pmf-answers"], [id*="survey-single-choice"])
+    input.pendo-radio {
+    /* @TODO: --instui-component-radio-input-control-size-sm should not scale, remove override. */
+    width: var(--instui-component-shared-tokens-spacing-general-space-lg);
+    height: var(--instui-component-shared-tokens-spacing-general-space-lg);
+    border-radius: var(--instui-component-shared-tokens-border-radius-full);
+    border-width: var(--instui-component-radio-input-border-width);
+    border-style: solid;
+    margin: var(--instui-component-shared-tokens-spacing-general-space2xs)
+      var(--instui-component-radio-input-gap)
+      var(--instui-component-shared-tokens-spacing-general-space-none)
+      var(--instui-component-shared-tokens-spacing-general-space-none);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-color: var(--instui-component-radio-input-border-color);
+    background-color: var(--instui-component-radio-input-background-color);
+    transition: var(--instui-focus-outline-transition);
+
+    &:hover {
+      background-color: var(--instui-component-radio-input-background-hover-color);
+      border-color: var(--instui-component-radio-input-border-readonly-color);
+    }
+
+    &:checked {
+      /* @TODO: --instui-component-radio-input-control-size-sm should not scale, remove override. */
+      box-shadow: var(--instui-component-radio-input-border-selected-color) inset 0 0 0
+        calc(var(--instui-component-radio-input-checked-inset-sm) / 2);
+      border-color: var(--instui-component-radio-input-border-selected-color);
+
+      + label {
+        background: var(--instui-color-transparent-color);
+        color: var(--instui-component-radio-input-label-base-color);
+      }
+    }
+
+    &:focus {
+      outline-color: var(--instui-focus-outline-color-start);
+      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
+      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
+      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+      outline-color: var(--instui-component-shared-tokens-focus-outline-info-color);
+
+      + label {
+        outline: none;
+      }
+    }
+  }
+
+  /* Form field label */
+  [class$="-poll-question"] > ._pendo-simple-text > ._pendo-text-plain {
+    font-family: var(--instui-component-form-field-layout-font-family);
+    font-weight: var(--instui-component-form-field-layout-font-weight);
+    font-size: var(--instui-component-form-field-layout-font-size);
+    line-height: var(--instui-component-form-field-layout-line-height);
+    letter-spacing: normal;
+    font-style: normal;
+    margin: var(--instui-component-form-field-layout-gap-primitives)
+      var(--instui-component-shared-tokens-spacing-general-space-none);
+    color: var(--instui-component-form-field-layout-text-color);
+  }
+
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+    :is([id*="survey-pmf-answers"], [id*="survey-single-choice"]) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* PMF survey inputs are inline-block by default, override to stack vertically. */
+    :is([id*="survey-pmf-answers"], [id*="survey-single-choice"]) span:has(.pendo-radio) {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+      text-align: left;
+    }
+  }
+}

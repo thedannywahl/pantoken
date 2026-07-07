@@ -1,0 +1,23 @@
+<div class="instui-card">
+  <div class="instui-tabs" id="tabs-demo">
+    <div class="instui-tabs__list" role="tablist">
+      <button class="instui-tabs__tab -selected" role="tab" data-panel="Overview">Overview</button>
+      <button class="instui-tabs__tab" role="tab" data-panel="Details">Details</button>
+      <button class="instui-tabs__tab" role="tab" data-panel="History">History</button>
+    </div>
+    <div class="instui-tabs__panel" role="tabpanel">The Overview tab's content shows here.</div>
+  </div>
+</div>
+
+<script>
+  const root = document.getElementById("tabs-demo");
+  const tabs = root.querySelectorAll(".instui-tabs__tab");
+  const panel = root.querySelector(".instui-tabs__panel");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("-selected"));
+      tab.classList.add("-selected");
+      panel.textContent = `The ${tab.dataset.panel} tab's content shows here.`;
+    });
+  });
+</script>

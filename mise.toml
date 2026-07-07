@@ -1,0 +1,37 @@
+# mise — the polyglot toolchain + orchestration layer for pantoken.
+#
+# It pins the JS toolchain AND the native toolchains needed to build and verify generated output,
+# and gives one cross-language task runner. pnpm + vite-plus remain the source of truth for the JS
+# packages; mise sits on top for toolchains and native orchestration.
+
+[tools]
+node = "24"
+pnpm = "11.9.0"
+# Native toolchains are added as targets come online. Swift powers the v1 native proof; on macOS it
+# is provided by Xcode, and mise can manage it on Linux via the swift backend.
+# swift = "latest"
+# Planned: java + gradle (Compose), dart/flutter (Flutter), php + composer (Drupal).
+
+[tasks.build]
+description = "Build every JS package"
+run = "pnpm run -r build"
+
+[tasks.test]
+description = "Test every JS package"
+run = "pnpm run -r test"
+
+[tasks.check]
+description = "Lint + type-check every JS package"
+run = "pnpm run -r check"
+
+[tasks.ready]
+description = "The single pass/fail gate (build + check + test)"
+run = "pnpm run ready"
+
+[tasks."generate:swift"]
+description = "Emit the Swift package and compile it (native proof, end-to-end)"
+run = [
+  "node packages/cli/bin/pantoken.mjs generate swift --out ./native/swift --class PanTokens",
+  # Requires the Swift toolchain (Xcode on macOS, or `mise use swift` on Linux).
+  "swift build --package-path ./native/swift",
+]

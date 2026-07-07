@@ -1,0 +1,157 @@
+/*
+ * Runner layout only. The chrome (tabs, buttons) uses the injected InstUI component classes
+ * (.instui-toggle-group, .instui-button…), so colors come from paired --instui-* tokens and read
+ * correctly in light and dark.
+ */
+body {
+  margin: 0;
+  background: var(--instui-color-background-base, Canvas);
+  color: var(--instui-color-text-base, CanvasText);
+  font-family: var(--instui-font-family-base, system-ui, sans-serif);
+}
+
+.runner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.runner__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--instui-spacing-space-xs, 0.5rem);
+  padding: var(--instui-spacing-space-xs, 0.5rem);
+  background: var(--instui-color-background-muted, #f2f4f5);
+  border-bottom: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
+  flex-wrap: wrap;
+}
+
+.runner__spacer {
+  margin-inline-start: auto;
+}
+
+/* The theme picker is an .instui-menu dropdown anchored to its trigger button. */
+.runner__theme {
+  position: relative;
+  display: inline-flex;
+}
+.runner__theme-menu {
+  position: absolute;
+  inset-block-start: calc(100% + var(--instui-spacing-space-xxx-small, 0.25rem));
+  inset-inline-end: 0;
+  z-index: 2;
+  min-inline-size: 10rem;
+}
+.runner__theme-menu[hidden] {
+  display: none;
+}
+/* .instui-menu__item is authored for non-interactive elements; reset it as a full-width button. */
+.runner__theme-menu .instui-menu__item {
+  display: block;
+  inline-size: 100%;
+  font: inherit;
+  text-align: start;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.runner__icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+}
+.runner__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+ * Hover/focus tooltip driven by data-tooltip. The toolbar sits at the top of the runner, so the
+ * bubble drops below the control to stay in view.
+ */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  inset-block-start: calc(100% + var(--instui-spacing-space-xxx-small, 0.25rem));
+  inset-inline-end: 0;
+  z-index: 5;
+  padding: var(--instui-spacing-space-xx-small, 0.375rem)
+    var(--instui-spacing-space-x-small, 0.5rem);
+  border-radius: var(--instui-border-radius-sm, 4px);
+  background: var(--instui-color-background-inverse, #2d3b45);
+  color: var(--instui-color-text-inverse, #fff);
+  font-size: var(--instui-font-size-text-xs, 0.75rem);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+[data-tooltip]:hover::after,
+[data-tooltip]:focus-visible::after {
+  opacity: 1;
+}
+
+.runner__body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.runner__code {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+}
+.runner__editor {
+  display: none;
+  height: 100%;
+}
+.runner__editor[data-active] {
+  display: block;
+}
+
+.runner__result {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: var(--instui-color-background-base, #fff);
+}
+
+/* Tabs mode: one column; show either the code or the result. */
+.runner:not(.runner--split) .runner__result,
+.runner:not(.runner--split) .runner__code {
+  display: none;
+}
+.runner:not(.runner--split).runner--show-result .runner__result {
+  display: block;
+}
+.runner:not(.runner--split):not(.runner--show-result) .runner__code {
+  display: block;
+}
+
+/* Split mode: code left, result right. */
+.runner--split .runner__result {
+  display: block;
+  border-inline-start: var(--instui-border-width-sm, 1px) solid
+    var(--instui-color-stroke-base, #c7cdd1);
+}
+.runner--split .runner__code {
+  display: block;
+}
+
+.cm-editor {
+  height: 100%;
+}
+.cm-editor.cm-focused {
+  outline: none;
+}
+
+#runner-error {
+  padding: 16px;
+  color: var(--instui-color-text-error, #b3202c);
+  font-family: var(--instui-font-family-code, ui-monospace, monospace);
+}

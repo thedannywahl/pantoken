@@ -1,0 +1,19 @@
+[class*="instui"] {
+  [class*="pendo-video-wrapper"] {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 0;
+    position: relative;
+  }
+
+  ._pendo-video {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .pendo-mock-flexbox-element:has([class*="pendo-video-wrapper"]) {
+    width: 100%;
+  }
+}
