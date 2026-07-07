@@ -1,23 +1,75 @@
-<div class="instui-card">
-  <div class="instui-tabs" id="tabs-demo">
-    <div class="instui-tabs__list" role="tablist">
-      <button class="instui-tabs__tab -selected" role="tab" data-panel="Overview">Overview</button>
-      <button class="instui-tabs__tab" role="tab" data-panel="Details">Details</button>
-      <button class="instui-tabs__tab" role="tab" data-panel="History">History</button>
+<div class="instui-card" style="display: flex; flex-direction: column; gap: 24px">
+  <!-- Default variant: underline tabs -->
+  <div class="instui-tabs" data-tabs>
+    <div class="instui-tabs__list" role="tablist" aria-label="Default tabs">
+      <button
+        class="instui-tabs__tab -selected"
+        role="tab"
+        aria-selected="true"
+        data-panel="Overview"
+      >
+        Overview
+      </button>
+      <button class="instui-tabs__tab" role="tab" aria-selected="false" data-panel="Details">
+        Details
+      </button>
+      <button
+        class="instui-tabs__tab -disabled"
+        role="tab"
+        aria-disabled="true"
+        disabled
+        data-panel="Disabled"
+      >
+        Disabled
+      </button>
+      <button class="instui-tabs__tab" role="tab" aria-selected="false" data-panel="History">
+        History
+      </button>
     </div>
     <div class="instui-tabs__panel" role="tabpanel">The Overview tab's content shows here.</div>
+  </div>
+
+  <!-- Secondary variant: connected "folder" tabs (variant on the container) -->
+  <div class="instui-tabs -variant-secondary" data-tabs>
+    <div class="instui-tabs__list" role="tablist" aria-label="Secondary tabs">
+      <button class="instui-tabs__tab" role="tab" aria-selected="false" data-panel="First">
+        First tab
+      </button>
+      <button
+        class="instui-tabs__tab -disabled"
+        role="tab"
+        aria-disabled="true"
+        disabled
+        data-panel="Disabled"
+      >
+        Disabled
+      </button>
+      <button class="instui-tabs__tab -selected" role="tab" aria-selected="true" data-panel="Third">
+        Third tab
+      </button>
+      <button class="instui-tabs__tab" role="tab" aria-selected="false" data-panel="Fourth">
+        Fourth tab
+      </button>
+    </div>
+    <div class="instui-tabs__panel" role="tabpanel">The Third tab's content shows here.</div>
   </div>
 </div>
 
 <script>
-  const root = document.getElementById("tabs-demo");
-  const tabs = root.querySelectorAll(".instui-tabs__tab");
-  const panel = root.querySelector(".instui-tabs__panel");
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((t) => t.classList.remove("-selected"));
-      tab.classList.add("-selected");
-      panel.textContent = `The ${tab.dataset.panel} tab's content shows here.`;
+  document.querySelectorAll("[data-tabs]").forEach((root) => {
+    const tabs = root.querySelectorAll(".instui-tabs__tab");
+    const panel = root.querySelector(".instui-tabs__panel");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        if (tab.hasAttribute("disabled")) return;
+        tabs.forEach((t) => {
+          t.classList.remove("-selected");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("-selected");
+        tab.setAttribute("aria-selected", "true");
+        panel.textContent = `The ${tab.dataset.panel} tab's content shows here.`;
+      });
     });
   });
 </script>

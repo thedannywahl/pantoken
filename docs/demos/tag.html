@@ -1,15 +1,48 @@
-<div class="instui-card">
-  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+<div class="instui-card tag-demo">
+  <div class="tag-list" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
     <span class="instui-tag -size-sm">small</span>
     <span class="instui-tag">design</span>
     <span class="instui-tag -size-lg">large</span>
+    <span class="instui-tag -readonly">read only</span>
     <button class="instui-tag -inline" data-dismiss>dismissible</button>
+    <button class="instui-tag -inline" data-dismiss>filter: open</button>
+    <button class="instui-tag -inline" data-dismiss>filter: mine</button>
   </div>
+
+  <button class="instui-button -color-secondary -size-sm" data-role="restore" disabled>
+    Restore tags
+  </button>
 </div>
 
+<style>
+  .tag-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+</style>
+
 <script>
-  // The --inline tag is dismissible: clicking its close glyph removes it.
-  document.querySelectorAll(".-inline[data-dismiss]").forEach((tag) => {
-    tag.addEventListener("click", () => tag.remove());
+  const list = document.querySelector(".tag-list");
+  const restore = document.querySelector('[data-role="restore"]');
+  const initial = list.innerHTML;
+
+  // The -inline tag is dismissible: clicking its close glyph removes it.
+  function wireDismiss(root) {
+    root.querySelectorAll(".-inline[data-dismiss]").forEach((tag) => {
+      tag.addEventListener("click", () => {
+        tag.remove();
+        restore.disabled = false;
+      });
+    });
+  }
+  wireDismiss(list);
+
+  // Put every dismissed tag back.
+  restore.addEventListener("click", () => {
+    list.innerHTML = initial;
+    wireDismiss(list);
+    restore.disabled = true;
   });
 </script>

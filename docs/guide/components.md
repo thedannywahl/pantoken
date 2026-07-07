@@ -79,6 +79,18 @@ cover low-emphasis text buttons and pressed toggle states. Add an icon with the 
 directly on the button — `<button class="instui-button -icon-plus">` — which renders an InstUI glyph
 in the button's color (the glyph classes ship in `@pantoken/components/icons.css`).
 
+For an **icon-only button**, put the `-icon-<name>` modifier on the button and leave it empty — the
+glyph is CSS-generated content, so it's decorative and never announced. Give the button its name with
+either `aria-label` or visually-hidden text, but not both (with both, `aria-label` wins and the hidden
+text is dead weight):
+
+```html
+<button class="instui-button -shape-square -icon-arrow-right" aria-label="Next"></button>
+<button class="instui-button -shape-circle -icon-plus">
+  <span class="instui-screen-reader-content">Add</span>
+</button>
+```
+
 <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
   <button class="instui-button -size-sm">Small</button>
   <button class="instui-button">Medium</button>
@@ -308,14 +320,17 @@ photo, nest an `<img>` — it fills the chip and covers the initials.
 
 <div class="instui-tabs">
   <div class="instui-tabs__list" role="tablist">
-    <div class="instui-tabs__tab -selected" role="tab">Overview</div>
+    <div class="instui-tabs__tab -selected" role="tab" aria-selected="true">Overview</div>
     <div class="instui-tabs__tab" role="tab">Details</div>
+    <div class="instui-tabs__tab -disabled" role="tab" aria-disabled="true">Disabled</div>
     <div class="instui-tabs__tab" role="tab">History</div>
   </div>
   <div class="instui-tabs__panel" role="tabpanel">The selected tab's content shows here.</div>
 </div>
 
-Add `-variant-secondary` to each tab for the filled, pill-style secondary tabs.
+The selected tab carries `-selected` (or `aria-selected="true"`); mark a tab out with `-disabled`
+(or `aria-disabled="true"`). Put `-variant-secondary` on the container for the connected "folder"
+tabs, and `-overflow-scroll` when the list should scroll sideways instead of wrapping.
 
 ## Metric
 

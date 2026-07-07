@@ -193,6 +193,7 @@ test("avatar has color/size modifiers, tabs/metric/byline use sub-elements, tabl
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-color-blue");
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-size-lg");
   expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs__tab.-selected");
+  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs__tab.-disabled");
   expect(metricCss({ prefix: "instui" })).toContain(".instui-metric__value");
   expect(bylineCss({ prefix: "instui" })).toContain(".instui-byline__title");
   expect(tableCss({ prefix: "instui" })).toContain(".instui-table th");
@@ -232,7 +233,9 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
 });
 
 test("tabs have a secondary variant; link has sizes, on-color, inline and unstyled", () => {
-  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs__tab.-variant-secondary");
+  expect(tabsCss({ prefix: "instui" })).toContain(
+    ".instui-tabs.-variant-secondary .instui-tabs__tab",
+  );
   expect(tabsCss({ prefix: "instui" })).toContain(
     "var(--instui-component-tabs-tab-secondary-selected-background)",
   );

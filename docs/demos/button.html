@@ -63,11 +63,11 @@
           <span class="instui-icon -icon-star"></span>
           <span id="star-label">Star</span>
         </button>
-        <button class="instui-button -shape-square" aria-label="Next">
-          <span class="instui-icon -icon-arrow-right"></span>
-        </button>
-        <button class="instui-button -shape-circle" aria-label="Add">
-          <span class="instui-icon -icon-plus"></span>
+        <!-- Icon-only: the glyph rides the button; name it with aria-label… -->
+        <button class="instui-button -shape-square -icon-arrow-right" aria-label="Next"></button>
+        <!-- …or with visually-hidden text (use one, not both). -->
+        <button class="instui-button -shape-circle -icon-plus">
+          <span class="instui-screen-reader-content">Add</span>
         </button>
       </div>
     </section>

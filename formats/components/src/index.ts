@@ -580,10 +580,11 @@ function alertRules(p: string): string {
   -webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
   mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
 }
-/* Close/dismiss is optional: pin it top-end, and reserve room for it only when it's present. */
+/* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
+   takes a small symmetric inset, not the content padding), and reserve room only when it's present. */
 .${p}alert > .${p}close-button {
   position: absolute;
-  inset-block-start: var(--instui-component-alert-content-padding-vertical);
+  inset-block-start: var(--instui-spacing-space-xs);
   inset-inline-end: var(--instui-spacing-space-xs);
 }
 .${p}alert:has(> .${p}close-button) {
@@ -903,51 +904,104 @@ ${color("red")}
 `;
 }
 
-/** Tabs rules: a tab list with selectable tabs and a panel (BEM sub-elements). */
+/**
+ * Tabs rules: a container (`.tabs`), a tab list (`__list`), tabs (`__tab`), and panels (`__panel`).
+ * Two variants (InstUI's `variant` prop, set on the container): the default underline style, and a
+ * `-variant-secondary` "folder" style whose selected tab connects into the panel. Per-tab state is
+ * `-selected`/`[aria-selected]` and `-disabled`/`[aria-disabled]`; `-overflow-scroll` (InstUI
+ * `tabOverflow="scroll"`) swaps wrapping for a horizontal scroller. Padding, radii, and the underline
+ * thickness are the literals InstUI hardcodes in its Tab styles (`1rem 1.25rem`, `0.75rem 1rem`,
+ * `0.1875rem`, `0.25rem`); everything else is token-driven. The full-width rule under the tabs is the
+ * selected panel's `border-top`, and the selected tab overlaps it by the panel border width.
+ */
 function tabsRules(p: string): string {
   return `
+.${p}tabs {
+  display: flex;
+  flex-direction: column;
+  background: var(--instui-component-tabs-default-background);
+}
 .${p}tabs__list {
   display: flex;
-  gap: var(--instui-spacing-space-md);
-  border-bottom: var(--instui-component-tabs-panel-border-width) solid var(--instui-component-tabs-panel-border-color);
+  width: 100%;
+  flex-flow: row wrap;
 }
+.${p}tabs.-overflow-scroll .${p}tabs__list {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.${p}tabs.-overflow-scroll .${p}tabs__list::-webkit-scrollbar { display: none; }
 .${p}tabs__tab {
-  padding: var(--instui-spacing-space-sm) var(--instui-spacing-space-xs);
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
   color: var(--instui-component-tabs-tab-default-text-color);
   font-family: var(--instui-component-tabs-tab-font-family);
   font-size: var(--instui-component-tabs-tab-font-size);
   font-weight: var(--instui-component-tabs-tab-font-weight);
-  line-height: var(--instui-component-tabs-tab-line-height);
-  border-bottom: var(--instui-border-width-md) solid transparent;
-  margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
+  line-height: 1;
+  padding: 1rem 1.25rem;
   cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+  /* Layout-stable underline: always 0.25rem, coloured only when hovered or selected. */
+  border-bottom: 0.25rem solid transparent;
+  margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
 }
-.${p}tabs__tab:hover { border-bottom-color: var(--instui-component-tabs-tab-default-hover-border-color); }
-.${p}tabs__tab[aria-selected="true"],
-.${p}tabs__tab.-selected { border-bottom-color: var(--instui-component-tabs-tab-default-selected-border-color); }
-/* Secondary tabs: pill-like tabs that sit on the panel border, filled when selected. */
-.${p}tabs__tab.-variant-secondary {
+.${p}tabs__tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not([aria-disabled="true"]) {
+  border-bottom-color: var(--instui-component-tabs-tab-default-hover-border-color);
+}
+.${p}tabs__tab.-selected,
+.${p}tabs__tab[aria-selected="true"] {
+  border-bottom-color: var(--instui-component-tabs-tab-default-selected-border-color);
+}
+.${p}tabs__tab.-disabled,
+.${p}tabs__tab[aria-disabled="true"],
+.${p}tabs__tab:disabled {
+  opacity: 0.5;
+  font-weight: normal;
+  cursor: default;
+}
+/* Secondary variant: rounded "folder" tabs; the selected tab's bottom border matches the panel
+   background so it visually connects into the panel below. */
+.${p}tabs.-variant-secondary .${p}tabs__tab {
+  padding: 0.75rem 1rem;
+  line-height: var(--instui-component-tabs-tab-line-height);
   color: var(--instui-component-tabs-tab-secondary-text-color);
+  margin-inline-end: 0.2em;
+  margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
   border: var(--instui-component-tabs-panel-border-width) solid transparent;
-  border-bottom: none;
-  border-radius: var(--instui-border-radius-md) var(--instui-border-radius-md) 0 0;
-  margin-bottom: 0;
+  border-radius: 0.1875rem 0.1875rem 0 0;
 }
-.${p}tabs__tab.-variant-secondary[aria-selected="true"],
-.${p}tabs__tab.-variant-secondary.-selected {
+.${p}tabs.-variant-secondary .${p}tabs__tab:first-of-type { margin-inline-start: 0; }
+.${p}tabs.-variant-secondary .${p}tabs__tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not([aria-disabled="true"]) {
   background: var(--instui-component-tabs-tab-secondary-selected-background);
-  color: var(--instui-component-tabs-tab-secondary-selected-text-color);
   border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
+  color: var(--instui-component-tabs-tab-secondary-selected-text-color);
+}
+.${p}tabs.-variant-secondary .${p}tabs__tab.-selected,
+.${p}tabs.-variant-secondary .${p}tabs__tab[aria-selected="true"] {
+  background: var(--instui-component-tabs-tab-secondary-selected-background);
+  border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
+  border-bottom-color: var(--instui-component-tabs-tab-secondary-selected-background);
+  color: var(--instui-component-tabs-tab-secondary-selected-text-color);
 }
 .${p}tabs__panel {
+  box-sizing: border-box;
+  border-top: var(--instui-component-tabs-panel-border-width) solid var(--instui-component-tabs-panel-border-color);
   background: var(--instui-component-tabs-panel-background);
   color: var(--instui-component-tabs-panel-text-color);
   font-family: var(--instui-component-tabs-panel-font-family);
   font-size: var(--instui-component-tabs-panel-font-size);
   font-weight: var(--instui-component-tabs-panel-font-weight);
   line-height: var(--instui-component-tabs-panel-line-height);
-  padding: var(--instui-spacing-space-md) 0;
+  padding: var(--instui-spacing-space-sm) var(--instui-spacing-space-md) var(--instui-spacing-space-md);
 }
+.${p}tabs__panel[hidden] { display: none; }
 `;
 }
 
@@ -2404,7 +2458,9 @@ export function avatarCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the tabs stylesheet: `.<prefix>-tabs__list`, `__tab` (with `--selected`), and `__panel`.
+ * Build the tabs stylesheet: a `.<prefix>-tabs` container with `__list`, `__tab` (`-selected`,
+ * `-disabled`), and `__panel` sub-elements. The `-variant-secondary` and `-overflow-scroll`
+ * modifiers go on the container.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -2414,8 +2470,12 @@ export function avatarCss(options: ComponentOptions = {}): string {
  * import { tabsCss } from "@pantoken/components";
  *
  * const css = tabsCss();
- * // <div class="instui-tabs__list">
- * //   <button class="instui-tabs__tab instui-tabs__tab--selected">First</button>
+ * // <div class="instui-tabs">
+ * //   <div class="instui-tabs__list" role="tablist">
+ * //     <button class="instui-tabs__tab -selected" role="tab" aria-selected="true">First</button>
+ * //     <button class="instui-tabs__tab" role="tab">Second</button>
+ * //   </div>
+ * //   <div class="instui-tabs__panel" role="tabpanel">…</div>
  * // </div>
  * ```
  *
