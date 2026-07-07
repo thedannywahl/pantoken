@@ -275,7 +275,7 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
   expect(css).toContain("conic-gradient");
   expect(css).toContain(".instui-progress-circle.-size-sm");
   expect(css).toContain(".instui-progress-circle.-size-lg");
-  expect(css).toContain(".instui-progress-circle.-meter-color-success");
+  expect(css).toContain(".instui-progress-circle.-color-success");
   expect(css).toContain("var(--instui-component-progress-circle-meter-color-brand-inverse)");
   expect(css).toContain(".instui-progress-circle.-color-inverse");
 });
@@ -522,13 +522,18 @@ test("number-input has a +/- arrow column from the arrows tokens and hides nativ
 
 test("progress bar meter colours are distinct semantic backgrounds on the root, plus animate", () => {
   const css = progressCss({ prefix: "instui" });
-  // meter rules live inside @scope (.instui-progress), so the root reads as :scope.-meter-color-*
-  expect(css).toContain(".-meter-color-success > .bar");
+  // Meter rules are flat (kept outside @scope so the deprecated -meter-color-* aliases can twin them).
+  expect(css).toContain(".instui-progress.-color-success .bar");
   expect(css).toContain("var(--instui-color-background-success)");
   expect(css).toContain("var(--instui-color-background-error)");
   expect(css).toContain(".-should-animate > .bar { transition: width");
-  // no longer per-bar `-color-*`
-  expect(css).not.toContain(".bar.-color-info");
+});
+
+test("progress bar keeps the deprecated -meter-color-* aliases (incl. alert→warning)", () => {
+  const css = componentsCss({ prefix: "instui" });
+  expect(css).toContain(".instui-progress.-meter-color-success .bar");
+  expect(css).toContain(".instui-progress.-meter-color-alert .bar");
+  expect(css).toContain(".instui-progress-circle.-meter-color-success");
 });
 
 test("progress circle registers --value, draws the ring on ::before, and centers a value", () => {
@@ -536,7 +541,7 @@ test("progress circle registers --value, draws the ring on ::before, and centers
   expect(css).toContain("@property --value");
   expect(css).toContain(".instui-progress-circle::before");
   expect(css).toContain(".instui-progress-circle .value");
-  expect(css).toContain(".instui-progress-circle.-meter-color-success");
+  expect(css).toContain(".instui-progress-circle.-color-success");
 });
 
 test("toggle-details hides the native marker, has a rotating chevron + filled variant", () => {
@@ -847,10 +852,10 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   expect(css).toContain(".instui-progress.-size-sm");
   expect(css).toContain(".instui-progress.-size-lg");
   expect(css).toContain("@scope (.instui-progress)");
-  // Meter colour is a root modifier now (InstUI's meterColor), painting the bar a distinct status colour.
-  expect(css).toContain(".-meter-color-info");
-  expect(css).toContain(".-meter-color-warning");
-  expect(css).toContain(".-meter-color-alert");
+  // Meter colour is the normalized `-color-*` root modifier, painting the bar a distinct status colour.
+  expect(css).toContain(".instui-progress.-color-info .bar");
+  expect(css).toContain(".instui-progress.-color-warning .bar");
+  expect(css).toContain(".instui-progress.-color-danger .bar");
   expect(css).toContain(".instui-progress.-color-inverse");
   expect(css).toContain("var(--instui-component-progress-bar-track-color-inverse)");
   expect(css).toContain(".instui-progress-value");

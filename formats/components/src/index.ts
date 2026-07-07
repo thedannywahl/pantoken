@@ -2153,12 +2153,14 @@ function spinnerRules(p: string): string {
  */
 function progressRules(p: string): string {
   const root = `.${p}progress`;
-  // InstUI's meterColor lives on the component (root), not the meter. The `progress-bar-meter-color-*`
-  // tokens all resolve to background-brand upstream (degenerate), so the distinct colours come from the
-  // semantic `--instui-color-background-*` status tokens; `alert`→warning and `danger`→error (no
-  // dedicated background token for those two names).
+  // Meter colour uses our normalized `-color-*` scheme (canonical); the InstUI `meterColor` names
+  // (`-meter-color-*`) are kept as @deprecated aliases (added by withDeprecatedAliases). Kept FLAT (not
+  // in @scope) so those aliases — keyed on `.instui-progress.` — can twin them. The
+  // `progress-bar-meter-color-*` tokens are degenerate (all brand) upstream, so paint from the semantic
+  // `--instui-color-background-*` status colours (danger→error; there's no `-color-alert` in the
+  // normalized scheme, so InstUI's `alert` folds to warning via the deprecated alias only).
   const meter = (mod: string, bg: string): string =>
-    `${root}.-meter-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
+    `${root}.-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
   return `
 ${root} {
   display: block;
@@ -2184,16 +2186,15 @@ ${scope(
   background: var(--instui-color-background-brand);
   border-radius: var(--instui-component-progress-bar-border-radius);
 }
-${meter("brand", "brand")}
-${meter("info", "info")}
-${meter("success", "success")}
-${meter("warning", "warning")}
-${meter("alert", "warning")}
-${meter("danger", "error")}
 .${p}progress.-should-animate .bar { transition: width 0.5s ease; }
 `,
   ["bar"],
 )}
+${meter("brand", "brand")}
+${meter("info", "info")}
+${meter("success", "success")}
+${meter("warning", "warning")}
+${meter("danger", "error")}
 .${p}progress-value {
   padding: 0 var(--instui-component-progress-bar-value-padding);
   color: var(--instui-component-progress-bar-text-color);
@@ -2561,9 +2562,12 @@ function contextViewRules(p: string): string {
  */
 function progressCircleRules(p: string): string {
   const root = `.${p}progress-circle`;
+  // Meter colour uses our normalized `-color-*` scheme (canonical); InstUI's `meterColor` names
+  // (`-meter-color-*`) are kept as @deprecated aliases (added by withDeprecatedAliases). Unlike the bar,
+  // the circle's `progress-circle-meter-color-*` tokens are distinct upstream, so we paint from them.
   const meter = (mod: string, token: string): string =>
-    `${root}.-meter-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}); }
-${root}.-color-inverse.-meter-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
+    `${root}.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}); }
+${root}.-color-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
   const size = (mod: string, key: string): string =>
     `${root}.-${mod} {
   width: var(--instui-component-progress-circle-${key}-size);
@@ -2613,7 +2617,6 @@ ${meter("brand", "brand")}
 ${meter("info", "info")}
 ${meter("success", "success")}
 ${meter("warning", "warning")}
-${meter("alert", "alert")}
 ${meter("danger", "danger")}
 ${root}.-color-inverse {
   --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
@@ -4562,6 +4565,20 @@ function withDeprecatedAliases(css: string, p: string): string {
     [`${p}radio.-variant-toggle`, `${p}radio.-toggle`],
     // FormFieldMessage: InstUI's `newError` type is deprecated and behaves exactly like `error`.
     [`${p}form-field-message.-type-error`, `${p}form-field-message.-type-new-error`],
+    // Progress bar + circle: InstUI's `meterColor` prop maps to our normalized `-color-*` scheme.
+    // `alert` folds to `warning` (no `-color-alert` in the normalized scheme).
+    [`${p}progress.-color-brand`, `${p}progress.-meter-color-brand`],
+    [`${p}progress.-color-info`, `${p}progress.-meter-color-info`],
+    [`${p}progress.-color-success`, `${p}progress.-meter-color-success`],
+    [`${p}progress.-color-warning`, `${p}progress.-meter-color-warning`],
+    [`${p}progress.-color-warning`, `${p}progress.-meter-color-alert`],
+    [`${p}progress.-color-danger`, `${p}progress.-meter-color-danger`],
+    [`${p}progress-circle.-color-brand`, `${p}progress-circle.-meter-color-brand`],
+    [`${p}progress-circle.-color-info`, `${p}progress-circle.-meter-color-info`],
+    [`${p}progress-circle.-color-success`, `${p}progress-circle.-meter-color-success`],
+    [`${p}progress-circle.-color-warning`, `${p}progress-circle.-meter-color-warning`],
+    [`${p}progress-circle.-color-warning`, `${p}progress-circle.-meter-color-alert`],
+    [`${p}progress-circle.-color-danger`, `${p}progress-circle.-meter-color-danger`],
   ];
   const extra: string[] = [];
   for (const [canonical, deprecated] of pairs) {
