@@ -32,9 +32,11 @@ import {
   progressCss,
   proseCss,
   radioCss,
+  radioInputGroupCss,
   rangeCss,
   ratingCss,
   screenReaderContentCss,
+  selectCss,
   simpleSelectCss,
   spacingUtilitiesCss,
   spinnerCss,
@@ -50,7 +52,7 @@ import {
 } from "../src/index.ts";
 
 test("every token referenced by every stylesheet exists in the IR (no drift)", () => {
-  const all = `${baseCss()}\n${componentsCss({ prefix: "instui" })}\n${proseCss()}`;
+  const all = `${baseCss()}\n${componentsCss({ prefix: "instui" })}\n${proseCss()}\n${selectCss({ prefix: "instui" })}`;
   // --instui-elevation-* (elevationCss, components.css) and --instui-focus-outline-* (focusOutlineCss,
   // base.css) are defined by those sheets, not the base token IR — locally-resolved but still "unknown"
   // to the IR-drift check, so filter them out.
@@ -338,6 +340,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "close-button",
     "form-field",
     "form-field-group",
+    "radio-input-group",
     "form-field-messages",
     "form-field-message",
     "text-input",
@@ -345,7 +348,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "simple-select",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(41);
+  expect(components).toHaveLength(42);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
@@ -663,6 +666,23 @@ test("form-field required fires from both -required and native :required, in the
   expect(css).toContain("var(--instui-component-form-field-layout-readonly-text-color)");
 });
 
+test("radio-input-group connects toggle radios into one segmented control", () => {
+  const css = radioInputGroupCss({ prefix: "instui" });
+  expect(css).toContain(".instui-radio-input-group {");
+  expect(css).toContain(".instui-radio-input-group > legend");
+  // simple variant flows into a row for -layout-columns/-inline
+  expect(css).toContain(".instui-radio-input-group.-layout-columns");
+  // toggle variant collapses borders + rounds only the outer ends
+  expect(css).toContain(
+    ".instui-radio-input-group.-variant-toggle > .instui-radio { border-radius: 0;",
+  );
+  expect(css).toContain(".instui-radio-input-group.-variant-toggle > .instui-radio:first-of-type");
+  expect(css).toContain(
+    ".instui-radio-input-group.-variant-toggle > .instui-radio + .instui-radio",
+  );
+  expect(css).toContain("var(--instui-component-radio-input-toggle-border-radius)");
+});
+
 test("form-field-group is a token-less fieldset composition with layouts and spacing", () => {
   const css = formFieldGroupCss({ prefix: "instui" });
   expect(css).toContain(".instui-form-field-group {");
@@ -716,6 +736,22 @@ test("simple-select shares the text-input look with a background caret and appea
   expect(css).toContain("background-image:");
   expect(css).toContain("var(--instui-component-text-input-border-color)");
   expect(css).toContain(".instui-simple-select.-invalid");
+});
+
+test("selectCss is an experimental @supports enhancement of simple-select using options-item tokens", () => {
+  const css = selectCss({ prefix: "instui" });
+  // Everything is gated behind the experimental customizable-select feature query.
+  expect(css).toContain("@supports (appearance: base-select)");
+  expect(css).toContain("appearance: base-select");
+  expect(css).toContain(".instui-simple-select::picker(select)");
+  expect(css).toContain(".instui-simple-select option");
+  expect(css).toContain(".instui-simple-select option::checkmark");
+  // Options are painted from the options-item token family (panel + hover + selected).
+  expect(css).toContain("var(--instui-component-options-item-background)");
+  expect(css).toContain("var(--instui-component-options-item-highlighted-background)");
+  expect(css).toContain("var(--instui-component-options-item-selected-background)");
+  // It targets .instui-simple-select — no new component class.
+  expect(css).not.toContain(".instui-select ");
 });
 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {

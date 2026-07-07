@@ -23,6 +23,7 @@ import {
   iconGlyphsCss,
   layoutUtilitiesCss,
   proseCss,
+  selectCss,
   spacingUtilitiesCss,
   viewCss,
 } from "../src/index.ts";
@@ -95,6 +96,8 @@ writeFileSync(join(outDir, "components.css"), componentsCss(opts));
 // Opt-in font loading — @font-face rules for the brand typeface, src → the shipped assets/fonts/.
 writeFileSync(join(outDir, "fonts.css"), fontsCss(resolve(import.meta.dirname, "../assets/fonts")));
 writeFileSync(join(outDir, "prose.css"), proseCss());
+// Opt-in EXPERIMENTAL customizable-select enhancement (@supports base-select) for .instui-simple-select.
+writeFileSync(join(outDir, "select.css"), selectCss(opts));
 writeFileSync(
   join(outDir, "icons.css"),
   iconGlyphsCss(
@@ -110,5 +113,5 @@ writeFileSync(
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
 );
 console.log(
-  "✓ components: wrote base.css + components.css + fonts.css + prose.css + icons.css + utilities.css",
+  "✓ components: wrote base.css + components.css + fonts.css + prose.css + select.css + icons.css + utilities.css",
 );

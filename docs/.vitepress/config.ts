@@ -145,6 +145,7 @@ export default defineConfig({
           `${base}demos-assets/prose.css`,
           `${base}demos-assets/icons.css`,
           `${base}demos-assets/utilities.css`,
+          `${base}demos-assets/select.css`,
           `${base}demos-assets/demo-overrides.css`,
         ],
         themes: [

@@ -244,6 +244,24 @@ It's decorative (a `::after` on the label, out of the accessibility tree); pair 
 `-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
 `-col-spacing-*` and `-v-align-*` to tune the grid.
 
+**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
+specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
+so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
+out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
+child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
+rounded outer ends):
+
+```html
+<fieldset class="instui-radio-input-group -variant-toggle">
+  <legend>T-shirt size</legend>
+  <label class="instui-radio -variant-toggle"
+    ><input type="radio" name="size" checked /> Small</label
+  >
+  <label class="instui-radio -variant-toggle"><input type="radio" name="size" /> Medium</label>
+  <label class="instui-radio -variant-toggle"><input type="radio" name="size" /> Large</label>
+</fieldset>
+```
+
 **Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
 `-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
 (green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
@@ -256,3 +274,19 @@ resizable), and `.instui-simple-select` (native `<select>` with a caret) share o
 states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
 `-size-{sm,md,lg}`. The focus ring comes from `base.css`. For a rich combobox with a listbox popover,
 reach for `@instructure/ui` — this library covers the native controls.
+
+**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
+`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
+selected states) using the CSS Customizable Select model.
+
+> [!WARNING]
+> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
+> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
+> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
+> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
+> enhanced dropdown and accept the limited support.
+
+```ts
+import "@pantoken/components/components.css";
+import "@pantoken/components/select.css"; // opt-in, experimental: styles the open dropdown
+```

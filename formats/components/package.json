@@ -9,6 +9,7 @@
     "generated/components.css",
     "generated/fonts.css",
     "generated/prose.css",
+    "generated/select.css",
     "generated/icons.css",
     "generated/utilities.css",
     "assets/fonts"
@@ -20,6 +21,7 @@
     "./components.css": "./generated/components.css",
     "./fonts.css": "./generated/fonts.css",
     "./prose.css": "./generated/prose.css",
+    "./select.css": "./generated/select.css",
     "./icons.css": "./generated/icons.css",
     "./utilities.css": "./generated/utilities.css",
     "./package.json": "./package.json"

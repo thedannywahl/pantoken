@@ -536,6 +536,12 @@ const CHECK_CIRCLE_ICON = strokeMask(
 const SELECT_CHEVRON =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a7883' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")";
 
+/** Lucide `check` stroked white — the customizable-select selected-option glyph (on the action fill;
+ *  a background-image can't read currentColor, and the selected fill is a saturated action colour that
+ *  pairs with the on-colour white check). */
+const CHECK_URL_ON =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\")";
+
 /**
  * InstUI's `ai` glyph (Solid), inlined as a mask so it paints in the button's own colour — solid
  * white on `--ai`, the violet→sea gradient on `--ai-secondary`. Source: `@instructure/ui-icons`.
@@ -3833,6 +3839,72 @@ ${root}.-v-align-bottom { align-items: end; }
 }
 
 /**
+ * RadioInputGroup: the same `<fieldset>`/`<legend>` grouping as FormFieldGroup, specialised for radios.
+ * The children share a `name`, so selection is natively single-choice. `-variant-simple` (default) lays
+ * the standard radios out (stacked, or `-layout-columns`/`-layout-inline` into a row); `-variant-toggle`
+ * connects the child `.instui-radio.-variant-toggle` buttons into ONE segmented control — collapsed
+ * borders, rounded outer ends, no gaps — so a set of toggle buttons reads (and behaves) as a single
+ * single-select control rather than loose, individually-styled buttons.
+ */
+function radioInputGroupRules(p: string): string {
+  const root = `.${p}radio-input-group`;
+  const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
+  const r = "var(--instui-component-radio-input-toggle-border-radius)";
+  const bw = "var(--instui-component-radio-input-toggle-border-width)";
+  return `
+${root} {
+  display: flex;
+  flex-direction: column;
+  gap: ${L("gap-inputs")};
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+${root} > legend {
+  padding: 0;
+  margin-block-end: ${L("gap-primitives")};
+  color: ${L("text-color")};
+  font-family: ${L("font-family")};
+  font-weight: ${L("font-weight")};
+  font-size: ${L("font-size")};
+  line-height: ${L("line-height")};
+}
+${root}.-required > legend::after {
+  content: "*";
+  margin-inline-start: 0.25rem;
+  color: ${L("asterisk-color")};
+}
+/* simple variant: -layout-columns/-inline flow the standard radios into a wrapping row */
+${root}.-layout-columns,
+${root}.-layout-inline {
+  flex-flow: row wrap;
+  align-items: center;
+  column-gap: var(--instui-spacing-space-md);
+}
+${root}.-layout-columns > legend,
+${root}.-layout-inline > legend { flex-basis: 100%; }
+/* toggle variant: connect the child .instui-radio.-variant-toggle buttons into one segmented control */
+${root}.-variant-toggle {
+  flex-flow: row wrap;
+  align-items: center;
+}
+${root}.-variant-toggle > legend { flex-basis: 100%; }
+${root}.-variant-toggle > .${p}radio { border-radius: 0; position: relative; }
+${root}.-variant-toggle > .${p}radio:first-of-type {
+  border-start-start-radius: ${r};
+  border-end-start-radius: ${r};
+}
+${root}.-variant-toggle > .${p}radio:last-of-type {
+  border-start-end-radius: ${r};
+  border-end-end-radius: ${r};
+}
+${root}.-variant-toggle > .${p}radio + .${p}radio { margin-inline-start: calc(-1 * ${bw}); }
+${root}.-variant-toggle > .${p}radio:has(input:checked) { z-index: 1; }
+`;
+}
+
+/**
  * Build the FormField stylesheet: `.<prefix>-form-field`, a Grid label/controls/messages layout.
  *
  * @param options - {@link ComponentOptions}.
@@ -3876,6 +3948,33 @@ export function formFieldCss(options: ComponentOptions = {}): string {
 export function formFieldGroupCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   return wrap("form-field-group", prefix, formFieldGroupRules(ns(prefix)));
+}
+
+/**
+ * Build the RadioInputGroup stylesheet: `.<prefix>-radio-input-group` (a single-select radio
+ * `<fieldset>`). `-variant-simple` (default) lays out standard radios; `-variant-toggle` connects the
+ * child `.<prefix>-radio.-variant-toggle` buttons into one segmented control. Children share a `name`.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { radioInputGroupCss } from "@pantoken/components";
+ *
+ * const css = radioInputGroupCss();
+ * // <fieldset class="instui-radio-input-group -variant-toggle">
+ * //   <legend>Size</legend>
+ * //   <label class="instui-radio -variant-toggle"><input type="radio" name="size" checked /> S</label>
+ * //   <label class="instui-radio -variant-toggle"><input type="radio" name="size" /> M</label>
+ * // </fieldset>
+ * ```
+ *
+ * @demo self:radio-input-group
+ */
+export function radioInputGroupCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("radio-input-group", prefix, radioInputGroupRules(ns(prefix)));
 }
 
 /**
@@ -3966,6 +4065,85 @@ export function textAreaCss(options: ComponentOptions = {}): string {
 export function simpleSelectCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   return wrap("simple-select", prefix, simpleSelectRules(ns(prefix)));
+}
+
+/**
+ * The **experimental** customizable-select enhancement for `.<prefix>-simple-select`. Everything is
+ * gated behind `@supports (appearance: base-select)` (the CSS Customizable Select model — Chrome 135+,
+ * NOT yet Baseline), so it's pure progressive enhancement: browsers without support keep the plain
+ * `simpleSelectCss` control; supporting browsers get a styled `::picker(select)` panel and styled
+ * `option`s (hover/selected) from the `--instui-component-options-item-*` tokens. Shipped as its own
+ * opt-in `select.css` (like `fonts.css`) rather than folded into `components.css`, precisely because the
+ * feature is experimental — you opt in deliberately.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { selectCss } from "@pantoken/components";
+ *
+ * // Load AFTER components.css; enhances the same <select class="instui-simple-select"> element.
+ * const css = selectCss();
+ * ```
+ *
+ * @demo self:simple-select
+ */
+export function selectCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  const p = ns(prefix);
+  const O = (s: string): string => `var(--instui-component-options-item-${s})`;
+  const sel = `.${p}simple-select`;
+  const body = `
+/* Experimental: CSS Customizable Select (\`appearance: base-select\`, Chrome 135+, not yet Baseline).
+   Enhances .${p}simple-select; degrades to the plain control where unsupported. */
+@supports (appearance: base-select) {
+  ${sel},
+  ${sel}::picker(select) {
+    appearance: base-select;
+  }
+  /* Keep simple-select's own background-image caret; hide the UA-generated picker icon. */
+  ${sel}::picker-icon { display: none; }
+  ${sel}::picker(select) {
+    border: var(--instui-component-select-popover-border-width) solid var(--instui-component-text-input-border-color);
+    border-radius: var(--instui-border-radius-lg);
+    box-shadow: var(--instui-elevation-topmost);
+    background-color: ${O("background")};
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  ${sel} option {
+    padding: ${O("padding-vertical")} ${O("padding-horizontal")};
+    background-color: ${O("background")};
+    color: ${O("color")};
+    font-family: ${O("font-family")};
+    font-weight: ${O("font-weight")};
+    font-size: ${O("font-size")};
+    line-height: ${O("line-height")};
+    cursor: pointer;
+  }
+  /* Hide the UA checkmark; the selected row gets our own trailing check via background-image. */
+  ${sel} option::checkmark { display: none; }
+  ${sel} option:hover,
+  ${sel} option:focus {
+    background-color: ${O("highlighted-background")};
+    color: ${O("highlighted-label-color")};
+    outline: none;
+  }
+  ${sel} option:checked {
+    background-color: ${O("selected-background")};
+    color: ${O("selected-label-color")};
+    font-weight: ${O("font-weight-selected")};
+    background-image: ${CHECK_URL_ON};
+    background-repeat: no-repeat;
+    background-position: right ${O("padding-horizontal")} center;
+    background-size: 1rem 1rem;
+    padding-inline-end: calc(${O("padding-horizontal")} + 1.5rem);
+  }
+}
+`;
+  return wrap("select", prefix, body);
 }
 
 /** Long-form spellings for the size scale — emitted as first-class aliases beside the short forms. */
@@ -4120,6 +4298,7 @@ export function componentsCss(options: ComponentOptions = {}): string {
     closeButtonRules(ns(prefix)),
     formFieldRules(ns(prefix)),
     formFieldGroupRules(ns(prefix)),
+    radioInputGroupRules(ns(prefix)),
     formFieldMessagesRules(ns(prefix)),
     textInputRules(ns(prefix)),
     textAreaRules(ns(prefix)),

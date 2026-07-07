@@ -1,0 +1,31 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 28px">
+    <!-- Toggle variant: the buttons connect into ONE segmented, single-select control (shared name) -->
+    <fieldset class="instui-radio-input-group -variant-toggle">
+      <legend>T-shirt size</legend>
+      <label class="instui-radio -variant-toggle">
+        <input type="radio" name="size" checked /> Small
+      </label>
+      <label class="instui-radio -variant-toggle">
+        <input type="radio" name="size" /> Medium
+      </label>
+      <label class="instui-radio -variant-toggle"> <input type="radio" name="size" /> Large </label>
+    </fieldset>
+
+    <!-- Simple variant (default): standard radios, stacked -->
+    <fieldset class="instui-radio-input-group">
+      <legend>Notification frequency</legend>
+      <label class="instui-radio"><input type="radio" name="freq" checked /> Real time</label>
+      <label class="instui-radio"><input type="radio" name="freq" /> Daily digest</label>
+      <label class="instui-radio"><input type="radio" name="freq" /> Weekly digest</label>
+    </fieldset>
+
+    <!-- Simple variant, laid out in a row -->
+    <fieldset class="instui-radio-input-group -layout-columns">
+      <legend>Contact method</legend>
+      <label class="instui-radio"><input type="radio" name="contact" checked /> Email</label>
+      <label class="instui-radio"><input type="radio" name="contact" /> Phone</label>
+      <label class="instui-radio"><input type="radio" name="contact" /> Mail</label>
+    </fieldset>
+  </div>
+</div>

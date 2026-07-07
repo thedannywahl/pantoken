@@ -16,6 +16,9 @@ An InstUI-look CSS component library, built from the `--instui-*` tokens. The sh
   and curated semantic colour/token utilities.
 - **`fonts.css`** — opt-in `@font-face` rules for the Instructure brand fonts. `base.css` _applies_ the
   font; `fonts.css` _loads_ the woff2s, so text degrades gracefully without it.
+- **`select.css`** — opt-in, **experimental**: styles the open `.instui-simple-select` dropdown via the
+  CSS Customizable Select model (`appearance: base-select`, Chrome 135+). Every rule is `@supports`-gated,
+  so it's inert where unsupported.
 - **`icons.css`** — one `.instui-icon-<name>` glyph class per icon.
 
 It's pure CSS derived from the tokens, so it tracks InstUI through the token IR with no dependency on
@@ -121,6 +124,7 @@ namespace every class.
 | `.instui-range`               | a styled `input[type="range"]`                                                                                                                                                                                             |
 | `.instui-form-field`          | grid field wrapper: `.label`, `.controls`, `-layout-inline`, `-required` (or a native `required` control), `-readonly`                                                                                                     |
 | `.instui-form-field-group`    | a `<fieldset>`/`<legend>` group: `-layout-columns`/`-inline`, `-row-spacing-*`, `-col-spacing-*`                                                                                                                           |
+| `.instui-radio-input-group`   | single-select radio `<fieldset>`: `-variant-simple` (default) / `-variant-toggle` (connects the child toggle buttons into one segmented control)                                                                           |
 | `.instui-form-field-messages` | `.instui-form-field-message` with `-type-{hint,error,success,screenreader-only}` (error/success get a glyph)                                                                                                               |
 | `.instui-text-input`          | styled native `<input>`; `-invalid`, `-success`, `-readonly`, `-size-{sm,md,lg}`                                                                                                                                           |
 | `.instui-text-area`           | styled native `<textarea>` (resizable); same states/sizes                                                                                                                                                                  |

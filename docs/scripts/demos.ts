@@ -43,6 +43,9 @@ copyFileSync(require.resolve("@pantoken/components/prose.css"), join(assets, "pr
 copyFileSync(require.resolve("@pantoken/components/base.css"), join(assets, "base.css"));
 // The icon glyph classes (.instui-icon-<name>), so demos can render InstUI glyphs with no inline SVG.
 copyFileSync(require.resolve("@pantoken/components/icons.css"), join(assets, "icons.css"));
+// The experimental customizable-select enhancement (@supports base-select) — inert unless the browser
+// supports it, so it's safe to always load; lets the simple-select demo show the styled dropdown.
+copyFileSync(require.resolve("@pantoken/components/select.css"), join(assets, "select.css"));
 // The cross-cutting utilities (spacing/colour classes + the View primitive), opt-in like the rest.
 copyFileSync(require.resolve("@pantoken/components/utilities.css"), join(assets, "utilities.css"));
 
