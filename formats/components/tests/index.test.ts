@@ -189,13 +189,20 @@ test("spinner has sizes and an inverse track", () => {
   expect(css).toContain("var(--instui-component-spinner-inverse-color)");
 });
 
-test("avatar has color/size modifiers, tabs/metric/byline use sub-elements, table styles cells", () => {
+test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via @scope", () => {
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-color-blue");
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-size-lg");
-  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs .tab.-selected");
-  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs .tab.-disabled");
-  expect(metricCss({ prefix: "instui" })).toContain(".instui-metric .value");
-  expect(bylineCss({ prefix: "instui" })).toContain(".instui-byline .title");
+  // Sub-elements live inside an @scope block, so they're authored as bare, ancestor-scoped classes.
+  const tabs = tabsCss({ prefix: "instui" });
+  expect(tabs).toContain("@scope (.instui-tabs)");
+  expect(tabs).toContain(".tab.-selected");
+  expect(tabs).toContain(".tab.-disabled");
+  const metric = metricCss({ prefix: "instui" });
+  expect(metric).toContain("@scope (.instui-metric)");
+  expect(metric).toContain(".value {");
+  const byline = bylineCss({ prefix: "instui" });
+  expect(byline).toContain("@scope (.instui-byline)");
+  expect(byline).toContain(".title {");
   expect(tableCss({ prefix: "instui" })).toContain(".instui-table th");
 });
 
@@ -205,10 +212,11 @@ test("table styles row-header cells and a row hover; menu has active/group parts
   expect(table).toContain("var(--instui-component-table-row-header-background)");
   expect(table).toContain("var(--instui-component-table-row-hover-border-color)");
   const menu = menuCss({ prefix: "instui" });
-  expect(menu).toContain(".instui-menu .item.-active");
+  expect(menu).toContain("@scope (.instui-menu)");
+  expect(menu).toContain(".item.-active");
   expect(menu).toContain("var(--instui-component-menu-item-active-background)");
-  expect(menu).toContain(".instui-menu .group");
-  expect(menu).toContain(".instui-menu .item-info");
+  expect(menu).toContain(".group {");
+  expect(menu).toContain(".item-info {");
 });
 
 test("modal has sizes, a compact density, and an inverse scheme", () => {
@@ -233,7 +241,7 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
 });
 
 test("tabs have a secondary variant; link has sizes, on-color, inline and unstyled", () => {
-  expect(tabsCss({ prefix: "instui" })).toContain(".instui-tabs.-variant-secondary .tab");
+  expect(tabsCss({ prefix: "instui" })).toContain(":scope.-variant-secondary .tab");
   expect(tabsCss({ prefix: "instui" })).toContain(
     "var(--instui-component-tabs-tab-secondary-selected-background)",
   );
@@ -489,7 +497,7 @@ test("InstUI prop-coverage gaps: text-transform, list unstyled/inline, table fix
   expect(tableCss({ prefix: "instui" })).toContain(
     ".instui-table.-layout-fixed { table-layout: fixed; }",
   );
-  expect(menuCss({ prefix: "instui" })).toContain(".instui-menu .item.-disabled");
+  expect(menuCss({ prefix: "instui" })).toContain(".item.-disabled");
   expect(modalCss({ prefix: "instui" })).toContain(".instui-modal.-overflow-fit");
 });
 
@@ -569,6 +577,10 @@ test("checkbox has a toggle-switch variant driven by the toggle tokens", () => {
   expect(css).toContain("var(--instui-color-background-muted)");
   expect(css).toContain("var(--instui-component-radio-input-toggle-background-success)");
   expect(css).toContain('.instui-checkbox.-variant-toggle input[type="checkbox"]::before');
+  // The base (square) control must exclude the toggle variant by its CURRENT class name, or the base
+  // rules out-specify the switch and it renders as a checkbox (regression fix).
+  expect(css).toContain(":not(.instui-checkbox.-variant-toggle)");
+  expect(css).not.toContain(":not(.instui-checkbox.-toggle)");
 });
 
 test("checkbox is a custom-appearance control with sizes, error and readonly states", () => {
@@ -606,9 +618,10 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   const css = progressCss({ prefix: "instui" });
   expect(css).toContain(".instui-progress.-size-sm");
   expect(css).toContain(".instui-progress.-size-lg");
-  expect(css).toContain(".instui-progress .bar.-color-info");
-  expect(css).toContain(".instui-progress .bar.-color-warning");
-  expect(css).toContain(".instui-progress .bar.-color-alert");
+  expect(css).toContain("@scope (.instui-progress)");
+  expect(css).toContain(".bar.-color-info");
+  expect(css).toContain(".bar.-color-warning");
+  expect(css).toContain(".bar.-color-alert");
   expect(css).toContain(".instui-progress.-color-inverse");
   expect(css).toContain("var(--instui-component-progress-bar-meter-color-brand-inverse)");
   expect(css).toContain(".instui-progress-value");

@@ -27,6 +27,50 @@ export const DEFAULT_PREFIX = "instui";
 /** Join a class prefix to its separator: `"instui"` → `"instui-"`; a falsy prefix → `""` (no prefix). */
 const ns = (prefix: string | null | undefined): string => (prefix ? `${prefix}-` : "");
 
+/**
+ * Wrap a component's element rules in an `@scope` at-rule rooted at the component, so its bare element
+ * classes (`.item`, `.tab`) only take effect inside that component's subtree. Author `body` with the
+ * component's own token — `${root}` for the root and `${root} .el` for a descendant element — and this
+ * rewrites the root away: `${root} .el` → `.el` (bare, implicitly scoped), `${root}.-mod` →
+ * `:scope.-mod` (root modifier), and any remaining `${root}` → `:scope`.
+ *
+ * `children` names the elements that are DIRECT children of the scope root; each is upgraded to the
+ * RSCSS child combinator (`.el` → `:scope > .el`, `:scope.-mod .el` → `:scope.-mod > .el`) so a
+ * consumer's same-named element nested DEEPER inside the component no longer matches. Omit an element
+ * (leave it descendant) when its DOM parent is unclassed or variable — e.g. tabs `.tab` sits under
+ * `.list`, byline `.title`/`.description` under an unclassed wrapper.
+ *
+ * Two rules for callers: (1) pass ONLY element rules — keep the root and root-modifier-only rules
+ * (esp. `-size-*`, which the size-alias post-processor rewrites) OUTSIDE, prefixed, so their aliases
+ * stay valid; (2) never pass a body whose root token is a prefix of a sibling class (e.g.
+ * `.instui-progress` vs `.instui-progress-value`) — split those out first.
+ *
+ * Note: `@scope` (and even `>`) narrows *where* the rules apply; it does not make the bare names fully
+ * collision-proof (a consumer's own `.item` at the same child position still matches). True
+ * collision-safety needs a unique name — which is why non-nested parts stay flat-prefixed.
+ */
+const scope = (root: string, body: string, children: string[] = []): string => {
+  let scoped = body
+    .split(`${root} .`)
+    .join(".")
+    .split(`${root}.`)
+    .join(":scope.")
+    .split(`${root} `)
+    .join(":scope ")
+    .split(root)
+    .join(":scope");
+  for (const c of children) {
+    // Direct child of the root: a bare `.c` starting a selector → `:scope > .c`.
+    scoped = scoped.replace(
+      new RegExp(`(^|[\\n,])(\\s*)\\.${c}(?![\\w-])`, "g"),
+      `$1$2:scope > .${c}`,
+    );
+    // Direct child of a modified root: `:scope<mods> .c` → `:scope<mods> > .c`.
+    scoped = scoped.replace(new RegExp(`(:scope[^ ,{\\n]*) \\.${c}(?![\\w-])`, "g"), `$1 > .${c}`);
+  }
+  return `@scope (${root}) {\n${scoped}\n}`;
+};
+
 /** The six document heading levels, in order. */
 const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
 
@@ -917,12 +961,16 @@ ${color("red")}
  * selected panel's `border-top`, and the selected tab overlaps it by the panel border width.
  */
 function tabsRules(p: string): string {
+  const root = `.${p}tabs`;
   return `
-.${p}tabs {
+${root} {
   display: flex;
   flex-direction: column;
   background: var(--instui-component-tabs-default-background);
 }
+${scope(
+  root,
+  `
 .${p}tabs .list {
   display: flex;
   width: 100%;
@@ -1004,18 +1052,25 @@ function tabsRules(p: string): string {
   padding: var(--instui-spacing-space-sm) var(--instui-spacing-space-md) var(--instui-spacing-space-md);
 }
 .${p}tabs .panel[hidden] { display: none; }
+`,
+  ["list", "panel"],
+)}
 `;
 }
 
 /** Metric rules: a stacked value + label. */
 function metricRules(p: string): string {
+  const root = `.${p}metric`;
   return `
-.${p}metric {
+${root} {
   display: inline-flex;
   flex-direction: column;
   gap: var(--instui-component-metric-gap-texts);
   padding: 0 var(--instui-component-metric-padding-horizontal);
 }
+${scope(
+  root,
+  `
 .${p}metric .value {
   color: var(--instui-component-metric-value-color);
   font-family: var(--instui-component-metric-value-font-family);
@@ -1030,13 +1085,17 @@ function metricRules(p: string): string {
   font-weight: var(--instui-component-metric-label-font-weight);
   line-height: var(--instui-component-metric-label-line-height);
 }
+`,
+  ["value", "label"],
+)}
 `;
 }
 
 /** Byline rules: a figure (avatar) beside a title and description. */
 function bylineRules(p: string): string {
+  const root = `.${p}byline`;
   return `
-.${p}byline {
+${root} {
   display: flex;
   align-items: center;
   gap: var(--instui-component-byline-figure-margin);
@@ -1044,6 +1103,9 @@ function bylineRules(p: string): string {
   color: var(--instui-component-byline-color);
   font-family: var(--instui-component-byline-font-family);
 }
+${scope(
+  root,
+  `
 .${p}byline .title {
   margin: 0 0 var(--instui-component-byline-title-margin);
   font-size: var(--instui-component-byline-title-font-size);
@@ -1055,6 +1117,8 @@ function bylineRules(p: string): string {
   font-weight: var(--instui-component-byline-description-font-weight);
   line-height: var(--instui-component-byline-description-line-height);
 }
+`,
+)}
 `;
 }
 
@@ -1526,7 +1590,7 @@ function listRules(p: string): string {
  * `--toggle` modifier that renders the native checkbox as a switch.
  */
 function checkboxRules(p: string): string {
-  const base = `.${p}checkbox:not(.${p}checkbox.-toggle)`;
+  const base = `.${p}checkbox:not(.${p}checkbox.-variant-toggle)`;
   return `
 .${p}checkbox {
   display: inline-flex;
@@ -1619,7 +1683,7 @@ ${base}.${p}checkbox.-readonly input[type="checkbox"] {
   border-color: var(--instui-component-checkbox-border-readonly-color);
   background: var(--instui-component-checkbox-background-readonly-color);
 }
-.${p}checkbox.-required .asterisk { color: var(--instui-component-checkbox-asterisk-color); }
+${scope(`.${p}checkbox`, `.${p}checkbox.-required .asterisk { color: var(--instui-component-checkbox-asterisk-color); }`)}
 .${p}checkbox.-variant-toggle input[type="checkbox"] {
   /* InstUI's toggle facade is a fixed 40x24 switch: the switch height is the small choice-control
      size (24px), while the toggle-medium-height token (40px) is the track width. Its border is the
@@ -1816,11 +1880,12 @@ function spinnerRules(p: string): string {
  * not a child) styles an adjacent numeric label.
  */
 function progressRules(p: string): string {
+  const root = `.${p}progress`;
   const meter = (name: string, token: string): string =>
     `.${p}progress .bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}); }
 .${p}progress.-color-inverse .bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}-inverse); }`;
   return `
-.${p}progress {
+${root} {
   display: block;
   width: 100%;
   height: var(--instui-component-progress-bar-medium-height);
@@ -1832,6 +1897,13 @@ function progressRules(p: string): string {
 .${p}progress.-size-xs { height: var(--instui-component-progress-bar-x-small-height); }
 .${p}progress.-size-sm { height: var(--instui-component-progress-bar-small-height); }
 .${p}progress.-size-lg { height: var(--instui-component-progress-bar-large-height); }
+.${p}progress.-color-inverse {
+  background: var(--instui-component-progress-bar-track-color-inverse);
+  border-bottom-color: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
+}
+${scope(
+  root,
+  `
 .${p}progress .bar {
   height: 100%;
   background: var(--instui-component-progress-bar-meter-color-brand);
@@ -1842,11 +1914,10 @@ ${meter("color-success", "success")}
 ${meter("color-warning", "warning")}
 ${meter("color-alert", "alert")}
 ${meter("color-danger", "danger")}
-.${p}progress.-color-inverse {
-  background: var(--instui-component-progress-bar-track-color-inverse);
-  border-bottom-color: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
-}
 .${p}progress.-color-inverse .bar { background: var(--instui-component-progress-bar-meter-color-brand-inverse); }
+`,
+  ["bar"],
+)}
 .${p}progress-value {
   padding: 0 var(--instui-component-progress-bar-value-padding);
   color: var(--instui-component-progress-bar-text-color);
@@ -1862,8 +1933,9 @@ ${meter("color-danger", "danger")}
 
 /** Menu rules: a dropdown surface with items, a highlighted state, and separators. */
 function menuRules(p: string): string {
+  const root = `.${p}menu`;
   return `
-.${p}menu {
+${root} {
   min-width: var(--instui-component-menu-min-width);
   max-width: var(--instui-component-menu-max-width);
   background: var(--instui-component-menu-item-background);
@@ -1871,6 +1943,9 @@ function menuRules(p: string): string {
   border-radius: var(--instui-border-radius-md);
   padding: var(--instui-spacing-space-xs) 0;
 }
+${scope(
+  root,
+  `
 .${p}menu .item {
   display: block;
   padding: var(--instui-component-menu-item-padding-vertical) var(--instui-component-menu-item-padding-horizontal);
@@ -1919,6 +1994,9 @@ function menuRules(p: string): string {
   background: var(--instui-component-menu-separator-background);
   margin: var(--instui-component-menu-separator-margin-vertical) var(--instui-component-menu-separator-margin-horizontal);
 }
+`,
+  ["item", "group", "separator"],
+)}
 `;
 }
 
@@ -1928,8 +2006,9 @@ function menuRules(p: string): string {
  * `--inverse` (on-dark) scheme that recolors every part.
  */
 function modalRules(p: string): string {
+  const root = `.${p}modal`;
   return `
-.${p}modal {
+${root} {
   max-width: var(--instui-component-modal-medium-max-width);
   background: var(--instui-component-modal-background-color);
   color: var(--instui-component-modal-text-color);
@@ -1955,6 +2034,14 @@ function modalRules(p: string): string {
   flex-direction: column;
   max-block-size: calc(100dvh - var(--instui-spacing-space-xl) * 2);
 }
+.${p}modal.-color-inverse {
+  background: var(--instui-component-modal-inverse-background-color);
+  color: var(--instui-component-modal-inverse-text-color);
+  border-color: var(--instui-component-modal-inverse-border-color);
+}
+${scope(
+  root,
+  `
 .${p}modal.-overflow-fit .body { overflow-y: auto; }
 .${p}modal .header {
   padding: var(--instui-component-modal-header-padding);
@@ -1971,11 +2058,6 @@ function modalRules(p: string): string {
 .${p}modal.-density-compact .header { padding: var(--instui-component-modal-header-padding-compact); }
 .${p}modal.-density-compact .body { padding: var(--instui-component-modal-body-padding-compact); }
 .${p}modal.-density-compact .footer { padding: var(--instui-component-modal-footer-padding-compact); }
-.${p}modal.-color-inverse {
-  background: var(--instui-component-modal-inverse-background-color);
-  color: var(--instui-component-modal-inverse-text-color);
-  border-color: var(--instui-component-modal-inverse-border-color);
-}
 .${p}modal.-color-inverse .header {
   background: var(--instui-component-modal-header-inverse-background-color);
   border-bottom-color: var(--instui-component-modal-header-inverse-border-color);
@@ -1985,13 +2067,19 @@ function modalRules(p: string): string {
   background: var(--instui-component-modal-footer-inverse-background-color);
   border-top-color: var(--instui-component-modal-footer-inverse-border-color);
 }
+`,
+  ["header", "body", "footer"],
+)}
 `;
 }
 
 /** Breadcrumb rules: an inline trail of links with `/` separators. */
 function breadcrumbRules(p: string): string {
+  const root = `.${p}breadcrumb`;
+  // Root + size rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
+  // valid; only the element rules that don't carry a size modifier go inside.
   return `
-.${p}breadcrumb {
+${root} {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -2003,6 +2091,9 @@ function breadcrumbRules(p: string): string {
 .${p}breadcrumb.-size-lg { gap: var(--instui-component-breadcrumb-gap-lg); font-size: var(--instui-component-link-font-size-lg); }
 .${p}breadcrumb.-size-sm .item:not(:last-child)::after { margin-inline-start: var(--instui-component-breadcrumb-gap-sm); }
 .${p}breadcrumb.-size-lg .item:not(:last-child)::after { margin-inline-start: var(--instui-component-breadcrumb-gap-lg); }
+${scope(
+  root,
+  `
 .${p}breadcrumb a { color: var(--instui-component-link-text-color); text-decoration: none; }
 .${p}breadcrumb a:hover { color: var(--instui-component-link-text-hover-color); text-decoration: underline; }
 .${p}breadcrumb .item:not(:last-child)::after {
@@ -2010,6 +2101,9 @@ function breadcrumbRules(p: string): string {
   margin-inline-start: var(--instui-component-breadcrumb-gap-md);
   color: var(--instui-color-text-muted);
 }
+`,
+  ["item"],
+)}
 `;
 }
 
@@ -2018,8 +2112,11 @@ function breadcrumbRules(p: string): string {
  * message, and `--clickable` (for a billboard that acts as a button) adds hover and active states.
  */
 function billboardRules(p: string): string {
+  const root = `.${p}billboard`;
+  // Root + size rules (incl. the size-scoped message font-size) stay outside @scope, prefixed, so the
+  // size-alias post-processor's twins stay valid; the size-free element rules go inside.
   return `
-.${p}billboard {
+${root} {
   display: block;
   text-align: center;
   background: var(--instui-component-billboard-background-color);
@@ -2035,10 +2132,6 @@ function billboardRules(p: string): string {
   padding: var(--instui-component-billboard-padding-large);
   margin: var(--instui-component-billboard-large-margin);
 }
-.${p}billboard .message {
-  color: var(--instui-component-billboard-message-color);
-  font-size: var(--instui-component-billboard-message-font-size-medium);
-}
 .${p}billboard.-size-sm .message { font-size: var(--instui-component-billboard-message-font-size-small); }
 .${p}billboard.-size-lg .message { font-size: var(--instui-component-billboard-message-font-size-large); }
 .${p}billboard.-clickable {
@@ -2046,19 +2139,30 @@ function billboardRules(p: string): string {
   border: var(--instui-component-billboard-button-border-width) var(--instui-component-billboard-button-border-style) transparent;
   border-radius: var(--instui-component-billboard-button-border-radius);
 }
-.${p}billboard.-clickable .message { color: var(--instui-component-billboard-message-color-clickable); }
 .${p}billboard.-clickable:hover { border-style: var(--instui-component-billboard-button-hover-border-style); }
 .${p}billboard.-clickable:active {
   background: var(--instui-component-billboard-clickable-active-bg);
   color: var(--instui-component-billboard-clickable-active-text);
 }
+${scope(
+  root,
+  `
+.${p}billboard .message {
+  color: var(--instui-component-billboard-message-color);
+  font-size: var(--instui-component-billboard-message-font-size-medium);
+}
+.${p}billboard.-clickable .message { color: var(--instui-component-billboard-message-color-clickable); }
+`,
+  ["message"],
+)}
 `;
 }
 
 /** Rating rules: filled and empty stars, with `--sm`/`--lg` sizes. */
 function ratingRules(p: string): string {
+  const root = `.${p}rating`;
   return `
-.${p}rating {
+${root} {
   display: inline-flex;
   align-items: center;
   gap: var(--instui-component-rating-icon-icon-margin);
@@ -2066,8 +2170,14 @@ function ratingRules(p: string): string {
 }
 .${p}rating.-size-sm { font-size: var(--instui-component-rating-icon-small-icon-font-size); }
 .${p}rating.-size-lg { font-size: var(--instui-component-rating-icon-large-icon-font-size); }
+${scope(
+  root,
+  `
 .${p}rating .star { color: var(--instui-component-rating-icon-icon-empty-color); opacity: 0.35; }
 .${p}rating .star.-filled { color: var(--instui-component-rating-icon-icon-filled-color); opacity: 1; }
+`,
+  ["star"],
+)}
 `;
 }
 
@@ -2160,13 +2270,17 @@ ${meter("color-danger", "danger")}
 
 /** Pagination rules: a row of page links with a current-page state. */
 function paginationRules(p: string): string {
+  const root = `.${p}pagination`;
   return `
-.${p}pagination {
+${root} {
   display: inline-flex;
   align-items: center;
   gap: var(--instui-component-pagination-page-indicator-gap);
   font-family: var(--instui-font-family-base);
 }
+${scope(
+  root,
+  `
 .${p}pagination .page {
   display: inline-flex;
   align-items: center;
@@ -2183,6 +2297,9 @@ function paginationRules(p: string): string {
   background: var(--instui-color-background-interactive-action-secondary-base);
   color: var(--instui-color-text-interactive-action-secondary-base);
 }
+`,
+  ["page"],
+)}
 `;
 }
 

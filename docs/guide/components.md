@@ -7,15 +7,23 @@ the stylesheet and tag your markup — no framework required.
 import "@pantoken/components/components.css";
 ```
 
-Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-`<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-[package map](/guide/packages).
+> [!NOTE]
+> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
+> [package map](/guide/packages).
 
 ## Conventions
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html). RSCSS calls for dash prefixed variants (`-<val>`), however this package uses `-<key>-<val>` for variants with a specified value and `-<key>` for boolean variants. All of the key/value pairs are mapped directly from INSTUI components for a consistent and unambiguous developer experience.
+The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-### Alert
+Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
+themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
+name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
+inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
+(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
+but is deprecated (e.g. `-variant-info` → use `-color-info`).
+
+### Example
 
 Instructure UI React component:
 
@@ -28,72 +36,17 @@ Instructure UI React component:
 pantoken components:
 
 ```html
-<!--// direct instui props //-->
+<!-- direct instui props -->
 <div
-  class="instui-alert
-  -variant-success
-  -transition-fade
-  -has-shadow
-  -render-custom-icon-megaphone
-"
+  class="instui-alert -variant-success -transition-fade -has-shadow -render-custom-icon-megaphone"
 >
   This is the alert content.
 </div>
 
-<!--// normalized color/icon props //-->
-<div
-  class="instui-alert
-  -color-success
-  -transition-fade
-  -has-shadow
-  -icon-megaphone
-"
->
+<!-- normalized color/icon props -->
+<div class="instui-alert -color-success -transition-fade -has-shadow -icon-megaphone">
   This is the alert content.
 </div>
-```
-
-### IconButton
-
-Instructure UI React component:
-
-```jsx
-<IconButton screenReaderLabel="Delete tag" color="secondary" shape="circle" margin="small" disabled>
-  <XInstUIIcon />
-</IconButton>
-```
-
-pantoken components:
-
-```html
-<!--// direct instui props //-->
-<button
-  aria-label="Delete tag"
-  class="instui-button
-  -color-secondary
-  -shape-circle
-  -margin-small
-  -disabled
-"
->
-  <span
-    class="instui-icon
-    -icon-x
-  "
-  ></span>
-</button>
-
-<!--// normalized color/icon props //-->
-<button
-  aria-label="Delete tag"
-  class="instui-button
-  -color-secondary
-  -shape-circle
-  -margin-small
-  -disabled
-  -icon-x
-"
-></button>
 ```
 
 ## Class prefix
@@ -111,31 +64,6 @@ componentsCss({ prefix: null }); // .button, .alert — no prefix
 
 The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
 stylesheets shipped by the package keep the `instui` prefix.
-
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
-
-## Normalization
-
-This package provides a normalization layer across all components for colors, icons, and sizing. Different Instructure UI components have different keys for functionality that is essentially the same.
-
-- `renderCustomIcon`, `customIcon`, `icon` => `-icon`
-- `sm`, `small`, `sizeSm` => `-sm | -small`
-- `accent1`, `red`, `danger` => `danger`
-
-This provides a simpler developer experience when implementing components, however, all of the original props are also maintained and are tagged with `@deprecated` so that linters can inform users of the alternative, preferred implementation.
-
-```html
-<!--// ✅ Normalized icon //-->
-<div class="instui-alert -icon-megaphone">Hello</div>
-
-<!--// ✅ Direct instui prop //-->
-<div class="instui-alert -render-custom-icon-megaphone">Hello</div>
-```
 
 ## Base
 
