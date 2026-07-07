@@ -269,11 +269,21 @@ The glyphs paint in `currentColor`, so they always match the message color. `-ty
 deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
 `aria-invalid` on the control when there's an error.
 
+Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
+field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
+on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
+a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
+success on `-success`.
+
 **Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
 resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
 states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. The focus ring comes from `base.css`. For a rich combobox with a listbox popover,
-reach for `@instructure/ui` — this library covers the native controls.
+`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
+the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
+keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
+`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
+`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
+combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
 
 **Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
 `.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and

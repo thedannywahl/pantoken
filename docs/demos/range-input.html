@@ -1,0 +1,27 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; align-items: center; gap: 8px">
+      <label for="r1">Grading range</label>
+      <input id="r1" class="instui-range-input" type="range" min="0" max="100" value="30" />
+      <span class="instui-range-input-value" id="r1v">30</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <label for="r2">Small</label>
+      <input id="r2" class="instui-range-input" type="range" min="0" max="100" value="60" />
+      <span class="instui-range-input-value -size-sm" id="r2v">60</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  for (const [id, out] of [
+    ["r1", "r1v"],
+    ["r2", "r2v"],
+  ]) {
+    const range = document.getElementById(id);
+    const value = document.getElementById(out);
+    range.addEventListener("input", () => {
+      value.textContent = range.value;
+    });
+  }
+</script>

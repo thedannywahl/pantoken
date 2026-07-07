@@ -546,6 +546,13 @@ const SELECT_CHEVRON =
 const CHECK_URL_ON =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\")";
 
+/** Lucide `chevron-up`/`chevron-down`, masked — the NumberInput spinner glyphs (painted in currentColor). */
+const CHEVRON_UP_ICON = strokeMask("%3Cpath d='m18 15-6-6-6 6'/%3E");
+const CHEVRON_DOWN_ICON = strokeMask("%3Cpath d='m6 9 6 6 6-6'/%3E");
+
+/** Lucide `chevron-right`, masked — the ToggleDetails/ToggleGroup disclosure marker (rotates on [open]). */
+const CHEVRON_RIGHT_ICON = strokeMask("%3Cpath d='m9 18 6-6-6-6'/%3E");
+
 /**
  * InstUI's `ai` glyph (Solid), inlined as a mask so it paints in the button's own colour — solid
  * white on `--ai`, the violet→sea gradient on `--ai-secondary`. Source: `@instructure/ui-icons`.
@@ -2146,9 +2153,12 @@ function spinnerRules(p: string): string {
  */
 function progressRules(p: string): string {
   const root = `.${p}progress`;
-  const meter = (name: string, token: string): string =>
-    `.${p}progress .bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}); }
-.${p}progress.-color-inverse .bar.-${name} { background: var(--instui-component-progress-bar-meter-color-${token}-inverse); }`;
+  // InstUI's meterColor lives on the component (root), not the meter. The `progress-bar-meter-color-*`
+  // tokens all resolve to background-brand upstream (degenerate), so the distinct colours come from the
+  // semantic `--instui-color-background-*` status tokens; `alert`→warning and `danger`→error (no
+  // dedicated background token for those two names).
+  const meter = (mod: string, bg: string): string =>
+    `${root}.-meter-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
   return `
 ${root} {
   display: block;
@@ -2171,15 +2181,16 @@ ${scope(
   `
 .${p}progress .bar {
   height: 100%;
-  background: var(--instui-component-progress-bar-meter-color-brand);
+  background: var(--instui-color-background-brand);
   border-radius: var(--instui-component-progress-bar-border-radius);
 }
-${meter("color-info", "info")}
-${meter("color-success", "success")}
-${meter("color-warning", "warning")}
-${meter("color-alert", "alert")}
-${meter("color-danger", "danger")}
-.${p}progress.-color-inverse .bar { background: var(--instui-component-progress-bar-meter-color-brand-inverse); }
+${meter("brand", "brand")}
+${meter("info", "info")}
+${meter("success", "success")}
+${meter("warning", "warning")}
+${meter("alert", "warning")}
+${meter("danger", "error")}
+.${p}progress.-should-animate .bar { transition: width 0.5s ease; }
 `,
   ["bar"],
 )}
@@ -2466,21 +2477,52 @@ ${scope(
 
 /** Toggle-group rules: a segmented control that joins `.<prefix>-button` children. */
 function toggleGroupRules(p: string): string {
+  const root = `.${p}toggle-group`;
   return `
-.${p}toggle-group {
-  display: inline-flex;
+${root} {
+  display: block;
   border: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);
   border-radius: var(--instui-border-radius-md);
+  background: var(--instui-color-background-elevated-surface-base);
+  color: var(--instui-component-toggle-details-text-color);
+  font-family: var(--instui-component-toggle-details-font-family);
+  font-weight: var(--instui-component-toggle-details-font-weight);
+  line-height: var(--instui-component-toggle-details-line-height);
   overflow: hidden;
 }
-.${p}toggle-group > .${p}button {
-  border-radius: 0;
-  border-top-width: 0;
-  border-bottom-width: 0;
+${root} > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--instui-component-toggle-details-icon-margin);
+  cursor: pointer;
+  list-style: none;
+  padding: var(--instui-component-toggle-details-content-padding-medium);
+  font-size: var(--instui-component-toggle-details-font-size-medium);
 }
-.${p}toggle-group > .${p}button + .${p}button {
-  border-inline-start: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);
+${root} > summary::-webkit-details-marker { display: none; }
+${root} > summary::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+  -webkit-mask: ${CHEVRON_RIGHT_ICON};
+  mask: ${CHEVRON_RIGHT_ICON};
+  transition: transform 0.2s ease;
 }
+${root}[open] > summary::before { transform: rotate(90deg); }
+/* the collapsible content: separated from the header by a top border in the group colour */
+${root} > :not(summary) {
+  border-block-start: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);
+  padding: var(--instui-component-toggle-details-content-padding-medium);
+}
+${root}.-size-sm > summary,
+${root}.-size-sm > :not(summary) { font-size: var(--instui-component-toggle-details-font-size-small); padding: var(--instui-component-toggle-details-content-padding-small); }
+${root}.-size-lg > summary,
+${root}.-size-lg > :not(summary) { font-size: var(--instui-component-toggle-details-font-size-large); padding: var(--instui-component-toggle-details-content-padding-large); }
+/* border={false} */
+${root}.-without-border { border: 0; }
+${root}.-without-border > :not(summary) { border-block-start: 0; }
 `;
 }
 
@@ -2518,40 +2560,65 @@ function contextViewRules(p: string): string {
  * (`--x-small`/`--sm`/`--lg`), the status palette, and `--inverse` are one-line overrides.
  */
 function progressCircleRules(p: string): string {
-  const meter = (name: string, token: string): string =>
-    `.${p}progress-circle.-${name} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}); }
-.${p}progress-circle.-color-inverse.-${name} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
+  const root = `.${p}progress-circle`;
+  const meter = (mod: string, token: string): string =>
+    `${root}.-meter-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}); }
+${root}.-color-inverse.-meter-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
   const size = (mod: string, key: string): string =>
-    `.${p}progress-circle.-${mod} {
+    `${root}.-${mod} {
   width: var(--instui-component-progress-circle-${key}-size);
   height: var(--instui-component-progress-circle-${key}-size);
   --pantoken-pc-stroke: var(--instui-component-progress-circle-${key}-stroke-width);
 }`;
   return `
-.${p}progress-circle {
+/* --value (0–100) drives the arc; registered so the conic-gradient re-evaluates (and can transition). */
+@property --value { syntax: "<number>"; inherits: true; initial-value: 0; }
+${root} {
   --value: 0;
   --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
   --pantoken-pc-track: var(--instui-component-progress-circle-track-color);
   --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
-  display: inline-block;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: var(--instui-component-progress-circle-medium-size);
   height: var(--instui-component-progress-circle-medium-size);
+  color: var(--instui-component-progress-circle-color);
+  font-family: var(--instui-component-progress-circle-font-family);
+  font-weight: var(--instui-component-progress-circle-font-weight);
+  line-height: var(--instui-component-progress-circle-line-height);
+}
+/* The ring is a masked conic donut on ::before; the value sits in the hole. */
+${root}::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
   background: conic-gradient(var(--pantoken-pc-fill) calc(var(--value) * 1%), var(--pantoken-pc-track) 0);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
   mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
 }
+${root} .value {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ${size("size-xs", "x-small")}
 ${size("size-sm", "small")}
 ${size("size-lg", "large")}
-${meter("color-info", "info")}
-${meter("color-success", "success")}
-${meter("color-warning", "warning")}
-${meter("color-alert", "alert")}
-${meter("color-danger", "danger")}
-.${p}progress-circle.-color-inverse {
+${meter("brand", "brand")}
+${meter("info", "info")}
+${meter("success", "success")}
+${meter("warning", "warning")}
+${meter("alert", "alert")}
+${meter("danger", "danger")}
+${root}.-color-inverse {
   --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
   --pantoken-pc-track: var(--instui-component-progress-circle-track-color-inverse);
+  color: var(--instui-component-progress-circle-color-inverse);
 }
 `;
 }
@@ -2626,9 +2693,31 @@ function toggleDetailsRules(p: string): string {
   align-items: center;
   gap: var(--instui-component-toggle-details-icon-margin);
   cursor: pointer;
+  list-style: none;
   font-size: var(--instui-component-toggle-details-font-size-medium);
   padding: var(--instui-component-toggle-details-toggle-padding);
   color: var(--instui-component-toggle-details-text-color);
+}
+/* Kill the native disclosure marker; we supply a rotating chevron. */
+.${p}toggle-details > summary::-webkit-details-marker { display: none; }
+.${p}toggle-details > summary::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+  -webkit-mask: ${CHEVRON_RIGHT_ICON};
+  mask: ${CHEVRON_RIGHT_ICON};
+  transition: transform 0.2s ease;
+}
+.${p}toggle-details[open] > summary::before { transform: rotate(90deg); }
+/* iconPosition="end" (named -chevron-end, NOT -icon-position-end — a "-icon-" class would collide with the
+   generic [class*="-icon-"] glyph painter): push the disclosure chevron to the inline-end. */
+.${p}toggle-details.-chevron-end > summary::before { order: 1; margin-inline-start: auto; }
+/* variant="filled": the summary reads as an action-secondary button. */
+.${p}toggle-details.-variant-filled > summary {
+  background: var(--instui-color-background-interactive-action-secondary-base);
+  border-radius: var(--instui-component-toggle-details-toggle-border-radius);
 }
 .${p}toggle-details > :not(summary) {
   padding: var(--instui-component-toggle-details-content-padding-medium);
@@ -2660,68 +2749,93 @@ function fileDropRules(p: string): string {
 }
 
 /**
- * Range rules: a styled `input[type="range"]` (track + handle, both engines) with hover/focus handle
- * states, and a `.range-value` bubble (a flat class, since it sits as a sibling) styled from the value tokens.
+ * RangeInput rules: a styled `input[type="range"]` (`.range-input`, track + handle for both engines) with
+ * hover/focus handle states, plus a `.range-input-value` bubble — an inverse ContextView-style pill with a
+ * left-pointing caret (InstUI renders the value in a `ContextView` placed end-center), sized per `-size-*`
+ * from the value tokens. The input's block-size = the handle size so the thumb isn't clipped, and the thin
+ * track is centred within it.
  */
-function rangeRules(p: string): string {
+function rangeInputRules(p: string): string {
+  const v = (s: string): string => `var(--instui-component-range-input-${s})`;
   const track = `
-  height: var(--instui-border-width-lg);
-  background: var(--instui-component-range-input-track-background);
-  border: var(--instui-border-width-sm) solid var(--instui-component-range-input-track-border-color);
+  block-size: 0.25rem;
+  background: ${v("track-background")};
+  border: var(--instui-border-width-sm) solid ${v("track-border-color")};
   border-radius: 999px;`;
   const thumb = `
-  width: var(--instui-component-range-input-handle-size);
-  height: var(--instui-component-range-input-handle-size);
-  background: var(--instui-component-range-input-handle-background);
-  border: var(--instui-component-range-input-handle-border-size) solid var(--instui-component-range-input-handle-border-color);
+  inline-size: ${v("handle-size")};
+  block-size: ${v("handle-size")};
+  background: ${v("handle-background")};
+  border: ${v("handle-border-size")} solid ${v("handle-border-color")};
   border-radius: 50%;
-  box-shadow: 0 0 0 0 var(--instui-component-range-input-handle-shadow-color);
+  box-shadow: 0 0 0 0 ${v("handle-shadow-color")};
   cursor: pointer;`;
   return `
-.${p}range {
+.${p}range-input {
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
-  min-width: var(--instui-component-range-input-min-width);
+  inline-size: 100%;
+  min-inline-size: ${v("min-width")};
+  block-size: ${v("handle-size")};
   background: transparent;
 }
-.${p}range::-webkit-slider-runnable-track {${track}
+/* Chrome/Safari: the runnable track is centred in the (handle-sized) control box. */
+.${p}range-input::-webkit-slider-runnable-track {${track}
 }
-.${p}range::-moz-range-track {${track}
+.${p}range-input::-moz-range-track {${track}
 }
-.${p}range::-webkit-slider-thumb {
+.${p}range-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  margin-top: calc((var(--instui-border-width-lg) - var(--instui-component-range-input-handle-size)) / 2);${thumb}
+  margin-block-start: calc((0.25rem - ${v("handle-size")}) / 2);${thumb}
 }
-.${p}range::-moz-range-thumb {${thumb}
+.${p}range-input::-moz-range-thumb {${thumb}
 }
-.${p}range:hover::-webkit-slider-thumb { background: var(--instui-component-range-input-handle-hover-background); }
-.${p}range:hover::-moz-range-thumb { background: var(--instui-component-range-input-handle-hover-background); }
-.${p}range:focus-visible::-webkit-slider-thumb {
-  background: var(--instui-component-range-input-handle-focus-background);
-  box-shadow: 0 0 0 var(--instui-component-range-input-handle-focus-outline-width) var(--instui-component-range-input-handle-focus-outline-color);
+.${p}range-input:hover::-webkit-slider-thumb { background: ${v("handle-hover-background")}; }
+.${p}range-input:hover::-moz-range-thumb { background: ${v("handle-hover-background")}; }
+.${p}range-input:focus-visible { outline: none; }
+.${p}range-input:focus-visible::-webkit-slider-thumb {
+  background: ${v("handle-focus-background")};
+  box-shadow: 0 0 0 ${v("handle-focus-outline-width")} ${v("handle-focus-outline-color")};
 }
-.${p}range:focus-visible::-moz-range-thumb {
-  background: var(--instui-component-range-input-handle-focus-background);
-  box-shadow: 0 0 0 var(--instui-component-range-input-handle-focus-outline-width) var(--instui-component-range-input-handle-focus-outline-color);
+.${p}range-input:focus-visible::-moz-range-thumb {
+  background: ${v("handle-focus-background")};
+  box-shadow: 0 0 0 ${v("handle-focus-outline-width")} ${v("handle-focus-outline-color")};
 }
-.${p}range-value {
-  padding: var(--instui-component-range-input-value-medium-padding);
-  font-family: var(--instui-component-range-input-value-font-family);
-  font-size: var(--instui-component-range-input-value-medium-font-size);
-  font-weight: var(--instui-component-range-input-value-font-weight);
-  line-height: var(--instui-component-range-input-value-medium-line-height);
+/* The value bubble: an inverse pill with a caret pointing back toward the track (InstUI ContextView). */
+.${p}range-input-value {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 0.5rem;
+  background: var(--instui-color-background-inverse);
+  color: var(--instui-color-text-inverse);
+  border-radius: var(--instui-border-radius-md);
+  padding: ${v("value-medium-padding")};
+  font-family: ${v("value-font-family")};
+  font-size: ${v("value-medium-font-size")};
+  font-weight: ${v("value-font-weight")};
+  line-height: ${v("value-medium-line-height")};
 }
-.${p}range-value.-size-sm {
-  padding: var(--instui-component-range-input-value-small-padding);
-  font-size: var(--instui-component-range-input-value-small-font-size);
-  line-height: var(--instui-component-range-input-value-small-line-height);
+.${p}range-input-value::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -0.375rem;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  border-block: 0.375rem solid transparent;
+  border-inline-end: 0.375rem solid var(--instui-color-background-inverse);
+  border-inline-start: 0;
 }
-.${p}range-value.-size-lg {
-  padding: var(--instui-component-range-input-value-large-padding);
-  font-size: var(--instui-component-range-input-value-large-font-size);
-  line-height: var(--instui-component-range-input-value-large-line-height);
+.${p}range-input-value.-size-sm {
+  padding: ${v("value-small-padding")};
+  font-size: ${v("value-small-font-size")};
+  line-height: ${v("value-small-line-height")};
+}
+.${p}range-input-value.-size-lg {
+  padding: ${v("value-large-padding")};
+  font-size: ${v("value-large-font-size")};
+  line-height: ${v("value-large-line-height")};
 }
 `;
 }
@@ -3359,21 +3473,23 @@ export function fileDropCss(options: ComponentOptions = {}): string {
 }
 
 /**
- * Build the range stylesheet: `.<prefix>-range` (a styled `input[type="range"]`).
+ * Build the RangeInput stylesheet: `.<prefix>-range-input` (a styled `input[type="range"]`) plus the
+ * `.<prefix>-range-input-value` inverse bubble. Sizes `-size-{sm,lg}` on the value.
  *
  * @example
  * ```ts
- * import { rangeCss } from "@pantoken/components";
+ * import { rangeInputCss } from "@pantoken/components";
  *
- * const css = rangeCss();
- * // <input type="range" class="instui-range" min="0" max="100" value="50" />
+ * const css = rangeInputCss();
+ * // <input type="range" class="instui-range-input" min="0" max="100" value="50" />
+ * // <span class="instui-range-input-value">50</span>
  * ```
  *
- * @demo self:range
+ * @demo self:range-input
  */
-export function rangeCss(options: ComponentOptions = {}): string {
+export function rangeInputCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
-  return wrap("range", prefix, rangeRules(ns(prefix)));
+  return wrap("range-input", prefix, rangeInputRules(ns(prefix)));
 }
 
 /** Mask rules: a translucent overlay that covers its positioned parent, plus fullscreen and blur. */
@@ -3674,6 +3790,10 @@ ${root}.-readonly {
 }
 ${root}.-invalid { border-color: ${t("error-border-color")}; }
 ${root}.-success { border-color: ${t("success-border-color")}; }
+/* Focus ring tracks the validity: danger when explicitly -invalid OR natively :user-invalid (after the
+   user has interacted), success on -success — overriding base.css's info-blue ring for focusables. */
+${root}:is(.-invalid, :user-invalid):focus-visible { outline-color: var(--instui-focus-outline-color-danger); }
+${root}.-success:focus-visible { outline-color: var(--instui-focus-outline-color-success); }
 `;
 }
 
@@ -3728,6 +3848,133 @@ ${fieldControlBase(p, "simple-select", "text-input")}
 }
 .${p}simple-select.-size-sm { block-size: ${t("height-sm")}; padding-inline: ${t("padding-horizontal-sm")}; padding-inline-end: calc(${t("padding-horizontal-sm")} + 1.5rem); font-size: ${t("font-size-sm")}; }
 .${p}simple-select.-size-lg { block-size: ${t("height-lg")}; padding-inline: ${t("padding-horizontal-lg")}; padding-inline-end: calc(${t("padding-horizontal-lg")} + 1.5rem); font-size: ${t("font-size-lg")}; }
+`;
+}
+
+/**
+ * The wrapped-input facade shared by InputGroup and NumberInput: a flex row that carries the text-input
+ * chrome (border/bg/radius/height/states/sizes from `text-input-*`) so icon/arrow content can sit INSIDE
+ * the field beside the input. The real `<input>` inside sheds its own border/bg/padding; the facade shows
+ * the focus ring (via `:has(:focus-visible)`) since the input is chromeless. `cls` is the root class.
+ */
+function inputFacadeBase(p: string, cls: string): string {
+  const t = (s: string): string => `var(--instui-component-text-input-${s})`;
+  const root = `.${p}${cls}`;
+  return `
+${root} {
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  box-sizing: border-box;
+  block-size: ${t("height-md")};
+  padding-inline: ${t("padding-horizontal-md")};
+  gap: ${t("gap-content")};
+  background-color: ${t("background-color")};
+  border: ${t("border-width")} solid ${t("border-color")};
+  border-radius: ${t("border-radius")};
+  color: ${t("text-color")};
+  font-family: ${t("font-family")};
+  font-size: ${t("font-size-md")};
+}
+${root}:hover { background-color: ${t("background-hover-color")}; border-color: ${t("border-hover-color")}; }
+/* The inner control is chromeless — the facade provides border/bg/ring. */
+${root} > input,
+${root} .${p}text-input {
+  flex: 1;
+  min-inline-size: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  block-size: auto;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+${root} > input::placeholder { color: ${t("placeholder-color")}; }
+/* Leading/trailing content slots (icons ride the -icon-* glyph painter). */
+${root} .before,
+${root} .after { display: inline-flex; align-items: center; flex: none; color: ${t("text-color")}; }
+${root}.-disabled,
+${root}:has(> input:disabled) {
+  background-color: ${t("background-disabled-color")};
+  border-color: ${t("border-disabled-color")};
+  color: ${t("text-disabled-color")};
+  cursor: not-allowed;
+}
+${root}.-readonly {
+  background-color: ${t("background-readonly-color")};
+  border-color: ${t("border-readonly-color")};
+  color: ${t("text-readonly-color")};
+}
+${root}.-invalid { border-color: ${t("error-border-color")}; }
+${root}.-success { border-color: ${t("success-border-color")}; }
+/* Focus ring lives on the facade (the input has no chrome). */
+${root}:has(:focus-visible) {
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+  border-radius: var(--instui-focus-outline-radius);
+}
+${root}:is(.-invalid, :has(> input:user-invalid)):has(:focus-visible) { outline-color: var(--instui-focus-outline-color-danger); }
+${root}.-success:has(:focus-visible) { outline-color: var(--instui-focus-outline-color-success); }
+${root}.-size-sm { block-size: ${t("height-sm")}; padding-inline: ${t("padding-horizontal-sm")}; font-size: ${t("font-size-sm")}; }
+${root}.-size-lg { block-size: ${t("height-lg")}; padding-inline: ${t("padding-horizontal-lg")}; font-size: ${t("font-size-lg")}; }
+`;
+}
+
+/** InputGroup: the facade around a TextInput with `.before`/`.after` icon slots + `-should-not-wrap`. */
+function inputGroupRules(p: string): string {
+  return `
+${inputFacadeBase(p, "input-group")}
+.${p}input-group.-should-not-wrap { flex-wrap: nowrap; }
+`;
+}
+
+/** NumberInput: the facade + a trailing +/- arrow column styled from the `text-input-arrows-*` tokens. */
+function numberInputRules(p: string): string {
+  const t = (s: string): string => `var(--instui-component-text-input-${s})`;
+  const a = (s: string): string => `var(--instui-component-text-input-arrows-${s})`;
+  const root = `.${p}number-input`;
+  return `
+${inputFacadeBase(p, "number-input")}
+/* the arrow column sits flush at the inline-end; drop the facade's end padding */
+${root} { padding-inline-end: 0; }
+/* native UA spinners off — we supply our own */
+${root} > input::-webkit-outer-spin-button,
+${root} > input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+${root} > input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+${root} .arrows {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  align-self: stretch;
+  /* the arrows-container-width token is @property-only (value-less upstream), so a literal is used */
+  inline-size: 1.5rem;
+  border-inline-start: ${t("border-width")} solid ${t("border-color")};
+}
+${root} .arrows button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: ${a("background-color")};
+  color: var(--instui-color-icon-interactive-action-secondary-base);
+  cursor: pointer;
+}
+${root} .arrows button + button { border-block-start: ${t("border-width")} solid ${t("border-color")}; }
+${root} .arrows button:hover { background: ${a("background-hover-color")}; }
+${root} .arrows button:active { background: ${a("background-active-color")}; }
+${root} .arrows button:disabled { background: ${a("background-disabled-color")}; cursor: not-allowed; }
+${root} .arrows button::before {
+  content: "";
+  inline-size: 0.875em;
+  block-size: 0.875em;
+  background: currentColor;
+  -webkit-mask: ${CHEVRON_UP_ICON};
+  mask: ${CHEVRON_UP_ICON};
+}
+${root} .arrows button.down::before { -webkit-mask: ${CHEVRON_DOWN_ICON}; mask: ${CHEVRON_DOWN_ICON}; }
 `;
 }
 
@@ -3821,6 +4068,15 @@ ${root} .controls { grid-area: controls; }
 )}
 /* Messages region — kept OUTSIDE @scope: the messages class shares the form-field prefix. */
 ${root} > .${p}form-field-messages { grid-area: messages; }
+/* Client-side validation: an error message stays hidden until the field's control is :user-invalid
+   (after the user has interacted), per MDN guidance; then it shows. The explicit -invalid class on the
+   control (and a standalone .instui-form-field-messages outside a field) are unaffected. */
+${root} .${p}form-field-message.-type-error,
+${root} .${p}form-field-message.-type-new-error { display: none; }
+${root}:has(:user-invalid) .${p}form-field-message.-type-error,
+${root}:has(:user-invalid) .${p}form-field-message.-type-new-error,
+${root}.-invalid .${p}form-field-message.-type-error,
+${root}.-invalid .${p}form-field-message.-type-new-error { display: inline-flex; }
 /* Required indicator: native [required] control OR the -required class; decorative (aria-hidden). */
 ${root}:is(.-required, :has(:required)) .label::after {
   content: "*";
@@ -4125,6 +4381,58 @@ export function simpleSelectCss(options: ComponentOptions = {}): string {
 }
 
 /**
+ * Build the InputGroup stylesheet: `.<prefix>-input-group`, a facade wrapping a `.<prefix>-text-input`
+ * with `.before`/`.after` icon slots (InstUI's `renderBeforeInput`/`renderAfterInput`) and
+ * `-should-not-wrap`. The wrapper carries the border/bg/ring; the inner input is chromeless.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { inputGroupCss } from "@pantoken/components";
+ *
+ * const css = inputGroupCss();
+ * // <span class="instui-input-group">
+ * //   <span class="before instui-icon-search"></span>
+ * //   <input class="instui-text-input" placeholder="Search" />
+ * // </span>
+ * ```
+ *
+ * @demo self:input-group
+ */
+export function inputGroupCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("input-group", prefix, inputGroupRules(ns(prefix)));
+}
+
+/**
+ * Build the NumberInput stylesheet: `.<prefix>-number-input`, the input facade + a trailing +/- arrow
+ * column from the `text-input-arrows-*` tokens. Arrows are visual; the native `type="number"` keyboard
+ * works and a consumer wires `stepUp()`/`stepDown()` on click. `-size-{md,lg}`.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @example
+ * ```ts
+ * import { numberInputCss } from "@pantoken/components";
+ *
+ * const css = numberInputCss();
+ * // <span class="instui-number-input">
+ * //   <input type="number" value="1" />
+ * //   <span class="arrows"><button aria-hidden="true"></button><button class="down" aria-hidden="true"></button></span>
+ * // </span>
+ * ```
+ *
+ * @demo self:number-input
+ */
+export function numberInputCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("number-input", prefix, numberInputRules(ns(prefix)));
+}
+
+/**
  * The **experimental** customizable-select enhancement for `.<prefix>-simple-select`. Everything is
  * gated behind `@supports (appearance: base-select)` (the CSS Customizable Select model — Chrome 135+,
  * NOT yet Baseline), so it's pure progressive enhancement: browsers without support keep the plain
@@ -4347,7 +4655,7 @@ export function componentsCss(options: ComponentOptions = {}): string {
     truncateRules(ns(prefix)),
     toggleDetailsRules(ns(prefix)),
     fileDropRules(ns(prefix)),
-    rangeRules(ns(prefix)),
+    rangeInputRules(ns(prefix)),
     maskRules(ns(prefix)),
     screenReaderContentRules(ns(prefix)),
     headingRules(ns(prefix)),
@@ -4360,6 +4668,8 @@ export function componentsCss(options: ComponentOptions = {}): string {
     textInputRules(ns(prefix)),
     textAreaRules(ns(prefix)),
     simpleSelectRules(ns(prefix)),
+    inputGroupRules(ns(prefix)),
+    numberInputRules(ns(prefix)),
   ].map((r) => r.trim());
   const body = withDeprecatedAliases(withSizeAliases(rules.join("\n\n")), ns(prefix));
   // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve

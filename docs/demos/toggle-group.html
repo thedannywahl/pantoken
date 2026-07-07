@@ -1,19 +1,16 @@
 <div class="instui-card">
-  <div class="instui-toggle-group" role="group" aria-label="Text alignment" id="tg-demo">
-    <button class="instui-button -toggle" aria-pressed="true">Left</button>
-    <button class="instui-button -toggle" aria-pressed="false">Center</button>
-    <button class="instui-button -toggle" aria-pressed="false">Right</button>
+  <div style="display: flex; flex-direction: column; gap: 16px; max-width: 480px">
+    <details class="instui-toggle-group" open>
+      <summary>Advanced settings</summary>
+      <div>
+        These options are revealed when the group is expanded. The header row carries a chevron that
+        rotates on open, and the content sits below a divider.
+      </div>
+    </details>
+
+    <details class="instui-toggle-group">
+      <summary>Billing details</summary>
+      <div>Collapsed by default. Click the summary row to expand.</div>
+    </details>
   </div>
 </div>
-
-<script>
-  // A single-select segmented control: pressing one button releases the others.
-  const group = document.getElementById("tg-demo");
-  group.querySelectorAll(".-toggle").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      group
-        .querySelectorAll(".-toggle")
-        .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    });
-  });
-</script>

@@ -1,6 +1,7 @@
 <div class="instui-card">
   <div style="display: flex; flex-direction: column; gap: 24px; max-width: 520px">
-    <!-- Required via the native `required` attribute — the asterisk shows with no extra class -->
+    <!-- Required via the native `required` attribute — the asterisk shows with no extra class. The
+         error message below stays hidden until the field is :user-invalid (blur it empty to see it). -->
     <label class="instui-form-field">
       <span class="label">Email address</span>
       <span class="controls">
@@ -8,11 +9,12 @@
       </span>
       <div class="instui-form-field-messages">
         <span class="instui-form-field-message -type-hint">We'll never share it.</span>
+        <span class="instui-form-field-message -type-error">Enter a valid email address.</span>
       </div>
     </label>
 
-    <!-- A field in the error state, with a message -->
-    <label class="instui-form-field">
+    <!-- Explicit error state: `-invalid` on the field reveals the error message + red control border. -->
+    <label class="instui-form-field -invalid">
       <span class="label">Username</span>
       <span class="controls">
         <input class="instui-text-input -invalid" value="a" />

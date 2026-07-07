@@ -20,6 +20,7 @@ import {
   headingCss,
   iconCss,
   iconGlyphsCss,
+  inputGroupCss,
   layoutUtilitiesCss,
   linkCss,
   listCss,
@@ -27,13 +28,14 @@ import {
   menuCss,
   metricCss,
   modalCss,
+  numberInputCss,
   pillCss,
   progressCircleCss,
   progressCss,
   proseCss,
   radioCss,
   radioInputGroupCss,
-  rangeCss,
+  rangeInputCss,
   ratingCss,
   screenReaderContentCss,
   selectCss,
@@ -273,7 +275,7 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
   expect(css).toContain("conic-gradient");
   expect(css).toContain(".instui-progress-circle.-size-sm");
   expect(css).toContain(".instui-progress-circle.-size-lg");
-  expect(css).toContain(".instui-progress-circle.-color-success");
+  expect(css).toContain(".instui-progress-circle.-meter-color-success");
   expect(css).toContain("var(--instui-component-progress-circle-meter-color-brand-inverse)");
   expect(css).toContain(".instui-progress-circle.-color-inverse");
 });
@@ -306,10 +308,15 @@ test("billboard has sizes and a clickable variant; range has handle states and a
   const bb = billboardCss({ prefix: "instui" });
   expect(bb).toContain(".instui-billboard.-clickable");
   expect(bb).toContain("var(--instui-component-billboard-clickable-active-bg)");
-  const range = rangeCss({ prefix: "instui" });
+  const range = rangeInputCss({ prefix: "instui" });
+  expect(range).toContain(".instui-range-input");
   expect(range).toContain(":hover::-webkit-slider-thumb");
   expect(range).toContain("var(--instui-component-range-input-handle-focus-outline-color)");
-  expect(range).toContain(".instui-range-value");
+  // The value is an inverse bubble with a caret + per-size scaling.
+  expect(range).toContain(".instui-range-input-value");
+  expect(range).toContain("var(--instui-color-background-inverse)");
+  expect(range).toContain(".instui-range-input-value::before");
+  expect(range).toContain(".instui-range-input-value.-size-lg");
 });
 
 test("componentsCss bundles every component; proseCss scopes to a content root", () => {
@@ -343,7 +350,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "truncate",
     "toggle-details",
     "file-drop",
-    "range",
+    "range-input",
     "mask",
     "screen-reader-content",
     "heading",
@@ -357,9 +364,11 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "text-input",
     "text-area",
     "simple-select",
+    "input-group",
+    "number-input",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(42);
+  expect(components).toHaveLength(44);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
@@ -468,8 +477,76 @@ test("new components render their key tokens", () => {
   expect(fileDropCss({ prefix: "instui" })).toContain(
     "var(--instui-component-file-drop-border-color)",
   );
-  expect(rangeCss({ prefix: "instui" })).toContain("::-webkit-slider-thumb");
+  expect(rangeInputCss({ prefix: "instui" })).toContain("::-webkit-slider-thumb");
   expect(truncateCss({ prefix: "instui" })).toContain("-webkit-line-clamp");
+});
+
+test("form controls tint the focus ring by validity (danger on invalid, success on -success)", () => {
+  const css = textInputCss({ prefix: "instui" });
+  expect(css).toContain(
+    ".instui-text-input:is(.-invalid, :user-invalid):focus-visible { outline-color: var(--instui-focus-outline-color-danger)",
+  );
+  expect(css).toContain(
+    ".instui-text-input.-success:focus-visible { outline-color: var(--instui-focus-outline-color-success)",
+  );
+});
+
+test("form-field gates error messages on :user-invalid", () => {
+  const css = formFieldCss({ prefix: "instui" });
+  expect(css).toContain(".instui-form-field .instui-form-field-message.-type-error");
+  expect(css).toContain(
+    ".instui-form-field:has(:user-invalid) .instui-form-field-message.-type-error",
+  );
+});
+
+test("input-group is a facade with before/after slots + should-not-wrap; the inner input is chromeless", () => {
+  const css = inputGroupCss({ prefix: "instui" });
+  expect(css).toContain(".instui-input-group");
+  expect(css).toContain(".instui-input-group .before");
+  expect(css).toContain(".instui-input-group .after");
+  expect(css).toContain(".instui-input-group.-should-not-wrap { flex-wrap: nowrap; }");
+  // the inner input sheds its own chrome
+  expect(css).toContain("background: transparent");
+  // ring lives on the facade
+  expect(css).toContain(".instui-input-group:has(:focus-visible)");
+});
+
+test("number-input has a +/- arrow column from the arrows tokens and hides native spinners", () => {
+  const css = numberInputCss({ prefix: "instui" });
+  expect(css).toContain(".instui-number-input .arrows");
+  expect(css).toContain("var(--instui-component-text-input-arrows-background-color)");
+  expect(css).toContain("var(--instui-color-icon-interactive-action-secondary-base)");
+  expect(css).toContain("::-webkit-inner-spin-button");
+  expect(css).toContain("appearance: textfield");
+});
+
+test("progress bar meter colours are distinct semantic backgrounds on the root, plus animate", () => {
+  const css = progressCss({ prefix: "instui" });
+  // meter rules live inside @scope (.instui-progress), so the root reads as :scope.-meter-color-*
+  expect(css).toContain(".-meter-color-success > .bar");
+  expect(css).toContain("var(--instui-color-background-success)");
+  expect(css).toContain("var(--instui-color-background-error)");
+  expect(css).toContain(".-should-animate > .bar { transition: width");
+  // no longer per-bar `-color-*`
+  expect(css).not.toContain(".bar.-color-info");
+});
+
+test("progress circle registers --value, draws the ring on ::before, and centers a value", () => {
+  const css = progressCircleCss({ prefix: "instui" });
+  expect(css).toContain("@property --value");
+  expect(css).toContain(".instui-progress-circle::before");
+  expect(css).toContain(".instui-progress-circle .value");
+  expect(css).toContain(".instui-progress-circle.-meter-color-success");
+});
+
+test("toggle-details hides the native marker, has a rotating chevron + filled variant", () => {
+  const css = toggleDetailsCss({ prefix: "instui" });
+  expect(css).toContain("summary::-webkit-details-marker { display: none; }");
+  expect(css).toContain(".instui-toggle-details > summary::before");
+  expect(css).toContain(
+    ".instui-toggle-details[open] > summary::before { transform: rotate(90deg); }",
+  );
+  expect(css).toContain(".instui-toggle-details.-variant-filled > summary");
 });
 
 test("spacing utilities: logical per-side classes on the spacing scale, auto for margin only", () => {
@@ -770,11 +847,12 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   expect(css).toContain(".instui-progress.-size-sm");
   expect(css).toContain(".instui-progress.-size-lg");
   expect(css).toContain("@scope (.instui-progress)");
-  expect(css).toContain(".bar.-color-info");
-  expect(css).toContain(".bar.-color-warning");
-  expect(css).toContain(".bar.-color-alert");
+  // Meter colour is a root modifier now (InstUI's meterColor), painting the bar a distinct status colour.
+  expect(css).toContain(".-meter-color-info");
+  expect(css).toContain(".-meter-color-warning");
+  expect(css).toContain(".-meter-color-alert");
   expect(css).toContain(".instui-progress.-color-inverse");
-  expect(css).toContain("var(--instui-component-progress-bar-meter-color-brand-inverse)");
+  expect(css).toContain("var(--instui-component-progress-bar-track-color-inverse)");
   expect(css).toContain(".instui-progress-value");
 });
 

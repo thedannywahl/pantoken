@@ -1,0 +1,15 @@
+<div class="instui-card">
+  <span class="instui-number-input" style="max-width: 160px">
+    <input id="qty" type="number" value="1" min="0" max="10" aria-label="Quantity" />
+    <span class="arrows">
+      <button type="button" id="up" aria-hidden="true" tabindex="-1"></button>
+      <button type="button" class="down" id="down" aria-hidden="true" tabindex="-1"></button>
+    </span>
+  </span>
+</div>
+
+<script>
+  const input = document.getElementById("qty");
+  document.getElementById("up").addEventListener("click", () => input.stepUp());
+  document.getElementById("down").addEventListener("click", () => input.stepDown());
+</script>

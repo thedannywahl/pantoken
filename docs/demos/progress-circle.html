@@ -5,25 +5,33 @@
       style="--value: 25"
       role="img"
       aria-label="25 percent"
-    ></span>
+    >
+      <span class="value">25%</span>
+    </span>
     <span
-      class="instui-progress-circle -color-success"
+      class="instui-progress-circle -meter-color-success"
       style="--value: 60"
       role="img"
       aria-label="60 percent"
-    ></span>
+    >
+      <span class="value">60%</span>
+    </span>
     <span
-      class="instui-progress-circle -color-warning"
+      class="instui-progress-circle -meter-color-warning"
       style="--value: 75"
       role="img"
       aria-label="75 percent"
-    ></span>
+    >
+      <span class="value">75%</span>
+    </span>
     <span
-      class="instui-progress-circle -size-lg -color-danger"
+      class="instui-progress-circle -size-lg -meter-color-danger"
       style="--value: 90"
       role="img"
       aria-label="90 percent"
-    ></span>
+    >
+      <span class="value">90%</span>
+    </span>
   </div>
 
   <div class="ring-demo">
@@ -33,7 +41,9 @@
       style="--value: 0"
       role="img"
       aria-label="progress"
-    ></span>
+    >
+      <span class="value" id="ringval">0%</span>
+    </span>
     <button class="instui-button" id="animate" type="button">Animate</button>
   </div>
 </div>
@@ -54,12 +64,13 @@
 
 <script>
   const ring = document.getElementById("ring");
-  const button = document.getElementById("animate");
-  button.addEventListener("click", () => {
+  const ringval = document.getElementById("ringval");
+  document.getElementById("animate").addEventListener("click", () => {
     let value = 0;
     const step = () => {
       value = Math.min(100, value + 2);
       ring.style.setProperty("--value", String(value));
+      ringval.textContent = `${value}%`;
       ring.setAttribute("aria-label", `${value} percent`);
       if (value < 100) requestAnimationFrame(step);
     };
