@@ -7,6 +7,7 @@
  * @module
  */
 import type { CssRecordKind } from "@cssdoc/core";
+import { withAliases, withSizeAliases } from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
 import { record, type RecordMeta } from "./record.ts";
 
@@ -33,7 +34,11 @@ export type DefineInput = Omit<RecordMeta, "kind"> & {
 function make(kind: CssRecordKind, input: DefineInput): Definition {
   const { css: cssBuilder, ...metaRest } = input;
   const meta: RecordMeta = { ...metaRest, kind };
-  const rules = (prefix: string): string => record(meta, cssBuilder(prefix));
+  // Append the size-alias and deprecated-alias twins to the CSS BODY (before the doc block is
+  // prepended), so each alias documents on this record's own page and the brace-based alias scanners
+  // never see the doc block's `{@link …}` braces. Both are no-ops for records without size/link modifiers.
+  const rules = (prefix: string): string =>
+    record(meta, withAliases(withSizeAliases(cssBuilder(prefix)), meta));
   return {
     name: input.name,
     kind,

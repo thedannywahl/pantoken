@@ -13,6 +13,12 @@ export const progressCircle = defineComponent({
     { name: "-size-xs", description: "Extra small." },
     { name: "-size-sm", description: "Small." },
     { name: "-size-lg", description: "Large." },
+    { name: "-meter-color-brand", deprecated: "{@link -color-brand}" },
+    { name: "-meter-color-info", deprecated: "{@link -color-info}" },
+    { name: "-meter-color-success", deprecated: "{@link -color-success}" },
+    { name: "-meter-color-warning", deprecated: "{@link -color-warning}" },
+    { name: "-meter-color-alert", deprecated: "{@link -color-warning}" },
+    { name: "-meter-color-danger", deprecated: "{@link -color-danger}" },
   ],
   examples: [
     `<span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">

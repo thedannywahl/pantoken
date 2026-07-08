@@ -12,6 +12,7 @@ export const radio = defineComponent({
     { name: "-variant-toggle", description: "Render as a segmented toggle button." },
     { name: "-size-sm", description: "Small." },
     { name: "-size-lg", description: "Large." },
+    { name: "-toggle", deprecated: "{@link -variant-toggle}" },
   ],
   examples: ['<label class="instui-radio"><input type="radio" name="r" checked> Option A</label>'],
   css: (p) => {

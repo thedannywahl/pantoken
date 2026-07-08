@@ -11,6 +11,10 @@ export const alert = defineComponent({
     { name: "-color-danger", description: "An error message." },
     { name: "-has-shadow", description: "Lift the alert with an elevation shadow." },
     { name: "-screen-reader-only", description: "Visually hidden but announced." },
+    { name: "-variant-info", deprecated: "{@link -color-info}" },
+    { name: "-variant-success", deprecated: "{@link -color-success}" },
+    { name: "-variant-warning", deprecated: "{@link -color-warning}" },
+    { name: "-variant-error", deprecated: "{@link -color-danger}" },
     {
       name: "-icon-<name>",
       description:

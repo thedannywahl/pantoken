@@ -20,6 +20,12 @@ export const avatar = defineComponent({
     { name: "-size-lg", description: "Large." },
     { name: "-size-xl", description: "Extra large." },
     { name: "-size-2xl", description: "Two sizes larger." },
+    { name: "-color-accent1", deprecated: "{@link -color-blue}" },
+    { name: "-color-accent2", deprecated: "{@link -color-green}" },
+    { name: "-color-accent3", deprecated: "{@link -color-red}" },
+    { name: "-color-accent4", deprecated: "{@link -color-orange}" },
+    { name: "-color-accent5", deprecated: "{@link -color-ash}" },
+    { name: "-color-accent6", deprecated: "{@link -color-grey}" },
   ],
   examples: ['<span class="instui-avatar">DW</span>'],
   css: (p) => {

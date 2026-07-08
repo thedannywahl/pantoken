@@ -5,6 +5,7 @@ export const formFieldMessages = defineComponent({
   name: "form-field-messages",
   summary:
     "Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.",
+  modifiers: [{ name: "-type-new-error", deprecated: "{@link -type-error}" }],
   css: (p) => {
     const m = (s: string): string => `var(--instui-component-form-field-message-${s})`;
     return `

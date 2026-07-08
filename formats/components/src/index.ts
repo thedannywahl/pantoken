@@ -36,7 +36,6 @@
  */
 import { COMPONENTS } from "./components/index.ts";
 import { elevationCss } from "./declarations/elevation.ts";
-import { withDeprecatedAliases, withSizeAliases } from "./lib/aliases.ts";
 import { ns, type ComponentOptions } from "./lib/helpers.ts";
 import { base } from "./rules/base.ts";
 import { focusOutlineCss } from "./declarations/focus.ts";
@@ -135,17 +134,19 @@ export { iconGlyphsCss, type IconGlyphsOptions } from "./utilities/icon-glyphs.t
 
 /**
  * Build the aggregated component stylesheet: the `--instui-elevation-*` scale (so shadows are intrinsic)
- * followed by every component's rules in the {@link COMPONENTS} concat order, with the size-alias and
- * deprecated-InstUI-semantic-alias post-processors applied to the whole sheet.
+ * followed by every component's rules in the {@link COMPONENTS} concat order. The size-alias and
+ * deprecated-alias twins are appended PER COMPONENT (within its own chunk) so each alias documents on
+ * its own page — the deprecated aliases are discovered from each record's `@deprecated {@link -x}`
+ * metadata (see {@link withAliases}), not a central hand-kept list.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
  */
 export function componentsCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
+  // Each record's rules() already appends its own size/deprecated-alias twins, so this is a plain concat.
   const rules = COMPONENTS.map((d) => d.rules(ns(prefix)).trim());
-  const body = withDeprecatedAliases(withSizeAliases(rules.join("\n\n")), ns(prefix));
   // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve
   // from components.css alone — elevation is an intrinsic design attribute here, not an add-on.
-  return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${elevationCss()}\n${body}\n`;
+  return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${elevationCss()}\n${rules.join("\n\n")}\n`;
 }
