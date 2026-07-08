@@ -371,7 +371,9 @@ test("mask overlays from the mask token; screen-reader-content is visually hidde
 test("the deprecated -toggle alias mirrors radio's -variant-toggle in componentsCss", () => {
   const css = componentsCss({ prefix: "instui" });
   expect(css).toContain(".instui-radio.-toggle");
-  expect(css).toMatch(/@deprecated → use \.-variant-toggle/);
+  // The generated twin carries a plain "alias of" note (not cssdoc's `@deprecated → use` marker, which
+  // would wrongly deprecate other modifiers in a compound clone); the deprecation is authored in metadata.
+  expect(css).toMatch(/\/\* alias of \.-variant-toggle \*\//);
 });
 
 test("the deprecated -type-new-error alias mirrors -type-error in componentsCss", () => {

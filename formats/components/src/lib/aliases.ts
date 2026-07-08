@@ -58,15 +58,24 @@ export function withAliases(css: string, meta: RecordMeta): string {
 
   const extra: string[] = [];
   for (const { alias, canonical } of aliases) {
-    // Clone every rule whose selector uses the canonical modifier token, renamed to the alias.
-    const rule = new RegExp(`([^{}]*\\.${canonical}\\b[^{}]*)(\\{[^{}]*\\})`, "gu");
+    // Anchor on the base class the canonical sits on (`.instui-radio.-variant-toggle`), matching only
+    // where the canonical is the modifier ON the component — never inside `:not(.-canonical)` or a
+    // compound `.-other.-canonical`, which a bare-token match would wrongly clone.
+    const base = css.match(new RegExp(`(\\.[a-z][\\w-]*)\\.${canonical}\\b`, "u"))?.[1];
+    if (!base) continue;
+    const canonSel = `${base}.${canonical}`;
+    const esc = canonSel.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+    const rule = new RegExp(`([^{}]*${esc}[^{}]*)(\\{[^{}]*\\})`, "gu");
     for (const [, selector, body] of css.matchAll(rule)) {
       const dep = selector
         .replace(/\/\*[\s\S]*?\*\//gu, "")
-        .split(`.${canonical}`)
-        .join(`.${alias}`)
+        .split(canonSel)
+        .join(`${base}.${alias}`)
         .trim();
-      extra.push(`/* @deprecated → use .${canonical} */\n${dep} ${body}`);
+      // A plain "alias of" note — NOT cssdoc's `@deprecated → use .-x` marker. The deprecation is now
+      // authored in metadata (precise, single modifier); an AST marker here would wrongly deprecate every
+      // OTHER modifier in a compound clone (e.g. `-context-off` in `.instui-radio.-toggle.-context-off`).
+      extra.push(`/* alias of .${canonical} */\n${dep} ${body}`);
     }
   }
   return extra.length ? `${css}\n${extra.join("\n")}\n` : css;
