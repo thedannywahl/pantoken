@@ -24,8 +24,80 @@ const demosDir = join(docsRoot, "demos");
 
 const tokenByName = new Map(tokens.map((t) => [t.name, t]));
 
-/** A GFM table-cell-safe rendering of prose (escape pipes; empty falls back to an em dash). */
-const cell = (text: string | undefined): string => (text ? text.replace(/\|/gu, "\\|") : "—");
+/**
+ * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry `syntax:
+ * "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static `@property`
+ * type), so the human-meaningful type is derived from what the value ultimately IS.
+ */
+function inferSyntax(value: string): string | undefined {
+  const v = value.trim();
+  if (/^url\(|data:image/iu.test(v)) return "<image>";
+  // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
+  if (
+    /light-dark\s*\(/iu.test(v) ||
+    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
+  )
+    return "<color>";
+  if (/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu.test(v))
+    return "<length>";
+  if (/^-?\d*\.?\d+m?s$/iu.test(v)) return "<time>";
+  if (/^-?\d+$/u.test(v)) return "<integer>";
+  if (/^-?\d*\.?\d+$/u.test(v)) return "<number>";
+  return undefined;
+}
+
+/**
+ * Composite / keyword-valued properties can't be inferred from a single value (`solid` alone doesn't
+ * imply the set; a box-shadow or font stack isn't a primitive), but the token name says which property
+ * it feeds — so map it to that property's CSS value-definition grammar (CSS Values 4 §2.1 notation:
+ * `|` `||` `&&` `[]` `?` `{a,b}` `#`). Matched by name substring, most-specific first, so it also catches
+ * variants (`…-text-decoration-outside-text`) and non-IR tokens (elevation shadows, the focus ring).
+ */
+const LINE_STYLE =
+  "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset";
+const PROPERTY_SYNTAX: [RegExp, string][] = [
+  [/font-family/u, "[ <font-family-name> | <generic-font-family> ]#"],
+  [/elevation/u, "[ inset? && <length>{2,4} && <color>? ]# | none"],
+  [/text-decoration/u, "none | underline || overline || line-through || blink"],
+  [/focus-outline-color/u, "<color> | invert"],
+  [/focus-outline-style/u, `auto | ${LINE_STYLE}`],
+  [/focus-outline-(width|offset|radius)/u, "<length>"],
+  [/border-style/u, LINE_STYLE],
+];
+
+/**
+ * The human-meaningful syntax of a consumed token: the first concrete `syntax` along its `refersTo`
+ * chain, else inferred from the terminal value, else the enumerated keyword set for keyword-valued
+ * properties. Returns undefined only when nothing can be derived.
+ */
+function resolveSyntax(name: string): string | undefined {
+  const seen = new Set<string>();
+  let token = tokenByName.get(name);
+  while (token) {
+    if (token.syntax && token.syntax !== "*") return token.syntax;
+    if (token.refersTo && !seen.has(token.refersTo)) {
+      seen.add(token.refersTo);
+      token = tokenByName.get(token.refersTo);
+      continue;
+    }
+    const inferred = token.value ? inferSyntax(token.value) : undefined;
+    if (inferred) return inferred;
+    break;
+  }
+  return PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
+}
+
+/**
+ * Escape prose for VitePress markdown, which compiles through Vue's SFC parser: a raw `<tag>` reads as
+ * an (unclosed) HTML element and a `{{ }}` as interpolation. Backticked code spans are exempt (Vue
+ * skips them), so only free prose from doc comments needs this.
+ */
+const escProse = (text: string): string =>
+  text.replace(/</gu, "&lt;").replace(/>/gu, "&gt;").replace(/\{\{/gu, "&#123;&#123;");
+
+/** A GFM table-cell-safe rendering of prose (escape pipes + Vue-unsafe chars; empty → em dash). */
+const cell = (text: string | undefined): string =>
+  text ? escProse(text).replace(/\|/gu, "\\|") : "—";
 
 /** The demo spec for a component: the authored `@demo`, else `self:<name>` when a demo file exists. */
 function demoSpec(entry: CssDocEntry): string | undefined {
@@ -36,8 +108,9 @@ function demoSpec(entry: CssDocEntry): string | undefined {
 /** One component page. */
 function renderPage(entry: CssDocEntry): string {
   const lines: string[] = [`# CSS: ${entry.name}`, ""];
-  lines.push(`\`${entry.className}\`${entry.summary ? ` — ${entry.summary}` : ""}`, "");
-  if (entry.deprecated) lines.push(`> [!WARNING]`, `> Deprecated — ${entry.deprecated}`, "");
+  lines.push(`\`${entry.className}\`${entry.summary ? ` — ${escProse(entry.summary)}` : ""}`, "");
+  if (entry.deprecated)
+    lines.push(`> [!WARNING]`, `> Deprecated — ${escProse(entry.deprecated)}`, "");
 
   const spec = demoSpec(entry);
   if (spec) lines.push("```demo", spec, "```", "");
@@ -46,7 +119,7 @@ function renderPage(entry: CssDocEntry): string {
     lines.push("## Modifiers", "", "| Modifier | Description |", "| --- | --- |");
     for (const m of entry.modifiers) {
       const desc = m.deprecated
-        ? `_Deprecated_ — use \`.${m.deprecated.canonical}\`.${m.description ? ` ${m.description}` : ""}`
+        ? `_Deprecated_ — use \`.${m.deprecated.canonical}\`.${m.description ? ` ${escProse(m.description)}` : ""}`
         : cell(m.description);
       lines.push(`| \`.${m.name}\` | ${desc} |`);
     }
@@ -77,9 +150,10 @@ function renderPage(entry: CssDocEntry): string {
   if (entry.cssPropertiesConsumed.length) {
     lines.push("## Tokens consumed", "", "| Token | Type | Themed |", "| --- | --- | --- |");
     for (const name of entry.cssPropertiesConsumed) {
-      const token = tokenByName.get(name);
-      const type = token?.syntax && token.syntax !== "*" ? `\`${token.syntax}\`` : "—";
-      const themed = token?.themed ? "yes" : "—";
+      const syntax = resolveSyntax(name);
+      // A `|` (keyword enumeration) must be escaped even inside a code span in a GFM table cell.
+      const type = syntax ? `\`${syntax.replace(/\|/gu, "\\|")}\`` : "—";
+      const themed = tokenByName.get(name)?.themed ? "yes" : "—";
       lines.push(`| \`${name}\` | ${type} | ${themed} |`);
     }
     lines.push("");
