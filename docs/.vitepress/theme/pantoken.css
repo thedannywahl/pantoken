@@ -3,3 +3,37 @@
 :root {
   --vp-font-family-base: var(--instui-font-family-atkinson-hyperlegible-next);
 }
+
+/* Each CSS-API `@example` is a source fence on top with the live rendered preview joined beneath it,
+   forming one bordered unit. The fence above the preview loses its bottom rounding + margin so the two
+   read as a single card — square BOTH the outer wrapper and the inner <pre> (which paints the dark
+   background and carries its own radius) so no rounded corner peeks through the seam. */
+div[class*="language-"]:has(+ .css-example) {
+  margin-bottom: 0;
+}
+div[class*="language-"]:has(+ .css-example),
+div[class*="language-"]:has(+ .css-example) > pre {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+.css-example {
+  border: 1px solid var(--vp-c-divider);
+  border-block-start: 0;
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
+  padding: 20px;
+  margin: 0 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  background: var(--vp-c-bg-soft);
+}
+/* VitePress makes code blocks full-bleed (negative margins, no radius) on narrow viewports; keep the
+   paired example fence contained so it stays aligned with the preview box below it. */
+@media (max-width: 639px) {
+  .vp-doc div[class*="language-"]:has(+ .css-example) {
+    margin-inline: 0;
+    border-radius: 8px 8px 0 0;
+  }
+}

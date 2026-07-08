@@ -8,6 +8,7 @@ import "@pantoken/vitepress/custom.css";
 import "@pantoken/vitepress/components.css";
 import "@pantoken/components/components.css";
 import "@pantoken/components/utilities.css";
+import "@pantoken/components/icons.css";
 import "@pantoken/components/fonts.css";
 import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
 import "@pantoken/demo/demo.css";

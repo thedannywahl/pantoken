@@ -168,12 +168,18 @@ function renderPage(entry: CssDocEntry): string {
     lines.push(`> [!WARNING]`, `> Deprecated — ${escProse(entry.deprecated)}`, "");
 
   const spec = demoSpec(entry);
-  if (spec) lines.push("```demo", spec, "```", "");
+  if (spec) lines.push("## Demo", "", "```demo", spec, "```", "");
 
-  // The static markup (authored `@example`). Fenced code is exempt from Vue parsing, so raw HTML is fine.
+  // The authored `@example`: show the copyable source, then render it live beneath (the docs site loads
+  // the component CSS globally). Overlay components (`<dialog>`, `[popover]`) are hidden until opened, so
+  // skip their live preview — the Demo above drives those. Fenced code is exempt from Vue parsing.
   if (entry.examples.length) {
     lines.push("## Example", "");
-    for (const ex of entry.examples) lines.push("```html", ex, "```", "");
+    for (const ex of entry.examples) {
+      lines.push("```html", ex, "```", "");
+      const overlay = /^<dialog\b/u.test(ex) || /\spopover(?:=|\s|>)/u.test(ex);
+      if (!overlay) lines.push(`<div class="css-example">`, ex, "</div>", "");
+    }
   }
 
   if (entry.modifiers.length) {
