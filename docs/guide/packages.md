@@ -111,11 +111,12 @@ Optional transforms that extend the token or CSS output. See [Plugins](/guide/pl
 Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
 self-contained, so we document them here and some ship to npm on their own.
 
-| Package                                            | What it does                                                                                                                   |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                           |
-| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                               |
-| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed. |
+| Package                                            | What it does                                                                                                                                                                                          |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                                                                                                  |
+| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                                                                                                      |
+| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed.                                                                        |
+| `@cssdoc/core` (external)                          | A generic CSS documentation extractor (TSDoc, for CSS): parses doc-comments + the CSS AST into a model the docs emit as the CSS API reference. Lives in its own repo; consumed via a link dependency. |
 
 `@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
 page; the others do.

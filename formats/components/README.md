@@ -141,6 +141,7 @@ namespace every class.
 | `.instui-simple-select`       | styled native `<select>` with a caret; same states/sizes                                                                                                                                                                   |
 | `.instui-input-group`         | facade around `.instui-text-input` with `.before`/`.after` icon slots + `-should-not-wrap`                                                                                                                                 |
 | `.instui-number-input`        | facade + a `.arrows` +/- spinner column; native `type="number"` + consumer `stepUp()`/`stepDown()`                                                                                                                         |
+| `.instui-in-place-edit`       | a `[contenteditable]` that reads as text until focused, then shows input chrome; `-readonly` (view/edit toggle is a web-component)                                                                                         |
 
 The prose layer also styles GFM strikethrough (`~~`) and task lists. Components that are inherently
 interactive or layout-only (drawers, editable/in-place-edit, popover/tray positioning, transitions,

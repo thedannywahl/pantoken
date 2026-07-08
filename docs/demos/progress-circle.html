@@ -44,7 +44,7 @@
     >
       <span class="value" id="ringval">0%</span>
     </span>
-    <button class="instui-button" id="animate" type="button">Animate</button>
+    <button class="instui-button" id="pc-run" type="button">Animate</button>
   </div>
 </div>
 
@@ -63,9 +63,10 @@
 </style>
 
 <script>
+  // NB: avoid id="animate" — the demo sandbox strips it (it DOM-clobbers Element.animate).
   const ring = document.getElementById("ring");
   const ringval = document.getElementById("ringval");
-  document.getElementById("animate").addEventListener("click", () => {
+  document.getElementById("pc-run").addEventListener("click", () => {
     let value = 0;
     const step = () => {
       value = Math.min(100, value + 2);

@@ -1,0 +1,33 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 360px">
+    <!-- A native contenteditable: reads as text, click to edit (input chrome appears on focus). Pair
+         with a label; the leading pencil hints it's editable. -->
+    <div class="instui-text">
+      Project name:
+      <span
+        class="instui-in-place-edit"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Project name"
+        >Untitled</span
+      >
+      <span class="instui-icon -icon-pencil instui-fg-muted"></span>
+    </div>
+
+    <div class="instui-text">
+      Owner:
+      <span class="instui-in-place-edit" contenteditable="true" aria-label="Owner">Ada Byron</span>
+    </div>
+
+    <!-- -readonly: shown inline but not editable. -->
+    <div class="instui-text">
+      Created:
+      <span class="instui-in-place-edit -readonly" contenteditable="false">March 12, 2026</span>
+    </div>
+  </div>
+
+  <p class="instui-text -size-sm instui-fg-muted" style="margin-top: 12px">
+    Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the
+    web-component tier; this is the pure-CSS editable skin.
+  </p>
+</div>

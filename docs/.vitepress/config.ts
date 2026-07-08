@@ -47,6 +47,10 @@ const typedocSidebarByLocale = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
 ) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
 
+const cssSidebarByLocale = Object.fromEntries(
+  localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.cssSidebarPath)]),
+) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
+
 const localesConfig = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [
     localeKey,
@@ -97,6 +101,7 @@ const localesConfig = Object.fromEntries(
             },
           ],
           [locale.apiPrefix]: [
+            { text: "CSS", items: cssSidebarByLocale[localeKey] },
             { text: locale.sidebar.api, items: typedocSidebarByLocale[localeKey] },
           ],
         },

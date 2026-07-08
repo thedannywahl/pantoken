@@ -8,14 +8,16 @@
     <input class="instui-text-input -size-sm" placeholder="Small" />
     <input class="instui-text-input -size-lg" placeholder="Large" />
 
-    <!-- InputGroup facade: leading / trailing icon slots (renderBeforeInput / renderAfterInput) -->
+    <!-- InputGroup facade: leading / trailing icon slots (renderBeforeInput / renderAfterInput). The
+         group carries the border/background/focus ring; the inner input is chromeless. -->
     <span class="instui-input-group">
-      <span class="before instui-icon-search"></span>
-      <input class="instui-text-input" placeholder="Search" />
+      <span class="before"><span class="instui-icon -icon-at-sign"></span></span>
+      <input class="instui-text-input" type="email" placeholder="you@example.com" />
     </span>
     <span class="instui-input-group">
-      <input class="instui-text-input" type="email" placeholder="you@example.com" />
-      <span class="after instui-icon-mail"></span>
+      <span class="before"><span class="instui-icon -icon-lock"></span></span>
+      <input class="instui-text-input" type="password" value="secret" />
+      <span class="after"><span class="instui-icon -icon-eye"></span></span>
     </span>
   </div>
 </div>

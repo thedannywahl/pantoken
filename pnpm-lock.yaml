@@ -575,6 +575,9 @@ importers:
 
   docs:
     devDependencies:
+      '@cssdoc/core':
+        specifier: link:../../cssdoc
+        version: link:../../cssdoc
       '@pantoken/components':
         specifier: workspace:*
         version: link:../formats/components
@@ -602,6 +605,9 @@ importers:
       '@pantoken/typedoc-plugin-demo':
         specifier: workspace:*
         version: link:../plugins/typedoc/demo
+      '@pantoken/utils':
+        specifier: workspace:*
+        version: link:../packages/utils
       '@pantoken/vite-workspace-orchestrator':
         specifier: workspace:*
         version: link:../plugins/vite/workspace-orchestrator

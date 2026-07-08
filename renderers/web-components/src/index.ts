@@ -7,8 +7,9 @@
  * `<instui-progress-circle>`, `<instui-metric>`, `<instui-rating>`, `<instui-icon-button>`,
  * `<instui-toggle-button>`, `<instui-truncate>`, `<instui-img>`, `<instui-side-nav-bar>`,
  * `<instui-tree-browser>`, `<instui-calendar>`, and `<instui-tooltip>`, plus the behavioral elements
- * `<instui-modal>` (a real `<dialog>` driven by its `open` attribute) and the native popovers
- * `<instui-context-view>`, `<instui-popover>`, and `<instui-tray>`.
+ * `<instui-modal>` (a real `<dialog>` driven by its `open` attribute), the native popovers
+ * `<instui-context-view>`, `<instui-popover>`, and `<instui-tray>`, and `<instui-in-place-edit>` (a
+ * click-to-edit field that commits on Enter/blur and reverts on Escape).
  * Each renders the matching `.instui-*` markup into its shadow root with the component stylesheet
  * inlined, so the look is exactly `@pantoken/components`
  * with nothing to import but this module. Tokens are inherited custom properties, so they pierce the
@@ -27,6 +28,7 @@ import {
   calendarCss,
   contextViewCss,
   imgCss,
+  inPlaceEditCss,
   metricCss,
   modalCss,
   pillCss,
@@ -71,6 +73,7 @@ export const ELEMENTS = [
   "instui-context-view",
   "instui-popover",
   "instui-tray",
+  "instui-in-place-edit",
 ] as const;
 
 /**
@@ -471,6 +474,64 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
           if (placement) parts.push(`-placement-${placement}`);
           if (size) parts.push(`-size-${size}`);
           root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;background:transparent}${trayCss(I)}</style><div class="${parts.join(" ")}" part="tray"><slot></slot></div>`;
+        }
+      },
+    );
+  }
+
+  // InPlaceEdit: the stateful view→edit toggle over the CSS editable skin. The value shows as text; on
+  // click/focus it becomes editable; Enter or blur commits (and fires a `change` event with the value),
+  // Escape reverts. Bespoke (not `wrapper()`) because it holds the pre-edit value for cancel.
+  if (!registry.get("instui-in-place-edit")) {
+    registry.define(
+      "instui-in-place-edit",
+      class extends HTMLElement {
+        static observedAttributes = ["value", "readonly"];
+        #field: HTMLElement | null = null;
+        #original = "";
+        constructor() {
+          super();
+          this.attachShadow({ mode: "open" });
+        }
+        connectedCallback(): void {
+          const root = this.shadowRoot;
+          if (!root) return;
+          const readonly = this.hasAttribute("readonly");
+          const value = esc(this.getAttribute("value") ?? this.textContent ?? "");
+          root.innerHTML =
+            `<style>:host{display:inline-block}${inPlaceEditCss(I)}</style>` +
+            `<span class="instui-in-place-edit${readonly ? " -readonly" : ""}" part="field" role="textbox"` +
+            ` contenteditable="${readonly ? "false" : "true"}">${value}</span>`;
+          const field = root.querySelector<HTMLElement>(".instui-in-place-edit");
+          this.#field = field;
+          if (!field || readonly) return;
+          field.addEventListener("focus", () => {
+            this.#original = field.textContent ?? "";
+          });
+          field.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              field.blur();
+            } else if (event.key === "Escape") {
+              field.textContent = this.#original;
+              field.blur();
+            }
+          });
+          field.addEventListener("blur", () => {
+            const next = field.textContent ?? "";
+            this.setAttribute("value", next);
+            if (next !== this.#original) {
+              this.dispatchEvent(
+                new CustomEvent("change", { detail: { value: next }, bubbles: true }),
+              );
+            }
+          });
+        }
+        attributeChangedCallback(name: string): void {
+          // Reflect an external value change into the field when it isn't being edited.
+          if (name === "value" && this.#field && this.shadowRoot?.activeElement !== this.#field) {
+            this.#field.textContent = this.getAttribute("value") ?? "";
+          }
         }
       },
     );

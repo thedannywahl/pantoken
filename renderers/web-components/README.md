@@ -51,6 +51,8 @@ inherited custom properties, so they pierce the shadow boundary — load `@panto
   and native dismissal (`Esc`/backdrop) reflects back and fires a `close` event.
 - `<instui-context-view>`, `<instui-popover>`, `<instui-tray placement="start|end|top|bottom" size="…">`
   — native popovers; toggle from a button with `popovertarget`/`command`.
+- `<instui-in-place-edit value="…" readonly>` — click-to-edit field; commits on Enter/blur (fires a
+  `change` event), reverts on Escape.
 
 The module is Node-safe: element classes are defined inside `register()`, which no-ops when there is
 no DOM. Call `register(customElements)` manually if you need to control timing.

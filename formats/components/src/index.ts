@@ -563,6 +563,18 @@ const AI_ICON_MASK =
 /** Button rules: a primary fill by default, plus `--secondary` (outline) and `--danger`. */
 function buttonRules(p: string): string {
   return `
+/**
+ * @component button
+ * @summary An accessible action control, styled from the token palette; primary by default.
+ * @modifier -color-secondary — A lower-emphasis secondary action.
+ * @modifier -color-tertiary — A text-style action (no fill or border until hover).
+ * @modifier -color-danger — A destructive action.
+ * @modifier -shape-circle — A round icon button.
+ * @modifier -condensed — Tighter padding for dense toolbars.
+ * @modifier -toggle — A pressed-state toggle button (drive with aria-pressed).
+ * @modifier -without-background — Drop the fill (ghost).
+ * @demo self:button
+ */
 .${p}button {
   display: inline-flex;
   align-items: center;
@@ -805,6 +817,17 @@ function buttonRules(p: string): string {
  */
 function alertRules(p: string): string {
   return `
+/**
+ * @component alert
+ * @summary An inline message with a status colour bar and a self-drawn glyph.
+ * @modifier -color-info — Informational (default).
+ * @modifier -color-success — A positive/confirmation message.
+ * @modifier -color-warning — A cautionary message.
+ * @modifier -color-danger — An error message.
+ * @modifier -has-shadow — Lift the alert with an elevation shadow.
+ * @modifier -screen-reader-only — Visually hidden but announced.
+ * @demo self:alert
+ */
 .${p}alert {
   position: relative;
   min-inline-size: 12rem;
@@ -890,6 +913,17 @@ function alertRules(p: string): string {
 /** Badge rules: a small pill (brand fill by default), plus `--success` and `--danger`. */
 function badgeRules(p: string): string {
   return `
+/**
+ * @component badge
+ * @summary A small count or status dot placed over a target's corner.
+ * @modifier -color-success — A positive/complete count.
+ * @modifier -color-danger — An attention/error count.
+ * @modifier -color-inverse — On-dark: a light chip with dark text.
+ * @modifier -type-notification — A dot only, no count.
+ * @modifier -pulse — A pulsing attention ring.
+ * @part .badge-wrapper — Wrap a target so a placed badge sits over its corner.
+ * @demo self:badge
+ */
 @keyframes pantoken-badge-pulse {
   from { transform: scale(1); opacity: 0.7; }
   to { transform: scale(1.8); opacity: 0; }
@@ -972,6 +1006,15 @@ function badgeRules(p: string): string {
  */
 function pillRules(p: string): string {
   return `
+/**
+ * @component pill
+ * @summary A compact status label. Add an \`.instui-icon\` glyph child for a leading icon.
+ * @modifier -color-info — Informational status.
+ * @modifier -color-success — Positive status.
+ * @modifier -color-warning — Cautionary status.
+ * @modifier -color-danger — Error status.
+ * @demo self:pill
+ */
 .${p}pill {
   display: inline-flex;
   align-items: center;
@@ -1023,6 +1066,14 @@ function pillRules(p: string): string {
  */
 function tagRules(p: string): string {
   return `
+/**
+ * @component tag
+ * @summary An inline chip for a keyword or filter.
+ * @modifier -size-sm — A small tag.
+ * @modifier -size-lg — A large tag.
+ * @modifier -inline — Reads inline with text and gets a trailing dismiss glyph.
+ * @demo self:tag
+ */
 .${p}tag {
   display: inline-flex;
   align-items: center;
@@ -2197,6 +2248,15 @@ ${tog}.-size-lg {
 /** Spinner rules: a CSS ring spinner. */
 function spinnerRules(p: string): string {
   return `
+/**
+ * @component spinner
+ * @summary An animated loading ring; give it role="status" and an aria-label.
+ * @modifier -size-xs — Extra-small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -color-inverse — On a dark surface.
+ * @demo self:spinner
+ */
 @keyframes pantoken-spinner-rotate { to { transform: rotate(360deg); } }
 .${p}spinner {
   display: inline-block;
@@ -2313,6 +2373,14 @@ ${root}.-color-primary-inverse .bar { background: var(--instui-component-progres
 function menuRules(p: string): string {
   const root = `.${p}menu`;
   return `
+/**
+ * @component menu
+ * @summary A dropdown surface of items, groups, and separators.
+ * @part .item — A menu entry; add -disabled, -highlighted, or -active/[aria-checked].
+ * @part .group — A labelled group heading.
+ * @part .separator — A divider rule between items.
+ * @demo self:menu
+ */
 ${root} {
   min-width: var(--instui-component-menu-min-width);
   max-width: var(--instui-component-menu-max-width);
@@ -2386,6 +2454,20 @@ ${scope(
 function modalRules(p: string): string {
   const root = `.${p}modal`;
   return `
+/**
+ * @component modal
+ * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
+ * @modifier -size-sm — A narrow modal.
+ * @modifier -size-lg — A wide modal.
+ * @modifier -size-auto — Sized to content.
+ * @modifier -size-fullscreen — Edge-to-edge.
+ * @modifier -density-compact — Tighter part padding.
+ * @modifier -color-inverse — On-dark chrome (pairs with a media body).
+ * @part .header — The title row.
+ * @part .body — The content region (a lone <img> goes full-bleed).
+ * @part .footer — The actions row.
+ * @demo self:modal
+ */
 ${root} {
   max-width: var(--instui-component-modal-medium-max-width);
   background: var(--instui-component-modal-background-color);
@@ -3030,7 +3112,11 @@ ${root} {
   flex-direction: column;
   gap: ${s("content-gap")};
   padding: ${s("content-margin")};
+  box-sizing: border-box;
   inline-size: fit-content;
+  /* The rail sits on the page and runs full height (InstUI SideNavBar is 100% of its layout column). */
+  block-size: 100%;
+  min-block-size: 100%;
   background: ${s("background-color")};
   color: ${s("font-color")};
   font-family: ${s("item-font-family")};
@@ -3141,6 +3227,7 @@ function calendarRules(p: string): string {
   return `
 ${root} {
   display: inline-block;
+  text-align: center;
   background: ${c("background")};
   color: ${c("color")};
   font-family: ${c("font-family")};
@@ -3158,24 +3245,24 @@ ${scope(
   margin: ${c("nav-margin")};
   max-inline-size: ${c("max-header-width")};
 }
+/* Fixed square day cells, centred as a block (1fr columns would stretch the cells unevenly and
+   off-centre inside the inline-block calendar). */
 .${p}calendar .grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-}
-.${p}calendar .weekday {
-  display: flex;
-  align-items: center;
+  grid-template-columns: repeat(7, ${c("day-min-width")});
   justify-content: center;
-  min-inline-size: ${c("day-min-width")};
-  block-size: ${c("day-height")};
-  font-weight: var(--instui-font-weight-interactive);
+  row-gap: var(--instui-spacing-space2xs);
 }
+.${p}calendar .weekday,
 .${p}calendar .day {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-inline-size: ${c("day-min-width")};
+  inline-size: ${c("day-min-width")};
   block-size: ${c("day-height")};
+}
+.${p}calendar .weekday { font-weight: var(--instui-font-weight-interactive); }
+.${p}calendar .day {
   font-size: ${c("day-font-size")};
   color: ${c("day-color")};
   background: ${c("day-background")};
@@ -3261,6 +3348,10 @@ ${root} {
   inset-inline-start: 0;
   inline-size: ${w("md")};
   max-inline-size: 100%;
+  /* block-size:auto lets inset-block:0 stretch it full height, overriding the UA popover's
+     height:fit-content; so the edge shadows fall outside the viewport. */
+  block-size: auto;
+  max-block-size: none;
   background: var(--instui-component-tray-background-color);
   border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
   padding: var(--instui-component-tray-padding);
@@ -3338,10 +3429,11 @@ ${scope(
 /* Show on hover or keyboard focus of the trigger. */
 ${root}:hover > .tip,
 ${root}:focus-within > .tip { opacity: 1; visibility: visible; }
-/* Placement: default is top; these move the bubble to the other sides. */
-${root}.-placement-bottom > .tip { inset-block: 100% auto; margin-block: var(--instui-spacing-space-xs) 0; }
-${root}.-placement-start > .tip { inset-block-end: auto; inset-inline: auto 100%; top: 50%; transform: translateY(-50%); margin: 0 var(--instui-spacing-space-xs) 0 0; }
-${root}.-placement-end > .tip { inset-block-end: auto; inset-inline: 100% auto; top: 50%; transform: translateY(-50%); margin: 0 0 0 var(--instui-spacing-space-xs); }
+/* Placement (authored on the .tip itself, matching the web-component): default is top; these move the
+   bubble to the other sides. */
+${root} > .tip.-placement-bottom { inset-block: 100% auto; margin-block: var(--instui-spacing-space-xs) 0; }
+${root} > .tip.-placement-start { inset-block-end: auto; inset-inline: auto 100%; top: 50%; transform: translateY(-50%); margin: 0 var(--instui-spacing-space-xs) 0 0; }
+${root} > .tip.-placement-end { inset-block-end: auto; inset-inline: 100% auto; top: 50%; transform: translateY(-50%); margin: 0 0 0 var(--instui-spacing-space-xs); }
 `;
 }
 
@@ -3404,6 +3496,9 @@ function rangeInputRules(p: string): string {
   position: relative;
   display: inline-flex;
   align-items: center;
+  /* Hug the number: the value line-height token is oversized (a container height), and as a flex item
+     the bubble must not stretch to the row — so pin line-height to the text and never self-stretch. */
+  align-self: center;
   margin-inline-start: 0.5rem;
   background: var(--instui-color-background-inverse);
   color: var(--instui-color-text-inverse);
@@ -3412,7 +3507,7 @@ function rangeInputRules(p: string): string {
   font-family: ${v("value-font-family")};
   font-size: ${v("value-medium-font-size")};
   font-weight: ${v("value-font-weight")};
-  line-height: ${v("value-medium-line-height")};
+  line-height: 1;
 }
 .${p}range-input-value::before {
   content: "";
@@ -4605,8 +4700,10 @@ function numberInputRules(p: string): string {
   const root = `.${p}number-input`;
   return `
 ${inputFacadeBase(p, "number-input")}
-/* the arrow column sits flush at the inline-end; drop the facade's end padding */
-${root} { padding-inline-end: 0; }
+/* the arrow column sits flush at the inline-end; drop the facade's end padding, and clip the column to
+   the facade's radius so it doesn't overhang the rounded corners (Firefox especially). The focus ring
+   is an outline, so overflow:hidden doesn't clip it. */
+${root} { padding-inline-end: 0; overflow: hidden; }
 /* native UA spinners off — we supply our own */
 ${root} > input::-webkit-outer-spin-button,
 ${root} > input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
@@ -4644,6 +4741,49 @@ ${root} .arrows button::before {
   mask: ${CHEVRON_UP_ICON};
 }
 ${root} .arrows button.down::before { -webkit-mask: ${CHEVRON_DOWN_ICON}; mask: ${CHEVRON_DOWN_ICON}; }
+`;
+}
+
+/**
+ * InPlaceEdit: a native `[contenteditable]` that reads as plain text until focused, then shows text-input
+ * chrome — the pure-CSS "simple" InstUI InPlaceEdit. Hover hints it's editable; focus gives it the input
+ * border/background + focus ring. `-readonly` drops the affordance. The full view→edit toggle with
+ * confirm/cancel buttons is stateful and lives in the web-component tier.
+ */
+function inPlaceEditRules(p: string): string {
+  const root = `.${p}in-place-edit`;
+  const t = (s: string): string => `var(--instui-component-text-input-${s})`;
+  return `
+/**
+ * @component in-place-edit
+ * @summary A [contenteditable] that reads as text until focused, then shows input chrome.
+ * @modifier -readonly — Shown inline but not editable (no hover/focus affordance).
+ * @demo self:in-place-edit
+ */
+${root} {
+  display: inline-block;
+  min-inline-size: 2rem;
+  padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
+  border: ${t("border-width")} solid transparent;
+  border-radius: ${t("border-radius")};
+  color: var(--instui-color-text-base);
+  font: inherit;
+  cursor: text;
+}
+/* Hover affordance: it's editable. */
+${root}:hover { background: var(--instui-color-background-muted); }
+/* Focus = edit mode: input chrome + the focus ring. */
+${root}:focus {
+  background: ${t("background-color")};
+  border-color: ${t("border-color")};
+  outline: none;
+}
+${root}:focus-visible {
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+}
+${root}.-readonly { cursor: default; }
+${root}.-readonly:hover { background: transparent; }
 `;
 }
 
@@ -5119,6 +5259,16 @@ export function numberInputCss(options: ComponentOptions = {}): string {
 }
 
 /**
+ * Build the in-place-edit stylesheet: `.<prefix>-in-place-edit` — a `[contenteditable]` that reads as
+ * text until focused, then shows text-input chrome. `-readonly` drops the affordance.
+ * @demo self:in-place-edit
+ */
+export function inPlaceEditCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("in-place-edit", prefix, inPlaceEditRules(ns(prefix)));
+}
+
+/**
  * The **experimental** customizable-select enhancement for `.<prefix>-simple-select`. Everything is
  * gated behind `@supports (appearance: base-select)` (the CSS Customizable Select model — Chrome 135+,
  * NOT yet Baseline), so it's pure progressive enhancement: browsers without support keep the plain
@@ -5377,6 +5527,7 @@ export function componentsCss(options: ComponentOptions = {}): string {
     simpleSelectRules(ns(prefix)),
     inputGroupRules(ns(prefix)),
     numberInputRules(ns(prefix)),
+    inPlaceEditRules(ns(prefix)),
   ].map((r) => r.trim());
   const body = withDeprecatedAliases(withSizeAliases(rules.join("\n\n")), ns(prefix));
   // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve

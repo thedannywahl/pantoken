@@ -22,6 +22,7 @@ import {
   iconCss,
   iconGlyphsCss,
   imgCss,
+  inPlaceEditCss,
   inputGroupCss,
   layoutUtilitiesCss,
   linkCss,
@@ -404,10 +405,23 @@ test("tree-browser styles nested details with a rotating chevron + hover/selecte
   expect(css).toContain(".instui-tree-browser.-size-lg");
 });
 
+test("in-place-edit reads as text, gets input chrome on focus, and has a readonly mode", () => {
+  const css = inPlaceEditCss({ prefix: "instui" });
+  expect(css).toContain(".instui-in-place-edit {");
+  expect(css).toContain(".instui-in-place-edit:hover");
+  expect(css).toContain(".instui-in-place-edit:focus");
+  expect(css).toContain("var(--instui-component-text-input-border-color)");
+  expect(css).toContain(".instui-in-place-edit.-readonly");
+});
+
 test("calendar is a seven-column grid with day states", () => {
   const css = calendarCss({ prefix: "instui" });
   expect(css).toContain("@scope (.instui-calendar)");
-  expect(css).toContain("grid-template-columns: repeat(7, 1fr);");
+  // Fixed square columns, centred (1fr would stretch cells unevenly in the inline-block calendar).
+  expect(css).toContain(
+    "grid-template-columns: repeat(7, var(--instui-component-calendar-day-min-width));",
+  );
+  expect(css).toContain("justify-content: center;");
   expect(css).toContain(":scope > .grid");
   expect(css).toContain(".day.-today {");
   expect(css).toContain(".day.-selected {");
@@ -432,7 +446,8 @@ test("tooltip shows a .tip bubble on hover/focus with placements", () => {
   expect(css).toContain(":scope > .tip");
   expect(css).toContain(".instui-tooltip:hover > .tip,");
   expect(css).toContain(".instui-tooltip:focus-within > .tip");
-  expect(css).toContain(".instui-tooltip.-placement-bottom > .tip");
+  // Placement modifiers live on the .tip itself (matching the web-component + demo markup).
+  expect(css).toContain(".instui-tooltip > .tip.-placement-bottom");
   expect(css).toContain("var(--instui-component-tooltip-padding)");
 });
 
@@ -531,9 +546,10 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "simple-select",
     "input-group",
     "number-input",
+    "in-place-edit",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(51);
+  expect(components).toHaveLength(52);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
