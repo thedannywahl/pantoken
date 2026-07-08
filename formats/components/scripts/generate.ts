@@ -103,7 +103,7 @@ writeFileSync(
   join(outDir, "icons.css"),
   iconGlyphsCss(
     icons.map((icon) => icon.name),
-    opts,
+    { ...opts, deprecatedAliases: true },
   ),
 );
 writeFileSync(

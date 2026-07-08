@@ -9,9 +9,9 @@
       <button class="instui-close-button -size-sm" aria-label="Close"></button>
     </div>
     <div class="instui-alert -color-warning">Not dismissable — no close button.</div>
-    <div class="instui-alert -color-info -has-shadow alert-announce instui-transition">
-      A custom icon (InstUI's megaphone glyph) via <code>--pantoken-alert-glyph</code>, elevated
-      with a shadow.
+    <div class="instui-alert -color-info -has-shadow -icon-megaphone instui-transition">
+      A custom icon via the <code>-icon-megaphone</code> class (kept white on the status bar),
+      elevated with a shadow.
       <button class="instui-close-button -size-sm" aria-label="Close"></button>
     </div>
   </div>
@@ -33,10 +33,6 @@
     flex-direction: column;
     gap: 12px;
     align-self: stretch;
-  }
-  /* A custom alert glyph: InstUI's megaphone icon token, masked into the icon bar. */
-  .alert-announce {
-    --pantoken-alert-glyph: var(--instui-icon-megaphone);
   }
 </style>
 

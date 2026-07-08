@@ -491,48 +491,28 @@ export interface ComponentOptions {
 }
 
 /** A `url()` for Lucide-style stroked SVG path markup (mask alpha comes from the strokes). */
-const strokeUrl = (paths: string): string =>
-  `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E${paths}%3C/svg%3E")`;
-
-/** A contained, centred mask value from stroked path markup, painted via `background`. */
-const strokeMask = (paths: string): string => `${strokeUrl(paths)} center / contain no-repeat`;
-
-/** The per-variant Alert glyph URLs (Lucide info, circle-check, triangle-alert, circle-x). */
-const ALERT_GLYPHS = {
-  info: strokeUrl(
-    "%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 16v-4'/%3E%3Cpath d='M12 8h.01'/%3E",
-  ),
-  success: strokeUrl("%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E"),
-  warning: strokeUrl(
-    "%3Cpath d='m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3'/%3E%3Cpath d='M12 9v4'/%3E%3Cpath d='M12 17h.01'/%3E",
-  ),
-  danger: strokeUrl(
-    "%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m15 9-6 6'/%3E%3Cpath d='m9 9 6 6'/%3E",
-  ),
-};
+/** A contained, centred mask value pointing at a shared `--instui-icon-<name>` token, painted via
+ *  `background` (so the glyph takes the element's colour). This is the same source the `-icon-<name>`
+ *  painter uses, reused for components that draw a fixed built-in glyph. Masks only — the token's
+ *  `stroke=currentColor` is irrelevant since the alpha channel drives the mask. Painting a glyph as a
+ *  `background-image` (which can't read `currentColor`) still needs a colour-baked data URI: see
+ *  {@link SELECT_CHEVRON} / {@link CHECK_URL_ON}. */
+const iconMask = (name: string): string => `var(--instui-icon-${name}) center / contain no-repeat`;
 
 /** Lucide `x`, for the CloseButton glyph. */
-const CLOSE_ICON = strokeMask("%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E");
+const CLOSE_ICON = iconMask("x");
 
 /** Lucide `check`, for the Checkbox tick. */
-const CHECK_ICON = strokeMask("%3Cpath d='M20 6 9 17l-5-5'/%3E");
+const CHECK_ICON = iconMask("check");
 
 /** Lucide `minus`, masked, for the Checkbox indeterminate (mixed) state. */
-const MINUS_ICON = strokeMask("%3Cpath d='M5 12h14'/%3E");
-
-/** Bare `url()` glyphs (no positioning) for the Toggle handle — sized per state via `mask-size`. */
-const CHECK_URL = strokeUrl("%3Cpath d='M20 6 9 17l-5-5'/%3E");
-const CLOSE_URL = strokeUrl("%3Cpath d='M18 6 6 18'/%3E%3Cpath d='m6 6 12 12'/%3E");
+const MINUS_ICON = iconMask("minus");
 
 /** Lucide `circle-alert`, masked — the FormFieldMessage error glyph (painted in `currentColor`). */
-const ALERT_CIRCLE_ICON = strokeMask(
-  "%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='12' x2='12' y1='8' y2='12'/%3E%3Cline x1='12' x2='12.01' y1='16' y2='16'/%3E",
-);
+const ALERT_CIRCLE_ICON = iconMask("circle-alert");
 
 /** Lucide `circle-check`, masked — the FormFieldMessage success glyph (painted in `currentColor`). */
-const CHECK_CIRCLE_ICON = strokeMask(
-  "%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E",
-);
+const CHECK_CIRCLE_ICON = iconMask("circle-check");
 
 /** Lucide `chevron-down` in the InstUI icon grey — the SimpleSelect caret. A native `<select>` is a
  *  replaced element (no pseudo-elements), so the caret is a `background-image`, not `::after`; a data-URI
@@ -547,11 +527,11 @@ const CHECK_URL_ON =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\")";
 
 /** Lucide `chevron-up`/`chevron-down`, masked — the NumberInput spinner glyphs (painted in currentColor). */
-const CHEVRON_UP_ICON = strokeMask("%3Cpath d='m18 15-6-6-6 6'/%3E");
-const CHEVRON_DOWN_ICON = strokeMask("%3Cpath d='m6 9 6 6 6-6'/%3E");
+const CHEVRON_UP_ICON = iconMask("chevron-up");
+const CHEVRON_DOWN_ICON = iconMask("chevron-down");
 
 /** Lucide `chevron-right`, masked — the ToggleDetails/ToggleGroup disclosure marker (rotates on [open]). */
-const CHEVRON_RIGHT_ICON = strokeMask("%3Cpath d='m9 18 6-6-6-6'/%3E");
+const CHEVRON_RIGHT_ICON = iconMask("chevron-right");
 
 /**
  * InstUI's `ai` glyph (Solid), inlined as a mask so it paints in the button's own colour — solid
@@ -819,13 +799,16 @@ function alertRules(p: string): string {
   return `
 /**
  * @component alert
- * @summary An inline message with a status colour bar and a self-drawn glyph.
+ * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.
  * @modifier -color-info — Informational (default).
  * @modifier -color-success — A positive/confirmation message.
  * @modifier -color-warning — A cautionary message.
  * @modifier -color-danger — An error message.
  * @modifier -has-shadow — Lift the alert with an elevation shadow.
  * @modifier -screen-reader-only — Visually hidden but announced.
+ * @modifier -icon-<name> — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
+ * @modifier -render-custom-icon-<name> — @deprecated The former \`renderCustomIcon\` prop; still works as an alias, but use \`-icon-<name>\` (or override \`--pantoken-alert-glyph\`) instead.
+ * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; \`-icon-<name>\` sets it for you. Override for a custom icon (a url-encoded SVG).
  * @demo self:alert
  */
 .${p}alert {
@@ -842,7 +825,7 @@ function alertRules(p: string): string {
   font-weight: var(--instui-component-alert-content-font-weight);
   line-height: var(--instui-component-alert-content-line-height);
   --pantoken-alert-icon-bg: var(--instui-component-alert-info-icon-background);
-  --pantoken-alert-glyph: ${ALERT_GLYPHS.info};
+  --pantoken-alert-glyph: var(--instui-icon-info);
 }
 /* The solid variant-coloured bar, flush to the rounded left edge (overlapping the border). */
 .${p}alert::before {
@@ -895,17 +878,29 @@ function alertRules(p: string): string {
 .${p}alert.-color-success {
   border-color: var(--instui-component-alert-success-border-color);
   --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
-  --pantoken-alert-glyph: ${ALERT_GLYPHS.success};
+  --pantoken-alert-glyph: var(--instui-icon-circle-check);
 }
 .${p}alert.-color-warning {
   border-color: var(--instui-component-alert-warning-border-color);
   --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
-  --pantoken-alert-glyph: ${ALERT_GLYPHS.warning};
+  --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
 }
 .${p}alert.-color-danger {
   border-color: var(--instui-component-alert-danger-border-color);
   --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
-  --pantoken-alert-glyph: ${ALERT_GLYPHS.danger};
+  --pantoken-alert-glyph: var(--instui-icon-circle-x);
+}
+/* A custom \`-icon-<name>\` on the alert swaps the status glyph (still drawn white over the coloured
+   bar), keeping the variant's bar colour. Last, so it wins over the per-variant glyph above. The
+   generic icon painter also targets \`[class*="-icon-"]::before\` at equal specificity and later in the
+   sheet — it would consume the bar — so re-assert the bar here at higher specificity. */
+.${p}alert[class*="-icon-"] { --pantoken-alert-glyph: var(--pantoken-glyph); }
+.${p}alert[class*="-icon-"]::before {
+  inline-size: 2.5rem;
+  block-size: auto;
+  background: var(--pantoken-alert-icon-bg);
+  -webkit-mask: none;
+  mask: none;
 }
 `;
 }
@@ -1008,11 +1003,13 @@ function pillRules(p: string): string {
   return `
 /**
  * @component pill
- * @summary A compact status label. Add an \`.instui-icon\` glyph child for a leading icon.
+ * @summary A compact status label; add a leading glyph with the shared \`-icon-<name>\` form.
  * @modifier -color-info — Informational status.
  * @modifier -color-success — Positive status.
  * @modifier -color-warning — Cautionary status.
  * @modifier -color-danger — Error status.
+ * @modifier -icon-<name> — A leading glyph from the icon set (e.g. \`-icon-check\`), painted before the label.
+ * @modifier -render-icon-<name> — @deprecated The former \`renderIcon\` prop; still works as an alias, but use \`-icon-<name>\` instead.
  * @demo self:pill
  */
 .${p}pill {
@@ -1616,13 +1613,24 @@ function iconRules(p: string): string {
 `;
 }
 
+/** Options for {@link iconGlyphsCss}. */
+export interface IconGlyphsOptions extends ComponentOptions {
+  /**
+   * Also emit the deprecated InstUI-prop glyph aliases (`-render-icon-<name>`, `-render-custom-icon-<name>`)
+   * as functional aliases of `-icon-<name>`. Off by default — turning it on roughly doubles the sheet, so
+   * enable it only when you need markup written against the old `renderIcon`/`renderCustomIcon` prop names
+   * to keep rendering. The shipped `icons.css` is built with this on.
+   */
+  deprecatedAliases?: boolean;
+}
+
 /**
  * Build the icon-glyph stylesheet: one `.<prefix>-icon-<name>` class per icon that points
  * `--pantoken-glyph` at the matching `--instui-icon-<name>` token. Kept out of the component bundle
  * (it's large); ships as its own `icons.css`. Pass the icon names (e.g. from `@pantoken/icons`).
  *
  * @param names - Icon names without the `--instui-icon-` prefix (e.g. `["megaphone", "check"]`).
- * @param options - {@link ComponentOptions}.
+ * @param options - {@link IconGlyphsOptions} (adds `deprecatedAliases` to {@link ComponentOptions}).
  * @returns The CSS string.
  *
  * @example
@@ -1637,12 +1645,21 @@ function iconRules(p: string): string {
  * `icons.css`); {@link iconCss} is the painter half (the shared `::before`). They share the `icon`
  * demo. See {@link iconCss}.
  */
-export function iconGlyphsCss(names: readonly string[], options: ComponentOptions = {}): string {
+export function iconGlyphsCss(names: readonly string[], options: IconGlyphsOptions = {}): string {
   const prefix = options.prefix || "";
   const p = ns(prefix);
   void p; // glyph classes are prefix-independent modifiers (.-icon-<name>); consumed by any host.
+  // The deprecated InstUI prop names that normalized to `-icon-<name>` (Pill's `renderIcon`, Alert's
+  // `renderCustomIcon`). When `deprecatedAliases` is on, they're grouped onto the same rule as
+  // FUNCTIONAL aliases (they set the same glyph var, and both contain the `-icon-` substring so the
+  // shared painter + Alert's glyph pipe already fire) — otherwise omitted, which roughly halves the
+  // sheet. They're `@deprecated` in each component's doc comment either way.
+  const prefixes = options.deprecatedAliases
+    ? ["-icon", "-render-icon", "-render-custom-icon"]
+    : ["-icon"];
+  const selectors = (name: string): string => prefixes.map((pre) => `.${pre}-${name}`).join(", ");
   const rules = names
-    .map((name) => `.-icon-${name} { --pantoken-glyph: var(--instui-icon-${name}); }`)
+    .map((name) => `${selectors(name)} { --pantoken-glyph: var(--instui-icon-${name}); }`)
     .join("\n");
   return `/* InstUI icon glyphs (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
 }
@@ -2071,8 +2088,8 @@ ${scope(`.${p}checkbox`, `.${p}checkbox.-required .asterisk { color: var(--instu
   width: var(--pantoken-toggle-handle);
   height: var(--pantoken-toggle-handle);
   background: var(--instui-color-text-muted);
-  -webkit-mask: ${CLOSE_URL} center / 58% no-repeat;
-  mask: ${CLOSE_URL} center / 58% no-repeat;
+  -webkit-mask: var(--instui-icon-x) center / 58% no-repeat;
+  mask: var(--instui-icon-x) center / 58% no-repeat;
   transition: inset-inline-start 0.15s ease;
 }
 .${p}checkbox.-variant-toggle input[type="checkbox"]:checked {
@@ -2085,8 +2102,8 @@ ${scope(`.${p}checkbox`, `.${p}checkbox.-required .asterisk { color: var(--instu
 .${p}checkbox.-variant-toggle input[type="checkbox"]:checked::after {
   inset-inline-start: calc(100% - var(--pantoken-toggle-h) + var(--pantoken-toggle-inset));
   background: var(--instui-component-radio-input-toggle-background-success);
-  -webkit-mask: ${CHECK_URL} center / 58% no-repeat;
-  mask: ${CHECK_URL} center / 58% no-repeat;
+  -webkit-mask: var(--instui-icon-check) center / 58% no-repeat;
+  mask: var(--instui-icon-check) center / 58% no-repeat;
 }
 `;
 }

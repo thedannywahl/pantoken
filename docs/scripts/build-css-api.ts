@@ -14,8 +14,8 @@ import { createRequire } from "node:module";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
-import { tokens } from "@pantoken/tokens";
-import { unknownReferences } from "@pantoken/utils";
+import { tokens, type Token } from "@pantoken/tokens";
+import { makeResolver, unknownReferences } from "@pantoken/utils";
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
@@ -24,6 +24,12 @@ const demosDir = join(docsRoot, "demos");
 
 const tokenByName = new Map(tokens.map((t) => [t.name, t]));
 
+// Resolve a token value to its concrete form: expand every `var(...)` down to primitives, keeping a
+// `light-dark(a, b)` pair intact (no `mode`), so a themed value shows both its light and dark result.
+// Rebuilt in build() once the sheet-local custom properties are indexed, so `var(--pantoken-*)`
+// references (e.g. the toggle geometry `calc()`s) resolve too.
+let resolveValue = makeResolver(tokens);
+
 /**
  * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry `syntax:
  * "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static `@property`
@@ -31,7 +37,8 @@ const tokenByName = new Map(tokens.map((t) => [t.name, t]));
  */
 function inferSyntax(value: string): string | undefined {
   const v = value.trim();
-  if (/^url\(|data:image/iu.test(v)) return "<image>";
+  // A bare url()/data: value (the icon glyphs are url-encoded SVGs) is `<url>`, not the broader `<image>`.
+  if (/^url\(|data:/iu.test(v)) return "<url>";
   // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
   if (
     /light-dark\s*\(/iu.test(v) ||
@@ -63,6 +70,9 @@ const PROPERTY_SYNTAX: [RegExp, string][] = [
   [/focus-outline-style/u, `auto | ${LINE_STYLE}`],
   [/focus-outline-(width|offset|radius)/u, "<length>"],
   [/border-style/u, LINE_STYLE],
+  // Icon glyph vars hold a url-encoded SVG; type by name so even the value-less placeholder resolves.
+  [/glyph/u, "<url>"],
+  [/-filter\b/u, "<filter-value-list> | none"],
 ];
 
 /**
@@ -84,8 +94,20 @@ function resolveSyntax(name: string): string | undefined {
     if (inferred) return inferred;
     break;
   }
-  return PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
+  // Composite/keyword property grammar by name (font-family, box-shadow, glyph, …) takes precedence
+  // over primitive inference; then fall back to inferring from a sheet-local value.
+  const prop = PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
+  if (prop) return prop;
+  const local = localVars.get(name);
+  return local ? inferSyntax(resolveValue(local)) : undefined;
 }
+
+/**
+ * Custom properties defined in the sheets themselves (not the token IR) — the `--instui-elevation-*`
+ * shadows and `--instui-focus-outline-*` ring — so their values can be resolved too. Populated by
+ * {@link build} before rendering.
+ */
+const localVars = new Map<string, string>();
 
 /**
  * Escape prose for VitePress markdown, which compiles through Vue's SFC parser: a raw `<tag>` reads as
@@ -93,7 +115,16 @@ function resolveSyntax(name: string): string | undefined {
  * skips them), so only free prose from doc comments needs this.
  */
 const escProse = (text: string): string =>
-  text.replace(/</gu, "&lt;").replace(/>/gu, "&gt;").replace(/\{\{/gu, "&#123;&#123;");
+  // Split out backtick code spans (VitePress renders them `v-pre`, so `<`/`{{` are already inert there)
+  // and escape only the free-prose segments — otherwise a `\`-icon-<name>\`` span leaks literal entities.
+  text
+    .split(/(`[^`]*`)/gu)
+    .map((seg, i) =>
+      i % 2 === 1
+        ? seg
+        : seg.replace(/</gu, "&lt;").replace(/>/gu, "&gt;").replace(/\{\{/gu, "&#123;&#123;"),
+    )
+    .join("");
 
 /** A GFM table-cell-safe rendering of prose (escape pipes + Vue-unsafe chars; empty → em dash). */
 const cell = (text: string | undefined): string =>
@@ -118,9 +149,17 @@ function renderPage(entry: CssDocEntry): string {
   if (entry.modifiers.length) {
     lines.push("## Modifiers", "", "| Modifier | Description |", "| --- | --- |");
     for (const m of entry.modifiers) {
-      const desc = m.deprecated
-        ? `_Deprecated_ — use \`.${m.deprecated.canonical}\`.${m.description ? ` ${escProse(m.description)}` : ""}`
-        : cell(m.description);
+      let desc: string;
+      if (m.deprecated) {
+        // A canonical alias renders as "use `.-x`"; an authored note carries its own guidance verbatim.
+        const via = m.deprecated.canonical
+          ? `use \`.${m.deprecated.canonical}\`.`
+          : (m.deprecated.note ?? "");
+        const tail = m.description ? ` ${m.description}` : "";
+        desc = `_Deprecated_ — ${escProse(via + tail)}`.replace(/\|/gu, "\\|");
+      } else {
+        desc = cell(m.description);
+      }
       lines.push(`| \`.${m.name}\` | ${desc} |`);
     }
     lines.push("");
@@ -147,14 +186,25 @@ function renderPage(entry: CssDocEntry): string {
     lines.push("");
   }
 
-  if (entry.cssPropertiesConsumed.length) {
-    lines.push("## Tokens consumed", "", "| Token | Type | Themed |", "| --- | --- | --- |");
-    for (const name of entry.cssPropertiesConsumed) {
+  // A `@cssproperty`-declared custom property is the component's own settable knob — it belongs in
+  // "Custom properties," not also in "Tokens consumed," so the two tables stay non-overlapping.
+  const declaredNames = new Set(entry.cssPropertiesDeclared.map((p) => p.name));
+  const consumed = entry.cssPropertiesConsumed.filter((name) => !declaredNames.has(name));
+  if (consumed.length) {
+    lines.push("## Tokens consumed", "", "| Token | Type | Value |", "| --- | --- | --- |");
+    for (const name of consumed) {
       const syntax = resolveSyntax(name);
-      // A `|` (keyword enumeration) must be escaped even inside a code span in a GFM table cell.
-      const type = syntax ? `\`${syntax.replace(/\|/gu, "\\|")}\`` : "—";
-      const themed = tokenByName.get(name)?.themed ? "yes" : "—";
-      lines.push(`| \`${name}\` | ${type} | ${themed} |`);
+      // A `|` (a keyword enumeration, or a resolved value) must be escaped even inside a code span in a
+      // GFM table cell.
+      const escCode = (s: string): string => `\`${s.replace(/\|/gu, "\\|")}\``;
+      const type = syntax ? escCode(syntax) : "—";
+      // IR tokens carry a value; the locally-defined ones (elevation shadows, the focus ring) come from
+      // the sheets. Resolve either to concrete form — a `light-dark(a, b)` result shows it's themed, so
+      // no separate Themed column is needed.
+      const raw = tokenByName.get(name)?.value ?? localVars.get(name);
+      const resolved = raw ? resolveValue(raw) : "";
+      const value = resolved ? escCode(resolved) : "—";
+      lines.push(`| \`${name}\` | ${type} | ${value} |`);
     }
     lines.push("");
   }
@@ -190,13 +240,31 @@ const build = (): void => {
   );
   const entries = parseCssDocs(css).sort((a, b) => a.name.localeCompare(b.name));
 
+  // Index the sheet-local custom properties (elevation shadows in components.css, the focus ring in
+  // base.css) so their values resolve like IR tokens — first definition wins.
+  for (const m of `${css}\n${readCss("base.css")}`.matchAll(/(--[\w-]+)\s*:\s*([^;{}]+);/gu)) {
+    if (!localVars.has(m[1])) localVars.set(m[1], m[2].trim());
+  }
+  // Rebuild the resolver with the local vars in scope so `var(--pantoken-*)` chains resolve too.
+  const localTokens: Token[] = [...localVars].map(([name, value]) => ({
+    name,
+    value,
+    syntax: "*",
+    inherits: true,
+  }));
+  resolveValue = makeResolver([...tokens, ...localTokens]);
+
   mkdirSync(outDir, { recursive: true });
   for (const entry of entries) writeFileSync(join(outDir, `${entry.name}.md`), renderPage(entry));
   writeFileSync(join(outDir, "index.md"), renderIndex(entries));
 
   const sidebar = [
     { text: "Overview", link: "/api/css/" },
-    ...entries.map((e) => ({ text: e.name, link: `/api/css/${e.name}.md` })),
+    {
+      text: "Components",
+      collapsed: false,
+      items: entries.map((e) => ({ text: e.name, link: `/api/css/${e.name}.md` })),
+    },
   ];
   writeFileSync(join(outDir, "css-sidebar.json"), `${JSON.stringify(sidebar, null, 2)}\n`);
 

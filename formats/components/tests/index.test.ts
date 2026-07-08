@@ -145,7 +145,7 @@ test("close-button is a transparent icon button with an auto glyph, sizes, and i
   const css = closeButtonCss({ prefix: "instui" });
   expect(css).toContain(".instui-close-button");
   expect(css).toContain(".instui-close-button::before");
-  expect(css).toContain("data:image/svg+xml");
+  expect(css).toContain("var(--instui-icon-x)");
   expect(css).toContain(".instui-close-button.-size-sm");
   expect(css).toContain(".instui-close-button.-size-lg");
   expect(css).toContain(".instui-close-button.-color-inverse");
@@ -647,10 +647,20 @@ test("a glyph class paints a masked ::before, so a single name class renders sta
 });
 
 test("iconGlyphsCss emits one glyph class per icon, pointing --pantoken-glyph at its token", () => {
-  const css = iconGlyphsCss(["megaphone", "check"], { prefix: "instui" });
-  expect(css).toContain(".-icon-megaphone { --pantoken-glyph: var(--instui-icon-megaphone); }");
-  expect(css).toContain(".-icon-check { --pantoken-glyph: var(--instui-icon-check); }");
+  // Lean by default: just the canonical `-icon-<name>`, no deprecated aliases.
+  const lean = iconGlyphsCss(["megaphone", "check"], { prefix: "instui" });
+  expect(lean).toContain(".-icon-megaphone { --pantoken-glyph: var(--instui-icon-megaphone); }");
+  expect(lean).toContain(".-icon-check { --pantoken-glyph: var(--instui-icon-check); }");
+  expect(lean).not.toContain("-render-icon-");
+  expect(lean).not.toContain("-render-custom-icon-");
   expect(iconGlyphsCss(["megaphone"], { prefix: "ui" })).toContain(".-icon-megaphone");
+
+  // With deprecatedAliases: the `renderIcon`/`renderCustomIcon` prop names become FUNCTIONAL aliases,
+  // grouped onto the same rule so they set the identical glyph var (not a doc-only noop).
+  const withAliases = iconGlyphsCss(["megaphone"], { prefix: "instui", deprecatedAliases: true });
+  expect(withAliases).toContain(
+    ".-icon-megaphone, .-render-icon-megaphone, .-render-custom-icon-megaphone { --pantoken-glyph: var(--instui-icon-megaphone); }",
+  );
 });
 
 test("new components render their key tokens", () => {

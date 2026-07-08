@@ -101,7 +101,7 @@ const localesConfig = Object.fromEntries(
             },
           ],
           [locale.apiPrefix]: [
-            { text: "CSS", items: cssSidebarByLocale[localeKey] },
+            { text: "CSS reference", items: cssSidebarByLocale[localeKey] },
             { text: locale.sidebar.api, items: typedocSidebarByLocale[localeKey] },
           ],
         },
