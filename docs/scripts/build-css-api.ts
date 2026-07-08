@@ -238,9 +238,11 @@ function renderPage(entry: CssDocEntry): string {
     lines.push("## Tokens consumed", "", "| Token | Type | Value |", "| --- | --- | --- |");
     for (const name of consumed) {
       const syntax = resolveSyntax(name);
-      // A `|` (a keyword enumeration, or a resolved value) must be escaped even inside a code span in a
-      // GFM table cell.
-      const escCode = (s: string): string => `\`${s.replace(/\|/gu, "\\|")}\``;
+      // Collapse any internal whitespace (a multi-line declaration value like a wrapped `light-dark(...)`)
+      // to single spaces — a literal newline in a code span would break out of the GFM table row. A `|`
+      // (keyword enumeration or resolved value) must be escaped even inside a code span in a table cell.
+      const escCode = (s: string): string =>
+        `\`${s.replace(/\s+/gu, " ").trim().replace(/\|/gu, "\\|")}\``;
       const type = syntax ? escCode(syntax) : "—";
       // IR tokens carry a value; the locally-defined ones (elevation shadows, the focus ring) come from
       // the sheets. Resolve either to concrete form — a `light-dark(a, b)` result shows it's themed, so
