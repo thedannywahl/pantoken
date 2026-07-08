@@ -252,7 +252,20 @@ export function focusOutlineCss(
   const decls = focusOutlineDeclarations()
     .map(([name, value]) => `  ${name}: ${value};`)
     .join("\n");
-  return `${tokenSelector} {\n${decls}\n}\n\n${focusOutlineRules(options.selector)}\n`;
+  const doc = `/**
+ * @declaration focus
+ * @class :focus-visible
+ * @summary The focus-outline system: the \`--instui-focus-outline-*\` custom properties (declared on \`:root\`) plus the \`:focus-visible\` ring every focusable gets, and opt-in tuning classes.
+ * @modifier -focus-color-success — Success-coloured ring.
+ * @modifier -focus-color-danger — Danger-coloured ring.
+ * @modifier -focus-color-inverse — Inverse (on-dark) ring.
+ * @modifier -focus-position-inset — Draw the ring inset, inside the element's edge.
+ * @modifier -focus-within — Ring the element while a descendant is focused.
+ * @modifier -without-focus-animation — Disable the ring's grow-in animation.
+ * @example <button class="instui-button -focus-color-danger">Delete</button>
+ * @demo self:focus-outline
+ */\n`;
+  return `${doc}${tokenSelector} {\n${decls}\n}\n\n${focusOutlineRules(options.selector)}\n`;
 }
 
 /** The six document heading levels, in order. */
@@ -278,6 +291,12 @@ const headingLevelRules = (selector: (level: string) => string): string =>
  */
 function baseRules(): string {
   return `
+/**
+ * @rule base
+ * @class *
+ * @summary The opt-in global reset: \`box-sizing\`, the page surface, base text colour and font, \`color-scheme\`, and link defaults.
+ * @example <html><body><a href="/">A styled link on the base surface.</a></body></html>
+ */
 *,
 *::before,
 *::after {
@@ -315,6 +334,11 @@ function baseRules(): string {
 /** Build the InstUI-look prose rules under a scope selector. */
 function proseRules(s: string): string {
   return `
+/**
+ * @rule prose
+ * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — under the \`.pantoken-prose\` scope.
+ * @example <article class="pantoken-prose"><h2>Release notes</h2><p>Body copy with a <a href="/">link</a>.</p></article>
+ */
 /* Body text is InstUI's Text \`content\` type style. */
 ${s} {
   color: var(--instui-component-text-base-color);
@@ -553,6 +577,16 @@ function buttonRules(p: string): string {
  * @modifier -condensed — Tighter padding for dense toolbars.
  * @modifier -toggle — A pressed-state toggle button (drive with aria-pressed).
  * @modifier -without-background — Drop the fill (ghost).
+ * @modifier -color-success — A positive/confirming action.
+ * @modifier -color-ai — An AI action.
+ * @modifier -color-ai-secondary — A lower-emphasis AI action.
+ * @modifier -color-primary-inverse — Primary action for dark backgrounds.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -shape-square — A square icon button.
+ * @modifier -display-block — Full-width block button.
+ * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
+ * @modifier -without-border — Remove the border.
  * @demo self:button
  */
 .${p}button {
@@ -916,6 +950,13 @@ function badgeRules(p: string): string {
  * @modifier -color-inverse — On-dark: a light chip with dark text.
  * @modifier -type-notification — A dot only, no count.
  * @modifier -pulse — A pulsing attention ring.
+ * @modifier -standalone — Render inline, not positioned over a target's corner.
+ * @modifier -placement-top-start — Position at the top-start corner.
+ * @modifier -placement-top-end — Position at the top-end corner.
+ * @modifier -placement-bottom-start — Position at the bottom-start corner.
+ * @modifier -placement-bottom-end — Position at the bottom-end corner.
+ * @modifier -placement-start-center — Position centred on the start edge.
+ * @modifier -placement-end-center — Position centred on the end edge.
  * @part .badge-wrapper — Wrap a target so a placed badge sits over its corner.
  * @demo self:badge
  */
@@ -1069,6 +1110,7 @@ function tagRules(p: string): string {
  * @modifier -size-sm — A small tag.
  * @modifier -size-lg — A large tag.
  * @modifier -inline — Reads inline with text and gets a trailing dismiss glyph.
+ * @modifier -readonly — Read-only (non-dismissable) tag.
  * @demo self:tag
  */
 .${p}tag {
@@ -1136,6 +1178,26 @@ function avatarRules(p: string): string {
     `.${p}avatar.-color-${name} { color: var(--instui-component-avatar-${name}-text-color); }
 .${p}avatar.-color-${name}.-has-inverse-color { background: var(--instui-component-avatar-${name}-background-color); }`;
   return `
+/**
+ * @component avatar
+ * @summary A user avatar showing initials or an image, circular by default.
+ * @modifier -color-ai — AI-accent palette colour.
+ * @modifier -color-ash — Ash palette colour.
+ * @modifier -color-blue — Blue palette colour.
+ * @modifier -color-green — Green palette colour.
+ * @modifier -color-grey — Grey palette colour.
+ * @modifier -color-orange — Orange palette colour.
+ * @modifier -color-red — Red palette colour.
+ * @modifier -has-inverse-color — Use the inverse (on-dark) text colour.
+ * @modifier -shape-rectangle — Square (rectangular) shape instead of a circle.
+ * @modifier -show-border — Add a border ring.
+ * @modifier -size-2xs — Two sizes smaller.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @modifier -size-2xl — Two sizes larger.
+ */
 .${p}avatar {
   display: inline-flex;
   align-items: center;
@@ -1230,6 +1292,20 @@ ${color("red")}
 function tabsRules(p: string): string {
   const root = `.${p}tabs`;
   return `
+/**
+ * @component tabs
+ * @summary A tabbed panel set: a tab list, selectable tabs, and their panels.
+ * @example <div class="instui-tabs"><div class="list" role="tablist"><button class="tab -selected" role="tab">Overview</button><button class="tab" role="tab">Details</button></div><div class="panel" role="tabpanel">Overview content.</div></div>
+ * @structure
+ * .instui-tabs
+ *   .list
+ *     .tab.-selected
+ *     .tab
+ *   .panel
+ * @part .list — The row of tabs.
+ * @part .tab — A single tab; \`-selected\` marks the active one.
+ * @part .panel — The content panel for a tab.
+ */
 ${root} {
   display: flex;
   flex-direction: column;
@@ -1329,6 +1405,15 @@ ${scope(
 function metricRules(p: string): string {
   const root = `.${p}metric`;
   return `
+/**
+ * @component metric
+ * @summary A labelled statistic — a large value over a caption.
+ * @modifier -text-align-start — Start-align the value and label.
+ * @modifier -text-align-center — Centre the value and label.
+ * @modifier -text-align-end — End-align the value and label.
+ * @part .value — The large metric number.
+ * @part .label — The caption beneath the value.
+ */
 ${root} {
   display: inline-flex;
   flex-direction: column;
@@ -1374,6 +1459,15 @@ ${root}.-text-align-end { align-items: flex-end; text-align: end; }
 function imgRules(p: string): string {
   const root = `.${p}img`;
   return `
+/**
+ * @component img
+ * @summary A styled \`<img>\` with display, crop, and effect modifiers that stack.
+ * @modifier -display-block — Display as a block element.
+ * @modifier -constrain-cover — Scale to fill the box (cover).
+ * @modifier -constrain-contain — Scale to fit within the box (contain).
+ * @modifier -with-grayscale — Apply a grayscale effect.
+ * @modifier -with-blur — Apply a blur effect.
+ */
 ${root} {
   display: inline-block;
   max-inline-size: 100%;
@@ -1398,6 +1492,25 @@ function bylineRules(p: string): string {
   // Root + size/align rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
   // valid; only the size-free element rules go inside.
   return `
+/**
+ * @component byline
+ * @summary A media object: a hero figure beside a title and description.
+ * @example <div class="instui-byline"><span class="instui-icon -icon-megaphone" aria-hidden="true"></span><div><div class="title">What's new</div><div class="description">The figure can be an icon, an avatar, or an image.</div></div></div>
+ * @structure
+ * .instui-byline
+ *   .instui-icon.-icon-megaphone
+ *   div
+ *     .title
+ *     .description
+ * @modifier -align-content-center — Vertically centre the text beside the hero.
+ * @modifier -align-content-top — Align the text to the top of the hero.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — Medium.
+ * @modifier -size-lg — Large.
+ * @part .hero — The leading figure (icon, image, or avatar).
+ * @part .title — The heading text.
+ * @part .description — The supporting body text.
+ */
 ${root} {
   display: flex;
   align-items: center;
@@ -1436,6 +1549,13 @@ ${scope(
 /** Table rules: the InstUI table look as a class (for tables you build yourself). */
 function tableRules(p: string): string {
   return `
+/**
+ * @component table
+ * @summary A styled data table for \`th\` and \`td\` plus an optional caption, with hover, fixed, and stacked-card layouts.
+ * @modifier -hover — Highlight rows on hover.
+ * @modifier -layout-fixed — Fixed table layout (equal-width columns).
+ * @modifier -layout-stacked — Stack each row as a card, via a per-cell \`data-label\`.
+ */
 .${p}table {
   border-collapse: collapse;
   width: 100%;
@@ -1534,6 +1654,17 @@ function tableRules(p: string): string {
  */
 function linkRules(p: string): string {
   return `
+/**
+ * @component link
+ * @summary A styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -inline — Inline link, underlined within flowing text.
+ * @modifier -sm — Small inline link (used with \`-inline\`).
+ * @modifier -lg — Large inline link (used with \`-inline\`).
+ * @modifier -unstyled — Strip link styling: inherit colour, no underline.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 .${p}link {
   display: inline-flex;
   align-items: center;
@@ -1598,6 +1729,11 @@ function linkRules(p: string): string {
  */
 function iconRules(p: string): string {
   return `
+/**
+ * @utility icon
+ * @summary The icon system: \`.instui-icon\` sizing plus the shared \`-icon-<name>\` painter that masks a glyph (in \`currentColor\`) before any element.
+ * @example <span class="instui-icon -icon-megaphone" aria-hidden="true"></span>
+ */
 .${p}icon { display: inline-flex; }
 [class*="-icon-"]::before {
   content: "";
@@ -1897,6 +2033,17 @@ export function responsiveUtilitiesCss(options: ComponentOptions = {}): string {
  */
 function listRules(p: string): string {
   return `
+/**
+ * @component list
+ * @summary A list with token-driven item spacing.
+ * @modifier -ordered — Ordered-list numbering.
+ * @modifier -inline — Lay items out inline (horizontal).
+ * @modifier -unstyled — Remove markers and padding.
+ * @modifier -delimiter-solid — Separate items with a solid rule.
+ * @modifier -delimiter-dashed — Separate items with a dashed rule.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 .${p}list {
   color: var(--instui-component-list-item-color);
   font-family: var(--instui-component-list-item-font-family);
@@ -1947,6 +2094,19 @@ function listRules(p: string): string {
 function checkboxRules(p: string): string {
   const base = `.${p}checkbox:not(.${p}checkbox.-variant-toggle)`;
   return `
+/**
+ * @component checkbox
+ * @summary A native checkbox and its label, or a switch via \`-variant-toggle\`.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -label-placement-end — Place the label after the control.
+ * @modifier -label-placement-start — Place the label before the control.
+ * @modifier -label-placement-top — Place the label above the control.
+ * @modifier -readonly — Read-only state.
+ * @modifier -variant-toggle — Render as a switch instead of a box.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .asterisk — The required-field asterisk.
+ */
 .${p}checkbox {
   display: inline-flex;
   align-items: center;
@@ -2125,6 +2285,18 @@ function radioRules(p: string): string {
   const std = `.${p}radio:not(.-variant-toggle):not(.-toggle)`;
   const tog = `.${p}radio.-variant-toggle`;
   return `
+/**
+ * @component radio
+ * @summary A native radio button and its label.
+ * @modifier -context-off — Off/neutral context colour (toggle variant).
+ * @modifier -context-success — Success context colour (toggle variant).
+ * @modifier -context-warning — Warning context colour (toggle variant).
+ * @modifier -context-danger — Danger context colour (toggle variant).
+ * @modifier -readonly — Read-only state.
+ * @modifier -variant-toggle — Render as a segmented toggle button.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 .${p}radio {
   display: inline-flex;
   align-items: center;
@@ -2320,6 +2492,21 @@ function progressRules(p: string): string {
   const meter = (mod: string, bg: string): string =>
     `${root}.-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
   return `
+/**
+ * @component progress
+ * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
+ * @modifier -color-brand — Brand meter colour.
+ * @modifier -color-info — Informational meter colour.
+ * @modifier -color-success — Success meter colour.
+ * @modifier -color-warning — Warning meter colour.
+ * @modifier -color-danger — Danger meter colour.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .bar — The filled meter bar.
+ */
 ${root} {
   position: relative;
   display: block;
@@ -2396,6 +2583,7 @@ function menuRules(p: string): string {
  * @part .item — A menu entry; add -disabled, -highlighted, or -active/[aria-checked].
  * @part .group — A labelled group heading.
  * @part .separator — A divider rule between items.
+ * @part .item-info — Secondary info text within a menu item.
  * @demo self:menu
  */
 ${root} {
@@ -2480,6 +2668,8 @@ function modalRules(p: string): string {
  * @modifier -size-fullscreen — Edge-to-edge.
  * @modifier -density-compact — Tighter part padding.
  * @modifier -color-inverse — On-dark chrome (pairs with a media body).
+ * @modifier -blur — Blur the backdrop behind the modal.
+ * @modifier -overflow-fit — Constrain to the viewport and scroll the body.
  * @part .header — The title row.
  * @part .body — The content region (a lone <img> goes full-bleed).
  * @part .footer — The actions row.
@@ -2578,6 +2768,13 @@ function breadcrumbRules(p: string): string {
   // Root + size rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
   // valid; only the element rules that don't carry a size modifier go inside.
   return `
+/**
+ * @component breadcrumb
+ * @summary A breadcrumb trail with \`/\` separators; the last crumb is the current page.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .item — A crumb; the last one is the current page.
+ */
 ${root} {
   display: flex;
   align-items: center;
@@ -2615,6 +2812,16 @@ function billboardRules(p: string): string {
   // Root + size rules (incl. the size-scoped message font-size) stay outside @scope, prefixed, so the
   // size-alias post-processor's twins stay valid; the size-free element rules go inside.
   return `
+/**
+ * @component billboard
+ * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
+ * @modifier -clickable — Interactive (clickable) styling with hover feedback.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .hero — The leading icon or image.
+ * @part .heading — The billboard heading.
+ * @part .message — The supporting message.
+ */
 ${root} {
   display: block;
   text-align: center;
@@ -2682,6 +2889,13 @@ ${scope(
 function ratingRules(p: string): string {
   const root = `.${p}rating`;
   return `
+/**
+ * @component rating
+ * @summary A star rating with filled and empty glyphs and an optional numeric label.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .label — The numeric label, e.g. "3/5".
+ */
 ${root} {
   display: inline-flex;
   align-items: center;
@@ -2713,6 +2927,13 @@ ${scope(
 function toggleGroupRules(p: string): string {
   const root = `.${p}toggle-group`;
   return `
+/**
+ * @component toggle-group
+ * @summary A bordered disclosure built on \`<details>\`: a chevron summary row and collapsible content.
+ * @modifier -without-border — Remove the border.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 ${root} {
   display: block;
   border: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);
@@ -2765,6 +2986,15 @@ function contextViewRules(p: string): string {
   const root = `.${p}context-view`;
   const cv = (s: string): string => `var(--instui-component-context-view-${s})`;
   return `
+/**
+ * @component context-view
+ * @summary An elevated callout with a caret, positionable on any side; works as a native \`[popover]\`.
+ * @modifier -color-inverse — Dark (inverse) colour scheme.
+ * @modifier -placement-top — Sit above the anchor.
+ * @modifier -placement-bottom — Sit below the anchor.
+ * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
+ * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ */
 ${root} {
   position: relative;
   display: inline-block;
@@ -2890,6 +3120,19 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
   --pantoken-pc-stroke: var(--instui-component-progress-circle-${key}-stroke-width);
 }`;
   return `
+/**
+ * @component progress-circle
+ * @summary A circular progress ring driven by a \`--value\` (0–100) custom property.
+ * @modifier -color-brand — Brand meter colour.
+ * @modifier -color-info — Informational meter colour.
+ * @modifier -color-success — Success meter colour.
+ * @modifier -color-warning — Warning meter colour.
+ * @modifier -color-danger — Danger meter colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 /* --value (0–100) drives the arc; registered so the conic-gradient re-evaluates (and can transition). */
 @property --value { syntax: "<number>"; inherits: true; initial-value: 0; }
 ${root} {
@@ -2951,6 +3194,15 @@ ${root}.-color-primary-inverse {
 function paginationRules(p: string): string {
   const root = `.${p}pagination`;
   return `
+/**
+ * @component pagination
+ * @summary Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.
+ * @modifier -variant-input — Compact variant with a page-number input.
+ * @part .page — A page link or button; the current page carries \`[aria-current]\`.
+ * @part .arrow — A first, previous, next, or last control.
+ * @part .ellipsis — The gap marker between page ranges.
+ * @part .page-input-label — The label for the page-number input (input variant).
+ */
 ${root} {
   display: inline-flex;
   align-items: center;
@@ -3028,6 +3280,11 @@ ${root}.-variant-input .${p}number-input { inline-size: var(--instui-component-p
 /** Truncate rules: single-line ellipsis, plus a `--lines` multi-line clamp (set `--lines`). */
 function truncateRules(p: string): string {
   return `
+/**
+ * @component truncate
+ * @summary Single-line ellipsis truncation, or a multi-line clamp via \`--lines\`.
+ * @modifier -lines — Multi-line clamp; set the line count via the \`--lines\` custom property (default 2).
+ */
 .${p}truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3049,6 +3306,14 @@ function truncateRules(p: string): string {
 /** Toggle-details rules: a styled native `<details>` accordion, with `--sm`/`--lg` sizes. */
 function toggleDetailsRules(p: string): string {
   return `
+/**
+ * @component toggle-details
+ * @summary A styled native \`<details>\` disclosure with a rotating chevron.
+ * @modifier -variant-filled — Filled (surface) variant.
+ * @modifier -chevron-end — Place the chevron after the summary.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 .${p}toggle-details {
   color: var(--instui-component-toggle-details-text-color);
   font-family: var(--instui-component-toggle-details-font-family);
@@ -3099,6 +3364,13 @@ function toggleDetailsRules(p: string): string {
 /** File-drop rules: a dashed dropzone with hover, accepted, and rejected states. */
 function fileDropRules(p: string): string {
   return `
+/**
+ * @component file-drop
+ * @summary A file dropzone with hover, accepted, and rejected states.
+ * @modifier -accepted — Drag state for an acceptable file.
+ * @modifier -hover — Hover or drag-over state.
+ * @modifier -rejected — Drag state for a rejected file.
+ */
 .${p}file-drop {
   display: block;
   text-align: center;
@@ -3124,6 +3396,12 @@ function sideNavBarRules(p: string): string {
   const root = `.${p}side-nav-bar`;
   const s = (k: string): string => `var(--instui-component-side-nav-bar-${k})`;
   return `
+/**
+ * @component side-nav-bar
+ * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
+ * @modifier -minimized — Collapse to icons only (labels hidden).
+ * @part .item — A navigation entry; \`-selected\` marks the active one.
+ */
 ${root} {
   display: flex;
   flex-direction: column;
@@ -3182,6 +3460,13 @@ function treeBrowserRules(p: string): string {
   const root = `.${p}tree-browser`;
   const t = (k: string): string => `var(--instui-component-tree-browser-${k})`;
   return `
+/**
+ * @component tree-browser
+ * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .item — A leaf entry in the tree.
+ */
 ${root} {
   border-radius: ${t("border-radius")};
   font-family: ${t("tree-collection-font-family")};
@@ -3242,6 +3527,14 @@ function calendarRules(p: string): string {
   const root = `.${p}calendar`;
   const c = (k: string): string => `var(--instui-component-calendar-${k})`;
   return `
+/**
+ * @component calendar
+ * @summary A static month grid with navigation, weekday headers, and day cells.
+ * @part .nav — The month navigation row.
+ * @part .grid — The seven-column day grid.
+ * @part .weekday — A weekday column header.
+ * @part .day — A day cell; \`-today\`, \`-selected\`, and \`-outside-month\` mark its state.
+ */
 ${root} {
   display: inline-block;
   text-align: center;
@@ -3312,6 +3605,14 @@ ${scope(
 function popoverRules(p: string): string {
   const root = `.${p}popover`;
   return `
+/**
+ * @component popover
+ * @summary An elevated surface for a native \`[popover]\`, positioned with CSS anchor positioning.
+ * @modifier -placement-top — Sit above the anchor.
+ * @modifier -placement-bottom — Sit below the anchor.
+ * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
+ * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ */
 ${root} {
   background: var(--instui-color-background-elevated-surface-base);
   color: var(--instui-color-text-base);
@@ -3359,6 +3660,17 @@ function trayRules(p: string): string {
   const root = `.${p}tray`;
   const w = (k: string): string => `var(--instui-component-tray-width-${k})`;
   return `
+/**
+ * @component tray
+ * @summary An edge-pinned panel that slides in from any side; a native \`[popover]\` or \`<dialog>\`.
+ * @modifier -placement-top — Pin to the top edge.
+ * @modifier -placement-bottom — Pin to the bottom edge.
+ * @modifier -placement-end — Pin to the end (inline-end) edge.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ */
 ${root} {
   position: fixed;
   inset-block: 0;
@@ -3413,6 +3725,11 @@ function tooltipRules(p: string): string {
   const root = `.${p}tooltip`;
   const t = (k: string): string => `var(--instui-component-tooltip-${k})`;
   return `
+/**
+ * @component tooltip
+ * @summary A CSS hover and focus tooltip bubble, positionable on any side.
+ * @part .tip — The bubble; \`-placement-*\` sets its side.
+ */
 ${root} {
   position: relative;
   display: inline-flex;
@@ -3477,6 +3794,10 @@ function rangeInputRules(p: string): string {
   box-shadow: 0 0 0 0 ${v("handle-shadow-color")};
   cursor: pointer;`;
   return `
+/**
+ * @component range-input
+ * @summary A styled range slider with an inverse value bubble.
+ */
 .${p}range-input {
   -webkit-appearance: none;
   appearance: none;
@@ -4355,6 +4676,27 @@ export function screenReaderContentCss(options: ComponentOptions = {}): string {
  */
 function headingRules(p: string): string {
   return `
+/**
+ * @component heading
+ * @summary Heading typography from \`-level-h1\` to \`-level-h6\`.
+ * @modifier -level-h1 — Render at the h1 type scale.
+ * @modifier -level-h2 — Render at the h2 type scale.
+ * @modifier -level-h3 — Render at the h3 type scale.
+ * @modifier -level-h4 — Render at the h4 type scale.
+ * @modifier -level-h5 — Render at the h5 type scale.
+ * @modifier -level-h6 — Render at the h6 type scale.
+ * @modifier -color-secondary — Secondary (muted) colour.
+ * @modifier -color-ai — AI-accent colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) colour.
+ * @modifier -border-top — Add a top rule.
+ * @modifier -border-bottom — Add a bottom rule.
+ * @modifier -variant-label — Label type preset.
+ * @modifier -variant-title-page — Page-title preset.
+ * @modifier -variant-title-section — Section-title preset.
+ * @modifier -variant-title-card-mini — Mini card-title preset.
+ * @modifier -variant-title-card-regular — Regular card-title preset.
+ * @modifier -variant-title-card-section — Card section-title preset.
+ */
 .${p}heading {
   display: block;
   margin: 0;
@@ -4421,6 +4763,30 @@ function textRules(p: string): string {
   // and `.-small` is rare in the wild), and — treeshakeable via PostCSS.
   const mod = (token: string, decls: string): string => `.${p}text.-${token} { ${decls} }`;
   return `
+/**
+ * @component text
+ * @summary Body-text typography with size, weight, colour, and style modifiers.
+ * @modifier -color-brand — Brand text colour.
+ * @modifier -color-secondary — Secondary (muted) text colour.
+ * @modifier -color-ai — AI-accent text colour.
+ * @modifier -color-success — Success text colour.
+ * @modifier -color-warning — Warning text colour.
+ * @modifier -color-danger — Danger text colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) text colour.
+ * @modifier -weight-bold — Bold weight.
+ * @modifier -style-italic — Italic.
+ * @modifier -transform-uppercase — Uppercase the text.
+ * @modifier -transform-lowercase — Lowercase the text.
+ * @modifier -transform-capitalize — Capitalise each word.
+ * @modifier -variant-content-small — Small-content type preset.
+ * @modifier -variant-description-page — Page-description type preset.
+ * @modifier -variant-description-section — Section-description type preset.
+ * @modifier -variant-legend — Legend type preset.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ */
 .${p}text {
   font-family: var(--instui-component-text-content-font-family);
   color: var(--instui-component-text-base-color);
@@ -4477,6 +4843,13 @@ export function textCss(options: ComponentOptions = {}): string {
  */
 function closeButtonRules(p: string): string {
   return `
+/**
+ * @component close-button
+ * @summary A transparent icon button that draws its own × glyph, in three sizes plus an inverse variant.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 .${p}close-button {
   display: inline-flex;
   align-items: center;
@@ -4582,6 +4955,16 @@ ${root}.-success:focus-visible { outline-color: var(--instui-focus-outline-color
 function textInputRules(p: string): string {
   const t = (s: string): string => `var(--instui-component-text-input-${s})`;
   return `
+/**
+ * @component text-input
+ * @summary A styled native \`<input>\` — including \`date\`, \`time\`, and \`datetime-local\`, where the browser supplies the picker — with validation states and sizes.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 ${fieldControlBase(p, "text-input", "text-input")}
 .${p}text-input {
   block-size: ${t("height-md")};
@@ -4597,6 +4980,16 @@ ${fieldControlBase(p, "text-input", "text-input")}
 function textAreaRules(p: string): string {
   const t = (s: string): string => `var(--instui-component-text-area-${s})`;
   return `
+/**
+ * @component text-area
+ * @summary A styled, resizable native \`<textarea>\` with the same states and sizes as the text input.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 ${fieldControlBase(p, "text-area", "text-area")}
 .${p}text-area {
   padding: ${t("padding")};
@@ -4614,6 +5007,16 @@ ${fieldControlBase(p, "text-area", "text-area")}
 function simpleSelectRules(p: string): string {
   const t = (s: string): string => `var(--instui-component-text-input-${s})`;
   return `
+/**
+ * @component simple-select
+ * @summary A styled native \`<select>\` with a caret, matching the text-input states and sizes.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 ${fieldControlBase(p, "simple-select", "text-input")}
 .${p}simple-select {
   block-size: ${t("height-md")};
@@ -4705,6 +5108,17 @@ ${root}.-size-lg { block-size: ${t("height-lg")}; padding-inline: ${t("padding-h
 /** InputGroup: the facade around a TextInput with `.before`/`.after` icon slots + `-should-not-wrap`. */
 function inputGroupRules(p: string): string {
   return `
+/**
+ * @component input-group
+ * @summary A facade around a text input with leading and trailing icon slots.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -should-not-wrap — Keep the group on one line (no wrapping).
+ */
 ${inputFacadeBase(p, "input-group")}
 .${p}input-group.-should-not-wrap { flex-wrap: nowrap; }
 `;
@@ -4716,6 +5130,16 @@ function numberInputRules(p: string): string {
   const a = (s: string): string => `var(--instui-component-text-input-arrows-${s})`;
   const root = `.${p}number-input`;
   return `
+/**
+ * @component number-input
+ * @summary A number-input facade with a +/- spinner column.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ */
 ${inputFacadeBase(p, "number-input")}
 /* the arrow column sits flush at the inline-end; drop the facade's end padding, and clip the column to
    the facade's radius so it doesn't overhang the rounded corners (Firefox especially). The focus ring
@@ -4814,6 +5238,10 @@ ${root}.-readonly:hover { background: transparent; }
 function formFieldMessagesRules(p: string): string {
   const m = (s: string): string => `var(--instui-component-form-field-message-${s})`;
   return `
+/**
+ * @component form-field-messages
+ * @summary Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.
+ */
 .${p}form-field-messages {
   display: flex;
   flex-direction: column;
@@ -4869,6 +5297,21 @@ function formFieldRules(p: string): string {
   const root = `.${p}form-field`;
   const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
   return `
+/**
+ * @component form-field
+ * @summary A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.
+ * @modifier -inline — Inline layout (shorthand for \`-layout-inline\`).
+ * @modifier -layout-inline — Inline layout: label beside the controls.
+ * @modifier -layout-stacked — Stacked layout: label above the controls.
+ * @modifier -label-align-start — Start-align the label text.
+ * @modifier -label-align-end — End-align the label text.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -v-align-top — Top-align the label with the controls.
+ * @modifier -v-align-bottom — Bottom-align the label with the controls.
+ * @part .label — The field label.
+ * @part .controls — The control area beside or below the label.
+ */
 ${root} {
   display: grid;
   grid-template-columns: 1fr;
@@ -4935,6 +5378,25 @@ function formFieldGroupRules(p: string): string {
   const root = `.${p}form-field-group`;
   const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
   return `
+/**
+ * @component form-field-group
+ * @summary A \`<fieldset>\` group with a legend, a column or inline layout, and configurable spacing.
+ * @modifier -col-spacing-none — No column gap.
+ * @modifier -col-spacing-small — Small column gap.
+ * @modifier -col-spacing-medium — Medium column gap.
+ * @modifier -col-spacing-large — Large column gap.
+ * @modifier -row-spacing-none — No row gap.
+ * @modifier -row-spacing-small — Small row gap.
+ * @modifier -row-spacing-medium — Medium row gap.
+ * @modifier -row-spacing-large — Large row gap.
+ * @modifier -layout-aligned — Align child fields to a shared grid.
+ * @modifier -layout-columns — Lay child fields out in columns.
+ * @modifier -layout-inline — Lay child fields inline, in a row.
+ * @modifier -required — Mark the group as required.
+ * @modifier -v-align-top — Top-align the fields.
+ * @modifier -v-align-middle — Middle-align the fields.
+ * @modifier -v-align-bottom — Bottom-align the fields.
+ */
 ${root} {
   display: grid;
   grid-template-columns: 1fr;
@@ -5007,6 +5469,14 @@ function radioInputGroupRules(p: string): string {
   const r = "var(--instui-component-radio-input-toggle-border-radius)";
   const bw = "var(--instui-component-radio-input-toggle-border-width)";
   return `
+/**
+ * @component radio-input-group
+ * @summary A single-select radio \`<fieldset>\`, plain or as a connected segmented toggle.
+ * @modifier -layout-columns — Lay the radios out in columns.
+ * @modifier -layout-inline — Lay the radios out inline.
+ * @modifier -required — Mark the group as required.
+ * @modifier -variant-toggle — Connect the child toggles into one segmented control.
+ */
 ${root} {
   display: flex;
   flex-direction: column;

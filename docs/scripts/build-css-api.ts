@@ -13,9 +13,23 @@
 import { createRequire } from "node:module";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
+import {
+  parseCssDocs,
+  toMermaid,
+  type CssDocEntry,
+  type CssRecordKind,
+  type StructureNode,
+} from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
+
+// Sidebar/index groups, in display order. Only kinds with records show up.
+const KIND_GROUPS: { kind: CssRecordKind; label: string }[] = [
+  { kind: "component", label: "Components" },
+  { kind: "utility", label: "Utilities" },
+  { kind: "rule", label: "Rules" },
+  { kind: "declaration", label: "Declarations" },
+];
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
@@ -136,7 +150,17 @@ function demoSpec(entry: CssDocEntry): string | undefined {
   return existsSync(join(demosDir, `${entry.name}.html`)) ? `self:${entry.name}` : undefined;
 }
 
-/** One component page. */
+/** Flatten a `@structure` tree into indented text lines (two spaces per depth level). */
+function renderTree(nodes: StructureNode[], depth = 0): string[] {
+  const out: string[] = [];
+  for (const n of nodes) {
+    out.push(`${"  ".repeat(depth)}${n.selector}`);
+    out.push(...renderTree(n.children, depth + 1));
+  }
+  return out;
+}
+
+/** One record page. */
 function renderPage(entry: CssDocEntry): string {
   const lines: string[] = [`# CSS: ${entry.name}`, ""];
   lines.push(`\`${entry.className}\`${entry.summary ? ` — ${escProse(entry.summary)}` : ""}`, "");
@@ -145,6 +169,12 @@ function renderPage(entry: CssDocEntry): string {
 
   const spec = demoSpec(entry);
   if (spec) lines.push("```demo", spec, "```", "");
+
+  // The static markup (authored `@example`). Fenced code is exempt from Vue parsing, so raw HTML is fine.
+  if (entry.examples.length) {
+    lines.push("## Example", "");
+    for (const ex of entry.examples) lines.push("```html", ex, "```", "");
+  }
 
   if (entry.modifiers.length) {
     lines.push("## Modifiers", "", "| Modifier | Description |", "| --- | --- |");
@@ -169,6 +199,14 @@ function renderPage(entry: CssDocEntry): string {
     lines.push("## Parts", "", "| Part | Description |", "| --- | --- |");
     for (const p of entry.parts) lines.push(`| \`.${p.name}\` | ${cell(p.description)} |`);
     lines.push("");
+  }
+
+  // The HTML shape (authored `@structure`): an indented tree plus a Mermaid diagram of the same tree,
+  // so the Parts above read in context. Both fenced, so no Vue-escaping needed.
+  if (entry.structure?.length) {
+    lines.push("## Structure", "", "```text", ...renderTree(entry.structure), "```", "");
+    const mermaid = toMermaid(entry.structure);
+    if (mermaid) lines.push("```mermaid", mermaid, "```", "");
   }
 
   if (entry.cssPropertiesDeclared.length) {
@@ -212,19 +250,25 @@ function renderPage(entry: CssDocEntry): string {
   return `${lines.join("\n")}\n`;
 }
 
-/** The index page: every documented component with its summary. */
+/** The index page: records grouped by kind, each a table with its summary. */
 function renderIndex(entries: CssDocEntry[]): string {
   const lines = [
     "# CSS API reference",
     "",
-    "Class-based component styles from `@pantoken/components`, generated from the CSS itself — the",
-    "modifiers, parts, and tokens below are extracted from the shipping stylesheet, so they can't drift.",
+    "Class-based styles from `@pantoken/components`, generated from the CSS itself — the modifiers,",
+    "parts, and tokens below are extracted from the shipping stylesheet, so they can't drift.",
     "",
-    "| Component | Class | Summary |",
-    "| --- | --- | --- |",
   ];
-  for (const e of entries) {
-    lines.push(`| [${e.name}](/api/css/${e.name}.md) | \`${e.className}\` | ${cell(e.summary)} |`);
+  for (const g of KIND_GROUPS) {
+    const group = entries.filter((e) => e.kind === g.kind);
+    if (!group.length) continue;
+    lines.push(`## ${g.label}`, "", "| Name | Class | Summary |", "| --- | --- | --- |");
+    for (const e of group) {
+      lines.push(
+        `| [${e.name}](/api/css/${e.name}.md) | \`${e.className}\` | ${cell(e.summary)} |`,
+      );
+    }
+    lines.push("");
   }
   return `${lines.join("\n")}\n`;
 }
@@ -233,11 +277,14 @@ const readCss = (subpath: string): string =>
   readFileSync(require.resolve(`@pantoken/components/${subpath}`), "utf8");
 
 const build = (): void => {
-  // The component sheet is the primary source; utilities/prose can carry doc-comments too and are
-  // concatenated so their @component records are picked up in the same pass.
-  const css = [readCss("components.css"), readCss("utilities.css"), readCss("prose.css")].join(
-    "\n",
-  );
+  // The component sheet is the primary source; base/utilities/prose carry the non-component records
+  // (@rule/@utility/@declaration) and are concatenated so every record is picked up in one pass.
+  const css = [
+    readCss("components.css"),
+    readCss("utilities.css"),
+    readCss("prose.css"),
+    readCss("base.css"),
+  ].join("\n");
   const entries = parseCssDocs(css).sort((a, b) => a.name.localeCompare(b.name));
 
   // Index the sheet-local custom properties (elevation shadows in components.css, the focus ring in
@@ -258,14 +305,13 @@ const build = (): void => {
   for (const entry of entries) writeFileSync(join(outDir, `${entry.name}.md`), renderPage(entry));
   writeFileSync(join(outDir, "index.md"), renderIndex(entries));
 
-  const sidebar = [
-    { text: "Overview", link: "/api/css/" },
-    {
-      text: "Components",
-      collapsed: false,
-      items: entries.map((e) => ({ text: e.name, link: `/api/css/${e.name}.md` })),
-    },
-  ];
+  const sidebar: Record<string, unknown>[] = [{ text: "Overview", link: "/api/css/" }];
+  for (const g of KIND_GROUPS) {
+    const items = entries
+      .filter((e) => e.kind === g.kind)
+      .map((e) => ({ text: e.name, link: `/api/css/${e.name}.md` }));
+    if (items.length) sidebar.push({ text: g.label, collapsed: false, items });
+  }
   writeFileSync(join(outDir, "css-sidebar.json"), `${JSON.stringify(sidebar, null, 2)}\n`);
 
   // Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure).
@@ -276,7 +322,7 @@ const build = (): void => {
     throw new Error(`CSS API: ${missing.length} unknown token reference(s): ${missing.join(", ")}`);
   }
 
-  console.log(`✓ CSS API: wrote ${entries.length} component page(s) + index + sidebar to api/css/`);
+  console.log(`✓ CSS API: wrote ${entries.length} record page(s) + index + sidebar to api/css/`);
 };
 
 build();

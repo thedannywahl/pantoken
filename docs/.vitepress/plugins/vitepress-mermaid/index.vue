@@ -14,12 +14,14 @@ const diagramRef = ref<HTMLElement | null>(null);
 const graphText = computed(() => decodeURIComponent(props.graph));
 
 const renderDiagram = async (): Promise<void> => {
+  // Wait for the template ref to bind before reading it — the watcher runs `immediate`, i.e. during
+  // setup before mount, so reading `diagramRef.value` first would always be null and bail.
+  await nextTick();
+
   const el = diagramRef.value;
   if (!el) {
     return;
   }
-
-  await nextTick();
 
   mermaid.initialize({
     startOnLoad: false,
