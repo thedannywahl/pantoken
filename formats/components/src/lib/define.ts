@@ -15,9 +15,13 @@ export interface Definition {
   kind: CssRecordKind;
   meta: RecordMeta;
   /** Doc block + CSS body at the given (already `ns()`-joined) prefix — concatenated by the aggregator. */
-  rules(prefix: string): string;
-  /** The standalone, header-wrapped stylesheet — what the exported `xxxCss` returns. */
-  css(options?: ComponentOptions): string;
+  rules(this: void, prefix: string): string;
+  /**
+   * The standalone, header-wrapped stylesheet — what the exported `xxxCss` returns. Declared `this: void`
+   * because it's a plain closure (no receiver): callers bind it as `export const buttonCss = button.css`,
+   * so the annotation tells the linter the free-floating reference is safe.
+   */
+  css(this: void, options?: ComponentOptions): string;
 }
 
 /** A record definition's input: its metadata (minus `kind`, which the `defineX` helper supplies) + css. */

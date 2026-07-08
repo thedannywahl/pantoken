@@ -1,0 +1,88 @@
+import { defineComponent } from "../lib/define.ts";
+
+export const progressCircle = defineComponent({
+  name: "progress-circle",
+  summary: "A circular progress ring driven by a `--value` (0–100) custom property.",
+  modifiers: [
+    { name: "-color-brand", description: "Brand meter colour." },
+    { name: "-color-info", description: "Informational meter colour." },
+    { name: "-color-success", description: "Success meter colour." },
+    { name: "-color-warning", description: "Warning meter colour." },
+    { name: "-color-danger", description: "Danger meter colour." },
+    { name: "-color-primary-inverse", description: "On-dark (primary inverse) meter colour." },
+    { name: "-size-xs", description: "Extra small." },
+    { name: "-size-sm", description: "Small." },
+    { name: "-size-lg", description: "Large." },
+  ],
+  examples: [
+    `<span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">
+  <span class="value">25%</span>
+</span>`,
+  ],
+  css: (p) => {
+    const root = `.${p}progress-circle`;
+    // Meter colour uses our normalized `-color-*` scheme (canonical); InstUI's `meterColor` names
+    // (`-meter-color-*`) are kept as @deprecated aliases (added by withDeprecatedAliases). Unlike the bar,
+    // the circle's `progress-circle-meter-color-*` tokens are distinct upstream, so we paint from them.
+    const meter = (mod: string, token: string): string =>
+      `${root}.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}); }
+${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-${token}-inverse); }`;
+    const size = (mod: string, key: string): string =>
+      `${root}.-${mod} {
+  width: var(--instui-component-progress-circle-${key}-size);
+  height: var(--instui-component-progress-circle-${key}-size);
+  --pantoken-pc-stroke: var(--instui-component-progress-circle-${key}-stroke-width);
+}`;
+    return `
+/* --value (0–100) drives the arc; registered so the conic-gradient re-evaluates (and can transition). */
+@property --value { syntax: "<number>"; inherits: true; initial-value: 0; }
+${root} {
+  --value: 0;
+  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
+  --pantoken-pc-track: var(--instui-component-progress-circle-track-color);
+  --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--instui-component-progress-circle-medium-size);
+  height: var(--instui-component-progress-circle-medium-size);
+  color: var(--instui-component-progress-circle-color);
+  font-family: var(--instui-component-progress-circle-font-family);
+  font-weight: var(--instui-component-progress-circle-font-weight);
+  line-height: var(--instui-component-progress-circle-line-height);
+}
+/* The ring is a masked conic donut on ::before; the value sits in the hole. */
+${root}::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(var(--pantoken-pc-fill) calc(var(--value) * 1%), var(--pantoken-pc-track) 0);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
+  mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
+}
+${root} .value {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+${size("size-xs", "x-small")}
+${size("size-sm", "small")}
+${size("size-lg", "large")}
+${meter("brand", "brand")}
+${meter("info", "info")}
+${meter("success", "success")}
+${meter("warning", "warning")}
+${meter("danger", "danger")}
+${root}.-color-primary-inverse {
+  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
+  --pantoken-pc-track: var(--instui-component-progress-circle-track-color-inverse);
+  color: var(--instui-component-progress-circle-color-inverse);
+}`;
+  },
+});
+
+export const progressCircleCss = progressCircle.css;

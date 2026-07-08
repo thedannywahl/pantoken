@@ -1,0 +1,102 @@
+import { defineComponent } from "../lib/define.ts";
+import { scope } from "../lib/helpers.ts";
+
+export const progress = defineComponent({
+  name: "progress",
+  summary: "A determinate progress bar with a coloured meter, sizes, and an optional value label.",
+  modifiers: [
+    { name: "-color-brand", description: "Brand meter colour." },
+    { name: "-color-info", description: "Informational meter colour." },
+    { name: "-color-success", description: "Success meter colour." },
+    { name: "-color-warning", description: "Warning meter colour." },
+    { name: "-color-danger", description: "Danger meter colour." },
+    { name: "-color-inverse", description: "For dark backgrounds." },
+    { name: "-color-primary-inverse", description: "On-dark (primary inverse) meter colour." },
+    { name: "-size-xs", description: "Extra small." },
+    { name: "-size-sm", description: "Small." },
+    { name: "-size-lg", description: "Large." },
+  ],
+  parts: [{ name: ".bar", description: "The filled meter bar." }],
+  examples: [
+    `<div class="instui-progress -color-brand">
+  <div class="bar"></div>
+</div>`,
+  ],
+  css: (p) => {
+    const root = `.${p}progress`;
+    // Meter colour uses our normalized `-color-*` scheme (canonical); the InstUI `meterColor` names
+    // (`-meter-color-*`) are kept as @deprecated aliases (added by withDeprecatedAliases). Kept FLAT (not
+    // in @scope) so those aliases — keyed on `.instui-progress.` — can twin them. The
+    // `progress-bar-meter-color-*` tokens are degenerate (all brand) upstream, so paint from the semantic
+    // `--instui-color-background-*` status colours (danger→error; there's no `-color-alert` in the
+    // normalized scheme, so InstUI's `alert` folds to warning via the deprecated alias only).
+    const meter = (mod: string, bg: string): string =>
+      `${root}.-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
+    return `
+${root} {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--instui-component-progress-bar-medium-height);
+  background: var(--instui-component-progress-bar-track-color);
+  /* The full border (InstUI trackLayout.border) frames the track on all sides. */
+  border: var(--instui-component-progress-bar-track-bottom-border-width) solid var(--instui-component-progress-bar-border-color);
+  border-radius: var(--instui-component-progress-bar-border-radius);
+  overflow: hidden;
+}
+/* InstUI layers a distinct bottom rule (trackBottomBorderColor) over the meter, separate from the full
+   border. In legacy Canvas the full border is transparent so only this rule shows; in the newer themes
+   the full border shows and this rule is transparent. A pseudo keeps both layers independent. */
+${root}::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--instui-component-progress-bar-track-bottom-border-width);
+  background: var(--instui-component-progress-bar-track-bottom-border-color);
+  pointer-events: none;
+}
+.${p}progress.-size-xs { height: var(--instui-component-progress-bar-x-small-height); }
+.${p}progress.-size-sm { height: var(--instui-component-progress-bar-small-height); }
+.${p}progress.-size-lg { height: var(--instui-component-progress-bar-large-height); }
+${scope(
+  root,
+  `
+.${p}progress .bar {
+  height: 100%;
+  background: var(--instui-color-background-brand);
+  border-radius: var(--instui-component-progress-bar-border-radius);
+}
+.${p}progress.-should-animate .bar { transition: width 0.5s ease; }
+`,
+  ["bar"],
+)}
+${meter("brand", "brand")}
+${meter("info", "info")}
+${meter("success", "success")}
+${meter("warning", "warning")}
+${meter("danger", "error")}
+/* color="primary-inverse": the on-dark scheme. It's a distinct axis from meterColor and overrides it —
+   InstUI's inverse meter tokens all collapse to background-base — so it comes AFTER the meter rules and
+   wins at equal specificity. Pair it with a dark surface. */
+${root}.-color-primary-inverse {
+  background: var(--instui-component-progress-bar-track-color-inverse);
+  border-color: var(--instui-component-progress-bar-border-color-inverse);
+  color: var(--instui-component-progress-bar-text-color-inverse);
+}
+${root}.-color-primary-inverse::after { background: var(--instui-component-progress-bar-track-bottom-border-color-inverse); }
+${root}.-color-primary-inverse .bar { background: var(--instui-component-progress-bar-meter-color-brand-inverse); }
+.${p}progress-value {
+  padding: 0 var(--instui-component-progress-bar-value-padding);
+  color: var(--instui-component-progress-bar-text-color);
+  font-family: var(--instui-component-progress-bar-font-family);
+  font-size: var(--instui-component-progress-bar-medium-value-font-size);
+  font-weight: var(--instui-component-progress-bar-font-weight);
+  line-height: var(--instui-component-progress-bar-line-height);
+}
+.${p}progress.-color-inverse ~ .${p}progress-value,
+.${p}progress-value.-color-inverse { color: var(--instui-component-progress-bar-text-color-inverse); }`;
+  },
+});
+
+export const progressCss = progress.css;
