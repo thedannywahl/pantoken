@@ -13,6 +13,9 @@ packages:
   - plugins/typedoc/*
   - plugins/vite/*
   - tools/*
+  # CSS-doc tooling — its own git repo (sibling of this one), joined to the workspace so consumers link
+  # it with `workspace:*` instead of repeating relative `link:` paths (pnpm catalogs don't allow `link:`).
+  - ../cssdoc
 
 catalogMode: prefer
 

@@ -31,6 +31,7 @@
  * @module
  */
 import { alpha, darken } from "@pantoken/plugin-colors";
+import { renderDocBlock, type RecordMeta } from "./lib/record.ts";
 
 /** The default class prefix (`instui` → `.instui-button`). */
 export const DEFAULT_PREFIX = "instui";
@@ -234,6 +235,28 @@ export function focusOutlineRules(selector: string = FOCUSABLE_SELECTOR): string
   ].join("\n");
 }
 
+/** The focus declaration's doc-block metadata (rendered by {@link renderDocBlock}). */
+const focusMeta: RecordMeta = {
+  kind: "declaration",
+  name: "focus",
+  className: ":focus-visible",
+  summary:
+    "The focus-outline system: the `--instui-focus-outline-*` custom properties (declared on `:root`) plus the `:focus-visible` ring every focusable gets, and opt-in tuning classes.",
+  modifiers: [
+    { name: "-focus-color-success", description: "Success-coloured ring." },
+    { name: "-focus-color-danger", description: "Danger-coloured ring." },
+    { name: "-focus-color-inverse", description: "Inverse (on-dark) ring." },
+    {
+      name: "-focus-position-inset",
+      description: "Draw the ring inset, inside the element's edge.",
+    },
+    { name: "-focus-within", description: "Ring the element while a descendant is focused." },
+    { name: "-without-focus-animation", description: "Disable the ring's grow-in animation." },
+  ],
+  examples: ['<button class="instui-button -focus-color-danger">Delete</button>'],
+  demo: "self:focus-outline",
+};
+
 /**
  * Build the focus-outline block: the `--instui-focus-outline-*` token defs plus the ring rules.
  * Baked into `base.css` (so focusables get the ring out of the box), and reusable by other layered
@@ -252,20 +275,7 @@ export function focusOutlineCss(
   const decls = focusOutlineDeclarations()
     .map(([name, value]) => `  ${name}: ${value};`)
     .join("\n");
-  const doc = `/**
- * @declaration focus
- * @class :focus-visible
- * @summary The focus-outline system: the \`--instui-focus-outline-*\` custom properties (declared on \`:root\`) plus the \`:focus-visible\` ring every focusable gets, and opt-in tuning classes.
- * @modifier -focus-color-success — Success-coloured ring.
- * @modifier -focus-color-danger — Danger-coloured ring.
- * @modifier -focus-color-inverse — Inverse (on-dark) ring.
- * @modifier -focus-position-inset — Draw the ring inset, inside the element's edge.
- * @modifier -focus-within — Ring the element while a descendant is focused.
- * @modifier -without-focus-animation — Disable the ring's grow-in animation.
- * @example <button class="instui-button -focus-color-danger">Delete</button>
- * @demo self:focus-outline
- */\n`;
-  return `${doc}${tokenSelector} {\n${decls}\n}\n\n${focusOutlineRules(options.selector)}\n`;
+  return `${renderDocBlock(focusMeta)}\n${tokenSelector} {\n${decls}\n}\n\n${focusOutlineRules(options.selector)}\n`;
 }
 
 /** The six document heading levels, in order. */

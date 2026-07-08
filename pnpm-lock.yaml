@@ -376,6 +376,25 @@ importers:
         specifier: 'catalog:'
         version: 0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@25.9.4)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@25.9.4)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(jiti@2.7.0)(publint@0.3.21)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
 
+  ../cssdoc:
+    dependencies:
+      postcss:
+        specifier: ^8.5.16
+        version: 8.5.16
+    devDependencies:
+      '@types/node':
+        specifier: ^24.13.2
+        version: 24.13.2
+      typescript:
+        specifier: ^6.0.3
+        version: 6.0.3
+      vite:
+        specifier: npm:@voidzero-dev/vite-plus-core@0.2.2
+        version: '@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(esbuild@0.25.12)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)'
+      vite-plus:
+        specifier: 0.2.2
+        version: 0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(jiti@2.7.0)(publint@0.3.21)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
+
   ai/pantoken-ai:
     devDependencies:
       '@types/node':
@@ -576,7 +595,7 @@ importers:
   docs:
     devDependencies:
       '@cssdoc/core':
-        specifier: link:../../cssdoc
+        specifier: workspace:*
         version: link:../../cssdoc
       '@pantoken/components':
         specifier: workspace:*
@@ -654,6 +673,9 @@ importers:
         specifier: workspace:*
         version: link:../../plugins/pantoken/colors
     devDependencies:
+      '@cssdoc/core':
+        specifier: workspace:*
+        version: link:../../../cssdoc
       '@pantoken/icons':
         specifier: workspace:*
         version: link:../icons
@@ -9050,7 +9072,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 25.9.4
+      '@types/node': 24.13.2
 
   '@types/trusted-types@2.0.7': {}
 
@@ -9174,9 +9196,9 @@ snapshots:
       obug: 2.1.3
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.9(@types/node@25.9.4)(@vitest/browser-preview@4.1.9)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@25.9.4)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))
+      vitest: 4.1.9(@types/node@24.13.2)(@vitest/browser-preview@4.1.9)(@vitest/coverage-v8@4.1.9)(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))
     optionalDependencies:
-      '@vitest/browser': 4.1.9(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@25.9.4)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(vitest@4.1.9)
+      '@vitest/browser': 4.1.9(@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@24.13.2)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0))(vitest@4.1.9)
 
   '@vitest/expect@4.1.9':
     dependencies:
@@ -10503,7 +10525,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.9.4
+      '@types/node': 24.13.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
