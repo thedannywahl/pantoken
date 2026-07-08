@@ -6,7 +6,7 @@ type LocaleMeta = {
   guidePrefix: string;
   apiPrefix: string;
   description: string;
-  nav: { guide: string; packages: string; api: string };
+  nav: { guide: string; packages: string; css: string; api: string };
   sidebar: {
     intro: string;
     guides: string;
@@ -31,7 +31,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     guidePrefix: "/guide/",
     apiPrefix: "/api/",
     description: "Instructure design tokens and icons, reshaped for every platform and framework.",
-    nav: { guide: "Guide", packages: "Packages", api: "API reference" },
+    nav: { guide: "Guide", packages: "Packages", css: "CSS", api: "API reference" },
     sidebar: {
       intro: "Introduction",
       guides: "Guides",
@@ -54,7 +54,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     guidePrefix: "/hu/guide/",
     apiPrefix: "/hu/api/",
     description: "Instructure design tokenek és ikonok, minden platformhoz és frameworkhöz.",
-    nav: { guide: "Útmutató", packages: "Csomagok", api: "API referencia" },
+    nav: { guide: "Útmutató", packages: "Csomagok", css: "CSS", api: "API referencia" },
     sidebar: {
       intro: "Bevezetés",
       guides: "Útmutatók",

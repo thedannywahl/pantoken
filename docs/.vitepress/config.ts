@@ -63,6 +63,7 @@ const localesConfig = Object.fromEntries(
         nav: [
           { text: locale.nav.guide, link: `${locale.guidePrefix}getting-started` },
           { text: locale.nav.packages, link: `${locale.guidePrefix}packages` },
+          { text: locale.nav.css, link: `${locale.apiPrefix}css` },
           { text: locale.nav.api, link: locale.apiPrefix },
         ],
         sidebar: {
