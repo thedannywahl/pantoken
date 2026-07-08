@@ -134,10 +134,10 @@ export { iconGlyphsCss, type IconGlyphsOptions } from "./utilities/icon-glyphs.t
 
 /**
  * Build the aggregated component stylesheet: the `--instui-elevation-*` scale (so shadows are intrinsic)
- * followed by every component's rules in the {@link COMPONENTS} concat order. The size-alias and
+ * followed by every component's rules in the `COMPONENTS` concat order. The size-alias and
  * deprecated-alias twins are appended PER COMPONENT (within its own chunk) so each alias documents on
  * its own page — the deprecated aliases are discovered from each record's `@deprecated {@link -x}`
- * metadata (see {@link withAliases}), not a central hand-kept list.
+ * metadata (see `withAliases`), not a central hand-kept list.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.

@@ -15,6 +15,7 @@ import { createRequire } from "node:module";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { emitCssApi } from "@cssdoc/typedoc";
+import { injectLiveExamples } from "@pantoken/typedoc-plugin-live-example";
 import type { CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
@@ -152,15 +153,24 @@ const build = (): void => {
   }));
   resolveValue = makeResolver([...tokens, ...localTokens]);
 
+  const outSubdir = "css";
   const { entries, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
     css: cssPaths,
-    outSubdir: "css",
+    outSubdir,
     label: "CSS",
     baseHref: "/api/css/",
     headingPrefix: "CSS:",
     resolveToken,
     resolveDemo,
+  });
+
+  // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads the
+  // component CSS). Our docs do, so seam a live preview onto each fence: a bordered, page-background frame
+  // (`.css-example`, styled in the VitePress theme) holding the example inside the same elevated
+  // `.instui-card` the /demos use (from demos-assets/demo-overrides.css, loaded globally by config.ts).
+  injectLiveExamples(join(docsRoot, "api", outSubdir), {
+    wrap: (html) => `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
   });
 
   // Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure).

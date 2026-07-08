@@ -4,10 +4,11 @@
   --vp-font-family-base: var(--instui-font-family-atkinson-hyperlegible-next);
 }
 
-/* Each CSS-API `@example` is a source fence on top with the live rendered preview joined beneath it,
-   forming one bordered unit. The fence above the preview loses its bottom rounding + margin so the two
-   read as a single card — square BOTH the outer wrapper and the inner <pre> (which paints the dark
-   background and carries its own radius) so no rounded corner peeks through the seam. */
+/* Each CSS-API `@example` is a source fence that seams into a bordered, page-background frame
+   (`.css-example`) below it — the fence loses its bottom rounding + margin so the two read as one unit
+   (square BOTH the outer wrapper and the inner <pre>, which paints the dark bg + carries its own radius,
+   so no rounded corner peeks through the seam). Inside the frame, the live example sits in the same
+   elevated `.instui-card` the /demos use (from demos-assets/demo-overrides.css, loaded globally). */
 div[class*="language-"]:has(+ .css-example) {
   margin-bottom: 0;
 }
@@ -23,14 +24,11 @@ div[class*="language-"]:has(+ .css-example) > pre {
   border-end-end-radius: 8px;
   padding: 20px;
   margin: 0 0 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: center;
-  background: var(--vp-c-bg-soft);
+  /* Match the page background (like the demo frame), so only the inner .instui-card reads as elevated. */
+  background: light-dark(var(--vp-c-bg-soft), var(--vp-c-bg));
 }
 /* VitePress makes code blocks full-bleed (negative margins, no radius) on narrow viewports; keep the
-   paired example fence contained so it stays aligned with the preview box below it. */
+   paired example fence contained so it stays aligned with the frame below it. */
 @media (max-width: 639px) {
   .vp-doc div[class*="language-"]:has(+ .css-example) {
     margin-inline: 0;

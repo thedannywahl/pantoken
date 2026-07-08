@@ -33,6 +33,7 @@
     "@pantoken/plugin-visual-debug": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/typedoc-plugin-demo": "workspace:*",
+    "@pantoken/typedoc-plugin-live-example": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@pantoken/vite-workspace-orchestrator": "workspace:*",
     "@pantoken/vitepress": "workspace:*",

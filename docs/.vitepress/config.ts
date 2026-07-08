@@ -126,6 +126,8 @@ export default defineConfig({
     ["link", { rel: "stylesheet", href: `${base}demos-assets/transition.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],
+    // `.instui-card` — the surface the /demos and the CSS-API live examples share (see build-css-api.ts).
+    ["link", { rel: "stylesheet", href: `${base}demos-assets/demo-overrides.css` }],
   ],
   locales: localesConfig,
   cleanUrls: true,
