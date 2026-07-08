@@ -1,5 +1,38 @@
-<div style="display: flex; flex-direction: column; gap: 10px">
-  <div class="instui-file-drop">Drag a file here, or click to browse.</div>
-  <div class="instui-file-drop -accepted">File accepted.</div>
-  <div class="instui-file-drop -rejected">File type not allowed.</div>
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <!-- A real dropzone: a <label> wrapping a hidden file input, so click-to-browse works with no JS.
+         The demo script toggles the accepted/rejected state from the chosen file's type. -->
+    <label class="instui-file-drop" id="fd" style="cursor: pointer; display: block">
+      <span class="instui-icon -icon-cloud-upload" style="font-size: 2.5rem"></span>
+      <div class="instui-text" style="margin-top: 8px">
+        <strong>Drag an image here</strong>, or click to browse.
+      </div>
+      <div class="instui-text -size-sm instui-fg-muted" id="fd-msg" style="margin-top: 4px">
+        PNG or JPG up to 5&nbsp;MB.
+      </div>
+      <input type="file" accept="image/*" hidden id="fd-input" />
+    </label>
+
+    <!-- The accepted and rejected states, shown statically. -->
+    <div class="instui-file-drop -accepted">
+      <span class="instui-icon -icon-circle-check"></span> photo.png — accepted.
+    </div>
+    <div class="instui-file-drop -rejected">
+      <span class="instui-icon -icon-circle-x"></span> report.pdf — file type not allowed.
+    </div>
+  </div>
 </div>
+
+<script>
+  const zone = document.getElementById("fd");
+  const input = document.getElementById("fd-input");
+  const msg = document.getElementById("fd-msg");
+  input.addEventListener("change", () => {
+    const file = input.files && input.files[0];
+    zone.classList.remove("-accepted", "-rejected");
+    if (!file) return;
+    const ok = file.type.startsWith("image/");
+    zone.classList.add(ok ? "-accepted" : "-rejected");
+    msg.textContent = ok ? `${file.name} — accepted.` : `${file.name} — not an image.`;
+  });
+</script>

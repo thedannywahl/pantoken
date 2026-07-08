@@ -5,8 +5,10 @@
  * wrap the `@pantoken/components` CSS: `<instui-button>`, `<instui-alert>`, `<instui-badge>`,
  * `<instui-pill>`, `<instui-tag>`, `<instui-avatar>`, `<instui-spinner>`, `<instui-progress>`,
  * `<instui-progress-circle>`, `<instui-metric>`, `<instui-rating>`, `<instui-icon-button>`,
- * `<instui-toggle-button>`, and `<instui-truncate>`, plus two behavioral elements: `<instui-modal>`
- * (a real `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a native popover).
+ * `<instui-toggle-button>`, `<instui-truncate>`, `<instui-img>`, `<instui-side-nav-bar>`,
+ * `<instui-tree-browser>`, `<instui-calendar>`, and `<instui-tooltip>`, plus the behavioral elements
+ * `<instui-modal>` (a real `<dialog>` driven by its `open` attribute) and the native popovers
+ * `<instui-context-view>`, `<instui-popover>`, and `<instui-tray>`.
  * Each renders the matching `.instui-*` markup into its shadow root with the component stylesheet
  * inlined, so the look is exactly `@pantoken/components`
  * with nothing to import but this module. Tokens are inherited custom properties, so they pierce the
@@ -22,15 +24,22 @@ import {
   avatarCss,
   badgeCss,
   buttonCss,
+  calendarCss,
   contextViewCss,
+  imgCss,
   metricCss,
   modalCss,
   pillCss,
+  popoverCss,
   progressCircleCss,
   progressCss,
   ratingCss,
+  sideNavBarCss,
   spinnerCss,
   tagCss,
+  tooltipCss,
+  trayCss,
+  treeBrowserCss,
   truncateCss,
 } from "@pantoken/components";
 import { resolve as pantokenResolve } from "@pantoken/icons";
@@ -53,8 +62,15 @@ export const ELEMENTS = [
   "instui-icon-button",
   "instui-toggle-button",
   "instui-truncate",
+  "instui-img",
+  "instui-side-nav-bar",
+  "instui-tree-browser",
+  "instui-calendar",
+  "instui-tooltip",
   "instui-modal",
   "instui-context-view",
+  "instui-popover",
+  "instui-tray",
 ] as const;
 
 /**
@@ -128,6 +144,12 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
           "label",
           "pressed",
           "lines",
+          "placement",
+          "minimized",
+          "constrain",
+          "src",
+          "alt",
+          "tip",
         ];
         constructor() {
           super();
@@ -246,15 +268,24 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
     return `<div class="instui-metric" part="metric"><span class="value">${value}</span><span class="label">${label}</span></div>`;
   });
 
-  wrapper("instui-rating", ratingCss(I), (host) => {
-    const value = Math.max(0, Number(host.getAttribute("value") ?? "0"));
-    const max = Math.max(1, Number(host.getAttribute("max") ?? "5"));
-    const stars = Array.from({ length: max }, (_, i) => {
-      const filled = i < value ? " -filled" : "";
-      return `<span class="star${filled}">★</span>`;
-    }).join("");
-    return `<span class="instui-rating" part="rating">${stars}</span>`;
-  });
+  // Rating renders star glyphs as inline SVG (solid = filled, outline = empty); the rating CSS colours
+  // the filled ones. A small appended rule sizes the SVGs to the text (1em), and a `.label` shows the
+  // value. (The CSS glyph painter isn't inlined here, so we embed the SVG directly.)
+  wrapper(
+    "instui-rating",
+    `${ratingCss(I)}\n.instui-rating svg{inline-size:1em;block-size:1em}`,
+    (host) => {
+      const value = Math.max(0, Number(host.getAttribute("value") ?? "0"));
+      const max = Math.max(1, Number(host.getAttribute("max") ?? "5"));
+      const label = esc(host.getAttribute("label") ?? `${String(value)}/${String(max)}`);
+      const stars = Array.from({ length: max }, (_, i) => {
+        const solid = i < value;
+        const cls = solid ? "instui-icon -icon-star-solid" : "instui-icon -icon-star";
+        return `<span class="${cls}" style="display:inline-flex">${iconSvg(solid ? "star-solid" : "star")}</span>`;
+      }).join("");
+      return `<span class="instui-rating" role="img" aria-label="${label}" part="rating">${stars}<span class="label">${label}</span></span>`;
+    },
+  );
 
   wrapper("instui-progress-circle", progressCircleCss(I), (host) => {
     const value = Math.max(0, Math.min(100, Number(host.getAttribute("value") ?? "0")));
@@ -283,6 +314,52 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
     },
     "block",
   );
+
+  // Img renders a styled <img> from `src`/`alt`, with `-constrain-*` and `-display-block` modifiers.
+  wrapper("instui-img", imgCss(I), (host) => {
+    const parts = ["instui-img"];
+    const constrain = frag(host.getAttribute("constrain"));
+    if (constrain) parts.push(`-constrain-${constrain}`);
+    if (host.getAttribute("display") === "block") parts.push("-display-block");
+    const src = esc(host.getAttribute("src") ?? "");
+    const alt = esc(host.getAttribute("alt") ?? "");
+    return `<img class="${parts.join(" ")}" src="${src}" alt="${alt}" part="img" />`;
+  });
+
+  // SideNavBar / TreeBrowser / Calendar are containers: the consumer slots the items/tree/day cells,
+  // the element supplies the styled shell.
+  wrapper(
+    "instui-side-nav-bar",
+    sideNavBarCss(I),
+    (host) => {
+      const cls =
+        host.getAttribute("minimized") === "true"
+          ? "instui-side-nav-bar -minimized"
+          : "instui-side-nav-bar";
+      return `<nav class="${cls}" part="side-nav-bar"><slot></slot></nav>`;
+    },
+    "block",
+  );
+  wrapper(
+    "instui-tree-browser",
+    treeBrowserCss(I),
+    () => `<div class="instui-tree-browser" role="tree" part="tree-browser"><slot></slot></div>`,
+    "block",
+  );
+  wrapper(
+    "instui-calendar",
+    calendarCss(I),
+    () => `<div class="instui-calendar" part="calendar"><slot></slot></div>`,
+    "block",
+  );
+
+  // Tooltip: the slotted trigger plus a `.tip` bubble (from the `tip` attribute) shown on hover/focus.
+  wrapper("instui-tooltip", tooltipCss(I), (host) => {
+    const tip = esc(host.getAttribute("tip") ?? "");
+    const placement = frag(host.getAttribute("placement"));
+    const tipCls = placement ? `tip -placement-${placement}` : "tip";
+    return `<span class="instui-tooltip" part="tooltip"><slot></slot><span class="${tipCls}" role="tooltip">${tip}</span></span>`;
+  });
 
   // Modal: a real <dialog>, so it gets focus trapping, Esc-to-close, and a ::backdrop for free. The
   // `open` attribute drives showModal()/close(); a native dismissal (Esc / backdrop click) reflects
@@ -340,6 +417,60 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
           if (root && !root.querySelector("span")) {
             root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;overflow:visible;background:transparent}${contextViewCss(I)}</style><span class="instui-context-view" part="context-view"><slot></slot></span>`;
           }
+        }
+      },
+    );
+  }
+
+  // Popover: like context-view, the host is a native popover (top layer + light-dismiss) so a light-DOM
+  // `popovertarget` can toggle it by id. The shadow resets the UA popover box and renders the styled
+  // surface inside.
+  if (!registry.get("instui-popover")) {
+    registry.define(
+      "instui-popover",
+      class extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: "open" });
+        }
+        connectedCallback(): void {
+          if (!this.hasAttribute("popover")) this.setAttribute("popover", "auto");
+          const root = this.shadowRoot;
+          if (root && !root.querySelector("div")) {
+            root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;background:transparent}${popoverCss(I)}</style><div class="instui-popover" part="popover"><slot></slot></div>`;
+          }
+        }
+      },
+    );
+  }
+
+  // Tray: a native popover docked to a viewport edge. `placement`/`size` set the inner surface class;
+  // repainting the shadow doesn't disturb the host's popover open state, which lives on the host.
+  if (!registry.get("instui-tray")) {
+    registry.define(
+      "instui-tray",
+      class extends HTMLElement {
+        static observedAttributes = ["placement", "size"];
+        constructor() {
+          super();
+          this.attachShadow({ mode: "open" });
+        }
+        connectedCallback(): void {
+          if (!this.hasAttribute("popover")) this.setAttribute("popover", "auto");
+          this.paint();
+        }
+        attributeChangedCallback(): void {
+          this.paint();
+        }
+        paint(): void {
+          const root = this.shadowRoot;
+          if (!root) return;
+          const parts = ["instui-tray"];
+          const placement = (this.getAttribute("placement") ?? "").replace(/[^a-z-]/giu, "");
+          const size = (this.getAttribute("size") ?? "").replace(/[^a-z]/giu, "");
+          if (placement) parts.push(`-placement-${placement}`);
+          if (size) parts.push(`-size-${size}`);
+          root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;background:transparent}${trayCss(I)}</style><div class="${parts.join(" ")}" part="tray"><slot></slot></div>`;
         }
       },
     );

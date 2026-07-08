@@ -1317,8 +1317,38 @@ ${root}.-text-align-end { align-items: flex-end; text-align: end; }
 }
 
 /** Byline rules: a figure (avatar) beside a title and description. */
+/**
+ * Img rules: a styled `<img>`. `-display-block`, `-constrain-{cover,contain}` (object-fit within a sized
+ * box), and the `-with-grayscale`/`-with-blur` effects (composed through a custom property so they stack).
+ * InstUI's colour `overlay` needs a wrapping element (an `<img>` can't host a pseudo-element), so it's
+ * left to the consumer; everything else is a modifier on the image itself.
+ */
+function imgRules(p: string): string {
+  const root = `.${p}img`;
+  return `
+${root} {
+  display: inline-block;
+  max-inline-size: 100%;
+  block-size: auto;
+  --pantoken-img-filter: none;
+  filter: var(--pantoken-img-filter);
+  transition: filter var(--instui-component-img-effect-transition-duration) ease;
+}
+${root}.-display-block { display: block; }
+/* constrain: fill a sized box (the consumer sets width/height). */
+${root}.-constrain-cover { inline-size: 100%; block-size: 100%; object-fit: cover; }
+${root}.-constrain-contain { inline-size: 100%; block-size: 100%; object-fit: contain; }
+/* Effects compose through the custom property, so grayscale + blur can apply together. */
+${root}.-with-grayscale { --pantoken-img-filter: grayscale(1); }
+${root}.-with-blur { --pantoken-img-filter: blur(var(--instui-component-img-image-blur-amount)); }
+${root}.-with-grayscale.-with-blur { --pantoken-img-filter: grayscale(1) blur(var(--instui-component-img-image-blur-amount)); }
+`;
+}
+
 function bylineRules(p: string): string {
   const root = `.${p}byline`;
+  // Root + size/align rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
+  // valid; only the size-free element rules go inside.
   return `
 ${root} {
   display: flex;
@@ -1328,6 +1358,14 @@ ${root} {
   color: var(--instui-component-byline-color);
   font-family: var(--instui-component-byline-font-family);
 }
+/* alignContent="top" (default is center, from align-items above). */
+.${p}byline.-align-content-top { align-items: flex-start; }
+.${p}byline.-align-content-center { align-items: center; }
+/* size sets a max-width (InstUI's byline small/medium/large). The size tokens are @property-only
+   (registered, unvalued) in the IR, so each carries a literal fallback. */
+.${p}byline.-size-sm { max-width: var(--instui-component-byline-small, 20rem); }
+.${p}byline.-size-md { max-width: var(--instui-component-byline-medium, 30rem); }
+.${p}byline.-size-lg { max-width: var(--instui-component-byline-large, 40rem); }
 ${scope(
   root,
   `
@@ -1740,6 +1778,49 @@ export function layoutUtilitiesCss(options: ComponentOptions = {}): string {
     ).map(([name, value]) => `.${p}text-align-${name} { text-align: ${value}; }`),
   ].join("\n");
   return `/* InstUI layout utilities (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
+}
+
+/**
+ * Responsive visibility utilities — the closest pure-CSS analogue to InstUI's `<Responsive>`. Media
+ * queries can't read custom properties (and the `--instui-breakpoints-*` tokens are `@property`-only,
+ * unvalued), so the widths are literal, matched to the size scale: `sm` 30rem, `md` 48rem, `lg` 64rem,
+ * `xl` 80rem. `.<prefix>-hidden-max-<bp>` hides at/below a viewport width; `.<prefix>-hidden-min-<bp>`
+ * hides at/above it. These react to the VIEWPORT; for a component that adapts to its OWN width, wrap it
+ * in a `container-type: inline-size` element and use `@container` queries with the same widths.
+ *
+ * @demo self:responsive
+ */
+export function responsiveUtilitiesCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  const p = ns(prefix);
+  const bp: [string, string][] = [
+    ["sm", "30rem"],
+    ["md", "48rem"],
+    ["lg", "64rem"],
+    ["xl", "80rem"],
+  ];
+  const viewport = bp
+    .map(
+      ([name, w]) =>
+        `@media (max-width: ${w}) { .${p}hidden-max-${name} { display: none !important; } }\n` +
+        `@media (min-width: ${w}) { .${p}hidden-min-${name} { display: none !important; } }`,
+    )
+    .join("\n");
+  // Container-query variants — the true InstUI <Responsive> analogue: mark an ancestor `.<prefix>-container`
+  // and these react to ITS width, not the viewport's. Same breakpoint scale, `-cq-` infix.
+  const container = bp
+    .map(
+      ([name, w]) =>
+        `@container (max-width: ${w}) { .${p}cq-hidden-max-${name} { display: none !important; } }\n` +
+        `@container (min-width: ${w}) { .${p}cq-hidden-min-${name} { display: none !important; } }`,
+    )
+    .join("\n");
+  return (
+    `/* InstUI responsive utilities (@pantoken/components) — prefix: ${prefix} */\n` +
+    `${viewport}\n` +
+    `.${p}container { container-type: inline-size; }\n` +
+    `${container}\n`
+  );
 }
 
 /**
@@ -2364,6 +2445,10 @@ ${scope(
   border-bottom: var(--instui-component-modal-header-border-width) solid var(--instui-component-modal-header-border-color);
 }
 .${p}modal .body { padding: var(--instui-component-modal-body-padding); }
+/* A media modal: when the body holds an image it goes full-bleed (no padding) so the media meets the
+   modal edges. Pair with -color-inverse for the on-dark chrome InstUI uses around media. */
+.${p}modal .body:has(> img) { padding: 0; }
+.${p}modal .body:has(> img) img { display: block; width: 100%; }
 .${p}modal .footer {
   padding: var(--instui-component-modal-footer-padding);
   background: var(--instui-component-modal-footer-background-color);
@@ -2462,18 +2547,39 @@ ${root} {
 ${scope(
   root,
   `
+/* The hero (an icon or image) leads the block. Size it via font-size on the glyph in the markup. */
+.${p}billboard .hero {
+  display: inline-flex;
+  justify-content: center;
+  margin-block-end: var(--instui-spacing-space-sm);
+  color: var(--instui-component-billboard-message-color);
+}
+/* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
+.${p}billboard .heading {
+  margin: 0 0 var(--instui-spacing-space-xs);
+  color: var(--instui-component-billboard-message-color);
+  font-weight: bold;
+  font-size: var(--instui-component-billboard-message-font-size-large);
+}
 .${p}billboard .message {
   color: var(--instui-component-billboard-message-color);
   font-size: var(--instui-component-billboard-message-font-size-medium);
 }
-.${p}billboard.-clickable .message { color: var(--instui-component-billboard-message-color-clickable); }
+.${p}billboard.-clickable .message,
+.${p}billboard.-clickable .heading,
+.${p}billboard.-clickable .hero { color: var(--instui-component-billboard-message-color-clickable); }
 `,
-  ["message"],
+  ["hero", "heading", "message"],
 )}
 `;
 }
 
-/** Rating rules: filled and empty stars, with `--sm`/`--lg` sizes. */
+/**
+ * Rating rules: a row of star glyphs from the icon sheet (`.instui-icon.-icon-star-solid` filled,
+ * `.instui-icon.-icon-star` empty) sized by the container `font-size` (glyphs are `1em`). Sizes
+ * `--sm`/`--lg`, plus a `.label` for the visible value text (e.g. "3/5"), which resets to text size so
+ * it isn't scaled to the star size.
+ */
 function ratingRules(p: string): string {
   const root = `.${p}rating`;
   return `
@@ -2482,16 +2588,24 @@ ${root} {
   align-items: center;
   gap: var(--instui-component-rating-icon-icon-margin);
   font-size: var(--instui-component-rating-icon-medium-icon-font-size);
+  color: var(--instui-component-rating-icon-icon-empty-color);
 }
 .${p}rating.-size-sm { font-size: var(--instui-component-rating-icon-small-icon-font-size); }
 .${p}rating.-size-lg { font-size: var(--instui-component-rating-icon-large-icon-font-size); }
 ${scope(
   root,
   `
-.${p}rating .star { color: var(--instui-component-rating-icon-icon-empty-color); opacity: 0.35; }
-.${p}rating .star.-filled { color: var(--instui-component-rating-icon-icon-filled-color); opacity: 1; }
+/* The container paints the empty (outline) stars; a filled (solid) star overrides to the filled colour. */
+.${p}rating .-icon-star-solid { color: var(--instui-component-rating-icon-icon-filled-color); }
+/* The value label sits after the stars, reset to text size so it isn't scaled to the star glyph. */
+.${p}rating .label {
+  margin-inline-start: var(--instui-component-rating-icon-icon-margin);
+  color: var(--instui-color-text-base);
+  font-family: var(--instui-font-family-base);
+  font-size: var(--instui-font-size-text-base);
+}
 `,
-  ["star"],
+  ["label"],
 )}
 `;
 }
@@ -2549,29 +2663,111 @@ ${root}.-without-border > :not(summary) { border-block-start: 0; }
 
 /** Context-view rules: a callout surface with a downward caret. */
 function contextViewRules(p: string): string {
+  const root = `.${p}context-view`;
+  const cv = (s: string): string => `var(--instui-component-context-view-${s})`;
   return `
-.${p}context-view {
+${root} {
   position: relative;
   display: inline-block;
   padding: var(--instui-spacing-space-md);
   background: var(--instui-color-background-elevated-surface-base);
   color: var(--instui-color-text-base);
-  border: var(--instui-component-context-view-arrow-border-width) solid var(--instui-component-context-view-arrow-border-color);
-  border-radius: var(--instui-component-context-view-border-radius);
+  border: ${cv("arrow-border-width")} solid ${cv("arrow-border-color")};
+  border-radius: ${cv("border-radius")};
+  /* ContextView floats over content — InstUI gives it a shadow. */
+  box-shadow: var(--instui-elevation-above);
 }
-.${p}context-view::after {
+/* The caret is two stacked triangles: ::before is the border (outer, one border-width larger) and
+   ::after is the fill (inner). Both are anchored to the same edge so the border peeks around the fill —
+   without it, a surface-coloured caret is invisible against a matching surface. */
+${root}::before,
+${root}::after {
   content: "";
   position: absolute;
+  border-style: solid;
+  border-color: transparent;
+}
+${root}::before { border-width: calc(${cv("arrow-size")} + ${cv("arrow-border-width")}); }
+${root}::after { border-width: ${cv("arrow-size")}; }
+/* Default placement="top": the view sits above its target, so the caret is on the bottom edge
+   pointing down. */
+${root}::before {
+  top: 100%;
+  inset-inline-start: calc(var(--instui-spacing-space-lg) - ${cv("arrow-border-width")});
+  border-top-color: ${cv("arrow-border-color")};
+}
+${root}::after {
   top: 100%;
   inset-inline-start: var(--instui-spacing-space-lg);
-  border: var(--instui-component-context-view-arrow-size) solid transparent;
-  border-top-color: var(--instui-component-context-view-arrow-background-color);
+  border-top-color: ${cv("arrow-background-color")};
 }
-/* Works as a native popover: the class already supplies the box (it out-specifies the UA popover
-   border/padding), so we only keep \`overflow: visible\` for the caret and let the UA centre it in the
-   top layer as the fallback. To point it at a trigger, the consumer opts in with standard CSS anchor
-   positioning (\`anchor-name\` on the trigger + \`position-anchor\` here) where supported (Chromium). */
-[popover].${p}context-view { position: fixed; overflow: visible; }
+/* placement="bottom": caret on the top edge, pointing up. */
+${root}.-placement-bottom::before {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: ${cv("arrow-border-color")};
+}
+${root}.-placement-bottom::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: ${cv("arrow-background-color")};
+}
+/* placement="start": the view sits before its target, caret on the inline-end edge pointing toward it. */
+${root}.-placement-start::before,
+${root}.-placement-start::after {
+  top: 50%;
+  inset-inline-start: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent;
+}
+${root}.-placement-start::before { border-inline-start-color: ${cv("arrow-border-color")}; }
+${root}.-placement-start::after { border-inline-start-color: ${cv("arrow-background-color")}; }
+/* placement="end": the view sits after its target, caret on the inline-start edge pointing toward it. */
+${root}.-placement-end::before,
+${root}.-placement-end::after {
+  top: 50%;
+  inset-inline-start: auto;
+  inset-inline-end: 100%;
+  transform: translateY(-50%);
+  border-top-color: transparent;
+}
+${root}.-placement-end::before { border-inline-end-color: ${cv("arrow-border-color")}; }
+${root}.-placement-end::after { border-inline-end-color: ${cv("arrow-background-color")}; }
+/* background="inverse": dark surface, inverse text, and inverse-coloured caret layers per placement. */
+${root}.-color-inverse {
+  background: var(--instui-color-background-inverse);
+  color: var(--instui-color-text-inverse);
+  border-color: ${cv("arrow-border-color-inverse")};
+}
+${root}.-color-inverse::before { border-top-color: ${cv("arrow-border-color-inverse")}; }
+${root}.-color-inverse::after { border-top-color: ${cv("arrow-background-color-inverse")}; }
+${root}.-color-inverse.-placement-bottom::before { border-top-color: transparent; border-bottom-color: ${cv("arrow-border-color-inverse")}; }
+${root}.-color-inverse.-placement-bottom::after { border-top-color: transparent; border-bottom-color: ${cv("arrow-background-color-inverse")}; }
+${root}.-color-inverse.-placement-start::before { border-top-color: transparent; border-inline-start-color: ${cv("arrow-border-color-inverse")}; }
+${root}.-color-inverse.-placement-start::after { border-top-color: transparent; border-inline-start-color: ${cv("arrow-background-color-inverse")}; }
+${root}.-color-inverse.-placement-end::before { border-top-color: transparent; border-inline-end-color: ${cv("arrow-border-color-inverse")}; }
+${root}.-color-inverse.-placement-end::after { border-top-color: transparent; border-inline-end-color: ${cv("arrow-background-color-inverse")}; }
+/* Popover use: as a [popover] the UA hides the element until it's opened, but the base \`display\`
+   above out-ranks the UA \`[popover]:not(:popover-open){display:none}\` rule — so restore the hide here,
+   and float it in the top layer when open. Position it at a trigger with CSS anchor positioning where
+   supported; elsewhere the UA centres it. */
+[popover]${root} { position: fixed; overflow: visible; margin: 0; }
+[popover]${root}:not(:popover-open) { display: none; }
+/* CSS anchor positioning (Chromium): with \`anchor-name: --pantoken-anchor\` on the trigger (or a
+   popovertarget invoker's implicit anchor), the -placement-* modifier docks the caret side to the
+   trigger and flips to stay on-screen. Inert elsewhere — the UA centres it in the top layer. */
+@supports (position-area: block-end) {
+  [popover]${root} {
+    position-anchor: --pantoken-anchor;
+    position-try-fallbacks: flip-block, flip-inline;
+  }
+  [popover]${root}.-placement-top { position-area: block-start; }
+  [popover]${root}.-placement-bottom { position-area: block-end; }
+  [popover]${root}.-placement-start { position-area: inline-start center; }
+  [popover]${root}.-placement-end { position-area: inline-end center; }
+}
 `;
 }
 
@@ -2646,38 +2842,87 @@ ${root}.-color-primary-inverse {
 `;
 }
 
-/** Pagination rules: a row of page links with a current-page state. */
+/**
+ * Pagination rules: a row of page controls. Page numbers and the first/prev/next/last arrows render as
+ * `color="primary"` text buttons (brand text, no fill; InstUI's PaginationButton/PaginationArrowButton);
+ * the current page is a filled primary button (`withBackground` + `withBorder`). Pages work as `<a href>`
+ * or `<button>`. `.ellipsis` is the inert truncation marker, and `-variant-input` lays out the
+ * "Page [n] of N" jumper using the page-input tokens.
+ */
 function paginationRules(p: string): string {
   const root = `.${p}pagination`;
   return `
 ${root} {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--instui-component-pagination-page-indicator-gap);
   font-family: var(--instui-font-family-base);
 }
 ${scope(
   root,
   `
-.${p}pagination .page {
+/* A page number or a nav arrow — an <a> or <button>. Text-style primary button: brand text, no fill. */
+.${p}pagination .page,
+.${p}pagination .arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2rem;
+  min-inline-size: 2rem;
+  min-block-size: 2rem;
   padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
   color: var(--instui-color-text-interactive-navigation-primary-base);
-  border-radius: var(--instui-border-radius-sm);
+  background: transparent;
+  border: var(--instui-border-width-md) solid transparent;
+  border-radius: var(--instui-component-base-button-border-radius);
+  font: inherit;
+  font-weight: var(--instui-font-weight-interactive);
   text-decoration: none;
   cursor: pointer;
 }
-.${p}pagination .page:hover { background: var(--instui-color-background-muted); }
-.${p}pagination .page[aria-current] {
-  background: var(--instui-color-background-interactive-action-secondary-base);
-  color: var(--instui-color-text-interactive-action-secondary-base);
+.${p}pagination .page:hover,
+.${p}pagination .arrow:hover {
+  background: var(--instui-color-background-muted);
+  color: var(--instui-color-text-interactive-navigation-primary-hover);
 }
+/* The current page — a filled primary button (InstUI: color="primary" withBackground withBorder). */
+.${p}pagination .page[aria-current],
+.${p}pagination .page.-current {
+  background: var(--instui-color-background-interactive-action-primary-base);
+  color: var(--instui-color-text-interactive-action-primary-base);
+  border-color: var(--instui-color-background-interactive-action-primary-base);
+}
+.${p}pagination .page[aria-current]:hover,
+.${p}pagination .page.-current:hover {
+  background: var(--instui-color-background-interactive-action-primary-hover);
+  border-color: var(--instui-color-background-interactive-action-primary-hover);
+  color: var(--instui-color-text-interactive-action-primary-base);
+}
+/* Disabled nav arrows (first/prev at page 1, etc.) — shown muted (InstUI showDisabledButtons). */
+.${p}pagination .arrow:disabled,
+.${p}pagination .arrow[aria-disabled="true"] {
+  color: var(--instui-color-text-muted);
+  background: transparent;
+  opacity: var(--instui-opacity-disabled);
+  cursor: not-allowed;
+}
+/* The truncation ellipsis — inert text. */
+.${p}pagination .ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 2rem;
+  color: var(--instui-color-text-muted);
+}
+/* variant="input" label ("Page … of N"). */
+.${p}pagination .page-input-label { color: var(--instui-component-pagination-page-input-label-color); }
 `,
-  ["page"],
+  ["page", "arrow", "ellipsis", "page-input-label"],
 )}
+/* variant="input": a "Page [n] of N" jumper (the input width + spacing come from the page-input tokens). */
+${root}.-variant-input { gap: var(--instui-component-pagination-page-input-input-spacing); }
+${root}.-variant-input .${p}text-input,
+${root}.-variant-input .${p}number-input { inline-size: var(--instui-component-pagination-page-input-input-width); }
 `;
 }
 
@@ -2768,6 +3013,335 @@ function fileDropRules(p: string): string {
 .${p}file-drop.-hover { border-color: var(--instui-component-file-drop-hover-border-color); }
 .${p}file-drop.-accepted { border-color: var(--instui-component-file-drop-accepted-color); }
 .${p}file-drop.-rejected { border-color: var(--instui-component-file-drop-rejected-color); }
+`;
+}
+
+/**
+ * SideNavBar rules: a vertical navigation rail of icon-over-label `.item`s (InstUI SideNavBar +
+ * SideNavBar.Item). `-selected` marks the current item; `-minimized` narrows the rail and hides the
+ * labels, leaving the icons. Items work as `<a>` or `<button>`.
+ */
+function sideNavBarRules(p: string): string {
+  const root = `.${p}side-nav-bar`;
+  const s = (k: string): string => `var(--instui-component-side-nav-bar-${k})`;
+  return `
+${root} {
+  display: flex;
+  flex-direction: column;
+  gap: ${s("content-gap")};
+  padding: ${s("content-margin")};
+  inline-size: fit-content;
+  background: ${s("background-color")};
+  color: ${s("font-color")};
+  font-family: ${s("item-font-family")};
+}
+${scope(
+  root,
+  `
+.${p}side-nav-bar .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--instui-spacing-space2xs);
+  padding: ${s("item-content-padding")};
+  min-inline-size: ${s("minimized-width")};
+  color: ${s("item-font-color")};
+  background: ${s("item-background-color")};
+  border-radius: ${s("item-border-radius")};
+  font-size: ${s("item-font-size")};
+  font-weight: ${s("item-font-weight")};
+  line-height: ${s("item-line-height")};
+  text-align: center;
+  text-decoration: ${s("item-link-text-decoration")};
+  cursor: pointer;
+}
+.${p}side-nav-bar .item:hover { background: ${s("item-hover-background-color")}; }
+.${p}side-nav-bar .item.-selected {
+  background: ${s("item-selected-background-color")};
+  color: ${s("item-selected-font-color")};
+}
+`,
+  ["item"],
+)}
+/* minimized: a narrow rail — the icons stay, the labels are hidden. */
+${root}.-minimized { inline-size: ${s("minimized-width")}; }
+${root}.-minimized .item .label { display: none; }
+`;
+}
+
+/**
+ * TreeBrowser rules: a disclosure tree built from nested native `<details>` (collections) and leaf
+ * `.item`s (InstUI TreeBrowser). Each collection `<summary>` gets a rotating chevron (marker removed);
+ * leaves and summaries share the tree-button colours + hover/selected states. `-size-{sm,lg}` scale the
+ * text and row spacing from the tree-button tokens.
+ */
+function treeBrowserRules(p: string): string {
+  const root = `.${p}tree-browser`;
+  const t = (k: string): string => `var(--instui-component-tree-browser-${k})`;
+  return `
+${root} {
+  border-radius: ${t("border-radius")};
+  font-family: ${t("tree-collection-font-family")};
+  color: ${t("tree-button-name-text-color")};
+}
+/* A collection node (a <details><summary>) and a leaf (.item) share the button chrome. */
+${root} details > summary,
+${root} .item {
+  display: flex;
+  align-items: center;
+  gap: ${t("tree-button-icons-margin-right-medium")};
+  padding: ${t("tree-button-base-spacing-medium")};
+  font-size: ${t("tree-button-name-font-size-medium")};
+  line-height: ${t("tree-button-text-line-height")};
+  color: ${t("tree-button-name-text-color")};
+  border-radius: ${t("tree-button-border-radius")};
+  cursor: pointer;
+  list-style: none;
+}
+${root} details > summary::-webkit-details-marker { display: none; }
+/* The disclosure chevron rotates open (same technique as toggle-details). */
+${root} details > summary::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+  -webkit-mask: ${CHEVRON_RIGHT_ICON};
+  mask: ${CHEVRON_RIGHT_ICON};
+  transition: transform 0.2s ease;
+}
+${root} details[open] > summary::before { transform: rotate(90deg); }
+${root} details > summary:hover,
+${root} .item:hover {
+  background: ${t("tree-button-hover-background-color")};
+  color: ${t("tree-button-hover-text-color")};
+}
+${root} details > summary.-selected,
+${root} .item.-selected {
+  background: ${t("tree-button-selected-background-color")};
+  color: ${t("tree-button-selected-text-color")};
+}
+/* Nested lists indent; the leaf list carries no bullets. */
+${root} ul { margin: 0; padding-inline-start: ${t("tree-collection-base-spacing-medium")}; list-style: none; }
+${root}.-size-sm details > summary,
+${root}.-size-sm .item { padding: ${t("tree-button-base-spacing-small")}; font-size: ${t("tree-button-name-font-size-small")}; }
+${root}.-size-lg details > summary,
+${root}.-size-lg .item { padding: ${t("tree-button-base-spacing-large")}; font-size: ${t("tree-button-name-font-size-large")}; }
+`;
+}
+
+/**
+ * Calendar rules: a static month grid (InstUI Calendar). A `.nav` header row, a seven-column `.grid` of
+ * `.weekday` labels + `.day` cells, with `-today`/`-selected`/`-outside-month` day states. The dates and
+ * month navigation are the consumer's (or the web-component's) job — this styles the grid only.
+ */
+function calendarRules(p: string): string {
+  const root = `.${p}calendar`;
+  const c = (k: string): string => `var(--instui-component-calendar-${k})`;
+  return `
+${root} {
+  display: inline-block;
+  background: ${c("background")};
+  color: ${c("color")};
+  font-family: ${c("font-family")};
+  font-size: ${c("font-size")};
+  font-weight: ${c("font-weight")};
+  line-height: ${c("line-height")};
+}
+${scope(
+  root,
+  `
+.${p}calendar .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: ${c("nav-margin")};
+  max-inline-size: ${c("max-header-width")};
+}
+.${p}calendar .grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.${p}calendar .weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: ${c("day-min-width")};
+  block-size: ${c("day-height")};
+  font-weight: var(--instui-font-weight-interactive);
+}
+.${p}calendar .day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: ${c("day-min-width")};
+  block-size: ${c("day-height")};
+  font-size: ${c("day-font-size")};
+  color: ${c("day-color")};
+  background: ${c("day-background")};
+  cursor: pointer;
+}
+.${p}calendar .day.-outside-month { color: ${c("day-outside-month-color")}; }
+.${p}calendar .day.-today {
+  background: ${c("day-today-background")};
+  color: ${c("day-today-color")};
+  border-radius: ${c("day-today-border-radius")};
+}
+.${p}calendar .day.-selected {
+  background: ${c("day-selected-background")};
+  color: ${c("day-selected-color")};
+  border-radius: ${c("day-selected-border-radius")};
+}
+`,
+  // Only .nav and .grid are direct children; .weekday and .day live inside .grid, so leave them as
+  // descendant selectors (listing them would force an incorrect :scope > direct-child match).
+  ["nav", "grid"],
+)}
+`;
+}
+
+/**
+ * Popover rules: a generic elevated surface for a native `[popover]` (InstUI Popover). The UA hides it
+ * until opened and floats it in the top layer; the class supplies the surface, border, radius, and
+ * shadow. Position it at a trigger with CSS anchor positioning where supported.
+ */
+function popoverRules(p: string): string {
+  const root = `.${p}popover`;
+  return `
+${root} {
+  background: var(--instui-color-background-elevated-surface-base);
+  color: var(--instui-color-text-base);
+  border: var(--instui-border-width-sm) solid var(--instui-component-popover-border-color);
+  border-radius: var(--instui-component-popover-border-radius);
+  padding: var(--instui-spacing-space-sm);
+  box-shadow: var(--instui-elevation-above);
+}
+[popover]${root} { margin: 0; }
+/* CSS anchor positioning (Chromium): if the trigger declares \`anchor-name: --pantoken-anchor\` (or the
+   popover is opened via a popovertarget invoker, which supplies an implicit anchor), the -placement-*
+   modifier places it beside the trigger and it flips to stay on-screen. Inert where unsupported — the UA
+   then centres the popover in the top layer. */
+@supports (position-area: block-end) {
+  [popover]${root} {
+    position-anchor: --pantoken-anchor;
+    position-try-fallbacks: flip-block, flip-inline;
+  }
+  [popover]${root}.-placement-top { position-area: block-start; }
+  [popover]${root}.-placement-bottom { position-area: block-end; }
+  [popover]${root}.-placement-start { position-area: inline-start center; }
+  [popover]${root}.-placement-end { position-area: inline-end center; }
+}
+/* A gentle open animation (native popover + @starting-style, no JS). Inert where unsupported. */
+@supports (transition-behavior: allow-discrete) {
+  [popover]${root} {
+    transition: opacity 0.15s ease, transform 0.15s ease, overlay 0.15s allow-discrete, display 0.15s allow-discrete;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  [popover]${root}:not(:popover-open) { opacity: 0; transform: translateY(-0.25rem); }
+  @starting-style {
+    [popover]${root}:popover-open { opacity: 0; transform: translateY(-0.25rem); }
+  }
+}
+`;
+}
+
+/**
+ * Tray rules: an edge-pinned panel (InstUI Tray). `-placement-{start,end,top,bottom}` docks it to a
+ * viewport edge; `-size-{xs,sm,md,lg,xl}` sets the width (or height for top/bottom). Works as a native
+ * `[popover]` or `<dialog>` so it opens in the top layer; the web-component adds focus management.
+ */
+function trayRules(p: string): string {
+  const root = `.${p}tray`;
+  const w = (k: string): string => `var(--instui-component-tray-width-${k})`;
+  return `
+${root} {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: ${w("md")};
+  max-inline-size: 100%;
+  background: var(--instui-component-tray-background-color);
+  border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
+  padding: var(--instui-component-tray-padding);
+  z-index: var(--instui-component-tray-z-index);
+  box-shadow: var(--instui-elevation-topmost);
+}
+${root}.-placement-end { inset-inline: auto 0; }
+${root}.-placement-top { inset: 0 0 auto 0; inline-size: 100%; block-size: auto; }
+${root}.-placement-bottom { inset: auto 0 0 0; inline-size: 100%; block-size: auto; }
+${root}.-size-xs { inline-size: ${w("xs")}; }
+${root}.-size-sm { inline-size: ${w("sm")}; }
+${root}.-size-lg { inline-size: ${w("lg")}; }
+${root}.-size-xl { inline-size: ${w("xl")}; }
+[popover]${root} { margin: 0; }
+dialog${root} { margin: 0; padding: var(--instui-component-tray-padding); border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color); }
+/* Slide in from the docked edge on open (native popover + @starting-style, no JS). The transform is
+   keyed to placement; inert where allow-discrete transitions aren't supported. */
+@supports (transition-behavior: allow-discrete) {
+  [popover]${root} {
+    transition: transform 0.2s ease, overlay 0.2s allow-discrete, display 0.2s allow-discrete;
+    transform: translateX(0);
+  }
+  [popover]${root}:not(:popover-open) { transform: translateX(-100%); }
+  @starting-style { [popover]${root}:popover-open { transform: translateX(-100%); } }
+  [popover]${root}.-placement-end:not(:popover-open) { transform: translateX(100%); }
+  @starting-style { [popover]${root}.-placement-end:popover-open { transform: translateX(100%); } }
+  [popover]${root}.-placement-top:not(:popover-open) { transform: translateY(-100%); }
+  @starting-style { [popover]${root}.-placement-top:popover-open { transform: translateY(-100%); } }
+  [popover]${root}.-placement-bottom:not(:popover-open) { transform: translateY(100%); }
+  @starting-style { [popover]${root}.-placement-bottom:popover-open { transform: translateY(100%); } }
+}
+`;
+}
+
+/**
+ * Tooltip rules: a CSS hover/focus tooltip (InstUI Tooltip). `.instui-tooltip` wraps the trigger; the
+ * `.tip` child is the inverse bubble that appears on hover or keyboard focus. `-placement-*` moves it.
+ * The web-component adds show/hide delay, Esc-dismiss, and the `aria-describedby` wiring; a CSS-only
+ * tooltip should still point `aria-describedby` at the tip for screen-reader users.
+ */
+function tooltipRules(p: string): string {
+  const root = `.${p}tooltip`;
+  const t = (k: string): string => `var(--instui-component-tooltip-${k})`;
+  return `
+${root} {
+  position: relative;
+  display: inline-flex;
+}
+${scope(
+  root,
+  `
+.${p}tooltip .tip {
+  position: absolute;
+  z-index: 1;
+  inset-block-end: 100%;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  margin-block-end: var(--instui-spacing-space-xs);
+  padding: ${t("padding")};
+  background: var(--instui-color-background-inverse);
+  color: var(--instui-color-text-inverse);
+  border-radius: var(--instui-border-radius-sm);
+  font-family: ${t("font-family")};
+  font-size: ${t("font-size")};
+  font-weight: ${t("font-weight")};
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+`,
+  ["tip"],
+)}
+/* Show on hover or keyboard focus of the trigger. */
+${root}:hover > .tip,
+${root}:focus-within > .tip { opacity: 1; visibility: visible; }
+/* Placement: default is top; these move the bubble to the other sides. */
+${root}.-placement-bottom > .tip { inset-block: 100% auto; margin-block: var(--instui-spacing-space-xs) 0; }
+${root}.-placement-start > .tip { inset-block-end: auto; inset-inline: auto 100%; top: 50%; transform: translateY(-50%); margin: 0 var(--instui-spacing-space-xs) 0 0; }
+${root}.-placement-end > .tip { inset-block-end: auto; inset-inline: 100% auto; top: 50%; transform: translateY(-50%); margin: 0 0 0 var(--instui-spacing-space-xs); }
 `;
 }
 
@@ -2890,7 +3464,6 @@ const wrap = (name: string, prefix: string, rules: string): string =>
  * ```
  *
  * @demo self:button
- * @demo self:button-group
  */
 export function buttonCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
@@ -3079,6 +3652,20 @@ export function metricCss(options: ComponentOptions = {}): string {
 export function bylineCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   return wrap("byline", prefix, bylineRules(ns(prefix)));
+}
+
+/**
+ * Build the img stylesheet: `.<prefix>-img` — a styled `<img>` with `-display-block`,
+ * `-constrain-{cover,contain}`, and `-with-grayscale`/`-with-blur` effects.
+ *
+ * @param options - {@link ComponentOptions}.
+ * @returns The CSS string.
+ *
+ * @demo self:img
+ */
+export function imgCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("img", prefix, imgRules(ns(prefix)));
 }
 
 /**
@@ -3494,6 +4081,64 @@ export function toggleDetailsCss(options: ComponentOptions = {}): string {
 export function fileDropCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   return wrap("file-drop", prefix, fileDropRules(ns(prefix)));
+}
+
+/**
+ * Build the side-nav-bar stylesheet: `.<prefix>-side-nav-bar` — a vertical rail of icon-over-label
+ * `.item`s, with `-selected` and a `-minimized` (icons-only) mode.
+ * @demo self:side-nav-bar
+ */
+export function sideNavBarCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("side-nav-bar", prefix, sideNavBarRules(ns(prefix)));
+}
+
+/**
+ * Build the tree-browser stylesheet: `.<prefix>-tree-browser` — a disclosure tree of nested `<details>`
+ * collections and `.item` leaves, with `-size-{sm,lg}`.
+ * @demo self:tree-browser
+ */
+export function treeBrowserCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("tree-browser", prefix, treeBrowserRules(ns(prefix)));
+}
+
+/**
+ * Build the calendar stylesheet: `.<prefix>-calendar` — a static month grid (`.nav`, `.grid`,
+ * `.weekday`, `.day` with `-today`/`-selected`/`-outside-month`). Dates + navigation are the consumer's.
+ * @demo self:calendar
+ */
+export function calendarCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("calendar", prefix, calendarRules(ns(prefix)));
+}
+
+/**
+ * Build the popover stylesheet: `.<prefix>-popover` — an elevated surface for a native `[popover]`.
+ * @demo self:popover
+ */
+export function popoverCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("popover", prefix, popoverRules(ns(prefix)));
+}
+
+/**
+ * Build the tray stylesheet: `.<prefix>-tray` — an edge-pinned panel with `-placement-*` and `-size-*`.
+ * @demo self:tray
+ */
+export function trayCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("tray", prefix, trayRules(ns(prefix)));
+}
+
+/**
+ * Build the tooltip stylesheet: `.<prefix>-tooltip` — a CSS hover/focus bubble (`.tip`) with
+ * `-placement-*`. The web-component tier adds delay, Esc-dismiss, and `aria-describedby` wiring.
+ * @demo self:tooltip
+ */
+export function tooltipCss(options: ComponentOptions = {}): string {
+  const prefix = options.prefix || "";
+  return wrap("tooltip", prefix, tooltipRules(ns(prefix)));
 }
 
 /**
@@ -4172,6 +4817,22 @@ ${root}.-col-spacing-large { column-gap: var(--instui-spacing-space-lg); }
 ${root}.-v-align-top { align-items: start; }
 ${root}.-v-align-middle { align-items: center; }
 ${root}.-v-align-bottom { align-items: end; }
+/* -layout-aligned: the group's inline fields share one [label | controls] grid via subgrid, so every
+   label lines up in a single column (Chromium/Firefox). Inert where subgrid is unsupported — the fields
+   just fall back to their own stacked layout. */
+@supports (grid-template-columns: subgrid) {
+  ${root}.-layout-aligned {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  ${root}.-layout-aligned > .${p}form-field {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    grid-template-areas: "label controls" ". messages";
+    align-items: center;
+  }
+}
 `;
 }
 
@@ -4354,6 +5015,7 @@ export function formFieldMessagesCss(options: ComponentOptions = {}): string {
  * ```
  *
  * @demo self:text-input
+ * @demo self:date-time-inputs
  */
 export function textInputCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
@@ -4673,6 +5335,7 @@ export function componentsCss(options: ComponentOptions = {}): string {
     tabsRules(ns(prefix)),
     metricRules(ns(prefix)),
     bylineRules(ns(prefix)),
+    imgRules(ns(prefix)),
     tableRules(ns(prefix)),
     linkRules(ns(prefix)),
     listRules(ns(prefix)),
@@ -4693,6 +5356,12 @@ export function componentsCss(options: ComponentOptions = {}): string {
     truncateRules(ns(prefix)),
     toggleDetailsRules(ns(prefix)),
     fileDropRules(ns(prefix)),
+    sideNavBarRules(ns(prefix)),
+    treeBrowserRules(ns(prefix)),
+    calendarRules(ns(prefix)),
+    popoverRules(ns(prefix)),
+    trayRules(ns(prefix)),
+    tooltipRules(ns(prefix)),
     rangeInputRules(ns(prefix)),
     maskRules(ns(prefix)),
     screenReaderContentRules(ns(prefix)),

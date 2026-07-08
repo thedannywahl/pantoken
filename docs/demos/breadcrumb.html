@@ -1,7 +1,26 @@
 <div class="instui-card">
-  <nav class="instui-breadcrumb" aria-label="Breadcrumb">
-    <span class="item"><a href="#">Home</a></span>
-    <span class="item"><a href="#">Guides</a></span>
-    <span class="item">Components</span>
-  </nav>
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <!-- Each crumb is a link; the last (current page) is plain text. A crumb can lead with an icon. -->
+    <nav class="instui-breadcrumb" aria-label="Breadcrumb">
+      <span class="item"
+        ><a href="#"><span class="instui-icon -icon-house"></span> Home</a></span
+      >
+      <span class="item"><a href="#">Guides</a></span>
+      <span class="item"><a href="#">Components</a></span>
+      <span class="item" aria-current="page">Breadcrumb</span>
+    </nav>
+
+    <!-- -size-sm and -size-lg scale the text and separator gap. -->
+    <nav class="instui-breadcrumb -size-sm" aria-label="Breadcrumb (small)">
+      <span class="item"><a href="#">Course</a></span>
+      <span class="item"><a href="#">Module 3</a></span>
+      <span class="item" aria-current="page">Assignment</span>
+    </nav>
+
+    <nav class="instui-breadcrumb -size-lg" aria-label="Breadcrumb (large)">
+      <span class="item"><a href="#">Dashboard</a></span>
+      <span class="item"><a href="#">Reports</a></span>
+      <span class="item" aria-current="page">Q3 summary</span>
+    </nav>
+  </div>
 </div>

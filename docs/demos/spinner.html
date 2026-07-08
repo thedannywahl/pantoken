@@ -1,8 +1,26 @@
 <div class="instui-card">
+  <!-- The four sizes (x-small through large). role="status" + a label announce the loading state. -->
   <div style="display: flex; gap: 20px; align-items: center">
     <span class="instui-spinner -size-xs" role="status" aria-label="Loading"></span>
     <span class="instui-spinner -size-sm" role="status" aria-label="Loading"></span>
     <span class="instui-spinner" role="status" aria-label="Loading"></span>
     <span class="instui-spinner -size-lg" role="status" aria-label="Loading"></span>
+  </div>
+
+  <!-- variant="inverse": for a dark surface. -->
+  <div
+    style="
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--instui-color-background-inverse);
+    "
+  >
+    <span class="instui-spinner -color-inverse -size-sm" role="status" aria-label="Loading"></span>
+    <span class="instui-spinner -color-inverse" role="status" aria-label="Loading"></span>
+    <span class="instui-spinner -color-inverse -size-lg" role="status" aria-label="Loading"></span>
   </div>
 </div>

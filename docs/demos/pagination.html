@@ -1,8 +1,62 @@
 <div class="instui-card">
-  <nav class="instui-pagination" aria-label="Pagination">
-    <a class="page" href="#">1</a>
-    <a class="page" href="#" aria-current="page">2</a>
-    <a class="page" href="#">3</a>
-    <a class="page" href="#">4</a>
-  </nav>
+  <div style="display: flex; flex-direction: column; gap: 20px">
+    <!-- Full: first/prev arrows, numbered page links (href), an ellipsis for the gap, next/last arrows.
+         The current page is a filled primary button. First/prev are disabled on page 1. -->
+    <nav class="instui-pagination" aria-label="Pagination">
+      <button class="arrow" type="button" aria-label="First page" disabled>
+        <span class="instui-icon -icon-chevrons-left"></span>
+      </button>
+      <button class="arrow" type="button" aria-label="Previous page" disabled>
+        <span class="instui-icon -icon-chevron-left"></span>
+      </button>
+      <a class="page" href="#" aria-current="page">1</a>
+      <a class="page" href="#">2</a>
+      <a class="page" href="#">3</a>
+      <span class="ellipsis">…</span>
+      <a class="page" href="#">12</a>
+      <a class="arrow" href="#" aria-label="Next page">
+        <span class="instui-icon -icon-chevron-right"></span>
+      </a>
+      <a class="arrow" href="#" aria-label="Last page">
+        <span class="instui-icon -icon-chevrons-right"></span>
+      </a>
+    </nav>
+
+    <!-- Compact: leading/trailing pages with the current one in the middle. -->
+    <nav class="instui-pagination" aria-label="Pagination (middle)">
+      <a class="arrow" href="#" aria-label="Previous page">
+        <span class="instui-icon -icon-chevron-left"></span>
+      </a>
+      <a class="page" href="#">1</a>
+      <span class="ellipsis">…</span>
+      <a class="page" href="#">5</a>
+      <a class="page" href="#" aria-current="page">6</a>
+      <a class="page" href="#">7</a>
+      <span class="ellipsis">…</span>
+      <a class="page" href="#">12</a>
+      <a class="arrow" href="#" aria-label="Next page">
+        <span class="instui-icon -icon-chevron-right"></span>
+      </a>
+    </nav>
+
+    <!-- variant="input": a "Page [n] of N" jumper. -->
+    <nav class="instui-pagination -variant-input" aria-label="Pagination (input)">
+      <a class="arrow" href="#" aria-label="Previous page">
+        <span class="instui-icon -icon-chevron-left"></span>
+      </a>
+      <span class="page-input-label instui-text">Page</span>
+      <input
+        class="instui-text-input"
+        type="number"
+        value="6"
+        min="1"
+        max="12"
+        aria-label="Page number"
+      />
+      <span class="page-input-label instui-text">of 12</span>
+      <a class="arrow" href="#" aria-label="Next page">
+        <span class="instui-icon -icon-chevron-right"></span>
+      </a>
+    </nav>
+  </div>
 </div>

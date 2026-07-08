@@ -13,6 +13,7 @@ import {
   checkboxCss,
   closeButtonCss,
   componentsCss,
+  contextViewCss,
   fileDropCss,
   formFieldCss,
   formFieldGroupCss,
@@ -20,6 +21,7 @@ import {
   headingCss,
   iconCss,
   iconGlyphsCss,
+  imgCss,
   inputGroupCss,
   layoutUtilitiesCss,
   linkCss,
@@ -29,19 +31,27 @@ import {
   metricCss,
   modalCss,
   numberInputCss,
+  paginationCss,
   pillCss,
   progressCircleCss,
   progressCss,
   proseCss,
+  calendarCss,
+  popoverCss,
   radioCss,
   radioInputGroupCss,
   rangeInputCss,
   ratingCss,
+  responsiveUtilitiesCss,
   screenReaderContentCss,
   selectCss,
+  sideNavBarCss,
   simpleSelectCss,
   spacingUtilitiesCss,
   spinnerCss,
+  tooltipCss,
+  trayCss,
+  treeBrowserCss,
   textAreaCss,
   textCss,
   textInputCss,
@@ -217,7 +227,26 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   const byline = bylineCss({ prefix: "instui" });
   expect(byline).toContain("@scope (.instui-byline)");
   expect(byline).toContain(".title {");
+  // alignContent + size (max-width) modifiers.
+  expect(byline).toContain(".instui-byline.-align-content-top { align-items: flex-start; }");
+  expect(byline).toContain(
+    ".instui-byline.-size-lg { max-width: var(--instui-component-byline-large,",
+  );
   expect(tableCss({ prefix: "instui" })).toContain(".instui-table th");
+});
+
+test("img has display, constrain, and composable grayscale/blur effects", () => {
+  const css = imgCss({ prefix: "instui" });
+  expect(css).toContain(".instui-img {");
+  expect(css).toContain(".instui-img.-display-block");
+  expect(css).toContain(
+    ".instui-img.-constrain-cover { inline-size: 100%; block-size: 100%; object-fit: cover; }",
+  );
+  expect(css).toContain(".instui-img.-constrain-contain");
+  // Effects compose via a custom property so grayscale + blur stack.
+  expect(css).toContain("filter: var(--pantoken-img-filter)");
+  expect(css).toContain(".instui-img.-with-grayscale.-with-blur");
+  expect(css).toContain("var(--instui-component-img-image-blur-amount)");
 });
 
 test("table styles row-header cells and a row hover; menu has active/group parts", () => {
@@ -263,11 +292,22 @@ test("modal has sizes, a compact density, and an inverse scheme", () => {
   );
 });
 
-test("context-view resets the UA popover box so it works as a native [popover]", () => {
+test("context-view floats with elevation, has placements + inverse, and hides as a closed popover", () => {
   const css = componentsCss({ prefix: "instui" });
-  // Works as a native popover: restore position:fixed (the base sets relative for the caret) so the
-  // UA can centre it in the top layer; keep overflow visible for the caret.
-  expect(css).toContain("[popover].instui-context-view { position: fixed; overflow: visible; }");
+  // Floats over content, so it carries a shadow.
+  expect(css).toContain(".instui-context-view {");
+  expect(css).toContain("box-shadow: var(--instui-elevation-above)");
+  // Placement moves the caret; inverse recolours the box + arrow.
+  expect(css).toContain(".instui-context-view.-placement-bottom::after");
+  expect(css).toContain(".instui-context-view.-placement-start::after");
+  expect(css).toContain(".instui-context-view.-placement-end::after");
+  expect(css).toContain(".instui-context-view.-color-inverse");
+  expect(css).toContain("var(--instui-component-context-view-arrow-background-color-inverse)");
+  // As a native popover: float it in the top layer, and restore the UA hide the base display overrode.
+  expect(css).toContain(
+    "[popover].instui-context-view { position: fixed; overflow: visible; margin: 0; }",
+  );
+  expect(css).toContain("[popover].instui-context-view:not(:popover-open) { display: none; }");
 });
 
 test("progress circle has sizes, the meter palette, and an inverse scheme via custom props", () => {
@@ -300,7 +340,15 @@ test("list has sizes and solid/dashed delimiters; toggle-details, rating and bre
   expect(list).toContain("var(--instui-component-list-item-delimiter-solid-border-color)");
   expect(list).toContain(".instui-list.-ordered > li::marker");
   expect(toggleDetailsCss({ prefix: "instui" })).toContain(".instui-toggle-details.-size-lg");
-  expect(ratingCss({ prefix: "instui" })).toContain(".instui-rating.-size-sm");
+  const rating = ratingCss({ prefix: "instui" });
+  expect(rating).toContain(".instui-rating.-size-sm");
+  // Stars are icon glyphs (filled = solid glyph); a .label carries the visible value text. Sub-element
+  // rules render inside @scope, so the filled-star selector is bare and the label reads :scope > .label.
+  expect(rating).toContain(
+    ".-icon-star-solid { color: var(--instui-component-rating-icon-icon-filled-color); }",
+  );
+  expect(rating).toContain(":scope > .label {");
+  expect(rating).not.toContain(".star ");
   expect(breadcrumbCss({ prefix: "instui" })).toContain(".instui-breadcrumb.-size-lg");
 });
 
@@ -308,6 +356,9 @@ test("billboard has sizes and a clickable variant; range has handle states and a
   const bb = billboardCss({ prefix: "instui" });
   expect(bb).toContain(".instui-billboard.-clickable");
   expect(bb).toContain("var(--instui-component-billboard-clickable-active-bg)");
+  // A hero (icon/image) + heading lead the message (sub-elements, so scoped as :scope > .x).
+  expect(bb).toContain(":scope > .hero {");
+  expect(bb).toContain(":scope > .heading {");
   const range = rangeInputCss({ prefix: "instui" });
   expect(range).toContain(".instui-range-input");
   expect(range).toContain(":hover::-webkit-slider-thumb");
@@ -317,6 +368,113 @@ test("billboard has sizes and a clickable variant; range has handle states and a
   expect(range).toContain("var(--instui-color-background-inverse)");
   expect(range).toContain(".instui-range-input-value::before");
   expect(range).toContain(".instui-range-input-value.-size-lg");
+});
+
+test("pagination: brand page links, a filled current page, nav arrows, ellipsis, input variant", () => {
+  const pg = paginationCss({ prefix: "instui" });
+  // Pages + arrows are brand-text buttons; the current page is a filled primary button.
+  expect(pg).toContain("var(--instui-color-text-interactive-navigation-primary-base)");
+  expect(pg).toContain("var(--instui-color-background-interactive-action-primary-base)");
+  expect(pg).toContain(".page[aria-current]");
+  // Nav arrows (first/prev/next/last), a disabled state, and the truncation ellipsis (scoped forms).
+  expect(pg).toContain(":scope > .arrow");
+  expect(pg).toContain('.arrow[aria-disabled="true"]');
+  expect(pg).toContain(":scope > .ellipsis");
+  // variant="input" sizes the input from the page-input token.
+  expect(pg).toContain(".instui-pagination.-variant-input");
+  expect(pg).toContain("var(--instui-component-pagination-page-input-input-width)");
+});
+
+test("side-nav-bar is a vertical rail with selected + minimized states", () => {
+  const css = sideNavBarCss({ prefix: "instui" });
+  expect(css).toContain("@scope (.instui-side-nav-bar)");
+  expect(css).toContain(":scope > .item");
+  expect(css).toContain(":scope > .item.-selected");
+  expect(css).toContain(".instui-side-nav-bar.-minimized");
+  expect(css).toContain(".instui-side-nav-bar.-minimized .item .label { display: none; }");
+});
+
+test("tree-browser styles nested details with a rotating chevron + hover/selected", () => {
+  const css = treeBrowserCss({ prefix: "instui" });
+  expect(css).toContain(".instui-tree-browser details > summary");
+  expect(css).toContain(
+    ".instui-tree-browser details[open] > summary::before { transform: rotate(90deg); }",
+  );
+  expect(css).toContain(".instui-tree-browser .item.-selected");
+  expect(css).toContain(".instui-tree-browser.-size-lg");
+});
+
+test("calendar is a seven-column grid with day states", () => {
+  const css = calendarCss({ prefix: "instui" });
+  expect(css).toContain("@scope (.instui-calendar)");
+  expect(css).toContain("grid-template-columns: repeat(7, 1fr);");
+  expect(css).toContain(":scope > .grid");
+  expect(css).toContain(".day.-today {");
+  expect(css).toContain(".day.-selected {");
+  expect(css).toContain(".day.-outside-month {");
+});
+
+test("popover + tray are top-layer surfaces; tray docks to an edge with sizes", () => {
+  const pop = popoverCss({ prefix: "instui" });
+  expect(pop).toContain(".instui-popover {");
+  expect(pop).toContain("box-shadow: var(--instui-elevation-above)");
+  expect(pop).toContain("[popover].instui-popover { margin: 0; }");
+  const tray = trayCss({ prefix: "instui" });
+  expect(tray).toContain("position: fixed;");
+  expect(tray).toContain(".instui-tray.-placement-end");
+  expect(tray).toContain("var(--instui-component-tray-width-sm)");
+  expect(tray).toContain("[popover].instui-tray { margin: 0; }");
+});
+
+test("tooltip shows a .tip bubble on hover/focus with placements", () => {
+  const css = tooltipCss({ prefix: "instui" });
+  expect(css).toContain("@scope (.instui-tooltip)");
+  expect(css).toContain(":scope > .tip");
+  expect(css).toContain(".instui-tooltip:hover > .tip,");
+  expect(css).toContain(".instui-tooltip:focus-within > .tip");
+  expect(css).toContain(".instui-tooltip.-placement-bottom > .tip");
+  expect(css).toContain("var(--instui-component-tooltip-padding)");
+});
+
+test("responsive utilities emit viewport hidden-max/min classes at the breakpoint scale", () => {
+  const css = responsiveUtilitiesCss({ prefix: "instui" });
+  expect(css).toContain(
+    "@media (max-width: 48rem) { .instui-hidden-max-md { display: none !important; } }",
+  );
+  expect(css).toContain(
+    "@media (min-width: 48rem) { .instui-hidden-min-md { display: none !important; } }",
+  );
+  expect(css).toContain(".instui-hidden-max-sm");
+  expect(css).toContain(".instui-hidden-min-xl");
+  // Container-query variants react to a marked container's width, not the viewport.
+  expect(css).toContain(".instui-container { container-type: inline-size; }");
+  expect(css).toContain(
+    "@container (max-width: 48rem) { .instui-cq-hidden-max-md { display: none !important; } }",
+  );
+  expect(css).toContain(".instui-cq-hidden-min-lg");
+});
+
+test("floating surfaces adopt CSS anchor positioning + open animations under @supports", () => {
+  const pop = popoverCss({ prefix: "instui" });
+  expect(pop).toContain("@supports (position-area: block-end)");
+  expect(pop).toContain("[popover].instui-popover.-placement-bottom { position-area: block-end; }");
+  expect(pop).toContain("position-try-fallbacks: flip-block, flip-inline;");
+  expect(pop).toContain("@starting-style");
+  const cv = contextViewCss({ prefix: "instui" });
+  expect(cv).toContain("@supports (position-area: block-end)");
+  expect(cv).toContain(
+    "[popover].instui-context-view.-placement-start { position-area: inline-start center; }",
+  );
+  const tray = trayCss({ prefix: "instui" });
+  expect(tray).toContain("@supports (transition-behavior: allow-discrete)");
+  expect(tray).toContain("@starting-style");
+});
+
+test("form-field-group can align labels across fields via subgrid", () => {
+  const css = formFieldGroupCss({ prefix: "instui" });
+  expect(css).toContain("@supports (grid-template-columns: subgrid)");
+  expect(css).toContain(".instui-form-field-group.-layout-aligned");
+  expect(css).toContain("grid-template-columns: subgrid;");
 });
 
 test("componentsCss bundles every component; proseCss scopes to a content root", () => {
@@ -331,6 +489,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "tabs",
     "metric",
     "byline",
+    "img",
     "table",
     "link",
     "list",
@@ -350,6 +509,12 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "truncate",
     "toggle-details",
     "file-drop",
+    "side-nav-bar",
+    "tree-browser",
+    "calendar",
+    "popover",
+    "tray",
+    "tooltip",
     "range-input",
     "mask",
     "screen-reader-content",
@@ -368,7 +533,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "number-input",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(44);
+  expect(components).toHaveLength(51);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");

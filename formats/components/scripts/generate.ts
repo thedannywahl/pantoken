@@ -23,6 +23,7 @@ import {
   iconGlyphsCss,
   layoutUtilitiesCss,
   proseCss,
+  responsiveUtilitiesCss,
   selectCss,
   spacingUtilitiesCss,
   viewCss,
@@ -107,7 +108,7 @@ writeFileSync(
 );
 writeFileSync(
   join(outDir, "utilities.css"),
-  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${colorUtilitiesCss(
+  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${colorUtilitiesCss(
     { background: names("background"), text: names("text"), stroke: names("stroke") },
     opts,
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,

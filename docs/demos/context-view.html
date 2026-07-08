@@ -1,15 +1,36 @@
 <div class="instui-card">
-  <!-- The `popovertarget` attribute toggles a native popover with no JavaScript: it opens in the top
-       layer and light-dismisses on Esc or an outside click. -->
-  <button class="instui-button -color-secondary" popovertarget="cv-popover">Show details</button>
+  <!-- As a native popover, `popovertarget` toggles it with no JavaScript: it opens in the top layer
+       and light-dismisses on Esc or an outside click. The trigger's `anchor-name` lets it dock below the
+       button (-placement-bottom) where CSS anchor positioning is supported. -->
+  <button
+    class="instui-button -color-secondary"
+    popovertarget="cv-popover"
+    style="anchor-name: --pantoken-anchor"
+  >
+    Show details
+  </button>
 
-  <div id="cv-popover" popover class="instui-context-view" style="max-width: 320px">
-    A context view frames a callout with a caret. Point it at the thing it explains. As a popover it
-    rides the top layer and closes when you click away or press Esc.
+  <div
+    id="cv-popover"
+    popover
+    class="instui-context-view -placement-bottom"
+    style="max-width: 320px"
+  >
+    A context view frames a callout with a caret. As a popover it rides the top layer and closes
+    when you click away or press Esc.
   </div>
 
-  <p class="instui-text instui-fg-muted" style="margin-top: 12px">
-    Positioning next to the trigger uses CSS anchor positioning where supported; elsewhere the
-    popover centers in the top layer.
+  <!-- Static placements: the caret sits on the edge facing the thing the view explains. -->
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start">
+    <div class="instui-context-view -placement-top">Placement top</div>
+    <div class="instui-context-view -placement-bottom">Placement bottom</div>
+    <div class="instui-context-view -placement-start">Placement start</div>
+    <div class="instui-context-view -placement-end">Placement end</div>
+    <div class="instui-context-view -color-inverse">Inverse background</div>
+  </div>
+
+  <p class="instui-text instui-fg-muted" style="margin-top: 16px">
+    Positioning next to a trigger uses CSS anchor positioning where supported; elsewhere the popover
+    centers in the top layer.
   </p>
 </div>

@@ -1,10 +1,42 @@
 <div class="instui-card">
-  <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+  <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
     <a class="instui-link" href="#">A styled link</a>
     <a class="instui-link -size-lg" href="#">A large link</a>
+
+    <!-- iconPlacement is just DOM order: an .instui-icon child before or after the text. -->
+    <a class="instui-link" href="#">
+      <span class="instui-icon -icon-download"></span>
+      Icon at the start
+    </a>
+    <a class="instui-link" href="#">
+      Icon at the end
+      <span class="instui-icon -icon-arrow-right"></span>
+    </a>
+
     <p class="instui-text">
       Read the <a class="instui-link -inline" href="#">inline documentation</a> for the full story.
     </p>
+
     <a class="instui-link -unstyled" href="#">Unstyled link</a>
+  </div>
+
+  <!-- color="link-inverse": for links on a dark surface. -->
+  <div
+    style="
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--instui-color-background-inverse);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    "
+  >
+    <a class="instui-link -color-inverse" href="#">A link on a dark background</a>
+    <a class="instui-link -color-inverse" href="#">
+      <span class="instui-icon -icon-external-link"></span>
+      With a leading icon
+    </a>
   </div>
 </div>

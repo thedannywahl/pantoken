@@ -1,0 +1,18 @@
+<div class="instui-card">
+  <!-- Responsive visibility utilities react to the viewport width, matched to the size scale. Resize the
+       preview to see them swap: the first shows only on narrow viewports, the second only on wide ones. -->
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <div class="instui-alert -color-info instui-hidden-min-md">
+      Narrow layout — hidden at <code>md</code> (48rem) and up via <code>-hidden-min-md</code>.
+    </div>
+    <div class="instui-alert -color-success instui-hidden-max-md">
+      Wide layout — hidden at <code>md</code> and below via <code>-hidden-max-md</code>.
+    </div>
+    <p class="instui-text -size-sm instui-fg-muted">
+      Breakpoints: <code>sm</code> 30rem, <code>md</code> 48rem, <code>lg</code> 64rem,
+      <code>xl</code> 80rem. For a component that adapts to its own width instead of the viewport,
+      wrap it in a <code>container-type: inline-size</code> element and use
+      <code>@container</code> queries with the same widths.
+    </p>
+  </div>
+</div>

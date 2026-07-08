@@ -1,9 +1,35 @@
 <div class="instui-card">
-  <div class="instui-byline">
-    <span class="instui-avatar -color-blue">AB</span>
-    <div>
-      <div class="title">Ada Byron</div>
-      <div class="description">Design systems, tokens, and the occasional pun.</div>
+  <div style="display: flex; flex-direction: column; gap: 20px">
+    <!-- A figure passed as the leading child — here an icon glyph instead of an avatar. -->
+    <div class="instui-byline -size-md">
+      <span class="instui-icon -icon-megaphone" style="font-size: 2.5rem"></span>
+      <div>
+        <div class="title">What's new</div>
+        <div class="description">
+          The figure can be any leading visual — an icon, an avatar, or an image.
+        </div>
+      </div>
+    </div>
+
+    <!-- alignContent="top": the figure aligns to the top of a longer description. -->
+    <div class="instui-byline -align-content-top -size-lg">
+      <span class="instui-icon -icon-book-open" style="font-size: 2.5rem"></span>
+      <div>
+        <div class="title">Documentation</div>
+        <div class="description">
+          With <code>-align-content-top</code> the figure pins to the top instead of centering,
+          which reads better when the description runs to several lines like this one does.
+        </div>
+      </div>
+    </div>
+
+    <!-- -size-sm caps the width tighter. -->
+    <div class="instui-byline -size-sm">
+      <span class="instui-icon -icon-circle-check" style="font-size: 2rem"></span>
+      <div>
+        <div class="title">Compact</div>
+        <div class="description"><code>-size-sm</code> constrains the max width.</div>
+      </div>
     </div>
   </div>
 </div>

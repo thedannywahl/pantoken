@@ -128,7 +128,7 @@ async function main(): Promise<void> {
   mount.innerHTML = `
     <div class="runner runner--show-result">
       <div class="runner__bar">
-        <div class="instui-toggle-group" role="tablist"></div>
+        <div class="instui-button-group" role="tablist"></div>
         <span class="runner__spacer"></span>
         <div class="runner__theme"${themes.length ? "" : " hidden"}>
           <button class="instui-button -secondary -sm" data-role="theme-trigger" type="button" aria-haspopup="true" aria-expanded="false">
@@ -150,7 +150,7 @@ async function main(): Promise<void> {
       </div>
     </div>`;
   const runner = mount.querySelector(".runner") as HTMLElement;
-  const tablist = mount.querySelector(".instui-toggle-group") as HTMLElement;
+  const tablist = mount.querySelector(".instui-button-group") as HTMLElement;
   const codeArea = mount.querySelector(".runner__code") as HTMLElement;
   const resultFrame = mount.querySelector(".runner__result") as HTMLIFrameElement;
   const splitButton = mount.querySelector('[data-role="split"]') as HTMLButtonElement;

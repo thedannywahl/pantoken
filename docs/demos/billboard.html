@@ -1,3 +1,15 @@
-<div class="instui-billboard">
-  <div class="message">Nothing here yet. Create your first item to get started.</div>
+<div class="instui-card">
+  <!-- An empty-state billboard: a hero icon, a heading, and a message, centered on a surface. -->
+  <div class="instui-billboard">
+    <span class="hero"><span class="instui-icon -icon-inbox" style="font-size: 3rem"></span></span>
+    <div class="heading">No items yet</div>
+    <div class="message">Create your first item to get started.</div>
+  </div>
+
+  <!-- -clickable makes the whole billboard a button (hover border + active state). -size-sm shrinks it. -->
+  <button class="instui-billboard -clickable -size-sm" type="button" style="width: 100%">
+    <span class="hero"><span class="instui-icon -icon-plus" style="font-size: 2rem"></span></span>
+    <div class="heading">Add a file</div>
+    <div class="message">Click anywhere in this billboard.</div>
+  </button>
 </div>

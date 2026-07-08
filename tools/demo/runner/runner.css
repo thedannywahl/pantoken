@@ -1,8 +1,30 @@
 /*
  * Runner layout only. The chrome (tabs, buttons) uses the injected InstUI component classes
- * (.instui-toggle-group, .instui-button…), so colors come from paired --instui-* tokens and read
- * correctly in light and dark.
+ * (.instui-button, .instui-menu…), so colors come from paired --instui-* tokens and read correctly in
+ * light and dark.
  */
+
+/*
+ * Result/HTML/CSS/JS switcher: a seamed segmented control that joins the .instui-button tabs. (InstUI
+ * has no ButtonGroup CSS component — the reworked .instui-toggle-group is now a disclosure — so the
+ * runner owns this composition: a shared outer border with hairline seams between the buttons.)
+ */
+.instui-button-group {
+  display: inline-flex;
+  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
+  border-radius: var(--instui-border-radius-md, 6px);
+  overflow: hidden;
+}
+.instui-button-group > .instui-button {
+  border-radius: 0;
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+.instui-button-group > .instui-button + .instui-button {
+  border-inline-start: var(--instui-border-width-sm, 1px) solid
+    var(--instui-color-stroke-base, #c7cdd1);
+}
+
 body {
   margin: 0;
   background: var(--instui-color-background-base, Canvas);
