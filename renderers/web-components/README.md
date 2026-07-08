@@ -59,9 +59,10 @@ no DOM. Call `register(customElements)` manually if you need to control timing.
 
 ## API
 
-- **`register(registry?): void`** — define the custom elements into a registry (defaults to `globalThis.customElements`). No-op when there is no DOM, so it's safe to import during SSR or a build.
+- **`register(registry?, options?): void`** — define the custom elements into a registry (defaults to `globalThis.customElements`). No-op when there is no DOM, so it's safe to import during SSR or a build. `options.prefix` sets the tag prefix, mirroring the CSS layer: pass a non-empty string like `x` for `<x-icon>`. A prefix is always applied (a custom-element name must contain a hyphen), so an omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`).
 - **`iconSvg(name, resolve?): string`** — resolve an icon name to inline SVG (empty string when unknown). Pure; the element renders the result.
-- **`ELEMENTS`** — the tuple of custom-element tag names this package registers.
+- **`ELEMENTS`** — the tuple of base (unprefixed) element names this package registers (e.g. `icon`, `date-input`).
+- **`DEFAULT_PREFIX`** — the default tag prefix, `"instui"`.
 
 ## Related
 

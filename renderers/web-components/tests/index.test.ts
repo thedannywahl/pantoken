@@ -17,22 +17,36 @@ test("register is a no-op without a registry (SSR/build safe)", () => {
   expect(() => register(undefined)).not.toThrow();
 });
 
-test("register defines every element against a registry", () => {
+/** Run register() with a stubbed HTMLElement + a fake registry, returning the defined tag names. */
+function definedTags(options?: Parameters<typeof register>[1]): string[] {
   const defined = new Map<string, unknown>();
   const registry = {
     get: (name: string) => defined.get(name),
     define: (name: string, ctor: unknown) => void defined.set(name, ctor),
   };
-
-  // Stub HTMLElement so the element classes can be declared in this non-DOM env.
   const g = globalThis as unknown as { HTMLElement?: unknown };
   const had = "HTMLElement" in g;
   if (!had) g.HTMLElement = class {};
   try {
-    register(registry as Parameters<typeof register>[0]);
+    register(registry as Parameters<typeof register>[0], options);
   } finally {
     if (!had) delete g.HTMLElement;
   }
+  return [...defined.keys()];
+}
 
-  expect([...defined.keys()]).toEqual([...ELEMENTS]);
+test("register defines every element with the default instui- prefix", () => {
+  expect(definedTags()).toEqual(ELEMENTS.map((base) => `instui-${base}`));
+});
+
+test("register honors a custom prefix", () => {
+  expect(definedTags({ prefix: "x" })).toEqual(ELEMENTS.map((base) => `x-${base}`));
+});
+
+test("an empty or nullish prefix falls back to the default instui- prefix", () => {
+  // A prefix is required (custom-element names need a hyphen), so a blank one can't drop it.
+  const expected = ELEMENTS.map((base) => `instui-${base}`);
+  expect(definedTags({ prefix: "" })).toEqual(expected);
+  expect(definedTags({ prefix: "   " })).toEqual(expected);
+  expect(definedTags({ prefix: null })).toEqual(expected);
 });

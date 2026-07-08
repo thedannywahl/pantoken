@@ -13,7 +13,10 @@ hero:
       link: /guide/packages
     - theme: alt
       text: API reference
-      link: /api/
+      link: /api
+    - theme: alt
+      text: CSS reference
+      link: /api/css
 features:
   - title: One source of truth
     details: Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way.

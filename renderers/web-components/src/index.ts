@@ -53,38 +53,46 @@ import {
 import { resolve as pantokenResolve } from "@pantoken/icons";
 import type { IconResolver } from "@pantoken/model";
 
-/** The custom-element tag names this package registers. */
+/** The default tag prefix, mirroring the CSS layer — `<instui-icon>`, `.instui-button`, etc. */
+export const DEFAULT_PREFIX = "instui";
+
+/**
+ * The base (unprefixed) element names this package registers. {@link register} mints a tag per name
+ * under its `prefix` option — `icon` → `<instui-icon>` by default, or `<x-icon>` for `{ prefix: "x" }`.
+ * A prefix is always applied (a custom-element name must contain a hyphen), so an empty or nullish prefix
+ * falls back to the default `instui`.
+ */
 export const ELEMENTS = [
-  "instui-icon",
-  "instui-button",
-  "instui-alert",
-  "instui-badge",
-  "instui-pill",
-  "instui-tag",
-  "instui-avatar",
-  "instui-spinner",
-  "instui-progress",
-  "instui-metric",
-  "instui-rating",
-  "instui-progress-circle",
-  "instui-icon-button",
-  "instui-toggle-button",
-  "instui-truncate",
-  "instui-img",
-  "instui-side-nav-bar",
-  "instui-tree-browser",
-  "instui-calendar",
-  "instui-tooltip",
-  "instui-modal",
-  "instui-context-view",
-  "instui-popover",
-  "instui-tray",
-  "instui-in-place-edit",
-  "instui-drilldown",
-  "instui-pages",
-  "instui-drawer-layout",
-  "instui-date-input",
-  "instui-date-time-input",
+  "icon",
+  "button",
+  "alert",
+  "badge",
+  "pill",
+  "tag",
+  "avatar",
+  "spinner",
+  "progress",
+  "metric",
+  "rating",
+  "progress-circle",
+  "icon-button",
+  "toggle-button",
+  "truncate",
+  "img",
+  "side-nav-bar",
+  "tree-browser",
+  "calendar",
+  "tooltip",
+  "modal",
+  "context-view",
+  "popover",
+  "tray",
+  "in-place-edit",
+  "drilldown",
+  "pages",
+  "drawer-layout",
+  "date-input",
+  "date-time-input",
 ] as const;
 
 /**
@@ -142,18 +150,45 @@ interface CommandEventish extends Event {
  * Register the pantoken custom elements. No-op when there is no DOM (SSR / build), so this module
  * is safe to import anywhere.
  *
- * @param registry - The registry to define into (defaults to `globalThis.customElements`).
+ * @param target - The registry to define into (defaults to `globalThis.customElements`).
+ * @param options - `prefix` sets the tag prefix, mirroring the CSS layer: pass a non-empty string like
+ *   `x` for `<x-icon>`. A prefix is always applied (a custom-element name must contain a hyphen), so an
+ *   omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`).
  *
  * @example
  * ```ts
  * import { register } from "@pantoken/web-components";
  * import "@pantoken/css"; // defines the --instui-* custom properties the elements read
  *
- * register(); // now <instui-button>, <instui-icon>, … work in the document
+ * register(); // <instui-button>, <instui-icon>, …
+ * register(customElements, { prefix: "x" }); // <x-button>, <x-icon>, …
  * ```
  */
-export function register(registry: ElementRegistry | undefined = globalThis.customElements): void {
-  if (!registry || typeof HTMLElement === "undefined") return;
+export function register(
+  target: ElementRegistry | undefined = globalThis.customElements,
+  options: { prefix?: string | null } = {},
+): void {
+  if (!target || typeof HTMLElement === "undefined") return;
+
+  // Tag prefix: a valid non-empty string overrides the default; anything else (empty, whitespace, null,
+  // omitted) falls back to `instui`. A prefix is always applied because a custom-element name MUST contain
+  // a hyphen — `<icon>` is invalid, `<instui-icon>`/`<x-icon>` are not. The inlined `.instui-*` CSS classes
+  // are an internal detail and are NOT affected by this — only the custom-element tag name.
+  const prefix =
+    typeof options.prefix === "string" && options.prefix.trim() !== ""
+      ? options.prefix
+      : DEFAULT_PREFIX;
+  const tag = (base: string): string => `${prefix}-${base}`;
+  // Route every internal `registry.get`/`define` (all keyed on the canonical `instui-<base>` names)
+  // through the active prefix.
+  const host = target;
+  const registry: ElementRegistry = {
+    get: (name) => host.get(tag(name.replace(/^instui-/u, ""))),
+    define: (name, ctor) => {
+      const resolved = tag(name.replace(/^instui-/u, ""));
+      if (!host.get(resolved)) host.define(resolved, ctor);
+    },
+  };
 
   /**
    * Define a shadow-DOM element: `<style>:host{display}css</style>` + markup from `render(host)`.
@@ -1066,9 +1101,9 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
             `<input class="instui-text-input" type="text" part="input" aria-label="${label}" placeholder="${placeholder}" value="${value}" />` +
             `<button type="button" class="instui-button -color-tertiary -shape-square trigger" command="toggle-popover" commandfor="datepop" aria-label="Open calendar">${iconSvg("calendar")}</button>` +
             `</div>` +
-            `<div popover id="datepop" class="dropdown" part="dropdown"><instui-calendar value="${value}"></instui-calendar></div>`;
+            `<div popover id="datepop" class="dropdown" part="dropdown"><${tag("calendar")} value="${value}"></${tag("calendar")}></div>`;
           this.#input = root.querySelector("input");
-          this.#calendar = root.querySelector("instui-calendar");
+          this.#calendar = root.querySelector(tag("calendar"));
           this.#popover = root.getElementById("datepop");
           if (!INVOKER_SUPPORTED) {
             root
@@ -1076,8 +1111,9 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
               ?.addEventListener("click", () => this.#popover?.togglePopover?.());
           }
           // A day picked in the nested calendar commits and closes the popover.
+          const calendarTag = tag("calendar").toUpperCase();
           root.addEventListener("change", (event) => {
-            if ((event.target as HTMLElement).tagName !== "INSTUI-CALENDAR") return;
+            if ((event.target as HTMLElement).tagName !== calendarTag) return;
             event.stopPropagation();
             this.#commit((event as CustomEvent<{ value: string }>).detail.value);
             this.#popover?.hidePopover?.();
@@ -1132,10 +1168,10 @@ export function register(registry: ElementRegistry | undefined = globalThis.cust
           root.innerHTML =
             `<style>${textInputCss(I)}${styles}</style>` +
             `<div class="dt">` +
-            `<instui-date-input value="${esc(datePart)}"></instui-date-input>` +
+            `<${tag("date-input")} value="${esc(datePart)}"></${tag("date-input")}>` +
             `<input class="instui-text-input" type="time" part="time" aria-label="Time" value="${esc(timePart)}" />` +
             `</div>`;
-          this.#date = root.querySelector("instui-date-input");
+          this.#date = root.querySelector(tag("date-input"));
           this.#time = root.querySelector('input[type="time"]');
           root.addEventListener("change", (event) => {
             if (event.target === this.#date || event.target === this.#time) {
