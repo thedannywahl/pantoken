@@ -1073,3 +1073,33 @@ test("prose headings map to the Heading component tokens; body to Text content",
   expect(css).toContain("var(--instui-component-text-content-small-font-size)");
   expect(css).toContain("var(--instui-component-text-content-important-font-weight)");
 });
+
+// Parity guard: every record-emitting rule function must open a cssdoc record (@component/@utility/
+// @rule/@declaration), so a new component can't ship without a CSS-API page. Reads the source and
+// checks each function bundled into componentsCss() plus the standalone sheet emitters.
+test("every record-emitting rule function carries a cssdoc record tag", async () => {
+  const fs = await import("node:fs");
+  const src = fs.readFileSync(new URL("../src/index.ts", import.meta.url), "utf8");
+  const bundle = src.slice(src.indexOf("export function componentsCss"));
+  const called = [
+    ...bundle.slice(0, bundle.indexOf("]")).matchAll(/(\w+Rules)\(ns\(prefix\)\)/gu),
+  ].map((m) => m[1]);
+  const standalone = [
+    "baseRules",
+    "proseRules",
+    "viewCss",
+    "spacingUtilitiesCss",
+    "layoutUtilitiesCss",
+    "responsiveUtilitiesCss",
+  ];
+  const RECORD = /@(?:component|utility|rule|declaration)\b/u;
+  const untagged = [...called, ...standalone].filter((fn) => {
+    const start = src.indexOf(`function ${fn}(`);
+    let end = src.indexOf("\nfunction ", start + 10);
+    const ex = src.indexOf("\nexport function ", start + 10);
+    end = [end, ex].filter((x) => x > start).reduce((a, b) => Math.min(a, b), src.length);
+    return start !== -1 && !RECORD.test(src.slice(start, end));
+  });
+  expect(untagged).toEqual([]);
+  expect(called.length).toBeGreaterThan(40); // sanity: the bundle list actually parsed
+});

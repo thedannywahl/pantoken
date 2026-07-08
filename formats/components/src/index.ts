@@ -570,6 +570,7 @@ function buttonRules(p: string): string {
 /**
  * @component button
  * @summary An accessible action control, styled from the token palette; primary by default.
+ * @example <button class="instui-button">Primary</button>
  * @modifier -color-secondary — A lower-emphasis secondary action.
  * @modifier -color-tertiary — A text-style action (no fill or border until hover).
  * @modifier -color-danger — A destructive action.
@@ -834,6 +835,11 @@ function alertRules(p: string): string {
 /**
  * @component alert
  * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.
+ * @example <div class="instui-alert -color-info"> Dismissable with <code>transition="fade"</code> — I fade out when closed. <button class="instui-close-button -size-sm" aria-label="Close"></button> </div>
+ * @structure
+ * .instui-alert.-color-info
+ *   code
+ *   .instui-close-button.-size-sm
  * @modifier -color-info — Informational (default).
  * @modifier -color-success — A positive/confirmation message.
  * @modifier -color-warning — A cautionary message.
@@ -945,6 +951,7 @@ function badgeRules(p: string): string {
 /**
  * @component badge
  * @summary A small count or status dot placed over a target's corner.
+ * @example <span class="instui-badge">4</span>
  * @modifier -color-success — A positive/complete count.
  * @modifier -color-danger — An attention/error count.
  * @modifier -color-inverse — On-dark: a light chip with dark text.
@@ -1045,6 +1052,7 @@ function pillRules(p: string): string {
 /**
  * @component pill
  * @summary A compact status label; add a leading glyph with the shared \`-icon-<name>\` form.
+ * @example <span class="instui-pill">Draft</span>
  * @modifier -color-info — Informational status.
  * @modifier -color-success — Positive status.
  * @modifier -color-warning — Cautionary status.
@@ -1107,6 +1115,7 @@ function tagRules(p: string): string {
 /**
  * @component tag
  * @summary An inline chip for a keyword or filter.
+ * @example <span class="instui-tag -size-sm">small</span>
  * @modifier -size-sm — A small tag.
  * @modifier -size-lg — A large tag.
  * @modifier -inline — Reads inline with text and gets a trailing dismiss glyph.
@@ -1181,6 +1190,7 @@ function avatarRules(p: string): string {
 /**
  * @component avatar
  * @summary A user avatar showing initials or an image, circular by default.
+ * @example <span class="instui-avatar">DW</span>
  * @modifier -color-ai — AI-accent palette colour.
  * @modifier -color-ash — Ash palette colour.
  * @modifier -color-blue — Blue palette colour.
@@ -1295,12 +1305,13 @@ function tabsRules(p: string): string {
 /**
  * @component tabs
  * @summary A tabbed panel set: a tab list, selectable tabs, and their panels.
- * @example <div class="instui-tabs"><div class="list" role="tablist"><button class="tab -selected" role="tab">Overview</button><button class="tab" role="tab">Details</button></div><div class="panel" role="tabpanel">Overview content.</div></div>
+ * @example <div class="instui-tabs"> <div class="list" role="tablist" aria-label="Default tabs"> <button class="tab -selected" role="tab" aria-selected="true"> Overview </button> <button class="tab" role="tab" aria-selected="false">Details</button> <button class="tab -disabled" role="tab" aria-disabled="true" disabled> Disabled </button> <button class="tab" role="tab" aria-selected="false">History</button> </div> <div class="panel" role="tabpanel">The Overview tab's content shows here.</div> </div>
  * @structure
  * .instui-tabs
  *   .list
  *     .tab.-selected
  *     .tab
+ *     .tab.-disabled
  *   .panel
  * @part .list — The row of tabs.
  * @part .tab — A single tab; \`-selected\` marks the active one.
@@ -1408,6 +1419,11 @@ function metricRules(p: string): string {
 /**
  * @component metric
  * @summary A labelled statistic — a large value over a caption.
+ * @example <div class="instui-metric"> <span class="value">1,284</span> <span class="label">Active users</span> </div>
+ * @structure
+ * .instui-metric
+ *   .value
+ *   .label
  * @modifier -text-align-start — Start-align the value and label.
  * @modifier -text-align-center — Centre the value and label.
  * @modifier -text-align-end — End-align the value and label.
@@ -1462,6 +1478,7 @@ function imgRules(p: string): string {
 /**
  * @component img
  * @summary A styled \`<img>\` with display, crop, and effect modifiers that stack.
+ * @example <img class="instui-img" alt="Gradient">
  * @modifier -display-block — Display as a block element.
  * @modifier -constrain-cover — Scale to fill the box (cover).
  * @modifier -constrain-contain — Scale to fit within the box (contain).
@@ -1495,9 +1512,9 @@ function bylineRules(p: string): string {
 /**
  * @component byline
  * @summary A media object: a hero figure beside a title and description.
- * @example <div class="instui-byline"><span class="instui-icon -icon-megaphone" aria-hidden="true"></span><div><div class="title">What's new</div><div class="description">The figure can be an icon, an avatar, or an image.</div></div></div>
+ * @example <div class="instui-byline -size-md"> <span class="instui-icon -icon-megaphone"></span> <div> <div class="title">What's new</div> <div class="description"> The figure can be any leading visual — an icon, an avatar, or an image. </div> </div> </div>
  * @structure
- * .instui-byline
+ * .instui-byline.-size-md
  *   .instui-icon.-icon-megaphone
  *   div
  *     .title
@@ -1552,6 +1569,17 @@ function tableRules(p: string): string {
 /**
  * @component table
  * @summary A styled data table for \`th\` and \`td\` plus an optional caption, with hover, fixed, and stacked-card layouts.
+ * @example <table class="instui-table -hover"> <caption> Top-rated films </caption> <thead> <tr> <th scope="col">Rank</th> <th scope="col">Title</th> <th scope="col">Year</th> <th scope="col">Rating</th> </tr> </thead> <tbody> <tr> <th scope="row">1</th> <td>The Shawshank Redemption</td> <td>1994</td> <td>9.3</td> </tr> <tr> <th scope="row">2</th> <td>The Godfather</td> <td>1972</td> <td>9.2</td> </tr> <tr> <th scope="row">3</th> <td>The Godfather: Part II</td> <td>1974</td> <td>9.0</td> </tr> </tbody> </table>
+ * @structure
+ * .instui-table.-hover
+ *   caption
+ *   thead
+ *     tr
+ *       th
+ *   tbody
+ *     tr
+ *       th
+ *       td
  * @modifier -hover — Highlight rows on hover.
  * @modifier -layout-fixed — Fixed table layout (equal-width columns).
  * @modifier -layout-stacked — Stack each row as a card, via a per-cell \`data-label\`.
@@ -1657,6 +1685,7 @@ function linkRules(p: string): string {
 /**
  * @component link
  * @summary A styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms.
+ * @example <a class="instui-link" href="#">A styled link</a>
  * @modifier -color-inverse — For dark backgrounds.
  * @modifier -inline — Inline link, underlined within flowing text.
  * @modifier -sm — Small inline link (used with \`-inline\`).
@@ -1858,7 +1887,13 @@ export function spacingUtilitiesCss(options: ComponentOptions = {}): string {
       }
     }
   }
-  return `/* InstUI spacing utilities (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n")}\n`;
+  return `/**
+ * @utility spacing
+ * @class .instui-p-md
+ * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` and \`.instui-p<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none; margin also takes \`auto\`).
+ * @example <div class="instui-p-md instui-mt-lg">Padded box with a large top margin.</div>
+ */
+/* InstUI spacing utilities (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n")}\n`;
 }
 
 // The generic token → utility-class emitters (`colorUtilitiesCss`, `tokenUtilitiesCss`) now live in
@@ -1952,7 +1987,12 @@ export function viewCss(options: ComponentOptions = {}): string {
   for (const c of ["auto", "default", "pointer", "not-allowed", "text", "move", "grab", "wait"]) {
     rules.push(rule(`cursor-${c}`, `cursor: ${c};`));
   }
-  return `/* InstUI View primitive (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n")}\n`;
+  return `/**
+ * @utility view
+ * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor.
+ * @example <div class="instui-view -background-secondary -border-radius-medium -shadow-resting">A card-like surface.</div>
+ */
+/* InstUI View primitive (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n")}\n`;
 }
 
 /**
@@ -1981,7 +2021,13 @@ export function layoutUtilitiesCss(options: ComponentOptions = {}): string {
       ] as const
     ).map(([name, value]) => `.${p}text-align-${name} { text-align: ${value}; }`),
   ].join("\n");
-  return `/* InstUI layout utilities (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
+  return `/**
+ * @utility layout
+ * @class .instui-display-flex
+ * @summary Display and text-align utilities — \`.instui-display-<value>\` and \`.instui-text-align-<value>\` — as composable classes.
+ * @example <div class="instui-display-flex text-align-center"><span>One</span><span>Two</span></div>
+ */
+/* InstUI layout utilities (@pantoken/components) — prefix: ${prefix} */\n${rules}\n`;
 }
 
 /**
@@ -2020,6 +2066,12 @@ export function responsiveUtilitiesCss(options: ComponentOptions = {}): string {
     )
     .join("\n");
   return (
+    `/**
+ * @utility responsive
+ * @class .instui-hidden-max-md
+ * @summary Responsive visibility: \`.instui-hidden-max-<bp>\` / \`-hidden-min-<bp>\` hide by viewport width; the \`-cq-\` variants react to a \`.instui-container\` ancestor's width instead. Breakpoints \`sm\`/\`md\`/\`lg\`/\`xl\`.
+ * @example <div class="instui-hidden-max-sm">Hidden at or below the small breakpoint.</div>
+ */\n` +
     `/* InstUI responsive utilities (@pantoken/components) — prefix: ${prefix} */\n` +
     `${viewport}\n` +
     `.${p}container { container-type: inline-size; }\n` +
@@ -2036,6 +2088,10 @@ function listRules(p: string): string {
 /**
  * @component list
  * @summary A list with token-driven item spacing.
+ * @example <ul class="instui-list"> <li>First item</li> <li>Second item</li> <li>Third item</li> </ul>
+ * @structure
+ * .instui-list
+ *   li
  * @modifier -ordered — Ordered-list numbering.
  * @modifier -inline — Lay items out inline (horizontal).
  * @modifier -unstyled — Remove markers and padding.
@@ -2097,6 +2153,7 @@ function checkboxRules(p: string): string {
 /**
  * @component checkbox
  * @summary A native checkbox and its label, or a switch via \`-variant-toggle\`.
+ * @example <label class="instui-checkbox"><input type="checkbox" checked> Checked</label>
  * @modifier -invalid — Invalid (error) state.
  * @modifier -label-placement-end — Place the label after the control.
  * @modifier -label-placement-start — Place the label before the control.
@@ -2288,6 +2345,7 @@ function radioRules(p: string): string {
 /**
  * @component radio
  * @summary A native radio button and its label.
+ * @example <label class="instui-radio"><input type="radio" name="r" checked> Option A</label>
  * @modifier -context-off — Off/neutral context colour (toggle variant).
  * @modifier -context-success — Success context colour (toggle variant).
  * @modifier -context-warning — Warning context colour (toggle variant).
@@ -2440,6 +2498,7 @@ function spinnerRules(p: string): string {
 /**
  * @component spinner
  * @summary An animated loading ring; give it role="status" and an aria-label.
+ * @example <span class="instui-spinner -size-xs" role="status" aria-label="Loading"></span>
  * @modifier -size-xs — Extra-small.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
@@ -2495,6 +2554,7 @@ function progressRules(p: string): string {
 /**
  * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
+ * @example <div class="instui-progress -color-brand"> <div class="bar"></div> </div>
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -2580,6 +2640,13 @@ function menuRules(p: string): string {
 /**
  * @component menu
  * @summary A dropdown surface of items, groups, and separators.
+ * @example <div class="instui-menu"> <div class="group">Actions</div> <div class="item">Edit</div> <div class="item -active">Duplicate</div> <div class="separator"></div> <div class="item">Delete</div> </div>
+ * @structure
+ * .instui-menu
+ *   .group
+ *   .item
+ *   .item.-active
+ *   .separator
  * @part .item — A menu entry; add -disabled, -highlighted, or -active/[aria-checked].
  * @part .group — A labelled group heading.
  * @part .separator — A divider rule between items.
@@ -2662,6 +2729,15 @@ function modalRules(p: string): string {
 /**
  * @component modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
+ * @example <dialog class="instui-modal -size-sm" id="modal-sm"> <div class="header"><strong>Small</strong></div> <div class="body"><code>-size-sm</code> — a narrow modal.</div> <div class="footer"> <button class="instui-button">Close</button> </div> </dialog>
+ * @structure
+ * .instui-modal.-size-sm
+ *   .header
+ *     strong
+ *   .body
+ *     code
+ *   .footer
+ *     .instui-button
  * @modifier -size-sm — A narrow modal.
  * @modifier -size-lg — A wide modal.
  * @modifier -size-auto — Sized to content.
@@ -2771,6 +2847,12 @@ function breadcrumbRules(p: string): string {
 /**
  * @component breadcrumb
  * @summary A breadcrumb trail with \`/\` separators; the last crumb is the current page.
+ * @example <nav class="instui-breadcrumb" aria-label="Breadcrumb"> <span class="item"><a href="#"><span class="instui-icon -icon-house"></span> Home</a></span> <span class="item"><a href="#">Guides</a></span> <span class="item"><a href="#">Components</a></span> <span class="item" aria-current="page">Breadcrumb</span> </nav>
+ * @structure
+ * .instui-breadcrumb
+ *   .item
+ *     a
+ *       .instui-icon.-icon-house
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A crumb; the last one is the current page.
@@ -2815,6 +2897,13 @@ function billboardRules(p: string): string {
 /**
  * @component billboard
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
+ * @example <div class="instui-billboard"> <span class="hero"><span class="instui-icon -icon-inbox"></span></span> <div class="heading">No items yet</div> <div class="message">Create your first item to get started.</div> </div>
+ * @structure
+ * .instui-billboard
+ *   .hero
+ *     .instui-icon.-icon-inbox
+ *   .heading
+ *   .message
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
@@ -2892,6 +2981,12 @@ function ratingRules(p: string): string {
 /**
  * @component rating
  * @summary A star rating with filled and empty glyphs and an optional numeric label.
+ * @example <span class="instui-rating -size-sm" role="img" aria-label="2 out of 3 stars"> <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star"></span> <span class="label">2/3</span> </span>
+ * @structure
+ * .instui-rating.-size-sm
+ *   .instui-icon.-icon-star-solid
+ *   .instui-icon.-icon-star
+ *   .label
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .label — The numeric label, e.g. "3/5".
@@ -2930,6 +3025,11 @@ function toggleGroupRules(p: string): string {
 /**
  * @component toggle-group
  * @summary A bordered disclosure built on \`<details>\`: a chevron summary row and collapsible content.
+ * @example <details class="instui-toggle-group" open> <summary>Advanced settings</summary> <div> These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider. </div> </details>
+ * @structure
+ * .instui-toggle-group
+ *   summary
+ *   div
  * @modifier -without-border — Remove the border.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
@@ -2989,6 +3089,7 @@ function contextViewRules(p: string): string {
 /**
  * @component context-view
  * @summary An elevated callout with a caret, positionable on any side; works as a native \`[popover]\`.
+ * @example <div class="instui-context-view -placement-bottom" id="cv-popover"> A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc. </div>
  * @modifier -color-inverse — Dark (inverse) colour scheme.
  * @modifier -placement-top — Sit above the anchor.
  * @modifier -placement-bottom — Sit below the anchor.
@@ -3123,6 +3224,7 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
 /**
  * @component progress-circle
  * @summary A circular progress ring driven by a \`--value\` (0–100) custom property.
+ * @example <span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent"> <span class="value">25%</span> </span>
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -3197,6 +3299,13 @@ function paginationRules(p: string): string {
 /**
  * @component pagination
  * @summary Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.
+ * @example <nav class="instui-pagination" aria-label="Pagination"> <button class="arrow" type="button" aria-label="First page" disabled> <span class="instui-icon -icon-chevrons-left"></span> </button> <button class="arrow" type="button" aria-label="Previous page" disabled> <span class="instui-icon -icon-chevron-left"></span> </button> <a class="page" href="#" aria-current="page">1</a> <a class="page" href="#">2</a> <a class="page" href="#">3</a> <span class="ellipsis">…</span> <a class="page" href="#">12</a> <a class="arrow" href="#" aria-label="Next page"> <span class="instui-icon -icon-chevron-right"></span> </a> <a class="arrow" href="#" aria-label="Last page"> <span class="instui-icon -icon-chevrons-right"></span> </a> </nav>
+ * @structure
+ * .instui-pagination
+ *   .arrow
+ *     .instui-icon.-icon-chevrons-left
+ *   .page
+ *   .ellipsis
  * @modifier -variant-input — Compact variant with a page-number input.
  * @part .page — A page link or button; the current page carries \`[aria-current]\`.
  * @part .arrow — A first, previous, next, or last control.
@@ -3283,6 +3392,7 @@ function truncateRules(p: string): string {
 /**
  * @component truncate
  * @summary Single-line ellipsis truncation, or a multi-line clamp via \`--lines\`.
+ * @example <div class="instui-truncate"> This single line keeps going past the edge of its box, so it ends in an ellipsis. </div>
  * @modifier -lines — Multi-line clamp; set the line count via the \`--lines\` custom property (default 2).
  */
 .${p}truncate {
@@ -3309,6 +3419,7 @@ function toggleDetailsRules(p: string): string {
 /**
  * @component toggle-details
  * @summary A styled native \`<details>\` disclosure with a rotating chevron.
+ * @example <details class="instui-toggle-details" open> <summary>What ships in this package?</summary> Class-based component styles, built from the Instructure tokens, plus a prose layer. </details>
  * @modifier -variant-filled — Filled (surface) variant.
  * @modifier -chevron-end — Place the chevron after the summary.
  * @modifier -size-sm — Small.
@@ -3367,6 +3478,14 @@ function fileDropRules(p: string): string {
 /**
  * @component file-drop
  * @summary A file dropzone with hover, accepted, and rejected states.
+ * @example <label class="instui-file-drop" id="fd"> <span class="instui-icon -icon-cloud-upload"></span> <div class="instui-text"> <strong>Drag an image here</strong>, or click to browse. </div> <div class="instui-text -size-sm instui-fg-muted" id="fd-msg"> PNG or JPG up to 5&nbsp;MB. </div> <input type="file" id="fd-input"> </label>
+ * @structure
+ * .instui-file-drop
+ *   .instui-icon.-icon-cloud-upload
+ *   .instui-text
+ *     strong
+ *   .instui-text.-size-sm.instui-fg-muted
+ *   input
  * @modifier -accepted — Drag state for an acceptable file.
  * @modifier -hover — Hover or drag-over state.
  * @modifier -rejected — Drag state for a rejected file.
@@ -3399,6 +3518,15 @@ function sideNavBarRules(p: string): string {
 /**
  * @component side-nav-bar
  * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
+ * @example <nav class="instui-side-nav-bar" aria-label="Primary"> <a class="item -selected" href="#"><span class="instui-icon -icon-house"></span><span class="label">Home</span></a> <a class="item" href="#"><span class="instui-icon -icon-inbox"></span><span class="label">Inbox</span></a> <a class="item" href="#"><span class="instui-icon -icon-calendar"></span><span class="label">Calendar</span></a> <a class="item" href="#"><span class="instui-icon -icon-settings"></span><span class="label">Settings</span></a> </nav>
+ * @structure
+ * .instui-side-nav-bar
+ *   .item.-selected
+ *     .instui-icon.-icon-house
+ *     .label
+ *   .item
+ *     .instui-icon.-icon-inbox
+ *     .label
  * @modifier -minimized — Collapse to icons only (labels hidden).
  * @part .item — A navigation entry; \`-selected\` marks the active one.
  */
@@ -3463,6 +3591,16 @@ function treeBrowserRules(p: string): string {
 /**
  * @component tree-browser
  * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.
+ * @example <div class="instui-tree-browser" role="tree"> <details open> <summary><span class="instui-icon -icon-folder"></span> Course files</summary> <ul role="group"> <li> <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Syllabus.pdf</a> </li> <li> <details> <summary><span class="instui-icon -icon-folder"></span> Week 1</summary> <ul role="group"> <li> <a class="item -selected" href="#"><span class="instui-icon -icon-file-text"></span> Reading.pdf</a> </li> <li> <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Slides.pptx</a> </li> </ul> </details> </li> <li> <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Rubric.docx</a> </li> </ul> </details> </div>
+ * @structure
+ * .instui-tree-browser
+ *   details
+ *     summary
+ *       .instui-icon.-icon-folder
+ *     ul
+ *       li
+ *         .item
+ *           .instui-icon.-icon-file-text
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A leaf entry in the tree.
@@ -3530,6 +3668,19 @@ function calendarRules(p: string): string {
 /**
  * @component calendar
  * @summary A static month grid with navigation, weekday headers, and day cells.
+ * @example <div class="instui-calendar" role="table" aria-label="March 2026"> <div class="nav"> <button class="instui-button -color-tertiary -shape-square -icon-chevron-left" aria-label="Previous month"></button> <strong>March 2026</strong> <button class="instui-button -color-tertiary -shape-square -icon-chevron-right" aria-label="Next month"></button> </div> <div class="grid"> <span class="weekday">Su</span><span class="weekday">Mo</span><span class="weekday">Tu</span> <span class="weekday">We</span><span class="weekday">Th</span><span class="weekday">Fr</span> <span class="weekday">Sa</span> <span class="day -outside-month">23</span><span class="day -outside-month">24</span> <span class="day -outside-month">25</span><span class="day -outside-month">26</span> <span class="day -outside-month">27</span><span class="day -outside-month">28</span> <span class="day">1</span> <span class="day">2</span><span class="day">3</span><span class="day">4</span> <span class="day">5</span><span class="day">6</span><span class="day -today">7</span> <span class="day">8</span> <span class="day">9</span><span class="day">10</span><span class="day">11</span> <span class="day -selected">12</span><span class="day">13</span><span class="day">14</span> <span class="day">15</span> </div> </div>
+ * @structure
+ * .instui-calendar
+ *   .nav
+ *     .instui-button.-color-tertiary.-shape-square.-icon-chevron-left
+ *     strong
+ *     .instui-button.-color-tertiary.-shape-square.-icon-chevron-right
+ *   .grid
+ *     .weekday
+ *     .day.-outside-month
+ *     .day
+ *     .day.-today
+ *     .day.-selected
  * @part .nav — The month navigation row.
  * @part .grid — The seven-column day grid.
  * @part .weekday — A weekday column header.
@@ -3608,6 +3759,12 @@ function popoverRules(p: string): string {
 /**
  * @component popover
  * @summary An elevated surface for a native \`[popover]\`, positioned with CSS anchor positioning.
+ * @example <div class="instui-popover -placement-bottom" id="pop-1"> <div class="instui-heading -level-h4">Share this page</div> <p class="instui-text -size-sm"> A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute. </p> </div>
+ * @structure
+ * .instui-popover.-placement-bottom
+ *   .instui-heading.-level-h4
+ *   .instui-text.-size-sm
+ *     code
  * @modifier -placement-top — Sit above the anchor.
  * @modifier -placement-bottom — Sit below the anchor.
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
@@ -3663,6 +3820,13 @@ function trayRules(p: string): string {
 /**
  * @component tray
  * @summary An edge-pinned panel that slides in from any side; a native \`[popover]\` or \`<dialog>\`.
+ * @example <div class="instui-tray -size-sm" id="tray-start"> <div> <strong>Filters</strong> <button class="instui-close-button" aria-label="Close"></button> </div> <p class="instui-text -size-sm"> A tray slides in from the start edge and fills the viewport height. </p> </div>
+ * @structure
+ * .instui-tray.-size-sm
+ *   div
+ *     strong
+ *     .instui-close-button
+ *   .instui-text.-size-sm
  * @modifier -placement-top — Pin to the top edge.
  * @modifier -placement-bottom — Pin to the bottom edge.
  * @modifier -placement-end — Pin to the end (inline-end) edge.
@@ -3728,6 +3892,11 @@ function tooltipRules(p: string): string {
 /**
  * @component tooltip
  * @summary A CSS hover and focus tooltip bubble, positionable on any side.
+ * @example <span class="instui-tooltip" aria-describedby="tt-1"> <span class="instui-icon -icon-info"></span> <span class="tip" id="tt-1" role="tooltip">Default placement is top</span> </span>
+ * @structure
+ * .instui-tooltip
+ *   .instui-icon.-icon-info
+ *   .tip
  * @part .tip — The bubble; \`-placement-*\` sets its side.
  */
 ${root} {
@@ -3797,6 +3966,7 @@ function rangeInputRules(p: string): string {
 /**
  * @component range-input
  * @summary A styled range slider with an inverse value bubble.
+ * @example <input class="instui-range-input" id="r1" type="range" value="30">
  */
 .${p}range-input {
   -webkit-appearance: none;
@@ -4597,6 +4767,11 @@ export function rangeInputCss(options: ComponentOptions = {}): string {
 /** Mask rules: a translucent overlay that covers its positioned parent, plus fullscreen and blur. */
 function maskRules(p: string): string {
   return `
+/**
+ * @utility mask
+ * @summary An in-flow overlay that fills its positioned parent and centres its content — e.g. a spinner over a card. For a modal, prefer a native \`<dialog>\` (its \`::backdrop\` is the mask).
+ * @example <div style="position: relative"><div class="instui-mask"><span class="instui-spinner"></span></div></div>
+ */
 /* An in-flow overlay for non-modal cases (e.g. a spinner over a card). For a modal, prefer a native
    <dialog>: its ::backdrop is the mask and reuses the same \`--instui-component-mask-background-color\`
    token (see modalRules). */
@@ -4635,6 +4810,11 @@ export function maskCss(options: ComponentOptions = {}): string {
 /** ScreenReaderContent rules: visually hidden, but still read by assistive tech. */
 function screenReaderContentRules(p: string): string {
   return `
+/**
+ * @utility screen-reader-content
+ * @summary Visually hides content while keeping it available to assistive tech (the standard clip pattern).
+ * @example <span class="instui-screen-reader-content">Opens in a new window</span>
+ */
 .${p}screen-reader-content {
   position: absolute;
   inline-size: 1px;
@@ -4679,6 +4859,7 @@ function headingRules(p: string): string {
 /**
  * @component heading
  * @summary Heading typography from \`-level-h1\` to \`-level-h6\`.
+ * @example <div class="instui-heading -level-h1">Heading h1</div>
  * @modifier -level-h1 — Render at the h1 type scale.
  * @modifier -level-h2 — Render at the h2 type scale.
  * @modifier -level-h3 — Render at the h3 type scale.
@@ -4766,6 +4947,7 @@ function textRules(p: string): string {
 /**
  * @component text
  * @summary Body-text typography with size, weight, colour, and style modifiers.
+ * @example <span class="instui-text -size-xs">x-small text</span>
  * @modifier -color-brand — Brand text colour.
  * @modifier -color-secondary — Secondary (muted) text colour.
  * @modifier -color-ai — AI-accent text colour.
@@ -4846,6 +5028,7 @@ function closeButtonRules(p: string): string {
 /**
  * @component close-button
  * @summary A transparent icon button that draws its own × glyph, in three sizes plus an inverse variant.
+ * @example <button class="instui-close-button -size-sm" aria-label="Close"></button>
  * @modifier -color-inverse — For dark backgrounds.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
@@ -4958,6 +5141,7 @@ function textInputRules(p: string): string {
 /**
  * @component text-input
  * @summary A styled native \`<input>\` — including \`date\`, \`time\`, and \`datetime-local\`, where the browser supplies the picker — with validation states and sizes.
+ * @example <input class="instui-text-input" placeholder="Default">
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.
@@ -4983,6 +5167,7 @@ function textAreaRules(p: string): string {
 /**
  * @component text-area
  * @summary A styled, resizable native \`<textarea>\` with the same states and sizes as the text input.
+ * @example <textarea class="instui-text-area" placeholder="Write a comment…"></textarea>
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.
@@ -5010,6 +5195,10 @@ function simpleSelectRules(p: string): string {
 /**
  * @component simple-select
  * @summary A styled native \`<select>\` with a caret, matching the text-input states and sizes.
+ * @example <select class="instui-simple-select"> <option>Choose a fruit…</option> <option>Apple</option> <option>Orange</option> <option>Pear</option> </select>
+ * @structure
+ * .instui-simple-select
+ *   option
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.
@@ -5133,6 +5322,13 @@ function numberInputRules(p: string): string {
 /**
  * @component number-input
  * @summary A number-input facade with a +/- spinner column.
+ * @example <span class="instui-number-input"> <input id="qty" type="number" value="1" aria-label="Quantity"> <span class="arrows"> <button type="button" id="up" aria-hidden="true"></button> <button class="down" type="button" id="down" aria-hidden="true"></button> </span> </span>
+ * @structure
+ * .instui-number-input
+ *   input
+ *   .arrows
+ *     button
+ *     .down
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.
@@ -5198,6 +5394,7 @@ function inPlaceEditRules(p: string): string {
 /**
  * @component in-place-edit
  * @summary A [contenteditable] that reads as text until focused, then shows input chrome.
+ * @example <span class="instui-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>
  * @modifier -readonly — Shown inline but not editable (no hover/focus affordance).
  * @demo self:in-place-edit
  */
@@ -5300,6 +5497,15 @@ function formFieldRules(p: string): string {
 /**
  * @component form-field
  * @summary A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.
+ * @example <label class="instui-form-field"> <span class="label">Email address</span> <span class="controls"> <input class="instui-text-input" type="email" placeholder="you@example.com"> </span> <div class="instui-form-field-messages"> <span class="instui-form-field-message -type-hint">We'll never share it.</span> <span class="instui-form-field-message -type-error">Enter a valid email address.</span> </div> </label>
+ * @structure
+ * .instui-form-field
+ *   .label
+ *   .controls
+ *     .instui-text-input
+ *   .instui-form-field-messages
+ *     .instui-form-field-message.-type-hint
+ *     .instui-form-field-message.-type-error
  * @modifier -inline — Inline layout (shorthand for \`-layout-inline\`).
  * @modifier -layout-inline — Inline layout: label beside the controls.
  * @modifier -layout-stacked — Stacked layout: label above the controls.
@@ -5381,6 +5587,16 @@ function formFieldGroupRules(p: string): string {
 /**
  * @component form-field-group
  * @summary A \`<fieldset>\` group with a legend, a column or inline layout, and configurable spacing.
+ * @example <fieldset class="instui-form-field-group -layout-columns -col-spacing-medium"> <legend>Shipping address</legend> <label class="instui-form-field"> <span class="label">First name</span> <span class="controls"><input class="instui-text-input"></span> </label> <label class="instui-form-field"> <span class="label">Last name</span> <span class="controls"><input class="instui-text-input"></span> </label> <label class="instui-form-field"> <span class="label">City</span> <span class="controls"><input class="instui-text-input"></span> </label> <label class="instui-form-field"> <span class="label">State</span> <span class="controls"> <select class="instui-simple-select"> <option>CA</option> <option>NY</option> <option>TX</option> </select> </span> </label> <div class="instui-form-field-messages"> <span class="instui-form-field-message -type-hint">All fields are used for delivery only.</span> </div> </fieldset>
+ * @structure
+ * .instui-form-field-group.-layout-columns.-col-spacing-medium
+ *   legend
+ *   .instui-form-field
+ *     .label
+ *     .controls
+ *       .instui-text-input
+ *   .instui-form-field-messages
+ *     .instui-form-field-message.-type-hint
  * @modifier -col-spacing-none — No column gap.
  * @modifier -col-spacing-small — Small column gap.
  * @modifier -col-spacing-medium — Medium column gap.
@@ -5472,6 +5688,12 @@ function radioInputGroupRules(p: string): string {
 /**
  * @component radio-input-group
  * @summary A single-select radio \`<fieldset>\`, plain or as a connected segmented toggle.
+ * @example <fieldset class="instui-radio-input-group -variant-toggle"> <legend>T-shirt size</legend> <label class="instui-radio -variant-toggle"> <input type="radio" name="size" checked> Small </label> <label class="instui-radio -variant-toggle"> <input type="radio" name="size"> Medium </label> <label class="instui-radio -variant-toggle"> <input type="radio" name="size"> Large </label> </fieldset>
+ * @structure
+ * .instui-radio-input-group.-variant-toggle
+ *   legend
+ *   .instui-radio.-variant-toggle
+ *     input
  * @modifier -layout-columns — Lay the radios out in columns.
  * @modifier -layout-inline — Lay the radios out inline.
  * @modifier -required — Mark the group as required.

@@ -106,9 +106,17 @@ writeFileSync(
     { ...opts, deprecatedAliases: true },
   ),
 );
+// `colorUtilitiesCss` is a generic emitter (in @pantoken/utils), so its CSS-API doc comment is authored
+// here, where the InstUI-semantic palette is fed in.
+const colorDoc = `/**
+ * @utility color
+ * @class .instui-text-danger
+ * @summary Semantic colour utilities: \`.instui-bg-<name>\`, \`.instui-text-<name>\`, and \`.instui-stroke-<name>\` for the curated semantic palette.
+ * @example <p class="instui-text-danger">Something went wrong.</p>
+ */\n`;
 writeFileSync(
   join(outDir, "utilities.css"),
-  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${colorUtilitiesCss(
+  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${colorDoc}${colorUtilitiesCss(
     { background: names("background"), text: names("text"), stroke: names("stroke") },
     opts,
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,

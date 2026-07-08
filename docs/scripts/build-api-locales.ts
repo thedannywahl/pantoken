@@ -106,7 +106,8 @@ const build = (): void => {
 
   const files = walkFiles(huApiDir);
   const markdownFiles = files.filter((f) => f.endsWith(".md"));
-  const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
+  // Both the TypeDoc sidebar and the CSS API sidebar (from build-css-api.ts) carry translatable labels.
+  const sidebarFiles = files.filter((f) => /(?:typedoc|css)-sidebar\.json$/u.test(f));
 
   // 1. Markdown: diff each file against the memory; only misses reach the adapter.
   const markdownUnits: (TranslationUnit & { filePath: string })[] = markdownFiles.map(
