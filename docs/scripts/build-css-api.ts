@@ -1,39 +1,26 @@
 /**
- * Generate the CSS API reference pages from the shipped component/utility stylesheets.
+ * Generate the CSS API reference from the shipped component/utility stylesheets.
  *
- * This is the pantoken-specific emitter that sits on top of the generic `@cssdoc/core` (which
- * parses the CSS doc-comment grammar + the AST into a model). Here we cross-reference the `--instui-*`
- * token IR (type + light/dark) and write VitePress markdown into `docs/api/css/**` — one page per
- * documented component, an index, and a sidebar JSON in the same shape TypeDoc emits — so the pages
- * theme identically and each embeds its live `self:<name>` demo.
+ * The rendering (pages, index, sidebar, escaping, structure diagrams, token tables) lives in
+ * `@cssdoc/markdown` and is driven here through `@cssdoc/typedoc`'s `emitCssApi` — the same plugin the
+ * rest of the ecosystem uses, dogfooded before it's published. All that stays pantoken-specific is the
+ * token resolution: `resolveToken` cross-references the `--instui-*` IR (type + light/dark value) and
+ * `resolveDemo` picks each record's live demo. `emitCssApi` writes `docs/api/css/**` and merges a "CSS"
+ * section into the TypeDoc sidebar, so the CSS pages ride along in the same nav.
  *
- * Runs after `docs:api:en` (TypeDoc cleans `docs/api`, so this must come after) and before
- * `docs:api:locales`/vitepress.
+ * Runs after `docs:api:en` (TypeDoc cleans `docs/api` and writes `typedoc-sidebar.json`, which this
+ * merges into) and before `docs:api:locales`/vitepress.
  */
 import { createRequire } from "node:module";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import {
-  parseCssDocs,
-  toMermaid,
-  type CssDocEntry,
-  type CssRecordKind,
-  type StructureNode,
-} from "@cssdoc/core";
+import { emitCssApi } from "@cssdoc/typedoc";
+import type { CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 
-// Sidebar/index groups, in display order. Only kinds with records show up.
-const KIND_GROUPS: { kind: CssRecordKind; label: string }[] = [
-  { kind: "component", label: "Components" },
-  { kind: "utility", label: "Utilities" },
-  { kind: "rule", label: "Rules" },
-  { kind: "declaration", label: "Declarations" },
-];
-
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
-const outDir = join(docsRoot, "api", "css");
 const demosDir = join(docsRoot, "demos");
 
 const tokenByName = new Map(tokens.map((t) => [t.name, t]));
@@ -43,6 +30,13 @@ const tokenByName = new Map(tokens.map((t) => [t.name, t]));
 // Rebuilt in build() once the sheet-local custom properties are indexed, so `var(--pantoken-*)`
 // references (e.g. the toggle geometry `calc()`s) resolve too.
 let resolveValue = makeResolver(tokens);
+
+/**
+ * Custom properties defined in the sheets themselves (not the token IR) — the `--instui-elevation-*`
+ * shadows and `--instui-focus-outline-*` ring — so their values can be resolved too. Populated by
+ * {@link build} before rendering.
+ */
+const localVars = new Map<string, string>();
 
 /**
  * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry `syntax:
@@ -117,183 +111,32 @@ function resolveSyntax(name: string): string | undefined {
 }
 
 /**
- * Custom properties defined in the sheets themselves (not the token IR) — the `--instui-elevation-*`
- * shadows and `--instui-focus-outline-*` ring — so their values can be resolved too. Populated by
- * {@link build} before rendering.
+ * The `resolveToken` hook `@cssdoc/markdown` calls for each consumed `--instui-*` property: its
+ * human-meaningful type ({@link resolveSyntax}) and its concrete value (IR value, else a sheet-local
+ * var), resolved down to primitives. Undefined when neither can be derived.
  */
-const localVars = new Map<string, string>();
+function resolveToken(name: string): { syntax?: string; value?: string } | undefined {
+  const syntax = resolveSyntax(name);
+  const raw = tokenByName.get(name)?.value ?? localVars.get(name);
+  const value = raw ? resolveValue(raw) : undefined;
+  return syntax || value ? { syntax, value } : undefined;
+}
 
-/**
- * Escape prose for VitePress markdown, which compiles through Vue's SFC parser: a raw `<tag>` reads as
- * an (unclosed) HTML element and a `{{ }}` as interpolation. Backticked code spans are exempt (Vue
- * skips them), so only free prose from doc comments needs this.
- */
-const escProse = (text: string): string =>
-  // Split out backtick code spans (VitePress renders them `v-pre`, so `<`/`{{` are already inert there)
-  // and escape only the free-prose segments — otherwise a `\`-icon-<name>\`` span leaks literal entities.
-  text
-    .split(/(`[^`]*`)/gu)
-    .map((seg, i) =>
-      i % 2 === 1
-        ? seg
-        : seg.replace(/</gu, "&lt;").replace(/>/gu, "&gt;").replace(/\{\{/gu, "&#123;&#123;"),
-    )
-    .join("");
-
-/** A GFM table-cell-safe rendering of prose (escape pipes + Vue-unsafe chars; empty → em dash). */
-const cell = (text: string | undefined): string =>
-  text ? escProse(text).replace(/\|/gu, "\\|") : "—";
-
-/** The demo spec for a component: the authored `@demo`, else `self:<name>` when a demo file exists. */
-function demoSpec(entry: CssDocEntry): string | undefined {
+/** The demo spec for a record: the authored `@demo`, else `self:<name>` when a demo file exists. */
+function resolveDemo(entry: CssDocEntry): string | undefined {
   if (entry.demo) return entry.demo;
   return existsSync(join(demosDir, `${entry.name}.html`)) ? `self:${entry.name}` : undefined;
 }
 
-/** Flatten a `@structure` tree into indented text lines (two spaces per depth level). */
-function renderTree(nodes: StructureNode[], depth = 0): string[] {
-  const out: string[] = [];
-  for (const n of nodes) {
-    out.push(`${"  ".repeat(depth)}${n.selector}`);
-    out.push(...renderTree(n.children, depth + 1));
-  }
-  return out;
-}
-
-/** One record page. */
-function renderPage(entry: CssDocEntry): string {
-  const lines: string[] = [`# CSS: ${entry.name}`, ""];
-  lines.push(`\`${entry.className}\`${entry.summary ? ` — ${escProse(entry.summary)}` : ""}`, "");
-  if (entry.deprecated)
-    lines.push(`> [!WARNING]`, `> Deprecated — ${escProse(entry.deprecated)}`, "");
-
-  const spec = demoSpec(entry);
-  if (spec) lines.push("## Demo", "", "```demo", spec, "```", "");
-
-  // The authored `@example`: show the copyable source, then render it live beneath (the docs site loads
-  // the component CSS globally). Overlay components (`<dialog>`, `[popover]`) are hidden until opened, so
-  // skip their live preview — the Demo above drives those. Fenced code is exempt from Vue parsing.
-  if (entry.examples.length) {
-    lines.push("## Example", "");
-    for (const ex of entry.examples) {
-      lines.push("```html", ex, "```", "");
-      const overlay = /^<dialog\b/u.test(ex) || /\spopover(?:=|\s|>)/u.test(ex);
-      if (!overlay) lines.push(`<div class="css-example">`, ex, "</div>", "");
-    }
-  }
-
-  if (entry.modifiers.length) {
-    lines.push("## Modifiers", "", "| Modifier | Description |", "| --- | --- |");
-    for (const m of entry.modifiers) {
-      let desc: string;
-      if (m.deprecated) {
-        // A canonical alias renders as "use `.-x`"; an authored note carries its own guidance verbatim.
-        const via = m.deprecated.canonical
-          ? `use \`.${m.deprecated.canonical}\`.`
-          : (m.deprecated.note ?? "");
-        const tail = m.description ? ` ${m.description}` : "";
-        desc = `_Deprecated_ — ${escProse(via + tail)}`.replace(/\|/gu, "\\|");
-      } else {
-        desc = cell(m.description);
-      }
-      lines.push(`| \`.${m.name}\` | ${desc} |`);
-    }
-    lines.push("");
-  }
-
-  if (entry.parts.length) {
-    lines.push("## Parts", "", "| Part | Description |", "| --- | --- |");
-    for (const p of entry.parts) lines.push(`| \`.${p.name}\` | ${cell(p.description)} |`);
-    lines.push("");
-  }
-
-  // The HTML shape (authored `@structure`): an indented tree plus a Mermaid diagram of the same tree,
-  // so the Parts above read in context. Both fenced, so no Vue-escaping needed.
-  if (entry.structure?.length) {
-    lines.push("## Structure", "", "```text", ...renderTree(entry.structure), "```", "");
-    const mermaid = toMermaid(entry.structure);
-    if (mermaid) lines.push("```mermaid", mermaid, "```", "");
-  }
-
-  if (entry.cssPropertiesDeclared.length) {
-    lines.push(
-      "## Custom properties",
-      "",
-      "| Property | Type | Description |",
-      "| --- | --- | --- |",
-    );
-    for (const p of entry.cssPropertiesDeclared) {
-      lines.push(
-        `| \`${p.name}\` | ${p.syntax ? `\`${p.syntax}\`` : "—"} | ${cell(p.description)} |`,
-      );
-    }
-    lines.push("");
-  }
-
-  // A `@cssproperty`-declared custom property is the component's own settable knob — it belongs in
-  // "Custom properties," not also in "Tokens consumed," so the two tables stay non-overlapping.
-  const declaredNames = new Set(entry.cssPropertiesDeclared.map((p) => p.name));
-  const consumed = entry.cssPropertiesConsumed.filter((name) => !declaredNames.has(name));
-  if (consumed.length) {
-    lines.push("## Tokens consumed", "", "| Token | Type | Value |", "| --- | --- | --- |");
-    for (const name of consumed) {
-      const syntax = resolveSyntax(name);
-      // Collapse any internal whitespace (a multi-line declaration value like a wrapped `light-dark(...)`)
-      // to single spaces — a literal newline in a code span would break out of the GFM table row. A `|`
-      // (keyword enumeration or resolved value) must be escaped even inside a code span in a table cell.
-      const escCode = (s: string): string =>
-        `\`${s.replace(/\s+/gu, " ").trim().replace(/\|/gu, "\\|")}\``;
-      const type = syntax ? escCode(syntax) : "—";
-      // IR tokens carry a value; the locally-defined ones (elevation shadows, the focus ring) come from
-      // the sheets. Resolve either to concrete form — a `light-dark(a, b)` result shows it's themed, so
-      // no separate Themed column is needed.
-      const raw = tokenByName.get(name)?.value ?? localVars.get(name);
-      const resolved = raw ? resolveValue(raw) : "";
-      const value = resolved ? escCode(resolved) : "—";
-      lines.push(`| \`${name}\` | ${type} | ${value} |`);
-    }
-    lines.push("");
-  }
-
-  return `${lines.join("\n")}\n`;
-}
-
-/** The index page: records grouped by kind, each a table with its summary. */
-function renderIndex(entries: CssDocEntry[]): string {
-  const lines = [
-    "# CSS API reference",
-    "",
-    "Class-based styles from `@pantoken/components`, generated from the CSS itself — the modifiers,",
-    "parts, and tokens below are extracted from the shipping stylesheet, so they can't drift.",
-    "",
-  ];
-  for (const g of KIND_GROUPS) {
-    const group = entries.filter((e) => e.kind === g.kind);
-    if (!group.length) continue;
-    lines.push(`## ${g.label}`, "", "| Name | Class | Summary |", "| --- | --- | --- |");
-    for (const e of group) {
-      lines.push(
-        `| [${e.name}](/api/css/${e.name}.md) | \`${e.className}\` | ${cell(e.summary)} |`,
-      );
-    }
-    lines.push("");
-  }
-  return `${lines.join("\n")}\n`;
-}
-
-const readCss = (subpath: string): string =>
-  readFileSync(require.resolve(`@pantoken/components/${subpath}`), "utf8");
+const cssPath = (subpath: string): string => require.resolve(`@pantoken/components/${subpath}`);
+const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf8");
 
 const build = (): void => {
   // The component sheet is the primary source; base/utilities/prose carry the non-component records
-  // (@rule/@utility/@declaration) and are concatenated so every record is picked up in one pass.
-  const css = [
-    readCss("components.css"),
-    readCss("utilities.css"),
-    readCss("prose.css"),
-    readCss("base.css"),
-  ].join("\n");
-  const entries = parseCssDocs(css).sort((a, b) => a.name.localeCompare(b.name));
+  // (@rule/@utility/@declaration). All four feed the emitter so every record is picked up in one pass.
+  const sheets = ["components.css", "utilities.css", "prose.css", "base.css"];
+  const cssPaths = sheets.map(cssPath);
+  const css = sheets.map(readCss).join("\n");
 
   // Index the sheet-local custom properties (elevation shadows in components.css, the focus ring in
   // base.css) so their values resolve like IR tokens — first definition wins.
@@ -309,18 +152,16 @@ const build = (): void => {
   }));
   resolveValue = makeResolver([...tokens, ...localTokens]);
 
-  mkdirSync(outDir, { recursive: true });
-  for (const entry of entries) writeFileSync(join(outDir, `${entry.name}.md`), renderPage(entry));
-  writeFileSync(join(outDir, "index.md"), renderIndex(entries));
-
-  const sidebar: Record<string, unknown>[] = [{ text: "Overview", link: "/api/css/" }];
-  for (const g of KIND_GROUPS) {
-    const items = entries
-      .filter((e) => e.kind === g.kind)
-      .map((e) => ({ text: e.name, link: `/api/css/${e.name}.md` }));
-    if (items.length) sidebar.push({ text: g.label, collapsed: false, items });
-  }
-  writeFileSync(join(outDir, "css-sidebar.json"), `${JSON.stringify(sidebar, null, 2)}\n`);
+  const { entries, sidebarMerged } = emitCssApi({
+    outputDirectory: join(docsRoot, "api"),
+    css: cssPaths,
+    outSubdir: "css",
+    label: "CSS",
+    baseHref: "/api/css/",
+    headingPrefix: "CSS:",
+    resolveToken,
+    resolveDemo,
+  });
 
   // Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure).
   const missing = unknownReferences(css, tokens).filter(
@@ -330,7 +171,10 @@ const build = (): void => {
     throw new Error(`CSS API: ${missing.length} unknown token reference(s): ${missing.join(", ")}`);
   }
 
-  console.log(`✓ CSS API: wrote ${entries.length} record page(s) + index + sidebar to api/css/`);
+  console.log(
+    `✓ CSS API: wrote ${entries.length} record page(s) to api/css/` +
+      `${sidebarMerged ? " + merged the CSS section into the TypeDoc sidebar" : ""}`,
+  );
 };
 
 build();

@@ -47,10 +47,6 @@ const typedocSidebarByLocale = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
 ) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
 
-const cssSidebarByLocale = Object.fromEntries(
-  localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.cssSidebarPath)]),
-) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
-
 const localesConfig = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [
     localeKey,
@@ -101,10 +97,9 @@ const localesConfig = Object.fromEntries(
               ],
             },
           ],
-          [locale.apiPrefix]: [
-            { text: "CSS reference", items: cssSidebarByLocale[localeKey] },
-            { text: locale.sidebar.api, items: typedocSidebarByLocale[localeKey] },
-          ],
+          // `@cssdoc/typedoc` merges a "CSS" section into the TypeDoc sidebar, so the CSS reference and
+          // the TS API share one nav — no separate css-sidebar section.
+          [locale.apiPrefix]: typedocSidebarByLocale[localeKey],
         },
         editLink: {
           pattern: "https://github.com/instructure/pantoken/edit/main/docs/:path",

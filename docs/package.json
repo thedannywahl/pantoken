@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@cssdoc/core": "workspace:*",
+    "@cssdoc/typedoc": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/css": "workspace:*",
     "@pantoken/demo": "workspace:*",

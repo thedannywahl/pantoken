@@ -20,8 +20,8 @@ type LocaleMeta = {
     api: string;
   };
   editText: string;
+  // The CSS reference is merged into the TypeDoc sidebar by `@cssdoc/typedoc`, so there's one path.
   typedocSidebarPath: string;
-  cssSidebarPath: string;
 };
 
 export const LOCALES: Record<DocsLocale, LocaleMeta> = {
@@ -46,7 +46,6 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     },
     editText: "Edit this page on GitHub",
     typedocSidebarPath: "../api/typedoc-sidebar.json",
-    cssSidebarPath: "../api/css/css-sidebar.json",
   },
   hu: {
     label: "Magyar",
@@ -69,6 +68,5 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     },
     editText: "Oldal szerkesztése GitHubon",
     typedocSidebarPath: "../hu/api/typedoc-sidebar.json",
-    cssSidebarPath: "../hu/api/css/css-sidebar.json",
   },
 };
