@@ -257,16 +257,46 @@ export function register(
     },
   };
 
+  // A shadow-DOM `<button>` can invoke a light-DOM `[popover]` (or dispatch a command) only through the
+  // IDL properties — the `popovertarget`/`commandfor` *attributes* resolve their id in the button's own
+  // tree scope (the shadow root), so they never find a light-DOM target. `syncInvoker` mirrors the host's
+  // invoker attributes onto the inner button's IDL properties, resolving the id against the host's root.
+  type InvokerButton = HTMLButtonElement & {
+    popoverTargetElement?: Element | null;
+    popoverTargetAction?: string;
+    commandForElement?: Element | null;
+    command?: string;
+  };
+  const syncInvoker = (host: HTMLElement): void => {
+    const btn = host.shadowRoot?.querySelector("button") as InvokerButton | null;
+    if (!btn) return;
+    const root = host.getRootNode() as Document | ShadowRoot;
+    const byId = (id: string): Element | null =>
+      typeof root.getElementById === "function" ? root.getElementById(id) : null;
+    const popoverTarget = host.getAttribute("popovertarget");
+    if (popoverTarget !== null) {
+      btn.popoverTargetElement = byId(popoverTarget);
+      btn.popoverTargetAction = host.getAttribute("popovertargetaction") ?? "toggle";
+    }
+    const commandFor = host.getAttribute("commandfor");
+    const command = host.getAttribute("command");
+    if (commandFor !== null && command !== null) {
+      btn.commandForElement = byId(commandFor);
+      btn.command = command;
+    }
+  };
+
   /**
    * Define a shadow-DOM element: `<style>:host{display}css</style>` + markup from `render(host)`.
    * The `:host` display is explicit because a custom element defaults to `display: inline`, which
-   * would collapse internal `width: 100%` (e.g. the progress bar).
+   * would collapse internal `width: 100%` (e.g. the progress bar). Pass `invoker: true` when the
+   * rendered markup is a `<button>` that should drive native `popovertarget`/`command` targets.
    */
   const wrapper = (
     tag: string,
     css: string,
     render: (host: HTMLElement) => string,
-    display = "inline-block",
+    { display = "inline-block", invoker = false }: { display?: string; invoker?: boolean } = {},
   ): void => {
     if (registry.get(tag)) return;
     registry.define(
@@ -288,6 +318,10 @@ export function register(
           "alt",
           "tip",
           "has-shadow",
+          "popovertarget",
+          "popovertargetaction",
+          "command",
+          "commandfor",
         ];
         constructor() {
           super();
@@ -295,6 +329,15 @@ export function register(
         }
         connectedCallback(): void {
           this.paint();
+          if (invoker) {
+            // Re-resolve the target on each interaction: an id can point forward to an element parsed
+            // after this button, and the target may be swapped at runtime. `requestAnimationFrame`
+            // catches the initial forward reference once the document has finished parsing.
+            const sync = (): void => syncInvoker(this);
+            this.addEventListener("pointerdown", sync);
+            this.addEventListener("keydown", sync);
+            if (typeof requestAnimationFrame === "function") requestAnimationFrame(sync);
+          }
         }
         attributeChangedCallback(): void {
           this.paint();
@@ -302,6 +345,7 @@ export function register(
         paint(): void {
           if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `<style>:host{display:${display}}${css}</style>${render(this)}`;
+            if (invoker) syncInvoker(this);
           }
         }
       },

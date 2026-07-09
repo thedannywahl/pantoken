@@ -22,6 +22,6 @@ export const truncate: ElementDefinition = {
         const style = lines ? ` style="--lines:${lines}"` : "";
         return `<span class="instui-truncate" part="truncate"${style}><slot></slot></span>`;
       },
-      "block",
+      { display: "block" },
     ),
 };

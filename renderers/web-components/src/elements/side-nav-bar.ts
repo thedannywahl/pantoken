@@ -27,6 +27,6 @@ export const sideNavBar: ElementDefinition = {
             : "instui-side-nav-bar";
         return `<nav class="${cls}" part="side-nav-bar"><slot></slot></nav>`;
       },
-      "block",
+      { display: "block" },
     ),
 };

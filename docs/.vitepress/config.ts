@@ -11,9 +11,15 @@ const repoRoot = fileURLToPath(new URL("../../", import.meta.url));
 const at = (relative: string): string =>
   fileURLToPath(new URL(`../../${relative}`, import.meta.url));
 
-// During `vitepress dev`, rebuild the token-driven CSS packages the docs consume whenever their
-// source changes, so edits to the libraries show up live instead of only at the next full build.
-// Each build runs through `vp` (never pnpm scripts directly) from the repo root.
+// During `vitepress dev`, rebuild the workspace packages the docs consume whenever their source
+// changes, so edits to the libraries show up live instead of only at the next full build. Each build
+// runs through `vp` (never pnpm scripts directly) from the repo root.
+//
+// Two output shapes have to reach the browser: the generated CSS that the theme imports (watched via
+// `hmrWatchPaths` — a plain chokidar file change → HMR) and the web-components bundle the theme loads
+// for `register()` (watched via `reloadWatchPaths` — a pnpm-symlinked `dist`, which needs the native
+// fs.watch bridge to invalidate). `@pantoken/web-components` inlines `@pantoken/components`' CSS, so a
+// components edit must cascade into a web-components rebuild too (`dependents`).
 const orchestrator = workspaceOrchestrator({
   upstream: [
     {
@@ -28,10 +34,18 @@ const orchestrator = workspaceOrchestrator({
       dir: repoRoot,
       watchPaths: [at("formats/components/src")],
       build: ["pnpm", "exec", "vp", "run", "@pantoken/components#build"],
+      dependents: ["@pantoken/web-components"],
+    },
+    {
+      name: "@pantoken/web-components",
+      dir: repoRoot,
+      watchPaths: [at("renderers/web-components/src")],
+      build: ["pnpm", "exec", "vp", "run", "@pantoken/web-components#build"],
       dependents: [],
     },
   ],
   hmrWatchPaths: [at("formats/css/generated"), at("formats/components/generated")],
+  reloadWatchPaths: [at("renderers/web-components/dist")],
 });
 
 const localeEntries = Object.entries(LOCALES) as [DocsLocale, (typeof LOCALES)[DocsLocale]][];

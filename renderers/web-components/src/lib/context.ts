@@ -38,12 +38,13 @@ export interface RegisterContext {
     target: HTMLElement,
     handler: (command: string, source: Element | null) => void,
   ) => void;
-  /** Define a shadow-DOM element: `<style>:host{display}css</style>` + markup from `render(host)`. */
+  /** Define a shadow-DOM element: `<style>:host{display}css</style>` + markup from `render(host)`.
+   * `invoker: true` forwards the host's `popovertarget`/`command` to the inner `<button>` (IDL). */
   wrapper: (
     tag: string,
     css: string,
     render: (host: HTMLElement) => string,
-    display?: string,
+    options?: { display?: string; invoker?: boolean },
   ) => void;
   /** Build a `.instui-<name>` class with an optional `-color-<variant>` modifier from `variant`. */
   variantClass: (name: string, host: HTMLElement) => string;

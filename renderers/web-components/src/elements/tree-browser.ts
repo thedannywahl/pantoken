@@ -20,6 +20,6 @@ export const treeBrowser: ElementDefinition = {
       "instui-tree-browser",
       treeBrowserCss(ctx.I),
       () => `<div class="instui-tree-browser" role="tree" part="tree-browser"><slot></slot></div>`,
-      "block",
+      { display: "block" },
     ),
 };

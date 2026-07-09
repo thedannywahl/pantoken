@@ -9,7 +9,7 @@ import type { ElementDefinition } from "../lib/context.ts";
  *
  * @example
  * ```html
- * <button popovertarget="cv">Details</button>
+ * <instui-button popovertarget="cv">Details</instui-button>
  * <instui-context-view id="cv">More about this item.</instui-context-view>
  * ```
  */

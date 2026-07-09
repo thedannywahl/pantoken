@@ -23,6 +23,6 @@ export const progress: ElementDefinition = {
         const bar = variant ? `bar -color-${variant}` : "bar";
         return `<div class="instui-progress" role="progressbar" part="progress"><div class="${bar}" style="width:${String(value)}%"></div></div>`;
       },
-      "block",
+      { display: "block" },
     ),
 };
