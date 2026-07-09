@@ -1,5 +1,6 @@
 import { buttonCss, calendarCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { calendar as calendarReset } from "../generated/styles.ts";
 import { WEEKDAYS, esc, isoDate, parseIsoDate } from "../lib/helpers.ts";
 
 /**
@@ -78,13 +79,9 @@ export const calendar: ElementDefinition = {
               return `<button type="button" class="${classes.join(" ")}" data-value="${iso}" command="--calendar-select" commandfor="cal"${current}>${String(date.getDate())}</button>`;
             })
             .join("");
-          const reset =
-            ".instui-calendar button.day{appearance:none;-webkit-appearance:none;border:0;font:inherit}" +
-            ".instui-calendar .instui-button{padding:0}" +
-            ".instui-calendar .instui-button svg{inline-size:1em;block-size:1em}";
           const weekdays = WEEKDAYS.map((w) => `<span class="weekday">${w}</span>`).join("");
           root.innerHTML =
-            `<style>:host{display:inline-block}${calendarCss(ctx.I)}${buttonCss(ctx.I)}${reset}</style>` +
+            `<style>:host{display:inline-block}${calendarCss(ctx.I)}${buttonCss(ctx.I)}${calendarReset}</style>` +
             `<div class="instui-calendar" id="cal" role="group" aria-label="${esc(label)}" part="calendar">` +
             `<div class="nav">` +
             `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-prev" commandfor="cal" aria-label="Previous month">${ctx.iconSvg("chevron-left")}</button>` +

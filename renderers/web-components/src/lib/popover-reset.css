@@ -1,0 +1,11 @@
+/* Shared host reset for the native [popover] surfaces (context-view, popover, tray): strip the UA
+   popover box so the inner styled surface controls its own look. overflow is explicit-visible (the
+   host default) so a caret/shadow can escape the box. */
+:host {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  inset: auto;
+  overflow: visible;
+  background: transparent;
+}

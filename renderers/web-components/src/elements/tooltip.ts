@@ -1,5 +1,6 @@
 import { tooltipCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { tooltip as tooltipGate } from "../generated/styles.ts";
 import { esc, frag } from "../lib/helpers.ts";
 
 /**
@@ -57,11 +58,8 @@ export const tooltip: ElementDefinition = {
           const tip = esc(this.getAttribute("tip") ?? "");
           const placement = frag(this.getAttribute("placement"));
           const tipCls = placement ? `tip -placement-${placement}` : "tip";
-          const gate =
-            ".instui-tooltip > .tip:not(.-show){opacity:0!important;visibility:hidden!important}" +
-            ".instui-tooltip > .tip.-show{opacity:1;visibility:visible}";
           root.innerHTML =
-            `<style>:host{display:inline-flex}${tooltipCss(ctx.I)}${gate}</style>` +
+            `<style>:host{display:inline-flex}${tooltipCss(ctx.I)}${tooltipGate}</style>` +
             `<span class="instui-tooltip" part="tooltip"><slot></slot>` +
             `<span class="${tipCls}" role="tooltip">${tip}</span></span>`;
           const wrap = root.querySelector<HTMLElement>(".instui-tooltip");

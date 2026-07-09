@@ -1,5 +1,6 @@
 import { popoverCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { popoverReset } from "../generated/styles.ts";
 
 /**
  * `<instui-popover>` — a floating surface. Like `<instui-context-view>`, the host is a native
@@ -27,7 +28,7 @@ export const popover: ElementDefinition = {
           if (!this.hasAttribute("popover")) this.setAttribute("popover", "auto");
           const root = this.shadowRoot;
           if (root && !root.querySelector("div")) {
-            root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;background:transparent}${popoverCss(ctx.I)}</style><div class="instui-popover" part="popover"><slot></slot></div>`;
+            root.innerHTML = `<style>${popoverReset}${popoverCss(ctx.I)}</style><div class="instui-popover" part="popover"><slot></slot></div>`;
           }
         }
       },

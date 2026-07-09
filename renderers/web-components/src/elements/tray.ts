@@ -1,5 +1,6 @@
 import { trayCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { popoverReset } from "../generated/styles.ts";
 
 /**
  * `<instui-tray>` — a panel docked to a viewport edge, backed by a native `[popover]` (top layer +
@@ -40,7 +41,7 @@ export const tray: ElementDefinition = {
           const size = (this.getAttribute("size") ?? "").replace(/[^a-z]/giu, "");
           if (placement) parts.push(`-placement-${placement}`);
           if (size) parts.push(`-size-${size}`);
-          root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;background:transparent}${trayCss(ctx.I)}</style><div class="${parts.join(" ")}" part="tray"><slot></slot></div>`;
+          root.innerHTML = `<style>${popoverReset}${trayCss(ctx.I)}</style><div class="${parts.join(" ")}" part="tray"><slot></slot></div>`;
         }
       },
     );

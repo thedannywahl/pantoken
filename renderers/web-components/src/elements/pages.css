@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+::slotted([data-page]) {
+  display: block;
+}
+
+::slotted([data-page][hidden]) {
+  display: none;
+}

@@ -1,0 +1,9 @@
+.instui-tooltip > .tip:not(.-show) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.instui-tooltip > .tip.-show {
+  opacity: 1;
+  visibility: visible;
+}

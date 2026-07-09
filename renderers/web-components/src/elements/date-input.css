@@ -1,0 +1,35 @@
+:host {
+  display: inline-block;
+}
+
+.field {
+  position: relative;
+  display: inline-flex;
+  anchor-name: --datefield;
+}
+
+.field .instui-text-input {
+  padding-inline-end: 2.25rem;
+}
+
+.trigger {
+  position: absolute;
+  inset-inline-end: 0.25rem;
+  inset-block: 50%;
+  translate: 0 -50%;
+}
+
+.trigger svg {
+  inline-size: 1em;
+  block-size: 1em;
+}
+
+.dropdown {
+  position-anchor: --datefield;
+  position-area: bottom span-inline-end;
+  margin-block: 0.25rem 0;
+  border: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
+  border-radius: var(--instui-border-radius-md);
+  padding: var(--instui-spacing-space-sm);
+  background: var(--instui-color-background-elevated-surface-base);
+}

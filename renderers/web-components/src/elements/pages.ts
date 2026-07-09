@@ -1,4 +1,5 @@
 import type { ElementDefinition } from "../lib/context.ts";
+import { pages as pagesCss } from "../generated/styles.ts";
 
 /**
  * `<instui-pages>` — shows one slotted `[data-page]` panel at a time, swapping with the View
@@ -32,9 +33,7 @@ export const pages: ElementDefinition = {
         connectedCallback(): void {
           const root = this.shadowRoot;
           if (root && !root.querySelector("slot")) {
-            root.innerHTML =
-              "<style>:host{display:block}::slotted([data-page]){display:block}" +
-              "::slotted([data-page][hidden]){display:none}</style><slot></slot>";
+            root.innerHTML = `<style>${pagesCss}</style><slot></slot>`;
             // Drivable from light DOM via Invoker Commands: `<button command="--push" commandfor="pages-id"
             // data-page="…">` and `command="--back" commandfor="pages-id">`.
             ctx.onCommand(this, (command, source) => {

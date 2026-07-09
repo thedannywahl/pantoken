@@ -256,6 +256,9 @@ catalogs:
     '@tokens-studio/sd-transforms':
       specifier: ^2.0.3
       version: 2.0.3
+    '@types/css-tree':
+      specifier: ^2.3.11
+      version: 2.3.11
     '@types/markdown-it':
       specifier: ^14.1.2
       version: 14.1.2
@@ -283,6 +286,9 @@ catalogs:
     core-js:
       specifier: ^3.49.0
       version: 3.49.0
+    css-tree:
+      specifier: ^3.2.1
+      version: 3.2.1
     eslint:
       specifier: ^10.6.0
       version: 10.6.0
@@ -307,6 +313,9 @@ catalogs:
     postcss:
       specifier: ^8.5.16
       version: 8.5.16
+    postcss-value-parser:
+      specifier: ^4.2.0
+      version: 4.2.0
     publint:
       specifier: ^0.3.21
       version: 0.3.21
@@ -387,6 +396,9 @@ importers:
       publint:
         specifier: 'catalog:'
         version: 0.3.21
+      stylelint:
+        specifier: 'catalog:'
+        version: 17.14.0(typescript@6.0.3)
       vite:
         specifier: npm:@voidzero-dev/vite-plus-core@0.2.2
         version: '@voidzero-dev/vite-plus-core@0.2.2(@arethetypeswrong/core@0.18.4)(@types/node@25.9.4)(jiti@2.7.0)(publint@0.3.21)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)'
@@ -546,6 +558,9 @@ importers:
       postcss:
         specifier: 'catalog:'
         version: 8.5.16
+      postcss-value-parser:
+        specifier: 'catalog:'
+        version: 4.2.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -599,7 +614,13 @@ importers:
       '@cssdoc/index':
         specifier: workspace:*
         version: link:../index
+      css-tree:
+        specifier: 'catalog:'
+        version: 3.2.1
     devDependencies:
+      '@types/css-tree':
+        specifier: 'catalog:'
+        version: 2.3.11
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.2

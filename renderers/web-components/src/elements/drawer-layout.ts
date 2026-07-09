@@ -1,4 +1,5 @@
 import type { ElementDefinition } from "../lib/context.ts";
+import { drawerLayout as DRAWER_CSS } from "../generated/styles.ts";
 
 /**
  * `<instui-drawer-layout>` — a side tray plus main content in a resizable row. The `open` attribute
@@ -20,18 +21,6 @@ export const drawerLayout: ElementDefinition = {
   name: "drawer-layout",
   define: (ctx) => {
     if (ctx.registry.get("instui-drawer-layout")) return;
-    const DRAWER_CSS =
-      ":host{display:block;block-size:100%}" +
-      ".layout{display:flex;block-size:100%}" +
-      ':host([placement="end"]) .layout{flex-direction:row-reverse}' +
-      ".tray{flex:0 0 var(--drawer-width,16rem);inline-size:var(--drawer-width,16rem);overflow:auto;" +
-      "background:var(--instui-color-background-elevated-surface-base);" +
-      "border-inline:var(--instui-border-width-sm) solid var(--instui-color-stroke-base)}" +
-      ":host(:not([open])) .tray,:host(:not([open])) .handle{display:none}" +
-      ".handle{flex:0 0 0.375rem;cursor:col-resize;background:var(--instui-color-stroke-base);" +
-      "opacity:0;transition:opacity 0.15s ease}" +
-      ".handle:hover,.handle.-dragging{opacity:0.4}" +
-      ".content{flex:1 1 auto;overflow:auto;min-inline-size:0}";
     ctx.registry.define(
       "instui-drawer-layout",
       class extends HTMLElement {

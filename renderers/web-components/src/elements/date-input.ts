@@ -1,5 +1,6 @@
 import { buttonCss, textInputCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { dateInput as dateInputCss } from "../generated/styles.ts";
 import { esc, parseIsoDate } from "../lib/helpers.ts";
 
 /**
@@ -37,19 +38,8 @@ export const dateInput: ElementDefinition = {
           const value = esc(this.getAttribute("value") ?? "");
           const label = esc(this.getAttribute("label") ?? "Date");
           const placeholder = esc(this.getAttribute("placeholder") ?? "yyyy-mm-dd");
-          const styles =
-            ":host{display:inline-block}" +
-            ".field{position:relative;display:inline-flex}" +
-            ".field{anchor-name:--datefield}" +
-            ".field .instui-text-input{padding-inline-end:2.25rem}" +
-            ".trigger{position:absolute;inset-inline-end:0.25rem;inset-block:50%;translate:0 -50%}" +
-            ".trigger svg{inline-size:1em;block-size:1em}" +
-            ".dropdown{position-anchor:--datefield;position-area:bottom span-inline-end;" +
-            "margin-block:0.25rem 0;border:var(--instui-border-width-sm) solid var(--instui-color-stroke-base);" +
-            "border-radius:var(--instui-border-radius-md);padding:var(--instui-spacing-space-sm);" +
-            "background:var(--instui-color-background-elevated-surface-base)}";
           root.innerHTML =
-            `<style>${textInputCss(ctx.I)}${buttonCss(ctx.I)}${styles}</style>` +
+            `<style>${textInputCss(ctx.I)}${buttonCss(ctx.I)}${dateInputCss}</style>` +
             `<div class="field">` +
             `<input class="instui-text-input" type="text" part="input" aria-label="${label}" placeholder="${placeholder}" value="${value}" />` +
             `<button type="button" class="instui-button -color-tertiary -shape-square trigger" command="toggle-popover" commandfor="datepop" aria-label="Open calendar">${ctx.iconSvg("calendar")}</button>` +

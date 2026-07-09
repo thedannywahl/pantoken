@@ -1,0 +1,10 @@
+.instui-menu .-drilldown-back {
+  display: flex;
+  align-items: center;
+  gap: var(--instui-spacing-space-xs);
+}
+
+.instui-menu .-drilldown-back svg {
+  inline-size: 1em;
+  block-size: 1em;
+}

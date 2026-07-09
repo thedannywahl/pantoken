@@ -1,5 +1,6 @@
 import { textInputCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { dateTimeInput as dateTimeInputCss } from "../generated/styles.ts";
 import { esc } from "../lib/helpers.ts";
 
 /**
@@ -31,11 +32,8 @@ export const dateTimeInput: ElementDefinition = {
           const root = this.shadowRoot;
           if (!root || root.querySelector(".dt")) return;
           const [datePart = "", timePart = ""] = (this.getAttribute("value") ?? "").split("T");
-          const styles =
-            ":host{display:inline-block}" +
-            ".dt{display:inline-flex;gap:var(--instui-spacing-space-sm);align-items:center}";
           root.innerHTML =
-            `<style>${textInputCss(ctx.I)}${styles}</style>` +
+            `<style>${textInputCss(ctx.I)}${dateTimeInputCss}</style>` +
             `<div class="dt">` +
             `<${ctx.tag("date-input")} value="${esc(datePart)}"></${ctx.tag("date-input")}>` +
             `<input class="instui-text-input" type="time" part="time" aria-label="Time" value="${esc(timePart)}" />` +

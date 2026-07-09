@@ -1,0 +1,9 @@
+:host {
+  display: inline-block;
+}
+
+.dt {
+  display: inline-flex;
+  gap: var(--instui-spacing-space-sm);
+  align-items: center;
+}

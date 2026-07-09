@@ -1,0 +1,15 @@
+.instui-calendar button.day {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  font: inherit;
+}
+
+.instui-calendar .instui-button {
+  padding: 0;
+}
+
+.instui-calendar .instui-button svg {
+  inline-size: 1em;
+  block-size: 1em;
+}

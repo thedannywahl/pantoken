@@ -3,6 +3,8 @@ import { defineConfig } from "vite-plus";
 export default defineConfig({
   staged: {
     "*": "vp check --fix",
+    // stylelint owns real .css (web-component shadow styles); vp check no-ops on them.
+    "*.css": "vp exec stylelint --fix",
   },
   fmt: {},
   lint: {

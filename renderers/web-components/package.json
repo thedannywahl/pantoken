@@ -17,11 +17,12 @@
     "access": "public"
   },
   "scripts": {
+    "styles": "node scripts/styles.ts",
     "generate": "node scripts/generate.ts",
-    "build": "vp pack && pnpm run generate",
-    "dev": "vp pack --watch",
-    "test": "vp test",
-    "check": "vp check",
+    "build": "node scripts/styles.ts && vp pack && node scripts/generate.ts",
+    "dev": "node scripts/styles.ts && vp pack --watch",
+    "test": "node scripts/styles.ts && vp test",
+    "check": "node scripts/styles.ts && vp check",
     "prepublishOnly": "vp run build"
   },
   "dependencies": {

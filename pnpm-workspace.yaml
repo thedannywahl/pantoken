@@ -89,6 +89,17 @@ catalog:
   eslint: ^10.6.0
   "@eslint/css": ^1.4.0
   "@html-eslint/parser": ^0.63.0
+  postcss-value-parser: ^4.2.0
+  css-tree: ^3.2.1
+  "@types/css-tree": ^2.3.11
+  "@resvg/resvg-js": ^2.6.2
+  esbuild: ^0.28.1
+  changelogen: ^0.6.2
+  "@vscode/vsce": ^3.9.2
+  ovsx: ^1.0.2
+  vscode-languageclient: ^10.1.0
+  vscode-languageserver: ^10.1.0
+  vscode-languageserver-textdocument: ^1.0.12
 overrides:
   vite: "catalog:"
 peerDependencyRules:

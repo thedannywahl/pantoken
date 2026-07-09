@@ -1,5 +1,6 @@
 import { contextViewCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
+import { popoverReset } from "../generated/styles.ts";
 
 /**
  * `<instui-context-view>` — a callout surface with a caret. The host itself is a native `[popover]`
@@ -28,7 +29,7 @@ export const contextView: ElementDefinition = {
           if (!this.hasAttribute("popover")) this.setAttribute("popover", "auto");
           const root = this.shadowRoot;
           if (root && !root.querySelector("span")) {
-            root.innerHTML = `<style>:host{margin:0;border:0;padding:0;inset:auto;overflow:visible;background:transparent}${contextViewCss(ctx.I)}</style><span class="instui-context-view" part="context-view"><slot></slot></span>`;
+            root.innerHTML = `<style>${popoverReset}${contextViewCss(ctx.I)}</style><span class="instui-context-view" part="context-view"><slot></slot></span>`;
           }
         }
       },
