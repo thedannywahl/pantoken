@@ -10,8 +10,6 @@ import { frag } from "../lib/helpers.ts";
  * ```html
  * <instui-truncate lines="2">A long description that will be clamped to two lines…</instui-truncate>
  * ```
- *
- * @demo self:truncate
  */
 export const truncate: ElementDefinition = {
   name: "truncate",

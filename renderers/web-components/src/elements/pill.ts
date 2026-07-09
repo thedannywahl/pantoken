@@ -9,8 +9,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * ```html
  * <instui-pill variant="success">Active</instui-pill>
  * ```
- *
- * @demo self:pill
  */
 export const pill: ElementDefinition = {
   name: "pill",

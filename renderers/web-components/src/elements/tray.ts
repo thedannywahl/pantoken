@@ -12,8 +12,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * <button popovertarget="nav">Menu</button>
  * <instui-tray id="nav" placement="start" size="small">…</instui-tray>
  * ```
- *
- * @demo self:tray
  */
 export const tray: ElementDefinition = {
   name: "tray",

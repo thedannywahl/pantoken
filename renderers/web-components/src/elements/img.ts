@@ -10,8 +10,6 @@ import { esc, frag } from "../lib/helpers.ts";
  * ```html
  * <instui-img src="/hero.jpg" alt="Campus" constrain="cover" display="block"></instui-img>
  * ```
- *
- * @demo self:img
  */
 export const img: ElementDefinition = {
   name: "img",

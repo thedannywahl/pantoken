@@ -12,8 +12,6 @@ import { esc } from "../lib/helpers.ts";
  * ```html
  * <instui-date-time-input value="2026-07-08T14:30"></instui-date-time-input>
  * ```
- *
- * @demo self:date-time-inputs
  */
 export const dateTimeInput: ElementDefinition = {
   name: "date-time-input",

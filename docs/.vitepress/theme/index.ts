@@ -11,6 +11,7 @@ import "@pantoken/components/utilities.css";
 import "@pantoken/components/icons.css";
 import "@pantoken/components/fonts.css";
 import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
+import { register as registerWebComponents } from "@pantoken/web-components";
 import "@pantoken/demo/demo.css";
 import "./pantoken.css";
 
@@ -19,6 +20,11 @@ export default {
   enhanceApp(ctx) {
     DefaultTheme.enhanceApp?.(ctx);
     ctx.app.component("vitepress-mermaid", VitePressMermaid);
+
+    // Register the pantoken custom elements so the `@example` blocks on the web-components API pages
+    // render live (the elements inline their own CSS; the token sheet above colours them). A no-op
+    // during SSR — it early-returns without a DOM.
+    registerWebComponents();
 
     // The demo figure's action buttons are static HTML from @pantoken/demo; the package can't run
     // host JS, so wire them here. One delegated listener takes the whole figure full screen (so its

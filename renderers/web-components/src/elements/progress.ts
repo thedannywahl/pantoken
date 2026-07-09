@@ -10,8 +10,6 @@ import { frag } from "../lib/helpers.ts";
  * ```html
  * <instui-progress value="60" variant="success"></instui-progress>
  * ```
- *
- * @demo self:progress
  */
 export const progress: ElementDefinition = {
   name: "progress",

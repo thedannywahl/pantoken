@@ -12,8 +12,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  *   <a href="/courses">Courses</a>
  * </instui-side-nav-bar>
  * ```
- *
- * @demo self:side-nav-bar
  */
 export const sideNavBar: ElementDefinition = {
   name: "side-nav-bar",

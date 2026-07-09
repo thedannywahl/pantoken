@@ -8,8 +8,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * ```html
  * <instui-tag>Design</instui-tag>
  * ```
- *
- * @demo self:tag
  */
 export const tag: ElementDefinition = {
   name: "tag",

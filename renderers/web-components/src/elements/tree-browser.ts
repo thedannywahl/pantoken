@@ -11,8 +11,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  *   <ul role="group">…</ul>
  * </instui-tree-browser>
  * ```
- *
- * @demo self:tree-browser
  */
 export const treeBrowser: ElementDefinition = {
   name: "tree-browser",

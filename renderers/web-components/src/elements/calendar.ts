@@ -14,8 +14,6 @@ import { WEEKDAYS, esc, isoDate, parseIsoDate } from "../lib/helpers.ts";
  * ```html
  * <instui-calendar value="2026-07-08"></instui-calendar>
  * ```
- *
- * @demo self:calendar
  */
 export const calendar: ElementDefinition = {
   name: "calendar",

@@ -12,8 +12,6 @@ import { esc } from "../lib/helpers.ts";
  * ```html
  * <instui-in-place-edit value="Course title"></instui-in-place-edit>
  * ```
- *
- * @demo self:in-place-edit
  */
 export const inPlaceEdit: ElementDefinition = {
   name: "in-place-edit",

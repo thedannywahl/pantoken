@@ -15,8 +15,6 @@ import { esc, frag } from "../lib/helpers.ts";
  *   <button class="instui-button -color-secondary">Hover me</button>
  * </instui-tooltip>
  * ```
- *
- * @demo self:tooltip
  */
 export const tooltip: ElementDefinition = {
   name: "tooltip",

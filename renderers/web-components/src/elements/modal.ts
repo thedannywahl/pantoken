@@ -17,8 +17,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  *   <button command="--close" commandfor="confirm">Cancel</button>
  * </instui-modal>
  * ```
- *
- * @demo self:modal
  */
 export const modal: ElementDefinition = {
   name: "modal",

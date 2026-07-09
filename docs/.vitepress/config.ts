@@ -47,6 +47,20 @@ const typedocSidebarByLocale = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
 ) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
 
+/**
+ * `@cssdoc/typedoc` appends a top-level "CSS" section to the merged TypeDoc sidebar. Nest the TS package
+ * groups back under an `apiLabel` ("API reference") heading and keep the "CSS" section top-level after it,
+ * so the API nav reads `[ API reference › packages…, CSS › … ]` rather than hoisting every group.
+ */
+const splitApiSidebar = (
+  merged: DefaultTheme.SidebarItem[],
+  apiLabel: string,
+): DefaultTheme.SidebarItem[] => {
+  const cssIndex = merged.findIndex((item) => item.text === "CSS");
+  if (cssIndex < 0) return [{ text: apiLabel, items: merged }];
+  return [{ text: apiLabel, items: merged.filter((_, i) => i !== cssIndex) }, merged[cssIndex]];
+};
+
 const localesConfig = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [
     localeKey,
@@ -97,9 +111,13 @@ const localesConfig = Object.fromEntries(
               ],
             },
           ],
-          // `@cssdoc/typedoc` merges a "CSS" section into the TypeDoc sidebar, so the CSS reference and
-          // the TS API share one nav — no separate css-sidebar section.
-          [locale.apiPrefix]: typedocSidebarByLocale[localeKey],
+          // `@cssdoc/typedoc` appends a "CSS" section to the TypeDoc sidebar. Keep that as its own
+          // top-level section, and nest the TS package groups back under an "API reference" heading (the
+          // merge would otherwise hoist them all to the top level).
+          [locale.apiPrefix]: splitApiSidebar(
+            typedocSidebarByLocale[localeKey],
+            locale.sidebar.api,
+          ),
         },
         editLink: {
           pattern: "https://github.com/instructure/pantoken/edit/main/docs/:path",
@@ -134,6 +152,15 @@ export default defineConfig({
   lastUpdated: true,
   // The generated API pages cross-link heavily; don't fail the build on a link TypeDoc emitted.
   ignoreDeadLinks: true,
+  // Treat `instui-*` tags as custom elements, not Vue components — so the web-components API pages can
+  // render their `<instui-…>` `@example` markup live (the theme registers the elements).
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag: string) => tag.startsWith("instui-"),
+      },
+    },
+  },
   vite: {
     plugins: [orchestrator],
   },

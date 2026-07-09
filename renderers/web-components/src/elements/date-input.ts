@@ -14,8 +14,6 @@ import { esc, parseIsoDate } from "../lib/helpers.ts";
  * ```html
  * <instui-date-input value="2026-07-08" label="Due date"></instui-date-input>
  * ```
- *
- * @demo self:date-time-inputs
  */
 export const dateInput: ElementDefinition = {
   name: "date-input",

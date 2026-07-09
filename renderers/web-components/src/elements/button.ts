@@ -10,8 +10,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * <instui-button variant="primary">Save changes</instui-button>
  * <instui-button variant="danger">Delete</instui-button>
  * ```
- *
- * @demo self:button
  */
 export const button: ElementDefinition = {
   name: "button",

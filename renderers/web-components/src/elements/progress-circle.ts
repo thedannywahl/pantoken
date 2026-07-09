@@ -11,8 +11,6 @@ import { esc } from "../lib/helpers.ts";
  * ```html
  * <instui-progress-circle value="75"></instui-progress-circle>
  * ```
- *
- * @demo self:progress-circle
  */
 export const progressCircle: ElementDefinition = {
   name: "progress-circle",

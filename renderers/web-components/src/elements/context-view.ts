@@ -12,8 +12,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * <button popovertarget="cv">Details</button>
  * <instui-context-view id="cv">More about this item.</instui-context-view>
  * ```
- *
- * @demo self:context-view
  */
 export const contextView: ElementDefinition = {
   name: "context-view",

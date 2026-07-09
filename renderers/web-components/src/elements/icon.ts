@@ -11,8 +11,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * <instui-icon name="arrow-left"></instui-icon>
  * <instui-icon name="star" size="1.5rem" color="gold"></instui-icon>
  * ```
- *
- * @demo self:icon
  */
 export const icon: ElementDefinition = {
   name: "icon",

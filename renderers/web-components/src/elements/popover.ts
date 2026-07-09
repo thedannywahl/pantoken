@@ -11,8 +11,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * <button popovertarget="menu">Options</button>
  * <instui-popover id="menu">…</instui-popover>
  * ```
- *
- * @demo self:popover
  */
 export const popover: ElementDefinition = {
   name: "popover",

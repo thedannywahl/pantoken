@@ -860,6 +860,9 @@ importers:
       '@pantoken/vitepress':
         specifier: workspace:*
         version: link:../renderers/vitepress
+      '@pantoken/web-components':
+        specifier: workspace:*
+        version: link:../renderers/web-components
       '@types/markdown-it':
         specifier: 'catalog:'
         version: 14.1.2

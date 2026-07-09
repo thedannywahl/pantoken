@@ -37,6 +37,7 @@
     "@pantoken/utils": "workspace:*",
     "@pantoken/vite-workspace-orchestrator": "workspace:*",
     "@pantoken/vitepress": "workspace:*",
+    "@pantoken/web-components": "workspace:*",
     "@types/markdown-it": "catalog:",
     "@types/node": "catalog:",
     "markdown-it": "catalog:",

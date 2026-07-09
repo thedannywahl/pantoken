@@ -5,15 +5,13 @@ import { frag } from "../lib/helpers.ts";
 /**
  * `<instui-avatar>` — a circular (or rectangular) avatar. `variant` maps to `-color-<variant>`,
  * `size` to `-size-<size>`, and `shape="rectangle"` to `-shape-rectangle`; slotted content is the
- * initials or `<img>`.
+ * initials, or an `<img>` (use an absolute/CDN `src`) to show a photo.
  *
  * @example
  * ```html
  * <instui-avatar size="lg">JS</instui-avatar>
- * <instui-avatar shape="rectangle"><img src="/photo.jpg" alt="" /></instui-avatar>
+ * <instui-avatar shape="rectangle" variant="green">AB</instui-avatar>
  * ```
- *
- * @demo self:avatar
  */
 export const avatar: ElementDefinition = {
   name: "avatar",

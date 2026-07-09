@@ -9,8 +9,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * ```html
  * <instui-badge variant="danger">9</instui-badge>
  * ```
- *
- * @demo self:badge
  */
 export const badge: ElementDefinition = {
   name: "badge",

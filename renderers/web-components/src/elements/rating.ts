@@ -11,8 +11,6 @@ import { esc } from "../lib/helpers.ts";
  * ```html
  * <instui-rating value="4" max="5" label="4 out of 5 stars"></instui-rating>
  * ```
- *
- * @demo self:rating
  */
 export const rating: ElementDefinition = {
   name: "rating",

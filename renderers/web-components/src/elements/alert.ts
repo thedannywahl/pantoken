@@ -10,8 +10,6 @@ import type { ElementDefinition } from "../lib/context.ts";
  * ```html
  * <instui-alert variant="success">Your changes were saved.</instui-alert>
  * ```
- *
- * @demo self:alert
  */
 export const alert: ElementDefinition = {
   name: "alert",

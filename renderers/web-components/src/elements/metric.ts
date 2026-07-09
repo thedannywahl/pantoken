@@ -10,8 +10,6 @@ import { esc } from "../lib/helpers.ts";
  * ```html
  * <instui-metric value="1,024" label="Enrolled"></instui-metric>
  * ```
- *
- * @demo self:metric
  */
 export const metric: ElementDefinition = {
   name: "metric",
