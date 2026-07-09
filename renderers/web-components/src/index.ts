@@ -18,6 +18,9 @@
  * inlined, so the look is exactly `@pantoken/components`
  * with nothing to import but this module. Tokens are inherited custom properties, so they pierce the
  * shadow boundary — load `@pantoken/css` (or any pantoken token sheet) in the document to color them.
+ * The elevation scale and focus-outline system live in the components/base layer rather than the token
+ * sheet, so {@link register} injects them at `:root` ({@link foundationCss}) — shadows inherit them, and
+ * elevation/focus work with only the token sheet loaded.
  *
  * The module is Node-safe: element classes are defined inside {@link register}, a no-op when there
  * is no DOM, so importing this package during SSR or a build never touches `HTMLElement`.
@@ -28,11 +31,12 @@
  *
  * @module
  */
+import { elevationDeclarations, focusOutlineDeclarations } from "@pantoken/components";
 import { resolve as pantokenResolve } from "@pantoken/icons";
 import type { IconResolver } from "@pantoken/model";
 import { DEFINITIONS } from "./elements/index.ts";
 import type { CommandEventish, ElementRegistry, RegisterContext } from "./lib/context.ts";
-import { frag } from "./lib/helpers.ts";
+import { applySpacing, frag } from "./lib/helpers.ts";
 
 // ── Public types ──────────────────────────────────────────────────────────────
 export type {
@@ -134,6 +138,66 @@ export function iconSvg(name: string, resolve: IconResolver = pantokenResolve): 
   return resolve(name)?.svg ?? "";
 }
 
+/** The id of the `<style>` {@link register} injects, so the foundation is added at most once. */
+const FOUNDATION_STYLE_ID = "pantoken-foundation";
+
+/**
+ * The `:root` custom-property block that bundles the elevation scale (`--instui-elevation-*`) and the
+ * focus-outline system (`--instui-focus-outline-*`). The component CSS references these, but the token
+ * sheet (`@pantoken/css`) doesn't carry them — they live in the components/base layer. Because custom
+ * properties pierce the shadow boundary, declaring them once at `:root` makes every element's shadow
+ * inherit them, so shadows, focus rings, etc. work with nothing loaded but this module + a token sheet.
+ * {@link register} injects it client-side; export it too so SSR can inline it up front.
+ *
+ * @returns A `:root { … }` CSS string.
+ *
+ * @example
+ * ```ts
+ * import { foundationCss } from "@pantoken/web-components";
+ * // SSR: `<style>${foundationCss()}</style>` in <head>.
+ * ```
+ */
+export function foundationCss(): string {
+  const decls = [...elevationDeclarations(), ...focusOutlineDeclarations()]
+    .map(([name, value]) => `  ${name}: ${value};`)
+    .join("\n");
+  return `:root {\n${decls}\n}`;
+}
+
+/** An element ctor with the optional custom-element lifecycle hooks the spacing mixin composes over. */
+type LifecycleElementCtor = new (...args: never[]) => HTMLElement & {
+  connectedCallback?(): void;
+  disconnectedCallback?(): void;
+};
+
+/**
+ * Compose the universal spacing behaviour over an element constructor: after the element's own
+ * `connectedCallback`, and on any later attribute change, apply the `margin`/`padding` shorthands and
+ * per-side `margin-<side>`/`padding-<side>` attributes to the host ({@link applySpacing}). {@link register}
+ * wraps every element with this, so InstUI-/CSS-style spacing works on all of them with no per-element code.
+ *
+ * @param Ctor - The element constructor to wrap.
+ * @returns A subclass that adds the spacing behaviour.
+ */
+function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
+  const Spaced = class extends Ctor {
+    #spacingObserver: MutationObserver | undefined;
+    connectedCallback(): void {
+      super.connectedCallback?.();
+      applySpacing(this);
+      this.#spacingObserver = new MutationObserver(() => {
+        applySpacing(this);
+      });
+      this.#spacingObserver.observe(this, { attributes: true });
+    }
+    disconnectedCallback(): void {
+      super.disconnectedCallback?.();
+      this.#spacingObserver?.disconnect();
+    }
+  };
+  return Spaced as unknown as CustomElementConstructor;
+}
+
 /**
  * Register the pantoken custom elements. No-op when there is no DOM (SSR / build), so this module
  * is safe to import anywhere.
@@ -158,6 +222,19 @@ export function register(
 ): void {
   if (!target || typeof HTMLElement === "undefined") return;
 
+  // Bundle the elevation + focus-outline custom properties at `:root` once, so every shadow inherits
+  // them (they aren't in the token sheet). Skipped without a DOM (e.g. the registry-only test path).
+  if (
+    typeof document !== "undefined" &&
+    document.head &&
+    !document.getElementById(FOUNDATION_STYLE_ID)
+  ) {
+    const style = document.createElement("style");
+    style.id = FOUNDATION_STYLE_ID;
+    style.textContent = foundationCss();
+    document.head.append(style);
+  }
+
   // Tag prefix: a valid non-empty string overrides the default; anything else (empty, whitespace, null,
   // omitted) falls back to `instui`. A prefix is always applied because a custom-element name MUST contain
   // a hyphen — `<icon>` is invalid, `<instui-icon>`/`<x-icon>` are not. The inlined `.instui-*` CSS classes
@@ -174,7 +251,9 @@ export function register(
     get: (name) => host.get(tag(name.replace(/^instui-/u, ""))),
     define: (name, ctor) => {
       const resolved = tag(name.replace(/^instui-/u, ""));
-      if (!host.get(resolved)) host.define(resolved, ctor);
+      // Wrap every element with the shared spacing mixin, so `margin`/`padding` (+ per-side) work
+      // universally — no per-element code needed.
+      if (!host.get(resolved)) host.define(resolved, withSpacing(ctor));
     },
   };
 
@@ -208,6 +287,7 @@ export function register(
           "src",
           "alt",
           "tip",
+          "has-shadow",
         ];
         constructor() {
           super();

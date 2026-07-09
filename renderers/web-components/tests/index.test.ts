@@ -1,5 +1,31 @@
 import { expect, test } from "vite-plus/test";
-import { ELEMENTS, iconSvg, register } from "../src/index.ts";
+import { ELEMENTS, foundationCss, iconSvg, register } from "../src/index.ts";
+import { resolveSpace, spacingValue } from "../src/lib/helpers.ts";
+
+test("resolveSpace maps a keyword to a token, else passes a raw CSS value through", () => {
+  expect(resolveSpace("small")).toBe("var(--instui-spacing-space-sm)");
+  expect(resolveSpace("none")).toBe("0");
+  expect(resolveSpace("2rem")).toBe("2rem"); // raw length — verbatim
+  expect(resolveSpace("auto")).toBe("auto");
+});
+
+test("spacingValue resolves the 1–4 value shorthand (keywords and raw mixed)", () => {
+  expect(spacingValue("small")).toBe("var(--instui-spacing-space-sm)");
+  expect(spacingValue("small none small")).toBe(
+    "var(--instui-spacing-space-sm) 0 var(--instui-spacing-space-sm)",
+  );
+  expect(spacingValue("medium 2rem")).toBe("var(--instui-spacing-space-md) 2rem");
+  expect(spacingValue(null)).toBe(""); // absent → clears the property
+});
+
+test("foundationCss declares the elevation + focus-outline props at :root", () => {
+  const css = foundationCss();
+  expect(css.startsWith(":root {")).toBe(true);
+  // Elevation scale + focus-outline system — the bits the token sheet doesn't carry.
+  expect(css).toContain("--instui-elevation-resting:");
+  expect(css).toContain("--instui-focus-outline-width:");
+  expect(css).toContain("--instui-focus-outline-color:");
+});
 
 test("iconSvg returns inline SVG for known icons and empty for unknown", () => {
   expect(iconSvg("arrow-left").startsWith("<svg")).toBe(true);

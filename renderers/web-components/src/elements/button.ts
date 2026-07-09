@@ -3,12 +3,13 @@ import type { ElementDefinition } from "../lib/context.ts";
 
 /**
  * `<instui-button>` — a token-styled `<button>`. The `variant` attribute maps to the `-color-<variant>`
- * modifier (`secondary`, `tertiary`, `success`, `danger`, `ai`, …); slotted content is the label.
+ * modifier (`secondary`, `tertiary`, `success`, `danger`, `ai`, …); `margin` adds spacing around the
+ * host (InstUI keywords like `small` / `medium large`); slotted content is the label.
  *
  * @example
  * ```html
- * <instui-button variant="primary">Save changes</instui-button>
- * <instui-button variant="danger">Delete</instui-button>
+ * <instui-button variant="primary" margin="small">Save changes</instui-button>
+ * <instui-button variant="danger" margin="small">Delete</instui-button>
  * ```
  */
 export const button: ElementDefinition = {

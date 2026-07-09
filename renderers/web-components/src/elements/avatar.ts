@@ -9,8 +9,8 @@ import { frag } from "../lib/helpers.ts";
  *
  * @example
  * ```html
- * <instui-avatar size="lg">JS</instui-avatar>
- * <instui-avatar shape="rectangle" variant="green">AB</instui-avatar>
+ * <instui-avatar size="lg" margin="small">JS</instui-avatar>
+ * <instui-avatar shape="rectangle" variant="green" margin="small">AB</instui-avatar>
  * ```
  */
 export const avatar: ElementDefinition = {

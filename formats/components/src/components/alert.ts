@@ -9,7 +9,11 @@ export const alert = defineComponent({
     { name: "-color-success", description: "A positive/confirmation message." },
     { name: "-color-warning", description: "A cautionary message." },
     { name: "-color-danger", description: "An error message." },
-    { name: "-has-shadow", description: "Lift the alert with an elevation shadow." },
+    {
+      name: "-without-shadow",
+      description: "Remove the default elevation shadow (InstUI `hasShadow={false}`).",
+    },
+    { name: "-has-shadow-false", deprecated: "{@link -without-shadow}" },
     { name: "-screen-reader-only", description: "Visually hidden but announced." },
     { name: "-variant-info", deprecated: "{@link -color-info}" },
     { name: "-variant-success", deprecated: "{@link -color-success}" },
@@ -54,6 +58,8 @@ export const alert = defineComponent({
   color: var(--instui-component-alert-color);
   border: var(--instui-component-alert-border-width) var(--instui-component-alert-border-style) var(--instui-component-alert-info-border-color);
   border-radius: var(--instui-component-alert-border-radius);
+  /* Elevated by default (InstUI's hasShadow defaults to true); -without-shadow opts out. */
+  box-shadow: var(--instui-elevation-above);
   font-family: var(--instui-component-alert-content-font-family);
   font-size: var(--instui-component-alert-content-font-size);
   font-weight: var(--instui-component-alert-content-font-weight);
@@ -93,8 +99,8 @@ export const alert = defineComponent({
 .${p}alert:has(> .${p}close-button) {
   padding-inline-end: calc(var(--instui-component-base-button-medium-height) + var(--instui-spacing-space-xs));
 }
-/* Optional elevation (InstUI's hasShadow) via the elevation plugin's named token. */
-.${p}alert.-has-shadow { box-shadow: var(--instui-elevation-above); }
+/* Opt out of the default elevation (InstUI's hasShadow={false}). */
+.${p}alert.-without-shadow { box-shadow: none; }
 /* screenReaderOnly: announced to assistive tech, but visually hidden. */
 .${p}alert.-screen-reader-only {
   position: absolute;

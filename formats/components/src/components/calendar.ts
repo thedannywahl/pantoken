@@ -16,9 +16,9 @@ export const calendar = defineComponent({
   examples: [
     `<div class="instui-calendar" role="table" aria-label="March 2026">
   <div class="nav">
-    <button class="instui-button -color-tertiary -shape-square -icon-chevron-left" aria-label="Previous month"></button>
+    <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-left" aria-label="Previous month"></button>
     <strong>March 2026</strong>
-    <button class="instui-button -color-tertiary -shape-square -icon-chevron-right" aria-label="Next month"></button>
+    <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-right" aria-label="Next month"></button>
   </div>
   <div class="grid">
     <span class="weekday">Su</span>
@@ -54,9 +54,9 @@ export const calendar = defineComponent({
   ],
   structure: `.instui-calendar
   .nav
-    .instui-button.-color-tertiary.-shape-square.-icon-chevron-left
+    .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-left
     strong
-    .instui-button.-color-tertiary.-shape-square.-icon-chevron-right
+    .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-right
   .grid
     .weekday
     .day.-outside-month
@@ -80,20 +80,22 @@ ${root} {
 ${scope(
   root,
   `
+/* Full-width nav: prev/next hug the calendar edges, the month label centres between them (InstUI
+   only spaces the row below itself, so margin is block-end only — no inline inset). */
 .${p}calendar .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: ${c("nav-margin")};
-  max-inline-size: ${c("max-header-width")};
+  margin-block-end: ${c("nav-margin")};
 }
 /* Fixed square day cells, centred as a block (1fr columns would stretch the cells unevenly and
-   off-centre inside the inline-block calendar). */
+   off-centre inside the inline-block calendar). The gap is symmetric on both axes to match InstUI,
+   whose day table spaces cells with the browser-default border-spacing in both directions. */
 .${p}calendar .grid {
   display: grid;
   grid-template-columns: repeat(7, ${c("day-min-width")});
   justify-content: center;
-  row-gap: var(--instui-spacing-space2xs);
+  gap: var(--instui-spacing-space2xs);
 }
 .${p}calendar .weekday,
 .${p}calendar .day {

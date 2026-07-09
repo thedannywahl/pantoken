@@ -87,9 +87,9 @@ export const calendar: ElementDefinition = {
             `<style>:host{display:inline-block}${calendarCss(ctx.I)}${buttonCss(ctx.I)}${reset}</style>` +
             `<div class="instui-calendar" id="cal" role="group" aria-label="${esc(label)}" part="calendar">` +
             `<div class="nav">` +
-            `<button type="button" class="instui-button -color-tertiary -shape-square" command="--calendar-prev" commandfor="cal" aria-label="Previous month">${ctx.iconSvg("chevron-left")}</button>` +
+            `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-prev" commandfor="cal" aria-label="Previous month">${ctx.iconSvg("chevron-left")}</button>` +
             `<strong>${esc(label)}</strong>` +
-            `<button type="button" class="instui-button -color-tertiary -shape-square" command="--calendar-next" commandfor="cal" aria-label="Next month">${ctx.iconSvg("chevron-right")}</button>` +
+            `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-next" commandfor="cal" aria-label="Next month">${ctx.iconSvg("chevron-right")}</button>` +
             `</div>` +
             `<div class="grid">${weekdays}${dayHtml}</div>` +
             `</div>`;
