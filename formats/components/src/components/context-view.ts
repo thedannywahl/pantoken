@@ -2,22 +2,21 @@ import { defineComponent } from "../lib/define.ts";
 
 export const contextView = defineComponent({
   name: "context-view",
-  summary:
-    "An elevated callout with a caret, positionable on any side; works as a native `[popover]`.",
-  modifiers: [
-    { name: "-color-inverse", description: "Dark (inverse) colour scheme." },
-    { name: "-placement-top", description: "Sit above the anchor." },
-    { name: "-placement-bottom", description: "Sit below the anchor." },
-    { name: "-placement-start", description: "Sit at the start (inline-start) of the anchor." },
-    { name: "-placement-end", description: "Sit at the end (inline-end) of the anchor." },
-  ],
-  examples: [
-    '<div class="instui-context-view -placement-bottom" id="cv-popover">A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc.</div>',
-  ],
   css: (p) => {
     const root = `.${p}context-view`;
     const cv = (s: string): string => `var(--instui-component-context-view-${s})`;
     return `
+/**
+ * @component context-view
+ * @summary An elevated callout with a caret, positionable on any side; works as a native \`[popover]\`.
+ * @modifier -color-inverse — Dark (inverse) colour scheme.
+ * @modifier -placement-top — Sit above the anchor.
+ * @modifier -placement-bottom — Sit below the anchor.
+ * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
+ * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ * @example
+ * <div class="instui-context-view -placement-bottom" id="cv-popover">A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc.</div>
+ */
 ${root} {
   position: relative;
   display: inline-block;

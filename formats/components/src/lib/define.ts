@@ -7,14 +7,12 @@
  * @module
  */
 import type { CssRecordKind } from "@cssdoc/core";
-import { withAliases, withSizeAliases } from "./aliases.ts";
+import { deprecatedAliasPairs, withAliases, withSizeAliases } from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
-import { record, type RecordMeta } from "./record.ts";
 
 export interface Definition {
   name: string;
   kind: CssRecordKind;
-  meta: RecordMeta;
   /** Doc block + CSS body at the given (already `ns()`-joined) prefix — concatenated by the aggregator. */
   rules(this: void, prefix: string): string;
   /**
@@ -25,24 +23,43 @@ export interface Definition {
   css(this: void, options?: ComponentOptions): string;
 }
 
-/** A record definition's input: its metadata (minus `kind`, which the `defineX` helper supplies) + css. */
-export type DefineInput = Omit<RecordMeta, "kind"> & {
-  /** Build the CSS body (no doc block) for the `ns()`-joined prefix `p`, e.g. `.${p}menu { … }`. */
+/** A record definition's input: the record's programmatic name + its CSS builder. */
+export interface DefineInput {
+  /** The record's identity — used for the standalone-sheet header, the exports, and `validate()`. */
+  name: string;
+  /**
+   * Build the full record for the `ns()`-joined prefix `p`: a leading `/** … *\/` cssdoc doc comment
+   * (prefix-independent) followed by the CSS body, e.g. ``(p) => `/** @component menu … *\/\n.${p}menu {…}` ``.
+   */
   css: (p: string) => string;
-};
+}
+
+/**
+ * Split a record's leading `/** … *\/` doc comment from its CSS body. The alias post-processors scan
+ * for `{ … }` rule bodies, so they must never see the comment's `{@link …}` braces — `make()` runs them
+ * on the body alone and recombines. Tolerates leading whitespace before `/**` (an authored template
+ * literal often opens with a newline); drops the single newline separating the comment from the body.
+ */
+function splitLeadingDocComment(raw: string): { comment: string; body: string } {
+  const m = raw.match(/^\s*\/\*\*[\s\S]*?\*\//u);
+  if (!m) return { comment: "", body: raw };
+  return { comment: m[0].replace(/^\s+/u, ""), body: raw.slice(m[0].length).replace(/^\n/u, "") };
+}
 
 function make(kind: CssRecordKind, input: DefineInput): Definition {
-  const { css: cssBuilder, ...metaRest } = input;
-  const meta: RecordMeta = { ...metaRest, kind };
-  // Append the size-alias and deprecated-alias twins to the CSS BODY (before the doc block is
-  // prepended), so each alias documents on this record's own page and the brace-based alias scanners
-  // never see the doc block's `{@link …}` braces. Both are no-ops for records without size/link modifiers.
-  const rules = (prefix: string): string =>
-    record(meta, withAliases(withSizeAliases(cssBuilder(prefix)), meta));
+  const { css: cssBuilder } = input;
+  // Deprecated-alias twins are discovered from the doc comment; the comment is prefix-independent, so
+  // parse the record once (any prefix) rather than per `rules()` call.
+  const aliasPairs = deprecatedAliasPairs(cssBuilder("instui-"));
+  // Append the size-alias and deprecated-alias twins to the CSS BODY ONLY (never the comment), so each
+  // alias documents on this record's own page and the brace scanners never see the `{@link …}` braces.
+  const rules = (prefix: string): string => {
+    const { comment, body } = splitLeadingDocComment(cssBuilder(prefix));
+    return `${comment}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
+  };
   return {
     name: input.name,
     kind,
-    meta,
     rules,
     css: (options: ComponentOptions = {}) => {
       const prefix = options.prefix || "";

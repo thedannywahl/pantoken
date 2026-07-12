@@ -2,18 +2,14 @@ import { defineComponent } from "../lib/define.ts";
 
 export const truncate = defineComponent({
   name: "truncate",
-  summary: "Single-line ellipsis truncation, or a multi-line clamp via `--lines`.",
-  modifiers: [
-    {
-      name: "-lines",
-      description:
-        "Multi-line clamp; set the line count via the `--lines` custom property (default 2).",
-    },
-  ],
-  examples: [
-    '<div class="instui-truncate">This single line keeps going past the edge of its box, so it ends in an ellipsis.</div>',
-  ],
   css: (p) => `
+/**
+ * @component truncate
+ * @summary Single-line ellipsis truncation, or a multi-line clamp via \`--lines\`.
+ * @modifier -lines — Multi-line clamp; set the line count via the \`--lines\` custom property (default 2).
+ * @example
+ * <div class="instui-truncate">This single line keeps going past the edge of its box, so it ends in an ellipsis.</div>
+ */
 .${p}truncate {
   overflow: hidden;
   text-overflow: ellipsis;

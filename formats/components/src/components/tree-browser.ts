@@ -3,52 +3,53 @@ import { CHEVRON_RIGHT_ICON } from "../lib/helpers.ts";
 
 export const treeBrowser = defineComponent({
   name: "tree-browser",
-  summary: "A disclosure tree of nested collections and leaf items, with rotating chevrons.",
-  modifiers: [
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  parts: [{ name: ".item", description: "A leaf entry in the tree." }],
-  examples: [
-    `<div class="instui-tree-browser" role="tree">
-  <details open>
-    <summary><span class="instui-icon -icon-folder"></span> Course files</summary>
-    <ul role="group">
-      <li>
-        <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Syllabus.pdf</a>
-      </li>
-      <li>
-        <details>
-          <summary><span class="instui-icon -icon-folder"></span> Week 1</summary>
-          <ul role="group">
-            <li>
-              <a class="item -selected" href="#"><span class="instui-icon -icon-file-text"></span> Reading.pdf</a>
-            </li>
-            <li>
-              <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Slides.pptx</a>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Rubric.docx</a>
-      </li>
-    </ul>
-  </details>
-</div>`,
-  ],
-  structure: `.instui-tree-browser
-  details
-    summary
-      .instui-icon.-icon-folder
-    ul
-      li
-        .item
-          .instui-icon.-icon-file-text`,
   css: (p) => {
     const root = `.${p}tree-browser`;
     const t = (k: string): string => `var(--instui-component-tree-browser-${k})`;
     return `
+/**
+ * @component tree-browser
+ * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .item — A leaf entry in the tree.
+ * @example
+ * <div class="instui-tree-browser" role="tree">
+ *   <details open>
+ *     <summary><span class="instui-icon -icon-folder"></span> Course files</summary>
+ *     <ul role="group">
+ *       <li>
+ *         <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Syllabus.pdf</a>
+ *       </li>
+ *       <li>
+ *         <details>
+ *           <summary><span class="instui-icon -icon-folder"></span> Week 1</summary>
+ *           <ul role="group">
+ *             <li>
+ *               <a class="item -selected" href="#"><span class="instui-icon -icon-file-text"></span> Reading.pdf</a>
+ *             </li>
+ *             <li>
+ *               <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Slides.pptx</a>
+ *             </li>
+ *           </ul>
+ *         </details>
+ *       </li>
+ *       <li>
+ *         <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Rubric.docx</a>
+ *       </li>
+ *     </ul>
+ *   </details>
+ * </div>
+ * @structure
+ * .instui-tree-browser
+ *   details
+ *     summary
+ *       .instui-icon.-icon-folder
+ *     ul
+ *       li
+ *         .item
+ *           .instui-icon.-icon-file-text
+ */
 ${root} {
   border-radius: ${t("border-radius")};
   font-family: ${t("tree-collection-font-family")};

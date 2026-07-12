@@ -3,15 +3,16 @@ import { CLOSE_ICON } from "../lib/helpers.ts";
 
 export const closeButton = defineComponent({
   name: "close-button",
-  summary:
-    "A transparent icon button that draws its own × glyph, in three sizes plus an inverse variant.",
-  modifiers: [
-    { name: "-color-inverse", description: "For dark backgrounds." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: ['<button class="instui-close-button -size-sm" aria-label="Close"></button>'],
   css: (p) => `
+/**
+ * @component close-button
+ * @summary A transparent icon button that draws its own × glyph, in three sizes plus an inverse variant.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <button class="instui-close-button -size-sm" aria-label="Close"></button>
+ */
 .${p}close-button {
   display: inline-flex;
   align-items: center;

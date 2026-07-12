@@ -3,70 +3,68 @@ import { scope } from "../lib/helpers.ts";
 
 export const calendar = defineComponent({
   name: "calendar",
-  summary: "A static month grid with navigation, weekday headers, and day cells.",
-  parts: [
-    { name: ".nav", description: "The month navigation row." },
-    { name: ".grid", description: "The seven-column day grid." },
-    { name: ".weekday", description: "A weekday column header." },
-    {
-      name: ".day",
-      description: "A day cell; `-today`, `-selected`, and `-outside-month` mark its state.",
-    },
-  ],
-  examples: [
-    `<div class="instui-calendar" role="table" aria-label="March 2026">
-  <div class="nav">
-    <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-left" aria-label="Previous month"></button>
-    <strong>March 2026</strong>
-    <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-right" aria-label="Next month"></button>
-  </div>
-  <div class="grid">
-    <span class="weekday">Su</span>
-    <span class="weekday">Mo</span>
-    <span class="weekday">Tu</span>
-    <span class="weekday">We</span>
-    <span class="weekday">Th</span>
-    <span class="weekday">Fr</span>
-    <span class="weekday">Sa</span>
-    <span class="day -outside-month">23</span>
-    <span class="day -outside-month">24</span>
-    <span class="day -outside-month">25</span>
-    <span class="day -outside-month">26</span>
-    <span class="day -outside-month">27</span>
-    <span class="day -outside-month">28</span>
-    <span class="day">1</span>
-    <span class="day">2</span>
-    <span class="day">3</span>
-    <span class="day">4</span>
-    <span class="day">5</span>
-    <span class="day">6</span>
-    <span class="day -today">7</span>
-    <span class="day">8</span>
-    <span class="day">9</span>
-    <span class="day">10</span>
-    <span class="day">11</span>
-    <span class="day -selected">12</span>
-    <span class="day">13</span>
-    <span class="day">14</span>
-    <span class="day">15</span>
-  </div>
-</div>`,
-  ],
-  structure: `.instui-calendar
-  .nav
-    .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-left
-    strong
-    .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-right
-  .grid
-    .weekday
-    .day.-outside-month
-    .day
-    .day.-today
-    .day.-selected`,
   css: (p) => {
     const root = `.${p}calendar`;
     const c = (k: string): string => `var(--instui-component-calendar-${k})`;
     return `
+/**
+ * @component calendar
+ * @summary A static month grid with navigation, weekday headers, and day cells.
+ * @part .nav — The month navigation row.
+ * @part .grid — The seven-column day grid.
+ * @part .weekday — A weekday column header.
+ * @part .day — A day cell; \`-today\`, \`-selected\`, and \`-outside-month\` mark its state.
+ * @example
+ * <div class="instui-calendar" role="table" aria-label="March 2026">
+ *   <div class="nav">
+ *     <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-left" aria-label="Previous month"></button>
+ *     <strong>March 2026</strong>
+ *     <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-right" aria-label="Next month"></button>
+ *   </div>
+ *   <div class="grid">
+ *     <span class="weekday">Su</span>
+ *     <span class="weekday">Mo</span>
+ *     <span class="weekday">Tu</span>
+ *     <span class="weekday">We</span>
+ *     <span class="weekday">Th</span>
+ *     <span class="weekday">Fr</span>
+ *     <span class="weekday">Sa</span>
+ *     <span class="day -outside-month">23</span>
+ *     <span class="day -outside-month">24</span>
+ *     <span class="day -outside-month">25</span>
+ *     <span class="day -outside-month">26</span>
+ *     <span class="day -outside-month">27</span>
+ *     <span class="day -outside-month">28</span>
+ *     <span class="day">1</span>
+ *     <span class="day">2</span>
+ *     <span class="day">3</span>
+ *     <span class="day">4</span>
+ *     <span class="day">5</span>
+ *     <span class="day">6</span>
+ *     <span class="day -today">7</span>
+ *     <span class="day">8</span>
+ *     <span class="day">9</span>
+ *     <span class="day">10</span>
+ *     <span class="day">11</span>
+ *     <span class="day -selected">12</span>
+ *     <span class="day">13</span>
+ *     <span class="day">14</span>
+ *     <span class="day">15</span>
+ *   </div>
+ * </div>
+ * @structure
+ * .instui-calendar
+ *   .nav
+ *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-left
+ *     strong
+ *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-right
+ *   .grid
+ *     .weekday
+ *     .day.-outside-month
+ *     .day
+ *     .day.-today
+ *     .day.-selected
+ */
 ${root} {
   display: inline-block;
   text-align: center;

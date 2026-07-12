@@ -3,34 +3,32 @@ import { scope } from "../lib/helpers.ts";
 
 export const menu = defineComponent({
   name: "menu",
-  summary: "A dropdown surface of items, groups, and separators.",
-  parts: [
-    {
-      name: ".item",
-      description: "A menu entry; add -disabled, -highlighted, or -active/[aria-checked].",
-    },
-    { name: ".group", description: "A labelled group heading." },
-    { name: ".separator", description: "A divider rule between items." },
-    { name: ".item-info", description: "Secondary info text within a menu item." },
-  ],
-  examples: [
-    `<div class="instui-menu">
-  <div class="group">Actions</div>
-  <div class="item">Edit</div>
-  <div class="item -active">Duplicate</div>
-  <div class="separator"></div>
-  <div class="item">Delete</div>
-</div>`,
-  ],
-  structure: `.instui-menu
-  .group
-  .item
-  .item.-active
-  .separator`,
-  demo: "self:menu",
   css: (p) => {
     const root = `.${p}menu`;
     return `
+/**
+ * @component menu
+ * @summary A dropdown surface of items, groups, and separators.
+ * @part .item — A menu entry; add -disabled, -highlighted, or -active/[aria-checked].
+ * @part .group — A labelled group heading.
+ * @part .separator — A divider rule between items.
+ * @part .item-info — Secondary info text within a menu item.
+ * @example
+ * <div class="instui-menu">
+ *   <div class="group">Actions</div>
+ *   <div class="item">Edit</div>
+ *   <div class="item -active">Duplicate</div>
+ *   <div class="separator"></div>
+ *   <div class="item">Delete</div>
+ * </div>
+ * @structure
+ * .instui-menu
+ *   .group
+ *   .item
+ *   .item.-active
+ *   .separator
+ * @demo self:menu
+ */
 ${root} {
   min-width: var(--instui-component-menu-min-width);
   max-width: var(--instui-component-menu-max-width);

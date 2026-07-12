@@ -41,7 +41,8 @@
     "@pantoken/plugin-colors": "workspace:*"
   },
   "devDependencies": {
-    "@cssdoc/core": "workspace:*",
+    "@cssdoc/config": "catalog:",
+    "@cssdoc/core": "catalog:",
     "@pantoken/icons": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*",

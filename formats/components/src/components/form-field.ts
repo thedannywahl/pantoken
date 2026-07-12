@@ -3,44 +3,42 @@ import { scope } from "../lib/helpers.ts";
 
 export const formField = defineComponent({
   name: "form-field",
-  summary:
-    "A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.",
-  modifiers: [
-    { name: "-inline", description: "Inline layout (shorthand for `-layout-inline`)." },
-    { name: "-layout-inline", description: "Inline layout: label beside the controls." },
-    { name: "-layout-stacked", description: "Stacked layout: label above the controls." },
-    { name: "-label-align-start", description: "Start-align the label text." },
-    { name: "-label-align-end", description: "End-align the label text." },
-    { name: "-invalid", description: "Invalid (error) state." },
-    { name: "-readonly", description: "Read-only state." },
-    { name: "-v-align-top", description: "Top-align the label with the controls." },
-    { name: "-v-align-bottom", description: "Bottom-align the label with the controls." },
-  ],
-  parts: [
-    { name: ".label", description: "The field label." },
-    { name: ".controls", description: "The control area beside or below the label." },
-  ],
-  examples: [
-    `<label class="instui-form-field">
-  <span class="label">Email address</span>
-  <span class="controls"><input class="instui-text-input" type="email" placeholder="you@example.com"></span>
-  <div class="instui-form-field-messages">
-    <span class="instui-form-field-message -type-hint">We'll never share it.</span>
-    <span class="instui-form-field-message -type-error">Enter a valid email address.</span>
-  </div>
-</label>`,
-  ],
-  structure: `.instui-form-field
-  .label
-  .controls
-    .instui-text-input
-  .instui-form-field-messages
-    .instui-form-field-message.-type-hint
-    .instui-form-field-message.-type-error`,
   css: (p) => {
     const root = `.${p}form-field`;
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
     return `
+/**
+ * @component form-field
+ * @summary A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.
+ * @modifier -inline — Inline layout (shorthand for \`-layout-inline\`).
+ * @modifier -layout-inline — Inline layout: label beside the controls.
+ * @modifier -layout-stacked — Stacked layout: label above the controls.
+ * @modifier -label-align-start — Start-align the label text.
+ * @modifier -label-align-end — End-align the label text.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -v-align-top — Top-align the label with the controls.
+ * @modifier -v-align-bottom — Bottom-align the label with the controls.
+ * @part .label — The field label.
+ * @part .controls — The control area beside or below the label.
+ * @example
+ * <label class="instui-form-field">
+ *   <span class="label">Email address</span>
+ *   <span class="controls"><input class="instui-text-input" type="email" placeholder="you@example.com"></span>
+ *   <div class="instui-form-field-messages">
+ *     <span class="instui-form-field-message -type-hint">We'll never share it.</span>
+ *     <span class="instui-form-field-message -type-error">Enter a valid email address.</span>
+ *   </div>
+ * </label>
+ * @structure
+ * .instui-form-field
+ *   .label
+ *   .controls
+ *     .instui-text-input
+ *   .instui-form-field-messages
+ *     .instui-form-field-message.-type-hint
+ *     .instui-form-field-message.-type-error
+ */
 ${root} {
   display: grid;
   grid-template-columns: 1fr;

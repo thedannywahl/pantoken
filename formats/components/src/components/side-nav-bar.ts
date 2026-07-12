@@ -3,40 +3,43 @@ import { scope } from "../lib/helpers.ts";
 
 export const sideNavBar = defineComponent({
   name: "side-nav-bar",
-  summary: "A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.",
-  modifiers: [{ name: "-minimized", description: "Collapse to icons only (labels hidden)." }],
-  parts: [{ name: ".item", description: "A navigation entry; `-selected` marks the active one." }],
-  examples: [
-    `<nav class="instui-side-nav-bar" aria-label="Primary">
-  <a class="item -selected" href="#">
-    <span class="instui-icon -icon-house"></span>
-    <span class="label">Home</span>
-  </a>
-  <a class="item" href="#">
-    <span class="instui-icon -icon-inbox"></span>
-    <span class="label">Inbox</span>
-  </a>
-  <a class="item" href="#">
-    <span class="instui-icon -icon-calendar"></span>
-    <span class="label">Calendar</span>
-  </a>
-  <a class="item" href="#">
-    <span class="instui-icon -icon-settings"></span>
-    <span class="label">Settings</span>
-  </a>
-</nav>`,
-  ],
-  structure: `.instui-side-nav-bar
-  .item.-selected
-    .instui-icon.-icon-house
-    .label
-  .item
-    .instui-icon.-icon-inbox
-    .label`,
   css: (p) => {
     const root = `.${p}side-nav-bar`;
     const s = (k: string): string => `var(--instui-component-side-nav-bar-${k})`;
     return `
+/**
+ * @component side-nav-bar
+ * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
+ * @modifier -minimized — Collapse to icons only (labels hidden).
+ * @part .item — A navigation entry; \`-selected\` marks the active one.
+ * @example
+ * <nav class="instui-side-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#">
+ *     <span class="instui-icon -icon-house"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="instui-icon -icon-inbox"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="instui-icon -icon-calendar"></span>
+ *     <span class="label">Calendar</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="instui-icon -icon-settings"></span>
+ *     <span class="label">Settings</span>
+ *   </a>
+ * </nav>
+ * @structure
+ * .instui-side-nav-bar
+ *   .item.-selected
+ *     .instui-icon.-icon-house
+ *     .label
+ *   .item
+ *     .instui-icon.-icon-inbox
+ *     .label
+ */
 ${root} {
   display: flex;
   flex-direction: column;

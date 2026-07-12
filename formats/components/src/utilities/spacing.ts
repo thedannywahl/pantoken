@@ -8,10 +8,6 @@ import { SPACING_SIDES, SPACING_STEPS } from "../lib/helpers.ts";
 
 export const spacing = defineUtility({
   name: "spacing",
-  className: ".instui-p-md",
-  summary:
-    "Margin and padding utilities — `.instui-m<side>-<step>` and `.instui-p<side>-<step>` on the spacing scale (sides `t`/`b`/`s`/`e`/`x`/`y` or none; margin also takes `auto`).",
-  examples: ['<div class="instui-p-md instui-mt-lg">Padded box with a large top margin.</div>'],
   css: (p) => {
     const rules: string[] = [];
     for (const [prop, letters, steps] of [
@@ -26,7 +22,14 @@ export const spacing = defineUtility({
         }
       }
     }
-    return rules.join("\n");
+    return `/**
+ * @utility spacing
+ * @class .instui-p-md
+ * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` and \`.instui-p<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none; margin also takes \`auto\`).
+ * @example
+ * <div class="instui-p-md instui-mt-lg">Padded box with a large top margin.</div>
+ */
+${rules.join("\n")}`;
   },
 });
 

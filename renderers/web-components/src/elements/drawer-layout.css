@@ -1,3 +1,13 @@
+/**
+ * @component drawer-layout
+ * @class :host
+ * @summary A slide-in tray beside a scrollable content area, with a draggable resize handle — the drawer-layout web component's shadow styles.
+ * @part .layout — The flex row holding the tray and content.
+ * @part .tray — The drawer panel.
+ * @part .handle — The drag-to-resize handle between the tray and content.
+ * @part .content — The main content area.
+ * @cssproperty --drawer-width — The tray's width (default 16rem).
+ */
 :host {
   display: block;
   block-size: 100%;

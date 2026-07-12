@@ -3,20 +3,21 @@ import { fieldControlBase } from "../lib/field-controls.ts";
 
 export const textArea = defineComponent({
   name: "text-area",
-  summary:
-    "A styled, resizable native `<textarea>` with the same states and sizes as the text input.",
-  modifiers: [
-    { name: "-disabled", description: "Disabled state." },
-    { name: "-invalid", description: "Invalid (error) state." },
-    { name: "-readonly", description: "Read-only state." },
-    { name: "-success", description: "Success (valid) state." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: ['<textarea class="instui-text-area" placeholder="Write a comment…"></textarea>'],
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-area-${s})`;
     return `
+/**
+ * @component text-area
+ * @summary A styled, resizable native \`<textarea>\` with the same states and sizes as the text input.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <textarea class="instui-text-area" placeholder="Write a comment…"></textarea>
+ */
 ${fieldControlBase(p, "text-area", "text-area")}
 .${p}text-area {
   padding: ${t("padding")};

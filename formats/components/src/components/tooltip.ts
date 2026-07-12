@@ -3,21 +3,24 @@ import { scope } from "../lib/helpers.ts";
 
 export const tooltip = defineComponent({
   name: "tooltip",
-  summary: "A CSS hover and focus tooltip bubble, positionable on any side.",
-  parts: [{ name: ".tip", description: "The bubble; `-placement-*` sets its side." }],
-  examples: [
-    `<span class="instui-tooltip" aria-describedby="tt-1">
-  <span class="instui-icon -icon-info"></span>
-  <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
-</span>`,
-  ],
-  structure: `.instui-tooltip
-  .instui-icon.-icon-info
-  .tip`,
   css: (p) => {
     const root = `.${p}tooltip`;
     const t = (k: string): string => `var(--instui-component-tooltip-${k})`;
     return `
+/**
+ * @component tooltip
+ * @summary A CSS hover and focus tooltip bubble, positionable on any side.
+ * @part .tip — The bubble; \`-placement-*\` sets its side.
+ * @example
+ * <span class="instui-tooltip" aria-describedby="tt-1">
+ *   <span class="instui-icon -icon-info"></span>
+ *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
+ * </span>
+ * @structure
+ * .instui-tooltip
+ *   .instui-icon.-icon-info
+ *   .tip
+ */
 ${root} {
   position: relative;
   display: inline-flex;

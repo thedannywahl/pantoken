@@ -3,32 +3,33 @@ import { scope } from "../lib/helpers.ts";
 
 export const tabs = defineComponent({
   name: "tabs",
-  summary: "A tabbed panel set: a tab list, selectable tabs, and their panels.",
-  parts: [
-    { name: ".list", description: "The row of tabs." },
-    { name: ".tab", description: "A single tab; `-selected` marks the active one." },
-    { name: ".panel", description: "The content panel for a tab." },
-  ],
-  examples: [
-    `<div class="instui-tabs">
-  <div class="list" role="tablist" aria-label="Default tabs">
-    <button class="tab -selected" role="tab" aria-selected="true">Overview</button>
-    <button class="tab" role="tab" aria-selected="false">Details</button>
-    <button class="tab -disabled" role="tab" aria-disabled="true" disabled>Disabled</button>
-    <button class="tab" role="tab" aria-selected="false">History</button>
-  </div>
-  <div class="panel" role="tabpanel">The Overview tab's content shows here.</div>
-</div>`,
-  ],
-  structure: `.instui-tabs
-  .list
-    .tab.-selected
-    .tab
-    .tab.-disabled
-  .panel`,
   css: (p) => {
     const root = `.${p}tabs`;
     return `
+/**
+ * @component tabs
+ * @summary A tabbed panel set: a tab list, selectable tabs, and their panels.
+ * @part .list — The row of tabs.
+ * @part .tab — A single tab; \`-selected\` marks the active one.
+ * @part .panel — The content panel for a tab.
+ * @example
+ * <div class="instui-tabs">
+ *   <div class="list" role="tablist" aria-label="Default tabs">
+ *     <button class="tab -selected" role="tab" aria-selected="true">Overview</button>
+ *     <button class="tab" role="tab" aria-selected="false">Details</button>
+ *     <button class="tab -disabled" role="tab" aria-disabled="true" disabled>Disabled</button>
+ *     <button class="tab" role="tab" aria-selected="false">History</button>
+ *   </div>
+ *   <div class="panel" role="tabpanel">The Overview tab's content shows here.</div>
+ * </div>
+ * @structure
+ * .instui-tabs
+ *   .list
+ *     .tab.-selected
+ *     .tab
+ *     .tab.-disabled
+ *   .panel
+ */
 ${root} {
   display: flex;
   flex-direction: column;

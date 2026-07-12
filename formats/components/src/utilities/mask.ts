@@ -2,16 +2,17 @@ import { defineUtility } from "../lib/define.ts";
 
 export const mask = defineUtility({
   name: "mask",
-  summary:
-    "An in-flow overlay that fills its positioned parent and centres its content — e.g. a spinner over a card. For a modal, prefer a native `<dialog>` (its `::backdrop` is the mask).",
-  examples: [
-    `<div style="position: relative">
-  <div class="instui-mask">
-    <span class="instui-spinner"></span>
-  </div>
-</div>`,
-  ],
   css: (p) => `
+/**
+ * @utility mask
+ * @summary An in-flow overlay that fills its positioned parent and centres its content — e.g. a spinner over a card. For a modal, prefer a native \`<dialog>\` (its \`::backdrop\` is the mask).
+ * @example
+ * <div style="position: relative">
+ *   <div class="instui-mask">
+ *     <span class="instui-spinner"></span>
+ *   </div>
+ * </div>
+ */
 /* An in-flow overlay for non-modal cases (e.g. a spinner over a card). For a modal, prefer a native
    <dialog>: its ::backdrop is the mask and reuses the same \`--instui-component-mask-background-color\`
    token (see modalRules). */

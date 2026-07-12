@@ -3,25 +3,25 @@ import { CHEVRON_RIGHT_ICON } from "../lib/helpers.ts";
 
 export const toggleGroup = defineComponent({
   name: "toggle-group",
-  summary:
-    "A bordered disclosure built on `<details>`: a chevron summary row and collapsible content.",
-  modifiers: [
-    { name: "-without-border", description: "Remove the border." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: [
-    `<details class="instui-toggle-group" open>
-  <summary>Advanced settings</summary>
-  <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
-</details>`,
-  ],
-  structure: `.instui-toggle-group
-  summary
-  div`,
   css: (p) => {
     const root = `.${p}toggle-group`;
     return `
+/**
+ * @component toggle-group
+ * @summary A bordered disclosure built on \`<details>\`: a chevron summary row and collapsible content.
+ * @modifier -without-border — Remove the border.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <details class="instui-toggle-group" open>
+ *   <summary>Advanced settings</summary>
+ *   <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
+ * </details>
+ * @structure
+ * .instui-toggle-group
+ *   summary
+ *   div
+ */
 ${root} {
   display: block;
   border: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);

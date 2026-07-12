@@ -4,35 +4,31 @@ import { alpha, darken } from "@pantoken/plugin-colors";
 
 export const button = defineComponent({
   name: "button",
-  summary: "An accessible action control, styled from the token palette; primary by default.",
-  modifiers: [
-    { name: "-color-secondary", description: "A lower-emphasis secondary action." },
-    {
-      name: "-color-tertiary",
-      description: "A text-style action (no fill or border until hover).",
-    },
-    { name: "-color-danger", description: "A destructive action." },
-    { name: "-shape-circle", description: "A round icon button." },
-    { name: "-condensed", description: "Tighter padding for dense toolbars." },
-    { name: "-toggle", description: "A pressed-state toggle button (drive with aria-pressed)." },
-    { name: "-without-background", description: "Drop the fill (ghost)." },
-    { name: "-color-success", description: "A positive/confirming action." },
-    { name: "-color-ai", description: "An AI action." },
-    { name: "-color-ai-secondary", description: "A lower-emphasis AI action." },
-    { name: "-color-primary-inverse", description: "Primary action for dark backgrounds." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-shape-square", description: "A square icon button." },
-    { name: "-display-block", description: "Full-width block button." },
-    {
-      name: "-ghost",
-      description: "Outline (ghost) style: a border in the colour's ghost tokens, no fill.",
-    },
-    { name: "-without-border", description: "Remove the border." },
-  ],
-  examples: ['<button class="instui-button">Primary</button>'],
-  demo: "self:button",
   css: (p) => `
+/**
+ * @component button
+ * @summary An accessible action control, styled from the token palette; primary by default.
+ * @modifier -color-secondary — A lower-emphasis secondary action.
+ * @modifier -color-tertiary — A text-style action (no fill or border until hover).
+ * @modifier -color-danger — A destructive action.
+ * @modifier -shape-circle — A round icon button.
+ * @modifier -condensed — Tighter padding for dense toolbars.
+ * @modifier -toggle — A pressed-state toggle button (drive with aria-pressed).
+ * @modifier -without-background — Drop the fill (ghost).
+ * @modifier -color-success — A positive/confirming action.
+ * @modifier -color-ai — An AI action.
+ * @modifier -color-ai-secondary — A lower-emphasis AI action.
+ * @modifier -color-primary-inverse — Primary action for dark backgrounds.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -shape-square — A square icon button.
+ * @modifier -display-block — Full-width block button.
+ * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
+ * @modifier -without-border — Remove the border.
+ * @example
+ * <button class="instui-button">Primary</button>
+ * @demo self:button
+ */
 .${p}button {
   display: inline-flex;
   align-items: center;

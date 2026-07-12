@@ -2,36 +2,38 @@ import { defineComponent } from "../lib/define.ts";
 
 export const text = defineComponent({
   name: "text",
-  summary: "Body-text typography with size, weight, colour, and style modifiers.",
-  modifiers: [
-    { name: "-color-brand", description: "Brand text colour." },
-    { name: "-color-secondary", description: "Secondary (muted) text colour." },
-    { name: "-color-ai", description: "AI-accent text colour." },
-    { name: "-color-success", description: "Success text colour." },
-    { name: "-color-warning", description: "Warning text colour." },
-    { name: "-color-danger", description: "Danger text colour." },
-    { name: "-color-primary-inverse", description: "On-dark (primary inverse) text colour." },
-    { name: "-weight-bold", description: "Bold weight." },
-    { name: "-style-italic", description: "Italic." },
-    { name: "-transform-uppercase", description: "Uppercase the text." },
-    { name: "-transform-lowercase", description: "Lowercase the text." },
-    { name: "-transform-capitalize", description: "Capitalise each word." },
-    { name: "-variant-content-small", description: "Small-content type preset." },
-    { name: "-variant-description-page", description: "Page-description type preset." },
-    { name: "-variant-description-section", description: "Section-description type preset." },
-    { name: "-variant-legend", description: "Legend type preset." },
-    { name: "-size-xs", description: "Extra small." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-size-xl", description: "Extra large." },
-  ],
-  examples: ['<span class="instui-text -size-xs">x-small text</span>'],
   css: (p) => {
     // Modifiers are dash-prefixed compound classes (`.instui-text.-small`): terse to author
     // (`<span class="instui-text -small -secondary">`), collision-safe (always compound with the base,
     // and `.-small` is rare in the wild), and — treeshakeable via PostCSS.
     const mod = (token: string, decls: string): string => `.${p}text.-${token} { ${decls} }`;
     return `
+/**
+ * @component text
+ * @summary Body-text typography with size, weight, colour, and style modifiers.
+ * @modifier -color-brand — Brand text colour.
+ * @modifier -color-secondary — Secondary (muted) text colour.
+ * @modifier -color-ai — AI-accent text colour.
+ * @modifier -color-success — Success text colour.
+ * @modifier -color-warning — Warning text colour.
+ * @modifier -color-danger — Danger text colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) text colour.
+ * @modifier -weight-bold — Bold weight.
+ * @modifier -style-italic — Italic.
+ * @modifier -transform-uppercase — Uppercase the text.
+ * @modifier -transform-lowercase — Lowercase the text.
+ * @modifier -transform-capitalize — Capitalise each word.
+ * @modifier -variant-content-small — Small-content type preset.
+ * @modifier -variant-description-page — Page-description type preset.
+ * @modifier -variant-description-section — Section-description type preset.
+ * @modifier -variant-legend — Legend type preset.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @example
+ * <span class="instui-text -size-xs">x-small text</span>
+ */
 .${p}text {
   font-family: var(--instui-component-text-content-font-family);
   color: var(--instui-component-text-base-color);

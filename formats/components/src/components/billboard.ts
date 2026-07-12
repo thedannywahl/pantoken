@@ -3,35 +3,33 @@ import { scope } from "../lib/helpers.ts";
 
 export const billboard = defineComponent({
   name: "billboard",
-  summary:
-    "A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.",
-  modifiers: [
-    { name: "-clickable", description: "Interactive (clickable) styling with hover feedback." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  parts: [
-    { name: ".hero", description: "The leading icon or image." },
-    { name: ".heading", description: "The billboard heading." },
-    { name: ".message", description: "The supporting message." },
-  ],
-  examples: [
-    `<div class="instui-billboard">
-  <span class="hero"><span class="instui-icon -icon-inbox"></span></span>
-  <div class="heading">No items yet</div>
-  <div class="message">Create your first item to get started.</div>
-</div>`,
-  ],
-  structure: `.instui-billboard
-  .hero
-    .instui-icon.-icon-inbox
-  .heading
-  .message`,
   css: (p) => {
     const root = `.${p}billboard`;
     // Root + size rules (incl. the size-scoped message font-size) stay outside @scope, prefixed, so the
     // size-alias post-processor's twins stay valid; the size-free element rules go inside.
     return `
+/**
+ * @component billboard
+ * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
+ * @modifier -clickable — Interactive (clickable) styling with hover feedback.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .hero — The leading icon or image.
+ * @part .heading — The billboard heading.
+ * @part .message — The supporting message.
+ * @example
+ * <div class="instui-billboard">
+ *   <span class="hero"><span class="instui-icon -icon-inbox"></span></span>
+ *   <div class="heading">No items yet</div>
+ *   <div class="message">Create your first item to get started.</div>
+ * </div>
+ * @structure
+ * .instui-billboard
+ *   .hero
+ *     .instui-icon.-icon-inbox
+ *   .heading
+ *   .message
+ */
 ${root} {
   display: block;
   text-align: center;

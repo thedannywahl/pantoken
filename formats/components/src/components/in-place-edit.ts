@@ -2,21 +2,18 @@ import { defineComponent } from "../lib/define.ts";
 
 export const inPlaceEdit = defineComponent({
   name: "in-place-edit",
-  summary: "A [contenteditable] that reads as text until focused, then shows input chrome.",
-  modifiers: [
-    {
-      name: "-readonly",
-      description: "Shown inline but not editable (no hover/focus affordance).",
-    },
-  ],
-  examples: [
-    '<span class="instui-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>',
-  ],
-  demo: "self:in-place-edit",
   css: (p) => {
     const root = `.${p}in-place-edit`;
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
     return `
+/**
+ * @component in-place-edit
+ * @summary A [contenteditable] that reads as text until focused, then shows input chrome.
+ * @modifier -readonly — Shown inline but not editable (no hover/focus affordance).
+ * @example
+ * <span class="instui-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>
+ * @demo self:in-place-edit
+ */
 ${root} {
   display: inline-block;
   min-inline-size: 2rem;

@@ -2,17 +2,18 @@ import { defineRule } from "../lib/define.ts";
 
 export const base = defineRule({
   name: "base",
-  className: "*",
-  summary:
-    "The opt-in global reset: `box-sizing`, the page surface, base text colour and font, `color-scheme`, and link defaults.",
-  examples: [
-    `<html>
-  <body>
-    <a href="/">A styled link on the base surface.</a>
-  </body>
-</html>`,
-  ],
   css: () => `
+/**
+ * @rule base
+ * @class *
+ * @summary The opt-in global reset: \`box-sizing\`, the page surface, base text colour and font, \`color-scheme\`, and link defaults.
+ * @example
+ * <html>
+ *   <body>
+ *     <a href="/">A styled link on the base surface.</a>
+ *   </body>
+ * </html>
+ */
 *,
 *::before,
 *::after {

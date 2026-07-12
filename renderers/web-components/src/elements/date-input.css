@@ -1,3 +1,11 @@
+/**
+ * @component date-input
+ * @class :host
+ * @summary The date input web component — a text field with a calendar trigger and an anchored dropdown.
+ * @part .field — The input wrapper (the dropdown's positioning anchor).
+ * @part .trigger — The calendar-open button inside the field.
+ * @part .dropdown — The anchored calendar popover.
+ */
 :host {
   display: inline-block;
 }

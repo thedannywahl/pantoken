@@ -8,11 +8,6 @@ import { defineUtility } from "../lib/define.ts";
 
 export const view = defineUtility({
   name: "view",
-  summary:
-    "The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor.",
-  examples: [
-    '<div class="instui-view -background-secondary -border-radius-medium -shadow-resting">A card-like surface.</div>',
-  ],
   css: (p) => {
     const rule = (mod: string, decls: string): string => `.${p}view.-${mod} { ${decls} }`;
     const rules: string[] = [`.${p}view { display: block; box-sizing: border-box; }`];
@@ -87,7 +82,13 @@ export const view = defineUtility({
     for (const c of ["auto", "default", "pointer", "not-allowed", "text", "move", "grab", "wait"]) {
       rules.push(rule(`cursor-${c}`, `cursor: ${c};`));
     }
-    return rules.join("\n");
+    return `/**
+ * @utility view
+ * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor.
+ * @example
+ * <div class="instui-view -background-secondary -border-radius-medium -shadow-resting">A card-like surface.</div>
+ */
+${rules.join("\n")}`;
   },
 });
 

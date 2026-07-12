@@ -2,27 +2,28 @@ import { defineComponent } from "../lib/define.ts";
 
 export const fileDrop = defineComponent({
   name: "file-drop",
-  summary: "A file dropzone with hover, accepted, and rejected states.",
-  modifiers: [
-    { name: "-accepted", description: "Drag state for an acceptable file." },
-    { name: "-hover", description: "Hover or drag-over state." },
-    { name: "-rejected", description: "Drag state for a rejected file." },
-  ],
-  examples: [
-    `<label class="instui-file-drop" id="fd">
-  <span class="instui-icon -icon-cloud-upload"></span>
-  <div class="instui-text"><strong>Drag an image here</strong>, or click to browse.</div>
-  <div class="instui-text -size-sm instui-fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
-  <input type="file" id="fd-input">
-</label>`,
-  ],
-  structure: `.instui-file-drop
-  .instui-icon.-icon-cloud-upload
-  .instui-text
-    strong
-  .instui-text.-size-sm.instui-fg-muted
-  input`,
   css: (p) => `
+/**
+ * @component file-drop
+ * @summary A file dropzone with hover, accepted, and rejected states.
+ * @modifier -accepted — Drag state for an acceptable file.
+ * @modifier -hover — Hover or drag-over state.
+ * @modifier -rejected — Drag state for a rejected file.
+ * @example
+ * <label class="instui-file-drop" id="fd">
+ *   <span class="instui-icon -icon-cloud-upload"></span>
+ *   <div class="instui-text"><strong>Drag an image here</strong>, or click to browse.</div>
+ *   <div class="instui-text -size-sm instui-fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
+ *   <input type="file" id="fd-input">
+ * </label>
+ * @structure
+ * .instui-file-drop
+ *   .instui-icon.-icon-cloud-upload
+ *   .instui-text
+ *     strong
+ *   .instui-text.-size-sm.instui-fg-muted
+ *   input
+ */
 .${p}file-drop {
   display: block;
   text-align: center;

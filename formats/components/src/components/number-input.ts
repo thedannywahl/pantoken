@@ -4,34 +4,35 @@ import { inputFacadeBase } from "../lib/field-controls.ts";
 
 export const numberInput = defineComponent({
   name: "number-input",
-  summary: "A number-input facade with a +/- spinner column.",
-  modifiers: [
-    { name: "-disabled", description: "Disabled state." },
-    { name: "-invalid", description: "Invalid (error) state." },
-    { name: "-readonly", description: "Read-only state." },
-    { name: "-success", description: "Success (valid) state." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: [
-    `<span class="instui-number-input">
-  <input id="qty" type="number" value="1" aria-label="Quantity">
-  <span class="arrows">
-    <button type="button" id="up" aria-hidden="true"></button>
-    <button class="down" type="button" id="down" aria-hidden="true"></button>
-  </span>
-</span>`,
-  ],
-  structure: `.instui-number-input
-  input
-  .arrows
-    button
-    .down`,
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
     const a = (s: string): string => `var(--instui-component-text-input-arrows-${s})`;
     const root = `.${p}number-input`;
     return `
+/**
+ * @component number-input
+ * @summary A number-input facade with a +/- spinner column.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <span class="instui-number-input">
+ *   <input id="qty" type="number" value="1" aria-label="Quantity">
+ *   <span class="arrows">
+ *     <button type="button" id="up" aria-hidden="true"></button>
+ *     <button class="down" type="button" id="down" aria-hidden="true"></button>
+ *   </span>
+ * </span>
+ * @structure
+ * .instui-number-input
+ *   input
+ *   .arrows
+ *     button
+ *     .down
+ */
 ${inputFacadeBase(p, "number-input")}
 /* the arrow column sits flush at the inline-end; drop the facade's end padding, and clip the column to
    the facade's radius so it doesn't overhang the rounded corners (Firefox especially). The focus ring

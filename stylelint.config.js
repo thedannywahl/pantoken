@@ -5,13 +5,29 @@
  * opinions — because the CSS is either terse shadow-DOM styling or machine-generated, and it uses
  * modern features (anchor positioning, `:host`/`::slotted`, `@scope`, `light-dark()`).
  *
- * No shareable config is extended (cssdoc's stylelint dep is a bespoke plugin, not a base config), so
- * this enables a focused set of core "possible error" rules directly — no extra dependency.
+ * We enable a focused set of core "possible error" rules directly, plus `@cssdoc/stylelint-plugin`'s
+ * `cssdoc/valid-doc-comments` — which validates the inline cssdoc doc comments against the record's
+ * actual CSS (rscss modifiers), the one shareable rule this project extends.
  *
  * @type {import("stylelint").Config}
  */
 export default {
+  plugins: ["@cssdoc/stylelint-plugin"],
   rules: {
+    // Validate the cssdoc doc comments against the CSS (rscss modifier convention: `.-color-secondary`).
+    // Two sub-rules are off because they clash with this library's authoring conventions:
+    // - `undocumented-modifier`: the utilities emit whole generated modifier families (View's
+    //   `.-display-*`/`.-cursor-*`, the `.-size-*` long-form + deprecated-alias twins) that aren't — and
+    //   shouldn't be — hand-documented one by one.
+    // - `name-not-in-css`: records document placeholder modifier families (`.-icon-<name>`) and abstract
+    //   parts (a consumer-supplied `.hero`) that have no literal selector in the shipped sheet.
+    "cssdoc/valid-doc-comments": [
+      true,
+      {
+        modifierConvention: "rscss",
+        rules: { "undocumented-modifier": "off", "name-not-in-css": "off" },
+      },
+    ],
     "annotation-no-unknown": true,
     "at-rule-no-unknown": [true, { ignoreAtRules: ["scope"] }],
     "block-no-empty": true,

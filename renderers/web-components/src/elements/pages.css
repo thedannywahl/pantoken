@@ -1,3 +1,8 @@
+/**
+ * @component pages
+ * @class :host
+ * @summary The pages web component — shows one slotted `[data-page]` at a time (the rest stay hidden).
+ */
 :host {
   display: block;
 }

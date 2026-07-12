@@ -12,8 +12,9 @@
  * merges into) and before `docs:api:locales`/vitepress.
  */
 import { createRequire } from "node:module";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { injectLiveExamples } from "@pantoken/typedoc-plugin-live-example";
 import type { CssDocEntry } from "@cssdoc/core";
@@ -153,6 +154,11 @@ const build = (): void => {
   }));
   resolveValue = makeResolver([...tokens, ...localTokens]);
 
+  // Parse with the components' shared cssdoc.json (formats/components/cssdoc.json) — the same tag
+  // configuration the per-record test guard uses — so docs and tests agree on the record model.
+  const componentsRoot = join(cssPath("package.json"), "..");
+  const configuration = CssDocConfigFile.loadForFolder(componentsRoot).toConfiguration();
+
   const outSubdir = "css";
   const { entries, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
@@ -161,6 +167,7 @@ const build = (): void => {
     label: "CSS",
     baseHref: "/api/css/",
     headingPrefix: "CSS:",
+    configuration,
     resolveToken,
     resolveDemo,
   });
@@ -184,6 +191,34 @@ const build = (): void => {
   console.log(
     `✓ CSS API: wrote ${entries.length} record page(s) to api/css/` +
       `${sidebarMerged ? " + merged the CSS section into the TypeDoc sidebar" : ""}`,
+  );
+
+  // ── Web-component shadow CSS ───────────────────────────────────────────────────
+  // The web components ship their own hand-authored shadow-DOM styles — a different package, rooted at
+  // `:host` with `--drawer-width`-style consumer-set props — so they emit as a SEPARATE sidebar section
+  // (its own `outSubdir`, so pages/index/sidebar don't clobber the class-based ones) and sit outside the
+  // token-drift guard above (their locals aren't `--instui-*` IR tokens).
+  const wcRoot = join(require.resolve("@pantoken/web-components/package.json"), "..");
+  const wcCss = [join(wcRoot, "src/elements"), join(wcRoot, "src/lib")].flatMap((dir) =>
+    readdirSync(dir)
+      .filter((f) => f.endsWith(".css"))
+      .sort()
+      .map((f) => join(dir, f)),
+  );
+  const wc = emitCssApi({
+    outputDirectory: join(docsRoot, "api"),
+    css: wcCss,
+    outSubdir: "css-web-components",
+    label: "Web components CSS",
+    baseHref: "/api/css-web-components/",
+    headingPrefix: "CSS:",
+    configuration,
+    resolveToken,
+    resolveDemo,
+  });
+  console.log(
+    `✓ CSS API: wrote ${wc.entries.length} web-component record page(s) to api/css-web-components/` +
+      `${wc.sidebarMerged ? " + merged the Web components CSS section into the TypeDoc sidebar" : ""}`,
   );
 };
 

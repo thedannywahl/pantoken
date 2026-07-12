@@ -2,32 +2,6 @@ import { defineComponent } from "../lib/define.ts";
 
 export const avatar = defineComponent({
   name: "avatar",
-  summary: "A user avatar showing initials or an image, circular by default.",
-  modifiers: [
-    { name: "-color-ai", description: "AI-accent palette colour." },
-    { name: "-color-ash", description: "Ash palette colour." },
-    { name: "-color-blue", description: "Blue palette colour." },
-    { name: "-color-green", description: "Green palette colour." },
-    { name: "-color-grey", description: "Grey palette colour." },
-    { name: "-color-orange", description: "Orange palette colour." },
-    { name: "-color-red", description: "Red palette colour." },
-    { name: "-has-inverse-color", description: "Use the inverse (on-dark) text colour." },
-    { name: "-shape-rectangle", description: "Square (rectangular) shape instead of a circle." },
-    { name: "-show-border", description: "Add a border ring." },
-    { name: "-size-2xs", description: "Two sizes smaller." },
-    { name: "-size-xs", description: "Extra small." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-size-xl", description: "Extra large." },
-    { name: "-size-2xl", description: "Two sizes larger." },
-    { name: "-color-accent1", deprecated: "{@link -color-blue}" },
-    { name: "-color-accent2", deprecated: "{@link -color-green}" },
-    { name: "-color-accent3", deprecated: "{@link -color-red}" },
-    { name: "-color-accent4", deprecated: "{@link -color-orange}" },
-    { name: "-color-accent5", deprecated: "{@link -color-ash}" },
-    { name: "-color-accent6", deprecated: "{@link -color-grey}" },
-  ],
-  examples: ['<span class="instui-avatar">DW</span>'],
   css: (p) => {
     // Default mode: the colour tints the initials (transparent surface). Inverse mode: the colour fills
     // the surface and the initials go on-colour (that rule is more specific, so it wins when combined).
@@ -35,6 +9,34 @@ export const avatar = defineComponent({
       `.${p}avatar.-color-${name} { color: var(--instui-component-avatar-${name}-text-color); }
 .${p}avatar.-color-${name}.-has-inverse-color { background: var(--instui-component-avatar-${name}-background-color); }`;
     return `
+/**
+ * @component avatar
+ * @summary A user avatar showing initials or an image, circular by default.
+ * @modifier -color-ai — AI-accent palette colour.
+ * @modifier -color-ash — Ash palette colour.
+ * @modifier -color-blue — Blue palette colour.
+ * @modifier -color-green — Green palette colour.
+ * @modifier -color-grey — Grey palette colour.
+ * @modifier -color-orange — Orange palette colour.
+ * @modifier -color-red — Red palette colour.
+ * @modifier -has-inverse-color — Use the inverse (on-dark) text colour.
+ * @modifier -shape-rectangle — Square (rectangular) shape instead of a circle.
+ * @modifier -show-border — Add a border ring.
+ * @modifier -size-2xs — Two sizes smaller.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @modifier -size-2xl — Two sizes larger.
+ * @modifier -color-accent1 — @deprecated {@link -color-blue}
+ * @modifier -color-accent2 — @deprecated {@link -color-green}
+ * @modifier -color-accent3 — @deprecated {@link -color-red}
+ * @modifier -color-accent4 — @deprecated {@link -color-orange}
+ * @modifier -color-accent5 — @deprecated {@link -color-ash}
+ * @modifier -color-accent6 — @deprecated {@link -color-grey}
+ * @example
+ * <span class="instui-avatar">DW</span>
+ */
 .${p}avatar {
   display: inline-flex;
   align-items: center;

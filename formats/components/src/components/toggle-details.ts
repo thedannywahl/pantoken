@@ -3,20 +3,20 @@ import { CHEVRON_RIGHT_ICON } from "../lib/helpers.ts";
 
 export const toggleDetails = defineComponent({
   name: "toggle-details",
-  summary: "A styled native `<details>` disclosure with a rotating chevron.",
-  modifiers: [
-    { name: "-variant-filled", description: "Filled (surface) variant." },
-    { name: "-chevron-end", description: "Place the chevron after the summary." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: [
-    `<details class="instui-toggle-details" open>
-  <summary>What ships in this package?</summary>
-  Class-based component styles, built from the Instructure tokens, plus a prose layer.
-</details>`,
-  ],
   css: (p) => `
+/**
+ * @component toggle-details
+ * @summary A styled native \`<details>\` disclosure with a rotating chevron.
+ * @modifier -variant-filled — Filled (surface) variant.
+ * @modifier -chevron-end — Place the chevron after the summary.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <details class="instui-toggle-details" open>
+ *   <summary>What ships in this package?</summary>
+ *   Class-based component styles, built from the Instructure tokens, plus a prose layer.
+ * </details>
+ */
 .${p}toggle-details {
   color: var(--instui-component-toggle-details-text-color);
   font-family: var(--instui-component-toggle-details-font-family);

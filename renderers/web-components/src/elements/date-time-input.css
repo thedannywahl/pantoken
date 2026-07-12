@@ -1,3 +1,9 @@
+/**
+ * @component date-time-input
+ * @class :host
+ * @summary The date-time input web component — a date field and a time field side by side.
+ * @part .dt — The inline-flex row holding the date and time fields.
+ */
 :host {
   display: inline-block;
 }

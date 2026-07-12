@@ -4,28 +4,29 @@ import { fieldControlBase } from "../lib/field-controls.ts";
 
 export const simpleSelect = defineComponent({
   name: "simple-select",
-  summary: "A styled native `<select>` with a caret, matching the text-input states and sizes.",
-  modifiers: [
-    { name: "-disabled", description: "Disabled state." },
-    { name: "-invalid", description: "Invalid (error) state." },
-    { name: "-readonly", description: "Read-only state." },
-    { name: "-success", description: "Success (valid) state." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: [
-    `<select class="instui-simple-select">
-  <option>Choose a fruit…</option>
-  <option>Apple</option>
-  <option>Orange</option>
-  <option>Pear</option>
-</select>`,
-  ],
-  structure: `.instui-simple-select
-  option`,
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
     return `
+/**
+ * @component simple-select
+ * @summary A styled native \`<select>\` with a caret, matching the text-input states and sizes.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <select class="instui-simple-select">
+ *   <option>Choose a fruit…</option>
+ *   <option>Apple</option>
+ *   <option>Orange</option>
+ *   <option>Pear</option>
+ * </select>
+ * @structure
+ * .instui-simple-select
+ *   option
+ */
 ${fieldControlBase(p, "simple-select", "text-input")}
 .${p}simple-select {
   block-size: ${t("height-md")};

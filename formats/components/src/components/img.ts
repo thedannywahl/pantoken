@@ -2,18 +2,20 @@ import { defineComponent } from "../lib/define.ts";
 
 export const img = defineComponent({
   name: "img",
-  summary: "A styled `<img>` with display, crop, and effect modifiers that stack.",
-  modifiers: [
-    { name: "-display-block", description: "Display as a block element." },
-    { name: "-constrain-cover", description: "Scale to fill the box (cover)." },
-    { name: "-constrain-contain", description: "Scale to fit within the box (contain)." },
-    { name: "-with-grayscale", description: "Apply a grayscale effect." },
-    { name: "-with-blur", description: "Apply a blur effect." },
-  ],
-  examples: ['<img class="instui-img" alt="Gradient">'],
   css: (p) => {
     const root = `.${p}img`;
     return `
+/**
+ * @component img
+ * @summary A styled \`<img>\` with display, crop, and effect modifiers that stack.
+ * @modifier -display-block — Display as a block element.
+ * @modifier -constrain-cover — Scale to fill the box (cover).
+ * @modifier -constrain-contain — Scale to fit within the box (contain).
+ * @modifier -with-grayscale — Apply a grayscale effect.
+ * @modifier -with-blur — Apply a blur effect.
+ * @example
+ * <img class="instui-img" alt="Gradient">
+ */
 ${root} {
   display: inline-block;
   max-inline-size: 100%;

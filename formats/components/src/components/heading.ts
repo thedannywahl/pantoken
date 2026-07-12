@@ -3,28 +3,30 @@ import { headingLevelRules } from "../lib/headings.ts";
 
 export const heading = defineComponent({
   name: "heading",
-  summary: "Heading typography from `-level-h1` to `-level-h6`.",
-  modifiers: [
-    { name: "-level-h1", description: "Render at the h1 type scale." },
-    { name: "-level-h2", description: "Render at the h2 type scale." },
-    { name: "-level-h3", description: "Render at the h3 type scale." },
-    { name: "-level-h4", description: "Render at the h4 type scale." },
-    { name: "-level-h5", description: "Render at the h5 type scale." },
-    { name: "-level-h6", description: "Render at the h6 type scale." },
-    { name: "-color-secondary", description: "Secondary (muted) colour." },
-    { name: "-color-ai", description: "AI-accent colour." },
-    { name: "-color-primary-inverse", description: "On-dark (primary inverse) colour." },
-    { name: "-border-top", description: "Add a top rule." },
-    { name: "-border-bottom", description: "Add a bottom rule." },
-    { name: "-variant-label", description: "Label type preset." },
-    { name: "-variant-title-page", description: "Page-title preset." },
-    { name: "-variant-title-section", description: "Section-title preset." },
-    { name: "-variant-title-card-mini", description: "Mini card-title preset." },
-    { name: "-variant-title-card-regular", description: "Regular card-title preset." },
-    { name: "-variant-title-card-section", description: "Card section-title preset." },
-  ],
-  examples: ['<div class="instui-heading -level-h1">Heading h1</div>'],
   css: (p) => `
+/**
+ * @component heading
+ * @summary Heading typography from \`-level-h1\` to \`-level-h6\`.
+ * @modifier -level-h1 — Render at the h1 type scale.
+ * @modifier -level-h2 — Render at the h2 type scale.
+ * @modifier -level-h3 — Render at the h3 type scale.
+ * @modifier -level-h4 — Render at the h4 type scale.
+ * @modifier -level-h5 — Render at the h5 type scale.
+ * @modifier -level-h6 — Render at the h6 type scale.
+ * @modifier -color-secondary — Secondary (muted) colour.
+ * @modifier -color-ai — AI-accent colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) colour.
+ * @modifier -border-top — Add a top rule.
+ * @modifier -border-bottom — Add a bottom rule.
+ * @modifier -variant-label — Label type preset.
+ * @modifier -variant-title-page — Page-title preset.
+ * @modifier -variant-title-section — Section-title preset.
+ * @modifier -variant-title-card-mini — Mini card-title preset.
+ * @modifier -variant-title-card-regular — Regular card-title preset.
+ * @modifier -variant-title-card-section — Card section-title preset.
+ * @example
+ * <div class="instui-heading -level-h1">Heading h1</div>
+ */
 .${p}heading {
   display: block;
   margin: 0;

@@ -2,26 +2,27 @@ import { defineComponent } from "../lib/define.ts";
 
 export const list = defineComponent({
   name: "list",
-  summary: "A list with token-driven item spacing.",
-  modifiers: [
-    { name: "-ordered", description: "Ordered-list numbering." },
-    { name: "-inline", description: "Lay items out inline (horizontal)." },
-    { name: "-unstyled", description: "Remove markers and padding." },
-    { name: "-delimiter-solid", description: "Separate items with a solid rule." },
-    { name: "-delimiter-dashed", description: "Separate items with a dashed rule." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: [
-    `<ul class="instui-list">
-  <li>First item</li>
-  <li>Second item</li>
-  <li>Third item</li>
-</ul>`,
-  ],
-  structure: `.instui-list
-  li`,
   css: (p) => `
+/**
+ * @component list
+ * @summary A list with token-driven item spacing.
+ * @modifier -ordered — Ordered-list numbering.
+ * @modifier -inline — Lay items out inline (horizontal).
+ * @modifier -unstyled — Remove markers and padding.
+ * @modifier -delimiter-solid — Separate items with a solid rule.
+ * @modifier -delimiter-dashed — Separate items with a dashed rule.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <ul class="instui-list">
+ *   <li>First item</li>
+ *   <li>Second item</li>
+ *   <li>Third item</li>
+ * </ul>
+ * @structure
+ * .instui-list
+ *   li
+ */
 .${p}list {
   color: var(--instui-component-list-item-color);
   font-family: var(--instui-component-list-item-font-family);

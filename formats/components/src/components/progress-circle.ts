@@ -2,29 +2,6 @@ import { defineComponent } from "../lib/define.ts";
 
 export const progressCircle = defineComponent({
   name: "progress-circle",
-  summary: "A circular progress ring driven by a `--value` (0–100) custom property.",
-  modifiers: [
-    { name: "-color-brand", description: "Brand meter colour." },
-    { name: "-color-info", description: "Informational meter colour." },
-    { name: "-color-success", description: "Success meter colour." },
-    { name: "-color-warning", description: "Warning meter colour." },
-    { name: "-color-danger", description: "Danger meter colour." },
-    { name: "-color-primary-inverse", description: "On-dark (primary inverse) meter colour." },
-    { name: "-size-xs", description: "Extra small." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-meter-color-brand", deprecated: "{@link -color-brand}" },
-    { name: "-meter-color-info", deprecated: "{@link -color-info}" },
-    { name: "-meter-color-success", deprecated: "{@link -color-success}" },
-    { name: "-meter-color-warning", deprecated: "{@link -color-warning}" },
-    { name: "-meter-color-alert", deprecated: "{@link -color-warning}" },
-    { name: "-meter-color-danger", deprecated: "{@link -color-danger}" },
-  ],
-  examples: [
-    `<span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">
-  <span class="value">25%</span>
-</span>`,
-  ],
   css: (p) => {
     const root = `.${p}progress-circle`;
     // Meter colour uses our normalized `-color-*` scheme (canonical); InstUI's `meterColor` names
@@ -41,6 +18,29 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
   --pantoken-pc-stroke: var(--instui-component-progress-circle-${key}-stroke-width);
 }`;
     return `
+/**
+ * @component progress-circle
+ * @summary A circular progress ring driven by a \`--value\` (0–100) custom property.
+ * @modifier -color-brand — Brand meter colour.
+ * @modifier -color-info — Informational meter colour.
+ * @modifier -color-success — Success meter colour.
+ * @modifier -color-warning — Warning meter colour.
+ * @modifier -color-danger — Danger meter colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -meter-color-brand — @deprecated {@link -color-brand}
+ * @modifier -meter-color-info — @deprecated {@link -color-info}
+ * @modifier -meter-color-success — @deprecated {@link -color-success}
+ * @modifier -meter-color-warning — @deprecated {@link -color-warning}
+ * @modifier -meter-color-alert — @deprecated {@link -color-warning}
+ * @modifier -meter-color-danger — @deprecated {@link -color-danger}
+ * @example
+ * <span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">
+ *   <span class="value">25%</span>
+ * </span>
+ */
 /* --value (0–100) drives the arc; registered so the conic-gradient re-evaluates (and can transition). */
 @property --value { syntax: "<number>"; inherits: true; initial-value: 0; }
 ${root} {

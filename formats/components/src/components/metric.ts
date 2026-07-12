@@ -3,28 +3,27 @@ import { scope } from "../lib/helpers.ts";
 
 export const metric = defineComponent({
   name: "metric",
-  summary: "A labelled statistic — a large value over a caption.",
-  modifiers: [
-    { name: "-text-align-start", description: "Start-align the value and label." },
-    { name: "-text-align-center", description: "Centre the value and label." },
-    { name: "-text-align-end", description: "End-align the value and label." },
-  ],
-  parts: [
-    { name: ".value", description: "The large metric number." },
-    { name: ".label", description: "The caption beneath the value." },
-  ],
-  examples: [
-    `<div class="instui-metric">
-  <span class="value">1,284</span>
-  <span class="label">Active users</span>
-</div>`,
-  ],
-  structure: `.instui-metric
-  .value
-  .label`,
   css: (p) => {
     const root = `.${p}metric`;
     return `
+/**
+ * @component metric
+ * @summary A labelled statistic — a large value over a caption.
+ * @modifier -text-align-start — Start-align the value and label.
+ * @modifier -text-align-center — Centre the value and label.
+ * @modifier -text-align-end — End-align the value and label.
+ * @part .value — The large metric number.
+ * @part .label — The caption beneath the value.
+ * @example
+ * <div class="instui-metric">
+ *   <span class="value">1,284</span>
+ *   <span class="label">Active users</span>
+ * </div>
+ * @structure
+ * .instui-metric
+ *   .value
+ *   .label
+ */
 ${root} {
   display: inline-flex;
   flex-direction: column;

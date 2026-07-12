@@ -2,10 +2,13 @@ import { defineUtility } from "../lib/define.ts";
 
 export const screenReaderContent = defineUtility({
   name: "screen-reader-content",
-  summary:
-    "Visually hides content while keeping it available to assistive tech (the standard clip pattern).",
-  examples: ['<span class="instui-screen-reader-content">Opens in a new window</span>'],
   css: (p) => `
+/**
+ * @utility screen-reader-content
+ * @summary Visually hides content while keeping it available to assistive tech (the standard clip pattern).
+ * @example
+ * <span class="instui-screen-reader-content">Opens in a new window</span>
+ */
 .${p}screen-reader-content {
   position: absolute;
   inline-size: 1px;

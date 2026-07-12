@@ -3,38 +3,37 @@ import { scope } from "../lib/helpers.ts";
 
 export const byline = defineComponent({
   name: "byline",
-  summary: "A media object: a hero figure beside a title and description.",
-  modifiers: [
-    { name: "-align-content-center", description: "Vertically centre the text beside the hero." },
-    { name: "-align-content-top", description: "Align the text to the top of the hero." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-md", description: "Medium." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  parts: [
-    { name: ".hero", description: "The leading figure (icon, image, or avatar)." },
-    { name: ".title", description: "The heading text." },
-    { name: ".description", description: "The supporting body text." },
-  ],
-  examples: [
-    `<div class="instui-byline -size-md">
-  <span class="instui-icon -icon-megaphone"></span>
-  <div>
-    <div class="title">What's new</div>
-    <div class="description">The figure can be any leading visual — an icon, an avatar, or an image.</div>
-  </div>
-</div>`,
-  ],
-  structure: `.instui-byline.-size-md
-  .instui-icon.-icon-megaphone
-  div
-    .title
-    .description`,
   css: (p) => {
     const root = `.${p}byline`;
     // Root + size/align rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
     // valid; only the size-free element rules go inside.
     return `
+/**
+ * @component byline
+ * @summary A media object: a hero figure beside a title and description.
+ * @modifier -align-content-center — Vertically centre the text beside the hero.
+ * @modifier -align-content-top — Align the text to the top of the hero.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — Medium.
+ * @modifier -size-lg — Large.
+ * @part .hero — The leading figure (icon, image, or avatar).
+ * @part .title — The heading text.
+ * @part .description — The supporting body text.
+ * @example
+ * <div class="instui-byline -size-md">
+ *   <span class="instui-icon -icon-megaphone"></span>
+ *   <div>
+ *     <div class="title">What's new</div>
+ *     <div class="description">The figure can be any leading visual — an icon, an avatar, or an image.</div>
+ *   </div>
+ * </div>
+ * @structure
+ * .instui-byline.-size-md
+ *   .instui-icon.-icon-megaphone
+ *   div
+ *     .title
+ *     .description
+ */
 ${root} {
   display: flex;
   align-items: center;

@@ -2,8 +2,6 @@ import { defineComponent } from "../lib/define.ts";
 
 export const rangeInput = defineComponent({
   name: "range-input",
-  summary: "A styled range slider with an inverse value bubble.",
-  examples: ['<input class="instui-range-input" id="r1" type="range" value="30">'],
   css: (p) => {
     const v = (s: string): string => `var(--instui-component-range-input-${s})`;
     const track = `
@@ -20,6 +18,12 @@ export const rangeInput = defineComponent({
   box-shadow: 0 0 0 0 ${v("handle-shadow-color")};
   cursor: pointer;`;
     return `
+/**
+ * @component range-input
+ * @summary A styled range slider with an inverse value bubble.
+ * @example
+ * <input class="instui-range-input" id="r1" type="range" value="30">
+ */
 .${p}range-input {
   -webkit-appearance: none;
   appearance: none;

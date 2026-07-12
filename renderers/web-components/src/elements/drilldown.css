@@ -1,3 +1,8 @@
+/**
+ * @component drilldown
+ * @class .instui-menu
+ * @summary The drilldown menu's back-navigation row, layered on the `.instui-menu` component.
+ */
 .instui-menu .-drilldown-back {
   display: flex;
   align-items: center;

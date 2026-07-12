@@ -8,10 +8,6 @@ import { defineUtility } from "../lib/define.ts";
 
 export const responsive = defineUtility({
   name: "responsive",
-  className: ".instui-hidden-max-md",
-  summary:
-    "Responsive visibility: `.instui-hidden-max-<bp>` / `-hidden-min-<bp>` hide by viewport width; the `-cq-` variants react to a `.instui-container` ancestor's width instead. Breakpoints `sm`/`md`/`lg`/`xl`.",
-  examples: ['<div class="instui-hidden-max-sm">Hidden at or below the small breakpoint.</div>'],
   css: (p) => {
     const bp: [string, string][] = [
       ["sm", "30rem"],
@@ -35,7 +31,14 @@ export const responsive = defineUtility({
           `@container (min-width: ${w}) { .${p}cq-hidden-min-${name} { display: none !important; } }`,
       )
       .join("\n");
-    return `${viewport}\n.${p}container { container-type: inline-size; }\n${container}\n`;
+    return `
+/**
+ * @utility responsive
+ * @class .instui-hidden-max-md
+ * @summary Responsive visibility: \`.instui-hidden-max-<bp>\` / \`-hidden-min-<bp>\` hide by viewport width; the \`-cq-\` variants react to a \`.instui-container\` ancestor's width instead. Breakpoints \`sm\`/\`md\`/\`lg\`/\`xl\`.
+ * @example
+ * <div class="instui-hidden-max-sm">Hidden at or below the small breakpoint.</div>
+ */${viewport}\n.${p}container { container-type: inline-size; }\n${container}\n`;
   },
 });
 

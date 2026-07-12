@@ -2,23 +2,25 @@ import { defineComponent } from "../lib/define.ts";
 
 export const radio = defineComponent({
   name: "radio",
-  summary: "A native radio button and its label.",
-  modifiers: [
-    { name: "-context-off", description: "Off/neutral context colour (toggle variant)." },
-    { name: "-context-success", description: "Success context colour (toggle variant)." },
-    { name: "-context-warning", description: "Warning context colour (toggle variant)." },
-    { name: "-context-danger", description: "Danger context colour (toggle variant)." },
-    { name: "-readonly", description: "Read-only state." },
-    { name: "-variant-toggle", description: "Render as a segmented toggle button." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-toggle", deprecated: "{@link -variant-toggle}" },
-  ],
-  examples: ['<label class="instui-radio"><input type="radio" name="r" checked> Option A</label>'],
   css: (p) => {
     const std = `.${p}radio:not(.-variant-toggle):not(.-toggle)`;
     const tog = `.${p}radio.-variant-toggle`;
     return `
+/**
+ * @component radio
+ * @summary A native radio button and its label.
+ * @modifier -context-off — Off/neutral context colour (toggle variant).
+ * @modifier -context-success — Success context colour (toggle variant).
+ * @modifier -context-warning — Warning context colour (toggle variant).
+ * @modifier -context-danger — Danger context colour (toggle variant).
+ * @modifier -readonly — Read-only state.
+ * @modifier -variant-toggle — Render as a segmented toggle button.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -toggle — @deprecated {@link -variant-toggle}
+ * @example
+ * <label class="instui-radio"><input type="radio" name="r" checked> Option A</label>
+ */
 .${p}radio {
   display: inline-flex;
   align-items: center;

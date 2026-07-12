@@ -2,19 +2,20 @@ import { defineComponent } from "../lib/define.ts";
 
 export const link = defineComponent({
   name: "link",
-  summary:
-    "A styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms.",
-  modifiers: [
-    { name: "-color-inverse", description: "For dark backgrounds." },
-    { name: "-inline", description: "Inline link, underlined within flowing text." },
-    { name: "-sm", description: "Small inline link (used with `-inline`)." },
-    { name: "-lg", description: "Large inline link (used with `-inline`)." },
-    { name: "-unstyled", description: "Strip link styling: inherit colour, no underline." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  examples: ['<a class="instui-link" href="#">A styled link</a>'],
   css: (p) => `
+/**
+ * @component link
+ * @summary A styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -inline — Inline link, underlined within flowing text.
+ * @modifier -sm — Small inline link (used with \`-inline\`).
+ * @modifier -lg — Large inline link (used with \`-inline\`).
+ * @modifier -unstyled — Strip link styling: inherit colour, no underline.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @example
+ * <a class="instui-link" href="#">A styled link</a>
+ */
 .${p}link {
   display: inline-flex;
   align-items: center;

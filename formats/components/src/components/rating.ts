@@ -3,25 +3,26 @@ import { scope } from "../lib/helpers.ts";
 
 export const rating = defineComponent({
   name: "rating",
-  summary: "A star rating with filled and empty glyphs and an optional numeric label.",
-  modifiers: [
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  parts: [{ name: ".label", description: 'The numeric label, e.g. "3/5".' }],
-  examples: [
-    `<span class="instui-rating -size-sm" role="img" aria-label="2 out of 3 stars">
-  <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star"></span>
-  <span class="label">2/3</span>
-</span>`,
-  ],
-  structure: `.instui-rating.-size-sm
-  .instui-icon.-icon-star-solid
-  .instui-icon.-icon-star
-  .label`,
   css: (p) => {
     const root = `.${p}rating`;
     return `
+/**
+ * @component rating
+ * @summary A star rating with filled and empty glyphs and an optional numeric label.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .label — The numeric label, e.g. "3/5".
+ * @example
+ * <span class="instui-rating -size-sm" role="img" aria-label="2 out of 3 stars">
+ *   <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star"></span>
+ *   <span class="label">2/3</span>
+ * </span>
+ * @structure
+ * .instui-rating.-size-sm
+ *   .instui-icon.-icon-star-solid
+ *   .instui-icon.-icon-star
+ *   .label
+ */
 ${root} {
   display: inline-flex;
   align-items: center;

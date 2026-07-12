@@ -3,16 +3,18 @@ import { CLOSE_ICON } from "../lib/helpers.ts";
 
 export const tag = defineComponent({
   name: "tag",
-  summary: "An inline chip for a keyword or filter.",
-  modifiers: [
-    { name: "-size-sm", description: "A small tag." },
-    { name: "-size-lg", description: "A large tag." },
-    { name: "-inline", description: "Reads inline with text and gets a trailing dismiss glyph." },
-    { name: "-readonly", description: "Read-only (non-dismissable) tag." },
-  ],
-  examples: ['<span class="instui-tag -size-sm">small</span>'],
-  demo: "self:tag",
   css: (p) => `
+/**
+ * @component tag
+ * @summary An inline chip for a keyword or filter.
+ * @modifier -size-sm — A small tag.
+ * @modifier -size-lg — A large tag.
+ * @modifier -inline — Reads inline with text and gets a trailing dismiss glyph.
+ * @modifier -readonly — Read-only (non-dismissable) tag.
+ * @example
+ * <span class="instui-tag -size-sm">small</span>
+ * @demo self:tag
+ */
 .${p}tag {
   display: inline-flex;
   align-items: center;

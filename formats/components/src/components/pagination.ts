@@ -3,42 +3,36 @@ import { scope } from "../lib/helpers.ts";
 
 export const pagination = defineComponent({
   name: "pagination",
-  summary:
-    "Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.",
-  modifiers: [{ name: "-variant-input", description: "Compact variant with a page-number input." }],
-  parts: [
-    {
-      name: ".page",
-      description: "A page link or button; the current page carries `[aria-current]`.",
-    },
-    { name: ".arrow", description: "A first, previous, next, or last control." },
-    { name: ".ellipsis", description: "The gap marker between page ranges." },
-    {
-      name: ".page-input-label",
-      description: "The label for the page-number input (input variant).",
-    },
-  ],
-  examples: [
-    `<nav class="instui-pagination" aria-label="Pagination">
-  <button class="arrow" type="button" aria-label="First page" disabled><span class="instui-icon -icon-chevrons-left"></span></button>
-  <button class="arrow" type="button" aria-label="Previous page" disabled><span class="instui-icon -icon-chevron-left"></span></button>
-  <a class="page" href="#" aria-current="page">1</a>
-  <a class="page" href="#">2</a>
-  <a class="page" href="#">3</a>
-  <span class="ellipsis">…</span>
-  <a class="page" href="#">12</a>
-  <a class="arrow" href="#" aria-label="Next page"><span class="instui-icon -icon-chevron-right"></span></a>
-  <a class="arrow" href="#" aria-label="Last page"><span class="instui-icon -icon-chevrons-right"></span></a>
-</nav>`,
-  ],
-  structure: `.instui-pagination
-  .arrow
-    .instui-icon.-icon-chevrons-left
-  .page
-  .ellipsis`,
   css: (p) => {
     const root = `.${p}pagination`;
     return `
+/**
+ * @component pagination
+ * @summary Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.
+ * @modifier -variant-input — Compact variant with a page-number input.
+ * @part .page — A page link or button; the current page carries \`[aria-current]\`.
+ * @part .arrow — A first, previous, next, or last control.
+ * @part .ellipsis — The gap marker between page ranges.
+ * @part .page-input-label — The label for the page-number input (input variant).
+ * @example
+ * <nav class="instui-pagination" aria-label="Pagination">
+ *   <button class="arrow" type="button" aria-label="First page" disabled><span class="instui-icon -icon-chevrons-left"></span></button>
+ *   <button class="arrow" type="button" aria-label="Previous page" disabled><span class="instui-icon -icon-chevron-left"></span></button>
+ *   <a class="page" href="#" aria-current="page">1</a>
+ *   <a class="page" href="#">2</a>
+ *   <a class="page" href="#">3</a>
+ *   <span class="ellipsis">…</span>
+ *   <a class="page" href="#">12</a>
+ *   <a class="arrow" href="#" aria-label="Next page"><span class="instui-icon -icon-chevron-right"></span></a>
+ *   <a class="arrow" href="#" aria-label="Last page"><span class="instui-icon -icon-chevrons-right"></span></a>
+ * </nav>
+ * @structure
+ * .instui-pagination
+ *   .arrow
+ *     .instui-icon.-icon-chevrons-left
+ *   .page
+ *   .ellipsis
+ */
 ${root} {
   display: inline-flex;
   align-items: center;

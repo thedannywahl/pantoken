@@ -3,42 +3,41 @@ import { scope } from "../lib/helpers.ts";
 
 export const modal = defineComponent({
   name: "modal",
-  summary: "A dialog surface (works on a native <dialog>); header/body/footer parts.",
-  modifiers: [
-    { name: "-size-sm", description: "A narrow modal." },
-    { name: "-size-lg", description: "A wide modal." },
-    { name: "-size-auto", description: "Sized to content." },
-    { name: "-size-fullscreen", description: "Edge-to-edge." },
-    { name: "-density-compact", description: "Tighter part padding." },
-    { name: "-color-inverse", description: "On-dark chrome (pairs with a media body)." },
-    { name: "-blur", description: "Blur the backdrop behind the modal." },
-    { name: "-overflow-fit", description: "Constrain to the viewport and scroll the body." },
-  ],
-  parts: [
-    { name: ".header", description: "The title row." },
-    { name: ".body", description: "The content region (a lone <img> goes full-bleed)." },
-    { name: ".footer", description: "The actions row." },
-  ],
-  examples: [
-    `<dialog class="instui-modal -size-sm" id="modal-sm">
-  <div class="header"><strong>Small</strong></div>
-  <div class="body"><code>-size-sm</code> — a narrow modal.</div>
-  <div class="footer">
-    <button class="instui-button">Close</button>
-  </div>
-</dialog>`,
-  ],
-  structure: `.instui-modal.-size-sm
-  .header
-    strong
-  .body
-    code
-  .footer
-    .instui-button`,
-  demo: "self:modal",
   css: (p) => {
     const root = `.${p}modal`;
     return `
+/**
+ * @component modal
+ * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
+ * @modifier -size-sm — A narrow modal.
+ * @modifier -size-lg — A wide modal.
+ * @modifier -size-auto — Sized to content.
+ * @modifier -size-fullscreen — Edge-to-edge.
+ * @modifier -density-compact — Tighter part padding.
+ * @modifier -color-inverse — On-dark chrome (pairs with a media body).
+ * @modifier -blur — Blur the backdrop behind the modal.
+ * @modifier -overflow-fit — Constrain to the viewport and scroll the body.
+ * @part .header — The title row.
+ * @part .body — The content region (a lone <img> goes full-bleed).
+ * @part .footer — The actions row.
+ * @example
+ * <dialog class="instui-modal -size-sm" id="modal-sm">
+ *   <div class="header"><strong>Small</strong></div>
+ *   <div class="body"><code>-size-sm</code> — a narrow modal.</div>
+ *   <div class="footer">
+ *     <button class="instui-button">Close</button>
+ *   </div>
+ * </dialog>
+ * @structure
+ * .instui-modal.-size-sm
+ *   .header
+ *     strong
+ *   .body
+ *     code
+ *   .footer
+ *     .instui-button
+ * @demo self:modal
+ */
 ${root} {
   max-width: var(--instui-component-modal-medium-max-width);
   background: var(--instui-component-modal-background-color);

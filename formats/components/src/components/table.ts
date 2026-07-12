@@ -2,59 +2,56 @@ import { defineComponent } from "../lib/define.ts";
 
 export const table = defineComponent({
   name: "table",
-  summary:
-    "A styled data table for `th` and `td` plus an optional caption, with hover, fixed, and stacked-card layouts.",
-  modifiers: [
-    { name: "-hover", description: "Highlight rows on hover." },
-    { name: "-layout-fixed", description: "Fixed table layout (equal-width columns)." },
-    {
-      name: "-layout-stacked",
-      description: "Stack each row as a card, via a per-cell `data-label`.",
-    },
-  ],
-  examples: [
-    `<table class="instui-table -hover">
-  <caption>Top-rated films</caption>
-  <thead>
-    <tr>
-      <th scope="col">Rank</th>
-      <th scope="col">Title</th>
-      <th scope="col">Year</th>
-      <th scope="col">Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>The Shawshank Redemption</td>
-      <td>1994</td>
-      <td>9.3</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>The Godfather</td>
-      <td>1972</td>
-      <td>9.2</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>The Godfather: Part II</td>
-      <td>1974</td>
-      <td>9.0</td>
-    </tr>
-  </tbody>
-</table>`,
-  ],
-  structure: `.instui-table.-hover
-  caption
-  thead
-    tr
-      th
-  tbody
-    tr
-      th
-      td`,
   css: (p) => `
+/**
+ * @component table
+ * @summary A styled data table for \`th\` and \`td\` plus an optional caption, with hover, fixed, and stacked-card layouts.
+ * @modifier -hover — Highlight rows on hover.
+ * @modifier -layout-fixed — Fixed table layout (equal-width columns).
+ * @modifier -layout-stacked — Stack each row as a card, via a per-cell \`data-label\`.
+ * @example
+ * <table class="instui-table -hover">
+ *   <caption>Top-rated films</caption>
+ *   <thead>
+ *     <tr>
+ *       <th scope="col">Rank</th>
+ *       <th scope="col">Title</th>
+ *       <th scope="col">Year</th>
+ *       <th scope="col">Rating</th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <tr>
+ *       <th scope="row">1</th>
+ *       <td>The Shawshank Redemption</td>
+ *       <td>1994</td>
+ *       <td>9.3</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">2</th>
+ *       <td>The Godfather</td>
+ *       <td>1972</td>
+ *       <td>9.2</td>
+ *     </tr>
+ *     <tr>
+ *       <th scope="row">3</th>
+ *       <td>The Godfather: Part II</td>
+ *       <td>1974</td>
+ *       <td>9.0</td>
+ *     </tr>
+ *   </tbody>
+ * </table>
+ * @structure
+ * .instui-table.-hover
+ *   caption
+ *   thead
+ *     tr
+ *       th
+ *   tbody
+ *     tr
+ *       th
+ *       td
+ */
 .${p}table {
   border-collapse: collapse;
   width: 100%;

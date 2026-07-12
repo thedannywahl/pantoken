@@ -22,8 +22,9 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "@cssdoc/core": "workspace:*",
-    "@cssdoc/typedoc": "workspace:*",
+    "@cssdoc/config": "catalog:",
+    "@cssdoc/core": "catalog:",
+    "@cssdoc/typedoc": "catalog:",
     "@pantoken/components": "workspace:*",
     "@pantoken/css": "workspace:*",
     "@pantoken/demo": "workspace:*",

@@ -3,22 +3,24 @@ import { scope, CHECK_ICON, MINUS_ICON } from "../lib/helpers.ts";
 
 export const checkbox = defineComponent({
   name: "checkbox",
-  summary: "A native checkbox and its label, or a switch via `-variant-toggle`.",
-  modifiers: [
-    { name: "-invalid", description: "Invalid (error) state." },
-    { name: "-label-placement-end", description: "Place the label after the control." },
-    { name: "-label-placement-start", description: "Place the label before the control." },
-    { name: "-label-placement-top", description: "Place the label above the control." },
-    { name: "-readonly", description: "Read-only state." },
-    { name: "-variant-toggle", description: "Render as a switch instead of a box." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  parts: [{ name: ".asterisk", description: "The required-field asterisk." }],
-  examples: ['<label class="instui-checkbox"><input type="checkbox" checked> Checked</label>'],
   css: (p) => {
     const base = `.${p}checkbox:not(.${p}checkbox.-variant-toggle)`;
     return `
+/**
+ * @component checkbox
+ * @summary A native checkbox and its label, or a switch via \`-variant-toggle\`.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -label-placement-end — Place the label after the control.
+ * @modifier -label-placement-start — Place the label before the control.
+ * @modifier -label-placement-top — Place the label above the control.
+ * @modifier -readonly — Read-only state.
+ * @modifier -variant-toggle — Render as a switch instead of a box.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .asterisk — The required-field asterisk.
+ * @example
+ * <label class="instui-checkbox"><input type="checkbox" checked> Checked</label>
+ */
 .${p}checkbox {
   display: inline-flex;
   align-items: center;

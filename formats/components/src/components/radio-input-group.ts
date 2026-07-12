@@ -2,34 +2,32 @@ import { defineComponent } from "../lib/define.ts";
 
 export const radioInputGroup = defineComponent({
   name: "radio-input-group",
-  summary: "A single-select radio `<fieldset>`, plain or as a connected segmented toggle.",
-  modifiers: [
-    { name: "-layout-columns", description: "Lay the radios out in columns." },
-    { name: "-layout-inline", description: "Lay the radios out inline." },
-    { name: "-required", description: "Mark the group as required." },
-    {
-      name: "-variant-toggle",
-      description: "Connect the child toggles into one segmented control.",
-    },
-  ],
-  examples: [
-    `<fieldset class="instui-radio-input-group -variant-toggle">
-  <legend>T-shirt size</legend>
-  <label class="instui-radio -variant-toggle"><input type="radio" name="size" checked> Small</label>
-  <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Medium</label>
-  <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Large</label>
-</fieldset>`,
-  ],
-  structure: `.instui-radio-input-group.-variant-toggle
-  legend
-  .instui-radio.-variant-toggle
-    input`,
   css: (p) => {
     const root = `.${p}radio-input-group`;
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
     const r = "var(--instui-component-radio-input-toggle-border-radius)";
     const bw = "var(--instui-component-radio-input-toggle-border-width)";
     return `
+/**
+ * @component radio-input-group
+ * @summary A single-select radio \`<fieldset>\`, plain or as a connected segmented toggle.
+ * @modifier -layout-columns — Lay the radios out in columns.
+ * @modifier -layout-inline — Lay the radios out inline.
+ * @modifier -required — Mark the group as required.
+ * @modifier -variant-toggle — Connect the child toggles into one segmented control.
+ * @example
+ * <fieldset class="instui-radio-input-group -variant-toggle">
+ *   <legend>T-shirt size</legend>
+ *   <label class="instui-radio -variant-toggle"><input type="radio" name="size" checked> Small</label>
+ *   <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Medium</label>
+ *   <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Large</label>
+ * </fieldset>
+ * @structure
+ * .instui-radio-input-group.-variant-toggle
+ *   legend
+ *   .instui-radio.-variant-toggle
+ *     input
+ */
 ${root} {
   display: flex;
   flex-direction: column;

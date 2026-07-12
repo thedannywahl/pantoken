@@ -2,26 +2,20 @@ import { defineComponent } from "../lib/define.ts";
 
 export const pill = defineComponent({
   name: "pill",
-  summary: "A compact status label; add a leading glyph with the shared `-icon-<name>` form.",
-  modifiers: [
-    { name: "-color-info", description: "Informational status." },
-    { name: "-color-success", description: "Positive status." },
-    { name: "-color-warning", description: "Cautionary status." },
-    { name: "-color-danger", description: "Error status." },
-    {
-      name: "-icon-<name>",
-      description:
-        "A leading glyph from the icon set (e.g. `-icon-check`), painted before the label.",
-    },
-    {
-      name: "-render-icon-<name>",
-      deprecated:
-        "The former `renderIcon` prop; still works as an alias, but use `-icon-<name>` instead.",
-    },
-  ],
-  examples: ['<span class="instui-pill">Draft</span>'],
-  demo: "self:pill",
   css: (p) => `
+/**
+ * @component pill
+ * @summary A compact status label; add a leading glyph with the shared \`-icon-<name>\` form.
+ * @modifier -color-info — Informational status.
+ * @modifier -color-success — Positive status.
+ * @modifier -color-warning — Cautionary status.
+ * @modifier -color-danger — Error status.
+ * @modifier -icon-<name> — A leading glyph from the icon set (e.g. \`-icon-check\`), painted before the label.
+ * @modifier -render-icon-<name> — @deprecated The former \`renderIcon\` prop; still works as an alias, but use \`-icon-<name>\` instead.
+ * @example
+ * <span class="instui-pill">Draft</span>
+ * @demo self:pill
+ */
 .${p}pill {
   display: inline-flex;
   align-items: center;

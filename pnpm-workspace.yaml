@@ -13,12 +13,6 @@ packages:
   - plugins/typedoc/*
   - plugins/vite/*
   - tools/*
-  # CSS-doc tooling — its own git repo (sibling of this one, a Vite+/pnpm monorepo), joined to the
-  # workspace so consumers link it with `workspace:*` instead of relative `link:` paths (pnpm catalogs
-  # don't allow `link:`). We dogfood @cssdoc/* here before it's published.
-  - ../cssdoc/packages/*
-  - ../cssdoc/emitters/*
-  - ../cssdoc/plugins/*
 
 catalogMode: prefer
 
@@ -82,7 +76,15 @@ catalog:
   typedoc: ^0.28.19
   typedoc-plugin-markdown: ^4.12.0
   typedoc-vitepress-theme: ^1.1.3
-  # @cssdoc/* toolchain (dogfooded via the ../cssdoc workspace globs) — versions mirror cssdoc's catalog.
+  # @cssdoc/* toolchain — consumed from npm (published at 0.3.3). @cssdoc/markdown arrives transitively
+  # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
+  "@cssdoc/core": ^0.3.3
+  "@cssdoc/config": ^0.3.3
+  "@cssdoc/typedoc": ^0.3.3
+  "@cssdoc/stylelint-plugin": ^0.3.3
+  "@cssdoc/eslint-plugin": ^0.3.3
+  # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
+  # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
   grammarkdown: ^3.3.2
   stylelint: ^17.14.0
@@ -118,6 +120,18 @@ minimumReleaseAgeExclude:
   - "@voidzero-dev/vite-plus-win32-arm64-msvc@0.2.2"
   - "@voidzero-dev/vite-plus-win32-x64-msvc@0.2.2"
   - vite-plus@0.2.2
+  - "@cssdoc/core@0.3.3"
+  - "@cssdoc/dialects@0.3.3"
+  - "@cssdoc/embedded@0.3.3"
+  - "@cssdoc/index@0.3.3"
+  - "@cssdoc/lint-core@0.3.3"
+  - "@cssdoc/markdown@0.3.3"
+  - "@cssdoc/providers@0.3.3"
+  - "@cssdoc/spec@0.3.3"
+  - "@cssdoc/typedoc@0.3.3"
+  - "@cssdoc/config@0.3.3"
+  - "@cssdoc/eslint-plugin@0.3.3"
+  - "@cssdoc/stylelint-plugin@0.3.3"
 allowBuilds:
   core-js: false
   esbuild: false

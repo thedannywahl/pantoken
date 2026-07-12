@@ -2,16 +2,18 @@ import { defineComponent } from "../lib/define.ts";
 
 export const spinner = defineComponent({
   name: "spinner",
-  summary: 'An animated loading ring; give it role="status" and an aria-label.',
-  modifiers: [
-    { name: "-size-xs", description: "Extra-small." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-color-inverse", description: "On a dark surface." },
-  ],
-  examples: ['<span class="instui-spinner -size-xs" role="status" aria-label="Loading"></span>'],
-  demo: "self:spinner",
   css: (p) => `
+/**
+ * @component spinner
+ * @summary An animated loading ring; give it role="status" and an aria-label.
+ * @modifier -size-xs — Extra-small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -color-inverse — On a dark surface.
+ * @example
+ * <span class="instui-spinner -size-xs" role="status" aria-label="Loading"></span>
+ * @demo self:spinner
+ */
 @keyframes pantoken-spinner-rotate { to { transform: rotate(360deg); } }
 .${p}spinner {
   display: inline-block;

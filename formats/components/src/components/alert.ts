@@ -2,53 +2,35 @@ import { defineComponent } from "../lib/define.ts";
 
 export const alert = defineComponent({
   name: "alert",
-  summary:
-    "An inline message with a status colour bar and a masked status glyph from the shared icon set.",
-  modifiers: [
-    { name: "-color-info", description: "Informational (default)." },
-    { name: "-color-success", description: "A positive/confirmation message." },
-    { name: "-color-warning", description: "A cautionary message." },
-    { name: "-color-danger", description: "An error message." },
-    {
-      name: "-without-shadow",
-      description: "Remove the default elevation shadow (InstUI `hasShadow={false}`).",
-    },
-    { name: "-has-shadow-false", deprecated: "{@link -without-shadow}" },
-    { name: "-screen-reader-only", description: "Visually hidden but announced." },
-    { name: "-variant-info", deprecated: "{@link -color-info}" },
-    { name: "-variant-success", deprecated: "{@link -color-success}" },
-    { name: "-variant-warning", deprecated: "{@link -color-warning}" },
-    { name: "-variant-error", deprecated: "{@link -color-danger}" },
-    {
-      name: "-icon-<name>",
-      description:
-        "Swap the status glyph for a custom icon (e.g. `-icon-megaphone`), kept white on the variant's coloured bar.",
-    },
-    {
-      name: "-render-custom-icon-<name>",
-      deprecated:
-        "The former `renderCustomIcon` prop; still works as an alias, but use `-icon-<name>` (or override `--pantoken-alert-glyph`) instead.",
-    },
-  ],
-  cssProperties: [
-    {
-      name: "--pantoken-alert-glyph",
-      syntax: "<url>",
-      description:
-        "The low-level status-glyph source; `-icon-<name>` sets it for you. Override for a custom icon (a url-encoded SVG).",
-    },
-  ],
-  examples: [
-    `<div class="instui-alert -color-info">
-  Dismissable with <code>transition="fade"</code> — I fade out when closed.
-  <button class="instui-close-button -size-sm" aria-label="Close"></button>
-</div>`,
-  ],
-  structure: `.instui-alert.-color-info
-  code
-  .instui-close-button.-size-sm`,
-  demo: "self:alert",
   css: (p) => `
+/**
+ * @component alert
+ * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.
+ * @modifier -color-info — Informational (default).
+ * @modifier -color-success — A positive/confirmation message.
+ * @modifier -color-warning — A cautionary message.
+ * @modifier -color-danger — An error message.
+ * @modifier -without-shadow — Remove the default elevation shadow (InstUI \`hasShadow={false}\`).
+ * @modifier -has-shadow-false — @deprecated {@link -without-shadow}
+ * @modifier -screen-reader-only — Visually hidden but announced.
+ * @modifier -variant-info — @deprecated {@link -color-info}
+ * @modifier -variant-success — @deprecated {@link -color-success}
+ * @modifier -variant-warning — @deprecated {@link -color-warning}
+ * @modifier -variant-error — @deprecated {@link -color-danger}
+ * @modifier -icon-<name> — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
+ * @modifier -render-custom-icon-<name> — @deprecated The former \`renderCustomIcon\` prop; still works as an alias, but use \`-icon-<name>\` (or override \`--pantoken-alert-glyph\`) instead.
+ * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; \`-icon-<name>\` sets it for you. Override for a custom icon (a url-encoded SVG).
+ * @example
+ * <div class="instui-alert -color-info">
+ *   Dismissable with <code>transition="fade"</code> — I fade out when closed.
+ *   <button class="instui-close-button -size-sm" aria-label="Close"></button>
+ * </div>
+ * @structure
+ * .instui-alert.-color-info
+ *   code
+ *   .instui-close-button.-size-sm
+ * @demo self:alert
+ */
 .${p}alert {
   position: relative;
   min-inline-size: 12rem;

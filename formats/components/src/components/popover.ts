@@ -2,26 +2,27 @@ import { defineComponent } from "../lib/define.ts";
 
 export const popover = defineComponent({
   name: "popover",
-  summary: "An elevated surface for a native `[popover]`, positioned with CSS anchor positioning.",
-  modifiers: [
-    { name: "-placement-top", description: "Sit above the anchor." },
-    { name: "-placement-bottom", description: "Sit below the anchor." },
-    { name: "-placement-start", description: "Sit at the start (inline-start) of the anchor." },
-    { name: "-placement-end", description: "Sit at the end (inline-end) of the anchor." },
-  ],
-  examples: [
-    `<div class="instui-popover -placement-bottom" id="pop-1">
-  <div class="instui-heading -level-h4">Share this page</div>
-  <p class="instui-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
-</div>`,
-  ],
-  structure: `.instui-popover.-placement-bottom
-  .instui-heading.-level-h4
-  .instui-text.-size-sm
-    code`,
   css: (p) => {
     const root = `.${p}popover`;
     return `
+/**
+ * @component popover
+ * @summary An elevated surface for a native \`[popover]\`, positioned with CSS anchor positioning.
+ * @modifier -placement-top — Sit above the anchor.
+ * @modifier -placement-bottom — Sit below the anchor.
+ * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
+ * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ * @example
+ * <div class="instui-popover -placement-bottom" id="pop-1">
+ *   <div class="instui-heading -level-h4">Share this page</div>
+ *   <p class="instui-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
+ * </div>
+ * @structure
+ * .instui-popover.-placement-bottom
+ *   .instui-heading.-level-h4
+ *   .instui-text.-size-sm
+ *     code
+ */
 ${root} {
   background: var(--instui-color-background-elevated-surface-base);
   color: var(--instui-color-text-base);

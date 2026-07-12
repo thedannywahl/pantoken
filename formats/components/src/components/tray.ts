@@ -2,34 +2,35 @@ import { defineComponent } from "../lib/define.ts";
 
 export const tray = defineComponent({
   name: "tray",
-  summary: "An edge-pinned panel that slides in from any side; a native `[popover]` or `<dialog>`.",
-  modifiers: [
-    { name: "-placement-top", description: "Pin to the top edge." },
-    { name: "-placement-bottom", description: "Pin to the bottom edge." },
-    { name: "-placement-end", description: "Pin to the end (inline-end) edge." },
-    { name: "-size-xs", description: "Extra small." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-size-xl", description: "Extra large." },
-  ],
-  examples: [
-    `<div class="instui-tray -size-sm" id="tray-start">
-  <div>
-    <strong>Filters</strong>
-    <button class="instui-close-button" aria-label="Close"></button>
-  </div>
-  <p class="instui-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
-</div>`,
-  ],
-  structure: `.instui-tray.-size-sm
-  div
-    strong
-    .instui-close-button
-  .instui-text.-size-sm`,
   css: (p) => {
     const root = `.${p}tray`;
     const w = (k: string): string => `var(--instui-component-tray-width-${k})`;
     return `
+/**
+ * @component tray
+ * @summary An edge-pinned panel that slides in from any side; a native \`[popover]\` or \`<dialog>\`.
+ * @modifier -placement-top — Pin to the top edge.
+ * @modifier -placement-bottom — Pin to the bottom edge.
+ * @modifier -placement-end — Pin to the end (inline-end) edge.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @example
+ * <div class="instui-tray -size-sm" id="tray-start">
+ *   <div>
+ *     <strong>Filters</strong>
+ *     <button class="instui-close-button" aria-label="Close"></button>
+ *   </div>
+ *   <p class="instui-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
+ * </div>
+ * @structure
+ * .instui-tray.-size-sm
+ *   div
+ *     strong
+ *     .instui-close-button
+ *   .instui-text.-size-sm
+ */
 ${root} {
   position: fixed;
   inset-block: 0;

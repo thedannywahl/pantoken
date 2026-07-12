@@ -8,21 +8,17 @@
  */
 import type { Definition } from "../lib/define.ts";
 import { headingLevelRules } from "../lib/headings.ts";
-import { record, renderDocBlock, type RecordMeta } from "../lib/record.ts";
 
-/** The prose rule's doc-block metadata. */
-const proseMeta: RecordMeta = {
-  kind: "rule",
-  name: "prose",
-  summary:
-    "Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — under the `.pantoken-prose` scope.",
-  examples: [
-    `<article class="pantoken-prose">
-  <h2>Release notes</h2>
-  <p>Body copy with a <a href="/">link</a>.</p>
-</article>`,
-  ],
-};
+/** The prose rule's cssdoc doc comment (authored inline; the CSS body follows from {@link proseBody}). */
+const PROSE_DOC = `/**
+ * @rule prose
+ * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — under the \`.pantoken-prose\` scope.
+ * @example
+ * <article class="pantoken-prose">
+ *   <h2>Release notes</h2>
+ *   <p>Body copy with a <a href="/">link</a>.</p>
+ * </article>
+ */`;
 
 /** Build the InstUI-look prose CSS body (no doc block) under a scope selector `s`. */
 function proseBody(s: string): string {
@@ -150,17 +146,16 @@ export interface ProseOptions {
  */
 export function proseCss(options: ProseOptions = {}): string {
   const scope = options.scope ?? ".pantoken-prose";
-  return `/* InstUI-look prose styles (@pantoken/components) — scope: ${scope} */\n${record(proseMeta, proseBody(scope)).trim()}\n`;
+  return `/* InstUI-look prose styles (@pantoken/components) — scope: ${scope} */\n${PROSE_DOC}\n${proseBody(scope).trim()}\n`;
 }
 
 /**
  * The {@link Definition}-shaped view of the prose rule for the RULES registry + `validate()`. `css()`
- * emits the default-scoped, doc-bearing single record (`renderDocBlock` + the `.pantoken-prose` body).
+ * emits the default-scoped, doc-bearing single record ({@link PROSE_DOC} + the `.pantoken-prose` body).
  */
 export const prose: Definition = {
   name: "prose",
   kind: "rule",
-  meta: proseMeta,
-  rules: () => record(proseMeta, proseBody(".pantoken-prose")),
-  css: () => `${renderDocBlock(proseMeta)}\n${proseBody(".pantoken-prose").trim()}\n`,
+  rules: () => `${PROSE_DOC}\n${proseBody(".pantoken-prose").trim()}\n`,
+  css: () => `${PROSE_DOC}\n${proseBody(".pantoken-prose").trim()}\n`,
 };

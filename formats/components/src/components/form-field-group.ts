@@ -2,67 +2,67 @@ import { defineComponent } from "../lib/define.ts";
 
 export const formFieldGroup = defineComponent({
   name: "form-field-group",
-  summary:
-    "A `<fieldset>` group with a legend, a column or inline layout, and configurable spacing.",
-  modifiers: [
-    { name: "-col-spacing-none", description: "No column gap." },
-    { name: "-col-spacing-small", description: "Small column gap." },
-    { name: "-col-spacing-medium", description: "Medium column gap." },
-    { name: "-col-spacing-large", description: "Large column gap." },
-    { name: "-row-spacing-none", description: "No row gap." },
-    { name: "-row-spacing-small", description: "Small row gap." },
-    { name: "-row-spacing-medium", description: "Medium row gap." },
-    { name: "-row-spacing-large", description: "Large row gap." },
-    { name: "-layout-aligned", description: "Align child fields to a shared grid." },
-    { name: "-layout-columns", description: "Lay child fields out in columns." },
-    { name: "-layout-inline", description: "Lay child fields inline, in a row." },
-    { name: "-required", description: "Mark the group as required." },
-    { name: "-v-align-top", description: "Top-align the fields." },
-    { name: "-v-align-middle", description: "Middle-align the fields." },
-    { name: "-v-align-bottom", description: "Bottom-align the fields." },
-  ],
-  examples: [
-    `<fieldset class="instui-form-field-group -layout-columns -col-spacing-medium">
-  <legend>Shipping address</legend>
-  <label class="instui-form-field">
-    <span class="label">First name</span>
-    <span class="controls"><input class="instui-text-input"></span>
-  </label>
-  <label class="instui-form-field">
-    <span class="label">Last name</span>
-    <span class="controls"><input class="instui-text-input"></span>
-  </label>
-  <label class="instui-form-field">
-    <span class="label">City</span>
-    <span class="controls"><input class="instui-text-input"></span>
-  </label>
-  <label class="instui-form-field">
-    <span class="label">State</span>
-    <span class="controls">
-      <select class="instui-simple-select">
-        <option>CA</option>
-        <option>NY</option>
-        <option>TX</option>
-      </select>
-    </span>
-  </label>
-  <div class="instui-form-field-messages">
-    <span class="instui-form-field-message -type-hint">All fields are used for delivery only.</span>
-  </div>
-</fieldset>`,
-  ],
-  structure: `.instui-form-field-group.-layout-columns.-col-spacing-medium
-  legend
-  .instui-form-field
-    .label
-    .controls
-      .instui-text-input
-  .instui-form-field-messages
-    .instui-form-field-message.-type-hint`,
   css: (p) => {
     const root = `.${p}form-field-group`;
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
     return `
+/**
+ * @component form-field-group
+ * @summary A \`<fieldset>\` group with a legend, a column or inline layout, and configurable spacing.
+ * @modifier -col-spacing-none — No column gap.
+ * @modifier -col-spacing-small — Small column gap.
+ * @modifier -col-spacing-medium — Medium column gap.
+ * @modifier -col-spacing-large — Large column gap.
+ * @modifier -row-spacing-none — No row gap.
+ * @modifier -row-spacing-small — Small row gap.
+ * @modifier -row-spacing-medium — Medium row gap.
+ * @modifier -row-spacing-large — Large row gap.
+ * @modifier -layout-aligned — Align child fields to a shared grid.
+ * @modifier -layout-columns — Lay child fields out in columns.
+ * @modifier -layout-inline — Lay child fields inline, in a row.
+ * @modifier -required — Mark the group as required.
+ * @modifier -v-align-top — Top-align the fields.
+ * @modifier -v-align-middle — Middle-align the fields.
+ * @modifier -v-align-bottom — Bottom-align the fields.
+ * @example
+ * <fieldset class="instui-form-field-group -layout-columns -col-spacing-medium">
+ *   <legend>Shipping address</legend>
+ *   <label class="instui-form-field">
+ *     <span class="label">First name</span>
+ *     <span class="controls"><input class="instui-text-input"></span>
+ *   </label>
+ *   <label class="instui-form-field">
+ *     <span class="label">Last name</span>
+ *     <span class="controls"><input class="instui-text-input"></span>
+ *   </label>
+ *   <label class="instui-form-field">
+ *     <span class="label">City</span>
+ *     <span class="controls"><input class="instui-text-input"></span>
+ *   </label>
+ *   <label class="instui-form-field">
+ *     <span class="label">State</span>
+ *     <span class="controls">
+ *       <select class="instui-simple-select">
+ *         <option>CA</option>
+ *         <option>NY</option>
+ *         <option>TX</option>
+ *       </select>
+ *     </span>
+ *   </label>
+ *   <div class="instui-form-field-messages">
+ *     <span class="instui-form-field-message -type-hint">All fields are used for delivery only.</span>
+ *   </div>
+ * </fieldset>
+ * @structure
+ * .instui-form-field-group.-layout-columns.-col-spacing-medium
+ *   legend
+ *   .instui-form-field
+ *     .label
+ *     .controls
+ *       .instui-text-input
+ *   .instui-form-field-messages
+ *     .instui-form-field-message.-type-hint
+ */
 ${root} {
   display: grid;
   grid-template-columns: 1fr;

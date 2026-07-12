@@ -1,3 +1,9 @@
+/**
+ * @component calendar
+ * @class .instui-calendar
+ * @summary Calendar web component tweaks — resets the day buttons and sizes the nav-button icons, layered on `.instui-calendar`.
+ * @part .day — A single day button in the grid.
+ */
 .instui-calendar button.day {
   -webkit-appearance: none;
   appearance: none;

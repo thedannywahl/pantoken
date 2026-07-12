@@ -3,31 +3,6 @@ import { scope } from "../lib/helpers.ts";
 
 export const progress = defineComponent({
   name: "progress",
-  summary: "A determinate progress bar with a coloured meter, sizes, and an optional value label.",
-  modifiers: [
-    { name: "-color-brand", description: "Brand meter colour." },
-    { name: "-color-info", description: "Informational meter colour." },
-    { name: "-color-success", description: "Success meter colour." },
-    { name: "-color-warning", description: "Warning meter colour." },
-    { name: "-color-danger", description: "Danger meter colour." },
-    { name: "-color-inverse", description: "For dark backgrounds." },
-    { name: "-color-primary-inverse", description: "On-dark (primary inverse) meter colour." },
-    { name: "-size-xs", description: "Extra small." },
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-    { name: "-meter-color-brand", deprecated: "{@link -color-brand}" },
-    { name: "-meter-color-info", deprecated: "{@link -color-info}" },
-    { name: "-meter-color-success", deprecated: "{@link -color-success}" },
-    { name: "-meter-color-warning", deprecated: "{@link -color-warning}" },
-    { name: "-meter-color-alert", deprecated: "{@link -color-warning}" },
-    { name: "-meter-color-danger", deprecated: "{@link -color-danger}" },
-  ],
-  parts: [{ name: ".bar", description: "The filled meter bar." }],
-  examples: [
-    `<div class="instui-progress -color-brand">
-  <div class="bar"></div>
-</div>`,
-  ],
   css: (p) => {
     const root = `.${p}progress`;
     // Meter colour uses our normalized `-color-*` scheme (canonical); the InstUI `meterColor` names
@@ -40,6 +15,31 @@ export const progress = defineComponent({
     const meter = (mod: string, bg: string): string =>
       `${root}.-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
     return `
+/**
+ * @component progress
+ * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
+ * @modifier -color-brand — Brand meter colour.
+ * @modifier -color-info — Informational meter colour.
+ * @modifier -color-success — Success meter colour.
+ * @modifier -color-warning — Warning meter colour.
+ * @modifier -color-danger — Danger meter colour.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -meter-color-brand — @deprecated {@link -color-brand}
+ * @modifier -meter-color-info — @deprecated {@link -color-info}
+ * @modifier -meter-color-success — @deprecated {@link -color-success}
+ * @modifier -meter-color-warning — @deprecated {@link -color-warning}
+ * @modifier -meter-color-alert — @deprecated {@link -color-warning}
+ * @modifier -meter-color-danger — @deprecated {@link -color-danger}
+ * @part .bar — The filled meter bar.
+ * @example
+ * <div class="instui-progress -color-brand">
+ *   <div class="bar"></div>
+ * </div>
+ */
 ${root} {
   position: relative;
   display: block;

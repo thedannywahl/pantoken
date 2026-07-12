@@ -2,30 +2,27 @@ import { defineComponent } from "../lib/define.ts";
 
 export const badge = defineComponent({
   name: "badge",
-  summary: "A small count or status dot placed over a target's corner.",
-  modifiers: [
-    { name: "-color-success", description: "A positive/complete count." },
-    { name: "-color-danger", description: "An attention/error count." },
-    { name: "-color-inverse", description: "On-dark: a light chip with dark text." },
-    { name: "-type-notification", description: "A dot only, no count." },
-    { name: "-pulse", description: "A pulsing attention ring." },
-    { name: "-standalone", description: "Render inline, not positioned over a target's corner." },
-    { name: "-placement-top-start", description: "Position at the top-start corner." },
-    { name: "-placement-top-end", description: "Position at the top-end corner." },
-    { name: "-placement-bottom-start", description: "Position at the bottom-start corner." },
-    { name: "-placement-bottom-end", description: "Position at the bottom-end corner." },
-    { name: "-placement-start-center", description: "Position centred on the start edge." },
-    { name: "-placement-end-center", description: "Position centred on the end edge." },
-  ],
-  parts: [
-    {
-      name: ".badge-wrapper",
-      description: "Wrap a target so a placed badge sits over its corner.",
-    },
-  ],
-  examples: ['<span class="instui-badge">4</span>'],
-  demo: "self:badge",
   css: (p) => `
+/**
+ * @component badge
+ * @summary A small count or status dot placed over a target's corner.
+ * @modifier -color-success — A positive/complete count.
+ * @modifier -color-danger — An attention/error count.
+ * @modifier -color-inverse — On-dark: a light chip with dark text.
+ * @modifier -type-notification — A dot only, no count.
+ * @modifier -pulse — A pulsing attention ring.
+ * @modifier -standalone — Render inline, not positioned over a target's corner.
+ * @modifier -placement-top-start — Position at the top-start corner.
+ * @modifier -placement-top-end — Position at the top-end corner.
+ * @modifier -placement-bottom-start — Position at the bottom-start corner.
+ * @modifier -placement-bottom-end — Position at the bottom-end corner.
+ * @modifier -placement-start-center — Position centred on the start edge.
+ * @modifier -placement-end-center — Position centred on the end edge.
+ * @part .badge-wrapper — Wrap a target so a placed badge sits over its corner.
+ * @example
+ * <span class="instui-badge">4</span>
+ * @demo self:badge
+ */
 @keyframes pantoken-badge-pulse {
   from { transform: scale(1); opacity: 0.7; }
   to { transform: scale(1.8); opacity: 0; }

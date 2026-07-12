@@ -3,31 +3,32 @@ import { scope } from "../lib/helpers.ts";
 
 export const breadcrumb = defineComponent({
   name: "breadcrumb",
-  summary: "A breadcrumb trail with `/` separators; the last crumb is the current page.",
-  modifiers: [
-    { name: "-size-sm", description: "Small." },
-    { name: "-size-lg", description: "Large." },
-  ],
-  parts: [{ name: ".item", description: "A crumb; the last one is the current page." }],
-  examples: [
-    `<nav class="instui-breadcrumb" aria-label="Breadcrumb">
-  <span class="item">
-    <a href="#"><span class="instui-icon -icon-house"></span> Home</a>
-  </span>
-  <span class="item"><a href="#">Guides</a></span>
-  <span class="item"><a href="#">Components</a></span>
-  <span class="item" aria-current="page">Breadcrumb</span>
-</nav>`,
-  ],
-  structure: `.instui-breadcrumb
-  .item
-    a
-      .instui-icon.-icon-house`,
   css: (p) => {
     const root = `.${p}breadcrumb`;
     // Root + size rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
     // valid; only the element rules that don't carry a size modifier go inside.
     return `
+/**
+ * @component breadcrumb
+ * @summary A breadcrumb trail with \`/\` separators; the last crumb is the current page.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .item — A crumb; the last one is the current page.
+ * @example
+ * <nav class="instui-breadcrumb" aria-label="Breadcrumb">
+ *   <span class="item">
+ *     <a href="#"><span class="instui-icon -icon-house"></span> Home</a>
+ *   </span>
+ *   <span class="item"><a href="#">Guides</a></span>
+ *   <span class="item"><a href="#">Components</a></span>
+ *   <span class="item" aria-current="page">Breadcrumb</span>
+ * </nav>
+ * @structure
+ * .instui-breadcrumb
+ *   .item
+ *     a
+ *       .instui-icon.-icon-house
+ */
 ${root} {
   display: flex;
   align-items: center;
