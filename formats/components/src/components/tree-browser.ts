@@ -13,6 +13,8 @@ export const treeBrowser = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A leaf entry in the tree.
+ * @cssstate open
+ * @a11y Mark the root with role="tree" and each nested list with role="group".
  * @example
  * <div class="instui-tree-browser" role="tree">
  *   <details open>

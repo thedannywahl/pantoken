@@ -18,6 +18,15 @@ export const checkbox = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .asterisk — The required-field asterisk.
+ * @cssproperty --pantoken-cb-glyph <url> — The box's mask glyph: a tick when checked, a dash when indeterminate.
+ * @cssproperty --pantoken-toggle-h <length> — The toggle switch height.
+ * @cssproperty --pantoken-toggle-w <length> — The toggle track width.
+ * @cssproperty --pantoken-toggle-bw <length> — The toggle border width.
+ * @cssproperty --pantoken-toggle-inset <length> — The handle inset from each track edge.
+ * @cssproperty --pantoken-toggle-handle <length> — The computed handle diameter.
+ * @cssstate checked
+ * @cssstate indeterminate
+ * @cssstate disabled
  * @example
  * <label class="instui-checkbox"><input type="checkbox" checked> Checked</label>
  */

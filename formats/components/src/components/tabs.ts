@@ -12,6 +12,10 @@ export const tabs = defineComponent({
  * @part .list — The row of tabs.
  * @part .tab — A single tab; \`-selected\` marks the active one.
  * @part .panel — The content panel for a tab.
+ * @cssstate selected
+ * @cssstate disabled
+ * @cssstate hidden
+ * @a11y Wire the tab list with role="tablist", each tab with role="tab" and aria-selected, and each panel with role="tabpanel".
  * @example
  * <div class="instui-tabs">
  *   <div class="list" role="tablist" aria-label="Default tabs">

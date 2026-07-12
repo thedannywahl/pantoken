@@ -12,6 +12,8 @@ export const sideNavBar = defineComponent({
  * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
  * @modifier -minimized — Collapse to icons only (labels hidden).
  * @part .item — A navigation entry; \`-selected\` marks the active one.
+ * @part .label — An item's text label; hidden when the rail is minimized.
+ * @a11y Label the \`<nav>\` with aria-label so it's announced as a named navigation landmark.
  * @example
  * <nav class="instui-side-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#">

@@ -14,6 +14,7 @@ export const contextView = defineComponent({
  * @modifier -placement-bottom — Sit below the anchor.
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ * @cssstate open
  * @example
  * <div class="instui-context-view -placement-bottom" id="cv-popover">A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc.</div>
  */

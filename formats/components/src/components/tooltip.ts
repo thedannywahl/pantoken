@@ -11,6 +11,7 @@ export const tooltip = defineComponent({
  * @component tooltip
  * @summary A CSS hover and focus tooltip bubble, positionable on any side.
  * @part .tip — The bubble; \`-placement-*\` sets its side.
+ * @a11y Point the trigger at the bubble with aria-describedby and give the bubble role="tooltip".
  * @example
  * <span class="instui-tooltip" aria-describedby="tt-1">
  *   <span class="instui-icon -icon-info"></span>

@@ -13,6 +13,7 @@ export const menu = defineComponent({
  * @part .group — A labelled group heading.
  * @part .separator — A divider rule between items.
  * @part .item-info — Secondary info text within a menu item.
+ * @a11y Mark a checked item with \`aria-checked="true"\` (same styling as \`-active\`).
  * @example
  * <div class="instui-menu">
  *   <div class="group">Actions</div>

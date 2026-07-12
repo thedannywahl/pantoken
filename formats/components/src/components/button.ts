@@ -25,6 +25,9 @@ export const button = defineComponent({
  * @modifier -display-block — Full-width block button.
  * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
  * @modifier -without-border — Remove the border.
+ * @cssstate disabled
+ * @cssstate pressed
+ * @a11y Drive the \`-toggle\` variant's pressed state with \`aria-pressed\`, and mark a disabled button with \`aria-disabled\` (or the native \`disabled\`).
  * @example
  * <button class="instui-button">Primary</button>
  * @demo self:button

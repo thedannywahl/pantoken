@@ -18,6 +18,9 @@ export const radio = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -toggle — @deprecated {@link -variant-toggle}
+ * @cssproperty --pantoken-rt-fill <color> — The toggle's selected fill colour; the -context-* modifiers set it.
+ * @cssstate checked
+ * @cssstate disabled
  * @example
  * <label class="instui-radio"><input type="radio" name="r" checked> Option A</label>
  */

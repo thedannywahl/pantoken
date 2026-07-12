@@ -36,6 +36,12 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
  * @modifier -meter-color-warning — @deprecated {@link -color-warning}
  * @modifier -meter-color-alert — @deprecated {@link -color-warning}
  * @modifier -meter-color-danger — @deprecated {@link -color-danger}
+ * @part .value — The value text centred in the ring's hole.
+ * @cssproperty --value <number> — The progress percentage (0–100) that drives the arc; registered with @property so it can transition.
+ * @cssproperty --pantoken-pc-fill <color> — The filled arc (meter) colour; the -color-* modifiers set it.
+ * @cssproperty --pantoken-pc-track <color> — The unfilled track colour.
+ * @cssproperty --pantoken-pc-stroke <length> — The ring's stroke width; the -size-* modifiers set it.
+ * @a11y Give it role="img" and an aria-label stating the percentage, since the ring is drawn in CSS.
  * @example
  * <span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">
  *   <span class="value">25%</span>

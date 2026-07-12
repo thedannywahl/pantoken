@@ -24,6 +24,18 @@ const FOCUS_DOC = `/**
  * @modifier -focus-position-inset — Draw the ring inset, inside the element's edge.
  * @modifier -focus-within — Ring the element while a descendant is focused.
  * @modifier -without-focus-animation — Disable the ring's grow-in animation.
+ * @cssproperty --instui-focus-outline-color — The ring colour once focus is visible (the themed info colour).
+ * @cssproperty --instui-focus-outline-color-start — The resting, transparent ring colour the outline transitions from.
+ * @cssproperty --instui-focus-outline-width — The outline width of the ring.
+ * @cssproperty --instui-focus-outline-offset — The gap between the element's edge and the ring when focused.
+ * @cssproperty --instui-focus-outline-radius — The ring's corner radius when focused.
+ * @cssproperty --instui-focus-outline-style — The outline line style (solid).
+ * @cssproperty --instui-focus-outline-transition — The transition that animates the ring's colour and offset in.
+ * @cssproperty --instui-focus-outline-color-success — The ring colour for the \`-focus-color-success\` modifier.
+ * @cssproperty --instui-focus-outline-color-danger — The ring colour for the \`-focus-color-danger\` modifier.
+ * @cssproperty --instui-focus-outline-color-inverse — The ring colour for the \`-focus-color-inverse\` (on-dark) modifier.
+ * @cssproperty --instui-focus-outline-inset — The outline offset used when \`-focus-position-inset\` draws the ring inside the edge.
+ * @a11y Every focusable element gets a \`:focus-visible\` outline ring so keyboard users can see what's focused.
  * @example
  * <button class="instui-button -focus-color-danger">Delete</button>
  * @demo self:focus-outline

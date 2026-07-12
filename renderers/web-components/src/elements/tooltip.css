@@ -3,6 +3,7 @@
  * @class .instui-tooltip
  * @summary Visibility styling for the tooltip web component's tip — hidden until the component reveals it.
  * @part .tip — The floating tip surface.
+ * @cssstate show — The tip is revealed (opaque and visible); without it the tip is hidden.
  */
 .instui-tooltip > .tip:not(.-show) {
   opacity: 0 !important;

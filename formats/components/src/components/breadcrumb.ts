@@ -14,6 +14,7 @@ export const breadcrumb = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A crumb; the last one is the current page.
+ * @a11y Wrap the trail in \`<nav aria-label>\` and mark the current page's crumb with \`aria-current="page"\`.
  * @example
  * <nav class="instui-breadcrumb" aria-label="Breadcrumb">
  *   <span class="item">

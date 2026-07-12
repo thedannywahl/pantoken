@@ -14,6 +14,9 @@ export const pagination = defineComponent({
  * @part .arrow — A first, previous, next, or last control.
  * @part .ellipsis — The gap marker between page ranges.
  * @part .page-input-label — The label for the page-number input (input variant).
+ * @cssstate current
+ * @cssstate disabled
+ * @a11y Label the \`<nav>\` with aria-label, mark the current page with aria-current="page", give each arrow an aria-label, and disable end arrows with disabled or aria-disabled="true".
  * @example
  * <nav class="instui-pagination" aria-label="Pagination">
  *   <button class="arrow" type="button" aria-label="First page" disabled><span class="instui-icon -icon-chevrons-left"></span></button>

@@ -18,6 +18,9 @@ export const numberInput = defineComponent({
  * @modifier -success — Success (valid) state.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @part .arrows — The +/- spinner column at the inline-end.
+ * @part .down — The decrement button; the unclassed button increments.
+ * @cssstate disabled
  * @example
  * <span class="instui-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">

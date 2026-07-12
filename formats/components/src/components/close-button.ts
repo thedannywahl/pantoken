@@ -10,6 +10,7 @@ export const closeButton = defineComponent({
  * @modifier -color-inverse — For dark backgrounds.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @a11y Give the icon-only button an \`aria-label\` (e.g. "Close").
  * @example
  * <button class="instui-close-button -size-sm" aria-label="Close"></button>
  */

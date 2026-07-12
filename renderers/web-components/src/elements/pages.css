@@ -2,6 +2,7 @@
  * @component pages
  * @class :host
  * @summary The pages web component — shows one slotted `[data-page]` at a time (the rest stay hidden).
+ * @cssstate hidden — Set on a slotted `[data-page]` to hide it while another page shows.
  */
 :host {
   display: block;

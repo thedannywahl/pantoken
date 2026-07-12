@@ -15,6 +15,7 @@ export const textInput = defineComponent({
  * @modifier -success — Success (valid) state.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @cssstate disabled
  * @example
  * <input class="instui-text-input" placeholder="Default">
  */

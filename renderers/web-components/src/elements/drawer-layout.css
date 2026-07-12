@@ -7,6 +7,8 @@
  * @part .handle — The drag-to-resize handle between the tray and content.
  * @part .content — The main content area.
  * @cssproperty --drawer-width — The tray's width (default 16rem).
+ * @cssstate open — The tray and handle show; without it both are hidden.
+ * @cssstate dragging — The handle is being dragged, so it stays highlighted.
  */
 :host {
   display: block;

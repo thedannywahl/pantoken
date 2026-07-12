@@ -6,6 +6,7 @@ export const screenReaderContent = defineUtility({
 /**
  * @utility screen-reader-content
  * @summary Visually hides content while keeping it available to assistive tech (the standard clip pattern).
+ * @a11y Keeps text in the accessibility tree for screen readers while removing it from the visual layout.
  * @example
  * <span class="instui-screen-reader-content">Opens in a new window</span>
  */

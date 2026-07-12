@@ -10,6 +10,7 @@ export const inPlaceEdit = defineComponent({
  * @component in-place-edit
  * @summary A [contenteditable] that reads as text until focused, then shows input chrome.
  * @modifier -readonly — Shown inline but not editable (no hover/focus affordance).
+ * @a11y Give the editable element \`role="textbox"\` and an accessible name (\`aria-label\`).
  * @example
  * <span class="instui-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>
  * @demo self:in-place-edit

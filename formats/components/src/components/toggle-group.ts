@@ -12,6 +12,7 @@ export const toggleGroup = defineComponent({
  * @modifier -without-border — Remove the border.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @cssstate open
  * @example
  * <details class="instui-toggle-group" open>
  *   <summary>Advanced settings</summary>

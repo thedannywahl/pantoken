@@ -12,6 +12,7 @@ export const rating = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .label — The numeric label, e.g. "3/5".
+ * @a11y Give it role="img" and an aria-label stating the rating, since the stars are icon glyphs.
  * @example
  * <span class="instui-rating -size-sm" role="img" aria-label="2 out of 3 stars">
  *   <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star"></span>

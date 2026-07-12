@@ -15,6 +15,7 @@ export const textArea = defineComponent({
  * @modifier -success — Success (valid) state.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @cssstate disabled
  * @example
  * <textarea class="instui-text-area" placeholder="Write a comment…"></textarea>
  */

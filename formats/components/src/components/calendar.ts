@@ -14,6 +14,7 @@ export const calendar = defineComponent({
  * @part .grid — The seven-column day grid.
  * @part .weekday — A weekday column header.
  * @part .day — A day cell; \`-today\`, \`-selected\`, and \`-outside-month\` mark its state.
+ * @a11y Expose the grid with \`role="table"\` and a descriptive \`aria-label\`, and give each navigation button its own \`aria-label\`.
  * @example
  * <div class="instui-calendar" role="table" aria-label="March 2026">
  *   <div class="nav">

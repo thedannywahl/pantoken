@@ -11,6 +11,7 @@ export const toggleDetails = defineComponent({
  * @modifier -chevron-end — Place the chevron after the summary.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @cssstate open
  * @example
  * <details class="instui-toggle-details" open>
  *   <summary>What ships in this package?</summary>
