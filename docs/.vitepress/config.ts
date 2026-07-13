@@ -134,7 +134,7 @@ const localesConfig = Object.fromEntries(
           ),
         },
         editLink: {
-          pattern: "https://github.com/instructure/pantoken/edit/main/docs/:path",
+          pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
           text: locale.editText,
         },
       },

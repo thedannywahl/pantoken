@@ -135,7 +135,7 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
 
 // The repo root (this worktree) and its GitHub blob base, for `**Source:**` links.
 const repoRoot = join(docsRoot, "..");
-const SOURCE_URL_BASE = "https://github.com/instructure/pantoken/blob/main";
+const SOURCE_URL_BASE = "https://github.com/thedannywahl/pantoken/blob/main";
 
 // The default cssdoc section order with Accessibility hoisted up to just after Usage, so the "how to
 // use it (accessibly)" reads before the API-surface tables instead of last, after Tokens consumed.
