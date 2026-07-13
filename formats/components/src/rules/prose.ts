@@ -18,6 +18,10 @@ const PROSE_DOC = `/**
  *   <h2>Release notes</h2>
  *   <p>Body copy with a <a href="/">link</a>.</p>
  * </article>
+ * @demo self:prose
+ * @related text
+ * @related heading
+ * @related list
  */`;
 
 /** Build the InstUI-look prose CSS body (no doc block) under a scope selector `s`. */

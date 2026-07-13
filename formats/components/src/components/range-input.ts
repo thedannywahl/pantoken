@@ -21,6 +21,7 @@ export const rangeInput = defineComponent({
 /**
  * @component range-input
  * @summary A styled range slider with an inverse value bubble.
+ * @accessibility The control is a native \`<input type="range">\`; give it an accessible name with \`aria-label\` or an associated \`<label>\`.
  * @example
  * <input class="instui-range-input" id="r1" type="range" value="30">
  * @related number-input — The typed numeric-entry counterpart.

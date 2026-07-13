@@ -21,6 +21,7 @@ export const radio = defineComponent({
  * @cssproperty --pantoken-rt-fill <color> — The toggle's selected fill colour; the -context-* modifiers set it.
  * @cssstate checked
  * @cssstate disabled
+ * @accessibility A native \`<input type="radio">\` drives \`:checked\` and \`:disabled\`; \`-readonly\` is styling only, since radios have no native readonly attribute.
  * @example
  * <label class="instui-radio"><input type="radio" name="r" checked> Option A</label>
  * @related checkbox — The multi-select counterpart to a single-select radio.

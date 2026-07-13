@@ -22,6 +22,7 @@ export const alert = defineComponent({
  * @modifier -render-custom-icon-<name> — @deprecated The former \`renderCustomIcon\` prop; still works as an alias, but use \`-icon-<name>\` (or override \`--pantoken-alert-glyph\`) instead.
  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; \`-icon-<name>\` sets it for you. Override for a custom icon (a url-encoded SVG).
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each \`-color-*\` variant sets its own.
+ * @accessibility For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.instui-close-button\` in the example carries \`aria-label="Close"\`).
  * @example
  * <div class="instui-alert -color-info">
  *   Dismissable with <code>transition="fade"</code> — I fade out when closed.

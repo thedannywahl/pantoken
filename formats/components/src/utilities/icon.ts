@@ -6,6 +6,7 @@ export const icon = defineUtility({
 /**
  * @utility icon
  * @summary The icon system: \`.instui-icon\` sizing plus the shared \`-icon-<name>\` painter that masks a glyph (in \`currentColor\`) before any element.
+ * @accessibility The glyph is decorative, so mark it \`aria-hidden="true"\`; give it a \`role\` or label only when the icon conveys meaning on its own.
  * @example
  * <span class="instui-icon -icon-megaphone" aria-hidden="true"></span>
  */

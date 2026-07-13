@@ -6,6 +6,8 @@ export const mask = defineUtility({
 /**
  * @utility mask
  * @summary An in-flow overlay that fills its positioned parent and centres its content — e.g. a spinner over a card. For a modal, prefer a native \`<dialog>\` (its \`::backdrop\` is the mask).
+ * @modifier -fullscreen — Fixed to the viewport, covering it at a high z-index.
+ * @modifier -blur — Blur what's behind the mask with a backdrop-filter.
  * @example
  * <div style="position: relative">
  *   <div class="instui-mask">

@@ -10,6 +10,7 @@ export const table = defineComponent({
  * @modifier -hover — Highlight rows on hover.
  * @modifier -layout-fixed — Fixed table layout (equal-width columns).
  * @modifier -layout-stacked — Stack each row as a card, via a per-cell \`data-label\`.
+ * @accessibility Label the table with a \`<caption>\`, mark column headers \`<th scope="col">\` and row headers \`<th scope="row">\`, and in \`-layout-stacked\` give every cell a \`data-label\` since the header row is visually hidden.
  * @example
  * <table class="instui-table -hover">
  *   <caption>Top-rated films</caption>

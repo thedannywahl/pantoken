@@ -21,6 +21,7 @@ export const numberInput = defineComponent({
  * @part .arrows — The +/- spinner column at the inline-end.
  * @part .down — The decrement button; the unclassed button increments.
  * @cssstate disabled
+ * @accessibility Put the accessible name on the \`<input>\` (e.g. \`aria-label\`) so the field owns the value; the +/- spinner buttons are decorative and marked \`aria-hidden="true"\`.
  * @example
  * <span class="instui-number-input">
  *   <input id="qty" type="number" value="1" aria-label="Quantity">

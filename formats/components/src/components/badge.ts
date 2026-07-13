@@ -23,6 +23,10 @@ export const badge = defineComponent({
  * @cssproperty --pantoken-badge-text <color> — The text colour, paired to the accent so it stays legible.
  * @example
  * <span class="instui-badge">4</span>
+ * @structure
+ * .instui-badge-wrapper {
+ *   .instui-badge {}
+ * }
  * @related pill — The inline label-chip counterpart.
  * @demo self:badge
  */

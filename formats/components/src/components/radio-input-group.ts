@@ -15,6 +15,7 @@ export const radioInputGroup = defineComponent({
  * @modifier -layout-inline — Lay the radios out inline.
  * @modifier -required — Mark the group as required.
  * @modifier -variant-toggle — Connect the child toggles into one segmented control.
+ * @accessibility Renders a native \`<fieldset>\` with a \`<legend>\` that names the group; the child radios share one \`name\`, so only one can be selected at a time.
  * @example
  * <fieldset class="instui-radio-input-group -variant-toggle">
  *   <legend>T-shirt size</legend>

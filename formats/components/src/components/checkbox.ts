@@ -28,6 +28,7 @@ export const checkbox = defineComponent({
  * @cssstate checked
  * @cssstate indeterminate
  * @cssstate disabled
+ * @accessibility A native \`<input type="checkbox">\` drives \`:checked\`, \`:indeterminate\`, and \`:disabled\`; set \`el.indeterminate = true\` in JavaScript for the mixed state, and note that \`-readonly\` is styling only since checkboxes have no native readonly attribute.
  * @example
  * <label class="instui-checkbox"><input type="checkbox" checked> Checked</label>
  * @related radio — The single-select counterpart.

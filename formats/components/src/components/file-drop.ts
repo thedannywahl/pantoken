@@ -9,6 +9,7 @@ export const fileDrop = defineComponent({
  * @modifier -accepted — Drag state for an acceptable file.
  * @modifier -hover — Hover or drag-over state.
  * @modifier -rejected — Drag state for a rejected file.
+ * @accessibility Wrap a native \`<input type="file">\` in the \`<label>\` drop zone so it stays a real, labelled file control that the keyboard and assistive tech can operate.
  * @example
  * <label class="instui-file-drop" id="fd">
  *   <span class="instui-icon -icon-cloud-upload"></span>

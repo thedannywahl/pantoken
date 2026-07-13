@@ -17,6 +17,7 @@ export const tray = defineComponent({
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
  * @compat Opens with the native \`[popover]\` API and \`@starting-style\`; the slide-in sits behind an \`@supports (transition-behavior: allow-discrete)\` guard, so browsers without it still open the tray, just without the slide.
+ * @accessibility The tray is a dialog or popover surface, so name it with \`aria-label\` or \`aria-labelledby\`, and its close control carries an \`aria-label\` (the \`.instui-close-button\` in the example uses \`aria-label="Close"\`).
  * @example
  * <div class="instui-tray -size-sm" id="tray-start">
  *   <div>

@@ -18,6 +18,10 @@ export const toggleDetails = defineComponent({
  *   <summary>What ships in this package?</summary>
  *   Class-based component styles, built from the Instructure tokens, plus a prose layer.
  * </details>
+ * @structure
+ * .instui-toggle-details {
+ *   summary {}
+ * }
  * @related toggle-group — The bordered, grouped form of the same disclosure.
  */
 .${p}toggle-details {

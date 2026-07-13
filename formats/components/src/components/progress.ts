@@ -36,6 +36,7 @@ export const progress = defineComponent({
  * @modifier -meter-color-alert — @deprecated {@link -color-warning}
  * @modifier -meter-color-danger — @deprecated {@link -color-danger}
  * @part .bar — The filled meter bar.
+ * @accessibility Expose progress via \`role="progressbar"\` with \`aria-valuenow\`, \`aria-valuemin\`, and \`aria-valuemax\` (or \`role="img"\` plus \`aria-label\`), mirroring how progress-circle is labelled.
  * @compat Scopes the meter part rules with the \`@scope\` at-rule; browsers without \`@scope\` support ignore those scoped rules.
  * @example
  * <div class="instui-progress -color-brand">

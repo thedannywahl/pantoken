@@ -85,6 +85,62 @@ export const view = defineUtility({
     return `/**
  * @utility view
  * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor.
+ * @modifier -background-primary — Primary surface background.
+ * @modifier -background-secondary — Secondary surface background.
+ * @modifier -background-primary-inverse — Inverse primary surface background.
+ * @modifier -background-brand — Brand surface background.
+ * @modifier -background-info — Info surface background.
+ * @modifier -background-alert — Alert surface background.
+ * @modifier -background-success — Success surface background.
+ * @modifier -background-danger — Danger surface background.
+ * @modifier -background-warning — Warning surface background.
+ * @modifier -background-transparent — Transparent background.
+ * @modifier -border-radius-small — Small corner radius.
+ * @modifier -border-radius-medium — Medium corner radius.
+ * @modifier -border-radius-large — Large corner radius.
+ * @modifier -border-radius-circle — Fully circular (50%) radius.
+ * @modifier -border-radius-pill — Pill (full) radius.
+ * @modifier -border-width-small — Small solid border in the base stroke colour.
+ * @modifier -border-width-medium — Medium solid border in the base stroke colour.
+ * @modifier -border-width-large — Large solid border in the base stroke colour.
+ * @modifier -border-color-primary — Base stroke border colour.
+ * @modifier -border-color-brand — Brand stroke border colour.
+ * @modifier -border-color-success — Success stroke border colour.
+ * @modifier -border-color-info — Info stroke border colour.
+ * @modifier -border-color-warning — Warning stroke border colour.
+ * @modifier -border-color-danger — Error stroke border colour.
+ * @modifier -shadow-resting — Resting elevation shadow.
+ * @modifier -shadow-above — Above elevation shadow.
+ * @modifier -shadow-topmost — Topmost elevation shadow.
+ * @modifier -display-block — display: block.
+ * @modifier -display-inline-block — display: inline-block.
+ * @modifier -display-inline — display: inline.
+ * @modifier -display-flex — display: flex.
+ * @modifier -display-inline-flex — display: inline-flex.
+ * @modifier -display-none — display: none.
+ * @modifier -position-static — position: static.
+ * @modifier -position-relative — position: relative.
+ * @modifier -position-absolute — position: absolute.
+ * @modifier -position-fixed — position: fixed.
+ * @modifier -position-sticky — position: sticky.
+ * @modifier -overflow-x-visible — overflow-x: visible.
+ * @modifier -overflow-x-hidden — overflow-x: hidden.
+ * @modifier -overflow-x-auto — overflow-x: auto.
+ * @modifier -overflow-x-scroll — overflow-x: scroll.
+ * @modifier -overflow-x-clip — overflow-x: clip.
+ * @modifier -overflow-y-visible — overflow-y: visible.
+ * @modifier -overflow-y-hidden — overflow-y: hidden.
+ * @modifier -overflow-y-auto — overflow-y: auto.
+ * @modifier -overflow-y-scroll — overflow-y: scroll.
+ * @modifier -overflow-y-clip — overflow-y: clip.
+ * @modifier -cursor-auto — cursor: auto.
+ * @modifier -cursor-default — cursor: default.
+ * @modifier -cursor-pointer — cursor: pointer.
+ * @modifier -cursor-not-allowed — cursor: not-allowed.
+ * @modifier -cursor-text — cursor: text.
+ * @modifier -cursor-move — cursor: move.
+ * @modifier -cursor-grab — cursor: grab.
+ * @modifier -cursor-wait — cursor: wait.
  * @example
  * <div class="instui-view -background-secondary -border-radius-medium -shadow-resting">A card-like surface.</div>
  */

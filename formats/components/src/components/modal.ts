@@ -21,6 +21,7 @@ export const modal = defineComponent({
  * @part .header — The title row.
  * @part .body — The content region (a lone <img> goes full-bleed).
  * @part .footer — The actions row.
+ * @accessibility Open the native \`<dialog>\` with \`showModal()\` for modal semantics and Esc-to-close, and name it with \`aria-labelledby\` pointing at the \`.header\`.
  * @compat Styles a native <dialog> and its \`::backdrop\`; the top-layer rendering and backdrop styling need a browser that supports the dialog element.
  * @example
  * <dialog class="instui-modal -size-sm" id="modal-sm">
