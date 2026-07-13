@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "ready": "vp run -r build && vp check && vp run -r test && pnpm run lint:css && pnpm run lint:js && pnpm run validate:generated:only && pnpm run lint:markdown",
+    "ready": "vp run -r build && vp check && vp run -r test && vp run lint:css && vp run lint:js && vp run validate:generated:only && vp run lint:markdown",
     "generate": "vp run -r build",
-    "validate:generated": "pnpm run generate && pnpm run validate:generated:only",
+    "validate:generated": "vp run generate && vp run validate:generated:only",
     "validate:generated:only": "vp run @pantoken/validate-generated#validate",
     "docs:dev": "vp run @pantoken/docs#docs:dev",
     "docs:build": "vp run @pantoken/docs#docs:build",
@@ -15,7 +15,7 @@
     "lint:css": "vp exec stylelint \"renderers/web-components/src/**/*.css\" \"formats/components/generated/*.css\"",
     "lint:js": "vp exec eslint \"formats/components/generated/*.css\" \"renderers/web-components/src/**/*.css\"",
     "lint:markdown": "vp exec markdownlint-cli2 \"**/*.md\"",
-    "check:publish": "pnpm -r --filter \"./packages/**\" --filter \"./formats/**\" --filter \"./platforms/**\" --filter \"./renderers/**\" --filter \"./bundlers/**\" --filter \"./design/**\" --filter \"./ai/**\" --filter \"./plugins/**\" --filter \"./tools/**\" exec publint"
+    "check:publish": "vp exec -F \"./packages/**\" -F \"./formats/**\" -F \"./platforms/**\" -F \"./renderers/**\" -F \"./bundlers/**\" -F \"./design/**\" -F \"./ai/**\" -F \"./plugins/**\" -F \"./tools/**\" publint"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",

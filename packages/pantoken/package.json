@@ -64,9 +64,9 @@
   },
   "scripts": {
     "aggregate": "node scripts/aggregate.mjs",
-    "build": "pnpm run aggregate && vp pack",
+    "build": "vp run aggregate && vp pack",
     "dev": "vp pack --watch",
-    "test": "pnpm run aggregate && vp test",
+    "test": "vp run aggregate && vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"
   },

@@ -15,10 +15,10 @@
     "docs:guides:locales:claude": "DOCS_TRANSLATION_ADAPTER=claude-code node scripts/translate-guides.ts",
     "docs:check:locales": "node scripts/check-locale-parity.ts",
     "docs:assets": "node scripts/logo.ts && node scripts/demos.ts",
-    "docs:dev": "pnpm run docs:assets && pnpm run docs:api:en && pnpm run docs:api:css && vitepress dev",
-    "docs:dev:all": "pnpm run docs:assets && pnpm run docs:api:locales && pnpm run docs:check:locales && vitepress dev",
-    "docs:build": "pnpm run docs:assets && pnpm run docs:api:locales && pnpm run docs:check:locales && vitepress build",
-    "docs:build:claude": "pnpm run docs:assets && pnpm run docs:api:locales:claude && pnpm run docs:check:locales && vitepress build",
+    "docs:dev": "vp run docs:assets && vp run docs:api:en && vp run docs:api:css && vitepress dev",
+    "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
+    "docs:build": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress build",
+    "docs:build:claude": "vp run docs:assets && vp run docs:api:locales:claude && vp run docs:check:locales && vitepress build",
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {

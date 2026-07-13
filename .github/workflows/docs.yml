@@ -38,8 +38,8 @@ jobs:
 
       - name: Generate token output
         # Regenerates every package's generated/ dir — the token JSON TypeDoc reads and the
-        # CSS the site is themed with.
-        run: pnpm run generate
+        # CSS the site is themed with. Uses `vp` (from setup-vp), so the job needs no pnpm on PATH.
+        run: vp run -r build
 
       - name: Build docs
         run: vp run @pantoken/docs#docs:build

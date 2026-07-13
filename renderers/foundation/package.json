@@ -22,7 +22,7 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "build": "vp pack && pnpm run generate",
+    "build": "vp pack && vp run generate",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check",

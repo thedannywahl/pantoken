@@ -19,9 +19,9 @@
   "scripts": {
     "embed": "node scripts/embed.ts",
     "generate": "node scripts/generate.ts",
-    "build": "pnpm run embed && vp pack && pnpm run generate",
+    "build": "vp run embed && vp pack && vp run generate",
     "dev": "vp pack --watch",
-    "test": "pnpm run embed && vp test",
+    "test": "vp run embed && vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"
   },
