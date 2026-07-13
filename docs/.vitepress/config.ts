@@ -6,41 +6,52 @@ import { demoMarkdownIt } from "@pantoken/demo";
 import { LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
 
-// The repo root, two levels up from docs/.vitepress/.
-const repoRoot = fileURLToPath(new URL("../../", import.meta.url));
+// Absolute path to a repo-relative location, from docs/.vitepress/.
 const at = (relative: string): string =>
   fileURLToPath(new URL(`../../${relative}`, import.meta.url));
 
 // During `vitepress dev`, rebuild the workspace packages the docs consume whenever their source
-// changes, so edits to the libraries show up live instead of only at the next full build. Each build
-// runs through `vp` (never pnpm scripts directly) from the repo root.
+// changes, so edits to the libraries show up live instead of only at the next full build.
 //
-// Two output shapes have to reach the browser: the generated CSS that the theme imports (watched via
-// `hmrWatchPaths` — a plain chokidar file change → HMR) and the web-components bundle the theme loads
-// for `register()` (watched via `reloadWatchPaths` — a pnpm-symlinked `dist`, which needs the native
-// fs.watch bridge to invalidate). `@pantoken/web-components` inlines `@pantoken/components`' CSS, so a
-// components edit must cascade into a web-components rebuild too (`dependents`).
+// Builds invoke each package's `node` script DIRECTLY, not `vp run …`. `vpr docs:dev` runs vitepress
+// under `vp`, and vite-plus cannot spawn a nested `vp` from inside that process — it dies with
+// "Failed to spawn process: os error 22". A direct `node` invocation is unaffected. The generated CSS
+// the theme imports comes from each package's `generate` script; the CSS API pages come from docs'
+// `build-css-api`. Two outputs reach the browser: the generated CSS (watched via `hmrWatchPaths` →
+// HMR) and the CSS API `.md` (rebuilt by the `docs:api:css` node — VitePress watches the emitted files
+// itself). A components edit regenerates the sheet, then cascades (`dependents`) into a CSS-API rebuild.
+//
+// NOTE: `@pantoken/web-components`' `register()` bundle needs `vp pack`, which likewise can't run nested
+// under `vpr`, so it is NOT auto-rebuilt here. Rebuild it manually in a separate top-level shell
+// (`vpr @pantoken/web-components#build`) when you change web-component behavior; `reloadWatchPaths` then
+// bridges the new `dist` into HMR. Its shadow-CSS records still reach the docs, since `build-css-api`
+// reads the `.css` sources directly (picked up on the next CSS-API rebuild).
 const orchestrator = workspaceOrchestrator({
   upstream: [
     {
       name: "@pantoken/css",
-      dir: repoRoot,
+      dir: at("formats/css"),
       watchPaths: [at("formats/css/src")],
-      build: ["pnpm", "exec", "vp", "run", "@pantoken/css#build"],
+      build: ["node", "scripts/generate.ts"],
       dependents: [],
     },
     {
       name: "@pantoken/components",
-      dir: repoRoot,
+      dir: at("formats/components"),
       watchPaths: [at("formats/components/src")],
-      build: ["pnpm", "exec", "vp", "run", "@pantoken/components#build"],
-      dependents: ["@pantoken/web-components"],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#docs:api:css"],
     },
     {
-      name: "@pantoken/web-components",
-      dir: repoRoot,
-      watchPaths: [at("renderers/web-components/src")],
-      build: ["pnpm", "exec", "vp", "run", "@pantoken/web-components#build"],
+      // The CSS API reference (docs/api/css/**) is parsed from the generated component sheet + the
+      // web-component shadow `.css` sources and rendered per the shared root cssdoc.json. Rebuild it
+      // after the component sheet regenerates (via @pantoken/components' `dependents`) and whenever
+      // cssdoc.json changes (it drives the parse model + section order). VitePress watches the emitted
+      // `.md` under its source tree, so the pages hot-reload on their own.
+      name: "@pantoken/docs#docs:api:css",
+      dir: at("docs"),
+      watchPaths: [at("cssdoc.json")],
+      build: ["node", "scripts/build-css-api.ts"],
       dependents: [],
     },
   ],
