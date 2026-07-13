@@ -137,30 +137,6 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
 const repoRoot = join(docsRoot, "..");
 const SOURCE_URL_BASE = "https://github.com/thedannywahl/pantoken/blob/main";
 
-// The default cssdoc section order with Accessibility hoisted up to just after Usage, so the "how to
-// use it (accessibly)" reads before the API-surface tables instead of last, after Tokens consumed.
-const SECTION_ORDER = [
-  "demo",
-  "examples",
-  "usage",
-  "accessibility",
-  "modifiers",
-  "parts",
-  "shadowParts",
-  "states",
-  "slots",
-  "structure",
-  "cssProperties",
-  "functions",
-  "animations",
-  "layers",
-  "conditions",
-  "tokensConsumed",
-  "compat",
-  "related",
-  "see",
-] as const;
-
 /** Map each record name → its authoring source file (repo-relative), by scanning for the record tag. */
 function sourceMap(files: string[]): Map<string, string> {
   const RECORD = /@(?:component|utility|rule|declaration)\s+([a-z][\w-]*)/u;
@@ -213,10 +189,13 @@ const build = (): void => {
   }));
   resolveValue = makeResolver([...tokens, ...localTokens]);
 
-  // Parse with the components' shared cssdoc.json (formats/components/cssdoc.json) — the same tag
-  // configuration the per-record test guard uses — so docs and tests agree on the record model.
+  // Load the repo's shared cssdoc.json (root) — the single declarative config that also drives the
+  // lint plugins and the per-record test guard, so docs, lint, and tests agree on the record model and
+  // section order. `configFile` feeds `emitCssApi` (parse config + `render` section order/heading);
+  // `configuration` is its parse view, reused locally for `parseCssDocs`.
   const componentsRoot = join(cssPath("package.json"), "..");
-  const configuration = CssDocConfigFile.loadForFolder(componentsRoot).toConfiguration();
+  const configFile = CssDocConfigFile.loadForFolder(repoRoot);
+  const configuration = configFile.toConfiguration();
 
   // `**Source:**` link → each record's authoring `.ts`. `## Usage` import → the sheet the record ships
   // in (a record's own sheet, resolved by parsing each of the four sheets for its record names).
@@ -236,9 +215,7 @@ const build = (): void => {
     outSubdir,
     label: "CSS",
     baseHref: "/api/css/",
-    headingPrefix: "CSS:",
-    configuration,
-    sectionOrder: SECTION_ORDER,
+    configFile,
     resolveToken,
     resolveDemo,
     resolveSource,
@@ -286,9 +263,7 @@ const build = (): void => {
     outSubdir: "css-web-components",
     label: "Web components CSS",
     baseHref: "/api/css-web-components/",
-    headingPrefix: "CSS:",
-    configuration,
-    sectionOrder: SECTION_ORDER,
+    configFile,
     resolveToken,
     resolveDemo,
     resolveSource: makeResolveSource(sourceMap(wcCss)),

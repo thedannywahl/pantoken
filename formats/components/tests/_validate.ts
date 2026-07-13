@@ -12,8 +12,8 @@ import { tokens } from "@pantoken/tokens";
 import { unknownReferences } from "@pantoken/utils";
 import type { Definition } from "../src/lib/define.ts";
 
-// The shared cssdoc.json (formats/components/cssdoc.json) — loaded once so the per-record guard parses
-// with the same tag configuration the docs emitter uses. `loadForFolder` walks up from the tests dir.
+// The repo's shared cssdoc.json (root) — loaded once so the per-record guard parses with the same tag
+// configuration the docs emitter and lint plugins use. `loadForFolder` walks up from the tests dir.
 const configuration = CssDocConfigFile.loadForFolder(import.meta.dirname).toConfiguration();
 
 // Elevation shadows and the focus ring are declared by the sheets themselves, not the base token IR.
