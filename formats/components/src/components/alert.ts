@@ -21,22 +21,24 @@ export const alert = defineComponent({
  * @modifier -variant-success — @deprecated {@link -color-success}
  * @modifier -variant-warning — @deprecated {@link -color-warning}
  * @modifier -variant-error — @deprecated {@link -color-danger}
- * @modifier -icon-<name> — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
- * @modifier -render-custom-icon-<name> — @deprecated The former \`renderCustomIcon\` prop; still works as an alias, but use \`-icon-<name>\` (or override \`--pantoken-alert-glyph\`) instead.
+ * @slot content - The alert's content, which can include a dismiss button.
+ * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
+ * @modifier -render-custom-icon-* — @deprecated The former \`renderCustomIcon\` prop; still works as an alias, but use \`-icon-<name>\` (or override \`--pantoken-alert-glyph\`) instead.
  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; \`-icon-<name>\` sets it for you. Override for a custom icon (a url-encoded SVG).
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each \`-color-*\` variant sets its own.
  * @accessibility For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.instui-close-button\` in the example carries \`aria-label="Close"\`).
  * @example
- * <div class="${p}alert -color-info">
+ * <div class="${p}alert -color-info instui-mb-md">
  *   Dismissable with <code>transition="fade"</code> — I fade out when closed.
  *   <button class="${p}close-button -size-sm" aria-label="Close"></button>
  * </div>
+ * <div class="${p}alert -color-success">Congratulations! You did it.</div>
  * @structure
- * .${p}alert.-color-info {
- *   code {}
- *   .${p}close-button.-size-sm {}
+ * .${p}alert {
+ *   slot {}
+ *   .${p}close-button:optional {}
  * }
- * @demo self:alert
+ * @a11y For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.instui-close-button\` in the example carries \`aria-label="Close"\`).
  */
 .${p}alert {
   position: relative;
