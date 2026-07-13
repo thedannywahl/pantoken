@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const radio = defineComponent({
   name: "radio",
   css: (p) => {
     const std = `.${p}radio:not(.-variant-toggle):not(.-toggle)`;
     const tog = `.${p}radio.-variant-toggle`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component radio
  * @summary A native radio button and its label.

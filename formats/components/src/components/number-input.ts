@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { CHEVRON_UP_ICON, CHEVRON_DOWN_ICON } from "../lib/helpers.ts";
 import { inputFacadeBase } from "../lib/field-controls.ts";
 
@@ -8,7 +9,8 @@ export const numberInput = defineComponent({
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
     const a = (s: string): string => `var(--instui-component-text-input-arrows-${s})`;
     const root = `.${p}number-input`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component number-input
  * @summary A number-input facade with a +/- spinner column.

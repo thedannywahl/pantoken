@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const progressCircle = defineComponent({
   name: "progress-circle",
@@ -17,7 +18,8 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
   height: var(--instui-component-progress-circle-${key}-size);
   --pantoken-pc-stroke: var(--instui-component-progress-circle-${key}-stroke-width);
 }`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component progress-circle
  * @summary A circular progress ring driven by a \`--value\` (0–100) custom property.

@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const contextView = defineComponent({
   name: "context-view",
   css: (p) => {
     const root = `.${p}context-view`;
     const cv = (s: string): string => `var(--instui-component-context-view-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component context-view
  * @summary An elevated callout with a caret, positionable on any side; works as a native \`[popover]\`.

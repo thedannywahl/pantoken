@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const inPlaceEdit = defineComponent({
   name: "in-place-edit",
   css: (p) => {
     const root = `.${p}in-place-edit`;
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component in-place-edit
  * @summary A [contenteditable] that reads as text until focused, then shows input chrome.

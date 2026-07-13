@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const byline = defineComponent({
@@ -7,7 +8,8 @@ export const byline = defineComponent({
     const root = `.${p}byline`;
     // Root + size/align rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
     // valid; only the size-free element rules go inside.
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component byline
  * @summary A media object: a hero figure beside a title and description.

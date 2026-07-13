@@ -1,9 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { inputFacadeBase } from "../lib/field-controls.ts";
 
 export const inputGroup = defineComponent({
   name: "input-group",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component input-group
  * @summary A facade around a text input with leading and trailing icon slots.

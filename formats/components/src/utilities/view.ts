@@ -5,6 +5,7 @@
  * @module
  */
 import { defineUtility } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const view = defineUtility({
   name: "view",
@@ -82,7 +83,8 @@ export const view = defineUtility({
     for (const c of ["auto", "default", "pointer", "not-allowed", "text", "move", "grab", "wait"]) {
       rules.push(rule(`cursor-${c}`, `cursor: ${c};`));
     }
-    return `/**
+    // prettier-ignore
+    return css`/**
  * @utility view
  * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor.
  * @modifier -background-primary — Primary surface background.

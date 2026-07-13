@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const truncate = defineComponent({
   name: "truncate",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component truncate
  * @summary Single-line ellipsis truncation, or a multi-line clamp via \`--lines\`.

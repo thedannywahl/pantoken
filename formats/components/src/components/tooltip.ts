@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const tooltip = defineComponent({
@@ -6,7 +7,8 @@ export const tooltip = defineComponent({
   css: (p) => {
     const root = `.${p}tooltip`;
     const t = (k: string): string => `var(--instui-component-tooltip-${k})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component tooltip
  * @summary A CSS hover and focus tooltip bubble, positionable on any side.

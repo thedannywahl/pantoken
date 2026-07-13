@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const calendar = defineComponent({
@@ -6,7 +7,8 @@ export const calendar = defineComponent({
   css: (p) => {
     const root = `.${p}calendar`;
     const c = (k: string): string => `var(--instui-component-calendar-${k})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component calendar
  * @summary A static month grid with navigation, weekday headers, and day cells.

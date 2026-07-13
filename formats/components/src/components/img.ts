@@ -1,10 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const img = defineComponent({
   name: "img",
   css: (p) => {
     const root = `.${p}img`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component img
  * @summary A styled \`<img>\` with display, crop, and effect modifiers that stack.

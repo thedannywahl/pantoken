@@ -1,10 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const popover = defineComponent({
   name: "popover",
   css: (p) => {
     const root = `.${p}popover`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component popover
  * @summary An elevated surface for a native \`[popover]\`, positioned with CSS anchor positioning.

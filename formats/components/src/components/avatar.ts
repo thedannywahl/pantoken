@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const avatar = defineComponent({
   name: "avatar",
@@ -8,7 +9,8 @@ export const avatar = defineComponent({
     const color = (name: string): string =>
       `.${p}avatar.-color-${name} { color: var(--instui-component-avatar-${name}-text-color); }
 .${p}avatar.-color-${name}.-has-inverse-color { background: var(--instui-component-avatar-${name}-background-color); }`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component avatar
  * @summary A user avatar showing initials or an image, circular by default.

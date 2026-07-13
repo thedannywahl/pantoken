@@ -4,6 +4,7 @@
  * @module
  */
 import { defineUtility } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { SPACING_SIDES, SPACING_STEPS } from "../lib/helpers.ts";
 
 export const spacing = defineUtility({
@@ -22,7 +23,8 @@ export const spacing = defineUtility({
         }
       }
     }
-    return `/**
+    // prettier-ignore
+    return css`/**
  * @utility spacing
  * @class .instui-p-md
  * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` and \`.instui-p<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none; margin also takes \`auto\`).

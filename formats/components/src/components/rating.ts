@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const rating = defineComponent({
   name: "rating",
   css: (p) => {
     const root = `.${p}rating`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component rating
  * @summary A star rating with filled and empty glyphs and an optional numeric label.

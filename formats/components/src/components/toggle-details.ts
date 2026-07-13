@@ -1,9 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { CHEVRON_RIGHT_ICON } from "../lib/helpers.ts";
 
 export const toggleDetails = defineComponent({
   name: "toggle-details",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component toggle-details
  * @summary A styled native \`<details>\` disclosure with a rotating chevron.

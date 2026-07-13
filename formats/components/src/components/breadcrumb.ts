@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const breadcrumb = defineComponent({
@@ -7,7 +8,8 @@ export const breadcrumb = defineComponent({
     const root = `.${p}breadcrumb`;
     // Root + size rules stay outside @scope, prefixed, so the size-alias post-processor's twins are
     // valid; only the element rules that don't carry a size modifier go inside.
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component breadcrumb
  * @summary A breadcrumb trail with \`/\` separators; the last crumb is the current page.

@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const fileDrop = defineComponent({
   name: "file-drop",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component file-drop
  * @summary A file dropzone with hover, accepted, and rejected states.

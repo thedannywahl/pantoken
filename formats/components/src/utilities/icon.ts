@@ -1,8 +1,11 @@
 import { defineUtility } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const icon = defineUtility({
   name: "icon",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @utility icon
  * @summary The icon system: \`.instui-icon\` sizing plus the shared \`-icon-<name>\` painter that masks a glyph (in \`currentColor\`) before any element.

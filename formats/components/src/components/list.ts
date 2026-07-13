@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const list = defineComponent({
   name: "list",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component list
  * @summary A list with token-driven item spacing.

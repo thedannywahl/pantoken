@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const pagination = defineComponent({
   name: "pagination",
   css: (p) => {
     const root = `.${p}pagination`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component pagination
  * @summary Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.

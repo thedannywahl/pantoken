@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const metric = defineComponent({
   name: "metric",
   css: (p) => {
     const root = `.${p}metric`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component metric
  * @summary A labelled statistic — a large value over a caption.

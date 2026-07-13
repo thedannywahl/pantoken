@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { CHEVRON_RIGHT_ICON } from "../lib/helpers.ts";
 
 export const treeBrowser = defineComponent({
@@ -6,7 +7,8 @@ export const treeBrowser = defineComponent({
   css: (p) => {
     const root = `.${p}tree-browser`;
     const t = (k: string): string => `var(--instui-component-tree-browser-${k})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component tree-browser
  * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.

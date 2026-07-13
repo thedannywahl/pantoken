@@ -1,9 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { CLOSE_ICON } from "../lib/helpers.ts";
 
 export const tag = defineComponent({
   name: "tag",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component tag
  * @summary An inline chip for a keyword or filter.

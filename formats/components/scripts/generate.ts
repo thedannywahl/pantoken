@@ -15,6 +15,7 @@ import { join, resolve } from "node:path";
 import { icons } from "@pantoken/icons";
 import { tokens } from "@pantoken/tokens";
 import { colorUtilitiesCss, tokenUtilitiesCss } from "@pantoken/utils";
+import { css } from "../src/lib/css.ts";
 import { fontsCss } from "./fonts.ts";
 import {
   baseCss,
@@ -108,7 +109,8 @@ writeFileSync(
 );
 // `colorUtilitiesCss` is a generic emitter (in @pantoken/utils), so its CSS-API doc comment is authored
 // here, where the InstUI-semantic palette is fed in.
-const colorDoc = `/**
+// prettier-ignore
+const colorDoc = css`/**
  * @utility color
  * @class .instui-text-danger
  * @summary Semantic colour utilities: \`.instui-bg-<name>\`, \`.instui-text-<name>\`, and \`.instui-stroke-<name>\` for the curated semantic palette.

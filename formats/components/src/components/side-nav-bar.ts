@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const sideNavBar = defineComponent({
@@ -6,7 +7,8 @@ export const sideNavBar = defineComponent({
   css: (p) => {
     const root = `.${p}side-nav-bar`;
     const s = (k: string): string => `var(--instui-component-side-nav-bar-${k})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component side-nav-bar
  * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.

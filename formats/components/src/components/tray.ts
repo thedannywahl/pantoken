@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const tray = defineComponent({
   name: "tray",
   css: (p) => {
     const root = `.${p}tray`;
     const w = (k: string): string => `var(--instui-component-tray-width-${k})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component tray
  * @summary An edge-pinned panel that slides in from any side; a native \`[popover]\` or \`<dialog>\`.

@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { CHEVRON_RIGHT_ICON } from "../lib/helpers.ts";
 
 export const toggleGroup = defineComponent({
   name: "toggle-group",
   css: (p) => {
     const root = `.${p}toggle-group`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component toggle-group
  * @summary A bordered disclosure built on \`<details>\`: a chevron summary row and collapsible content.

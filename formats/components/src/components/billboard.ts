@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const billboard = defineComponent({
@@ -7,7 +8,8 @@ export const billboard = defineComponent({
     const root = `.${p}billboard`;
     // Root + size rules (incl. the size-scoped message font-size) stay outside @scope, prefixed, so the
     // size-alias post-processor's twins stay valid; the size-free element rules go inside.
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component billboard
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.

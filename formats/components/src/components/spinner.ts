@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const spinner = defineComponent({
   name: "spinner",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component spinner
  * @summary An animated loading ring; give it role="status" and an aria-label.
