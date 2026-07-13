@@ -12,7 +12,7 @@
  * merges into) and before `docs:api:locales`/vitepress.
  */
 import { createRequire } from "node:module";
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
@@ -23,7 +23,6 @@ import { makeResolver, unknownReferences } from "@pantoken/utils";
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
-const demosDir = join(docsRoot, "demos");
 
 const tokenByName = new Map(tokens.map((t) => [t.name, t]));
 
@@ -124,12 +123,6 @@ function resolveToken(name: string): { syntax?: string; value?: string } | undef
   return syntax || value ? { syntax, value } : undefined;
 }
 
-/** The demo spec for a record: the authored `@demo`, else `self:<name>` when a demo file exists. */
-function resolveDemo(entry: CssDocEntry): string | undefined {
-  if (entry.demo) return entry.demo;
-  return existsSync(join(demosDir, `${entry.name}.html`)) ? `self:${entry.name}` : undefined;
-}
-
 const cssPath = (subpath: string): string => require.resolve(`@pantoken/components/${subpath}`);
 const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf8");
 
@@ -217,7 +210,6 @@ const build = (): void => {
     baseHref: "/api/css/",
     configFile,
     resolveToken,
-    resolveDemo,
     resolveSource,
     importSnippet,
   });
@@ -265,7 +257,6 @@ const build = (): void => {
     baseHref: "/api/css-web-components/",
     configFile,
     resolveToken,
-    resolveDemo,
     resolveSource: makeResolveSource(sourceMap(wcCss)),
   });
   console.log(
