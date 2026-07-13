@@ -1,16 +1,11 @@
 {
-  "$schema": "./node_modules/@cssdoc/config/cssdoc.schema.json",
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "modifierConvention": "rscss",
-  "structureIgnore": ["instui-*", "-*"],
-  "rules": {
-    "undocumented-modifier": "off",
-    "name-not-in-css": "off"
-  },
   "render": {
     "sectionOrder": [
+      "usage",
       "demo",
       "examples",
-      "usage",
       "accessibility",
       "modifiers",
       "parts",
