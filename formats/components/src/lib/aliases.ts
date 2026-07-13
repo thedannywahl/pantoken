@@ -3,12 +3,17 @@
  * its OWN component's page, not whichever record happens to be last in the bundle):
  * - {@link withSizeAliases} appends a long-spelled twin (`.-size-small`) for every short size class.
  * - {@link withAliases} appends deprecated-alias twins discovered from the record's own doc comment
- *   ({@link deprecatedAliasPairs}, via `@cssdoc/core`) — each modifier whose `@deprecated` note carries a
- *   `{@link -canonical}` gets a rule cloned from that canonical modifier.
+ *   ({@link deprecatedAliasPairs}) — each modifier whose `@deprecated` note carries a `{@link -canonical}`
+ *   gets a rule cloned from that canonical modifier.
+ *
+ * NOTE: this module stays free of `@cssdoc/core` (the postcss-based parser) ON PURPOSE — it runs at
+ * record-definition time, so importing it would bake postcss (and its `node:module`/`createRequire`
+ * shim) into `@pantoken/components`'s runtime bundle, which crashes in the browser when the web
+ * components register this package in the docs client. A focused regex over the `@modifier` line is
+ * all that's needed here.
  *
  * @module
  */
-import { parseCssDocs } from "@cssdoc/core";
 
 /** A deprecated modifier and the canonical modifier it aliases, e.g. `-toggle` → `-variant-toggle`. */
 export interface AliasPair {
@@ -16,21 +21,16 @@ export interface AliasPair {
   canonical: string;
 }
 
+/** `@modifier -alias — @deprecated {@link -canonical}` (em-dash or hyphen separator; optional leading dot). */
+const DEPRECATED_ALIAS =
+  /@modifier\s+(-[\w-]+)\s+[—-]\s+@deprecated\s+\{@link\s+\.?(-[\w-]+)\s*\}/gu;
+
 /**
- * The deprecated-alias pairs in a record, read from its own doc comment: every `@modifier` whose
- * `@deprecated` note is `{@link -canonical}`. cssdoc parses that link into `deprecated.canonical`
- * (convention-independent), so no configuration is needed. Returns `[]` for records with none.
+ * The deprecated-alias pairs in a record, read from its own doc comment (in authored order): every
+ * `@modifier` whose note is `@deprecated {@link -canonical}`. Returns `[]` for records with none.
  */
 export function deprecatedAliasPairs(rawRecord: string): AliasPair[] {
-  const [entry] = parseCssDocs(rawRecord);
-  const pairs = (entry?.modifiers ?? [])
-    .filter((m) => m.deprecated?.canonical)
-    .map((m) => ({ alias: m.name, canonical: m.deprecated!.canonical! }));
-  // `parseCssDocs` sorts modifiers, so re-sort the pairs by where each alias is written in the comment:
-  // the appended twins must keep authored order, or a multi-alias record's emitted CSS reorders.
-  return pairs.sort(
-    (a, b) => rawRecord.indexOf(`@modifier ${a.alias}`) - rawRecord.indexOf(`@modifier ${b.alias}`),
-  );
+  return [...rawRecord.matchAll(DEPRECATED_ALIAS)].map((m) => ({ alias: m[1], canonical: m[2] }));
 }
 
 /** Long-form spellings for the size scale — emitted as first-class aliases beside the short forms. */
