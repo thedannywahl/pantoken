@@ -42,10 +42,22 @@ div[class*="language-"]:has(+ .css-example) > pre {
 
 /* Home styles */
 
+:root:has(.is-home) {
+  --vp-home-bg-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20374%20160%27%3E%3Crect%20width%3D%27374%27%20height%3D%27160%27%20fill%3D%27%23002b4d%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27200%27%20fill%3D%27%23004880%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27140%27%20fill%3D%27%230065b3%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%2780%27%20fill%3D%27%230090ff%27%2F%3E%3C%2Fsvg%3E");
+  /* Fallback paint for any area outside body during initial layout. */
+  background-color: #002b4d;
+}
+
 .is-home {
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20374%20160%27%3E%3Crect%20width%3D%27374%27%20height%3D%27160%27%20fill%3D%27%23002b4d%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27200%27%20fill%3D%27%23004880%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27140%27%20fill%3D%27%230065b3%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%2780%27%20fill%3D%27%230090ff%27%2F%3E%3C%2Fsvg%3E");
+  /* VitePress sets body background-color from --vp-c-bg in a base layer.
+     Override the token on home so that layered rule resolves transparent. */
+  --vp-c-bg: transparent;
+  min-height: 100vh;
+  background-image: var(--vp-home-bg-image);
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
+  background-position: right bottom;
+  background-color: transparent;
 }
 
 .VPNavBar.home {
