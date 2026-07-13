@@ -25,8 +25,11 @@ export const simpleSelect = defineComponent({
  *   <option>Pear</option>
  * </select>
  * @structure
- * .instui-simple-select
- *   option
+ * .instui-simple-select {
+ *   option {}
+ * }
+ * @related text-input — Shares the same field chrome, states, and sizes.
+ * @related menu — The dropdown surface a richer select reuses.
  */
 ${fieldControlBase(p, "simple-select", "text-input")}
 .${p}simple-select {

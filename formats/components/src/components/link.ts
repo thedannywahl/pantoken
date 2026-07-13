@@ -17,6 +17,7 @@ export const link = defineComponent({
  * @a11y Mark a disabled link with \`aria-disabled="true"\`.
  * @example
  * <a class="instui-link" href="#">A styled link</a>
+ * @related breadcrumb — A breadcrumb trail is built from links.
  */
 .${p}link {
   display: inline-flex;

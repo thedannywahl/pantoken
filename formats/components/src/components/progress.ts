@@ -18,6 +18,7 @@ export const progress = defineComponent({
 /**
  * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
+ * @remarks The value label is a separate sibling element (\`.instui-progress-value\`), not a child of the bar.
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -35,10 +36,12 @@ export const progress = defineComponent({
  * @modifier -meter-color-alert — @deprecated {@link -color-warning}
  * @modifier -meter-color-danger — @deprecated {@link -color-danger}
  * @part .bar — The filled meter bar.
+ * @compat Scopes the meter part rules with the \`@scope\` at-rule; browsers without \`@scope\` support ignore those scoped rules.
  * @example
  * <div class="instui-progress -color-brand">
  *   <div class="bar"></div>
  * </div>
+ * @related progress-circle — The circular form of the same determinate progress.
  */
 ${root} {
   position: relative;

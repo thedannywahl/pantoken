@@ -6,6 +6,7 @@ export const table = defineComponent({
 /**
  * @component table
  * @summary A styled data table for \`th\` and \`td\` plus an optional caption, with hover, fixed, and stacked-card layouts.
+ * @remarks For \`-layout-stacked\`, pure CSS can't pull each column header's text into its cell, so give every cell a \`data-label\` and the stacked card shows it via \`::before\`.
  * @modifier -hover — Highlight rows on hover.
  * @modifier -layout-fixed — Fixed table layout (equal-width columns).
  * @modifier -layout-stacked — Stack each row as a card, via a per-cell \`data-label\`.
@@ -42,15 +43,20 @@ export const table = defineComponent({
  *   </tbody>
  * </table>
  * @structure
- * .instui-table.-hover
- *   caption
- *   thead
- *     tr
- *       th
- *   tbody
- *     tr
- *       th
- *       td
+ * .instui-table.-hover {
+ *   caption {}
+ *   thead {
+ *     tr {
+ *       th {}
+ *     }
+ *   }
+ *   tbody {
+ *     tr {
+ *       th {}
+ *       td {}
+ *     }
+ *   }
+ * }
  */
 .${p}table {
   border-collapse: collapse;

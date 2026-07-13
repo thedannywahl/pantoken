@@ -9,6 +9,7 @@ export const menu = defineComponent({
 /**
  * @component menu
  * @summary A dropdown surface of items, groups, and separators.
+ * @remarks Compose entries as \`.item\`, label a section with a \`.group\` heading, and divide sections with a \`.separator\`. A \`.item-info\` line adds secondary text inside an item.
  * @part .item — A menu entry; add -disabled, -highlighted, or -active/[aria-checked].
  * @part .group — A labelled group heading.
  * @part .separator — A divider rule between items.
@@ -23,11 +24,14 @@ export const menu = defineComponent({
  *   <div class="item">Delete</div>
  * </div>
  * @structure
- * .instui-menu
- *   .group
- *   .item
- *   .item.-active
- *   .separator
+ * .instui-menu {
+ *   .group {}
+ *   .item {}
+ *   .item.-active {}
+ *   .separator {}
+ * }
+ * @related tree-browser — Both present nested, selectable entries.
+ * @related simple-select — A select's dropdown reuses this menu surface.
  * @demo self:menu
  */
 ${root} {

@@ -13,11 +13,11 @@
  */
 import { createRequire } from "node:module";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { injectLiveExamples } from "@pantoken/typedoc-plugin-live-example";
-import type { CssDocEntry } from "@cssdoc/core";
+import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 
@@ -133,6 +133,65 @@ function resolveDemo(entry: CssDocEntry): string | undefined {
 const cssPath = (subpath: string): string => require.resolve(`@pantoken/components/${subpath}`);
 const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf8");
 
+// The repo root (this worktree) and its GitHub blob base, for `**Source:**` links.
+const repoRoot = join(docsRoot, "..");
+const SOURCE_URL_BASE = "https://github.com/instructure/pantoken/blob/main";
+
+// The default cssdoc section order with Accessibility hoisted up to just after Usage, so the "how to
+// use it (accessibly)" reads before the API-surface tables instead of last, after Tokens consumed.
+const SECTION_ORDER = [
+  "demo",
+  "examples",
+  "usage",
+  "accessibility",
+  "modifiers",
+  "parts",
+  "shadowParts",
+  "states",
+  "slots",
+  "structure",
+  "cssProperties",
+  "functions",
+  "animations",
+  "layers",
+  "conditions",
+  "tokensConsumed",
+  "compat",
+  "related",
+  "see",
+] as const;
+
+/** Map each record name → its authoring source file (repo-relative), by scanning for the record tag. */
+function sourceMap(files: string[]): Map<string, string> {
+  const RECORD = /@(?:component|utility|rule|declaration)\s+([a-z][\w-]*)/u;
+  const map = new Map<string, string>();
+  for (const file of files) {
+    const m = readFileSync(file, "utf8").match(RECORD);
+    if (m && !map.has(m[1])) map.set(m[1], relative(repoRoot, file));
+  }
+  return map;
+}
+
+/** A `resolveSource` hook: link a record to its source file (GitHub blob), labelled with the filename. */
+const makeResolveSource =
+  (map: Map<string, string>) =>
+  (entry: CssDocEntry): { href: string; label?: string } | undefined => {
+    const path = map.get(entry.name);
+    return path ? { href: `${SOURCE_URL_BASE}/${path}`, label: path.split("/").pop() } : undefined;
+  };
+
+/** Every `.ts` under `<componentsRoot>/src/{components,utilities,rules,declarations}` + the color record's generate.ts. */
+function componentSources(componentsRoot: string): string[] {
+  const files = ["components", "utilities", "rules", "declarations"].flatMap((d) => {
+    const dir = join(componentsRoot, "src", d);
+    return readdirSync(dir)
+      .filter((f) => f.endsWith(".ts"))
+      .map((f) => join(dir, f));
+  });
+  files.push(join(componentsRoot, "scripts", "generate.ts")); // the `color` utility's doc lives here
+  return files;
+}
+
 const build = (): void => {
   // The component sheet is the primary source; base/utilities/prose carry the non-component records
   // (@rule/@utility/@declaration). All four feed the emitter so every record is picked up in one pass.
@@ -159,6 +218,17 @@ const build = (): void => {
   const componentsRoot = join(cssPath("package.json"), "..");
   const configuration = CssDocConfigFile.loadForFolder(componentsRoot).toConfiguration();
 
+  // `**Source:**` link → each record's authoring `.ts`. `## Usage` import → the sheet the record ships
+  // in (a record's own sheet, resolved by parsing each of the four sheets for its record names).
+  const resolveSource = makeResolveSource(sourceMap(componentSources(componentsRoot)));
+  const recordSheet = new Map<string, string>();
+  for (const sheet of sheets)
+    for (const e of parseCssDocs(readCss(sheet), { configuration })) recordSheet.set(e.name, sheet);
+  const importSnippet = (entry: CssDocEntry): string | undefined => {
+    const sheet = recordSheet.get(entry.name);
+    return sheet ? `@import "@pantoken/components/${sheet}";` : undefined;
+  };
+
   const outSubdir = "css";
   const { entries, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
@@ -168,8 +238,11 @@ const build = (): void => {
     baseHref: "/api/css/",
     headingPrefix: "CSS:",
     configuration,
+    sectionOrder: SECTION_ORDER,
     resolveToken,
     resolveDemo,
+    resolveSource,
+    importSnippet,
   });
 
   // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads the
@@ -205,6 +278,8 @@ const build = (): void => {
       .sort()
       .map((f) => join(dir, f)),
   );
+  // Source links point at each `.css` shadow-style file. No `importSnippet`: web components are used as
+  // custom elements (JS import), not by importing a stylesheet, so a CSS `@import` snippet would mislead.
   const wc = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
     css: wcCss,
@@ -213,8 +288,10 @@ const build = (): void => {
     baseHref: "/api/css-web-components/",
     headingPrefix: "CSS:",
     configuration,
+    sectionOrder: SECTION_ORDER,
     resolveToken,
     resolveDemo,
+    resolveSource: makeResolveSource(sourceMap(wcCss)),
   });
   console.log(
     `✓ CSS API: wrote ${wc.entries.length} web-component record page(s) to api/css-web-components/` +

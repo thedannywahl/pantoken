@@ -54,17 +54,20 @@ export const calendar = defineComponent({
  *   </div>
  * </div>
  * @structure
- * .instui-calendar
- *   .nav
- *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-left
- *     strong
- *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-right
- *   .grid
- *     .weekday
- *     .day.-outside-month
- *     .day
- *     .day.-today
- *     .day.-selected
+ * .instui-calendar {
+ *   .nav {
+ *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-left {}
+ *     strong {}
+ *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-right {}
+ *   }
+ *   .grid {
+ *     .weekday {}
+ *     .day.-outside-month {}
+ *     .day {}
+ *     .day.-today {}
+ *     .day.-selected {}
+ *   }
+ * }
  */
 ${root} {
   display: inline-block;

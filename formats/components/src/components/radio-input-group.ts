@@ -23,10 +23,14 @@ export const radioInputGroup = defineComponent({
  *   <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Large</label>
  * </fieldset>
  * @structure
- * .instui-radio-input-group.-variant-toggle
- *   legend
- *   .instui-radio.-variant-toggle
- *     input
+ * .instui-radio-input-group.-variant-toggle {
+ *   legend {}
+ *   .instui-radio.-variant-toggle {
+ *     input {}
+ *   }
+ * }
+ * @related radio — The individual control this group collects.
+ * @related form-field-group — The general wrapper for grouping and laying out fields.
  */
 ${root} {
   display: flex;

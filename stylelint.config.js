@@ -21,11 +21,20 @@ export default {
     //   shouldn't be — hand-documented one by one.
     // - `name-not-in-css`: records document placeholder modifier families (`.-icon-<name>`) and abstract
     //   parts (a consumer-supplied `.hero`) that have no literal selector in the shipped sheet.
+    // - `structure-unknown-selector`: our `@structure` trees legitimately show cross-component
+    //   compositions (`.instui-*`) and modifier/state suffixes (`.-selected`, `.-icon-*`). The eslint
+    //   flat config enforces this rule with a working `structureIgnore` for those; the stylelint
+    //   plugin's `structureIgnore` option validator rejects string globs (upstream bug in
+    //   @cssdoc/stylelint-plugin@0.4.0), so we turn it off here and let eslint own the structure check.
     "cssdoc/valid-doc-comments": [
       true,
       {
         modifierConvention: "rscss",
-        rules: { "undocumented-modifier": "off", "name-not-in-css": "off" },
+        rules: {
+          "undocumented-modifier": "off",
+          "name-not-in-css": "off",
+          "structure-unknown-selector": "off",
+        },
       },
     ],
     "annotation-no-unknown": true,

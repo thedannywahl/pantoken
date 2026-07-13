@@ -5,6 +5,8 @@
  * @part .field — The input wrapper (the dropdown's positioning anchor).
  * @part .trigger — The calendar-open button inside the field.
  * @part .dropdown — The anchored calendar popover.
+ * @compat Positions the dropdown with CSS anchor positioning (`anchor-name`, `position-anchor`, and `position-area`), which needs a browser that supports the anchor positioning API.
+ * @related date-time-input — Pairs the date field with a time field.
  */
 :host {
   display: inline-block;

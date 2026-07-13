@@ -19,10 +19,11 @@ export const rating = defineComponent({
  *   <span class="label">2/3</span>
  * </span>
  * @structure
- * .instui-rating.-size-sm
- *   .instui-icon.-icon-star-solid
- *   .instui-icon.-icon-star
- *   .label
+ * .instui-rating.-size-sm {
+ *   .instui-icon.-icon-star-solid {}
+ *   .instui-icon.-icon-star {}
+ *   .label {}
+ * }
  */
 ${root} {
   display: inline-flex;

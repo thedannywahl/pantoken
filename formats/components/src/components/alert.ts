@@ -6,6 +6,7 @@ export const alert = defineComponent({
 /**
  * @component alert
  * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.
+ * @remarks A custom \`-icon-<name>\` swaps the status glyph but keeps the variant's coloured bar; the bar fill is re-asserted at higher specificity so the shared icon painter doesn't consume it.
  * @modifier -color-info — Informational (default).
  * @modifier -color-success — A positive/confirmation message.
  * @modifier -color-warning — A cautionary message.
@@ -27,9 +28,10 @@ export const alert = defineComponent({
  *   <button class="instui-close-button -size-sm" aria-label="Close"></button>
  * </div>
  * @structure
- * .instui-alert.-color-info
- *   code
- *   .instui-close-button.-size-sm
+ * .instui-alert.-color-info {
+ *   code {}
+ *   .instui-close-button.-size-sm {}
+ * }
  * @demo self:alert
  */
 .${p}alert {

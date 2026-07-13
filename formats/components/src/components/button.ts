@@ -8,6 +8,7 @@ export const button = defineComponent({
 /**
  * @component button
  * @summary An accessible action control, styled from the token palette; primary by default.
+ * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and \`-color-ai-secondary\` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. Ghost hover and active derive a low-opacity, slightly-darkened brand wash rather than using the raw hover-background tokens, which would print same-colour-on-same-colour text.
  * @modifier -color-secondary — A lower-emphasis secondary action.
  * @modifier -color-tertiary — A text-style action (no fill or border until hover).
  * @modifier -color-danger — A destructive action.
@@ -30,6 +31,7 @@ export const button = defineComponent({
  * @a11y Drive the \`-toggle\` variant's pressed state with \`aria-pressed\`, and mark a disabled button with \`aria-disabled\` (or the native \`disabled\`).
  * @example
  * <button class="instui-button">Primary</button>
+ * @related close-button — The icon-only dismiss button.
  * @demo self:button
  */
 .${p}button {

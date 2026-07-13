@@ -12,16 +12,21 @@ export const popover = defineComponent({
  * @modifier -placement-bottom — Sit below the anchor.
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ * @compat Uses CSS anchor positioning (\`position-anchor\`/\`position-area\`) and the native \`[popover]\` API, both Chromium-only today; an \`@supports\` guard keeps the placement inert elsewhere, where the UA centres the popover in the top layer.
  * @example
  * <div class="instui-popover -placement-bottom" id="pop-1">
  *   <div class="instui-heading -level-h4">Share this page</div>
  *   <p class="instui-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
  * </div>
  * @structure
- * .instui-popover.-placement-bottom
- *   .instui-heading.-level-h4
- *   .instui-text.-size-sm
- *     code
+ * .instui-popover.-placement-bottom {
+ *   .instui-heading.-level-h4 {}
+ *   .instui-text.-size-sm {
+ *     code {}
+ *   }
+ * }
+ * @related tooltip — A tooltip is a smaller, hover- or focus-triggered anchored surface.
+ * @related context-view — Context view is a related anchored surface with a pointer.
  */
 ${root} {
   background: var(--instui-color-background-elevated-surface-base);

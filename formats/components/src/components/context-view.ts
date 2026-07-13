@@ -15,8 +15,11 @@ export const contextView = defineComponent({
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
  * @cssstate open
+ * @compat Uses CSS anchor positioning (\`position-anchor\`, \`position-area\`, \`position-try-fallbacks\`) and the native \`[popover]\` API behind an \`@supports\` guard; needs a recent Chromium or Safari, and falls back to a UA-centred popover elsewhere.
  * @example
  * <div class="instui-context-view -placement-bottom" id="cv-popover">A context view frames a callout with a caret. As a popover it rides the top layer and closes when you click away or press Esc.</div>
+ * @related popover — The generic top-layer popover.
+ * @related tooltip — A smaller hover or focus callout.
  */
 ${root} {
   position: relative;

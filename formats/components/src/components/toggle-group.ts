@@ -9,6 +9,7 @@ export const toggleGroup = defineComponent({
 /**
  * @component toggle-group
  * @summary A bordered disclosure built on \`<details>\`: a chevron summary row and collapsible content.
+ * @remarks Built on the same native \`<details>\` foundation as toggle-details; put the \`<summary>\` first so it becomes the clickable header row and the rest is the collapsible content.
  * @modifier -without-border — Remove the border.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
@@ -19,9 +20,11 @@ export const toggleGroup = defineComponent({
  *   <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
  * </details>
  * @structure
- * .instui-toggle-group
- *   summary
- *   div
+ * .instui-toggle-group {
+ *   summary {}
+ *   div {}
+ * }
+ * @related toggle-details — The single, unbordered form of the same disclosure.
  */
 ${root} {
   display: block;

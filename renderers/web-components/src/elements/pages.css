@@ -3,6 +3,7 @@
  * @class :host
  * @summary The pages web component — shows one slotted `[data-page]` at a time (the rest stay hidden).
  * @cssstate hidden — Set on a slotted `[data-page]` to hide it while another page shows.
+ * @compat Styles light-DOM children through the shadow boundary with `::slotted()`, so it needs a browser that supports shadow DOM and slotting.
  */
 :host {
   display: block;

@@ -9,6 +9,7 @@ export const checkbox = defineComponent({
 /**
  * @component checkbox
  * @summary A native checkbox and its label, or a switch via \`-variant-toggle\`.
+ * @remarks Set \`el.indeterminate = true\` in JavaScript to show the mixed-state dash; the checked tick auto-contrasts against the fill — white on a dark fill, near-black on a light one.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -label-placement-end — Place the label after the control.
  * @modifier -label-placement-start — Place the label before the control.
@@ -29,6 +30,7 @@ export const checkbox = defineComponent({
  * @cssstate disabled
  * @example
  * <label class="instui-checkbox"><input type="checkbox" checked> Checked</label>
+ * @related radio — The single-select counterpart.
  */
 .${p}checkbox {
   display: inline-flex;

@@ -24,6 +24,7 @@ export const formFieldGroup = defineComponent({
  * @modifier -v-align-top — Top-align the fields.
  * @modifier -v-align-middle — Middle-align the fields.
  * @modifier -v-align-bottom — Bottom-align the fields.
+ * @compat The \`-layout-aligned\` mode uses CSS subgrid behind an \`@supports\` guard; where subgrid is unsupported, the fields fall back to their own stacked layout.
  * @example
  * <fieldset class="instui-form-field-group -layout-columns -col-spacing-medium">
  *   <legend>Shipping address</legend>
@@ -54,14 +55,13 @@ export const formFieldGroup = defineComponent({
  *   </div>
  * </fieldset>
  * @structure
- * .instui-form-field-group.-layout-columns.-col-spacing-medium
- *   legend
- *   .instui-form-field
- *     .label
- *     .controls
- *       .instui-text-input
- *   .instui-form-field-messages
- *     .instui-form-field-message.-type-hint
+ * .instui-form-field-group.-layout-columns.-col-spacing-medium {
+ *   legend {}
+ *   .instui-form-field {}
+ *   .instui-form-field-messages {}
+ * }
+ * @related form-field — The single field this group repeats.
+ * @related radio-input-group — Groups radio inputs under a legend.
  */
 ${root} {
   display: grid;

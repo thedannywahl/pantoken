@@ -10,6 +10,7 @@ export const treeBrowser = defineComponent({
 /**
  * @component tree-browser
  * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.
+ * @remarks Each collection is a native \`<details>\`; nesting them inside one another builds the tree, and the browser handles opening and closing every branch.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A leaf entry in the tree.
@@ -43,14 +44,21 @@ export const treeBrowser = defineComponent({
  *   </details>
  * </div>
  * @structure
- * .instui-tree-browser
- *   details
- *     summary
- *       .instui-icon.-icon-folder
- *     ul
- *       li
- *         .item
- *           .instui-icon.-icon-file-text
+ * .instui-tree-browser {
+ *   details {
+ *     summary {
+ *       .instui-icon.-icon-folder {}
+ *     }
+ *     ul {
+ *       li {
+ *         .item {
+ *           .instui-icon.-icon-file-text {}
+ *         }
+ *       }
+ *     }
+ *   }
+ * }
+ * @related menu — Both present nested, selectable entries.
  */
 ${root} {
   border-radius: ${t("border-radius")};

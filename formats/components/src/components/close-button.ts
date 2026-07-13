@@ -13,6 +13,7 @@ export const closeButton = defineComponent({
  * @a11y Give the icon-only button an \`aria-label\` (e.g. "Close").
  * @example
  * <button class="instui-close-button -size-sm" aria-label="Close"></button>
+ * @related button — The general-purpose action button.
  */
 .${p}close-button {
   display: inline-flex;

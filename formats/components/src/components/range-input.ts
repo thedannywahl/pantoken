@@ -23,6 +23,7 @@ export const rangeInput = defineComponent({
  * @summary A styled range slider with an inverse value bubble.
  * @example
  * <input class="instui-range-input" id="r1" type="range" value="30">
+ * @related number-input — The typed numeric-entry counterpart.
  */
 .${p}range-input {
   -webkit-appearance: none;

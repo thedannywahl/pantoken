@@ -19,6 +19,9 @@ export default [
         {
           modifierConvention: "rscss",
           rules: { "undocumented-modifier": "off", "name-not-in-css": "off" },
+          // Cross-component compositions and modifier/state suffixes shown in a @structure tree aren't
+          // the record's own members — exempt them from structure-unknown-selector.
+          structureIgnore: ["instui-*", "-*"],
         },
       ],
     },

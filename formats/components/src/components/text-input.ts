@@ -18,6 +18,10 @@ export const textInput = defineComponent({
  * @cssstate disabled
  * @example
  * <input class="instui-text-input" placeholder="Default">
+ * @related text-area — The multi-line counterpart with the same states and sizes.
+ * @related number-input — The numeric-entry input sharing this chrome.
+ * @related simple-select — The native select sharing this field chrome.
+ * @related input-group — Wraps this input with leading and trailing slots.
  */
 ${fieldControlBase(p, "text-input", "text-input")}
 .${p}text-input {

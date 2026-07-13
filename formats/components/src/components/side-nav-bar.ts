@@ -34,13 +34,16 @@ export const sideNavBar = defineComponent({
  *   </a>
  * </nav>
  * @structure
- * .instui-side-nav-bar
- *   .item.-selected
- *     .instui-icon.-icon-house
- *     .label
- *   .item
- *     .instui-icon.-icon-inbox
- *     .label
+ * .instui-side-nav-bar {
+ *   .item.-selected {
+ *     .instui-icon.-icon-house {}
+ *     .label {}
+ *   }
+ *   .item {
+ *     .instui-icon.-icon-inbox {}
+ *     .label {}
+ *   }
+ * }
  */
 ${root} {
   display: flex;

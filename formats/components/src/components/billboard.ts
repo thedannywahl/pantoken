@@ -17,6 +17,7 @@ export const billboard = defineComponent({
  * @part .hero — The leading icon or image.
  * @part .heading — The billboard heading.
  * @part .message — The supporting message.
+ * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
  * <div class="instui-billboard">
  *   <span class="hero"><span class="instui-icon -icon-inbox"></span></span>
@@ -24,11 +25,13 @@ export const billboard = defineComponent({
  *   <div class="message">Create your first item to get started.</div>
  * </div>
  * @structure
- * .instui-billboard
- *   .hero
- *     .instui-icon.-icon-inbox
- *   .heading
- *   .message
+ * .instui-billboard {
+ *   .hero {
+ *     .instui-icon.-icon-inbox {}
+ *   }
+ *   .heading {}
+ *   .message {}
+ * }
  */
 ${root} {
   display: block;

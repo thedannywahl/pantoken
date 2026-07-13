@@ -17,12 +17,14 @@ export const fileDrop = defineComponent({
  *   <input type="file" id="fd-input">
  * </label>
  * @structure
- * .instui-file-drop
- *   .instui-icon.-icon-cloud-upload
- *   .instui-text
- *     strong
- *   .instui-text.-size-sm.instui-fg-muted
- *   input
+ * .instui-file-drop {
+ *   .instui-icon.-icon-cloud-upload {}
+ *   .instui-text {
+ *     strong {}
+ *   }
+ *   .instui-text.-size-sm.instui-fg-muted {}
+ *   input {}
+ * }
  */
 .${p}file-drop {
   display: block;

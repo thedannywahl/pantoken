@@ -20,8 +20,9 @@ export const list = defineComponent({
  *   <li>Third item</li>
  * </ul>
  * @structure
- * .instui-list
- *   li
+ * .instui-list {
+ *   li {}
+ * }
  */
 .${p}list {
   color: var(--instui-component-list-item-color);

@@ -13,6 +13,7 @@ export const tag = defineComponent({
  * @modifier -readonly — Read-only (non-dismissable) tag.
  * @example
  * <span class="instui-tag -size-sm">small</span>
+ * @related pill — The read-only label-chip counterpart.
  * @demo self:tag
  */
 .${p}tag {

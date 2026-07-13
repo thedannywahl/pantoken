@@ -18,6 +18,7 @@ export const textArea = defineComponent({
  * @cssstate disabled
  * @example
  * <textarea class="instui-text-area" placeholder="Write a comment…"></textarea>
+ * @related text-input — The single-line counterpart with the same states and sizes.
  */
 ${fieldControlBase(p, "text-area", "text-area")}
 .${p}text-area {

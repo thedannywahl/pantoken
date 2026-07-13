@@ -18,9 +18,12 @@ export const tooltip = defineComponent({
  *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
  * </span>
  * @structure
- * .instui-tooltip
- *   .instui-icon.-icon-info
- *   .tip
+ * .instui-tooltip {
+ *   .instui-icon.-icon-info {}
+ *   .tip {}
+ * }
+ * @related popover — The larger, click-triggered anchored surface.
+ * @related context-view — A related anchored surface with a pointer.
  */
 ${root} {
   position: relative;

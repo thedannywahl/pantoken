@@ -16,6 +16,7 @@ export const tray = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
+ * @compat Opens with the native \`[popover]\` API and \`@starting-style\`; the slide-in sits behind an \`@supports (transition-behavior: allow-discrete)\` guard, so browsers without it still open the tray, just without the slide.
  * @example
  * <div class="instui-tray -size-sm" id="tray-start">
  *   <div>
@@ -25,11 +26,15 @@ export const tray = defineComponent({
  *   <p class="instui-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
  * </div>
  * @structure
- * .instui-tray.-size-sm
- *   div
- *     strong
- *     .instui-close-button
- *   .instui-text.-size-sm
+ * .instui-tray.-size-sm {
+ *   div {
+ *     strong {}
+ *     .instui-close-button {}
+ *   }
+ *   .instui-text.-size-sm {}
+ * }
+ * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
+ * @related popover — The generic top-layer surface this builds on.
  */
 ${root} {
   position: fixed;

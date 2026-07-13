@@ -10,6 +10,7 @@ export const formField = defineComponent({
 /**
  * @component form-field
  * @summary A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.
+ * @remarks An error message stays hidden until the field's control is \`:user-invalid\` (after the user interacts) or you add the \`-invalid\` class. Use \`-layout-inline\` to put the label beside the controls and \`-layout-stacked\` to put it above.
  * @modifier -inline — Inline layout (shorthand for \`-layout-inline\`).
  * @modifier -layout-inline — Inline layout: label beside the controls.
  * @modifier -layout-stacked — Stacked layout: label above the controls.
@@ -21,6 +22,7 @@ export const formField = defineComponent({
  * @modifier -v-align-bottom — Bottom-align the label with the controls.
  * @part .label — The field label.
  * @part .controls — The control area beside or below the label.
+ * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
  * <label class="instui-form-field">
  *   <span class="label">Email address</span>
@@ -31,13 +33,18 @@ export const formField = defineComponent({
  *   </div>
  * </label>
  * @structure
- * .instui-form-field
- *   .label
- *   .controls
- *     .instui-text-input
- *   .instui-form-field-messages
- *     .instui-form-field-message.-type-hint
- *     .instui-form-field-message.-type-error
+ * .instui-form-field {
+ *   .label {}
+ *   .controls {
+ *     .instui-text-input {}
+ *   }
+ *   .instui-form-field-messages {
+ *     .instui-form-field-message.-type-hint {}
+ *     .instui-form-field-message.-type-error {}
+ *   }
+ * }
+ * @related form-field-messages — Renders the field's hint, error, and success messages.
+ * @related form-field-group — Groups related fields under a shared legend.
  */
 ${root} {
   display: grid;

@@ -9,6 +9,7 @@ export const tabs = defineComponent({
 /**
  * @component tabs
  * @summary A tabbed panel set: a tab list, selectable tabs, and their panels.
+ * @remarks Selected and disabled styling matches either the \`-selected\`/\`-disabled\` class or the \`aria-selected\`/\`aria-disabled\` attribute, so you can drive state from markup or from ARIA.
  * @part .list — The row of tabs.
  * @part .tab — A single tab; \`-selected\` marks the active one.
  * @part .panel — The content panel for a tab.
@@ -27,12 +28,14 @@ export const tabs = defineComponent({
  *   <div class="panel" role="tabpanel">The Overview tab's content shows here.</div>
  * </div>
  * @structure
- * .instui-tabs
- *   .list
- *     .tab.-selected
- *     .tab
- *     .tab.-disabled
- *   .panel
+ * .instui-tabs {
+ *   .list {
+ *     .tab.-selected {}
+ *     .tab {}
+ *     .tab.-disabled {}
+ *   }
+ *   .panel {}
+ * }
  */
 ${root} {
   display: flex;

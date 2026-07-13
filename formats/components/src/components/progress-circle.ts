@@ -21,6 +21,7 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
 /**
  * @component progress-circle
  * @summary A circular progress ring driven by a \`--value\` (0–100) custom property.
+ * @remarks The ring is a \`conic-gradient\` donut painted on \`::before\` and clipped with a radial-gradient mask; the \`--value\` custom property drives the arc.
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -42,10 +43,12 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
  * @cssproperty --pantoken-pc-track <color> — The unfilled track colour.
  * @cssproperty --pantoken-pc-stroke <length> — The ring's stroke width; the -size-* modifiers set it.
  * @a11y Give it role="img" and an aria-label stating the percentage, since the ring is drawn in CSS.
+ * @compat Registers \`--value\` with \`@property\` (so the arc can transition) and paints with CSS \`mask\` and \`conic-gradient\`; where \`@property\` is unsupported the ring still renders but won't animate.
  * @example
  * <span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">
  *   <span class="value">25%</span>
  * </span>
+ * @related progress — The linear bar form of the same determinate progress.
  */
 /* --value (0–100) drives the arc; registered so the conic-gradient re-evaluates (and can transition). */
 @property --value { syntax: "<number>"; inherits: true; initial-value: 0; }

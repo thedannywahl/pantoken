@@ -15,6 +15,7 @@ export const breadcrumb = defineComponent({
  * @modifier -size-lg — Large.
  * @part .item — A crumb; the last one is the current page.
  * @a11y Wrap the trail in \`<nav aria-label>\` and mark the current page's crumb with \`aria-current="page"\`.
+ * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
  * <nav class="instui-breadcrumb" aria-label="Breadcrumb">
  *   <span class="item">
@@ -25,10 +26,14 @@ export const breadcrumb = defineComponent({
  *   <span class="item" aria-current="page">Breadcrumb</span>
  * </nav>
  * @structure
- * .instui-breadcrumb
- *   .item
- *     a
- *       .instui-icon.-icon-house
+ * .instui-breadcrumb {
+ *   .item {
+ *     a {
+ *       .instui-icon.-icon-house {}
+ *     }
+ *   }
+ * }
+ * @related link — Styles each crumb as a link.
  */
 ${root} {
   display: flex;

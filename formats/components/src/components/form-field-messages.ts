@@ -10,6 +10,7 @@ export const formFieldMessages = defineComponent({
  * @component form-field-messages
  * @summary Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.
  * @modifier -type-new-error — @deprecated {@link -type-error}
+ * @related form-field — Wraps a label, controls, and these messages.
  */
 .${p}form-field-messages {
   display: flex;

@@ -30,11 +30,13 @@ export const pagination = defineComponent({
  *   <a class="arrow" href="#" aria-label="Last page"><span class="instui-icon -icon-chevrons-right"></span></a>
  * </nav>
  * @structure
- * .instui-pagination
- *   .arrow
- *     .instui-icon.-icon-chevrons-left
- *   .page
- *   .ellipsis
+ * .instui-pagination {
+ *   .arrow {
+ *     .instui-icon.-icon-chevrons-left {}
+ *   }
+ *   .page {}
+ *   .ellipsis {}
+ * }
  */
 ${root} {
   display: inline-flex;

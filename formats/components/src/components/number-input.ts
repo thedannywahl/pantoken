@@ -30,11 +30,15 @@ export const numberInput = defineComponent({
  *   </span>
  * </span>
  * @structure
- * .instui-number-input
- *   input
- *   .arrows
- *     button
- *     .down
+ * .instui-number-input {
+ *   input {}
+ *   .arrows {
+ *     button {}
+ *     .down {}
+ *   }
+ * }
+ * @related text-input — Shares the same input facade chrome.
+ * @related range-input — Another numeric input control.
  */
 ${inputFacadeBase(p, "number-input")}
 /* the arrow column sits flush at the inline-end; drop the facade's end padding, and clip the column to

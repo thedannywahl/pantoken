@@ -7,6 +7,7 @@ export const toggleDetails = defineComponent({
 /**
  * @component toggle-details
  * @summary A styled native \`<details>\` disclosure with a rotating chevron.
+ * @remarks Built on the native \`<details>\` element, so the browser drives open and close plus keyboard support; the CSS only hides the default marker and supplies the rotating chevron.
  * @modifier -variant-filled — Filled (surface) variant.
  * @modifier -chevron-end — Place the chevron after the summary.
  * @modifier -size-sm — Small.
@@ -17,6 +18,7 @@ export const toggleDetails = defineComponent({
  *   <summary>What ships in this package?</summary>
  *   Class-based component styles, built from the Instructure tokens, plus a prose layer.
  * </details>
+ * @related toggle-group — The bordered, grouped form of the same disclosure.
  */
 .${p}toggle-details {
   color: var(--instui-component-toggle-details-text-color);

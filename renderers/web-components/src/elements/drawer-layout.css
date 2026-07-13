@@ -2,6 +2,7 @@
  * @component drawer-layout
  * @class :host
  * @summary A slide-in tray beside a scrollable content area, with a draggable resize handle — the drawer-layout web component's shadow styles.
+ * @remarks The `.handle` starts fully transparent and fades in on hover or while dragging, so the resize control only shows when the user reaches for it. Both the tray and the handle stay hidden until the host carries the `open` attribute.
  * @part .layout — The flex row holding the tray and content.
  * @part .tray — The drawer panel.
  * @part .handle — The drag-to-resize handle between the tray and content.

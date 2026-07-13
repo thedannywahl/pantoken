@@ -15,6 +15,7 @@ export const inputGroup = defineComponent({
  * @modifier -size-lg — Large.
  * @modifier -should-not-wrap — Keep the group on one line (no wrapping).
  * @cssstate disabled
+ * @related text-input — Wraps a text input, adding leading and trailing icon slots.
  */
 ${inputFacadeBase(p, "input-group")}
 .${p}input-group.-should-not-wrap { flex-wrap: nowrap; }`,

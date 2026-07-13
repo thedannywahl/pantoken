@@ -12,6 +12,7 @@ export const avatar = defineComponent({
 /**
  * @component avatar
  * @summary A user avatar showing initials or an image, circular by default.
+ * @remarks By default the palette colour tints the initials on a transparent surface; \`-has-inverse-color\` fills the surface with the colour and puts the initials on-colour. The \`-color-ai\` variant always fills with the violet→sea gradient.
  * @modifier -color-ai — AI-accent palette colour.
  * @modifier -color-ash — Ash palette colour.
  * @modifier -color-blue — Blue palette colour.
@@ -36,6 +37,7 @@ export const avatar = defineComponent({
  * @modifier -color-accent6 — @deprecated {@link -color-grey}
  * @example
  * <span class="instui-avatar">DW</span>
+ * @related byline — Can host an avatar as its leading hero figure.
  */
 .${p}avatar {
   display: inline-flex;

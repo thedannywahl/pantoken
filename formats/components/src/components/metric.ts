@@ -20,9 +20,10 @@ export const metric = defineComponent({
  *   <span class="label">Active users</span>
  * </div>
  * @structure
- * .instui-metric
- *   .value
- *   .label
+ * .instui-metric {
+ *   .value {}
+ *   .label {}
+ * }
  */
 ${root} {
   display: inline-flex;

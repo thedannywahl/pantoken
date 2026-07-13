@@ -9,6 +9,7 @@ export const modal = defineComponent({
 /**
  * @component modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
+ * @remarks On a native <dialog>, \`showModal()\` puts the modal in the top layer and its \`::backdrop\` becomes the mask, so no z-index is needed. An \`<img>\` alone in \`.body\` goes full-bleed.
  * @modifier -size-sm — A narrow modal.
  * @modifier -size-lg — A wide modal.
  * @modifier -size-auto — Sized to content.
@@ -20,6 +21,7 @@ export const modal = defineComponent({
  * @part .header — The title row.
  * @part .body — The content region (a lone <img> goes full-bleed).
  * @part .footer — The actions row.
+ * @compat Styles a native <dialog> and its \`::backdrop\`; the top-layer rendering and backdrop styling need a browser that supports the dialog element.
  * @example
  * <dialog class="instui-modal -size-sm" id="modal-sm">
  *   <div class="header"><strong>Small</strong></div>
@@ -29,13 +31,18 @@ export const modal = defineComponent({
  *   </div>
  * </dialog>
  * @structure
- * .instui-modal.-size-sm
- *   .header
- *     strong
- *   .body
- *     code
- *   .footer
- *     .instui-button
+ * .instui-modal.-size-sm {
+ *   .header {
+ *     strong {}
+ *   }
+ *   .body {
+ *     code {}
+ *   }
+ *   .footer {
+ *     .instui-button {}
+ *   }
+ * }
+ * @related tray — A tray is the same dismissible overlay pattern, anchored to a screen edge.
  * @demo self:modal
  */
 ${root} {

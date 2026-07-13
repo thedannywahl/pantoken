@@ -1,6 +1,8 @@
 /**
  * @rule popover-reset
  * @summary A shared host reset for the native `[popover]` surfaces (context-view, popover, tray) — strips the UA popover box so the inner styled surface controls its own look. `overflow` stays visible so a caret or shadow can escape the box.
+ * @remarks Several web components (context-view, popover, and tray) import this same reset, so edits here reach every popover surface at once.
+ * @compat Resets the native `[popover]` host box, so it targets browsers that support the Popover API.
  */
 :host {
   margin: 0;

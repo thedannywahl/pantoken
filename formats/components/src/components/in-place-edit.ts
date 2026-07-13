@@ -13,6 +13,7 @@ export const inPlaceEdit = defineComponent({
  * @a11y Give the editable element \`role="textbox"\` and an accessible name (\`aria-label\`).
  * @example
  * <span class="instui-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>
+ * @related text-input — On focus it shows the same input chrome as a text input.
  * @demo self:in-place-edit
  */
 ${root} {
