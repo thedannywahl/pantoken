@@ -21,7 +21,7 @@ export const alert = defineComponent({
  * @modifier -variant-success — @deprecated {@link -color-success}
  * @modifier -variant-warning — @deprecated {@link -color-warning}
  * @modifier -variant-error — @deprecated {@link -color-danger}
- * @slot content - The alert's content, which can include a dismiss button.
+ * @slot content — The alert's message content; may include a dismiss button.
  * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
  * @modifier -render-custom-icon-* — @deprecated The former \`renderCustomIcon\` prop; still works as an alias, but use \`-icon-<name>\` (or override \`--pantoken-alert-glyph\`) instead.
  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; \`-icon-<name>\` sets it for you. Override for a custom icon (a url-encoded SVG).
@@ -40,7 +40,7 @@ export const alert = defineComponent({
  *   slot {}
  *   .${p}close-button:optional {}
  * }
- * @a11y For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.instui-close-button\` in the example carries \`aria-label="Close"\`).
+ * @related close-button — The dismiss control an alert may include.
  */
 .${p}alert {
   position: relative;
