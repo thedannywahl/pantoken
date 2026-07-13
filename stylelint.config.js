@@ -7,36 +7,17 @@
  *
  * We enable a focused set of core "possible error" rules directly, plus `@cssdoc/stylelint-plugin`'s
  * `cssdoc/valid-doc-comments` — which validates the inline cssdoc doc comments against the record's
- * actual CSS (rscss modifiers), the one shareable rule this project extends.
+ * actual CSS, the one shareable rule this project extends. Its options (rscss modifier convention, the
+ * off-list, `structureIgnore`) live in the repo's `cssdoc.json`, which the plugin auto-loads per file —
+ * so the same config drives lint, docs, and the test guard, with nothing duplicated here.
  *
  * @type {import("stylelint").Config}
  */
 export default {
   plugins: ["@cssdoc/stylelint-plugin"],
   rules: {
-    // Validate the cssdoc doc comments against the CSS (rscss modifier convention: `.-color-secondary`).
-    // Two sub-rules are off because they clash with this library's authoring conventions:
-    // - `undocumented-modifier`: the utilities emit whole generated modifier families (View's
-    //   `.-display-*`/`.-cursor-*`, the `.-size-*` long-form + deprecated-alias twins) that aren't — and
-    //   shouldn't be — hand-documented one by one.
-    // - `name-not-in-css`: records document placeholder modifier families (`.-icon-<name>`) and abstract
-    //   parts (a consumer-supplied `.hero`) that have no literal selector in the shipped sheet.
-    // - `structure-unknown-selector`: our `@structure` trees legitimately show cross-component
-    //   compositions (`.instui-*`) and modifier/state suffixes (`.-selected`, `.-icon-*`). The eslint
-    //   flat config enforces this rule with a working `structureIgnore` for those; the stylelint
-    //   plugin's `structureIgnore` option validator rejects string globs (upstream bug in
-    //   @cssdoc/stylelint-plugin@0.4.0), so we turn it off here and let eslint own the structure check.
-    "cssdoc/valid-doc-comments": [
-      true,
-      {
-        modifierConvention: "rscss",
-        rules: {
-          "undocumented-modifier": "off",
-          "name-not-in-css": "off",
-          "structure-unknown-selector": "off",
-        },
-      },
-    ],
+    // Options come from cssdoc.json (auto-loaded per linted file).
+    "cssdoc/valid-doc-comments": true,
     "annotation-no-unknown": true,
     "at-rule-no-unknown": [true, { ignoreAtRules: ["scope"] }],
     "block-no-empty": true,
