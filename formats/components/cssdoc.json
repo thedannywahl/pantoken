@@ -1,3 +1,4 @@
 {
-  "$schema": "./node_modules/@cssdoc/config/cssdoc.schema.json"
+  "$schema": "./node_modules/@cssdoc/config/cssdoc.schema.json",
+  "modifierConvention": "rscss"
 }
