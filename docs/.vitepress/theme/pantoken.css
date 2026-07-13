@@ -12,12 +12,14 @@
 div[class*="language-"]:has(+ .css-example) {
   margin-bottom: 0;
 }
+
 div[class*="language-"]:has(+ .css-example),
 div[class*="language-"]:has(+ .css-example) > pre {
   border-end-start-radius: 0;
   border-end-end-radius: 0;
   max-height: 21rem;
 }
+
 .css-example {
   border: 1px solid var(--vp-c-divider);
   border-block-start: 0;
@@ -28,11 +30,39 @@ div[class*="language-"]:has(+ .css-example) > pre {
   /* Match the page background (like the demo frame), so only the inner .instui-card reads as elevated. */
   background: light-dark(var(--vp-c-bg-soft), var(--vp-c-bg));
 }
+
 /* VitePress makes code blocks full-bleed (negative margins, no radius) on narrow viewports; keep the
    paired example fence contained so it stays aligned with the frame below it. */
 @media (max-width: 639px) {
   .vp-doc div[class*="language-"]:has(+ .css-example) {
     margin-inline: 0;
     border-radius: 8px 8px 0 0;
+  }
+}
+
+/* Home styles */
+
+.is-home {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20374%20160%27%3E%3Crect%20width%3D%27374%27%20height%3D%27160%27%20fill%3D%27%23002b4d%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27200%27%20fill%3D%27%23004880%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%27140%27%20fill%3D%27%230065b3%27%2F%3E%3Ccircle%20cx%3D%27374%27%20cy%3D%27160%27%20r%3D%2780%27%20fill%3D%27%230090ff%27%2F%3E%3C%2Fsvg%3E");
+  background-size: cover;
+  background-position: right;
+}
+
+.VPNavBar.home {
+  background-color: var(--vp-nav-bg-color);
+}
+
+.VPHomeHero {
+  .heading {
+    color: #fff;
+
+    & :is(.name, .clip) {
+      color: #7fb4f1;
+      -webkit-text-fill-color: #7fb4f1;
+    }
+  }
+
+  .tagline {
+    color: #aab0b5;
   }
 }
