@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const rangeInput = defineComponent({
   name: "range-input",
@@ -17,7 +18,8 @@ export const rangeInput = defineComponent({
   border-radius: 50%;
   box-shadow: 0 0 0 0 ${v("handle-shadow-color")};
   cursor: pointer;`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component range-input
  * @summary A styled range slider with an inverse value bubble.

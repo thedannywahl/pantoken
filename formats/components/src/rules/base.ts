@@ -1,8 +1,11 @@
 import { defineRule } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const base = defineRule({
   name: "base",
-  css: () => `
+  css: () =>
+    // prettier-ignore
+    css`
 /**
  * @rule base
  * @class *

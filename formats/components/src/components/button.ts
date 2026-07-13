@@ -1,10 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { AI_ICON_MASK } from "../lib/helpers.ts";
 import { alpha, darken } from "@pantoken/plugin-colors";
 
 export const button = defineComponent({
   name: "button",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component button
  * @summary An accessible action control, styled from the token palette; primary by default.

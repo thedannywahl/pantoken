@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const radioInputGroup = defineComponent({
   name: "radio-input-group",
@@ -7,7 +8,8 @@ export const radioInputGroup = defineComponent({
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
     const r = "var(--instui-component-radio-input-toggle-border-radius)";
     const bw = "var(--instui-component-radio-input-toggle-border-width)";
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component radio-input-group
  * @summary A single-select radio \`<fieldset>\`, plain or as a connected segmented toggle.

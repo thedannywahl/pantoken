@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const modal = defineComponent({
   name: "modal",
   css: (p) => {
     const root = `.${p}modal`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.

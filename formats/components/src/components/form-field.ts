@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const formField = defineComponent({
@@ -6,7 +7,8 @@ export const formField = defineComponent({
   css: (p) => {
     const root = `.${p}form-field`;
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component form-field
  * @summary A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.

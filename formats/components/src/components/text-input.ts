@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { fieldControlBase } from "../lib/field-controls.ts";
 
 export const textInput = defineComponent({
   name: "text-input",
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component text-input
  * @summary A styled native \`<input>\` — including \`date\`, \`time\`, and \`datetime-local\`, where the browser supplies the picker — with validation states and sizes.

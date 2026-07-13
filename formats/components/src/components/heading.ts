@@ -1,9 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { headingLevelRules } from "../lib/headings.ts";
 
 export const heading = defineComponent({
   name: "heading",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component heading
  * @summary Heading typography from \`-level-h1\` to \`-level-h6\`.

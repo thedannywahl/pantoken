@@ -6,11 +6,13 @@
  *
  * @module
  */
+import { css } from "../lib/css.ts";
 import type { Definition } from "../lib/define.ts";
 import { headingLevelRules } from "../lib/headings.ts";
 
 /** The prose rule's cssdoc doc comment (authored inline; the CSS body follows from {@link proseBody}). */
-const PROSE_DOC = `/**
+// prettier-ignore
+const PROSE_DOC = css`/**
  * @rule prose
  * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — under the \`.pantoken-prose\` scope.
  * @example
@@ -26,7 +28,8 @@ const PROSE_DOC = `/**
 
 /** Build the InstUI-look prose CSS body (no doc block) under a scope selector `s`. */
 function proseBody(s: string): string {
-  return `
+  // prettier-ignore
+  return css`
 /* Body text is InstUI's Text \`content\` type style. */
 ${s} {
   color: var(--instui-component-text-base-color);

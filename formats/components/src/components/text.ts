@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const text = defineComponent({
   name: "text",
@@ -7,7 +8,8 @@ export const text = defineComponent({
     // (`<span class="instui-text -small -secondary">`), collision-safe (always compound with the base,
     // and `.-small` is rare in the wild), and — treeshakeable via PostCSS.
     const mod = (token: string, decls: string): string => `.${p}text.-${token} { ${decls} }`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component text
  * @summary Body-text typography with size, weight, colour, and style modifiers.

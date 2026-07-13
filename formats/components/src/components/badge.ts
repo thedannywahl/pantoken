@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const badge = defineComponent({
   name: "badge",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component badge
  * @summary A small count or status dot placed over a target's corner.

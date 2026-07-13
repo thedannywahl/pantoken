@@ -1,8 +1,11 @@
 import { defineUtility } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const screenReaderContent = defineUtility({
   name: "screen-reader-content",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @utility screen-reader-content
  * @summary Visually hides content while keeping it available to assistive tech (the standard clip pattern).

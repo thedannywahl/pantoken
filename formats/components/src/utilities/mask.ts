@@ -1,8 +1,11 @@
 import { defineUtility } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const mask = defineUtility({
   name: "mask",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @utility mask
  * @summary An in-flow overlay that fills its positioned parent and centres its content — e.g. a spinner over a card. For a modal, prefer a native \`<dialog>\` (its \`::backdrop\` is the mask).

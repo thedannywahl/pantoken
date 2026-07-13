@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { fieldControlBase } from "../lib/field-controls.ts";
 
 export const textArea = defineComponent({
   name: "text-area",
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-area-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component text-area
  * @summary A styled, resizable native \`<textarea>\` with the same states and sizes as the text input.

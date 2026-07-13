@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const formFieldGroup = defineComponent({
   name: "form-field-group",
   css: (p) => {
     const root = `.${p}form-field-group`;
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component form-field-group
  * @summary A \`<fieldset>\` group with a legend, a column or inline layout, and configurable spacing.

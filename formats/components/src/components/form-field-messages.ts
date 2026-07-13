@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { ALERT_CIRCLE_ICON, CHECK_CIRCLE_ICON } from "../lib/helpers.ts";
 
 export const formFieldMessages = defineComponent({
   name: "form-field-messages",
   css: (p) => {
     const m = (s: string): string => `var(--instui-component-form-field-message-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component form-field-messages
  * @summary Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.

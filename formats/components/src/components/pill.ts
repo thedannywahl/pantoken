@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const pill = defineComponent({
   name: "pill",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component pill
  * @summary A compact status label; add a leading glyph with the shared \`-icon-<name>\` form.

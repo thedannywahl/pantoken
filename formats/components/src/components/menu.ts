@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const menu = defineComponent({
   name: "menu",
   css: (p) => {
     const root = `.${p}menu`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component menu
  * @summary A dropdown surface of items, groups, and separators.

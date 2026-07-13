@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const link = defineComponent({
   name: "link",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component link
  * @summary A styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms.

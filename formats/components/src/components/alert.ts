@@ -1,8 +1,11 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const alert = defineComponent({
   name: "alert",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component alert
  * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.

@@ -5,6 +5,7 @@
  * @module
  */
 import { defineUtility } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 
 export const responsive = defineUtility({
   name: "responsive",
@@ -31,7 +32,8 @@ export const responsive = defineUtility({
           `@container (min-width: ${w}) { .${p}cq-hidden-min-${name} { display: none !important; } }`,
       )
       .join("\n");
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @utility responsive
  * @class .instui-hidden-max-md

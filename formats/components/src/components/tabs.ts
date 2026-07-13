@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const tabs = defineComponent({
   name: "tabs",
   css: (p) => {
     const root = `.${p}tabs`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component tabs
  * @summary A tabbed panel set: a tab list, selectable tabs, and their panels.

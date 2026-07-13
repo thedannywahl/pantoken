@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope } from "../lib/helpers.ts";
 
 export const progress = defineComponent({
@@ -14,7 +15,8 @@ export const progress = defineComponent({
     // normalized scheme, so InstUI's `alert` folds to warning via the deprecated alias only).
     const meter = (mod: string, bg: string): string =>
       `${root}.-color-${mod} .bar { background: var(--instui-color-background-${bg}); }`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.

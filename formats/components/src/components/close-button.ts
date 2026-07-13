@@ -1,9 +1,12 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { CLOSE_ICON } from "../lib/helpers.ts";
 
 export const closeButton = defineComponent({
   name: "close-button",
-  css: (p) => `
+  css: (p) =>
+    // prettier-ignore
+    css`
 /**
  * @component close-button
  * @summary A transparent icon button that draws its own × glyph, in three sizes plus an inverse variant.

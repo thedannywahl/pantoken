@@ -1,11 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { scope, CHECK_ICON, MINUS_ICON } from "../lib/helpers.ts";
 
 export const checkbox = defineComponent({
   name: "checkbox",
   css: (p) => {
     const base = `.${p}checkbox:not(.${p}checkbox.-variant-toggle)`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component checkbox
  * @summary A native checkbox and its label, or a switch via \`-variant-toggle\`.

@@ -1,4 +1,5 @@
 import { defineComponent } from "../lib/define.ts";
+import { css } from "../lib/css.ts";
 import { SELECT_CHEVRON } from "../lib/helpers.ts";
 import { fieldControlBase } from "../lib/field-controls.ts";
 
@@ -6,7 +7,8 @@ export const simpleSelect = defineComponent({
   name: "simple-select",
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
-    return `
+    // prettier-ignore
+    return css`
 /**
  * @component simple-select
  * @summary A styled native \`<select>\` with a caret, matching the text-input states and sizes.
