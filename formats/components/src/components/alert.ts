@@ -28,11 +28,13 @@ export const alert = defineComponent({
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each \`-color-*\` variant sets its own.
  * @accessibility For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.instui-close-button\` in the example carries \`aria-label="Close"\`).
  * @example
- * <div class="${p}alert -color-info instui-mb-md">
- *   Dismissable with <code>transition="fade"</code> — I fade out when closed.
- *   <button class="${p}close-button -size-sm" aria-label="Close"></button>
+ * <div class="${p}alert -icon-megaphone instui-mb-md">
+ *   An alert with the default <code>info</code> color, and a custom icon.
  * </div>
- * <div class="${p}alert -color-success">Congratulations! You did it.</div>
+ * 
+ * <div class="${p}alert -color-success">
+ *   Congratulations! You're using the "success" color.
+ * </div>
  * @structure
  * .${p}alert {
  *   slot {}
