@@ -131,17 +131,14 @@ async function main(): Promise<void> {
         <div class="instui-button-group" role="tablist"></div>
         <span class="runner__spacer"></span>
         <div class="runner__theme"${themes.length ? "" : " hidden"}>
-          <button class="instui-button -secondary -sm" data-role="theme-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <button class="instui-button -color-secondary -size-small -icon-chevron" data-role="theme-trigger" type="button" aria-haspopup="true" aria-expanded="false">
             <span data-role="theme-label"></span>
-            <span class="runner__icon">${ICON.chevron}</span>
           </button>
           <div class="instui-menu runner__theme-menu" data-role="theme-menu" role="menu" hidden></div>
         </div>
-        <button class="instui-button -toggle -sm -icon" data-role="split" type="button" aria-pressed="false" data-tooltip="Split" aria-label="Split">
-          <span class="runner__icon">${ICON.split}</span>
+        <button class="instui-button -toggle -size-sm -icon-split" data-role="split" type="button" aria-pressed="false" data-tooltip="Split" aria-label="Split">
         </button>
-        <button class="instui-button -secondary -sm -icon" data-role="reset" type="button" data-tooltip="Reset" aria-label="Reset" disabled>
-          <span class="runner__icon">${ICON.reset}</span>
+        <button class="instui-button -color-secondary -size-sm -icon-reset" data-role="reset" type="button" data-tooltip="Reset" aria-label="Reset" disabled>
         </button>
       </div>
       <div class="runner__body">

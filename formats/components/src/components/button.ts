@@ -29,6 +29,7 @@ export const button = defineComponent({
  * @modifier -display-block — Full-width block button.
  * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
  * @modifier -without-border — Remove the border.
+ * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
  * @cssstate disabled
  * @cssstate pressed
  * @a11y Drive the \`-toggle\` variant's pressed state with \`aria-pressed\`, and mark a disabled button with \`aria-disabled\` (or the native \`disabled\`).

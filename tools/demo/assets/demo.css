@@ -1,7 +1,46 @@
-/*
- * Styles for the demo panel emitted by `renderDemoFigure` / `demoMarkdownIt`. Import this in your
- * docs so ```demo``` blocks render as a bordered, token-themed live-sample frame. The panel lives in
- * the host page (not the iframe), so it uses the host's --instui-* tokens.
+/**
+ * @component demo
+ * @class .pantoken-demo
+ * @summary The live-sample panel emitted by `renderDemoFigure` / `demoMarkdownIt` — a bordered, token-themed frame wrapping a sandboxed demo iframe.
+ * @remarks Import this in your docs so `demo` fenced blocks render as live samples. The panel lives in the host page (not the iframe), so it reads the host's `--instui-*` tokens. The action buttons' `[data-tooltip]` bubble drops *below* the control: the bar sits at the top of the figure, which clips overflow, so a bubble above would be cut off.
+ * @part .pantoken-demo__bar — The top toolbar: an optional provider tag, a spacer, and the action controls.
+ * @part .pantoken-demo__provider — The provider tag (brand mark plus name); shown only for hosted providers.
+ * @part .pantoken-demo__provider-icon — The provider's brand glyph, drawn in its brand colour.
+ * @part .pantoken-demo__spacer — Pushes the actions to the trailing edge whether or not a provider tag is present.
+ * @part .pantoken-demo__action — An icon-only action (toggle light/dark, full screen, open in a new tab); the label shows as a hover tooltip.
+ * @part .pantoken-demo__icon — The glyph inside an action control.
+ * @part .pantoken-demo__frame — The sandboxed demo iframe; the reader can drag its bottom edge to grow it.
+ * @cssstate :fullscreen — The panel fills the viewport; the bar stays pinned on top and the frame grows to fill the rest.
+ * @accessibility The actions are real `<button>`s and an `<a>`; each carries an `aria-label` and exposes the same label through `data-tooltip`, surfaced on hover and `:focus-visible`.
+ * @structure
+ * .pantoken-demo {
+ *   .pantoken-demo__bar {
+ *     .pantoken-demo__provider {
+ *       .pantoken-demo__provider-icon {}
+ *     }
+ *     .pantoken-demo__spacer {}
+ *     .pantoken-demo__action {
+ *       .pantoken-demo__icon {}
+ *     }
+ *   }
+ *   .pantoken-demo__frame {}
+ * }
+ * @example
+ * <figure class="pantoken-demo">
+ *   <figcaption class="pantoken-demo__bar">
+ *     <span class="pantoken-demo__provider">
+ *       <svg class="pantoken-demo__provider-icon" aria-hidden="true">\3c !-- brand mark --></svg> StackBlitz
+ *     </span>
+ *     <span class="pantoken-demo__spacer"></span>
+ *     <button class="pantoken-demo__action" type="button" data-tooltip="Full screen" aria-label="Full screen">
+ *       <svg class="pantoken-demo__icon" aria-hidden="true">\3c !-- icon --></svg>
+ *     </button>
+ *     <a class="pantoken-demo__action" href="…" data-tooltip="Open in a new tab" aria-label="Open in a new tab">
+ *       <svg class="pantoken-demo__icon" aria-hidden="true">\3c !-- icon --></svg>
+ *     </a>
+ *   </figcaption>
+ *   <iframe class="pantoken-demo__frame" src="…" title="Live demo"></iframe>
+ * </figure>
  */
 .pantoken-demo {
   margin: var(--instui-spacing-space-md, 1rem) 0;

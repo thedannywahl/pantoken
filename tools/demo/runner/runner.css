@@ -1,13 +1,14 @@
-/*
- * Runner layout only. The chrome (tabs, buttons) uses the injected InstUI component classes
- * (.instui-button, .instui-menu…), so colors come from paired --instui-* tokens and read correctly in
- * light and dark.
- */
-
-/*
- * Result/HTML/CSS/JS switcher: a seamed segmented control that joins the .instui-button tabs. (InstUI
- * has no ButtonGroup CSS component — the reworked .instui-toggle-group is now a disclosure — so the
- * runner owns this composition: a shared outer border with hairline seams between the buttons.)
+/**
+ * @component button-group
+ * @class .instui-button-group
+ * @summary A seamed segmented control that joins `.instui-button` tabs into one shared outer border.
+ * @remarks The runner owns this composition because InstUI ships no ButtonGroup CSS component (the reworked `.instui-toggle-group` is now a disclosure). Direct-child `.instui-button`s drop their individual radii and outer borders, leaving hairline seams between them.
+ * @example
+ * <div class="instui-button-group" role="tablist">
+ *   <button class="instui-button" role="tab">Result</button>
+ *   <button class="instui-button" role="tab">HTML</button>
+ *   <button class="instui-button" role="tab">CSS</button>
+ * </div>
  */
 .instui-button-group {
   display: inline-flex;
@@ -25,6 +26,55 @@
     var(--instui-color-stroke-base, #c7cdd1);
 }
 
+/**
+ * @component runner
+ * @class .runner
+ * @summary The self-hosted demo runner — a top toolbar over a code/result body, shown as tabs or a split pane.
+ * @remarks Layout only. The chrome (tabs, buttons, theme menu) reuses injected `.instui-*` classes, so its colours come from paired `--instui-*` tokens and read correctly in light and dark. The theme picker is an `.instui-menu` dropdown anchored to its trigger.
+ * @modifier runner--split — Split layout: the code editor on one side, the live result on the other.
+ * @modifier runner--show-result — Tabs layout: show the result pane instead of the code (ignored in split mode, where both show).
+ * @part .runner__bar — The top toolbar holding the tabs, theme picker, and actions.
+ * @part .runner__spacer — Pushes the trailing controls to the end of the bar.
+ * @part .runner__theme — The theme-picker wrapper (trigger button plus its menu).
+ * @part .runner__theme-menu — The anchored theme dropdown (also an `.instui-menu`).
+ * @part .runner__icon — An icon slot sized to the current font.
+ * @part .runner__body — The region below the bar holding the code and result.
+ * @part .runner__code — The editor column (one editor per language).
+ * @part .runner__editor — A single language's editor pane; only the active one shows.
+ * @part .runner__result — The sandboxed iframe that runs the demo.
+ * @accessibility Toolbar controls carry `aria-label`s and expose the same text through `data-tooltip` on hover and `:focus-visible`; the theme dropdown is a `role="menu"` whose items are reset to full-width buttons.
+ * @structure
+ * .runner {
+ *   .runner__bar {
+ *     .runner__spacer {}
+ *     .runner__theme {
+ *       .runner__theme-menu {}
+ *     }
+ *     .runner__icon {}
+ *   }
+ *   .runner__body {
+ *     .runner__code {
+ *       .runner__editor {}
+ *     }
+ *     .runner__result {}
+ *   }
+ * }
+ * @example
+ * <div class="runner runner--split">
+ *   <div class="runner__bar">
+ *     <div class="instui-button-group" role="tablist">\3c !-- tabs --></div>
+ *     <span class="runner__spacer"></span>
+ *     <div class="runner__theme">
+ *       <button class="instui-button" data-role="theme-trigger">Theme</button>
+ *       <div class="instui-menu runner__theme-menu" role="menu" hidden></div>
+ *     </div>
+ *   </div>
+ *   <div class="runner__body">
+ *     <div class="runner__code"><div class="runner__editor" data-active>\3c !-- editor --></div></div>
+ *     <iframe class="runner__result" title="Result"></iframe>
+ *   </div>
+ * </div>
+ */
 body {
   margin: 0;
   background: var(--instui-color-background-base, Canvas);
