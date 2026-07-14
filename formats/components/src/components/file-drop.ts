@@ -22,11 +22,11 @@ export const fileDrop = defineComponent({
  * </label>
  * @structure
  * .instui-file-drop {
- *   .instui-icon.-icon-cloud-upload {}
+ *   .instui-icon {}
  *   .instui-text {
  *     strong {}
  *   }
- *   .instui-text.-size-sm.instui-fg-muted {}
+ *   .instui-text {}
  *   input {}
  * }
  */

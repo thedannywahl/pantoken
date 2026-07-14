@@ -49,12 +49,12 @@ export const treeBrowser = defineComponent({
  * .instui-tree-browser {
  *   details {
  *     summary {
- *       .instui-icon.-icon-folder {}
+ *       .instui-icon {}
  *     }
  *     ul {
  *       li {
  *         .item {
- *           .instui-icon.-icon-file-text {}
+ *           .instui-icon {}
  *         }
  *       }
  *     }

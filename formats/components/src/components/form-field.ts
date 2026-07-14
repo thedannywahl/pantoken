@@ -41,10 +41,7 @@ export const formField = defineComponent({
  *   .controls {
  *     .instui-text-input {}
  *   }
- *   .instui-form-field-messages {
- *     .instui-form-field-message.-type-hint {}
- *     .instui-form-field-message.-type-error {}
- *   }
+ *   .instui-form-field-messages {}
  * }
  * @related form-field-messages — Renders the field's hint, error, and success messages.
  * @related form-field-group — Groups related fields under a shared legend.

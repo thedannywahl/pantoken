@@ -29,7 +29,6 @@ export const menu = defineComponent({
  * .instui-menu {
  *   .group {}
  *   .item {}
- *   .item.-active {}
  *   .separator {}
  * }
  * @related tree-browser — Both present nested, selectable entries.

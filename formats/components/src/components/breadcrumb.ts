@@ -31,7 +31,7 @@ export const breadcrumb = defineComponent({
  * .instui-breadcrumb {
  *   .item {
  *     a {
- *       .instui-icon.-icon-house {}
+ *       .instui-icon {}
  *     }
  *   }
  * }

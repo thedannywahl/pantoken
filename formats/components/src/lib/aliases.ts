@@ -61,6 +61,33 @@ export function withSizeAliases(css: string): string {
 }
 
 /**
+ * Document the long-form size twins {@link withSizeAliases} emits: for every short size class the body
+ * uses, add an `@modifier -size-<long>` line to the record's doc comment so the generated twin isn't an
+ * undocumented modifier. Reuses the short form's authored description (noting the alias) when present.
+ * Idempotent — skips a long form already documented, and returns the comment unchanged when there are
+ * no size classes.
+ */
+export function withSizeAliasDocs(comment: string, body: string): string {
+  if (!comment) return comment;
+  const shorts = new Set([...body.matchAll(/\.-size-(xs|sm|md|lg|xl)\b/gu)].map((m) => m[1]));
+  const lines: string[] = [];
+  for (const short of shorts) {
+    const long = SIZE_LONG[short];
+    if (new RegExp(`@modifier\\s+-size-${long}\\b`, "u").test(comment)) continue;
+    const desc = comment
+      .match(new RegExp(`@modifier\\s+-size-${short}\\s+[—-]\\s+([^\\n*]+)`, "u"))?.[1]
+      ?.trim()
+      .replace(/\.\s*$/u, "");
+    const note = desc
+      ? `${desc}. Long-form alias of \`-size-${short}\`.`
+      : `Long-form alias of \`-size-${short}\`.`;
+    lines.push(` * @modifier -size-${long} — ${note}`);
+  }
+  if (!lines.length) return comment;
+  return comment.replace(/\n([ \t]*)\*\/\s*$/u, `\n${lines.join("\n")}\n$1*/`);
+}
+
+/**
  * Append deprecated-alias twins for a record, given its {@link AliasPair}s (from
  * {@link deprecatedAliasPairs}): every deprecated modifier that `{@link}`s a canonical one is a legacy
  * alias, so we clone each rule using the canonical modifier token under the alias name. Matching by

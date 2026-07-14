@@ -21,15 +21,14 @@ export const badge = defineComponent({
  * @modifier -placement-bottom-end — Position at the bottom-end corner.
  * @modifier -placement-start-center — Position centred on the start edge.
  * @modifier -placement-end-center — Position centred on the end edge.
- * @part .badge-wrapper — Wrap a target so a placed badge sits over its corner.
  * @cssproperty --pantoken-badge-accent <color> — The chip fill; each \`-color-*\` variant and the pulse ring read from it.
  * @cssproperty --pantoken-badge-text <color> — The text colour, paired to the accent so it stays legible.
+ * @remarks To place a badge over a target, wrap both in a \`.instui-badge-wrapper\` (the position anchor) and pin the badge with a \`-placement-*\` modifier.
  * @example
- * <span class="instui-badge">4</span>
- * @structure
- * .instui-badge-wrapper {
- *   .instui-badge {}
- * }
+ * <span class="instui-badge-wrapper">
+ *   <button class="instui-button">Inbox</button>
+ *   <span class="instui-badge -placement-top-end">4</span>
+ * </span>
  * @related pill — The inline label-chip counterpart.
  * @demo self:badge
  */

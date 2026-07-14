@@ -37,12 +37,8 @@ export const sideNavBar = defineComponent({
  * </nav>
  * @structure
  * .instui-side-nav-bar {
- *   .item.-selected {
- *     .instui-icon.-icon-house {}
- *     .label {}
- *   }
  *   .item {
- *     .instui-icon.-icon-inbox {}
+ *     .instui-icon {}
  *     .label {}
  *   }
  * }

@@ -34,7 +34,7 @@ export const pagination = defineComponent({
  * @structure
  * .instui-pagination {
  *   .arrow {
- *     .instui-icon.-icon-chevrons-left {}
+ *     .instui-icon {}
  *   }
  *   .page {}
  *   .ellipsis {}

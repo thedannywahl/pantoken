@@ -21,9 +21,9 @@ export const popover = defineComponent({
  *   <p class="instui-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
  * </div>
  * @structure
- * .instui-popover.-placement-bottom {
- *   .instui-heading.-level-h4 {}
- *   .instui-text.-size-sm {
+ * .instui-popover {
+ *   .instui-heading {}
+ *   .instui-text {
  *     code {}
  *   }
  * }

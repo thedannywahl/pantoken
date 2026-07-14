@@ -29,7 +29,7 @@ export const billboard = defineComponent({
  * @structure
  * .instui-billboard {
  *   .hero {
- *     .instui-icon.-icon-inbox {}
+ *     .instui-icon {}
  *   }
  *   .heading {}
  *   .message {}

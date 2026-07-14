@@ -32,9 +32,7 @@ export const tabs = defineComponent({
  * @structure
  * .instui-tabs {
  *   .list {
- *     .tab.-selected {}
  *     .tab {}
- *     .tab.-disabled {}
  *   }
  *   .panel {}
  * }

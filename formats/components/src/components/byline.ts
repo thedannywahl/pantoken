@@ -18,7 +18,6 @@ export const byline = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-md — Medium.
  * @modifier -size-lg — Large.
- * @part .hero — The leading figure (icon, image, or avatar).
  * @part .title — The heading text.
  * @part .description — The supporting body text.
  * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
@@ -31,8 +30,8 @@ export const byline = defineComponent({
  *   </div>
  * </div>
  * @structure
- * .instui-byline.-size-md {
- *   .instui-icon.-icon-megaphone {}
+ * .instui-byline {
+ *   .instui-icon {}
  *   div {
  *     .title {}
  *     .description {}

@@ -58,16 +58,12 @@ export const calendar = defineComponent({
  * @structure
  * .instui-calendar {
  *   .nav {
- *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-left {}
+ *     .instui-button {}
  *     strong {}
- *     .instui-button.-color-tertiary.-shape-square.-without-border.-icon-chevron-right {}
  *   }
  *   .grid {
  *     .weekday {}
- *     .day.-outside-month {}
  *     .day {}
- *     .day.-today {}
- *     .day.-selected {}
  *   }
  * }
  */

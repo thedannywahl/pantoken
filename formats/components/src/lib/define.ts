@@ -7,7 +7,12 @@
  * @module
  */
 import type { CssRecordKind } from "@cssdoc/core";
-import { deprecatedAliasPairs, withAliases, withSizeAliases } from "./aliases.ts";
+import {
+  deprecatedAliasPairs,
+  withAliases,
+  withSizeAliases,
+  withSizeAliasDocs,
+} from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
 
 export interface Definition {
@@ -55,7 +60,8 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
   // alias documents on this record's own page and the brace scanners never see the `{@link …}` braces.
   const rules = (prefix: string): string => {
     const { comment, body } = splitLeadingDocComment(cssBuilder(prefix));
-    return `${comment}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
+    // Auto-document the long-form size twins withSizeAliases appends, so they aren't undocumented.
+    return `${withSizeAliasDocs(comment, body)}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
   };
   return {
     name: input.name,

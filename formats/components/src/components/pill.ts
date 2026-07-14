@@ -13,7 +13,7 @@ export const pill = defineComponent({
  * @modifier -color-success — Positive status.
  * @modifier -color-warning — Cautionary status.
  * @modifier -color-danger — Error status.
- * @modifier -icon-<name> — A leading glyph from the icon set (e.g. \`-icon-check\`), painted before the label.
+ * @modifier -icon-* — A leading glyph from the icon set (e.g. \`-icon-check\`), painted before the label.
  * @modifier -render-icon-<name> — @deprecated The former \`renderIcon\` prop; still works as an alias, but use \`-icon-<name>\` instead.
  * @example
  * <span class="instui-pill">Draft</span>

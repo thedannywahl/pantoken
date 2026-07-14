@@ -1,11 +1,6 @@
 {
   "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "modifierConvention": "rscss",
-  "structureIgnore": ["instui-*", "-*"],
-  "rules": {
-    "undocumented-modifier": "off",
-    "name-not-in-css": "off"
-  },
   "render": {
     "sectionOrder": [
       "accessibility",

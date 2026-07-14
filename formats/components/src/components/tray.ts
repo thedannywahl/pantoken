@@ -29,12 +29,12 @@ export const tray = defineComponent({
  *   <p class="instui-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
  * </div>
  * @structure
- * .instui-tray.-size-sm {
+ * .instui-tray {
  *   div {
  *     strong {}
  *     .instui-close-button {}
  *   }
- *   .instui-text.-size-sm {}
+ *   .instui-text {}
  * }
  * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
  * @related popover — The generic top-layer surface this builds on.

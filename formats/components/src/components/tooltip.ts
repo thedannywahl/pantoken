@@ -21,7 +21,7 @@ export const tooltip = defineComponent({
  * </span>
  * @structure
  * .instui-tooltip {
- *   .instui-icon.-icon-info {}
+ *   .instui-icon {}
  *   .tip {}
  * }
  * @related popover — The larger, click-triggered anchored surface.

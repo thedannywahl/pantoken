@@ -21,9 +21,8 @@ export const rating = defineComponent({
  *   <span class="label">2/3</span>
  * </span>
  * @structure
- * .instui-rating.-size-sm {
- *   .instui-icon.-icon-star-solid {}
- *   .instui-icon.-icon-star {}
+ * .instui-rating {
+ *   .instui-icon {}
  *   .label {}
  * }
  */
