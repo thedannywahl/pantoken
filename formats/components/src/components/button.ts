@@ -29,7 +29,7 @@ export const button = defineComponent({
  * @modifier -display-block — Full-width block button.
  * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
  * @modifier -without-border — Remove the border.
- * @modifier -icon-* — Swap the status glyph for a custom icon (e.g. \`-icon-megaphone\`), kept white on the variant's coloured bar.
+ * @modifier -icon-* — Render a glyph from the icon set before the label (e.g. \`-icon-arrow-right\`), painted in the button's text colour; pair with \`-shape-square\`/\`-shape-circle\` for an icon-only button.
  * @cssstate disabled
  * @cssstate pressed
  * @a11y Drive the \`-toggle\` variant's pressed state with \`aria-pressed\`, and mark a disabled button with \`aria-disabled\` (or the native \`disabled\`).
@@ -253,6 +253,17 @@ export const button = defineComponent({
   padding: var(--instui-spacing-space-xs);
   aspect-ratio: 1;
   border-radius: 50%;
+}
+/*
+ * A composed \`-icon-<name>\` rides the shared icon painter (utilities/icon), so a text button needs no
+ * button-specific glyph CSS — the ::before already inherits the label's colour and 1em size. Icon-only
+ * shape buttons carry no label, so grow the glyph to fill the square control rather than tracking a
+ * (missing) label's cap height.
+ */
+.${p}button.-shape-square[class*="-icon-"]::before,
+.${p}button.-shape-circle[class*="-icon-"]::before {
+  inline-size: 1.25em;
+  block-size: 1.25em;
 }
 .${p}button.-condensed {
   background: transparent;
