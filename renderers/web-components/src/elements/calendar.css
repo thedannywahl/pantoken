@@ -3,6 +3,11 @@
  * @class .instui-calendar
  * @summary Calendar web component tweaks — resets the day buttons and sizes the nav-button icons, layered on `.instui-calendar`.
  * @part .day — A single day button in the grid.
+ * @accessibility The grid is a `role="group"` and each day is a real `<button>`, so days are focusable and operable from the keyboard.
+ * @example
+ * <instui-calendar value="2026-07-08"></instui-calendar>
+ * @related date-input — Embeds this calendar in its dropdown.
+ * @demo self:calendar
  */
 .instui-calendar button.day {
   -webkit-appearance: none;

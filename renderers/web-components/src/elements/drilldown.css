@@ -2,7 +2,16 @@
  * @component drilldown
  * @class .instui-menu
  * @summary The drilldown menu's back-navigation row, layered on the `.instui-menu` component.
+ * @remarks Built on the [menu](/api/css/menu.md) component — the drilldown adds stateful, multi-level back-navigation.
  * @part .-drilldown-back — The back-navigation row that returns to the previous menu level.
+ * @accessibility The shadow root renders a `role="menu"` and each row a `role="menuitem"`; the auto-generated back row is keyboard-focusable (`tabindex="0"`), so users can return a level without a mouse.
+ * @example
+ * <instui-drilldown active="root">
+ *   <div data-page="root">
+ *     <button class="item" data-goto="settings">Settings</button>
+ *   </div>
+ *   <div data-page="settings">General</div>
+ * </instui-drilldown>
  */
 .instui-menu .-drilldown-back {
   display: flex;

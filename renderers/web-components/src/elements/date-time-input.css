@@ -3,6 +3,13 @@
  * @class :host
  * @summary The date-time input web component — a date field and a time field side by side.
  * @part .dt — The inline-flex row holding the date and time fields.
+ * @accessibility Pairs a date field with a native `<input type="time">`, each carrying its own `aria-label`.
+ * @example
+ * <instui-date-time-input value="2026-07-08T14:30"></instui-date-time-input>
+ * @structure
+ * :host {
+ *   .dt {}
+ * }
  * @related date-input — Supplies the date field this component sets beside a time field.
  */
 :host {

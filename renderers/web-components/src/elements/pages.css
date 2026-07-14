@@ -2,8 +2,19 @@
  * @component pages
  * @class :host
  * @summary The pages web component — shows one slotted `[data-page]` at a time (the rest stay hidden).
+ * @remarks To show one panel at a time with a visible tablist instead, see the [tabs](/api/css/tabs.md) component.
  * @cssstate hidden — Set on a slotted `[data-page]` to hide it while another page shows.
  * @compat Styles light-DOM children through the shadow boundary with `::slotted()`, so it needs a browser that supports shadow DOM and slotting.
+ * @accessibility Inactive pages get the `hidden` attribute, so they leave the tab order and the accessibility tree; only the active page is reachable.
+ * @example
+ * <instui-pages active="one">
+ *   <section data-page="one">First page</section>
+ *   <section data-page="two">Second page</section>
+ * </instui-pages>
+ * @structure
+ * :host {
+ *   slot {}
+ * }
  */
 :host {
   display: block;

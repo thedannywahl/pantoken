@@ -2,8 +2,20 @@
  * @component tooltip
  * @class .instui-tooltip
  * @summary Visibility styling for the tooltip web component's tip — hidden until the component reveals it.
+ * @remarks For a larger, click-triggered anchored surface, see the [popover](/api/css/popover.md) component.
  * @part .tip — The floating tip surface.
  * @cssstate show — The tip is revealed (opaque and visible); without it the tip is hidden.
+ * @accessibility The tip is a `role="tooltip"` revealed on both hover and focus, so keyboard users reach it; set its text via the `tip` attribute.
+ * @example
+ * <instui-tooltip tip="Save your work" placement="bottom">
+ *   <button class="instui-button">Save</button>
+ * </instui-tooltip>
+ * @structure
+ * .instui-tooltip {
+ *   slot {}
+ *   .tip {}
+ * }
+ * @demo self:tooltip
  */
 .instui-tooltip > .tip:not(.-show) {
   opacity: 0 !important;

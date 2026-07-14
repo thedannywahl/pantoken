@@ -6,7 +6,18 @@
  * @part .trigger — The calendar-open button inside the field.
  * @part .dropdown — The anchored calendar popover.
  * @compat Positions the dropdown with CSS anchor positioning (`anchor-name`, `position-anchor`, and `position-area`), which needs a browser that supports the anchor positioning API.
+ * @accessibility The text field carries an `aria-label` from the `label` attribute; the dropdown is a `[popover]` the trigger button toggles.
+ * @example
+ * <instui-date-input value="2026-07-08" label="Due date"></instui-date-input>
+ * @structure
+ * :host {
+ *   .field {
+ *     .trigger {}
+ *   }
+ *   .dropdown {}
+ * }
  * @related date-time-input — Pairs the date field with a time field.
+ * @related calendar — Supplies the day grid inside the dropdown.
  */
 :host {
   display: inline-block;

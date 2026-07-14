@@ -2,7 +2,7 @@
  * @component drawer-layout
  * @class :host
  * @summary A slide-in tray beside a scrollable content area, with a draggable resize handle — the drawer-layout web component's shadow styles.
- * @remarks The `.handle` starts fully transparent and fades in on hover or while dragging, so the resize control only shows when the user reaches for it. Both the tray and the handle stay hidden until the host carries the `open` attribute.
+ * @remarks The `.handle` starts fully transparent and fades in on hover or while dragging, so the resize control only shows when the user reaches for it. Both the tray and the handle stay hidden until the host carries the `open` attribute. For a simple slide-in surface without the resizable content pane, see the [tray](/api/css/tray.md) component.
  * @part .layout — The flex row holding the tray and content.
  * @part .tray — The drawer panel.
  * @part .handle — The drag-to-resize handle between the tray and content.
@@ -10,6 +10,25 @@
  * @cssproperty --drawer-width — The tray's width (default 16rem).
  * @cssstate open — The tray and handle show; without it both are hidden.
  * @cssstate dragging — The handle is being dragged, so it stays highlighted.
+ * @slot tray — The drawer panel's content. The default slot holds the main content beside it.
+ * @accessibility The resize handle is a `role="separator"` with `aria-orientation="vertical"`; the tray and handle only render while the host carries the `open` attribute.
+ * @example
+ * <instui-drawer-layout open placement="start">
+ *   <nav slot="tray">Navigation</nav>
+ *   <article>Main content</article>
+ * </instui-drawer-layout>
+ * @structure
+ * :host {
+ *   .layout {
+ *     .tray {
+ *       slot[name="tray"] {}
+ *     }
+ *     .handle {}
+ *     .content {
+ *       slot {}
+ *     }
+ *   }
+ * }
  */
 :host {
   display: block;
