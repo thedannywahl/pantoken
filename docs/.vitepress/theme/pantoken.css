@@ -40,27 +40,13 @@ div[class*="language-"]:has(+ .css-example) > pre {
   }
 }
 
-/* Deprecation markers in the CSS API reference. `@cssdoc`'s `classNames.deprecated` hook wraps the
-   record-level `> [!WARNING]` banner and every deprecated modifier-table cell in an `instui-pill` (warning
-   colour). The shipped pill is a compact, fixed-height badge, but the marker carries a full sentence — so
-   this docs-only `.pantoken-doc-tag` relaxes it to an inline-block that wraps, keeping the pill's border,
-   radius, and warning tint. Scoped to `.pantoken-doc-tag`, so real `.instui-pill` previews in a
-   `.css-example` are untouched. */
+/* Deprecation markers in the CSS API reference. `@cssdoc`'s `classNames.deprecated` hook wraps just the
+   word "Deprecated" (in the `> [!WARNING]` banner and each deprecated modifier-table cell) in an
+   `instui-pill` warning tag, leaving the reason prose beside it. It's a compact label, so it renders as
+   the shipped pill directly — this docs-only `.pantoken-doc-tag` only centers it against the adjacent
+   prose. Scoped to `.pantoken-doc-tag`, so real `.instui-pill` previews in a `.css-example` are untouched. */
 .vp-doc .instui-pill.pantoken-doc-tag {
-  display: inline-block;
-  block-size: auto;
-  max-inline-size: none;
-  padding-block: 2px;
-  line-height: 1.5;
-  white-space: normal;
-}
-
-/* Inside a `> [!WARNING]` banner VitePress already paints an amber frame, so drop the pill's own box there
-   and let the marker read as emphasized text rather than a frame within a frame. */
-.vp-doc .custom-block .instui-pill.pantoken-doc-tag {
-  border: 0;
-  padding-inline: 0;
-  background: none;
+  vertical-align: middle;
 }
 
 /* Home styles */
