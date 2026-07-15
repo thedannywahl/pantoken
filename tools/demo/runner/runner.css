@@ -59,6 +59,18 @@ body {
   flex-wrap: wrap;
 }
 
+/* Radio toggles default to a color-success fill; override to match button primary. The fill variable
+   must be set on the toggle element itself — the component declares --pantoken-rt-fill directly on
+   .instui-radio.-variant-toggle, and a value set on the element always beats one inherited from an
+   ancestor like .runner__bar, so setting it on the bar has no effect. */
+.runner__bar .instui-radio.-variant-toggle {
+  --pantoken-rt-fill: var(--instui-color-background-interactive-action-primary-base);
+}
+
+.runner__bar .instui-radio.-variant-toggle:has(input:checked) {
+  color: var(--instui-color-text-interactive-action-primary-base);
+}
+
 /* The body stacks the read-only source above the rendered result (like the example's code-then-render);
    the Result tab hides the code so the demo takes the whole player. */
 .runner__body {
