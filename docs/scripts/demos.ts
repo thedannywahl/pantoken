@@ -7,7 +7,15 @@
  *
  * `public/` is a build artifact (gitignored), so this runs before `vitepress dev`/`build`.
  */
-import { copyFileSync, cpSync, existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import {
+  copyFileSync,
+  cpSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 
@@ -15,7 +23,12 @@ const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
 const publicDir = join(docsRoot, "public");
 
+// The runner bundle uses content-hashed filenames, so a plain copy into an existing `play/` leaves the
+// previous build's chunks behind — they pile up across rebuilds. Clear it first so only the current
+// build's files remain. (demos-assets/ and demos/ use stable names and overwrite cleanly, so they're
+// left as-is.)
 const play = join(publicDir, "play");
+rmSync(play, { recursive: true, force: true });
 mkdirSync(play, { recursive: true });
 const demoPkgDir = dirname(require.resolve("@pantoken/demo/package.json"));
 const runnerDist = join(demoPkgDir, "dist/runner");

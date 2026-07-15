@@ -1,4 +1,4 @@
-import { createHighlighterCore, type HighlighterCore } from "shiki/core";
+import { createHighlighterCore } from "shiki/core";
 import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 import type { LanguageRegistration } from "@shikijs/types";
 import DOMPurify from "dompurify";
@@ -68,6 +68,26 @@ async function copyToClipboard(text: string): Promise<void> {
   document.body.removeChild(area);
 }
 
+/** De-indent a block: drop surrounding blank lines, then strip the smallest common leading indent. */
+function dedent(text: string): string {
+  const lines = text.replace(/^\n+/, "").replace(/\s+$/, "").split("\n");
+  const indents = lines
+    .filter((line) => line.trim())
+    .map((line) => /^\s*/.exec(line)?.[0].length ?? 0);
+  const min = indents.length ? Math.min(...indents) : 0;
+  return lines.map((line) => line.slice(min)).join("\n");
+}
+
+/** The demos wrap their markup in a staging `<div class="instui-card">` so the preview sits on a card,
+ * like the docs' `@example` previews. That wrapper is page staging, not part of the component's own
+ * markup, so strip it (and de-indent) for the code view — the result still renders the full source. */
+function stripCardWrapper(html: string): string {
+  const match = /^<div\s+class="instui-card(?:\s+[^"]*)?"\s*>\n?([\s\S]*?)\n?<\/div>\s*$/i.exec(
+    html.trim(),
+  );
+  return match ? dedent(match[1]) : html;
+}
+
 /** A hover-to-reveal copy button holding its own source `text`; toggles `.copied` for ~2s on success. */
 function createCopyButton(text: string): HTMLButtonElement {
   const button = document.createElement("button");
@@ -96,14 +116,39 @@ async function main(): Promise<void> {
     return;
   }
 
-  // The runner chrome is styled with the InstUI component sheet, so inject the theme-independent
-  // stylesheets (component CSS). Everything reads paired --instui-* tokens, so it's dark-mode safe.
-  for (const href of cssUrls) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = href;
-    document.head.appendChild(link);
-  }
+  // Show a spinner immediately and keep it until everything's ready — styles loaded, the demo rendered
+  // and measured — then swap in the finished runner in one step, so the reader never sees the half-built
+  // states (unstyled chrome, jumping heights) flash by. The spinner is styled by the bundled runner.css,
+  // so it needs none of the async component sheets below.
+  let booting = true;
+  const loading = document.createElement("div");
+  loading.className = "runner__loading";
+  loading.setAttribute("role", "status");
+  loading.setAttribute("aria-label", "Loading demo");
+  loading.innerHTML = `<span class="runner__spinner"></span>`;
+  mount.replaceChildren(loading);
+  const postSize = (height: number): void => {
+    if (window.parent !== window)
+      window.parent.postMessage({ type: "pantoken-demo-size", height }, "*");
+  };
+  // Give the host a stable box to size to while we boot.
+  postSize(Math.ceil(loading.getBoundingClientRect().height));
+
+  // Inject the component/token sheets, tracking when they've all loaded so the reveal can wait for them
+  // (no unstyled flash). Everything reads paired --instui-* tokens, so it's dark-mode safe.
+  const cssLoaded = Promise.all(
+    cssUrls.map(
+      (href) =>
+        new Promise<void>((resolve) => {
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = href;
+          link.addEventListener("load", () => resolve());
+          link.addEventListener("error", () => resolve());
+          document.head.appendChild(link);
+        }),
+    ),
+  );
 
   // The whole demo (toolbar chrome + rendered result) follows the site's theme, chosen by the palette
   // selector in the docs header and pushed here via `pantoken-demo-theme`. The one multi-theme token
@@ -143,11 +188,16 @@ async function main(): Promise<void> {
     })
     .trim();
   const original: Record<PartKey, string> = { html, css: css.trim(), js: js.trim() };
+  // What the code view shows and copies: the same source, but with the staging card wrapper stripped
+  // from the HTML. The result (below) still renders `original`, so the preview keeps its card.
+  const code: Record<PartKey, string> = { ...original, html: stripCardWrapper(original.html) };
   const labels: Record<PartKey, string> = { html: "HTML", css: "CSS", js: "JS" };
   const parts = (["html", "css", "js"] as PartKey[]).filter((key) => original[key]);
 
-  mount.innerHTML = `
-    <div class="runner runner--show-result">
+  // Built hidden (`runner--booting`) alongside the spinner; `reveal()` swaps them once ready.
+  mount.insertAdjacentHTML(
+    "beforeend",
+    `<div class="runner runner--show-result runner--booting">
       <div class="runner__bar">
         <fieldset class="instui-radio-input-group -variant-toggle">
           <legend class="instui-screen-reader-content">View</legend>
@@ -157,45 +207,21 @@ async function main(): Promise<void> {
         <div class="runner__code"></div>
         <iframe class="runner__result" title="Result" sandbox="allow-scripts allow-same-origin"></iframe>
       </div>
-    </div>`;
+    </div>`,
+  );
   const runner = mount.querySelector(".runner") as HTMLElement;
-  const bar = mount.querySelector(".runner__bar") as HTMLElement;
   const tablist = mount.querySelector(".instui-radio-input-group") as HTMLElement;
+  const body = mount.querySelector(".runner__body") as HTMLElement;
   const codeArea = mount.querySelector(".runner__code") as HTMLElement;
   const resultFrame = mount.querySelector(".runner__result") as HTMLIFrameElement;
 
-  // One highlighter, loaded with both themes and only the grammars this demo uses. Shiki emits both
-  // themes' colors as `--shiki-light` / `--shiki-dark` CSS variables (`defaultColor: false`), so the
-  // code follows light/dark by toggling a class (see `applyEditorScheme`) — no re-highlight on toggle.
-  let highlighter: HighlighterCore | undefined;
-  if (parts.length) {
-    const [githubLight, githubDark] = await Promise.all([
-      import("@shikijs/themes/github-light").then((m) => m.default),
-      import("@shikijs/themes/github-dark").then((m) => m.default),
-    ]);
-    highlighter = await createHighlighterCore({
-      themes: [githubLight, githubDark],
-      langs: await Promise.all(parts.map((key) => langLoaders[key]())),
-      engine: createJavaScriptRegexEngine(),
-    });
-  }
-
+  // The code panes start empty (so the tabs work); Shiki fills them in the background — see
+  // `buildEditors`. The read-only viewer reads like the example's code fence: no gutter, no editing,
+  // line wrapping handled in runner.css.
   const holders = new Map<PartKey, HTMLElement>();
   for (const key of parts) {
     const holder = document.createElement("div");
     holder.className = "runner__editor";
-    // A read-only source viewer: the highlighted snippet reads like the example's code fence — no
-    // gutter, no editing. Wrapping is handled in runner.css so long lines stay in the column.
-    holder.innerHTML =
-      highlighter?.codeToHtml(original[key], {
-        lang: langId[key],
-        themes: { light: "github-light", dark: "github-dark" },
-        defaultColor: false,
-      }) ?? "";
-    // A hover-to-reveal copy button, matching the docs' `@example` code fences. We hold the raw source,
-    // so copy it directly (no DOM scraping); the `.copied` class swaps the icon and shows the label for
-    // ~2s. Styling and positioning live in runner.css.
-    holder.appendChild(createCopyButton(original[key]));
     codeArea.appendChild(holder);
     holders.set(key, holder);
   }
@@ -205,6 +231,35 @@ async function main(): Promise<void> {
     document.documentElement.classList.toggle("code-dark", effectiveDark());
   };
   applyEditorScheme();
+
+  // Load Shiki and highlight the code panes — kept OFF the critical path (not awaited before the reveal),
+  // so the Result view appears without waiting on the grammars to download and parse. Uses the same
+  // themes the docs' `@example` fences do; a `.copied` copy button rides along on each pane.
+  const buildEditors = async (): Promise<void> => {
+    if (!parts.length) return;
+    const [githubLight, githubDark] = await Promise.all([
+      import("@shikijs/themes/github-light").then((m) => m.default),
+      import("@shikijs/themes/github-dark").then((m) => m.default),
+    ]);
+    const highlighter = await createHighlighterCore({
+      themes: [githubLight, githubDark],
+      langs: await Promise.all(parts.map((key) => langLoaders[key]())),
+      engine: createJavaScriptRegexEngine(),
+    });
+    for (const key of parts) {
+      const holder = holders.get(key);
+      if (!holder) continue;
+      holder.innerHTML = highlighter.codeToHtml(code[key], {
+        lang: langId[key],
+        themes: { light: "github-light", dark: "github-dark" },
+        defaultColor: false,
+      });
+      holder.appendChild(createCopyButton(code[key]));
+    }
+    // The panes just gained content; if a code tab is showing, grow the player to fit it.
+    applyAutoHeight();
+    reportSize();
+  };
 
   function render(): void {
     const scheme = schemeName();
@@ -226,7 +281,9 @@ async function main(): Promise<void> {
     // Measure the BODY box, not <html>: an iframe's <html> stretches to fill the frame's viewport, so
     // `documentElement.scrollHeight` reports the frame height, not the content — a feedback loop that
     // never shrinks to the demo. The body hugs its own content, so it's the true height to report.
-    const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}r();})()</script>`;
+    // It also listens for `pantoken-demo-freeze`: while the reader drags the runner's resize handle, the
+    // runner asks it to hide its own scrollbar so it doesn't flicker as the height recomputes.
+    const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}addEventListener("message",function(e){if(e&&e.data&&e.data.type==="pantoken-demo-freeze"){document.documentElement.style.overflow=e.data.value?"hidden":"";}});r();})()</script>`;
     resultFrame.srcdoc =
       `<!doctype html><html data-pantoken-theme="${currentTheme}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
       `<style>${original.css}</style></head><body class="pantoken-prose">${safeHtml}` +
@@ -256,42 +313,113 @@ async function main(): Promise<void> {
       activeCode = name as PartKey;
       showEditor(activeCode);
     }
-    // Re-size the figure for the new view (a code tab adds the editor's height above the result). Run
-    // now (so the pane cap + frame update immediately) and again next frame, once the just-shown editor
-    // has laid out and its scrollHeight is accurate.
+    // Re-size the player for the new view (a code tab adds the editor's height above the result). Run
+    // now, and again next frame once the just-shown editor has laid out and its scrollHeight is accurate.
+    applyAutoHeight();
     reportSize();
-    requestAnimationFrame(reportSize);
+    requestAnimationFrame(() => {
+      applyAutoHeight();
+      reportSize();
+    });
   };
 
-  // Ask the embedding demo figure to size to this runner — the toolbar plus the rendered demo's own
-  // height (reported by the result frame below). The figure clamps to its own min/max-height, so a
-  // short demo gets a compact player and a tall one scrolls. A standalone tab has no parent to size, so
-  // skip the report there.
+  // Size the player, then tell the embedding figure how tall to make its iframe. The body's default
+  // height hugs the demo but caps at 30rem; `resize: vertical` (runner.css) lets the reader drag it past
+  // that, and once they do we latch `userResized` and stop auto-sizing, so a tab switch or theme change
+  // doesn't snap their height back. We always report `toolbar + body` so the figure iframe mirrors the
+  // runner exactly — a standalone tab (no parent) has nothing to size, so it skips the report.
+  const MAX_DEFAULT_REM = 30;
   let resultContentHeight = 0;
+  let userResized = false;
+  let lastAutoHeight = -1;
+
+  // Report the whole runner's height (toolbar + the body and its margin), not just `toolbar + body`, so
+  // the iframe mirrors it exactly — otherwise the body's margin is clipped and the resize grip with it.
+  // Suppressed while booting: the host holds the stable spinner box until `reveal()` reports the real
+  // height.
   const reportSize = (): void => {
-    if (window.parent === window) return;
-    // Cap each split pane at half the space below the toolbar so the whole player stays within 30rem.
-    // The CSS uses this for both panes' max-height (they scroll past it); set it every time so it tracks
-    // the toolbar height.
-    const remPx = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-    const paneMax = Math.max(0, Math.floor((30 * remPx - bar.offsetHeight) / 2));
-    runner.style.setProperty("--runner-pane-max", `${paneMax}px`);
-    const rb = getComputedStyle(resultFrame);
-    const resultBorders =
-      (Number.parseFloat(rb.borderTopWidth) || 0) + (Number.parseFloat(rb.borderBottomWidth) || 0);
-    // The height that shows the whole demo (content plus the result frame's own top/bottom borders).
-    const resultFull = resultContentHeight + resultBorders;
-    // Result view: the demo fills the player. Split view: stack the (capped) code above the (capped)
-    // result — CSS gives each pane its own scrollbar, so no iframe-height juggling (which would loop
-    // against the result reporter) is needed here.
-    const bodyHeight = runner.classList.contains("runner--show-result")
-      ? resultFull
-      : Math.min(codeArea.scrollHeight, paneMax) + Math.min(resultFull, paneMax);
+    if (window.parent === window || booting) return;
     window.parent.postMessage(
-      { type: "pantoken-demo-size", height: bar.offsetHeight + bodyHeight },
+      { type: "pantoken-demo-size", height: Math.ceil(runner.getBoundingClientRect().height) },
       "*",
     );
   };
+  // Coalesce the rapid reports during a drag into one per frame.
+  let reportScheduled = false;
+  const scheduleReport = (): void => {
+    if (reportScheduled) return;
+    reportScheduled = true;
+    requestAnimationFrame(() => {
+      reportScheduled = false;
+      reportSize();
+    });
+  };
+
+  // Everything in the runner that isn't the body (toolbar + the body's margin); fixed regardless of the
+  // body's height, so `runner − body` measures it cleanly.
+  const chromeHeight = (): number =>
+    Math.max(
+      0,
+      Math.round(runner.getBoundingClientRect().height - body.getBoundingClientRect().height),
+    );
+
+  // The body's default height. The body is `box-sizing: border-box`, so its own padding + border sit on
+  // top of the room the panes need — add them in (`bodyExtra`), or the panes come up short and the demo
+  // shows a needless scrollbar.
+  //
+  // Result view: hug the demo, capped at MAX_DEFAULT_REM. Code view: keep the result at that same
+  // rendered height and stack the code above it (auto-fit to the code's own height), so the player grows
+  // to fit both rather than halving a fixed box. Either default is still draggable.
+  const px = (value: string): number => Number.parseFloat(value) || 0;
+  const defaultBodyHeight = (): number => {
+    const remPx = px(getComputedStyle(document.documentElement).fontSize) || 16;
+    const cap = Math.max(0, Math.floor(MAX_DEFAULT_REM * remPx - chromeHeight()));
+    const bs = getComputedStyle(body);
+    const bodyExtra =
+      px(bs.paddingTop) + px(bs.paddingBottom) + px(bs.borderTopWidth) + px(bs.borderBottomWidth);
+    // The result pane's rendered height: hug the demo, capped so the result view stays within the cap.
+    const resultView = Math.min(resultContentHeight, Math.max(0, cap - bodyExtra));
+    if (runner.classList.contains("runner--show-result")) return resultView + bodyExtra;
+    // Code view: the code pane (its content plus its bottom divider) added above the maintained result.
+    const codeDivider = px(getComputedStyle(codeArea).borderBottomWidth);
+    return codeArea.scrollHeight + codeDivider + resultView + bodyExtra;
+  };
+
+  // Set the body to its default height, unless the reader has taken over with the resize handle. Read
+  // back the height the browser actually used (min-height can clamp our request) so the observer below
+  // compares against the real value and doesn't mistake that clamp for a user drag.
+  const applyAutoHeight = (): void => {
+    if (userResized) return;
+    body.style.height = `${defaultBodyHeight()}px`;
+    lastAutoHeight = Math.round(body.getBoundingClientRect().height);
+  };
+
+  // While the reader drags the resize handle, hide the panes' scrollbars so they don't flicker as the
+  // height recomputes: a class covers the code pane, and a postMessage asks the result frame to hide its
+  // own (inner) scrollbar. A settle timer restores them shortly after the drag stops.
+  const setResizing = (on: boolean): void => {
+    runner.classList.toggle("runner--resizing", on);
+    resultFrame.contentWindow?.postMessage({ type: "pantoken-demo-freeze", value: on }, "*");
+  };
+  let resizeSettle: ReturnType<typeof setTimeout> | undefined;
+
+  // A body height change we didn't make (beyond a rounding fuzz) is the reader dragging the handle:
+  // latch it so we stop overriding their choice, hide the scrollbars for the drag, and report (throttled
+  // to one per frame) so the host iframe tracks along.
+  if (window.ResizeObserver) {
+    new ResizeObserver(() => {
+      const height = Math.round(body.getBoundingClientRect().height);
+      if (!userResized && lastAutoHeight >= 0 && Math.abs(height - lastAutoHeight) > 3) {
+        userResized = true;
+      }
+      if (userResized) {
+        setResizing(true);
+        clearTimeout(resizeSettle);
+        resizeSettle = setTimeout(() => setResizing(false), 150);
+      }
+      scheduleReport();
+    }).observe(body);
+  }
 
   const addTab = (name: string, label: string): void => {
     // A segmented radio: one label per view, single-select via the shared name — the checked radio is
@@ -311,9 +439,26 @@ async function main(): Promise<void> {
   addTab("result", "Result");
   for (const key of parts) addTab(key, labels[key]);
 
-  showEditor(activeCode);
-  select("result");
-  render();
+  // Swap the spinner for the finished runner and start reporting the real height.
+  const reveal = (): void => {
+    booting = false;
+    loading.remove();
+    runner.classList.remove("runner--booting");
+    applyAutoHeight();
+    reportSize();
+  };
+
+  // Two things gate the reveal-ready render: the host's theme reply (so the first render is in the right
+  // theme — no post-reveal re-render flash) and the first result-size report (the demo has rendered and
+  // measured). Both resolve in the message handler below.
+  let resolveFirstSize: (() => void) | undefined;
+  const firstResultSize = new Promise<void>((resolve) => {
+    resolveFirstSize = resolve;
+  });
+  let resolveTheme: (() => void) | undefined;
+  const themeReady = new Promise<void>((resolve) => {
+    resolveTheme = resolve;
+  });
 
   // The docs header drives this runner: `pantoken-demo-theme` picks the token theme (rebrand/canvas/…)
   // and the demo-figure light/dark toggle posts `pantoken-demo-scheme` to flip the scheme.
@@ -324,19 +469,43 @@ async function main(): Promise<void> {
       applyTheme();
     } else if (data?.type === "pantoken-demo-theme" && typeof data.theme === "string") {
       setTheme(data.theme);
+      resolveTheme?.();
+      resolveTheme = undefined;
     } else if (data?.type === "pantoken-demo-result-size" && typeof data.height === "number") {
       // Keep the last non-zero height: a hidden result frame (code view) can report 0, and we don't
       // want the figure to collapse when the reader is just editing.
       if (data.height > 0) resultContentHeight = data.height;
+      resolveFirstSize?.();
+      resolveFirstSize = undefined;
+      applyAutoHeight();
       reportSize();
     }
   });
 
-  // Ask the host which theme to render; it replies with `pantoken-demo-theme`.
+  // Ask the host which theme to render, then render once it replies (or after a short wait). Standalone
+  // (no parent) has nothing to ask, so proceed straight away.
   if (window.parent && window.parent !== window) {
     window.parent.postMessage({ type: "pantoken-demo-request-theme" }, "*");
+  } else {
+    resolveTheme?.();
+    resolveTheme = undefined;
   }
+  await Promise.race([themeReady, new Promise<void>((resolve) => setTimeout(resolve, 500))]);
 
+  showEditor(activeCode);
+  select("result");
+  render();
+  void buildEditors();
+
+  // Reveal once the styles are in and the demo has measured itself — or after a safety timeout, so a
+  // demo that never reports its size still appears.
+  await Promise.race([
+    Promise.all([cssLoaded, firstResultSize]),
+    new Promise<void>((resolve) => setTimeout(resolve, 4000)),
+  ]);
+  reveal();
+
+  // Keep the demo in sync with later light/dark toggles on the embedding page.
   try {
     if (window.parent && window.parent !== window) {
       new MutationObserver(() => applyTheme()).observe(window.parent.document.documentElement, {

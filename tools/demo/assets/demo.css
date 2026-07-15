@@ -2,8 +2,8 @@
  * @component demo
  * @class .pantoken-demo
  * @summary The live-sample panel emitted by `renderDemoFigure` / `demoMarkdownIt` — a bordered, token-themed frame around the sandboxed demo iframe, modeled on the live `@example` blocks.
- * @remarks Import this in your docs so `demo` fenced blocks render as live samples. The figure is chrome-free: the runner inside the iframe carries its own tab toolbar (Result / HTML / CSS / JS). The iframe auto-sizes to the demo content (the runner posts its height over postMessage), capped at 30rem.
- * @part .pantoken-demo__frame — The sandboxed demo iframe; sized to the demo's content, capped at 30rem.
+ * @remarks Import this in your docs so `demo` fenced blocks render as live samples. The figure is chrome-free: the runner inside the iframe carries its own tab toolbar (Result / HTML / CSS / JS). The iframe mirrors the runner's height (posted over postMessage): the runner hugs the demo by default (capped at 30rem) and the reader can drag its native resize handle to grow or shrink the player.
+ * @part .pantoken-demo__frame — The sandboxed demo iframe; mirrors the runner's height (default hugs the demo, capped at 30rem; the reader can resize past that).
  * @structure
  * .pantoken-demo {
  *   .pantoken-demo__frame {}
@@ -22,10 +22,11 @@
 .pantoken-demo__frame {
   display: block;
   width: 100%;
-  /* The runner posts its content height (toolbar + the rendered demo, borders included) and the host
-     script sets it inline, so the player hugs the demo. The cap scrolls a tall demo. */
+  /* The runner posts the height it wants (toolbar + body, borders included) and the host script sets it
+     inline, so the iframe mirrors the runner exactly. The runner caps its own default at 30rem and lets
+     the reader drag its resize handle past that, so no CSS cap is applied here — it would clip a demo
+     the reader deliberately grew. */
   height: auto;
-  max-height: 30rem;
   border: 0;
   background: var(--instui-color-background-base, #fff);
 }

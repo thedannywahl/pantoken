@@ -1,21 +1,26 @@
 /**
  * @component runner
  * @class .runner
- * @summary The self-hosted demo runner — a tab toolbar over a code/result body. The Result tab shows the demo alone; a code tab stacks the read-only source above it.
- * @remarks Layout only. The chrome (the tab group) reuses injected `.instui-*` classes, so its colours come from paired `--instui-*` tokens; the whole runner follows the site theme, pushed in from the docs header via postMessage.
+ * @summary The self-hosted demo runner — a tab toolbar over a resizable code/result body. The Result tab shows the demo alone; a code tab stacks the read-only source above it. A spinner stands in until everything has loaded and rendered, then the built runner is revealed in one step.
+ * @remarks Layout only. The chrome (the tab group) reuses injected `.instui-*` classes, so its colours come from paired `--instui-*` tokens; the whole runner follows the site theme, pushed in from the docs header via postMessage. The body is reader-resizable (native `resize: vertical`) — its default height hugs the demo, capped at 30rem — and the runner reports its height so the embedding figure iframe mirrors it.
  * @modifier runner--show-result — Result view: hide the code so the demo takes the whole body.
+ * @modifier runner--booting — Boot state: the runner is built hidden (out of flow) behind the spinner, then revealed once ready.
+ * @modifier runner--resizing — Set while the reader drags the resize handle: hides the panes' scrollbars so they don't flicker as the height recomputes.
+ * @part .runner__loading — The boot placeholder shown until the runner is ready; centres the spinner.
+ * @part .runner__spinner — The loading spinner inside the placeholder (mirrors the InstUI spinner).
  * @part .runner__bar — The top toolbar holding the tabs.
- * @part .runner__body — The region below the bar holding the code and result.
+ * @part .runner__body — The resizable region below the bar holding the code and result; drag its bottom-right handle to resize it.
  * @part .runner__code — The read-only source column (one editor per language).
  * @part .runner__editor — A single language's editor pane; only the active one shows.
+ * @part .copy — The hover-to-reveal copy button on each editor pane, matching the docs' `@example` code fences.
  * @part .runner__result — The sandboxed iframe that runs the demo.
- * @accessibility The tabs are a `role="tablist"` of `aria-pressed` toggle buttons; the source is read-only.
+ * @accessibility The view tabs are a single-select radio group; the source is read-only. The boot placeholder is a `role="status"` labelled "Loading demo".
  * @structure
  * .runner {
  *   .runner__bar {}
  *   .runner__body {
  *     .runner__code {
- *       .runner__editor {}
+ *       .runner__editor { .copy {} }
  *     }
  *     .runner__result {}
  *   }
@@ -26,7 +31,7 @@
  *     <fieldset class="instui-radio-input-group -variant-toggle">\3c !-- view tabs --></fieldset>
  *   </div>
  *   <div class="runner__body">
- *     <div class="runner__code"><div class="runner__editor" data-active>\3c !-- editor --></div></div>
+ *     <div class="runner__code"><div class="runner__editor" data-active>\3c !-- highlighted source + .copy --></div></div>
  *     <iframe class="runner__result" title="Result"></iframe>
  *   </div>
  * </div>
@@ -38,13 +43,54 @@ body {
   font-family: var(--instui-font-family-base, system-ui, sans-serif);
 }
 
+/* Positioning context so the booting runner can sit hidden and out of flow behind the spinner. */
+#runner {
+  position: relative;
+}
+
+/* The boot state: a centered spinner shown until the runner is fully built and measured, so the reader
+   never sees the half-loaded chrome or jumping heights. Styled here (bundled) so it needs none of the
+   async component sheets. */
+.runner__loading {
+  display: grid;
+  place-items: center;
+  min-height: 10rem;
+  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
+  border-radius: var(--instui-border-radius-md, 6px);
+}
+
+@keyframes runner-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Mirrors the InstUI spinner (a ring with one coloured arc), reading its tokens where present and
+   falling back to a neutral currentColor ring before the component sheet loads. */
+.runner__spinner {
+  box-sizing: border-box;
+  width: var(--instui-component-spinner-spinner-size-md, 3rem);
+  height: var(--instui-component-spinner-spinner-size-md, 3rem);
+  border: var(--instui-component-spinner-stroke-width-md, 0.25rem) solid
+    var(--instui-component-spinner-track-color, color-mix(in srgb, currentColor 15%, transparent));
+  border-top-color: var(--instui-component-spinner-color, currentColor);
+  border-radius: 50%;
+  animation: runner-spin 0.8s linear infinite;
+}
+
 .runner {
   display: flex;
   flex-direction: column;
-  /* Exactly fill the figure iframe (which the host sizes to the demo, capped at 30rem): the runner
-     never grows past the frame, so any overflow scrolls a pane, not the whole runner. */
-  height: 100vh;
+  /* Content-height: the runner reports its own height to the host, which sizes the figure iframe to
+     match, so the runner exactly fills it. The body (below) owns the resizable player height. */
   min-height: 0;
+}
+
+/* Built hidden and out of flow during boot (so #runner keeps the spinner's height); reveal drops this. */
+.runner--booting {
+  position: absolute;
+  inset: 0 0 auto 0;
+  visibility: hidden;
 }
 
 /* The toolbar stays pinned to the top while the panes scroll beneath it; the solid background keeps
@@ -72,23 +118,25 @@ body {
 }
 
 /* The body stacks the read-only source above the rendered result (like the example's code-then-render);
-   the Result tab hides the code so the demo takes the whole player. */
+   the Result tab hides the code so the demo takes the whole player. The runner sets its height (the
+   default hugs the demo, capped at 30rem), and `resize: vertical` gives the reader the browser's native
+   drag handle to make it taller or shorter; the panes below scroll within whatever height it has. */
 .runner__body {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  min-height: 5.75rem;
+  overflow: hidden;
+  resize: vertical;
   border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
   border-radius: var(--instui-border-radius-md, 6px);
   margin-top: var(--instui-spacing-gap-inputs-vertical);
 }
 
-/* Split view: the code pane hugs its content but caps at half the space below the toolbar
-   (--runner-pane-max, set by the runner), scrolling past that so the player stays within 30rem. */
+/* Split view: the code pane hugs its content (the body grows to fit it above the result); if the reader
+   drags the player shorter than code + result, the code shrinks and scrolls while the result holds. */
 .runner__code {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   min-height: 0;
-  max-height: var(--runner-pane-max, none);
   overflow: auto;
   /* Frame the rendered demo top and bottom; the top edge divides it from the toolbar (or the code
      above it), the bottom edge closes the player. */
@@ -113,24 +161,25 @@ body {
 }
 
 .runner__result {
-  /* Split view: the result pane fills the space below the code, capped at half the body
-     (--runner-pane-max); the demo scrolls inside the iframe if it's taller. */
+  /* Fills the space below the code (the whole body in Result view); the demo scrolls inside the iframe
+     if it's taller than the pane. */
   flex: 1 1 auto;
   min-height: 0;
-  max-height: var(--runner-pane-max, none);
   overflow: auto;
   border: 0;
   background: var(--instui-color-background-base, #fff);
   border-radius: var(--instui-border-radius-md, 6px);
 }
 
-/* Result tab: the demo takes the whole body (no code above it) and fills the player, uncapped. */
+/* Result tab: the demo takes the whole body (no code above it) and fills the player. */
 .runner--show-result .runner__code {
   display: none;
 }
 
-.runner--show-result .runner__result {
-  max-height: none;
+/* While dragging the resize handle, hide the code pane's scrollbar so it doesn't flicker as the height
+   recomputes (the result frame's own scrollbar is frozen over postMessage). */
+.runner--resizing .runner__code {
+  overflow: hidden;
 }
 
 /* The read-only source (a Shiki `<pre class="shiki">`) sizes to its content; wrapping keeps long

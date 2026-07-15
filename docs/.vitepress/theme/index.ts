@@ -41,10 +41,9 @@ export default {
       // class and broadcasts the theme to any demos already on the page.
       applyTheme(getStoredTheme());
 
-      // The runner (inside each figure's iframe) posts the height it wants — its toolbar plus the
-      // rendered demo's content — so the player sizes to the demo instead of a fixed box. Match the
-      // message to its frame by source window and set the height; the frame's CSS max-height (30rem)
-      // caps it, so a tall demo scrolls within the player.
+      // The runner (inside each figure's iframe) posts the height it wants — its toolbar plus the body
+      // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).
+      // Match the message to its frame by source window and set the height so the iframe mirrors it.
       window.addEventListener("message", (event) => {
         const data = event.data as { type?: string; height?: number } | null;
         // A runner just booted and is asking which theme to render — reply to that frame only.
