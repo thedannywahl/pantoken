@@ -148,6 +148,46 @@ const localesConfig = Object.fromEntries(
           pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
           text: locale.editText,
         },
+        // Localized default-theme chrome. `outline.label` merges over the global `outline.level`
+        // (VitePress stacks per-locale themeConfig recursively over the root), so the level survives.
+        outline: { label: locale.chrome.outlineLabel },
+        docFooter: { prev: locale.chrome.docFooterPrev, next: locale.chrome.docFooterNext },
+        darkModeSwitchLabel: locale.chrome.darkModeSwitchLabel,
+        lightModeSwitchTitle: locale.chrome.lightModeSwitchTitle,
+        darkModeSwitchTitle: locale.chrome.darkModeSwitchTitle,
+        sidebarMenuLabel: locale.chrome.sidebarMenuLabel,
+        returnToTopLabel: locale.chrome.returnToTopLabel,
+        langMenuLabel: locale.chrome.langMenuLabel,
+        // `lastUpdated: true` is set globally below, so localize its label here.
+        lastUpdated: { text: locale.chrome.lastUpdatedText },
+        notFound: locale.chrome.notFound,
+        // Read by the custom palette selector (ThemeSelector.vue) via `useData().theme`.
+        themeSelector: locale.themeSelector,
+      },
+    },
+  ]),
+);
+
+// The local-search index reads the *root* themeConfig (not the per-route one), so its per-locale UI
+// strings live here under `options.locales`, keyed by locale index, rather than in each locale's
+// themeConfig. VitePress merges these with its English defaults, so only translated keys are set.
+const searchLocales = Object.fromEntries(
+  localeEntries.map(([localeKey, locale]) => [
+    localeKey,
+    {
+      translations: {
+        button: { buttonText: locale.search.buttonText },
+        modal: {
+          displayDetails: locale.search.displayDetails,
+          resetButtonTitle: locale.search.resetButtonTitle,
+          backButtonTitle: locale.search.backButtonTitle,
+          noResultsText: locale.search.noResultsText,
+          footer: {
+            selectText: locale.search.footerSelect,
+            navigateText: locale.search.footerNavigate,
+            closeText: locale.search.footerClose,
+          },
+        },
       },
     },
   ]),
@@ -178,6 +218,14 @@ export default defineConfig({
     ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],
   ],
+  // i18n routing audit (VitePress 2.0.0-alpha.18 / PR #5239): `themeConfig.i18nRouting` now accepts a
+  // function to build custom locale links. We deliberately don't set one — our locales are a symmetric
+  // prefix swap (`/…` ↔ `/hu/…`, including `/api/` ↔ `/hu/api/`), which VitePress's default already
+  // handles: its nav switchers call `useLangs({ correspondingLink: true })`, so switching maps to the
+  // corresponding page, and with `cleanUrls: true` the default emits clean URLs (no `.html`). A custom
+  // function would only re-implement that. The one case it would help — a graceful fallback when a page
+  // exists in one locale but not the other — is instead prevented by keeping the `hu/` tree in parity
+  // (see scripts/check-locale-parity.ts).
   locales: localesConfig,
   cleanUrls: true,
   lastUpdated: true,
@@ -234,7 +282,7 @@ export default defineConfig({
   themeConfig: {
     siteTitle: false,
     logo: { light: "/logo-light.svg", dark: "/logo-dark.svg" },
-    search: { provider: "local" },
+    search: { provider: "local", options: { locales: searchLocales } },
     outline: { level: [2, 3] },
   },
 });

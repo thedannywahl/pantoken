@@ -22,6 +22,47 @@ type LocaleMeta = {
   editText: string;
   // The CSS reference is merged into the TypeDoc sidebar by `@cssdoc/typedoc`, so there's one path.
   typedocSidebarPath: string;
+  // The pantoken palette selector injected into the nav by the custom theme (see ThemeSelector.vue).
+  // `Canvas` is an Instructure product name and stays as-is per brand rules; only descriptors translate.
+  themeSelector: {
+    label: string;
+    rebrand: string;
+    canvas: string;
+    canvasHighContrast: string;
+  };
+  // Default-theme chrome VitePress renders around the content. Without these the Hungarian site shows
+  // English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
+  chrome: {
+    outlineLabel: string;
+    docFooterPrev: string;
+    docFooterNext: string;
+    darkModeSwitchLabel: string;
+    lightModeSwitchTitle: string;
+    darkModeSwitchTitle: string;
+    sidebarMenuLabel: string;
+    returnToTopLabel: string;
+    langMenuLabel: string;
+    lastUpdatedText: string;
+    notFound: {
+      code: string;
+      title: string;
+      quote: string;
+      linkLabel: string;
+      linkText: string;
+    };
+  };
+  // Local-provider search UI. Wired into the global `themeConfig.search.options.locales` (the search
+  // index reads the root themeConfig, not the per-route one), keyed by locale.
+  search: {
+    buttonText: string;
+    displayDetails: string;
+    resetButtonTitle: string;
+    backButtonTitle: string;
+    noResultsText: string;
+    footerSelect: string;
+    footerNavigate: string;
+    footerClose: string;
+  };
 };
 
 export const LOCALES: Record<DocsLocale, LocaleMeta> = {
@@ -46,6 +87,42 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     },
     editText: "Edit this page on GitHub",
     typedocSidebarPath: "../api/typedoc-sidebar.json",
+    themeSelector: {
+      label: "Select theme",
+      rebrand: "Rebrand",
+      canvas: "Canvas",
+      canvasHighContrast: "Canvas high contrast",
+    },
+    chrome: {
+      outlineLabel: "On this page",
+      docFooterPrev: "Previous page",
+      docFooterNext: "Next page",
+      darkModeSwitchLabel: "Appearance",
+      lightModeSwitchTitle: "Switch to light theme",
+      darkModeSwitchTitle: "Switch to dark theme",
+      sidebarMenuLabel: "Menu",
+      returnToTopLabel: "Return to top",
+      langMenuLabel: "Change language",
+      lastUpdatedText: "Last updated",
+      notFound: {
+        code: "404",
+        title: "PAGE NOT FOUND",
+        quote:
+          "But if you don't change your direction, and if you keep looking, you may end up where you are heading.",
+        linkLabel: "go to home",
+        linkText: "Take me home",
+      },
+    },
+    search: {
+      buttonText: "Search",
+      displayDetails: "Display detailed list",
+      resetButtonTitle: "Reset search",
+      backButtonTitle: "Close search",
+      noResultsText: "No results for",
+      footerSelect: "to select",
+      footerNavigate: "to navigate",
+      footerClose: "to close",
+    },
   },
   hu: {
     label: "Magyar",
@@ -68,5 +145,41 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     },
     editText: "Oldal szerkesztése GitHubon",
     typedocSidebarPath: "../hu/api/typedoc-sidebar.json",
+    themeSelector: {
+      label: "Téma kiválasztása",
+      rebrand: "Rebrand",
+      canvas: "Canvas",
+      canvasHighContrast: "Canvas nagy kontraszt",
+    },
+    chrome: {
+      outlineLabel: "Ezen az oldalon",
+      docFooterPrev: "Előző oldal",
+      docFooterNext: "Következő oldal",
+      darkModeSwitchLabel: "Megjelenés",
+      lightModeSwitchTitle: "Váltás világos témára",
+      darkModeSwitchTitle: "Váltás sötét témára",
+      sidebarMenuLabel: "Menü",
+      returnToTopLabel: "Vissza a tetejére",
+      langMenuLabel: "Nyelv váltása",
+      lastUpdatedText: "Utoljára frissítve",
+      notFound: {
+        code: "404",
+        title: "AZ OLDAL NEM TALÁLHATÓ",
+        quote:
+          "De ha nem változtatsz az irányodon, és tovább keresel, könnyen ott végezheted, amerre tartasz.",
+        linkLabel: "vissza a főoldalra",
+        linkText: "Vissza a főoldalra",
+      },
+    },
+    search: {
+      buttonText: "Keresés",
+      displayDetails: "Részletes lista megjelenítése",
+      resetButtonTitle: "Keresés törlése",
+      backButtonTitle: "Keresés bezárása",
+      noResultsText: "Nincs találat erre:",
+      footerSelect: "kiválasztás",
+      footerNavigate: "navigálás",
+      footerClose: "bezárás",
+    },
   },
 };

@@ -1,9 +1,25 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from "vue";
-import { applyTheme, getStoredTheme, THEMES, type PantokenTheme } from "../theme";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import { useData } from "vitepress";
+import {
+  applyTheme,
+  getStoredTheme,
+  THEME_SELECTOR_DEFAULTS,
+  THEMES,
+  type PantokenTheme,
+  type ThemeSelectorStrings,
+} from "../theme";
 
 const open = ref(false);
 const current = ref<PantokenTheme>("rebrand");
+
+// Localized selector strings from the active locale's `themeConfig.themeSelector`, falling back to
+// the English defaults so a missing block never renders blank.
+const { theme } = useData();
+const strings = computed<ThemeSelectorStrings>(() => ({
+  ...THEME_SELECTOR_DEFAULTS,
+  ...(theme.value as { themeSelector?: Partial<ThemeSelectorStrings> }).themeSelector,
+}));
 
 function select(theme: PantokenTheme): void {
   current.value = theme;
@@ -30,8 +46,8 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
       type="button"
       aria-haspopup="true"
       :aria-expanded="open"
-      aria-label="Select theme"
-      title="Select theme"
+      :aria-label="strings.label"
+      :title="strings.label"
       @click.stop="open = !open"
     >
       <span class="theme-selector__icon" aria-hidden="true" />
@@ -46,7 +62,7 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
         :aria-checked="current === t.key"
         @click="select(t.key)"
       >
-        {{ t.label }}
+        {{ strings[t.key] }}
       </button>
     </div>
   </div>

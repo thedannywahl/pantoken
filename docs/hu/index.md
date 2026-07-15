@@ -13,7 +13,10 @@ hero:
       link: /hu/guide/packages
     - theme: alt
       text: API referencia
-      link: /hu/api/
+      link: /hu/api
+    - theme: alt
+      text: CSS referencia
+      link: /hu/api/css
 features:
   - title: Egyetlen igaz forrás
     details: Minden csomag ugyanazt a feloldott token IR-t olvassa. Ha egy token változik, ugyanúgy jut el CSS-be, SCSS-be, natív kódba és Figmába.

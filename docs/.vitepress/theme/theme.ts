@@ -15,7 +15,28 @@ export interface ThemeOption {
   label: string;
 }
 
-/** The selectable themes, in menu order. */
+/**
+ * Localized palette-selector strings, supplied per locale via `themeConfig.themeSelector`
+ * (see `.vitepress/i18n.ts`) and read at runtime by {@link ThemeSelector}. `label` is the trigger
+ * button's accessible name; the per-key labels name each palette. The English values here double as
+ * the fallback when a locale omits the block.
+ */
+export interface ThemeSelectorStrings {
+  label: string;
+  rebrand: string;
+  canvas: string;
+  canvasHighContrast: string;
+}
+
+/** English defaults, also the fallback when a locale doesn't localize the selector. */
+export const THEME_SELECTOR_DEFAULTS: ThemeSelectorStrings = {
+  label: "Select theme",
+  rebrand: "Rebrand",
+  canvas: "Canvas",
+  canvasHighContrast: "Canvas high contrast",
+};
+
+/** The selectable themes, in menu order. Labels are localized at render time (see {@link ThemeSelectorStrings}). */
 export const THEMES: readonly ThemeOption[] = [
   { key: "rebrand", label: "Rebrand" },
   { key: "canvas", label: "Canvas" },
