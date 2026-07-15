@@ -6,8 +6,6 @@ export const radioInputGroup = defineComponent({
   css: (p) => {
     const root = `.${p}radio-input-group`;
     const L = (s: string): string => `var(--instui-component-form-field-layout-${s})`;
-    const r = "var(--instui-component-radio-input-toggle-border-radius)";
-    const bw = "var(--instui-component-radio-input-toggle-border-width)";
     // prettier-ignore
     return css`
 /**
@@ -16,7 +14,7 @@ export const radioInputGroup = defineComponent({
  * @modifier -layout-columns — Lay the radios out in columns.
  * @modifier -layout-inline — Lay the radios out inline.
  * @modifier -required — Mark the group as required.
- * @modifier -variant-toggle — Connect the child toggles into one segmented control.
+ * @modifier -variant-toggle — Lay the child toggles out as a segmented control (only the selected segment fills).
  * @accessibility Renders a native \`<fieldset>\` with a \`<legend>\` that names the group; the child radios share one \`name\`, so only one can be selected at a time.
  * @example
  * <fieldset class="instui-radio-input-group -variant-toggle">
@@ -67,23 +65,17 @@ ${root}.-layout-inline {
 }
 ${root}.-layout-columns > legend,
 ${root}.-layout-inline > legend { flex-basis: 100%; }
-/* toggle variant: connect the child .instui-radio.-variant-toggle buttons into one segmented control */
+/* toggle variant: lay the child .instui-radio.-variant-toggle segments out flush in a row — no gap and
+   no borders, matching InstUI's colSpacing="none". The visible spacing between labels is each segment's
+   own inline padding; only the checked segment paints a pill. Lift the focused segment so its focus ring
+   isn't clipped by a neighbour. */
 ${root}.-variant-toggle {
   flex-flow: row wrap;
   align-items: center;
+  gap: 0;
 }
 ${root}.-variant-toggle > legend { flex-basis: 100%; }
-${root}.-variant-toggle > .${p}radio { border-radius: 0; position: relative; }
-${root}.-variant-toggle > .${p}radio:first-of-type {
-  border-start-start-radius: ${r};
-  border-end-start-radius: ${r};
-}
-${root}.-variant-toggle > .${p}radio:last-of-type {
-  border-start-end-radius: ${r};
-  border-end-end-radius: ${r};
-}
-${root}.-variant-toggle > .${p}radio + .${p}radio { margin-inline-start: calc(-1 * ${bw}); }
-${root}.-variant-toggle > .${p}radio:has(input:checked) { z-index: 1; }`;
+${root}.-variant-toggle > .${p}radio:has(input:focus-visible) { z-index: 1; }`;
   },
 });
 

@@ -107,24 +107,27 @@ ${std}.-readonly input[type="radio"] {
   border-color: var(--instui-component-radio-input-border-readonly-color);
   background: var(--instui-component-radio-input-background-readonly-color);
 }
-/* variant=toggle — the segmented-button look. The selected fill is a context colour, indirected
-   through --pantoken-rt-fill so -context-* is a one-line override (default success/green). */
+/* variant=toggle — a segmented control (InstUI RadioInput toggle facade). Each segment is plain
+   uppercase label text; the facade is hidden until checked, so unselected segments have NO border and
+   NO background. Only the SELECTED segment shows a pill: the context fill, the resting (depth1) shadow,
+   rounded corners, and white text. The fill is indirected through --pantoken-rt-fill so -context-* is a
+   one-line override (default success/green). */
 ${tog} {
   --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-success);
   position: relative;
   justify-content: center;
   gap: 0;
   height: var(--instui-component-radio-input-toggle-medium-height);
-  padding-inline: var(--instui-spacing-space-md);
-  border: var(--instui-component-radio-input-toggle-border-width) solid var(--instui-color-stroke-base);
+  padding-inline: 0.875rem;
   border-radius: var(--instui-component-radio-input-toggle-border-radius);
-  /* Unselected fill is the neutral muted surface: the toggle-background-off token resolves to the same
-     green as success in-theme, so it can't read as "off" — the -context-* fills below drive selection. */
-  background: var(--instui-color-background-muted);
+  background: transparent;
   color: var(--instui-component-radio-input-label-base-color);
   font-size: var(--instui-component-radio-input-toggle-medium-font-size);
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 /* Clip the native control (still focusable + in the a11y tree); the label is the button. */
 ${tog} input[type="radio"] {
@@ -142,14 +145,23 @@ ${tog}.-context-off { --pantoken-rt-fill: var(--instui-component-radio-input-tog
 ${tog}.-context-success { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-success); }
 ${tog}.-context-danger { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-danger); }
 ${tog}.-context-warning { --pantoken-rt-fill: var(--instui-component-radio-input-toggle-background-warning); }
+/* Selected: the pill appears — the context fill, white label, and the resting elevation shadow. */
 ${tog}:has(input:checked) {
   background: var(--pantoken-rt-fill);
-  border-color: var(--pantoken-rt-fill);
   color: var(--instui-component-radio-input-toggle-handle-text);
+  box-shadow: var(--instui-elevation-depth1);
 }
+/* Focus: underline the label and draw a ring offset just outside the pill (the InstUI focus facade). */
 ${tog}:has(input:focus-visible) {
-  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color);
-  outline-offset: var(--instui-focus-outline-offset);
+  text-decoration: underline;
+}
+${tog}:has(input:focus-visible)::before {
+  content: "";
+  position: absolute;
+  inset: -0.25rem;
+  border: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color);
+  border-radius: calc(var(--instui-component-radio-input-toggle-border-radius) + 0.0625rem);
+  pointer-events: none;
 }
 ${tog}:has(input:disabled) {
   opacity: 0.5;
@@ -158,10 +170,12 @@ ${tog}:has(input:disabled) {
 ${tog}.-size-sm {
   height: var(--instui-component-radio-input-toggle-small-height);
   font-size: var(--instui-component-radio-input-toggle-small-font-size);
+  padding-inline: 0.5rem;
 }
 ${tog}.-size-lg {
   height: var(--instui-component-radio-input-toggle-large-height);
   font-size: var(--instui-component-radio-input-toggle-large-font-size);
+  padding-inline: 1rem;
 }`;
   },
 });
