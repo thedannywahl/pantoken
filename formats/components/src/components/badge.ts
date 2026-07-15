@@ -24,11 +24,19 @@ export const badge = defineComponent({
  * @cssproperty --pantoken-badge-accent <color> — The chip fill; each \`-color-*\` variant and the pulse ring read from it.
  * @cssproperty --pantoken-badge-text <color> — The text colour, paired to the accent so it stays legible.
  * @remarks To place a badge over a target, wrap both in a \`.instui-badge-wrapper\` (the position anchor) and pin the badge with a \`-placement-*\` modifier.
+ * @animation pantoken-badge-pulse — The pulse ring animation.
  * @example
  * <span class="instui-badge-wrapper">
  *   <button class="instui-button">Inbox</button>
  *   <span class="instui-badge -placement-top-end">4</span>
  * </span>
+ * @wrapper .instui-badge-wrapper
+ * @structure
+ * The badge renders inline on its own, or inside an optional \`.instui-badge-wrapper\` that anchors it over a target.
+ * .instui-badge-wrapper:opt {
+ *   slot {}
+ *   .instui-badge {}
+ * }
  * @related pill — The inline label-chip counterpart.
  * @demo self:badge
  */

@@ -1,6 +1,7 @@
 {
   "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "modifierConvention": "rscss",
+  "inlineComments": "ignore",
   "render": {
     "sectionOrder": [
       "accessibility",
@@ -21,9 +22,9 @@
       "tokensConsumed",
       "compat",
       "related",
-      "see"
+      "see",
     ],
     "headingPrefix": "CSS:",
-    "structureView": "both"
-  }
+    "structureView": "both",
+  },
 }

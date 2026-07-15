@@ -1,44 +1,15 @@
 /**
  * @component demo
  * @class .pantoken-demo
- * @summary The live-sample panel emitted by `renderDemoFigure` / `demoMarkdownIt` — a bordered, token-themed frame wrapping a sandboxed demo iframe.
- * @remarks Import this in your docs so `demo` fenced blocks render as live samples. The panel lives in the host page (not the iframe), so it reads the host's `--instui-*` tokens. The action buttons' `[data-tooltip]` bubble drops *below* the control: the bar sits at the top of the figure, which clips overflow, so a bubble above would be cut off.
- * @part .pantoken-demo__bar — The top toolbar: an optional provider tag, a spacer, and the action controls.
- * @part .pantoken-demo__provider — The provider tag (brand mark plus name); shown only for hosted providers.
- * @part .pantoken-demo__provider-icon — The provider's brand glyph, drawn in its brand colour.
- * @part .pantoken-demo__spacer — Pushes the actions to the trailing edge whether or not a provider tag is present.
- * @part .pantoken-demo__action — An icon-only action (toggle light/dark, full screen, open in a new tab); the label shows as a hover tooltip.
- * @part .pantoken-demo__icon — The glyph inside an action control.
- * @part .pantoken-demo__frame — The sandboxed demo iframe; the reader can drag its bottom edge to grow it.
- * @cssstate :fullscreen — The panel fills the viewport; the bar stays pinned on top and the frame grows to fill the rest.
- * @accessibility The actions are real `<button>`s and an `<a>`; each carries an `aria-label` and exposes the same label through `data-tooltip`, surfaced on hover and `:focus-visible`.
+ * @summary The live-sample panel emitted by `renderDemoFigure` / `demoMarkdownIt` — a bordered, token-themed frame around the sandboxed demo iframe, modeled on the live `@example` blocks.
+ * @remarks Import this in your docs so `demo` fenced blocks render as live samples. The figure is chrome-free: the runner inside the iframe carries its own tab toolbar (Result / HTML / CSS / JS). The iframe auto-sizes to the demo content (the runner posts its height over postMessage), capped at 30rem.
+ * @part .pantoken-demo__frame — The sandboxed demo iframe; sized to the demo's content, capped at 30rem.
  * @structure
  * .pantoken-demo {
- *   .pantoken-demo__bar {
- *     .pantoken-demo__provider {
- *       .pantoken-demo__provider-icon {}
- *     }
- *     .pantoken-demo__spacer {}
- *     .pantoken-demo__action {
- *       .pantoken-demo__icon {}
- *     }
- *   }
  *   .pantoken-demo__frame {}
  * }
  * @example
  * <figure class="pantoken-demo">
- *   <figcaption class="pantoken-demo__bar">
- *     <span class="pantoken-demo__provider">
- *       <svg class="pantoken-demo__provider-icon" aria-hidden="true">\3c !-- brand mark --></svg> StackBlitz
- *     </span>
- *     <span class="pantoken-demo__spacer"></span>
- *     <button class="pantoken-demo__action" type="button" data-tooltip="Full screen" aria-label="Full screen">
- *       <svg class="pantoken-demo__icon" aria-hidden="true">\3c !-- icon --></svg>
- *     </button>
- *     <a class="pantoken-demo__action" href="…" data-tooltip="Open in a new tab" aria-label="Open in a new tab">
- *       <svg class="pantoken-demo__icon" aria-hidden="true">\3c !-- icon --></svg>
- *     </a>
- *   </figcaption>
  *   <iframe class="pantoken-demo__frame" src="…" title="Live demo"></iframe>
  * </figure>
  */
@@ -50,114 +21,13 @@
   background: var(--instui-color-background-base, #fff);
 }
 
-.pantoken-demo__bar {
-  display: flex;
-  align-items: center;
-  gap: var(--instui-spacing-space-sm, 0.75rem);
-  padding: var(--instui-spacing-space-xs, 0.5rem) var(--instui-spacing-space-sm, 0.75rem);
-  background: var(--instui-color-background-muted, #f2f4f5);
-  border-bottom: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
-  font-size: var(--instui-font-size-text-sm, 0.875rem);
-}
-
-/* Shown only for hosted providers: the brand mark (in its brand colour) plus the provider name. */
-.pantoken-demo__provider {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--instui-spacing-space-xx-small, 0.375rem);
-  font-weight: var(--instui-font-weight-body-strong, 700);
-  color: var(--instui-color-text-base, #273540);
-}
-.pantoken-demo__provider-icon {
-  inline-size: 1.1em;
-  block-size: 1.1em;
-}
-
-/* Pushes the actions to the trailing edge whether or not a provider tag is present. */
-.pantoken-demo__spacer {
-  flex: 1;
-}
-
-/* Icon-only actions (full screen, open in a new tab); the label shows as a hover tooltip. */
-.pantoken-demo__action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 1.75em;
-  block-size: 1.75em;
-  padding: 0;
-  border: 0;
-  border-radius: var(--instui-border-radius-sm, 4px);
-  background: transparent;
-  color: var(--instui-color-text-interactive-navigation-primary-base, #0770a3);
-  cursor: pointer;
-}
-.pantoken-demo__action:hover {
-  background: var(--instui-color-background-interactive-action-tertiary-hover, #eef4fd);
-}
-.pantoken-demo__icon {
-  inline-size: 1.1em;
-  block-size: 1.1em;
-}
-
-/*
- * Lightweight hover/focus tooltip driven by data-tooltip; a dark bubble *below* the control. The bar
- * sits at the top of the figure (which clips overflow), so a bubble above would be cut off — it
- * drops into the frame area instead.
- */
-[data-tooltip] {
-  position: relative;
-}
-[data-tooltip]::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  inset-block-start: calc(100% + var(--instui-spacing-space-xxx-small, 0.25rem));
-  inset-inline-end: 0;
-  z-index: 5;
-  padding: var(--instui-spacing-space-xx-small, 0.375rem)
-    var(--instui-spacing-space-x-small, 0.5rem);
-  border-radius: var(--instui-border-radius-sm, 4px);
-  background: var(--instui-color-background-inverse, #2d3b45);
-  color: var(--instui-color-text-inverse, #fff);
-  font-size: var(--instui-font-size-text-xs, 0.75rem);
-  font-weight: var(--instui-font-weight-body-base, 400);
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease;
-}
-[data-tooltip]:hover::after,
-[data-tooltip]:focus-visible::after {
-  opacity: 1;
-}
-
 .pantoken-demo__frame {
   display: block;
   width: 100%;
-  height: 400px;
-  min-height: 240px;
+  /* The runner posts its content height (toolbar + the rendered demo, borders included) and the host
+     script sets it inline, so the player hugs the demo. The cap scrolls a tall demo. */
+  height: auto;
+  max-height: 30rem;
   border: 0;
   background: var(--instui-color-background-base, #fff);
-  /* Let the reader drag the bottom edge to grow the player vertically. */
-  resize: vertical;
-  overflow: auto;
-}
-
-/*
- * Full screen takes the whole figure (not just the iframe), so the toolbar — light/dark, exit full
- * screen, new tab — stays pinned on top. The bar keeps its height; the frame grows to fill the rest.
- */
-.pantoken-demo:fullscreen {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-}
-.pantoken-demo:fullscreen .pantoken-demo__frame {
-  flex: 1;
-  height: auto;
-  resize: none;
 }

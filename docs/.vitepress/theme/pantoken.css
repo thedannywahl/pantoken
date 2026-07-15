@@ -8,7 +8,7 @@
    (`.css-example`) below it — the fence loses its bottom rounding + margin so the two read as one unit
    (square BOTH the outer wrapper and the inner <pre>, which paints the dark bg + carries its own radius,
    so no rounded corner peeks through the seam). Inside the frame, the live example sits in the same
-   elevated `.instui-card` the /demos use (from demos-assets/demo-overrides.css, loaded globally). */
+   elevated `.instui-card` the /demos use (from `@pantoken/demo/card.css`, bundled by the theme). */
 div[class*="language-"]:has(+ .css-example) {
   margin-bottom: 0;
 }
@@ -25,7 +25,7 @@ div[class*="language-"]:has(+ .css-example) > pre {
   border-block-start: 0;
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
-  padding: 20px;
+  padding: 12px;
   margin: 0 0 16px;
   /* Match the page background (like the demo frame), so only the inner .instui-card reads as elevated. */
   background: light-dark(var(--vp-c-bg-soft), var(--vp-c-bg));
@@ -77,4 +77,11 @@ div[class*="language-"]:has(+ .css-example) > pre {
   .tagline {
     color: #aab0b5;
   }
+}
+
+/* Only the rebrand theme ships light/dark values; canvas and canvas-high-contrast are single-scheme,
+   so the appearance toggle does nothing for them — hide it (nav bar + mobile nav screen). */
+html:not([data-pantoken-theme="rebrand"]) .VPNavBarAppearance,
+html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
+  display: none;
 }

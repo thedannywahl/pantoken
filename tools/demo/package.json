@@ -11,6 +11,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./demo.css": "./assets/demo.css",
+    "./card.css": "./assets/card.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

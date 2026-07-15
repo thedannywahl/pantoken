@@ -3,11 +3,8 @@
   "plugin": [
     "typedoc-plugin-markdown",
     "typedoc-vitepress-theme",
-    "../plugins/typedoc/demo/dist/index.mjs",
-    "../plugins/typedoc/live-example/dist/index.mjs"
+    "../plugins/typedoc/demo/dist/index.mjs"
   ],
-  "liveExampleDir": "renderers/web-components/src/variables",
-  "liveExampleWrapper": "<div class=\"css-example\"><div class=\"instui-card\">%s</div></div>",
   "blockTags": [
     "@defaultValue",
     "@deprecated",

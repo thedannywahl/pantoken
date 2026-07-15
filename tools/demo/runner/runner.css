@@ -1,57 +1,18 @@
 /**
- * @component button-group
- * @class .instui-button-group
- * @summary A seamed segmented control that joins `.instui-button` tabs into one shared outer border.
- * @remarks The runner owns this composition because InstUI ships no ButtonGroup CSS component (the reworked `.instui-toggle-group` is now a disclosure). Direct-child `.instui-button`s drop their individual radii and outer borders, leaving hairline seams between them.
- * @example
- * <div class="instui-button-group" role="tablist">
- *   <button class="instui-button" role="tab">Result</button>
- *   <button class="instui-button" role="tab">HTML</button>
- *   <button class="instui-button" role="tab">CSS</button>
- * </div>
- */
-.instui-button-group {
-  display: inline-flex;
-  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
-  border-radius: var(--instui-border-radius-md, 6px);
-  overflow: hidden;
-}
-.instui-button-group > .instui-button {
-  border-radius: 0;
-  border-top-width: 0;
-  border-bottom-width: 0;
-}
-.instui-button-group > .instui-button + .instui-button {
-  border-inline-start: var(--instui-border-width-sm, 1px) solid
-    var(--instui-color-stroke-base, #c7cdd1);
-}
-
-/**
  * @component runner
  * @class .runner
- * @summary The self-hosted demo runner — a top toolbar over a code/result body, shown as tabs or a split pane.
- * @remarks Layout only. The chrome (tabs, buttons, theme menu) reuses injected `.instui-*` classes, so its colours come from paired `--instui-*` tokens and read correctly in light and dark. The theme picker is an `.instui-menu` dropdown anchored to its trigger.
- * @modifier runner--split — Split layout: the code editor on one side, the live result on the other.
- * @modifier runner--show-result — Tabs layout: show the result pane instead of the code (ignored in split mode, where both show).
- * @part .runner__bar — The top toolbar holding the tabs, theme picker, and actions.
- * @part .runner__spacer — Pushes the trailing controls to the end of the bar.
- * @part .runner__theme — The theme-picker wrapper (trigger button plus its menu).
- * @part .runner__theme-menu — The anchored theme dropdown (also an `.instui-menu`).
- * @part .runner__icon — An icon slot sized to the current font.
+ * @summary The self-hosted demo runner — a tab toolbar over a code/result body. The Result tab shows the demo alone; a code tab stacks the read-only source above it.
+ * @remarks Layout only. The chrome (the tab group) reuses injected `.instui-*` classes, so its colours come from paired `--instui-*` tokens; the whole runner follows the site theme, pushed in from the docs header via postMessage.
+ * @modifier runner--show-result — Result view: hide the code so the demo takes the whole body.
+ * @part .runner__bar — The top toolbar holding the tabs.
  * @part .runner__body — The region below the bar holding the code and result.
- * @part .runner__code — The editor column (one editor per language).
+ * @part .runner__code — The read-only source column (one editor per language).
  * @part .runner__editor — A single language's editor pane; only the active one shows.
  * @part .runner__result — The sandboxed iframe that runs the demo.
- * @accessibility Toolbar controls carry `aria-label`s and expose the same text through `data-tooltip` on hover and `:focus-visible`; the theme dropdown is a `role="menu"` whose items are reset to full-width buttons.
+ * @accessibility The tabs are a `role="tablist"` of `aria-pressed` toggle buttons; the source is read-only.
  * @structure
  * .runner {
- *   .runner__bar {
- *     .runner__spacer {}
- *     .runner__theme {
- *       .runner__theme-menu {}
- *     }
- *     .runner__icon {}
- *   }
+ *   .runner__bar {}
  *   .runner__body {
  *     .runner__code {
  *       .runner__editor {}
@@ -60,14 +21,9 @@
  *   }
  * }
  * @example
- * <div class="runner runner--split">
+ * <div class="runner runner--show-result">
  *   <div class="runner__bar">
- *     <div class="instui-button-group" role="tablist">\3c !-- tabs --></div>
- *     <span class="runner__spacer"></span>
- *     <div class="runner__theme">
- *       <button class="instui-button" data-role="theme-trigger">Theme</button>
- *       <div class="instui-menu runner__theme-menu" role="menu" hidden></div>
- *     </div>
+ *     <fieldset class="instui-radio-input-group -variant-toggle">\3c !-- view tabs --></fieldset>
  *   </div>
  *   <div class="runner__body">
  *     <div class="runner__code"><div class="runner__editor" data-active>\3c !-- editor --></div></div>
@@ -85,139 +41,80 @@ body {
 .runner {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* Exactly fill the figure iframe (which the host sizes to the demo, capped at 30rem): the runner
+     never grows past the frame, so any overflow scrolls a pane, not the whole runner. */
+  height: 100vh;
+  min-height: 0;
 }
 
+/* The toolbar stays pinned to the top while the panes scroll beneath it; the solid background keeps
+   scrolled content from showing through. */
 .runner__bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: var(--instui-spacing-space-xs, 0.5rem);
   padding: var(--instui-spacing-space-xs, 0.5rem);
   background: var(--instui-color-background-muted, #f2f4f5);
-  border-bottom: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
   flex-wrap: wrap;
 }
 
-.runner__spacer {
-  margin-inline-start: auto;
-}
-
-/* The theme picker is an .instui-menu dropdown anchored to its trigger button. */
-.runner__theme {
-  position: relative;
-  display: inline-flex;
-}
-.runner__theme-menu {
-  position: absolute;
-  inset-block-start: calc(100% + var(--instui-spacing-space-xxx-small, 0.25rem));
-  inset-inline-end: 0;
-  z-index: 2;
-  min-inline-size: 10rem;
-}
-.runner__theme-menu[hidden] {
-  display: none;
-}
-/* the menu .item is authored for non-interactive elements; reset it as a full-width button. */
-.runner__theme-menu .item {
-  display: block;
-  inline-size: 100%;
-  font: inherit;
-  text-align: start;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-}
-
-.runner__icon {
-  display: inline-flex;
-  width: 1em;
-  height: 1em;
-}
-.runner__icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/*
- * Hover/focus tooltip driven by data-tooltip. The toolbar sits at the top of the runner, so the
- * bubble drops below the control to stay in view.
- */
-[data-tooltip] {
-  position: relative;
-}
-[data-tooltip]::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  inset-block-start: calc(100% + var(--instui-spacing-space-xxx-small, 0.25rem));
-  inset-inline-end: 0;
-  z-index: 5;
-  padding: var(--instui-spacing-space-xx-small, 0.375rem)
-    var(--instui-spacing-space-x-small, 0.5rem);
-  border-radius: var(--instui-border-radius-sm, 4px);
-  background: var(--instui-color-background-inverse, #2d3b45);
-  color: var(--instui-color-text-inverse, #fff);
-  font-size: var(--instui-font-size-text-xs, 0.75rem);
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s ease;
-}
-[data-tooltip]:hover::after,
-[data-tooltip]:focus-visible::after {
-  opacity: 1;
-}
-
+/* The body stacks the read-only source above the rendered result (like the example's code-then-render);
+   the Result tab hides the code so the demo takes the whole player. */
 .runner__body {
   flex: 1;
   display: flex;
+  flex-direction: column;
   min-height: 0;
 }
 
+/* Split view: the code pane hugs its content but caps at half the space below the toolbar
+   (--runner-pane-max, set by the runner), scrolling past that so the player stays within 30rem. */
 .runner__code {
-  flex: 1;
-  min-width: 0;
+  flex: 0 0 auto;
+  min-height: 0;
+  max-height: var(--runner-pane-max, none);
   overflow: auto;
 }
+
 .runner__editor {
   display: none;
-  height: 100%;
 }
+
 .runner__editor[data-active] {
   display: block;
 }
 
 .runner__result {
-  flex: 1;
-  min-width: 0;
+  /* Split view: the result pane fills the space below the code, capped at half the body
+     (--runner-pane-max); the demo scrolls inside the iframe if it's taller. */
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: var(--runner-pane-max, none);
+  overflow: auto;
   border: 0;
+  /* Frame the rendered demo top and bottom; the top edge divides it from the toolbar (or the code
+     above it), the bottom edge closes the player. */
+  border-block: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
   background: var(--instui-color-background-base, #fff);
 }
 
-/* Tabs mode: one column; show either the code or the result. */
-.runner:not(.runner--split) .runner__result,
-.runner:not(.runner--split) .runner__code {
+/* Result tab: the demo takes the whole body (no code above it) and fills the player, uncapped. */
+.runner--show-result .runner__code {
   display: none;
 }
-.runner:not(.runner--split).runner--show-result .runner__result {
-  display: block;
-}
-.runner:not(.runner--split):not(.runner--show-result) .runner__code {
-  display: block;
+
+.runner--show-result .runner__result {
+  max-height: none;
 }
 
-/* Split mode: code left, result right. */
-.runner--split .runner__result {
-  display: block;
-  border-inline-start: var(--instui-border-width-sm, 1px) solid
-    var(--instui-color-stroke-base, #c7cdd1);
-}
-.runner--split .runner__code {
-  display: block;
-}
-
+/* The read-only source sizes to its content (no scroll); line wrapping keeps it in the column. */
 .cm-editor {
-  height: 100%;
+  height: auto;
 }
+
 .cm-editor.cm-focused {
   outline: none;
 }

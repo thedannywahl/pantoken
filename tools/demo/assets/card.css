@@ -1,0 +1,19 @@
+/*
+ * `.instui-card` — the elevated surface the CSS-API live examples (`.css-example`) and the self-hosted
+ * demos share. It is NOT an InstUI component (it doesn't ship in @pantoken/components); it's a docs-only
+ * demo wrapper: a View composed with a surface, radius, and the resting elevation. Authored statically
+ * and consumed by both the host page (`import "@pantoken/demo/card.css"`) and the runner iframe (staged
+ * into demos-assets, injected via `?css=`). Dark mode uses the secondary surface via a nested light-dark().
+ */
+.instui-card {
+  display: block;
+  padding: var(--instui-spacing-space-md);
+  margin: var(--instui-spacing-space-sm);
+  color: var(--instui-color-text-base);
+  border-radius: var(--instui-border-radius-lg);
+  box-shadow: var(--instui-elevation-resting);
+  background: light-dark(
+    var(--instui-component-view-background-primary),
+    var(--instui-component-view-background-secondary)
+  );
+}

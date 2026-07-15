@@ -5,8 +5,10 @@
  * `@cssdoc/markdown` and is driven here through `@cssdoc/typedoc`'s `emitCssApi` — the same plugin the
  * rest of the ecosystem uses, dogfooded before it's published. All that stays pantoken-specific is the
  * token resolution: `resolveToken` cross-references the `--instui-*` IR (type + light/dark value) and
- * `resolveDemo` picks each record's live demo. `emitCssApi` writes `docs/api/css/**` and merges a "CSS"
- * section into the TypeDoc sidebar, so the CSS pages ride along in the same nav.
+ * `resolveSource` links each record to its source. `emitCssApi` writes `docs/api/css/**` and merges a
+ * "CSS" section into the TypeDoc sidebar, so the CSS pages ride along in the same nav. The in-page live
+ * `@example` previews are seamed on at compile time by `demoMarkdownIt` (see `.vitepress/config.ts`),
+ * not here — the generated `.md` stays a plain source fence.
  *
  * Runs after `docs:api:en` (TypeDoc cleans `docs/api` and writes `typedoc-sidebar.json`, which this
  * merges into) and before `docs:api:locales`/vitepress.
@@ -16,7 +18,6 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
-import { injectLiveExamples } from "@pantoken/typedoc-plugin-live-example";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
@@ -214,13 +215,9 @@ const build = (): void => {
     importSnippet,
   });
 
-  // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads the
-  // component CSS). Our docs do, so seam a live preview onto each fence: a bordered, page-background frame
-  // (`.css-example`, styled in the VitePress theme) holding the example inside the same elevated
-  // `.instui-card` the /demos use (from demos-assets/demo-overrides.css, loaded globally by config.ts).
-  injectLiveExamples(join(docsRoot, "api", outSubdir), {
-    wrap: (html) => `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
-  });
+  // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads
+  // the component CSS). Our docs do, so `demoMarkdownIt` seams a live preview onto each fence at compile
+  // time (see `.vitepress/config.ts`); the generated `.md` here stays a plain source fence.
 
   // Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure).
   const missing = unknownReferences(css, tokens).filter(

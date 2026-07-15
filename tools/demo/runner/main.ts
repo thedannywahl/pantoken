@@ -1,21 +1,9 @@
-import { EditorView, basicSetup } from "codemirror";
+import { EditorView, minimalSetup } from "codemirror";
 import { Compartment, EditorState, type Extension } from "@codemirror/state";
 import DOMPurify from "dompurify";
 import "./runner.css";
 
 type PartKey = "html" | "css" | "js";
-
-// Lucide glyphs from the pantoken icon set, inlined so we don't bundle all 1,777.
-const ICON = {
-  split:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18"/></svg>',
-  square:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>',
-  reset:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>',
-  chevron:
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
-};
 
 // Language modes and the dark editor theme are code-split: each becomes its own chunk, loaded only
 // when a demo actually uses that language (or when dark mode is active).
@@ -28,21 +16,8 @@ let oneDarkPromise: Promise<Extension> | undefined;
 const loadOneDark = (): Promise<Extension> =>
   (oneDarkPromise ??= import("@codemirror/theme-one-dark").then((m) => m.oneDark));
 
-interface DemoTheme {
-  name: string;
-  label: string;
-  css: string;
-}
-
 const params = new URLSearchParams(location.search);
 const cssUrls = (params.get("css") ?? "").split(",").filter(Boolean);
-const themes: DemoTheme[] = (() => {
-  try {
-    return JSON.parse(decodeURIComponent(params.get("themes") ?? "[]")) as DemoTheme[];
-  } catch {
-    return [];
-  }
-})();
 const srcUrl = params.get("src");
 const mount = document.getElementById("runner");
 
@@ -87,16 +62,19 @@ async function main(): Promise<void> {
     document.head.appendChild(link);
   }
 
-  // The toolbar always stays on the default (first) theme; only the rendered result follows the
-  // switcher. So the outer doc's token sheet is fixed, and `themeCss` (used by render) is swappable.
-  const toolbarThemeCss = themes[0]?.css ?? "";
-  let themeCss = themes[0]?.css ?? "";
-  if (toolbarThemeCss) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = toolbarThemeCss;
-    document.head.appendChild(link);
-  }
+  // The whole demo (toolbar chrome + rendered result) follows the site's theme, chosen by the palette
+  // selector in the docs header and pushed here via `pantoken-demo-theme`. The one multi-theme token
+  // sheet (in cssUrls) covers every theme, so switching is just toggling the `data-pantoken-theme`
+  // attribute — on this chrome document, and on the result's `<html>` (stamped in render). Starts on the
+  // default until the host replies to our request below.
+  let currentTheme = "rebrand";
+  document.documentElement.dataset.pantokenTheme = currentTheme;
+  const setTheme = (name: string): void => {
+    if (name === currentTheme) return;
+    currentTheme = name;
+    document.documentElement.dataset.pantokenTheme = name;
+    render();
+  };
 
   let sourceText: string;
   try {
@@ -128,18 +106,9 @@ async function main(): Promise<void> {
   mount.innerHTML = `
     <div class="runner runner--show-result">
       <div class="runner__bar">
-        <div class="instui-button-group" role="tablist"></div>
-        <span class="runner__spacer"></span>
-        <div class="runner__theme"${themes.length ? "" : " hidden"}>
-          <button class="instui-button -color-secondary -size-small -icon-chevron" data-role="theme-trigger" type="button" aria-haspopup="true" aria-expanded="false">
-            <span data-role="theme-label"></span>
-          </button>
-          <div class="instui-menu runner__theme-menu" data-role="theme-menu" role="menu" hidden></div>
-        </div>
-        <button class="instui-button -toggle -size-sm -icon-split" data-role="split" type="button" aria-pressed="false" data-tooltip="Split" aria-label="Split">
-        </button>
-        <button class="instui-button -color-secondary -size-sm -icon-reset" data-role="reset" type="button" data-tooltip="Reset" aria-label="Reset" disabled>
-        </button>
+        <fieldset class="instui-radio-input-group -variant-toggle">
+          <legend class="instui-screen-reader-content">View</legend>
+        </fieldset>
       </div>
       <div class="runner__body">
         <div class="runner__code"></div>
@@ -147,28 +116,13 @@ async function main(): Promise<void> {
       </div>
     </div>`;
   const runner = mount.querySelector(".runner") as HTMLElement;
-  const tablist = mount.querySelector(".instui-button-group") as HTMLElement;
+  const bar = mount.querySelector(".runner__bar") as HTMLElement;
+  const tablist = mount.querySelector(".instui-radio-input-group") as HTMLElement;
   const codeArea = mount.querySelector(".runner__code") as HTMLElement;
   const resultFrame = mount.querySelector(".runner__result") as HTMLIFrameElement;
-  const splitButton = mount.querySelector('[data-role="split"]') as HTMLButtonElement;
-  const resetButton = mount.querySelector('[data-role="reset"]') as HTMLButtonElement;
 
   const themeSlot = new Compartment();
   const editors = new Map<PartKey, EditorView>();
-  let renderTimer: ReturnType<typeof setTimeout> | undefined;
-  const scheduleRender = (): void => {
-    clearTimeout(renderTimer);
-    renderTimer = setTimeout(render, 250);
-  };
-
-  // Reset is only useful once an editor drifts from its original snippet, so gate it on that.
-  const isDirty = (): boolean =>
-    parts.some(
-      (key) => (editors.get(key)?.state.doc.toString() ?? original[key]) !== original[key],
-    );
-  const updateResetState = (): void => {
-    resetButton.disabled = !isDirty();
-  };
 
   const darkTheme = effectiveDark() ? await loadOneDark() : [];
   for (const key of parts) {
@@ -181,16 +135,16 @@ async function main(): Promise<void> {
         parent: holder,
         state: EditorState.create({
           doc: original[key],
+          // A read-only source viewer: `minimalSetup` gives syntax highlighting without a line-number
+          // gutter, and readOnly + non-editable + line wrapping present the snippet like the example's
+          // code fence — read, don't edit.
           extensions: [
-            basicSetup,
+            minimalSetup,
+            EditorView.editable.of(false),
+            EditorState.readOnly.of(true),
+            EditorView.lineWrapping,
             await langLoaders[key](),
             themeSlot.of(darkTheme),
-            EditorView.updateListener.of((update) => {
-              if (update.docChanged) {
-                scheduleRender();
-                updateResetState();
-              }
-            }),
           ],
         }),
       }),
@@ -204,10 +158,7 @@ async function main(): Promise<void> {
     const scheme = schemeName();
     // The chrome stays on the inherited (page) scheme; only the rendered result follows the toggle.
     document.documentElement.style.colorScheme = isDark() ? "dark" : "light";
-    const links = [...cssUrls, themeCss]
-      .filter(Boolean)
-      .map((href) => `<link rel="stylesheet" href="${href}">`)
-      .join("");
+    const links = cssUrls.map((href) => `<link rel="stylesheet" href="${href}">`).join("");
     // The markup can be arbitrary (edited live, or a shared ?src= URL), so sanitize it — strip
     // scripts and event handlers, keep HTML + SVG. The demo's own JS runs from the JS tab below.
     const safeHtml = DOMPurify.sanitize(contentOf("html"), {
@@ -216,10 +167,18 @@ async function main(): Promise<void> {
     // A comfortable result gutter (base.css resets body margin to 0). Declared before the demo's own
     // <style> so a demo can override it, and with a plain `body` selector so it beats base's :where().
     const gutter = `<style>body{padding:var(--instui-spacing-space-md, 1rem)}</style>`;
+    // Report the rendered content's height to the runner (its parent) so the runner can size itself —
+    // and, in turn, the embedding demo figure — to the demo instead of a fixed box. Fires on load and
+    // whenever the content reflows (fonts, images, the demo's own JS).
+    //
+    // Measure the BODY box, not <html>: an iframe's <html> stretches to fill the frame's viewport, so
+    // `documentElement.scrollHeight` reports the frame height, not the content — a feedback loop that
+    // never shrinks to the demo. The body hugs its own content, so it's the true height to report.
+    const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}r();})()</script>`;
     resultFrame.srcdoc =
-      `<!doctype html><html style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
+      `<!doctype html><html data-pantoken-theme="${currentTheme}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
       `<style>${contentOf("css")}</style></head><body class="pantoken-prose">${safeHtml}` +
-      `<script>${contentOf("js")}</script></body></html>`;
+      `<script>${contentOf("js")}</script>${sizeReporter}</body></html>`;
   }
 
   // Swap the editors' theme (and re-render the result) when the embedding page toggles light/dark.
@@ -236,8 +195,8 @@ async function main(): Promise<void> {
     }
   };
   const select = (name: string): void => {
-    for (const tab of tablist.querySelectorAll<HTMLElement>(".instui-button")) {
-      tab.setAttribute("aria-pressed", String(tab.dataset.tab === name));
+    for (const input of tablist.querySelectorAll<HTMLInputElement>('input[type="radio"]')) {
+      input.checked = input.value === name;
     }
     if (name === "result") {
       runner.classList.add("runner--show-result");
@@ -246,99 +205,86 @@ async function main(): Promise<void> {
       activeCode = name as PartKey;
       showEditor(activeCode);
     }
+    // Re-size the figure for the new view (a code tab adds the editor's height above the result). Run
+    // now (so the pane cap + frame update immediately) and again next frame, once the just-shown editor
+    // has laid out and its scrollHeight is accurate.
+    reportSize();
+    requestAnimationFrame(reportSize);
   };
 
-  const addTab = (name: string, label: string): HTMLButtonElement => {
-    const tab = document.createElement("button");
-    tab.className = "instui-button -toggle -sm";
-    tab.type = "button";
-    tab.textContent = label;
-    tab.dataset.tab = name;
-    tab.setAttribute("role", "tab");
-    tab.addEventListener("click", () => select(name));
-    tablist.appendChild(tab);
-    return tab;
+  // Ask the embedding demo figure to size to this runner — the toolbar plus the rendered demo's own
+  // height (reported by the result frame below). The figure clamps to its own min/max-height, so a
+  // short demo gets a compact player and a tall one scrolls. A standalone tab has no parent to size, so
+  // skip the report there.
+  let resultContentHeight = 0;
+  const reportSize = (): void => {
+    if (window.parent === window) return;
+    // Cap each split pane at half the space below the toolbar so the whole player stays within 30rem.
+    // The CSS uses this for both panes' max-height (they scroll past it); set it every time so it tracks
+    // the toolbar height.
+    const remPx = Number.parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const paneMax = Math.max(0, Math.floor((30 * remPx - bar.offsetHeight) / 2));
+    runner.style.setProperty("--runner-pane-max", `${paneMax}px`);
+    const rb = getComputedStyle(resultFrame);
+    const resultBorders =
+      (Number.parseFloat(rb.borderTopWidth) || 0) + (Number.parseFloat(rb.borderBottomWidth) || 0);
+    // The height that shows the whole demo (content plus the result frame's own top/bottom borders).
+    const resultFull = resultContentHeight + resultBorders;
+    // Result view: the demo fills the player. Split view: stack the (capped) code above the (capped)
+    // result — CSS gives each pane its own scrollbar, so no iframe-height juggling (which would loop
+    // against the result reporter) is needed here.
+    const bodyHeight = runner.classList.contains("runner--show-result")
+      ? resultFull
+      : Math.min(codeArea.scrollHeight, paneMax) + Math.min(resultFull, paneMax);
+    window.parent.postMessage(
+      { type: "pantoken-demo-size", height: bar.offsetHeight + bodyHeight },
+      "*",
+    );
   };
-  const resultTab = addTab("result", "Result");
+
+  const addTab = (name: string, label: string): void => {
+    // A segmented radio: one label per view, single-select via the shared name — the checked radio is
+    // the active tab.
+    const wrapper = document.createElement("label");
+    wrapper.className = "instui-radio -variant-toggle -size-sm";
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = "runner-view";
+    input.value = name;
+    input.addEventListener("change", () => {
+      if (input.checked) select(name);
+    });
+    wrapper.append(input, document.createTextNode(` ${label}`));
+    tablist.appendChild(wrapper);
+  };
+  addTab("result", "Result");
   for (const key of parts) addTab(key, labels[key]);
-
-  const splitIcon = splitButton.querySelector(".runner__icon") as HTMLElement | null;
-  splitButton.addEventListener("click", () => {
-    const split = runner.classList.toggle("runner--split");
-    splitButton.setAttribute("aria-pressed", String(split));
-    // In split view the two panes show together, so the control now collapses back to a single view:
-    // swap in the square glyph and relabel it.
-    if (splitIcon) splitIcon.innerHTML = split ? ICON.square : ICON.split;
-    const label = split ? "Single view" : "Split";
-    splitButton.setAttribute("data-tooltip", label);
-    splitButton.setAttribute("aria-label", label);
-    // In split view the code and result show together, so the Result tab is a no-op — disable it.
-    resultTab.disabled = split;
-    if (split && activeCode) select(activeCode);
-    else if (!split) select("result");
-  });
-
-  resetButton.addEventListener("click", () => {
-    for (const key of parts) {
-      const view = editors.get(key);
-      if (view)
-        view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: original[key] } });
-    }
-    render();
-    updateResetState();
-  });
-
-  const themeTrigger = mount.querySelector<HTMLButtonElement>('[data-role="theme-trigger"]');
-  const themeMenu = mount.querySelector<HTMLElement>('[data-role="theme-menu"]');
-  const themeLabel = mount.querySelector<HTMLElement>('[data-role="theme-label"]');
-  if (themeTrigger && themeMenu && themeLabel && themes.length) {
-    const closeMenu = (): void => {
-      themeMenu.hidden = true;
-      themeTrigger.setAttribute("aria-expanded", "false");
-    };
-    themeLabel.textContent = themes[0].label;
-    for (const theme of themes) {
-      const item = document.createElement("button");
-      item.className = "item";
-      item.type = "button";
-      item.setAttribute("role", "menuitem");
-      item.textContent = theme.label;
-      item.addEventListener("click", () => {
-        themeCss = theme.css;
-        themeLabel.textContent = theme.label;
-        closeMenu();
-        render();
-      });
-      themeMenu.appendChild(item);
-    }
-    themeTrigger.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const open = themeMenu.hidden;
-      themeMenu.hidden = !open;
-      themeTrigger.setAttribute("aria-expanded", String(open));
-    });
-    document.addEventListener("click", (event) => {
-      if (
-        !themeMenu.hidden &&
-        !(event.target instanceof Node && themeMenu.contains(event.target))
-      ) {
-        closeMenu();
-      }
-    });
-  }
 
   showEditor(activeCode);
   select("result");
   render();
 
-  // The host's light/dark toggle (in the demo figure bar) posts here to flip this demo's scheme,
-  // overriding the inherited one until the reader toggles back.
+  // The docs header drives this runner: `pantoken-demo-theme` picks the token theme (rebrand/canvas/…)
+  // and the demo-figure light/dark toggle posts `pantoken-demo-scheme` to flip the scheme.
   window.addEventListener("message", (event) => {
-    if ((event.data as { type?: string } | null)?.type === "pantoken-demo-scheme") {
+    const data = event.data as { type?: string; height?: number; theme?: string } | null;
+    if (data?.type === "pantoken-demo-scheme") {
       schemeOverride = effectiveDark() ? "light" : "dark";
       void applyTheme();
+    } else if (data?.type === "pantoken-demo-theme" && typeof data.theme === "string") {
+      setTheme(data.theme);
+    } else if (data?.type === "pantoken-demo-result-size" && typeof data.height === "number") {
+      // Keep the last non-zero height: a hidden result frame (code view) can report 0, and we don't
+      // want the figure to collapse when the reader is just editing.
+      if (data.height > 0) resultContentHeight = data.height;
+      reportSize();
     }
   });
+
+  // Ask the host which theme to render; it replies with `pantoken-demo-theme`.
+  if (window.parent && window.parent !== window) {
+    window.parent.postMessage({ type: "pantoken-demo-request-theme" }, "*");
+  }
 
   try {
     if (window.parent && window.parent !== window) {

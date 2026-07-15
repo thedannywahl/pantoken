@@ -8,7 +8,7 @@
     "generate": "vp run -r build",
     "validate:generated": "vp run generate && vp run validate:generated:only",
     "validate:generated:only": "vp run @pantoken/validate-generated#validate",
-    "docs:dev": "vp run @pantoken/docs#docs:dev",
+    "docs:dev": "vp run @pantoken/demo#build && vp run @pantoken/docs#docs:dev",
     "docs:build": "vp run @pantoken/docs#docs:build",
     "docs:preview": "vp run @pantoken/docs#docs:preview",
     "docs:api": "vp run @pantoken/docs#docs:api",

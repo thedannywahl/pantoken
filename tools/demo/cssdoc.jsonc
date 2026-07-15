@@ -1,0 +1,5 @@
+{
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "extends": ["../../cssdoc.jsonc"],
+  "modifierConvention": "bem",
+}

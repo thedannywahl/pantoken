@@ -162,15 +162,21 @@ export default defineConfig({
   base,
   title: "pantoken",
   description: "Instructure design tokens and icons, reshaped for every platform and framework.",
-  // The focus-outline ring lives in a plugin, not the source tokens, so layer its generated sheet
-  // (staged by scripts/demos.ts) over the site's @pantoken/css token sheet.
+  // The focus-outline ring and the transition/stacking/visual-debug classes live in plugins, not the
+  // source tokens, so layer their generated sheets (staged once by scripts/demos.ts) over the site's
+  // token sheet. `.instui-card` (the shared example/demo surface) is bundled via the theme instead.
   head: [
+    // Apply the stored pantoken theme before first paint (no flash). The palette selector in the nav
+    // writes `pantoken-theme`; non-rebrand themes have no light/dark, so drop `.dark` for them.
+    [
+      "script",
+      {},
+      `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
+    ],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/transition.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],
-    // `.instui-card` — the surface the /demos and the CSS-API live examples share (see build-css-api.ts).
-    ["link", { rel: "stylesheet", href: `${base}demos-assets/demo-overrides.css` }],
   ],
   locales: localesConfig,
   cleanUrls: true,
@@ -194,6 +200,9 @@ export default defineConfig({
       md.use(mermaidPlugin);
       md.use(demoMarkdownIt, {
         base,
+        // Everything the runner injects, all served static files: the component sheets, the one
+        // multi-theme token sheet (themed by the `data-pantoken-theme` attribute), the plugin sheets,
+        // and the shared `.instui-card` surface.
         cssUrls: [
           `${base}demos-assets/base.css`,
           `${base}demos-assets/components.css`,
@@ -201,17 +210,24 @@ export default defineConfig({
           `${base}demos-assets/icons.css`,
           `${base}demos-assets/utilities.css`,
           `${base}demos-assets/select.css`,
-          `${base}demos-assets/demo-overrides.css`,
+          `${base}demos-assets/site-themes.css`,
+          `${base}demos-assets/focus-outline.css`,
+          `${base}demos-assets/transition.css`,
+          `${base}demos-assets/stacking.css`,
+          `${base}demos-assets/visual-debug.css`,
+          `${base}demos-assets/card.css`,
         ],
-        themes: [
-          { name: "rebrand", label: "Rebrand", css: `${base}demos-assets/tokens-rebrand.css` },
-          { name: "canvas", label: "Canvas", css: `${base}demos-assets/tokens-canvas.css` },
-          {
-            name: "canvasHighContrast",
-            label: "Canvas high contrast",
-            css: `${base}demos-assets/tokens-canvasHighContrast.css`,
-          },
-        ],
+        // Seam a live preview onto each `@example` HTML fence at compile time: the same markup inside
+        // the shared `.instui-card`, wrapped in `.css-example` (styled by the theme). One mechanism for
+        // both surfaces that carry live HTML examples — the CSS-API class pages (`api/css/`) and the
+        // web-components variable pages (`api/renderers/web-components/src/variables/`) — plus the cloned
+        // locale pages (`hu/…`). Overlay examples (`<dialog>`, `[popover]`) are skipped inside the plugin.
+        liveExample: {
+          match: (relativePath: string) =>
+            /(^|\/)api\/(css|renderers\/web-components\/src\/variables)\//.test(relativePath),
+          wrap: (html: string) =>
+            `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
+        },
       });
     },
   },
