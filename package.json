@@ -28,13 +28,13 @@
     "markdownlint-cli2": "catalog:",
     "publint": "catalog:",
     "stylelint": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.2",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.9.0",
+      "version": "11.13.0",
       "onFail": "download"
     }
   },
