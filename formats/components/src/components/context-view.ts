@@ -16,6 +16,8 @@ export const contextView = defineComponent({
  * @modifier -placement-bottom — Sit below the anchor.
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
+ * @pseudo ::before — Renders the caret's outer border triangle.
+ * @pseudo ::after — Renders the caret's inner fill triangle.
  * @cssstate open
  * @compat Uses CSS anchor positioning (\`position-anchor\`, \`position-area\`, \`position-try-fallbacks\`) and the native \`[popover]\` API behind an \`@supports\` guard; needs a recent Chromium or Safari, and falls back to a UA-centred popover elsewhere.
  * @example

@@ -40,6 +40,7 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
  * @modifier -meter-color-alert — @deprecated {@link -color-warning}
  * @modifier -meter-color-danger — @deprecated {@link -color-danger}
  * @part .value — The value text centred in the ring's hole.
+ * @pseudo ::before — Draws the ring itself: a conic-gradient donut clipped with a radial mask, whose arc tracks the \`--value\` custom property.
  * @cssproperty --value <number> — The progress percentage (0–100) that drives the arc; registered with @property so it can transition.
  * @cssproperty --pantoken-pc-fill <color> — The filled arc (meter) colour; the -color-* modifiers set it.
  * @cssproperty --pantoken-pc-track <color> — The unfilled track colour.

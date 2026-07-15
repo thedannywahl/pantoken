@@ -15,6 +15,7 @@ export const toggleDetails = defineComponent({
  * @modifier -chevron-end — Place the chevron after the summary.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @pseudo ::before — Draws the summary's disclosure chevron, a masked glyph that rotates to point down when the disclosure is open.
  * @cssstate open
  * @example
  * <details class="instui-toggle-details" open>

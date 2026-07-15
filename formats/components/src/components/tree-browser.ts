@@ -16,6 +16,7 @@ export const treeBrowser = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A leaf entry in the tree.
+ * @pseudo ::before — Draws each collection's disclosure chevron, a masked glyph that rotates to point down when the branch is open.
  * @cssstate open
  * @a11y Mark the root with role="tree" and each nested list with role="group".
  * @example

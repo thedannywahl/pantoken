@@ -21,6 +21,8 @@ export const checkbox = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .asterisk — The required-field asterisk.
+ * @pseudo ::before — The masked tick or dash glyph centered in the box; on \`-variant-toggle\` it becomes the sliding handle instead.
+ * @pseudo ::after — On \`-variant-toggle\`, the state glyph riding the handle: an X when off, a check when on.
  * @cssproperty --pantoken-cb-glyph <url> — The box's mask glyph: a tick when checked, a dash when indeterminate.
  * @cssproperty --pantoken-toggle-h <length> — The toggle switch height.
  * @cssproperty --pantoken-toggle-w <length> — The toggle track width.

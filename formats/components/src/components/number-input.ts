@@ -22,6 +22,8 @@ export const numberInput = defineComponent({
  * @modifier -size-lg — Large.
  * @part .arrows — The +/- spinner column at the inline-end.
  * @part .down — The decrement button; the unclassed button increments.
+ * @pseudo ::before — The masked chevron glyph on each spinner button: up to increment, down on \`.down\`.
+ * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
  * @accessibility Put the accessible name on the \`<input>\` (e.g. \`aria-label\`) so the field owns the value; the +/- spinner buttons are decorative and marked \`aria-hidden="true"\`.
  * @example

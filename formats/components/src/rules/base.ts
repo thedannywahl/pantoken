@@ -10,6 +10,9 @@ export const base = defineRule({
  * @rule base
  * @class *
  * @summary The opt-in global reset: \`box-sizing\`, the page surface, base text colour and font, \`color-scheme\`, and link defaults.
+ * @pseudo ::before — Included in the universal \`box-sizing: border-box\` reset so its generated box sizes predictably.
+ * @pseudo ::after — Included in the universal \`box-sizing: border-box\` reset so its generated box sizes predictably.
+ * @pseudo ::selection — Tints highlighted text with a translucent primary navigation colour.
  * @example
  * <html>
  *   <body>

@@ -30,6 +30,8 @@ export const button = defineComponent({
  * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
  * @modifier -without-border — Remove the border.
  * @modifier -icon-* — Render a glyph from the icon set before the label (e.g. \`-icon-arrow-right\`), painted in the button's text colour; pair with \`-shape-square\`/\`-shape-circle\` for an icon-only button.
+ * @pseudo ::before — The AI glyph, added automatically to AI buttons and masked in the variant's own colour.
+ * @pseudo ::after — The AI-secondary gradient border ring, masked to just the button's frame.
  * @cssstate disabled
  * @cssstate pressed
  * @a11y Drive the \`-toggle\` variant's pressed state with \`aria-pressed\`, and mark a disabled button with \`aria-disabled\` (or the native \`disabled\`).

@@ -16,6 +16,7 @@ export const list = defineComponent({
  * @modifier -delimiter-dashed — Separate items with a dashed rule.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @pseudo ::marker — Renders the list bullet or ordered-list number.
  * @example
  * <ul class="instui-list">
  *   <li>First item</li>

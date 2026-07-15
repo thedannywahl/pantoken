@@ -20,6 +20,7 @@ export const radio = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -toggle — @deprecated {@link -variant-toggle}
+ * @pseudo ::before — The filled inner dot shown when checked; on \`-variant-toggle\` it is the focus ring drawn just outside the pill.
  * @cssproperty --pantoken-rt-fill <color> — The toggle's selected fill colour; the -context-* modifiers set it.
  * @cssstate checked
  * @cssstate disabled

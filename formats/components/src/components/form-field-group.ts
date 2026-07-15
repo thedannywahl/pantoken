@@ -26,6 +26,7 @@ export const formFieldGroup = defineComponent({
  * @modifier -v-align-top — Top-align the fields.
  * @modifier -v-align-middle — Middle-align the fields.
  * @modifier -v-align-bottom — Bottom-align the fields.
+ * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
  * @accessibility Renders a native \`<fieldset>\` with a \`<legend>\`, so the legend text names the whole group for assistive tech.
  * @compat The \`-layout-aligned\` mode uses CSS subgrid behind an \`@supports\` guard; where subgrid is unsupported, the fields fall back to their own stacked layout.
  * @example

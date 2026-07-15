@@ -17,6 +17,7 @@ export const textInput = defineComponent({
  * @modifier -success — Success (valid) state.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
  * @example
  * <input class="instui-text-input" placeholder="Default">

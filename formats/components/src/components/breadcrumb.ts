@@ -16,6 +16,7 @@ export const breadcrumb = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @part .item — A crumb; the last one is the current page.
+ * @pseudo ::after — Renders the \`/\` separator after every crumb except the last.
  * @a11y Wrap the trail in \`<nav aria-label>\` and mark the current page's crumb with \`aria-current="page"\`.
  * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example

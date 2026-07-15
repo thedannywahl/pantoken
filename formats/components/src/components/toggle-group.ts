@@ -15,6 +15,7 @@ export const toggleGroup = defineComponent({
  * @modifier -without-border — Remove the border.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @pseudo ::before — Draws the summary row's disclosure chevron, a masked glyph that rotates to point down when the group is open.
  * @cssstate open
  * @example
  * <details class="instui-toggle-group" open>

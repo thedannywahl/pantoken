@@ -17,6 +17,7 @@ export const inputGroup = defineComponent({
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -should-not-wrap — Keep the group on one line (no wrapping).
+ * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
  * @example
  * <span class="instui-input-group">

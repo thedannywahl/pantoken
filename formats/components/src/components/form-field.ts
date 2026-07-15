@@ -24,6 +24,7 @@ export const formField = defineComponent({
  * @modifier -v-align-bottom — Bottom-align the label with the controls.
  * @part .label — The field label.
  * @part .controls — The control area beside or below the label.
+ * @pseudo ::after — Renders the decorative required-field asterisk after the label text when the field is required.
  * @accessibility The \`<label>\` element wraps the control, so the label text names it natively; the required asterisk is decorative and should be hidden from assistive tech (aria-hidden), and the error message surfaces once the control is \`:user-invalid\` or you add the \`-invalid\` class.
  * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example

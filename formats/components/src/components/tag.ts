@@ -14,6 +14,7 @@ export const tag = defineComponent({
  * @modifier -size-lg — A large tag.
  * @modifier -inline — Reads inline with text and gets a trailing dismiss glyph.
  * @modifier -readonly — Read-only (non-dismissable) tag.
+ * @pseudo ::after — Renders the trailing dismiss glyph on a dismissible inline tag.
  * @example
  * <span class="instui-tag -size-sm">small</span>
  * @related pill — The read-only label-chip counterpart.

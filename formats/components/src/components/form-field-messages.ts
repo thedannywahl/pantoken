@@ -13,6 +13,7 @@ export const formFieldMessages = defineComponent({
  * @summary Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.
  * @modifier -type-new-error — @deprecated {@link -type-error}
  * @part .instui-form-field-message — An individual message; its \`-type-*\` picks the hint, error, success, or screen-reader-only variant.
+ * @pseudo ::before — Renders the leading status glyph on error and success messages: an alert circle for errors and a check circle for success.
  * @accessibility A \`-type-screenreader-only\` message is visually hidden but stays in the accessibility tree, so it's still announced; pair error and success messages with the field via aria-describedby so assistive tech reads them with the control.
  * @example
  * <div class="instui-form-field-messages">
