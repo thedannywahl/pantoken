@@ -76,13 +76,13 @@ catalog:
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.12.0
   typedoc-vitepress-theme: ^1.1.3
-  # @cssdoc/* toolchain — consumed from npm (published at 0.6.1). @cssdoc/markdown arrives transitively
+  # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.7.0
-  "@cssdoc/config": ^0.7.0
-  "@cssdoc/typedoc": ^0.7.0
-  "@cssdoc/stylelint-plugin": ^0.7.0
-  "@cssdoc/eslint-plugin": ^0.7.0
+  "@cssdoc/core": ^0.7.1
+  "@cssdoc/config": ^0.7.1
+  "@cssdoc/typedoc": ^0.7.1
+  "@cssdoc/stylelint-plugin": ^0.7.1
+  "@cssdoc/eslint-plugin": ^0.7.1
   # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
