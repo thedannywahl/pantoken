@@ -1,20 +1,22 @@
-import { EditorView, minimalSetup } from "codemirror";
-import { Compartment, EditorState, type Extension } from "@codemirror/state";
+import { createHighlighterCore, type HighlighterCore } from "shiki/core";
+import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
+import type { LanguageRegistration } from "@shikijs/types";
 import DOMPurify from "dompurify";
 import "./runner.css";
 
 type PartKey = "html" | "css" | "js";
 
-// Language modes and the dark editor theme are code-split: each becomes its own chunk, loaded only
-// when a demo actually uses that language (or when dark mode is active).
-const langLoaders: Record<PartKey, () => Promise<Extension>> = {
-  html: () => import("@codemirror/lang-html").then((m) => m.html()),
-  css: () => import("@codemirror/lang-css").then((m) => m.css()),
-  js: () => import("@codemirror/lang-javascript").then((m) => m.javascript()),
+// Highlight the read-only source with Shiki, using the same themes the docs' `@example` fences do
+// (VitePress's default `github-light` / `github-dark`), so a demo's code reads identically to the
+// examples beside it. The one JavaScript RegExp engine (no WASM) plus the two small theme JSONs keep
+// the runner light; each grammar is code-split and loaded only when a demo actually uses that language.
+const langLoaders: Record<PartKey, () => Promise<LanguageRegistration[]>> = {
+  html: () => import("@shikijs/langs/html").then((m) => m.default),
+  css: () => import("@shikijs/langs/css").then((m) => m.default),
+  js: () => import("@shikijs/langs/javascript").then((m) => m.default),
 };
-let oneDarkPromise: Promise<Extension> | undefined;
-const loadOneDark = (): Promise<Extension> =>
-  (oneDarkPromise ??= import("@codemirror/theme-one-dark").then((m) => m.oneDark));
+// Shiki's grammar id per part (JS's grammar is registered under "javascript").
+const langId: Record<PartKey, string> = { html: "html", css: "css", js: "javascript" };
 
 const params = new URLSearchParams(location.search);
 const cssUrls = (params.get("css") ?? "").split(",").filter(Boolean);
@@ -121,38 +123,43 @@ async function main(): Promise<void> {
   const codeArea = mount.querySelector(".runner__code") as HTMLElement;
   const resultFrame = mount.querySelector(".runner__result") as HTMLIFrameElement;
 
-  const themeSlot = new Compartment();
-  const editors = new Map<PartKey, EditorView>();
+  // One highlighter, loaded with both themes and only the grammars this demo uses. Shiki emits both
+  // themes' colors as `--shiki-light` / `--shiki-dark` CSS variables (`defaultColor: false`), so the
+  // code follows light/dark by toggling a class (see `applyEditorScheme`) — no re-highlight on toggle.
+  let highlighter: HighlighterCore | undefined;
+  if (parts.length) {
+    const [githubLight, githubDark] = await Promise.all([
+      import("@shikijs/themes/github-light").then((m) => m.default),
+      import("@shikijs/themes/github-dark").then((m) => m.default),
+    ]);
+    highlighter = await createHighlighterCore({
+      themes: [githubLight, githubDark],
+      langs: await Promise.all(parts.map((key) => langLoaders[key]())),
+      engine: createJavaScriptRegexEngine(),
+    });
+  }
 
-  const darkTheme = effectiveDark() ? await loadOneDark() : [];
+  const holders = new Map<PartKey, HTMLElement>();
   for (const key of parts) {
     const holder = document.createElement("div");
     holder.className = "runner__editor";
+    // A read-only source viewer: the highlighted snippet reads like the example's code fence — no
+    // gutter, no editing. Wrapping is handled in runner.css so long lines stay in the column.
+    holder.innerHTML =
+      highlighter?.codeToHtml(original[key], {
+        lang: langId[key],
+        themes: { light: "github-light", dark: "github-dark" },
+        defaultColor: false,
+      }) ?? "";
     codeArea.appendChild(holder);
-    editors.set(
-      key,
-      new EditorView({
-        parent: holder,
-        state: EditorState.create({
-          doc: original[key],
-          // A read-only source viewer: `minimalSetup` gives syntax highlighting without a line-number
-          // gutter, and readOnly + non-editable + line wrapping present the snippet like the example's
-          // code fence — read, don't edit.
-          extensions: [
-            minimalSetup,
-            EditorView.editable.of(false),
-            EditorState.readOnly.of(true),
-            EditorView.lineWrapping,
-            await langLoaders[key](),
-            themeSlot.of(darkTheme),
-          ],
-        }),
-      }),
-    );
+    holders.set(key, holder);
   }
 
-  const contentOf = (key: PartKey): string =>
-    editors.get(key)?.state.doc.toString() ?? original[key];
+  // The code follows the toggle's scheme (`effectiveDark`); flip the Shiki color variables via a class.
+  const applyEditorScheme = (): void => {
+    document.documentElement.classList.toggle("code-dark", effectiveDark());
+  };
+  applyEditorScheme();
 
   function render(): void {
     const scheme = schemeName();
@@ -161,7 +168,7 @@ async function main(): Promise<void> {
     const links = cssUrls.map((href) => `<link rel="stylesheet" href="${href}">`).join("");
     // The markup can be arbitrary (edited live, or a shared ?src= URL), so sanitize it — strip
     // scripts and event handlers, keep HTML + SVG. The demo's own JS runs from the JS tab below.
-    const safeHtml = DOMPurify.sanitize(contentOf("html"), {
+    const safeHtml = DOMPurify.sanitize(original.html, {
       USE_PROFILES: { html: true, svg: true, svgFilters: true },
     });
     // A comfortable result gutter (base.css resets body margin to 0). Declared before the demo's own
@@ -177,21 +184,20 @@ async function main(): Promise<void> {
     const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}r();})()</script>`;
     resultFrame.srcdoc =
       `<!doctype html><html data-pantoken-theme="${currentTheme}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
-      `<style>${contentOf("css")}</style></head><body class="pantoken-prose">${safeHtml}` +
-      `<script>${contentOf("js")}</script>${sizeReporter}</body></html>`;
+      `<style>${original.css}</style></head><body class="pantoken-prose">${safeHtml}` +
+      `<script>${original.js}</script>${sizeReporter}</body></html>`;
   }
 
-  // Swap the editors' theme (and re-render the result) when the embedding page toggles light/dark.
-  async function applyTheme(): Promise<void> {
-    const theme = effectiveDark() ? await loadOneDark() : [];
-    for (const view of editors.values()) view.dispatch({ effects: themeSlot.reconfigure(theme) });
+  // Swap the code's colors (and re-render the result) when the embedding page toggles light/dark.
+  function applyTheme(): void {
+    applyEditorScheme();
     render();
   }
 
   let activeCode: PartKey | null = parts[0] ?? null;
   const showEditor = (key: PartKey | null): void => {
-    for (const [editorKey, view] of editors) {
-      (view.dom.parentElement as HTMLElement).toggleAttribute("data-active", editorKey === key);
+    for (const [holderKey, holder] of holders) {
+      holder.toggleAttribute("data-active", holderKey === key);
     }
   };
   const select = (name: string): void => {
@@ -270,7 +276,7 @@ async function main(): Promise<void> {
     const data = event.data as { type?: string; height?: number; theme?: string } | null;
     if (data?.type === "pantoken-demo-scheme") {
       schemeOverride = effectiveDark() ? "light" : "dark";
-      void applyTheme();
+      applyTheme();
     } else if (data?.type === "pantoken-demo-theme" && typeof data.theme === "string") {
       setTheme(data.theme);
     } else if (data?.type === "pantoken-demo-result-size" && typeof data.height === "number") {
@@ -288,13 +294,10 @@ async function main(): Promise<void> {
 
   try {
     if (window.parent && window.parent !== window) {
-      new MutationObserver(() => void applyTheme()).observe(
-        window.parent.document.documentElement,
-        {
-          attributes: true,
-          attributeFilter: ["class"],
-        },
-      );
+      new MutationObserver(() => applyTheme()).observe(window.parent.document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
     }
   } catch {
     // Cross-origin — no live theme sync.

@@ -125,13 +125,32 @@ body {
   max-height: none;
 }
 
-/* The read-only source sizes to its content (no scroll); line wrapping keeps it in the column. */
-.cm-editor {
-  height: auto;
+/* The read-only source (a Shiki `<pre class="shiki">`) sizes to its content; wrapping keeps long
+   lines in the column instead of scrolling horizontally. */
+.runner__editor .shiki {
+  margin: 0;
+  padding: var(--instui-spacing-space-sm, 0.75rem);
+  font-family: var(--instui-font-family-code, ui-monospace, monospace);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  tab-size: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background-color: var(--shiki-light-bg);
 }
 
-.cm-editor.cm-focused {
-  outline: none;
+.runner__editor .shiki,
+.runner__editor .shiki span {
+  color: var(--shiki-light);
+}
+
+.code-dark .runner__editor .shiki {
+  background-color: var(--shiki-dark-bg);
+}
+
+.code-dark .runner__editor .shiki,
+.code-dark .runner__editor .shiki span {
+  color: var(--shiki-dark);
 }
 
 #runner-error {
