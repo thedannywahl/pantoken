@@ -6,7 +6,9 @@ export default defineConfig({
     // stylelint owns real .css (web-component shadow styles); vp check no-ops on them.
     "*.css": "vp exec stylelint --fix",
   },
-  fmt: {},
+  fmt: {
+    overrides: [{ files: ["**/*.jsonc"], options: { trailingComma: "none" } }],
+  },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },

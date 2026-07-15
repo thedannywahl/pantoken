@@ -22,9 +22,9 @@
       "tokensConsumed",
       "compat",
       "related",
-      "see",
+      "see"
     ],
     "headingPrefix": "CSS:",
-    "structureView": "both",
-  },
+    "structureView": "both"
+  }
 }
