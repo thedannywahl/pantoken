@@ -48,6 +48,47 @@ function fail(message: string): void {
   if (box) box.textContent = message;
 }
 
+/** Copy `text` to the clipboard, falling back to a hidden textarea + `execCommand` where the async API
+ * is unavailable (e.g. an insecure context). */
+async function copyToClipboard(text: string): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return;
+  } catch {
+    // Fall through to the legacy path below.
+  }
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.setAttribute("readonly", "");
+  area.style.position = "absolute";
+  area.style.left = "-9999px";
+  document.body.appendChild(area);
+  area.select();
+  document.execCommand("copy");
+  document.body.removeChild(area);
+}
+
+/** A hover-to-reveal copy button holding its own source `text`; toggles `.copied` for ~2s on success. */
+function createCopyButton(text: string): HTMLButtonElement {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "copy";
+  button.title = "Copy code";
+  button.setAttribute("aria-label", "Copy code");
+  let resetTimer: ReturnType<typeof setTimeout> | undefined;
+  button.addEventListener("click", () => {
+    void copyToClipboard(text).then(() => {
+      button.classList.add("copied");
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => {
+        button.classList.remove("copied");
+        button.blur();
+      }, 2000);
+    });
+  });
+  return button;
+}
+
 async function main(): Promise<void> {
   if (!mount) return;
   if (!srcUrl) {
@@ -151,6 +192,10 @@ async function main(): Promise<void> {
         themes: { light: "github-light", dark: "github-dark" },
         defaultColor: false,
       }) ?? "";
+    // A hover-to-reveal copy button, matching the docs' `@example` code fences. We hold the raw source,
+    // so copy it directly (no DOM scraping); the `.copied` class swaps the icon and shows the label for
+    // ~2s. Styling and positioning live in runner.css.
+    holder.appendChild(createCopyButton(original[key]));
     codeArea.appendChild(holder);
     holders.set(key, holder);
   }
