@@ -18,12 +18,12 @@ export const toggleGroup = defineComponent({
  * @pseudo ::before — Draws the summary row's disclosure chevron, a masked glyph that rotates to point down when the group is open.
  * @cssstate open
  * @example
- * <details class="instui-toggle-group" open>
+ * <details class="${p}toggle-group" open>
  *   <summary>Advanced settings</summary>
  *   <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
  * </details>
  * @structure
- * .instui-toggle-group {
+ * .${p}toggle-group {
  *   summary {}
  *   div {}
  * }

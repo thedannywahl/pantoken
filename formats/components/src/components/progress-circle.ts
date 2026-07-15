@@ -48,7 +48,7 @@ ${root}.-color-primary-inverse.-color-${mod} { --pantoken-pc-fill: var(--instui-
  * @a11y Give it role="img" and an aria-label stating the percentage, since the ring is drawn in CSS.
  * @compat Registers \`--value\` with \`@property\` (so the arc can transition) and paints with CSS \`mask\` and \`conic-gradient\`; where \`@property\` is unsupported the ring still renders but won't animate.
  * @example
- * <span class="instui-progress-circle -size-sm" role="img" aria-label="25 percent">
+ * <span class="${p}progress-circle -size-sm" role="img" aria-label="25 percent">
  *   <span class="value">25%</span>
  * </span>
  * @related progress — The linear bar form of the same determinate progress.

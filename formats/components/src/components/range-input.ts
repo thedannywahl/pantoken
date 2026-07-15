@@ -26,7 +26,7 @@ export const rangeInput = defineComponent({
  * @pseudo ::before — Draws the value bubble's caret, a small triangle pointing back toward the track.
  * @accessibility The control is a native \`<input type="range">\`; give it an accessible name with \`aria-label\` or an associated \`<label>\`.
  * @example
- * <input class="instui-range-input" id="r1" type="range" value="30">
+ * <input class="${p}range-input" id="r1" type="range" value="30">
  * @related number-input — The typed numeric-entry counterpart.
  */
 .${p}range-input {

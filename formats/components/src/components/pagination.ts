@@ -20,21 +20,21 @@ export const pagination = defineComponent({
  * @cssstate disabled
  * @a11y Label the \`<nav>\` with aria-label, mark the current page with aria-current="page", give each arrow an aria-label, and disable end arrows with disabled or aria-disabled="true".
  * @example
- * <nav class="instui-pagination" aria-label="Pagination">
- *   <button class="arrow" type="button" aria-label="First page" disabled><span class="instui-icon -icon-chevrons-left"></span></button>
- *   <button class="arrow" type="button" aria-label="Previous page" disabled><span class="instui-icon -icon-chevron-left"></span></button>
+ * <nav class="${p}pagination" aria-label="Pagination">
+ *   <button class="arrow" type="button" aria-label="First page" disabled><span class="${p}icon -icon-chevrons-left"></span></button>
+ *   <button class="arrow" type="button" aria-label="Previous page" disabled><span class="${p}icon -icon-chevron-left"></span></button>
  *   <a class="page" href="#" aria-current="page">1</a>
  *   <a class="page" href="#">2</a>
  *   <a class="page" href="#">3</a>
  *   <span class="ellipsis">…</span>
  *   <a class="page" href="#">12</a>
- *   <a class="arrow" href="#" aria-label="Next page"><span class="instui-icon -icon-chevron-right"></span></a>
- *   <a class="arrow" href="#" aria-label="Last page"><span class="instui-icon -icon-chevrons-right"></span></a>
+ *   <a class="arrow" href="#" aria-label="Next page"><span class="${p}icon -icon-chevron-right"></span></a>
+ *   <a class="arrow" href="#" aria-label="Last page"><span class="${p}icon -icon-chevrons-right"></span></a>
  * </nav>
  * @structure
- * .instui-pagination {
+ * .${p}pagination {
  *   .arrow {
- *     .instui-icon {}
+ *     .${p}icon {}
  *   }
  *   .page {}
  *   .ellipsis {}

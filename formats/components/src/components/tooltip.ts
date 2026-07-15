@@ -15,13 +15,13 @@ export const tooltip = defineComponent({
  * @part .tip — The bubble; \`-placement-*\` sets its side.
  * @a11y Point the trigger at the bubble with aria-describedby and give the bubble role="tooltip".
  * @example
- * <span class="instui-tooltip" aria-describedby="tt-1">
- *   <span class="instui-icon -icon-info"></span>
+ * <span class="${p}tooltip" aria-describedby="tt-1">
+ *   <span class="${p}icon -icon-info"></span>
  *   <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
  * </span>
  * @structure
- * .instui-tooltip {
- *   .instui-icon {}
+ * .${p}tooltip {
+ *   .${p}icon {}
  *   .tip {}
  * }
  * @related popover — The larger, click-triggered anchored surface.

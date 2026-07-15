@@ -20,42 +20,42 @@ export const treeBrowser = defineComponent({
  * @cssstate open
  * @a11y Mark the root with role="tree" and each nested list with role="group".
  * @example
- * <div class="instui-tree-browser" role="tree">
+ * <div class="${p}tree-browser" role="tree">
  *   <details open>
- *     <summary><span class="instui-icon -icon-folder"></span> Course files</summary>
+ *     <summary><span class="${p}icon -icon-folder"></span> Course files</summary>
  *     <ul role="group">
  *       <li>
- *         <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Syllabus.pdf</a>
+ *         <a class="item" href="#"><span class="${p}icon -icon-file-text"></span> Syllabus.pdf</a>
  *       </li>
  *       <li>
  *         <details>
- *           <summary><span class="instui-icon -icon-folder"></span> Week 1</summary>
+ *           <summary><span class="${p}icon -icon-folder"></span> Week 1</summary>
  *           <ul role="group">
  *             <li>
- *               <a class="item -selected" href="#"><span class="instui-icon -icon-file-text"></span> Reading.pdf</a>
+ *               <a class="item -selected" href="#"><span class="${p}icon -icon-file-text"></span> Reading.pdf</a>
  *             </li>
  *             <li>
- *               <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Slides.pptx</a>
+ *               <a class="item" href="#"><span class="${p}icon -icon-file-text"></span> Slides.pptx</a>
  *             </li>
  *           </ul>
  *         </details>
  *       </li>
  *       <li>
- *         <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Rubric.docx</a>
+ *         <a class="item" href="#"><span class="${p}icon -icon-file-text"></span> Rubric.docx</a>
  *       </li>
  *     </ul>
  *   </details>
  * </div>
  * @structure
- * .instui-tree-browser {
+ * .${p}tree-browser {
  *   details {
  *     summary {
- *       .instui-icon {}
+ *       .${p}icon {}
  *     }
  *     ul {
  *       li {
  *         .item {
- *           .instui-icon {}
+ *           .${p}icon {}
  *         }
  *       }
  *     }

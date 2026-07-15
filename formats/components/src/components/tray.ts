@@ -19,22 +19,22 @@ export const tray = defineComponent({
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
  * @compat Opens with the native \`[popover]\` API and \`@starting-style\`; the slide-in sits behind an \`@supports (transition-behavior: allow-discrete)\` guard, so browsers without it still open the tray, just without the slide.
- * @accessibility The tray is a dialog or popover surface, so name it with \`aria-label\` or \`aria-labelledby\`, and its close control carries an \`aria-label\` (the \`.instui-close-button\` in the example uses \`aria-label="Close"\`).
+ * @accessibility The tray is a dialog or popover surface, so name it with \`aria-label\` or \`aria-labelledby\`, and its close control carries an \`aria-label\` (the \`.${p}close-button\` in the example uses \`aria-label="Close"\`).
  * @example
- * <div class="instui-tray -size-sm" id="tray-start">
+ * <div class="${p}tray -size-sm" id="tray-start">
  *   <div>
  *     <strong>Filters</strong>
- *     <button class="instui-close-button" aria-label="Close"></button>
+ *     <button class="${p}close-button" aria-label="Close"></button>
  *   </div>
- *   <p class="instui-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
+ *   <p class="${p}text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
  * </div>
  * @structure
- * .instui-tray {
+ * .${p}tray {
  *   div {
  *     strong {}
- *     .instui-close-button {}
+ *     .${p}close-button {}
  *   }
- *   .instui-text {}
+ *   .${p}text {}
  * }
  * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
  * @related popover — The generic top-layer surface this builds on.

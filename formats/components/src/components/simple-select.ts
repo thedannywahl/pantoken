@@ -21,14 +21,14 @@ export const simpleSelect = defineComponent({
  * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
  * @example
- * <select class="instui-simple-select">
+ * <select class="${p}simple-select">
  *   <option>Choose a fruit…</option>
  *   <option>Apple</option>
  *   <option>Orange</option>
  *   <option>Pear</option>
  * </select>
  * @structure
- * .instui-simple-select {
+ * .${p}simple-select {
  *   option {}
  * }
  * @related text-input — Shares the same field chrome, states, and sizes.

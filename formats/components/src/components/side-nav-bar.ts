@@ -17,28 +17,28 @@ export const sideNavBar = defineComponent({
  * @part .label — An item's text label; hidden when the rail is minimized.
  * @a11y Label the \`<nav>\` with aria-label so it's announced as a named navigation landmark.
  * @example
- * <nav class="instui-side-nav-bar" aria-label="Primary">
+ * <nav class="${p}side-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#">
- *     <span class="instui-icon -icon-house"></span>
+ *     <span class="${p}icon -icon-house"></span>
  *     <span class="label">Home</span>
  *   </a>
  *   <a class="item" href="#">
- *     <span class="instui-icon -icon-inbox"></span>
+ *     <span class="${p}icon -icon-inbox"></span>
  *     <span class="label">Inbox</span>
  *   </a>
  *   <a class="item" href="#">
- *     <span class="instui-icon -icon-calendar"></span>
+ *     <span class="${p}icon -icon-calendar"></span>
  *     <span class="label">Calendar</span>
  *   </a>
  *   <a class="item" href="#">
- *     <span class="instui-icon -icon-settings"></span>
+ *     <span class="${p}icon -icon-settings"></span>
  *     <span class="label">Settings</span>
  *   </a>
  * </nav>
  * @structure
- * .instui-side-nav-bar {
+ * .${p}side-nav-bar {
  *   .item {
- *     .instui-icon {}
+ *     .${p}icon {}
  *     .label {}
  *   }
  * }

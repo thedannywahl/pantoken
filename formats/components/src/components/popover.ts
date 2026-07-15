@@ -16,14 +16,14 @@ export const popover = defineComponent({
  * @modifier -placement-end — Sit at the end (inline-end) of the anchor.
  * @compat Uses CSS anchor positioning (\`position-anchor\`/\`position-area\`) and the native \`[popover]\` API, both Chromium-only today; an \`@supports\` guard keeps the placement inert elsewhere, where the UA centres the popover in the top layer.
  * @example
- * <div class="instui-popover -placement-bottom" id="pop-1">
- *   <div class="instui-heading -level-h4">Share this page</div>
- *   <p class="instui-text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
+ * <div class="${p}popover -placement-bottom" id="pop-1">
+ *   <div class="${p}heading -level-h4">Share this page</div>
+ *   <p class="${p}text -size-sm">A popover is a lightweight surface anchored to a trigger. This one uses the native <code>popover</code> attribute.</p>
  * </div>
  * @structure
- * .instui-popover {
- *   .instui-heading {}
- *   .instui-text {
+ * .${p}popover {
+ *   .${p}heading {}
+ *   .${p}text {
  *     code {}
  *   }
  * }

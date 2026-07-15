@@ -18,11 +18,11 @@ export const calendar = defineComponent({
  * @part .day — A day cell; \`-today\`, \`-selected\`, and \`-outside-month\` mark its state.
  * @a11y Expose the grid with \`role="table"\` and a descriptive \`aria-label\`, and give each navigation button its own \`aria-label\`.
  * @example
- * <div class="instui-calendar" role="table" aria-label="March 2026">
+ * <div class="${p}calendar" role="table" aria-label="March 2026">
  *   <div class="nav">
- *     <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-left" aria-label="Previous month"></button>
+ *     <button class="${p}button -color-tertiary -shape-square -without-border -icon-chevron-left" aria-label="Previous month"></button>
  *     <strong>March 2026</strong>
- *     <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-right" aria-label="Next month"></button>
+ *     <button class="${p}button -color-tertiary -shape-square -without-border -icon-chevron-right" aria-label="Next month"></button>
  *   </div>
  *   <div class="grid">
  *     <span class="weekday">Su</span>
@@ -56,9 +56,9 @@ export const calendar = defineComponent({
  *   </div>
  * </div>
  * @structure
- * .instui-calendar {
+ * .${p}calendar {
  *   .nav {
- *     .instui-button {}
+ *     .${p}button {}
  *     strong {}
  *   }
  *   .grid {

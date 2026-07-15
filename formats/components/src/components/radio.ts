@@ -26,7 +26,7 @@ export const radio = defineComponent({
  * @cssstate disabled
  * @accessibility A native \`<input type="radio">\` drives \`:checked\` and \`:disabled\`; \`-readonly\` is styling only, since radios have no native readonly attribute.
  * @example
- * <label class="instui-radio"><input type="radio" name="r" checked> Option A</label>
+ * <label class="${p}radio"><input type="radio" name="r" checked> Option A</label>
  * @related checkbox — The multi-select counterpart to a single-select radio.
  * @related radio-input-group — Collects radios into one single-select fieldset.
  */

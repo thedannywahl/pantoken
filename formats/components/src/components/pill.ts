@@ -17,7 +17,7 @@ export const pill = defineComponent({
  * @modifier -render-icon-<name> — @deprecated The former \`renderIcon\` prop; still works as an alias, but use \`-icon-<name>\` instead.
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
  * @example
- * <span class="instui-pill">Draft</span>
+ * <span class="${p}pill">Draft</span>
  * @related badge — A badge is the count or notification counterpart.
  * @related tag — A tag is the removable, form-oriented counterpart.
  * @demo self:pill

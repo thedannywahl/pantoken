@@ -17,12 +17,12 @@ export const metric = defineComponent({
  * @part .value — The large metric number.
  * @part .label — The caption beneath the value.
  * @example
- * <div class="instui-metric">
+ * <div class="${p}metric">
  *   <span class="value">1,284</span>
  *   <span class="label">Active users</span>
  * </div>
  * @structure
- * .instui-metric {
+ * .${p}metric {
  *   .value {}
  *   .label {}
  * }

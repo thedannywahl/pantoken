@@ -16,7 +16,7 @@ export const table = defineComponent({
  * @pseudo ::before — Renders each cell's \`data-label\` as its column heading in the stacked layout.
  * @accessibility Label the table with a \`<caption>\`, mark column headers \`<th scope="col">\` and row headers \`<th scope="row">\`, and in \`-layout-stacked\` give every cell a \`data-label\` since the header row is visually hidden.
  * @example
- * <table class="instui-table -hover">
+ * <table class="${p}table -hover">
  *   <caption>Top-rated films</caption>
  *   <thead>
  *     <tr>
@@ -48,7 +48,7 @@ export const table = defineComponent({
  *   </tbody>
  * </table>
  * @structure
- * .instui-table.-hover {
+ * .${p}table.-hover {
  *   caption {}
  *   thead {
  *     tr {

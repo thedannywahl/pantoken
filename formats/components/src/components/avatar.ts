@@ -38,7 +38,7 @@ export const avatar = defineComponent({
  * @modifier -color-accent5 — @deprecated {@link -color-ash}
  * @modifier -color-accent6 — @deprecated {@link -color-grey}
  * @example
- * <span class="instui-avatar">DW</span>
+ * <span class="${p}avatar">DW</span>
  * @related byline — Can host an avatar as its leading hero figure.
  */
 .${p}avatar {

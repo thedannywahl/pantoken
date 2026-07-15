@@ -21,15 +21,15 @@ export const billboard = defineComponent({
  * @part .message — The supporting message.
  * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
- * <div class="instui-billboard">
- *   <span class="hero"><span class="instui-icon -icon-inbox"></span></span>
+ * <div class="${p}billboard">
+ *   <span class="hero"><span class="${p}icon -icon-inbox"></span></span>
  *   <div class="heading">No items yet</div>
  *   <div class="message">Create your first item to get started.</div>
  * </div>
  * @structure
- * .instui-billboard {
+ * .${p}billboard {
  *   .hero {
- *     .instui-icon {}
+ *     .${p}icon {}
  *   }
  *   .heading {}
  *   .message {}

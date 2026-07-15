@@ -18,13 +18,13 @@ export const list = defineComponent({
  * @modifier -size-lg — Large.
  * @pseudo ::marker — Renders the list bullet or ordered-list number.
  * @example
- * <ul class="instui-list">
+ * <ul class="${p}list">
  *   <li>First item</li>
  *   <li>Second item</li>
  *   <li>Third item</li>
  * </ul>
  * @structure
- * .instui-list {
+ * .${p}list {
  *   li {}
  * }
  */

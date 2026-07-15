@@ -16,7 +16,7 @@ export const closeButton = defineComponent({
  * @pseudo ::before — The × glyph, masked in \`currentColor\`.
  * @a11y Give the icon-only button an \`aria-label\` (e.g. "Close").
  * @example
- * <button class="instui-close-button -size-sm" aria-label="Close"></button>
+ * <button class="${p}close-button -size-sm" aria-label="Close"></button>
  * @related button — The general-purpose action button.
  */
 .${p}close-button {

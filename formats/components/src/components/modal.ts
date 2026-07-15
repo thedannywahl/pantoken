@@ -27,15 +27,15 @@ export const modal = defineComponent({
  * @accessibility Open the native \`<dialog>\` with \`showModal()\` for modal semantics and Esc-to-close, and name it with \`aria-labelledby\` pointing at the \`.header\`.
  * @compat Styles a native <dialog> and its \`::backdrop\`; the top-layer rendering and backdrop styling need a browser that supports the dialog element.
  * @example
- * <dialog class="instui-modal -size-sm" id="modal-sm">
+ * <dialog class="${p}modal -size-sm" id="modal-sm">
  *   <div class="header"><strong>Small</strong></div>
  *   <div class="body"><code>-size-sm</code> — a narrow modal.</div>
  *   <div class="footer">
- *     <button class="instui-button">Close</button>
+ *     <button class="${p}button">Close</button>
  *   </div>
  * </dialog>
  * @structure
- * .instui-modal.-size-sm {
+ * .${p}modal.-size-sm {
  *   .header {
  *     strong {}
  *   }
@@ -43,7 +43,7 @@ export const modal = defineComponent({
  *     code {}
  *   }
  *   .footer {
- *     .instui-button {}
+ *     .${p}button {}
  *   }
  * }
  * @related tray — A tray is the same dismissible overlay pattern, anchored to a screen edge.

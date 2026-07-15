@@ -28,21 +28,21 @@ export const formField = defineComponent({
  * @accessibility The \`<label>\` element wraps the control, so the label text names it natively; the required asterisk is decorative and should be hidden from assistive tech (aria-hidden), and the error message surfaces once the control is \`:user-invalid\` or you add the \`-invalid\` class.
  * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
- * <label class="instui-form-field">
+ * <label class="${p}form-field">
  *   <span class="label">Email address</span>
- *   <span class="controls"><input class="instui-text-input" type="email" placeholder="you@example.com"></span>
- *   <div class="instui-form-field-messages">
- *     <span class="instui-form-field-message -type-hint">We'll never share it.</span>
- *     <span class="instui-form-field-message -type-error">Enter a valid email address.</span>
+ *   <span class="controls"><input class="${p}text-input" type="email" placeholder="you@example.com"></span>
+ *   <div class="${p}form-field-messages">
+ *     <span class="${p}form-field-message -type-hint">We'll never share it.</span>
+ *     <span class="${p}form-field-message -type-error">Enter a valid email address.</span>
  *   </div>
  * </label>
  * @structure
- * .instui-form-field {
+ * .${p}form-field {
  *   .label {}
  *   .controls {
- *     .instui-text-input {}
+ *     .${p}text-input {}
  *   }
- *   .instui-form-field-messages {}
+ *   .${p}form-field-messages {}
  * }
  * @related form-field-messages — Renders the field's hint, error, and success messages.
  * @related form-field-group — Groups related fields under a shared legend.

@@ -28,9 +28,9 @@ export const alert = defineComponent({
  * @pseudo ::after — The white status glyph, masked and centred over the bar.
  * @cssproperty --pantoken-alert-glyph <url> — The low-level status-glyph source; \`-icon-<name>\` sets it for you. Override for a custom icon (a url-encoded SVG).
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each \`-color-*\` variant sets its own.
- * @accessibility For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.instui-close-button\` in the example carries \`aria-label="Close"\`).
+ * @accessibility For an important message, add \`role="alert"\` or an \`aria-live\` region so assistive tech announces it; the dismiss control is a labelled close button (the \`.${p}close-button\` in the example carries \`aria-label="Close"\`).
  * @example
- * <div class="${p}alert -icon-megaphone instui-mb-md">
+ * <div class="${p}alert -icon-megaphone ${p}mb-md">
  *   An alert with the default <code>info</code> color, and a custom icon.
  * </div>
  * 

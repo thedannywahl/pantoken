@@ -24,19 +24,19 @@ export const badge = defineComponent({
  * @pseudo ::before — The pulsing attention ring drawn in the badge's accent colour (the \`-pulse\` variant).
  * @cssproperty --pantoken-badge-accent <color> — The chip fill; each \`-color-*\` variant and the pulse ring read from it.
  * @cssproperty --pantoken-badge-text <color> — The text colour, paired to the accent so it stays legible.
- * @remarks To place a badge over a target, wrap both in a \`.instui-badge-wrapper\` (the position anchor) and pin the badge with a \`-placement-*\` modifier.
+ * @remarks To place a badge over a target, wrap both in a \`.${p}badge-wrapper\` (the position anchor) and pin the badge with a \`-placement-*\` modifier.
  * @animation pantoken-badge-pulse — The pulse ring animation.
  * @example
- * <span class="instui-badge-wrapper">
- *   <button class="instui-button">Inbox</button>
- *   <span class="instui-badge -placement-top-end">4</span>
+ * <span class="${p}badge-wrapper">
+ *   <button class="${p}button">Inbox</button>
+ *   <span class="${p}badge -placement-top-end">4</span>
  * </span>
- * @wrapper .instui-badge-wrapper
+ * @wrapper ${p}badge-wrapper
  * @structure
- * The badge renders inline on its own, or inside an optional \`.instui-badge-wrapper\` that anchors it over a target.
- * .instui-badge-wrapper:opt {
+ * The badge renders inline on its own, or inside an optional \`${p}badge-wrapper\` that anchors it over a target.
+ * .${p}badge-wrapper:opt {
  *   slot {}
- *   .instui-badge {}
+ *   .${p}badge {}
  * }
  * @related pill — The inline label-chip counterpart.
  * @demo self:badge

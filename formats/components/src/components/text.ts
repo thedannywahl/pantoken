@@ -34,7 +34,7 @@ export const text = defineComponent({
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
  * @example
- * <span class="instui-text -size-xs">x-small text</span>
+ * <span class="${p}text -size-xs">x-small text</span>
  * @related heading — Typography for headings rather than body text.
  * @related truncate — Clips this text to one line or a set number of lines.
  */

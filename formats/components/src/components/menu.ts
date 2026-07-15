@@ -18,7 +18,7 @@ export const menu = defineComponent({
  * @part .item-info — Secondary info text within a menu item.
  * @a11y Mark a checked item with \`aria-checked="true"\` (same styling as \`-active\`).
  * @example
- * <div class="instui-menu">
+ * <div class="${p}menu">
  *   <div class="group">Actions</div>
  *   <div class="item">Edit</div>
  *   <div class="item -active">Duplicate</div>
@@ -26,7 +26,7 @@ export const menu = defineComponent({
  *   <div class="item">Delete</div>
  * </div>
  * @structure
- * .instui-menu {
+ * .${p}menu {
  *   .group {}
  *   .item {}
  *   .separator {}

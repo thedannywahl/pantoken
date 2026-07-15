@@ -20,7 +20,7 @@ export const textInput = defineComponent({
  * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
  * @example
- * <input class="instui-text-input" placeholder="Default">
+ * <input class="${p}text-input" placeholder="Default">
  * @related text-area — The multi-line counterpart with the same states and sizes.
  * @related number-input — The numeric-entry input sharing this chrome.
  * @related simple-select — The native select sharing this field chrome.

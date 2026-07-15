@@ -14,19 +14,19 @@ export const fileDrop = defineComponent({
  * @modifier -rejected — Drag state for a rejected file.
  * @accessibility Wrap a native \`<input type="file">\` in the \`<label>\` drop zone so it stays a real, labelled file control that the keyboard and assistive tech can operate.
  * @example
- * <label class="instui-file-drop" id="fd">
- *   <span class="instui-icon -icon-cloud-upload"></span>
- *   <div class="instui-text"><strong>Drag an image here</strong>, or click to browse.</div>
- *   <div class="instui-text -size-sm instui-fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
+ * <label class="${p}file-drop" id="fd">
+ *   <span class="${p}icon -icon-cloud-upload"></span>
+ *   <div class="${p}text"><strong>Drag an image here</strong>, or click to browse.</div>
+ *   <div class="${p}text -size-sm ${p}fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
  *   <input type="file" id="fd-input">
  * </label>
  * @structure
- * .instui-file-drop {
- *   .instui-icon {}
- *   .instui-text {
+ * .${p}file-drop {
+ *   .${p}icon {}
+ *   .${p}text {
  *     strong {}
  *   }
- *   .instui-text {}
+ *   .${p}text {}
  *   input {}
  * }
  */

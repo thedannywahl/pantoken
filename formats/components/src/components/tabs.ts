@@ -20,7 +20,7 @@ export const tabs = defineComponent({
  * @cssstate hidden
  * @a11y Wire the tab list with role="tablist", each tab with role="tab" and aria-selected, and each panel with role="tabpanel".
  * @example
- * <div class="instui-tabs">
+ * <div class="${p}tabs">
  *   <div class="list" role="tablist" aria-label="Default tabs">
  *     <button class="tab -selected" role="tab" aria-selected="true">Overview</button>
  *     <button class="tab" role="tab" aria-selected="false">Details</button>
@@ -30,7 +30,7 @@ export const tabs = defineComponent({
  *   <div class="panel" role="tabpanel">The Overview tab's content shows here.</div>
  * </div>
  * @structure
- * .instui-tabs {
+ * .${p}tabs {
  *   .list {
  *     .tab {}
  *   }

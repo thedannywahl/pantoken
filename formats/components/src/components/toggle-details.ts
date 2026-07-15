@@ -18,12 +18,12 @@ export const toggleDetails = defineComponent({
  * @pseudo ::before — Draws the summary's disclosure chevron, a masked glyph that rotates to point down when the disclosure is open.
  * @cssstate open
  * @example
- * <details class="instui-toggle-details" open>
+ * <details class="${p}toggle-details" open>
  *   <summary>What ships in this package?</summary>
  *   Class-based component styles, built from the Instructure tokens, plus a prose layer.
  * </details>
  * @structure
- * .instui-toggle-details {
+ * .${p}toggle-details {
  *   summary {}
  * }
  * @related toggle-group — The bordered, grouped form of the same disclosure.

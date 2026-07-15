@@ -16,7 +16,7 @@ export const tag = defineComponent({
  * @modifier -readonly — Read-only (non-dismissable) tag.
  * @pseudo ::after — Renders the trailing dismiss glyph on a dismissible inline tag.
  * @example
- * <span class="instui-tag -size-sm">small</span>
+ * <span class="${p}tag -size-sm">small</span>
  * @related pill — The read-only label-chip counterpart.
  * @demo self:tag
  */

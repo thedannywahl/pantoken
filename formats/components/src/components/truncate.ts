@@ -13,7 +13,7 @@ export const truncate = defineComponent({
  * @modifier -lines — Multi-line clamp; set the line count via the \`--lines\` custom property (default 2).
  * @compat The \`-lines\` clamp relies on \`-webkit-line-clamp\` with \`display: -webkit-box\`, paired with the standard \`line-clamp\`.
  * @example
- * <div class="instui-truncate">This single line keeps going past the edge of its box, so it ends in an ellipsis.</div>
+ * <div class="${p}truncate">This single line keeps going past the edge of its box, so it ends in an ellipsis.</div>
  * @related text — Body typography that this truncates.
  */
 .${p}truncate {

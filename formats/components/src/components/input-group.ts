@@ -20,7 +20,7 @@ export const inputGroup = defineComponent({
  * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
  * @cssstate disabled
  * @example
- * <span class="instui-input-group">
+ * <span class="${p}input-group">
  *   <span class="before">@</span>
  *   <input type="text" placeholder="username">
  * </span>

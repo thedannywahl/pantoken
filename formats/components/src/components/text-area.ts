@@ -20,7 +20,7 @@ export const textArea = defineComponent({
  * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
  * @cssstate disabled
  * @example
- * <textarea class="instui-text-area" placeholder="Write a comment…"></textarea>
+ * <textarea class="${p}text-area" placeholder="Write a comment…"></textarea>
  * @related text-input — The single-line counterpart with the same states and sizes.
  */
 ${fieldControlBase(p, "text-area", "text-area")}

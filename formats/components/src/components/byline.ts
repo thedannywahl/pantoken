@@ -22,16 +22,16 @@ export const byline = defineComponent({
  * @part .description — The supporting body text.
  * @compat Contains its element styles with the CSS \`@scope\` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
- * <div class="instui-byline -size-md">
- *   <span class="instui-icon -icon-megaphone"></span>
+ * <div class="${p}byline -size-md">
+ *   <span class="${p}icon -icon-megaphone"></span>
  *   <div>
  *     <div class="title">What's new</div>
  *     <div class="description">The figure can be any leading visual — an icon, an avatar, or an image.</div>
  *   </div>
  * </div>
  * @structure
- * .instui-byline {
- *   .instui-icon {}
+ * .${p}byline {
+ *   .${p}icon {}
  *   div {
  *     .title {}
  *     .description {}

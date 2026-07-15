@@ -18,16 +18,16 @@ export const radioInputGroup = defineComponent({
  * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
  * @accessibility Renders a native \`<fieldset>\` with a \`<legend>\` that names the group; the child radios share one \`name\`, so only one can be selected at a time.
  * @example
- * <fieldset class="instui-radio-input-group -variant-toggle">
+ * <fieldset class="${p}radio-input-group -variant-toggle">
  *   <legend>T-shirt size</legend>
- *   <label class="instui-radio -variant-toggle"><input type="radio" name="size" checked> Small</label>
- *   <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Medium</label>
- *   <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Large</label>
+ *   <label class="${p}radio -variant-toggle"><input type="radio" name="size" checked> Small</label>
+ *   <label class="${p}radio -variant-toggle"><input type="radio" name="size"> Medium</label>
+ *   <label class="${p}radio -variant-toggle"><input type="radio" name="size"> Large</label>
  * </fieldset>
  * @structure
- * .instui-radio-input-group.-variant-toggle {
+ * .${p}radio-input-group.-variant-toggle {
  *   legend {}
- *   .instui-radio.-variant-toggle {
+ *   .${p}radio.-variant-toggle {
  *     input {}
  *   }
  * }

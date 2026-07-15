@@ -30,39 +30,39 @@ export const formFieldGroup = defineComponent({
  * @accessibility Renders a native \`<fieldset>\` with a \`<legend>\`, so the legend text names the whole group for assistive tech.
  * @compat The \`-layout-aligned\` mode uses CSS subgrid behind an \`@supports\` guard; where subgrid is unsupported, the fields fall back to their own stacked layout.
  * @example
- * <fieldset class="instui-form-field-group -layout-columns -col-spacing-medium">
+ * <fieldset class="${p}form-field-group -layout-columns -col-spacing-medium">
  *   <legend>Shipping address</legend>
- *   <label class="instui-form-field">
+ *   <label class="${p}form-field">
  *     <span class="label">First name</span>
- *     <span class="controls"><input class="instui-text-input"></span>
+ *     <span class="controls"><input class="${p}text-input"></span>
  *   </label>
- *   <label class="instui-form-field">
+ *   <label class="${p}form-field">
  *     <span class="label">Last name</span>
- *     <span class="controls"><input class="instui-text-input"></span>
+ *     <span class="controls"><input class="${p}text-input"></span>
  *   </label>
- *   <label class="instui-form-field">
+ *   <label class="${p}form-field">
  *     <span class="label">City</span>
- *     <span class="controls"><input class="instui-text-input"></span>
+ *     <span class="controls"><input class="${p}text-input"></span>
  *   </label>
- *   <label class="instui-form-field">
+ *   <label class="${p}form-field">
  *     <span class="label">State</span>
  *     <span class="controls">
- *       <select class="instui-simple-select">
+ *       <select class="${p}simple-select">
  *         <option>CA</option>
  *         <option>NY</option>
  *         <option>TX</option>
  *       </select>
  *     </span>
  *   </label>
- *   <div class="instui-form-field-messages">
- *     <span class="instui-form-field-message -type-hint">All fields are used for delivery only.</span>
+ *   <div class="${p}form-field-messages">
+ *     <span class="${p}form-field-message -type-hint">All fields are used for delivery only.</span>
  *   </div>
  * </fieldset>
  * @structure
- * .instui-form-field-group.-layout-columns.-col-spacing-medium {
+ * .${p}form-field-group.-layout-columns.-col-spacing-medium {
  *   legend {}
- *   .instui-form-field {}
- *   .instui-form-field-messages {}
+ *   .${p}form-field {}
+ *   .${p}form-field-messages {}
  * }
  * @related form-field — The single field this group repeats.
  * @related radio-input-group — Groups radio inputs under a legend.

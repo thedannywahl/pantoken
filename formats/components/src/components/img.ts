@@ -18,7 +18,7 @@ export const img = defineComponent({
  * @cssproperty --pantoken-img-filter <filter-value-list> | none — The composed CSS filter on the image; the effect modifiers set it, and you can override it for a custom filter.
  * @accessibility Provide meaningful \`alt\` text that describes the image, and use an empty \`alt=""\` for purely decorative images so assistive tech skips them.
  * @example
- * <img class="instui-img" alt="Gradient">
+ * <img class="${p}img" alt="Gradient">
  */
 ${root} {
   display: inline-block;

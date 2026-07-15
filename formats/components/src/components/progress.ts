@@ -20,7 +20,7 @@ export const progress = defineComponent({
 /**
  * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
- * @remarks The value label is a separate sibling element (\`.instui-progress-value\`), not a child of the bar.
+ * @remarks The value label is a separate sibling element (\`.${p}progress-value\`), not a child of the bar.
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -42,7 +42,7 @@ export const progress = defineComponent({
  * @accessibility Expose progress via \`role="progressbar"\` with \`aria-valuenow\`, \`aria-valuemin\`, and \`aria-valuemax\` (or \`role="img"\` plus \`aria-label\`), mirroring how progress-circle is labelled.
  * @compat Scopes the meter part rules with the \`@scope\` at-rule; browsers without \`@scope\` support ignore those scoped rules.
  * @example
- * <div class="instui-progress -color-brand">
+ * <div class="${p}progress -color-brand">
  *   <div class="bar"></div>
  * </div>
  * @related progress-circle — The circular form of the same determinate progress.

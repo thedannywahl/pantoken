@@ -29,7 +29,7 @@ export const heading = defineComponent({
  * @modifier -variant-title-card-section — Card section-title preset.
  * @accessibility These classes set the visual level only, so render a real \`<h1>\`–\`<h6>\` (or use \`role="heading"\` with \`aria-level\`) to convey the heading level.
  * @example
- * <div class="instui-heading -level-h1">Heading h1</div>
+ * <div class="${p}heading -level-h1">Heading h1</div>
  * @related text — Body typography for non-heading text.
  */
 .${p}heading {

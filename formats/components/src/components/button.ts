@@ -36,7 +36,7 @@ export const button = defineComponent({
  * @cssstate pressed
  * @a11y Drive the \`-toggle\` variant's pressed state with \`aria-pressed\`, and mark a disabled button with \`aria-disabled\` (or the native \`disabled\`).
  * @example
- * <button class="instui-button">Primary</button>
+ * <button class="${p}button">Primary</button>
  * @related close-button — The icon-only dismiss button.
  * @demo self:button
  */

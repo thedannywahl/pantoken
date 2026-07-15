@@ -15,7 +15,7 @@ export const spinner = defineComponent({
  * @modifier -color-inverse — On a dark surface.
  * @a11y Give the spinner role="status" and an aria-label so screen readers announce it as a live loading status.
  * @example
- * <span class="instui-spinner -size-xs" role="status" aria-label="Loading"></span>
+ * <span class="${p}spinner -size-xs" role="status" aria-label="Loading"></span>
  * @demo self:spinner
  */
 @keyframes pantoken-spinner-rotate { to { transform: rotate(360deg); } }
