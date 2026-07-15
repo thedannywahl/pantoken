@@ -127,6 +127,18 @@ function resolveToken(name: string): { syntax?: string; value?: string } | undef
 const cssPath = (subpath: string): string => require.resolve(`@pantoken/components/${subpath}`);
 const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf8");
 
+/**
+ * `classNames` (new in `@cssdoc/markdown` 0.7.2) lets HTML-preserving renderers wrap the deprecation
+ * marker — the record-level `> [!WARNING]` banner and every deprecated modifier-table cell — in a
+ * `<span class="…">`. We render it as an `instui-pill` in the warning colour (components.css is already
+ * loaded on doc pages for the live examples, so the class paints). The extra `pantoken-doc-tag` is a
+ * docs-only marker: the shipped pill is a compact fixed-height badge, so `.vitepress/theme/pantoken.css`
+ * uses it to relax the pill for the flowing deprecation sentence it wraps — without touching how the
+ * real `.instui-pill` renders in a component preview. Release stages aren't authored anywhere in the
+ * library yet, so `stage` is left unset (those markers stay plain code spans).
+ */
+const classNames = { deprecated: "instui-pill -color-warning pantoken-doc-tag" };
+
 // The repo root (this worktree) and its GitHub blob base, for `**Source:**` links.
 const repoRoot = join(docsRoot, "..");
 const SOURCE_URL_BASE = "https://github.com/thedannywahl/pantoken/blob/main";
@@ -210,6 +222,7 @@ const build = (): void => {
     label: "CSS",
     baseHref: "/api/css/",
     configFile,
+    classNames,
     resolveToken,
     resolveSource,
     importSnippet,
@@ -253,6 +266,7 @@ const build = (): void => {
     label: "Web components CSS",
     baseHref: "/api/css-web-components/",
     configFile,
+    classNames,
     resolveToken,
     resolveSource: makeResolveSource(sourceMap(wcCss)),
   });
