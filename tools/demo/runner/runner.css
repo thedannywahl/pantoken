@@ -94,6 +94,7 @@ body {
      above it), the bottom edge closes the player. */
   border-block-end: var(--instui-border-width-sm, 1px) solid
     var(--instui-color-stroke-base, #c7cdd1);
+  border-radius: var(--instui-border-radius-md, 6px) var(--instui-border-radius-md, 6px) 0 0;
 }
 
 .runner__editor {
