@@ -98,6 +98,13 @@ body {
 
 .runner__editor {
   display: none;
+  /* Positioning context for the copy button. */
+  position: relative;
+  /* The copy button, ported from the docs' `@example` code fences: a 40×40 icon button pinned top-right,
+   hidden until the pane is hovered or the button is focused. The two glyphs are the same theme-neutral
+   grey SVGs VitePress uses (copy → checkmark), so they read in both light and dark. */
+  --runner-icon-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='rgba(128,128,128,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/g%3E%3C/svg%3E");
+  --runner-icon-copied: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='rgba(128,128,128,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14l2 2l4-4'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 .runner__editor[data-active] {
@@ -129,7 +136,8 @@ body {
    lines in the column instead of scrolling horizontally. */
 .runner__editor .shiki {
   margin: 0;
-  padding: var(--instui-spacing-space-sm, 0.75rem);
+  /* Match the docs' `@example` code fences (VitePress: 20px block, 24px inline). */
+  padding: 20px 24px;
   font-family: var(--instui-font-family-code, ui-monospace, monospace);
   font-size: 0.8125rem;
   line-height: 1.5;
@@ -151,6 +159,64 @@ body {
 .code-dark .runner__editor .shiki,
 .code-dark .runner__editor .shiki span {
   color: var(--shiki-dark);
+}
+
+.runner__editor .copy {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
+  border-radius: var(--instui-border-radius-md, 4px);
+  background-color: var(--instui-color-background-base, #fff);
+  background-image: var(--runner-icon-copy);
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  opacity: 0;
+  cursor: pointer;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    opacity 0.25s;
+}
+
+.runner__editor:hover .copy,
+.runner__editor .copy:focus {
+  opacity: 1;
+}
+
+.runner__editor .copy:hover {
+  border-color: var(--instui-color-stroke-secondary, var(--instui-color-stroke-base, #6b7780));
+}
+
+.runner__editor .copy.copied {
+  background-image: var(--runner-icon-copied);
+  /* Square off the left edge so the button and the "Copied" label read as one pill. */
+  border-radius: 0 var(--instui-border-radius-md, 4px) var(--instui-border-radius-md, 4px) 0;
+}
+
+/* The "Copied" label that slides out to the left of the button, like the `@example` version. */
+.runner__editor .copy.copied::before {
+  content: "Copied";
+  position: absolute;
+  top: -1px;
+  right: calc(100% + 1px);
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 10px;
+  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
+  border-right: 0;
+  border-radius: var(--instui-border-radius-md, 4px) 0 0 var(--instui-border-radius-md, 4px);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--instui-color-text-secondary, #6b7780);
+  background-color: var(--instui-color-background-base, #fff);
 }
 
 #runner-error {
