@@ -242,6 +242,27 @@ export default defineConfig({
   },
   vite: {
     plugins: [orchestrator],
+    resolve: {
+      alias: [
+        {
+          // Override VitePress's built-in VPNavBarExtra with our custom version that
+          // includes the ThemeSelector as an inline group inside the extra flyout menu.
+          //
+          // VPNavBar.vue imports this component with a RELATIVE specifier
+          // (`import VPNavBarExtra from './VPNavBarExtra.vue'`), and Vite's alias plugin tests
+          // `find` against the specifier as written — never the resolved absolute path. So a
+          // pattern anchored on the `vitepress/dist/...` path can't match, and the built-in
+          // component wins. Match the trailing `[…/]VPNavBarExtra.vue` instead. The `^.*` makes
+          // the match span the WHOLE specifier: the plugin does `importee.replace(find, replacement)`,
+          // so anything left unmatched (e.g. a leading `./`) would be prepended to our absolute
+          // replacement path and break resolution.
+          find: /^.*[/\\]VPNavBarExtra\.vue$/,
+          replacement: fileURLToPath(
+            new URL("theme/components/VPNavBarExtra.vue", import.meta.url),
+          ),
+        },
+      ],
+    },
   },
   markdown: {
     config: (md) => {

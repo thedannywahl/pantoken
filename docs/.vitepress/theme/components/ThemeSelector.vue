@@ -40,7 +40,7 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
 </script>
 
 <template>
-  <div class="theme-selector">
+  <div class="theme-selector" @mouseenter="open = true" @mouseleave="open = false">
     <button
       class="theme-selector__button"
       type="button"
@@ -51,8 +51,9 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
       @click.stop="open = !open"
     >
       <span class="theme-selector__icon" aria-hidden="true" />
+      <span class="theme-selector__chevron" aria-hidden="true" />
     </button>
-    <div v-show="open" class="theme-selector__menu" role="menu">
+    <div class="theme-selector__menu" role="menu">
       <button
         v-for="t in THEMES"
         :key="t.key"
@@ -81,21 +82,28 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-1);
   transition:
     color 0.25s,
     background-color 0.25s;
 }
 .theme-selector__button:hover {
-  color: var(--vp-c-text-1);
-  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 .theme-selector__icon {
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  aspect-ratio: 1 / 1;
   background: currentColor;
   -webkit-mask: var(--instui-icon-palette) no-repeat center / contain;
   mask: var(--instui-icon-palette) no-repeat center / contain;
+}
+.theme-selector__chevron {
+  width: 14px;
+  aspect-ratio: 1 / 1;
+  background: currentColor;
+  -webkit-mask: var(--instui-icon-chevron-down) no-repeat center / contain;
+  mask: var(--instui-icon-chevron-down) no-repeat center / contain;
+  margin-left: 4px;
 }
 .theme-selector__menu {
   position: absolute;
@@ -108,6 +116,16 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   box-shadow: var(--vp-shadow-3);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s,
+    visibility 0.25s;
+}
+.theme-selector:hover .theme-selector__menu,
+.theme-selector__button[aria-expanded="true"] + .theme-selector__menu {
+  opacity: 1;
+  visibility: visible;
 }
 .theme-selector__item {
   display: flex;
@@ -121,11 +139,16 @@ onBeforeUnmount(() => document.removeEventListener("click", onDocumentClick));
   color: var(--vp-c-text-1);
   text-align: left;
   white-space: nowrap;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
 }
-.theme-selector__item:hover {
-  background: var(--vp-c-bg-soft);
+.theme-selector__item:not([aria-checked="true"]):hover {
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-default-soft);
 }
 .theme-selector__item[aria-checked="true"] {
-  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  cursor: default;
 }
 </style>
