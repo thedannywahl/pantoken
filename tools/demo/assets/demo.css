@@ -15,8 +15,6 @@
  */
 .pantoken-demo {
   margin: var(--instui-spacing-space-md, 1rem) 0;
-  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
-  border-radius: var(--instui-border-radius-md, 6px);
   overflow: hidden;
   background: var(--instui-color-background-base, #fff);
 }

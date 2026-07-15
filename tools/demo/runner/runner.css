@@ -56,8 +56,6 @@ body {
   display: flex;
   align-items: center;
   gap: var(--instui-spacing-space-xs, 0.5rem);
-  padding: var(--instui-spacing-space-xs, 0.5rem);
-  background: var(--instui-color-background-muted, #f2f4f5);
   flex-wrap: wrap;
 }
 
@@ -68,6 +66,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  border: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
+  border-radius: var(--instui-border-radius-md, 6px);
+  margin-top: var(--instui-spacing-gap-inputs-vertical);
 }
 
 /* Split view: the code pane hugs its content but caps at half the space below the toolbar
@@ -77,6 +78,10 @@ body {
   min-height: 0;
   max-height: var(--runner-pane-max, none);
   overflow: auto;
+  /* Frame the rendered demo top and bottom; the top edge divides it from the toolbar (or the code
+     above it), the bottom edge closes the player. */
+  border-block-end: var(--instui-border-width-sm, 1px) solid
+    var(--instui-color-stroke-base, #c7cdd1);
 }
 
 .runner__editor {
@@ -95,10 +100,8 @@ body {
   max-height: var(--runner-pane-max, none);
   overflow: auto;
   border: 0;
-  /* Frame the rendered demo top and bottom; the top edge divides it from the toolbar (or the code
-     above it), the bottom edge closes the player. */
-  border-block: var(--instui-border-width-sm, 1px) solid var(--instui-color-stroke-base, #c7cdd1);
   background: var(--instui-color-background-base, #fff);
+  border-radius: var(--instui-border-radius-md, 6px);
 }
 
 /* Result tab: the demo takes the whole body (no code above it) and fills the player, uncapped. */
