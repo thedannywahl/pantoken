@@ -75,6 +75,7 @@ jobs:
 
       - name: Publish packages
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
         run: vpx changeset publish --tag "${{ steps.dist_tag.outputs.dist_tag }}"
 
