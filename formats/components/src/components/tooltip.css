@@ -1,6 +1,7 @@
 /**
  * @component tooltip
  * @summary A CSS hover and focus tooltip bubble, positionable on any side.
+ * @modifier -icon-* — Render a trigger glyph icon next to the tooltip bubble.
  * @part .tip — The bubble; `-placement-*` sets its side.
  * @a11y Point the trigger at the bubble with aria-describedby and give the bubble role="tooltip".
  * @example
@@ -10,7 +11,7 @@
  * </span>
  * @structure
  * .pfx-tooltip {
- *   .pfx-icon {}
+ *   [class*="-icon-"]:optional {}
  *   .tip {}
  * }
  * @related popover — The larger, click-triggered anchored surface.
@@ -20,7 +21,12 @@
   position: relative;
   display: inline-flex;
 }
+
 @scope (.pfx-tooltip) {
+  :scope > [class*="-icon-"] {
+    line-height: 1;
+  }
+
   :scope > .tip {
     position: absolute;
     z-index: 1;
@@ -42,18 +48,21 @@
     transition: opacity 0.15s ease;
   }
 }
+
 /* Show on hover or keyboard focus of the trigger. */
 .pfx-tooltip:hover > .tip,
 .pfx-tooltip:focus-within > .tip {
   opacity: 1;
   visibility: visible;
 }
+
 /* Placement (authored on the .tip itself, matching the web-component): default is top; these move the
    bubble to the other sides. */
 .pfx-tooltip > .tip.-placement-bottom {
   inset-block: 100% auto;
   margin-block: var(--instui-spacing-space-xs) 0;
 }
+
 .pfx-tooltip > .tip.-placement-start {
   inset-block-end: auto;
   inset-inline: auto 100%;
@@ -61,6 +70,7 @@
   transform: translateY(-50%);
   margin: 0 var(--instui-spacing-space-xs) 0 0;
 }
+
 .pfx-tooltip > .tip.-placement-end {
   inset-block-end: auto;
   inset-inline: 100% auto;

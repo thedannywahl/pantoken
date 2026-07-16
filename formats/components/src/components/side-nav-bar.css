@@ -2,6 +2,7 @@
  * @component side-nav-bar
  * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
  * @modifier -minimized — Collapse to icons only (labels hidden).
+ * @modifier -icon-* — Render a glyph icon in each nav item.
  * @part .item — A navigation entry; `-selected` marks the active one.
  * @part .label — An item's text label; hidden when the rail is minimized.
  * @a11y Label the `<nav>` with aria-label so it's announced as a named navigation landmark.
@@ -27,7 +28,7 @@
  * @structure
  * .pfx-side-nav-bar {
  *   .item {
- *     .pfx-icon {}
+ *     [class*="-icon-"]:optional {}
  *     .label {}
  *   }
  * }
@@ -46,6 +47,7 @@
   color: var(--instui-component-side-nav-bar-font-color);
   font-family: var(--instui-component-side-nav-bar-item-font-family);
 }
+
 @scope (.pfx-side-nav-bar) {
   :scope > .item {
     display: flex;
@@ -64,18 +66,26 @@
     text-decoration: var(--instui-component-side-nav-bar-item-link-text-decoration);
     cursor: pointer;
   }
+
+  :scope > .item [class*="-icon-"] {
+    line-height: 1;
+  }
+
   :scope > .item:hover {
     background: var(--instui-component-side-nav-bar-item-hover-background-color);
   }
+
   :scope > .item.-selected {
     background: var(--instui-component-side-nav-bar-item-selected-background-color);
     color: var(--instui-component-side-nav-bar-item-selected-font-color);
   }
 }
+
 /* minimized: a narrow rail — the icons stay, the labels are hidden. */
 .pfx-side-nav-bar.-minimized {
   inline-size: var(--instui-component-side-nav-bar-minimized-width);
 }
+
 .pfx-side-nav-bar.-minimized .item .label {
   display: none;
 }

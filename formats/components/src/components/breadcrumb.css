@@ -3,6 +3,7 @@
  * @summary A breadcrumb trail with `/` separators; the last crumb is the current page.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
+ * @modifier -icon-* — Render a glyph icon in a crumb link (for example, home in the first crumb).
  * @part .item — A crumb; the last one is the current page.
  * @pseudo ::after — Renders the `/` separator after every crumb except the last.
  * @a11y Wrap the trail in `<nav aria-label>` and mark the current page's crumb with `aria-current="page"`.
@@ -20,7 +21,7 @@
  * .pfx-breadcrumb {
  *   .item {
  *     a {
- *       .pfx-icon {}
+ *       [class*="-icon-"]:optional {}
  *     }
  *   }
  * }
@@ -34,29 +35,40 @@
   font-family: var(--instui-component-link-font-family);
   font-size: var(--instui-component-link-font-size-md);
 }
+
 .pfx-breadcrumb.-size-sm {
   gap: var(--instui-component-breadcrumb-gap-sm);
   font-size: var(--instui-component-link-font-size-sm);
 }
+
 .pfx-breadcrumb.-size-lg {
   gap: var(--instui-component-breadcrumb-gap-lg);
   font-size: var(--instui-component-link-font-size-lg);
 }
+
 .pfx-breadcrumb.-size-sm .item:not(:last-child)::after {
   margin-inline-start: var(--instui-component-breadcrumb-gap-sm);
 }
+
 .pfx-breadcrumb.-size-lg .item:not(:last-child)::after {
   margin-inline-start: var(--instui-component-breadcrumb-gap-lg);
 }
+
 @scope (.pfx-breadcrumb) {
   :scope a {
     color: var(--instui-component-link-text-color);
     text-decoration: none;
   }
+
+  :scope a [class*="-icon-"] {
+    line-height: 1;
+  }
+
   :scope a:hover {
     color: var(--instui-component-link-text-hover-color);
     text-decoration: underline;
   }
+
   :scope > .item:not(:last-child)::after {
     content: "/";
     margin-inline-start: var(--instui-component-breadcrumb-gap-md);

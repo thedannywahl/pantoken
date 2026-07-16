@@ -3,6 +3,7 @@
  * @summary A media object: a hero figure beside a title and description.
  * @modifier -align-content-center — Vertically centre the text beside the hero.
  * @modifier -align-content-top — Align the text to the top of the hero.
+ * @modifier -icon-* — Render a leading glyph icon before the text block.
  * @modifier -size-sm — Small.
  * @modifier -size-md — Medium.
  * @modifier -size-lg — Large.
@@ -19,7 +20,7 @@
  * </div>
  * @structure
  * .pfx-byline {
- *   .pfx-icon {}
+ *   [class*="-icon-"]:optional {}
  *   div {
  *     .title {}
  *     .description {}
@@ -34,31 +35,42 @@
   color: var(--instui-component-byline-color);
   font-family: var(--instui-component-byline-font-family);
 }
+
 /* alignContent="top" (default is center, from align-items above). */
 .pfx-byline.-align-content-top {
   align-items: flex-start;
 }
+
 .pfx-byline.-align-content-center {
   align-items: center;
 }
+
 /* size sets a max-width (InstUI's byline small/medium/large). The size tokens are @property-only
    (registered, unvalued) in the IR, so each carries a literal fallback. */
 .pfx-byline.-size-sm {
   max-width: var(--instui-component-byline-small, 20rem);
 }
+
 .pfx-byline.-size-md {
   max-width: var(--instui-component-byline-medium, 30rem);
 }
+
 .pfx-byline.-size-lg {
   max-width: var(--instui-component-byline-large, 40rem);
 }
+
 @scope (.pfx-byline) {
+  :scope > [class*="-icon-"] {
+    line-height: 1;
+  }
+
   .title {
     margin: 0 0 var(--instui-component-byline-title-margin);
     font-size: var(--instui-component-byline-title-font-size);
     font-weight: var(--instui-component-byline-title-font-weight);
     line-height: var(--instui-component-byline-title-line-height);
   }
+
   .description {
     font-size: var(--instui-component-byline-description-font-size);
     font-weight: var(--instui-component-byline-description-font-weight);

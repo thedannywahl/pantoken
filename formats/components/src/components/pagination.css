@@ -2,6 +2,7 @@
  * @component pagination
  * @summary Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.
  * @modifier -variant-input — Compact variant with a page-number input.
+ * @modifier -icon-* — Render arrow glyph icons inside the first/prev/next/last controls.
  * @part .page — A page link or button; the current page carries `[aria-current]`.
  * @part .arrow — A first, previous, next, or last control.
  * @part .ellipsis — The gap marker between page ranges.
@@ -24,7 +25,7 @@
  * @structure
  * .pfx-pagination {
  *   .arrow {
- *     .pfx-icon {}
+ *     [class*="-icon-"]:optional {}
  *   }
  *   .page {}
  *   .ellipsis {}
@@ -37,6 +38,7 @@
   gap: var(--instui-component-pagination-page-indicator-gap);
   font-family: var(--instui-font-family-base);
 }
+
 @scope (.pfx-pagination) {
   /* A page number or a nav arrow — an <a> or <button>. Text-style primary button: brand text, no fill. */
   :scope > .page,
@@ -56,11 +58,17 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  :scope > .arrow [class*="-icon-"] {
+    line-height: 1;
+  }
+
   :scope > .page:hover,
   :scope > .arrow:hover {
     background: var(--instui-color-background-muted);
     color: var(--instui-color-text-interactive-navigation-primary-hover);
   }
+
   /* The current page — a filled primary button (InstUI: color="primary" withBackground withBorder). */
   :scope > .page[aria-current],
   :scope > .page.-current {
@@ -68,12 +76,14 @@
     color: var(--instui-color-text-interactive-action-primary-base);
     border-color: var(--instui-color-background-interactive-action-primary-base);
   }
+
   :scope > .page[aria-current]:hover,
   :scope > .page.-current:hover {
     background: var(--instui-color-background-interactive-action-primary-hover);
     border-color: var(--instui-color-background-interactive-action-primary-hover);
     color: var(--instui-color-text-interactive-action-primary-base);
   }
+
   /* Disabled nav arrows (first/prev at page 1, etc.) — shown muted (InstUI showDisabledButtons). */
   :scope > .arrow:disabled,
   :scope > .arrow[aria-disabled="true"] {
@@ -82,6 +92,7 @@
     opacity: var(--instui-opacity-disabled);
     cursor: not-allowed;
   }
+
   /* The truncation ellipsis — inert text. */
   :scope > .ellipsis {
     display: inline-flex;
@@ -90,15 +101,18 @@
     min-inline-size: 2rem;
     color: var(--instui-color-text-muted);
   }
+
   /* variant="input" label ("Page … of N"). */
   :scope > .page-input-label {
     color: var(--instui-component-pagination-page-input-label-color);
   }
 }
+
 /* variant="input": a "Page [n] of N" jumper (the input width + spacing come from the page-input tokens). */
 .pfx-pagination.-variant-input {
   gap: var(--instui-component-pagination-page-input-input-spacing);
 }
+
 .pfx-pagination.-variant-input .pfx-text-input,
 .pfx-pagination.-variant-input .pfx-number-input {
   inline-size: var(--instui-component-pagination-page-input-input-width);

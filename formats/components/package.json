@@ -28,7 +28,7 @@
     "build": "node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack",
     "dev": "node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
     "test": "node scripts/component-styles.ts && vp test",
-    "check": "node scripts/component-styles.ts && vp check",
+    "check": "node scripts/component-styles.ts && node scripts/build-entries.ts && vp check",
     "prepublishOnly": "vp run build"
   },
   "dependencies": {
