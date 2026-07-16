@@ -1,9 +1,26 @@
+import { existsSync, readdirSync } from "node:fs";
 import { defineConfig } from "vite-plus";
-import { COMPONENTS } from "./src/components/index.ts";
 
-const componentEntries = Object.fromEntries(
-  COMPONENTS.filter((d) => d.kind === "component").map((d) => [d.name, `generated/${d.name}.css`]),
-);
+// Aggregate sheets that ship as named entry points — everything else in generated/ is a per-component
+// file emitted by scripts/build-entries.ts (runs only during `build`, not `generate`).
+const AGGREGATE_SHEETS = new Set([
+  "base",
+  "components",
+  "fonts",
+  "prose",
+  "select",
+  "icons",
+  "utilities",
+]);
+const componentEntries = existsSync("generated")
+  ? Object.fromEntries(
+      readdirSync("generated")
+        .filter((f) => f.endsWith(".css"))
+        .map((f) => f.replace(/\.css$/u, ""))
+        .filter((name) => !AGGREGATE_SHEETS.has(name))
+        .map((name) => [name, `generated/${name}.css`]),
+    )
+  : {};
 
 export default defineConfig({
   pack: {

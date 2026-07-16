@@ -7,6 +7,10 @@
  * - `generated/icons.css` — one `.instui-icon-<name>` glyph class per icon (large; kept separate).
  * - `generated/utilities.css` — cross-cutting spacing/colour utilities + the View primitive.
  *
+ * Per-component CSS files (`generated/<name>.css`) are emitted separately by `scripts/build-entries.ts`
+ * which only runs as part of `build`, not `generate`. This keeps the generate step (used by docs:dev)
+ * from writing 46+ files on every hot-reload and triggering a workspace-observer loop.
+ *
  * Consumers that need a different prefix or scope call `componentsCss({ prefix })` /
  * `proseCss({ scope })` and write their own file (the renderers do this for their content root).
  */
@@ -29,8 +33,6 @@ import {
   spacingUtilitiesCss,
   viewCss,
 } from "../src/index.ts";
-import { COMPONENTS } from "../src/components/index.ts";
-
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
 
@@ -96,10 +98,6 @@ const tokenGroups = [
 
 writeFileSync(join(outDir, "base.css"), baseCss());
 writeFileSync(join(outDir, "components.css"), componentsCss(opts));
-for (const component of COMPONENTS) {
-  if (component.kind !== "component") continue;
-  writeFileSync(join(outDir, `${component.name}.css`), component.css(opts));
-}
 // Internal (NOT shipped): every record in the `pfx-` authoring prefix — the cssdoc `providers` target
 // (see formats/components/cssdoc.jsonc) that lets the per-file source-`.css` lint resolve sibling records
 // named in `@structure` (e.g. tree-browser's `.pfx-icon`). Written under src/generated/ (gitignored),
@@ -138,5 +136,5 @@ writeFileSync(
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
 );
 console.log(
-  "✓ components: wrote base.css + components.css + per-component css + fonts.css + prose.css + select.css + icons.css + utilities.css",
+  "✓ components: wrote base.css + components.css + fonts.css + prose.css + select.css + icons.css + utilities.css",
 );

@@ -18,8 +18,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "build": "node scripts/generate.ts && vp pack",
-    "dev": "node scripts/generate.ts && vp pack --watch",
+    "build": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack",
+    "dev": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
     "test": "vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"

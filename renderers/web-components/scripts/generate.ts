@@ -1,10 +1,10 @@
 /**
- * Emit the published stylesheets for `@pantoken/web-components` from the authored shadow CSS sources:
+ * Emit the aggregate stylesheet for `@pantoken/web-components` (`generated/components.css`).
  *
- * - `generated/components.css` — aggregate of every web-component CSS record.
- * - `generated/<record>.css` — one exported per-record stylesheet.
- *
- * Runs before `vp pack`; `@tsdown/css` then finalizes these files for publication.
+ * Per-record CSS files (`generated/<record>.css`) are emitted separately by
+ * `scripts/build-entries.ts` which only runs as part of `build`, not `generate`.
+ * This keeps the generate step from writing multiple files on every hot-reload
+ * and triggering a workspace-observer re-render loop.
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -22,11 +22,6 @@ const cssSources = ["src/elements", "src/lib"]
 const dir = resolve(import.meta.dirname, "../generated");
 mkdirSync(dir, { recursive: true });
 
-for (const source of cssSources) {
-  const css = readFileSync(source.path, "utf8").trim();
-  writeFileSync(join(dir, source.name), `${css}\n`);
-}
-
 const aggregate = cssSources
   .map((source) => {
     const css = readFileSync(source.path, "utf8").trim();
@@ -36,4 +31,4 @@ const aggregate = cssSources
 
 const out = join(dir, "components.css");
 writeFileSync(out, `${aggregate}\n`);
-console.log(`✓ wrote ${out} + ${cssSources.length} per-record stylesheets`);
+console.log(`✓ wrote ${out}`);
