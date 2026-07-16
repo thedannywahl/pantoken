@@ -1,6 +1,6 @@
 import { buttonCss, calendarCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { calendar as calendarReset } from "../generated/styles.ts";
+import calendarReset from "./calendar.css?inline";
 import { WEEKDAYS, esc, isoDate, parseIsoDate } from "../lib/helpers.ts";
 
 /**

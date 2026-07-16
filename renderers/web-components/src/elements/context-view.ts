@@ -1,6 +1,6 @@
 import { contextViewCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { popoverReset } from "../generated/styles.ts";
+import popoverReset from "../lib/popover-reset.css?inline";
 
 /**
  * `<instui-context-view>` — a callout surface with a caret. The host itself is a native `[popover]`

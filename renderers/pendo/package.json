@@ -4,13 +4,12 @@
   "description": "Instructure-styled global CSS for Pendo guides, built on pantoken tokens (ported from @instructure/pendo-global-css).",
   "license": "MIT",
   "files": [
-    "dist",
-    "generated/global.css"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
-    "./global.css": "./generated/global.css",
+    "./global.css": "./dist/global.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -19,8 +18,8 @@
   "scripts": {
     "embed": "node scripts/embed.ts",
     "generate": "node scripts/generate.ts",
-    "build": "vp run embed && vp pack && vp run generate",
-    "dev": "vp pack --watch",
+    "build": "vp run embed && vp run generate && vp pack",
+    "dev": "vp run embed && vp run generate && vp pack --watch",
     "test": "vp run embed && vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"

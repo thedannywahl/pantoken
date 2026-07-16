@@ -65,8 +65,8 @@ Owner of `@pantoken/web-components` — the shadow-DOM custom elements.
 
 ### Expertise
 
-- Co-located `src/**/*.css` shadow CSS → `scripts/styles.ts` codegen → `src/generated/` (gitignored);
-  the codegen strips `/** … */` doc comments before inlining.
+- Co-located `src/**/*.css` shadow CSS is imported with `?inline`; `@tsdown/css` processes and
+  minifies it into the JavaScript bundle, stripping `/** … */` doc comments before inlining.
 - `register(target?, { prefix })` with a prefix-scoped registry adapter; `DEFAULT_PREFIX = "instui"`.
 - The JS-behavior tier (tooltip, drilldown, pages, drawer-layout, interactive calendar, date/datetime
   pickers) built on the Invoker Commands API with a click-delegate fallback.

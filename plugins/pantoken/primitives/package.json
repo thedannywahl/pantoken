@@ -4,13 +4,12 @@
   "description": "Opt-in utility classes for the raw pantoken primitive palette (--instui-primitive-*): background/text/border colors plus font-family and font-weight. Kept out of the semantic utilities so overrides there stay semantic-only.",
   "license": "MIT",
   "files": [
-    "dist",
-    "generated/primitives.css"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
-    "./primitives.css": "./generated/primitives.css",
+    "./primitives.css": "./dist/primitives.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -18,8 +17,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "build": "vp pack && vp run generate",
-    "dev": "vp pack --watch",
+    "build": "vp run generate && vp pack",
+    "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"

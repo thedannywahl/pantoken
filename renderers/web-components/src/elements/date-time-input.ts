@@ -1,6 +1,6 @@
 import { textInputCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { dateTimeInput as dateTimeInputCss } from "../generated/styles.ts";
+import dateTimeInputCss from "./date-time-input.css?inline";
 import { esc } from "../lib/helpers.ts";
 
 /**

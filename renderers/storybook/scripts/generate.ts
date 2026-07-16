@@ -1,6 +1,6 @@
 /**
  * Emit the InstUI-look prose stylesheet scoped to storybook's content region, from
- * @pantoken/components. Runs after `vp pack`.
+ * @pantoken/components. Runs before `vp pack`, which finalizes the published CSS.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";

@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { proseCss } from "@pantoken/components";
-import { docusaurusCss } from "../dist/index.mjs";
+import { docusaurusCss } from "../src/index.ts";
 
 const dir = resolve(import.meta.dirname, "../generated");
 mkdirSync(dir, { recursive: true });

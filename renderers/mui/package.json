@@ -4,13 +4,12 @@
   "description": "Theme MUI (Material UI) with Instructure tokens: maps the token IR to createTheme palette options per mode.",
   "license": "MIT",
   "files": [
-    "dist",
-    "generated/components.css"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
-    "./components.css": "./generated/components.css",
+    "./components.css": "./dist/components.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -18,8 +17,8 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "build": "vp pack && vp run generate",
-    "dev": "vp pack --watch",
+    "build": "vp run generate && vp pack",
+    "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"

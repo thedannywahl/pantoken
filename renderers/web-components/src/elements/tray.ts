@@ -1,6 +1,6 @@
 import { trayCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { popoverReset } from "../generated/styles.ts";
+import popoverReset from "../lib/popover-reset.css?inline";
 
 /**
  * `<instui-tray>` — a panel docked to a viewport edge, backed by a native `[popover]` (top layer +

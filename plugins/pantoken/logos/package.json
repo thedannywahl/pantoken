@@ -5,13 +5,12 @@
   "license": "MIT",
   "files": [
     "dist",
-    "generated/logos.css",
     "assets/logos"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
-    "./logos.css": "./generated/logos.css",
+    "./logos.css": "./dist/logos.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -20,7 +19,7 @@
   "scripts": {
     "generate": "node scripts/generate.ts",
     "build": "vp run generate && vp pack",
-    "dev": "vp pack --watch",
+    "dev": "vp run generate && vp pack --watch",
     "test": "vp run generate && vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"

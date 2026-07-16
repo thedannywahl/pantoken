@@ -1,10 +1,10 @@
 /**
- * Emit the static `theme.css` (`@pantoken/shadcn/theme.css`). Runs after `vp pack`.
+ * Emit the static `theme.css` (`@pantoken/shadcn/theme.css`) before `vp pack` finalizes it.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { proseCss } from "@pantoken/components";
-import { shadcnCss } from "../dist/index.mjs";
+import { shadcnCss } from "../src/index.ts";
 
 const out = resolve(import.meta.dirname, "../generated/theme.css");
 mkdirSync(dirname(out), { recursive: true });

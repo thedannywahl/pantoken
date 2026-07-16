@@ -2,8 +2,19 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   pack: {
+    entry: {
+      index: "src/index.ts",
+      global: "generated/global.css",
+    },
     dts: true,
-    // Exports are hand-managed so the static `./global.css` (written after pack) survives.
+    css: {
+      splitting: true,
+      target: false,
+      minify: true,
+      modules: false,
+      inject: false,
+    },
+    // Exports are hand-managed so the static `./global.css` export survives.
     exports: false,
   },
   lint: {

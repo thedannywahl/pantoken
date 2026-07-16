@@ -32,7 +32,7 @@ closes the string early.
 
 **Fix / rule** — Keep CSS-comment prose backtick-free and escape `${` inside the body.
 
-### `vp pack` doesn't resolve `?raw`
+### `vp pack` doesn't resolve `?raw`; use `?inline`
 
 **Symptom** — A published build failed with `[UNLOADABLE_DEPENDENCY] Could not load x.css?raw`, though
 Vite dev and test worked.
@@ -40,8 +40,8 @@ Vite dev and test worked.
 **Root cause** — `vp pack` (rolldown) doesn't resolve Vite's `?raw` query; only the Vite dev/test path
 does.
 
-**Fix / rule** — Don't inline CSS via `?raw`. Use a codegen that reads the `.css` files and emits
-string consts (the web-components `scripts/styles.ts` pattern), run before pack/check/test.
+**Fix / rule** — Don't inline CSS via `?raw`. Vite+ now bundles `@tsdown/css`; import CSS with
+`?inline` so pack, dev, and test share the same processed string contract.
 
 ### A nested `vp` spawn dies under `vpr docs:dev`
 
