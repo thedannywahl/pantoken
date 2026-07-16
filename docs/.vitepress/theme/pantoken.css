@@ -94,3 +94,8 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavBarAppearance,
 html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
   display: none;
 }
+
+/* Keep custom outline social icons from inheriting VitePress's solid icon fill. */
+.VPSocialLink > svg {
+  fill: none !important;
+}

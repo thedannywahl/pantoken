@@ -32,6 +32,12 @@ docs/api/
 docs/hu/api/
 docs/.vitepress/cache/
 docs/public/
+!docs/public/
+docs/public/*
+!docs/public/robots.txt
+!docs/public/.well-known/
+docs/public/.well-known/*
+!docs/public/.well-known/api-catalog
 
 # AI agent worktrees
 .claude/worktrees/

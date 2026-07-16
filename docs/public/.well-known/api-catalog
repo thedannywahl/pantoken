@@ -1,0 +1,31 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://thedannywahl.github.io/pantoken/",
+      "service-doc": [
+        {
+          "href": "https://thedannywahl.github.io/pantoken/guide/getting-started",
+          "type": "text/html",
+          "title": "pantoken documentation"
+        },
+        {
+          "href": "https://thedannywahl.github.io/pantoken/guide/getting-started.md",
+          "type": "text/markdown",
+          "title": "pantoken documentation (Markdown)"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://thedannywahl.github.io/pantoken/llms.txt",
+          "type": "text/plain",
+          "title": "LLM-friendly documentation index"
+        },
+        {
+          "href": "https://thedannywahl.github.io/pantoken/llms-full.txt",
+          "type": "text/plain",
+          "title": "Full documentation as one document"
+        }
+      ]
+    }
+  ]
+}

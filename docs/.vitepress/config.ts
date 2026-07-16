@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { type DefaultTheme, defineConfig } from "vitepress";
 import { workspaceOrchestrator } from "@pantoken/vite-workspace-orchestrator";
 import { demoMarkdownIt } from "@pantoken/demo";
+import llmstxt from "vitepress-plugin-llms";
 import { LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
 
@@ -198,10 +199,15 @@ const searchLocales = Object.fromEntries(
 // to a user site or a custom domain (set it to "/").
 const base = process.env.DOCS_BASE ?? "/pantoken/";
 
+const hostname = "https://thedannywahl.github.io/pantoken/";
+
+const description =
+  "Instructure design tokens and icons, reshaped for every platform and framework.";
+
 export default defineConfig({
   base,
   title: "pantoken",
-  description: "Instructure design tokens and icons, reshaped for every platform and framework.",
+  description,
   // The focus-outline ring and the transition/stacking/visual-debug classes live in plugins, not the
   // source tokens, so layer their generated sheets (staged once by scripts/demos.ts) over the site's
   // token sheet. `.instui-card` (the shared example/demo surface) is bundled via the theme instead.
@@ -229,6 +235,7 @@ export default defineConfig({
   locales: localesConfig,
   cleanUrls: true,
   lastUpdated: true,
+  sitemap: { hostname },
   // The generated API pages cross-link heavily; don't fail the build on a link TypeDoc emitted.
   ignoreDeadLinks: true,
   // Treat `instui-*` tags as custom elements, not Vue components — so the web-components API pages can
@@ -241,7 +248,17 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [orchestrator],
+    // Emit llms.txt (an agent-legible index) and llms-full.txt (the whole site as one document) so AI
+    // agents can read the guides and generated API reference without scraping HTML. The repo aliases
+    // `vite` to vite-plus-core, while VitePress and this plugin each carry distinct Vite plugin types;
+    // cast through the bottom type to bridge those compatible runtime values.
+    plugins: [
+      orchestrator,
+      llmstxt({
+        title: "pantoken",
+        description,
+      }) as never,
+    ],
     resolve: {
       alias: [
         {
@@ -305,5 +322,15 @@ export default defineConfig({
     logo: { light: "/logo-light.svg", dark: "/logo-dark.svg" },
     search: { provider: "local", options: { locales: searchLocales } },
     outline: { level: [2, 3] },
+    socialLinks: [
+      {
+        icon: {
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>',
+        },
+        link: `${base}llms.txt`,
+        ariaLabel: "llms.txt — documentation for AI agents",
+      },
+      { icon: "github", link: "https://github.com/thedannywahl/pantoken" },
+    ],
   },
 });

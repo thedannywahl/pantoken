@@ -1,4 +1,4 @@
-# pantoken.
+# pantoken
 
 Instructure design tokens and icons, reshaped for every platform. pantoken resolves Instructure UI's
 tokens and icons once into a canonical model, then emits many small, individually-publishable
@@ -8,7 +8,7 @@ Figma, and more — unified by an unscoped `pantoken` meta package.
 Read `README.md` for the consumer quickstart. This file is the map to everything an agent needs; open
 the linked docs only when a task calls for them.
 
-## How to work here.
+## How to work here
 
 - **Use the `vp` / `vpr` / `vpx` CLIs — never raw pnpm, npm, or yarn.** They're global bins. Package
   scripts must never shell out to `pnpm` internally: CI provides `vp` but not `pnpm` on PATH, so a
@@ -27,7 +27,7 @@ the linked docs only when a task calls for them.
   into the bundle and kills client JS. Type-only imports are fine; value imports belong in build
   scripts and tests.
 
-## Knowledge map.
+## Knowledge map
 
 | When you need to…                                                                  | Read…                                |
 | ---------------------------------------------------------------------------------- | ------------------------------------ |
@@ -38,7 +38,7 @@ the linked docs only when a task calls for them.
 | Avoid re-solving a known bug or gotcha                                             | `docs/engineering-log.md`            |
 | Match an agent to a domain                                                         | `AGENTS.md`                          |
 
-## Repo shape.
+## Repo shape
 
 Organized by _how you consume_ each package: `packages/` core machinery · `formats/` importable
 serializations (css, icons, scss, components, …) · `platforms/` generated foreign-ecosystem source ·

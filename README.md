@@ -54,7 +54,7 @@ The monorepo is organized into buckets. A few highlights:
 | `plugins/`   | Optional token and CSS transforms    | `@pantoken/plugin-stacking`, `@pantoken/plugin-simple-icons`                |
 | `tools/`     | Private build tooling                | `@pantoken/aggregate`, `@pantoken/validate-generated`                       |
 
-The docs site has the [full package map](https://instructure.github.io/pantoken/guide/packages).
+The docs site has the [full package map](https://thedannywahl.github.io/pantoken/guide/packages).
 
 ## Architecture
 
@@ -67,7 +67,7 @@ upstream. Every other bucket consumes the IR.
 ## Documentation
 
 The site is built with VitePress and TypeDoc and deploys to GitHub Pages:
-[instructure.github.io/pantoken](https://instructure.github.io/pantoken).
+[thedannywahl.github.io/pantoken](https://thedannywahl.github.io/pantoken).
 
 ```sh
 pnpm run docs:dev      # local dev server with hot reload
@@ -86,7 +86,7 @@ pnpm run check:publish       # publint every publishable package
 ```
 
 Generated files are never committed — a build reproduces them into each package's `generated/`
-directory. See the [generated-output guide](https://instructure.github.io/pantoken/guide/generated-output).
+directory. See the [generated-output guide](https://thedannywahl.github.io/pantoken/guide/generated-output).
 
 ## License
 

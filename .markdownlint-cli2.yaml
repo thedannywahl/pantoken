@@ -12,5 +12,8 @@ ignores:
   - "docs/api/**"
   - "docs/*/api"
   - "docs/*/api/**"
+  # Local-only agent notes and migration seeds; ignored by Git and never published.
+  - "docs/internal"
+  - "docs/internal/**"
   # Tool-managed by `vp config`; not hand-edited.
   - ".github/copilot-instructions.md"

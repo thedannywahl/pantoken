@@ -76,6 +76,7 @@ catalog:
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.12.0
   typedoc-vitepress-theme: ^1.1.3
+  vitepress-plugin-llms: ^1.13.3
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
   "@cssdoc/core": ^0.7.5
