@@ -124,7 +124,10 @@ function resolveToken(name: string): { syntax?: string; value?: string } | undef
   return syntax || value ? { syntax, value } : undefined;
 }
 
-const cssPath = (subpath: string): string => require.resolve(`@pantoken/components/${subpath}`);
+// Use the generated CSS files (which retain doc comments) instead of the packaged dist (which tsdown/css
+// strips comments from). This ensures `parseCssDocs` can extract `@component`, `@utility` records.
+const generatedCssDir = join(docsRoot, "..", "formats", "components", "generated");
+const cssPath = (subpath: string): string => join(generatedCssDir, subpath);
 const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf8");
 
 /**
@@ -205,7 +208,7 @@ const build = (): void => {
   // lint plugins and the per-record test guard, so docs, lint, and tests agree on the record model and
   // section order. `configFile` feeds `emitCssApi` (parse config + `render` section order/heading);
   // `configuration` is its parse view, reused locally for `parseCssDocs`.
-  const componentsRoot = join(cssPath("package.json"), "..");
+  const componentsRoot = join(generatedCssDir, "..");
   const configFile = CssDocConfigFile.loadForFolder(repoRoot);
   const configuration = configFile.toConfiguration();
 
