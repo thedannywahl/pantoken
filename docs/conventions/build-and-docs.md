@@ -15,9 +15,15 @@
 
 - `pnpm run ready` — build `-r`, `vp check`, test `-r`, markdown lint. Must pass before you're done.
 - `pnpm run check:publish` — `publint`.
+- Release automation uses Changesets and the tag-driven workflow in
+  `.github/workflows/release.yml`. Use `pnpm run release:version` to apply version/changelog updates
+  before creating a release tag.
 - Generated artifacts are gitignored and reproduced on build: `platforms/tokens/src/generated/`,
   `platforms/css/style.css`, each preprocessor's static file, and web-components `src/generated/`.
   `ready` runs `vp run -r build` before `vp check`, so generated files exist in order.
+
+See `docs/internal/release-strategy.md` for the runbook, dist-tag mapping, prerelease flow, and npm
+organization governance model.
 
 ## Linting CSS
 

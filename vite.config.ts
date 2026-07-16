@@ -31,6 +31,32 @@ export default defineConfig({
           'vp exec eslint "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css" "renderers/web-components/src/**/*.css"',
         dependsOn: ["@pantoken/components#generate"],
       },
+      "changeset:add": {
+        command: "vpx changeset",
+      },
+      "release:status": {
+        command: "vpx changeset status --verbose",
+      },
+      "release:version": {
+        command: "vpx changeset version",
+      },
+      "release:publish": {
+        command: "vpx changeset publish",
+      },
+      "release:pre:enter": {
+        command: "vpx changeset pre enter next",
+      },
+      "release:pre:exit": {
+        command: "vpx changeset pre exit",
+      },
+      "gate:publint": {
+        command:
+          'vp exec -F "./packages/**" -F "./formats/**" -F "./platforms/**" -F "./renderers/**" -F "./bundlers/**" -F "./design/**" -F "./ai/**" -F "./plugins/**" -F "./tools/**" publint',
+      },
+      "gate:attw": {
+        command:
+          'vp exec -F "./packages/**" -F "./formats/**" -F "./platforms/**" -F "./renderers/**" -F "./bundlers/**" -F "./design/**" -F "./ai/**" -F "./plugins/**" -F "./tools/**" attw --pack --profile strict --no-emoji',
+      },
     },
   },
 });

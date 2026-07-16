@@ -13,10 +13,12 @@
     "docs:preview": "vp run @pantoken/docs#docs:preview",
     "docs:api": "vp run @pantoken/docs#docs:api",
     "lint:markdown": "vp exec markdownlint-cli2 \"**/*.md\"",
-    "check:publish": "vp exec -F \"./packages/**\" -F \"./formats/**\" -F \"./platforms/**\" -F \"./renderers/**\" -F \"./bundlers/**\" -F \"./design/**\" -F \"./ai/**\" -F \"./plugins/**\" -F \"./tools/**\" publint"
+    "check:publish": "vp run gate:publint",
+    "check:attw": "vp run gate:attw"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
+    "@changesets/cli": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/eslint-plugin": "catalog:",

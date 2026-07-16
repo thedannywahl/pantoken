@@ -1,0 +1,86 @@
+name: Release packages
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      dist_tag:
+        description: "Optional npm dist-tag override (for example: latest, next, beta)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+
+      - name: Verify release gates
+        run: |
+          vp run ready
+          vp run gate:publint
+          vp run gate:attw
+
+      - name: Resolve npm dist-tag
+        id: dist_tag
+        shell: bash
+        env:
+          INPUT_DIST_TAG: ${{ inputs.dist_tag }}
+        run: |
+          if [[ -n "${INPUT_DIST_TAG}" ]]; then
+            tag="${INPUT_DIST_TAG}"
+          else
+            version="${GITHUB_REF_NAME#v}"
+            if [[ "${version}" == *"-alpha."* ]]; then
+              tag="alpha"
+            elif [[ "${version}" == *"-beta."* ]]; then
+              tag="beta"
+            elif [[ "${version}" == *"-rc."* ]]; then
+              tag="rc"
+            elif [[ "${version}" == *"-"* ]]; then
+              tag="next"
+            else
+              tag="latest"
+            fi
+          fi
+
+          echo "dist_tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "Publishing with npm dist-tag: ${tag}"
+
+      - name: Publish packages
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
+        run: vpx changeset publish --tag "${{ steps.dist_tag.outputs.dist_tag }}"
+
+      - name: Create GitHub release
+        if: github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          prerelease: false

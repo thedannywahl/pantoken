@@ -1,0 +1,70 @@
+name: Changeset check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  detect-release-impact:
+    runs-on: ubuntu-latest
+    outputs:
+      release_impact: ${{ steps.filter.outputs.release_impact }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Detect release-impacting changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            release_impact:
+              - 'packages/**'
+              - 'formats/**'
+              - 'platforms/**'
+              - 'renderers/**'
+              - 'bundlers/**'
+              - 'design/**'
+              - 'plugins/**'
+              - 'ai/**'
+              - 'tools/**'
+              - 'package.json'
+              - 'pnpm-workspace.yaml'
+              - 'pnpm-lock.yaml'
+
+  require-changeset:
+    needs: detect-release-impact
+    if: needs.detect-release-impact.outputs.release_impact == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+
+      - name: Verify release metadata
+        run: vp run release:status
+
+  docs-and-internal-only:
+    needs: detect-release-impact
+    if: needs.detect-release-impact.outputs.release_impact != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip changeset requirement
+        run: |
+          echo "No release-impacting files changed."
+          echo "Changeset requirement is skipped for docs/internal-only PRs."
