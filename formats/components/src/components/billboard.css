@@ -2,23 +2,22 @@
  * @component billboard
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.
- * @modifier -size-sm — Small.
- * @modifier -size-lg — Large.
- * @part .hero — The leading icon or image.
+ * @modifier -icon-* — Render a leading icon glyph on `.hero` (e.g. `.hero -icon-inbox`).
+ * @modifier -size-sm — Small: tighter spacing with smaller heading, message, and hero icon.
+ * @modifier -size-lg — Large: roomier spacing with larger heading, message, and hero icon.
+ * @part .hero — The optional leading icon or image.
  * @part .heading — The billboard heading.
  * @part .message — The supporting message.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
- * <div class="pfx-billboard">
- *   <span class="hero"><span class="pfx-icon -icon-inbox"></span></span>
+ * <div class="pfx-billboard -size-large">
+ *   <span class="hero -icon-inbox"></span>
  *   <div class="heading">No items yet</div>
  *   <div class="message">Create your first item to get started.</div>
  * </div>
  * @structure
  * .pfx-billboard {
- *   .hero {
- *     .pfx-icon {}
- *   }
+ *   .hero:optional {}
  *   .heading {}
  *   .message {}
  * }
@@ -32,32 +31,40 @@
   font-family: var(--instui-component-billboard-font-family);
   color: var(--instui-component-billboard-message-color);
 }
+
 .pfx-billboard.-size-sm {
   padding: var(--instui-component-billboard-padding-small);
 }
+
 .pfx-billboard.-size-lg {
   padding: var(--instui-component-billboard-padding-large);
   margin: var(--instui-component-billboard-large-margin);
 }
+
 .pfx-billboard.-size-sm .message {
   font-size: var(--instui-component-billboard-message-font-size-small);
 }
+
 .pfx-billboard.-size-lg .message {
   font-size: var(--instui-component-billboard-message-font-size-large);
 }
+
 .pfx-billboard.-clickable {
   cursor: pointer;
   border: var(--instui-component-billboard-button-border-width)
     var(--instui-component-billboard-button-border-style) transparent;
   border-radius: var(--instui-component-billboard-button-border-radius);
 }
+
 .pfx-billboard.-clickable:hover {
   border-style: var(--instui-component-billboard-button-hover-border-style);
 }
+
 .pfx-billboard.-clickable:active {
   background: var(--instui-component-billboard-clickable-active-bg);
   color: var(--instui-component-billboard-clickable-active-text);
 }
+
 @scope (.pfx-billboard) {
   /* The hero (an icon or image) leads the block. Size it via font-size on the glyph in the markup. */
   :scope > .hero {
@@ -66,6 +73,21 @@
     margin-block-end: var(--instui-spacing-space-sm);
     color: var(--instui-component-billboard-message-color);
   }
+
+  /* The documented `-icon-*` modifier is applied directly on `.hero` for icon glyph rendering. */
+  :scope > .hero[class*="-icon-"] {
+    line-height: 1;
+    font-size: var(--instui-component-billboard-message-font-size-large);
+  }
+
+  :scope.-size-sm > .hero[class*="-icon-"] {
+    font-size: var(--instui-component-billboard-message-font-size-medium);
+  }
+
+  :scope.-size-lg > .hero[class*="-icon-"] {
+    font-size: calc(var(--instui-component-billboard-message-font-size-large) * 1.5);
+  }
+
   /* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
   :scope > .heading {
     margin: 0 0 var(--instui-spacing-space-xs);
@@ -73,10 +95,20 @@
     font-weight: bold;
     font-size: var(--instui-component-billboard-message-font-size-large);
   }
+
+  :scope.-size-sm > .heading {
+    font-size: var(--instui-component-billboard-message-font-size-medium);
+  }
+
+  :scope.-size-lg > .heading {
+    font-size: calc(var(--instui-component-billboard-message-font-size-large) * 1.25);
+  }
+
   :scope > .message {
     color: var(--instui-component-billboard-message-color);
     font-size: var(--instui-component-billboard-message-font-size-medium);
   }
+
   :scope.-clickable > .message,
   :scope.-clickable > .heading,
   :scope.-clickable > .hero {
