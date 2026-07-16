@@ -18,6 +18,7 @@ type LocaleMeta = {
     plugins: string;
     generated: string;
     api: string;
+    apiOverview: string;
   };
   editText: string;
   // The CSS reference is merged into the TypeDoc sidebar by `@cssdoc/typedoc`, so there's one path.
@@ -84,6 +85,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       plugins: "Plugins",
       generated: "Generated output",
       api: "API reference",
+      apiOverview: "Overview",
     },
     editText: "Edit this page on GitHub",
     typedocSidebarPath: "../api/typedoc-sidebar.json",
@@ -142,6 +144,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       plugins: "Pluginek",
       generated: "Generált kimenet",
       api: "API referencia",
+      apiOverview: "Áttekintés",
     },
     editText: "Oldal szerkesztése GitHubon",
     typedocSidebarPath: "../hu/api/typedoc-sidebar.json",

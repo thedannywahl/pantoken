@@ -13,7 +13,7 @@
  * Runs after `docs:api:en` (TypeDoc cleans `docs/api` and writes `typedoc-sidebar.json`, which this
  * merges into) and before `docs:api:locales`/vitepress.
  */
-import { readdirSync, readFileSync } from "node:fs";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
@@ -22,6 +22,10 @@ import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 
 const docsRoot = join(import.meta.dirname, "..");
+
+const CSS_OVERVIEW_BLURB =
+  "The CSS API reference covers pantoken's class-based component layer: components, utilities, " +
+  "global rules, and declarations built on the token system.";
 
 const tokenByName = new Map(tokens.map((t) => [t.name, t]));
 
@@ -241,6 +245,18 @@ const build = (): void => {
     resolveSource,
     importSnippet,
   });
+
+  // Add a short landing-page blurb to mirror the API overview style while keeping cssdoc-generated
+  // tables and section ordering intact.
+  const cssIndexPath = join(docsRoot, "api", outSubdir, "index.md");
+  const cssIndex = readFileSync(cssIndexPath, "utf8");
+  if (!cssIndex.includes(CSS_OVERVIEW_BLURB)) {
+    const heading = "# CSS API reference\n\n";
+    const withBlurb = cssIndex.startsWith(heading)
+      ? `${heading}${CSS_OVERVIEW_BLURB}\n\n${cssIndex.slice(heading.length)}`
+      : `# CSS API reference\n\n${CSS_OVERVIEW_BLURB}\n\n${cssIndex}`;
+    writeFileSync(cssIndexPath, withBlurb);
+  }
 
   // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads
   // the component CSS). Our docs do, so `demoMarkdownIt` seams a live preview onto each fence at compile

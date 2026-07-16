@@ -94,6 +94,7 @@ const build = (): void => {
 
   console.log("Generating EN API docs...");
   run("pnpm", ["exec", "typedoc", "--options", "typedoc.json", "--out", "api"]);
+  run("node", ["scripts/write-api-overview.ts"]);
 
   // The CSS API pages live under docs/api/css/; generate them after TypeDoc (which cleans docs/api) and
   // before the locale clone, so they're cloned + translated for HU for free.

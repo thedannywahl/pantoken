@@ -80,6 +80,8 @@ const typedocSidebarByLocale = Object.fromEntries(
 const splitApiSidebar = (
   merged: DefaultTheme.SidebarItem[],
   apiLabel: string,
+  apiPrefix: string,
+  apiOverviewLabel: string,
 ): DefaultTheme.SidebarItem[] => {
   const isCssSection = (item: DefaultTheme.SidebarItem): boolean => item.text === "CSS";
 
@@ -92,12 +94,23 @@ const splitApiSidebar = (
     };
   };
 
-  const cssSections = merged.filter(isCssSection).map(collapseTree);
+  const normalizeCssSection = (item: DefaultTheme.SidebarItem): DefaultTheme.SidebarItem => {
+    if (!item.items) return item;
+    return {
+      ...item,
+      collapsed: false,
+      items: item.items.map(collapseTree),
+    };
+  };
+
+  const cssSections = merged.filter(isCssSection).map(normalizeCssSection);
   const typedocSections = merged.filter((item) => !isCssSection(item));
 
-  if (cssSections.length === 0) return [{ text: apiLabel, items: merged }];
+  const apiOverview: DefaultTheme.SidebarItem = { text: apiOverviewLabel, link: apiPrefix };
 
-  return [{ text: apiLabel, items: typedocSections }, ...cssSections];
+  if (cssSections.length === 0) return [{ text: apiLabel, items: [apiOverview, ...merged] }];
+
+  return [{ text: apiLabel, items: [apiOverview, ...typedocSections] }, ...cssSections];
 };
 
 const localesConfig = Object.fromEntries(
@@ -156,6 +169,8 @@ const localesConfig = Object.fromEntries(
           [locale.apiPrefix]: splitApiSidebar(
             typedocSidebarByLocale[localeKey],
             locale.sidebar.api,
+            locale.apiPrefix,
+            locale.sidebar.apiOverview,
           ),
         },
         editLink: {
