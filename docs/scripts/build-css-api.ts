@@ -13,16 +13,14 @@
  * Runs after `docs:api:en` (TypeDoc cleans `docs/api` and writes `typedoc-sidebar.json`, which this
  * merges into) and before `docs:api:locales`/vitepress.
  */
-import { createRequire } from "node:module";
 import { readdirSync, readFileSync } from "node:fs";
-import { basename, join, relative } from "node:path";
+import { join, relative } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 
-const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
 
 const tokenByName = new Map(tokens.map((t) => [t.name, t]));
@@ -259,52 +257,6 @@ const build = (): void => {
   console.log(
     `✓ CSS API: wrote ${entries.length} record page(s) to api/css/` +
       `${sidebarMerged ? " + merged the CSS section into the TypeDoc sidebar" : ""}`,
-  );
-
-  // ── Web-component shadow CSS ───────────────────────────────────────────────────
-  // The web components ship their own hand-authored shadow-DOM styles — a different package, rooted at
-  // `:host` with `--drawer-width`-style consumer-set props — so they emit as a SEPARATE sidebar section
-  // (its own `outSubdir`, so pages/index/sidebar don't clobber the class-based ones) and sit outside the
-  // token-drift guard above (their locals aren't `--instui-*` IR tokens).
-  const wcRoot = join(require.resolve("@pantoken/web-components/package.json"), "..");
-  const wcCss = [join(wcRoot, "src/elements"), join(wcRoot, "src/lib")].flatMap((dir) =>
-    readdirSync(dir)
-      .filter((f) => f.endsWith(".css"))
-      .sort()
-      .map((f) => join(dir, f)),
-  );
-  const wcRecordSheet = new Map<string, string>();
-  for (const file of wcCss) {
-    const sheet = `${basename(file, ".css")}.css`;
-    for (const entry of parseCssDocs(readFileSync(file, "utf8"), { configuration })) {
-      wcRecordSheet.set(entry.name, sheet);
-    }
-  }
-  const wcImportSnippet = (entry: CssDocEntry): string | undefined => {
-    const sheet = wcRecordSheet.get(entry.name);
-    if (!sheet) return undefined;
-    return [
-      '@import "@pantoken/web-components/components.css";',
-      `@import "@pantoken/web-components/${sheet}";`,
-    ].join("\n");
-  };
-  // Source links point at each `.css` shadow-style file. We include both import forms in `## Usage`:
-  // the aggregate `components.css` and the per-record stylesheet.
-  const wc = emitCssApi({
-    outputDirectory: join(docsRoot, "api"),
-    css: wcCss,
-    outSubdir: "css-web-components",
-    label: "Web components CSS",
-    baseHref: "/api/css-web-components/",
-    configFile,
-    classNames,
-    resolveToken,
-    resolveSource: makeResolveSource(sourceMap(wcCss)),
-    importSnippet: wcImportSnippet,
-  });
-  console.log(
-    `✓ CSS API: wrote ${wc.entries.length} web-component record page(s) to api/css-web-components/` +
-      `${wc.sidebarMerged ? " + merged the Web components CSS section into the TypeDoc sidebar" : ""}`,
   );
 };
 

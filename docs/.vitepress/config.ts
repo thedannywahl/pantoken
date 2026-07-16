@@ -25,8 +25,7 @@ const at = (relative: string): string =>
 // NOTE: `@pantoken/web-components`' `register()` bundle needs `vp pack`, which likewise can't run nested
 // under `vpr`, so it is NOT auto-rebuilt here. Rebuild it manually in a separate top-level shell
 // (`vpr @pantoken/web-components#build`) when you change web-component behavior; `reloadWatchPaths` then
-// bridges the new `dist` into HMR. Its shadow-CSS records still reach the docs, since `build-css-api`
-// reads the `.css` sources directly (picked up on the next CSS-API rebuild).
+// bridges the new `dist` into HMR.
 const orchestrator = workspaceOrchestrator({
   upstream: [
     {
@@ -44,11 +43,11 @@ const orchestrator = workspaceOrchestrator({
       dependents: ["@pantoken/docs#docs:api:css"],
     },
     {
-      // The CSS API reference (docs/api/css/**) is parsed from the generated component sheet + the
-      // web-component shadow `.css` sources and rendered per the shared root cssdoc.json. Rebuild it
-      // after the component sheet regenerates (via @pantoken/components' `dependents`) and whenever
-      // cssdoc.json changes (it drives the parse model + section order). VitePress watches the emitted
-      // `.md` under its source tree, so the pages hot-reload on their own.
+      // The CSS API reference (docs/api/css/**) is parsed from the generated components sheet and
+      // rendered per the shared root cssdoc.json. Rebuild it after the component sheet regenerates
+      // (via @pantoken/components' `dependents`) and whenever cssdoc.json changes (it drives the parse
+      // model + section order). VitePress watches the emitted `.md` under its source tree, so the
+      // pages hot-reload on their own.
       name: "@pantoken/docs#docs:api:css",
       dir: at("docs"),
       watchPaths: [at("cssdoc.json")],
@@ -75,16 +74,30 @@ const typedocSidebarByLocale = Object.fromEntries(
 
 /**
  * `@cssdoc/typedoc` appends a top-level "CSS" section to the merged TypeDoc sidebar. Nest the TS package
- * groups back under an `apiLabel` ("API reference") heading and keep the "CSS" section top-level after it,
+ * groups back under an `apiLabel` ("API reference") heading and keep that CSS section top-level after it,
  * so the API nav reads `[ API reference › packages…, CSS › … ]` rather than hoisting every group.
  */
 const splitApiSidebar = (
   merged: DefaultTheme.SidebarItem[],
   apiLabel: string,
 ): DefaultTheme.SidebarItem[] => {
-  const cssIndex = merged.findIndex((item) => item.text === "CSS");
-  if (cssIndex < 0) return [{ text: apiLabel, items: merged }];
-  return [{ text: apiLabel, items: merged.filter((_, i) => i !== cssIndex) }, merged[cssIndex]];
+  const isCssSection = (item: DefaultTheme.SidebarItem): boolean => item.text === "CSS";
+
+  const collapseTree = (item: DefaultTheme.SidebarItem): DefaultTheme.SidebarItem => {
+    if (!item.items) return item;
+    return {
+      ...item,
+      collapsed: true,
+      items: item.items.map(collapseTree),
+    };
+  };
+
+  const cssSections = merged.filter(isCssSection).map(collapseTree);
+  const typedocSections = merged.filter((item) => !isCssSection(item));
+
+  if (cssSections.length === 0) return [{ text: apiLabel, items: merged }];
+
+  return [{ text: apiLabel, items: typedocSections }, ...cssSections];
 };
 
 const localesConfig = Object.fromEntries(
