@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
+import { definePlugin } from "@pantoken/plugin-kit";
 import { buildTokens } from "../src/build.ts";
-import type { PantokenPlugin } from "../src/plugin.ts";
 
 const tokens = buildTokens({ theme: "rebrand" });
 const byName = new Map(tokens.map((t) => [t.name, t]));
@@ -37,13 +37,13 @@ test("icons are rolled in as <image> tokens with metadata", () => {
 });
 
 test("plugin token hooks inject at the token layer", () => {
-  const focus: PantokenPlugin = {
+  const focus = definePlugin({
     name: "focus",
     tokens: ({ tokens, define }) => [
       ...tokens,
       define({ name: "--instui-focus-color", value: "var(--instui-color-border-brand)" }),
     ],
-  };
+  });
   const withFocus = buildTokens({ theme: "rebrand", plugins: [focus] });
   expect(withFocus.some((t) => t.name === "--instui-focus-color")).toBe(true);
   // Without the plugin, the token is absent — proving injection is opt-in.

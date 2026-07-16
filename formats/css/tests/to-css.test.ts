@@ -1,8 +1,9 @@
 import { expect, test } from "vite-plus/test";
 import { danglingReferences } from "@pantoken/utils";
+import { definePlugin } from "@pantoken/plugin-kit";
 import { css } from "../src/index.ts";
 import { toCss } from "../src/to-css.ts";
-import type { PantokenPlugin, Token } from "@pantoken/model";
+import type { Token } from "@pantoken/model";
 
 const fixture: Token[] = [
   { name: "--instui-primitive-color-white", syntax: "<color>", inherits: true, value: "#ffffff" },
@@ -34,13 +35,13 @@ test("concrete tokens become @property, contextual tokens become declarations", 
 });
 
 test("a css-stage plugin can inject a focus rule after the base", () => {
-  const focus: PantokenPlugin = {
+  const focus = definePlugin({
     name: "focus",
     css: () => ({
       append: ":focus-visible { outline: 2px solid var(--instui-focus-color); }",
       marker: "pantoken:focus",
     }),
-  };
+  });
   const withPlugin = toCss(fixture, { plugins: [focus] });
   expect(withPlugin).toContain(":focus-visible { outline: 2px solid var(--instui-focus-color); }");
   expect(withPlugin).toContain("/* pantoken:focus */");

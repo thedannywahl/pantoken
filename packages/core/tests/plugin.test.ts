@@ -1,7 +1,6 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
 import { definePlugin } from "@pantoken/plugin-kit";
 import { dedupeByName, defineToken, runIconPlugins, runTokenPlugins } from "../src/plugin.ts";
-import type { PantokenPlugin } from "../src/plugin.ts";
 import type { Token } from "../src/model.ts";
 
 afterEach(() => vi.restoreAllMocks());
@@ -33,14 +32,14 @@ test("dedupeByName keeps the last occurrence", () => {
 
 test("runTokenPlugins lets a plugin contribute and override, later wins", () => {
   const base: Token[] = [defineToken({ name: "--instui-a", value: "#111" })];
-  const plugin: PantokenPlugin = {
+  const plugin = definePlugin({
     name: "test",
     tokens: ({ tokens, define }) => [
       ...tokens,
       define({ name: "--instui-a", value: "#222" }),
       define({ name: "--instui-focus-color", value: "#00f" }),
     ],
-  };
+  });
   const out = runTokenPlugins(base, "rebrand", [plugin]);
   const byName = new Map(out.map((t) => [t.name, t.value]));
   expect(byName.get("--instui-a")).toBe("#222");
