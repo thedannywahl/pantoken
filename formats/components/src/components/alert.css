@@ -22,13 +22,14 @@
  * @cssproperty --pantoken-alert-icon-bg <color> — The coloured status-bar fill behind the glyph; each `-color-*` variant sets its own.
  * @accessibility For an important message, add `role="alert"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.pfx-close-button` in the example carries `aria-label="Close"`).
  * @example
+ * ```html
  * <div class="pfx-alert -icon-megaphone pfx-mb-md">
  *   An alert with the default <code>info</code> color, and a custom icon.
  * </div>
- * 
  * <div class="pfx-alert -color-success">
  *   Congratulations! You're using the "success" color.
  * </div>
+ * ```
  * @structure
  * .pfx-alert {
  *   slot {}
@@ -56,6 +57,7 @@
   --pantoken-alert-icon-bg: var(--instui-component-alert-info-icon-background);
   --pantoken-alert-glyph: var(--instui-icon-info);
 }
+
 /* The solid variant-coloured bar, flush to the rounded left edge (overlapping the border). */
 .pfx-alert::before {
   content: "";
@@ -67,6 +69,7 @@
   border-end-start-radius: var(--instui-component-alert-border-radius);
   background: var(--pantoken-alert-icon-bg);
 }
+
 /* The white variant glyph, centred over the bar (masked, so it takes the icon-colour token). */
 .pfx-alert::after {
   content: "";
@@ -78,6 +81,7 @@
   -webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
   mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
 }
+
 /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
    takes a small symmetric inset, not the content padding), and reserve room only when it's present. */
 .pfx-alert > .pfx-close-button {
@@ -85,15 +89,18 @@
   inset-block-start: var(--instui-spacing-space-xs);
   inset-inline-end: var(--instui-spacing-space-xs);
 }
+
 .pfx-alert:has(> .pfx-close-button) {
   padding-inline-end: calc(
     var(--instui-component-base-button-medium-height) + var(--instui-spacing-space-xs)
   );
 }
+
 /* Opt out of the default elevation (InstUI's hasShadow={false}). */
 .pfx-alert.-without-shadow {
   box-shadow: none;
 }
+
 /* screenReaderOnly: announced to assistive tech, but visually hidden. */
 .pfx-alert.-screen-reader-only {
   position: absolute;
@@ -107,24 +114,29 @@
   white-space: nowrap;
   border: 0;
 }
+
 .pfx-alert.-color-info {
   border-color: var(--instui-component-alert-info-border-color);
 }
+
 .pfx-alert.-color-success {
   border-color: var(--instui-component-alert-success-border-color);
   --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
   --pantoken-alert-glyph: var(--instui-icon-circle-check);
 }
+
 .pfx-alert.-color-warning {
   border-color: var(--instui-component-alert-warning-border-color);
   --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
   --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
 }
+
 .pfx-alert.-color-danger {
   border-color: var(--instui-component-alert-danger-border-color);
   --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
   --pantoken-alert-glyph: var(--instui-icon-circle-x);
 }
+
 /* A custom `-icon-<name>` on the alert swaps the status glyph (still drawn white over the coloured
    bar), keeping the variant's bar colour. Last, so it wins over the per-variant glyph above. The
    generic icon painter also targets `[class*="-icon-"]::before` at equal specificity and later in the
@@ -132,6 +144,7 @@
 .pfx-alert[class*="-icon-"] {
   --pantoken-alert-glyph: var(--pantoken-glyph);
 }
+
 .pfx-alert[class*="-icon-"]::before {
   inline-size: 2.5rem;
   block-size: auto;
