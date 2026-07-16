@@ -4,23 +4,30 @@
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.
  * @modifier -icon-* — Render a leading icon glyph on `.hero` (e.g. `<span class="hero -icon-inbox"></span>`).
  * @modifier -size-sm — Small: tighter spacing with smaller heading, message, and hero icon.
+ * @modifier -size-small — Long-form alias of {@link -size-sm}.
+ * @modifier -size-md — Medium (default): standard spacing with medium heading, message, and hero icon.
+ * @modifier -size-medium — Long-form alias of {@link -size-md}.
  * @modifier -size-lg — Large: roomier spacing with larger heading, message, and hero icon.
+ * @modifier -size-large — Long-form alias of {@link -size-lg}.
  * @part .hero — The optional leading icon or image.
  * @part .heading — The billboard heading.
  * @part .message — The supporting message.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
- * <div class="pfx-billboard -size-large">
+ * ```html
+ * <div class="pfx-billboard -size-md -clickable" tabindex="0">
  *   <span class="hero -icon-inbox"></span>
  *   <div class="heading">No items yet</div>
  *   <div class="message">Create your first item to get started.</div>
  * </div>
+ * ```
  * @structure
  * .pfx-billboard {
  *   .hero:optional {}
  *   .heading {}
  *   .message {}
  * }
+ * @todo `instructure-design-tokens` is missing several values defined in the `Billboard` component, so we hardcode them here for now. When the tokens are added, we should remove the hardcoded values and use the tokens instead.
  */
 .pfx-billboard {
   display: block;
@@ -29,14 +36,24 @@
   padding: var(--instui-component-billboard-padding-medium);
   margin: var(--instui-component-billboard-medium-margin);
   font-family: var(--instui-component-billboard-font-family);
-  color: var(--instui-component-billboard-message-color);
+  color: var(--instui-color-text-base);
 }
 
 .pfx-billboard.-size-sm {
   padding: var(--instui-component-billboard-padding-small);
 }
 
+.pfx-billboard.-size-md,
+.pfx-billboard.-size-medium {
+  padding: var(--instui-component-billboard-padding-medium);
+}
+
 .pfx-billboard.-size-lg {
+  padding: var(--instui-component-billboard-padding-large);
+  margin: var(--instui-component-billboard-large-margin);
+}
+
+.pfx-billboard.-size-large {
   padding: var(--instui-component-billboard-padding-large);
   margin: var(--instui-component-billboard-large-margin);
 }
@@ -45,8 +62,16 @@
   font-size: var(--instui-font-size-text-sm);
 }
 
-/* @todo instructure-design-tokens has no token that matches the 1.375rem size used here, so we hardcode it for now. */
+.pfx-billboard.-size-md .message,
+.pfx-billboard.-size-medium .message {
+  font-size: var(--instui-font-size-text-base);
+}
+
 .pfx-billboard.-size-lg .message {
+  font-size: 1.375rem;
+}
+
+.pfx-billboard.-size-large .message {
   font-size: 1.375rem;
 }
 
@@ -58,12 +83,16 @@
 }
 
 .pfx-billboard.-clickable:hover {
-  border-style: var(--instui-component-billboard-button-hover-border-style);
+  border-style: dashed;
+  border-color: var(--instui-color-text-base);
 }
 
 .pfx-billboard.-clickable:focus {
   border-style: solid;
-  border-color: var(--instui-component-billboard-message-color-clickable);
+  border-color: var(--instui-color-text-base);
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
 }
 
 .pfx-billboard.-clickable:focus-visible {
@@ -75,7 +104,31 @@
 .pfx-billboard.-clickable:active {
   background: var(--instui-component-billboard-clickable-active-bg);
   border-style: solid;
-  border-color: var(--instui-component-billboard-message-color-clickable);
+  border-color: var(--instui-color-text-base);
+}
+
+/* Fallback for environments where @scope is not applied: keep hero icon sizes in sync with size modifiers. */
+.pfx-billboard > .hero {
+  font-size: var(--instui-component-icon-illu-md);
+}
+
+.pfx-billboard > .hero[class*="-icon-"] {
+  line-height: 1;
+}
+
+.pfx-billboard.-size-sm > .hero,
+.pfx-billboard.-size-small > .hero {
+  font-size: var(--instui-component-icon-illu-sm);
+}
+
+.pfx-billboard.-size-md > .hero,
+.pfx-billboard.-size-medium > .hero {
+  font-size: var(--instui-component-icon-illu-md);
+}
+
+.pfx-billboard.-size-lg > .hero,
+.pfx-billboard.-size-large > .hero {
+  font-size: var(--instui-component-icon-illu-lg);
 }
 
 @scope (.pfx-billboard) {
@@ -84,42 +137,71 @@
     display: inline-flex;
     justify-content: center;
     margin-block-end: var(--instui-spacing-space-sm);
-    color: var(--instui-component-link-text-color);
+    color: var(--instui-color-text-base);
+    font-size: var(--instui-component-icon-illu-md);
   }
 
   /* The documented `-icon-*` modifier lives directly on .hero. */
   :scope > .hero[class*="-icon-"] {
     line-height: 1;
+  }
+
+  :scope.-size-sm > .hero {
+    font-size: var(--instui-component-icon-illu-sm);
+  }
+
+  :scope.-size-md > .hero,
+  :scope.-size-medium > .hero {
     font-size: var(--instui-component-icon-illu-md);
+  }
+
+  :scope.-size-lg > .hero {
+    font-size: var(--instui-component-icon-illu-lg);
+  }
+
+  :scope.-size-large > .hero {
+    font-size: var(--instui-component-icon-illu-lg);
   }
 
   :scope.-size-sm > .hero[class*="-icon-"] {
     font-size: var(--instui-component-icon-illu-sm);
   }
 
+  :scope.-size-small > .hero[class*="-icon-"] {
+    font-size: var(--instui-component-icon-illu-sm);
+  }
+
+  :scope.-size-md > .hero[class*="-icon-"],
+  :scope.-size-medium > .hero[class*="-icon-"] {
+    font-size: var(--instui-component-icon-illu-md);
+  }
+
   :scope.-size-lg > .hero[class*="-icon-"] {
+    font-size: var(--instui-component-icon-illu-lg);
+  }
+
+  :scope.-size-large > .hero[class*="-icon-"] {
     font-size: var(--instui-component-icon-illu-lg);
   }
 
   /* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
   :scope > .heading {
     margin: 0 0 var(--instui-spacing-space-xs);
-    color: var(--instui-component-billboard-message-color);
+    color: var(--instui-color-text-base);
     font-weight: bold;
     font-size: var(--instui-component-text-font-size-x-x-large);
   }
 
   :scope > .message {
-    color: var(--instui-component-link-text-color);
+    color: var(--instui-color-text-base);
     font-size: var(--instui-font-size-text-base);
   }
 
   :scope.-clickable:hover > .hero {
-    color: var(--instui-component-link-text-hover-color);
+    color: var(--instui-component-link-text-color);
   }
 
-  :scope.-clickable:active > .hero,
-  :scope.-clickable:active > .message {
-    color: var(--instui-component-billboard-clickable-active-text);
+  :scope.-clickable:active > .hero {
+    color: var(--instui-component-link-on-color-text-color);
   }
 }

@@ -222,11 +222,12 @@ test("list has sizes and solid/dashed delimiters; toggle-details, rating and bre
 
 test("billboard has sizes and a clickable variant; range has handle states and a value bubble", () => {
   const bb = billboardCss({ prefix: "instui" });
+  const bbSelectors = norm(bb).replaceAll(/\s*>\s*/g, " > ");
   expect(bb).toContain(".instui-billboard.-clickable");
   expect(bb).toContain("var(--instui-component-billboard-clickable-active-bg)");
   // A hero (icon/image) + heading lead the message (sub-elements, so scoped as :scope > .x).
-  expect(bb).toContain(":scope > .hero {");
-  expect(bb).toContain(":scope > .heading {");
+  expect(bbSelectors).toContain(":scope > .hero {");
+  expect(bbSelectors).toContain(":scope > .heading {");
   const range = rangeInputCss({ prefix: "instui" });
   expect(range).toContain(".instui-range-input");
   expect(range).toContain(":hover::-webkit-slider-thumb");
