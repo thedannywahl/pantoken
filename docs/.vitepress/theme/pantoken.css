@@ -2,6 +2,14 @@
    whole site. The token carries its own fallback chain: Atkinson, then system-ui. */
 :root {
   --vp-font-family-base: var(--instui-font-family-atkinson-hyperlegible-next);
+  /* Vite's production CSS transform lowers light-dark() to scheme helper variables. Give that
+     transform an explicit light default to pair with the dark override below; without it,
+     both lowered branches remain active in light mode and concatenate into invalid colours. */
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 /* Each CSS-API `@example` is a source fence that seams into a bordered, page-background frame
