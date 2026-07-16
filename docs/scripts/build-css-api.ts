@@ -20,6 +20,7 @@ import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
+import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 
@@ -139,10 +140,12 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
  * loaded on doc pages for the live examples, so the class paints). The extra `pantoken-doc-tag` is a
  * docs-only marker: the shipped pill is a compact fixed-height badge, so `.vitepress/theme/pantoken.css`
  * uses it to relax the pill for the flowing deprecation sentence it wraps — without touching how the
- * real `.instui-pill` renders in a component preview. Release stages aren't authored anywhere in the
- * library yet, so `stage` is left unset (those markers stay plain code spans).
+ * real `.instui-pill` renders in a component preview. Keep the deprecated class in sync with the
+ * TypeDoc badge transformer via `api-badge-classes.ts`.
  */
-const classNames = { deprecated: "instui-pill -color-warning pantoken-doc-tag" };
+const classNames = {
+  deprecated: BADGE_CLASS_BY_LABEL.Deprecated,
+};
 
 // The repo root (this worktree) and its GitHub blob base, for `**Source:**` links.
 const repoRoot = join(docsRoot, "..");

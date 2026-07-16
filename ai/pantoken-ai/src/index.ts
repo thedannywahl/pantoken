@@ -7,6 +7,7 @@
  * them into a consumer repo at the conventional paths.
  *
  * @module
+ * @beta
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";

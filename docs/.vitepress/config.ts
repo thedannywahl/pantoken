@@ -247,6 +247,7 @@ export default defineConfig({
       {},
       `(function(){try{var t=localStorage.getItem("pantoken-theme")||"rebrand";var d=document.documentElement;d.dataset.pantokenTheme=t;if(t!=="rebrand")d.classList.remove("dark");}catch(e){}})();`,
     ],
+    ["link", { rel: "icon", type: "image/png", href: `${base}favicon.png` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/transition.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
