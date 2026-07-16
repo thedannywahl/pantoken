@@ -42,11 +42,12 @@
 }
 
 .pfx-billboard.-size-sm .message {
-  font-size: var(--instui-component-billboard-message-font-size-small);
+  font-size: var(--instui-font-size-text-sm);
 }
 
+/* @todo instructure-design-tokens has no token that matches the 1.375rem size used here, so we hardcode it for now. */
 .pfx-billboard.-size-lg .message {
-  font-size: var(--instui-component-billboard-message-font-size-large);
+  font-size: 1.375rem;
 }
 
 .pfx-billboard.-clickable {
@@ -77,15 +78,15 @@
   /* The documented `-icon-*` modifier lives directly on .hero. */
   :scope > .hero[class*="-icon-"] {
     line-height: 1;
-    font-size: var(--instui-component-billboard-message-font-size-large);
+    font-size: var(--instui-component-icon-illu-md);
   }
 
   :scope.-size-sm > .hero[class*="-icon-"] {
-    font-size: var(--instui-component-billboard-message-font-size-medium);
+    font-size: var(--instui-component-icon-illu-sm);
   }
 
   :scope.-size-lg > .hero[class*="-icon-"] {
-    font-size: calc(var(--instui-component-billboard-message-font-size-large) * 1.5);
+    font-size: var(--instui-component-icon-illu-lg);
   }
 
   /* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
@@ -93,20 +94,12 @@
     margin: 0 0 var(--instui-spacing-space-xs);
     color: var(--instui-component-billboard-message-color);
     font-weight: bold;
-    font-size: var(--instui-component-billboard-message-font-size-large);
-  }
-
-  :scope.-size-sm > .heading {
-    font-size: var(--instui-component-billboard-message-font-size-medium);
-  }
-
-  :scope.-size-lg > .heading {
-    font-size: calc(var(--instui-component-billboard-message-font-size-large) * 1.25);
+    font-size: var(--instui-component-text-font-size-x-x-large);
   }
 
   :scope > .message {
     color: var(--instui-component-billboard-message-color);
-    font-size: var(--instui-component-billboard-message-font-size-medium);
+    font-size: var(--instui-font-size-text-base);
   }
 
   :scope.-clickable > .message,
