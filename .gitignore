@@ -35,6 +35,9 @@ docs/public/
 
 # AI agent worktrees
 .claude/worktrees/
+
+# Local-only agent notes and personal migration seed — never committed.
+docs/internal/
 !.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
