@@ -15,6 +15,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { tokens } from "@pantoken/tokens";
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
+import { matchWildcardFiles } from "./match-wildcard.ts";
 
 const root = resolve(import.meta.dirname, "../..");
 const failures: string[] = [];
@@ -35,6 +36,21 @@ function fileCount(dir: string): number {
     else n++;
   }
   return n;
+}
+
+/** List files recursively under a directory; returns workspace-relative segments (not absolute paths). */
+function listFiles(dir: string, base = dir): string[] {
+  if (!existsSync(dir)) return [];
+  const files: string[] = [];
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const abs = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...listFiles(abs, base));
+      continue;
+    }
+    files.push(abs.slice(base.length + 1).replaceAll("\\", "/"));
+  }
+  return files;
 }
 
 // 1. Every generator package must have written a non-empty `generated/` dir.
@@ -96,6 +112,18 @@ for (const pkg of FINALIZED_CSS_PKGS) {
   for (const [key, target] of cssExports) {
     if (!target.startsWith("./dist/") || !target.endsWith(".css")) {
       fail(`${pkg}: ${key} bypasses finalized dist CSS (${target})`);
+      continue;
+    }
+    if (target.includes("*")) {
+      const rel = target.slice("./dist/".length);
+      const distDir = join(root, pkg, "dist");
+      const matches = matchWildcardFiles(listFiles(distDir), rel);
+      const nonEmpty = matches.filter((file) => readFileSync(join(distDir, file)).byteLength > 0);
+      if (nonEmpty.length === 0) {
+        fail(`${pkg}: ${key} finalized output is missing or empty (${target})`);
+      } else {
+        ok(`${pkg}: ${key} resolves to ${nonEmpty.length} finalized file(s) via ${target}`);
+      }
       continue;
     }
     const file = join(root, pkg, target);
