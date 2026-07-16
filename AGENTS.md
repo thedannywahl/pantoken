@@ -50,8 +50,7 @@ Owner of `@pantoken/components` (the semantic RSCSS CSS API) and its InstUI-pari
 ### Instructions
 
 - Author records with `defineComponent`/`defineUtility`/`defineRule`/`defineDeclaration`. The doc
-  comment is plain-string metadata; only the `css` body stays a template literal — tag it with `css`
-  and a `// prettier-ignore` line (oxfmt corrupts interpolated selectors otherwise).
+  comment is plain-string metadata; only the `css` body stays a template literal — tag it ` css` ``with a`// prettier-ignore` line (oxfmt corrupts interpolated selectors otherwise).
 - A deprecated modifier must be a **functional alias**, never a doc-only noop.
 - Never name a modifier with a `-icon-` substring unless it's a real glyph — the generic
   `[class*="-icon-"]::before` painter will render a broken square on it.

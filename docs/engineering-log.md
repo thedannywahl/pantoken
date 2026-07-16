@@ -12,19 +12,19 @@ lesson is timeless.
 `${p}foo.-modifier` became `${p}foo .-modifier` (compound → descendant), and single-line rules
 reflowed to multi-line.
 
-**Root cause** — oxfmt (Prettier-based) treats `css` and `styled` tagged templates as
+**Root cause** — oxfmt (Prettier-based) treats ` css` `**and**` styled` ` tagged templates as
 embedded CSS and reformats them. `embeddedLanguageFormatting: "off"` does **not** stop it — earlier
 "it works" results were `vp` cache artifacts; verify with a clean cache. The tag name doesn't matter.
 
 **Fix / rule** — Put a `// prettier-ignore` line immediately before each tagged template (before the
 template for a direct arrow body, before `return` for a block body). oxfmt then leaves the template
 verbatim and still formats the rest of the file. Don't use inline `/* prettier-ignore */` — it's
-inconsistent for block bodies. When you add a record builder, tag it with `css` plus a
-`// prettier-ignore` line, or the next format pass rewrites its selectors.
+inconsistent for block bodies. When you add a record builder, tag it ` css` ``+`// prettier-ignore`
+or the next format pass rewrites its selectors.
 
 ### Backticks inside a CSS comment terminate the template string
 
-**Symptom** — A record's `css` template body failed to compile after adding a CSS comment inside it.
+**Symptom** — A record's `css: (p) => \`…\``body failed to compile after adding a`/_ … _/` comment.
 
 **Root cause** — The `css` body is a JS template literal, so a backtick (or `${`) inside a CSS comment
 closes the string early.
@@ -95,7 +95,7 @@ unresolved component and tries to import a native `<img src="/local">`'s file.
 
 **Fix / rule** — Set `vue.template.compilerOptions.isCustomElement = (tag) =>
 tag.startsWith("instui-")` in `docs/.vitepress/config.ts`. In an `@example`, use an absolute/CDN/data
-`src` or a custom-element `src` — avoid a native `<img>` with a local path. Escape raw `<tag>`/`&#123;&#123;` in
+`src` or a custom-element `src` — avoid a native `<img>` with a local path. Escape raw `<tag>`/`{{` in
 prose the emitter renders (an `escProse()` handles this; backticked code spans are exempt).
 
 ## CSS API surface

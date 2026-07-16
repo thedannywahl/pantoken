@@ -16,8 +16,7 @@ type-only imports are fine (erased at build); value imports belong in build scri
 - Shadow CSS lives in co-located `src/**/*.css` files — the lint, format, and docs source of truth.
 - `scripts/styles.ts` compiles every `src/**/*.css` into `src/generated/styles.ts` (gitignored) as
   camelCased string consts; elements import those and inline them into the shadow `<style>`.
-- The codegen **strips doc comments** before inlining, so cssdoc records on the `.css` files don't
-  ship. Plain (non-doc) CSS comments survive.
+- The codegen **strips `/** … _/`doc comments** before inlining, so cssdoc records on the`.css`files don't ship. Plain`/_ … \*/` notes survive.
 - **Why a codegen and not `?raw`:** `vp pack` (rolldown) doesn't resolve Vite's `?raw` query. Vite
   dev/test do, but the published build can't. The codegen runs before pack/check/test.
 
