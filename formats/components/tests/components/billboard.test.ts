@@ -11,6 +11,7 @@ test("billboard: emits exactly one well-formed cssdoc record with no token drift
 test("billboard size variants map to InstUI icon and text scales", () => {
   const css = norm(billboardCss({ prefix: "instui" }));
   const selectors = css.replaceAll(/\s*>\s*/g, ">");
+  const compact = selectors.replaceAll(/\s+/g, "");
 
   expect(selectors).toContain(".instui-billboard.-size-sm {");
   expect(selectors).toContain(".instui-billboard.-size-lg {");
@@ -36,4 +37,29 @@ test("billboard size variants map to InstUI icon and text scales", () => {
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-lg);");
   expect(selectors).toContain(":scope>.message {");
   expect(selectors).toContain("font-size: var(--instui-font-size-text-base);");
+  expect(compact).toContain("color:var(--instui-component-link-text-color);");
+});
+
+test("billboard clickable states scope icon, focus ring, and active inversion correctly", () => {
+  const css = norm(billboardCss({ prefix: "instui" }));
+  const selectors = css.replaceAll(/\s*>\s*/g, ">");
+  const compact = selectors.replaceAll(/\s+/g, "");
+
+  expect(selectors).toContain(".instui-billboard.-clickable:hover {");
+  expect(selectors).toContain(
+    "border-style: var(--instui-component-billboard-button-hover-border-style);",
+  );
+  expect(compact).toContain(":scope.-clickable:hover>.hero{");
+  expect(selectors).toContain("color: var(--instui-component-link-text-hover-color);");
+
+  expect(selectors).toContain(".instui-billboard.-clickable:focus {");
+  expect(selectors).toContain("border-style: solid;");
+  expect(selectors).toContain("outline: var(--instui-focus-outline-width)");
+
+  expect(selectors).toContain(".instui-billboard.-clickable:active {");
+  expect(selectors).toContain("background: var(--instui-component-billboard-clickable-active-bg);");
+  expect(selectors).toContain(":scope.-clickable:active>.hero,");
+  expect(selectors).toContain(":scope.-clickable:active>.message {");
+  expect(selectors).toContain("color: var(--instui-component-billboard-clickable-active-text);");
+  expect(selectors).not.toContain(":scope.-clickable>.heading,");
 });

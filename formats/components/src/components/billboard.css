@@ -61,9 +61,21 @@
   border-style: var(--instui-component-billboard-button-hover-border-style);
 }
 
+.pfx-billboard.-clickable:focus {
+  border-style: solid;
+  border-color: var(--instui-component-billboard-message-color-clickable);
+}
+
+.pfx-billboard.-clickable:focus-visible {
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+}
+
 .pfx-billboard.-clickable:active {
   background: var(--instui-component-billboard-clickable-active-bg);
-  color: var(--instui-component-billboard-clickable-active-text);
+  border-style: solid;
+  border-color: var(--instui-component-billboard-message-color-clickable);
 }
 
 @scope (.pfx-billboard) {
@@ -72,7 +84,7 @@
     display: inline-flex;
     justify-content: center;
     margin-block-end: var(--instui-spacing-space-sm);
-    color: var(--instui-component-billboard-message-color);
+    color: var(--instui-component-link-text-color);
   }
 
   /* The documented `-icon-*` modifier lives directly on .hero. */
@@ -98,13 +110,16 @@
   }
 
   :scope > .message {
-    color: var(--instui-component-billboard-message-color);
+    color: var(--instui-component-link-text-color);
     font-size: var(--instui-font-size-text-base);
   }
 
-  :scope.-clickable > .message,
-  :scope.-clickable > .heading,
-  :scope.-clickable > .hero {
-    color: var(--instui-component-billboard-message-color-clickable);
+  :scope.-clickable:hover > .hero {
+    color: var(--instui-component-link-text-hover-color);
+  }
+
+  :scope.-clickable:active > .hero,
+  :scope.-clickable:active > .message {
+    color: var(--instui-component-billboard-clickable-active-text);
   }
 }
