@@ -30,6 +30,7 @@
  * {@link register} builds one prefix-aware {@link RegisterContext} and hands it to each definition.
  *
  * @module
+ * @alpha
  */
 import { elevationDeclarations, focusOutlineDeclarations } from "@pantoken/components";
 import { resolve as pantokenResolve } from "@pantoken/icons";

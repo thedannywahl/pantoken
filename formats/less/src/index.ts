@@ -5,6 +5,7 @@
  * file is published at `@pantoken/less/tokens.less`.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toLess } from "./to-less.ts";

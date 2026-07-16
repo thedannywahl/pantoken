@@ -7,6 +7,7 @@
  * - `<TokenProvider>` registers the elements and is where an app can inject the stylesheet.
  *
  * @module
+ * @experimental
  */
 import { register } from "@pantoken/web-components";
 import { createElement, useEffect, useState } from "react";

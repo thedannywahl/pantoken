@@ -5,6 +5,7 @@
  * custom elements. `readToken` reads a resolved `--instui-*` value (SSR-safe).
  *
  * @module
+ * @experimental
  */
 import { register } from "@pantoken/web-components";
 

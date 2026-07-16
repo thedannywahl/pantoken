@@ -8,6 +8,7 @@
  * upstream.
  *
  * @module
+ * @beta
  */
 import { regex } from "arkregex";
 import type { Token } from "@pantoken/model";

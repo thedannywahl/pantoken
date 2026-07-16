@@ -5,6 +5,7 @@
  * CLI can write it into a theme directory: `pantoken generate wordpress --out ./my-theme`.
  *
  * @module
+ * @experimental
  */
 import themeJsonData from "../generated/theme.json" with { type: "json" };
 import type { ThemeJson } from "./to-theme-json.ts";

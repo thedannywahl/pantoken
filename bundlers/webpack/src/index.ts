@@ -4,6 +4,7 @@
  * package into a bundle.
  *
  * @module
+ * @experimental
  */
 import { css as pantokenCss } from "@pantoken/css";
 

@@ -5,6 +5,7 @@
  * use `@pantoken/css` instead.
  *
  * @module
+ * @experimental
  */
 import { toStyleDictionary } from "@pantoken/core";
 import { byTheme } from "@pantoken/tokens";

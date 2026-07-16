@@ -6,6 +6,7 @@
  * `@pantoken/css` emits — light/dark and high-contrast all keep working.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import type { Token } from "@pantoken/model";

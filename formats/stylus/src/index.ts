@@ -5,6 +5,7 @@
  * file is published at `@pantoken/stylus/tokens.styl`.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toStylus } from "./to-stylus.ts";

@@ -7,6 +7,7 @@
  * shared icon manifest.
  *
  * @module
+ * @experimental
  */
 import { resolve as pantokenResolve } from "@pantoken/icons";
 import { visit } from "unist-util-visit";

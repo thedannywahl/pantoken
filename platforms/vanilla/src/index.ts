@@ -5,6 +5,7 @@
  * Push it to a theme with the Vanilla API: `PUT /themes/{themeID}/assets/variables.json`.
  *
  * @module
+ * @experimental
  */
 import variablesData from "../generated/variables.json" with { type: "json" };
 

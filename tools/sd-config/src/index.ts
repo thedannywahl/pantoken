@@ -7,6 +7,7 @@
  * feeds SD pre-resolved values, so built-in transform groups are enough.
  *
  * @module
+ * @beta
  */
 import { join } from "node:path";
 import StyleDictionary from "style-dictionary";

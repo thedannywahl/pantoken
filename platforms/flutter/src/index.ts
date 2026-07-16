@@ -3,6 +3,7 @@
  * flattens the IR to concrete, single-mode values and keeps the natively-typed tokens.
  *
  * @module
+ * @experimental
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

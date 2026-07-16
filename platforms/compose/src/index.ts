@@ -4,6 +4,7 @@
  * tokens (colours, dimensions, numbers).
  *
  * @module
+ * @experimental
  */
 import { toStyleDictionary } from "@pantoken/core";
 import { buildPlatform } from "@pantoken/sd-config";

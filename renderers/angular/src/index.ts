@@ -5,6 +5,7 @@
  * component/module that uses `<instui-icon>`. {@link readToken} reads a resolved `--instui-*` value.
  *
  * @module
+ * @experimental
  */
 import { register } from "@pantoken/web-components";
 

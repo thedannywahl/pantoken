@@ -23,6 +23,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 import { resolve as pantokenResolve } from "@pantoken/icons";
 import type MarkdownIt from "markdown-it";

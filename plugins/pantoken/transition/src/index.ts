@@ -19,6 +19,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";

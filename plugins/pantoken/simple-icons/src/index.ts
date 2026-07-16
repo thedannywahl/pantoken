@@ -6,6 +6,7 @@
  * either layer — the generalized form of the `mcp-stack/portal` icon factory.
  *
  * @module
+ * @beta
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { IconResolver, PantokenPlugin, TokenInput } from "@pantoken/model";

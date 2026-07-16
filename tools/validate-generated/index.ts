@@ -7,6 +7,7 @@
  * `dist/` output from `@tsdown/css`.
  *
  * @module
+ * @beta
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, mkdtempSync, readFileSync, readdirSync } from "node:fs";

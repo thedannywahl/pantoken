@@ -6,6 +6,7 @@
  * the same custom properties.
  *
  * @module
+ * @experimental
  */
 
 /** Bootstrap 5 CSS variable → the Instructure token it resolves to. */

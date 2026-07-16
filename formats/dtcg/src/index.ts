@@ -5,6 +5,7 @@
  * {@link toDtcg} to convert an arbitrary IR yourself.
  *
  * @module
+ * @beta
  */
 import canvasJson from "../generated/canvas.json" with { type: "json" };
 import canvasHighContrastJson from "../generated/canvasHighContrast.json" with { type: "json" };

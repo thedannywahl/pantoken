@@ -7,6 +7,7 @@
  * reuses the same path.
  *
  * @module
+ * @experimental
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";

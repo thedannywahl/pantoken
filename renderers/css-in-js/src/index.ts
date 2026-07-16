@@ -15,6 +15,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toStyledTheme } from "./to-theme.ts";

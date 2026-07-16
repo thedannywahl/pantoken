@@ -7,6 +7,7 @@
  * `themes/custom/<machine>/`.
  *
  * @module
+ * @experimental
  */
 import { css as pantokenCss } from "@pantoken/css";
 import { proseCss } from "@pantoken/components";

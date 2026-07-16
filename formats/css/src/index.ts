@@ -6,6 +6,7 @@
  * `@pantoken/css/style.css`.
  *
  * @module
+ * @beta
  */
 import { tokens } from "@pantoken/tokens";
 import { toCss } from "./to-css.ts";

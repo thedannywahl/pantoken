@@ -6,6 +6,7 @@
  * has run.
  *
  * @module
+ * @experimental
  */
 import { iconSvg, register } from "@pantoken/web-components";
 

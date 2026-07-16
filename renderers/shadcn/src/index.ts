@@ -6,6 +6,7 @@
  * adopt the Instructure look. Icons align for free — shadcn and Instructure both use Lucide.
  *
  * @module
+ * @experimental
  */
 import { SHADCN_TO_INSTUI } from "./mapping.ts";
 

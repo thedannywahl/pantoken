@@ -33,6 +33,7 @@
  * registries (`COMPONENTS`/`UTILITIES`/`RULES`/`DECLARATIONS`) drive aggregation + the parity test.
  *
  * @module
+ * @beta
  */
 import { COMPONENTS } from "./components/index.ts";
 import { elevationCss } from "./declarations/elevation.ts";

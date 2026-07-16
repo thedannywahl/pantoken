@@ -6,6 +6,7 @@
  * `next.config`, then import `@pantoken/css` in your root layout for the tokens.
  *
  * @module
+ * @experimental
  */
 
 /**

@@ -6,6 +6,7 @@
  * `@pantoken/sd-config`. Style Dictionary applies the Android transforms (`#aarrggbb`, `dp`/`sp`).
  *
  * @module
+ * @experimental
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

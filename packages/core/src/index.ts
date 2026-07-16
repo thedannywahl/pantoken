@@ -6,6 +6,7 @@
  * ({@link PantokenPlugin}), and adapts the IR for the native lineage ({@link toStyleDictionary}).
  *
  * @module
+ * @beta
  */
 export { buildTokens } from "./build.ts";
 export type { BuildTokensOptions } from "./build.ts";

@@ -8,6 +8,7 @@
  * (GitHub-only) upstream token package just to type the IR.
  *
  * @module
+ * @beta
  */
 
 /** A colour theme available in `@instructure/instructure-design-tokens`. */

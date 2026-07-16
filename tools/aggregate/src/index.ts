@@ -5,6 +5,7 @@
  * package with a `pantoken` field auto-registers it, with no manual barrel edits.
  *
  * @module
+ * @beta
  */
 import { createRequire } from "node:module";
 import { join } from "node:path";

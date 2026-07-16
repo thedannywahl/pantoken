@@ -63,6 +63,8 @@ const SANDBOX = "allow-scripts allow-same-origin allow-forms allow-popups allow-
  * resolveDemo("https://example.com/x").provider; // "url"
  * resolveDemo("codepen:team/abc123").src; // "https://codepen.io/team/embed/abc123?default-tab=result"
  * ```
+ * @module
+ * @beta
  */
 export function resolveDemo(spec: string, options: ResolveOptions = {}): ResolvedDemo {
   const trimmed = spec.trim();

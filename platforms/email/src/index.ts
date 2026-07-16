@@ -6,6 +6,7 @@
  * Icons are excluded. `light`/`dark` maps are keyed by camelCased token name.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { camelCase, resolveTokens } from "@pantoken/utils";

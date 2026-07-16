@@ -14,6 +14,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toPandaPreset } from "./to-panda.ts";

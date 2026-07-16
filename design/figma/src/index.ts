@@ -7,6 +7,7 @@
  * plugin (the Variables plugin API) or the Variables REST API — the README has the plugin glue.
  *
  * @module
+ * @experimental
  */
 import { parseHexColor, resolveTokens } from "@pantoken/utils";
 import type { Token } from "@pantoken/model";

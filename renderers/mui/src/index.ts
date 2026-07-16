@@ -13,6 +13,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toMuiTheme } from "./to-mui.ts";

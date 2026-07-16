@@ -7,6 +7,7 @@
  * while light/dark keeps flowing through the same tokens.
  *
  * @module
+ * @experimental
  */
 
 /** Infima CSS variable → the Instructure token it resolves to. */

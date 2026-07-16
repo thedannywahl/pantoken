@@ -4,6 +4,7 @@
  * colours stay hex strings, dimensions become numbers (dp), and icons are excluded.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { camelCase, resolveTokens } from "@pantoken/utils";

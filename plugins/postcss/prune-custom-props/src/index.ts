@@ -20,6 +20,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 import type { Plugin } from "postcss";
 

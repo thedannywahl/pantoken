@@ -6,6 +6,7 @@
  * shared `@pantoken/css` pipeline, so it no longer carries its own token resolver.
  *
  * @module
+ * @alpha
  */
 import { toCss } from "@pantoken/css";
 import { byTheme } from "@pantoken/tokens";

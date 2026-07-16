@@ -6,6 +6,7 @@
  * `SimpleIconTokenData` that markdown/rehype consumers already use.
  *
  * @module
+ * @beta
  */
 import { tokens } from "@pantoken/tokens";
 import type { IconResolver } from "@pantoken/model";

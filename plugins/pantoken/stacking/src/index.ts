@@ -22,6 +22,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 import { definePlugin, makeResolver } from "@pantoken/plugin-kit";
 import { byTheme } from "@pantoken/tokens";

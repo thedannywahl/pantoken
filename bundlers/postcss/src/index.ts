@@ -4,6 +4,7 @@
  * you want the tokens defined, and the plugin replaces it at build time.
  *
  * @module
+ * @experimental
  */
 import { css as pantokenCss } from "@pantoken/css";
 import type { Plugin } from "postcss";

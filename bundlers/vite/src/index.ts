@@ -8,6 +8,7 @@
  * - `virtual:pantoken/tokens` — the resolved token IR (`tokens` named + default export).
  *
  * @module
+ * @experimental
  */
 import { css } from "@pantoken/css";
 import { tokens } from "@pantoken/tokens";

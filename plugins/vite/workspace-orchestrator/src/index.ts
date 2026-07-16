@@ -31,6 +31,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 import { watch as watchFs } from "node:fs";
 import type { FSWatcher } from "node:fs";

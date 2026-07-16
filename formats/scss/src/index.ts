@@ -5,6 +5,7 @@
  * file is published at `@pantoken/scss/tokens.scss`.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toScss } from "./to-scss.ts";

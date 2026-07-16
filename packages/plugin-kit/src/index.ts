@@ -18,6 +18,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 import type { CssContribution, IconResolver, PantokenPlugin } from "@pantoken/model";
 

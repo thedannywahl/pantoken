@@ -6,6 +6,7 @@
  * provider lives at `@pantoken/react-markdown/mdx`.
  *
  * @module
+ * @beta
  */
 export { InstuiMarkdown } from "./instui-markdown.tsx";
 export { createInstuiMarkdownComponents, instuiMarkdownComponents } from "./components.tsx";

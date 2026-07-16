@@ -7,6 +7,7 @@
  * `.sketchpalette`.
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toSwatches } from "./model.ts";

@@ -7,6 +7,7 @@
  * glyphs (Instructure custom) pass through.
  *
  * @module
+ * @beta
  */
 export { buildIconFont } from "./build.ts";
 export type { BuildIconFontOptions, IconFontResult } from "./build.ts";

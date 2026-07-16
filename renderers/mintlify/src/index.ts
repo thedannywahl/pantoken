@@ -16,6 +16,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 import { tokens } from "@pantoken/tokens";
 import { toMintlifyConfig } from "./to-mintlify.ts";

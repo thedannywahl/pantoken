@@ -6,6 +6,7 @@
  * `manager`/`preview` theme.
  *
  * @module
+ * @experimental
  */
 import { resolveTokens } from "@pantoken/utils";
 import { tokens } from "@pantoken/tokens";

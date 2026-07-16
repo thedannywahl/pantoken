@@ -21,6 +21,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 import { tokenUtilitiesCss } from "@pantoken/utils";
 

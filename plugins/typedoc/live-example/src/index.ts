@@ -15,6 +15,7 @@
  * pages under `liveExampleDir` on `RendererEvent.END`.
  *
  * @module
+ * @beta
  */
 import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

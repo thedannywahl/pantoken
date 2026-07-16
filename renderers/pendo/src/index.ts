@@ -15,6 +15,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 import { buildPendoCss } from "./build.ts";
 

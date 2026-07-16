@@ -20,6 +20,7 @@
  * ```
  *
  * @module
+ * @beta
  */
 
 /** A CSS color: a literal (`#1d354f`, `rebeccapurple`), a `var(--token)`, or a nested helper result. */

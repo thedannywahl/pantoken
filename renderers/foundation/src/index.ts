@@ -15,6 +15,7 @@
  * ```
  *
  * @module
+ * @experimental
  */
 
 /** Foundation for Sites setting variable → the Instructure token it resolves to. */

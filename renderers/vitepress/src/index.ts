@@ -7,6 +7,7 @@
  * through the same tokens.
  *
  * @module
+ * @beta
  */
 
 /** VitePress CSS variable → the Instructure token it resolves to. */

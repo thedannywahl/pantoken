@@ -10,6 +10,7 @@
  * As a pantoken plugin, the `css` hook contributes those image tokens.
  *
  * @module
+ * @beta
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
