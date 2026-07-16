@@ -2,7 +2,7 @@
  * @component billboard
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.
- * @modifier -icon-* — Render a leading icon glyph on `.hero` (e.g. `.hero -icon-inbox`).
+ * @modifier -icon-* — Render a leading icon glyph on `.hero` (e.g. `<span class="hero -icon-inbox"></span>`).
  * @modifier -size-sm — Small: tighter spacing with smaller heading, message, and hero icon.
  * @modifier -size-lg — Large: roomier spacing with larger heading, message, and hero icon.
  * @part .hero — The optional leading icon or image.
@@ -74,7 +74,7 @@
     color: var(--instui-component-billboard-message-color);
   }
 
-  /* The documented `-icon-*` modifier is applied directly on `.hero` for icon glyph rendering. */
+  /* The documented `-icon-*` modifier lives directly on .hero. */
   :scope > .hero[class*="-icon-"] {
     line-height: 1;
     font-size: var(--instui-component-billboard-message-font-size-large);

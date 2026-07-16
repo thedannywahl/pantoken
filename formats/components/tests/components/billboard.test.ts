@@ -10,19 +10,20 @@ test("billboard: emits exactly one well-formed cssdoc record with no token drift
 
 test("billboard size variants scale spacing, heading, message, and hero icon glyph", () => {
   const css = norm(billboardCss({ prefix: "instui" }));
+  const selectors = css.replaceAll(/\s*>\s*/g, ">");
 
-  expect(css).toContain(".instui-billboard.-size-sm {");
-  expect(css).toContain(".instui-billboard.-size-lg {");
-  expect(css).toContain(".instui-billboard.-size-sm .message {");
-  expect(css).toContain(".instui-billboard.-size-lg .message {");
+  expect(selectors).toContain(".instui-billboard.-size-sm {");
+  expect(selectors).toContain(".instui-billboard.-size-lg {");
+  expect(selectors).toContain(".instui-billboard.-size-sm .message {");
+  expect(selectors).toContain(".instui-billboard.-size-lg .message {");
 
-  expect(css).toContain(":scope.-size-sm>.heading {");
-  expect(css).toContain(":scope.-size-lg>.heading {");
-  expect(css).toContain(":scope.-size-small>.heading {");
-  expect(css).toContain(":scope.-size-large>.heading {");
-  expect(css).toContain(':scope>.hero[class*="-icon-"] {');
-  expect(css).toContain(':scope.-size-sm>.hero[class*="-icon-"] {');
-  expect(css).toContain(':scope.-size-lg>.hero[class*="-icon-"] {');
-  expect(css).toContain(':scope.-size-small>.hero[class*="-icon-"] {');
-  expect(css).toContain(':scope.-size-large>.hero[class*="-icon-"] {');
+  expect(selectors).toContain(":scope.-size-sm>.heading {");
+  expect(selectors).toContain(":scope.-size-lg>.heading {");
+  expect(selectors).toContain(":scope.-size-small>.heading {");
+  expect(selectors).toContain(":scope.-size-large>.heading {");
+  expect(selectors).toContain(':scope>.hero[class*="-icon-"] {');
+  expect(selectors).toContain(':scope.-size-sm>.hero[class*="-icon-"] {');
+  expect(selectors).toContain(':scope.-size-lg>.hero[class*="-icon-"] {');
+  expect(selectors).toContain(':scope.-size-small>.hero[class*="-icon-"] {');
+  expect(selectors).toContain(':scope.-size-large>.hero[class*="-icon-"] {');
 });
