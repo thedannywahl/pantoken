@@ -1,5 +1,5 @@
 import type { ElementDefinition } from "../lib/context.ts";
-import { pages as pagesCss } from "../generated/styles.ts";
+import pagesCss from "./pages.css?inline";
 
 /**
  * `<instui-pages>` — shows one slotted `[data-page]` panel at a time, swapping with the View

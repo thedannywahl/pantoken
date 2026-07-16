@@ -1,6 +1,6 @@
 import { tooltipCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { tooltip as tooltipGate } from "../generated/styles.ts";
+import tooltipGate from "./tooltip.css?inline";
 import { esc, frag } from "../lib/helpers.ts";
 
 /**

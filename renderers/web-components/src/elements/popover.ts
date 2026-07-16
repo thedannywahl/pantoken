@@ -1,6 +1,6 @@
 import { popoverCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { popoverReset } from "../generated/styles.ts";
+import popoverReset from "../lib/popover-reset.css?inline";
 
 /**
  * `<instui-popover>` — a floating surface. Like `<instui-context-view>`, the host is a native

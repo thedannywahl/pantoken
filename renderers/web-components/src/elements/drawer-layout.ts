@@ -1,5 +1,5 @@
 import type { ElementDefinition } from "../lib/context.ts";
-import { drawerLayout as DRAWER_CSS } from "../generated/styles.ts";
+import DRAWER_CSS from "./drawer-layout.css?inline";
 
 /**
  * `<instui-drawer-layout>` — a side tray plus main content in a resizable row. The `open` attribute

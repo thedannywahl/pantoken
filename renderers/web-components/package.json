@@ -4,25 +4,23 @@
   "description": "Framework-agnostic custom elements for Instructure UI: <instui-icon> plus token-styled primitives.",
   "license": "MIT",
   "files": [
-    "dist",
-    "generated/components.css"
+    "dist"
   ],
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
-    "./components.css": "./generated/components.css",
+    "./components.css": "./dist/components.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "styles": "node scripts/styles.ts",
     "generate": "node scripts/generate.ts",
-    "build": "node scripts/styles.ts && vp pack && node scripts/generate.ts",
-    "dev": "node scripts/styles.ts && vp pack --watch",
-    "test": "node scripts/styles.ts && vp test",
-    "check": "node scripts/styles.ts && vp check",
+    "build": "node scripts/generate.ts && vp pack",
+    "dev": "node scripts/generate.ts && vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
     "prepublishOnly": "vp run build"
   },
   "dependencies": {

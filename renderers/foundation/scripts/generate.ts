@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { proseCss } from "@pantoken/components";
-import { foundationCss, foundationSettings } from "../dist/index.mjs";
+import { foundationCss, foundationSettings } from "../src/index.ts";
 
 const generatedDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(generatedDir, { recursive: true });

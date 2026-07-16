@@ -11,14 +11,15 @@ inject a `createRequire`/`node:module` shim into `dist/index.mjs`, which throws 
 a function` at app init and kills all client JS. Keep `@cssdoc/*` value imports out of `src/` —
 type-only imports are fine (erased at build); value imports belong in build scripts and tests.
 
-## Shadow CSS is co-located `.css` → codegen
+## Shadow CSS is co-located `.css` → `?inline`
 
 - Shadow CSS lives in co-located `src/**/*.css` files — the lint, format, and docs source of truth.
-- `scripts/styles.ts` compiles every `src/**/*.css` into `src/generated/styles.ts` (gitignored) as
-  camelCased string consts; elements import those and inline them into the shadow `<style>`.
-- The codegen **strips `/** … _/`doc comments** before inlining, so cssdoc records on the`.css`files don't ship. Plain`/_ … \*/` notes survive.
-- **Why a codegen and not `?raw`:** `vp pack` (rolldown) doesn't resolve Vite's `?raw` query. Vite
-  dev/test do, but the published build can't. The codegen runs before pack/check/test.
+- Elements import their co-located CSS with `?inline`; Vite+ bundles `@tsdown/css`, which returns the
+  processed stylesheet as a tree-shakeable string for the shadow `<style>`.
+- The CSS finalizer strips doc comments and minifies the inline string, so cssdoc records stay in the
+  source `.css` files without shipping as runtime bytes.
+- Use `?inline`, not `?raw`: `?inline` is the shared Vite/`@tsdown/css` contract and works in pack,
+  dev, and test.
 
 ## `register()` and the tag prefix
 

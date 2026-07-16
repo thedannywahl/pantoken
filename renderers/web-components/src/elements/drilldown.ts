@@ -1,6 +1,6 @@
 import { menuCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
-import { drilldown as drilldownExtra } from "../generated/styles.ts";
+import drilldownExtra from "./drilldown.css?inline";
 
 /**
  * `<instui-drilldown>` — a stateful, multi-level menu over the menu styles. Each level is a light-DOM

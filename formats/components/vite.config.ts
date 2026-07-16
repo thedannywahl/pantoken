@@ -2,8 +2,25 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   pack: {
+    entry: {
+      index: "src/index.ts",
+      base: "generated/base.css",
+      components: "generated/components.css",
+      fonts: "generated/fonts.css",
+      prose: "generated/prose.css",
+      select: "generated/select.css",
+      icons: "generated/icons.css",
+      utilities: "generated/utilities.css",
+    },
     dts: true,
-    // Exports are hand-managed so the static `./components.css` and `./prose.css` export survives.
+    css: {
+      splitting: true,
+      target: false,
+      minify: true,
+      modules: false,
+      inject: false,
+    },
+    // Exports are hand-managed so the static stylesheet exports survive.
     exports: false,
   },
   lint: {

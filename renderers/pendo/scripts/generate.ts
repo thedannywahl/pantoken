@@ -1,10 +1,11 @@
 /**
  * Emit the static `global.css` for consumers who want a plain stylesheet
- * (`@pantoken/pendo/global.css`). Runs after `vp pack`, importing the built output.
+ * (`@pantoken/pendo/global.css`). Runs before `vp pack`; `@tsdown/css` then validates and finalizes
+ * the generated source into `dist/global.css`.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { pendoCss } from "../dist/index.mjs";
+import { pendoCss } from "../src/index.ts";
 
 const out = resolve(import.meta.dirname, "../generated/global.css");
 mkdirSync(dirname(out), { recursive: true });
