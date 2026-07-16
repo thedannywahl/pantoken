@@ -12,6 +12,7 @@
     ".": "./dist/index.mjs",
     "./base.css": "./dist/base.css",
     "./components.css": "./dist/components.css",
+    "./*.css": "./dist/*.css",
     "./fonts.css": "./dist/fonts.css",
     "./prose.css": "./dist/prose.css",
     "./select.css": "./dist/select.css",

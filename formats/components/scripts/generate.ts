@@ -29,6 +29,7 @@ import {
   spacingUtilitiesCss,
   viewCss,
 } from "../src/index.ts";
+import { COMPONENTS } from "../src/components/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
@@ -95,6 +96,10 @@ const tokenGroups = [
 
 writeFileSync(join(outDir, "base.css"), baseCss());
 writeFileSync(join(outDir, "components.css"), componentsCss(opts));
+for (const component of COMPONENTS) {
+  if (component.kind !== "component") continue;
+  writeFileSync(join(outDir, `${component.name}.css`), component.css(opts));
+}
 // Internal (NOT shipped): every record in the `pfx-` authoring prefix — the cssdoc `providers` target
 // (see formats/components/cssdoc.jsonc) that lets the per-file source-`.css` lint resolve sibling records
 // named in `@structure` (e.g. tree-browser's `.pfx-icon`). Written under src/generated/ (gitignored),
@@ -133,5 +138,5 @@ writeFileSync(
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
 );
 console.log(
-  "✓ components: wrote base.css + components.css + fonts.css + prose.css + select.css + icons.css + utilities.css",
+  "✓ components: wrote base.css + components.css + per-component css + fonts.css + prose.css + select.css + icons.css + utilities.css",
 );

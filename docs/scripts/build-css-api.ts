@@ -15,7 +15,7 @@
  */
 import { createRequire } from "node:module";
 import { readdirSync, readFileSync } from "node:fs";
-import { join, relative } from "node:path";
+import { basename, join, relative } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
@@ -220,7 +220,14 @@ const build = (): void => {
     for (const e of parseCssDocs(readCss(sheet), { configuration })) recordSheet.set(e.name, sheet);
   const importSnippet = (entry: CssDocEntry): string | undefined => {
     const sheet = recordSheet.get(entry.name);
-    return sheet ? `@import "@pantoken/components/${sheet}";` : undefined;
+    if (!sheet) return undefined;
+    if (entry.kind === "component") {
+      return [
+        `@import "@pantoken/components/${sheet}";`,
+        `@import "@pantoken/components/${entry.name}.css";`,
+      ].join("\n");
+    }
+    return `@import "@pantoken/components/${sheet}";`;
   };
 
   const outSubdir = "css";
@@ -266,8 +273,23 @@ const build = (): void => {
       .sort()
       .map((f) => join(dir, f)),
   );
-  // Source links point at each `.css` shadow-style file. No `importSnippet`: web components are used as
-  // custom elements (JS import), not by importing a stylesheet, so a CSS `@import` snippet would mislead.
+  const wcRecordSheet = new Map<string, string>();
+  for (const file of wcCss) {
+    const sheet = `${basename(file, ".css")}.css`;
+    for (const entry of parseCssDocs(readFileSync(file, "utf8"), { configuration })) {
+      wcRecordSheet.set(entry.name, sheet);
+    }
+  }
+  const wcImportSnippet = (entry: CssDocEntry): string | undefined => {
+    const sheet = wcRecordSheet.get(entry.name);
+    if (!sheet) return undefined;
+    return [
+      '@import "@pantoken/web-components/components.css";',
+      `@import "@pantoken/web-components/${sheet}";`,
+    ].join("\n");
+  };
+  // Source links point at each `.css` shadow-style file. We include both import forms in `## Usage`:
+  // the aggregate `components.css` and the per-record stylesheet.
   const wc = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
     css: wcCss,
@@ -278,6 +300,7 @@ const build = (): void => {
     classNames,
     resolveToken,
     resolveSource: makeResolveSource(sourceMap(wcCss)),
+    importSnippet: wcImportSnippet,
   });
   console.log(
     `✓ CSS API: wrote ${wc.entries.length} web-component record page(s) to api/css-web-components/` +

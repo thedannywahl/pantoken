@@ -1,4 +1,9 @@
 import { defineConfig } from "vite-plus";
+import { COMPONENTS } from "./src/components/index.ts";
+
+const componentEntries = Object.fromEntries(
+  COMPONENTS.filter((d) => d.kind === "component").map((d) => [d.name, `generated/${d.name}.css`]),
+);
 
 export default defineConfig({
   pack: {
@@ -6,6 +11,7 @@ export default defineConfig({
       index: "src/index.ts",
       base: "generated/base.css",
       components: "generated/components.css",
+      ...componentEntries,
       fonts: "generated/fonts.css",
       prose: "generated/prose.css",
       select: "generated/select.css",
