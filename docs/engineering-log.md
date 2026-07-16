@@ -95,7 +95,7 @@ unresolved component and tries to import a native `<img src="/local">`'s file.
 
 **Fix / rule** — Set `vue.template.compilerOptions.isCustomElement = (tag) =>
 tag.startsWith("instui-")` in `docs/.vitepress/config.ts`. In an `@example`, use an absolute/CDN/data
-`src` or a custom-element `src` — avoid a native `<img>` with a local path. Escape raw `<tag>`/`{{` in
+`src` or a custom-element `src` — avoid a native `<img>` with a local path. Escape raw `<tag>`/`&#123;&#123;` in
 prose the emitter renders (an `escProse()` handles this; backticked code spans are exempt).
 
 ## CSS API surface
