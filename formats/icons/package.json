@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/icons",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An ergonomic view over the pantoken IR's <image> tokens: decoded SVGs and per-icon metadata.",
   "license": "MIT",
   "files": [

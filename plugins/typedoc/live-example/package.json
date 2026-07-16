@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/typedoc-plugin-live-example",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "TypeDoc plugin: embed a live HTML preview beneath each @example on a CSS reference page.",
   "license": "MIT",
   "files": [

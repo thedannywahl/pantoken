@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/pendo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Instructure-styled global CSS for Pendo guides, built on pantoken tokens (ported from @instructure/pendo-global-css).",
   "license": "MIT",
   "files": [

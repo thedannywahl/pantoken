@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tokens",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The npm-published, semver'd home for Instructure design tokens: the resolved @property-aligned IR plus the raw Tokens Studio JSON.",
   "license": "MIT",
   "files": [

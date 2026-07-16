@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/css",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Emit Instructure design tokens as @property-typed CSS with light-dark() and icon data-URIs, from the pantoken IR.",
   "license": "MIT",
   "files": [

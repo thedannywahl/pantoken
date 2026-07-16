@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/drupal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Emit an Instructure-themed Drupal sub-theme: token CSS plus *.info.yml and *.libraries.yml.",
   "license": "MIT",
   "files": [

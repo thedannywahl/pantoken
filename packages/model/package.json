@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/model",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Zero-dependency type contracts for the pantoken token IR (shared by every package).",
   "license": "MIT",
   "files": [

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/swatches",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Export Instructure colours as designer swatch palettes: Adobe ASE, GIMP .gpl, and Sketch .sketchpalette.",
   "license": "MIT",
   "files": [

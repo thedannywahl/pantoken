@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/icon-font",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Build an installable Instructure icon font (WOFF2 + TTF) with CSS and codepoints — stroke glyphs outlined to fills.",
   "license": "MIT",
   "files": [

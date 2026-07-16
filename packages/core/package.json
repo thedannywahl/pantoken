@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "The pantoken transformer: resolves Instructure design tokens + ui-icons into the canonical @property-aligned token IR.",
   "license": "MIT",
   "files": [

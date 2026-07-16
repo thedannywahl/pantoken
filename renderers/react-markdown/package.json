@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/react-markdown",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "react-markdown integration for pantoken: render Markdown with Instructure UI components and pantoken icons.",
   "license": "MIT",
   "files": [

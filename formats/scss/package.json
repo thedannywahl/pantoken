@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/scss",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Instructure design tokens as SCSS variables (resolved, single-mode) from the pantoken IR.",
   "license": "MIT",
   "files": [

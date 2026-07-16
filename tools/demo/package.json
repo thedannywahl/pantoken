@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/demo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Self-hosted, token-themed live-demo runner for docs: resolve a @demo <provider>:<ref> spec to an embeddable iframe, and render bare HTML/CSS/JS demos same-origin.",
   "license": "MIT",
   "files": [

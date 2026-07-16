@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/storybook",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A Storybook theme built from Instructure tokens (maps to Storybook ThemeVars).",
   "license": "MIT",
   "files": [
