@@ -1,0 +1,145 @@
+/**
+ * @component avatar
+ * @summary A user avatar showing initials or an image, circular by default.
+ * @remarks By default the palette colour tints the initials on a transparent surface; `-has-inverse-color` fills the surface with the colour and puts the initials on-colour. The `-color-ai` variant always fills with the violet→sea gradient.
+ * @modifier -color-ai — AI-accent palette colour.
+ * @modifier -color-ash — Ash palette colour.
+ * @modifier -color-blue — Blue palette colour.
+ * @modifier -color-green — Green palette colour.
+ * @modifier -color-grey — Grey palette colour.
+ * @modifier -color-orange — Orange palette colour.
+ * @modifier -color-red — Red palette colour.
+ * @modifier -has-inverse-color — Use the inverse (on-dark) text colour.
+ * @modifier -shape-rectangle — Square (rectangular) shape instead of a circle.
+ * @modifier -show-border — Add a border ring.
+ * @modifier -size-2xs — Two sizes smaller.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @modifier -size-2xl — Two sizes larger.
+ * @modifier -color-accent1 — @deprecated {@link -color-blue}
+ * @modifier -color-accent2 — @deprecated {@link -color-green}
+ * @modifier -color-accent3 — @deprecated {@link -color-red}
+ * @modifier -color-accent4 — @deprecated {@link -color-orange}
+ * @modifier -color-accent5 — @deprecated {@link -color-ash}
+ * @modifier -color-accent6 — @deprecated {@link -color-grey}
+ * @example
+ * <span class="pfx-avatar">DW</span>
+ * @related byline — Can host an avatar as its leading hero figure.
+ */
+.pfx-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--instui-component-avatar-size-md);
+  height: var(--instui-component-avatar-size-md);
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--instui-component-avatar-background-color);
+  color: var(--instui-component-avatar-blue-text-color);
+  border: var(--instui-component-avatar-border-width-sm) solid
+    var(--instui-component-avatar-border-color);
+  font-family: var(--instui-component-avatar-font-family);
+  font-size: var(--instui-component-avatar-font-size-md);
+  font-weight: var(--instui-component-avatar-font-weight);
+}
+.pfx-avatar.-shape-rectangle {
+  border-radius: var(--instui-component-avatar-rectangle-radius);
+}
+.pfx-avatar.-size-sm {
+  width: var(--instui-component-avatar-size-sm);
+  height: var(--instui-component-avatar-size-sm);
+  font-size: var(--instui-component-avatar-font-size-sm);
+}
+.pfx-avatar.-size-2xs {
+  width: var(--instui-component-avatar-size2xs);
+  height: var(--instui-component-avatar-size2xs);
+  font-size: var(--instui-component-avatar-font-size2xs);
+}
+.pfx-avatar.-size-xs {
+  width: var(--instui-component-avatar-size-xs);
+  height: var(--instui-component-avatar-size-xs);
+  font-size: var(--instui-component-avatar-font-size-xs);
+}
+.pfx-avatar.-size-lg {
+  width: var(--instui-component-avatar-size-lg);
+  height: var(--instui-component-avatar-size-lg);
+  font-size: var(--instui-component-avatar-font-size-lg);
+}
+.pfx-avatar.-size-xl {
+  width: var(--instui-component-avatar-size-xl);
+  height: var(--instui-component-avatar-size-xl);
+  font-size: var(--instui-component-avatar-font-size-xl);
+}
+.pfx-avatar.-size-2xl {
+  width: var(--instui-component-avatar-size2xl);
+  height: var(--instui-component-avatar-size2xl);
+  font-size: var(--instui-component-avatar-font-size2xl);
+}
+.pfx-avatar.-color-ash {
+  color: var(--instui-component-avatar-ash-text-color);
+}
+.pfx-avatar.-color-ash.-has-inverse-color {
+  background: var(--instui-component-avatar-ash-background-color);
+}
+.pfx-avatar.-color-blue {
+  color: var(--instui-component-avatar-blue-text-color);
+}
+.pfx-avatar.-color-blue.-has-inverse-color {
+  background: var(--instui-component-avatar-blue-background-color);
+}
+.pfx-avatar.-color-green {
+  color: var(--instui-component-avatar-green-text-color);
+}
+.pfx-avatar.-color-green.-has-inverse-color {
+  background: var(--instui-component-avatar-green-background-color);
+}
+.pfx-avatar.-color-grey {
+  color: var(--instui-component-avatar-grey-text-color);
+}
+.pfx-avatar.-color-grey.-has-inverse-color {
+  background: var(--instui-component-avatar-grey-background-color);
+}
+.pfx-avatar.-color-orange {
+  color: var(--instui-component-avatar-orange-text-color);
+}
+.pfx-avatar.-color-orange.-has-inverse-color {
+  background: var(--instui-component-avatar-orange-background-color);
+}
+.pfx-avatar.-color-red {
+  color: var(--instui-component-avatar-red-text-color);
+}
+.pfx-avatar.-color-red.-has-inverse-color {
+  background: var(--instui-component-avatar-red-background-color);
+}
+/* ai: always the violet→sea gradient fill with on-colour text (no border). */
+.pfx-avatar.-color-ai {
+  background: linear-gradient(
+    to bottom,
+    var(--instui-component-avatar-ai-top-gradient-color),
+    var(--instui-component-avatar-ai-bottom-gradient-color)
+  );
+  color: var(--instui-component-avatar-text-on-color);
+  border-color: transparent;
+}
+/* hasInverseColor: solid fill (default the accent1/blue surface) + on-colour initials, no ring. A
+   `-color-*` companion overrides the fill per colour (that rule is more specific). */
+.pfx-avatar.-has-inverse-color {
+  background: var(--instui-component-avatar-blue-background-color);
+  color: var(--instui-component-avatar-text-on-color);
+  border-color: transparent;
+}
+/* showBorder="always": force the ring back on, even over an inverse fill or a photo. */
+.pfx-avatar.-show-border {
+  border-width: var(--instui-component-avatar-border-width-md);
+  border-style: solid;
+  border-color: var(--instui-component-avatar-border-color);
+}
+/* A photo: an <img> child fills the chip and covers the initials (image takes priority). */
+.pfx-avatar > img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}

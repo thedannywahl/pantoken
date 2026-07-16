@@ -1,0 +1,114 @@
+/**
+ * @component progress
+ * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
+ * @remarks The value label is a separate sibling element (`.pfx-progress-value`), not a child of the bar.
+ * @modifier -color-brand — Brand meter colour.
+ * @modifier -color-info — Informational meter colour.
+ * @modifier -color-success — Success meter colour.
+ * @modifier -color-warning — Warning meter colour.
+ * @modifier -color-danger — Danger meter colour.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -meter-color-brand — @deprecated {@link -color-brand}
+ * @modifier -meter-color-info — @deprecated {@link -color-info}
+ * @modifier -meter-color-success — @deprecated {@link -color-success}
+ * @modifier -meter-color-warning — @deprecated {@link -color-warning}
+ * @modifier -meter-color-alert — @deprecated {@link -color-warning}
+ * @modifier -meter-color-danger — @deprecated {@link -color-danger}
+ * @part .bar — The filled meter bar.
+ * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
+ * @accessibility Expose progress via `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` (or `role="img"` plus `aria-label`), mirroring how progress-circle is labelled.
+ * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
+ * @example
+ * <div class="pfx-progress -color-brand">
+ *   <div class="bar"></div>
+ * </div>
+ * @related progress-circle — The circular form of the same determinate progress.
+ */
+.pfx-progress {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--instui-component-progress-bar-medium-height);
+  background: var(--instui-component-progress-bar-track-color);
+  /* The full border (InstUI trackLayout.border) frames the track on all sides. */
+  border: var(--instui-component-progress-bar-track-bottom-border-width) solid
+    var(--instui-component-progress-bar-border-color);
+  border-radius: var(--instui-component-progress-bar-border-radius);
+  overflow: hidden;
+}
+/* InstUI layers a distinct bottom rule (trackBottomBorderColor) over the meter, separate from the full
+   border. In legacy Canvas the full border is transparent so only this rule shows; in the newer themes
+   the full border shows and this rule is transparent. A pseudo keeps both layers independent. */
+.pfx-progress::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--instui-component-progress-bar-track-bottom-border-width);
+  background: var(--instui-component-progress-bar-track-bottom-border-color);
+  pointer-events: none;
+}
+.pfx-progress.-size-xs {
+  height: var(--instui-component-progress-bar-x-small-height);
+}
+.pfx-progress.-size-sm {
+  height: var(--instui-component-progress-bar-small-height);
+}
+.pfx-progress.-size-lg {
+  height: var(--instui-component-progress-bar-large-height);
+}
+@scope (.pfx-progress) {
+  :scope > .bar {
+    height: 100%;
+    background: var(--instui-color-background-brand);
+    border-radius: var(--instui-component-progress-bar-border-radius);
+  }
+  :scope.-should-animate > .bar {
+    transition: width 0.5s ease;
+  }
+}
+.pfx-progress.-color-brand .bar {
+  background: var(--instui-color-background-brand);
+}
+.pfx-progress.-color-info .bar {
+  background: var(--instui-color-background-info);
+}
+.pfx-progress.-color-success .bar {
+  background: var(--instui-color-background-success);
+}
+.pfx-progress.-color-warning .bar {
+  background: var(--instui-color-background-warning);
+}
+.pfx-progress.-color-danger .bar {
+  background: var(--instui-color-background-error);
+}
+/* color="primary-inverse": the on-dark scheme. It's a distinct axis from meterColor and overrides it —
+   InstUI's inverse meter tokens all collapse to background-base — so it comes AFTER the meter rules and
+   wins at equal specificity. Pair it with a dark surface. */
+.pfx-progress.-color-primary-inverse {
+  background: var(--instui-component-progress-bar-track-color-inverse);
+  border-color: var(--instui-component-progress-bar-border-color-inverse);
+  color: var(--instui-component-progress-bar-text-color-inverse);
+}
+.pfx-progress.-color-primary-inverse::after {
+  background: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
+}
+.pfx-progress.-color-primary-inverse .bar {
+  background: var(--instui-component-progress-bar-meter-color-brand-inverse);
+}
+.pfx-progress-value {
+  padding: 0 var(--instui-component-progress-bar-value-padding);
+  color: var(--instui-component-progress-bar-text-color);
+  font-family: var(--instui-component-progress-bar-font-family);
+  font-size: var(--instui-component-progress-bar-medium-value-font-size);
+  font-weight: var(--instui-component-progress-bar-font-weight);
+  line-height: var(--instui-component-progress-bar-line-height);
+}
+.pfx-progress.-color-inverse ~ .pfx-progress-value,
+.pfx-progress-value.-color-inverse {
+  color: var(--instui-component-progress-bar-text-color-inverse);
+}

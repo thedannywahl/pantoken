@@ -1,0 +1,41 @@
+/**
+ * @component in-place-edit
+ * @summary A [contenteditable] that reads as text until focused, then shows input chrome.
+ * @modifier -readonly — Shown inline but not editable (no hover/focus affordance).
+ * @a11y Give the editable element `role="textbox"` and an accessible name (`aria-label`).
+ * @example
+ * <span class="pfx-in-place-edit" contenteditable="true" role="textbox" aria-label="Project name">Untitled</span>
+ * @related text-input — On focus it shows the same input chrome as a text input.
+ * @demo self:in-place-edit
+ */
+.pfx-in-place-edit {
+  display: inline-block;
+  min-inline-size: 2rem;
+  padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
+  border: var(--instui-component-text-input-border-width) solid transparent;
+  border-radius: var(--instui-component-text-input-border-radius);
+  color: var(--instui-color-text-base);
+  font: inherit;
+  cursor: text;
+}
+/* Hover affordance: it's editable. */
+.pfx-in-place-edit:hover {
+  background: var(--instui-color-background-muted);
+}
+/* Focus = edit mode: input chrome + the focus ring. */
+.pfx-in-place-edit:focus {
+  background: var(--instui-component-text-input-background-color);
+  border-color: var(--instui-component-text-input-border-color);
+  outline: none;
+}
+.pfx-in-place-edit:focus-visible {
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+}
+.pfx-in-place-edit.-readonly {
+  cursor: default;
+}
+.pfx-in-place-edit.-readonly:hover {
+  background: transparent;
+}

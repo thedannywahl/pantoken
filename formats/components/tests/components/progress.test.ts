@@ -2,13 +2,14 @@ import { expect, test } from "vite-plus/test";
 import { progressCss } from "../../src/index.ts";
 import { progress } from "../../src/components/progress.ts";
 import { validate } from "../_validate.ts";
+import { norm } from "../_css.ts";
 
 test("progress: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(progress);
 });
 
 test("progress bar meter colours are distinct semantic backgrounds on the root, plus animate", () => {
-  const css = progressCss({ prefix: "instui" });
+  const css = norm(progressCss({ prefix: "instui" }));
   // Meter rules are flat (kept outside @scope so the deprecated -meter-color-* aliases can twin them).
   expect(css).toContain(".instui-progress.-color-success .bar");
   expect(css).toContain("var(--instui-color-background-success)");
@@ -17,7 +18,7 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
 });
 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {
-  const css = progressCss({ prefix: "instui" });
+  const css = norm(progressCss({ prefix: "instui" }));
   expect(css).toContain(".instui-progress.-size-sm");
   expect(css).toContain(".instui-progress.-size-lg");
   expect(css).toContain("@scope (.instui-progress)");

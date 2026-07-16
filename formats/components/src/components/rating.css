@@ -1,0 +1,44 @@
+/**
+ * @component rating
+ * @summary A star rating with filled and empty glyphs and an optional numeric label.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .label — The numeric label, e.g. "3/5".
+ * @a11y Give it role="img" and an aria-label stating the rating, since the stars are icon glyphs.
+ * @example
+ * <span class="pfx-rating -size-sm" role="img" aria-label="2 out of 3 stars">
+ *   <span class="pfx-icon -icon-star-solid"></span> <span class="pfx-icon -icon-star-solid"></span> <span class="pfx-icon -icon-star"></span>
+ *   <span class="label">2/3</span>
+ * </span>
+ * @structure
+ * .pfx-rating {
+ *   .pfx-icon {}
+ *   .label {}
+ * }
+ */
+.pfx-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--instui-component-rating-icon-icon-margin);
+  font-size: var(--instui-component-rating-icon-medium-icon-font-size);
+  color: var(--instui-component-rating-icon-icon-empty-color);
+}
+.pfx-rating.-size-sm {
+  font-size: var(--instui-component-rating-icon-small-icon-font-size);
+}
+.pfx-rating.-size-lg {
+  font-size: var(--instui-component-rating-icon-large-icon-font-size);
+}
+@scope (.pfx-rating) {
+  /* The container paints the empty (outline) stars; a filled (solid) star overrides to the filled colour. */
+  .-icon-star-solid {
+    color: var(--instui-component-rating-icon-icon-filled-color);
+  }
+  /* The value label sits after the stars, reset to text size so it isn't scaled to the star glyph. */
+  :scope > .label {
+    margin-inline-start: var(--instui-component-rating-icon-icon-margin);
+    color: var(--instui-color-text-base);
+    font-family: var(--instui-font-family-base);
+    font-size: var(--instui-font-size-text-base);
+  }
+}

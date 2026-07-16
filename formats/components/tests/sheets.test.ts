@@ -36,6 +36,8 @@ import {
   trayCss,
   truncateCss,
 } from "../src/index.ts";
+import { SENTINEL } from "../src/lib/sentinel.ts";
+import { norm } from "./_css.ts";
 
 test("every token referenced by every stylesheet exists in the IR (no drift)", () => {
   const all = `${baseCss()}\n${componentsCss({ prefix: "instui" })}\n${proseCss()}\n${selectCss({ prefix: "instui" })}`;
@@ -62,6 +64,22 @@ test("component classes use the configured prefix; any falsy prefix drops it ent
   }
   // The dash-prefixed modifiers survive unprefixed (`.button.-secondary`).
   expect(buttonCss({ prefix: null })).toContain(".button.-color-secondary");
+});
+
+test("the PFX- prefix sentinel never survives into emitted CSS, at any prefix, and is collision-free", () => {
+  // The `.css`-authored records carry the sentinel; a build-time replaceAll must consume every occurrence.
+  for (const opts of [{ prefix: "instui" }, { prefix: "ui" }, { prefix: null }, {}]) {
+    expect(componentsCss(opts)).not.toContain(SENTINEL);
+    expect(selectCss(opts)).not.toContain(SENTINEL);
+  }
+  // Unprefixed mode drops the prefix cleanly on a migrated `.css` record: `.badge`, never `.-badge`/`.PFX-badge`.
+  const unprefixed = componentsCss({ prefix: null });
+  expect(unprefixed).toContain(".badge {");
+  expect(unprefixed).not.toContain(".-badge");
+  // (A blanket `.instui-` check would false-positive on doc-comment prose that names classes like
+  // `.instui-icon` — those are prefix-independent references in `@summary`/`@remarks`, not selectors.)
+  // The sentinel must never collide with a real token name, or the replaceAll would corrupt it.
+  expect(tokens.some((t) => t.name.includes(SENTINEL))).toBe(false);
 });
 
 test("modifiers are key-value: sizes alias short/long, deviations keep a deprecated InstUI shim", () => {
@@ -111,13 +129,13 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   expect(tabs).toContain("@scope (.instui-tabs)");
   expect(tabs).toContain(".tab.-selected");
   expect(tabs).toContain(".tab.-disabled");
-  const metric = metricCss({ prefix: "instui" });
+  const metric = norm(metricCss({ prefix: "instui" }));
   expect(metric).toContain("@scope (.instui-metric)");
   expect(metric).toContain(".value {");
   // textAlign maps to align-items on the flex column (text-align alone is a no-op on the shrink box).
   expect(metric).toContain(".instui-metric.-text-align-center { align-items: center;");
   expect(metric).toContain(".instui-metric.-text-align-end { align-items: flex-end;");
-  const byline = bylineCss({ prefix: "instui" });
+  const byline = norm(bylineCss({ prefix: "instui" }));
   expect(byline).toContain("@scope (.instui-byline)");
   expect(byline).toContain(".title {");
   // alignContent + size (max-width) modifiers.
@@ -129,7 +147,7 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
 });
 
 test("table styles row-header cells and a row hover; menu has active/group parts", () => {
-  const table = tableCss({ prefix: "instui" });
+  const table = norm(tableCss({ prefix: "instui" }));
   expect(table).toContain('.instui-table th[scope="row"]');
   expect(table).toContain("var(--instui-component-table-row-header-background)");
   // Hover is opt-in (`-hover`) and paints inline (left/right) borders — NOT a full-box outline.
@@ -153,7 +171,7 @@ test("table styles row-header cells and a row hover; menu has active/group parts
 });
 
 test("context-view floats with elevation, has placements + inverse, and hides as a closed popover", () => {
-  const css = componentsCss({ prefix: "instui" });
+  const css = norm(componentsCss({ prefix: "instui" }));
   // Floats over content, so it carries a shadow.
   expect(css).toContain(".instui-context-view {");
   expect(css).toContain("box-shadow: var(--instui-elevation-above)");
@@ -190,7 +208,7 @@ test("list has sizes and solid/dashed delimiters; toggle-details, rating and bre
   expect(list).toContain("var(--instui-component-list-item-delimiter-solid-border-color)");
   expect(list).toContain(".instui-list.-ordered > li::marker");
   expect(toggleDetailsCss({ prefix: "instui" })).toContain(".instui-toggle-details.-size-lg");
-  const rating = ratingCss({ prefix: "instui" });
+  const rating = norm(ratingCss({ prefix: "instui" }));
   expect(rating).toContain(".instui-rating.-size-sm");
   // Stars are icon glyphs (filled = solid glyph); a .label carries the visible value text. Sub-element
   // rules render inside @scope, so the filled-star selector is bare and the label reads :scope > .label.
@@ -221,11 +239,11 @@ test("billboard has sizes and a clickable variant; range has handle states and a
 });
 
 test("popover + tray are top-layer surfaces; tray docks to an edge with sizes", () => {
-  const pop = popoverCss({ prefix: "instui" });
+  const pop = norm(popoverCss({ prefix: "instui" }));
   expect(pop).toContain(".instui-popover {");
   expect(pop).toContain("box-shadow: var(--instui-elevation-above)");
   expect(pop).toContain("[popover].instui-popover { margin: 0; }");
-  const tray = trayCss({ prefix: "instui" });
+  const tray = norm(trayCss({ prefix: "instui" }));
   expect(tray).toContain("position: fixed;");
   expect(tray).toContain(".instui-tray.-placement-end");
   expect(tray).toContain("var(--instui-component-tray-width-sm)");
@@ -233,17 +251,17 @@ test("popover + tray are top-layer surfaces; tray docks to an edge with sizes", 
 });
 
 test("floating surfaces adopt CSS anchor positioning + open animations under @supports", () => {
-  const pop = popoverCss({ prefix: "instui" });
+  const pop = norm(popoverCss({ prefix: "instui" }));
   expect(pop).toContain("@supports (position-area: block-end)");
   expect(pop).toContain("[popover].instui-popover.-placement-bottom { position-area: block-end; }");
-  expect(pop).toContain("position-try-fallbacks: flip-block, flip-inline;");
+  expect(pop).toContain("position-try-fallbacks: flip-block,flip-inline;");
   expect(pop).toContain("@starting-style");
-  const cv = contextViewCss({ prefix: "instui" });
+  const cv = norm(contextViewCss({ prefix: "instui" }));
   expect(cv).toContain("@supports (position-area: block-end)");
   expect(cv).toContain(
     "[popover].instui-context-view.-placement-start { position-area: inline-start center; }",
   );
-  const tray = trayCss({ prefix: "instui" });
+  const tray = norm(trayCss({ prefix: "instui" }));
   expect(tray).toContain("@supports (transition-behavior: allow-discrete)");
   expect(tray).toContain("@starting-style");
 });
@@ -331,7 +349,7 @@ test("InstUI prop-coverage gaps: text-transform, list unstyled/inline, table fix
   expect(textCss({ prefix: "instui" })).toContain(".instui-text.-transform-uppercase");
   expect(listCss({ prefix: "instui" })).toContain(".instui-list.-unstyled");
   expect(listCss({ prefix: "instui" })).toContain(".instui-list.-inline");
-  expect(tableCss({ prefix: "instui" })).toContain(
+  expect(norm(tableCss({ prefix: "instui" }))).toContain(
     ".instui-table.-layout-fixed { table-layout: fixed; }",
   );
   expect(menuCss({ prefix: "instui" })).toContain(".item.-disabled");

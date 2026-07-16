@@ -16,5 +16,21 @@ export default defineConfig({
   },
   run: {
     cache: true,
+    tasks: {
+      // CSS/cssdoc linting depends on the component generator: linting the SOURCE `.css` records needs
+      // `@pantoken/components`'s `src/generated/_records.css` (the cssdoc sibling-record provider) and the
+      // built `generated/*.css` sheets. Declaring the dependency here means `vp run lint:css`/`lint:js`
+      // (as `ready` invokes them) regenerate first, instead of relying on an earlier build step.
+      "lint:css": {
+        command:
+          'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css"',
+        dependsOn: ["@pantoken/components#generate"],
+      },
+      "lint:js": {
+        command:
+          'vp exec eslint "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css" "renderers/web-components/src/**/*.css"',
+        dependsOn: ["@pantoken/components#generate"],
+      },
+    },
   },
 });

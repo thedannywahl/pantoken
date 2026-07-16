@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import { modalCss } from "../../src/index.ts";
 import { modal } from "../../src/components/modal.ts";
+import { norm } from "../_css.ts";
 import { validate } from "../_validate.ts";
 
 test("modal: emits exactly one well-formed cssdoc record with no token drift", () => {
@@ -8,7 +9,7 @@ test("modal: emits exactly one well-formed cssdoc record with no token drift", (
 });
 
 test("modal has sizes, a compact density, and an inverse scheme", () => {
-  const css = modalCss({ prefix: "instui" });
+  const css = norm(modalCss({ prefix: "instui" }));
   expect(css).toContain(".instui-modal.-size-sm");
   expect(css).toContain(".instui-modal.-size-lg");
   expect(css).toContain(".instui-modal.-size-auto");

@@ -1,0 +1,80 @@
+/**
+ * @component toggle-group
+ * @summary A bordered disclosure built on `<details>`: a chevron summary row and collapsible content.
+ * @remarks Built on the same native `<details>` foundation as toggle-details; put the `<summary>` first so it becomes the clickable header row and the rest is the collapsible content.
+ * @modifier -without-border — Remove the border.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @pseudo ::before — Draws the summary row's disclosure chevron, a masked glyph that rotates to point down when the group is open.
+ * @cssstate open
+ * @example
+ * <details class="pfx-toggle-group" open>
+ *   <summary>Advanced settings</summary>
+ *   <div>These options are revealed when the group is expanded. The header row carries a chevron that rotates on open, and the content sits below a divider.</div>
+ * </details>
+ * @structure
+ * .pfx-toggle-group {
+ *   summary {}
+ *   div {}
+ * }
+ * @related toggle-details — The single, unbordered form of the same disclosure.
+ */
+.pfx-toggle-group {
+  display: block;
+  border: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color);
+  border-radius: var(--instui-border-radius-md);
+  background: var(--instui-color-background-elevated-surface-base);
+  color: var(--instui-component-toggle-details-text-color);
+  font-family: var(--instui-component-toggle-details-font-family);
+  font-weight: var(--instui-component-toggle-details-font-weight);
+  line-height: var(--instui-component-toggle-details-line-height);
+  overflow: hidden;
+}
+.pfx-toggle-group > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--instui-component-toggle-details-icon-margin);
+  cursor: pointer;
+  list-style: none;
+  padding: var(--instui-component-toggle-details-content-padding-medium);
+  font-size: var(--instui-component-toggle-details-font-size-medium);
+}
+.pfx-toggle-group > summary::-webkit-details-marker {
+  display: none;
+}
+.pfx-toggle-group > summary::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+  -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+  mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+  transition: transform 0.2s ease;
+}
+.pfx-toggle-group[open] > summary::before {
+  transform: rotate(90deg);
+}
+/* the collapsible content: separated from the header by a top border in the group colour */
+.pfx-toggle-group > :not(summary) {
+  border-block-start: var(--instui-border-width-sm) solid
+    var(--instui-component-toggle-group-border-color);
+  padding: var(--instui-component-toggle-details-content-padding-medium);
+}
+.pfx-toggle-group.-size-sm > summary,
+.pfx-toggle-group.-size-sm > :not(summary) {
+  font-size: var(--instui-component-toggle-details-font-size-small);
+  padding: var(--instui-component-toggle-details-content-padding-small);
+}
+.pfx-toggle-group.-size-lg > summary,
+.pfx-toggle-group.-size-lg > :not(summary) {
+  font-size: var(--instui-component-toggle-details-font-size-large);
+  padding: var(--instui-component-toggle-details-content-padding-large);
+}
+/* border={false} */
+.pfx-toggle-group.-without-border {
+  border: 0;
+}
+.pfx-toggle-group.-without-border > :not(summary) {
+  border-block-start: 0;
+}

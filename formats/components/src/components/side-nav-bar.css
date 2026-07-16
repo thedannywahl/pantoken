@@ -1,0 +1,81 @@
+/**
+ * @component side-nav-bar
+ * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
+ * @modifier -minimized — Collapse to icons only (labels hidden).
+ * @part .item — A navigation entry; `-selected` marks the active one.
+ * @part .label — An item's text label; hidden when the rail is minimized.
+ * @a11y Label the `<nav>` with aria-label so it's announced as a named navigation landmark.
+ * @example
+ * <nav class="pfx-side-nav-bar" aria-label="Primary">
+ *   <a class="item -selected" href="#">
+ *     <span class="pfx-icon -icon-house"></span>
+ *     <span class="label">Home</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-inbox"></span>
+ *     <span class="label">Inbox</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-calendar"></span>
+ *     <span class="label">Calendar</span>
+ *   </a>
+ *   <a class="item" href="#">
+ *     <span class="pfx-icon -icon-settings"></span>
+ *     <span class="label">Settings</span>
+ *   </a>
+ * </nav>
+ * @structure
+ * .pfx-side-nav-bar {
+ *   .item {
+ *     .pfx-icon {}
+ *     .label {}
+ *   }
+ * }
+ */
+.pfx-side-nav-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-component-side-nav-bar-content-gap);
+  padding: var(--instui-component-side-nav-bar-content-margin);
+  box-sizing: border-box;
+  inline-size: fit-content;
+  /* The rail sits on the page and runs full height (InstUI SideNavBar is 100% of its layout column). */
+  block-size: 100%;
+  min-block-size: 100%;
+  background: var(--instui-component-side-nav-bar-background-color);
+  color: var(--instui-component-side-nav-bar-font-color);
+  font-family: var(--instui-component-side-nav-bar-item-font-family);
+}
+@scope (.pfx-side-nav-bar) {
+  :scope > .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--instui-spacing-space2xs);
+    padding: var(--instui-component-side-nav-bar-item-content-padding);
+    min-inline-size: var(--instui-component-side-nav-bar-minimized-width);
+    color: var(--instui-component-side-nav-bar-item-font-color);
+    background: var(--instui-component-side-nav-bar-item-background-color);
+    border-radius: var(--instui-component-side-nav-bar-item-border-radius);
+    font-size: var(--instui-component-side-nav-bar-item-font-size);
+    font-weight: var(--instui-component-side-nav-bar-item-font-weight);
+    line-height: var(--instui-component-side-nav-bar-item-line-height);
+    text-align: center;
+    text-decoration: var(--instui-component-side-nav-bar-item-link-text-decoration);
+    cursor: pointer;
+  }
+  :scope > .item:hover {
+    background: var(--instui-component-side-nav-bar-item-hover-background-color);
+  }
+  :scope > .item.-selected {
+    background: var(--instui-component-side-nav-bar-item-selected-background-color);
+    color: var(--instui-component-side-nav-bar-item-selected-font-color);
+  }
+}
+/* minimized: a narrow rail — the icons stay, the labels are hidden. */
+.pfx-side-nav-bar.-minimized {
+  inline-size: var(--instui-component-side-nav-bar-minimized-width);
+}
+.pfx-side-nav-bar.-minimized .item .label {
+  display: none;
+}

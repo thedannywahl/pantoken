@@ -30,11 +30,11 @@
     "access": "public"
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
-    "build": "vp pack && vp run generate",
-    "dev": "vp pack --watch",
-    "test": "vp test",
-    "check": "vp check",
+    "component-styles": "node scripts/component-styles.ts",
+    "build": "node scripts/component-styles.ts && vp pack && node scripts/generate.ts",
+    "dev": "node scripts/component-styles.ts && vp pack --watch",
+    "test": "node scripts/component-styles.ts && vp test",
+    "check": "node scripts/component-styles.ts && vp check",
     "prepublishOnly": "vp run build"
   },
   "dependencies": {

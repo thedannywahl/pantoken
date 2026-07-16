@@ -1,0 +1,44 @@
+/**
+ * @component file-drop
+ * @summary A file dropzone with hover, accepted, and rejected states.
+ * @modifier -accepted — Drag state for an acceptable file.
+ * @modifier -hover — Hover or drag-over state.
+ * @modifier -rejected — Drag state for a rejected file.
+ * @accessibility Wrap a native `<input type="file">` in the `<label>` drop zone so it stays a real, labelled file control that the keyboard and assistive tech can operate.
+ * @example
+ * <label class="pfx-file-drop" id="fd">
+ *   <span class="pfx-icon -icon-cloud-upload"></span>
+ *   <div class="pfx-text"><strong>Drag an image here</strong>, or click to browse.</div>
+ *   <div class="pfx-text -size-sm pfx-fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
+ *   <input type="file" id="fd-input">
+ * </label>
+ * @structure
+ * .pfx-file-drop {
+ *   .pfx-icon {}
+ *   .pfx-text {
+ *     strong {}
+ *   }
+ *   .pfx-text {}
+ *   input {}
+ * }
+ */
+.pfx-file-drop {
+  display: block;
+  text-align: center;
+  padding: var(--instui-spacing-space-lg);
+  color: var(--instui-color-text-base);
+  background: var(--instui-component-file-drop-background-color);
+  border: var(--instui-component-file-drop-border-width)
+    var(--instui-component-file-drop-border-style) var(--instui-component-file-drop-border-color);
+  border-radius: var(--instui-component-file-drop-border-radius);
+}
+.pfx-file-drop:hover,
+.pfx-file-drop.-hover {
+  border-color: var(--instui-component-file-drop-hover-border-color);
+}
+.pfx-file-drop.-accepted {
+  border-color: var(--instui-component-file-drop-accepted-color);
+}
+.pfx-file-drop.-rejected {
+  border-color: var(--instui-component-file-drop-rejected-color);
+}

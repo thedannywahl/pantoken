@@ -1,0 +1,85 @@
+/**
+ * @component billboard
+ * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
+ * @modifier -clickable — Interactive (clickable) styling with hover feedback.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .hero — The leading icon or image.
+ * @part .heading — The billboard heading.
+ * @part .message — The supporting message.
+ * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
+ * @example
+ * <div class="pfx-billboard">
+ *   <span class="hero"><span class="pfx-icon -icon-inbox"></span></span>
+ *   <div class="heading">No items yet</div>
+ *   <div class="message">Create your first item to get started.</div>
+ * </div>
+ * @structure
+ * .pfx-billboard {
+ *   .hero {
+ *     .pfx-icon {}
+ *   }
+ *   .heading {}
+ *   .message {}
+ * }
+ */
+.pfx-billboard {
+  display: block;
+  text-align: center;
+  background: var(--instui-component-billboard-background-color);
+  padding: var(--instui-component-billboard-padding-medium);
+  margin: var(--instui-component-billboard-medium-margin);
+  font-family: var(--instui-component-billboard-font-family);
+  color: var(--instui-component-billboard-message-color);
+}
+.pfx-billboard.-size-sm {
+  padding: var(--instui-component-billboard-padding-small);
+}
+.pfx-billboard.-size-lg {
+  padding: var(--instui-component-billboard-padding-large);
+  margin: var(--instui-component-billboard-large-margin);
+}
+.pfx-billboard.-size-sm .message {
+  font-size: var(--instui-component-billboard-message-font-size-small);
+}
+.pfx-billboard.-size-lg .message {
+  font-size: var(--instui-component-billboard-message-font-size-large);
+}
+.pfx-billboard.-clickable {
+  cursor: pointer;
+  border: var(--instui-component-billboard-button-border-width)
+    var(--instui-component-billboard-button-border-style) transparent;
+  border-radius: var(--instui-component-billboard-button-border-radius);
+}
+.pfx-billboard.-clickable:hover {
+  border-style: var(--instui-component-billboard-button-hover-border-style);
+}
+.pfx-billboard.-clickable:active {
+  background: var(--instui-component-billboard-clickable-active-bg);
+  color: var(--instui-component-billboard-clickable-active-text);
+}
+@scope (.pfx-billboard) {
+  /* The hero (an icon or image) leads the block. Size it via font-size on the glyph in the markup. */
+  :scope > .hero {
+    display: inline-flex;
+    justify-content: center;
+    margin-block-end: var(--instui-spacing-space-sm);
+    color: var(--instui-component-billboard-message-color);
+  }
+  /* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
+  :scope > .heading {
+    margin: 0 0 var(--instui-spacing-space-xs);
+    color: var(--instui-component-billboard-message-color);
+    font-weight: bold;
+    font-size: var(--instui-component-billboard-message-font-size-large);
+  }
+  :scope > .message {
+    color: var(--instui-component-billboard-message-color);
+    font-size: var(--instui-component-billboard-message-font-size-medium);
+  }
+  :scope.-clickable > .message,
+  :scope.-clickable > .heading,
+  :scope.-clickable > .hero {
+    color: var(--instui-component-billboard-message-color-clickable);
+  }
+}

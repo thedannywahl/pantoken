@@ -162,12 +162,18 @@ const makeResolveSource =
     return path ? { href: `${SOURCE_URL_BASE}/${path}`, label: path.split("/").pop() } : undefined;
   };
 
-/** Every `.ts` under `<componentsRoot>/src/{components,utilities,rules,declarations}` + the color record's generate.ts. */
+/**
+ * Every authoring source under `<componentsRoot>/src/{components,utilities,rules,declarations}` + the
+ * color record's generate.ts. Scans both `.css` (the migrated static records carry the `@component` tag
+ * in their co-located `.css`) and `.ts` (the parametric records — button, the input controls, heading —
+ * still author the tag inside a `css` template). A migrated record's `.ts` is a tag-less wrapper, so
+ * `sourceMap` skips it and links to the `.css`.
+ */
 function componentSources(componentsRoot: string): string[] {
   const files = ["components", "utilities", "rules", "declarations"].flatMap((d) => {
     const dir = join(componentsRoot, "src", d);
     return readdirSync(dir)
-      .filter((f) => f.endsWith(".ts"))
+      .filter((f) => f.endsWith(".ts") || f.endsWith(".css"))
       .map((f) => join(dir, f));
   });
   files.push(join(componentsRoot, "scripts", "generate.ts")); // the `color` utility's doc lives here

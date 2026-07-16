@@ -1,0 +1,116 @@
+/**
+ * @component tree-browser
+ * @summary A disclosure tree of nested collections and leaf items, with rotating chevrons.
+ * @remarks Each collection is a native `<details>`; nesting them inside one another builds the tree, and the browser handles opening and closing every branch.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @part .item — A leaf entry in the tree.
+ * @pseudo ::before — Draws each collection's disclosure chevron, a masked glyph that rotates to point down when the branch is open.
+ * @cssstate open
+ * @a11y Mark the root with role="tree" and each nested list with role="group".
+ * @example
+ * <div class="pfx-tree-browser" role="tree">
+ *   <details open>
+ *     <summary><span class="pfx-icon -icon-folder"></span> Course files</summary>
+ *     <ul role="group">
+ *       <li>
+ *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Syllabus.pdf</a>
+ *       </li>
+ *       <li>
+ *         <details>
+ *           <summary><span class="pfx-icon -icon-folder"></span> Week 1</summary>
+ *           <ul role="group">
+ *             <li>
+ *               <a class="item -selected" href="#"><span class="pfx-icon -icon-file-text"></span> Reading.pdf</a>
+ *             </li>
+ *             <li>
+ *               <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Slides.pptx</a>
+ *             </li>
+ *           </ul>
+ *         </details>
+ *       </li>
+ *       <li>
+ *         <a class="item" href="#"><span class="pfx-icon -icon-file-text"></span> Rubric.docx</a>
+ *       </li>
+ *     </ul>
+ *   </details>
+ * </div>
+ * @structure
+ * .pfx-tree-browser {
+ *   details {
+ *     summary {
+ *       .pfx-icon {}
+ *     }
+ *     ul {
+ *       li {
+ *         .item {
+ *           .pfx-icon {}
+ *         }
+ *       }
+ *     }
+ *   }
+ * }
+ * @related menu — Both present nested, selectable entries.
+ */
+.pfx-tree-browser {
+  border-radius: var(--instui-component-tree-browser-border-radius);
+  font-family: var(--instui-component-tree-browser-tree-collection-font-family);
+  color: var(--instui-component-tree-browser-tree-button-name-text-color);
+}
+/* A collection node (a <details><summary>) and a leaf (.item) share the button chrome. */
+.pfx-tree-browser details > summary,
+.pfx-tree-browser .item {
+  display: flex;
+  align-items: center;
+  gap: var(--instui-component-tree-browser-tree-button-icons-margin-right-medium);
+  padding: var(--instui-component-tree-browser-tree-button-base-spacing-medium);
+  font-size: var(--instui-component-tree-browser-tree-button-name-font-size-medium);
+  line-height: var(--instui-component-tree-browser-tree-button-text-line-height);
+  color: var(--instui-component-tree-browser-tree-button-name-text-color);
+  border-radius: var(--instui-component-tree-browser-tree-button-border-radius);
+  cursor: pointer;
+  list-style: none;
+}
+.pfx-tree-browser details > summary::-webkit-details-marker {
+  display: none;
+}
+/* The disclosure chevron rotates open (same technique as toggle-details). */
+.pfx-tree-browser details > summary::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+  -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+  mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+  transition: transform 0.2s ease;
+}
+.pfx-tree-browser details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.pfx-tree-browser details > summary:hover,
+.pfx-tree-browser .item:hover {
+  background: var(--instui-component-tree-browser-tree-button-hover-background-color);
+  color: var(--instui-component-tree-browser-tree-button-hover-text-color);
+}
+.pfx-tree-browser details > summary.-selected,
+.pfx-tree-browser .item.-selected {
+  background: var(--instui-component-tree-browser-tree-button-selected-background-color);
+  color: var(--instui-component-tree-browser-tree-button-selected-text-color);
+}
+/* Nested lists indent; the leaf list carries no bullets. */
+.pfx-tree-browser ul {
+  margin: 0;
+  padding-inline-start: var(--instui-component-tree-browser-tree-collection-base-spacing-medium);
+  list-style: none;
+}
+.pfx-tree-browser.-size-sm details > summary,
+.pfx-tree-browser.-size-sm .item {
+  padding: var(--instui-component-tree-browser-tree-button-base-spacing-small);
+  font-size: var(--instui-component-tree-browser-tree-button-name-font-size-small);
+}
+.pfx-tree-browser.-size-lg details > summary,
+.pfx-tree-browser.-size-lg .item {
+  padding: var(--instui-component-tree-browser-tree-button-base-spacing-large);
+  font-size: var(--instui-component-tree-browser-tree-button-name-font-size-large);
+}
