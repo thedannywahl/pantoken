@@ -1,0 +1,100 @@
+/**
+ * @component text
+ * @summary Body-text typography with size, weight, colour, and style modifiers.
+ * @modifier -color-brand — Brand text colour.
+ * @modifier -color-secondary — Secondary (muted) text colour.
+ * @modifier -color-ai — AI-accent text colour.
+ * @modifier -color-success — Success text colour.
+ * @modifier -color-warning — Warning text colour.
+ * @modifier -color-danger — Danger text colour.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) text colour.
+ * @modifier -weight-bold — Bold weight.
+ * @modifier -style-italic — Italic.
+ * @modifier -transform-uppercase — Uppercase the text.
+ * @modifier -transform-lowercase — Lowercase the text.
+ * @modifier -transform-capitalize — Capitalise each word.
+ * @modifier -variant-content-small — Small-content type preset.
+ * @modifier -variant-description-page — Page-description type preset.
+ * @modifier -variant-description-section — Section-description type preset.
+ * @modifier -variant-legend — Legend type preset.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @example
+ * <span class="pfx-text -size-xs">x-small text</span>
+ * @related heading — Typography for headings rather than body text.
+ * @related truncate — Clips this text to one line or a set number of lines.
+ */
+.pfx-text {
+  font-family: var(--instui-component-text-content-font-family);
+  color: var(--instui-component-text-base-color);
+  font-size: var(--instui-component-text-font-size-medium);
+  font-weight: var(--instui-component-text-font-weight-normal);
+  line-height: var(--instui-component-text-content-line-height);
+}
+.pfx-text.-size-xs {
+  font-size: var(--instui-component-text-font-size-x-small);
+}
+.pfx-text.-size-sm {
+  font-size: var(--instui-component-text-font-size-small);
+}
+.pfx-text.-size-lg {
+  font-size: var(--instui-component-text-font-size-large);
+}
+.pfx-text.-size-xl {
+  font-size: var(--instui-component-text-font-size-x-large);
+}
+.pfx-text.-weight-bold {
+  font-weight: var(--instui-component-text-font-weight-bold);
+}
+.pfx-text.-style-italic {
+  font-style: italic;
+}
+.pfx-text.-color-secondary {
+  color: var(--instui-component-text-muted-color);
+}
+.pfx-text.-color-brand {
+  color: var(--instui-component-text-primary-color);
+}
+.pfx-text.-color-success {
+  color: var(--instui-component-text-success-color);
+}
+.pfx-text.-color-danger {
+  color: var(--instui-component-text-error-color);
+}
+.pfx-text.-color-warning {
+  color: var(--instui-component-text-warning-color);
+}
+.pfx-text.-color-primary-inverse {
+  color: var(--instui-component-text-inverse-color);
+}
+.pfx-text.-color-ai {
+  color: var(--instui-component-text-ai-color);
+  background: var(--instui-component-text-ai-background-color);
+}
+.pfx-text.-variant-description-page {
+  font-size: var(--instui-component-text-description-page-font-size);
+  line-height: var(--instui-component-text-description-page-line-height);
+}
+.pfx-text.-variant-description-section {
+  font-size: var(--instui-component-text-description-section-font-size);
+  line-height: var(--instui-component-text-description-section-line-height);
+}
+.pfx-text.-variant-content-small {
+  font-size: var(--instui-component-text-content-small-font-size);
+  line-height: var(--instui-component-text-content-small-line-height);
+}
+.pfx-text.-variant-legend {
+  font-size: var(--instui-component-text-legend-font-size);
+  line-height: var(--instui-component-text-legend-line-height);
+}
+.pfx-text.-transform-uppercase {
+  text-transform: uppercase;
+}
+.pfx-text.-transform-lowercase {
+  text-transform: lowercase;
+}
+.pfx-text.-transform-capitalize {
+  text-transform: capitalize;
+}

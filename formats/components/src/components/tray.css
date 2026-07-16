@@ -1,0 +1,123 @@
+/**
+ * @component tray
+ * @summary An edge-pinned panel that slides in from any side; a native `[popover]` or `<dialog>`.
+ * @modifier -placement-top — Pin to the top edge.
+ * @modifier -placement-bottom — Pin to the bottom edge.
+ * @modifier -placement-end — Pin to the end (inline-end) edge.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @compat Opens with the native `[popover]` API and `@starting-style`; the slide-in sits behind an `@supports (transition-behavior: allow-discrete)` guard, so browsers without it still open the tray, just without the slide.
+ * @accessibility The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.pfx-close-button` in the example uses `aria-label="Close"`).
+ * @example
+ * <div class="pfx-tray -size-sm" id="tray-start">
+ *   <div>
+ *     <strong>Filters</strong>
+ *     <button class="pfx-close-button" aria-label="Close"></button>
+ *   </div>
+ *   <p class="pfx-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
+ * </div>
+ * @structure
+ * .pfx-tray {
+ *   div {
+ *     strong {}
+ *     .pfx-close-button {}
+ *   }
+ *   .pfx-text {}
+ * }
+ * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
+ * @related popover — The generic top-layer surface this builds on.
+ */
+.pfx-tray {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: var(--instui-component-tray-width-md);
+  max-inline-size: 100%;
+  /* block-size:auto lets inset-block:0 stretch it full height, overriding the UA popover's
+     height:fit-content; so the edge shadows fall outside the viewport. */
+  block-size: auto;
+  max-block-size: none;
+  background: var(--instui-component-tray-background-color);
+  border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
+  padding: var(--instui-component-tray-padding);
+  z-index: var(--instui-component-tray-z-index);
+  box-shadow: var(--instui-elevation-topmost);
+}
+.pfx-tray.-placement-end {
+  inset-inline: auto 0;
+}
+.pfx-tray.-placement-top {
+  inset: 0 0 auto 0;
+  inline-size: 100%;
+  block-size: auto;
+}
+.pfx-tray.-placement-bottom {
+  inset: auto 0 0 0;
+  inline-size: 100%;
+  block-size: auto;
+}
+.pfx-tray.-size-xs {
+  inline-size: var(--instui-component-tray-width-xs);
+}
+.pfx-tray.-size-sm {
+  inline-size: var(--instui-component-tray-width-sm);
+}
+.pfx-tray.-size-lg {
+  inline-size: var(--instui-component-tray-width-lg);
+}
+.pfx-tray.-size-xl {
+  inline-size: var(--instui-component-tray-width-xl);
+}
+[popover].pfx-tray {
+  margin: 0;
+}
+dialog.pfx-tray {
+  margin: 0;
+  padding: var(--instui-component-tray-padding);
+  border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
+}
+/* Slide in from the docked edge on open (native popover + @starting-style, no JS). The transform is
+   keyed to placement; inert where allow-discrete transitions aren't supported. */
+@supports (transition-behavior: allow-discrete) {
+  [popover].pfx-tray {
+    transition:
+      transform 0.2s ease,
+      overlay 0.2s allow-discrete,
+      display 0.2s allow-discrete;
+    transform: translateX(0);
+  }
+  [popover].pfx-tray:not(:popover-open) {
+    transform: translateX(-100%);
+  }
+  @starting-style {
+    [popover].pfx-tray:popover-open {
+      transform: translateX(-100%);
+    }
+  }
+  [popover].pfx-tray.-placement-end:not(:popover-open) {
+    transform: translateX(100%);
+  }
+  @starting-style {
+    [popover].pfx-tray.-placement-end:popover-open {
+      transform: translateX(100%);
+    }
+  }
+  [popover].pfx-tray.-placement-top:not(:popover-open) {
+    transform: translateY(-100%);
+  }
+  @starting-style {
+    [popover].pfx-tray.-placement-top:popover-open {
+      transform: translateY(-100%);
+    }
+  }
+  [popover].pfx-tray.-placement-bottom:not(:popover-open) {
+    transform: translateY(100%);
+  }
+  @starting-style {
+    [popover].pfx-tray.-placement-bottom:popover-open {
+      transform: translateY(100%);
+    }
+  }
+}

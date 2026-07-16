@@ -52,9 +52,11 @@ export default {
   },
   overrides: [
     {
-      // Machine-generated sheets: keep only value-level correctness, drop structural rules that can
-      // legitimately trip on generated output (repeated selectors across base/modifier rules, etc.).
-      files: ["**/generated/**/*.css"],
+      // The component library's sheets — the authored `formats/components/src/**` records and the
+      // generated bundles built from them. Keep value-level correctness, but drop the structural rules
+      // that legitimately trip on this base/modifier/override authoring style (a base rule plus a later
+      // rule for the same selector — e.g. `.instui-context-view::after` overridden per `-placement-*`).
+      files: ["**/generated/**/*.css", "formats/components/src/{components,utilities}/*.css"],
       rules: {
         "no-duplicate-selectors": null,
         "declaration-block-no-duplicate-properties": null,

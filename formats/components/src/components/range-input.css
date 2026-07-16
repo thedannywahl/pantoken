@@ -1,0 +1,110 @@
+/**
+ * @component range-input
+ * @summary A styled range slider with an inverse value bubble.
+ * @pseudo ::before — Draws the value bubble's caret, a small triangle pointing back toward the track.
+ * @accessibility The control is a native `<input type="range">`; give it an accessible name with `aria-label` or an associated `<label>`.
+ * @example
+ * <input class="pfx-range-input" id="r1" type="range" value="30">
+ * @related number-input — The typed numeric-entry counterpart.
+ */
+.pfx-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: 100%;
+  min-inline-size: var(--instui-component-range-input-min-width);
+  block-size: var(--instui-component-range-input-handle-size);
+  background: transparent;
+}
+/* Chrome/Safari: the runnable track is centred in the (handle-sized) control box. */
+.pfx-range-input::-webkit-slider-runnable-track {
+  block-size: 0.25rem;
+  background: var(--instui-component-range-input-track-background);
+  border: var(--instui-border-width-sm) solid var(--instui-component-range-input-track-border-color);
+  border-radius: 999px;
+}
+.pfx-range-input::-moz-range-track {
+  block-size: 0.25rem;
+  background: var(--instui-component-range-input-track-background);
+  border: var(--instui-border-width-sm) solid var(--instui-component-range-input-track-border-color);
+  border-radius: 999px;
+}
+.pfx-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-block-start: calc((0.25rem - var(--instui-component-range-input-handle-size)) / 2);
+  inline-size: var(--instui-component-range-input-handle-size);
+  block-size: var(--instui-component-range-input-handle-size);
+  background: var(--instui-component-range-input-handle-background);
+  border: var(--instui-component-range-input-handle-border-size) solid
+    var(--instui-component-range-input-handle-border-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 var(--instui-component-range-input-handle-shadow-color);
+  cursor: pointer;
+}
+.pfx-range-input::-moz-range-thumb {
+  inline-size: var(--instui-component-range-input-handle-size);
+  block-size: var(--instui-component-range-input-handle-size);
+  background: var(--instui-component-range-input-handle-background);
+  border: var(--instui-component-range-input-handle-border-size) solid
+    var(--instui-component-range-input-handle-border-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 var(--instui-component-range-input-handle-shadow-color);
+  cursor: pointer;
+}
+.pfx-range-input:hover::-webkit-slider-thumb {
+  background: var(--instui-component-range-input-handle-hover-background);
+}
+.pfx-range-input:hover::-moz-range-thumb {
+  background: var(--instui-component-range-input-handle-hover-background);
+}
+.pfx-range-input:focus-visible {
+  outline: none;
+}
+.pfx-range-input:focus-visible::-webkit-slider-thumb {
+  background: var(--instui-component-range-input-handle-focus-background);
+  box-shadow: 0 0 0 var(--instui-component-range-input-handle-focus-outline-width)
+    var(--instui-component-range-input-handle-focus-outline-color);
+}
+.pfx-range-input:focus-visible::-moz-range-thumb {
+  background: var(--instui-component-range-input-handle-focus-background);
+  box-shadow: 0 0 0 var(--instui-component-range-input-handle-focus-outline-width)
+    var(--instui-component-range-input-handle-focus-outline-color);
+}
+/* The value bubble: an inverse pill with a caret pointing back toward the track (InstUI ContextView). */
+.pfx-range-input-value {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  /* Hug the number: the value line-height token is oversized (a container height), and as a flex item
+     the bubble must not stretch to the row — so pin line-height to the text and never self-stretch. */
+  align-self: center;
+  margin-inline-start: 0.5rem;
+  background: var(--instui-color-background-inverse);
+  color: var(--instui-color-text-inverse);
+  border-radius: var(--instui-border-radius-md);
+  padding: var(--instui-component-range-input-value-medium-padding);
+  font-family: var(--instui-component-range-input-value-font-family);
+  font-size: var(--instui-component-range-input-value-medium-font-size);
+  font-weight: var(--instui-component-range-input-value-font-weight);
+  line-height: 1;
+}
+.pfx-range-input-value::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -0.375rem;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  border-block: 0.375rem solid transparent;
+  border-inline-end: 0.375rem solid var(--instui-color-background-inverse);
+  border-inline-start: 0;
+}
+.pfx-range-input-value.-size-sm {
+  padding: var(--instui-component-range-input-value-small-padding);
+  font-size: var(--instui-component-range-input-value-small-font-size);
+  line-height: var(--instui-component-range-input-value-small-line-height);
+}
+.pfx-range-input-value.-size-lg {
+  padding: var(--instui-component-range-input-value-large-padding);
+  font-size: var(--instui-component-range-input-value-large-font-size);
+  line-height: var(--instui-component-range-input-value-large-line-height);
+}

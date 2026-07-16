@@ -1,0 +1,70 @@
+/**
+ * @component form-field-messages
+ * @summary Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.
+ * @modifier -type-new-error — @deprecated {@link -type-error}
+ * @part .pfx-form-field-message — An individual message; its `-type-*` picks the hint, error, success, or screen-reader-only variant.
+ * @pseudo ::before — Renders the leading status glyph on error and success messages: an alert circle for errors and a check circle for success.
+ * @accessibility A `-type-screenreader-only` message is visually hidden but stays in the accessibility tree, so it's still announced; pair error and success messages with the field via aria-describedby so assistive tech reads them with the control.
+ * @example
+ * <div class="pfx-form-field-messages">
+ *   <span class="pfx-form-field-message -type-hint">We'll never share it.</span>
+ *   <span class="pfx-form-field-message -type-error">Enter a valid email address.</span>
+ * </div>
+ * @structure
+ * .pfx-form-field-messages {
+ *   .pfx-form-field-message {}
+ * }
+ * @related form-field — Wraps a label, controls, and these messages.
+ */
+.pfx-form-field-messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-component-form-field-layout-gap-primitives);
+}
+.pfx-form-field-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--instui-component-form-field-message-font-family);
+  font-size: var(--instui-component-form-field-message-font-size);
+  font-weight: var(--instui-component-form-field-message-font-weight);
+  line-height: var(--instui-component-form-field-message-line-height);
+  color: var(--instui-component-form-field-message-hint-text-color);
+}
+.pfx-form-field-message.-type-hint {
+  color: var(--instui-component-form-field-message-hint-text-color);
+}
+.pfx-form-field-message.-type-error {
+  color: var(--instui-component-form-field-message-error-text-color);
+}
+.pfx-form-field-message.-type-success {
+  color: var(--instui-component-form-field-message-success-text-color);
+}
+.pfx-form-field-message.-type-error::before,
+.pfx-form-field-message.-type-success::before {
+  content: "";
+  flex: none;
+  inline-size: 1em;
+  block-size: 1em;
+  background: currentColor;
+}
+.pfx-form-field-message.-type-error::before {
+  -webkit-mask: var(--instui-icon-circle-alert) center / contain no-repeat;
+  mask: var(--instui-icon-circle-alert) center / contain no-repeat;
+}
+.pfx-form-field-message.-type-success::before {
+  -webkit-mask: var(--instui-icon-circle-check) center / contain no-repeat;
+  mask: var(--instui-icon-circle-check) center / contain no-repeat;
+}
+.pfx-form-field-message.-type-screenreader-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

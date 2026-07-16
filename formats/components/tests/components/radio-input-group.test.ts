@@ -2,13 +2,14 @@ import { expect, test } from "vite-plus/test";
 import { radioInputGroupCss } from "../../src/index.ts";
 import { radioInputGroup } from "../../src/components/radio-input-group.ts";
 import { validate } from "../_validate.ts";
+import { norm } from "../_css.ts";
 
 test("radio-input-group: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(radioInputGroup);
 });
 
 test("radio-input-group lays toggle radios out flush as a segmented control", () => {
-  const css = radioInputGroupCss({ prefix: "instui" });
+  const css = norm(radioInputGroupCss({ prefix: "instui" }));
   expect(css).toContain(".instui-radio-input-group {");
   expect(css).toContain(".instui-radio-input-group > legend");
   // simple variant flows into a row for -layout-columns/-inline

@@ -95,6 +95,15 @@ const tokenGroups = [
 
 writeFileSync(join(outDir, "base.css"), baseCss());
 writeFileSync(join(outDir, "components.css"), componentsCss(opts));
+// Internal (NOT shipped): every record in the `pfx-` authoring prefix — the cssdoc `providers` target
+// (see formats/components/cssdoc.jsonc) that lets the per-file source-`.css` lint resolve sibling records
+// named in `@structure` (e.g. tree-browser's `.pfx-icon`). Written under src/generated/ (gitignored),
+// never added to the shipped sheets. cssdoc resolves siblings by record NAME/class, so this must carry
+// EVERY record — including the TS-authored holdouts (button, heading, the input controls) that a plain
+// concatenation of the `.css` sources would miss — which is exactly what `componentsCss` bundles.
+const srcGenDir = resolve(import.meta.dirname, "../src/generated");
+mkdirSync(srcGenDir, { recursive: true });
+writeFileSync(join(srcGenDir, "_records.css"), componentsCss({ prefix: "pfx" }));
 // Opt-in font loading — @font-face rules for the brand typeface, src → the shipped assets/fonts/.
 writeFileSync(join(outDir, "fonts.css"), fontsCss(resolve(import.meta.dirname, "../assets/fonts")));
 writeFileSync(join(outDir, "prose.css"), proseCss());

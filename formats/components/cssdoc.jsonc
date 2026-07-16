@@ -1,0 +1,18 @@
+{
+  // Scoped cssdoc config for @pantoken/components' SOURCE `.css` linting. Extends the repo-root config
+  // (tag definitions, render options, structureIgnore, rule severities) but adds a `providers` entry so
+  // per-file linting of a single record's `.css` can still resolve SIBLING records referenced in
+  // `@structure` (e.g. tree-browser's structure names `.pfx-icon`). cssdoc resolves siblings by record
+  // NAME via `providerEntries`, which is empty when linting one file at a time; pointing it at the built
+  // `components.css` (every record in one sheet) supplies that cross-record index. `modifierConvention`
+  // and `inlineComments` are NOT inherited through `extends`, so they're repeated here.
+  //
+  // Only the stylelint/eslint cssdoc plugins consume `providers`; `parseCssDocs`-based consumers
+  // (tests/_validate, the docs emitter) ignore it, so this doesn't affect docs or the test guards. The
+  // docs build loads the repo-root config (it resolves from the repo root, above this file).
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "extends": ["../../cssdoc.jsonc"],
+  "modifierConvention": "rscss",
+  "inlineComments": "ignore",
+  "providers": [{ "path": "./src/generated/_records.css" }]
+}

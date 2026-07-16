@@ -1,0 +1,53 @@
+/* Experimental: CSS Customizable Select (`appearance: base-select`, Chrome 135+, not yet Baseline).
+   Enhances .pfx-simple-select; degrades to the plain control where unsupported. */
+@supports (appearance: base-select) {
+  .pfx-simple-select,
+  .pfx-simple-select::picker(select) {
+    appearance: base-select;
+  }
+  /* Keep simple-select's own background-image caret; hide the UA-generated picker icon. */
+  .pfx-simple-select::picker-icon {
+    display: none;
+  }
+  .pfx-simple-select::picker(select) {
+    border: var(--instui-component-select-popover-border-width) solid
+      var(--instui-component-text-input-border-color);
+    border-radius: var(--instui-border-radius-lg);
+    box-shadow: var(--instui-elevation-topmost);
+    background-color: var(--instui-component-options-item-background);
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  .pfx-simple-select option {
+    padding: var(--instui-component-options-item-padding-vertical)
+      var(--instui-component-options-item-padding-horizontal);
+    background-color: var(--instui-component-options-item-background);
+    color: var(--instui-component-options-item-color);
+    font-family: var(--instui-component-options-item-font-family);
+    font-weight: var(--instui-component-options-item-font-weight);
+    font-size: var(--instui-component-options-item-font-size);
+    line-height: var(--instui-component-options-item-line-height);
+    cursor: pointer;
+  }
+  /* Hide the UA checkmark; the selected row gets our own trailing check via background-image. */
+  .pfx-simple-select option::checkmark {
+    display: none;
+  }
+  .pfx-simple-select option:hover,
+  .pfx-simple-select option:focus {
+    background-color: var(--instui-component-options-item-highlighted-background);
+    color: var(--instui-component-options-item-highlighted-label-color);
+    outline: none;
+  }
+  .pfx-simple-select option:checked {
+    background-color: var(--instui-component-options-item-selected-background);
+    color: var(--instui-component-options-item-selected-label-color);
+    font-weight: var(--instui-component-options-item-font-weight-selected);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--instui-component-options-item-padding-horizontal) center;
+    background-size: 1rem 1rem;
+    padding-inline-end: calc(var(--instui-component-options-item-padding-horizontal) + 1.5rem);
+  }
+}

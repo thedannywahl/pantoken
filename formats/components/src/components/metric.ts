@@ -1,65 +1,9 @@
 import { defineComponent } from "../lib/define.ts";
-import { css } from "../lib/css.ts";
-import { scope } from "../lib/helpers.ts";
+import { SENTINEL } from "../lib/sentinel.ts";
+import { metric as metricRaw } from "../generated/component-styles.ts";
 
 export const metric = defineComponent({
   name: "metric",
-  css: (p) => {
-    const root = `.${p}metric`;
-    // prettier-ignore
-    return css`
-/**
- * @component metric
- * @summary A labelled statistic — a large value over a caption.
- * @modifier -text-align-start — Start-align the value and label.
- * @modifier -text-align-center — Centre the value and label.
- * @modifier -text-align-end — End-align the value and label.
- * @part .value — The large metric number.
- * @part .label — The caption beneath the value.
- * @example
- * <div class="${p}metric">
- *   <span class="value">1,284</span>
- *   <span class="label">Active users</span>
- * </div>
- * @structure
- * .${p}metric {
- *   .value {}
- *   .label {}
- * }
- */
-${root} {
-  display: inline-flex;
-  flex-direction: column;
-  gap: var(--instui-component-metric-gap-texts);
-  padding: 0 var(--instui-component-metric-padding-horizontal);
-}
-${scope(
-  root,
-  `
-.${p}metric .value {
-  color: var(--instui-component-metric-value-color);
-  font-family: var(--instui-component-metric-value-font-family);
-  font-size: var(--instui-component-metric-value-font-size);
-  font-weight: var(--instui-component-metric-value-font-weight);
-  line-height: var(--instui-component-metric-value-line-height);
-}
-.${p}metric .label {
-  color: var(--instui-component-metric-label-color);
-  font-family: var(--instui-component-metric-label-font-family);
-  font-size: var(--instui-component-metric-label-font-size);
-  font-weight: var(--instui-component-metric-label-font-weight);
-  line-height: var(--instui-component-metric-label-line-height);
-}
-`,
-  ["value", "label"],
-)}
-/* textAlign: the value/label are flex items in a column, so cross-axis alignment (align-items) is what
-   actually positions them — text-align alone is a no-op on the shrink-wrapped box. Set both so it also
-   covers wrapped multi-line text. */
-${root}.-text-align-start { align-items: flex-start; text-align: start; }
-${root}.-text-align-center { align-items: center; text-align: center; }
-${root}.-text-align-end { align-items: flex-end; text-align: end; }`;
-  },
+  css: (p) => metricRaw.replaceAll(SENTINEL, p),
 });
-
 export const metricCss = metric.css;

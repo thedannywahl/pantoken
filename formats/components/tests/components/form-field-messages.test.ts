@@ -2,13 +2,14 @@ import { expect, test } from "vite-plus/test";
 import { formFieldMessagesCss } from "../../src/index.ts";
 import { formFieldMessages } from "../../src/components/form-field-messages.ts";
 import { validate } from "../_validate.ts";
+import { norm } from "../_css.ts";
 
 test("form-field-messages: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(formFieldMessages);
 });
 
 test("form-field messages colour by type and paint circle glyphs for error/success", () => {
-  const css = formFieldMessagesCss({ prefix: "instui" });
+  const css = norm(formFieldMessagesCss({ prefix: "instui" }));
   expect(css).toContain("var(--instui-component-form-field-message-hint-text-color)");
   expect(css).toContain(
     ".instui-form-field-message.-type-error { color: var(--instui-component-form-field-message-error-text-color)",

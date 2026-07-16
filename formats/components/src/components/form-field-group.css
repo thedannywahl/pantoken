@@ -1,0 +1,136 @@
+/**
+ * @component form-field-group
+ * @summary A `<fieldset>` group with a legend, a column or inline layout, and configurable spacing.
+ * @modifier -col-spacing-none — No column gap.
+ * @modifier -col-spacing-small — Small column gap.
+ * @modifier -col-spacing-medium — Medium column gap.
+ * @modifier -col-spacing-large — Large column gap.
+ * @modifier -row-spacing-none — No row gap.
+ * @modifier -row-spacing-small — Small row gap.
+ * @modifier -row-spacing-medium — Medium row gap.
+ * @modifier -row-spacing-large — Large row gap.
+ * @modifier -layout-aligned — Align child fields to a shared grid.
+ * @modifier -layout-columns — Lay child fields out in columns.
+ * @modifier -layout-inline — Lay child fields inline, in a row.
+ * @modifier -required — Mark the group as required.
+ * @modifier -v-align-top — Top-align the fields.
+ * @modifier -v-align-middle — Middle-align the fields.
+ * @modifier -v-align-bottom — Bottom-align the fields.
+ * @pseudo ::after — Renders the decorative required-field asterisk after the legend text when the group is required.
+ * @accessibility Renders a native `<fieldset>` with a `<legend>`, so the legend text names the whole group for assistive tech.
+ * @compat The `-layout-aligned` mode uses CSS subgrid behind an `@supports` guard; where subgrid is unsupported, the fields fall back to their own stacked layout.
+ * @example
+ * <fieldset class="pfx-form-field-group -layout-columns -col-spacing-medium">
+ *   <legend>Shipping address</legend>
+ *   <label class="pfx-form-field">
+ *     <span class="label">First name</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">Last name</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">City</span>
+ *     <span class="controls"><input class="pfx-text-input"></span>
+ *   </label>
+ *   <label class="pfx-form-field">
+ *     <span class="label">State</span>
+ *     <span class="controls">
+ *       <select class="pfx-simple-select">
+ *         <option>CA</option>
+ *         <option>NY</option>
+ *         <option>TX</option>
+ *       </select>
+ *     </span>
+ *   </label>
+ *   <div class="pfx-form-field-messages">
+ *     <span class="pfx-form-field-message -type-hint">All fields are used for delivery only.</span>
+ *   </div>
+ * </fieldset>
+ * @structure
+ * .pfx-form-field-group.-layout-columns.-col-spacing-medium {
+ *   legend {}
+ *   .pfx-form-field {}
+ *   .pfx-form-field-messages {}
+ * }
+ * @related form-field — The single field this group repeats.
+ * @related radio-input-group — Groups radio inputs under a legend.
+ */
+.pfx-form-field-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--instui-component-form-field-layout-gap-inputs);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.pfx-form-field-group > legend {
+  grid-column: 1 / -1;
+  padding: 0;
+  margin-block-end: var(--instui-component-form-field-layout-gap-primitives);
+  color: var(--instui-component-form-field-layout-text-color);
+  font-family: var(--instui-component-form-field-layout-font-family);
+  font-weight: var(--instui-component-form-field-layout-font-weight);
+  font-size: var(--instui-component-form-field-layout-font-size);
+  line-height: var(--instui-component-form-field-layout-line-height);
+}
+.pfx-form-field-group.-required > legend::after {
+  content: "*";
+  margin-inline-start: 0.25rem;
+  color: var(--instui-component-form-field-layout-asterisk-color);
+}
+.pfx-form-field-group.-layout-columns,
+.pfx-form-field-group.-layout-inline {
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+}
+.pfx-form-field-group.-row-spacing-none {
+  row-gap: 0;
+}
+.pfx-form-field-group.-row-spacing-small {
+  row-gap: var(--instui-spacing-space-sm);
+}
+.pfx-form-field-group.-row-spacing-medium {
+  row-gap: var(--instui-spacing-space-md);
+}
+.pfx-form-field-group.-row-spacing-large {
+  row-gap: var(--instui-spacing-space-lg);
+}
+.pfx-form-field-group.-col-spacing-none {
+  column-gap: 0;
+}
+.pfx-form-field-group.-col-spacing-small {
+  column-gap: var(--instui-spacing-space-sm);
+}
+.pfx-form-field-group.-col-spacing-medium {
+  column-gap: var(--instui-spacing-space-md);
+}
+.pfx-form-field-group.-col-spacing-large {
+  column-gap: var(--instui-spacing-space-lg);
+}
+.pfx-form-field-group.-v-align-top {
+  align-items: start;
+}
+.pfx-form-field-group.-v-align-middle {
+  align-items: center;
+}
+.pfx-form-field-group.-v-align-bottom {
+  align-items: end;
+}
+/* -layout-aligned: the group's inline fields share one [label | controls] grid via subgrid, so every
+   label lines up in a single column (Chromium/Firefox). Inert where subgrid is unsupported — the fields
+   just fall back to their own stacked layout. */
+@supports (grid-template-columns: subgrid) {
+  .pfx-form-field-group.-layout-aligned {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+  .pfx-form-field-group.-layout-aligned > .pfx-form-field {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    grid-template-areas: "label controls" ". messages";
+    align-items: center;
+  }
+}

@@ -1,30 +1,9 @@
 import { defineUtility } from "../lib/define.ts";
-import { css } from "../lib/css.ts";
+import { SENTINEL } from "../lib/sentinel.ts";
+import { screenReaderContent as screenReaderContentRaw } from "../generated/component-styles.ts";
 
 export const screenReaderContent = defineUtility({
   name: "screen-reader-content",
-  css: (p) =>
-    // prettier-ignore
-    css`
-/**
- * @utility screen-reader-content
- * @summary Visually hides content while keeping it available to assistive tech (the standard clip pattern).
- * @a11y Keeps text in the accessibility tree for screen readers while removing it from the visual layout.
- * @example
- * <span class="instui-screen-reader-content">Opens in a new window</span>
- */
-.${p}screen-reader-content {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-}`,
+  css: (p) => screenReaderContentRaw.replaceAll(SENTINEL, p),
 });
-
 export const screenReaderContentCss = screenReaderContent.css;

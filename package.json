@@ -12,8 +12,6 @@
     "docs:build": "vp run @pantoken/docs#docs:build",
     "docs:preview": "vp run @pantoken/docs#docs:preview",
     "docs:api": "vp run @pantoken/docs#docs:api",
-    "lint:css": "vp exec stylelint \"renderers/web-components/src/**/*.css\" \"formats/components/generated/*.css\"",
-    "lint:js": "vp exec eslint \"formats/components/generated/*.css\" \"renderers/web-components/src/**/*.css\"",
     "lint:markdown": "vp exec markdownlint-cli2 \"**/*.md\"",
     "check:publish": "vp exec -F \"./packages/**\" -F \"./formats/**\" -F \"./platforms/**\" -F \"./renderers/**\" -F \"./bundlers/**\" -F \"./design/**\" -F \"./ai/**\" -F \"./plugins/**\" -F \"./tools/**\" publint"
   },
