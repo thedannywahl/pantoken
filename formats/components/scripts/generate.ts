@@ -14,7 +14,7 @@
  * Consumers that need a different prefix or scope call `componentsCss({ prefix })` /
  * `proseCss({ scope })` and write their own file (the renderers do this for their content root).
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { icons } from "@pantoken/icons";
 import { tokens } from "@pantoken/tokens";
@@ -35,6 +35,16 @@ import {
 } from "../src/index.ts";
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
+
+const writeIfChanged = (path: string, next: string): void => {
+  try {
+    const prev = readFileSync(path, "utf8");
+    if (prev === next) return;
+  } catch {
+    // no-op: write below
+  }
+  writeFileSync(path, next);
+};
 
 // The shipped stylesheets carry the default `instui` prefix. The builders opt out of a prefix on any
 // falsy value, so pass it explicitly here (the `prefix: null` opt-out is a consumer-side choice).
@@ -106,7 +116,7 @@ writeFileSync(join(outDir, "components.css"), componentsCss(opts));
 // concatenation of the `.css` sources would miss — which is exactly what `componentsCss` bundles.
 const srcGenDir = resolve(import.meta.dirname, "../src/generated");
 mkdirSync(srcGenDir, { recursive: true });
-writeFileSync(join(srcGenDir, "_records.css"), componentsCss({ prefix: "pfx" }));
+writeIfChanged(join(srcGenDir, "_records.css"), componentsCss({ prefix: "pfx" }));
 // Opt-in font loading — @font-face rules for the brand typeface, src → the shipped assets/fonts/.
 writeFileSync(join(outDir, "fonts.css"), fontsCss(resolve(import.meta.dirname, "../assets/fonts")));
 writeFileSync(join(outDir, "prose.css"), proseCss());
