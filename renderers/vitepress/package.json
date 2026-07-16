@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vitepress",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Theme a VitePress site with Instructure tokens: maps VitePress --vp-* CSS variables to var(--instui-*).",
   "license": "MIT",
   "files": [

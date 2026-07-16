@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-prune-custom-props",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "pantoken plugin: a PostCSS plugin that tree-shakes unused --instui-* custom properties from a composed stylesheet.",
   "license": "MIT",
   "files": [

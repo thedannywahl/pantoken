@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/ai",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and a Claude Code bootstrap skill, with an installer CLI.",
   "license": "MIT",
   "bin": {

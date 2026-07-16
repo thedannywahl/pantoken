@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/astro",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Astro / Starlight integration for pantoken: inject Instructure design tokens and icons as CSS.",
   "license": "MIT",
   "files": [

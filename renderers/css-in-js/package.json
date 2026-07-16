@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/css-in-js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Instructure theme object for runtime CSS-in-JS (Emotion, styled-components, Stitches): camelCased tokens, var()-backed.",
   "license": "MIT",
   "files": [

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/compose",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Emit Instructure design tokens as Jetpack Compose (Kotlin) via Style Dictionary.",
   "license": "MIT",
   "files": [

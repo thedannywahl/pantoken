@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/mui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Theme MUI (Material UI) with Instructure tokens: maps the token IR to createTheme palette options per mode.",
   "license": "MIT",
   "files": [

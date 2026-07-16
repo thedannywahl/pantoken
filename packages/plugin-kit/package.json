@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-kit",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Build and compose pantoken plugins (definePlugin, extendPlugin, mergePlugin) with capability-aware registration.",
   "license": "MIT",
   "files": [

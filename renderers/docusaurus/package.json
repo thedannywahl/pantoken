@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/docusaurus",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Theme a Docusaurus site with Instructure tokens: maps Infima's --ifm-* CSS variables to var(--instui-*).",
   "license": "MIT",
   "files": [

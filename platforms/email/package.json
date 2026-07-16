@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/email",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Instructure design tokens for HTML email: concrete, inline-friendly token values (no CSS vars).",
   "license": "MIT",
   "files": [

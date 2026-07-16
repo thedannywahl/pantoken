@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/swift",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Emit Instructure design tokens as Swift, via Style Dictionary. The native proof for pantoken.",
   "license": "MIT",
   "files": [

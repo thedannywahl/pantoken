@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vite",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Vite plugin for pantoken: virtual modules for tokens and CSS, plus optional stylesheet injection.",
   "license": "MIT",
   "files": [

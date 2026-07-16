@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/shadcn",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Theme shadcn/ui with Instructure tokens: maps shadcn's CSS variables to var(--instui-*).",
   "license": "MIT",
   "files": [

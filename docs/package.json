@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/docs",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "The pantoken documentation site: hand-written guides (VitePress) plus an auto-generated API reference (TypeDoc), themed with pantoken's own tokens.",
   "license": "MIT",
