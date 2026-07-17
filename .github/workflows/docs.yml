@@ -44,7 +44,11 @@ jobs:
       - name: Build docs
         run: vp run @pantoken/docs#docs:build
         env:
-          DOCS_BASE: /pantoken/
+          DOCS_BASE: /
+          DOCS_HOSTNAME: https://pantoken.iywahl.com/
+
+      - name: Write custom domain file
+        run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
