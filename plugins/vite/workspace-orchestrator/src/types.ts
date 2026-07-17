@@ -50,17 +50,14 @@ export interface OrchestratorOptions {
   /** The upstream workspace dependency graph. */
   upstream: readonly UpstreamNode[];
   /**
-   * Paths to add to Vite's `server.watcher` so HMR fires when built output is updated (e.g. a
-   * package's `dist` or `generated` directory).
+   * Paths to watch with native `fs.watch` so Vite picks up built output after an upstream rebuild
+   * (e.g. a package's `dist` or `generated` directory). Uses native `fs.watch` rather than
+   * chokidar's `add()`, which doesn't reliably detect changes in pnpm-symlinked or out-of-root
+   * directories. On each change a synthetic `"change"` event is emitted on `server.watcher`: for
+   * CSS files already in the module graph Vite triggers a targeted hot-update; for anything else
+   * it falls back to a full page reload.
    */
-  hmrWatchPaths?: readonly string[];
-  /**
-   * Paths to watch with native `fs.watch` for triggering module invalidation. Unlike
-   * `hmrWatchPaths` (which relies on chokidar), these are monitored with Node's native `fs.watch` —
-   * which reliably detects changes for pnpm-symlinked workspace `dist` directories. On a change, a
-   * synthetic `"change"` event is emitted on `server.watcher` so the module graph is invalidated.
-   */
-  reloadWatchPaths?: readonly string[];
+  outputWatchPaths?: readonly string[];
   /** Debounce delay in milliseconds before triggering a rebuild (default: 200). */
   debounceMs?: number;
   /** Optional static file-serving middleware entries. */

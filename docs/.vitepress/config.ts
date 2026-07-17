@@ -18,13 +18,13 @@ const at = (relative: string): string =>
 // under `vp`, and vite-plus cannot spawn a nested `vp` from inside that process — it dies with
 // "Failed to spawn process: os error 22". A direct `node` invocation is unaffected. The generated CSS
 // the theme imports comes from each package's `generate` script; the CSS API pages come from docs'
-// `build-css-api`. Two outputs reach the browser: the generated CSS (watched via `hmrWatchPaths` →
+// `build-css-api`. Two outputs reach the browser: the generated CSS (watched via `outputWatchPaths` →
 // HMR) and the CSS API `.md` (rebuilt by the `docs:api:css` node — VitePress watches the emitted files
 // itself). A components edit regenerates the sheet, then cascades (`dependents`) into a CSS-API rebuild.
 //
 // NOTE: `@pantoken/web-components`' `register()` bundle needs `vp pack`, which likewise can't run nested
 // under `vpr`, so it is NOT auto-rebuilt here. Rebuild it manually in a separate top-level shell
-// (`vpr @pantoken/web-components#build`) when you change web-component behavior; `reloadWatchPaths` then
+// (`vpr @pantoken/web-components#build`) when you change web-component behavior; `outputWatchPaths` then
 // bridges the new `dist` into HMR.
 const orchestrator = workspaceOrchestrator({
   upstream: [
@@ -55,8 +55,11 @@ const orchestrator = workspaceOrchestrator({
       dependents: [],
     },
   ],
-  hmrWatchPaths: [at("formats/css/generated"), at("formats/components/generated")],
-  reloadWatchPaths: [at("renderers/web-components/dist")],
+  outputWatchPaths: [
+    at("formats/css/generated"),
+    at("formats/components/generated"),
+    at("renderers/web-components/dist"),
+  ],
 });
 
 const localeEntries = Object.entries(LOCALES) as [DocsLocale, (typeof LOCALES)[DocsLocale]][];

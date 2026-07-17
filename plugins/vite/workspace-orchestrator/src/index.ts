@@ -26,7 +26,7 @@
  *       dependents: [],
  *     },
  *   ],
- *   hmrWatchPaths: [resolve(root, "formats/components/generated")],
+ *   outputWatchPaths: [resolve(root, "formats/components/generated")],
  * });
  * ```
  *
@@ -81,8 +81,7 @@ export function matchesFilters(filename: string, node: UpstreamNode): boolean {
 export const workspaceOrchestrator = (options: OrchestratorOptions) => {
   const {
     upstream,
-    hmrWatchPaths = [],
-    reloadWatchPaths = [],
+    outputWatchPaths = [],
     debounceMs = DEFAULT_DEBOUNCE_MS,
     fileServers = [],
   } = options;
@@ -117,27 +116,23 @@ export const workspaceOrchestrator = (options: OrchestratorOptions) => {
         }
       }
 
-      for (const hmrPath of hmrWatchPaths) {
-        server.watcher.add(hmrPath);
-      }
-
-      // Bridge native fs.watch notifications into the module graph for pnpm-symlinked dist dirs,
-      // which chokidar's add() can't reliably observe.
-      for (const reloadPath of reloadWatchPaths) {
+      // Bridge native fs.watch notifications for each built-output path into the module graph.
+      // chokidar's add() doesn't reliably observe pnpm-symlinked or out-of-root directories.
+      // Emitting "change" on server.watcher lets Vite decide: CSS HMR for files in the module
+      // graph, full page reload otherwise.
+      for (const outputPath of outputWatchPaths) {
         try {
           const watcher = watchFs(
-            reloadPath,
+            outputPath,
             { recursive: true },
             (_event: string, filename: string | null) => {
               if (filename === null) return;
-              const fullPath = resolve(reloadPath, filename);
-              logger.info(`[orchestrator] invalidating ${fullPath}`, { timestamp: true });
-              server.watcher.emit("change", fullPath);
+              server.watcher.emit("change", resolve(outputPath, filename));
             },
           );
           fsWatchers.push(watcher);
         } catch {
-          // reloadPath doesn't exist yet; skip silently.
+          // outputPath doesn't exist yet; skip silently.
         }
       }
 

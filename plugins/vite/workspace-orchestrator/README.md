@@ -14,7 +14,8 @@ Key behaviors:
   filtered out.
 - Debounces rapid changes per package before spawning a build.
 - Rebuilds dependents in topological order after a successful build.
-- Registers optional HMR paths with Vite's watcher, and mounts optional static file servers.
+- Watches built-output paths with native `fs.watch` and emits `change` events into Vite — CSS files
+  already in the module graph get a targeted hot-update; anything else falls back to a full reload.
 
 ## Usage
 
@@ -34,7 +35,7 @@ export default {
           dependents: [],
         },
       ],
-      hmrWatchPaths: [resolve(root, "formats/components/generated")],
+      outputWatchPaths: [resolve(root, "formats/components/generated")],
       debounceMs: 200,
     }),
   ],
