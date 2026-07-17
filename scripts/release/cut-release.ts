@@ -36,6 +36,12 @@ interface PackageManifestScripts {
   scripts?: Record<string, unknown>;
 }
 
+interface DependencyVersionChange {
+  name: string;
+  from: string;
+  to: string;
+}
+
 const SEMVER_RE = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$/;
 const CHANNELS = new Set<PreReleaseChannel>(["alpha", "beta", "rc"]);
 const DEFAULT_CHANGELOG_LINE = "Updated internal workspace dependency versions.";
@@ -327,6 +333,44 @@ async function writePackageChangelog(
   await fs.writeFile(changelogPath, next);
 }
 
+function collectWorkspaceDependencyVersionChanges(
+  pkg: WorkspacePackage,
+  previousByName: Map<string, WorkspacePackage>,
+  nextByName: Map<string, WorkspacePackage>,
+): DependencyVersionChange[] {
+  const changes: DependencyVersionChange[] = [];
+
+  for (const depName of [...pkg.workspaceDeps].sort((a, b) => a.localeCompare(b))) {
+    const previous = previousByName.get(depName);
+    const next = nextByName.get(depName);
+    if (!previous || !next) {
+      continue;
+    }
+    if (previous.version === next.version) {
+      continue;
+    }
+
+    changes.push({
+      name: depName,
+      from: previous.version,
+      to: next.version,
+    });
+  }
+
+  return changes;
+}
+
+function buildDependencyChangelogLine(changes: DependencyVersionChange[]): string {
+  if (changes.length === 0) {
+    return DEFAULT_CHANGELOG_LINE;
+  }
+
+  const details = changes
+    .map((change) => `${change.name} (${change.from} -> ${change.to})`)
+    .join(", ");
+  return `Updated internal workspace dependencies: ${details}.`;
+}
+
 function packageHasScript(pkgPath: string, scriptName: string): boolean {
   try {
     const raw = spawnSync("cat", [path.join(pkgPath, "package.json")], {
@@ -537,7 +581,13 @@ async function main() {
       continue;
     }
 
-    await writePackageChangelog(rootDir, pkg, version);
+    const depChanges = collectWorkspaceDependencyVersionChanges(
+      pkg,
+      initialWorkspace.byName,
+      refreshedWorkspace.byName,
+    );
+    const changelogLine = buildDependencyChangelogLine(depChanges);
+    await writePackageChangelog(rootDir, pkg, version, changelogLine);
     changedChangelogFiles.push(`${pkg.path}/CHANGELOG.md`);
   }
 
@@ -601,7 +651,9 @@ if (isDirectExecution(import.meta.url)) {
 
 export {
   DEFAULT_CHANGELOG_LINE,
+  buildDependencyChangelogLine,
   bumpPatch,
+  collectWorkspaceDependencyVersionChanges,
   parseCliArgs,
   resolveRequestedVersions,
   withPreRelease,
