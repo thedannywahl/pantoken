@@ -61,13 +61,18 @@ set a custom `i18nRouting`).
   structural headings/labels. Brand-new prose that isn't cached yet passes through as English — the
   glossary **never** caches its own prose passthrough (that would permanently mask the block from a
   later claude run), so it stays a miss until claude authors it. Never wire `:claude` into CI.
-- **Running the cold pass.** `claude -p` spins up a full agent per call, so the `:claude` tasks pin a
-  small, fast model — `DOCS_TRANSLATION_COMMAND_ARGS="--model claude-haiku-4-5-20251001"` — which is
-  plenty for translation and far quicker than the default. Override it by editing the task or
-  exporting your own `DOCS_TRANSLATION_COMMAND_ARGS` before a direct `node scripts/…` run
-  (`DOCS_TRANSLATION_COMMAND` overrides the `claude` binary itself). Either task logs progress
-  (`… N/M labels + prose blocks translated`) and saves the memory after **each** chunk, so it's
-  resumable — a kill or crash keeps completed chunks and a re-run serves them from cache.
+- **Running the cold pass.** Each `claude -p` call cold-starts a full agent, and the dominant cost is
+  the per-call bootstrap — loading MCP servers, plugins, and project settings — not the translation
+  itself (it dwarfs even a small model's inference). So the `:claude` tasks pass
+  `--model claude-haiku-4-5-20251001 --strict-mcp-config --setting-sources user`: a fast model, **no
+  MCP**, and user settings only (keeps auth, drops project/local hooks). That cuts each call from
+  minutes to a few seconds. Override by editing the task or exporting your own
+  `DOCS_TRANSLATION_COMMAND_ARGS` before a direct `node scripts/…` run (`DOCS_TRANSLATION_COMMAND`
+  overrides the `claude` binary itself). Either task logs progress (`… N/M labels + prose blocks
+translated`) and saves the memory after **each** chunk, so it's resumable — a kill or crash keeps
+  completed chunks and a re-run serves them from cache. Prose is batched at ~12k chars/request to
+  amortize the per-call startup; if a run trips the per-item fallback (the model dropping a key from a
+  large JSON response), lower it with `DOCS_TRANSLATION_BATCH_BUDGET`.
 
 ## The cssdoc integration
 

@@ -322,8 +322,12 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
     onChunk?: (partial: Record<string, string>) => void,
   ): Record<string, string> {
     const out: Record<string, string> = {};
-    // Chunk by total character budget so each request stays small enough to round-trip reliably.
-    const BUDGET = 6000;
+    // Chunk by total character budget. Bigger chunks amortize the fixed per-call agent-startup cost
+    // (each `claude -p` pays it once), so fewer/larger requests finish the whole tree faster; the
+    // ceiling is JSON reliability — too many keys per response and the model may drop/truncate one,
+    // which `runBatch` degrades to per-item translation. 12k is a safe middle ground; override via
+    // DOCS_TRANSLATION_BATCH_BUDGET if a run trips that fallback.
+    const BUDGET = Number(process.env.DOCS_TRANSLATION_BATCH_BUDGET) || 12000;
     let chunk: { id: string; text: string }[] = [];
     let size = 0;
     const flush = (): void => {
