@@ -2,7 +2,18 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   test: {
-    exclude: ["**/.worktrees/**", "**/.claude/worktrees/**"],
+    include: [
+      "packages/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "formats/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "platforms/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "renderers/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "bundlers/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "design/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "ai/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "plugins/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "tools/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "docs/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+    ],
   },
   staged: {
     "*": "vp check --fix",
