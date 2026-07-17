@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-07-17T16:28:03.512Z",
-  "targetPackage": "@pantoken/validate-generated",
-  "targetVersion": "0.1.0",
-  "tag": "@pantoken/validate-generated@v0.1.0",
-  "targetPrivate": true,
-  "releasePackages": ["@pantoken/validate-generated"],
-  "publishPackages": [],
+  "generatedAt": "2026-07-17T20:53:40.566Z",
+  "targetPackage": "@pantoken/plugin-theme-custom-media",
+  "targetVersion": "0.1.1",
+  "tag": "@pantoken/plugin-theme-custom-media@v0.1.1",
+  "targetPrivate": false,
+  "releasePackages": ["@pantoken/plugin-theme-custom-media"],
+  "publishPackages": ["@pantoken/plugin-theme-custom-media"],
   "packagePaths": {
-    "@pantoken/validate-generated": "tools/validate-generated"
+    "@pantoken/plugin-theme-custom-media": "plugins/postcss/theme-custom-media"
   },
   "manifestVersions": {
-    "@pantoken/validate-generated": "0.1.0"
+    "@pantoken/plugin-theme-custom-media": "0.1.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-theme-custom-media",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "pantoken plugin: a PostCSS plugin that expands and lowers theme custom-media aliases for pantoken CSS authoring.",
   "license": "MIT",
   "files": [
