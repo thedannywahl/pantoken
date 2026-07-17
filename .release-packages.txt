@@ -1,1 +1,2 @@
+@pantoken/pantoken
 @pantoken/plugin-theme-custom-media

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Changed
+
+- Updated internal workspace dependency versions.
+
 ## 0.1.1
 
 ### Changed

@@ -1,15 +1,17 @@
 {
-  "generatedAt": "2026-07-17T20:53:40.566Z",
+  "generatedAt": "2026-07-17T21:27:01.554Z",
   "targetPackage": "@pantoken/plugin-theme-custom-media",
-  "targetVersion": "0.1.1",
-  "tag": "@pantoken/plugin-theme-custom-media@v0.1.1",
+  "targetVersion": "0.1.2",
+  "tag": "@pantoken/plugin-theme-custom-media@v0.1.2",
   "targetPrivate": false,
-  "releasePackages": ["@pantoken/plugin-theme-custom-media"],
-  "publishPackages": ["@pantoken/plugin-theme-custom-media"],
+  "releasePackages": ["@pantoken/pantoken", "@pantoken/plugin-theme-custom-media"],
+  "publishPackages": ["@pantoken/pantoken", "@pantoken/plugin-theme-custom-media"],
   "packagePaths": {
+    "@pantoken/pantoken": "packages/pantoken",
     "@pantoken/plugin-theme-custom-media": "plugins/postcss/theme-custom-media"
   },
   "manifestVersions": {
-    "@pantoken/plugin-theme-custom-media": "0.1.1"
+    "@pantoken/pantoken": "0.1.1",
+    "@pantoken/plugin-theme-custom-media": "0.1.2"
   }
 }
