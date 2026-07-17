@@ -382,9 +382,9 @@ function buildDependencyChangelogLine(changes: DependencyVersionChange[]): strin
   return lines.join("\n");
 }
 
-function packageHasScript(pkgPath: string, scriptName: string): boolean {
+function packageHasScript(rootDir: string, pkgPath: string, scriptName: string): boolean {
   try {
-    const raw = spawnSync("cat", [path.join(pkgPath, "package.json")], {
+    const raw = spawnSync("cat", [path.join(rootDir, pkgPath, "package.json")], {
       encoding: "utf8",
       shell: false,
       stdio: ["ignore", "pipe", "ignore"],
@@ -397,6 +397,7 @@ function packageHasScript(pkgPath: string, scriptName: string): boolean {
 }
 
 function runFilteredTask(
+  rootDir: string,
   taskName: string,
   extraArgs: string[],
   releaseNames: string[],
@@ -407,7 +408,7 @@ function runFilteredTask(
     if (!pkg) {
       return false;
     }
-    return packageHasScript(pkg.path, taskName);
+    return packageHasScript(rootDir, pkg.path, taskName);
   });
 
   if (supported.length === 0) {
@@ -415,12 +416,15 @@ function runFilteredTask(
     return;
   }
 
-  run("vp", ["run", ...supported.flatMap((name) => ["-F", name]), taskName, ...extraArgs]);
+  run("vp", ["run", ...supported.flatMap((name) => ["-F", name]), taskName, ...extraArgs], {
+    cwd: rootDir,
+  });
 }
 
 interface RunOptions {
   capture?: boolean;
   allowFailure?: boolean;
+  cwd?: string;
 }
 
 function run(command: string, args: string[], options: RunOptions = {}) {
@@ -428,6 +432,7 @@ function run(command: string, args: string[], options: RunOptions = {}) {
     stdio: options.capture ? ["ignore", "pipe", "pipe"] : "inherit",
     encoding: "utf8",
     shell: false,
+    cwd: options.cwd,
   });
 
   if (result.status !== 0 && !options.allowFailure) {
@@ -442,8 +447,8 @@ function run(command: string, args: string[], options: RunOptions = {}) {
   return result;
 }
 
-function ensureCleanWorktree() {
-  const result = run("git", ["status", "--porcelain"], { capture: true });
+function ensureCleanWorktree(rootDir: string) {
+  const result = run("git", ["status", "--porcelain"], { capture: true, cwd: rootDir });
   const dirty = result.stdout.trim();
   if (dirty.length > 0) {
     throw new Error(
@@ -466,9 +471,9 @@ async function main() {
     throw new Error("Missing package spec. Example: vpr release -p components@1.2.3");
   }
 
-  ensureCleanWorktree();
-
   const initialWorkspace = await loadWorkspacePackages();
+  const rootDir = initialWorkspace.rootDir;
+  ensureCleanWorktree(rootDir);
   const requests = await resolveRequestedVersions(
     cli.packageSpecs,
     initialWorkspace.byName,
@@ -514,32 +519,36 @@ async function main() {
   }
 
   // Scope release gates to the computed release set only.
-  runFilteredTask("build", [], releaseNames, initialWorkspace.byName);
-  runFilteredTask("check", ["--fix"], releaseNames, initialWorkspace.byName);
-  runFilteredTask("test", [], releaseNames, initialWorkspace.byName);
+  runFilteredTask(rootDir, "build", [], releaseNames, initialWorkspace.byName);
+  runFilteredTask(rootDir, "check", ["--fix"], releaseNames, initialWorkspace.byName);
+  runFilteredTask(rootDir, "test", [], releaseNames, initialWorkspace.byName);
 
   if (
     releaseNames.includes("@pantoken/components") ||
     releaseNames.includes("@pantoken/web-components")
   ) {
-    run("vp", ["run", "lint:css"]);
-    run("vp", ["run", "lint:js"]);
+    run("vp", ["run", "lint:css"], { cwd: rootDir });
+    run("vp", ["run", "lint:js"], { cwd: rootDir });
   }
 
   if (publishableReleaseNames.length > 0) {
-    run("vp", ["exec", ...publishableReleaseFilters, "publint"]);
-    run("vp", [
-      "exec",
-      ...publishableReleaseFilters,
-      "attw",
-      "--pack",
-      "--profile",
-      "strict",
-      "--no-emoji",
-      "--ignore-rules",
-      "no-resolution",
-      "cjs-resolves-to-esm",
-    ]);
+    run("vp", ["exec", ...publishableReleaseFilters, "publint"], { cwd: rootDir });
+    run(
+      "vp",
+      [
+        "exec",
+        ...publishableReleaseFilters,
+        "attw",
+        "--pack",
+        "--profile",
+        "strict",
+        "--no-emoji",
+        "--ignore-rules",
+        "no-resolution",
+        "cjs-resolves-to-esm",
+      ],
+      { cwd: rootDir },
+    );
   } else {
     process.stdout.write("Skipping publint/attw: release set has no publishable packages.\n");
   }
@@ -567,7 +576,7 @@ async function main() {
       args.push("--yes");
     }
 
-    run("vpx", args);
+    run("vpx", args, { cwd: rootDir });
   }
 
   const refreshedWorkspace = await loadWorkspacePackages();
@@ -584,7 +593,6 @@ async function main() {
     throw new Error("No requested packages resolved after bump.");
   }
 
-  const rootDir = initialWorkspace.rootDir;
   const changedChangelogFiles: string[] = [];
   for (const name of releaseNames) {
     const pkg = refreshedWorkspace.byName.get(name);
@@ -610,45 +618,57 @@ async function main() {
     (entry) => `${normalizePantokenPackageName(entry.name)}@v${entry.version}`,
   );
 
-  run("node", [
-    "scripts/release/plan-package-release.ts",
-    "--target",
-    planTarget,
-    "--version",
-    planVersion,
-    "--json",
-    ".release-plan.json",
-    "--publish-list",
-    ".release-packages.txt",
-    "--markdown",
-    ".release-plan.md",
-  ]);
+  run(
+    "node",
+    [
+      "scripts/release/plan-package-release.ts",
+      "--target",
+      planTarget,
+      "--version",
+      planVersion,
+      "--json",
+      ".release-plan.json",
+      "--publish-list",
+      ".release-packages.txt",
+      "--markdown",
+      ".release-plan.md",
+    ],
+    { cwd: rootDir },
+  );
 
-  run("node", [
-    "scripts/release/build-root-changelog.ts",
-    "--plan",
-    ".release-plan.json",
-    "--out",
-    "CHANGELOG.md",
-  ]);
+  run(
+    "node",
+    [
+      "scripts/release/build-root-changelog.ts",
+      "--plan",
+      ".release-plan.json",
+      "--out",
+      "CHANGELOG.md",
+    ],
+    { cwd: rootDir },
+  );
 
-  run("git", [
-    "add",
-    ...releasePackageJsonFiles,
-    ...changedChangelogFiles,
-    "CHANGELOG.md",
-    ".release-plan.json",
-    ".release-packages.txt",
-    ".release-plan.md",
-  ]);
+  run(
+    "git",
+    [
+      "add",
+      ...releasePackageJsonFiles,
+      ...changedChangelogFiles,
+      "CHANGELOG.md",
+      ".release-plan.json",
+      ".release-packages.txt",
+      ".release-plan.md",
+    ],
+    { cwd: rootDir },
+  );
 
-  run("git", ["commit", "-m", `release: ${tags.join(", ")}`]);
+  run("git", ["commit", "-m", `release: ${tags.join(", ")}`], { cwd: rootDir });
   for (const tag of tags) {
-    run("git", ["tag", tag]);
+    run("git", ["tag", tag], { cwd: rootDir });
   }
-  run("git", ["push"]);
+  run("git", ["push"], { cwd: rootDir });
   for (const tag of tags) {
-    run("git", ["push", "origin", tag]);
+    run("git", ["push", "origin", tag], { cwd: rootDir });
   }
 
   process.stdout.write(`Release cut complete: ${tags.join(", ")}\n`);
