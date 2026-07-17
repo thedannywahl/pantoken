@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import {
   computeReleaseSet,
+  loadWorkspacePackages,
   normalizePantokenPackageName,
   parseRequestedPackageSpec,
   type WorkspacePackage,
@@ -87,4 +88,13 @@ test("computeReleaseSet does not auto-include @pantoken/pantoken for private tar
   expect(computeReleaseSet("@pantoken/aggregate", byName, reverse)).toEqual([
     "@pantoken/aggregate",
   ]);
+});
+
+test("loadWorkspacePackages includes @pantoken/docs as a private package", async () => {
+  const { byName } = await loadWorkspacePackages();
+  const docs = byName.get("@pantoken/docs");
+
+  expect(docs).toBeTruthy();
+  expect(docs?.path).toBe("docs");
+  expect(docs?.private).toBe(true);
 });

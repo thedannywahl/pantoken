@@ -40,6 +40,7 @@ export interface ParsedRequestedPackageSpec {
 const WORKSPACE_ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
 
 const PACKAGE_ROOTS = [
+  "docs",
   "packages",
   "formats",
   "platforms",
@@ -90,44 +91,57 @@ function collectWorkspaceDeps(manifest: PackageManifest): Set<string> {
   return deps;
 }
 
+async function readWorkspacePackage(relDir: string): Promise<WorkspacePackage | null> {
+  const pkgPath = path.join(WORKSPACE_ROOT, relDir, "package.json");
+
+  let raw;
+  try {
+    raw = await fs.readFile(pkgPath, "utf8");
+  } catch {
+    return null;
+  }
+
+  let manifest: PackageManifest;
+  try {
+    manifest = JSON.parse(raw) as PackageManifest;
+  } catch {
+    throw new Error(`Invalid JSON in ${relDir}/package.json`);
+  }
+
+  if (typeof manifest.name !== "string" || manifest.name.length === 0) {
+    return null;
+  }
+
+  return {
+    name: manifest.name,
+    path: relDir,
+    version: typeof manifest.version === "string" ? manifest.version : "0.0.0",
+    private: Boolean(manifest.private),
+    workspaceDeps: collectWorkspaceDeps(manifest),
+  };
+}
+
 export async function loadWorkspacePackages(): Promise<WorkspacePackages> {
   const packages: WorkspacePackage[] = [];
+  const seenPaths = new Set<string>();
 
   for (const root of PACKAGE_ROOTS) {
     const absRoot = path.join(WORKSPACE_ROOT, root);
     const children = await listChildDirs(absRoot);
+    const candidates = [root, ...children.map((child) => toPosix(path.join(root, child)))];
 
-    for (const child of children) {
-      const relDir = toPosix(path.join(root, child));
-      const pkgPath = path.join(WORKSPACE_ROOT, relDir, "package.json");
+    for (const relDir of candidates) {
+      if (seenPaths.has(relDir)) {
+        continue;
+      }
+      seenPaths.add(relDir);
 
-      let raw;
-      try {
-        raw = await fs.readFile(pkgPath, "utf8");
-      } catch {
+      const workspacePackage = await readWorkspacePackage(relDir);
+      if (!workspacePackage) {
         continue;
       }
 
-      let manifest: PackageManifest;
-      try {
-        manifest = JSON.parse(raw) as PackageManifest;
-      } catch {
-        throw new Error(`Invalid JSON in ${relDir}/package.json`);
-      }
-
-      if (typeof manifest.name !== "string" || manifest.name.length === 0) {
-        continue;
-      }
-
-      const workspaceDeps = collectWorkspaceDeps(manifest);
-
-      packages.push({
-        name: manifest.name,
-        path: relDir,
-        version: typeof manifest.version === "string" ? manifest.version : "0.0.0",
-        private: Boolean(manifest.private),
-        workspaceDeps,
-      });
+      packages.push(workspacePackage);
     }
   }
 

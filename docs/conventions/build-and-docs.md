@@ -44,9 +44,30 @@ set a custom `i18nRouting`).
   string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
   search). `config.ts` expands these into per-locale `themeConfig` (search is the exception — it lives
   in the global `themeConfig.search.options.locales`). Add new UI strings here, never inline.
-- **Adapter split.** Hand-written guides use the `claude-code` adapter; the generated API tree
-  (TypeDoc + CSS reference) uses the deterministic `glossary` adapter. Don't run `:claude` over the
-  whole API tree — a cold cache means hundreds of sequential `claude -p` calls.
+- **Block-level API translation.** `build-api-locales.ts` doesn't translate whole `.md` files — it
+  runs `segment-markdown.ts` to split each generated page into blocks: `prose` (descriptions,
+  remarks, `@example` captions, cssdoc table Description cells), `glossary` (section headings,
+  stability-badge pills, table column labels), and `preserve` (code fences, signatures, breadcrumbs,
+  token tables). Only prose carries a content key, so a page's prose survives the scaffolding churn
+  (badge flips, token-value changes, signature edits) that used to bust a whole-file key. `glossary`
+  blocks always go through the deterministic `GlossaryTranslationAdapter` (keyless, never cached);
+  `preserve` blocks are emitted verbatim.
+- **The committed cache carries the prose; CI serves it.** The translation memory
+  (`docs/i18n-cache/hu.api.json`) is content-addressed and adapter-agnostic, so a claude-authored
+  prose entry is served to a `glossary` build as a plain cache hit. The workflow: run
+  `pnpm run docs:api:locales:claude` **locally** to author prose (a cold run is bounded to ~30–40
+  batched `claude -p` calls, resumable via the memory's autosave), then commit `hu.api.json`. CI's
+  `docs:build` runs the `glossary` adapter, which serves that prose from cache and only ever fills
+  structural headings/labels. Brand-new prose that isn't cached yet passes through as English — the
+  glossary **never** caches its own prose passthrough (that would permanently mask the block from a
+  later claude run), so it stays a miss until claude authors it. Never wire `:claude` into CI.
+- **Running the cold pass.** `claude -p` spins up a full agent per call, so the `:claude` tasks pin a
+  small, fast model — `DOCS_TRANSLATION_COMMAND_ARGS="--model claude-haiku-4-5-20251001"` — which is
+  plenty for translation and far quicker than the default. Override it by editing the task or
+  exporting your own `DOCS_TRANSLATION_COMMAND_ARGS` before a direct `node scripts/…` run
+  (`DOCS_TRANSLATION_COMMAND` overrides the `claude` binary itself). Either task logs progress
+  (`… N/M labels + prose blocks translated`) and saves the memory after **each** chunk, so it's
+  resumable — a kill or crash keeps completed chunks and a re-run serves them from cache.
 
 ## The cssdoc integration
 

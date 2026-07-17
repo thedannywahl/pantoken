@@ -16,7 +16,8 @@ import {
 } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
-import { createTranslationAdapter } from "./api-translation.ts";
+import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
+import { type Resolve, collectUnits, reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import {
   type TranslationUnit,
   TranslationMemory,
@@ -93,7 +94,7 @@ const build = (): void => {
   rmSync(huApiDir, { recursive: true, force: true });
 
   console.log("Generating EN API docs...");
-  run("pnpm", ["exec", "typedoc", "--options", "typedoc.json", "--out", "api"]);
+  run("vp", ["exec", "typedoc", "--options", "typedoc.json", "--out", "api"]);
   run("node", ["scripts/style-api-badges.ts"]);
   run("node", ["scripts/write-api-overview.ts"]);
 
@@ -112,20 +113,34 @@ const build = (): void => {
   // both the TS API and the CSS reference.
   const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
 
-  // 1. Markdown: diff each file against the memory; only misses reach the adapter.
-  const markdownUnits: (TranslationUnit & { filePath: string })[] = markdownFiles.map(
-    (filePath) => ({
-      kind: "markdown",
-      source: readFileSync(filePath, "utf8"),
-      filePath,
-    }),
-  );
-  const markdownTranslations = translateUnits(adapter, memory, markdownUnits, { autosave: true });
-  for (const unit of markdownUnits) {
-    writeFileSync(
-      unit.filePath,
-      markdownTranslations.get(keyFor("markdown", unit.source)) ?? unit.source,
-    );
+  // 1. Markdown: segment each file into prose / deterministic-glossary / verbatim blocks. Prose is
+  //    batched + cached through the selected adapter; headings, badge pills, and table column labels
+  //    always go through the glossary (deterministic, keyless, never cached); everything else is kept
+  //    verbatim. Block-level keys survive the scaffolding churn that busted whole-file keys.
+  const glossary = new GlossaryTranslationAdapter();
+  const segmented = markdownFiles.map((filePath) => ({
+    filePath,
+    segments: segmentMarkdown(readFileSync(filePath, "utf8")),
+  }));
+  const units = segmented.flatMap(({ segments }) => collectUnits(segments));
+
+  const glossaryText = new Map<string, string>();
+  for (const unit of units) {
+    if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
+      glossaryText.set(unit.text, glossary.translateText(unit.text));
+    }
+  }
+  const proseUnits: TranslationUnit[] = units
+    .filter((unit) => unit.kind === "prose")
+    .map((unit) => ({ kind: "prose", source: unit.text }));
+  const proseTranslations = translateUnits(adapter, memory, proseUnits, { autosave: true });
+
+  const resolve: Resolve = (text, kind) =>
+    kind === "glossary"
+      ? (glossaryText.get(text) ?? text)
+      : (proseTranslations.get(keyFor("prose", text)) ?? text);
+  for (const { filePath, segments } of segmented) {
+    writeFileSync(filePath, reassemble(segments, resolve));
   }
 
   // 2. Sidebars: collect every label across all trees, translate the misses in one batched pass,
@@ -149,9 +164,11 @@ const build = (): void => {
   }
 
   memory.save();
+  const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
   console.log(
-    `Localized ${markdownFiles.length} API markdown files + ${labels.length} sidebar labels for HU ` +
-      `via '${adapter.name}' (${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, huApiDir)}`,
+    `Localized ${markdownFiles.length} API markdown files for HU via '${adapter.name}': ` +
+      `${glossaryText.size} glossary terms, ${proseBlocks} prose blocks, ${labels.length} sidebar labels ` +
+      `(${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, huApiDir)}`,
   );
 };
 

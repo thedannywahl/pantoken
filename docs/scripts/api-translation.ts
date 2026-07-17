@@ -8,13 +8,25 @@ import { spawnSync } from "node:child_process";
 
 export interface TranslationAdapter {
   readonly name: string;
+  /**
+   * Whether this adapter produces real prose translations. The glossary sets this `false`: it only
+   * knows structural terms, so the pipeline must not treat its passthrough of a prose block as a
+   * translation (see the poison-cache guard in {@link ./translation-memory.ts}). Defaults to `true`.
+   */
+  readonly translatesProse?: boolean;
   translateMarkdown(input: string, filePath: string): string;
   translateText(input: string): string;
   /**
    * Translate many short strings in one request. Returns a map keyed by each item's `id`. Optional:
    * callers fall back to per-item {@link TranslationAdapter.translateText} when it's absent.
+   *
+   * `onChunk` (if given) is called with each internal chunk's partial results as they complete, so a
+   * caller can persist and report progress mid-run rather than only after the whole batch returns.
    */
-  translateBatch?(items: readonly { id: string; text: string }[]): Record<string, string>;
+  translateBatch?(
+    items: readonly { id: string; text: string }[],
+    onChunk?: (partial: Record<string, string>) => void,
+  ): Record<string, string>;
 }
 
 const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
@@ -70,10 +82,55 @@ const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
   [/\bSource\b/g, "Forrás"],
   [/\bGenerated using\b/g, "Generálva ezzel"],
   [/\bAPI reference\b/g, "API referencia"],
+  // cssdoc section headings. These arrived with the cssdoc doc-block tags (@accessibility, @usage,
+  // @modifier, …) after the glossary was last touched, so they rendered in English. Anchored to a
+  // whole heading line (^…$) on purpose: many are common words ("usage", "related", "states",
+  // "structure") that must NOT be translated when they appear in prose — only as a section heading.
+  [/^(#{1,6} )Accessibility$/gm, "$1Akadálymentesség"],
+  [/^(#{1,6} )Usage$/gm, "$1Használat"],
+  [/^(#{1,6} )Demo$/gm, "$1Demó"],
+  [/^(#{1,6} )Structure$/gm, "$1Felépítés"],
+  [/^(#{1,6} )Slots$/gm, "$1Slotok"],
+  [/^(#{1,6} )Modifiers$/gm, "$1Módosítók"],
+  [/^(#{1,6} )Parts$/gm, "$1Részek"],
+  [/^(#{1,6} )Pseudo-elements$/gm, "$1Pszeudoelemek"],
+  [/^(#{1,6} )States$/gm, "$1Állapotok"],
+  [/^(#{1,6} )Custom properties$/gm, "$1Egyéni tulajdonságok"],
+  [/^(#{1,6} )Conditions$/gm, "$1Feltételek"],
+  [/^(#{1,6} )Animations$/gm, "$1Animációk"],
+  [/^(#{1,6} )Tokens consumed$/gm, "$1Felhasznált tokenek"],
+  [/^(#{1,6} )Browser support$/gm, "$1Böngészőtámogatás"],
+  [/^(#{1,6} )Subcomponents$/gm, "$1Alkomponensek"],
+  [/^(#{1,6} )Related$/gm, "$1Kapcsolódó"],
+  [/^(#{1,6} )Extends$/gm, "$1Kiterjeszti"],
+  // Stability-tier badge labels. Anchored to the doc-tag pill so a stray "Beta"/"Alpha" in prose is
+  // never touched. Deprecated is covered by the \bDeprecated\b entry above.
+  [/(pantoken-doc-tag">)Alpha(<)/g, "$1Alfa$2"],
+  [/(pantoken-doc-tag">)Beta(<)/g, "$1Béta$2"],
+  [/(pantoken-doc-tag">)Experimental(<)/g, "$1Kísérleti$2"],
+  // cssdoc table column labels. Anchored to the WHOLE string (^…$): the segmenter feeds each header
+  // cell as its own glossary unit, so these fire on an isolated "Value"/"Name"/"Type" cell but never
+  // on those common words inside a prose sentence. Description/Class are already handled above.
+  [/^Modifier$/g, "Módosító"],
+  [/^Pseudo-element$/g, "Pszeudoelem"],
+  [/^Part$/g, "Rész"],
+  [/^State$/g, "Állapot"],
+  [/^Slot$/g, "Slot"],
+  [/^Animation$/g, "Animáció"],
+  [/^Token$/g, "Token"],
+  [/^Type$/g, "Típus"],
+  [/^Value$/g, "Érték"],
+  [/^Query$/g, "Lekérdezés"],
+  [/^Name$/g, "Név"],
+  [/^Summary$/g, "Összegzés"],
+  [/^Default$/g, "Alapértelmezett"],
 ];
 
 export class GlossaryTranslationAdapter implements TranslationAdapter {
   readonly name = "glossary";
+  // Deterministic term substitution only — it cannot translate prose, so the memory must never cache
+  // its output under a prose key.
+  readonly translatesProse = false;
 
   translateMarkdown(input: string): string {
     return translateWithoutFencedCode(input, (text) => this.translateText(text));
@@ -88,8 +145,13 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
     return restorePackageNames(out, preserved.packageNames);
   }
 
-  translateBatch(items: readonly { id: string; text: string }[]): Record<string, string> {
-    return Object.fromEntries(items.map((item) => [item.id, this.translateText(item.text)]));
+  translateBatch(
+    items: readonly { id: string; text: string }[],
+    onChunk?: (partial: Record<string, string>) => void,
+  ): Record<string, string> {
+    const out = Object.fromEntries(items.map((item) => [item.id, this.translateText(item.text)]));
+    onChunk?.(out);
+    return out;
   }
 }
 
@@ -255,14 +317,21 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
     return restorePackageNames(translated, preserved.packageNames);
   }
 
-  translateBatch(items: readonly { id: string; text: string }[]): Record<string, string> {
+  translateBatch(
+    items: readonly { id: string; text: string }[],
+    onChunk?: (partial: Record<string, string>) => void,
+  ): Record<string, string> {
     const out: Record<string, string> = {};
     // Chunk by total character budget so each request stays small enough to round-trip reliably.
     const BUDGET = 6000;
     let chunk: { id: string; text: string }[] = [];
     let size = 0;
     const flush = (): void => {
-      if (chunk.length > 0) Object.assign(out, this.runBatch(chunk));
+      if (chunk.length === 0) return;
+      const partial = this.runBatch(chunk);
+      Object.assign(out, partial);
+      // Surface each chunk as it lands so the caller can persist + report progress across a long run.
+      onChunk?.(partial);
       chunk = [];
       size = 0;
     };
@@ -277,11 +346,27 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
 
   /** Translate one chunk of short strings as a single JSON object; fall back per item on failure. */
   private runBatch(items: readonly { id: string; text: string }[]): Record<string, string> {
-    const payload = Object.fromEntries(items.map((i) => [i.id, i.text]));
+    // Protect code and package names in every value before it reaches the model — prose cells and
+    // captions carry inline code and `@scope/pkg` names that must survive verbatim — then restore per
+    // id. Without this the batch path (unlike translateMarkdown) would let the model rewrite them.
+    const masked = items.map((item) => {
+      const markdown = preserveMarkdownSensitiveBlocks(item.text);
+      const packages = preservePackageNames(markdown.text);
+      return { id: item.id, masked: packages.text, markdown, packages };
+    });
+    const restore = (entry: (typeof masked)[number], value: string): string =>
+      restoreMarkdownSensitiveBlocks(
+        restorePackageNames(value, entry.packages.packageNames),
+        entry.markdown.codeBlocks,
+        entry.markdown.inlineCodeBlocks,
+      );
+
+    const payload = Object.fromEntries(masked.map((entry) => [entry.id, entry.masked]));
     const prompt = [
       "Translate the VALUES of this JSON object from English to Hungarian.",
       "Return ONLY a JSON object with the same keys and translated values.",
       "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
+      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, or __PTK_PACKAGE_#__.",
       JSON.stringify(payload, null, 2),
     ].join("\n");
 
@@ -289,9 +374,10 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
     const parsed = extractJsonObject(raw);
     if (parsed) {
       const out: Record<string, string> = {};
-      for (const item of items) {
-        const value = parsed[item.id];
-        out[item.id] = typeof value === "string" ? value : item.text;
+      for (const entry of masked) {
+        const value = parsed[entry.id];
+        // A missing/non-string value restores to the (masked → original) source rather than dropping it.
+        out[entry.id] = restore(entry, typeof value === "string" ? value : entry.masked);
       }
       return out;
     }
