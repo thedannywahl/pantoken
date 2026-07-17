@@ -7,4 +7,4 @@ User-agent: *
 Content-Signal: search=yes, ai-train=yes, ai-input=yes
 Allow: /
 
-Sitemap: https://thedannywahl.github.io/pantoken/sitemap.xml
+Sitemap: https://pantoken.iywahl.com/sitemap.xml
