@@ -103,7 +103,7 @@ direct `node scripts/x.ts` is unaffected. So:
 - The CSS-API node runs `["node","scripts/build-css-api.ts"]` (cwd `docs`).
 - `@pantoken/web-components`' `register()` bundle genuinely needs `vp pack` (which also can't nest), so
   it's not in the live orchestrator — rebuild it in a separate top-level shell
-  (`vpr @pantoken/web-components#build`); `reloadWatchPaths` on its `dist` bridges the change into HMR.
+  (`vpr @pantoken/web-components#build`); `outputWatchPaths` on its `dist` bridges the change into HMR.
 
 A `vp run X && vp run Y` chain _inside_ a package.json script is fine — that's a top-level
 script-runner context, not a spawn from within the running VitePress process.
