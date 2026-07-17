@@ -20,8 +20,8 @@ catalog:
   "@types/node": ^24.13.3
   typescript: ^6.0.3
   arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.4
-  vite-plus: 0.2.4
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.5
+  vite-plus: 0.2.5
   # Upstream Instructure sources
   "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens"
   "@instructure/ui-icons": ^11.7.3
