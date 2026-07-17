@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-07-17T16:25:12.709Z",
+  "targetPackage": "@pantoken/aggregate",
+  "targetVersion": "0.1.0",
+  "tag": "@pantoken/aggregate@v0.1.0",
+  "targetPrivate": true,
+  "releasePackages": ["@pantoken/aggregate"],
+  "publishPackages": [],
+  "packagePaths": {
+    "@pantoken/aggregate": "tools/aggregate"
+  },
+  "manifestVersions": {
+    "@pantoken/aggregate": "0.1.0"
+  }
+}
