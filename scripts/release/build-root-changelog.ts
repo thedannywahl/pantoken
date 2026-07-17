@@ -84,10 +84,13 @@ function parseExistingRootSections(changelog: string): ExistingRootSection[] {
     const next = headingPattern.exec(changelog);
     const end = next ? next.index : changelog.length;
 
+    const rawContent = changelog.slice(start, end).trim();
+    const content = rawContent.replace(/\n+# CHANGELOG\s*\n*/g, "\n").trim();
+
     sections.push({
       packageName: match[1],
       version: match[2],
-      content: changelog.slice(start, end).trim(),
+      content,
     });
 
     if (!next) {
