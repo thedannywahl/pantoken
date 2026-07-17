@@ -107,8 +107,8 @@ async function main() {
 
   // Scope release gates to the computed release set only.
   run("vp", ["run", "-r", ...releaseFilters, "build"]);
-  run("vp", ["run", "-r", ...releaseFilters, "test"]);
   run("vp", ["run", "-r", ...releaseFilters, "check", "--fix"]);
+  run("vp", ["run", "-r", ...releaseFilters, "test"]);
 
   if (
     releaseNames.includes("@pantoken/components") ||
