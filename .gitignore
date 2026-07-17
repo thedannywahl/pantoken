@@ -48,3 +48,6 @@ docs/internal/
 !.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# Test coverage output
+coverage/
