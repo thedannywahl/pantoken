@@ -13,6 +13,7 @@ export default defineConfig({
       "plugins/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "tools/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "docs/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)",
     ],
   },
   staged: {

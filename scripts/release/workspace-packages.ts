@@ -31,6 +31,12 @@ export interface ParsedPackageTag {
   version: string;
 }
 
+export interface ParsedRequestedPackageSpec {
+  raw: string;
+  packageName: string;
+  versionOrChannel?: string;
+}
+
 const WORKSPACE_ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
 
 const PACKAGE_ROOTS = [
@@ -210,6 +216,58 @@ export function parsePackageTag(tag: string): ParsedPackageTag | null {
   return {
     packageName: match[1],
     version: match[2],
+  };
+}
+
+export function normalizePantokenPackageName(value: string): string {
+  if (!value) {
+    return value;
+  }
+
+  if (value.startsWith("@pantokens/")) {
+    return value.replace("@pantokens/", "@pantoken/");
+  }
+
+  if (value.startsWith("@pantoken/")) {
+    return value;
+  }
+
+  if (value.startsWith("@")) {
+    return value;
+  }
+
+  return `@pantoken/${value}`;
+}
+
+export function parseRequestedPackageSpec(spec: string): ParsedRequestedPackageSpec {
+  const raw = spec.trim();
+  if (raw.length === 0) {
+    throw new Error("Package spec cannot be empty.");
+  }
+
+  const at = raw.lastIndexOf("@");
+  const hasScopedPrefix = raw.startsWith("@");
+
+  // Scoped package names include one leading @ by definition.
+  const hasVersionPart = at > 0 && (!hasScopedPrefix || at > raw.indexOf("/"));
+
+  if (!hasVersionPart) {
+    return {
+      raw,
+      packageName: normalizePantokenPackageName(raw),
+    };
+  }
+
+  const rawName = raw.slice(0, at);
+  const versionOrChannel = raw.slice(at + 1);
+  if (versionOrChannel.length === 0) {
+    throw new Error(`Invalid package spec: ${spec}`);
+  }
+
+  return {
+    raw,
+    packageName: normalizePantokenPackageName(rawName),
+    versionOrChannel,
   };
 }
 

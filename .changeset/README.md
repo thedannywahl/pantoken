@@ -5,7 +5,8 @@ pantoken now uses Changesets for release metadata, version bumps, and changelog 
 ## Command map (vp task -> underlying command)
 
 - `vp run changeset:add` -> `vpx changeset`
-- `vpr release @pantoken/<pkg>` -> full local release cut (gates, interactive `bumpp`, commit, tag, push)
+- `vpr release -p <pkg[@version|@alpha|@beta|@rc]> [-p <pkg[@...]> ...]` -> full local release cut (gates, deterministic `bumpp`, commit, tag, push)
+- `vpr release <pkg[@version|@alpha|@beta|@rc]> [<pkg[@...]> ...]` -> same as above using positional package specs
 - `vp run release:status` -> `vpx changeset status --verbose`
 - `vp run release:version` -> `vpx changeset version`
 - `vp run release:plan:package` -> build publish set from a package tag into `.release-plan.*`
@@ -30,7 +31,21 @@ Use `vp run release:status` to inspect pending release state.
 
 ### One-command local cut
 
-Run `vpr release @pantoken/<pkg>` when you are ready to cut a package release end-to-end.
+Run `vpr release ...` with either `-p/--package` specs or positional specs when you are ready to cut a package release end-to-end.
+
+Examples:
+
+- `vpr release -p pantoken@0.1.1`
+- `vpr release -p @pantoken/pantoken@1.0.0 --beta` (resolves to `1.0.0-beta.1`)
+- `vpr release -p pantoken@beta` (increments current `beta` dist-tag if present, otherwise patch + `beta.1`)
+- `vpr release pantoken@0.1.1 aggregate@0.1.1`
+
+Rules:
+
+- Do not mix `-p/--package` specs with positional specs in the same command.
+- `@pantoken/` is optional for workspace packages (`pantoken` equals `@pantoken/pantoken`).
+- `--force`/`-f` forwards `--yes` to `bumpp`.
+- `--help`/`-h` prints command help.
 
 The task does the following in order:
 

@@ -2,6 +2,7 @@ import { execFile } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { pathToFileURL } from "node:url";
 import { promisify } from "node:util";
 import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.ts";
 
@@ -34,6 +35,15 @@ function hasFlag(flag: string): boolean {
 
 function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function isDirectExecution(metaUrl: string): boolean {
+  const entry = process.argv[1];
+  if (!entry) {
+    return false;
+  }
+
+  return pathToFileURL(path.resolve(entry)).href === metaUrl;
 }
 
 function extractVersionSection(changelog: string, version: string): string | null {
@@ -207,7 +217,11 @@ async function main() {
   process.stdout.write(`Wrote ${outputFile}\n`);
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
-});
+if (isDirectExecution(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  });
+}
+
+export { extractVersionSection, stripTopVersionHeading };
