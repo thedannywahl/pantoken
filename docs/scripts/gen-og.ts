@@ -23,8 +23,8 @@ const RING_1 = "#004880"; // outermost concentric ring
 const RING_2 = "#0065b3";
 const RING_3 = "#0090ff"; // brightest ring + brand-blue accent
 const WHITE = "#ffffff";
-const MUTED = "#9db8d6"; // desaturated blue for the supporting line
-const URL_FILL = "#cfe3f7";
+const MUTED = "#aab0b5"; // desaturated blue for the supporting line
+const URL_FILL = WHITE;
 
 // The theme background anchors three concentric circles at the bottom-right corner of a 374×160 field
 // (radii 200/140/80). Scale those radii to the card width so the card reproduces the same look at
@@ -43,16 +43,17 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <rect x="0" y="0" width="${WIDTH}" height="10" fill="${RING_3}" />
 
   <!-- Wordmark. -->
-  <text x="96" y="266" font-family="Helvetica Neue, Arial, sans-serif" font-size="132" font-weight="700" letter-spacing="-4" fill="${HEADER}">pantoken</text>
+  <text x="96" y="266" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="132" font-weight="700" letter-spacing="-4" fill="${HEADER}">pantoken</text>
 
   <!-- Tagline (the home hero line). -->
-  <text x="100" y="388" font-family="Helvetica Neue, Arial, sans-serif" font-size="48" font-weight="600" fill="${WHITE}">Instructure design tokens, everywhere</text>
+  <text x="100" y="388" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="48" font-weight="700" fill="${WHITE}">Instructure design tokens, everywhere</text>
 
   <!-- Supporting line. -->
-  <text x="100" y="444" font-family="Helvetica Neue, Arial, sans-serif" font-size="29" font-weight="400" fill="${MUTED}">One resolved model, reshaped into CSS, native code, and Figma.</text>
+  <text x="100" y="444" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="29" font-weight="500" fill="${MUTED}">One resolved token model, reshaped into stylesheets,</text>
+  <text x="100" y="473" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="29" font-weight="500" fill="${MUTED}">framework bindings, native code, and design-tool payloads.</text>
 
   <!-- Footer URL. -->
-  <text x="100" y="556" font-family="ui-monospace, Menlo, monospace" font-size="30" font-weight="500" fill="${URL_FILL}">pantoken.iywahl.com</text>
+  <text x="100" y="556" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="24" font-weight="400" fill="${URL_FILL}">pantoken.iywahl.com</text>
 </svg>`;
 
 const png = new Resvg(svg, {
