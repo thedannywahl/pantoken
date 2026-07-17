@@ -82,13 +82,16 @@ test("billboard canvas themes override clickable active to focus outline color",
   const canvas = norm(billboardCss({ prefix: "instui", theme: "canvas" }));
   const canvasHighContrast = norm(billboardCss({ prefix: "instui", theme: "canvasHighContrast" }));
 
-  expect(rebrand).not.toContain(
-    ".instui-billboard.-clickable:active { background: var(--instui-focus-outline-color);",
-  );
-  expect(canvas).toContain(
-    ".instui-billboard.-clickable:active { background: var(--instui-focus-outline-color);",
-  );
-  expect(canvasHighContrast).toContain(
-    ".instui-billboard.-clickable:active { background: var(--instui-focus-outline-color);",
-  );
+  const activeBackgroundOverride =
+    /\.instui-billboard\.-clickable:active\s*\{[^}]*background:\s*var\(--instui-focus-outline-color\);/u;
+
+  expect(rebrand).not.toMatch(activeBackgroundOverride);
+  expect(canvas).toMatch(activeBackgroundOverride);
+  expect(canvasHighContrast).toMatch(activeBackgroundOverride);
+
+  // Proof that theme custom-media was lowered: no authoring-time theme queries remain.
+  expect(canvas).not.toContain("@media (--theme-");
+  expect(canvasHighContrast).not.toContain("@media (--theme-");
+  expect(canvas).not.toContain("(theme:");
+  expect(canvasHighContrast).not.toContain("(theme:");
 });
