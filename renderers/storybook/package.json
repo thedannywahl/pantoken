@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "A Storybook theme built from Instructure tokens (maps to Storybook ThemeVars).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

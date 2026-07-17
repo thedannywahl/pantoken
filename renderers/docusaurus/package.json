@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Theme a Docusaurus site with Instructure tokens: maps Infima's --ifm-* CSS variables to var(--instui-*).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

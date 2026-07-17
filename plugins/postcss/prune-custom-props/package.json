@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "pantoken plugin: a PostCSS plugin that tree-shakes unused --instui-* custom properties from a composed stylesheet.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

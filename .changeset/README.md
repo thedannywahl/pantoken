@@ -16,6 +16,7 @@ pantoken now uses Changesets for release metadata, version bumps, and changelog 
 - `vp run release:publish` -> `vpx changeset publish`
 - `vp run release:pre:enter` -> `vpx changeset pre enter next`
 - `vp run release:pre:exit` -> `vpx changeset pre exit`
+- `vp run gate:repository` -> validates publishable package `repository.url` metadata for npm provenance
 - `vp run gate:publint` -> `publint` across publishable workspaces
 - `vp run gate:attw` -> `attw --pack --profile strict --no-emoji` across publishable workspaces
 
@@ -51,7 +52,7 @@ The task does the following in order:
 
 1. Verifies git worktree is clean.
 2. Resolves dependency-aware release set for the target package.
-3. Runs build/test/check and publish gates (`publint`, `attw`) filtered to the release set packages.
+3. Runs build/test/check and publish gates (`repository`, `publint`, `attw`) filtered to the release set packages.
 4. Runs interactive `bumpp` across the release set package manifests.
 5. Regenerates release plan artifacts and root changelog, with pending changelog entries scoped to
    the release plan packages only.
@@ -61,7 +62,7 @@ The pushed package tag triggers `.github/workflows/release.yml`.
 
 ### Manual/step-by-step
 
-1. Ensure the main branch is green and release-ready (`vp run ready`, `vp run gate:publint`, `vp run gate:attw`).
+1. Ensure the main branch is green and release-ready (`vp run ready`, `vp run gate:repository`, `vp run gate:publint`, `vp run gate:attw`).
 2. Run `vp run release:version` to apply version/changelog updates.
 3. Regenerate the root changelog: `vp run release:changelog:root`.
 4. Commit the versioning/changelog changes and create/push package tags (`@pantoken/pkg@vX.Y.Z`).

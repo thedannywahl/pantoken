@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Self-hosted, token-themed live-demo runner for docs: resolve a @demo <provider>:<ref> spec to an embeddable iframe, and render bare HTML/CSS/JS demos same-origin.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist",
     "assets"

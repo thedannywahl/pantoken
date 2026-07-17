@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "TypeDoc plugin: turn a @demo <provider>:<ref> block tag into an embeddable demo fence your docs render as an iframe.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

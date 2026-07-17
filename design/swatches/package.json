@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Export Instructure colours as designer swatch palettes: Adobe ASE, GIMP .gpl, and Sketch .sketchpalette.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

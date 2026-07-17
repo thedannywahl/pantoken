@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "pantoken plugin: the CSS for InstUI's Transition utility — duration/timing tokens plus fade, scale, and slide enter/exit state classes.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

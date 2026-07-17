@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "pantoken plugin: named z-index depths (deepest, below, above, topmost) as --instui-stacking-* tokens plus .instui-stack-* utility classes, from InstUI's view stacking scale.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

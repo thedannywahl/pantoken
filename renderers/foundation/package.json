@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Theme Foundation for Sites with Instructure tokens: a Sass settings override plus a thin CSS overlay pointing at var(--instui-*).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist",
     "generated/_settings.scss"

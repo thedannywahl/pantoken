@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "react-markdown integration for pantoken: render Markdown with Instructure UI components and pantoken icons.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

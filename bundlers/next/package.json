@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Next.js adapter for pantoken: withPantoken() transpiles the Instructure UI ESM packages.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

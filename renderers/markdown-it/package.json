@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "markdown-it plugin: render :icon: codes as inline SVG and color values as swatches, using the pantoken icon set.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

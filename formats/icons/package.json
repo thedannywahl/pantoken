@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "An ergonomic view over the pantoken IR's <image> tokens: decoded SVGs and per-icon metadata.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

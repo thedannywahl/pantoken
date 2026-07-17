@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Instructure design tokens as React Native StyleSheet-friendly objects (colors as hex, dimensions as numbers).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Angular helpers for pantoken: register the web components and read tokens.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

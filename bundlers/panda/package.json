@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Instructure design-token preset for Panda CSS: tokens + semanticTokens with a _dark condition, from the pantoken IR.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

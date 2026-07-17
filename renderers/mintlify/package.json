@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Theme a Mintlify docs site with Instructure tokens: the docs.json colors + background, resolved to concrete hex per mode.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist",
     "generated/docs.json"

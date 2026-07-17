@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Tailwind CSS preset that maps Instructure design tokens into the theme as var(--instui-*) references.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

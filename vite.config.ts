@@ -81,6 +81,9 @@ export default defineConfig({
       "release:pre:exit": {
         command: "vpx changeset pre exit",
       },
+      "gate:repository": {
+        command: "node scripts/release/check-repository-metadata.ts",
+      },
       "gate:publint": {
         command:
           'vp exec -F "./packages/**" -F "./formats/**" -F "./platforms/**" -F "./renderers/**" -F "./bundlers/**" -F "./design/**" -F "./ai/**" -F "./plugins/**" -F "./tools/**" publint',

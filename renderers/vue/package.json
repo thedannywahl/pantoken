@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Vue plugin for pantoken: registers the web components and reads tokens.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

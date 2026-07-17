@@ -56,6 +56,7 @@ jobs:
       - name: Verify release gates
         run: |
           vp run ready
+          vp run gate:repository
           vp run gate:publint
           vp run gate:attw
 

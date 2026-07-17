@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Theme a VitePress site with Instructure tokens: maps VitePress --vp-* CSS variables to var(--instui-*).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

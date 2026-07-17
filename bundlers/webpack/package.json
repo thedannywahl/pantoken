@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Webpack plugin for pantoken: emits the token stylesheet as a build asset.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

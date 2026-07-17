@@ -3,6 +3,10 @@
   "version": "0.1.2",
   "description": "The unified pantoken package: Instructure design tokens, icons, and platform integrations, auto-aggregated from @pantoken/*.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

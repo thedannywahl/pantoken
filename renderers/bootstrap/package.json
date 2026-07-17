@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Theme Bootstrap 5 with Instructure tokens: maps Bootstrap's --bs-* CSS variables to var(--instui-*).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

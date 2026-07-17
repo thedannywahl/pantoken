@@ -13,7 +13,8 @@
     "docs:preview": "vp run @pantoken/docs#docs:preview",
     "docs:api": "vp run @pantoken/docs#docs:api",
     "lint:markdown": "vp exec markdownlint-cli2 \"**/*.md\"",
-    "check:publish": "vp run gate:publint",
+    "check:repository": "vp run gate:repository",
+    "check:publish": "vp run gate:repository && vp run gate:publint",
     "check:attw": "vp run gate:attw"
   },
   "devDependencies": {

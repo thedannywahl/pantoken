@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "W3C Design Tokens (DTCG) JSON export of the Instructure tokens — an interchange format for Style Dictionary, Figma, and other tools.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

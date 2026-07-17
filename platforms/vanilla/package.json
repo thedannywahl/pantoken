@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Emit Instructure design tokens as a Vanilla Forums (Foundation) theme variables.json.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

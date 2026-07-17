@@ -3,6 +3,10 @@
   "version": "0.1.2",
   "description": "pantoken plugin: a PostCSS plugin that expands and lowers theme custom-media aliases for pantoken CSS authoring.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

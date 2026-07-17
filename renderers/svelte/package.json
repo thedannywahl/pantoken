@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Svelte helpers for pantoken: an icon action over the web components, plus token reads.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

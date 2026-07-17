@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "pantoken plugin: add Simple Icons brand glyphs as <image> tokens (token layer) OR resolve them at render (rehype layer).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

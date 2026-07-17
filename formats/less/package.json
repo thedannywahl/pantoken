@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Instructure design tokens as Less variables (resolved, single-mode) from the pantoken IR.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist",
     "generated/tokens.less"

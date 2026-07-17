@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Emit the Instructure token stylesheet for a Jekyll site (a _sass partial + a plain CSS asset).",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

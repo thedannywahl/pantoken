@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "TypeDoc plugin: embed a live HTML preview beneath each @example on a CSS reference page.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

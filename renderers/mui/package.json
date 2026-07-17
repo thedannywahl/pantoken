@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Theme MUI (Material UI) with Instructure tokens: maps the token IR to createTheme palette options per mode.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

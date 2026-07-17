@@ -531,6 +531,8 @@ async function main() {
     run("vp", ["run", "lint:js"], { cwd: rootDir });
   }
 
+  run("vp", ["run", "gate:repository"], { cwd: rootDir });
+
   if (publishableReleaseNames.length > 0) {
     run("vp", ["exec", ...publishableReleaseFilters, "publint"], { cwd: rootDir });
     run(

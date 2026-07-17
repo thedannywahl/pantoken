@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Instructure theme object for runtime CSS-in-JS (Emotion, styled-components, Stitches): camelCased tokens, var()-backed.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist"
   ],

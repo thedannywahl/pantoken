@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "pantoken plugin: Instructure product logos (Canvas, Mastery, Parchment, and more) as SVGs, data URIs, and --instui-logo-* image tokens.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git"
+  },
   "files": [
     "dist",
     "assets/logos"
