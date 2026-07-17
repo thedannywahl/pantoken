@@ -8,6 +8,7 @@ interface ReleasePlan {
   tag?: string;
   targetPackage?: string;
   targetVersion?: string;
+  releasePackages?: string[];
   publishPackages: string[];
   manifestVersions?: Record<string, string>;
 }
@@ -80,13 +81,14 @@ async function main() {
     "",
     `- Tag: ${tag}`,
     `- Generated: ${new Date().toISOString()}`,
-    `- Publish set size: ${plan.publishPackages.length}`,
+    `- Release set size: ${(plan.releasePackages ?? plan.publishPackages ?? []).length}`,
+    `- Publish set size: ${(plan.publishPackages ?? []).length}`,
     "",
-    "## Published Packages",
+    "## Release Packages",
     "",
   ];
 
-  for (const packageName of plan.publishPackages ?? []) {
+  for (const packageName of plan.releasePackages ?? plan.publishPackages ?? []) {
     const pkg = byName.get(packageName);
     const version = plan.manifestVersions?.[packageName] ?? pkg?.version ?? "unknown";
     lines.push(`### ${packageName}@${version}`);

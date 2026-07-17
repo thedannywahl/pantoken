@@ -196,7 +196,8 @@ export function computeReleaseSet(
   }
 
   const metaPackage = byName.get("@pantoken/pantoken");
-  if (metaPackage && targetName !== "@pantoken/pantoken") {
+  const targetPackage = byName.get(targetName);
+  if (metaPackage && targetName !== "@pantoken/pantoken" && !targetPackage?.private) {
     const touchesMetaSurface = [...visited].some((name) => metaPackage.workspaceDeps.has(name));
 
     if (touchesMetaSurface) {

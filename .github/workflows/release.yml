@@ -67,8 +67,18 @@ jobs:
             --publish-list .release-packages.txt \
             --markdown .release-plan.md
 
+      - name: Read release plan metadata
+        id: plan
+        shell: bash
+        run: |
+          target_private=$(node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync(".release-plan.json","utf8"));process.stdout.write(String(Boolean(p.targetPrivate)));')
+          publish_count=$(node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync(".release-plan.json","utf8"));process.stdout.write(String((p.publishPackages??[]).length));')
+          echo "target_private=${target_private}" >> "${GITHUB_OUTPUT}"
+          echo "publish_count=${publish_count}" >> "${GITHUB_OUTPUT}"
+
       - name: Resolve npm dist-tag and prerelease state
         id: dist_tag
+        if: steps.plan.outputs.target_private != 'true' && steps.plan.outputs.publish_count != '0'
         shell: bash
         env:
           INPUT_DIST_TAG: ${{ inputs.dist_tag }}
@@ -101,6 +111,7 @@ jobs:
           echo "Publishing with npm dist-tag: ${tag}"
 
       - name: Publish release set
+        if: steps.plan.outputs.target_private != 'true' && steps.plan.outputs.publish_count != '0'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
@@ -122,7 +133,7 @@ jobs:
             --out release-notes.md
 
       - name: Create GitHub release
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' && steps.plan.outputs.target_private != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_TAG }}

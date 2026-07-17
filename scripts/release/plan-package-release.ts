@@ -16,6 +16,8 @@ interface ReleasePlanPayload {
   targetPackage: string;
   targetVersion: string;
   tag: string;
+  targetPrivate: boolean;
+  releasePackages: string[];
   publishPackages: string[];
   packagePaths: Record<string, string>;
   manifestVersions: Record<string, string>;
@@ -25,6 +27,11 @@ interface PlanInputs {
   target: string;
   version?: string;
   tag?: string;
+}
+
+interface ResolvedReleaseCollections {
+  releaseSet: WorkspacePackage[];
+  publishSet: WorkspacePackage[];
 }
 
 function readArg(flag: string, fallback?: string): string | undefined {
@@ -74,6 +81,24 @@ export function resolvePlanInputs(inputs: PlanInputs): {
   return { target, version, tag };
 }
 
+export function resolveReleaseCollections(
+  target: string,
+  byName: Map<string, WorkspacePackage>,
+  packages: WorkspacePackage[],
+): ResolvedReleaseCollections {
+  const reverse = buildReverseDependencyMap(packages);
+  const releaseSet = computeReleaseSet(target, byName, reverse)
+    .map((name) => byName.get(name))
+    .filter((pkg): pkg is WorkspacePackage => Boolean(pkg));
+
+  const publishSet = releaseSet.filter((pkg) => isPublishablePackage(pkg));
+
+  return {
+    releaseSet,
+    publishSet,
+  };
+}
+
 async function main() {
   const resolved = resolvePlanInputs({
     target: readArg("--target") ?? "",
@@ -91,12 +116,10 @@ async function main() {
     throw new Error(`Unknown workspace package: ${target}`);
   }
 
-  const reverse = buildReverseDependencyMap(packages);
-  const releaseSet = computeReleaseSet(target, byName, reverse)
-    .map((name) => byName.get(name))
-    .filter((pkg): pkg is WorkspacePackage => isPublishablePackage(pkg));
+  const { releaseSet, publishSet } = resolveReleaseCollections(target, byName, packages);
 
   const releaseNames = releaseSet.map((pkg) => pkg.name);
+  const publishNames = publishSet.map((pkg) => pkg.name);
   const manifestVersions = Object.fromEntries(releaseSet.map((pkg) => [pkg.name, pkg.version]));
 
   const payload: ReleasePlanPayload = {
@@ -104,7 +127,9 @@ async function main() {
     targetPackage: target,
     targetVersion: version ?? targetPkg.version,
     tag: tag ?? `${target}@v${version ?? targetPkg.version}`,
-    publishPackages: releaseNames,
+    targetPrivate: targetPkg.private,
+    releasePackages: releaseNames,
+    publishPackages: publishNames,
     packagePaths: Object.fromEntries(releaseSet.map((pkg) => [pkg.name, pkg.path])),
     manifestVersions,
   };
@@ -116,7 +141,7 @@ async function main() {
 
   const publishListFile = readArg("--publish-list");
   if (publishListFile) {
-    await fs.writeFile(path.resolve(publishListFile), `${releaseNames.join("\n")}\n`);
+    await fs.writeFile(path.resolve(publishListFile), `${publishNames.join("\n")}\n`);
   }
 
   const markdownFile = readArg("--markdown");
@@ -139,8 +164,11 @@ async function main() {
     const output = [
       `target_package=${payload.targetPackage}`,
       `target_version=${payload.targetVersion}`,
-      `publish_count=${releaseNames.length}`,
-      `publish_packages=${releaseNames.join(",")}`,
+      `target_private=${payload.targetPrivate}`,
+      `release_count=${releaseNames.length}`,
+      `release_packages=${releaseNames.join(",")}`,
+      `publish_count=${publishNames.length}`,
+      `publish_packages=${publishNames.join(",")}`,
     ];
 
     await fs.appendFile(process.env.GITHUB_OUTPUT, `${output.join("\n")}\n`);

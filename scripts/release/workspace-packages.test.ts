@@ -6,12 +6,12 @@ import {
   type WorkspacePackage,
 } from "./workspace-packages.ts";
 
-function pkg(name: string, deps: string[] = []): WorkspacePackage {
+function pkg(name: string, deps: string[] = [], isPrivate = false): WorkspacePackage {
   return {
     name,
     path: `tmp/${name}`,
     version: "0.1.0",
-    private: false,
+    private: isPrivate,
     workspaceDeps: new Set(deps),
   };
 }
@@ -65,4 +65,26 @@ test("computeReleaseSet auto-includes @pantoken/pantoken only for non-meta targe
   ]);
 
   expect(computeReleaseSet("@pantoken/pantoken", byName, reverse)).toEqual(["@pantoken/pantoken"]);
+});
+
+test("computeReleaseSet does not auto-include @pantoken/pantoken for private targets", () => {
+  const internal = pkg("@pantoken/aggregate", ["@pantoken/components"], true);
+  const components = pkg("@pantoken/components");
+  const pantoken = pkg("@pantoken/pantoken", ["@pantoken/aggregate"]);
+
+  const byName = new Map([
+    [internal.name, internal],
+    [components.name, components],
+    [pantoken.name, pantoken],
+  ]);
+
+  const reverse = new Map<string, Set<string>>([
+    ["@pantoken/components", new Set(["@pantoken/aggregate"])],
+    ["@pantoken/aggregate", new Set()],
+    ["@pantoken/pantoken", new Set()],
+  ]);
+
+  expect(computeReleaseSet("@pantoken/aggregate", byName, reverse)).toEqual([
+    "@pantoken/aggregate",
+  ]);
 });

@@ -1,5 +1,20 @@
 import { expect, test } from "vite-plus/test";
-import { buildInitialChangelog, hasVersionSection } from "./seed-initial-package-changelogs.ts";
+import {
+  buildInitialChangelog,
+  hasVersionSection,
+  shouldSeedPackage,
+} from "./seed-initial-package-changelogs.ts";
+import type { WorkspacePackage } from "./workspace-packages.ts";
+
+function pkg(name: string, version: string, isPrivate: boolean): WorkspacePackage {
+  return {
+    name,
+    path: `tmp/${name}`,
+    version,
+    private: isPrivate,
+    workspaceDeps: new Set(),
+  };
+}
 
 test("buildInitialChangelog emits deterministic initial section", () => {
   const out = buildInitialChangelog("@pantoken/pantoken");
@@ -16,4 +31,13 @@ test("hasVersionSection matches both plain and v-prefixed headings", () => {
   expect(hasVersionSection(content, "0.1.0")).toBe(true);
   expect(hasVersionSection(content, "0.2.0")).toBe(true);
   expect(hasVersionSection(content, "0.3.0")).toBe(false);
+});
+
+test("shouldSeedPackage includes all private @pantoken packages", () => {
+  expect(shouldSeedPackage(pkg("@pantoken/aggregate", "0.3.0", true))).toBe(true);
+});
+
+test("shouldSeedPackage keeps public package seeding gated to 0.1.0", () => {
+  expect(shouldSeedPackage(pkg("@pantoken/components", "0.1.0", false))).toBe(true);
+  expect(shouldSeedPackage(pkg("@pantoken/components", "1.0.0", false))).toBe(false);
 });

@@ -9,6 +9,7 @@ import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.ts"
 const execFileAsync = promisify(execFile);
 
 interface ReleasePlan {
+  releasePackages?: string[];
   publishPackages?: string[];
   manifestVersions?: Record<string, string>;
 }
@@ -146,7 +147,8 @@ async function main() {
     const existing = new Set(entries.map((entry) => `${entry.packageName}@${entry.version}`));
     const planTimestamp = new Date().toISOString();
 
-    for (const packageName of plan.publishPackages ?? []) {
+    const releasePackages = plan.releasePackages ?? plan.publishPackages ?? [];
+    for (const packageName of releasePackages) {
       const version = plan.manifestVersions?.[packageName];
       if (typeof version !== "string" || version.length === 0) {
         continue;
