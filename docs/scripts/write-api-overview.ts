@@ -11,7 +11,7 @@ bundler plugins, and design tooling.
 
 ## Start here
 
-| Area | Use this when you need... |
+| Area | Description |
 | --- | --- |
 | [CSS API reference](/api/css/) | Component classes, utilities, rules, declarations, and token-backed CSS behavior. |
 | [packages](/api/packages/) | Core contracts and pipeline helpers (model, core, utils, plugin-kit, CLI). |
@@ -20,7 +20,7 @@ bundler plugins, and design tooling.
 
 ## Browse by group
 
-| Group | Contents |
+| Group | Description |
 | --- | --- |
 | [ai](/api/ai/) | Agent assets and AI tooling packages. |
 | [bundlers](/api/bundlers/) | Bundler integrations for Next, Vite, Webpack, Tailwind, Panda, and PostCSS. |
