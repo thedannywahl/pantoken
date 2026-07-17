@@ -5,6 +5,12 @@
  * field with concentric blue circles bleeding off the bottom-right corner, see
  * `.vitepress/theme/pantoken.css` → `--vp-home-bg-image`) and sets the pantoken wordmark over it.
  *
+ * The card text renders in Atkinson Hyperlegible Next — the same face the docs theme uses
+ * (`--vp-font-family-base`). The faces are bundled (converted to TTF from the vendored `.woff2` under
+ * `formats/components/assets/fonts`, since resvg reads TTF/OTF, not WOFF2) and loaded explicitly with
+ * `loadSystemFonts` OFF, so the card renders identically on CI's `ubuntu-latest`, which ships none of
+ * the fonts a `loadSystemFonts` build would otherwise fall back to.
+ *
  * Regenerated on every build as part of `docs:assets` (like the nav logos), so `docs/public/og.png`
  * is git-ignored, not committed. Run `vp run docs:og` to refresh it on its own while iterating on the
  * card design.
@@ -15,6 +21,18 @@ import { Resvg } from "@resvg/resvg-js";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
+
+// The bundled type family and its faces. resvg matches the SVG's `font-family` against the name in
+// each loaded file, then picks the face by `font-weight`; the card uses 400/500/600/700.
+const FONT = "Atkinson Hyperlegible Next";
+const fontFile = (weight: string): string =>
+  fileURLToPath(
+    new URL(
+      `../assets/fonts/AtkinsonHyperlegibleNext/AtkinsonHyperlegibleNext-${weight}.ttf`,
+      import.meta.url,
+    ),
+  );
+const FONT_FILES = ["Regular", "Medium", "SemiBold", "Bold"].map(fontFile);
 
 // Palette lifted from the docs theme's home background SVG (pantoken.css `--vp-home-bg-image`)
 const HEADER = "#7fb4f1";
@@ -43,22 +61,22 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <rect x="0" y="0" width="${WIDTH}" height="10" fill="${RING_3}" />
 
   <!-- Wordmark. -->
-  <text x="96" y="266" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="132" font-weight="700" letter-spacing="-4" fill="${HEADER}">pantoken</text>
+  <text x="96" y="266" font-family="${FONT}" font-size="132" font-weight="700" letter-spacing="-4" fill="${HEADER}">pantoken</text>
 
   <!-- Tagline (the home hero line). -->
-  <text x="100" y="388" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="48" font-weight="700" fill="${WHITE}">Instructure design tokens, everywhere</text>
+  <text x="100" y="388" font-family="${FONT}" font-size="48" font-weight="700" fill="${WHITE}">Instructure design tokens, everywhere</text>
 
   <!-- Supporting line. -->
-  <text x="100" y="444" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="29" font-weight="500" fill="${MUTED}">One resolved token model, reshaped into stylesheets,</text>
-  <text x="100" y="473" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="29" font-weight="500" fill="${MUTED}">framework bindings, native code, and design-tool payloads.</text>
+  <text x="100" y="444" font-family="${FONT}" font-size="29" font-weight="500" fill="${MUTED}">One resolved token model, reshaped into stylesheets,</text>
+  <text x="100" y="473" font-family="${FONT}" font-size="29" font-weight="500" fill="${MUTED}">framework bindings, native code, and design-tool payloads.</text>
 
   <!-- Footer URL. -->
-  <text x="100" y="556" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="24" font-weight="400" fill="${URL_FILL}">pantoken.iywahl.com</text>
+  <text x="100" y="556" font-family="${FONT}" font-size="24" font-weight="400" fill="${URL_FILL}">pantoken.iywahl.com</text>
 </svg>`;
 
 const png = new Resvg(svg, {
   fitTo: { mode: "width", value: WIDTH },
-  font: { loadSystemFonts: true },
+  font: { loadSystemFonts: false, fontFiles: FONT_FILES, defaultFontFamily: FONT },
 })
   .render()
   .asPng();
