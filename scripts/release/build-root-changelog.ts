@@ -3,11 +3,24 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { promisify } from "node:util";
-import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.mjs";
+import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.ts";
 
 const execFileAsync = promisify(execFile);
 
-function readArg(flag, fallback) {
+interface ReleasePlan {
+  publishPackages?: string[];
+  manifestVersions?: Record<string, string>;
+}
+
+interface RootChangelogEntry {
+  kind: "tag" | "seed" | "plan";
+  tag: string;
+  packageName: string;
+  version: string;
+  createdAt: string;
+}
+
+function readArg(flag: string, fallback?: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
     return process.argv[index + 1];
@@ -15,15 +28,15 @@ function readArg(flag, fallback) {
   return fallback;
 }
 
-function hasFlag(flag) {
+function hasFlag(flag: string): boolean {
   return process.argv.includes(flag);
 }
 
-function escapeRegex(value) {
+function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function extractVersionSection(changelog, version) {
+function extractVersionSection(changelog: string, version: string): string | null {
   const heading = new RegExp(`^##\\s+\\[?v?${escapeRegex(version)}\\]?\\b`, "m");
   const match = heading.exec(changelog);
   if (!match || typeof match.index !== "number") {
@@ -39,12 +52,12 @@ function extractVersionSection(changelog, version) {
   return changelog.slice(start, end).trim();
 }
 
-function stripTopVersionHeading(section, version) {
+function stripTopVersionHeading(section: string, version: string): string {
   const heading = new RegExp(`^##\\s+\\[?v?${escapeRegex(version)}\\]?\\b\\s*\\n?`, "i");
   return section.replace(heading, "").trim();
 }
 
-async function readTagRefs() {
+async function readTagRefs(): Promise<Array<{ tag: string; createdAt: string }>> {
   const { stdout } = await execFileAsync("git", [
     "for-each-ref",
     "--format=%(refname:short)|%(creatordate:iso8601)",
@@ -65,13 +78,13 @@ async function readTagRefs() {
 }
 
 async function main() {
-  const outputFile = readArg("--out", "CHANGELOG.md");
+  const outputFile = readArg("--out", "CHANGELOG.md") ?? "CHANGELOG.md";
   const planFile = readArg("--plan");
   const includeInitialSeed = hasFlag("--seed-initial");
   const { byName, rootDir, packages } = await loadWorkspacePackages();
   const refs = await readTagRefs();
 
-  const entries = refs
+  const entries: RootChangelogEntry[] = refs
     .map((ref) => {
       const parsed = parsePackageTag(ref.tag);
       if (!parsed) {
@@ -86,7 +99,7 @@ async function main() {
         createdAt: ref.createdAt,
       };
     })
-    .filter(Boolean);
+    .filter((entry): entry is RootChangelogEntry => entry !== null);
 
   if (includeInitialSeed) {
     const existing = new Set(entries.map((entry) => `${entry.packageName}@${entry.version}`));
@@ -119,7 +132,7 @@ async function main() {
 
   if (planFile) {
     const rawPlan = await fs.readFile(path.resolve(planFile), "utf8");
-    const plan = JSON.parse(rawPlan);
+    const plan = JSON.parse(rawPlan) as ReleasePlan;
     const existing = new Set(entries.map((entry) => `${entry.packageName}@${entry.version}`));
     const planTimestamp = new Date().toISOString();
 

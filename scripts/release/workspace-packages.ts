@@ -1,6 +1,36 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
+type ManifestDeps = Record<string, unknown>;
+
+interface PackageManifest {
+  name?: unknown;
+  version?: unknown;
+  private?: unknown;
+  dependencies?: ManifestDeps;
+  optionalDependencies?: ManifestDeps;
+  peerDependencies?: ManifestDeps;
+}
+
+export interface WorkspacePackage {
+  name: string;
+  path: string;
+  version: string;
+  private: boolean;
+  workspaceDeps: Set<string>;
+}
+
+export interface WorkspacePackages {
+  rootDir: string;
+  packages: WorkspacePackage[];
+  byName: Map<string, WorkspacePackage>;
+}
+
+export interface ParsedPackageTag {
+  packageName: string;
+  version: string;
+}
+
 const WORKSPACE_ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
 
 const PACKAGE_ROOTS = [
@@ -20,10 +50,10 @@ const PACKAGE_ROOTS = [
 
 const WORKSPACE_PROTOCOL = "workspace:";
 
-const toPosix = (value) => value.split(path.sep).join("/");
+const toPosix = (value: string): string => value.split(path.sep).join("/");
 
-async function listChildDirs(basePath) {
-  let entries = [];
+async function listChildDirs(basePath: string): Promise<string[]> {
+  let entries: import("node:fs").Dirent[] = [];
 
   try {
     entries = await fs.readdir(basePath, { withFileTypes: true });
@@ -34,14 +64,14 @@ async function listChildDirs(basePath) {
   return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
 }
 
-function collectWorkspaceDeps(manifest) {
+function collectWorkspaceDeps(manifest: PackageManifest): Set<string> {
   const buckets = [
     manifest.dependencies ?? {},
     manifest.optionalDependencies ?? {},
     manifest.peerDependencies ?? {},
   ];
 
-  const deps = new Set();
+  const deps = new Set<string>();
 
   for (const bucket of buckets) {
     for (const [depName, depRange] of Object.entries(bucket)) {
@@ -54,8 +84,8 @@ function collectWorkspaceDeps(manifest) {
   return deps;
 }
 
-export async function loadWorkspacePackages() {
-  const packages = [];
+export async function loadWorkspacePackages(): Promise<WorkspacePackages> {
+  const packages: WorkspacePackage[] = [];
 
   for (const root of PACKAGE_ROOTS) {
     const absRoot = path.join(WORKSPACE_ROOT, root);
@@ -72,9 +102,9 @@ export async function loadWorkspacePackages() {
         continue;
       }
 
-      let manifest;
+      let manifest: PackageManifest;
       try {
-        manifest = JSON.parse(raw);
+        manifest = JSON.parse(raw) as PackageManifest;
       } catch {
         throw new Error(`Invalid JSON in ${relDir}/package.json`);
       }
@@ -88,7 +118,7 @@ export async function loadWorkspacePackages() {
       packages.push({
         name: manifest.name,
         path: relDir,
-        version: String(manifest.version ?? "0.0.0"),
+        version: typeof manifest.version === "string" ? manifest.version : "0.0.0",
         private: Boolean(manifest.private),
         workspaceDeps,
       });
@@ -104,8 +134,8 @@ export async function loadWorkspacePackages() {
   };
 }
 
-export function buildReverseDependencyMap(packages) {
-  const reverse = new Map();
+export function buildReverseDependencyMap(packages: WorkspacePackage[]): Map<string, Set<string>> {
+  const reverse = new Map<string, Set<string>>();
 
   for (const pkg of packages) {
     if (!reverse.has(pkg.name)) {
@@ -118,19 +148,29 @@ export function buildReverseDependencyMap(packages) {
       if (!reverse.has(dep)) {
         reverse.set(dep, new Set());
       }
-      reverse.get(dep).add(pkg.name);
+      const dependents = reverse.get(dep);
+      if (dependents) {
+        dependents.add(pkg.name);
+      }
     }
   }
 
   return reverse;
 }
 
-export function computeReleaseSet(targetName, byName, reverseMap) {
-  const visited = new Set();
-  const queue = [targetName];
+export function computeReleaseSet(
+  targetName: string,
+  byName: Map<string, WorkspacePackage>,
+  reverseMap: Map<string, Set<string>>,
+): string[] {
+  const visited = new Set<string>();
+  const queue: string[] = [targetName];
 
   while (queue.length > 0) {
     const current = queue.shift();
+    if (!current) {
+      continue;
+    }
     if (visited.has(current)) {
       continue;
     }
@@ -161,7 +201,7 @@ export function computeReleaseSet(targetName, byName, reverseMap) {
   return [...visited].sort((a, b) => a.localeCompare(b));
 }
 
-export function parsePackageTag(tag) {
+export function parsePackageTag(tag: string): ParsedPackageTag | null {
   const match = /^(@pantoken\/[A-Za-z0-9._-]+)@v(.+)$/.exec(tag);
   if (!match) {
     return null;
@@ -173,6 +213,12 @@ export function parsePackageTag(tag) {
   };
 }
 
-export function isPublishablePackage(pkg) {
-  return pkg && !pkg.private && pkg.name.startsWith("@pantoken/");
+export function isPublishablePackage(pkg: WorkspacePackage | undefined | null): boolean {
+  if (!pkg) {
+    return false;
+  }
+
+  const candidate = pkg as WorkspacePackage;
+
+  return !candidate.private && candidate.name.startsWith("@pantoken/");
 }

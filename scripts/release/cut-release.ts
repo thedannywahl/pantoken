@@ -5,9 +5,10 @@ import {
   computeReleaseSet,
   isPublishablePackage,
   loadWorkspacePackages,
-} from "./workspace-packages.mjs";
+  type WorkspacePackage,
+} from "./workspace-packages.ts";
 
-function readArg(flag) {
+function readArg(flag: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
     return process.argv[index + 1];
@@ -15,7 +16,7 @@ function readArg(flag) {
   return undefined;
 }
 
-function readPositionalTarget() {
+function readPositionalTarget(): string | undefined {
   for (const arg of process.argv.slice(2)) {
     if (arg.startsWith("-")) {
       continue;
@@ -25,7 +26,7 @@ function readPositionalTarget() {
   return undefined;
 }
 
-function normalizeTarget(value) {
+function normalizeTarget(value: string | undefined): string | undefined {
   if (!value) {
     return value;
   }
@@ -35,7 +36,11 @@ function normalizeTarget(value) {
   return value;
 }
 
-function run(command, args, options = {}) {
+interface RunOptions {
+  capture?: boolean;
+}
+
+function run(command: string, args: string[], options: RunOptions = {}) {
   const result = spawnSync(command, args, {
     stdio: options.capture ? ["ignore", "pipe", "pipe"] : "inherit",
     encoding: "utf8",
@@ -88,12 +93,15 @@ async function main() {
   const reverse = buildReverseDependencyMap(initialWorkspace.packages);
   const releaseNames = computeReleaseSet(target, initialWorkspace.byName, reverse)
     .map((name) => initialWorkspace.byName.get(name))
-    .filter((pkg) => isPublishablePackage(pkg))
+    .filter((pkg): pkg is WorkspacePackage => isPublishablePackage(pkg))
     .map((pkg) => pkg.name)
     .sort((a, b) => a.localeCompare(b));
 
   const releasePackageJsonFiles = releaseNames.map((name) => {
     const pkg = initialWorkspace.byName.get(name);
+    if (!pkg) {
+      throw new Error(`Release set references unknown package: ${name}`);
+    }
     return `${pkg.path}/package.json`;
   });
 
@@ -154,7 +162,7 @@ async function main() {
   const tag = `${target}@v${targetVersion}`;
 
   run("node", [
-    "scripts/release/plan-package-release.mjs",
+    "scripts/release/plan-package-release.ts",
     "--target",
     target,
     "--version",
@@ -168,7 +176,7 @@ async function main() {
   ]);
 
   run("node", [
-    "scripts/release/build-root-changelog.mjs",
+    "scripts/release/build-root-changelog.ts",
     "--plan",
     ".release-plan.json",
     "--out",

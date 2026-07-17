@@ -63,7 +63,7 @@
     "access": "public"
   },
   "scripts": {
-    "aggregate": "node scripts/aggregate.mjs",
+    "aggregate": "node scripts/aggregate.ts",
     "build": "vp run aggregate && vp pack",
     "dev": "vp pack --watch",
     "test": "vp run aggregate && vp test",

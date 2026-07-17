@@ -1,8 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { isPublishablePackage, loadWorkspacePackages } from "./workspace-packages.mjs";
+import process from "node:process";
+import { isPublishablePackage, loadWorkspacePackages } from "./workspace-packages.ts";
 
-function hasVersionSection(content, version) {
+function hasVersionSection(content: string, version: string): boolean {
   const heading = new RegExp(
     `^##\\s+\\[?v?${version.replace(/[.*+?^${}()|[\\]\\]/g, "\\\\$&")}\\]?\\b`,
     "m",
@@ -10,7 +11,7 @@ function hasVersionSection(content, version) {
   return heading.test(content);
 }
 
-function buildInitialChangelog(packageName) {
+function buildInitialChangelog(packageName: string): string {
   return [
     "# CHANGELOG",
     "",
@@ -23,7 +24,7 @@ function buildInitialChangelog(packageName) {
   ].join("\n");
 }
 
-async function fileExists(filePath) {
+async function fileExists(filePath: string): Promise<boolean> {
   try {
     await fs.access(filePath);
     return true;

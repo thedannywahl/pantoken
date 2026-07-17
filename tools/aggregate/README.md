@@ -32,7 +32,7 @@ aggregate({ metaDir: "/path/to/packages/pantoken" });
 // writes src/index.ts (barrel), src/<key>.ts (subpaths), and rewrites package.json exports
 ```
 
-Run by the meta package's build via `packages/pantoken/scripts/aggregate.mjs`.
+Run by the meta package's build via `packages/pantoken/scripts/aggregate.ts`.
 
 ## API
 

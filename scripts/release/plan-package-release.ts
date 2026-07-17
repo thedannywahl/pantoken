@@ -6,10 +6,21 @@ import {
   computeReleaseSet,
   isPublishablePackage,
   loadWorkspacePackages,
+  type WorkspacePackage,
   parsePackageTag,
-} from "./workspace-packages.mjs";
+} from "./workspace-packages.ts";
 
-function readArg(flag, fallback) {
+interface ReleasePlanPayload {
+  generatedAt: string;
+  targetPackage: string;
+  targetVersion: string;
+  tag: string;
+  publishPackages: string[];
+  packagePaths: Record<string, string>;
+  manifestVersions: Record<string, string>;
+}
+
+function readArg(flag: string, fallback?: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
     return process.argv[index + 1];
@@ -17,7 +28,7 @@ function readArg(flag, fallback) {
   return fallback;
 }
 
-function getTagInput() {
+function getTagInput(): string | undefined {
   return readArg("--tag") ?? process.env.RELEASE_TAG ?? process.env.GITHUB_REF_NAME;
 }
 
@@ -57,12 +68,12 @@ async function main() {
   const reverse = buildReverseDependencyMap(packages);
   const releaseSet = computeReleaseSet(target, byName, reverse)
     .map((name) => byName.get(name))
-    .filter((pkg) => isPublishablePackage(pkg));
+    .filter((pkg): pkg is WorkspacePackage => isPublishablePackage(pkg));
 
   const releaseNames = releaseSet.map((pkg) => pkg.name);
   const manifestVersions = Object.fromEntries(releaseSet.map((pkg) => [pkg.name, pkg.version]));
 
-  const payload = {
+  const payload: ReleasePlanPayload = {
     generatedAt: new Date().toISOString(),
     targetPackage: target,
     targetVersion: version ?? targetPkg.version,

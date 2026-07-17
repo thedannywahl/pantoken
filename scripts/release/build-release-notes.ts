@@ -1,9 +1,17 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.mjs";
+import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.ts";
 
-function readArg(flag, fallback) {
+interface ReleasePlan {
+  tag?: string;
+  targetPackage?: string;
+  targetVersion?: string;
+  publishPackages: string[];
+  manifestVersions?: Record<string, string>;
+}
+
+function readArg(flag: string, fallback?: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
     return process.argv[index + 1];
@@ -11,11 +19,11 @@ function readArg(flag, fallback) {
   return fallback;
 }
 
-function escapeRegex(value) {
+function escapeRegex(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function extractVersionSection(changelog, version) {
+function extractVersionSection(changelog: string, version: string): string | null {
   const heading = new RegExp(`^##\\s+\\[?v?${escapeRegex(version)}\\]?\\b`, "m");
   const match = heading.exec(changelog);
   if (!match || typeof match.index !== "number") {
@@ -31,7 +39,7 @@ function extractVersionSection(changelog, version) {
   return changelog.slice(start, end).trim();
 }
 
-async function fileExists(filePath) {
+async function fileExists(filePath: string): Promise<boolean> {
   try {
     await fs.access(filePath);
     return true;
@@ -41,14 +49,14 @@ async function fileExists(filePath) {
 }
 
 async function main() {
-  const planFile = readArg("--plan", ".release-plan.json");
-  const outputFile = readArg("--out", "release-notes.md");
+  const planFile = readArg("--plan", ".release-plan.json") ?? ".release-plan.json";
+  const outputFile = readArg("--out", "release-notes.md") ?? "release-notes.md";
   const parsedTag = parsePackageTag(
     readArg("--tag") ?? process.env.RELEASE_TAG ?? process.env.GITHUB_REF_NAME ?? "",
   );
 
   const rawPlan = await fs.readFile(path.resolve(planFile), "utf8");
-  const plan = JSON.parse(rawPlan);
+  const plan = JSON.parse(rawPlan) as ReleasePlan;
   const { byName, rootDir } = await loadWorkspacePackages();
 
   const tag =
@@ -68,7 +76,7 @@ async function main() {
     "",
   ];
 
-  for (const packageName of plan.publishPackages) {
+  for (const packageName of plan.publishPackages ?? []) {
     const pkg = byName.get(packageName);
     const version = plan.manifestVersions?.[packageName] ?? pkg?.version ?? "unknown";
     lines.push(`### ${packageName}@${version}`);
