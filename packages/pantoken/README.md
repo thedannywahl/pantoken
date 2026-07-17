@@ -1,4 +1,4 @@
-# pantoken
+# @pantoken/pantoken
 
 The unified pantoken package. It auto-aggregates every `@pantoken/*` target — tokens, icons, and
 platform integrations — into one import surface, generated at build time by `@pantoken/aggregate`.
@@ -7,29 +7,29 @@ Each target is also installable on its own (`npm i @pantoken/astro`).
 ## Install
 
 ```sh
-npm i pantoken
+npm i @pantoken/pantoken
 ```
 
 ## Usage
 
 ```ts
-import { astro } from "pantoken";
+import { astro } from "@pantoken/pantoken";
 const { InstUI } = astro; // the full Astro/Starlight plugin
 
-import { tokens } from "pantoken"; // the resolved IR (namespace)
-import { icons } from "pantoken"; // the icon set
+import { tokens } from "@pantoken/pantoken"; // the resolved IR (namespace)
+import { icons } from "@pantoken/pantoken"; // the icon set
 
-import "pantoken/css"; // side-effect: inject the stylesheet
+import "@pantoken/pantoken/css"; // side-effect: inject the stylesheet
 ```
 
-`pantoken/astro` resolves to the same code as `@pantoken/astro`, and so on for every target.
+`@pantoken/pantoken/astro` resolves to the same code as `@pantoken/astro`, and so on for every target.
 
 ## API
 
 - **Named namespace exports** — each aggregated target is a namespace on the root import, e.g.
   `astro`, `bootstrap`, `css`, `tokens`, `icons`, `scss`, and the rest.
 - **Subpath exports** — the same targets are reachable as subpaths for direct or side-effect
-  imports (`pantoken/tokens`, `pantoken/icons`, `pantoken/css`, and so on). The `package.json`
+  imports (`@pantoken/pantoken/tokens`, `@pantoken/pantoken/icons`, `@pantoken/pantoken/css`, and so on). The `package.json`
   `exports` map lists 40-plus subpaths, one per target, each resolving to its standalone
   `@pantoken/*` package. See that map for the full, current set.
 

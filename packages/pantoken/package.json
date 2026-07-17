@@ -1,5 +1,5 @@
 {
-  "name": "pantoken",
+  "name": "@pantoken/pantoken",
   "version": "0.1.0",
   "description": "The unified pantoken package: Instructure design tokens, icons, and platform integrations, auto-aggregated from @pantoken/*.",
   "license": "MIT",
