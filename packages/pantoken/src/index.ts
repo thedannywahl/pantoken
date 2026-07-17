@@ -22,6 +22,7 @@ export * as shadcn from "@pantoken/shadcn";
 export * as simpleIcons from "@pantoken/plugin-simple-icons";
 export * as stacking from "@pantoken/plugin-stacking";
 export * as stylus from "@pantoken/stylus";
+export * as themeCustomMedia from "@pantoken/plugin-theme-custom-media";
 export * as tokens from "@pantoken/tokens";
 export * as transition from "@pantoken/plugin-transition";
 export * as visualDebug from "@pantoken/plugin-visual-debug";

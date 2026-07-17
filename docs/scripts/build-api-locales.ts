@@ -86,6 +86,20 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
   }
 };
 
+// Translated prose occasionally emits literal HTML tags (for example <dialog>), which Vue markdown
+// parsing treats as real elements and can fail on missing end tags. Escape bare tag tokens in prose
+// segments while leaving preserved HTML blocks/code fences untouched.
+const escapeBareHtmlTags = (text: string): string =>
+  text.replace(/<\/?([A-Za-z][\w-]*)>/g, (match) => {
+    if (match.startsWith("</")) {
+      const name = match.slice(2, -1);
+      return `&lt;/${name}&gt;`;
+    }
+
+    const name = match.slice(1, -1);
+    return `&lt;${name}&gt;`;
+  });
+
 const build = async (): Promise<void> => {
   const adapter = createTranslationAdapter();
   const memory = TranslationMemory.load("hu", "api");
@@ -136,10 +150,14 @@ const build = async (): Promise<void> => {
     .map((unit) => ({ kind: "prose", source: unit.text }));
   const proseTranslations = await translateUnits(adapter, memory, proseUnits, { autosave: true });
 
-  const resolve: Resolve = (text, kind) =>
-    kind === "glossary"
-      ? (glossaryText.get(text) ?? text)
-      : (proseTranslations.get(keyFor("prose", text)) ?? text);
+  const resolve: Resolve = (text, kind) => {
+    if (kind === "glossary") {
+      return glossaryText.get(text) ?? text;
+    }
+
+    const translated = proseTranslations.get(keyFor("prose", text)) ?? text;
+    return escapeBareHtmlTags(translated);
+  };
   for (const { filePath, segments } of segmented) {
     writeFileSync(filePath, reassemble(segments, resolve));
   }

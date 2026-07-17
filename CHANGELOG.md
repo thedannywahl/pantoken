@@ -6,7 +6,7 @@
 
 - Updated internal workspace dependency versions.
 
-# @pantoken/plugin-theme-custom-media
+## @pantoken/plugin-theme-custom-media
 
 ## @pantoken/validate-generated@0.1.0
 

@@ -1174,6 +1174,9 @@ importers:
       '@pantoken/plugin-stacking':
         specifier: workspace:*
         version: link:../../plugins/pantoken/stacking
+      '@pantoken/plugin-theme-custom-media':
+        specifier: workspace:*
+        version: link:../../plugins/postcss/theme-custom-media
       '@pantoken/plugin-transition':
         specifier: workspace:*
         version: link:../../plugins/pantoken/transition
