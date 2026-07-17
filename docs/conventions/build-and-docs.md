@@ -25,6 +25,12 @@
   `typecheck`/`test`/`lint`/`publint`/`attw`, plus a `repository` job and a `commitlint` job that lints
   the PR's commit range. Jobs share a persisted vp task cache (`node_modules/.vite/task-cache`), so the
   `build` job warms it and downstream jobs restore it and re-materialize generated dirs from cache.
+- **`publint`/`attw` are scoped to what the PR touches.** `scripts/release/changed-packages.ts` maps
+  the diff against the base branch to the affected publishable packages (each changed package plus its
+  workspace dependents, since a dependency change can break a dependent's pack/types), and the jobs run
+  `vp exec -F <those>` instead of packing all ~70. A change to a global file (root `package.json`,
+  lockfile, `vite.config.ts`, …) widens back to the full gate; a change touching no publishable package
+  skips them.
 - **Commit messages are conventional-commit-linted** locally by the `.vite-hooks/commit-msg` hook
   (`vp exec commitlint --edit`) and in CI by the `commitlint` job.
 - Release automation uses Changesets and package-tag workflows in

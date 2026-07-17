@@ -138,6 +138,8 @@ jobs:
         uses: actions/checkout@v7
         with:
           persist-credentials: false
+          # Full history so the changed-packages diff can reach the PR base / previous push.
+          fetch-depth: 0
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@v1
         with:
@@ -153,8 +155,30 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
-      - name: publint
-        run: vp run gate:publint
+      - name: Resolve changed packages
+        id: changed
+        env:
+          CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/release/changed-packages.ts
+      - name: publint (scoped to changed packages)
+        shell: bash
+        env:
+          SCOPE: ${{ steps.changed.outputs.scope }}
+          PACKAGES: ${{ steps.changed.outputs.packages }}
+        run: |
+          if [[ "${SCOPE}" == "none" ]]; then
+            echo "No publishable packages changed; skipping publint."
+            exit 0
+          fi
+          if [[ "${SCOPE}" == "all" ]]; then
+            vp run gate:publint
+            exit $?
+          fi
+          filters=()
+          IFS=',' read -ra pkgs <<< "${PACKAGES}"
+          for p in "${pkgs[@]}"; do [[ -n "${p}" ]] && filters+=("-F" "${p}"); done
+          echo "publint scoped to: ${pkgs[*]}"
+          vp exec "${filters[@]}" publint
 
   attw:
     needs: build
@@ -164,6 +188,8 @@ jobs:
         uses: actions/checkout@v7
         with:
           persist-credentials: false
+          # Full history so the changed-packages diff can reach the PR base / previous push.
+          fetch-depth: 0
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@v1
         with:
@@ -179,8 +205,30 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
-      - name: Are the types wrong?
-        run: vp run gate:attw
+      - name: Resolve changed packages
+        id: changed
+        env:
+          CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/release/changed-packages.ts
+      - name: Are the types wrong? (scoped to changed packages)
+        shell: bash
+        env:
+          SCOPE: ${{ steps.changed.outputs.scope }}
+          PACKAGES: ${{ steps.changed.outputs.packages }}
+        run: |
+          if [[ "${SCOPE}" == "none" ]]; then
+            echo "No publishable packages changed; skipping attw."
+            exit 0
+          fi
+          if [[ "${SCOPE}" == "all" ]]; then
+            vp run gate:attw
+            exit $?
+          fi
+          filters=()
+          IFS=',' read -ra pkgs <<< "${PACKAGES}"
+          for p in "${pkgs[@]}"; do [[ -n "${p}" ]] && filters+=("-F" "${p}"); done
+          echo "attw scoped to: ${pkgs[*]}"
+          vp exec "${filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
 
   repository:
     # Pure manifest read — no build needed. Catches a missing repository.url (which breaks npm OIDC
