@@ -1,6 +1,9 @@
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
+  test: {
+    exclude: ["**/.worktrees/**", "**/.claude/worktrees/**"],
+  },
   staged: {
     "*": "vp check --fix",
     // stylelint owns real .css (web-component shadow styles); vp check no-ops on them.
@@ -38,24 +41,24 @@ export default defineConfig({
         command: "vpx changeset status --verbose",
       },
       release: {
-        command: "node scripts/release/cut-release.mjs",
+        command: "node scripts/release/cut-release.ts",
       },
       "release:version": {
         command: "vpx changeset version",
       },
       "release:plan:package": {
         command:
-          "node scripts/release/plan-package-release.mjs --json .release-plan.json --publish-list .release-packages.txt --markdown .release-plan.md",
+          "node scripts/release/plan-package-release.ts --json .release-plan.json --publish-list .release-packages.txt --markdown .release-plan.md",
       },
       "release:notes:package": {
         command:
-          "node scripts/release/build-release-notes.mjs --plan .release-plan.json --out release-notes.md",
+          "node scripts/release/build-release-notes.ts --plan .release-plan.json --out release-notes.md",
       },
       "release:changelog:root": {
-        command: "node scripts/release/build-root-changelog.mjs --out CHANGELOG.md",
+        command: "node scripts/release/build-root-changelog.ts --out CHANGELOG.md",
       },
       "release:changelog:root:seed": {
-        command: "node scripts/release/build-root-changelog.mjs --seed-initial --out CHANGELOG.md",
+        command: "node scripts/release/build-root-changelog.ts --seed-initial --out CHANGELOG.md",
       },
       "release:publish": {
         command: "vpx changeset publish",
