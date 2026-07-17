@@ -1072,6 +1072,9 @@ importers:
 
   packages/pantoken:
     dependencies:
+      '@pantoken/android':
+        specifier: workspace:*
+        version: link:../../platforms/android
       '@pantoken/angular':
         specifier: workspace:*
         version: link:../../renderers/angular
@@ -1081,9 +1084,15 @@ importers:
       '@pantoken/bootstrap':
         specifier: workspace:*
         version: link:../../renderers/bootstrap
+      '@pantoken/cli':
+        specifier: workspace:*
+        version: link:../cli
       '@pantoken/components':
         specifier: workspace:*
         version: link:../../formats/components
+      '@pantoken/compose':
+        specifier: workspace:*
+        version: link:../../platforms/compose
       '@pantoken/css':
         specifier: workspace:*
         version: link:../../formats/css
@@ -1105,6 +1114,9 @@ importers:
       '@pantoken/figma':
         specifier: workspace:*
         version: link:../../design/figma
+      '@pantoken/flutter':
+        specifier: workspace:*
+        version: link:../../platforms/flutter
       '@pantoken/foundation':
         specifier: workspace:*
         version: link:../../renderers/foundation
@@ -1189,6 +1201,9 @@ importers:
       '@pantoken/swatches':
         specifier: workspace:*
         version: link:../../design/swatches
+      '@pantoken/swift':
+        specifier: workspace:*
+        version: link:../../platforms/swift
       '@pantoken/tailwind':
         specifier: workspace:*
         version: link:../../bundlers/tailwind

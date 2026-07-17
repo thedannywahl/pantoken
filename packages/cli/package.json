@@ -48,5 +48,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "pantoken": {
+    "key": "cli",
+    "kind": "subpath"
   }
 }
