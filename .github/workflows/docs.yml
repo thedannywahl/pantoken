@@ -6,6 +6,18 @@ name: Deploy docs
 on:
   push:
     branches: [main]
+    # Only redeploy when the site can actually change. Broad on purpose: the site is themed by generated
+    # token/CSS output from many packages, so a token or component change must trigger a rebuild.
+    paths:
+      - "docs/**"
+      - "packages/**"
+      - "formats/**"
+      - "platforms/**"
+      - "renderers/web-components/**"
+      - "plugins/**"
+      - "design/**"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
   workflow_dispatch:
 
 permissions:
@@ -33,13 +45,23 @@ jobs:
           cache: true
           run-install: true
 
+      - name: Restore/save vp task cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.vite/task-cache
+          key: vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-docs-${{ github.sha }}
+          restore-keys: |
+            vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            vp-taskcache-${{ runner.os }}-
+
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
       - name: Generate token output
-        # Regenerates every package's generated/ dir — the token JSON TypeDoc reads and the
-        # CSS the site is themed with. Uses `vp` (from setup-vp), so the job needs no pnpm on PATH.
-        run: vp run -r build
+        # Builds only @pantoken/docs's dependency closure (the `...` suffix), not the whole workspace —
+        # this regenerates the token JSON TypeDoc reads and the CSS the site is themed with. Uses `vp`
+        # (from setup-vp), so the job needs no pnpm on PATH.
+        run: vp run -F "@pantoken/docs..." build
 
       - name: Build docs
         run: vp run @pantoken/docs#docs:build

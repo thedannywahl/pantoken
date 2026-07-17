@@ -4,17 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "ready": "vp run -r build && vp check && vp run -r test && vp run lint:css && vp run lint:js && vp run validate:generated:only && vp run lint:markdown",
+    "ready": "vp run ready:all",
     "generate": "vp run -r build",
     "validate:generated": "vp run generate && vp run validate:generated:only",
-    "validate:generated:only": "vp run @pantoken/validate-generated#validate",
     "docs:dev": "vp run @pantoken/demo#build && vp run @pantoken/docs#docs:dev",
     "docs:build": "vp run @pantoken/docs#docs:build",
     "docs:preview": "vp run @pantoken/docs#docs:preview",
     "docs:api": "vp run @pantoken/docs#docs:api",
-    "lint:markdown": "vp exec markdownlint-cli2 \"**/*.md\"",
     "check:repository": "vp run gate:repository",
-    "check:publish": "vp run gate:repository && vp run gate:publint",
+    "check:publish": "vp run gate:publish",
     "check:attw": "vp run gate:attw"
   },
   "devDependencies": {

@@ -93,7 +93,10 @@ Owner of the VitePress docs site, i18n, the cssdoc integration, and the release 
   builds the `resolveToken`/`resolveDemo` hooks and calls `emitCssApi`.
 - The `vp`-only pipeline and the nested-`vp`-spawn limitation (the docs orchestrator uses direct
   `node` builds).
-- The gate: `pnpm run ready` + `pnpm run check:publish`.
+- The gate: `pnpm run ready` (parallel `vp` task DAG) plus `pnpm run check:publish` (which runs
+  `gate:repository`, `gate:publint`, and `gate:attw`). The same checks run on every PR via
+  `.github/workflows/ci.yml`, and commit messages are conventional-commit-linted by the
+  `.vite-hooks/commit-msg` hook and a CI job.
 
 ### Instructions
 
