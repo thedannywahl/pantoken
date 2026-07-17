@@ -66,6 +66,7 @@ async function readTagRefs() {
 
 async function main() {
   const outputFile = readArg("--out", "CHANGELOG.md");
+  const planFile = readArg("--plan");
   const includeInitialSeed = hasFlag("--seed-initial");
   const { byName, rootDir, packages } = await loadWorkspacePackages();
   const refs = await readTagRefs();
@@ -111,6 +112,38 @@ async function main() {
         packageName: pkg.name,
         version: "0.1.0",
         createdAt: seedTimestamp,
+      });
+      existing.add(key);
+    }
+  }
+
+  if (planFile) {
+    const rawPlan = await fs.readFile(path.resolve(planFile), "utf8");
+    const plan = JSON.parse(rawPlan);
+    const existing = new Set(entries.map((entry) => `${entry.packageName}@${entry.version}`));
+    const planTimestamp = new Date().toISOString();
+
+    for (const packageName of plan.publishPackages ?? []) {
+      const version = plan.manifestVersions?.[packageName];
+      if (typeof version !== "string" || version.length === 0) {
+        continue;
+      }
+
+      const key = `${packageName}@${version}`;
+      if (existing.has(key)) {
+        continue;
+      }
+
+      if (!byName.has(packageName)) {
+        continue;
+      }
+
+      entries.push({
+        kind: "plan",
+        tag: `${packageName}@v${version}`,
+        packageName,
+        version,
+        createdAt: planTimestamp,
       });
       existing.add(key);
     }

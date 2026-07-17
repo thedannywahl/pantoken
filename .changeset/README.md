@@ -5,6 +5,7 @@ pantoken now uses Changesets for release metadata, version bumps, and changelog 
 ## Command map (vp task -> underlying command)
 
 - `vp run changeset:add` -> `vpx changeset`
+- `vpr release @pantoken/<pkg>` -> full local release cut (gates, interactive `bumpp`, commit, tag, push)
 - `vp run release:status` -> `vpx changeset status --verbose`
 - `vp run release:version` -> `vpx changeset version`
 - `vp run release:plan:package` -> build publish set from a package tag into `.release-plan.*`
@@ -26,6 +27,24 @@ pantoken now uses Changesets for release metadata, version bumps, and changelog 
 Use `vp run release:status` to inspect pending release state.
 
 ## Release workflow
+
+### One-command local cut
+
+Run `vpr release @pantoken/<pkg>` when you are ready to cut a package release end-to-end.
+
+The task does the following in order:
+
+1. Verifies git worktree is clean.
+2. Resolves dependency-aware release set for the target package.
+3. Runs build/test/check and publish gates (`publint`, `attw`) filtered to the release set packages.
+4. Runs interactive `bumpp` across the release set package manifests.
+5. Regenerates release plan artifacts and root changelog, with pending changelog entries scoped to
+   the release plan packages only.
+6. Commits, tags (`@pantoken/pkg@vX.Y.Z`), and pushes commit + tag.
+
+The pushed package tag triggers `.github/workflows/release.yml`.
+
+### Manual/step-by-step
 
 1. Ensure the main branch is green and release-ready (`vp run ready`, `vp run gate:publint`, `vp run gate:attw`).
 2. Run `vp run release:version` to apply version/changelog updates.

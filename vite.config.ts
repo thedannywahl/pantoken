@@ -37,6 +37,9 @@ export default defineConfig({
       "release:status": {
         command: "vpx changeset status --verbose",
       },
+      release: {
+        command: "node scripts/release/cut-release.mjs",
+      },
       "release:version": {
         command: "vpx changeset version",
       },
