@@ -7,11 +7,29 @@ import { aggregate, discoverTargets } from "../src/index.ts";
 function fixtureMeta(deps: Record<string, string>): string {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-meta-"));
   mkdirSync(join(dir, "src"));
+  mkdirSync(join(dir, "node_modules"));
   writeFileSync(
     join(dir, "package.json"),
     JSON.stringify({ name: "pantoken", dependencies: deps }),
   );
   return dir;
+}
+
+function addDependency(
+  metaDir: string,
+  pkg: string,
+  pantoken: { key: string; kind?: "namespace" | "sideEffect" | "subpath" },
+) {
+  const depDir = join(metaDir, "node_modules", pkg);
+  mkdirSync(depDir, { recursive: true });
+  writeFileSync(
+    join(depDir, "package.json"),
+    JSON.stringify({
+      name: pkg,
+      version: "0.1.0",
+      pantoken,
+    }),
+  );
 }
 
 test("discoverTargets returns nothing when there are no deps", () => {
@@ -27,4 +45,31 @@ test("aggregate writes a barrel and resets the exports map", () => {
   const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
   expect(pkg.exports["."]).toBe("./dist/index.mjs");
   expect(pkg.exports["./package.json"]).toBe("./package.json");
+});
+
+test("aggregate excludes subpath-only targets from barrel and keeps subpath exports", () => {
+  const dir = fixtureMeta({
+    "@pantoken/react": "workspace:*",
+    "@pantoken/vue": "workspace:*",
+  });
+
+  addDependency(dir, "@pantoken/react", { key: "react", kind: "subpath" });
+  addDependency(dir, "@pantoken/vue", { key: "vue", kind: "namespace" });
+
+  const targets = aggregate({ metaDir: dir });
+  expect(targets.map((target) => `${target.key}:${target.kind}`)).toEqual([
+    "react:subpath",
+    "vue:namespace",
+  ]);
+
+  const index = readFileSync(join(dir, "src", "index.ts"), "utf8");
+  expect(index).toContain('export * as vue from "@pantoken/vue";');
+  expect(index).not.toContain('export * as react from "@pantoken/react";');
+
+  const reactEntry = readFileSync(join(dir, "src", "react.ts"), "utf8");
+  expect(reactEntry).toContain('export * from "@pantoken/react";');
+
+  const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
+  expect(pkg.exports["./react"]).toBe("./dist/react.mjs");
+  expect(pkg.exports["./vue"]).toBe("./dist/vue.mjs");
 });

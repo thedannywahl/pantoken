@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { pathToFileURL } from "node:url";
 import { loadWorkspacePackages, parsePackageTag } from "./workspace-packages.ts";
 
 interface ReleasePlan {
@@ -17,6 +18,15 @@ function readArg(flag: string, fallback?: string): string | undefined {
     return process.argv[index + 1];
   }
   return fallback;
+}
+
+function isDirectExecution(metaUrl: string): boolean {
+  const entry = process.argv[1];
+  if (!entry) {
+    return false;
+  }
+
+  return pathToFileURL(path.resolve(entry)).href === metaUrl;
 }
 
 function escapeRegex(value: string): string {
@@ -111,7 +121,11 @@ async function main() {
   process.stdout.write(`Wrote ${outputFile}\n`);
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
-});
+if (isDirectExecution(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  });
+}
+
+export { extractVersionSection };

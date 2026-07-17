@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { pathToFileURL } from "node:url";
 import { isPublishablePackage, loadWorkspacePackages } from "./workspace-packages.ts";
 
 function hasVersionSection(content: string, version: string): boolean {
@@ -22,6 +23,15 @@ function buildInitialChangelog(packageName: string): string {
     `- Initial release of ${packageName}.`,
     "",
   ].join("\n");
+}
+
+function isDirectExecution(metaUrl: string): boolean {
+  const entry = process.argv[1];
+  if (!entry) {
+    return false;
+  }
+
+  return pathToFileURL(path.resolve(entry)).href === metaUrl;
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
@@ -84,7 +94,11 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
-});
+if (isDirectExecution(import.meta.url)) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  });
+}
+
+export { buildInitialChangelog, hasVersionSection };
