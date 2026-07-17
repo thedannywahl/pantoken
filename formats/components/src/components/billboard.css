@@ -87,12 +87,25 @@
   border-color: var(--instui-color-text-base);
 }
 
+@media (--theme-canvas), (--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:hover {
+    border-color: var(--instui-component-link-text-color);
+  }
+}
+
 .pfx-billboard.-clickable:focus {
   border-style: solid;
   border-color: var(--instui-color-text-base);
   outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
     var(--instui-focus-outline-color);
   outline-offset: var(--instui-focus-outline-offset);
+}
+
+@media (--theme-canvas), (--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:focus {
+    border-style: dashed;
+    border-color: var(--instui-component-link-text-color);
+  }
 }
 
 .pfx-billboard.-clickable:focus-visible {
@@ -109,7 +122,8 @@
 
 @media (--theme-canvas), (--theme-canvas-high-contrast) {
   .pfx-billboard.-clickable:active {
-    background: var(--instui-component-link-text-color);
+    border-style: dashed;
+    background: var(--instui-focus-outline-color);
     border-color: var(--instui-component-link-text-color);
   }
 }

@@ -77,18 +77,18 @@ test("billboard clickable states scope icon, focus ring, and active inversion co
   expect(selectors).not.toContain(":scope.-clickable>.heading,");
 });
 
-test("billboard canvas themes override clickable active to solid link color", () => {
+test("billboard canvas themes override clickable active to focus outline color", () => {
   const rebrand = norm(billboardCss({ prefix: "instui", theme: "rebrand" }));
   const canvas = norm(billboardCss({ prefix: "instui", theme: "canvas" }));
   const canvasHighContrast = norm(billboardCss({ prefix: "instui", theme: "canvasHighContrast" }));
 
   expect(rebrand).not.toContain(
-    ".instui-billboard.-clickable:active { background: var(--instui-component-link-text-color);",
+    ".instui-billboard.-clickable:active { background: var(--instui-focus-outline-color);",
   );
   expect(canvas).toContain(
-    ".instui-billboard.-clickable:active { background: var(--instui-component-link-text-color);",
+    ".instui-billboard.-clickable:active { background: var(--instui-focus-outline-color);",
   );
   expect(canvasHighContrast).toContain(
-    ".instui-billboard.-clickable:active { background: var(--instui-component-link-text-color);",
+    ".instui-billboard.-clickable:active { background: var(--instui-focus-outline-color);",
   );
 });
