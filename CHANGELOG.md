@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## @pantoken/validate-generated@0.1.0
+
+### Added
+
+- Initial release of @pantoken/validate-generated.
+
+## @pantoken/sd-config@0.1.0
+
+### Added
+
+- Initial release of @pantoken/sd-config.
+
+## @pantoken/aggregate@0.1.0
+
+### Added
+
+- Initial release of @pantoken/aggregate.
+
 ## @pantoken/android@0.1.1
 
 ### Changed
@@ -24,20 +42,8 @@
 
 - Updated internal workspace dependency versions.
 
-## @pantoken/sd-config@0.1.0
-
-### Added
-
-- Initial release of @pantoken/sd-config.
-
 ## @pantoken/swift@0.1.1
 
 ### Changed
 
 - Updated internal workspace dependency versions.
-
-## @pantoken/aggregate@0.1.0
-
-### Added
-
-- Initial release of @pantoken/aggregate.
