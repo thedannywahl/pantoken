@@ -7,6 +7,8 @@ many small, publishable packages: plain stylesheets, SCSS and Less, React and Vu
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more. You install the
 smallest package that fits your task, or the unified `pantoken` package that re-exports them all.
 
+[Learn more](https://thedannywahl.github.io/pantoken)
+
 ## Quick start
 
 Style a web app with the token stylesheet:
