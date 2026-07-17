@@ -41,6 +41,12 @@ jobs:
           cache: true
           run-install: true
 
+      - name: Set up pnpm for publish
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.13.0 --activate
+          pnpm --version
+
       - name: Verify release gates
         run: |
           vp run ready
