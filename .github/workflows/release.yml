@@ -78,7 +78,7 @@ jobs:
 
       - name: Resolve npm dist-tag and prerelease state
         id: dist_tag
-        if: steps.plan.outputs.target_private != 'true' && steps.plan.outputs.publish_count != '0'
+        if: steps.plan.outputs.publish_count != '0'
         shell: bash
         env:
           INPUT_DIST_TAG: ${{ inputs.dist_tag }}
@@ -111,7 +111,7 @@ jobs:
           echo "Publishing with npm dist-tag: ${tag}"
 
       - name: Publish release set
-        if: steps.plan.outputs.target_private != 'true' && steps.plan.outputs.publish_count != '0'
+        if: steps.plan.outputs.publish_count != '0'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
@@ -133,7 +133,7 @@ jobs:
             --out release-notes.md
 
       - name: Create GitHub release
-        if: github.event_name == 'push' && steps.plan.outputs.target_private != 'true'
+        if: github.event_name == 'push' && steps.plan.outputs.publish_count != '0'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.RELEASE_TAG }}
