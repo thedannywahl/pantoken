@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 import {
   buildReverseDependencyMap,
   computeReleaseSet,
+  isPublishablePackage,
   loadWorkspacePackages,
   normalizePantokenPackageName,
   parseRequestedPackageSpec,
@@ -29,6 +30,10 @@ interface ResolvedRequest {
 
 interface DistTagMap {
   [tag: string]: string;
+}
+
+interface PackageManifestScripts {
+  scripts?: Record<string, unknown>;
 }
 
 const SEMVER_RE = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$/;
@@ -322,6 +327,42 @@ async function writePackageChangelog(
   await fs.writeFile(changelogPath, next);
 }
 
+function packageHasScript(pkgPath: string, scriptName: string): boolean {
+  try {
+    const raw = spawnSync("cat", [path.join(pkgPath, "package.json")], {
+      encoding: "utf8",
+      shell: false,
+      stdio: ["ignore", "pipe", "ignore"],
+    }).stdout;
+    const manifest = readJsonObject<PackageManifestScripts>(raw);
+    return typeof manifest.scripts?.[scriptName] === "string";
+  } catch {
+    return false;
+  }
+}
+
+function runFilteredTask(
+  taskName: string,
+  extraArgs: string[],
+  releaseNames: string[],
+  byName: Map<string, WorkspacePackage>,
+) {
+  const supported = releaseNames.filter((name) => {
+    const pkg = byName.get(name);
+    if (!pkg) {
+      return false;
+    }
+    return packageHasScript(pkg.path, taskName);
+  });
+
+  if (supported.length === 0) {
+    process.stdout.write(`Skipping task ${taskName}: no release packages define it.\n`);
+    return;
+  }
+
+  run("vp", ["run", ...supported.flatMap((name) => ["-F", name]), taskName, ...extraArgs]);
+}
+
 interface RunOptions {
   capture?: boolean;
   allowFailure?: boolean;
@@ -405,6 +446,10 @@ async function main() {
   });
 
   const releaseFilters = releaseNames.flatMap((name) => ["-F", name]);
+  const publishableReleaseNames = releaseNames.filter((name) =>
+    isPublishablePackage(initialWorkspace.byName.get(name)),
+  );
+  const publishableReleaseFilters = publishableReleaseNames.flatMap((name) => ["-F", name]);
 
   process.stdout.write(`Requested packages: ${requestedNames.join(", ")}\n`);
   process.stdout.write(`Release set (${releaseNames.length}):\n`);
@@ -413,9 +458,9 @@ async function main() {
   }
 
   // Scope release gates to the computed release set only.
-  run("vp", ["run", ...releaseFilters, "build"]);
-  run("vp", ["run", ...releaseFilters, "check", "--fix"]);
-  run("vp", ["run", ...releaseFilters, "test"]);
+  runFilteredTask("build", [], releaseNames, initialWorkspace.byName);
+  runFilteredTask("check", ["--fix"], releaseNames, initialWorkspace.byName);
+  runFilteredTask("test", [], releaseNames, initialWorkspace.byName);
 
   if (
     releaseNames.includes("@pantoken/components") ||
@@ -425,19 +470,23 @@ async function main() {
     run("vp", ["run", "lint:js"]);
   }
 
-  run("vp", ["exec", ...releaseFilters, "publint"]);
-  run("vp", [
-    "exec",
-    ...releaseFilters,
-    "attw",
-    "--pack",
-    "--profile",
-    "strict",
-    "--no-emoji",
-    "--ignore-rules",
-    "no-resolution",
-    "cjs-resolves-to-esm",
-  ]);
+  if (publishableReleaseNames.length > 0) {
+    run("vp", ["exec", ...publishableReleaseFilters, "publint"]);
+    run("vp", [
+      "exec",
+      ...publishableReleaseFilters,
+      "attw",
+      "--pack",
+      "--profile",
+      "strict",
+      "--no-emoji",
+      "--ignore-rules",
+      "no-resolution",
+      "cjs-resolves-to-esm",
+    ]);
+  } else {
+    process.stdout.write("Skipping publint/attw: release set has no publishable packages.\n");
+  }
 
   // Use deterministic versions per package by invoking bumpp per manifest.
   for (const name of releaseNames) {

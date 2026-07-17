@@ -22,6 +22,12 @@ interface RootChangelogEntry {
   createdAt: string;
 }
 
+interface ExistingRootSection {
+  packageName: string;
+  version: string;
+  content: string;
+}
+
 function readArg(flag: string, fallback?: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
@@ -68,6 +74,33 @@ function stripTopVersionHeading(section: string, version: string): string {
   return section.replace(heading, "").trim();
 }
 
+function parseExistingRootSections(changelog: string): ExistingRootSection[] {
+  const sections: ExistingRootSection[] = [];
+  const headingPattern = /^##\s+(@pantoken\/[A-Za-z0-9._-]+)@([^\s]+)\s*$/gm;
+
+  let match = headingPattern.exec(changelog);
+  while (match) {
+    const start = match.index;
+    const next = headingPattern.exec(changelog);
+    const end = next ? next.index : changelog.length;
+
+    sections.push({
+      packageName: match[1],
+      version: match[2],
+      content: changelog.slice(start, end).trim(),
+    });
+
+    if (!next) {
+      break;
+    }
+
+    // Continue scanning from the next match that was already found.
+    match = next;
+  }
+
+  return sections;
+}
+
 async function readTagRefs(): Promise<Array<{ tag: string; createdAt: string }>> {
   const { stdout } = await execFileAsync("git", [
     "for-each-ref",
@@ -94,6 +127,14 @@ async function main() {
   const includeInitialSeed = hasFlag("--seed-initial");
   const { byName, rootDir, packages } = await loadWorkspacePackages();
   const refs = await readTagRefs();
+
+  let existingRootSections: ExistingRootSection[] = [];
+  try {
+    const existingRoot = await fs.readFile(path.resolve(outputFile), "utf8");
+    existingRootSections = parseExistingRootSections(existingRoot);
+  } catch {
+    existingRootSections = [];
+  }
 
   const entries: RootChangelogEntry[] = refs
     .map((ref) => {
@@ -183,6 +224,7 @@ async function main() {
   });
 
   const lines = ["# CHANGELOG", ""];
+  const emitted = new Set<string>();
 
   for (const entry of entries) {
     const pkg = byName.get(entry.packageName);
@@ -192,6 +234,7 @@ async function main() {
 
     lines.push(`## ${entry.packageName}@${entry.version}`);
     lines.push("");
+    emitted.add(`${entry.packageName}@${entry.version}`);
 
     const absChangelogPath = path.join(rootDir, pkg.path, "CHANGELOG.md");
 
@@ -212,6 +255,16 @@ async function main() {
     lines.push("### Added");
     lines.push("");
     lines.push(`- Initial release of ${entry.packageName}.`);
+    lines.push("");
+  }
+
+  for (const section of existingRootSections) {
+    const key = `${section.packageName}@${section.version}`;
+    if (emitted.has(key)) {
+      continue;
+    }
+
+    lines.push(section.content);
     lines.push("");
   }
 
