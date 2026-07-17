@@ -153,14 +153,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
-      - name: Materialize generated output
-        run: vp run -r build
       - name: Resolve changed packages
         id: changed
         env:
           CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: node scripts/release/changed-packages.ts
-      - name: publint (scoped to changed packages)
+      - name: Build and publint (scoped to changed packages)
         shell: bash
         env:
           SCOPE: ${{ steps.changed.outputs.scope }}
@@ -171,14 +169,21 @@ jobs:
             exit 0
           fi
           if [[ "${SCOPE}" == "all" ]]; then
+            vp run -r build
             vp run gate:publint
             exit $?
           fi
-          filters=()
+          # publint only inspects the scoped packages, so build just their dependency closure ("...").
+          build_filters=(); check_filters=()
           IFS=',' read -ra pkgs <<< "${PACKAGES}"
-          for p in "${pkgs[@]}"; do [[ -n "${p}" ]] && filters+=("-F" "${p}"); done
+          for p in "${pkgs[@]}"; do
+            [[ -n "${p}" ]] || continue
+            build_filters+=("-F" "${p}...")
+            check_filters+=("-F" "${p}")
+          done
           echo "publint scoped to: ${pkgs[*]}"
-          vp exec "${filters[@]}" publint
+          vp run "${build_filters[@]}" build
+          vp exec "${check_filters[@]}" publint
 
   attw:
     needs: build
@@ -203,14 +208,12 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
-      - name: Materialize generated output
-        run: vp run -r build
       - name: Resolve changed packages
         id: changed
         env:
           CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: node scripts/release/changed-packages.ts
-      - name: Are the types wrong? (scoped to changed packages)
+      - name: Build and attw (scoped to changed packages)
         shell: bash
         env:
           SCOPE: ${{ steps.changed.outputs.scope }}
@@ -221,14 +224,21 @@ jobs:
             exit 0
           fi
           if [[ "${SCOPE}" == "all" ]]; then
+            vp run -r build
             vp run gate:attw
             exit $?
           fi
-          filters=()
+          # attw only packs the scoped packages, so build just their dependency closure ("...").
+          build_filters=(); check_filters=()
           IFS=',' read -ra pkgs <<< "${PACKAGES}"
-          for p in "${pkgs[@]}"; do [[ -n "${p}" ]] && filters+=("-F" "${p}"); done
+          for p in "${pkgs[@]}"; do
+            [[ -n "${p}" ]] || continue
+            build_filters+=("-F" "${p}...")
+            check_filters+=("-F" "${p}")
+          done
           echo "attw scoped to: ${pkgs[*]}"
-          vp exec "${filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+          vp run "${build_filters[@]}" build
+          vp exec "${check_filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
 
   repository:
     # Pure manifest read — no build needed. Catches a missing repository.url (which breaks npm OIDC
