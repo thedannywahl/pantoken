@@ -84,6 +84,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
           NPM_CONFIG_FORCE: "true"
+          NPM_CONFIG_IGNORE_SCRIPTS: "true"
+          PNPM_CONFIG_IGNORE_SCRIPTS: "true"
         run: vpx changeset publish --tag "${{ steps.dist_tag.outputs.dist_tag }}"
 
       - name: Create GitHub release
