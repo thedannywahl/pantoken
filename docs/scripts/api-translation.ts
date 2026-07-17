@@ -4,7 +4,7 @@
  * The default adapter is deterministic and keyless (safe for CI), while the adapter contract keeps
  * room for higher-quality engines later.
  */
-import { spawnSync } from "node:child_process";
+import { spawn } from "node:child_process";
 
 export interface TranslationAdapter {
   readonly name: string;
@@ -14,19 +14,20 @@ export interface TranslationAdapter {
    * translation (see the poison-cache guard in {@link ./translation-memory.ts}). Defaults to `true`.
    */
   readonly translatesProse?: boolean;
-  translateMarkdown(input: string, filePath: string): string;
-  translateText(input: string): string;
+  translateMarkdown(input: string, filePath: string): Promise<string>;
+  translateText(input: string): Promise<string>;
   /**
    * Translate many short strings in one request. Returns a map keyed by each item's `id`. Optional:
    * callers fall back to per-item {@link TranslationAdapter.translateText} when it's absent.
    *
-   * `onChunk` (if given) is called with each internal chunk's partial results as they complete, so a
-   * caller can persist and report progress mid-run rather than only after the whole batch returns.
+   * `onChunk` (if given) is called with each chunk's partial results as it completes, so a caller can
+   * persist and report progress mid-run rather than only after the whole batch returns. Chunks may
+   * run concurrently, so `onChunk` can fire out of order.
    */
   translateBatch?(
     items: readonly { id: string; text: string }[],
     onChunk?: (partial: Record<string, string>) => void,
-  ): Record<string, string>;
+  ): Promise<Record<string, string>>;
 }
 
 const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
@@ -132,11 +133,16 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
   // its output under a prose key.
   readonly translatesProse = false;
 
-  translateMarkdown(input: string): string {
-    return translateWithoutFencedCode(input, (text) => this.translateText(text));
+  translateMarkdown(input: string): Promise<string> {
+    return Promise.resolve(translateWithoutFencedCode(input, (text) => this.translateSync(text)));
   }
 
-  translateText(input: string): string {
+  translateText(input: string): Promise<string> {
+    return Promise.resolve(this.translateSync(input));
+  }
+
+  /** The deterministic core — synchronous; the async methods just wrap it to satisfy the contract. */
+  private translateSync(input: string): string {
     const preserved = preservePackageNames(input);
     let out = preserved.text;
     for (const [pattern, value] of SORTED_REPLACEMENTS) {
@@ -148,10 +154,10 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
   translateBatch(
     items: readonly { id: string; text: string }[],
     onChunk?: (partial: Record<string, string>) => void,
-  ): Record<string, string> {
-    const out = Object.fromEntries(items.map((item) => [item.id, this.translateText(item.text)]));
+  ): Promise<Record<string, string>> {
+    const out = Object.fromEntries(items.map((item) => [item.id, this.translateSync(item.text)]));
     onChunk?.(out);
-    return out;
+    return Promise.resolve(out);
   }
 }
 
@@ -261,6 +267,24 @@ const translateWithoutFencedCode = (input: string, translate: (line: string) => 
   return out.join("\n");
 };
 
+/** Run `tasks` with at most `limit` in flight at once, preserving result order. */
+const mapPool = async <T, R>(
+  tasks: readonly T[],
+  limit: number,
+  fn: (task: T, index: number) => Promise<R>,
+): Promise<R[]> => {
+  const results: R[] = Array.from({ length: tasks.length });
+  let next = 0;
+  const worker = async (): Promise<void> => {
+    while (next < tasks.length) {
+      const index = next++;
+      results[index] = await fn(tasks[index], index);
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, tasks.length) }, worker));
+  return results;
+};
+
 export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
   readonly name = "claude-code";
 
@@ -275,7 +299,7 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
       .filter((part) => part.length > 0);
   }
 
-  translateMarkdown(input: string, filePath: string): string {
+  async translateMarkdown(input: string, filePath: string): Promise<string> {
     const preservedMarkdown = preserveMarkdownSensitiveBlocks(input);
     const preservedPackages = preservePackageNames(preservedMarkdown.text);
     const prompt = [
@@ -293,7 +317,7 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
       "--- END MARKDOWN ---",
     ].join("\n");
 
-    const translated = this.runClaude(prompt, `markdown file ${filePath}`);
+    const translated = await this.runClaude(prompt, `markdown file ${filePath}`);
     const restoredPackages = restorePackageNames(translated, preservedPackages.packageNames);
     return restoreMarkdownSensitiveBlocks(
       restoredPackages,
@@ -302,7 +326,7 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
     );
   }
 
-  translateText(input: string): string {
+  async translateText(input: string): Promise<string> {
     const preserved = preservePackageNames(input);
     const prompt = [
       "Translate this technical UI text from English to Hungarian.",
@@ -313,43 +337,56 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
       preserved.text,
     ].join("\n");
 
-    const translated = this.runClaude(prompt, "single text line").trim();
+    const translated = (await this.runClaude(prompt, "single text line")).trim();
     return restorePackageNames(translated, preserved.packageNames);
   }
 
-  translateBatch(
+  async translateBatch(
     items: readonly { id: string; text: string }[],
     onChunk?: (partial: Record<string, string>) => void,
-  ): Record<string, string> {
-    const out: Record<string, string> = {};
-    // Chunk by total character budget. Bigger chunks amortize the fixed per-call agent-startup cost
-    // (each `claude -p` pays it once), so fewer/larger requests finish the whole tree faster; the
-    // ceiling is JSON reliability — too many keys per response and the model may drop/truncate one,
-    // which `runBatch` degrades to per-item translation. 12k is a safe middle ground; override via
-    // DOCS_TRANSLATION_BATCH_BUDGET if a run trips that fallback.
-    const BUDGET = Number(process.env.DOCS_TRANSLATION_BATCH_BUDGET) || 12000;
+  ): Promise<Record<string, string>> {
+    // Split into character-budgeted chunks. Each chunk is one `claude -p` call; because the run is
+    // generation-bound (the model streaming ~a chunk's worth of translations dominates the fixed
+    // startup), running several chunks concurrently is the real wall-clock lever. Smaller chunks keep
+    // each JSON response reliable and give finer progress; the pool hides their startup cost.
+    const BUDGET = Number(process.env.DOCS_TRANSLATION_BATCH_BUDGET) || 4000;
+    const CONCURRENCY = Number(process.env.DOCS_TRANSLATION_CONCURRENCY) || 5;
+    const chunks: { id: string; text: string }[][] = [];
     let chunk: { id: string; text: string }[] = [];
     let size = 0;
-    const flush = (): void => {
-      if (chunk.length === 0) return;
-      const partial = this.runBatch(chunk);
-      Object.assign(out, partial);
-      // Surface each chunk as it lands so the caller can persist + report progress across a long run.
-      onChunk?.(partial);
-      chunk = [];
-      size = 0;
-    };
     for (const item of items) {
-      if (size + item.text.length > BUDGET && chunk.length > 0) flush();
+      if (size + item.text.length > BUDGET && chunk.length > 0) {
+        chunks.push(chunk);
+        chunk = [];
+        size = 0;
+      }
       chunk.push(item);
       size += item.text.length;
     }
-    flush();
+    if (chunk.length > 0) chunks.push(chunk);
+
+    const out: Record<string, string> = {};
+    await mapPool(chunks, CONCURRENCY, async (group) => {
+      // A failed chunk must not sink the whole run or poison the cache: log it and skip. Its items go
+      // uncached (the caller leaves them as source), so they're retried on the next run.
+      try {
+        const partial = await this.runBatch(group);
+        Object.assign(out, partial);
+        // Surface each chunk as it lands so the caller can persist + report progress.
+        onChunk?.(partial);
+      } catch (error) {
+        console.warn(
+          `  ! skipped a batch of ${group.length} strings: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      }
+    });
     return out;
   }
 
   /** Translate one chunk of short strings as a single JSON object; fall back per item on failure. */
-  private runBatch(items: readonly { id: string; text: string }[]): Record<string, string> {
+  private async runBatch(
+    items: readonly { id: string; text: string }[],
+  ): Promise<Record<string, string>> {
     // Protect code and package names in every value before it reaches the model — prose cells and
     // captions carry inline code and `@scope/pkg` names that must survive verbatim — then restore per
     // id. Without this the batch path (unlike translateMarkdown) would let the model rewrite them.
@@ -374,7 +411,7 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
       JSON.stringify(payload, null, 2),
     ].join("\n");
 
-    const raw = this.runClaude(prompt, `batch of ${items.length} strings`);
+    const raw = await this.runClaude(prompt, `batch of ${items.length} strings`);
     const parsed = extractJsonObject(raw);
     if (parsed) {
       const out: Record<string, string> = {};
@@ -387,24 +424,41 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
     }
     // The model didn't return usable JSON; degrade to per-item translation rather than lose content.
     const out: Record<string, string> = {};
-    for (const item of items) out[item.id] = this.translateText(item.text);
+    for (const item of items) out[item.id] = await this.translateText(item.text);
     return out;
   }
 
-  private runClaude(prompt: string, scope: string): string {
-    const result = spawnSync(this.command, [...this.args, "-p"], {
-      input: prompt,
-      encoding: "utf8",
-      maxBuffer: 20 * 1024 * 1024,
+  private runClaude(prompt: string, scope: string): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const child = spawn(this.command, [...this.args, "-p"], {
+        stdio: ["pipe", "pipe", "pipe"],
+      });
+      let stdout = "";
+      let stderr = "";
+      child.stdout.setEncoding("utf8");
+      child.stderr.setEncoding("utf8");
+      child.stdout.on("data", (chunk: string) => (stdout += chunk));
+      child.stderr.on("data", (chunk: string) => (stderr += chunk));
+      // The process-level events (`error`/`close`) come off ChildProcess's EventEmitter; type them
+      // explicitly so the checker resolves the overloads and `code` isn't implicitly `any`.
+      const proc = child as unknown as {
+        on(event: "error", listener: (err: Error) => void): void;
+        on(event: "close", listener: (code: number | null) => void): void;
+      };
+      proc.on("error", reject);
+      proc.on("close", (code) => {
+        if (code !== 0) {
+          reject(
+            new Error(
+              `Claude translation failed for ${scope} (exit ${code ?? -1}): ${stderr.trim()}`,
+            ),
+          );
+        } else {
+          resolve(stdout.trimEnd());
+        }
+      });
+      child.stdin.end(prompt);
     });
-
-    if (result.status !== 0) {
-      throw new Error(
-        `Claude translation failed for ${scope} (exit ${result.status ?? -1}): ${result.stderr.trim()}`,
-      );
-    }
-
-    return result.stdout.trimEnd();
   }
 }
 

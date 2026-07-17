@@ -86,7 +86,7 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
   }
 };
 
-const build = (): void => {
+const build = async (): Promise<void> => {
   const adapter = createTranslationAdapter();
   const memory = TranslationMemory.load("hu", "api");
 
@@ -127,13 +127,14 @@ const build = (): void => {
   const glossaryText = new Map<string, string>();
   for (const unit of units) {
     if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
-      glossaryText.set(unit.text, glossary.translateText(unit.text));
+      // The glossary is synchronous under the hood; awaiting is just contract plumbing (instant).
+      glossaryText.set(unit.text, await glossary.translateText(unit.text));
     }
   }
   const proseUnits: TranslationUnit[] = units
     .filter((unit) => unit.kind === "prose")
     .map((unit) => ({ kind: "prose", source: unit.text }));
-  const proseTranslations = translateUnits(adapter, memory, proseUnits, { autosave: true });
+  const proseTranslations = await translateUnits(adapter, memory, proseUnits, { autosave: true });
 
   const resolve: Resolve = (text, kind) =>
     kind === "glossary"
@@ -151,7 +152,7 @@ const build = (): void => {
   }));
   const labels: string[] = [];
   for (const { tree } of sidebars) collectSidebarText(tree, labels);
-  const labelTranslations = translateUnits(
+  const labelTranslations = await translateUnits(
     adapter,
     memory,
     labels.map((source) => ({ kind: "text", source })),
@@ -172,4 +173,7 @@ const build = (): void => {
   );
 };
 
-build();
+build().catch((error: unknown) => {
+  console.error(error);
+  process.exitCode = 1;
+});

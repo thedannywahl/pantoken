@@ -70,9 +70,15 @@ set a custom `i18nRouting`).
   `DOCS_TRANSLATION_COMMAND_ARGS` before a direct `node scripts/…` run (`DOCS_TRANSLATION_COMMAND`
   overrides the `claude` binary itself). Either task logs progress (`… N/M labels + prose blocks
 translated`) and saves the memory after **each** chunk, so it's resumable — a kill or crash keeps
-  completed chunks and a re-run serves them from cache. Prose is batched at ~12k chars/request to
-  amortize the per-call startup; if a run trips the per-item fallback (the model dropping a key from a
-  large JSON response), lower it with `DOCS_TRANSLATION_BATCH_BUDGET`.
+  completed chunks and a re-run serves them from cache.
+- **The cold pass is generation-bound, so it runs chunks concurrently.** Once MCP is stripped, the
+  wall-clock cost is the model streaming translations, not startup — so `ClaudeCodeTranslationAdapter`
+  runs up to `DOCS_TRANSLATION_CONCURRENCY` (default 5) `claude -p` calls at once. Prose is batched at
+  `DOCS_TRANSLATION_BATCH_BUDGET` chars/request (default 4k) — small enough that each JSON response
+  stays reliable and progress is fine-grained, with the pool hiding the per-call startup. A chunk that
+  errors is logged and skipped (its blocks stay uncached and retry next run), never sinking the whole
+  run. Raise concurrency for more speed if you're not rate-limited; lower the budget if a run trips the
+  per-item fallback (the model dropping a key from a large response).
 
 ## The cssdoc integration
 

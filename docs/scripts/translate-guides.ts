@@ -38,7 +38,7 @@ for (const locale of targets) {
     source: readFileSync(join(guideDir, page), "utf8"),
   }));
 
-  const translations = translateUnits(
+  const translations = await translateUnits(
     adapter,
     memory,
     sources.map(({ page, source }) => ({ kind: "markdown", source, filePath: `guide/${page}` })),
