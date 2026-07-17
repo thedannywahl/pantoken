@@ -25,10 +25,10 @@
   },
   "scripts": {
     "component-styles": "node scripts/component-styles.ts",
-    "build": "node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack",
-    "dev": "node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
-    "test": "node scripts/component-styles.ts && vp test",
-    "check": "node scripts/component-styles.ts && node scripts/build-entries.ts && vp check",
+    "build": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack",
+    "dev": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
+    "test": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && vp test",
+    "check": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/build-entries.ts && vp check",
     "prepublishOnly": "vp run build"
   },
   "dependencies": {
@@ -38,9 +38,11 @@
     "@cssdoc/config": "catalog:",
     "@cssdoc/core": "catalog:",
     "@pantoken/icons": "workspace:*",
+    "@pantoken/plugin-theme-custom-media": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
+    "postcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

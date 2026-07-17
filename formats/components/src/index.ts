@@ -146,7 +146,7 @@ export { iconGlyphsCss, type IconGlyphsOptions } from "./utilities/icon-glyphs.t
 export function componentsCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   // Each record's rules() already appends its own size/deprecated-alias twins, so this is a plain concat.
-  const rules = COMPONENTS.map((d) => d.rules(ns(prefix)).trim());
+  const rules = COMPONENTS.map((d) => d.rules(ns(prefix), options).trim());
   // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve
   // from components.css alone — elevation is an intrinsic design attribute here, not an add-on.
   return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${elevationCss()}\n${rules.join("\n\n")}\n`;

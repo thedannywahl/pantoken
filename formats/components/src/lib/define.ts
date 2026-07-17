@@ -19,7 +19,7 @@ export interface Definition {
   name: string;
   kind: CssRecordKind;
   /** Doc block + CSS body at the given (already `ns()`-joined) prefix — concatenated by the aggregator. */
-  rules(this: void, prefix: string): string;
+  rules(this: void, prefix: string, options?: ComponentOptions): string;
   /**
    * The standalone, header-wrapped stylesheet — what the exported `xxxCss` returns. Declared `this: void`
    * because it's a plain closure (no receiver): callers bind it as `export const buttonCss = button.css`,
@@ -36,7 +36,7 @@ export interface DefineInput {
    * Build the full record for the `ns()`-joined prefix `p`: a leading `/** … *\/` cssdoc doc comment
    * (prefix-independent) followed by the CSS body, e.g. ``(p) => `/** @component menu … *\/\n.${p}menu {…}` ``.
    */
-  css: (p: string) => string;
+  css: (p: string, options?: ComponentOptions) => string;
 }
 
 /**
@@ -55,11 +55,11 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
   const { css: cssBuilder } = input;
   // Deprecated-alias twins are discovered from the doc comment; the comment is prefix-independent, so
   // parse the record once (any prefix) rather than per `rules()` call.
-  const aliasPairs = deprecatedAliasPairs(cssBuilder("instui-"));
+  const aliasPairs = deprecatedAliasPairs(cssBuilder("instui-", { theme: "rebrand" }));
   // Append the size-alias and deprecated-alias twins to the CSS BODY ONLY (never the comment), so each
   // alias documents on this record's own page and the brace scanners never see the `{@link …}` braces.
-  const rules = (prefix: string): string => {
-    const { comment, body } = splitLeadingDocComment(cssBuilder(prefix));
+  const rules = (prefix: string, options: ComponentOptions = {}): string => {
+    const { comment, body } = splitLeadingDocComment(cssBuilder(prefix, options));
     // Auto-document the long-form size twins withSizeAliases appends, so they aren't undocumented.
     return `${withSizeAliasDocs(comment, body)}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
   };
@@ -69,7 +69,7 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
     rules,
     css: (options: ComponentOptions = {}) => {
       const prefix = options.prefix || "";
-      return wrap(input.name, prefix, rules(ns(prefix)));
+      return wrap(input.name, prefix, rules(ns(prefix), options));
     },
   };
 }

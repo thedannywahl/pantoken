@@ -9,6 +9,9 @@
 /** The default class prefix (`instui` → `.instui-button`). */
 export const DEFAULT_PREFIX = "instui";
 
+/** Theme keys emitted by `@pantoken/tokens`. */
+export type ComponentTheme = "rebrand" | "canvas" | "canvasHighContrast";
+
 /** Options common to every builder. */
 export interface ComponentOptions {
   /**
@@ -18,6 +21,10 @@ export interface ComponentOptions {
    * built with `"instui"`.
    */
   prefix?: string | null;
+  /**
+   * Target theme for emitted CSS. Defaults to `"rebrand"` when omitted.
+   */
+  theme?: ComponentTheme;
 }
 
 /** Join a class prefix to its separator: `"instui"` → `"instui-"`; a falsy prefix → `""` (no prefix). */

@@ -17,9 +17,12 @@
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import postcss from "postcss";
+import { themeCustomMedia } from "@pantoken/plugin-theme-custom-media";
 
 const srcDir = resolve(import.meta.dirname, "../src");
 const sources = [join(srcDir, "components"), join(srcDir, "utilities")];
+const THEMES = ["rebrand", "canvas", "canvasHighContrast"] as const;
 
 /** `screen-reader-content.css` → `screenReaderContent`. */
 const toIdentifier = (file: string): string =>
@@ -31,7 +34,17 @@ for (const dir of sources) {
     .filter((f) => f.endsWith(".css"))
     .sort()) {
     const css = readFileSync(join(dir, file), "utf8");
-    entries.push(`export const ${toIdentifier(file)} = ${JSON.stringify(css)};`);
+    const id = toIdentifier(file);
+    const byTheme: Record<(typeof THEMES)[number], string> = {
+      rebrand: css,
+      canvas: css,
+      canvasHighContrast: css,
+    };
+    for (const theme of THEMES) {
+      byTheme[theme] = postcss([themeCustomMedia({ theme })]).process(css, { from: undefined }).css;
+    }
+    entries.push(`export const ${id}ByTheme = ${JSON.stringify(byTheme)} as const;`);
+    entries.push(`export const ${id} = ${id}ByTheme.rebrand;`);
   }
 }
 

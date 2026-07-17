@@ -1,9 +1,13 @@
 import { defineComponent } from "../lib/define.ts";
 import { SENTINEL } from "../lib/sentinel.ts";
-import { billboard as billboardRaw } from "../generated/component-styles.ts";
+import { billboardByTheme } from "../generated/component-styles.ts";
 
 export const billboard = defineComponent({
   name: "billboard",
-  css: (p) => billboardRaw.replaceAll(SENTINEL, p),
+  css: (p, options) =>
+    (billboardByTheme[options?.theme ?? "rebrand"] ?? billboardByTheme.rebrand).replaceAll(
+      SENTINEL,
+      p,
+    ),
 });
 export const billboardCss = billboard.css;

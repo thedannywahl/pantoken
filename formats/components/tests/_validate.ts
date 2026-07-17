@@ -8,7 +8,7 @@
  */
 import { CssDocConfigFile } from "@cssdoc/config";
 import { parseCssDocs } from "@cssdoc/core";
-import { tokens } from "@pantoken/tokens";
+import { byTheme } from "@pantoken/tokens";
 import { unknownReferences } from "@pantoken/utils";
 import type { Definition } from "../src/lib/define.ts";
 
@@ -22,7 +22,7 @@ const isLocal = (ref: string): boolean =>
 
 /** Assert a definition is well-formed; throws (naming the record) on the first problem. */
 export function validate(def: Definition): void {
-  const css = def.css({ prefix: "instui" });
+  const css = def.css({ prefix: "instui", theme: "rebrand" });
   const entries = parseCssDocs(css, { configuration });
   if (entries.length !== 1)
     throw new Error(`${def.name}: expected exactly one cssdoc record, got ${entries.length}`);
@@ -31,6 +31,10 @@ export function validate(def: Definition): void {
     throw new Error(`${def.name}: parsed kind "${entry.kind}" ≠ declared "${def.kind}"`);
   if (entry.name !== def.name)
     throw new Error(`${def.name}: parsed name "${entry.name}" ≠ declared "${def.name}"`);
-  const drift = unknownReferences(css, tokens).filter((r) => !isLocal(r));
-  if (drift.length) throw new Error(`${def.name}: unknown token reference(s): ${drift.join(", ")}`);
+  for (const theme of ["rebrand", "canvas", "canvasHighContrast"] as const) {
+    const themedCss = def.css({ prefix: "instui", theme });
+    const drift = unknownReferences(themedCss, byTheme(theme)).filter((r) => !isLocal(r));
+    if (drift.length)
+      throw new Error(`${def.name} (${theme}): unknown token reference(s): ${drift.join(", ")}`);
+  }
 }
