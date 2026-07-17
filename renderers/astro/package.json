@@ -21,7 +21,6 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "build": "vp run generate && vp pack",
     "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
     "check": "vp check",

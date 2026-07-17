@@ -55,6 +55,18 @@ export default defineConfig({
   fmt: {},
   run: {
     tasks: {
+      build: {
+        command: [
+          "vp run @pantoken/plugin-theme-custom-media#build",
+          "node scripts/component-styles.ts",
+          "node scripts/generate.ts",
+          "node scripts/build-entries.ts",
+          "vp pack",
+        ],
+        // node_modules/.modules.yaml is rewritten by every CI reinstall; excluding it keeps
+        // vp pack a cache hit across jobs instead of re-packing on every run.
+        input: [{ auto: true }, { pattern: "!node_modules/.modules.yaml", base: "workspace" }],
+      },
       // The stylesheet generator as a first-class task: run the `.css`→consts codegen, then emit every
       // sheet (incl. `src/generated/_records.css`, the cssdoc source-lint provider). Depends on its
       // workspace deps' `build` so the barrel it imports (`@pantoken/tokens`/`icons`/`utils`/

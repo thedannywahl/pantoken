@@ -104,6 +104,9 @@ const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
   [/^(#{1,6} )Subcomponents$/gm, "$1Alkomponensek"],
   [/^(#{1,6} )Related$/gm, "$1Kapcsolódó"],
   [/^(#{1,6} )Extends$/gm, "$1Kiterjeszti"],
+  // API overview (write-api-overview.ts) section headings.
+  [/^(#{1,6} )Start here$/gm, "$1Kezdd itt"],
+  [/^(#{1,6} )Browse by group$/gm, "$1Böngéssz csoport szerint"],
   // Stability-tier badge labels. Anchored to the doc-tag pill so a stray "Beta"/"Alpha" in prose is
   // never touched. Deprecated is covered by the \bDeprecated\b entry above.
   [/(pantoken-doc-tag">)Alpha(<)/g, "$1Alfa$2"],
@@ -125,6 +128,9 @@ const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
   [/^Name$/g, "Név"],
   [/^Summary$/g, "Összegzés"],
   [/^Default$/g, "Alapértelmezett"],
+  // API-overview table first-column headers (the second column is `Description`, handled above).
+  [/^Area$/g, "Terület"],
+  [/^Group$/g, "Csoport"],
 ];
 
 export class GlossaryTranslationAdapter implements TranslationAdapter {

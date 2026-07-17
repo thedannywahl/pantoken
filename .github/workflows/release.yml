@@ -47,20 +47,30 @@ jobs:
           cache: true
           run-install: true
 
+      # Warm the release build from main's cache (tags can read default-branch caches). vp's task cache
+      # stores outputs as tarballs, so `vp run -r build` below becomes a fast cache-extract.
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: node_modules/.vite/task-cache
+          key: vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}
+          restore-keys: |
+            vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}
+            vp-taskcache-${{ runner.os }}-
+
       - name: Set up pnpm for publish
         run: |
           corepack enable
           corepack prepare pnpm@11.13.0 --activate
           pnpm --version
 
-      - name: Verify release gates
-        run: |
-          vp run ready
-          vp run gate:repository
-          vp run gate:publint
-          vp run gate:attw
-
+      # Plan first: this emits release_packages / publish_packages / publish_count to GITHUB_OUTPUT,
+      # which the scoped gate and publish steps read. cut-release.ts already ran the full scoped gates
+      # locally before tagging, and ci.yml ran the whole `ready` on the merge-to-main this tag points
+      # at — so here we verify a clean build + types + tests, then scope the pack-heavy publish gates to
+      # exactly what ships. (Non-publish lint/validate/markdown are covered by ci.yml, not repeated.)
       - name: Build package release plan
+        id: plan
         run: |
           node scripts/release/plan-package-release.ts \
             --tag "${RELEASE_TAG}" \
@@ -68,14 +78,27 @@ jobs:
             --publish-list .release-packages.txt \
             --markdown .release-plan.md
 
-      - name: Read release plan metadata
-        id: plan
+      - name: Verify release gates
         shell: bash
         run: |
-          target_private=$(node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync(".release-plan.json","utf8"));process.stdout.write(String(Boolean(p.targetPrivate)));')
-          publish_count=$(node -e 'const fs=require("fs");const p=JSON.parse(fs.readFileSync(".release-plan.json","utf8"));process.stdout.write(String((p.publishPackages??[]).length));')
-          echo "target_private=${target_private}" >> "${GITHUB_OUTPUT}"
-          echo "publish_count=${publish_count}" >> "${GITHUB_OUTPUT}"
+          vp run -r build
+          vp check
+          vp run -r test
+          vp run gate:repository
+
+          # publint/attw pack each package and are the dominant gate cost — scope them to the publish
+          # set. `vp exec -F` runs the bin per matched package (no "task not found" like `vp run -F`).
+          filters=()
+          IFS=',' read -ra publish_pkgs <<< "${{ steps.plan.outputs.publish_packages }}"
+          for pkg in "${publish_pkgs[@]}"; do
+            [[ -n "${pkg}" ]] && filters+=("-F" "${pkg}")
+          done
+          if [[ ${#filters[@]} -eq 0 ]]; then
+            echo "No publishable packages in release set; skipping publint/attw."
+          else
+            vp exec "${filters[@]}" publint
+            vp exec "${filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+          fi
 
       - name: Resolve npm dist-tag and prerelease state
         id: dist_tag

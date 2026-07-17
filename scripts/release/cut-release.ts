@@ -1,4 +1,5 @@
 import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -384,11 +385,7 @@ function buildDependencyChangelogLine(changes: DependencyVersionChange[]): strin
 
 function packageHasScript(rootDir: string, pkgPath: string, scriptName: string): boolean {
   try {
-    const raw = spawnSync("cat", [path.join(rootDir, pkgPath, "package.json")], {
-      encoding: "utf8",
-      shell: false,
-      stdio: ["ignore", "pipe", "ignore"],
-    }).stdout;
+    const raw = readFileSync(path.join(rootDir, pkgPath, "package.json"), "utf8");
     const manifest = readJsonObject<PackageManifestScripts>(raw);
     return typeof manifest.scripts?.[scriptName] === "string";
   } catch {

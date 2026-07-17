@@ -32,19 +32,55 @@ export default defineConfig({
   run: {
     cache: true,
     tasks: {
-      // CSS/cssdoc linting depends on the component generator: linting the SOURCE `.css` records needs
-      // `@pantoken/components`'s `src/generated/_records.css` (the cssdoc sibling-record provider) and the
-      // built `generated/*.css` sheets. Declaring the dependency here means `vp run lint:css`/`lint:js`
-      // (as `ready` invokes them) regenerate first, instead of relying on an earlier build step.
+      // `ready:all` is a task DAG, not a serial `&&` chain: `build:all` runs once, then the independent
+      // gates fan out concurrently. `command: "true"` makes it a pure aggregator whose only job is to
+      // pull its `dependsOn` (the root `ready` script is `vp run ready:all` — a task and a package.json
+      // script may not share a name). Everything that needs generated output funnels through `build:all`,
+      // the single generation path, so no two nodes run the component codegen at once (a `vp run -r build`
+      // and a bare `@pantoken/components#generate` writing the same `generated/` dir would race).
+      "build:all": {
+        command: "vp run -r build",
+      },
+      "check:all": {
+        command: "vp check",
+        dependsOn: ["build:all"],
+      },
+      "test:all": {
+        command: "vp run -r test",
+        dependsOn: ["build:all"],
+      },
+      "validate:generated:only": {
+        command: "vp run @pantoken/validate-generated#validate",
+        dependsOn: ["build:all"],
+      },
+      "lint:markdown": {
+        command: 'vp exec markdownlint-cli2 "**/*.md"',
+      },
+      "ready:all": {
+        command: "true",
+        dependsOn: [
+          "check:all",
+          "test:all",
+          "lint:css",
+          "lint:js",
+          "validate:generated:only",
+          "lint:markdown",
+        ],
+      },
+      // CSS/cssdoc linting needs `@pantoken/components`'s generated sheets (`src/generated/_records.css`,
+      // the cssdoc sibling-record provider, and the `generated/*.css` sheets). They depend on `build:all`
+      // rather than `@pantoken/components#generate` directly so generation happens exactly once, through
+      // the same node `check:all`/`test:all` wait on — otherwise, under the parallel `ready` DAG, this
+      // task and `build:all`'s internal build would regenerate concurrently into the same files.
       "lint:css": {
         command:
           'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css"',
-        dependsOn: ["@pantoken/components#generate"],
+        dependsOn: ["build:all"],
       },
       "lint:js": {
         command:
           'vp exec eslint "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css" "renderers/web-components/src/**/*.css"',
-        dependsOn: ["@pantoken/components#generate"],
+        dependsOn: ["build:all"],
       },
       "changeset:add": {
         command: "vpx changeset",
@@ -81,16 +117,26 @@ export default defineConfig({
       "release:pre:exit": {
         command: "vpx changeset pre exit",
       },
+      // The publish gate. `check:publish` → `gate:publish`, which fans out the three publish-correctness
+      // checks: repository metadata (needed for npm OIDC provenance — a missing `repository.url` silently
+      // breaks it), publint, and attw. publint/attw pack each package, so they wait on `build:all`;
+      // `gate:repository` is a pure manifest read with no build dependency.
       "gate:repository": {
         command: "node scripts/release/check-repository-metadata.ts",
       },
       "gate:publint": {
         command:
           'vp exec -F "./packages/**" -F "./formats/**" -F "./platforms/**" -F "./renderers/**" -F "./bundlers/**" -F "./design/**" -F "./ai/**" -F "./plugins/**" -F "./tools/**" publint',
+        dependsOn: ["build:all"],
       },
       "gate:attw": {
         command:
           'vp exec -F "./packages/**" -F "./formats/**" -F "./platforms/**" -F "./renderers/**" -F "./bundlers/**" -F "./design/**" -F "./ai/**" -F "./plugins/**" -F "./tools/**" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm',
+        dependsOn: ["build:all"],
+      },
+      "gate:publish": {
+        command: "true",
+        dependsOn: ["gate:repository", "gate:publint", "gate:attw"],
       },
     },
   },

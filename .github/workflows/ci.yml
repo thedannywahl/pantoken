@@ -1,0 +1,275 @@
+name: CI
+
+# The PR gate: build, typecheck, test, lint, and the publish/provenance checks — everything `ready`
+# plus the gates covers, split into parallel jobs. Runs on every PR and on pushes to main so a
+# regression is caught before merge, not at docs-deploy or release-tag time.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# Supersede in-flight PR runs; let main runs finish.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  # vp's task cache stores task OUTPUTS as .tar.zst tarballs, so a cache hit re-materializes the
+  # gitignored generated dirs. The `build` job warms it; downstream jobs restore and replay
+  # `vp run -r build` as a fast cache-extract instead of a cold rebuild.
+  VP_TASK_CACHE: node_modules/.vite/task-cache
+  VP_CACHE_KEY_PREFIX: vp-taskcache-
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore/save vp task cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Build all packages
+        run: vp run -r build
+
+  typecheck:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Typecheck
+        run: vp check
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Test all packages
+        run: vp run -r test
+
+  lint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Lint CSS
+        run: vp run lint:css
+      - name: Lint JS
+        run: vp run lint:js
+      - name: Validate generated output
+        run: vp run validate:generated:only
+      - name: Lint Markdown
+        run: vp run lint:markdown
+
+  publint:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          # Full history so the changed-packages diff can reach the PR base / previous push.
+          fetch-depth: 0
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Resolve changed packages
+        id: changed
+        env:
+          CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/release/changed-packages.ts
+      - name: Build and publint (scoped to changed packages)
+        shell: bash
+        env:
+          SCOPE: ${{ steps.changed.outputs.scope }}
+          PACKAGES: ${{ steps.changed.outputs.packages }}
+        run: |
+          if [[ "${SCOPE}" == "none" ]]; then
+            echo "No publishable packages changed; skipping publint."
+            exit 0
+          fi
+          if [[ "${SCOPE}" == "all" ]]; then
+            vp run -r build
+            vp run gate:publint
+            exit $?
+          fi
+          # publint only inspects the scoped packages, so build just their dependency closure ("...").
+          build_filters=(); check_filters=()
+          IFS=',' read -ra pkgs <<< "${PACKAGES}"
+          for p in "${pkgs[@]}"; do
+            [[ -n "${p}" ]] || continue
+            build_filters+=("-F" "${p}...")
+            check_filters+=("-F" "${p}")
+          done
+          echo "publint scoped to: ${pkgs[*]}"
+          vp run "${build_filters[@]}" build
+          vp exec "${check_filters[@]}" publint
+
+  attw:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          # Full history so the changed-packages diff can reach the PR base / previous push.
+          fetch-depth: 0
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Resolve changed packages
+        id: changed
+        env:
+          CHANGED_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/release/changed-packages.ts
+      - name: Build and attw (scoped to changed packages)
+        shell: bash
+        env:
+          SCOPE: ${{ steps.changed.outputs.scope }}
+          PACKAGES: ${{ steps.changed.outputs.packages }}
+        run: |
+          if [[ "${SCOPE}" == "none" ]]; then
+            echo "No publishable packages changed; skipping attw."
+            exit 0
+          fi
+          if [[ "${SCOPE}" == "all" ]]; then
+            vp run -r build
+            vp run gate:attw
+            exit $?
+          fi
+          # attw only packs the scoped packages, so build just their dependency closure ("...").
+          build_filters=(); check_filters=()
+          IFS=',' read -ra pkgs <<< "${PACKAGES}"
+          for p in "${pkgs[@]}"; do
+            [[ -n "${p}" ]] || continue
+            build_filters+=("-F" "${p}...")
+            check_filters+=("-F" "${p}")
+          done
+          echo "attw scoped to: ${pkgs[*]}"
+          vp run "${build_filters[@]}" build
+          vp exec "${check_filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
+
+  repository:
+    # Pure manifest read — no build needed. Catches a missing repository.url (which breaks npm OIDC
+    # provenance) on the PR instead of at release.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Check repository metadata
+        run: vp run gate:repository
+
+  commitlint:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Lint PR commit messages
+        run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose

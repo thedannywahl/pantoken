@@ -50,6 +50,11 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      # A pull_request checkout lands in detached HEAD with no local `main`, so `changeset status`
+      # can't find where HEAD diverged from the base branch. Materialize it as a local ref.
+      - name: Make base branch available for changeset diff
+        run: git fetch --no-tags origin +refs/heads/${{ github.base_ref }}:refs/heads/${{ github.base_ref }}
+
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@v1
         with:

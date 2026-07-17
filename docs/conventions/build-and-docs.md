@@ -13,16 +13,36 @@
 
 ## The gate
 
-- `pnpm run ready` — build `-r`, `vp check`, test `-r`, markdown lint. Must pass before you're done.
-- `pnpm run check:publish` — `publint`.
+- `pnpm run ready` — the pass/fail gate. It's a `vp` task DAG (`ready:all`), not a serial chain:
+  `build:all` runs once, then `check:all` (`vp check`), `test:all` (`vp run -r test`), `lint:css`,
+  `lint:js`, `validate:generated:only`, and `lint:markdown` fan out concurrently. Everything that reads
+  generated output depends on `build:all`, so generation happens exactly once (no concurrent codegen
+  race). Must pass before you're done.
+- `pnpm run check:publish` — the publish gate (`gate:publish`): `gate:repository` (asserts every
+  publishable manifest has the `repository.url` npm OIDC provenance needs), `gate:publint`, and
+  `gate:attw`. Publint/attw depend on `build:all`; the repository check is a pure manifest read.
+- **CI runs the same checks on every PR** (`.github/workflows/ci.yml`): `build` → parallel
+  `typecheck`/`test`/`lint`/`publint`/`attw`, plus a `repository` job and a `commitlint` job that lints
+  the PR's commit range. Jobs share a persisted vp task cache (`node_modules/.vite/task-cache`), so the
+  `build` job warms it and downstream jobs restore it and re-materialize generated dirs from cache.
+- **`publint`/`attw` are scoped to what the PR touches.** `scripts/release/changed-packages.ts` maps
+  the diff against the base branch to the affected publishable packages (each changed package plus its
+  workspace dependents, since a dependency change can break a dependent's pack/types), and the jobs run
+  `vp exec -F <those>` instead of packing all ~70. A change to a global file (root `package.json`,
+  lockfile, `vite.config.ts`, …) widens back to the full gate; a change touching no publishable package
+  skips them.
+- **Commit messages are conventional-commit-linted** locally by the `.vite-hooks/commit-msg` hook
+  (`vp exec commitlint --edit`) and in CI by the `commitlint` job.
 - Release automation uses Changesets and package-tag workflows in
-  `.github/workflows/release.yml`.
+  `.github/workflows/release.yml`. That workflow verifies a clean build/typecheck/test + `gate:repository`,
+  then scopes the pack-heavy `publint`/`attw` gates to exactly the publish set (the full `ready` already
+  ran on the merge-to-main the tag points at).
 - Use `pnpm run release:version` to apply package changelog/version updates, then
   `vp run release:changelog:root` to rebuild the strict chronological root `CHANGELOG.md` before
   creating package tags.
 - Generated artifacts are gitignored and reproduced on build: `platforms/tokens/src/generated/`,
   `platforms/css/style.css`, each preprocessor's static file, and web-components `src/generated/`.
-  `ready` runs `vp run -r build` before `vp check`, so generated files exist in order.
+  `build:all` produces them before any gate that reads them runs.
 
 See `docs/internal/release-strategy.md` for the runbook, dist-tag mapping, prerelease flow, and npm
 organization governance model.

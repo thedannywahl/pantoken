@@ -71,8 +71,10 @@ from `components` (it sits below it). `checkPlugins` (the capability guard) live
 
 ## The gate
 
-`pnpm run ready` (build `-r` + `vp check` + test `-r` + markdown lint) must pass; `pnpm run
-check:publish` runs publint. Generated artifacts (`platforms/tokens/src/generated/`,
+`pnpm run ready` must pass — a `vp` task DAG (`ready:all`) that builds once, then fans out `vp check`,
+test `-r`, CSS/JS lint, generated-output validation, and markdown lint concurrently. `pnpm run
+check:publish` runs the publish gate (repository metadata + publint + attw). The same checks run on
+every PR via `.github/workflows/ci.yml`. Generated artifacts (`platforms/tokens/src/generated/`,
 `platforms/css/style.css`, each preprocessor's static file, web-components `src/generated/`) are
 gitignored and reproduced on build.
 

@@ -64,11 +64,25 @@ type SidebarItem = {
   items?: SidebarItem[];
 };
 
+// TypeDoc emits absolute API links as `/api/...`; the cloned HU tree must point at `/hu/api/...` or the
+// Hungarian sidebar navigates back into the English pages. Idempotent — never double-prefixes.
+const localizeApiLink = (link: string): string => (/^\/api(\/|$)/.test(link) ? `/hu${link}` : link);
+
+// Same rewrite for absolute `/api/...` links inside the cloned markdown (overview cards, CSS
+// breadcrumbs). Only touches markdown-link `](…)` and `href="…"` targets, so it leaves relative links
+// (`../index.md`) and any prose mentioning `/api` alone.
+const localizeMarkdownApiLinks = (markdown: string): string =>
+  markdown.replace(/(\]\(|href=")\/api(?=[/")])/g, "$1/hu/api");
+
 const translateSidebar = (item: SidebarItem, translate: (text: string) => string): SidebarItem => {
   const translated: SidebarItem = { ...item };
 
   if (translated.text) {
     translated.text = translate(translated.text);
+  }
+
+  if (translated.link) {
+    translated.link = localizeApiLink(translated.link);
   }
 
   if (translated.items) {
@@ -159,7 +173,7 @@ const build = async (): Promise<void> => {
     return escapeBareHtmlTags(translated);
   };
   for (const { filePath, segments } of segmented) {
-    writeFileSync(filePath, reassemble(segments, resolve));
+    writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve)));
   }
 
   // 2. Sidebars: collect every label across all trees, translate the misses in one batched pass,
