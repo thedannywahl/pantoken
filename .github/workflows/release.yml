@@ -1,11 +1,15 @@
-name: Release packages
+name: Release package
 
 on:
   push:
     tags:
-      - "v*"
+      - "@pantoken/*@v*"
   workflow_dispatch:
     inputs:
+      package_tag:
+        description: "Package tag (for example: @pantoken/components@v1.0.0)"
+        required: true
+        type: string
       dist_tag:
         description: "Optional npm dist-tag override (for example: latest, next, beta)"
         required: false
@@ -16,12 +20,14 @@ permissions:
   id-token: write
 
 concurrency:
-  group: release-${{ github.ref }}
+  group: release-package-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.package_tag || github.ref_name }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -53,44 +59,72 @@ jobs:
           vp run gate:publint
           vp run gate:attw
 
-      - name: Resolve npm dist-tag
+      - name: Build package release plan
+        run: |
+          node scripts/release/plan-package-release.mjs \
+            --tag "${RELEASE_TAG}" \
+            --json .release-plan.json \
+            --publish-list .release-packages.txt \
+            --markdown .release-plan.md
+
+      - name: Resolve npm dist-tag and prerelease state
         id: dist_tag
         shell: bash
         env:
           INPUT_DIST_TAG: ${{ inputs.dist_tag }}
         run: |
+          version="${RELEASE_TAG##*@v}"
+
           if [[ -n "${INPUT_DIST_TAG}" ]]; then
             tag="${INPUT_DIST_TAG}"
+          elif [[ "${version}" == *"-alpha."* ]]; then
+            tag="alpha"
+          elif [[ "${version}" == *"-beta."* ]]; then
+            tag="beta"
+          elif [[ "${version}" == *"-rc."* ]]; then
+            tag="rc"
+          elif [[ "${version}" == *"-"* ]]; then
+            tag="next"
           else
-            version="${GITHUB_REF_NAME#v}"
-            if [[ "${version}" == *"-alpha."* ]]; then
-              tag="alpha"
-            elif [[ "${version}" == *"-beta."* ]]; then
-              tag="beta"
-            elif [[ "${version}" == *"-rc."* ]]; then
-              tag="rc"
-            elif [[ "${version}" == *"-"* ]]; then
-              tag="next"
-            else
-              tag="latest"
-            fi
+            tag="latest"
+          fi
+
+          if [[ "${version}" == *"-"* ]]; then
+            prerelease="true"
+          else
+            prerelease="false"
           fi
 
           echo "dist_tag=${tag}" >> "${GITHUB_OUTPUT}"
+          echo "prerelease=${prerelease}" >> "${GITHUB_OUTPUT}"
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
           echo "Publishing with npm dist-tag: ${tag}"
 
-      - name: Publish packages
+      - name: Publish release set
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
           NPM_CONFIG_FORCE: "true"
           NPM_CONFIG_IGNORE_SCRIPTS: "true"
           PNPM_CONFIG_IGNORE_SCRIPTS: "true"
-        run: pnpm -r publish --tag "${{ steps.dist_tag.outputs.dist_tag }}" --access public --no-git-checks
+        run: |
+          while IFS= read -r pkg; do
+            [[ -z "${pkg}" ]] && continue
+            echo "Publishing ${pkg}"
+            pnpm -F "${pkg}" publish --tag "${{ steps.dist_tag.outputs.dist_tag }}" --access public --no-git-checks
+          done < .release-packages.txt
+
+      - name: Build package release notes
+        run: |
+          node scripts/release/build-release-notes.mjs \
+            --tag "${RELEASE_TAG}" \
+            --plan .release-plan.json \
+            --out release-notes.md
 
       - name: Create GitHub release
         if: github.event_name == 'push'
         uses: softprops/action-gh-release@v2
         with:
-          generate_release_notes: true
-          prerelease: false
+          tag_name: ${{ env.RELEASE_TAG }}
+          body_path: release-notes.md
+          prerelease: ${{ steps.dist_tag.outputs.prerelease }}

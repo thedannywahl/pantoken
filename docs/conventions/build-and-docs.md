@@ -15,9 +15,11 @@
 
 - `pnpm run ready` — build `-r`, `vp check`, test `-r`, markdown lint. Must pass before you're done.
 - `pnpm run check:publish` — `publint`.
-- Release automation uses Changesets and the tag-driven workflow in
-  `.github/workflows/release.yml`. Use `pnpm run release:version` to apply version/changelog updates
-  before creating a release tag.
+- Release automation uses Changesets and package-tag workflows in
+  `.github/workflows/release.yml`.
+- Use `pnpm run release:version` to apply package changelog/version updates, then
+  `vp run release:changelog:root` to rebuild the strict chronological root `CHANGELOG.md` before
+  creating package tags.
 - Generated artifacts are gitignored and reproduced on build: `platforms/tokens/src/generated/`,
   `platforms/css/style.css`, each preprocessor's static file, and web-components `src/generated/`.
   `ready` runs `vp run -r build` before `vp check`, so generated files exist in order.

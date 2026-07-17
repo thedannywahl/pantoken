@@ -40,6 +40,20 @@ export default defineConfig({
       "release:version": {
         command: "vpx changeset version",
       },
+      "release:plan:package": {
+        command:
+          "node scripts/release/plan-package-release.mjs --json .release-plan.json --publish-list .release-packages.txt --markdown .release-plan.md",
+      },
+      "release:notes:package": {
+        command:
+          "node scripts/release/build-release-notes.mjs --plan .release-plan.json --out release-notes.md",
+      },
+      "release:changelog:root": {
+        command: "node scripts/release/build-root-changelog.mjs --out CHANGELOG.md",
+      },
+      "release:changelog:root:seed": {
+        command: "node scripts/release/build-root-changelog.mjs --seed-initial --out CHANGELOG.md",
+      },
       "release:publish": {
         command: "vpx changeset publish",
       },
