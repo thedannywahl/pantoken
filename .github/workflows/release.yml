@@ -86,7 +86,7 @@ jobs:
           NPM_CONFIG_FORCE: "true"
           NPM_CONFIG_IGNORE_SCRIPTS: "true"
           PNPM_CONFIG_IGNORE_SCRIPTS: "true"
-        run: vpx changeset publish --tag "${{ steps.dist_tag.outputs.dist_tag }}"
+        run: pnpm -r publish --tag "${{ steps.dist_tag.outputs.dist_tag }}" --access public --no-git-checks
 
       - name: Create GitHub release
         if: github.event_name == 'push'
