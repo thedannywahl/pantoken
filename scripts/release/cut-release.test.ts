@@ -4,7 +4,9 @@ import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
 import {
   DEFAULT_CHANGELOG_LINE,
+  buildDependencyChangelogLine,
   bumpPatch,
+  collectWorkspaceDependencyVersionChanges,
   parseCliArgs,
   resolveRequestedVersions,
   withPreRelease,
@@ -116,4 +118,57 @@ test("writePackageChangelog prepends deterministic Changed section once", async 
   expect(out).toContain("## 0.1.1");
   expect(out).toContain(`- ${DEFAULT_CHANGELOG_LINE}`);
   expect(out.split("## 0.1.1").length - 1).toBe(1);
+});
+
+test("collectWorkspaceDependencyVersionChanges detects bumped workspace deps", () => {
+  const android: WorkspacePackage = {
+    name: "@pantoken/android",
+    path: "platforms/android",
+    version: "0.1.1",
+    private: false,
+    workspaceDeps: new Set(["@pantoken/core", "@pantoken/sd-config", "@pantoken/tokens"]),
+  };
+
+  const previous = new Map<string, WorkspacePackage>([
+    [android.name, { ...android, version: "0.1.0" }],
+    ["@pantoken/core", pkg("@pantoken/core", "0.1.0")],
+    ["@pantoken/sd-config", { ...pkg("@pantoken/sd-config", "0.1.0"), private: true }],
+    ["@pantoken/tokens", pkg("@pantoken/tokens", "0.1.0")],
+  ]);
+
+  const next = new Map<string, WorkspacePackage>([
+    [android.name, android],
+    ["@pantoken/core", pkg("@pantoken/core", "0.1.0")],
+    ["@pantoken/sd-config", { ...pkg("@pantoken/sd-config", "0.1.1"), private: true }],
+    ["@pantoken/tokens", pkg("@pantoken/tokens", "0.1.0")],
+  ]);
+
+  expect(collectWorkspaceDependencyVersionChanges(android, previous, next)).toEqual([
+    {
+      name: "@pantoken/sd-config",
+      from: "0.1.0",
+      to: "0.1.1",
+    },
+  ]);
+});
+
+test("buildDependencyChangelogLine formats detailed dependency versions", () => {
+  expect(
+    buildDependencyChangelogLine([
+      {
+        name: "@pantoken/sd-config",
+        from: "0.1.0",
+        to: "0.1.1",
+      },
+      {
+        name: "@pantoken/tokens",
+        from: "0.1.0",
+        to: "0.1.1",
+      },
+    ]),
+  ).toBe(
+    "Updated internal workspace dependencies: @pantoken/sd-config (0.1.0 -> 0.1.1), @pantoken/tokens (0.1.0 -> 0.1.1).",
+  );
+
+  expect(buildDependencyChangelogLine([])).toBe(DEFAULT_CHANGELOG_LINE);
 });
