@@ -490,7 +490,6 @@ async function main() {
     return `${pkg.path}/package.json`;
   });
 
-  const releaseFilters = releaseNames.flatMap((name) => ["-F", name]);
   const publishableReleaseNames = releaseNames.filter((name) =>
     isPublishablePackage(initialWorkspace.byName.get(name)),
   );
