@@ -1,7 +1,8 @@
 # @pantoken/plugin-theme-custom-media
 
-A PostCSS plugin that supports theme-aware CSS authoring with `@media (--theme-*)` aliases, then
-lowers them to concrete target-theme output.
+A PostCSS plugin for theme-aware CSS authoring. It supports both theme custom-idents in media
+features (for example, `(theme: canvas)`) and `@custom-media --theme-*` aliases, then lowers them
+to concrete target-theme output.
 
 ## Install
 
@@ -19,6 +20,47 @@ import { themeCustomMedia } from "@pantoken/plugin-theme-custom-media";
 
 const out = postcss([themeCustomMedia({ theme: "canvas" })]).process(css, { from: undefined }).css;
 ```
+
+## Authoring
+
+### Theme custom-idents
+
+Author directly with the `theme` media feature:
+
+```css
+@media (theme: canvas) {
+  .button {
+    color: blue;
+  }
+}
+
+@media (theme: rebrand) and (prefers-color-scheme: dark) {
+  .button {
+    color: white;
+  }
+}
+```
+
+For the selected target theme, non-matching theme branches are dropped, matching `theme:*`
+clauses are removed, and wrappers that become unconditional are unwrapped.
+
+### Theme custom-media aliases
+
+Author with `@custom-media` aliases and consume them in `@media`:
+
+```css
+@custom-media --theme-canvas (theme: canvas);
+@custom-media --theme-dark (theme: rebrand) and (prefers-color-scheme: dark);
+
+@media (--theme-canvas) {
+  .button {
+    color: blue;
+  }
+}
+```
+
+Built-in `--theme-*` aliases are expanded before lowering, and emitted CSS removes only
+`@custom-media --theme-*` declarations. Non-theme aliases are preserved.
 
 ## Aliases
 

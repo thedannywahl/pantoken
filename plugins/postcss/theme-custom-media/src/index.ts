@@ -1,10 +1,11 @@
 /**
- * `@pantoken/plugin-theme-custom-media` — author with `@media (--theme-*)`, emit concrete
- * CSS for a chosen target theme.
+ * `@pantoken/plugin-theme-custom-media` — author with theme custom-idents
+ * (`@media (theme: <name>)`) and/or `@media (--theme-*)` aliases, then emit concrete CSS for a
+ * chosen target theme.
  *
- * The plugin replaces theme aliases with concrete expressions, prunes non-target theme branches,
- * unwraps always-true theme-only media wrappers, and removes `@custom-media --theme-*` declarations
- * from emitted CSS.
+ * The plugin expands built-in `--theme-*` aliases, prunes non-target theme branches, strips
+ * matching `theme:*` clauses from kept queries, unwraps always-true theme-only media wrappers, and
+ * removes `@custom-media --theme-*` declarations from emitted CSS.
  *
  * @module
  * @beta
@@ -108,6 +109,9 @@ function lowerMedia(rule: AtRule, theme: Theme): void {
 
 /**
  * Create the theme custom-media lowering plugin.
+ *
+ * Supports authoring with either direct theme custom-idents in media features (for example,
+ * `(theme: canvas)`) or built-in `@custom-media --theme-*` aliases.
  *
  * @param options - {@link ThemeCustomMediaOptions}.
  * @returns A PostCSS {@link Plugin}.
