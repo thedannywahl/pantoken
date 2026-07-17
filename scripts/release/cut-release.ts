@@ -450,7 +450,6 @@ async function main() {
     const args = [
       "bumpp",
       `${pkg.path}/package.json`,
-      "--git-check",
       "--print-commits",
       "--no-commit",
       "--no-tag",
