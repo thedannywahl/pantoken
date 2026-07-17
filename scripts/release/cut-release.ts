@@ -46,6 +46,16 @@ const SEMVER_RE = /^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$/;
 const CHANNELS = new Set<PreReleaseChannel>(["alpha", "beta", "rc"]);
 const DEFAULT_CHANGELOG_LINE = "Updated internal workspace dependency versions.";
 
+function ensureNoNestedVpRun(env: NodeJS.ProcessEnv = process.env) {
+  if (!env.VP_CLI_BIN) {
+    return;
+  }
+
+  throw new Error(
+    "Refusing to run release inside a vp-managed process. Nested vp run/pack can fail with Invalid argument (os error 22). Run node scripts/release/cut-release.ts from a top-level shell.",
+  );
+}
+
 function isDirectExecution(metaUrl: string): boolean {
   const entry = process.argv[1];
   if (!entry) {
@@ -450,6 +460,8 @@ async function main() {
     return;
   }
 
+  ensureNoNestedVpRun();
+
   if (cli.packageSpecs.length === 0) {
     throw new Error("Missing package spec. Example: vpr release -p components@1.2.3");
   }
@@ -654,6 +666,7 @@ export {
   buildDependencyChangelogLine,
   bumpPatch,
   collectWorkspaceDependencyVersionChanges,
+  ensureNoNestedVpRun,
   parseCliArgs,
   resolveRequestedVersions,
   withPreRelease,

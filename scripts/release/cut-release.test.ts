@@ -7,6 +7,7 @@ import {
   buildDependencyChangelogLine,
   bumpPatch,
   collectWorkspaceDependencyVersionChanges,
+  ensureNoNestedVpRun,
   parseCliArgs,
   resolveRequestedVersions,
   withPreRelease,
@@ -36,6 +37,16 @@ test("parseCliArgs accepts package-flag mode and force/channel flags", () => {
 test("parseCliArgs rejects mixed package modes", () => {
   expect(() => parseCliArgs(["-p", "pantoken@1.0.0", "aggregate@0.1.1"])).toThrow(
     "Do not mix -p/--package with positional package specs.",
+  );
+});
+
+test("ensureNoNestedVpRun allows top-level shell execution", () => {
+  expect(() => ensureNoNestedVpRun({})).not.toThrow();
+});
+
+test("ensureNoNestedVpRun rejects nested vp-run context", () => {
+  expect(() => ensureNoNestedVpRun({ VP_CLI_BIN: "/Users/me/.vite-plus/bin/vp" })).toThrow(
+    "Refusing to run release inside a vp-managed process.",
   );
 });
 
