@@ -1,15 +1,38 @@
 {
-  "generatedAt": "2026-07-17T16:25:12.709Z",
-  "targetPackage": "@pantoken/aggregate",
+  "generatedAt": "2026-07-17T16:26:28.584Z",
+  "targetPackage": "@pantoken/sd-config",
   "targetVersion": "0.1.0",
-  "tag": "@pantoken/aggregate@v0.1.0",
+  "tag": "@pantoken/sd-config@v0.1.0",
   "targetPrivate": true,
-  "releasePackages": ["@pantoken/aggregate"],
-  "publishPackages": [],
+  "releasePackages": [
+    "@pantoken/android",
+    "@pantoken/cli",
+    "@pantoken/compose",
+    "@pantoken/flutter",
+    "@pantoken/sd-config",
+    "@pantoken/swift"
+  ],
+  "publishPackages": [
+    "@pantoken/android",
+    "@pantoken/cli",
+    "@pantoken/compose",
+    "@pantoken/flutter",
+    "@pantoken/swift"
+  ],
   "packagePaths": {
-    "@pantoken/aggregate": "tools/aggregate"
+    "@pantoken/android": "platforms/android",
+    "@pantoken/cli": "packages/cli",
+    "@pantoken/compose": "platforms/compose",
+    "@pantoken/flutter": "platforms/flutter",
+    "@pantoken/sd-config": "tools/sd-config",
+    "@pantoken/swift": "platforms/swift"
   },
   "manifestVersions": {
-    "@pantoken/aggregate": "0.1.0"
+    "@pantoken/android": "0.1.1",
+    "@pantoken/cli": "0.1.1",
+    "@pantoken/compose": "0.1.1",
+    "@pantoken/flutter": "0.1.1",
+    "@pantoken/sd-config": "0.1.0",
+    "@pantoken/swift": "0.1.1"
   }
 }
