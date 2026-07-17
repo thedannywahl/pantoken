@@ -365,6 +365,17 @@ export default defineConfig({
       llmstxt({
         title: "pantoken",
         description,
+        // Hungarian (docs/hu/**) is a machine-translated mirror of the English source. Keep it out
+        // of the aggregate indexes so llms.txt / llms-full.txt stay canonical-English (the plugin
+        // author's own guidance), but leave per-page .md generation on so a /hu/ page can still be
+        // fetched as markdown. Patterns are minimatch against paths relative to workDir (docs/), so
+        // `hu/**` matches hu/index.md and every hu/guide/** and hu/api/** file.
+        details:
+          "This index covers the canonical English documentation. A Hungarian translation of every page is available under /hu/.",
+        ignoreFilesPerOutput: {
+          llmsTxt: ["hu/**"],
+          llmsFullTxt: ["hu/**"],
+        },
       }) as never,
     ],
     resolve: {
