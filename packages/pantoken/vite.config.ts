@@ -9,6 +9,16 @@ const entry = readdirSync(srcDir)
   .map((f) => `src/${f}`);
 
 export default defineConfig({
+  run: {
+    tasks: {
+      build: {
+        command: ["vp run aggregate", "vp pack"],
+        // node_modules/.modules.yaml is rewritten by every CI reinstall; excluding it keeps
+        // vp pack a cache hit across jobs instead of re-packing on every run.
+        input: [{ auto: true }, { pattern: "!node_modules/.modules.yaml", base: "workspace" }],
+      },
+    },
+  },
   pack: {
     entry: entry.length > 0 ? entry : ["src/index.ts"],
     dts: true,

@@ -22,7 +22,6 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
-    "build": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack",
     "dev": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
     "test": "vp test",
     "check": "vp check",
