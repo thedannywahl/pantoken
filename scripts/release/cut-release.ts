@@ -365,10 +365,11 @@ function buildDependencyChangelogLine(changes: DependencyVersionChange[]): strin
     return DEFAULT_CHANGELOG_LINE;
   }
 
-  const details = changes
-    .map((change) => `${change.name} (${change.from} -> ${change.to})`)
-    .join(", ");
-  return `Updated internal workspace dependencies: ${details}.`;
+  const lines = [
+    "Updated internal workspace dependencies:",
+    ...changes.map((change) => `  - ${change.name}: ${change.from} -> ${change.to}`),
+  ];
+  return lines.join("\n");
 }
 
 function packageHasScript(pkgPath: string, scriptName: string): boolean {

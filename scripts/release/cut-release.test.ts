@@ -167,7 +167,7 @@ test("buildDependencyChangelogLine formats detailed dependency versions", () => 
       },
     ]),
   ).toBe(
-    "Updated internal workspace dependencies: @pantoken/sd-config (0.1.0 -> 0.1.1), @pantoken/tokens (0.1.0 -> 0.1.1).",
+    "Updated internal workspace dependencies:\n  - @pantoken/sd-config: 0.1.0 -> 0.1.1\n  - @pantoken/tokens: 0.1.0 -> 0.1.1",
   );
 
   expect(buildDependencyChangelogLine([])).toBe(DEFAULT_CHANGELOG_LINE);
