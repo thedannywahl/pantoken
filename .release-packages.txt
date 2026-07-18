@@ -1,1 +1,12 @@
+@pantoken/angular
+@pantoken/cli
+@pantoken/components
+@pantoken/drupal
+@pantoken/hugo
+@pantoken/jekyll
 @pantoken/pantoken
+@pantoken/pendo
+@pantoken/react
+@pantoken/svelte
+@pantoken/vue
+@pantoken/web-components
