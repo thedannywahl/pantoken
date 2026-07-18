@@ -7,7 +7,7 @@ many small, publishable packages: plain stylesheets, SCSS and Less, React and Vu
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more. You install the
 smallest package that fits your task, or the unified `pantoken` package that re-exports them all.
 
-[Learn more](https://thedannywahl.github.io/pantoken)
+[Learn more](https://pantoken.iywahl.com)
 
 ## Quick start
 
@@ -56,7 +56,7 @@ The monorepo is organized into buckets. A few highlights:
 | `plugins/`   | Optional token and CSS transforms    | `@pantoken/plugin-stacking`, `@pantoken/plugin-simple-icons`                |
 | `tools/`     | Private build tooling                | `@pantoken/aggregate`, `@pantoken/validate-generated`                       |
 
-The docs site has the [full package map](https://thedannywahl.github.io/pantoken/guide/packages).
+The docs site has the [full package map](https://pantoken.iywahl.com/guide/packages).
 
 ## Architecture
 
@@ -69,7 +69,7 @@ upstream. Every other bucket consumes the IR.
 ## Documentation
 
 The site is built with VitePress and TypeDoc and deploys to GitHub Pages:
-[thedannywahl.github.io/pantoken](https://thedannywahl.github.io/pantoken).
+[pantoken.iywahl.com](https://pantoken.iywahl.com).
 
 ```sh
 pnpm run docs:dev      # local dev server with hot reload
@@ -88,7 +88,7 @@ pnpm run check:publish       # publint every publishable package
 ```
 
 Generated files are never committed — a build reproduces them into each package's `generated/`
-directory. See the [generated-output guide](https://thedannywahl.github.io/pantoken/guide/generated-output).
+directory. See the [generated-output guide](https://pantoken.iywahl.com/guide/generated-output).
 
 ## License
 
