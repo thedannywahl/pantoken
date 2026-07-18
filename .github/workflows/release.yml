@@ -148,7 +148,14 @@ jobs:
         run: |
           while IFS= read -r pkg; do
             [[ -z "${pkg}" ]] && continue
-            echo "Publishing ${pkg}"
+            # Idempotent: skip any version already on npm so re-running a tag (or a tag whose
+            # dependency-aware set overlaps another's) doesn't fail on an immutable-version conflict.
+            ver="$(node -p "require('./.release-plan.json').manifestVersions['${pkg}'] || ''")"
+            if [[ -n "${ver}" ]] && npm view "${pkg}@${ver}" version >/dev/null 2>&1; then
+              echo "Skipping ${pkg}@${ver} — already published"
+              continue
+            fi
+            echo "Publishing ${pkg}${ver:+@${ver}}"
             pnpm -F "${pkg}" publish --tag "${{ steps.dist_tag.outputs.dist_tag }}" --access public --no-git-checks
           done < .release-packages.txt
 
