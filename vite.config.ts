@@ -74,12 +74,12 @@ export default defineConfig({
       // task and `build:all`'s internal build would regenerate concurrently into the same files.
       "lint:css": {
         command:
-          'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css"',
+          'vp exec stylelint "renderers/web-components/src/**/*.css" "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css"',
         dependsOn: ["build:all"],
       },
       "lint:js": {
         command:
-          'vp exec eslint "formats/components/src/{components,utilities}/*.css" "formats/components/generated/*.css" "renderers/web-components/src/**/*.css"',
+          'vp exec eslint "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
         dependsOn: ["build:all"],
       },
       "changeset:add": {
