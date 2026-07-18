@@ -1,6 +1,7 @@
 /**
- * Compile the `.css`-authored component records (`src/components/*.css`, `src/utilities/*.css`) into a
- * single generated TS module of string constants (`src/generated/component-styles.ts`). The `.css` files
+ * Compile the `.css`-authored component records (`src/components/*.css`, `src/utilities/*.css`,
+ * `src/rules/*.css`) into a single generated TS module of string constants
+ * (`src/generated/component-styles.ts`). The `.css` files
  * are the authoring source of truth (real CSS — native stylelint/cssdoc/editor support); each carries the
  * `PFX-` class-prefix sentinel. The thin record wrappers import these consts and do
  * `raw.replaceAll(SENTINEL, p)` inside their `css: (p) => …` builder, so the prefix is applied at build
@@ -21,7 +22,7 @@ import postcss from "postcss";
 import { themeCustomMedia } from "@pantoken/plugin-theme-custom-media";
 
 const srcDir = resolve(import.meta.dirname, "../src");
-const sources = [join(srcDir, "components"), join(srcDir, "utilities")];
+const sources = [join(srcDir, "components"), join(srcDir, "utilities"), join(srcDir, "rules")];
 const THEMES = ["rebrand", "canvas", "canvasHighContrast"] as const;
 
 /** `screen-reader-content.css` → `screenReaderContent`. */
