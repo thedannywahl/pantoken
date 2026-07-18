@@ -18,7 +18,7 @@
     "docs:check:drift": "node scripts/check-locale-drift.ts",
     "docs:assets": "node scripts/logo.ts && node scripts/gen-og.ts && node scripts/site-themes.ts && node scripts/demos.ts",
     "docs:og": "node scripts/gen-og.ts",
-    "docs:dev": "vp run docs:assets && vp run docs:api:en && vp run @pantoken/components#generate && vp run docs:api:css && vitepress dev",
+    "docs:dev": "vp run docs:assets && vp run docs:api:en && vp run @pantoken/components#generate && vp run @pantoken/plugin-stacking#generate && vp run @pantoken/plugin-transition#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run docs:api:css && vitepress dev",
     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
     "docs:build": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vp run docs:check:drift && vitepress build",
     "docs:build:claude": "vp run docs:assets && vp run docs:api:locales:claude && vp run docs:check:locales && vitepress build",

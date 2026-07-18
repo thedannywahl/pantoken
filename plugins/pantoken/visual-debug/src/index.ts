@@ -23,6 +23,20 @@
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
 
+const DEFAULT_COLOR = "var(--pantoken-visual-debug-color, #f42272)";
+
+/** The `-with-visual-debug` outline rules for a given outline `color` (default the bright magenta fallback). */
+export function visualDebugRules(color: string = DEFAULT_COLOR): string {
+  return [
+    `.-with-visual-debug { outline: 0.0625rem solid ${color}; }`,
+    // Outline the immediate children too, so the box's layout is visible at a glance.
+    `.-with-visual-debug > * { outline: 0.0625rem dashed ${color}; }`,
+  ].join("\n");
+}
+
+/** The `-with-visual-debug` rules at the default outline colour, for the standalone `visual-debug.css` sheet. */
+export const VISUAL_DEBUG_RULES: string = visualDebugRules();
+
 /** Options for the {@link visualDebug} plugin. */
 export interface VisualDebugOptions {
   /** The debug outline colour (default: a bright magenta via `--pantoken-visual-debug-color`). */
@@ -38,13 +52,9 @@ export interface VisualDebugOptions {
  * @returns A {@link PantokenPlugin} with a `css` hook.
  */
 export function visualDebug(options: VisualDebugOptions = {}): PantokenPlugin {
-  const color = options.color ?? "var(--pantoken-visual-debug-color, #f42272)";
+  const color = options.color ?? DEFAULT_COLOR;
   const position = options.position ?? "append";
-  const rules = [
-    `.-with-visual-debug { outline: 0.0625rem solid ${color}; }`,
-    // Outline the immediate children too, so the box's layout is visible at a glance.
-    `.-with-visual-debug > * { outline: 0.0625rem dashed ${color}; }`,
-  ].join("\n");
+  const rules = visualDebugRules(color);
 
   return definePlugin({
     name: "@pantoken/plugin-visual-debug",

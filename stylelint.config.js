@@ -56,7 +56,7 @@ export default {
       // generated bundles built from them. Keep value-level correctness, but drop the structural rules
       // that legitimately trip on this base/modifier/override authoring style (a base rule plus a later
       // rule for the same selector — e.g. `.instui-context-view::after` overridden per `-placement-*`).
-      files: ["**/generated/**/*.css", "formats/components/src/{components,utilities}/*.css"],
+      files: ["**/generated/**/*.css", "formats/components/src/{components,utilities,rules}/*.css"],
       rules: {
         "no-duplicate-selectors": null,
         "declaration-block-no-duplicate-properties": null,

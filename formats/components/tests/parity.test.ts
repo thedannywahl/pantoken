@@ -17,7 +17,7 @@ test("every registered definition is a single well-formed record (sanity: the re
   expect(COMPONENTS.length).toBe(52);
   expect(UTILITIES.length).toBe(7);
   expect(RULES.length).toBe(2);
-  expect(DECLARATIONS.length).toBe(1);
+  expect(DECLARATIONS.length).toBe(2);
 });
 
 for (const def of ALL) {

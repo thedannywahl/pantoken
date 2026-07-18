@@ -13,8 +13,9 @@ import css from "@eslint/css";
 export default [
   {
     files: [
-      "formats/components/src/{components,utilities}/*.css",
+      "formats/components/src/{components,utilities,rules}/*.css",
       "formats/components/generated/*.css",
+      "plugins/pantoken/*/generated/*.css",
       "renderers/web-components/src/**/*.css",
     ],
     plugins: { css, cssdoc },
