@@ -19,8 +19,11 @@ permissions:
   contents: write
   id-token: write
 
+# Key the concurrency group on the package tag, not github.ref: a tag push already has a per-tag ref,
+# but every workflow_dispatch shares refs/heads/main, so keying on github.ref would serialize and cancel
+# parallel dispatches of different packages. Using the tag lets distinct packages release concurrently.
 concurrency:
-  group: release-package-${{ github.ref }}
+  group: release-package-${{ github.event_name == 'workflow_dispatch' && inputs.package_tag || github.ref_name }}
   cancel-in-progress: false
 
 jobs:
@@ -156,8 +159,11 @@ jobs:
             --plan .release-plan.json \
             --out release-notes.md
 
+      # Cut the GitHub release on BOTH triggers. Gating on `github.event_name == 'push'` meant a
+      # workflow_dispatch release (the fallback whenever >3 tags are pushed at once, since GitHub caps
+      # multi-tag pushes) published to npm but silently skipped the GitHub release + notes.
       - name: Create GitHub release
-        if: github.event_name == 'push' && steps.plan.outputs.publish_count != '0'
+        if: steps.plan.outputs.publish_count != '0'
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.RELEASE_TAG }}
