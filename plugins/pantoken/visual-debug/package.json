@@ -13,13 +13,15 @@
   "type": "module",
   "exports": {
     ".": "./dist/index.mjs",
+    "./visual-debug.css": "./dist/visual-debug.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "dev": "vp pack --watch",
+    "generate": "node scripts/generate.ts",
+    "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
     "check": "vp check",
     "prepublishOnly": "vp run build"

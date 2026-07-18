@@ -24,6 +24,50 @@
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
 
+const DEFAULT_DURATION = "300ms";
+const DEFAULT_TIMING = "ease-in-out";
+
+/** The base `.<prefix>-transition` + `fade`/`scale`/`slide-*` state-class rules (prefix default `instui`). */
+export function transitionRules(prefix = "instui"): string {
+  const dur = "var(--instui-transition-duration)";
+  const tim = "var(--instui-transition-timing)";
+  const t = `.${prefix}-transition`;
+  return [
+    `${t} { transition: opacity ${dur} ${tim}, transform ${dur} ${tim}; }`,
+    ``,
+    `${t}.-fade-exiting, ${t}.-fade-exited { opacity: 0.01; }`,
+    `${t}.-fade-entering, ${t}.-fade-entered { opacity: 1; }`,
+    ``,
+    `${t}.-scale-exiting, ${t}.-scale-exited { transform: scale(0.01) translate3d(0, 0, 0); opacity: 0.01; }`,
+    `${t}.-scale-entering, ${t}.-scale-entered { transform: scale(1) translate3d(0, 0, 0); opacity: 1; }`,
+    ``,
+    `${t}.-slide-right-exited, ${t}.-slide-left-exited, ${t}.-slide-up-exited, ${t}.-slide-down-exited { opacity: 0.01; }`,
+    `${t}.-slide-right-exiting, ${t}.-slide-right-exited { transform: translate3d(100%, 0, 0); }`,
+    `${t}.-slide-left-exiting, ${t}.-slide-left-exited { transform: translate3d(-100%, 0, 0); }`,
+    `${t}.-slide-up-exiting, ${t}.-slide-up-exited { transform: translate3d(0, -100%, 0); }`,
+    `${t}.-slide-down-exiting, ${t}.-slide-down-exited { transform: translate3d(0, 100%, 0); }`,
+    `${t}.-slide-right-entering, ${t}.-slide-left-entering, ${t}.-slide-up-entering, ${t}.-slide-down-entering,`,
+    `${t}.-slide-right-entered, ${t}.-slide-left-entered, ${t}.-slide-up-entered, ${t}.-slide-down-entered { transform: translate3d(0, 0, 0); opacity: 1; }`,
+  ].join("\n");
+}
+
+/** The `.instui-transition` rules at the default `instui` prefix, for the standalone `transition.css` sheet. */
+export const TRANSITION_RULES: string = transitionRules("instui");
+
+/**
+ * The `:root { --instui-transition-* }` token block for the standalone sheet.
+ *
+ * @param duration - Animation duration (default `300ms`).
+ * @param timing - Timing function (default `ease-in-out`).
+ * @returns The `:root { … }` CSS string (no doc comment, no rules).
+ */
+export function transitionRootCss(
+  duration: string = DEFAULT_DURATION,
+  timing: string = DEFAULT_TIMING,
+): string {
+  return `:root {\n  --instui-transition-duration: ${duration};\n  --instui-transition-timing: ${timing};\n}`;
+}
+
 /** Options for the {@link transition} plugin. */
 export interface TransitionOptions {
   /** Animation duration (default: InstUI's `300ms`). */
@@ -43,32 +87,12 @@ export interface TransitionOptions {
  * @returns A {@link PantokenPlugin} with `tokens` and `css` hooks.
  */
 export function transition(options: TransitionOptions = {}): PantokenPlugin {
-  const duration = options.duration ?? "300ms";
-  const timing = options.timing ?? "ease-in-out";
+  const duration = options.duration ?? DEFAULT_DURATION;
+  const timing = options.timing ?? DEFAULT_TIMING;
   const p = options.prefix ?? "instui";
   const position = options.position ?? "append";
 
-  const dur = "var(--instui-transition-duration)";
-  const tim = "var(--instui-transition-timing)";
-  const t = `.${p}-transition`;
-
-  const rules = [
-    `${t} { transition: opacity ${dur} ${tim}, transform ${dur} ${tim}; }`,
-    ``,
-    `${t}.-fade-exiting, ${t}.-fade-exited { opacity: 0.01; }`,
-    `${t}.-fade-entering, ${t}.-fade-entered { opacity: 1; }`,
-    ``,
-    `${t}.-scale-exiting, ${t}.-scale-exited { transform: scale(0.01) translate3d(0, 0, 0); opacity: 0.01; }`,
-    `${t}.-scale-entering, ${t}.-scale-entered { transform: scale(1) translate3d(0, 0, 0); opacity: 1; }`,
-    ``,
-    `${t}.-slide-right-exited, ${t}.-slide-left-exited, ${t}.-slide-up-exited, ${t}.-slide-down-exited { opacity: 0.01; }`,
-    `${t}.-slide-right-exiting, ${t}.-slide-right-exited { transform: translate3d(100%, 0, 0); }`,
-    `${t}.-slide-left-exiting, ${t}.-slide-left-exited { transform: translate3d(-100%, 0, 0); }`,
-    `${t}.-slide-up-exiting, ${t}.-slide-up-exited { transform: translate3d(0, -100%, 0); }`,
-    `${t}.-slide-down-exiting, ${t}.-slide-down-exited { transform: translate3d(0, 100%, 0); }`,
-    `${t}.-slide-right-entering, ${t}.-slide-left-entering, ${t}.-slide-up-entering, ${t}.-slide-down-entering,`,
-    `${t}.-slide-right-entered, ${t}.-slide-left-entered, ${t}.-slide-up-entered, ${t}.-slide-down-entered { transform: translate3d(0, 0, 0); opacity: 1; }`,
-  ].join("\n");
+  const rules = transitionRules(p);
 
   const declarations: [string, string][] = [
     ["--instui-transition-duration", duration],
