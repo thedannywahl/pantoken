@@ -47,6 +47,19 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Build all packages
         run: vp run -r build
+      # On main, hand the built output to the docs deploy (workflow_run) so it doesn't rebuild the
+      # workspace. generated/ carries the token JSON + themed CSS the site reads; dist/ carries the
+      # docs subgraph's built packages the VitePress build imports.
+      - name: Upload build output for docs deploy
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: |
+            **/generated/**
+            **/dist/**
+            !**/node_modules/**
+          retention-days: 1
 
   typecheck:
     needs: build
