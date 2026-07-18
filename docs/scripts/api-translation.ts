@@ -131,6 +131,21 @@ const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
   // API-overview table first-column headers (the second column is `Description`, handled above).
   [/^Area$/g, "Terület"],
   [/^Group$/g, "Csoport"],
+  // CSS reference section groups (from formats/components via @cssdoc/typedoc). These label the CSS
+  // nav tree (typedoc-sidebar.json) as isolated strings AND appear as `## …` headings in
+  // api/css/index.md, so each gets both a whole-string form (^…$) for the sidebar label and a
+  // heading-anchored form (^# …$) for the overview page. Common words, so both are anchored to never
+  // fire inside prose.
+  [/^(#{1,6} )Overview$/gm, "$1Áttekintés"],
+  [/^(#{1,6} )Components$/gm, "$1Komponensek"],
+  [/^(#{1,6} )Utilities$/gm, "$1Segédosztályok"],
+  [/^(#{1,6} )Rules$/gm, "$1Szabályok"],
+  [/^(#{1,6} )Declarations$/gm, "$1Deklarációk"],
+  [/^Overview$/g, "Áttekintés"],
+  [/^Components$/g, "Komponensek"],
+  [/^Utilities$/g, "Segédosztályok"],
+  [/^Rules$/g, "Szabályok"],
+  [/^Declarations$/g, "Deklarációk"],
 ];
 
 export class GlossaryTranslationAdapter implements TranslationAdapter {
