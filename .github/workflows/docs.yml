@@ -2,26 +2,22 @@ name: Deploy docs
 
 # Build the VitePress + TypeDoc site and publish it to GitHub Pages.
 # Enable Pages first: repo Settings → Pages → Build and deployment → Source = GitHub Actions.
+#
+# Gated behind CI: this runs after the CI workflow finishes on main and only deploys when CI passed,
+# reusing the packages CI already built (downloaded as an artifact) instead of rebuilding the
+# workspace. `workflow_dispatch` is the manual escape hatch — it builds the assets fresh (for a
+# `[skip ci]` commit, or to re-run a failed deploy), since the CI artifact won't exist for it.
 
 on:
-  push:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
     branches: [main]
-    # Only redeploy when the site can actually change. Broad on purpose: the site is themed by generated
-    # token/CSS output from many packages, so a token or component change must trigger a rebuild.
-    paths:
-      - "docs/**"
-      - "packages/**"
-      - "formats/**"
-      - "platforms/**"
-      - "renderers/web-components/**"
-      - "plugins/**"
-      - "design/**"
-      - "pnpm-lock.yaml"
-      - "pnpm-workspace.yaml"
   workflow_dispatch:
 
 permissions:
   contents: read
+  actions: read # download the build-output artifact from the triggering CI run
   pages: write
   id-token: write
 
@@ -31,13 +27,47 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Deploy only after a successful CI run (or a manual dispatch), and — for a CI-triggered run — only
+  # when the pushed commit actually changed something the site renders.
+  changes:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.decide.outputs.should_deploy }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
+          fetch-depth: 2
+      - name: Decide whether to deploy
+        id: decide
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+            exit 0
+          fi
+          # The site is themed by generated token/CSS output from many packages, so treat those as
+          # deploy-worthy too (broad but correct). Compare the pushed commit to its parent.
+          if git diff --name-only HEAD~1 HEAD | grep -qE '^(docs/|packages/|formats/|platforms/|renderers/web-components/|plugins/|design/|pnpm-lock\.yaml|pnpm-workspace\.yaml)'; then
+            echo "should_deploy=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "should_deploy=false" >> "${GITHUB_OUTPUT}"
+            echo "No docs-relevant changes in this push; skipping deploy."
+          fi
+
   build:
+    needs: changes
+    if: needs.changes.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
         with:
           persist-credentials: false
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
 
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@v1
@@ -45,22 +75,22 @@ jobs:
           cache: true
           run-install: true
 
-      - name: Restore/save vp task cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules/.vite/task-cache
-          key: vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-docs-${{ github.sha }}
-          restore-keys: |
-            vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
-            vp-taskcache-${{ runner.os }}-
-
       - name: Configure Pages
         uses: actions/configure-pages@v6
 
+      # Post-CI: reuse the workspace CI already built. Landing the artifact in place means the site
+      # build below has the generated token/CSS output and the docs subgraph's dist without a rebuild.
+      - name: Download build output from CI
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: build-output
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      # Manual escape hatch: the CI artifact doesn't exist, so build the docs dependency closure fresh.
       - name: Generate token output
-        # Builds only @pantoken/docs's dependency closure (the `...` suffix), not the whole workspace —
-        # this regenerates the token JSON TypeDoc reads and the CSS the site is themed with. Uses `vp`
-        # (from setup-vp), so the job needs no pnpm on PATH.
+        if: github.event_name == 'workflow_dispatch'
         run: vp run -F "@pantoken/docs..." build
 
       - name: Build docs
