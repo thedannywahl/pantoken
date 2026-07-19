@@ -22,6 +22,7 @@ const family = (prefix: string): string[] =>
 const DOC = `/**
  * @utility primitives
  * @class .instui-bg-primitive-color-white
+ * @group Plugins
  * @summary Opt-in utility classes for the raw primitive palette: \`.instui-bg-\`/\`fg-\`/\`border-primitive-color-<name>\` paint a colour from the primitive colour tokens, plus \`font-family\`/\`font-weight\` utilities for the primitive font tokens. Kept out of the semantic utilities so overrides there stay semantic-only.
  * @example
  * <div class="instui-bg-primitive-color-white instui-fg-primitive-color-aurora-aurora70">Primitive-painted box.</div>

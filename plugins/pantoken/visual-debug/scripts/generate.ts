@@ -11,6 +11,7 @@ import { VISUAL_DEBUG_RULES } from "../src/index.ts";
 const DOC = `/**
  * @utility visual-debug
  * @class .-with-visual-debug
+ * @group Plugins
  * @summary A layout-debugging outline: compound \`.-with-visual-debug\` onto any element to outline the box and its immediate children, so a layout's structure is visible at a glance.
  * @cssproperty --pantoken-visual-debug-color — The outline colour (default a bright magenta); retint it to change every debug outline.
  * @example
