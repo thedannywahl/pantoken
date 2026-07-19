@@ -47,6 +47,7 @@
     "markdown-it": "catalog:",
     "mermaid": "catalog:",
     "oxc-minify": "catalog:",
+    "postcss": "catalog:",
     "typedoc": "catalog:",
     "typedoc-plugin-markdown": "catalog:",
     "typedoc-vitepress-theme": "catalog:",

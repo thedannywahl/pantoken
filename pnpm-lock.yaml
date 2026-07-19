@@ -692,6 +692,9 @@ importers:
       oxc-minify:
         specifier: 'catalog:'
         version: 0.140.0
+      postcss:
+        specifier: 'catalog:'
+        version: 8.5.19
       typedoc:
         specifier: 'catalog:'
         version: 0.28.20(typescript@6.0.3)
