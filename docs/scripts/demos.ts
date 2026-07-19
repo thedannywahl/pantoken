@@ -18,6 +18,7 @@ import {
 } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
+import { scopedComponentsCss } from "./lib/scope-components.ts";
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
@@ -43,13 +44,14 @@ if (existsSync(runnerDist)) {
 const assets = join(publicDir, "demos-assets");
 mkdirSync(assets, { recursive: true });
 
-// The component + prose sheets are theme-independent (they only reference --instui-* tokens). Prose
-// styles bare demo markup (headings, paragraphs, tables) with the InstUI look; it's scoped to
+// The shipped components.css is lowered to ONE theme (rebrand), so its `@media (--theme-*)` overrides
+// are pruned — the reader's runtime theme switch (which toggles `data-pantoken-theme`) could never
+// bring them back. Emit a docs-only multi-theme sheet instead: rebrand rules unscoped, plus the
+// canvas/canvasHighContrast overrides scoped under `:root[data-pantoken-theme="…"]` so the attribute
+// toggle activates them. Mirrors how site-themes.ts handles token values. See lib/scope-components.ts.
+writeFileSync(join(assets, "components.css"), scopedComponentsCss("instui"));
+// Prose styles bare demo markup (headings, paragraphs, tables) with the InstUI look; it's scoped to
 // .pantoken-prose, so it stays inert until the runner tags the result body with that class.
-copyFileSync(
-  require.resolve("@pantoken/components/components.css"),
-  join(assets, "components.css"),
-);
 copyFileSync(require.resolve("@pantoken/components/prose.css"), join(assets, "prose.css"));
 // The opt-in base/reset: the runner's result iframe is a pantoken-owned page, so it loads base too
 // (page surface, box-sizing, base text) — this is also what the `base` demo showcases.
