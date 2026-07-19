@@ -18,7 +18,7 @@ import {
 } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
-import { scopedComponentsCss } from "./lib/scope-components.ts";
+import { writeComponentsSheet } from "./components-sheet.ts";
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
@@ -48,8 +48,11 @@ mkdirSync(assets, { recursive: true });
 // are pruned — the reader's runtime theme switch (which toggles `data-pantoken-theme`) could never
 // bring them back. Emit a docs-only multi-theme sheet instead: rebrand rules unscoped, plus the
 // canvas/canvasHighContrast overrides scoped under `:root[data-pantoken-theme="…"]` so the attribute
-// toggle activates them. Mirrors how site-themes.ts handles token values. See lib/scope-components.ts.
-writeFileSync(join(assets, "components.css"), scopedComponentsCss("instui"));
+// toggle activates them. `writeComponentsSheet` writes both the theme import
+// (theme/generated/components.css, for the MAIN document's inline `@example` previews) and this
+// demos-assets copy (for the /play iframes), so both surfaces respond to the switch. See
+// components-sheet.ts / lib/scope-components.ts.
+writeComponentsSheet();
 // Prose styles bare demo markup (headings, paragraphs, tables) with the InstUI look; it's scoped to
 // .pantoken-prose, so it stays inert until the runner tags the result body with that class.
 copyFileSync(require.resolve("@pantoken/components/prose.css"), join(assets, "prose.css"));
