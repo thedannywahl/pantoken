@@ -80,11 +80,11 @@ catalog:
   vitepress-plugin-llms: ^1.13.3
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.7.8
-  "@cssdoc/config": ^0.7.8
-  "@cssdoc/typedoc": ^0.7.8
-  "@cssdoc/stylelint-plugin": ^0.7.8
-  "@cssdoc/eslint-plugin": ^0.7.8
+  "@cssdoc/core": ^0.7.9
+  "@cssdoc/config": ^0.7.9
+  "@cssdoc/typedoc": ^0.7.9
+  "@cssdoc/stylelint-plugin": ^0.7.9
+  "@cssdoc/eslint-plugin": ^0.7.9
   # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
@@ -113,18 +113,18 @@ peerDependencyRules:
     vite: "*"
 minimumReleaseAge: 5
 minimumReleaseAgeExclude:
-  - "@cssdoc/config@0.7.8"
-  - "@cssdoc/core@0.7.8"
-  - "@cssdoc/dialects@0.7.8"
-  - "@cssdoc/embedded@0.7.8"
-  - "@cssdoc/eslint-plugin@0.7.8"
-  - "@cssdoc/index@0.7.8"
-  - "@cssdoc/lint-core@0.7.8"
-  - "@cssdoc/markdown@0.7.8"
-  - "@cssdoc/providers@0.7.8"
-  - "@cssdoc/spec@0.7.8"
-  - "@cssdoc/stylelint-plugin@0.7.8"
-  - "@cssdoc/typedoc@0.7.8"
+  - "@cssdoc/config@0.7.9"
+  - "@cssdoc/core@0.7.9"
+  - "@cssdoc/dialects@0.7.9"
+  - "@cssdoc/embedded@0.7.9"
+  - "@cssdoc/eslint-plugin@0.7.9"
+  - "@cssdoc/index@0.7.9"
+  - "@cssdoc/lint-core@0.7.9"
+  - "@cssdoc/markdown@0.7.9"
+  - "@cssdoc/providers@0.7.9"
+  - "@cssdoc/spec@0.7.9"
+  - "@cssdoc/stylelint-plugin@0.7.9"
+  - "@cssdoc/typedoc@0.7.9"
 allowBuilds:
   core-js: true
   esbuild: true
