@@ -120,14 +120,6 @@
   border-color: var(--instui-color-text-base);
 }
 
-@media (--theme-canvas), (--theme-canvas-high-contrast) {
-  .pfx-billboard.-clickable:active {
-    border-style: dashed;
-    background: var(--instui-focus-outline-color);
-    border-color: var(--instui-component-link-text-color);
-  }
-}
-
 /* Fallback for environments where @scope is not applied: keep hero icon sizes in sync with size modifiers. */
 .pfx-billboard > .hero {
   font-size: var(--instui-component-icon-illu-md);
