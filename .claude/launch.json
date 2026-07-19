@@ -6,6 +6,21 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter", "@pantoken/docs", "exec", "vitepress", "dev", "--port", "5188"],
       "port": 5188
+    },
+    {
+      "name": "docs-verify",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@pantoken/docs",
+        "exec",
+        "vitepress",
+        "dev",
+        "--port",
+        "5199",
+        "--strictPort"
+      ],
+      "port": 5199
     }
   ]
 }

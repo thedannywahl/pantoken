@@ -6,6 +6,7 @@ import { demoMarkdownIt } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import { LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
+import { tokenValuePreview } from "./plugins/token-value-preview.js";
 
 // Absolute path to a repo-relative location, from docs/.vitepress/.
 const at = (relative: string): string =>
@@ -403,6 +404,7 @@ export default defineConfig({
   markdown: {
     config: (md) => {
       md.use(mermaidPlugin);
+      md.use(tokenValuePreview);
       md.use(demoMarkdownIt, {
         base,
         // Everything the runner injects, all served static files: the component sheets, the one

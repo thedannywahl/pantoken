@@ -48,6 +48,71 @@ div[class*="language-"]:has(+ .css-example) > pre {
   }
 }
 
+/* Previews for token values in the CSS API tables, dropped below the raw value by the
+   `tokenValuePreview` markdown-it plugin. Two kinds: `.pantoken-token-preview` (decoded image SVGs)
+   and `.pantoken-swatch` (colour chips). */
+
+/* Image-valued tokens (icons, logos, mask helpers) carry a `data:image` URI; the plugin decodes it to
+   inline SVG here. The box carries `color: var(--vp-c-text-1)` so `currentColor` icons resolve to the
+   theme text colour and stay visible in light and dark; the SVG is capped so wide logos don't overflow
+   the table cell. */
+.pantoken-token-preview {
+  display: block;
+  margin-block-start: 8px;
+  line-height: 0;
+}
+
+.pantoken-token-preview :is(svg, img) {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 3rem;
+}
+
+/* Colour swatches: a single chip for one colour, or two labelled chips (Light/Dark) for a
+   `light-dark()` value — both branches shown at once, no theme toggle needed. Each chip sits over a
+   theme-neutral checkerboard so translucent colours (e.g. `#00000000`) read as translucent. */
+.pantoken-swatch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-block-start: 6px;
+}
+
+.pantoken-swatch__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pantoken-swatch__chip {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  overflow: hidden;
+  /* A small grey checkerboard, painted behind each fill so alpha shows through. */
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #c8ccd0 25%, transparent 25%, transparent 75%, #c8ccd0 75%),
+    linear-gradient(45deg, #c8ccd0 25%, transparent 25%, transparent 75%, #c8ccd0 75%);
+  background-size: 8px 8px;
+  background-position:
+    0 0,
+    4px 4px;
+}
+
+.pantoken-swatch__fill {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.pantoken-swatch__label {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+
 /* Deprecation markers in the CSS API reference. `@cssdoc`'s `classNames.deprecated` hook wraps just the
    word "Deprecated" (in the `> [!WARNING]` banner and each deprecated modifier-table cell) in an
    `instui-pill` warning tag, leaving the reason prose beside it. It's a compact label, so it renders as
