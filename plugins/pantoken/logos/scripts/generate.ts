@@ -99,6 +99,7 @@ const docProps = logos
   .join("\n");
 const DOC = `/**
  * @declaration logos
+ * @group Plugins
  * @summary Instructure product logos as CSS image tokens: \`--instui-logo-<product>-<layout>-<mode>\` holds a data-URI SVG, so a logo paints via e.g. \`background-image: var(--instui-logo-canvas-horizontal-color)\`.
 ${docProps}
  */`;

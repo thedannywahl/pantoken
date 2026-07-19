@@ -23,6 +23,7 @@ const modifiers = TYPES.flatMap((type) =>
 const DOC = `/**
  * @utility transition
  * @class .instui-transition
+ * @group Plugins
  * @summary Enter/exit animation CSS: put \`.instui-transition\` on an element and toggle a \`.-<type>-<state>\` class (\`fade\`, \`scale\`, or \`slide-{up,down,left,right}\` × \`entering\`/\`entered\`/\`exiting\`/\`exited\`) from your own JS to animate it in and out.
  * @cssproperty --instui-transition-duration — The animation duration (default \`300ms\`).
  * @cssproperty --instui-transition-timing — The animation timing function (default \`ease-in-out\`).

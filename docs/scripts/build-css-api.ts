@@ -195,12 +195,47 @@ const build = (): void => {
   const cssPaths = sheets.map(cssPath);
   const css = sheets.map(readCss).join("\n");
 
-  // Index the sheet-local custom properties (elevation shadows in components.css, the focus ring in
-  // base.css) so their values resolve like IR tokens — first definition wins.
-  for (const m of `${css}\n${readCss("base.css")}`.matchAll(/(--[\w-]+)\s*:\s*([^;{}]+);/gu)) {
-    if (!localVars.has(m[1])) localVars.set(m[1], m[2].trim());
-  }
-  // Rebuild the resolver with the local vars in scope so `var(--pantoken-*)` chains resolve too.
+  // The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives) carry cssdoc records in
+  // their generated sheets, each tagged `@group Plugins` so cssdoc folds them into a "Plugins" subsection
+  // of the CSS section (it groups by `@group`, falling back to record kind). They render in the SAME pass
+  // as the component records — one `emitCssApi` call, one "CSS" section.
+  const PLUGIN_RECORDS = [
+    {
+      pkg: "plugins/pantoken/stacking",
+      sheet: "stacking.css",
+      import: "@pantoken/plugin-stacking/stacking.css",
+    },
+    {
+      pkg: "plugins/pantoken/transition",
+      sheet: "transition.css",
+      import: "@pantoken/plugin-transition/transition.css",
+    },
+    {
+      pkg: "plugins/pantoken/visual-debug",
+      sheet: "visual-debug.css",
+      import: "@pantoken/plugin-visual-debug/visual-debug.css",
+    },
+    {
+      pkg: "plugins/pantoken/logos",
+      sheet: "logos.css",
+      import: "@pantoken/plugin-logos/logos.css",
+    },
+    {
+      pkg: "plugins/pantoken/primitives",
+      sheet: "primitives.css",
+      import: "@pantoken/plugin-primitives/primitives.css",
+    },
+  ];
+  const pluginSheet = (r: (typeof PLUGIN_RECORDS)[number]): string =>
+    join(repoRoot, r.pkg, "generated", r.sheet);
+  const pluginPaths = PLUGIN_RECORDS.map(pluginSheet);
+
+  // Index every sheet-local custom property so its value resolves like an IR token — elevation shadows +
+  // focus ring in the component sheets, `--instui-stacking-*`/`--instui-transition-*` in the plugin
+  // sheets; first definition wins. Rebuild the resolver with them in scope.
+  for (const text of [css, readCss("base.css"), ...pluginPaths.map((p) => readFileSync(p, "utf8"))])
+    for (const m of text.matchAll(/(--[\w-]+)\s*:\s*([^;{}]+);/gu))
+      if (!localVars.has(m[1])) localVars.set(m[1], m[2].trim());
   const localTokens: Token[] = [...localVars].map(([name, value]) => ({
     name,
     value,
@@ -209,21 +244,32 @@ const build = (): void => {
   }));
   resolveValue = makeResolver([...tokens, ...localTokens]);
 
-  // Load the repo's shared cssdoc.json (root) — the single declarative config that also drives the
-  // lint plugins and the per-record test guard, so docs, lint, and tests agree on the record model and
-  // section order. `configFile` feeds `emitCssApi` (parse config + `render` section order/heading);
-  // `configuration` is its parse view, reused locally for `parseCssDocs`.
+  // Load the repo's shared cssdoc.json (root) — the single declarative config that also drives the lint
+  // plugins and the per-record test guard. `configFile` feeds `emitCssApi` (parse config + `render`
+  // order/heading); `configuration` is its parse view, reused locally for `parseCssDocs`.
   const componentsRoot = join(generatedCssDir, "..");
   const configFile = CssDocConfigFile.loadForFolder(repoRoot);
   const configuration = configFile.toConfiguration();
 
-  // `**Source:**` link → each record's authoring `.ts`. `## Usage` import → the sheet the record ships
-  // in (a record's own sheet, resolved by parsing each of the four sheets for its record names).
-  const resolveSource = makeResolveSource(sourceMap(componentSources(componentsRoot)));
+  // `**Source:**` link → each record's authoring source: a component `.ts`/`.css`, or a plugin's
+  // `scripts/generate.ts` (where its doc block is authored). Record names don't collide, so one map.
+  const pluginSources = PLUGIN_RECORDS.map((r) => join(repoRoot, r.pkg, "scripts", "generate.ts"));
+  const resolveSource = makeResolveSource(
+    sourceMap([...componentSources(componentsRoot), ...pluginSources]),
+  );
+
+  // `## Usage` import → the record's sheet: `@pantoken/components/<sheet>` (+ the per-component subpath),
+  // or the plugin's static `./<name>.css` subpath export.
   const recordSheet = new Map<string, string>();
   for (const sheet of sheets)
     for (const e of parseCssDocs(readCss(sheet), { configuration })) recordSheet.set(e.name, sheet);
+  const pluginImportByName = new Map<string, string>();
+  for (const r of PLUGIN_RECORDS)
+    for (const e of parseCssDocs(readFileSync(pluginSheet(r), "utf8"), { configuration }))
+      pluginImportByName.set(e.name, r.import);
   const importSnippet = (entry: CssDocEntry): string | undefined => {
+    const pluginImport = pluginImportByName.get(entry.name);
+    if (pluginImport) return `@import "${pluginImport}";`;
     const sheet = recordSheet.get(entry.name);
     if (!sheet) return undefined;
     if (entry.kind === "component") {
@@ -238,10 +284,12 @@ const build = (): void => {
   const outSubdir = "css";
   const { entries, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
-    css: cssPaths,
+    css: [...cssPaths, ...pluginPaths],
     outSubdir,
     label: "CSS",
     baseHref: "/api/css/",
+    // The four record kinds first, then the plugins' `@group Plugins` subsection last.
+    groups: ["Components", "Utilities", "Rules", "Declarations", "Plugins"],
     configFile,
     classNames,
     resolveToken,
@@ -276,88 +324,6 @@ const build = (): void => {
   console.log(
     `✓ CSS API: wrote ${entries.length} record page(s) to api/css/` +
       `${sidebarMerged ? " + merged the CSS section into the TypeDoc sidebar" : ""}`,
-  );
-
-  // --- Plugin CSS-API pages ---------------------------------------------------------------------
-  // The CSS-emitting plugins (stacking, transition, visual-debug, logos, primitives) carry cssdoc
-  // records in their generated sheets. A SECOND emitCssApi call renders them under a distinct "CSS
-  // plugins" label/subdir; `mergeCssSidebar` replaces only the same-label section, so this appends
-  // alongside the component "CSS" section rather than overwriting it. The component drift guard above
-  // stays scoped to the component sheets — plugin sheets legitimately define and reference their own
-  // `--instui-stacking-*` / `--instui-transition-*` (not in the base IR), so widening it there would
-  // false-positive; the plugin call simply doesn't run it.
-  const PLUGIN_RECORDS = [
-    {
-      pkg: "plugins/pantoken/stacking",
-      sheet: "stacking.css",
-      import: "@pantoken/plugin-stacking/stacking.css",
-    },
-    {
-      pkg: "plugins/pantoken/transition",
-      sheet: "transition.css",
-      import: "@pantoken/plugin-transition/transition.css",
-    },
-    {
-      pkg: "plugins/pantoken/visual-debug",
-      sheet: "visual-debug.css",
-      import: "@pantoken/plugin-visual-debug/visual-debug.css",
-    },
-    {
-      pkg: "plugins/pantoken/logos",
-      sheet: "logos.css",
-      import: "@pantoken/plugin-logos/logos.css",
-    },
-    {
-      pkg: "plugins/pantoken/primitives",
-      sheet: "primitives.css",
-      import: "@pantoken/plugin-primitives/primitives.css",
-    },
-  ];
-  const pluginSheet = (r: (typeof PLUGIN_RECORDS)[number]): string =>
-    join(repoRoot, r.pkg, "generated", r.sheet);
-  const pluginPaths = PLUGIN_RECORDS.map(pluginSheet);
-
-  // Index the plugin sheets' own custom properties so their values resolve in the tokens tables, then
-  // rebuild the shared resolver with them in scope (they don't collide with the component-local vars).
-  for (const path of pluginPaths)
-    for (const m of readFileSync(path, "utf8").matchAll(/(--[\w-]+)\s*:\s*([^;{}]+);/gu))
-      if (!localVars.has(m[1])) localVars.set(m[1], m[2].trim());
-  const allLocal: Token[] = [...localVars].map(([name, value]) => ({
-    name,
-    value,
-    syntax: "*",
-    inherits: true,
-  }));
-  resolveValue = makeResolver([...tokens, ...allLocal]);
-
-  // `**Source:**` → each plugin's `scripts/generate.ts` (where the doc block is authored); `## Usage`
-  // import → the plugin's static `./<name>.css` subpath export.
-  const pluginSources = PLUGIN_RECORDS.map((r) => join(repoRoot, r.pkg, "scripts", "generate.ts"));
-  const resolvePluginSource = makeResolveSource(sourceMap(pluginSources));
-  const pluginImportByName = new Map<string, string>();
-  for (const r of PLUGIN_RECORDS)
-    for (const e of parseCssDocs(readFileSync(pluginSheet(r), "utf8"), { configuration }))
-      pluginImportByName.set(e.name, r.import);
-  const pluginImportSnippet = (entry: CssDocEntry): string | undefined => {
-    const path = pluginImportByName.get(entry.name);
-    return path ? `@import "${path}";` : undefined;
-  };
-
-  const { entries: pluginEntries, sidebarMerged: pluginSidebarMerged } = emitCssApi({
-    outputDirectory: join(docsRoot, "api"),
-    css: pluginPaths,
-    outSubdir: "css-plugins",
-    label: "CSS plugins",
-    baseHref: "/api/css-plugins/",
-    configFile,
-    classNames,
-    resolveToken,
-    resolveSource: resolvePluginSource,
-    importSnippet: pluginImportSnippet,
-  });
-  console.log(
-    `✓ CSS plugins API: wrote ${pluginEntries.length} record page(s) to api/css-plugins/` +
-      `${pluginSidebarMerged ? " + merged the CSS plugins section into the sidebar" : ""}`,
   );
 };
 
