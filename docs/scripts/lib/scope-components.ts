@@ -19,7 +19,13 @@
  * yields exactly the theme-only overrides — already prefix-applied, alias-correct, and in concat order.
  */
 import postcss from "postcss";
-import { componentsCss } from "@pantoken/components";
+// Import from the components SOURCE barrel, not the `@pantoken/components` package specifier (which
+// resolves to `dist/index.mjs`). During `vpr docs:dev` the components `dist` is only rebuilt by
+// `vp pack`, which can't run nested under vitepress — so a package import would render stale CSS on
+// every source edit. The source barrel reads the freshly-regenerated `src/generated/component-styles.ts`
+// instead, so component edits hot-reload. Mirrors `formats/components/scripts/generate.ts`, which
+// likewise imports `../src/index.ts`. This is a build-time docs script (never shipped to the browser).
+import { componentsCss } from "../../../formats/components/src/index.ts";
 
 /** The non-default themes whose overrides get attribute-scoped (rebrand is the unscoped base). */
 const SCOPED_THEMES = ["canvas", "canvasHighContrast"] as const;

@@ -11,18 +11,20 @@
  * attribute on `<html>` swaps the `--instui-*` set, which the `@pantoken/vitepress` bridge maps onto
  * `--vp-*`, re-theming the whole site. Runs in `docs:assets`, before `vitepress dev`/`build`.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
-import { createRequire } from "node:module";
+import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-
-const require = createRequire(import.meta.url);
-const { toCss } = require("@pantoken/css") as typeof import("@pantoken/css");
-const { byTheme, themes } = require("@pantoken/tokens") as typeof import("@pantoken/tokens");
+// Import from SOURCE (build-time docs script, never shipped to the browser), not the `@pantoken/css` /
+// `@pantoken/tokens` package specifiers (which resolve to `dist`, only rebuilt by the nested-forbidden
+// `vp pack`). The token IR lives in `formats/tokens/generated/*.json` (which the src barrel reads), so a
+// token-value edit — or a `toCss` emitter change — re-themes every preview live once this reruns.
+import { toCss } from "../../formats/css/src/index.ts";
+import { byTheme, themes } from "../../formats/tokens/src/index.ts";
 
 type ThemeKey = keyof typeof themes;
 const DEFAULT_THEME: ThemeKey = "rebrand";
 
-const out = join(import.meta.dirname, "..", ".vitepress", "theme", "generated", "site-themes.css");
+const docsRoot = join(import.meta.dirname, "..");
+const out = join(docsRoot, ".vitepress", "theme", "generated", "site-themes.css");
 mkdirSync(dirname(out), { recursive: true });
 
 // The default theme: @property registrations (concrete tokens) + :root declarations (contextual).
@@ -42,6 +44,12 @@ const overrides = (Object.keys(themes) as ThemeKey[])
 
 const css = [base, ...overrides].join("\n\n");
 writeFileSync(out, css);
+// Mirror into demos-assets so the `/play` runner loads the same token sheet. The theme imports `out`
+// directly (module-graph HMR); this copy is what the iframes fetch by URL. mkdirSync keeps a clean-tree
+// run (site-themes runs before demos.ts stages public/) from failing.
+const assetsCopy = join(docsRoot, "public", "demos-assets", "site-themes.css");
+mkdirSync(dirname(assetsCopy), { recursive: true });
+copyFileSync(out, assetsCopy);
 console.log(
   `✓ site-themes: wrote site-themes.css (${Object.keys(themes).length} themes, ${Math.round(css.length / 1024)}kb)`,
 );

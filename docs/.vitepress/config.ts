@@ -23,10 +23,11 @@ const at = (relative: string): string =>
 // HMR) and the CSS API `.md` (rebuilt by the `docs:api:css` node — VitePress watches the emitted files
 // itself). A components edit regenerates the sheet, then cascades (`dependents`) into a CSS-API rebuild.
 //
-// NOTE: `@pantoken/web-components`' `register()` bundle needs `vp pack`, which likewise can't run nested
-// under `vpr`, so it is NOT auto-rebuilt here. Rebuild it manually in a separate top-level shell
-// (`vpr @pantoken/web-components#build`) when you change web-component behavior; `outputWatchPaths` then
-// bridges the new `dist` into HMR.
+// NOTE: `@pantoken/web-components` is imported from SOURCE by the docs theme (theme/index.ts), not its
+// `dist` — so Vite hot-reloads element `.ts` + co-located `.css` edits directly, with no `vp pack` and
+// no orchestrator node. Its source graph is Node-free and codegen-free (CSS via Vite `?inline`), so
+// there's nothing to build here. The plugin decoration sheets, the docs demo snippets, and the token
+// sheet each get a node below so their previews/`@example` pages stay live too.
 const orchestrator = workspaceOrchestrator({
   upstream: [
     {
@@ -34,14 +35,145 @@ const orchestrator = workspaceOrchestrator({
       dir: at("formats/css"),
       watchPaths: [at("formats/css/src")],
       build: ["node", "scripts/generate.ts"],
+      // A `toCss` emitter change should re-theme the site sheet too (site-themes.ts imports it).
+      dependents: ["@pantoken/docs#site-themes"],
+    },
+    {
+      // Rewrite the whole-site token sheet (theme/generated/site-themes.css + the demos-assets copy) from
+      // SOURCE (site-themes.ts imports @pantoken/css + @pantoken/tokens from src). Watches the resolved
+      // token IR (`formats/tokens/generated/*.json`, what the tokens barrel reads) and the tokens src so
+      // a token-value edit re-themes every preview live; also cascaded by @pantoken/css for emitter edits.
+      // The theme imports the sheet (module-graph HMR); the demos-assets copy drives the /play iframes.
+      name: "@pantoken/docs#site-themes",
+      dir: at("docs"),
+      watchPaths: [at("formats/tokens/generated"), at("formats/tokens/src")],
+      build: ["node", "scripts/site-themes.ts"],
       dependents: [],
     },
     {
-      name: "@pantoken/components",
+      // A component edit (`formats/components/src/**`) must recompile the per-theme string module
+      // (`src/generated/component-styles.ts`) FIRST — `generate.ts` only consumes it. This node runs
+      // that recompile, then cascades to the `generate` + docs-sheet nodes below. The orchestrator
+      // can't run the package's `generate` npm task (it'd `vp run …`, which can't spawn nested here),
+      // so the two steps are wired as separate direct-`node` nodes.
+      name: "@pantoken/components#styles",
       dir: at("formats/components"),
       watchPaths: [at("formats/components/src")],
+      // Loop guard: component-styles.ts rewrites src/generated/component-styles.ts (unconditionally),
+      // and generate.ts rewrites src/generated/_records.css — both under the watched src dir. Without
+      // this the recompile would retrigger itself forever.
+      ignore: ["generated/**"],
+      build: ["node", "scripts/component-styles.ts"],
+      dependents: ["@pantoken/components"],
+    },
+    {
+      // Regenerate the shipped `generated/*.css` (the CSS-API `.md` pages parse `generated/components.css`).
+      // Dependent-only: the scheduler resolves it by name from `#styles` above. `outputWatchPaths`
+      // (`formats/components/generated`) bridges the result into HMR.
+      name: "@pantoken/components",
+      dir: at("formats/components"),
+      watchPaths: [],
+      build: ["node", "scripts/generate.ts"],
+      dependents: [
+        "@pantoken/docs#components-sheet",
+        "@pantoken/docs#component-assets",
+        "@pantoken/docs#docs:api:css",
+      ],
+    },
+    {
+      // Rewrite the docs-only multi-theme component sheet the previews/demos actually load
+      // (theme/generated/components.css + public/demos-assets/components.css). It reads the components
+      // SOURCE barrel (see scope-components.ts), so it reflects the recompiled module. The theme copy is
+      // in Vite's module graph, so Vite hot-updates it on rewrite. Dependent-only.
+      name: "@pantoken/docs#components-sheet",
+      dir: at("docs"),
+      watchPaths: [],
+      build: ["node", "scripts/components-sheet.ts"],
+      dependents: [],
+    },
+    {
+      // Re-stage the single-theme component sheets (base/prose/icons/select/utilities) the `/play` runner
+      // loads into public/demos-assets/, copied from the freshly-regenerated `formats/components/generated`.
+      // The main-doc theme imports those generated sheets directly (HMR via outputWatchPaths); the `/play`
+      // iframes load them by URL from public/, so writing here triggers a Vite full reload. Dependent-only.
+      name: "@pantoken/docs#component-assets",
+      dir: at("docs"),
+      watchPaths: [],
+      build: ["node", "scripts/stage-component-assets.ts"],
+      dependents: [],
+    },
+    // The decoration plugins each regenerate their `generated/<name>.css` from source with a plain
+    // `node scripts/generate.ts` (no `vp pack`; the sheet is a sibling of `src`, so no watch loop). The
+    // three with a demo sheet re-stage it into demos-assets AND rebuild their CSS-API `@example` pages;
+    // logos/primitives have `@example` pages but no demo sheet, so they only cascade to the CSS-API build.
+    {
+      name: "@pantoken/plugin-transition",
+      dir: at("plugins/pantoken/transition"),
+      watchPaths: [at("plugins/pantoken/transition/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#plugin-assets", "@pantoken/docs#docs:api:css"],
+    },
+    {
+      name: "@pantoken/plugin-stacking",
+      dir: at("plugins/pantoken/stacking"),
+      watchPaths: [at("plugins/pantoken/stacking/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#plugin-assets", "@pantoken/docs#docs:api:css"],
+    },
+    {
+      name: "@pantoken/plugin-visual-debug",
+      dir: at("plugins/pantoken/visual-debug"),
+      watchPaths: [at("plugins/pantoken/visual-debug/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#plugin-assets", "@pantoken/docs#docs:api:css"],
+    },
+    {
+      name: "@pantoken/plugin-logos",
+      dir: at("plugins/pantoken/logos"),
+      watchPaths: [at("plugins/pantoken/logos/src")],
       build: ["node", "scripts/generate.ts"],
       dependents: ["@pantoken/docs#docs:api:css"],
+    },
+    {
+      name: "@pantoken/plugin-primitives",
+      dir: at("plugins/pantoken/primitives"),
+      watchPaths: [at("plugins/pantoken/primitives/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#docs:api:css"],
+    },
+    {
+      // Re-stage the transition/stacking/visual-debug decoration sheets into public/demos-assets/ from the
+      // plugins' freshly-generated sheets. Dependent-only; writing into public/ triggers a Vite full reload
+      // so the <head>-linked chrome and the /play iframes refetch. See stage-plugin-assets.ts.
+      name: "@pantoken/docs#plugin-assets",
+      dir: at("docs"),
+      watchPaths: [],
+      build: ["node", "scripts/stage-plugin-assets.ts"],
+      dependents: [],
+    },
+    {
+      // Re-copy the committed demo snippets (docs/demos/*.html) into public/demos/ on edit. Full reload
+      // (public/ write) refreshes an open /play demo. See stage-demo-snippets.ts.
+      name: "@pantoken/docs#demo-snippets",
+      dir: at("docs"),
+      watchPaths: [at("docs/demos")],
+      build: ["node", "scripts/stage-demo-snippets.ts"],
+      dependents: [],
+    },
+    {
+      // Rebuild the TypeDoc API pages so TSDoc `@example` markup edits go live (the web-component element
+      // `@example` blocks render on api/renderers/web-components/**). Scoped to the RENDERER TS sources:
+      // TypeDoc reparses the whole entry-point set on any run, so a broader watch would make every
+      // component/plugin/token edit pay for a full-monorepo typedoc — kept narrow to protect those fast
+      // loops. `.css`/dist/generated changes are filtered out. VitePress watches the emitted
+      // docs/api/**/*.md, so the pages hot-reload on their own.
+      name: "@pantoken/docs#api:en",
+      dir: at("docs"),
+      watchPaths: [at("renderers")],
+      include: ["**/src/**/*.ts", "**/src/**/*.tsx"],
+      ignore: ["**/dist/**", "**/generated/**", "**/node_modules/**"],
+      build: ["node", "scripts/build-api-en.ts"],
+      dependents: [],
     },
     {
       // The CSS API reference (docs/api/css/**) is parsed from the generated components sheet and
@@ -57,9 +189,11 @@ const orchestrator = workspaceOrchestrator({
     },
   ],
   outputWatchPaths: [
+    // The generated CSS the theme imports via `@fs` — bridged into HMR. (Web components are imported from
+    // source now, so their `dist` no longer needs bridging; the plugin/demo sheets land in public/ and
+    // reload on their own.)
     at("formats/css/generated"),
     at("formats/components/generated"),
-    at("renderers/web-components/dist"),
   ],
 });
 
