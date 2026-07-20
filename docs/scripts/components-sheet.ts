@@ -16,9 +16,10 @@
  * rules scoped under `:root[data-pantoken-theme="…"]` so the same attribute toggle activates them.
  * Mirrors how `site-themes.ts` handles token values, but for component rules. See `lib/scope-components.ts`.
  *
- * Runs in `docs:assets` (via `demos.ts`) and again on component edits during `docs:dev` (the config's
- * workspace orchestrator invokes this script directly). Kept as its own runnable so the watch path can
- * regenerate the sheet without re-staging the whole `public/` demo tree.
+ * Runs in `docs:assets` (via `demos.ts`) and again on component edits during `docs:dev`: the config's
+ * workspace orchestrator cascades to this script (as the `@pantoken/docs#components-sheet` node) after
+ * the components recompile + `generate`. Kept as its own runnable so the watch path can regenerate the
+ * sheet without re-staging the whole `public/` demo tree.
  *
  * @module
  */
