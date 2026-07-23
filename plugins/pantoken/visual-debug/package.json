@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-visual-debug",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "pantoken plugin: the CSS for InstUI's withVisualDebug prop — a `-with-visual-debug` modifier that outlines an element and its children for layout debugging.",
   "license": "MIT",
   "repository": {

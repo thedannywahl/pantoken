@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/hugo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Emit the Instructure token stylesheet for a Hugo site (an assets Sass partial + a plain CSS asset).",
   "license": "MIT",
   "repository": {

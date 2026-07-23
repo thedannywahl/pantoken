@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/web-components",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Framework-agnostic custom elements for Instructure UI: <instui-icon> plus token-styled primitives.",
   "license": "MIT",
   "repository": {

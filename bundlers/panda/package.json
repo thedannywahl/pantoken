@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/panda",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Instructure design-token preset for Panda CSS: tokens + semanticTokens with a _dark condition, from the pantoken IR.",
   "license": "MIT",
   "repository": {

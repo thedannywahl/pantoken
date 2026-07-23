@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/jekyll",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Emit the Instructure token stylesheet for a Jekyll site (a _sass partial + a plain CSS asset).",
   "license": "MIT",
   "repository": {

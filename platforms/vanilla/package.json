@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vanilla",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Emit Instructure design tokens as a Vanilla Forums (Foundation) theme variables.json.",
   "license": "MIT",
   "repository": {

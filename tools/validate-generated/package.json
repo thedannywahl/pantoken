@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/validate-generated",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Validate pantoken's generated output: every generator wrote its generated/ dir, the CLI emits for every target, and no CSS reference drifts from the token IR.",
   "license": "MIT",
