@@ -38,7 +38,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore/save vp task cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -62,7 +62,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -88,7 +88,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -114,7 +114,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -146,7 +146,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -201,7 +201,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -324,7 +324,7 @@ jobs:
           cache: true
           run-install: true
       - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
           key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
@@ -345,7 +345,7 @@ jobs:
         run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
       - name: Upload built docs site
         if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: docs-site
           path: docs/.vitepress/dist
