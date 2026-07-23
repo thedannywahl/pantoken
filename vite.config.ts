@@ -92,10 +92,11 @@ export default defineConfig({
         command: "node scripts/release/check-changeset-coverage.ts",
       },
       // Driven by the changesets action (.github/workflows/release.yml): `version` opens/updates the
-      // Version Packages PR, `publish` ships it. Per-package CHANGELOG.md files are canonical (no root
-      // aggregate). `publish` uses the npm CLI, not `changeset publish` (which shells out to pnpm, whose
-      // OIDC token exchange is broken) — the script prints `New tag:` lines the action turns into git
-      // tags + GitHub releases. See scripts/release/publish-npm.ts.
+      // Version Packages PR, `publish` ships it via the npm CLI (not `changeset publish`, which shells out
+      // to pnpm, whose OIDC token exchange is broken). The script prints `New tag:` lines the action turns
+      // into git tags + GitHub releases. See scripts/release/publish-npm.ts. NOTE: CI runs the publish
+      // script with plain `node`, NOT `vp run release:publish` — the `vp run` launcher scrubs the
+      // `ACTIONS_ID_TOKEN_REQUEST_*` env vars npm needs for OIDC. This task stays for local/manual runs.
       "release:version": {
         command: "vpx changeset version",
       },
