@@ -91,25 +91,11 @@ export default defineConfig({
       "release:coverage": {
         command: "node scripts/release/check-changeset-coverage.ts",
       },
-      release: {
-        command: "node scripts/release/cut-release.ts",
-      },
+      // Driven by the changesets action (.github/workflows/release.yml): `version` opens/updates the
+      // Version Packages PR, `publish` ships it. Per-package CHANGELOG.md files are canonical (no root
+      // aggregate).
       "release:version": {
         command: "vpx changeset version",
-      },
-      "release:plan:package": {
-        command:
-          "node scripts/release/plan-package-release.ts --json .release-plan.json --publish-list .release-packages.txt --markdown .release-plan.md",
-      },
-      "release:notes:package": {
-        command:
-          "node scripts/release/build-release-notes.ts --plan .release-plan.json --out release-notes.md",
-      },
-      "release:changelog:root": {
-        command: "node scripts/release/build-root-changelog.ts --out CHANGELOG.md",
-      },
-      "release:changelog:root:seed": {
-        command: "node scripts/release/build-root-changelog.ts --seed-initial --out CHANGELOG.md",
       },
       "release:publish": {
         command: "vpx changeset publish",
