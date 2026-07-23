@@ -32,8 +32,7 @@
     "component-styles": "node scripts/component-styles.ts",
     "dev": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
     "test": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && vp test",
-    "check": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/build-entries.ts && vp check",
-    "prepublishOnly": "vp run build"
+    "check": "vp run @pantoken/plugin-theme-custom-media#build && node scripts/component-styles.ts && node scripts/build-entries.ts && vp check"
   },
   "dependencies": {
     "@pantoken/plugin-colors": "workspace:*",

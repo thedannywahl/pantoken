@@ -23,8 +23,7 @@
     "generate": "node scripts/generate.ts",
     "dev": "vp run generate && vp pack --watch",
     "test": "vp test",
-    "check": "vp check",
-    "prepublishOnly": "vp run build"
+    "check": "vp check"
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
