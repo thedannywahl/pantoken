@@ -36,10 +36,9 @@
  * @beta
  */
 import { COMPONENTS } from "./components/index.ts";
-import { elevationCss } from "./declarations/elevation.ts";
 import { ns, type ComponentOptions } from "./lib/helpers.ts";
 import { base } from "./rules/base.ts";
-import { focusOutlineCss } from "./declarations/focus.ts";
+import { focusOutlineRules } from "./declarations/focus.ts";
 
 // ── Shared options + prefix ─────────────────────────────────────────────────
 export { DEFAULT_PREFIX, type ComponentOptions } from "./lib/helpers.ts";
@@ -49,14 +48,16 @@ export { proseCss, type ProseOptions } from "./rules/prose.ts";
 
 /**
  * Build the opt-in base/reset stylesheet: global document defaults from the tokens (box-sizing, body
- * reset, page surface, base text colour/font, `color-scheme`, base link), followed by the focus ring
- * (a document-level default that targets bare focusables). Load it once, ahead of the component and
- * prose sheets, when pantoken owns the page.
+ * reset, page surface, base text colour/font, `color-scheme`, base link), followed by the focus-ring
+ * rules (a document-level default that targets bare focusables). Only the ring *rules* live here — the
+ * `--instui-focus-outline-*` custom properties they read ship in the token sheet (`@pantoken/css`), so
+ * `base.css` no longer redefines them. Load it once, ahead of the component and prose sheets, when
+ * pantoken owns the page.
  *
  * @returns The CSS string.
  */
 export function baseCss(): string {
-  return `/* InstUI-look base/reset (@pantoken/components) */\n${base.rules("").trim()}\n\n${focusOutlineCss()}`;
+  return `/* InstUI-look base/reset (@pantoken/components) */\n${base.rules("").trim()}\n\n${focusOutlineRules()}`;
 }
 
 // ── Declarations ────────────────────────────────────────────────────────────
@@ -134,11 +135,12 @@ export { screenReaderContentCss } from "./utilities/screen-reader-content.ts";
 export { iconGlyphsCss, type IconGlyphsOptions } from "./utilities/icon-glyphs.ts";
 
 /**
- * Build the aggregated component stylesheet: the `--instui-elevation-*` scale (so shadows are intrinsic)
- * followed by every component's rules in the `COMPONENTS` concat order. The size-alias and
- * deprecated-alias twins are appended PER COMPONENT (within its own chunk) so each alias documents on
- * its own page — the deprecated aliases are discovered from each record's `@deprecated {@link -x}`
- * metadata (see `withAliases`), not a central hand-kept list.
+ * Build the aggregated component stylesheet: every component's rules in the `COMPONENTS` concat order.
+ * The size-alias and deprecated-alias twins are appended PER COMPONENT (within its own chunk) so each
+ * alias documents on its own page — the deprecated aliases are discovered from each record's
+ * `@deprecated {@link -x}` metadata (see `withAliases`), not a central hand-kept list. The
+ * `--instui-elevation-*` shadow scale the components reference is defined in the token sheet
+ * (`@pantoken/css`), so it's no longer inlined here.
  *
  * @param options - {@link ComponentOptions}.
  * @returns The CSS string.
@@ -147,7 +149,5 @@ export function componentsCss(options: ComponentOptions = {}): string {
   const prefix = options.prefix || "";
   // Each record's rules() already appends its own size/deprecated-alias twins, so this is a plain concat.
   const rules = COMPONENTS.map((d) => d.rules(ns(prefix), options).trim());
-  // Elevation tokens lead the sheet so the shadows components reference (modal, alert, menu) resolve
-  // from components.css alone — elevation is an intrinsic design attribute here, not an add-on.
-  return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${elevationCss()}\n${rules.join("\n\n")}\n`;
+  return `/* InstUI component styles (@pantoken/components) — prefix: ${prefix} */\n${rules.join("\n\n")}\n`;
 }

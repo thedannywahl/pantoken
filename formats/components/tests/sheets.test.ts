@@ -41,9 +41,10 @@ import { norm } from "./_css.ts";
 
 test("every token referenced by every stylesheet exists in the IR (no drift)", () => {
   const all = `${baseCss()}\n${componentsCss({ prefix: "instui" })}\n${proseCss()}\n${selectCss({ prefix: "instui" })}`;
-  // --instui-elevation-* (elevationCss, components.css) and --instui-focus-outline-* (focusOutlineCss,
-  // base.css) are defined by those sheets, not the base token IR — locally-resolved but still "unknown"
-  // to the IR-drift check, so filter them out.
+  // --instui-elevation-* and --instui-focus-outline-* are composite custom properties the token sheet
+  // (@pantoken/css) emits from @pantoken/utils builders, NOT entries in the base token IR. The component
+  // sheets reference them (shadows, focus ring) and resolve them from the token sheet at runtime, so
+  // they're legitimately "unknown" to this IR-drift check — filter them out.
   const drift = unknownReferences(all, tokens).filter(
     (r) => !r.startsWith("--instui-elevation-") && !r.startsWith("--instui-focus-outline-"),
   );
@@ -51,6 +52,34 @@ test("every token referenced by every stylesheet exists in the IR (no drift)", (
   // `unknownReferences` scans the whole concatenated sheet, so under a loaded machine it can exceed
   // the 5s default; give it headroom so the whole-sheet drift check doesn't flake in the parallel run.
 }, 30000);
+
+test("every icon the component sheets reference exists in the token IR (component-icons.css is complete)", () => {
+  // component-icons.css is generated from the icons componentsCss references, valued from the token IR;
+  // if a component references an icon the IR doesn't define, generation throws and the lean-foundation
+  // story (style.lean.css + component-icons.css) would dangle. Guard that invariant here.
+  const refs = new Set(
+    [...componentsCss({ prefix: "instui" }).matchAll(/var\((--instui-icon-[a-z0-9-]+)\)/g)].map(
+      (m) => m[1],
+    ),
+  );
+  const irNames = new Set(tokens.map((t) => t.name));
+  const missing = [...refs].filter((name) => !irNames.has(name)).sort();
+  expect(missing).toEqual([]);
+  expect(refs.size).toBeGreaterThan(0); // sanity: components do reference icons
+});
+
+test("the elevation + focus-outline foundation lives in the token sheet, not the component sheets", () => {
+  // components.css references the elevation scale but no longer DEFINES it (the token sheet does).
+  const components = componentsCss({ prefix: "instui" });
+  expect(components).toContain("var(--instui-elevation-above)"); // still referenced
+  expect(components).not.toContain("--instui-elevation-resting:"); // but not defined here anymore
+  // base.css keeps the :focus-visible ring rules, but the --instui-focus-outline-* vars they read now
+  // come from the token sheet — base.css references them without defining them.
+  const base = baseCss();
+  expect(base).toContain(":focus-visible");
+  expect(base).toContain("var(--instui-focus-outline-color)"); // referenced by the ring rules
+  expect(base).not.toContain("--instui-focus-outline-color:"); // not defined here anymore
+});
 
 test("component classes use the configured prefix; any falsy prefix drops it entirely", () => {
   expect(buttonCss({ prefix: "instui" })).toContain(".instui-button");

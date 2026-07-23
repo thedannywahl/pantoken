@@ -16,6 +16,7 @@
     ".": "./dist/index.mjs",
     "./base.css": "./dist/base.css",
     "./components.css": "./dist/components.css",
+    "./component-icons.css": "./dist/component-icons.css",
     "./*.css": "./dist/*.css",
     "./fonts.css": "./dist/fonts.css",
     "./prose.css": "./dist/prose.css",
@@ -35,7 +36,8 @@
     "prepublishOnly": "vp run build"
   },
   "dependencies": {
-    "@pantoken/plugin-colors": "workspace:*"
+    "@pantoken/plugin-colors": "workspace:*",
+    "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
     "@cssdoc/config": "catalog:",
@@ -43,7 +45,6 @@
     "@pantoken/icons": "workspace:*",
     "@pantoken/plugin-theme-custom-media": "workspace:*",
     "@pantoken/tokens": "workspace:*",
-    "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
     "postcss": "catalog:",
     "typescript": "catalog:",

@@ -21,8 +21,11 @@ test("base is an opt-in global reset painting the page surface from tokens", () 
 
 test("base carries the focus-outline ring for focusables out of the box", () => {
   const css = baseCss();
-  // Token defs + a zero-specificity ring on the common focusables, revealed on :focus-visible.
-  expect(css).toContain(
+  // A zero-specificity ring on the common focusables, revealed on :focus-visible. The ring reads the
+  // --instui-focus-outline-* custom properties, which now ship in the token sheet (@pantoken/css), so
+  // base.css references them but no longer defines them.
+  expect(css).toContain("outline-color: var(--instui-focus-outline-color)");
+  expect(css).not.toContain(
     "--instui-focus-outline-color: var(--instui-component-shared-tokens-focus-outline-info-color)",
   );
   expect(css).toContain(":where(a, button, input, select, textarea, summary, [tabindex])");

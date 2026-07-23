@@ -6,6 +6,7 @@ import { defineConfig } from "vite-plus";
 const AGGREGATE_SHEETS = new Set([
   "base",
   "components",
+  "component-icons",
   "fonts",
   "prose",
   "select",
@@ -28,6 +29,7 @@ export default defineConfig({
       index: "src/index.ts",
       base: "generated/base.css",
       components: "generated/components.css",
+      "component-icons": "generated/component-icons.css",
       ...componentEntries,
       fonts: "generated/fonts.css",
       prose: "generated/prose.css",
