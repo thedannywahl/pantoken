@@ -18,9 +18,11 @@
  * inlined, so the look is exactly `@pantoken/components`
  * with nothing to import but this module. Tokens are inherited custom properties, so they pierce the
  * shadow boundary — load `@pantoken/css` (or any pantoken token sheet) in the document to color them.
- * The elevation scale and focus-outline system live in the components/base layer rather than the token
- * sheet, so {@link register} injects them at `:root` ({@link foundationCss}) — shadows inherit them, and
- * elevation/focus work with only the token sheet loaded.
+ * The elevation scale (`--instui-elevation-*`) and focus-outline (`--instui-focus-outline-*`) custom
+ * properties ship in the token sheet too, so shadows and focus rings resolve from the same sheet the
+ * colors do — nothing extra to inject. (Elements that render icons, e.g. `<instui-alert>`, read
+ * `--instui-icon-*` glyph tokens the same way; the lean token sheet omits the full icon set, so pair it
+ * with `@pantoken/components/component-icons.css`, or load the full token sheet.)
  *
  * The module is Node-safe: element classes are defined inside {@link register}, a no-op when there
  * is no DOM, so importing this package during SSR or a build never touches `HTMLElement`.
@@ -32,7 +34,6 @@
  * @module
  * @alpha
  */
-import { elevationDeclarations, focusOutlineDeclarations } from "@pantoken/components";
 import { resolve as pantokenResolve } from "@pantoken/icons";
 import type { IconResolver } from "@pantoken/model";
 import { DEFINITIONS } from "./elements/index.ts";
@@ -139,32 +140,6 @@ export function iconSvg(name: string, resolve: IconResolver = pantokenResolve): 
   return resolve(name)?.svg ?? "";
 }
 
-/** The id of the `<style>` {@link register} injects, so the foundation is added at most once. */
-const FOUNDATION_STYLE_ID = "pantoken-foundation";
-
-/**
- * The `:root` custom-property block that bundles the elevation scale (`--instui-elevation-*`) and the
- * focus-outline system (`--instui-focus-outline-*`). The component CSS references these, but the token
- * sheet (`@pantoken/css`) doesn't carry them — they live in the components/base layer. Because custom
- * properties pierce the shadow boundary, declaring them once at `:root` makes every element's shadow
- * inherit them, so shadows, focus rings, etc. work with nothing loaded but this module + a token sheet.
- * {@link register} injects it client-side; export it too so SSR can inline it up front.
- *
- * @returns A `:root { … }` CSS string.
- *
- * @example
- * ```ts
- * import { foundationCss } from "@pantoken/web-components";
- * // SSR: `<style>${foundationCss()}</style>` in <head>.
- * ```
- */
-export function foundationCss(): string {
-  const decls = [...elevationDeclarations(), ...focusOutlineDeclarations()]
-    .map(([name, value]) => `  ${name}: ${value};`)
-    .join("\n");
-  return `:root {\n${decls}\n}`;
-}
-
 /** An element ctor with the optional custom-element lifecycle hooks the spacing mixin composes over. */
 type LifecycleElementCtor = new (...args: never[]) => HTMLElement & {
   connectedCallback?(): void;
@@ -200,13 +175,39 @@ function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
 }
 
 /**
+ * Elements whose shadow markup renders another element, so registering one requires its dependencies
+ * too: `<instui-date-time-input>` renders a `<instui-date-input>`, which renders a `<instui-calendar>`.
+ * {@link register}'s `only` filter expands through this (transitively) so a cherry-picked subset still
+ * works. Keyed by base name; values are direct dependencies.
+ */
+const NESTED_DEPS: Readonly<Record<string, readonly string[]>> = {
+  "date-input": ["calendar"],
+  "date-time-input": ["date-input"],
+};
+
+/** Expand a requested base-name set to include its transitive {@link NESTED_DEPS}. */
+function withNestedDeps(only: readonly string[]): Set<string> {
+  const wanted = new Set<string>();
+  const add = (name: string): void => {
+    if (wanted.has(name)) return;
+    wanted.add(name);
+    for (const dep of NESTED_DEPS[name] ?? []) add(dep);
+  };
+  for (const name of only) add(name);
+  return wanted;
+}
+
+/**
  * Register the pantoken custom elements. No-op when there is no DOM (SSR / build), so this module
  * is safe to import anywhere.
  *
  * @param target - The registry to define into (defaults to `globalThis.customElements`).
  * @param options - `prefix` sets the tag prefix, mirroring the CSS layer: pass a non-empty string like
  *   `x` for `<x-icon>`. A prefix is always applied (a custom-element name must contain a hyphen), so an
- *   omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`).
+ *   omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`). `only` limits
+ *   registration to a subset of {@link ELEMENTS} (base names) — its {@link NESTED_DEPS} are pulled in
+ *   automatically, so `{ only: ["date-time-input"] }` also defines `date-input` and `calendar`. Omit
+ *   `only` to register every element (the default).
  *
  * @example
  * ```ts
@@ -215,26 +216,19 @@ function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
  *
  * register(); // <instui-button>, <instui-icon>, …
  * register(customElements, { prefix: "x" }); // <x-button>, <x-icon>, …
+ * register(customElements, { only: ["button", "alert"] }); // just those two
  * ```
  */
 export function register(
   target: ElementRegistry | undefined = globalThis.customElements,
-  options: { prefix?: string | null } = {},
+  options: { prefix?: string | null; only?: readonly string[] } = {},
 ): void {
   if (!target || typeof HTMLElement === "undefined") return;
 
-  // Bundle the elevation + focus-outline custom properties at `:root` once, so every shadow inherits
-  // them (they aren't in the token sheet). Skipped without a DOM (e.g. the registry-only test path).
-  if (
-    typeof document !== "undefined" &&
-    document.head &&
-    !document.getElementById(FOUNDATION_STYLE_ID)
-  ) {
-    const style = document.createElement("style");
-    style.id = FOUNDATION_STYLE_ID;
-    style.textContent = foundationCss();
-    document.head.append(style);
-  }
+  // When `only` is given, expand it through the nested-render dependencies and define just that set;
+  // otherwise define every element. The canonical `DEFINITIONS` order is preserved either way, so a
+  // nested dependency is always defined before the element that renders it.
+  const wanted = options.only ? withNestedDeps(options.only) : null;
 
   // Tag prefix: a valid non-empty string overrides the default; anything else (empty, whitespace, null,
   // omitted) falls back to `instui`. A prefix is always applied because a custom-element name MUST contain
@@ -402,7 +396,10 @@ export function register(
     iconSvg,
   };
 
-  for (const def of DEFINITIONS) def.define(ctx);
+  for (const def of DEFINITIONS) {
+    if (wanted && !wanted.has(def.name)) continue;
+    def.define(ctx);
+  }
 }
 
 // Auto-register in the browser; a no-op everywhere else.
