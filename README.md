@@ -34,6 +34,9 @@ Or generate token source for a native platform, with no runtime dependency:
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
+Or skip the install entirely and pull a lean token foundation plus only the components you need from a
+CDN — see [CDN & distribution](https://pantoken.iywahl.com/guide/cdn) for the interactive URL builder.
+
 ## The token model
 
 Tokens are CSS custom properties named `--instui-<group>-<name>`, for example

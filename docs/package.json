@@ -16,7 +16,7 @@
     "docs:locales:translate": "vp run docs:guides:locales:claude && vp run docs:api:locales:claude",
     "docs:check:locales": "node scripts/check-locale-parity.ts",
     "docs:check:drift": "node scripts/check-locale-drift.ts",
-    "docs:assets": "node scripts/logo.ts && node scripts/gen-og.ts && node scripts/site-themes.ts && node scripts/demos.ts",
+    "docs:assets": "node scripts/logo.ts && node scripts/gen-og.ts && node scripts/site-themes.ts && node scripts/demos.ts && node scripts/cdn-manifest.ts",
     "docs:og": "node scripts/gen-og.ts",
     "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-stacking#generate && vp run @pantoken/plugin-transition#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && vitepress dev",
     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",

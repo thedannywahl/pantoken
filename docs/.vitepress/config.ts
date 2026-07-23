@@ -292,6 +292,7 @@ const localesConfig = Object.fromEntries(
             {
               text: locale.sidebar.guides,
               items: [
+                { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
                 { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
                 { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
                 {
@@ -330,6 +331,8 @@ const localesConfig = Object.fromEntries(
         notFound: locale.chrome.notFound,
         // Read by the custom palette selector (ThemeSelector.vue) via `useData().theme`.
         themeSelector: locale.themeSelector,
+        // Read by the CDN picker (CdnPicker.vue) via `useData().theme`.
+        cdnPicker: locale.cdnPicker,
       },
     },
   ]),
