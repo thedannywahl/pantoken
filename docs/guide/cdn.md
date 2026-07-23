@@ -42,8 +42,8 @@ font files by relative path, so combine can't rewrite them — load it as its ow
 
 ### Everything at once
 
-To pull the whole component library instead of cherry-picking, point at the barrel (about 141 KB gzipped)
-alongside the token sheet:
+Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
+gzipped) alongside the token sheet:
 
 ```html
 <link
@@ -96,9 +96,8 @@ only when you can't use modules.
 
 ## Pinning versions
 
-The URLs above float to the latest release. Pin a major (or exact) version for production — for example
-`@pantoken/css@0` — so an upgrade never surprises you. The picker pins the current published version for
-you.
+The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
+version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
 
 ## What's not here
 

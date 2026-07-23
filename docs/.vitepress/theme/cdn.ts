@@ -7,6 +7,8 @@
 export interface CdnPickerStrings {
   /** Legend for the component checkbox group. */
   componentsLabel: string;
+  /** Checkbox: use the whole `components.css` barrel instead of per-component sheets. */
+  allComponents: string;
   /** Label for the token-sheet radio group. */
   tokenSheetLabel: string;
   /** The lean (icon-free) token-sheet option. */
@@ -36,6 +38,7 @@ export interface CdnPickerStrings {
 /** English defaults, also the fallback when a locale doesn't localize the picker. */
 export const CDN_PICKER_DEFAULTS: CdnPickerStrings = {
   componentsLabel: "Components",
+  allComponents: "All components (components.css)",
   tokenSheetLabel: "Token sheet",
   tokenLean: "Lean (no icons, ~23 KB gzip)",
   tokenFull: "Full (all icons, ~140 KB gzip)",

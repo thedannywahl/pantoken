@@ -5,11 +5,6 @@ import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import manifest from "../generated/cdn-manifest.json";
 
 type ManifestComponent = { name: string; needsIcons: boolean };
-const { componentsVersion, cssVersion } = manifest as {
-  componentsVersion: string;
-  cssVersion: string;
-  components: ManifestComponent[];
-};
 // Alphabetical for findability (the manifest is in load order).
 const components = [...(manifest.components as ManifestComponent[])].sort((a, b) =>
   a.name.localeCompare(b.name),
@@ -23,6 +18,7 @@ const t = computed<CdnPickerStrings>(() => ({
 }));
 
 const selected = ref<Set<string>>(new Set());
+const allComponents = ref(false);
 const tokenSheet = ref<"lean" | "full">("lean");
 const includeBase = ref(false);
 const format = ref<"link" | "import">("link");
@@ -37,20 +33,25 @@ function toggle(name: string): void {
 }
 
 const chosen = computed(() => components.filter((c) => selected.value.has(c.name)));
-// The lean token sheet omits icons, so a selected icon-using component needs component-icons.css. The
+// "All" uses the whole `components.css` barrel; otherwise the checked per-component sheets.
+const active = computed(() => (allComponents.value ? components : chosen.value));
+const hasSelection = computed(() => allComponents.value || chosen.value.length > 0);
+// The lean token sheet omits icons, so any active icon-using component needs component-icons.css. The
 // full sheet already carries every icon.
 const needsIconSheet = computed(
-  () => tokenSheet.value === "lean" && chosen.value.some((c) => c.needsIcons),
+  () => tokenSheet.value === "lean" && active.value.some((c) => c.needsIcons),
 );
 
 const combineUrl = computed(() => {
-  const c = `npm/@pantoken/components@${componentsVersion}`;
+  // Track the latest release (no version pin) — pin yourself for production.
+  const c = "npm/@pantoken/components";
   const files = [
-    `npm/@pantoken/css@${cssVersion}/${tokenSheet.value === "lean" ? "style.lean.css" : "style.css"}`,
+    `npm/@pantoken/css/${tokenSheet.value === "lean" ? "style.lean.css" : "style.css"}`,
   ];
   if (includeBase.value) files.push(`${c}/base.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
-  for (const comp of chosen.value) files.push(`${c}/${comp.name}.css`);
+  if (allComponents.value) files.push(`${c}/components.css`);
+  else for (const comp of chosen.value) files.push(`${c}/${comp.name}.css`);
   return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
@@ -75,9 +76,21 @@ async function copy(): Promise<void> {
   <div class="cdn-picker">
     <fieldset class="cdn-picker__group">
       <legend>{{ t.componentsLabel }}</legend>
-      <div class="cdn-picker__components">
+      <label class="cdn-picker__check cdn-picker__all">
+        <input type="checkbox" v-model="allComponents" />
+        <span>{{ t.allComponents }}</span>
+      </label>
+      <div
+        class="cdn-picker__components"
+        :class="{ 'cdn-picker__components--disabled': allComponents }"
+      >
         <label v-for="c in components" :key="c.name" class="cdn-picker__check">
-          <input type="checkbox" :checked="selected.has(c.name)" @change="toggle(c.name)" />
+          <input
+            type="checkbox"
+            :checked="selected.has(c.name)"
+            :disabled="allComponents"
+            @change="toggle(c.name)"
+          />
           <span>{{ c.name }}</span>
         </label>
       </div>
@@ -114,7 +127,7 @@ async function copy(): Promise<void> {
     </div>
 
     <div class="cdn-picker__output">
-      <template v-if="chosen.length">
+      <template v-if="hasSelection">
         <div class="cdn-picker__code">
           <button class="cdn-picker__copy" type="button" @click="copy">
             {{ copied ? t.copied : t.copy }}
@@ -149,6 +162,10 @@ async function copy(): Promise<void> {
   margin-bottom: 0.5rem;
   padding: 0;
 }
+.cdn-picker__all {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
 .cdn-picker__components {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
@@ -159,6 +176,10 @@ async function copy(): Promise<void> {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
   background: var(--vp-c-bg);
+}
+.cdn-picker__components--disabled {
+  opacity: 0.45;
+  pointer-events: none;
 }
 .cdn-picker__check,
 .cdn-picker__radio {
