@@ -11,8 +11,16 @@
  *
  * @module
  */
+import { focusOutlineDeclarations, focusOutlineRules } from "@pantoken/utils";
 import { css } from "../lib/css.ts";
 import type { Definition } from "../lib/define.ts";
+
+// The pure focus-ring builders (`--instui-focus-outline-*` defs, the `:where()` ring rules, the
+// focusable selector) now live in `@pantoken/utils`, so the token sheet (`@pantoken/css`) can emit the
+// `:root` defs without depending on this package. Re-exported here so the `@pantoken/components` public
+// surface is unchanged. This file keeps the cssdoc doc block, the header-wrapped `focusOutlineCss`, and
+// the registry `Definition`.
+export { FOCUSABLE_SELECTOR, focusOutlineDeclarations, focusOutlineRules } from "@pantoken/utils";
 
 /** The focus declaration's cssdoc doc comment (authored inline; the CSS body follows in {@link focusOutlineCss}). */
 // prettier-ignore
@@ -42,67 +50,6 @@ const FOCUS_DOC = css`/**
  * <button class="instui-button -focus-color-danger">Delete</button>
  * @demo self:focus-outline
  */`;
-
-/** The elements the ring applies to by default (the common interactive/focusable elements). */
-export const FOCUSABLE_SELECTOR = "a, button, input, select, textarea, summary, [tabindex]";
-
-const focusShared = (name: string): string =>
-  `var(--instui-component-shared-tokens-focus-outline-${name})`;
-
-/**
- * The `--instui-focus-outline-*` name/value pairs the ring rules read. Colour/width/offset reference
- * the themed shared focus tokens; the transition, line style, and inset are constants.
- *
- * @returns One `[customProperty, value]` pair per focus-ring variable.
- */
-export function focusOutlineDeclarations(): [name: string, value: string][] {
-  return [
-    ["--instui-focus-outline-color", focusShared("info-color")],
-    ["--instui-focus-outline-color-start", "transparent"],
-    ["--instui-focus-outline-width", focusShared("width")],
-    ["--instui-focus-outline-offset", focusShared("offset")],
-    ["--instui-focus-outline-radius", "var(--instui-border-radius-md)"],
-    ["--instui-focus-outline-style", "solid"],
-    ["--instui-focus-outline-transition", "outline-color 0.2s, outline-offset 0.25s"],
-    ["--instui-focus-outline-color-success", focusShared("success-color")],
-    ["--instui-focus-outline-color-danger", focusShared("danger-color")],
-    ["--instui-focus-outline-color-inverse", focusShared("on-color")],
-    ["--instui-focus-outline-inset", "0rem"],
-  ];
-}
-
-/**
- * The focus-ring rules for a given focusable selector: a transparent resting ring that transitions in
- * on `:focus-visible`, plus the `-focus-color-*` / `-focus-position-inset` / `-focus-within` /
- * `-without-focus-animation` modifiers. All `:where()`-wrapped, so zero-specificity.
- *
- * @param selector - The focusable selector the base ring applies to (default {@link FOCUSABLE_SELECTOR}).
- * @returns The CSS rules string.
- */
-export function focusOutlineRules(selector: string = FOCUSABLE_SELECTOR): string {
-  return [
-    `:where(${selector}) {`,
-    `  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style) var(--instui-focus-outline-color-start);`,
-    `  outline-offset: 0;`,
-    `  transition: var(--instui-focus-outline-transition);`,
-    `}`,
-    `:where(${selector}):where(:focus-visible) {`,
-    `  outline-color: var(--instui-focus-outline-color);`,
-    `  outline-offset: var(--instui-focus-outline-offset);`,
-    `  border-radius: var(--instui-focus-outline-radius);`,
-    `}`,
-    `:where(.-focus-color-success):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-success); }`,
-    `:where(.-focus-color-danger):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-danger); }`,
-    `:where(.-focus-color-inverse):where(:focus-visible) { outline-color: var(--instui-focus-outline-color-inverse); }`,
-    `:where(.-focus-position-inset):where(:focus-visible) { outline-offset: var(--instui-focus-outline-inset); }`,
-    `:where(.-focus-within):where(:focus-within) {`,
-    `  outline-color: var(--instui-focus-outline-color);`,
-    `  outline-offset: var(--instui-focus-outline-offset);`,
-    `  border-radius: var(--instui-focus-outline-radius);`,
-    `}`,
-    `:where(.-without-focus-animation) { transition: none; }`,
-  ].join("\n");
-}
 
 /**
  * Build the focus-outline block: the `--instui-focus-outline-*` token defs plus the ring rules.
