@@ -61,14 +61,17 @@ jobs:
           cache: true
           run-install: true
 
+      # Both release checks are skipped on the changesets bot's "Version Packages" PR: it bumps every
+      # releasing package's package.json and deletes the changesets, so `changeset status` errors
+      # ("packages changed but no changesets") and coverage has nothing to cover. Skipping the steps
+      # (rather than the job) keeps this required check green on that PR.
       - name: Verify release metadata
+        if: ${{ !startsWith(github.head_ref, 'changeset-release/') }}
         run: vp run release:status
 
       # Fail when a changed publishable package has no pending changeset bumping it — `release:status`
       # alone passes as long as any changeset exists, so an unrelated/empty changeset would let an
       # unreleased change merge (which is how the CDN work shipped without publishing).
-      # Skipped on the changesets bot's "Version Packages" PR: it bumps every releasing package's
-      # package.json and deletes the changesets, which would otherwise trip this (no changeset left).
       - name: Require a changeset for each changed publishable package
         if: ${{ !startsWith(github.head_ref, 'changeset-release/') }}
         env:
