@@ -73,7 +73,12 @@ jobs:
         uses: changesets/action@v1
         with:
           version: vp run release:version
-          publish: vp run release:publish
+          # Publish is invoked as plain `node`, NOT `vp run`: the `vp run` launcher scrubs the
+          # `ACTIONS_ID_TOKEN_REQUEST_URL/TOKEN` env vars (and `NPM_CONFIG_USERCONFIG`) from the task
+          # subprocess, so npm logged "oidc Skipped because incorrect permissions for id-token" and fell
+          # back to ENEEDAUTH. Running node directly under the action's env lets npm see the OIDC token
+          # request vars and do the trusted-publishing exchange.
+          publish: node scripts/release/publish-npm.ts
           commit: "chore: version packages"
           title: "chore: version packages"
           createGithubReleases: true
