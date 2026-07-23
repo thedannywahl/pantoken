@@ -16,6 +16,7 @@ export default defineConfig({
       index: "src/index.ts",
       inject: "src/inject.ts",
       style: "generated/style.css",
+      "style.lean": "generated/style.lean.css",
     },
     dts: true,
     css: {

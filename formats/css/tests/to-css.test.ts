@@ -1,7 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import { danglingReferences } from "@pantoken/utils";
 import { definePlugin } from "@pantoken/plugin-kit";
-import { css } from "../src/index.ts";
+import { css, leanCss } from "../src/index.ts";
 import { toCss } from "../src/to-css.ts";
 import type { Token } from "@pantoken/model";
 
@@ -47,7 +47,46 @@ test("a css-stage plugin can inject a focus rule after the base", () => {
   expect(withPlugin).toContain("/* pantoken:focus */");
 });
 
+test("a plugin-contributed property with a contextual initial-value becomes a declaration, not @property", () => {
+  // A `var()`/`light-dark()` value can't be a valid @property initial-value, so appendContribution must
+  // route it to a :root declaration (it previously emitted invalid @property CSS for such values).
+  const plugin = definePlugin({
+    name: "contextual-prop",
+    css: () => ({
+      properties: [
+        { name: "--instui-x-concrete", syntax: "<length>", value: "4px" },
+        {
+          name: "--instui-x-contextual",
+          syntax: "*",
+          value: "var(--instui-primitive-color-white)",
+        },
+      ],
+    }),
+  });
+  const out = toCss(fixture, { plugins: [plugin] });
+  expect(out).toContain("@property --instui-x-concrete"); // concrete → typed registration
+  expect(out).not.toContain("@property --instui-x-contextual"); // contextual → never @property
+  expect(out).toContain("--instui-x-contextual: var(--instui-primitive-color-white);"); // → declaration
+});
+
 test("the rebrand stylesheet is self-contained (no dangling --instui-* references)", () => {
   // Every var(--instui-*) in the full token layer resolves to a definition in the same output.
   expect(danglingReferences(css)).toEqual([]);
+});
+
+test("leanCss drops the full icon set but keeps the tokens + elevation/focus foundation", () => {
+  // The lean sheet omits the ~1,777 --instui-icon-* glyph data-URIs (the bulk of the sheet)...
+  expect(leanCss).not.toContain("--instui-icon-");
+  // ...while the full sheet keeps them.
+  expect(css).toContain("--instui-icon-");
+  // The elevation + focus-outline foundation rides along in the lean sheet too.
+  expect(leanCss).toContain("--instui-elevation-above:");
+  expect(leanCss).toContain("--instui-focus-outline-color:");
+  // Materially smaller (icons are most of the bytes).
+  expect(leanCss.length).toBeLessThan(css.length / 2);
+});
+
+test("leanCss is self-contained (no dangling --instui-* references)", () => {
+  // Dropping the icon tokens leaves no dangling refs — nothing in the non-icon layer points at an icon.
+  expect(danglingReferences(leanCss)).toEqual([]);
 });
