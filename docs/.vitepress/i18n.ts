@@ -14,6 +14,7 @@ type LocaleMeta = {
     packageMap: string;
     architecture: string;
     components: string;
+    cdn: string;
     cli: string;
     plugins: string;
     generated: string;
@@ -30,6 +31,23 @@ type LocaleMeta = {
     rebrand: string;
     canvas: string;
     canvasHighContrast: string;
+  };
+  // The interactive CDN combine-URL builder on the CDN guide page (see theme/components/CdnPicker.vue
+  // and theme/cdn.ts). Component names and the generated URL are not translated.
+  cdnPicker: {
+    componentsLabel: string;
+    tokenSheetLabel: string;
+    tokenLean: string;
+    tokenFull: string;
+    formatLabel: string;
+    formatLink: string;
+    formatImport: string;
+    includeBase: string;
+    copy: string;
+    copied: string;
+    empty: string;
+    fontsNote: string;
+    iconsNote: string;
   };
   // Default-theme chrome VitePress renders around the content. Without these the Hungarian site shows
   // English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
@@ -81,6 +99,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       packageMap: "The package map",
       architecture: "Architecture",
       components: "Components",
+      cdn: "CDN & distribution",
       cli: "The pantoken CLI",
       plugins: "Plugins",
       generated: "Generated output",
@@ -94,6 +113,22 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       rebrand: "Rebrand",
       canvas: "Canvas",
       canvasHighContrast: "Canvas high contrast",
+    },
+    cdnPicker: {
+      componentsLabel: "Components",
+      tokenSheetLabel: "Token sheet",
+      tokenLean: "Lean (no icons, ~23 KB gzip)",
+      tokenFull: "Full (all icons, ~140 KB gzip)",
+      formatLabel: "Output",
+      formatLink: "<link>",
+      formatImport: "@import",
+      includeBase: "Include base reset",
+      copy: "Copy",
+      copied: "Copied",
+      empty: "Select one or more components to build a URL.",
+      fontsNote:
+        "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them.",
+      iconsNote: "component-icons.css is included because a selected component uses icons.",
     },
     chrome: {
       outlineLabel: "On this page",
@@ -140,6 +175,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       packageMap: "A csomagtérkép",
       architecture: "Architektúra",
       components: "Komponensek",
+      cdn: "CDN és terjesztés",
       cli: "A pantoken CLI",
       plugins: "Pluginek",
       generated: "Generált kimenet",
@@ -153,6 +189,23 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       rebrand: "Rebrand",
       canvas: "Canvas",
       canvasHighContrast: "Canvas nagy kontraszt",
+    },
+    cdnPicker: {
+      componentsLabel: "Komponensek",
+      tokenSheetLabel: "Token lap",
+      tokenLean: "Karcsú (ikonok nélkül, ~23 KB gzip)",
+      tokenFull: "Teljes (minden ikon, ~140 KB gzip)",
+      formatLabel: "Kimenet",
+      formatLink: "<link>",
+      formatImport: "@import",
+      includeBase: "Alap reset hozzáadása",
+      copy: "Másolás",
+      copied: "Másolva",
+      empty: "Válassz ki egy vagy több komponenst az URL felépítéséhez.",
+      fontsNote:
+        "A betűtípusok külön töltődnek be — adj hozzá egy <link> elemet a @pantoken/components/fonts.css fájlhoz, ha szükséged van rájuk.",
+      iconsNote:
+        "A component-icons.css azért szerepel, mert egy kiválasztott komponens ikonokat használ.",
     },
     chrome: {
       outlineLabel: "Ezen az oldalon",

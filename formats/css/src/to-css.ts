@@ -96,14 +96,22 @@ export function toCss(tokens: readonly Token[], options: ToCssOptions = {}): str
 
 function appendContribution(c: CssContribution, prepends: string[], appends: string[]): void {
   if (c.prepend) prepends.push(marked(c.marker, c.prepend));
-  const extraProps = (c.properties ?? [])
+  // A contextual initial-value (`var()`/`light-dark()`) can never be a valid `@property` registration,
+  // so route those to declarations instead — a plugin contributing one previously emitted invalid CSS.
+  const typedProps: PropertyRule[] = [];
+  const declPairs: [string, string][] = [...(c.declarations ?? [])];
+  for (const p of c.properties ?? []) {
+    if (isContextual(p.value)) declPairs.push([p.name, p.value]);
+    else typedProps.push(p);
+  }
+  const extraProps = typedProps
     .map(
       (p) =>
         `@property ${p.name} {\n  syntax: "${p.syntax}";\n  inherits: true;\n  initial-value: ${p.value};\n}`,
     )
     .join("\n\n");
-  const extraDecls = c.declarations?.length
-    ? `:root {\n${c.declarations.map(([n, v]) => `  ${n}: ${v};`).join("\n")}\n}`
+  const extraDecls = declPairs.length
+    ? `:root {\n${declPairs.map(([n, v]) => `  ${n}: ${v};`).join("\n")}\n}`
     : "";
   const block = [extraProps, extraDecls, c.append].filter(Boolean).join("\n\n");
   if (block) appends.push(marked(c.marker, block));

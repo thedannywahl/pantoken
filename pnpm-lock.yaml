@@ -722,6 +722,9 @@ importers:
       '@pantoken/plugin-colors':
         specifier: workspace:*
         version: link:../../plugins/pantoken/colors
+      '@pantoken/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
@@ -738,9 +741,6 @@ importers:
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../tokens
-      '@pantoken/utils':
-        specifier: workspace:*
-        version: link:../../packages/utils
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.3
@@ -768,10 +768,10 @@ importers:
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../tokens
-    devDependencies:
       '@pantoken/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+    devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 24.13.3

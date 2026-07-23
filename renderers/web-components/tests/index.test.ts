@@ -1,5 +1,5 @@
 import { expect, test } from "vite-plus/test";
-import { ELEMENTS, foundationCss, iconSvg, register } from "../src/index.ts";
+import { ELEMENTS, iconSvg, register } from "../src/index.ts";
 import { resolveSpace, spacingValue } from "../src/lib/helpers.ts";
 
 test("resolveSpace maps a keyword to a token, else passes a raw CSS value through", () => {
@@ -16,15 +16,6 @@ test("spacingValue resolves the 1–4 value shorthand (keywords and raw mixed)",
   );
   expect(spacingValue("medium 2rem")).toBe("var(--instui-spacing-space-md) 2rem");
   expect(spacingValue(null)).toBe(""); // absent → clears the property
-});
-
-test("foundationCss declares the elevation + focus-outline props at :root", () => {
-  const css = foundationCss();
-  expect(css.startsWith(":root {")).toBe(true);
-  // Elevation scale + focus-outline system — the bits the token sheet doesn't carry.
-  expect(css).toContain("--instui-elevation-resting:");
-  expect(css).toContain("--instui-focus-outline-width:");
-  expect(css).toContain("--instui-focus-outline-color:");
 });
 
 test("iconSvg returns inline SVG for known icons and empty for unknown", () => {
@@ -75,4 +66,22 @@ test("an empty or nullish prefix falls back to the default instui- prefix", () =
   expect(definedTags({ prefix: "" })).toEqual(expected);
   expect(definedTags({ prefix: "   " })).toEqual(expected);
   expect(definedTags({ prefix: null })).toEqual(expected);
+});
+
+test("only registers just the requested subset", () => {
+  expect(definedTags({ only: ["button", "alert"] }).sort()).toEqual([
+    "instui-alert",
+    "instui-button",
+  ]);
+});
+
+test("only pulls in nested-render dependencies (date-time-input → date-input → calendar)", () => {
+  const tags = definedTags({ only: ["date-time-input"] });
+  expect(tags).toContain("instui-date-time-input");
+  expect(tags).toContain("instui-date-input"); // nested dependency
+  expect(tags).toContain("instui-calendar"); // transitive nested dependency
+  expect(tags).not.toContain("instui-drilldown"); // not requested
+  // Canonical order preserved: a dependency is defined before the element that renders it.
+  expect(tags.indexOf("instui-calendar")).toBeLessThan(tags.indexOf("instui-date-input"));
+  expect(tags.indexOf("instui-date-input")).toBeLessThan(tags.indexOf("instui-date-time-input"));
 });

@@ -106,8 +106,30 @@ const tokenGroups = [
   { property: "box-shadow", tokens: ELEVATION_NAMES.map((n) => `--instui-elevation-${n}`) },
 ];
 
+const componentsSheet = componentsCss(opts);
 writeFileSync(join(outDir, "base.css"), baseCss());
-writeFileSync(join(outDir, "components.css"), componentsCss(opts));
+writeFileSync(join(outDir, "components.css"), componentsSheet);
+// component-icons.css: just the `--instui-icon-*` glyph tokens the component sheets actually reference
+// (a small subset of the full ~1,777-icon set). Auto-detected from the component CSS, valued from the
+// token IR. This lets per-component CDN delivery resolve its icons against the lean, icon-free token
+// sheet (`@pantoken/css/style.lean.css`) without loading the entire icon set. Consumers who use
+// `var(--instui-icon-*)` broadly should load the full token sheet or `icons.css` instead.
+const usedIcons = [
+  ...new Set([...componentsSheet.matchAll(/var\((--instui-icon-[a-z0-9-]+)\)/g)].map((m) => m[1])),
+].sort();
+const iconValues = new Map(tokens.map((t) => [t.name, t.value]));
+const componentIconsBody = usedIcons
+  .map((name) => {
+    const value = iconValues.get(name);
+    if (value === undefined)
+      throw new Error(`component-icons: no token in the IR for referenced icon ${name}`);
+    return `  ${name}: ${value};`;
+  })
+  .join("\n");
+writeFileSync(
+  join(outDir, "component-icons.css"),
+  `/* Icon glyph tokens referenced by @pantoken/components (${usedIcons.length} of the full icon set) */\n:root {\n${componentIconsBody}\n}\n`,
+);
 // Internal (NOT shipped): every record in the `pfx-` authoring prefix — the cssdoc `providers` target
 // (see formats/components/cssdoc.jsonc) that lets the per-file source-`.css` lint resolve sibling records
 // named in `@structure` (e.g. tree-browser's `.pfx-icon`). Written under src/generated/ (gitignored),
@@ -146,5 +168,5 @@ writeFileSync(
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
 );
 console.log(
-  "✓ components: wrote base.css + components.css + fonts.css + prose.css + select.css + icons.css + utilities.css",
+  `✓ components: wrote base.css + components.css + component-icons.css (${usedIcons.length} icons) + fonts.css + prose.css + select.css + icons.css + utilities.css`,
 );

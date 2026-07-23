@@ -13,6 +13,16 @@
 import { regex } from "arkregex";
 import type { Token } from "@pantoken/model";
 
+// The elevation + focus-outline composite custom-property builders. They live in their own module (no
+// `arkregex`/resolver deps) so `@pantoken/css` can pull just the declarations without the rest of utils.
+export {
+  ELEVATION_NAMES,
+  elevationDeclarations,
+  FOCUSABLE_SELECTOR,
+  focusOutlineDeclarations,
+  focusOutlineRules,
+} from "./declarations.ts";
+
 /** The colour mode to collapse `light-dark()` to. */
 export type Mode = "light" | "dark";
 
