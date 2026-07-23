@@ -1,36 +1,32 @@
-name: Release package
+name: Release
+
+# Automated releases via the changesets action. On push to main:
+#  - with pending changesets, it opens/updates a "Version Packages" PR (runs `changeset version` →
+#    version bumps + per-package CHANGELOGs);
+#  - once that PR merges (no changesets left), it publishes the bumped packages to npm with provenance
+#    and cuts a GitHub release per package.
+#
+# Requires (one-time): repo Settings → Actions → General → Workflow permissions → "Allow GitHub Actions
+# to create and approve pull requests" (so the action can open the Version PR), and an `NPM_TOKEN` secret.
 
 on:
   push:
-    tags:
-      - "@pantoken/*@v*"
-  workflow_dispatch:
-    inputs:
-      package_tag:
-        description: "Package tag (for example: @pantoken/components@v1.0.0)"
-        required: true
-        type: string
-      dist_tag:
-        description: "Optional npm dist-tag override (for example: latest, next, beta)"
-        required: false
-        type: string
+    branches: [main]
+  workflow_dispatch: # manual re-trigger (e.g. to re-attempt a failed publish; publish is idempotent)
 
 permissions:
-  contents: write
-  id-token: write
+  contents: write # commit version bumps, push tags, create releases
+  pull-requests: write # open/update the Version Packages PR
+  id-token: write # npm provenance (OIDC)
 
-# Key the concurrency group on the package tag, not github.ref: a tag push already has a per-tag ref,
-# but every workflow_dispatch shares refs/heads/main, so keying on github.ref would serialize and cancel
-# parallel dispatches of different packages. Using the tag lets distinct packages release concurrently.
+# One release run at a time; never cancel a run mid-publish.
 concurrency:
-  group: release-package-${{ github.event_name == 'workflow_dispatch' && inputs.package_tag || github.ref_name }}
+  group: release
   cancel-in-progress: false
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
-    env:
-      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.package_tag || github.ref_name }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -50,129 +46,21 @@ jobs:
           cache: true
           run-install: true
 
-      # Warm the release build from main's cache (tags can read default-branch caches). vp's task cache
-      # stores outputs as tarballs, so `vp run -r build` below becomes a fast cache-extract.
-      - name: Restore vp task cache
-        uses: actions/cache/restore@v4
+      # Build so `changeset publish` ships real dist. Publish ignores lifecycle scripts (below), so a
+      # package's `prepublishOnly` won't re-invoke a nested `vp` (which can fail with os error 22).
+      - name: Build all packages
+        run: vp run -r build
+
+      - name: Create Version PR or publish
+        uses: changesets/action@v1
         with:
-          path: node_modules/.vite/task-cache
-          key: vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}
-          restore-keys: |
-            vp-taskcache-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}
-            vp-taskcache-${{ runner.os }}-
-
-      - name: Set up pnpm for publish
-        run: |
-          corepack enable
-          corepack prepare pnpm@11.13.0 --activate
-          pnpm --version
-
-      # Plan first: this emits release_packages / publish_packages / publish_count to GITHUB_OUTPUT,
-      # which the scoped gate and publish steps read. cut-release.ts already ran the full scoped gates
-      # locally before tagging, and ci.yml ran the whole `ready` on the merge-to-main this tag points
-      # at — so here we verify a clean build + types + tests, then scope the pack-heavy publish gates to
-      # exactly what ships. (Non-publish lint/validate/markdown are covered by ci.yml, not repeated.)
-      - name: Build package release plan
-        id: plan
-        run: |
-          node scripts/release/plan-package-release.ts \
-            --tag "${RELEASE_TAG}" \
-            --json .release-plan.json \
-            --publish-list .release-packages.txt \
-            --markdown .release-plan.md
-
-      - name: Verify release gates
-        shell: bash
-        run: |
-          vp run -r build
-          vp check
-          vp run -r test
-          vp run gate:repository
-
-          # publint/attw pack each package and are the dominant gate cost — scope them to the publish
-          # set. `vp exec -F` runs the bin per matched package (no "task not found" like `vp run -F`).
-          filters=()
-          IFS=',' read -ra publish_pkgs <<< "${{ steps.plan.outputs.publish_packages }}"
-          for pkg in "${publish_pkgs[@]}"; do
-            [[ -n "${pkg}" ]] && filters+=("-F" "${pkg}")
-          done
-          if [[ ${#filters[@]} -eq 0 ]]; then
-            echo "No publishable packages in release set; skipping publint/attw."
-          else
-            vp exec "${filters[@]}" publint
-            vp exec "${filters[@]}" attw --pack --profile strict --no-emoji --ignore-rules no-resolution cjs-resolves-to-esm
-          fi
-
-      - name: Resolve npm dist-tag and prerelease state
-        id: dist_tag
-        if: steps.plan.outputs.publish_count != '0'
-        shell: bash
+          version: vp run release:version
+          publish: vp run release:publish
+          commit: "chore: version packages"
+          title: "chore: version packages"
         env:
-          INPUT_DIST_TAG: ${{ inputs.dist_tag }}
-        run: |
-          version="${RELEASE_TAG##*@v}"
-
-          if [[ -n "${INPUT_DIST_TAG}" ]]; then
-            tag="${INPUT_DIST_TAG}"
-          elif [[ "${version}" == *"-alpha."* ]]; then
-            tag="alpha"
-          elif [[ "${version}" == *"-beta."* ]]; then
-            tag="beta"
-          elif [[ "${version}" == *"-rc."* ]]; then
-            tag="rc"
-          elif [[ "${version}" == *"-"* ]]; then
-            tag="next"
-          else
-            tag="latest"
-          fi
-
-          if [[ "${version}" == *"-"* ]]; then
-            prerelease="true"
-          else
-            prerelease="false"
-          fi
-
-          echo "dist_tag=${tag}" >> "${GITHUB_OUTPUT}"
-          echo "prerelease=${prerelease}" >> "${GITHUB_OUTPUT}"
-          echo "version=${version}" >> "${GITHUB_OUTPUT}"
-          echo "Publishing with npm dist-tag: ${tag}"
-
-      - name: Publish release set
-        if: steps.plan.outputs.publish_count != '0'
-        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
-          NPM_CONFIG_FORCE: "true"
           NPM_CONFIG_IGNORE_SCRIPTS: "true"
           PNPM_CONFIG_IGNORE_SCRIPTS: "true"
-        run: |
-          while IFS= read -r pkg; do
-            [[ -z "${pkg}" ]] && continue
-            # Idempotent: skip any version already on npm so re-running a tag (or a tag whose
-            # dependency-aware set overlaps another's) doesn't fail on an immutable-version conflict.
-            ver="$(node -p "require('./.release-plan.json').manifestVersions['${pkg}'] || ''")"
-            if [[ -n "${ver}" ]] && npm view "${pkg}@${ver}" version >/dev/null 2>&1; then
-              echo "Skipping ${pkg}@${ver} — already published"
-              continue
-            fi
-            echo "Publishing ${pkg}${ver:+@${ver}}"
-            pnpm -F "${pkg}" publish --tag "${{ steps.dist_tag.outputs.dist_tag }}" --access public --no-git-checks
-          done < .release-packages.txt
-
-      - name: Build package release notes
-        run: |
-          node scripts/release/build-release-notes.ts \
-            --tag "${RELEASE_TAG}" \
-            --plan .release-plan.json \
-            --out release-notes.md
-
-      # Cut the GitHub release on BOTH triggers. Gating on `github.event_name == 'push'` meant a
-      # workflow_dispatch release (the fallback whenever >3 tags are pushed at once, since GitHub caps
-      # multi-tag pushes) published to npm but silently skipped the GitHub release + notes.
-      - name: Create GitHub release
-        if: steps.plan.outputs.publish_count != '0'
-        uses: softprops/action-gh-release@v3
-        with:
-          tag_name: ${{ env.RELEASE_TAG }}
-          body_path: release-notes.md
-          prerelease: ${{ steps.dist_tag.outputs.prerelease }}

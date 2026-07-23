@@ -67,7 +67,10 @@ jobs:
       # Fail when a changed publishable package has no pending changeset bumping it — `release:status`
       # alone passes as long as any changeset exists, so an unrelated/empty changeset would let an
       # unreleased change merge (which is how the CDN work shipped without publishing).
+      # Skipped on the changesets bot's "Version Packages" PR: it bumps every releasing package's
+      # package.json and deletes the changesets, which would otherwise trip this (no changeset left).
       - name: Require a changeset for each changed publishable package
+        if: ${{ !startsWith(github.head_ref, 'changeset-release/') }}
         env:
           CHANGESET_BASE: ${{ github.base_ref }}
         run: vp run release:coverage
