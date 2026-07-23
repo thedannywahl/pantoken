@@ -1,0 +1,2 @@
+# Block a push that changes a publishable package with no covering changeset (bypass: --no-verify).
+vp run release:coverage
