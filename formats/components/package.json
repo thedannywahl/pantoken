@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/components",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "An InstUI-look CSS component library from the pantoken tokens: prose/content styling plus class-based components (button, alert, badge).",
   "license": "MIT",
   "repository": {

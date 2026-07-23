@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/webpack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack plugin for pantoken: emits the token stylesheet as a build asset.",
   "license": "MIT",
   "repository": {

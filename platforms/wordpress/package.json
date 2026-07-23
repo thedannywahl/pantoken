@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/wordpress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Emit Instructure design tokens as a WordPress block-theme theme.json (color palette, spacing, typography).",
   "license": "MIT",
   "repository": {

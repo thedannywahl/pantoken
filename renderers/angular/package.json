@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/angular",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Angular helpers for pantoken: register the web components and read tokens.",
   "license": "MIT",
   "repository": {
