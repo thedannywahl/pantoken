@@ -24,8 +24,7 @@
     "generate": "node scripts/generate.ts",
     "dev": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
     "test": "vp test",
-    "check": "vp check",
-    "prepublishOnly": "vp run build"
+    "check": "vp check"
   },
   "dependencies": {
     "@pantoken/components": "workspace:*",

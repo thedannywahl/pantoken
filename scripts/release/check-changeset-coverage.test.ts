@@ -1,5 +1,9 @@
 import { expect, test } from "vite-plus/test";
-import { requiredPublishable, uncoveredPackages } from "./check-changeset-coverage.ts";
+import {
+  packageJsonNeedsRelease,
+  requiredPublishable,
+  uncoveredPackages,
+} from "./check-changeset-coverage.ts";
 import type { WorkspacePackage } from "./workspace-packages.ts";
 
 function pkg(name: string, relPath: string, isPrivate = false): WorkspacePackage {
@@ -51,6 +55,34 @@ test("a shipped change alongside ignored files still requires the package", () =
   expect(
     requiredPublishable(["formats/css/src/index.ts", "formats/css/tests/x.test.ts"], PACKAGES),
   ).toEqual(["@pantoken/css"]);
+});
+
+test("packageJsonNeedsRelease: dev-only field changes don't warrant a release", () => {
+  const before = {
+    name: "@pantoken/css",
+    version: "0.2.0",
+    scripts: { build: "x", prepublishOnly: "vp run build" },
+  };
+  // Only `scripts` changed (prepublishOnly removed) → no release needed.
+  expect(packageJsonNeedsRelease(before, { ...before, scripts: { build: "x" } })).toBe(false);
+  // A devDependencies bump → no release.
+  expect(
+    packageJsonNeedsRelease(
+      { ...before, devDependencies: { a: "1" } },
+      { ...before, devDependencies: { a: "2" } },
+    ),
+  ).toBe(false);
+  // A consumer-facing change (new export) → release needed.
+  expect(packageJsonNeedsRelease(before, { ...before, exports: { "./x": "./x.js" } })).toBe(true);
+  // A dependencies bump → release needed.
+  expect(
+    packageJsonNeedsRelease(
+      { ...before, dependencies: { a: "1" } },
+      { ...before, dependencies: { a: "2" } },
+    ),
+  ).toBe(true);
+  // A brand-new manifest → release needed.
+  expect(packageJsonNeedsRelease(null, before)).toBe(true);
 });
 
 test("uncoveredPackages flags required packages the changesets won't bump", () => {

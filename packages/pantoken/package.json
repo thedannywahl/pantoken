@@ -76,8 +76,7 @@
     "aggregate": "node scripts/aggregate.ts",
     "dev": "vp pack --watch",
     "test": "vp run aggregate && vp test",
-    "check": "vp check",
-    "prepublishOnly": "vp run build"
+    "check": "vp check"
   },
   "dependencies": {
     "@pantoken/android": "workspace:*",
