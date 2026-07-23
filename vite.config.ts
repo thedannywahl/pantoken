@@ -88,6 +88,9 @@ export default defineConfig({
       "release:status": {
         command: "vpx changeset status --verbose",
       },
+      "release:coverage": {
+        command: "node scripts/release/check-changeset-coverage.ts",
+      },
       release: {
         command: "node scripts/release/cut-release.ts",
       },

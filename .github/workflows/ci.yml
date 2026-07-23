@@ -47,19 +47,6 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Build all packages
         run: vp run -r build
-      # On main, hand the built output to the docs deploy (workflow_run) so it doesn't rebuild the
-      # workspace. generated/ carries the token JSON + themed CSS the site reads; dist/ carries the
-      # docs subgraph's built packages the VitePress build imports.
-      - name: Upload build output for docs deploy
-        if: github.ref == 'refs/heads/main'
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-output
-          path: |
-            **/generated/**
-            **/dist/**
-            !**/node_modules/**
-          retention-days: 1
 
   typecheck:
     needs: build
@@ -286,3 +273,80 @@ jobs:
           run-install: true
       - name: Lint PR commit messages
         run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose
+
+  # Detect docs-relevant changes so PRs only pay for the docs build when the site could change. Runs on
+  # both events (never skipped) so the `docs` job's `needs` is always satisfied.
+  docs-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect docs-relevant changes
+        id: filter
+        uses: dorny/paths-filter@v4
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+              - 'packages/**'
+              - 'formats/**'
+              - 'platforms/**'
+              - 'renderers/**'
+              - 'plugins/**'
+              - 'design/**'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+
+  # Build the site as part of CI, so:
+  #  - PRs get the exact deploy command run — a broken build OR a stale translation cache
+  #    (check-locale-drift) blocks the PR instead of only surfacing in the post-merge Deploy docs run.
+  #  - main pushes upload the built site as `docs-site`, which the Deploy docs workflow publishes
+  #    directly (no rebuild).
+  # Gated on docs-relevant changes with the same path set the Deploy docs `changes` job uses, so the
+  # artifact is uploaded exactly when a deploy will look for it.
+  docs:
+    needs: [build, docs-changes]
+    if: needs.docs-changes.outputs.docs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Build docs (locale parity + drift + VitePress build)
+        run: vp run @pantoken/docs#docs:build
+        env:
+          DOCS_BASE: /
+          DOCS_HOSTNAME: https://pantoken.iywahl.com/
+      # On main, hand the built site to the Deploy docs workflow (workflow_run) so it publishes without
+      # rebuilding. The CNAME is baked in here so the downloaded artifact is deploy-ready as-is.
+      - name: Add custom domain file
+        if: github.ref == 'refs/heads/main'
+        run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
+      - name: Upload built docs site
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-site
+          path: docs/.vitepress/dist
+          retention-days: 1
