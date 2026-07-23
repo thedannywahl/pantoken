@@ -1,50 +1,35 @@
-# CDN és terjesztés
+# CDN és disztribúció
 
-A pantoken minden csomagot közzétesz az npm-en, így a tokeneket, komponenseket és web-komponenseket
-közvetlenül egy CDN-ről is behúzhatod — build lépés és bundler nélkül. Ez az oldal a CSS combine URL-t
-(interaktív építővel) és a web-komponens beillesztéseket mutatja be.
+A pantoken minden csomagot közzétesz az npm-en, így tokeneket, komponenseket és webes komponenseket közvetlenül egy CDN-ből lehet letölteni – nincs build lépés, nincs bundler. Ez az oldal a CSS combine URL-t (interaktív szerkesztővel) és a webes komponens drop-in-eket ismerteti.
 
-## A token alap
+## A token alapja
 
-Minden pantoken komponens `--instui-*` egyedi tulajdonságokat olvas be egy token lapból az oldalon. Két
-változat érhető el:
+Minden pantoken komponens a `--instui-*` egyéni tulajdonságokat olvassa az oldalon lévő token lapról. Két verzió érhető el:
 
-- `@pantoken/css/style.lean.css` — az ajánlott CDN alap. Minden tokent tartalmaz a teljes ikonkészlet
-  kivételével, így körülbelül 23 KB gzip-elve.
-- `@pantoken/css/style.css` — a teljes lap, benne mind a ~1777 ikon glyph tokennel
-  (`--instui-icon-*`). Körülbelül 140 KB gzip-elve. Ezt töltsd be, ha széles körben hivatkozol ikonokra a
-  `var(--instui-icon-*)` segítségével.
+- `@pantoken/css/style.lean.css` — az ajánlott CDN alapja. Minden tokent tartalmaz, kivéve a teljes ikon készletet, így körülbelül 23 KB tömörített.
+- `@pantoken/css/style.css` — a teljes lap, az összes ~1 777 ikon karakterjel token-nel (`--instui-icon-*`). Körülbelül 140 KB tömörített. Töltsd be ezt, ha széles körben hivatkozol ikonokra a `var(--instui-icon-*)` segítségével.
 
-Az elevation skála és a fókuszgyűrű változói mindkét lapban benne vannak, így az árnyékok és a
-fókuszgyűrű már önmagában az alappal is működnek.
+Az elevation skála és a focus-ring változók mindkét lapban szerepelnek, így az árnyékok és a focus gyűrű csak az alapja betöltésével működnek.
 
-## Válaszd ki a komponenseket
+## Válaszd ki a komponenseid
 
-A jsDelivr combine végpontja egyetlen kérésben húzza be a token alapot és csak a szükséges komponens
-stíluslapokat. Jelöld be a kívánt komponenseket, és az építő megírja az URL-t:
+A jsDelivr's combine végpont lehúzza a token alapot, valamint csak az Ön szükséges komponens stíluslapokat egyetlen kérésben. Jelöld be a kívánt komponenseket, és az előállító írja az URL-t:
 
 <CdnPicker />
 
-Minden komponensfájl kicsi — a legtöbb körülbelül 2 KB. Az ikonokat megjelenítő komponensek (`alert`,
-`checkbox` és néhány másik) igénylik ezeket a glyph-eket, ezért az építő hozzáadja a
-`@pantoken/components/component-icons.css` fájlt (körülbelül 0,5 KB gzip-elve — a komponenskészlet által
-használt 11 ikon), amikor a karcsú lapot választod. A teljes lap már tartalmazza őket.
+Minden komponens fájl kicsi — legtöbbek körülbelül 2 KB. Az ikonokat megjelenítő komponens (`alert`, `checkbox` és néhány másik) szüksége van ezekre a karakterjegyekre, így az előállító hozzáadja a `@pantoken/components/component-icons.css`-t (körülbelül 0,5 KB tömörített – a komponens készlet által használt 11 ikon), amikor a lean lapot választod. A teljes lap már tartalmazza őket.
 
 ### Betöltési sorrend és betűtípusok
 
-Először a token alapot töltsd be, majd az opcionális alap resetet, végül a komponensfájlokat. A fenti
-combine URL már ilyen sorrendben rakja őket. A betűtípusok az egyetlen kivétel: a
-`@pantoken/components/fonts.css` relatív útvonalon hivatkozik a betűfájlokra, így a combine nem tudja
-átírni őket — töltsd be saját `<link>` elemként:
+Töltsd be először a token alapot, majd az opcionális alapjáró visszaállítást, majd a komponens fájlokat. A fenti combine URL már rendez ezeket az Ön számára. A betűtípusok az egyik kivétel: a `@pantoken/components/fonts.css` relatív útvonalon keresztül mutat a betűfájlokra, így a combine nem írhatja át – töltsd be saját `<link>`-ként:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/fonts.css" />
 ```
 
-### Minden egyszerre
+### Mindent egyszerre
 
-Ha a teljes komponenskönyvtárat szeretnéd behúzni válogatás helyett, mutass a gyűjtőlapra (körülbelül
-141 KB gzip-elve) a token lap mellett:
+A teljes komponens könyvtár lehúzásához ahelyett, hogy egyenként válogatnál, mutass az elvegetálható (körülbelül 141 KB tömörített) mellett a token lappal:
 
 ```html
 <link
@@ -53,15 +38,13 @@ Ha a teljes komponenskönyvtárat szeretnéd behúzni válogatás helyett, mutas
 />
 ```
 
-## Web-komponensek
+## Webes komponensek
 
-A `@pantoken/web-components` keretrendszer-független `<instui-*>` egyedi elemeket regisztrál. Saját
-CSS-üket beágyazzák, de a tokeneket továbbra is az oldalon lévő lapból olvassák, ezért egy token alapot is
-tölts be.
+A `@pantoken/web-components` framework-agnosztikus `<instui-*>` egyéni elemeket regisztrál. Beépítik a saját CSS-t, de az oldalon lévő lapokból is olvassák a tokeneket, ezért töltsd be a token alapot is.
 
 ### ES modulok (ajánlott)
 
-Egy ESM CDN feloldja helyetted a csomag függőségeit. Ez minden elemet regisztrál:
+Az ESM CDN feloldja a csomag függőségeit az Ön számára. Ez regisztrálja az összes elemet:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/style.css" />
@@ -70,40 +53,33 @@ Egy ESM CDN feloldja helyetted a csomag függőségeit. Ez minden elemet regiszt
 </script>
 ```
 
-Használd a teljes token lapot (vagy a karcsú lapot a `component-icons.css`-szel), hogy az ikonokat
-megjelenítő elemek, például az `<instui-alert>`, feloldják a glyph-jeiket.
+Használd a teljes token lapot (vagy a lean lapot plusz `component-icons.css`), hogy az ikonmegjelenítési elemek, mint a `<instui-alert>` feloldják a karakterjeleiket.
 
-Ha csak néhány elemet szeretnél regisztrálni — a beágyazott függőségeikkel együtt —, importáld a
-`register` függvényt, és add meg az `only` opciót:
+Ha csak néhány elemet szeretnél regisztrálni – és azok beágyazott függőségeit – importáld a `register`-t és add át a `only`-öt:
 
 ```html
 <script type="module">
   import { register } from "https://esm.sh/@pantoken/web-components";
-  // A date-input és a calendar automatikusan bekerül.
+  // Pulls in date-input and calendar automatically.
   register(customElements, { only: ["date-time-input"] });
 </script>
 ```
 
-### Klasszikus script tag
+### Egy klasszikus script tag
 
-Modulok nélküli beillesztéshez töltsd be az IIFE buildet. Ez beágyazza a függőségeit, betöltéskor minden
-elemet automatikusan regisztrál, és egy `PantokenWebComponents` globális objektumot tesz elérhetővé:
+Egy modulos nélküli drop-in-hez töltsd be az IIFE buildét. Becsomagolja függőségeit és automatikusan regisztrálja az összes elemet betöltéskor, kitéve egy `PantokenWebComponents` globális:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-Nagyobb, mint az ESM út — beágyazza a `@pantoken/components` és a `@pantoken/icons` csomagokat —, ezért
-csak akkor nyúlj hozzá, ha nem tudsz modulokat használni.
+Ez nagyobb, mint az ESM útvonal — beágyazza a `@pantoken/components`-t és `@pantoken/icons`-t — ezért csak akkor érj rá, ha nem tudod használni a modulokat.
 
 ## Verziók rögzítése
 
-A fenti URL-ek a legfrissebb kiadásra mutatnak. Éles környezetben rögzíts egy fő (vagy pontos) verziót —
-például `@pantoken/css@0` —, hogy egy frissítés soha ne érjen váratlanul. Az építő helyetted rögzíti az
-aktuálisan közzétett verziót.
+A fenti URL-ek lebegnek a legújabb kiadásra. Rögzíts egy fő (vagy pontos) verziót az éles verzióhoz — például `@pantoken/css@0` — így egy frissítés soha nem lepd meg. A kiválasztó az aktuálisan közzétett verziót rögzíti az Ön számára.
 
-## Ami nincs itt
+## Mi nincs itt
 
-Nincs `?components=button,badge` lekérdezési paraméter: egyetlen nyilvános CDN sem állít össze bundle-t
-lekérdezési paraméterekből. A combine URL a legközelebbi megfelelő, és az építő megírja helyetted.
+Nincs `?components=button,badge` lekérdezési paraméter: egyetlen nyilvános CDN sem állít össze egy csomagot a lekérdezési paraméterekből. A combine URL a legközelebbi ekvivalens, és a kiválasztó írja az URL-t az Ön számára.
