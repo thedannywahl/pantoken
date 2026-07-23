@@ -286,3 +286,61 @@ jobs:
           run-install: true
       - name: Lint PR commit messages
         run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose
+
+  # Only run the (heavier) docs build when a PR touches something the site renders.
+  docs-changes:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect docs-relevant changes
+        id: filter
+        uses: dorny/paths-filter@v4
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+              - 'packages/**'
+              - 'formats/**'
+              - 'platforms/**'
+              - 'renderers/**'
+              - 'plugins/**'
+              - 'design/**'
+              - 'pnpm-lock.yaml'
+              - 'pnpm-workspace.yaml'
+
+  # Run the exact deploy command on PRs so a broken build OR an out-of-date translation cache
+  # (check-locale-drift) blocks the PR, instead of only surfacing in the post-merge Deploy docs run.
+  # A guide/API-comment edit that isn't re-translated (its hu cache entry missing) fails here.
+  docs:
+    needs: [build, docs-changes]
+    if: needs.docs-changes.outputs.docs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Build docs (locale parity + drift + VitePress build)
+        run: vp run @pantoken/docs#docs:build

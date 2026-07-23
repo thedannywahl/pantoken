@@ -64,6 +64,14 @@ jobs:
       - name: Verify release metadata
         run: vp run release:status
 
+      # Fail when a changed publishable package has no pending changeset bumping it — `release:status`
+      # alone passes as long as any changeset exists, so an unrelated/empty changeset would let an
+      # unreleased change merge (which is how the CDN work shipped without publishing).
+      - name: Require a changeset for each changed publishable package
+        env:
+          CHANGESET_BASE: ${{ github.base_ref }}
+        run: vp run release:coverage
+
   docs-and-internal-only:
     needs: detect-release-impact
     if: needs.detect-release-impact.outputs.release_impact != 'true'
