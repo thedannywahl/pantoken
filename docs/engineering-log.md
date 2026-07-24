@@ -120,3 +120,25 @@ class (`.instui-progress` prefixes `.instui-progress-value`), the split corrupts
 
 **Fix / rule** — Keep flat siblings and root-modifier-only rules (especially `-size-*`, which the alias
 post-processors append at top level) **outside** the `@scope` block. See `docs/conventions/authoring.md`.
+
+## CI / release
+
+### The Version PR needs a PAT to trigger CI — and an unset secret hard-fails checkout
+
+**Symptom** — The changesets "Version Packages" PR opened, but its CI and release checks sat in
+`action_required` and never ran. Wiring a PAT reference into the release workflow to fix that turned
+main red instead: `actions/checkout` failed with `Input required and not supplied: token`.
+
+**Root cause** — Two linked traps. (1) GitHub deliberately doesn't trigger workflows on PRs authored by
+the built-in `GITHUB_TOKEN` (anti-recursion), so a Version PR opened by the changesets action never
+kicks off CI. (2) `actions/checkout`'s `token:` input, given the empty string a not-yet-created
+`secrets.*` resolves to, errors out rather than falling back — so referencing a missing secret breaks
+the whole workflow, including the publish path.
+
+**Fix / rule** — Author the Version PR with a fine-grained PAT (repo-scoped, Contents + Pull requests:
+read/write) on both the checkout `token:` and the changesets action's `GITHUB_TOKEN` env, so the PR
+comes from a real user and CI runs automatically. Reference the secret defensively —
+`${{ secrets.RELEASE_PAT || github.token }}` — so an absent or expired PAT degrades to the built-in
+token instead of hard-failing, and emit a `::warning::` when it's missing. The PAT is git/PR auth only;
+npm publishing stays OIDC/token-free (`id-token: write` + trusted publishers). Fine-grained PATs expire
+(≤ 1 year); the "RELEASE_PAT missing" warning in the release log is the rotation cue.
