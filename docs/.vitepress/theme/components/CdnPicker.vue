@@ -74,18 +74,20 @@ async function copy(): Promise<void> {
 </script>
 
 <template>
-  <div class="cdn-picker">
-    <fieldset class="cdn-picker__group">
+  <div
+    class="cdn-picker instui-view -background-secondary -border-radius-large -border-width-small instui-p-md"
+  >
+    <fieldset class="instui-form-field-group cdn-picker__group">
       <legend>{{ t.componentsLabel }}</legend>
-      <label class="cdn-picker__check cdn-picker__all">
+      <label class="instui-checkbox cdn-picker__all">
         <input type="checkbox" v-model="allComponents" />
         <span>{{ t.allComponents }}</span>
       </label>
       <div
-        class="cdn-picker__components"
+        class="cdn-picker__components instui-view -background-primary -border-radius-medium -border-width-small instui-p-sm"
         :class="{ 'cdn-picker__components--disabled': allComponents }"
       >
-        <label v-for="c in components" :key="c.name" class="cdn-picker__check">
+        <label v-for="c in components" :key="c.name" class="instui-checkbox">
           <input
             type="checkbox"
             :checked="selected.has(c.name)"
@@ -98,115 +100,101 @@ async function copy(): Promise<void> {
     </fieldset>
 
     <div class="cdn-picker__options">
-      <fieldset class="cdn-picker__group">
+      <fieldset class="instui-radio-input-group">
         <legend>{{ t.tokenSheetLabel }}</legend>
-        <label class="cdn-picker__radio">
-          <input type="radio" value="lean" v-model="tokenSheet" />
+        <label class="instui-radio -variant-toggle">
+          <input type="radio" name="cdn-token-sheet" value="lean" v-model="tokenSheet" />
           <span>{{ t.tokenLean }}</span>
         </label>
-        <label class="cdn-picker__radio">
-          <input type="radio" value="full" v-model="tokenSheet" />
+        <label class="instui-radio -variant-toggle">
+          <input type="radio" name="cdn-token-sheet" value="full" v-model="tokenSheet" />
           <span>{{ t.tokenFull }}</span>
         </label>
       </fieldset>
 
-      <fieldset class="cdn-picker__group">
+      <fieldset class="instui-radio-input-group">
         <legend>{{ t.formatLabel }}</legend>
-        <label class="cdn-picker__radio">
-          <input type="radio" value="link" v-model="format" />
+        <label class="instui-radio -variant-toggle">
+          <input type="radio" name="cdn-format" value="link" v-model="format" />
           <span>{{ t.formatLink }}</span>
         </label>
-        <label class="cdn-picker__radio">
-          <input type="radio" value="import" v-model="format" />
+        <label class="instui-radio -variant-toggle">
+          <input type="radio" name="cdn-format" value="import" v-model="format" />
           <span>{{ t.formatImport }}</span>
         </label>
-        <label class="cdn-picker__radio">
-          <input type="checkbox" v-model="includeBase" />
-          <span>{{ t.includeBase }}</span>
-        </label>
       </fieldset>
+
+      <label class="instui-checkbox cdn-picker__base">
+        <input type="checkbox" v-model="includeBase" />
+        <span>{{ t.includeBase }}</span>
+      </label>
     </div>
 
     <div class="cdn-picker__output">
       <template v-if="hasSelection">
         <div class="cdn-picker__code">
-          <button class="cdn-picker__copy" type="button" @click="copy">
+          <button
+            class="instui-button -size-small -color-secondary cdn-picker__copy"
+            type="button"
+            @click="copy"
+          >
             {{ copied ? t.copied : t.copy }}
           </button>
           <pre><code>{{ output }}</code></pre>
         </div>
-        <p v-if="needsIconSheet" class="cdn-picker__note">{{ t.iconsNote }}</p>
-        <p class="cdn-picker__note">{{ t.fontsNote }}</p>
+        <p
+          v-if="needsIconSheet"
+          class="instui-text -size-x-small -color-secondary cdn-picker__note"
+        >
+          {{ t.iconsNote }}
+        </p>
+        <p class="instui-text -size-x-small -color-secondary cdn-picker__note">{{ t.fontsNote }}</p>
       </template>
-      <p v-else class="cdn-picker__empty">{{ t.empty }}</p>
+      <p v-else class="instui-text -color-secondary -style-italic cdn-picker__empty">
+        {{ t.empty }}
+      </p>
     </div>
   </div>
 </template>
 
 <style scoped>
+/* Layout only — surface, controls, and type come from the InstUI component/utility classes on the
+   elements themselves; what's left here is grid/flow the classes don't express. */
 .cdn-picker {
   margin: 1.5rem 0;
-  padding: 1.25rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg-soft);
 }
 .cdn-picker__group {
-  border: 0;
-  padding: 0;
   margin: 0 0 1rem;
-}
-.cdn-picker__group legend {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-  padding: 0;
 }
 .cdn-picker__all {
   margin-bottom: 0.5rem;
-  font-weight: 600;
 }
+/* The scrollable component grid; chrome (bg/border/radius/padding) is on the .instui-view classes. */
 .cdn-picker__components {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
   gap: 0.25rem 0.75rem;
   max-height: 16rem;
   overflow-y: auto;
-  padding: 0.5rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  background: var(--vp-c-bg);
 }
 .cdn-picker__components--disabled {
   opacity: 0.45;
   pointer-events: none;
 }
-.cdn-picker__check,
-.cdn-picker__radio {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--vp-c-text-1);
-  cursor: pointer;
-}
-.cdn-picker__radio {
-  margin-right: 1.25rem;
-  margin-bottom: 0.25rem;
-}
-.cdn-picker__check input,
-.cdn-picker__radio input {
-  accent-color: var(--vp-c-brand-1);
-}
+/* Bottom-align so the lone base-reset checkbox lines up with the toggle controls, not their legends. */
 .cdn-picker__options {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  align-items: flex-end;
+  gap: 1rem 1.5rem;
+}
+.cdn-picker__base {
+  margin-bottom: 0.25rem;
 }
 .cdn-picker__output {
   margin-top: 0.5rem;
 }
+/* Float the copy button over the code block; the button's own look comes from .instui-button. */
 .cdn-picker__code {
   position: relative;
 }
@@ -229,31 +217,13 @@ async function copy(): Promise<void> {
   top: 0.5rem;
   right: 0.5rem;
   z-index: 1;
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--vp-c-text-2);
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  cursor: pointer;
-  transition:
-    color 0.2s,
-    border-color 0.2s;
-}
-.cdn-picker__copy:hover {
-  color: var(--vp-c-brand-1);
-  border-color: var(--vp-c-brand-1);
 }
 .cdn-picker__note {
+  display: block;
   margin: 0.5rem 0 0;
-  font-size: 0.8125rem;
-  color: var(--vp-c-text-2);
 }
 .cdn-picker__empty {
+  display: block;
   margin: 0;
-  font-size: 0.875rem;
-  color: var(--vp-c-text-2);
-  font-style: italic;
 }
 </style>

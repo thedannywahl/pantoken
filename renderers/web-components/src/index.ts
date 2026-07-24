@@ -205,7 +205,7 @@ function withNestedDeps(only: readonly string[]): Set<string> {
  * @param options - `prefix` sets the tag prefix, mirroring the CSS layer: pass a non-empty string like
  *   `x` for `<x-icon>`. A prefix is always applied (a custom-element name must contain a hyphen), so an
  *   omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`). `only` limits
- *   registration to a subset of {@link ELEMENTS} (base names) — its {@link NESTED_DEPS} are pulled in
+ *   registration to a subset of the `ELEMENTS` base names — its nested render dependencies are pulled in
  *   automatically, so `{ only: ["date-time-input"] }` also defines `date-input` and `calendar`. Omit
  *   `only` to register every element (the default).
  *
