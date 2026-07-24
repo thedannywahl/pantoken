@@ -17,6 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./meta": "./dist/meta.mjs",
     "./raw": "./dist/raw.mjs",
     "./package.json": "./package.json"
   },
@@ -35,7 +36,9 @@
   },
   "devDependencies": {
     "@instructure/instructure-design-tokens": "catalog:",
+    "@instructure/ui-icons": "catalog:",
     "@pantoken/core": "workspace:*",
+    "@pantoken/plugin-deprecations": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

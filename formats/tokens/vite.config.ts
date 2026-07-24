@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   pack: {
-    entry: ["src/index.ts", "src/raw.ts"],
+    entry: ["src/index.ts", "src/raw.ts", "src/meta.ts"],
     dts: true,
     exports: true,
   },
