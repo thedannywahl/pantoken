@@ -81,27 +81,10 @@ jobs:
           publish: node scripts/release/publish-npm.ts
           commit: "chore: version packages"
           title: "chore: version packages"
-          createGithubReleases: true
+          # The publish script owns tags + GitHub releases (via `gh release create`), so the action must
+          # not also try (its `git push origin <tag>` needs a local tag + persisted credentials we don't
+          # provide). See scripts/release/publish-npm.ts.
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
-          # TEMPORARY (diagnostic): verbose npm so the OIDC token-exchange HTTP shows inline.
-          NPM_CONFIG_LOGLEVEL: verbose
-
-      # TEMPORARY (diagnostic): npm writes a full-detail debug log per invocation to ~/.npm/_logs. Those
-      # logs record the OIDC token-exchange request/response — capture them so we can see exactly why the
-      # exchange returns no token (ENEEDAUTH). Remove this once the OIDC publish is working.
-      - name: Collect npm debug logs
-        if: always()
-        run: |
-          mkdir -p npm-debug-logs
-          cp -r ~/.npm/_logs/. npm-debug-logs/ 2>/dev/null || true
-          ls -la npm-debug-logs || true
-      - name: Upload npm debug logs
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: npm-debug-logs
-          path: npm-debug-logs
-          retention-days: 3
-          if-no-files-found: warn
