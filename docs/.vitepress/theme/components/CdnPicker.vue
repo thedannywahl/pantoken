@@ -43,10 +43,11 @@ const needsIconSheet = computed(
 );
 
 const combineUrl = computed(() => {
-  // Track the latest release (no version pin) — pin yourself for production.
-  const c = "npm/@pantoken/components";
+  // Track the latest release (no version pin) — pin yourself for production. jsDelivr serves raw file
+  // paths (it ignores the package `exports` map), and every sheet ships under `dist/`.
+  const c = "npm/@pantoken/components/dist";
   const files = [
-    `npm/@pantoken/css/${tokenSheet.value === "lean" ? "style.lean.css" : "style.css"}`,
+    `npm/@pantoken/css/dist/${tokenSheet.value === "lean" ? "style.lean.css" : "style.css"}`,
   ];
   if (includeBase.value) files.push(`${c}/base.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);

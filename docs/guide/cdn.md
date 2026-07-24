@@ -9,9 +9,9 @@ builder), plus the web-component drop-ins.
 Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
 variants ship:
 
-- `@pantoken/css/style.lean.css` — the recommended CDN foundation. It carries every token except the
+- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
   full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/style.css` — the full sheet, including all ~1,777 icon glyph tokens
+- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
   (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
   `var(--instui-icon-*)`.
 
@@ -26,18 +26,18 @@ single request. Check the components you want, and the builder writes the URL:
 <CdnPicker />
 
 Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/component-icons.css` (about
+and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
 0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
 already carries them.
 
 ### Load order and fonts
 
 Load the token foundation first, then the optional base reset, then the component files. The combine URL
-above already orders them for you. Fonts are the one exception: `@pantoken/components/fonts.css` points at
+above already orders them for you. Fonts are the one exception: `@pantoken/components/dist/fonts.css` points at
 font files by relative path, so combine can't rewrite them — load it as its own `<link>`:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/fonts.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
 ### Everything at once
@@ -48,7 +48,7 @@ gzipped) alongside the token sheet:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/combine/npm/@pantoken/css/style.css,npm/@pantoken/components/components.css"
+  href="https://cdn.jsdelivr.net/combine/npm/@pantoken/css/dist/style.css,npm/@pantoken/components/dist/components.css"
 />
 ```
 
@@ -62,7 +62,7 @@ own CSS, but still read tokens from a sheet on the page, so load a token foundat
 An ESM CDN resolves the package's dependencies for you. This registers every element:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/style.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script type="module">
   import "https://esm.sh/@pantoken/web-components";
 </script>
@@ -87,7 +87,7 @@ For a no-modules drop-in, load the IIFE build. It bundles its dependencies and a
 element on load, exposing a `PantokenWebComponents` global:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/style.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
