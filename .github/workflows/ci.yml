@@ -274,6 +274,66 @@ jobs:
       - name: Lint PR commit messages
         run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose
 
+  # Detect changes that could shift the vendored token IR, so the upstream-drift gate runs only when a
+  # bump (or the pipeline itself) changed. Runs on both events so `upstream-drift`'s `needs` resolves.
+  upstream-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      upstream: ${{ steps.filter.outputs.upstream }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect upstream-pin changes
+        id: filter
+        uses: dorny/paths-filter@v4
+        with:
+          filters: |
+            upstream:
+              - 'pnpm-workspace.yaml'
+              - 'pnpm-lock.yaml'
+              - 'formats/tokens/**'
+              - 'tools/upstream-diff/**'
+
+  # The upstream-drift gate: fails when the committed baseline doesn't match the freshly built token IR,
+  # forcing a bump to be blessed (`vp run upgrade:bless`) in the same PR. The classified report is printed
+  # to the job log and uploaded as an artifact so every token/icon delta is visible on the PR.
+  upstream-drift:
+    needs: [build, upstream-changes]
+    if: needs.upstream-changes.outputs.upstream == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Check upstream drift
+        run: vp run upgrade:check
+      - name: Upload drift report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: upstream-drift-report
+          path: tools/upstream-diff/generated
+          retention-days: 7
+
   # Detect docs-relevant changes so PRs only pay for the docs build when the site could change. Runs on
   # both events (never skipped) so the `docs` job's `needs` is always satisfied.
   docs-changes:
@@ -359,7 +419,21 @@ jobs:
   # with `changeset-gate` in changeset-check.yml; both are required, so a PR merges only when every check
   # across both workflows is green — which is what lets `gh pr merge --auto` wait for real.
   ci-gate:
-    needs: [build, typecheck, test, lint, publint, attw, repository, commitlint, docs-changes, docs]
+    needs:
+      [
+        build,
+        typecheck,
+        test,
+        lint,
+        publint,
+        attw,
+        repository,
+        commitlint,
+        upstream-changes,
+        upstream-drift,
+        docs-changes,
+        docs,
+      ]
     if: always()
     runs-on: ubuntu-latest
     steps:

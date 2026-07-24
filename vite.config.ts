@@ -64,8 +64,33 @@ export default defineConfig({
           "lint:css",
           "lint:js",
           "validate:generated:only",
+          "gate:compatibility",
           "lint:markdown",
         ],
+      },
+      // The upstream-upgrade pipeline. `upgrade:check` is the drift gate — it fails when the committed
+      // baseline doesn't match the current build, so a bump must be blessed in the same change. It's kept
+      // OUT of `ready:all` (a routine core-output change would trip it and force a baseline re-commit) and
+      // gated instead by the paths-filtered `upstream-drift` CI job, which fires only on a pin change.
+      // `upgrade:bless` accepts a reviewed bump (and refuses if a removed token lacks a ledger entry).
+      "upgrade:check": {
+        command: "vp run @pantoken/upstream-diff#diff",
+        dependsOn: ["build:all"],
+      },
+      "upgrade:bless": {
+        command: "vp run @pantoken/upstream-diff#bless",
+        dependsOn: ["build:all"],
+      },
+      // Writer/gate pair for the consumer compatibility manifest, mirroring sync:/gate:repository.
+      // `gate:compatibility` is cheap and correct on every PR (compatibility.json changes only when the
+      // pins or the consumer set change), so it joins `ready:all`; `sync:compatibility` regenerates it.
+      "sync:compatibility": {
+        command: "node scripts/release/generate-compatibility.ts",
+        dependsOn: ["build:all"],
+      },
+      "gate:compatibility": {
+        command: "node scripts/release/check-compatibility.ts",
+        dependsOn: ["build:all"],
       },
       // CSS/cssdoc linting needs `@pantoken/components`'s generated sheets (`src/generated/_records.css`,
       // the cssdoc sibling-record provider, and the `generated/*.css` sheets). They depend on `build:all`
