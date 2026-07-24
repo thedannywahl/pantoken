@@ -2,16 +2,22 @@
   "name": "@pantoken/demo",
   "version": "0.1.0",
   "description": "Self-hosted, token-themed live-demo runner for docs: resolve a @demo <provider>:<ref> spec to an embeddable iframe, and render bare HTML/CSS/JS demos same-origin.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "tools/demo"
   },
   "files": [
     "dist",
     "assets"
   ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
     "./demo.css": "./assets/demo.css",
@@ -19,7 +25,8 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "dev": "vp pack --watch",
@@ -46,5 +53,8 @@
     "markdown-it": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

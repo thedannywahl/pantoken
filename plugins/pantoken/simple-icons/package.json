@@ -2,21 +2,26 @@
   "name": "@pantoken/plugin-simple-icons",
   "version": "0.1.1",
   "description": "pantoken plugin: add Simple Icons brand glyphs as <image> tokens (token layer) OR resolve them at render (rehype layer).",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/pantoken/simple-icons"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "dev": "vp pack --watch",
@@ -36,6 +41,9 @@
   },
   "peerDependencies": {
     "simple-icons": ">=13"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "simpleIcons",

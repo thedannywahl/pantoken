@@ -116,6 +116,11 @@ export default defineConfig({
       "gate:repository": {
         command: "node scripts/release/check-repository-metadata.ts",
       },
+      // Writer counterpart to `gate:repository`: stamps the canonical npm metadata onto every
+      // publishable package.json. Run after adding a package; the gate then keeps it correct.
+      "sync:repository": {
+        command: "node scripts/release/sync-repository-metadata.ts",
+      },
       "gate:publint": {
         command:
           'vp exec -F "./packages/**" -F "./formats/**" -F "./platforms/**" -F "./renderers/**" -F "./bundlers/**" -F "./design/**" -F "./ai/**" -F "./plugins/**" -F "./tools/**" publint',
