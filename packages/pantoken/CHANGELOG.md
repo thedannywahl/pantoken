@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies [9ecba6c]
+  - @pantoken/web-components@0.2.1
+  - @pantoken/angular@0.1.3
+  - @pantoken/react@0.1.3
+  - @pantoken/svelte@0.1.3
+  - @pantoken/vue@0.1.3
+
 ## 0.1.4
 
 ### Patch Changes
