@@ -2,21 +2,26 @@
   "name": "@pantoken/vite-workspace-orchestrator",
   "version": "0.1.0",
   "description": "Vite dev-server plugin that watches upstream workspace packages and rebuilds them (and their dependents) when source changes.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/vite/workspace-orchestrator"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "dev": "vp pack --watch",
@@ -31,5 +36,8 @@
   },
   "peerDependencies": {
     "vite": ">=6"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

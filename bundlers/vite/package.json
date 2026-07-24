@@ -2,21 +2,26 @@
   "name": "@pantoken/vite",
   "version": "0.1.1",
   "description": "Vite plugin for pantoken: virtual modules for tokens and CSS, plus optional stylesheet injection.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "bundlers/vite"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "dev": "vp pack --watch",
@@ -35,6 +40,9 @@
   },
   "peerDependencies": {
     "vite": ">=5"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "vite",

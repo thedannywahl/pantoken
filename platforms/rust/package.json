@@ -2,21 +2,26 @@
   "name": "@pantoken/rust",
   "version": "0.1.1",
   "description": "Emit Instructure design tokens as Rust constants for egui (Color32) or iced (Color).",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "platforms/rust"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "dev": "vp pack --watch",
@@ -34,5 +39,8 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }

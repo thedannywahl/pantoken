@@ -2,22 +2,29 @@
   "name": "@pantoken/plugin-transition",
   "version": "0.1.2",
   "description": "pantoken plugin: the CSS for InstUI's Transition utility — duration/timing tokens plus fade, scale, and slide enter/exit state classes.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/pantoken/transition"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
     "./transition.css": "./dist/transition.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
@@ -34,6 +41,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "transition",

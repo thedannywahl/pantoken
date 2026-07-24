@@ -2,22 +2,29 @@
   "name": "@pantoken/storybook",
   "version": "0.1.1",
   "description": "A Storybook theme built from Instructure tokens (maps to Storybook ThemeVars).",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "renderers/storybook"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
     "./components.css": "./dist/components.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
@@ -44,6 +51,9 @@
     "@storybook/theming": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "storybook",

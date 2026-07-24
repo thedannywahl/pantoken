@@ -2,22 +2,29 @@
   "name": "@pantoken/mui",
   "version": "0.1.1",
   "description": "Theme MUI (Material UI) with Instructure tokens: maps the token IR to createTheme palette options per mode.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "renderers/mui"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
     "./components.css": "./dist/components.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
@@ -36,6 +43,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "mui",

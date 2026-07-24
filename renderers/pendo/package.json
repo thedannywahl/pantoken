@@ -2,22 +2,29 @@
   "name": "@pantoken/pendo",
   "version": "0.1.2",
   "description": "Instructure-styled global CSS for Pendo guides, built on pantoken tokens (ported from @instructure/pendo-global-css).",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "renderers/pendo"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
     "./global.css": "./dist/global.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "embed": "node scripts/embed.ts",
@@ -40,6 +47,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "pendo",

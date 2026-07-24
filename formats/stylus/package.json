@@ -2,23 +2,28 @@
   "name": "@pantoken/stylus",
   "version": "0.1.1",
   "description": "Instructure design tokens as Stylus variables (resolved, single-mode) from the pantoken IR.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "formats/stylus"
   },
   "files": [
     "dist",
     "generated/tokens.styl"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./tokens.styl": "./generated/tokens.styl",
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
@@ -36,6 +41,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "stylus",

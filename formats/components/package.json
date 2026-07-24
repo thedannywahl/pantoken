@@ -2,16 +2,22 @@
   "name": "@pantoken/components",
   "version": "0.2.0",
   "description": "An InstUI-look CSS component library from the pantoken tokens: prose/content styling plus class-based components (button, alert, badge).",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "formats/components"
   },
   "files": [
     "dist",
     "assets/fonts"
   ],
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
     "./base.css": "./dist/base.css",
@@ -26,7 +32,8 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "component-styles": "node scripts/component-styles.ts",
@@ -49,6 +56,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "components",

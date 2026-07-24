@@ -2,15 +2,19 @@
   "name": "@pantoken/pantoken",
   "version": "0.1.5",
   "description": "The unified pantoken package: Instructure design tokens, icons, and platform integrations, auto-aggregated from @pantoken/*.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thedannywahl/pantoken.git"
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "packages/pantoken"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./android": "./dist/android.mjs",
@@ -70,7 +74,8 @@
     "./package.json": "./package.json"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "aggregate": "node scripts/aggregate.ts",
@@ -140,5 +145,8 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }
