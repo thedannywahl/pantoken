@@ -1,0 +1,226 @@
+{
+  "upstream": {
+    "@instructure/instructure-design-tokens": {
+      "range": "github:instructure/instructure-design-tokens#v1.5.0",
+      "resolved": "v1.5.0@ae8f600e8ad4",
+      "feeds": "token-ir"
+    },
+    "@instructure/ui-icons": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "icons"
+    },
+    "@instructure/ui-heading": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-text": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-link": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-list": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-table": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-view": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-img": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    },
+    "@instructure/ui-alerts": {
+      "range": "^11.7.4",
+      "resolved": "11.7.4",
+      "feeds": "instui-react"
+    }
+  },
+  "consumers": [
+    {
+      "package": "@pantoken/android",
+      "path": "platforms/android",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/compose",
+      "path": "platforms/compose",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/drupal",
+      "path": "platforms/drupal",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/email",
+      "path": "platforms/email",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/flutter",
+      "path": "platforms/flutter",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/hugo",
+      "path": "platforms/hugo",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/jekyll",
+      "path": "platforms/jekyll",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/rust",
+      "path": "platforms/rust",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/swift",
+      "path": "platforms/swift",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/vanilla",
+      "path": "platforms/vanilla",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/wordpress",
+      "path": "platforms/wordpress",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/angular",
+      "path": "renderers/angular",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/astro",
+      "path": "renderers/astro",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/bootstrap",
+      "path": "renderers/bootstrap",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/css-in-js",
+      "path": "renderers/css-in-js",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/docusaurus",
+      "path": "renderers/docusaurus",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/foundation",
+      "path": "renderers/foundation",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/markdown-it",
+      "path": "renderers/markdown-it",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/mintlify",
+      "path": "renderers/mintlify",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/mui",
+      "path": "renderers/mui",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/pendo",
+      "path": "renderers/pendo",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/react",
+      "path": "renderers/react",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/react-markdown",
+      "path": "renderers/react-markdown",
+      "governedBy": "instui-react"
+    },
+    {
+      "package": "@pantoken/react-native",
+      "path": "renderers/react-native",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/rehype",
+      "path": "renderers/rehype",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/shadcn",
+      "path": "renderers/shadcn",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/storybook",
+      "path": "renderers/storybook",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/svelte",
+      "path": "renderers/svelte",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/vitepress",
+      "path": "renderers/vitepress",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/vue",
+      "path": "renderers/vue",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/web-components",
+      "path": "renderers/web-components",
+      "governedBy": "token-ir"
+    }
+  ],
+  "deprecations": [
+    {
+      "token": "--instui-component-badge-notification-z-index",
+      "deprecatedIn": "design-tokens@v1.5.0",
+      "removeIn": "design-tokens@v1.6.0",
+      "note": "Dropped upstream in design-tokens v1.5.0 with no replacement; frozen to its last-known value so any consumer keeps resolving it through the deprecation window."
+    },
+    {
+      "token": "--instui-component-truncate-text-line-height",
+      "deprecatedIn": "design-tokens@v1.5.0",
+      "removeIn": "design-tokens@v1.6.0",
+      "replacement": "--instui-line-height-paragraph-base",
+      "note": "TruncateText v2 no longer sets line-height (it inherits); the design-tokens repo dropped the component token. Forwarded to its last-known target for the deprecation window."
+    }
+  ]
+}
