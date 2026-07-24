@@ -44,9 +44,22 @@ jobs:
         with:
           # Check out with the fine-grained PAT so the Version PR (and its branch push) is authored by a
           # real user, not the built-in GITHUB_TOKEN — that's what lets CI run on the PR automatically
-          # instead of parking its checks in `action_required`.
-          token: ${{ secrets.RELEASE_PAT }}
+          # instead of parking its checks in `action_required`. Falls back to the built-in token when
+          # RELEASE_PAT is unset so the publish path still works; without the PAT the Version PR's CI just
+          # needs the usual manual click. See the "Verify RELEASE_PAT" step below.
+          token: ${{ secrets.RELEASE_PAT || github.token }}
           fetch-depth: 0
+
+      # Loud heads-up when RELEASE_PAT is missing: the run still succeeds on the built-in token, but the
+      # Version PR's CI won't trigger automatically until the secret exists. Better than silently
+      # reverting to `action_required`.
+      - name: Verify RELEASE_PAT
+        env:
+          RELEASE_PAT: ${{ secrets.RELEASE_PAT }}
+        run: |
+          if [ -z "$RELEASE_PAT" ]; then
+            echo "::warning title=RELEASE_PAT missing::Falling back to the built-in GITHUB_TOKEN. The Version Packages PR will open, but its CI won't run until you add a fine-grained RELEASE_PAT secret (Contents + Pull requests: read/write)."
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -115,6 +128,6 @@ jobs:
           # RELEASE_PAT (not the built-in GITHUB_TOKEN): the action uses it to push the version branch +
           # open the PR as a real user (so CI triggers), and the publish script's `gh release create`
           # inherits it for cutting releases (Contents: write). npm auth is separate (OIDC), so no token
-          # here touches publishing.
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
+          # here touches publishing. Falls back to the built-in token when the PAT is unset.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
