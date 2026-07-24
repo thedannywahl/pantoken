@@ -82,3 +82,21 @@ jobs:
         run: |
           echo "No release-impacting files changed."
           echo "Changeset requirement is skipped for docs/internal-only PRs."
+
+  # The required status check for this workflow (mirror of `ci-gate` in ci.yml). `require-changeset` and
+  # `docs-and-internal-only` are mutually exclusive — exactly one runs per PR and the other is skipped —
+  # so neither can be required directly without parking PRs at "Expected." This gate `needs` all three
+  # jobs, runs `if: always()`, and fails only on a real failure/cancellation, treating skips as fine.
+  # Requiring `ci-gate` and `changeset-gate` together is what makes `gh pr merge --auto` wait until every
+  # check across both workflows is green.
+  changeset-gate:
+    needs: [detect-release-impact, require-changeset, docs-and-internal-only]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify no changeset-check job failed
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "A required changeset-check job failed or was cancelled:"
+          echo '${{ toJSON(needs) }}'
+          exit 1

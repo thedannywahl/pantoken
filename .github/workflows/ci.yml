@@ -350,3 +350,22 @@ jobs:
           name: docs-site
           path: docs/.vitepress/dist
           retention-days: 1
+
+  # The single required status check for branch protection. It `needs` every other job here and runs
+  # `if: always()`, so it resolves only once they all do — and it fails if any of them failed or was
+  # cancelled, while treating a *skipped* job (docs when nothing docs-relevant changed, commitlint on a
+  # push) as fine. Requiring just this one name means the protection rule never needs editing when jobs
+  # are added or renamed, and conditional jobs can't park a PR at "Expected — waiting for status." Pairs
+  # with `changeset-gate` in changeset-check.yml; both are required, so a PR merges only when every check
+  # across both workflows is green — which is what lets `gh pr merge --auto` wait for real.
+  ci-gate:
+    needs: [build, typecheck, test, lint, publint, attw, repository, commitlint, docs-changes, docs]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify no CI job failed
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "A required CI job failed or was cancelled:"
+          echo '${{ toJSON(needs) }}'
+          exit 1
