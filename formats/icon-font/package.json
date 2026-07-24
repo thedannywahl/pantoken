@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/icon-font",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Build an installable Instructure icon font (WOFF2 + TTF) with CSS and codepoints — stroke glyphs outlined to fills.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

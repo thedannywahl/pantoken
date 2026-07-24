@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/cli",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "pantoken generate <target> — emit native design-token source (Swift now; Kotlin/Dart/Drupal to follow).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

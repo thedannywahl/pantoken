@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "The pantoken transformer: resolves Instructure design tokens + ui-icons into the canonical @property-aligned token IR.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
