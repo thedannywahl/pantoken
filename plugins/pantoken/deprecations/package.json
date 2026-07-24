@@ -1,0 +1,44 @@
+{
+  "name": "@pantoken/plugin-deprecations",
+  "version": "0.1.0",
+  "description": "pantoken plugin: emit var() compatibility shims for upstream tokens that were removed or renamed, from a hand-authored deprecation ledger, so consumers keep resolving the old --instui-* names.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/pantoken/deprecations"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}
