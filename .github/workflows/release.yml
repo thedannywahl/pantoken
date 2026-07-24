@@ -7,12 +7,18 @@ name: Release
 #    (via `release:publish` → scripts/release/publish-npm.ts, the npm CLI) and cuts a GitHub release per
 #    package from the script's `New tag:` stdout.
 #
-# Token-free: publishing uses npm OIDC "trusted publishing" (`id-token: write` + `npm publish`), not an
-# `NPM_TOKEN`. Requires (one-time): repo Settings → Actions → General → Workflow permissions → "Allow
-# GitHub Actions to create and approve pull requests" (so the action can open the Version PR), and a
-# trusted publisher for EACH published package on npmjs.com (package → Settings → Trusted Publisher:
-# GitHub Actions, repo `thedannywahl/pantoken`, workflow `release.yml`). A package with no trusted
-# publisher 404s on publish; the script logs it and continues, so the rest still ship.
+# Token-free npm auth: publishing uses npm OIDC "trusted publishing" (`id-token: write` + `npm publish`),
+# not an `NPM_TOKEN`. Requires (one-time):
+#  - repo Settings → Actions → General → Workflow permissions → "Allow GitHub Actions to create and
+#    approve pull requests" (so the action can open the Version PR);
+#  - a trusted publisher for EACH published package on npmjs.com (package → Settings → Trusted Publisher:
+#    GitHub Actions, repo `thedannywahl/pantoken`, workflow `release.yml`). A package with no trusted
+#    publisher 404s on publish; the script logs it and continues, so the rest still ship;
+#  - a `RELEASE_PAT` secret: a fine-grained personal access token scoped to this repo with Contents:
+#    read/write + Pull requests: read/write. The Version PR is opened (and its branch pushed) with this
+#    token so CI runs on it automatically. PRs authored by the built-in GITHUB_TOKEN don't trigger
+#    workflows — their checks sit in `action_required` and need a manual click. The PAT is git/PR auth
+#    only; it has nothing to do with npm publishing, which stays OIDC/token-free.
 
 on:
   push:
@@ -36,7 +42,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v7
         with:
-          persist-credentials: false
+          # Check out with the fine-grained PAT so the Version PR (and its branch push) is authored by a
+          # real user, not the built-in GITHUB_TOKEN — that's what lets CI run on the PR automatically
+          # instead of parking its checks in `action_required`.
+          token: ${{ secrets.RELEASE_PAT }}
           fetch-depth: 0
 
       - name: Set up Node.js
@@ -103,5 +112,9 @@ jobs:
           # provide). See scripts/release/publish-npm.ts.
           createGithubReleases: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # RELEASE_PAT (not the built-in GITHUB_TOKEN): the action uses it to push the version branch +
+          # open the PR as a real user (so CI triggers), and the publish script's `gh release create`
+          # inherits it for cutting releases (Contents: write). npm auth is separate (OIDC), so no token
+          # here touches publishing.
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
           NPM_CONFIG_PROVENANCE: "true"
