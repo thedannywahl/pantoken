@@ -122,6 +122,19 @@ function readCustomGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
   return out;
 }
 
+/**
+ * Read an ESM module by base name, tolerating a `.js` or `.mjs` extension. lucide-react shipped its
+ * ESM as `.js` through ~1.7 and switched to `.mjs` by ~1.23, and `@instructure/ui-icons` has depended
+ * on both across the 11.7.x line — so an upstream bump can flip the extension out from under us.
+ */
+function readEsmModule(dir: string, base: string): string | undefined {
+  for (const ext of [".mjs", ".js"]) {
+    const file = join(dir, `${base}${ext}`);
+    if (existsSync(file)) return readFileSync(file, "utf8");
+  }
+  return undefined;
+}
+
 function readLucideGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
   const out: IconToken[] = [];
   let lucideDir: string;
@@ -140,9 +153,12 @@ function readLucideGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
     ),
   );
 
-  const mainIndex = readFileSync(join(lucideDir, "dist/esm/lucide-react.js"), "utf8");
+  const mainIndex = readEsmModule(join(lucideDir, "dist/esm"), "lucide-react");
+  if (!mainIndex) return out;
   const nameToFile = new Map<string, string>();
-  for (const line of mainIndex.matchAll(/export \{([^}]+)\} from '\.\/icons\/([a-z0-9-]+)\.js'/g)) {
+  for (const line of mainIndex.matchAll(
+    /export \{([^}]+)\} from '\.\/icons\/([a-z0-9-]+)\.m?js'/g,
+  )) {
     for (const exp of line[1].matchAll(/default as ([A-Za-z0-9]+)/g)) {
       nameToFile.set(exp[1], line[2]);
     }
@@ -154,7 +170,8 @@ function readLucideGlyphs(uiIconsRoot: string, bidi: Set<string>): IconToken[] {
     const file = nameToFile.get(name);
     if (!file || seen.has(file)) continue;
     seen.add(file);
-    const svg = lucideModuleToSvg(readFileSync(join(iconsDir, `${file}.js`), "utf8"));
+    const source = readEsmModule(iconsDir, file);
+    const svg = source ? lucideModuleToSvg(source) : undefined;
     if (svg) {
       out.push({
         name: `--instui-icon-${file}`,
