@@ -43,6 +43,36 @@ import "./pantoken.css";
 import Layout from "./Layout.vue";
 import { applyTheme, getStoredTheme } from "./theme";
 
+/** Reply to a booting runner with the stored theme, targeting the frame's own origin. */
+function replyWithTheme(event: MessageEvent): void {
+  // "*" only for an opaque sandboxed frame, which can't match a specific target origin.
+  (event.source as Window | null)?.postMessage(
+    { type: "pantoken-demo-theme", theme: getStoredTheme() },
+    event.origin === "null" ? "*" : event.origin,
+  );
+}
+
+/** Set the iframe (matched by its source window) to the height its runner reported. */
+function applyRunnerSize(event: MessageEvent, height: number): void {
+  const frame = [...document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")].find(
+    (f) => f.contentWindow === event.source,
+  );
+  if (frame) frame.style.height = `${height}px`;
+}
+
+/**
+ * Relay theme/size messages between the page and its demo runners. Only same-origin (or opaque
+ * "null"-origin sandboxed) posts are accepted, so another page can't spoof size/theme messages.
+ */
+function relayDemoMessage(event: MessageEvent): void {
+  if (event.origin !== window.location.origin && event.origin !== "null") return;
+  const data = event.data as { type?: string; height?: number } | null;
+  if (data?.type === "pantoken-demo-request-theme") replyWithTheme(event);
+  else if (data?.type === "pantoken-demo-size" && typeof data.height === "number") {
+    applyRunnerSize(event, data.height);
+  }
+}
+
 export default {
   extends: DefaultTheme,
   Layout,
@@ -66,27 +96,7 @@ export default {
       // The runner (inside each figure's iframe) posts the height it wants — its toolbar plus the body
       // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).
       // Match the message to its frame by source window and set the height so the iframe mirrors it.
-      window.addEventListener("message", (event) => {
-        // Only accept posts from a same-origin demo runner (or an opaque "null"-origin sandboxed
-        // frame). Drop cross-origin posts so another page can't spoof size/theme messages.
-        if (event.origin !== window.location.origin && event.origin !== "null") return;
-        const data = event.data as { type?: string; height?: number } | null;
-        // A runner just booted and is asking which theme to render — reply to that frame only, at the
-        // origin it posted from ("*" only for an opaque sandboxed frame, which can't match a specific
-        // target).
-        if (data?.type === "pantoken-demo-request-theme") {
-          (event.source as Window | null)?.postMessage(
-            { type: "pantoken-demo-theme", theme: getStoredTheme() },
-            event.origin === "null" ? "*" : event.origin,
-          );
-          return;
-        }
-        if (data?.type !== "pantoken-demo-size" || typeof data.height !== "number") return;
-        const frame = [
-          ...document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame"),
-        ].find((f) => f.contentWindow === event.source);
-        if (frame) frame.style.height = `${data.height}px`;
-      });
+      window.addEventListener("message", relayDemoMessage);
     }
   },
 } satisfies Theme;

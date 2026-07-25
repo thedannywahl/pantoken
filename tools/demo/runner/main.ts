@@ -419,10 +419,12 @@ function applyAutoHeight(ctx: RunnerCtx): void {
 /** During a drag, hide the code and result scrollbars so they don't flicker as the height recomputes. */
 function setResizing(ctx: RunnerCtx, on: boolean): void {
   ctx.runner.classList.toggle("runner--resizing", on);
-  // The result frame is sandboxed (opaque "null" origin), so a specific targetOrigin can never match
-  // it — "*" is required to reach it. The message only toggles scrollbar overflow, so there's nothing
-  // sensitive to leak even if another frame observed it.
-  ctx.resultFrame.contentWindow?.postMessage({ type: "pantoken-demo-freeze", value: on }, "*");
+  // The result frame is a srcdoc iframe sandboxed with `allow-same-origin`, so it inherits our origin
+  // — target it exactly rather than "*", so the freeze message can't be intercepted by another frame.
+  ctx.resultFrame.contentWindow?.postMessage(
+    { type: "pantoken-demo-freeze", value: on },
+    location.origin,
+  );
 }
 
 /** Watch for a reader-driven body resize: latch it, hide scrollbars for the drag, and report throttled. */
@@ -524,22 +526,35 @@ function createGates(ctx: RunnerCtx): {
   return { firstResultSize, themeReady };
 }
 
-/** Handle host messages: scheme toggle, theme pick, and result-size reports (each may gate the reveal). */
-function handleMessage(ctx: RunnerCtx, event: MessageEvent): void {
-  // Only accept posts from the embedding host or from our own sandboxed result frame (opaque "null"
-  // origin). Drop anything from another origin so a page that reframes the runner can't drive it.
-  if (event.origin !== HOST_ORIGIN && event.origin !== location.origin && event.origin !== "null") {
-    return;
-  }
-  const data = event.data as { type?: string; height?: number; theme?: string } | null;
-  if (data?.type === "pantoken-demo-scheme") {
+/** A message posted to the runner by the host page or the sandboxed result frame. */
+interface DemoMessage {
+  type?: string;
+  height?: number;
+  theme?: string;
+}
+
+/**
+ * Whether a `postMessage` origin is trusted: the embedding host, our own origin, or the sandboxed
+ * result frame (whose opaque origin is the string `"null"`). Anything else is a page reframing us.
+ */
+function isTrustedOrigin(origin: string): boolean {
+  return origin === HOST_ORIGIN || origin === location.origin || origin === "null";
+}
+
+/** Message handlers keyed by `type`; each validates its own payload so the dispatcher stays flat. */
+const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => void> = {
+  "pantoken-demo-scheme": (ctx) => {
     schemeOverride = effectiveDark() ? "light" : "dark";
     applyTheme(ctx);
-  } else if (data?.type === "pantoken-demo-theme" && typeof data.theme === "string") {
+  },
+  "pantoken-demo-theme": (ctx, data) => {
+    if (typeof data.theme !== "string") return;
     setTheme(ctx, data.theme);
     ctx.resolveTheme?.();
     ctx.resolveTheme = undefined;
-  } else if (data?.type === "pantoken-demo-result-size" && typeof data.height === "number") {
+  },
+  "pantoken-demo-result-size": (ctx, data) => {
+    if (typeof data.height !== "number") return;
     // Keep the last non-zero height: a hidden result frame (code view) can report 0, and we don't
     // want the figure to collapse when the reader is just editing.
     if (data.height > 0) ctx.resultContentHeight = data.height;
@@ -547,7 +562,16 @@ function handleMessage(ctx: RunnerCtx, event: MessageEvent): void {
     ctx.resolveFirstSize = undefined;
     applyAutoHeight(ctx);
     reportSize(ctx);
-  }
+  },
+};
+
+/** Handle host messages: scheme toggle, theme pick, and result-size reports (each may gate the reveal). */
+function handleMessage(ctx: RunnerCtx, event: MessageEvent): void {
+  // Drop posts from an untrusted origin so a page that reframes the runner can't drive it.
+  if (!isTrustedOrigin(event.origin)) return;
+  const data = event.data as DemoMessage | null;
+  const handler = data?.type ? MESSAGE_HANDLERS[data.type] : undefined;
+  handler?.(ctx, data as DemoMessage);
 }
 
 /** Ask the host which theme to use, or (standalone, no parent) resolve the theme gate immediately. */
