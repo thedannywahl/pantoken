@@ -7,7 +7,7 @@
  */
 
 /** The six document heading levels, in order. */
-export const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
+const HEADING_LEVELS = ["h1", "h2", "h3", "h4", "h5", "h6"] as const;
 
 /**
  * Per-level heading size + weight, straight from the `--instui-component-heading-<level>-*` tokens.

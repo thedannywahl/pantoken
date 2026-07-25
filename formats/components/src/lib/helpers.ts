@@ -44,8 +44,7 @@ export const wrap = (name: string, prefix: string, rules: string): string =>
  * Only the glyphs still consumed by the TypeScript-authored records (button, the input controls) live
  * here now; the migrated `.css` records inline their `var(--instui-icon-*)` masks directly.
  */
-export const iconMask = (name: string): string =>
-  `var(--instui-icon-${name}) center / contain no-repeat`;
+const iconMask = (name: string): string => `var(--instui-icon-${name}) center / contain no-repeat`;
 
 /** Lucide `chevron-down` in the InstUI icon grey — the SimpleSelect caret. A native `<select>` is a
  *  replaced element (no pseudo-elements), so the caret is a `background-image`, not `::after`; a data-URI

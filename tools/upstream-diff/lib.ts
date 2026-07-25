@@ -125,7 +125,7 @@ export function categoryOf(syntax: string): ValueCategory {
  * `rem`/`em` sizes and `light-dark()` colours as `*` (not computationally independent), so a
  * size or colour change would otherwise hide in "other" and escape the manual-review tally.
  */
-export function categoryOfChange(syntax: string, value: string): ValueCategory {
+function categoryOfChange(syntax: string, value: string): ValueCategory {
   const bySyntax = categoryOf(syntax);
   if (bySyntax !== "other") return bySyntax;
   if (/-?\d*\.?\d+(rem|em|px|vh|vw|vmin|vmax|ch|%)\b/u.test(value)) return "length";
@@ -319,7 +319,7 @@ function sortKeys(v: unknown): unknown {
 }
 
 /** Canonical (compact, key-sorted) JSON of a manifest, for an exact equality check. */
-export function canonicalize(manifest: Manifest): string {
+function canonicalize(manifest: Manifest): string {
   return JSON.stringify(sortKeys(manifest));
 }
 
