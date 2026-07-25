@@ -36,7 +36,7 @@ jobs:
       should_deploy: ${{ steps.decide.outputs.should_deploy }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
           ref: ${{ github.event.workflow_run.head_sha || github.ref }}
@@ -66,19 +66,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
           ref: ${{ github.event.workflow_run.head_sha || github.ref }}
 
       - name: Configure Pages
-        uses: actions/configure-pages@v6
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
 
       # Post-CI (the common path): CI already built the site on main and uploaded it as `docs-site`
       # (CNAME baked in). Just fetch it — no vp, no rebuild.
       - name: Download prebuilt docs site from CI
         if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
         with:
           name: docs-site
           path: docs/.vitepress/dist
@@ -89,7 +89,7 @@ jobs:
       # deploy): no CI artifact exists, so build the site fresh here.
       - name: Set up Vite+
         if: github.event_name == 'workflow_dispatch'
-        uses: voidzero-dev/setup-vp@v1
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
         with:
           cache: true
           run-install: true
@@ -104,7 +104,7 @@ jobs:
         run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
           path: docs/.vitepress/dist
 
@@ -117,4 +117,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5
