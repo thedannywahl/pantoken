@@ -13,19 +13,30 @@
  * @module
  */
 import { spawnSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 
 const ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
-const BIN = path.join(ROOT, "node_modules/.bin/snyk");
-const SNYK = existsSync(BIN) ? BIN : "snyk";
+const require = createRequire(import.meta.url);
 
-const result = spawnSync(SNYK, ["code", "test", "--severity-threshold=high"], {
+// snyk ships a CLI only — the package has no programmatic API (no `main`/`exports`) — but its bin is a
+// plain node script. Resolve it through the package graph and run it with the current node, so we
+// don't depend on the node_modules/.bin symlink or snyk being on PATH. If the package isn't installed
+// at all, skip the gate rather than block the push.
+let snykCli: string;
+try {
+  snykCli = require.resolve("snyk/bin/snyk");
+} catch {
+  console.warn("⚠ snyk package not installed — skipping SAST gate");
+  process.exit(0);
+}
+
+const result = spawnSync(process.execPath, [snykCli, "code", "test", "--severity-threshold=high"], {
   encoding: "utf8",
   cwd: ROOT,
 });
 
-// spawn failed outright (snyk missing): warn and skip rather than block the push.
+// spawn failed outright (node couldn't launch the CLI): warn and skip rather than block the push.
 if (result.error) {
   console.warn(`⚠ snyk not runnable (${result.error.message}) — skipping SAST gate`);
   process.exit(0);
