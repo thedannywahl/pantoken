@@ -1,10 +1,13 @@
-import { defineConfig } from "vite-plus";
 import { readdirSync } from "node:fs";
+import { join } from "node:path";
+import { extendBase } from "../../vite.config.base.ts";
 
+// Resolve against the config's own dir (not cwd) so the config loads correctly whether vite reads it
+// from the package or from the workspace root (e.g. the coverage run).
 const cssEntries = Object.fromEntries(
   ["src/elements", "src/lib"]
     .flatMap((dir) =>
-      readdirSync(dir)
+      readdirSync(join(import.meta.dirname, dir))
         .filter((name) => name.endsWith(".css"))
         .map((name) => name.replace(/\.css$/u, "")),
     )
@@ -12,7 +15,7 @@ const cssEntries = Object.fromEntries(
     .map((name) => [name, `generated/${name}.css`]),
 );
 
-export default defineConfig({
+export default extendBase({
   run: {
     tasks: {
       build: {
@@ -22,9 +25,6 @@ export default defineConfig({
           "vp pack",
           "node scripts/build-iife.ts",
         ],
-        // node_modules/.modules.yaml is rewritten by every CI reinstall; excluding it keeps
-        // vp pack a cache hit across jobs instead of re-packing on every run.
-        input: [{ auto: true }, { pattern: "!node_modules/.modules.yaml", base: "workspace" }],
       },
     },
   },
@@ -34,22 +34,8 @@ export default defineConfig({
       components: "generated/components.css",
       ...cssEntries,
     },
-    dts: true,
-    css: {
-      splitting: true,
-      target: false,
-      minify: true,
-      modules: false,
-      inject: false,
-    },
+    css: { splitting: true, target: false, minify: true, modules: false, inject: false },
     // Exports are hand-managed so the static ./components.css export survives.
     exports: false,
   },
-  lint: {
-    options: {
-      typeAware: true,
-      typeCheck: true,
-    },
-  },
-  fmt: {},
 });
