@@ -15,6 +15,7 @@ import {
 } from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
 
+/** A resolved record: `rules(prefix)` emits the doc block plus CSS body for the aggregator, and `css(options)` returns the standalone header-wrapped sheet. */
 export interface Definition {
   name: string;
   kind: CssRecordKind;
@@ -34,7 +35,8 @@ export interface DefineInput {
   name: string;
   /**
    * Build the full record for the `ns()`-joined prefix `p`: a leading `/** … *\/` cssdoc doc comment
-   * (prefix-independent) followed by the CSS body, e.g. ``(p) => `/** @component menu … *\/\n.${p}menu {…}` ``.
+   * (prefix-independent) followed by the CSS body — for example a doc comment tagged `@component menu`
+   * ahead of a rule like `.${p}menu {…}`.
    */
   css: (p: string, options?: ComponentOptions) => string;
 }
@@ -74,7 +76,11 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
   };
 }
 
+/** Build a component record from its name and CSS builder. */
 export const defineComponent = (input: DefineInput): Definition => make("component", input);
+/** Build a utility record from its name and CSS builder. */
 export const defineUtility = (input: DefineInput): Definition => make("utility", input);
+/** Build a rule record from its name and CSS builder. */
 export const defineRule = (input: DefineInput): Definition => make("rule", input);
+/** Build a declaration record from its name and CSS builder. */
 export const defineDeclaration = (input: DefineInput): Definition => make("declaration", input);

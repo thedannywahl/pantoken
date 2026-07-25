@@ -7,6 +7,7 @@
 import { defineUtility } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 
+/** The View utility — a neutral box with key-value modifiers for its visual props (background, border, radius, shadow, display, position, overflow, cursor). */
 export const view = defineUtility({
   name: "view",
   css: (p) => {
@@ -150,4 +151,5 @@ ${rules.join("\n")}`;
   },
 });
 
+/** The View utility as a standalone, header-wrapped stylesheet. */
 export const viewCss = view.css;

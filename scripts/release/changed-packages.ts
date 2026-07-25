@@ -22,8 +22,10 @@ const GLOBAL_FILES = new Set([
   ".changeset/config.json",
 ]);
 
+/** How wide a publish gate a set of changed files calls for: every package, some, or none. */
 export type ChangeScope = "all" | "subset" | "none";
 
+/** The gate scope for a set of changed files, plus the specific packages when scope is `subset`. */
 export interface ChangedPackagesResult {
   scope: ChangeScope;
   // Publishable package names to gate, empty unless scope === "subset".

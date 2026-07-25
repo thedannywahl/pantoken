@@ -36,7 +36,7 @@ function elevationLayer(): string {
 }
 
 /** Build the `instui.focusOutline` layer: the `--instui-focus-outline-*` token defs + the ring rules
- *  (from @pantoken/components), scoped to Pendo's focusables. */
+ *  (from `@pantoken/components`), scoped to Pendo's focusables. */
 function focusLayer(): string {
   const decls = focusOutlineDeclarations()
     .map(([n, v]) => `  ${n}: ${v};`)

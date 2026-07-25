@@ -52,9 +52,9 @@ function isColorValue(v: string): boolean {
 }
 
 /**
- * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry `syntax:
- * "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static `@property`
- * type), so the human-meaningful type is derived from what the value ultimately IS.
+ * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry
+ * `syntax: "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static
+ * `@property` type), so the human-meaningful type is derived from what the value ultimately IS.
  */
 function inferSyntax(value: string): string | undefined {
   const v = value.trim();

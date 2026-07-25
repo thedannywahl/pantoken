@@ -133,12 +133,6 @@ function categoryOfChange(syntax: string, value: string): ValueCategory {
   return "other";
 }
 
-/**
- * Project the built IR (every theme) plus provenance into a compact {@link Manifest}.
- *
- * @param input - The per-theme `Token[]` (from `@pantoken/tokens`) and the vendored {@link Provenance}.
- * @returns The manifest to commit as a baseline or diff against one.
- */
 /** The manifest icon record for a token — theme-independent metadata plus a content hash. */
 function iconEntryOf(token: Token): Manifest["icons"][string] {
   return {
@@ -162,6 +156,13 @@ function tokenEntryOf(token: Token): TokenEntry {
   };
 }
 
+/**
+ * Project the built IR (every theme) plus provenance into a compact {@link Manifest} — per-theme token
+ * entries plus the theme-independent icon set. The manifest is what upstream diffs compare against.
+ *
+ * @param input - The per-theme `Token[]` (from `@pantoken/tokens`) and the vendored {@link Provenance}.
+ * @returns The manifest to commit as a baseline or diff against one.
+ */
 export function buildManifest(input: {
   themes: Record<Theme, Token[]>;
   provenance: Provenance;

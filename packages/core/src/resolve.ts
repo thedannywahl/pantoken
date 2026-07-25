@@ -31,6 +31,24 @@ function readModify(node: Record<string, unknown>): TokenModify | undefined {
   };
 }
 
+/** Push the leaf/leaves for a `{ value, ... }` record: a scalar string, or a nested value object. */
+function pushValueLeaves(record: Record<string, unknown>, basePath: string[], out: Leaf[]): void {
+  const modify = readModify(record);
+  const value = record.value;
+  if (typeof value === "string") {
+    out.push({ path: basePath, value, modify });
+    return;
+  }
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    for (const [subKey, subValue] of Object.entries(value)) {
+      if (subKey === "type") continue;
+      if (typeof subValue === "string") {
+        out.push({ path: [...basePath, subKey], value: subValue, modify });
+      }
+    }
+  }
+}
+
 /**
  * Collect every leaf of a Tokens Studio tree. A leaf is a node with a `.value`:
  * a string value yields one leaf; a composite object value (typography) yields one leaf per
@@ -57,24 +75,6 @@ function readModify(node: Record<string, unknown>): TokenModify | undefined {
  * // ]
  * ```
  */
-/** Push the leaf/leaves for a `{ value, ... }` record: a scalar string, or a nested value object. */
-function pushValueLeaves(record: Record<string, unknown>, basePath: string[], out: Leaf[]): void {
-  const modify = readModify(record);
-  const value = record.value;
-  if (typeof value === "string") {
-    out.push({ path: basePath, value, modify });
-    return;
-  }
-  if (value && typeof value === "object" && !Array.isArray(value)) {
-    for (const [subKey, subValue] of Object.entries(value)) {
-      if (subKey === "type") continue;
-      if (typeof subValue === "string") {
-        out.push({ path: [...basePath, subKey], value: subValue, modify });
-      }
-    }
-  }
-}
-
 export function collectLeaves(obj: unknown, path: string[] = [], out: Leaf[] = []): Leaf[] {
   if (!obj || typeof obj !== "object" || Array.isArray(obj)) return out;
 

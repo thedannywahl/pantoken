@@ -54,6 +54,7 @@ export const SELECT_CHEVRON =
 
 /** Lucide `chevron-up`/`chevron-down`, masked — the NumberInput spinner glyphs (painted in currentColor). */
 export const CHEVRON_UP_ICON = iconMask("chevron-up");
+/** Lucide `chevron-down`, masked — the NumberInput down spinner glyph (painted in currentColor). */
 export const CHEVRON_DOWN_ICON = iconMask("chevron-down");
 
 /**

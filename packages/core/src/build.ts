@@ -52,43 +52,6 @@ function toToken(name: string, value: string, meta?: TokenMeta): Token {
   return defineToken({ name, value, meta });
 }
 
-/**
- * Build the canonical token IR for a theme.
- *
- * @param options - {@link BuildTokensOptions}.
- * @returns The resolved, de-duplicated {@link Token} list.
- *
- * @example Build the default (rebrand) IR
- * ```ts
- * import { buildTokens } from "@pantoken/core";
- *
- * const tokens = buildTokens();
- * // → Token[] : { name, syntax, inherits, value, themed?, refersTo?, meta? }
- * ```
- *
- * @example Pick a theme and drop the icon layer
- * ```ts
- * import { buildTokens } from "@pantoken/core";
- *
- * // A smaller, colour/layout-only IR for the canvas theme.
- * const tokens = buildTokens({ theme: "canvas", includeIcons: false });
- * ```
- *
- * @example Run a plugin's tokens hook over the IR
- * ```ts
- * import { buildTokens, type PantokenPlugin } from "@pantoken/core";
- *
- * const brand: PantokenPlugin = {
- *   name: "brand",
- *   tokens: ({ tokens, define }) => [
- *     ...tokens,
- *     define({ name: "--instui-focus-color", value: "var(--instui-color-border-brand)" }),
- *   ],
- * };
- *
- * buildTokens({ theme: "rebrand", plugins: [brand] });
- * ```
- */
 // 1. Primitives — shared across themes, concrete values.
 function primitiveTokens(root: Record<string, any>): Token[] {
   return collectLeaves(root.primitives?.default).map((leaf) => {
@@ -146,6 +109,44 @@ function iconTokens(opts: { includeInstui: boolean; includeLucide: boolean }): T
   return out;
 }
 
+/**
+ * Build the canonical token IR for a theme: primitives, layout, semantic colours, component tokens,
+ * and optional icons, then run plugin icon and token hooks over the result.
+ *
+ * @param options - {@link BuildTokensOptions}.
+ * @returns The resolved, de-duplicated {@link Token} list.
+ *
+ * @example Build the default (rebrand) IR
+ * ```ts
+ * import { buildTokens } from "@pantoken/core";
+ *
+ * const tokens = buildTokens();
+ * // → Token[] : { name, syntax, inherits, value, themed?, refersTo?, meta? }
+ * ```
+ *
+ * @example Pick a theme and drop the icon layer
+ * ```ts
+ * import { buildTokens } from "@pantoken/core";
+ *
+ * // A smaller, colour/layout-only IR for the canvas theme.
+ * const tokens = buildTokens({ theme: "canvas", includeIcons: false });
+ * ```
+ *
+ * @example Run a plugin's tokens hook over the IR
+ * ```ts
+ * import { buildTokens, type PantokenPlugin } from "@pantoken/core";
+ *
+ * const brand: PantokenPlugin = {
+ *   name: "brand",
+ *   tokens: ({ tokens, define }) => [
+ *     ...tokens,
+ *     define({ name: "--instui-focus-color", value: "var(--instui-color-border-brand)" }),
+ *   ],
+ * };
+ *
+ * buildTokens({ theme: "rebrand", plugins: [brand] });
+ * ```
+ */
 export function buildTokens(options: BuildTokensOptions = {}): Token[] {
   const {
     theme = "rebrand",

@@ -1,12 +1,12 @@
 /**
  * `@pantoken/demo` — the render side of the `@demo` system.
  *
- * `@pantoken/typedoc-plugin-demo` turns a `@demo <spec>` tag into a fenced ```demo``` block whose
+ * `@pantoken/typedoc-plugin-demo` turns a `@demo <spec>` tag into a fenced `demo` block whose
  * body is the spec (a bare URL or a `<provider>:<ref>` pair). This package resolves that spec into an
  * embeddable iframe and renders the surrounding panel — an MDN-style "live sample."
  *
  * It ships three things: {@link resolveDemo} (spec → iframe attributes, framework-agnostic), a
- * markdown-it plugin ({@link demoMarkdownIt}) that turns ```demo``` fences into the panel HTML, and a
+ * markdown-it plugin ({@link demoMarkdownIt}) that turns `demo` fences into the panel HTML, and a
  * self-hosted runner (`@pantoken/demo/runner.html`) — a same-origin page that fetches a bare
  * HTML/CSS/JS demo and renders it with your token stylesheets injected, so `self:` demos need no
  * third-party account and no framing workarounds.
@@ -154,14 +154,14 @@ export function renderDemoFigure(resolved: ResolvedDemo): string {
 export interface LiveExampleOptions {
   /** Only wrap fences on pages whose markdown-it `env.relativePath` matches (e.g. the CSS-API pages). */
   match: (relativePath: string) => boolean;
-  /** Build the preview block appended after each non-overlay ` ```html ` fence, from its markup. */
+  /** Build the preview block appended after each non-overlay `html` fence, from its markup. */
   wrap: (html: string) => string;
 }
 
 /** Options for {@link demoMarkdownIt}: the {@link resolveDemo} fields plus optional live-example seaming. */
 export interface DemoMarkdownItOptions extends ResolveOptions {
   /**
-   * When set, appends a live preview after each ` ```html ` fence on matching pages — the same markup,
+   * When set, appends a live preview after each `html` fence on matching pages — the same markup,
    * rendered live, beneath its source. Overlay examples (`<dialog>`, `[popover]`) are skipped: they're
    * hidden until opened, so a `## Demo` iframe drives their preview instead.
    */
@@ -174,7 +174,7 @@ function isOverlay(html: string): boolean {
 }
 
 /**
- * A markdown-it plugin: turn ```demo``` fences into the demo panel. Use it with
+ * A markdown-it plugin: turn `demo` fences into the demo panel. Use it with
  * `md.use(demoMarkdownIt, options)`.
  *
  * @param md - The markdown-it instance.

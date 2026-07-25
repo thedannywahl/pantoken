@@ -8,6 +8,7 @@ import {
   type WorkspacePackage,
 } from "./workspace-packages.ts";
 
+/** Whether a changelog already has a heading for the given version. */
 function hasVersionSection(content: string, version: string): boolean {
   const heading = new RegExp(
     `^##\\s+\\[?v?${version.replace(/[.*+?^${}()|[\\]\\]/g, "\\\\$&")}\\]?\\b`,
@@ -16,6 +17,7 @@ function hasVersionSection(content: string, version: string): boolean {
   return heading.test(content);
 }
 
+/** Build the initial `0.1.0` changelog markdown for a package that has none yet. */
 function buildInitialChangelog(packageName: string): string {
   return [
     "# CHANGELOG",
@@ -29,6 +31,7 @@ function buildInitialChangelog(packageName: string): string {
   ].join("\n");
 }
 
+/** Whether a package should get a seeded changelog: a private `@pantoken/*` package, or a publishable one still at `0.1.0`. */
 function shouldSeedPackage(pkg: WorkspacePackage): boolean {
   if (!pkg.name.startsWith("@pantoken/")) {
     return false;

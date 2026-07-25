@@ -16,6 +16,7 @@ export const BUGS_URL = "https://github.com/thedannywahl/pantoken/issues";
 /** `engines` — mirrors the repo-root Node constraint. */
 export const ENGINES: Readonly<Record<string, string>> = { node: ">=22.18.0" };
 
+/** The `repository` field a package manifest should carry: git type, repo URL, and its directory. */
 export interface ExpectedRepository {
   type: "git";
   url: string;
@@ -41,9 +42,13 @@ export function shipsCss(manifest: SurfaceManifest): boolean {
   return surface.includes(".css");
 }
 
+/** A manifest `sideEffects` value: `false` for pure packages, or a glob array for CSS-shipping ones. */
 export type SideEffects = false | string[];
 
-// A CSS-glob array for CSS-shipping packages (keep the styles), `false` otherwise (pure, tree-shakeable).
+/**
+ * The expected `sideEffects` for a package: a CSS-glob array for CSS-shipping packages (keep the
+ * styles), `false` otherwise (pure, tree-shakeable).
+ */
 export function expectedSideEffects(manifest: SurfaceManifest): SideEffects {
   return shipsCss(manifest) ? ["**/*.css"] : false;
 }

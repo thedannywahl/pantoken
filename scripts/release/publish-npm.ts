@@ -11,13 +11,13 @@
  * npm needs, so npm silently skips OIDC and fails ENEEDAUTH.
  *
  * Why own tags + releases here instead of letting the changesets action do it? The action's `pushTag`
- * runs `git push origin <tag>` on a tag it assumes already exists locally (created by `changeset
- * publish`) and relies on `persist-credentials` — neither holds for us, so it failed
+ * runs `git push origin <tag>` on a tag it assumes already exists locally (created by
+ * `changeset publish`) and relies on `persist-credentials` — neither holds for us, so it failed
  * ("src refspec … does not match any"). Instead we use `gh release create <tag> --target <sha>`, which
  * creates the tag AND the release via the GitHub API in one authenticated call. It's idempotent — a
  * package whose release already exists is skipped — so a re-run backfills anything missing (a version
- * already on npm but never tagged/released still gets its tag + release). Set `createGithubReleases:
- * false` on the action; this script is the source of truth.
+ * already on npm but never tagged/released still gets its tag + release). Set
+ * `createGithubReleases: false` on the action; this script is the source of truth.
  *
  * `--dry-run` reports what it would publish and which releases it would create, touching nothing.
  */
@@ -71,6 +71,7 @@ export function tagFor(pkg: Pick<WorkspacePackage, "name" | "version">): string 
   return `${pkg.name}@${pkg.version}`;
 }
 
+/** The publish split: packages to publish now, and those already on the registry (skipped). */
 export interface PublishPlan {
   toPublish: WorkspacePackage[];
   skipped: WorkspacePackage[];

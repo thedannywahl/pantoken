@@ -6,12 +6,13 @@
  */
 import { spawn } from "node:child_process";
 
+/** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
   readonly name: string;
   /**
    * Whether this adapter produces real prose translations. The glossary sets this `false`: it only
    * knows structural terms, so the pipeline must not treat its passthrough of a prose block as a
-   * translation (see the poison-cache guard in {@link ./translation-memory.ts}). Defaults to `true`.
+   * translation (see the poison-cache guard in `translation-memory.ts`). Defaults to `true`.
    */
   readonly translatesProse?: boolean;
   translateMarkdown(input: string, filePath: string): Promise<string>;
@@ -148,6 +149,10 @@ const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
   [/^Declarations$/g, "Deklarációk"],
 ];
 
+/**
+ * Deterministic, keyless adapter: substitutes known structural terms only (headings, badges, table
+ * labels). It can't translate prose, so `translatesProse` is `false`. Safe to run in CI.
+ */
 export class GlossaryTranslationAdapter implements TranslationAdapter {
   readonly name = "glossary";
   // Deterministic term substitution only — it cannot translate prose, so the memory must never cache
@@ -327,6 +332,10 @@ const mapPool = async <T, R>(
   return results;
 };
 
+/**
+ * Adapter that shells out to the Claude Code CLI (configurable via `DOCS_TRANSLATION_COMMAND` and
+ * `DOCS_TRANSLATION_COMMAND_ARGS`) to produce real prose translations.
+ */
 export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
   readonly name = "claude-code";
 
@@ -492,6 +501,10 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
   }
 }
 
+/**
+ * Build the adapter named by `DOCS_TRANSLATION_ADAPTER` (default `glossary`). Throws on an unknown
+ * name. Supported values are `glossary` and `claude-code`.
+ */
 export const createTranslationAdapter = (): TranslationAdapter => {
   // A pluggable selector means we can drop in a richer provider later without changing callers.
   const selected = (process.env.DOCS_TRANSLATION_ADAPTER ?? "glossary").toLowerCase();

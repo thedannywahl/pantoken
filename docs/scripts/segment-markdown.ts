@@ -20,8 +20,10 @@
  * @module
  */
 
+/** How a translatable segment is handled: cheap `glossary` substitution or real `prose` translation. */
 export type TranslationKind = "glossary" | "prose";
 
+/** One block of split markdown, tagged by how it should be emitted or translated. */
 export type Segment =
   | { kind: "preserve"; text: string }
   | { kind: "glossary"; text: string }

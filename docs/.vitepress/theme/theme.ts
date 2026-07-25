@@ -10,6 +10,7 @@
  */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
 
+/** One palette choice in the theme selector: its {@link PantokenTheme} key and display label. */
 export interface ThemeOption {
   key: PantokenTheme;
   label: string;

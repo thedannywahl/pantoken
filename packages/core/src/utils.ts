@@ -30,6 +30,25 @@ export function toKebab(str: string): string {
 // units are NOT — Chromium discards such @property rules. Those values fall back to `*` instead.
 const ABSOLUTE_LENGTH_UNITS = "px|cm|mm|q|in|pt|pc";
 
+// Direct color/image matches, checked in order on the trimmed value.
+const SYNTAX_DIRECT: readonly [RegExp, string][] = [
+  [/^#[0-9a-f]{3,8}$/i, "<color>"],
+  [/^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i, "<color>"],
+  [/^transparent$/i, "<color>"],
+  [/^url\(/i, "<image>"],
+];
+
+// Single-token numeric-with-unit matches, checked only when the value has no whitespace/commas.
+const SYNTAX_TYPED: readonly [RegExp, string][] = [
+  [/^-?\d*\.?\d+%$/, "<percentage>"],
+  [new RegExp(`^-?\\d*\\.?\\d+(${ABSOLUTE_LENGTH_UNITS})$`, "i"), "<length>"],
+  [/^-?\d*\.?\d+(deg|grad|rad|turn)$/i, "<angle>"],
+  [/^-?\d*\.?\d+(s|ms)$/i, "<time>"],
+  [/^-?\d*\.?\d+(dpi|dpcm|dppx)$/i, "<resolution>"],
+  [/^-?\d+$/, "<integer>"],
+  [/^-?\d*\.?\d+$/, "<number>"],
+];
+
 /**
  * Sniff the CSS `@property` `syntax` a concrete token should register under. Tokens Studio
  * `type`s don't map 1:1 to CSS syntax, so the value is inspected. Returns `"*"` (universal) for
@@ -57,25 +76,6 @@ const ABSOLUTE_LENGTH_UNITS = "px|cm|mm|q|in|pt|pc";
  * cssSyntaxForValue("currentColor");             // → "*"
  * ```
  */
-// Direct color/image matches, checked in order on the trimmed value.
-const SYNTAX_DIRECT: readonly [RegExp, string][] = [
-  [/^#[0-9a-f]{3,8}$/i, "<color>"],
-  [/^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i, "<color>"],
-  [/^transparent$/i, "<color>"],
-  [/^url\(/i, "<image>"],
-];
-
-// Single-token numeric-with-unit matches, checked only when the value has no whitespace/commas.
-const SYNTAX_TYPED: readonly [RegExp, string][] = [
-  [/^-?\d*\.?\d+%$/, "<percentage>"],
-  [new RegExp(`^-?\\d*\\.?\\d+(${ABSOLUTE_LENGTH_UNITS})$`, "i"), "<length>"],
-  [/^-?\d*\.?\d+(deg|grad|rad|turn)$/i, "<angle>"],
-  [/^-?\d*\.?\d+(s|ms)$/i, "<time>"],
-  [/^-?\d*\.?\d+(dpi|dpcm|dppx)$/i, "<resolution>"],
-  [/^-?\d+$/, "<integer>"],
-  [/^-?\d*\.?\d+$/, "<number>"],
-];
-
 export function cssSyntaxForValue(value: string): string {
   const v = value.trim();
 

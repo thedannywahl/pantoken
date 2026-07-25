@@ -6,6 +6,7 @@
 import { css } from "../lib/css.ts";
 import { defineUtility } from "../lib/define.ts";
 
+/** The layout utility — composable `display` and `text-align` classes. */
 export const layout = defineUtility({
   name: "layout",
   css: (p) =>
@@ -35,4 +36,5 @@ ${[
     ].join("\n")}`,
 });
 
+/** The layout utilities as a standalone, header-wrapped stylesheet. */
 export const layoutUtilitiesCss = layout.css;
