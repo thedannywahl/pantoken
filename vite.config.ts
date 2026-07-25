@@ -31,6 +31,12 @@ export default defineConfig({
         "tools/*/src/**",
         "tools/*/*.ts",
         "scripts/**/*.ts",
+        // Build/docs tooling brought under coverage (specific files, not a broad glob, so untested
+        // siblings don't drag the floor). These are the high-complexity scripts now unit-tested so
+        // their CRAP reflects real coverage rather than a worst-case zero.
+        "formats/*/scripts/{fonts,generate}.ts",
+        "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
+        "docs/scripts/lib/scope-components.ts",
       ],
       exclude: [
         "**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -104,7 +110,7 @@ export default defineConfig({
       // Task name differs from the `security:snyk` package.json script — vp forbids the two matching.
       "snyk:scan": {
         command:
-          "vp exec snyk test --all-projects --severity-threshold=high --exclude=generated,dist",
+          "vp exec snyk test --all-projects --severity-threshold=medium --exclude=generated,dist",
       },
       // Snyk Code (SAST) gate. Snyk has no GitHub App on this repo, so CI can't run it — the pre-push
       // hook runs this instead (see .vite-hooks/pre-push) and it's here for on-demand runs. The wrapper

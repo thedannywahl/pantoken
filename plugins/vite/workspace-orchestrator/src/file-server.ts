@@ -27,6 +27,10 @@ export function mountFileServers(
   middlewares: Middlewares,
 ): void {
   for (const entry of fileServers) {
+    // This is a dev-server Vite middleware (localhost, no untrusted traffic). Snyk Code flags the
+    // per-request read as a DoS vector wanting rate limiting, which is inappropriate for a dev static
+    // file server; the finding is accepted in scripts/quality/snyk-code-gate.ts. Path traversal is
+    // contained below.
     middlewares.use(entry.mountPath, (req, res, next) => {
       const filePath = req.url?.split("?")[0];
       if (!filePath?.endsWith(entry.extension)) {
