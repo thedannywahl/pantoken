@@ -1,0 +1,21 @@
+name: pantoken CodeQL config
+
+# Scope CodeQL to the shipped library, renderer, and plugin source. The excluded paths are either not
+# shipped or are the taint source behind false positives; Snyk Code (run on pre-push) still scans
+# everything below, so the demo playground and tooling aren't left unscanned.
+#
+# - tests: not shipped. Their `mkdtemp(os.tmpdir())` fixtures are the only tmpdir taint source that
+#   reaches the CLI, so CodeQL's interprocedural flow marks every `writeFileSync(args.out, …)` in the
+#   CLI as an "insecure temporary file" (16 false positives — the CLI's `--out` defaults to
+#   `./pantoken-out`, not a temp dir, and writing generated tokens to a user-chosen dir isn't a temp file).
+# - tools/demo: the docs demo runner is a sandboxed playground that loads code and CSS from URL params
+#   by design (the xss / open-redirect / CSRF findings are inherent to that, and it runs in a sandboxed
+#   iframe). Snyk Code covers it on pre-push.
+# - generated / dist: emitted output, not source.
+paths-ignore:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "**/tests/**"
+  - "tools/demo/**"
+  - "**/generated/**"
+  - "**/dist/**"

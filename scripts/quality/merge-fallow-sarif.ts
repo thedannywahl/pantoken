@@ -17,9 +17,20 @@ import { readFileSync, writeFileSync } from "node:fs";
 interface SarifRule {
   id: string;
 }
+interface SarifResult {
+  locations?: { physicalLocation?: { artifactLocation?: { uri?: string } } }[];
+}
 interface SarifRun {
   tool: { driver: { rules?: SarifRule[] } };
-  results?: unknown[];
+  results?: SarifResult[];
+}
+
+/**
+ * Whether a result carries a code location. Code scanning rejects any result without one, and fallow
+ * emits project-level findings (e.g. unused dependencies) that have none.
+ */
+function hasLocation(result: SarifResult): boolean {
+  return (result.locations ?? []).some((loc) => loc.physicalLocation?.artifactLocation?.uri);
 }
 interface Sarif {
   version?: string;
@@ -48,7 +59,9 @@ try {
 }
 
 const runs = doc.runs ?? [];
-if (runs.length > 1) {
+if (runs.length > 0) {
+  // Collapse every analysis into one run (code scanning rejects multiple runs under one category),
+  // de-duplicating rules by id and dropping results with no code location (unuploadable).
   const seen = new Set<string>();
   const rules: SarifRule[] = [];
   for (const run of runs) {
@@ -64,7 +77,7 @@ if (runs.length > 1) {
     {
       ...base,
       tool: { ...base.tool, driver: { ...base.tool.driver, rules } },
-      results: runs.flatMap((run) => run.results ?? []),
+      results: runs.flatMap((run) => (run.results ?? []).filter(hasLocation)),
     },
   ];
 }
