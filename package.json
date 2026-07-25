@@ -23,6 +23,7 @@
     "@cssdoc/eslint-plugin": "catalog:",
     "@cssdoc/stylelint-plugin": "catalog:",
     "@eslint/css": "catalog:",
+    "@manypkg/cli": "catalog:",
     "eslint": "catalog:",
     "markdownlint-cli2": "catalog:",
     "publint": "catalog:",
@@ -39,5 +40,10 @@
   },
   "engines": {
     "node": ">=22.18.0"
+  },
+  "manypkg": {
+    "ignoredRules": [
+      "INVALID_DEV_AND_PEER_DEPENDENCY_RELATIONSHIP"
+    ]
   }
 }

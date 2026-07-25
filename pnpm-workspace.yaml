@@ -68,6 +68,7 @@ catalog:
   "@changesets/cli": ^2.29.7
   "@vitest/coverage-v8": ^4.1.10
   markdownlint-cli2: ^0.23.0
+  "@manypkg/cli": ^0.25.1
   publint: ^0.3.21
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^11.1.0

@@ -56,6 +56,10 @@ export default defineConfig({
       "lint:markdown": {
         command: 'vp exec markdownlint-cli2 "**/*.md"',
       },
+      // Workspace/catalog consistency + internal-version alignment. Pure manifest read, no build dep.
+      "check:manypkg": {
+        command: "vp exec manypkg check",
+      },
       "ready:all": {
         command: "true",
         dependsOn: [
@@ -66,6 +70,7 @@ export default defineConfig({
           "validate:generated:only",
           "gate:compatibility",
           "lint:markdown",
+          "check:manypkg",
         ],
       },
       // The upstream-upgrade pipeline. `upgrade:check` is the drift gate — it fails when the committed
