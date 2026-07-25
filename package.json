@@ -24,6 +24,7 @@
     "@cssdoc/stylelint-plugin": "catalog:",
     "@eslint/css": "catalog:",
     "@manypkg/cli": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "markdownlint-cli2": "catalog:",
     "publint": "catalog:",

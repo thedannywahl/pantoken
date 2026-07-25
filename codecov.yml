@@ -1,0 +1,23 @@
+# Codecov config. Coverage uploads tokenless via OIDC from CI (public repo).
+coverage:
+  status:
+    project:
+      default:
+        # Ratchet from the current baseline rather than a fixed number; allow a small dip for churn.
+        target: auto
+        threshold: 1%
+    patch:
+      default:
+        target: auto
+        threshold: 1%
+comment:
+  layout: "reach, diff, flags, files"
+  require_changes: true
+# Mirror the coverage include/exclude in vite.config.ts so the two agree on what counts.
+ignore:
+  - "**/generated/**"
+  - "**/dist/**"
+  - "**/tests/**"
+  - "**/*.{test,spec}.*"
+  - "**/*.config.*"
+  - "**/*.d.ts"

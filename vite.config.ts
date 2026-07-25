@@ -15,6 +15,32 @@ export default defineConfig({
       "docs/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)",
     ],
+    coverage: {
+      provider: "v8",
+      // text-summary for humans, lcov for Codecov, json for `fallow health --coverage`.
+      reporter: ["text-summary", "lcov", "json"],
+      include: [
+        "packages/*/src/**",
+        "formats/*/src/**",
+        "platforms/*/src/**",
+        "renderers/*/src/**",
+        "bundlers/*/src/**",
+        "design/*/src/**",
+        "ai/*/src/**",
+        "plugins/*/*/src/**",
+        "tools/*/src/**",
+        "tools/*/*.ts",
+        "scripts/**/*.ts",
+      ],
+      exclude: [
+        "**/*.{test,spec}.?(c|m)[jt]s?(x)",
+        "**/tests/**",
+        "**/generated/**",
+        "**/dist/**",
+        "**/*.config.*",
+        "**/*.d.ts",
+      ],
+    },
   },
   staged: {
     "*": "vp check --fix",
@@ -47,6 +73,11 @@ export default defineConfig({
       },
       "test:all": {
         command: "vp run -r test",
+        dependsOn: ["build:all"],
+      },
+      // Coverage run for Codecov + fallow health; needs generated output like the plain test run.
+      "test:coverage": {
+        command: "vp test --coverage",
         dependsOn: ["build:all"],
       },
       "validate:generated:only": {

@@ -1,5 +1,9 @@
 # pantoken
 
+[![CI](https://github.com/thedannywahl/pantoken/actions/workflows/ci.yml/badge.svg)](https://github.com/thedannywahl/pantoken/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/thedannywahl/pantoken/branch/main/graph/badge.svg)](https://codecov.io/gh/thedannywahl/pantoken)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/thedannywahl/pantoken/badge)](https://securityscorecards.dev/viewer/?uri=github.com/thedannywahl/pantoken)
+
 Instructure design tokens and icons, reshaped for every platform.
 
 pantoken resolves Instructure UI's design tokens and icons once, then turns that single model into
