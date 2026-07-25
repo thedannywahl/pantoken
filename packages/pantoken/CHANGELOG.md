@@ -1,5 +1,61 @@
 # CHANGELOG
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies [e099a51]
+  - @pantoken/tokens@0.2.0
+  - @pantoken/panda@0.1.3
+  - @pantoken/tailwind@0.1.2
+  - @pantoken/vite@0.1.3
+  - @pantoken/swatches@0.1.3
+  - @pantoken/components@0.2.2
+  - @pantoken/css@0.2.2
+  - @pantoken/dtcg@0.1.3
+  - @pantoken/icons@0.1.2
+  - @pantoken/less@0.1.3
+  - @pantoken/scss@0.1.3
+  - @pantoken/stylus@0.1.3
+  - @pantoken/cli@0.1.5
+  - @pantoken/android@0.1.4
+  - @pantoken/compose@0.1.4
+  - @pantoken/email@0.1.3
+  - @pantoken/flutter@0.1.4
+  - @pantoken/swift@0.1.4
+  - @pantoken/vanilla@0.1.3
+  - @pantoken/wordpress@0.1.3
+  - @pantoken/plugin-primitives@0.1.4
+  - @pantoken/plugin-stacking@0.1.4
+  - @pantoken/astro@0.1.3
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/css-in-js@0.1.3
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.1
+  - @pantoken/mintlify@0.1.3
+  - @pantoken/mui@0.1.3
+  - @pantoken/pendo@0.1.4
+  - @pantoken/react-native@0.1.3
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/storybook@0.1.3
+  - @pantoken/vitepress@0.1.1
+  - @pantoken/figma@0.1.3
+  - @pantoken/plugin-logos@0.1.4
+  - @pantoken/plugin-simple-icons@0.1.3
+  - @pantoken/plugin-transition@0.1.4
+  - @pantoken/plugin-visual-debug@0.1.4
+  - @pantoken/markdown-it@0.1.2
+  - @pantoken/react-markdown@0.1.2
+  - @pantoken/rehype@0.1.2
+  - @pantoken/web-components@0.2.3
+  - @pantoken/postcss@0.1.3
+  - @pantoken/webpack@0.1.3
+  - @pantoken/drupal@0.1.4
+  - @pantoken/angular@0.1.5
+  - @pantoken/react@0.1.5
+  - @pantoken/svelte@0.1.5
+  - @pantoken/vue@0.1.5
+
 ## 0.1.6
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- Updated dependencies [e099a51]
+  - @pantoken/model@0.2.0
+
 ## 0.1.1
 
 ### Patch Changes
