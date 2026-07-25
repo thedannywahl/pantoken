@@ -24,6 +24,8 @@ interface PackageManifest {
   exports?: unknown;
 }
 
+type PackageRef = { name: string; path: string };
+
 function repositoryUrlOf(repository: unknown): string | undefined {
   if (typeof repository === "string") return repository;
   if (!repository || typeof repository !== "object") return undefined;
@@ -39,63 +41,84 @@ function repositoryDirectoryOf(repository: unknown): string | undefined {
 
 const eq = (a: unknown, b: unknown): boolean => JSON.stringify(a) === JSON.stringify(b);
 
+/** One manifest assertion: `ok` passes silently, otherwise `msg` describes the violation. */
+interface Check {
+  ok: (m: PackageManifest, pkg: PackageRef) => boolean;
+  msg: (m: PackageManifest, pkg: PackageRef) => string;
+}
+
+// Data-driven so each assertion stays a one-line predicate + message; evaluated top-to-bottom, and the
+// messages are the check's public contract (sync-repository-metadata.ts mirrors these fields).
+const CHECKS: Check[] = [
+  // Linkage + provenance metadata.
+  {
+    ok: (m) => repositoryUrlOf(m.repository) === REPOSITORY_URL,
+    msg: (m) =>
+      `repository.url is ${JSON.stringify(repositoryUrlOf(m.repository) ?? "")}, expected ${JSON.stringify(REPOSITORY_URL)}`,
+  },
+  {
+    ok: (m, pkg) => repositoryDirectoryOf(m.repository) === pkg.path,
+    msg: (m, pkg) =>
+      `repository.directory is ${JSON.stringify(repositoryDirectoryOf(m.repository) ?? "")}, expected ${JSON.stringify(pkg.path)}`,
+  },
+  {
+    ok: (m) => m.homepage === HOMEPAGE_URL,
+    msg: (m) =>
+      `homepage is ${JSON.stringify(m.homepage ?? "")}, expected ${JSON.stringify(HOMEPAGE_URL)}`,
+  },
+  {
+    ok: (m) => m.bugs === BUGS_URL,
+    msg: (m) => `bugs is ${JSON.stringify(m.bugs ?? "")}, expected ${JSON.stringify(BUGS_URL)}`,
+  },
+  // Build-hint metadata.
+  {
+    ok: (m) => eq(m.sideEffects, expectedSideEffects(m)),
+    msg: (m) =>
+      `sideEffects is ${JSON.stringify(m.sideEffects ?? null)}, expected ${JSON.stringify(expectedSideEffects(m))}`,
+  },
+  {
+    ok: (m) => eq(m.engines, ENGINES),
+    msg: (m) =>
+      `engines is ${JSON.stringify(m.engines ?? null)}, expected ${JSON.stringify(ENGINES)}`,
+  },
+  {
+    ok: (m) => (m.publishConfig as { provenance?: unknown } | undefined)?.provenance === true,
+    msg: () => "publishConfig.provenance is not true",
+  },
+  // Regression insurance on the already-consistent fields.
+  {
+    ok: (m) => m.license === "MIT",
+    msg: (m) => `license is ${JSON.stringify(m.license ?? "")}, expected "MIT"`,
+  },
+  {
+    ok: (m) => m.type === "module",
+    msg: (m) => `type is ${JSON.stringify(m.type ?? "")}, expected "module"`,
+  },
+  {
+    ok: (m) => Array.isArray(m.files) && m.files.length > 0,
+    msg: () => "files is missing or empty",
+  },
+  {
+    ok: (m) => typeof m.description === "string" && m.description.length > 0,
+    msg: () => "description is missing or empty",
+  },
+];
+
+function checkManifest(pkg: PackageRef, m: PackageManifest): string[] {
+  return CHECKS.filter((check) => !check.ok(m, pkg)).map(
+    (check) => `${pkg.name} (${pkg.path}/package.json): ${check.msg(m, pkg)}`,
+  );
+}
+
 async function main() {
   const { packages } = await loadWorkspacePackages();
   const publishable = packages.filter((pkg) => isPublishablePackage(pkg));
 
   const violations: string[] = [];
-
   for (const pkg of publishable) {
     const manifestPath = path.resolve(pkg.path, "package.json");
-    const raw = await fs.readFile(manifestPath, "utf8");
-    const m = JSON.parse(raw) as PackageManifest;
-
-    const fail = (msg: string): void => {
-      violations.push(`${pkg.name} (${pkg.path}/package.json): ${msg}`);
-    };
-
-    // Linkage + provenance metadata.
-    if (repositoryUrlOf(m.repository) !== REPOSITORY_URL) {
-      fail(
-        `repository.url is ${JSON.stringify(repositoryUrlOf(m.repository) ?? "")}, expected ${JSON.stringify(REPOSITORY_URL)}`,
-      );
-    }
-    if (repositoryDirectoryOf(m.repository) !== pkg.path) {
-      fail(
-        `repository.directory is ${JSON.stringify(repositoryDirectoryOf(m.repository) ?? "")}, expected ${JSON.stringify(pkg.path)}`,
-      );
-    }
-    if (m.homepage !== HOMEPAGE_URL) {
-      fail(
-        `homepage is ${JSON.stringify(m.homepage ?? "")}, expected ${JSON.stringify(HOMEPAGE_URL)}`,
-      );
-    }
-    if (m.bugs !== BUGS_URL) {
-      fail(`bugs is ${JSON.stringify(m.bugs ?? "")}, expected ${JSON.stringify(BUGS_URL)}`);
-    }
-
-    // Build-hint metadata.
-    const wantSideEffects = expectedSideEffects(m);
-    if (!eq(m.sideEffects, wantSideEffects)) {
-      fail(
-        `sideEffects is ${JSON.stringify(m.sideEffects ?? null)}, expected ${JSON.stringify(wantSideEffects)}`,
-      );
-    }
-    if (!eq(m.engines, ENGINES)) {
-      fail(`engines is ${JSON.stringify(m.engines ?? null)}, expected ${JSON.stringify(ENGINES)}`);
-    }
-    const provenance = (m.publishConfig as { provenance?: unknown } | undefined)?.provenance;
-    if (provenance !== true) {
-      fail("publishConfig.provenance is not true");
-    }
-
-    // Regression insurance on the already-consistent fields.
-    if (m.license !== "MIT") fail(`license is ${JSON.stringify(m.license ?? "")}, expected "MIT"`);
-    if (m.type !== "module") fail(`type is ${JSON.stringify(m.type ?? "")}, expected "module"`);
-    if (!Array.isArray(m.files) || m.files.length === 0) fail("files is missing or empty");
-    if (typeof m.description !== "string" || m.description.length === 0) {
-      fail("description is missing or empty");
-    }
+    const m = JSON.parse(await fs.readFile(manifestPath, "utf8")) as PackageManifest;
+    violations.push(...checkManifest(pkg, m));
   }
 
   if (violations.length > 0) {

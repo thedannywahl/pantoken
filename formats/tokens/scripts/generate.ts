@@ -48,7 +48,7 @@ for (const theme of THEMES) {
 writeFileSync(join(outDir, "raw.json"), `${JSON.stringify(themeTokens)}\n`);
 
 /** The `#ref` a package is pinned to in the catalog (e.g. `v1.5.0`), or `unpinned`. */
-function catalogRef(pkg: string): string {
+export function catalogRef(pkg: string): string {
   try {
     const ws = readFileSync(join(repoRoot, "pnpm-workspace.yaml"), "utf8");
     const line = ws
@@ -67,7 +67,7 @@ function catalogRef(pkg: string): string {
 }
 
 /** The commit sha a GitHub-hosted package resolved to, read from the lockfile tarball URL. */
-function lockCommit(repo: string): string {
+export function lockCommit(repo: string): string {
   try {
     const lock = readFileSync(join(repoRoot, "pnpm-lock.yaml"), "utf8");
     const re = new RegExp(`${repo}/tar\\.gz/([0-9a-f]{7,40})`, "u");
@@ -78,7 +78,7 @@ function lockCommit(repo: string): string {
 }
 
 /** A published package's resolved version, from its installed `package.json`. */
-function resolvedVersion(pkg: string): string {
+export function resolvedVersion(pkg: string): string {
   try {
     return (
       JSON.parse(readFileSync(require.resolve(`${pkg}/package.json`), "utf8")).version ?? "unknown"

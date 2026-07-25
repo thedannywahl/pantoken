@@ -7,6 +7,7 @@
 import { defineUtility } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 
+/** The responsive-visibility utility — viewport-width hide classes plus `-cq-` container-query variants. */
 export const responsive = defineUtility({
   name: "responsive",
   css: (p) => {
@@ -44,4 +45,5 @@ export const responsive = defineUtility({
   },
 });
 
+/** The responsive-visibility utilities as a standalone, header-wrapped stylesheet. */
 export const responsiveUtilitiesCss = responsive.css;

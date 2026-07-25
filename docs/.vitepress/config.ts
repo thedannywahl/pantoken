@@ -370,6 +370,29 @@ const base = process.env.DOCS_BASE ?? "/";
 const rawHostname = process.env.DOCS_HOSTNAME ?? "https://pantoken.iywahl.com/";
 const hostname = rawHostname.endsWith("/") ? rawHostname : `${rawHostname}/`;
 
+/** The canonical URL for a page from its source-relative path (cleanUrls drops the extension). */
+function canonicalUrl(relativePath: string): string {
+  return `${hostname}${relativePath}`.replace(/index\.md$/, "").replace(/\.md$/, "");
+}
+
+/**
+ * The Open Graph title: the wordmark plus the hero tagline on the home page (which has no title of
+ * its own and is the most-shared URL), otherwise the page's own title, then the site title.
+ */
+function ogTitle(
+  frontmatter: { layout?: string; title?: string },
+  pageTitle: string,
+  siteTitle: string,
+  isHu: boolean,
+): string {
+  if (frontmatter.layout === "home") {
+    return isHu
+      ? "pantoken — Instructure design tokenek, mindenhol"
+      : "pantoken — Instructure design tokens, everywhere";
+  }
+  return frontmatter.title || pageTitle || siteTitle;
+}
+
 const description =
   "Instructure design tokens and icons, reshaped for every platform and framework.";
 
@@ -444,21 +467,10 @@ export default defineConfig({
   transformHead: ({ pageData, siteData }) => {
     const isHu = pageData.relativePath.startsWith("hu/");
     const locale = isHu ? LOCALES.hu : LOCALES.root;
-    // The home page has no title of its own (the hero renders it), so give it the wordmark plus the
-    // hero line — home is the most-shared URL and unfurls better with the tagline attached.
-    const title =
-      pageData.frontmatter.layout === "home"
-        ? isHu
-          ? "pantoken — Instructure design tokenek, mindenhol"
-          : "pantoken — Instructure design tokens, everywhere"
-        : pageData.frontmatter.title || pageData.title || siteData.title;
+    const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, isHu);
     const pageDescription =
       pageData.frontmatter.description || pageData.description || locale.description;
-    // relativePath is like "guide/getting-started.md" or "hu/index.md"; cleanUrls drops the extension
-    // and index files map to their directory root. hostname already ends with the base path slash.
-    const url = `${hostname}${pageData.relativePath}`
-      .replace(/index\.md$/, "")
-      .replace(/\.md$/, "");
+    const url = canonicalUrl(pageData.relativePath);
     return [
       ["link", { rel: "canonical", href: url }],
       ["meta", { property: "og:title", content: title }],

@@ -43,7 +43,8 @@ const loadCacheKeys = (locale: string, namespace: string): Set<string> => {
   return new Set(Object.keys(parsed.entries ?? {}));
 };
 
-const walkMarkdown = (dir: string): string[] => {
+/** Recursively collect every `.md` file under `dir` (returns `[]` when `dir` doesn't exist). */
+export const walkMarkdown = (dir: string): string[] => {
   if (!existsSync(dir)) return [];
   const out: string[] = [];
   for (const name of readdirSync(dir)) {
@@ -71,7 +72,7 @@ const guideDrift = (locale: string): Missing[] => {
 };
 
 /** API drift: every `prose` block across the generated EN tree needs a cached `:claude` translation. */
-const apiDrift = (locale: string): Missing[] => {
+export const apiDrift = (locale: string): Missing[] => {
   const cached = loadCacheKeys(locale, "api");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(apiDir)) {

@@ -114,37 +114,40 @@ const escapeBareHtmlTags = (text: string): string =>
     return `&lt;${name}&gt;`;
   });
 
-const build = async (): Promise<void> => {
-  const adapter = createTranslationAdapter();
-  const memory = TranslationMemory.load("hu", "api");
-
-  rmSync(enApiDir, { recursive: true, force: true });
-  rmSync(huApiDir, { recursive: true, force: true });
-
+/**
+ * Generate the EN API docs (TypeDoc + badge styling + overview) and the CSS API pages. The CSS pages
+ * live under docs/api/css/; they run after TypeDoc (which cleans docs/api) and before the locale clone,
+ * so they're cloned + translated for HU for free.
+ */
+const generateBaseApiDocs = (): void => {
   console.log("Generating EN API docs...");
   run("vp", ["exec", "typedoc", "--options", "typedoc.json", "--out", "api"]);
   run("node", ["scripts/style-api-badges.ts"]);
   run("node", ["scripts/write-api-overview.ts"]);
 
-  // The CSS API pages live under docs/api/css/; generate them after TypeDoc (which cleans docs/api) and
-  // before the locale clone, so they're cloned + translated for HU for free.
   console.log("Generating CSS API docs...");
   run("node", ["scripts/build-css-api.ts"]);
+};
 
+/** Clone the generated EN API tree into the HU locale directory. */
+const cloneApiForHu = (): void => {
   console.log("Cloning API docs for HU locale...");
   mkdirSync(dirname(huApiDir), { recursive: true });
   cpSync(enApiDir, huApiDir, { recursive: true });
+};
 
-  const files = walkFiles(huApiDir);
-  const markdownFiles = files.filter((f) => f.endsWith(".md"));
-  // The TypeDoc sidebar carries the CSS section too (merged by @cssdoc/typedoc), so its labels cover
-  // both the TS API and the CSS reference.
-  const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
-
-  // 1. Markdown: segment each file into prose / deterministic-glossary / verbatim blocks. Prose is
-  //    batched + cached through the selected adapter; headings, badge pills, and table column labels
-  //    always go through the glossary (deterministic, keyless, never cached); everything else is kept
-  //    verbatim. Block-level keys survive the scaffolding churn that busted whole-file keys.
+/**
+ * Segment each cloned HU markdown file into prose / deterministic-glossary / verbatim blocks, then
+ * rewrite it translated in place. Prose is batched + cached through the selected adapter; headings,
+ * badge pills, and table column labels always go through the glossary (deterministic, keyless, never
+ * cached); everything else is kept verbatim. Block-level keys survive the scaffolding churn that busted
+ * whole-file keys. Returns the glossary-term and prose-block counts for the summary log.
+ */
+const translateMarkdownFiles = async (
+  markdownFiles: string[],
+  adapter: ReturnType<typeof createTranslationAdapter>,
+  memory: TranslationMemory,
+): Promise<{ glossaryTerms: number; proseBlocks: number }> => {
   const glossary = new GlossaryTranslationAdapter();
   const segmented = markdownFiles.map((filePath) => ({
     filePath,
@@ -176,8 +179,19 @@ const build = async (): Promise<void> => {
     writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve)));
   }
 
-  // 2. Sidebars: collect every label across all trees, translate the misses in one batched pass,
-  //    then rebuild each tree from the results.
+  const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
+  return { glossaryTerms: glossaryText.size, proseBlocks };
+};
+
+/**
+ * Collect every sidebar label across all trees, translate the misses in one batched pass, then rebuild
+ * and rewrite each tree from the results. Returns the total label count for the summary log.
+ */
+const translateSidebars = async (
+  sidebarFiles: string[],
+  adapter: ReturnType<typeof createTranslationAdapter>,
+  memory: TranslationMemory,
+): Promise<number> => {
   const sidebars = sidebarFiles.map((filePath) => ({
     filePath,
     tree: JSON.parse(readFileSync(filePath, "utf8")) as SidebarItem[],
@@ -195,12 +209,37 @@ const build = async (): Promise<void> => {
     const translated = tree.map((item) => translateSidebar(item, translateLabel));
     writeFileSync(filePath, `${JSON.stringify(translated, null, 2)}\n`);
   }
+  return labels.length;
+};
+
+const build = async (): Promise<void> => {
+  const adapter = createTranslationAdapter();
+  const memory = TranslationMemory.load("hu", "api");
+
+  rmSync(enApiDir, { recursive: true, force: true });
+  rmSync(huApiDir, { recursive: true, force: true });
+
+  generateBaseApiDocs();
+  cloneApiForHu();
+
+  const files = walkFiles(huApiDir);
+  const markdownFiles = files.filter((f) => f.endsWith(".md"));
+  // The TypeDoc sidebar carries the CSS section too (merged by @cssdoc/typedoc), so its labels cover
+  // both the TS API and the CSS reference.
+  const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
+
+  // 1. Markdown blocks, then 2. sidebar labels — markdown first so both passes share the same memory.
+  const { glossaryTerms, proseBlocks } = await translateMarkdownFiles(
+    markdownFiles,
+    adapter,
+    memory,
+  );
+  const labelCount = await translateSidebars(sidebarFiles, adapter, memory);
 
   memory.save();
-  const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
   console.log(
     `Localized ${markdownFiles.length} API markdown files for HU via '${adapter.name}': ` +
-      `${glossaryText.size} glossary terms, ${proseBlocks} prose blocks, ${labels.length} sidebar labels ` +
+      `${glossaryTerms} glossary terms, ${proseBlocks} prose blocks, ${labelCount} sidebar labels ` +
       `(${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, huApiDir)}`,
   );
 };

@@ -2,6 +2,7 @@ import { defineComponent } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { inputFacadeBase } from "../lib/field-controls.ts";
 
+/** The `inputGroup` component record: a facade around a text input with leading and trailing icon slots. */
 export const inputGroup = defineComponent({
   name: "input-group",
   css: (p) =>
@@ -30,4 +31,5 @@ ${inputFacadeBase(p, "input-group")}
 .${p}input-group.-should-not-wrap { flex-wrap: nowrap; }`,
 });
 
+/** Standalone `inputGroup` stylesheet — the prefixed CSS for the input group, ready to ship as a `.css` file. */
 export const inputGroupCss = inputGroup.css;

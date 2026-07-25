@@ -1,3 +1,4 @@
+/** The locales the docs site builds: `root` (English) and `hu` (Hungarian). */
 export type DocsLocale = "root" | "hu";
 
 type LocaleMeta = {
@@ -85,6 +86,7 @@ type LocaleMeta = {
   };
 };
 
+/** Per-locale metadata — route prefixes, nav/sidebar labels, and all translated UI chrome. */
 export const LOCALES: Record<DocsLocale, LocaleMeta> = {
   root: {
     label: "English",

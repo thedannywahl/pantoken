@@ -15,6 +15,7 @@
  */
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
@@ -43,21 +44,25 @@ let resolveValue = makeResolver(tokens);
  */
 const localVars = new Map<string, string>();
 
+/** A resolved value that reads as a colour: a `light-dark()` pair or a hex / rgb / hsl / oklch / lab / color() form. */
+function isColorValue(v: string): boolean {
+  return (
+    /light-dark\s*\(/iu.test(v) ||
+    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
+  );
+}
+
 /**
- * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry `syntax:
- * "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static `@property`
- * type), so the human-meaningful type is derived from what the value ultimately IS.
+ * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry
+ * `syntax: "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static
+ * `@property` type), so the human-meaningful type is derived from what the value ultimately IS.
  */
-function inferSyntax(value: string): string | undefined {
+export function inferSyntax(value: string): string | undefined {
   const v = value.trim();
   // A bare url()/data: value (the icon glyphs are url-encoded SVGs) is `<url>`, not the broader `<image>`.
   if (/^url\(|data:/iu.test(v)) return "<url>";
   // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
-  if (
-    /light-dark\s*\(/iu.test(v) ||
-    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
-  )
-    return "<color>";
+  if (isColorValue(v)) return "<color>";
   if (/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu.test(v))
     return "<length>";
   if (/^-?\d*\.?\d+m?s$/iu.test(v)) return "<time>";
@@ -89,30 +94,48 @@ const PROPERTY_SYNTAX: [RegExp, string][] = [
 ];
 
 /**
- * The human-meaningful syntax of a consumed token: the first concrete `syntax` along its `refersTo`
- * chain, else inferred from the terminal value, else the enumerated keyword set for keyword-valued
- * properties. Returns undefined only when nothing can be derived.
+ * Walk a token's `refersTo` chain for the first concrete `syntax`, else infer from its terminal value.
+ * `lookup` (the token index, defaulting to the module's) is injectable so the chain-walk is testable.
  */
-function resolveSyntax(name: string): string | undefined {
+export function syntaxFromChain(
+  name: string,
+  lookup: Map<string, Token> = tokenByName,
+): string | undefined {
   const seen = new Set<string>();
-  let token = tokenByName.get(name);
+  let token = lookup.get(name);
   while (token) {
     if (token.syntax && token.syntax !== "*") return token.syntax;
     if (token.refersTo && !seen.has(token.refersTo)) {
       seen.add(token.refersTo);
-      token = tokenByName.get(token.refersTo);
+      token = lookup.get(token.refersTo);
       continue;
     }
     const inferred = token.value ? inferSyntax(token.value) : undefined;
     if (inferred) return inferred;
     break;
   }
+  return undefined;
+}
+
+/**
+ * The human-meaningful syntax of a consumed token: the first concrete `syntax` along its `refersTo`
+ * chain, else inferred from the terminal value, else the enumerated keyword set for keyword-valued
+ * properties. Returns undefined only when nothing can be derived.
+ */
+export function resolveSyntax(
+  name: string,
+  lookup: Map<string, Token> = tokenByName,
+  locals: Map<string, string> = localVars,
+  resolve: (value: string) => string = resolveValue,
+): string | undefined {
+  const chained = syntaxFromChain(name, lookup);
+  if (chained) return chained;
   // Composite/keyword property grammar by name (font-family, box-shadow, glyph, …) takes precedence
   // over primitive inference; then fall back to inferring from a sheet-local value.
   const prop = PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
   if (prop) return prop;
-  const local = localVars.get(name);
-  return local ? inferSyntax(resolveValue(local)) : undefined;
+  const local = locals.get(name);
+  return local ? inferSyntax(resolve(local)) : undefined;
 }
 
 /**
@@ -120,10 +143,15 @@ function resolveSyntax(name: string): string | undefined {
  * human-meaningful type ({@link resolveSyntax}) and its concrete value (IR value, else a sheet-local
  * var), resolved down to primitives. Undefined when neither can be derived.
  */
-function resolveToken(name: string): { syntax?: string; value?: string } | undefined {
-  const syntax = resolveSyntax(name);
-  const raw = tokenByName.get(name)?.value ?? localVars.get(name);
-  const value = raw ? resolveValue(raw) : undefined;
+export function resolveToken(
+  name: string,
+  lookup: Map<string, Token> = tokenByName,
+  locals: Map<string, string> = localVars,
+  resolve: (value: string) => string = resolveValue,
+): { syntax?: string; value?: string } | undefined {
+  const syntax = resolveSyntax(name, lookup, locals, resolve);
+  const raw = lookup.get(name)?.value ?? locals.get(name);
+  const value = raw ? resolve(raw) : undefined;
   return syntax || value ? { syntax, value } : undefined;
 }
 
@@ -152,7 +180,7 @@ const repoRoot = join(docsRoot, "..");
 const SOURCE_URL_BASE = "https://github.com/thedannywahl/pantoken/blob/main";
 
 /** Map each record name → its authoring source file (repo-relative), by scanning for the record tag. */
-function sourceMap(files: string[]): Map<string, string> {
+export function sourceMap(files: string[]): Map<string, string> {
   const RECORD = /@(?:component|utility|rule|declaration)\s+([a-z][\w-]*)/u;
   const map = new Map<string, string>();
   for (const file of files) {
@@ -163,7 +191,7 @@ function sourceMap(files: string[]): Map<string, string> {
 }
 
 /** A `resolveSource` hook: link a record to its source file (GitHub blob), labelled with the filename. */
-const makeResolveSource =
+export const makeResolveSource =
   (map: Map<string, string>) =>
   (entry: CssDocEntry): { href: string; label?: string } | undefined => {
     const path = map.get(entry.name);
@@ -177,7 +205,7 @@ const makeResolveSource =
  * still author the tag inside a `css` template). A migrated record's `.ts` is a tag-less wrapper, so
  * `sourceMap` skips it and links to the `.css`.
  */
-function componentSources(componentsRoot: string): string[] {
+export function componentSources(componentsRoot: string): string[] {
   const files = ["components", "utilities", "rules", "declarations"].flatMap((d) => {
     const dir = join(componentsRoot, "src", d);
     return readdirSync(dir)
@@ -188,18 +216,17 @@ function componentSources(componentsRoot: string): string[] {
   return files;
 }
 
-const build = (): void => {
-  // The component sheet is the primary source; base/utilities/prose carry the non-component records
-  // (@rule/@utility/@declaration). All four feed the emitter so every record is picked up in one pass.
-  const sheets = ["components.css", "utilities.css", "prose.css", "base.css"];
-  const cssPaths = sheets.map(cssPath);
-  const css = sheets.map(readCss).join("\n");
+/** One CSS-emitting plugin's cssdoc source: its package dir, generated sheet name, and `@import` specifier. */
+type PluginRecord = { pkg: string; sheet: string; import: string };
 
-  // The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives) carry cssdoc records in
-  // their generated sheets, each tagged `@group Plugins` so cssdoc folds them into a "Plugins" subsection
-  // of the CSS section (it groups by `@group`, falling back to record kind). They render in the SAME pass
-  // as the component records — one `emitCssApi` call, one "CSS" section.
-  const PLUGIN_RECORDS = [
+/**
+ * The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives) carry cssdoc records in
+ * their generated sheets, each tagged `@group Plugins` so cssdoc folds them into a "Plugins" subsection
+ * of the CSS section (it groups by `@group`, falling back to record kind). They render in the SAME pass
+ * as the component records — one `emitCssApi` call, one "CSS" section.
+ */
+export function pluginRecords(): PluginRecord[] {
+  return [
     {
       pkg: "plugins/pantoken/stacking",
       sheet: "stacking.css",
@@ -226,16 +253,21 @@ const build = (): void => {
       import: "@pantoken/plugin-primitives/primitives.css",
     },
   ];
-  const pluginSheet = (r: (typeof PLUGIN_RECORDS)[number]): string =>
-    join(repoRoot, r.pkg, "generated", r.sheet);
-  const pluginPaths = PLUGIN_RECORDS.map(pluginSheet);
+}
 
-  // Index every sheet-local custom property so its value resolves like an IR token — elevation shadows +
-  // focus ring in the component sheets, `--instui-stacking-*`/`--instui-transition-*` in the plugin
-  // sheets; first definition wins. Rebuild the resolver with them in scope.
-  for (const text of [css, readCss("base.css"), ...pluginPaths.map((p) => readFileSync(p, "utf8"))])
+/**
+ * Index every sheet-local custom property so its value resolves like an IR token — elevation shadows +
+ * focus ring in the component sheets, `--instui-stacking-*`/`--instui-transition-*` in the plugin
+ * sheets; first definition wins.
+ */
+export function indexLocalVars(texts: string[], target: Map<string, string> = localVars): void {
+  for (const text of texts)
     for (const m of text.matchAll(/(--[\w-]+)\s*:\s*([^;{}]+);/gu))
-      if (!localVars.has(m[1])) localVars.set(m[1], m[2].trim());
+      if (!target.has(m[1])) target.set(m[1], m[2].trim());
+}
+
+/** Rebuild the value resolver with the indexed sheet-local custom properties in scope. */
+export function rebuildResolver(): void {
   const localTokens: Token[] = [...localVars].map(([name, value]) => ({
     name,
     value,
@@ -243,31 +275,44 @@ const build = (): void => {
     inherits: true,
   }));
   resolveValue = makeResolver([...tokens, ...localTokens]);
+}
 
-  // Load the repo's shared cssdoc.json (root) — the single declarative config that also drives the lint
-  // plugins and the per-record test guard. `configFile` feeds `emitCssApi` (parse config + `render`
-  // order/heading); `configuration` is its parse view, reused locally for `parseCssDocs`.
-  const componentsRoot = join(generatedCssDir, "..");
-  const configFile = CssDocConfigFile.loadForFolder(repoRoot);
-  const configuration = configFile.toConfiguration();
-
-  // `**Source:**` link → each record's authoring source: a component `.ts`/`.css`, or a plugin's
-  // `scripts/generate.ts` (where its doc block is authored). Record names don't collide, so one map.
-  const pluginSources = PLUGIN_RECORDS.map((r) => join(repoRoot, r.pkg, "scripts", "generate.ts"));
-  const resolveSource = makeResolveSource(
-    sourceMap([...componentSources(componentsRoot), ...pluginSources]),
+/**
+ * The `**Source:**` `resolveSource` hook covering each record's authoring source: a component
+ * `.ts`/`.css`, or a plugin's `scripts/generate.ts` (where its doc block is authored). Record names
+ * don't collide, so one map.
+ */
+export function makeSourceResolver(
+  componentsRoot: string,
+  pluginRecordDefs: PluginRecord[],
+): (entry: CssDocEntry) => { href: string; label?: string } | undefined {
+  const pluginSources = pluginRecordDefs.map((r) =>
+    join(repoRoot, r.pkg, "scripts", "generate.ts"),
   );
+  return makeResolveSource(sourceMap([...componentSources(componentsRoot), ...pluginSources]));
+}
 
-  // `## Usage` import → the record's sheet: `@pantoken/components/<sheet>` (+ the per-component subpath),
-  // or the plugin's static `./<name>.css` subpath export.
+/**
+ * The `## Usage` import-snippet hook: a record's plugin `@import`, else the record's sheet import
+ * `@pantoken/components/<sheet>` (plus the per-component `<name>.css` subpath for components).
+ */
+export function makeImportSnippet(
+  sheets: string[],
+  pluginRecordDefs: PluginRecord[],
+  pluginSheet: (r: PluginRecord) => string,
+  configuration: ReturnType<CssDocConfigFile["toConfiguration"]>,
+  readSheet: (subpath: string) => string = readCss,
+  readPluginSheet: (r: PluginRecord) => string = (r) => readFileSync(pluginSheet(r), "utf8"),
+): (entry: CssDocEntry) => string | undefined {
   const recordSheet = new Map<string, string>();
   for (const sheet of sheets)
-    for (const e of parseCssDocs(readCss(sheet), { configuration })) recordSheet.set(e.name, sheet);
+    for (const e of parseCssDocs(readSheet(sheet), { configuration }))
+      recordSheet.set(e.name, sheet);
   const pluginImportByName = new Map<string, string>();
-  for (const r of PLUGIN_RECORDS)
-    for (const e of parseCssDocs(readFileSync(pluginSheet(r), "utf8"), { configuration }))
+  for (const r of pluginRecordDefs)
+    for (const e of parseCssDocs(readPluginSheet(r), { configuration }))
       pluginImportByName.set(e.name, r.import);
-  const importSnippet = (entry: CssDocEntry): string | undefined => {
+  return (entry: CssDocEntry): string | undefined => {
     const pluginImport = pluginImportByName.get(entry.name);
     if (pluginImport) return `@import "${pluginImport}";`;
     const sheet = recordSheet.get(entry.name);
@@ -280,6 +325,61 @@ const build = (): void => {
     }
     return `@import "@pantoken/components/${sheet}";`;
   };
+}
+
+/**
+ * Prepend a short landing-page blurb to the generated CSS index (idempotent), mirroring the API
+ * overview style while keeping cssdoc-generated tables and section ordering intact.
+ */
+export function writeCssIndexBlurb(
+  outSubdir: string,
+  cssIndexPath: string = join(docsRoot, "api", outSubdir, "index.md"),
+): void {
+  const cssIndex = readFileSync(cssIndexPath, "utf8");
+  if (!cssIndex.includes(CSS_OVERVIEW_BLURB)) {
+    const heading = "# CSS API reference\n\n";
+    const withBlurb = cssIndex.startsWith(heading)
+      ? `${heading}${CSS_OVERVIEW_BLURB}\n\n${cssIndex.slice(heading.length)}`
+      : `# CSS API reference\n\n${CSS_OVERVIEW_BLURB}\n\n${cssIndex}`;
+    writeFileSync(cssIndexPath, withBlurb);
+  }
+}
+
+/** Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure). */
+export function assertNoUnknownReferences(css: string): void {
+  const missing = unknownReferences(css, tokens).filter(
+    (r) => !r.startsWith("--instui-elevation-") && !r.startsWith("--instui-focus-outline-"),
+  );
+  if (missing.length) {
+    throw new Error(`CSS API: ${missing.length} unknown token reference(s): ${missing.join(", ")}`);
+  }
+}
+
+/** Generate the CSS API reference: index sheet-local vars, then emit every record via `emitCssApi`. */
+export const build = (): void => {
+  // The component sheet is the primary source; base/utilities/prose carry the non-component records
+  // (@rule/@utility/@declaration). All four feed the emitter so every record is picked up in one pass.
+  const sheets = ["components.css", "utilities.css", "prose.css", "base.css"];
+  const cssPaths = sheets.map(cssPath);
+  const css = sheets.map(readCss).join("\n");
+
+  const PLUGIN_RECORDS = pluginRecords();
+  const pluginSheet = (r: PluginRecord): string => join(repoRoot, r.pkg, "generated", r.sheet);
+  const pluginPaths = PLUGIN_RECORDS.map(pluginSheet);
+
+  // Index the sheet-local custom properties, then rebuild the resolver with them in scope.
+  indexLocalVars([css, readCss("base.css"), ...pluginPaths.map((p) => readFileSync(p, "utf8"))]);
+  rebuildResolver();
+
+  // Load the repo's shared cssdoc.json (root) — the single declarative config that also drives the lint
+  // plugins and the per-record test guard. `configFile` feeds `emitCssApi` (parse config + `render`
+  // order/heading); `configuration` is its parse view, reused locally for `parseCssDocs`.
+  const componentsRoot = join(generatedCssDir, "..");
+  const configFile = CssDocConfigFile.loadForFolder(repoRoot);
+  const configuration = configFile.toConfiguration();
+
+  const resolveSource = makeSourceResolver(componentsRoot, PLUGIN_RECORDS);
+  const importSnippet = makeImportSnippet(sheets, PLUGIN_RECORDS, pluginSheet, configuration);
 
   const outSubdir = "css";
   const { entries, sidebarMerged } = emitCssApi({
@@ -297,29 +397,13 @@ const build = (): void => {
     importSnippet,
   });
 
-  // Add a short landing-page blurb to mirror the API overview style while keeping cssdoc-generated
-  // tables and section ordering intact.
-  const cssIndexPath = join(docsRoot, "api", outSubdir, "index.md");
-  const cssIndex = readFileSync(cssIndexPath, "utf8");
-  if (!cssIndex.includes(CSS_OVERVIEW_BLURB)) {
-    const heading = "# CSS API reference\n\n";
-    const withBlurb = cssIndex.startsWith(heading)
-      ? `${heading}${CSS_OVERVIEW_BLURB}\n\n${cssIndex.slice(heading.length)}`
-      : `# CSS API reference\n\n${CSS_OVERVIEW_BLURB}\n\n${cssIndex}`;
-    writeFileSync(cssIndexPath, withBlurb);
-  }
+  writeCssIndexBlurb(outSubdir);
 
   // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads
   // the component CSS). Our docs do, so `demoMarkdownIt` seams a live preview onto each fence at compile
   // time (see `.vitepress/config.ts`); the generated `.md` here stays a plain source fence.
 
-  // Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure).
-  const missing = unknownReferences(css, tokens).filter(
-    (r) => !r.startsWith("--instui-elevation-") && !r.startsWith("--instui-focus-outline-"),
-  );
-  if (missing.length) {
-    throw new Error(`CSS API: ${missing.length} unknown token reference(s): ${missing.join(", ")}`);
-  }
+  assertNoUnknownReferences(css);
 
   console.log(
     `✓ CSS API: wrote ${entries.length} record page(s) to api/css/` +
@@ -327,4 +411,5 @@ const build = (): void => {
   );
 };
 
-build();
+// Run only as a script (not when imported by tests, which exercise the exported helpers directly).
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) build();

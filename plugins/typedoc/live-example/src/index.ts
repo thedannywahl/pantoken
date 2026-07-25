@@ -2,10 +2,10 @@
  * `@pantoken/typedoc-plugin-live-example` — embed a live HTML preview beneath each `@example` on a CSS
  * reference page.
  *
- * `@cssdoc/markdown` renders an `@example` as a plain ` ```html ` code fence, and stays that way on
+ * `@cssdoc/markdown` renders an `@example` as a plain `html` code fence, and stays that way on
  * purpose — a generic renderer can't assume the host page loads the component CSS globally. pantoken's
  * docs DO load `@pantoken/components` globally, so each example can render live under its source. This
- * plugin post-processes the emitted markdown: after every ` ```html ` fence it appends a
+ * plugin post-processes the emitted markdown: after every `html` fence it appends a
  * `<div class="css-example">` holding the same markup, which the docs theme styles as one joined
  * "source + preview" card. Overlay examples (`<dialog>`, `[popover]`) are skipped — they're hidden until
  * opened, so their `## Demo` iframe drives the preview instead.
@@ -21,7 +21,7 @@ import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { type Application, ParameterType, RendererEvent } from "typedoc";
 
-/** A fenced ` ```html ` block and its inner markup. */
+/** A fenced `html` block and its inner markup. */
 const HTML_FENCE = /```html\n([\s\S]*?)\n```/gu;
 
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
@@ -32,7 +32,7 @@ function isOverlay(html: string): boolean {
 /** Options controlling how a live-example preview is built. */
 export interface LiveExampleOptions {
   /**
-   * Build the block inserted after each ` ```html ` fence from the example's markup — override this to
+   * Build the block inserted after each `html` fence from the example's markup — override this to
    * control the wrapper STRUCTURE (a card element, extra nesting, data attributes, …). It's called only
    * for non-overlay examples. Defaults to {@link defaultWrap} (`<div class="css-example">…</div>`).
    *
@@ -48,7 +48,7 @@ export function defaultWrap(html: string): string {
 }
 
 /**
- * Append a live preview after each ` ```html ` fence in `markdown`, echoing the fence's markup through
+ * Append a live preview after each `html` fence in `markdown`, echoing the fence's markup through
  * {@link LiveExampleOptions.wrap} so it renders beneath the source. Overlay examples are left source-only.
  *
  * @param markdown - The rendered page markdown.

@@ -3,6 +3,7 @@
   "noStandardTags": false,
   "tagDefinitions": [
     { "tagName": "@property", "syntaxKind": "block" },
-    { "tagName": "@module", "syntaxKind": "block" }
+    { "tagName": "@module", "syntaxKind": "block" },
+    { "tagName": "@demo", "syntaxKind": "block" }
   ]
 }

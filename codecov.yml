@@ -1,0 +1,29 @@
+# Codecov config. Coverage uploads tokenless via OIDC from CI (public repo).
+coverage:
+  status:
+    project:
+      default:
+        target: 85%
+        threshold: 1%
+        # Informational, not blocking: PR coverage uploads are scoped to the changed packages, so the
+        # project number is partial on PRs. The hard 85% project floor is enforced by the vitest
+        # `thresholds` in vite.config.ts (fails the full coverage run on main and in `pnpm run ready`).
+        informational: true
+    patch:
+      default:
+        # Blocking: new/changed code must be 85% covered, so coverage only climbs.
+        target: 85%
+        threshold: 1%
+comment:
+  layout: "reach, diff, flags, files"
+  require_changes: true
+# Mirror the coverage include/exclude in vite.config.ts so the two agree on what counts.
+# packages/model is type-only (no runtime statements) — exempt so it can't drag the total.
+ignore:
+  - "**/generated/**"
+  - "**/dist/**"
+  - "**/tests/**"
+  - "**/*.{test,spec}.*"
+  - "**/*.config.*"
+  - "**/*.d.ts"
+  - "packages/model/**"

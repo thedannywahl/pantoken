@@ -142,3 +142,81 @@ comes from a real user and CI runs automatically. Reference the secret defensive
 token instead of hard-failing, and emit a `::warning::` when it's missing. The PAT is git/PR auth only;
 npm publishing stays OIDC/token-free (`id-token: write` + trusted publishers). Fine-grained PATs expire
 (≤ 1 year); the "RELEASE_PAT missing" warning in the release log is the rotation cue.
+
+## Code quality gates
+
+### The fallow health gap to grade A is diffuse, not a few fixable functions
+
+**Grade bands** — Fallow maps A >= 85, B 70–84, C 55–69 (`docs.fallow.tools/explanations/health`) — not
+the academic 90. This repo moved from 67.5 (C) to 82 (B) through dead-code cleanup, dependency
+classification, and refactoring the worst functions; the gate floors at 80.
+
+**Why the last ~3 points to A resist targeted refactoring:**
+
+- `hotspots` (~10) is **churn-weighted** — a file's git-commit history times its complexity density.
+  Function-extraction changes neither the history nor the file's total complexity, so a hotspot's
+  score is fixed: `docs/scripts/build-css-api.ts` stayed at 45.1 after its `build` function was split.
+- `unit_size` (~5) is **distributional**, not a handful of oversized functions. Excluding even the two
+  largest units (the 229- and 177-line docs Vue SFCs — fallow counts a whole `.vue` file as one
+  "unit", a poor fit for declarative markup) moved it only 0.7; a `thresholdOverrides` entry suppressed
+  the _findings_ but not the _score_. Only genuine, codebase-wide function-shrinking moves it.
+- Plus a small architectural `coupling` penalty. Feeding real coverage (`fallow health --coverage`)
+  doesn't help — the penalties are structural (cyclomatic / cognitive / lines), not CRAP/coverage.
+
+**Fix / rule** — Gate at a score floor of 80 in `scripts/quality/fallow-health-gate.ts` (locks in the
+67.5 → 82 gain, blocks regression), keep dead-code an error and duplication advisory. Reaching grade A
+(85) is possible but needs broad function-shrinking + dedup across the whole tree, not a few edits;
+raise the floor to 85 when that lands. Don't try to buy points with config — `unused-*` suppressions
+and `thresholdOverrides` change what's _reported_, not the score.
+
+### TSDoc enforcement runs through ESLint, not oxlint; keep it syntax-only
+
+**Symptom** — JS/TS in this repo is linted by vite-plus's built-in oxlint (`vite.config.ts` `lint`),
+which can't host a third-party ESLint plugin like `eslint-plugin-tsdoc-require-2`.
+
+**Fix / rule** — TSDoc runs as a separate ESLint pass: the root `eslint.config.js` gained a
+`**/*.{ts,tsx}` block (`tsdoc-require-2/require` + `tsdoc/syntax`, both error), run via the `lint:tsdoc`
+task and the CI `lint` job. Configure the `@typescript-eslint/parser` **without** `parserOptions.project`
+— these rules are comment/syntax-only, so skipping type information keeps the pass fast workspace-wide.
+`tsdoc/syntax` honours the custom block tags (`@property`, `@module`) declared in `tsdoc.json`. Invoke
+it as `eslint .` (flat-config-driven discovery); passing explicit globs errors when a pattern like
+`**/*.mts` matches nothing.
+
+### Codecov uploads tokenless via OIDC on the public repo
+
+**Fix / rule** — `codecov/codecov-action` runs with `use_oidc: true` (no token secret) because the repo
+is public; the `coverage` CI job needs `permissions: id-token: write`. Coverage is v8, configured in
+`vite.config.ts` `test.coverage` (lcov for Codecov, json also emitted for fallow); `codecov.yml` uses
+`target: auto` so the bar ratchets from the ~63% baseline instead of a fixed number.
+
+### Fallow's dead-code false positives are config, not code
+
+**Symptom** — A cold `fallow` run reports ~227 dead-code findings; ~200 are false positives.
+
+**Fix / rule** — Build first (`vp run build:all`) so generated output resolves, then tune `.fallowrc.jsonc`:
+seed task-invoked scripts / tool entries / bin shims as `entry`, mark the CSS-codegen sources and
+postcss plugins as `dynamicallyLoaded`, and ignore the intentional deps fallow can't observe
+(`@pantoken/model` type-only, `vite-plus` toolchain, the "kept harmless" catalog mirrors via
+`unused-catalog-entries: off`, config/CLI-loaded dev-deps via `unused-dev-dependencies: off`). That
+takes the real actionable set to a handful of genuinely-dead exports.
+
+### Snyk Code (SAST) gates locally, not in CI
+
+**Symptom** — Snyk has no GitHub App wired to this repo, so `snyk code test` (SAST) can't run in
+Actions the way the dependency scan and the packaging gates do. Leaving it CI-only would mean no
+code-security gate at all.
+
+**Fix / rule** — Gate SAST _locally_, at push time. `scripts/quality/snyk-code-gate.ts` runs
+`snyk code test --severity-threshold=high` and is exit-code aware: 0 → pass, 1 → block (findings),
+3 → pass (nothing to scan), and 2 (or anything else) → warn-then-skip, because a 2 is almost always
+"not authenticated." That fail-closed-on-findings / fail-open-on-auth split means the maintainer's
+authenticated push gates while a contributor who never ran `snyk auth` isn't bricked. It's wired into
+`.vite-hooks/pre-push` (task `snyk:code`, script `security:code`) and deliberately **not** in
+`ready:all` — like the dependency scan, it needs auth + network that CI and fresh clones lack.
+
+**Findings fixed to reach zero** — the demo/docs playground tripped several rules: a path-traversal in
+the workspace-orchestrator file server (added a `serveDir` containment check), `postMessage`
+targets/listeners that used `"*"` and skipped origin checks (tightened to the host origin, with guards
+that still accept the sandboxed result frame's opaque `"null"` origin), and a DOM-XSS where highlighted
+code reached `innerHTML` (Shiki already escapes, but the source can arrive from a `src` URL param, so
+the markup now also passes through the `DOMPurify` the runner already imports).

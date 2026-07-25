@@ -125,7 +125,7 @@ export function categoryOf(syntax: string): ValueCategory {
  * `rem`/`em` sizes and `light-dark()` colours as `*` (not computationally independent), so a
  * size or colour change would otherwise hide in "other" and escape the manual-review tally.
  */
-export function categoryOfChange(syntax: string, value: string): ValueCategory {
+function categoryOfChange(syntax: string, value: string): ValueCategory {
   const bySyntax = categoryOf(syntax);
   if (bySyntax !== "other") return bySyntax;
   if (/-?\d*\.?\d+(rem|em|px|vh|vw|vmin|vmax|ch|%)\b/u.test(value)) return "length";
@@ -133,8 +133,32 @@ export function categoryOfChange(syntax: string, value: string): ValueCategory {
   return "other";
 }
 
+/** The manifest icon record for a token — theme-independent metadata plus a content hash. */
+function iconEntryOf(token: Token): Manifest["icons"][string] {
+  return {
+    ...(token.meta?.source ? { source: token.meta.source } : {}),
+    ...(token.meta?.style ? { style: token.meta.style } : {}),
+    ...(token.meta?.viewBox ? { viewBox: token.meta.viewBox } : {}),
+    ...(token.meta?.bidirectional ? { bidirectional: true } : {}),
+    hash: hashValue(token.value),
+  };
+}
+
+/** The manifest token record — the comparable fields plus optional flags when present. */
+function tokenEntryOf(token: Token): TokenEntry {
+  return {
+    syntax: token.syntax,
+    inherits: token.inherits,
+    value: token.value,
+    ...(token.themed ? { themed: true } : {}),
+    ...(token.refersTo ? { refersTo: token.refersTo } : {}),
+    ...(token.meta?.deprecated ? { deprecated: true } : {}),
+  };
+}
+
 /**
- * Project the built IR (every theme) plus provenance into a compact {@link Manifest}.
+ * Project the built IR (every theme) plus provenance into a compact {@link Manifest} — per-theme token
+ * entries plus the theme-independent icon set. The manifest is what upstream diffs compare against.
  *
  * @param input - The per-theme `Token[]` (from `@pantoken/tokens`) and the vendored {@link Provenance}.
  * @returns The manifest to commit as a baseline or diff against one.
@@ -151,23 +175,10 @@ export function buildManifest(input: {
     for (const token of input.themes[theme]) {
       if (isIcon(token)) {
         // Icons are theme-independent; record each once (later themes just re-confirm the same set).
-        icons[token.name] ??= {
-          ...(token.meta?.source ? { source: token.meta.source } : {}),
-          ...(token.meta?.style ? { style: token.meta.style } : {}),
-          ...(token.meta?.viewBox ? { viewBox: token.meta.viewBox } : {}),
-          ...(token.meta?.bidirectional ? { bidirectional: true } : {}),
-          hash: hashValue(token.value),
-        };
+        icons[token.name] ??= iconEntryOf(token);
         continue;
       }
-      entries[token.name] = {
-        syntax: token.syntax,
-        inherits: token.inherits,
-        value: token.value,
-        ...(token.themed ? { themed: true } : {}),
-        ...(token.refersTo ? { refersTo: token.refersTo } : {}),
-        ...(token.meta?.deprecated ? { deprecated: true } : {}),
-      };
+      entries[token.name] = tokenEntryOf(token);
     }
     themes[theme] = entries;
   }
@@ -181,40 +192,24 @@ function referenceTheme(before: Manifest, after: Manifest): string | undefined {
   return THEME_ORDER.find((t) => shared.includes(t)) ?? shared[0];
 }
 
-/**
- * Classify the difference between two manifests into review buckets.
- *
- * @param before - The committed baseline manifest.
- * @param after - The freshly built manifest.
- * @returns The classified {@link UpstreamDiff}.
- */
-export function diffManifests(before: Manifest, after: Manifest): UpstreamDiff {
-  const buckets: UpstreamDiff["buckets"] = {
-    addedTokens: [],
-    removedTokens: [],
-    valueChanges: [],
-    syntaxChanges: [],
-    refChanges: [],
-    addedIcons: [],
-    removedIcons: [],
-    renamedIcons: [],
-    changedIcons: [],
-  };
+type DiffBuckets = UpstreamDiff["buckets"];
 
-  // Structural add/remove, computed on one reference theme (the token set is identical across themes).
+/** Structural add/remove, computed on one reference theme (the token set is identical across themes). */
+function diffStructuralTokens(before: Manifest, after: Manifest, buckets: DiffBuckets): void {
   const ref = referenceTheme(before, after);
-  if (ref) {
-    const b = before.themes[ref] ?? {};
-    const a = after.themes[ref] ?? {};
-    for (const name of Object.keys(a)) {
-      if (!(name in b)) buckets.addedTokens.push({ name, kind: "token-added" });
-    }
-    for (const name of Object.keys(b)) {
-      if (!(name in a)) buckets.removedTokens.push({ name, kind: "token-removed" });
-    }
+  if (!ref) return;
+  const b = before.themes[ref] ?? {};
+  const a = after.themes[ref] ?? {};
+  for (const name of Object.keys(a)) {
+    if (!(name in b)) buckets.addedTokens.push({ name, kind: "token-added" });
   }
+  for (const name of Object.keys(b)) {
+    if (!(name in a)) buckets.removedTokens.push({ name, kind: "token-removed" });
+  }
+}
 
-  // Value / ref / syntax changes, compared per theme for tokens present in both.
+/** Value / ref / syntax changes, compared per theme for tokens present in both. */
+function diffTokenFields(before: Manifest, after: Manifest, buckets: DiffBuckets): void {
   for (const theme of Object.keys(after.themes)) {
     const b = before.themes[theme];
     const a = after.themes[theme];
@@ -252,8 +247,10 @@ export function diffManifests(before: Manifest, after: Manifest): UpstreamDiff {
       }
     }
   }
+}
 
-  // Icons: add / remove / rename (same artwork, new name) / change (same name, new artwork).
+/** Icons: add / remove / rename (same artwork, new name) / change (same name, new artwork). */
+function diffIcons(before: Manifest, after: Manifest, buckets: DiffBuckets): void {
   const removedIconNames = Object.keys(before.icons).filter((n) => !(n in after.icons));
   const addedIconNames = Object.keys(after.icons).filter((n) => !(n in before.icons));
   const addedByHash = new Map(addedIconNames.map((n) => [after.icons[n].hash, n]));
@@ -281,6 +278,31 @@ export function diffManifests(before: Manifest, after: Manifest): UpstreamDiff {
       });
     }
   }
+}
+
+/**
+ * Classify the difference between two manifests into review buckets.
+ *
+ * @param before - The committed baseline manifest.
+ * @param after - The freshly built manifest.
+ * @returns The classified {@link UpstreamDiff}.
+ */
+export function diffManifests(before: Manifest, after: Manifest): UpstreamDiff {
+  const buckets: UpstreamDiff["buckets"] = {
+    addedTokens: [],
+    removedTokens: [],
+    valueChanges: [],
+    syntaxChanges: [],
+    refChanges: [],
+    addedIcons: [],
+    removedIcons: [],
+    renamedIcons: [],
+    changedIcons: [],
+  };
+
+  diffStructuralTokens(before, after, buckets);
+  diffTokenFields(before, after, buckets);
+  diffIcons(before, after, buckets);
 
   const manualReview: TokenChange[] = [
     ...buckets.removedTokens,
@@ -319,7 +341,7 @@ function sortKeys(v: unknown): unknown {
 }
 
 /** Canonical (compact, key-sorted) JSON of a manifest, for an exact equality check. */
-export function canonicalize(manifest: Manifest): string {
+function canonicalize(manifest: Manifest): string {
   return JSON.stringify(sortKeys(manifest));
 }
 

@@ -13,7 +13,9 @@
     "docs:api": "vp run @pantoken/docs#docs:api",
     "check:repository": "vp run gate:repository",
     "check:publish": "vp run gate:publish",
-    "check:attw": "vp run gate:attw"
+    "check:attw": "vp run gate:attw",
+    "security:snyk": "vp run snyk:scan",
+    "security:code": "vp run snyk:code"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
@@ -23,9 +25,16 @@
     "@cssdoc/eslint-plugin": "catalog:",
     "@cssdoc/stylelint-plugin": "catalog:",
     "@eslint/css": "catalog:",
+    "@manypkg/cli": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
+    "eslint-plugin-tsdoc": "catalog:",
+    "eslint-plugin-tsdoc-require-2": "catalog:",
+    "fallow": "catalog:",
     "markdownlint-cli2": "catalog:",
     "publint": "catalog:",
+    "snyk": "catalog:",
     "stylelint": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"
@@ -39,5 +48,10 @@
   },
   "engines": {
     "node": ">=22.18.0"
+  },
+  "manypkg": {
+    "ignoredRules": [
+      "INVALID_DEV_AND_PEER_DEPENDENCY_RELATIONSHIP"
+    ]
   }
 }

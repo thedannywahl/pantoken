@@ -3,6 +3,7 @@ import { css } from "../lib/css.ts";
 import { CHEVRON_UP_ICON, CHEVRON_DOWN_ICON } from "../lib/helpers.ts";
 import { inputFacadeBase } from "../lib/field-controls.ts";
 
+/** The `numberInput` component record: a number-input facade with a plus/minus spinner column. */
 export const numberInput = defineComponent({
   name: "number-input",
   css: (p) => {
@@ -90,4 +91,5 @@ ${root} .arrows button.down::before { -webkit-mask: ${CHEVRON_DOWN_ICON}; mask: 
   },
 });
 
+/** Standalone `numberInput` stylesheet — the prefixed CSS for the number input, ready to ship as a `.css` file. */
 export const numberInputCss = numberInput.css;

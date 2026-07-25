@@ -3,6 +3,7 @@ import { css } from "../lib/css.ts";
 import { AI_ICON_MASK } from "../lib/helpers.ts";
 import { alpha, darken } from "@pantoken/plugin-colors";
 
+/** The `button` component record: an accessible action control styled from the token palette, primary by default. */
 export const button = defineComponent({
   name: "button",
   css: (p) =>
@@ -284,4 +285,5 @@ export const button = defineComponent({
 .${p}button.-without-border { border-style: none; }`,
 });
 
+/** Standalone `button` stylesheet — the prefixed CSS for the action button, ready to ship as a `.css` file. */
 export const buttonCss = button.css;

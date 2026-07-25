@@ -8,6 +8,7 @@
  */
 import ClipperLib from "clipper-lib";
 import { pointsOnPath } from "points-on-path";
+import svgpath from "svgpath";
 
 const SCALE = 100; // clipper works in integers; scale viewBox units up and back
 
@@ -119,10 +120,13 @@ export function svgToGlyphPath(svg: string): GlyphPath {
   // Fill icons are already regions — the font engine fills them directly.
   if (!stroked) return { d: subpaths.map((s) => s.d).join(" "), width, height };
 
-  // Stroke icons: offset each subpath's centerline into a filled outline.
+  // Stroke icons: offset each subpath's centerline into a filled outline. Normalize arcs to cubic
+  // curves first — points-on-path's parser mishandles SVG arc flag-packing (Lucide writes `a2 2 0 002 2`,
+  // the two flags + x packed as `002`), which otherwise throws "Param not a number".
   const offset = new ClipperLib.ClipperOffset(2, 0.25);
   for (const sub of subpaths) {
-    for (const poly of pointsOnPath(sub.d, 0.2, 0.2)) {
+    const flattened = svgpath(sub.d).unarc().abs().round(3).toString();
+    for (const poly of pointsOnPath(flattened, 0.2, 0.2)) {
       if (poly.length < 2) continue;
       const path = poly.map(([x, y]) => ({ X: Math.round(x * SCALE), Y: Math.round(y * SCALE) }));
       offset.AddPath(

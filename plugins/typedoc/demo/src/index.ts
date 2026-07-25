@@ -5,7 +5,7 @@
  * a bare URL or a `<provider>:<ref>` pair (for example `stackblitz:abc123`, `codesandbox:xy12z`,
  * `wp-playground:https://…/blueprint.json`, or `self:button`). This plugin registers nothing about
  * providers itself — it stays deliberately dumb and reusable: it moves each `@demo` tag's spec into
- * a fenced ```demo``` block appended to the symbol's summary, and your docs renderer decides how to
+ * a fenced `demo` block appended to the symbol's summary, and your docs renderer decides how to
  * turn a spec into an iframe. (See `@pantoken/demo` for a renderer that resolves the providers.)
  *
  * The fence rides through markdown untouched — including any translation pipeline that preserves
@@ -58,7 +58,7 @@ export const DEMO_TAG = "@demo";
 export const DEMO_FENCE = "demo";
 
 /**
- * Wrap one demo spec in a fenced ```demo``` block.
+ * Wrap one demo spec in a fenced `demo` block.
  *
  * @param spec - A demo spec: a bare URL or a `<provider>:<ref>` pair.
  * @returns The fenced code block as a string.
@@ -86,7 +86,7 @@ function* commentsOf(reflection: Reflection): Generator<Comment> {
 }
 
 /**
- * Move every `@demo` block tag on a comment into ```demo``` fences appended to its summary, in order.
+ * Move every `@demo` block tag on a comment into `demo` fences appended to its summary, in order.
  * Block-tag content gets re-fenced by the markdown theme, so the fence must live in the summary
  * prose, which is emitted verbatim.
  *

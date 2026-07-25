@@ -33,6 +33,20 @@ const strings = computed<ThemeSelectorStrings>(() => ({
   ...(theme.value as { themeSelector?: Partial<ThemeSelectorStrings> }).themeSelector,
 }));
 
+// Display conditions lifted out of the template so its markup stays flat (and each stays one small
+// expression here rather than a multi-clause `v-if`).
+const showTranslations = computed(
+  () => localeLinks.value.length > 0 && Boolean(currentLang.value.label),
+);
+const showAppearance = computed(
+  () =>
+    current.value === "rebrand" &&
+    Boolean(site.value.appearance) &&
+    site.value.appearance !== "force-dark" &&
+    site.value.appearance !== "force-auto",
+);
+const appearanceLabel = computed(() => theme.value.darkModeSwitchLabel || "Appearance");
+
 function select(t: PantokenTheme): void {
   current.value = t;
   applyTheme(t);
@@ -45,7 +59,7 @@ onMounted(() => {
 
 <template>
   <VPFlyout v-if="hasExtraContent" class="VPNavBarExtra" label="extra navigation">
-    <div v-if="localeLinks.length && currentLang.label" class="group translations">
+    <div v-if="showTranslations" class="group translations">
       <p class="trans-title">{{ currentLang.label }}</p>
 
       <template v-for="locale in localeLinks" :key="locale.link">
@@ -77,18 +91,10 @@ onMounted(() => {
       </div>
     </div>
 
-    <div
-      v-if="
-        current === 'rebrand' &&
-        site.appearance &&
-        site.appearance !== 'force-dark' &&
-        site.appearance !== 'force-auto'
-      "
-      class="group"
-    >
+    <div v-if="showAppearance" class="group">
       <div class="item appearance">
         <p class="label">
-          {{ theme.darkModeSwitchLabel || "Appearance" }}
+          {{ appearanceLabel }}
         </p>
         <div class="appearance-action">
           <VPSwitchAppearance />

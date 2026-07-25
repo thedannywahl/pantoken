@@ -12,8 +12,10 @@
  */
 import type { AtRule, Plugin } from "postcss";
 
+/** A theme the plugin can target when emitting concrete CSS. */
 export type Theme = "rebrand" | "canvas" | "canvasHighContrast";
 
+/** Options for the theme custom-media plugin. */
 export interface ThemeCustomMediaOptions {
   /** Target theme to emit (default `"rebrand"`). */
   theme?: Theme;

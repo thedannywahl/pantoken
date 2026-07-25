@@ -1,0 +1,107 @@
+{
+  // fallow codebase-intelligence config. See https://github.com/fallow-rs/fallow.
+  // Gate policy (enforced in CI): dead-code = error, health = gated to grade A, dupes = advisory.
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+
+  "workspaces": {
+    "patterns": [
+      "docs",
+      "packages/*",
+      "formats/*",
+      "platforms/*",
+      "renderers/*",
+      "bundlers/*",
+      "design/*",
+      "ai/*",
+      "plugins/pantoken/*",
+      "plugins/postcss/*",
+      "plugins/typedoc/*",
+      "plugins/vite/*",
+      "tools/*"
+    ]
+  },
+
+  // Real runtime roots that no plugin or package.json declares: scripts invoked via `node`/`vp run`,
+  // per-package codegen scripts, tool entry points, and bin shims. Without these, fallow sees the
+  // whole scripts/release/* and tools/* graphs as unreachable and reports them (and their exports)
+  // as dead.
+  "entry": [
+    "scripts/**/*.ts",
+    "**/scripts/**/*.ts",
+    "tools/*/index.ts",
+    "tools/*/src/index.ts",
+    "tools/demo/runner/*.ts",
+    "**/bin/*.{mjs,cjs,js,ts}",
+    "**/vite.config.ts",
+    "**/vite.*.config.ts"
+  ],
+
+  // Consumed by a mechanism the static graph can't see. The component CSS sources feed codegen
+  // scripts (they generate ../generated/*.ts) and the pendo theme sheets are assembled by the pendo
+  // build, not imported directly, so static analysis calls them unused. The pendo postcss plugins are
+  // loaded by name at build time.
+  "dynamicallyLoaded": [
+    "formats/components/src/**/*.css",
+    "renderers/pendo/src/themes/**/*.css",
+    "renderers/pendo/src/plugins/*.ts",
+    "tools/demo/runner/*.css"
+  ],
+
+  // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported
+  // `import type` everywhere (elided under verbatimModuleSyntax, so zero value usage is visible),
+  // vite-plus is the globally-installed toolchain aliased in the catalog, and @tokens-studio/sd-transforms
+  // is declared in tools/sd-config for the not-yet-wired raw-JSON lineage (see its src/index.ts comment).
+  "ignoreDependencies": ["@pantoken/model", "vite-plus", "@tokens-studio/sd-transforms"],
+
+  // defineDeclaration is part of the authoring API trio (defineComponent/defineRule/defineDeclaration)
+  // and is documented as such; it's currently referenced only in prose, so keep it exported.
+  "ignoreExports": [
+    { "file": "formats/components/src/lib/define.ts", "exports": ["defineDeclaration"] }
+  ],
+
+  // Generated specifiers that only exist after `build:all`; some environments analyze pre-build.
+  // Workspace @pantoken/* specifiers resolve to each package's built dist, so they're "unresolved"
+  // only before a build — ignore them so the regression baseline and the pre-push audit are accurate
+  // without a full build (a no-op post-build, where they resolve; TypeScript still catches real breaks).
+  "ignoreUnresolvedImports": [
+    "**/generated/**",
+    "../generated/**",
+    "./generated/**",
+    "../dist/**",
+    "**/public/**",
+    "@pantoken/*",
+    "@pantoken/*/**"
+  ],
+
+  "duplicates": {
+    // Duplication is gated (not advisory): `health:fallow` fails when the duplicated-line ratio
+    // exceeds `threshold`. The current ratio is ~1.7% after extracting the release scripts' shared
+    // CLI-entry boilerplate (see scripts/release/cli.ts); the rest is structural — per-package build
+    // boilerplate, component CSS, platform emitters — plus a few coincidental clones. The cap sits
+    // just above the current ratio to accept today's set while blocking new duplication; tighten it
+    // further as the remaining clones are refactored out.
+    "enabled": true,
+    "minOccurrences": 2,
+    "threshold": 1.8
+  },
+
+  "rules": {
+    // Neither of these is genuine dead weight, so they must not drag the health score:
+    // - unused catalog entries below line ~90 of pnpm-workspace.yaml are documented there as mirrors
+    //   "kept harmless under catalogMode: prefer" for the linked @cssdoc source (removing them breaks
+    //   @cssdoc installs).
+    // - the flagged dev-deps are all config/CLI-loaded tools (publint, attw, the typedoc plugins,
+    //   @cssdoc/stylelint-plugin) invoked via `vp exec`/config, or the packages/pantoken + docs
+    //   meta-aggregation of @pantoken/* sub-packages — used, just never `import`ed.
+    "unused-catalog-entries": "off",
+    "unused-dev-dependencies": "off"
+  },
+
+  "health": {
+    // Complexity thresholds. Health is gated to grade A via scripts/quality/fallow-health-gate.ts,
+    // which reads `fallow health --format json` and fails CI when the aggregate score drops below A.
+    "maxCyclomatic": 20,
+    "maxCognitive": 15,
+    "maxCrap": 30
+  }
+}

@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           # Check out with the fine-grained PAT so the Version PR (and its branch push) is authored by a
           # real user, not the built-in GITHUB_TOKEN — that's what lets CI run on the PR automatically
@@ -62,13 +62,13 @@ jobs:
           fi
 
       - name: Set up Node.js
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
 
       - name: Set up Vite+
-        uses: voidzero-dev/setup-vp@v1
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
         with:
           cache: true
           run-install: true
@@ -109,7 +109,7 @@ jobs:
         run: vp run -r build
 
       - name: Create Version PR or publish
-        uses: changesets/action@v1
+        uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1
         with:
           version: vp run release:version
           # Publish is invoked as plain `node`, NOT `vp run`: the `vp run` launcher scrubs the

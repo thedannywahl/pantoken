@@ -24,7 +24,6 @@ export type {
   IconHookContext,
   IconResolver,
   PantokenPlugin,
-  PropertyRule,
   RehypeHookContext,
   TokenHookContext,
 } from "@pantoken/model";

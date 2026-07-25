@@ -33,6 +33,40 @@ test("collectLeaves flattens string and composite leaves, capturing modify", () 
   expect(byPath.has("typography.body.type")).toBe(false);
 });
 
+test("collectLeaves returns [] for non-object roots", () => {
+  expect(collectLeaves(null)).toEqual([]);
+  expect(collectLeaves("scalar")).toEqual([]);
+  expect(collectLeaves(["a", "b"])).toEqual([]);
+});
+
+test("collectLeaves skips array values, metadata keys, and non-string leaf values", () => {
+  const tree = {
+    // Array-valued record (box-shadow list) — skipped entirely.
+    shadow: { value: ["0 1px 2px"], type: "boxShadow" },
+    // Record whose .value is a number, not a string/object — yields no leaf.
+    opacity: { value: 0.5, type: "number" },
+    // A bare array under a key is not a record — skipped.
+    list: ["x", "y"],
+    // A normal string leaf still comes through.
+    color: { base: { value: "#fff", type: "color" } },
+  };
+  const leaves = collectLeaves(tree);
+  const paths = leaves.map((l) => l.path.join("."));
+  expect(paths).toEqual(["color.base"]);
+});
+
+test("collectLeaves ignores a modify block whose type is not a string", () => {
+  const tree = {
+    color: {
+      x: {
+        value: "#fff",
+        $extensions: { "studio.tokens": { modify: { type: 123, value: "0.1" } } },
+      },
+    },
+  };
+  expect(collectLeaves(tree)[0].modify).toBeUndefined();
+});
+
 test("referenceToVarName discriminates semantic from primitive", () => {
   expect(referenceToVarName("color.white")).toBe("--instui-primitive-color-white");
   expect(referenceToVarName("semantic.color.background.base")).toBe(

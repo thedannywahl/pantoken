@@ -15,6 +15,44 @@ export default defineConfig({
       "docs/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "scripts/**/*.{test,spec}.?(c|m)[jt]s?(x)",
     ],
+    coverage: {
+      provider: "v8",
+      // text-summary for humans, lcov for Codecov, json for `fallow health --coverage`.
+      reporter: ["text-summary", "lcov", "json"],
+      include: [
+        "packages/*/src/**",
+        "formats/*/src/**",
+        "platforms/*/src/**",
+        "renderers/*/src/**",
+        "bundlers/*/src/**",
+        "design/*/src/**",
+        "ai/*/src/**",
+        "plugins/*/*/src/**",
+        "tools/*/src/**",
+        "tools/*/*.ts",
+        "scripts/**/*.ts",
+        // Build/docs tooling brought under coverage (specific files, not a broad glob, so untested
+        // siblings don't drag the floor). These are the high-complexity scripts now unit-tested so
+        // their CRAP reflects real coverage rather than a worst-case zero.
+        "formats/*/scripts/{fonts,generate}.ts",
+        "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
+        "docs/scripts/lib/scope-components.ts",
+      ],
+      exclude: [
+        "**/*.{test,spec}.?(c|m)[jt]s?(x)",
+        "**/tests/**",
+        "**/generated/**",
+        "**/dist/**",
+        "**/*.config.*",
+        "**/*.d.ts",
+        // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
+        "packages/model/**",
+      ],
+      // Hard coverage floor (grade-A number). Vitest fails the run below these; codecov.yml enforces
+      // the same 85% project + patch in CI. Branches sit at 70 (85% branch coverage isn't realistic
+      // across I/O and DOM code); statements/functions/lines hold the 85 line.
+      thresholds: { statements: 85, branches: 70, functions: 85, lines: 85 },
+    },
   },
   staged: {
     "*": "vp check --fix",
@@ -49,6 +87,11 @@ export default defineConfig({
         command: "vp run -r test",
         dependsOn: ["build:all"],
       },
+      // Coverage run for Codecov + fallow health; needs generated output like the plain test run.
+      "test:coverage": {
+        command: "vp test --coverage",
+        dependsOn: ["build:all"],
+      },
       "validate:generated:only": {
         command: "vp run @pantoken/validate-generated#validate",
         dependsOn: ["build:all"],
@@ -56,16 +99,54 @@ export default defineConfig({
       "lint:markdown": {
         command: 'vp exec markdownlint-cli2 "**/*.md"',
       },
+      // Workspace/catalog consistency + internal-version alignment. Pure manifest read, no build dep.
+      "check:manypkg": {
+        command: "vp exec manypkg check",
+      },
+      // On-demand dependency vulnerability scan via the bundled Snyk CLI (devDependency, so every
+      // contributor gets it from `pnpm install` — a Snyk account/`snyk auth` is still needed to run).
+      // NOT in `ready:all`: it needs auth + network, which CI and fresh clones lack. Run
+      // `pnpm run security:snyk` (or `vp run snyk:scan`); `vp exec snyk monitor` to track over time.
+      // Task name differs from the `security:snyk` package.json script — vp forbids the two matching.
+      "snyk:scan": {
+        command:
+          "vp exec snyk test --all-projects --severity-threshold=medium --exclude=generated,dist",
+      },
+      // Snyk Code (SAST) gate. Snyk has no GitHub App on this repo, so CI can't run it — the pre-push
+      // hook runs this instead (see .vite-hooks/pre-push) and it's here for on-demand runs. The wrapper
+      // blocks on findings but skips gracefully when Snyk isn't authenticated. NOT in `ready:all`: it
+      // needs `snyk auth` + network, which CI and fresh clones lack. Task name differs from the
+      // `security:code` package.json script — vp forbids the two matching.
+      "snyk:code": {
+        command: "node scripts/quality/snyk-code-gate.ts",
+      },
+      // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
+      // no build dependency.
+      "lint:tsdoc": {
+        // `eslint .` lets the flat config drive file discovery (its TS block globs + ignores); passing
+        // explicit globs errors when a pattern like **/*.mts matches nothing.
+        command: "vp exec eslint .",
+      },
+      // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
+      // output (build:all) so the CSS-codegen sources and workspace graph resolve.
+      "health:fallow": {
+        command: "node scripts/quality/fallow-health-gate.ts",
+        dependsOn: ["build:all"],
+      },
       "ready:all": {
         command: "true",
         dependsOn: [
           "check:all",
-          "test:all",
+          // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
+          "test:coverage",
           "lint:css",
           "lint:js",
+          "lint:tsdoc",
           "validate:generated:only",
           "gate:compatibility",
           "lint:markdown",
+          "check:manypkg",
+          "health:fallow",
         ],
       },
       // The upstream-upgrade pipeline. `upgrade:check` is the drift gate — it fails when the committed
@@ -122,8 +203,13 @@ export default defineConfig({
       // into git tags + GitHub releases. See scripts/release/publish-npm.ts. NOTE: CI runs the publish
       // script with plain `node`, NOT `vp run release:publish` — the `vp run` launcher scrubs the
       // `ACTIONS_ID_TOKEN_REQUEST_*` env vars npm needs for OIDC. This task stays for local/manual runs.
+      // Bump versions AND refresh the fallow regression baseline so each release re-bases the floor
+      // (the changesets action commits both into the Version PR). fallow runs as a direct bin — never
+      // a nested `vp` — and `|| true` keeps its non-zero "findings present" exit from failing the
+      // version step; it still writes fallow-baseline.json. Assumes build already ran (release.yml).
       "release:version": {
-        command: "vpx changeset version",
+        command:
+          "vpx changeset version && (node_modules/.bin/fallow dead-code --save-regression-baseline fallow-baseline.json || true)",
       },
       "release:publish": {
         command: "node scripts/release/publish-npm.ts",

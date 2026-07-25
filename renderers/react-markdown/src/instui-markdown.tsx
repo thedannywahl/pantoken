@@ -59,5 +59,3 @@ export function InstuiMarkdown({ children, renderOptions }: InstuiMarkdownProps)
     </Markdown>
   );
 }
-
-export default InstuiMarkdown;

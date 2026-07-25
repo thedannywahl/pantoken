@@ -73,7 +73,7 @@ export function parseUpstreamRef(ref: string): ParsedRef | undefined {
   return version.length ? { tier, version } : undefined;
 }
 
-/** Compare two dotted version arrays: negative if a < b, 0 if equal, positive if a > b. */
+/** Compare two dotted version arrays: negative if `a < b`, 0 if equal, positive if `a > b`. */
 export function compareVersions(a: number[], b: number[]): number {
   const len = Math.max(a.length, b.length);
   for (let i = 0; i < len; i++) {

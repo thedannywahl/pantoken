@@ -1,8 +1,11 @@
 import { expect, test } from "vite-plus/test";
 import {
+  buildReverseDependencyMap,
   computeReleaseSet,
+  isPublishablePackage,
   loadWorkspacePackages,
   normalizePantokenPackageName,
+  parsePackageTag,
   parseRequestedPackageSpec,
   type WorkspacePackage,
 } from "./workspace-packages.ts";
@@ -97,4 +100,61 @@ test("loadWorkspacePackages includes @pantoken/docs as a private package", async
   expect(docs).toBeTruthy();
   expect(docs?.path).toBe("docs");
   expect(docs?.private).toBe(true);
+});
+
+test("buildReverseDependencyMap maps each package to its dependents", () => {
+  const packages = [
+    pkg("@pantoken/css", ["@pantoken/core"]),
+    pkg("@pantoken/scss", ["@pantoken/core"]),
+    pkg("@pantoken/core"),
+  ];
+  const reverse = buildReverseDependencyMap(packages);
+
+  expect([...(reverse.get("@pantoken/core") ?? [])].sort()).toEqual([
+    "@pantoken/css",
+    "@pantoken/scss",
+  ]);
+  // A leaf with no dependents still gets an (empty) entry.
+  expect(reverse.get("@pantoken/css")).toEqual(new Set());
+});
+
+test("buildReverseDependencyMap seeds an entry for a dep that isn't itself a package", () => {
+  // @pantoken/core is referenced as a dep but not present as a package node.
+  const reverse = buildReverseDependencyMap([pkg("@pantoken/css", ["@pantoken/core"])]);
+  expect(reverse.get("@pantoken/core")).toEqual(new Set(["@pantoken/css"]));
+});
+
+test("parsePackageTag parses the @name@v<version> tag scheme, else null", () => {
+  expect(parsePackageTag("@pantoken/css@v0.2.0")).toEqual({
+    packageName: "@pantoken/css",
+    version: "0.2.0",
+  });
+  // The version can carry a prerelease suffix.
+  expect(parsePackageTag("@pantoken/pantoken@v1.0.0-beta.1")?.version).toBe("1.0.0-beta.1");
+  // The plain `@name@<version>` (no `v`) scheme doesn't match this parser.
+  expect(parsePackageTag("@pantoken/css@0.2.0")).toBeNull();
+  expect(parsePackageTag("not-a-tag")).toBeNull();
+});
+
+test("normalizePantokenPackageName leaves foreign scopes and empty input alone", () => {
+  expect(normalizePantokenPackageName("")).toBe("");
+  expect(normalizePantokenPackageName("@acme/thing")).toBe("@acme/thing");
+});
+
+test("parseRequestedPackageSpec rejects empty and dangling-@ specs", () => {
+  expect(() => parseRequestedPackageSpec("   ")).toThrow(/cannot be empty/);
+  expect(() => parseRequestedPackageSpec("pantoken@")).toThrow(/Invalid package spec/);
+  // A leading-@ name with no version part keeps the scope and omits the version.
+  expect(parseRequestedPackageSpec("@pantoken/css")).toEqual({
+    raw: "@pantoken/css",
+    packageName: "@pantoken/css",
+  });
+});
+
+test("isPublishablePackage: nullish, private, and non-@pantoken packages are excluded", () => {
+  expect(isPublishablePackage(null)).toBe(false);
+  expect(isPublishablePackage(undefined)).toBe(false);
+  expect(isPublishablePackage(pkg("@pantoken/css"))).toBe(true);
+  expect(isPublishablePackage(pkg("@pantoken/docs", [], true))).toBe(false);
+  expect(isPublishablePackage(pkg("some-tool"))).toBe(false);
 });

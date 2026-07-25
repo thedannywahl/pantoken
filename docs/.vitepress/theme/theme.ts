@@ -10,6 +10,7 @@
  */
 export type PantokenTheme = "rebrand" | "canvas" | "canvasHighContrast";
 
+/** One palette choice in the theme selector: its {@link PantokenTheme} key and display label. */
 export interface ThemeOption {
   key: PantokenTheme;
   label: string;
@@ -63,7 +64,15 @@ let rememberedDark: boolean | null = null;
 export function broadcastTheme(theme: PantokenTheme): void {
   if (typeof document === "undefined") return;
   for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
-    frame.contentWindow?.postMessage({ type: "pantoken-demo-theme", theme }, "*");
+    // Target each frame's own origin rather than "*", so the theme post is delivered only to that
+    // demo runner and never leaks to a frame that happens to sit at a different origin.
+    let target = window.location.origin;
+    try {
+      target = new URL(frame.src, window.location.href).origin;
+    } catch {
+      // Malformed src — fall back to our own origin (same-origin runner is the common case).
+    }
+    frame.contentWindow?.postMessage({ type: "pantoken-demo-theme", theme }, target);
   }
 }
 

@@ -2,6 +2,7 @@ import { defineComponent } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { fieldControlBase } from "../lib/field-controls.ts";
 
+/** The `textArea` component record: a styled, resizable native `<textarea>` sharing the text input's states and sizes. */
 export const textArea = defineComponent({
   name: "text-area",
   css: (p) => {
@@ -36,4 +37,5 @@ ${fieldControlBase(p, "text-area", "text-area")}
   },
 });
 
+/** Standalone `textArea` stylesheet — the prefixed CSS for the textarea, ready to ship as a `.css` file. */
 export const textAreaCss = textArea.css;

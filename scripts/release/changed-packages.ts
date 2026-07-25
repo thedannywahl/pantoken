@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { runAsMain } from "./cli.ts";
 import {
   buildReverseDependencyMap,
   computeReleaseSet,
@@ -22,8 +22,10 @@ const GLOBAL_FILES = new Set([
   ".changeset/config.json",
 ]);
 
+/** How wide a publish gate a set of changed files calls for: every package, some, or none. */
 export type ChangeScope = "all" | "subset" | "none";
 
+/** The gate scope for a set of changed files, plus the specific packages when scope is `subset`. */
 export interface ChangedPackagesResult {
   scope: ChangeScope;
   // Publishable package names to gate, empty unless scope === "subset".
@@ -85,14 +87,6 @@ export function resolveChangedPackages(
     : { scope: "none", packages: [] };
 }
 
-function isDirectExecution(metaUrl: string): boolean {
-  const entry = process.argv[1];
-  if (!entry) {
-    return false;
-  }
-  return pathToFileURL(path.resolve(entry)).href === metaUrl;
-}
-
 function readArg(flag: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
@@ -129,18 +123,19 @@ async function main() {
 
   if (process.env.GITHUB_OUTPUT) {
     const { appendFileSync } = await import("node:fs");
+    // `paths` maps the subset names to their workspace directories, so package-scoped consumers that
+    // take paths (e.g. `vp test <dir>` coverage runs) don't have to re-resolve names to locations.
+    const dirByName = new Map(packages.map((pkg) => [pkg.name, pkg.path]));
+    const paths = result.packages
+      .map((name) => dirByName.get(name))
+      .filter((dir) => dir !== undefined);
     appendFileSync(
       process.env.GITHUB_OUTPUT,
-      `scope=${result.scope}\npackages=${result.packages.join(",")}\ncount=${result.packages.length}\n`,
+      `scope=${result.scope}\npackages=${result.packages.join(",")}\npaths=${paths.join(",")}\ncount=${result.packages.length}\n`,
     );
   }
 
   process.stdout.write(`${JSON.stringify(result)}\n`);
 }
 
-if (isDirectExecution(import.meta.url)) {
-  main().catch((error) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  });
-}
+runAsMain(import.meta.url, main);

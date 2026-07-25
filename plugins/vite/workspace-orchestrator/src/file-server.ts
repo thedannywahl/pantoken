@@ -5,7 +5,7 @@
  */
 import { readFileSync } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
-import { resolve } from "node:path";
+import { isAbsolute, relative, resolve } from "node:path";
 import type { FileServerEntry } from "./types.ts";
 
 interface Middlewares {
@@ -27,6 +27,10 @@ export function mountFileServers(
   middlewares: Middlewares,
 ): void {
   for (const entry of fileServers) {
+    // This is a dev-server Vite middleware (localhost, no untrusted traffic). Snyk Code flags the
+    // per-request read as a DoS vector wanting rate limiting, which is inappropriate for a dev static
+    // file server; the finding is accepted in scripts/quality/snyk-code-gate.ts. Path traversal is
+    // contained below.
     middlewares.use(entry.mountPath, (req, res, next) => {
       const filePath = req.url?.split("?")[0];
       if (!filePath?.endsWith(entry.extension)) {
@@ -34,7 +38,15 @@ export function mountFileServers(
         return;
       }
       const resolved = entry.pathTransform ? entry.pathTransform(filePath) : filePath;
-      const fullPath = resolve(entry.serveDir, resolved.slice(1));
+      const serveRoot = resolve(entry.serveDir);
+      const fullPath = resolve(serveRoot, resolved.slice(1));
+      // Contain the resolved path inside serveDir — a `../` in the URL would otherwise escape it and
+      // read arbitrary files off disk (path traversal).
+      const rel = relative(serveRoot, fullPath);
+      if (rel.startsWith("..") || isAbsolute(rel)) {
+        next();
+        return;
+      }
       try {
         const content = readFileSync(fullPath, "utf8");
         res.setHeader("Content-Type", entry.contentType);

@@ -7,7 +7,8 @@ const apiRoot = join(docsRoot, "api");
 
 const BADGE_LABELS = Object.keys(BADGE_CLASS_BY_LABEL) as (keyof typeof BADGE_CLASS_BY_LABEL)[];
 
-const walkMarkdownFiles = (dir: string): string[] => {
+/** Recursively collect every `.md` file under `dir` (returns `[]` when `dir` doesn't exist). */
+export const walkMarkdownFiles = (dir: string): string[] => {
   if (!existsSync(dir)) return [];
 
   const files: string[] = [];
@@ -24,7 +25,11 @@ const walkMarkdownFiles = (dir: string): string[] => {
   return files;
 };
 
-const styleBadges = (markdown: string): string => {
+/**
+ * Rewrite each standalone stability-badge marker (a line that is exactly `**` + backtick-wrapped label
+ * + `**`) into the `<span class="…">` its badge renders with. Non-marker content is left untouched.
+ */
+export const styleBadges = (markdown: string): string => {
   let next = markdown;
 
   for (const label of BADGE_LABELS) {

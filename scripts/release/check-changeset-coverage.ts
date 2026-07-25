@@ -17,7 +17,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { runAsMain } from "./cli.ts";
 import {
   isPublishablePackage,
   loadWorkspacePackages,
@@ -93,11 +93,6 @@ export function packageJsonNeedsRelease(before: unknown, after: unknown): boolea
     return canonical(clone);
   };
   return strip(before) !== strip(after);
-}
-
-function isDirectExecution(metaUrl: string): boolean {
-  const entry = process.argv[1];
-  return Boolean(entry) && pathToFileURL(path.resolve(entry)).href === metaUrl;
 }
 
 function readArg(flag: string): string | undefined {
@@ -205,9 +200,4 @@ async function main(): Promise<void> {
   process.exitCode = 1;
 }
 
-if (isDirectExecution(import.meta.url)) {
-  main().catch((error: unknown) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  });
-}
+runAsMain(import.meta.url, main);

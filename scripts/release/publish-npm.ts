@@ -11,13 +11,13 @@
  * npm needs, so npm silently skips OIDC and fails ENEEDAUTH.
  *
  * Why own tags + releases here instead of letting the changesets action do it? The action's `pushTag`
- * runs `git push origin <tag>` on a tag it assumes already exists locally (created by `changeset
- * publish`) and relies on `persist-credentials` — neither holds for us, so it failed
+ * runs `git push origin <tag>` on a tag it assumes already exists locally (created by
+ * `changeset publish`) and relies on `persist-credentials` — neither holds for us, so it failed
  * ("src refspec … does not match any"). Instead we use `gh release create <tag> --target <sha>`, which
  * creates the tag AND the release via the GitHub API in one authenticated call. It's idempotent — a
  * package whose release already exists is skipped — so a re-run backfills anything missing (a version
- * already on npm but never tagged/released still gets its tag + release). Set `createGithubReleases:
- * false` on the action; this script is the source of truth.
+ * already on npm but never tagged/released still gets its tag + release). Set
+ * `createGithubReleases: false` on the action; this script is the source of truth.
  *
  * `--dry-run` reports what it would publish and which releases it would create, touching nothing.
  */
@@ -26,7 +26,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { runAsMain } from "./cli.ts";
 import {
   isPublishablePackage,
   loadWorkspacePackages,
@@ -71,6 +71,7 @@ export function tagFor(pkg: Pick<WorkspacePackage, "name" | "version">): string 
   return `${pkg.name}@${pkg.version}`;
 }
 
+/** The publish split: packages to publish now, and those already on the registry (skipped). */
 export interface PublishPlan {
   toPublish: WorkspacePackage[];
   skipped: WorkspacePackage[];
@@ -207,6 +208,62 @@ function resolveSha(): string {
   return result.status === 0 ? result.stdout.trim() : "HEAD";
 }
 
+/** Print the dry-run plan on stderr: what would publish, and each version's release existence. */
+function printDryRunPlan(
+  toPublish: WorkspacePackage[],
+  skipped: WorkspacePackage[],
+  ctx: ReleaseContext,
+): void {
+  for (const pkg of toPublish) console.error(`• would publish ${tagFor(pkg)}`);
+  // Everything that is (or would be) on npm should have a release; report which are missing.
+  for (const pkg of [...skipped, ...toPublish]) {
+    const state = versionReleased(pkg, ctx.repo) ? "release exists" : "would create release";
+    console.error(`• ${state}: ${tagFor(pkg)}`);
+  }
+  console.error(`\nplan: publish ${toPublish.length}, already on npm ${skipped.length}.`);
+}
+
+/** Publish each pending version (best-effort, continuing past failures); returns the split. */
+function publishPending(
+  toPublish: WorkspacePackage[],
+  rootDir: string,
+): { published: WorkspacePackage[]; failedPublish: WorkspacePackage[] } {
+  const published: WorkspacePackage[] = [];
+  const failedPublish: WorkspacePackage[] = [];
+  for (const pkg of toPublish) {
+    console.error(`\n→ publishing ${tagFor(pkg)}`);
+    if (publishPackage(pkg, rootDir)) published.push(pkg);
+    else {
+      failedPublish.push(pkg);
+      console.error(`✗ failed to publish ${tagFor(pkg)} (continuing)`);
+    }
+  }
+  return { published, failedPublish };
+}
+
+/**
+ * Ensure a tag + GitHub release for every given version (idempotent — existing releases are skipped, so
+ * this also backfills any missed before); returns the created count and any failures.
+ */
+function ensureReleases(
+  pkgs: WorkspacePackage[],
+  ctx: ReleaseContext,
+): { created: number; failedRelease: WorkspacePackage[] } {
+  const failedRelease: WorkspacePackage[] = [];
+  let created = 0;
+  for (const pkg of pkgs) {
+    const result = ensureRelease(pkg, ctx);
+    if (result === "created") {
+      created++;
+      console.error(`✓ released ${tagFor(pkg)}`);
+    } else if (result === "failed") {
+      failedRelease.push(pkg);
+      console.error(`✗ failed to create release ${tagFor(pkg)} (continuing)`);
+    }
+  }
+  return { created, failedRelease };
+}
+
 async function main(): Promise<void> {
   const dryRun = process.argv.includes("--dry-run");
   // Ensure tags + releases only; never publish. For a local backfill where npm OIDC isn't available and
@@ -226,44 +283,17 @@ async function main(): Promise<void> {
   for (const pkg of skipped) console.error(`• on npm: ${tagFor(pkg)}`);
 
   if (dryRun) {
-    for (const pkg of toPublish) console.error(`• would publish ${tagFor(pkg)}`);
-    // Everything that is (or would be) on npm should have a release; report which are missing.
-    for (const pkg of [...skipped, ...toPublish]) {
-      const state = versionReleased(pkg, ctx.repo) ? "release exists" : "would create release";
-      console.error(`• ${state}: ${tagFor(pkg)}`);
-    }
-    console.error(`\nplan: publish ${toPublish.length}, already on npm ${skipped.length}.`);
+    printDryRunPlan(toPublish, skipped, ctx);
     return;
   }
 
   // 1. Publish versions not yet on npm (unless releases-only).
-  const published: WorkspacePackage[] = [];
-  const failedPublish: WorkspacePackage[] = [];
-  if (!releasesOnly) {
-    for (const pkg of toPublish) {
-      console.error(`\n→ publishing ${tagFor(pkg)}`);
-      if (publishPackage(pkg, rootDir)) published.push(pkg);
-      else {
-        failedPublish.push(pkg);
-        console.error(`✗ failed to publish ${tagFor(pkg)} (continuing)`);
-      }
-    }
-  }
+  const { published, failedPublish } = releasesOnly
+    ? { published: [], failedPublish: [] }
+    : publishPending(toPublish, rootDir);
 
   // 2. Ensure a tag + GitHub release for every version now on npm (freshly published or already there).
-  //    Idempotent: existing releases are skipped, so this also backfills any that were missed before.
-  const failedRelease: WorkspacePackage[] = [];
-  let created = 0;
-  for (const pkg of [...skipped, ...published]) {
-    const result = ensureRelease(pkg, ctx);
-    if (result === "created") {
-      created++;
-      console.error(`✓ released ${tagFor(pkg)}`);
-    } else if (result === "failed") {
-      failedRelease.push(pkg);
-      console.error(`✗ failed to create release ${tagFor(pkg)} (continuing)`);
-    }
-  }
+  const { created, failedRelease } = ensureReleases([...skipped, ...published], ctx);
 
   console.error(
     `\ndone: published ${published.length}, releases created ${created}, ` +
@@ -278,14 +308,4 @@ async function main(): Promise<void> {
   }
 }
 
-function isDirectExecution(metaUrl: string): boolean {
-  const entry = process.argv[1];
-  return Boolean(entry) && pathToFileURL(path.resolve(entry)).href === metaUrl;
-}
-
-if (isDirectExecution(import.meta.url)) {
-  main().catch((error: unknown) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  });
-}
+runAsMain(import.meta.url, main);

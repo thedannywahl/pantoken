@@ -12,6 +12,7 @@ interface PackageManifest {
   peerDependencies?: ManifestDeps;
 }
 
+/** One workspace package: its name, repo-relative path, version, privacy, and workspace dependencies. */
 export interface WorkspacePackage {
   name: string;
   path: string;
@@ -20,17 +21,20 @@ export interface WorkspacePackage {
   workspaceDeps: Set<string>;
 }
 
+/** All discovered workspace packages, with the repo root and a by-name index. */
 export interface WorkspacePackages {
   rootDir: string;
   packages: WorkspacePackage[];
   byName: Map<string, WorkspacePackage>;
 }
 
+/** A parsed git release tag: the package name and its version. */
 export interface ParsedPackageTag {
   packageName: string;
   version: string;
 }
 
+/** A parsed user-requested package spec: the raw input, the normalized name, and an optional version or channel. */
 export interface ParsedRequestedPackageSpec {
   raw: string;
   packageName: string;
@@ -121,6 +125,7 @@ async function readWorkspacePackage(relDir: string): Promise<WorkspacePackage | 
   };
 }
 
+/** Scan the known package roots and load every workspace package, indexed by name. */
 export async function loadWorkspacePackages(): Promise<WorkspacePackages> {
   const packages: WorkspacePackage[] = [];
   const seenPaths = new Set<string>();
@@ -154,6 +159,7 @@ export async function loadWorkspacePackages(): Promise<WorkspacePackages> {
   };
 }
 
+/** Build a map from each package to the set of packages that depend on it (its dependents). */
 export function buildReverseDependencyMap(packages: WorkspacePackage[]): Map<string, Set<string>> {
   const reverse = new Map<string, Set<string>>();
 
@@ -178,6 +184,10 @@ export function buildReverseDependencyMap(packages: WorkspacePackage[]): Map<str
   return reverse;
 }
 
+/**
+ * The full set of packages to release for a target: the target plus every transitive dependent, and
+ * the `@pantoken/pantoken` meta package when the target is part of its surface. Sorted by name.
+ */
 export function computeReleaseSet(
   targetName: string,
   byName: Map<string, WorkspacePackage>,
@@ -222,6 +232,7 @@ export function computeReleaseSet(
   return [...visited].sort((a, b) => a.localeCompare(b));
 }
 
+/** Parse a `@pantoken/<name>@v<version>` git tag into its parts, or `null` if it doesn't match. */
 export function parsePackageTag(tag: string): ParsedPackageTag | null {
   const match = /^(@pantoken\/[A-Za-z0-9._-]+)@v(.+)$/.exec(tag);
   if (!match) {
@@ -234,6 +245,7 @@ export function parsePackageTag(tag: string): ParsedPackageTag | null {
   };
 }
 
+/** Normalize a name to the `@pantoken/*` scope: fix the `@pantokens/` typo and add the scope to a bare name; leave other scopes alone. */
 export function normalizePantokenPackageName(value: string): string {
   if (!value) {
     return value;
@@ -254,6 +266,7 @@ export function normalizePantokenPackageName(value: string): string {
   return `@pantoken/${value}`;
 }
 
+/** Parse a user-supplied `name[@version|channel]` spec, normalizing the name. Throws if empty or malformed. */
 export function parseRequestedPackageSpec(spec: string): ParsedRequestedPackageSpec {
   const raw = spec.trim();
   if (raw.length === 0) {
@@ -286,6 +299,7 @@ export function parseRequestedPackageSpec(spec: string): ParsedRequestedPackageS
   };
 }
 
+/** Whether a package is publishable: present, not private, and under the `@pantoken/` scope. */
 export function isPublishablePackage(pkg: WorkspacePackage | undefined | null): boolean {
   if (!pkg) {
     return false;

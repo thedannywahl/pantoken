@@ -3,8 +3,8 @@
  *
  * InstUI's layout primitives (View, Flex, Grid, List, …) take `withVisualDebug` to outline the box
  * and its children while debugging a layout. This plugin emits a single dash-prefixed modifier,
- * `-with-visual-debug`, that works on any element (compound with any base — `.instui-view
- * -with-visual-debug`). The outline colour is a `--pantoken-visual-debug-color` custom property
+ * `-with-visual-debug`, that works on any element (compound with any base, e.g.
+ * `.instui-view -with-visual-debug`). The outline colour is a `--pantoken-visual-debug-color` custom property
  * (default a bright magenta) so it's easy to retint.
  *
  * @example
