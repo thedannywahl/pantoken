@@ -75,6 +75,18 @@
     "minOccurrences": 2
   },
 
+  "rules": {
+    // Neither of these is genuine dead weight, so they must not drag the health score:
+    // - unused catalog entries below line ~90 of pnpm-workspace.yaml are documented there as mirrors
+    //   "kept harmless under catalogMode: prefer" for the linked @cssdoc source (removing them breaks
+    //   @cssdoc installs).
+    // - the flagged dev-deps are all config/CLI-loaded tools (publint, attw, the typedoc plugins,
+    //   @cssdoc/stylelint-plugin) invoked via `vp exec`/config, or the packages/pantoken + docs
+    //   meta-aggregation of @pantoken/* sub-packages — used, just never `import`ed.
+    "unused-catalog-entries": "off",
+    "unused-dev-dependencies": "off"
+  },
+
   "health": {
     // Complexity thresholds. Health is gated to grade A via scripts/quality/fallow-health-gate.ts,
     // which reads `fallow health --format json` and fails CI when the aggregate score drops below A.
