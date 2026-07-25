@@ -1,0 +1,85 @@
+{
+  // fallow codebase-intelligence config. See https://github.com/fallow-rs/fallow.
+  // Gate policy (enforced in CI): dead-code = error, health = gated to grade A, dupes = advisory.
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+
+  "workspaces": {
+    "patterns": [
+      "docs",
+      "packages/*",
+      "formats/*",
+      "platforms/*",
+      "renderers/*",
+      "bundlers/*",
+      "design/*",
+      "ai/*",
+      "plugins/pantoken/*",
+      "plugins/postcss/*",
+      "plugins/typedoc/*",
+      "plugins/vite/*",
+      "tools/*"
+    ]
+  },
+
+  // Real runtime roots that no plugin or package.json declares: scripts invoked via `node`/`vp run`,
+  // per-package codegen scripts, tool entry points, and bin shims. Without these, fallow sees the
+  // whole scripts/release/* and tools/* graphs as unreachable and reports them (and their exports)
+  // as dead.
+  "entry": [
+    "scripts/**/*.ts",
+    "**/scripts/**/*.ts",
+    "tools/*/index.ts",
+    "tools/*/src/index.ts",
+    "tools/demo/runner/*.ts",
+    "**/bin/*.{mjs,cjs,js,ts}",
+    "**/vite.config.ts",
+    "**/vite.*.config.ts"
+  ],
+
+  // Consumed by a mechanism the static graph can't see. The component CSS sources feed codegen
+  // scripts (they generate ../generated/*.ts) and the pendo theme sheets are assembled by the pendo
+  // build, not imported directly, so static analysis calls them unused. The pendo postcss plugins are
+  // loaded by name at build time.
+  "dynamicallyLoaded": [
+    "formats/components/src/**/*.css",
+    "renderers/pendo/src/themes/**/*.css",
+    "renderers/pendo/src/plugins/*.ts",
+    "tools/demo/runner/*.css"
+  ],
+
+  // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported
+  // `import type` everywhere (elided under verbatimModuleSyntax, so zero value usage is visible),
+  // vite-plus is the globally-installed toolchain aliased in the catalog, and @tokens-studio/sd-transforms
+  // is declared in tools/sd-config for the not-yet-wired raw-JSON lineage (see its src/index.ts comment).
+  "ignoreDependencies": ["@pantoken/model", "vite-plus", "@tokens-studio/sd-transforms"],
+
+  // defineDeclaration is part of the authoring API trio (defineComponent/defineRule/defineDeclaration)
+  // and is documented as such; it's currently referenced only in prose, so keep it exported.
+  "ignoreExports": [
+    { "file": "formats/components/src/lib/define.ts", "exports": ["defineDeclaration"] }
+  ],
+
+  // Generated specifiers that only exist after `build:all`; some environments analyze pre-build.
+  "ignoreUnresolvedImports": [
+    "**/generated/**",
+    "../generated/**",
+    "./generated/**",
+    "../dist/**",
+    "**/public/**"
+  ],
+
+  "duplicates": {
+    // Duplication stays advisory per policy: reported, never fails CI. The CI gate runs with
+    // `--skip dupes`; this block only tunes what the advisory `fallow dupes` run surfaces.
+    "enabled": true,
+    "minOccurrences": 2
+  },
+
+  "health": {
+    // Complexity thresholds. Health is gated to grade A via scripts/quality/fallow-health-gate.ts,
+    // which reads `fallow health --format json` and fails CI when the aggregate score drops below A.
+    "maxCyclomatic": 20,
+    "maxCognitive": 15,
+    "maxCrap": 30
+  }
+}
