@@ -173,8 +173,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      # Upload the advisory SARIF to the code-scanning dashboard.
-      security-events: write
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -202,21 +200,12 @@ jobs:
       # `fallow audit` here — it bundles duplication into its verdict with no opt-out, which would
       # gate duplication against policy. fallow analysis is sub-second, so running it over the whole
       # workspace (rather than scoping to changed files) costs nothing beyond the build that already ran.
+      # fallow is a code-quality tool, not a security scanner — its findings are advisory (the gate
+      # above enforces policy) and don't belong in the security code-scanning dashboard, which gates
+      # PR checks on any error-level result. CodeQL owns code scanning; fallow findings surface in
+      # this job's log and are enforced by `health:fallow`.
       - name: Fallow gate (dead-code error, grade-B health floor, dupes advisory)
         run: vp run health:fallow
-      - name: Generate fallow SARIF (advisory)
-        if: always()
-        run: |
-          vp exec fallow --format sarif > fallow.sarif || true
-          # fallow emits one run per analysis; code scanning rejects multiple runs in one category,
-          # so collapse them into a single run before upload.
-          node scripts/quality/merge-fallow-sarif.ts fallow.sarif
-      - name: Upload fallow SARIF to code scanning
-        if: always()
-        uses: github/codeql-action/upload-sarif@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
-        with:
-          sarif_file: fallow.sarif
-          category: fallow
 
   lint:
     needs: build
