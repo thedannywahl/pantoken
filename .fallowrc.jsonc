@@ -74,8 +74,9 @@
   ],
 
   "duplicates": {
-    // Duplication stays advisory per policy: reported, never fails CI. The CI gate runs with
-    // `--skip dupes`; this block only tunes what the advisory `fallow dupes` run surfaces.
+    // Duplication stays advisory per policy: reported, never fails CI. The CI gate is the
+    // `health:fallow` script (dead-code error, health-score floor, dead-code regression), which
+    // treats duplication as advisory; this block only tunes what the advisory `fallow dupes` surfaces.
     "enabled": true,
     "minOccurrences": 2
   },

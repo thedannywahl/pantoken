@@ -197,24 +197,20 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
-      # On PRs, `fallow audit --base` reviews only changed files and fails on findings the change
-      # introduces (scoped regression gate). On push to main, the full health:fallow gate runs the
-      # dead-code error gate + grade-B score floor + regression-vs-baseline.
-      - name: Fallow gate (scoped audit on PRs, full health on main)
-        shell: bash
-        env:
-          EVENT: ${{ github.event_name }}
-          BASE: ${{ github.event.pull_request.base.sha }}
-        run: |
-          if [[ "${EVENT}" == "pull_request" ]]; then
-            echo "scoped: fallow audit --base ${BASE}"
-            vp exec fallow audit --base "${BASE}"
-          else
-            vp run health:fallow
-          fi
+      # The same policy on PRs and main: dead-code = error, health floored at grade B, dead-code
+      # regression vs the committed baseline, duplication advisory. We deliberately don't use
+      # `fallow audit` here — it bundles duplication into its verdict with no opt-out, which would
+      # gate duplication against policy. fallow analysis is sub-second, so running it over the whole
+      # workspace (rather than scoping to changed files) costs nothing beyond the build that already ran.
+      - name: Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+        run: vp run health:fallow
       - name: Generate fallow SARIF (advisory)
         if: always()
-        run: vp exec fallow --format sarif > fallow.sarif || true
+        run: |
+          vp exec fallow --format sarif > fallow.sarif || true
+          # fallow emits one run per analysis; code scanning rejects multiple runs in one category,
+          # so collapse them into a single run before upload.
+          node scripts/quality/merge-fallow-sarif.ts fallow.sarif
       - name: Upload fallow SARIF to code scanning
         if: always()
         uses: github/codeql-action/upload-sarif@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
