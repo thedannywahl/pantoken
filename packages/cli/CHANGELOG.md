@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 0.1.6
+
+### Patch Changes
+
+- 424f57a: Normalize SVG arcs (`unarc`) before outlining stroked glyphs, so paths with packed arc flags no longer break the outline step and the icon font builds correctly end to end.
+- Updated dependencies [424f57a]
+- Updated dependencies [424f57a]
+- Updated dependencies [424f57a]
+  - @pantoken/icon-font@0.1.4
+  - @pantoken/pendo@0.1.5
+  - @pantoken/tokens@0.2.1
+  - @pantoken/drupal@0.1.5
+  - @pantoken/hugo@0.1.5
+  - @pantoken/jekyll@0.1.5
+  - @pantoken/android@0.1.5
+  - @pantoken/compose@0.1.5
+  - @pantoken/flutter@0.1.5
+  - @pantoken/rust@0.1.4
+  - @pantoken/swift@0.1.5
+  - @pantoken/swatches@0.1.4
+  - @pantoken/vanilla@0.1.3
+  - @pantoken/wordpress@0.1.3
+  - @pantoken/mintlify@0.1.4
+
 ## 0.1.5
 
 ### Patch Changes

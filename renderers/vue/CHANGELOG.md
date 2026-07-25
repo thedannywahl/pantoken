@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.6
+
+### Patch Changes
+
+- 424f57a: Internal code-quality baseline: dead-code removal, behavior-preserving refactors of oversized/complex functions, TSDoc coverage on exported symbols, and expanded test coverage to the new 85% floor. No API or behavior changes.
+- Updated dependencies [424f57a]
+  - @pantoken/web-components@0.2.4
+
 ## 0.1.5
 
 ### Patch Changes

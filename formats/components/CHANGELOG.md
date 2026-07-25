@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- 424f57a: Internal code-quality baseline: dead-code removal, behavior-preserving refactors of oversized/complex functions, TSDoc coverage on exported symbols, and expanded test coverage to the new 85% floor. No API or behavior changes.
+
 ## 0.2.2
 
 ### Patch Changes

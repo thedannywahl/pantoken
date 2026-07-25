@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- 424f57a: Export internal helpers in the token generate script so they can be unit-tested. No change to the generated token output.
+
 ## 0.2.0
 
 ### Minor Changes

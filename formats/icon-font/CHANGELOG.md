@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- 424f57a: Normalize SVG arcs (`unarc`) before outlining stroked glyphs, so paths with packed arc flags no longer break the outline step and the icon font builds correctly end to end.
+- Updated dependencies [424f57a]
+- Updated dependencies [424f57a]
+  - @pantoken/core@0.1.4
+  - @pantoken/tokens@0.2.1
+
 ## 0.1.3
 
 ### Patch Changes
