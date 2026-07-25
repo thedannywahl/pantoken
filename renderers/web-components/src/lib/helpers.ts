@@ -88,6 +88,17 @@ const SPACING_SIDES = [
 ];
 
 /**
+ * Every attribute {@link applySpacing} reads: the `margin`/`padding` shorthands plus each
+ * `margin-<side>`/`padding-<side>`. Used as the spacing observer's `attributeFilter` so it watches only
+ * these and ignores the `style` attribute it writes — otherwise applySpacing re-triggers the observer.
+ */
+export const SPACING_ATTRS: readonly string[] = [
+  "margin",
+  "padding",
+  ...SPACING_SIDES.flatMap((side) => [`margin-${side}`, `padding-${side}`]),
+];
+
+/**
  * Apply the InstUI-/CSS-style spacing attributes on `host` to its inline style: the `margin` and
  * `padding` shorthands (1–4 keyword/length values), plus per-side `margin-<side>` / `padding-<side>`
  * (e.g. `margin-top`, `padding-inline-start`) whose side is a physical or logical edge. Managed
