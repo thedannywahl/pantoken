@@ -5,10 +5,7 @@ import { mergeConfig, type ViteUserConfig } from "vite-plus";
  * file is rewritten by every CI reinstall, so excluding it keeps `vp pack` a cache hit across jobs
  * instead of re-packing on every run.
  */
-export const packInput = [
-  { auto: true },
-  { pattern: "!node_modules/.modules.yaml", base: "workspace" },
-];
+const packInput = [{ auto: true }, { pattern: "!node_modules/.modules.yaml", base: "workspace" }];
 
 /**
  * The shared vite-plus config for a publishable package. It owns the settings identical across the
