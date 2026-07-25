@@ -67,12 +67,17 @@ export default {
       // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).
       // Match the message to its frame by source window and set the height so the iframe mirrors it.
       window.addEventListener("message", (event) => {
+        // Only accept posts from a same-origin demo runner (or an opaque "null"-origin sandboxed
+        // frame). Drop cross-origin posts so another page can't spoof size/theme messages.
+        if (event.origin !== window.location.origin && event.origin !== "null") return;
         const data = event.data as { type?: string; height?: number } | null;
-        // A runner just booted and is asking which theme to render — reply to that frame only.
+        // A runner just booted and is asking which theme to render — reply to that frame only, at the
+        // origin it posted from ("*" only for an opaque sandboxed frame, which can't match a specific
+        // target).
         if (data?.type === "pantoken-demo-request-theme") {
           (event.source as Window | null)?.postMessage(
             { type: "pantoken-demo-theme", theme: getStoredTheme() },
-            "*",
+            event.origin === "null" ? "*" : event.origin,
           );
           return;
         }

@@ -23,6 +23,17 @@ const cssUrls = (params.get("css") ?? "").split(",").filter(Boolean);
 const srcUrl = params.get("src");
 const mount = document.getElementById("runner");
 
+// The embedding docs page's origin, so theme/size posts target only the host and can't be intercepted
+// by a page that reframes the runner. `document.referrer` is the embedder's URL; fall back to our own
+// origin (same-origin embedding — the runner is served by the docs site with `allow-same-origin`).
+const HOST_ORIGIN = ((): string => {
+  try {
+    return document.referrer ? new URL(document.referrer).origin : location.origin;
+  } catch {
+    return location.origin;
+  }
+})();
+
 // A manual override (set by the host's light/dark toggle) wins over the inherited scheme; null means
 // "follow the embedding page".
 let schemeOverride: "light" | "dark" | null = null;
@@ -216,7 +227,7 @@ function runnerMarkup(): string {
 /** Post the runner's current height to the embedding host so it can size the demo iframe. */
 function postSize(height: number): void {
   if (window.parent !== window)
-    window.parent.postMessage({ type: "pantoken-demo-size", height }, "*");
+    window.parent.postMessage({ type: "pantoken-demo-size", height }, HOST_ORIGIN);
 }
 
 /** Flip Shiki's light/dark color variables to match the toggle's effective scheme. */
@@ -361,7 +372,7 @@ function reportSize(ctx: RunnerCtx): void {
   if (window.parent === window || ctx.booting) return;
   window.parent.postMessage(
     { type: "pantoken-demo-size", height: Math.ceil(ctx.runner.getBoundingClientRect().height) },
-    "*",
+    HOST_ORIGIN,
   );
 }
 
@@ -408,6 +419,9 @@ function applyAutoHeight(ctx: RunnerCtx): void {
 /** During a drag, hide the code and result scrollbars so they don't flicker as the height recomputes. */
 function setResizing(ctx: RunnerCtx, on: boolean): void {
   ctx.runner.classList.toggle("runner--resizing", on);
+  // The result frame is sandboxed (opaque "null" origin), so a specific targetOrigin can never match
+  // it — "*" is required to reach it. The message only toggles scrollbar overflow, so there's nothing
+  // sensitive to leak even if another frame observed it.
   ctx.resultFrame.contentWindow?.postMessage({ type: "pantoken-demo-freeze", value: on }, "*");
 }
 
@@ -480,11 +494,15 @@ async function buildEditors(ctx: RunnerCtx): Promise<void> {
   for (const key of ctx.parts) {
     const holder = ctx.holders.get(key);
     if (!holder) continue;
-    holder.innerHTML = highlighter.codeToHtml(ctx.code[key], {
+    // Shiki already HTML-escapes the code, but the source can arrive from a `src` URL param, so run
+    // the highlighter markup through DOMPurify too — it keeps Shiki's `<span style>` coloring while
+    // stripping any executable markup, closing the DOM-XSS path even for untrusted input.
+    const highlighted = highlighter.codeToHtml(ctx.code[key], {
       lang: langId[key],
       themes: { light: "github-light", dark: "github-dark" },
       defaultColor: false,
     });
+    holder.innerHTML = DOMPurify.sanitize(highlighted);
     holder.appendChild(createCopyButton(ctx.code[key]));
   }
   // The panes just gained content; if a code tab is showing, grow the player to fit it.
@@ -508,6 +526,11 @@ function createGates(ctx: RunnerCtx): {
 
 /** Handle host messages: scheme toggle, theme pick, and result-size reports (each may gate the reveal). */
 function handleMessage(ctx: RunnerCtx, event: MessageEvent): void {
+  // Only accept posts from the embedding host or from our own sandboxed result frame (opaque "null"
+  // origin). Drop anything from another origin so a page that reframes the runner can't drive it.
+  if (event.origin !== HOST_ORIGIN && event.origin !== location.origin && event.origin !== "null") {
+    return;
+  }
   const data = event.data as { type?: string; height?: number; theme?: string } | null;
   if (data?.type === "pantoken-demo-scheme") {
     schemeOverride = effectiveDark() ? "light" : "dark";
@@ -530,7 +553,7 @@ function handleMessage(ctx: RunnerCtx, event: MessageEvent): void {
 /** Ask the host which theme to use, or (standalone, no parent) resolve the theme gate immediately. */
 function requestTheme(ctx: RunnerCtx): void {
   if (window.parent && window.parent !== window) {
-    window.parent.postMessage({ type: "pantoken-demo-request-theme" }, "*");
+    window.parent.postMessage({ type: "pantoken-demo-request-theme" }, HOST_ORIGIN);
   } else {
     ctx.resolveTheme?.();
     ctx.resolveTheme = undefined;
