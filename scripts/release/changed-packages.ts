@@ -131,9 +131,15 @@ async function main() {
 
   if (process.env.GITHUB_OUTPUT) {
     const { appendFileSync } = await import("node:fs");
+    // `paths` maps the subset names to their workspace directories, so package-scoped consumers that
+    // take paths (e.g. `vp test <dir>` coverage runs) don't have to re-resolve names to locations.
+    const dirByName = new Map(packages.map((pkg) => [pkg.name, pkg.path]));
+    const paths = result.packages
+      .map((name) => dirByName.get(name))
+      .filter((dir) => dir !== undefined);
     appendFileSync(
       process.env.GITHUB_OUTPUT,
-      `scope=${result.scope}\npackages=${result.packages.join(",")}\ncount=${result.packages.length}\n`,
+      `scope=${result.scope}\npackages=${result.packages.join(",")}\npaths=${paths.join(",")}\ncount=${result.packages.length}\n`,
     );
   }
 

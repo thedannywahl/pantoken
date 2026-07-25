@@ -125,11 +125,43 @@ jobs:
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
-      - name: Materialize generated output
-        run: vp run -r build
-      - name: Test with coverage
-        run: vp run test:coverage
+      - name: Resolve changed packages
+        id: changed
+        if: github.event_name == 'pull_request'
+        env:
+          CHANGED_BASE: ${{ github.event.pull_request.base.sha }}
+        run: node scripts/release/changed-packages.ts
+      # Full coverage on push to main (keeps Codecov's project baseline accurate); on PRs, only the
+      # changed packages + dependents run, so we don't test the whole workspace every time. The 85%
+      # threshold floor (vite.config.ts) fails the run either way.
+      - name: Coverage (full on main, scoped to changed packages on PRs)
+        id: cov
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          SCOPE: ${{ steps.changed.outputs.scope }}
+          PATHS: ${{ steps.changed.outputs.paths }}
+        run: |
+          if [[ "${EVENT}" != "pull_request" ]]; then
+            vp run -r build
+            vp run test:coverage
+            echo "ran=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [[ "${SCOPE}" == "none" ]]; then
+            echo "No publishable packages changed; skipping coverage."
+            echo "ran=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          vp run -r build
+          if [[ "${SCOPE}" == "all" ]]; then
+            vp run test:coverage
+          else
+            IFS=',' read -ra dirs <<< "${PATHS}"
+            echo "scoped coverage: ${dirs[*]}"
+            vp test "${dirs[@]}" --coverage
+          fi
+          echo "ran=true" >> "$GITHUB_OUTPUT"
       - name: Upload coverage to Codecov
+        if: steps.cov.outputs.ran == 'true'
         uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
         with:
           use_oidc: true
@@ -148,7 +180,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
-          # Full history so hotspot churn (git log) is accurate.
+          # Full history so hotspot churn (git log) and the audit base ref are available.
           fetch-depth: 0
       - name: Set up Vite+
         uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
@@ -165,8 +197,21 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
-      - name: Fallow gate (dead-code = error, health = grade A; duplicates advisory)
-        run: vp run health:fallow
+      # On PRs, `fallow audit --base` reviews only changed files and fails on findings the change
+      # introduces (scoped regression gate). On push to main, the full health:fallow gate runs the
+      # dead-code error gate + grade-B score floor + regression-vs-baseline.
+      - name: Fallow gate (scoped audit on PRs, full health on main)
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [[ "${EVENT}" == "pull_request" ]]; then
+            echo "scoped: fallow audit --base ${BASE}"
+            vp exec fallow audit --base "${BASE}"
+          else
+            vp run health:fallow
+          fi
       - name: Generate fallow SARIF (advisory)
         if: always()
         run: vp exec fallow --format sarif > fallow.sarif || true

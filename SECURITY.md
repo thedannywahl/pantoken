@@ -12,7 +12,7 @@ Please report security issues privately. Don't open a public issue for anything 
 
 - Use GitHub's [private vulnerability reporting](https://github.com/thedannywahl/pantoken/security/advisories/new)
   to open a draft advisory. This is the preferred channel.
-- If you can't use GitHub, email <dwahl@instructure.com>.
+- If you can't use GitHub, email <danny@iywahl.com>.
 
 Please include enough detail to reproduce the issue: affected package and version, a description of the
 impact, and steps or a proof of concept. We'll acknowledge your report within five business days and
@@ -25,11 +25,15 @@ know what's in place:
 
 - **npm provenance.** Every package publishes with `--provenance` through npm OIDC trusted publishing,
   so each release is cryptographically linked to the workflow run and commit that produced it.
-- **Install delay.** The pnpm workspace sets `minimumReleaseAge`, so newly published dependency
-  versions aren't installed until they've been public for a few days.
-- **Pinned actions.** CI workflows pin third-party GitHub Actions to commit SHAs, and Dependabot keeps
-  those pins current.
-- **Automated scanning.** CodeQL, OpenSSF Scorecard, and Dependabot alerts run against the repository.
+- **Install delay.** The pnpm workspace sets `minimumReleaseAge`, and Renovate a matching 5-day
+  `minimumReleaseAge`, so newly published dependency versions aren't adopted until they've been public
+  for a few days.
+- **Pinned actions.** CI workflows pin third-party GitHub Actions to commit SHAs, and Renovate keeps
+  those pins current (as digests).
+- **Automated scanning.** CodeQL and OpenSSF Scorecard run in CI, and GitHub security advisories are
+  enabled. Snyk scans both dependencies (`snyk test`) and source code for vulnerabilities
+  (`snyk code`, SAST); because Snyk has no GitHub App here, the SAST scan gates locally at push time
+  rather than in CI.
 
 ## Disclosure
 

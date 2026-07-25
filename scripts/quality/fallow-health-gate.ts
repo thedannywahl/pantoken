@@ -4,8 +4,8 @@
  * score floor; dead-code failure comes from `--fail-on-issues` honouring the `.fallowrc.jsonc`
  * severities. Run via `vp run health:fallow` (after `build:all`, so generated output exists).
  *
- * Grade bands (fallow): A is 85 and up, B is 70-84, C is 55-69. The score is 82 (B), up from 67.5. The floor is
- * 80: it locks in that improvement and blocks regression while staying just under the current score.
+ * Grade bands (fallow): A is 85 and up, B is 70-84, C is 55-69. The score is 83.2 (B), up from 67.5. The floor
+ * is 80: it locks in that improvement and blocks regression while staying just under the current score.
  * The remaining gap to grade A is diffuse, not a few fixable functions — `hotspots` (~10) is
  * churn-weighted (git history times complexity, unmoved by refactoring), `unit_size` (~5) is
  * distributional across many functions (excluding even the two largest Vue widgets moved it only
@@ -56,7 +56,33 @@ if (score >= MIN_HEALTH_SCORE) {
   failed = true;
 }
 
-// 3. Duplication — advisory only: reported, never fails the gate.
+// 3. Regression gate — fail if the dead-code finding count grows beyond the committed baseline, so
+//    quality can't slip even for the WARN-level findings the step-1 hard gate lets through (unused
+//    catalog/dev-deps, unused exports). Scoped to the `dead-code` subcommand on purpose: the top-level
+//    `fallow --fail-on-regression` also runs the default issue gate, so it exits non-zero on the mere
+//    presence of advisory duplication/complexity — not just on a regression. The baseline is a
+//    dead-code regression baseline (`--save-regression-baseline`); it's refreshed on each release.
+const BASELINE = "fallow-baseline.json";
+if (existsSync(path.join(ROOT, BASELINE))) {
+  const reg = fallow([
+    "dead-code",
+    "--fail-on-regression",
+    "--regression-baseline",
+    BASELINE,
+    "--quiet",
+  ]);
+  if (reg.status === 0) {
+    console.log("✓ fallow regression: no growth vs baseline");
+  } else {
+    process.stdout.write(reg.stdout);
+    console.error(`✗ fallow regression gate: findings grew beyond ${BASELINE}`);
+    failed = true;
+  }
+} else {
+  console.log(`ℹ ${BASELINE} missing — skipping regression gate`);
+}
+
+// 4. Duplication — advisory only: reported, never fails the gate.
 const dupes = fallow(["dupes", "--format", "compact"]);
 const groups = dupes.stdout.split("\n").filter((line) => line.trim().length > 0).length;
 if (groups > 0) {

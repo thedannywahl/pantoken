@@ -50,6 +50,7 @@ catalog:
   points-on-path: ^0.2.1
   clipper-lib: ^6.4.2
   svgicons2svgfont: ^16.0.0
+  svgpath: ^2.6.0
   svg2ttf: ^6.1.0
   ttf2woff2: ^8.0.1
   "@mdx-js/react": ^3.1.1
@@ -70,6 +71,8 @@ catalog:
   markdownlint-cli2: ^0.23.0
   "@manypkg/cli": ^0.25.1
   fallow: ^3.9.1
+  happy-dom: ^20.11.1
+  snyk: ^1.1306.1
   publint: ^0.3.21
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^11.1.0
@@ -113,6 +116,9 @@ catalog:
   vscode-languageserver-textdocument: ^1.0.12
 overrides:
   vite: "catalog:"
+  # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
+  # them. We can't drop the peer (pnpm auto-installs it), so pin the resolved version to the fix.
+  next: "^16.2.11"
 peerDependencyRules:
   allowAny:
     - vite
@@ -136,4 +142,5 @@ allowBuilds:
   core-js: true
   esbuild: true
   sharp: true
+  snyk: true
   ttf2woff2: true

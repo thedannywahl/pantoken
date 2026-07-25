@@ -1,2 +1,9 @@
 # Block a push that changes a publishable package with no covering changeset (bypass: --no-verify).
 vp run release:coverage
+# Block a push that introduces new fallow findings (dead code / complexity) in the changed files,
+# measured against the upstream branch (falls back to origin/main). Scoped + fast; bypass: --no-verify.
+vp exec fallow audit --base "$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || echo origin/main)"
+# Gate on Snyk Code (SAST): Snyk has no GitHub App here, so CI can't run it — this is the enforcement
+# point for code-security findings. Blocks on a high-severity finding; skips (with a warning) when
+# Snyk isn't authenticated, so a contributor without a Snyk account isn't blocked. Bypass: --no-verify.
+vp run snyk:code

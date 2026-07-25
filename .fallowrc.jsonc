@@ -60,12 +60,17 @@
   ],
 
   // Generated specifiers that only exist after `build:all`; some environments analyze pre-build.
+  // Workspace @pantoken/* specifiers resolve to each package's built dist, so they're "unresolved"
+  // only before a build — ignore them so the regression baseline and the pre-push audit are accurate
+  // without a full build (a no-op post-build, where they resolve; TypeScript still catches real breaks).
   "ignoreUnresolvedImports": [
     "**/generated/**",
     "../generated/**",
     "./generated/**",
     "../dist/**",
-    "**/public/**"
+    "**/public/**",
+    "@pantoken/*",
+    "@pantoken/*/**"
   ],
 
   "duplicates": {

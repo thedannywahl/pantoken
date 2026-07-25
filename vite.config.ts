@@ -39,7 +39,13 @@ export default defineConfig({
         "**/dist/**",
         "**/*.config.*",
         "**/*.d.ts",
+        // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
+        "packages/model/**",
       ],
+      // Hard coverage floor (grade-A number). Vitest fails the run below these; codecov.yml enforces
+      // the same 85% project + patch in CI. Branches sit at 70 (85% branch coverage isn't realistic
+      // across I/O and DOM code); statements/functions/lines hold the 85 line.
+      thresholds: { statements: 85, branches: 70, functions: 85, lines: 85 },
     },
   },
   staged: {
@@ -91,6 +97,23 @@ export default defineConfig({
       "check:manypkg": {
         command: "vp exec manypkg check",
       },
+      // On-demand dependency vulnerability scan via the bundled Snyk CLI (devDependency, so every
+      // contributor gets it from `pnpm install` — a Snyk account/`snyk auth` is still needed to run).
+      // NOT in `ready:all`: it needs auth + network, which CI and fresh clones lack. Run
+      // `pnpm run security:snyk` (or `vp run snyk:scan`); `vp exec snyk monitor` to track over time.
+      // Task name differs from the `security:snyk` package.json script — vp forbids the two matching.
+      "snyk:scan": {
+        command:
+          "vp exec snyk test --all-projects --severity-threshold=high --exclude=generated,dist",
+      },
+      // Snyk Code (SAST) gate. Snyk has no GitHub App on this repo, so CI can't run it — the pre-push
+      // hook runs this instead (see .vite-hooks/pre-push) and it's here for on-demand runs. The wrapper
+      // blocks on findings but skips gracefully when Snyk isn't authenticated. NOT in `ready:all`: it
+      // needs `snyk auth` + network, which CI and fresh clones lack. Task name differs from the
+      // `security:code` package.json script — vp forbids the two matching.
+      "snyk:code": {
+        command: "node scripts/quality/snyk-code-gate.ts",
+      },
       // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
       // no build dependency.
       "lint:tsdoc": {
@@ -108,7 +131,8 @@ export default defineConfig({
         command: "true",
         dependsOn: [
           "check:all",
-          "test:all",
+          // Coverage run (not the plain test run) so the 85% threshold floor is enforced in `ready`.
+          "test:coverage",
           "lint:css",
           "lint:js",
           "lint:tsdoc",
@@ -173,8 +197,13 @@ export default defineConfig({
       // into git tags + GitHub releases. See scripts/release/publish-npm.ts. NOTE: CI runs the publish
       // script with plain `node`, NOT `vp run release:publish` — the `vp run` launcher scrubs the
       // `ACTIONS_ID_TOKEN_REQUEST_*` env vars npm needs for OIDC. This task stays for local/manual runs.
+      // Bump versions AND refresh the fallow regression baseline so each release re-bases the floor
+      // (the changesets action commits both into the Version PR). fallow runs as a direct bin — never
+      // a nested `vp` — and `|| true` keeps its non-zero "findings present" exit from failing the
+      // version step; it still writes fallow-baseline.json. Assumes build already ran (release.yml).
       "release:version": {
-        command: "vpx changeset version",
+        command:
+          "vpx changeset version && (node_modules/.bin/fallow dead-code --save-regression-baseline fallow-baseline.json || true)",
       },
       "release:publish": {
         command: "node scripts/release/publish-npm.ts",

@@ -13,7 +13,9 @@
     "docs:api": "vp run @pantoken/docs#docs:api",
     "check:repository": "vp run gate:repository",
     "check:publish": "vp run gate:publish",
-    "check:attw": "vp run gate:attw"
+    "check:attw": "vp run gate:attw",
+    "security:snyk": "vp run snyk:scan",
+    "security:code": "vp run snyk:code"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
@@ -32,6 +34,7 @@
     "fallow": "catalog:",
     "markdownlint-cli2": "catalog:",
     "publint": "catalog:",
+    "snyk": "catalog:",
     "stylelint": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

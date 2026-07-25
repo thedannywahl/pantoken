@@ -199,3 +199,24 @@ postcss plugins as `dynamicallyLoaded`, and ignore the intentional deps fallow c
 (`@pantoken/model` type-only, `vite-plus` toolchain, the "kept harmless" catalog mirrors via
 `unused-catalog-entries: off`, config/CLI-loaded dev-deps via `unused-dev-dependencies: off`). That
 takes the real actionable set to a handful of genuinely-dead exports.
+
+### Snyk Code (SAST) gates locally, not in CI
+
+**Symptom** — Snyk has no GitHub App wired to this repo, so `snyk code test` (SAST) can't run in
+Actions the way the dependency scan and the packaging gates do. Leaving it CI-only would mean no
+code-security gate at all.
+
+**Fix / rule** — Gate SAST _locally_, at push time. `scripts/quality/snyk-code-gate.ts` runs
+`snyk code test --severity-threshold=high` and is exit-code aware: 0 → pass, 1 → block (findings),
+3 → pass (nothing to scan), and 2 (or anything else) → warn-then-skip, because a 2 is almost always
+"not authenticated." That fail-closed-on-findings / fail-open-on-auth split means the maintainer's
+authenticated push gates while a contributor who never ran `snyk auth` isn't bricked. It's wired into
+`.vite-hooks/pre-push` (task `snyk:code`, script `security:code`) and deliberately **not** in
+`ready:all` — like the dependency scan, it needs auth + network that CI and fresh clones lack.
+
+**Findings fixed to reach zero** — the demo/docs playground tripped several rules: a path-traversal in
+the workspace-orchestrator file server (added a `serveDir` containment check), `postMessage`
+targets/listeners that used `"*"` and skipped origin checks (tightened to the host origin, with guards
+that still accept the sandboxed result frame's opaque `"null"` origin), and a DOM-XSS where highlighted
+code reached `innerHTML` (Shiki already escapes, but the source can arrive from a `src` URL param, so
+the markup now also passes through the `DOMPurify` the runner already imports).
