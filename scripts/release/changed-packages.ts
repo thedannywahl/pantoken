@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { runAsMain } from "./cli.ts";
 import {
   buildReverseDependencyMap,
   computeReleaseSet,
@@ -87,14 +87,6 @@ export function resolveChangedPackages(
     : { scope: "none", packages: [] };
 }
 
-function isDirectExecution(metaUrl: string): boolean {
-  const entry = process.argv[1];
-  if (!entry) {
-    return false;
-  }
-  return pathToFileURL(path.resolve(entry)).href === metaUrl;
-}
-
 function readArg(flag: string): string | undefined {
   const index = process.argv.indexOf(flag);
   if (index >= 0 && index + 1 < process.argv.length) {
@@ -146,9 +138,4 @@ async function main() {
   process.stdout.write(`${JSON.stringify(result)}\n`);
 }
 
-if (isDirectExecution(import.meta.url)) {
-  main().catch((error) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  });
-}
+runAsMain(import.meta.url, main);

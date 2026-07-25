@@ -74,11 +74,15 @@
   ],
 
   "duplicates": {
-    // Duplication stays advisory per policy: reported, never fails CI. The CI gate is the
-    // `health:fallow` script (dead-code error, health-score floor, dead-code regression), which
-    // treats duplication as advisory; this block only tunes what the advisory `fallow dupes` surfaces.
+    // Duplication is gated (not advisory): `health:fallow` fails when the duplicated-line ratio
+    // exceeds `threshold`. The current ratio is ~1.7% after extracting the release scripts' shared
+    // CLI-entry boilerplate (see scripts/release/cli.ts); the rest is structural — per-package build
+    // boilerplate, component CSS, platform emitters — plus a few coincidental clones. The cap sits
+    // just above the current ratio to accept today's set while blocking new duplication; tighten it
+    // further as the remaining clones are refactored out.
     "enabled": true,
-    "minOccurrences": 2
+    "minOccurrences": 2,
+    "threshold": 1.8
   },
 
   "rules": {

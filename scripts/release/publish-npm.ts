@@ -26,7 +26,7 @@ import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { runAsMain } from "./cli.ts";
 import {
   isPublishablePackage,
   loadWorkspacePackages,
@@ -308,14 +308,4 @@ async function main(): Promise<void> {
   }
 }
 
-function isDirectExecution(metaUrl: string): boolean {
-  const entry = process.argv[1];
-  return Boolean(entry) && pathToFileURL(path.resolve(entry)).href === metaUrl;
-}
-
-if (isDirectExecution(import.meta.url)) {
-  main().catch((error: unknown) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  });
-}
+runAsMain(import.meta.url, main);

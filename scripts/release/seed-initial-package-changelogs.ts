@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { pathToFileURL } from "node:url";
+import { runAsMain } from "./cli.ts";
 import {
   isPublishablePackage,
   loadWorkspacePackages,
@@ -42,15 +42,6 @@ function shouldSeedPackage(pkg: WorkspacePackage): boolean {
   }
 
   return isPublishablePackage(pkg) && pkg.version === "0.1.0";
-}
-
-function isDirectExecution(metaUrl: string): boolean {
-  const entry = process.argv[1];
-  if (!entry) {
-    return false;
-  }
-
-  return pathToFileURL(path.resolve(entry)).href === metaUrl;
 }
 
 async function fileExists(filePath: string): Promise<boolean> {
@@ -108,12 +99,7 @@ async function main() {
   }
 }
 
-if (isDirectExecution(import.meta.url)) {
-  main().catch((error) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  });
-}
+runAsMain(import.meta.url, main);
 
 export { buildInitialChangelog, hasVersionSection };
 export { shouldSeedPackage };

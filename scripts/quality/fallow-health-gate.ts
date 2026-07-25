@@ -1,8 +1,9 @@
 /**
  * The fallow CI gate. Policy: dead-code is an error, health must hold a minimum score, and
- * duplication is advisory. Fallow has no built-in minimum-grade gate, so this wrapper enforces the
- * score floor; dead-code failure comes from `--fail-on-issues` honouring the `.fallowrc.jsonc`
- * severities. Run via `vp run health:fallow` (after `build:all`, so generated output exists).
+ * duplication must stay within the `.fallowrc.jsonc` threshold. Fallow has no built-in minimum-grade
+ * gate, so this wrapper enforces the score floor; dead-code failure comes from `--fail-on-issues`
+ * honouring the `.fallowrc.jsonc` severities. Run via `vp run health:fallow` (after `build:all`, so
+ * generated output exists).
  *
  * Grade bands (fallow): A is 85 and up, B is 70-84, C is 55-69. The score is 83.2 (B), up from 67.5. The floor
  * is 80: it locks in that improvement and blocks regression while staying just under the current score.
@@ -82,13 +83,16 @@ if (existsSync(path.join(ROOT, BASELINE))) {
   console.log(`ℹ ${BASELINE} missing — skipping regression gate`);
 }
 
-// 4. Duplication — advisory only: reported, never fails the gate.
+// 4. Duplication gate — fail when the duplicated-line ratio exceeds `duplicates.threshold` in
+//    .fallowrc.jsonc. `fallow dupes` reads that threshold and exits non-zero when exceeded, so the
+//    current structural duplication is accepted while new duplication is blocked.
 const dupes = fallow(["dupes", "--format", "compact"]);
-const groups = dupes.stdout.split("\n").filter((line) => line.trim().length > 0).length;
-if (groups > 0) {
-  console.log(
-    `ℹ fallow duplicates (advisory): ${groups} finding(s) — run \`vp exec fallow dupes\``,
-  );
+if (dupes.status === 0) {
+  console.log("✓ fallow duplication: within the .fallowrc threshold");
+} else {
+  process.stdout.write(dupes.stdout);
+  console.error("✗ fallow duplication gate: ratio exceeds the .fallowrc `duplicates.threshold`");
+  failed = true;
 }
 
 process.exit(failed ? 1 : 0);
