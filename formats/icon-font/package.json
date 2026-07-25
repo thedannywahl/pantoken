@@ -36,6 +36,7 @@
     "points-on-path": "catalog:",
     "svg2ttf": "catalog:",
     "svgicons2svgfont": "catalog:",
+    "svgpath": "catalog:",
     "ttf2woff2": "catalog:"
   },
   "devDependencies": {
