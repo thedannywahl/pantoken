@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.2.4
+
+### Patch Changes
+
+- 424f57a: Resolve Snyk Code (SAST) findings and two latent web-component bugs.
+
+  - File server: contain resolved paths inside `serveDir` (path-traversal fix).
+  - Demo runner and docs theme: target the host origin instead of `"*"`, drop cross-origin messages, and sanitize highlighted code before `innerHTML` (DOM-XSS fix).
+  - Web components: scope the `withSpacing` observer to the spacing attributes so it no longer self-triggers, and route Invoker `command`/`commandfor` through a per-target handler map so drilldown and shared-document cases resolve correctly.
+
+- Updated dependencies [424f57a]
+  - @pantoken/components@0.2.3
+  - @pantoken/icons@0.1.3
+
 ## 0.2.3
 
 ### Patch Changes

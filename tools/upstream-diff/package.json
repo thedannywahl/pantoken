@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/upstream-diff",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Upstream-drift gate: project the built token IR into a compact committed manifest and classify what an Instructure UI bump changed (added/removed/renamed/retyped tokens and icons) into review buckets.",
   "license": "MIT",

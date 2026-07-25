@@ -1,5 +1,62 @@
 # CHANGELOG
 
+## 0.1.8
+
+### Patch Changes
+
+- 424f57a: Internal code-quality baseline: dead-code removal, behavior-preserving refactors of oversized/complex functions, TSDoc coverage on exported symbols, and expanded test coverage to the new 85% floor. No API or behavior changes.
+- Updated dependencies [424f57a]
+- Updated dependencies [424f57a]
+- Updated dependencies [424f57a]
+- Updated dependencies [424f57a]
+  - @pantoken/cli@0.1.6
+  - @pantoken/plugin-theme-custom-media@0.1.4
+  - @pantoken/plugin-visual-debug@0.1.5
+  - @pantoken/react-markdown@0.1.3
+  - @pantoken/css-in-js@0.1.4
+  - @pantoken/components@0.2.3
+  - @pantoken/storybook@0.1.4
+  - @pantoken/angular@0.1.6
+  - @pantoken/postcss@0.1.4
+  - @pantoken/svelte@0.1.6
+  - @pantoken/astro@0.1.4
+  - @pantoken/react@0.1.6
+  - @pantoken/pendo@0.1.5
+  - @pantoken/mui@0.1.4
+  - @pantoken/vue@0.1.6
+  - @pantoken/web-components@0.2.4
+  - @pantoken/tokens@0.2.1
+  - @pantoken/drupal@0.1.5
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.1
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/vitepress@0.1.1
+  - @pantoken/android@0.1.5
+  - @pantoken/compose@0.1.5
+  - @pantoken/flutter@0.1.5
+  - @pantoken/swift@0.1.5
+  - @pantoken/panda@0.1.4
+  - @pantoken/tailwind@0.1.3
+  - @pantoken/vite@0.1.4
+  - @pantoken/swatches@0.1.4
+  - @pantoken/css@0.2.3
+  - @pantoken/dtcg@0.1.3
+  - @pantoken/icons@0.1.3
+  - @pantoken/less@0.1.4
+  - @pantoken/scss@0.1.4
+  - @pantoken/stylus@0.1.4
+  - @pantoken/email@0.1.4
+  - @pantoken/vanilla@0.1.3
+  - @pantoken/wordpress@0.1.3
+  - @pantoken/plugin-primitives@0.1.4
+  - @pantoken/plugin-stacking@0.1.5
+  - @pantoken/mintlify@0.1.4
+  - @pantoken/react-native@0.1.4
+  - @pantoken/webpack@0.1.4
+  - @pantoken/markdown-it@0.1.3
+  - @pantoken/rehype@0.1.3
+
 ## 0.1.7
 
 ### Patch Changes
