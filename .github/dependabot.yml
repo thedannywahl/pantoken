@@ -1,0 +1,44 @@
+# Dependabot keeps GitHub Actions and npm dependencies current.
+# Updates are grouped to avoid a flood of PRs across the ~73 workspace packages, and npm updates wait
+# out a cooldown that mirrors the workspace's pnpm `minimumReleaseAge` supply-chain delay.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: ci
+    labels:
+      - dependencies
+      - github-actions
+
+  # npm ecosystem covers this pnpm workspace, including catalog entries in pnpm-workspace.yaml.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    cooldown:
+      default-days: 5
+    groups:
+      production-minor-patch:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-minor-patch:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+    commit-message:
+      prefix: build(deps)
+      prefix-development: build(deps-dev)
+    labels:
+      - dependencies
+      - npm
