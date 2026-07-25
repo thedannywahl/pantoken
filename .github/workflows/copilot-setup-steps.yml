@@ -1,10 +1,12 @@
 name: "Copilot Setup Steps"
 
+# GitHub's Copilot coding agent runs the `copilot-setup-steps` job directly when it provisions its
+# environment — that invocation does not depend on these triggers. The triggers exist only to validate
+# the file when it changes, which `pull_request` covers. A `push` trigger is deliberately omitted: for
+# tag pushes GitHub ignores `paths` filters, so a bare `push: paths:` fired this workflow once per
+# package release tag (~30x per release) doing nothing but `vp --version`.
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - .github/workflows/copilot-setup-steps.yml
   pull_request:
     paths:
       - .github/workflows/copilot-setup-steps.yml
