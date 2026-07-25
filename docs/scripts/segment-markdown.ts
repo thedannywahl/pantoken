@@ -120,20 +120,46 @@ const classifyBlock = (lines: string[]): Segment => {
   return { kind: "prose", text };
 };
 
+/**
+ * A leading closed `---` YAML frontmatter block as a preserve segment plus the index just past it,
+ * or `null` when `lines` doesn't open with one. (Generated API pages don't emit it today, but be safe.)
+ */
+const takeFrontmatter = (lines: string[]): { segment: Segment; nextIndex: number } | null => {
+  if (lines[0] !== "---") return null;
+  let end = 1;
+  while (end < lines.length && lines[end] !== "---") end += 1;
+  if (end >= lines.length) return null;
+  return {
+    segment: { kind: "preserve", text: lines.slice(0, end + 1).join("\n") },
+    nextIndex: end + 1,
+  };
+};
+
+/** Index just past a fenced code block opening at `start` (includes the closing fence). */
+const scanFence = (lines: string[], start: number): number => {
+  let index = start + 1;
+  while (index < lines.length && !FENCE.test(lines[index])) index += 1;
+  if (index < lines.length) index += 1; // include the closing fence
+  return index;
+};
+
+/** Index just past a run of blank lines starting at `start`. */
+const scanBlankRun = (lines: string[], start: number): number => {
+  let index = start;
+  while (index < lines.length && lines[index].trim() === "") index += 1;
+  return index;
+};
+
 /** Split markdown into ordered, lossless segments. */
 export function segmentMarkdown(md: string): Segment[] {
   const lines = md.split("\n");
   const segments: Segment[] = [];
   let index = 0;
 
-  // Optional YAML frontmatter (generated API pages don't emit it today, but be safe).
-  if (lines[0] === "---") {
-    let end = 1;
-    while (end < lines.length && lines[end] !== "---") end += 1;
-    if (end < lines.length) {
-      segments.push({ kind: "preserve", text: lines.slice(0, end + 1).join("\n") });
-      index = end + 1;
-    }
+  const frontmatter = takeFrontmatter(lines);
+  if (frontmatter) {
+    segments.push(frontmatter.segment);
+    index = frontmatter.nextIndex;
   }
 
   let block: string[] = [];
@@ -150,9 +176,7 @@ export function segmentMarkdown(md: string): Segment[] {
     if (FENCE.test(line)) {
       flush();
       const start = index;
-      index += 1;
-      while (index < lines.length && !FENCE.test(lines[index])) index += 1;
-      if (index < lines.length) index += 1; // include the closing fence
+      index = scanFence(lines, start);
       segments.push({ kind: "preserve", text: lines.slice(start, index).join("\n") });
       continue;
     }
@@ -160,7 +184,7 @@ export function segmentMarkdown(md: string): Segment[] {
     if (line.trim() === "") {
       flush();
       const start = index;
-      while (index < lines.length && lines[index].trim() === "") index += 1;
+      index = scanBlankRun(lines, start);
       segments.push({ kind: "preserve", text: lines.slice(start, index).join("\n") });
       continue;
     }
@@ -173,6 +197,24 @@ export function segmentMarkdown(md: string): Segment[] {
   return segments;
 }
 
+/** Translatable header labels + Description-cell units from one table segment, in document order. */
+const collectTableUnits = (segment: Extract<Segment, { kind: "table" }>): TranslatableUnit[] => {
+  const units: TranslatableUnit[] = [];
+  for (const header of segment.rows[segment.headerRow]) {
+    if (header !== "") units.push({ text: header, kind: "glossary" });
+  }
+  for (let row = 0; row < segment.rows.length; row += 1) {
+    if (row === segment.headerRow || row === segment.separatorRow) continue;
+    for (const col of segment.descCols) {
+      const cell = segment.rows[row][col];
+      if (cell !== undefined && isTranslatableCell(cell)) {
+        units.push({ text: cell, kind: cellKind(cell) });
+      }
+    }
+  }
+  return units;
+};
+
 /** Every translatable unit across the segments, in document order (callers dedupe by content). */
 export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
   const units: TranslatableUnit[] = [];
@@ -182,18 +224,7 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
       continue;
     }
     if (segment.kind === "table") {
-      for (const header of segment.rows[segment.headerRow]) {
-        if (header !== "") units.push({ text: header, kind: "glossary" });
-      }
-      for (let row = 0; row < segment.rows.length; row += 1) {
-        if (row === segment.headerRow || row === segment.separatorRow) continue;
-        for (const col of segment.descCols) {
-          const cell = segment.rows[row][col];
-          if (cell !== undefined && isTranslatableCell(cell)) {
-            units.push({ text: cell, kind: cellKind(cell) });
-          }
-        }
-      }
+      units.push(...collectTableUnits(segment));
     }
   }
   return units;

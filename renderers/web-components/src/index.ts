@@ -197,52 +197,51 @@ function withNestedDeps(only: readonly string[]): Set<string> {
   return wanted;
 }
 
+/** An inner `<button>` exposing the invoker/popover IDL properties the host mirrors onto it. */
+type InvokerButton = HTMLButtonElement & {
+  popoverTargetElement?: Element | null;
+  popoverTargetAction?: string;
+  commandForElement?: Element | null;
+  command?: string;
+};
+
 /**
- * Register the pantoken custom elements. No-op when there is no DOM (SSR / build), so this module
- * is safe to import anywhere.
- *
- * @param target - The registry to define into (defaults to `globalThis.customElements`).
- * @param options - `prefix` sets the tag prefix, mirroring the CSS layer: pass a non-empty string like
- *   `x` for `<x-icon>`. A prefix is always applied (a custom-element name must contain a hyphen), so an
- *   omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`). `only` limits
- *   registration to a subset of the `ELEMENTS` base names — its nested render dependencies are pulled in
- *   automatically, so `{ only: ["date-time-input"] }` also defines `date-input` and `calendar`. Omit
- *   `only` to register every element (the default).
- *
- * @example
- * ```ts
- * import { register } from "@pantoken/web-components";
- * import "@pantoken/css"; // defines the --instui-* custom properties the elements read
- *
- * register(); // <instui-button>, <instui-icon>, …
- * register(customElements, { prefix: "x" }); // <x-button>, <x-icon>, …
- * register(customElements, { only: ["button", "alert"] }); // just those two
- * ```
+ * Mirror the host's invoker attributes onto its inner `<button>`'s IDL properties, resolving ids
+ * against the host's root so a shadow-DOM button can drive a light-DOM `[popover]`/command target.
  */
-export function register(
-  target: ElementRegistry | undefined = globalThis.customElements,
-  options: { prefix?: string | null; only?: readonly string[] } = {},
-): void {
-  if (!target || typeof HTMLElement === "undefined") return;
+function syncInvoker(host: HTMLElement): void {
+  const btn = host.shadowRoot?.querySelector("button") as InvokerButton | null;
+  if (!btn) return;
+  const root = host.getRootNode() as Document | ShadowRoot;
+  const byId = (id: string): Element | null =>
+    typeof root.getElementById === "function" ? root.getElementById(id) : null;
+  const popoverTarget = host.getAttribute("popovertarget");
+  if (popoverTarget !== null) {
+    btn.popoverTargetElement = byId(popoverTarget);
+    btn.popoverTargetAction = host.getAttribute("popovertargetaction") ?? "toggle";
+  }
+  const commandFor = host.getAttribute("commandfor");
+  const command = host.getAttribute("command");
+  if (commandFor !== null && command !== null) {
+    btn.commandForElement = byId(commandFor);
+    btn.command = command;
+  }
+}
 
-  // When `only` is given, expand it through the nested-render dependencies and define just that set;
-  // otherwise define every element. The canonical `DEFINITIONS` order is preserved either way, so a
-  // nested dependency is always defined before the element that renders it.
-  const wanted = options.only ? withNestedDeps(options.only) : null;
+/** Build a `.instui-<name>` class with an optional `-color-<variant>` key-value modifier from `variant`. */
+function variantClass(name: string, host: HTMLElement): string {
+  const variant = frag(host.getAttribute("variant"));
+  return variant ? `instui-${name} -color-${variant}` : `instui-${name}`;
+}
 
-  // Tag prefix: a valid non-empty string overrides the default; anything else (empty, whitespace, null,
-  // omitted) falls back to `instui`. A prefix is always applied because a custom-element name MUST contain
-  // a hyphen — `<icon>` is invalid, `<instui-icon>`/`<x-icon>` are not. The inlined `.instui-*` CSS classes
-  // are an internal detail and are NOT affected by this — only the custom-element tag name.
-  const prefix =
-    typeof options.prefix === "string" && options.prefix.trim() !== ""
-      ? options.prefix
-      : DEFAULT_PREFIX;
-  const tag = (base: string): string => `${prefix}-${base}`;
-  // Route every internal `registry.get`/`define` (all keyed on the canonical `instui-<base>` names)
-  // through the active prefix.
-  const host = target;
-  const registry: ElementRegistry = {
+/** Resolve the tag prefix: a non-empty string wins; anything empty/nullish falls back to `instui`. */
+function resolvePrefix(prefix: string | null | undefined): string {
+  return typeof prefix === "string" && prefix.trim() !== "" ? prefix : DEFAULT_PREFIX;
+}
+
+/** Build the prefix-aware registry: rewrite every internal `instui-<base>` name to the active-prefix tag. */
+function makeRegistry(host: ElementRegistry, tag: (base: string) => string): ElementRegistry {
+  return {
     get: (name) => host.get(tag(name.replace(/^instui-/u, ""))),
     define: (name, ctor) => {
       const resolved = tag(name.replace(/^instui-/u, ""));
@@ -251,48 +250,41 @@ export function register(
       if (!host.get(resolved)) host.define(resolved, withSpacing(ctor));
     },
   };
+}
 
-  // A shadow-DOM `<button>` can invoke a light-DOM `[popover]` (or dispatch a command) only through the
-  // IDL properties — the `popovertarget`/`commandfor` *attributes* resolve their id in the button's own
-  // tree scope (the shadow root), so they never find a light-DOM target. `syncInvoker` mirrors the host's
-  // invoker attributes onto the inner button's IDL properties, resolving the id against the host's root.
-  type InvokerButton = HTMLButtonElement & {
-    popoverTargetElement?: Element | null;
-    popoverTargetAction?: string;
-    commandForElement?: Element | null;
-    command?: string;
-  };
-  const syncInvoker = (host: HTMLElement): void => {
-    const btn = host.shadowRoot?.querySelector("button") as InvokerButton | null;
-    if (!btn) return;
-    const root = host.getRootNode() as Document | ShadowRoot;
-    const byId = (id: string): Element | null =>
-      typeof root.getElementById === "function" ? root.getElementById(id) : null;
-    const popoverTarget = host.getAttribute("popovertarget");
-    if (popoverTarget !== null) {
-      btn.popoverTargetElement = byId(popoverTarget);
-      btn.popoverTargetAction = host.getAttribute("popovertargetaction") ?? "toggle";
-    }
-    const commandFor = host.getAttribute("commandfor");
-    const command = host.getAttribute("command");
-    if (commandFor !== null && command !== null) {
-      btn.commandForElement = byId(commandFor);
-      btn.command = command;
+/**
+ * Build the `command`-event router: forward a target's `command` events to a handler, and where the
+ * Invoker Commands API is missing, delegate matching `commandfor` clicks across the target's tree.
+ */
+function makeOnCommand(invokerSupported: boolean): RegisterContext["onCommand"] {
+  return (target, handler) => {
+    target.addEventListener("command", (event) => {
+      const ce = event as CommandEventish;
+      handler(ce.command, ce.source);
+    });
+    if (!invokerSupported) {
+      // Fallback for browsers without the API: delegate clicks across the target's tree — its shadow root
+      // for an internal grid, or the document for a light-DOM host — to the same handler, matching on
+      // `commandfor`, so `command` buttons keep working wherever they live.
+      const scope = target.getRootNode() as Document | ShadowRoot;
+      scope.addEventListener("click", (event) => {
+        const el = event.target instanceof Element ? event.target : null;
+        const button = el?.closest<HTMLButtonElement>("button[command][commandfor]");
+        if (button?.getAttribute("commandfor") === target.id) {
+          handler(button.getAttribute("command") ?? "", button);
+        }
+      });
     }
   };
+}
 
-  /**
-   * Define a shadow-DOM element: `<style>:host{display}css</style>` + markup from `render(host)`.
-   * The `:host` display is explicit because a custom element defaults to `display: inline`, which
-   * would collapse internal `width: 100%` (e.g. the progress bar). Pass `invoker: true` when the
-   * rendered markup is a `<button>` that should drive native `popovertarget`/`command` targets.
-   */
-  const wrapper = (
-    tag: string,
-    css: string,
-    render: (host: HTMLElement) => string,
-    { display = "inline-block", invoker = false }: { display?: string; invoker?: boolean } = {},
-  ): void => {
+/**
+ * Build the shadow-DOM element factory: define `<style>:host{display}css</style>` + `render(host)`
+ * markup, wiring invoker forwarding when `invoker` is set. The `:host` display is explicit because a
+ * custom element defaults to `display: inline`, which would collapse internal `width: 100%`.
+ */
+function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
+  return (tag, css, render, { display = "inline-block", invoker = false } = {}) => {
     if (registry.get(tag)) return;
     registry.define(
       tag,
@@ -346,44 +338,62 @@ export function register(
       },
     );
   };
+}
+
+/**
+ * Register the pantoken custom elements. No-op when there is no DOM (SSR / build), so this module
+ * is safe to import anywhere.
+ *
+ * @param target - The registry to define into (defaults to `globalThis.customElements`).
+ * @param options - `prefix` sets the tag prefix, mirroring the CSS layer: pass a non-empty string like
+ *   `x` for `<x-icon>`. A prefix is always applied (a custom-element name must contain a hyphen), so an
+ *   omitted, empty, or nullish prefix falls back to the default `instui` (`<instui-icon>`). `only` limits
+ *   registration to a subset of the `ELEMENTS` base names — its nested render dependencies are pulled in
+ *   automatically, so `{ only: ["date-time-input"] }` also defines `date-input` and `calendar`. Omit
+ *   `only` to register every element (the default).
+ *
+ * @example
+ * ```ts
+ * import { register } from "@pantoken/web-components";
+ * import "@pantoken/css"; // defines the --instui-* custom properties the elements read
+ *
+ * register(); // <instui-button>, <instui-icon>, …
+ * register(customElements, { prefix: "x" }); // <x-button>, <x-icon>, …
+ * register(customElements, { only: ["button", "alert"] }); // just those two
+ * ```
+ */
+export function register(
+  target: ElementRegistry | undefined = globalThis.customElements,
+  options: { prefix?: string | null; only?: readonly string[] } = {},
+): void {
+  if (!target || typeof HTMLElement === "undefined") return;
+
+  // When `only` is given, expand it through the nested-render dependencies and define just that set;
+  // otherwise define every element. The canonical `DEFINITIONS` order is preserved either way, so a
+  // nested dependency is always defined before the element that renders it.
+  const wanted = options.only ? withNestedDeps(options.only) : null;
+
+  // Tag prefix: a valid non-empty string overrides the default; anything else (empty, whitespace, null,
+  // omitted) falls back to `instui`. A prefix is always applied because a custom-element name MUST contain
+  // a hyphen — `<icon>` is invalid, `<instui-icon>`/`<x-icon>` are not. The inlined `.instui-*` CSS classes
+  // are an internal detail and are NOT affected by this — only the custom-element tag name.
+  const prefix = resolvePrefix(options.prefix);
+  const tag = (base: string): string => `${prefix}-${base}`;
+  // Route every internal `registry.get`/`define` (all keyed on the canonical `instui-<base>` names)
+  // through the active prefix.
+  const registry = makeRegistry(target, tag);
 
   // The shadow-DOM CSS is built with the default `instui` prefix so it matches the `instui-*` markup
   // in each element (the builders drop the prefix on a falsy value).
   const I = { prefix: "instui" } as const;
-
-  /** A `.instui-<name>` class with a single `-color-<variant>` key-value modifier from `variant`. */
-  const variantClass = (name: string, host: HTMLElement): string => {
-    const variant = frag(host.getAttribute("variant"));
-    return variant ? `instui-${name} -color-${variant}` : `instui-${name}`;
-  };
 
   // The calendar and date picker drive navigation with the Invoker Commands API. `onCommand` routes a
   // target's `command` events to a handler; where the API is unavailable it delegates clicks on the
   // target's own `command`/`commandfor` buttons instead, so the buttons keep working everywhere.
   const INVOKER_SUPPORTED =
     typeof HTMLButtonElement !== "undefined" && "command" in HTMLButtonElement.prototype;
-  const onCommand = (
-    target: HTMLElement,
-    handler: (command: string, source: Element | null) => void,
-  ): void => {
-    target.addEventListener("command", (event) => {
-      const ce = event as CommandEventish;
-      handler(ce.command, ce.source);
-    });
-    if (!INVOKER_SUPPORTED) {
-      // Fallback for browsers without the API: delegate clicks across the target's tree — its shadow root
-      // for an internal grid, or the document for a light-DOM host — to the same handler, matching on
-      // `commandfor`, so `command` buttons keep working wherever they live.
-      const scope = target.getRootNode() as Document | ShadowRoot;
-      scope.addEventListener("click", (event) => {
-        const el = event.target instanceof Element ? event.target : null;
-        const button = el?.closest<HTMLButtonElement>("button[command][commandfor]");
-        if (button?.getAttribute("commandfor") === target.id) {
-          handler(button.getAttribute("command") ?? "", button);
-        }
-      });
-    }
-  };
+  const onCommand = makeOnCommand(INVOKER_SUPPORTED);
+  const wrapper = makeWrapper(registry);
 
   const ctx: RegisterContext = {
     registry,

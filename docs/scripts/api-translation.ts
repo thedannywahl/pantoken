@@ -288,6 +288,27 @@ const translateWithoutFencedCode = (input: string, translate: (line: string) => 
   return out.join("\n");
 };
 
+/** Group items into chunks that each stay within `budget` characters, never splitting an item. */
+const chunkByBudget = (
+  items: readonly { id: string; text: string }[],
+  budget: number,
+): { id: string; text: string }[][] => {
+  const chunks: { id: string; text: string }[][] = [];
+  let chunk: { id: string; text: string }[] = [];
+  let size = 0;
+  for (const item of items) {
+    if (size + item.text.length > budget && chunk.length > 0) {
+      chunks.push(chunk);
+      chunk = [];
+      size = 0;
+    }
+    chunk.push(item);
+    size += item.text.length;
+  }
+  if (chunk.length > 0) chunks.push(chunk);
+  return chunks;
+};
+
 /** Run `tasks` with at most `limit` in flight at once, preserving result order. */
 const mapPool = async <T, R>(
   tasks: readonly T[],
@@ -372,19 +393,7 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
     // each JSON response reliable and give finer progress; the pool hides their startup cost.
     const BUDGET = Number(process.env.DOCS_TRANSLATION_BATCH_BUDGET) || 4000;
     const CONCURRENCY = Number(process.env.DOCS_TRANSLATION_CONCURRENCY) || 5;
-    const chunks: { id: string; text: string }[][] = [];
-    let chunk: { id: string; text: string }[] = [];
-    let size = 0;
-    for (const item of items) {
-      if (size + item.text.length > BUDGET && chunk.length > 0) {
-        chunks.push(chunk);
-        chunk = [];
-        size = 0;
-      }
-      chunk.push(item);
-      size += item.text.length;
-    }
-    if (chunk.length > 0) chunks.push(chunk);
+    const chunks = chunkByBudget(items, BUDGET);
 
     const out: Record<string, string> = {};
     await mapPool(chunks, CONCURRENCY, async (group) => {
