@@ -57,24 +57,34 @@ const ABSOLUTE_LENGTH_UNITS = "px|cm|mm|q|in|pt|pc";
  * cssSyntaxForValue("currentColor");             // → "*"
  * ```
  */
+// Direct color/image matches, checked in order on the trimmed value.
+const SYNTAX_DIRECT: readonly [RegExp, string][] = [
+  [/^#[0-9a-f]{3,8}$/i, "<color>"],
+  [/^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i, "<color>"],
+  [/^transparent$/i, "<color>"],
+  [/^url\(/i, "<image>"],
+];
+
+// Single-token numeric-with-unit matches, checked only when the value has no whitespace/commas.
+const SYNTAX_TYPED: readonly [RegExp, string][] = [
+  [/^-?\d*\.?\d+%$/, "<percentage>"],
+  [new RegExp(`^-?\\d*\\.?\\d+(${ABSOLUTE_LENGTH_UNITS})$`, "i"), "<length>"],
+  [/^-?\d*\.?\d+(deg|grad|rad|turn)$/i, "<angle>"],
+  [/^-?\d*\.?\d+(s|ms)$/i, "<time>"],
+  [/^-?\d*\.?\d+(dpi|dpcm|dppx)$/i, "<resolution>"],
+  [/^-?\d+$/, "<integer>"],
+  [/^-?\d*\.?\d+$/, "<number>"],
+];
+
 export function cssSyntaxForValue(value: string): string {
   const v = value.trim();
 
-  if (/^#[0-9a-f]{3,8}$/i.test(v)) return "<color>";
-  if (/^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch|color)\(/i.test(v)) return "<color>";
-  if (/^transparent$/i.test(v)) return "<color>";
-  if (/^url\(/i.test(v)) return "<image>";
+  for (const [re, syntax] of SYNTAX_DIRECT) if (re.test(v)) return syntax;
 
   // Single typed token only — anything with whitespace/commas (font stacks, shorthands,
   // gradients, keywords like `solid`/`none`/`currentColor`) is universal.
   if (!/[\s,]/.test(v)) {
-    if (/^-?\d*\.?\d+%$/.test(v)) return "<percentage>";
-    if (new RegExp(`^-?\\d*\\.?\\d+(${ABSOLUTE_LENGTH_UNITS})$`, "i").test(v)) return "<length>";
-    if (/^-?\d*\.?\d+(deg|grad|rad|turn)$/i.test(v)) return "<angle>";
-    if (/^-?\d*\.?\d+(s|ms)$/i.test(v)) return "<time>";
-    if (/^-?\d*\.?\d+(dpi|dpcm|dppx)$/i.test(v)) return "<resolution>";
-    if (/^-?\d+$/.test(v)) return "<integer>";
-    if (/^-?\d*\.?\d+$/.test(v)) return "<number>";
+    for (const [re, syntax] of SYNTAX_TYPED) if (re.test(v)) return syntax;
   }
 
   return "*";

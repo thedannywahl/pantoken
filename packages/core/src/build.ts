@@ -89,6 +89,63 @@ function toToken(name: string, value: string, meta?: TokenMeta): Token {
  * buildTokens({ theme: "rebrand", plugins: [brand] });
  * ```
  */
+// 1. Primitives — shared across themes, concrete values.
+function primitiveTokens(root: Record<string, any>): Token[] {
+  return collectLeaves(root.primitives?.default).map((leaf) => {
+    const { value, meta } = resolveLeaf(leaf);
+    return toToken(varName("primitive", leaf.path), value, meta);
+  });
+}
+
+// 2. Layout (size, spacing, radii, type…) — references point at primitives.
+function layoutTokens(group: any): Token[] {
+  return collectLeaves(group?.semantic?.layout?.default?.semantic).map((leaf) => {
+    const { value, meta } = resolveLeaf(leaf);
+    return toToken(varName("", leaf.path), value, meta);
+  });
+}
+
+// 3. Semantic colours — emit a single value when light and dark resolve identically, else wrap both
+//    in light-dark(). This is the only layer that produces light-dark().
+function semanticColorTokens(group: any, spec: { light: string; dark?: string }): Token[] {
+  const darkByPath = new Map<string, Leaf>();
+  if (spec.dark) {
+    for (const leaf of collectLeaves(group?.semantic?.color?.[spec.dark]?.semantic)) {
+      darkByPath.set(leaf.path.join("."), leaf);
+    }
+  }
+  return collectLeaves(group?.semantic?.color?.[spec.light]?.semantic).map((leaf) => {
+    const light = resolveLeaf(leaf);
+    const darkLeaf = darkByPath.get(leaf.path.join("."));
+    const dark = darkLeaf ? resolveLeaf(darkLeaf) : light;
+    const value =
+      light.value === dark.value ? light.value : `light-dark(${light.value}, ${dark.value})`;
+    return toToken(varName("", leaf.path), value, light.meta);
+  });
+}
+
+// 4. Components — reference the colour/layout layers, so theming flows through automatically.
+function componentTokens(group: any): Token[] {
+  const out: Token[] = [];
+  for (const component of Object.values(group?.component ?? {})) {
+    for (const leaf of collectLeaves(component)) {
+      const { value, meta } = resolveLeaf(leaf);
+      out.push(toToken(varName("component", leaf.path), value, meta));
+    }
+  }
+  return out;
+}
+
+// 5. Icons — rolled in as <image> tokens, plus the icon-colour special values.
+function iconTokens(opts: { includeInstui: boolean; includeLucide: boolean }): Token[] {
+  const { glyphs, colors } = collectIcons(opts);
+  const out = glyphs.map((glyph) =>
+    defineToken({ name: glyph.name, value: glyph.value, meta: glyph.meta }),
+  );
+  for (const [name, value] of colors) out.push(toToken(name, value));
+  return out;
+}
+
 export function buildTokens(options: BuildTokensOptions = {}): Token[] {
   const {
     theme = "rebrand",
@@ -101,53 +158,14 @@ export function buildTokens(options: BuildTokensOptions = {}): Token[] {
   const spec = THEME_SPECS[theme];
   const root = themeTokens as unknown as Record<string, any>;
   const group = root[spec.group];
-  const tokens: Token[] = [];
 
-  // 1. Primitives — shared across themes, concrete values.
-  for (const leaf of collectLeaves(root.primitives?.default)) {
-    const { value, meta } = resolveLeaf(leaf);
-    tokens.push(toToken(varName("primitive", leaf.path), value, meta));
-  }
-
-  // 2. Layout (size, spacing, radii, type…) — references point at primitives.
-  for (const leaf of collectLeaves(group?.semantic?.layout?.default?.semantic)) {
-    const { value, meta } = resolveLeaf(leaf);
-    tokens.push(toToken(varName("", leaf.path), value, meta));
-  }
-
-  // 3. Semantic colours — emit a single value when light and dark resolve identically, else wrap
-  //    both in light-dark(). This is the only layer that produces light-dark().
-  const darkByPath = new Map<string, Leaf>();
-  if (spec.dark) {
-    for (const leaf of collectLeaves(group?.semantic?.color?.[spec.dark]?.semantic)) {
-      darkByPath.set(leaf.path.join("."), leaf);
-    }
-  }
-  for (const leaf of collectLeaves(group?.semantic?.color?.[spec.light]?.semantic)) {
-    const light = resolveLeaf(leaf);
-    const darkLeaf = darkByPath.get(leaf.path.join("."));
-    const dark = darkLeaf ? resolveLeaf(darkLeaf) : light;
-    const value =
-      light.value === dark.value ? light.value : `light-dark(${light.value}, ${dark.value})`;
-    tokens.push(toToken(varName("", leaf.path), value, light.meta));
-  }
-
-  // 4. Components — reference the colour/layout layers, so theming flows through automatically.
-  for (const component of Object.values(group?.component ?? {})) {
-    for (const leaf of collectLeaves(component)) {
-      const { value, meta } = resolveLeaf(leaf);
-      tokens.push(toToken(varName("component", leaf.path), value, meta));
-    }
-  }
-
-  // 5. Icons — rolled in as <image> tokens, plus the icon-colour special values.
-  if (includeIcons) {
-    const { glyphs, colors } = collectIcons({ includeInstui, includeLucide });
-    for (const glyph of glyphs) {
-      tokens.push(defineToken({ name: glyph.name, value: glyph.value, meta: glyph.meta }));
-    }
-    for (const [name, value] of colors) tokens.push(toToken(name, value));
-  }
+  const tokens: Token[] = [
+    ...primitiveTokens(root),
+    ...layoutTokens(group),
+    ...semanticColorTokens(group, spec),
+    ...componentTokens(group),
+    ...(includeIcons ? iconTokens({ includeInstui, includeLucide }) : []),
+  ];
 
   // 6. Plugin icon hooks — register extra glyphs as <image> tokens, then token hooks — both guarded
   //    (a wrong-stage plugin warns rather than silently doing nothing); result de-duped (later wins).
