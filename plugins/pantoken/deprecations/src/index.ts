@@ -1,7 +1,7 @@
 /**
  * `@pantoken/plugin-deprecations` — lifecycle-aware compatibility shims for dropped upstream tokens.
  *
- * When an upstream release drops a `--instui-*` token, a hand-authored {@link DeprecationLedger}
+ * When an upstream release drops a `--instui-*` token, a hand-authored `DeprecationLedger`
  * records its lifecycle: when it was deprecated, the upstream minor that will remove it, and how to
  * keep it working meanwhile — either forward to a canonical token (`replacement` → `var(...)`) or
  * freeze its last-known literal (`value`). This plugin appends one shim token per entry. Because the
@@ -116,7 +116,7 @@ export function describeLifecycle(entry: DeprecationEntry): string {
 /**
  * Create the deprecation-shim plugin from a ledger.
  *
- * @param ledger - The {@link DeprecationLedger} (e.g. `formats/tokens/deprecations.json`).
+ * @param ledger - The `DeprecationLedger` (e.g. `formats/tokens/deprecations.json`).
  * @returns A {@link PantokenPlugin} whose `tokens` hook appends one shim per entry.
  */
 export function deprecationShims(ledger: DeprecationLedger): PantokenPlugin {

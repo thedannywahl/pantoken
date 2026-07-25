@@ -40,7 +40,7 @@ export interface TokenMeta {
   source?: "custom" | "lucide";
   /** A colour modifier preserved for the native lineage (Style Dictionary). */
   modify?: TokenModify;
-  /** Present on a compatibility-shim token (from a {@link DeprecationEntry}). */
+  /** Present on a compatibility-shim token (from a `DeprecationEntry`). */
   deprecated?: { replacement?: string; deprecatedIn?: string; removeIn?: string; note?: string };
 }
 
