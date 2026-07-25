@@ -1,10 +1,5 @@
 import { existsSync, readdirSync } from "node:fs";
-import { join } from "node:path";
-import { extendBase } from "../../vite.config.base.ts";
-
-// Resolve against the config's own dir (not cwd) so it finds generated/ whether vite loads the config
-// from the package or the workspace root.
-const generatedDir = join(import.meta.dirname, "generated");
+import { defineConfig } from "vite-plus";
 
 // Aggregate sheets that ship as named entry points — everything else in generated/ is a per-component
 // file emitted by scripts/build-entries.ts (runs only during `build`, not `generate`).
@@ -18,9 +13,9 @@ const AGGREGATE_SHEETS = new Set([
   "icons",
   "utilities",
 ]);
-const componentEntries = existsSync(generatedDir)
+const componentEntries = existsSync("generated")
   ? Object.fromEntries(
-      readdirSync(generatedDir)
+      readdirSync("generated")
         .filter((f) => f.endsWith(".css"))
         .map((f) => f.replace(/\.css$/u, ""))
         .filter((name) => !AGGREGATE_SHEETS.has(name))
@@ -28,7 +23,7 @@ const componentEntries = existsSync(generatedDir)
     )
   : {};
 
-export default extendBase({
+export default defineConfig({
   pack: {
     entry: {
       index: "src/index.ts",
@@ -42,10 +37,24 @@ export default extendBase({
       icons: "generated/icons.css",
       utilities: "generated/utilities.css",
     },
-    css: { splitting: true, target: false, minify: true, modules: false, inject: false },
+    dts: true,
+    css: {
+      splitting: true,
+      target: false,
+      minify: true,
+      modules: false,
+      inject: false,
+    },
     // Exports are hand-managed so the static stylesheet exports survive.
     exports: false,
   },
+  lint: {
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
+  },
+  fmt: {},
   run: {
     tasks: {
       build: {
@@ -56,6 +65,9 @@ export default extendBase({
           "node scripts/build-entries.ts",
           "vp pack",
         ],
+        // node_modules/.modules.yaml is rewritten by every CI reinstall; excluding it keeps
+        // vp pack a cache hit across jobs instead of re-packing on every run.
+        input: [{ auto: true }, { pattern: "!node_modules/.modules.yaml", base: "workspace" }],
       },
       // The stylesheet generator as a first-class task: run the `.css`→consts codegen, then emit every
       // sheet (incl. `src/generated/_records.css`, the cssdoc source-lint provider). Depends on its
