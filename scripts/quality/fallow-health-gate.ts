@@ -4,7 +4,7 @@
  * score floor; dead-code failure comes from `--fail-on-issues` honouring the `.fallowrc.jsonc`
  * severities. Run via `vp run health:fallow` (after `build:all`, so generated output exists).
  *
- * Grade bands (fallow): A >= 85, B 70-84, C 55-69. The score is 82 (B), up from 67.5. The floor is
+ * Grade bands (fallow): A is 85 and up, B is 70-84, C is 55-69. The score is 82 (B), up from 67.5. The floor is
  * 80: it locks in that improvement and blocks regression while staying just under the current score.
  * The remaining gap to grade A is diffuse, not a few fixable functions — `hotspots` (~10) is
  * churn-weighted (git history times complexity, unmoved by refactoring), `unit_size` (~5) is
