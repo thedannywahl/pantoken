@@ -145,25 +145,29 @@ npm publishing stays OIDC/token-free (`id-token: write` + trusted publishers). F
 
 ## Code quality gates
 
-### Fallow health grade A is unreachable; the gate floors at grade B
+### The fallow health gap to grade A is diffuse, not a few fixable functions
 
-**Symptom** — The fallow health gate targets grade A (score ≥ 90), but the score plateaus around 81
-no matter how many complex functions get refactored. The top hotspot (`docs/scripts/build-css-api.ts`,
-score 45.1) doesn't move at all after its `build` function is split into helpers.
+**Grade bands** — Fallow maps A >= 85, B 70–84, C 55–69 (`docs.fallow.tools/explanations/health`) — not
+the academic 90. This repo moved from 67.5 (C) to 82 (B) through dead-code cleanup, dependency
+classification, and refactoring the worst functions; the gate floors at 80.
 
-**Root cause** — Fallow's `hotspots` penalty (capped at ~10) is **churn-weighted**: a file's git commit
-history times its complexity density. Function-extraction refactoring changes neither the git history
-nor the file's total complexity (it redistributes code into more functions), so a hotspot's score is
-effectively fixed. With `hotspots` immovable at ~10 plus the architectural `coupling` penalty (~1.4),
-the maximum achievable score is ~88.6 — grade A (90) is mathematically out of reach without rewriting
-git history or splitting the high-churn component-definition files. Feeding real coverage
-(`fallow health --coverage`) doesn't help either: the score penalties are structural (cyclomatic /
-cognitive / lines), not CRAP/coverage-based.
+**Why the last ~3 points to A resist targeted refactoring:**
 
-**Fix / rule** — Gate at a score floor of 80 (grade B) in `scripts/quality/fallow-health-gate.ts`,
-which locks in the measured 67.5 → 81 improvement and blocks regression, and keep dead-code an error
-and duplication advisory. Don't chase grade A by refactoring; the lever that actually lowers a
-hotspot's score is reducing the file's churn over time or splitting the module, not extracting helpers.
+- `hotspots` (~10) is **churn-weighted** — a file's git-commit history times its complexity density.
+  Function-extraction changes neither the history nor the file's total complexity, so a hotspot's
+  score is fixed: `docs/scripts/build-css-api.ts` stayed at 45.1 after its `build` function was split.
+- `unit_size` (~5) is **distributional**, not a handful of oversized functions. Excluding even the two
+  largest units (the 229- and 177-line docs Vue SFCs — fallow counts a whole `.vue` file as one
+  "unit", a poor fit for declarative markup) moved it only 0.7; a `thresholdOverrides` entry suppressed
+  the _findings_ but not the _score_. Only genuine, codebase-wide function-shrinking moves it.
+- Plus a small architectural `coupling` penalty. Feeding real coverage (`fallow health --coverage`)
+  doesn't help — the penalties are structural (cyclomatic / cognitive / lines), not CRAP/coverage.
+
+**Fix / rule** — Gate at a score floor of 80 in `scripts/quality/fallow-health-gate.ts` (locks in the
+67.5 → 82 gain, blocks regression), keep dead-code an error and duplication advisory. Reaching grade A
+(85) is possible but needs broad function-shrinking + dedup across the whole tree, not a few edits;
+raise the floor to 85 when that lands. Don't try to buy points with config — `unused-*` suppressions
+and `thresholdOverrides` change what's _reported_, not the score.
 
 ### TSDoc enforcement runs through ESLint, not oxlint; keep it syntax-only
 

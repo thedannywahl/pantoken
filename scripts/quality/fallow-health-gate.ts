@@ -4,13 +4,13 @@
  * score floor; dead-code failure comes from `--fail-on-issues` honouring the `.fallowrc.jsonc`
  * severities. Run via `vp run health:fallow` (after `build:all`, so generated output exists).
  *
- * Why the floor is 80 (grade B) and not 90 (grade A): fallow's `hotspots` penalty (~10, capped) is
- * churn-weighted — file git-commit history times complexity — so it does not respond to
- * function-extraction refactoring (history and total file complexity are unchanged). With that
- * penalty effectively immovable plus the architectural `coupling` penalty, the maximum achievable
- * score for this repo is ~88.6, so grade A is mathematically unreachable without rewriting git
- * history or splitting the high-churn component-definition files. The floor of 80 locks in the
- * measured improvement (67.5 -\> 81.4) and prevents regression. See docs/engineering-log.md.
+ * Grade bands (fallow): A >= 85, B 70-84, C 55-69. The score is 82 (B), up from 67.5. The floor is
+ * 80: it locks in that improvement and blocks regression while staying just under the current score.
+ * The remaining gap to grade A is diffuse, not a few fixable functions — `hotspots` (~10) is
+ * churn-weighted (git history times complexity, unmoved by refactoring), `unit_size` (~5) is
+ * distributional across many functions (excluding even the two largest Vue widgets moved it only
+ * 0.7), plus a small `coupling` penalty. Closing it means codebase-wide function-shrinking. Raise
+ * this to 85 once that work lands. See docs/engineering-log.md.
  *
  * @module
  */
@@ -18,7 +18,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-/** The minimum fallow health score the gate requires (grade B; grade A is unreachable — see above). */
+/** The minimum fallow health score the gate requires (grade B floor; grade A is 85 — see above). */
 const MIN_HEALTH_SCORE = 80;
 
 const ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
