@@ -35,7 +35,7 @@ const SCOPED_THEMES = ["canvas", "canvasHighContrast"] as const;
  * `:is(...)` / attribute values don't split a selector list). Mirrors the plugin's helper of the same
  * name so selector scoping stays robust without pulling in `postcss-selector-parser`.
  */
-const splitTopLevel = (input: string, separator: string): string[] => {
+export const splitTopLevel = (input: string, separator: string): string[] => {
   const out: string[] = [];
   let depth = 0;
   let start = 0;
