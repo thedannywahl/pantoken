@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/css-in-js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Instructure theme object for runtime CSS-in-JS (Emotion, styled-components, Stitches): camelCased tokens, var()-backed.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

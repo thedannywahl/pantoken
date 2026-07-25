@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/figma",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Convert Instructure tokens into a Figma Variables payload (modes = light/dark) for a Figma plugin or the Variables REST API.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

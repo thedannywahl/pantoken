@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-deprecations",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "pantoken plugin: emit var() compatibility shims for upstream tokens that were removed or renamed, from a hand-authored deprecation ledger, so consumers keep resolving the old --instui-* names.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

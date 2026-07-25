@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/model",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Zero-dependency type contracts for the pantoken token IR (shared by every package).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

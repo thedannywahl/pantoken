@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [e099a51]
+  - @pantoken/tokens@0.2.0
+  - @pantoken/model@0.2.0
+  - @pantoken/core@0.1.3
+  - @pantoken/sd-config@0.1.2
+
 ## 0.1.3
 
 ### Patch Changes
