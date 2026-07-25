@@ -69,6 +69,30 @@ test("a plugin-contributed property with a contextual initial-value becomes a de
   expect(out).toContain("--instui-x-contextual: var(--instui-primitive-color-white);"); // → declaration
 });
 
+test("a plugin can prepend a marked block and contribute :root declarations", () => {
+  const plugin = definePlugin({
+    name: "prepender",
+    css: () => ({
+      prepend: "/* license */",
+      declarations: [["--instui-extra", "1px"]],
+      marker: "pantoken:extra",
+    }),
+  });
+  const out = toCss(fixture, { plugins: [plugin] });
+  // The prepend lands before the base sheet...
+  expect(out.indexOf("/* license */")).toBeLessThan(out.indexOf("@property"));
+  // ...and its marker rides along.
+  expect(out).toContain("/* pantoken:extra */");
+  // The contributed declaration becomes a :root declaration in an appended block.
+  expect(out).toContain("--instui-extra: 1px;");
+});
+
+test("a css hook returning nothing (undefined) is skipped without error", () => {
+  const noop = definePlugin({ name: "noop", css: () => undefined });
+  const out = toCss(fixture, { plugins: [noop] });
+  expect(out).toContain("@property --instui-primitive-color-white");
+});
+
 test("the rebrand stylesheet is self-contained (no dangling --instui-* references)", () => {
   // Every var(--instui-*) in the full token layer resolves to a definition in the same output.
   expect(danglingReferences(css)).toEqual([]);

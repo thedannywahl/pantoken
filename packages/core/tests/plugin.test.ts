@@ -58,6 +58,52 @@ test("runIconPlugins turns an added IconEntry into an <image> token", () => {
   expect(token?.meta?.kind).toBe("icon");
 });
 
+test("runTokenPlugins ignores a hook that returns a non-array (keeps the accumulator)", () => {
+  const base: Token[] = [defineToken({ name: "--instui-a", value: "#111" })];
+  const noop = definePlugin({
+    name: "no-op-tokens",
+    // A hook may bail out by returning nothing; the list must pass through unchanged.
+    tokens: () => undefined as unknown as Token[],
+  });
+  const out = runTokenPlugins(base, "rebrand", [noop]);
+  expect(out.map((t) => t.name)).toEqual(["--instui-a"]);
+});
+
+test("runIconPlugins accepts an entry that supplies its own svg, and skips artworkless entries", () => {
+  const plugin = definePlugin({
+    name: "mixed-icons",
+    icons: ({ add }) => {
+      add({ name: "custom", svg: "<svg viewBox='0 0 24 24'><path d='M1 1'/></svg>" });
+      add({ name: "empty" }); // neither svg nor path → no token produced
+    },
+  });
+  const out = runIconPlugins([], [plugin]);
+  expect(out.find((t) => t.name === "--instui-icon-custom")).toBeDefined();
+  expect(out.find((t) => t.name === "--instui-icon-empty")).toBeUndefined();
+});
+
+test("runIconPlugins exposes resolve() so a plugin can avoid re-adding an existing glyph", () => {
+  const seen: Array<{ name: string } | undefined> = [];
+  const existing = defineToken({
+    name: "--instui-icon-star",
+    value: "url('data:...')",
+    syntax: "<image>",
+    meta: { kind: "icon" },
+  });
+  const plugin = definePlugin({
+    name: "resolve-aware",
+    icons: ({ add, resolve }) => {
+      seen.push(resolve("star")); // already present → { name: "star" }
+      seen.push(resolve("moon")); // absent → undefined
+      if (!resolve("moon")) add({ name: "moon", path: "M0 0h1v1H0z" });
+    },
+  });
+  const out = runIconPlugins([existing], [plugin]);
+  expect(seen[0]).toEqual({ name: "star" });
+  expect(seen[1]).toBeUndefined();
+  expect(out.find((t) => t.name === "--instui-icon-moon")).toBeDefined();
+});
+
 test("runIconPlugins warns and skips a plugin registered without an icons hook", () => {
   const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
   const cssOnly = definePlugin({ name: "css-only-at-icons", css: () => ({ append: "" }) });
