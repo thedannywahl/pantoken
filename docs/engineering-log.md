@@ -142,3 +142,56 @@ comes from a real user and CI runs automatically. Reference the secret defensive
 token instead of hard-failing, and emit a `::warning::` when it's missing. The PAT is git/PR auth only;
 npm publishing stays OIDC/token-free (`id-token: write` + trusted publishers). Fine-grained PATs expire
 (≤ 1 year); the "RELEASE_PAT missing" warning in the release log is the rotation cue.
+
+## Code quality gates
+
+### Fallow health grade A is unreachable; the gate floors at grade B
+
+**Symptom** — The fallow health gate targets grade A (score ≥ 90), but the score plateaus around 81
+no matter how many complex functions get refactored. The top hotspot (`docs/scripts/build-css-api.ts`,
+score 45.1) doesn't move at all after its `build` function is split into helpers.
+
+**Root cause** — Fallow's `hotspots` penalty (capped at ~10) is **churn-weighted**: a file's git commit
+history times its complexity density. Function-extraction refactoring changes neither the git history
+nor the file's total complexity (it redistributes code into more functions), so a hotspot's score is
+effectively fixed. With `hotspots` immovable at ~10 plus the architectural `coupling` penalty (~1.4),
+the maximum achievable score is ~88.6 — grade A (90) is mathematically out of reach without rewriting
+git history or splitting the high-churn component-definition files. Feeding real coverage
+(`fallow health --coverage`) doesn't help either: the score penalties are structural (cyclomatic /
+cognitive / lines), not CRAP/coverage-based.
+
+**Fix / rule** — Gate at a score floor of 80 (grade B) in `scripts/quality/fallow-health-gate.ts`,
+which locks in the measured 67.5 → 81 improvement and blocks regression, and keep dead-code an error
+and duplication advisory. Don't chase grade A by refactoring; the lever that actually lowers a
+hotspot's score is reducing the file's churn over time or splitting the module, not extracting helpers.
+
+### TSDoc enforcement runs through ESLint, not oxlint; keep it syntax-only
+
+**Symptom** — JS/TS in this repo is linted by vite-plus's built-in oxlint (`vite.config.ts` `lint`),
+which can't host a third-party ESLint plugin like `eslint-plugin-tsdoc-require-2`.
+
+**Fix / rule** — TSDoc runs as a separate ESLint pass: the root `eslint.config.js` gained a
+`**/*.{ts,tsx}` block (`tsdoc-require-2/require` + `tsdoc/syntax`, both error), run via the `lint:tsdoc`
+task and the CI `lint` job. Configure the `@typescript-eslint/parser` **without** `parserOptions.project`
+— these rules are comment/syntax-only, so skipping type information keeps the pass fast workspace-wide.
+`tsdoc/syntax` honours the custom block tags (`@property`, `@module`) declared in `tsdoc.json`. Invoke
+it as `eslint .` (flat-config-driven discovery); passing explicit globs errors when a pattern like
+`**/*.mts` matches nothing.
+
+### Codecov uploads tokenless via OIDC on the public repo
+
+**Fix / rule** — `codecov/codecov-action` runs with `use_oidc: true` (no token secret) because the repo
+is public; the `coverage` CI job needs `permissions: id-token: write`. Coverage is v8, configured in
+`vite.config.ts` `test.coverage` (lcov for Codecov, json also emitted for fallow); `codecov.yml` uses
+`target: auto` so the bar ratchets from the ~63% baseline instead of a fixed number.
+
+### Fallow's dead-code false positives are config, not code
+
+**Symptom** — A cold `fallow` run reports ~227 dead-code findings; ~200 are false positives.
+
+**Fix / rule** — Build first (`vp run build:all`) so generated output resolves, then tune `.fallowrc.jsonc`:
+seed task-invoked scripts / tool entries / bin shims as `entry`, mark the CSS-codegen sources and
+postcss plugins as `dynamicallyLoaded`, and ignore the intentional deps fallow can't observe
+(`@pantoken/model` type-only, `vite-plus` toolchain, the "kept harmless" catalog mirrors via
+`unused-catalog-entries: off`, config/CLI-loaded dev-deps via `unused-dev-dependencies: off`). That
+takes the real actionable set to a handful of genuinely-dead exports.

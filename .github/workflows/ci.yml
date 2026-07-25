@@ -100,6 +100,83 @@ jobs:
       - name: Test all packages
         run: vp run -r test
 
+  coverage:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Tokenless Codecov upload via OIDC (public repo).
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Test with coverage
+        run: vp run test:coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
+        with:
+          use_oidc: true
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+
+  fallow:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Upload the advisory SARIF to the code-scanning dashboard.
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          # Full history so hotspot churn (git log) is accurate.
+          fetch-depth: 0
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Fallow gate (dead-code = error, health = grade A; duplicates advisory)
+        run: vp run health:fallow
+      - name: Generate fallow SARIF (advisory)
+        if: always()
+        run: vp exec fallow --format sarif > fallow.sarif || true
+      - name: Upload fallow SARIF to code scanning
+        if: always()
+        uses: github/codeql-action/upload-sarif@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
+        with:
+          sarif_file: fallow.sarif
+          category: fallow
+
   lint:
     needs: build
     runs-on: ubuntu-latest
@@ -125,6 +202,8 @@ jobs:
         run: vp run lint:css
       - name: Lint JS
         run: vp run lint:js
+      - name: Lint TSDoc
+        run: vp run lint:tsdoc
       - name: Validate generated output
         run: vp run validate:generated:only
       - name: Lint Markdown
@@ -424,6 +503,8 @@ jobs:
         build,
         typecheck,
         test,
+        coverage,
+        fallow,
         lint,
         publint,
         attw,

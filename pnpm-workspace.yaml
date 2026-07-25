@@ -69,6 +69,7 @@ catalog:
   "@vitest/coverage-v8": ^4.1.10
   markdownlint-cli2: ^0.23.0
   "@manypkg/cli": ^0.25.1
+  fallow: ^3.9.1
   publint: ^0.3.21
   "@arethetypeswrong/cli": ^0.18.5
   bumpp: ^11.1.0
@@ -95,6 +96,9 @@ catalog:
   stylelint: ^17.14.0
   eslint: ^10.7.0
   "@eslint/css": ^1.4.0
+  "@typescript-eslint/parser": ^8.65.0
+  eslint-plugin-tsdoc: ^0.5.2
+  eslint-plugin-tsdoc-require-2: ^1.2.4
   "@html-eslint/parser": ^0.64.0
   postcss-value-parser: ^4.2.0
   css-tree: ^3.2.1

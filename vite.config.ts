@@ -91,6 +91,19 @@ export default defineConfig({
       "check:manypkg": {
         command: "vp exec manypkg check",
       },
+      // TSDoc enforcement over source TypeScript (eslint.config.js TS block). Comment/syntax-only, so
+      // no build dependency.
+      "lint:tsdoc": {
+        // `eslint .` lets the flat config drive file discovery (its TS block globs + ignores); passing
+        // explicit globs errors when a pattern like **/*.mts matches nothing.
+        command: "vp exec eslint .",
+      },
+      // Fallow gate: dead-code = error, health = grade A, duplicates = advisory. Needs generated
+      // output (build:all) so the CSS-codegen sources and workspace graph resolve.
+      "health:fallow": {
+        command: "node scripts/quality/fallow-health-gate.ts",
+        dependsOn: ["build:all"],
+      },
       "ready:all": {
         command: "true",
         dependsOn: [
@@ -98,10 +111,12 @@ export default defineConfig({
           "test:all",
           "lint:css",
           "lint:js",
+          "lint:tsdoc",
           "validate:generated:only",
           "gate:compatibility",
           "lint:markdown",
           "check:manypkg",
+          "health:fallow",
         ],
       },
       // The upstream-upgrade pipeline. `upgrade:check` is the drift gate — it fails when the committed
