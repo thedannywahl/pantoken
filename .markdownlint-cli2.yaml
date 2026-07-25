@@ -6,6 +6,9 @@ ignores:
   - coverage
   - "**/coverage"
   - "**/style.css"
+  # Per-package generated/ dirs (gitignored, reproduced by build); includes the upstream-diff report.
+  - "**/generated"
+  - "**/generated/**"
   # Generated TypeDoc API reference, including per-locale copies (rebuilt by `docs:build`); not
   # hand-edited.
   - "docs/api"
@@ -17,3 +20,5 @@ ignores:
   - "docs/internal/**"
   # Tool-managed by `vp config`; not hand-edited.
   - ".github/copilot-instructions.md"
+  # Changesets are frontmatter-then-prose tooling artifacts (no leading H1); managed by `changeset`.
+  - ".changeset/*.md"

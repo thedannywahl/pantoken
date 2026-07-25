@@ -28,7 +28,7 @@ byTheme("canvasHighContrast"); // another theme
 
 import { raw, provenance } from "@pantoken/tokens/raw";
 raw; // the Tokens Studio tree
-provenance; // { upstream, upstreamVersion }
+provenance; // { designTokens: { package, ref, commit }, uiIcons: { package, resolved } }
 ```
 
 The themes are `rebrand` (default), `canvas`, and `canvasHighContrast`. The `rebrand` theme resolves
@@ -41,8 +41,9 @@ light and dark into `light-dark()` where they differ; `canvas` variants are sing
 - **`themes: Record<Theme, Token[]>`** — every theme's IR, keyed by name.
 - **`byTheme(theme): Token[]`** — look up a theme's IR by name.
 - **`Theme`, `Token`, `TokenMeta`, `TokenModify`** — the IR types (re-exported from `@pantoken/model`).
-- **`./raw`** — the raw Tokens Studio JSON tree, plus `provenance` (the upstream package and version
-  it was vendored from).
+- **`./raw`** — the raw Tokens Studio JSON tree, plus `provenance` (the upstream sources it was
+  vendored from: the design-tokens ref + commit and the ui-icons version).
+- **`./meta`** — `provenance` on its own (the upgrade pipeline reads this to know the vendored source).
 
 ## Related
 

@@ -40,6 +40,48 @@ export interface TokenMeta {
   source?: "custom" | "lucide";
   /** A colour modifier preserved for the native lineage (Style Dictionary). */
   modify?: TokenModify;
+  /** Present on a compatibility-shim token (from a `DeprecationEntry`). */
+  deprecated?: { replacement?: string; deprecatedIn?: string; removeIn?: string; note?: string };
+}
+
+// ── Deprecation ledger ─────────────────────────────────────────────────────────────────────────
+// The token-layer analog of the inline component-modifier deprecations, with an explicit lifecycle.
+// When an upstream release DROPS a `--instui-*` token (in a patch), pantoken keeps a working shim and
+// records when it was deprecated and the upstream MINOR that will remove it. The shim ships until that
+// minor is adopted, at which point the entry is retired and the consumer cuts a minor. This lets docs
+// auto-state "deprecated in X, removed in Y", and the pipeline enforces the removal at the boundary.
+
+/** An upstream reference in `<tier>@<version>` form, e.g. `"ui@11.7.4"` or `"design-tokens@v1.5.0"`. */
+export type UpstreamRef = string;
+
+/**
+ * One entry in the token deprecation ledger — the lifecycle of a single dropped upstream token.
+ *
+ * A shim value comes from EITHER `replacement` (emit `var(replacement)`, so theming flows through) OR
+ * `value` (freeze the last-known literal, when the drop has no canonical replacement). Exactly one is
+ * expected; an entry with neither emits no shim.
+ */
+export interface DeprecationEntry {
+  /** The dropped upstream token name, e.g. `--instui-component-truncate-text-line-height`. */
+  token: string;
+  /** The upstream release that dropped it, `<tier>@<version>` (e.g. `"design-tokens@v1.5.0"`). */
+  deprecatedIn: UpstreamRef;
+  /** The upstream MINOR at which the shim is retired, `<tier>@<version>` (e.g. `"design-tokens@v1.6.0"`). */
+  removeIn: UpstreamRef;
+  /** Forward the shim to a canonical token (emits `var(replacement)`). */
+  replacement?: string;
+  /** Freeze the shim to a literal (the token's last-known value) when there's no replacement. */
+  value?: string;
+  /** A human note rendered in the compatibility docs and the changelog. */
+  note?: string;
+}
+
+/** The committed token deprecation ledger (`formats/tokens/deprecations.json`). */
+export interface DeprecationLedger {
+  /** The ledger schema version. */
+  version: number;
+  /** The deprecation entries, one per dropped upstream token. */
+  entries: DeprecationEntry[];
 }
 
 /**

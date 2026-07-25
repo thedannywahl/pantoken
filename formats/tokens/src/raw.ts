@@ -3,12 +3,12 @@
  *
  * Consumers who want the source (or want to run their own Style Dictionary pipeline) get npm +
  * semver access here, without pinning the GitHub-only upstream package. {@link provenance} records
- * the exact upstream version this was vendored from.
+ * the exact upstream this was vendored from (also available at `@pantoken/tokens/meta`).
  *
  * @module
  */
-import metaJson from "../generated/meta.json" with { type: "json" };
 import rawJson from "../generated/raw.json" with { type: "json" };
+import { provenance, type Provenance } from "./meta.ts";
 
 /**
  * The raw Tokens Studio token tree (`$themes`, `$metadata`, `primitives`, `rebrand`, `canvas`).
@@ -23,15 +23,15 @@ import rawJson from "../generated/raw.json" with { type: "json" };
 export const raw: Record<string, unknown> = rawJson as Record<string, unknown>;
 
 /**
- * The upstream package and version this raw JSON was vendored from.
+ * The upstream provenance this raw JSON was vendored from (re-exported from `@pantoken/tokens/meta`).
  *
  * @example
  * ```ts
  * import { provenance } from "@pantoken/tokens/raw";
  *
- * provenance; // { upstream: "@instructure/instructure-design-tokens", upstreamVersion: "…" }
+ * provenance.designTokens.ref; // "v1.5.0"
  * ```
  */
-export const provenance: { upstream: string; upstreamVersion: string } = metaJson;
+export { provenance, type Provenance };
 
 export default raw;

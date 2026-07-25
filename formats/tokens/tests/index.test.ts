@@ -23,5 +23,9 @@ test("icons are present as <image> tokens in the vendored IR", () => {
 test("raw Tokens Studio JSON and provenance are vendored", () => {
   expect(Object.keys(raw)).toContain("rebrand");
   expect(Object.keys(raw)).toContain("primitives");
-  expect(provenance.upstream).toBe("@instructure/instructure-design-tokens");
+  expect(provenance.designTokens.package).toBe("@instructure/instructure-design-tokens");
+  // A 7–40 char commit sha records the exact vendored source (the design-tokens package.json version
+  // is unreliable — stuck at 1.0.0 across tags — so the commit, not the version, is the provenance).
+  expect(provenance.designTokens.commit).toMatch(/^[0-9a-f]{7,40}$/u);
+  expect(provenance.uiIcons.package).toBe("@instructure/ui-icons");
 });

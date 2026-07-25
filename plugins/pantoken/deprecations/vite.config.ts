@@ -4,7 +4,7 @@ export default defineConfig({
   run: {
     tasks: {
       build: {
-        command: ["vp run generate", "vp pack"],
+        command: "vp pack",
         // node_modules/.modules.yaml is rewritten by every CI reinstall; excluding it keeps
         // vp pack a cache hit across jobs instead of re-packing on every run.
         input: [{ auto: true }, { pattern: "!node_modules/.modules.yaml", base: "workspace" }],
@@ -12,7 +12,6 @@ export default defineConfig({
     },
   },
   pack: {
-    entry: ["src/index.ts", "src/raw.ts", "src/meta.ts"],
     dts: true,
     exports: true,
   },

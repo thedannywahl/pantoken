@@ -1,14 +1,14 @@
 {
-  "name": "@pantoken/tokens",
-  "version": "0.1.1",
-  "description": "The npm-published, semver'd home for Instructure design tokens: the resolved @property-aligned IR plus the raw Tokens Studio JSON.",
+  "name": "@pantoken/plugin-deprecations",
+  "version": "0.1.0",
+  "description": "pantoken plugin: emit var() compatibility shims for upstream tokens that were removed or renamed, from a hand-authored deprecation ledger, so consumers keep resolving the old --instui-* names.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thedannywahl/pantoken.git",
-    "directory": "formats/tokens"
+    "directory": "plugins/pantoken/deprecations"
   },
   "files": [
     "dist"
@@ -17,8 +17,6 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./meta": "./dist/meta.mjs",
-    "./raw": "./dist/raw.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -26,19 +24,15 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
     "dev": "vp pack --watch",
-    "test": "vp run generate && vp test",
+    "test": "vp test",
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/model": "workspace:*"
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*"
   },
   "devDependencies": {
-    "@instructure/instructure-design-tokens": "catalog:",
-    "@instructure/ui-icons": "catalog:",
-    "@pantoken/core": "workspace:*",
-    "@pantoken/plugin-deprecations": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
@@ -46,9 +40,5 @@
   },
   "engines": {
     "node": ">=22.18.0"
-  },
-  "pantoken": {
-    "key": "tokens",
-    "kind": "namespace"
   }
 }
