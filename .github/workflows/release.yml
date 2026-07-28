@@ -25,11 +25,6 @@ on:
     branches: [main]
   workflow_dispatch: # manual re-trigger (e.g. to re-attempt a failed publish; publish is idempotent)
 
-permissions:
-  contents: write # commit version bumps, push tags, create releases
-  pull-requests: write # open/update the Version Packages PR
-  id-token: write # npm provenance (OIDC)
-
 # One release run at a time; never cancel a run mid-publish.
 concurrency:
   group: release
@@ -37,6 +32,10 @@ concurrency:
 
 jobs:
   release:
+    permissions:
+      contents: write # commit version bumps, push tags, create releases
+      pull-requests: write # open/update the Version Packages PR
+      id-token: write # npm provenance (OIDC)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
