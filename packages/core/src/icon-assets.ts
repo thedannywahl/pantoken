@@ -24,7 +24,7 @@ const DATA_PREFIX = "data:image/svg+xml;utf8,";
  * ```
  */
 export function decodeIconSvg(value: string): string {
-  const inner = /^url\(\s*'?(.*?)'?\s*\)$/.exec(value.trim())?.[1] ?? value;
+  const inner = /^url\(\s*?'?(.*?)'?\s*?\)$/.exec(value.trim())?.[1] ?? value;
   if (!inner.startsWith(DATA_PREFIX)) return "";
   try {
     return decodeURIComponent(inner.slice(DATA_PREFIX.length));
