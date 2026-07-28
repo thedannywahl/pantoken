@@ -66,15 +66,24 @@ export type DtcgNode = { $value: string; $type?: string } | { [key: string]: Dtc
 export function toDtcg(tokens: readonly Token[], mode: Mode = "light"): Record<string, DtcgNode> {
   const resolved = resolveTokens(tokens, { mode: mode });
   const root: Record<string, DtcgNode> = {};
+  const dangerousKeys = { __proto__: true, constructor: true, prototype: true };
   for (const token of tokens) {
     if (token.meta?.kind === "icon") continue;
     const path = token.name.replace(/^--instui-/, "").split("-");
     let node = root as Record<string, DtcgNode>;
     for (const segment of path.slice(0, -1)) {
+      // Prevent prototype pollution by rejecting dangerous property names
+      if (segment in dangerousKeys) {
+        continue;
+      }
       node[segment] ??= {};
       node = node[segment] as Record<string, DtcgNode>;
     }
     const leaf = path.at(-1) as string;
+    // Prevent prototype pollution by rejecting dangerous property names
+    if (leaf in dangerousKeys) {
+      continue;
+    }
     const value = resolved.get(token.name) ?? token.value;
     const type = dtcgType(token.syntax, value);
     node[leaf] = type ? { $value: value, $type: type } : { $value: value };
