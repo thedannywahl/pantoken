@@ -16,7 +16,7 @@ function sniff(value: string): string | undefined {
   if (/^#[0-9a-f]{3,8}$/i.test(v) || /^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch)\(/i.test(v)) {
     return "color";
   }
-  if (/^-?\d*\.?\d+(px|rem|em)$/i.test(v)) return "dimension";
+  if (/^-?\d*?\.?\d+(px|rem|em)$/i.test(v)) return "dimension";
   if (/^-?\d+$/.test(v)) return "number";
   return undefined;
 }
