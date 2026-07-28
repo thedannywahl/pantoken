@@ -94,14 +94,15 @@ if (bless) {
   process.exit(0);
 }
 
-if (!existsSync(baselinePath)) {
+let baseline: Manifest;
+try {
+  baseline = JSON.parse(readFileSync(baselinePath, "utf8")) as Manifest;
+} catch {
   console.error(
     "✗ upstream-diff: no baseline at baseline/manifest.json. Bootstrap it with `vp run upgrade:bless`.",
   );
   process.exit(1);
 }
-
-const baseline = JSON.parse(readFileSync(baselinePath, "utf8")) as Manifest;
 const diff = diffManifests(baseline, current);
 
 const dueNote = due.length
