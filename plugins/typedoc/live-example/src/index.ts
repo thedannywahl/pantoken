@@ -83,15 +83,19 @@ export function injectLiveExamples(dir: string, options: LiveExampleOptions = {}
   let changed = 0;
   for (const name of readdirSync(dir)) {
     const path = join(dir, name);
-    if (statSync(path).isDirectory()) {
-      changed += injectLiveExamples(path, options);
-    } else if (name.endsWith(".md")) {
-      const before = readFileSync(path, "utf8");
-      const after = withLiveExamples(before, options);
-      if (after !== before) {
-        writeFileSync(path, after, "utf8");
-        changed++;
+    try {
+      if (statSync(path).isDirectory()) {
+        changed += injectLiveExamples(path, options);
+      } else if (name.endsWith(".md")) {
+        const before = readFileSync(path, "utf8");
+        const after = withLiveExamples(before, options);
+        if (after !== before) {
+          writeFileSync(path, after, "utf8");
+          changed++;
+        }
       }
+    } catch {
+      // File was deleted, moved, or permissions changed between directory enumeration and access; skip it
     }
   }
   return changed;
