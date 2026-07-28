@@ -26,7 +26,7 @@ const HTML_FENCE = /```html\n([\s\S]*?)\n```/gu;
 
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
 function isOverlay(html: string): boolean {
-  return /^<dialog\b/u.test(html.trim()) || /\spopover(?:=|\s|>)/u.test(html);
+  return /^<dialog\b/u.test(html.trim()) || /\spopover(?:=|[\s>])/u.test(html);
 }
 
 /** Options controlling how a live-example preview is built. */
