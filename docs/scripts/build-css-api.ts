@@ -60,7 +60,7 @@ function isColorValue(v: string): boolean {
 export function inferSyntax(value: string): string | undefined {
   const v = value.trim();
   // A bare url()/data: value (the icon glyphs are url-encoded SVGs) is `<url>`, not the broader `<image>`.
-  if (/^url\(|data:/iu.test(v)) return "<url>";
+  if (/^(?:url\(|data:)/iu.test(v)) return "<url>";
   // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
   if (isColorValue(v)) return "<color>";
   if (/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu.test(v))
