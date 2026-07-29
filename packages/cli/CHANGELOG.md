@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies [2e5bb88]
+  - @pantoken/drupal@0.1.6
+  - @pantoken/icon-font@0.1.5
+  - @pantoken/tokens@0.2.1
+  - @pantoken/android@0.1.6
+  - @pantoken/compose@0.1.6
+  - @pantoken/flutter@0.1.6
+  - @pantoken/rust@0.1.5
+  - @pantoken/swift@0.1.6
+  - @pantoken/swatches@0.1.5
+  - @pantoken/vanilla@0.1.4
+  - @pantoken/wordpress@0.1.4
+  - @pantoken/mintlify@0.1.5
+  - @pantoken/pendo@0.1.6
+  - @pantoken/hugo@0.1.6
+  - @pantoken/jekyll@0.1.6
+
 ## 0.1.6
 
 ### Patch Changes

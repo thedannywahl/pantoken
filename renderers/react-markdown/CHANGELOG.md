@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- 2e5bb88: Update workspace configuration to integrate fast-check property-based testing framework.
+  - @pantoken/rehype@0.1.3
+
 ## 0.1.3
 
 ### Patch Changes

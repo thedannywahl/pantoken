@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- 2e5bb88: Update workspace configuration to integrate fast-check property-based testing framework.
+
 ## 0.2.2
 
 ### Patch Changes

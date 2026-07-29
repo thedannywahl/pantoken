@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-primitives",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Opt-in utility classes for the raw pantoken primitive palette (--instui-primitive-*): background/text/border colors plus font-family and font-weight. Kept out of the semantic utilities so overrides there stay semantic-only.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

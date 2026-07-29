@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.3
+
+### Patch Changes
+
+- 2e5bb88: Fix CI failures and resolve CodeQL security findings: add missing @eslint/css dependency; fix file-system-race (TOCTOU) in typedoc-plugin-demo (atomic writes, no existsSync guard), typedoc-plugin-live-example (Dirent-based readdir), and upstream-diff (try/catch instead of existsSync); fix polynomial-redos in utils, drupal, dtcg, figma, core, and react-markdown; fix prototype pollution in dtcg; add top-level permissions: read-all to release and copilot-setup-steps workflows; mark test files as fallow entry points.
+- 2e5bb88: Update workspace configuration to integrate fast-check property-based testing framework.
+
 ## 0.1.2
 
 ### Patch Changes
