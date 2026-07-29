@@ -54,7 +54,7 @@ The easiest way to do this is to commit with:
 git commit -s
 
 The project uses the Developer Certificate of Origin (DCO) version 1.1:
-https://developercertificate.org/
+[developercertificate.org](https://developercertificate.org/)
 
 ## Commit messages
 
