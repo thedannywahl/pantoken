@@ -16,7 +16,7 @@ function sniff(value: string): string | undefined {
   if (/^#[0-9a-f]{3,8}$/i.test(v) || /^(rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch)\(/i.test(v)) {
     return "color";
   }
-  if (/^-?\d*?\.?\d+(px|rem|em)$/i.test(v)) return "dimension";
+  if (/^-?(?:\d+\.?\d*|\d*\.\d+)(px|rem|em)$/i.test(v)) return "dimension";
   if (/^-?\d+$/.test(v)) return "number";
   return undefined;
 }
@@ -65,15 +65,15 @@ export type DtcgNode = { $value: string; $type?: string } | { [key: string]: Dtc
  */
 export function toDtcg(tokens: readonly Token[], mode: Mode = "light"): Record<string, DtcgNode> {
   const resolved = resolveTokens(tokens, { mode: mode });
-  const root: Record<string, DtcgNode> = {};
-  const dangerousKeys = { __proto__: true, constructor: true, prototype: true };
+  const root: Record<string, DtcgNode> = Object.create(null) as Record<string, DtcgNode>;
+  const dangerousKeys = new Set(["__proto__", "constructor", "prototype"]);
   for (const token of tokens) {
     if (token.meta?.kind === "icon") continue;
     const path = token.name.replace(/^--instui-/, "").split("-");
     let node = root as Record<string, DtcgNode>;
     for (const segment of path.slice(0, -1)) {
       // Prevent prototype pollution by rejecting dangerous property names
-      if (segment in dangerousKeys) {
+      if (dangerousKeys.has(segment)) {
         continue;
       }
       node[segment] ??= {};
@@ -81,7 +81,7 @@ export function toDtcg(tokens: readonly Token[], mode: Mode = "light"): Record<s
     }
     const leaf = path.at(-1) as string;
     // Prevent prototype pollution by rejecting dangerous property names
-    if (leaf in dangerousKeys) {
+    if (dangerousKeys.has(leaf)) {
       continue;
     }
     const value = resolved.get(token.name) ?? token.value;

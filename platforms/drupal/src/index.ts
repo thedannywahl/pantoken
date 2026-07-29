@@ -34,8 +34,8 @@ export function machineName(name: string): string {
     name
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "_")
-      .replace(/^_+/, "")
-      .replace(/_+$/, "") || "pantoken"
+      .replace(/^_/, "")
+      .replace(/_$/, "") || "pantoken"
   );
 }
 

@@ -27,7 +27,7 @@
  * @module
  * @beta
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, renameSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { Converter, RendererEvent } from "typedoc";
 import type {
@@ -161,7 +161,10 @@ function rewriteModuleHeading(indexPath: string, title: string, modulePath: stri
     const withHeading = original.replace(/^#\s+.+$/m, `# ${title}`);
     const final = replaceFirstLine(withHeading, ` / ${modulePath}`, ` / ${title}`);
     if (final !== original) {
-      writeFileSync(indexPath, final, "utf8");
+      // Write to a temp path first, then rename atomically to avoid TOCTOU.
+      const tmp = `${indexPath}.tmp`;
+      writeFileSync(tmp, final, "utf8");
+      renameSync(tmp, indexPath);
     }
   } catch {
     // File was deleted, moved, or permissions changed; skip it
@@ -170,8 +173,6 @@ function rewriteModuleHeading(indexPath: string, title: string, modulePath: stri
 
 function normalizeDocsOutput(outputDirectory: string): void {
   const sidebarPath = join(outputDirectory, "typedoc-sidebar.json");
-
-  if (!existsSync(sidebarPath)) return;
 
   try {
     const sidebar = JSON.parse(readFileSync(sidebarPath, "utf8")) as SidebarItem[];

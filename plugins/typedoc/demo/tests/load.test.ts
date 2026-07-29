@@ -1,14 +1,13 @@
 import { beforeEach, expect, test, vi } from "vite-plus/test";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, renameSync as _renameSync, writeFileSync } from "node:fs";
 import type { Application, Comment, Context } from "typedoc";
 import { load } from "../src/index.ts";
 
 vi.mock(import("node:fs"), () => ({
-  existsSync: vi.fn(),
   readFileSync: vi.fn(),
+  renameSync: vi.fn(),
   writeFileSync: vi.fn(),
 }));
-const existsMock = existsSync as unknown as ReturnType<typeof vi.fn>;
 const readMock = readFileSync as unknown as ReturnType<typeof vi.fn>;
 const writeMock = writeFileSync as unknown as ReturnType<typeof vi.fn>;
 
@@ -77,9 +76,10 @@ test("resolve pass rewrites @demo tags on comments, signatures, and accessors", 
 test("render pass returns early when there is no sidebar", () => {
   const { app, renderer } = fakeApp();
   load(app);
-  existsMock.mockReturnValue(false);
+  readMock.mockImplementation(() => {
+    throw Object.assign(new Error("ENOENT"), { code: "ENOENT" });
+  });
   renderer[0]({ outputDirectory: "/out" });
-  expect(readMock).not.toHaveBeenCalled();
   expect(writeMock).not.toHaveBeenCalled();
 });
 
@@ -103,7 +103,6 @@ test("render pass flattens src nodes and rewrites the module heading", () => {
   ];
 
   // Sidebar exists and every module index.md exists.
-  existsMock.mockReturnValue(true);
   readMock.mockImplementation((path: string) => {
     if (path.endsWith("typedoc-sidebar.json")) return JSON.stringify(sidebar);
     // A module index whose first line carries the breadcrumb and heading to rewrite.
@@ -122,7 +121,7 @@ test("render pass flattens src nodes and rewrites the module heading", () => {
   expect(flattened[0].link).toBe("/api/formats/components/src/");
   expect(flattened[0].items.map((i: { text: string }) => i.text)).toEqual(["index", "extra"]);
 
-  const indexWrite = writeMock.mock.calls.find(([p]) => String(p).endsWith("index.md"));
+  const indexWrite = writeMock.mock.calls.find(([p]) => String(p).endsWith("index.md.tmp"));
   expect(indexWrite).toBeTruthy();
   const rewritten = indexWrite![1] as string;
   expect(rewritten).toContain("# components");
@@ -139,8 +138,11 @@ test("render pass skips a heading rewrite when the module index is missing", () 
       items: [{ text: "src", link: "/api/formats/components/src/", items: [] }],
     },
   ];
-  existsMock.mockImplementation((path: string) => path.endsWith("typedoc-sidebar.json"));
-  readMock.mockReturnValue(JSON.stringify(sidebar));
+  readMock.mockImplementation((path: string) => {
+    if (path.endsWith("typedoc-sidebar.json")) return JSON.stringify(sidebar);
+    // Index doesn't exist — throw to simulate missing file.
+    throw Object.assign(new Error("ENOENT"), { code: "ENOENT" });
+  });
 
   renderer[0]({ outputDirectory: "/out" });
 
@@ -159,7 +161,6 @@ test("render pass leaves a module index untouched when nothing changes", () => {
       items: [{ text: "src", link: "/api/pkg/src/", items: [] }],
     },
   ];
-  existsMock.mockReturnValue(true);
   readMock.mockImplementation((path: string) => {
     if (path.endsWith("typedoc-sidebar.json")) return JSON.stringify(sidebar);
     // No "# heading" and no breadcrumb to match → replaceFirstLine is a no-op → no write.
@@ -168,6 +169,8 @@ test("render pass leaves a module index untouched when nothing changes", () => {
 
   renderer[0]({ outputDirectory: "/out" });
 
-  const indexWrites = writeMock.mock.calls.filter(([p]) => String(p).endsWith("index.md"));
+  const indexWrites = writeMock.mock.calls.filter(
+    ([p]) => String(p).endsWith("index.md") || String(p).endsWith("index.md.tmp"),
+  );
   expect(indexWrites).toHaveLength(0);
 });

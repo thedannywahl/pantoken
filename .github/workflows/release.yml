@@ -25,6 +25,9 @@ on:
     branches: [main]
   workflow_dispatch: # manual re-trigger (e.g. to re-attempt a failed publish; publish is idempotent)
 
+# Restrict the default token to read-only; each job declares only the permissions it needs.
+permissions: read-all
+
 # One release run at a time; never cancel a run mid-publish.
 concurrency:
   group: release

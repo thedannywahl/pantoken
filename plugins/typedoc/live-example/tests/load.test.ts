@@ -1,20 +1,19 @@
 import { beforeEach, expect, test, vi } from "vite-plus/test";
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import type { Application, RendererEvent } from "typedoc";
 import { injectLiveExamples, load } from "../src/index.ts";
 
 vi.mock("node:fs", () => ({
   readdirSync: vi.fn(),
   readFileSync: vi.fn(),
-  statSync: vi.fn(),
   writeFileSync: vi.fn(),
 }));
 const readdirMock = readdirSync as unknown as ReturnType<typeof vi.fn>;
 const readMock = readFileSync as unknown as ReturnType<typeof vi.fn>;
-const statMock = statSync as unknown as ReturnType<typeof vi.fn>;
 const writeMock = writeFileSync as unknown as ReturnType<typeof vi.fn>;
 
-const dir = (isDirectory: boolean) => ({ isDirectory: () => isDirectory });
+/** Create a minimal mock Dirent with a name and isDirectory predicate. */
+const dirent = (name: string, isDir = false) => ({ name, isDirectory: () => isDir });
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -23,11 +22,10 @@ beforeEach(() => {
 test("injectLiveExamples recurses directories and rewrites only changed .md files", () => {
   // /root: one subdirectory + one non-md file; /root/sub: an md with a fence + an md without one.
   readdirMock.mockImplementation((path: string) => {
-    if (path === "/root") return ["sub", "notes.txt"];
-    if (path === "/root/sub") return ["with-fence.md", "plain.md"];
+    if (path === "/root") return [dirent("sub", true), dirent("notes.txt")];
+    if (path === "/root/sub") return [dirent("with-fence.md"), dirent("plain.md")];
     return [];
   });
-  statMock.mockImplementation((path: string) => dir(path === "/root/sub"));
   readMock.mockImplementation((path: string) => {
     if (String(path).endsWith("with-fence.md")) return '```html\n<span class="x">1</span>\n```';
     return "# just prose, no fence";
@@ -44,8 +42,7 @@ test("injectLiveExamples recurses directories and rewrites only changed .md file
 });
 
 test("injectLiveExamples applies a custom wrap option", () => {
-  readdirMock.mockReturnValue(["a.md"]);
-  statMock.mockReturnValue(dir(false));
+  readdirMock.mockReturnValue([dirent("a.md")]);
   readMock.mockReturnValue("```html\n<b>hi</b>\n```");
 
   const changed = injectLiveExamples("/root", { wrap: (html) => `<card>${html}</card>` });
@@ -82,8 +79,7 @@ test("render-end injects previews into the configured subdirectory (default wrap
   const { app, renderer } = fakeApp({ liveExampleDir: "css", liveExampleWrapper: "" });
   load(app);
 
-  readdirMock.mockReturnValue(["badge.md"]);
-  statMock.mockReturnValue(dir(false));
+  readdirMock.mockReturnValue([dirent("badge.md")]);
   readMock.mockReturnValue('```html\n<span class="instui-badge">4</span>\n```');
 
   renderer[0]({ outputDirectory: "/out" } as RendererEvent);
@@ -96,8 +92,7 @@ test("render-end honors a %s wrapper template", () => {
   const { app, renderer } = fakeApp({ liveExampleDir: "css", liveExampleWrapper: "<box>%s</box>" });
   load(app);
 
-  readdirMock.mockReturnValue(["a.md"]);
-  statMock.mockReturnValue(dir(false));
+  readdirMock.mockReturnValue([dirent("a.md")]);
   readMock.mockReturnValue("```html\n<i>x</i>\n```");
 
   renderer[0]({ outputDirectory: "/out" } as RendererEvent);

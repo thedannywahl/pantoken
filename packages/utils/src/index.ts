@@ -290,7 +290,7 @@ export function danglingReferences(css: string): string[] {
   const referenced = new Set([...css.matchAll(/var\(\s*?(--instui-[\w-]+)/g)].map((m) => m[1]));
   const defined = new Set<string>();
   for (const m of css.matchAll(/@property\s+(--instui-[\w-]+)/g)) defined.add(m[1]);
-  for (const m of css.matchAll(/(--instui-[\w-]+)\s*:/g)) defined.add(m[1]);
+  for (const m of css.matchAll(/(--instui-[\w]+(?:-[\w]+)*)\s*:/g)) defined.add(m[1]);
   return [...referenced].filter((name) => !defined.has(name)).sort();
 }
 

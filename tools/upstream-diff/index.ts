@@ -17,7 +17,7 @@
  *
  * @module
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { provenance } from "@pantoken/tokens/meta";
 import { themes } from "@pantoken/tokens";
@@ -67,10 +67,15 @@ if (bless) {
   // Enforcement 2 — coverage: a bump that drops a REAL upstream token requires a ledger entry, so no
   // removal ships silently. A dropped token that was itself a deprecation SHIM in the previous baseline
   // is exempt — retiring a shim is a deliberate pantoken action, not an unhandled upstream removal.
-  if (existsSync(baselinePath)) {
-    const previous = JSON.parse(readFileSync(baselinePath, "utf8")) as Manifest;
+  let previous: Manifest | undefined;
+  try {
+    previous = JSON.parse(readFileSync(baselinePath, "utf8")) as Manifest;
+  } catch {
+    // No baseline yet — fresh bootstrap; treat all removals as covered (nothing to diff against).
+  }
+  if (previous !== undefined) {
     const wasShim = (name: string): boolean =>
-      Object.values(previous.themes).some((theme) => theme[name]?.deprecated);
+      Object.values((previous as Manifest).themes).some((theme) => theme[name]?.deprecated);
     const uncovered = diffManifests(previous, current)
       .buckets.removedTokens.map((change) => change.name)
       .filter((name) => !ledgerCovers(ledger, name) && !wasShim(name));

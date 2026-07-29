@@ -24,7 +24,17 @@ const DATA_PREFIX = "data:image/svg+xml;utf8,";
  * ```
  */
 export function decodeIconSvg(value: string): string {
-  const inner = /^url\(\s*?'?(.*?)'?\s*?\)$/.exec(value.trim())?.[1] ?? value;
+  const trimmed = value.trim();
+  if (!trimmed.startsWith("url(") || !trimmed.endsWith(")")) return "";
+  // Strip `url(` and `)`, trim whitespace, then remove a matching pair of outer quotes.
+  let inner = trimmed.slice(4, -1).trim();
+  if (
+    inner.length >= 2 &&
+    ((inner.startsWith("'") && inner.endsWith("'")) ||
+      (inner.startsWith('"') && inner.endsWith('"')))
+  ) {
+    inner = inner.slice(1, -1);
+  }
   if (!inner.startsWith(DATA_PREFIX)) return "";
   try {
     return decodeURIComponent(inner.slice(DATA_PREFIX.length));
