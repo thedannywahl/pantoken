@@ -121,9 +121,16 @@ const PROPERTY_SYNTAX: [RegExp, string][] = [
 ];
 
 /**
- * Follow a token's `refersTo` chain to find the next token, or undefined if the chain ends.
+ * Check if a token has a concrete (non-wildcard) syntax.
  */
-function followTokenChain(
+function hasConcretesSyntax(token: Token | undefined): boolean {
+  return !!(token?.syntax && token.syntax !== "*");
+}
+
+/**
+ * Try to follow a token's `refersTo` chain.
+ */
+function getNextChainToken(
   token: Token | undefined,
   lookup: Map<string, Token>,
   seen: Set<string>,
@@ -141,6 +148,29 @@ function inferFromTokenValue(token: Token | undefined): string | undefined {
 }
 
 /**
+ * Recursively walk a token's `refersTo` chain for the first concrete `syntax`,
+ * else infer from its terminal value.
+ */
+function walkTokenChain(
+  token: Token | undefined,
+  lookup: Map<string, Token>,
+  seen: Set<string>,
+): string | undefined {
+  // Base case: no token.
+  if (!token) return undefined;
+
+  // Concrete syntax found.
+  if (hasConcretesSyntax(token)) return token.syntax!;
+
+  // Try to follow the chain.
+  const next = getNextChainToken(token, lookup, seen);
+  if (next) return walkTokenChain(next, lookup, seen);
+
+  // No more chain, try inferring from value.
+  return inferFromTokenValue(token);
+}
+
+/**
  * Walk a token's `refersTo` chain for the first concrete `syntax`, else infer from its terminal value.
  * `lookup` (the token index, defaulting to the module's) is injectable so the chain-walk is testable.
  */
@@ -148,27 +178,8 @@ export function syntaxFromChain(
   name: string,
   lookup: Map<string, Token> = tokenByName,
 ): string | undefined {
-  const seen = new Set<string>();
-  let token = lookup.get(name);
-
-  while (token) {
-    // Return concrete syntax if found.
-    if (token.syntax && token.syntax !== "*") {
-      return token.syntax;
-    }
-
-    // Try to follow the chain.
-    const next = followTokenChain(token, lookup, seen);
-    if (next) {
-      token = next;
-      continue;
-    }
-
-    // Infer from terminal value and stop.
-    return inferFromTokenValue(token);
-  }
-
-  return undefined;
+  const token = lookup.get(name);
+  return walkTokenChain(token, lookup, new Set<string>());
 }
 
 /**
