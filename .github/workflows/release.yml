@@ -83,7 +83,7 @@ jobs:
       #    (actions/setup-node#1551). Strip it so npm does the token exchange.
       - name: Prepare npm for OIDC publishing
         run: |
-          npm install -g npm@12.0.1
+          npm install -g npm@12.0.1 --integrity sha512-L5T9i/YAQWQWqTS/xZxJkei/9zcu99hCeE4qi41IyBVV7mRQad3qc2JfuOktwmH+qwGI/V2rbCL+/UYxb1+RQA==
           npmrc="${NPM_CONFIG_USERCONFIG:-$HOME/.npmrc}"
           if [ -f "$npmrc" ]; then sed -i '/_authToken/d' "$npmrc"; fi
           echo "using npm $(npm --version)"
