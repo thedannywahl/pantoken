@@ -15,8 +15,96 @@ coverage:
         target: 85%
         threshold: 1%
 comment:
-  layout: "reach, diff, flags, files"
+  layout: "reach, diff, flags, components, files"
   require_changes: true
+# Carry forward coverage for workspace groups not tested in a scoped PR run.
+flag_management:
+  default_rules:
+    carryforward: true
+    statuses:
+      - type: project
+        target: auto
+        threshold: 1%
+      - type: patch
+        target: auto
+# One component per meaningful package group; component_ids are stable — never rename.
+component_management:
+  default_rules:
+    statuses:
+      - type: project
+        target: auto
+        branches:
+          - "!main"
+  individual_components:
+    - component_id: core
+      name: core
+      paths:
+        - packages/core/**
+    - component_id: utils
+      name: utils
+      paths:
+        - packages/utils/**
+    - component_id: plugin-kit
+      name: plugin-kit
+      paths:
+        - packages/plugin-kit/**
+    - component_id: cli
+      name: cli
+      paths:
+        - packages/cli/**
+    - component_id: format-components
+      name: "format: components"
+      paths:
+        - formats/components/**
+    - component_id: format-css
+      name: "format: css"
+      paths:
+        - formats/css/**
+        - formats/scss/**
+        - formats/less/**
+        - formats/stylus/**
+    - component_id: format-icons
+      name: "format: icons"
+      paths:
+        - formats/icons/**
+        - formats/icon-font/**
+    - component_id: format-tokens
+      name: "format: tokens"
+      paths:
+        - formats/tokens/**
+        - formats/dtcg/**
+    - component_id: web-components
+      name: web-components
+      paths:
+        - renderers/web-components/**
+    - component_id: renderers
+      name: renderers
+      paths:
+        - renderers/**
+    - component_id: bundlers
+      name: bundlers
+      paths:
+        - bundlers/**
+    - component_id: platforms
+      name: platforms
+      paths:
+        - platforms/**
+    - component_id: plugins
+      name: plugins
+      paths:
+        - plugins/**
+    - component_id: tools
+      name: tools
+      paths:
+        - tools/**
+    - component_id: scripts
+      name: scripts
+      paths:
+        - scripts/**
+    - component_id: docs
+      name: docs
+      paths:
+        - docs/**
 # Mirror the coverage include/exclude in vite.config.ts so the two agree on what counts.
 # packages/model is type-only (no runtime statements) — exempt so it can't drag the total.
 ignore:

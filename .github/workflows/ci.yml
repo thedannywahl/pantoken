@@ -130,6 +130,20 @@ jobs:
         env:
           CHANGED_BASE: ${{ github.event.pull_request.base.sha }}
         run: node scripts/release/changed-packages.ts
+      # Workspace-group flags let Codecov carry forward coverage for groups not tested on a scoped PR.
+      - name: Compute upload flags
+        id: flags
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          PATHS: ${{ steps.changed.outputs.paths }}
+        run: |
+          if [[ "${EVENT}" != "pull_request" ]]; then
+            echo "value=packages,formats,renderers,bundlers,platforms,plugins,tools,scripts,docs,ai,design" >> "$GITHUB_OUTPUT"
+          else
+            flags=$(printf '%s\n' "${PATHS//,/$'\n'}" | cut -d'/' -f1 | sort -u | paste -sd,)
+            echo "value=${flags}" >> "$GITHUB_OUTPUT"
+          fi
       # Full coverage on push to main (keeps Codecov's project baseline accurate); on PRs, only the
       # changed packages + dependents run, so we don't test the whole workspace every time. The 85%
       # threshold floor (vite.config.ts) fails the run either way.
@@ -143,7 +157,7 @@ jobs:
         run: |
           if [[ "${EVENT}" != "pull_request" ]]; then
             vp run -r build
-            vp run test:coverage
+            vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
             echo "ran=true" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [[ "${SCOPE}" == "none" ]]; then
@@ -152,11 +166,11 @@ jobs:
           fi
           vp run -r build
           if [[ "${SCOPE}" == "all" ]]; then
-            vp run test:coverage
+            vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
           else
             IFS=',' read -ra dirs <<< "${PATHS}"
             echo "scoped coverage: ${dirs[*]}"
-            vp test "${dirs[@]}" --coverage
+            vp test "${dirs[@]}" --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
           fi
           echo "ran=true" >> "$GITHUB_OUTPUT"
       - name: Upload coverage to Codecov
@@ -165,7 +179,13 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
+          flags: ${{ steps.flags.outputs.value }}
           fail_ci_if_error: false
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() && steps.cov.outputs.ran == 'true' }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   fallow:
     needs: build

@@ -20,6 +20,7 @@
   "devDependencies": {
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",
+    "@codecov/vite-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/eslint-plugin": "catalog:",
