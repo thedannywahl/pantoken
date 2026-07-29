@@ -1,5 +1,63 @@
 # CHANGELOG
 
+## 0.1.9
+
+### Patch Changes
+
+- 2e5bb88: Fix CI failures and resolve CodeQL security findings: add missing @eslint/css dependency; fix file-system-race (TOCTOU) in typedoc-plugin-demo (atomic writes, no existsSync guard), typedoc-plugin-live-example (Dirent-based readdir), and upstream-diff (try/catch instead of existsSync); fix polynomial-redos in utils, drupal, dtcg, figma, core, and react-markdown; fix prototype pollution in dtcg; add top-level permissions: read-all to release and copilot-setup-steps workflows; mark test files as fallow entry points.
+- Updated dependencies [2e5bb88]
+- Updated dependencies [2e5bb88]
+- Updated dependencies [2e5bb88]
+- Updated dependencies [2e5bb88]
+  - @pantoken/drupal@0.1.6
+  - @pantoken/dtcg@0.1.4
+  - @pantoken/figma@0.1.4
+  - @pantoken/react-markdown@0.1.4
+  - @pantoken/tokens@0.2.1
+  - @pantoken/android@0.1.6
+  - @pantoken/compose@0.1.6
+  - @pantoken/flutter@0.1.6
+  - @pantoken/swift@0.1.6
+  - @pantoken/cli@0.1.7
+  - @pantoken/panda@0.1.5
+  - @pantoken/swatches@0.1.5
+  - @pantoken/components@0.2.4
+  - @pantoken/css@0.2.4
+  - @pantoken/less@0.1.5
+  - @pantoken/scss@0.1.5
+  - @pantoken/stylus@0.1.5
+  - @pantoken/email@0.1.5
+  - @pantoken/vanilla@0.1.4
+  - @pantoken/wordpress@0.1.4
+  - @pantoken/plugin-primitives@0.1.5
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/css-in-js@0.1.5
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.1
+  - @pantoken/mintlify@0.1.5
+  - @pantoken/mui@0.1.5
+  - @pantoken/pendo@0.1.6
+  - @pantoken/react-native@0.1.5
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/storybook@0.1.5
+  - @pantoken/vitepress@0.1.1
+  - @pantoken/angular@0.1.7
+  - @pantoken/astro@0.1.5
+  - @pantoken/react@0.1.7
+  - @pantoken/svelte@0.1.7
+  - @pantoken/vue@0.1.7
+  - @pantoken/web-components@0.2.5
+  - @pantoken/postcss@0.1.5
+  - @pantoken/vite@0.1.5
+  - @pantoken/webpack@0.1.5
+  - @pantoken/plugin-logos@0.1.5
+  - @pantoken/plugin-simple-icons@0.1.4
+  - @pantoken/plugin-stacking@0.1.6
+  - @pantoken/plugin-transition@0.1.5
+  - @pantoken/plugin-visual-debug@0.1.6
+  - @pantoken/markdown-it@0.1.3
+  - @pantoken/rehype@0.1.3
+
 ## 0.1.8
 
 ### Patch Changes

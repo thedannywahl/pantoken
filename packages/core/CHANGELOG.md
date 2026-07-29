@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.5
+
+### Patch Changes
+
+- 2e5bb88: Integrate fast-check property-based testing framework to replace jazzer.js fuzzer infrastructure.
+- 2e5bb88: Refactor shapeToPathData function to reduce cyclomatic complexity by extracting SVG shape conversion logic into separate helper functions.
+- Updated dependencies [2e5bb88]
+  - @pantoken/utils@0.2.3
+  - @pantoken/plugin-kit@0.1.4
+
 ## 0.1.4
 
 ### Patch Changes

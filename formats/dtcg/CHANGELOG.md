@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- 2e5bb88: Add fast-check to devDependencies and create property-based tests for DTCG transform functionality.
+- Updated dependencies [2e5bb88]
+  - @pantoken/utils@0.2.3
+
 ## 0.1.3
 
 ### Patch Changes

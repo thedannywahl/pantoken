@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/css",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Emit Instructure design tokens as @property-typed CSS with light-dark() and icon data-URIs, from the pantoken IR.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

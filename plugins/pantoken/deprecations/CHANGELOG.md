@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.1.4
+
 ## 0.2.0
 
 ### Minor Changes
