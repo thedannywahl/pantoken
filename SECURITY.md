@@ -6,6 +6,26 @@ pantoken publishes many small packages from this monorepo, all versioned togethe
 latest published release of each package. Fixes land on `main` and ship in the next release; we don't
 backport to older lines.
 
+## Security requirements and scope
+
+pantoken is a design-token transformation and distribution system. It converts Instructure design tokens and icons into CSS, framework integrations, build-tool plugins, design-tool data, and generated platform source. It is not an authentication, authorization, cryptography, or application-security library.
+
+### What users can expect
+
+- Published downstream packages use a vendored, versioned token model and do not require consumers to retrieve the GitHub-hosted upstream design-token source.
+- Generated output is reproducible from the repository source and pinned dependencies.
+- npm releases include provenance linking the package to its source commit and GitHub Actions workflow.
+- The project tests token resolution, output generation, reference integrity, package exports, and supported integrations in continuous integration.
+- Reported vulnerabilities affecting the latest release will be investigated and, when confirmed, fixed in a subsequent release.
+
+### Security boundaries and limitations
+
+- Token values, plugin implementations, configuration files, Markdown, HTML, and other caller-provided content must be treated as trusted input unless the relevant package explicitly documents otherwise.
+- pantoken emitters transform input into CSS, JavaScript, JSON, markup, or platform source. They are not a general-purpose sanitizer for untrusted input. Passing attacker-controlled values to an emitter or plugin may produce unsafe output, including CSS, markup, or code injection.
+- Generated stylesheets, components, and framework integrations do not provide an application security boundary. Applications remain responsible for authentication, authorization, output encoding, Content Security Policy, browser security, and safe handling of user content.
+- pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Only trusted plugins and configuration should be used.
+- The CLI writes generated files to caller-selected locations. Do
+
 ## Reporting a vulnerability
 
 Please report security issues privately. Don't open a public issue for anything security-sensitive.
