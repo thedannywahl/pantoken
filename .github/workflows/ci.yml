@@ -105,7 +105,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      # Tokenless Codecov upload via OIDC (public repo).
       id-token: write
     steps:
       - name: Checkout code
@@ -164,7 +163,7 @@ jobs:
         if: steps.cov.outputs.ran == 'true'
         uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
         with:
-          use_oidc: true
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
           fail_ci_if_error: false
 
