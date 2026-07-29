@@ -24,6 +24,7 @@
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/eslint-plugin": "catalog:",
     "@cssdoc/stylelint-plugin": "catalog:",
+    "@eslint/css": "catalog:",
     "@manypkg/cli": "catalog:",
     "@typescript-eslint/parser": "catalog:",
     "@vitest/coverage-v8": "catalog:",

@@ -61,8 +61,17 @@ const mkdirSync = vi.fn();
 vi.mock("node:fs", () => ({
   existsSync: (p: string) =>
     String(p).endsWith("baseline/manifest.json") ? state.existsBaseline : true,
-  readFileSync: (p: string) =>
-    String(p).endsWith("baseline/manifest.json") ? state.baselineJson : state.ledgerJson,
+  readFileSync: (p: string) => {
+    if (String(p).endsWith("baseline/manifest.json")) {
+      if (!state.existsBaseline) {
+        const error = new Error("ENOENT: no such file or directory");
+        (error as NodeJS.ErrnoException).code = "ENOENT";
+        throw error;
+      }
+      return state.baselineJson;
+    }
+    return state.ledgerJson;
+  },
   writeFileSync: (...args: unknown[]) => writeFileSync(...args),
   mkdirSync: (...args: unknown[]) => mkdirSync(...args),
 }));

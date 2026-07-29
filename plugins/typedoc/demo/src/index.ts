@@ -27,7 +27,7 @@
  * @module
  * @beta
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { Converter, RendererEvent } from "typedoc";
 import type {
@@ -170,6 +170,8 @@ function rewriteModuleHeading(indexPath: string, title: string, modulePath: stri
 
 function normalizeDocsOutput(outputDirectory: string): void {
   const sidebarPath = join(outputDirectory, "typedoc-sidebar.json");
+
+  if (!existsSync(sidebarPath)) return;
 
   try {
     const sidebar = JSON.parse(readFileSync(sidebarPath, "utf8")) as SidebarItem[];

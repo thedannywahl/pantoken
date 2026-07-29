@@ -232,6 +232,9 @@ catalogs:
     '@cssdoc/typedoc':
       specifier: ^0.7.9
       version: 0.7.9
+    '@eslint/css':
+      specifier: ^1.4.0
+      version: 1.4.0
     '@instructure/instructure-design-tokens':
       specifier: github:instructure/instructure-design-tokens#v1.5.0
       version: 1.0.0
@@ -433,6 +436,9 @@ importers:
       '@cssdoc/stylelint-plugin':
         specifier: 'catalog:'
         version: 0.7.9(stylelint@17.14.1(typescript@5.6.1-rc))
+      '@eslint/css':
+        specifier: 'catalog:'
+        version: 1.4.0
       '@manypkg/cli':
         specifier: 'catalog:'
         version: 0.25.1
@@ -9467,14 +9473,12 @@ snapshots:
     dependencies:
       mdn-data: 2.29.0
       source-map-js: 1.2.1
-    optional: true
 
   '@eslint/css@1.4.0':
     dependencies:
       '@eslint/core': 1.2.1
       '@eslint/css-tree': 4.0.5
       '@eslint/plugin-kit': 0.7.2
-    optional: true
 
   '@eslint/object-schema@3.0.5': {}
 
@@ -13695,8 +13699,7 @@ snapshots:
 
   mdn-data@2.27.1: {}
 
-  mdn-data@2.29.0:
-    optional: true
+  mdn-data@2.29.0: {}
 
   mdurl@2.1.0: {}
 
