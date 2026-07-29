@@ -52,6 +52,15 @@ function isColorValue(v: string): boolean {
   );
 }
 
+/** Patterns for inferring CSS value types, matched in order (most specific first). */
+const SYNTAX_PATTERNS: [RegExp, string][] = [
+  [/^(?:url\(|data:)/iu, "<url>"],
+  [/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu, "<length>"],
+  [/^-?\d*\.?\d+m?s$/iu, "<time>"],
+  [/^-?\d+$/u, "<integer>"],
+  [/^-?\d*\.?\d+$/u, "<number>"],
+];
+
 /**
  * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry
  * `syntax: "*"` (they're contextual `var()` aliases or `light-dark()` pairs that can't be a static
@@ -63,11 +72,10 @@ export function inferSyntax(value: string): string | undefined {
   if (/^(?:url\(|data:)/iu.test(v)) return "<url>";
   // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
   if (isColorValue(v)) return "<color>";
-  if (/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu.test(v))
-    return "<length>";
-  if (/^-?\d*\.?\d+m?s$/iu.test(v)) return "<time>";
-  if (/^-?\d+$/u.test(v)) return "<integer>";
-  if (/^-?\d*\.?\d+$/u.test(v)) return "<number>";
+  // Check numeric and time patterns in order.
+  for (const [pattern, syntax] of SYNTAX_PATTERNS) {
+    if (pattern.test(v)) return syntax;
+  }
   return undefined;
 }
 
@@ -103,17 +111,27 @@ export function syntaxFromChain(
 ): string | undefined {
   const seen = new Set<string>();
   let token = lookup.get(name);
+
   while (token) {
+    // Return concrete syntax if found.
     if (token.syntax && token.syntax !== "*") return token.syntax;
+
+    // Follow the chain if not seen.
     if (token.refersTo && !seen.has(token.refersTo)) {
       seen.add(token.refersTo);
       token = lookup.get(token.refersTo);
       continue;
     }
-    const inferred = token.value ? inferSyntax(token.value) : undefined;
-    if (inferred) return inferred;
+
+    // Infer from terminal value.
+    if (token.value) {
+      const inferred = inferSyntax(token.value);
+      if (inferred) return inferred;
+    }
+
     break;
   }
+
   return undefined;
 }
 
@@ -128,12 +146,15 @@ export function resolveSyntax(
   locals: Map<string, string> = localVars,
   resolve: (value: string) => string = resolveValue,
 ): string | undefined {
+  // Try the chain first.
   const chained = syntaxFromChain(name, lookup);
   if (chained) return chained;
-  // Composite/keyword property grammar by name (font-family, box-shadow, glyph, …) takes precedence
-  // over primitive inference; then fall back to inferring from a sheet-local value.
+
+  // Composite/keyword property grammar by name takes precedence.
   const prop = PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
   if (prop) return prop;
+
+  // Fall back to inferring from a sheet-local value.
   const local = locals.get(name);
   return local ? inferSyntax(resolve(local)) : undefined;
 }
@@ -152,6 +173,7 @@ export function resolveToken(
   const syntax = resolveSyntax(name, lookup, locals, resolve);
   const raw = lookup.get(name)?.value ?? locals.get(name);
   const value = raw ? resolve(raw) : undefined;
+
   return syntax || value ? { syntax, value } : undefined;
 }
 
@@ -293,6 +315,64 @@ export function makeSourceResolver(
 }
 
 /**
+ * Index sheets to find which sheet each CSS record belongs to.
+ */
+function indexRecordSheets(
+  sheets: string[],
+  configuration: ReturnType<CssDocConfigFile["toConfiguration"]>,
+  readSheet: (subpath: string) => string,
+): Map<string, string> {
+  const recordSheet = new Map<string, string>();
+  for (const sheet of sheets) {
+    for (const e of parseCssDocs(readSheet(sheet), { configuration })) {
+      recordSheet.set(e.name, sheet);
+    }
+  }
+  return recordSheet;
+}
+
+/**
+ * Index plugin imports to find which plugin import each record belongs to.
+ */
+function indexPluginImports(
+  pluginRecordDefs: PluginRecord[],
+  configuration: ReturnType<CssDocConfigFile["toConfiguration"]>,
+  readPluginSheet: (r: PluginRecord) => string,
+): Map<string, string> {
+  const pluginImportByName = new Map<string, string>();
+  for (const r of pluginRecordDefs) {
+    for (const e of parseCssDocs(readPluginSheet(r), { configuration })) {
+      pluginImportByName.set(e.name, r.import);
+    }
+  }
+  return pluginImportByName;
+}
+
+/**
+ * Generate the import snippet for a CSS record.
+ */
+function generateImportSnippet(
+  entry: CssDocEntry,
+  pluginImportByName: Map<string, string>,
+  recordSheet: Map<string, string>,
+): string | undefined {
+  const pluginImport = pluginImportByName.get(entry.name);
+  if (pluginImport) return `@import "${pluginImport}";`;
+
+  const sheet = recordSheet.get(entry.name);
+  if (!sheet) return undefined;
+
+  if (entry.kind === "component") {
+    return [
+      `@import "@pantoken/components/${sheet}";`,
+      `@import "@pantoken/components/${entry.name}.css";`,
+    ].join("\n");
+  }
+
+  return `@import "@pantoken/components/${sheet}";`;
+}
+
+/**
  * The `## Usage` import-snippet hook: a record's plugin `@import`, else the record's sheet import
  * `@pantoken/components/<sheet>` (plus the per-component `<name>.css` subpath for components).
  */
@@ -304,27 +384,11 @@ export function makeImportSnippet(
   readSheet: (subpath: string) => string = readCss,
   readPluginSheet: (r: PluginRecord) => string = (r) => readFileSync(pluginSheet(r), "utf8"),
 ): (entry: CssDocEntry) => string | undefined {
-  const recordSheet = new Map<string, string>();
-  for (const sheet of sheets)
-    for (const e of parseCssDocs(readSheet(sheet), { configuration }))
-      recordSheet.set(e.name, sheet);
-  const pluginImportByName = new Map<string, string>();
-  for (const r of pluginRecordDefs)
-    for (const e of parseCssDocs(readPluginSheet(r), { configuration }))
-      pluginImportByName.set(e.name, r.import);
-  return (entry: CssDocEntry): string | undefined => {
-    const pluginImport = pluginImportByName.get(entry.name);
-    if (pluginImport) return `@import "${pluginImport}";`;
-    const sheet = recordSheet.get(entry.name);
-    if (!sheet) return undefined;
-    if (entry.kind === "component") {
-      return [
-        `@import "@pantoken/components/${sheet}";`,
-        `@import "@pantoken/components/${entry.name}.css";`,
-      ].join("\n");
-    }
-    return `@import "@pantoken/components/${sheet}";`;
-  };
+  const recordSheet = indexRecordSheets(sheets, configuration, readSheet);
+  const pluginImportByName = indexPluginImports(pluginRecordDefs, configuration, readPluginSheet);
+
+  return (entry: CssDocEntry): string | undefined =>
+    generateImportSnippet(entry, pluginImportByName, recordSheet);
 }
 
 /**
