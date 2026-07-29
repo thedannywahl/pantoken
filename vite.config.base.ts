@@ -40,3 +40,5 @@ export function extendBase(overrides: ViteUserConfig): ViteUserConfig {
     overrides as unknown as Record<string, unknown>,
   ) as ViteUserConfig;
 }
+
+export default baseConfig;
