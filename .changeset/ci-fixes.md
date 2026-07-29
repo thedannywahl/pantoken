@@ -1,6 +1,7 @@
 ---
 "@pantoken/pantoken": patch
 "@pantoken/typedoc-plugin-demo": patch
+"@pantoken/typedoc-plugin-live-example": patch
 ---
 
-Fix CI failures: add missing @eslint/css dependency, add existsSync check in typedoc plugin to prevent unnecessary file reads, update upstream-diff test mock to throw errors when baseline file doesn't exist, and mark test files as entry points in fallow config to prevent dead-code regressions.
+Fix CI failures and resolve CodeQL security findings: add missing @eslint/css dependency; fix file-system-race (TOCTOU) in typedoc-plugin-demo (atomic writes, no existsSync guard), typedoc-plugin-live-example (Dirent-based readdir), and upstream-diff (try/catch instead of existsSync); fix polynomial-redos in utils, drupal, dtcg, figma, core, and react-markdown; fix prototype pollution in dtcg; add top-level permissions: read-all to release and copilot-setup-steps workflows; mark test files as fallow entry points.
