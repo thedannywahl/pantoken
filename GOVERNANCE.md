@@ -89,19 +89,19 @@ Users are encouraged to:
 
 Users do not have commit or release privileges unless they are also maintainers.
 
-# Project Continuity
+## Project Continuity
 
-## Goal
+### Goal
 
 Pantoken is intended to remain maintainable even if the current maintainer becomes unavailable due to death, incapacity, or other long-term absence.
 
-## Repository Access
+### Repository Access
 
 The project source code, issue tracker, release history, and documentation are hosted publicly on GitHub.
 
 If the maintainer becomes permanently unavailable, a designated trusted individual will be granted ownership or administrative access to the repository as soon as practical.
 
-## Credentials
+### Credentials
 
 The following credentials and assets required to maintain the project are documented and stored in an encrypted password manager with emergency-access provisions:
 
@@ -110,7 +110,7 @@ The following credentials and assets required to maintain the project are docume
 - Domain registration credentials (if applicable)
 - Code signing keys (if applicable)
 
-## Transfer of Responsibility
+### Transfer of Responsibility
 
 The designated successor will have access to the information necessary to:
 
@@ -122,6 +122,6 @@ The designated successor will have access to the information necessary to:
 
 The goal is to restore normal project maintenance within one week of confirming that the original maintainer can no longer support the project.
 
-## Open Source Rights
+### Open Source Rights
 
 The project is licensed under an OSI-approved open source license. The repository history and documentation remain publicly available so that maintenance may continue by successor maintainers or the community if necessary.
