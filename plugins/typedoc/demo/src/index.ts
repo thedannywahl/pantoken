@@ -27,7 +27,7 @@
  * @module
  * @beta
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, renameSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { Converter, RendererEvent } from "typedoc";
 import type {
@@ -156,29 +156,37 @@ function replaceFirstLine(content: string, oldText: string, newText: string): st
 }
 
 function rewriteModuleHeading(indexPath: string, title: string, modulePath: string): void {
-  if (!existsSync(indexPath)) return;
-
-  const original = readFileSync(indexPath, "utf8");
-  const withHeading = original.replace(/^#\s+.+$/m, `# ${title}`);
-  const final = replaceFirstLine(withHeading, ` / ${modulePath}`, ` / ${title}`);
-  if (final !== original) {
-    writeFileSync(indexPath, final, "utf8");
+  try {
+    const original = readFileSync(indexPath, "utf8");
+    const withHeading = original.replace(/^#\s+.+$/m, `# ${title}`);
+    const final = replaceFirstLine(withHeading, ` / ${modulePath}`, ` / ${title}`);
+    if (final !== original) {
+      // Write to a temp path first, then rename atomically to avoid TOCTOU.
+      const tmp = `${indexPath}.tmp`;
+      writeFileSync(tmp, final, "utf8");
+      renameSync(tmp, indexPath);
+    }
+  } catch {
+    // File was deleted, moved, or permissions changed; skip it
   }
 }
 
 function normalizeDocsOutput(outputDirectory: string): void {
   const sidebarPath = join(outputDirectory, "typedoc-sidebar.json");
-  if (!existsSync(sidebarPath)) return;
 
-  const sidebar = JSON.parse(readFileSync(sidebarPath, "utf8")) as SidebarItem[];
-  const moduleTargets: ModuleTarget[] = [];
-  const normalized = flattenSrcNodes(sidebar, moduleTargets);
+  try {
+    const sidebar = JSON.parse(readFileSync(sidebarPath, "utf8")) as SidebarItem[];
+    const moduleTargets: ModuleTarget[] = [];
+    const normalized = flattenSrcNodes(sidebar, moduleTargets);
 
-  writeFileSync(sidebarPath, `${JSON.stringify(normalized, null, 2)}\n`, "utf8");
+    writeFileSync(sidebarPath, `${JSON.stringify(normalized, null, 2)}\n`, "utf8");
 
-  for (const target of moduleTargets) {
-    const moduleIndexPath = join(outputDirectory, target.link, "index.md");
-    rewriteModuleHeading(moduleIndexPath, target.title, target.link);
+    for (const target of moduleTargets) {
+      const moduleIndexPath = join(outputDirectory, target.link, "index.md");
+      rewriteModuleHeading(moduleIndexPath, target.title, target.link);
+    }
+  } catch {
+    // Sidebar file was deleted, moved, or permissions changed; skip normalization
   }
 }
 

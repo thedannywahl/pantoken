@@ -111,7 +111,7 @@ export function toFigmaVariables(
     if (lightColor) {
       type = "COLOR";
       toValue = (v) => toFigmaColor(v) ?? lightColor;
-    } else if (/^-?\d*\.?\d+(px|rem|em)?$/.test(lightValue.trim())) {
+    } else if (/^-?(?:\d+(?:\.\d*)?|\.\d+)(px|rem|em)?$/.test(lightValue.trim())) {
       type = "FLOAT";
       toValue = (v) => Number.parseFloat(v);
     } else {

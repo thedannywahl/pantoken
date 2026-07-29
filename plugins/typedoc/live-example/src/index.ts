@@ -17,16 +17,16 @@
  * @module
  * @beta
  */
-import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { type Application, ParameterType, RendererEvent } from "typedoc";
 
-/** A fenced `html` block and its inner markup. */
-const HTML_FENCE = /```html\n([\s\S]*?)\n```/gu;
+/** A fenced `html` block and its inner markup. Uses a negative lookahead to prevent ambiguous backtracking. */
+const HTML_FENCE = /```html\n((?:(?!\n```).)*)\n```/gsu;
 
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
 function isOverlay(html: string): boolean {
-  return /^<dialog\b/u.test(html.trim()) || /\spopover(?:=|\s|>)/u.test(html);
+  return /^<dialog\b/u.test(html.trim()) || /\spopover(?:=|[\s>])/u.test(html);
 }
 
 /** Options controlling how a live-example preview is built. */
@@ -81,17 +81,21 @@ export function withLiveExamples(markdown: string, options: LiveExampleOptions =
  */
 export function injectLiveExamples(dir: string, options: LiveExampleOptions = {}): number {
   let changed = 0;
-  for (const name of readdirSync(dir)) {
-    const path = join(dir, name);
-    if (statSync(path).isDirectory()) {
-      changed += injectLiveExamples(path, options);
-    } else if (name.endsWith(".md")) {
-      const before = readFileSync(path, "utf8");
-      const after = withLiveExamples(before, options);
-      if (after !== before) {
-        writeFileSync(path, after, "utf8");
-        changed++;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    try {
+      if (entry.isDirectory()) {
+        changed += injectLiveExamples(path, options);
+      } else if (entry.name.endsWith(".md")) {
+        const before = readFileSync(path, "utf8");
+        const after = withLiveExamples(before, options);
+        if (after !== before) {
+          writeFileSync(path, after, "utf8");
+          changed++;
+        }
       }
+    } catch {
+      // File was deleted, moved, or permissions changed between directory enumeration and access; skip it
     }
   }
   return changed;

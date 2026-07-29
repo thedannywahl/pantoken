@@ -193,7 +193,11 @@ export function createInstuiMarkdownComponents(
       if (inline) {
         return <Text as="code">{children}</Text>;
       }
-      const language = showLanguage ? className?.replace(/.*language-/, "") : undefined;
+      const LANG_PREFIX = "language-";
+      const language =
+        showLanguage && className?.startsWith(LANG_PREFIX)
+          ? className.slice(LANG_PREFIX.length)
+          : undefined;
       return createElement("code", { className, "data-language": language }, children);
     },
     pre: ({ children }) => (

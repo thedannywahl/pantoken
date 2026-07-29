@@ -40,3 +40,8 @@ export function extendBase(overrides: ViteUserConfig): ViteUserConfig {
     overrides as unknown as Record<string, unknown>,
   ) as ViteUserConfig;
 }
+
+// Vitest scans for vite.config.*.ts files and needs a default export to recognize this as a valid config.
+// This is not used as a configuration file in practice; packages import via extendBase() instead.
+// fallow-ignore-next-line unused-export
+export default baseConfig;

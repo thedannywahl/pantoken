@@ -1,7 +1,14 @@
 import { defineConfig } from "vite-plus";
+import { fileURLToPath } from "node:url";
+import { dirname } from "node:path";
+
+const __dir = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   test: {
+    // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
+    // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
+    setupFiles: [`${__dir}/scripts/quality/fast-check-setup.ts`],
     include: [
       "packages/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "formats/**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -187,6 +194,20 @@ export default defineConfig({
         command:
           'vp exec eslint "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
         dependsOn: ["build:all"],
+      },
+      // ── Property-based testing ────────────────────────────────────────────────────────────────
+      // `vp test` already runs property tests at 100 iterations (the fast default); that is part of
+      // `test:coverage` in `ready:all`. `property:stress` runs only the property test files with
+      // 10 000 iterations per property — used by the weekly `property.yml` CI workflow and for
+      // on-demand deep checks before a release. `FC_NUM_RUNS` is read by
+      // `scripts/quality/fast-check-setup.ts`, which is wired as a Vitest `setupFiles` entry.
+      "property:stress": {
+        command: 'FC_NUM_RUNS=10000 vp test "property.test" --reporter=verbose',
+        dependsOn: ["build:all"],
+      },
+      // Convenience alias matching the security: namespace convention.
+      "security:property:stress": {
+        command: "vp run property:stress",
       },
       "changeset:add": {
         command: "vpx changeset",

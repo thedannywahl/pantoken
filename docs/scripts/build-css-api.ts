@@ -44,12 +44,44 @@ let resolveValue = makeResolver(tokens);
  */
 const localVars = new Map<string, string>();
 
-/** A resolved value that reads as a colour: a `light-dark()` pair or a hex / rgb / hsl / oklch / lab / color() form. */
-function isColorValue(v: string): boolean {
-  return (
+/**
+ * Patterns for inferring CSS value types. Integrated URL patterns with numeric/time patterns.
+ * Matched in order (most specific first).
+ */
+const SYNTAX_PATTERNS: [RegExp, string][] = [
+  // URL and data patterns (most specific).
+  [/^(?:url\(|data:)/iu, "<url>"],
+  // Length patterns with all units.
+  [/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu, "<length>"],
+  // Time patterns (milliseconds and seconds).
+  [/^-?\d*\.?\d+m?s$/iu, "<time>"],
+  // Integer pattern.
+  [/^-?\d+$/u, "<integer>"],
+  // Decimal number pattern.
+  [/^-?\d*\.?\d+$/u, "<number>"],
+];
+
+/**
+ * Check if a value is a color (themed value, hex, rgb, hsl, etc.).
+ */
+function getColorSyntax(v: string): string | undefined {
+  if (
     /light-dark\s*\(/iu.test(v) ||
     /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
-  );
+  ) {
+    return "<color>";
+  }
+  return undefined;
+}
+
+/**
+ * Match a value against syntax patterns and return the matching syntax type.
+ */
+function matchSyntaxPattern(v: string): string | undefined {
+  for (const [pattern, syntax] of SYNTAX_PATTERNS) {
+    if (pattern.test(v)) return syntax;
+  }
+  return undefined;
 }
 
 /**
@@ -59,16 +91,11 @@ function isColorValue(v: string): boolean {
  */
 export function inferSyntax(value: string): string | undefined {
   const v = value.trim();
-  // A bare url()/data: value (the icon glyphs are url-encoded SVGs) is `<url>`, not the broader `<image>`.
-  if (/^url\(|data:/iu.test(v)) return "<url>";
-  // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
-  if (isColorValue(v)) return "<color>";
-  if (/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu.test(v))
-    return "<length>";
-  if (/^-?\d*\.?\d+m?s$/iu.test(v)) return "<time>";
-  if (/^-?\d+$/u.test(v)) return "<integer>";
-  if (/^-?\d*\.?\d+$/u.test(v)) return "<number>";
-  return undefined;
+  // Try color first (includes url/data detection).
+  const color = getColorSyntax(v);
+  if (color) return color;
+  // Then try pattern matching.
+  return matchSyntaxPattern(v);
 }
 
 /**
@@ -94,6 +121,56 @@ const PROPERTY_SYNTAX: [RegExp, string][] = [
 ];
 
 /**
+ * Check if a token has a concrete (non-wildcard) syntax.
+ */
+function hasConcretesSyntax(token: Token | undefined): boolean {
+  return !!(token?.syntax && token.syntax !== "*");
+}
+
+/**
+ * Try to follow a token's `refersTo` chain.
+ */
+function getNextChainToken(
+  token: Token | undefined,
+  lookup: Map<string, Token>,
+  seen: Set<string>,
+): Token | undefined {
+  if (!token?.refersTo || seen.has(token.refersTo)) return undefined;
+  seen.add(token.refersTo);
+  return lookup.get(token.refersTo);
+}
+
+/**
+ * Try to infer syntax from a token's value.
+ */
+function inferFromTokenValue(token: Token | undefined): string | undefined {
+  return token?.value ? inferSyntax(token.value) : undefined;
+}
+
+/**
+ * Recursively walk a token's `refersTo` chain for the first concrete `syntax`,
+ * else infer from its terminal value.
+ */
+function walkTokenChain(
+  token: Token | undefined,
+  lookup: Map<string, Token>,
+  seen: Set<string>,
+): string | undefined {
+  // Base case: no token.
+  if (!token) return undefined;
+
+  // Concrete syntax found.
+  if (hasConcretesSyntax(token)) return token.syntax!;
+
+  // Try to follow the chain.
+  const next = getNextChainToken(token, lookup, seen);
+  if (next) return walkTokenChain(next, lookup, seen);
+
+  // No more chain, try inferring from value.
+  return inferFromTokenValue(token);
+}
+
+/**
  * Walk a token's `refersTo` chain for the first concrete `syntax`, else infer from its terminal value.
  * `lookup` (the token index, defaulting to the module's) is injectable so the chain-walk is testable.
  */
@@ -101,20 +178,15 @@ export function syntaxFromChain(
   name: string,
   lookup: Map<string, Token> = tokenByName,
 ): string | undefined {
-  const seen = new Set<string>();
-  let token = lookup.get(name);
-  while (token) {
-    if (token.syntax && token.syntax !== "*") return token.syntax;
-    if (token.refersTo && !seen.has(token.refersTo)) {
-      seen.add(token.refersTo);
-      token = lookup.get(token.refersTo);
-      continue;
-    }
-    const inferred = token.value ? inferSyntax(token.value) : undefined;
-    if (inferred) return inferred;
-    break;
-  }
-  return undefined;
+  const token = lookup.get(name);
+  return walkTokenChain(token, lookup, new Set<string>());
+}
+
+/**
+ * Find the syntax for a property name in the PROPERTY_SYNTAX map.
+ */
+function findPropertySyntax(name: string): string | undefined {
+  return PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
 }
 
 /**
@@ -128,14 +200,28 @@ export function resolveSyntax(
   locals: Map<string, string> = localVars,
   resolve: (value: string) => string = resolveValue,
 ): string | undefined {
+  // Try the chain first.
   const chained = syntaxFromChain(name, lookup);
   if (chained) return chained;
-  // Composite/keyword property grammar by name (font-family, box-shadow, glyph, …) takes precedence
-  // over primitive inference; then fall back to inferring from a sheet-local value.
-  const prop = PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
+
+  // Composite/keyword property grammar by name takes precedence.
+  const prop = findPropertySyntax(name);
   if (prop) return prop;
+
+  // Fall back to inferring from a sheet-local value.
   const local = locals.get(name);
   return local ? inferSyntax(resolve(local)) : undefined;
+}
+
+/**
+ * Get the raw token value from either the token registry or local sheet variables.
+ */
+function getRawTokenValue(
+  name: string,
+  lookup: Map<string, Token>,
+  locals: Map<string, string>,
+): string | undefined {
+  return lookup.get(name)?.value ?? locals.get(name);
 }
 
 /**
@@ -150,8 +236,9 @@ export function resolveToken(
   resolve: (value: string) => string = resolveValue,
 ): { syntax?: string; value?: string } | undefined {
   const syntax = resolveSyntax(name, lookup, locals, resolve);
-  const raw = lookup.get(name)?.value ?? locals.get(name);
+  const raw = getRawTokenValue(name, lookup, locals);
   const value = raw ? resolve(raw) : undefined;
+
   return syntax || value ? { syntax, value } : undefined;
 }
 
@@ -293,6 +380,64 @@ export function makeSourceResolver(
 }
 
 /**
+ * Index sheets to find which sheet each CSS record belongs to.
+ */
+function indexRecordSheets(
+  sheets: string[],
+  configuration: ReturnType<CssDocConfigFile["toConfiguration"]>,
+  readSheet: (subpath: string) => string,
+): Map<string, string> {
+  const recordSheet = new Map<string, string>();
+  for (const sheet of sheets) {
+    for (const e of parseCssDocs(readSheet(sheet), { configuration })) {
+      recordSheet.set(e.name, sheet);
+    }
+  }
+  return recordSheet;
+}
+
+/**
+ * Index plugin imports to find which plugin import each record belongs to.
+ */
+function indexPluginImports(
+  pluginRecordDefs: PluginRecord[],
+  configuration: ReturnType<CssDocConfigFile["toConfiguration"]>,
+  readPluginSheet: (r: PluginRecord) => string,
+): Map<string, string> {
+  const pluginImportByName = new Map<string, string>();
+  for (const r of pluginRecordDefs) {
+    for (const e of parseCssDocs(readPluginSheet(r), { configuration })) {
+      pluginImportByName.set(e.name, r.import);
+    }
+  }
+  return pluginImportByName;
+}
+
+/**
+ * Generate the import snippet for a CSS record.
+ */
+function generateImportSnippet(
+  entry: CssDocEntry,
+  pluginImportByName: Map<string, string>,
+  recordSheet: Map<string, string>,
+): string | undefined {
+  const pluginImport = pluginImportByName.get(entry.name);
+  if (pluginImport) return `@import "${pluginImport}";`;
+
+  const sheet = recordSheet.get(entry.name);
+  if (!sheet) return undefined;
+
+  if (entry.kind === "component") {
+    return [
+      `@import "@pantoken/components/${sheet}";`,
+      `@import "@pantoken/components/${entry.name}.css";`,
+    ].join("\n");
+  }
+
+  return `@import "@pantoken/components/${sheet}";`;
+}
+
+/**
  * The `## Usage` import-snippet hook: a record's plugin `@import`, else the record's sheet import
  * `@pantoken/components/<sheet>` (plus the per-component `<name>.css` subpath for components).
  */
@@ -304,27 +449,11 @@ export function makeImportSnippet(
   readSheet: (subpath: string) => string = readCss,
   readPluginSheet: (r: PluginRecord) => string = (r) => readFileSync(pluginSheet(r), "utf8"),
 ): (entry: CssDocEntry) => string | undefined {
-  const recordSheet = new Map<string, string>();
-  for (const sheet of sheets)
-    for (const e of parseCssDocs(readSheet(sheet), { configuration }))
-      recordSheet.set(e.name, sheet);
-  const pluginImportByName = new Map<string, string>();
-  for (const r of pluginRecordDefs)
-    for (const e of parseCssDocs(readPluginSheet(r), { configuration }))
-      pluginImportByName.set(e.name, r.import);
-  return (entry: CssDocEntry): string | undefined => {
-    const pluginImport = pluginImportByName.get(entry.name);
-    if (pluginImport) return `@import "${pluginImport}";`;
-    const sheet = recordSheet.get(entry.name);
-    if (!sheet) return undefined;
-    if (entry.kind === "component") {
-      return [
-        `@import "@pantoken/components/${sheet}";`,
-        `@import "@pantoken/components/${entry.name}.css";`,
-      ].join("\n");
-    }
-    return `@import "@pantoken/components/${sheet}";`;
-  };
+  const recordSheet = indexRecordSheets(sheets, configuration, readSheet);
+  const pluginImportByName = indexPluginImports(pluginRecordDefs, configuration, readPluginSheet);
+
+  return (entry: CssDocEntry): string | undefined =>
+    generateImportSnippet(entry, pluginImportByName, recordSheet);
 }
 
 /**

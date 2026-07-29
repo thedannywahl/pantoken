@@ -24,7 +24,17 @@ const DATA_PREFIX = "data:image/svg+xml;utf8,";
  * ```
  */
 export function decodeIconSvg(value: string): string {
-  const inner = /^url\(\s*'?(.*?)'?\s*\)$/.exec(value.trim())?.[1] ?? value;
+  const trimmed = value.trim();
+  if (!trimmed.startsWith("url(") || !trimmed.endsWith(")")) return "";
+  // Strip `url(` and `)`, trim whitespace, then remove a matching pair of outer quotes.
+  let inner = trimmed.slice(4, -1).trim();
+  if (
+    inner.length >= 2 &&
+    ((inner.startsWith("'") && inner.endsWith("'")) ||
+      (inner.startsWith('"') && inner.endsWith('"')))
+  ) {
+    inner = inner.slice(1, -1);
+  }
   if (!inner.startsWith(DATA_PREFIX)) return "";
   try {
     return decodeURIComponent(inner.slice(DATA_PREFIX.length));
@@ -67,39 +77,56 @@ function nums(value: string | undefined): number[] {
     .map(Number);
 }
 
+/** Convert an SVG `<line>` to pathData. */
+function lineToPathData(el: string): string {
+  const [x1, y1, x2, y2] = [attr(el, "x1"), attr(el, "y1"), attr(el, "x2"), attr(el, "y2")].map(
+    Number,
+  );
+  return `M${x1},${y1} L${x2},${y2}`;
+}
+
+/** Convert an SVG `<circle>` to pathData. */
+function circleToPathData(el: string): string {
+  const cx = Number(attr(el, "cx"));
+  const cy = Number(attr(el, "cy"));
+  const r = Number(attr(el, "r"));
+  return `M${cx - r},${cy} a${r},${r} 0 1,0 ${r * 2},0 a${r},${r} 0 1,0 ${-r * 2},0`;
+}
+
+/** Convert an SVG `<rect>` to pathData. */
+function rectToPathData(el: string): string {
+  const x = Number(attr(el, "x") ?? "0");
+  const y = Number(attr(el, "y") ?? "0");
+  const w = Number(attr(el, "width"));
+  const h = Number(attr(el, "height"));
+  return `M${x},${y} h${w} v${h} h${-w} z`;
+}
+
+/** Convert an SVG `<polyline>` or `<polygon>` to pathData. */
+function polylineToPathData(el: string, isPolygon: boolean): string | undefined {
+  const pts = nums(attr(el, "points"));
+  if (pts.length < 4) return undefined;
+  const parts: string[] = [`M${pts[0]},${pts[1]}`];
+  for (let i = 2; i < pts.length; i += 2) parts.push(`L${pts[i]},${pts[i + 1]}`);
+  if (isPolygon) parts.push("z");
+  return parts.join(" ");
+}
+
 /** Convert a single SVG shape element to VectorDrawable `pathData`, or `undefined` if unsupported. */
 function shapeToPathData(tagName: string, el: string): string | undefined {
   switch (tagName) {
     case "path":
       return attr(el, "d");
-    case "line": {
-      const [x1, y1, x2, y2] = [attr(el, "x1"), attr(el, "y1"), attr(el, "x2"), attr(el, "y2")].map(
-        Number,
-      );
-      return `M${x1},${y1} L${x2},${y2}`;
-    }
-    case "circle": {
-      const cx = Number(attr(el, "cx"));
-      const cy = Number(attr(el, "cy"));
-      const r = Number(attr(el, "r"));
-      return `M${cx - r},${cy} a${r},${r} 0 1,0 ${r * 2},0 a${r},${r} 0 1,0 ${-r * 2},0`;
-    }
-    case "rect": {
-      const x = Number(attr(el, "x") ?? "0");
-      const y = Number(attr(el, "y") ?? "0");
-      const w = Number(attr(el, "width"));
-      const h = Number(attr(el, "height"));
-      return `M${x},${y} h${w} v${h} h${-w} z`;
-    }
+    case "line":
+      return lineToPathData(el);
+    case "circle":
+      return circleToPathData(el);
+    case "rect":
+      return rectToPathData(el);
     case "polyline":
-    case "polygon": {
-      const pts = nums(attr(el, "points"));
-      if (pts.length < 4) return undefined;
-      const parts: string[] = [`M${pts[0]},${pts[1]}`];
-      for (let i = 2; i < pts.length; i += 2) parts.push(`L${pts[i]},${pts[i + 1]}`);
-      if (tagName === "polygon") parts.push("z");
-      return parts.join(" ");
-    }
+      return polylineToPathData(el, false);
+    case "polygon":
+      return polylineToPathData(el, true);
     default:
       return undefined;
   }

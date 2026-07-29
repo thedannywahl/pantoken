@@ -11,6 +11,9 @@ on:
     paths:
       - .github/workflows/copilot-setup-steps.yml
 
+# Restrict the default token to read-only; the job overrides what it needs.
+permissions: read-all
+
 jobs:
   copilot-setup-steps:
     runs-on: ubuntu-latest
