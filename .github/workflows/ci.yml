@@ -183,9 +183,11 @@ jobs:
           fail_ci_if_error: false
       - name: Upload test results to Codecov
         if: ${{ !cancelled() && steps.cov.outputs.ran == 'true' }}
-        uses: codecov/test-results-action@v1
+        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./junit.xml
+          report_type: test_results
 
   fallow:
     needs: build
