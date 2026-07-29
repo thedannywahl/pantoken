@@ -47,6 +47,8 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Build all packages
         run: vp run -r build
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   typecheck:
     needs: build
@@ -157,14 +159,16 @@ jobs:
         run: |
           if [[ "${EVENT}" != "pull_request" ]]; then
             vp run -r build
+            echo "ran=true" >> "$GITHUB_OUTPUT"
             vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
-            echo "ran=true" >> "$GITHUB_OUTPUT"; exit 0
+            exit 0
           fi
           if [[ "${SCOPE}" == "none" ]]; then
             echo "No publishable packages changed; skipping coverage."
             echo "ran=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           vp run -r build
+          echo "ran=true" >> "$GITHUB_OUTPUT"
           if [[ "${SCOPE}" == "all" ]]; then
             vp test --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
           else
@@ -172,7 +176,6 @@ jobs:
             echo "scoped coverage: ${dirs[*]}"
             vp test "${dirs[@]}" --coverage --reporter=verbose --reporter=junit --outputFile.junit=junit.xml
           fi
-          echo "ran=true" >> "$GITHUB_OUTPUT"
       - name: Upload coverage to Codecov
         if: steps.cov.outputs.ran == 'true'
         uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5
@@ -188,6 +191,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./junit.xml
           report_type: test_results
+          fail_ci_if_error: false
 
   fallow:
     needs: build
