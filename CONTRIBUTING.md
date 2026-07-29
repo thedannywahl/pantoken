@@ -41,6 +41,21 @@ vp install
    Pick the affected packages and describe the change. Patch for bug fixes, minor for new
    features, major for breaking changes.
 
+## Developer Certificate of Origin (DCO)
+
+By contributing to this project, you certify that you have the right to submit your contribution under the project's license.
+
+All non-trivial commits must include a Signed-off-by line:
+
+Signed-off-by: Your Name <your.email@example.com>
+
+The easiest way to do this is to commit with:
+
+git commit -s
+
+The project uses the Developer Certificate of Origin (DCO) version 1.1:
+https://developercertificate.org/
+
 ## Commit messages
 
 Commits must follow [Conventional Commits](https://www.conventionalcommits.org/):
