@@ -44,22 +44,45 @@ let resolveValue = makeResolver(tokens);
  */
 const localVars = new Map<string, string>();
 
-/** A resolved value that reads as a colour: a `light-dark()` pair or a hex / rgb / hsl / oklch / lab / color() form. */
-function isColorValue(v: string): boolean {
-  return (
-    /light-dark\s*\(/iu.test(v) ||
-    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
-  );
-}
-
-/** Patterns for inferring CSS value types, matched in order (most specific first). */
+/**
+ * Patterns for inferring CSS value types. Integrated URL patterns with numeric/time patterns.
+ * Matched in order (most specific first).
+ */
 const SYNTAX_PATTERNS: [RegExp, string][] = [
+  // URL and data patterns (most specific).
   [/^(?:url\(|data:)/iu, "<url>"],
+  // Length patterns with all units.
   [/-?\d*\.?\d+(?:px|rem|em|vh|vw|vmin|vmax|svh|svw|ch|ex|cm|mm|in|pt|pc|q|%)\b/iu, "<length>"],
+  // Time patterns (milliseconds and seconds).
   [/^-?\d*\.?\d+m?s$/iu, "<time>"],
+  // Integer pattern.
   [/^-?\d+$/u, "<integer>"],
+  // Decimal number pattern.
   [/^-?\d*\.?\d+$/u, "<number>"],
 ];
+
+/**
+ * Check if a value is a color (themed value, hex, rgb, hsl, etc.).
+ */
+function getColorSyntax(v: string): string | undefined {
+  if (
+    /light-dark\s*\(/iu.test(v) ||
+    /(#[0-9a-f]{3,8}\b|\b(?:rgb|hsl|hwb|oklch|oklab|lab|lch|color)\()/iu.test(v)
+  ) {
+    return "<color>";
+  }
+  return undefined;
+}
+
+/**
+ * Match a value against syntax patterns and return the matching syntax type.
+ */
+function matchSyntaxPattern(v: string): string | undefined {
+  for (const [pattern, syntax] of SYNTAX_PATTERNS) {
+    if (pattern.test(v)) return syntax;
+  }
+  return undefined;
+}
 
 /**
  * Infer a CSS `@property` syntax from a resolved token value. Component/semantic tokens carry
@@ -68,15 +91,11 @@ const SYNTAX_PATTERNS: [RegExp, string][] = [
  */
 export function inferSyntax(value: string): string | undefined {
   const v = value.trim();
-  // A bare url()/data: value (the icon glyphs are url-encoded SVGs) is `<url>`, not the broader `<image>`.
-  if (/^(?:url\(|data:)/iu.test(v)) return "<url>";
-  // Themed values are colours in this system; so are hex / rgb / hsl / oklch / lab / color().
-  if (isColorValue(v)) return "<color>";
-  // Check numeric and time patterns in order.
-  for (const [pattern, syntax] of SYNTAX_PATTERNS) {
-    if (pattern.test(v)) return syntax;
-  }
-  return undefined;
+  // Try color first (includes url/data detection).
+  const color = getColorSyntax(v);
+  if (color) return color;
+  // Then try pattern matching.
+  return matchSyntaxPattern(v);
 }
 
 /**
@@ -102,6 +121,26 @@ const PROPERTY_SYNTAX: [RegExp, string][] = [
 ];
 
 /**
+ * Follow a token's `refersTo` chain to find the next token, or undefined if the chain ends.
+ */
+function followTokenChain(
+  token: Token | undefined,
+  lookup: Map<string, Token>,
+  seen: Set<string>,
+): Token | undefined {
+  if (!token?.refersTo || seen.has(token.refersTo)) return undefined;
+  seen.add(token.refersTo);
+  return lookup.get(token.refersTo);
+}
+
+/**
+ * Try to infer syntax from a token's value.
+ */
+function inferFromTokenValue(token: Token | undefined): string | undefined {
+  return token?.value ? inferSyntax(token.value) : undefined;
+}
+
+/**
  * Walk a token's `refersTo` chain for the first concrete `syntax`, else infer from its terminal value.
  * `lookup` (the token index, defaulting to the module's) is injectable so the chain-walk is testable.
  */
@@ -114,25 +153,29 @@ export function syntaxFromChain(
 
   while (token) {
     // Return concrete syntax if found.
-    if (token.syntax && token.syntax !== "*") return token.syntax;
+    if (token.syntax && token.syntax !== "*") {
+      return token.syntax;
+    }
 
-    // Follow the chain if not seen.
-    if (token.refersTo && !seen.has(token.refersTo)) {
-      seen.add(token.refersTo);
-      token = lookup.get(token.refersTo);
+    // Try to follow the chain.
+    const next = followTokenChain(token, lookup, seen);
+    if (next) {
+      token = next;
       continue;
     }
 
-    // Infer from terminal value.
-    if (token.value) {
-      const inferred = inferSyntax(token.value);
-      if (inferred) return inferred;
-    }
-
-    break;
+    // Infer from terminal value and stop.
+    return inferFromTokenValue(token);
   }
 
   return undefined;
+}
+
+/**
+ * Find the syntax for a property name in the PROPERTY_SYNTAX map.
+ */
+function findPropertySyntax(name: string): string | undefined {
+  return PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
 }
 
 /**
@@ -151,12 +194,23 @@ export function resolveSyntax(
   if (chained) return chained;
 
   // Composite/keyword property grammar by name takes precedence.
-  const prop = PROPERTY_SYNTAX.find(([re]) => re.test(name))?.[1];
+  const prop = findPropertySyntax(name);
   if (prop) return prop;
 
   // Fall back to inferring from a sheet-local value.
   const local = locals.get(name);
   return local ? inferSyntax(resolve(local)) : undefined;
+}
+
+/**
+ * Get the raw token value from either the token registry or local sheet variables.
+ */
+function getRawTokenValue(
+  name: string,
+  lookup: Map<string, Token>,
+  locals: Map<string, string>,
+): string | undefined {
+  return lookup.get(name)?.value ?? locals.get(name);
 }
 
 /**
@@ -171,7 +225,7 @@ export function resolveToken(
   resolve: (value: string) => string = resolveValue,
 ): { syntax?: string; value?: string } | undefined {
   const syntax = resolveSyntax(name, lookup, locals, resolve);
-  const raw = lookup.get(name)?.value ?? locals.get(name);
+  const raw = getRawTokenValue(name, lookup, locals);
   const value = raw ? resolve(raw) : undefined;
 
   return syntax || value ? { syntax, value } : undefined;
