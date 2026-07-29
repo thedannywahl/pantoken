@@ -7,3 +7,5 @@ vp exec fallow audit --base "$(git rev-parse --abbrev-ref --symbolic-full-name '
 # point for code-security findings. Blocks on a high-severity finding; skips (with a warning) when
 # Snyk isn't authenticated, so a contributor without a Snyk account isn't blocked. Bypass: --no-verify.
 vp run snyk:code
+# Property-based tests run at default iterations (100) in the CI `test` job on every PR. No separate
+# pre-push gate needed — fast-check failures surface in CI before merge.

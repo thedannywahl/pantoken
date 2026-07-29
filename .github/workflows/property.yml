@@ -1,0 +1,65 @@
+name: Property
+
+# Deep property-based testing via fast-check. Two modes:
+#
+#  - Weekly schedule: run all *.property.test.* files with 10 000 examples per
+#    property (100× the default). Catches adversarial inputs that the 100-example
+#    CI default is unlikely to generate: extreme lengths, prototype-pollution keys,
+#    Unicode edge cases, etc. Failures here must be fixed before the next release.
+#
+#  - Workflow dispatch: on-demand deep check with a configurable numRuns, useful
+#    before a release or after touching core transform logic.
+#
+# Normal CI (ci.yml) already runs property tests at the 100-example default as
+# part of the `test` job on every PR — this workflow is the deeper scan, not the
+# first line of defence.
+
+on:
+  schedule:
+    # Weekly deep scan — Tuesday 03:00 UTC, staggered from CI to avoid resource contention.
+    - cron: "0 3 * * 2"
+  workflow_dispatch:
+    inputs:
+      num_runs:
+        description: "fast-check numRuns per property (default: 10000)"
+        default: "10000"
+        required: false
+
+permissions:
+  contents: read
+
+env:
+  VP_TASK_CACHE: node_modules/.vite/task-cache
+  VP_CACHE_KEY_PREFIX: vp-taskcache-
+
+jobs:
+  property-stress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        with:
+          cache: true
+          run-install: true
+
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+
+      - name: Build all packages
+        run: vp run -r build
+
+      - name: Run property stress tests
+        env:
+          FC_NUM_RUNS: ${{ inputs.num_runs || '10000' }}
+        run: vp run property:stress
