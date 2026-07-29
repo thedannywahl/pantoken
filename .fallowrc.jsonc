@@ -22,14 +22,15 @@
   },
 
   // Real runtime roots that no plugin or package.json declares: scripts invoked via `node`/`vp run`,
-  // per-package codegen scripts, tool entry points, and bin shims. Without these, fallow sees the
-  // whole scripts/release/* and tools/* graphs as unreachable and reports them (and their exports)
-  // as dead.
+  // per-package codegen scripts, tool entry points, test files discovered by vite, and bin shims.
+  // Without these, fallow sees the whole scripts/release/* and tools/* graphs as unreachable and
+  // reports them (and their exports) as dead.
   "entry": [
     "scripts/**/*.ts",
     "**/scripts/**/*.ts",
     "tools/*/index.ts",
     "tools/*/src/index.ts",
+    "tools/**/*.{test,spec}.ts",
     "tools/demo/runner/*.ts",
     "**/bin/*.{mjs,cjs,js,ts}",
     "**/vite.config.ts",
