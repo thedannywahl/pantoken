@@ -1,4 +1,18 @@
 import { mergeConfig, type ViteUserConfig } from "vite-plus";
+import { join } from "node:path";
+import { readFileSync } from "node:fs";
+import { codecovVitePlugin } from "@codecov/vite-plugin";
+
+function readPackageName(): string {
+  try {
+    const pkg = JSON.parse(readFileSync(join(process.cwd(), "package.json"), "utf8")) as {
+      name?: string;
+    };
+    return pkg.name ?? "pantoken";
+  } catch {
+    return "pantoken";
+  }
+}
 
 /**
  * The workspace input for a `vp pack` build: everything, minus `node_modules/.modules.yaml` — that
@@ -21,7 +35,20 @@ const packInput = [{ auto: true }, { pattern: "!node_modules/.modules.yaml", bas
  */
 const baseConfig = {
   run: { tasks: { build: { input: packInput } } },
-  pack: { dts: true },
+  pack: {
+    dts: true,
+    plugins:
+      process.env.CI === "true"
+        ? [
+            codecovVitePlugin({
+              enableBundleAnalysis: true,
+              bundleName: readPackageName(),
+              uploadToken: process.env.CODECOV_TOKEN,
+              telemetry: false,
+            }),
+          ]
+        : [],
+  },
   lint: { options: { typeAware: true, typeCheck: true } },
   fmt: {},
 };
