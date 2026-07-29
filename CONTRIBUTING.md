@@ -45,7 +45,7 @@ vp install
 
 Commits must follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-```
+```text
 type(scope): short summary
 
 Optional body.
