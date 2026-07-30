@@ -255,7 +255,6 @@ test("runPluginHook(thread) returns null when the stage hook is absent", async (
 });
 
 // runPluginHook process-mode integration tests
-import { fileURLToPath } from "node:url";
 
 test("runPluginHook(process) runs the hook in a sandboxed child process and returns the result", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-"));
