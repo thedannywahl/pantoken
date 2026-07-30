@@ -50,7 +50,13 @@ jobs:
           SHA: ${{ github.sha }}
           REPO: ${{ github.repository }}
         run: |
-          required=("CI" "CodeQL")
+          # Job check-run names: "<workflow name> / <job name>" as returned by the Checks API.
+          # CI / ci-gate fans in all CI jobs (build, test, lint, coverage, fallow, publint, attw, …).
+          # Scorecard is a posture scan (also schedule-driven) — not appropriate to block on.
+          required=(
+            "CI / ci-gate"
+            "CodeQL / Analyze (javascript-typescript)"
+          )
           deadline=$(( $(date +%s) + 1800 ))   # 30-minute ceiling
           while true; do
             all_ok=true
