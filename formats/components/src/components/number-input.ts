@@ -1,10 +1,10 @@
-import { defineComponent } from "../lib/define.ts";
+import { defineComponent, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { CHEVRON_UP_ICON, CHEVRON_DOWN_ICON } from "../lib/helpers.ts";
 import { inputFacadeBase } from "../lib/field-controls.ts";
 
 /** The `numberInput` component record: a number-input facade with a plus/minus spinner column. */
-export const numberInput = defineComponent({
+export const numberInput: Definition = defineComponent({
   name: "number-input",
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
@@ -92,4 +92,4 @@ ${root} .arrows button.down::before { -webkit-mask: ${CHEVRON_DOWN_ICON}; mask: 
 });
 
 /** Standalone `numberInput` stylesheet — the prefixed CSS for the number input, ready to ship as a `.css` file. */
-export const numberInputCss = numberInput.css;
+export const numberInputCss: Definition["css"] = numberInput.css;

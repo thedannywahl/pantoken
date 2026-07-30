@@ -51,7 +51,7 @@
     "typedoc": "catalog:",
     "typedoc-plugin-markdown": "catalog:",
     "typedoc-vitepress-theme": "catalog:",
-    "typescript": "catalog:",
+    "typescript": "npm:@typescript/typescript6@^6.0.0",
     "vitepress": "catalog:",
     "vitepress-plugin-llms": "catalog:",
     "vue": "catalog:"

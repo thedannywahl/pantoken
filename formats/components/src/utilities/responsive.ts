@@ -4,11 +4,11 @@
  *
  * @module
  */
-import { defineUtility } from "../lib/define.ts";
+import { defineUtility, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 
 /** The responsive-visibility utility — viewport-width hide classes plus `-cq-` container-query variants. */
-export const responsive = defineUtility({
+export const responsive: Definition = defineUtility({
   name: "responsive",
   css: (p) => {
     const bp: [string, string][] = [
@@ -46,4 +46,4 @@ export const responsive = defineUtility({
 });
 
 /** The responsive-visibility utilities as a standalone, header-wrapped stylesheet. */
-export const responsiveUtilitiesCss = responsive.css;
+export const responsiveUtilitiesCss: Definition["css"] = responsive.css;

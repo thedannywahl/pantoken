@@ -10,7 +10,7 @@
  * @experimental
  */
 import { tokens } from "@pantoken/tokens";
-import { toSwatches } from "./model.ts";
+import { toSwatches, type Swatch } from "./model.ts";
 
 export { toSwatches, hexToRgb } from "./model.ts";
 export type { Mode, Rgb, Swatch } from "./model.ts";
@@ -34,4 +34,4 @@ export type { ToSvgOptions } from "./svg.ts";
  * writeFileSync("instructure.gpl", toGpl(swatches));
  * ```
  */
-export const swatches = toSwatches(tokens);
+export const swatches: Swatch[] = toSwatches(tokens);

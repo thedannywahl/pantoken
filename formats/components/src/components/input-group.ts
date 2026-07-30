@@ -1,9 +1,9 @@
-import { defineComponent } from "../lib/define.ts";
+import { defineComponent, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { inputFacadeBase } from "../lib/field-controls.ts";
 
 /** The `inputGroup` component record: a facade around a text input with leading and trailing icon slots. */
-export const inputGroup = defineComponent({
+export const inputGroup: Definition = defineComponent({
   name: "input-group",
   css: (p) =>
     // prettier-ignore
@@ -32,4 +32,4 @@ ${inputFacadeBase(p, "input-group")}
 });
 
 /** Standalone `inputGroup` stylesheet — the prefixed CSS for the input group, ready to ship as a `.css` file. */
-export const inputGroupCss = inputGroup.css;
+export const inputGroupCss: Definition["css"] = inputGroup.css;

@@ -3,12 +3,12 @@
  *
  * @module
  */
-import { defineUtility } from "../lib/define.ts";
+import { defineUtility, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { SPACING_SIDES, SPACING_STEPS } from "../lib/helpers.ts";
 
 /** The spacing utility — margin and padding classes on the spacing scale, with logical sides. */
-export const spacing = defineUtility({
+export const spacing: Definition = defineUtility({
   name: "spacing",
   css: (p) => {
     const rules: string[] = [];
@@ -37,4 +37,4 @@ ${rules.join("\n")}`;
 });
 
 /** The spacing utilities as a standalone, header-wrapped stylesheet. */
-export const spacingUtilitiesCss = spacing.css;
+export const spacingUtilitiesCss: Definition["css"] = spacing.css;

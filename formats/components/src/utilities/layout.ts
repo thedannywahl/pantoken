@@ -4,10 +4,10 @@
  * @module
  */
 import { css } from "../lib/css.ts";
-import { defineUtility } from "../lib/define.ts";
+import { defineUtility, type Definition } from "../lib/define.ts";
 
 /** The layout utility — composable `display` and `text-align` classes. */
-export const layout = defineUtility({
+export const layout: Definition = defineUtility({
   name: "layout",
   css: (p) =>
     // prettier-ignore
@@ -37,4 +37,4 @@ ${[
 });
 
 /** The layout utilities as a standalone, header-wrapped stylesheet. */
-export const layoutUtilitiesCss = layout.css;
+export const layoutUtilitiesCss: Definition["css"] = layout.css;

@@ -17,7 +17,7 @@
  * @experimental
  */
 import { tokens } from "@pantoken/tokens";
-import { toPandaPreset } from "./to-panda.ts";
+import { toPandaPreset, type PandaPreset } from "./to-panda.ts";
 
 export { toPandaPreset } from "./to-panda.ts";
 export type { PandaCategory, PandaPreset, PandaSemanticToken, PandaToken } from "./to-panda.ts";
@@ -34,6 +34,6 @@ export type { PandaCategory, PandaPreset, PandaSemanticToken, PandaToken } from 
  * // then: css({ color: "token(colors.color-text-base)" })
  * ```
  */
-export const pantokenPreset = toPandaPreset(tokens);
+export const pantokenPreset: PandaPreset = toPandaPreset(tokens);
 
 export default pantokenPreset;

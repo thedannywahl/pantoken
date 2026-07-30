@@ -396,7 +396,8 @@ function ogTitle(
 const description =
   "Instructure design tokens and icons, reshaped for every platform and framework.";
 
-export default defineConfig({
+// @ts-expect-error TS2321 — VitePress alpha.18 UserConfig<NoInfer<Config>> causes recursive depth in TS6 (TS7 resolves cleanly)
+export default defineConfig<DefaultTheme.Config>({
   base,
   title: "pantoken",
   description,

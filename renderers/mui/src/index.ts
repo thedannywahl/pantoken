@@ -16,15 +16,15 @@
  * @experimental
  */
 import { tokens } from "@pantoken/tokens";
-import { toMuiTheme } from "./to-mui.ts";
+import { toMuiTheme, type PantokenThemeOptions } from "./to-mui.ts";
 
 export { toMuiTheme } from "./to-mui.ts";
 export type { Mode, MuiPaletteColor, PantokenThemeOptions } from "./to-mui.ts";
 
 /** Ready-made `rebrand` MUI options in light mode. */
-export const lightTheme = toMuiTheme(tokens, "light");
+export const lightTheme: PantokenThemeOptions = toMuiTheme(tokens, "light");
 
 /** Ready-made `rebrand` MUI options in dark mode. */
-export const darkTheme = toMuiTheme(tokens, "dark");
+export const darkTheme: PantokenThemeOptions = toMuiTheme(tokens, "dark");
 
 export default lightTheme;
