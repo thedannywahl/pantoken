@@ -329,6 +329,13 @@ function runPendo(args: CliArgs): void {
   console.log(`✓ pantoken: wrote ${file}`);
 }
 
+/** Warn when the resolved output path escapes cwd — guards against accidental ../traversal. */
+function warnIfUnsafePath(out: string): void {
+  const rel = relative(process.cwd(), resolve(out));
+  if (rel.startsWith(".."))
+    console.warn(`⚠️ pantoken: output path "${out}" escapes the current directory.`);
+}
+
 /**
  * Run the CLI.
  *
@@ -347,13 +354,6 @@ function runPendo(args: CliArgs): void {
  * await run(["generate", "swatches", "--format", "gpl", "--theme", "canvas", "--out", "./out"]);
  * ```
  */
-/** Warn when the resolved output path escapes cwd — guards against accidental ../traversal. */
-function warnIfUnsafePath(out: string): void {
-  const rel = relative(process.cwd(), resolve(out));
-  if (rel.startsWith(".."))
-    console.warn(`⚠️ pantoken: output path "${out}" escapes the current directory.`);
-}
-
 export async function run(argv: readonly string[]): Promise<void> {
   const args = parseArgs(argv);
   assertGenerateTarget(args);

@@ -86,7 +86,7 @@ export function isFactoried(plugin: PantokenPlugin): boolean {
  * Called automatically by {@link definePlugin}. Export it so hand-authored plugins can
  * be validated before passing them to a stage runner.
  *
- * @throws {Error} when the plugin fails structural validation.
+ * @throws When the plugin fails structural validation.
  *
  * @example Validate a hand-authored plugin
  * ```ts
