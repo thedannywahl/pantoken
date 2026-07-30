@@ -83,6 +83,14 @@ test("sanitizeSvg passes through clean SVG unchanged", () => {
   expect(sanitizeSvg(clean)).toBe(clean);
 });
 
+test("sanitizeSvg strips on* attributes that would survive a single-pass replacement", () => {
+  // Crafted so the outer on* value contains another on* — a single pass would only strip the outer.
+  const in_ = `<svg><path ononclick="evil()" d="M0 0"/></svg>`;
+  const out = sanitizeSvg(in_);
+  expect(out).not.toContain("onclick");
+  expect(out).not.toContain("on");
+});
+
 test("parseHexColor handles #rgb, #rrggbb, #rrggbbaa", () => {
   expect(parseHexColor("#fff")).toEqual({ r: 255, g: 255, b: 255, a: 1 });
   expect(parseHexColor("#0374B5")).toEqual({ r: 3, g: 116, b: 181, a: 1 });

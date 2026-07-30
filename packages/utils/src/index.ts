@@ -33,9 +33,14 @@ export type Mode = "light" | "dark";
  * Not a full HTML parser — relies on the upstream source being trusted and pinned.
  */
 export function sanitizeSvg(svg: string): string {
-  return svg
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, "")
-    .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
+  let sanitized = svg.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, "");
+  // Loop until stable: nested or concatenated on* attributes can survive a single pass.
+  let previous: string;
+  do {
+    previous = sanitized;
+    sanitized = sanitized.replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
+  } while (sanitized !== previous);
+  return sanitized;
 }
 
 // Pattern sources (also used to build fresh regexes where reuse would be unsafe).
