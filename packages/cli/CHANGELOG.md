@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 0.1.9
+
+### Patch Changes
+
+- 8391068: Validate all restricted CLI inputs at parse time. `--theme` is checked against
+  the `rebrand | canvas | canvasHighContrast` allowlist; `--class` must be a valid
+  identifier; `--format` for the `rust` target must be `egui` or `iced`; unknown
+  flags are rejected immediately. Passing an invalid value now throws a descriptive
+  error instead of silently falling back to a default. Warns when the output path
+  escapes the current working directory.
+- Updated dependencies [8391068]
+  - @pantoken/model@0.3.0
+  - @pantoken/swatches@0.1.7
+  - @pantoken/icon-font@0.1.7
+  - @pantoken/tokens@0.2.2
+  - @pantoken/android@0.1.8
+  - @pantoken/compose@0.1.8
+  - @pantoken/flutter@0.1.8
+  - @pantoken/rust@0.1.7
+  - @pantoken/swift@0.1.8
+  - @pantoken/vanilla@0.1.6
+  - @pantoken/wordpress@0.1.6
+  - @pantoken/mintlify@0.1.7
+  - @pantoken/pendo@0.1.8
+  - @pantoken/drupal@0.1.8
+  - @pantoken/hugo@0.1.8
+  - @pantoken/jekyll@0.1.8
+
 ## 0.1.8
 
 ### Patch Changes

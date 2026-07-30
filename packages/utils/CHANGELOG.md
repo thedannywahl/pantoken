@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.5
+
+### Patch Changes
+
+- 8391068: Add `sanitizeSvg` to `@pantoken/utils`: a zero-dependency regex-based helper
+  that strips `<script>` elements and `on*` event-handler attributes from SVG
+  markup. Applied at decode time in `@pantoken/icons` so every icon in the
+  `icons` array and `iconsByName` map has script injection removed before
+  exposure to consumers. Defense-in-depth for the vendored IR; does not change
+  clean SVG content.
+- Updated dependencies [8391068]
+  - @pantoken/model@0.3.0
+
 ## 0.2.4
 
 ### Patch Changes

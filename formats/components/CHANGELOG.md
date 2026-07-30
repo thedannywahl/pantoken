@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.2.6
+
+### Patch Changes
+
+- Updated dependencies [8391068]
+  - @pantoken/utils@0.2.5
+
 ## 0.2.5
 
 ### Patch Changes

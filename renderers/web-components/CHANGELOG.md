@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.7
+
+### Patch Changes
+
+- Updated dependencies [8391068]
+- Updated dependencies [8391068]
+  - @pantoken/model@0.3.0
+  - @pantoken/icons@0.1.4
+  - @pantoken/components@0.2.6
+
 ## 0.2.6
 
 ### Patch Changes
