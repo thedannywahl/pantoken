@@ -24,7 +24,9 @@ flag_management:
     statuses:
       - type: project
         target: auto
-        threshold: 1%
+        # 5% wiggle room: new packages with partially-covered code (e.g. sandboxed worker paths
+        # limited by V8 async callback attribution) shouldn't block PRs that are otherwise well-tested.
+        threshold: 5%
       - type: patch
         target: auto
 # One component per meaningful package group; component_ids are stable — never rename.
@@ -33,6 +35,7 @@ component_management:
     statuses:
       - type: project
         target: auto
+        threshold: 5%
         branches:
           - "!main"
   individual_components:

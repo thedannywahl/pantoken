@@ -22,6 +22,7 @@
  * @beta
  */
 import { definePlugin } from "@pantoken/plugin-kit";
+import { defineToken } from "@pantoken/model";
 import type { PantokenPlugin } from "@pantoken/model";
 
 const DEFAULT_DURATION = "300ms";
@@ -101,9 +102,9 @@ export function transition(options: TransitionOptions = {}): PantokenPlugin {
 
   return definePlugin({
     name: "@pantoken/plugin-transition",
-    tokens: ({ tokens, define }) => [
+    tokens: ({ tokens }) => [
       ...tokens,
-      ...declarations.map(([name, value]) => define({ name, value })),
+      ...declarations.map(([name, value]) => defineToken({ name, value })),
     ],
     css: ({ tokens }) => {
       const present = new Set(tokens.map((tk) => tk.name));

@@ -26,6 +26,7 @@
  */
 import { definePlugin, makeResolver } from "@pantoken/plugin-kit";
 import { byTheme } from "@pantoken/tokens";
+import { defineToken } from "@pantoken/model";
 import type { PantokenPlugin, Theme, Token, TokenInput } from "@pantoken/model";
 
 /** The stacking depths, deepest → topmost, from InstUI's view stacking scale. */
@@ -78,9 +79,9 @@ export function stacking(options: StackingOptions = {}): PantokenPlugin {
 
   return definePlugin({
     name: "@pantoken/plugin-stacking",
-    tokens: ({ tokens, theme, define }) => [
+    tokens: ({ tokens, theme }) => [
       ...tokens,
-      ...definitions(tokens, options.theme ?? theme).map((d) => define(d)),
+      ...definitions(tokens, options.theme ?? theme).map((d) => defineToken(d)),
     ],
     css: ({ tokens }) => {
       const present = new Set(tokens.map((t) => t.name));

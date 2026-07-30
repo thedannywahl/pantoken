@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
-    "@pantoken/tokens": "workspace:*"
+    "@pantoken/tokens": "workspace:*",
+    "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",

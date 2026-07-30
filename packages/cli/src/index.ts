@@ -10,7 +10,7 @@
  * @beta
  */
 import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { generateAndroid } from "@pantoken/android";
 import { generateCompose } from "@pantoken/compose";
 import { generateFlutter } from "@pantoken/flutter";
@@ -64,6 +64,55 @@ const SUPPORTED = new Set([
   "mintlify",
 ]);
 const PLANNED = new Set<string>();
+const VALID_THEMES = new Set(["rebrand", "canvas", "canvasHighContrast"]);
+const KNOWN_FLAGS = new Set([
+  "out",
+  "theme",
+  "class",
+  "icons",
+  "format",
+  "no-scope",
+  "no-important",
+  "no-prune",
+]);
+const VALID_CLASS_RE = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
+const RUST_FORMATS = new Set(["egui", "iced"]);
+
+/** Write an array of path+content assets into `outDir`, creating intermediate directories. */
+function writeAssets(
+  outDir: string,
+  assets: ReadonlyArray<{ path: string; content: string | Buffer | Uint8Array }>,
+): void {
+  for (const asset of assets) {
+    const file = join(outDir, asset.path);
+    mkdirSync(dirname(file), { recursive: true });
+    writeFileSync(file, asset.content);
+    console.log(`✓ pantoken: wrote ${file}`);
+  }
+}
+
+/** Parse argv into positionals and a validated flags record; throw on unknown flags. */
+function parseFlags(argv: readonly string[]): {
+  positionals: string[];
+  flags: Record<string, string>;
+} {
+  const positionals: string[] = [];
+  const flags: Record<string, string> = {};
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg.startsWith("--")) {
+      const key = arg.slice(2);
+      const next = argv[i + 1];
+      if (!KNOWN_FLAGS.has(key))
+        throw new Error(`Unknown flag "--${key}". Run pantoken generate --help for usage.`);
+      if (next === undefined || next.startsWith("--")) flags[key] = "true";
+      else flags[key] = argv[++i];
+    } else {
+      positionals.push(arg);
+    }
+  }
+  return { positionals, flags };
+}
 
 /**
  * Parse `generate <target> [--out dir] [--theme t] [--class Name]`.
@@ -87,25 +136,19 @@ const PLANNED = new Set<string>();
  * ```
  */
 export function parseArgs(argv: readonly string[]): CliArgs {
-  const positionals: string[] = [];
-  const flags: Record<string, string> = {};
-  for (let i = 0; i < argv.length; i++) {
-    const arg = argv[i];
-    if (arg.startsWith("--")) {
-      // A flag with no following value (end of args or another flag next) is a boolean.
-      const next = argv[i + 1];
-      if (next === undefined || next.startsWith("--")) flags[arg.slice(2)] = "true";
-      else flags[arg.slice(2)] = argv[++i];
-    } else {
-      positionals.push(arg);
-    }
-  }
+  const { positionals, flags } = parseFlags(argv);
+  const theme = flags.theme ?? "rebrand";
+  if (!VALID_THEMES.has(theme))
+    throw new Error(`Unknown theme "${theme}". Valid themes: ${[...VALID_THEMES].join(", ")}.`);
+  const className = flags.class ?? "PanTokens";
+  if (!VALID_CLASS_RE.test(className))
+    throw new Error(`Invalid class name "${className}". Must be a valid identifier.`);
   return {
     command: positionals[0] ?? "",
     target: positionals[1] ?? "",
     out: flags.out ?? "./pantoken-out",
-    theme: (flags.theme as Theme) ?? "rebrand",
-    className: flags.class ?? "PanTokens",
+    theme: theme as Theme,
+    className,
     icons: flags.icons ? flags.icons.split(",").filter(Boolean) : undefined,
     format: flags.format,
     noScope: "no-scope" in flags,
@@ -214,20 +257,17 @@ function runMintlify(args: CliArgs): void {
 
 /** Write the Drupal theme assets. */
 function runDrupal(args: CliArgs): void {
-  for (const asset of toDrupalTheme()) {
-    const file = join(args.out, asset.path);
-    mkdirSync(dirname(file), { recursive: true });
-    writeFileSync(file, asset.content);
-    console.log(`✓ pantoken: wrote ${file}`);
-  }
+  writeAssets(args.out, toDrupalTheme());
 }
 
 /** Write the Rust token source for the egui or iced format. */
 function runRust(args: CliArgs): void {
-  const format = args.format === "iced" ? "iced" : "egui";
+  const format = args.format ?? "egui";
+  if (!RUST_FORMATS.has(format))
+    throw new Error(`Unknown Rust format "${format}". Use egui or iced.`);
   const file = args.out.includes(".") ? args.out : join(args.out, "tokens.rs");
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, generateRust({ format, theme: args.theme }));
+  writeFileSync(file, generateRust({ format: format as "egui" | "iced", theme: args.theme }));
   console.log(`✓ pantoken: wrote ${file}`);
 }
 
@@ -270,13 +310,7 @@ async function runIconFont(args: CliArgs): Promise<void> {
 
 /** Write the Jekyll or Hugo static-site assets (same asset shape, different source). */
 function runStaticSite(args: CliArgs): void {
-  const assets = args.target === "jekyll" ? toJekyllAssets() : toHugoAssets();
-  for (const asset of assets) {
-    const file = join(args.out, asset.path);
-    mkdirSync(dirname(file), { recursive: true });
-    writeFileSync(file, asset.content);
-    console.log(`✓ pantoken: wrote ${file}`);
-  }
+  writeAssets(args.out, args.target === "jekyll" ? toJekyllAssets() : toHugoAssets());
 }
 
 /** Write the Pendo `global.css`, honouring the `--no-scope`/`--no-important`/`--no-prune` flags. */
@@ -293,6 +327,13 @@ function runPendo(args: CliArgs): void {
     }),
   );
   console.log(`✓ pantoken: wrote ${file}`);
+}
+
+/** Warn when the resolved output path escapes cwd — guards against accidental ../traversal. */
+function warnIfUnsafePath(out: string): void {
+  const rel = relative(process.cwd(), resolve(out));
+  if (rel.startsWith(".."))
+    console.warn(`⚠️ pantoken: output path "${out}" escapes the current directory.`);
 }
 
 /**
@@ -316,6 +357,7 @@ function runPendo(args: CliArgs): void {
 export async function run(argv: readonly string[]): Promise<void> {
   const args = parseArgs(argv);
   assertGenerateTarget(args);
+  warnIfUnsafePath(args.out);
 
   if (args.target === "swift") return runSwift(args);
   if (args.target === "android") return runAndroid(args);

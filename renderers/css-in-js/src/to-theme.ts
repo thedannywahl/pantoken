@@ -46,7 +46,7 @@ export type StyledTheme = Record<string, string>;
  * @param options - {@link ToStyledThemeOptions}.
  * @returns The theme object, keyed by camelCased token name.
  *
- * @example var()-backed (light/dark flows through `@pantoken/css`)
+ * @example var()-backed, light/dark flows through \@pantoken/css
  * ```ts
  * import { toStyledTheme } from "@pantoken/css-in-js";
  * import { tokens } from "@pantoken/tokens";

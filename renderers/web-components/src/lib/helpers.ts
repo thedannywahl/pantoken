@@ -13,7 +13,7 @@ export const esc = (value: string): string =>
 export const frag = (value: string | null): string => (value ?? "").replace(/[^a-z0-9-]/giu, "");
 
 /** Weekday column headers, Sunday-first. */
-export const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+export const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"] as const;
 
 /** Local-date ISO (`yyyy-mm-dd`) — sidesteps the UTC shift of `Date.prototype.toISOString`. */
 export const isoDate = (date: Date): string =>

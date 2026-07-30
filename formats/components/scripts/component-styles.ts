@@ -45,7 +45,7 @@ for (const dir of sources) {
       byTheme[theme] = postcss([themeCustomMedia({ theme })]).process(css, { from: undefined }).css;
     }
     entries.push(`export const ${id}ByTheme = ${JSON.stringify(byTheme)} as const;`);
-    entries.push(`export const ${id} = ${id}ByTheme.rebrand;`);
+    entries.push(`export const ${id}: string = ${id}ByTheme.rebrand;`);
   }
 }
 

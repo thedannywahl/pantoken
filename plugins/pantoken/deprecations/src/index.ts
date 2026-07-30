@@ -26,6 +26,7 @@
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { DeprecationEntry, DeprecationLedger, PantokenPlugin } from "@pantoken/model";
+import { defineToken } from "@pantoken/model";
 
 /** The current resolved version of each upstream tier (from `@pantoken/tokens` provenance). */
 export interface UpstreamVersions {
@@ -123,10 +124,10 @@ export function deprecationShims(ledger: DeprecationLedger): PantokenPlugin {
   const entries = shimEntries(ledger);
   return definePlugin({
     name: "@pantoken/plugin-deprecations",
-    tokens: ({ tokens, define }) => [
+    tokens: ({ tokens }) => [
       ...tokens,
       ...entries.map((entry) =>
-        define({
+        defineToken({
           name: entry.token,
           value: shimValue(entry) as string,
           meta: {

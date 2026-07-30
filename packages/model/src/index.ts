@@ -163,13 +163,13 @@ export interface CssContribution {
 export interface TokenHookContext {
   tokens: Token[];
   theme: Theme;
-  define: (input: TokenInput) => Token;
 }
 
 /** Context passed to a plugin's `icons` hook. */
 export interface IconHookContext {
-  add: (entry: IconEntry) => void;
-  resolve: IconResolver;
+  /** The icons already registered in the current token set (no SVG — name and metadata only). */
+  icons: Array<Pick<IconEntry, "name" | "viewBox" | "source">>;
+  theme: Theme;
 }
 
 /** Context passed to a plugin's `css` hook. */
@@ -190,14 +190,43 @@ export interface RehypeHookContext {
 export interface PantokenPlugin {
   /** A unique, human-readable plugin name. */
   name: string;
-  /** Token stage: return the full replacement token list (use `ctx.define` to add). */
+  /** Token stage: return the full replacement token list. */
   tokens?(ctx: TokenHookContext): Token[] | void;
-  /** Icon stage: register providers via `ctx.add`, or wrap `ctx.resolve`. */
-  icons?(ctx: IconHookContext): void;
+  /**
+   * Icon stage: return new {@link IconEntry} records to register as `<image>` tokens.
+   * Returning `undefined` or an empty array leaves the current set unchanged.
+   */
+  icons?(ctx: IconHookContext): IconEntry[] | void;
   /** CSS stage: contribute or post-process CSS. */
   css?(ctx: CssHookContext): CssContribution | void;
   /** Rehype stage: provide a resolver merged into the rehype plugin. */
   rehype?(ctx: RehypeHookContext): { resolve?: IconResolver } | void;
   /** Native stage (Style Dictionary): register transforms/formats. */
   native?(ctx: unknown): void;
+}
+
+/**
+ * Build a well-formed {@link Token} from partial input, defaulting `syntax` to `"*"` and
+ * `inherits` to `true`. Plugins import this from `@pantoken/model` to avoid depending on
+ * `@pantoken/core`; for smart CSS syntax inference use `defineToken` from `@pantoken/core`.
+ *
+ * @example
+ * ```ts
+ * import { defineToken } from "@pantoken/model";
+ *
+ * defineToken({ name: "--instui-brand", value: "#0374B5" });
+ * // → { name: "--instui-brand", syntax: "*", inherits: true, value: "#0374B5" }
+ * ```
+ */
+export function defineToken(input: TokenInput): Token {
+  const refMatch = /^var\((--[\w-]+)\)$/.exec(input.value.trim())?.[1];
+  return {
+    name: input.name,
+    syntax: input.syntax ?? "*",
+    inherits: input.inherits ?? true,
+    value: input.value,
+    ...(input.themed || input.value.startsWith("light-dark(") ? { themed: true } : {}),
+    ...((input.refersTo ?? refMatch) ? { refersTo: input.refersTo ?? refMatch } : {}),
+    ...(input.meta ? { meta: input.meta } : {}),
+  };
 }

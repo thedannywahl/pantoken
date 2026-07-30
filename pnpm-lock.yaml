@@ -928,6 +928,9 @@ importers:
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../tokens
+      '@pantoken/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

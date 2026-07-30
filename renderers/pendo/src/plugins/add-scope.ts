@@ -29,31 +29,37 @@ export interface AddScopeOptions {
  * // "@scope (._pendo-step-container) { .x{color:red} }"
  * ```
  */
-export function addScope(options: AddScopeOptions = {}): Plugin {
-  const selector = options.selector ?? "._pendo-step-container";
-  return {
-    postcssPlugin: "pendo-add-scope",
-    OnceExit(root, { AtRule }) {
-      const scope = new AtRule({
-        name: "scope",
-        params: `(${selector})`,
-        raws: { afterName: " ", between: " " },
-      });
-      const hoisted: ChildNode[] = [];
-      const moved: ChildNode[] = [];
-      for (const node of root.nodes) {
-        // @property is global and invalid inside @scope; bare `@layer a, b;` sets global order.
-        const bareLayer = node.type === "atrule" && node.name === "layer" && !node.nodes;
-        const property = node.type === "atrule" && node.name === "property";
-        (property || bareLayer ? hoisted : moved).push(node.clone());
-      }
-      root.removeAll();
-      for (const node of hoisted) root.append(node);
-      for (const node of moved) scope.append(node);
-      root.append(scope);
-    },
-  };
-}
-addScope.postcss = true;
+export const addScope: {
+  (options?: AddScopeOptions): Plugin;
+  /** Required PostCSS plugin marker. */
+  postcss: true;
+} = Object.assign(
+  function addScope(options: AddScopeOptions = {}): Plugin {
+    const selector = options.selector ?? "._pendo-step-container";
+    return {
+      postcssPlugin: "pendo-add-scope",
+      OnceExit(root, { AtRule }) {
+        const scope = new AtRule({
+          name: "scope",
+          params: `(${selector})`,
+          raws: { afterName: " ", between: " " },
+        });
+        const hoisted: ChildNode[] = [];
+        const moved: ChildNode[] = [];
+        for (const node of root.nodes) {
+          // @property is global and invalid inside @scope; bare `@layer a, b;` sets global order.
+          const bareLayer = node.type === "atrule" && node.name === "layer" && !node.nodes;
+          const property = node.type === "atrule" && node.name === "property";
+          (property || bareLayer ? hoisted : moved).push(node.clone());
+        }
+        root.removeAll();
+        for (const node of hoisted) root.append(node);
+        for (const node of moved) scope.append(node);
+        root.append(scope);
+      },
+    };
+  },
+  { postcss: true as const },
+);
 
 export default addScope;

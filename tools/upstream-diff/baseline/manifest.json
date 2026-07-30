@@ -12978,7 +12978,7 @@
       "--instui-component-badge-notification-z-index": {
         "deprecated": true,
         "inherits": true,
-        "syntax": "<integer>",
+        "syntax": "*",
         "value": "1"
       },
       "--instui-component-badge-padding": {
@@ -29088,7 +29088,7 @@
       "--instui-component-badge-notification-z-index": {
         "deprecated": true,
         "inherits": true,
-        "syntax": "<integer>",
+        "syntax": "*",
         "value": "1"
       },
       "--instui-component-badge-padding": {
@@ -45201,7 +45201,7 @@
       "--instui-component-badge-notification-z-index": {
         "deprecated": true,
         "inherits": true,
-        "syntax": "<integer>",
+        "syntax": "*",
         "value": "1"
       },
       "--instui-component-badge-padding": {

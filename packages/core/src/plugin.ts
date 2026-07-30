@@ -6,16 +6,10 @@
  * @module
  */
 import { checkPlugins } from "@pantoken/plugin-kit";
+import { sanitizeSvg } from "@pantoken/utils";
 import { svgToDataUri } from "./icons.ts";
 import { cssSyntaxForValue, isContextual } from "./utils.ts";
-import type {
-  IconEntry,
-  IconResolver,
-  PantokenPlugin,
-  Theme,
-  Token,
-  TokenInput,
-} from "@pantoken/model";
+import type { IconEntry, PantokenPlugin, Theme, Token, TokenInput } from "@pantoken/model";
 
 export type {
   CssContribution,
@@ -85,6 +79,22 @@ export function dedupeByName(tokens: Token[]): Token[] {
   return [...byName.values()];
 }
 
+/** Valid CSS custom property name pattern — names outside this are CSS-injection vectors. */
+const CUSTOM_PROP_RE = /^--[\w\u0080-\uFFFF][\w\u0080-\uFFFF-]*$/;
+const DATA_SVG_PREFIX = "data:image/svg+xml;utf8,";
+
+/** Sanitize the SVG embedded in an <image> token data-URI and return the cleaned token value. */
+function sanitizeImageToken(value: string): string {
+  const inner = /^url\(\s*'?(.*?)'?\s*\)$/.exec(value.trim())?.[1] ?? value;
+  if (!inner.startsWith(DATA_SVG_PREFIX)) return value;
+  try {
+    const svg = sanitizeSvg(decodeURIComponent(inner.slice(DATA_SVG_PREFIX.length)));
+    return `url('${DATA_SVG_PREFIX}${encodeURIComponent(svg)}')`;
+  } catch {
+    return value;
+  }
+}
+
 /**
  * Run every plugin's `tokens` hook in order. Each hook receives the current list and returns the
  * full replacement; the result is de-duplicated by name.
@@ -99,9 +109,9 @@ export function dedupeByName(tokens: Token[]): Token[] {
  * ];
  * const addBrand: PantokenPlugin = {
  *   name: "brand",
- *   tokens: ({ tokens, define }) => [
+ *   tokens: ({ tokens }) => [
  *     ...tokens,
- *     define({ name: "--instui-brand", value: "#0374B5" }),
+ *     defineToken({ name: "--instui-brand", value: "#0374B5" }),
  *   ],
  * };
  *
@@ -115,8 +125,22 @@ export function runTokenPlugins(
 ): Token[] {
   let acc = tokens;
   for (const plugin of checkPlugins(plugins, "tokens")) {
-    const result = plugin.tokens?.({ tokens: acc, theme, define: defineToken });
-    if (Array.isArray(result)) acc = result;
+    const result = plugin.tokens?.({ tokens: acc, theme });
+    if (!Array.isArray(result)) continue;
+    // Validate token names and sanitize <image> SVG values before accepting into the IR.
+    const validated: Token[] = [];
+    for (const token of result) {
+      if (!CUSTOM_PROP_RE.test(token.name)) {
+        console.warn(
+          `[pantoken] Plugin "${plugin.name}" returned a token with an invalid name "${token.name}" — dropping.`,
+        );
+        continue;
+      }
+      if (token.syntax === "<image>" && token.value.includes(DATA_SVG_PREFIX))
+        validated.push({ ...token, value: sanitizeImageToken(token.value) });
+      else validated.push(token);
+    }
+    acc = validated;
   }
   return dedupeByName(acc);
 }
@@ -137,10 +161,12 @@ function iconEntryToToken(entry: IconEntry): Token | undefined {
   });
 }
 
+const ICON_PREFIX = "--instui-icon-";
+
 /**
- * Run every plugin's `icons` hook, letting plugins register extra glyphs as `<image>` tokens. Each
- * hook gets an `add` (collects entries) and a `resolve` (looks up the current icon set). The result
- * is de-duplicated by name.
+ * Run every plugin's `icons` hook, letting plugins register extra glyphs as `<image>` tokens.
+ * Each hook receives the current icon list and returns new {@link IconEntry} records to add.
+ * The result is de-duplicated by name.
  *
  * @example Register an extra glyph as an <image> token
  * ```ts
@@ -150,27 +176,41 @@ function iconEntryToToken(entry: IconEntry): Token | undefined {
  * const base: Token[] = [];
  * const star: PantokenPlugin = {
  *   name: "star",
- *   icons: ({ add }) => add({ name: "star", path: "M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z" }),
+ *   icons: () => [{ name: "star", path: "M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z" }],
  * };
  *
- * const tokens = runIconPlugins(base, [star]);
+ * const tokens = runIconPlugins(base, [star], "rebrand");
  * // → adds a --instui-icon-star token whose value is a data-URI SVG
  * ```
  */
-export function runIconPlugins(tokens: Token[], plugins: readonly PantokenPlugin[]): Token[] {
+export function runIconPlugins(
+  tokens: Token[],
+  plugins: readonly PantokenPlugin[],
+  theme: Theme = "rebrand",
+): Token[] {
   const active = checkPlugins(plugins, "icons");
   if (active.length === 0) return tokens;
 
   const added: Token[] = [];
-  const has = (name: string): boolean =>
-    tokens.some((t) => t.name === name) || added.some((t) => t.name === name);
-  const resolve: IconResolver = (code) =>
-    has(`--instui-icon-${code}`) ? { name: code } : undefined;
-  const add = (entry: IconEntry): void => {
-    const token = iconEntryToToken(entry);
-    if (token) added.push(token);
-  };
+  // Provide a lightweight icon list (no SVG decoding) so plugins can check existing icons.
+  const existingIcons = tokens
+    .filter((t) => t.meta?.kind === "icon")
+    .map((t) => ({
+      name: t.name.slice(ICON_PREFIX.length),
+      viewBox: t.meta?.viewBox,
+      source: t.meta?.source,
+      bidirectional: t.meta?.bidirectional,
+    }));
 
-  for (const plugin of active) plugin.icons?.({ add, resolve });
+  for (const plugin of active) {
+    const result = plugin.icons?.({ icons: existingIcons, theme });
+    if (!Array.isArray(result)) continue;
+    for (const entry of result) {
+      // Sanitize plugin-contributed SVG before encoding into the IR.
+      const sanitized = entry.svg ? { ...entry, svg: sanitizeSvg(entry.svg) } : entry;
+      const token = iconEntryToToken(sanitized);
+      if (token) added.push(token);
+    }
+  }
   return added.length ? dedupeByName([...tokens, ...added]) : tokens;
 }

@@ -10,16 +10,7 @@ import {
   shimEntries,
   shimValue,
 } from "../src/index.ts";
-import type { DeprecationLedger, Token } from "@pantoken/model";
-
-const define = (i: { name: string; value: string; meta?: Token["meta"] }): Token => ({
-  name: i.name,
-  syntax: i.value.includes("var(") ? "*" : "<integer>",
-  inherits: true,
-  value: i.value,
-  ...(i.value.startsWith("var(") ? { refersTo: i.value.slice(4, -1) } : {}),
-  ...(i.meta ? { meta: i.meta } : {}),
-});
+import type { DeprecationLedger } from "@pantoken/model";
 
 const ledger: DeprecationLedger = {
   version: 1,
@@ -65,7 +56,7 @@ test("ledgerCovers reports whether a token has a lifecycle entry", () => {
 });
 
 test("tokens hook appends a shim per entry, carrying meta.deprecated lifecycle", () => {
-  const out = deprecationShims(ledger).tokens?.({ tokens: [], theme: "rebrand", define }) ?? [];
+  const out = deprecationShims(ledger).tokens?.({ tokens: [], theme: "rebrand" }) ?? [];
   const forward = out.find((t) => t.name === "--instui-component-truncate-text-line-height");
   expect(forward?.value).toBe("var(--instui-line-height-paragraph-base)");
   expect(forward?.meta?.deprecated?.removeIn).toBe("design-tokens@v1.6.0");

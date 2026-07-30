@@ -1,0 +1,35 @@
+name: Guard release automation
+
+# Reject PRs that impersonate the automated "Version Packages" release flow.
+# The changesets action opens that PR from the changeset-release/main branch under
+# github-actions[bot]; any other actor doing the same is either a mistake or a
+# supply-chain attempt to land an unreviewed version bump.
+
+on:
+  pull_request:
+    types: [opened, reopened, edited, synchronize]
+
+permissions:
+  pull-requests: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject unauthorized version-packages PR
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_HEAD: ${{ github.event.pull_request.head.ref }}
+          PR_ACTOR: ${{ github.event.pull_request.user.login }}
+        run: |
+          # Pattern used by the changesets action for its automated Version PR.
+          if echo "$PR_TITLE" | grep -qiE '^chore: version packages' \
+          || echo "$PR_HEAD"  | grep -qiE '^changeset-release/'; then
+            if [ "$PR_ACTOR" != "github-actions[bot]" ]; then
+              echo "::error::PRs titled 'chore: version packages …' or branched from"
+              echo "::error::'changeset-release/*' must be opened by the release workflow,"
+              echo "::error::not by a human actor ('$PR_ACTOR'). Close this PR and let the"
+              echo "::error::automated release flow handle version bumps."
+              exit 1
+            fi
+          fi

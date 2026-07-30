@@ -22,7 +22,14 @@
  * `--dry-run` reports what it would publish and which releases it would create, touching nothing.
  */
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  appendFileSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
@@ -174,6 +181,55 @@ function releaseNotes(pkg: WorkspacePackage, rootDir: string): string {
 
 type EnsureResult = "created" | "exists" | "failed";
 
+/** Run `npm pack --json` and return the tarball filename, or null on failure. */
+function npmPackFilename(pkgDir: string): string | null {
+  const result = spawnSync("npm", ["pack", "--json"], {
+    cwd: pkgDir,
+    encoding: "utf8",
+    shell: false,
+  });
+  if (result.status !== 0) return null;
+  try {
+    return (JSON.parse(result.stdout) as Array<{ filename: string }>)[0].filename;
+  } catch {
+    return null;
+  }
+}
+
+/** Pack the package and upload the tarball to its GitHub release; returns the local .tgz path or null. */
+function packAndUpload(
+  pkg: WorkspacePackage,
+  tag: string,
+  repo: string,
+  rootDir: string,
+): string | null {
+  const packsDir = path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-packs");
+  mkdirSync(packsDir, { recursive: true });
+  const pkgDir = path.join(rootDir, pkg.path);
+  const tgzName = npmPackFilename(pkgDir);
+  if (!tgzName) {
+    console.error(`  pack failed for ${tag}; skipping tarball upload.`);
+    return null;
+  }
+  const destTgz = path.join(packsDir, tgzName);
+  // Move the tgz to the shared packs dir so attest-build-provenance can glob it.
+  spawnSync("mv", [path.join(pkgDir, tgzName), destTgz], { shell: false });
+  const uploadResult = spawnSync(
+    "gh",
+    ["release", "upload", tag, destTgz, "--repo", repo, "--clobber"],
+    { encoding: "utf8", shell: false, stdio: "inherit" },
+  );
+  if (uploadResult.status !== 0)
+    console.error(`  tarball upload failed for ${tag} (provenance will still run).`);
+  return destTgz;
+}
+
+/** Append the release tag to the RUNNER_TEMP tags file for the provenance step. */
+function recordRelease(tag: string): void {
+  const tagsFile = path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-release-tags.txt");
+  appendFileSync(tagsFile, `${tag}\n`, "utf8");
+}
+
 /** Create the tag + GitHub release for a package if it doesn't already exist. `gh` does both via API. */
 function ensureRelease(pkg: WorkspacePackage, ctx: ReleaseContext): EnsureResult {
   const tag = tagFor(pkg);
@@ -195,7 +251,11 @@ function ensureRelease(pkg: WorkspacePackage, ctx: ReleaseContext): EnsureResult
       ],
       { encoding: "utf8", shell: false, stdio: "inherit" },
     );
-    return result.status === 0 ? "created" : "failed";
+    if (result.status !== 0) return "failed";
+    // Pack + upload the tarball so the release has a non-source artifact; enables SLSA provenance.
+    packAndUpload(pkg, tag, ctx.repo, ctx.rootDir);
+    recordRelease(tag);
+    return "created";
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

@@ -3,5 +3,6 @@
   "compilerOptions": {
     "lib": ["es2023", "dom", "dom.iterable"],
     "noUncheckedSideEffectImports": false
-  }
+  },
+  "exclude": ["vite.config.ts", "vite.config.*.ts", "vite.runner.config.ts"]
 }

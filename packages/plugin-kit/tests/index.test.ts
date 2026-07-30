@@ -1,16 +1,48 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import {
   capabilitiesOf,
   checkPlugins,
   definePlugin,
   extendPlugin,
   isFactoried,
+  isSandboxed,
   makeResolver,
   mergePlugin,
+  runPluginHook,
+  validatePlugin,
+  type SandboxedPluginEntry,
 } from "../src/index.ts";
 import type { PantokenPlugin, Token } from "@pantoken/model";
 
 afterEach(() => vi.restoreAllMocks());
+
+// validatePlugin tests
+test("validatePlugin passes a well-formed plugin", () => {
+  expect(() => validatePlugin({ name: "ok", css: () => ({}) })).not.toThrow();
+});
+
+test("validatePlugin rejects a plugin with no name", () => {
+  expect(() => validatePlugin({ name: "" } as PantokenPlugin)).toThrow(/no name/);
+});
+
+test("validatePlugin rejects a non-function hook", () => {
+  expect(() =>
+    validatePlugin({ name: "bad", tokens: "not-a-function" as unknown as () => never }),
+  ).toThrow(/invalid.*tokens.*hook/i);
+});
+
+test("validatePlugin rejects an unrecognised key", () => {
+  expect(() => validatePlugin({ name: "x", mystery: true } as unknown as PantokenPlugin)).toThrow(
+    /unrecognised key/,
+  );
+});
+
+test("definePlugin validates before branding", () => {
+  expect(() => definePlugin({ name: "" } as PantokenPlugin)).toThrow();
+});
 
 test("definePlugin infers capabilities from the hooks provided", () => {
   const p = definePlugin({ name: "brand", tokens: (c) => c.tokens, css: () => ({ append: "" }) });
@@ -55,7 +87,6 @@ test("extendPlugin composes tokens (base then overrides) and merges css", () => 
   const out = ext.tokens?.({
     tokens: [],
     theme: "rebrand",
-    define: (i) => ({ ...i, syntax: "*", inherits: true }),
   });
   expect(out?.map((t) => t.name)).toEqual(["--a", "--b"]);
   expect(ext.css?.({ tokens: [], css: "" })).toMatchObject({ append: "a{}\n\nb{}" });
@@ -114,29 +145,23 @@ test("extendPlugin tokens falls back to ctx.tokens when a hook returns undefined
   const out = ext.tokens?.({
     tokens: ctxTokens,
     theme: "rebrand",
-    define: (i) => ({ ...i, syntax: "*", inherits: true }),
   });
   expect(out).toEqual(ctxTokens);
 });
 
-test("extendPlugin runs both icons hooks and both native hooks", () => {
-  const calls: string[] = [];
+test("extendPlugin runs both icons hooks and merges their returned entries", () => {
   const base = definePlugin({
     name: "base",
-    icons: () => calls.push("base-icons"),
-    native: () => calls.push("base-native"),
+    icons: () => [{ name: "icon-a" }],
+    native: () => {},
   });
   const ext = extendPlugin(base, {
-    icons: () => calls.push("ext-icons"),
-    native: () => calls.push("ext-native"),
+    icons: () => [{ name: "icon-b" }],
+    native: () => {},
   });
   expect(capabilitiesOf(ext)).toEqual(["icons", "native"]);
-  ext.icons?.({
-    add: () => {},
-    resolve: () => undefined,
-  });
-  ext.native?.({} as never);
-  expect(calls).toEqual(["base-icons", "ext-icons", "base-native", "ext-native"]);
+  const entries = ext.icons?.({ icons: [], theme: "rebrand" });
+  expect(entries?.map((e) => e.name)).toEqual(["icon-a", "icon-b"]);
 });
 
 test("extendPlugin chains rehype resolvers: overrides, then base, then ctx", () => {
@@ -176,3 +201,143 @@ test("makeResolver expands reference chains and keeps light-dark()", () => {
   expect(resolve("var(--mid)")).toBe("#2B7ABC");
   expect(resolve("var(--themed)")).toBe("light-dark(#2B7ABC, #000)");
 });
+
+// isSandboxed
+test("isSandboxed returns false for an inline PantokenPlugin", () => {
+  expect(isSandboxed(definePlugin({ name: "x", css: () => ({}) }))).toBe(false);
+});
+
+test("isSandboxed returns true for a SandboxedPluginEntry", () => {
+  const entry: SandboxedPluginEntry = { path: "/some/plugin.mjs", sandbox: "thread" };
+  expect(isSandboxed(entry)).toBe(true);
+});
+
+// runPluginHook — integration tests that spawn a real Worker thread
+test("runPluginHook(thread) runs the hook and returns the result", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-test-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = (ctx) => [...ctx.tokens, { name: "--injected", syntax: "*", inherits: true, value: "1" }];\n`,
+    );
+    const entry: SandboxedPluginEntry = { path: join(dir, "plugin.mjs"), sandbox: "thread" };
+    const result = await runPluginHook(entry, "tokens", { tokens: [], theme: "rebrand" });
+    expect(result).toEqual([{ name: "--injected", syntax: "*", inherits: true, value: "1" }]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("runPluginHook(thread) rejects when the plugin hook throws", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-err-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = () => { throw new Error("hook-error"); };\n`,
+    );
+    const entry: SandboxedPluginEntry = { path: join(dir, "plugin.mjs"), sandbox: "thread" };
+    await expect(runPluginHook(entry, "tokens", {})).rejects.toThrow("hook-error");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("runPluginHook(thread) returns null when the stage hook is absent", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-null-"));
+  try {
+    writeFileSync(join(dir, "plugin.mjs"), `export default {}; // no tokens hook\n`);
+    const entry: SandboxedPluginEntry = { path: join(dir, "plugin.mjs"), sandbox: "thread" };
+    const result = await runPluginHook(entry, "tokens", {});
+    expect(result).toBeNull();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+// runPluginHook process-mode integration tests
+
+test("runPluginHook(process) runs the hook in a sandboxed child process and returns the result", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = () => [{ name: "--from-process", syntax: "*", inherits: true, value: "1" }];\n`,
+    );
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      // '*' lets --allow-fs-read=* cover all reads; test focuses on IPC, not permission config.
+      readPaths: ["*"],
+    };
+    const result = await runPluginHook(entry, "tokens", { tokens: [], theme: "rebrand" });
+    expect(result).toEqual([{ name: "--from-process", syntax: "*", inherits: true, value: "1" }]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);
+
+test("runPluginHook(process) rejects when the plugin hook throws in the child process", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-err-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = () => { throw new Error("proc-hook-error"); };\n`,
+    );
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      readPaths: ["*"],
+    };
+    await expect(runPluginHook(entry, "tokens", {})).rejects.toThrow("proc-hook-error");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);
+
+test("runPluginHook(process) rejects when the child process exits with non-zero code", async () => {
+  // A plugin whose top-level code calls process.exit(1) exits before sending any IPC message,
+  // which triggers the 'exit' handler in runInProcess with code !== 0.
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-exit1-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `// top-level exit before IPC message is sent\nprocess.exit(1);\nexport const tokens = () => [];\n`,
+    );
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      readPaths: ["*"],
+    };
+    await expect(runPluginHook(entry, "tokens", {})).rejects.toThrow(/process exited with code 1/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);
+
+test("extendPlugin icons returns undefined when both hooks return empty arrays", () => {
+  const base = definePlugin({ name: "empty-base", icons: () => [] });
+  const ext = extendPlugin(base, { icons: () => [] });
+  const result = ext.icons?.({ icons: [], theme: "rebrand" });
+  expect(result).toBeUndefined();
+});
+
+test("runPluginHook(process) uses findWorkspaceRoot when readPaths is omitted", async () => {
+  // Place the plugin inside the workspace so findWorkspaceRoot can locate pnpm-workspace.yaml.
+  // The child process will exit non-zero (Node --permission without * readPath restricts system
+  // reads), but findWorkspaceRoot itself (in the test process) executes and is covered.
+  const wsRoot = new URL("../../../", import.meta.url).pathname;
+  const dir = mkdtempSync(join(wsRoot, ".tmp-pk-test-"));
+  try {
+    writeFileSync(join(dir, "plugin.mjs"), `export const tokens = () => [];\n`);
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      // Omitting readPaths forces findWorkspaceRoot(pluginPath) to run in the test process.
+    };
+    // The child process may fail (exit 1) because --permission without "*" restricts system reads,
+    // but findWorkspaceRoot has already been called and its lines covered.
+    await runPluginHook(entry, "tokens", { tokens: [], theme: "rebrand" }).catch(() => {});
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);

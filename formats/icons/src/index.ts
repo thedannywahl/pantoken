@@ -10,6 +10,7 @@
  */
 import { tokens } from "@pantoken/tokens";
 import type { IconResolver } from "@pantoken/model";
+import { sanitizeSvg } from "@pantoken/utils";
 
 /** A pantoken icon, derived from an `<image>` token. */
 export interface PantokenIcon {
@@ -17,7 +18,11 @@ export interface PantokenIcon {
   name: string;
   /** The `url('data:image/svg+xml;utf8,…')` value, as stored in the IR. */
   dataUri: string;
-  /** The decoded inline SVG markup. */
+  /**
+   * The decoded inline SVG markup, stripped of `<script>` elements and event-handler attributes.
+   * Originates from the vendored IR (pinned upstream). Safe for trusted injection contexts;
+   * consumers should not treat this as safe for injection into attacker-controlled HTML.
+   */
   svg: string;
   /** The SVG `viewBox`, when known. */
   viewBox?: string;
@@ -56,7 +61,7 @@ export const icons: PantokenIcon[] = tokens
   .map((t) => ({
     name: t.name.slice(ICON_PREFIX.length),
     dataUri: t.value,
-    svg: decode(t.value),
+    svg: sanitizeSvg(decode(t.value)),
     viewBox: t.meta?.viewBox,
     bidirectional: Boolean(t.meta?.bidirectional),
     source: t.meta?.source,

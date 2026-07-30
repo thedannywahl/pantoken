@@ -26,6 +26,10 @@ the linked docs only when a task calls for them.
   to the browser. A value import of a postcss-based `@cssdoc/*` package pulls a `node:module` shim
   into the bundle and kills client JS. Type-only imports are fine; value imports belong in build
   scripts and tests.
+- **Generate a changeset for every user-visible change.** Run `pnpm changeset` and commit the
+  `.changeset/*.md` file alongside the code change.
+- **Keep security docs current.** When a code change alters a threat, adds a control, or closes a
+  residual risk in `ASSURANCE.md`, update both `ASSURANCE.md` and `SECURITY.md` before merging.
 
 ## Knowledge map
 
@@ -36,6 +40,7 @@ the linked docs only when a task calls for them.
 | Work on the web components (shadow CSS, `register()`/prefix, the JS-behavior tier) | `docs/conventions/web-components.md` |
 | Build, lint, release, or work on the docs site + i18n + cssdoc integration         | `docs/conventions/build-and-docs.md` |
 | Avoid re-solving a known bug or gotcha                                             | `docs/engineering-log.md`            |
+| Amend the security assurance case after adding a new input surface or control      | `ASSURANCE.md`, `SECURITY.md`        |
 | Match an agent to a domain                                                         | `AGENTS.md`                          |
 
 ## Repo shape

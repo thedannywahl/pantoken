@@ -29,26 +29,31 @@ export interface PantokenPostcssOptions {
  * // In your entry stylesheet, `@pantoken;` expands to the token stylesheet.
  * ```
  *
- * @example Expand a custom at-rule (`@instui;` instead of `@pantoken;`)
+ * @example Expand a custom at-rule (atRule: "instui" instead of the default)
  * ```js
  * import { pantoken } from "@pantoken/postcss";
  *
  * export default { plugins: [pantoken({ atRule: "instui" })] };
  * ```
  */
-function pantoken(options: PantokenPostcssOptions = {}): Plugin {
-  const name = options.atRule ?? "pantoken";
-  return {
-    postcssPlugin: "@pantoken/postcss",
-    AtRule: {
-      [name]: (atRule, { postcss }) => {
-        atRule.replaceWith(postcss.parse(pantokenCss));
+const pantoken: {
+  (options?: PantokenPostcssOptions): Plugin;
+  /** Required PostCSS plugin marker. */
+  postcss: true;
+} = Object.assign(
+  function pantoken(options: PantokenPostcssOptions = {}): Plugin {
+    const name = options.atRule ?? "pantoken";
+    return {
+      postcssPlugin: "@pantoken/postcss",
+      AtRule: {
+        [name]: (atRule, { postcss }) => {
+          atRule.replaceWith(postcss.parse(pantokenCss));
+        },
       },
-    },
-  };
-}
-
-pantoken.postcss = true;
+    };
+  },
+  { postcss: true as const },
+);
 
 export default pantoken;
 export { pantoken };
