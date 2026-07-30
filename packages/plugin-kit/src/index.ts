@@ -328,9 +328,10 @@ export function isSandboxed(
 // ESM Worker script executed via a data: URL (thread mode).
 const THREAD_WORKER_CODE = `
 import { workerData, parentPort } from 'node:worker_threads';
+import { pathToFileURL } from 'node:url';
 const { pluginPath, stage, ctx } = workerData;
 try {
-  const mod = await import(pluginPath);
+  const mod = await import(pathToFileURL(pluginPath).href);
   const plugin = mod.default ?? mod;
   const result = (typeof plugin[stage] === 'function' ? plugin[stage](ctx) : undefined) ?? null;
   parentPort.postMessage({ ok: true, result });
@@ -367,7 +368,9 @@ function findWorkspaceRoot(fromPath: string): string {
 
 /** Run a hook in a Worker thread (JS heap isolation; no OS-capability restriction). */
 function runInThread<T>(pluginPath: string, stage: Stage, ctx: unknown): Promise<T | null> {
-  const url = `data:text/javascript;charset=utf-8,${encodeURIComponent(THREAD_WORKER_CODE)}`;
+  const url = new URL(
+    `data:text/javascript;charset=utf-8,${encodeURIComponent(THREAD_WORKER_CODE)}`,
+  );
   return new Promise((resolve, reject) => {
     const worker = new NodeWorker(url, { workerData: { pluginPath, stage, ctx } });
     // Cast to EventEmitter — worker_threads.Worker extends EventEmitter but DOM Worker conflicts.

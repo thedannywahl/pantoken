@@ -180,3 +180,23 @@ test("existing releases are skipped and GITHUB_SHA is used as the tag target", a
   );
   expect(createdArgs).toBeUndefined();
 });
+
+test("ensureRelease packs + uploads the tgz and records the tag when npm pack succeeds", async () => {
+  const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
+  spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  const spawned = spawnSync.mock.calls.map((c) =>
+    `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
+  );
+  // packAndUpload: calls mv to move the tgz, then gh release upload
+  expect(spawned.some((s) => s.startsWith("mv"))).toBe(true);
+  expect(spawned.some((s) => s === "gh release")).toBe(true);
+  // recordRelease: appends the release tag to the tracking file
+  expect(appendFileSync).toHaveBeenCalled();
+});

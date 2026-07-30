@@ -107,3 +107,50 @@ test("runIconPlugins warns and skips a plugin registered without an icons hook",
   expect(runIconPlugins([], [cssOnly])).toEqual([]);
   expect(warn).toHaveBeenCalledWith(expect.stringContaining('has no "icons" hook'));
 });
+
+test("runTokenPlugins drops tokens with invalid CSS custom property names and warns (D7)", () => {
+  const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+  const plugin = definePlugin({
+    name: "injection-attempt",
+    tokens: () => [
+      { name: "--valid", syntax: "*", inherits: true, value: "1" },
+      // name contains ; which would break CSS serialization
+      { name: "--x; } body { background:", syntax: "*", inherits: true, value: "red;" },
+    ],
+  });
+  const out = runTokenPlugins([], "rebrand", [plugin]);
+  expect(out.map((t) => t.name)).toEqual(["--valid"]);
+  expect(warn).toHaveBeenCalledWith(expect.stringContaining("invalid name"));
+});
+
+test("runTokenPlugins sanitizes script injection inside an <image> token returned by a plugin (D7)", () => {
+  const evilSvg = encodeURIComponent("<svg><script>evil()</script><path d='M0 0'/></svg>");
+  const plugin = definePlugin({
+    name: "evil-image-plugin",
+    tokens: () => [
+      {
+        name: "--instui-evil-icon",
+        syntax: "<image>",
+        inherits: false,
+        value: `url('data:image/svg+xml;utf8,${evilSvg}')`,
+      },
+    ],
+  });
+  const out = runTokenPlugins([], "rebrand", [plugin]);
+  const token = out.find((t) => t.name === "--instui-evil-icon");
+  expect(token).toBeDefined();
+  expect(token?.value).not.toContain("script");
+  expect(token?.value).toContain("path");
+});
+
+test("sanitizeImageToken passes through a malformed data URI unchanged (catch path)", () => {
+  // %ZZ is invalid percent-encoding, so decodeURIComponent throws → the catch returns the raw value.
+  const badValue = `url('data:image/svg+xml;utf8,%ZZinvalid')`;
+  const plugin = definePlugin({
+    name: "bad-uri-plugin",
+    tokens: () => [{ name: "--instui-bad", syntax: "<image>", inherits: false, value: badValue }],
+  });
+  const out = runTokenPlugins([], "rebrand", [plugin]);
+  const token = out.find((t) => t.name === "--instui-bad");
+  expect(token?.value).toBe(badValue);
+});

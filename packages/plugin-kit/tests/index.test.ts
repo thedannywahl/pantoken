@@ -1,13 +1,19 @@
 import { afterEach, expect, test, vi } from "vite-plus/test";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
 import {
   capabilitiesOf,
   checkPlugins,
   definePlugin,
   extendPlugin,
   isFactoried,
+  isSandboxed,
   makeResolver,
   mergePlugin,
+  runPluginHook,
   validatePlugin,
+  type SandboxedPluginEntry,
 } from "../src/index.ts";
 import type { PantokenPlugin, Token } from "@pantoken/model";
 
@@ -194,4 +200,56 @@ test("makeResolver expands reference chains and keeps light-dark()", () => {
   const resolve = makeResolver(ir);
   expect(resolve("var(--mid)")).toBe("#2B7ABC");
   expect(resolve("var(--themed)")).toBe("light-dark(#2B7ABC, #000)");
+});
+
+// isSandboxed
+test("isSandboxed returns false for an inline PantokenPlugin", () => {
+  expect(isSandboxed(definePlugin({ name: "x", css: () => ({}) }))).toBe(false);
+});
+
+test("isSandboxed returns true for a SandboxedPluginEntry", () => {
+  const entry: SandboxedPluginEntry = { path: "/some/plugin.mjs", sandbox: "thread" };
+  expect(isSandboxed(entry)).toBe(true);
+});
+
+// runPluginHook — integration tests that spawn a real Worker thread
+test("runPluginHook(thread) runs the hook and returns the result", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-test-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = (ctx) => [...ctx.tokens, { name: "--injected", syntax: "*", inherits: true, value: "1" }];\n`,
+    );
+    const entry: SandboxedPluginEntry = { path: join(dir, "plugin.mjs"), sandbox: "thread" };
+    const result = await runPluginHook(entry, "tokens", { tokens: [], theme: "rebrand" });
+    expect(result).toEqual([{ name: "--injected", syntax: "*", inherits: true, value: "1" }]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("runPluginHook(thread) rejects when the plugin hook throws", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-err-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = () => { throw new Error("hook-error"); };\n`,
+    );
+    const entry: SandboxedPluginEntry = { path: join(dir, "plugin.mjs"), sandbox: "thread" };
+    await expect(runPluginHook(entry, "tokens", {})).rejects.toThrow("hook-error");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test("runPluginHook(thread) returns null when the stage hook is absent", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-null-"));
+  try {
+    writeFileSync(join(dir, "plugin.mjs"), `export default {}; // no tokens hook\n`);
+    const entry: SandboxedPluginEntry = { path: join(dir, "plugin.mjs"), sandbox: "thread" };
+    const result = await runPluginHook(entry, "tokens", {});
+    expect(result).toBeNull();
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
