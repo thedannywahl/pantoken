@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-kit",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Build and compose pantoken plugins (definePlugin, extendPlugin, mergePlugin) with capability-aware registration.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
