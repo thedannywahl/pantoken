@@ -6,6 +6,7 @@
  * @module
  */
 import { checkPlugins } from "@pantoken/plugin-kit";
+import { sanitizeSvg } from "@pantoken/utils";
 import { svgToDataUri } from "./icons.ts";
 import { cssSyntaxForValue, isContextual } from "./utils.ts";
 import type {
@@ -85,6 +86,22 @@ export function dedupeByName(tokens: Token[]): Token[] {
   return [...byName.values()];
 }
 
+/** Valid CSS custom property name pattern — names outside this are CSS-injection vectors. */
+const CUSTOM_PROP_RE = /^--[\w\u0080-\uFFFF][\w\u0080-\uFFFF-]*$/;
+const DATA_SVG_PREFIX = "data:image/svg+xml;utf8,";
+
+/** Sanitize the SVG embedded in an <image> token data-URI and return the cleaned token value. */
+function sanitizeImageToken(value: string): string {
+  const inner = /^url\(\s*'?(.*?)'?\s*\)$/.exec(value.trim())?.[1] ?? value;
+  if (!inner.startsWith(DATA_SVG_PREFIX)) return value;
+  try {
+    const svg = sanitizeSvg(decodeURIComponent(inner.slice(DATA_SVG_PREFIX.length)));
+    return `url('${DATA_SVG_PREFIX}${encodeURIComponent(svg)}')`;
+  } catch {
+    return value;
+  }
+}
+
 /**
  * Run every plugin's `tokens` hook in order. Each hook receives the current list and returns the
  * full replacement; the result is de-duplicated by name.
@@ -116,7 +133,21 @@ export function runTokenPlugins(
   let acc = tokens;
   for (const plugin of checkPlugins(plugins, "tokens")) {
     const result = plugin.tokens?.({ tokens: acc, theme, define: defineToken });
-    if (Array.isArray(result)) acc = result;
+    if (!Array.isArray(result)) continue;
+    // Validate token names and sanitize <image> SVG values before accepting into the IR.
+    const validated: Token[] = [];
+    for (const token of result) {
+      if (!CUSTOM_PROP_RE.test(token.name)) {
+        console.warn(
+          `[pantoken] Plugin "${plugin.name}" returned a token with an invalid name "${token.name}" — dropping.`,
+        );
+        continue;
+      }
+      if (token.syntax === "<image>" && token.value.includes(DATA_SVG_PREFIX))
+        validated.push({ ...token, value: sanitizeImageToken(token.value) });
+      else validated.push(token);
+    }
+    acc = validated;
   }
   return dedupeByName(acc);
 }
@@ -167,7 +198,9 @@ export function runIconPlugins(tokens: Token[], plugins: readonly PantokenPlugin
   const resolve: IconResolver = (code) =>
     has(`--instui-icon-${code}`) ? { name: code } : undefined;
   const add = (entry: IconEntry): void => {
-    const token = iconEntryToToken(entry);
+    // Sanitize plugin-contributed SVG before encoding into the IR.
+    const sanitized: IconEntry = entry.svg ? { ...entry, svg: sanitizeSvg(entry.svg) } : entry;
+    const token = iconEntryToToken(sanitized);
     if (token) added.push(token);
   };
 
