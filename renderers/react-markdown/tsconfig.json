@@ -3,5 +3,6 @@
   "compilerOptions": {
     "lib": ["es2023", "dom"],
     "jsx": "react-jsx"
-  }
+  },
+  "exclude": ["vite.config.ts", "vite.config.*.ts", "vite.runner.config.ts"]
 }

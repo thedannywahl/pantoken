@@ -22,16 +22,22 @@ import type { Plugin } from "postcss";
  * // ".x{color:red !important}"
  * ```
  */
-export function addImportant(): Plugin {
-  return {
-    postcssPlugin: "pendo-add-important",
-    Declaration(decl) {
-      if (decl.prop.startsWith("--")) return; // custom properties keep cascading normally
-      if (decl.parent?.type !== "rule") return; // skip @property/@font-face descriptors
-      decl.important = true;
-    },
-  };
-}
-addImportant.postcss = true;
+export const addImportant: {
+  (): Plugin;
+  /** Required PostCSS plugin marker. */
+  postcss: true;
+} = Object.assign(
+  function addImportant(): Plugin {
+    return {
+      postcssPlugin: "pendo-add-important",
+      Declaration(decl) {
+        if (decl.prop.startsWith("--")) return; // custom properties keep cascading normally
+        if (decl.parent?.type !== "rule") return; // skip @property/@font-face descriptors
+        decl.important = true;
+      },
+    };
+  },
+  { postcss: true as const },
+);
 
 export default addImportant;

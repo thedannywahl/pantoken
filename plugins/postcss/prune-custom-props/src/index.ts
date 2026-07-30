@@ -40,56 +40,62 @@ const VAR_RE = /var\(\s*(--[\w-]+)/g;
  * // only the --instui-* custom properties reachable from real declarations survive
  * ```
  */
-export function pruneCustomProps(): Plugin {
-  return {
-    postcssPlugin: "pantoken-prune-custom-props",
-    OnceExit(root) {
-      // Every custom-property definition and its value(s).
-      const defs = new Map<string, string[]>();
-      root.walkDecls((decl) => {
-        if (!decl.prop.startsWith("--")) return;
-        const values = defs.get(decl.prop) ?? [];
-        values.push(decl.value);
-        defs.set(decl.prop, values);
-      });
+export const pruneCustomProps: {
+  (): Plugin;
+  /** Required PostCSS plugin marker. */
+  postcss: true;
+} = Object.assign(
+  function pruneCustomProps(): Plugin {
+    return {
+      postcssPlugin: "pantoken-prune-custom-props",
+      OnceExit(root) {
+        // Every custom-property definition and its value(s).
+        const defs = new Map<string, string[]>();
+        root.walkDecls((decl) => {
+          if (!decl.prop.startsWith("--")) return;
+          const values = defs.get(decl.prop) ?? [];
+          values.push(decl.value);
+          defs.set(decl.prop, values);
+        });
 
-      // Seed the used set from references in real declarations (the roots that actually render).
-      const used = new Set<string>();
-      root.walkDecls((decl) => {
-        if (decl.prop.startsWith("--")) return;
-        for (const m of decl.value.matchAll(VAR_RE)) used.add(m[1]);
-      });
+        // Seed the used set from references in real declarations (the roots that actually render).
+        const used = new Set<string>();
+        root.walkDecls((decl) => {
+          if (decl.prop.startsWith("--")) return;
+          for (const m of decl.value.matchAll(VAR_RE)) used.add(m[1]);
+        });
 
-      // Transitively keep anything a used custom property references.
-      let changed = true;
-      while (changed) {
-        changed = false;
-        for (const [name, values] of defs) {
-          if (!used.has(name)) continue;
-          for (const value of values) {
-            for (const m of value.matchAll(VAR_RE)) {
-              if (!used.has(m[1])) {
-                used.add(m[1]);
-                changed = true;
+        // Transitively keep anything a used custom property references.
+        let changed = true;
+        while (changed) {
+          changed = false;
+          for (const [name, values] of defs) {
+            if (!used.has(name)) continue;
+            for (const value of values) {
+              for (const m of value.matchAll(VAR_RE)) {
+                if (!used.has(m[1])) {
+                  used.add(m[1]);
+                  changed = true;
+                }
               }
             }
           }
         }
-      }
 
-      root.walkDecls((decl) => {
-        if (decl.prop.startsWith("--") && !used.has(decl.prop)) decl.remove();
-      });
-      root.walkAtRules("property", (rule) => {
-        if (!used.has(rule.params.trim())) rule.remove();
-      });
-      // Drop rules left empty after pruning.
-      root.walkRules((rule) => {
-        if (rule.nodes?.length === 0) rule.remove();
-      });
-    },
-  };
-}
-pruneCustomProps.postcss = true;
+        root.walkDecls((decl) => {
+          if (decl.prop.startsWith("--") && !used.has(decl.prop)) decl.remove();
+        });
+        root.walkAtRules("property", (rule) => {
+          if (!used.has(rule.params.trim())) rule.remove();
+        });
+        // Drop rules left empty after pruning.
+        root.walkRules((rule) => {
+          if (rule.nodes?.length === 0) rule.remove();
+        });
+      },
+    };
+  },
+  { postcss: true as const },
+);
 
 export default pruneCustomProps;

@@ -118,23 +118,28 @@ function lowerMedia(rule: AtRule, theme: Theme): void {
  * @param options - {@link ThemeCustomMediaOptions}.
  * @returns A PostCSS {@link Plugin}.
  */
-export function themeCustomMedia(options: ThemeCustomMediaOptions = {}): Plugin {
-  const theme = options.theme ?? "rebrand";
+export const themeCustomMedia: {
+  (options?: ThemeCustomMediaOptions): Plugin;
+  /** Required PostCSS plugin marker. */
+  postcss: true;
+} = Object.assign(
+  function themeCustomMedia(options: ThemeCustomMediaOptions = {}): Plugin {
+    const theme = options.theme ?? "rebrand";
 
-  return {
-    postcssPlugin: "pantoken-theme-custom-media",
-    OnceExit(root) {
-      root.walkAtRules("media", (rule) => lowerMedia(rule, theme));
+    return {
+      postcssPlugin: "pantoken-theme-custom-media",
+      OnceExit(root) {
+        root.walkAtRules("media", (rule) => lowerMedia(rule, theme));
 
-      // Remove authoring-time alias declarations from emitted CSS.
-      root.walkAtRules("custom-media", (rule) => {
-        const [alias] = rule.params.trim().split(/\s+/, 1);
-        if (alias && THEME_ALIAS.has(alias)) rule.remove();
-      });
-    },
-  };
-}
-
-themeCustomMedia.postcss = true;
+        // Remove authoring-time alias declarations from emitted CSS.
+        root.walkAtRules("custom-media", (rule) => {
+          const [alias] = rule.params.trim().split(/\s+/, 1);
+          if (alias && THEME_ALIAS.has(alias)) rule.remove();
+        });
+      },
+    };
+  },
+  { postcss: true as const },
+);
 
 export default themeCustomMedia;
