@@ -253,3 +253,44 @@ test("runPluginHook(thread) returns null when the stage hook is absent", async (
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+// runPluginHook process-mode integration tests
+import { fileURLToPath } from "node:url";
+
+test("runPluginHook(process) runs the hook in a sandboxed child process and returns the result", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = () => [{ name: "--from-process", syntax: "*", inherits: true, value: "1" }];\n`,
+    );
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      // '*' lets --allow-fs-read=* cover all reads; test focuses on IPC, not permission config.
+      readPaths: ["*"],
+    };
+    const result = await runPluginHook(entry, "tokens", { tokens: [], theme: "rebrand" });
+    expect(result).toEqual([{ name: "--from-process", syntax: "*", inherits: true, value: "1" }]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);
+
+test("runPluginHook(process) rejects when the plugin hook throws in the child process", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-err-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `export const tokens = () => { throw new Error("proc-hook-error"); };\n`,
+    );
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      readPaths: ["*"],
+    };
+    await expect(runPluginHook(entry, "tokens", {})).rejects.toThrow("proc-hook-error");
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);

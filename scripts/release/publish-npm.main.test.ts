@@ -200,3 +200,22 @@ test("ensureRelease packs + uploads the tgz and records the tag when npm pack su
   // recordRelease: appends the release tag to the tracking file
   expect(appendFileSync).toHaveBeenCalled();
 });
+
+test("npmPackFilename returns null when npm pack exits non-zero", async () => {
+  spawnSync.mockImplementation(
+    router({ "npm pack": { status: 1, stdout: "", stderr: "pack-failed" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  // packAndUpload bails out early — pack failed → no mv or upload
+  const spawned = spawnSync.mock.calls.map((c) =>
+    `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
+  );
+  expect(spawned.some((s) => s.startsWith("mv"))).toBe(false);
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
+});
