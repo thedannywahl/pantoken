@@ -52,14 +52,40 @@ test("parseArgs applies defaults, boolean flags, and the comma-separated --icons
   expect(args.icons).toEqual(["arrow-left", "check-mark"]);
 });
 
-test("parseArgs treats a trailing flag with no value as a boolean", () => {
+test("parseArgs treats a trailing --format flag with no value as 'true'", () => {
+  // --format is a known flag; "true" is later validated by the target-specific runner.
   const args = parseArgs(["generate", "swatches", "--format"]);
-  // `--format` at the end has no value → recorded as the string "true", not undefined.
   expect(args.format).toBe("true");
 });
 
 test("an unknown command (not `generate`) reports a usage error", async () => {
   await expect(run(["build", "swift"])).rejects.toThrow(/Unknown command/);
+});
+
+// Regression tests for Phase B: CLI input validation
+test("parseArgs rejects an unknown theme value", () => {
+  expect(() => parseArgs(["generate", "swift", "--theme", "unknown-theme"])).toThrow(
+    /Unknown theme/,
+  );
+});
+
+test("parseArgs rejects a trailing --theme flag parsed as 'true'", () => {
+  expect(() => parseArgs(["generate", "swift", "--theme"])).toThrow(/Unknown theme/);
+});
+
+test("parseArgs rejects an unknown flag", () => {
+  expect(() => parseArgs(["generate", "swift", "--unknown-flag"])).toThrow(/Unknown flag/);
+});
+
+test("run rejects an unsupported Rust format", async () => {
+  const out = mkdtempSync(join(tmpdir(), "pantoken-cli-rust-bad-"));
+  await expect(run(["generate", "rust", "--format", "opengl", "--out", out])).rejects.toThrow(
+    /Unknown Rust format/,
+  );
+});
+
+test("parseArgs rejects an invalid class name", () => {
+  expect(() => parseArgs(["generate", "swift", "--class", "123Bad"])).toThrow(/Invalid class name/);
 });
 
 /** Every target that writes plain JSON/text assets into a fresh output dir. */
