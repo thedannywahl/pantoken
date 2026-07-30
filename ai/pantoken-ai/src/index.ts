@@ -27,7 +27,7 @@ export { ASSETS } from "../generated/assets.ts";
  * }
  * ```
  */
-export const AGENTS_MD = ASSETS.agents;
+export const AGENTS_MD: string = ASSETS.agents;
 /**
  * The `llms.txt` content.
  *
@@ -39,7 +39,7 @@ export const AGENTS_MD = ASSETS.agents;
  * writeFileSync("llms.txt", LLMS_TXT);
  * ```
  */
-export const LLMS_TXT = ASSETS.llms;
+export const LLMS_TXT: string = ASSETS.llms;
 
 /** An agent/editor tool pantoken can install assets for. */
 export type AgentTool = "agents" | "llms" | "cursor" | "copilot" | "windsurf" | "claude";

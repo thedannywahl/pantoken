@@ -4,11 +4,11 @@
  *
  * @module
  */
-import { defineUtility } from "../lib/define.ts";
+import { defineUtility, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 
 /** The View utility — a neutral box with key-value modifiers for its visual props (background, border, radius, shadow, display, position, overflow, cursor). */
-export const view = defineUtility({
+export const view: Definition = defineUtility({
   name: "view",
   css: (p) => {
     const rule = (mod: string, decls: string): string => `.${p}view.-${mod} { ${decls} }`;
@@ -152,4 +152,4 @@ ${rules.join("\n")}`;
 });
 
 /** The View utility as a standalone, header-wrapped stylesheet. */
-export const viewCss = view.css;
+export const viewCss: Definition["css"] = view.css;

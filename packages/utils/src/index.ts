@@ -31,9 +31,9 @@ const VAR_SOURCE = "var\\(\\s*(--[\\w-]+)[^)]*\\)";
 const LIGHT_DARK_SOURCE = "^light-dark\\(\\s*(.+?)\\s*,\\s*(.+?)\\s*\\)$";
 
 /** A `var(--custom-prop)` reference (optional fallback); capture group 1 is the property name. */
-export const VAR_RE = regex(VAR_SOURCE, "g");
+export const VAR_RE: RegExp = regex(VAR_SOURCE, "g");
 /** A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches. */
-export const LIGHT_DARK_RE = regex(LIGHT_DARK_SOURCE);
+export const LIGHT_DARK_RE: RegExp = regex(LIGHT_DARK_SOURCE);
 
 const MAX_DEPTH = 12;
 

@@ -1,9 +1,9 @@
-import { defineComponent } from "../lib/define.ts";
+import { defineComponent, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { headingLevelRules } from "../lib/headings.ts";
 
 /** The `heading` component record: heading typography from `-level-h1` through `-level-h6`. */
-export const heading = defineComponent({
+export const heading: Definition = defineComponent({
   name: "heading",
   css: (p) =>
     // prettier-ignore
@@ -69,4 +69,4 @@ ${headingLevelRules((l) => `.${p}heading.-level-${l}`)}
 });
 
 /** Standalone `heading` stylesheet — the prefixed CSS for the heading type, ready to ship as a `.css` file. */
-export const headingCss = heading.css;
+export const headingCss: Definition["css"] = heading.css;

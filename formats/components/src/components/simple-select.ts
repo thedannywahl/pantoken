@@ -1,10 +1,10 @@
-import { defineComponent } from "../lib/define.ts";
+import { defineComponent, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { SELECT_CHEVRON } from "../lib/helpers.ts";
 import { fieldControlBase } from "../lib/field-controls.ts";
 
 /** The `simpleSelect` component record: a styled native `<select>` with a caret, matching the text-input states and sizes. */
-export const simpleSelect = defineComponent({
+export const simpleSelect: Definition = defineComponent({
   name: "simple-select",
   css: (p) => {
     const t = (s: string): string => `var(--instui-component-text-input-${s})`;
@@ -54,4 +54,4 @@ ${fieldControlBase(p, "simple-select", "text-input")}
 });
 
 /** Standalone `simpleSelect` stylesheet — the prefixed CSS for the native select, ready to ship as a `.css` file. */
-export const simpleSelectCss = simpleSelect.css;
+export const simpleSelectCss: Definition["css"] = simpleSelect.css;

@@ -69,6 +69,55 @@ know what's in place:
   (`snyk code`, SAST); because Snyk has no GitHub App here, the SAST scan gates locally at push time
   rather than in CI.
 
+### Verifying releases
+
+Pantoken protects its releases with GitHub immutable-release attestations and npm/Sigstore provenance attestations.
+
+#### GitHub releases
+
+GitHub releases are immutable. After publication, their tags cannot be moved and their attached assets cannot be modified or deleted. GitHub automatically generates a cryptographically verifiable release attestation containing the release tag, source commit, and attached assets.
+
+Install the GitHub CLI and verify a release with:
+
+```sh
+gh release verify RELEASE-TAG --repo thedannywahl/pantoken
+```
+
+If a release has an attached artifact, verify a downloaded copy with:
+
+```sh
+gh release verify-asset RELEASE-TAG ARTIFACT-PATH \
+  --repo thedannywahl/pantoken
+```
+
+The automatically generated GitHub source archives are not attached release assets and cannot be checked with `verify-asset`. The release tag itself can still be checked with `gh release verify`.
+
+GitHub uses keyless release attestations, so Pantoken does not maintain a long-lived private signing key on GitHub or another distribution site. The GitHub CLI obtains and validates the required public verification material automatically.
+
+#### npm packages
+
+Pantoken’s public npm packages are published from GitHub Actions using npm trusted publishing and the `--provenance` option. npm creates signed Sigstore provenance and publish attestations associating each package with its source commit and release workflow.
+
+To verify an installed Pantoken package and its provenance using a current npm CLI:
+
+```sh
+npm install @pantoken/core
+npm audit signatures
+```
+
+Replace `@pantoken/core` with the Pantoken package being verified. The command fails if a registry signature or provenance attestation is missing or invalid.
+
+Users can also inspect the provenance indicator for a package version on npmjs.com to view its source commit, build workflow, signing certificate, and public transparency-log entry.
+
+Sigstore provenance uses short-lived signing certificates rather than a long-lived Pantoken private key. npm retrieves the necessary certificate and transparency-log material automatically. The npm registry’s public signature keys are available at:
+
+<https://registry.npmjs.org/-/npm/v1/keys>
+
+Additional verification documentation:
+
+- <https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verify-release-integrity>
+- <https://docs.npmjs.com/viewing-package-provenance/>
+
 ## Disclosure
 
 We follow coordinated disclosure. Once a fix ships, we'll publish an advisory crediting the reporter

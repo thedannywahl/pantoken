@@ -14,7 +14,9 @@
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "isolatedDeclarations": true,
     "verbatimModuleSyntax": true,
+    "noUncheckedSideEffectImports": true,
     "skipLibCheck": true
   }
 }

@@ -1,10 +1,10 @@
-import { defineComponent } from "../lib/define.ts";
+import { defineComponent, type Definition } from "../lib/define.ts";
 import { css } from "../lib/css.ts";
 import { AI_ICON_MASK } from "../lib/helpers.ts";
 import { alpha, darken } from "@pantoken/plugin-colors";
 
 /** The `button` component record: an accessible action control styled from the token palette, primary by default. */
-export const button = defineComponent({
+export const button: Definition = defineComponent({
   name: "button",
   css: (p) =>
     // prettier-ignore
@@ -286,4 +286,4 @@ export const button = defineComponent({
 });
 
 /** Standalone `button` stylesheet — the prefixed CSS for the action button, ready to ship as a `.css` file. */
-export const buttonCss = button.css;
+export const buttonCss: Definition["css"] = button.css;

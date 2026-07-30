@@ -19,12 +19,12 @@
  * @experimental
  */
 import { tokens } from "@pantoken/tokens";
-import { toMintlifyConfig } from "./to-mintlify.ts";
+import { toMintlifyConfig, type MintlifyTheme } from "./to-mintlify.ts";
 
 export { toMintlifyConfig } from "./to-mintlify.ts";
 export type { MintlifyColors, MintlifyBackground, MintlifyTheme } from "./to-mintlify.ts";
 
 /** Ready-made `rebrand` Mintlify `docs.json` theming keys (colors + background). */
-export const docsJson = toMintlifyConfig(tokens);
+export const docsJson: MintlifyTheme = toMintlifyConfig(tokens);
 
 export default docsJson;

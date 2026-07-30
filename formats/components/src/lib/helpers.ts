@@ -53,9 +53,9 @@ export const SELECT_CHEVRON =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a7883' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")";
 
 /** Lucide `chevron-up`/`chevron-down`, masked — the NumberInput spinner glyphs (painted in currentColor). */
-export const CHEVRON_UP_ICON = iconMask("chevron-up");
+export const CHEVRON_UP_ICON: string = iconMask("chevron-up");
 /** Lucide `chevron-down`, masked — the NumberInput down spinner glyph (painted in currentColor). */
-export const CHEVRON_DOWN_ICON = iconMask("chevron-down");
+export const CHEVRON_DOWN_ICON: string = iconMask("chevron-down");
 
 /**
  * InstUI's `ai` glyph (Solid), inlined as a mask so it paints in the button's own colour — solid
