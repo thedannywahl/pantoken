@@ -38,7 +38,7 @@ export function sanitizeSvg(svg: string): string {
   // Loop until stable: malformed/nested script fragments can survive a single pass.
   do {
     previous = sanitized;
-    sanitized = sanitized.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, "");
+    sanitized = sanitized.replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, "");
   } while (sanitized !== previous);
   // Loop until stable: nested or concatenated on* attributes can survive a single pass.
   do {
