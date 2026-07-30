@@ -29,7 +29,7 @@ export interface PantokenPostcssOptions {
  * // In your entry stylesheet, `@pantoken;` expands to the token stylesheet.
  * ```
  *
- * @example Expand a custom at-rule (`@instui;` instead of `@pantoken;`)
+ * @example Expand a custom at-rule (atRule: "instui" instead of the default)
  * ```js
  * import { pantoken } from "@pantoken/postcss";
  *
