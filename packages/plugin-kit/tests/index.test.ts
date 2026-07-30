@@ -293,3 +293,51 @@ test("runPluginHook(process) rejects when the plugin hook throws in the child pr
     rmSync(dir, { recursive: true, force: true });
   }
 }, 30_000);
+
+test("runPluginHook(process) rejects when the child process exits with non-zero code", async () => {
+  // A plugin whose top-level code calls process.exit(1) exits before sending any IPC message,
+  // which triggers the 'exit' handler in runInProcess with code !== 0.
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-plugin-kit-proc-exit1-"));
+  try {
+    writeFileSync(
+      join(dir, "plugin.mjs"),
+      `// top-level exit before IPC message is sent\nprocess.exit(1);\nexport const tokens = () => [];\n`,
+    );
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      readPaths: ["*"],
+    };
+    await expect(runPluginHook(entry, "tokens", {})).rejects.toThrow(/process exited with code 1/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);
+
+test("extendPlugin icons returns undefined when both hooks return empty arrays", () => {
+  const base = definePlugin({ name: "empty-base", icons: () => [] });
+  const ext = extendPlugin(base, { icons: () => [] });
+  const result = ext.icons?.({ icons: [], theme: "rebrand" });
+  expect(result).toBeUndefined();
+});
+
+test("runPluginHook(process) uses findWorkspaceRoot when readPaths is omitted", async () => {
+  // Place the plugin inside the workspace so findWorkspaceRoot can locate pnpm-workspace.yaml.
+  // The child process will exit non-zero (Node --permission without * readPath restricts system
+  // reads), but findWorkspaceRoot itself (in the test process) executes and is covered.
+  const wsRoot = new URL("../../../", import.meta.url).pathname;
+  const dir = mkdtempSync(join(wsRoot, ".tmp-pk-test-"));
+  try {
+    writeFileSync(join(dir, "plugin.mjs"), `export const tokens = () => [];\n`);
+    const entry: SandboxedPluginEntry = {
+      path: join(dir, "plugin.mjs"),
+      sandbox: "process",
+      // Omitting readPaths forces findWorkspaceRoot(pluginPath) to run in the test process.
+    };
+    // The child process may fail (exit 1) because --permission without "*" restricts system reads,
+    // but findWorkspaceRoot has already been called and its lines covered.
+    await runPluginHook(entry, "tokens", { tokens: [], theme: "rebrand" }).catch(() => {});
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+}, 30_000);

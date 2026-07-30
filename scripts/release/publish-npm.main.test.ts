@@ -219,3 +219,94 @@ test("npmPackFilename returns null when npm pack exits non-zero", async () => {
   expect(spawned.some((s) => s.startsWith("mv"))).toBe(false);
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
 });
+
+test("npmPackFilename returns null when npm pack stdout is invalid JSON", async () => {
+  spawnSync.mockImplementation(
+    router({ "npm pack": { status: 0, stdout: "not-json", stderr: "" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  // JSON.parse throws → packAndUpload gets null → logs "pack failed"
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
+});
+
+test("packAndUpload logs error when gh release upload fails", async () => {
+  const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
+  // Use a custom mock instead of router() since all gh release subcommands share the same key.
+  spawnSync.mockImplementation((...spawnArgs: unknown[]): SpawnResult => {
+    const cmd = spawnArgs[0] as string;
+    const args = spawnArgs[1] as string[];
+    if (cmd === "npm" && args[0] === "view") return { status: 1, stdout: "", stderr: "" }; // not on npm
+    if (cmd === "npm" && args[0] === "pack") return { status: 0, stdout: packJson, stderr: "" };
+    if (cmd === "npm" && args[0] === "publish") return { status: 0, stdout: "", stderr: "" };
+    if (cmd === "git") return { status: 0, stdout: "deadbeef\n", stderr: "" };
+    if (cmd === "gh" && args[1] === "view") return { status: 1, stdout: "", stderr: "" }; // no release
+    if (cmd === "gh" && args[1] === "create") return { status: 0, stdout: "", stderr: "" };
+    if (cmd === "gh" && args[1] === "upload")
+      return { status: 1, stdout: "", stderr: "upload error" };
+    return { status: 0, stdout: "", stderr: "" };
+  });
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("tarball upload failed")),
+  ).toBe(true);
+});
+
+test("releaseNotes falls back to minimal message when CHANGELOG.md is missing", async () => {
+  readFileSync.mockImplementation((...args: unknown[]) => {
+    const filePath = String(args[0]);
+    if (filePath.includes("CHANGELOG")) throw new Error("ENOENT");
+    return "";
+  });
+  spawnSync.mockImplementation(router());
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
+  );
+
+  // Release notes fell back to "Release <tag>." — release still created
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned.some((s) => s.startsWith("gh release"))).toBe(true);
+});
+
+test("a failed release create continues past the failure and exits non-zero", async () => {
+  spawnSync.mockImplementation(
+    router({ "gh release": { status: 1, stdout: "", stderr: "release create boom" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to create release")),
+  ).toBe(true);
+});
+
+test("failedPublish packages are logged and exit code is 1", async () => {
+  spawnSync.mockImplementation(
+    router({ "npm publish": { status: 1, stdout: "", stderr: "auth error" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() =>
+    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("publish failed:"))).toBe(
+      true,
+    ),
+  );
+  expect(process.exitCode).toBe(1);
+});
