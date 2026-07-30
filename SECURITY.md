@@ -23,8 +23,8 @@ pantoken is a design-token transformation and distribution system. It converts I
 - Token values, plugin implementations, configuration files, Markdown, HTML, and other caller-provided content must be treated as trusted input unless the relevant package explicitly documents otherwise.
 - pantoken emitters transform input into CSS, JavaScript, JSON, markup, or platform source. They are not a general-purpose sanitizer for untrusted input. Passing attacker-controlled values to an emitter or plugin may produce unsafe output, including CSS, markup, or code injection.
 - Generated stylesheets, components, and framework integrations do not provide an application security boundary. Applications remain responsible for authentication, authorization, output encoding, Content Security Policy, browser security, and safe handling of user content.
-- pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Only trusted plugins and configuration should be used.
-- The CLI writes generated files to caller-selected locations.
+- pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Plugin structure is validated by `validatePlugin` (non-empty name, function hooks, no unrecognised keys) and plugin output is validated at the IR boundary before it enters the token graph. Full execution sandboxing is planned. Only trusted plugins and configuration should be used.
+- The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
 
 ## Reporting a vulnerability
 

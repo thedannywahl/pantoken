@@ -78,6 +78,42 @@ const KNOWN_FLAGS = new Set([
 const VALID_CLASS_RE = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 const RUST_FORMATS = new Set(["egui", "iced"]);
 
+/** Write an array of path+content assets into `outDir`, creating intermediate directories. */
+function writeAssets(
+  outDir: string,
+  assets: ReadonlyArray<{ path: string; content: string | Buffer | Uint8Array }>,
+): void {
+  for (const asset of assets) {
+    const file = join(outDir, asset.path);
+    mkdirSync(dirname(file), { recursive: true });
+    writeFileSync(file, asset.content);
+    console.log(`✓ pantoken: wrote ${file}`);
+  }
+}
+
+/** Parse argv into positionals and a validated flags record; throw on unknown flags. */
+function parseFlags(argv: readonly string[]): {
+  positionals: string[];
+  flags: Record<string, string>;
+} {
+  const positionals: string[] = [];
+  const flags: Record<string, string> = {};
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg.startsWith("--")) {
+      const key = arg.slice(2);
+      const next = argv[i + 1];
+      if (!KNOWN_FLAGS.has(key))
+        throw new Error(`Unknown flag "--${key}". Run pantoken generate --help for usage.`);
+      if (next === undefined || next.startsWith("--")) flags[key] = "true";
+      else flags[key] = argv[++i];
+    } else {
+      positionals.push(arg);
+    }
+  }
+  return { positionals, flags };
+}
+
 /**
  * Parse `generate <target> [--out dir] [--theme t] [--class Name]`.
  *
@@ -100,22 +136,7 @@ const RUST_FORMATS = new Set(["egui", "iced"]);
  * ```
  */
 export function parseArgs(argv: readonly string[]): CliArgs {
-  const positionals: string[] = [];
-  const flags: Record<string, string> = {};
-  for (let i = 0; i < argv.length; i++) {
-    const arg = argv[i];
-    if (arg.startsWith("--")) {
-      const key = arg.slice(2);
-      const next = argv[i + 1];
-      if (!KNOWN_FLAGS.has(key))
-        throw new Error(`Unknown flag "--${key}". Run pantoken generate --help for usage.`);
-      // A flag with no following value (end of args or another flag next) is a boolean.
-      if (next === undefined || next.startsWith("--")) flags[key] = "true";
-      else flags[key] = argv[++i];
-    } else {
-      positionals.push(arg);
-    }
-  }
+  const { positionals, flags } = parseFlags(argv);
   const theme = flags.theme ?? "rebrand";
   if (!VALID_THEMES.has(theme))
     throw new Error(`Unknown theme "${theme}". Valid themes: ${[...VALID_THEMES].join(", ")}.`);
@@ -236,12 +257,7 @@ function runMintlify(args: CliArgs): void {
 
 /** Write the Drupal theme assets. */
 function runDrupal(args: CliArgs): void {
-  for (const asset of toDrupalTheme()) {
-    const file = join(args.out, asset.path);
-    mkdirSync(dirname(file), { recursive: true });
-    writeFileSync(file, asset.content);
-    console.log(`✓ pantoken: wrote ${file}`);
-  }
+  writeAssets(args.out, toDrupalTheme());
 }
 
 /** Write the Rust token source for the egui or iced format. */
@@ -294,13 +310,7 @@ async function runIconFont(args: CliArgs): Promise<void> {
 
 /** Write the Jekyll or Hugo static-site assets (same asset shape, different source). */
 function runStaticSite(args: CliArgs): void {
-  const assets = args.target === "jekyll" ? toJekyllAssets() : toHugoAssets();
-  for (const asset of assets) {
-    const file = join(args.out, asset.path);
-    mkdirSync(dirname(file), { recursive: true });
-    writeFileSync(file, asset.content);
-    console.log(`✓ pantoken: wrote ${file}`);
-  }
+  writeAssets(args.out, args.target === "jekyll" ? toJekyllAssets() : toHugoAssets());
 }
 
 /** Write the Pendo `global.css`, honouring the `--no-scope`/`--no-important`/`--no-prune` flags. */

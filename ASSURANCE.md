@@ -251,29 +251,28 @@ Sandboxed iframes constrain demonstrations, and users can install only the packa
 ### Input validation
 
 Pantoken applies allowlists at several constrained entry points: CLI commands and targets, native
-platform selections, DTCG dangerous-key filtering, expected file extensions, and path containment.
+platform selections, DTCG dangerous-key filtering, expected file extensions, path containment,
+CSS custom property name pattern for plugin-contributed tokens, and an SVG script-injection strip
+for decoded icon SVGs and plugin-contributed SVG assets.
 HTML attributes are escaped at the output boundary.
-
-Runtime CLI validation is not yet comprehensive for every restricted option. This is disclosed in
-[Residual risks and limitations](#residual-risks-and-limitations) and prevents the project from
-claiming complete conformance with the separate OpenSSF `input_validation` criterion.
 
 ## Common implementation weaknesses and countermeasures
 
-| Weakness                              | Countermeasure                                                                                                                                         |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Prototype pollution                   | Null-prototype DTCG root, dangerous-key exclusions, example tests, and property tests over arbitrary token names.                                      |
-| Path traversal                        | Canonical path resolution followed by a relative-path containment check before file reads.                                                             |
-| Command injection                     | Child-process argument arrays, `shell: false`, and temporary files for release notes instead of shell interpolation.                                   |
-| Markup and attribute injection        | Output-boundary attribute escaping; documented trusted-content boundary for raw HTML and Markdown.                                                     |
-| Untrusted active content              | Explicit iframe sandbox capabilities for rendered and self-hosted demonstrations.                                                                      |
-| Regular-expression denial of service  | Non-ambiguous expressions, bounded property-test inputs, high-iteration scheduled property tests, CodeQL, and Snyk Code.                               |
-| Unsafe object mutation                | Frozen public mapping tables where mutation would alter global behavior, null-prototype generated maps, and immutable inputs where practical.          |
-| Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                   |
-| Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                           |
-| Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.            |
-| Credential persistence                | Token-free npm publishing through short-lived OIDC credentials; secrets remain in GitHub's secret store rather than source or generated packages.      |
-| Regression reintroduction             | Automated tests on every pull request and push to `main`, an 85% statement-coverage floor, property tests, and regression tests for corrected defects. |
+| Weakness                              | Countermeasure                                                                                                                                                    |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Prototype pollution                   | Null-prototype DTCG root, dangerous-key exclusions, `validatePlugin` structural checks, example tests, and property tests over arbitrary token names.             |
+| Path traversal                        | Canonical path resolution followed by a relative-path containment check before file reads. CLI warns when output path escapes cwd.                                |
+| Command injection                     | Child-process argument arrays, `shell: false`, and temporary files for release notes instead of shell interpolation.                                              |
+| Markup and attribute injection        | Output-boundary attribute escaping; `sanitizeSvg` strip on decoded icon SVGs and plugin SVG output; documented trusted-content boundary for raw HTML.             |
+| Plugin output injection               | Token names validated against CSS custom property pattern; `<image>` SVG sanitized; `</style>` check on CSS contributions; invalid tokens dropped with a warning. |
+| Untrusted active content              | Explicit iframe sandbox capabilities for rendered and self-hosted demonstrations.                                                                                 |
+| Regular-expression denial of service  | Non-ambiguous expressions, bounded property-test inputs, high-iteration scheduled property tests, CodeQL, and Snyk Code.                                          |
+| Unsafe object mutation                | Frozen public mapping tables where mutation would alter global behavior, null-prototype generated maps, and immutable inputs where practical.                     |
+| Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                              |
+| Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                      |
+| Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.                       |
+| Credential persistence                | Token-free npm publishing through short-lived OIDC credentials; secrets remain in GitHub's secret store rather than source or generated packages.                 |
+| Regression reintroduction             | Automated tests on every pull request and push to `main`, an 85% statement-coverage floor, property tests, and regression tests for corrected defects.            |
 
 ## Verification evidence
 
@@ -302,13 +301,21 @@ The following risks remain or are deliberately outside the security claim:
 
 1. **Trusted transformation inputs.** Token values, configuration, plugins, Markdown, and raw HTML
    can produce active CSS, JavaScript, markup, or source code. Pantoken does not sanitize
-   attacker-controlled transformation inputs.
-2. **Plugin authority.** Plugins execute with the loading process's privileges. Pantoken does not
-   sandbox plugins.
-3. **CLI validation gaps.** CLI targets and some target-specific formats are allowlisted, but themes,
-   unknown flags, missing flag values, some format values, and generated-language identifiers are not
-   yet rejected consistently at runtime. CLI invocations must therefore come from a trusted local
-   user or build configuration.
+   attacker-controlled transformation inputs. Defense-in-depth: `sanitizeSvg` strips `<script>`
+   elements and event-handler attributes from decoded icon SVGs (`@pantoken/icons`) and from
+   plugin-contributed SVG at the IR boundary (`@pantoken/core`). This is a defense-in-depth
+   measure for trusted-but-pinned sources, not a general untrusted-input sanitizer.
+2. **Plugin authority.** Plugins execute with the loading process's privileges. `validatePlugin`
+   asserts structural integrity (non-empty name, function hooks, no unrecognised keys) before any
+   plugin is run. Plugin output is validated at the IR boundary: token names are checked against the
+   CSS custom property pattern, `<image>` token SVG data-URIs are sanitized, and plugin-contributed
+   icon SVGs are sanitized before encoding. Full execution sandboxing (Worker thread heap isolation
+   and child-process `--permission` model) is planned; the API redesign required to make hook
+   contexts serializable is a prerequisite.
+3. **CLI validation gaps.** ~~Closed.~~ `--theme`, `--class`, `--format` (rust target), and all
+   unknown flags are now validated against allowlists at parse time and rejected with a descriptive
+   error. Regression tests cover each rejection case. The CLI warns when the output path escapes the
+   current working directory.
 4. **Caller-selected output paths.** The CLI intentionally writes to the path selected by its caller.
    Operating-system permissions, workspace isolation, and review of build configuration protect the
    surrounding filesystem.
