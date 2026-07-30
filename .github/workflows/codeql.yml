@@ -33,15 +33,16 @@ jobs:
         with:
           persist-credentials: false
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
+        uses: github/codeql-action/init@f205ea1c3313d32999d8d6a48b4f6530d4437b38 # v4.37.4
         with:
           languages: ${{ matrix.language }}
+          # Explicit build-mode: none benefits improved incremental analysis (v4.35.0+).
+          build-mode: none
           queries: security-extended
           # Scope analysis to shipped source (excludes tests, the sandboxed demo playground, and
           # generated/dist). See the file for the per-path rationale.
           config-file: ./.github/codeql/codeql-config.yml
-      # JavaScript/TypeScript needs no build step for CodeQL.
       - name: Perform CodeQL analysis
-        uses: github/codeql-action/analyze@4187e74d05793876e9989daffde9c3e66b4acd07 # v3
+        uses: github/codeql-action/analyze@f205ea1c3313d32999d8d6a48b4f6530d4437b38 # v4.37.4
         with:
           category: "/language:${{ matrix.language }}"
