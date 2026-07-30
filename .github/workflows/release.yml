@@ -57,16 +57,21 @@ jobs:
             "CI / ci-gate"
             "CodeQL / Analyze (javascript-typescript)"
           )
-          deadline=$(( $(date +%s) + 1800 ))   # 30-minute ceiling
+          deadline=$(( $(date +%s) + 3600 ))   # 60-minute ceiling
           while true; do
+            # Log all current check names once per loop to help diagnose name mismatches.
+            echo "--- check runs for $SHA ---"
+            gh api --paginate "/repos/$REPO/commits/$SHA/check-runs" \
+              --jq '.check_runs[] | "\(.name): \(.status) / \(.conclusion)"' || true
+
             all_ok=true
             for name in "${required[@]}"; do
-              conclusion=$(gh api \
+              conclusion=$(gh api --paginate \
                 "/repos/$REPO/commits/$SHA/check-runs" \
                 --jq ".check_runs[] | select(.name == \"$name\") | .conclusion" \
                 | tail -1)
               if [ "$conclusion" != "success" ]; then
-                echo "$name: ${conclusion:-pending}"
+                echo "waiting: $name (${conclusion:-not yet started})"
                 all_ok=false
               fi
             done
