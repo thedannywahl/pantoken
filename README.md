@@ -101,3 +101,7 @@ directory. See the [generated-output guide](https://pantoken.iywahl.com/guide/ge
 ## License
 
 MIT
+
+## Project Governance
+
+See [GOVERNANCE.md](GOVERNANCE.md) for details on how project decisions are made.

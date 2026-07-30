@@ -6,6 +6,26 @@ pantoken publishes many small packages from this monorepo, all versioned togethe
 latest published release of each package. Fixes land on `main` and ship in the next release; we don't
 backport to older lines.
 
+## Security requirements and scope
+
+pantoken is a design-token transformation and distribution system. It converts Instructure design tokens and icons into CSS, framework integrations, build-tool plugins, design-tool data, and generated platform source. It is not an authentication, authorization, cryptography, or application-security library.
+
+### What users can expect
+
+- Published downstream packages use a vendored, versioned token model and do not require consumers to retrieve the GitHub-hosted upstream design-token source.
+- Generated output is reproducible from the repository source and pinned dependencies.
+- npm releases include provenance linking the package to its source commit and GitHub Actions workflow.
+- The project tests token resolution, output generation, reference integrity, package exports, and supported integrations in continuous integration.
+- Reported vulnerabilities affecting the latest release will be investigated and, when confirmed, fixed in a subsequent release.
+
+### Security boundaries and limitations
+
+- Token values, plugin implementations, configuration files, Markdown, HTML, and other caller-provided content must be treated as trusted input unless the relevant package explicitly documents otherwise.
+- pantoken emitters transform input into CSS, JavaScript, JSON, markup, or platform source. They are not a general-purpose sanitizer for untrusted input. Passing attacker-controlled values to an emitter or plugin may produce unsafe output, including CSS, markup, or code injection.
+- Generated stylesheets, components, and framework integrations do not provide an application security boundary. Applications remain responsible for authentication, authorization, output encoding, Content Security Policy, browser security, and safe handling of user content.
+- pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Only trusted plugins and configuration should be used.
+- The CLI writes generated files to caller-selected locations.
+
 ## Reporting a vulnerability
 
 Please report security issues privately. Don't open a public issue for anything security-sensitive.
@@ -17,6 +37,20 @@ Please report security issues privately. Don't open a public issue for anything 
 Please include enough detail to reproduce the issue: affected package and version, a description of the
 impact, and steps or a proof of concept. We'll acknowledge your report within five business days and
 keep you updated as we work on a fix.
+
+## Vulnerability response process
+
+When a vulnerability is reported, the project will:
+
+1. Acknowledge the report within five business days.
+2. Privately assess and attempt to reproduce the issue, identify affected packages and versions, and evaluate its severity and impact.
+3. Coordinate with the reporter through the private advisory or email channel and request any additional information needed.
+4. Develop a fix privately, including regression tests where practical, and check related packages for the same weakness.
+5. Release the fix for the latest supported version and document the security-relevant change in the affected package changelog.
+6. Publish a GitHub security advisory after the fix is available, including affected versions, impact, remediation, and upgrade instructions.
+7. Credit the reporter unless they request anonymity.
+
+If a report is determined not to be a vulnerability, the project will explain that conclusion privately to the reporter. Information about an unresolved vulnerability will remain private until a coordinated disclosure date is agreed upon or a fix is released.
 
 ## Supply-chain hardening
 
