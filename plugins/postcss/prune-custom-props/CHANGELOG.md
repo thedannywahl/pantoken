@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- 8391068: Replace post-hoc `fn.postcss = true` assignment with `Object.assign` + explicit
+  type declaration to satisfy `--isolatedDeclarations`. No behaviour change.
+
 ## 0.1.1
 
 ### Patch Changes

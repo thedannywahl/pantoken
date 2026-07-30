@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [8391068]
+  - @pantoken/model@0.3.0
+  - @pantoken/tokens@0.2.2
+
 ## 0.1.3
 
 ### Patch Changes
