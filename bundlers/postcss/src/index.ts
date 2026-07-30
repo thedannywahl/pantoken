@@ -36,19 +36,24 @@ export interface PantokenPostcssOptions {
  * export default { plugins: [pantoken({ atRule: "instui" })] };
  * ```
  */
-function pantoken(options: PantokenPostcssOptions = {}): Plugin {
-  const name = options.atRule ?? "pantoken";
-  return {
-    postcssPlugin: "@pantoken/postcss",
-    AtRule: {
-      [name]: (atRule, { postcss }) => {
-        atRule.replaceWith(postcss.parse(pantokenCss));
+const pantoken: {
+  (options?: PantokenPostcssOptions): Plugin;
+  /** Required PostCSS plugin marker. */
+  postcss: true;
+} = Object.assign(
+  function pantoken(options: PantokenPostcssOptions = {}): Plugin {
+    const name = options.atRule ?? "pantoken";
+    return {
+      postcssPlugin: "@pantoken/postcss",
+      AtRule: {
+        [name]: (atRule, { postcss }) => {
+          atRule.replaceWith(postcss.parse(pantokenCss));
+        },
       },
-    },
-  };
-}
-
-pantoken.postcss = true;
+    };
+  },
+  { postcss: true as const },
+);
 
 export default pantoken;
 export { pantoken };
