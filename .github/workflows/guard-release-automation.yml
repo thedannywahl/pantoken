@@ -22,20 +22,19 @@ jobs:
           PR_HEAD: ${{ github.event.pull_request.head.ref }}
         run: |
           # Pattern used by the changesets action for its automated Version PR.
-          if echo "$PR_TITLE" | grep -qiE '^chore: version packages'; then
-            # Only the changesets action creates PRs with this exact title, and it only runs
-            # from the release workflow on push to main. Reject any manual attempt to create
-            # a PR with this title.
-            echo "::error::PRs titled 'chore: version packages …' are created exclusively by the"
-            echo "::error::automated release workflow. Close this PR and let the release flow"
-            echo "::error::handle version bumps automatically."
-            exit 1
-          fi
-
           # Allow PRs from changeset-release/* branches — only the changesets action creates
           # PRs from these branches. Manual PRs from this branch are extremely unlikely since
           # the branch is push-protected and only updated by the release workflow.
           if echo "$PR_HEAD" | grep -qiE '^changeset-release/'; then
-            # This PR is from the changesets action; allow it.
+            # This PR is from the changesets action; allow it to proceed.
             exit 0
           fi
+
+          # If it reaches here, it's NOT from the changeset-release branch.
+          # Reject any PR titled 'chore: version packages' since only the changesets action
+          # creates PRs with this exact title, and it only runs from the changeset-release branch.
+          if echo "$PR_TITLE" | grep -qiE '^chore: version packages'; then
+            echo "::error::PRs titled 'chore: version packages …' are created exclusively by the"
+            echo "::error::automated release workflow. Close this PR and let the release flow"
+            echo "::error::handle version bumps automatically."
+            exit 1
