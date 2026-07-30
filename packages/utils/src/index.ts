@@ -26,6 +26,18 @@ export {
 /** The colour mode to collapse `light-dark()` to. */
 export type Mode = "light" | "dark";
 
+/**
+ * Strip `<script>` elements and event-handler attributes from SVG markup.
+ *
+ * Defense-in-depth for SVG decoded from vendored data URIs or contributed by plugins.
+ * Not a full HTML parser — relies on the upstream source being trusted and pinned.
+ */
+export function sanitizeSvg(svg: string): string {
+  return svg
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, "")
+    .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
+}
+
 // Pattern sources (also used to build fresh regexes where reuse would be unsafe).
 const VAR_SOURCE = "var\\(\\s*(--[\\w-]+)[^)]*\\)";
 const LIGHT_DARK_SOURCE = "^light-dark\\(\\s*(.+?)\\s*,\\s*(.+?)\\s*\\)$";
