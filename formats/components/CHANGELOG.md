@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.5
+
+### Patch Changes
+
+- 0306bf4: Add explicit type annotations required by `isolatedDeclarations`; no API changes.
+- Updated dependencies [0306bf4]
+  - @pantoken/utils@0.2.4
+
 ## 0.2.4
 
 ### Patch Changes

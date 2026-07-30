@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- 0306bf4: Add explicit type annotations required by `isolatedDeclarations`; no API changes.
+
 ## 0.1.1
 
 ### Patch Changes
