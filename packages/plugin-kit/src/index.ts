@@ -59,6 +59,7 @@ const hasHook = (plugin: PantokenPlugin, stage: Stage): boolean =>
  * ```
  */
 export function definePlugin(config: PantokenPlugin): PantokenPlugin {
+  validatePlugin(config);
   const capabilities = STAGES.filter((stage) => hasHook(config, stage));
   return Object.assign({}, config, { [BRAND]: { capabilities } });
 }
@@ -76,6 +77,43 @@ export function definePlugin(config: PantokenPlugin): PantokenPlugin {
  */
 export function isFactoried(plugin: PantokenPlugin): boolean {
   return Boolean((plugin as Branded)[BRAND]);
+}
+
+/**
+ * Assert that a plugin has a valid structure: non-empty name, all hooks are functions,
+ * and no hook key falls outside the recognised stage set.
+ *
+ * Called automatically by {@link definePlugin}. Export it so hand-authored plugins can
+ * be validated before passing them to a stage runner.
+ *
+ * @throws {Error} when the plugin fails structural validation.
+ *
+ * @example Validate a hand-authored plugin
+ * ```ts
+ * import { validatePlugin } from "@pantoken/plugin-kit";
+ *
+ * validatePlugin({ name: "brand", css: () => ({}) }); // ok
+ * validatePlugin({ name: "", css: () => ({}) });      // throws
+ * ```
+ */
+export function validatePlugin(plugin: PantokenPlugin): void {
+  if (!plugin.name || typeof plugin.name !== "string")
+    throw new Error(`Plugin has no name or name is not a string.`);
+  for (const stage of STAGES) {
+    const hook = plugin[stage];
+    if (hook !== undefined && typeof hook !== "function")
+      throw new Error(
+        `Plugin "${plugin.name}" has an invalid "${stage}" hook: expected a function, got ${typeof hook}.`,
+      );
+  }
+  // Guard against typo-smuggled extra keys that could confuse the stage runner.
+  const ALLOWED = new Set<string | symbol>(["name", ...STAGES]);
+  for (const key of Object.keys(plugin)) {
+    if (!ALLOWED.has(key))
+      throw new Error(
+        `Plugin "${plugin.name}" has an unrecognised key "${key}". Valid keys: name, ${STAGES.join(", ")}.`,
+      );
+  }
 }
 
 /**

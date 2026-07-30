@@ -7,10 +7,36 @@ import {
   isFactoried,
   makeResolver,
   mergePlugin,
+  validatePlugin,
 } from "../src/index.ts";
 import type { PantokenPlugin, Token } from "@pantoken/model";
 
 afterEach(() => vi.restoreAllMocks());
+
+// validatePlugin tests
+test("validatePlugin passes a well-formed plugin", () => {
+  expect(() => validatePlugin({ name: "ok", css: () => ({}) })).not.toThrow();
+});
+
+test("validatePlugin rejects a plugin with no name", () => {
+  expect(() => validatePlugin({ name: "" } as PantokenPlugin)).toThrow(/no name/);
+});
+
+test("validatePlugin rejects a non-function hook", () => {
+  expect(() =>
+    validatePlugin({ name: "bad", tokens: "not-a-function" as unknown as () => never }),
+  ).toThrow(/invalid.*tokens.*hook/i);
+});
+
+test("validatePlugin rejects an unrecognised key", () => {
+  expect(() => validatePlugin({ name: "x", mystery: true } as unknown as PantokenPlugin)).toThrow(
+    /unrecognised key/,
+  );
+});
+
+test("definePlugin validates before branding", () => {
+  expect(() => definePlugin({ name: "" } as PantokenPlugin)).toThrow();
+});
 
 test("definePlugin infers capabilities from the hooks provided", () => {
   const p = definePlugin({ name: "brand", tokens: (c) => c.tokens, css: () => ({ append: "" }) });
