@@ -35,6 +35,7 @@ component_management:
     statuses:
       - type: project
         target: auto
+        threshold: 5%
         branches:
           - "!main"
   individual_components:
