@@ -1,6 +1,7 @@
 # pantoken
 
 [![CI](https://github.com/thedannywahl/pantoken/actions/workflows/ci.yml/badge.svg)](https://github.com/thedannywahl/pantoken/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/thedannywahl/pantoken/actions/workflows/codeql.yml/badge.svg)](https://github.com/thedannywahl/pantoken/actions/workflows/codeql.yml)
 [![codecov](https://codecov.io/gh/thedannywahl/pantoken/branch/main/graph/badge.svg)](https://codecov.io/gh/thedannywahl/pantoken)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/thedannywahl/pantoken/badge)](https://securityscorecards.dev/viewer/?uri=github.com/thedannywahl/pantoken)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13875/badge)](https://www.bestpractices.dev/projects/13875)
