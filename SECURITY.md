@@ -111,12 +111,12 @@ Users can also inspect the provenance indicator for a package version on npmjs.c
 
 Sigstore provenance uses short-lived signing certificates rather than a long-lived Pantoken private key. npm retrieves the necessary certificate and transparency-log material automatically. The npm registry’s public signature keys are available at:
 
-https://registry.npmjs.org/-/npm/v1/keys
+<https://registry.npmjs.org/-/npm/v1/keys>
 
 Additional verification documentation:
 
-- https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verify-release-integrity
-- https://docs.npmjs.com/viewing-package-provenance/
+- <https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/secure-your-dependencies/verify-release-integrity>
+- <https://docs.npmjs.com/viewing-package-provenance/>
 
 ## Disclosure
 
