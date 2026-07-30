@@ -33,9 +33,14 @@ export type Mode = "light" | "dark";
  * Not a full HTML parser — relies on the upstream source being trusted and pinned.
  */
 export function sanitizeSvg(svg: string): string {
-  let sanitized = svg.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, "");
-  // Loop until stable: nested or concatenated on* attributes can survive a single pass.
+  let sanitized = svg;
   let previous: string;
+  // Loop until stable: malformed/nested script fragments can survive a single pass.
+  do {
+    previous = sanitized;
+    sanitized = sanitized.replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, "");
+  } while (sanitized !== previous);
+  // Loop until stable: nested or concatenated on* attributes can survive a single pass.
   do {
     previous = sanitized;
     sanitized = sanitized.replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
