@@ -4,6 +4,35 @@ Hard-won fixes and gotchas from pantoken work. Each entry is symptom → root ca
 so future work doesn't re-learn the lesson. Version and PR numbers are deliberately left out; the
 lesson is timeless.
 
+## Security
+
+### CLI flags must use allowlist validation — never silent fallback
+
+**Symptom** — A flag like `--format opengl` silently maps to the default (`egui`); `--theme typo`
+is cast without validation; `--class 123Bad` is accepted and emits broken generated identifiers.
+
+**Root cause** — Flags were parsed into a plain record with no validation, then cast to typed values
+or used directly as runtime inputs.
+
+**Fix / rule** — For every restricted CLI value, declare a `VALID_*` constant set and throw a
+descriptive error when the value is absent from it. Reject unknown flags at parse time. Add one
+regression test per rejection case. Never silently fall back to a default for caller-supplied values
+— fail loudly so the caller knows their invocation was wrong.
+
+### Decoded SVG from the IR must be stripped before consumer injection
+
+**Symptom** — A consumer does `element.innerHTML = icon.svg` and injects active script content from
+a data URI that was decoded without sanitization.
+
+**Root cause** — `decodeURIComponent` on a data URI produces raw SVG markup, including any
+`<script>` elements or event-handler attributes the upstream source or a plugin may have included.
+
+**Fix / rule** — Apply a zero-dependency `sanitizeSvg` strip (removes `<script>` blocks and `on*=`
+attributes) at two layers: at decode time in `@pantoken/icons` (for the vendored IR), and at encode
+time in `@pantoken/core` (for plugin-contributed icon SVGs). Both layers are needed; upstream trust
+is necessary but not sufficient when plugins can contribute arbitrary SVG. Never use `innerHTML`
+with an unsanitized SVG field, even from a trusted source.
+
 ## Toolchain
 
 ### oxfmt corrupts interpolated CSS-in-TS selectors

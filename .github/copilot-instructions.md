@@ -12,5 +12,7 @@ Docs are local at `node_modules/vite-plus/docs` or online at https://viteplus.de
 - [ ] Run `vp check` and `vp test` to format, lint, type check and test changes.
 - [ ] Check if there are `vite.config.ts` tasks or `package.json` scripts necessary for validation, run via `vp run <script>`.
 - [ ] If setup, runtime, or package-manager behavior looks wrong, run `vp env doctor` and include its output when asking for help.
+- [ ] Run `pnpm changeset` and commit the `.changeset/*.md` file alongside any user-visible change.
+- [ ] If a change adds a new CLI flag, runtime input surface, plugin hook, or output type, update `ASSURANCE.md` and `SECURITY.md` before merging.
 
 <!--VITE PLUS END-->

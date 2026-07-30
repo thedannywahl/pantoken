@@ -9,6 +9,16 @@ knowledge map. Each persona below pairs with deeper docs:
 - Build, release, docs site → `docs/conventions/build-and-docs.md`
 - Known gotchas → `docs/engineering-log.md`
 
+## Security documentation (cross-cutting)
+
+Applies to every agent persona below.
+
+- Amend `ASSURANCE.md` (Controls table, Residual risks) when adding new input surfaces, new
+  controls, or closing a residual risk.
+- Amend `SECURITY.md` (requirements, limitations, supply-chain sections) when the public-facing
+  security posture changes.
+- Run `pnpm changeset` and commit the changeset for every user-visible change before merging.
+
 ## Core / pipeline
 
 Owner of the transform and the emitter contract.
