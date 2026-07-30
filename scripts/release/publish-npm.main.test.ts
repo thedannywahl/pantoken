@@ -9,13 +9,22 @@ interface SpawnResult {
 
 const spawnSync = vi.fn<(...args: unknown[]) => SpawnResult>();
 const readFileSync = vi.fn<(...args: unknown[]) => string>();
+const appendFileSync = vi.fn();
+const mkdirSync = vi.fn();
 const writeFileSync = vi.fn();
 const mkdtempSync = vi.fn<() => string>(() => "/tmp/release-notes-x");
 const rmSync = vi.fn();
 const loadWorkspacePackages = vi.fn();
 
 vi.mock("node:child_process", () => ({ spawnSync }));
-vi.mock("node:fs", () => ({ mkdtempSync, readFileSync, rmSync, writeFileSync }));
+vi.mock("node:fs", () => ({
+  appendFileSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+}));
 vi.mock("./workspace-packages.ts", async (importActual) => {
   const actual = await importActual<typeof import("./workspace-packages.ts")>();
   return { ...actual, loadWorkspacePackages };
