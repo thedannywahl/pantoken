@@ -34,7 +34,45 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Wait for security-sensitive checks to pass before publishing anything.
+  # Prevents a race where CodeQL or CI catches a flaw but loses to a concurrent publish.
+  gate:
+    runs-on: ubuntu-latest
+    # workflow_dispatch re-triggers (e.g. failed publish retry) skip the gate — other checks
+    # already ran on this SHA when it first landed on main.
+    if: github.event_name == 'push'
+    permissions:
+      checks: read
+    steps:
+      - name: Wait for CI and CodeQL to succeed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ github.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          required=("CI" "CodeQL")
+          deadline=$(( $(date +%s) + 1800 ))   # 30-minute ceiling
+          while true; do
+            all_ok=true
+            for name in "${required[@]}"; do
+              conclusion=$(gh api \
+                "/repos/$REPO/commits/$SHA/check-runs" \
+                --jq ".check_runs[] | select(.name == \"$name\") | .conclusion" \
+                | tail -1)
+              if [ "$conclusion" != "success" ]; then
+                echo "$name: ${conclusion:-pending}"
+                all_ok=false
+              fi
+            done
+            $all_ok && echo "All required checks passed." && break
+            [ "$(date +%s)" -ge "$deadline" ] && echo "::error::Timed out waiting for checks." && exit 1
+            sleep 30
+          done
+
   release:
+    needs: gate
+    # On workflow_dispatch the gate job is skipped (if: push); `always()` lets release still run.
+    if: always() && (needs.gate.result == 'success' || needs.gate.result == 'skipped')
     permissions:
       contents: write # commit version bumps, push tags, create releases
       pull-requests: write # open/update the Version Packages PR
