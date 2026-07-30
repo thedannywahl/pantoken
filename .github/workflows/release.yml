@@ -152,6 +152,7 @@ jobs:
         run: vp run -r build
 
       - name: Create Version PR or publish
+        id: changeset
         uses: changesets/action@a45c4d594aa4e2c509dc14a9f2b3b67ba3780d0d # v1
         with:
           version: vp run release:version
@@ -174,6 +175,19 @@ jobs:
           # here touches publishing. Falls back to the built-in token when the PAT is unset.
           GITHUB_TOKEN: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
+
+      # Mark the Version PR with a label so the guard workflow can verify it came from
+      # this automated release flow, not from a manual attempt to impersonate the release.
+      # The changesets action creates/updates the PR regardless of which token was used,
+      # so we use this label as the source-of-truth marker instead of checking the actor.
+      - name: Label Version PR as automated
+        if: steps.changeset.outputs.pull-request-number
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PAT || secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.changeset.outputs.pull-request-number }}
+        run: |
+          gh pr edit "$PR_NUMBER" --add-label "automated-release" \
+            --repo "${{ github.repository }}"
 
       # Attach SLSA provenance to each new GitHub release so Scorecard's Signed-Releases check detects
       # signing. publish-npm.ts packs each published package into $RUNNER_TEMP/pantoken-packs/*.tgz and

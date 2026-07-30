@@ -20,16 +20,18 @@ jobs:
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
           PR_HEAD: ${{ github.event.pull_request.head.ref }}
-          PR_ACTOR: ${{ github.event.pull_request.user.login }}
+          PR_LABELS: ${{ toJson(github.event.pull_request.labels.*.name) }}
         run: |
           # Pattern used by the changesets action for its automated Version PR.
           if echo "$PR_TITLE" | grep -qiE '^chore: version packages' \
           || echo "$PR_HEAD"  | grep -qiE '^changeset-release/'; then
-            if [ "$PR_ACTOR" != "github-actions[bot]" ]; then
+            # The release workflow labels the Version PR with 'automated-release' after creating it.
+            # If this pattern matches but the label is missing, reject it — it's either a manual
+            # attempt to impersonate the release flow or a genuine mistake.
+            if ! echo "$PR_LABELS" | grep -q '"automated-release"'; then
               echo "::error::PRs titled 'chore: version packages …' or branched from"
-              echo "::error::'changeset-release/*' must be opened by the release workflow,"
-              echo "::error::not by a human actor ('$PR_ACTOR'). Close this PR and let the"
-              echo "::error::automated release flow handle version bumps."
+              echo "::error::'changeset-release/*' must be created by the automated release workflow."
+              echo "::error::Close this PR and let the release flow handle version bumps automatically."
               exit 1
             fi
           fi
