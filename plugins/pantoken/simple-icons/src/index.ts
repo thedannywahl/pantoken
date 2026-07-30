@@ -9,6 +9,7 @@
  * @beta
  */
 import { definePlugin } from "@pantoken/plugin-kit";
+import { defineToken } from "@pantoken/model";
 import type { IconResolver, PantokenPlugin, TokenInput } from "@pantoken/model";
 
 /** The shape of a Simple Icons entry (a subset of the published icon object). */
@@ -142,7 +143,7 @@ export function simpleIcons(options: SimpleIconsOptions = {}): PantokenPlugin {
 
   return definePlugin({
     name: "@pantoken/plugin-simple-icons",
-    tokens: ({ tokens, define }) => {
+    tokens: ({ tokens }) => {
       if (!registry) {
         throw new Error(
           "@pantoken/plugin-simple-icons: pass `registry` to use the token hook (it is synchronous). " +
@@ -160,7 +161,7 @@ export function simpleIcons(options: SimpleIconsOptions = {}): PantokenPlugin {
           meta: { kind: "icon" },
         });
       }
-      return [...tokens, ...additions.map((a) => define(a))];
+      return [...tokens, ...additions.map((a) => defineToken(a))];
     },
     rehype: () => ({ resolve: resolveFrom(registry ?? {}) }),
   });

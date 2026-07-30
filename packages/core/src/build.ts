@@ -170,6 +170,6 @@ export function buildTokens(options: BuildTokensOptions = {}): Token[] {
 
   // 6. Plugin icon hooks — register extra glyphs as <image> tokens, then token hooks — both guarded
   //    (a wrong-stage plugin warns rather than silently doing nothing); result de-duped (later wins).
-  const withIcons = runIconPlugins(tokens, plugins);
+  const withIcons = runIconPlugins(tokens, plugins, theme);
   return runTokenPlugins(withIcons, theme, plugins);
 }

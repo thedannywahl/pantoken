@@ -1,22 +1,13 @@
 import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import { transition } from "../src/index.ts";
-import type { Token } from "@pantoken/model";
-
-/** Materialize a plugin-emitted token input into a full Token, as the pipeline would. */
-const define = (i: { name: string; value: string }): Token => ({
-  name: i.name,
-  syntax: "*",
-  inherits: true,
-  value: i.value,
-});
 
 test("is a factoried plugin with tokens + css capabilities", () => {
   expect(capabilitiesOf(transition())).toEqual(["tokens", "css"]);
 });
 
 test("tokens hook defines the duration + timing custom properties", () => {
-  const out = transition().tokens?.({ tokens: [], theme: "rebrand", define }) ?? [];
+  const out = transition().tokens?.({ tokens: [], theme: "rebrand" }) ?? [];
   const names = out.map((t) => t.name);
   expect(names).toContain("--instui-transition-duration");
   expect(names).toContain("--instui-transition-timing");

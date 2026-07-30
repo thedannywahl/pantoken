@@ -1,21 +1,13 @@
 import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import { stacking, STACKING_LEVELS } from "../src/index.ts";
-import type { Token } from "@pantoken/model";
-
-const define = (i: { name: string; value: string }): Token => ({
-  name: i.name,
-  syntax: "*",
-  inherits: true,
-  value: i.value,
-});
 
 test("is a factoried plugin with tokens + css capabilities", () => {
   expect(capabilitiesOf(stacking())).toEqual(["tokens", "css"]);
 });
 
 test("tokens hook resolves --instui-stacking-* from the view stacking scale", () => {
-  const out = stacking().tokens?.({ tokens: [], theme: "rebrand", define }) ?? [];
+  const out = stacking().tokens?.({ tokens: [], theme: "rebrand" }) ?? [];
   const names = out.map((t) => t.name);
   for (const level of STACKING_LEVELS) {
     expect(names).toContain(`--instui-stacking-${level}`);

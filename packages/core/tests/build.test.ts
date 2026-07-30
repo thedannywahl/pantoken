@@ -1,5 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { definePlugin } from "@pantoken/plugin-kit";
+import { defineToken } from "../src/plugin.ts";
 import { buildTokens } from "../src/build.ts";
 
 const tokens = buildTokens({ theme: "rebrand" });
@@ -39,9 +40,9 @@ test("icons are rolled in as <image> tokens with metadata", () => {
 test("plugin token hooks inject at the token layer", () => {
   const focus = definePlugin({
     name: "focus",
-    tokens: ({ tokens, define }) => [
+    tokens: ({ tokens }) => [
       ...tokens,
-      define({ name: "--instui-focus-color", value: "var(--instui-color-border-brand)" }),
+      defineToken({ name: "--instui-focus-color", value: "var(--instui-color-border-brand)" }),
     ],
   });
   const withFocus = buildTokens({ theme: "rebrand", plugins: [focus] });

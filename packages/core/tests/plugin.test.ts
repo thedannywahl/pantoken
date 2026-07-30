@@ -34,10 +34,10 @@ test("runTokenPlugins lets a plugin contribute and override, later wins", () => 
   const base: Token[] = [defineToken({ name: "--instui-a", value: "#111" })];
   const plugin = definePlugin({
     name: "test",
-    tokens: ({ tokens, define }) => [
+    tokens: ({ tokens }) => [
       ...tokens,
-      define({ name: "--instui-a", value: "#222" }),
-      define({ name: "--instui-focus-color", value: "#00f" }),
+      defineToken({ name: "--instui-a", value: "#222" }),
+      defineToken({ name: "--instui-focus-color", value: "#00f" }),
     ],
   });
   const out = runTokenPlugins(base, "rebrand", [plugin]);
@@ -49,7 +49,7 @@ test("runTokenPlugins lets a plugin contribute and override, later wins", () => 
 test("runIconPlugins turns an added IconEntry into an <image> token", () => {
   const brand = definePlugin({
     name: "brand-icons",
-    icons: ({ add }) => add({ name: "acme", path: "M0 0h24v24H0z" }),
+    icons: () => [{ name: "acme", path: "M0 0h24v24H0z" }],
   });
   const out = runIconPlugins([], [brand]);
   const token = out.find((t) => t.name === "--instui-icon-acme");
@@ -72,18 +72,17 @@ test("runTokenPlugins ignores a hook that returns a non-array (keeps the accumul
 test("runIconPlugins accepts an entry that supplies its own svg, and skips artworkless entries", () => {
   const plugin = definePlugin({
     name: "mixed-icons",
-    icons: ({ add }) => {
-      add({ name: "custom", svg: "<svg viewBox='0 0 24 24'><path d='M1 1'/></svg>" });
-      add({ name: "empty" }); // neither svg nor path → no token produced
-    },
+    icons: () => [
+      { name: "custom", svg: "<svg viewBox='0 0 24 24'><path d='M1 1'/></svg>" },
+      { name: "empty" }, // neither svg nor path → no token produced
+    ],
   });
   const out = runIconPlugins([], [plugin]);
   expect(out.find((t) => t.name === "--instui-icon-custom")).toBeDefined();
   expect(out.find((t) => t.name === "--instui-icon-empty")).toBeUndefined();
 });
 
-test("runIconPlugins exposes resolve() so a plugin can avoid re-adding an existing glyph", () => {
-  const seen: Array<{ name: string } | undefined> = [];
+test("runIconPlugins provides existing icons in ctx so a plugin can skip duplicates", () => {
   const existing = defineToken({
     name: "--instui-icon-star",
     value: "url('data:...')",
@@ -91,17 +90,15 @@ test("runIconPlugins exposes resolve() so a plugin can avoid re-adding an existi
     meta: { kind: "icon" },
   });
   const plugin = definePlugin({
-    name: "resolve-aware",
-    icons: ({ add, resolve }) => {
-      seen.push(resolve("star")); // already present → { name: "star" }
-      seen.push(resolve("moon")); // absent → undefined
-      if (!resolve("moon")) add({ name: "moon", path: "M0 0h1v1H0z" });
+    name: "dedup-aware",
+    icons: ({ icons }) => {
+      const hasStar = icons.some((i) => i.name === "star");
+      return hasStar ? [] : [{ name: "star", path: "M0 0h1v1H0z" }];
     },
   });
+  // star already present → plugin skips it (returns empty) → no duplicate
   const out = runIconPlugins([existing], [plugin]);
-  expect(seen[0]).toEqual({ name: "star" });
-  expect(seen[1]).toBeUndefined();
-  expect(out.find((t) => t.name === "--instui-icon-moon")).toBeDefined();
+  expect(out.filter((t) => t.name === "--instui-icon-star")).toHaveLength(1);
 });
 
 test("runIconPlugins warns and skips a plugin registered without an icons hook", () => {

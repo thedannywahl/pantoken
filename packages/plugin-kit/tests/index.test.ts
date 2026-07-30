@@ -81,7 +81,6 @@ test("extendPlugin composes tokens (base then overrides) and merges css", () => 
   const out = ext.tokens?.({
     tokens: [],
     theme: "rebrand",
-    define: (i) => ({ ...i, syntax: "*", inherits: true }),
   });
   expect(out?.map((t) => t.name)).toEqual(["--a", "--b"]);
   expect(ext.css?.({ tokens: [], css: "" })).toMatchObject({ append: "a{}\n\nb{}" });
@@ -140,29 +139,23 @@ test("extendPlugin tokens falls back to ctx.tokens when a hook returns undefined
   const out = ext.tokens?.({
     tokens: ctxTokens,
     theme: "rebrand",
-    define: (i) => ({ ...i, syntax: "*", inherits: true }),
   });
   expect(out).toEqual(ctxTokens);
 });
 
-test("extendPlugin runs both icons hooks and both native hooks", () => {
-  const calls: string[] = [];
+test("extendPlugin runs both icons hooks and merges their returned entries", () => {
   const base = definePlugin({
     name: "base",
-    icons: () => calls.push("base-icons"),
-    native: () => calls.push("base-native"),
+    icons: () => [{ name: "icon-a" }],
+    native: () => {},
   });
   const ext = extendPlugin(base, {
-    icons: () => calls.push("ext-icons"),
-    native: () => calls.push("ext-native"),
+    icons: () => [{ name: "icon-b" }],
+    native: () => {},
   });
   expect(capabilitiesOf(ext)).toEqual(["icons", "native"]);
-  ext.icons?.({
-    add: () => {},
-    resolve: () => undefined,
-  });
-  ext.native?.({} as never);
-  expect(calls).toEqual(["base-icons", "ext-icons", "base-native", "ext-native"]);
+  const entries = ext.icons?.({ icons: [], theme: "rebrand" });
+  expect(entries?.map((e) => e.name)).toEqual(["icon-a", "icon-b"]);
 });
 
 test("extendPlugin chains rehype resolvers: overrides, then base, then ctx", () => {

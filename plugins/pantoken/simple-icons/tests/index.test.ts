@@ -21,13 +21,6 @@ test("token hook emits selected brand glyphs as <image> tokens", () => {
   const out = plugin.tokens?.({
     tokens: [],
     theme: "rebrand",
-    define: (i) => ({
-      name: i.name,
-      syntax: i.syntax ?? "*",
-      inherits: true,
-      value: i.value,
-      meta: i.meta,
-    }),
   });
   const github = out?.find((t) => t.name === "--instui-icon-github");
   expect(github?.syntax).toBe("<image>");
@@ -46,7 +39,6 @@ test("token hook without a registry throws a helpful error", () => {
     simpleIcons({ slugs: ["github"] }).tokens?.({
       tokens: [],
       theme: "rebrand",
-      define: (i) => ({ name: i.name, syntax: "*", inherits: true, value: i.value }),
     }),
   ).toThrow(/registry/);
 });

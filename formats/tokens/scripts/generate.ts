@@ -11,7 +11,7 @@
 import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { buildTokens, defineToken } from "@pantoken/core";
+import { buildTokens } from "@pantoken/core";
 import { themeTokens } from "@instructure/instructure-design-tokens";
 import { deprecationShims } from "@pantoken/plugin-deprecations";
 import type { DeprecationLedger, Theme } from "@pantoken/model";
@@ -39,7 +39,7 @@ const shims = deprecationShims(ledger);
 
 for (const theme of THEMES) {
   const base = buildTokens({ theme });
-  const tokens = shims.tokens?.({ tokens: base, theme, define: defineToken }) ?? base;
+  const tokens = shims.tokens?.({ tokens: base, theme }) ?? base;
   writeFileSync(join(outDir, `${theme}.json`), `${JSON.stringify(tokens)}\n`);
   console.log(`✓ ${theme}: ${tokens.length} tokens`);
 }
