@@ -28,17 +28,14 @@ const VAR_RE = /var\(\s*(--[\w-]+)/g;
 
 /** Transitively add any custom property referenced by an already-used custom property. */
 function expandTransitiveDeps(used: Set<string>, defs: Map<string, string[]>): void {
-  let changed = true;
-  while (changed) {
-    changed = false;
-    for (const [name, values] of defs) {
-      if (!used.has(name)) continue;
-      for (const value of values) {
-        for (const m of value.matchAll(VAR_RE)) {
-          if (!used.has(m[1])) {
-            used.add(m[1]);
-            changed = true;
-          }
+  const queue = [...used];
+  while (queue.length > 0) {
+    const name = queue.shift()!;
+    for (const value of defs.get(name) ?? []) {
+      for (const m of value.matchAll(VAR_RE)) {
+        if (!used.has(m[1])) {
+          used.add(m[1]);
+          queue.push(m[1]);
         }
       }
     }
