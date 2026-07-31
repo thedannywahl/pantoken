@@ -70,28 +70,55 @@ const fixtures: Fixtures = {
   apiDirExists: true,
 };
 
+/** Resolve whether a mocked path should be treated as existing. */
+function fixtureExists(pathName: string): boolean {
+  if (pathName.endsWith(".guides.json")) return fixtures.guidesCache !== null;
+  if (pathName.endsWith(".api.json")) return fixtures.apiCache !== null;
+  if (pathName.endsWith("/api")) return fixtures.apiDirExists;
+  return true;
+}
+
+/** Mock directory listing lookup based on fixture roots. */
+function fixtureDirEntries(pathName: string): string[] {
+  if (pathName.endsWith("/guide")) return fixtures.guideFiles;
+  if (pathName.endsWith("/api")) return fixtures.apiFiles;
+  return [];
+}
+
+/** Mock file-content lookup for caches and markdown files. */
+function fixtureFileContents(pathName: string): string {
+  return fixtureCacheFileContents(pathName) ?? fixtureMarkdownContents(pathName);
+}
+
+/** Cache payloads keyed by cache filename suffix, or null for non-cache paths. */
+function fixtureCacheFileContents(pathName: string): string | null {
+  const cache = cacheFixtureFor(pathName);
+  if (!cache) return null;
+  return JSON.stringify({ entries: cache ?? {} });
+}
+
+/** Select cache fixture object for a path or return null for markdown paths. */
+function cacheFixtureFor(pathName: string): Record<string, string> | null {
+  const cacheBySuffix: [string, Record<string, string> | null][] = [
+    [".guides.json", fixtures.guidesCache],
+    [".api.json", fixtures.apiCache],
+  ];
+  for (const [suffix, cache] of cacheBySuffix) {
+    if (pathName.endsWith(suffix)) return cache;
+  }
+  return null;
+}
+
+/** Markdown payload fixture for API and guide paths. */
+function fixtureMarkdownContents(pathName: string): string {
+  return pathName.includes("/api/") ? fixtures.apiMd : fixtures.guideMd;
+}
+
 function applyFsMocks(): void {
-  existsSync.mockImplementation((p) => {
-    const s = String(p);
-    if (s.endsWith(".guides.json")) return fixtures.guidesCache !== null;
-    if (s.endsWith(".api.json")) return fixtures.apiCache !== null;
-    if (s.endsWith("/api")) return fixtures.apiDirExists;
-    return true; // guideDir + every .md path
-  });
-  readdirSync.mockImplementation((p) => {
-    const s = String(p);
-    if (s.endsWith("/guide")) return fixtures.guideFiles;
-    if (s.endsWith("/api")) return fixtures.apiFiles;
-    return [];
-  });
+  existsSync.mockImplementation((p) => fixtureExists(String(p)));
+  readdirSync.mockImplementation((p) => fixtureDirEntries(String(p)));
   statSync.mockImplementation(() => ({ isDirectory: () => false }));
-  readFileSync.mockImplementation((p) => {
-    const s = String(p);
-    if (s.endsWith(".guides.json")) return JSON.stringify({ entries: fixtures.guidesCache ?? {} });
-    if (s.endsWith(".api.json")) return JSON.stringify({ entries: fixtures.apiCache ?? {} });
-    if (s.includes("/api/")) return fixtures.apiMd;
-    return fixtures.guideMd;
-  });
+  readFileSync.mockImplementation((p) => fixtureFileContents(String(p)));
 }
 
 let logSpy: ReturnType<typeof vi.spyOn>;

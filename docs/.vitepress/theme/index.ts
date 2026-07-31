@@ -60,17 +60,54 @@ function applyRunnerSize(event: MessageEvent, height: number): void {
   if (frame) frame.style.height = `${height}px`;
 }
 
+/** Demo message payloads accepted from runner iframes. */
+type DemoMessage =
+  | { type: "pantoken-demo-request-theme" }
+  | { type: "pantoken-demo-size"; height: number };
+
+/** Accept same-origin posts plus opaque sandboxed (`null`) runner posts. */
+function isTrustedDemoOrigin(origin: string): boolean {
+  return origin === window.location.origin || origin === "null";
+}
+
+/** Coerce unknown data into a loose payload object when possible. */
+function asDemoPayload(data: unknown): { type?: string; height?: unknown } | null {
+  if (!data || typeof data !== "object") return null;
+  return data as { type?: string; height?: unknown };
+}
+
+/** Parse a validated demo-size message payload. */
+function asSizeMessage(payload: { type?: string; height?: unknown }): DemoMessage | null {
+  if (payload.type !== "pantoken-demo-size" || typeof payload.height !== "number") return null;
+  return { type: payload.type, height: payload.height };
+}
+
+/** Narrow unknown postMessage payloads to known runner message variants. */
+function asDemoMessage(data: unknown): DemoMessage | null {
+  const payload = asDemoPayload(data);
+  if (!payload) return null;
+  if (payload.type === "pantoken-demo-request-theme") return { type: payload.type };
+  return asSizeMessage(payload);
+}
+
+/** Dispatch one validated runner message. */
+function handleDemoMessage(event: MessageEvent, message: DemoMessage): void {
+  if (message.type === "pantoken-demo-request-theme") {
+    replyWithTheme(event);
+    return;
+  }
+  applyRunnerSize(event, message.height);
+}
+
 /**
  * Relay theme/size messages between the page and its demo runners. Only same-origin (or opaque
  * "null"-origin sandboxed) posts are accepted, so another page can't spoof size/theme messages.
  */
 function relayDemoMessage(event: MessageEvent): void {
-  if (event.origin !== window.location.origin && event.origin !== "null") return;
-  const data = event.data as { type?: string; height?: number } | null;
-  if (data?.type === "pantoken-demo-request-theme") replyWithTheme(event);
-  else if (data?.type === "pantoken-demo-size" && typeof data.height === "number") {
-    applyRunnerSize(event, data.height);
-  }
+  if (!isTrustedDemoOrigin(event.origin)) return;
+  const message = asDemoMessage(event.data);
+  if (!message) return;
+  handleDemoMessage(event, message);
 }
 
 export default {

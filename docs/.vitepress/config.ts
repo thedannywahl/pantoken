@@ -6,7 +6,7 @@ import { demoMarkdownIt } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import { LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
-import { tokenValuePreview } from "./plugins/token-value-preview.js";
+import { tokenValuePreview } from "./plugins/token-value-preview/index.js";
 
 // Absolute path to a repo-relative location, from docs/.vitepress/.
 const at = (relative: string): string =>
@@ -379,25 +379,63 @@ function canonicalUrl(relativePath: string): string {
  * The Open Graph title: the wordmark plus the hero tagline on the home page (which has no title of
  * its own and is the most-shared URL), otherwise the page's own title, then the site title.
  */
+function homeOgTitle(isHu: boolean): string {
+  return isHu
+    ? "pantoken — Instructure design tokenek, mindenhol"
+    : "pantoken — Instructure design tokens, everywhere";
+}
+
 function ogTitle(
   frontmatter: { layout?: string; title?: string },
   pageTitle: string,
   siteTitle: string,
   isHu: boolean,
 ): string {
-  if (frontmatter.layout === "home") {
-    return isHu
-      ? "pantoken — Instructure design tokenek, mindenhol"
-      : "pantoken — Instructure design tokens, everywhere";
-  }
+  if (frontmatter.layout === "home") return homeOgTitle(isHu);
   return frontmatter.title || pageTitle || siteTitle;
+}
+
+/** Locale and Open Graph locale tags derived from a page path. */
+function localeHeadInfo(relativePath: string): {
+  isHu: boolean;
+  locale: (typeof LOCALES)[DocsLocale];
+  ogLocale: string;
+  alternateOgLocale: string;
+} {
+  const isHu = relativePath.startsWith("hu/");
+  return {
+    isHu,
+    locale: isHu ? LOCALES.hu : LOCALES.root,
+    ogLocale: isHu ? "hu_HU" : "en_US",
+    alternateOgLocale: isHu ? "en_US" : "hu_HU",
+  };
+}
+
+/** Per-page social/canonical head tags layered on top of site defaults. */
+function pageSocialHead(params: {
+  title: string;
+  description: string;
+  canonical: string;
+  ogLocale: string;
+  alternateOgLocale: string;
+}): [string, Record<string, string>][] {
+  return [
+    ["link", { rel: "canonical", href: params.canonical }],
+    ["meta", { property: "og:title", content: params.title }],
+    ["meta", { property: "og:description", content: params.description }],
+    ["meta", { property: "og:url", content: params.canonical }],
+    ["meta", { property: "og:locale", content: params.ogLocale }],
+    ["meta", { property: "og:locale:alternate", content: params.alternateOgLocale }],
+    ["meta", { name: "twitter:title", content: params.title }],
+    ["meta", { name: "twitter:description", content: params.description }],
+  ];
 }
 
 const description =
   "Instructure design tokens and icons, reshaped for every platform and framework.";
 
-// @ts-expect-error TS2321 — VitePress alpha.18 UserConfig<NoInfer<Config>> causes recursive depth in TS6 (TS7 resolves cleanly)
-export default defineConfig<DefaultTheme.Config>({
+// @ts-ignore TS2321 — VitePress alpha.18 UserConfig generic recursion can overflow TS depth.
+export default defineConfig({
   base,
   title: "pantoken",
   description,
@@ -466,22 +504,17 @@ export default defineConfig<DefaultTheme.Config>({
   // defaults, so each shared URL previews with its own title, description, address, and language rather
   // than the site-wide default. The `hu/` tree mirrors the root, so detect the locale from the path.
   transformHead: ({ pageData, siteData }) => {
-    const isHu = pageData.relativePath.startsWith("hu/");
-    const locale = isHu ? LOCALES.hu : LOCALES.root;
-    const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, isHu);
+    const localeInfo = localeHeadInfo(pageData.relativePath);
+    const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, localeInfo.isHu);
     const pageDescription =
-      pageData.frontmatter.description || pageData.description || locale.description;
-    const url = canonicalUrl(pageData.relativePath);
-    return [
-      ["link", { rel: "canonical", href: url }],
-      ["meta", { property: "og:title", content: title }],
-      ["meta", { property: "og:description", content: pageDescription }],
-      ["meta", { property: "og:url", content: url }],
-      ["meta", { property: "og:locale", content: isHu ? "hu_HU" : "en_US" }],
-      ["meta", { property: "og:locale:alternate", content: isHu ? "en_US" : "hu_HU" }],
-      ["meta", { name: "twitter:title", content: title }],
-      ["meta", { name: "twitter:description", content: pageDescription }],
-    ];
+      pageData.frontmatter.description || pageData.description || localeInfo.locale.description;
+    return pageSocialHead({
+      title,
+      description: pageDescription,
+      canonical: canonicalUrl(pageData.relativePath),
+      ogLocale: localeInfo.ogLocale,
+      alternateOgLocale: localeInfo.alternateOgLocale,
+    });
   },
   // i18n routing audit (VitePress 2.0.0-alpha.18 / PR #5239): `themeConfig.i18nRouting` now accepts a
   // function to build custom locale links. We deliberately don't set one — our locales are a symmetric
