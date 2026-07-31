@@ -22,27 +22,37 @@ vi.mock("./workspace-packages.ts", async (importActual) => {
 
 const MODULE_PATH = new URL("./check-changeset-coverage.ts", import.meta.url).pathname;
 
+const OK: SpawnResult = { status: 0, stdout: "", stderr: "" };
+
 function pkg(name: string, relPath: string): WorkspacePackage {
   return { name, path: relPath, version: "0.1.0", private: false, workspaceDeps: new Set() };
 }
 
 const PACKAGES = [pkg("@pantoken/css", "formats/css"), pkg("@pantoken/utils", "packages/utils")];
 
+/** Key a mocked spawn route by command and first sub-command argument. */
+function spawnRouteKey(cmd: string, args: readonly string[]): string {
+  return `${cmd} ${args[0] ?? ""}`;
+}
+
+/** Install a route table for spawnSync mocks used by these black-box main tests. */
+function wireSpawnRoutes(routes: Record<string, SpawnResult>): void {
+  spawnSync.mockImplementation((...spawnArgs: unknown[]) => {
+    const cmd = spawnArgs[0] as string;
+    const args = spawnArgs[1] as string[];
+    return routes[spawnRouteKey(cmd, args)] ?? OK;
+  });
+}
+
 /**
  * Route spawnSync by command. `diff` yields the changed-file list; `status` (the changeset CLI)
  * writes the release plan to the temp output file (simulated via readFileSync).
  */
 function wireGit(changedFiles: string[]) {
-  spawnSync.mockImplementation((...spawnArgs: unknown[]) => {
-    const cmd = spawnArgs[0] as string;
-    const args = spawnArgs[1] as string[];
-    if (cmd === "git" && args[0] === "merge-base")
-      return { status: 0, stdout: "base-sha\n", stderr: "" };
-    if (cmd === "git" && args[0] === "diff")
-      return { status: 0, stdout: `${changedFiles.join("\n")}\n`, stderr: "" };
-    if (cmd === "git" && args[0] === "show") return { status: 1, stdout: "", stderr: "" };
-    // vpx changeset status
-    return { status: 0, stdout: "", stderr: "" };
+  wireSpawnRoutes({
+    "git merge-base": { status: 0, stdout: "base-sha\n", stderr: "" },
+    "git diff": { status: 0, stdout: `${changedFiles.join("\n")}\n`, stderr: "" },
+    "git show": { status: 1, stdout: "", stderr: "" },
   });
 }
 
@@ -122,20 +132,14 @@ test("fails when a changed package has no covering changeset", async () => {
 test("a package.json whose diff is dev-only doesn't require a changeset", async () => {
   wireGit(["formats/css/package.json"]);
   // Base manifest (git show) present but only scripts differ from the working copy → not release-relevant.
-  spawnSync.mockImplementation((...spawnArgs: unknown[]) => {
-    const cmd = spawnArgs[0] as string;
-    const args = spawnArgs[1] as string[];
-    if (cmd === "git" && args[0] === "merge-base")
-      return { status: 0, stdout: "base-sha\n", stderr: "" };
-    if (cmd === "git" && args[0] === "diff")
-      return { status: 0, stdout: "formats/css/package.json\n", stderr: "" };
-    if (cmd === "git" && args[0] === "show")
-      return {
-        status: 0,
-        stdout: JSON.stringify({ name: "@pantoken/css", scripts: { a: "1" } }),
-        stderr: "",
-      };
-    return { status: 0, stdout: "", stderr: "" };
+  wireSpawnRoutes({
+    "git merge-base": { status: 0, stdout: "base-sha\n", stderr: "" },
+    "git diff": { status: 0, stdout: "formats/css/package.json\n", stderr: "" },
+    "git show": {
+      status: 0,
+      stdout: JSON.stringify({ name: "@pantoken/css", scripts: { a: "1" } }),
+      stderr: "",
+    },
   });
   readFileSync.mockImplementation((...args: unknown[]) => {
     const p = args[0] as string;
@@ -151,13 +155,9 @@ test("a package.json whose diff is dev-only doesn't require a changeset", async 
 });
 
 test("a failing git diff rejects and exits non-zero", async () => {
-  spawnSync.mockImplementation((...spawnArgs: unknown[]) => {
-    const cmd = spawnArgs[0] as string;
-    const args = spawnArgs[1] as string[];
-    if (cmd === "git" && args[0] === "merge-base")
-      return { status: 0, stdout: "base\n", stderr: "" };
-    if (cmd === "git" && args[0] === "diff") return { status: 1, stdout: "", stderr: "fatal: bad" };
-    return { status: 0, stdout: "", stderr: "" };
+  wireSpawnRoutes({
+    "git merge-base": { status: 0, stdout: "base\n", stderr: "" },
+    "git diff": { status: 1, stdout: "", stderr: "fatal: bad" },
   });
 
   await import("./check-changeset-coverage.ts");
