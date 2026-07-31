@@ -1,6 +1,4 @@
 [class*="instui"] {
-  /* Focus outline is provided by @pantoken/components (the instui.focusOutline layer). */
-
   /* Components: Alert */
   --manual-light-pendo-embedded-pendo-step-container-styles-width: 59.25rem;
   --manual-light-new-theme-components-alert-padding-left: 2.5rem;
@@ -12,10 +10,4 @@
   --instui-component-text-area-min-height: 4rem;
   --instui-component-text-area-max-height: 6rem;
   --instui-component-text-area-max-width: 20rem;
-
-  /* Components; SVGIcon */
-  --manual-icon-instui-line-parchment-logo: var(--instui-logo-parchment-icon-current-color);
-  --manual-icon-instui-line-learn-platform-logo: var(
-    --instui-logo-learnplatform-icon-current-color
-  );
 }
