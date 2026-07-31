@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.6
+
+### Patch Changes
+
+- 2b814bd: Avoid rendering empty image src attributes in Markdown image overrides by skipping img output when src is missing.
+  - @pantoken/rehype@0.1.4
+
 ## 0.1.5
 
 ### Patch Changes

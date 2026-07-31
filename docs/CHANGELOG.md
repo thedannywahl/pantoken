@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- 2b814bd: Restore elevation and focus-outline foundation variables in the docs site's custom multi-theme token sheet.
+
 ## 0.1.1
 
 ### Patch Changes
