@@ -1,6 +1,6 @@
 /**
  * The Instructure Pendo-guide component CSS, ported verbatim from
- * `@instructure/pendo-global-css` (`src/themes/instui/`, MIT, same org). Each component keeps its
+ * `@instructure/pendo-global-css` (`src/css/`, MIT, same org). Each component keeps its
  * original authored rules targeting Pendo's guide DOM (`._pendo-*`); only the assembly (cascade
  * `@layer` order + token source) is pantoken's. The CSS is inlined into `generated/embedded.ts` by
  * `scripts/embed.ts` — the published package carries no runtime file reads.
