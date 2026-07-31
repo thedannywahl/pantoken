@@ -32,6 +32,13 @@ const manifestJson = (): string => {
   }
 };
 
+/** UTF-8 fixture content by path, or null to fall back to binary payload. */
+const utf8Fixture = (pathName: string): string | null => {
+  if (pathName.endsWith("generated/components.css")) return state.componentSource;
+  if (pathName.endsWith("dist/components.css")) return state.componentFinal;
+  return ":root{--instui-x:1}";
+};
+
 vi.mock("node:fs", () => ({
   existsSync: () => state.exists,
   mkdtempSync: () => "/tmp/pantoken-validate-xyz",
@@ -40,13 +47,9 @@ vi.mock("node:fs", () => ({
       ? [dirent("leaf.css", false)]
       : [dirent("__sub", true), dirent("gen.css", false)],
   readFileSync: (path: string, enc?: string) => {
-    const p = String(path);
-    if (p.endsWith("package.json")) return manifestJson();
-    if (enc === "utf8") {
-      if (p.endsWith("generated/components.css")) return state.componentSource;
-      if (p.endsWith("dist/components.css")) return state.componentFinal;
-      return ":root{--instui-x:1}";
-    }
+    const pathName = String(path);
+    if (pathName.endsWith("package.json")) return manifestJson();
+    if (enc === "utf8") return utf8Fixture(pathName);
     return Buffer.from("data");
   },
 }));

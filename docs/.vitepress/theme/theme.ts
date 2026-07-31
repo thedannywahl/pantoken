@@ -76,6 +76,29 @@ export function broadcastTheme(theme: PantokenTheme): void {
   }
 }
 
+/** Persist the selected theme when storage is available. */
+function persistTheme(theme: PantokenTheme): void {
+  try {
+    localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Private mode / storage disabled — the attribute still applies for this session.
+  }
+}
+
+/** Keep the dark-class state coherent when switching between rebrand and single-scheme themes. */
+function syncSchemeClass(html: HTMLElement, theme: PantokenTheme): void {
+  if (supportsScheme(theme)) {
+    // Restore the light/dark choice we stashed when leaving rebrand.
+    if (rememberedDark !== null) {
+      html.classList.toggle("dark", rememberedDark);
+      rememberedDark = null;
+    }
+    return;
+  }
+  if (rememberedDark === null) rememberedDark = html.classList.contains("dark");
+  html.classList.remove("dark");
+}
+
 /**
  * Apply a theme: set the root attribute, persist it, gate light/dark (single-scheme themes force
  * light and hide the appearance toggle via CSS), and broadcast to the demos.
@@ -84,20 +107,7 @@ export function applyTheme(theme: PantokenTheme): void {
   if (typeof document === "undefined") return;
   const html = document.documentElement;
   html.dataset.pantokenTheme = theme;
-  try {
-    localStorage.setItem(STORAGE_KEY, theme);
-  } catch {
-    // Private mode / storage disabled — the attribute still applies for this session.
-  }
-  if (supportsScheme(theme)) {
-    // Restore the light/dark choice we stashed when leaving rebrand.
-    if (rememberedDark !== null) {
-      html.classList.toggle("dark", rememberedDark);
-      rememberedDark = null;
-    }
-  } else {
-    if (rememberedDark === null) rememberedDark = html.classList.contains("dark");
-    html.classList.remove("dark");
-  }
+  persistTheme(theme);
+  syncSchemeClass(html, theme);
   broadcastTheme(theme);
 }

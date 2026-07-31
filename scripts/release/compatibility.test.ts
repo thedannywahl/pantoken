@@ -60,6 +60,16 @@ test("renderMarkdown renders a forwarded replacement and a frozen value", () => 
 const metaPath = path.resolve(
   new URL("../../formats/tokens/generated/meta.json", import.meta.url).pathname,
 );
+
+/** Assert consumer path ordering and expected governance labels. */
+function expectWellFormedConsumers(consumers: Compatibility["consumers"]): void {
+  const paths = consumers.map((c) => c.path);
+  expect(paths).toEqual([...paths].sort((x, y) => x.localeCompare(y)));
+  for (const consumer of consumers) {
+    expect(["token-ir", "instui-react"]).toContain(consumer.governedBy);
+  }
+}
+
 test.skipIf(!existsSync(metaPath))(
   "buildCompatibility is deterministic and well-formed",
   async () => {
@@ -71,11 +81,6 @@ test.skipIf(!existsSync(metaPath))(
     expect(a.upstream["@instructure/ui-icons"]?.feeds).toBe("icons");
     expect(a.upstream["@instructure/ui-heading"]?.feeds).toBe("instui-react");
     expect(a.consumers.length).toBeGreaterThan(0);
-
-    const paths = a.consumers.map((c) => c.path);
-    expect(paths).toEqual([...paths].sort((x, y) => x.localeCompare(y)));
-    for (const consumer of a.consumers) {
-      expect(["token-ir", "instui-react"]).toContain(consumer.governedBy);
-    }
+    expectWellFormedConsumers(a.consumers);
   },
 );

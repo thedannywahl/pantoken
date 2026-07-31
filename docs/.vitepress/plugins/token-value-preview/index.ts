@@ -33,18 +33,41 @@ interface DecodedImage {
   src?: string;
 }
 
+/** Parsed pieces of a `data:` URI payload. */
+interface ParsedDataImage {
+  meta: string;
+  data: string;
+}
+
+/** Parse `data:<meta>,<payload>` URIs into metadata and body. */
+function parseDataImage(uri: string): ParsedDataImage | null {
+  const match = /^data:([^,]*),([\s\S]*)$/.exec(uri);
+  if (!match) return null;
+  const [, meta, data] = match;
+  return { meta, data };
+}
+
+/** Decode SVG payload bytes (`;base64,` or URI-encoded). */
+function decodeSvgPayload(meta: string, data: string): string {
+  if (/;base64/i.test(meta)) return Buffer.from(data, "base64").toString("utf8");
+  return decodeURIComponent(data);
+}
+
+/** Whether a data URI metadata section represents an SVG payload. */
+function isSvgData(meta: string): boolean {
+  return /^image\/svg\+xml/i.test(meta);
+}
+
 /**
  * Decode a `data:image/…` URI. SVG payloads (`;base64,` or percent-encoded `;utf8,`/bare) decode to
  * inline markup; any other image type falls back to the raw URI as an `<img src>`.
  */
 function decodeDataImage(uri: string): DecodedImage {
-  const match = /^data:([^,]*),([\s\S]*)$/.exec(uri);
-  if (!match) return {};
-  const [, meta, data] = match;
-  if (!/^image\/svg\+xml/i.test(meta)) return { src: uri };
+  const parsed = parseDataImage(uri);
+  if (!parsed) return {};
+  if (!isSvgData(parsed.meta)) return { src: uri };
   try {
-    if (/;base64/i.test(meta)) return { svg: Buffer.from(data, "base64").toString("utf8") };
-    return { svg: decodeURIComponent(data) };
+    return { svg: decodeSvgPayload(parsed.meta, parsed.data) };
   } catch {
     return { src: uri };
   }
@@ -83,16 +106,27 @@ function isColor(value: string): boolean {
 
 /** Split `light-dark(...)`'s inner text on its top-level comma (rgba/hsl args hold their own). */
 function splitTopLevel(inner: string): [string, string] | null {
+  const comma = topLevelCommaIndex(inner);
+  if (comma === -1) return null;
+  return [inner.slice(0, comma).trim(), inner.slice(comma + 1).trim()];
+}
+
+/** Net depth delta contributed by one scanned character. */
+function depthDelta(char: string): number {
+  if (char === "(") return 1;
+  if (char === ")") return -1;
+  return 0;
+}
+
+/** First comma index not nested in parentheses, or -1 if absent. */
+function topLevelCommaIndex(value: string): number {
   let depth = 0;
-  for (let i = 0; i < inner.length; i++) {
-    const char = inner[i];
-    if (char === "(") depth++;
-    else if (char === ")") depth--;
-    else if (char === "," && depth === 0) {
-      return [inner.slice(0, i).trim(), inner.slice(i + 1).trim()];
-    }
+  for (let i = 0; i < value.length; i++) {
+    const char = value[i];
+    if (char === "," && depth === 0) return i;
+    depth += depthDelta(char);
   }
-  return null;
+  return -1;
 }
 
 /** One swatch cell: a checkerboard-backed chip, optionally labelled (Light/Dark for `light-dark`). */
@@ -109,18 +143,26 @@ function swatch(color: string, label?: string): string {
 function colorPreview(content: string): string | null {
   const value = content.trim();
 
-  const lightDark = /^light-dark\(([\s\S]*)\)$/i.exec(value);
-  if (lightDark) {
-    const parts = splitTopLevel(lightDark[1]);
-    if (parts && isColor(parts[0]) && isColor(parts[1])) {
-      const items = swatch(parts[0], "Light") + swatch(parts[1], "Dark");
-      return `<span class="pantoken-swatch">${items}</span>`;
-    }
-    return null;
-  }
+  const lightDarkPreview = colorPreviewFromLightDark(value);
+  if (lightDarkPreview) return lightDarkPreview;
 
   if (isColor(value)) return `<span class="pantoken-swatch">${swatch(value)}</span>`;
   return null;
+}
+
+/** Render a two-chip preview when the value is a valid `light-dark(light, dark)` colour. */
+function colorPreviewFromLightDark(value: string): string | null {
+  const lightDark = /^light-dark\(([\s\S]*)\)$/i.exec(value);
+  if (!lightDark) return null;
+  const parts = splitTopLevel(lightDark[1]);
+  if (!isColorPair(parts)) return null;
+  const items = swatch(parts[0], "Light") + swatch(parts[1], "Dark");
+  return `<span class="pantoken-swatch">${items}</span>`;
+}
+
+/** Guard that both light/dark parts exist and are previewable colours. */
+function isColorPair(parts: [string, string] | null): parts is [string, string] {
+  return !!parts && isColor(parts[0]) && isColor(parts[1]);
 }
 
 // --- Plugin -----------------------------------------------------------------

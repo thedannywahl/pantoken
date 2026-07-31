@@ -217,35 +217,46 @@ function diffTokenFields(before: Manifest, after: Manifest, buckets: DiffBuckets
     for (const name of Object.keys(a)) {
       const bEntry = b[name];
       const aEntry = a[name];
-      if (!bEntry) continue;
-      if (bEntry.refersTo !== aEntry.refersTo) {
-        buckets.refChanges.push({
-          name,
-          theme,
-          kind: "token-ref-changed",
-          before: bEntry.refersTo,
-          after: aEntry.refersTo,
-        });
-      } else if (bEntry.value !== aEntry.value) {
-        buckets.valueChanges.push({
-          name,
-          theme,
-          kind: "token-value-changed",
-          before: bEntry.value,
-          after: aEntry.value,
-          category: categoryOfChange(aEntry.syntax, aEntry.value),
-        });
-      }
-      if (bEntry.syntax !== aEntry.syntax || bEntry.inherits !== aEntry.inherits) {
-        buckets.syntaxChanges.push({
-          name,
-          theme,
-          kind: "token-syntax-changed",
-          before: `${bEntry.syntax} (inherits: ${bEntry.inherits})`,
-          after: `${aEntry.syntax} (inherits: ${aEntry.inherits})`,
-        });
-      }
+      if (bEntry) diffTokenEntry(name, theme, bEntry, aEntry, buckets);
     }
+  }
+}
+
+type ThemeEntry = NonNullable<Manifest["themes"][string]>[string];
+
+function diffTokenEntry(
+  name: string,
+  theme: string,
+  bEntry: ThemeEntry,
+  aEntry: ThemeEntry,
+  buckets: DiffBuckets,
+): void {
+  if (bEntry.refersTo !== aEntry.refersTo) {
+    buckets.refChanges.push({
+      name,
+      theme,
+      kind: "token-ref-changed",
+      before: bEntry.refersTo,
+      after: aEntry.refersTo,
+    });
+  } else if (bEntry.value !== aEntry.value) {
+    buckets.valueChanges.push({
+      name,
+      theme,
+      kind: "token-value-changed",
+      before: bEntry.value,
+      after: aEntry.value,
+      category: categoryOfChange(aEntry.syntax, aEntry.value),
+    });
+  }
+  if (bEntry.syntax !== aEntry.syntax || bEntry.inherits !== aEntry.inherits) {
+    buckets.syntaxChanges.push({
+      name,
+      theme,
+      kind: "token-syntax-changed",
+      before: `${bEntry.syntax} (inherits: ${bEntry.inherits})`,
+      after: `${aEntry.syntax} (inherits: ${aEntry.inherits})`,
+    });
   }
 }
 

@@ -427,25 +427,30 @@ function setResizing(ctx: RunnerCtx, on: boolean): void {
   );
 }
 
+/** Whether the observed height indicates the reader has manually resized the panel. */
+function shouldLatchUserResize(ctx: RunnerCtx, height: number): boolean {
+  return !ctx.userResized && ctx.lastAutoHeight >= 0 && Math.abs(height - ctx.lastAutoHeight) > 3;
+}
+
+/** Keep resize affordances active until a short settle delay after dragging stops. */
+function settleResizeState(ctx: RunnerCtx): void {
+  setResizing(ctx, true);
+  clearTimeout(ctx.resizeSettle);
+  ctx.resizeSettle = setTimeout(() => setResizing(ctx, false), 150);
+}
+
+/** ResizeObserver callback body split out so logic can stay testable and low-branch. */
+function handleObservedBodyResize(ctx: RunnerCtx): void {
+  const height = Math.round(ctx.body.getBoundingClientRect().height);
+  if (shouldLatchUserResize(ctx, height)) ctx.userResized = true;
+  if (ctx.userResized) settleResizeState(ctx);
+  scheduleReport(ctx);
+}
+
 /** Watch for a reader-driven body resize: latch it, hide scrollbars for the drag, and report throttled. */
 function observeBodyResize(ctx: RunnerCtx): void {
   if (window.ResizeObserver) {
-    new ResizeObserver(() => {
-      const height = Math.round(ctx.body.getBoundingClientRect().height);
-      if (
-        !ctx.userResized &&
-        ctx.lastAutoHeight >= 0 &&
-        Math.abs(height - ctx.lastAutoHeight) > 3
-      ) {
-        ctx.userResized = true;
-      }
-      if (ctx.userResized) {
-        setResizing(ctx, true);
-        clearTimeout(ctx.resizeSettle);
-        ctx.resizeSettle = setTimeout(() => setResizing(ctx, false), 150);
-      }
-      scheduleReport(ctx);
-    }).observe(ctx.body);
+    new ResizeObserver(() => handleObservedBodyResize(ctx)).observe(ctx.body);
   }
 }
 
@@ -565,13 +570,43 @@ const MESSAGE_HANDLERS: Record<string, (ctx: RunnerCtx, data: DemoMessage) => vo
   },
 };
 
+/** Guard and return the message handler for a payload, if any. */
+function handlerForMessage(
+  data: DemoMessage | null,
+): ((ctx: RunnerCtx, data: DemoMessage) => void) | undefined {
+  if (!data?.type) return undefined;
+  return MESSAGE_HANDLERS[data.type];
+}
+
 /** Handle host messages: scheme toggle, theme pick, and result-size reports (each may gate the reveal). */
 function handleMessage(ctx: RunnerCtx, event: MessageEvent): void {
   // Drop posts from an untrusted origin so a page that reframes the runner can't drive it.
   if (!isTrustedOrigin(event.origin)) return;
   const data = event.data as DemoMessage | null;
-  const handler = data?.type ? MESSAGE_HANDLERS[data.type] : undefined;
+  const handler = handlerForMessage(data);
   handler?.(ctx, data as DemoMessage);
+}
+
+/** Validate the required source URL parameter, reporting an actionable error when absent. */
+function requireSourceUrl(): string | null {
+  if (!srcUrl) {
+    fail("No demo source (missing ?src=).");
+    return null;
+  }
+  return srcUrl;
+}
+
+/** Fetch demo source text with no-cache and convert load errors into user-facing failures. */
+async function loadSourceText(url: string): Promise<string | null> {
+  try {
+    // Revalidate so an edited demo snippet isn't served stale from cache.
+    const response = await fetch(url, { cache: "no-cache" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return await response.text();
+  } catch (error) {
+    fail(`Failed to load demo: ${String(error)}`);
+    return null;
+  }
 }
 
 /** Ask the host which theme to use, or (standalone, no parent) resolve the theme gate immediately. */
@@ -600,10 +635,8 @@ function observeParentTheme(ctx: RunnerCtx): void {
 
 async function main(): Promise<void> {
   if (!mount) return;
-  if (!srcUrl) {
-    fail("No demo source (missing ?src=).");
-    return;
-  }
+  const requiredSrcUrl = requireSourceUrl();
+  if (!requiredSrcUrl) return;
 
   // Show a spinner and keep it until everything's ready, so the reader never sees the half-built states
   // flash by; then swap in the finished runner in one step (see `reveal`).
@@ -615,16 +648,8 @@ async function main(): Promise<void> {
   // Inject the component/token sheets; the reveal waits on them so there's no unstyled flash.
   const cssLoaded = loadStylesheets(cssUrls);
 
-  let sourceText: string;
-  try {
-    // Revalidate so an edited demo snippet isn't served stale from cache.
-    const response = await fetch(srcUrl, { cache: "no-cache" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    sourceText = await response.text();
-  } catch (error) {
-    fail(`Failed to load demo: ${String(error)}`);
-    return;
-  }
+  const sourceText = await loadSourceText(requiredSrcUrl);
+  if (sourceText === null) return;
 
   const ctx = createRunnerContext(mount, loading, sourceText);
   // The code follows the toggle's scheme (`effectiveDark`); flip the Shiki color variables via a class.

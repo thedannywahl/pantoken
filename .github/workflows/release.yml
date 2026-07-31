@@ -179,8 +179,71 @@ jobs:
       # signing. publish-npm.ts packs each published package into $RUNNER_TEMP/pantoken-packs/*.tgz and
       # uploads the tarball to the release. This step attests all of them and uploads the
       # *.intoto.jsonl bundle to each release recorded in pantoken-release-tags.txt.
-      - name: Generate SLSA provenance for released packages
+      - name: Trace release pack artifacts
         if: steps.mode.outputs.will_publish == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          tags_file="$RUNNER_TEMP/pantoken-release-tags.txt"
+          echo "RUNNER_TEMP=$RUNNER_TEMP"
+          echo "packs dir: $RUNNER_TEMP/pantoken-packs"
+          if [ -f "$tags_file" ]; then
+            echo "release tags recorded:"
+            sed '/^\s*$/d' "$tags_file" || true
+          else
+            echo "release tags file not found"
+          fi
+          if [ -d "$RUNNER_TEMP/pantoken-packs" ]; then
+            echo "packed tarballs present:"
+            ls -la "$RUNNER_TEMP/pantoken-packs" || true
+          else
+            echo "packs directory not found"
+          fi
+
+      - name: Validate provenance inputs
+        if: steps.mode.outputs.will_publish == 'true'
+        id: packs
+        shell: bash
+        run: |
+          set -euo pipefail
+          tags_file="$RUNNER_TEMP/pantoken-release-tags.txt"
+          tags_count=0
+          if [ -f "$tags_file" ]; then
+            tags_count=$(grep -cve '^\s*$' "$tags_file" || true)
+          fi
+
+          shopt -s nullglob
+          packs=("$RUNNER_TEMP"/pantoken-packs/*.tgz)
+          pack_count=${#packs[@]}
+
+          if [ "$tags_count" -gt 0 ] && [ "$pack_count" -eq 0 ]; then
+            echo "::error::Release tags were recorded ($tags_count) but no tarballs were found under $RUNNER_TEMP/pantoken-packs/*.tgz."
+            echo "::error::This indicates a release packaging/upload issue in scripts/release/publish-npm.ts."
+            exit 1
+          fi
+
+          if [ "$tags_count" -gt 0 ] && [ "$pack_count" -lt "$tags_count" ]; then
+            echo "::error::Release tags were recorded ($tags_count) but only $pack_count tarball(s) were found."
+            echo "::error::Expected one tarball per newly created release tag in this run."
+            exit 1
+          fi
+
+          if [ "$tags_count" -eq 0 ] && [ "$pack_count" -gt 0 ]; then
+            echo "::error::Found $pack_count tarball(s) but no recorded release tags."
+            echo "::error::This indicates inconsistent release bookkeeping for provenance upload."
+            exit 1
+          fi
+
+          if [ "$pack_count" -gt 0 ]; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            echo "Found $pack_count packaged release artifact(s) to attest."
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "No new release tarballs found in this run; skipping provenance attestation."
+          fi
+
+      - name: Generate SLSA provenance for released packages
+        if: steps.mode.outputs.will_publish == 'true' && steps.packs.outputs.found == 'true'
         id: provenance
         uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
         with:

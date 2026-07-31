@@ -84,6 +84,29 @@ export interface GlyphPath {
   height: number;
 }
 
+/** Offset centerline subpaths into a filled outline using ClipperLib. */
+function strokeSubpathsToFilled(subpaths: Subpath[], strokeWidth: number): string {
+  const offset = new ClipperLib.ClipperOffset(2, 0.25);
+  for (const sub of subpaths) {
+    // Normalize arcs to cubics — points-on-path mishandles SVG arc flag-packing (e.g. `a2 2 0 002 2`).
+    const flattened = svgpath(sub.d).unarc().abs().round(3).toString();
+    for (const poly of pointsOnPath(flattened, 0.2, 0.2)) {
+      if (poly.length < 2) continue;
+      const path = poly.map(([x, y]) => ({ X: Math.round(x * SCALE), Y: Math.round(y * SCALE) }));
+      offset.AddPath(
+        path,
+        ClipperLib.JoinType.jtRound,
+        sub.closed ? ClipperLib.EndType.etClosedLine : ClipperLib.EndType.etOpenRound,
+      );
+    }
+  }
+  const solution = new ClipperLib.Paths();
+  offset.Execute(solution, (strokeWidth / 2) * SCALE);
+  return solution
+    .map((poly) => `M${poly.map((pt) => `${pt.X / SCALE},${pt.Y / SCALE}`).join(" L")} Z`)
+    .join(" ");
+}
+
 /**
  * Produce a filled glyph path for an icon SVG.
  *
@@ -120,26 +143,5 @@ export function svgToGlyphPath(svg: string): GlyphPath {
   // Fill icons are already regions — the font engine fills them directly.
   if (!stroked) return { d: subpaths.map((s) => s.d).join(" "), width, height };
 
-  // Stroke icons: offset each subpath's centerline into a filled outline. Normalize arcs to cubic
-  // curves first — points-on-path's parser mishandles SVG arc flag-packing (Lucide writes `a2 2 0 002 2`,
-  // the two flags + x packed as `002`), which otherwise throws "Param not a number".
-  const offset = new ClipperLib.ClipperOffset(2, 0.25);
-  for (const sub of subpaths) {
-    const flattened = svgpath(sub.d).unarc().abs().round(3).toString();
-    for (const poly of pointsOnPath(flattened, 0.2, 0.2)) {
-      if (poly.length < 2) continue;
-      const path = poly.map(([x, y]) => ({ X: Math.round(x * SCALE), Y: Math.round(y * SCALE) }));
-      offset.AddPath(
-        path,
-        ClipperLib.JoinType.jtRound,
-        sub.closed ? ClipperLib.EndType.etClosedLine : ClipperLib.EndType.etOpenRound,
-      );
-    }
-  }
-  const solution = new ClipperLib.Paths();
-  offset.Execute(solution, (strokeWidth / 2) * SCALE);
-  const d = solution
-    .map((poly) => `M${poly.map((pt) => `${pt.X / SCALE},${pt.Y / SCALE}`).join(" L")} Z`)
-    .join(" ");
-  return { d, width, height };
+  return { d: strokeSubpathsToFilled(subpaths, strokeWidth), width, height };
 }
