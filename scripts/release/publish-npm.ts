@@ -24,6 +24,7 @@
 import { spawnSync } from "node:child_process";
 import {
   appendFileSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -188,10 +189,26 @@ function npmPackFilename(pkgDir: string): string | null {
     encoding: "utf8",
     shell: false,
   });
-  if (result.status !== 0) return null;
+  if (result.status !== 0) {
+    const reason = result.stderr.trim() || `exit ${result.status}`;
+    console.error(`  npm pack failed in ${pkgDir}: ${reason}`);
+    return null;
+  }
   try {
-    return (JSON.parse(result.stdout) as Array<{ filename: string }>)[0].filename;
+    const parsed = JSON.parse(result.stdout) as
+      | Array<{ filename?: string }>
+      | Record<string, { filename?: string }>;
+    const filename = Array.isArray(parsed)
+      ? parsed[0]?.filename
+      : Object.values(parsed)[0]?.filename;
+    if (!filename) {
+      console.error(`  npm pack in ${pkgDir} did not return a tarball filename.`);
+      return null;
+    }
+    return filename;
   } catch {
+    const preview = result.stdout.trim().slice(0, 200);
+    console.error(`  npm pack JSON parse failed in ${pkgDir}. stdout=${JSON.stringify(preview)}`);
     return null;
   }
 }
@@ -208,12 +225,20 @@ function packAndUpload(
   const pkgDir = path.join(rootDir, pkg.path);
   const tgzName = npmPackFilename(pkgDir);
   if (!tgzName) {
-    console.error(`  pack failed for ${tag}; skipping tarball upload.`);
+    console.error(`  pack failed for ${tag}; no tarball recorded for provenance.`);
     return null;
   }
   const destTgz = path.join(packsDir, tgzName);
   // Move the tgz to the shared packs dir so attest-build-provenance can glob it.
-  spawnSync("mv", [path.join(pkgDir, tgzName), destTgz], { shell: false });
+  const moveResult = spawnSync("mv", [path.join(pkgDir, tgzName), destTgz], {
+    encoding: "utf8",
+    shell: false,
+  });
+  if (moveResult.status !== 0 || !existsSync(destTgz)) {
+    const reason = moveResult.stderr.trim() || `exit ${moveResult.status}`;
+    console.error(`  failed to move packed tarball for ${tag}: ${reason}`);
+    return null;
+  }
   const uploadResult = spawnSync(
     "gh",
     ["release", "upload", tag, destTgz, "--repo", repo, "--clobber"],
@@ -253,7 +278,8 @@ function ensureRelease(pkg: WorkspacePackage, ctx: ReleaseContext): EnsureResult
     );
     if (result.status !== 0) return "failed";
     // Pack + upload the tarball so the release has a non-source artifact; enables SLSA provenance.
-    packAndUpload(pkg, tag, ctx.repo, ctx.rootDir);
+    const packed = packAndUpload(pkg, tag, ctx.repo, ctx.rootDir);
+    if (!packed) return "failed";
     recordRelease(tag);
     return "created";
   } finally {

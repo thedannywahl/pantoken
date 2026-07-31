@@ -10,6 +10,7 @@ interface SpawnResult {
 const spawnSync = vi.fn<(...args: unknown[]) => SpawnResult>();
 const readFileSync = vi.fn<(...args: unknown[]) => string>();
 const appendFileSync = vi.fn();
+const existsSync = vi.fn<(...args: unknown[]) => boolean>();
 const mkdirSync = vi.fn();
 const writeFileSync = vi.fn();
 const mkdtempSync = vi.fn<() => string>(() => "/tmp/release-notes-x");
@@ -19,6 +20,7 @@ const loadWorkspacePackages = vi.fn();
 vi.mock("node:child_process", () => ({ spawnSync }));
 vi.mock("node:fs", () => ({
   appendFileSync,
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -51,6 +53,13 @@ function router(overrides: Partial<Record<string, SpawnResult>> = {}) {
     const key = `${cmd} ${args[0]}`;
     if (key in overrides) return overrides[key] as SpawnResult;
     if (cmd === "npm" && args[0] === "view") return { status: 1, stdout: "", stderr: "" }; // not on npm
+    if (cmd === "npm" && args[0] === "pack") {
+      return {
+        status: 0,
+        stdout: JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]),
+        stderr: "",
+      };
+    }
     if (cmd === "git" && args[0] === "rev-parse")
       return { status: 0, stdout: "deadbeef\n", stderr: "" };
     if (cmd === "gh" && args[0] === "release" && args[1] === "view")
@@ -68,6 +77,7 @@ let savedEnv: NodeJS.ProcessEnv;
 beforeEach(() => {
   vi.resetModules();
   vi.clearAllMocks();
+  existsSync.mockReturnValue(true);
   mkdtempSync.mockReturnValue("/tmp/release-notes-x");
   readFileSync.mockReturnValue("## 0.2.0\n\n- note\n");
   loadWorkspacePackages.mockResolvedValue({
@@ -201,10 +211,11 @@ test("ensureRelease packs + uploads the tgz and records the tag when npm pack su
   expect(appendFileSync).toHaveBeenCalled();
 });
 
-test("npmPackFilename returns null when npm pack exits non-zero", async () => {
-  spawnSync.mockImplementation(
-    router({ "npm pack": { status: 1, stdout: "", stderr: "pack-failed" } }),
-  );
+test("ensureRelease accepts npm 12 object output from npm pack --json", async () => {
+  const packJson = JSON.stringify({
+    "@pantoken/css": { filename: "pantoken-css-0.2.0.tgz" },
+  });
+  spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
@@ -212,12 +223,34 @@ test("npmPackFilename returns null when npm pack exits non-zero", async () => {
     expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
   );
 
+  const spawned = spawnSync.mock.calls.map((c) =>
+    `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
+  );
+  expect(spawned.some((s) => s.startsWith("mv"))).toBe(true);
+  expect(appendFileSync).toHaveBeenCalled();
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed for"))).toBe(
+    false,
+  );
+});
+
+test("npmPackFilename returns null when npm pack exits non-zero", async () => {
+  spawnSync.mockImplementation(
+    router({ "npm pack": { status: 1, stdout: "", stderr: "pack-failed" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
   // packAndUpload bails out early — pack failed → no mv or upload
   const spawned = spawnSync.mock.calls.map((c) =>
     `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
   );
   expect(spawned.some((s) => s.startsWith("mv"))).toBe(false);
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to create release")),
+  ).toBe(true);
 });
 
 test("npmPackFilename returns null when npm pack stdout is invalid JSON", async () => {
@@ -227,12 +260,13 @@ test("npmPackFilename returns null when npm pack stdout is invalid JSON", async 
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
-  await vi.waitFor(() =>
-    expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
-  );
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
 
   // JSON.parse throws → packAndUpload gets null → logs "pack failed"
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to create release")),
+  ).toBe(true);
 });
 
 test("packAndUpload logs error when gh release upload fails", async () => {
