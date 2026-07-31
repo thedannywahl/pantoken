@@ -182,27 +182,39 @@ function releaseNotes(pkg: WorkspacePackage, rootDir: string): string {
 
 type EnsureResult = "created" | "exists" | "failed";
 
+/** CLI mode flags derived from argv. */
 interface RunMode {
   dryRun: boolean;
   releasesOnly: boolean;
 }
 
+/** Best-effort filename extraction from either supported npm pack JSON shape. */
 function extractPackFilename(parsed: unknown): string | undefined {
   return filenameFromPackArray(parsed) ?? filenameFromPackObject(parsed);
 }
 
+/** npm ≤ 11 pack shape: an array with one record. */
 function filenameFromPackArray(parsed: unknown): string | undefined {
   if (!Array.isArray(parsed)) return undefined;
   const first = parsed[0] as { filename?: string } | undefined;
   return first?.filename;
 }
 
+/** Coerce unknown JSON into the npm 12 object map shape when possible. */
+function asPackRecordMap(parsed: unknown): Record<string, { filename?: string }> {
+  if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+    return parsed as Record<string, { filename?: string }>;
+  }
+  return {};
+}
+
+/** npm 12 pack shape: object keyed by package name. */
 function filenameFromPackObject(parsed: unknown): string | undefined {
-  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return undefined;
-  const first = Object.values(parsed as Record<string, { filename?: string }>)[0];
+  const first = Object.values(asPackRecordMap(parsed))[0];
   return first?.filename;
 }
 
+/** Parse `npm pack --json` output and extract the tarball filename. */
 function parsePackFilename(stdout: string, pkgDir: string): string | null {
   try {
     const parsed = JSON.parse(stdout) as unknown;
@@ -232,6 +244,7 @@ function npmPackFilename(pkgDir: string): string | null {
   return parsePackFilename(result.stdout, pkgDir);
 }
 
+/** Move a packed tarball into the shared provenance subject directory. */
 function movePackedTarball(srcTgz: string, destTgz: string, tag: string): boolean {
   const moveResult = spawnSync("mv", [srcTgz, destTgz], {
     encoding: "utf8",
@@ -243,6 +256,7 @@ function movePackedTarball(srcTgz: string, destTgz: string, tag: string): boolea
   return false;
 }
 
+/** Upload one packed tarball asset to a GitHub release. */
 function uploadPackedTarball(tag: string, repo: string, destTgz: string): void {
   const uploadResult = spawnSync(
     "gh",
@@ -276,6 +290,7 @@ function packAndUpload(
   return destTgz;
 }
 
+/** Parse `--dry-run` and `--releases-only` flags from process argv. */
 function getRunMode(argv: readonly string[]): RunMode {
   return {
     dryRun: argv.includes("--dry-run"),
@@ -283,10 +298,12 @@ function getRunMode(argv: readonly string[]): RunMode {
   };
 }
 
+/** Log versions that are already present on npm and therefore skipped for publish. */
 function logSkippedOnNpm(skipped: readonly WorkspacePackage[]): void {
   for (const pkg of skipped) console.error(`• on npm: ${tagFor(pkg)}`);
 }
 
+/** Print final run counts in a stable one-line summary for release logs. */
 function printCompletionSummary(
   published: readonly WorkspacePackage[],
   skipped: readonly WorkspacePackage[],
@@ -300,6 +317,7 @@ function printCompletionSummary(
   );
 }
 
+/** Print package-level failures that should be retried by a rerun. */
 function logFailures(
   failedPublish: readonly WorkspacePackage[],
   failedRelease: readonly WorkspacePackage[],
@@ -308,6 +326,7 @@ function logFailures(
   for (const pkg of failedRelease) console.error(`  release failed: ${tagFor(pkg)}`);
 }
 
+/** Whether this run had either publish failures or release failures. */
 function isFailureResult(
   failedPublish: readonly WorkspacePackage[],
   failedRelease: readonly WorkspacePackage[],
@@ -315,6 +334,7 @@ function isFailureResult(
   return failedPublish.length > 0 || failedRelease.length > 0;
 }
 
+/** Select publish behavior: real publish path or releases-only no-op publish split. */
 function publishSelection(
   releasesOnly: boolean,
   toPublish: readonly WorkspacePackage[],
@@ -324,6 +344,7 @@ function publishSelection(
   return publishPending([...toPublish], rootDir);
 }
 
+/** Emit completion logs and set non-zero exit code when failures occurred. */
 function finishRun(
   published: readonly WorkspacePackage[],
   skipped: readonly WorkspacePackage[],
