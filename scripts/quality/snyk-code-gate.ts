@@ -21,6 +21,7 @@ import path from "node:path";
 const ROOT = path.resolve(new URL("../../", import.meta.url).pathname);
 const require = createRequire(import.meta.url);
 
+/** A single result entry from Snyk's SARIF output. */
 export interface SarifResult {
   ruleId?: string;
   level?: string;
