@@ -17,8 +17,16 @@ beforeEach(() => {
 });
 
 // Import after mocks are set up
-const { locationOf, isAccepted, isMediumPlus, processResults, parseSarifOutput, runGate } =
-  await import("./snyk-code-gate.ts");
+const {
+  locationOf,
+  isAccepted,
+  isMediumPlus,
+  processResults,
+  parseSarifOutput,
+  checkEarlyExit,
+  checkResults,
+  runGate,
+} = await import("./snyk-code-gate.ts");
 
 test("locationOf extracts file path and line number from SARIF result", () => {
   const result = {
@@ -101,5 +109,46 @@ test("runGate executes without error when snyk returns clean status", () => {
   expect(consoleSpy).toHaveBeenCalledWith(
     expect.stringContaining("no findings at or above low severity"),
   );
+  consoleSpy.mockRestore();
+});
+
+test("checkEarlyExit returns undefined when status is 1 (findings reported)", () => {
+  const result = { status: 1, stdout: "", stderr: "" };
+  expect(checkEarlyExit(result as any)).toBeUndefined();
+});
+
+test("checkEarlyExit returns exit code 0 when status is 0 (clean)", () => {
+  const result = { status: 0, stdout: "", stderr: "" };
+  const exit = checkEarlyExit(result as any);
+  expect(exit?.code).toBe(0);
+  expect(exit?.message).toContain("no findings");
+});
+
+test("checkEarlyExit returns exit code 0 when status is 3 (no files to scan)", () => {
+  const result = { status: 3, stdout: "", stderr: "" };
+  const exit = checkEarlyExit(result as any);
+  expect(exit?.code).toBe(0);
+  expect(exit?.message).toContain("no supported files");
+});
+
+test("checkEarlyExit returns exit code 0 on spawn error", () => {
+  const result = { error: new Error("snyk not found") };
+  const exit = checkEarlyExit(result as any);
+  expect(exit?.code).toBe(0);
+  expect(exit?.message).toContain("not runnable");
+});
+
+test("checkResults returns exit code 0 when no blocking findings", () => {
+  const results = [{ level: "note", ruleId: "rule1", locations: [] }];
+  const exit = checkResults(results);
+  expect(exit?.code).toBe(0);
+});
+
+test("checkResults returns exit code 1 when blocking findings present", () => {
+  const results = [{ level: "error", ruleId: "rule1", locations: [] }];
+  const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  const exit = checkResults(results);
+  expect(exit?.code).toBe(1);
+  expect(exit?.message).toContain("SAST finding");
   consoleSpy.mockRestore();
 });

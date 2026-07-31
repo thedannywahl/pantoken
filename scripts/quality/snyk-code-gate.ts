@@ -104,41 +104,36 @@ export function processResults(results: SarifResult[]): {
   return { blocking, advisory };
 }
 
-/**
- * Main gate logic: run Snyk, parse results, and exit with appropriate status.
- * @internal Exported for testing only.
- */
-export function runGate(): void {
-  const result = runSnykScan();
-
-  // spawn failed outright (node couldn't launch the CLI): warn and skip rather than block the push.
+/** Result of checking early-exit conditions. `undefined` = continue to SARIF parsing. */
+export function checkEarlyExit(result: ReturnType<typeof spawnSync>):
+  | {
+      message: string;
+      code: number;
+    }
+  | undefined {
+  // spawn failed outright: warn and skip.
   if (result.error) {
-    console.warn(`⚠ snyk not runnable (${result.error.message}) — skipping SAST gate`);
-    process.exit(0);
+    return {
+      message: `⚠ snyk not runnable (${result.error.message}) — skipping SAST gate`,
+      code: 0,
+    };
   }
 
   const status = result.status ?? 2;
   if (status === 0) {
-    console.log("✓ snyk code: no findings at or above low severity");
-    process.exit(0);
+    return { message: "✓ snyk code: no findings at or above low severity", code: 0 };
   }
   if (status === 3) {
-    console.log("ℹ snyk code: no supported files to scan");
-    process.exit(0);
+    return { message: "ℹ snyk code: no supported files to scan", code: 0 };
   }
 
-  // status 1 means findings were reported; anything else (typically 2) is an error. Parse the SARIF —
-  // if it doesn't parse, snyk couldn't run (auth/network), so skip rather than block.
-  let results: SarifResult[];
-  try {
-    results = parseSarifOutput(typeof result.stdout === "string" ? result.stdout : "");
-  } catch {
-    process.stderr.write(result.stderr as string);
-    console.warn("⚠ snyk code could not run (auth/network?) — run `snyk auth`; skipping SAST gate");
-    process.exit(0);
-  }
+  return undefined;
+}
 
-  // error = high, warning = medium (both block, unless accepted); note/none = low/informational (warn).
+/** Process results and return exit info if no medium-plus blocking findings. */
+export function checkResults(
+  results: SarifResult[],
+): { message: string; code: number } | undefined {
   const { blocking, advisory } = processResults(results);
 
   for (const r of advisory) {
@@ -150,18 +145,47 @@ export function runGate(): void {
     for (const r of blocking) {
       console.error(`✗ snyk code [${r.level}]: ${locationOf(r)} — ${r.message?.text ?? ""}`);
     }
-    console.error(
-      `✗ snyk code gate: ${blocking.length} medium-or-worse SAST finding(s) — fix or \`snyk ignore\` them`,
-    );
-    process.exit(1);
+    return {
+      message: `✗ snyk code gate: ${blocking.length} medium-or-worse SAST finding(s) — fix or \`snyk ignore\` them`,
+      code: 1,
+    };
   }
 
-  console.log(
+  const message =
     advisory.length > 0
       ? `✓ snyk code: no medium-or-worse findings (${advisory.length} low/informational warned above)`
-      : "✓ snyk code: no findings at or above low severity",
-  );
-  process.exit(0);
+      : "✓ snyk code: no findings at or above low severity";
+  return { message, code: 0 };
+}
+
+/**
+ * Main gate logic: run Snyk, parse results, and exit with appropriate status.
+ * @internal Exported for testing only.
+ */
+export function runGate(): void {
+  const result = runSnykScan();
+  const earlyExit = checkEarlyExit(result);
+
+  if (earlyExit) {
+    console.log(earlyExit.message);
+    process.exit(earlyExit.code);
+  }
+
+  // Parse SARIF — if it doesn't parse, snyk couldn't run (auth/network), so skip rather than block.
+  let results: SarifResult[];
+  try {
+    results = parseSarifOutput(typeof result.stdout === "string" ? result.stdout : "");
+  } catch {
+    process.stderr.write(result.stderr as string);
+    console.warn("⚠ snyk code could not run (auth/network?) — run `snyk auth`; skipping SAST gate");
+    process.exit(0);
+  }
+
+  const finalExit = checkResults(results);
+  if (finalExit) {
+    console.log(finalExit.message);
+    process.exit(finalExit.code);
+  }
 }
 
 // Only run the gate if this module is executed directly (not imported for testing).
