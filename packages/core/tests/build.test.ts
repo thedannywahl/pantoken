@@ -45,7 +45,8 @@ test("plugin token hooks inject at the token layer", () => {
       defineToken({ name: "--instui-focus-color", value: "var(--instui-color-border-brand)" }),
     ],
   });
-  const withFocus = buildTokens({ theme: "rebrand", plugins: [focus] });
+  // The hook behavior is independent of icon collection, so skip icons here for speed/stability.
+  const withFocus = buildTokens({ theme: "rebrand", plugins: [focus], includeIcons: false });
   expect(withFocus.some((t) => t.name === "--instui-focus-color")).toBe(true);
   // Without the plugin, the token is absent — proving injection is opt-in.
   expect(tokens.some((t) => t.name === "--instui-focus-color")).toBe(false);
