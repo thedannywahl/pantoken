@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [2b814bd]
+  - @pantoken/plugin-kit@0.2.1
+  - @pantoken/tokens@0.2.2
+
 ## 0.2.0
 
 ### Minor Changes

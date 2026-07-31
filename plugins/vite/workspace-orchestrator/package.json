@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vite-workspace-orchestrator",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Vite dev-server plugin that watches upstream workspace packages and rebuilds them (and their dependents) when source changes.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

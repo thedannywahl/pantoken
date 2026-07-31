@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- 2b814bd: Create process-sandbox worker temp directories under an allowed read root when possible, avoiding Node permission-denied noise from system temp paths.
+
 ## 0.2.0
 
 ### Minor Changes
