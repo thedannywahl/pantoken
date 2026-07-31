@@ -17,8 +17,6 @@
     font-weight: var(--instui-primitive-font-weight-medium);
     color: var(--instui-component-text-base-color);
 
-    background-color: transparent;
-
     &:hover {
       background-color: var(--instui-component-base-button-primary-ghost-hover-background);
     }

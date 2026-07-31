@@ -74,6 +74,9 @@
     background: var(--instui-component-base-button-secondary-background);
     border-color: var(--instui-component-base-button-secondary-border-color);
     color: var(--instui-component-base-button-secondary-color);
+    outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+      var(--instui-focus-outline-color-start);
+    outline-offset: 0;
     transition: var(--instui-focus-outline-transition);
 
     &:hover {
@@ -123,21 +126,21 @@
     margin: var(--instui-component-shared-tokens-spacing-general-space-none);
   }
 
-  input.pendo-radio:focus + label.pendo-radio[class*="_pendo-number-scale-poll-"],
-  input.pendo-radio:focus + label.pendo-radio[class*="_pendo-nps-poll-"],
+  input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+  input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-nps-poll-"],
   .pendo-survey-wrapper
     > :not([id*="survey-single-choice"])
-    input.pendo-radio:focus
+    input.pendo-radio:focus-visible
     + label.pendo-radio,
-  .pendo-survey-wrapper > :not([id*="survey-single-choice"]) input[type="radio"]:focus + label {
-    outline-color: var(--instui-focus-outline-color-start);
-    outline-width: var(--instui-component-shared-tokens-focus-outline-width);
-    outline-style: var(--instui-component-shared-tokens-focus-outline-style);
-    outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
+  .pendo-survey-wrapper
+    > :not([id*="survey-single-choice"])
+    input[type="radio"]:focus-visible
+    + label {
     outline-color: light-dark(
-      var(--instui-component-shared-tokens-focus-outline-info-color),
-      var(--instui-component-shared-tokens-focus-outline-on-color)
+      var(--instui-focus-outline-color),
+      var(--instui-focus-outline-color-inverse)
     );
+    outline-offset: var(--instui-focus-outline-offset);
   }
 
   input.pendo-radio:checked + label.pendo-radio[class*="_pendo-number-scale-poll-"],

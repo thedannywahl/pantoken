@@ -86,21 +86,17 @@
   ._pendo-step-container-styles {
     background-color: var(--instui-component-view-background-primary);
     color: var(--instui-component-view-color);
+    outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+      var(--instui-focus-outline-color-start);
+    outline-offset: 0;
     transition: var(--instui-focus-outline-transition);
 
     &:focus-visible {
-      outline: none;
-    }
-
-    &:focus {
-      outline-color: var(--instui-focus-outline-color-start);
-      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
-      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
-      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
       outline-color: light-dark(
-        var(--instui-component-shared-tokens-focus-outline-info-color),
-        var(--instui-component-shared-tokens-focus-outline-on-color)
+        var(--instui-focus-outline-color),
+        var(--instui-focus-outline-color-inverse)
       );
+      outline-offset: var(--instui-focus-outline-offset);
     }
   }
 
