@@ -107,6 +107,9 @@
   "health": {
     // Complexity thresholds. Health is gated to grade A via scripts/quality/fallow-health-gate.ts,
     // which reads `fallow health --format json` and fails CI when the aggregate score drops below A.
+    // Vue SFC complexity is noisy in this repo because template-generated functions are analyzer-only
+    // artifacts (not author-level abstractions), so we scope complexity checks to non-.vue sources.
+    "ignore": ["**/*.vue"],
     "maxCyclomatic": 20,
     "maxCognitive": 15,
     "maxCrap": 30
