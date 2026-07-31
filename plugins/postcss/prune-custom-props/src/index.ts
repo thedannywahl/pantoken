@@ -26,6 +26,25 @@ import type { Plugin } from "postcss";
 
 const VAR_RE = /var\(\s*(--[\w-]+)/g;
 
+/** Transitively add any custom property referenced by an already-used custom property. */
+function expandTransitiveDeps(used: Set<string>, defs: Map<string, string[]>): void {
+  let changed = true;
+  while (changed) {
+    changed = false;
+    for (const [name, values] of defs) {
+      if (!used.has(name)) continue;
+      for (const value of values) {
+        for (const m of value.matchAll(VAR_RE)) {
+          if (!used.has(m[1])) {
+            used.add(m[1]);
+            changed = true;
+          }
+        }
+      }
+    }
+  }
+}
+
 /**
  * Create the prune-unused-custom-properties PostCSS plugin.
  *
@@ -65,22 +84,7 @@ export const pruneCustomProps: {
           for (const m of decl.value.matchAll(VAR_RE)) used.add(m[1]);
         });
 
-        // Transitively keep anything a used custom property references.
-        let changed = true;
-        while (changed) {
-          changed = false;
-          for (const [name, values] of defs) {
-            if (!used.has(name)) continue;
-            for (const value of values) {
-              for (const m of value.matchAll(VAR_RE)) {
-                if (!used.has(m[1])) {
-                  used.add(m[1]);
-                  changed = true;
-                }
-              }
-            }
-          }
-        }
+        expandTransitiveDeps(used, defs);
 
         root.walkDecls((decl) => {
           if (decl.prop.startsWith("--") && !used.has(decl.prop)) decl.remove();

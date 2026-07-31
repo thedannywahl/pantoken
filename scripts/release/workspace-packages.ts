@@ -193,43 +193,34 @@ export function computeReleaseSet(
   byName: Map<string, WorkspacePackage>,
   reverseMap: Map<string, Set<string>>,
 ): string[] {
-  const visited = new Set<string>();
-  const queue: string[] = [targetName];
-
-  while (queue.length > 0) {
-    const current = queue.shift();
-    if (!current) {
-      continue;
-    }
-    if (visited.has(current)) {
-      continue;
-    }
-
-    visited.add(current);
-
-    const dependents = reverseMap.get(current);
-    if (!dependents) {
-      continue;
-    }
-
-    for (const dependent of dependents) {
-      if (!visited.has(dependent)) {
-        queue.push(dependent);
-      }
-    }
-  }
+  const visited = collectTransitiveDependents(targetName, reverseMap);
 
   const metaPackage = byName.get("@pantoken/pantoken");
   const targetPackage = byName.get(targetName);
   if (metaPackage && targetName !== "@pantoken/pantoken" && !targetPackage?.private) {
     const touchesMetaSurface = [...visited].some((name) => metaPackage.workspaceDeps.has(name));
-
-    if (touchesMetaSurface) {
-      visited.add(metaPackage.name);
-    }
+    if (touchesMetaSurface) visited.add(metaPackage.name);
   }
 
   return [...visited].sort((a, b) => a.localeCompare(b));
+}
+
+/** BFS from `start` over `reverseMap`, returning every reachable node including `start`. */
+function collectTransitiveDependents(
+  start: string,
+  reverseMap: Map<string, Set<string>>,
+): Set<string> {
+  const visited = new Set<string>();
+  const queue: string[] = [start];
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    if (visited.has(current)) continue;
+    visited.add(current);
+    for (const dependent of reverseMap.get(current) ?? []) {
+      if (!visited.has(dependent)) queue.push(dependent);
+    }
+  }
+  return visited;
 }
 
 /** Parse a `@pantoken/<name>@v<version>` git tag into its parts, or `null` if it doesn't match. */
