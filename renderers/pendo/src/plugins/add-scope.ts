@@ -1,8 +1,9 @@
 /**
  * Package-local PostCSS plugin: wrap the stylesheet in a CSS `@scope (selector)` at-rule so guide
- * styles can't leak onto the host page. Top-level `@property` registrations and bare `@layer` order
- * statements are hoisted out of the scope (they're global by nature and `@property` isn't valid
- * inside `@scope`). Scoped to `@pantoken/pendo` — a Pendo deployment concern.
+ * styles can't leak onto the host page. Top-level `@property` registrations are hoisted out of the
+ * scope because `@property` is not valid inside `@scope`. `@layer` order statements stay inside the
+ * scope — they establish cascade order for the scoped layers, not for global document layers.
+ * Scoped to `@pantoken/pendo` — a Pendo deployment concern.
  *
  * Mirrors `@instructure/postcss-add-scope` from pendo-styles.
  *
@@ -47,10 +48,9 @@ export const addScope: {
         const hoisted: ChildNode[] = [];
         const moved: ChildNode[] = [];
         for (const node of root.nodes) {
-          // @property is global and invalid inside @scope; bare `@layer a, b;` sets global order.
-          const bareLayer = node.type === "atrule" && node.name === "layer" && !node.nodes;
+          // @property is invalid inside @scope and must be hoisted to the document root.
           const property = node.type === "atrule" && node.name === "property";
-          (property || bareLayer ? hoisted : moved).push(node.clone());
+          (property ? hoisted : moved).push(node.clone());
         }
         root.removeAll();
         for (const node of hoisted) root.append(node);

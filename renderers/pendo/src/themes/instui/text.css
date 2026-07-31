@@ -74,7 +74,7 @@
   /* List styles */
   ._pendo-simple-text ol,
   ._pendo-simple-text ul {
-    padding-left: var(--instui-component-shared-tokens-spacing-general-space-none);
+    padding-left: var(--pendo-space-0);
   }
 
   /* Surveys*/
@@ -99,8 +99,7 @@
       font-family: var(--instui-component-heading-title-card-mini-font-family);
       font-size: var(--instui-component-heading-title-card-mini-font-size);
       line-height: var(--instui-component-heading-title-card-mini-line-height);
-      margin: var(--instui-component-shared-tokens-spacing-general-space-none)
-        var(--instui-component-shared-tokens-spacing-general-space-none)
+      margin: var(--pendo-space-0) var(--pendo-space-0)
         var(--instui-component-shared-tokens-spacing-general-space-sm);
     }
 

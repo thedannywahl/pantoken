@@ -7,7 +7,7 @@
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
-    border-width: var(--instui-component-shared-tokens-spacing-general-space-none);
+    border-width: var(--pendo-space-0);
     background-size: var(--instui-component-icon-size-sm);
     position: absolute;
     inset-inline: auto var(--instui-component-shared-tokens-spacing-general-space-xs);

@@ -14,13 +14,11 @@
     line-height: var(--instui-component-base-button-line-height);
     letter-spacing: var(--instui-component-base-button-letter-spacing);
     cursor: pointer;
-    margin: var(--instui-component-shared-tokens-spacing-general-space-none)
-      var(--instui-component-base-button-gap-button-content-md)
-      var(--instui-component-shared-tokens-spacing-general-space-none)
-      var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin: var(--pendo-space-0) var(--instui-component-base-button-gap-button-content-md)
+      var(--pendo-space-0) var(--pendo-space-0);
 
     .pendo-mock-flexbox-element:last-child > & {
-      margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+      margin-right: var(--pendo-space-0);
     }
   }
 

@@ -11,22 +11,19 @@ import {
   alertCss,
   buttonCss,
   cardCss,
+  chromeCss,
   closeButtonCss,
-  imgCss,
-  manualCss,
-  maskCss,
   paginationCss,
   popoverCss,
   radioGroupCss,
   selectCss,
   textCss,
   textareaCss,
-  videoCss,
-  viewCss,
+  varsCss,
 } from "../generated/embedded.ts";
 
-/** The `--manual-*` extras + tokens InstUI doesn't ship (focus transitions, logos, TextArea dims). */
-export const MANUAL_CSS: string = manualCss;
+/** The `--pendo-*` local aliases, override tokens, and logo references. */
+export const PENDO_VARS_CSS: string = varsCss;
 
 /**
  * Cascade order (lowest → highest), from the source `layers.css`. Layered `!important` beats Pendo's
@@ -35,19 +32,16 @@ export const MANUAL_CSS: string = manualCss;
 export const LAYER_ORDER = [
   "tokens",
   "elevation",
-  "icons",
   "popover",
   "alert",
   "text",
   "closeButton",
-  "img",
+  "chrome",
   "inputs",
   "button",
   "pagination",
-  "mask",
-  "view",
   "card",
-  "manual",
+  "vars",
   // Declared LAST so its !important declarations are the lowest-priority focus layer — the delegated
   // ring is the baseline, and any component's own focus rules (earlier layers) still win.
   "focusOutline",
@@ -59,18 +53,15 @@ export interface ComponentLayer {
   css: string;
 }
 
-/** The component CSS in cascade order (the `tokens` and `manual` layers are handled separately). */
+/** The component CSS in cascade order (the `tokens` and `vars` layers are handled separately). */
 export const COMPONENTS: readonly ComponentLayer[] = [
-  { layer: "icons", css: videoCss },
   { layer: "popover", css: popoverCss },
   { layer: "alert", css: alertCss },
   { layer: "text", css: textCss },
   { layer: "closeButton", css: closeButtonCss },
-  { layer: "img", css: imgCss },
+  { layer: "chrome", css: chromeCss },
   { layer: "inputs", css: [textareaCss, selectCss, radioGroupCss].join("\n") },
   { layer: "button", css: buttonCss },
   { layer: "pagination", css: paginationCss },
-  { layer: "mask", css: maskCss },
-  { layer: "view", css: viewCss },
   { layer: "card", css: cardCss },
 ];

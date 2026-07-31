@@ -68,10 +68,9 @@
   /* Overlay Guides */
   &[data-layout="tooltipBlank"] {
     ._pendo-step-container-styles {
-      width: var(--manual-light-pendo-overlay-pendo-step-container-styles-width);
+      width: var(--pendo-overlay-width);
       padding: var(--instui-component-shared-tokens-spacing-padding-card-sm)
-        var(--instui-component-shared-tokens-spacing-padding-card-sm)
-        var(--instui-component-shared-tokens-spacing-general-space-none);
+        var(--instui-component-shared-tokens-spacing-padding-card-sm) var(--pendo-space-0);
     }
   }
 

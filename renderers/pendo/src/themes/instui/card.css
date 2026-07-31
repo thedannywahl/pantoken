@@ -3,19 +3,19 @@
 
   /* Row spacing in Popover layout */
   ._pendo-row {
-    margin-top: var(--instui-component-shared-tokens-spacing-general-space-none);
-    margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-top: var(--pendo-space-0);
+    margin-right: var(--pendo-space-0);
     margin-bottom: var(--instui-component-shared-tokens-spacing-general-space-sm);
-    margin-left: var(--instui-component-shared-tokens-spacing-general-space-none);
-    line-height: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-left: var(--pendo-space-0);
+    line-height: var(--pendo-space-0);
   }
 
   /* Row spacing in Alert layout */
   &[data-layout="lightboxBlank"] ._pendo-row {
-    margin-top: var(--instui-component-shared-tokens-spacing-general-space-none);
-    margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-top: var(--pendo-space-0);
+    margin-right: var(--pendo-space-0);
     margin-bottom: var(--instui-component-shared-tokens-spacing-gap-cards-sm);
-    margin-left: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin-left: var(--pendo-space-0);
   }
 
   /* Close button spacing in Popover layout */
@@ -38,7 +38,7 @@
 
   /* Content spacing */
   .pendo-block-wrapper {
-    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin: var(--pendo-space-0);
   }
 
   ._pendo-text-paragraph._pendo-multi-choice-poll-question
@@ -104,14 +104,14 @@
   &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
     /* Some surveys don't use `._pendo-row` for spacing, so add margin to direct children that aren't rows. */
     ._pendo-step-container-styles > :is(div, form, textarea, h2):not(._pendo-row) {
-      margin: var(--instui-component-shared-tokens-spacing-general-space-none) auto
+      margin: var(--pendo-space-0) auto
         var(--instui-component-shared-tokens-spacing-general-space-sm) auto;
       width: 100%;
-      max-width: var(--manual-light-pendo-embedded-pendo-step-container-styles-width);
+      max-width: var(--pendo-embedded-width);
     }
 
     ._pendo-step-container-styles > ._pendo-row {
-      max-width: var(--manual-light-pendo-embedded-pendo-step-container-styles-width);
+      max-width: var(--pendo-embedded-width);
       margin-left: auto;
       margin-right: auto;
     }

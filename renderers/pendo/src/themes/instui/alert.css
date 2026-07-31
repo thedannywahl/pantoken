@@ -27,7 +27,7 @@
   ._pendo-step-container-size {
     margin-right: var(--instui-spacing-space2xs);
     margin-left: var(--instui-spacing-space2xs);
-    max-width: var(--manual-light-pendo-embedded-pendo-step-container-styles-width);
+    max-width: var(--pendo-embedded-width);
   }
 
   ._pendo-step-container-size {
@@ -48,10 +48,7 @@
     padding: var(--instui-component-alert-content-padding-vertical)
       var(--instui-component-alert-content-padding-horizontal)
       var(--instui-component-alert-content-padding-vertical)
-      calc(
-        var(--manual-light-new-theme-components-alert-padding-left) +
-          var(--instui-component-alert-content-padding-horizontal)
-      );
+      calc(var(--pendo-alert-indent) + var(--instui-component-alert-content-padding-horizontal));
     box-shadow: var(--instui-elevation-above);
     position: relative;
     /* gap-cards-md + box-shadow y + box-shadow spread */
@@ -68,7 +65,7 @@
       overflow: hidden;
       inset-block: 0;
       left: 0;
-      width: var(--manual-light-new-theme-components-alert-padding-left);
+      width: var(--pendo-alert-indent);
       background-color: var(--_alert-color);
     }
 
@@ -79,11 +76,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      left: calc(
-        (var(--manual-light-new-theme-components-alert-padding-left) -
-            var(--instui-component-icon-size-md)) /
-          2
-      );
+      left: calc((var(--pendo-alert-indent) - var(--instui-component-icon-size-md)) / 2);
       width: var(--instui-component-icon-size-md);
       height: var(--instui-component-icon-size-md);
       mask-image: var(--_alert-icon);

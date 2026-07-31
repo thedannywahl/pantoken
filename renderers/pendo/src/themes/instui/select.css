@@ -2,8 +2,8 @@
   ._pendo-multi-choice-poll-select-border[id^="pendo-select-container-"]:has(> select) {
     border: 0 none;
     background: none;
-    padding: var(--instui-component-shared-tokens-spacing-general-space-none);
-    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    padding: var(--pendo-space-0);
+    margin: var(--pendo-space-0);
     position: relative;
 
     /* Chevron icon — mask-image approach for automatic light/dark theming */
@@ -33,11 +33,10 @@
     height: var(--instui-component-text-input-height-sm);
     border-radius: var(--instui-component-text-input-border-radius);
     border-width: var(--instui-component-text-input-border-width);
-    /* @TODO: Text input border style token missing upstream */
-    border-style: solid;
-    padding: var(--instui-component-shared-tokens-spacing-general-space-none)
-      calc(var(--instui-component-text-input-padding-horizontal-sm) + 24px)
-      var(--instui-component-shared-tokens-spacing-general-space-none)
+    /* border-style token not yet in upstream set; see --pendo-input-border-style in manual.css */
+    border-style: var(--pendo-input-border-style);
+    padding: var(--pendo-space-0)
+      calc(var(--instui-component-text-input-padding-horizontal-sm) + 24px) var(--pendo-space-0)
       var(--instui-component-text-input-padding-horizontal-sm);
     font-family: var(--instui-component-text-input-font-family);
     font-weight: var(--instui-component-text-input-font-weight);
@@ -49,7 +48,6 @@
     background-color: var(--instui-component-text-input-background-color);
     color: var(--instui-component-text-input-text-color);
     border-color: var(--instui-component-text-input-border-color);
-    transition: var(--instui-focus-outline-transition);
 
     &:hover {
       background-color: var(--instui-component-text-input-background-hover-color);
@@ -57,11 +55,6 @@
     }
 
     &:focus {
-      outline-color: var(--instui-focus-outline-color-start);
-      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
-      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
-      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
-      outline-color: var(--instui-component-shared-tokens-focus-outline-info-color);
       background-color: var(--instui-component-text-input-background-color);
     }
   }
@@ -102,8 +95,8 @@
       border-width: var(--instui-component-shared-tokens-stroke-width-sm);
       border-style: solid;
       overflow: hidden;
-      padding: var(--instui-component-shared-tokens-spacing-general-space-none);
-      margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+      padding: var(--pendo-space-0);
+      margin: var(--pendo-space-0);
       background-color: var(--instui-component-options-item-background);
       border-color: var(--instui-component-popover-border-color);
       box-shadow: var(--instui-elevation-above);
@@ -112,7 +105,7 @@
     /* ─── Options ─── */
     select._pendo-multi-choice-poll-select option {
       border-radius: 0;
-      margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+      margin: var(--pendo-space-0);
       font-family: var(--instui-component-options-item-font-family);
       font-weight: var(--instui-component-options-item-font-weight);
       font-size: var(--instui-font-size-text-sm);

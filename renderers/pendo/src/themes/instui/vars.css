@@ -1,0 +1,18 @@
+/* Pendo-local aliases for layout constants and missing upstream tokens. Rename this file to vars.css. */
+[class*="instui"] {
+  /* Embedded guide max-width (lightboxBlank layout) */
+  --pendo-embedded-width: 59.25rem;
+  /* Alert sidebar strip width */
+  --pendo-alert-indent: 2.5rem;
+  /* Overlay/popover guide max-width (tooltipBlank layout) */
+  --pendo-overlay-width: 22.5rem;
+  /* Shorthand for the zero-spacing sentinel */
+  --pendo-space-0: var(--instui-component-shared-tokens-spacing-general-space-none);
+  /* Workaround: --instui-component-text-input/text-area-border-style not yet in upstream token set */
+  --pendo-input-border-style: solid;
+
+  /* TextArea: clamp to pendo-specific dimensions not in upstream tokens */
+  --instui-component-text-area-min-height: 4rem;
+  --instui-component-text-area-max-height: 6rem;
+  --instui-component-text-area-max-width: 20rem;
+}

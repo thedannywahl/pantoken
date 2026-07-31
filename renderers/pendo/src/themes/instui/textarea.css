@@ -17,7 +17,7 @@
   ._pendo-open-text-poll-input {
     border-radius: var(--instui-component-text-area-border-radius);
     border-width: var(--instui-component-text-area-border-width);
-    border-style: solid;
+    border-style: var(--pendo-input-border-style);
     padding: var(--instui-component-text-area-padding);
     gap: var(--instui-component-text-area-gap-content);
     min-height: var(--instui-component-text-area-min-height);
@@ -30,11 +30,10 @@
     line-height: var(--instui-line-height-standalone-text-base);
     letter-spacing: normal;
     font-style: normal;
-    margin: var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin: var(--pendo-space-0);
     background-color: var(--instui-component-text-area-background-color);
     color: var(--instui-component-text-area-text-color);
     border-color: var(--instui-component-text-area-border-color);
-    transition: var(--instui-focus-outline-transition);
 
     &:hover {
       background: var(--instui-component-text-area-background-hover-color);
@@ -42,11 +41,6 @@
     }
 
     &:focus {
-      outline-color: var(--instui-focus-outline-color-start);
-      outline-width: var(--instui-component-shared-tokens-focus-outline-width);
-      outline-style: var(--instui-component-shared-tokens-focus-outline-style);
-      outline-offset: var(--instui-component-shared-tokens-focus-outline-offset);
-      outline-color: var(--instui-component-shared-tokens-focus-outline-info-color);
       background-color: var(--instui-component-text-area-background-color);
       border-color: var(--instui-component-text-area-border-color);
     }

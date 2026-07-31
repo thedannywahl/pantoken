@@ -15,18 +15,15 @@ const files = [
   "alert",
   "button",
   "card",
+  "chrome",
   "close-button",
-  "img",
-  "manual",
-  "mask",
   "pagination",
   "popover",
   "radio-group",
   "select",
   "text",
   "textarea",
-  "video",
-  "view",
+  "vars",
 ];
 
 const toName = (f: string): string =>
