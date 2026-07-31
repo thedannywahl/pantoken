@@ -1,0 +1,8 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities
+# https://docs.snyk.io/scan-fix-and-prevent/prevent/policies/the-.snyk-file
+
+version: v1.25.0
+exclude:
+  paths:
+    - .worktrees/**
+    - .claude/worktrees/**
