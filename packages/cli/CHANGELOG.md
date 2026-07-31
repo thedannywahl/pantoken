@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.11
+
+### Patch Changes
+
+- Updated dependencies [2f21a66]
+  - @pantoken/icon-font@0.1.9
+  - @pantoken/pendo@0.1.10
+
 ## 0.1.10
 
 ### Patch Changes

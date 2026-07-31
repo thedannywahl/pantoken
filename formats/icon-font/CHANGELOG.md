@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.9
+
+### Patch Changes
+
+- 2f21a66: Refactor internal functions to reduce cognitive complexity. `svgToGlyphPath` extracts the ClipperLib stroke-offset loop into `strokeSubpathsToFilled`; `OnceExit` extracts the transitive-dependency fixpoint into `expandTransitiveDeps`; the demo runner extracts `handleObservedBodyResize`, `shouldLatchUserResize`, `settleResizeState`, and `handlerForMessage` from their inline call sites.
+
 ## 0.1.8
 
 ### Patch Changes
