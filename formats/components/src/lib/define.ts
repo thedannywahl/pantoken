@@ -6,7 +6,6 @@
  *
  * @module
  */
-import type { CssRecordKind } from "@cssdoc/core";
 import {
   deprecatedAliasPairs,
   withAliases,
@@ -14,6 +13,8 @@ import {
   withSizeAliasDocs,
 } from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
+
+type CssRecordKind = "component" | "utility" | "rule" | "declaration";
 
 /** A resolved record: `rules(prefix)` emits the doc block plus CSS body for the aggregator, and `css(options)` returns the standalone header-wrapped sheet. */
 export interface Definition {
@@ -35,7 +36,7 @@ export interface DefineInput {
   name: string;
   /**
    * Build the full record for the `ns()`-joined prefix `p`: a leading `/** … *\/` cssdoc doc comment
-   * (prefix-independent) followed by the CSS body — for example a doc comment tagged `@component menu`
+   * (prefix-independent) followed by the CSS body — for example a doc comment that declares the menu
    * ahead of a rule like `.${p}menu {…}`.
    */
   css: (p: string, options?: ComponentOptions) => string;

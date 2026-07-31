@@ -38,3 +38,4 @@ jobs:
             echo "::error::automated release workflow. Close this PR and let the release flow"
             echo "::error::handle version bumps automatically."
             exit 1
+          fi

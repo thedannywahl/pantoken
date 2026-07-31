@@ -1,8 +1,20 @@
 import { existsSync, mkdtempSync, readFileSync, statSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { expect, test } from "vite-plus/test";
+import { afterAll, beforeAll, expect, test, vi } from "vite-plus/test";
 import { parseArgs, run } from "../src/index.ts";
+
+let warnSpy: ReturnType<typeof vi.spyOn>;
+
+beforeAll(() => {
+  // Most CLI tests write into tmpdir(), which intentionally sits outside cwd.
+  // The unsafe-path warning is expected there; keep test output clean.
+  warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+});
+
+afterAll(() => {
+  warnSpy.mockRestore();
+});
 
 test("parseArgs reads the target and flags", () => {
   const args = parseArgs(["generate", "swift", "--out", "/tmp/x", "--theme", "canvas"]);

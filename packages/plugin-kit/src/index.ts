@@ -394,7 +394,18 @@ function runInProcess<T>(
   readPaths?: string[],
 ): Promise<T | null> {
   const roots = readPaths ?? [findWorkspaceRoot(pluginPath)];
-  const dir = mkdtempSync(join(tmpdir(), "pantoken-sandbox-"));
+  const makeSandboxDir = (): string => {
+    if (!roots.includes("*")) {
+      const firstRoot = roots.find((p) => p && p !== "*");
+      if (firstRoot) {
+        const resolved = resolvePath(firstRoot);
+        const base = existsSync(resolved) ? resolved : dirname(resolved);
+        if (existsSync(base)) return mkdtempSync(join(base, ".pantoken-sandbox-"));
+      }
+    }
+    return mkdtempSync(join(tmpdir(), "pantoken-sandbox-"));
+  };
+  const dir = makeSandboxDir();
   const scriptPath = join(dir, "worker.mjs");
   mkdirSync(dir, { recursive: true });
   writeFileSync(scriptPath, PROCESS_WORKER_CODE);

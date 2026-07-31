@@ -4,6 +4,8 @@ import { createRoot } from "react-dom/client";
 import { expect, test } from "vite-plus/test";
 import { Icon, TokenProvider, register, readToken, useToken } from "../src/index.tsx";
 
+(globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+
 function render(node: React.ReactNode): HTMLElement {
   const container = document.createElement("div");
   document.body.appendChild(container);

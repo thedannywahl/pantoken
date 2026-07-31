@@ -12,29 +12,14 @@
  * @module
  * @beta
  */
-import { definePlugin } from "@pantoken/plugin-kit";
 import { tokens } from "@pantoken/tokens";
-import { elevationDeclarations, focusOutlineDeclarations } from "@pantoken/utils";
+import { foundationPlugin } from "./foundation.ts";
 import { toCss } from "./to-css.ts";
 
 export { toCss } from "./to-css.ts";
 export type { ToCssOptions } from "./to-css.ts";
 export { buildCssFile } from "./emit.ts";
 export type { CssSection } from "./emit.ts";
-
-/**
- * The elevation (`--instui-elevation-*`) and focus-outline (`--instui-focus-outline-*`) composite custom
- * properties. Their pure builders live in `@pantoken/utils`, so this package (which sits below
- * `@pantoken/components`) owns the emission without an upward dependency. The values are contextual
- * (`var(...)`), so they land as `:root` declarations in both the typed and lean builds.
- */
-const foundationPlugin = definePlugin({
-  name: "pantoken-foundation",
-  css: () => ({
-    marker: "pantoken foundation — elevation + focus-outline custom properties",
-    declarations: [...elevationDeclarations(), ...focusOutlineDeclarations()],
-  }),
-});
 
 /**
  * The ready-made `rebrand` stylesheet string (typed: concrete tokens as `@property` registrations).
