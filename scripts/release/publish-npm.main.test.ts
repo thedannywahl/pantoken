@@ -44,27 +44,62 @@ function pkg(name: string, version = "0.2.0"): WorkspacePackage {
   };
 }
 
+const OK_RESULT: SpawnResult = { status: 0, stdout: "", stderr: "" };
+const NOT_FOUND_RESULT: SpawnResult = { status: 1, stdout: "", stderr: "" };
+const DEFAULT_PACK_STDOUT = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
+const DEFAULT_ROUTE_OVERRIDES: Record<string, SpawnResult> = {
+  "npm view": NOT_FOUND_RESULT,
+  "npm pack": { status: 0, stdout: DEFAULT_PACK_STDOUT, stderr: "" },
+  "git rev-parse": { status: 0, stdout: "deadbeef\n", stderr: "" },
+};
+const GH_RELEASE_ROUTE_OVERRIDES: Record<string, SpawnResult> = {
+  "gh release view": NOT_FOUND_RESULT,
+};
+
+function routeKey(cmd: string, firstArg: string): string {
+  return `${cmd} ${firstArg}`;
+}
+
+function ghReleaseKey(cmd: string, args: string[]): string {
+  return `${cmd} ${args[0] ?? ""} ${args[1] ?? ""}`;
+}
+
+function defaultRouteResult(cmd: string, args: string[]): SpawnResult {
+  const ghReleaseResult = GH_RELEASE_ROUTE_OVERRIDES[ghReleaseKey(cmd, args)];
+  if (ghReleaseResult) return ghReleaseResult;
+  return DEFAULT_ROUTE_OVERRIDES[routeKey(cmd, args[0] ?? "")] ?? OK_RESULT;
+}
+
 /** spawnSync router keyed on the command + first subarg; overridable per test. */
 function router(overrides: Partial<Record<string, SpawnResult>> = {}) {
-  const ok = { status: 0, stdout: "", stderr: "" };
   return (...spawnArgs: unknown[]): SpawnResult => {
     const cmd = spawnArgs[0] as string;
     const args = spawnArgs[1] as string[];
-    const key = `${cmd} ${args[0]}`;
+    const key = routeKey(cmd, args[0] ?? "");
     if (key in overrides) return overrides[key] as SpawnResult;
-    if (cmd === "npm" && args[0] === "view") return { status: 1, stdout: "", stderr: "" }; // not on npm
-    if (cmd === "npm" && args[0] === "pack") {
-      return {
-        status: 0,
-        stdout: JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]),
-        stderr: "",
-      };
-    }
-    if (cmd === "git" && args[0] === "rev-parse")
-      return { status: 0, stdout: "deadbeef\n", stderr: "" };
-    if (cmd === "gh" && args[0] === "release" && args[1] === "view")
-      return { status: 1, stdout: "", stderr: "" }; // release absent
-    return ok;
+    return defaultRouteResult(cmd, args);
+  };
+}
+
+function uploadFailureRouter(packJson: string): (...spawnArgs: unknown[]) => SpawnResult {
+  const overrides: Record<string, SpawnResult> = {
+    "npm view": NOT_FOUND_RESULT,
+    "npm pack": { status: 0, stdout: packJson, stderr: "" },
+    "npm publish": OK_RESULT,
+    "git rev-parse": { status: 0, stdout: "deadbeef\n", stderr: "" },
+  };
+  const ghOverrides: Record<string, SpawnResult> = {
+    "gh release view": NOT_FOUND_RESULT,
+    "gh release create": OK_RESULT,
+    "gh release upload": { status: 1, stdout: "", stderr: "upload error" },
+  };
+  return (...spawnArgs: unknown[]): SpawnResult => {
+    const cmd = spawnArgs[0] as string;
+    const args = spawnArgs[1] as string[];
+    const ghOverride = ghOverrides[ghReleaseKey(cmd, args)];
+    if (ghOverride) return ghOverride;
+    const key = routeKey(cmd, args[0] ?? "");
+    return overrides[key] ?? OK_RESULT;
   };
 }
 
@@ -271,20 +306,7 @@ test("npmPackFilename returns null when npm pack stdout is invalid JSON", async 
 
 test("packAndUpload logs error when gh release upload fails", async () => {
   const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
-  // Use a custom mock instead of router() since all gh release subcommands share the same key.
-  spawnSync.mockImplementation((...spawnArgs: unknown[]): SpawnResult => {
-    const cmd = spawnArgs[0] as string;
-    const args = spawnArgs[1] as string[];
-    if (cmd === "npm" && args[0] === "view") return { status: 1, stdout: "", stderr: "" }; // not on npm
-    if (cmd === "npm" && args[0] === "pack") return { status: 0, stdout: packJson, stderr: "" };
-    if (cmd === "npm" && args[0] === "publish") return { status: 0, stdout: "", stderr: "" };
-    if (cmd === "git") return { status: 0, stdout: "deadbeef\n", stderr: "" };
-    if (cmd === "gh" && args[1] === "view") return { status: 1, stdout: "", stderr: "" }; // no release
-    if (cmd === "gh" && args[1] === "create") return { status: 0, stdout: "", stderr: "" };
-    if (cmd === "gh" && args[1] === "upload")
-      return { status: 1, stdout: "", stderr: "upload error" };
-    return { status: 0, stdout: "", stderr: "" };
-  });
+  spawnSync.mockImplementation(uploadFailureRouter(packJson));
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");

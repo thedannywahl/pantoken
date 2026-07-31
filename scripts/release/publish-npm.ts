@@ -182,6 +182,41 @@ function releaseNotes(pkg: WorkspacePackage, rootDir: string): string {
 
 type EnsureResult = "created" | "exists" | "failed";
 
+interface RunMode {
+  dryRun: boolean;
+  releasesOnly: boolean;
+}
+
+function extractPackFilename(parsed: unknown): string | undefined {
+  return filenameFromPackArray(parsed) ?? filenameFromPackObject(parsed);
+}
+
+function filenameFromPackArray(parsed: unknown): string | undefined {
+  if (!Array.isArray(parsed)) return undefined;
+  const first = parsed[0] as { filename?: string } | undefined;
+  return first?.filename;
+}
+
+function filenameFromPackObject(parsed: unknown): string | undefined {
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return undefined;
+  const first = Object.values(parsed as Record<string, { filename?: string }>)[0];
+  return first?.filename;
+}
+
+function parsePackFilename(stdout: string, pkgDir: string): string | null {
+  try {
+    const parsed = JSON.parse(stdout) as unknown;
+    const filename = extractPackFilename(parsed);
+    if (filename) return filename;
+    console.error(`  npm pack in ${pkgDir} did not return a tarball filename.`);
+    return null;
+  } catch {
+    const preview = stdout.trim().slice(0, 200);
+    console.error(`  npm pack JSON parse failed in ${pkgDir}. stdout=${JSON.stringify(preview)}`);
+    return null;
+  }
+}
+
 /** Run `npm pack --json` and return the tarball filename, or null on failure. */
 function npmPackFilename(pkgDir: string): string | null {
   const result = spawnSync("npm", ["pack", "--json"], {
@@ -194,23 +229,28 @@ function npmPackFilename(pkgDir: string): string | null {
     console.error(`  npm pack failed in ${pkgDir}: ${reason}`);
     return null;
   }
-  try {
-    const parsed = JSON.parse(result.stdout) as
-      | Array<{ filename?: string }>
-      | Record<string, { filename?: string }>;
-    const filename = Array.isArray(parsed)
-      ? parsed[0]?.filename
-      : Object.values(parsed)[0]?.filename;
-    if (!filename) {
-      console.error(`  npm pack in ${pkgDir} did not return a tarball filename.`);
-      return null;
-    }
-    return filename;
-  } catch {
-    const preview = result.stdout.trim().slice(0, 200);
-    console.error(`  npm pack JSON parse failed in ${pkgDir}. stdout=${JSON.stringify(preview)}`);
-    return null;
-  }
+  return parsePackFilename(result.stdout, pkgDir);
+}
+
+function movePackedTarball(srcTgz: string, destTgz: string, tag: string): boolean {
+  const moveResult = spawnSync("mv", [srcTgz, destTgz], {
+    encoding: "utf8",
+    shell: false,
+  });
+  if (moveResult.status === 0 && existsSync(destTgz)) return true;
+  const reason = moveResult.stderr.trim() || `exit ${moveResult.status}`;
+  console.error(`  failed to move packed tarball for ${tag}: ${reason}`);
+  return false;
+}
+
+function uploadPackedTarball(tag: string, repo: string, destTgz: string): void {
+  const uploadResult = spawnSync(
+    "gh",
+    ["release", "upload", tag, destTgz, "--repo", repo, "--clobber"],
+    { encoding: "utf8", shell: false, stdio: "inherit" },
+  );
+  if (uploadResult.status !== 0)
+    console.error(`  tarball upload failed for ${tag} (provenance will still run).`);
 }
 
 /** Pack the package and upload the tarball to its GitHub release; returns the local .tgz path or null. */
@@ -228,25 +268,74 @@ function packAndUpload(
     console.error(`  pack failed for ${tag}; no tarball recorded for provenance.`);
     return null;
   }
+  const srcTgz = path.join(pkgDir, tgzName);
   const destTgz = path.join(packsDir, tgzName);
   // Move the tgz to the shared packs dir so attest-build-provenance can glob it.
-  const moveResult = spawnSync("mv", [path.join(pkgDir, tgzName), destTgz], {
-    encoding: "utf8",
-    shell: false,
-  });
-  if (moveResult.status !== 0 || !existsSync(destTgz)) {
-    const reason = moveResult.stderr.trim() || `exit ${moveResult.status}`;
-    console.error(`  failed to move packed tarball for ${tag}: ${reason}`);
-    return null;
-  }
-  const uploadResult = spawnSync(
-    "gh",
-    ["release", "upload", tag, destTgz, "--repo", repo, "--clobber"],
-    { encoding: "utf8", shell: false, stdio: "inherit" },
-  );
-  if (uploadResult.status !== 0)
-    console.error(`  tarball upload failed for ${tag} (provenance will still run).`);
+  if (!movePackedTarball(srcTgz, destTgz, tag)) return null;
+  uploadPackedTarball(tag, repo, destTgz);
   return destTgz;
+}
+
+function getRunMode(argv: readonly string[]): RunMode {
+  return {
+    dryRun: argv.includes("--dry-run"),
+    releasesOnly: argv.includes("--releases-only"),
+  };
+}
+
+function logSkippedOnNpm(skipped: readonly WorkspacePackage[]): void {
+  for (const pkg of skipped) console.error(`• on npm: ${tagFor(pkg)}`);
+}
+
+function printCompletionSummary(
+  published: readonly WorkspacePackage[],
+  skipped: readonly WorkspacePackage[],
+  created: number,
+  failedRelease: readonly WorkspacePackage[],
+): void {
+  const alreadyReleased = skipped.length + published.length - created - failedRelease.length;
+  console.error(
+    `\ndone: published ${published.length}, releases created ${created}, ` +
+      `already released ${alreadyReleased}.`,
+  );
+}
+
+function logFailures(
+  failedPublish: readonly WorkspacePackage[],
+  failedRelease: readonly WorkspacePackage[],
+): void {
+  for (const pkg of failedPublish) console.error(`  publish failed: ${tagFor(pkg)}`);
+  for (const pkg of failedRelease) console.error(`  release failed: ${tagFor(pkg)}`);
+}
+
+function isFailureResult(
+  failedPublish: readonly WorkspacePackage[],
+  failedRelease: readonly WorkspacePackage[],
+): boolean {
+  return failedPublish.length > 0 || failedRelease.length > 0;
+}
+
+function publishSelection(
+  releasesOnly: boolean,
+  toPublish: readonly WorkspacePackage[],
+  rootDir: string,
+): { published: WorkspacePackage[]; failedPublish: WorkspacePackage[] } {
+  if (releasesOnly) return { published: [], failedPublish: [] };
+  return publishPending([...toPublish], rootDir);
+}
+
+function finishRun(
+  published: readonly WorkspacePackage[],
+  skipped: readonly WorkspacePackage[],
+  created: number,
+  failedPublish: readonly WorkspacePackage[],
+  failedRelease: readonly WorkspacePackage[],
+): void {
+  printCompletionSummary(published, skipped, created, failedRelease);
+  if (!isFailureResult(failedPublish, failedRelease)) return;
+  logFailures(failedPublish, failedRelease);
+  // Non-zero exit surfaces the failures; a re-run retries only what's still missing (idempotent).
+  process.exitCode = 1;
 }
 
 /** Append the release tag to the RUNNER_TEMP tags file for the provenance step. */
@@ -351,10 +440,7 @@ function ensureReleases(
 }
 
 async function main(): Promise<void> {
-  const dryRun = process.argv.includes("--dry-run");
-  // Ensure tags + releases only; never publish. For a local backfill where npm OIDC isn't available and
-  // publishing must stay in CI. Releases are ensured for versions already on npm.
-  const releasesOnly = process.argv.includes("--releases-only");
+  const { dryRun, releasesOnly } = getRunMode(process.argv);
   const { rootDir, packages } = await loadWorkspacePackages();
   const ctx: ReleaseContext = {
     repo: process.env.GITHUB_REPOSITORY ?? DEFAULT_REPO,
@@ -366,7 +452,7 @@ async function main(): Promise<void> {
   const { toPublish, skipped } = planPublish(ordered, isVersionOnNpm);
 
   // Diagnostics on stderr; stdout stays clean.
-  for (const pkg of skipped) console.error(`• on npm: ${tagFor(pkg)}`);
+  logSkippedOnNpm(skipped);
 
   if (dryRun) {
     printDryRunPlan(toPublish, skipped, ctx);
@@ -374,24 +460,11 @@ async function main(): Promise<void> {
   }
 
   // 1. Publish versions not yet on npm (unless releases-only).
-  const { published, failedPublish } = releasesOnly
-    ? { published: [], failedPublish: [] }
-    : publishPending(toPublish, rootDir);
+  const { published, failedPublish } = publishSelection(releasesOnly, toPublish, rootDir);
 
   // 2. Ensure a tag + GitHub release for every version now on npm (freshly published or already there).
   const { created, failedRelease } = ensureReleases([...skipped, ...published], ctx);
-
-  console.error(
-    `\ndone: published ${published.length}, releases created ${created}, ` +
-      `already released ${skipped.length + published.length - created - failedRelease.length}.`,
-  );
-
-  if (failedPublish.length > 0 || failedRelease.length > 0) {
-    for (const pkg of failedPublish) console.error(`  publish failed: ${tagFor(pkg)}`);
-    for (const pkg of failedRelease) console.error(`  release failed: ${tagFor(pkg)}`);
-    // Non-zero exit surfaces the failures; a re-run retries only what's still missing (idempotent).
-    process.exitCode = 1;
-  }
+  finishRun(published, skipped, created, failedPublish, failedRelease);
 }
 
 runAsMain(import.meta.url, main);
