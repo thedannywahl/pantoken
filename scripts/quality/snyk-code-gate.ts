@@ -36,14 +36,7 @@ interface SarifResult {
  * git remote it can detect, which isn't available in a git worktree where the pre-push gate runs — so
  * acceptances live here, in-repo and reviewable, and work in every environment.
  */
-const ACCEPTED: { rule: string; path: string; reason: string }[] = [
-  {
-    rule: "javascript/NoRateLimitingForExpensiveWebOperation",
-    path: "plugins/vite/workspace-orchestrator/src/file-server.ts",
-    reason:
-      "Dev-server Vite middleware (localhost, no untrusted traffic); rate limiting a dev static-file server is inappropriate. Path traversal is contained.",
-  },
-];
+const ACCEPTED: { rule: string; path: string; reason: string }[] = [];
 
 /** A finding's location as `path:line`, or `?` when absent. */
 function locationOf(result: SarifResult): string {
