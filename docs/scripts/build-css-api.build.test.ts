@@ -8,6 +8,8 @@ import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 const readFileSync = vi.fn<(p: string) => string>();
 const readdirSync = vi.fn<(p: string) => string[]>();
 const writeFileSync = vi.fn<(p: string, data: string) => void>();
+const makeResolver = vi.fn<() => (value: string) => string>();
+const unknownReferences = vi.fn<(css: string) => string[]>();
 interface EmitOpts {
   outSubdir: string;
   label: string;
@@ -19,6 +21,10 @@ const parseCssDocs = vi.fn<() => unknown[]>();
 vi.mock("node:fs", () => ({ readFileSync, readdirSync, writeFileSync }));
 vi.mock("@cssdoc/typedoc", () => ({ emitCssApi }));
 vi.mock("@cssdoc/core", () => ({ parseCssDocs }));
+vi.mock("@pantoken/tokens", () => ({
+  tokens: [{ name: "--instui-ok", value: "#000", syntax: "<color>", inherits: true }],
+}));
+vi.mock("@pantoken/utils", () => ({ makeResolver, unknownReferences }));
 vi.mock("@cssdoc/config", () => ({
   CssDocConfigFile: { loadForFolder: () => ({ toConfiguration: () => ({}) }) },
 }));
@@ -33,6 +39,12 @@ beforeEach(() => {
   readdirSync.mockReturnValue([]); // component source dirs are empty
   emitCssApi.mockReturnValue({ entries: [], sidebarMerged: true });
   parseCssDocs.mockReturnValue([]);
+  makeResolver.mockReturnValue((value: string) => value);
+  unknownReferences.mockImplementation((css: string) =>
+    [...css.matchAll(/var\((--[\w-]+)\)/gu)]
+      .map((m) => m[1])
+      .filter((name) => name !== "--instui-ok"),
+  );
   logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
 });
 
