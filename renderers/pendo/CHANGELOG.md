@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [2f21a66]
+  - @pantoken/plugin-prune-custom-props@0.1.3
+
 ## 0.1.9
 
 ### Patch Changes
