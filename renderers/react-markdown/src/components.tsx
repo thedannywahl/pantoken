@@ -205,7 +205,11 @@ export function createInstuiMarkdownComponents(
         {children}
       </View>
     ),
-    img: ({ ...props }) => <Img src={str(props.src) ?? ""} alt={str(props.alt) ?? ""} />,
+    img: ({ ...props }) => {
+      const src = str(props.src);
+      if (!src) return null;
+      return <Img src={src} alt={str(props.alt)} />;
+    },
     hr: () => <View as="hr" display="block" margin="medium 0" />,
     table: ({ children }) => (
       <Table caption={caption} layout="auto">
