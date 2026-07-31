@@ -114,5 +114,35 @@
     "maxCyclomatic": 20,
     "maxCognitive": 15,
     "maxCrap": 30
-  }
+  },
+
+  "overrides": [
+    {
+      // pfx-* classes are the build-time sentinel (SENTINEL = "pfx-"), replaced at emit with the
+      // configured prefix; fallow cannot see the generated output or external consumers.
+      "files": [
+        "formats/components/src/components/**/*.css",
+        "formats/components/src/utilities/**/*.css"
+      ],
+      "rules": { "css-dead-surface": "off" }
+    },
+    {
+      // VitePress runtime applies VP* / vp-* / is-home / tagline classes via its own Vue components
+      // and markdown rendering — none are in the in-project JS/TS/HTML that fallow scans.
+      // pantoken-swatch* and pantoken-token-preview are applied from docs markdown content.
+      "files": ["docs/.vitepress/theme/pantoken.css"],
+      "rules": { "css-dead-surface": "off" }
+    },
+    {
+      // Shadow DOM element classes (trigger, dropdown, layout, handle) are applied from TS template
+      // strings inside shadow roots — not external markup fallow can reach.
+      "files": ["renderers/web-components/src/elements/**/*.css"],
+      "rules": { "css-dead-surface": "off" }
+    },
+    {
+      // runner__* classes are injected by the demo runner's HTML template at runtime.
+      "files": ["tools/demo/runner/runner.css"],
+      "rules": { "css-dead-surface": "off" }
+    }
+  ]
 }
