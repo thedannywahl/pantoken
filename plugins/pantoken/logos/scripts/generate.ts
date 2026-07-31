@@ -12,6 +12,8 @@
  *
  * SVGs are small, so they're inlined as data URIs — the stylesheet is self-contained and the tokens
  * work anywhere `var()` does (`background-image`, `mask`, `content`).
+ *
+ * @module
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -20,20 +22,38 @@ const root = resolve(import.meta.dirname, "..");
 const logosDir = join(root, "assets/logos");
 const outDir = join(root, "generated");
 
-const PRODUCTS = ["canvas", "igniteai", "instructure", "learnplatform", "mastery", "parchment"];
+/** Instructure products that ship logo assets. */
+export const PRODUCTS: string[] = [
+  "canvas",
+  "igniteai",
+  "instructure",
+  "learnplatform",
+  "mastery",
+  "parchment",
+];
 // Longest-first so `icon-single-dot` matches before `icon`.
-const LAYOUTS = ["icon-single-dot", "icon-three-dot", "horizontal", "stacked", "icon"];
-const COLOR_MODES = [
+/** Recognised logo layout names, ordered longest-first so multi-word layouts win over `icon`. */
+export const LAYOUTS: string[] = [
+  "icon-single-dot",
+  "icon-three-dot",
+  "horizontal",
+  "stacked",
+  "icon",
+];
+/** Recognised color-treatment names for logo assets. */
+export const COLOR_MODES: string[] = [
   "full-color-reversed",
   "full-color-bg",
   "full-color",
   "reversed-bg",
   "reversed",
+  "current-color",
   "color",
   "dark",
   "light",
 ];
 
+/** Script-local logo metadata; mirrors {@link LogoMeta} in `src/index.ts`. */
 interface LogoMeta {
   product: string;
   layout: string;
@@ -42,8 +62,15 @@ interface LogoMeta {
   path: string;
 }
 
-/** Parse `<layout>-<mode>` (filename without extension) into layout + colorMode. */
-function parseStem(stem: string): { layout: string; colorMode: string } | undefined {
+/**
+ * Parse a logo filename stem (`<layout>-<mode>`, without the `.svg` extension) into its layout and
+ * color-mode components.
+ *
+ * @param stem - The filename stem to parse, e.g. `"horizontal-color"` or `"icon-current-color"`.
+ * @returns The parsed `{ layout, colorMode }` pair, or `undefined` if the stem does not match any
+ *   known layout + mode combination.
+ */
+export function parseStem(stem: string): { layout: string; colorMode: string } | undefined {
   for (const layout of LAYOUTS) {
     if (stem.startsWith(`${layout}-`)) {
       const mode = stem.slice(layout.length + 1);
@@ -79,7 +106,13 @@ for (const product of PRODUCTS) {
 }
 logos.sort((a, b) => a.name.localeCompare(b.name));
 
-const dataUri = (svg: string): string =>
+/**
+ * Encode a raw SVG string as a `data:image/svg+xml;base64,…` data URI.
+ *
+ * @param svg - The raw SVG markup to encode.
+ * @returns The data URI string, suitable for `url()` in CSS or `src` in HTML.
+ */
+export const dataUri = (svg: string): string =>
   `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
 
 // One `url(data:…)` per logo, encoded once and reused by both the `:root` block and the `@property`
