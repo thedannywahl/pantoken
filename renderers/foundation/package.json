@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@pantoken/components": "workspace:*",
+    "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
