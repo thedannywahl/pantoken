@@ -20,7 +20,6 @@ export interface StringSource {
 
 /** Extract the `packages:` glob list from a `pnpm-workspace.yaml` string. */
 function parseWorkspaceGlobs(yaml: string): string[] {
-  // fallow-ignore complexity
   const globs: string[] = [];
   let inPackages = false;
   for (const line of yaml.split("\n")) {
@@ -56,7 +55,6 @@ function expandGlob(monoRoot: string, glob: string): string[] {
  * Results are sorted by package name for deterministic key ordering.
  */
 export function discoverStringSources(monoRoot: string): StringSource[] {
-  // fallow-ignore complexity
   const yaml = readFileSync(join(monoRoot, "pnpm-workspace.yaml"), "utf8");
   const globs = parseWorkspaceGlobs(yaml);
   const sources: StringSource[] = [];

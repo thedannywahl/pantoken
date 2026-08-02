@@ -71,7 +71,6 @@ export class AiTranslationAdapter implements TranslationAdapter {
   }
 
   async translateBatch(
-    // fallow-ignore complexity
     items: readonly { id: string; text: string }[],
     locale: string,
     localeLabel: string,
