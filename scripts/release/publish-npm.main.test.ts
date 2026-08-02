@@ -9,22 +9,16 @@ interface SpawnResult {
 
 const spawnSync = vi.fn<(...args: unknown[]) => SpawnResult>();
 const readFileSync = vi.fn<(...args: unknown[]) => string>();
-const appendFileSync = vi.fn();
 const existsSync = vi.fn<(...args: unknown[]) => boolean>();
 const mkdirSync = vi.fn();
 const writeFileSync = vi.fn();
-const mkdtempSync = vi.fn<() => string>(() => "/tmp/release-notes-x");
-const rmSync = vi.fn();
 const loadWorkspacePackages = vi.fn();
 
 vi.mock("node:child_process", () => ({ spawnSync }));
 vi.mock("node:fs", () => ({
-  appendFileSync,
   existsSync,
   mkdirSync,
-  mkdtempSync,
   readFileSync,
-  rmSync,
   writeFileSync,
 }));
 vi.mock("./workspace-packages.ts", async (importActual) => {
@@ -81,28 +75,6 @@ function router(overrides: Partial<Record<string, SpawnResult>> = {}) {
   };
 }
 
-function uploadFailureRouter(packJson: string): (...spawnArgs: unknown[]) => SpawnResult {
-  const overrides: Record<string, SpawnResult> = {
-    "npm view": NOT_FOUND_RESULT,
-    "npm pack": { status: 0, stdout: packJson, stderr: "" },
-    "npm publish": OK_RESULT,
-    "git rev-parse": { status: 0, stdout: "deadbeef\n", stderr: "" },
-  };
-  const ghOverrides: Record<string, SpawnResult> = {
-    "gh release view": NOT_FOUND_RESULT,
-    "gh release create": OK_RESULT,
-    "gh release upload": { status: 1, stdout: "", stderr: "upload error" },
-  };
-  return (...spawnArgs: unknown[]): SpawnResult => {
-    const cmd = spawnArgs[0] as string;
-    const args = spawnArgs[1] as string[];
-    const ghOverride = ghOverrides[ghReleaseKey(cmd, args)];
-    if (ghOverride) return ghOverride;
-    const key = routeKey(cmd, args[0] ?? "");
-    return overrides[key] ?? OK_RESULT;
-  };
-}
-
 let _logSpy: ReturnType<typeof vi.spyOn>;
 let errSpy: ReturnType<typeof vi.spyOn>;
 let savedArgv: string[];
@@ -113,7 +85,6 @@ beforeEach(() => {
   vi.resetModules();
   vi.clearAllMocks();
   existsSync.mockReturnValue(true);
-  mkdtempSync.mockReturnValue("/tmp/release-notes-x");
   readFileSync.mockReturnValue("## 0.2.0\n\n- note\n");
   loadWorkspacePackages.mockResolvedValue({
     rootDir: "/ws",
@@ -152,7 +123,7 @@ test("--dry-run reports the plan and touches nothing (no publish/release spawned
   expect(spawned).not.toContain("npm publish");
 });
 
-test("normal run publishes pending versions and creates their releases", async () => {
+test("normal run publishes pending versions and prepares the release manifest", async () => {
   spawnSync.mockImplementation(router());
   process.argv = ["node", MODULE_PATH];
 
@@ -165,8 +136,10 @@ test("normal run publishes pending versions and creates their releases", async (
     `${String(c[0])} ${(c[1] as string[])[0]} ${(c[1] as string[])[1] ?? ""}`.trim(),
   );
   expect(spawned).toContain("npm publish --provenance");
-  expect(spawned.some((s) => s.startsWith("gh release create"))).toBe(true);
-  expect(writeFileSync).toHaveBeenCalled(); // release notes written to a temp file
+  // Script no longer creates GH releases directly; that happens in the workflow after attestation.
+  expect(spawned.some((s) => s.startsWith("gh release create"))).toBe(false);
+  // Release notes and manifest written so the workflow can create releases with all assets.
+  expect(writeFileSync).toHaveBeenCalled();
   expect(process.exitCode).toBeUndefined();
 });
 
@@ -184,8 +157,8 @@ test("a failed publish continues past the failure and exits non-zero", async () 
   );
 });
 
-test("--releases-only skips publishing and ensures releases for versions already on npm", async () => {
-  // Everything already on npm → nothing to publish; releases ensured for the skipped set.
+test("--releases-only skips publishing and prepares manifest for versions already on npm", async () => {
+  // Everything already on npm → nothing to publish; manifest prepared for the skipped set.
   spawnSync.mockImplementation(
     router({ "npm view": { status: 0, stdout: "0.2.0\n", stderr: "" } }),
   );
@@ -198,11 +171,12 @@ test("--releases-only skips publishing and ensures releases for versions already
 
   const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
   expect(spawned).not.toContain("npm publish"); // releases-only never publishes
-  expect(spawned.some((s) => s.startsWith("gh release"))).toBe(true);
+  // Script writes manifest; workflow creates the actual GH releases.
+  expect(spawned.some((s) => s.startsWith("gh release create"))).toBe(false);
+  expect(writeFileSync).toHaveBeenCalled();
 });
 
-test("existing releases are skipped and GITHUB_SHA is used as the tag target", async () => {
-  process.env.GITHUB_SHA = "cafebabe";
+test("existing releases are skipped (versionReleased guard is idempotent)", async () => {
   spawnSync.mockImplementation(
     router({
       "npm view": { status: 0, stdout: "0.2.0\n", stderr: "" }, // on npm → skipped set
@@ -216,17 +190,15 @@ test("existing releases are skipped and GITHUB_SHA is used as the tag target", a
     expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
   );
 
-  // GITHUB_SHA short-circuits resolveSha → no `git rev-parse`.
-  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
-  expect(spawned).not.toContain("git rev-parse");
-  // Release already exists → gh release create is never called.
-  const createdArgs = spawnSync.mock.calls.find(
-    (c) => c[0] === "gh" && (c[1] as string[])[1] === "create",
+  // All releases already exist → nothing prepared → no manifest written.
+  const manifestWritten = writeFileSync.mock.calls.some((c: unknown[]) =>
+    String(c[0]).includes("pantoken-releases.json"),
   );
-  expect(createdArgs).toBeUndefined();
+  expect(manifestWritten).toBe(false);
+  expect(process.exitCode).toBeUndefined();
 });
 
-test("ensureRelease packs + uploads the tgz and records the tag when npm pack succeeds", async () => {
+test("prepareRelease packs the tgz and writes a manifest entry when npm pack succeeds", async () => {
   const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
   spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
   process.argv = ["node", MODULE_PATH];
@@ -239,14 +211,19 @@ test("ensureRelease packs + uploads the tgz and records the tag when npm pack su
   const spawned = spawnSync.mock.calls.map((c) =>
     `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
   );
-  // packAndUpload: calls mv to move the tgz, then gh release upload
+  // packForManifest: calls mv to move the tgz to the shared packs dir
   expect(spawned.some((s) => s.startsWith("mv"))).toBe(true);
-  expect(spawned.some((s) => s === "gh release")).toBe(true);
-  // recordRelease: appends the release tag to the tracking file
-  expect(appendFileSync).toHaveBeenCalled();
+  // writeReleaseManifest writes the JSON manifest (not appendFileSync/tags file)
+  const manifestCall = writeFileSync.mock.calls.find((c: unknown[]) =>
+    String(c[0]).includes("pantoken-releases.json"),
+  );
+  expect(manifestCall).toBeDefined();
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed for"))).toBe(
+    false,
+  );
 });
 
-test("ensureRelease accepts npm 12 object output from npm pack --json", async () => {
+test("prepareRelease accepts npm 12 object output from npm pack --json", async () => {
   const packJson = JSON.stringify({
     "@pantoken/css": { filename: "pantoken-css-0.2.0.tgz" },
   });
@@ -262,7 +239,10 @@ test("ensureRelease accepts npm 12 object output from npm pack --json", async ()
     `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
   );
   expect(spawned.some((s) => s.startsWith("mv"))).toBe(true);
-  expect(appendFileSync).toHaveBeenCalled();
+  const manifestCall = writeFileSync.mock.calls.find((c: unknown[]) =>
+    String(c[0]).includes("pantoken-releases.json"),
+  );
+  expect(manifestCall).toBeDefined();
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed for"))).toBe(
     false,
   );
@@ -277,14 +257,14 @@ test("npmPackFilename returns null when npm pack exits non-zero", async () => {
   await import("./publish-npm.ts");
   await vi.waitFor(() => expect(process.exitCode).toBe(1));
 
-  // packAndUpload bails out early — pack failed → no mv or upload
+  // packForManifest bails out early — pack failed → no mv
   const spawned = spawnSync.mock.calls.map((c) =>
     `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
   );
   expect(spawned.some((s) => s.startsWith("mv"))).toBe(false);
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
   expect(
-    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to create release")),
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
   ).toBe(true);
 });
 
@@ -297,16 +277,16 @@ test("npmPackFilename returns null when npm pack stdout is invalid JSON", async 
   await import("./publish-npm.ts");
   await vi.waitFor(() => expect(process.exitCode).toBe(1));
 
-  // JSON.parse throws → packAndUpload gets null → logs "pack failed"
+  // JSON.parse throws → packForManifest gets null → logs "pack failed"
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
   expect(
-    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to create release")),
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
   ).toBe(true);
 });
 
-test("packAndUpload logs error when gh release upload fails", async () => {
+test("prepareRelease writes manifest JSON containing the tarball path", async () => {
   const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
-  spawnSync.mockImplementation(uploadFailureRouter(packJson));
+  spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
@@ -314,9 +294,17 @@ test("packAndUpload logs error when gh release upload fails", async () => {
     expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
   );
 
+  const manifestCall = writeFileSync.mock.calls.find((c: unknown[]) =>
+    String(c[0]).includes("pantoken-releases.json"),
+  );
+  expect(manifestCall).toBeDefined();
+  const manifest = JSON.parse(String(manifestCall![1])) as { tarball: string }[];
+  expect(manifest.length).toBeGreaterThan(0);
+  expect(manifest[0].tarball).toContain("pantoken-css-0.2.0.tgz");
+  // No upload errors logged (upload no longer happens in the script)
   expect(
     errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("tarball upload failed")),
-  ).toBe(true);
+  ).toBe(false);
 });
 
 test("releaseNotes falls back to minimal message when CHANGELOG.md is missing", async () => {
@@ -333,22 +321,24 @@ test("releaseNotes falls back to minimal message when CHANGELOG.md is missing", 
     expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
   );
 
-  // Release notes fell back to "Release <tag>." — release still created
-  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
-  expect(spawned.some((s) => s.startsWith("gh release"))).toBe(true);
+  // Notes fell back to "Release <tag>." — release manifest still prepared
+  const manifestWritten = writeFileSync.mock.calls.some((c: unknown[]) =>
+    String(c[0]).includes("pantoken-releases.json"),
+  );
+  expect(manifestWritten).toBe(true);
 });
 
-test("a failed release create continues past the failure and exits non-zero", async () => {
-  spawnSync.mockImplementation(
-    router({ "gh release": { status: 1, stdout: "", stderr: "release create boom" } }),
-  );
+test("a failed tarball move causes release prepare to fail and exits non-zero", async () => {
+  // existsSync returning false after mv simulates a failed move (mv exits 0 but file not present).
+  existsSync.mockReturnValue(false);
+  spawnSync.mockImplementation(router());
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
   await vi.waitFor(() => expect(process.exitCode).toBe(1));
 
   expect(
-    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to create release")),
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
   ).toBe(true);
 });
 

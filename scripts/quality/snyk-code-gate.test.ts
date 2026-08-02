@@ -139,9 +139,11 @@ test("checkEarlyExit returns exit code 0 on spawn error", () => {
 });
 
 test("checkResults returns exit code 0 when no blocking findings", () => {
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
   const results = [{ level: "note", ruleId: "rule1", locations: [] }];
   const exit = checkResults(results);
   expect(exit?.code).toBe(0);
+  warnSpy.mockRestore();
 });
 
 test("checkResults returns exit code 1 when blocking findings present", () => {
