@@ -15,7 +15,7 @@ import { discoverStringSources } from "./discover-sources.ts";
 /**
  * Content-addressed cache key for an English source string.
  * Lives here (not in translation-memory.ts) so check-bundle-drift can import it
- * without requiring @pantoken/translation-adapters to be built.
+ * without requiring the translation-adapters package to be built.
  */
 export function keyFor(stringKey: string, englishValue: string): string {
   return createHash("sha256").update(`wc\0${stringKey}\0${englishValue}`).digest("hex");

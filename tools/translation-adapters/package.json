@@ -4,6 +4,10 @@
   "private": true,
   "description": "Shared AI-adapter primitives (spawn helper + JSON extractor) used by the docs and i18n translation pipelines.",
   "license": "MIT",
+  "files": [
+    "dist",
+    "agy-wrapper.sh"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
