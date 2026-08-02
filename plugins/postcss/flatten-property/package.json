@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-flatten-property",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "pantoken plugin: a PostCSS plugin that converts @property at-rules to plain custom-property declarations.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
