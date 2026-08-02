@@ -51,11 +51,11 @@ function expandGlob(monoRoot: string, glob: string): string[] {
     .map((e) => join(parentDir, e.name));
 }
 
+// fallow-ignore-next-line complexity
 /**
  * Walk the monorepo and return all packages that ship a `src/i18n.json`.
  * Results are sorted by package name for deterministic key ordering.
  */
-// fallow-ignore-next-line complexity
 export function discoverStringSources(monoRoot: string): StringSource[] {
   const yaml = readFileSync(join(monoRoot, "pnpm-workspace.yaml"), "utf8");
   const globs = parseWorkspaceGlobs(yaml);
