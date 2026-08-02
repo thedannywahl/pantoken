@@ -19,6 +19,7 @@
   ],
   "exports": {
     ".": "./dist/index.mjs",
+    "./i18n.json": "./src/i18n.json",
     "./components.css": "./dist/components.css",
     "./*.css": "./dist/*.css",
     "./package.json": "./package.json"

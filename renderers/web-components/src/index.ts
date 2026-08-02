@@ -39,6 +39,12 @@ import type { IconResolver } from "@pantoken/model";
 import { DEFINITIONS } from "./elements/index.ts";
 import type { CommandEventish, ElementRegistry, RegisterContext } from "./lib/context.ts";
 import { applySpacing, frag, SPACING_ATTRS } from "./lib/helpers.ts";
+import {
+  ENGLISH_STRINGS,
+  makeStrings,
+  resolveFirstDay,
+  type WebComponentStrings,
+} from "./lib/strings.ts";
 
 // ── Public types ──────────────────────────────────────────────────────────────
 export type {
@@ -47,6 +53,8 @@ export type {
   ElementRegistry,
   RegisterContext,
 } from "./lib/context.ts";
+export type { WebComponentStrings } from "./lib/strings.ts";
+export { ENGLISH_STRINGS, makeStrings, resolveFirstDay } from "./lib/strings.ts";
 
 // ── Element definitions ─────────────────────────────────────────────────────────
 export { DEFINITIONS } from "./elements/index.ts";
@@ -386,11 +394,18 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
  * register(); // <instui-button>, <instui-icon>, …
  * register(customElements, { prefix: "x" }); // <x-button>, <x-icon>, …
  * register(customElements, { only: ["button", "alert"] }); // just those two
+ * register(customElements, { locale: "hu", strings: { back: "Vissza" } }); // localized
  * ```
  */
 export function register(
   target: ElementRegistry | undefined = globalThis.customElements,
-  options: { prefix?: string | null; only?: readonly string[] } = {},
+  options: {
+    prefix?: string | null;
+    only?: readonly string[];
+    locale?: string;
+    strings?: Partial<WebComponentStrings>;
+    dir?: "ltr" | "rtl";
+  } = {},
 ): void {
   if (!target || typeof HTMLElement === "undefined") return;
 
@@ -421,6 +436,15 @@ export function register(
   const onCommand = makeOnCommand(INVOKER_SUPPORTED);
   const wrapper = makeWrapper(registry);
 
+  const locale = options.locale ?? "en";
+  const dir = options.dir ?? "ltr";
+  const strings = options.strings
+    ? makeStrings(locale, options.strings)
+    : locale === "en"
+      ? ENGLISH_STRINGS
+      : makeStrings(locale);
+  const firstDay = resolveFirstDay(locale);
+
   const ctx: RegisterContext = {
     registry,
     tag,
@@ -430,6 +454,10 @@ export function register(
     wrapper,
     variantClass,
     iconSvg,
+    locale,
+    dir,
+    firstDay,
+    strings,
   };
 
   for (const def of DEFINITIONS) {

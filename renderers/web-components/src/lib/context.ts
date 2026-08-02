@@ -5,6 +5,7 @@
  *
  * @module
  */
+import type { WebComponentStrings } from "./strings.ts";
 
 /** A minimal structural type for a custom-element registry (the DOM's `customElements`). */
 export interface ElementRegistry {
@@ -21,8 +22,8 @@ export interface CommandEventish extends Event {
 /**
  * The shared state a `register()` call builds once and threads to every {@link ElementDefinition}.
  * It carries the prefix-aware registry adapter, the `tag()` helper for nested markup, the CSS-class
- * prefix `I`, the Invoker Commands support flag + router, and the `wrapper`/`variantClass`/`iconSvg`
- * factories the simple elements share.
+ * prefix `I`, the Invoker Commands support flag + router, the `wrapper`/`variantClass`/`iconSvg`
+ * factories, and locale data (`strings`, `locale`, `dir`, `firstDay`).
  */
 export interface RegisterContext {
   /** The scoped registry: rewrites `instui-<base>` → the active-prefix tag on `get`/`define`. */
@@ -50,6 +51,14 @@ export interface RegisterContext {
   variantClass: (name: string, host: HTMLElement) => string;
   /** Resolve an icon name to inline SVG (empty string when unknown). */
   iconSvg: (name: string) => string;
+  /** BCP47 locale tag used for `toLocaleDateString` and `Intl` formatting. */
+  locale: string;
+  /** Text direction derived from the active locale bundle. */
+  dir: "ltr" | "rtl";
+  /** First day of week as JS `Date.getDay()` index (0=Sunday … 6=Saturday). */
+  firstDay: number;
+  /** Translated UI strings for all behavioral elements. */
+  strings: WebComponentStrings;
 }
 
 /** One registered custom element: its base tag name plus a `define` that registers it via the context. */

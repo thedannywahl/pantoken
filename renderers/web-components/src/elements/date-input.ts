@@ -36,13 +36,13 @@ export const dateInput: ElementDefinition = {
           const root = this.shadowRoot;
           if (!root || root.querySelector(".field")) return;
           const value = esc(this.getAttribute("value") ?? "");
-          const label = esc(this.getAttribute("label") ?? "Date");
-          const placeholder = esc(this.getAttribute("placeholder") ?? "yyyy-mm-dd");
+          const label = esc(this.getAttribute("label") ?? ctx.strings.dateLabel);
+          const placeholder = esc(this.getAttribute("placeholder") ?? ctx.strings.datePlaceholder);
           root.innerHTML =
             `<style>${textInputCss(ctx.I)}${buttonCss(ctx.I)}${dateInputCss}</style>` +
             `<div class="field">` +
-            `<input class="instui-text-input" type="text" part="input" aria-label="${label}" placeholder="${placeholder}" value="${value}" />` +
-            `<button type="button" class="instui-button -color-tertiary -shape-square trigger" command="toggle-popover" commandfor="datepop" aria-label="Open calendar">${ctx.iconSvg("calendar")}</button>` +
+            `<input class="instui-text-input" type="text" part="input" aria-label="${label}" placeholder="${placeholder}" value="${value}" dir="ltr" />` +
+            `<button type="button" class="instui-button -color-tertiary -shape-square trigger" command="toggle-popover" commandfor="datepop" aria-label="${esc(ctx.strings.openCalendar)}">${ctx.iconSvg("calendar")}</button>` +
             `</div>` +
             `<div popover id="datepop" class="dropdown" part="dropdown"><${ctx.tag("calendar")} value="${value}"></${ctx.tag("calendar")}></div>`;
           this.#input = root.querySelector("input");

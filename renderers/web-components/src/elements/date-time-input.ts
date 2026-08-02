@@ -36,7 +36,7 @@ export const dateTimeInput: ElementDefinition = {
             `<style>${textInputCss(ctx.I)}${dateTimeInputCss}</style>` +
             `<div class="dt">` +
             `<${ctx.tag("date-input")} value="${esc(datePart)}"></${ctx.tag("date-input")}>` +
-            `<input class="instui-text-input" type="time" part="time" aria-label="Time" value="${esc(timePart)}" />` +
+            `<input class="instui-text-input" type="time" part="time" aria-label="${esc(ctx.strings.timeLabel)}" value="${esc(timePart)}" />` +
             `</div>`;
           this.#date = root.querySelector(ctx.tag("date-input"));
           this.#time = root.querySelector('input[type="time"]');

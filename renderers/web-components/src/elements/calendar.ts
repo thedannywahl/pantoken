@@ -1,7 +1,7 @@
 import { buttonCss, calendarCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
 import calendarReset from "./calendar.css?inline";
-import { WEEKDAYS, esc, isoDate, parseIsoDate } from "../lib/helpers.ts";
+import { esc, isoDate, parseIsoDate } from "../lib/helpers.ts";
 
 /**
  * `<instui-calendar>` — an interactive month grid. `value` (`yyyy-mm-dd`) is the selected day and
@@ -59,10 +59,10 @@ export const calendar: ElementDefinition = {
             parseIsoDate(this.getAttribute("view") ?? "") ?? parseIsoDate(selected) ?? new Date();
           const year = view.getFullYear();
           const month = view.getMonth();
-          const label = view.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+          const label = view.toLocaleDateString(ctx.locale, { month: "long", year: "numeric" });
           const today = isoDate(new Date());
-          // Leading days of the previous month, this month, then trailing days to fill the last week.
-          const lead = new Date(year, month, 1).getDay();
+          // Leading blank cells: offset from the locale's first-day-of-week.
+          const lead = (new Date(year, month, 1).getDay() - ctx.firstDay + 7) % 7;
           const total = new Date(year, month + 1, 0).getDate();
           const cells: Date[] = [];
           for (let i = 0; i < lead; i++) cells.push(new Date(year, month, 1 - (lead - i)));
@@ -79,14 +79,16 @@ export const calendar: ElementDefinition = {
               return `<button type="button" class="${classes.join(" ")}" data-value="${iso}" command="--calendar-select" commandfor="cal"${current}>${String(date.getDate())}</button>`;
             })
             .join("");
-          const weekdays = WEEKDAYS.map((w) => `<span class="weekday">${w}</span>`).join("");
+          const weekdays = ctx.strings.weekdays
+            .map((w) => `<span class="weekday">${w}</span>`)
+            .join("");
           root.innerHTML =
             `<style>:host{display:inline-block}${calendarCss(ctx.I)}${buttonCss(ctx.I)}${calendarReset}</style>` +
             `<div class="instui-calendar" id="cal" role="group" aria-label="${esc(label)}" part="calendar">` +
             `<div class="nav">` +
-            `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-prev" commandfor="cal" aria-label="Previous month">${ctx.iconSvg("chevron-left")}</button>` +
+            `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-prev" commandfor="cal" aria-label="${esc(ctx.strings.prevMonth)}">${ctx.iconSvg(ctx.dir === "rtl" ? "chevron-right" : "chevron-left")}</button>` +
             `<strong>${esc(label)}</strong>` +
-            `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-next" commandfor="cal" aria-label="Next month">${ctx.iconSvg("chevron-right")}</button>` +
+            `<button type="button" class="instui-button -color-tertiary -shape-square -without-border" command="--calendar-next" commandfor="cal" aria-label="${esc(ctx.strings.nextMonth)}">${ctx.iconSvg(ctx.dir === "rtl" ? "chevron-left" : "chevron-right")}</button>` +
             `</div>` +
             `<div class="grid">${weekdays}${dayHtml}</div>` +
             `</div>`;
