@@ -1,0 +1,50 @@
+{
+  "name": "@pantoken/plugin-props-minify",
+  "version": "0.1.0",
+  "description": "pantoken plugin: compose prune, flatten, and mangle transforms for --instui-* custom properties via a single applyMinify utility.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/postcss/props-minify"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@pantoken/plugin-flatten-property": "workspace:*",
+    "@pantoken/plugin-mangle-custom-props": "workspace:*",
+    "@pantoken/plugin-prune-custom-props": "workspace:*",
+    "postcss": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "propsMinify",
+    "kind": "namespace"
+  }
+}
