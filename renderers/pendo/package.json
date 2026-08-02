@@ -37,7 +37,7 @@
     "@pantoken/components": "workspace:*",
     "@pantoken/css": "workspace:*",
     "@pantoken/model": "workspace:*",
-    "@pantoken/plugin-prune-custom-props": "workspace:*",
+    "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "postcss": "catalog:"
   },

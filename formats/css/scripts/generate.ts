@@ -6,6 +6,7 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { applyMinify } from "@pantoken/plugin-props-minify";
 import { css, leanCss } from "../src/index.ts";
 
 const dir = resolve(import.meta.dirname, "../generated");
@@ -17,5 +18,5 @@ const write = (name: string, contents: string): void => {
   console.log(`✓ wrote ${out} (${contents.length} bytes)`);
 };
 
-write("style.css", css);
-write("style.lean.css", leanCss);
+write("style.css", applyMinify(css, { flatten: true }));
+write("style.lean.css", applyMinify(leanCss, { flatten: true }));

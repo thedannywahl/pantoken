@@ -211,6 +211,7 @@ export default defineConfig({
       },
       "changeset:add": {
         command: "vpx changeset",
+        cache: false,
       },
       "release:status": {
         command: "vpx changeset status --verbose",

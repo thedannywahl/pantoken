@@ -1,27 +1,22 @@
 {
-  "name": "@pantoken/css",
-  "version": "0.2.7",
-  "description": "Emit Instructure design tokens as @property-typed CSS with light-dark() and icon data-URIs, from the pantoken IR.",
+  "name": "@pantoken/plugin-props-minify",
+  "version": "0.1.0",
+  "description": "pantoken plugin: compose prune, flatten, and mangle transforms for --instui-* custom properties via a single applyMinify utility.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thedannywahl/pantoken.git",
-    "directory": "formats/css"
+    "directory": "plugins/postcss/props-minify"
   },
   "files": [
     "dist"
   ],
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./inject": "./dist/inject.mjs",
-    "./style.css": "./dist/style.css",
-    "./style.lean.css": "./dist/style.lean.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -29,19 +24,17 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
-    "dev": "vp run generate && vp pack --watch",
+    "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/model": "workspace:*",
-    "@pantoken/plugin-kit": "workspace:*",
-    "@pantoken/tokens": "workspace:*",
-    "@pantoken/utils": "workspace:*"
+    "@pantoken/plugin-flatten-property": "workspace:*",
+    "@pantoken/plugin-mangle-custom-props": "workspace:*",
+    "@pantoken/plugin-prune-custom-props": "workspace:*",
+    "postcss": "catalog:"
   },
   "devDependencies": {
-    "@pantoken/plugin-props-minify": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
@@ -51,7 +44,7 @@
     "node": ">=22.18.0"
   },
   "pantoken": {
-    "key": "css",
-    "kind": "sideEffect"
+    "key": "propsMinify",
+    "kind": "namespace"
   }
 }

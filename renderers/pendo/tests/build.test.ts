@@ -57,3 +57,16 @@ test("the composed stylesheet has no dangling --instui-* references (self-contai
   // manual extras, or the focus-outline layer). Shared drift check from @pantoken/utils.
   expect(danglingReferences(buildPendoCss())).toEqual([]);
 });
+
+test("flatten option converts @property at-rules to :scope declarations", () => {
+  const css = buildPendoCss({ flatten: true });
+  expect(css).not.toContain("@property --instui-");
+  // Flattened declarations land on :scope inside the @scope block.
+  expect(css).toContain(":scope");
+});
+
+test("mangle option renames --instui-* custom properties to short identifiers", () => {
+  const css = buildPendoCss({ mangle: true });
+  // After mangling, no long instui primitive names remain.
+  expect(css).not.toContain("--instui-primitive-");
+});

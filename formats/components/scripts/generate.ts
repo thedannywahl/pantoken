@@ -16,6 +16,7 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { applyMinify } from "@pantoken/plugin-props-minify";
 import { icons } from "@pantoken/icons";
 import { tokens } from "@pantoken/tokens";
 import { colorUtilitiesCss, tokenUtilitiesCss } from "@pantoken/utils";
@@ -107,8 +108,8 @@ const tokenGroups = [
 ];
 
 const componentsSheet = componentsCss(opts);
-writeFileSync(join(outDir, "base.css"), baseCss());
-writeFileSync(join(outDir, "components.css"), componentsSheet);
+writeFileSync(join(outDir, "base.css"), applyMinify(baseCss(), { flatten: true }));
+writeFileSync(join(outDir, "components.css"), applyMinify(componentsSheet, { flatten: true }));
 // component-icons.css: just the `--instui-icon-*` glyph tokens the component sheets actually reference
 // (a small subset of the full ~1,777-icon set). Auto-detected from the component CSS, valued from the
 // token IR. This lets per-component CDN delivery resolve its icons against the lean, icon-free token
@@ -141,9 +142,9 @@ mkdirSync(srcGenDir, { recursive: true });
 writeIfChanged(join(srcGenDir, "_records.css"), componentsCss({ prefix: "pfx" }));
 // Opt-in font loading — @font-face rules for the brand typeface, src → the shipped assets/fonts/.
 writeFileSync(join(outDir, "fonts.css"), fontsCss(resolve(import.meta.dirname, "../assets/fonts")));
-writeFileSync(join(outDir, "prose.css"), proseCss());
+writeFileSync(join(outDir, "prose.css"), applyMinify(proseCss(), { flatten: true }));
 // Opt-in EXPERIMENTAL customizable-select enhancement (@supports base-select) for .instui-simple-select.
-writeFileSync(join(outDir, "select.css"), selectCss(opts));
+writeFileSync(join(outDir, "select.css"), applyMinify(selectCss(opts), { flatten: true }));
 writeFileSync(
   join(outDir, "icons.css"),
   iconGlyphsCss(
