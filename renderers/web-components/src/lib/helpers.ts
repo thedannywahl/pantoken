@@ -12,9 +12,6 @@ export const esc = (value: string): string =>
 /** Sanitize an attribute value used as a class-name fragment (modifiers, sizes). */
 export const frag = (value: string | null): string => (value ?? "").replace(/[^a-z0-9-]/giu, "");
 
-/** Weekday column headers, Sunday-first. */
-export const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"] as const;
-
 /** Local-date ISO (`yyyy-mm-dd`) — sidesteps the UTC shift of `Date.prototype.toISOString`. */
 export const isoDate = (date: Date): string =>
   `${String(date.getFullYear())}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;

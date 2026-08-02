@@ -12,8 +12,11 @@
 import { register } from "@pantoken/web-components";
 import { createElement, useEffect, useState } from "react";
 import type { ReactNode } from "react";
+import type { LocaleBundle } from "@pantoken/i18n";
+import { registerLocalized } from "@pantoken/i18n";
 
 export { register } from "@pantoken/web-components";
+export { registerLocalized } from "@pantoken/i18n";
 
 /**
  * Read a resolved token value from the document. Returns `fallback` on the server.
@@ -75,6 +78,8 @@ export function Icon({ name, size, color }: IconProps): ReactNode {
 /** Props for {@link TokenProvider}. */
 export interface TokenProviderProps {
   children?: ReactNode;
+  /** BCP47 locale tag or a pre-built {@link LocaleBundle}. When set, uses `registerLocalized`. */
+  locale?: string | LocaleBundle;
 }
 
 /**
@@ -94,9 +99,10 @@ export interface TokenProviderProps {
  * }
  * ```
  */
-export function TokenProvider({ children }: TokenProviderProps): ReactNode {
+export function TokenProvider({ children, locale }: TokenProviderProps): ReactNode {
   useEffect(() => {
-    register();
+    if (locale) registerLocalized(locale);
+    else register();
   }, []);
   return children ?? null;
 }

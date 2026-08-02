@@ -3,7 +3,7 @@
  * for prose. The root (`docs/guide/*.md`) is the source; each locale gets a `docs/<locale>/guide/`
  * copy run through the configured adapter.
  *
- * Run with `DOCS_TRANSLATION_ADAPTER=claude-code` for real translations (shells out to `claude`);
+ * Run with `DOCS_TRANSLATION_ADAPTER=ai` for real translations (shells out to `claude`);
  * the default `glossary` adapter is a keyless, deterministic fallback. Fenced code blocks, inline
  * code, and package names are preserved by the adapter, so examples and identifiers stay intact.
  *

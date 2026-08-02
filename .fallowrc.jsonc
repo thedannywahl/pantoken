@@ -110,6 +110,7 @@
     // which reads `fallow health --format json` and fails CI when the aggregate score drops below A.
     // Vue SFC complexity is noisy in this repo because template-generated functions are analyzer-only
     // artifacts (not author-level abstractions), so we scope complexity checks to non-.vue sources.
+    // Build/translation scripts have zero test coverage, so CRAP scores are high by construction.
     "ignore": ["**/*.vue"],
     "maxCyclomatic": 20,
     "maxCognitive": 15,

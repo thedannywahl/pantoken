@@ -1,6 +1,7 @@
 import { menuCss } from "@pantoken/components";
 import type { ElementDefinition } from "../lib/context.ts";
 import drilldownExtra from "./drilldown.css?inline";
+import { esc } from "../lib/helpers.ts";
 
 /**
  * `<instui-drilldown>` — a stateful, multi-level menu over the menu styles. Each level is a light-DOM
@@ -96,7 +97,7 @@ export const drilldown: ElementDefinition = {
           const body = this.#pages().get(current) ?? "";
           const backRow =
             this.#stack.length > 1
-              ? `<div class="item -drilldown-back" role="menuitem" tabindex="0">${ctx.iconSvg("arrow-left")}<span>Back</span></div><div class="separator"></div>`
+              ? `<div class="item -drilldown-back" role="menuitem" tabindex="0">${ctx.iconSvg(ctx.dir === "rtl" ? "arrow-right" : "arrow-left")}<span>${esc(ctx.strings.back)}</span></div><div class="separator"></div>`
               : "";
           root.innerHTML =
             `<style>:host{display:inline-block}${menuCss(ctx.I)}${drilldownExtra}</style>` +

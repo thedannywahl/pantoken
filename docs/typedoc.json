@@ -82,6 +82,8 @@
   "excludeInternal": true,
   "excludePrivate": true,
   "externalSymbolLinkMappings": {
+    "@pantoken/i18n": { "LocaleBundle": "#" },
+    "@pantoken/web-components": { "makeStrings": "#" },
     "@voidzero-dev/vite-plus-core": { "Plugin": "https://vite.dev/guide/api-plugin" },
     "postcss": { "postcss.Plugin": "https://postcss.org/api/#plugin" }
   },

@@ -8,8 +8,11 @@
  * @experimental
  */
 import { register } from "@pantoken/web-components";
+import type { LocaleBundle } from "@pantoken/i18n";
+import { registerLocalized } from "@pantoken/i18n";
 
 export { register, iconSvg } from "@pantoken/web-components";
+export { registerLocalized } from "@pantoken/i18n";
 
 /**
  * Read a resolved token value. Returns `fallback` on the server.
@@ -32,7 +35,7 @@ interface VueAppLike {
 }
 
 /**
- * The pantoken Vue plugin: `app.use(PantokenVue)`.
+ * The pantoken Vue plugin: `app.use(PantokenVue)` or `app.use(PantokenVue, { locale: "hu" })`.
  *
  * @example
  * ```ts
@@ -41,14 +44,16 @@ interface VueAppLike {
  * import "@pantoken/css";
  *
  * createApp(App).use(PantokenVue).mount("#app");
+ * createApp(App).use(PantokenVue, { locale: "hu" }).mount("#app"); // localized
  * ```
  */
 export const PantokenVue = {
-  install(app: VueAppLike): void {
-    register();
-    const options = (app.config.compilerOptions ??= {});
-    const previous = options.isCustomElement;
-    options.isCustomElement = (tag: string): boolean =>
+  install(app: VueAppLike, options: { locale?: string | LocaleBundle } = {}): void {
+    if (options.locale) registerLocalized(options.locale);
+    else register();
+    const compilerOptions = (app.config.compilerOptions ??= {});
+    const previous = compilerOptions.isCustomElement;
+    compilerOptions.isCustomElement = (tag: string): boolean =>
       tag.startsWith("instui-") || (previous?.(tag) ?? false);
   },
 };

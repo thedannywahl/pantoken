@@ -1,0 +1,48 @@
+{
+  "name": "@pantoken/i18n",
+  "version": "0.0.0",
+  "description": "Canvas-parity locale bundles for @pantoken/web-components, with AI-powered translation tooling and drift detection.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "packages/i18n"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "generate": "node scripts/build-bundles.ts",
+    "translate": "I18N_TRANSLATION_ADAPTER=ai node scripts/translate-bundles.ts",
+    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate-bundles.ts",
+    "check:drift": "node scripts/check-bundle-drift.ts",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@pantoken/web-components": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/translation-adapters": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

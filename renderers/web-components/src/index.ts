@@ -1,35 +1,18 @@
 /**
  * `@pantoken/web-components` — framework-agnostic custom elements for Instructure UI.
  *
- * Registers `<instui-icon>` (glyphs from `@pantoken/icons`) plus a set of token-styled elements that
- * wrap the `@pantoken/components` CSS: `<instui-button>`, `<instui-alert>`, `<instui-badge>`,
- * `<instui-pill>`, `<instui-tag>`, `<instui-avatar>`, `<instui-spinner>`, `<instui-progress>`,
- * `<instui-progress-circle>`, `<instui-metric>`, `<instui-rating>`, `<instui-icon-button>`,
- * `<instui-toggle-button>`, `<instui-truncate>`, `<instui-img>`, `<instui-side-nav-bar>`,
- * `<instui-tree-browser>`, and `<instui-tooltip>`, plus the behavioral elements
- * `<instui-modal>` (a real `<dialog>` driven by its `open` attribute), the native popovers
- * `<instui-context-view>`, `<instui-popover>`, and `<instui-tray>`, `<instui-in-place-edit>` (a
- * click-to-edit field that commits on Enter/blur and reverts on Escape), `<instui-drilldown>` (a
- * stateful multi-level menu), `<instui-pages>` (one-panel-at-a-time nav via the View Transitions API),
- * `<instui-drawer-layout>` (a collapsible, drag-resizable side panel), the interactive
- * `<instui-calendar>` (a month grid navigated with the Invoker Commands API), and the pickers
- * `<instui-date-input>` and `<instui-date-time-input>` (a field plus a calendar-dropdown popover).
- * Each renders the matching `.instui-*` markup into its shadow root with the component stylesheet
- * inlined, so the look is exactly `@pantoken/components`
- * with nothing to import but this module. Tokens are inherited custom properties, so they pierce the
- * shadow boundary — load `@pantoken/css` (or any pantoken token sheet) in the document to color them.
- * The elevation scale (`--instui-elevation-*`) and focus-outline (`--instui-focus-outline-*`) custom
- * properties ship in the token sheet too, so shadows and focus rings resolve from the same sheet the
- * colors do — nothing extra to inject. (Elements that render icons, e.g. `<instui-alert>`, read
- * `--instui-icon-*` glyph tokens the same way; the lean token sheet omits the full icon set, so pair it
- * with `@pantoken/components/component-icons.css`, or load the full token sheet.)
+ * {@link register} (auto-invoked in the browser) defines the full `<instui-*>` element set into
+ * any custom-element registry. Each element renders the matching `@pantoken/components` CSS into
+ * its shadow root; tokens are inherited custom properties that pierce the shadow boundary — load
+ * `@pantoken/css` to supply them.
+ *
+ * For localized UI strings (calendar nav labels, date-input placeholder, drilldown Back text) pass
+ * `locale`, `strings`, or `dir` options to {@link register}. Use `@pantoken/i18n` for the full
+ * Canvas-parity bundle set of 44 locales (3 RTL) and the {@link register}-wrapping
+ * `registerLocalized` helper.
  *
  * The module is Node-safe: element classes are defined inside {@link register}, a no-op when there
- * is no DOM, so importing this package during SSR or a build never touches `HTMLElement`.
- *
- * Each element lives in its own documented file under `elements/`, exporting an
- * {@link ElementDefinition}; `elements/index.ts` lists them in registration order as `DEFINITIONS`.
- * {@link register} builds one prefix-aware {@link RegisterContext} and hands it to each definition.
+ * is no DOM, so importing during SSR or a build never touches `HTMLElement`.
  *
  * @module
  * @alpha
@@ -39,6 +22,12 @@ import type { IconResolver } from "@pantoken/model";
 import { DEFINITIONS } from "./elements/index.ts";
 import type { CommandEventish, ElementRegistry, RegisterContext } from "./lib/context.ts";
 import { applySpacing, frag, SPACING_ATTRS } from "./lib/helpers.ts";
+import {
+  ENGLISH_STRINGS,
+  makeStrings,
+  resolveFirstDay,
+  type WebComponentStrings,
+} from "./lib/strings.ts";
 
 // ── Public types ──────────────────────────────────────────────────────────────
 export type {
@@ -47,6 +36,8 @@ export type {
   ElementRegistry,
   RegisterContext,
 } from "./lib/context.ts";
+export type { WebComponentStrings } from "./lib/strings.ts";
+export { ENGLISH_STRINGS, makeStrings, resolveFirstDay } from "./lib/strings.ts";
 
 // ── Element definitions ─────────────────────────────────────────────────────────
 export { DEFINITIONS } from "./elements/index.ts";
@@ -386,11 +377,18 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
  * register(); // <instui-button>, <instui-icon>, …
  * register(customElements, { prefix: "x" }); // <x-button>, <x-icon>, …
  * register(customElements, { only: ["button", "alert"] }); // just those two
+ * register(customElements, { locale: "hu", strings: { back: "Vissza" } }); // localized
  * ```
  */
 export function register(
   target: ElementRegistry | undefined = globalThis.customElements,
-  options: { prefix?: string | null; only?: readonly string[] } = {},
+  options: {
+    prefix?: string | null;
+    only?: readonly string[];
+    locale?: string;
+    strings?: Partial<WebComponentStrings>;
+    dir?: "ltr" | "rtl";
+  } = {},
 ): void {
   if (!target || typeof HTMLElement === "undefined") return;
 
@@ -421,6 +419,15 @@ export function register(
   const onCommand = makeOnCommand(INVOKER_SUPPORTED);
   const wrapper = makeWrapper(registry);
 
+  const locale = options.locale ?? "en";
+  const dir = options.dir ?? "ltr";
+  const strings = options.strings
+    ? makeStrings(locale, options.strings)
+    : locale === "en"
+      ? ENGLISH_STRINGS
+      : makeStrings(locale);
+  const firstDay = resolveFirstDay(locale);
+
   const ctx: RegisterContext = {
     registry,
     tag,
@@ -430,6 +437,10 @@ export function register(
     wrapper,
     variantClass,
     iconSvg,
+    locale,
+    dir,
+    firstDay,
+    strings,
   };
 
   for (const def of DEFINITIONS) {

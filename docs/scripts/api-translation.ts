@@ -4,7 +4,7 @@
  * The default adapter is deterministic and keyless (safe for CI), while the adapter contract keeps
  * room for higher-quality engines later.
  */
-import { spawn } from "node:child_process";
+import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
 
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
@@ -247,21 +247,6 @@ const preservePackageNames = (input: string): { text: string; packageNames: stri
   return { text, packageNames };
 };
 
-/** Pull the first `{…}` JSON object out of a model response (tolerating code fences), or `null`. */
-const extractJsonObject = (raw: string): Record<string, unknown> | null => {
-  const start = raw.indexOf("{");
-  const end = raw.lastIndexOf("}");
-  if (start === -1 || end <= start) return null;
-  try {
-    const parsed = JSON.parse(raw.slice(start, end + 1)) as unknown;
-    return typeof parsed === "object" && parsed !== null
-      ? (parsed as Record<string, unknown>)
-      : null;
-  } catch {
-    return null;
-  }
-};
-
 const restorePackageNames = (input: string, packageNames: string[]): string => {
   let out = input;
   for (const [index, packageName] of packageNames.entries()) {
@@ -336,8 +321,8 @@ const mapPool = async <T, R>(
  * Adapter that shells out to the Claude Code CLI (configurable via `DOCS_TRANSLATION_COMMAND` and
  * `DOCS_TRANSLATION_COMMAND_ARGS`) to produce real prose translations.
  */
-export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
-  readonly name = "claude-code";
+export class AiTranslationAdapter implements TranslationAdapter {
+  readonly name = "ai";
 
   private readonly command: string;
   private readonly args: string[];
@@ -468,42 +453,13 @@ export class ClaudeCodeTranslationAdapter implements TranslationAdapter {
   }
 
   private runClaude(prompt: string, scope: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const child = spawn(this.command, [...this.args, "-p"], {
-        stdio: ["pipe", "pipe", "pipe"],
-      });
-      let stdout = "";
-      let stderr = "";
-      child.stdout.setEncoding("utf8");
-      child.stderr.setEncoding("utf8");
-      child.stdout.on("data", (chunk: string) => (stdout += chunk));
-      child.stderr.on("data", (chunk: string) => (stderr += chunk));
-      // The process-level events (`error`/`close`) come off ChildProcess's EventEmitter; type them
-      // explicitly so the checker resolves the overloads and `code` isn't implicitly `any`.
-      const proc = child as unknown as {
-        on(event: "error", listener: (err: Error) => void): void;
-        on(event: "close", listener: (code: number | null) => void): void;
-      };
-      proc.on("error", reject);
-      proc.on("close", (code) => {
-        if (code !== 0) {
-          reject(
-            new Error(
-              `Claude translation failed for ${scope} (exit ${code ?? -1}): ${stderr.trim()}`,
-            ),
-          );
-        } else {
-          resolve(stdout.trimEnd());
-        }
-      });
-      child.stdin.end(prompt);
-    });
+    return spawnPrompt(this.command, [...this.args, "-p"], prompt, scope);
   }
 }
 
 /**
  * Build the adapter named by `DOCS_TRANSLATION_ADAPTER` (default `glossary`). Throws on an unknown
- * name. Supported values are `glossary` and `claude-code`.
+ * name. Supported values are `glossary` and `ai`.
  */
 export const createTranslationAdapter = (): TranslationAdapter => {
   // A pluggable selector means we can drop in a richer provider later without changing callers.
@@ -513,11 +469,11 @@ export const createTranslationAdapter = (): TranslationAdapter => {
     return new GlossaryTranslationAdapter();
   }
 
-  if (selected === "claude-code") {
-    return new ClaudeCodeTranslationAdapter();
+  if (selected === "ai") {
+    return new AiTranslationAdapter();
   }
 
   throw new Error(
-    `Unsupported DOCS_TRANSLATION_ADAPTER: ${selected}. Supported adapters: glossary, claude-code`,
+    `Unsupported DOCS_TRANSLATION_ADAPTER: ${selected}. Supported adapters: glossary, ai`,
   );
 };

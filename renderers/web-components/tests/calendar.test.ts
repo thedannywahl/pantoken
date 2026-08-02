@@ -76,7 +76,7 @@ test("the prev chevron shifts the visible month back by one", () => {
 
 test("with no value/view it falls back to the current month (no throw)", () => {
   const el = calendar();
-  const thisMonth = new Date().toLocaleDateString(undefined, { month: "long", year: "numeric" });
+  const thisMonth = new Date().toLocaleDateString("en", { month: "long", year: "numeric" });
   expect(el.shadowRoot?.getElementById("cal")?.getAttribute("aria-label")).toBe(thisMonth);
 });
 

@@ -33,6 +33,7 @@
     "check": "vp check"
   },
   "dependencies": {
+    "@pantoken/i18n": "workspace:*",
     "@pantoken/web-components": "workspace:*"
   },
   "devDependencies": {
