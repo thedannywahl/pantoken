@@ -295,7 +295,14 @@ function notesDir(): string {
  * bundle in a single `gh release create` call — all assets present before the release becomes immutable.
  */
 export function writeReleaseManifest(entries: readonly ReleaseManifestEntry[]): void {
-  writeFileSync(manifestPath(), JSON.stringify(entries, null, 2) + "\n", "utf8");
+  const content = JSON.stringify(entries, null, 2) + "\n";
+  const dest = manifestPath();
+  // O_EXCL (wx) prevents following a pre-existing symlink; catch handles rerun overwrite.
+  try {
+    writeFileSync(dest, content, { flag: "wx", encoding: "utf8" });
+  } catch {
+    writeFileSync(dest, content, { encoding: "utf8" });
+  }
 }
 
 /**
@@ -313,7 +320,12 @@ function prepareRelease(
   const nd = notesDir();
   mkdirSync(nd, { recursive: true });
   const notesFile = path.join(nd, `${tagToFilename(tag)}.md`);
-  writeFileSync(notesFile, releaseNotes(pkg, ctx.rootDir));
+  const notes = releaseNotes(pkg, ctx.rootDir);
+  try {
+    writeFileSync(notesFile, notes, { flag: "wx", encoding: "utf8" });
+  } catch {
+    writeFileSync(notesFile, notes, { encoding: "utf8" });
+  }
   const tarball = packForManifest(pkg, tag, ctx.rootDir);
   if (!tarball) return "failed";
   return { tag, tarball, notes: notesFile };
