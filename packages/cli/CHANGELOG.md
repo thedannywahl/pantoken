@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.1.12
+
+### Patch Changes
+
+- f97aeb6: Ensure this branch has explicit changeset coverage for every touched package.
+
+  No API changes are introduced for these packages in this commit; this records branch-level package touch coverage per release policy.
+
+- Updated dependencies [f97aeb6]
+- Updated dependencies [f97aeb6]
+  - @pantoken/icon-font@0.1.10
+  - @pantoken/pendo@0.2.0
+  - @pantoken/tokens@0.2.2
+  - @pantoken/android@0.1.10
+  - @pantoken/compose@0.1.10
+  - @pantoken/flutter@0.1.10
+  - @pantoken/rust@0.1.9
+  - @pantoken/swift@0.1.10
+  - @pantoken/drupal@0.1.10
+  - @pantoken/hugo@0.1.10
+  - @pantoken/jekyll@0.1.10
+
 ## 0.1.11
 
 ### Patch Changes

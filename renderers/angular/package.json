@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/angular",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Angular helpers for pantoken: register the web components and read tokens.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

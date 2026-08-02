@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.1.10
+
+### Patch Changes
+
+- f97aeb6: Ensure this branch has explicit changeset coverage for every touched package.
+
+  No API changes are introduced for these packages in this commit; this records branch-level package touch coverage per release policy.
+
+- Updated dependencies [f97aeb6]
+  - @pantoken/core@0.2.2
+  - @pantoken/tokens@0.2.2
+
 ## 0.1.9
 
 ### Patch Changes
