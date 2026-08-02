@@ -61,7 +61,7 @@ export interface FlattenPropertyOptions {
  * const out = postcss([flattenProperty()]).process(css, { from: undefined }).css;
  * ```
  *
- * @example Inject into :scope for use inside @scope blocks
+ * @example Inject into :scope (for use inside scope blocks)
  * ```ts
  * import postcss from "postcss";
  * import { flattenProperty } from "@pantoken/plugin-flatten-property";
