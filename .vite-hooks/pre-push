@@ -1,5 +1,9 @@
 # Block a push that changes a publishable package with no covering changeset (bypass: --no-verify).
 vp run release:coverage
+# Guard against stale i18n bundle caches when strings.ts or i18n package files changed.
+if git diff --name-only "@{upstream}...HEAD" 2>/dev/null | grep -qE '^(packages/i18n/|renderers/web-components/src/lib/strings\.ts)'; then
+  vp run i18n:check:drift
+fi
 # Block a push that introduces new fallow findings (dead code / complexity) in the changed files,
 # measured against the upstream branch (falls back to origin/main). Scoped + fast; bypass: --no-verify.
 vp exec fallow audit --base "$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || echo origin/main)"

@@ -44,6 +44,7 @@ export default defineConfig({
         "formats/*/scripts/{fonts,generate}.ts",
         "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
+        "packages/i18n/src/**",
       ],
       exclude: [
         "**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -208,6 +209,28 @@ export default defineConfig({
       // Convenience alias matching the security: namespace convention.
       "security:property:stress": {
         command: "vp run property:stress",
+      },
+      // i18n locale bundle management. translate is local-only (AI credentials required);
+      // check:drift asserts committed caches are current (CI-safe, no network).
+      "i18n:translate": {
+        command: "vp run @pantoken/i18n#translate",
+        cache: false,
+      },
+      "i18n:translate:agy": {
+        command: "vp run @pantoken/i18n#translate:agy",
+        cache: false,
+      },
+      // docs locale translation via agy — local-only (AI credentials required).
+      "docs:translate:agy": {
+        command: "vp run @pantoken/docs#docs:locales:translate:agy",
+        cache: false,
+      },
+      "i18n:check:drift": {
+        command: "vp run @pantoken/i18n#check:drift",
+      },
+      "i18n:bundles:build": {
+        command: "vp run @pantoken/i18n#generate",
+        dependsOn: ["build:all"],
       },
       "changeset:add": {
         command: "vpx changeset",
