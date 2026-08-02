@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.1
+
+### Patch Changes
+
+- 03a9dc1: escape weekday strings to prevent unsanitized HTML injection
+
 ## 0.3.0
 
 ### Minor Changes

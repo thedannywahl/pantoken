@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.14
+
+### Patch Changes
+
+- Updated dependencies [03a9dc1]
+  - @pantoken/web-components@0.3.1
+
 ## 0.1.13
 
 ### Patch Changes
