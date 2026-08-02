@@ -80,7 +80,7 @@ export const calendar: ElementDefinition = {
             })
             .join("");
           const weekdays = ctx.strings.weekdays
-            .map((w) => `<span class="weekday">${w}</span>`)
+            .map((w) => `<span class="weekday">${esc(w)}</span>`)
             .join("");
           root.innerHTML =
             `<style>:host{display:inline-block}${calendarCss(ctx.I)}${buttonCss(ctx.I)}${calendarReset}</style>` +
