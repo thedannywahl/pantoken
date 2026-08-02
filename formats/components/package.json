@@ -49,6 +49,7 @@
     "@cssdoc/config": "catalog:",
     "@cssdoc/core": "catalog:",
     "@pantoken/icons": "workspace:*",
+    "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/plugin-theme-custom-media": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@types/node": "catalog:",
