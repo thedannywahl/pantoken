@@ -70,8 +70,8 @@ export class AiTranslationAdapter implements TranslationAdapter {
       .filter((p) => p.length > 0);
   }
 
-  // fallow-ignore-next-line complexity
   async translateBatch(
+    // fallow-ignore complexity
     items: readonly { id: string; text: string }[],
     locale: string,
     localeLabel: string,
