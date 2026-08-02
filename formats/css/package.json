@@ -41,6 +41,7 @@
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
+    "@pantoken/plugin-props-minify": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
