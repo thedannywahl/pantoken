@@ -1,0 +1,25 @@
+---
+"@pantoken/web-components": minor
+"@pantoken/i18n": minor
+---
+
+Add first-class i18n and RTL support to the web component layer.
+
+**`@pantoken/web-components`**
+
+`register()` gains three new options: `locale` (BCP47 tag), `strings` (partial `WebComponentStrings` override), and `dir` (`"ltr" | "rtl"`). All user-visible strings in the behavioral elements are now localizable:
+
+- `<instui-calendar>` — weekday headers and month label rendered via `Intl.DateTimeFormat`; prev/next `aria-label`s from `strings`; locale-aware first-day-of-week via `Intl.Locale.weekInfo`; RTL swaps chevron icons.
+- `<instui-date-input>` — default label, placeholder, and trigger `aria-label` from `strings`; date `<input>` always carries `dir="ltr"` regardless of page direction (ISO dates are LTR).
+- `<instui-date-time-input>` — time field `aria-label` from `strings`.
+- `<instui-drilldown>` — synthesized Back row text from `strings`; RTL swaps the arrow icon.
+
+New exports: `WebComponentStrings`, `ENGLISH_STRINGS`, `makeStrings`, `resolveFirstDay`.
+
+**`@pantoken/i18n`** _(new package)_
+
+Ships pre-built `LocaleBundle` objects for all 44 Canvas-supported locales (3 RTL: `ar`, `he`, `fa`). Weekday names are derived at runtime via `Intl.DateTimeFormat`; the 7 translatable UI strings are populated from a committed SHA-256-keyed translation memory (`i18n-cache/*.json`). Hungarian (`hu`) ships with full translations; all other non-English locales fall back to English pending `vp run i18n:translate`.
+
+Key exports: `registerLocalized`, `defineBundle`, `CANVAS_LOCALES`, `getDir`, per-locale bundle objects (`ar`, `hu`, `zh-Hans`, …).
+
+Translation tooling: `vp run i18n:translate` / `i18n:translate:agy` (AI, local-only), `vp run i18n:check:drift` (CI gate), `vp run i18n:bundles:build` (regenerate TS bundles from cache). New string sources are auto-discovered via `src/i18n.json` convention — no manual registry needed. Supports `agy` via `tools/translation-adapters/agy-wrapper.sh`.
