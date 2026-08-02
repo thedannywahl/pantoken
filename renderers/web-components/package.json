@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/web-components",
-  "version": "0.2.10",
+  "version": "0.3.0",
   "description": "Framework-agnostic custom elements for Instructure UI: <instui-icon> plus token-styled primitives.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
