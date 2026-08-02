@@ -33,6 +33,7 @@ function toIdentifier(locale: string): string {
 }
 
 /** Produce a TS locale file for `locale`. */
+// fallow-ignore-next-line complexity
 function buildLocaleFile(locale: string): string {
   const meta = CANVAS_LOCALES[locale]!;
   const entries = loadCache(locale);
