@@ -1,5 +1,41 @@
 # CHANGELOG
 
+## 0.1.14
+
+### Patch Changes
+
+- f97aeb6: Ensure this branch has explicit changeset coverage for every touched package.
+
+  No API changes are introduced for these packages in this commit; this records branch-level package touch coverage per release policy.
+
+- Updated dependencies [f97aeb6]
+- Updated dependencies [f97aeb6]
+  - @pantoken/cli@0.1.12
+  - @pantoken/plugin-prune-custom-props@0.1.4
+  - @pantoken/components@0.2.8
+  - @pantoken/pendo@0.2.0
+  - @pantoken/plugin-logos@0.2.0
+  - @pantoken/tokens@0.2.2
+  - @pantoken/android@0.1.10
+  - @pantoken/compose@0.1.10
+  - @pantoken/flutter@0.1.10
+  - @pantoken/swift@0.1.10
+  - @pantoken/drupal@0.1.10
+  - @pantoken/angular@0.1.11
+  - @pantoken/astro@0.1.8
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/css-in-js@0.1.7
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.1
+  - @pantoken/mui@0.1.7
+  - @pantoken/react@0.1.11
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/storybook@0.1.7
+  - @pantoken/svelte@0.1.11
+  - @pantoken/vitepress@0.1.1
+  - @pantoken/vue@0.1.11
+  - @pantoken/web-components@0.2.9
+
 ## 0.1.13
 
 ### Patch Changes

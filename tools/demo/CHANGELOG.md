@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- f97aeb6: Ensure this branch has explicit changeset coverage for every touched package.
+
+  No API changes are introduced for these packages in this commit; this records branch-level package touch coverage per release policy.
+
 ## 0.1.3
 
 ### Patch Changes
