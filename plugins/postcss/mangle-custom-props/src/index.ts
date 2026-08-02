@@ -58,7 +58,7 @@ export interface MangleCustomPropsOptions {
    *
    * On each pass the plugin reads existing entries (reusing their short names) and writes new
    * ones (continuing the counter from `sharedManifest.size`). Pass the same `Map` instance to
-   * every `mangleCustomProps` or {@link applyMinify} call that processes CSS files which will be
+   * every `mangleCustomProps` or `applyMinify` call that processes CSS files which will be
    * loaded together in the browser — this guarantees all files use an identical name mapping.
    *
    * Process the token sheet first so its names are seeded into the manifest before the component
@@ -93,7 +93,7 @@ function shortName(n: number, method: MangleMethod): string {
  * @param options - {@link MangleCustomPropsOptions}.
  * @returns A PostCSS {@link Plugin}.
  *
- * @example Mangle with defaults (`--instui-*`, base26)
+ * @example Mangle with defaults (--instui-*, base26)
  * ```ts
  * import postcss from "postcss";
  * import { mangleCustomProps } from "@pantoken/plugin-mangle-custom-props";

@@ -53,7 +53,7 @@ export interface FlattenPropertyOptions {
  * @param options - {@link FlattenPropertyOptions}.
  * @returns A PostCSS {@link Plugin}.
  *
- * @example Default — inject into `:root`
+ * @example Default injection into :root
  * ```ts
  * import postcss from "postcss";
  * import { flattenProperty } from "@pantoken/plugin-flatten-property";
@@ -61,7 +61,7 @@ export interface FlattenPropertyOptions {
  * const out = postcss([flattenProperty()]).process(css, { from: undefined }).css;
  * ```
  *
- * @example Inject into `:scope` for use inside `@scope` blocks
+ * @example Inject into :scope for use inside @scope blocks
  * ```ts
  * import postcss from "postcss";
  * import { flattenProperty } from "@pantoken/plugin-flatten-property";
@@ -69,7 +69,7 @@ export interface FlattenPropertyOptions {
  * const out = postcss([flattenProperty({ injectSelector: ":scope" })]).process(css, { from: undefined }).css;
  * ```
  *
- * @example Preserve `@property` rules with no `initial-value`
+ * @example Preserve @property rules without initial-value
  * ```ts
  * import postcss from "postcss";
  * import { flattenProperty } from "@pantoken/plugin-flatten-property";
