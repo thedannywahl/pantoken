@@ -10,34 +10,40 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { CANVAS_LOCALES } from "../src/lib/canvas-locales.ts";
-import { keyFor } from "./lib/keys.ts";
-import { ENGLISH_SOURCES, TRANSLATABLE_KEYS } from "./lib/keys.ts";
-
-const root = new URL("..", import.meta.url).pathname;
-const cacheDir = join(root, "i18n-cache");
+import { ENGLISH_SOURCES, TRANSLATABLE_KEYS, keyFor } from "./lib/keys.ts";
 
 interface CacheFile {
   version: number;
   entries: Record<string, string>;
 }
 
-function loadCacheKeys(locale: string): Set<string> {
-  const path = join(cacheDir, `${locale}.json`);
+function loadCacheKeys(dir: string, locale: string): Set<string> {
+  const path = join(dir, `${locale}.json`);
   if (!existsSync(path)) return new Set();
   return new Set(Object.keys((JSON.parse(readFileSync(path, "utf8")) as CacheFile).entries ?? {}));
 }
 
-const targets = Object.keys(CANVAS_LOCALES).filter((l) => l !== "en");
-const missing: Array<{ locale: string; key: string }> = [];
-
-for (const locale of targets) {
-  const cached = loadCacheKeys(locale);
-  for (const key of TRANSLATABLE_KEYS) {
-    if (!cached.has(keyFor(key, ENGLISH_SOURCES[key]))) {
-      missing.push({ locale, key });
+/** Return every (locale, key) pair absent from the cache — exported for testing. */
+export function findMissingTranslations(
+  dir: string,
+  locales: readonly string[],
+  keys: readonly string[],
+  sources: Record<string, string>,
+): Array<{ locale: string; key: string }> {
+  const missing: Array<{ locale: string; key: string }> = [];
+  for (const locale of locales) {
+    const cached = loadCacheKeys(dir, locale);
+    for (const key of keys) {
+      if (!cached.has(keyFor(key, sources[key]))) missing.push({ locale, key });
     }
   }
+  return missing;
 }
+
+const root = new URL("..", import.meta.url).pathname;
+const cacheDir = join(root, "i18n-cache");
+const targets = Object.keys(CANVAS_LOCALES).filter((l) => l !== "en");
+const missing = findMissingTranslations(cacheDir, targets, TRANSLATABLE_KEYS, ENGLISH_SOURCES);
 
 if (missing.length > 0) {
   console.error(`\n✗ i18n drift: ${missing.length} missing translation(s):\n`);

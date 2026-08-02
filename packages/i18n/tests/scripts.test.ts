@@ -208,3 +208,56 @@ test("TranslationMemory.get increments misses on cache miss", () => {
   mem.get(keyFor("back", "Back"));
   expect(mem.misses).toBe(1);
 });
+
+// ── check-bundle-drift: findMissingTranslations ───────────────────────────────
+
+const { findMissingTranslations } = await import("../scripts/check-bundle-drift.ts");
+
+test("findMissingTranslations returns empty when all keys are cached", () => {
+  const k = keyFor("back", "Back");
+  writeFileSync(
+    join(memDir, "hu.json"),
+    JSON.stringify({ version: 1, entries: { [k]: "Vissza" } }),
+  );
+  const result = findMissingTranslations(memDir, ["hu"], ["back"], { back: "Back" });
+  expect(result).toHaveLength(0);
+});
+
+test("findMissingTranslations reports missing keys", () => {
+  writeFileSync(join(memDir, "hu.json"), JSON.stringify({ version: 1, entries: {} }));
+  const result = findMissingTranslations(memDir, ["hu"], ["back", "timeLabel"], {
+    back: "Back",
+    timeLabel: "Time",
+  });
+  expect(result).toEqual([
+    { locale: "hu", key: "back" },
+    { locale: "hu", key: "timeLabel" },
+  ]);
+});
+
+test("findMissingTranslations returns empty for a missing cache file", () => {
+  const result = findMissingTranslations(memDir, ["xx"], ["back"], { back: "Back" });
+  expect(result).toHaveLength(1);
+  expect(result[0]).toEqual({ locale: "xx", key: "back" });
+});
+
+// ── translate-bundles: findMissingLocaleKeys ──────────────────────────────────
+
+const { findMissingLocaleKeys } = await import("../scripts/translate-bundles.ts");
+
+test("findMissingLocaleKeys returns keys absent from memory", () => {
+  const k = keyFor("back", "Back");
+  const mem = { get: (key: string) => (key === k ? "Vissza" : undefined) };
+  const result = findMissingLocaleKeys(mem, ["back", "timeLabel"], {
+    back: "Back",
+    timeLabel: "Time",
+  });
+  expect(result).toEqual(["timeLabel"]);
+});
+
+test("findMissingLocaleKeys returns empty when all keys are present", () => {
+  const mem = { get: (_key: string) => "value" };
+  expect(
+    findMissingLocaleKeys(mem, ["back", "timeLabel"], { back: "Back", timeLabel: "Time" }),
+  ).toEqual([]);
+});

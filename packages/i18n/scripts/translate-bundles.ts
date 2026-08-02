@@ -17,6 +17,15 @@ import { createTranslationAdapter } from "./lib/translation-adapter.ts";
 import { TranslationMemory, keyFor } from "./lib/translation-memory.ts";
 import { ENGLISH_SOURCES, TRANSLATABLE_KEYS } from "./lib/keys.ts";
 
+/** Return keys absent from memory — exported for testing. */
+export function findMissingLocaleKeys(
+  memory: { get(key: string): string | undefined },
+  keys: readonly string[],
+  sources: Record<string, string>,
+): string[] {
+  return keys.filter((key) => memory.get(keyFor(key, sources[key])) === undefined);
+}
+
 const root = new URL("..", import.meta.url).pathname;
 const cacheDir = join(root, "i18n-cache");
 mkdirSync(cacheDir, { recursive: true });
@@ -31,12 +40,8 @@ for (const locale of targets) {
   const meta = CANVAS_LOCALES[locale]!;
   const memory = TranslationMemory.load(cacheDir, locale);
 
-  // Find which keys need translation (hash absent from cache).
-  const missing = TRANSLATABLE_KEYS.filter(
-    (key) => memory.get(keyFor(key, ENGLISH_SOURCES[key])) === undefined,
-  );
-  // Reset hit counters after the probe (get() side-effects counters, we just needed presence check).
-  // Re-load to clear the probe counts.
+  const missing = findMissingLocaleKeys(memory, TRANSLATABLE_KEYS, ENGLISH_SOURCES);
+  // Re-load to clear the probe counts from the missing-key check.
   const memory2 = TranslationMemory.load(cacheDir, locale);
 
   if (missing.length === 0) {
