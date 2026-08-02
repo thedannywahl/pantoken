@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.2
+
+### Patch Changes
+
+- 658021f: Generated `theme.css` and `components.css` now pass through `applyMinify({ flatten: true })` during the generate step.
+
 ## 0.1.1
 
 ### Patch Changes

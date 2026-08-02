@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 658021f: `buildPendoCss` gains two new options: `flatten` (converts `@property` at-rules to plain declarations, injected into `:scope`) and `mangle` (renames `--instui-*` to minimal base-26 identifiers). Both accept `boolean` for defaults or a full options object for fine-grained control. The static `global.css` now ships with both transforms applied, reducing its size from ~74 KB to ~59 KB before `@tsdown/css` minification.
+
+### Patch Changes
+
+- Updated dependencies [658021f]
+- Updated dependencies [658021f]
+- Updated dependencies [658021f]
+  - @pantoken/components@0.2.9
+  - @pantoken/css@0.2.8
+  - @pantoken/plugin-props-minify@0.1.1
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-mangle-custom-props",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "pantoken plugin: a PostCSS plugin that renames --instui-* custom properties to minimal sequential identifiers.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

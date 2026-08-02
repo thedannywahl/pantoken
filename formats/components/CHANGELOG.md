@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.9
+
+### Patch Changes
+
+- 658021f: Generated stylesheets (`base.css`, `components.css`, `prose.css`, `select.css`) now pass through `applyMinify({ flatten: true })` during the generate step, consistent with the cross-pipeline flattening approach. No behavioral change — component CSS does not contain `@property` blocks.
+
 ## 0.2.8
 
 ### Patch Changes
