@@ -11,7 +11,8 @@
     "directory": "renderers/web-components"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/i18n.json"
   ],
   "type": "module",
   "sideEffects": [
