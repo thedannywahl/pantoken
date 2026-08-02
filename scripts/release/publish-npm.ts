@@ -22,15 +22,7 @@
  * `--dry-run` reports what it would publish and which releases it would create, touching nothing.
  */
 import { spawnSync } from "node:child_process";
-import {
-  appendFileSync,
-  existsSync,
-  mkdirSync,
-  mkdtempSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import process from "node:process";
@@ -77,6 +69,19 @@ export function orderedPublishablePackages(all: readonly WorkspacePackage[]): Wo
 /** The git tag / GitHub release name for a package version, e.g. `@pantoken/css@0.2.0`. Pure. */
 export function tagFor(pkg: Pick<WorkspacePackage, "name" | "version">): string {
   return `${pkg.name}@${pkg.version}`;
+}
+
+/**
+ * A manifest entry written by the publish script for the workflow's release-creation step.
+ * The workflow reads this JSON to create each GitHub release with all assets in one `gh release create`
+ * call — satisfying GitHub's immutable-release requirement that all assets arrive before publication.
+ */
+export interface ReleaseManifestEntry {
+  tag: string;
+  /** Absolute path to the packed .tgz under $RUNNER_TEMP/pantoken-packs/. */
+  tarball: string;
+  /** Absolute path to the release notes .md file under $RUNNER_TEMP/pantoken-release-notes/. */
+  notes: string;
 }
 
 /** The publish split: packages to publish now, and those already on the registry (skipped). */
@@ -147,7 +152,6 @@ function publishPackage(pkg: WorkspacePackage, rootDir: string): boolean {
 
 interface ReleaseContext {
   repo: string;
-  sha: string;
   rootDir: string;
 }
 
@@ -179,8 +183,6 @@ function releaseNotes(pkg: WorkspacePackage, rootDir: string): string {
   }
   return extractChangelogSection(changelog, pkg.version) || `Release ${tagFor(pkg)}.`;
 }
-
-type EnsureResult = "created" | "exists" | "failed";
 
 /** CLI mode flags derived from argv. */
 interface RunMode {
@@ -256,24 +258,8 @@ function movePackedTarball(srcTgz: string, destTgz: string, tag: string): boolea
   return false;
 }
 
-/** Upload one packed tarball asset to a GitHub release. */
-function uploadPackedTarball(tag: string, repo: string, destTgz: string): void {
-  const uploadResult = spawnSync(
-    "gh",
-    ["release", "upload", tag, destTgz, "--repo", repo, "--clobber"],
-    { encoding: "utf8", shell: false, stdio: "inherit" },
-  );
-  if (uploadResult.status !== 0)
-    console.error(`  tarball upload failed for ${tag} (provenance will still run).`);
-}
-
-/** Pack the package and upload the tarball to its GitHub release; returns the local .tgz path or null. */
-function packAndUpload(
-  pkg: WorkspacePackage,
-  tag: string,
-  repo: string,
-  rootDir: string,
-): string | null {
+/** Pack the package and move the tarball to the shared packs directory; returns the .tgz path or null. */
+function packForManifest(pkg: WorkspacePackage, tag: string, rootDir: string): string | null {
   const packsDir = path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-packs");
   mkdirSync(packsDir, { recursive: true });
   const pkgDir = path.join(rootDir, pkg.path);
@@ -286,8 +272,74 @@ function packAndUpload(
   const destTgz = path.join(packsDir, tgzName);
   // Move the tgz to the shared packs dir so attest-build-provenance can glob it.
   if (!movePackedTarball(srcTgz, destTgz, tag)) return null;
-  uploadPackedTarball(tag, repo, destTgz);
   return destTgz;
+}
+
+/** Convert a release tag to a safe filename stem (e.g. `@pantoken/css@0.2.0` → `pantoken-css-0.2.0`). */
+function tagToFilename(tag: string): string {
+  return tag.replace(/[@/]/g, "-").replace(/^-/, "");
+}
+
+/** Absolute path to the release manifest JSON consumed by the workflow release-creation step. */
+function manifestPath(): string {
+  return path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-releases.json");
+}
+
+/** Directory for per-package release notes files that persist until the workflow creates releases. */
+function notesDir(): string {
+  return path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-release-notes");
+}
+
+/**
+ * Write the release manifest so the workflow can create each GitHub release with tarball + provenance
+ * bundle in a single `gh release create` call — all assets present before the release becomes immutable.
+ */
+export function writeReleaseManifest(entries: readonly ReleaseManifestEntry[]): void {
+  writeFileSync(manifestPath(), JSON.stringify(entries, null, 2) + "\n", "utf8");
+}
+
+/**
+ * Pack the tarball and write release notes for one package, returning a manifest entry.
+ * Returns "exists" when the release already exists (idempotent skip) or "failed" on pack error.
+ * Does NOT create or upload a GitHub release — that is deferred to the workflow so all assets
+ * (tarball + SLSA bundle) can be passed to `gh release create` before immutability locks in.
+ */
+function prepareRelease(
+  pkg: WorkspacePackage,
+  ctx: ReleaseContext,
+): ReleaseManifestEntry | "exists" | "failed" {
+  const tag = tagFor(pkg);
+  if (versionReleased(pkg, ctx.repo)) return "exists";
+  const nd = notesDir();
+  mkdirSync(nd, { recursive: true });
+  const notesFile = path.join(nd, `${tagToFilename(tag)}.md`);
+  writeFileSync(notesFile, releaseNotes(pkg, ctx.rootDir));
+  const tarball = packForManifest(pkg, tag, ctx.rootDir);
+  if (!tarball) return "failed";
+  return { tag, tarball, notes: notesFile };
+}
+
+/**
+ * Prepare manifest entries for every version that needs a new release; returns the entries and any
+ * failures. Existing releases are silently skipped (idempotent).
+ */
+function prepareReleaseManifest(
+  pkgs: WorkspacePackage[],
+  ctx: ReleaseContext,
+): { entries: ReleaseManifestEntry[]; failedRelease: WorkspacePackage[] } {
+  const entries: ReleaseManifestEntry[] = [];
+  const failedRelease: WorkspacePackage[] = [];
+  for (const pkg of pkgs) {
+    const prepared = prepareRelease(pkg, ctx);
+    if (prepared === "failed") {
+      failedRelease.push(pkg);
+      console.error(`✗ failed to prepare release ${tagFor(pkg)} (continuing)`);
+    } else if (prepared !== "exists") {
+      entries.push(prepared);
+      console.error(`✓ prepared release ${tagFor(pkg)}`);
+    }
+  }
+  return { entries, failedRelease };
 }
 
 /** Parse `--dry-run` and `--releases-only` flags from process argv. */
@@ -307,12 +359,12 @@ function logSkippedOnNpm(skipped: readonly WorkspacePackage[]): void {
 function printCompletionSummary(
   published: readonly WorkspacePackage[],
   skipped: readonly WorkspacePackage[],
-  created: number,
+  prepared: number,
   failedRelease: readonly WorkspacePackage[],
 ): void {
-  const alreadyReleased = skipped.length + published.length - created - failedRelease.length;
+  const alreadyReleased = skipped.length + published.length - prepared - failedRelease.length;
   console.error(
-    `\ndone: published ${published.length}, releases created ${created}, ` +
+    `\ndone: published ${published.length}, releases prepared ${prepared}, ` +
       `already released ${alreadyReleased}.`,
   );
 }
@@ -348,60 +400,15 @@ function publishSelection(
 function finishRun(
   published: readonly WorkspacePackage[],
   skipped: readonly WorkspacePackage[],
-  created: number,
+  prepared: number,
   failedPublish: readonly WorkspacePackage[],
   failedRelease: readonly WorkspacePackage[],
 ): void {
-  printCompletionSummary(published, skipped, created, failedRelease);
+  printCompletionSummary(published, skipped, prepared, failedRelease);
   if (!isFailureResult(failedPublish, failedRelease)) return;
   logFailures(failedPublish, failedRelease);
   // Non-zero exit surfaces the failures; a re-run retries only what's still missing (idempotent).
   process.exitCode = 1;
-}
-
-/** Append the release tag to the RUNNER_TEMP tags file for the provenance step. */
-function recordRelease(tag: string): void {
-  const tagsFile = path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-release-tags.txt");
-  appendFileSync(tagsFile, `${tag}\n`, "utf8");
-}
-
-/** Create the tag + GitHub release for a package if it doesn't already exist. `gh` does both via API. */
-function ensureRelease(pkg: WorkspacePackage, ctx: ReleaseContext): EnsureResult {
-  const tag = tagFor(pkg);
-  if (versionReleased(pkg, ctx.repo)) return "exists";
-
-  const dir = mkdtempSync(path.join(tmpdir(), "release-notes-"));
-  const notesFile = path.join(dir, "notes.md");
-  try {
-    writeFileSync(notesFile, releaseNotes(pkg, ctx.rootDir));
-    const result = spawnSync(
-      "gh",
-      // prettier-ignore
-      [
-        "release", "create", tag,
-        "--repo", ctx.repo,
-        "--target", ctx.sha,
-        "--title", tag,
-        "--notes-file", notesFile,
-      ],
-      { encoding: "utf8", shell: false, stdio: "inherit" },
-    );
-    if (result.status !== 0) return "failed";
-    // Pack + upload the tarball so the release has a non-source artifact; enables SLSA provenance.
-    const packed = packAndUpload(pkg, tag, ctx.repo, ctx.rootDir);
-    if (!packed) return "failed";
-    recordRelease(tag);
-    return "created";
-  } finally {
-    rmSync(dir, { recursive: true, force: true });
-  }
-}
-
-/** The commit to tag: the CI-provided SHA, else the current HEAD (local backfill). */
-function resolveSha(): string {
-  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA;
-  const result = spawnSync("git", ["rev-parse", "HEAD"], { encoding: "utf8", shell: false });
-  return result.status === 0 ? result.stdout.trim() : "HEAD";
 }
 
 /** Print the dry-run plan on stderr: what would publish, and each version's release existence. */
@@ -413,7 +420,7 @@ function printDryRunPlan(
   for (const pkg of toPublish) console.error(`• would publish ${tagFor(pkg)}`);
   // Everything that is (or would be) on npm should have a release; report which are missing.
   for (const pkg of [...skipped, ...toPublish]) {
-    const state = versionReleased(pkg, ctx.repo) ? "release exists" : "would create release";
+    const state = versionReleased(pkg, ctx.repo) ? "release exists" : "would prepare release";
     console.error(`• ${state}: ${tagFor(pkg)}`);
   }
   console.error(`\nplan: publish ${toPublish.length}, already on npm ${skipped.length}.`);
@@ -437,35 +444,11 @@ function publishPending(
   return { published, failedPublish };
 }
 
-/**
- * Ensure a tag + GitHub release for every given version (idempotent — existing releases are skipped, so
- * this also backfills any missed before); returns the created count and any failures.
- */
-function ensureReleases(
-  pkgs: WorkspacePackage[],
-  ctx: ReleaseContext,
-): { created: number; failedRelease: WorkspacePackage[] } {
-  const failedRelease: WorkspacePackage[] = [];
-  let created = 0;
-  for (const pkg of pkgs) {
-    const result = ensureRelease(pkg, ctx);
-    if (result === "created") {
-      created++;
-      console.error(`✓ released ${tagFor(pkg)}`);
-    } else if (result === "failed") {
-      failedRelease.push(pkg);
-      console.error(`✗ failed to create release ${tagFor(pkg)} (continuing)`);
-    }
-  }
-  return { created, failedRelease };
-}
-
 async function main(): Promise<void> {
   const { dryRun, releasesOnly } = getRunMode(process.argv);
   const { rootDir, packages } = await loadWorkspacePackages();
   const ctx: ReleaseContext = {
     repo: process.env.GITHUB_REPOSITORY ?? DEFAULT_REPO,
-    sha: resolveSha(),
     rootDir,
   };
 
@@ -483,9 +466,12 @@ async function main(): Promise<void> {
   // 1. Publish versions not yet on npm (unless releases-only).
   const { published, failedPublish } = publishSelection(releasesOnly, toPublish, rootDir);
 
-  // 2. Ensure a tag + GitHub release for every version now on npm (freshly published or already there).
-  const { created, failedRelease } = ensureReleases([...skipped, ...published], ctx);
-  finishRun(published, skipped, created, failedPublish, failedRelease);
+  // 2. Pack tarballs and write release notes for every version now on npm; write manifest for the
+  //    workflow's release-creation step (which passes tarball + SLSA bundle to `gh release create`
+  //    so all assets are present before the immutable release locks in).
+  const { entries, failedRelease } = prepareReleaseManifest([...skipped, ...published], ctx);
+  if (entries.length > 0) writeReleaseManifest(entries);
+  finishRun(published, skipped, entries.length, failedPublish, failedRelease);
 }
 
 runAsMain(import.meta.url, main);
