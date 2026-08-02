@@ -28,12 +28,12 @@ function loadCache(locale: string): Record<string, string> {
 }
 
 /** Derive the JS identifier used in the export (handles subtag locales like en-AU → enAU). */
-function toIdentifier(locale: string): string {
+export function toIdentifier(locale: string): string {
   return locale.replace(/-([a-zA-Z])/g, (_, c: string) => c.toUpperCase());
 }
 
 /** Produce a TS locale file for `locale`. */
-function buildLocaleFile(locale: string): string {
+export function buildLocaleFile(locale: string): string {
   const meta = CANVAS_LOCALES[locale]!;
   const entries = loadCache(locale);
   const id = toIdentifier(locale);

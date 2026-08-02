@@ -19,7 +19,7 @@ export interface StringSource {
 }
 
 /** Extract the `packages:` glob list from a `pnpm-workspace.yaml` string. */
-function parseWorkspaceGlobs(yaml: string): string[] {
+export function parseWorkspaceGlobs(yaml: string): string[] {
   const globs: string[] = [];
   let inPackages = false;
   for (const line of yaml.split("\n")) {

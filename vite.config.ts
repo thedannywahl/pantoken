@@ -45,6 +45,7 @@ export default defineConfig({
         "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
         "packages/i18n/src/**",
+        "packages/i18n/scripts/**",
       ],
       exclude: [
         "**/*.{test,spec}.?(c|m)[jt]s?(x)",
