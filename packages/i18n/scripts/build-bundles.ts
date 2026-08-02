@@ -8,7 +8,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { CANVAS_LOCALES } from "../src/lib/canvas-locales.ts";
-import { keyFor } from "./lib/translation-memory.ts";
+import { keyFor } from "./lib/keys.ts";
 import { ENGLISH_SOURCES, TRANSLATABLE_KEYS } from "./lib/keys.ts";
 
 const root = new URL("..", import.meta.url).pathname;

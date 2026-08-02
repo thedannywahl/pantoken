@@ -5,15 +5,10 @@
  * Key: sha256("wc" + NUL + stringKey + NUL + englishValue) — locale-scoped via file path.
  */
 import { join } from "node:path";
-import {
-  TranslationMemory as SharedTranslationMemory,
-  sha256,
-} from "@pantoken/translation-adapters";
+import { TranslationMemory as SharedTranslationMemory } from "@pantoken/translation-adapters";
 
-/** Derive the cache key for an English source string + its field name. */
-export function keyFor(stringKey: string, englishValue: string): string {
-  return sha256(`wc\0${stringKey}\0${englishValue}`);
-}
+// keyFor lives in keys.ts (no external deps) so check-bundle-drift can import it without a build.
+export { keyFor } from "./keys.ts";
 
 /** i18n facade: pre-computed key API, no pruning, per-locale path. */
 export class TranslationMemory {

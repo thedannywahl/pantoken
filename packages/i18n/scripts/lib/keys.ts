@@ -7,9 +7,19 @@
  * The keys are merged into a single flat record; use unique key names to
  * avoid collisions across packages.
  */
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { discoverStringSources } from "./discover-sources.ts";
+
+/**
+ * Content-addressed cache key for an English source string.
+ * Lives here (not in translation-memory.ts) so check-bundle-drift can import it
+ * without requiring @pantoken/translation-adapters to be built.
+ */
+export function keyFor(stringKey: string, englishValue: string): string {
+  return createHash("sha256").update(`wc\0${stringKey}\0${englishValue}`).digest("hex");
+}
 
 const packageRoot = new URL("../..", import.meta.url).pathname;
 const monoRoot = resolve(packageRoot, "../..");
