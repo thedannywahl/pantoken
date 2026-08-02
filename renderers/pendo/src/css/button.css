@@ -1,4 +1,19 @@
-/* Shared button base styles */
+/**
+ * @component pendo-button
+ * @selector [class*="instui"]
+ * @summary Styles `._pendo-button` elements as InstUI BaseButton (small size).
+ * @remarks Applies to all three layout types (tooltipBlank, lightboxBlank, surveys).
+ *   In surveys, a lone primary button in its container is centred via a `:has()` rule.
+ *   The last button in a `.pendo-mock-flexbox-element` row loses its trailing margin automatically.
+ * @part ._pendo-button — Shared button base; always small-height.
+ * @part ._pendo-button-primaryButton — Primary (filled) variant.
+ * @part ._pendo-button-custom — Treated as primary; used when the guide author sets a custom colour.
+ * @part ._pendo-button-secondaryButton — Secondary (outlined) variant.
+ * @part ._pendo-button-tertiaryButton — Tertiary (ghost with border) variant.
+ * @related pendo-inputs — Number-scale / NPS poll buttons in surveys, which adopt secondary/tertiary colours.
+ * @related pendo-chrome — The dismiss button that shares the guide container.
+ */
+
 [class*="instui"] {
   ._pendo-button {
     height: var(--instui-component-base-button-small-height);
@@ -14,13 +29,11 @@
     line-height: var(--instui-component-base-button-line-height);
     letter-spacing: var(--instui-component-base-button-letter-spacing);
     cursor: pointer;
-    margin: var(--instui-component-shared-tokens-spacing-general-space-none)
-      var(--instui-component-base-button-gap-button-content-md)
-      var(--instui-component-shared-tokens-spacing-general-space-none)
-      var(--instui-component-shared-tokens-spacing-general-space-none);
+    margin: var(--pendo-space-0) var(--instui-component-base-button-gap-button-content-md)
+      var(--pendo-space-0) var(--pendo-space-0);
 
     .pendo-mock-flexbox-element:last-child > & {
-      margin-right: var(--instui-component-shared-tokens-spacing-general-space-none);
+      margin-right: var(--pendo-space-0);
     }
   }
 

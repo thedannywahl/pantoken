@@ -16,12 +16,14 @@
   background: transparent;
 }
 /* Chrome/Safari: the runnable track is centred in the (handle-sized) control box. */
+/* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
 .pfx-range-input::-webkit-slider-runnable-track {
   block-size: 0.25rem;
   background: var(--instui-component-range-input-track-background);
   border: var(--instui-border-width-sm) solid var(--instui-component-range-input-track-border-color);
   border-radius: 999px;
 }
+/* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
 .pfx-range-input::-moz-range-track {
   block-size: 0.25rem;
   background: var(--instui-component-range-input-track-background);

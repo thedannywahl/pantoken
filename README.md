@@ -6,7 +6,7 @@
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/thedannywahl/pantoken/badge)](https://securityscorecards.dev/viewer/?uri=github.com/thedannywahl/pantoken)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13875/badge)](https://www.bestpractices.dev/projects/13875)
 
-Instructure design tokens and icons, reshaped for every platform.
+![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.iywahl.com/og.png)
 
 pantoken resolves Instructure UI's design tokens and icons once, then turns that single model into
 many small, publishable packages: plain stylesheets, SCSS and Less, React and Vue and Svelte,

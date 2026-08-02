@@ -5,6 +5,7 @@
  * @example
  * <span class="instui-screen-reader-content">Opens in a new window</span>
  */
+/* fallow-ignore-next-line css-duplicate-block -- clip pattern is intentionally repeated in component modifier rules for individual importability */
 .pfx-screen-reader-content {
   position: absolute;
   inline-size: 1px;

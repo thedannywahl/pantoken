@@ -1,0 +1,229 @@
+/**
+ * @component pendo-container
+ * @selector [class*="instui"]
+ * @summary The guide container — shared root for all Pendo guide layout types.
+ * @remarks The HTML is injected by Pendo and cannot be modified. The layout type is set via the
+ *   `data-layout` attribute; the colour variant is set via the variant class in the Visual Design
+ *   Studio. The `._pendo-step-container-size` and `._pendo-step-container-styles` elements are
+ *   shared between all layouts; each layout applies its own sizing, spacing, and visual treatment.
+ * @modifier [data-layout="lightboxBlank"] alert — Embedded alert guide; full-width with a coloured sidebar strip and status icon.
+ * @modifier [data-layout="tooltipBlank"] popover — Overlay tooltip/popover guide; fixed width with optional caret.
+ * @modifier ._pendo-guide-walkthrough_ survey — Survey guide; no data-layout value, auto width.
+ * @modifier [class*="instui-info"] info — Informational colour variant (alert only).
+ * @modifier [class*="instui-danger"] danger — Danger/error colour variant (alert only).
+ * @modifier [class*="instui-success"] success — Success colour variant (alert only).
+ * @modifier [class*="instui-warning"] warning — Warning colour variant (alert only).
+ * @part ._pendo-guide-backdrop_ — Backdrop container.
+ * @part ._pendo-backdrop — Fixed full-viewport overlay; display toggled by Pendo at runtime.
+ * @part ._pendo-step-container-size — Positioning/sizing wrapper; stacks above the backdrop.
+ * @part ._pendo-step-container-styles — The visible card dialog; styled per layout type.
+ * @part .pendo-tooltip-caret — Caret fill triangle (popover/survey only); one of four directional variants.
+ * @part .pendo-tooltip-caret-border — 1px-larger caret border layer drawn behind the fill (popover/survey only).
+ * @pseudo ::before — Solid variant-coloured sidebar strip on `._pendo-step-container-styles` (alert only), flush with the rounded start edge.
+ * @pseudo ::after — Status icon on `._pendo-step-container-styles` (alert only), masked and centred over the strip.
+ * @cssproperty --_alert-color <color> — Private; the variant border/strip colour, set by the variant class.
+ * @cssproperty --_alert-icon <url> — Private; the variant status icon, set by the variant class.
+ * @cssproperty --caret-color <color> — Private; the caret fill colour (maps to `view-background-primary`).
+ * @structure
+ * [class*="instui"] {
+ *   ._pendo-guide-backdrop_ {
+ *     ._pendo-backdrop:optional {}
+ *   }
+ *   ._pendo-step-container-size {
+ *     ._pendo-step-container-styles {
+ *       ::before:optional {}
+ *       ::after:optional {}
+ *     }
+ *     .pendo-tooltip-caret:optional {}
+ *     .pendo-tooltip-caret-border:optional {}
+ *   }
+ * }
+ * @related pendo-card — Card shell, row layout, and focus ring applied to `._pendo-step-container-styles`.
+ * @related pendo-chrome — Dismiss button and decorative elements; absolutely positioned inside `._pendo-step-container-styles`.
+ */
+
+/* ─── Overlay guides and surveys ─── */
+
+[class*="instui"]:is([data-layout="tooltipBlank"], ._pendo-guide-walkthrough_) {
+  ._pendo-step-container-size {
+    height: auto;
+  }
+
+  ._pendo-step-container-styles {
+    min-height: 2.75rem;
+    /* @TODO: overflow-y causes scrollbar to break border-radius */
+    /* 2x border radius + 2x caret size */
+    border-radius: var(--instui-component-popover-border-radius);
+    border-color: var(--instui-component-popover-border-color);
+    box-shadow: var(--instui-elevation-above);
+    /* gap-cards-md + box-shadow y + box-shadow spread */
+    margin-bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md));
+    margin-left: var(--instui-component-shared-tokens-spacing-general-space-md);
+    margin-right: var(--instui-component-shared-tokens-spacing-general-space-md);
+    margin-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
+  }
+
+  .pendo-tooltip-caret {
+    --caret-color: var(--instui-component-view-background-primary);
+
+    /* Pendo positions carets against _pendo-step-container-size, but our box
+     * carries margins (for box-shadow room + spacing), so the caret lands at the
+     * margin edge instead of touching the box. Pull each caret back toward the
+     * box by its margin so it sits flush (1px overlap under the border). The
+     * build adds !important, which overrides Pendo's dynamic inline offsets. */
+    &.pendo-tooltip-caret--top {
+      border-top-color: var(--caret-color);
+      /* sits below the box: shift up by margin-bottom */
+      bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 15px);
+
+      & + .pendo-tooltip-caret-border {
+        bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md) - 16px);
+      }
+    }
+
+    &.pendo-tooltip-caret--right {
+      border-right-color: var(--caret-color);
+      left: -3px;
+
+      & + .pendo-tooltip-caret-border {
+        left: -4px;
+      }
+    }
+
+    &.pendo-tooltip-caret--bottom {
+      border-bottom-color: var(--caret-color);
+      /* sits above the box: shift down by margin-top */
+      top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 15px);
+
+      & + .pendo-tooltip-caret-border {
+        top: calc(var(--instui-component-shared-tokens-spacing-general-space-xs) - 16px);
+      }
+    }
+
+    &.pendo-tooltip-caret--left {
+      border-left-color: var(--caret-color);
+      right: -3px;
+
+      & + .pendo-tooltip-caret-border {
+        right: -4px;
+      }
+    }
+  }
+
+  /* Overlay Guides */
+  &[data-layout="tooltipBlank"] {
+    ._pendo-step-container-styles {
+      width: var(--pendo-overlay-width);
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-sm)
+        var(--instui-component-shared-tokens-spacing-padding-card-sm) var(--pendo-space-0);
+    }
+  }
+
+  /* Surveys */
+  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+    ._pendo-step-container-styles {
+      width: auto;
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-lg)
+        var(--instui-component-shared-tokens-spacing-padding-card-lg)
+        var(--instui-component-shared-tokens-spacing-general-space-sm);
+      /* Cuts off box-shadow, but Surveys are anchored to bottom of viewport */
+      margin-bottom: var(--instui-component-shared-tokens-spacing-general-space-md);
+    }
+
+    &:not(:has(._pendo-row)) {
+      ._pendo-step-container-styles {
+        padding-bottom: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+      }
+    }
+  }
+}
+
+/* ─── Embedded alert ─── */
+
+[class*="instui"][data-layout="lightboxBlank"] {
+  /* Variant tokens — set on the container, inherited by all children */
+  &,
+  &[class*="instui-info"] {
+    --_alert-color: var(--instui-component-alert-info-border-color);
+    --_alert-icon: var(--instui-icon-info);
+  }
+
+  &[class*="instui-danger"] {
+    --_alert-color: var(--instui-component-alert-danger-border-color);
+    --_alert-icon: var(--instui-icon-circle-x);
+  }
+
+  &[class*="instui-success"] {
+    --_alert-color: var(--instui-component-alert-success-border-color);
+    --_alert-icon: var(--instui-icon-circle-check);
+  }
+
+  &[class*="instui-warning"] {
+    --_alert-color: var(--instui-component-alert-warning-border-color);
+    --_alert-icon: var(--instui-icon-triangle-alert);
+  }
+
+  &,
+  ._pendo-step-container-size {
+    margin-right: var(--instui-spacing-space2xs);
+    margin-left: var(--instui-spacing-space2xs);
+    max-width: var(--pendo-embedded-width);
+  }
+
+  ._pendo-step-container-size {
+    /* Stack above the fixed backdrop (z-index: 200000) the same way the overlay guide does */
+    z-index: 300000;
+    /* prevent margin collapse from sibling content to preserve drop shadow */
+    padding-bottom: calc(var(--instui-spacing-space-md));
+    padding-top: var(--instui-spacing-space-sm);
+  }
+
+  ._pendo-step-container-styles {
+    height: auto;
+    border-color: var(--_alert-color);
+    border-width: var(--instui-component-alert-border-width);
+    border-style: var(--instui-component-alert-border-style);
+    border-radius: var(--instui-component-alert-border-radius);
+    overflow: hidden;
+    padding: var(--instui-component-alert-content-padding-vertical)
+      var(--instui-component-alert-content-padding-horizontal)
+      var(--instui-component-alert-content-padding-vertical)
+      calc(var(--pendo-alert-indent) + var(--instui-component-alert-content-padding-horizontal));
+    box-shadow: var(--instui-elevation-above);
+    position: relative;
+    /* gap-cards-md + box-shadow y + box-shadow spread */
+    margin-bottom: var(--instui-spacing-space-md);
+    margin-left: var(--instui-spacing-space-lg);
+    margin-right: var(--instui-spacing-space-lg);
+    margin-top: var(--instui-spacing-space-xs);
+
+    /* Colored sidebar strip — clipped to border-radius by overflow: hidden */
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      overflow: hidden;
+      inset-block: 0;
+      left: 0;
+      width: var(--pendo-alert-indent);
+      background-color: var(--_alert-color);
+    }
+
+    /* Icon centered in the sidebar strip */
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: calc((var(--pendo-alert-indent) - var(--instui-component-icon-size-md)) / 2);
+      width: var(--instui-component-icon-size-md);
+      height: var(--instui-component-icon-size-md);
+      mask-image: var(--_alert-icon);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      background-color: var(--instui-component-alert-icon-color);
+    }
+  }
+}

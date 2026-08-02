@@ -111,7 +111,7 @@ function iconTokens(opts: { includeInstui: boolean; includeLucide: boolean }): T
 
 /**
  * Build the canonical token IR for a theme: primitives, layout, semantic colours, component tokens,
- * and optional icons, then run plugin icon and token hooks over the result.
+ * and optional icons, then run plugin hooks over the result.
  *
  * @param options - {@link BuildTokensOptions}.
  * @returns The resolved, de-duplicated {@link Token} list.
@@ -168,8 +168,9 @@ export function buildTokens(options: BuildTokensOptions = {}): Token[] {
     ...(includeIcons ? iconTokens({ includeInstui, includeLucide }) : []),
   ];
 
-  // 6. Plugin icon hooks — register extra glyphs as <image> tokens, then token hooks — both guarded
-  //    (a wrong-stage plugin warns rather than silently doing nothing); result de-duped (later wins).
-  const withIcons = runIconPlugins(tokens, plugins, theme);
+  // 6. Plugin icon hooks only run when the icon layer is enabled; then token hooks always run.
+  //    Both stages are guarded (a wrong-stage plugin warns rather than silently doing nothing);
+  //    result is de-duped (later wins).
+  const withIcons = includeIcons ? runIconPlugins(tokens, plugins, theme) : tokens;
   return runTokenPlugins(withIcons, theme, plugins);
 }

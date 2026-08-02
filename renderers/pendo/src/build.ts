@@ -5,7 +5,8 @@
  * the guide container `[class*="instui"]` — the drop-in replacement for pendo-styles' generated
  * `vendor/tokens.css`. On top sit the ported component layers (see {@link COMPONENTS}), assembled in
  * `@layer` cascade order, then run through the package-local `add-important` and `add-scope`
- * transforms so the result is a deployable guide stylesheet.
+ * transforms so the result is a deployable guide stylesheet. The `vars` layer holds
+ * `--pendo-*` aliases and token overrides; the `chrome` layer holds backdrop, image, and divider.
  *
  * @module
  */
@@ -14,7 +15,7 @@ import { toCss } from "@pantoken/css";
 import { elevationCss, focusOutlineDeclarations, focusOutlineRules } from "@pantoken/components";
 import { byTheme } from "@pantoken/tokens";
 import { pruneCustomProps } from "@pantoken/plugin-prune-custom-props";
-import { COMPONENTS, LAYER_ORDER, MANUAL_CSS } from "./layers.ts";
+import { COMPONENTS, LAYER_ORDER, PENDO_VARS_CSS } from "./layers.ts";
 import { addImportant } from "./plugins/add-important.ts";
 import { addScope } from "./plugins/add-scope.ts";
 import type { Theme } from "@pantoken/model";
@@ -23,12 +24,13 @@ import type { Theme } from "@pantoken/model";
 const GUIDE_SELECTOR = '[class*="instui"]';
 
 /**
- * The pure-outline focusables whose ring is delegated to the focus-outline rules from
- * `@pantoken/components`. Elements
- * with custom focus behaviour (select/textarea background resets, radio and number-scale sibling
- * outlines, the card's `:focus-visible` reset) keep their own rules and are left off this list.
+ * Focusables whose ring is fully delegated to focusLayer(). Elements with additional focus
+ * behaviour (card `:focus-visible` reset, input background/border resets, radio sibling label
+ * suppression) keep component-specific `:focus` rules but omit the outline declarations.
  */
-const FOCUSABLES = "._pendo-button, ._pendo-close-guide, ._pendo-text-link";
+const FOCUSABLES =
+  "._pendo-button, ._pendo-close-guide, ._pendo-text-link, " +
+  "select._pendo-multi-choice-poll-select, ._pendo-open-text-poll-input, input.pendo-radio";
 
 /** Build the `instui.elevation` layer: the named `--instui-elevation-*` box-shadow custom props. */
 function elevationLayer(): string {
@@ -89,7 +91,7 @@ export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
 
   const tokenCss = toCss(byTheme(theme), { scope: GUIDE_SELECTOR });
   const order = `@layer ${LAYER_ORDER.map((l) => `instui.${l}`).join(", ")};`;
-  const tokenLayer = `@layer instui.tokens {\n${tokenCss}\n\n${MANUAL_CSS}\n}`;
+  const tokenLayer = `@layer instui.tokens {\n${tokenCss}\n\n${PENDO_VARS_CSS}\n}`;
   const components = COMPONENTS.map((c) => `@layer instui.${c.layer} {\n${c.css}\n}`).join("\n\n");
   const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer()}\n\n${components}\n\n${focusLayer()}`;
 

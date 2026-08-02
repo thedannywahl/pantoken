@@ -21,6 +21,7 @@
   flex-direction: column;
   gap: var(--instui-component-form-field-layout-gap-primitives);
 }
+
 .pfx-form-field-message {
   display: inline-flex;
   align-items: center;
@@ -31,15 +32,19 @@
   line-height: var(--instui-component-form-field-message-line-height);
   color: var(--instui-component-form-field-message-hint-text-color);
 }
+
 .pfx-form-field-message.-type-hint {
   color: var(--instui-component-form-field-message-hint-text-color);
 }
+
 .pfx-form-field-message.-type-error {
   color: var(--instui-component-form-field-message-error-text-color);
 }
+
 .pfx-form-field-message.-type-success {
   color: var(--instui-component-form-field-message-success-text-color);
 }
+
 .pfx-form-field-message.-type-error::before,
 .pfx-form-field-message.-type-success::before {
   content: "";
@@ -48,14 +53,18 @@
   block-size: 1em;
   background: currentColor;
 }
+
 .pfx-form-field-message.-type-error::before {
   -webkit-mask: var(--instui-icon-circle-alert) center / contain no-repeat;
   mask: var(--instui-icon-circle-alert) center / contain no-repeat;
 }
+
 .pfx-form-field-message.-type-success::before {
   -webkit-mask: var(--instui-icon-circle-check) center / contain no-repeat;
   mask: var(--instui-icon-circle-check) center / contain no-repeat;
 }
+
+/* fallow-ignore-next-line css-duplicate-block -- clip pattern required inline for individual importability */
 .pfx-form-field-message.-type-screenreader-only {
   position: absolute;
   inline-size: 1px;

@@ -1,0 +1,34 @@
+/**
+ * @component pendo-vars
+ * @selector [class*="instui"]
+ * @summary Local CSS custom properties for Pendo guide layout constants and upstream token gaps.
+ * @remarks All properties are scoped to `[class*="instui"]` and consumed by the other pendo CSS files.
+ *   `--pendo-space-0` aliases the upstream zero-spacing sentinel to avoid repeating the full token path.
+ *   `--pendo-input-border-style` fills a gap where the upstream set does not yet supply a `border-style`
+ *   token for text inputs and text areas.
+ * @cssproperty --pendo-embedded-width <length> — Max-width of the embedded (lightboxBlank) guide container.
+ * @cssproperty --pendo-alert-indent <length> — Width of the alert's coloured sidebar strip.
+ * @cssproperty --pendo-overlay-width <length> — Max-width of the overlay (tooltipBlank) guide container.
+ * @cssproperty --pendo-space-0 <length> — Zero-spacing alias; maps to the upstream `space-none` token.
+ * @cssproperty --pendo-input-border-style <custom-ident> — Border-style fallback for inputs (`solid`); remove when the upstream token ships.
+ * @cssproperty --instui-component-text-area-min-height <length> — TextArea floor height; no upstream token yet.
+ * @cssproperty --instui-component-text-area-max-height <length> — TextArea ceiling height; no upstream token yet.
+ * @cssproperty --instui-component-text-area-max-width <length> — TextArea max-width; no upstream token yet.
+ */
+[class*="instui"] {
+  /* Embedded guide max-width (lightboxBlank layout) */
+  --pendo-embedded-width: 59.25rem;
+  /* Alert sidebar strip width */
+  --pendo-alert-indent: 2.5rem;
+  /* Overlay/popover guide max-width (tooltipBlank layout) */
+  --pendo-overlay-width: 22.5rem;
+  /* Shorthand for the zero-spacing sentinel */
+  --pendo-space-0: var(--instui-component-shared-tokens-spacing-general-space-none);
+  /* Workaround: --instui-component-text-input/text-area-border-style not yet in upstream token set */
+  --pendo-input-border-style: solid;
+
+  /* TextArea: clamp to pendo-specific dimensions not in upstream tokens */
+  --instui-component-text-area-min-height: 4rem;
+  --instui-component-text-area-max-height: 6rem;
+  --instui-component-text-area-max-width: 20rem;
+}

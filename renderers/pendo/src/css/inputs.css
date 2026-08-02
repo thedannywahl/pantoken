@@ -1,0 +1,522 @@
+/**
+ * @component pendo-inputs
+ * @selector [class*="instui"]
+ * @summary All Pendo survey form input controls: open-text textarea, dropdown select, radio groups, and number-scale/NPS buttons.
+ * @remarks Four input types in one layer:
+ *   (1) Textarea — `._pendo-open-text-poll-input`; full-width with auto height between min/max.
+ *   (2) Select — `._pendo-multi-choice-poll-select`; custom-appearance dropdown with chevron icon; opts
+ *       into Chromium's base-select model under `@supports (appearance: base-select)`.
+ *   (3) Radio group — `label.pendo-radio` + `input.pendo-radio`; used for single-choice and PMF surveys.
+ *   (4) Number-scale / NPS — `input[type="radio"]` + `label` pairs styled as small square buttons
+ *       (secondary unselected, primary selected); also covers UX-Lite and CSAT surveys.
+ * @part ._pendo-open-text-poll-input — Open-text textarea; full-width with auto height.
+ * @part ._pendo-multi-choice-poll-select-border — Select wrapper; supplies the chevron via `::after`.
+ * @part select._pendo-multi-choice-poll-select — The `<select>` element.
+ * @part select._pendo-multi-choice-poll-select option select-option — The dropdown options (via `::picker(select)` in Chromium base-select mode).
+ * @part label.pendo-radio radio-label — Radio label; maps to `instui-component-radio-input` tokens in groups, or button tokens in scale polls.
+ * @part input.pendo-radio radio-input — Radio control; custom appearance.
+ * @part input[type="radio"] radio — Hidden radio in scale polls; stretched to cover container for click area.
+ * @part ._pendo-number-scale-poll-wrapper — Number-scale poll wrapper.
+ * @part ._pendo-nps-poll-wrapper — NPS (0–10) poll wrapper.
+ * @part .pendo-survey-wrapper — Generic survey wrapper.
+ * @part [class$="-description"] — Scale endpoint description label.
+ * @part [class$="-poll-question"] poll-label — Form-field label container above a poll group.
+ * @pseudo ::after — Chevron-down icon on the select wrapper (base-select); check icon on selected option (base-select only).
+ * @pseudo ::placeholder — Placeholder text colour on textarea.
+ * @pseudo ::picker(select) — Chromium only: customizable dropdown panel for `base-select` (appearance: base-select).
+ * @pseudo ::picker-icon — Chromium only: browser-generated picker icon (hidden via `display: none`).
+ * @pseudo ::checkmark — Chromium only: check mark icon on selected option (hidden for custom implementation).
+ * @related pendo-button — Standard CTA buttons using the same button tokens.
+ * @related pendo-card — Provides the row/flexbox context that inputs live in.
+ * @related pendo-vars — Defines textarea min/max-height local tokens.
+ */
+
+/* ─── Textarea ─── */
+
+._pendo-row:has(._pendo-open-text-poll-input) {
+  height: auto;
+}
+
+._pendo-row:has(._pendo-open-text-poll-input) .pendo-mock-flexbox-row {
+  height: auto;
+  min-height: unset;
+}
+
+._pendo-row:has(._pendo-open-text-poll-input) .pendo-mock-flexbox-element {
+  position: static;
+  width: 100%;
+}
+
+._pendo-open-text-poll-input {
+  border-radius: var(--instui-component-text-area-border-radius);
+  border-width: var(--instui-component-text-area-border-width);
+  border-style: var(--pendo-input-border-style);
+  padding: var(--instui-component-text-area-padding);
+  gap: var(--instui-component-text-area-gap-content);
+  min-height: var(--instui-component-text-area-min-height);
+  height: auto;
+  max-height: var(--instui-component-text-area-max-height);
+  width: 100%;
+  font-family: var(--instui-component-text-area-font-family);
+  font-weight: var(--instui-component-text-area-font-weight);
+  font-size: var(--instui-component-text-area-font-size-sm);
+  line-height: var(--instui-line-height-standalone-text-base);
+  letter-spacing: normal;
+  font-style: normal;
+  margin: var(--pendo-space-0);
+  background-color: var(--instui-component-text-area-background-color);
+  color: var(--instui-component-text-area-text-color);
+  border-color: var(--instui-component-text-area-border-color);
+
+  &:hover {
+    background: var(--instui-component-text-area-background-hover-color);
+    border-color: var(--instui-component-text-area-border-hover-color);
+  }
+
+  &:focus {
+    background-color: var(--instui-component-text-area-background-color);
+    border-color: var(--instui-component-text-area-border-color);
+  }
+
+  &::placeholder {
+    color: var(--instui-component-text-area-placeholder-color);
+  }
+
+  &:hover::placeholder {
+    color: var(--instui-component-text-area-placeholder-hover-color);
+  }
+}
+
+._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+  ._pendo-open-text-poll-input {
+    /* PMF Survey does not have `rows` attribute, so manually set to match other surveys */
+    min-height: 100px;
+  }
+
+  :is([id*="survey-pmf-answers"], [id*="survey-single-choice"]) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* PMF survey inputs are inline-block by default, override to stack vertically. */
+  :is([id*="survey-pmf-answers"], [id*="survey-single-choice"]) span:has(.pendo-radio) {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+/* ─── Select ─── */
+
+._pendo-multi-choice-poll-select-border[id^="pendo-select-container-"]:has(> select) {
+  border: 0 none;
+  background: none;
+  padding: var(--pendo-space-0);
+  margin: var(--pendo-space-0);
+  position: relative;
+
+  /* Chevron icon — mask-image approach for automatic light/dark theming */
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: var(--instui-component-text-input-padding-horizontal-sm);
+    top: var(--instui-component-shared-tokens-spacing-general-space-lg);
+    transform: translateY(-50%);
+    width: var(--instui-component-icon-size-sm);
+    height: var(--instui-component-icon-size-sm);
+    mask-image: var(--instui-icon-chevron-down);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    pointer-events: none;
+    background-color: var(--instui-component-text-input-text-color);
+  }
+}
+
+select._pendo-multi-choice-poll-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: var(--instui-component-text-input-height-sm);
+  border-radius: var(--instui-component-text-input-border-radius);
+  border-width: var(--instui-component-text-input-border-width);
+  /* border-style token not yet in upstream set; see --pendo-input-border-style in vars.css */
+  border-style: var(--pendo-input-border-style);
+  padding: var(--pendo-space-0)
+    calc(var(--instui-component-text-input-padding-horizontal-sm) + 24px) var(--pendo-space-0)
+    var(--instui-component-text-input-padding-horizontal-sm);
+  font-family: var(--instui-component-text-input-font-family);
+  font-weight: var(--instui-component-text-input-font-weight);
+  font-size: var(--instui-component-text-input-font-size-sm);
+  /* Chromium needs larger line-height to visually center vertically */
+  line-height: calc(var(--instui-line-height-standalone-text-base) * 2);
+  letter-spacing: normal;
+  font-style: normal;
+  background-color: var(--instui-component-text-input-background-color);
+  color: var(--instui-component-text-input-text-color);
+  border-color: var(--instui-component-text-input-border-color);
+
+  &:hover {
+    background-color: var(--instui-component-text-input-background-hover-color);
+    border-color: var(--instui-component-text-input-border-hover-color);
+  }
+
+  &:focus {
+    background-color: var(--instui-component-text-input-background-color);
+  }
+}
+
+/* ─── Select Option | Light/Dark (fallback) ─── */
+/* <option> elements are OS-rendered; light-dark() provides the fallback before @supports base-select */
+select._pendo-multi-choice-poll-select option {
+  font-family: var(--instui-component-text-input-font-family);
+  font-weight: var(--instui-component-text-input-font-weight);
+  font-size: var(--instui-component-text-input-font-size-sm);
+  background-color: var(--instui-component-view-background-primary);
+  color: var(--instui-component-text-base-color);
+}
+
+/* ─── Select Option | Chromium: customizable select (appearance: base-select) ─── */
+@supports (appearance: base-select) {
+  /* Rotate chevron when open */
+  ._pendo-multi-choice-poll-select-border[id^="pendo-select-container-"]:has(> select:open)::after {
+    mask-image: var(--instui-icon-chevron-up);
+  }
+
+  /* Opt the <select> into the new model */
+  select._pendo-multi-choice-poll-select,
+  select._pendo-multi-choice-poll-select::picker(select) {
+    appearance: base-select;
+  }
+
+  /* Hide the browser-generated picker icon — we supply our own via mask-image on the container */
+  select._pendo-multi-choice-poll-select::picker-icon {
+    display: none;
+  }
+
+  /* ─── Picker panel ─── */
+  select._pendo-multi-choice-poll-select::picker(select) {
+    border-radius: var(--instui-component-popover-border-radius);
+    border-width: var(--instui-component-shared-tokens-stroke-width-sm);
+    border-style: solid;
+    overflow: hidden;
+    padding: var(--pendo-space-0);
+    margin: var(--pendo-space-0);
+    background-color: var(--instui-component-options-item-background);
+    border-color: var(--instui-component-popover-border-color);
+    box-shadow: var(--instui-elevation-above);
+  }
+
+  /* ─── Options ─── */
+  select._pendo-multi-choice-poll-select option {
+    border-radius: 0;
+    margin: var(--pendo-space-0);
+    font-family: var(--instui-component-options-item-font-family);
+    font-weight: var(--instui-component-options-item-font-weight);
+    font-size: var(--instui-font-size-text-sm);
+    letter-spacing: var(--instui-component-text-letter-spacing-normal);
+    cursor: pointer;
+    line-height: var(--instui-component-options-item-line-height);
+    height: var(--instui-size-interactive-height-sm);
+    background-color: var(--instui-component-options-item-background);
+    color: var(--instui-component-options-item-color);
+
+    &::checkmark {
+      display: none;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: var(--instui-component-options-item-highlighted-background);
+      color: var(--instui-component-options-item-highlighted-label-color);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:checked {
+      font-weight: var(--instui-component-options-item-font-weight-selected);
+      border-radius: 0;
+      padding-right: calc(
+        var(--instui-component-options-item-padding-horizontal) +
+          var(--instui-spacing-padding-interactive-horizontal-sm)
+      );
+      position: relative;
+      background-color: var(--instui-component-options-item-selected-background);
+      color: var(--instui-component-options-item-selected-label-color);
+
+      /* Check icon — mask-image approach for automatic light/dark theming */
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: var(--instui-component-options-item-padding-horizontal);
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--instui-component-icon-size-sm);
+        height: var(--instui-component-icon-size-sm);
+        mask-image: var(--instui-icon-check);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        pointer-events: none;
+        background-color: var(--instui-component-options-item-selected-label-color);
+      }
+
+      &:hover {
+        background-color: var(--instui-component-menu-item-selected-highlighted-background);
+      }
+    }
+  }
+}
+
+/* ─── Radio group ─── */
+
+/* Radio label */
+._pendo-multi-choice-poll-select-border label.pendo-radio,
+._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"])
+  :is([id*="survey-pmf-answers"], [id*="survey-single-choice"])
+  label.pendo-radio {
+  font-family: var(--instui-component-radio-input-font-family);
+  font-weight: var(--instui-component-radio-input-font-weight);
+  font-size: var(--instui-component-radio-input-font-size-sm);
+  line-height: var(--instui-component-radio-input-line-height-sm);
+  letter-spacing: normal;
+  font-style: normal;
+  margin: var(--pendo-space-0);
+  background-color: var(--instui-color-transparent-color);
+  color: var(--instui-component-radio-input-label-base-color);
+
+  &:hover {
+    color: var(--instui-component-radio-input-label-hover-color);
+  }
+}
+
+/* Radio input */
+._pendo-multi-choice-poll-select-border input.pendo-radio,
+._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"])
+  :is([id*="survey-pmf-answers"], [id*="survey-single-choice"])
+  input.pendo-radio {
+  width: var(--instui-component-radio-input-control-size-sm);
+  height: var(--instui-component-radio-input-control-size-sm);
+  border-radius: var(--instui-component-shared-tokens-border-radius-full);
+  border-width: var(--instui-component-radio-input-border-width);
+  border-style: var(--pendo-input-border-style);
+  margin: var(--instui-component-shared-tokens-spacing-general-space2xs)
+    var(--instui-component-radio-input-gap) var(--pendo-space-0) var(--pendo-space-0);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-color: var(--instui-component-radio-input-border-color);
+  background-color: var(--instui-component-radio-input-background-color);
+
+  &:hover {
+    background-color: var(--instui-component-radio-input-background-hover-color);
+    border-color: var(--instui-component-radio-input-border-readonly-color);
+  }
+
+  &:checked {
+    box-shadow: var(--instui-component-radio-input-border-selected-color) inset 0 0 0
+      var(--instui-component-radio-input-checked-inset-sm);
+    border-color: var(--instui-component-radio-input-border-selected-color);
+
+    + label {
+      background: var(--instui-color-transparent-color);
+      color: var(--instui-component-radio-input-label-base-color);
+    }
+  }
+
+  &:focus {
+    + label {
+      outline: none;
+    }
+  }
+}
+
+/* Form field label */
+[class$="-poll-question"] > ._pendo-simple-text > ._pendo-text-plain {
+  font-family: var(--instui-component-form-field-layout-font-family);
+  font-weight: var(--instui-component-form-field-layout-font-weight);
+  font-size: var(--instui-component-form-field-layout-font-size);
+  line-height: var(--instui-component-form-field-layout-line-height);
+  letter-spacing: normal;
+  font-style: normal;
+  margin: var(--instui-component-form-field-layout-gap-primitives) var(--pendo-space-0);
+  color: var(--instui-component-form-field-layout-text-color);
+}
+
+/* ─── Number-scale / NPS poll buttons ─── */
+/*
+ * Number-scale and NPS polls are HTML radio inputs styled like square buttons;
+ * secondary colours for unselected, primary colours for selected/checked.
+ */
+
+._pendo-number-scale-poll-wrapper {
+  padding: var(--pendo-space-0);
+}
+
+.pendo-survey-wrapper > div:has(input[type="radio"]),
+._pendo-nps-poll-wrapper,
+[id*="survey-pmf-answers"],
+[id*="survey-single-choice"] {
+  padding: var(--pendo-space-0) var(--pendo-space-0)
+    var(--instui-component-shared-tokens-spacing-general-space-lg);
+  margin: var(--pendo-space-0);
+}
+
+._pendo-number-scale-poll-wrapper > div[role*="radiogroup"],
+._pendo-nps-poll-wrapper > div[role*="radiogroup"],
+.pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(input[type="radio"]) {
+  gap: var(--instui-component-shared-tokens-spacing-general-space-md);
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+
+/*
+ * UX-Lite (and similar) surveys emit radio inputs without id/for linkage
+ * between input and label. Expand the hidden input to cover its container
+ * so clicking the visible label area actually activates the radio.
+ */
+.pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(input[type="radio"]) > span {
+  position: relative;
+}
+
+.pendo-survey-wrapper
+  > div:not([id*="survey-single-choice"]):has(input[type="radio"])
+  > span
+  > input[type="radio"] {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+._pendo-nps-poll-wrapper > div[role*="radiogroup"] {
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+label.pendo-radio[class*="_pendo-number-scale-poll-"],
+label.pendo-radio[class*="_pendo-nps-poll-"],
+.pendo-survey-wrapper > :not([id*="survey-single-choice"]) label {
+  height: var(--instui-component-base-button-small-height);
+  min-height: var(--instui-component-base-button-small-height);
+  width: var(--instui-component-base-button-small-height);
+  aspect-ratio: 1 / 1;
+  border-width: var(--instui-component-base-button-border-width);
+  border-radius: var(--instui-component-base-button-border-radius);
+  border-style: var(--instui-component-base-button-border-style);
+  font-size: var(--instui-component-base-button-small-font-size);
+  /* Line height is set to the button height to center the text vertically, and because the text will always be one line. */
+  line-height: var(--instui-component-base-button-small-height);
+  letter-spacing: var(--instui-component-base-button-letter-spacing);
+  font-family: var(--instui-component-base-button-font-family);
+  font-weight: var(--instui-component-base-button-font-weight);
+  text-align: center;
+  margin: var(--pendo-space-0);
+  background: var(--instui-component-base-button-secondary-background);
+  border-color: var(--instui-component-base-button-secondary-border-color);
+  color: var(--instui-component-base-button-secondary-color);
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color-start);
+  outline-offset: 0;
+  transition: var(--instui-focus-outline-transition);
+
+  &:hover {
+    background: var(--instui-component-base-button-secondary-hover-background);
+    border-color: var(--instui-component-base-button-secondary-hover-border-color);
+    color: var(--instui-component-base-button-secondary-hover-text-color);
+  }
+
+  &:active {
+    background: var(--instui-component-base-button-secondary-active-background);
+    border-color: var(--instui-component-base-button-secondary-active-border-color);
+    color: var(--instui-component-base-button-secondary-active-text-color);
+  }
+}
+
+/* Number scale description */
+label.pendo-radio[class*="_pendo-number-scale-poll-"] + [class$="-description"],
+.pendo-survey-wrapper > :not([id*="survey-single-choice"]) label + div {
+  width: var(--instui-component-base-button-small-height);
+  margin: var(--pendo-space-0);
+  font-weight: var(--instui-component-metric-label-font-weight);
+  line-height: var(--instui-line-height-standalone-text-xs);
+  font-size: var(--instui-component-metric-label-font-size);
+  color: var(--instui-component-text-muted-color);
+}
+
+/* Right-align the last description so it anchors to the last button's right edge */
+[class*="-wrapper"]:last-child,
+.pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(> span) > span:last-child {
+  position: relative;
+}
+
+[class*="-wrapper"]:last-child > [class$="-description"],
+.pendo-survey-wrapper
+  div:not([id*="survey-single-choice"]):has(> span):last-child
+  > span:last-child
+  > div {
+  position: absolute;
+  width: auto;
+  text-align: right;
+  right: 0;
+}
+
+/* NPS label sits left/right of scale, not below */
+._pendo-nps-poll-lowerbound-label,
+._pendo-nps-poll-upperbound-label {
+  margin: var(--pendo-space-0);
+}
+
+input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+input.pendo-radio:focus-visible + label.pendo-radio[class*="_pendo-nps-poll-"],
+.pendo-survey-wrapper
+  > :not([id*="survey-single-choice"])
+  input.pendo-radio:focus-visible
+  + label.pendo-radio,
+.pendo-survey-wrapper
+  > :not([id*="survey-single-choice"])
+  input[type="radio"]:focus-visible
+  + label {
+  outline-color: light-dark(
+    var(--instui-focus-outline-color),
+    var(--instui-focus-outline-color-inverse)
+  );
+  outline-offset: var(--instui-focus-outline-offset);
+}
+
+input.pendo-radio:checked + label.pendo-radio[class*="_pendo-number-scale-poll-"],
+input.pendo-radio:checked + label.pendo-radio[class*="_pendo-nps-poll-"],
+.pendo-survey-wrapper
+  > :not([id*="survey-single-choice"])
+  input.pendo-radio:checked
+  + label.pendo-radio,
+.pendo-survey-wrapper > :not([id*="survey-single-choice"]) input[type="radio"]:checked + label {
+  background: var(--instui-component-base-button-primary-background);
+  border-color: var(--instui-component-base-button-primary-border-color);
+  color: var(--instui-component-base-button-primary-color);
+
+  &:hover {
+    background: var(--instui-component-base-button-primary-hover-background);
+    border-color: var(--instui-component-base-button-primary-hover-border-color);
+    color: var(--instui-component-base-button-primary-hover-text-color);
+  }
+
+  &:active {
+    background: var(--instui-component-base-button-primary-active-background);
+    border-color: var(--instui-component-base-button-primary-active-border-color);
+    color: var(--instui-component-base-button-primary-active-text-color);
+  }
+}
+
+[class$="-poll-question"] + ._pendo-row [class$="-description"] {
+  padding-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
+  color: var(--instui-component-text-muted-color);
+}

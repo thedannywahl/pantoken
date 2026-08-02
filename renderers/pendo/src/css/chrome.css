@@ -1,0 +1,94 @@
+/**
+ * @component pendo-chrome
+ * @selector [class*="instui"]
+ * @summary Decorative guide content (backdrop, image, video, divider) and the close/dismiss button.
+ * @remarks "Chrome" refers to structural content elements Pendo can insert into any guide layout.
+ *   The backdrop display state (block/none) is set via inline style by Pendo's runtime.
+ *   The close button is positioned absolutely inside `._pendo-step-container-styles`
+ *   (`position:relative`); its inset values differ between the popover and alert layouts.
+ * @part ._pendo-backdrop — Fixed full-viewport backdrop; background maps to the mask colour token.
+ * @part ._pendo-image — Inline image; constrained to 100% container width.
+ * @part [class*="pendo-video-wrapper"] — Video embed wrapper; locked to 16/9 aspect ratio.
+ * @part ._pendo-video — The video element inside the wrapper; fills 100%×100%.
+ * @part hr — Divider rule; thin line using view-border and tab-panel tokens.
+ * @part ._pendo-close-guide — Ghost dismiss button; absolute-positioned in the top-end corner of the card.
+ * @related pendo-card — Provides `position:relative` on the card and close-button row margin-right clearance.
+ * @related pendo-container — Provides the layout variant context for close-button positioning.
+ */
+
+/* Video */
+[class*="pendo-video-wrapper"] {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  overflow: visible;
+  padding-bottom: 0;
+  position: relative;
+}
+
+._pendo-video {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.pendo-mock-flexbox-element:has([class*="pendo-video-wrapper"]) {
+  width: 100%;
+}
+
+/* Image */
+._pendo-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Backdrop */
+._pendo-backdrop {
+  background-color: var(--instui-component-mask-background-color);
+}
+
+/* Divider */
+.pendo-mock-flexbox-element:has(._pendo-divider) {
+  width: 100%;
+}
+
+hr {
+  border-width: var(--instui-component-shared-tokens-stroke-width-sm);
+  border-style: var(--instui-component-view-border-style);
+  margin: var(--instui-component-shared-tokens-spacing-general-space-xs) var(--pendo-space-0);
+  border-radius: var(--instui-component-shared-tokens-border-radius-full);
+  border-color: var(--instui-component-tabs-panel-border-color);
+}
+
+/* ─── Close button ─── */
+
+._pendo-close-guide {
+  padding-bottom: var(--instui-component-shared-tokens-spacing-general-space-xs);
+  height: var(--instui-component-base-button-small-height);
+  aspect-ratio: 1;
+  border-radius: var(--instui-component-base-button-border-radius);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-width: var(--pendo-space-0);
+  background-size: var(--instui-component-icon-size-sm);
+  position: absolute;
+  inset-inline: auto var(--instui-component-shared-tokens-spacing-general-space-xs);
+  inset-block-start: var(--instui-component-shared-tokens-spacing-general-space-xs);
+  font-size: var(--instui-font-size-text-lg);
+  font-family: var(--instui-component-base-button-font-family);
+  font-weight: var(--instui-primitive-font-weight-medium);
+  color: var(--instui-component-text-base-color);
+
+  &:hover {
+    background-color: var(--instui-component-base-button-primary-ghost-hover-background);
+  }
+
+  &:active {
+    background-color: var(--instui-component-base-button-primary-ghost-active-background);
+  }
+}
+
+[data-layout="lightboxBlank"] ._pendo-close-guide {
+  inset-block-start: var(--instui-component-alert-close-button-margin-top);
+  inset-inline-end: var(--instui-component-alert-close-button-margin-right);
+}

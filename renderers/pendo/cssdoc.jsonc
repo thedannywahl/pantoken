@@ -1,0 +1,14 @@
+{
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "extends": ["../../cssdoc.jsonc"],
+  // Pendo CSS targets Pendo's immutable HTML via attribute selectors, not RSCSS classes.
+  "modifierConvention": "bare",
+  "rules": {
+    "component-name-case": "off",
+    // @selector declares the real attribute selector; name-not-in-css is muted while some source files
+    // still carry the [class*="instui"] wrapper that the build's addScope strips at compile time.
+    "name-not-in-css": "off",
+    // Pendo's internal ._pendo-* chained classes aren't modifier API we document.
+    "undocumented-modifier": "off"
+  }
+}

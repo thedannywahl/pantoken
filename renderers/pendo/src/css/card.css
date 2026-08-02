@@ -1,0 +1,134 @@
+/**
+ * @component pendo-card
+ * @selector [class*="instui"]
+ * @summary Row spacing, content layout, and the shared card-container shell for all guide layouts.
+ * @remarks Covers three concerns in one file:
+ *   (1) `._pendo-row` margins, with per-layout overrides for close-button clearance;
+ *   (2) Pendo's fake-flexbox replacement — Pendo uses `position:absolute` children inside
+ *       `.pendo-mock-flexbox-row`, which collapses row height; this replaces it with real
+ *       `display:flex` keyed off `data-pendo-justify-content`;
+ *   (3) `._pendo-step-container-styles` base — background, text colour, and focus ring shared
+ *       by both the alert and the popover layout cards.
+ * @part ._pendo-row — A content row; spacing varies by layout type.
+ * @part .pendo-block-wrapper — Wrapper around individual content blocks; margin is reset to zero.
+ * @part [data-pendo-justify-content] — Row that Pendo has marked for flex alignment.
+ * @part .pendo-mock-flexbox-row — Pendo's simulated flex container; replaced with real flexbox here.
+ * @part .pendo-mock-flexbox-element — Individual flex children; `position:static` overrides Pendo's inline absolute.
+ * @part ._pendo-step-container-styles — The visible card; background, colour, and focus-visible ring.
+ * @related pendo-container — Container layouts (alert and popover) built on top of this card shell.
+ * @related pendo-chrome — Close button whose height determines the row margin-right clearance.
+ */
+
+/* Row spacing in Popover layout */
+._pendo-row {
+  margin-top: var(--pendo-space-0);
+  margin-right: var(--pendo-space-0);
+  margin-bottom: var(--instui-component-shared-tokens-spacing-general-space-sm);
+  margin-left: var(--pendo-space-0);
+  line-height: var(--pendo-space-0);
+}
+
+/* Row spacing in Alert layout */
+[data-layout="lightboxBlank"] ._pendo-row {
+  margin-top: var(--pendo-space-0);
+  margin-right: var(--pendo-space-0);
+  margin-bottom: var(--instui-component-shared-tokens-spacing-gap-cards-sm);
+  margin-left: var(--pendo-space-0);
+}
+
+/* Close button spacing in Popover layout */
+[id*="guide-components"] > :first-child ._pendo-row {
+  margin-right: calc(
+    var(--instui-component-base-button-gap-button-content-sm) +
+      var(--instui-component-base-button-small-height)
+  );
+}
+
+/* Close button spacing in Alert layout */
+[data-layout="lightboxBlank"] [id*="guide-components"] > :first-child ._pendo-row {
+  margin-right: calc(
+    var(--instui-component-base-button-gap-button-content-sm) +
+      var(--instui-component-base-button-small-height) / 2
+  );
+}
+
+/* @TODO: Close button spacing in surveys */
+
+/* Content spacing */
+.pendo-block-wrapper {
+  margin: var(--pendo-space-0);
+}
+
+._pendo-text-paragraph._pendo-multi-choice-poll-question + ._pendo-row .pendo-mock-flexbox-element,
+._pendo-multi-choice-poll-select-border,
+._pendo-multi-choice-poll-select {
+  width: 100%;
+}
+
+/* Flexbox
+   * Pendo simulates flexbox with position:absolute on children, which collapses
+   * the row height. Replace it with real flexbox derived from the
+   * data-pendo-justify-content attribute so the row sizes to its content.
+   */
+[data-pendo-justify-content] .pendo-mock-flexbox-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 0;
+}
+
+[data-pendo-justify-content="flex-start"] .pendo-mock-flexbox-row {
+  justify-content: flex-start;
+}
+
+[data-pendo-justify-content="center"] .pendo-mock-flexbox-row {
+  justify-content: center;
+}
+
+[data-pendo-justify-content="flex-end"] .pendo-mock-flexbox-row {
+  justify-content: flex-end;
+}
+
+[data-pendo-justify-content="space-between"] .pendo-mock-flexbox-row {
+  justify-content: space-between;
+}
+
+/* Reset the absolute positioning Pendo inlines on each child element */
+[data-pendo-justify-content] .pendo-mock-flexbox-row .pendo-mock-flexbox-element {
+  position: static;
+}
+
+/* Card container */
+._pendo-step-container-styles {
+  background-color: var(--instui-component-view-background-primary);
+  color: var(--instui-component-view-color);
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color-start);
+  outline-offset: 0;
+  transition: var(--instui-focus-outline-transition);
+
+  &:focus-visible {
+    outline-color: light-dark(
+      var(--instui-focus-outline-color),
+      var(--instui-focus-outline-color-inverse)
+    );
+    outline-offset: var(--instui-focus-outline-offset);
+  }
+}
+
+/* Surveys */
+._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+  /* Some surveys don't use `._pendo-row` for spacing, so add margin to direct children that aren't rows. */
+  ._pendo-step-container-styles > :is(div, form, textarea, h2):not(._pendo-row) {
+    margin: var(--pendo-space-0) auto var(--instui-component-shared-tokens-spacing-general-space-sm)
+      auto;
+    width: 100%;
+    max-width: var(--pendo-embedded-width);
+  }
+
+  ._pendo-step-container-styles > ._pendo-row {
+    max-width: var(--pendo-embedded-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
