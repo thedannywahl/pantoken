@@ -14,7 +14,13 @@ import postcss from "postcss";
 import { toCss } from "@pantoken/css";
 import { elevationCss, focusOutlineDeclarations, focusOutlineRules } from "@pantoken/components";
 import { byTheme } from "@pantoken/tokens";
-import { pruneCustomProps } from "@pantoken/plugin-prune-custom-props";
+import {
+  pruneCustomProps,
+  flattenProperty,
+  mangleCustomProps,
+  type FlattenPropertyOptions,
+  type MangleCustomPropsOptions,
+} from "@pantoken/plugin-props-minify";
 import { COMPONENTS, LAYER_ORDER, PENDO_VARS_CSS } from "./layers.ts";
 import { addImportant } from "./plugins/add-important.ts";
 import { addScope } from "./plugins/add-scope.ts";
@@ -58,6 +64,19 @@ export interface BuildPendoCssOptions {
   important?: boolean;
   /** Tree-shake unused `--instui-*` tokens (default `true`; off ships the full token set). */
   prune?: boolean;
+  /**
+   * Convert `@property` at-rules to plain custom-property declarations via
+   * {@link flattenProperty} (default `false`). `true` uses plugin defaults with
+   * `injectSelector: ":scope"` so the declarations land inside the `@scope` block.
+   * Pass a {@link FlattenPropertyOptions} object to override individual defaults.
+   */
+  flatten?: boolean | FlattenPropertyOptions;
+  /**
+   * Mangle `--instui-*` names to minimal base-26 identifiers via {@link mangleCustomProps}
+   * (default `false`). Safe here because the full token + component stylesheet is a
+   * self-contained bundle. Pass a {@link MangleCustomPropsOptions} object to override defaults.
+   */
+  mangle?: boolean | MangleCustomPropsOptions;
 }
 
 /**
@@ -87,6 +106,8 @@ export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
     scope = true,
     important = true,
     prune = true,
+    flatten = false,
+    mangle = false,
   } = options;
 
   const tokenCss = toCss(byTheme(theme), { scope: GUIDE_SELECTOR });
@@ -95,11 +116,17 @@ export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
   const components = COMPONENTS.map((c) => `@layer instui.${c.layer} {\n${c.css}\n}`).join("\n\n");
   const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer()}\n\n${components}\n\n${focusLayer()}`;
 
-  // One pass over the whole stylesheet: !important on component rules, prune the unused token set,
-  // then wrap everything in @scope (last, so it contains the pruned result).
+  // Plugin order: !important → prune → flatten → mangle → scope (scope must be last).
   const plugins = [];
   if (important) plugins.push(addImportant());
   if (prune) plugins.push(pruneCustomProps());
+  if (flatten)
+    plugins.push(
+      flattenProperty(
+        flatten === true ? { injectSelector: ":scope" } : { injectSelector: ":scope", ...flatten },
+      ),
+    );
+  if (mangle) plugins.push(mangleCustomProps(mangle === true ? {} : mangle));
   if (scope) plugins.push(addScope({ selector: scopeSelector }));
   const css = plugins.length ? postcss(plugins).process(full, { from: undefined }).css : full;
 
