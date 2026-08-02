@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.17
+
+### Patch Changes
+
+- @pantoken/react@0.1.14
+- @pantoken/svelte@0.1.14
+- @pantoken/vue@0.1.14
+
 ## 0.1.16
 
 ### Patch Changes

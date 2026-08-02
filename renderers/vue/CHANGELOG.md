@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.14
+
+### Patch Changes
+
+- Updated dependencies [e1f356b]
+  - @pantoken/i18n@0.1.1
+
 ## 0.1.13
 
 ### Patch Changes
