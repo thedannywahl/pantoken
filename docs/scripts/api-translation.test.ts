@@ -5,7 +5,7 @@ import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 const spawn = vi.fn();
 vi.mock("node:child_process", () => ({ spawn }));
 
-const { GlossaryTranslationAdapter, ClaudeCodeTranslationAdapter, createTranslationAdapter } =
+const { GlossaryTranslationAdapter, AiTranslationAdapter, createTranslationAdapter } =
   await import("./api-translation.ts");
 
 /** Extract the first {...} object from a prompt string (mirrors the model's expected input). */
@@ -115,9 +115,9 @@ test("createTranslationAdapter defaults to the glossary adapter", () => {
   expect(createTranslationAdapter().name).toBe("glossary");
 });
 
-test("createTranslationAdapter builds the claude-code adapter on request", () => {
-  process.env.DOCS_TRANSLATION_ADAPTER = "claude-code";
-  expect(createTranslationAdapter().name).toBe("claude-code");
+test("createTranslationAdapter builds the ai adapter on request", () => {
+  process.env.DOCS_TRANSLATION_ADAPTER = "ai";
+  expect(createTranslationAdapter().name).toBe("ai");
 });
 
 test("createTranslationAdapter throws on an unknown adapter name", () => {
@@ -125,11 +125,11 @@ test("createTranslationAdapter throws on an unknown adapter name", () => {
   expect(() => createTranslationAdapter()).toThrow(/Unsupported DOCS_TRANSLATION_ADAPTER/);
 });
 
-// --- ClaudeCodeTranslationAdapter.translateBatch → runBatch → extractJsonObject / chunkByBudget ---
+// --- AiTranslationAdapter.translateBatch → runBatch → extractJsonObject / chunkByBudget ---
 
 test("translateBatch parses the model's JSON object and maps ids back to translations", async () => {
   useSpawn(echoResponder);
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([
     { id: "a", text: "Home" },
     { id: "b", text: "About" },
@@ -139,7 +139,7 @@ test("translateBatch parses the model's JSON object and maps ids back to transla
 
 test("translateBatch restores masked package names and inline code around the model call", async () => {
   useSpawn(echoResponder);
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([{ id: "a", text: "See @pantoken/css and `code`." }]);
   // The model never sees the raw package/code tokens (they were masked); they're restored verbatim.
   expect(out.a).toContain("@pantoken/css");
@@ -148,7 +148,7 @@ test("translateBatch restores masked package names and inline code around the mo
 
 test("translateBatch streams each chunk through onChunk", async () => {
   useSpawn(echoResponder);
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const seen: Record<string, string>[] = [];
   await adapter.translateBatch([{ id: "a", text: "Home" }], (p) => seen.push(p));
   expect(seen.length).toBeGreaterThan(0);
@@ -162,7 +162,7 @@ test("translateBatch splits items across budget-limited chunks (chunkByBudget)",
     if (prompt.includes("Translate the VALUES")) batchPrompts.push(prompt);
     return echoResponder(prompt);
   });
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([
     { id: "a", text: "aaaaaa" },
     { id: "b", text: "bbbbbb" },
@@ -175,7 +175,7 @@ test("translateBatch splits items across budget-limited chunks (chunkByBudget)",
 test("translateBatch keeps a large single item in its own chunk", async () => {
   process.env.DOCS_TRANSLATION_BATCH_BUDGET = "3";
   useSpawn(echoResponder);
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([{ id: "a", text: "way-over-budget" }]);
   expect(out.a).toBe("HU way-over-budget");
 });
@@ -185,7 +185,7 @@ test("runBatch degrades to per-item translateText when the model returns no JSON
     if (prompt.includes("Translate the VALUES")) return { stdout: "sorry, no json here" };
     return echoResponder(prompt); // single-line fallback path
   });
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([{ id: "a", text: "Home" }]);
   // Fell back to translateText, whose responder echoes the last prompt line.
   expect(out.a).toBe("HU Home");
@@ -200,7 +200,7 @@ test("runBatch restores the source for a key the model omitted from its JSON", a
     }
     return echoResponder(prompt);
   });
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([
     { id: "a", text: "First" },
     { id: "b", text: "Second" },
@@ -214,7 +214,7 @@ test("translateBatch logs and skips a chunk whose claude call fails, leaving its
     if (prompt.includes("Translate the VALUES")) return { stdout: "", code: 1, stderr: "kaboom" };
     return echoResponder(prompt);
   });
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateBatch([{ id: "a", text: "Home" }]);
   expect(out.a).toBeUndefined(); // skipped, not translated
   expect(warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("skipped a batch"))).toBe(
@@ -224,7 +224,7 @@ test("translateBatch logs and skips a chunk whose claude call fails, leaving its
 
 test("translateText trims the model output and restores package names", async () => {
   useSpawn((prompt) => ({ stdout: `  HU ${prompt.split("\n").pop()}  ` }));
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const out = await adapter.translateText("Save @pantoken/css");
   expect(out.startsWith("HU ")).toBe(true);
   expect(out).toContain("@pantoken/css");
@@ -238,7 +238,7 @@ test("translateMarkdown preserves code fences and package names through the mode
     const end = prompt.indexOf("--- END MARKDOWN ---");
     return { stdout: prompt.slice(begin, end).trim() };
   });
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   const input = ["Use @pantoken/css and `inline`.", "", "```", "const x = 1;", "```"].join("\n");
   const out = await adapter.translateMarkdown(input, "a.md");
   expect(out).toContain("@pantoken/css");
@@ -248,15 +248,15 @@ test("translateMarkdown preserves code fences and package names through the mode
 
 test("runClaude rejects with a descriptive error when the process exits non-zero", async () => {
   useSpawn(() => ({ stdout: "", code: 2, stderr: "explode" }));
-  const adapter = new ClaudeCodeTranslationAdapter();
-  await expect(adapter.translateText("Home")).rejects.toThrow(/exit 2.*explode/s);
+  const adapter = new AiTranslationAdapter();
+  await expect(adapter.translateText("Home")).rejects.toThrow(/exited 2.*explode/s);
 });
 
-test("claude-code adapter honors a custom command and args from the environment", async () => {
+test("ai adapter honors a custom command and args from the environment", async () => {
   process.env.DOCS_TRANSLATION_COMMAND = "my-cli";
   process.env.DOCS_TRANSLATION_COMMAND_ARGS = "--foo  --bar";
   useSpawn(echoResponder);
-  const adapter = new ClaudeCodeTranslationAdapter();
+  const adapter = new AiTranslationAdapter();
   await adapter.translateText("Home");
   expect(spawn).toHaveBeenCalledWith("my-cli", ["--foo", "--bar", "-p"], expect.any(Object));
 });

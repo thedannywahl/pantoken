@@ -113,6 +113,6 @@ Owner of the VitePress docs site, i18n, the cssdoc integration, and the release 
 - Package scripts invoke the toolchain via `vp` (`vp run`, `vp exec`), never `pnpm` — CI has no
   `pnpm` on PATH.
 - Localizable UI strings go in `i18n.ts`, never inline. Use the `glossary` adapter for the generated
-  API tree and the `claude-code` adapter only for hand-written guides.
+  API tree and the `ai` adapter only for hand-written guides.
 - The docs orchestrator and CSS-API node spawn `node scripts/x.ts`, not a nested `vp run`.
 - Full rules live in `docs/conventions/build-and-docs.md`.
