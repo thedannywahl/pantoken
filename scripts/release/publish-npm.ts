@@ -23,7 +23,7 @@
  */
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { homedir } from "node:os";
 import path from "node:path";
 import process from "node:process";
 import { runAsMain } from "./cli.ts";
@@ -258,9 +258,14 @@ function movePackedTarball(srcTgz: string, destTgz: string, tag: string): boolea
   return false;
 }
 
+/** CI temp root (job-scoped); falls back to ~/.pantoken-release for local runs. */
+function runtimeBase(): string {
+  return process.env.RUNNER_TEMP ?? path.join(homedir(), ".pantoken-release");
+}
+
 /** Pack the package and move the tarball to the shared packs directory; returns the .tgz path or null. */
 function packForManifest(pkg: WorkspacePackage, tag: string, rootDir: string): string | null {
-  const packsDir = path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-packs");
+  const packsDir = path.join(runtimeBase(), "pantoken-packs");
   mkdirSync(packsDir, { recursive: true });
   const pkgDir = path.join(rootDir, pkg.path);
   const tgzName = npmPackFilename(pkgDir);
@@ -282,12 +287,12 @@ function tagToFilename(tag: string): string {
 
 /** Absolute path to the release manifest JSON consumed by the workflow release-creation step. */
 function manifestPath(): string {
-  return path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-releases.json");
+  return path.join(runtimeBase(), "pantoken-releases.json");
 }
 
 /** Directory for per-package release notes files that persist until the workflow creates releases. */
 function notesDir(): string {
-  return path.join(process.env.RUNNER_TEMP ?? tmpdir(), "pantoken-release-notes");
+  return path.join(runtimeBase(), "pantoken-release-notes");
 }
 
 /**
