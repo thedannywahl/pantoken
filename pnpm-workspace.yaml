@@ -20,8 +20,8 @@ catalog:
   "@types/node": ^24.13.3
   typescript: ^7.0.0
   arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.6
-  vite-plus: 0.2.6
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.7
+  vite-plus: 0.2.7
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
@@ -92,11 +92,11 @@ catalog:
   vitepress-plugin-llms: ^1.13.4
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.7.9
-  "@cssdoc/config": ^0.7.9
-  "@cssdoc/typedoc": ^0.7.9
-  "@cssdoc/stylelint-plugin": ^0.7.9
-  "@cssdoc/eslint-plugin": ^0.7.9
+  "@cssdoc/core": ^0.8.1
+  "@cssdoc/config": ^0.8.1
+  "@cssdoc/typedoc": ^0.8.1
+  "@cssdoc/stylelint-plugin": ^0.8.1
+  "@cssdoc/eslint-plugin": ^0.8.1
   # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
@@ -131,18 +131,18 @@ peerDependencyRules:
     vite: "*"
 minimumReleaseAge: 5
 minimumReleaseAgeExclude:
-  - "@cssdoc/config@0.7.9"
-  - "@cssdoc/core@0.7.9"
-  - "@cssdoc/dialects@0.7.9"
-  - "@cssdoc/embedded@0.7.9"
-  - "@cssdoc/eslint-plugin@0.7.9"
-  - "@cssdoc/index@0.7.9"
-  - "@cssdoc/lint-core@0.7.9"
-  - "@cssdoc/markdown@0.7.9"
-  - "@cssdoc/providers@0.7.9"
-  - "@cssdoc/spec@0.7.9"
-  - "@cssdoc/stylelint-plugin@0.7.9"
-  - "@cssdoc/typedoc@0.7.9"
+  - "@cssdoc/config@0.8.1"
+  - "@cssdoc/core@0.8.1"
+  - "@cssdoc/dialects@0.8.1"
+  - "@cssdoc/embedded@0.8.1"
+  - "@cssdoc/eslint-plugin@0.8.1"
+  - "@cssdoc/index@0.8.1"
+  - "@cssdoc/lint-core@0.8.1"
+  - "@cssdoc/markdown@0.8.1"
+  - "@cssdoc/providers@0.8.1"
+  - "@cssdoc/spec@0.8.1"
+  - "@cssdoc/stylelint-plugin@0.8.1"
+  - "@cssdoc/typedoc@0.8.1"
 allowBuilds:
   core-js: true
   esbuild: true

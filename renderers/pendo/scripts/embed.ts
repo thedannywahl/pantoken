@@ -11,20 +11,7 @@ const dir = join(root, "src/css");
 const read = (name: string): string => readFileSync(join(dir, `${name}.css`), "utf8");
 
 // key → camelCase export name (must match the imports in layers.ts).
-const files = [
-  "alert",
-  "button",
-  "card",
-  "chrome",
-  "close-button",
-  "pagination",
-  "popover",
-  "radio-group",
-  "select",
-  "text",
-  "textarea",
-  "vars",
-];
+const files = ["button", "card", "chrome", "container", "inputs", "text", "vars"];
 
 const toName = (f: string): string =>
   `${f.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())}Css`;

@@ -1,135 +1,151 @@
-[class*="instui"] {
-  /* Shared base text styles */
-  ._pendo-simple-text,
-  [class*="_pendo-text-"] {
-    font-family: var(--instui-component-text-content-small-font-family);
-    font-weight: var(--instui-component-text-content-small-font-weight);
-    font-size: var(--instui-component-text-content-small-font-size);
-    line-height: var(--instui-component-text-content-small-line-height);
-    letter-spacing: var(--instui-component-text-letter-spacing-normal);
-    color: var(--instui-component-text-base-color);
-    max-width: 100%;
-  }
+/**
+ * @component pendo-text
+ * @selector [class*="instui"]
+ * @summary Styles all Pendo text content elements using InstUI typography tokens.
+ * @remarks Covers body text, bold, italic, strikethrough, headings (h2/h3), links, and lists.
+ *   Headings use smaller font-size overrides inside the tooltipBlank (popover) layout.
+ *   Survey text has additional overrides for NPS question titles, bound labels, and CSAT/UX-Lite
+ *   scale labels — these are handled at the end of the file and marked `@TODO` for cleanup.
+ * @part ._pendo-simple-text — Base text element; maps to `text-content-small` tokens.
+ * @part [class*="_pendo-text-"] — All text variant elements; share the base text styles.
+ * @part ._pendo-text-bold — Bold inline text.
+ * @part ._pendo-text-italic — Italic inline text; uses `text-content-important` tokens.
+ * @part ._pendo-text-strike — Strikethrough inline text.
+ * @part h2._pendo-text-title heading — Guide heading; maps to `heading-title-card-large` font-size.
+ * @part h3._pendo-simple-text subheading — Guide subheading; maps to `heading-title-card-regular` font-size.
+ * @part ._pendo-text-link — Inline link; maps to InstUI Link tokens with a focus-outline border-radius.
+ * @related pendo-card — Provides the card container where text content is rendered.
+ */
 
-  ._pendo-text-bold {
-    font-weight: var(--instui-component-text-content-important-font-weight);
-  }
+._pendo-simple-text,
+[class*="_pendo-text-"] {
+  font-family: var(--instui-component-text-content-small-font-family);
+  font-weight: var(--instui-component-text-content-small-font-weight);
+  font-size: var(--instui-component-text-content-small-font-size);
+  line-height: var(--instui-component-text-content-small-line-height);
+  letter-spacing: var(--instui-component-text-letter-spacing-normal);
+  color: var(--instui-component-text-base-color);
+  max-width: 100%;
+}
 
-  ._pendo-text-italic {
-    font-family: var(--instui-component-text-content-important-font-family);
-    font-weight: var(--instui-component-text-content-important-font-weight);
-    line-height: var(--instui-component-text-content-important-line-height);
-  }
+._pendo-text-bold {
+  font-weight: var(--instui-component-text-content-important-font-weight);
+}
 
-  ._pendo-text-strike {
-    text-decoration: line-through;
-  }
+._pendo-text-italic {
+  font-family: var(--instui-component-text-content-important-font-family);
+  font-weight: var(--instui-component-text-content-important-font-weight);
+  line-height: var(--instui-component-text-content-important-line-height);
+}
 
-  /* Heading h2 styles */
-  h2:is(._pendo-simple-text, ._pendo-text-title) {
-    font-weight: var(--instui-component-heading-title-card-regular-font-weight);
-    font-family: var(--instui-component-heading-title-card-regular-font-family);
-    line-height: var(--instui-component-heading-title-card-regular-line-height);
-    font-size: var(--instui-component-heading-title-card-large-font-size);
-  }
+._pendo-text-strike {
+  text-decoration: line-through;
+}
 
-  /* Subheading h3 styles */
-  h3._pendo-simple-text {
-    font-weight: var(--instui-component-heading-title-card-large-font-weight);
+/* Heading h2 styles */
+h2:is(._pendo-simple-text, ._pendo-text-title) {
+  font-weight: var(--instui-component-heading-title-card-regular-font-weight);
+  font-family: var(--instui-component-heading-title-card-regular-font-family);
+  line-height: var(--instui-component-heading-title-card-regular-line-height);
+  font-size: var(--instui-component-heading-title-card-large-font-size);
+}
+
+/* Subheading h3 styles */
+h3._pendo-simple-text {
+  font-weight: var(--instui-component-heading-title-card-large-font-weight);
+  font-size: var(--instui-component-heading-title-card-regular-font-size);
+  font-family: var(--instui-component-heading-title-card-large-font-family);
+  line-height: var(--instui-component-heading-title-card-large-line-height);
+}
+
+/* Tooltip (popover) heading overrides */
+[data-layout="tooltipBlank"] {
+  h2._pendo-simple-text {
     font-size: var(--instui-component-heading-title-card-regular-font-size);
-    font-family: var(--instui-component-heading-title-card-large-font-family);
-    line-height: var(--instui-component-heading-title-card-large-line-height);
+    line-height: var(--instui-component-heading-title-card-mini-line-height);
   }
 
-  /* Tooltip (popover) heading overrides */
-  &[data-layout="tooltipBlank"] {
-    h2._pendo-simple-text {
-      font-size: var(--instui-component-heading-title-card-regular-font-size);
-      line-height: var(--instui-component-heading-title-card-mini-line-height);
-    }
+  h3._pendo-simple-text {
+    font-size: var(--instui-component-heading-title-card-mini-font-size);
+    line-height: var(--instui-component-heading-title-card-regular-line-height);
+  }
+}
 
-    h3._pendo-simple-text {
-      font-size: var(--instui-component-heading-title-card-mini-font-size);
-      line-height: var(--instui-component-heading-title-card-regular-line-height);
-    }
+/* Link styles */
+._pendo-text-link {
+  text-decoration: var(--instui-component-link-text-decoration-within-text);
+  font-weight: var(--instui-component-link-font-weight);
+  /* border-radius added to ensure focus outline has rounded corners, matching the shape of the link text */
+  border-radius: var(--instui-component-shared-tokens-border-radius-sm);
+  color: var(--instui-component-link-text-color);
+
+  &:is(:hover, :active, :focus) {
+    color: var(--instui-component-link-text-hover-color);
   }
 
-  /* Link styles */
-  ._pendo-text-link {
-    text-decoration: var(--instui-component-link-text-decoration-within-text);
-    font-weight: var(--instui-component-link-font-weight);
-    /* border-radius added to ensure focus outline has rounded corners, matching the shape of the link text */
-    border-radius: var(--instui-component-shared-tokens-border-radius-sm);
-    color: var(--instui-component-link-text-color);
+  &:disabled {
+    color: var(--instui-component-link-text-disabled-color);
+  }
+}
 
-    &:is(:hover, :active, :focus) {
-      color: var(--instui-component-link-text-hover-color);
-    }
+/* List styles */
+._pendo-simple-text ol,
+._pendo-simple-text ul {
+  padding-left: var(--pendo-space-0);
+}
 
-    &:disabled {
-      color: var(--instui-component-link-text-disabled-color);
-    }
+/* Surveys*/
+._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
+  /* @TODO: Surveys are terrible, clean this up. */
+
+  & *:not(._pendo-close-guide) {
+    font-size: var(--instui-component-heading-title-card-mini-font-size);
   }
 
-  /* List styles */
-  ._pendo-simple-text ol,
-  ._pendo-simple-text ul {
-    padding-left: var(--pendo-space-0);
-  }
-
-  /* Surveys*/
-  &._pendo-guide-walkthrough_:not([data-layout="tooltipBlank"], [data-layout="lightboxBlank"]) {
-    /* @TODO: Surveys are terrible, clean this up. */
-
-    & *:not(._pendo-close-guide) {
-      font-size: var(--instui-component-heading-title-card-mini-font-size);
-    }
-
-    &,
-    /* PMF Thank You text
+  &,
+  /* PMF Thank You text
      * @TODO: validate selector, ._pendo-simple-text does not have span nested
      */
-    ._pendo-row:has(+ ._pendo-row > ._pendo-button-primaryButton) ._pendo-simple-text:has(> span:not([class])),
-    /* UX Lite question labels (exclude form control wrappers with inputs) */
-    .pendo-survey-wrapper>div:not(:has([class])):not(:has(input)),
-    h2._pendo-simple-text,
-    h2._pendo-text-title ._pendo-simple-text,
-    ._pendo-simple-text._pendo-nps-open-text-poll-question {
-      font-weight: var(--instui-component-heading-title-card-mini-font-weight);
-      font-family: var(--instui-component-heading-title-card-mini-font-family);
-      font-size: var(--instui-component-heading-title-card-mini-font-size);
-      line-height: var(--instui-component-heading-title-card-mini-line-height);
-      margin: var(--pendo-space-0) var(--pendo-space-0)
-        var(--instui-component-shared-tokens-spacing-general-space-sm);
-    }
+  ._pendo-row:has(+ ._pendo-row > ._pendo-button-primaryButton) ._pendo-simple-text:has(> span:not([class])),
+  /* UX Lite question labels (exclude form control wrappers with inputs) */
+  .pendo-survey-wrapper>div:not(:has([class])):not(:has(input)),
+  h2._pendo-simple-text,
+  h2._pendo-text-title ._pendo-simple-text,
+  ._pendo-simple-text._pendo-nps-open-text-poll-question {
+    font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+    font-family: var(--instui-component-heading-title-card-mini-font-family);
+    font-size: var(--instui-component-heading-title-card-mini-font-size);
+    line-height: var(--instui-component-heading-title-card-mini-line-height);
+    margin: var(--pendo-space-0) var(--pendo-space-0)
+      var(--instui-component-shared-tokens-spacing-general-space-sm);
+  }
 
-    /* NPS question labels */
-    h2._pendo-text-title ._pendo-simple-text,
-    ._pendo-simple-text._pendo-nps-open-text-poll-question {
-      text-align: left;
-    }
+  /* NPS question labels */
+  h2._pendo-text-title ._pendo-simple-text,
+  ._pendo-simple-text._pendo-nps-open-text-poll-question {
+    text-align: left;
+  }
 
-    /* NPS/survey completion messages */
-    h2._pendo-text-title._pendo-nps-poll-success-message ._pendo-simple-text {
-      text-align: center;
-    }
+  /* NPS/survey completion messages */
+  h2._pendo-text-title._pendo-nps-poll-success-message ._pendo-simple-text {
+    text-align: center;
+  }
 
-    /* NPS label sits left/right of scale, not below */
-    ._pendo-nps-poll-lowerbound-label,
-    ._pendo-nps-poll-upperbound-label {
-      font-style: normal;
-      font-size: var(--instui-component-metric-label-font-size);
-      font-weight: var(--instui-component-metric-label-font-weight);
-      line-height: var(--instui-line-height-standalone-text-xs);
-      text-align: center;
-      color: var(--instui-component-text-muted-color);
-    }
+  /* NPS label sits left/right of scale, not below */
+  ._pendo-nps-poll-lowerbound-label,
+  ._pendo-nps-poll-upperbound-label {
+    font-style: normal;
+    font-size: var(--instui-component-metric-label-font-size);
+    font-weight: var(--instui-component-metric-label-font-weight);
+    line-height: var(--instui-line-height-standalone-text-xs);
+    text-align: center;
+    color: var(--instui-component-text-muted-color);
+  }
 
-    /* UX Lite & CSAT scale labels */
-    .pendo-survey-wrapper label + div {
-      font-size: var(--instui-component-metric-label-font-size);
-      padding-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
-      text-align: left;
-    }
+  /* UX Lite & CSAT scale labels */
+  .pendo-survey-wrapper label + div {
+    font-size: var(--instui-component-metric-label-font-size);
+    padding-top: var(--instui-component-shared-tokens-spacing-general-space-xs);
+    text-align: left;
   }
 }
