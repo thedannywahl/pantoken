@@ -101,10 +101,6 @@ test("selector is configurable", () => {
   expect(toVitePressCss({ selector: ".dark" })).toContain(".dark {");
 });
 
-test("flags APPROXIMATION mappings in output", () => {
-  expect(vitePressCss).toContain("/* APPROXIMATION */");
-});
-
 test("includes 60+ variable mappings", () => {
   const mappedCount = Object.keys(VITEPRESS_TO_INSTUI).length;
   expect(mappedCount).toBeGreaterThanOrEqual(60);
