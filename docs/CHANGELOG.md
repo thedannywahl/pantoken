@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.5
+
+### Patch Changes
+
+- 7879f6b: support exporting individual icons
+
 ## 0.1.4
 
 ### Patch Changes

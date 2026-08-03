@@ -1,5 +1,33 @@
 # CHANGELOG
 
+## 0.1.19
+
+### Patch Changes
+
+- Updated dependencies [7879f6b]
+  - @pantoken/plugin-simple-icons@0.3.0
+  - @pantoken/vitepress@0.2.0
+  - @pantoken/components@0.3.0
+  - @pantoken/markdown-it@0.1.4
+  - @pantoken/react-markdown@0.1.6
+  - @pantoken/rehype@0.1.4
+  - @pantoken/drupal@0.1.12
+  - @pantoken/angular@0.1.15
+  - @pantoken/astro@0.1.9
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/css-in-js@0.1.7
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.2
+  - @pantoken/mui@0.1.7
+  - @pantoken/pendo@0.3.1
+  - @pantoken/react@0.1.16
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/storybook@0.1.7
+  - @pantoken/svelte@0.1.16
+  - @pantoken/vue@0.1.16
+  - @pantoken/web-components@0.3.2
+  - @pantoken/cli@0.1.14
+
 ## 0.1.18
 
 ### Patch Changes
