@@ -10,10 +10,17 @@
  *   --vp-c-text-1: var(--instui-color-text-base);
  * }
  * ```
- * @beta
+ * @alpha
  */
 
 :root {
+  /**
+   * Typography
+   */
+
+  /** @property {font} Base UI font stack. */
+  --vp-font-family-base: var(--instui-font-family-base);
+
   /**
    * Colors: Text
    *
@@ -28,11 +35,8 @@
   /** @property {color} Used for muted text (inactive menu, info texts). */
   --vp-c-text-2: var(--instui-color-text-muted);
 
-  /**
-  * @property {color} Used for subtle text (placeholders, caret icons). Approximates to muted in InstUI. 
-  * @todo: InstUI does not have a subtle text token; muted is the closest approximation.
-  */
-  --vp-c-text-3: var(--instui-color-text-muted);
+  /** @property {color} Used for subtle text (placeholders, caret icons). Approximates to muted in InstUI. */
+  --vp-c-text-3: var(--instui-color-text-interactive-input-placeholder);
 
   /**
    * Colors: Background
@@ -53,7 +57,7 @@
   --vp-c-bg-elv: var(--instui-color-background-container);
 
   /** @property {color} Subtle background for component distinction. */
-  --vp-c-bg-soft: var(--instui-color-background-muted);
+  --vp-c-bg-soft: var(--instui-color-background-container);
 
   /**
    * Colors: Borders & Dividers
@@ -242,99 +246,6 @@
   --vp-c-caution-soft: var(--instui-color-background-error);
 
   /**
-   * Shadows
-   *
-   * VitePress shadow variables are intentionally omitted: InstUI's shadow system
-   * uses complex drop-shadow component tokens, not composite shadow variables
-   * that can be referenced directly via var(--instui-*).
-   */
-
-  /**
-   * Component: Code
-   */
-
-  /** @property {color} Inline code text color (brand accent). */
-  --vp-code-color: var(--instui-color-text-interactive-navigation-primary-base);
-
-  /** @property {color} Code link text color. */
-  --vp-code-link-color: var(--instui-color-text-interactive-navigation-primary-base);
-
-  /** @property {color} Code link hover color. */
-  --vp-code-link-hover-color: var(--instui-color-text-interactive-navigation-primary-hover);
-
-  /** @property {color} Inline code background. */
-  --vp-code-bg: var(--instui-color-background-muted);
-
-  /** @property {color} Code block text color. */
-  --vp-code-block-color: var(--instui-color-text-muted);
-
-  /** @property {color} Code block background. */
-  --vp-code-block-bg: var(--instui-color-background-container);
-
-  /** @property {color} Code block divider color. */
-  --vp-code-block-divider-color: var(--instui-color-stroke-base);
-
-  /** @property {color} Code language label color. */
-  --vp-code-lang-color: var(--instui-color-text-muted);
-
-  /** @property {color} Code line highlight background. */
-  --vp-code-line-highlight-color: var(--instui-color-background-muted);
-
-  /** @property {color} Code line number color. */
-  --vp-code-line-number-color: var(--instui-color-text-muted);
-
-  /** @property {color} Code diff add line background. */
-  --vp-code-line-diff-add-color: var(--instui-color-background-success);
-
-  /** @property {color} Code diff add symbol color. */
-  --vp-code-line-diff-add-symbol-color: var(--instui-color-text-success);
-
-  /** @property {color} Code diff remove line background. */
-  --vp-code-line-diff-remove-color: var(--instui-color-background-error);
-
-  /** @property {color} Code diff remove symbol color. */
-  --vp-code-line-diff-remove-symbol-color: var(--instui-color-text-error);
-
-  /** @property {color} Code line warning background. */
-  --vp-code-line-warning-color: var(--instui-color-background-warning);
-
-  /** @property {color} Code line error background. */
-  --vp-code-line-error-color: var(--instui-color-background-error);
-
-  /** @property {color} Copy code button border. */
-  --vp-code-copy-code-border-color: var(--instui-color-stroke-base);
-
-  /** @property {color} Copy code button background. */
-  --vp-code-copy-code-bg: var(--instui-color-background-muted);
-
-  /** @property {color} Copy code button hover border. */
-  --vp-code-copy-code-hover-border-color: var(--instui-color-stroke-base);
-
-  /** @property {color} Copy code button hover background. */
-  --vp-code-copy-code-hover-bg: var(--instui-color-background-page);
-
-  /** @property {color} Copy code active text color. */
-  --vp-code-copy-code-active-text: var(--instui-color-text-muted);
-
-  /** @property {color} Code tab divider. */
-  --vp-code-tab-divider: var(--instui-color-stroke-base);
-
-  /** @property {color} Code tab text color. */
-  --vp-code-tab-text-color: var(--instui-color-text-muted);
-
-  /** @property {color} Code tab background. */
-  --vp-code-tab-bg: var(--instui-color-background-container);
-
-  /** @property {color} Code tab hover text color. */
-  --vp-code-tab-hover-text-color: var(--instui-color-text-base);
-
-  /** @property {color} Code tab active text color. */
-  --vp-code-tab-active-text-color: var(--instui-color-text-base);
-
-  /** @property {color} Code tab active underline bar. */
-  --vp-code-tab-active-bar-color: var(--instui-color-text-interactive-navigation-primary-base);
-
-  /**
    * Component: Button
    */
 
@@ -490,7 +401,7 @@
    */
 
   /** @property {color} Nav background. */
-  --vp-nav-bg-color: var(--instui-color-background-page);
+  --vp-nav-bg-color: var(--instui-color-background-base);
 
   /** @property {color} Nav screen background (mobile). */
   --vp-nav-screen-bg-color: var(--instui-color-background-page);
@@ -507,7 +418,7 @@
    */
 
   /** @property {color} Sidebar background. */
-  --vp-sidebar-bg-color: var(--instui-color-background-container);
+  --vp-sidebar-bg-color: var(--instui-component-view-background-primary);
 
   /**
    * Component: Badge

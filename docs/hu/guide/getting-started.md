@@ -51,6 +51,43 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
+### CSS-tokenek
+
+Az ikonok CSS egyéni tulajdonságok (`--instui-icon-<name>`). Töltsd be a stíluslapot egyszer, és
+hivatkozz bármely ikonra `mask-image`-ként vagy `background-image`-ként — nincs szükség ikononkénti
+importra.
+
+```css
+.my-icon {
+  mask-image: var(--instui-icon-check-mark);
+}
+```
+
+### JavaScript — egyetlen ikon vs. teljes készlet
+
+Az `@pantoken/icons` két nevesített exportot kínál. Használd az `iconsByName`-t egyetlen ikon
+lekéréséhez a teljes tömb bejárása nélkül:
+
+```ts
+import { iconsByName } from "@pantoken/icons";
+
+const icon = iconsByName.get("check-mark");
+icon?.svg; // inline SVG kód
+```
+
+Használd az `icons`-t, ha az egész készletre van szükséged (pl. választó építéséhez):
+
+```ts
+import { icons } from "@pantoken/icons";
+
+icons.length; // ~1 800
+icons.filter((i) => i.source === "lucide");
+```
+
+Mindkét export a modul inicializálásakor betölti a teljes IR-t — ezen a szinten nincs ikononkénti
+tree-shaking. Lean CSS-csak betöltéshez használd a [CDN-választót](/guide/cdn-picker) a szükséges
+ikonok combine URL-jének generálásához.
+
 ## Generálás natív platformra
 
 A CLI a tokenforrást egy célrepóba írja. A futtatón kívül nincs szükség telepítésre:

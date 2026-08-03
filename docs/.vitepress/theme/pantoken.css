@@ -1,7 +1,6 @@
 /* Use InstUI's font, Atkinson Hyperlegible Next (from @pantoken/components/fonts.css), for the
    whole site. The token carries its own fallback chain: Atkinson, then system-ui. */
 :root {
-  --vp-font-family-base: var(--instui-font-family-atkinson-hyperlegible-next);
   /* Vite's production CSS transform lowers light-dark() to scheme helper variables. Give that
      transform an explicit light default to pair with the dark override below; without it,
      both lowered branches remain active in light mode and concatenate into invalid colours. */
@@ -148,11 +147,11 @@ div[class*="language-"]:has(+ .css-example) > pre {
 
 .VPHomeHero {
   .heading {
-    color: #fff;
+    color: var(--instui-primitive-color-white);
 
     & :is(.name, .clip) {
-      color: #7fb4f1;
-      -webkit-text-fill-color: #7fb4f1;
+      color: var(--instui-primitive-color-blue-blue50);
+      -webkit-text-fill-color: var(--instui-primitive-color-blue-blue50);
     }
   }
 
@@ -171,4 +170,72 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
 /* Keep custom outline social icons from inheriting VitePress's solid icon fill. */
 .VPSocialLink > svg {
   fill: none !important;
+}
+
+/* INSTUI components */
+@media (min-width: 960px) {
+  .VPNavBar {
+    &:not(.home.top) {
+      --vp-nav-bg-color: var(--instui-color-background-page);
+      --vp-c-gutter: transparent;
+    }
+
+    &.has-sidebar .content.content {
+      padding-left: calc(var(--vp-sidebar-width) + var(--instui-spacing-padding-container-xs));
+    }
+
+    .VPNavBarTitle.has-sidebar .title {
+      border-bottom-color: var(--instui-component-side-nav-bar-new-background-color);
+      margin-top: var(--instui-spacing-padding-container-sm);
+    }
+  }
+
+  .VPLocalNav {
+    --vp-c-gutter: transparent;
+    --vp-c-bg-soft: var(--instui-color-background-container);
+
+    .items {
+      border-color: transparent;
+    }
+  }
+
+  .VPSidebar {
+    --vp-c-divider: var(--instui-color-stroke-muted);
+
+    margin: var(--instui-spacing-padding-container-xxs) 0
+      var(--instui-spacing-padding-container-xxs) var(--instui-spacing-padding-container-xxs);
+    border-radius: var(--instui-border-radius-container-lg);
+
+    &.VPSidebar {
+      box-shadow: var(--instui-elevation-resting);
+      padding-left: var(--instui-spacing-padding-container-md);
+    }
+  }
+
+  .VPContent {
+    .container {
+      padding-bottom: 7.5rem;
+    }
+
+    /* doubled class matches specificity of VitePress's Vue-scoped rule without hardcoding the hash */
+    .content.content {
+      padding: var(--instui-spacing-padding-container-lg);
+      background: var(--instui-component-view-background-primary);
+      border-radius: var(--instui-border-radius-container-lg);
+      box-shadow: var(--instui-elevation-resting);
+    }
+
+    .VPDocAside {
+      .content.content {
+        padding: var(--instui-spacing-padding-container-sm);
+        border-radius: var(--instui-border-radius-container-md);
+        border: 0 none;
+        margin: 0 var(--instui-spacing-space-xs);
+      }
+    }
+  }
+}
+
+.vp-doc tr {
+  background-color: var(--instui-component-view-background-primary);
 }

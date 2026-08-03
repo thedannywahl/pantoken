@@ -51,6 +51,42 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
+### CSS tokens
+
+Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
+icon as a `mask-image` or `background-image` — no per-icon import needed.
+
+```css
+.my-icon {
+  mask-image: var(--instui-icon-check-mark);
+}
+```
+
+### JavaScript — single icon vs. full set
+
+`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
+the full array:
+
+```ts
+import { iconsByName } from "@pantoken/icons";
+
+const icon = iconsByName.get("check-mark"); // only one lookup
+icon?.svg; // inline SVG markup
+```
+
+Use `icons` when you need the whole set (e.g. to build a picker):
+
+```ts
+import { icons } from "@pantoken/icons";
+
+icons.length; // ~1,800
+icons.filter((i) => i.source === "lucide");
+```
+
+Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
+level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
+for only the icons you need.
+
 ## Generate for a native platform
 
 The CLI writes token source into a target repo. No install beyond the runner:
