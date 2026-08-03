@@ -18,12 +18,12 @@ variants ship:
 The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
 just the foundation loaded.
 
-## Pick your components
+## Pick your components and icons
 
-jsDelivr's combine endpoint pulls the token foundation plus only the component stylesheets you need, in a
-single request. Check the components you want, and the builder writes the URL:
+The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for both components and icons. Open it, check what you need, and copy the generated `<link>` or `@import` tag.
 
-<CdnPicker />
+- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
+- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
 
 Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
 and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about

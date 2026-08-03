@@ -5,6 +5,7 @@ export default extendBase({
   pack: {
     entry: {
       index: "src/index.ts",
+      "vitepress-vars": "src/vitepress-vars.css",
       custom: "generated/custom.css",
       components: "generated/components.css",
     },

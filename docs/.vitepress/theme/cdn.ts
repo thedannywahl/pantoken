@@ -23,6 +23,8 @@ export interface CdnPickerStrings {
   formatImport: string;
   /** Checkbox: include the opt-in base reset. */
   includeBase: string;
+  /** Checkbox: include the spacing/color/layout utility classes (mb-md, bg-brand, etc.). */
+  includeUtilities: string;
   /** Copy button. */
   copy: string;
   /** Copy button, confirmation state. */
@@ -46,6 +48,7 @@ export const CDN_PICKER_DEFAULTS: CdnPickerStrings = {
   formatLink: "<link>",
   formatImport: "@import",
   includeBase: "Include base reset",
+  includeUtilities: "Include utilities (spacing, color, layout classes)",
   copy: "Copy",
   copied: "Copied",
   empty: "Select one or more components to build a URL.",

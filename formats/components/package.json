@@ -24,6 +24,7 @@
     "./components.css": "./dist/components.css",
     "./component-icons.css": "./dist/component-icons.css",
     "./*.css": "./dist/*.css",
+    "./icons/*.css": "./dist/icons/*.css",
     "./fonts.css": "./dist/fonts.css",
     "./prose.css": "./dist/prose.css",
     "./select.css": "./dist/select.css",

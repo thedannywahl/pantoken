@@ -14,9 +14,13 @@
     "dist"
   ],
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "exports": {
     ".": "./dist/index.mjs",
+    "./simple-icons.css": "./dist/simple-icons.css",
+    "./icons/*.css": "./dist/icons/*.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {

@@ -1,14 +1,20 @@
 /* Use InstUI's font, Atkinson Hyperlegible Next (from @pantoken/components/fonts.css), for the
    whole site. The token carries its own fallback chain: Atkinson, then system-ui. */
 :root {
-  --vp-font-family-base: var(--instui-font-family-atkinson-hyperlegible-next);
   /* Vite's production CSS transform lowers light-dark() to scheme helper variables. Give that
      transform an explicit light default to pair with the dark override below; without it,
      both lowered branches remain active in light mode and concatenate into invalid colours. */
   color-scheme: light;
+
+  --vp-c-bg: var(--instui-color-background-container);
+  --vp-local-nav-bg-color: var(--instui-color-background-container);
+  --vp-sidebar-bg-color: var(--instui-color-background-muted);
 }
 
 html.dark {
+  --vp-c-bg: var(--instui-color-background-page);
+  --vp-local-nav-bg-color: var(--instui-color-background-page);
+  --vp-sidebar-bg-color: var(--instui-color-background-container);
   color-scheme: dark;
 }
 
@@ -148,11 +154,11 @@ div[class*="language-"]:has(+ .css-example) > pre {
 
 .VPHomeHero {
   .heading {
-    color: #fff;
+    color: var(--instui-primitive-color-white);
 
     & :is(.name, .clip) {
-      color: #7fb4f1;
-      -webkit-text-fill-color: #7fb4f1;
+      color: var(--instui-primitive-color-blue-blue50);
+      -webkit-text-fill-color: var(--instui-primitive-color-blue-blue50);
     }
   }
 
@@ -171,4 +177,10 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
 /* Keep custom outline social icons from inheriting VitePress's solid icon fill. */
 .VPSocialLink > svg {
   fill: none !important;
+}
+
+@media (min-width: 960px) {
+  .VPNavBarTitle.has-sidebar .title {
+    --vp-c-divider: transparent;
+  }
 }
