@@ -12,7 +12,7 @@
 
 /** VitePress CSS variable → the Instructure token it resolves to. */
 export const VITEPRESS_TO_INSTUI: Readonly<Record<string, string>> = Object.freeze({
-  "--vp-c-bg": "--instui-color-background-base",
+  "--vp-c-bg": "--instui-color-background-page",
   "--vp-c-bg-alt": "--instui-color-background-container",
   "--vp-c-bg-soft": "--instui-color-background-muted",
   "--vp-c-text-1": "--instui-color-text-base",
@@ -30,6 +30,9 @@ export const VITEPRESS_TO_INSTUI: Readonly<Record<string, string>> = Object.free
   "--vp-c-success-1": "--instui-color-background-success",
   "--vp-c-warning-1": "--instui-color-background-warning",
   "--vp-c-danger-1": "--instui-color-background-error",
+  "--vp-shadow-1": "--instui-elevation-resting",
+  "--vp-shadow-2": "--instui-elevation-above",
+  "--vp-shadow-3": "--instui-elevation-topmost",
 });
 
 /** Options for {@link toVitePressCss}. */

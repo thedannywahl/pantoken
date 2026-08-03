@@ -16,6 +16,7 @@ type LocaleMeta = {
     architecture: string;
     components: string;
     cdn: string;
+    cdnPicker: string;
     cli: string;
     plugins: string;
     generated: string;
@@ -45,6 +46,7 @@ type LocaleMeta = {
     formatLink: string;
     formatImport: string;
     includeBase: string;
+    includeUtilities: string;
     copy: string;
     copied: string;
     empty: string;
@@ -103,6 +105,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       architecture: "Architecture",
       components: "Components",
       cdn: "CDN & distribution",
+      cdnPicker: "CDN picker",
       cli: "The pantoken CLI",
       plugins: "Plugins",
       generated: "Generated output",
@@ -127,6 +130,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       formatLink: "<link>",
       formatImport: "@import",
       includeBase: "Include base reset",
+      includeUtilities: "Include utilities (spacing, color, layout)",
       copy: "Copy",
       copied: "Copied",
       empty: "Select one or more components to build a URL.",
@@ -180,6 +184,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       architecture: "Architektúra",
       components: "Komponensek",
       cdn: "CDN és terjesztés",
+      cdnPicker: "CDN választó",
       cli: "A pantoken CLI",
       plugins: "Pluginek",
       generated: "Generált kimenet",
@@ -204,6 +209,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       formatLink: "<link>",
       formatImport: "@import",
       includeBase: "Alap reset hozzáadása",
+      includeUtilities: "Segédeszközök hozzáadása (térköz, szín, elrendezés)",
       copy: "Másolás",
       copied: "Másolva",
       empty: "Válassz ki egy vagy több komponenst az URL felépítéséhez.",

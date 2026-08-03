@@ -21,8 +21,10 @@ const selected = ref<Set<string>>(new Set());
 const allComponents = ref(false);
 const tokenSheet = ref<"lean" | "full">("lean");
 const includeBase = ref(false);
+const includeUtilities = ref(false);
 const format = ref<"link" | "import">("link");
 const copied = ref(false);
+const search = ref("");
 
 function toggle(name: string): void {
   const next = new Set(selected.value);
@@ -36,6 +38,10 @@ const chosen = computed(() => components.filter((c) => selected.value.has(c.name
 // "All" uses the whole `components.css` barrel; otherwise the checked per-component sheets.
 const active = computed(() => (allComponents.value ? components : chosen.value));
 const hasSelection = computed(() => allComponents.value || chosen.value.length > 0);
+const filteredComponents = computed(() => {
+  const q = search.value.trim().toLowerCase();
+  return q ? components.filter((c) => c.name.includes(q)) : components;
+});
 // The lean token sheet omits icons, so any active icon-using component needs component-icons.css. The
 // full sheet already carries every icon.
 const needsIconSheet = computed(
@@ -50,6 +56,7 @@ const combineUrl = computed(() => {
     `npm/@pantoken/css/dist/${tokenSheet.value === "lean" ? "style.lean.css" : "style.css"}`,
   ];
   if (includeBase.value) files.push(`${c}/base.css`);
+  if (includeUtilities.value) files.push(`${c}/utilities.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
   if (allComponents.value) files.push(`${c}/components.css`);
   else for (const comp of chosen.value) files.push(`${c}/${comp.name}.css`);
@@ -83,11 +90,19 @@ async function copy(): Promise<void> {
         <input type="checkbox" v-model="allComponents" />
         <span>{{ t.allComponents }}</span>
       </label>
+      <input
+        v-model="search"
+        type="search"
+        class="instui-text-input cdn-picker__search"
+        placeholder="Filter components…"
+        :disabled="allComponents"
+        aria-label="Filter components"
+      />
       <div
         class="cdn-picker__components instui-view -background-primary -border-radius-medium -border-width-small instui-p-sm"
         :class="{ 'cdn-picker__components--disabled': allComponents }"
       >
-        <label v-for="c in components" :key="c.name" class="instui-checkbox">
+        <label v-for="c in filteredComponents" :key="c.name" class="instui-checkbox">
           <input
             type="checkbox"
             :checked="selected.has(c.name)"
@@ -128,6 +143,10 @@ async function copy(): Promise<void> {
         <input type="checkbox" v-model="includeBase" />
         <span>{{ t.includeBase }}</span>
       </label>
+      <label class="instui-checkbox cdn-picker__base">
+        <input type="checkbox" v-model="includeUtilities" />
+        <span>{{ t.includeUtilities }}</span>
+      </label>
     </div>
 
     <div class="cdn-picker__output">
@@ -167,6 +186,10 @@ async function copy(): Promise<void> {
   margin: 0 0 1rem;
 }
 .cdn-picker__all {
+  margin-bottom: 0.5rem;
+}
+.cdn-picker__search {
+  width: 100%;
   margin-bottom: 0.5rem;
 }
 /* The scrollable component grid; chrome (bg/border/radius/padding) is on the .instui-view classes. */

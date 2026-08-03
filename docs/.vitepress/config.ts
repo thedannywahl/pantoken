@@ -293,6 +293,10 @@ const localesConfig = Object.fromEntries(
               text: locale.sidebar.guides,
               items: [
                 { text: locale.sidebar.cdn, link: `${locale.guidePrefix}cdn` },
+                {
+                  text: locale.sidebar.cdnPicker,
+                  link: `${locale.guidePrefix}cdn-picker`,
+                },
                 { text: locale.sidebar.cli, link: `${locale.guidePrefix}cli` },
                 { text: locale.sidebar.plugins, link: `${locale.guidePrefix}plugins` },
                 {

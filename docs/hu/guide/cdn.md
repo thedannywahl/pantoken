@@ -11,11 +11,12 @@ Minden pantoken komponens `--instui-*` egyéni tulajdonságokat olvas az oldalon
 
 Az emelkedési skála és a fókuszgyűrű változók mindkét lapon megmaradnak, így az árnyékok és a fókuszgyűrű csak az alappal működik.
 
-## Válassza ki komponenseit
+## Válassza ki komponenseit és ikonjait
 
-A jsDelivr kombinált végpontja lehívja a token alapját, valamint csak azokat a komponensmodelleket, amelyekre szüksége van, egyetlen kérésben. Jelölje be a kívánt komponenseket, és az szerkesztő kiírja az URL-t:
+Az [interaktív CDN választó](/hu/guide/cdn-picker) jsDelivr kombinált URL-eket épít mind a komponensekhez, mind az ikonokhoz. Nyissa meg, jelölje be, amire szüksége van, és másolja a generált `<link>` vagy `@import` tagot.
 
-<CdnPicker />
+- **Komponensek lap** — válasszon egyedi komponens stíluslapokat vagy a teljes `components.css` hordót. Adja hozzá az alaphelyzetbe állítást vagy a köztes elemek segédeszközeit, ha szüksége van rájuk.
+- **Ikonok lap** — válasszon egyedi ikonokat az InstUI készletből (~1 800 ikon) vagy a Simple Icons-ból (~3 300 márkaikon). A választó külön kombinált URL-t ad ki az ikon CSS fájlokhoz, így csak a ténylegesen használt ikonokat tölti be.
 
 Minden komponensfájl kicsi – legtöbb körülbelül 2 KB. Az ikonokat megjelenítő komponens (`alert`, `checkbox` és néhány másik) szüksége van ezekre a glifekre, így az szerkesztő hozzáadja az `@pantoken/components/dist/component-icons.css` (körülbelül 0,5 KB tömörítve — az 11 ikonok, amelyeket a komponenskészlet használ) amikor kiválasztja a karcsú lapot. A teljes lap már tartalmazza azokat.
 
