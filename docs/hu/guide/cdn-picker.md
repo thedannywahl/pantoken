@@ -1,7 +1,7 @@
 ---
-layout: page
+aside: false
+editLink: false
+title: CDN-választó
 ---
-
-# CDN választó
 
 <CdnPickerPage />

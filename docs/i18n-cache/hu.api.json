@@ -1730,6 +1730,7 @@
     "b08f1938e806b4a15c37870a1afdecb9d15cff9d778b80a46bc4522eef76e26e": "Megjelenítési és szövegigazítási segédprogramok — `.instui-display-<value>` és `.instui-text-align-<value>` — összeállítható osztályokként.",
     "b0a493d4cf8df36dffaade8d6c09c735a91f7a135bd576681855f43efc7cd2be": "mui",
     "b0c992df21b6285e100cf212fb6b3af1a9005d770c0ee672c8f6d529944e9e8c": "tabs",
+    "b0cc5fc7ecefc027d2b2eab99a3040b925890c227142569780b01bc7ba6dfe6d": "A(z) `toVitePressCss` opciói.",
     "b0d4a61a33d029b3f46e6906b6b1465401e41740702c52c4d5b9d55c153a7036": "**Szemantikai megjegyzés:** az `@property` eltávolításával elvész a CSS típusregisztráció. A típusos átmenetek/animációk,\naz `@starting-style` és a CSS Typed OM ettől függenek. Csak olyan bundle-öknél alkalmazza, ahol ezekre a szemantikákra\nnincs szükség.",
     "b0f485d586b3b0c78d477ce5fc446055f05ea886e1af587586cefbb192aabdcd": "**Forrás:** [close-button.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/close-button.css)",
     "b10fa48e8630d47d1452d18c79e990d59ec8cc9cdfa6d72a1100af27a8e32e8a": "Az upstream MINOR, ahol a shim kivezetésre kerül, `<tier>@<version>` (pl. `\"design-tokens@v1.6.0\"`).",
