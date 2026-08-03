@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vitepress",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Theme a VitePress site with Instructure tokens: maps VitePress --vp-* CSS variables to var(--instui-*).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
