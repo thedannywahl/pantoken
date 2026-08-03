@@ -12,7 +12,7 @@
 
 import { VITEPRESS_VARS_CSS } from "./vitepress-vars.ts";
 
-/** Options for {@link toVitePressCss}. */
+/** Options for `toVitePressCss`. */
 export interface ToVitePressCssOptions {
   /** The selector the variables are emitted under (default `":root"`). */
   selector?: string;

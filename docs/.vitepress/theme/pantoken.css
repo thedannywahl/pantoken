@@ -5,9 +5,16 @@
      transform an explicit light default to pair with the dark override below; without it,
      both lowered branches remain active in light mode and concatenate into invalid colours. */
   color-scheme: light;
+
+  --vp-c-bg: var(--instui-color-background-container);
+  --vp-local-nav-bg-color: var(--instui-color-background-container);
+  --vp-sidebar-bg-color: var(--instui-color-background-muted);
 }
 
 html.dark {
+  --vp-c-bg: var(--instui-color-background-page);
+  --vp-local-nav-bg-color: var(--instui-color-background-page);
+  --vp-sidebar-bg-color: var(--instui-color-background-container);
   color-scheme: dark;
 }
 
@@ -172,70 +179,8 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
   fill: none !important;
 }
 
-/* INSTUI components */
 @media (min-width: 960px) {
-  .VPNavBar {
-    &:not(.home.top) {
-      --vp-nav-bg-color: var(--instui-color-background-page);
-      --vp-c-gutter: transparent;
-    }
-
-    &.has-sidebar .content.content {
-      padding-left: calc(var(--vp-sidebar-width) + var(--instui-spacing-padding-container-xs));
-    }
-
-    .VPNavBarTitle.has-sidebar .title {
-      border-bottom-color: var(--instui-component-side-nav-bar-new-background-color);
-      margin-top: var(--instui-spacing-padding-container-sm);
-    }
+  .VPNavBarTitle.has-sidebar .title {
+    --vp-c-divider: transparent;
   }
-
-  .VPLocalNav {
-    --vp-c-gutter: transparent;
-    --vp-c-bg-soft: var(--instui-color-background-container);
-
-    .items {
-      border-color: transparent;
-    }
-  }
-
-  .VPSidebar {
-    --vp-c-divider: var(--instui-color-stroke-muted);
-
-    margin: var(--instui-spacing-padding-container-xxs) 0
-      var(--instui-spacing-padding-container-xxs) var(--instui-spacing-padding-container-xxs);
-    border-radius: var(--instui-border-radius-container-lg);
-
-    &.VPSidebar {
-      box-shadow: var(--instui-elevation-resting);
-      padding-left: var(--instui-spacing-padding-container-md);
-    }
-  }
-
-  .VPContent {
-    .container {
-      padding-bottom: 7.5rem;
-    }
-
-    /* doubled class matches specificity of VitePress's Vue-scoped rule without hardcoding the hash */
-    .content.content {
-      padding: var(--instui-spacing-padding-container-lg);
-      background: var(--instui-component-view-background-primary);
-      border-radius: var(--instui-border-radius-container-lg);
-      box-shadow: var(--instui-elevation-resting);
-    }
-
-    .VPDocAside {
-      .content.content {
-        padding: var(--instui-spacing-padding-container-sm);
-        border-radius: var(--instui-border-radius-container-md);
-        border: 0 none;
-        margin: 0 var(--instui-spacing-space-xs);
-      }
-    }
-  }
-}
-
-.vp-doc tr {
-  background-color: var(--instui-component-view-background-primary);
 }

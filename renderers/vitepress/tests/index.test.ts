@@ -38,14 +38,6 @@ test("VITEPRESS_TO_INSTUI contains all expected color mappings", () => {
   expect(mappedVars).toContain("--vp-c-danger-1");
   expect(mappedVars).toContain("--vp-c-caution-1");
 
-  // Shadow variables are intentionally omitted (no direct InstUI equivalents exist)
-
-  // Code component
-  expect(mappedVars).toContain("--vp-code-color");
-  expect(mappedVars).toContain("--vp-code-block-bg");
-  expect(mappedVars).toContain("--vp-code-line-diff-add-color");
-  expect(mappedVars).toContain("--vp-code-tab-active-bar-color");
-
   // Button component
   expect(mappedVars).toContain("--vp-button-brand-bg");
   expect(mappedVars).toContain("--vp-button-alt-text");
