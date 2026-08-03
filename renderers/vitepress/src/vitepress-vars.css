@@ -1,0 +1,571 @@
+/**
+ * @declaration vitepress-vars
+ * @summary VitePress CSS variables mapped to Instructure tokens.
+ * @remarks https://vitepress.dev/guide/extending-default-theme#customizing-css
+ * @usage Add to .vitepress/theme/custom.css
+ * @selector :root
+ * @example
+ * ```css
+ * :root {
+ *   --vp-c-text-1: var(--instui-color-text-base);
+ * }
+ * ```
+ * @beta
+ */
+
+:root {
+  /**
+   * Colors: Text
+   *
+   * - text-1: Primary text color
+   * - text-2: Muted/secondary text (e.g., inactive menu, secondary info)
+   * - text-3: Subtle text (e.g., placeholders, caret icons) — approximates to muted
+   */
+
+  /** @property {color} Used for primary text. */
+  --vp-c-text-1: var(--instui-color-text-base);
+
+  /** @property {color} Used for muted text (inactive menu, info texts). */
+  --vp-c-text-2: var(--instui-color-text-muted);
+
+  /** @property {color} Used for subtle text (placeholders, caret icons). Approximates to muted in InstUI. */
+  --vp-c-text-3: var(--instui-color-text-muted);
+  /* APPROXIMATION */
+
+  /**
+   * Colors: Background
+   *
+   * - bg: Main page background
+   * - bg-alt: Alternative background (sidebar, code blocks)
+   * - bg-elv: Elevated background (dialogs, floated elements)
+   * - bg-soft: Subtle background to distinguish components
+   */
+
+  /** @property {color} Main page background color. */
+  --vp-c-bg: var(--instui-color-background-page);
+
+  /** @property {color} Alternative background (sidebar, code blocks). */
+  --vp-c-bg-alt: var(--instui-color-background-container);
+
+  /** @property {color} Elevated background (dialogs, floated elements). Approximates to container. */
+  --vp-c-bg-elv: var(--instui-color-background-container);
+
+  /** @property {color} Subtle background for component distinction. */
+  --vp-c-bg-soft: var(--instui-color-background-muted);
+
+  /**
+   * Colors: Borders & Dividers
+   *
+   * - border: Interactive component borders
+   * - divider: Section separators within components
+   * - gutter: Component-to-component dividers
+   */
+
+  /** @property {color} Interactive component borders. */
+  --vp-c-border: var(--instui-color-stroke-base);
+
+  /** @property {color} Section separator dividers. */
+  --vp-c-divider: var(--instui-color-stroke-base);
+
+  /** @property {color} Component-to-component dividers. */
+  --vp-c-gutter: var(--instui-color-stroke-base);
+
+  /**
+   * Colors: Functional – Default (grayscale)
+   *
+   * Used for subtle indication without special meaning (e.g., menu hover state).
+   * In VitePress, defaults to gray palette; maps to text/stroke layers in InstUI.
+   */
+
+  /** @property {color} Default accent 1 (text-colored). */
+  --vp-c-default-1: var(--instui-color-text-base);
+
+  /** @property {color} Default accent 2 (hover state). */
+  --vp-c-default-2: var(--instui-color-text-muted);
+
+  /** @property {color} Default accent 3 (solid background). */
+  --vp-c-default-3: var(--instui-color-stroke-base);
+
+  /** @property {color} Default subtle background. */
+  --vp-c-default-soft: var(--instui-color-background-muted);
+
+  /**
+   * Colors: Functional – Brand (primary blue)
+   *
+   * Used for primary brand colors, links, and buttons.
+   */
+
+  /** @property {color} Brand accent 1 (link text). */
+  --vp-c-brand-1: var(--instui-color-text-interactive-navigation-primary-base);
+
+  /** @property {color} Brand accent 2 (link hover). */
+  --vp-c-brand-2: var(--instui-color-text-interactive-navigation-primary-hover);
+
+  /** @property {color} Brand accent 3 (solid button fill). */
+  --vp-c-brand-3: var(--instui-color-background-info);
+
+  /** @property {color} Brand subtle background. */
+  --vp-c-brand-soft: var(--instui-color-background-info);
+
+  /**
+   * Colors: Functional – Tip (uses brand in VitePress; info in InstUI)
+   */
+
+  /** @property {color} Tip accent 1 (text). */
+  --vp-c-tip-1: var(--instui-color-text-info);
+
+  /** @property {color} Tip accent 2 (hover). */
+  --vp-c-tip-2: var(--instui-color-text-info);
+
+  /** @property {color} Tip accent 3 (solid). */
+  --vp-c-tip-3: var(--instui-color-background-info);
+
+  /** @property {color} Tip subtle background. */
+  --vp-c-tip-soft: var(--instui-color-background-info);
+
+  /**
+   * Colors: Functional – Note (uses brand in VitePress; info in InstUI)
+   */
+
+  /** @property {color} Note accent 1 (text). */
+  --vp-c-note-1: var(--instui-color-text-info);
+
+  /** @property {color} Note accent 2 (hover). */
+  --vp-c-note-2: var(--instui-color-text-info);
+
+  /** @property {color} Note accent 3 (solid). */
+  --vp-c-note-3: var(--instui-color-background-info);
+
+  /** @property {color} Note subtle background. */
+  --vp-c-note-soft: var(--instui-color-background-info);
+  /* APPROXIMATION */
+
+  /**
+   * Colors: Functional – Success (green)
+   */
+
+  /** @property {color} Success accent 1 (text). */
+  --vp-c-success-1: var(--instui-color-text-success);
+
+  /** @property {color} Success accent 2 (hover). */
+  --vp-c-success-2: var(--instui-color-text-success);
+
+  /** @property {color} Success accent 3 (solid). */
+  --vp-c-success-3: var(--instui-color-background-success);
+
+  /** @property {color} Success subtle background. */
+  --vp-c-success-soft: var(--instui-color-background-success);
+  /* APPROXIMATION */
+
+  /**
+   * Colors: Functional – Important (purple)
+   *
+   * Maps to accent-violet in InstUI.
+   */
+
+  /** @property {color} Important accent 1 (text). */
+  --vp-c-important-1: var(--instui-color-text-accent-violet);
+
+  /** @property {color} Important accent 2 (hover). */
+  --vp-c-important-2: var(--instui-color-text-accent-violet);
+
+  /** @property {color} Important accent 3 (solid). */
+  --vp-c-important-3: var(--instui-color-background-accent-violet);
+
+  /** @property {color} Important subtle background. */
+  --vp-c-important-soft: var(--instui-color-background-accent-violet);
+  /* APPROXIMATION */
+
+  /**
+   * Colors: Functional – Warning (yellow/orange)
+   */
+
+  /** @property {color} Warning accent 1 (text). */
+  --vp-c-warning-1: var(--instui-color-text-warning);
+
+  /** @property {color} Warning accent 2 (hover). */
+  --vp-c-warning-2: var(--instui-color-text-warning);
+
+  /** @property {color} Warning accent 3 (solid). */
+  --vp-c-warning-3: var(--instui-color-background-warning);
+
+  /** @property {color} Warning subtle background. */
+  --vp-c-warning-soft: var(--instui-color-background-warning);
+  /* APPROXIMATION */
+
+  /**
+   * Colors: Functional – Danger (red)
+   */
+
+  /** @property {color} Danger accent 1 (text). */
+  --vp-c-danger-1: var(--instui-color-text-error);
+
+  /** @property {color} Danger accent 2 (hover). */
+  --vp-c-danger-2: var(--instui-color-text-error);
+
+  /** @property {color} Danger accent 3 (solid). */
+  --vp-c-danger-3: var(--instui-color-background-error);
+
+  /** @property {color} Danger subtle background. */
+  --vp-c-danger-soft: var(--instui-color-background-error);
+  /* APPROXIMATION */
+
+  /**
+   * Colors: Functional – Caution (red, same as danger)
+   */
+
+  /** @property {color} Caution accent 1 (text). */
+  --vp-c-caution-1: var(--instui-color-text-error);
+
+  /** @property {color} Caution accent 2 (hover). */
+  --vp-c-caution-2: var(--instui-color-text-error);
+
+  /** @property {color} Caution accent 3 (solid). */
+  --vp-c-caution-3: var(--instui-color-background-error);
+
+  /** @property {color} Caution subtle background. */
+  --vp-c-caution-soft: var(--instui-color-background-error);
+  /* APPROXIMATION */
+
+  /**
+   * Shadows
+   *
+   * VitePress shadow variables are intentionally omitted: InstUI's shadow system
+   * uses complex drop-shadow component tokens, not composite shadow variables
+   * that can be referenced directly via var(--instui-*).
+   */
+
+  /**
+   * Component: Code
+   */
+
+  /** @property {color} Inline code text color (brand accent). */
+  --vp-code-color: var(--instui-color-text-interactive-navigation-primary-base);
+
+  /** @property {color} Code link text color. */
+  --vp-code-link-color: var(--instui-color-text-interactive-navigation-primary-base);
+
+  /** @property {color} Code link hover color. */
+  --vp-code-link-hover-color: var(--instui-color-text-interactive-navigation-primary-hover);
+
+  /** @property {color} Inline code background. */
+  --vp-code-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Code block text color. */
+  --vp-code-block-color: var(--instui-color-text-muted);
+
+  /** @property {color} Code block background. */
+  --vp-code-block-bg: var(--instui-color-background-container);
+
+  /** @property {color} Code block divider color. */
+  --vp-code-block-divider-color: var(--instui-color-stroke-base);
+
+  /** @property {color} Code language label color. */
+  --vp-code-lang-color: var(--instui-color-text-muted);
+
+  /** @property {color} Code line highlight background. */
+  --vp-code-line-highlight-color: var(--instui-color-background-muted);
+
+  /** @property {color} Code line number color. */
+  --vp-code-line-number-color: var(--instui-color-text-muted);
+
+  /** @property {color} Code diff add line background. */
+  --vp-code-line-diff-add-color: var(--instui-color-background-success);
+
+  /** @property {color} Code diff add symbol color. */
+  --vp-code-line-diff-add-symbol-color: var(--instui-color-text-success);
+
+  /** @property {color} Code diff remove line background. */
+  --vp-code-line-diff-remove-color: var(--instui-color-background-error);
+
+  /** @property {color} Code diff remove symbol color. */
+  --vp-code-line-diff-remove-symbol-color: var(--instui-color-text-error);
+
+  /** @property {color} Code line warning background. */
+  --vp-code-line-warning-color: var(--instui-color-background-warning);
+
+  /** @property {color} Code line error background. */
+  --vp-code-line-error-color: var(--instui-color-background-error);
+
+  /** @property {color} Copy code button border. */
+  --vp-code-copy-code-border-color: var(--instui-color-stroke-base);
+
+  /** @property {color} Copy code button background. */
+  --vp-code-copy-code-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Copy code button hover border. */
+  --vp-code-copy-code-hover-border-color: var(--instui-color-stroke-base);
+
+  /** @property {color} Copy code button hover background. */
+  --vp-code-copy-code-hover-bg: var(--instui-color-background-page);
+
+  /** @property {color} Copy code active text color. */
+  --vp-code-copy-code-active-text: var(--instui-color-text-muted);
+
+  /** @property {color} Code tab divider. */
+  --vp-code-tab-divider: var(--instui-color-stroke-base);
+
+  /** @property {color} Code tab text color. */
+  --vp-code-tab-text-color: var(--instui-color-text-muted);
+
+  /** @property {color} Code tab background. */
+  --vp-code-tab-bg: var(--instui-color-background-container);
+
+  /** @property {color} Code tab hover text color. */
+  --vp-code-tab-hover-text-color: var(--instui-color-text-base);
+
+  /** @property {color} Code tab active text color. */
+  --vp-code-tab-active-text-color: var(--instui-color-text-base);
+
+  /** @property {color} Code tab active underline bar. */
+  --vp-code-tab-active-bar-color: var(--instui-color-text-interactive-navigation-primary-base);
+
+  /**
+   * Component: Button
+   */
+
+  /** @property {color} Brand button border. */
+  --vp-button-brand-border: transparent;
+
+  /** @property {color} Brand button text. */
+  --vp-button-brand-text: var(--instui-color-text-on-color);
+
+  /** @property {color} Brand button background. */
+  --vp-button-brand-bg: var(--instui-color-background-info);
+
+  /** @property {color} Brand button hover border. */
+  --vp-button-brand-hover-border: transparent;
+
+  /** @property {color} Brand button hover text. */
+  --vp-button-brand-hover-text: var(--instui-color-text-on-color);
+
+  /** @property {color} Brand button hover background. */
+  --vp-button-brand-hover-bg: var(--instui-color-background-info);
+  /* APPROXIMATION */
+
+  /** @property {color} Brand button active border. */
+  --vp-button-brand-active-border: transparent;
+
+  /** @property {color} Brand button active text. */
+  --vp-button-brand-active-text: var(--instui-color-text-on-color);
+
+  /** @property {color} Brand button active background. */
+  --vp-button-brand-active-bg: var(--instui-color-background-info);
+
+  /** @property {color} Alt button border. */
+  --vp-button-alt-border: transparent;
+
+  /** @property {color} Alt button text. */
+  --vp-button-alt-text: var(--instui-color-text-base);
+
+  /** @property {color} Alt button background. */
+  --vp-button-alt-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Alt button hover border. */
+  --vp-button-alt-hover-border: transparent;
+
+  /** @property {color} Alt button hover text. */
+  --vp-button-alt-hover-text: var(--instui-color-text-base);
+
+  /** @property {color} Alt button hover background. */
+  --vp-button-alt-hover-bg: var(--instui-color-background-muted);
+  /* APPROXIMATION */
+
+  /** @property {color} Alt button active border. */
+  --vp-button-alt-active-border: transparent;
+
+  /** @property {color} Alt button active text. */
+  --vp-button-alt-active-text: var(--instui-color-text-base);
+
+  /** @property {color} Alt button active background. */
+  --vp-button-alt-active-bg: var(--instui-color-stroke-base);
+
+  /**
+   * Component: Custom Block
+   *
+   * Custom blocks for info, note, tip, important, warning, danger, caution.
+   */
+
+  /** @property {color} Info block text. */
+  --vp-custom-block-info-text: var(--instui-color-text-base);
+
+  /** @property {color} Info block background. */
+  --vp-custom-block-info-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Info block code background. */
+  --vp-custom-block-info-code-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Note block text. */
+  --vp-custom-block-note-text: var(--instui-color-text-base);
+
+  /** @property {color} Note block background. */
+  --vp-custom-block-note-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Note block code background. */
+  --vp-custom-block-note-code-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Tip block text. */
+  --vp-custom-block-tip-text: var(--instui-color-text-base);
+
+  /** @property {color} Tip block background. */
+  --vp-custom-block-tip-bg: var(--instui-color-background-info);
+
+  /** @property {color} Tip block code background. */
+  --vp-custom-block-tip-code-bg: var(--instui-color-background-info);
+
+  /** @property {color} Important block text. */
+  --vp-custom-block-important-text: var(--instui-color-text-base);
+
+  /** @property {color} Important block background. */
+  --vp-custom-block-important-bg: var(--instui-color-background-accent-violet);
+
+  /** @property {color} Important block code background. */
+  --vp-custom-block-important-code-bg: var(--instui-color-background-accent-violet);
+
+  /** @property {color} Warning block text. */
+  --vp-custom-block-warning-text: var(--instui-color-text-base);
+
+  /** @property {color} Warning block background. */
+  --vp-custom-block-warning-bg: var(--instui-color-background-warning);
+
+  /** @property {color} Warning block code background. */
+  --vp-custom-block-warning-code-bg: var(--instui-color-background-warning);
+
+  /** @property {color} Danger block text. */
+  --vp-custom-block-danger-text: var(--instui-color-text-base);
+
+  /** @property {color} Danger block background. */
+  --vp-custom-block-danger-bg: var(--instui-color-background-error);
+
+  /** @property {color} Danger block code background. */
+  --vp-custom-block-danger-code-bg: var(--instui-color-background-error);
+
+  /** @property {color} Caution block text. */
+  --vp-custom-block-caution-text: var(--instui-color-text-base);
+
+  /** @property {color} Caution block background. */
+  --vp-custom-block-caution-bg: var(--instui-color-background-error);
+
+  /** @property {color} Caution block code background. */
+  --vp-custom-block-caution-code-bg: var(--instui-color-background-error);
+
+  /** @property {color} Details block text. */
+  --vp-custom-block-details-text: var(--instui-color-text-base);
+
+  /** @property {color} Details block background. */
+  --vp-custom-block-details-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Details block code background. */
+  --vp-custom-block-details-code-bg: var(--instui-color-background-muted);
+
+  /**
+   * Component: Input
+   */
+
+  /** @property {color} Input border color. */
+  --vp-input-border-color: var(--instui-color-stroke-base);
+
+  /** @property {color} Input background. */
+  --vp-input-bg-color: var(--instui-color-background-container);
+
+  /** @property {color} Input switch background. */
+  --vp-input-switch-bg-color: var(--instui-color-background-muted);
+
+  /**
+   * Component: Nav
+   */
+
+  /** @property {color} Nav background. */
+  --vp-nav-bg-color: var(--instui-color-background-page);
+
+  /** @property {color} Nav screen background (mobile). */
+  --vp-nav-screen-bg-color: var(--instui-color-background-page);
+
+  /**
+   * Component: Local Nav
+   */
+
+  /** @property {color} Local nav background. */
+  --vp-local-nav-bg-color: var(--instui-color-background-page);
+
+  /**
+   * Component: Sidebar
+   */
+
+  /** @property {color} Sidebar background. */
+  --vp-sidebar-bg-color: var(--instui-color-background-container);
+
+  /**
+   * Component: Badge
+   */
+
+  /** @property {color} Info badge text. */
+  --vp-badge-info-text: var(--instui-color-text-muted);
+
+  /** @property {color} Info badge background. */
+  --vp-badge-info-bg: var(--instui-color-background-muted);
+
+  /** @property {color} Tip badge text. */
+  --vp-badge-tip-text: var(--instui-color-text-info);
+
+  /** @property {color} Tip badge background. */
+  --vp-badge-tip-bg: var(--instui-color-background-info);
+
+  /** @property {color} Warning badge text. */
+  --vp-badge-warning-text: var(--instui-color-text-warning);
+
+  /** @property {color} Warning badge background. */
+  --vp-badge-warning-bg: var(--instui-color-background-warning);
+
+  /** @property {color} Danger badge text. */
+  --vp-badge-danger-text: var(--instui-color-text-error);
+
+  /** @property {color} Danger badge background. */
+  --vp-badge-danger-bg: var(--instui-color-background-error);
+
+  /**
+   * Component: Carbon Ads
+   */
+
+  /** @property {color} Carbon ads text color. */
+  --vp-carbon-ads-text-color: var(--instui-color-text-base);
+
+  /** @property {color} Carbon ads "powered by" text. */
+  --vp-carbon-ads-poweredby-color: var(--instui-color-text-muted);
+
+  /** @property {color} Carbon ads background. */
+  --vp-carbon-ads-bg-color: var(--instui-color-background-muted);
+
+  /** @property {color} Carbon ads hover text color. */
+  --vp-carbon-ads-hover-text-color: var(--instui-color-text-interactive-navigation-primary-base);
+
+  /** @property {color} Carbon ads hover "powered by" text. */
+  --vp-carbon-ads-hover-poweredby-color: var(--instui-color-text-base);
+
+  /**
+   * Component: Local Search
+   */
+
+  /** @property {color} Local search background. */
+  --vp-local-search-bg: var(--instui-color-background-page);
+
+  /** @property {color} Local search result background. */
+  --vp-local-search-result-bg: var(--instui-color-background-page);
+
+  /** @property {color} Local search result border. */
+  --vp-local-search-result-border: var(--instui-color-stroke-base);
+
+  /** @property {color} Local search result selected background. */
+  --vp-local-search-result-selected-bg: var(--instui-color-background-page);
+
+  /** @property {color} Local search result selected border. */
+  --vp-local-search-result-selected-border: var(
+    --instui-color-text-interactive-navigation-primary-base
+  );
+
+  /** @property {color} Local search highlight background. */
+  --vp-local-search-highlight-bg: var(--instui-color-text-interactive-navigation-primary-base);
+
+  /** @property {color} Local search highlight text. */
+  --vp-local-search-highlight-text: var(--instui-color-text-on-color);
+}

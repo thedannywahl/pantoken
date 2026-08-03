@@ -10,30 +10,7 @@
  * @beta
  */
 
-/** VitePress CSS variable → the Instructure token it resolves to. */
-export const VITEPRESS_TO_INSTUI: Readonly<Record<string, string>> = Object.freeze({
-  "--vp-c-bg": "--instui-color-background-page",
-  "--vp-c-bg-alt": "--instui-color-background-container",
-  "--vp-c-bg-soft": "--instui-color-background-muted",
-  "--vp-c-text-1": "--instui-color-text-base",
-  "--vp-c-text-2": "--instui-color-text-muted",
-  // VitePress uses brand-1/2/3 for links, hover, and solid buttons. The navigation blue stays
-  // vivid in both light and dark, so links and accents read as Instructure blue either way;
-  // brand-3 is the solid button fill, so it uses the constant info blue that keeps white button
-  // text legible. (The `brand` surface token is a near-black/near-white navy — wrong for accents.)
-  "--vp-c-brand-1": "--instui-color-text-interactive-navigation-primary-base",
-  "--vp-c-brand-2": "--instui-color-text-interactive-navigation-primary-hover",
-  "--vp-c-brand-3": "--instui-color-background-info",
-  "--vp-c-border": "--instui-color-stroke-base",
-  "--vp-c-divider": "--instui-color-stroke-base",
-  "--vp-c-gutter": "--instui-color-stroke-base",
-  "--vp-c-success-1": "--instui-color-background-success",
-  "--vp-c-warning-1": "--instui-color-background-warning",
-  "--vp-c-danger-1": "--instui-color-background-error",
-  "--vp-shadow-1": "--instui-elevation-resting",
-  "--vp-shadow-2": "--instui-elevation-above",
-  "--vp-shadow-3": "--instui-elevation-topmost",
-});
+import { VITEPRESS_VARS_CSS } from "./vitepress-vars.ts";
 
 /** Options for {@link toVitePressCss}. */
 export interface ToVitePressCssOptions {
@@ -44,27 +21,42 @@ export interface ToVitePressCssOptions {
 /**
  * Emit the VitePress → Instructure CSS-variable bridge.
  *
+ * Wraps the variable mappings in the specified selector (default `:root`).
+ *
+ * @internal
  * @param options - {@link ToVitePressCssOptions}.
- * @returns The bridging CSS string.
- *
- * @example
- * ```ts
- * import { toVitePressCss } from "@pantoken/vitepress";
- *
- * const css = toVitePressCss();
- * // ":root { --vp-c-bg: var(--instui-color-background-base); … }"
- * // Write it into .vitepress/theme/custom.css alongside @pantoken/css.
- * ```
+ * @returns The bridging CSS string wrapped in the selector.
  */
 export function toVitePressCss(options: ToVitePressCssOptions = {}): string {
   const selector = options.selector ?? ":root";
-  const lines = Object.entries(VITEPRESS_TO_INSTUI).map(
-    ([vp, instui]) => `  ${vp}: var(${instui});`,
-  );
-  return `/* VitePress themed with Instructure tokens (pantoken) */\n${selector} {\n${lines.join("\n")}\n}\n`;
+
+  // If using default selector, return the CSS as-is from the source file.
+  // Otherwise, extract variables and re-wrap in the custom selector.
+  if (selector === ":root") {
+    return VITEPRESS_VARS_CSS;
+  }
+
+  // For custom selectors, extract the declarations from :root and wrap them
+  const declarations = VITEPRESS_VARS_CSS.split("\n")
+    .filter((line) => {
+      const trimmed = line.trim();
+      return trimmed.startsWith("--vp-") && trimmed.includes(":");
+    })
+    .map((line) => line.trim());
+
+  return `${selector} {\n  ${declarations.join("\n  ")}\n}\n`;
 }
 
-/** The ready-made bridge stylesheet. */
-export const vitePressCss: string = toVitePressCss();
+/**
+ * VitePress CSS variable → the Instructure token it resolves to.
+ *
+ * @example
+ * ```ts
+ * import { VITEPRESS_TO_INSTUI } from "@pantoken/vitepress";
+ *
+ * console.log(VITEPRESS_TO_INSTUI["--vp-c-bg"]); // "--instui-color-background-page"
+ * ```
+ */
+export { VITEPRESS_TO_INSTUI } from "./vitepress-vars.ts";
 
-export default vitePressCss;
+export default toVitePressCss;
