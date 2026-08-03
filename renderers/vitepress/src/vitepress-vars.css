@@ -28,9 +28,11 @@
   /** @property {color} Used for muted text (inactive menu, info texts). */
   --vp-c-text-2: var(--instui-color-text-muted);
 
-  /** @property {color} Used for subtle text (placeholders, caret icons). Approximates to muted in InstUI. */
+  /**
+  * @property {color} Used for subtle text (placeholders, caret icons). Approximates to muted in InstUI. 
+  * @todo: InstUI does not have a subtle text token; muted is the closest approximation.
+  */
   --vp-c-text-3: var(--instui-color-text-muted);
-  /* APPROXIMATION */
 
   /**
    * Colors: Background
@@ -136,9 +138,11 @@
   /** @property {color} Note accent 3 (solid). */
   --vp-c-note-3: var(--instui-color-background-info);
 
-  /** @property {color} Note subtle background. */
+  /**
+  * @property {color} Note subtle background.
+  * @todo: InstUI does not have a note token; info is the closest approximation.
+  */
   --vp-c-note-soft: var(--instui-color-background-info);
-  /* APPROXIMATION */
 
   /**
    * Colors: Functional – Success (green)
@@ -153,9 +157,11 @@
   /** @property {color} Success accent 3 (solid). */
   --vp-c-success-3: var(--instui-color-background-success);
 
-  /** @property {color} Success subtle background. */
+  /**
+  * @property {color} Success subtle background.
+  *  @todo: InstUI does not have a success token; success is the closest approximation.
+  */
   --vp-c-success-soft: var(--instui-color-background-success);
-  /* APPROXIMATION */
 
   /**
    * Colors: Functional – Important (purple)
@@ -172,9 +178,11 @@
   /** @property {color} Important accent 3 (solid). */
   --vp-c-important-3: var(--instui-color-background-accent-violet);
 
-  /** @property {color} Important subtle background. */
+  /**
+  * @property {color} Important subtle background.
+  * @todo: InstUI does not have an important token; accent-violet is the closest approximation.
+  */
   --vp-c-important-soft: var(--instui-color-background-accent-violet);
-  /* APPROXIMATION */
 
   /**
    * Colors: Functional – Warning (yellow/orange)
@@ -189,9 +197,11 @@
   /** @property {color} Warning accent 3 (solid). */
   --vp-c-warning-3: var(--instui-color-background-warning);
 
-  /** @property {color} Warning subtle background. */
+  /**
+  * @property {color} Warning subtle background.
+  * @todo: InstUI does not have a warning token; warning is the closest approximation.
+  */
   --vp-c-warning-soft: var(--instui-color-background-warning);
-  /* APPROXIMATION */
 
   /**
    * Colors: Functional – Danger (red)
@@ -206,9 +216,11 @@
   /** @property {color} Danger accent 3 (solid). */
   --vp-c-danger-3: var(--instui-color-background-error);
 
-  /** @property {color} Danger subtle background. */
+  /** 
+  * @property {color} Danger subtle background. 
+  * @todo: InstUI does not have a danger token; error is the closest approximation.
+  */
   --vp-c-danger-soft: var(--instui-color-background-error);
-  /* APPROXIMATION */
 
   /**
    * Colors: Functional – Caution (red, same as danger)
@@ -223,9 +235,11 @@
   /** @property {color} Caution accent 3 (solid). */
   --vp-c-caution-3: var(--instui-color-background-error);
 
-  /** @property {color} Caution subtle background. */
+  /** 
+  * @property {color} Caution subtle background.
+  * @todo: InstUI does not have a caution token; error is the closest approximation.
+  */
   --vp-c-caution-soft: var(--instui-color-background-error);
-  /* APPROXIMATION */
 
   /**
    * Shadows
@@ -341,7 +355,7 @@
 
   /** @property {color} Brand button hover background. */
   --vp-button-brand-hover-bg: var(--instui-color-background-info);
-  /* APPROXIMATION */
+  /* @todo: InstUI does not have a hover state for info buttons; using info background as approximation. */
 
   /** @property {color} Brand button active border. */
   --vp-button-brand-active-border: transparent;
@@ -369,7 +383,7 @@
 
   /** @property {color} Alt button hover background. */
   --vp-button-alt-hover-bg: var(--instui-color-background-muted);
-  /* APPROXIMATION */
+  /* @todo: InstUI does not have a hover state for muted buttons; using muted background as approximation. */
 
   /** @property {color} Alt button active border. */
   --vp-button-alt-active-border: transparent;
