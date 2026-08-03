@@ -7,7 +7,11 @@ import IconPicker from "./IconPicker.vue";
 const { theme } = useData();
 const t = computed(() => {
   const base = { tabComponents: "Components", tabIcons: "Icons" };
-  return { ...base, ...(theme.value as Record<string, unknown>).cdnPickerPage };
+  const overrides = ((theme.value as Record<string, unknown>).cdnPickerPage ?? {}) as Record<
+    string,
+    unknown
+  >;
+  return { ...base, ...overrides };
 });
 
 const activeTab = ref<"components" | "icons">("components");
