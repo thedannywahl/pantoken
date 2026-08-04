@@ -7,7 +7,17 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { applyMinify } from "@pantoken/plugin-props-minify";
-import { css, leanCss } from "../src/index.ts";
+import { foundationPlugin } from "../src/foundation.ts";
+import { themedTokens } from "../src/theme-variants.ts";
+import { css, leanCss, toCss } from "../src/index.ts";
+import type { Theme } from "@pantoken/model";
+
+function themedCss(
+  theme: Theme,
+  options?: { includeIcons?: boolean; lightOnly?: boolean },
+): string {
+  return toCss(themedTokens(theme, options), { plugins: [foundationPlugin] });
+}
 
 const dir = resolve(import.meta.dirname, "../generated");
 mkdirSync(dir, { recursive: true });
@@ -20,3 +30,24 @@ const write = (name: string, contents: string): void => {
 
 write("style.css", applyMinify(css, { flatten: true }));
 write("style.lean.css", applyMinify(leanCss, { flatten: true }));
+write(
+  "style.rebrand.light.css",
+  applyMinify(themedCss("rebrand", { lightOnly: true }), { flatten: true }),
+);
+write(
+  "style.rebrand.light.lean.css",
+  applyMinify(themedCss("rebrand", { includeIcons: false, lightOnly: true }), { flatten: true }),
+);
+write("style.canvas.css", applyMinify(themedCss("canvas"), { flatten: true }));
+write(
+  "style.canvas.lean.css",
+  applyMinify(themedCss("canvas", { includeIcons: false }), { flatten: true }),
+);
+write(
+  "style.canvas-high-contrast.css",
+  applyMinify(themedCss("canvasHighContrast"), { flatten: true }),
+);
+write(
+  "style.canvas-high-contrast.lean.css",
+  applyMinify(themedCss("canvasHighContrast", { includeIcons: false }), { flatten: true }),
+);

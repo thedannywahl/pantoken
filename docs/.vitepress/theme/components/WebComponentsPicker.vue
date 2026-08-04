@@ -3,6 +3,9 @@ import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
+import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
+import PickerThemeControls from "./PickerThemeControls.vue";
 import PickerOutput from "./PickerOutput.vue";
 
 // The base (unprefixed) element names `@pantoken/web-components` registers — mirrors
@@ -53,12 +56,13 @@ const NESTED_DEPS: Record<string, readonly string[]> = {
 };
 function withNestedDeps(names: Iterable<string>): string[] {
   const wanted = new Set<string>();
-  const add = (name: string): void => {
-    if (wanted.has(name)) return;
+  const queue = [...names];
+  while (queue.length > 0) {
+    const name = queue.shift();
+    if (!name || wanted.has(name)) continue;
     wanted.add(name);
-    for (const dep of NESTED_DEPS[name] ?? []) add(dep);
-  };
-  for (const name of names) add(name);
+    for (const dep of NESTED_DEPS[name] ?? []) queue.push(dep);
+  }
   return [...wanted].sort();
 }
 
@@ -101,6 +105,13 @@ const t = computed(() => {
       "Also load a token sheet (the lean @pantoken/css/dist/style.lean.css, or its icon-inclusive combine if the selection needs a glyph) so these elements can resolve their tokens.",
     iifeNote:
       "This snippet loads its own token sheet and always registers every element, regardless of selection.",
+    themeLabel: "Theme",
+    themeRebrand: "Rebrand",
+    themeCanvas: "Canvas",
+    themeCanvasHighContrast: "Canvas high contrast",
+    modeLabel: "Rebrand mode",
+    modeAdaptive: "Light + dark",
+    modeLightOnly: "Light only",
   };
   return { ...base, ...((theme.value as Record<string, unknown>).webComponentsPicker as object) };
 });
@@ -115,17 +126,12 @@ function initialSelection(): Set<string> {
 }
 
 const selected = ref<Set<string>>(initialSelection());
-const format = ref(readHashParam("w_fmt") ?? "esm");
-const search = ref(readHashParam("w_q") ?? "");
-
-watch(format, (v) => writeHashParam("w_fmt", v, "esm"));
-watch(search, (v) => writeHashParam("w_q", v, ""));
+const format = useHashParamRef("w_fmt", "esm");
+const search = useHashParamRef("w_q", "");
+const { themeKey, mode, showMode } = usePickerTheme();
 
 function toggle(name: string): void {
-  const next = new Set(selected.value);
-  if (next.has(name)) next.delete(name);
-  else next.add(name);
-  selected.value = next;
+  selected.value = toggleStringInSet(selected.value, name);
 }
 
 // "All elements" is a tri-state checkbox over the element list: checked when every element is
@@ -164,10 +170,10 @@ const needsIcons = computed(() => {
 // The lean token sheet is enough unless the selection touches an icon-rendering element, mirroring
 // CdnPicker.vue's needsIconSheet pattern — never the full style.css regardless of selection.
 const tokenLink = computed(() => {
-  const c = "npm/@pantoken/css/dist";
+  const tokenSheet = tokenLeanSheet(themeKey.value, mode.value);
   return needsIcons.value
-    ? `https://cdn.jsdelivr.net/combine/${c}/style.lean.css,npm/@pantoken/components/dist/component-icons.css`
-    : "https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.lean.css";
+    ? `https://cdn.jsdelivr.net/combine/${tokenSheet},npm/@pantoken/components/dist/component-icons.css`
+    : `https://cdn.jsdelivr.net/${tokenSheet}`;
 });
 
 // A bare URL/statement, not a full script-tag snippet — see the token note below the output for the
@@ -230,6 +236,15 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
           aria-label="Filter elements"
         />
       </span>
+      <PickerThemeControls
+        id-prefix="wc-picker"
+        :theme-key="themeKey"
+        :mode="mode"
+        :show-mode="showMode"
+        :strings="t"
+        @update:theme-key="themeKey = $event"
+        @update:mode="mode = $event"
+      />
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="wc-picker__elements instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">

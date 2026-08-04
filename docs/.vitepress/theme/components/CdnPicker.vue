@@ -4,8 +4,11 @@ import { useData } from "vitepress";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
+import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
 import manifest from "../generated/cdn-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
+import PickerThemeControls from "./PickerThemeControls.vue";
 
 type ManifestComponent = { name: string; needsIcons: boolean };
 // Alphabetical for findability (the manifest is in load order).
@@ -33,19 +36,15 @@ const selected = ref<Set<string>>(initialSelection());
 // Base and utilities are structural includes, not entries in the component manifest — on by default.
 const includeBase = ref(readHashParam("c_base") !== "0");
 const includeUtilities = ref(readHashParam("c_util") !== "0");
-const format = ref(readHashParam("c_fmt") ?? "link");
-const search = ref(readHashParam("c_q") ?? "");
+const format = useHashParamRef("c_fmt", "link");
+const search = useHashParamRef("c_q", "");
+const { themeKey, mode, showMode } = usePickerTheme();
 
 watch(includeBase, (v) => writeHashParam("c_base", v ? "1" : "0", "1"));
 watch(includeUtilities, (v) => writeHashParam("c_util", v ? "1" : "0", "1"));
-watch(format, (v) => writeHashParam("c_fmt", v, "link"));
-watch(search, (v) => writeHashParam("c_q", v, ""));
 
 function toggle(name: string): void {
-  const next = new Set(selected.value);
-  if (next.has(name)) next.delete(name);
-  else next.add(name);
-  selected.value = next;
+  selected.value = toggleStringInSet(selected.value, name);
 }
 
 // "All components" is a tri-state checkbox over the manifest list PLUS Base/Utilities: checked only
@@ -86,11 +85,13 @@ const filteredComponents = computed(() => {
 // component needs component-icons.css.
 const needsIconSheet = computed(() => chosen.value.some((c) => c.needsIcons));
 
+const tokenSheet = computed(() => tokenLeanSheet(themeKey.value, mode.value));
+
 const combineUrl = computed(() => {
   // Track the latest release (no version pin) — pin yourself for production. jsDelivr serves raw file
   // paths (it ignores the package `exports` map), and every sheet ships under `dist/`.
   const c = "npm/@pantoken/components/dist";
-  const files = ["npm/@pantoken/css/dist/style.lean.css"];
+  const files = [tokenSheet.value];
   if (includeBase.value) files.push(`${c}/base.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
   // Every component checked collapses to the whole barrel instead of combining every sheet by name —
@@ -128,6 +129,15 @@ const output = computed(() =>
           aria-label="Filter components"
         />
       </span>
+      <PickerThemeControls
+        id-prefix="cdn-picker"
+        :theme-key="themeKey"
+        :mode="mode"
+        :show-mode="showMode"
+        :strings="t"
+        @update:theme-key="themeKey = $event"
+        @update:mode="mode = $event"
+      />
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="cdn-picker__components instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">

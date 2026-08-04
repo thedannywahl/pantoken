@@ -12,14 +12,22 @@
  * @module
  * @beta
  */
-import { tokens } from "@pantoken/tokens";
 import { foundationPlugin } from "./foundation.ts";
+import { themedTokens } from "./theme-variants.ts";
 import { toCss } from "./to-css.ts";
+import type { Theme } from "@pantoken/model";
 
 export { toCss } from "./to-css.ts";
 export type { ToCssOptions } from "./to-css.ts";
 export { buildCssFile } from "./emit.ts";
 export type { CssSection } from "./emit.ts";
+
+function themedCss(
+  theme: Theme,
+  options?: { includeIcons?: boolean; lightOnly?: boolean },
+): string {
+  return toCss(themedTokens(theme, options), { plugins: [foundationPlugin] });
+}
 
 /**
  * The ready-made `rebrand` stylesheet string (typed: concrete tokens as `@property` registrations).
@@ -31,10 +39,7 @@ export type { CssSection } from "./emit.ts";
  * document.head.insertAdjacentHTML("beforeend", `<style>${css}</style>`);
  * ```
  */
-export const css: string = toCss(tokens, { plugins: [foundationPlugin] });
-
-/** The `--instui-icon-*` glyph tokens — the full icon set as data-URIs, ~86% of the sheet's bytes. */
-const ICON_TOKEN_PREFIX = "--instui-icon-";
+export const css: string = themedCss("rebrand");
 
 /**
  * The lean `rebrand` stylesheet string — the full sheet minus the `--instui-icon-*` glyph tokens (the
@@ -49,9 +54,8 @@ const ICON_TOKEN_PREFIX = "--instui-icon-";
  * import { leanCss } from "@pantoken/css";
  * ```
  */
-export const leanCss: string = toCss(
-  tokens.filter((t) => !t.name.startsWith(ICON_TOKEN_PREFIX)),
-  { plugins: [foundationPlugin] },
-);
+export const leanCss: string = toCss(themedTokens("rebrand", { includeIcons: false }), {
+  plugins: [foundationPlugin],
+});
 
 export default css;

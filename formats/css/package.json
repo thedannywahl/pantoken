@@ -22,6 +22,12 @@
     "./inject": "./dist/inject.mjs",
     "./style.css": "./dist/style.css",
     "./style.lean.css": "./dist/style.lean.css",
+    "./style.rebrand.light.css": "./dist/style.rebrand.light.css",
+    "./style.rebrand.light.lean.css": "./dist/style.rebrand.light.lean.css",
+    "./style.canvas.css": "./dist/style.canvas.css",
+    "./style.canvas.lean.css": "./dist/style.canvas.lean.css",
+    "./style.canvas-high-contrast.css": "./dist/style.canvas-high-contrast.css",
+    "./style.canvas-high-contrast.lean.css": "./dist/style.canvas-high-contrast.lean.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
