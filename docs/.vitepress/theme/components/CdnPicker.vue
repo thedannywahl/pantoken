@@ -47,6 +47,10 @@ watchEffect(() => {
 
 function toggleAll(checked: boolean): void {
   selected.value = checked ? new Set(components.map((c) => c.name)) : new Set();
+  // Toggling "all" either way replaces the default base/utilities include — re-check them by hand
+  // if you still want them alongside a full (or cleared) selection.
+  includeBase.value = false;
+  includeUtilities.value = false;
   copied.value = false;
 }
 
@@ -99,15 +103,6 @@ async function copy(): Promise<void> {
   >
     <fieldset class="instui-form-field-group cdn-picker__group">
       <legend>{{ t.componentsLabel }}</legend>
-      <label class="instui-checkbox cdn-picker__all">
-        <input
-          ref="allCheckboxEl"
-          type="checkbox"
-          :checked="allSelected"
-          @change="toggleAll(($event.target as HTMLInputElement).checked)"
-        />
-        <span>{{ t.allComponents }}</span>
-      </label>
       <span class="instui-input-group cdn-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span
@@ -122,6 +117,15 @@ async function copy(): Promise<void> {
       <div
         class="cdn-picker__components instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
       >
+        <label class="instui-checkbox">
+          <input
+            ref="allCheckboxEl"
+            type="checkbox"
+            :checked="allSelected"
+            @change="toggleAll(($event.target as HTMLInputElement).checked)"
+          />
+          <span>{{ t.allComponents }}</span>
+        </label>
         <label class="instui-checkbox">
           <input type="checkbox" v-model="includeBase" />
           <span>{{ t.includeBase }}</span>
@@ -199,9 +203,6 @@ async function copy(): Promise<void> {
 }
 .cdn-picker__group {
   margin: 0 0 1rem;
-}
-.cdn-picker__all {
-  margin-bottom: 0.5rem;
 }
 .cdn-picker__search {
   width: 100%;

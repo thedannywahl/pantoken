@@ -214,22 +214,22 @@ async function copy(): Promise<void> {
 
     <fieldset class="instui-form-field-group icon-picker__group">
       <legend class="instui-screen-reader-content">Icons</legend>
-      <label class="instui-checkbox icon-picker__all">
-        <input
-          ref="allCheckboxEl"
-          type="checkbox"
-          :checked="allSelected"
-          :disabled="!instuiIcons || !simpleIcons"
-          @change="toggleAll(($event.target as HTMLInputElement).checked)"
-        />
-        <span>{{ t.allIcons }}</span>
-      </label>
 
       <!-- One scrollable list for both sources — the section headers are rows inside it, not separate
            lists, so there's a single continuous scroll instead of two boxes. -->
       <div
         class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
       >
+        <label class="instui-checkbox">
+          <input
+            ref="allCheckboxEl"
+            type="checkbox"
+            :checked="allSelected"
+            :disabled="!instuiIcons || !simpleIcons"
+            @change="toggleAll(($event.target as HTMLInputElement).checked)"
+          />
+          <span>{{ t.allIcons }}</span>
+        </label>
         <p
           v-if="loadingInstui"
           class="instui-text -color-secondary -style-italic icon-picker__status"
@@ -355,9 +355,6 @@ async function copy(): Promise<void> {
 }
 .icon-picker__group {
   margin: 0;
-}
-.icon-picker__all {
-  margin-bottom: 0.5rem;
 }
 .icon-picker__grid {
   display: grid;
