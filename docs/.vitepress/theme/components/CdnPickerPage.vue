@@ -3,10 +3,16 @@ import { computed, ref } from "vue";
 import { useData } from "vitepress";
 import CdnPicker from "./CdnPicker.vue";
 import IconPicker from "./IconPicker.vue";
+import WebComponentsPicker from "./WebComponentsPicker.vue";
 
 const { theme } = useData();
 const t = computed(() => {
-  const base = { title: "CDN Picker", tabComponents: "Components", tabIcons: "Icons" };
+  const base = {
+    title: "CDN Picker",
+    tabComponents: "Components",
+    tabIcons: "Icons",
+    tabWebComponents: "Web components",
+  };
   const overrides = ((theme.value as Record<string, unknown>).cdnPickerPage ?? {}) as Record<
     string,
     unknown
@@ -14,7 +20,7 @@ const t = computed(() => {
   return { ...base, ...overrides };
 });
 
-const activeTab = ref<"components" | "icons">("components");
+const activeTab = ref<"components" | "icons" | "web-components">("components");
 </script>
 
 <template>
@@ -39,10 +45,19 @@ const activeTab = ref<"components" | "icons">("components");
         >
           {{ t.tabIcons }}
         </button>
+        <button
+          class="tab"
+          role="tab"
+          :aria-selected="activeTab === 'web-components'"
+          @click="activeTab = 'web-components'"
+        >
+          {{ t.tabWebComponents }}
+        </button>
       </div>
       <div class="panel" role="tabpanel">
         <CdnPicker v-if="activeTab === 'components'" />
-        <IconPicker v-else />
+        <IconPicker v-else-if="activeTab === 'icons'" />
+        <WebComponentsPicker v-else />
       </div>
     </div>
   </div>
