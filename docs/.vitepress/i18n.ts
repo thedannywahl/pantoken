@@ -39,9 +39,6 @@ type LocaleMeta = {
   cdnPicker: {
     componentsLabel: string;
     allComponents: string;
-    tokenSheetLabel: string;
-    tokenLean: string;
-    tokenFull: string;
     formatLabel: string;
     formatLink: string;
     formatImport: string;
@@ -122,10 +119,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     },
     cdnPicker: {
       componentsLabel: "Components",
-      allComponents: "All components (components.css)",
-      tokenSheetLabel: "Token sheet",
-      tokenLean: "Lean (no icons, ~23 KB gzip)",
-      tokenFull: "Full (all icons, ~140 KB gzip)",
+      allComponents: "All components",
       formatLabel: "Output",
       formatLink: "<link>",
       formatImport: "@import",
@@ -201,10 +195,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     },
     cdnPicker: {
       componentsLabel: "Komponensek",
-      allComponents: "Minden komponens (components.css)",
-      tokenSheetLabel: "Token lap",
-      tokenLean: "Karcsú (ikonok nélkül, ~23 KB gzip)",
-      tokenFull: "Teljes (minden ikon, ~140 KB gzip)",
+      allComponents: "Minden komponens",
       formatLabel: "Kimenet",
       formatLink: "<link>",
       formatImport: "@import",
