@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.1.21
+
+### Patch Changes
+
+- Updated dependencies [231680f]
+  - @pantoken/css@0.3.0
+  - @pantoken/postcss@0.1.10
+  - @pantoken/vite@0.1.10
+  - @pantoken/webpack@0.1.10
+  - @pantoken/drupal@0.1.13
+  - @pantoken/astro@0.1.10
+  - @pantoken/pendo@0.3.2
+  - @pantoken/cli@0.1.15
+
 ## 0.1.20
 
 ### Patch Changes
