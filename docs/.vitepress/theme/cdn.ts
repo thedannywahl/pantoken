@@ -9,13 +9,7 @@ export interface CdnPickerStrings {
   componentsLabel: string;
   /** Checkbox: use the whole `components.css` barrel instead of per-component sheets. */
   allComponents: string;
-  /** Label for the token-sheet radio group. */
-  tokenSheetLabel: string;
-  /** The lean (icon-free) token-sheet option. */
-  tokenLean: string;
-  /** The full token-sheet option. */
-  tokenFull: string;
-  /** Label for the output-format radio group. */
+  /** Label for the output-format tabs. */
   formatLabel: string;
   /** The `<link>` output option. */
   formatLink: string;
@@ -23,8 +17,16 @@ export interface CdnPickerStrings {
   formatImport: string;
   /** Checkbox: include the opt-in base reset. */
   includeBase: string;
+  /** Info-popover label for the base-reset checkbox's info button. */
+  baseInfoLabel: string;
+  /** Info-popover blurb for the base-reset checkbox. */
+  baseInfo: string;
   /** Checkbox: include the spacing/color/layout utility classes (mb-md, bg-brand, etc.). */
   includeUtilities: string;
+  /** Info-popover label for the utilities checkbox's info button. */
+  utilitiesInfoLabel: string;
+  /** Info-popover blurb for the utilities checkbox. */
+  utilitiesInfo: string;
   /** Copy button. */
   copy: string;
   /** Copy button, confirmation state. */
@@ -40,15 +42,18 @@ export interface CdnPickerStrings {
 /** English defaults, also the fallback when a locale doesn't localize the picker. */
 export const CDN_PICKER_DEFAULTS: CdnPickerStrings = {
   componentsLabel: "Components",
-  allComponents: "All components (components.css)",
-  tokenSheetLabel: "Token sheet",
-  tokenLean: "Lean (no icons, ~23 KB gzip)",
-  tokenFull: "Full (all icons, ~140 KB gzip)",
+  allComponents: "All components",
   formatLabel: "Output",
   formatLink: "<link>",
   formatImport: "@import",
-  includeBase: "Include base reset",
-  includeUtilities: "Include utilities (spacing, color, layout classes)",
+  includeBase: "Base",
+  baseInfoLabel: "About the base reset",
+  baseInfo:
+    "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults.",
+  includeUtilities: "Utilities",
+  utilitiesInfoLabel: "About the utility classes",
+  utilitiesInfo:
+    "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides.",
   copy: "Copy",
   copied: "Copied",
   empty: "Select one or more components to build a URL.",

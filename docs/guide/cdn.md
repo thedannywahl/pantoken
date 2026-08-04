@@ -32,9 +32,11 @@ already carries them.
 
 ### Load order and fonts
 
-Load the token foundation first, then the optional base reset, then the component files. The combine URL
-above already orders them for you. Fonts are the one exception: `@pantoken/components/dist/fonts.css` points at
-font files by relative path, so combine can't rewrite them — load it as its own `<link>`:
+Load the token foundation first, then the optional base reset, then the component files, and utilities
+last — they're override utilities, so they only actually override a component's own rule when they land
+after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
+`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
+them — load it as its own `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
@@ -98,8 +100,3 @@ only when you can't use modules.
 
 The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
 version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
-
-## What's not here
-
-There's no `?components=button,badge` query parameter: no public CDN assembles a bundle from query params.
-The combine URL is the closest equivalent, and the picker writes it for you.

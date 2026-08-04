@@ -1,20 +1,16 @@
 /**
  * Emit two icon picker manifests for the `<IconPicker />` docs component:
- *   - `cdn-icon-manifest-instui.json`: every icon from `@pantoken/icons` (~335 KB raw, ~120 KB gzip)
+ *   - `cdn-icon-manifest-instui.json`: every icon name from `@pantoken/icons`
  *   - `cdn-icon-manifest-simple.json`: every brand slug from `simple-icons` (~4.7 MB raw, ~1.8 MB gzip)
  *
- * Split so each picker tab lazy-loads only what it needs. Uses only the `<path d="…">` data rather
- * than full SVG markup to keep the files compact. Wired into `docs:assets`.
+ * The InstUI manifest carries only `name`/`source` — the picker renders each icon via the
+ * `-icon-<name>` glyph class already shipped in `formats/components/generated/icons.css` (loaded
+ * globally by the docs theme), not by re-deriving SVG markup here. Wired into `docs:assets`.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { icons } from "../../formats/icons/src/index.ts";
 import { defaultRegistry } from "../../plugins/pantoken/simple-icons/src/index.ts";
-
-// Extract the first <path d="…"> from inline SVG markup.
-function extractPath(svg: string): string {
-  return /\sd="([^"]+)"/.exec(svg)?.[1] ?? "";
-}
 
 const outDir = resolve(import.meta.dirname, "../.vitepress/theme/generated");
 mkdirSync(outDir, { recursive: true });
@@ -23,8 +19,6 @@ mkdirSync(outDir, { recursive: true });
 const instui = icons.map((icon) => ({
   name: icon.name,
   source: icon.source ?? "lucide",
-  path: extractPath(icon.svg),
-  viewBox: icon.viewBox ?? "0 0 24 24",
 }));
 const instuiOut = resolve(outDir, "cdn-icon-manifest-instui.json");
 writeFileSync(instuiOut, `${JSON.stringify(instui, null, 2)}\n`);

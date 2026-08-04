@@ -1,40 +1,41 @@
 # CDN és terjesztés
 
 A pantoken minden csomagot közzétesz az npm-en, így a tokeneket, komponenseket és webkomponenseket közvetlenül
-egy CDN-ről érheti el — build lépés és bundler nélkül. Ez az oldal a CSS combine URL-t (egy interaktív
-készítővel együtt), valamint a beilleszthető webkomponenseket ismerteti.
+egy CDN-ről kérheted le — build lépés és bundler nélkül. Ez az oldal a CSS combine URL-t mutatja be (egy interaktív
+építővel együtt), valamint a webkomponens-beépülőket.
 
-## A token alaprendszer
+## A tokenalap
 
-Minden pantoken komponens `--instui-*` egyedi tulajdonságokat olvas be az oldalon található token lapról. Két
+Minden pantoken komponens `--instui-*` egyedi tulajdonságokat (custom properties) olvas be az oldalon található tokenlapról. Két
 változat érhető el:
 
-- `@pantoken/css/dist/style.lean.css` — az ajánlott CDN alaprendszer. A teljes ikonkészlet kivételével minden tokent
+- `@pantoken/css/dist/style.lean.css` — az ajánlott CDN-alap. A teljes ikonkészlet kivételével minden tokent
   tartalmaz, így gzippelve körülbelül 23 KB.
-- `@pantoken/css/dist/style.css` — a teljes lap, beleértve mind a ~1 777 ikon glifa tokent
-  (`--instui-icon-*`). Gzippelve körülbelül 140 KB. Töltse be ezt, ha széles körben hivatkozik ikonokra a
-  `var(--instui-icon-*)` használatával.
+- `@pantoken/css/dist/style.css` — a teljes lap, beleértve mind a ~1 777 ikon glif tokent
+  (`--instui-icon-*`). Gzippelve körülbelül 140 KB. Akkor töltsd be ezt, ha széles körben hivatkozol ikonokra a következőkön keresztül:
+  `var(--instui-icon-*)`.
 
-A kiemelési skála és a fókuszgyűrű változói mindkét lapban megtalálhatók, így az árnyékok és a fókuszgyűrű működnek
-kizárólag az alaprendszer betöltésével is.
+A kiemelési skála (elevation scale) és a fókuszgyűrű változói mindkét lapban megtalálhatók, így az árnyékok és a fókuszgyűrű csak az alap betöltésével is működnek.
 
-## Válassza ki a komponenseket és az ikonokat
+## Válaszd ki a komponenseket és ikonokat
 
-Az [interaktív CDN választó](/guide/cdn-picker) jsDelivr combine URL-eket épít a komponensekhez és az ikonokhoz egyaránt. Nyissa meg, jelölje be, amire szüksége van, és másolja ki a generált `<link>` vagy `@import` taget.
+Az [interaktív CDN-választó](/guide/cdn-picker) jsDelivr combine URL-eket épít mind a komponensekhez, mind az ikonokhoz. Nyisd meg, jelöld be, amire szükséged van, és másold ki a generált `<link>` vagy `@import` taget.
 
-- **Components fül** — válassza ki az egyes komponensek stíluslapjait vagy a teljes `components.css` barrel-t. Adja hozzá az alapértelmezett resetet vagy a térköz-/színsegédosztályokat, ha szüksége van rájuk.
-- **Icons fül** — válassza ki az egyes ikonokat az InstUI készletből (~1 800 ikon) vagy a Simple Icons készletből (~3 300 márka glifa). A választó egy külön combine URL-t ad ki az ikon CSS-fájlokhoz, így csak azokat az ikonokat töltheti be, amelyeket valóban használ.
+- **Components fül** — válassz egyedi komponens-stíluslapokat vagy a teljes `components.css` barrel-t. Add hozzá az alapértelmezett reset-et vagy a spacing/color segédosztályokat, ha szükséged van rájuk.
+- **Icons fül** — válassz egyedi ikonokat az InstUI készletből (~1 800 ikon) vagy a Simple Icons készletből (~3 300 márka-glif). A választó egy külön combine URL-t generál az ikon CSS-fájlokhoz, így csak azokat az ikonokat töltheted be, amelyeket valóban használsz.
 
 Minden komponensfájl kicsi — a legtöbb 2 KB körül van. Az ikonokat megjelenítő komponenseknek (`alert`, `checkbox`,
-és még néhány másnak) szükségük van ezekre a glifákra, így az építő hozzáadja a következőt: `@pantoken/components/dist/component-icons.css` (körülbelül
-0,5 KB gzippelve — az a 11 ikon, amelyet a komponenskészlet használ), amikor a karcsúsított lapot választja. A teljes lap
+és néhány másnak) szükségük van ezekre a glifekre, ezért az építő hozzáadja a `@pantoken/components/dist/component-icons.css` fájlt (körülbelül
+0,5 KB gzippelve — a komponenskészlet által használt 11 ikont), amikor a karcsúsított lapot választod. A teljes lap
 már tartalmazza őket.
 
 ### Betöltési sorrend és betűtípusok
 
-Először a token alaprendszert töltse be, majd az opcionális alap resetet, végül a komponensfájlokat. A fenti
-combine URL már a megfelelő sorrendbe állítja őket. A betűtípusok jelentik az egyetlen kivételt: a `@pantoken/components/dist/fonts.css` relatív
-útvonallal hivatkozik a betűtípusfájlokra, így a combine nem tudja átírni őket — töltse be külön `<link>` tagként:
+Először a tokenalapot töltsd be, majd az opcionális alap reset-et, ezt követően a komponensfájlokat, és a segédosztályokat
+utoljára — ezek felülbíráló segédosztályok, így csak akkor bírálják felül egy komponens saját szabályát, ha a kaszkádban
+mögötte helyezkednek el. A fenti combine URL már sorba rendezi őket helyetted. A betűtípusok képezik az egyetlen kivételt:
+a `@pantoken/components/dist/fonts.css` relatív útvonallal mutat a betűtípusfájlokra, így a combine nem tudja átírni
+őket — töltsd be külön `<link>` tagként:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
@@ -42,8 +43,8 @@ combine URL már a megfelelő sorrendbe állítja őket. A betűtípusok jelenti
 
 ### Minden egyszerre
 
-Jelölje be az **All components** opciót a választóban, hogy a barrel-re váltson, vagy hivatkozzon rá közvetlenül (körülbelül 141 KB
-gzippelve) a token lap mellett:
+Jelöld be az **All components** lehetőséget a választóban a barrel-re való váltáshoz, vagy hivatkozz rá te magad (körülbelül 141 KB
+gzippelve) a tokenlap mellett:
 
 ```html
 <link
@@ -54,12 +55,12 @@ gzippelve) a token lap mellett:
 
 ## Webkomponensek
 
-A `@pantoken/web-components` keretrendszer-független `<instui-*>` egyedi elemeket regisztrál. Ezek beágyazzák a saját
-CSS-üket, de továbbra is beolvassák a tokeneket az oldalon található lapról, ezért töltsön be egy token alaprendszert is.
+A `@pantoken/web-components` keretrendszer-független `<instui-*>` egyedi elemeket regisztrál. Beágyazzák a saját
+CSS-üket, de a tokeneket továbbra is az oldalon található lapból olvassák be, ezért töltsd bet a tokenalapot is.
 
 ### ES modulok (ajánlott)
 
-Egy ESM CDN feloldja a csomag függőségeit Ön helyett. Ez minden elemet regisztrál:
+Egy ESM CDN feloldja a csomag függőségeit helyetted. Ez minden elemet regisztrál:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -68,10 +69,10 @@ Egy ESM CDN feloldja a csomag függőségeit Ön helyett. Ez minden elemet regis
 </script>
 ```
 
-Használja a teljes token lapot (vagy a karcsúsított lapot a `component-icons.css` hozzáadásával), hogy az ikonokat megjelenítő elemek, mint például a
-`<instui-alert>`, fel tudják oldani a glifáikat.
+Használd a teljes tokenlapot (vagy a karcsúsított lapot a `component-icons.css` fájllal kiegészítve), hogy az ikonokat megjelenítő elemek, mint például a
+`<instui-alert>`, fel tudják oldani a glifjeiket.
 
-Csak bizonyos elemek — és azok beágyazott függőségei — regisztrálásához importálja a következőt: `register`, és adja át a következőt: `only`:
+Csak bizonyos elemek — és azok beágyazott függőségei — regisztrálásához importáld a `register` elemet, és add át a következőt: `only`:
 
 ```html
 <script type="module">
@@ -81,25 +82,20 @@ Csak bizonyos elemek — és azok beágyazott függőségei — regisztrálásá
 </script>
 ```
 
-### Hagyományos script tag
+### Klasszikus script tag
 
-A modulok nélküli beillesztéshez töltse be az IIFE buildet. Ez csomagolja a függőségeit, és betöltéskor automatikusan regisztrál minden
-elemet, elérhetővé téve egy `PantokenWebComponents` globális változót:
+Klasszikus, modulok nélküli beépítéshez töltsd be az IIFE buildet. Ez becsomagolja a függőségeit, és betöltéskor automatikusan regisztrál minden
+elemet, elérhetővé téve egy `PantokenWebComponents` globális objektumot:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-Ez nagyobb, mint az ESM útvonal — beágyazza a következőt: `@pantoken/components` és `@pantoken/icons` —, így csak akkor
-használja, ha nem tud modulokat használni.
+Ez nagyobb, mint az ESM útvonal — beágyazza a `@pantoken/components` és `@pantoken/icons` elemeket —, ezért csak akkor használd,
+ha nem tudsz modulokat használni.
 
 ## Verziók rögzítése
 
-A fenti URL-ek — és amelyeket a választó generál — a legfrissebb kiadást követik. Rögzítsen egy főverziót (vagy pontos verziót)
-a termelési (production) környezethez — például `@pantoken/css@0` —, hogy a frissítések ne okozzanak meglepetést.
-
-## Mi az, ami nem található itt
-
-Nincs `?components=button,badge` lekérdezési paraméter (query parameter): egyetlen nyilvános CDN sem állít össze csomagot lekérdezési paraméterekből.
-A combine URL a legközelebbi megfelelője, és a választó megírja ezt Ön helyett.
+A fenti URL-ek — és amelyeket a választó generál — a legfrissebb kiadást követik. Rögzíts egy fő- (vagy pontos)
+verziót a produkciós környezetben — például: `@pantoken/css@0` —, hogy egy frissítés soha ne érjen meglepetésként.

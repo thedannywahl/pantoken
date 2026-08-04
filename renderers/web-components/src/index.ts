@@ -17,17 +17,14 @@
  * @module
  * @alpha
  */
-import { resolve as pantokenResolve } from "@pantoken/icons";
-import type { IconResolver } from "@pantoken/model";
 import { DEFINITIONS } from "./elements/index.ts";
-import type { CommandEventish, ElementRegistry, RegisterContext } from "./lib/context.ts";
-import { applySpacing, frag, SPACING_ATTRS } from "./lib/helpers.ts";
+import type { ElementRegistry } from "./lib/context.ts";
+import { NESTED_DEPS } from "./lib/elements-meta.ts";
 import {
-  ENGLISH_STRINGS,
-  makeStrings,
-  resolveFirstDay,
-  type WebComponentStrings,
-} from "./lib/strings.ts";
+  buildRegisterContext,
+  iconSvg,
+  type RegisterContextOptions,
+} from "./lib/register-context.ts";
 
 // ── Public types ──────────────────────────────────────────────────────────────
 export type {
@@ -38,6 +35,19 @@ export type {
 } from "./lib/context.ts";
 export type { WebComponentStrings } from "./lib/strings.ts";
 export { ENGLISH_STRINGS, makeStrings, resolveFirstDay } from "./lib/strings.ts";
+// Metadata with no CSS/@pantoken/icons dependencies, defined in ./lib/elements-meta.ts — re-exported
+// here so the public API is unchanged; build scripts import that module directly instead (see its own
+// doc comment for why).
+export { ELEMENTS, ICON_ELEMENTS, NESTED_DEPS } from "./lib/elements-meta.ts";
+// Context-building machinery, defined in ./lib/register-context.ts (also with no top-level side
+// effects — the per-element CDN build imports it directly for the same reason).
+export {
+  buildRegisterContext,
+  DEFAULT_PREFIX,
+  iconSvg,
+  noopIconSvg,
+  type RegisterContextOptions,
+} from "./lib/register-context.ts";
 
 // ── Element definitions ─────────────────────────────────────────────────────────
 export { DEFINITIONS } from "./elements/index.ts";
@@ -72,115 +82,6 @@ export { tray } from "./elements/tray.ts";
 export { treeBrowser } from "./elements/tree-browser.ts";
 export { truncate } from "./elements/truncate.ts";
 
-/** The default tag prefix, mirroring the CSS layer — `<instui-icon>`, `.instui-button`, etc. */
-export const DEFAULT_PREFIX = "instui";
-
-/**
- * The base (unprefixed) element names this package registers. {@link register} mints a tag per name
- * under its `prefix` option — `icon` → `<instui-icon>` by default, or `<x-icon>` for `{ prefix: "x" }`.
- * A prefix is always applied (a custom-element name must contain a hyphen), so an empty or nullish prefix
- * falls back to the default `instui`.
- */
-export const ELEMENTS = [
-  "icon",
-  "button",
-  "alert",
-  "badge",
-  "pill",
-  "tag",
-  "avatar",
-  "spinner",
-  "progress",
-  "metric",
-  "rating",
-  "progress-circle",
-  "icon-button",
-  "toggle-button",
-  "truncate",
-  "img",
-  "side-nav-bar",
-  "tree-browser",
-  "calendar",
-  "tooltip",
-  "modal",
-  "context-view",
-  "popover",
-  "tray",
-  "in-place-edit",
-  "drilldown",
-  "pages",
-  "drawer-layout",
-  "date-input",
-  "date-time-input",
-] as const;
-
-/**
- * Resolve an icon name to inline SVG (empty string when unknown). Pure — the element renders it.
- *
- * @param name - The icon name (e.g. `arrow-left`).
- * @param resolve - The resolver (defaults to the built-in pantoken icon set).
- *
- * @example
- * ```ts
- * import { iconSvg } from "@pantoken/web-components";
- *
- * const svg = iconSvg("arrow-left"); // "<svg …>…</svg>", or "" when unknown
- * ```
- */
-export function iconSvg(name: string, resolve: IconResolver = pantokenResolve): string {
-  return resolve(name)?.svg ?? "";
-}
-
-/** An element ctor with the optional custom-element lifecycle hooks the spacing mixin composes over. */
-type LifecycleElementCtor = new (...args: never[]) => HTMLElement & {
-  connectedCallback?(): void;
-  disconnectedCallback?(): void;
-};
-
-/**
- * Compose the universal spacing behaviour over an element constructor: after the element's own
- * `connectedCallback`, and on any later attribute change, apply the `margin`/`padding` shorthands and
- * per-side `margin-<side>`/`padding-<side>` attributes to the host ({@link applySpacing}). {@link register}
- * wraps every element with this, so InstUI-/CSS-style spacing works on all of them with no per-element code.
- *
- * @param Ctor - The element constructor to wrap.
- * @returns A subclass that adds the spacing behaviour.
- */
-function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
-  const Spaced = class extends Ctor {
-    #spacingObserver: MutationObserver | undefined;
-    connectedCallback(): void {
-      super.connectedCallback?.();
-      applySpacing(this);
-      this.#spacingObserver = new MutationObserver(() => {
-        applySpacing(this);
-      });
-      // Watch only the spacing attributes, never `style` — applySpacing writes `style`, so observing
-      // all attributes would make the observer re-trigger itself on its own writes.
-      this.#spacingObserver.observe(this, {
-        attributes: true,
-        attributeFilter: [...SPACING_ATTRS],
-      });
-    }
-    disconnectedCallback(): void {
-      super.disconnectedCallback?.();
-      this.#spacingObserver?.disconnect();
-    }
-  };
-  return Spaced as unknown as CustomElementConstructor;
-}
-
-/**
- * Elements whose shadow markup renders another element, so registering one requires its dependencies
- * too: `<instui-date-time-input>` renders a `<instui-date-input>`, which renders a `<instui-calendar>`.
- * {@link register}'s `only` filter expands through this (transitively) so a cherry-picked subset still
- * works. Keyed by base name; values are direct dependencies.
- */
-const NESTED_DEPS: Readonly<Record<string, readonly string[]>> = {
-  "date-input": ["calendar"],
-  "date-time-input": ["date-input"],
-};
-
 /** Expand a requested base-name set to include its transitive {@link NESTED_DEPS}. */
 function withNestedDeps(only: readonly string[]): Set<string> {
   const wanted = new Set<string>();
@@ -191,170 +92,6 @@ function withNestedDeps(only: readonly string[]): Set<string> {
   };
   for (const name of only) add(name);
   return wanted;
-}
-
-/** An inner `<button>` exposing the invoker/popover IDL properties the host mirrors onto it. */
-type InvokerButton = HTMLButtonElement & {
-  popoverTargetElement?: Element | null;
-  popoverTargetAction?: string;
-  commandForElement?: Element | null;
-  command?: string;
-};
-
-/**
- * Mirror the host's invoker attributes onto its inner `<button>`'s IDL properties, resolving ids
- * against the host's root so a shadow-DOM button can drive a light-DOM `[popover]`/command target.
- */
-function syncInvoker(host: HTMLElement): void {
-  const btn = host.shadowRoot?.querySelector("button") as InvokerButton | null;
-  if (!btn) return;
-  const root = host.getRootNode() as Document | ShadowRoot;
-  const byId = (id: string): Element | null =>
-    typeof root.getElementById === "function" ? root.getElementById(id) : null;
-  const popoverTarget = host.getAttribute("popovertarget");
-  if (popoverTarget !== null) {
-    btn.popoverTargetElement = byId(popoverTarget);
-    btn.popoverTargetAction = host.getAttribute("popovertargetaction") ?? "toggle";
-  }
-  const commandFor = host.getAttribute("commandfor");
-  const command = host.getAttribute("command");
-  if (commandFor !== null && command !== null) {
-    btn.commandForElement = byId(commandFor);
-    btn.command = command;
-  }
-}
-
-/** Build a `.instui-<name>` class with an optional `-color-<variant>` key-value modifier from `variant`. */
-function variantClass(name: string, host: HTMLElement): string {
-  const variant = frag(host.getAttribute("variant"));
-  return variant ? `instui-${name} -color-${variant}` : `instui-${name}`;
-}
-
-/** Resolve the tag prefix: a non-empty string wins; anything empty/nullish falls back to `instui`. */
-function resolvePrefix(prefix: string | null | undefined): string {
-  return typeof prefix === "string" && prefix.trim() !== "" ? prefix : DEFAULT_PREFIX;
-}
-
-/** Build the prefix-aware registry: rewrite every internal `instui-<base>` name to the active-prefix tag. */
-function makeRegistry(host: ElementRegistry, tag: (base: string) => string): ElementRegistry {
-  return {
-    get: (name) => host.get(tag(name.replace(/^instui-/u, ""))),
-    define: (name, ctor) => {
-      const resolved = tag(name.replace(/^instui-/u, ""));
-      // Wrap every element with the shared spacing mixin, so `margin`/`padding` (+ per-side) work
-      // universally — no per-element code needed.
-      if (!host.get(resolved)) host.define(resolved, withSpacing(ctor));
-    },
-  };
-}
-
-/**
- * Build the `command`-event router: forward a target's `command` events to a handler, and where the
- * Invoker Commands API is missing, delegate matching `commandfor` clicks across the target's tree.
- */
-function makeOnCommand(invokerSupported: boolean): RegisterContext["onCommand"] {
-  // Elements call onCommand from paint()/connectedCallback and may re-run it (calendar re-wires its
-  // recreated internal grid on every paint). Adding a fresh listener each time would accumulate, so one
-  // click fires N times. Wire each target's `command` listener once (keyed on the target object — a
-  // recreated target is a new object, its predecessor GC'd), and register ONE click-fallback delegate
-  // per (root, id) that dispatches to the LATEST handler for that id. That fixes calendar's repeated
-  // re-wire (stable id `cal`) and a same-id host recreated later, without the stale-handler capture a
-  // plain skip-after-first would cause; distinct ids on a shared document each get their own routing.
-  type CommandHandler = (command: string, source: Element | null) => void;
-  // Latest handler per target object (WeakMap → recreated targets GC away); command listener wired once
-  // per target; one click-fallback delegate per root. The delegate resolves `commandfor` to the LIVE
-  // element and its current handler at click time, so it survives a target whose id is set after wiring
-  // (drilldown) and a repainted grid that swaps its element (calendar) — without accumulating listeners.
-  const handlerByTarget = new WeakMap<Element, CommandHandler>();
-  const wiredTargets = new WeakSet<EventTarget>();
-  const delegatedScopes = new WeakSet<EventTarget>();
-  return (target, handler) => {
-    handlerByTarget.set(target, handler);
-    if (!wiredTargets.has(target)) {
-      wiredTargets.add(target);
-      target.addEventListener("command", (event) => {
-        const ce = event as CommandEventish;
-        handlerByTarget.get(target)?.(ce.command, ce.source);
-      });
-    }
-    if (invokerSupported) return;
-    // Fallback for browsers without the API: delegate clicks across the target's tree — its shadow root
-    // for an internal grid, or the document for a light-DOM host — matching on `commandfor`, so
-    // `command` buttons keep working wherever they live.
-    const scope = target.getRootNode() as Document | ShadowRoot;
-    if (delegatedScopes.has(scope)) return;
-    delegatedScopes.add(scope);
-    scope.addEventListener("click", (event) => {
-      const el = event.target instanceof Element ? event.target : null;
-      const button = el?.closest<HTMLButtonElement>("button[command][commandfor]");
-      const forId = button?.getAttribute("commandfor");
-      const routedTarget = forId ? scope.getElementById(forId) : null;
-      const routed = routedTarget ? handlerByTarget.get(routedTarget) : undefined;
-      if (button && routed) routed(button.getAttribute("command") ?? "", button);
-    });
-  };
-}
-
-/**
- * Build the shadow-DOM element factory: define `<style>:host{display}css</style>` + `render(host)`
- * markup, wiring invoker forwarding when `invoker` is set. The `:host` display is explicit because a
- * custom element defaults to `display: inline`, which would collapse internal `width: 100%`.
- */
-function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
-  return (tag, css, render, { display = "inline-block", invoker = false } = {}) => {
-    if (registry.get(tag)) return;
-    registry.define(
-      tag,
-      class extends HTMLElement {
-        static observedAttributes = [
-          "variant",
-          "size",
-          "shape",
-          "value",
-          "max",
-          "label",
-          "pressed",
-          "lines",
-          "placement",
-          "minimized",
-          "constrain",
-          "src",
-          "alt",
-          "tip",
-          "has-shadow",
-          "popovertarget",
-          "popovertargetaction",
-          "command",
-          "commandfor",
-        ];
-        constructor() {
-          super();
-          this.attachShadow({ mode: "open" });
-        }
-        connectedCallback(): void {
-          this.paint();
-          if (invoker) {
-            // Re-resolve the target on each interaction: an id can point forward to an element parsed
-            // after this button, and the target may be swapped at runtime. `requestAnimationFrame`
-            // catches the initial forward reference once the document has finished parsing.
-            const sync = (): void => syncInvoker(this);
-            this.addEventListener("pointerdown", sync);
-            this.addEventListener("keydown", sync);
-            if (typeof requestAnimationFrame === "function") requestAnimationFrame(sync);
-          }
-        }
-        attributeChangedCallback(): void {
-          this.paint();
-        }
-        paint(): void {
-          if (this.shadowRoot) {
-            this.shadowRoot.innerHTML = `<style>:host{display:${display}}${css}</style>${render(this)}`;
-            if (invoker) syncInvoker(this);
-          }
-        }
-      },
-    );
-  };
 }
 
 /**
@@ -382,13 +119,7 @@ function makeWrapper(registry: ElementRegistry): RegisterContext["wrapper"] {
  */
 export function register(
   target: ElementRegistry | undefined = globalThis.customElements,
-  options: {
-    prefix?: string | null;
-    only?: readonly string[];
-    locale?: string;
-    strings?: Partial<WebComponentStrings>;
-    dir?: "ltr" | "rtl";
-  } = {},
+  options: RegisterContextOptions & { only?: readonly string[] } = {},
 ): void {
   if (!target || typeof HTMLElement === "undefined") return;
 
@@ -397,51 +128,7 @@ export function register(
   // nested dependency is always defined before the element that renders it.
   const wanted = options.only ? withNestedDeps(options.only) : null;
 
-  // Tag prefix: a valid non-empty string overrides the default; anything else (empty, whitespace, null,
-  // omitted) falls back to `instui`. A prefix is always applied because a custom-element name MUST contain
-  // a hyphen — `<icon>` is invalid, `<instui-icon>`/`<x-icon>` are not. The inlined `.instui-*` CSS classes
-  // are an internal detail and are NOT affected by this — only the custom-element tag name.
-  const prefix = resolvePrefix(options.prefix);
-  const tag = (base: string): string => `${prefix}-${base}`;
-  // Route every internal `registry.get`/`define` (all keyed on the canonical `instui-<base>` names)
-  // through the active prefix.
-  const registry = makeRegistry(target, tag);
-
-  // The shadow-DOM CSS is built with the default `instui` prefix so it matches the `instui-*` markup
-  // in each element (the builders drop the prefix on a falsy value).
-  const I = { prefix: "instui" } as const;
-
-  // The calendar and date picker drive navigation with the Invoker Commands API. `onCommand` routes a
-  // target's `command` events to a handler; where the API is unavailable it delegates clicks on the
-  // target's own `command`/`commandfor` buttons instead, so the buttons keep working everywhere.
-  const INVOKER_SUPPORTED =
-    typeof HTMLButtonElement !== "undefined" && "command" in HTMLButtonElement.prototype;
-  const onCommand = makeOnCommand(INVOKER_SUPPORTED);
-  const wrapper = makeWrapper(registry);
-
-  const locale = options.locale ?? "en";
-  const dir = options.dir ?? "ltr";
-  const strings = options.strings
-    ? makeStrings(locale, options.strings)
-    : locale === "en"
-      ? ENGLISH_STRINGS
-      : makeStrings(locale);
-  const firstDay = resolveFirstDay(locale);
-
-  const ctx: RegisterContext = {
-    registry,
-    tag,
-    I,
-    invokerSupported: INVOKER_SUPPORTED,
-    onCommand,
-    wrapper,
-    variantClass,
-    iconSvg,
-    locale,
-    dir,
-    firstDay,
-    strings,
-  };
+  const ctx = buildRegisterContext(options, target, iconSvg);
 
   for (const def of DEFINITIONS) {
     if (wanted && !wanted.has(def.name)) continue;

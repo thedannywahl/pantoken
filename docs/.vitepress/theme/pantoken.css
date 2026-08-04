@@ -9,6 +9,16 @@
   --vp-c-bg: var(--instui-color-background-container);
   --vp-local-nav-bg-color: var(--instui-color-background-container);
   --vp-sidebar-bg-color: var(--instui-color-background-muted);
+
+  /* Component tokens (tab underlines, badges, menu active states, the calendar's "today") read this
+     directly, bypassing the --vp-c-brand-* bridge in @pantoken/vitepress entirely — the rebrand theme
+     ships it as navy by default, a different blue than --vp-c-brand-1 resolves to. Point it at the same
+     source so InstUI's own brand-colored chrome and VitePress's brand-driven UI read as one color.
+     `:root[data-pantoken-theme]` scoping still wins on specificity, so canvas/canvas-high-contrast keep
+     their own values untouched. */
+  --instui-color-institutional-brand-primary: var(
+    --instui-color-text-interactive-navigation-primary-base
+  );
 }
 
 html.dark {
