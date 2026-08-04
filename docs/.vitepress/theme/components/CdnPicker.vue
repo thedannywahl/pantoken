@@ -82,7 +82,7 @@ async function copy(): Promise<void> {
 
 <template>
   <div
-    class="cdn-picker instui-view -background-secondary -border-radius-large -border-width-small instui-p-md"
+    class="cdn-picker instui-view -background-primary -border-radius-large -shadow-resting instui-p-md"
   >
     <fieldset class="instui-form-field-group cdn-picker__group">
       <legend>{{ t.componentsLabel }}</legend>
@@ -90,16 +90,20 @@ async function copy(): Promise<void> {
         <input type="checkbox" v-model="allComponents" />
         <span>{{ t.allComponents }}</span>
       </label>
-      <input
-        v-model="search"
-        type="search"
-        class="instui-text-input cdn-picker__search"
-        placeholder="Filter components…"
-        :disabled="allComponents"
-        aria-label="Filter components"
-      />
+      <span class="instui-input-group cdn-picker__search">
+        <span class="before"
+          ><span class="instui-icon -icon-search" aria-hidden="true"></span
+        ></span>
+        <input
+          v-model="search"
+          type="search"
+          placeholder="Filter components…"
+          :disabled="allComponents"
+          aria-label="Filter components"
+        />
+      </span>
       <div
-        class="cdn-picker__components instui-view -background-primary -border-radius-medium -border-width-small instui-p-sm"
+        class="cdn-picker__components instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
         :class="{ 'cdn-picker__components--disabled': allComponents }"
       >
         <label v-for="c in filteredComponents" :key="c.name" class="instui-checkbox">
@@ -153,7 +157,7 @@ async function copy(): Promise<void> {
       <template v-if="hasSelection">
         <div class="cdn-picker__code">
           <button
-            class="instui-button -size-small -color-secondary cdn-picker__copy"
+            class="instui-button -size-small -color-secondary -icon-copy cdn-picker__copy"
             type="button"
             @click="copy"
           >
