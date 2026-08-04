@@ -6,7 +6,7 @@ import IconPicker from "./IconPicker.vue";
 
 const { theme } = useData();
 const t = computed(() => {
-  const base = { tabComponents: "Components", tabIcons: "Icons" };
+  const base = { title: "CDN Picker", tabComponents: "Components", tabIcons: "Icons" };
   const overrides = ((theme.value as Record<string, unknown>).cdnPickerPage ?? {}) as Record<
     string,
     unknown
@@ -19,29 +19,32 @@ const activeTab = ref<"components" | "icons">("components");
 
 <template>
   <div class="cdn-picker-page">
-    <div class="cdn-picker-page__tabs" role="tablist">
-      <button
-        class="instui-button"
-        :class="{ '-color-secondary': activeTab !== 'components' }"
-        role="tab"
-        :aria-selected="activeTab === 'components'"
-        @click="activeTab = 'components'"
-      >
-        {{ t.tabComponents }}
-      </button>
-      <button
-        class="instui-button"
-        :class="{ '-color-secondary': activeTab !== 'icons' }"
-        role="tab"
-        :aria-selected="activeTab === 'icons'"
-        @click="activeTab = 'icons'"
-      >
-        {{ t.tabIcons }}
-      </button>
-    </div>
+    <h1 class="instui-heading -level-h1 -variant-title-page">{{ t.title }}</h1>
 
-    <CdnPicker v-if="activeTab === 'components'" />
-    <IconPicker v-else />
+    <div class="instui-tabs">
+      <div class="list" role="tablist">
+        <button
+          class="tab"
+          role="tab"
+          :aria-selected="activeTab === 'components'"
+          @click="activeTab = 'components'"
+        >
+          {{ t.tabComponents }}
+        </button>
+        <button
+          class="tab"
+          role="tab"
+          :aria-selected="activeTab === 'icons'"
+          @click="activeTab = 'icons'"
+        >
+          {{ t.tabIcons }}
+        </button>
+      </div>
+      <div class="panel" role="tabpanel">
+        <CdnPicker v-if="activeTab === 'components'" />
+        <IconPicker v-else />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -50,10 +53,5 @@ const activeTab = ref<"components" | "icons">("components");
   max-width: 960px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-}
-.cdn-picker-page__tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
 }
 </style>
