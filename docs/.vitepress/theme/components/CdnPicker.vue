@@ -4,6 +4,7 @@ import { useData } from "vitepress";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
 import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
 import manifest from "../generated/cdn-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
@@ -35,20 +36,15 @@ const selected = ref<Set<string>>(initialSelection());
 // Base and utilities are structural includes, not entries in the component manifest — on by default.
 const includeBase = ref(readHashParam("c_base") !== "0");
 const includeUtilities = ref(readHashParam("c_util") !== "0");
-const format = ref(readHashParam("c_fmt") ?? "link");
-const search = ref(readHashParam("c_q") ?? "");
+const format = useHashParamRef("c_fmt", "link");
+const search = useHashParamRef("c_q", "");
 const { themeKey, mode, showMode } = usePickerTheme();
 
 watch(includeBase, (v) => writeHashParam("c_base", v ? "1" : "0", "1"));
 watch(includeUtilities, (v) => writeHashParam("c_util", v ? "1" : "0", "1"));
-watch(format, (v) => writeHashParam("c_fmt", v, "link"));
-watch(search, (v) => writeHashParam("c_q", v, ""));
 
 function toggle(name: string): void {
-  const next = new Set(selected.value);
-  if (next.has(name)) next.delete(name);
-  else next.add(name);
-  selected.value = next;
+  selected.value = toggleStringInSet(selected.value, name);
 }
 
 // "All components" is a tri-state checkbox over the manifest list PLUS Base/Utilities: checked only

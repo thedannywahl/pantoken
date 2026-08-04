@@ -3,6 +3,7 @@ import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
 import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
 import PickerThemeControls from "./PickerThemeControls.vue";
 import PickerOutput from "./PickerOutput.vue";
@@ -55,12 +56,13 @@ const NESTED_DEPS: Record<string, readonly string[]> = {
 };
 function withNestedDeps(names: Iterable<string>): string[] {
   const wanted = new Set<string>();
-  const add = (name: string): void => {
-    if (wanted.has(name)) return;
+  const queue = [...names];
+  while (queue.length > 0) {
+    const name = queue.shift();
+    if (!name || wanted.has(name)) continue;
     wanted.add(name);
-    for (const dep of NESTED_DEPS[name] ?? []) add(dep);
-  };
-  for (const name of names) add(name);
+    for (const dep of NESTED_DEPS[name] ?? []) queue.push(dep);
+  }
   return [...wanted].sort();
 }
 
@@ -124,18 +126,12 @@ function initialSelection(): Set<string> {
 }
 
 const selected = ref<Set<string>>(initialSelection());
-const format = ref(readHashParam("w_fmt") ?? "esm");
-const search = ref(readHashParam("w_q") ?? "");
+const format = useHashParamRef("w_fmt", "esm");
+const search = useHashParamRef("w_q", "");
 const { themeKey, mode, showMode } = usePickerTheme();
 
-watch(format, (v) => writeHashParam("w_fmt", v, "esm"));
-watch(search, (v) => writeHashParam("w_q", v, ""));
-
 function toggle(name: string): void {
-  const next = new Set(selected.value);
-  if (next.has(name)) next.delete(name);
-  else next.add(name);
-  selected.value = next;
+  selected.value = toggleStringInSet(selected.value, name);
 }
 
 // "All elements" is a tri-state checkbox over the element list: checked when every element is

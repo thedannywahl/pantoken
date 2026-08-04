@@ -1,3 +1,5 @@
+import type { CdnPickerStrings } from "./theme/cdn";
+
 /** The locales the docs site builds: `root` (English) and `hu` (Hungarian). */
 export type DocsLocale = "root" | "hu";
 
@@ -36,31 +38,7 @@ type LocaleMeta = {
   };
   // The interactive CDN combine-URL builder on the CDN guide page (see theme/components/CdnPicker.vue
   // and theme/cdn.ts). Component names and the generated URL are not translated.
-  cdnPicker: {
-    themeLabel: string;
-    themeRebrand: string;
-    themeCanvas: string;
-    themeCanvasHighContrast: string;
-    modeLabel: string;
-    modeAdaptive: string;
-    modeLightOnly: string;
-    componentsLabel: string;
-    allComponents: string;
-    formatLabel: string;
-    formatLink: string;
-    formatImport: string;
-    includeBase: string;
-    baseInfoLabel: string;
-    baseInfo: string;
-    includeUtilities: string;
-    utilitiesInfoLabel: string;
-    utilitiesInfo: string;
-    copy: string;
-    copied: string;
-    empty: string;
-    fontsNote: string;
-    iconsNote: string;
-  };
+  cdnPicker: CdnPickerStrings;
   // Default-theme chrome VitePress renders around the content. Without these the Hungarian site shows
   // English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
   chrome: {
