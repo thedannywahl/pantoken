@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef } from "vue";
+import { computed, onMounted, ref, shallowRef, watch } from "vue";
 import { useData } from "vitepress";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
+import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import PickerOutput from "./PickerOutput.vue";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -42,6 +43,18 @@ const loadingSimple = ref(false);
 const loadErrorInstui = ref(false);
 const loadErrorSimple = ref(false);
 
+// Deep-linking: the manifests load asynchronously, so a restored "all"/name-list selection from the
+// URL hash can only be validated (and applied) once the matching manifest has actually arrived.
+const pendingInstuiSel = readHashParam("i_instui");
+const pendingSimpleSel = readHashParam("i_simple");
+
+function restoreSelection(raw: string | null, allNames: string[]): Set<string> {
+  if (raw === "all") return new Set(allNames);
+  if (!raw) return new Set();
+  const valid = new Set(allNames);
+  return new Set(raw.split(",").filter((n) => valid.has(n)));
+}
+
 async function loadInstui(): Promise<void> {
   if (instuiIcons.value || loadingInstui.value) return;
   loadingInstui.value = true;
@@ -49,6 +62,10 @@ async function loadInstui(): Promise<void> {
   try {
     const data = (await import("../generated/cdn-icon-manifest-instui.json")) as InstUiEntry[];
     instuiIcons.value = Array.isArray(data) ? data : (data as { default: InstUiEntry[] }).default;
+    selectedInstui.value = restoreSelection(
+      pendingInstuiSel,
+      instuiIcons.value.map((i) => i.name),
+    );
   } catch {
     loadErrorInstui.value = true;
   } finally {
@@ -65,6 +82,10 @@ async function loadSimple(): Promise<void> {
     simpleIcons.value = Array.isArray(data)
       ? data
       : (data as { default: SimpleIconEntry[] }).default;
+    selectedSimple.value = restoreSelection(
+      pendingSimpleSel,
+      simpleIcons.value.map((i) => i.slug),
+    );
   } catch {
     loadErrorSimple.value = true;
   } finally {
@@ -80,8 +101,11 @@ onMounted(() => {
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
 const selectedSimple = ref<Set<string>>(new Set());
-const format = ref("link");
-const search = ref("");
+const format = ref(readHashParam("i_fmt") ?? "link");
+const search = ref(readHashParam("i_q") ?? "");
+
+watch(format, (v) => writeHashParam("i_fmt", v, "link"));
+watch(search, (v) => writeHashParam("i_q", v, ""));
 
 function toggleInstui(name: string): void {
   const next = new Set(selectedInstui.value);
@@ -121,6 +145,12 @@ const someSelected = computed(
   () => (selectedInstui.value.size > 0 || selectedSimple.value.size > 0) && !allSelected.value,
 );
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
+watch(selectedInstui, (s) => {
+  writeHashParam("i_instui", allInstuiSelected.value ? "all" : [...s].join(","), "");
+});
+watch(selectedSimple, (s) => {
+  writeHashParam("i_simple", allSimpleSelected.value ? "all" : [...s].join(","), "");
+});
 
 function toggleAll(checked: boolean): void {
   selectedInstui.value = checked

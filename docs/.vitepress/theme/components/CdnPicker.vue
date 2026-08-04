@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
+import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import manifest from "../generated/cdn-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
 
@@ -19,12 +20,26 @@ const t = computed<CdnPickerStrings>(() => ({
   ...(theme.value as { cdnPicker?: Partial<CdnPickerStrings> }).cdnPicker,
 }));
 
-const selected = ref<Set<string>>(new Set());
+// Deep-linking: restore state from the URL hash on setup, then keep it in sync as the user picks.
+function initialSelection(): Set<string> {
+  const raw = readHashParam("c_sel");
+  if (raw === "all") return new Set(components.map((c) => c.name));
+  if (!raw) return new Set();
+  const names = new Set(components.map((c) => c.name));
+  return new Set(raw.split(",").filter((n) => names.has(n)));
+}
+
+const selected = ref<Set<string>>(initialSelection());
 // Base and utilities are structural includes, not entries in the component manifest — on by default.
-const includeBase = ref(true);
-const includeUtilities = ref(true);
-const format = ref("link");
-const search = ref("");
+const includeBase = ref(readHashParam("c_base") !== "0");
+const includeUtilities = ref(readHashParam("c_util") !== "0");
+const format = ref(readHashParam("c_fmt") ?? "link");
+const search = ref(readHashParam("c_q") ?? "");
+
+watch(includeBase, (v) => writeHashParam("c_base", v ? "1" : "0", "1"));
+watch(includeUtilities, (v) => writeHashParam("c_util", v ? "1" : "0", "1"));
+watch(format, (v) => writeHashParam("c_fmt", v, "link"));
+watch(search, (v) => writeHashParam("c_q", v, ""));
 
 function toggle(name: string): void {
   const next = new Set(selected.value);
@@ -41,6 +56,10 @@ const allSelected = computed(
 );
 const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
+watch(selected, (s) => {
+  const value = allSelected.value ? "all" : [...s].join(",");
+  writeHashParam("c_sel", value, "");
+});
 
 function toggleAll(checked: boolean): void {
   selected.value = checked ? new Set(components.map((c) => c.name)) : new Set();
@@ -101,7 +120,7 @@ const output = computed(() =>
         />
       </span>
       <div
-        class="cdn-picker__components instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
+        class="cdn-picker__components instui-view -border-radius-medium -border-width-small instui-p-sm"
       >
         <label class="instui-checkbox">
           <input

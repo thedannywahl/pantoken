@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
+import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import PickerOutput from "./PickerOutput.vue";
 
 // The base (unprefixed) element names `@pantoken/web-components` registers — mirrors
@@ -75,14 +76,27 @@ const t = computed(() => {
     empty: "Select one or more elements to build a snippet.",
     tokenNote:
       "Also load a token sheet (e.g. @pantoken/css/dist/style.css) so these elements can resolve their tokens.",
-    iifeNote: "The classic script tag always registers every element, regardless of selection.",
+    iifeNote:
+      "This snippet loads its own token sheet and always registers every element, regardless of selection.",
   };
   return { ...base, ...(theme.value as Record<string, unknown>).webComponentsPicker };
 });
 
-const selected = ref<Set<string>>(new Set());
-const format = ref("esm");
-const search = ref("");
+// Deep-linking: restore state from the URL hash on setup, then keep it in sync as the user picks.
+function initialSelection(): Set<string> {
+  const raw = readHashParam("w_sel");
+  if (raw === "all") return new Set(elements);
+  if (!raw) return new Set();
+  const names = new Set(elements);
+  return new Set(raw.split(",").filter((n) => names.has(n)));
+}
+
+const selected = ref<Set<string>>(initialSelection());
+const format = ref(readHashParam("w_fmt") ?? "esm");
+const search = ref(readHashParam("w_q") ?? "");
+
+watch(format, (v) => writeHashParam("w_fmt", v, "esm"));
+watch(search, (v) => writeHashParam("w_q", v, ""));
 
 function toggle(name: string): void {
   const next = new Set(selected.value);
@@ -97,6 +111,9 @@ function toggle(name: string): void {
 const allSelected = computed(() => elements.length > 0 && selected.value.size === elements.length);
 const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
+watch(selected, (s) => {
+  writeHashParam("w_sel", allSelected.value ? "all" : [...s].join(","), "");
+});
 
 function toggleAll(checked: boolean): void {
   selected.value = checked ? new Set(elements) : new Set();
@@ -111,7 +128,7 @@ const filteredElements = computed(() => {
 // output; the ES module snippet needs at least one element selected.
 const hasSelection = computed(() => format.value === "iife" || selected.value.size > 0);
 
-// Bare URLs/statements, not full <script> snippets — see the token note below the output for the
+// A bare URL/statement, not a full script-tag snippet — see the token note below the output for the
 // separate token sheet these elements still need to resolve their tokens.
 const esmSnippet = computed(() => {
   if (allSelected.value) return "https://esm.sh/@pantoken/web-components";
@@ -120,8 +137,20 @@ const esmSnippet = computed(() => {
   return `import { register } from "https://esm.sh/@pantoken/web-components";\nregister(customElements, { only: [${onlyList}] });`;
 });
 
-const iifeSnippet =
-  "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
+// A self-contained bootstrapper: it injects both the token stylesheet and the IIFE bundle itself, so
+// dropping this one snippet in is enough — no separate link/script tags to write by hand. Built from
+// DOM calls rather than literal tag text, which also sidesteps writing a literal closing-script-tag
+// substring inside this file's own script block (the SFC parser would misread it as this block's end).
+const iifeSnippet = `(function () {
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css";
+  document.head.appendChild(link);
+
+  var script = document.createElement("script");
+  script.src = "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
+  document.head.appendChild(script);
+})();`;
 
 const output = computed(() => (format.value === "iife" ? iifeSnippet : esmSnippet.value));
 </script>
@@ -181,7 +210,9 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet : esmSnippe
       >
         {{ t.iifeNote }}
       </p>
-      <p class="instui-text -size-x-small -color-secondary wc-picker__note">{{ t.tokenNote }}</p>
+      <p v-else class="instui-text -size-x-small -color-secondary wc-picker__note">
+        {{ t.tokenNote }}
+      </p>
     </PickerOutput>
   </div>
 </template>

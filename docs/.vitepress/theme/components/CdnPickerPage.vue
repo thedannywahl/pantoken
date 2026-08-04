@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import CdnPicker from "./CdnPicker.vue";
+import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import IconPicker from "./IconPicker.vue";
 import WebComponentsPicker from "./WebComponentsPicker.vue";
 
@@ -20,7 +21,12 @@ const t = computed(() => {
   return { ...base, ...overrides };
 });
 
-const activeTab = ref<"components" | "icons" | "web-components">("components");
+type TabKey = "components" | "icons" | "web-components";
+const initialTab = readHashParam("tab");
+const activeTab = ref<TabKey>(
+  initialTab === "icons" || initialTab === "web-components" ? initialTab : "components",
+);
+watch(activeTab, (tab) => writeHashParam("tab", tab, "components"));
 </script>
 
 <template>
