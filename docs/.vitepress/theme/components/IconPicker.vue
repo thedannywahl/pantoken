@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, watchEffect } from "vue";
+import { computed, onMounted, ref, shallowRef } from "vue";
 import { useData } from "vitepress";
+import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
+import PickerOutput from "./PickerOutput.vue";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface InstUiEntry {
@@ -78,8 +80,7 @@ onMounted(() => {
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
 const selectedSimple = ref<Set<string>>(new Set());
-const format = ref<"link" | "import" | "esm">("link");
-const copied = ref(false);
+const format = ref("link");
 const search = ref("");
 
 function toggleInstui(name: string): void {
@@ -87,14 +88,12 @@ function toggleInstui(name: string): void {
   if (next.has(name)) next.delete(name);
   else next.add(name);
   selectedInstui.value = next;
-  copied.value = false;
 }
 function toggleSimple(slug: string): void {
   const next = new Set(selectedSimple.value);
   if (next.has(slug)) next.delete(slug);
   else next.add(slug);
   selectedSimple.value = next;
-  copied.value = false;
 }
 
 // "All icons" is a tri-state checkbox over BOTH sources: checked when every InstUI icon and every
@@ -112,7 +111,6 @@ const allSimpleSelected = computed(
     (simpleIcons.value?.length ?? 0) > 0 && selectedSimple.value.size === simpleIcons.value?.length,
 );
 
-const allCheckboxEl = ref<HTMLInputElement | null>(null);
 const allSelected = computed(
   () =>
     (instuiIcons.value?.length ?? 0) + (simpleIcons.value?.length ?? 0) > 0 &&
@@ -122,9 +120,8 @@ const allSelected = computed(
 const someSelected = computed(
   () => (selectedInstui.value.size > 0 || selectedSimple.value.size > 0) && !allSelected.value,
 );
-watchEffect(() => {
-  if (allCheckboxEl.value) allCheckboxEl.value.indeterminate = someSelected.value;
-});
+const allCheckboxEl = useIndeterminateCheckbox(someSelected);
+
 function toggleAll(checked: boolean): void {
   selectedInstui.value = checked
     ? new Set((instuiIcons.value ?? []).map((i) => i.name))
@@ -132,7 +129,6 @@ function toggleAll(checked: boolean): void {
   selectedSimple.value = checked
     ? new Set((simpleIcons.value ?? []).map((i) => i.slug))
     : new Set();
-  copied.value = false;
 }
 
 const filteredInstui = computed(() => {
@@ -186,16 +182,6 @@ const output = computed(() => {
     ? `<link rel="stylesheet" href="${url}">`
     : `@import url("${url}");`;
 });
-
-async function copy(): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(output.value);
-    copied.value = true;
-    setTimeout(() => (copied.value = false), 1500);
-  } catch {
-    // Clipboard blocked — the code stays selectable.
-  }
-}
 </script>
 
 <template>
@@ -292,56 +278,20 @@ async function copy(): Promise<void> {
       </div>
     </fieldset>
 
-    <div class="icon-picker__output">
-      <template v-if="hasSelection">
-        <span class="instui-text -size-small -color-secondary icon-picker__format-label">{{
-          t.formatLabel
-        }}</span>
-        <div class="instui-tabs -variant-secondary">
-          <div class="list" role="tablist">
-            <button
-              class="tab"
-              role="tab"
-              :aria-selected="format === 'link'"
-              @click="format = 'link'"
-            >
-              {{ t.formatLink }}
-            </button>
-            <button
-              class="tab"
-              role="tab"
-              :aria-selected="format === 'import'"
-              @click="format = 'import'"
-            >
-              {{ t.formatImport }}
-            </button>
-            <button
-              class="tab"
-              role="tab"
-              :aria-selected="format === 'esm'"
-              @click="format = 'esm'"
-            >
-              {{ t.formatEsm }}
-            </button>
-          </div>
-          <div class="panel" role="tabpanel">
-            <div class="icon-picker__code">
-              <button
-                class="instui-button -size-small -color-secondary -icon-copy icon-picker__copy"
-                type="button"
-                @click="copy"
-              >
-                {{ copied ? t.copied : t.copy }}
-              </button>
-              <pre><code>{{ output }}</code></pre>
-            </div>
-          </div>
-        </div>
-      </template>
-      <p v-else class="instui-text -color-secondary -style-italic icon-picker__empty">
-        {{ t.empty }}
-      </p>
-    </div>
+    <PickerOutput
+      v-model="format"
+      :formats="[
+        { value: 'link', label: t.formatLink },
+        { value: 'import', label: t.formatImport },
+        { value: 'esm', label: t.formatEsm },
+      ]"
+      :output="output"
+      :has-selection="hasSelection"
+      :empty-text="t.empty"
+      :format-label="t.formatLabel"
+      :copy-text="t.copy"
+      :copied-text="t.copied"
+    />
   </div>
 </template>
 
@@ -398,39 +348,5 @@ html.dark .icon-picker__img {
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 0.75rem;
-}
-.icon-picker__output {
-  margin-top: 1rem;
-}
-.icon-picker__format-label {
-  display: block;
-  margin-bottom: 0.25rem;
-}
-.icon-picker__code {
-  position: relative;
-}
-.icon-picker__code pre {
-  overflow-x: auto;
-  padding: 1rem;
-  padding-right: 5rem;
-  border-radius: 8px;
-  background: var(--vp-code-block-bg);
-  font-size: 0.8125rem;
-  line-height: 1.5;
-}
-.icon-picker__code code {
-  white-space: pre-wrap;
-  word-break: break-all;
-  color: var(--vp-c-text-1);
-}
-.icon-picker__copy {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  z-index: 1;
-}
-.icon-picker__empty {
-  display: block;
-  margin: 0;
 }
 </style>

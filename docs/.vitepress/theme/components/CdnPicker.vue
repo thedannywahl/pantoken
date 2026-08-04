@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watchEffect } from "vue";
+import { computed, ref } from "vue";
 import { useData } from "vitepress";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
+import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import manifest from "../generated/cdn-manifest.json";
+import PickerOutput from "./PickerOutput.vue";
 
 type ManifestComponent = { name: string; needsIcons: boolean };
 // Alphabetical for findability (the manifest is in load order).
@@ -21,8 +23,7 @@ const selected = ref<Set<string>>(new Set());
 // Base and utilities are structural includes, not entries in the component manifest — on by default.
 const includeBase = ref(true);
 const includeUtilities = ref(true);
-const format = ref<"link" | "import">("link");
-const copied = ref(false);
+const format = ref("link");
 const search = ref("");
 
 function toggle(name: string): void {
@@ -30,20 +31,16 @@ function toggle(name: string): void {
   if (next.has(name)) next.delete(name);
   else next.add(name);
   selected.value = next;
-  copied.value = false;
 }
 
 // "All components" is a tri-state checkbox over the manifest list: checked when every component is
 // selected, indeterminate when some are, unchecked when none are. Clicking it selects/clears everything
 // without disabling the individual checkboxes.
-const allCheckboxEl = ref<HTMLInputElement | null>(null);
 const allSelected = computed(
   () => components.length > 0 && selected.value.size === components.length,
 );
 const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
-watchEffect(() => {
-  if (allCheckboxEl.value) allCheckboxEl.value.indeterminate = someSelected.value;
-});
+const allCheckboxEl = useIndeterminateCheckbox(someSelected);
 
 function toggleAll(checked: boolean): void {
   selected.value = checked ? new Set(components.map((c) => c.name)) : new Set();
@@ -51,7 +48,6 @@ function toggleAll(checked: boolean): void {
   // if you still want them alongside a full (or cleared) selection.
   includeBase.value = false;
   includeUtilities.value = false;
-  copied.value = false;
 }
 
 const chosen = computed(() => components.filter((c) => selected.value.has(c.name)));
@@ -85,16 +81,6 @@ const output = computed(() =>
     ? `<link rel="stylesheet" href="${combineUrl.value}">`
     : `@import url("${combineUrl.value}");`,
 );
-
-async function copy(): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(output.value);
-    copied.value = true;
-    setTimeout(() => (copied.value = false), 1500);
-  } catch {
-    // Clipboard blocked — the code stays selectable in the block.
-  }
-}
 </script>
 
 <template>
@@ -175,57 +161,24 @@ async function copy(): Promise<void> {
       </div>
     </fieldset>
 
-    <div class="cdn-picker__output">
-      <template v-if="hasSelection">
-        <span class="instui-text -size-small -color-secondary cdn-picker__format-label">{{
-          t.formatLabel
-        }}</span>
-        <div class="instui-tabs -variant-secondary">
-          <div class="list" role="tablist">
-            <button
-              class="tab"
-              role="tab"
-              :aria-selected="format === 'link'"
-              @click="format = 'link'"
-            >
-              {{ t.formatLink }}
-            </button>
-            <button
-              class="tab"
-              role="tab"
-              :aria-selected="format === 'import'"
-              @click="format = 'import'"
-            >
-              {{ t.formatImport }}
-            </button>
-          </div>
-          <div class="panel" role="tabpanel">
-            <div class="cdn-picker__code">
-              <button
-                class="instui-button -size-small -color-secondary -icon-copy cdn-picker__copy"
-                type="button"
-                @click="copy"
-              >
-                {{ copied ? t.copied : t.copy }}
-              </button>
-              <pre><code>{{ output }}</code></pre>
-            </div>
-            <p
-              v-if="needsIconSheet"
-              class="instui-text -size-x-small -color-secondary cdn-picker__note"
-            >
-              {{ t.iconsNote }}
-            </p>
-            <p class="instui-text -size-x-small -color-secondary cdn-picker__note">
-              {{ t.fontsNote }}
-            </p>
-          </div>
-        </div>
-      </template>
-      <p v-else class="instui-text -color-secondary -style-italic cdn-picker__empty">
-        {{ t.empty }}
+    <PickerOutput
+      v-model="format"
+      :formats="[
+        { value: 'link', label: t.formatLink },
+        { value: 'import', label: t.formatImport },
+      ]"
+      :output="output"
+      :has-selection="hasSelection"
+      :empty-text="t.empty"
+      :format-label="t.formatLabel"
+      :copy-text="t.copy"
+      :copied-text="t.copied"
+    >
+      <p v-if="needsIconSheet" class="instui-text -size-x-small -color-secondary cdn-picker__note">
+        {{ t.iconsNote }}
       </p>
-    </div>
+      <p class="instui-text -size-x-small -color-secondary cdn-picker__note">{{ t.fontsNote }}</p>
+    </PickerOutput>
   </div>
 </template>
 
@@ -260,43 +213,8 @@ async function copy(): Promise<void> {
 .cdn-picker__popover {
   max-width: 16rem;
 }
-.cdn-picker__output {
-  margin-top: 1rem;
-}
-.cdn-picker__format-label {
-  display: block;
-  margin-bottom: 0.25rem;
-}
-/* Float the copy button over the code block; the button's own look comes from .instui-button. */
-.cdn-picker__code {
-  position: relative;
-}
-.cdn-picker__code pre {
-  overflow-x: auto;
-  padding: 1rem;
-  padding-right: 5rem;
-  border-radius: 8px;
-  background: var(--vp-code-block-bg);
-  font-size: 0.8125rem;
-  line-height: 1.5;
-}
-.cdn-picker__code code {
-  white-space: pre-wrap;
-  word-break: break-all;
-  color: var(--vp-c-text-1);
-}
-.cdn-picker__copy {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  z-index: 1;
-}
 .cdn-picker__note {
   display: block;
   margin: 0.5rem 0 0;
-}
-.cdn-picker__empty {
-  display: block;
-  margin: 0;
 }
 </style>
