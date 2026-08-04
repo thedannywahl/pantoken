@@ -4,9 +4,10 @@ import { useData } from "vitepress";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
-import { getStoredTheme, type PantokenTheme } from "../theme";
+import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
 import manifest from "../generated/cdn-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
+import PickerThemeControls from "./PickerThemeControls.vue";
 
 type ManifestComponent = { name: string; needsIcons: boolean };
 // Alphabetical for findability (the manifest is in load order).
@@ -36,25 +37,12 @@ const includeBase = ref(readHashParam("c_base") !== "0");
 const includeUtilities = ref(readHashParam("c_util") !== "0");
 const format = ref(readHashParam("c_fmt") ?? "link");
 const search = ref(readHashParam("c_q") ?? "");
-const initialTheme = readHashParam("p_theme");
-const themeKey = ref<PantokenTheme>(
-  initialTheme === "rebrand" || initialTheme === "canvas" || initialTheme === "canvasHighContrast"
-    ? initialTheme
-    : getStoredTheme(),
-);
-const mode = ref<"adaptive" | "light">(readHashParam("p_mode") === "light" ? "light" : "adaptive");
-
-const showMode = computed(() => themeKey.value === "rebrand");
+const { themeKey, mode, showMode } = usePickerTheme();
 
 watch(includeBase, (v) => writeHashParam("c_base", v ? "1" : "0", "1"));
 watch(includeUtilities, (v) => writeHashParam("c_util", v ? "1" : "0", "1"));
 watch(format, (v) => writeHashParam("c_fmt", v, "link"));
 watch(search, (v) => writeHashParam("c_q", v, ""));
-watch(themeKey, (v) => writeHashParam("p_theme", v, "rebrand"));
-watch(mode, (v) => writeHashParam("p_mode", v, "adaptive"));
-watch(themeKey, (v) => {
-  if (v !== "rebrand") mode.value = "adaptive";
-});
 
 function toggle(name: string): void {
   const next = new Set(selected.value);
@@ -101,15 +89,7 @@ const filteredComponents = computed(() => {
 // component needs component-icons.css.
 const needsIconSheet = computed(() => chosen.value.some((c) => c.needsIcons));
 
-const tokenSheet = computed(() => {
-  if (themeKey.value === "canvas") return "npm/@pantoken/css/dist/style.canvas.lean.css";
-  if (themeKey.value === "canvasHighContrast") {
-    return "npm/@pantoken/css/dist/style.canvas-high-contrast.lean.css";
-  }
-  return mode.value === "light"
-    ? "npm/@pantoken/css/dist/style.rebrand.light.lean.css"
-    : "npm/@pantoken/css/dist/style.lean.css";
-});
+const tokenSheet = computed(() => tokenLeanSheet(themeKey.value, mode.value));
 
 const combineUrl = computed(() => {
   // Track the latest release (no version pin) — pin yourself for production. jsDelivr serves raw file
@@ -153,21 +133,15 @@ const output = computed(() =>
           aria-label="Filter components"
         />
       </span>
-      <div class="cdn-picker__theme-row">
-        <label class="instui-text -size-small" for="cdn-picker-theme">{{ t.themeLabel }}</label>
-        <select id="cdn-picker-theme" v-model="themeKey" class="cdn-picker__select">
-          <option value="rebrand">{{ t.themeRebrand }}</option>
-          <option value="canvas">{{ t.themeCanvas }}</option>
-          <option value="canvasHighContrast">{{ t.themeCanvasHighContrast }}</option>
-        </select>
-      </div>
-      <div v-if="showMode" class="cdn-picker__theme-row">
-        <label class="instui-text -size-small" for="cdn-picker-mode">{{ t.modeLabel }}</label>
-        <select id="cdn-picker-mode" v-model="mode" class="cdn-picker__select">
-          <option value="adaptive">{{ t.modeAdaptive }}</option>
-          <option value="light">{{ t.modeLightOnly }}</option>
-        </select>
-      </div>
+      <PickerThemeControls
+        id-prefix="cdn-picker"
+        :theme-key="themeKey"
+        :mode="mode"
+        :show-mode="showMode"
+        :strings="t"
+        @update:theme-key="themeKey = $event"
+        @update:mode="mode = $event"
+      />
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="cdn-picker__components instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">
@@ -262,16 +236,6 @@ const output = computed(() =>
 .cdn-picker__search {
   width: 100%;
   margin-bottom: 0.5rem;
-}
-.cdn-picker__theme-row {
-  display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr);
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-.cdn-picker__select {
-  width: 100%;
 }
 /* The scrollable component grid; chrome (bg/border/radius/padding) is on the .instui-view classes. */
 .cdn-picker__components {
