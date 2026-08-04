@@ -38,7 +38,7 @@
     "publint": "catalog:",
     "snyk": "catalog:",
     "stylelint": "catalog:",
-    "vite": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.7",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
   },
