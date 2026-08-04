@@ -311,9 +311,9 @@ const output = computed(() => {
     <PickerOutput
       v-model="format"
       :formats="[
-        { value: 'link', label: t.formatLink },
-        { value: 'import', label: t.formatImport },
-        { value: 'esm', label: t.formatEsm },
+        { value: 'link', label: t.formatLink, lang: 'html' },
+        { value: 'import', label: t.formatImport, lang: 'css' },
+        { value: 'esm', label: t.formatEsm, lang: 'js' },
       ]"
       :output="output"
       :has-selection="hasSelection"

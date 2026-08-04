@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed } from "vue";
 
 const props = defineProps<{
-  formats: { value: string; label: string }[];
+  formats: { value: string; label: string; lang: string }[];
   modelValue: string;
   output: string;
   hasSelection: boolean;
@@ -13,23 +13,11 @@ const props = defineProps<{
 }>();
 defineEmits<{ (e: "update:modelValue", value: string): void }>();
 
-const copied = ref(false);
-// A copied snippet goes stale the moment the underlying selection changes — revert the button
-// immediately instead of waiting out the confirmation timeout.
-watch(
-  () => props.output,
-  () => (copied.value = false),
+// The language tag drives both the `language-*` wrapper class VitePress's own copy-button click
+// handler and default-theme CSS key off of, and the small label shown in the block's corner.
+const lang = computed(
+  () => props.formats.find((f) => f.value === props.modelValue)?.lang ?? "text",
 );
-
-async function copy(): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(props.output);
-    copied.value = true;
-    setTimeout(() => (copied.value = false), 1500);
-  } catch {
-    // Clipboard blocked — the code stays selectable in the block.
-  }
-}
 </script>
 
 <template>
@@ -52,14 +40,13 @@ async function copy(): Promise<void> {
           </button>
         </div>
         <div class="panel" role="tabpanel">
-          <div class="picker-output__code">
-            <button
-              class="instui-button -size-small -color-secondary -icon-copy picker-output__copy"
-              type="button"
-              @click="copy"
-            >
-              {{ copied ? copiedText : copyText }}
-            </button>
+          <!-- Matches VitePress's own fenced-code output exactly (div.language-*, button.copy,
+               span.lang, pre > code) so the default theme's global copy-button click handler and
+               `.vp-doc [class*='language-']` styling both pick this up as if it were static markdown,
+               with no bespoke copy logic or styling of our own. -->
+          <div :class="`language-${lang}`">
+            <button class="copy" type="button" :title="copyText" :data-copied="copiedText"></button>
+            <span class="lang">{{ lang }}</span>
             <pre><code>{{ output }}</code></pre>
           </div>
           <slot />
@@ -79,30 +66,6 @@ async function copy(): Promise<void> {
 .picker-output__format-label {
   display: block;
   margin-bottom: 0.25rem;
-}
-/* Float the copy button over the code block; the button's own look comes from .instui-button. */
-.picker-output__code {
-  position: relative;
-}
-.picker-output__code pre {
-  overflow-x: auto;
-  padding: 1rem;
-  padding-right: 5rem;
-  border-radius: 8px;
-  background: var(--vp-code-block-bg);
-  font-size: 0.8125rem;
-  line-height: 1.5;
-}
-.picker-output__code code {
-  white-space: pre-wrap;
-  word-break: break-all;
-  color: var(--vp-c-text-1);
-}
-.picker-output__copy {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  z-index: 1;
 }
 .picker-output__empty {
   display: block;

@@ -252,8 +252,8 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
     <PickerOutput
       v-model="format"
       :formats="[
-        { value: 'esm', label: t.formatEsm },
-        { value: 'iife', label: t.formatIife },
+        { value: 'esm', label: t.formatEsm, lang: 'js' },
+        { value: 'iife', label: t.formatIife, lang: 'js' },
       ]"
       :output="output"
       :has-selection="hasSelection"
