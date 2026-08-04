@@ -48,25 +48,30 @@ function toggle(name: string): void {
   selected.value = next;
 }
 
-// "All components" is a tri-state checkbox over the manifest list: checked when every component is
-// selected, indeterminate when some are, unchecked when none are. Clicking it selects/clears everything
-// without disabling the individual checkboxes.
-const allSelected = computed(
+// "All components" is a tri-state checkbox over the manifest list PLUS Base/Utilities: checked only
+// when every component is selected and both are on, indeterminate for any other mix, unchecked when
+// nothing is on. Clicking it selects/clears everything (components and Base/Utilities alike) without
+// disabling the individual checkboxes.
+const allComponentsSelected = computed(
   () => components.length > 0 && selected.value.size === components.length,
 );
-const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
+const allSelected = computed(
+  () => allComponentsSelected.value && includeBase.value && includeUtilities.value,
+);
+const someSelected = computed(
+  () =>
+    !allSelected.value && (selected.value.size > 0 || includeBase.value || includeUtilities.value),
+);
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
 watch(selected, (s) => {
-  const value = allSelected.value ? "all" : [...s].join(",");
+  const value = allComponentsSelected.value ? "all" : [...s].join(",");
   writeHashParam("c_sel", value, "");
 });
 
 function toggleAll(checked: boolean): void {
   selected.value = checked ? new Set(components.map((c) => c.name)) : new Set();
-  // Toggling "all" either way replaces the default base/utilities include — re-check them by hand
-  // if you still want them alongside a full (or cleared) selection.
-  includeBase.value = false;
-  includeUtilities.value = false;
+  includeBase.value = checked;
+  includeUtilities.value = checked;
 }
 
 const chosen = computed(() => components.filter((c) => selected.value.has(c.name)));
@@ -89,8 +94,9 @@ const combineUrl = computed(() => {
   if (includeBase.value) files.push(`${c}/base.css`);
   if (includeUtilities.value) files.push(`${c}/utilities.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
-  // Every component checked collapses to the whole barrel instead of combining every sheet by name.
-  if (allSelected.value) files.push(`${c}/components.css`);
+  // Every component checked collapses to the whole barrel instead of combining every sheet by name —
+  // independent of Base/Utilities, which is what `allSelected` (the master checkbox's state) folds in.
+  if (allComponentsSelected.value) files.push(`${c}/components.css`);
   else for (const comp of chosen.value) files.push(`${c}/${comp.name}.css`);
   return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });

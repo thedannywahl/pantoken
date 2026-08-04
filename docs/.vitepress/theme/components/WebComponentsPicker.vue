@@ -45,7 +45,8 @@ const ELEMENTS = [
 const elements = [...ELEMENTS].sort((a, b) => a.localeCompare(b));
 
 // `register()`'s `only` option expands transitively through this map (e.g. `date-input` also pulls in
-// `calendar`) — mirrors the same, currently unexported, `NESTED_DEPS` in the source module.
+// `calendar`) — mirrors the now-exported `NESTED_DEPS` in the source module (still copied rather than
+// imported, for the same reason as `ELEMENTS` above).
 const NESTED_DEPS: Record<string, readonly string[]> = {
   "date-input": ["calendar"],
   "date-time-input": ["date-input"],
@@ -59,6 +60,28 @@ function withNestedDeps(names: Iterable<string>): string[] {
   };
   for (const name of names) add(name);
   return [...wanted].sort();
+}
+
+// Mirrors `ICON_ELEMENTS` in the source module — the elements that call the real icon resolver at
+// runtime, as opposed to the separate, CSS-only `-icon-<name>` glyph painting most components use.
+const iconElementNames: readonly string[] = [
+  "icon",
+  "calendar",
+  "date-input",
+  "drilldown",
+  "rating",
+];
+
+// jsDelivr's `/combine/` concatenates files in the order listed, and each per-element bundle is a
+// self-invoking script that registers on load — so a dependency must be listed (and thus defined)
+// before whatever nests it. The dependency graph is two shallow chains (calendar → date-input →
+// date-time-input), so a fixed priority list is simpler than a general topological sort.
+const DEPENDENCY_ORDER = ["calendar", "date-input", "date-time-input"];
+function orderForCombine(names: Iterable<string>): string[] {
+  const set = new Set(names);
+  const prioritized = DEPENDENCY_ORDER.filter((n) => set.has(n));
+  const rest = [...set].filter((n) => !DEPENDENCY_ORDER.includes(n)).sort();
+  return [...prioritized, ...rest];
 }
 
 // Localized labels from the active locale's themeConfig.webComponentsPicker, falling back to English.
@@ -75,7 +98,7 @@ const t = computed(() => {
     copied: "Copied",
     empty: "Select one or more elements to build a snippet.",
     tokenNote:
-      "Also load a token sheet (e.g. @pantoken/css/dist/style.css) so these elements can resolve their tokens.",
+      "Also load a token sheet (the lean @pantoken/css/dist/style.lean.css, or its icon-inclusive combine if the selection needs a glyph) so these elements can resolve their tokens.",
     iifeNote:
       "This snippet loads its own token sheet and always registers every element, regardless of selection.",
   };
@@ -128,31 +151,66 @@ const filteredElements = computed(() => {
 // output; the ES module snippet needs at least one element selected.
 const hasSelection = computed(() => format.value === "iife" || selected.value.size > 0);
 
+// Whether the current selection touches any element that calls the real icon resolver — checked
+// against the NESTED_DEPS-expanded set, not just the literal checkboxes: selecting `date-time-input`
+// alone doesn't check `iconElementNames` directly, but it pulls in `date-input`, which does. "Nothing
+// selected" is only ever visible with the classic script tag active (see `hasSelection` above), which
+// falls back to the "everything" bundle in that case — so it needs icons too, same as "all selected".
+const needsIcons = computed(() => {
+  if (selected.value.size === 0 || allSelected.value) return true;
+  return withNestedDeps(selected.value).some((name) => iconElementNames.includes(name));
+});
+
+// The lean token sheet is enough unless the selection touches an icon-rendering element, mirroring
+// CdnPicker.vue's needsIconSheet pattern — never the full style.css regardless of selection.
+const tokenLink = computed(() => {
+  const c = "npm/@pantoken/css/dist";
+  return needsIcons.value
+    ? `https://cdn.jsdelivr.net/combine/${c}/style.lean.css,npm/@pantoken/components/dist/component-icons.css`
+    : "https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.lean.css";
+});
+
 // A bare URL/statement, not a full script-tag snippet — see the token note below the output for the
 // separate token sheet these elements still need to resolve their tokens.
 const esmSnippet = computed(() => {
-  if (allSelected.value) return "https://esm.sh/@pantoken/web-components";
+  if (allSelected.value) return `import "https://esm.sh/@pantoken/web-components";`;
   const only = withNestedDeps(selected.value);
   const onlyList = only.map((name) => `"${name}"`).join(", ");
   return `import { register } from "https://esm.sh/@pantoken/web-components";\nregister(customElements, { only: [${onlyList}] });`;
 });
 
-// A self-contained bootstrapper: it injects both the token stylesheet and the IIFE bundle itself, so
+// No specific subset chosen (nothing selected, or literally everything) — the single "everything"
+// bundle is simpler and already exists; only build a combine URL for a genuine partial selection.
+const iifeScriptUrl = computed(() => {
+  if (selected.value.size === 0 || allSelected.value) {
+    return "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
+  }
+  const files = orderForCombine(withNestedDeps(selected.value)).map(
+    (name) => `npm/@pantoken/web-components/dist/${name}.iife.js`,
+  );
+  return files.length === 1
+    ? `https://cdn.jsdelivr.net/${files[0]}`
+    : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+});
+
+// A self-contained bootstrapper: it injects both the token stylesheet and the script bundle itself, so
 // dropping this one snippet in is enough — no separate link/script tags to write by hand. Built from
 // DOM calls rather than literal tag text, which also sidesteps writing a literal closing-script-tag
 // substring inside this file's own script block (the SFC parser would misread it as this block's end).
-const iifeSnippet = `(function () {
+const iifeSnippet = computed(
+  () => `(function () {
   var link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = "https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css";
+  link.href = "${tokenLink.value}";
   document.head.appendChild(link);
 
   var script = document.createElement("script");
-  script.src = "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
+  script.src = "${iifeScriptUrl.value}";
   document.head.appendChild(script);
-})();`;
+})();`,
+);
 
-const output = computed(() => (format.value === "iife" ? iifeSnippet : esmSnippet.value));
+const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esmSnippet.value));
 </script>
 
 <template>
