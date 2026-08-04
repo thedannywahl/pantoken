@@ -35,3 +35,20 @@ test("writes style.lean.css with @property registrations flattened", () => {
   expect(content.length).toBeGreaterThan(0);
   expect(content).not.toContain("@property --instui-");
 });
+
+test("writes the rebrand light-only artifacts without light-dark() pairs", () => {
+  const full = written("style.rebrand.light.css");
+  const lean = written("style.rebrand.light.lean.css");
+
+  expect(full.length).toBeGreaterThan(0);
+  expect(lean.length).toBeGreaterThan(0);
+  expect(full).not.toContain("light-dark(");
+  expect(lean).not.toContain("light-dark(");
+});
+
+test("writes canvas and canvas high-contrast artifacts", () => {
+  expect(written("style.canvas.css").length).toBeGreaterThan(0);
+  expect(written("style.canvas.lean.css").length).toBeGreaterThan(0);
+  expect(written("style.canvas-high-contrast.css").length).toBeGreaterThan(0);
+  expect(written("style.canvas-high-contrast.lean.css").length).toBeGreaterThan(0);
+});
