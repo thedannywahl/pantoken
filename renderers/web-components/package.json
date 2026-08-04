@@ -23,8 +23,6 @@
     "./i18n.json": "./src/i18n.json",
     "./components.css": "./dist/components.css",
     "./*.css": "./dist/*.css",
-    "./web-components.iife.js": "./dist/web-components.iife.js",
-    "./*.iife.js": "./dist/*.iife.js",
     "./package.json": "./package.json"
   },
   "publishConfig": {
