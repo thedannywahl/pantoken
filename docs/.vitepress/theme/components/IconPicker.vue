@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref, shallowRef, watch } from "vue";
+import { computed, onMounted, ref, shallowRef } from "vue";
 import { useData } from "vitepress";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface InstUiEntry {
   name: string;
   source: "custom" | "lucide";
-  path: string;
-  viewBox: string;
 }
 interface SimpleIconEntry {
   slug: string;
@@ -18,8 +16,8 @@ interface SimpleIconEntry {
 const { theme } = useData();
 const t = computed(() => {
   const base = {
-    tabInstui: "InstUI icons",
-    tabSimple: "Simple Icons",
+    sectionInstui: "InstUI icons",
+    sectionSimple: "Simple Icons",
     searchPlaceholder: "Filter icons…",
     allIcons: "All icons",
     tokenSheetLabel: "Token sheet",
@@ -37,51 +35,48 @@ const t = computed(() => {
   return { ...base, ...(theme.value as Record<string, unknown>).iconPicker };
 });
 
-// ── Manifest (lazy, split by tab) ─────────────────────────────────────────────
-const activeTab = ref<"instui" | "simple">("instui");
+// ── Manifests (both load up front — the two sources render together, not behind tabs) ────────────
 const instuiIcons = shallowRef<InstUiEntry[] | null>(null);
 const simpleIcons = shallowRef<SimpleIconEntry[] | null>(null);
-const loading = ref(false);
-const loadError = ref(false);
+const loadingInstui = ref(false);
+const loadingSimple = ref(false);
+const loadErrorInstui = ref(false);
+const loadErrorSimple = ref(false);
 
 async function loadInstui(): Promise<void> {
-  if (instuiIcons.value || loading.value) return;
-  loading.value = true;
-  loadError.value = false;
+  if (instuiIcons.value || loadingInstui.value) return;
+  loadingInstui.value = true;
+  loadErrorInstui.value = false;
   try {
     const data = (await import("../generated/cdn-icon-manifest-instui.json")) as InstUiEntry[];
     instuiIcons.value = Array.isArray(data) ? data : (data as { default: InstUiEntry[] }).default;
   } catch {
-    loadError.value = true;
+    loadErrorInstui.value = true;
   } finally {
-    loading.value = false;
+    loadingInstui.value = false;
   }
 }
 
 async function loadSimple(): Promise<void> {
-  if (simpleIcons.value || loading.value) return;
-  loading.value = true;
-  loadError.value = false;
+  if (simpleIcons.value || loadingSimple.value) return;
+  loadingSimple.value = true;
+  loadErrorSimple.value = false;
   try {
     const data = (await import("../generated/cdn-icon-manifest-simple.json")) as SimpleIconEntry[];
     simpleIcons.value = Array.isArray(data)
       ? data
       : (data as { default: SimpleIconEntry[] }).default;
   } catch {
-    loadError.value = true;
+    loadErrorSimple.value = true;
   } finally {
-    loading.value = false;
+    loadingSimple.value = false;
   }
 }
 
-watch(
-  activeTab,
-  (tab) => {
-    if (tab === "instui") void loadInstui();
-    else void loadSimple();
-  },
-  { immediate: true },
-);
+onMounted(() => {
+  void loadInstui();
+  void loadSimple();
+});
 
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
@@ -118,51 +113,39 @@ const filteredSimple = computed(() => {
   return q ? all.filter((i) => i.slug.includes(q) || i.title.toLowerCase().includes(q)) : all;
 });
 
-const hasSelection = computed(() =>
-  activeTab.value === "instui"
-    ? allInstui.value || selectedInstui.value.size > 0
-    : selectedSimple.value.size > 0,
+const hasSelection = computed(
+  () => allInstui.value || selectedInstui.value.size > 0 || selectedSimple.value.size > 0,
 );
 
-// ── URL builder ───────────────────────────────────────────────────────────────
+// ── URL builder — merges both sources into one combine URL / ESM snippet ─────────────────────────
 const c = "npm/@pantoken/components/dist";
 const si = "npm/@pantoken/plugin-simple-icons/dist";
 
 const combineUrl = computed(() => {
-  if (activeTab.value === "instui") {
-    if (allInstui.value) {
-      // Full instui icon set is already in the full token sheet; for lean, icons.css has all glyphs.
-      return tokenSheet.value === "lean" ? `https://cdn.jsdelivr.net/combine/${c}/icons.css` : null;
-    }
-    const names = [...selectedInstui.value];
-    if (names.length === 0) return null;
-    const files = names.map((n) => `${c}/icons/${n}.css`);
-    return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+  const files: string[] = [];
+  if (allInstui.value) {
+    // Full instui icon set is already in the full token sheet; for lean, icons.css has all glyphs.
+    if (tokenSheet.value === "lean") files.push(`${c}/icons.css`);
   } else {
-    const slugs = [...selectedSimple.value];
-    if (slugs.length === 0) return null;
-    const files = slugs.map((s) => `${si}/icons/${s}.css`);
-    return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+    for (const name of selectedInstui.value) files.push(`${c}/icons/${name}.css`);
   }
+  for (const slug of selectedSimple.value) files.push(`${si}/icons/${slug}.css`);
+  return files.length === 0 ? null : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
 const esmSnippet = computed(() => {
-  if (activeTab.value === "instui") {
-    if (allInstui.value) {
-      return `import "https://esm.sh/@pantoken/components/icons.css";`;
-    }
-    const names = [...selectedInstui.value];
-    if (names.length === 0) return null;
-    return names
-      .map((n) => `import "https://esm.sh/@pantoken/components/icons/${n}.css";`)
-      .join("\n");
+  const lines: string[] = [];
+  if (allInstui.value) {
+    lines.push(`import "https://esm.sh/@pantoken/components/icons.css";`);
   } else {
-    const slugs = [...selectedSimple.value];
-    if (slugs.length === 0) return null;
-    return slugs
-      .map((s) => `import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${s}.css";`)
-      .join("\n");
+    for (const name of selectedInstui.value) {
+      lines.push(`import "https://esm.sh/@pantoken/components/icons/${name}.css";`);
+    }
   }
+  for (const slug of selectedSimple.value) {
+    lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${slug}.css";`);
+  }
+  return lines.length === 0 ? null : lines.join("\n");
 });
 
 const output = computed(() => {
@@ -187,121 +170,104 @@ async function copy(): Promise<void> {
 
 <template>
   <div
-    class="icon-picker instui-view -background-secondary -border-radius-large -border-width-small instui-p-md"
+    class="icon-picker instui-view -background-primary -border-radius-large -shadow-resting instui-p-md"
   >
-    <!-- Source tabs -->
-    <div class="instui-tabs icon-picker__tabs" role="tablist">
-      <button
-        class="instui-button"
-        :class="{ '-color-secondary': activeTab !== 'instui' }"
-        role="tab"
-        :aria-selected="activeTab === 'instui'"
-        @click="activeTab = 'instui'"
-      >
-        {{ t.tabInstui }}
-      </button>
-      <button
-        class="instui-button"
-        :class="{ '-color-secondary': activeTab !== 'simple' }"
-        role="tab"
-        :aria-selected="activeTab === 'simple'"
-        @click="activeTab = 'simple'"
-      >
-        {{ t.tabSimple }}
-      </button>
-    </div>
+    <span class="instui-input-group icon-picker__search">
+      <span class="before"><span class="instui-icon -icon-search" aria-hidden="true"></span></span>
+      <input
+        v-model="search"
+        type="search"
+        :placeholder="t.searchPlaceholder"
+        aria-label="Filter icons"
+      />
+    </span>
 
-    <!-- Loading / error states -->
-    <p v-if="loading" class="instui-text -color-secondary -style-italic icon-picker__status">
-      {{ t.loadingNote }}
-    </p>
-    <template
-      v-else-if="(activeTab === 'instui' && instuiIcons) || (activeTab === 'simple' && simpleIcons)"
-    >
-      <!-- InstUI icons -->
-      <template v-if="activeTab === 'instui'">
-        <fieldset class="instui-form-field-group icon-picker__group">
-          <legend class="instui-text -size-small">{{ t.tabInstui }}</legend>
-          <label class="instui-checkbox icon-picker__all">
-            <input type="checkbox" v-model="allInstui" />
-            <span>{{ t.allInstui }} (icons.css)</span>
+    <!-- InstUI icons -->
+    <fieldset class="instui-form-field-group icon-picker__group">
+      <legend class="instui-heading -level-h3 -variant-label">{{ t.sectionInstui }}</legend>
+      <p
+        v-if="loadingInstui"
+        class="instui-text -color-secondary -style-italic icon-picker__status"
+      >
+        {{ t.loadingNote }}
+      </p>
+      <template v-else-if="instuiIcons">
+        <label class="instui-checkbox icon-picker__all">
+          <input type="checkbox" v-model="allInstui" />
+          <span>{{ t.allIcons }} (icons.css)</span>
+        </label>
+        <div
+          class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
+          :class="{ 'icon-picker__grid--disabled': allInstui }"
+        >
+          <label
+            v-for="icon in filteredInstui"
+            :key="icon.name"
+            class="instui-checkbox icon-picker__item"
+          >
+            <input
+              type="checkbox"
+              :checked="selectedInstui.has(icon.name)"
+              :disabled="allInstui"
+              @change="toggleInstui(icon.name)"
+            />
+            <span
+              class="instui-icon icon-picker__glyph"
+              :class="`-icon-${icon.name}`"
+              aria-hidden="true"
+            ></span>
+            <span class="icon-picker__label">{{ icon.name }}</span>
           </label>
-          <input
-            v-model="search"
-            type="search"
-            class="instui-text-input icon-picker__search"
-            :placeholder="t.searchPlaceholder"
-            :disabled="allInstui"
-            aria-label="Filter icons"
-          />
-          <div
-            class="icon-picker__grid instui-view -background-primary -border-radius-medium -border-width-small instui-p-sm"
-            :class="{ 'icon-picker__grid--disabled': allInstui }"
-          >
-            <label
-              v-for="icon in filteredInstui"
-              :key="icon.name"
-              class="instui-checkbox icon-picker__item"
-            >
-              <input
-                type="checkbox"
-                :checked="selectedInstui.has(icon.name)"
-                :disabled="allInstui"
-                @change="toggleInstui(icon.name)"
-              />
-              <svg
-                class="icon-picker__svg"
-                :viewBox="icon.viewBox"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path :d="icon.path" />
-              </svg>
-              <span class="icon-picker__label">{{ icon.name }}</span>
-            </label>
-          </div>
-        </fieldset>
+        </div>
       </template>
+    </fieldset>
 
-      <!-- Simple Icons -->
-      <template v-else>
-        <fieldset class="instui-form-field-group icon-picker__group">
-          <legend class="instui-text -size-small">{{ t.tabSimple }}</legend>
-          <input
-            v-model="search"
-            type="search"
-            class="instui-text-input icon-picker__search"
-            :placeholder="t.searchPlaceholder"
-            aria-label="Filter icons"
-          />
-          <div
-            class="icon-picker__grid instui-view -background-primary -border-radius-medium -border-width-small instui-p-sm"
+    <h2
+      id="icon-picker-simple-heading"
+      class="instui-heading -level-h3 -variant-label -border-top icon-picker__divider instui-mt-lg"
+    >
+      {{ t.sectionSimple }}
+    </h2>
+
+    <!-- Simple Icons -->
+    <fieldset
+      class="instui-form-field-group icon-picker__group"
+      aria-labelledby="icon-picker-simple-heading"
+    >
+      <p
+        v-if="loadingSimple"
+        class="instui-text -color-secondary -style-italic icon-picker__status"
+      >
+        {{ t.loadingNote }}
+      </p>
+      <template v-else-if="simpleIcons">
+        <div
+          class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
+        >
+          <label
+            v-for="icon in filteredSimple"
+            :key="icon.slug"
+            class="instui-checkbox icon-picker__item"
           >
-            <label
-              v-for="icon in filteredSimple"
-              :key="icon.slug"
-              class="instui-checkbox icon-picker__item"
-            >
-              <input
-                type="checkbox"
-                :checked="selectedSimple.has(icon.slug)"
-                @change="toggleSimple(icon.slug)"
-              />
-              <img
-                class="icon-picker__img"
-                :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
-                :alt="icon.title"
-                width="16"
-                height="16"
-                loading="lazy"
-                aria-hidden="true"
-              />
-              <span class="icon-picker__label">{{ icon.title }}</span>
-            </label>
-          </div>
-        </fieldset>
+            <input
+              type="checkbox"
+              :checked="selectedSimple.has(icon.slug)"
+              @change="toggleSimple(icon.slug)"
+            />
+            <img
+              class="icon-picker__img"
+              :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
+              :alt="icon.title"
+              width="16"
+              height="16"
+              loading="lazy"
+              aria-hidden="true"
+            />
+            <span class="icon-picker__label">{{ icon.title }}</span>
+          </label>
+        </div>
       </template>
-    </template>
+    </fieldset>
 
     <!-- Output format -->
     <div class="icon-picker__options">
@@ -327,7 +293,7 @@ async function copy(): Promise<void> {
       <template v-if="hasSelection && output">
         <div class="icon-picker__code">
           <button
-            class="instui-button -size-small -color-secondary icon-picker__copy"
+            class="instui-button -size-small -color-secondary -icon-copy icon-picker__copy"
             type="button"
             @click="copy"
           >
@@ -336,7 +302,7 @@ async function copy(): Promise<void> {
           <pre><code>{{ output }}</code></pre>
         </div>
       </template>
-      <p v-else-if="!loading" class="instui-text -color-secondary -style-italic icon-picker__empty">
+      <p v-else class="instui-text -color-secondary -style-italic icon-picker__empty">
         {{ t.empty }}
       </p>
     </div>
@@ -347,19 +313,17 @@ async function copy(): Promise<void> {
 .icon-picker {
   margin: 1.5rem 0;
 }
-.icon-picker__tabs {
-  display: flex;
-  gap: 0.5rem;
+.icon-picker__search {
+  width: 100%;
   margin-bottom: 1rem;
 }
 .icon-picker__group {
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
 }
 .icon-picker__all {
   margin-bottom: 0.5rem;
 }
-.icon-picker__search {
-  width: 100%;
+.icon-picker__divider {
   margin-bottom: 0.5rem;
 }
 .icon-picker__grid {
@@ -378,24 +342,18 @@ async function copy(): Promise<void> {
   align-items: center;
   gap: 0.4rem;
 }
-.icon-picker__svg {
+.icon-picker__glyph {
   flex-shrink: 0;
-  width: 1em;
-  height: 1em;
-  fill: currentColor;
+  font-size: 1rem;
 }
 .icon-picker__img {
   flex-shrink: 0;
   width: 1em;
   height: 1em;
   object-fit: contain;
-  /* Dark mode: simple-icons ship black SVGs; invert keeps them visible. */
-  filter: var(--icon-picker-img-filter, none);
 }
-@media (prefers-color-scheme: dark) {
-  .icon-picker__img {
-    filter: invert(1);
-  }
+html.dark .icon-picker__img {
+  filter: invert(1);
 }
 .icon-picker__label {
   overflow: hidden;
