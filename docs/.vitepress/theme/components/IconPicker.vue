@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef } from "vue";
+import { computed, onMounted, ref, shallowRef, watchEffect } from "vue";
 import { useData } from "vitepress";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
@@ -20,9 +20,6 @@ const t = computed(() => {
     sectionSimple: "Simple Icons",
     searchPlaceholder: "Filter icons…",
     allIcons: "All icons",
-    tokenSheetLabel: "Token sheet",
-    tokenLean: "Lean (no icons, ~23 KB gzip)",
-    tokenFull: "Full (all icons, ~140 KB gzip)",
     formatLabel: "Output",
     formatLink: "<link>",
     formatImport: "@import",
@@ -81,8 +78,6 @@ onMounted(() => {
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
 const selectedSimple = ref<Set<string>>(new Set());
-const allInstui = ref(false);
-const tokenSheet = ref<"lean" | "full">("lean");
 const format = ref<"link" | "import" | "esm">("link");
 const copied = ref(false);
 const search = ref("");
@@ -102,6 +97,44 @@ function toggleSimple(slug: string): void {
   copied.value = false;
 }
 
+// "All icons" is a tri-state checkbox over BOTH sources: checked when every InstUI icon and every
+// Simple Icon is selected, indeterminate when some are, unchecked when none are. It selects/clears
+// everything without disabling the individual checkboxes.
+//
+// The combine-URL/ESM builder below has its own, narrower "every InstUI icon selected" check
+// (independent of Simple Icons) so it can still collapse to the bundled icons.css.
+const allInstuiSelected = computed(
+  () =>
+    (instuiIcons.value?.length ?? 0) > 0 && selectedInstui.value.size === instuiIcons.value?.length,
+);
+const allSimpleSelected = computed(
+  () =>
+    (simpleIcons.value?.length ?? 0) > 0 && selectedSimple.value.size === simpleIcons.value?.length,
+);
+
+const allCheckboxEl = ref<HTMLInputElement | null>(null);
+const allSelected = computed(
+  () =>
+    (instuiIcons.value?.length ?? 0) + (simpleIcons.value?.length ?? 0) > 0 &&
+    allInstuiSelected.value &&
+    allSimpleSelected.value,
+);
+const someSelected = computed(
+  () => (selectedInstui.value.size > 0 || selectedSimple.value.size > 0) && !allSelected.value,
+);
+watchEffect(() => {
+  if (allCheckboxEl.value) allCheckboxEl.value.indeterminate = someSelected.value;
+});
+function toggleAll(checked: boolean): void {
+  selectedInstui.value = checked
+    ? new Set((instuiIcons.value ?? []).map((i) => i.name))
+    : new Set();
+  selectedSimple.value = checked
+    ? new Set((simpleIcons.value ?? []).map((i) => i.slug))
+    : new Set();
+  copied.value = false;
+}
+
 const filteredInstui = computed(() => {
   const all = instuiIcons.value ?? [];
   const q = search.value.trim().toLowerCase();
@@ -113,9 +146,7 @@ const filteredSimple = computed(() => {
   return q ? all.filter((i) => i.slug.includes(q) || i.title.toLowerCase().includes(q)) : all;
 });
 
-const hasSelection = computed(
-  () => allInstui.value || selectedInstui.value.size > 0 || selectedSimple.value.size > 0,
-);
+const hasSelection = computed(() => selectedInstui.value.size > 0 || selectedSimple.value.size > 0);
 
 // ── URL builder — merges both sources into one combine URL / ESM snippet ─────────────────────────
 const c = "npm/@pantoken/components/dist";
@@ -123,9 +154,8 @@ const si = "npm/@pantoken/plugin-simple-icons/dist";
 
 const combineUrl = computed(() => {
   const files: string[] = [];
-  if (allInstui.value) {
-    // Full instui icon set is already in the full token sheet; for lean, icons.css has all glyphs.
-    if (tokenSheet.value === "lean") files.push(`${c}/icons.css`);
+  if (allInstuiSelected.value) {
+    files.push(`${c}/icons.css`);
   } else {
     for (const name of selectedInstui.value) files.push(`${c}/icons/${name}.css`);
   }
@@ -135,7 +165,7 @@ const combineUrl = computed(() => {
 
 const esmSnippet = computed(() => {
   const lines: string[] = [];
-  if (allInstui.value) {
+  if (allInstuiSelected.value) {
     lines.push(`import "https://esm.sh/@pantoken/components/icons.css";`);
   } else {
     for (const name of selectedInstui.value) {
@@ -182,24 +212,34 @@ async function copy(): Promise<void> {
       />
     </span>
 
-    <!-- InstUI icons -->
     <fieldset class="instui-form-field-group icon-picker__group">
-      <legend class="instui-heading -level-h3 -variant-label">{{ t.sectionInstui }}</legend>
-      <p
-        v-if="loadingInstui"
-        class="instui-text -color-secondary -style-italic icon-picker__status"
+      <legend class="instui-screen-reader-content">Icons</legend>
+      <label class="instui-checkbox icon-picker__all">
+        <input
+          ref="allCheckboxEl"
+          type="checkbox"
+          :checked="allSelected"
+          :disabled="!instuiIcons || !simpleIcons"
+          @change="toggleAll(($event.target as HTMLInputElement).checked)"
+        />
+        <span>{{ t.allIcons }}</span>
+      </label>
+
+      <!-- One scrollable list for both sources — the section headers are rows inside it, not separate
+           lists, so there's a single continuous scroll instead of two boxes. -->
+      <div
+        class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
       >
-        {{ t.loadingNote }}
-      </p>
-      <template v-else-if="instuiIcons">
-        <label class="instui-checkbox icon-picker__all">
-          <input type="checkbox" v-model="allInstui" />
-          <span>{{ t.allIcons }} (icons.css)</span>
-        </label>
-        <div
-          class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
-          :class="{ 'icon-picker__grid--disabled': allInstui }"
+        <p
+          v-if="loadingInstui"
+          class="instui-text -color-secondary -style-italic icon-picker__status"
         >
+          {{ t.loadingNote }}
+        </p>
+        <template v-else-if="instuiIcons">
+          <div class="icon-picker__header instui-heading -level-h3 -variant-label">
+            {{ t.sectionInstui }}
+          </div>
           <label
             v-for="icon in filteredInstui"
             :key="icon.name"
@@ -208,7 +248,6 @@ async function copy(): Promise<void> {
             <input
               type="checkbox"
               :checked="selectedInstui.has(icon.name)"
-              :disabled="allInstui"
               @change="toggleInstui(icon.name)"
             />
             <span
@@ -218,32 +257,18 @@ async function copy(): Promise<void> {
             ></span>
             <span class="icon-picker__label">{{ icon.name }}</span>
           </label>
-        </div>
-      </template>
-    </fieldset>
+        </template>
 
-    <h2
-      id="icon-picker-simple-heading"
-      class="instui-heading -level-h3 -variant-label -border-top icon-picker__divider instui-mt-lg"
-    >
-      {{ t.sectionSimple }}
-    </h2>
-
-    <!-- Simple Icons -->
-    <fieldset
-      class="instui-form-field-group icon-picker__group"
-      aria-labelledby="icon-picker-simple-heading"
-    >
-      <p
-        v-if="loadingSimple"
-        class="instui-text -color-secondary -style-italic icon-picker__status"
-      >
-        {{ t.loadingNote }}
-      </p>
-      <template v-else-if="simpleIcons">
-        <div
-          class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
+        <p
+          v-if="loadingSimple"
+          class="instui-text -color-secondary -style-italic icon-picker__status"
         >
+          {{ t.loadingNote }}
+        </p>
+        <template v-else-if="simpleIcons">
+          <div class="icon-picker__header instui-heading -level-h3 -variant-label -border-top">
+            {{ t.sectionSimple }}
+          </div>
           <label
             v-for="icon in filteredSimple"
             :key="icon.slug"
@@ -258,48 +283,59 @@ async function copy(): Promise<void> {
               class="icon-picker__img"
               :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
               :alt="icon.title"
-              width="16"
-              height="16"
               loading="lazy"
               aria-hidden="true"
             />
             <span class="icon-picker__label">{{ icon.title }}</span>
           </label>
-        </div>
-      </template>
+        </template>
+      </div>
     </fieldset>
 
-    <!-- Output format -->
-    <div class="icon-picker__options">
-      <fieldset class="instui-radio-input-group">
-        <legend>{{ t.formatLabel }}</legend>
-        <label class="instui-radio -variant-toggle">
-          <input type="radio" name="icon-format" value="link" v-model="format" />
-          <span>{{ t.formatLink }}</span>
-        </label>
-        <label class="instui-radio -variant-toggle">
-          <input type="radio" name="icon-format" value="import" v-model="format" />
-          <span>{{ t.formatImport }}</span>
-        </label>
-        <label class="instui-radio -variant-toggle">
-          <input type="radio" name="icon-format" value="esm" v-model="format" />
-          <span>{{ t.formatEsm }}</span>
-        </label>
-      </fieldset>
-    </div>
-
-    <!-- Output -->
     <div class="icon-picker__output">
-      <template v-if="hasSelection && output">
-        <div class="icon-picker__code">
-          <button
-            class="instui-button -size-small -color-secondary -icon-copy icon-picker__copy"
-            type="button"
-            @click="copy"
-          >
-            {{ copied ? t.copied : t.copy }}
-          </button>
-          <pre><code>{{ output }}</code></pre>
+      <template v-if="hasSelection">
+        <span class="instui-text -size-small -color-secondary icon-picker__format-label">{{
+          t.formatLabel
+        }}</span>
+        <div class="instui-tabs -variant-secondary">
+          <div class="list" role="tablist">
+            <button
+              class="tab"
+              role="tab"
+              :aria-selected="format === 'link'"
+              @click="format = 'link'"
+            >
+              {{ t.formatLink }}
+            </button>
+            <button
+              class="tab"
+              role="tab"
+              :aria-selected="format === 'import'"
+              @click="format = 'import'"
+            >
+              {{ t.formatImport }}
+            </button>
+            <button
+              class="tab"
+              role="tab"
+              :aria-selected="format === 'esm'"
+              @click="format = 'esm'"
+            >
+              {{ t.formatEsm }}
+            </button>
+          </div>
+          <div class="panel" role="tabpanel">
+            <div class="icon-picker__code">
+              <button
+                class="instui-button -size-small -color-secondary -icon-copy icon-picker__copy"
+                type="button"
+                @click="copy"
+              >
+                {{ copied ? t.copied : t.copy }}
+              </button>
+              <pre><code>{{ output }}</code></pre>
+            </div>
+          </div>
         </div>
       </template>
       <p v-else class="instui-text -color-secondary -style-italic icon-picker__empty">
@@ -318,12 +354,9 @@ async function copy(): Promise<void> {
   margin-bottom: 1rem;
 }
 .icon-picker__group {
-  margin: 0 0 0.5rem;
+  margin: 0;
 }
 .icon-picker__all {
-  margin-bottom: 0.5rem;
-}
-.icon-picker__divider {
   margin-bottom: 0.5rem;
 }
 .icon-picker__grid {
@@ -333,23 +366,31 @@ async function copy(): Promise<void> {
   max-height: 20rem;
   overflow-y: auto;
 }
-.icon-picker__grid--disabled {
-  opacity: 0.45;
-  pointer-events: none;
+/* Section headers are rows inside the single scrollable grid, spanning every column. */
+.icon-picker__header {
+  grid-column: 1 / -1;
+  margin: 0 0 0.25rem;
+}
+.icon-picker__status {
+  grid-column: 1 / -1;
+  margin: 0;
 }
 .icon-picker__item {
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
-.icon-picker__glyph {
-  flex-shrink: 0;
-  font-size: 1rem;
-}
+.icon-picker__glyph,
 .icon-picker__img {
   flex-shrink: 0;
+  font-size: 1rem;
   width: 1em;
   height: 1em;
+}
+.icon-picker__img {
+  /* Override VitePress's default `.vp-doc img { margin: ... }` so the image sits flush like the
+     InstUI glyph span next to it, instead of gaining extra vertical space. */
+  margin: 0;
   object-fit: contain;
 }
 html.dark .icon-picker__img {
@@ -361,14 +402,12 @@ html.dark .icon-picker__img {
   white-space: nowrap;
   font-size: 0.75rem;
 }
-.icon-picker__options {
-  margin-top: 0.5rem;
-}
-.icon-picker__status {
-  margin: 1rem 0;
-}
 .icon-picker__output {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+}
+.icon-picker__format-label {
+  display: block;
+  margin-bottom: 0.25rem;
 }
 .icon-picker__code {
   position: relative;
