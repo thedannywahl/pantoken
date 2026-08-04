@@ -5,6 +5,20 @@
  * generated URL are not translated.
  */
 export interface CdnPickerStrings {
+  /** Label for token theme selector. */
+  themeLabel: string;
+  /** Theme option: rebrand. */
+  themeRebrand: string;
+  /** Theme option: canvas. */
+  themeCanvas: string;
+  /** Theme option: canvas high contrast. */
+  themeCanvasHighContrast: string;
+  /** Label for rebrand token-mode selector. */
+  modeLabel: string;
+  /** Rebrand mode option: keep light+dark values. */
+  modeAdaptive: string;
+  /** Rebrand mode option: emit only light values. */
+  modeLightOnly: string;
   /** Legend for the component checkbox group. */
   componentsLabel: string;
   /** Checkbox: use the whole `components.css` barrel instead of per-component sheets. */
@@ -41,6 +55,13 @@ export interface CdnPickerStrings {
 
 /** English defaults, also the fallback when a locale doesn't localize the picker. */
 export const CDN_PICKER_DEFAULTS: CdnPickerStrings = {
+  themeLabel: "Theme",
+  themeRebrand: "Rebrand",
+  themeCanvas: "Canvas",
+  themeCanvasHighContrast: "Canvas high contrast",
+  modeLabel: "Rebrand mode",
+  modeAdaptive: "Light + dark",
+  modeLightOnly: "Light only",
   componentsLabel: "Components",
   allComponents: "All components",
   formatLabel: "Output",

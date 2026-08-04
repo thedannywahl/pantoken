@@ -37,6 +37,13 @@ type LocaleMeta = {
   // The interactive CDN combine-URL builder on the CDN guide page (see theme/components/CdnPicker.vue
   // and theme/cdn.ts). Component names and the generated URL are not translated.
   cdnPicker: {
+    themeLabel: string;
+    themeRebrand: string;
+    themeCanvas: string;
+    themeCanvasHighContrast: string;
+    modeLabel: string;
+    modeAdaptive: string;
+    modeLightOnly: string;
     componentsLabel: string;
     allComponents: string;
     formatLabel: string;
@@ -122,6 +129,13 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       canvasHighContrast: "Canvas high contrast",
     },
     cdnPicker: {
+      themeLabel: "Theme",
+      themeRebrand: "Rebrand",
+      themeCanvas: "Canvas",
+      themeCanvasHighContrast: "Canvas high contrast",
+      modeLabel: "Rebrand mode",
+      modeAdaptive: "Light + dark",
+      modeLightOnly: "Light only",
       componentsLabel: "Components",
       allComponents: "All components",
       formatLabel: "Output",
@@ -204,6 +218,13 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       canvasHighContrast: "Canvas nagy kontraszt",
     },
     cdnPicker: {
+      themeLabel: "Téma",
+      themeRebrand: "Rebrand",
+      themeCanvas: "Canvas",
+      themeCanvasHighContrast: "Canvas nagy kontraszt",
+      modeLabel: "Rebrand mód",
+      modeAdaptive: "Világos + sötét",
+      modeLightOnly: "Csak világos",
       componentsLabel: "Komponensek",
       allComponents: "Minden komponens",
       formatLabel: "Kimenet",

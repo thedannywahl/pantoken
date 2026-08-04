@@ -3,6 +3,7 @@ import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import { getStoredTheme, type PantokenTheme } from "../theme";
 import PickerOutput from "./PickerOutput.vue";
 
 // The base (unprefixed) element names `@pantoken/web-components` registers — mirrors
@@ -101,6 +102,13 @@ const t = computed(() => {
       "Also load a token sheet (the lean @pantoken/css/dist/style.lean.css, or its icon-inclusive combine if the selection needs a glyph) so these elements can resolve their tokens.",
     iifeNote:
       "This snippet loads its own token sheet and always registers every element, regardless of selection.",
+    themeLabel: "Theme",
+    themeRebrand: "Rebrand",
+    themeCanvas: "Canvas",
+    themeCanvasHighContrast: "Canvas high contrast",
+    modeLabel: "Rebrand mode",
+    modeAdaptive: "Light + dark",
+    modeLightOnly: "Light only",
   };
   return { ...base, ...((theme.value as Record<string, unknown>).webComponentsPicker as object) };
 });
@@ -117,9 +125,22 @@ function initialSelection(): Set<string> {
 const selected = ref<Set<string>>(initialSelection());
 const format = ref(readHashParam("w_fmt") ?? "esm");
 const search = ref(readHashParam("w_q") ?? "");
+const initialTheme = readHashParam("p_theme");
+const themeKey = ref<PantokenTheme>(
+  initialTheme === "rebrand" || initialTheme === "canvas" || initialTheme === "canvasHighContrast"
+    ? initialTheme
+    : getStoredTheme(),
+);
+const mode = ref<"adaptive" | "light">(readHashParam("p_mode") === "light" ? "light" : "adaptive");
+const showMode = computed(() => themeKey.value === "rebrand");
 
 watch(format, (v) => writeHashParam("w_fmt", v, "esm"));
 watch(search, (v) => writeHashParam("w_q", v, ""));
+watch(themeKey, (v) => writeHashParam("p_theme", v, "rebrand"));
+watch(mode, (v) => writeHashParam("p_mode", v, "adaptive"));
+watch(themeKey, (v) => {
+  if (v !== "rebrand") mode.value = "adaptive";
+});
 
 function toggle(name: string): void {
   const next = new Set(selected.value);
@@ -165,9 +186,17 @@ const needsIcons = computed(() => {
 // CdnPicker.vue's needsIconSheet pattern — never the full style.css regardless of selection.
 const tokenLink = computed(() => {
   const c = "npm/@pantoken/css/dist";
+  const tokenSheet =
+    themeKey.value === "canvas"
+      ? `${c}/style.canvas.lean.css`
+      : themeKey.value === "canvasHighContrast"
+        ? `${c}/style.canvas-high-contrast.lean.css`
+        : mode.value === "light"
+          ? `${c}/style.rebrand.light.lean.css`
+          : `${c}/style.lean.css`;
   return needsIcons.value
-    ? `https://cdn.jsdelivr.net/combine/${c}/style.lean.css,npm/@pantoken/components/dist/component-icons.css`
-    : "https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.lean.css";
+    ? `https://cdn.jsdelivr.net/combine/${tokenSheet},npm/@pantoken/components/dist/component-icons.css`
+    : `https://cdn.jsdelivr.net/${tokenSheet}`;
 });
 
 // A bare URL/statement, not a full script-tag snippet — see the token note below the output for the
@@ -230,6 +259,21 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
           aria-label="Filter elements"
         />
       </span>
+      <div class="wc-picker__theme-row">
+        <label class="instui-text -size-small" for="wc-picker-theme">{{ t.themeLabel }}</label>
+        <select id="wc-picker-theme" v-model="themeKey" class="wc-picker__select">
+          <option value="rebrand">{{ t.themeRebrand }}</option>
+          <option value="canvas">{{ t.themeCanvas }}</option>
+          <option value="canvasHighContrast">{{ t.themeCanvasHighContrast }}</option>
+        </select>
+      </div>
+      <div v-if="showMode" class="wc-picker__theme-row">
+        <label class="instui-text -size-small" for="wc-picker-mode">{{ t.modeLabel }}</label>
+        <select id="wc-picker-mode" v-model="mode" class="wc-picker__select">
+          <option value="adaptive">{{ t.modeAdaptive }}</option>
+          <option value="light">{{ t.modeLightOnly }}</option>
+        </select>
+      </div>
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="wc-picker__elements instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">
@@ -282,6 +326,16 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
 .wc-picker__search {
   width: 100%;
   margin-bottom: 0.5rem;
+}
+.wc-picker__theme-row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.wc-picker__select {
+  width: 100%;
 }
 .wc-picker__elements {
   display: grid;
