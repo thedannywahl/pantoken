@@ -92,12 +92,15 @@ const combineUrl = computed(() => {
   const c = "npm/@pantoken/components/dist";
   const files = ["npm/@pantoken/css/dist/style.lean.css"];
   if (includeBase.value) files.push(`${c}/base.css`);
-  if (includeUtilities.value) files.push(`${c}/utilities.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
   // Every component checked collapses to the whole barrel instead of combining every sheet by name —
   // independent of Base/Utilities, which is what `allSelected` (the master checkbox's state) folds in.
   if (allComponentsSelected.value) files.push(`${c}/components.css`);
   else for (const comp of chosen.value) files.push(`${c}/${comp.name}.css`);
+  // Utilities are override utilities (`generate.ts`'s own term) — same specificity as a component
+  // class, so they only actually override when they're last in the cascade. Load them after the
+  // component sheets, not before.
+  if (includeUtilities.value) files.push(`${c}/utilities.css`);
   return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
@@ -109,11 +112,11 @@ const output = computed(() =>
 </script>
 
 <template>
-  <div
-    class="cdn-picker instui-view -background-primary -border-radius-large -shadow-resting instui-p-md"
-  >
+  <div class="cdn-picker instui-view">
     <fieldset class="instui-form-field-group cdn-picker__group">
-      <legend>{{ t.componentsLabel }}</legend>
+      <span class="instui-screen-reader-content"
+        ><legend>{{ t.componentsLabel }}</legend></span
+      >
       <span class="instui-input-group cdn-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span
@@ -125,64 +128,64 @@ const output = computed(() =>
           aria-label="Filter components"
         />
       </span>
-      <div
-        class="cdn-picker__components instui-view -border-radius-medium -border-width-small instui-p-sm"
-      >
-        <label class="instui-checkbox">
-          <input
-            ref="allCheckboxEl"
-            type="checkbox"
-            :checked="allSelected"
-            @change="toggleAll(($event.target as HTMLInputElement).checked)"
-          />
-          <span>{{ t.allComponents }}</span>
-        </label>
-        <span class="cdn-picker__labeled-item">
+      <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
+        <div class="cdn-picker__components instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">
-            <input type="checkbox" v-model="includeBase" />
-            <span>{{ t.includeBase }}</span>
+            <input
+              ref="allCheckboxEl"
+              type="checkbox"
+              :checked="allSelected"
+              @change="toggleAll(($event.target as HTMLInputElement).checked)"
+            />
+            <span>{{ t.allComponents }}</span>
           </label>
-          <button
-            type="button"
-            class="instui-button -size-small -color-tertiary -shape-circle -icon-info cdn-picker__info"
-            style="anchor-name: --cdn-picker-base-anchor"
-            popovertarget="cdn-picker-base-popover"
-            :aria-label="t.baseInfoLabel"
-          ></button>
-          <div
-            id="cdn-picker-base-popover"
-            popover
-            class="instui-context-view -placement-bottom cdn-picker__popover"
-            style="position-anchor: --cdn-picker-base-anchor"
-          >
-            {{ t.baseInfo }}
-          </div>
-        </span>
-        <span class="cdn-picker__labeled-item">
-          <label class="instui-checkbox">
-            <input type="checkbox" v-model="includeUtilities" />
-            <span>{{ t.includeUtilities }}</span>
+          <span class="cdn-picker__labeled-item">
+            <label class="instui-checkbox">
+              <input type="checkbox" v-model="includeBase" />
+              <span>{{ t.includeBase }}</span>
+            </label>
+            <button
+              type="button"
+              class="instui-button -size-small -shape-circle -icon-info -without-background -without-border cdn-picker__info"
+              style="anchor-name: --cdn-picker-base-anchor; padding: 0; min-height: 1.5rem"
+              popovertarget="cdn-picker-base-popover"
+              :aria-label="t.baseInfoLabel"
+            ></button>
+            <div
+              id="cdn-picker-base-popover"
+              popover
+              class="instui-context-view -placement-bottom cdn-picker__popover"
+              style="position-anchor: --cdn-picker-base-anchor"
+            >
+              {{ t.baseInfo }}
+            </div>
+          </span>
+          <span class="cdn-picker__labeled-item">
+            <label class="instui-checkbox">
+              <input type="checkbox" v-model="includeUtilities" />
+              <span>{{ t.includeUtilities }}</span>
+            </label>
+            <button
+              type="button"
+              class="instui-button -size-small -shape-circle -icon-info -without-background -without-border cdn-picker__info"
+              style="anchor-name: --cdn-picker-utilities-anchor; padding: 0; min-height: 1.5rem"
+              popovertarget="cdn-picker-utilities-popover"
+              :aria-label="t.utilitiesInfoLabel"
+            ></button>
+            <div
+              id="cdn-picker-utilities-popover"
+              popover
+              class="instui-context-view -placement-bottom cdn-picker__popover"
+              style="position-anchor: --cdn-picker-utilities-anchor"
+            >
+              {{ t.utilitiesInfo }}
+            </div>
+          </span>
+          <label v-for="c in filteredComponents" :key="c.name" class="instui-checkbox">
+            <input type="checkbox" :checked="selected.has(c.name)" @change="toggle(c.name)" />
+            <span>{{ c.name }}</span>
           </label>
-          <button
-            type="button"
-            class="instui-button -size-small -color-tertiary -shape-circle -icon-info cdn-picker__info"
-            style="anchor-name: --cdn-picker-utilities-anchor"
-            popovertarget="cdn-picker-utilities-popover"
-            :aria-label="t.utilitiesInfoLabel"
-          ></button>
-          <div
-            id="cdn-picker-utilities-popover"
-            popover
-            class="instui-context-view -placement-bottom cdn-picker__popover"
-            style="position-anchor: --cdn-picker-utilities-anchor"
-          >
-            {{ t.utilitiesInfo }}
-          </div>
-        </span>
-        <label v-for="c in filteredComponents" :key="c.name" class="instui-checkbox">
-          <input type="checkbox" :checked="selected.has(c.name)" @change="toggle(c.name)" />
-          <span>{{ c.name }}</span>
-        </label>
+        </div>
       </div>
     </fieldset>
 
@@ -211,7 +214,7 @@ const output = computed(() =>
 /* Layout only — surface, controls, and type come from the InstUI component/utility classes on the
    elements themselves; what's left here is grid/flow the classes don't express. */
 .cdn-picker {
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 0;
 }
 .cdn-picker__group {
   margin: 0 0 1rem;
@@ -225,7 +228,7 @@ const output = computed(() =>
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
   gap: 0.25rem 0.75rem;
-  max-height: 16rem;
+  max-height: 24rem;
   overflow-y: auto;
 }
 /* Base/Utilities pair a checkbox with an info-popover trigger, so they need their own flex row

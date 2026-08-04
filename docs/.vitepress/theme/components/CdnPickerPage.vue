@@ -10,7 +10,7 @@ const { theme } = useData();
 const t = computed(() => {
   const base = {
     title: "CDN Picker",
-    tabComponents: "Components",
+    tabComponents: "CSS",
     tabIcons: "Icons",
     tabWebComponents: "Web components",
   };
@@ -31,7 +31,9 @@ watch(activeTab, (tab) => writeHashParam("tab", tab, "components"));
 
 <template>
   <div class="cdn-picker-page">
-    <h1 class="instui-heading -level-h1 -variant-title-page">{{ t.title }}</h1>
+    <h1 class="instui-heading -level-h1 -variant-title-page" style="margin: 0 0 2rem">
+      {{ t.title }}
+    </h1>
 
     <div class="instui-tabs">
       <div class="list" role="tablist">

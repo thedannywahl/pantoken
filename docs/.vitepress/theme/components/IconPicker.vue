@@ -32,7 +32,7 @@ const t = computed(() => {
     empty: "Select one or more icons to build a URL.",
     loadingNote: "Loading icon list…",
   };
-  return { ...base, ...(theme.value as Record<string, unknown>).iconPicker };
+  return { ...base, ...((theme.value as Record<string, unknown>).iconPicker as object) };
 });
 
 // ── Manifests (both load up front — the two sources render together, not behind tabs) ────────────
@@ -185,7 +185,11 @@ const combineUrl = computed(() => {
   } else {
     for (const name of selectedInstui.value) files.push(`${c}/icons/${name}.css`);
   }
-  for (const slug of selectedSimple.value) files.push(`${si}/icons/${slug}.css`);
+  if (allSimpleSelected.value) {
+    files.push(`${si}/simple-icons.css`);
+  } else {
+    for (const slug of selectedSimple.value) files.push(`${si}/icons/${slug}.css`);
+  }
   return files.length === 0 ? null : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
@@ -198,8 +202,12 @@ const esmSnippet = computed(() => {
       lines.push(`import "https://esm.sh/@pantoken/components/icons/${name}.css";`);
     }
   }
-  for (const slug of selectedSimple.value) {
-    lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${slug}.css";`);
+  if (allSimpleSelected.value) {
+    lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/simple-icons.css";`);
+  } else {
+    for (const slug of selectedSimple.value) {
+      lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${slug}.css";`);
+    }
   }
   return lines.length === 0 ? null : lines.join("\n");
 });
@@ -215,9 +223,7 @@ const output = computed(() => {
 </script>
 
 <template>
-  <div
-    class="icon-picker instui-view -background-primary -border-radius-large -shadow-resting instui-p-md"
-  >
+  <div class="icon-picker instui-view">
     <span class="instui-input-group icon-picker__search">
       <span class="before"><span class="instui-icon -icon-search" aria-hidden="true"></span></span>
       <input
@@ -233,78 +239,84 @@ const output = computed(() => {
 
       <!-- One scrollable list for both sources — the section headers are rows inside it, not separate
            lists, so there's a single continuous scroll instead of two boxes. -->
-      <div
-        class="icon-picker__grid instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
-      >
-        <label class="instui-checkbox">
-          <input
-            ref="allCheckboxEl"
-            type="checkbox"
-            :checked="allSelected"
-            :disabled="!instuiIcons || !simpleIcons"
-            @change="toggleAll(($event.target as HTMLInputElement).checked)"
-          />
-          <span>{{ t.allIcons }}</span>
-        </label>
-        <p
-          v-if="loadingInstui"
-          class="instui-text -color-secondary -style-italic icon-picker__status"
-        >
-          {{ t.loadingNote }}
-        </p>
-        <template v-else-if="instuiIcons">
-          <div class="icon-picker__header instui-heading -level-h3 -variant-label">
-            {{ t.sectionInstui }}
-          </div>
-          <label
-            v-for="icon in filteredInstui"
-            :key="icon.name"
-            class="instui-checkbox icon-picker__item"
-          >
+      <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
+        <div class="icon-picker__grid instui-view -border-radius-medium instui-p-sm">
+          <label class="instui-checkbox">
             <input
+              ref="allCheckboxEl"
               type="checkbox"
-              :checked="selectedInstui.has(icon.name)"
-              @change="toggleInstui(icon.name)"
+              :checked="allSelected"
+              :disabled="!instuiIcons || !simpleIcons"
+              @change="toggleAll(($event.target as HTMLInputElement).checked)"
             />
-            <span
-              class="instui-icon icon-picker__glyph"
-              :class="`-icon-${icon.name}`"
-              aria-hidden="true"
-            ></span>
-            <span class="icon-picker__label">{{ icon.name }}</span>
+            <span>{{ t.allIcons }}</span>
           </label>
-        </template>
+          <p
+            v-if="loadingInstui"
+            class="instui-text -color-secondary -style-italic icon-picker__status"
+          >
+            {{ t.loadingNote }}
+          </p>
+          <template v-else-if="instuiIcons">
+            <div
+              class="icon-picker__header instui-heading -level-h3 -variant-label"
+              style="margin: 0.75rem 0 0.5rem"
+            >
+              {{ t.sectionInstui }}
+            </div>
+            <label
+              v-for="icon in filteredInstui"
+              :key="icon.name"
+              class="instui-checkbox icon-picker__item"
+            >
+              <input
+                type="checkbox"
+                :checked="selectedInstui.has(icon.name)"
+                @change="toggleInstui(icon.name)"
+              />
+              <span
+                class="instui-icon icon-picker__glyph"
+                :class="`-icon-${icon.name}`"
+                aria-hidden="true"
+              ></span>
+              <span class="icon-picker__label">{{ icon.name }}</span>
+            </label>
+          </template>
 
-        <p
-          v-if="loadingSimple"
-          class="instui-text -color-secondary -style-italic icon-picker__status"
-        >
-          {{ t.loadingNote }}
-        </p>
-        <template v-else-if="simpleIcons">
-          <div class="icon-picker__header instui-heading -level-h3 -variant-label -border-top">
-            {{ t.sectionSimple }}
-          </div>
-          <label
-            v-for="icon in filteredSimple"
-            :key="icon.slug"
-            class="instui-checkbox icon-picker__item"
+          <p
+            v-if="loadingSimple"
+            class="instui-text -color-secondary -style-italic icon-picker__status"
           >
-            <input
-              type="checkbox"
-              :checked="selectedSimple.has(icon.slug)"
-              @change="toggleSimple(icon.slug)"
-            />
-            <img
-              class="icon-picker__img"
-              :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
-              :alt="icon.title"
-              loading="lazy"
-              aria-hidden="true"
-            />
-            <span class="icon-picker__label">{{ icon.title }}</span>
-          </label>
-        </template>
+            {{ t.loadingNote }}
+          </p>
+          <template v-else-if="simpleIcons">
+            <div
+              class="icon-picker__header instui-heading -level-h3 -variant-label -border-top"
+              style="margin: 1rem 0 0.5rem"
+            >
+              {{ t.sectionSimple }}
+            </div>
+            <label
+              v-for="icon in filteredSimple"
+              :key="icon.slug"
+              class="instui-checkbox icon-picker__item"
+            >
+              <input
+                type="checkbox"
+                :checked="selectedSimple.has(icon.slug)"
+                @change="toggleSimple(icon.slug)"
+              />
+              <img
+                class="icon-picker__img"
+                :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
+                :alt="icon.title"
+                loading="lazy"
+                aria-hidden="true"
+              />
+              <span class="icon-picker__label">{{ icon.title }}</span>
+            </label>
+          </template>
+        </div>
       </div>
     </fieldset>
 
@@ -340,7 +352,7 @@ const output = computed(() => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
   gap: 0.25rem 0.5rem;
-  max-height: 20rem;
+  max-height: 24rem;
   overflow-y: auto;
 }
 /* Section headers are rows inside the single scrollable grid, spanning every column. */

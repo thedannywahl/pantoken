@@ -17,3 +17,8 @@ Adds a few more refinements on top:
 - The output snippet now reuses VitePress's own code-fence markup and global copy-button handler instead of a bespoke `<pre>`/copy-button pair, so it gets the same styling and click behavior as any other code block in the docs (no syntax highlighting, since that's a Shiki build-time step that doesn't apply to this runtime-generated content).
 
 Also, sitewide: the rebrand theme's `--instui-color-institutional-brand-primary` (tab underlines, badges, menu active states, the calendar's "today") shipped as navy by default, a different blue than `--vp-c-brand-1` resolves to through the `@pantoken/vitepress` bridge. Points it at the same navigation-primary blue so InstUI's own brand-colored component chrome and VitePress's brand-driven UI read as one color; canvas and canvas-high-contrast keep their own values.
+
+Two more picker bugs:
+
+- The Components tab's combine URL loaded `utilities.css` before the component sheets. Utility classes are override utilities (same specificity as a component class), so they only actually win the cascade when they load _after_ what they're overriding — moved to the end of the URL, and updated the CDN guide's stated load order to match.
+- The Icons tab's "All icons" checkbox correctly collapsed the InstUI side to the bundled `icons.css`, but always enumerated every selected Simple Icon individually, even when every Simple Icon was selected too. Mirrors the InstUI collapse: uses `@pantoken/plugin-simple-icons/simple-icons.css` when the whole Simple Icons set is checked.

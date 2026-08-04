@@ -92,8 +92,8 @@ const t = computed(() => {
     searchPlaceholder: "Filter elements…",
     allElements: "All elements",
     formatLabel: "Output",
-    formatEsm: "ES module",
-    formatIife: "Classic script tag",
+    formatEsm: "ESM",
+    formatIife: "<script>",
     copy: "Copy",
     copied: "Copied",
     empty: "Select one or more elements to build a snippet.",
@@ -102,7 +102,7 @@ const t = computed(() => {
     iifeNote:
       "This snippet loads its own token sheet and always registers every element, regardless of selection.",
   };
-  return { ...base, ...(theme.value as Record<string, unknown>).webComponentsPicker };
+  return { ...base, ...((theme.value as Record<string, unknown>).webComponentsPicker as object) };
 });
 
 // Deep-linking: restore state from the URL hash on setup, then keep it in sync as the user picks.
@@ -214,11 +214,11 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
 </script>
 
 <template>
-  <div
-    class="wc-picker instui-view -background-primary -border-radius-large -shadow-resting instui-p-md"
-  >
+  <div class="wc-picker instui-view">
     <fieldset class="instui-form-field-group wc-picker__group">
-      <legend>{{ t.label }}</legend>
+      <span class="instui-screen-reader-content"
+        ><legend>{{ t.label }}</legend></span
+      >
       <span class="instui-input-group wc-picker__search">
         <span class="before"
           ><span class="instui-icon -icon-search" aria-hidden="true"></span
@@ -230,22 +230,22 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
           aria-label="Filter elements"
         />
       </span>
-      <div
-        class="wc-picker__elements instui-view -background-secondary -border-radius-medium -border-width-small instui-p-sm"
-      >
-        <label class="instui-checkbox">
-          <input
-            ref="allCheckboxEl"
-            type="checkbox"
-            :checked="allSelected"
-            @change="toggleAll(($event.target as HTMLInputElement).checked)"
-          />
-          <span>{{ t.allElements }}</span>
-        </label>
-        <label v-for="name in filteredElements" :key="name" class="instui-checkbox">
-          <input type="checkbox" :checked="selected.has(name)" @change="toggle(name)" />
-          <span>&lt;instui-{{ name }}&gt;</span>
-        </label>
+      <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
+        <div class="wc-picker__elements instui-view -border-radius-medium instui-p-sm">
+          <label class="instui-checkbox">
+            <input
+              ref="allCheckboxEl"
+              type="checkbox"
+              :checked="allSelected"
+              @change="toggleAll(($event.target as HTMLInputElement).checked)"
+            />
+            <span>{{ t.allElements }}</span>
+          </label>
+          <label v-for="name in filteredElements" :key="name" class="instui-checkbox">
+            <input type="checkbox" :checked="selected.has(name)" @change="toggle(name)" />
+            <span>&lt;instui-{{ name }}&gt;</span>
+          </label>
+        </div>
       </div>
     </fieldset>
 
@@ -287,7 +287,7 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
   gap: 0.25rem 0.75rem;
-  max-height: 16rem;
+  max-height: 24rem;
   overflow-y: auto;
 }
 .wc-picker__note {
