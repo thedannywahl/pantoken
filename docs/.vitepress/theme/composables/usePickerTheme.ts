@@ -2,8 +2,10 @@ import { computed, ref, watch } from "vue";
 import { readHashParam, writeHashParam } from "./useHashParams";
 import { getStoredTheme, type PantokenTheme } from "../theme";
 
+/** Picker mode for rebrand token URLs. */
 export type PickerMode = "adaptive" | "light";
 
+/** Shared hash-backed theme/mode state for CDN picker tabs. */
 export function usePickerTheme() {
   const initialTheme = readHashParam("p_theme");
   const themeKey = ref<PantokenTheme>(
@@ -23,6 +25,7 @@ export function usePickerTheme() {
   return { themeKey, mode, showMode };
 }
 
+/** Resolve the lean token-sheet path for a selected theme/mode pair. */
 export function tokenLeanSheet(theme: PantokenTheme, mode: PickerMode): string {
   const root = "npm/@pantoken/css/dist";
   if (theme === "canvas") return `${root}/style.canvas.lean.css`;

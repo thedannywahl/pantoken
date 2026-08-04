@@ -30,6 +30,7 @@ function rebrandLightOnly(tokens: readonly Token[]): Token[] {
   });
 }
 
+/** Build a theme token set with optional icon removal and rebrand light-only collapse. */
 export function themedTokens(
   theme: Theme,
   options?: { includeIcons?: boolean; lightOnly?: boolean },
