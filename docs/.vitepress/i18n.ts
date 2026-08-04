@@ -43,7 +43,11 @@ type LocaleMeta = {
     formatLink: string;
     formatImport: string;
     includeBase: string;
+    baseInfoLabel: string;
+    baseInfo: string;
     includeUtilities: string;
+    utilitiesInfoLabel: string;
+    utilitiesInfo: string;
     copy: string;
     copied: string;
     empty: string;
@@ -123,8 +127,14 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       formatLabel: "Output",
       formatLink: "<link>",
       formatImport: "@import",
-      includeBase: "Include base reset",
-      includeUtilities: "Include utilities (spacing, color, layout)",
+      includeBase: "Base",
+      baseInfoLabel: "About the base reset",
+      baseInfo:
+        "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults.",
+      includeUtilities: "Utilities",
+      utilitiesInfoLabel: "About the utility classes",
+      utilitiesInfo:
+        "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides.",
       copy: "Copy",
       copied: "Copied",
       empty: "Select one or more components to build a URL.",
@@ -199,8 +209,14 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       formatLabel: "Kimenet",
       formatLink: "<link>",
       formatImport: "@import",
-      includeBase: "Alap reset hozzáadása",
-      includeUtilities: "Segédeszközök hozzáadása (térköz, szín, elrendezés)",
+      includeBase: "Alap reset",
+      baseInfoLabel: "Információ az alap resetről",
+      baseInfo:
+        "Az opcionálisan bekapcsolható globális reset: box-sizing, az oldal felülete, az alap szöveg színe és betűtípusa, a color-scheme, és a linkek alapbeállításai.",
+      includeUtilities: "Segédeszközök",
+      utilitiesInfoLabel: "Információ a segédeszközökről",
+      utilitiesInfo:
+        "Egy opcionálisan bekapcsolható réteg általános osztályokkal: a View primitív, térköz a token skálán, és szemantikus szín felülírások.",
       copy: "Másolás",
       copied: "Másolva",
       empty: "Válassz ki egy vagy több komponenst az URL felépítéséhez.",

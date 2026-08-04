@@ -126,14 +126,48 @@ async function copy(): Promise<void> {
           />
           <span>{{ t.allComponents }}</span>
         </label>
-        <label class="instui-checkbox">
-          <input type="checkbox" v-model="includeBase" />
-          <span>{{ t.includeBase }}</span>
-        </label>
-        <label class="instui-checkbox">
-          <input type="checkbox" v-model="includeUtilities" />
-          <span>{{ t.includeUtilities }}</span>
-        </label>
+        <span class="cdn-picker__labeled-item">
+          <label class="instui-checkbox">
+            <input type="checkbox" v-model="includeBase" />
+            <span>{{ t.includeBase }}</span>
+          </label>
+          <button
+            type="button"
+            class="instui-button -size-small -color-tertiary -shape-circle -icon-info cdn-picker__info"
+            style="anchor-name: --cdn-picker-base-anchor"
+            popovertarget="cdn-picker-base-popover"
+            :aria-label="t.baseInfoLabel"
+          ></button>
+          <div
+            id="cdn-picker-base-popover"
+            popover
+            class="instui-context-view -placement-bottom cdn-picker__popover"
+            style="position-anchor: --cdn-picker-base-anchor"
+          >
+            {{ t.baseInfo }}
+          </div>
+        </span>
+        <span class="cdn-picker__labeled-item">
+          <label class="instui-checkbox">
+            <input type="checkbox" v-model="includeUtilities" />
+            <span>{{ t.includeUtilities }}</span>
+          </label>
+          <button
+            type="button"
+            class="instui-button -size-small -color-tertiary -shape-circle -icon-info cdn-picker__info"
+            style="anchor-name: --cdn-picker-utilities-anchor"
+            popovertarget="cdn-picker-utilities-popover"
+            :aria-label="t.utilitiesInfoLabel"
+          ></button>
+          <div
+            id="cdn-picker-utilities-popover"
+            popover
+            class="instui-context-view -placement-bottom cdn-picker__popover"
+            style="position-anchor: --cdn-picker-utilities-anchor"
+          >
+            {{ t.utilitiesInfo }}
+          </div>
+        </span>
         <label v-for="c in filteredComponents" :key="c.name" class="instui-checkbox">
           <input type="checkbox" :checked="selected.has(c.name)" @change="toggle(c.name)" />
           <span>{{ c.name }}</span>
@@ -215,6 +249,16 @@ async function copy(): Promise<void> {
   gap: 0.25rem 0.75rem;
   max-height: 16rem;
   overflow-y: auto;
+}
+/* Base/Utilities pair a checkbox with an info-popover trigger, so they need their own flex row
+   instead of the bare checkbox label the other grid items use. */
+.cdn-picker__labeled-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.cdn-picker__popover {
+  max-width: 16rem;
 }
 .cdn-picker__output {
   margin-top: 1rem;
