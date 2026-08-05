@@ -331,13 +331,21 @@ const jsOutput = computed(() => {
                   comp.type === 'js-only' ? '-color-danger' : '',
                 ]"
                 aria-hidden="true"
-                :style="{ minWidth: 'unset', width: '0.75rem', height: '0.75rem' }"
+                :style="{ minWidth: 'unset', width: '0.5rem', height: '0.5rem' }"
               />
             </span>
           </label>
         </div>
       </div>
     </fieldset>
+    <div class="instui-view instui-mt-sm instui-ms-sm">
+      <span class="instui-icon -icon-javascript" style="color: var(--instui-color-text-info)">
+      </span>
+      enhancement
+      <span class="instui-icon -icon-javascript" style="color: var(--instui-color-text-error)">
+      </span>
+      requirement
+    </div>
 
     <!-- CSS Output -->
     <PickerOutput
@@ -376,6 +384,10 @@ const jsOutput = computed(() => {
     />
   </div>
 </template>
+
+<style>
+@import "@pantoken/plugin-simple-icons/icons/javascript.css";
+</style>
 
 <style scoped>
 .components-picker {

@@ -36,6 +36,7 @@
     "@pantoken/demo": "workspace:*",
     "@pantoken/interactions": "workspace:*",
     "@pantoken/plugin-logos": "workspace:*",
+    "@pantoken/plugin-simple-icons": "workspace:*",
     "@pantoken/plugin-stacking": "workspace:*",
     "@pantoken/plugin-transition": "workspace:*",
     "@pantoken/plugin-visual-debug": "workspace:*",
