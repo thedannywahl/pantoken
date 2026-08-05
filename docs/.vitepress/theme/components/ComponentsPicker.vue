@@ -328,9 +328,10 @@ const jsOutput = computed(() => {
                 :class="[
                   'instui-badge',
                   '-standalone',
-                  comp.type === 'js-only' ? '-variant-danger' : '',
+                  comp.type === 'js-only' ? '-color-danger' : '',
                 ]"
                 aria-hidden="true"
+                :style="{ minWidth: 'unset', width: '0.75rem', height: '0.75rem' }"
               />
             </span>
           </label>
