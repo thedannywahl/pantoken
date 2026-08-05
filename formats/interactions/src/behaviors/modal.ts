@@ -21,7 +21,8 @@ export function initModal(
 
   dialog.addEventListener("close", () => {
     if (host.hasAttribute("open")) host.removeAttribute("open");
-    host.dispatchEvent(new CustomEvent("close", { bubbles: true }));
+    // Only re-dispatch when host ≠ dialog (web component); for CSS use host IS dialog.
+    if (host !== dialog) host.dispatchEvent(new CustomEvent("close", { bubbles: true }));
   });
 
   onCommand(host, (command) => {
