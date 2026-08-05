@@ -1,0 +1,19 @@
+// Per-component interaction entry point for drawer-layout
+// Applies spacing attributes to drawer-layout elements
+
+import { applySpacing } from "../shared/index.js";
+import { syncInvoker } from "../shared/index.js";
+
+// Initialize on page load
+function initdrawerLayout() {
+  for (const el of document.querySelectorAll(".instui-drawer-layout")) {
+    applySpacing(el as HTMLElement);
+    syncInvoker(el as HTMLElement);
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initdrawerLayout);
+} else {
+  initdrawerLayout();
+}

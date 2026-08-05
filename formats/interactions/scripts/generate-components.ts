@@ -62,7 +62,7 @@ function toClassName(name: string): string {
   return `instui-${name}`;
 }
 
-const componentsDir = resolve(import.meta.dirname, "../components");
+const componentsDir = resolve(import.meta.dirname, "../src/components");
 
 for (const component of ALL_COMPONENTS) {
   const className = toClassName(component);
@@ -73,7 +73,7 @@ for (const component of ALL_COMPONENTS) {
   content += `import { applySpacing } from "../shared/index.js";\n`;
 
   if (isCommandComponent) {
-    content += `import { makeOnCommand, syncInvoker } from "../shared/index.js";\n`;
+    content += `import { syncInvoker } from "../shared/index.js";\n`;
   }
 
   content += `\n`;
