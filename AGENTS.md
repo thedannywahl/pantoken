@@ -5,6 +5,7 @@ knowledge map. Each persona below pairs with deeper docs:
 
 - Pipeline, IR, emitters → `docs/architecture/overview.md`
 - Components → `docs/conventions/authoring.md`
+- Interactions → `docs/conventions/interactions.md`
 - Web components → `docs/conventions/web-components.md`
 - Build, release, docs site → `docs/conventions/build-and-docs.md`
 - Known gotchas → `docs/engineering-log.md`
@@ -71,9 +72,27 @@ Owner of `@pantoken/components` (the semantic RSCSS CSS API) and its InstUI-pari
 --fix`, tests, `check:publish`, and `lint:markdown`. Browser-verify visual changes.
 - Full authoring rules live in `docs/conventions/authoring.md`.
 
-## Web components
+## Interactions
 
-Owner of `@pantoken/web-components` — the shadow-DOM custom elements.
+Owner of `@pantoken/interactions` — shared behavior extraction for components.
+
+### Expertise
+
+- `formats/interactions/src/behaviors/*.ts` — vanilla JS functions (`initModal`, `initTooltip`, `initInPlaceEdit`, `initCloseButton`) accepting DOM references and returning cleanup/control objects. No dependencies; works in browser and Node.
+- `formats/interactions/src/components/*.ts` — 34 IIFE entry points (4 hand-authored, 30 auto-generated) that register listeners on `document.querySelectorAll(".instui-{name}")` and wire behaviors.
+- `dist/component-capabilities.json` — auto-generated CDN manifest mapping components to type (css-only / js-only / both), CDN URLs, and icon requirements.
+- Shared helpers: `resolveSpace()` (keyword aliases → computed values), `makeOnCommand()` (native command routing), `applySpacing()` (inline style resolution for `margin`, `padding` attributes).
+- Web components delegation: `renderers/web-components` elements call behavior functions from interactions, avoiding duplication.
+
+### Instructions
+
+- Author behaviors as side-effect-free functions that accept DOM references (host, trigger, target) and return `{cleanup(): void, ...}` if tear-down is needed.
+- All behaviors must be Node-free (no `node:*` imports) so they bundle into the browser.
+- Generate new behaviors with `scripts/generate-components.ts`; add hand-authored entries (modal, tooltip, etc.) to the skip list.
+- Companion IIFE entry points auto-generate via `scripts/build-iife.ts` — add new component to `ALL_COMPONENTS` if behaviors are added.
+- Always write tests for new behaviors in `tests/` (happy-dom environment). Test coverage must meet 85% threshold.
+- Update `component-capabilities.json` by running `scripts/generate-capabilities.ts` (filesystem-based discovery via `hasBehavior()`).
+- Wrap HTML tags in JSDoc comments with backticks (e.g., `` `<dialog>` ``) to avoid Vue parser errors in generated API docs.
 
 ### Expertise
 
