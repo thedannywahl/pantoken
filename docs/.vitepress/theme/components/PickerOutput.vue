@@ -75,4 +75,8 @@ const highlighted = useShikiHighlight(outputRef, lang);
   display: block;
   margin: 0;
 }
+/* Promote --shiki-dark-bg to background-color in dark mode */
+:global(.dark) .picker-output :deep(.shiki) {
+  background-color: var(--shiki-dark-bg) !important;
+}
 </style>
