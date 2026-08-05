@@ -61,7 +61,7 @@ const search = useHashParamRef("comp_q", "");
 const selected = computed(() => {
   const set = new Set(requested.value);
   // Expand JS component dependencies
-  for (const name of [...set]) {
+  for (const name of set) {
     const comp = components.find((c) => c.name === name);
     if (comp && (comp.type === "both" || comp.type === "js-only")) {
       const deps = getAllDependencies(name);
