@@ -11,7 +11,8 @@
     "directory": "formats/interactions"
   },
   "files": [
-    "dist"
+    "dist",
+    "component-capabilities.d.ts"
   ],
   "type": "module",
   "sideEffects": false,
