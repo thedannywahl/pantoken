@@ -20,10 +20,12 @@ just the foundation loaded.
 
 ## Pick your components and icons
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for both components and icons. Open it, check what you need, and copy the generated `<link>` or `@import` tag.
+The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
 
 - **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
+- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
 - **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
+- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
 
 Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
 and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
