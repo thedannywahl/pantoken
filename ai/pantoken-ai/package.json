@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/ai",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and a Claude Code bootstrap skill, with an installer CLI.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
