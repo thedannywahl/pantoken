@@ -306,11 +306,11 @@ const output = computed(() => {
                 :checked="selectedSimple.has(icon.slug)"
                 @change="toggleSimple(icon.slug)"
               />
-              <img
-                class="icon-picker__img"
-                :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
-                :alt="icon.title"
-                loading="lazy"
+              <span
+                class="instui-icon icon-picker__glyph"
+                :style="{
+                  '--pantoken-glyph': `url('https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg')`,
+                }"
                 aria-hidden="true"
               />
               <span class="icon-picker__label">{{ icon.title }}</span>
@@ -369,21 +369,11 @@ const output = computed(() => {
   align-items: center;
   gap: 0.4rem;
 }
-.icon-picker__glyph,
-.icon-picker__img {
+.icon-picker__glyph {
   flex-shrink: 0;
   font-size: 1rem;
   width: 1em;
   height: 1em;
-}
-.icon-picker__img {
-  /* Override VitePress's default `.vp-doc img { margin: ... }` so the image sits flush like the
-     InstUI glyph span next to it, instead of gaining extra vertical space. */
-  margin: 0;
-  object-fit: contain;
-}
-html.dark .icon-picker__img {
-  filter: invert(1);
 }
 .icon-picker__label {
   overflow: hidden;

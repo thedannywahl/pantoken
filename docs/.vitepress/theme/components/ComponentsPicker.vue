@@ -274,7 +274,10 @@ const jsOutput = computed(() => {
               {{ comp.name }}
               <span
                 v-if="comp.type !== 'css-only'"
-                class="instui-icon -icon-javascript"
+                class="instui-icon"
+                :style="{
+                  '--pantoken-glyph': `url('https://cdn.jsdelivr.net/npm/simple-icons/icons/javascript.svg')`,
+                }"
                 aria-hidden="true"
               />
             </span>
@@ -320,10 +323,6 @@ const jsOutput = computed(() => {
     />
   </div>
 </template>
-
-<style>
-@import "@pantoken/plugin-simple-icons/icons/javascript.css";
-</style>
 
 <style scoped>
 .components-picker {
