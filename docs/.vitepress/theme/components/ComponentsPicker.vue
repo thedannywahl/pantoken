@@ -22,10 +22,10 @@ const t = computed(() => {
     label: "Components",
     searchPlaceholder: "Filter components…",
     allComponents: "All components",
-    formatLabel: "CSS Output",
+    formatLabel: "CSS",
     formatLink: "<link>",
     formatImport: "@import",
-    jsFormatLabel: "JS Output",
+    jsFormatLabel: "JavaScript",
     jsFormatEsm: "ESM",
     jsFormatModuleScript: "<script>",
     copy: "Copy",
@@ -327,7 +327,12 @@ const jsOutput = computed(() => {
                 v-if="comp.type !== 'css-only'"
                 class="instui-icon -icon-javascript"
                 aria-hidden="true"
-                style="color: var(--instui-color-background-info)"
+                :style="{
+                  color:
+                    comp.type === 'js-only'
+                      ? 'var(--instui-color-danger)'
+                      : 'var(--instui-color-info)',
+                }"
               />
             </span>
           </label>
