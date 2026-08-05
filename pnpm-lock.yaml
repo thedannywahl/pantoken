@@ -358,6 +358,9 @@ catalogs:
     remark-gfm:
       specifier: ^4.0.1
       version: 4.0.1
+    shiki:
+      specifier: ^4.3.1
+      version: 4.4.1
     simple-icons:
       specifier: ^15.22.0
       version: 15.22.0
@@ -765,6 +768,9 @@ importers:
       postcss:
         specifier: 'catalog:'
         version: 8.5.25
+      shiki:
+        specifier: 'catalog:'
+        version: 4.4.1
       typedoc:
         specifier: 'catalog:'
         version: 0.28.20(@typescript/typescript6@6.0.2)

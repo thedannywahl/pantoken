@@ -53,6 +53,7 @@
     "mermaid": "catalog:",
     "oxc-minify": "catalog:",
     "postcss": "catalog:",
+    "shiki": "catalog:",
     "typedoc": "catalog:",
     "typedoc-plugin-markdown": "catalog:",
     "typedoc-vitepress-theme": "catalog:",
