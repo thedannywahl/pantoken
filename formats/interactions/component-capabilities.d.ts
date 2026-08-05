@@ -1,3 +1,8 @@
+/** Type definitions for component-capabilities.json.
+ *  Users typically import as: `import type { ComponentCapabilities } from '@pantoken/interactions/component-capabilities.js'`
+ *  Or with assert for raw JSON: `import json from '@pantoken/interactions/component-capabilities.json' assert { type: 'json' }`
+ */
+
 export interface ComponentEntry {
   name: string;
   type: "css-only" | "js-only" | "both";
@@ -7,10 +12,8 @@ export interface ComponentEntry {
   js?: string;
 }
 
-declare const capabilities: {
+export interface ComponentCapabilities {
   $schema: string;
   description: string;
   components: ComponentEntry[];
-};
-
-export default capabilities;
+}

@@ -11,7 +11,7 @@
  *     anything beyond applySpacing (indicating real browser-side behavior).
  */
 
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import {
   ELEMENTS,
@@ -114,8 +114,9 @@ const output = {
   }),
 };
 
-const out = resolve(import.meta.dirname, "../dist/component-capabilities.json");
-mkdirSync(resolve(import.meta.dirname, "../dist"), { recursive: true });
+// Write to package root so it's not in dist/ (which is gitignored)
+// and will be included in pnpm pack tarballs.
+const out = resolve(import.meta.dirname, "../component-capabilities.json");
 writeFileSync(out, `${JSON.stringify(output, null, 2)}\n`);
 
 const counts = {

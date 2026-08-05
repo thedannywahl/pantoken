@@ -12,7 +12,8 @@
   },
   "files": [
     "dist",
-    "component-capabilities.d.ts"
+    "component-capabilities.d.ts",
+    "component-capabilities.json"
   ],
   "type": "module",
   "sideEffects": false,
@@ -22,10 +23,7 @@
       "default": "./dist/index.mjs"
     },
     "./*.js": "./dist/*.js",
-    "./component-capabilities.json": {
-      "types": "./component-capabilities.d.ts",
-      "default": "./dist/component-capabilities.json"
-    },
+    "./component-capabilities.json": "./component-capabilities.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -33,7 +31,6 @@
     "provenance": true
   },
   "scripts": {
-    "prepare": "node scripts/generate-capabilities.ts",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
