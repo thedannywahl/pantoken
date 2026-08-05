@@ -3,8 +3,8 @@ import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
 import { CDN_PICKER_DEFAULTS } from "../cdn";
 import { usePickerTheme } from "../composables/usePickerTheme";
-import CdnPicker from "./CdnPicker.vue";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import ComponentsPicker from "./ComponentsPicker.vue";
 import IconPicker from "./IconPicker.vue";
 import PickerThemeControls from "./PickerThemeControls.vue";
 import WebComponentsPicker from "./WebComponentsPicker.vue";
@@ -13,9 +13,9 @@ const { theme } = useData();
 const t = computed(() => {
   const base = {
     title: "CDN Picker",
-    tabComponents: "CSS",
+    tabComponents: "Components",
     tabIcons: "Icons",
-    tabWebComponents: "Web components",
+    tabWebComponents: "Web Components",
   };
   const overrides = ((theme.value as Record<string, unknown>).cdnPickerPage ?? {}) as Record<
     string,
@@ -34,7 +34,7 @@ const { themeKey, mode, showMode } = usePickerTheme();
 type TabKey = "components" | "icons" | "web-components";
 const initialTab = readHashParam("tab");
 const activeTab = ref<TabKey>(
-  initialTab === "icons" || initialTab === "web-components" ? initialTab : "components",
+  initialTab === "icons" || initialTab === "web-components" ? (initialTab as TabKey) : "components",
 );
 watch(activeTab, (tab) => writeHashParam("tab", tab, "components"));
 </script>
@@ -85,7 +85,7 @@ watch(activeTab, (tab) => writeHashParam("tab", tab, "components"));
         </button>
       </div>
       <div class="panel" role="tabpanel">
-        <CdnPicker v-if="activeTab === 'components'" :theme-key="themeKey" :mode="mode" />
+        <ComponentsPicker v-if="activeTab === 'components'" :theme-key="themeKey" :mode="mode" />
         <IconPicker v-else-if="activeTab === 'icons'" />
         <WebComponentsPicker v-else :theme-key="themeKey" :mode="mode" />
       </div>
