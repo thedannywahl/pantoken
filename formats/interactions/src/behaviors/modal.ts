@@ -5,8 +5,8 @@ import type { OnCommand } from "../shared/index.js";
  * `<dialog>` to the `open` attribute protocol and `--show/--close/--toggle`
  * command routing. Both usages pass the same interface:
  *
- *   CSS:  host === dialog  (the dialog itself carries the id and open attr)
- *   WC:   host = custom element, dialog = its shadow <dialog>
+ * - CSS: `host === dialog` (the dialog itself carries the id and open attr)
+ * - WC: `host` = custom element, `dialog` = its shadow `<dialog>`
  */
 export function initModal(
   host: HTMLElement,

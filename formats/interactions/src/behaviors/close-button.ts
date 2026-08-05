@@ -2,14 +2,14 @@
  * Wire a close button to dismiss its target.
  *
  * Target resolution (first match wins):
- *   1. data-close-target="id"  — dismiss the element with that id
- *   2. popovertarget / commandfor  — skip; native browser handles it
- *   3. walk up to the nearest <dialog>, [popover], or [data-dismissible]
+ * 1. `data-close-target="id"` — dismiss the element with that id
+ * 2. `popovertarget` / `commandfor` — skip; native browser handles it
+ * 3. walk up to the nearest `<dialog>`, `[popover]`, or `[data-dismissible]`
  *
  * Dismiss strategy:
- *   <dialog>          → dialog.close()
- *   [popover]         → el.hidePopover()
- *   [data-dismissible] or [open] → remove open attr + fire bubbling "close"
+ * - `<dialog>` → `dialog.close()`
+ * - `[popover]` → `el.hidePopover()`
+ * - `[data-dismissible]` or `[open]` → remove open attr + fire bubbling `close`
  */
 export function initCloseButton(btn: HTMLElement): void {
   if (btn.hasAttribute("popovertarget") || btn.hasAttribute("commandfor")) return;
