@@ -33,32 +33,36 @@ function updateIncludeDarkMode(event: Event): void {
 </script>
 
 <template>
-  <div class="picker-theme-controls__row">
-    <label class="instui-text -size-small" :for="`${props.idPrefix}-theme`">
-      {{ props.strings.themeLabel }}
-    </label>
-    <select
-      :id="`${props.idPrefix}-theme`"
-      :value="props.themeKey"
-      class="instui-simple-select picker-theme-controls__select"
-      @change="updateTheme"
-    >
-      <option value="rebrand">{{ props.strings.themeRebrand }}</option>
-      <option value="canvas">{{ props.strings.themeCanvas }}</option>
-      <option value="canvasHighContrast">{{ props.strings.themeCanvasHighContrast }}</option>
-    </select>
-  </div>
-  <div v-if="props.showMode" class="picker-theme-controls__row">
-    <span class="instui-text -size-small">&nbsp;</span>
-    <label class="instui-checkbox -variant-toggle picker-theme-controls__toggle">
-      <input
-        :id="`${props.idPrefix}-include-dark-mode`"
-        type="checkbox"
-        :checked="props.mode === 'adaptive'"
-        @change="updateIncludeDarkMode"
-      />
-      {{ props.strings.includeDarkMode }}
-    </label>
+  <div
+    class="instui-view instui-mt-xl instui-mb-xl instui-p-lg -border-radius-medium -border-color-primary -border-width-small -background-secondary -shadow-above"
+  >
+    <div class="picker-theme-controls__row">
+      <label class="instui-text" :for="`${props.idPrefix}-theme`">
+        {{ props.strings.themeLabel }}
+      </label>
+      <select
+        :id="`${props.idPrefix}-theme`"
+        :value="props.themeKey"
+        class="instui-simple-select picker-theme-controls__select"
+        @change="updateTheme"
+      >
+        <option value="rebrand">{{ props.strings.themeRebrand }}</option>
+        <option value="canvas">{{ props.strings.themeCanvas }}</option>
+        <option value="canvasHighContrast">{{ props.strings.themeCanvasHighContrast }}</option>
+      </select>
+    </div>
+    <div v-if="props.showMode" class="picker-theme-controls__row">
+      <span class="instui-text -size-small">&nbsp;</span>
+      <label class="instui-checkbox -variant-toggle picker-theme-controls__toggle">
+        <input
+          :id="`${props.idPrefix}-include-dark-mode`"
+          type="checkbox"
+          :checked="props.mode === 'adaptive'"
+          @change="updateIncludeDarkMode"
+        />
+        {{ props.strings.includeDarkMode }}
+      </label>
+    </div>
   </div>
 </template>
 

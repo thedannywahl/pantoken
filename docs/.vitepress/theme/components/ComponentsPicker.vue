@@ -40,6 +40,8 @@ const t = computed(() => {
     utilitiesInfoLabel: "About the utility classes",
     utilitiesInfo:
       "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides.",
+    enhancement: "enhancement",
+    requirement: "requirement",
   };
   return { ...base, ...((theme.value as Record<string, unknown>).componentsPicker as object) };
 });
@@ -338,13 +340,17 @@ const jsOutput = computed(() => {
         </div>
       </div>
     </fieldset>
-    <div class="instui-view instui-mt-sm instui-ms-sm">
-      <span class="instui-icon -icon-javascript" style="color: var(--instui-color-text-info)">
-      </span>
-      enhancement
-      <span class="instui-icon -icon-javascript" style="color: var(--instui-color-text-error)">
-      </span>
-      requirement
+    <div class="instui-view instui-mt-sm">
+      <div
+        class="instui-icon -icon-javascript instui-ms-sm"
+        style="color: var(--instui-color-text-info)"
+      ></div>
+      {{ t.enhancement }}
+      <div
+        class="instui-icon -icon-javascript instui-ms-sm"
+        style="color: var(--instui-color-text-error)"
+      ></div>
+      {{ t.requirement }}
     </div>
 
     <!-- CSS Output -->

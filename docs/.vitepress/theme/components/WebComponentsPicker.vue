@@ -130,12 +130,29 @@ function initialSelection(): Set<string> {
   return new Set(raw.split(",").filter((n) => names.has(n)));
 }
 
-const selected = ref<Set<string>>(initialSelection());
+const requested = ref<Set<string>>(initialSelection());
 const format = useHashParamRef("w_fmt", "esm");
 const search = useHashParamRef("w_q", "");
 
+const selected = computed(() => new Set(withNestedDeps(requested.value)));
+
+const lockedDeps = computed(() => {
+  const locked = new Set<string>();
+  for (const name of requested.value) {
+    for (const dep of NESTED_DEPS[name] ?? []) {
+      for (const nested of withNestedDeps([dep])) locked.add(nested);
+    }
+  }
+  return locked;
+});
+
 function toggle(name: string): void {
-  selected.value = toggleStringInSet(selected.value, name);
+  if (selected.value.has(name)) {
+    if (lockedDeps.value.has(name)) return;
+    requested.value = toggleStringInSet(requested.value, name);
+    return;
+  }
+  requested.value = toggleStringInSet(requested.value, name);
 }
 
 // "All elements" is a tri-state checkbox over the element list: checked when every element is
@@ -144,12 +161,12 @@ function toggle(name: string): void {
 const allSelected = computed(() => elements.length > 0 && selected.value.size === elements.length);
 const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
-watch(selected, (s) => {
-  writeHashParam("w_sel", allSelected.value ? "all" : [...s].join(","), "");
+watch(requested, (s) => {
+  writeHashParam("w_sel", s.size === elements.length ? "all" : [...s].sort().join(","), "");
 });
 
 function toggleAll(checked: boolean): void {
-  selected.value = checked ? new Set(elements) : new Set();
+  requested.value = checked ? new Set(elements) : new Set();
 }
 
 const filteredElements = computed(() => {
@@ -168,7 +185,7 @@ const hasSelection = computed(() => format.value === "iife" || selected.value.si
 // falls back to the "everything" bundle in that case — so it needs icons too, same as "all selected".
 const needsIcons = computed(() => {
   if (selected.value.size === 0 || allSelected.value) return true;
-  return withNestedDeps(selected.value).some((name) => iconElementNames.includes(name));
+  return [...selected.value].some((name) => iconElementNames.includes(name));
 });
 
 // The lean token sheet is enough unless the selection touches an icon-rendering element, mirroring
@@ -184,7 +201,7 @@ const tokenLink = computed(() => {
 // separate token sheet these elements still need to resolve their tokens.
 const esmSnippet = computed(() => {
   if (allSelected.value) return `import "https://esm.sh/@pantoken/web-components";`;
-  const only = withNestedDeps(selected.value);
+  const only = [...selected.value].sort();
   const onlyList = only.map((name) => `"${name}"`).join(", ");
   return `import { register } from "https://esm.sh/@pantoken/web-components";\nregister(customElements, { only: [${onlyList}] });`;
 });
@@ -195,7 +212,7 @@ const iifeScriptUrl = computed(() => {
   if (selected.value.size === 0 || allSelected.value) {
     return "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
   }
-  const files = orderForCombine(withNestedDeps(selected.value)).map(
+  const files = orderForCombine(selected.value).map(
     (name) => `npm/@pantoken/web-components/dist/${name}.iife.js`,
   );
   return files.length === 1
@@ -252,7 +269,12 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
             <span>{{ t.allElements }}</span>
           </label>
           <label v-for="name in filteredElements" :key="name" class="instui-checkbox">
-            <input type="checkbox" :checked="selected.has(name)" @change="toggle(name)" />
+            <input
+              type="checkbox"
+              :checked="selected.has(name)"
+              :disabled="lockedDeps.has(name)"
+              @change="toggle(name)"
+            />
             <span>&lt;instui-{{ name }}&gt;</span>
           </label>
         </div>
