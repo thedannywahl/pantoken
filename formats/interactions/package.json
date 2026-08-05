@@ -10,12 +10,18 @@
     "url": "git+https://github.com/thedannywahl/pantoken.git",
     "directory": "formats/interactions"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./*.js": "./dist/*.js",
+    "./component-capabilities.json": {
+      "types": "./dist/component-capabilities.d.ts",
+      "default": "./dist/component-capabilities.json"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {

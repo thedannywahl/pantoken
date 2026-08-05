@@ -47,12 +47,16 @@ const _COMMAND_COMPONENTS = new Set([
   "date-time-input",
 ]);
 
-
 export default extendBase({
   run: {
     tasks: {
       build: {
-        command: ["node scripts/generate-components.ts", "vp pack", "node scripts/build-iife.ts"],
+        command: [
+          "node scripts/generate-components.ts",
+          "node scripts/generate-capabilities.ts",
+          "vp pack",
+          "node scripts/build-iife.ts",
+        ],
       },
     },
   },

@@ -711,6 +711,9 @@ importers:
       '@pantoken/demo':
         specifier: workspace:*
         version: link:../tools/demo
+      '@pantoken/interactions':
+        specifier: workspace:*
+        version: link:../formats/interactions
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../plugins/pantoken/logos

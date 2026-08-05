@@ -1,14 +1,12 @@
 /**
- * Unified component metadata for all InstUI components from pantoken.
- * Determines capabilities (CSS, JS, both), dependencies, and icon requirements.
- *
- * Used by CDN pickers to generate appropriate snippets and manage dependencies.
+ * Re-exports the component capability data published by @pantoken/interactions.
+ * Source of truth: formats/interactions/scripts/generate-capabilities.ts
+ * Regenerate: `vp run @pantoken/interactions#build`
  */
+import raw from "@pantoken/interactions/component-capabilities.json";
 
-/** Component capability type */
 export type ComponentType = "css-only" | "js-only" | "both";
 
-/** Metadata for a single component */
 export interface ComponentMetadata {
   name: string;
   type: ComponentType;
@@ -16,93 +14,24 @@ export interface ComponentMetadata {
   dependencies: readonly string[];
 }
 
-/**
- * All InstUI components with their capabilities and dependencies.
- * Generated from:
- * - CSS components: formats/components/src/components/*.ts
- * - JS components: renderers/web-components/src/lib/elements-meta.ts
- * - Icon elements: renderers/web-components/src/lib/elements-meta.ts
- * - Dependencies: renderers/web-components/src/lib/elements-meta.ts
- */
-export const COMPONENTS: readonly ComponentMetadata[] = [
-  // Both CSS + JS (genuine interactive behavior: overlays, navigation, command routing)
-  { name: "button", type: "both", needsIcons: false, dependencies: [] },
-  { name: "calendar", type: "both", needsIcons: true, dependencies: [] },
-  { name: "context-view", type: "both", needsIcons: false, dependencies: [] },
-  { name: "in-place-edit", type: "both", needsIcons: false, dependencies: [] },
-  { name: "modal", type: "both", needsIcons: false, dependencies: [] },
-  { name: "popover", type: "both", needsIcons: false, dependencies: [] },
-  { name: "tooltip", type: "both", needsIcons: false, dependencies: [] },
-  { name: "tray", type: "both", needsIcons: false, dependencies: [] },
-  { name: "tree-browser", type: "both", needsIcons: false, dependencies: [] },
+type RawEntry = { name: string; type: ComponentType; needsIcons?: boolean; requires?: string[] };
 
-  // CSS only
-  { name: "alert", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "avatar", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "badge", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "billboard", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "breadcrumb", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "byline", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "checkbox", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "close-button", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "file-drop", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "form-field", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "form-field-group", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "form-field-messages", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "heading", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "img", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "input-group", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "link", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "list", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "menu", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "metric", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "number-input", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "pagination", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "pill", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "progress", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "progress-circle", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "radio", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "radio-input-group", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "range-input", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "rating", type: "css-only", needsIcons: true, dependencies: [] },
-  { name: "select", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "side-nav-bar", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "simple-select", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "spinner", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "table", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "tabs", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "tag", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "text", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "text-area", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "text-input", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "toggle-details", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "toggle-group", type: "css-only", needsIcons: false, dependencies: [] },
-  { name: "truncate", type: "css-only", needsIcons: false, dependencies: [] },
+export const COMPONENTS: readonly ComponentMetadata[] = (raw.components as RawEntry[]).map((c) => ({
+  name: c.name,
+  type: c.type,
+  needsIcons: c.needsIcons ?? false,
+  dependencies: c.requires ?? [],
+}));
 
-  // JS only
-  { name: "date-input", type: "js-only", needsIcons: true, dependencies: ["calendar"] },
-  { name: "date-time-input", type: "js-only", needsIcons: false, dependencies: ["date-input"] },
-  { name: "drawer-layout", type: "js-only", needsIcons: false, dependencies: [] },
-  { name: "drilldown", type: "js-only", needsIcons: true, dependencies: [] },
-  { name: "icon", type: "js-only", needsIcons: true, dependencies: [] },
-  { name: "icon-button", type: "js-only", needsIcons: false, dependencies: [] },
-  { name: "pages", type: "js-only", needsIcons: false, dependencies: [] },
-  { name: "toggle-button", type: "js-only", needsIcons: false, dependencies: [] },
-];
-
-/** Create a map for quick lookup by component name */
 export function createComponentMap(): Map<string, ComponentMetadata> {
   return new Map(COMPONENTS.map((c) => [c.name, c]));
 }
 
-/** Get all transitive dependencies for a component */
 export function getAllDependencies(name: string): Set<string> {
   const comp = COMPONENTS.find((c) => c.name === name);
   if (!comp) return new Set();
-
   const deps = new Set<string>();
   const queue = [...comp.dependencies];
-
   while (queue.length > 0) {
     const dep = queue.shift();
     if (!dep || deps.has(dep)) continue;
@@ -110,11 +39,9 @@ export function getAllDependencies(name: string): Set<string> {
     const depComp = COMPONENTS.find((c) => c.name === dep);
     if (depComp) queue.push(...depComp.dependencies);
   }
-
   return deps;
 }
 
-/** Group components by type */
 export function groupByType(): Record<ComponentType, ComponentMetadata[]> {
   return {
     "css-only": COMPONENTS.filter((c) => c.type === "css-only"),
