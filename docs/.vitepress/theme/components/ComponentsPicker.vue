@@ -272,7 +272,11 @@ const jsOutput = computed(() => {
             />
             <span>
               {{ comp.name }}
-              <span v-if="comp.type !== 'css-only'" class="components-picker__badge">JS</span>
+              <span
+                v-if="comp.type !== 'css-only'"
+                class="instui-icon -icon-javascript"
+                aria-hidden="true"
+              />
             </span>
           </label>
         </div>
