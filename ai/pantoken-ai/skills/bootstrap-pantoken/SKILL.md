@@ -34,6 +34,7 @@ take priority for the primary install; tool rows (Tailwind, PostCSS, Vite) are a
 
 | Detected                | Install                                                                                                                            |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| html                    | `@pantoken/components`;                                                                                                            |
 | React                   | `@pantoken/react`; if the user also wants full InstUI components (buttons, modals, etc.), additionally install `@instructure/ui-*` |
 | Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components`                                            |
 | React Native            | `@pantoken/react-native`                                                                                                           |
