@@ -33,6 +33,7 @@
     "provenance": true
   },
   "scripts": {
+    "prepare": "node scripts/generate-capabilities.ts",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"

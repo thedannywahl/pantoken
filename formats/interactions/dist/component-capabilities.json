@@ -1,0 +1,296 @@
+{
+  "$schema": "https://pantoken.iywahl.com/component-capabilities.schema.json",
+  "description": "InstUI component capability map: which components need CSS, JS (interactions), or both, with CDN URLs and dependency graph.",
+  "components": [
+    {
+      "name": "alert",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/alert.css"
+    },
+    {
+      "name": "avatar",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/avatar.css"
+    },
+    {
+      "name": "badge",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/badge.css"
+    },
+    {
+      "name": "billboard",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/billboard.css"
+    },
+    {
+      "name": "breadcrumb",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/breadcrumb.css"
+    },
+    {
+      "name": "button",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/button.css"
+    },
+    {
+      "name": "byline",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/byline.css"
+    },
+    {
+      "name": "calendar",
+      "type": "css-only",
+      "needsIcons": true,
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/calendar.css"
+    },
+    {
+      "name": "checkbox",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/checkbox.css"
+    },
+    {
+      "name": "close-button",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/close-button.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/close-button.iife.js"
+    },
+    {
+      "name": "context-view",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/context-view.css"
+    },
+    {
+      "name": "date-input",
+      "type": "js-only",
+      "needsIcons": true,
+      "requires": ["calendar"],
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/date-input.iife.js"
+    },
+    {
+      "name": "date-time-input",
+      "type": "js-only",
+      "requires": ["date-input"],
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/date-time-input.iife.js"
+    },
+    {
+      "name": "drawer-layout",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"
+    },
+    {
+      "name": "drilldown",
+      "type": "js-only",
+      "needsIcons": true,
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drilldown.iife.js"
+    },
+    {
+      "name": "file-drop",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/file-drop.css"
+    },
+    {
+      "name": "form-field",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/form-field.css"
+    },
+    {
+      "name": "form-field-group",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/form-field-group.css"
+    },
+    {
+      "name": "form-field-messages",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/form-field-messages.css"
+    },
+    {
+      "name": "heading",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/heading.css"
+    },
+    {
+      "name": "icon-button",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/icon-button.iife.js"
+    },
+    {
+      "name": "img",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/img.css"
+    },
+    {
+      "name": "in-place-edit",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/in-place-edit.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/in-place-edit.iife.js"
+    },
+    {
+      "name": "input-group",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/input-group.css"
+    },
+    {
+      "name": "link",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/link.css"
+    },
+    {
+      "name": "list",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/list.css"
+    },
+    {
+      "name": "menu",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/menu.css"
+    },
+    {
+      "name": "metric",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/metric.css"
+    },
+    {
+      "name": "modal",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/modal.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/modal.iife.js"
+    },
+    {
+      "name": "number-input",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/number-input.css"
+    },
+    {
+      "name": "pages",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/pages.iife.js"
+    },
+    {
+      "name": "pagination",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/pagination.css"
+    },
+    {
+      "name": "pill",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/pill.css"
+    },
+    {
+      "name": "popover",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/popover.css"
+    },
+    {
+      "name": "progress",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/progress.css"
+    },
+    {
+      "name": "progress-circle",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/progress-circle.css"
+    },
+    {
+      "name": "radio",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/radio.css"
+    },
+    {
+      "name": "radio-input-group",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/radio-input-group.css"
+    },
+    {
+      "name": "range-input",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/range-input.css"
+    },
+    {
+      "name": "rating",
+      "type": "css-only",
+      "needsIcons": true,
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/rating.css"
+    },
+    {
+      "name": "side-nav-bar",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/side-nav-bar.css"
+    },
+    {
+      "name": "simple-select",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/simple-select.css"
+    },
+    {
+      "name": "spinner",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/spinner.css"
+    },
+    {
+      "name": "table",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/table.css"
+    },
+    {
+      "name": "tabs",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tabs.css"
+    },
+    {
+      "name": "tag",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tag.css"
+    },
+    {
+      "name": "text",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/text.css"
+    },
+    {
+      "name": "text-area",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/text-area.css"
+    },
+    {
+      "name": "text-input",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/text-input.css"
+    },
+    {
+      "name": "toggle-button",
+      "type": "js-only",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/toggle-button.iife.js"
+    },
+    {
+      "name": "toggle-details",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/toggle-details.css"
+    },
+    {
+      "name": "toggle-group",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/toggle-group.css"
+    },
+    {
+      "name": "tooltip",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tooltip.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/tooltip.iife.js"
+    },
+    {
+      "name": "tray",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tray.css"
+    },
+    {
+      "name": "tree-browser",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/tree-browser.css"
+    },
+    {
+      "name": "truncate",
+      "type": "css-only",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/truncate.css"
+    }
+  ]
+}
