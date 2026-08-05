@@ -3,6 +3,8 @@
 This project uses **pantoken** to consume Instructure UI design tokens and icons. pantoken exports
 the resolved tokens once and re-shapes them for many platforms. Reach for the smallest package that
 fits the task; everything is also available under the unified `pantoken` package.
+The unified `pantoken` package re-exports all scoped packages; install it with `npm i @pantoken/pantoken` when
+you need multiple packages together, otherwise prefer the scoped package.
 
 ## The token model
 
@@ -58,4 +60,5 @@ Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
 
 - Prefer `var(--instui-*)` references over hard-coded colours so theming (light/dark, high-contrast) keeps working.
 - Don't invent token names — resolve them from `@pantoken/tokens` or the generated CSS.
+- To discover available tokens, import `tokens` from `@pantoken/tokens` and inspect its keys, or open the generated CSS file and search for `--instui-`.
 - For non-React frameworks, prefer `@pantoken/web-components` over porting components.
