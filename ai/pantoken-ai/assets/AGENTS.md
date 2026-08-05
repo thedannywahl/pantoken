@@ -21,6 +21,7 @@ Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
   `import { css } from "@pantoken/css"`. Defines all `--instui-*` properties. Start here for any web app.
 - `@pantoken/tokens` — the resolved token IR as JS/TS (`import { tokens, byTheme } from "@pantoken/tokens"`).
 - `@pantoken/icons` — decoded SVG icon set (`getIcon("arrow-left")`).
+- `@pantoken/interactions` — vanilla JS behavior functions for components (modal, tooltip, in-place-edit, close-button). IIFE entry points for CDN consumers; ESM for bundlers.
 - `@pantoken/web-components` — `<instui-icon name="arrow-left">` + styled primitives. Framework-agnostic.
 
 **Frameworks:**
@@ -51,6 +52,7 @@ Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
   `var(--instui-color-background-brand)` etc. in your CSS.
 - **Icons anywhere:** `npm i @pantoken/web-components`, `import "@pantoken/web-components";`, then
   `<instui-icon name="check-mark"></instui-icon>`.
+- **Component behaviors (vanilla JS):** `npm i @pantoken/interactions`, then import `initModal`, `initTooltip`, `initInPlaceEdit`, or `initCloseButton` to wire behaviors. For CDN/IIFE: link `@pantoken/interactions/dist/interactions.iife.js` and check `component-capabilities.json` for per-component `.iife.js` entry points.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
 - **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.
