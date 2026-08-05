@@ -6,7 +6,7 @@ import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbo
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
 import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
-import { COMPONENTS, getAllDependencies, type ComponentMetadata } from "./componentMetadata";
+import { COMPONENTS, getAllDependencies } from "./componentMetadata";
 import PickerOutput from "./PickerOutput.vue";
 
 const props = defineProps<{
@@ -15,12 +15,6 @@ const props = defineProps<{
 }>();
 
 const components = [...COMPONENTS].sort((a, b) => a.name.localeCompare(b.name));
-
-// Dependency map for JS components
-const NESTED_DEPS: Record<string, readonly string[]> = {
-  "date-input": ["calendar"],
-  "date-time-input": ["date-input"],
-};
 
 const { theme } = useData();
 const t = computed(() => {
