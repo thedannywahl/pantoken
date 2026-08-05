@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for pill
-// Applies spacing attributes to pill elements
 
 import { applySpacing } from "../shared/index.js";
 

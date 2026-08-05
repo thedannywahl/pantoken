@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for progress
-// Applies spacing attributes to progress elements
 
 import { applySpacing } from "../shared/index.js";
 

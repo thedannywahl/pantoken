@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for tray
-// Applies spacing attributes to tray elements
 
 import { applySpacing } from "../shared/index.js";
 

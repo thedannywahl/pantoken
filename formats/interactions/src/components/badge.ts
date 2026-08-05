@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for badge
-// Applies spacing attributes to badge elements
 
 import { applySpacing } from "../shared/index.js";
 

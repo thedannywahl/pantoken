@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for popover
-// Applies spacing attributes to popover elements
 
 import { applySpacing } from "../shared/index.js";
 

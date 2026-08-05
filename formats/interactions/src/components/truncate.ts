@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for truncate
-// Applies spacing attributes to truncate elements
 
 import { applySpacing } from "../shared/index.js";
 

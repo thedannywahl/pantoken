@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import { initInPlaceEdit } from "../behaviors/in-place-edit.js";
 
 function initInPlaceEditComponents(): void {

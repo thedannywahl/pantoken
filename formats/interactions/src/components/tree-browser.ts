@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for tree-browser
-// Applies spacing attributes to tree-browser elements
 
 import { applySpacing } from "../shared/index.js";
 

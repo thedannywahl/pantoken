@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for spinner
-// Applies spacing attributes to spinner elements
 
 import { applySpacing } from "../shared/index.js";
 

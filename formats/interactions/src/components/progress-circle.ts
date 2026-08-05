@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for progress-circle
-// Applies spacing attributes to progress-circle elements
 
 import { applySpacing } from "../shared/index.js";
 

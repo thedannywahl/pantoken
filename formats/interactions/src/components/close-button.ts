@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import { initCloseButton } from "../behaviors/close-button.js";
 
 function initCloseButtonComponents(): void {

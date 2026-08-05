@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import { initTooltip } from "../behaviors/tooltip.js";
 
 function initTooltipComponents(): void {

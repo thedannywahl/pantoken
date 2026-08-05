@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for tag
-// Applies spacing attributes to tag elements
 
 import { applySpacing } from "../shared/index.js";
 

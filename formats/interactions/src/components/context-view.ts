@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for context-view
-// Applies spacing attributes to context-view elements
 
 import { applySpacing } from "../shared/index.js";
 

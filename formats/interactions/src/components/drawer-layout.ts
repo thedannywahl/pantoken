@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for drawer-layout
-// Applies spacing attributes to drawer-layout elements
 
 import { applySpacing } from "../shared/index.js";
 import { syncInvoker } from "../shared/index.js";

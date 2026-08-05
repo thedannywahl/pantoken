@@ -76,8 +76,8 @@ for (const component of ALL_COMPONENTS) {
     continue;
   }
 
-  let content = `// Per-component interaction entry point for ${component}\n`;
-  content += `// Applies spacing attributes to ${component} elements\n\n`;
+  let content = `// fallow-ignore-file unused-file\n`;
+  content += `// Per-component interaction entry point for ${component}\n\n`;
   content += `import { applySpacing } from "../shared/index.js";\n`;
 
   if (isCommandComponent) {

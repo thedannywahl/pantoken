@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for rating
-// Applies spacing attributes to rating elements
 
 import { applySpacing } from "../shared/index.js";
 

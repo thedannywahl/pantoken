@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for img
-// Applies spacing attributes to img elements
 
 import { applySpacing } from "../shared/index.js";
 

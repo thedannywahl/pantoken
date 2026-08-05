@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for side-nav-bar
-// Applies spacing attributes to side-nav-bar elements
 
 import { applySpacing } from "../shared/index.js";
 

@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for toggle-button
-// Applies spacing attributes to toggle-button elements
 
 import { applySpacing } from "../shared/index.js";
 import { syncInvoker } from "../shared/index.js";

@@ -1,3 +1,4 @@
+// fallow-ignore-file unused-file
 import { makeOnCommand } from "../shared/index.js";
 import { initModal } from "../behaviors/modal.js";
 

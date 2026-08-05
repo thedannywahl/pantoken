@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for metric
-// Applies spacing attributes to metric elements
 
 import { applySpacing } from "../shared/index.js";
 

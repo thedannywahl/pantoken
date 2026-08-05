@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for avatar
-// Applies spacing attributes to avatar elements
 
 import { applySpacing } from "../shared/index.js";
 

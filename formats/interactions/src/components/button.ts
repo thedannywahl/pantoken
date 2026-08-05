@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for button
-// Applies spacing attributes to button elements
 
 import { applySpacing } from "../shared/index.js";
 import { syncInvoker } from "../shared/index.js";

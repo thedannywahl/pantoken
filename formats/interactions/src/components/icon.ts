@@ -1,5 +1,5 @@
+// fallow-ignore-file unused-file
 // Per-component interaction entry point for icon
-// Applies spacing attributes to icon elements
 
 import { applySpacing } from "../shared/index.js";
 
