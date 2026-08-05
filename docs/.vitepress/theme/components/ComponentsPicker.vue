@@ -186,23 +186,45 @@ const jsComponents = computed(() =>
     .map((c) => c.name),
 );
 
+// Dependencies must load before their dependents
+const jsComponentsOrdered = computed(() => {
+  const prioritized: string[] = [];
+  const seen = new Set<string>();
+  function addWithDeps(name: string) {
+    if (seen.has(name)) return;
+    seen.add(name);
+    const comp = components.find((c) => c.name === name);
+    if (comp) for (const dep of comp.dependencies) addWithDeps(dep);
+    prioritized.push(name);
+  }
+  for (const name of [...jsComponents.value].sort()) addWithDeps(name);
+  return prioritized;
+});
+
+const jsIifeSnippet = computed(() => {
+  if (jsComponentsOrdered.value.length === 0) return "";
+  const files = jsComponentsOrdered.value.map(
+    (name) => `npm/@pantoken/interactions/dist/${name}.iife.js`,
+  );
+  const src =
+    files.length === 1
+      ? `https://cdn.jsdelivr.net/${files[0]}`
+      : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+  return `<script src="${src}"><` + `/script>`;
+});
+
 const jsEsmSnippet = computed(() => {
   if (jsComponents.value.length === 0) return "";
-  const imports = jsComponents.value.map((name) => {
+  const imports = jsComponentsOrdered.value.map((name) => {
     const camel = name.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-    return `import init${camel.charAt(0).toUpperCase() + camel.slice(1)} from "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/${name}.iife.js";`;
+    return `import "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/${name}.iife.js";`;
   });
   return imports.join("\n");
 });
 
-const jsModuleScriptSnippet = computed(() => {
-  if (jsComponents.value.length === 0) return "";
-  return ['<script type="module">', `  ${jsEsmSnippet.value}`, "</" + "script>"].join("\n");
-});
-
 const jsOutput = computed(() => {
   if (jsComponents.value.length === 0) return "";
-  if (jsFormat.value === "module") return jsModuleScriptSnippet.value;
+  if (jsFormat.value === "module") return jsIifeSnippet.value;
   return jsEsmSnippet.value;
 });
 </script>
@@ -300,6 +322,7 @@ const jsOutput = computed(() => {
                 v-if="comp.type !== 'css-only'"
                 class="instui-icon -icon-javascript"
                 aria-hidden="true"
+                style="color: var(--instui-color-background-info)"
               />
             </span>
           </label>
