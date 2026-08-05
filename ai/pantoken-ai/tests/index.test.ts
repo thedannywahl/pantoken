@@ -34,3 +34,7 @@ test("'all' writes every asset, deduped", () => {
   // AGENTS.md is referenced by both `agents` and `claude` but written once.
   expect(written.filter((p) => p.endsWith("AGENTS.md"))).toHaveLength(1);
 });
+
+test("rejects unknown tools with a clear error", () => {
+  expect(() => installAgentAssets("invalid" as never)).toThrow(/Unknown tool/);
+});

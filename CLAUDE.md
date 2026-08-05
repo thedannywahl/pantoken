@@ -28,6 +28,9 @@ the linked docs only when a task calls for them.
   scripts and tests.
 - **Generate a changeset for every user-visible change.** Run `pnpm changeset` and commit the
   `.changeset/*.md` file alongside the code change.
+- **When refining user-facing packages, evaluate `@pantoken/ai` in the same change.** If package
+  recommendations, CLI target examples, or usage conventions changed, update the consumer agent assets
+  in `ai/pantoken-ai` so assistant guidance does not drift.
 - **Keep security docs current.** When a code change alters a threat, adds a control, or closes a
   residual risk in `ASSURANCE.md`, update both `ASSURANCE.md` and `SECURITY.md` before merging.
 

@@ -14,5 +14,5 @@ This project uses **pantoken** for Instructure UI design tokens and icons.
 - Icons anywhere: `@pantoken/web-components` → `<instui-icon name="…">`. React: `@pantoken/react`
   (`<Icon>`, `useToken`). Non-React frameworks: prefer the web component over porting components.
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`. PostCSS: the `@pantoken;` at-rule.
-- Native / other ecosystems: `npx pantoken generate <swift|android|compose|flutter|wordpress|vanilla|drupal> --out <dir> [--icons a,b]`.
+- Native / other ecosystems: `npx pantoken generate <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|jekyll|hugo> --out <dir> [--icons a,b]`.
 - For InstUI's full React component library use `@instructure/ui-*`; pantoken is the token/icon layer.

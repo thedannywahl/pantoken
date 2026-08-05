@@ -27,17 +27,18 @@ npm i @pantoken/css
 
 Then add the framework/tool package(s):
 
-| Detected               | Install                                                                                 |
-| ---------------------- | --------------------------------------------------------------------------------------- |
-| React                  | `@pantoken/react` (+ `@instructure/ui-*` for full components)                           |
-| Vue / Svelte / Angular | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` |
-| React Native           | `@pantoken/react-native`                                                                |
-| Next.js                | `@pantoken/next`                                                                        |
-| Vite                   | `@pantoken/vite`                                                                        |
-| Tailwind               | `@pantoken/tailwind`                                                                    |
-| PostCSS / Webpack      | `@pantoken/postcss` / `@pantoken/webpack`                                               |
-| shadcn / Bootstrap     | `@pantoken/shadcn` / `@pantoken/bootstrap`                                              |
-| Icons anywhere         | `@pantoken/web-components`                                                              |
+| Detected                | Install                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| React                   | `@pantoken/react` (+ `@instructure/ui-*` for full components)                           |
+| Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` |
+| React Native            | `@pantoken/react-native`                                                                |
+| Next.js                 | `@pantoken/next`                                                                        |
+| Vite                    | `@pantoken/vite`                                                                        |
+| Tailwind                | `@pantoken/tailwind`                                                                    |
+| PostCSS / Webpack       | `@pantoken/postcss` / `@pantoken/webpack`                                               |
+| shadcn / Bootstrap      | `@pantoken/shadcn` / `@pantoken/bootstrap`                                              |
+| markdown-it / css-in-js | `@pantoken/markdown-it` / `@pantoken/css-in-js`                                         |
+| Icons anywhere          | `@pantoken/web-components`                                                              |
 
 For native / CMS targets, no install — run the CLI (step 4).
 
@@ -52,7 +53,7 @@ For native / CMS targets, no install — run the CLI (step 4).
 ## 4. Native / other ecosystems
 
 ```sh
-npx pantoken generate <swift|android|compose|flutter|wordpress|vanilla|drupal> --out <dir> [--icons a,b] [--theme rebrand]
+npx pantoken generate <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|jekyll|hugo> --out <dir> [--icons a,b] [--theme rebrand]
 ```
 
 ## Conventions to follow afterward

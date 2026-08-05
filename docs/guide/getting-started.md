@@ -100,5 +100,6 @@ See [the pantoken CLI](/guide/cli) for every target.
 ## Where to next
 
 - [The package map](/guide/packages) — which package to reach for, by task.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
 - [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
 - [API reference](/api/) — every exported symbol, generated from the source.

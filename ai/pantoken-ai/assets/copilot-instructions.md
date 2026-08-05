@@ -8,5 +8,5 @@ When styling this project, use pantoken tokens and icons.
 - Web app: `import "@pantoken/css/inject";` to define the properties.
 - Icons: `@pantoken/web-components` (`<instui-icon name="…">`) or `@pantoken/react` (`<Icon>`).
 - Tailwind: `pantokenPreset()` from `@pantoken/tailwind`.
-- Native / CMS: `npx pantoken generate <swift|android|compose|flutter|wordpress|vanilla|drupal>`.
+- Native / CMS/site targets: `npx pantoken generate <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|jekyll|hugo>`.
 - For InstUI React components use `@instructure/ui-*`; pantoken is the token/icon layer.

@@ -36,8 +36,9 @@ Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.
 **Theme other systems:** `@pantoken/shadcn`, `@pantoken/bootstrap` (CSS-var bridges), `@pantoken/storybook` (theme).
 
 **Native / other ecosystems (generated via CLI):** `pantoken generate <target>` where target is
-`swift`, `android`, `compose`, `flutter`, `wordpress`, `vanilla`, or `drupal`. Add `--icons a,b` to
-also emit icon assets, `--theme <name>`, `--out <dir>`.
+`swift`, `android`, `compose`, `flutter`, `rust`, `wordpress`, `vanilla`, `drupal`, `jekyll`, or
+`hugo`. Add `--icons a,b` to also emit icon assets, `--theme <name>`, `--out <dir>`, and for Rust
+`--format <egui|iced>`.
 
 **Design & interchange:** `@pantoken/dtcg` (W3C DTCG JSON), `@pantoken/scss` (SCSS vars),
 `@pantoken/figma` (Figma Variables payload), `@pantoken/email` (inline-friendly values).
@@ -50,6 +51,7 @@ also emit icon assets, `--theme <name>`, `--out <dir>`.
   `<instui-icon name="check-mark"></instui-icon>`.
 - **Tailwind:** add `pantokenPreset()` to `presets` and import `@pantoken/css`.
 - **Native app:** `npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark`.
+- **Rust app:** `npx pantoken generate rust --out ./src/tokens.rs --format egui`.
 - **Push to Figma:** `toFigmaVariables(tokens)` → feed a Figma plugin / the Variables REST API.
 
 ## Rules

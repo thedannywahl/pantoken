@@ -26,7 +26,14 @@
 
 ## Native & other ecosystems (CLI: `pantoken generate <target>`)
 
-- swift, android, compose, flutter, wordpress, vanilla, drupal — add `--icons`, `--theme`, `--out`.
+- swift, android, compose, flutter, rust, wordpress, vanilla, drupal, jekyll, hugo — add
+	`--icons`, `--theme`, `--out`, and for rust `--format`.
+
+## AI tooling for consumers
+
+- `@pantoken/ai` provides installable agent assets: `AGENTS.md`, `llms.txt`, and editor/assistant
+	rules for Cursor, Copilot, Windsurf, and Claude Code.
+- CLI: `npx pantoken-ai init [--tool <all|agents|llms|cursor|copilot|windsurf|claude>] [--dir <path>]`.
 
 ## Design & interchange
 

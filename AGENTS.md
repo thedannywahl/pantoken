@@ -17,6 +17,8 @@ Applies to every agent persona below.
   controls, or closing a residual risk.
 - Amend `SECURITY.md` (requirements, limitations, supply-chain sections) when the public-facing
   security posture changes.
+- For user-facing package refinements, evaluate whether `ai/pantoken-ai` assets (`AGENTS.md`,
+  `llms.txt`, editor rules, bootstrap skill) need synchronized updates in the same PR.
 - Run `pnpm changeset` and commit the changeset for every user-visible change before merging.
 
 ## Core / pipeline

@@ -25,14 +25,16 @@ vp install
 1. Create a branch from `main`.
 2. Make your changes.
 3. Add or update tests for any changed behaviour.
-4. Run the full check suite before pushing:
+4. For user-facing package refinements or enhancements, evaluate whether `@pantoken/ai` asset content
+   should be updated in the same PR (package recommendations, CLI targets, and usage conventions).
+5. Run the full check suite before pushing:
 
    ```sh
    vp check   # format, lint, typecheck
    vp test    # unit tests
    ```
 
-5. If your change affects a published package, add a changeset:
+6. If your change affects a published package, add a changeset:
 
    ```sh
    vp exec changeset add
