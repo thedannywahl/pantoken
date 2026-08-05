@@ -1,17 +1,16 @@
-// Per-component interaction entry point for modal
-// Applies spacing attributes to modal elements
+import { makeOnCommand } from "../shared/index.js";
+import { initModal } from "../behaviors/modal.js";
 
-import { applySpacing } from "../shared/index.js";
-
-// Initialize on page load
-function initmodal() {
-  for (const el of document.querySelectorAll(".instui-modal")) {
-    applySpacing(el as HTMLElement);
+function initModalComponents(): void {
+  const invokerSupported = "command" in (HTMLButtonElement.prototype as object);
+  const onCommand = makeOnCommand(invokerSupported);
+  for (const dialog of document.querySelectorAll<HTMLDialogElement>("dialog.instui-modal")) {
+    initModal(dialog, dialog, onCommand);
   }
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initmodal);
+  document.addEventListener("DOMContentLoaded", initModalComponents);
 } else {
-  initmodal();
+  initModalComponents();
 }

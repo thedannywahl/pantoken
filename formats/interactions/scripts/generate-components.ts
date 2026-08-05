@@ -41,6 +41,9 @@ const ALL_COMPONENTS = [
   "date-time-input",
 ];
 
+// Components with hand-authored entry points — the generator skips these.
+const BEHAVIORAL_COMPONENTS = new Set(["modal", "tooltip", "in-place-edit"]);
+
 // Components that require command event handling
 const COMMAND_COMPONENTS = new Set([
   "button",
@@ -67,6 +70,11 @@ const componentsDir = resolve(import.meta.dirname, "../src/components");
 for (const component of ALL_COMPONENTS) {
   const className = toClassName(component);
   const isCommandComponent = COMMAND_COMPONENTS.has(component);
+
+  if (BEHAVIORAL_COMPONENTS.has(component)) {
+    console.log(`↷ skipped ${component}.ts (hand-authored)`);
+    continue;
+  }
 
   let content = `// Per-component interaction entry point for ${component}\n`;
   content += `// Applies spacing attributes to ${component} elements\n\n`;

@@ -1,4 +1,5 @@
 import { inPlaceEditCss } from "@pantoken/components";
+import { initInPlaceEdit } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 import { esc } from "../lib/helpers.ts";
 
@@ -22,7 +23,6 @@ export const inPlaceEdit: ElementDefinition = {
       class extends HTMLElement {
         static observedAttributes = ["value", "readonly"];
         #field: HTMLElement | null = null;
-        #original = "";
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
@@ -39,27 +39,7 @@ export const inPlaceEdit: ElementDefinition = {
           const field = root.querySelector<HTMLElement>(".instui-in-place-edit");
           this.#field = field;
           if (!field || readonly) return;
-          field.addEventListener("focus", () => {
-            this.#original = field.textContent ?? "";
-          });
-          field.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-              event.preventDefault();
-              field.blur();
-            } else if (event.key === "Escape") {
-              field.textContent = this.#original;
-              field.blur();
-            }
-          });
-          field.addEventListener("blur", () => {
-            const next = field.textContent ?? "";
-            this.setAttribute("value", next);
-            if (next !== this.#original) {
-              this.dispatchEvent(
-                new CustomEvent("change", { detail: { value: next }, bubbles: true }),
-              );
-            }
-          });
+          initInPlaceEdit(field, this);
         }
         attributeChangedCallback(name: string): void {
           // Reflect an external value change into the field when it isn't being edited.

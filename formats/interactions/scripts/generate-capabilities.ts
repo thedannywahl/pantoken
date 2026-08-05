@@ -27,12 +27,13 @@ const SKIP_WEB_ELEMENTS = new Set(["icon"]);
 const componentsDir = resolve(import.meta.dirname, "../src/components");
 
 /** Returns true if the init file imports browser-meaningful behavior beyond applySpacing.
- *  syncInvoker is excluded — it is shadow-DOM only and a no-op on plain HTML elements. */
+ *  syncInvoker is excluded — it is shadow-DOM only and a no-op on plain HTML elements.
+ *  Imports from ../behaviors/ or makeOnCommand both qualify. */
 function hasBehavior(name: string): boolean {
   const path = resolve(componentsDir, `${name}.ts`);
   if (!existsSync(path)) return false;
   const src = readFileSync(path, "utf8");
-  return /\bimport\s*\{[^}]*\bmakeOnCommand\b/.test(src);
+  return /\bimport\s*\{[^}]*\bmakeOnCommand\b/.test(src) || /from ["']\.\.\/behaviors\//.test(src);
 }
 
 // ── Derive sets ──────────────────────────────────────────────────────────────

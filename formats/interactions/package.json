@@ -16,7 +16,10 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "types": "./dist/interactions.d.mts",
+      "default": "./dist/index.mjs"
+    },
     "./*.js": "./dist/*.js",
     "./component-capabilities.json": {
       "types": "./dist/component-capabilities.d.ts",

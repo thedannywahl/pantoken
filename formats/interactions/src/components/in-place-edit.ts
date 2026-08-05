@@ -1,17 +1,14 @@
-// Per-component interaction entry point for in-place-edit
-// Applies spacing attributes to in-place-edit elements
+import { initInPlaceEdit } from "../behaviors/in-place-edit.js";
 
-import { applySpacing } from "../shared/index.js";
-
-// Initialize on page load
-function initinPlaceEdit() {
-  for (const el of document.querySelectorAll(".instui-in-place-edit")) {
-    applySpacing(el as HTMLElement);
+function initInPlaceEditComponents(): void {
+  for (const el of document.querySelectorAll<HTMLElement>(".instui-in-place-edit")) {
+    // For CSS usage the element IS contenteditable; it's also the dispatch target
+    initInPlaceEdit(el, el);
   }
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initinPlaceEdit);
+  document.addEventListener("DOMContentLoaded", initInPlaceEditComponents);
 } else {
-  initinPlaceEdit();
+  initInPlaceEditComponents();
 }

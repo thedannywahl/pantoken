@@ -1,4 +1,5 @@
 import { tooltipCss } from "@pantoken/components";
+import { initTooltip } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 import tooltipGate from "./tooltip.css?inline";
 import { esc, frag } from "../lib/helpers.ts";
@@ -25,19 +26,11 @@ export const tooltip: ElementDefinition = {
       "instui-tooltip",
       class extends HTMLElement {
         static observedAttributes = ["tip", "placement", "show-delay", "hide-delay"];
-        #timer: ReturnType<typeof setTimeout> | undefined;
+        #cleanup: (() => void) | undefined;
         #bubble: HTMLElement | null = null;
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
-          // Escape dismisses; bound once on the host so it catches keydown bubbling from the slotted
-          // (light-DOM) trigger, and never accumulates across repaints.
-          this.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-              clearTimeout(this.#timer);
-              this.#bubble?.classList.remove("-show");
-            }
-          });
         }
         connectedCallback(): void {
           this.paint();
@@ -46,13 +39,10 @@ export const tooltip: ElementDefinition = {
           this.paint();
         }
         disconnectedCallback(): void {
-          clearTimeout(this.#timer);
-        }
-        #delay(attr: string): number {
-          const n = Number(this.getAttribute(attr));
-          return Number.isFinite(n) && n >= 0 ? n : 0;
+          this.#cleanup?.();
         }
         paint(): void {
+          this.#cleanup?.();
           const root = this.shadowRoot;
           if (!root) return;
           const tip = esc(this.getAttribute("tip") ?? "");
@@ -65,25 +55,11 @@ export const tooltip: ElementDefinition = {
           const wrap = root.querySelector<HTMLElement>(".instui-tooltip");
           this.#bubble = root.querySelector<HTMLElement>(".tip");
           if (!wrap || !this.#bubble) return;
-          const show = (): void => {
-            clearTimeout(this.#timer);
-            this.#timer = setTimeout(
-              () => this.#bubble?.classList.add("-show"),
-              this.#delay("show-delay"),
-            );
-          };
-          const hide = (): void => {
-            clearTimeout(this.#timer);
-            this.#timer = setTimeout(
-              () => this.#bubble?.classList.remove("-show"),
-              this.#delay("hide-delay"),
-            );
-          };
           // Listeners sit on the fresh shadow wrapper rebuilt each paint, so they never accumulate.
-          wrap.addEventListener("pointerenter", show);
-          wrap.addEventListener("pointerleave", hide);
-          wrap.addEventListener("focusin", show);
-          wrap.addEventListener("focusout", hide);
+          this.#cleanup = initTooltip(wrap, this.#bubble, {
+            showDelay: Number(this.getAttribute("show-delay")) || 0,
+            hideDelay: Number(this.getAttribute("hide-delay")) || 0,
+          });
         }
       },
     );
