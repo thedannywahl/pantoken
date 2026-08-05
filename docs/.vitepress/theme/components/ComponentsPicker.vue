@@ -272,7 +272,6 @@ const jsOutput = computed(() => {
             />
             <span>
               {{ comp.name }}
-              <span v-if="comp.type !== 'js-only'" class="components-picker__badge">CSS</span>
               <span v-if="comp.type !== 'css-only'" class="components-picker__badge">JS</span>
             </span>
           </label>
