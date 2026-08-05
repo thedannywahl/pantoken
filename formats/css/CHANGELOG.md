@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 231680f: Add generated theme-specific token sheets for CDN usage, including a rebrand light-only variant and canvas/canvas-high-contrast lean/full outputs.
+
+  The generator now emits these files and the package exports map exposes them under `dist/` paths for direct CDN linking.
+
 ## 0.2.8
 
 ### Patch Changes
