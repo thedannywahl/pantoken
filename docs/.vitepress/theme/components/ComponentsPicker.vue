@@ -210,7 +210,12 @@ const jsIifeSnippet = computed(() => {
     files.length === 1
       ? `https://cdn.jsdelivr.net/${files[0]}`
       : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
-  return `<script src="${src}"><` + `/script>`;
+  // DOM calls avoid writing a literal closing-script-tag inside the SFC script block
+  return `(function () {
+  var script = document.createElement("script");
+  script.src = "${src}";
+  document.head.appendChild(script);
+})();`;
 });
 
 const jsEsmSnippet = computed(() => {
@@ -355,7 +360,7 @@ const jsOutput = computed(() => {
       v-if="hasJs"
       v-model="jsFormat"
       :formats="[
-        { value: 'module', label: t.jsFormatModuleScript, lang: 'html' },
+        { value: 'module', label: t.jsFormatModuleScript, lang: 'js' },
         { value: 'esm', label: t.jsFormatEsm, lang: 'js' },
       ]"
       :output="jsOutput"
