@@ -185,7 +185,7 @@ const jsComponents = computed(() =>
 const jsComponentsUrl = computed(() => {
   // Order dependencies before their dependents for jsDelivr combine
   const ordered = [...jsComponents.value].sort();
-  const prioritized = [];
+  const prioritized: string[] = [];
   const seen = new Set<string>();
 
   function addWithDeps(name: string) {
