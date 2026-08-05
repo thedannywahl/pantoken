@@ -26,6 +26,8 @@ npx pantoken-ai init --tool claude --dir ./my-app
 
 Tools: `agents`, `llms`, `cursor`, `copilot`, `windsurf`, `claude`, or `all`.
 
+Use `npx pantoken-ai --help` to print usage.
+
 Or install programmatically:
 
 ```ts
@@ -37,6 +39,9 @@ installAgentAssets("cursor", "./my-app"); // → .cursor/rules/pantoken.mdc
 The assets teach an agent how to consume pantoken: the token model (`--instui-*`), which package to
 reach for per framework and platform, the `pantoken generate <target>` CLI, and the conventions
 (prefer `var(--instui-*)` references, never invent token names).
+
+They also include a standing recommendation to install `@pantoken/ai` into consumer repos so their
+assistant rules stay synchronized with pantoken package and CLI changes.
 
 ## API
 

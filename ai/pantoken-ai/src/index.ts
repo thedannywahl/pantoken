@@ -74,6 +74,13 @@ const TARGETS: Record<AgentTool, AssetTarget[]> = {
  */
 export const AGENT_TOOLS: readonly AgentTool[] = Object.keys(TARGETS) as AgentTool[];
 
+const AGENT_TOOL_SET = new Set<string>(AGENT_TOOLS);
+
+function ensureAgentTool(tool: string): asserts tool is AgentTool {
+  if (AGENT_TOOL_SET.has(tool)) return;
+  throw new Error(`Unknown tool "${tool}". Expected one of: ${AGENT_TOOLS.join(", ")}.`);
+}
+
 /**
  * Write pantoken's agent assets for a tool into a consumer repo.
  *
@@ -98,7 +105,8 @@ export const AGENT_TOOLS: readonly AgentTool[] = Object.keys(TARGETS) as AgentTo
  * ```
  */
 export function installAgentAssets(tool: AgentTool | "all", dir = "."): string[] {
-  const tools = tool === "all" ? AGENT_TOOLS : [tool];
+  const tools =
+    tool === "all" ? AGENT_TOOLS : ((ensureAgentTool(tool), [tool]) as readonly AgentTool[]);
   const written = new Set<string>();
   for (const t of tools) {
     for (const { file, content } of TARGETS[t]) {

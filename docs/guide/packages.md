@@ -121,6 +121,14 @@ self-contained, so we document them here and some ship to npm on their own.
 `@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
 page; the others do.
 
+## AI
+
+Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
+pantoken itself.
+
+- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
+  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
+
 ## Dev plugins
 
 Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
