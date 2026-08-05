@@ -321,6 +321,10 @@ const jsOutput = computed(() => {
   </div>
 </template>
 
+<style>
+@import "@pantoken/plugin-simple-icons/icons/javascript.css";
+</style>
+
 <style scoped>
 .components-picker {
   margin: 1.5rem 0;
