@@ -1,3 +1,4 @@
+/** Options for show/hide timing. */
 export interface TooltipOptions {
   showDelay?: number;
   hideDelay?: number;

@@ -1,7 +1,7 @@
 /**
  * Generate per-component interaction entry points for all components.
- * This script reads from formats/components and creates a corresponding
- * interaction file in src/components/{name}.ts for each component.
+ * This script reads from `formats/components` and creates a corresponding
+ * interaction file in `src/components/{name}.ts` for each component.
  */
 
 import { writeFileSync } from "node:fs";

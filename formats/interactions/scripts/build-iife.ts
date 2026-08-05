@@ -1,5 +1,5 @@
 /**
- * Build standalone IIFE bundles for @pantoken/interactions.
+ * Build standalone IIFE bundles for `@pantoken/interactions`.
  *
  * Generates:
  * - `dist/interactions.iife.js` — all interactions in one file

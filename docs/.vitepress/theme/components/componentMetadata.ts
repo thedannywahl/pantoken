@@ -1,12 +1,14 @@
 /**
- * Re-exports the component capability data published by @pantoken/interactions.
+ * Re-exports the component capability data published by `@pantoken/interactions`.
  * Source of truth: formats/interactions/scripts/generate-capabilities.ts
  * Regenerate: `vp run @pantoken/interactions#build`
  */
 import raw from "@pantoken/interactions/component-capabilities.json";
 
+/** CSS-only, JS-only, or both CSS and JS. */
 export type ComponentType = "css-only" | "js-only" | "both";
 
+/** Capability and dependency metadata for one InstUI component. */
 export interface ComponentMetadata {
   name: string;
   type: ComponentType;
@@ -16,6 +18,7 @@ export interface ComponentMetadata {
 
 type RawEntry = { name: string; type: ComponentType; needsIcons?: boolean; requires?: string[] };
 
+/** All InstUI components with their capability classification. */
 export const COMPONENTS: readonly ComponentMetadata[] = (raw.components as RawEntry[]).map((c) => ({
   name: c.name,
   type: c.type,
@@ -23,10 +26,12 @@ export const COMPONENTS: readonly ComponentMetadata[] = (raw.components as RawEn
   dependencies: c.requires ?? [],
 }));
 
+/** Build a name → metadata map for O(1) lookup. */
 export function createComponentMap(): Map<string, ComponentMetadata> {
   return new Map(COMPONENTS.map((c) => [c.name, c]));
 }
 
+/** Recursively collect all transitive dependencies for a component. */
 export function getAllDependencies(name: string): Set<string> {
   const comp = COMPONENTS.find((c) => c.name === name);
   if (!comp) return new Set();
@@ -42,6 +47,7 @@ export function getAllDependencies(name: string): Set<string> {
   return deps;
 }
 
+/** Group components by capability type. */
 export function groupByType(): Record<ComponentType, ComponentMetadata[]> {
   return {
     "css-only": COMPONENTS.filter((c) => c.type === "css-only"),
