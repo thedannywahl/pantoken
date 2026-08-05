@@ -32,6 +32,14 @@ const t = computed(() => {
     copied: "Copied",
     empty: "Select one or more components to build a snippet.",
     noteBase: "CSS components are included with their interactions applied on page load.",
+    includeBase: "Base",
+    baseInfoLabel: "About the base reset",
+    baseInfo:
+      "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults.",
+    includeUtilities: "Utilities",
+    utilitiesInfoLabel: "About the utility classes",
+    utilitiesInfo:
+      "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides.",
   };
   return { ...base, ...((theme.value as Record<string, unknown>).componentsPicker as object) };
 });
@@ -46,9 +54,14 @@ function initialSelection(): Set<string> {
 }
 
 const requested = ref<Set<string>>(initialSelection());
+const includeBase = ref(readHashParam("comp_base") === "1");
+const includeUtilities = ref(readHashParam("comp_util") === "1");
 const cssFormat = useHashParamRef("comp_css_fmt", "import");
 const jsFormat = useHashParamRef("comp_js_fmt", "module");
 const search = useHashParamRef("comp_q", "");
+
+watch(includeBase, (v) => writeHashParam("comp_base", v ? "1" : "0", "0"));
+watch(includeUtilities, (v) => writeHashParam("comp_util", v ? "1" : "0", "0"));
 
 // Derived state: apply dependencies to JS components
 const selected = computed(() => {
@@ -86,11 +99,17 @@ function toggle(name: string): void {
   requested.value = toggleStringInSet(requested.value, name);
 }
 
-// Tri-state checkbox
-const allSelected = computed(
+// Tri-state checkbox: all = every component + base + utilities
+const allComponentsSelected = computed(
   () => components.length > 0 && selected.value.size === components.length,
 );
-const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
+const allSelected = computed(
+  () => allComponentsSelected.value && includeBase.value && includeUtilities.value,
+);
+const someSelected = computed(
+  () =>
+    !allSelected.value && (selected.value.size > 0 || includeBase.value || includeUtilities.value),
+);
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
 watch(requested, (s) => {
   writeHashParam("comp_sel", s.size === components.length ? "all" : [...s].sort().join(","), "");
@@ -98,6 +117,8 @@ watch(requested, (s) => {
 
 function toggleAll(checked: boolean): void {
   requested.value = checked ? new Set(components.map((c) => c.name)) : new Set();
+  includeBase.value = checked;
+  includeUtilities.value = checked;
 }
 
 const filteredComponents = computed(() => {
@@ -130,7 +151,8 @@ const allCssComponents = computed(() =>
 const cssCombineUrl = computed(() => {
   const c = "npm/@pantoken/components/dist";
   const files = [tokenSheet.value];
-  files.push(`${c}/base.css`);
+  // base and utilities: forced on when any CSS component is selected, otherwise honour the checkbox
+  if (hasCss.value || includeBase.value) files.push(`${c}/base.css`);
   if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
 
   // If all CSS components are selected, use the barrel
@@ -140,12 +162,11 @@ const cssCombineUrl = computed(() => {
   ) {
     files.push(`${c}/components.css`);
   } else {
-    // Otherwise, include individually selected CSS components
     for (const name of allCssComponents.value) {
       files.push(`${c}/${name}.css`);
     }
   }
-  files.push(`${c}/utilities.css`);
+  if (hasCss.value || includeUtilities.value) files.push(`${c}/utilities.css`);
   return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
@@ -214,6 +235,58 @@ const jsOutput = computed(() => {
             />
             <span>{{ t.allComponents }}</span>
           </label>
+          <span class="components-picker__labeled-item">
+            <label class="instui-checkbox">
+              <input
+                type="checkbox"
+                :checked="hasCss || includeBase"
+                :disabled="hasCss"
+                @change="includeBase = ($event.target as HTMLInputElement).checked"
+              />
+              <span>{{ t.includeBase }}</span>
+            </label>
+            <button
+              type="button"
+              class="instui-button -size-small -shape-circle -icon-info -without-background -without-border components-picker__info"
+              style="anchor-name: --comp-picker-base-anchor; padding: 0; min-height: 1.5rem"
+              popovertarget="comp-picker-base-popover"
+              :aria-label="t.baseInfoLabel"
+            ></button>
+            <div
+              id="comp-picker-base-popover"
+              popover
+              class="instui-context-view -placement-bottom components-picker__popover"
+              style="position-anchor: --comp-picker-base-anchor"
+            >
+              {{ t.baseInfo }}
+            </div>
+          </span>
+          <span class="components-picker__labeled-item">
+            <label class="instui-checkbox">
+              <input
+                type="checkbox"
+                :checked="hasCss || includeUtilities"
+                :disabled="hasCss"
+                @change="includeUtilities = ($event.target as HTMLInputElement).checked"
+              />
+              <span>{{ t.includeUtilities }}</span>
+            </label>
+            <button
+              type="button"
+              class="instui-button -size-small -shape-circle -icon-info -without-background -without-border components-picker__info"
+              style="anchor-name: --comp-picker-util-anchor; padding: 0; min-height: 1.5rem"
+              popovertarget="comp-picker-util-popover"
+              :aria-label="t.utilitiesInfoLabel"
+            ></button>
+            <div
+              id="comp-picker-util-popover"
+              popover
+              class="instui-context-view -placement-bottom components-picker__popover"
+              style="position-anchor: --comp-picker-util-anchor"
+            >
+              {{ t.utilitiesInfo }}
+            </div>
+          </span>
           <label v-for="comp in filteredComponents" :key="comp.name" class="instui-checkbox">
             <input
               type="checkbox"
@@ -290,6 +363,14 @@ const jsOutput = computed(() => {
   gap: 0.25rem 0.75rem;
   max-height: 24rem;
   overflow-y: auto;
+}
+.components-picker__labeled-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.components-picker__popover {
+  max-width: 16rem;
 }
 .components-picker__note {
   display: block;
