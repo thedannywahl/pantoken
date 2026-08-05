@@ -53,8 +53,8 @@ function initialSelection(): Set<string> {
 }
 
 const requested = ref<Set<string>>(initialSelection());
-const cssFormat = useHashParamRef("comp_css_fmt", "link");
-const jsFormat = useHashParamRef("comp_js_fmt", "esm");
+const cssFormat = useHashParamRef("comp_css_fmt", "import");
+const jsFormat = useHashParamRef("comp_js_fmt", "module");
 const search = useHashParamRef("comp_q", "");
 
 // Derived state: apply dependencies to JS components
@@ -231,7 +231,6 @@ const jsIifeSnippet = computed(
 const jsOutput = computed(() => {
   if (jsComponents.value.length === 0) return "";
   if (jsFormat.value === "module") return jsModuleScriptSnippet.value;
-  if (jsFormat.value === "iife") return jsIifeSnippet.value;
   return jsEsmSnippet.value;
 });
 </script>
@@ -286,8 +285,8 @@ const jsOutput = computed(() => {
       v-if="hasCss"
       v-model="cssFormat"
       :formats="[
-        { value: 'link', label: t.formatLink, lang: 'html' },
         { value: 'import', label: t.formatImport, lang: 'css' },
+        { value: 'link', label: t.formatLink, lang: 'html' },
       ]"
       :output="cssOutput"
       :has-selection="hasCss"
@@ -306,9 +305,8 @@ const jsOutput = computed(() => {
       v-if="hasJs"
       v-model="jsFormat"
       :formats="[
-        { value: 'esm', label: t.jsFormatEsm, lang: 'js' },
         { value: 'module', label: t.jsFormatModuleScript, lang: 'html' },
-        { value: 'iife', label: t.jsFormatIife, lang: 'js' },
+        { value: 'esm', label: t.jsFormatEsm, lang: 'js' },
       ]"
       :output="jsOutput"
       :has-selection="hasJs"
