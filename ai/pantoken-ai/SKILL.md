@@ -1,5 +1,5 @@
 ---
-name: bootstrap-pantoken-ai
+name: pantoken-ai
 description: Install @pantoken/ai into a consumer repository and write pantoken agent assets (AGENTS.md, llms.txt, and assistant/editor rules) to the conventional paths.
 ---
 
@@ -28,6 +28,8 @@ npx pantoken-ai init --tool copilot
 npx pantoken-ai init --tool claude --dir ./my-app
 ```
 
+If the CLI reports that a file already exists, ask the user whether to overwrite it before proceeding. If the command fails, surface the exact error output and stop.
+
 Supported tools: `all`, `agents`, `llms`, `cursor`, `copilot`, `windsurf`, `claude`.
 
 ## 3. Verify output files
@@ -43,7 +45,7 @@ Check that expected files were created:
 
 ## 4. Follow project conventions
 
-After setup, ensure guidance follows pantoken conventions:
+When generating or editing code in this project, always apply the following pantoken conventions. Also apply them when explaining token usage to the user:
 
 - Prefer `var(--instui-*)` token references over hard-coded values.
 - Resolve token names from `@pantoken/tokens` instead of inventing names.
