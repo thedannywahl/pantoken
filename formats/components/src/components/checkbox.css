@@ -24,7 +24,14 @@
  * @cssstate disabled
  * @accessibility A native `<input type="checkbox">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute.
  * @example
- * <label class="pfx-checkbox"><input type="checkbox" checked> Checked</label>
+ * ```html
+ * <label class="pfx-checkbox instui-display-block instui-mb-sm">
+ *   <input type="checkbox" checked>Checkbox
+ * </label>
+ * <label class="pfx-checkbox -variant-toggle">
+ *   <input type="checkbox">Toggle
+ * </label>
+ * ```
  * @related radio — The single-select counterpart.
  */
 .pfx-checkbox {
@@ -37,18 +44,22 @@
   font-weight: var(--instui-component-checkbox-font-weight);
   line-height: var(--instui-component-checkbox-line-height);
 }
+
 /* labelPlacement: the control comes first in the markup, so reorder with flex. Default is "end"
    (label after the control); "start" puts it before, "top" stacks it above. */
 .pfx-checkbox.-label-placement-end {
   flex-direction: row;
 }
+
 .pfx-checkbox.-label-placement-start {
   flex-direction: row-reverse;
 }
+
 .pfx-checkbox.-label-placement-top {
   flex-direction: column-reverse;
   align-items: flex-start;
 }
+
 /* Base control: a native checkbox restyled via appearance:none so the InstUI border/background/checked
    tokens all apply, with the tick masked into a ::before. Scoped away from the --toggle switch. */
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"] {
@@ -69,9 +80,11 @@
     background-color 0.15s ease,
     border-color 0.15s ease;
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"] {
   --pantoken-cb-glyph: var(--instui-icon-check) center / contain no-repeat;
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]::before {
   content: "";
   width: 0.75em;
@@ -87,67 +100,84 @@
   transform: scale(0);
   transition: transform 0.1s ease;
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:hover {
   border-color: var(--instui-component-checkbox-border-hover-color);
   background: var(--instui-component-checkbox-background-hover-color);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:checked,
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:indeterminate {
   border-color: var(--instui-component-checkbox-border-checked-color);
   background: var(--instui-component-checkbox-background-checked-color);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:checked::before,
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:indeterminate::before {
   transform: scale(1);
 }
+
 /* Indeterminate (mixed) state: a dash in place of the tick. Set el.indeterminate = true in JS. */
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:indeterminate {
   --pantoken-cb-glyph: var(--instui-icon-minus) center / contain no-repeat;
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle) input[type="checkbox"]:disabled {
   border-color: var(--instui-component-checkbox-border-disabled-color);
   background: var(--instui-component-checkbox-background-disabled-color);
   cursor: not-allowed;
 }
+
 .pfx-checkbox:has(input:disabled) {
   color: var(--instui-component-checkbox-label-disabled-color);
 }
+
 .pfx-checkbox:hover {
   color: var(--instui-component-checkbox-label-hover-color);
 }
+
 .pfx-checkbox.-size-sm {
   font-size: var(--instui-component-checkbox-font-size-sm);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle).pfx-checkbox.-size-sm input[type="checkbox"] {
   width: var(--instui-component-checkbox-control-size-sm);
   height: var(--instui-component-checkbox-control-size-sm);
 }
+
 .pfx-checkbox.-size-lg {
   font-size: var(--instui-component-checkbox-font-size-lg);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle).pfx-checkbox.-size-lg input[type="checkbox"] {
   width: var(--instui-component-checkbox-control-size-lg);
   height: var(--instui-component-checkbox-control-size-lg);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle).pfx-checkbox.-invalid input[type="checkbox"] {
   border-color: var(--instui-component-checkbox-error-border-color);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle).pfx-checkbox.-invalid
   input[type="checkbox"]:hover {
   border-color: var(--instui-component-checkbox-error-border-hover-color);
 }
+
 .pfx-checkbox.-readonly {
   color: var(--instui-component-checkbox-label-readonly-color);
 }
+
 .pfx-checkbox:not(.pfx-checkbox.-variant-toggle).pfx-checkbox.-readonly input[type="checkbox"] {
   border-color: var(--instui-component-checkbox-border-readonly-color);
   background: var(--instui-component-checkbox-background-readonly-color);
 }
+
 @scope (.pfx-checkbox) {
   :scope.-required .asterisk {
     color: var(--instui-component-checkbox-asterisk-color);
   }
 }
+
 .pfx-checkbox.-variant-toggle input[type="checkbox"] {
   /* InstUI's toggle facade is a fixed 40x24 switch: the switch height is the small choice-control
      size (24px), while the toggle-medium-height token (40px) is the track width. Its border is the
@@ -173,6 +203,7 @@
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
+
 .pfx-checkbox.-variant-toggle input[type="checkbox"]::before {
   content: "";
   position: absolute;
@@ -187,6 +218,7 @@
   background: var(--instui-component-radio-input-toggle-handle-text);
   transition: inset-inline-start 0.15s ease;
 }
+
 /* A state glyph riding on the handle: an X when off, a check when on, in the track color. */
 .pfx-checkbox.-variant-toggle input[type="checkbox"]::after {
   content: "";
@@ -201,13 +233,16 @@
   mask: var(--instui-icon-x) center / 58% no-repeat;
   transition: inset-inline-start 0.15s ease;
 }
+
 .pfx-checkbox.-variant-toggle input[type="checkbox"]:checked {
   background: var(--instui-component-radio-input-toggle-background-success);
 }
+
 .pfx-checkbox.-variant-toggle input[type="checkbox"]:checked::before {
   inset-inline-start: calc(100% - var(--pantoken-toggle-h) + var(--pantoken-toggle-inset));
   border-color: var(--instui-component-radio-input-toggle-background-success);
 }
+
 .pfx-checkbox.-variant-toggle input[type="checkbox"]:checked::after {
   inset-inline-start: calc(100% - var(--pantoken-toggle-h) + var(--pantoken-toggle-inset));
   background: var(--instui-component-radio-input-toggle-background-success);
