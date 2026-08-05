@@ -52,7 +52,7 @@ div[class*="language-"]:has(+ .css-example) > pre {
   padding: 12px;
   margin: 0 0 16px;
   /* Match the page background (like the demo frame), so only the inner .instui-card reads as elevated. */
-  background: light-dark(var(--vp-c-bg-soft), var(--vp-c-bg));
+  background: var(--instui-color-background-page);
 }
 
 /* VitePress makes code blocks full-bleed (negative margins, no radius) on narrow viewports; keep the
