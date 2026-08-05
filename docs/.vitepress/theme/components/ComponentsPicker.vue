@@ -28,7 +28,6 @@ const t = computed(() => {
     jsFormatLabel: "JS Output",
     jsFormatEsm: "ESM",
     jsFormatModuleScript: "<script>",
-    jsFormatIife: "<script>",
     copy: "Copy",
     copied: "Copied",
     empty: "Select one or more components to build a snippet.",
@@ -106,8 +105,6 @@ const filteredComponents = computed(() => {
   return q ? components.filter((c) => c.name.includes(q)) : components;
 });
 
-const hasSelection = computed(() => selected.value.size > 0);
-
 const selectedMetadata = computed(() => components.filter((c) => selected.value.has(c.name)));
 
 const hasCss = computed(() =>
@@ -123,14 +120,6 @@ const needsIconSheet = computed(() => selectedMetadata.value.some((c) => c.needs
 const tokenSheet = computed(() => tokenLeanSheet(props.themeKey, props.mode));
 
 // ── CSS Generation ──────────────────────────────────────────────────────────────
-
-const cssOnlyComponents = computed(() =>
-  selectedMetadata.value.filter((c) => c.type === "css-only").map((c) => c.name),
-);
-
-const cssAndJsComponents = computed(() =>
-  selectedMetadata.value.filter((c) => c.type === "both").map((c) => c.name),
-);
 
 const allCssComponents = computed(() =>
   selectedMetadata.value
@@ -176,30 +165,6 @@ const jsComponents = computed(() =>
     .map((c) => c.name),
 );
 
-const jsComponentsUrl = computed(() => {
-  // Order dependencies before their dependents for jsDelivr combine
-  const ordered = [...jsComponents.value].sort();
-  const prioritized: string[] = [];
-  const seen = new Set<string>();
-
-  function addWithDeps(name: string) {
-    if (seen.has(name)) return;
-    seen.add(name);
-    const comp = components.find((c) => c.name === name);
-    if (comp) {
-      for (const dep of comp.dependencies) addWithDeps(dep);
-    }
-    prioritized.push(name);
-  }
-
-  for (const name of ordered) addWithDeps(name);
-
-  const files = prioritized.map((name) => `npm/@pantoken/interactions/dist/${name}.iife.js`);
-  return files.length === 1
-    ? `https://cdn.jsdelivr.net/${files[0]}`
-    : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
-});
-
 const jsEsmSnippet = computed(() => {
   if (jsComponents.value.length === 0) return "";
   const imports = jsComponents.value.map((name) => {
@@ -213,14 +178,6 @@ const jsModuleScriptSnippet = computed(() => {
   if (jsComponents.value.length === 0) return "";
   return ['<script type="module">', `  ${jsEsmSnippet.value}`, "</" + "script>"].join("\n");
 });
-
-const jsIifeSnippet = computed(
-  () => `(function () {
-  var script = document.createElement("script");
-  script.src = "${jsComponentsUrl.value}";
-  document.head.appendChild(script);
-})();`,
-);
 
 const jsOutput = computed(() => {
   if (jsComponents.value.length === 0) return "";
