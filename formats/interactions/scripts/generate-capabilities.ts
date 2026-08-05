@@ -17,6 +17,11 @@ import {
   NESTED_DEPS,
 } from "../../../renderers/web-components/src/lib/elements-meta.ts";
 
+// Web component elements that have no CSS counterpart and no interactions JS role —
+// the <instui-icon> element renders inline SVGs via its own web component; CSS icon
+// usage is handled entirely by the -icon-* modifier system (no JS needed).
+const SKIP_WEB_ELEMENTS = new Set(["icon"]);
+
 // Components with genuine interactive JS behavior when used as plain CSS components:
 // overlays (open/close/position), navigation, command routing, or mode toggle.
 const BEHAVIOR_COMPONENTS = new Set([
@@ -55,6 +60,7 @@ export interface ComponentCapability {
 
 const components: ComponentCapability[] = [...new Set([...cssNames, ...webNames])]
   .sort()
+  .filter((name) => !SKIP_WEB_ELEMENTS.has(name))
   .map((name) => {
     const hasCss = cssNames.has(name);
     const hasWeb = webNames.has(name);
