@@ -3,16 +3,16 @@
  * InstUI components need CSS, JS (interactions), or both.
  *
  * Sources:
- *   - CSS components + icon usage:  formats/components (same source as cdn-manifest)
+ *   - CSS components + icon usage:  filesystem scan of formats/components/src/components/
+ *     (avoids importing the source registry which depends on generated output)
  *   - Web-component element list:   renderers/web-components/elements-meta
  *   - Behavioral classification:    inferred from src/components/<name>.ts imports
  *     A component is "both" when it has a CSS counterpart AND its init file imports
  *     anything beyond applySpacing (indicating real browser-side behavior).
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { COMPONENTS as CSS_RECORDS } from "../../../formats/components/src/components/index.ts";
 import {
   ELEMENTS,
   ICON_ELEMENTS,
@@ -38,12 +38,26 @@ function hasBehavior(name: string): boolean {
 
 // ── Derive sets ──────────────────────────────────────────────────────────────
 
-const cssNames = new Set(CSS_RECORDS.filter((c) => c.kind === "component").map((c) => c.name));
-const cssIconNames = new Set(
-  CSS_RECORDS.filter(
-    (c) => c.kind === "component" && /var\(--instui-icon-/.test(c.css({ prefix: "instui" })),
-  ).map((c) => c.name),
+// Read CSS component names from the filesystem — avoids importing formats/components
+// source which depends on generated output that may not exist yet in CI.
+const cssComponentsDir = resolve(import.meta.dirname, "../../../formats/components/src/components");
+// select.ts is experimental and explicitly not in the COMPONENTS registry — skip it.
+const CSS_FS_SKIP = new Set(["select"]);
+const cssNames = new Set(
+  readdirSync(cssComponentsDir)
+    .filter((f) => f.endsWith(".ts") && f !== "index.ts")
+    .map((f) => f.replace(/\.ts$/, ""))
+    .filter((n) => !CSS_FS_SKIP.has(n)),
 );
+
+// Detect icon usage by reading source text — no import needed.
+const cssIconNames = new Set(
+  [...cssNames].filter((name) => {
+    const src = readFileSync(resolve(cssComponentsDir, `${name}.ts`), "utf8");
+    return /var\(--instui-icon-/.test(src);
+  }),
+);
+
 const webNames = new Set(ELEMENTS as readonly string[]);
 const iconElementNames = new Set(ICON_ELEMENTS as readonly string[]);
 
