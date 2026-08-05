@@ -717,9 +717,6 @@ importers:
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../plugins/pantoken/logos
-      '@pantoken/plugin-simple-icons':
-        specifier: workspace:*
-        version: link:../plugins/pantoken/simple-icons
       '@pantoken/plugin-stacking':
         specifier: workspace:*
         version: link:../plugins/pantoken/stacking

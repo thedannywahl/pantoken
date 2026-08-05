@@ -325,14 +325,12 @@ const jsOutput = computed(() => {
               {{ comp.name }}
               <span
                 v-if="comp.type !== 'css-only'"
-                class="instui-icon -icon-javascript"
+                :class="[
+                  'instui-badge',
+                  '-standalone',
+                  comp.type === 'js-only' ? '-variant-danger' : '',
+                ]"
                 aria-hidden="true"
-                :style="{
-                  color:
-                    comp.type === 'js-only'
-                      ? 'var(--instui-color-danger)'
-                      : 'var(--instui-color-info)',
-                }"
               />
             </span>
           </label>
@@ -378,10 +376,6 @@ const jsOutput = computed(() => {
   </div>
 </template>
 
-<style>
-@import "@pantoken/plugin-simple-icons/icons/javascript.css";
-</style>
-
 <style scoped>
 .components-picker {
   margin: 1.5rem 0;
@@ -408,15 +402,5 @@ const jsOutput = computed(() => {
 .components-picker__note {
   display: block;
   margin: 0.5rem 0 0;
-}
-.components-picker__badge {
-  display: inline-block;
-  margin-left: 0.25rem;
-  padding: 0.125rem 0.375rem;
-  font-size: 0.75em;
-  font-weight: 600;
-  border-radius: 0.25rem;
-  background: var(--instui-bg-info-secondary, #e8f2fa);
-  color: var(--instui-color-info, #0074d9);
 }
 </style>
