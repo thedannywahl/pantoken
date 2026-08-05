@@ -7,9 +7,7 @@ interface ThemeControlStrings {
   themeRebrand: string;
   themeCanvas: string;
   themeCanvasHighContrast: string;
-  modeLabel: string;
-  modeAdaptive: string;
-  modeLightOnly: string;
+  includeDarkMode: string;
 }
 
 const props = defineProps<{
@@ -29,8 +27,8 @@ function updateTheme(event: Event): void {
   emit("update:themeKey", (event.target as HTMLSelectElement).value as PantokenTheme);
 }
 
-function updateMode(event: Event): void {
-  emit("update:mode", (event.target as HTMLSelectElement).value as PickerMode);
+function updateIncludeDarkMode(event: Event): void {
+  emit("update:mode", (event.target as HTMLInputElement).checked ? "adaptive" : "light");
 }
 </script>
 
@@ -42,7 +40,7 @@ function updateMode(event: Event): void {
     <select
       :id="`${props.idPrefix}-theme`"
       :value="props.themeKey"
-      class="picker-theme-controls__select"
+      class="instui-simple-select picker-theme-controls__select"
       @change="updateTheme"
     >
       <option value="rebrand">{{ props.strings.themeRebrand }}</option>
@@ -51,18 +49,16 @@ function updateMode(event: Event): void {
     </select>
   </div>
   <div v-if="props.showMode" class="picker-theme-controls__row">
-    <label class="instui-text -size-small" :for="`${props.idPrefix}-mode`">
-      {{ props.strings.modeLabel }}
+    <span class="instui-text -size-small">&nbsp;</span>
+    <label class="instui-checkbox -variant-toggle picker-theme-controls__toggle">
+      <input
+        :id="`${props.idPrefix}-include-dark-mode`"
+        type="checkbox"
+        :checked="props.mode === 'adaptive'"
+        @change="updateIncludeDarkMode"
+      />
+      {{ props.strings.includeDarkMode }}
     </label>
-    <select
-      :id="`${props.idPrefix}-mode`"
-      :value="props.mode"
-      class="picker-theme-controls__select"
-      @change="updateMode"
-    >
-      <option value="adaptive">{{ props.strings.modeAdaptive }}</option>
-      <option value="light">{{ props.strings.modeLightOnly }}</option>
-    </select>
   </div>
 </template>
 
@@ -77,5 +73,9 @@ function updateMode(event: Event): void {
 
 .picker-theme-controls__select {
   width: 100%;
+}
+
+.picker-theme-controls__toggle {
+  justify-self: start;
 }
 </style>

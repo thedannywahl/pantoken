@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
+import type { PantokenTheme } from "../theme";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
-import PickerThemeControls from "./PickerThemeControls.vue";
+import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
 import PickerOutput from "./PickerOutput.vue";
+
+const props = defineProps<{
+  themeKey: PantokenTheme;
+  mode: PickerMode;
+}>();
 
 // The base (unprefixed) element names `@pantoken/web-components` registers — mirrors
 // `renderers/web-components/src/index.ts`'s `ELEMENTS` export. Copied rather than imported: the
@@ -128,7 +133,6 @@ function initialSelection(): Set<string> {
 const selected = ref<Set<string>>(initialSelection());
 const format = useHashParamRef("w_fmt", "esm");
 const search = useHashParamRef("w_q", "");
-const { themeKey, mode, showMode } = usePickerTheme();
 
 function toggle(name: string): void {
   selected.value = toggleStringInSet(selected.value, name);
@@ -170,7 +174,7 @@ const needsIcons = computed(() => {
 // The lean token sheet is enough unless the selection touches an icon-rendering element, mirroring
 // CdnPicker.vue's needsIconSheet pattern — never the full style.css regardless of selection.
 const tokenLink = computed(() => {
-  const tokenSheet = tokenLeanSheet(themeKey.value, mode.value);
+  const tokenSheet = tokenLeanSheet(props.themeKey, props.mode);
   return needsIcons.value
     ? `https://cdn.jsdelivr.net/combine/${tokenSheet},npm/@pantoken/components/dist/component-icons.css`
     : `https://cdn.jsdelivr.net/${tokenSheet}`;
@@ -236,15 +240,6 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
           aria-label="Filter elements"
         />
       </span>
-      <PickerThemeControls
-        id-prefix="wc-picker"
-        :theme-key="themeKey"
-        :mode="mode"
-        :show-mode="showMode"
-        :strings="t"
-        @update:theme-key="themeKey = $event"
-        @update:mode="mode = $event"
-      />
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="wc-picker__elements instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">
