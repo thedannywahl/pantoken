@@ -22,7 +22,7 @@
     },
     "./*.js": "./dist/*.js",
     "./component-capabilities.json": {
-      "types": "./dist/component-capabilities.d.ts",
+      "types": "./component-capabilities.d.ts",
       "default": "./dist/component-capabilities.json"
     },
     "./package.json": "./package.json"

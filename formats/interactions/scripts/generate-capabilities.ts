@@ -104,26 +104,6 @@ const out = resolve(import.meta.dirname, "../dist/component-capabilities.json");
 mkdirSync(resolve(import.meta.dirname, "../dist"), { recursive: true });
 writeFileSync(out, `${JSON.stringify(output, null, 2)}\n`);
 
-// Type declaration for the JSON subpath export
-writeFileSync(
-  resolve(import.meta.dirname, "../dist/component-capabilities.d.ts"),
-  `export interface ComponentEntry {
-  name: string;
-  type: "css-only" | "js-only" | "both";
-  needsIcons?: boolean;
-  requires?: string[];
-  css?: string;
-  js?: string;
-}
-declare const capabilities: {
-  $schema: string;
-  description: string;
-  components: ComponentEntry[];
-};
-export default capabilities;
-`,
-);
-
 const counts = {
   both: components.filter((c) => c.type === "both").length,
   css: components.filter((c) => c.type === "css-only").length,
