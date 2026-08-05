@@ -22,20 +22,10 @@ import {
 // usage is handled entirely by the -icon-* modifier system (no JS needed).
 const SKIP_WEB_ELEMENTS = new Set(["icon"]);
 
-// Components with genuine interactive JS behavior when used as plain CSS components:
-// overlays (open/close/position), navigation, mode toggle.
-// Invoker Commands (button, icon-button, toggle-button) are handled natively by
-// the browser — no JS needed for the CSS component classes.
-const BEHAVIOR_COMPONENTS = new Set([
-  "calendar",
-  "context-view",
-  "in-place-edit",
-  "modal",
-  "popover",
-  "tooltip",
-  "tray",
-  "tree-browser",
-]);
+// No CSS components require @pantoken/interactions JS — open/close/position behavior
+// comes from native <dialog>, [popover], or application code. The IIFE bundles only
+// carry applySpacing (no-op on plain HTML) or syncInvoker (shadow-DOM only).
+const BEHAVIOR_COMPONENTS = new Set<string>();
 
 // ── Derive sets ──────────────────────────────────────────────────────────────
 
