@@ -2363,6 +2363,7 @@
     "e8bf8209b25ec2152a59bd645f8e8711b1a4ac90b91c503f880ce9efa4fbce49": "colors",
     "e8d38bb601eec812a6e7de333d4f83c436905f8bc9d5f238d53ed2d662f500e5": "A havi navigációs sor.",
     "e8edd76d24d42802b67ecbe14e4c39eab5a77fed03a366c7d688067516b644bc": "storybook",
+    "e907f8ca5bfcc4207d7d2628d7ab83bdd2e7df4bd6810367e437d4734a02c765": "Lekerekített \"mappa\" fülek olyan kiválasztott füllel, amely vizuálisan csatlakozik az alatta lévő panelhez.",
     "e9214b3c2850c9e23753784fa2ed81f26b0ecd1f97e7293339e4d33a6f2dae82": "A Jekyllnek nincs szabványos témázási változó szerződése, ezért ez az eszközöket drop-in eszközként adja ki:\negy Sass részlet `_sass/` számára (importálja az Ön fő stílusa lapjából) és egy egyszerű CSS fájl\n`assets/css/` számára (`@pantoken/scss` és `@pantoken/css` közül), valamint egy InstUI megjelenésű prózai stíluslap\n(`@pantoken/components` közül), amely a tartalmakat egy `.pantoken-prose` régióban stílusozza.",
     "e93fe322b0650fac0e47e29802f647a904161775220ff1945315e2493c18584a": "Csak ikonokra összecsukva (címkék rejtve).",
     "e94b9ccd689c0c866264aa0afc8cfe9616b93d98f5574628a3123c84301d1c77": "A CSS karakterlánc.",
