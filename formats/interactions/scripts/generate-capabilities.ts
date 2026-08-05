@@ -5,10 +5,12 @@
  * Sources:
  *   - CSS components + icon usage:  formats/components (same source as cdn-manifest)
  *   - Web-component element list:   renderers/web-components/elements-meta
- *   - Behavioral classification:    BEHAVIOR_COMPONENTS below (hand-maintained)
+ *   - Behavioral classification:    inferred from src/components/<name>.ts imports
+ *     A component is "both" when it has a CSS counterpart AND its init file imports
+ *     anything beyond applySpacing (indicating real browser-side behavior).
  */
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { COMPONENTS as CSS_RECORDS } from "../../../formats/components/src/components/index.ts";
 import {
@@ -17,15 +19,21 @@ import {
   NESTED_DEPS,
 } from "../../../renderers/web-components/src/lib/elements-meta.ts";
 
-// Web component elements that have no CSS counterpart and no interactions JS role —
-// the <instui-icon> element renders inline SVGs via its own web component; CSS icon
-// usage is handled entirely by the -icon-* modifier system (no JS needed).
+// Web component elements with no CSS counterpart and no interactions JS role.
 const SKIP_WEB_ELEMENTS = new Set(["icon"]);
 
-// No CSS components require @pantoken/interactions JS — open/close/position behavior
-// comes from native <dialog>, [popover], or application code. The IIFE bundles only
-// carry applySpacing (no-op on plain HTML) or syncInvoker (shadow-DOM only).
-const BEHAVIOR_COMPONENTS = new Set<string>();
+// ── Detect behavioral imports from each component's init file ────────────────
+
+const componentsDir = resolve(import.meta.dirname, "../src/components");
+
+/** Returns true if the init file imports browser-meaningful behavior beyond applySpacing.
+ *  syncInvoker is excluded — it is shadow-DOM only and a no-op on plain HTML elements. */
+function hasBehavior(name: string): boolean {
+  const path = resolve(componentsDir, `${name}.ts`);
+  if (!existsSync(path)) return false;
+  const src = readFileSync(path, "utf8");
+  return /\bimport\s*\{[^}]*\bmakeOnCommand\b/.test(src);
+}
 
 // ── Derive sets ──────────────────────────────────────────────────────────────
 
@@ -60,7 +68,7 @@ const components: ComponentCapability[] = [...new Set([...cssNames, ...webNames]
 
     let type: ComponentType;
     if (hasCss && hasWeb) {
-      type = BEHAVIOR_COMPONENTS.has(name) ? "both" : "css-only";
+      type = hasBehavior(name) ? "both" : "css-only";
     } else if (hasWeb) {
       type = "js-only";
     } else {
