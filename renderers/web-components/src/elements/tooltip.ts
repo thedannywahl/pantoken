@@ -26,11 +26,15 @@ export const tooltip: ElementDefinition = {
       "instui-tooltip",
       class extends HTMLElement {
         static observedAttributes = ["tip", "placement", "show-delay", "hide-delay"];
-        #cleanup: (() => void) | undefined;
+        #handle: { cleanup(): void; cancelAndHide(): void } | undefined;
         #bubble: HTMLElement | null = null;
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
+          // Bound once on the host — catches Escape bubbling from the slotted light-DOM trigger.
+          this.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") this.#handle?.cancelAndHide();
+          });
         }
         connectedCallback(): void {
           this.paint();
@@ -39,10 +43,10 @@ export const tooltip: ElementDefinition = {
           this.paint();
         }
         disconnectedCallback(): void {
-          this.#cleanup?.();
+          this.#handle?.cleanup();
         }
         paint(): void {
-          this.#cleanup?.();
+          this.#handle?.cleanup();
           const root = this.shadowRoot;
           if (!root) return;
           const tip = esc(this.getAttribute("tip") ?? "");
@@ -56,7 +60,7 @@ export const tooltip: ElementDefinition = {
           this.#bubble = root.querySelector<HTMLElement>(".tip");
           if (!wrap || !this.#bubble) return;
           // Listeners sit on the fresh shadow wrapper rebuilt each paint, so they never accumulate.
-          this.#cleanup = initTooltip(wrap, this.#bubble, {
+          this.#handle = initTooltip(wrap, this.#bubble, {
             showDelay: Number(this.getAttribute("show-delay")) || 0,
             hideDelay: Number(this.getAttribute("hide-delay")) || 0,
           });
