@@ -38,6 +38,7 @@
   "dependencies": {
     "@pantoken/components": "workspace:*",
     "@pantoken/icons": "workspace:*",
+    "@pantoken/interactions": "workspace:*",
     "@pantoken/model": "workspace:*"
   },
   "devDependencies": {

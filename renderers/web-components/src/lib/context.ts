@@ -6,6 +6,7 @@
  * @module
  */
 import type { WebComponentStrings } from "./strings.ts";
+import type { OnCommand } from "@pantoken/interactions";
 
 /** A minimal structural type for a custom-element registry (the DOM's `customElements`). */
 export interface ElementRegistry {
@@ -13,11 +14,7 @@ export interface ElementRegistry {
   define(name: string, ctor: CustomElementConstructor): void;
 }
 
-/** The `command`/`source` shape of an Invoker Commands `CommandEvent` (not yet in the DOM lib types). */
-export interface CommandEventish extends Event {
-  command: string;
-  source: Element | null;
-}
+export type { CommandEventish } from "@pantoken/interactions";
 
 /**
  * The shared state a `register()` call builds once and threads to every {@link ElementDefinition}.
@@ -35,10 +32,7 @@ export interface RegisterContext {
   /** Whether the browser supports the Invoker Commands API (`command`/`commandfor`). */
   invokerSupported: boolean;
   /** Route a target's `command` events (or a click fallback) to a handler. */
-  onCommand: (
-    target: HTMLElement,
-    handler: (command: string, source: Element | null) => void,
-  ) => void;
+  onCommand: OnCommand;
   /** Define a shadow-DOM element: `<style>:host{display}css</style>` + markup from `render(host)`.
    * `invoker: true` forwards the host's `popovertarget`/`command` to the inner `<button>` (IDL). */
   wrapper: (

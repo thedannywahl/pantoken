@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 import { afterEach, expect, test } from "vite-plus/test";
+import { applySpacing } from "@pantoken/interactions";
 import { iconSvg, register } from "../src/index.ts";
-import { applySpacing } from "../src/lib/helpers.ts";
 
 register();
 afterEach(() => {

@@ -9,9 +9,10 @@
  * @module
  */
 import { resolve as pantokenResolve } from "@pantoken/icons";
+import { applySpacing, makeOnCommand, SPACING_ATTRS, syncInvoker } from "@pantoken/interactions";
 import type { IconResolver } from "@pantoken/model";
-import type { CommandEventish, ElementRegistry, RegisterContext } from "./context.ts";
-import { applySpacing, frag, SPACING_ATTRS } from "./helpers.ts";
+import type { ElementRegistry, RegisterContext } from "./context.ts";
+import { frag } from "./helpers.ts";
 import {
   ENGLISH_STRINGS,
   makeStrings,
@@ -83,37 +84,6 @@ function withSpacing(Ctor: LifecycleElementCtor): CustomElementConstructor {
   return Spaced as unknown as CustomElementConstructor;
 }
 
-/** An inner `<button>` exposing the invoker/popover IDL properties the host mirrors onto it. */
-type InvokerButton = HTMLButtonElement & {
-  popoverTargetElement?: Element | null;
-  popoverTargetAction?: string;
-  commandForElement?: Element | null;
-  command?: string;
-};
-
-/**
- * Mirror the host's invoker attributes onto its inner `<button>`'s IDL properties, resolving ids
- * against the host's root so a shadow-DOM button can drive a light-DOM `[popover]`/command target.
- */
-function syncInvoker(host: HTMLElement): void {
-  const btn = host.shadowRoot?.querySelector("button") as InvokerButton | null;
-  if (!btn) return;
-  const root = host.getRootNode() as Document | ShadowRoot;
-  const byId = (id: string): Element | null =>
-    typeof root.getElementById === "function" ? root.getElementById(id) : null;
-  const popoverTarget = host.getAttribute("popovertarget");
-  if (popoverTarget !== null) {
-    btn.popoverTargetElement = byId(popoverTarget);
-    btn.popoverTargetAction = host.getAttribute("popovertargetaction") ?? "toggle";
-  }
-  const commandFor = host.getAttribute("commandfor");
-  const command = host.getAttribute("command");
-  if (commandFor !== null && command !== null) {
-    btn.commandForElement = byId(commandFor);
-    btn.command = command;
-  }
-}
-
 /** Build a `.instui-<name>` class with an optional `-color-<variant>` key-value modifier from `variant`. */
 function variantClass(name: string, host: HTMLElement): string {
   const variant = frag(host.getAttribute("variant"));
@@ -135,53 +105,6 @@ function makeRegistry(host: ElementRegistry, tag: (base: string) => string): Ele
       // universally — no per-element code needed.
       if (!host.get(resolved)) host.define(resolved, withSpacing(ctor));
     },
-  };
-}
-
-/**
- * Build the `command`-event router: forward a target's `command` events to a handler, and where the
- * Invoker Commands API is missing, delegate matching `commandfor` clicks across the target's tree.
- */
-function makeOnCommand(invokerSupported: boolean): RegisterContext["onCommand"] {
-  // Elements call onCommand from paint()/connectedCallback and may re-run it (calendar re-wires its
-  // recreated internal grid on every paint). Adding a fresh listener each time would accumulate, so one
-  // click fires N times. Wire each target's `command` listener once (keyed on the target object — a
-  // recreated target is a new object, its predecessor GC'd), and register ONE click-fallback delegate
-  // per (root, id) that dispatches to the LATEST handler for that id. That fixes calendar's repeated
-  // re-wire (stable id `cal`) and a same-id host recreated later, without the stale-handler capture a
-  // plain skip-after-first would cause; distinct ids on a shared document each get their own routing.
-  type CommandHandler = (command: string, source: Element | null) => void;
-  // Latest handler per target object (WeakMap → recreated targets GC away); command listener wired once
-  // per target; one click-fallback delegate per root. The delegate resolves `commandfor` to the LIVE
-  // element and its current handler at click time, so it survives a target whose id is set after wiring
-  // (drilldown) and a repainted grid that swaps its element (calendar) — without accumulating listeners.
-  const handlerByTarget = new WeakMap<Element, CommandHandler>();
-  const wiredTargets = new WeakSet<EventTarget>();
-  const delegatedScopes = new WeakSet<EventTarget>();
-  return (target, handler) => {
-    handlerByTarget.set(target, handler);
-    if (!wiredTargets.has(target)) {
-      wiredTargets.add(target);
-      target.addEventListener("command", (event) => {
-        const ce = event as CommandEventish;
-        handlerByTarget.get(target)?.(ce.command, ce.source);
-      });
-    }
-    if (invokerSupported) return;
-    // Fallback for browsers without the API: delegate clicks across the target's tree — its shadow root
-    // for an internal grid, or the document for a light-DOM host — matching on `commandfor`, so
-    // `command` buttons keep working wherever they live.
-    const scope = target.getRootNode() as Document | ShadowRoot;
-    if (delegatedScopes.has(scope)) return;
-    delegatedScopes.add(scope);
-    scope.addEventListener("click", (event) => {
-      const el = event.target instanceof Element ? event.target : null;
-      const button = el?.closest<HTMLButtonElement>("button[command][commandfor]");
-      const forId = button?.getAttribute("commandfor");
-      const routedTarget = forId ? scope.getElementById(forId) : null;
-      const routed = routedTarget ? handlerByTarget.get(routedTarget) : undefined;
-      if (button && routed) routed(button.getAttribute("command") ?? "", button);
-    });
   };
 }
 
