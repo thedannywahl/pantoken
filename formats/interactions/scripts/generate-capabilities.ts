@@ -23,9 +23,10 @@ import {
 const SKIP_WEB_ELEMENTS = new Set(["icon"]);
 
 // Components with genuine interactive JS behavior when used as plain CSS components:
-// overlays (open/close/position), navigation, command routing, or mode toggle.
+// overlays (open/close/position), navigation, mode toggle.
+// Invoker Commands (button, icon-button, toggle-button) are handled natively by
+// the browser — no JS needed for the CSS component classes.
 const BEHAVIOR_COMPONENTS = new Set([
-  "button",
   "calendar",
   "context-view",
   "in-place-edit",
