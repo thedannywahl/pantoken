@@ -64,6 +64,7 @@ export default extendBase({
     entry: {
       index: "src/index.ts",
       interactions: "src/index.ts",
+      "close-button": "src/components/close-button.ts",
       ...Object.fromEntries(ALL_COMPONENTS.map((name) => [name, `src/components/${name}.ts`])),
     },
     // Build IIFE bundles separately via build-iife.ts

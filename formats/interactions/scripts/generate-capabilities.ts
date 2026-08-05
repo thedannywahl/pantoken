@@ -73,7 +73,8 @@ const components: ComponentCapability[] = [...new Set([...cssNames, ...webNames]
     } else if (hasWeb) {
       type = "js-only";
     } else {
-      type = "css-only";
+      // CSS-only in the component registry, but may have a behavior IIFE
+      type = hasBehavior(name) ? "both" : "css-only";
     }
 
     return { name, type, needsIcons, dependencies };
