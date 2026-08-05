@@ -14,7 +14,6 @@ import { build } from "vite";
 
 // All components that will have per-component IIFE bundles
 const ALL_COMPONENTS = [
-  "icon",
   "button",
   "alert",
   "badge",
@@ -35,6 +34,7 @@ const ALL_COMPONENTS = [
   "calendar",
   "tooltip",
   "modal",
+  "close-button",
   "context-view",
   "popover",
   "tray",
@@ -85,8 +85,7 @@ for (const name of ALL_COMPONENTS) {
   const entryPath = resolve(entriesDir, `${name}.ts`);
   writeFileSync(
     entryPath,
-    `import { default as init } from ${JSON.stringify(resolve(root, "src/components", `${name}.ts`))};
-if (typeof init === "function") init();
+    `import ${JSON.stringify(resolve(root, "src/components", `${name}.ts`))};
 `,
   );
 
