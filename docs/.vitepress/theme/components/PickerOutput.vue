@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { useShikiHighlight } from "../composables/useShikiHighlight";
 
 const props = defineProps<{
   formats: { value: string; label: string; lang: string }[];
@@ -13,11 +14,12 @@ const props = defineProps<{
 }>();
 defineEmits<{ (e: "update:modelValue", value: string): void }>();
 
-// The language tag drives both the `language-*` wrapper class VitePress's own copy-button click
-// handler and default-theme CSS key off of, and the small label shown in the block's corner.
 const lang = computed(
   () => props.formats.find((f) => f.value === props.modelValue)?.lang ?? "text",
 );
+
+const outputRef = computed(() => props.output);
+const highlighted = useShikiHighlight(outputRef, lang);
 </script>
 
 <template>
@@ -47,7 +49,9 @@ const lang = computed(
           <div :class="`language-${lang}`">
             <button class="copy" type="button" :title="copyText" :data-copied="copiedText"></button>
             <span class="lang">{{ lang }}</span>
-            <pre><code>{{ output }}</code></pre>
+            <!-- v-html used only for shiki's trusted, server-generated HTML -->
+            <div v-if="highlighted" v-html="highlighted" />
+            <pre v-else><code>{{ output }}</code></pre>
           </div>
           <slot />
         </div>
@@ -70,5 +74,9 @@ const lang = computed(
 .picker-output__empty {
   display: block;
   margin: 0;
+}
+/* Promote --shiki-dark-bg to background-color in dark mode */
+:global(.dark) .picker-output :deep(.shiki) {
+  background-color: var(--shiki-dark-bg) !important;
 }
 </style>

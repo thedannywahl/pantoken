@@ -19,6 +19,8 @@ export interface CdnPickerStrings {
   modeAdaptive: string;
   /** Rebrand mode option: emit only light values. */
   modeLightOnly: string;
+  /** Toggle label: include dark token values in rebrand output. */
+  includeDarkMode: string;
   /** Legend for the component checkbox group. */
   componentsLabel: string;
   /** Checkbox: use the whole `components.css` barrel instead of per-component sheets. */
@@ -62,6 +64,7 @@ export const CDN_PICKER_DEFAULTS: CdnPickerStrings = {
   modeLabel: "Rebrand mode",
   modeAdaptive: "Light + dark",
   modeLightOnly: "Light only",
+  includeDarkMode: "Include dark mode",
   componentsLabel: "Components",
   allComponents: "All components",
   formatLabel: "Output",

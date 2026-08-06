@@ -10,6 +10,7 @@
 - Web CSS: `@pantoken/css` — `import "@pantoken/css/inject"` defines all `--instui-*` properties.
 - Tokens as data: `@pantoken/tokens` — `import { tokens, byTheme } from "@pantoken/tokens"`.
 - Icons: `@pantoken/icons`, or `@pantoken/web-components` for `<instui-icon>`.
+- Component behaviors (vanilla JS): `@pantoken/interactions` — `initModal`, `initTooltip`, `initInPlaceEdit`, `initCloseButton`; IIFE entry points for CDN.
 
 ## Frameworks
 

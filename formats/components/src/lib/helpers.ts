@@ -67,7 +67,8 @@ export const AI_ICON_MASK =
 // ── Spacing scales ─────────────────────────────────────────────────────────────
 /** Spacing step → value on the pantoken spacing scale. */
 export const SPACING_STEPS: Record<string, string> = {
-  "0": "0",
+  "0": "var(--instui-component-shared-tokens-spacing-general-space-none)",
+  none: "var(--instui-component-shared-tokens-spacing-general-space-none)",
   "2xs": "var(--instui-spacing-space2xs)",
   xs: "var(--instui-spacing-space-xs)",
   sm: "var(--instui-spacing-space-sm)",

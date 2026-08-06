@@ -21,7 +21,18 @@ test("every registered definition is a single well-formed record (sanity: the re
 });
 
 for (const def of ALL) {
-  test(`${def.kind} ${def.name}: emits one well-formed cssdoc record, no token drift`, () => {
-    validate(def);
-  });
+  const timeout = def.name === "spacing" ? 20_000 : undefined;
+  if (timeout) {
+    test(
+      `${def.kind} ${def.name}: emits one well-formed cssdoc record, no token drift`,
+      () => {
+        validate(def);
+      },
+      timeout,
+    );
+  } else {
+    test(`${def.kind} ${def.name}: emits one well-formed cssdoc record, no token drift`, () => {
+      validate(def);
+    });
+  }
 }

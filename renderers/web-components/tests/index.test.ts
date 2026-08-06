@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
+import { resolveSpace, spacingValue } from "@pantoken/interactions";
 import { ELEMENTS, iconSvg, register } from "../src/index.ts";
-import { resolveSpace, spacingValue } from "../src/lib/helpers.ts";
 
 test("resolveSpace maps a keyword to a token, else passes a raw CSS value through", () => {
   expect(resolveSpace("small")).toBe("var(--instui-spacing-space-sm)");

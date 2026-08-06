@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
+import type { PantokenTheme } from "../theme";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
+import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
 import manifest from "../generated/cdn-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
-import PickerThemeControls from "./PickerThemeControls.vue";
+
+const props = defineProps<{
+  themeKey: PantokenTheme;
+  mode: PickerMode;
+}>();
 
 type ManifestComponent = { name: string; needsIcons: boolean };
 // Alphabetical for findability (the manifest is in load order).
@@ -38,7 +43,6 @@ const includeBase = ref(readHashParam("c_base") !== "0");
 const includeUtilities = ref(readHashParam("c_util") !== "0");
 const format = useHashParamRef("c_fmt", "link");
 const search = useHashParamRef("c_q", "");
-const { themeKey, mode, showMode } = usePickerTheme();
 
 watch(includeBase, (v) => writeHashParam("c_base", v ? "1" : "0", "1"));
 watch(includeUtilities, (v) => writeHashParam("c_util", v ? "1" : "0", "1"));
@@ -85,7 +89,7 @@ const filteredComponents = computed(() => {
 // component needs component-icons.css.
 const needsIconSheet = computed(() => chosen.value.some((c) => c.needsIcons));
 
-const tokenSheet = computed(() => tokenLeanSheet(themeKey.value, mode.value));
+const tokenSheet = computed(() => tokenLeanSheet(props.themeKey, props.mode));
 
 const combineUrl = computed(() => {
   // Track the latest release (no version pin) — pin yourself for production. jsDelivr serves raw file
@@ -129,15 +133,6 @@ const output = computed(() =>
           aria-label="Filter components"
         />
       </span>
-      <PickerThemeControls
-        id-prefix="cdn-picker"
-        :theme-key="themeKey"
-        :mode="mode"
-        :show-mode="showMode"
-        :strings="t"
-        @update:theme-key="themeKey = $event"
-        @update:mode="mode = $event"
-      />
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="cdn-picker__components instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">

@@ -358,6 +358,9 @@ catalogs:
     remark-gfm:
       specifier: ^4.0.1
       version: 4.0.1
+    shiki:
+      specifier: ^4.3.1
+      version: 4.4.1
     simple-icons:
       specifier: ^15.22.0
       version: 15.22.0
@@ -708,9 +711,15 @@ importers:
       '@pantoken/demo':
         specifier: workspace:*
         version: link:../tools/demo
+      '@pantoken/interactions':
+        specifier: workspace:*
+        version: link:../formats/interactions
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../plugins/pantoken/logos
+      '@pantoken/plugin-simple-icons':
+        specifier: workspace:*
+        version: link:../plugins/pantoken/simple-icons
       '@pantoken/plugin-stacking':
         specifier: workspace:*
         version: link:../plugins/pantoken/stacking
@@ -762,6 +771,9 @@ importers:
       postcss:
         specifier: 'catalog:'
         version: 8.5.25
+      shiki:
+        specifier: 'catalog:'
+        version: 4.4.1
       typedoc:
         specifier: 'catalog:'
         version: 0.28.20(@typescript/typescript6@6.0.2)
@@ -940,6 +952,21 @@ importers:
       '@pantoken/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.13.3
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite:
+        specifier: npm:@voidzero-dev/vite-plus-core@0.2.7
+        version: '@voidzero-dev/vite-plus-core@0.2.7(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(esbuild@0.25.12)(jiti@2.6.1)(publint@0.3.23)(terser@5.49.1)(typescript@7.0.2)(yaml@2.9.0)'
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.2.7(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(@vitest/coverage-v8@4.1.10)(@voidzero-dev/vite-plus-core@0.2.7(@arethetypeswrong/core@0.18.5)(@types/node@24.13.3)(jiti@2.6.1)(publint@0.3.23)(terser@5.49.1)(typescript@7.0.2)(yaml@2.9.0))(happy-dom@20.11.1)(jiti@2.6.1)(publint@0.3.23)(svelte@5.56.8(@typescript-eslint/types@8.66.0))(terser@5.49.1)(typescript@7.0.2)(yaml@2.9.0)
+
+  formats/interactions:
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -2638,6 +2665,9 @@ importers:
       '@pantoken/icons':
         specifier: workspace:*
         version: link:../../formats/icons
+      '@pantoken/interactions':
+        specifier: workspace:*
+        version: link:../../formats/interactions
       '@pantoken/model':
         specifier: workspace:*
         version: link:../../packages/model

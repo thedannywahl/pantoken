@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
+import type { PantokenTheme } from "../theme";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet, usePickerTheme } from "../composables/usePickerTheme";
-import PickerThemeControls from "./PickerThemeControls.vue";
+import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
 import PickerOutput from "./PickerOutput.vue";
+
+const props = defineProps<{
+  themeKey: PantokenTheme;
+  mode: PickerMode;
+}>();
 
 // The base (unprefixed) element names `@pantoken/web-components` registers — mirrors
 // `renderers/web-components/src/index.ts`'s `ELEMENTS` export. Copied rather than imported: the
@@ -125,13 +130,29 @@ function initialSelection(): Set<string> {
   return new Set(raw.split(",").filter((n) => names.has(n)));
 }
 
-const selected = ref<Set<string>>(initialSelection());
+const requested = ref<Set<string>>(initialSelection());
 const format = useHashParamRef("w_fmt", "esm");
 const search = useHashParamRef("w_q", "");
-const { themeKey, mode, showMode } = usePickerTheme();
+
+const selected = computed(() => new Set(withNestedDeps(requested.value)));
+
+const lockedDeps = computed(() => {
+  const locked = new Set<string>();
+  for (const name of requested.value) {
+    for (const dep of NESTED_DEPS[name] ?? []) {
+      for (const nested of withNestedDeps([dep])) locked.add(nested);
+    }
+  }
+  return locked;
+});
 
 function toggle(name: string): void {
-  selected.value = toggleStringInSet(selected.value, name);
+  if (selected.value.has(name)) {
+    if (lockedDeps.value.has(name)) return;
+    requested.value = toggleStringInSet(requested.value, name);
+    return;
+  }
+  requested.value = toggleStringInSet(requested.value, name);
 }
 
 // "All elements" is a tri-state checkbox over the element list: checked when every element is
@@ -140,12 +161,12 @@ function toggle(name: string): void {
 const allSelected = computed(() => elements.length > 0 && selected.value.size === elements.length);
 const someSelected = computed(() => selected.value.size > 0 && !allSelected.value);
 const allCheckboxEl = useIndeterminateCheckbox(someSelected);
-watch(selected, (s) => {
-  writeHashParam("w_sel", allSelected.value ? "all" : [...s].join(","), "");
+watch(requested, (s) => {
+  writeHashParam("w_sel", s.size === elements.length ? "all" : [...s].sort().join(","), "");
 });
 
 function toggleAll(checked: boolean): void {
-  selected.value = checked ? new Set(elements) : new Set();
+  requested.value = checked ? new Set(elements) : new Set();
 }
 
 const filteredElements = computed(() => {
@@ -164,13 +185,13 @@ const hasSelection = computed(() => format.value === "iife" || selected.value.si
 // falls back to the "everything" bundle in that case — so it needs icons too, same as "all selected".
 const needsIcons = computed(() => {
   if (selected.value.size === 0 || allSelected.value) return true;
-  return withNestedDeps(selected.value).some((name) => iconElementNames.includes(name));
+  return [...selected.value].some((name) => iconElementNames.includes(name));
 });
 
 // The lean token sheet is enough unless the selection touches an icon-rendering element, mirroring
 // CdnPicker.vue's needsIconSheet pattern — never the full style.css regardless of selection.
 const tokenLink = computed(() => {
-  const tokenSheet = tokenLeanSheet(themeKey.value, mode.value);
+  const tokenSheet = tokenLeanSheet(props.themeKey, props.mode);
   return needsIcons.value
     ? `https://cdn.jsdelivr.net/combine/${tokenSheet},npm/@pantoken/components/dist/component-icons.css`
     : `https://cdn.jsdelivr.net/${tokenSheet}`;
@@ -180,7 +201,7 @@ const tokenLink = computed(() => {
 // separate token sheet these elements still need to resolve their tokens.
 const esmSnippet = computed(() => {
   if (allSelected.value) return `import "https://esm.sh/@pantoken/web-components";`;
-  const only = withNestedDeps(selected.value);
+  const only = [...selected.value].sort();
   const onlyList = only.map((name) => `"${name}"`).join(", ");
   return `import { register } from "https://esm.sh/@pantoken/web-components";\nregister(customElements, { only: [${onlyList}] });`;
 });
@@ -191,7 +212,7 @@ const iifeScriptUrl = computed(() => {
   if (selected.value.size === 0 || allSelected.value) {
     return "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
   }
-  const files = orderForCombine(withNestedDeps(selected.value)).map(
+  const files = orderForCombine(selected.value).map(
     (name) => `npm/@pantoken/web-components/dist/${name}.iife.js`,
   );
   return files.length === 1
@@ -236,15 +257,6 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
           aria-label="Filter elements"
         />
       </span>
-      <PickerThemeControls
-        id-prefix="wc-picker"
-        :theme-key="themeKey"
-        :mode="mode"
-        :show-mode="showMode"
-        :strings="t"
-        @update:theme-key="themeKey = $event"
-        @update:mode="mode = $event"
-      />
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="wc-picker__elements instui-view -border-radius-medium instui-p-sm">
           <label class="instui-checkbox">
@@ -257,7 +269,12 @@ const output = computed(() => (format.value === "iife" ? iifeSnippet.value : esm
             <span>{{ t.allElements }}</span>
           </label>
           <label v-for="name in filteredElements" :key="name" class="instui-checkbox">
-            <input type="checkbox" :checked="selected.has(name)" @change="toggle(name)" />
+            <input
+              type="checkbox"
+              :checked="selected.has(name)"
+              :disabled="lockedDeps.has(name)"
+              @change="toggle(name)"
+            />
             <span>&lt;instui-{{ name }}&gt;</span>
           </label>
         </div>
