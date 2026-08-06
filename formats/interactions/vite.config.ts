@@ -54,6 +54,7 @@ export default extendBase({
         command: [
           "node scripts/generate-components.ts",
           "node scripts/generate-capabilities.ts",
+          "vp fmt --write component-capabilities.json",
           "vp pack",
           "node scripts/build-iife.ts",
         ],
