@@ -532,6 +532,8 @@ export default defineConfig({
   cleanUrls: true,
   lastUpdated: true,
   sitemap: { hostname },
+  // Only index.md belongs in the public site at the docs root; all others are repo-internal.
+  srcExclude: ["CHANGELOG.md", "compatibility.md", "engineering-log.md"],
   // The generated API pages cross-link heavily; don't fail the build on a link TypeDoc emitted.
   ignoreDeadLinks: true,
   // Treat `instui-*` tags as custom elements, not Vue components — so the web-components API pages can
@@ -561,8 +563,8 @@ export default defineConfig({
         details:
           "This index covers the canonical English documentation. A Hungarian translation of every page is available under /hu/.",
         ignoreFilesPerOutput: {
-          llmsTxt: ["hu/**"],
-          llmsFullTxt: ["hu/**"],
+          llmsTxt: ["hu/**", "CHANGELOG.md", "compatibility.md", "engineering-log.md"],
+          llmsFullTxt: ["hu/**", "CHANGELOG.md", "compatibility.md", "engineering-log.md"],
         },
       }) as never,
     ],
