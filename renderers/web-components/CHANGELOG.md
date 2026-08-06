@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.4.1
+
+### Patch Changes
+
+- 47f3275: abstract component interactions into shared package
+- 47f3275: Extract shared spacing and Invoker Commands helpers from `@pantoken/web-components` into a new `@pantoken/interactions` package.
+
+  `@pantoken/web-components` now consumes these helpers from `@pantoken/interactions` with no behavioral change.
+
+- Updated dependencies [47f3275]
+- Updated dependencies [47f3275]
+- Updated dependencies [47f3275]
+- Updated dependencies [47f3275]
+- Updated dependencies [47f3275]
+- Updated dependencies [47f3275]
+  - @pantoken/interactions@0.2.0
+  - @pantoken/components@0.4.0
+
 ## 0.4.0
 
 ### Minor Changes

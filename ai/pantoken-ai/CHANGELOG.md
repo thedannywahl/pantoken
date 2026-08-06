@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.4
+
+### Patch Changes
+
+- 47f3275: add interaction package information
+
 ## 0.1.3
 
 ### Patch Changes

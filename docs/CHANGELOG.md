@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 47f3275: Unify CSS and JS component pickers into a single ComponentsPicker with:
+
+  - Component metadata scan determining CSS-only, JS-only, or both capabilities
+  - Dual output tabs: CSS link/import followed by JS ESM/`<script>`/IIFE formats
+  - Dependency enforcement for JS components (date-input requires calendar, etc.)
+  - Component type indicators (CSS/JS badges) on every component
+  - Smart CSS building with automatic component-icons inclusion for icon-using components
+
+- 47f3275: Add IIFE bootstrap format to the Interactions picker for single-tag CDN usage, similar to web-components. The IIFE loads the token stylesheet and exposes PantokenInteractions globally for use in the page.
+
+### Patch Changes
+
+- 47f3275: abstract component interactions into shared package
+
 ## 0.1.6
 
 ### Patch Changes
