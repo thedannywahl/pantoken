@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.3.1
+
+### Patch Changes
+
+- 47f3275: abstract component interactions into shared package
+
 ## 0.3.0
 
 ### Minor Changes

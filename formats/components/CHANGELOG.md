@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.4.0
+
+### Minor Changes
+
+- 47f3275: abstract component interactions into shared package
+- 47f3275: Add component-attached spacing helper aliases so utilities like `.instui-mb-sm` can also be used as `-mb-sm` modifiers on any InstUI component class.
+
+  Also add the `none` spacing step alias that maps to the shared `space-none` token (same value as `0`).
+
+### Patch Changes
+
+- 47f3275: Document the wildcard `-icon-*` modifier on the icon utility so cssdoc and IDE checkers can reference it properly.
+- 47f3275: add toggle example to checkbox documentation
+
 ## 0.3.0
 
 ### Minor Changes
