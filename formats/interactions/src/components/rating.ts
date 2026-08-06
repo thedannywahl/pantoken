@@ -1,4 +1,5 @@
 // fallow-ignore-file unused-file
+/* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 // Per-component interaction entry point for rating
 
 import { applySpacing } from "../shared/index.js";
