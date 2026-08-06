@@ -20,10 +20,22 @@ function getHighlighter() {
 export function useShikiHighlight(code: Ref<string>, lang: Ref<string>): Ref<string | null> {
   const highlighted = ref<string | null>(null);
 
-  watchEffect(async () => {
+  watchEffect(async (onCleanup) => {
+    // Vue only tracks reactive reads made before the first await. Capture both inputs up front so
+    // every picker selection and format change starts a fresh highlight pass.
+    const currentCode = code.value;
+    const currentLang = lang.value;
+    let cancelled = false;
+    onCleanup(() => {
+      cancelled = true;
+    });
+
     const hl = await getHighlighter();
-    highlighted.value = hl.codeToHtml(code.value, {
-      lang: lang.value,
+    // The first Shiki load can finish after a newer selection has already queued another pass.
+    // Ignore that stale run rather than briefly replacing the latest output with old code.
+    if (cancelled) return;
+    highlighted.value = hl.codeToHtml(currentCode, {
+      lang: currentLang,
       themes: { light: "github-light", dark: "github-dark" },
     });
   });
