@@ -183,6 +183,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/lcov.info
           flags: ${{ steps.flags.outputs.value }}
+          override_pr: ${{ github.event.pull_request.number }}
           fail_ci_if_error: false
       - name: Upload test results to Codecov
         if: ${{ !cancelled() && steps.cov.outputs.ran == 'true' }}
@@ -191,6 +192,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./junit.xml
           report_type: test_results
+          override_pr: ${{ github.event.pull_request.number }}
           fail_ci_if_error: false
 
   fallow:
