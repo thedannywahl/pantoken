@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- 55a22e3: Fix reactive CDN picker code output across components, icons, and web components.
+
 ## 0.2.0
 
 ### Minor Changes
