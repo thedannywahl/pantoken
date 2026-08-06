@@ -152,6 +152,42 @@ describe("makeOnCommand", () => {
     document.querySelector("button")?.click();
     expect(hits).toEqual(["t1"]);
   });
+
+  test("ignores clicks with a non-Element target", () => {
+    document.body.innerHTML = `<div id="target"></div>`;
+    const target = document.getElementById("target") as HTMLElement;
+    const onCommand = makeOnCommand(false);
+    const received: string[] = [];
+    onCommand(target, (cmd) => received.push(cmd));
+    document.dispatchEvent(new MouseEvent("click", { bubbles: false }));
+    expect(received).toEqual([]);
+  });
+
+  test("ignores clicks on elements without command[commandfor]", () => {
+    document.body.innerHTML = `
+      <div id="target"></div>
+      <button>plain button</button>
+    `;
+    const target = document.getElementById("target") as HTMLElement;
+    const onCommand = makeOnCommand(false);
+    const received: string[] = [];
+    onCommand(target, (cmd) => received.push(cmd));
+    (document.querySelector("button") as HTMLButtonElement).click();
+    expect(received).toEqual([]);
+  });
+
+  test("ignores commandfor clicks pointing to an unregistered target", () => {
+    document.body.innerHTML = `
+      <div id="target"></div>
+      <button command="--close" commandfor="other">close</button>
+    `;
+    const target = document.getElementById("target") as HTMLElement;
+    const onCommand = makeOnCommand(false);
+    const received: string[] = [];
+    onCommand(target, (cmd) => received.push(cmd));
+    (document.querySelector("button") as HTMLButtonElement).click();
+    expect(received).toEqual([]);
+  });
 });
 
 // ── syncInvoker ───────────────────────────────────────────────────────────────
@@ -161,5 +197,51 @@ describe("syncInvoker", () => {
     document.body.innerHTML = `<div id="host" popovertarget="p1"></div>`;
     const host = document.getElementById("host") as HTMLElement;
     expect(() => syncInvoker(host)).not.toThrow();
+  });
+
+  test("mirrors popovertarget onto the inner button's IDL property", () => {
+    const popover = document.createElement("div");
+    popover.id = "pop1";
+    document.body.appendChild(popover);
+    const host = document.createElement("div");
+    host.setAttribute("popovertarget", "pop1");
+    const shadow = host.attachShadow({ mode: "open" });
+    shadow.innerHTML = `<button type="button">toggle</button>`;
+    document.body.appendChild(host);
+    syncInvoker(host);
+    const btn = shadow.querySelector("button") as any;
+    expect(btn.popoverTargetElement).toBe(popover);
+    expect(btn.popoverTargetAction).toBe("toggle");
+  });
+
+  test("uses the explicit popovertargetaction when provided", () => {
+    const popover = document.createElement("div");
+    popover.id = "pop2";
+    document.body.appendChild(popover);
+    const host = document.createElement("div");
+    host.setAttribute("popovertarget", "pop2");
+    host.setAttribute("popovertargetaction", "show");
+    const shadow = host.attachShadow({ mode: "open" });
+    shadow.innerHTML = `<button type="button">show</button>`;
+    document.body.appendChild(host);
+    syncInvoker(host);
+    const btn = shadow.querySelector("button") as any;
+    expect(btn.popoverTargetAction).toBe("show");
+  });
+
+  test("mirrors commandfor+command onto the inner button", () => {
+    const dialog = document.createElement("div");
+    dialog.id = "dlg1";
+    document.body.appendChild(dialog);
+    const host = document.createElement("div");
+    host.setAttribute("commandfor", "dlg1");
+    host.setAttribute("command", "--show");
+    const shadow = host.attachShadow({ mode: "open" });
+    shadow.innerHTML = `<button type="button">show</button>`;
+    document.body.appendChild(host);
+    syncInvoker(host);
+    const btn = shadow.querySelector("button") as any;
+    expect(btn.commandForElement).toBe(dialog);
+    expect(btn.command).toBe("--show");
   });
 });

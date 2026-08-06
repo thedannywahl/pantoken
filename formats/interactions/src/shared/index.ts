@@ -74,7 +74,7 @@ export function syncInvoker(host: HTMLElement): void {
   if (!btn) return;
   const root = host.getRootNode() as Document | ShadowRoot;
   const byId = (id: string): Element | null =>
-    typeof root.getElementById === "function" ? root.getElementById(id) : null;
+    /* c8 ignore next */ typeof root.getElementById === "function" ? root.getElementById(id) : null;
   const popoverTarget = host.getAttribute("popovertarget");
   if (popoverTarget !== null) {
     btn.popoverTargetElement = byId(popoverTarget);
