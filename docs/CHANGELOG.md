@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.2
+
+### Patch Changes
+
+- 4674d3d: Partition API sidebars by package route to reduce duplicated prerendered HTML and Pages artifact size.
+
 ## 0.2.1
 
 ### Patch Changes
