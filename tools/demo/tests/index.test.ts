@@ -216,3 +216,31 @@ test("live_example_flags strips a heading that is entirely flags", () => {
   expect(headingInline.children).toHaveLength(0);
   expect(fence.info).toBe("html -nocard");
 });
+
+test("live_example_flags migrates standalone flag paragraph before html fence", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const paragraphOpen = { type: "paragraph_open", hidden: false };
+  const inline = { type: "inline", content: "-nocard -plain", hidden: false };
+  const paragraphClose = { type: "paragraph_close", hidden: false };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+
+  rule({ tokens: [paragraphOpen, inline, paragraphClose, fence] });
+
+  expect(fence.info).toBe("html -nocard -plain");
+  expect(paragraphOpen.hidden).toBe(true);
+  expect(inline.hidden).toBe(true);
+  expect(paragraphClose.hidden).toBe(true);
+});

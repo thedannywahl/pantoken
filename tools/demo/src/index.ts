@@ -198,6 +198,50 @@ function splitHeadingFlags(content: string): { flags: string[]; stripped: string
   };
 }
 
+/** Parse a flags-only marker line (e.g. `-nocard -nofoo`) used just above an html fence. */
+function parseStandaloneFlags(content: string): string[] {
+  const trimmed = content.trim();
+  if (!trimmed) return [];
+  if (!/^(?:-[a-z][a-z0-9-]*)(?:\s+-[a-z][a-z0-9-]*)*$/u.test(trimmed)) return [];
+  return trimmed.match(/-[a-z][a-z0-9-]*/gu) ?? [];
+}
+
+/** Hide a paragraph marker token triplet (`paragraph_open`, `inline`, `paragraph_close`). */
+function hideParagraph(tokens: Array<{ hidden?: boolean }>, inlineIndex: number): void {
+  const open = inlineIndex - 1;
+  const close = inlineIndex + 1;
+  if (open >= 0) tokens[open].hidden = true;
+  tokens[inlineIndex].hidden = true;
+  if (close < tokens.length) tokens[close].hidden = true;
+}
+
+/** Move a standalone marker paragraph's flags onto the html fence info, hiding the marker paragraph. */
+function moveParagraphFlagsToFence(
+  tokens: Array<{ type: string; info: string; content?: string; hidden?: boolean }>,
+  fenceIndex: number,
+): void {
+  const inlineIndex = fenceIndex - 2;
+  if (inlineIndex < 1) return;
+  const open = tokens[inlineIndex - 1];
+  const inline = tokens[inlineIndex];
+  const close = tokens[inlineIndex + 1];
+  if (
+    open?.type !== "paragraph_open" ||
+    inline?.type !== "inline" ||
+    close?.type !== "paragraph_close"
+  ) {
+    return;
+  }
+  const flags = parseStandaloneFlags(inline.content ?? "");
+  if (flags.length === 0) return;
+  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
+  const base = parts.length > 0 ? parts[0] : "html";
+  const existing = new Set(parts.slice(1));
+  for (const flag of flags) existing.add(flag);
+  tokens[fenceIndex].info = [base, ...existing].join(" ");
+  hideParagraph(tokens, inlineIndex);
+}
+
 /** Move trailing heading flags onto the matching html fence info string. */
 function moveHeadingFlagsToFence(
   tokens: Array<{ type: string; info: string; content?: string }>,
@@ -227,6 +271,10 @@ function migrateLiveExampleFlags(
     const token = tokens[index];
     if (token.type !== "fence" || !token.info.trimStart().startsWith("html")) continue;
     moveHeadingFlagsToFence(tokens, index);
+    moveParagraphFlagsToFence(
+      tokens as Array<{ type: string; info: string; content?: string; hidden?: boolean }>,
+      index,
+    );
   }
 }
 
