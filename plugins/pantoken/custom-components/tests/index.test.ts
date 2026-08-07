@@ -19,11 +19,11 @@ test("appends by default, prepends when asked", () => {
   expect(prepended).toHaveProperty("prepend");
 });
 
-test("card root uses the container background, sm border-radius as mobile default, and elevation-1", () => {
+test("card root uses the container background, sm border-radius as mobile default, and elevation-card", () => {
   const css = cssOf(customComponents());
   expect(css).toContain("var(--instui-color-background-container)");
   expect(css).toContain("var(--instui-component-shared-tokens-border-radius-card-sm)");
-  expect(css).toContain("var(--instui-elevation-1)");
+  expect(css).toContain("var(--instui-elevation-card)");
 });
 
 test("card root has overflow:hidden and flex-shrink:0", () => {
