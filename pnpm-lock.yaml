@@ -221,20 +221,20 @@ catalogs:
       specifier: ^21.2.0
       version: 21.2.0
     '@cssdoc/config':
-      specifier: ^0.10.1
-      version: 0.10.1
+      specifier: ^0.10.2
+      version: 0.10.2
     '@cssdoc/core':
-      specifier: ^0.10.1
-      version: 0.10.1
+      specifier: ^0.10.2
+      version: 0.10.2
     '@cssdoc/eslint-plugin':
-      specifier: ^0.10.1
-      version: 0.10.1
+      specifier: ^0.10.2
+      version: 0.10.2
     '@cssdoc/stylelint-plugin':
-      specifier: ^0.10.1
-      version: 0.10.1
+      specifier: ^0.10.2
+      version: 0.10.2
     '@cssdoc/typedoc':
-      specifier: ^0.10.1
-      version: 0.10.1
+      specifier: ^0.10.2
+      version: 0.10.2
     '@eslint/css':
       specifier: ^1.4.0
       version: 1.4.0
@@ -441,10 +441,10 @@ importers:
         version: 21.2.0
       '@cssdoc/eslint-plugin':
         specifier: 'catalog:'
-        version: 0.10.1(@eslint/css@1.4.0)(eslint@10.8.0(jiti@2.6.1))
+        version: 0.10.2(@eslint/css@1.4.0)(eslint@10.8.0(jiti@2.6.1))
       '@cssdoc/stylelint-plugin':
         specifier: 'catalog:'
-        version: 0.10.1(stylelint@17.14.1(typescript@5.6.1-rc))
+        version: 0.10.2(stylelint@17.14.1(typescript@5.6.1-rc))
       '@eslint/css':
         specifier: 'catalog:'
         version: 1.4.0
@@ -695,13 +695,13 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.10.1
+        version: 0.10.2
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.10.1
+        version: 0.10.2
       '@cssdoc/typedoc':
         specifier: 'catalog:'
-        version: 0.10.1(typedoc@0.28.20(@typescript/typescript6@6.0.2))
+        version: 0.10.2(typedoc@0.28.20(@typescript/typescript6@6.0.2))
       '@pantoken/components':
         specifier: workspace:*
         version: link:../formats/components
@@ -807,10 +807,10 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.10.1
+        version: 0.10.2
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.10.1
+        version: 0.10.2
       '@pantoken/icons':
         specifier: workspace:*
         version: link:../icons
@@ -3161,20 +3161,20 @@ packages:
     resolution: {integrity: sha512-TzlTVpKPjaqW6qOYjQcYUDuGsLCNsvFHVBXkYGTAnf5V37jCWrE5haKNXzz0WZUtVHjrpV76L1buANjwXMfT8w==}
     engines: {node: '>=22'}
 
-  '@cssdoc/config@0.10.1':
-    resolution: {integrity: sha512-4fuos5RBrGNZSjyckSD0VP0E2+47jSXFusPefuBwpoN3yjHCz76WJC1/QKbbV5ZHUkM/kUCbC8Re1OlAZQAgDQ==}
+  '@cssdoc/config@0.10.2':
+    resolution: {integrity: sha512-Pns6vdrpnn45x+pK9NSehDJd7kgSRoSGCG5/5EnocWCL230KaemPFY5iYWlZS+db+FDHsI+fKVB9VZNYWsMMZQ==}
 
-  '@cssdoc/core@0.10.1':
-    resolution: {integrity: sha512-Bp8msh/LUHrGd74m68NoqxlRrFjdZCHnnVMbw7opWRQpZEP2xn/cjIhCghGMHsY4Pxu4n4CbBQaMV7FvDjvCQA==}
+  '@cssdoc/core@0.10.2':
+    resolution: {integrity: sha512-7XRdmzjsoMqk2GnH+nevPhkrm6/lG58b1xFJSfF1zK9miLcx6+/1qGTGaoN+xQJkPsl8qxjh7FpP29zl4q+Zig==}
 
-  '@cssdoc/dialects@0.10.1':
-    resolution: {integrity: sha512-DE4tj71tWCRL7xEUX/iFFbPWwu5tVdJZLAp0m5tUqXOt3eI9ypFI5YcyepDgQ1RheK7yN9SBU/7dv6PJcy977w==}
+  '@cssdoc/dialects@0.10.2':
+    resolution: {integrity: sha512-rXGczwIixo4Rnqsb3Pgu/AIX+wA9YCnF/FQ7gi04pEw9/2AadG59GIMp+GpXJL+wPLfEVazh023VanFU3uBBhA==}
 
-  '@cssdoc/embedded@0.10.1':
-    resolution: {integrity: sha512-26xaiEu/SHL/GOkLQcgYIrOiGv4YKULYK6oCvIPz9FMZeArvqmMP8mfBny8do7PbEAsw8Pu5URHINcEbCwCEsg==}
+  '@cssdoc/embedded@0.10.2':
+    resolution: {integrity: sha512-ljqsI4l05J58ytDsRn/aP2Oo85HHZd9lufbI7EWMN2vIlFyAJYvaDIPm4k816pPM4xusUSDHFwhbopFGjF4YUw==}
 
-  '@cssdoc/eslint-plugin@0.10.1':
-    resolution: {integrity: sha512-5vHc0pOQIBApTUEJd5agWNjFhQr4Kmc3COT1fNYJGTzWUf+6ys1kK10IJsMHG07UHg2pHYFh5SUdxbwJrDDjHg==}
+  '@cssdoc/eslint-plugin@0.10.2':
+    resolution: {integrity: sha512-LmIeHMjoBjcchqRG0/OwK60+m5Rzs7fsr2keTptdUPv5Knz2RG03M2Y/zjybZRKlP5zWhAm2UagyuCJUJK3ayg==}
     peerDependencies:
       '@eslint/css': '>=1'
       '@html-eslint/parser': '>=0.63'
@@ -3185,28 +3185,28 @@ packages:
       '@html-eslint/parser':
         optional: true
 
-  '@cssdoc/index@0.10.1':
-    resolution: {integrity: sha512-/39B3WRktCc5bc+9OCzz2fPi0epW41JpN8yJf0yBYVDPyQlxJI5c4jOpI2GPghq3IkOk0XeITYOye51xmQuaVQ==}
+  '@cssdoc/index@0.10.2':
+    resolution: {integrity: sha512-59hB7tcmKDCdrV4DPrgIH6+vz9N9xZ6vW5kpbH/jTwsns+Lawkr3DOeM/FvL3TxmMcTsLXSkxN6jiX1jv0DGnw==}
 
-  '@cssdoc/lint-core@0.10.1':
-    resolution: {integrity: sha512-cyxFrojxMV9mvf6CGiTQs61dQp71t19vmoukXwqiNF5yX7VjMzMpr7pmXiw65txz/hjj0ftyDhf5yy4oZMAPJQ==}
+  '@cssdoc/lint-core@0.10.2':
+    resolution: {integrity: sha512-og9BkntWrml77Fh8vzsex4hNVXD7AJB3BUV54QOWe8MeePlFOrkWD7+9Mfm41faeocJPQP8Jpwu48j3pmrdAOQ==}
 
-  '@cssdoc/markdown@0.10.1':
-    resolution: {integrity: sha512-6Kf/4Ri9WczZSgbmw1A3WjrL5zG6L4GSCVXlGzavwcAZR+zQkEavvm2Fi/zejn7adfjPWhfQIgV23DaXETt/7A==}
+  '@cssdoc/markdown@0.10.2':
+    resolution: {integrity: sha512-ZjI9bHYawZRZk2Qr2pWtOj3Hda0BEjxsg3EuAQ8lRAYJNK18MXpU8I9DSNWMRi4df5KBv8d/sOy5MIy01hCxQg==}
 
-  '@cssdoc/providers@0.10.1':
-    resolution: {integrity: sha512-4wJ3GIq6lKK3B/rZKIf/24NcdwXnNhZ9rRaXt+U7cvcktjJ0Gd00+3JuCJYXfZK1oba2dVDUERulgAdgGf3xBw==}
+  '@cssdoc/providers@0.10.2':
+    resolution: {integrity: sha512-AnbjoG4qlF6iLcTIpAtUIM2SDvLKcZb08Oh7dgUmE/o6sZlYTHYObOoVMlk9DrrE4aNmVx6tXNWu6hMZ1Cnfwg==}
 
-  '@cssdoc/spec@0.10.1':
-    resolution: {integrity: sha512-FBCGKX9E7Xv1hukNV82VKEOTzF/ZL4LLC8WzbrO8yNQqxCgvO2WEE70m0hPwNy7ZSFg7HKM2pxzp1hinxFbJ/g==}
+  '@cssdoc/spec@0.10.2':
+    resolution: {integrity: sha512-kV1jaTvFYjw8G8dBXzqUSN+IKVo6bBq43MgvXy1bTQ5WNdduTAZCIRzXMUkGOWpAZErUCFb/B20qjsokLH5wYw==}
 
-  '@cssdoc/stylelint-plugin@0.10.1':
-    resolution: {integrity: sha512-8nl/lXkW9tjnlQ+e7ThPuiNtOX3c4iPc0X34B82ZNJcPpIeh65LFs0MGPyap2GngeWDOSNXKFfrGdt6K/oZDZA==}
+  '@cssdoc/stylelint-plugin@0.10.2':
+    resolution: {integrity: sha512-959yi9IDLa9o1cZzlfJyPJ9KDuO7nMW6lZjpMol2JTpThS6aGdx+fqTvg/hFDsqRPLuivagUPc5uZs7npB9r6w==}
     peerDependencies:
       stylelint: '>=16'
 
-  '@cssdoc/typedoc@0.10.1':
-    resolution: {integrity: sha512-5ATB+tVl0xy/zGdzFRexXMga2vmkg8EE3l1lCJqAECTTe5/h5YwpXu8zRgoZj3ARGOIHP7WN4EXqBncXquUu8A==}
+  '@cssdoc/typedoc@0.10.2':
+    resolution: {integrity: sha512-A90Nm9C20V9f8fn70oGkD9XYBODIR2gHXFo6KIUp8kyEcVprvKzPO1Xa2p03Ehod5qXD3cpwBc5gxE9KZq1MAQ==}
     peerDependencies:
       typedoc: '>=0.28'
 
@@ -9557,79 +9557,79 @@ snapshots:
 
   '@conventional-changelog/template@1.2.1': {}
 
-  '@cssdoc/config@0.10.1':
+  '@cssdoc/config@0.10.2':
     dependencies:
-      '@cssdoc/core': 0.10.1
+      '@cssdoc/core': 0.10.2
       ajv: 8.20.0
       jsonc-parser: 3.3.1
 
-  '@cssdoc/core@0.10.1':
+  '@cssdoc/core@0.10.2':
     dependencies:
-      '@cssdoc/spec': 0.10.1
+      '@cssdoc/spec': 0.10.2
       postcss: 8.5.26
 
-  '@cssdoc/dialects@0.10.1':
+  '@cssdoc/dialects@0.10.2':
     dependencies:
       postcss: 8.5.26
       postcss-less: 6.0.0(postcss@8.5.26)
       postcss-scss: 4.0.9(postcss@8.5.26)
 
-  '@cssdoc/embedded@0.10.1':
+  '@cssdoc/embedded@0.10.2':
     dependencies:
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/dialects': 0.10.1
-      '@cssdoc/lint-core': 0.10.1
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/dialects': 0.10.2
+      '@cssdoc/lint-core': 0.10.2
 
-  '@cssdoc/eslint-plugin@0.10.1(@eslint/css@1.4.0)(eslint@10.8.0(jiti@2.6.1))':
+  '@cssdoc/eslint-plugin@0.10.2(@eslint/css@1.4.0)(eslint@10.8.0(jiti@2.6.1))':
     dependencies:
-      '@cssdoc/config': 0.10.1
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/embedded': 0.10.1
-      '@cssdoc/index': 0.10.1
-      '@cssdoc/lint-core': 0.10.1
-      '@cssdoc/providers': 0.10.1
+      '@cssdoc/config': 0.10.2
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/embedded': 0.10.2
+      '@cssdoc/index': 0.10.2
+      '@cssdoc/lint-core': 0.10.2
+      '@cssdoc/providers': 0.10.2
       eslint: 10.8.0(jiti@2.6.1)
     optionalDependencies:
       '@eslint/css': 1.4.0
 
-  '@cssdoc/index@0.10.1':
+  '@cssdoc/index@0.10.2':
     dependencies:
-      '@cssdoc/core': 0.10.1
+      '@cssdoc/core': 0.10.2
       postcss: 8.5.26
       postcss-value-parser: 4.2.0
 
-  '@cssdoc/lint-core@0.10.1':
+  '@cssdoc/lint-core@0.10.2':
     dependencies:
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/index': 0.10.1
-      '@cssdoc/providers': 0.10.1
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/index': 0.10.2
+      '@cssdoc/providers': 0.10.2
 
-  '@cssdoc/markdown@0.10.1':
+  '@cssdoc/markdown@0.10.2':
     dependencies:
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/dialects': 0.10.1
-      '@cssdoc/embedded': 0.10.1
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/dialects': 0.10.2
+      '@cssdoc/embedded': 0.10.2
 
-  '@cssdoc/providers@0.10.1':
+  '@cssdoc/providers@0.10.2':
     dependencies:
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/index': 0.10.1
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/index': 0.10.2
       css-tree: 3.2.1
 
-  '@cssdoc/spec@0.10.1': {}
+  '@cssdoc/spec@0.10.2': {}
 
-  '@cssdoc/stylelint-plugin@0.10.1(stylelint@17.14.1(typescript@5.6.1-rc))':
+  '@cssdoc/stylelint-plugin@0.10.2(stylelint@17.14.1(typescript@5.6.1-rc))':
     dependencies:
-      '@cssdoc/config': 0.10.1
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/lint-core': 0.10.1
+      '@cssdoc/config': 0.10.2
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/lint-core': 0.10.2
       stylelint: 17.14.1(typescript@5.6.1-rc)
 
-  '@cssdoc/typedoc@0.10.1(typedoc@0.28.20(@typescript/typescript6@6.0.2))':
+  '@cssdoc/typedoc@0.10.2(typedoc@0.28.20(@typescript/typescript6@6.0.2))':
     dependencies:
-      '@cssdoc/config': 0.10.1
-      '@cssdoc/core': 0.10.1
-      '@cssdoc/markdown': 0.10.1
+      '@cssdoc/config': 0.10.2
+      '@cssdoc/core': 0.10.2
+      '@cssdoc/markdown': 0.10.2
       typedoc: 0.28.20(@typescript/typescript6@6.0.2)
 
   '@csstools/css-calc@3.3.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':
@@ -12108,7 +12108,7 @@ snapshots:
       '@vue/shared': 3.5.40
       estree-walker: 2.0.2
       magic-string: 0.30.21
-      postcss: 8.5.25
+      postcss: 8.5.26
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.40':
