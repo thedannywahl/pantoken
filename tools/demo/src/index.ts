@@ -181,6 +181,8 @@ function findPreviousHeadingInline(
   let index = fenceIndex - 1;
   while (index >= 0 && tokens[index].type === "heading_close") index--;
   if (index < 0 || tokens[index].type !== "inline") return null;
+  // Only treat this as a heading caption when the inline token is wrapped by heading_open/heading_close.
+  if (index - 1 < 0 || tokens[index - 1].type !== "heading_open") return null;
   return tokens[index] as {
     type: string;
     content: string;
@@ -198,24 +200,67 @@ function splitHeadingFlags(content: string): { flags: string[]; stripped: string
   };
 }
 
-/** Parse a flags-only marker line (e.g. `-nocard -nofoo`) used just above an html fence. */
-function parseStandaloneFlags(content: string): string[] {
-  const trimmed = content.trim();
-  if (!trimmed) return [];
-  if (!/^(?:-[a-z][a-z0-9-]*)(?:\s+-[a-z][a-z0-9-]*)*$/u.test(trimmed)) return [];
-  return trimmed.match(/-[a-z][a-z0-9-]*/gu) ?? [];
+/** Keep inline token content and children in sync without duplicating text across split children. */
+function setInlineContent(
+  inline: { content?: string; children?: Array<{ type: string; content: string }> },
+  content: string,
+): void {
+  inline.content = content;
+  if (content) {
+    inline.children = [{ type: "text", content }];
+    return;
+  }
+  inline.children = [];
 }
 
 /** Hide a paragraph marker token triplet (`paragraph_open`, `inline`, `paragraph_close`). */
-function hideParagraph(tokens: Array<{ hidden?: boolean }>, inlineIndex: number): void {
+function hideParagraph(
+  tokens: Array<{
+    hidden?: boolean;
+    content?: string;
+    children?: Array<{ type: string; content: string }>;
+  }>,
+  inlineIndex: number,
+): void {
   const open = inlineIndex - 1;
   const close = inlineIndex + 1;
   if (open >= 0) tokens[open].hidden = true;
   tokens[inlineIndex].hidden = true;
+  tokens[inlineIndex].content = "";
+  tokens[inlineIndex].children = [];
   if (close < tokens.length) tokens[close].hidden = true;
 }
 
-/** Move a standalone marker paragraph's flags onto the html fence info, hiding the marker paragraph. */
+/** Promote a paragraph token triplet (`<p>caption</p>`) into an `<h3>` heading triplet. */
+function promoteParagraphToHeading(
+  tokens: Array<{
+    type: string;
+    tag?: string;
+    markup?: string;
+    level?: number;
+    nesting?: number;
+  }>,
+  inlineIndex: number,
+): void {
+  const openIndex = inlineIndex - 1;
+  const closeIndex = inlineIndex + 1;
+  if (openIndex < 0 || closeIndex >= tokens.length) return;
+  const open = tokens[openIndex];
+  const close = tokens[closeIndex];
+  if (open.type !== "paragraph_open" || close.type !== "paragraph_close") return;
+  open.type = "heading_open";
+  open.tag = "h3";
+  open.markup = "###";
+  open.level = 0;
+  open.nesting = 1;
+  close.type = "heading_close";
+  close.tag = "h3";
+  close.markup = "###";
+  close.level = 0;
+  close.nesting = -1;
+}
+
+/** Move a paragraph caption's trailing flags onto html fence info; hide pure-flag markers. */
 function moveParagraphFlagsToFence(
   tokens: Array<{ type: string; info: string; content?: string; hidden?: boolean }>,
   fenceIndex: number,
@@ -232,14 +277,67 @@ function moveParagraphFlagsToFence(
   ) {
     return;
   }
-  const flags = parseStandaloneFlags(inline.content ?? "");
-  if (flags.length === 0) return;
+  const parsed = splitHeadingFlags(inline.content ?? "");
+  if (!parsed) return;
   const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
   const base = parts.length > 0 ? parts[0] : "html";
   const existing = new Set(parts.slice(1));
-  for (const flag of flags) existing.add(flag);
+  for (const flag of parsed.flags) existing.add(flag);
   tokens[fenceIndex].info = [base, ...existing].join(" ");
-  hideParagraph(tokens, inlineIndex);
+  setInlineContent(
+    inline as { content?: string; children?: Array<{ type: string; content: string }> },
+    parsed.stripped,
+  );
+  if (parsed.stripped) {
+    promoteParagraphToHeading(
+      tokens as Array<{
+        type: string;
+        tag?: string;
+        markup?: string;
+        level?: number;
+        nesting?: number;
+      }>,
+      inlineIndex,
+    );
+    return;
+  }
+  hideParagraph(
+    tokens as Array<{
+      hidden?: boolean;
+      content?: string;
+      children?: Array<{ type: string; content: string }>;
+    }>,
+    inlineIndex,
+  );
+}
+
+/** Move flags from an inline token immediately before an html fence (no paragraph wrappers). */
+function moveInlineFlagsToFence(
+  tokens: Array<{
+    type: string;
+    info: string;
+    content?: string;
+    hidden?: boolean;
+    children?: Array<{ type: string; content: string }>;
+  }>,
+  fenceIndex: number,
+): void {
+  const inlineIndex = fenceIndex - 1;
+  if (inlineIndex < 0) return;
+  const inline = tokens[inlineIndex];
+  if (inline.type !== "inline") return;
+  const parsed = splitHeadingFlags(inline.content ?? "");
+  if (!parsed) return;
+  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
+  const base = parts.length > 0 ? parts[0] : "html";
+  const existing = new Set(parts.slice(1));
+  for (const flag of parsed.flags) existing.add(flag);
+  tokens[fenceIndex].info = [base, ...existing].join(" ");
+  setInlineContent(inline, parsed.stripped);
+  if (parsed.stripped) {
+    return;
+  }
+  inline.hidden = true;
 }
 
 /** Move trailing heading flags onto the matching html fence info string. */
@@ -252,15 +350,9 @@ function moveHeadingFlagsToFence(
   const parsed = splitHeadingFlags(inline.content);
   if (!parsed) return;
   tokens[fenceIndex].info = ["html", ...parsed.flags].join(" ");
-  inline.content = parsed.stripped;
+  setInlineContent(inline, parsed.stripped);
   // Keep inline child text in sync, or suppress the heading if only flags remained.
-  if (parsed.stripped) {
-    for (const child of inline.children ?? []) {
-      if (child.type === "text") child.content = parsed.stripped;
-    }
-    return;
-  }
-  inline.children = [];
+  if (parsed.stripped) return;
 }
 
 /** Scan html fences and migrate trailing heading `-flag` tokens into their fence info strings. */
@@ -273,6 +365,16 @@ function migrateLiveExampleFlags(
     moveHeadingFlagsToFence(tokens, index);
     moveParagraphFlagsToFence(
       tokens as Array<{ type: string; info: string; content?: string; hidden?: boolean }>,
+      index,
+    );
+    moveInlineFlagsToFence(
+      tokens as Array<{
+        type: string;
+        info: string;
+        content?: string;
+        hidden?: boolean;
+        children?: Array<{ type: string; content: string }>;
+      }>,
       index,
     );
   }

@@ -189,6 +189,39 @@ test("live_example_flags core rule strips -flags from heading and migrates them 
   expect(fence.info).toBe("html -nocard");
 });
 
+test("live_example_flags keeps heading text singular when markdown-it splits text nodes", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const headingInline = {
+    type: "inline",
+    content: "Inverse color -nocard",
+    children: [
+      { type: "text", content: "Inverse color" },
+      { type: "text", content: " -nocard" },
+    ],
+  };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+  const tokens = [{ type: "heading_open" }, headingInline, { type: "heading_close" }, fence];
+
+  rule({ tokens });
+
+  expect(fence.info).toBe("html -nocard");
+  expect(headingInline.content).toBe("Inverse color");
+  expect(headingInline.children).toEqual([{ type: "text", content: "Inverse color" }]);
+});
+
 test("live_example_flags strips a heading that is entirely flags", () => {
   const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
   const md = {
@@ -233,7 +266,12 @@ test("live_example_flags migrates standalone flag paragraph before html fence", 
   const [, rule] = coreRules[0];
 
   const paragraphOpen = { type: "paragraph_open", hidden: false };
-  const inline = { type: "inline", content: "-nocard -plain", hidden: false };
+  const inline = {
+    type: "inline",
+    content: "-nocard -plain",
+    hidden: false,
+    children: [{ type: "text", content: "-nocard -plain" }],
+  };
   const paragraphClose = { type: "paragraph_close", hidden: false };
   const fence = { type: "fence", info: "html", content: "<div/>" };
 
@@ -242,5 +280,93 @@ test("live_example_flags migrates standalone flag paragraph before html fence", 
   expect(fence.info).toBe("html -nocard -plain");
   expect(paragraphOpen.hidden).toBe(true);
   expect(inline.hidden).toBe(true);
+  expect(inline.content).toBe("");
+  expect(inline.children).toHaveLength(0);
   expect(paragraphClose.hidden).toBe(true);
+});
+
+test("live_example_flags promotes caption paragraph to h3 and strips trailing flags", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const paragraphOpen: {
+    type: string;
+    hidden?: boolean;
+    tag?: string;
+    markup?: string;
+    level?: number;
+    nesting?: number;
+  } = {
+    type: "paragraph_open",
+  };
+  const inline = {
+    type: "inline",
+    content: "Content card -nocard",
+    children: [{ type: "text", content: "Content card -nocard" }],
+  };
+  const paragraphClose: {
+    type: string;
+    hidden?: boolean;
+    tag?: string;
+    markup?: string;
+    level?: number;
+    nesting?: number;
+  } = {
+    type: "paragraph_close",
+  };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+
+  rule({ tokens: [paragraphOpen, inline, paragraphClose, fence] });
+
+  expect(fence.info).toBe("html -nocard");
+  expect(inline.content).toBe("Content card");
+  expect(inline.children[0].content).toBe("Content card");
+  expect(paragraphOpen.hidden).not.toBe(true);
+  expect(paragraphClose.hidden).not.toBe(true);
+  expect(paragraphOpen.type).toBe("heading_open");
+  expect(paragraphOpen.tag).toBe("h3");
+  expect(paragraphClose.type).toBe("heading_close");
+  expect(paragraphClose.tag).toBe("h3");
+});
+
+test("live_example_flags migrates inline-only marker token and hides it when empty", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const inline = {
+    type: "inline",
+    content: "-nocard",
+    hidden: false,
+    children: [{ type: "text", content: "-nocard" }],
+  };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+
+  rule({ tokens: [inline, fence] });
+
+  expect(fence.info).toBe("html -nocard");
+  expect(inline.hidden).toBe(true);
+  expect(inline.content).toBe("");
+  expect(inline.children).toHaveLength(0);
 });

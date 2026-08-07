@@ -1,6 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import { customComponents, cardRules } from "../src/index.ts";
+import { agentShellRules } from "../src/components/agent-shell/index.ts";
 
 const cssOf = (plugin: ReturnType<typeof customComponents>): string => {
   const out = plugin.css?.({ tokens: [], css: "" });
@@ -69,4 +70,10 @@ test("cardRules() defaults to instui- prefix and equals the plugin css output", 
 test("cardRules accepts an explicit prefix", () => {
   expect(cardRules("my-")).toContain(".my-card");
   expect(cardRules("")).toContain(".card {");
+});
+
+test("agentShellRules emits prefixed and unprefixed selectors", () => {
+  expect(agentShellRules()).toContain(".instui-agent-shell");
+  expect(agentShellRules("my-")).toContain(".my-agent-shell");
+  expect(agentShellRules("")).toContain(".agent-shell");
 });

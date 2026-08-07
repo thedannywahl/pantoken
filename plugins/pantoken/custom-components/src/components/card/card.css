@@ -31,17 +31,22 @@
  * @related img — Place directly in the card as a media region.
  * @related badge — Place directly in the card as a status indicator.
  * @see https://drafts.csswg.org/css-cascade-6/#scoping
- * @example Content card.
+ * @example
+ * Content card -nocard
+ * ```html
  * <article class="pfx-card">
  *   <h2 class="pfx-heading -h3">Card title</h2>
  *   <p>Content here.</p>
  *   <button class="pfx-button">Action</button>
  * </article>
- * @example Container card; each direct child is a bordered section.
+ * ```
+ * Container card -nocard
+ * ```html
  * <article class="pfx-card -variant-container">
  *   <section>First section</section>
  *   <section>Second section</section>
  * </article>
+ * ```
  */
 .pfx-card {
   background: var(--instui-color-background-container);
