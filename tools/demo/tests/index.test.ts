@@ -370,3 +370,112 @@ test("live_example_flags migrates inline-only marker token and hides it when emp
   expect(inline.content).toBe("");
   expect(inline.children).toHaveLength(0);
 });
+
+test("-noshow on heading caption hides title tokens and marks fence", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const headingOpen = { type: "heading_open", hidden: false };
+  const headingInline = {
+    type: "inline",
+    content: "how to hide -noshow",
+    hidden: false,
+    children: [{ type: "text", content: "how to hide -noshow" }],
+  };
+  const headingClose = { type: "heading_close", hidden: false };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+
+  rule({ tokens: [headingOpen, headingInline, headingClose, fence] });
+
+  expect(fence.info).toBe("html -noshow");
+  expect(headingOpen.hidden).toBe(true);
+  expect(headingInline.hidden).toBe(true);
+  expect(headingClose.hidden).toBe(true);
+});
+
+test("-noshow on paragraph caption hides title paragraph and marks fence", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const paragraphOpen = { type: "paragraph_open", hidden: false };
+  const inline = {
+    type: "inline",
+    content: "display this -noshow",
+    hidden: false,
+    children: [{ type: "text", content: "display this -noshow" }],
+  };
+  const paragraphClose = { type: "paragraph_close", hidden: false };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+
+  rule({ tokens: [paragraphOpen, inline, paragraphClose, fence] });
+
+  expect(fence.info).toBe("html -noshow");
+  expect(paragraphOpen.hidden).toBe(true);
+  expect(inline.hidden).toBe(true);
+  expect(paragraphClose.hidden).toBe(true);
+});
+
+test("renderer omits html fences tagged with -noshow", () => {
+  const md = {
+    core: {
+      ruler: {
+        push: () => {
+          // no-op for this renderer-focused test
+        },
+      },
+    },
+    renderer: {
+      rules: {
+        fence: (tokens: { info: string; content: string }[], i: number, ..._rest: unknown[]) =>
+          `<pre>${tokens[i].content}</pre>`,
+      },
+    },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: {
+      match: () => true,
+      wrap: (html) => `<div class="css-example">${html}</div>`,
+    },
+  });
+  const render = md.renderer.rules.fence;
+
+  const hidden = render(
+    [{ info: "html -noshow", content: "<div>shh...</div>" }],
+    0,
+    {},
+    { relativePath: "api/css/example.md" },
+    {},
+  );
+  expect(hidden).toBe("");
+
+  const shown = render(
+    [{ info: "html -nocard", content: "<div>foo</div>" }],
+    0,
+    {},
+    { relativePath: "api/css/example.md" },
+    {},
+  );
+  expect(shown).toContain("<pre><div>foo</div></pre>");
+});

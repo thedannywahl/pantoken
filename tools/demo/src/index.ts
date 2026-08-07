@@ -183,10 +183,14 @@ function findPreviousHeadingInline(
   if (index < 0 || tokens[index].type !== "inline") return null;
   // Only treat this as a heading caption when the inline token is wrapped by heading_open/heading_close.
   if (index - 1 < 0 || tokens[index - 1].type !== "heading_open") return null;
-  return tokens[index] as {
-    type: string;
-    content: string;
-    children?: Array<{ type: string; content: string }>;
+  return {
+    inline: tokens[index] as {
+      type: string;
+      content: string;
+      children?: Array<{ type: string; content: string }>;
+      hidden?: boolean;
+    },
+    inlineIndex: index,
   };
 }
 
@@ -215,6 +219,24 @@ function setInlineContent(
 
 /** Hide a paragraph marker token triplet (`paragraph_open`, `inline`, `paragraph_close`). */
 function hideParagraph(
+  tokens: Array<{
+    hidden?: boolean;
+    content?: string;
+    children?: Array<{ type: string; content: string }>;
+  }>,
+  inlineIndex: number,
+): void {
+  const open = inlineIndex - 1;
+  const close = inlineIndex + 1;
+  if (open >= 0) tokens[open].hidden = true;
+  tokens[inlineIndex].hidden = true;
+  tokens[inlineIndex].content = "";
+  tokens[inlineIndex].children = [];
+  if (close < tokens.length) tokens[close].hidden = true;
+}
+
+/** Hide a heading token triplet (`heading_open`, `inline`, `heading_close`). */
+function hideHeading(
   tokens: Array<{
     hidden?: boolean;
     content?: string;
@@ -288,6 +310,17 @@ function moveParagraphFlagsToFence(
     inline as { content?: string; children?: Array<{ type: string; content: string }> },
     parsed.stripped,
   );
+  if (parsed.flags.includes("-noshow")) {
+    hideParagraph(
+      tokens as Array<{
+        hidden?: boolean;
+        content?: string;
+        children?: Array<{ type: string; content: string }>;
+      }>,
+      inlineIndex,
+    );
+    return;
+  }
   if (parsed.stripped) {
     promoteParagraphToHeading(
       tokens as Array<{
@@ -334,6 +367,11 @@ function moveInlineFlagsToFence(
   for (const flag of parsed.flags) existing.add(flag);
   tokens[fenceIndex].info = [base, ...existing].join(" ");
   setInlineContent(inline, parsed.stripped);
+  if (parsed.flags.includes("-noshow")) {
+    inline.hidden = true;
+    inline.children = [];
+    return;
+  }
   if (parsed.stripped) {
     return;
   }
@@ -345,12 +383,23 @@ function moveHeadingFlagsToFence(
   tokens: Array<{ type: string; info: string; content?: string }>,
   fenceIndex: number,
 ): void {
-  const inline = findPreviousHeadingInline(tokens, fenceIndex);
-  if (!inline?.content) return;
-  const parsed = splitHeadingFlags(inline.content);
+  const heading = findPreviousHeadingInline(tokens, fenceIndex);
+  if (!heading?.inline.content) return;
+  const parsed = splitHeadingFlags(heading.inline.content);
   if (!parsed) return;
   tokens[fenceIndex].info = ["html", ...parsed.flags].join(" ");
-  setInlineContent(inline, parsed.stripped);
+  setInlineContent(heading.inline, parsed.stripped);
+  if (parsed.flags.includes("-noshow")) {
+    hideHeading(
+      tokens as Array<{
+        hidden?: boolean;
+        content?: string;
+        children?: Array<{ type: string; content: string }>;
+      }>,
+      heading.inlineIndex,
+    );
+    return;
+  }
   // Keep inline child text in sync, or suppress the heading if only flags remained.
   if (parsed.stripped) return;
 }
@@ -419,6 +468,11 @@ export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = 
     if (info === "demo") {
       return renderDemoFigure(resolveDemo(token.content.trim(), options));
     }
+    const flags = new Set(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
+    // `-noshow` strips the html source fence and its live preview from rendered output.
+    if (info.startsWith("html") && flags.has("-noshow")) {
+      return "";
+    }
     const rendered = fence(...args);
     // Seam a live preview onto each `@example` HTML fence on matching pages (the CSS-API pages load the
     // component CSS, so the same markup renders live). The rendered source fence stays as-is above it.
@@ -426,8 +480,7 @@ export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = 
     if (live && info.startsWith("html")) {
       const relativePath = (env as { relativePath?: string } | undefined)?.relativePath ?? "";
       const html = token.content.replace(/\n$/u, "");
-      // Parse -flag tokens from the info string (migrated from the heading by the core rule above).
-      const flags = new Set(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
+      // Parse -flag tokens from the info string (migrated by the core rule above).
       if (live.match(relativePath) && !isOverlay(html)) {
         return `${rendered}\n${live.wrap(html, flags)}\n`;
       }
