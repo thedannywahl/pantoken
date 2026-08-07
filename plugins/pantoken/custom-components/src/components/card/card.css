@@ -1,0 +1,118 @@
+/**
+ * @component card
+ * @summary A surface container that accepts arbitrary content.
+ * @remarks
+ *   **Variant** controls how direct children are styled: `content` (default) leaves them
+ *   unstyled; `container` stacks them as bordered, padded sections. Padding scales with
+ *   viewport width and is the same across both variants.
+ *   **Size** is fully responsive — padding and border-radius step up automatically at 320px
+ *   (20rem) and 684px (42.75rem) via standard `min-width` media queries; no size class is needed.
+ *   Pair with `@pantoken/components` for heading, button, and other inline components.
+ * @sealed
+ * @annotations
+ * 1. `overflow: hidden` clips child content at the rounded corner and is required for @scope containment.
+ * 2. `flex-shrink: 0` prevents the card collapsing when placed in a flex row without an explicit width.
+ * 3. Sizing is purely responsive — `@media (min-width: 20rem)` applies md properties, `@media (min-width: 42.75rem)` applies lg; sm is the mobile-first default.
+ * 4. `-variant-container` targets direct children only so deeply nested elements are not affected.
+ * @modifier -variant-content — Standard content card; children are unstyled. Default when no variant is set.
+ * @modifier -variant-container — Container card; direct children become bordered, padded sections.
+ * @structure
+ * .pfx-card {
+ *   slot {}
+ * }
+ * @a11y Use `<article>` as the card element when the card is a self-contained unit of content;
+ *   use `<section>` when grouped within a larger landmark. In `-variant-container`, prefer
+ *   `<section>` elements as direct children so each bordered region carries semantic meaning.
+ * @usage @import "@pantoken/plugin-custom-components/custom-components.css";
+ * @compat `@scope` is Baseline 2023 Newly Available; the card degrades to an unscoped flat stylesheet
+ *   in older browsers with no loss of visible styling.
+ * @related heading — Place directly in the card or inside a container section.
+ * @related button — Place directly in the card or inside a container section.
+ * @related img — Place directly in the card as a media region.
+ * @related badge — Place directly in the card as a status indicator.
+ * @see https://drafts.csswg.org/css-cascade-6/#scoping
+ * @example Content card.
+ * <article class="pfx-card">
+ *   <h2 class="pfx-heading -h3">Card title</h2>
+ *   <p>Content here.</p>
+ *   <button class="pfx-button">Action</button>
+ * </article>
+ * @example Container card; each direct child is a bordered section.
+ * <article class="pfx-card -variant-container">
+ *   <section>First section</section>
+ *   <section>Second section</section>
+ * </article>
+ */
+.pfx-card {
+  background: var(--instui-color-background-container);
+  border-radius: var(--instui-component-shared-tokens-border-radius-card-sm);
+  box-shadow: var(--instui-elevation-1);
+  padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+  overflow: hidden;
+  /* @ref 1 */
+  flex-shrink: 0;
+  /* @ref 2 */
+}
+
+/* @ref 3 */
+@media (min-width: 20rem) {
+  .pfx-card {
+    padding: var(--instui-component-shared-tokens-spacing-padding-card-md);
+    border-radius: var(--instui-component-shared-tokens-border-radius-card-md);
+  }
+}
+
+@media (min-width: 42.75rem) {
+  .pfx-card {
+    padding: var(--instui-component-shared-tokens-spacing-padding-card-lg);
+    border-radius: var(--instui-component-shared-tokens-border-radius-card-lg);
+  }
+}
+
+/* content variant is the default; selector exists so cssdoc can verify the modifier */
+.pfx-card.-variant-content {
+  --pantoken-card-type: content;
+}
+
+/* container variant: card is a flex column; gap between direct children */
+.pfx-card.-variant-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-sm);
+}
+
+@media (min-width: 20rem) {
+  .pfx-card.-variant-container {
+    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-md);
+  }
+}
+
+@media (min-width: 42.75rem) {
+  .pfx-card.-variant-container {
+    gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-lg);
+  }
+}
+
+@scope (.pfx-card) {
+  /* @ref 4 */
+  :scope.-variant-container > * {
+    padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+    border: var(--instui-component-shared-tokens-stroke-width-sm) solid
+      var(--instui-component-shared-tokens-stroke-muted-color);
+    border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-sm);
+  }
+
+  @media (min-width: 20rem) {
+    :scope.-variant-container > * {
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-md);
+      border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-md);
+    }
+  }
+
+  @media (min-width: 42.75rem) {
+    :scope.-variant-container > * {
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-lg);
+      border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-lg);
+    }
+  }
+}

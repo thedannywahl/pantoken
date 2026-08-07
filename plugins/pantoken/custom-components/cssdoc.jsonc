@@ -1,0 +1,10 @@
+{
+  // Scoped cssdoc config for @pantoken/plugin-custom-components generated CSS linting.
+  // Extends the repo-root config and adds a providers entry so @component references
+  // in the @component card @structure (heading, button) resolve from the components sheet.
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "extends": ["../../../cssdoc.jsonc"],
+  "modifierConvention": "rscss",
+  "inlineComments": "ignore",
+  "providers": [{ "path": "../../../formats/components/src/generated/_records.css" }]
+}

@@ -1,0 +1,19 @@
+{
+  // Scoped cssdoc config for @pantoken/plugin-layouts CSS linting.
+  // Extends the repo-root config and adds providers so @component references
+  // in @layout @structure resolve against documented component records.
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "extends": ["../../../cssdoc.jsonc"],
+  "modifierConvention": "rscss",
+  "inlineComments": "ignore",
+  // pfx-* covers sentinel selectors in source CSS.
+  // Providers below include both pfx (source) and instui (generated) records so
+  // `@structure` co-location checks resolve in both contexts.
+  "structureIgnore": ["pfx-*", "instui-*"],
+  "providers": [
+    { "path": "../../../formats/components/src/generated/_records.css" },
+    { "path": "../../../formats/components/generated/components.css" },
+    { "path": "../custom-components/generated/_records.css" },
+    { "path": "../custom-components/generated/custom-components.css" }
+  ]
+}

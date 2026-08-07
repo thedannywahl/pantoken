@@ -19,8 +19,8 @@ export default {
     // Options come from cssdoc.json (auto-loaded per linted file).
     "cssdoc/valid-doc-comments": true,
     "annotation-no-unknown": true,
-    "at-rule-no-unknown": [true, { ignoreAtRules: ["scope"] }],
-    "block-no-empty": true,
+    "at-rule-no-unknown": [true, { ignoreAtRules: ["scope", "component"] }],
+    "block-no-empty": [true, { ignore: ["comments"] }],
     "color-no-invalid-hex": true,
     "comment-no-empty": true,
     "declaration-block-no-duplicate-custom-properties": true,

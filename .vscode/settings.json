@@ -19,5 +19,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "explicit"
   },
-  "snyk.advanced.autoSelectOrganization": true
+  "snyk.advanced.autoSelectOrganization": true,
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.emptyRules": "ignore"
 }

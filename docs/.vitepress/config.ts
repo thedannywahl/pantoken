@@ -143,6 +143,28 @@ const orchestrator = workspaceOrchestrator({
       dependents: ["@pantoken/docs#docs:api:css"],
     },
     {
+      name: "@pantoken/plugin-custom-components#styles",
+      dir: at("plugins/pantoken/custom-components"),
+      watchPaths: [at("plugins/pantoken/custom-components/src")],
+      ignore: ["generated/**"],
+      build: ["node", "scripts/component-styles.ts"],
+      dependents: ["@pantoken/plugin-custom-components"],
+    },
+    {
+      name: "@pantoken/plugin-custom-components",
+      dir: at("plugins/pantoken/custom-components"),
+      watchPaths: [],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#docs:api:css"],
+    },
+    {
+      name: "@pantoken/plugin-layouts",
+      dir: at("plugins/pantoken/layouts"),
+      watchPaths: [at("plugins/pantoken/layouts/src")],
+      build: ["node", "scripts/generate.ts"],
+      dependents: ["@pantoken/docs#docs:api:css"],
+    },
+    {
       // Re-stage the transition/stacking/visual-debug decoration sheets into public/demos-assets/ from the
       // plugins' freshly-generated sheets. Dependent-only; writing into public/ triggers a Vite full reload
       // so the <head>-linked chrome and the /play iframes refetch. See stage-plugin-assets.ts.
@@ -195,6 +217,7 @@ const orchestrator = workspaceOrchestrator({
     // reload on their own.)
     at("formats/css/generated"),
     at("formats/components/generated"),
+    at("plugins/pantoken/custom-components/generated"),
   ],
 });
 
@@ -580,8 +603,10 @@ export default defineConfig({
         liveExample: {
           match: (relativePath: string) =>
             /(^|\/)api\/(css|renderers\/web-components\/src\/variables)\//.test(relativePath),
-          wrap: (html: string) =>
-            `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
+          wrap: (html: string, flags: Set<string>) =>
+            flags.has("-nocard")
+              ? `<div class="css-example">\n${html}\n</div>`
+              : `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
         },
       });
     },

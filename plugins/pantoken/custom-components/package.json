@@ -1,14 +1,14 @@
 {
-  "name": "@pantoken/plugin-transition",
-  "version": "0.2.1",
-  "description": "pantoken plugin: the CSS for InstUI's Transition utility — duration/timing tokens plus fade, scale, and slide enter/exit state classes.",
+  "name": "@pantoken/plugin-custom-components",
+  "version": "0.1.0",
+  "description": "pantoken plugin: custom component layouts for downstream consumers — a card and more, documented with cssdoc.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thedannywahl/pantoken.git",
-    "directory": "plugins/pantoken/transition"
+    "directory": "plugins/pantoken/custom-components"
   },
   "files": [
     "dist"
@@ -17,7 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./transition.css": "./dist/transition.css",
+    "./custom-components.css": "./dist/custom-components.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -25,16 +25,16 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
     "dev": "vp run generate && vp pack --watch",
-    "test": "vp test",
-    "check": "vp check"
+    "test": "vp run generate && vp test",
+    "check": "vp run generate && vp check"
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
     "@pantoken/plugin-kit": "workspace:*"
   },
   "devDependencies": {
+    "@pantoken/tokens": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
@@ -44,7 +44,7 @@
     "node": ">=22.18.0"
   },
   "pantoken": {
-    "key": "transition",
+    "key": "customComponents",
     "kind": "namespace"
   }
 }

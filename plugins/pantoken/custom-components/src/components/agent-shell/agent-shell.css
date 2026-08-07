@@ -1,0 +1,34 @@
+/**
+ * @component agent-shell
+ * @summary A surface container for AI agents.
+ * @sealed
+ * @structure
+ * .pfx-agent-shell {
+ *   slot {}
+ * }
+ * @see https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738
+ * @example -nocard
+ * ```html
+ * <div class="pfx-agent-shell instui-p-md">
+ *   <h2 class="pfx-heading -variant-title-card-large">AI Agent</h2>
+ *   <p>Content here.</p>
+ *   <button class="pfx-button">Action</button>
+ * </div>
+ * ```
+ */
+.pfx-agent-shell {
+  min-width: 320px;
+  min-height: 500px;
+  border-radius: var(--instui-component-shared-tokens-border-radius-card-lg);
+  background-color: var(--instui-color-background-base);
+  /* gradient border via background-clip: padding-box on inner + border-box on outer */
+  background-image:
+    linear-gradient(var(--instui-color-background-base), var(--instui-color-background-base)),
+    linear-gradient(
+      var(--instui-color-stroke-ai-top-gradient),
+      var(--instui-color-stroke-ai-bottom-gradient)
+    );
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  border: var(--instui-border-width-sm) solid transparent;
+}
