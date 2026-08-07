@@ -154,8 +154,8 @@ export function renderDemoFigure(resolved: ResolvedDemo): string {
 export interface LiveExampleOptions {
   /** Only wrap fences on pages whose markdown-it `env.relativePath` matches (e.g. the CSS-API pages). */
   match: (relativePath: string) => boolean;
-  /** Build the preview block appended after each non-overlay `html` fence, from its markup. */
-  wrap: (html: string) => string;
+  /** Build the preview block appended after each non-overlay `html` fence, from its markup and any `-flag` tokens parsed from the fence info string. */
+  wrap: (html: string, flags: Set<string>) => string;
 }
 
 /** Options for {@link demoMarkdownIt}: the {@link resolveDemo} fields plus optional live-example seaming. */
@@ -171,6 +171,63 @@ export interface DemoMarkdownItOptions extends ResolveOptions {
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
 function isOverlay(html: string): boolean {
   return /^<dialog\b/u.test(html.trim()) || /\spopover(?:=|\s|>)/u.test(html);
+}
+
+/** Find the inline heading token that precedes a fence token, if present. */
+function findPreviousHeadingInline(
+  tokens: Array<{ type: string; content?: string }>,
+  fenceIndex: number,
+) {
+  let index = fenceIndex - 1;
+  while (index >= 0 && tokens[index].type === "heading_close") index--;
+  if (index < 0 || tokens[index].type !== "inline") return null;
+  return tokens[index] as {
+    type: string;
+    content: string;
+    children?: Array<{ type: string; content: string }>;
+  };
+}
+
+/** Parse trailing `-flag` tokens from heading text; returns flags and heading text without flags. */
+function splitHeadingFlags(content: string): { flags: string[]; stripped: string } | null {
+  const match = content.match(/((?:^| )-[a-z][a-z0-9-]*)+$/u);
+  if (!match) return null;
+  return {
+    flags: match[0].match(/-[a-z][a-z0-9-]*/gu) ?? [],
+    stripped: content.slice(0, -match[0].length).trimEnd(),
+  };
+}
+
+/** Move trailing heading flags onto the matching html fence info string. */
+function moveHeadingFlagsToFence(
+  tokens: Array<{ type: string; info: string; content?: string }>,
+  fenceIndex: number,
+): void {
+  const inline = findPreviousHeadingInline(tokens, fenceIndex);
+  if (!inline?.content) return;
+  const parsed = splitHeadingFlags(inline.content);
+  if (!parsed) return;
+  tokens[fenceIndex].info = ["html", ...parsed.flags].join(" ");
+  inline.content = parsed.stripped;
+  // Keep inline child text in sync, or suppress the heading if only flags remained.
+  if (parsed.stripped) {
+    for (const child of inline.children ?? []) {
+      if (child.type === "text") child.content = parsed.stripped;
+    }
+    return;
+  }
+  inline.children = [];
+}
+
+/** Scan html fences and migrate trailing heading `-flag` tokens into their fence info strings. */
+function migrateLiveExampleFlags(
+  tokens: Array<{ type: string; info: string; content?: string }>,
+): void {
+  for (let index = 0; index < tokens.length; index++) {
+    const token = tokens[index];
+    if (token.type !== "fence" || !token.info.trimStart().startsWith("html")) continue;
+    moveHeadingFlagsToFence(tokens, index);
+  }
 }
 
 /**
@@ -195,6 +252,16 @@ export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = 
   const fence = md.renderer.rules.fence;
   if (!fence) return;
 
+  // Core rule: migrate `-flag` tokens from heading inline content into the following html fence's info
+  // string, and strip them from the heading so they don't appear in the rendered title.
+  if (options.liveExample) {
+    md.core.ruler.push("live_example_flags", (state) => {
+      migrateLiveExampleFlags(
+        state.tokens as Array<{ type: string; info: string; content?: string }>,
+      );
+    });
+  }
+
   md.renderer.rules.fence = (...args) => {
     const [tokens, index, , env] = args;
     const token = tokens[index];
@@ -206,11 +273,13 @@ export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = 
     // Seam a live preview onto each `@example` HTML fence on matching pages (the CSS-API pages load the
     // component CSS, so the same markup renders live). The rendered source fence stays as-is above it.
     const live = options.liveExample;
-    if (live && info === "html") {
+    if (live && info.startsWith("html")) {
       const relativePath = (env as { relativePath?: string } | undefined)?.relativePath ?? "";
       const html = token.content.replace(/\n$/u, "");
+      // Parse -flag tokens from the info string (migrated from the heading by the core rule above).
+      const flags = new Set(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
       if (live.match(relativePath) && !isOverlay(html)) {
-        return `${rendered}\n${live.wrap(html)}\n`;
+        return `${rendered}\n${live.wrap(html, flags)}\n`;
       }
     }
     return rendered;

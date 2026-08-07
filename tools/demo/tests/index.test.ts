@@ -86,7 +86,14 @@ test("demoMarkdownIt rewrites a demo fence and leaves other fences alone", () =>
 });
 
 test("liveExample seams a preview onto html fences on matching pages, skipping overlays", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
   const md = {
+    core: {
+      ruler: {
+        push: (name: string, fn: (state: { tokens: unknown[] }) => void) =>
+          coreRules.push([name, fn]),
+      },
+    },
     renderer: {
       rules: {
         fence: (tokens: { info: string; content: string }[], i: number, ..._rest: unknown[]) =>
@@ -145,4 +152,67 @@ test("liveExample seams a preview onto html fences on matching pages, skipping o
     {},
   );
   expect(overlay).toBe("<pre><dialog open>Hi</dialog></pre>");
+});
+
+test("live_example_flags core rule strips -flags from heading and migrates them to fence info", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (name: string, fn: (state: { tokens: unknown[] }) => void) =>
+          coreRules.push([name, fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: {
+      match: () => true,
+      wrap: (html, flags) => `<div class="${[...flags].join(" ")}">${html}</div>`,
+    },
+  });
+  expect(coreRules).toHaveLength(1);
+  const [, rule] = coreRules[0];
+
+  const headingInline = {
+    type: "inline",
+    content: "My example -nocard",
+    children: [{ type: "text", content: "My example -nocard" }],
+  };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+  const tokens = [{ type: "heading_open" }, headingInline, { type: "heading_close" }, fence];
+
+  rule({ tokens });
+
+  expect(headingInline.content).toBe("My example");
+  expect(headingInline.children[0].content).toBe("My example");
+  expect(fence.info).toBe("html -nocard");
+});
+
+test("live_example_flags strips a heading that is entirely flags", () => {
+  const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
+  const md = {
+    core: {
+      ruler: {
+        push: (_: string, fn: (state: { tokens: unknown[] }) => void) => coreRules.push(["", fn]),
+      },
+    },
+    renderer: { rules: { fence: () => "" } },
+  };
+  demoMarkdownIt(md as unknown as MarkdownIt, {
+    liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
+  });
+  const [, rule] = coreRules[0];
+
+  const headingInline = {
+    type: "inline",
+    content: "-nocard",
+    children: [{ type: "text", content: "-nocard" }],
+  };
+  const fence = { type: "fence", info: "html", content: "<div/>" };
+  rule({ tokens: [{ type: "heading_open" }, headingInline, { type: "heading_close" }, fence] });
+
+  expect(headingInline.content).toBe("");
+  expect(headingInline.children).toHaveLength(0);
+  expect(fence.info).toBe("html -nocard");
 });
