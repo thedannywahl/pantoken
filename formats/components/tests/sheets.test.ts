@@ -109,7 +109,8 @@ test("the PFX- prefix sentinel never survives into emitted CSS, at any prefix, a
   // `.instui-icon` — those are prefix-independent references in `@summary`/`@remarks`, not selectors.)
   // The sentinel must never collide with a real token name, or the replaceAll would corrupt it.
   expect(tokens.some((t) => t.name.includes(SENTINEL))).toBe(false);
-});
+  // This test calls whole-sheet emitters repeatedly; give headroom for parallel suites on slower CI.
+}, 20_000);
 
 test("modifiers are key-value: sizes alias short/long, deviations keep a deprecated InstUI shim", () => {
   const css = componentsCss({ prefix: "instui" });

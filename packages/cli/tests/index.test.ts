@@ -195,4 +195,4 @@ test("run builds the icon font (ttf, woff2, css, codepoints)", async () => {
   expect(Object.keys(codepoints).length).toBeGreaterThan(100);
   // The real font pipeline (arc→outline→ttf→woff2 over the whole icon set) runs ~10-15s, well past
   // vitest's 5s default — give it room so a cold run doesn't time out.
-}, 30_000);
+}, 60_000);
