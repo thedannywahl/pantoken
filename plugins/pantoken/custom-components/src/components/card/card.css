@@ -51,7 +51,7 @@
 .pfx-card {
   background: var(--instui-color-background-container);
   border-radius: var(--instui-component-shared-tokens-border-radius-card-sm);
-  box-shadow: var(--instui-elevation-1);
+  box-shadow: var(--instui-elevation-card);
   padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
   overflow: hidden;
   /* @ref 1 */
