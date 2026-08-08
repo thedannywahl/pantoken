@@ -7,7 +7,15 @@
  * @modifier -color-inverse — On a dark surface.
  * @a11y Give the spinner role="status" and an aria-label so screen readers announce it as a live loading status.
  * @example
- * <span class="pfx-spinner -size-xs" role="status" aria-label="Loading"></span>
+ * ```html
+ * <span class="pfx-spinner" role="status" aria-label="Loading"></span>
+ * ```
+ * ### Inverse color -nocard
+ * ```html
+ * <div class="instui-view instui-card -background-primary-inverse">
+ *   <span class="pfx-spinner -color-inverse" role="status" aria-label="Loading"></span>
+ * </div>
+ * ```
  * @demo self:spinner
  */
 @keyframes pantoken-spinner-rotate {
@@ -15,6 +23,7 @@
     transform: rotate(360deg);
   }
 }
+
 .pfx-spinner {
   display: inline-block;
   width: var(--instui-component-spinner-spinner-size-md);
@@ -25,21 +34,25 @@
   border-radius: 50%;
   animation: pantoken-spinner-rotate 0.8s linear infinite;
 }
+
 .pfx-spinner.-size-xs {
   width: var(--instui-component-spinner-spinner-size-xs);
   height: var(--instui-component-spinner-spinner-size-xs);
   border-width: var(--instui-component-spinner-stroke-width-xs);
 }
+
 .pfx-spinner.-size-sm {
   width: var(--instui-component-spinner-spinner-size-sm);
   height: var(--instui-component-spinner-spinner-size-sm);
   border-width: var(--instui-component-spinner-stroke-width-sm);
 }
+
 .pfx-spinner.-size-lg {
   width: var(--instui-component-spinner-spinner-size-lg);
   height: var(--instui-component-spinner-spinner-size-lg);
   border-width: var(--instui-component-spinner-stroke-width-lg);
 }
+
 .pfx-spinner.-color-inverse {
   border-top-color: var(--instui-component-spinner-inverse-color);
 }

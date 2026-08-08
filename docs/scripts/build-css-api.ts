@@ -307,10 +307,10 @@ export function componentSources(componentsRoot: string): string[] {
 type PluginRecord = { pkg: string; sheet: string; import: string };
 
 /**
- * The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives) carry cssdoc records in
- * their generated sheets, each tagged `@group Plugins` so cssdoc folds them into a "Plugins" subsection
- * of the CSS section (it groups by `@group`, falling back to record kind). They render in the SAME pass
- * as the component records — one `emitCssApi` call, one "CSS" section.
+ * The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives/layouts) carry cssdoc records in
+ * their generated sheets. Plugins use `@group Plugins`; the layouts plugin uses `@group Layouts` so it
+ * gets its own sidebar section. They render in the SAME pass as the component records — one `emitCssApi`
+ * call, one "CSS" section.
  */
 export function pluginRecords(): PluginRecord[] {
   return [
@@ -338,6 +338,16 @@ export function pluginRecords(): PluginRecord[] {
       pkg: "plugins/pantoken/primitives",
       sheet: "primitives.css",
       import: "@pantoken/plugin-primitives/primitives.css",
+    },
+    {
+      pkg: "plugins/pantoken/custom-components",
+      sheet: "custom-components.css",
+      import: "@pantoken/plugin-custom-components/custom-components.css",
+    },
+    {
+      pkg: "plugins/pantoken/layouts",
+      sheet: "layouts.css",
+      import: "@pantoken/plugin-layouts/layouts.css",
     },
   ];
 }
@@ -518,7 +528,7 @@ export const build = (): void => {
     label: "CSS",
     baseHref: "/api/css/",
     // The four record kinds first, then the plugins' `@group Plugins` subsection last.
-    groups: ["Components", "Utilities", "Rules", "Declarations", "Plugins"],
+    groups: ["Components", "Utilities", "Rules", "Declarations", "Layouts", "Plugins"],
     configFile,
     classNames,
     resolveToken,

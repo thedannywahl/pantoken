@@ -1,0 +1,52 @@
+{
+  "name": "@pantoken/plugin-custom-components",
+  "version": "0.1.0",
+  "description": "pantoken plugin: custom component layouts for downstream consumers — a card and more, documented with cssdoc.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/pantoken/custom-components"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./custom-components.css": "./dist/custom-components.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vp run generate && vp pack --watch",
+    "test": "vp run generate && vp test",
+    "check": "vp run generate && vp check"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@pantoken/tokens": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "customComponents",
+    "kind": "namespace"
+  }
+}

@@ -61,7 +61,14 @@ test("build wires the sheets into emitCssApi and writes the index blurb", async 
   const opts = emitCssApi.mock.calls[0][0];
   expect(opts.outSubdir).toBe("css");
   expect(opts.label).toBe("CSS");
-  expect(opts.groups).toEqual(["Components", "Utilities", "Rules", "Declarations", "Plugins"]);
+  expect(opts.groups).toEqual([
+    "Components",
+    "Utilities",
+    "Rules",
+    "Declarations",
+    "Layouts",
+    "Plugins",
+  ]);
 
   // The index-blurb prepend wrote the index.md back.
   expect(writeFileSync).toHaveBeenCalled();

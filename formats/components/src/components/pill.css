@@ -9,10 +9,17 @@
  * @modifier -render-icon-<name> — @deprecated The former `renderIcon` prop; still works as an alias, but use `-icon-<name>` instead.
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
  * @example
- * <span class="pfx-pill">Draft</span>
+ * ```html
+ * <div class="instui-display-flex" style="gap: 12px;">
+ *   <span class="instui-pill -color-success -icon-check">Published</span>
+ *   <span class="instui-pill">Draft</span>
+ *   <span class="instui-pill -color-info">In review</span>
+ *   <span class="instui-pill -color-warning">Stale</span>
+ *   <span class="instui-pill -color-danger">Blocked</span>
+ * </div>
+ * ```
  * @related badge — A badge is the count or notification counterpart.
  * @related tag — A tag is the removable, form-oriented counterpart.
- * @demo self:pill
  */
 .pfx-pill {
   display: inline-flex;
@@ -30,6 +37,7 @@
   font-weight: var(--instui-component-pill-text-font-weight);
   line-height: var(--instui-component-pill-line-height);
 }
+
 /* A leading icon (InstUI `renderIcon`): a glyph class on the pill renders a masked ::before that
    inherits the pill's colour. It refines the shared icon ::before to the pill's size + spacing. */
 .pfx-pill[class*="-icon-"]::before {
@@ -37,22 +45,27 @@
   block-size: var(--instui-font-size-text-xs);
   margin-inline-end: 0.375rem;
 }
+
 .pfx-pill.-color-info {
   color: var(--instui-component-pill-info-text-color);
   border-color: var(--instui-component-pill-info-border-color);
 }
+
 .pfx-pill.-color-success {
   color: var(--instui-component-pill-success-text-color);
   border-color: var(--instui-component-pill-success-border-color);
 }
+
 .pfx-pill.-color-warning {
   color: var(--instui-component-pill-warning-text-color);
   border-color: var(--instui-component-pill-warning-border-color);
 }
+
 .pfx-pill.-color-danger {
   color: var(--instui-component-pill-error-text-color);
   border-color: var(--instui-component-pill-error-border-color);
 }
+
 .pfx-pill.-color-info,
 .pfx-pill.-color-success,
 .pfx-pill.-color-warning,

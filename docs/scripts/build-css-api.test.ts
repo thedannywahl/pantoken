@@ -183,12 +183,20 @@ describe("indexLocalVars", () => {
 });
 
 describe("pluginRecords", () => {
-  test("returns the five CSS-emitting plugin records", () => {
+  test("returns the seven CSS-emitting plugin records", () => {
     const records = pluginRecords();
-    expect(records).toHaveLength(5);
+    expect(records).toHaveLength(7);
     expect(records.map((r) => r.sheet)).toContain("stacking.css");
     expect(records.find((r) => r.sheet === "stacking.css")?.import).toBe(
       "@pantoken/plugin-stacking/stacking.css",
+    );
+    expect(records.map((r) => r.sheet)).toContain("custom-components.css");
+    expect(records.find((r) => r.sheet === "custom-components.css")?.import).toBe(
+      "@pantoken/plugin-custom-components/custom-components.css",
+    );
+    expect(records.map((r) => r.sheet)).toContain("layouts.css");
+    expect(records.find((r) => r.sheet === "layouts.css")?.import).toBe(
+      "@pantoken/plugin-layouts/layouts.css",
     );
   });
 });

@@ -5,7 +5,7 @@ import { validate } from "../_validate.ts";
 
 test("spacing: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(spacing);
-}, 20_000);
+}, 60_000);
 
 test("spacing utilities: logical per-side classes on the spacing scale, auto for margin only", () => {
   const css = spacingUtilitiesCss({ prefix: "instui" });

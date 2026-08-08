@@ -1,0 +1,136 @@
+/**
+ * @layout wrapper
+ * @summary App-shell row: side nav, container with header, and optional panel.
+ * @remarks
+ * ✅ Use Wrapper when:
+ * - Building a full Canvas product page that needs a consistent layout shell
+ * - The page uses GlobalNav as the primary navigation anchor
+ * - The page needs side panels: ContentTabList, TrailingContentArea, or a UtilityPanel
+ * - You need consistent container padding and content max-width across the full page
+ * 🚫 Don't use Wrapper when:
+ * - Building a Modal, Tray, or Drawer — those have their own layout containers
+ * - Wrapping a sub-section of a page — Wrapper contains the full page, not a region
+ * @accessibility
+ * - Map the main content area to a <main> landmark with a skip-nav link so keyboard users can bypass GlobalNav
+ * - Give ContentTabList role="navigation" with a distinct aria-label such as "Page navigation" — separate from GlobalNav's landmark
+ * - Give TrailingContentArea role="complementary" with a descriptive aria-label that reflects its content, such as "Student details"
+ * - Give each UtilityPanel a distinct aria-label: "AI assistant", "Notifications", or "Filters"
+ * - When a UtilityPanel opens, move focus into the panel; when it closes, return focus to the trigger that opened it
+ * @selector body[class~="pfx-display-flex"]
+ * @part .container - Main page column that holds header and content.
+ * @part .header - Header region inside the container column.
+ * @part .top - Grid row containing breadcrumbs and utilities.
+ * @part .actions - Optional header buttons at the end of the top row.
+ * @part .tabs - Optional navigation tabs at the start of the content row.
+ * @part .utilities - Utility actions at the end of the top row.
+ * @part .info - Container for page title and optional description.
+ * @part .title - Page title below the top row.
+ * @part .description - Optional page description below the title.
+ * @part .content - Primary content region inside the container column.
+ * @part .list - Optional navigation column inside content.
+ * @part .main - Main content column inside content.
+ * @part .trailing - Optional complementary column inside content.
+ * @part .panel - Utility panel region that opens on the right side of the page.
+ * @part .filters - Optional filters region inside the header.
+ * @slot header - Optional header slot below page description.
+ * @slot content - Primary page content.
+ * @slot trailing - Trailing complementary content.
+ * @slot panel - Utility panel content.
+ * @slot filters - Optional filters content inside the header.
+ * @related card
+ * @related agent-shell
+ * @related breadcrumb
+ * @related tabs
+ * @related button
+ * @related heading
+ * @sealed
+ */
+body[class~="pfx-display-flex"] {
+  background-color: var(--instui-background-color-page);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-width: 0;
+
+  @component side-nav-bar {
+  }
+
+  .container {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+
+    .header {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+
+      .top {
+        display: grid;
+        grid-template-columns: 1fr auto;
+
+        @component breadcrumb {
+        }
+
+        .utilities:optional {
+          justify-self: end;
+
+          button:one-or-more:is(.pfx-button) {
+          }
+        }
+      }
+
+      .info {
+        .title {
+        }
+
+        .description:optional {
+        }
+      }
+
+      slot[name="header"]:optional {
+      }
+
+      .actions:optional {
+        button:one-or-more:is(.pfx-button) {
+        }
+      }
+
+      .tabs:optional {
+        @component tabs {
+        }
+      }
+
+      .filters:optional {
+        slot[name="filters"] {
+        }
+      }
+    }
+
+    .content {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: row;
+      min-width: 0;
+
+      .list:optional:is(.pfx-card) {
+      }
+
+      slot[name="content"].main {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      slot[name="trailing"].trailing:is(.pfx-card):optional {
+      }
+    }
+  }
+
+  slot[name="panel"].panel {
+    &.pfx-card:optional,
+    &.pfx-agent-shell:optional {
+    }
+  }
+}

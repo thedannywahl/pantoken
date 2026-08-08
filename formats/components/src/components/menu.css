@@ -7,7 +7,8 @@
  * @part .separator — A divider rule between items.
  * @part .item-info — Secondary info text within a menu item.
  * @a11y Mark a checked item with `aria-checked="true"` (same styling as `-active`).
- * @example
+ * @example -nocard
+ * ```html
  * <div class="pfx-menu">
  *   <div class="group">Actions</div>
  *   <div class="item">Edit</div>
@@ -15,6 +16,7 @@
  *   <div class="separator"></div>
  *   <div class="item">Delete</div>
  * </div>
+ * ```
  * @structure
  * .pfx-menu {
  *   .group {}
@@ -23,7 +25,6 @@
  * }
  * @related tree-browser — Both present nested, selectable entries.
  * @related simple-select — A select's dropdown reuses this menu surface.
- * @demo self:menu
  */
 .pfx-menu {
   min-width: var(--instui-component-menu-min-width);
@@ -33,6 +34,7 @@
   border-radius: var(--instui-border-radius-md);
   padding: var(--instui-spacing-space-xs) 0;
 }
+
 @scope (.pfx-menu) {
   :scope > .item {
     display: block;
@@ -45,34 +47,41 @@
     line-height: var(--instui-component-menu-item-line-height);
     cursor: pointer;
   }
+
   /* A disabled item (InstUI Menu.Item `disabled`): muted, non-interactive. */
   :scope > .item.-disabled {
     opacity: var(--instui-opacity-disabled);
     pointer-events: none;
     cursor: not-allowed;
   }
+
   :scope > .item:hover,
   :scope > .item.-highlighted {
     background: var(--instui-component-menu-item-highlighted-background);
     color: var(--instui-component-menu-item-highlighted-label-color);
   }
+
   :scope > .item.-active,
   :scope > .item[aria-checked="true"] {
     background: var(--instui-component-menu-item-active-background);
     color: var(--instui-component-menu-item-active-label-color);
   }
+
   :scope > .item.-active:hover,
   :scope > .item[aria-checked="true"]:hover {
     background: var(--instui-component-menu-item-selected-highlighted-background);
   }
+
   /* Secondary line inside an item (a description or shortcut). */
   .item-info {
     color: var(--instui-component-menu-item-label-info-color);
   }
+
   :scope > .item:hover .item-info,
   :scope > .item.-highlighted .item-info {
     color: var(--instui-component-menu-item-highlighted-label-info-color);
   }
+
   /* A labelled group of items. */
   :scope > .group {
     padding: var(--instui-component-menu-group-padding-vertical)
@@ -83,6 +92,7 @@
     font-size: var(--instui-component-menu-group-font-size);
     font-weight: var(--instui-component-menu-group-font-weight);
   }
+
   :scope > .separator {
     height: var(--instui-component-menu-separator-height);
     background: var(--instui-component-menu-separator-background);

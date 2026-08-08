@@ -154,8 +154,8 @@ export function renderDemoFigure(resolved: ResolvedDemo): string {
 export interface LiveExampleOptions {
   /** Only wrap fences on pages whose markdown-it `env.relativePath` matches (e.g. the CSS-API pages). */
   match: (relativePath: string) => boolean;
-  /** Build the preview block appended after each non-overlay `html` fence, from its markup. */
-  wrap: (html: string) => string;
+  /** Build the preview block appended after each non-overlay `html` fence, from its markup and any `-flag` tokens parsed from the fence info string. */
+  wrap: (html: string, flags: Set<string>) => string;
 }
 
 /** Options for {@link demoMarkdownIt}: the {@link resolveDemo} fields plus optional live-example seaming. */
@@ -171,6 +171,262 @@ export interface DemoMarkdownItOptions extends ResolveOptions {
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
 function isOverlay(html: string): boolean {
   return /^<dialog\b/u.test(html.trim()) || /\spopover(?:=|\s|>)/u.test(html);
+}
+
+/** Find the inline heading token that precedes a fence token, if present. */
+function findPreviousHeadingInline(
+  tokens: Array<{ type: string; content?: string }>,
+  fenceIndex: number,
+) {
+  let index = fenceIndex - 1;
+  while (index >= 0 && tokens[index].type === "heading_close") index--;
+  if (index < 0 || tokens[index].type !== "inline") return null;
+  // Only treat this as a heading caption when the inline token is wrapped by heading_open/heading_close.
+  if (index - 1 < 0 || tokens[index - 1].type !== "heading_open") return null;
+  return {
+    inline: tokens[index] as {
+      type: string;
+      content: string;
+      children?: Array<{ type: string; content: string }>;
+      hidden?: boolean;
+    },
+    inlineIndex: index,
+  };
+}
+
+/** Parse trailing `-flag` tokens from heading text; returns flags and heading text without flags. */
+function splitHeadingFlags(content: string): { flags: string[]; stripped: string } | null {
+  const match = content.match(/((?:^| )-[a-z][a-z0-9-]*)+$/u);
+  if (!match) return null;
+  return {
+    flags: match[0].match(/-[a-z][a-z0-9-]*/gu) ?? [],
+    stripped: content.slice(0, -match[0].length).trimEnd(),
+  };
+}
+
+/** Keep inline token content and children in sync without duplicating text across split children. */
+function setInlineContent(
+  inline: { content?: string; children?: Array<{ type: string; content: string }> },
+  content: string,
+): void {
+  inline.content = content;
+  if (content) {
+    inline.children = [{ type: "text", content }];
+    return;
+  }
+  inline.children = [];
+}
+
+/** Hide a paragraph marker token triplet (`paragraph_open`, `inline`, `paragraph_close`). */
+function hideParagraph(
+  tokens: Array<{
+    hidden?: boolean;
+    content?: string;
+    children?: Array<{ type: string; content: string }>;
+  }>,
+  inlineIndex: number,
+): void {
+  const open = inlineIndex - 1;
+  const close = inlineIndex + 1;
+  if (open >= 0) tokens[open].hidden = true;
+  tokens[inlineIndex].hidden = true;
+  tokens[inlineIndex].content = "";
+  tokens[inlineIndex].children = [];
+  if (close < tokens.length) tokens[close].hidden = true;
+}
+
+/** Hide a heading token triplet (`heading_open`, `inline`, `heading_close`). */
+function hideHeading(
+  tokens: Array<{
+    hidden?: boolean;
+    content?: string;
+    children?: Array<{ type: string; content: string }>;
+  }>,
+  inlineIndex: number,
+): void {
+  const open = inlineIndex - 1;
+  const close = inlineIndex + 1;
+  if (open >= 0) tokens[open].hidden = true;
+  tokens[inlineIndex].hidden = true;
+  tokens[inlineIndex].content = "";
+  tokens[inlineIndex].children = [];
+  if (close < tokens.length) tokens[close].hidden = true;
+}
+
+/** Promote a paragraph token triplet (`<p>caption</p>`) into an `<h3>` heading triplet. */
+function promoteParagraphToHeading(
+  tokens: Array<{
+    type: string;
+    tag?: string;
+    markup?: string;
+    level?: number;
+    nesting?: number;
+  }>,
+  inlineIndex: number,
+): void {
+  const openIndex = inlineIndex - 1;
+  const closeIndex = inlineIndex + 1;
+  if (openIndex < 0 || closeIndex >= tokens.length) return;
+  const open = tokens[openIndex];
+  const close = tokens[closeIndex];
+  if (open.type !== "paragraph_open" || close.type !== "paragraph_close") return;
+  open.type = "heading_open";
+  open.tag = "h3";
+  open.markup = "###";
+  open.level = 0;
+  open.nesting = 1;
+  close.type = "heading_close";
+  close.tag = "h3";
+  close.markup = "###";
+  close.level = 0;
+  close.nesting = -1;
+}
+
+/** Move a paragraph caption's trailing flags onto html fence info; hide pure-flag markers. */
+function moveParagraphFlagsToFence(
+  tokens: Array<{ type: string; info: string; content?: string; hidden?: boolean }>,
+  fenceIndex: number,
+): void {
+  const inlineIndex = fenceIndex - 2;
+  if (inlineIndex < 1) return;
+  const open = tokens[inlineIndex - 1];
+  const inline = tokens[inlineIndex];
+  const close = tokens[inlineIndex + 1];
+  if (
+    open?.type !== "paragraph_open" ||
+    inline?.type !== "inline" ||
+    close?.type !== "paragraph_close"
+  ) {
+    return;
+  }
+  const parsed = splitHeadingFlags(inline.content ?? "");
+  if (!parsed) return;
+  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
+  const base = parts.length > 0 ? parts[0] : "html";
+  const existing = new Set(parts.slice(1));
+  for (const flag of parsed.flags) existing.add(flag);
+  tokens[fenceIndex].info = [base, ...existing].join(" ");
+  setInlineContent(
+    inline as { content?: string; children?: Array<{ type: string; content: string }> },
+    parsed.stripped,
+  );
+  if (parsed.flags.includes("-noshow")) {
+    hideParagraph(
+      tokens as Array<{
+        hidden?: boolean;
+        content?: string;
+        children?: Array<{ type: string; content: string }>;
+      }>,
+      inlineIndex,
+    );
+    return;
+  }
+  if (parsed.stripped) {
+    promoteParagraphToHeading(
+      tokens as Array<{
+        type: string;
+        tag?: string;
+        markup?: string;
+        level?: number;
+        nesting?: number;
+      }>,
+      inlineIndex,
+    );
+    return;
+  }
+  hideParagraph(
+    tokens as Array<{
+      hidden?: boolean;
+      content?: string;
+      children?: Array<{ type: string; content: string }>;
+    }>,
+    inlineIndex,
+  );
+}
+
+/** Move flags from an inline token immediately before an html fence (no paragraph wrappers). */
+function moveInlineFlagsToFence(
+  tokens: Array<{
+    type: string;
+    info: string;
+    content?: string;
+    hidden?: boolean;
+    children?: Array<{ type: string; content: string }>;
+  }>,
+  fenceIndex: number,
+): void {
+  const inlineIndex = fenceIndex - 1;
+  if (inlineIndex < 0) return;
+  const inline = tokens[inlineIndex];
+  if (inline.type !== "inline") return;
+  const parsed = splitHeadingFlags(inline.content ?? "");
+  if (!parsed) return;
+  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
+  const base = parts.length > 0 ? parts[0] : "html";
+  const existing = new Set(parts.slice(1));
+  for (const flag of parsed.flags) existing.add(flag);
+  tokens[fenceIndex].info = [base, ...existing].join(" ");
+  setInlineContent(inline, parsed.stripped);
+  if (parsed.flags.includes("-noshow")) {
+    inline.hidden = true;
+    inline.children = [];
+    return;
+  }
+  if (parsed.stripped) {
+    return;
+  }
+  inline.hidden = true;
+}
+
+/** Move trailing heading flags onto the matching html fence info string. */
+function moveHeadingFlagsToFence(
+  tokens: Array<{ type: string; info: string; content?: string }>,
+  fenceIndex: number,
+): void {
+  const heading = findPreviousHeadingInline(tokens, fenceIndex);
+  if (!heading?.inline.content) return;
+  const parsed = splitHeadingFlags(heading.inline.content);
+  if (!parsed) return;
+  tokens[fenceIndex].info = ["html", ...parsed.flags].join(" ");
+  setInlineContent(heading.inline, parsed.stripped);
+  if (parsed.flags.includes("-noshow")) {
+    hideHeading(
+      tokens as Array<{
+        hidden?: boolean;
+        content?: string;
+        children?: Array<{ type: string; content: string }>;
+      }>,
+      heading.inlineIndex,
+    );
+    return;
+  }
+  // Keep inline child text in sync, or suppress the heading if only flags remained.
+  if (parsed.stripped) return;
+}
+
+/** Scan html fences and migrate trailing heading `-flag` tokens into their fence info strings. */
+function migrateLiveExampleFlags(
+  tokens: Array<{ type: string; info: string; content?: string }>,
+): void {
+  for (let index = 0; index < tokens.length; index++) {
+    const token = tokens[index];
+    if (token.type !== "fence" || !token.info.trimStart().startsWith("html")) continue;
+    moveHeadingFlagsToFence(tokens, index);
+    moveParagraphFlagsToFence(
+      tokens as Array<{ type: string; info: string; content?: string; hidden?: boolean }>,
+      index,
+    );
+    moveInlineFlagsToFence(
+      tokens as Array<{
+        type: string;
+        info: string;
+        content?: string;
+        hidden?: boolean;
+        children?: Array<{ type: string; content: string }>;
+      }>,
+      index,
+    );
+  }
 }
 
 /**
@@ -195,6 +451,16 @@ export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = 
   const fence = md.renderer.rules.fence;
   if (!fence) return;
 
+  // Core rule: migrate `-flag` tokens from heading inline content into the following html fence's info
+  // string, and strip them from the heading so they don't appear in the rendered title.
+  if (options.liveExample) {
+    md.core.ruler.push("live_example_flags", (state) => {
+      migrateLiveExampleFlags(
+        state.tokens as Array<{ type: string; info: string; content?: string }>,
+      );
+    });
+  }
+
   md.renderer.rules.fence = (...args) => {
     const [tokens, index, , env] = args;
     const token = tokens[index];
@@ -202,15 +468,21 @@ export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = 
     if (info === "demo") {
       return renderDemoFigure(resolveDemo(token.content.trim(), options));
     }
+    const flags = new Set(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
+    // `-noshow` strips the html source fence and its live preview from rendered output.
+    if (info.startsWith("html") && flags.has("-noshow")) {
+      return "";
+    }
     const rendered = fence(...args);
     // Seam a live preview onto each `@example` HTML fence on matching pages (the CSS-API pages load the
     // component CSS, so the same markup renders live). The rendered source fence stays as-is above it.
     const live = options.liveExample;
-    if (live && info === "html") {
+    if (live && info.startsWith("html")) {
       const relativePath = (env as { relativePath?: string } | undefined)?.relativePath ?? "";
       const html = token.content.replace(/\n$/u, "");
+      // Parse -flag tokens from the info string (migrated by the core rule above).
       if (live.match(relativePath) && !isOverlay(html)) {
-        return `${rendered}\n${live.wrap(html)}\n`;
+        return `${rendered}\n${live.wrap(html, flags)}\n`;
       }
     }
     return rendered;

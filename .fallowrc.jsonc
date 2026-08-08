@@ -48,7 +48,9 @@
     "renderers/pendo/src/css/**/*.css",
     "renderers/pendo/src/plugins/*.ts",
     "renderers/vitepress/src/vitepress-vars.css",
-    "tools/demo/runner/*.css"
+    "tools/demo/runner/*.css",
+    "plugins/pantoken/custom-components/src/**/*.css",
+    "plugins/pantoken/layouts/src/**/*.css"
   ],
 
   // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported
