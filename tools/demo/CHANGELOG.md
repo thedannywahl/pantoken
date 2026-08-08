@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.5
+
+### Patch Changes
+
+- d4ba8fe: Support heading `-flag` tokens on HTML examples in demo rendering and refactor markdown flag migration to satisfy complexity gates.
+
 ## 0.1.4
 
 ### Patch Changes
