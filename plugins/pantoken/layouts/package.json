@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-layouts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "pantoken plugin: layout composition records for downstream consumers.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

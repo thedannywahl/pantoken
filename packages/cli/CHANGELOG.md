@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.17
+
+### Patch Changes
+
+- d4ba8fe: Increase timeout headroom for heavy integration tests to reduce timeout flakes in parallel and slower CI runs.
+  - @pantoken/drupal@0.1.15
+  - @pantoken/hugo@0.1.15
+  - @pantoken/jekyll@0.1.15
+  - @pantoken/pendo@0.3.4
+
 ## 0.1.16
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.4.1
+
+### Patch Changes
+
+- d4ba8fe: Increase timeout headroom for heavy integration tests to reduce timeout flakes in parallel and slower CI runs.
+
 ## 0.4.0
 
 ### Minor Changes

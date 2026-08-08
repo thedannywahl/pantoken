@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.2
+
+### Patch Changes
+
+- d4ba8fe: Add custom components and layouts plugin packages, wire them into docs CSS API generation and watch tasks, and align lint/tooling config for the new cssdoc-style sources.
+
 ## 0.2.1
 
 ### Patch Changes
