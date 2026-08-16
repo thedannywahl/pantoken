@@ -269,6 +269,57 @@ describe("generated embedded.ts", () => {
   });
 });
 
+describe("generated per-product and per-logo sheets", () => {
+  test("writes a doc-free per-product sheet with every logo for that product", async () => {
+    vi.resetModules();
+    vi.clearAllMocks();
+    vi.spyOn(console, "log").mockImplementation(() => {});
+    readdirSync.mockImplementation((dir: unknown) => {
+      if (String(dir).endsWith("/canvas")) return ["horizontal-color.svg", "stacked-dark.svg"];
+      throw new Error("ENOENT");
+    });
+    readFileSync.mockReturnValue('<svg xmlns="http://www.w3.org/2000/svg"/>');
+    await import(MODULE_PATH);
+
+    const css = writtenContent("/canvas.css");
+    expect(css).toContain(":root {");
+    expect(css).toContain("--instui-logo-canvas-horizontal-color:");
+    expect(css).toContain("--instui-logo-canvas-stacked-dark:");
+    expect(css).not.toContain("@declaration");
+  });
+
+  test("writes a doc-free single-logo sheet with only that logo's token", async () => {
+    vi.resetModules();
+    vi.clearAllMocks();
+    vi.spyOn(console, "log").mockImplementation(() => {});
+    readdirSync.mockImplementation((dir: unknown) => {
+      if (String(dir).endsWith("/mastery")) return ["horizontal-dark.svg", "icon-color.svg"];
+      throw new Error("ENOENT");
+    });
+    readFileSync.mockReturnValue('<svg xmlns="http://www.w3.org/2000/svg"/>');
+    await import(MODULE_PATH);
+
+    const css = writtenContent("/mastery-horizontal-dark.css");
+    expect(css).toContain("--instui-logo-mastery-horizontal-dark:");
+    expect(css).toContain("@property --instui-logo-mastery-horizontal-dark");
+    expect(css).not.toContain("--instui-logo-mastery-icon-color");
+  });
+
+  test("skips a product with no discovered logos", async () => {
+    vi.resetModules();
+    vi.clearAllMocks();
+    vi.spyOn(console, "log").mockImplementation(() => {});
+    readdirSync.mockImplementation((dir: unknown) => {
+      if (String(dir).endsWith("/canvas")) return ["horizontal-color.svg"];
+      throw new Error("ENOENT");
+    });
+    readFileSync.mockReturnValue('<svg xmlns="http://www.w3.org/2000/svg"/>');
+    await import(MODULE_PATH);
+
+    expect(writeFileSync.mock.calls.some(([p]) => String(p).endsWith("/mastery.css"))).toBe(false);
+  });
+});
+
 describe("console output", () => {
   test("logs the logo count and product count", async () => {
     vi.resetModules();
@@ -283,5 +334,8 @@ describe("console output", () => {
     await import(MODULE_PATH);
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("2 logos across 2 products"));
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining("2 per-logo and 2 per-product sheets"),
+    );
   });
 });

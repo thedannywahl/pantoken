@@ -21,6 +21,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./logos.css": "./dist/logos.css",
+    "./*.css": "./dist/*.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
