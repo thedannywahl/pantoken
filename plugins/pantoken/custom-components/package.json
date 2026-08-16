@@ -20,6 +20,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./custom-components.css": "./dist/custom-components.css",
+    "./*.css": "./dist/*.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
