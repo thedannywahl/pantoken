@@ -1,0 +1,53 @@
+{
+  "name": "@pantoken/plugin-custom-icons",
+  "version": "0.1.0",
+  "description": "pantoken plugin: vendored custom icon glyphs (e.g. product/brand icons not in the InstUI set) as --instui-icon-<name> image tokens, usable via the same -icon-<name> painter class.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "plugins/pantoken/custom-icons"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./custom-icons.css": "./dist/custom-icons.css",
+    "./icons/*.css": "./dist/icons/*.css",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "dev": "vp run generate && vp pack --watch",
+    "test": "vp run generate && vp test",
+    "check": "vp run generate && vp check"
+  },
+  "dependencies": {
+    "@pantoken/model": "workspace:*",
+    "@pantoken/plugin-kit": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pantoken": {
+    "key": "customIcons",
+    "kind": "namespace"
+  }
+}
