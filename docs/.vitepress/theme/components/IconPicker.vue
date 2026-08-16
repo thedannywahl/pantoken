@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, shallowRef, watch } from "vue";
 import { useData } from "vitepress";
-import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
+import pluginManifest from "../generated/cdn-plugin-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
+import PickerSection from "./PickerSection.vue";
+import PickerToggleGroup from "./PickerToggleGroup.vue";
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface InstUiEntry {
@@ -14,6 +16,13 @@ interface SimpleIconEntry {
   slug: string;
   title: string;
 }
+interface LogoGroup {
+  product: string;
+  label: string;
+  items: { name: string }[];
+}
+
+const logoGroups = pluginManifest.logos as LogoGroup[];
 
 // ── i18n ───────────────────────────────────────────────────────────────────────
 const { theme } = useData();
@@ -21,8 +30,8 @@ const t = computed(() => {
   const base = {
     sectionInstui: "InstUI icons",
     sectionSimple: "Simple Icons",
+    sectionLogos: "Logos",
     searchPlaceholder: "Filter icons…",
-    allIcons: "All icons",
     formatLabel: "Output",
     formatLink: "<link>",
     formatImport: "@import",
@@ -101,6 +110,8 @@ onMounted(() => {
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
 const selectedSimple = ref<Set<string>>(new Set());
+const allLogoNames = logoGroups.flatMap((g) => g.items.map((i) => i.name));
+const selectedLogos = ref<Set<string>>(restoreSelection(readHashParam("i_logos"), allLogoNames));
 const format = ref(readHashParam("i_fmt") ?? "link");
 const search = ref(readHashParam("i_q") ?? "");
 
@@ -119,43 +130,61 @@ function toggleSimple(slug: string): void {
   else next.add(slug);
   selectedSimple.value = next;
 }
+function toggleLogo(name: string): void {
+  const next = new Set(selectedLogos.value);
+  if (next.has(name)) next.delete(name);
+  else next.add(name);
+  selectedLogos.value = next;
+}
+function toggleLogoGroup(key: string, checked: boolean): void {
+  const group = logoGroups.find((g) => g.product === key);
+  if (!group) return;
+  const next = new Set(selectedLogos.value);
+  for (const item of group.items) {
+    if (checked) next.add(item.name);
+    else next.delete(item.name);
+  }
+  selectedLogos.value = next;
+}
+function toggleAllLogos(checked: boolean): void {
+  selectedLogos.value = checked ? new Set(allLogoNames) : new Set();
+}
 
-// "All icons" is a tri-state checkbox over BOTH sources: checked when every InstUI icon and every
-// Simple Icon is selected, indeterminate when some are, unchecked when none are. It selects/clears
-// everything without disabling the individual checkboxes.
-//
-// The combine-URL/ESM builder below has its own, narrower "every InstUI icon selected" check
-// (independent of Simple Icons) so it can still collapse to the bundled icons.css.
+// Each section's tri-state is scoped to its own source — no combined master checkbox.
 const allInstuiSelected = computed(
   () =>
     (instuiIcons.value?.length ?? 0) > 0 && selectedInstui.value.size === instuiIcons.value?.length,
+);
+const someInstuiSelected = computed(
+  () => !allInstuiSelected.value && selectedInstui.value.size > 0,
 );
 const allSimpleSelected = computed(
   () =>
     (simpleIcons.value?.length ?? 0) > 0 && selectedSimple.value.size === simpleIcons.value?.length,
 );
+const someSimpleSelected = computed(
+  () => !allSimpleSelected.value && selectedSimple.value.size > 0,
+);
+const allLogosSelected = computed(
+  () => allLogoNames.length > 0 && selectedLogos.value.size === allLogoNames.length,
+);
 
-const allSelected = computed(
-  () =>
-    (instuiIcons.value?.length ?? 0) + (simpleIcons.value?.length ?? 0) > 0 &&
-    allInstuiSelected.value &&
-    allSimpleSelected.value,
-);
-const someSelected = computed(
-  () => (selectedInstui.value.size > 0 || selectedSimple.value.size > 0) && !allSelected.value,
-);
-const allCheckboxEl = useIndeterminateCheckbox(someSelected);
 watch(selectedInstui, (s) => {
   writeHashParam("i_instui", allInstuiSelected.value ? "all" : [...s].join(","), "");
 });
 watch(selectedSimple, (s) => {
   writeHashParam("i_simple", allSimpleSelected.value ? "all" : [...s].join(","), "");
 });
+watch(selectedLogos, (s) => {
+  writeHashParam("i_logos", allLogosSelected.value ? "all" : [...s].join(","), "");
+});
 
-function toggleAll(checked: boolean): void {
+function toggleAllInstui(checked: boolean): void {
   selectedInstui.value = checked
     ? new Set((instuiIcons.value ?? []).map((i) => i.name))
     : new Set();
+}
+function toggleAllSimple(checked: boolean): void {
   selectedSimple.value = checked
     ? new Set((simpleIcons.value ?? []).map((i) => i.slug))
     : new Set();
@@ -172,11 +201,33 @@ const filteredSimple = computed(() => {
   return q ? all.filter((i) => i.slug.includes(q) || i.title.toLowerCase().includes(q)) : all;
 });
 
-const hasSelection = computed(() => selectedInstui.value.size > 0 || selectedSimple.value.size > 0);
+const hasSelection = computed(
+  () =>
+    selectedInstui.value.size > 0 || selectedSimple.value.size > 0 || selectedLogos.value.size > 0,
+);
 
-// ── URL builder — merges both sources into one combine URL / ESM snippet ─────────────────────────
+// ── URL builder — merges all three sources into one combine URL / ESM snippet ────────────────────
 const c = "npm/@pantoken/components/dist";
 const si = "npm/@pantoken/plugin-simple-icons/dist";
+const li = "npm/@pantoken/plugin-logos/dist";
+
+// 3-tier collapse: a fully-selected product folds into its own barrel, and every product selected
+// folds into the full logos.css barrel — mirrors the Components tab's collapse-to-barrel pattern.
+function logoFiles(prefix: string): string[] {
+  if (allLogosSelected.value) return [`${prefix}/logos.css`];
+  const files: string[] = [];
+  for (const group of logoGroups) {
+    const names = group.items.map((i) => i.name);
+    if (names.length > 0 && names.every((n) => selectedLogos.value.has(n))) {
+      files.push(`${prefix}/${group.product}.css`);
+    } else {
+      for (const name of names) {
+        if (selectedLogos.value.has(name)) files.push(`${prefix}/${name}.css`);
+      }
+    }
+  }
+  return files;
+}
 
 const combineUrl = computed(() => {
   const files: string[] = [];
@@ -190,6 +241,7 @@ const combineUrl = computed(() => {
   } else {
     for (const slug of selectedSimple.value) files.push(`${si}/icons/${slug}.css`);
   }
+  files.push(...logoFiles(li));
   return files.length === 0 ? null : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
@@ -208,6 +260,9 @@ const esmSnippet = computed(() => {
     for (const slug of selectedSimple.value) {
       lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${slug}.css";`);
     }
+  }
+  for (const file of logoFiles("@pantoken/plugin-logos")) {
+    lines.push(`import "https://esm.sh/${file}";`);
   }
   return lines.length === 0 ? null : lines.join("\n");
 });
@@ -237,51 +292,41 @@ const output = computed(() => {
     <fieldset class="instui-form-field-group icon-picker__group">
       <legend class="instui-screen-reader-content">Icons</legend>
 
-      <!-- One scrollable list for both sources — the section headers are rows inside it, not separate
-           lists, so there's a single continuous scroll instead of two boxes. -->
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
-        <div class="icon-picker__grid instui-view -border-radius-medium instui-p-sm">
-          <label class="instui-checkbox">
-            <input
-              ref="allCheckboxEl"
-              type="checkbox"
-              :checked="allSelected"
-              :disabled="!instuiIcons || !simpleIcons"
-              @change="toggleAll(($event.target as HTMLInputElement).checked)"
-            />
-            <span>{{ t.allIcons }}</span>
-          </label>
+        <div class="icon-picker__sections instui-view -border-radius-medium instui-p-sm">
           <p
             v-if="loadingInstui"
             class="instui-text -color-secondary -style-italic icon-picker__status"
           >
             {{ t.loadingNote }}
           </p>
-          <template v-else-if="instuiIcons">
-            <div
-              class="icon-picker__header instui-heading -level-h3 -variant-label"
-              style="margin: 0.75rem 0 0.5rem"
-            >
-              {{ t.sectionInstui }}
+          <PickerSection
+            v-else-if="instuiIcons"
+            :label="t.sectionInstui"
+            :all-selected="allInstuiSelected"
+            :some-selected="someInstuiSelected"
+            @toggle-all="toggleAllInstui"
+          >
+            <div class="icon-picker__grid">
+              <label
+                v-for="icon in filteredInstui"
+                :key="icon.name"
+                class="instui-checkbox icon-picker__item"
+              >
+                <input
+                  type="checkbox"
+                  :checked="selectedInstui.has(icon.name)"
+                  @change="toggleInstui(icon.name)"
+                />
+                <span
+                  class="instui-icon icon-picker__glyph"
+                  :class="`-icon-${icon.name}`"
+                  aria-hidden="true"
+                ></span>
+                <span class="icon-picker__label">{{ icon.name }}</span>
+              </label>
             </div>
-            <label
-              v-for="icon in filteredInstui"
-              :key="icon.name"
-              class="instui-checkbox icon-picker__item"
-            >
-              <input
-                type="checkbox"
-                :checked="selectedInstui.has(icon.name)"
-                @change="toggleInstui(icon.name)"
-              />
-              <span
-                class="instui-icon icon-picker__glyph"
-                :class="`-icon-${icon.name}`"
-                aria-hidden="true"
-              ></span>
-              <span class="icon-picker__label">{{ icon.name }}</span>
-            </label>
-          </template>
+          </PickerSection>
 
           <p
             v-if="loadingSimple"
@@ -289,33 +334,45 @@ const output = computed(() => {
           >
             {{ t.loadingNote }}
           </p>
-          <template v-else-if="simpleIcons">
-            <div
-              class="icon-picker__header instui-heading -level-h3 -variant-label -border-top"
-              style="margin: 1rem 0 0.5rem"
-            >
-              {{ t.sectionSimple }}
+          <PickerSection
+            v-else-if="simpleIcons"
+            :label="t.sectionSimple"
+            :all-selected="allSimpleSelected"
+            :some-selected="someSimpleSelected"
+            @toggle-all="toggleAllSimple"
+          >
+            <div class="icon-picker__grid">
+              <label
+                v-for="icon in filteredSimple"
+                :key="icon.slug"
+                class="instui-checkbox icon-picker__item"
+              >
+                <input
+                  type="checkbox"
+                  :checked="selectedSimple.has(icon.slug)"
+                  @change="toggleSimple(icon.slug)"
+                />
+                <img
+                  class="icon-picker__img"
+                  :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
+                  :alt="icon.title"
+                  loading="lazy"
+                  aria-hidden="true"
+                />
+                <span class="icon-picker__label">{{ icon.title }}</span>
+              </label>
             </div>
-            <label
-              v-for="icon in filteredSimple"
-              :key="icon.slug"
-              class="instui-checkbox icon-picker__item"
-            >
-              <input
-                type="checkbox"
-                :checked="selectedSimple.has(icon.slug)"
-                @change="toggleSimple(icon.slug)"
-              />
-              <img
-                class="icon-picker__img"
-                :src="`https://cdn.jsdelivr.net/npm/simple-icons/icons/${icon.slug}.svg`"
-                :alt="icon.title"
-                loading="lazy"
-                aria-hidden="true"
-              />
-              <span class="icon-picker__label">{{ icon.title }}</span>
-            </label>
-          </template>
+          </PickerSection>
+
+          <PickerToggleGroup
+            v-if="logoGroups.length > 0"
+            :label="t.sectionLogos"
+            :groups="logoGroups.map((g) => ({ key: g.product, label: g.label, items: g.items }))"
+            :selected="selectedLogos"
+            @toggle-all="toggleAllLogos"
+            @toggle-group="toggleLogoGroup"
+            @toggle-item="toggleLogo"
+          />
         </div>
       </div>
     </fieldset>
@@ -348,21 +405,17 @@ const output = computed(() => {
 .icon-picker__group {
   margin: 0;
 }
+.icon-picker__sections {
+  max-height: 28rem;
+  overflow-y: auto;
+}
 .icon-picker__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
   gap: 0.25rem 0.5rem;
-  max-height: 24rem;
-  overflow-y: auto;
-}
-/* Section headers are rows inside the single scrollable grid, spanning every column. */
-.icon-picker__header {
-  grid-column: 1 / -1;
-  margin: 0 0 0.25rem;
 }
 .icon-picker__status {
-  grid-column: 1 / -1;
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 .icon-picker__item {
   display: flex;
