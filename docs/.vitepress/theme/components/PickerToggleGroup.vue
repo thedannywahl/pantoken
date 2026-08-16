@@ -43,6 +43,7 @@ const checkboxEl = useIndeterminateCheckbox(someSelected);
         v-for="group in groups"
         :key="group.key"
         :label="group.label"
+        :product="group.key"
         :items="group.items"
         :selected="selected"
         @toggle-group="(checked) => emit('toggle-group', group.key, checked)"
