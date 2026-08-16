@@ -23,6 +23,7 @@ import "./generated/components.css";
 import "../../../formats/components/generated/utilities.css";
 import "../../../formats/components/generated/icons.css";
 import "../../../plugins/pantoken/custom-components/generated/custom-components.css";
+import "../../../plugins/pantoken/custom-icons/generated/custom-icons.css";
 import "@pantoken/components/fonts.css";
 import VitePressMermaid from "../plugins/vitepress-mermaid/index.vue";
 import CdnPicker from "./components/CdnPicker.vue";
