@@ -10,6 +10,7 @@ import {
   cardRules,
   agentShellRules,
 } from "../../plugins/pantoken/custom-components/src/components/index.ts";
+import { icons as vendoredCustomIcons } from "../../plugins/pantoken/custom-icons/src/index.ts";
 import { logos, products } from "../../plugins/pantoken/logos/src/index.ts";
 
 const outDir = resolve(import.meta.dirname, "../.vitepress/theme/generated");
@@ -21,6 +22,11 @@ const customComponents = [
   ["card", cardRules],
   ["agent-shell", agentShellRules],
 ].map(([name]) => ({ name }));
+
+// ── Custom icons ──────────────────────────────────────────────────────────────
+// Vendored icons in the same --instui-icon-<name> namespace as the InstUI icon set — one checkbox
+// each, listed on the Icons tab below Simple Icons.
+const customIcons = vendoredCustomIcons.map((i) => ({ name: i.name }));
 
 // ── Other plugins ─────────────────────────────────────────────────────────────
 // Single-file CSS plugins that aren't rolled into Base/Utilities and aren't components, icons, or
@@ -68,9 +74,14 @@ const logosByProduct = products.map((product) => ({
 const out = resolve(outDir, "cdn-plugin-manifest.json");
 writeFileSync(
   out,
-  `${JSON.stringify({ customComponents, otherPlugins, logos: logosByProduct }, null, 2)}\n`,
+  `${JSON.stringify(
+    { customComponents, otherPlugins, customIcons, logos: logosByProduct },
+    null,
+    2,
+  )}\n`,
 );
 console.log(
   `✓ docs: wrote cdn-plugin-manifest.json (${customComponents.length} custom components, ` +
-    `${otherPlugins.length} other plugins, ${logosByProduct.length} logo products)`,
+    `${otherPlugins.length} other plugins, ${customIcons.length} custom icons, ` +
+    `${logosByProduct.length} logo products)`,
 );
