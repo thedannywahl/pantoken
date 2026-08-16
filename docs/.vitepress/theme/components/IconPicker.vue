@@ -21,8 +21,12 @@ interface LogoGroup {
   label: string;
   items: { name: string }[];
 }
+interface CustomIconEntry {
+  name: string;
+}
 
 const logoGroups = pluginManifest.logos as LogoGroup[];
+const customIcons = pluginManifest.customIcons as CustomIconEntry[];
 
 // ── i18n ───────────────────────────────────────────────────────────────────────
 const { theme } = useData();
@@ -30,6 +34,7 @@ const t = computed(() => {
   const base = {
     sectionInstui: "InstUI icons",
     sectionSimple: "Simple Icons",
+    sectionCustomIcons: "Custom icons",
     sectionLogos: "Logos",
     searchPlaceholder: "Filter icons…",
     formatLabel: "Output",
@@ -110,6 +115,10 @@ onMounted(() => {
 // ── Selection ─────────────────────────────────────────────────────────────────
 const selectedInstui = ref<Set<string>>(new Set());
 const selectedSimple = ref<Set<string>>(new Set());
+const allCustomIconNames = customIcons.map((i) => i.name);
+const selectedCustomIcons = ref<Set<string>>(
+  restoreSelection(readHashParam("i_custom"), allCustomIconNames),
+);
 const allLogoNames = logoGroups.flatMap((g) => g.items.map((i) => i.name));
 const selectedLogos = ref<Set<string>>(restoreSelection(readHashParam("i_logos"), allLogoNames));
 const format = ref(readHashParam("i_fmt") ?? "link");
@@ -129,6 +138,12 @@ function toggleSimple(slug: string): void {
   if (next.has(slug)) next.delete(slug);
   else next.add(slug);
   selectedSimple.value = next;
+}
+function toggleCustomIcon(name: string): void {
+  const next = new Set(selectedCustomIcons.value);
+  if (next.has(name)) next.delete(name);
+  else next.add(name);
+  selectedCustomIcons.value = next;
 }
 function toggleLogo(name: string): void {
   const next = new Set(selectedLogos.value);
@@ -165,6 +180,13 @@ const allSimpleSelected = computed(
 const someSimpleSelected = computed(
   () => !allSimpleSelected.value && selectedSimple.value.size > 0,
 );
+const allCustomIconsSelected = computed(
+  () =>
+    allCustomIconNames.length > 0 && selectedCustomIcons.value.size === allCustomIconNames.length,
+);
+const someCustomIconsSelected = computed(
+  () => !allCustomIconsSelected.value && selectedCustomIcons.value.size > 0,
+);
 const allLogosSelected = computed(
   () => allLogoNames.length > 0 && selectedLogos.value.size === allLogoNames.length,
 );
@@ -174,6 +196,9 @@ watch(selectedInstui, (s) => {
 });
 watch(selectedSimple, (s) => {
   writeHashParam("i_simple", allSimpleSelected.value ? "all" : [...s].join(","), "");
+});
+watch(selectedCustomIcons, (s) => {
+  writeHashParam("i_custom", allCustomIconsSelected.value ? "all" : [...s].join(","), "");
 });
 watch(selectedLogos, (s) => {
   writeHashParam("i_logos", allLogosSelected.value ? "all" : [...s].join(","), "");
@@ -189,6 +214,9 @@ function toggleAllSimple(checked: boolean): void {
     ? new Set((simpleIcons.value ?? []).map((i) => i.slug))
     : new Set();
 }
+function toggleAllCustomIcons(checked: boolean): void {
+  selectedCustomIcons.value = checked ? new Set(allCustomIconNames) : new Set();
+}
 
 const filteredInstui = computed(() => {
   const all = instuiIcons.value ?? [];
@@ -203,12 +231,18 @@ const filteredSimple = computed(() => {
 
 const hasSelection = computed(
   () =>
-    selectedInstui.value.size > 0 || selectedSimple.value.size > 0 || selectedLogos.value.size > 0,
+    selectedInstui.value.size > 0 ||
+    selectedSimple.value.size > 0 ||
+    selectedCustomIcons.value.size > 0 ||
+    selectedLogos.value.size > 0,
 );
 
-// ── URL builder — merges all three sources into one combine URL / ESM snippet ────────────────────
+// ── URL builder — merges every source into one combine URL / ESM snippet ────────────────────────
+// The InstUI icon sheet is pushed last: :root custom properties resolve last-wins, so on a name
+// collision with a vendored custom icon (or, in principle, a brand glyph), the built-in wins.
 const c = "npm/@pantoken/components/dist";
 const si = "npm/@pantoken/plugin-simple-icons/dist";
+const ci = "npm/@pantoken/plugin-custom-icons/dist";
 const li = "npm/@pantoken/plugin-logos/dist";
 
 // 3-tier collapse: a fully-selected product folds into its own barrel, and every product selected
@@ -231,29 +265,27 @@ function logoFiles(prefix: string): string[] {
 
 const combineUrl = computed(() => {
   const files: string[] = [];
-  if (allInstuiSelected.value) {
-    files.push(`${c}/icons.css`);
-  } else {
-    for (const name of selectedInstui.value) files.push(`${c}/icons/${name}.css`);
-  }
   if (allSimpleSelected.value) {
     files.push(`${si}/simple-icons.css`);
   } else {
     for (const slug of selectedSimple.value) files.push(`${si}/icons/${slug}.css`);
   }
+  if (allCustomIconsSelected.value) {
+    files.push(`${ci}/custom-icons.css`);
+  } else {
+    for (const name of selectedCustomIcons.value) files.push(`${ci}/icons/${name}.css`);
+  }
   files.push(...logoFiles(li));
+  if (allInstuiSelected.value) {
+    files.push(`${c}/icons.css`);
+  } else {
+    for (const name of selectedInstui.value) files.push(`${c}/icons/${name}.css`);
+  }
   return files.length === 0 ? null : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
 });
 
 const esmSnippet = computed(() => {
   const lines: string[] = [];
-  if (allInstuiSelected.value) {
-    lines.push(`import "https://esm.sh/@pantoken/components/icons.css";`);
-  } else {
-    for (const name of selectedInstui.value) {
-      lines.push(`import "https://esm.sh/@pantoken/components/icons/${name}.css";`);
-    }
-  }
   if (allSimpleSelected.value) {
     lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/simple-icons.css";`);
   } else {
@@ -261,8 +293,22 @@ const esmSnippet = computed(() => {
       lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${slug}.css";`);
     }
   }
+  if (allCustomIconsSelected.value) {
+    lines.push(`import "https://esm.sh/@pantoken/plugin-custom-icons/custom-icons.css";`);
+  } else {
+    for (const name of selectedCustomIcons.value) {
+      lines.push(`import "https://esm.sh/@pantoken/plugin-custom-icons/icons/${name}.css";`);
+    }
+  }
   for (const file of logoFiles("@pantoken/plugin-logos")) {
     lines.push(`import "https://esm.sh/${file}";`);
+  }
+  if (allInstuiSelected.value) {
+    lines.push(`import "https://esm.sh/@pantoken/components/icons.css";`);
+  } else {
+    for (const name of selectedInstui.value) {
+      lines.push(`import "https://esm.sh/@pantoken/components/icons/${name}.css";`);
+    }
   }
   return lines.length === 0 ? null : lines.join("\n");
 });
@@ -360,6 +406,34 @@ const output = computed(() => {
                   aria-hidden="true"
                 />
                 <span class="icon-picker__label">{{ icon.title }}</span>
+              </label>
+            </div>
+          </PickerSection>
+
+          <PickerSection
+            v-if="customIcons.length > 0"
+            :label="t.sectionCustomIcons"
+            :all-selected="allCustomIconsSelected"
+            :some-selected="someCustomIconsSelected"
+            @toggle-all="toggleAllCustomIcons"
+          >
+            <div class="icon-picker__grid">
+              <label
+                v-for="icon in customIcons"
+                :key="icon.name"
+                class="instui-checkbox icon-picker__item"
+              >
+                <input
+                  type="checkbox"
+                  :checked="selectedCustomIcons.has(icon.name)"
+                  @change="toggleCustomIcon(icon.name)"
+                />
+                <span
+                  class="instui-icon icon-picker__glyph"
+                  :class="`-icon-${icon.name}`"
+                  aria-hidden="true"
+                ></span>
+                <span class="icon-picker__label">{{ icon.name }}</span>
               </label>
             </div>
           </PickerSection>
