@@ -1,6 +1,6 @@
 <div class="alert-demo">
   <div class="alert-list">
-    <div class="instui-alert -color-info instui-transition">
+    <div class="instui-alert -color-info instui-transition -fade-entered">
       Dismissable with <code>transition="fade"</code> — I fade out when closed.
       <button class="instui-close-button -size-sm" aria-label="Close"></button>
     </div>
@@ -11,7 +11,7 @@
     <div class="instui-alert -color-warning -without-shadow">
       Not dismissable, and flat via <code>-without-shadow</code> (alerts are elevated by default).
     </div>
-    <div class="instui-alert -color-info -icon-megaphone instui-transition">
+    <div class="instui-alert -color-info -icon-megaphone instui-transition -fade-entered">
       A custom icon via the <code>-icon-megaphone</code> class, kept white on the status bar.
       <button class="instui-close-button -size-sm" aria-label="Close"></button>
     </div>
@@ -42,7 +42,7 @@
   const restore = document.querySelector('[data-role="restore"]');
   const initial = list.innerHTML;
 
-  // Dismiss an alert. With the transition prop (the .instui-transition base) it fades out first,
+  // Dismiss an alert. With the default fade transition it fades out first,
   // backed by a timeout in case transitionend is missed; otherwise it's removed immediately.
   function wireCloses(root) {
     root.querySelectorAll(".instui-close-button").forEach((btn) => {
@@ -50,6 +50,7 @@
         const alert = btn.closest(".instui-alert");
         restore.disabled = false;
         if (alert.classList.contains("instui-transition")) {
+          alert.classList.remove("-fade-entered");
           alert.classList.add("-fade-exiting");
           const drop = () => alert.remove();
           alert.addEventListener("transitionend", drop, { once: true });

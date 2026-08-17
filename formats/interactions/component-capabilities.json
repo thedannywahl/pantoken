@@ -4,8 +4,9 @@
   "components": [
     {
       "name": "alert",
-      "type": "css-only",
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/alert.css"
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/alert.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"
     },
     {
       "name": "avatar",

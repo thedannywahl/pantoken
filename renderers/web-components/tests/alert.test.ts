@@ -42,7 +42,8 @@ test("a timeout auto-dismisses: fires a cancelable, bubbling `dismiss`, then rem
   expect(evt).toBeDefined();
   expect(evt?.bubbles).toBe(true);
   expect(evt?.cancelable).toBe(true);
-  expect(el.style.opacity).toBe("0");
+  expect(el.classList.contains("instui-transition")).toBe(true);
+  expect(el.classList.contains("-fade-exiting")).toBe(true);
   // The fallback removal timer (400ms) runs even though happy-dom never fires transitionend.
   vi.advanceTimersByTime(400);
   expect(el.isConnected).toBe(false);
@@ -55,7 +56,15 @@ test("preventDefault on `dismiss` keeps the alert mounted", () => {
   document.addEventListener("dismiss", (e) => e.preventDefault(), { once: true });
   vi.advanceTimersByTime(500);
   expect(el.isConnected).toBe(true);
-  expect(el.style.opacity).not.toBe("0");
+  expect(el.classList.contains("-fade-exiting")).toBe(false);
+});
+
+test("transition=none removes immediately when the timeout elapses", () => {
+  vi.useFakeTimers();
+  document.body.innerHTML = `<instui-alert timeout="10" transition="none">Done</instui-alert>`;
+  const el = document.querySelector("instui-alert") as HTMLElement;
+  vi.advanceTimersByTime(10);
+  expect(el.isConnected).toBe(false);
 });
 
 test("disconnecting before the timeout clears the auto-dismiss timer (never dismisses)", () => {

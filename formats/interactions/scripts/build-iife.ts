@@ -8,7 +8,7 @@
  * Runs after `vp pack` in the build task.
  */
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, statSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { build } from "vite";
 
@@ -105,9 +105,17 @@ for (const name of ALL_COMPONENTS) {
       },
       rollupOptions: {
         external: [],
+        // Each entry exists for its document-level initialization side effects. The package's
+        // sideEffects metadata is consumer-facing; don't let it erase the entry during this build.
+        treeshake: false,
       },
     },
   });
+
+  const outputPath = resolve(root, "dist", `${name}.iife.js`);
+  if (statSync(outputPath).size === 0) {
+    throw new Error(`interactions: generated an empty ${name}.iife.js bundle`);
+  }
 }
 
 console.log(`✓ interactions: wrote ${ALL_COMPONENTS.length} per-component .iife.js bundles`);

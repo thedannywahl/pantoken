@@ -38,15 +38,39 @@ pantoken komponensek:
 ```html
 <!-- direct instui props -->
 <div
-  class="instui-alert -variant-success -transition-fade -has-shadow -render-custom-icon-megaphone"
+  class="instui-alert -variant-success instui-transition -fade-entered -has-shadow -render-custom-icon-megaphone"
 >
   This is the alert content.
 </div>
 
 <!-- normalized color/icon props -->
-<div class="instui-alert -color-success -transition-fade -has-shadow -icon-megaphone">
+<div
+  class="instui-alert -color-success instui-transition -fade-entered -has-shadow -icon-megaphone"
+>
   This is the alert content.
 </div>
+```
+
+Az InstUI `timeout` propjához állítsd be az egység nélküli `--timeout` egyéni tulajdonságot
+ezredmásodpercben, és töltsd be az Alert interakciót. A pozitív érték ütemezi az eltávolítást; a `0`
+(az alapérték) a helyén hagyja a figyelmeztetést. Az InstUI áttűnéséhez add hozzá a transition plugin
+`instui-transition -fade-entered` osztályait; azonnali eltávolításhoz hagyd el őket. Az interakció a
+plugin `-fade-exiting` állapotát vezérli, majd egy megszakítható, buborékoló `dismiss` eseményt küld,
+így az alkalmazás a `preventDefault()` hívásával megtarthatja az elemet.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@pantoken/plugin-transition/dist/transition.css"
+/>
+<div
+  class="instui-alert -color-info instui-transition -fade-entered"
+  style="--timeout: 5000"
+  role="alert"
+>
+  Ez a figyelmeztetés öt másodperc után eltűnik.
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
 ## Osztály-előtag

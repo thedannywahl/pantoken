@@ -38,15 +38,39 @@ pantoken components:
 ```html
 <!-- direct instui props -->
 <div
-  class="instui-alert -variant-success -transition-fade -has-shadow -render-custom-icon-megaphone"
+  class="instui-alert -variant-success instui-transition -fade-entered -has-shadow -render-custom-icon-megaphone"
 >
   This is the alert content.
 </div>
 
 <!-- normalized color/icon props -->
-<div class="instui-alert -color-success -transition-fade -has-shadow -icon-megaphone">
+<div
+  class="instui-alert -color-success instui-transition -fade-entered -has-shadow -icon-megaphone"
+>
   This is the alert content.
 </div>
+```
+
+For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
+the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
+place. Add the transition plugin's `instui-transition -fade-entered` classes for InstUI's fade; omit
+them for immediate removal. The interaction drives the plugin's `-fade-exiting` state and fires a
+cancelable, bubbling `dismiss` event before removal, so an application can call `preventDefault()`
+to keep the alert mounted.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@pantoken/plugin-transition/dist/transition.css"
+/>
+<div
+  class="instui-alert -color-info instui-transition -fade-entered"
+  style="--timeout: 5000"
+  role="alert"
+>
+  This alert dismisses after five seconds.
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
 ## Class prefix

@@ -32,10 +32,12 @@ Each bundle auto-initializes on load:
 - **Spacing**: Applies InstUI spacing keywords (e.g., `margin="md"`, `padding="sm"`) to elements
 - **Command routing**: Sets up event routing for command-driven interactions
 - **Invoker sync**: Mirrors invoker attributes onto inner buttons for popover/command targets
+- **Alert removal**: Reads `--timeout` as milliseconds, fires a cancelable `dismiss` event, and
+  removes the alert after its exit transition
 
 ## Per-component Bundles
 
-- `alert.iife.js` — `.instui-alert`
+- `alert.iife.js` — `.instui-alert` (spacing and timeout-based removal)
 - `badge.iife.js` — `.instui-badge`
 - `button.iife.js` — `.instui-button` (includes command routing)
 - `calendar.iife.js` — `.instui-calendar` (includes command routing)

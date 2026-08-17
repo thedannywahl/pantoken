@@ -1,4 +1,5 @@
 import { alertCss } from "@pantoken/components";
+import { initRemove, type RemoveHandle } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 
 /**
@@ -7,7 +8,8 @@ import type { ElementDefinition } from "../lib/context.ts";
  * set `has-shadow="false"` to flatten one (→ `-without-shadow`, mirroring InstUI's `hasShadow={false}`).
  * The `timeout` attribute (milliseconds) auto-dismisses the alert after that delay — it fades out,
  * removes itself from the DOM, and fires a cancelable bubbling `dismiss` event (call `preventDefault()`
- * on it to keep the alert mounted). Slotted content is the message body.
+ * on it to keep the alert mounted). The fade states use `@pantoken/plugin-transition`; load its
+ * stylesheet when using timeout dismissal. Slotted content is the message body.
  *
  * @example
  * ```html
@@ -25,7 +27,7 @@ export const alert: ElementDefinition = {
       "instui-alert",
       class extends HTMLElement {
         static observedAttributes = ["variant", "has-shadow"];
-        #timer: ReturnType<typeof setTimeout> | undefined;
+        #removeHandle: RemoveHandle | undefined;
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
@@ -34,12 +36,13 @@ export const alert: ElementDefinition = {
           this.#paint();
           // `timeout` (ms) → auto-dismiss. Read on connect; a non-positive/absent value never arms it.
           const timeout = Number(this.getAttribute("timeout"));
-          if (Number.isFinite(timeout) && timeout > 0) {
-            this.#timer = setTimeout(() => this.#dismiss(), timeout);
-          }
+          this.#removeHandle = initRemove(this, {
+            timeout,
+            transition: this.getAttribute("transition") === "none" ? "none" : "fade",
+          });
         }
         disconnectedCallback(): void {
-          clearTimeout(this.#timer);
+          this.#removeHandle?.cleanup();
         }
         attributeChangedCallback(): void {
           this.#paint();
@@ -53,20 +56,6 @@ export const alert: ElementDefinition = {
           root.innerHTML =
             `<style>:host{display:block}${alertCss(ctx.I)}</style>` +
             `<div class="${cls}" role="alert" part="alert"><slot></slot></div>`;
-        }
-        /** Fire a cancelable `dismiss`; unless prevented, fade the host out and remove it. */
-        #dismiss(): void {
-          const kept = !this.dispatchEvent(
-            new CustomEvent("dismiss", { bubbles: true, composed: true, cancelable: true }),
-          );
-          if (kept) return;
-          this.style.transition = "opacity 0.3s ease";
-          this.style.opacity = "0";
-          const remove = (): void => {
-            this.remove();
-          };
-          this.addEventListener("transitionend", remove, { once: true });
-          setTimeout(remove, 400); // fallback if transitionend is missed
         }
       },
     );

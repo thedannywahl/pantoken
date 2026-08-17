@@ -3,16 +3,20 @@
 // Per-component interaction entry point for alert
 
 import { applySpacing } from "../shared/index.js";
+import { initRemove } from "../behaviors/remove.js";
 
 // Initialize on page load
-function initalert() {
-  for (const el of document.querySelectorAll(".instui-alert")) {
-    applySpacing(el as HTMLElement);
+function initAlert() {
+  for (const el of document.querySelectorAll<HTMLElement>(".instui-alert")) {
+    applySpacing(el);
+    initRemove(el, {
+      transition: el.classList.contains("instui-transition") ? "fade" : "none",
+    });
   }
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initalert);
+  document.addEventListener("DOMContentLoaded", initAlert);
 } else {
-  initalert();
+  initAlert();
 }
