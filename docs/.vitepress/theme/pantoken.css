@@ -93,10 +93,11 @@ div[class*="language-"]:has(+ .css-example) > pre {
    `light-dark()` value — both branches shown at once, no theme toggle needed. Each chip sits over a
    theme-neutral checkerboard so translucent colours (e.g. `#00000000`) read as translucent. */
 .pantoken-swatch {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-block-start: 6px;
+  align-items: last baseline;
+  margin-left: 0.25rem;
 }
 
 .pantoken-swatch__item {

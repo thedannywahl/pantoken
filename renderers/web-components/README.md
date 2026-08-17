@@ -37,8 +37,11 @@ inherited custom properties, so they pierce the shadow boundary — load `@panto
 - `<instui-badge variant="success|danger">`, `<instui-pill variant="info|success|warning|danger">`,
   `<instui-tag>`.
 - `<instui-avatar variant="blue|green|red|orange" size="sm|lg" shape="rectangle">`.
-- `<instui-spinner>`, `<instui-progress value="0–100" variant="success|danger">`.
-- `<instui-progress-circle value="0–100" label="…">` — a ring driven by `value`.
+- `<instui-spinner>`, `<instui-progress value-now="40" value-max="60" should-animate
+variant="success|danger" label="…">` — an arbitrary-scale bar; `value`/`max` remain supported
+  shorthand attributes.
+- `<instui-progress-circle value-now="40" value-max="60" should-animate animation-delay="500"
+label="…">` — an arbitrary-scale ring; `value`/`max` remain supported shorthand attributes.
 
 Alert timeout dismissal uses the shared `@pantoken/interactions` behavior. Load
 `@pantoken/plugin-transition/transition.css` for its default fade treatment; `transition="none"`

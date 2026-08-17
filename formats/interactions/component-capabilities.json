@@ -188,8 +188,9 @@
     },
     {
       "name": "progress-circle",
-      "type": "css-only",
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/progress-circle.css"
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/progress-circle.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"
     },
     {
       "name": "radio",

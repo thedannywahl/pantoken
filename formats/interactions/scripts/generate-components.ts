@@ -48,6 +48,7 @@ const BEHAVIORAL_COMPONENTS = new Set([
   "modal",
   "tooltip",
   "in-place-edit",
+  "progress-circle",
 ]);
 
 // Components that require command event handling

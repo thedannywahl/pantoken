@@ -17,10 +17,26 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
   expect(css).toContain(".instui-progress-circle.-color-primary-inverse");
 });
 
-test("progress circle registers --value, draws the ring on ::before, and centers a value", () => {
+test("progress circle registers current, maximum, and animation inputs", () => {
   const css = progressCircleCss({ prefix: "instui" });
   expect(css).toContain("@property --value");
+  expect(css).toContain("@property --value-now");
+  expect(css).toContain("@property --max");
+  expect(css).toContain("@property --value-max");
+  expect(css).toContain("@property --animation-delay");
+  expect(css).toContain("--value: var(--value-now)");
+  expect(css).toContain("--max: var(--value-max)");
+  expect(css).toContain("calc(var(--value) / var(--max) * 100%)");
   expect(css).toContain(".instui-progress-circle::before");
   expect(css).toContain(".instui-progress-circle .value");
   expect(css).toContain(".instui-progress-circle.-color-success");
+});
+
+test("progress circle embeds the shared mount transition and a functional deprecated alias", () => {
+  const css = progressCircleCss({ prefix: "instui" });
+  expect(css).toContain(".instui-progress-circle { transition: --value 1s; }");
+  expect(css).toContain(".instui-progress-circle.-should-animate");
+  expect(css).toContain(".instui-progress-circle.-should-animate-on-mount");
+  expect(css).toContain(".instui-progress-circle.-shold-animate-on-mount");
+  expect(css).toContain("opacity 0.5s 1s");
 });

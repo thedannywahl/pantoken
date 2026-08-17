@@ -1,6 +1,10 @@
 import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
-import { transition } from "../src/index.ts";
+import {
+  progressCircleTransitionRules,
+  progressTransitionRules,
+  transition,
+} from "../src/index.ts";
 
 test("is a factoried plugin with tokens + css capabilities", () => {
   expect(capabilitiesOf(transition())).toEqual(["tokens", "css"]);
@@ -35,4 +39,19 @@ test("options override duration, timing, and prefix", () => {
   expect(c?.append).toContain(".ui-transition.-fade-entered");
   const decls = Object.fromEntries(c?.declarations ?? []);
   expect(decls["--instui-transition-duration"]).toBe("200ms");
+});
+
+test("progress circle mount rules reproduce InstUI's transition sequence", () => {
+  const css = progressCircleTransitionRules("ui");
+  expect(css).toContain(".ui-progress-circle { transition: --value 1s; }");
+  expect(css).toContain("opacity 0.5s 0.2s");
+  expect(css).toContain("opacity 0.5s 1s");
+  expect(css).toContain(".ui-progress-circle.-should-animate { --value: 0 !important; }");
+  expect(css).toContain("translate3d(0, 10%, 0)");
+});
+
+test("progress bar value rule reproduces InstUI's transition", () => {
+  expect(progressTransitionRules("ui")).toBe(
+    ".ui-progress.-should-animate > .bar { transition: all 0.5s; }",
+  );
 });

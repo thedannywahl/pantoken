@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@pantoken/plugin-colors": "workspace:*",
+    "@pantoken/plugin-transition": "workspace:*",
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {

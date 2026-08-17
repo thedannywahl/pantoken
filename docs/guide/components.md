@@ -73,6 +73,39 @@ to keep the alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
+Progress bars accept arbitrary scales through `--value` and `--max` (`100` by default), with
+deprecated `--value-now` and `--value-max` aliases. Add `-should-animate` to apply InstUI's
+half-second transition whenever either value changes.
+
+```html
+<div
+  class="instui-progress -color-brand -should-animate"
+  style="--value: 40; --max: 60"
+  role="progressbar"
+  aria-valuenow="40"
+  aria-valuemin="0"
+  aria-valuemax="60"
+>
+  <div class="bar"></div>
+</div>
+```
+
+Progress circles accept the same arbitrary scales through `--value` and `--max` (`100` by default).
+`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
+load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
+unitless millisecond delay. The deprecated `-should-animate-on-mount` and
+`-shold-animate-on-mount` spellings remain functional aliases.
+
+```html
+<span
+  class="instui-progress-circle -should-animate"
+  style="--value: 40; --max: 60; --animation-delay: 500"
+  role="img"
+  aria-label="40 of 60"
+></span>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
+```
+
 ## Class prefix
 
 Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by

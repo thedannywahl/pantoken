@@ -34,6 +34,8 @@ Each bundle auto-initializes on load:
 - **Invoker sync**: Mirrors invoker attributes onto inner buttons for popover/command targets
 - **Alert removal**: Reads `--timeout` as milliseconds, fires a cancelable `dismiss` event, and
   removes the alert after its exit transition
+- **ProgressCircle mount animation**: Reads `--animation-delay` as milliseconds and releases the
+  `-should-animate` state so the shared CSS transition can draw the requested value
 
 ## Per-component Bundles
 
@@ -41,6 +43,7 @@ Each bundle auto-initializes on load:
 - `badge.iife.js` — `.instui-badge`
 - `button.iife.js` — `.instui-button` (includes command routing)
 - `calendar.iife.js` — `.instui-calendar` (includes command routing)
+- `progress-circle.iife.js` — `.instui-progress-circle` (mount-animation timing)
 - ...and more (see all in `/dist/`)
 
 Pick and combine only the components you need for minimal bundle size.

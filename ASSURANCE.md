@@ -257,6 +257,8 @@ CSS custom property name pattern for plugin-contributed tokens, and an SVG scrip
 for decoded icon SVGs and plugin-contributed SVG assets.
 Browser interaction helpers validate numeric configuration before scheduling work; missing,
 non-finite, and non-positive alert timeouts leave the element mounted.
+ProgressCircle animation delays are normalized to a finite, non-negative millisecond value.
+Progress web-component values are normalized to a finite range between zero and a positive maximum.
 HTML attributes are escaped at the output boundary.
 
 ## Common implementation weaknesses and countermeasures
@@ -271,7 +273,7 @@ HTML attributes are escaped at the output boundary.
 | Untrusted active content              | Explicit iframe sandbox capabilities for rendered and self-hosted demonstrations.                                                                                 |
 | Regular-expression denial of service  | Non-ambiguous expressions, bounded property-test inputs, high-iteration scheduled property tests, CodeQL, and Snyk Code.                                          |
 | Unsafe object mutation                | Frozen public mapping tables where mutation would alter global behavior, null-prototype generated maps, and immutable inputs where practical.                     |
-| Malformed browser timing input        | Alert removal accepts only a finite, positive millisecond timeout; invalid, absent, and non-positive values do not schedule work.                                 |
+| Malformed browser numeric input       | Alert timeouts and ProgressCircle delays accept only finite values; Progress web-component values clamp between zero and a positive maximum.                      |
 | Malformed or missing generated output | Build-before-test ordering, generated-output validation, reference-integrity checks, package export checks, and failure aggregation.                              |
 | Dependency vulnerabilities            | Renovate and Dependabot monitoring, a dependency release-age delay, Snyk dependency scanning, CodeQL, and OpenSSF Scorecard.                                      |
 | Release tampering                     | npm registry signatures, Sigstore provenance, npm OIDC trusted publishing, GitHub immutable releases, and public verification instructions.                       |

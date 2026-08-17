@@ -801,6 +801,9 @@ importers:
       '@pantoken/plugin-colors':
         specifier: workspace:*
         version: link:../../plugins/pantoken/colors
+      '@pantoken/plugin-transition':
+        specifier: workspace:*
+        version: link:../../plugins/pantoken/transition
       '@pantoken/utils':
         specifier: workspace:*
         version: link:../../packages/utils

@@ -14,7 +14,10 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
   expect(css).toContain(".instui-progress.-color-success .bar");
   expect(css).toContain("var(--instui-color-background-success)");
   expect(css).toContain("var(--instui-color-background-error)");
-  expect(css).toContain(".-should-animate > .bar { transition: width");
+  expect(css).toContain(".instui-progress.-should-animate > .bar { transition: all 0.5s; }");
+  expect(css).toContain("--value: var(--value-now)");
+  expect(css).toContain("--max: var(--value-max)");
+  expect(css).toContain("width: min(calc(var(--value) / var(--max) * 100%),100%)");
 });
 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {

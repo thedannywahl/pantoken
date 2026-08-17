@@ -10,11 +10,11 @@
     </span>
     <span
       class="instui-progress-circle -color-success"
-      style="--value: 60"
+      style="--value: 40; --max: 60"
       role="img"
-      aria-label="60 percent"
+      aria-label="40 of 60"
     >
-      <span class="value">60%</span>
+      <span class="value">40/60</span>
     </span>
     <span
       class="instui-progress-circle -color-warning"
@@ -36,15 +36,14 @@
 
   <div class="ring-demo">
     <span
-      id="ring"
-      class="instui-progress-circle"
-      style="--value: 0"
+      class="instui-progress-circle -should-animate"
+      style="--value: 88; --max: 120; --animation-delay: 500"
       role="img"
-      aria-label="progress"
+      aria-label="88 of 120"
     >
-      <span class="value" id="ringval">0%</span>
+      <span class="value">88/120</span>
     </span>
-    <button class="instui-button" id="pc-run" type="button">Animate</button>
+    <span>Animated after a 500ms delay</span>
   </div>
 </div>
 
@@ -61,20 +60,3 @@
     gap: var(--instui-spacing-space-md, 1rem);
   }
 </style>
-
-<script>
-  // NB: avoid id="animate" — the demo sandbox strips it (it DOM-clobbers Element.animate).
-  const ring = document.getElementById("ring");
-  const ringval = document.getElementById("ringval");
-  document.getElementById("pc-run").addEventListener("click", () => {
-    let value = 0;
-    const step = () => {
-      value = Math.min(100, value + 2);
-      ring.style.setProperty("--value", String(value));
-      ringval.textContent = `${value}%`;
-      ring.setAttribute("aria-label", `${value} percent`);
-      if (value < 100) requestAnimationFrame(step);
-    };
-    step();
-  });
-</script>

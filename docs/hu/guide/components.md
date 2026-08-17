@@ -73,6 +73,39 @@ plugin `-fade-exiting` állapotát vezérli, majd egy megszakítható, buboréko
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
+A folyamatjelző sávok tetszőleges skálát fogadnak a `--value` és `--max` (`100` alapértelmezés)
+segítségével; a `--value-now` és `--value-max` elavult alias marad. A `-should-animate` módosító az
+InstUI fél másodperces áttűnését alkalmazza, amikor bármelyik érték megváltozik.
+
+```html
+<div
+  class="instui-progress -color-brand -should-animate"
+  style="--value: 40; --max: 60"
+  role="progressbar"
+  aria-valuenow="40"
+  aria-valuemin="0"
+  aria-valuemax="60"
+>
+  <div class="bar"></div>
+</div>
+```
+
+A folyamatjelző körök ugyanezeket a `--value` és `--max` (`100` alapértelmezés) értékeket használják.
+A `--value-now` és `--value-max` elavult, működő alias marad. Az InstUI csatlakozási
+animációjához add hozzá a `-should-animate` módosítót, és töltsd be a célzott interakciós csomagot;
+a `--animation-delay` egység nélküli, ezredmásodperces késleltetés. Az elavult
+`-should-animate-on-mount` és `-shold-animate-on-mount` írásmód működő aliasként megmarad.
+
+```html
+<span
+  class="instui-progress-circle -should-animate"
+  style="--value: 40; --max: 60; --animation-delay: 500"
+  role="img"
+  aria-label="40 / 60"
+></span>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
+```
+
 ## Osztály-előtag
 
 Minden osztály alapértelmezetten `instui-` névtérrel rendelkezik. Építs saját előtaggal — vagy előtag nélkül — stíluslapot,
