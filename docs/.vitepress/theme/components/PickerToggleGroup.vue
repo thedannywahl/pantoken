@@ -26,7 +26,7 @@ const checkboxEl = useIndeterminateCheckbox(someSelected);
 </script>
 
 <template>
-  <details class="instui-toggle-group picker-toggle-group" open>
+  <details class="instui-toggle-details picker-toggle-group" open>
     <summary>
       <label class="instui-checkbox" @click.stop>
         <input
@@ -56,8 +56,5 @@ const checkboxEl = useIndeterminateCheckbox(someSelected);
 <style scoped>
 .picker-toggle-group {
   margin: 0 0 0.75rem;
-}
-.picker-toggle-group__content {
-  margin: 0.5rem 0 0 1rem;
 }
 </style>

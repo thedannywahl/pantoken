@@ -69,7 +69,7 @@ function logoSrc(name: string): string {
 
 <style scoped>
 .picker-toggle-group__item {
-  margin: 0.5rem 0;
+  border: 0 none;
 }
 .picker-toggle-group__logos {
   display: grid;

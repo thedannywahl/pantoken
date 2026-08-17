@@ -364,71 +364,11 @@ const jsOutput = computed(() => {
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
         <div class="components-picker__sections instui-view -border-radius-medium instui-p-sm">
           <PickerSection
-            :label="t.sectionCore"
-            :all-selected="coreAllSelected"
-            :some-selected="coreSomeSelected"
-            :disabled="hasCss"
-            @toggle-all="toggleAllCore"
-          >
-            <span class="components-picker__labeled-item">
-              <label class="instui-checkbox">
-                <input
-                  type="checkbox"
-                  :checked="hasCss || includeBase"
-                  :disabled="hasCss"
-                  @change="includeBase = ($event.target as HTMLInputElement).checked"
-                />
-                <span>{{ t.includeBase }}</span>
-              </label>
-              <button
-                type="button"
-                class="instui-button -size-small -shape-circle -icon-info -without-background -without-border components-picker__info"
-                style="anchor-name: --comp-picker-base-anchor; padding: 0; min-height: 1.5rem"
-                popovertarget="comp-picker-base-popover"
-                :aria-label="t.baseInfoLabel"
-              ></button>
-              <div
-                id="comp-picker-base-popover"
-                popover
-                class="instui-context-view -placement-bottom components-picker__popover"
-                style="position-anchor: --comp-picker-base-anchor"
-              >
-                {{ t.baseInfo }}
-              </div>
-            </span>
-            <span class="components-picker__labeled-item">
-              <label class="instui-checkbox">
-                <input
-                  type="checkbox"
-                  :checked="hasCss || includeUtilities"
-                  :disabled="hasCss"
-                  @change="includeUtilities = ($event.target as HTMLInputElement).checked"
-                />
-                <span>{{ t.includeUtilities }}</span>
-              </label>
-              <button
-                type="button"
-                class="instui-button -size-small -shape-circle -icon-info -without-background -without-border components-picker__info"
-                style="anchor-name: --comp-picker-util-anchor; padding: 0; min-height: 1.5rem"
-                popovertarget="comp-picker-util-popover"
-                :aria-label="t.utilitiesInfoLabel"
-              ></button>
-              <div
-                id="comp-picker-util-popover"
-                popover
-                class="instui-context-view -placement-bottom components-picker__popover"
-                style="position-anchor: --comp-picker-util-anchor"
-              >
-                {{ t.utilitiesInfo }}
-              </div>
-            </span>
-          </PickerSection>
-
-          <PickerSection
             :label="t.sectionComponents"
             :all-selected="allComponentsSelected"
             :some-selected="someComponentsSelected"
             @toggle-all="toggleAllComponents"
+            open
           >
             <div class="components-picker__components">
               <label v-for="comp in filteredComponents" :key="comp.name" class="instui-checkbox">
@@ -473,13 +413,75 @@ const jsOutput = computed(() => {
               </label>
             </div>
           </PickerSection>
-
+          <PickerSection
+            :label="t.sectionCore"
+            :all-selected="coreAllSelected"
+            :some-selected="coreSomeSelected"
+            :disabled="hasCss"
+            @toggle-all="toggleAllCore"
+          >
+            <div class="components-picker__components">
+              <div class="components-picker__labeled-item">
+                <label class="instui-checkbox">
+                  <input
+                    type="checkbox"
+                    :checked="hasCss || includeBase"
+                    :disabled="hasCss"
+                    @change="includeBase = ($event.target as HTMLInputElement).checked"
+                  />
+                  <span>{{ t.includeBase }}</span>
+                </label>
+                <button
+                  type="button"
+                  class="instui-button -size-small -shape-circle -icon-info -without-background -without-border components-picker__info"
+                  style="anchor-name: --comp-picker-base-anchor; padding: 0; min-height: 1.5rem"
+                  popovertarget="comp-picker-base-popover"
+                  :aria-label="t.baseInfoLabel"
+                ></button>
+                <div
+                  id="comp-picker-base-popover"
+                  popover
+                  class="instui-context-view -placement-bottom components-picker__popover"
+                  style="position-anchor: --comp-picker-base-anchor"
+                >
+                  {{ t.baseInfo }}
+                </div>
+              </div>
+              <div class="components-picker__labeled-item">
+                <label class="instui-checkbox">
+                  <input
+                    type="checkbox"
+                    :checked="hasCss || includeUtilities"
+                    :disabled="hasCss"
+                    @change="includeUtilities = ($event.target as HTMLInputElement).checked"
+                  />
+                  <span>{{ t.includeUtilities }}</span>
+                </label>
+                <button
+                  type="button"
+                  class="instui-button -size-small -shape-circle -icon-info -without-background -without-border components-picker__info"
+                  style="anchor-name: --comp-picker-util-anchor; padding: 0; min-height: 1.5rem"
+                  popovertarget="comp-picker-util-popover"
+                  :aria-label="t.utilitiesInfoLabel"
+                ></button>
+                <div
+                  id="comp-picker-util-popover"
+                  popover
+                  class="instui-context-view -placement-bottom components-picker__popover"
+                  style="position-anchor: --comp-picker-util-anchor"
+                >
+                  {{ t.utilitiesInfo }}
+                </div>
+              </div>
+            </div>
+          </PickerSection>
           <PickerSection
             v-if="otherPlugins.length > 0"
             :label="t.sectionOtherPlugins"
             :all-selected="allOtherPluginsSelected"
             :some-selected="someOtherPluginsSelected"
             @toggle-all="toggleAllOtherPlugins"
+            open
           >
             <div class="components-picker__components">
               <label v-for="plugin in otherPlugins" :key="plugin.key" class="instui-checkbox">
@@ -568,9 +570,9 @@ const jsOutput = computed(() => {
   gap: 0.25rem 0.75rem;
 }
 .components-picker__labeled-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: var(--instui-component-checkbox-gap);
 }
 .components-picker__popover {
   max-width: 16rem;
