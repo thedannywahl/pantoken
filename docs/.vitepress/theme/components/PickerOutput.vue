@@ -75,8 +75,15 @@ const highlighted = useShikiHighlight(outputRef, lang);
   display: block;
   margin: 0;
 }
-/* Promote --shiki-dark-bg to background-color in dark mode */
+/* Shiki's dual-theme output sets `--shiki-dark`/`--shiki-dark-bg` inline alongside the light-theme
+   `color`/`background-color` on the <pre> and a `--shiki-dark` alongside `color` on every token
+   <span> — VitePress's own dark-mode CSS promotes those in .vp-doc, but this v-html'd output lives
+   outside .vp-doc, so it needs the same promotion here (both the container and its token spans). */
 :global(.dark) .picker-output :deep(.shiki) {
   background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+:global(.dark) .picker-output :deep(.shiki span) {
+  color: var(--shiki-dark) !important;
 }
 </style>
