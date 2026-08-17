@@ -11,6 +11,7 @@ test("progress circle has sizes, the meter palette, and an inverse scheme via cu
   const css = progressCircleCss({ prefix: "instui" });
   expect(css).toContain("conic-gradient");
   expect(css).toContain(".instui-progress-circle.-size-sm");
+  expect(css).toContain(".instui-progress-circle.-size-md");
   expect(css).toContain(".instui-progress-circle.-size-lg");
   expect(css).toContain(".instui-progress-circle.-color-success");
   expect(css).toContain("var(--instui-component-progress-circle-meter-color-brand-inverse)");

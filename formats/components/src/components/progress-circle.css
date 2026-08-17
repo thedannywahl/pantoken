@@ -11,6 +11,7 @@
  * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
  * @modifier -size-xs — Extra small.
  * @modifier -size-sm — Small.
+ * @modifier -size-md — Medium (default).
  * @modifier -size-lg — Large.
  * @modifier -should-animate — Animate the meter, ring, and centered value into place on mount.
  * @modifier -should-animate-on-mount — @deprecated {@link -should-animate}
@@ -65,6 +66,7 @@
   initial-value: 0;
 }
 
+/* min is not specified in the Instui component, but is registered here for completeness. */
 @property --min {
   syntax: "<number>";
   inherits: true;
@@ -150,6 +152,12 @@
   width: var(--instui-component-progress-circle-small-size);
   height: var(--instui-component-progress-circle-small-size);
   --pantoken-pc-stroke: var(--instui-component-progress-circle-small-stroke-width);
+}
+
+.pfx-progress-circle.-size-md {
+  width: var(--instui-component-progress-circle-medium-size);
+  height: var(--instui-component-progress-circle-medium-size);
+  --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
 }
 
 .pfx-progress-circle.-size-lg {

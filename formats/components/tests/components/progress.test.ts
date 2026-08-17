@@ -28,6 +28,7 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {
   const css = norm(progressCss({ prefix: "instui" }));
   expect(css).toContain(".instui-progress.-size-sm");
+  expect(css).toContain(".instui-progress.-size-md");
   expect(css).toContain(".instui-progress.-size-lg");
   expect(css).toContain("@scope (.instui-progress)");
   // Meter colour is the normalized `-color-*` root modifier, painting the bar a distinct status colour.

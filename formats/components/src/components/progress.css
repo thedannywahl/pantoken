@@ -1,7 +1,7 @@
 /**
  * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
- * @remarks `.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part.
+ * @remarks `.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), animating `.bar` as a sliding segment and hiding `.value` since there's no meaningful number to show. `<meter>` has no indeterminate state, so it's unaffected.
  * @element progress, meter
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
@@ -12,6 +12,7 @@
  * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
  * @modifier -size-xs — Extra small.
  * @modifier -size-sm — Small.
+ * @modifier -size-md — Medium (default).
  * @modifier -size-lg — Large.
  * @modifier -should-animate — Animate meter changes over half a second.
  * @modifier -render-value-inside — Renders `.value` inside the track, aligned to its start, instead of beside it; style it for legibility over the meter colour.
@@ -24,6 +25,7 @@
  * @part .bar — The filled meter bar.
  * @part .value — The value text beside the bar.
  * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
+ * @pseudo :indeterminate — @custom Not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`.
  * @cssproperty --value <number> — The current progress value.
  * @cssproperty --value-now <number> — @deprecated Alias for `--value`.
  * @cssproperty --min <number> — The minimum meter value (default `0`).
@@ -80,6 +82,18 @@
   initial-value: 100;
 }
 
+/* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
+   --value) reads as loading rather than rendering a broken 0%-width bar. */
+@keyframes pantoken-progress-indeterminate {
+  0% {
+    left: -40%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
 .pfx-progress {
   --value: var(--value-now);
   --min: 0;
@@ -117,6 +131,10 @@
   height: var(--instui-component-progress-bar-small-height);
 }
 
+.pfx-progress.-size-md {
+  height: var(--instui-component-progress-bar-medium-height);
+}
+
 .pfx-progress.-size-lg {
   height: var(--instui-component-progress-bar-large-height);
 }
@@ -141,6 +159,17 @@
   :scope.-color-inverse > .value,
   :scope > .value.-color-inverse {
     color: var(--instui-component-progress-bar-text-color-inverse);
+  }
+
+  /* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
+  :scope:indeterminate > .bar {
+    position: absolute;
+    width: 40%;
+    animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
+  }
+
+  :scope:indeterminate > .value {
+    visibility: hidden;
   }
 }
 
