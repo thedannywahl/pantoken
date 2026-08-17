@@ -75,7 +75,9 @@ to keep the alert mounted.
 
 Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
 (`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. Use a native `<progress>` for a
+to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
+a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
+instead (style it for legibility against the meter colour). Use a native `<progress>` for a
 zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
 automatically from their `min` attribute.
 

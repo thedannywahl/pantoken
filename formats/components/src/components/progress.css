@@ -1,5 +1,5 @@
 /**
- * @component progress-bar
+ * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
  * @remarks `.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part.
  * @element progress, meter
@@ -14,6 +14,7 @@
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -should-animate — Animate meter changes over half a second.
+ * @modifier -render-value-inside — Renders `.value` inside the track, aligned to its start, instead of beside it; style it for legibility over the meter colour.
  * @modifier -meter-color-brand — @deprecated {@link -color-brand}
  * @modifier -meter-color-info — @deprecated {@link -color-info}
  * @modifier -meter-color-success — @deprecated {@link -color-success}
@@ -182,4 +183,12 @@
 
 .pfx-progress.-color-primary-inverse .bar {
   background: var(--instui-component-progress-bar-meter-color-brand-inverse);
+}
+
+.pfx-progress.-render-value-inside .value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }

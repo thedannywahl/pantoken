@@ -67,4 +67,19 @@
       <span class="value">60%</span>
     </progress>
   </div>
+
+  <!-- -render-value-inside aligns .value to the track's start (matching InstUI); style it for contrast. -->
+  <div style="margin-block-start: 16px">
+    <progress
+      class="instui-progress -color-brand -size-lg -render-value-inside"
+      style="--value: 65"
+      value="65"
+      max="100"
+      aria-label="65 percent"
+    >
+      <span class="value" style="color: var(--instui-component-progress-bar-text-color-inverse)"
+        >65%</span
+      >
+    </progress>
+  </div>
 </div>

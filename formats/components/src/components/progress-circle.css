@@ -40,6 +40,10 @@
  *   Uploading Document: <progress class="pfx-progress-circle -size-sm" value="70">70%</progress>
  * </label>
  * ```
+ * ```html
+ * <label for="score">Score</label>
+ * <meter id="score" class="pfx-progress-circle -color-success" min="20" value="40" max="60">50%</meter>
+ * ```
  * @structure
  * label {
  *   .pfx-progress-circle {
