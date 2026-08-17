@@ -154,6 +154,13 @@ test("pill has status variants + status weight; tag has sizes and a dismissible 
 test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via @scope", () => {
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-color-blue");
   expect(avatarCss({ prefix: "instui" })).toContain(".instui-avatar.-size-lg");
+  // showBorder: auto by default (border only without an image), forced with -always/-never; the
+  // legacy -show-border name is a deprecated functional alias of -show-border-always.
+  const avatar = avatarCss({ prefix: "instui" });
+  expect(avatar).toContain(".instui-avatar:not(:has(> img))");
+  expect(avatar).toContain(".instui-avatar.-show-border-always");
+  expect(avatar).toContain(".instui-avatar.-show-border-never");
+  expect(avatar).toContain(".instui-avatar.-show-border {");
   // Sub-elements live inside an @scope block, so they're authored as bare, ancestor-scoped classes.
   const tabs = tabsCss({ prefix: "instui" });
   expect(tabs).toContain("@scope (.instui-tabs)");
