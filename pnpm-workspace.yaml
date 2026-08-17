@@ -20,8 +20,8 @@ catalog:
   "@types/node": ^24.13.3
   typescript: ^7.0.2
   arkregex: ^0.0.8
-  vite: npm:@voidzero-dev/vite-plus-core@0.2.7
-  vite-plus: 0.2.7
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.9
+  vite-plus: 0.2.9
   # Upstream Instructure sources. The design-tokens repo is GitHub-only and versioned independently of
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
@@ -35,7 +35,7 @@ catalog:
   unist-util-visit: ^5.1.0
   # markdown-it integration
   markdown-it: ^14.3.0
-  "@types/markdown-it": ^14.1.2
+  "@types/markdown-it": ^14.2.0
   # Brand icons (plugin)
   simple-icons: ^15.22.0
   # React markdown integration
@@ -93,11 +93,11 @@ catalog:
   vitepress-plugin-llms: ^1.13.5
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.10.2
-  "@cssdoc/config": ^0.10.2
-  "@cssdoc/typedoc": ^0.10.2
-  "@cssdoc/stylelint-plugin": ^0.10.2
-  "@cssdoc/eslint-plugin": ^0.10.2
+  "@cssdoc/core": ^0.11.0
+  "@cssdoc/config": ^0.11.0
+  "@cssdoc/typedoc": ^0.11.0
+  "@cssdoc/stylelint-plugin": ^0.11.0
+  "@cssdoc/eslint-plugin": ^0.11.0
   # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
@@ -132,18 +132,18 @@ peerDependencyRules:
     vite: "*"
 minimumReleaseAge: 5
 minimumReleaseAgeExclude:
-  - "@cssdoc/config@0.10.2"
-  - "@cssdoc/core@0.10.2"
-  - "@cssdoc/dialects@0.10.2"
-  - "@cssdoc/embedded@0.10.2"
-  - "@cssdoc/eslint-plugin@0.10.2"
-  - "@cssdoc/index@0.10.2"
-  - "@cssdoc/lint-core@0.10.2"
-  - "@cssdoc/markdown@0.10.2"
-  - "@cssdoc/providers@0.10.2"
-  - "@cssdoc/spec@0.10.2"
-  - "@cssdoc/stylelint-plugin@0.10.2"
-  - "@cssdoc/typedoc@0.10.2"
+  - "@cssdoc/config@0.11.0"
+  - "@cssdoc/core@0.11.0"
+  - "@cssdoc/dialects@0.11.0"
+  - "@cssdoc/embedded@0.11.0"
+  - "@cssdoc/eslint-plugin@0.11.0"
+  - "@cssdoc/index@0.11.0"
+  - "@cssdoc/lint-core@0.11.0"
+  - "@cssdoc/markdown@0.11.0"
+  - "@cssdoc/providers@0.11.0"
+  - "@cssdoc/spec@0.11.0"
+  - "@cssdoc/stylelint-plugin@0.11.0"
+  - "@cssdoc/typedoc@0.11.0"
 allowBuilds:
   core-js: true
   esbuild: true
