@@ -20,6 +20,9 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
   expect(css).toContain("--max: var(--value-max)");
   expect(css).toContain("(var(--value) - var(--min)) / (var(--max) - var(--min))");
   expect(css).toContain("@element progress,meter");
+  expect(css).toContain("@structure * label { * .instui-progress {} * }");
+  expect(css).toContain('<label for="storage-used">Storage used</label>');
+  expect(css).toContain('<meter id="storage-used"');
 });
 
 test("progress bar has sizes, the full meter palette, and an inverse scheme", () => {

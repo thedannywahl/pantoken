@@ -80,13 +80,17 @@ megváltozik. Nulla alapú tartományhoz natív `<progress>`, nem nulla minimumh
 használj; a webkomponensek ezt automatikusan választják ki a `min` attribútumból.
 
 ```html
-<progress
-  class="instui-progress -color-brand -should-animate"
-  style="--value: 40; --max: 60"
-  value="40"
-  max="60"
-  aria-label="40 / 60"
-></progress>
+<label>
+  Dokumentum feltöltése:
+  <progress
+    class="instui-progress -color-brand -should-animate"
+    style="--value: 40; --max: 60"
+    value="40"
+    max="60"
+  >
+    40 / 60
+  </progress>
+</label>
 ```
 
 A folyamatjelző körök ugyanezeket a `--min`, `--value` és `--max` értékeket használják.
@@ -96,12 +100,16 @@ a `--animation-delay` egység nélküli, ezredmásodperces késleltetés. Az ela
 `-should-animate-on-mount` és `-shold-animate-on-mount` írásmód működő aliasként megmarad.
 
 ```html
-<span
+<label for="feltoltes-folyamata">Dokumentum feltöltése</label>
+<progress
+  id="feltoltes-folyamata"
   class="instui-progress-circle -should-animate"
   style="--value: 40; --max: 60; --animation-delay: 500"
-  role="img"
-  aria-label="40 / 60"
-></span>
+  value="40"
+  max="60"
+>
+  40 / 60
+</progress>
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 

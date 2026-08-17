@@ -80,13 +80,17 @@ zero-based range and `<meter>` when the minimum is non-zero; the web components 
 automatically from their `min` attribute.
 
 ```html
-<progress
-  class="instui-progress -color-brand -should-animate"
-  style="--value: 40; --max: 60"
-  value="40"
-  max="60"
-  aria-label="40 of 60"
-></progress>
+<label>
+  Uploading Document:
+  <progress
+    class="instui-progress -color-brand -should-animate"
+    style="--value: 40; --max: 60"
+    value="40"
+    max="60"
+  >
+    40 of 60
+  </progress>
+</label>
 ```
 
 Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
@@ -96,12 +100,16 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 `-shold-animate-on-mount` spellings remain functional aliases.
 
 ```html
-<span
+<label for="upload-progress">Uploading Document</label>
+<progress
+  id="upload-progress"
   class="instui-progress-circle -should-animate"
   style="--value: 40; --max: 60; --animation-delay: 500"
-  role="img"
-  aria-label="40 of 60"
-></span>
+  value="40"
+  max="60"
+>
+  40 of 60
+</progress>
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 

@@ -32,10 +32,19 @@
  * @cssproperty --pantoken-pc-fill <color> — The filled arc (meter) colour; the -color-* modifiers set it.
  * @cssproperty --pantoken-pc-track <color> — The unfilled track colour.
  * @cssproperty --pantoken-pc-stroke <length> — The ring's stroke width; the -size-* modifiers set it.
- * @a11y Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero; provide an accessible label for either element.
+ * @a11y Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Registers the numeric progress properties with `@property` and paints with CSS `mask` and `conic-gradient`; where custom-property transitions are unsupported the ring still renders but won't animate.
  * @example
- * <progress class="pfx-progress-circle -size-sm" value="25" max="100" aria-label="25 percent"></progress>
+ * <label>
+ *   Uploading Document: <progress class="pfx-progress-circle -size-sm" value="70" max="100">70%</progress>
+ * </label>
+ * @example
+ * <label for="score">Score</label>
+ * <meter id="score" class="pfx-progress-circle -color-success" min="20" value="40" max="60">50%</meter>
+ * @structure
+ * label {
+ *   .pfx-progress-circle {}
+ * }
  * @related progress — The linear bar form of the same determinate progress.
  */
 /* Numeric inputs are registered so the conic-gradient re-evaluates and --value can transition. */

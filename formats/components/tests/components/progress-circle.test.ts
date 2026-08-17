@@ -30,6 +30,11 @@ test("progress circle registers current, maximum, and animation inputs", () => {
   expect(css).toContain("--max: var(--value-max)");
   expect(css).toContain("(var(--value) - var(--min)) / (var(--max) - var(--min))");
   expect(css).toContain("@element progress, meter");
+  expect(css).toMatch(
+    /@structure\s+\*\s+label\s*\{\s+\*\s+\.instui-progress-circle\s*\{\}\s+\*\s+\}/u,
+  );
+  expect(css).toContain('<label for="score">Score</label>');
+  expect(css).toContain('<meter id="score"');
   expect(css).toContain(".instui-progress-circle::before");
   expect(css).toContain(".instui-progress-circle .value");
   expect(css).toContain(".instui-progress-circle.-color-success");
