@@ -73,24 +73,23 @@ plugin `-fade-exiting` állapotát vezérli, majd egy megszakítható, buboréko
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-A folyamatjelző sávok tetszőleges skálát fogadnak a `--value` és `--max` (`100` alapértelmezés)
-segítségével; a `--value-now` és `--value-max` elavult alias marad. A `-should-animate` módosító az
-InstUI fél másodperces áttűnését alkalmazza, amikor bármelyik érték megváltozik.
+A folyamatjelző sávok tetszőleges skálát fogadnak a `--min` (`0` alapértelmezés), `--value` és
+`--max` (`100` alapértelmezés) segítségével; a `--value-now` és `--value-max` elavult alias marad. A
+`-should-animate` módosító az InstUI fél másodperces áttűnését alkalmazza, amikor bármelyik érték
+megváltozik. Nulla alapú tartományhoz natív `<progress>`, nem nulla minimumhoz `<meter>` elemet
+használj; a webkomponensek ezt automatikusan választják ki a `min` attribútumból.
 
 ```html
-<div
+<progress
   class="instui-progress -color-brand -should-animate"
   style="--value: 40; --max: 60"
-  role="progressbar"
-  aria-valuenow="40"
-  aria-valuemin="0"
-  aria-valuemax="60"
->
-  <div class="bar"></div>
-</div>
+  value="40"
+  max="60"
+  aria-label="40 / 60"
+></progress>
 ```
 
-A folyamatjelző körök ugyanezeket a `--value` és `--max` (`100` alapértelmezés) értékeket használják.
+A folyamatjelző körök ugyanezeket a `--min`, `--value` és `--max` értékeket használják.
 A `--value-now` és `--value-max` elavult, működő alias marad. Az InstUI csatlakozási
 animációjához add hozzá a `-should-animate` módosítót, és töltsd be a célzott interakciós csomagot;
 a `--animation-delay` egység nélküli, ezredmásodperces késleltetés. Az elavult

@@ -21,12 +21,15 @@ test("progress circle registers current, maximum, and animation inputs", () => {
   const css = progressCircleCss({ prefix: "instui" });
   expect(css).toContain("@property --value");
   expect(css).toContain("@property --value-now");
+  expect(css).toContain("@property --min");
   expect(css).toContain("@property --max");
   expect(css).toContain("@property --value-max");
   expect(css).toContain("@property --animation-delay");
   expect(css).toContain("--value: var(--value-now)");
+  expect(css).toContain("--min: 0");
   expect(css).toContain("--max: var(--value-max)");
-  expect(css).toContain("calc(var(--value) / var(--max) * 100%)");
+  expect(css).toContain("(var(--value) - var(--min)) / (var(--max) - var(--min))");
+  expect(css).toContain("@element progress, meter");
   expect(css).toContain(".instui-progress-circle::before");
   expect(css).toContain(".instui-progress-circle .value");
   expect(css).toContain(".instui-progress-circle.-color-success");

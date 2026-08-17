@@ -3,9 +3,10 @@ import type { ElementDefinition } from "../lib/context.ts";
 import { frag } from "../lib/helpers.ts";
 
 /**
- * `<instui-progress>` — a horizontal progress bar with `role="progressbar"`.
+ * `<instui-progress>` — a horizontal indicator backed by native `<progress>` or `<meter>` semantics.
  *
- * `value-now`/`value` drive `--value`, while `value-max`/`max` drive `--max`. Add the boolean
+ * `value-now`/`value` drive `--value`, while `min` and `value-max`/`max` drive the range. A zero
+ * minimum renders a native `<progress>`; a non-zero minimum renders `<meter>`. Add the boolean
  * `should-animate` attribute to transition meter changes over half a second. `variant` maps the
  * component to `-color-<variant>` and `label` supplies its accessible name.
  *
@@ -24,6 +25,7 @@ export const progress: ElementDefinition = {
         static observedAttributes = [
           "value",
           "value-now",
+          "min",
           "max",
           "value-max",
           "variant",
@@ -35,8 +37,8 @@ export const progress: ElementDefinition = {
           super();
           const root = this.attachShadow({ mode: "open" });
           root.innerHTML =
-            `<style>:host{display:block}${progressCss(ctx.I)}</style>` +
-            `<div class="instui-progress" role="progressbar" aria-valuemin="0" part="progress"><div class="bar"></div></div>`;
+            `<style>:host{display:block}.native{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%)}${progressCss(ctx.I)}</style>` +
+            `<div class="instui-progress" part="progress"><progress class="native" part="native"></progress><div class="bar" aria-hidden="true"></div></div>`;
         }
 
         connectedCallback(): void {
@@ -47,31 +49,49 @@ export const progress: ElementDefinition = {
           if (this.isConnected) this.#paint();
         }
 
-        #values(): { value: number; max: number } {
+        #values(): { value: number; min: number; max: number } {
+          const rawMin = Number(this.getAttribute("min") ?? "0");
+          const min = Number.isFinite(rawMin) ? rawMin : 0;
           const rawMax = Number(
             this.getAttribute("value-max") ?? this.getAttribute("max") ?? "100",
           );
-          const max = Number.isFinite(rawMax) && rawMax > 0 ? rawMax : 100;
+          const max = Number.isFinite(rawMax) && rawMax > min ? rawMax : Math.max(100, min + 100);
           const rawValue = Number(
-            this.getAttribute("value-now") ?? this.getAttribute("value") ?? "0",
+            this.getAttribute("value-now") ?? this.getAttribute("value") ?? String(min),
           );
-          const value = Math.max(0, Math.min(max, Number.isFinite(rawValue) ? rawValue : 0));
-          return { value, max };
+          const value = Math.max(min, Math.min(max, Number.isFinite(rawValue) ? rawValue : min));
+          return { value, min, max };
         }
 
         #paint(): void {
           const meter = this.shadowRoot?.querySelector<HTMLElement>(".instui-progress");
           if (!meter) return;
-          const { value, max } = this.#values();
+          const { value, min, max } = this.#values();
           const variant = frag(this.getAttribute("variant"));
           meter.className = `instui-progress${variant ? ` -color-${variant}` : ""}${this.hasAttribute("should-animate") ? " -should-animate" : ""}`;
           meter.style.setProperty("--value", String(value));
+          meter.style.setProperty("--min", String(min));
           meter.style.setProperty("--max", String(max));
-          meter.setAttribute("aria-valuenow", String(value));
-          meter.setAttribute("aria-valuemax", String(max));
+          const percentage = ((value - min) / (max - min)) * 100;
+          const bar = meter.querySelector<HTMLElement>(".bar");
+          if (bar) bar.style.width = `${String(percentage)}%`;
+
+          const tag = min === 0 ? "progress" : "meter";
+          let native = meter.querySelector<HTMLElement>(".native");
+          if (native?.localName !== tag) {
+            const replacement = document.createElement(tag);
+            replacement.className = "native";
+            replacement.setAttribute("part", "native");
+            native?.replaceWith(replacement);
+            native = replacement;
+          }
+          native?.setAttribute("value", String(value));
+          native?.setAttribute("max", String(max));
+          if (tag === "meter") native?.setAttribute("min", String(min));
+          else native?.removeAttribute("min");
           const label = this.getAttribute("label");
-          if (label) meter.setAttribute("aria-label", label);
-          else meter.removeAttribute("aria-label");
+          if (label) native?.setAttribute("aria-label", label);
+          else native?.removeAttribute("aria-label");
         }
       },
     );

@@ -2,7 +2,7 @@
  * @component progress
  * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
  * @remarks The value label is a separate sibling element (`.pfx-progress-value`), not a child of the bar.
- * @element progress
+ * @element progress, meter
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -24,14 +24,13 @@
  * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
  * @cssproperty --value <number> — The current progress value.
  * @cssproperty --value-now <number> — @deprecated Alias for `--value`.
+ * @cssproperty --min <number> — The minimum meter value (default `0`).
  * @cssproperty --max <number> — The maximum progress value (default `100`).
  * @cssproperty --value-max <number> — @deprecated {@link --max} The maximum progress value (default `100`).
- * @accessibility Expose progress via `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, and `aria-valuemax` (or `role="img"` plus `aria-label`), mirroring how progress-circle is labelled.
+ * @accessibility Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero; provide an accessible label for either element.
  * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
  * @example
- * <div class="pfx-progress -color-brand">
- *   <div class="bar"></div>
- * </div>
+ * <progress class="pfx-progress -color-brand" value="40" max="100"></progress>
  * @related progress-circle — The circular form of the same determinate progress.
  */
 @property --value {
@@ -41,6 +40,12 @@
 }
 
 @property --value-now {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --min {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
@@ -60,6 +65,7 @@
 
 .pfx-progress {
   --value: var(--value-now);
+  --min: 0;
   --max: var(--value-max);
   position: relative;
   display: block;
@@ -101,7 +107,7 @@
 @scope (.pfx-progress) {
   :scope > .bar {
     height: 100%;
-    width: min(calc(var(--value) / var(--max) * 100%), 100%);
+    width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
     background: var(--instui-color-background-brand);
     border-radius: var(--instui-component-progress-bar-border-radius);
   }

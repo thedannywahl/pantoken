@@ -2,27 +2,43 @@
   <div style="display: flex; flex-direction: column; gap: 16px">
     <!-- Meter colour lives on the bar root (our normalized -color-* scheme); value label sits beside it -->
     <div style="display: flex; align-items: center; gap: 8px">
-      <div class="instui-progress -color-brand" style="--value: 40; flex: 1">
-        <div class="bar"></div>
-      </div>
+      <progress
+        class="instui-progress -color-brand"
+        style="--value: 40; flex: 1"
+        value="40"
+        max="100"
+        aria-label="40 percent"
+      ></progress>
       <span class="instui-progress-value">40%</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px">
-      <div class="instui-progress -color-success -size-sm" style="--value: 70; flex: 1">
-        <div class="bar"></div>
-      </div>
+      <progress
+        class="instui-progress -color-success -size-sm"
+        style="--value: 70; flex: 1"
+        value="70"
+        max="100"
+        aria-label="70 percent"
+      ></progress>
       <span class="instui-progress-value">70%</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px">
-      <div class="instui-progress -color-warning" style="--value: 55; flex: 1">
-        <div class="bar"></div>
-      </div>
+      <progress
+        class="instui-progress -color-warning"
+        style="--value: 55; flex: 1"
+        value="55"
+        max="100"
+        aria-label="55 percent"
+      ></progress>
       <span class="instui-progress-value">55%</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px">
-      <div class="instui-progress -color-danger -size-lg" style="--value: 25; flex: 1">
-        <div class="bar"></div>
-      </div>
+      <progress
+        class="instui-progress -color-danger -size-lg"
+        style="--value: 25; flex: 1"
+        value="25"
+        max="100"
+        aria-label="25 percent"
+      ></progress>
       <span class="instui-progress-value">25%</span>
     </div>
   </div>
@@ -40,9 +56,13 @@
       background: var(--instui-color-background-inverse);
     "
   >
-    <div class="instui-progress -color-primary-inverse" style="--value: 60; flex: 1">
-      <div class="bar"></div>
-    </div>
+    <progress
+      class="instui-progress -color-primary-inverse"
+      style="--value: 60; flex: 1"
+      value="60"
+      max="100"
+      aria-label="60 percent"
+    ></progress>
     <span
       class="instui-progress-value"
       style="color: var(--instui-component-progress-bar-text-color-inverse)"

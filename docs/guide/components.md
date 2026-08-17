@@ -73,24 +73,23 @@ to keep the alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--value` and `--max` (`100` by default), with
-deprecated `--value-now` and `--value-max` aliases. Add `-should-animate` to apply InstUI's
-half-second transition whenever either value changes.
+Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
+(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
+to apply InstUI's half-second transition whenever a value changes. Use a native `<progress>` for a
+zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
+automatically from their `min` attribute.
 
 ```html
-<div
+<progress
   class="instui-progress -color-brand -should-animate"
   style="--value: 40; --max: 60"
-  role="progressbar"
-  aria-valuenow="40"
-  aria-valuemin="0"
-  aria-valuemax="60"
->
-  <div class="bar"></div>
-</div>
+  value="40"
+  max="60"
+  aria-label="40 of 60"
+></progress>
 ```
 
-Progress circles accept the same arbitrary scales through `--value` and `--max` (`100` by default).
+Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
 `--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
 load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
 unitless millisecond delay. The deprecated `-should-animate-on-mount` and

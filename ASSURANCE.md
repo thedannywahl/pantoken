@@ -258,7 +258,7 @@ for decoded icon SVGs and plugin-contributed SVG assets.
 Browser interaction helpers validate numeric configuration before scheduling work; missing,
 non-finite, and non-positive alert timeouts leave the element mounted.
 ProgressCircle animation delays are normalized to a finite, non-negative millisecond value.
-Progress web-component values are normalized to a finite range between zero and a positive maximum.
+Progress web-component values are normalized to a finite range between a minimum and larger maximum.
 HTML attributes are escaped at the output boundary.
 
 ## Common implementation weaknesses and countermeasures

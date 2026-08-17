@@ -1,48 +1,53 @@
 <div class="instui-card">
   <div class="ring-row">
-    <span
+    <progress
       class="instui-progress-circle -size-sm"
       style="--value: 25"
-      role="img"
+      value="25"
+      max="100"
       aria-label="25 percent"
     >
       <span class="value">25%</span>
-    </span>
-    <span
+    </progress>
+    <progress
       class="instui-progress-circle -color-success"
       style="--value: 40; --max: 60"
-      role="img"
+      value="40"
+      max="60"
       aria-label="40 of 60"
     >
       <span class="value">40/60</span>
-    </span>
-    <span
+    </progress>
+    <progress
       class="instui-progress-circle -color-warning"
       style="--value: 75"
-      role="img"
+      value="75"
+      max="100"
       aria-label="75 percent"
     >
       <span class="value">75%</span>
-    </span>
-    <span
+    </progress>
+    <progress
       class="instui-progress-circle -size-lg -color-danger"
       style="--value: 90"
-      role="img"
+      value="90"
+      max="100"
       aria-label="90 percent"
     >
       <span class="value">90%</span>
-    </span>
+    </progress>
   </div>
 
   <div class="ring-demo">
-    <span
+    <progress
       class="instui-progress-circle -should-animate"
       style="--value: 88; --max: 120; --animation-delay: 500"
-      role="img"
+      value="88"
+      max="120"
       aria-label="88 of 120"
     >
       <span class="value">88/120</span>
-    </span>
+    </progress>
     <span>Animated after a 500ms delay</span>
   </div>
 </div>

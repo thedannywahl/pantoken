@@ -81,6 +81,7 @@ test("progress clamps current/max values and exposes them through CSS and ARIA",
   const over = mount(`<instui-progress value="150"></instui-progress>`, "instui-progress");
   const overMeter = over.shadowRoot?.querySelector<HTMLElement>(".instui-progress");
   expect(overMeter?.style.getPropertyValue("--value")).toBe("100");
+  expect(over.shadowRoot?.querySelector("progress")?.getAttribute("value")).toBe("100");
   const under = mount(`<instui-progress value="-20"></instui-progress>`, "instui-progress");
   expect(
     under.shadowRoot
@@ -91,13 +92,28 @@ test("progress clamps current/max values and exposes them through CSS and ARIA",
     `<instui-progress value-now="40" value-max="60" variant="success" label="Uploaded"></instui-progress>`,
     "instui-progress",
   );
-  const meter = mid.shadowRoot?.querySelector<HTMLElement>('[role="progressbar"]');
+  const meter = mid.shadowRoot?.querySelector<HTMLElement>(".instui-progress");
+  const native = mid.shadowRoot?.querySelector("progress");
   expect(meter?.style.getPropertyValue("--value")).toBe("40");
+  expect(meter?.style.getPropertyValue("--min")).toBe("0");
   expect(meter?.style.getPropertyValue("--max")).toBe("60");
   expect(meter?.className).toContain("-color-success");
-  expect(meter?.getAttribute("aria-valuenow")).toBe("40");
-  expect(meter?.getAttribute("aria-valuemax")).toBe("60");
-  expect(meter?.getAttribute("aria-label")).toBe("Uploaded");
+  expect(native?.getAttribute("value")).toBe("40");
+  expect(native?.getAttribute("max")).toBe("60");
+  expect(native?.getAttribute("aria-label")).toBe("Uploaded");
+});
+
+test("progress uses meter for a non-zero minimum", () => {
+  const el = mount(
+    `<instui-progress min="20" value="40" max="60" label="Range"></instui-progress>`,
+    "instui-progress",
+  );
+  const native = el.shadowRoot?.querySelector("meter");
+  expect(el.shadowRoot?.querySelector("progress")).toBeNull();
+  expect(native?.getAttribute("min")).toBe("20");
+  expect(native?.getAttribute("value")).toBe("40");
+  expect(native?.getAttribute("max")).toBe("60");
+  expect(el.shadowRoot?.querySelector<HTMLElement>(".bar")?.style.width).toBe("50%");
 });
 
 test("progress retains its meter so should-animate transitions value updates", () => {
@@ -158,16 +174,16 @@ test("progress-circle clamps value, sets current/max variables, and derives an a
     "instui-progress-circle",
   );
   const span = el.shadowRoot?.querySelector("span");
-  expect(span?.getAttribute("style")).toBe("--value:75;--max:100;--animation-delay:0");
-  expect(span?.getAttribute("aria-label")).toBe("75%");
+  expect(span?.getAttribute("style")).toBe("--value:75;--min:0;--max:100;--animation-delay:0");
+  expect(el.shadowRoot?.querySelector("progress")?.getAttribute("aria-label")).toBe("75%");
   const clamped = mount(
     `<instui-progress-circle value="500" label="Almost"></instui-progress-circle>`,
     "instui-progress-circle",
   );
   expect(clamped.shadowRoot?.querySelector("span")?.getAttribute("style")).toBe(
-    "--value:100;--max:100;--animation-delay:0",
+    "--value:100;--min:0;--max:100;--animation-delay:0",
   );
-  expect(clamped.shadowRoot?.querySelector("span")?.getAttribute("aria-label")).toBe("Almost");
+  expect(clamped.shadowRoot?.querySelector("progress")?.getAttribute("aria-label")).toBe("Almost");
 });
 
 test("progress-circle supports value-now/value-max and releases its mount modifier", () => {
@@ -177,10 +193,23 @@ test("progress-circle supports value-now/value-max and releases its mount modifi
     "instui-progress-circle",
   );
   const ring = el.shadowRoot?.querySelector("span");
-  expect(ring?.getAttribute("style")).toBe("--value:40;--max:60;--animation-delay:25");
+  expect(ring?.getAttribute("style")).toBe("--value:40;--min:0;--max:60;--animation-delay:25");
   expect(ring?.classList.contains("-should-animate")).toBe(true);
   vi.advanceTimersByTime(25);
   expect(ring?.classList.contains("-should-animate")).toBe(false);
+});
+
+test("progress-circle uses meter for a non-zero minimum", () => {
+  const el = mount(
+    `<instui-progress-circle min="20" value="40" max="60"></instui-progress-circle>`,
+    "instui-progress-circle",
+  );
+  const native = el.shadowRoot?.querySelector("meter");
+  expect(el.shadowRoot?.querySelector("progress")).toBeNull();
+  expect(native?.getAttribute("min")).toBe("20");
+  expect(native?.getAttribute("value")).toBe("40");
+  expect(native?.getAttribute("max")).toBe("60");
+  expect(el.shadowRoot?.querySelector("span")?.getAttribute("style")).toContain("--min:20");
 });
 
 test("icon-button applies aria-label from `label` and the square modifier", () => {

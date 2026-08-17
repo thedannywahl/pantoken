@@ -4,9 +4,10 @@ import type { ElementDefinition } from "../lib/context.ts";
 import { esc } from "../lib/helpers.ts";
 
 /**
- * `<instui-progress-circle>` — a circular progress meter with `role="img"`.
+ * `<instui-progress-circle>` — a circular indicator backed by native `<progress>` or `<meter>` semantics.
  *
- * `value-now`/`value` drive `--value`, while `value-max`/`max` drive `--max`. Add the boolean
+ * `value-now`/`value` drive `--value`, while `min` and `value-max`/`max` drive the range. A zero
+ * minimum renders a native `<progress>`; a non-zero minimum renders `<meter>`. Add the boolean
  * `should-animate` attribute to animate from zero on mount; `animation-delay` is a millisecond delay.
  * `label` overrides the accessible name (which otherwise defaults to the percentage).
  *
@@ -25,6 +26,7 @@ export const progressCircle: ElementDefinition = {
         static observedAttributes = [
           "value",
           "value-now",
+          "min",
           "max",
           "value-max",
           "label",
@@ -56,30 +58,35 @@ export const progressCircle: ElementDefinition = {
           this.#startAnimation();
         }
 
-        #values(): { value: number; max: number; delay: number } {
+        #values(): { value: number; min: number; max: number; delay: number } {
+          const rawMin = Number(this.getAttribute("min") ?? "0");
+          const min = Number.isFinite(rawMin) ? rawMin : 0;
           const rawMax = Number(
             this.getAttribute("value-max") ?? this.getAttribute("max") ?? "100",
           );
-          const max = Number.isFinite(rawMax) && rawMax > 0 ? rawMax : 100;
+          const max = Number.isFinite(rawMax) && rawMax > min ? rawMax : Math.max(100, min + 100);
           const rawValue = Number(
-            this.getAttribute("value-now") ?? this.getAttribute("value") ?? "0",
+            this.getAttribute("value-now") ?? this.getAttribute("value") ?? String(min),
           );
-          const value = Math.max(0, Math.min(max, Number.isFinite(rawValue) ? rawValue : 0));
+          const value = Math.max(min, Math.min(max, Number.isFinite(rawValue) ? rawValue : min));
           const rawDelay = Number(this.getAttribute("animation-delay") ?? "0");
           const delay = Number.isFinite(rawDelay) && rawDelay >= 0 ? rawDelay : 0;
-          return { value, max, delay };
+          return { value, min, max, delay };
         }
 
         #paint(): void {
           const root = this.shadowRoot;
           if (!root) return;
-          const { value, max, delay } = this.#values();
-          const percentage = Math.min(100, (value / max) * 100);
+          const { value, min, max, delay } = this.#values();
+          const percentage = ((value - min) / (max - min)) * 100;
           const label = esc(this.getAttribute("label") ?? `${String(percentage)}%`);
           const animate = this.hasAttribute("should-animate") && !this.#hasAnimated;
+          const tag = min === 0 ? "progress" : "meter";
+          const minAttribute = tag === "meter" ? ` min="${String(min)}"` : "";
           root.innerHTML =
-            `<style>:host{display:inline-block}${progressCircleCss(ctx.I)}</style>` +
-            `<span class="instui-progress-circle${animate ? " -should-animate" : ""}" role="img" aria-label="${label}" part="progress-circle" style="--value:${String(value)};--max:${String(max)};--animation-delay:${String(delay)}"></span>`;
+            `<style>:host{display:inline-block}.native{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%)}${progressCircleCss(ctx.I)}</style>` +
+            `<${tag} class="native" value="${String(value)}"${minAttribute} max="${String(max)}" aria-label="${label}" part="native"></${tag}>` +
+            `<span class="instui-progress-circle${animate ? " -should-animate" : ""}" aria-hidden="true" part="progress-circle" style="--value:${String(value)};--min:${String(min)};--max:${String(max)};--animation-delay:${String(delay)}"></span>`;
         }
 
         #startAnimation(): void {

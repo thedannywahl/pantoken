@@ -2,7 +2,7 @@
  * @component progress-circle
  * @summary A circular progress ring driven by `--value` and `--value-max` custom properties.
  * @remarks The ring is a `conic-gradient` donut painted on `::before` and clipped with a radial-gradient mask; `--value` divided by `--value-max` drives the arc. Add `-should-animate` and load the interactions entry point to animate it from zero on mount.
- * @element progress
+ * @element progress, meter
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
  * @modifier -color-success — Success meter colour.
@@ -25,18 +25,17 @@
  * @pseudo ::before — Draws the ring itself: a conic-gradient donut clipped with a radial mask, whose arc tracks the `--value` custom property.
  * @cssproperty --value <number> — The current progress value; registered with @property so it can transition.
  * @cssproperty --value-now <number> — @deprecated Alias for `--value`.
+ * @cssproperty --min <number> — The minimum meter value (default `0`).
  * @cssproperty --max <number> — The maximum progress value (default `100`).
  * @cssproperty --value-max <number> — @deprecated {@link --max} The maximum progress value (default `100`).
  * @cssproperty --animation-delay <number> — Milliseconds to wait before starting the mount animation (default `0`).
  * @cssproperty --pantoken-pc-fill <color> — The filled arc (meter) colour; the -color-* modifiers set it.
  * @cssproperty --pantoken-pc-track <color> — The unfilled track colour.
  * @cssproperty --pantoken-pc-stroke <length> — The ring's stroke width; the -size-* modifiers set it.
- * @a11y Give it role="img" and an aria-label stating the percentage, since the ring is drawn in CSS.
+ * @a11y Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero; provide an accessible label for either element.
  * @compat Registers the numeric progress properties with `@property` and paints with CSS `mask` and `conic-gradient`; where custom-property transitions are unsupported the ring still renders but won't animate.
  * @example
- * <span class="pfx-progress-circle -size-sm" role="img" aria-label="25 percent">
- *   <span class="value">25%</span>
- * </span>
+ * <progress class="pfx-progress-circle -size-sm" value="25" max="100" aria-label="25 percent"></progress>
  * @related progress — The linear bar form of the same determinate progress.
  */
 /* Numeric inputs are registered so the conic-gradient re-evaluates and --value can transition. */
@@ -47,6 +46,12 @@
 }
 
 @property --value-now {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --min {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
@@ -72,6 +77,7 @@
 
 .pfx-progress-circle {
   --value: var(--value-now);
+  --min: 0;
   --max: var(--value-max);
   --animation-delay: 0;
   --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
@@ -96,7 +102,8 @@
   inset: 0;
   border-radius: 50%;
   background: conic-gradient(
-    var(--pantoken-pc-fill) min(calc(var(--value) / var(--max) * 100%), 100%),
+    var(--pantoken-pc-fill)
+      clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%),
     var(--pantoken-pc-track) 0
   );
   -webkit-mask: radial-gradient(
