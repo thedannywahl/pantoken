@@ -1,7 +1,7 @@
 /**
  * @component progress-circle
  * @summary A circular progress ring driven by `--value` and `--value-max` custom properties.
- * @remarks The ring is a `conic-gradient` donut painted on `::before` and clipped with a radial-gradient mask; `--value` divided by `--value-max` drives the arc. Add `-should-animate` and load the interactions entry point to animate it from zero on mount.
+ * @remarks The ring is a `conic-gradient` donut painted on `::before` and clipped with a radial-gradient mask; `--value` divided by `--value-max` drives the arc. Add `-should-animate` and load the interactions entry point to animate it from zero on mount. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), spinning the ring at a fixed arc and hiding `.value` since there's no meaningful number to show. `<meter>` has no indeterminate state, so it's unaffected.
  * @element progress, meter
  * @modifier -color-brand — Brand meter colour.
  * @modifier -color-info — Informational meter colour.
@@ -24,6 +24,7 @@
  * @modifier -meter-color-danger — @deprecated {@link -color-danger}
  * @part .value — The value text centred in the ring's hole.
  * @pseudo ::before — Draws the ring itself: a conic-gradient donut clipped with a radial mask, whose arc tracks the `--value` custom property.
+ * @pseudo :indeterminate — Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; spins `::before` at a fixed arc and hides `.value`.
  * @cssproperty --value <number> — The current progress value; registered with @property so it can transition.
  * @cssproperty --value-now <number> — @deprecated Alias for `--value`.
  * @cssproperty --min <number> — The minimum meter value (default `0`).
@@ -53,38 +54,6 @@
  * }
  * @related progress — The linear bar form of the same determinate progress.
  */
-/* Numeric inputs are registered so the conic-gradient re-evaluates and --value can transition. */
-@property --value {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-@property --value-now {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-/* min is not specified in the Instui component, but is registered here for completeness. */
-@property --min {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-@property --max {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 100;
-}
-
-@property --value-max {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 100;
-}
-
 @property --animation-delay {
   syntax: "<number>";
   inherits: true;
@@ -210,4 +179,27 @@
   --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
   --pantoken-pc-track: var(--instui-component-progress-circle-track-color-inverse);
   color: var(--instui-component-progress-circle-color-inverse);
+}
+
+/* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
+   --value) reads as loading rather than rendering a static, potentially-empty ring. */
+@keyframes pantoken-progress-circle-indeterminate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
+.pfx-progress-circle:indeterminate {
+  --value: 25;
+  --min: 0;
+  --max: 100;
+}
+
+.pfx-progress-circle:indeterminate::before {
+  animation: pantoken-progress-circle-indeterminate 1s linear infinite;
+}
+
+.pfx-progress-circle:indeterminate .value {
+  visibility: hidden;
 }

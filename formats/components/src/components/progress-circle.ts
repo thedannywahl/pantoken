@@ -1,5 +1,6 @@
 import { defineComponent, type Definition } from "../lib/define.ts";
 import { progressCircleTransitionRules } from "@pantoken/plugin-transition/progress-circle";
+import { PROGRESS_NUMERIC_PROPERTIES } from "../lib/helpers.ts";
 import { SENTINEL } from "../lib/sentinel.ts";
 import { progressCircle as progressCircleRaw } from "../generated/component-styles.ts";
 
@@ -7,7 +8,7 @@ import { progressCircle as progressCircleRaw } from "../generated/component-styl
 export const progressCircle: Definition = defineComponent({
   name: "progress-circle",
   css: (p) =>
-    `${progressCircleRaw.replaceAll(SENTINEL, p)}\n${progressCircleTransitionRules(p.replace(/-$/u, ""))}`,
+    `${PROGRESS_NUMERIC_PROPERTIES}\n${progressCircleRaw.replaceAll(SENTINEL, p)}\n${progressCircleTransitionRules(p.replace(/-$/u, ""))}`,
 });
 /** Standalone `progressCircle` stylesheet — the prefixed CSS for the progress ring, ready to ship as a `.css` file. */
 export const progressCircleCss: Definition["css"] = progressCircle.css;

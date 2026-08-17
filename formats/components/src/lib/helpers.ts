@@ -64,6 +64,43 @@ export const CHEVRON_DOWN_ICON: string = iconMask("chevron-down");
 export const AI_ICON_MASK =
   "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 1920 1920' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M960 0L1219.29 700.713L1920 960L1219.29 1219.29L960 1920L700.713 1219.29L0 960L700.713 700.713L960 0Z'/%3E%3Cpath d='M1600 0L1686.43 233.571L1920 320L1686.43 406.429L1600 640L1513.57 406.429L1280 320L1513.57 233.571L1600 0Z'/%3E%3C/svg%3E\") center / contain no-repeat";
 
+// ── Progress custom properties ─────────────────────────────────────────────────
+/**
+ * `@property` registrations for the numeric progress inputs (`--value`/`--min`/`--max` plus their
+ * deprecated `--value-now`/`--value-max` aliases) shared verbatim by progress-bar and progress-circle,
+ * so both standalone stylesheets register them without duplicating the block in each `.css` source.
+ * Prefix-independent — custom property names aren't namespaced.
+ */
+export const PROGRESS_NUMERIC_PROPERTIES = `@property --value {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --value-now {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --min {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --max {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 100;
+}
+
+@property --value-max {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 100;
+}`;
+
 // ── Spacing scales ─────────────────────────────────────────────────────────────
 /** Spacing step → value on the pantoken spacing scale. */
 export const SPACING_STEPS: Record<string, string> = {

@@ -49,3 +49,11 @@ test("progress circle embeds the shared mount transition and a functional deprec
   expect(css).toContain(".instui-progress-circle.-shold-animate-on-mount");
   expect(css).toContain("opacity 0.5s 1s");
 });
+
+test("progress circle falls back to a custom :indeterminate state for a valueless <progress>", () => {
+  const css = progressCircleCss({ prefix: "instui" });
+  expect(css).toContain(".instui-progress-circle:indeterminate {");
+  expect(css).toContain(".instui-progress-circle:indeterminate::before");
+  expect(css).toContain("animation: pantoken-progress-circle-indeterminate");
+  expect(css).toContain(".instui-progress-circle:indeterminate .value");
+});

@@ -49,3 +49,10 @@ test("progress bar can render its value overlaid inside the track via -render-va
   );
   expect(css).toContain("display: flex; align-items: center; justify-content: flex-start;");
 });
+
+test("progress bar falls back to a custom :indeterminate state for a valueless <progress>", () => {
+  const css = norm(progressCss({ prefix: "instui" }));
+  expect(css).toMatch(/:scope:indeterminate\s*>\s*\.bar/u);
+  expect(css).toContain("animation: pantoken-progress-indeterminate");
+  expect(css).toMatch(/:scope:indeterminate\s*>\s*\.value \{ visibility: hidden; \}/u);
+});

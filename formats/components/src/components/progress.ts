@@ -1,5 +1,6 @@
 import { defineComponent, type Definition } from "../lib/define.ts";
 import { progressTransitionRules } from "@pantoken/plugin-transition/progress";
+import { PROGRESS_NUMERIC_PROPERTIES } from "../lib/helpers.ts";
 import { SENTINEL } from "../lib/sentinel.ts";
 import { progress as progressRaw } from "../generated/component-styles.ts";
 
@@ -7,7 +8,7 @@ import { progress as progressRaw } from "../generated/component-styles.ts";
 export const progress: Definition = defineComponent({
   name: "progress",
   css: (p) =>
-    `${progressRaw.replaceAll(SENTINEL, p)}\n${progressTransitionRules(p.replace(/-$/u, ""))}`,
+    `${PROGRESS_NUMERIC_PROPERTIES}\n${progressRaw.replaceAll(SENTINEL, p)}\n${progressTransitionRules(p.replace(/-$/u, ""))}`,
 });
 /** Standalone `progress` stylesheet — the prefixed CSS for the progress bar, ready to ship as a `.css` file. */
 export const progressCss: Definition["css"] = progress.css;

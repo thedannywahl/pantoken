@@ -79,7 +79,9 @@ to apply InstUI's half-second transition whenever a value changes. `.value` sits
 a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
 instead (style it for legibility against the meter colour). Use a native `<progress>` for a
 zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute.
+automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
+missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
+sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
 
 ```html
 <label>

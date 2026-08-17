@@ -25,7 +25,7 @@
  * @part .bar — The filled meter bar.
  * @part .value — The value text beside the bar.
  * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
- * @pseudo :indeterminate — @custom Not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`.
+ * @pseudo :indeterminate — Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`.
  * @cssproperty --value <number> — The current progress value.
  * @cssproperty --value-now <number> — @deprecated Alias for `--value`.
  * @cssproperty --min <number> — The minimum meter value (default `0`).
@@ -52,36 +52,6 @@
  * }
  * @related progress-circle — The circular form of the same determinate progress.
  */
-@property --value {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-@property --value-now {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-@property --min {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 0;
-}
-
-@property --max {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 100;
-}
-
-@property --value-max {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 100;
-}
-
 /* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
    --value) reads as loading rather than rendering a broken 0%-width bar. */
 @keyframes pantoken-progress-indeterminate {
