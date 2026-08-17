@@ -38,5 +38,5 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   expect(css).toContain(".instui-progress.-color-primary-inverse");
   expect(css).toContain("var(--instui-component-progress-bar-border-color)");
   expect(css).toContain("var(--instui-component-progress-bar-track-color-inverse)");
-  expect(css).toContain(".instui-progress-value");
+  expect(css).toContain(":scope>.value");
 });
