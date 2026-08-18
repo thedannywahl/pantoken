@@ -3,12 +3,21 @@
  * ensure a git tag + GitHub release exists for each — all idempotently. Driven by the changesets action
  * as its `publish` command (`.github/workflows/release.yml`).
  *
- * Why the npm CLI and not `changeset publish`? `changeset publish` shells out to `pnpm publish`, and
- * pnpm's OIDC token exchange is broken (E404; pnpm #9812/#11513). The npm CLI (≥ 11.5.1) is the reference
- * OIDC implementation: with `id-token: write` and a per-package trusted publisher on npmjs.com,
- * `npm publish` authenticates token-free and attaches provenance. IMPORTANT: CI must invoke this script
- * with plain `node`, NOT `vp run` — the `vp run` launcher scrubs the `ACTIONS_ID_TOKEN_REQUEST_*` env vars
- * npm needs, so npm silently skips OIDC and fails ENEEDAUTH.
+ * Why the npm CLI and not `pnpm publish`/`changeset publish` for the registry call? `pnpm publish` just
+ * shells out to the npm CLI on PATH for the actual registry request (pnpm #9812), so there is no OIDC
+ * benefit to routing through it here — going straight to the npm CLI (≥ 11.5.1, the reference OIDC
+ * implementation) is one less layer. With `id-token: write` and a per-package trusted publisher on
+ * npmjs.com, `npm publish` authenticates token-free and attaches provenance. IMPORTANT: CI must invoke
+ * this script with plain `node`, NOT `vp run` — the `vp run` launcher scrubs the
+ * `ACTIONS_ID_TOKEN_REQUEST_*` env vars npm needs, so npm silently skips OIDC and fails ENEEDAUTH.
+ *
+ * Why pack with `pnpm` instead of letting `npm publish` pack from the package directory? Only
+ * `pnpm pack`/`pnpm publish` rewrite a workspace package's `workspace:*` and `catalog:` internal-
+ * dependency ranges to real resolved semver at pack time — that's normal for a pnpm monorepo, where
+ * `package.json` in git intentionally keeps those protocols. Plain `npm pack`/`npm publish` don't
+ * understand either protocol and publish the literal string, which breaks installs for every consumer.
+ * So each package is packed with `pnpm pack --pack-destination` first (resolving those ranges), and the
+ * resulting tarball — not the package directory — is what `npm publish` uploads.
  *
  * Why own tags + releases here instead of letting the changesets action do it? The action's `pushTag`
  * runs `git push origin <tag>` on a tag it assumes already exists locally (created by
@@ -27,6 +36,7 @@ import { homedir } from "node:os";
 import path from "node:path";
 import process from "node:process";
 import { runAsMain } from "./cli.ts";
+import { unresolvedPnpmProtocolDeps, type ManifestDeps } from "./pnpm-protocol.ts";
 import {
   isPublishablePackage,
   loadWorkspacePackages,
@@ -139,10 +149,12 @@ function isVersionOnNpm(pkg: WorkspacePackage): boolean {
   return result.status === 0 && result.stdout.trim().length > 0;
 }
 
-/** Publish one package from its own directory. npm does the OIDC exchange + provenance; no token. */
+/** Publish one package: pnpm resolves its `workspace:*` deps into a tarball, npm does OIDC + provenance. */
 function publishPackage(pkg: WorkspacePackage, rootDir: string): boolean {
-  const result = spawnSync("npm", ["publish", "--provenance", "--access", "public"], {
-    cwd: path.join(rootDir, pkg.path),
+  const tarball = packTarball(pkg, rootDir);
+  if (!tarball) return false;
+  if (!assertNoWorkspaceProtocol(tarball, pkg)) return false;
+  const result = spawnSync("npm", ["publish", tarball, "--provenance", "--access", "public"], {
     encoding: "utf8",
     shell: false,
     stdio: "inherit",
@@ -190,71 +202,66 @@ interface RunMode {
   releasesOnly: boolean;
 }
 
-/** Best-effort filename extraction from either supported npm pack JSON shape. */
-function extractPackFilename(parsed: unknown): string | undefined {
-  return filenameFromPackArray(parsed) ?? filenameFromPackObject(parsed);
+/** The absolute tarball path pnpm reports on its last stdout line, or undefined if it wasn't written. */
+function tarballPathFrom(stdout: string): string | undefined {
+  const tarball = stdout.trim().split("\n").pop()?.trim();
+  return tarball && existsSync(tarball) ? tarball : undefined;
 }
 
-/** npm ≤ 11 pack shape: an array with one record. */
-function filenameFromPackArray(parsed: unknown): string | undefined {
-  if (!Array.isArray(parsed)) return undefined;
-  const first = parsed[0] as { filename?: string } | undefined;
-  return first?.filename;
-}
-
-/** Coerce unknown JSON into the npm 12 object map shape when possible. */
-function asPackRecordMap(parsed: unknown): Record<string, { filename?: string }> {
-  if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
-    return parsed as Record<string, { filename?: string }>;
-  }
-  return {};
-}
-
-/** npm 12 pack shape: object keyed by package name. */
-function filenameFromPackObject(parsed: unknown): string | undefined {
-  const first = Object.values(asPackRecordMap(parsed))[0];
-  return first?.filename;
-}
-
-/** Parse `npm pack --json` output and extract the tarball filename. */
-function parsePackFilename(stdout: string, pkgDir: string): string | null {
-  try {
-    const parsed = JSON.parse(stdout) as unknown;
-    const filename = extractPackFilename(parsed);
-    if (filename) return filename;
-    console.error(`  npm pack in ${pkgDir} did not return a tarball filename.`);
-    return null;
-  } catch {
-    const preview = stdout.trim().slice(0, 200);
-    console.error(`  npm pack JSON parse failed in ${pkgDir}. stdout=${JSON.stringify(preview)}`);
-    return null;
-  }
-}
-
-/** Run `npm pack --json` and return the tarball filename, or null on failure. */
-function npmPackFilename(pkgDir: string): string | null {
-  const result = spawnSync("npm", ["pack", "--json"], {
+/**
+ * Pack a package with pnpm straight into `destDir`, returning the tarball's absolute path (or null on
+ * failure). Unlike `npm pack`, pnpm resolves the package's `workspace:*` internal-dependency ranges to
+ * real semver in the packed manifest, so this is the only packer that produces a publishable tarball.
+ */
+function pnpmPackToDir(pkgDir: string, destDir: string): string | null {
+  const result = spawnSync("pnpm", ["pack", "--pack-destination", destDir], {
     cwd: pkgDir,
     encoding: "utf8",
     shell: false,
   });
   if (result.status !== 0) {
-    const reason = result.stderr.trim() || `exit ${result.status}`;
-    console.error(`  npm pack failed in ${pkgDir}: ${reason}`);
+    console.error(
+      `  pnpm pack failed in ${pkgDir}: ${result.stderr.trim() || `exit ${result.status}`}`,
+    );
     return null;
   }
-  return parsePackFilename(result.stdout, pkgDir);
+  const tarball = tarballPathFrom(result.stdout);
+  if (!tarball) {
+    console.error(`  pnpm pack in ${pkgDir} did not report a tarball path.`);
+    return null;
+  }
+  return tarball;
 }
 
-/** Move a packed tarball into the shared provenance subject directory. */
-function movePackedTarball(srcTgz: string, destTgz: string, tag: string): boolean {
-  const moveResult = spawnSync("mv", [srcTgz, destTgz], {
+/** Read `package/package.json` out of a tarball without extracting it to disk. */
+function readPackedManifest(tarball: string): ManifestDeps | null {
+  const result = spawnSync("tar", ["-xOzf", tarball, "package/package.json"], {
     encoding: "utf8",
     shell: false,
   });
-  if (moveResult.status === 0 && existsSync(destTgz)) return true;
-  const reason = moveResult.stderr.trim() || `exit ${moveResult.status}`;
-  console.error(`  failed to move packed tarball for ${tag}: ${reason}`);
+  if (result.status !== 0) return null;
+  try {
+    return JSON.parse(result.stdout) as ManifestDeps;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Defense in depth: refuse to publish a tarball whose manifest still has an unresolved `workspace:` or
+ * `catalog:` dependency range — the failure mode this whole packing pipeline exists to prevent.
+ */
+function assertNoWorkspaceProtocol(tarball: string, pkg: WorkspacePackage): boolean {
+  const manifest = readPackedManifest(tarball);
+  if (!manifest) {
+    console.error(`  could not read package.json out of ${tarball} for ${pkg.name}.`);
+    return false;
+  }
+  const offenders = unresolvedPnpmProtocolDeps(manifest);
+  if (offenders.length === 0) return true;
+  console.error(
+    `  ${pkg.name} tarball still has unresolved pnpm-protocol deps: ${offenders.join(", ")}`,
+  );
   return false;
 }
 
@@ -263,21 +270,21 @@ function runtimeBase(): string {
   return process.env.RUNNER_TEMP ?? path.join(homedir(), ".pantoken-release");
 }
 
-/** Pack the package and move the tarball to the shared packs directory; returns the .tgz path or null. */
-function packForManifest(pkg: WorkspacePackage, tag: string, rootDir: string): string | null {
+/** Pack a package with pnpm into the shared packs directory (so attest-build-provenance can glob it). */
+function packTarball(pkg: WorkspacePackage, rootDir: string): string | null {
   const packsDir = path.join(runtimeBase(), "pantoken-packs");
   mkdirSync(packsDir, { recursive: true });
-  const pkgDir = path.join(rootDir, pkg.path);
-  const tgzName = npmPackFilename(pkgDir);
-  if (!tgzName) {
+  return pnpmPackToDir(path.join(rootDir, pkg.path), packsDir);
+}
+
+/** Pack the package into the shared packs directory (so attest-build-provenance can glob it). */
+function packForManifest(pkg: WorkspacePackage, tag: string, rootDir: string): string | null {
+  const tarball = packTarball(pkg, rootDir);
+  if (!tarball) {
     console.error(`  pack failed for ${tag}; no tarball recorded for provenance.`);
     return null;
   }
-  const srcTgz = path.join(pkgDir, tgzName);
-  const destTgz = path.join(packsDir, tgzName);
-  // Move the tgz to the shared packs dir so attest-build-provenance can glob it.
-  if (!movePackedTarball(srcTgz, destTgz, tag)) return null;
-  return destTgz;
+  return tarball;
 }
 
 /** Convert a release tag to a safe filename stem (e.g. `@pantoken/css@0.2.0` → `pantoken-css-0.2.0`). */
