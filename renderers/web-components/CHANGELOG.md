@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.5.2
+
+### Patch Changes
+
+- Updated dependencies [db834de]
+  - @pantoken/components@0.6.0
+  - @pantoken/interactions@0.3.1
+  - @pantoken/icons@0.1.6
+
 ## 0.5.1
 
 ### Patch Changes

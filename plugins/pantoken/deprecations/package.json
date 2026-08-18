@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-deprecations",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "description": "pantoken plugin: emit var() compatibility shims for upstream tokens that were removed or renamed, from a hand-authored deprecation ledger. Build-time only — the shims ship baked into @pantoken/tokens.",
   "license": "MIT",

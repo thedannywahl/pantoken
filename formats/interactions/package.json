@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/interactions",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Per-component interaction helpers for InstUI components: spacing attributes, invoker commands, and component-specific behaviors.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

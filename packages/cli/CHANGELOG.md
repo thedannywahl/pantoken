@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## 0.1.20
+
+### Patch Changes
+
+- @pantoken/swatches@0.1.9
+- @pantoken/rust@0.1.11
+- @pantoken/vanilla@0.1.8
+- @pantoken/wordpress@0.1.8
+- @pantoken/mintlify@0.1.9
+- @pantoken/pendo@0.3.7
+- @pantoken/drupal@0.1.18
+- @pantoken/hugo@0.1.18
+- @pantoken/jekyll@0.1.18
+- @pantoken/icon-font@0.1.12
+- @pantoken/tokens@0.2.3
+- @pantoken/android@0.1.12
+- @pantoken/compose@0.1.12
+- @pantoken/flutter@0.1.12
+- @pantoken/swift@0.1.12
+
 ## 0.1.19
 
 ### Patch Changes

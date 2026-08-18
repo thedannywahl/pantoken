@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/storybook",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A Storybook theme built from Instructure tokens (maps to Storybook ThemeVars).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
