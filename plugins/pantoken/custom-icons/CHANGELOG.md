@@ -1,5 +1,12 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.0
+
+### Minor Changes
+
+- 81f317e: Add the Conveyor, Responsive, and Vanilla Forums logo marks as the `conveyor`, `responsive`, and
+  `vanilla-forums` current-color custom icons.
+
 ## 0.2.0
 
 ### Minor Changes
