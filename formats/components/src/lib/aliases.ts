@@ -5,6 +5,8 @@
  * - {@link withAliases} appends deprecated-alias twins discovered from the record's own doc comment
  *   ({@link deprecatedAliasPairs}) — each modifier whose `@deprecated` note carries a `{@link -canonical}`
  *   gets a rule cloned from that canonical modifier.
+ * - {@link withSpacingModifierDocs} injects wildcard `@modifier` families for the universal spacing/gap
+ *   utilities, so a chained spacing modifier resolves against the record's OWN doc comment.
  *
  * NOTE: this module stays free of `@cssdoc/core` (the postcss-based parser) ON PURPOSE — it runs at
  * record-definition time, so importing it would bake postcss (and its `node:module`/`createRequire`
@@ -14,6 +16,7 @@
  *
  * @module
  */
+import { SPACING_PROPERTIES } from "./helpers.ts";
 
 /** A deprecated modifier and the canonical modifier it aliases, e.g. `-toggle` → `-variant-toggle`. */
 export interface AliasPair {
@@ -129,4 +132,36 @@ export function withAliases(css: string, aliases: AliasPair[]): string {
     }
   }
   return extra.length ? `${css}\n${extra.join("\n")}\n` : css;
+}
+
+/**
+ * Wildcard `@modifier` families for the universal spacing/gap utilities (one family per property's
+ * short prefix — `-m*` covers every margin spelling, `-p*` every padding spelling — plus `-gap*`).
+ * The spacing/gap utility classes are documented on the separate `spacing`/`gap` utility records, not
+ * on the component or `view` record they're chained onto (`.instui-card.-mb-sm`); without this, a
+ * consumer's `@cssdoc/eslint-plugin` `valid-class-usage` check flags the chained modifier as unknown,
+ * since it only looks at the base class's own documented modifiers.
+ */
+const SPACING_MODIFIER_FAMILIES: readonly string[] = [
+  ...SPACING_PROPERTIES.flatMap((property) => [`-${property.short}*`, `-${property.long}*`]),
+  "-gap*",
+];
+
+/**
+ * Inject the spacing/gap wildcard families into a record's own doc comment, skipping any already
+ * present. Unconditional — every chainable base (component, `view`) gets the same families, since the
+ * spacing/gap utilities are universal by design, not opted into per record.
+ */
+export function withSpacingModifierDocs(comment: string): string {
+  if (!comment) return comment;
+  const missing = SPACING_MODIFIER_FAMILIES.filter(
+    (family) =>
+      !new RegExp(`@modifier\\s+${family.replace(/\*/u, "\\*")}(?:\\s|$)`, "u").test(comment),
+  );
+  if (!missing.length) return comment;
+  const lines = missing.map(
+    (family) =>
+      ` * @modifier ${family} — Universal spacing/gap utility (see the spacing/gap utilities).`,
+  );
+  return comment.replace(/\n([ \t]*)\*\/\s*$/u, `\n${lines.join("\n")}\n$1*/`);
 }
