@@ -49,6 +49,7 @@
  * }
  * @related byline — Can host an avatar as its leading hero figure.
  * @sealed
+ * @stable
  */
 .pfx-avatar {
   display: inline-flex;

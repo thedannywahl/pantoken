@@ -20,7 +20,11 @@ test("progress bar meter colours are distinct semantic backgrounds on the root, 
   expect(css).toContain("--max: var(--value-max)");
   expect(css).toContain("(var(--value) - var(--min)) / (var(--max) - var(--min))");
   expect(css).toContain("@element progress,meter");
-  expect(css).toContain("@structure * label { * .instui-progress { * .bar {} * .value {} * } * }");
+  // Two named @structure variants (cssdoc 0.11's @variant), named for the markup pattern (either can
+  // host a <progress> or <meter>), not the element itself.
+  expect(css).toContain(
+    "@structure * @variant nested-label { * label { * .instui-progress { * .bar {} * .value {} * } * } * } * @variant external-label { * label {} * .instui-progress { * .bar {} * .value {} * } * } *",
+  );
   expect(css).toContain('<label for="storage-used">Storage used</label>');
   expect(css).toContain('<meter id="storage-used"');
 });

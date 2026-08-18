@@ -37,22 +37,34 @@
  * @a11y Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Registers the numeric progress properties with `@property` and paints with CSS `mask` and `conic-gradient`; where custom-property transitions are unsupported the ring still renders but won't animate.
  * @example
+ * ### Nested label
  * ```html
  * <label>
  *   Uploading Document: <progress class="pfx-progress-circle -size-sm" value="70">70%</progress>
  * </label>
  * ```
+ * ### External label
  * ```html
  * <label for="score">Score</label>
  * <meter id="score" class="pfx-progress-circle -color-success" min="20" value="40" max="60">50%</meter>
  * ```
  * @structure
- * label {
+ * @variant nested-label {
+ *   label {
+ *     .pfx-progress-circle {
+ *       .value {}
+ *     }
+ *   }
+ * }
+ * @variant external-label {
+ *   label {}
  *   .pfx-progress-circle {
  *     .value {}
  *   }
  * }
  * @related progress — The linear bar form of the same determinate progress.
+ * @stable
+ * @sealed
  */
 @property --animation-delay {
   syntax: "<number>";

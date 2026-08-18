@@ -37,6 +37,8 @@
  *   .pfx-close-button:optional {}
  * }
  * @related close-button — The dismiss control an alert may include.
+ * @sealed
+ * @stable
  */
 @property --timeout {
   syntax: "<integer>";

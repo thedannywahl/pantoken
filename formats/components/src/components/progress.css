@@ -34,23 +34,36 @@
  * @accessibility Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
  * @example
+ * ### Nested label
  * ```html
  * <label>
  *   Uploading Document: <progress class="pfx-progress -color-brand" value="70">70%</progress>
  * </label>
  * ```
+ * ### External label
  * ```html
  * <label for="storage-used">Storage used</label>
  * <meter id="storage-used" class="pfx-progress -color-warning" min="20" value="40" max="60">50%</meter>
  * ```
  * @structure
- * label {
+ * @variant nested-label {
+ *   label {
+ *     .pfx-progress {
+ *       .bar {}
+ *       .value {}
+ *     }
+ *   }
+ * }
+ * @variant external-label {
+ *   label {}
  *   .pfx-progress {
  *     .bar {}
  *     .value {}
  *   }
  * }
  * @related progress-circle — The circular form of the same determinate progress.
+ * @stable
+ * @sealed
  */
 /* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
    --value) reads as loading rather than rendering a broken 0%-width bar. */

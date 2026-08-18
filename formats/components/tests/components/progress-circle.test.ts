@@ -31,8 +31,13 @@ test("progress circle registers current, maximum, and animation inputs", () => {
   expect(css).toContain("--max: var(--value-max)");
   expect(css).toContain("(var(--value) - var(--min)) / (var(--max) - var(--min))");
   expect(css).toContain("@element progress, meter");
+  // Two named @structure variants (cssdoc 0.11's @variant), named for the markup pattern (either can
+  // host a <progress> or <meter>), not the element itself.
   expect(css).toMatch(
-    /@structure\s+\*\s+label\s*\{\s+\*\s+\.instui-progress-circle\s*\{\s+\*\s+\.value\s*\{\}\s+\*\s+\}\s+\*\s+\}/u,
+    /@structure\s+\*\s+@variant nested-label \{\s+\*\s+label \{\s+\*\s+\.instui-progress-circle \{\s+\*\s+\.value \{\}\s+\*\s+\}\s+\*\s+\}\s+\*\s+\}/u,
+  );
+  expect(css).toMatch(
+    /@variant external-label \{\s+\*\s+label \{\}\s+\*\s+\.instui-progress-circle \{\s+\*\s+\.value \{\}\s+\*\s+\}\s+\*\s+\}/u,
   );
   expect(css).toContain('<label for="score">Score</label>');
   expect(css).toContain('<meter id="score"');
