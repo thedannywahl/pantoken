@@ -35,4 +35,13 @@ test("spacing utilities: logical per-side classes on the spacing scale, auto for
   expect(css).toContain(".instui-padding-md, .instui-button.-padding-md");
   expect(css).toContain(".instui-margint-lg, .instui-button.-margint-lg");
   expect(css).toContain(".instui-marginx-auto, .instui-button.-marginx-auto");
+  // Fully long, dash-separated spellings (property, side, and step all spelled out).
+  expect(css).toContain(".instui-margin-bottom-small, .instui-button.-margin-bottom-small");
+  expect(css).toContain("margin-block-end: var(--instui-spacing-space-sm);");
+  expect(css).toContain(".instui-padding-medium, .instui-button.-padding-medium");
+  expect(css).toContain(".instui-margin-inline-auto, .instui-button.-margin-inline-auto");
+  expect(css).toContain("margin-inline: auto;");
+  // `view` is a component-attached alias target alongside every component.
+  expect(css).toContain(".instui-view.-mb-sm");
+  expect(css).toContain(".instui-view.-margin-bottom-small");
 });

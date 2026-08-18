@@ -15,7 +15,7 @@ const ALL = [...COMPONENTS, ...UTILITIES, ...RULES, ...DECLARATIONS];
 test("every registered definition is a single well-formed record (sanity: the registries are populated)", () => {
   // COMPONENTS is the load-bearing concat order (52: 49 components + icon/mask/screen-reader-content).
   expect(COMPONENTS.length).toBe(52);
-  expect(UTILITIES.length).toBe(7);
+  expect(UTILITIES.length).toBe(8);
   expect(RULES.length).toBe(2);
   expect(DECLARATIONS.length).toBe(2);
 });

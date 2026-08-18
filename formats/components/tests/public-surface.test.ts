@@ -34,6 +34,7 @@ const EXPECTED = [
   "formFieldCss",
   "formFieldGroupCss",
   "formFieldMessagesCss",
+  "gapCss",
   "headingCss",
   "iconCss",
   "iconGlyphsCss",

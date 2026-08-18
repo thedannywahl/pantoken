@@ -29,6 +29,7 @@ vi.mock("../src/index.ts", () => ({
   layoutUtilitiesCss: () => "/* layout */",
   responsiveUtilitiesCss: () => "/* responsive */",
   spacingUtilitiesCss: () => "/* spacing */",
+  gapCss: () => "/* gap */",
   ELEVATION_NAMES: [],
 }));
 

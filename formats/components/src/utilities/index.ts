@@ -7,6 +7,7 @@
  * @module
  */
 import type { Definition } from "../lib/define.ts";
+import { gap } from "./gap.ts";
 import { icon } from "./icon.ts";
 import { layout } from "./layout.ts";
 import { mask } from "./mask.ts";
@@ -19,6 +20,7 @@ import { view } from "./view.ts";
 export const UTILITIES: readonly Definition[] = [
   view,
   spacing,
+  gap,
   layout,
   responsive,
   icon,

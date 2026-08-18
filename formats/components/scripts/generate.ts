@@ -26,6 +26,7 @@ import {
   baseCss,
   componentsCss,
   ELEVATION_NAMES,
+  gapCss,
   iconGlyphsCss,
   layoutUtilitiesCss,
   proseCss,
@@ -163,7 +164,7 @@ const colorDoc = css`/**
  */\n`;
 writeFileSync(
   join(outDir, "utilities.css"),
-  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${colorDoc}${colorUtilitiesCss(
+  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${gapCss(opts)}\n${colorDoc}${colorUtilitiesCss(
     { background: names("background"), text: names("text"), stroke: names("stroke") },
     opts,
   )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
