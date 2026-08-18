@@ -41,46 +41,59 @@ const legacyStepEntries = (steps: readonly SpacingStep[]): Array<readonly [strin
       : ([[step.short, step.value]] as const),
   );
 
+/** A selector-list builder: modifier token → every selector it should apply to (bare + attached). */
+type SelectorsFor = (p: string, modifier: string) => string[];
+
+const selectorsFor: SelectorsFor = (p, modifier) =>
+  SPACING_ALIAS_TARGETS.map((name) => `.${p}${name}.${modifier}`);
+
+/**
+ * Short spellings (`-m-sm`) and the legacy long-property-word twin (`-margin-sm`) — concatenated
+ * side, short step. Unchanged shape from before the long spelling existed.
+ */
+function shortAndLegacyRules(p: string): string[] {
+  const rules: string[] = [];
+  for (const property of SPACING_PROPERTIES) {
+    const stepEntries = legacyStepEntries(stepsFor(property));
+    for (const letter of [property.short, property.long]) {
+      for (const side of SPACING_SIDES) {
+        for (const [step, value] of stepEntries) {
+          const modifier = `-${letter}${side.short}-${step}`;
+          const selectors = [`.${p}${letter}${side.short}-${step}`, ...selectorsFor(p, modifier)];
+          rules.push(`${selectors.join(", ")} { ${property.css}${side.suffix}: ${value}; }`);
+        }
+      }
+    }
+  }
+  return rules;
+}
+
+/**
+ * Fully long, dash-separated spellings — property word, side word, and step word all spelled out
+ * (`-margin-bottom-small`). A handful of these collide with a "no side" legacy long selector above
+ * (e.g. `-margin-none`, `-margin-auto`) — harmless duplicate rules, not worth special-casing.
+ */
+function fullyLongRules(p: string): string[] {
+  const rules: string[] = [];
+  for (const property of SPACING_PROPERTIES) {
+    for (const side of SPACING_SIDES) {
+      for (const step of stepsFor(property)) {
+        const sidePart = side.long ? `${side.long}-` : "";
+        const name = `${property.long}-${sidePart}${step.long}`;
+        const modifier = `-${name}`;
+        const selectors = [`.${p}${name}`, ...selectorsFor(p, modifier)];
+        rules.push(`${selectors.join(", ")} { ${property.css}${side.suffix}: ${step.value}; }`);
+      }
+    }
+  }
+  return rules;
+}
+
 /** The spacing utility — margin and padding classes on the spacing scale, with logical sides. */
 export const spacing: Definition = defineUtility({
   name: "spacing",
   css: (p) => {
-    const rules: string[] = [];
-    const componentAliases = (modifier: string): string[] =>
-      SPACING_ALIAS_TARGETS.map((name) => `.${p}${name}.${modifier}`);
-
-    // Short spellings (`-m-sm`) and the legacy long-property-word twin (`-margin-sm`) — concatenated
-    // side, short step. Unchanged shape from before the long spelling existed.
-    for (const property of SPACING_PROPERTIES) {
-      const stepEntries = legacyStepEntries(stepsFor(property));
-      for (const letter of [property.short, property.long]) {
-        for (const side of SPACING_SIDES) {
-          for (const [step, value] of stepEntries) {
-            const modifier = `-${letter}${side.short}-${step}`;
-            const selectors = [
-              `.${p}${letter}${side.short}-${step}`,
-              ...componentAliases(modifier),
-            ];
-            rules.push(`${selectors.join(", ")} { ${property.css}${side.suffix}: ${value}; }`);
-          }
-        }
-      }
-    }
-
-    // Fully long, dash-separated spellings — property word, side word, and step word all spelled out
-    // (`-margin-bottom-small`). A handful of these collide with a "no side" legacy long selector above
-    // (e.g. `-margin-none`, `-margin-auto`) — harmless duplicate rules, not worth special-casing.
-    for (const property of SPACING_PROPERTIES) {
-      for (const side of SPACING_SIDES) {
-        for (const step of stepsFor(property)) {
-          const sidePart = side.long ? `${side.long}-` : "";
-          const name = `${property.long}-${sidePart}${step.long}`;
-          const modifier = `-${name}`;
-          const selectors = [`.${p}${name}`, ...componentAliases(modifier)];
-          rules.push(`${selectors.join(", ")} { ${property.css}${side.suffix}: ${step.value}; }`);
-        }
-      }
-    }
+    const rules = [...shortAndLegacyRules(p), ...fullyLongRules(p)];
 
     // prettier-ignore
     return css`/**
