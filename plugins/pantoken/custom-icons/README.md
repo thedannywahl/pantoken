@@ -54,4 +54,7 @@ Or load the static CSS directly from the CDN — either the full barrel or a sin
 
 ## Icons
 
+- `conveyor`
 - `highspot`
+- `responsive`
+- `vanilla-forums`
