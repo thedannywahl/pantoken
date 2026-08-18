@@ -35,6 +35,9 @@
     "test": "vp test",
     "check": "vp check"
   },
+  "dependencies": {
+    "@pantoken/utils": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "catalog:",
     "typescript": "catalog:",
