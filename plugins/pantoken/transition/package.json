@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-transition",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "pantoken plugin: the CSS for InstUI's Transition utility — duration/timing tokens plus fade, scale, and slide enter/exit state classes.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

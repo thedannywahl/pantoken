@@ -1,5 +1,66 @@
 # CHANGELOG
 
+## 0.1.25
+
+### Patch Changes
+
+- b2566cc: Republish with internal dependencies resolved to real semver instead of the literal `workspace:*`
+  protocol string. Every previously published version of this package shipped with that bug (found by
+  `scripts/release/audit-workspace-protocol.ts`), because the release pipeline packed with `npm
+pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
+  `pnpm pack` first, which resolves it. No functional change beyond the dependency ranges themselves.
+- Updated dependencies [b2566cc]
+  - @pantoken/android@0.1.11
+  - @pantoken/angular@0.1.20
+  - @pantoken/astro@0.1.12
+  - @pantoken/cli@0.1.19
+  - @pantoken/components@0.5.1
+  - @pantoken/compose@0.1.11
+  - @pantoken/css@0.3.2
+  - @pantoken/css-in-js@0.1.8
+  - @pantoken/drupal@0.1.17
+  - @pantoken/dtcg@0.1.7
+  - @pantoken/email@0.1.8
+  - @pantoken/figma@0.1.7
+  - @pantoken/flutter@0.1.11
+  - @pantoken/icons@0.1.5
+  - @pantoken/less@0.1.8
+  - @pantoken/markdown-it@0.1.5
+  - @pantoken/mintlify@0.1.8
+  - @pantoken/mui@0.1.8
+  - @pantoken/panda@0.1.8
+  - @pantoken/pendo@0.3.6
+  - @pantoken/plugin-logos@0.3.1
+  - @pantoken/plugin-primitives@0.1.8
+  - @pantoken/plugin-simple-icons@0.3.1
+  - @pantoken/plugin-stacking@0.2.2
+  - @pantoken/plugin-transition@0.3.1
+  - @pantoken/plugin-visual-debug@0.1.10
+  - @pantoken/postcss@0.1.12
+  - @pantoken/react@0.1.21
+  - @pantoken/react-markdown@0.1.7
+  - @pantoken/react-native@0.1.8
+  - @pantoken/rehype@0.1.5
+  - @pantoken/scss@0.1.8
+  - @pantoken/storybook@0.1.8
+  - @pantoken/stylus@0.1.8
+  - @pantoken/svelte@0.1.21
+  - @pantoken/swatches@0.1.8
+  - @pantoken/swift@0.1.11
+  - @pantoken/tailwind@0.1.5
+  - @pantoken/tokens@0.2.3
+  - @pantoken/vanilla@0.1.7
+  - @pantoken/vite@0.1.12
+  - @pantoken/vue@0.1.21
+  - @pantoken/web-components@0.5.1
+  - @pantoken/webpack@0.1.12
+  - @pantoken/wordpress@0.1.7
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.2
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/vitepress@0.2.0
+
 ## 0.1.24
 
 ### Patch Changes

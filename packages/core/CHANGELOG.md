@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.2.3
+
+### Patch Changes
+
+- b2566cc: Republish with internal dependencies resolved to real semver instead of the literal `workspace:*`
+  protocol string. Every previously published version of this package shipped with that bug (found by
+  `scripts/release/audit-workspace-protocol.ts`), because the release pipeline packed with `npm
+pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
+  `pnpm pack` first, which resolves it. No functional change beyond the dependency ranges themselves.
+- Updated dependencies [b2566cc]
+  - @pantoken/plugin-kit@0.2.2
+  - @pantoken/utils@0.2.6
+
 ## 0.2.2
 
 ### Patch Changes
