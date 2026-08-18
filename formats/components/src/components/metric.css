@@ -1,6 +1,7 @@
 /**
  * @component metric
  * @summary A labelled statistic — a large value over a caption.
+ * @remarks Sets its own `gap` between the value and label, and its own horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values.
  * @modifier -text-align-start — Start-align the value and label.
  * @modifier -text-align-center — Centre the value and label.
  * @modifier -text-align-end — End-align the value and label.
@@ -23,6 +24,7 @@
   gap: var(--instui-component-metric-gap-texts);
   padding: 0 var(--instui-component-metric-padding-horizontal);
 }
+
 @scope (.pfx-metric) {
   :scope > .value {
     color: var(--instui-component-metric-value-color);
@@ -31,6 +33,7 @@
     font-weight: var(--instui-component-metric-value-font-weight);
     line-height: var(--instui-component-metric-value-line-height);
   }
+
   :scope > .label {
     color: var(--instui-component-metric-label-color);
     font-family: var(--instui-component-metric-label-font-family);
@@ -39,6 +42,7 @@
     line-height: var(--instui-component-metric-label-line-height);
   }
 }
+
 /* textAlign: the value/label are flex items in a column, so cross-axis alignment (align-items) is what
    actually positions them — text-align alone is a no-op on the shrink-wrapped box. Set both so it also
    covers wrapped multi-line text. */
@@ -46,10 +50,12 @@
   align-items: flex-start;
   text-align: start;
 }
+
 .pfx-metric.-text-align-center {
   align-items: center;
   text-align: center;
 }
+
 .pfx-metric.-text-align-end {
   align-items: flex-end;
   text-align: end;

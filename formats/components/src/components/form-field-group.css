@@ -1,6 +1,7 @@
 /**
  * @component form-field-group
  * @summary A `<fieldset>` group with a legend, a column or inline layout, and configurable spacing.
+ * @remarks Sets its own `gap` between fields, tunable with the `-col-spacing-*`/`-row-spacing-*` modifiers below — prefer those over chaining a generic `-gap-*` spacing utility modifier, which overrides the built-in value outright.
  * @modifier -col-spacing-none — No column gap.
  * @modifier -col-spacing-small — Small column gap.
  * @modifier -col-spacing-medium — Medium column gap.
@@ -66,6 +67,7 @@
   padding: 0;
   border: 0;
 }
+
 .pfx-form-field-group > legend {
   grid-column: 1 / -1;
   padding: 0;
@@ -76,48 +78,62 @@
   font-size: var(--instui-component-form-field-layout-font-size);
   line-height: var(--instui-component-form-field-layout-line-height);
 }
+
 .pfx-form-field-group.-required > legend::after {
   content: "*";
   margin-inline-start: 0.25rem;
   color: var(--instui-component-form-field-layout-asterisk-color);
 }
+
 .pfx-form-field-group.-layout-columns,
 .pfx-form-field-group.-layout-inline {
   grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 }
+
 .pfx-form-field-group.-row-spacing-none {
   row-gap: 0;
 }
+
 .pfx-form-field-group.-row-spacing-small {
   row-gap: var(--instui-spacing-space-sm);
 }
+
 .pfx-form-field-group.-row-spacing-medium {
   row-gap: var(--instui-spacing-space-md);
 }
+
 .pfx-form-field-group.-row-spacing-large {
   row-gap: var(--instui-spacing-space-lg);
 }
+
 .pfx-form-field-group.-col-spacing-none {
   column-gap: 0;
 }
+
 .pfx-form-field-group.-col-spacing-small {
   column-gap: var(--instui-spacing-space-sm);
 }
+
 .pfx-form-field-group.-col-spacing-medium {
   column-gap: var(--instui-spacing-space-md);
 }
+
 .pfx-form-field-group.-col-spacing-large {
   column-gap: var(--instui-spacing-space-lg);
 }
+
 .pfx-form-field-group.-v-align-top {
   align-items: start;
 }
+
 .pfx-form-field-group.-v-align-middle {
   align-items: center;
 }
+
 .pfx-form-field-group.-v-align-bottom {
   align-items: end;
 }
+
 /* -layout-aligned: the group's inline fields share one [label | controls] grid via subgrid, so every
    label lines up in a single column (Chromium/Firefox). Inert where subgrid is unsupported — the fields
    just fall back to their own stacked layout. */
@@ -126,6 +142,7 @@
     grid-template-columns: auto 1fr;
     align-items: center;
   }
+
   .pfx-form-field-group.-layout-aligned > .pfx-form-field {
     display: grid;
     grid-column: 1 / -1;

@@ -1,6 +1,7 @@
 /**
  * @component rating
  * @summary A star rating with filled and empty glyphs and an optional numeric label.
+ * @remarks Sets its own `gap` between star glyphs; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -icon-* — Render star glyphs with icon classes (for example, `-icon-star-solid`).
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.

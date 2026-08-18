@@ -1,6 +1,7 @@
 /**
  * @component breadcrumb
  * @summary A breadcrumb trail with `/` separators; the last crumb is the current page.
+ * @remarks Sets its own responsive `gap` between crumbs (`-size-sm`/`-size-lg` scale it); chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.
  * @modifier -icon-* — Render a glyph icon in a crumb link (for example, home in the first crumb).

@@ -1,6 +1,7 @@
 /**
  * @component form-field-messages
  * @summary Field help and validation messages — hint, error, success, and screen-reader-only — with a glyph on error and success.
+ * @remarks Sets its own `gap` between stacked messages; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -type-new-error — @deprecated {@link -type-error}
  * @part .pfx-form-field-message — An individual message; its `-type-*` picks the hint, error, success, or screen-reader-only variant.
  * @pseudo ::before — Renders the leading status glyph on error and success messages: an alert circle for errors and a check circle for success.

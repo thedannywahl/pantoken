@@ -1,6 +1,7 @@
 /**
  * @component side-nav-bar
  * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
+ * @remarks Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values.
  * @modifier -minimized — Collapse to icons only (labels hidden).
  * @modifier -icon-* — Render a glyph icon in each nav item.
  * @part .item — A navigation entry; `-selected` marks the active one.

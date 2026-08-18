@@ -1,7 +1,7 @@
 /**
  * @component checkbox
  * @summary A native checkbox and its label, or a switch via `-variant-toggle`.
- * @remarks Set `el.indeterminate = true` in JavaScript to show the mixed-state dash; the checked tick auto-contrasts against the fill — white on a dark fill, near-black on a light one.
+ * @remarks Set `el.indeterminate = true` in JavaScript to show the mixed-state dash; the checked tick auto-contrasts against the fill — white on a dark fill, near-black on a light one. Also sets its own `gap` between the control and its label; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -label-placement-end — Place the label after the control.
  * @modifier -label-placement-start — Place the label before the control.

@@ -1,6 +1,7 @@
 /**
  * @component pagination
  * @summary Page navigation: numbered pages, first, previous, next, and last arrows, and an ellipsis for gaps.
+ * @remarks Sets its own `gap` between page controls; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -variant-input — Compact variant with a page-number input.
  * @modifier -icon-* — Render arrow glyph icons inside the first/prev/next/last controls.
  * @part .page — A page link or button; the current page carries `[aria-current]`.
