@@ -37,6 +37,7 @@ export function useShikiHighlight(code: Ref<string>, lang: Ref<string>): Ref<str
     highlighted.value = hl.codeToHtml(currentCode, {
       lang: currentLang,
       themes: { light: "github-light", dark: "github-dark" },
+      defaultColor: false,
     });
   });
 
