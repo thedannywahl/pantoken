@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-components
 
+## 0.2.2
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.2.3
+
 ## 0.2.1
 
 ### Patch Changes

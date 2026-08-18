@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-icons
 
+## 0.3.2
+
+### Patch Changes
+
+- @pantoken/plugin-kit@0.2.3
+
 ## 0.3.1
 
 ### Patch Changes

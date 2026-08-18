@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-stacking",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "pantoken plugin: named z-index depths (deepest, below, above, topmost) as --instui-stacking-* tokens plus .instui-stack-* utility classes, from InstUI's view stacking scale.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

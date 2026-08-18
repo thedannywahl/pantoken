@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.3.3
+
+### Patch Changes
+
+- Updated dependencies [db834de]
+  - @pantoken/utils@0.3.0
+  - @pantoken/plugin-kit@0.2.3
+  - @pantoken/tokens@0.2.3
+
 ## 0.3.2
 
 ### Patch Changes

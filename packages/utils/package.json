@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/utils",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Shared pantoken helpers: token reference resolver, typed regexes (arkregex), name-case, and hex-colour parsing.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

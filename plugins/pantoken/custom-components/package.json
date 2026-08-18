@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-custom-components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "pantoken plugin: custom component layouts for downstream consumers — a card and more, documented with cssdoc.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
