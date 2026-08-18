@@ -58,4 +58,19 @@
       />
     </span>
   </div>
+
+  <!-- Full display names: data-initials keeps the real name in the accessibility tree while showing
+       a compact "SR" visually; the JS interactions entry auto-fills data-initials when it's omitted;
+       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+       .first-name/.last-name is the two-letter version of that same fallback, each independently
+       clipped — omitting either half just leaves the other centred. -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar" data-initials="SR">Sarah Robinson</span>
+    <span class="instui-avatar -size-sm">Kyle Montgomery</span>
+    <span class="instui-avatar"><span class="name">Alexandria Winterbourne</span></span>
+    <span class="instui-avatar">
+      <span class="first-name">Miguel</span> <span class="last-name">Sanchez</span>
+    </span>
+    <span class="instui-avatar"><span class="first-name">Priya</span></span>
+  </div>
 </div>

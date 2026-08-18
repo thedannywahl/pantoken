@@ -161,6 +161,30 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   expect(avatar).toContain(".instui-avatar.-show-border-always");
   expect(avatar).toContain(".instui-avatar.-show-border-never");
   expect(avatar).toContain(".instui-avatar.-show-border {");
+  // The full 7-step InstUI size scale (2xs/xs/sm/md/lg/xl/2xl) gets long-form aliases automatically.
+  expect(avatar).toContain(".instui-avatar.-size-xx-small");
+  expect(avatar).toContain(".instui-avatar.-size-x-small");
+  expect(avatar).toContain(".instui-avatar.-size-small");
+  expect(avatar).toContain(".instui-avatar.-size-medium");
+  expect(avatar).toContain(".instui-avatar.-size-large");
+  expect(avatar).toContain(".instui-avatar.-size-x-large");
+  expect(avatar).toContain(".instui-avatar.-size-xx-large");
+  // Overflowing bare text hard-clips (no ellipsis — text-overflow doesn't apply to a flex container).
+  expect(avatar).toContain("white-space: nowrap;");
+  // data-initials: the real name stays as content (accessible), ::before shows the compact form.
+  expect(avatar).toContain(".instui-avatar[data-initials] {\n  font-size: 0;");
+  expect(avatar).toContain(
+    ".instui-avatar[data-initials]::before {\n  content: attr(data-initials);",
+  );
+  expect(avatar).toContain(".instui-avatar.-size-lg[data-initials]::before {");
+  // .name: an opt-in single-leading-letter clip for the no-data-initials, no-JS static case; the
+  // .first-name/.last-name pair is the two-letter variant, each guarding against the other's markup.
+  expect(avatar).toContain("@scope (.instui-avatar)");
+  expect(avatar).toContain(".name,");
+  expect(avatar).toContain("max-width: 1ch;");
+  expect(avatar).toContain(':not(:has([class*="-name"])) .name');
+  expect(avatar).toContain(":not(:has(.name)) .first-name");
+  expect(avatar).toContain(":not(:has(.name)) .last-name");
   // Sub-elements live inside an @scope block, so they're authored as bare, ancestor-scoped classes.
   const tabs = tabsCss({ prefix: "instui" });
   expect(tabs).toContain("@scope (.instui-tabs)");

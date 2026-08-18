@@ -10,8 +10,9 @@
     },
     {
       "name": "avatar",
-      "type": "css-only",
-      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/avatar.css"
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/avatar.css",
+      "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/avatar.iife.js"
     },
     {
       "name": "badge",

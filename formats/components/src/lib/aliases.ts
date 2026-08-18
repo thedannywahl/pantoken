@@ -35,11 +35,13 @@ export function deprecatedAliasPairs(rawRecord: string): AliasPair[] {
 
 /** Long-form spellings for the size scale — emitted as first-class aliases beside the short forms. */
 const SIZE_LONG: Record<string, string> = {
+  "2xs": "xx-small",
   xs: "x-small",
   sm: "small",
   md: "medium",
   lg: "large",
   xl: "x-large",
+  "2xl": "xx-large",
 };
 
 /**
@@ -49,11 +51,11 @@ const SIZE_LONG: Record<string, string> = {
  */
 export function withSizeAliases(css: string): string {
   const extra: string[] = [];
-  const rule = /([^{}]*\.-size-(xs|sm|md|lg|xl)\b[^{}]*)(\{[^{}]*\})/g;
+  const rule = /([^{}]*\.-size-(2xs|xs|sm|md|lg|xl|2xl)\b[^{}]*)(\{[^{}]*\})/g;
   for (const [, selector, , body] of css.matchAll(rule)) {
     const long = selector
       .replace(/\/\*[\s\S]*?\*\//g, "")
-      .replace(/\.-size-(xs|sm|md|lg|xl)\b/g, (_m, s) => `.-size-${SIZE_LONG[s]}`)
+      .replace(/\.-size-(2xs|xs|sm|md|lg|xl|2xl)\b/g, (_m, s) => `.-size-${SIZE_LONG[s]}`)
       .trim();
     extra.push(`${long} ${body}`);
   }
@@ -69,7 +71,9 @@ export function withSizeAliases(css: string): string {
  */
 export function withSizeAliasDocs(comment: string, body: string): string {
   if (!comment) return comment;
-  const shorts = new Set([...body.matchAll(/\.-size-(xs|sm|md|lg|xl)\b/gu)].map((m) => m[1]));
+  const shorts = new Set(
+    [...body.matchAll(/\.-size-(2xs|xs|sm|md|lg|xl|2xl)\b/gu)].map((m) => m[1]),
+  );
   const lines: string[] = [];
   for (const short of shorts) {
     const long = SIZE_LONG[short];

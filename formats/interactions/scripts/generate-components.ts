@@ -44,6 +44,7 @@ const ALL_COMPONENTS = [
 // Components with hand-authored entry points — the generator skips these.
 const BEHAVIORAL_COMPONENTS = new Set([
   "alert",
+  "avatar",
   "close-button",
   "modal",
   "tooltip",
