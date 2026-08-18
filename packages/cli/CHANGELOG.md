@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 0.1.19
+
+### Patch Changes
+
+- b2566cc: Republish with internal dependencies resolved to real semver instead of the literal `workspace:*`
+  protocol string. Every previously published version of this package shipped with that bug (found by
+  `scripts/release/audit-workspace-protocol.ts`), because the release pipeline packed with `npm
+pack`/`npm publish`, which doesn't understand pnpm's `workspace:` protocol; it now packs with
+  `pnpm pack` first, which resolves it. No functional change beyond the dependency ranges themselves.
+- Updated dependencies [b2566cc]
+  - @pantoken/android@0.1.11
+  - @pantoken/compose@0.1.11
+  - @pantoken/drupal@0.1.17
+  - @pantoken/flutter@0.1.11
+  - @pantoken/hugo@0.1.17
+  - @pantoken/icon-font@0.1.11
+  - @pantoken/jekyll@0.1.17
+  - @pantoken/mintlify@0.1.8
+  - @pantoken/pendo@0.3.6
+  - @pantoken/rust@0.1.10
+  - @pantoken/swatches@0.1.8
+  - @pantoken/swift@0.1.11
+  - @pantoken/tokens@0.2.3
+  - @pantoken/vanilla@0.1.7
+  - @pantoken/wordpress@0.1.7
+
 ## 0.1.18
 
 ### Patch Changes

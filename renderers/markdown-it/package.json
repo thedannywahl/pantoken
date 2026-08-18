@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/markdown-it",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "markdown-it plugin: render :icon: codes as inline SVG and color values as swatches, using the pantoken icon set.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
