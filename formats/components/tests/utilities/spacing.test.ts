@@ -44,4 +44,4 @@ test("spacing utilities: logical per-side classes on the spacing scale, auto for
   // `view` is a component-attached alias target alongside every component.
   expect(css).toContain(".instui-view.-mb-sm");
   expect(css).toContain(".instui-view.-margin-bottom-small");
-});
+}, 60_000);

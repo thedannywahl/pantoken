@@ -11,7 +11,6 @@ import {
   withAliases,
   withSizeAliases,
   withSizeAliasDocs,
-  withSpacingModifierDocs,
 } from "./aliases.ts";
 import { ns, wrap, type ComponentOptions } from "./helpers.ts";
 
@@ -66,16 +65,12 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
   // Deprecated-alias twins are discovered from the doc comment; the comment is prefix-independent, so
   // parse the record once (any prefix) rather than per `rules()` call.
   const aliasPairs = deprecatedAliasPairs(cssBuilder("instui-", { theme: "rebrand" }));
-  // The universal spacing/gap modifiers attach to every component (and `view`, the other common
-  // chainable base) even though they're defined by the separate `spacing`/`gap` utility records.
-  const isSpacingAliasTarget = kind === "component" || input.name === "view";
   // Append the size-alias and deprecated-alias twins to the CSS BODY ONLY (never the comment), so each
   // alias documents on this record's own page and the brace scanners never see the `{@link …}` braces.
   const rules = (prefix: string, options: ComponentOptions = {}): string => {
     const { comment, body } = splitLeadingDocComment(cssBuilder(prefix, options));
     // Auto-document the long-form size twins withSizeAliases appends, so they aren't undocumented.
-    const withSizeDocs = withSizeAliasDocs(comment, body);
-    const docs = isSpacingAliasTarget ? withSpacingModifierDocs(withSizeDocs) : withSizeDocs;
+    const docs = withSizeAliasDocs(comment, body);
     return `${docs}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
   };
   return {

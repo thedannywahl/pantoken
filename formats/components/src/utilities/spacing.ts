@@ -99,6 +99,7 @@ export const spacing: Definition = defineUtility({
     return css`/**
  * @utility spacing
  * @class .instui-p-md
+ * @global
  * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` / \`.instui-margin-<side>-<step>\` and \`.instui-p<side>-<step>\` / \`.instui-padding-<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none, spelled short or fully long — for example \`-mb-sm\` and \`-margin-bottom-small\` are the same rule; margin also takes \`auto\`). Every utility also has a component-attached alias modifier (for example \`-mb-sm\` on any \`.instui-<component>\` or \`.instui-view\`).
  * @demo self:spacing
  * @example
