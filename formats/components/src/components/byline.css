@@ -9,6 +9,7 @@
  * @modifier -size-lg — Large.
  * @part .title — The heading text.
  * @part .description — The supporting body text.
+ * @remarks Sets its own `gap` between the figure and the text block; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
  * @example
  * <div class="pfx-byline -size-md">

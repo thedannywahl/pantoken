@@ -70,7 +70,8 @@ function make(kind: CssRecordKind, input: DefineInput): Definition {
   const rules = (prefix: string, options: ComponentOptions = {}): string => {
     const { comment, body } = splitLeadingDocComment(cssBuilder(prefix, options));
     // Auto-document the long-form size twins withSizeAliases appends, so they aren't undocumented.
-    return `${withSizeAliasDocs(comment, body)}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
+    const docs = withSizeAliasDocs(comment, body);
+    return `${docs}\n${withAliases(withSizeAliases(body), aliasPairs).trim()}\n`;
   };
   return {
     name: input.name,

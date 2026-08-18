@@ -55,6 +55,29 @@ export const fooCss = foo.css;
   (`.instui-badge-wrapper`). A guard test rejects `__` and `--`.
 - Avoid hyphen-then-digit tokens (`-2xs` needs escaping); keep tokens letter-leading.
 
+## Universal spacing/gap modifiers
+
+- `margin`/`padding`/`gap` utility classes (`utilities/spacing.ts`, `utilities/gap.ts`) are
+  **universal**: every component and `view` get a component-attached alias for free
+  (`.instui-card.-mb-sm`), with no per-record authoring — see `SPACING_ALIAS_TARGETS` in
+  `utilities/spacing.ts`.
+- Each value ships in exactly two spellings: **short** (`-mb-sm`, unchanged since before the long
+  spelling existed) and fully **long**, word-spelled (`-margin-bottom-small`) — never a mixed-segment
+  form (no `-margin-e-small`, no `-me-small`).
+- Because these modifiers are documented on the separate `spacing`/`gap` utility records, not on the
+  component they're chained onto, `withSpacingModifierDocs()` (`lib/aliases.ts`) injects five wildcard
+  `@modifier` families (`-m*`, `-margin*`, `-p*`, `-padding*`, `-gap*`) into every component's and
+  `view`'s own doc comment. This is what keeps a consumer's `@cssdoc/eslint-plugin`
+  `valid-class-usage` check from flagging `.instui-card.-mb-sm` as an unknown modifier — that rule
+  looks up modifiers against the record the base class belongs to, not wherever the CSS rule happens
+  to be authored. A more durable fix (a utility's modifiers implicitly valid on any component) is a
+  cssdoc feature request, not a pantoken workaround.
+- If a component already sets its own `margin`/`padding`/`gap` from a component-specific token (e.g.
+  card's responsive padding, breadcrumb's `gap`), document that in `@remarks` and warn that chaining a
+  spacing/gap utility modifier overrides it — see breadcrumb, button, byline, checkbox, form-field,
+  form-field-group, form-field-messages, link, list, metric, pagination, radio, radio-input-group,
+  rating, side-nav-bar, and tag for the pattern.
+
 ## Deprecated aliases (auto-discovered, always functional)
 
 - Author a modifier's metadata with `deprecated: "{@link -canonical}"`. `withAliases` reads that and

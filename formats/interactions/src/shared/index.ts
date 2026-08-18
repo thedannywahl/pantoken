@@ -2,8 +2,10 @@
  * `@pantoken/interactions` shared helpers - browser interaction utilities.
  *
  * Exposes spacing-attribute parsing/application and Invoker Commands routing helpers that are safe
- * for browser runtimes and have no Node dependencies.
+ * for browser runtimes. Depends only on `@pantoken/utils`' shared spacing scale (plain data, no
+ * `node:*` imports), so this still bundles cleanly for the browser.
  */
+import { SPACING_STEPS } from "@pantoken/utils";
 
 /** The `command`/`source` shape of an Invoker Commands `CommandEvent` (not yet in DOM lib types). */
 export interface CommandEventish extends Event {
@@ -88,26 +90,20 @@ export function syncInvoker(host: HTMLElement): void {
   }
 }
 
-/** InstUI spacing keywords (and short pantoken aliases) to matching CSS lengths/tokens. */
-const SPACE_KEYWORDS: Record<string, string> = {
-  "0": "0",
-  none: "0",
-  "2xs": "var(--instui-spacing-space2xs)",
-  "xx-small": "var(--instui-spacing-space2xs)",
-  "xxx-small": "var(--instui-spacing-space2xs)",
-  xs: "var(--instui-spacing-space-xs)",
-  "x-small": "var(--instui-spacing-space-xs)",
-  sm: "var(--instui-spacing-space-sm)",
-  small: "var(--instui-spacing-space-sm)",
-  md: "var(--instui-spacing-space-md)",
-  medium: "var(--instui-spacing-space-md)",
-  lg: "var(--instui-spacing-space-lg)",
-  large: "var(--instui-spacing-space-lg)",
-  xl: "var(--instui-spacing-space-xl)",
-  "x-large": "var(--instui-spacing-space-xl)",
-  "2xl": "var(--instui-spacing-space2xl)",
-  "xx-large": "var(--instui-spacing-space2xl)",
-};
+/**
+ * InstUI spacing keywords (and short pantoken aliases) to matching CSS lengths/tokens — built from
+ * the shared {@link SPACING_STEPS} scale (`@pantoken/utils`) so it can't drift from the components
+ * package's spacing utilities. The zero step resolves to a plain `"0"` here (an inline style has no
+ * use for the indirection of a custom property), unlike the components package's utility classes.
+ * `"xxx-small"` is an extra legacy alias for the zero step, kept for back-compat.
+ */
+const SPACE_KEYWORDS: Record<string, string> = Object.fromEntries(
+  SPACING_STEPS.flatMap((step) => [
+    [step.short, step.short === "0" ? "0" : step.value],
+    [step.long, step.short === "0" ? "0" : step.value],
+  ]),
+);
+SPACE_KEYWORDS["xxx-small"] = SPACE_KEYWORDS["2xs"];
 
 /** Resolve one spacing value: keyword alias to token, otherwise pass through unchanged. */
 export function resolveSpace(value: string): string {

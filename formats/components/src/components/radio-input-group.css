@@ -1,6 +1,7 @@
 /**
  * @component radio-input-group
  * @summary A single-select radio `<fieldset>`, plain or as a connected segmented toggle.
+ * @remarks Sets its own `gap` between radios; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -layout-columns — Lay the radios out in columns.
  * @modifier -layout-inline — Lay the radios out inline.
  * @modifier -required — Mark the group as required.

@@ -1,7 +1,7 @@
 /**
  * @component form-field
  * @summary A form-field wrapper: a label, its controls, and inline, required, or readonly layouts.
- * @remarks An error message stays hidden until the field's control is `:user-invalid` (after the user interacts) or you add the `-invalid` class. Use `-layout-inline` to put the label beside the controls and `-layout-stacked` to put it above.
+ * @remarks An error message stays hidden until the field's control is `:user-invalid` (after the user interacts) or you add the `-invalid` class. Use `-layout-inline` to put the label beside the controls and `-layout-stacked` to put it above. Also sets its own `gap` between the label, controls, and messages; chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -inline — Inline layout (shorthand for `-layout-inline`).
  * @modifier -layout-inline — Inline layout: label beside the controls.
  * @modifier -layout-stacked — Stacked layout: label above the controls.
@@ -44,6 +44,7 @@
   color: var(--instui-component-form-field-layout-text-color);
   font-family: var(--instui-component-form-field-layout-font-family);
 }
+
 @scope (.pfx-form-field) {
   :scope > .label {
     grid-area: label;
@@ -53,14 +54,17 @@
     font-size: var(--instui-component-form-field-layout-font-size);
     line-height: var(--instui-component-form-field-layout-line-height);
   }
+
   :scope > .controls {
     grid-area: controls;
   }
 }
+
 /* Messages region — kept OUTSIDE @scope: the messages class shares the form-field prefix. */
 .pfx-form-field > .pfx-form-field-messages {
   grid-area: messages;
 }
+
 /* Client-side validation: an error message stays hidden until the field's control is :user-invalid
    (after the user has interacted), per MDN guidance; then it shows. The explicit -invalid class on the
    control (and a standalone .instui-form-field-messages outside a field) are unaffected. */
@@ -68,43 +72,53 @@
 .pfx-form-field .pfx-form-field-message.-type-new-error {
   display: none;
 }
+
 .pfx-form-field:has(:user-invalid) .pfx-form-field-message.-type-error,
 .pfx-form-field:has(:user-invalid) .pfx-form-field-message.-type-new-error,
 .pfx-form-field.-invalid .pfx-form-field-message.-type-error,
 .pfx-form-field.-invalid .pfx-form-field-message.-type-new-error {
   display: inline-flex;
 }
+
 /* Required indicator: native [required] control OR the -required class; decorative (aria-hidden). */
 .pfx-form-field:is(.-required, :has(:required)) .label::after {
   content: "*";
   margin-inline-start: 0.25rem;
   color: var(--instui-component-form-field-layout-asterisk-color);
 }
+
 .pfx-form-field.-readonly .label {
   color: var(--instui-component-form-field-layout-readonly-text-color);
 }
+
 .pfx-form-field.-layout-stacked {
   grid-template-columns: 1fr;
   grid-template-areas: "label" "controls" "messages";
 }
+
 .pfx-form-field.-layout-inline {
   grid-template-columns: auto 1fr;
   grid-template-areas: "label controls" ". messages";
   align-items: center;
   column-gap: var(--instui-component-form-field-layout-gap-primitives);
 }
+
 .pfx-form-field.-layout-inline.-v-align-top {
   align-items: start;
 }
+
 .pfx-form-field.-layout-inline.-v-align-bottom {
   align-items: end;
 }
+
 .pfx-form-field.-layout-inline.-label-align-start .label {
   text-align: start;
 }
+
 .pfx-form-field.-layout-inline.-label-align-end .label {
   text-align: end;
 }
+
 .pfx-form-field.-inline {
   display: inline-grid;
   inline-size: auto;

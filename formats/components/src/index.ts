@@ -16,7 +16,7 @@
  *   (`<button class="instui-button">`), for the InstUI look outside a component framework. The
  *   `--instui-elevation-*` shadow scale ({@link elevationCss}) leads this sheet, since enough
  *   components float that shadows are an intrinsic design attribute rather than an add-on.
- * - **Utilities** ({@link viewCss}, {@link spacingUtilitiesCss}, {@link layoutUtilitiesCss}, plus a
+ * - **Utilities** ({@link viewCss}, {@link spacingUtilitiesCss}, {@link gapCss}, {@link layoutUtilitiesCss}, plus a
  *   curated semantic-colour/token set) — an opt-in layer of cross-cutting classes. The generic
  *   token→class emitters (`colorUtilitiesCss`, `tokenUtilitiesCss`) live in `@pantoken/utils`; this
  *   package feeds them the curated *semantic* names, while `@pantoken/plugin-primitives` feeds the raw
@@ -126,6 +126,7 @@ export { selectCss } from "./components/select.ts";
 // ── Utilities ───────────────────────────────────────────────────────────────
 export { viewCss } from "./utilities/view.ts";
 export { spacingUtilitiesCss } from "./utilities/spacing.ts";
+export { gapCss } from "./utilities/gap.ts";
 export { layoutUtilitiesCss } from "./utilities/layout.ts";
 export { responsiveUtilitiesCss } from "./utilities/responsive.ts";
 export { iconCss } from "./utilities/icon.ts";

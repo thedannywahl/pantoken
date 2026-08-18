@@ -14,7 +14,6 @@
  *
  * @module
  */
-
 /** A deprecated modifier and the canonical modifier it aliases, e.g. `-toggle` → `-variant-toggle`. */
 export interface AliasPair {
   alias: string;

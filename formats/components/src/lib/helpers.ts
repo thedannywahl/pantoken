@@ -5,6 +5,13 @@
  *
  * @module
  */
+import {
+  SPACING_AUTO_STEP as SHARED_SPACING_AUTO_STEP,
+  SPACING_STEPS as SHARED_SPACING_STEPS,
+} from "@pantoken/utils";
+import type { SpacingStep } from "@pantoken/utils";
+
+export type { SpacingStep };
 
 /** The default class prefix (`instui` → `.instui-button`). */
 export const DEFAULT_PREFIX = "instui";
@@ -102,26 +109,45 @@ export const PROGRESS_NUMERIC_PROPERTIES = `@property --value {
 }`;
 
 // ── Spacing scales ─────────────────────────────────────────────────────────────
-/** Spacing step → value on the pantoken spacing scale. */
-export const SPACING_STEPS: Record<string, string> = {
-  "0": "var(--instui-component-shared-tokens-spacing-general-space-none)",
-  none: "var(--instui-component-shared-tokens-spacing-general-space-none)",
-  "2xs": "var(--instui-spacing-space2xs)",
-  xs: "var(--instui-spacing-space-xs)",
-  sm: "var(--instui-spacing-space-sm)",
-  md: "var(--instui-spacing-space-md)",
-  lg: "var(--instui-spacing-space-lg)",
-  xl: "var(--instui-spacing-space-xl)",
-  "2xl": "var(--instui-spacing-space2xl)",
-};
+/** The pantoken spacing scale (short/long spellings share one CSS value) — re-exported from `@pantoken/utils`. */
+export const SPACING_STEPS: readonly SpacingStep[] = SHARED_SPACING_STEPS;
 
-/** Logical sides (RTL-safe): key → the property suffix appended to `margin`/`padding`. */
-export const SPACING_SIDES: Record<string, string> = {
-  "": "",
-  t: "-block-start",
-  b: "-block-end",
-  s: "-inline-start",
-  e: "-inline-end",
-  x: "-inline",
-  y: "-block",
-};
+/** The `auto` step — margin only, spelled the same both ways. */
+export const SPACING_AUTO_STEP: SpacingStep = SHARED_SPACING_AUTO_STEP;
+
+/** One logical side: short/long keys plus the CSS logical-property suffix (RTL-safe). */
+export interface SpacingSide {
+  /** Short side key (`""` for "all sides"). */
+  short: string;
+  /** Long, word-spelled side key (`""` for "all sides"). */
+  long: string;
+  /** The logical property suffix appended after `margin`/`padding`/`gap`. */
+  suffix: string;
+}
+
+/** The logical sides (RTL-safe), short + long spellings sharing one CSS suffix. */
+export const SPACING_SIDES: readonly SpacingSide[] = [
+  { short: "", long: "", suffix: "" },
+  { short: "t", long: "top", suffix: "-block-start" },
+  { short: "b", long: "bottom", suffix: "-block-end" },
+  { short: "s", long: "start", suffix: "-inline-start" },
+  { short: "e", long: "end", suffix: "-inline-end" },
+  { short: "x", long: "inline", suffix: "-inline" },
+  { short: "y", long: "block", suffix: "-block" },
+];
+
+/** One boxed CSS property: short/long class-name spellings for the real CSS property. */
+export interface SpacingProperty {
+  /** The real CSS property (`margin`/`padding`). */
+  css: "margin" | "padding";
+  /** The short class-name spelling (e.g. `"m"`). */
+  short: string;
+  /** The long, word-spelled class-name spelling (e.g. `"margin"`). */
+  long: string;
+}
+
+/** The two boxed properties the spacing utility generates classes for. */
+export const SPACING_PROPERTIES: readonly SpacingProperty[] = [
+  { css: "margin", short: "m", long: "margin" },
+  { css: "padding", short: "p", long: "padding" },
+];

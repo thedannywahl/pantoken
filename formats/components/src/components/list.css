@@ -1,6 +1,7 @@
 /**
  * @component list
  * @summary A list with token-driven item spacing.
+ * @remarks Sets its own `padding-inline-start` for list indentation; chaining a `-p*`/`-padding*` spacing utility modifier overrides that built-in value.
  * @modifier -ordered — Ordered-list numbering.
  * @modifier -inline — Lay items out inline (horizontal).
  * @modifier -unstyled — Remove markers and padding.
@@ -28,44 +29,55 @@
   line-height: var(--instui-component-list-item-line-height);
   padding-inline-start: var(--instui-component-list-list-padding);
 }
+
 .pfx-list > li {
   margin: var(--instui-component-list-item-spacing-medium) 0;
 }
+
 .pfx-list.-size-sm {
   font-size: var(--instui-component-list-item-font-size-small);
 }
+
 .pfx-list.-size-sm > li {
   margin: var(--instui-component-list-item-spacing-small) 0;
 }
+
 .pfx-list.-size-lg {
   font-size: var(--instui-component-list-item-font-size-large);
 }
+
 .pfx-list.-size-lg > li {
   margin: var(--instui-component-list-item-spacing-large) 0;
 }
+
 .pfx-list.-ordered > li::marker {
   font-weight: var(--instui-component-list-ordered-number-font-weight);
 }
+
 .pfx-list.-ordered > li {
   padding-inline-start: var(--instui-component-list-ordered-number-margin);
 }
+
 .pfx-list.-delimiter-solid > li + li {
   border-top: var(--instui-component-list-item-delimiter-solid-border-width)
     var(--instui-component-list-item-delimiter-solid-border-style)
     var(--instui-component-list-item-delimiter-solid-border-color);
   padding-top: var(--instui-component-list-item-spacing-medium);
 }
+
 .pfx-list.-delimiter-dashed > li + li {
   border-top: var(--instui-component-list-item-delimiter-dashed-border-width)
     var(--instui-component-list-item-delimiter-dashed-border-style)
     var(--instui-component-list-item-delimiter-dashed-border-color);
   padding-top: var(--instui-component-list-item-spacing-medium);
 }
+
 /* isUnstyled: strip markers and indentation. */
 .pfx-list.-unstyled {
   list-style: none;
   padding-inline-start: 0;
 }
+
 /* InlineList: lay items out in a wrapping row (`.pfx-list.-inline`). */
 .pfx-list.-inline {
   display: flex;
@@ -75,6 +87,7 @@
   list-style: none;
   padding-inline-start: 0;
 }
+
 .pfx-list.-inline > li {
   margin: 0;
 }
