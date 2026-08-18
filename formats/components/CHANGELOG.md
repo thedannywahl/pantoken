@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## 0.5.0
+
+### Minor Changes
+
+- 853659c: Add arbitrary maximum values and InstUI-compatible animation support to ProgressBar and
+  ProgressCircle.
+
+  Both components now expose `--min`, `--value`, and `--max`, keep deprecated `--value-now` and
+  `--value-max` aliases, and share their InstUI transition rules through the transition plugin.
+  ProgressCircle also exposes `--animation-delay`, keeps the deprecated `-should-animate-on-mount` and
+  `-shold-animate-on-mount` aliases, and uses the same timeout behavior in plain HTML and web
+  components. The ProgressBar web component retains its meter between attribute updates so
+  `should-animate` transitions remain functional.
+
+  Their cssdoc records restrict usage to native `progress` and `meter` elements. Both web components
+  render `progress` for zero-based ranges and switch to `meter` when `min` is non-zero.
+
+- 853659c: Add InstUI-compatible timeout dismissal to Alert. Class-based alerts accept a millisecond
+  `--timeout`, emit a cancelable `dismiss` event, and remove themselves through the Alert interaction
+  bundle, with fades driven by `@pantoken/plugin-transition`. Per-component IIFEs now retain their
+  initialization side effects, and the web component shares the same removal behavior directly.
+- 853659c: `progress-bar` and `progress-circle` now style a `:indeterminate` state (a native `<progress>` missing its `value` attribute, or fed a bad `--value`) so it reads as loading instead of rendering a broken or empty meter. This isn't part of InstUI — it's a pantoken best guess: `progress-bar` animates `.bar` as a sliding segment, `progress-circle` spins its ring at a fixed arc, and both hide `.value`. `<meter>` has no indeterminate state and is unaffected.
+- 853659c: `progress-bar` and `progress-circle` now expose an explicit `-size-md` modifier (with the auto-generated `-size-medium` long-form alias), matching the medium default instead of only being reachable by omitting a size modifier.
+- 853659c: Avatar: default border now matches InstUI's `showBorder` behavior — only avatars without an image
+  get the ring by default. Add `-show-border-always` and `-show-border-never` modifiers to force the
+  border on or off; `-show-border` is now a deprecated alias of `-show-border-always`.
+- 853659c: `progress-bar` now nests `.value` as a sibling of `.bar` inside the root, replacing the flat `.pfx-progress-value` class — matching how `progress-circle` nests its own `.value` part. Add the new `-render-value-inside` modifier to center `.value` over the track instead of beside it, mirroring InstUI's `ProgressBar` `renderValueInside` prop.
+
+### Patch Changes
+
+- Updated dependencies [853659c]
+  - @pantoken/plugin-transition@0.3.0
+
 ## 0.4.1
 
 ### Patch Changes

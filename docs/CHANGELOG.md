@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.3.0
+
+### Minor Changes
+
+- 853659c: New `@pantoken/plugin-custom-icons` plugin: vendored custom icon glyphs (starting with `highspot`)
+  as `--instui-icon-<name>` image tokens, reusing the InstUI icon set's `.-icon-<name>` painter class
+  with no `custom-` prefix — the built-in InstUI icon wins on a name collision. The CDN picker's Icons
+  tab gains a "Custom icons" section, listed below Simple Icons.
+
+### Patch Changes
+
+- 853659c: Align CDN-picker runtime Shiki output with VitePress dual-theme markup so code blocks follow the active light/dark theme for both background and token colors.
+- 853659c: CSS API docs now render the `@stable` release-stage marker as an `instui-pill -color-success` badge, matching how `@deprecated` already renders.
+
 ## 0.2.3
 
 ### Patch Changes

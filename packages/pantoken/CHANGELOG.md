@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## 0.1.24
+
+### Patch Changes
+
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+  - @pantoken/components@0.5.0
+  - @pantoken/plugin-transition@0.3.0
+  - @pantoken/web-components@0.5.0
+  - @pantoken/plugin-logos@0.3.0
+  - @pantoken/drupal@0.1.16
+  - @pantoken/angular@0.1.19
+  - @pantoken/astro@0.1.11
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/css-in-js@0.1.7
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.2
+  - @pantoken/mui@0.1.7
+  - @pantoken/pendo@0.3.5
+  - @pantoken/react@0.1.20
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/storybook@0.1.7
+  - @pantoken/svelte@0.1.20
+  - @pantoken/vitepress@0.2.0
+  - @pantoken/vue@0.1.20
+  - @pantoken/cli@0.1.18
+
 ## 0.1.23
 
 ### Patch Changes

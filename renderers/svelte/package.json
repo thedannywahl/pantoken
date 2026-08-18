@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/svelte",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Svelte helpers for pantoken: an icon action over the web components, plus token reads.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
