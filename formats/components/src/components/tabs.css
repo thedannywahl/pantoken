@@ -73,8 +73,8 @@
   }
 
   .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not(
-    [aria-disabled="true"]
-  ) {
+      [aria-disabled="true"]
+    ) {
     border-bottom-color: var(--instui-component-tabs-tab-default-hover-border-color);
   }
 
