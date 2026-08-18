@@ -1,31 +1,31 @@
 # Komponensek
 
-`@pantoken/components` osztályalapú komponensstílusokat szállít az Instructure tokenekből építve. Importáld
-a stíluslapot, és címkézd fel a jelölést — nincs szükség keretrendszerre.
+A(z) `@pantoken/components` az Instructure tokenekből felépített osztályalapú komponensstílusokat biztosít. Importáld
+a stíluslapot és lásd el címkékkel a markupot — keretrendszer nem szükséges.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Inkább egyéni elemeket használnál? `@pantoken/web-components` ugyanezeket a stílusokat becsomagolja mint `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` és sok más — lásd a
-> [csomag térképet](/guide/packages).
+> Egyéni elemeket (custom elements) részesítesz előnyben? A(z) `@pantoken/web-components` ugyanezeket a stílusokat csomagolja be mint `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` és továbbiak — lásd a
+> [csomagtérképet](/guide/packages).
 
 ## Konvenciók
 
-A csomagban használt CSS-konvenciók az [RSCSS](https://ricostacruz.com/rscss/index.html) módosított verzióján alapulnak.
+A csomagban található CSS-konvenciók az [RSCSS](https://ricostacruz.com/rscss/index.html) módosított változatán alapulnak.
 
-A módosítók **kulcs-érték** párok — `-<prop>-<val>`, igazodva az InstUI prop nevekhez — így magukért
-beszélnek: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. A logikai propok pusztán a prop
-neve, ahol a jelenlét azt jelenti, hogy `true` (`-has-shadow`, `-clickable`); egy alapértelmezésben bekapcsolt logikai kikapcsolása
-megfordítja (`-without-background`, `-without-border`). A méretek rövid és hosszú írásmódot is elfogadnak
-(`-size-sm` = `-size-small`). Ahol egy név eltér az InstUI-tól, az InstUI-szemantikájú osztály még mindig működik,
-de elavult (pl. `-variant-info` → használd a `-color-info` osztályt).
+A módosítók **kulcs-érték** (key-value) alapúak — `-<prop>-<val>`, az InstUI prop-nevekhez igazítva —, így önmagukért
+beszélnek: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. A logikai (boolean) propok önmagukban álló prop-
+nevek, ahol a jelenlétük `true` értéket jelent (`-has-shadow`, `-clickable`); az alapértelmezetten bekapcsolt, kikapcsolt logikai prop
+invertálódik (`-without-background`, `-without-border`). A méretek rövid és hosszú írásmódot is elfogadnak
+(`-size-sm` = `-size-small`). Ahol egy név eltér az InstUI-tól, az InstUI-szemantikus osztály továbbra is működik,
+de elavult (pl. `-variant-info` → használd: `-color-info`).
 
 ### Példa
 
-Instructure UI React komponens:
+Instructure UI React-komponens:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -51,12 +51,12 @@ pantoken komponensek:
 </div>
 ```
 
-Az InstUI `timeout` propjához állítsd be az egység nélküli `--timeout` egyéni tulajdonságot
-ezredmásodpercben, és töltsd be az Alert interakciót. A pozitív érték ütemezi az eltávolítást; a `0`
-(az alapérték) a helyén hagyja a figyelmeztetést. Az InstUI áttűnéséhez add hozzá a transition plugin
-`instui-transition -fade-entered` osztályait; azonnali eltávolításhoz hagyd el őket. Az interakció a
-plugin `-fade-exiting` állapotát vezérli, majd egy megszakítható, buborékoló `dismiss` eseményt küld,
-így az alkalmazás a `preventDefault()` hívásával megtarthatja az elemet.
+Az InstUI `timeout` propjához állítsd be a mértékegység nélküli `--timeout` egyéni tulajdonságot milliszekundumban, és töltsd be
+az Alert interakciót. A pozitív érték ütemezi az eltüntetést; a `0` (az alapértelmezett) a helyén hagyja az értesítést.
+Add hozzá az áttűnési (transition) plugin `instui-transition -fade-entered` osztályait az InstUI áttűnéséhez (fade); hagyd el
+őket az azonnali eltávolításhoz. Az interakció vezérli a plugin `-fade-exiting` állapotát, és egy
+megszakítható, buborékoló `dismiss` eseményt vált ki az eltávolítás előtt, így az alkalmazás meghívhatja a `preventDefault()`-t,
+hogy az alert csatolva maradjon.
 
 ```html
 <link
@@ -68,56 +68,60 @@ plugin `-fade-exiting` állapotát vezérli, majd egy megszakítható, buboréko
   style="--timeout: 5000"
   role="alert"
 >
-  Ez a figyelmeztetés öt másodperc után eltűnik.
+  This alert dismisses after five seconds.
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-A folyamatjelző sávok tetszőleges skálát fogadnak a `--min` (`0` alapértelmezés), `--value` és
-`--max` (`100` alapértelmezés) segítségével; a `--value-now` és `--value-max` elavult alias marad. A
-`-should-animate` módosító az InstUI fél másodperces áttűnését alkalmazza, amikor bármelyik érték
-megváltozik. Nulla alapú tartományhoz natív `<progress>`, nem nulla minimumhoz `<meter>` elemet
-használj; a webkomponensek ezt automatikusan választják ki a `min` attribútumból.
+A folyamatjelző sávok (progress bars) tetszőleges skálákat fogadnak el a `--min` (alapértelmezetten `0`), `--value` és `--max`
+segítségével (alapértelmezetten `100`), az elavult `--value-now` és `--value-max` álnevekkel. Add hozzá a `-should-animate`-t,
+hogy alkalmazd az InstUI fél másodperces átmenetét egy érték változásakor. A `.value` a `.bar` mellett helyezkedik el a gyökérelem
+gyermekeként; add hozzá a `-render-value-inside`-t, hogy helyette a sáv fölött, annak elejéhez igazítva jelenjen meg
+(stilizáld az olvashatóság érdekében a mérősáv színéhez képest). Használj natív `<progress>` elemet nulla alapú
+tartományhoz, és `<meter>`-t, ha a minimum nem nulla; a webes komponensek automatikusan választanak közülük
+a `min` attribútumuk alapján. Az InstUI nem rendelkezik határozatlan (indeterminate) állapottal, így egy `<progress>`,
+amelyből hiányzik a `value` attribútum, egy pantoken-specifikus legjobb közelítés: a `progress-bar` csúszó szegmensként animálja a `.bar`-t,
+a `progress-circle` pedig rögzített ívben forgatja a gyűrűjét, mindkettő elrejtve a `.value`-t.
 
 ```html
 <label>
-  Dokumentum feltöltése:
+  Uploading Document:
   <progress
     class="instui-progress -color-brand -should-animate"
     style="--value: 40; --max: 60"
     value="40"
     max="60"
   >
-    40 / 60
+    40 of 60
   </progress>
 </label>
 ```
 
-A folyamatjelző körök ugyanezeket a `--min`, `--value` és `--max` értékeket használják.
-A `--value-now` és `--value-max` elavult, működő alias marad. Az InstUI csatlakozási
-animációjához add hozzá a `-should-animate` módosítót, és töltsd be a célzott interakciós csomagot;
-a `--animation-delay` egység nélküli, ezredmásodperces késleltetés. Az elavult
-`-should-animate-on-mount` és `-shold-animate-on-mount` írásmód működő aliasként megmarad.
+A folyamatjelző körök (progress circles) ugyanezeket a tetszőleges skálákat fogadják el a `--min`, `--value` és `--max` révén.
+A `--value-now` és a `--value-max` elavult funkcionális álnévként megmaradnak. Add hozzá a `-should-animate`-t, és
+töltsd be a fókuszált interakciós csomagot az InstUI mount-animációjának reprodukálásához; a `--animation-delay` egy
+mértékegység nélküli milliszekundumos késleltetés. Az elavult `-should-animate-on-mount` és
+`-shold-animate-on-mount` írásmódok funkcionális álnévként megmaradnak.
 
 ```html
-<label for="feltoltes-folyamata">Dokumentum feltöltése</label>
+<label for="upload-progress">Uploading Document</label>
 <progress
-  id="feltoltes-folyamata"
+  id="upload-progress"
   class="instui-progress-circle -should-animate"
   style="--value: 40; --max: 60; --animation-delay: 500"
   value="40"
   max="60"
 >
-  40 / 60
+  40 of 60
 </progress>
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Osztály-előtag
+## Osztályelőtag
 
-Minden osztály alapértelmezetten `instui-` névtérrel rendelkezik. Építs saját előtaggal — vagy előtag nélkül — stíluslapot,
-átadva `prefix`-t bármely buildernek. Bármilyen hamis érték (`null`, `undefined`, `""`, vagy kihagyása) teljesen eldobja
-az előtagot, így `class="heading -level-h1"`-t írhatsz `class="instui-heading -level-h1"` helyett:
+Alapértelmezés szerint minden osztály a `instui-` névtérrel van ellátva. Készíts stíluslapot a saját előtagoddal — vagy előtag nélkül — úgy, hogy
+átadod a `prefix` értéket bármely buildernek. Bármilyen hamis (falsy) érték (`null`, `undefined`, `""`, vagy az elhagyása) teljesen elhagyja az
+előtagot, így a `class="instui-heading -level-h1"` helyett `class="heading -level-h1"`-t írhatsz:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -126,51 +130,51 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-A kötőjeles módosítók (`.-color-secondary`, `.-level-h1`) mindkét esetben változatlanok. A
+A kötőjellel előtagolt módosítók (`.-color-secondary`, `.-level-h1`) mindkét esetben változatlanok maradnak. A
 csomag által szállított stíluslapok megtartják a `instui` előtagot.
 
-## Alap
+## Base
 
-`base.css` egy opcionális reset, amely a tokenekből globális dokumentum-alapértékeket állít be: `box-sizing`, egy
-`body` reset, az oldalfelület, alap szövegszín és betűtípus, `color-scheme` (hogy a `light-dark()` tokenek
-és a natív vezérlők kövessék a témát), valamint egy alap link. Töltsd be egyszer, a komponens- és prózastíluslapok
-előtt, amikor a pantoken birtokolja az oldalt.
+A `base.css` egy opcionális (opt-in) reset, amely a tokenek alapján állítja be a globális dokumentum alapértelmezéseit: `box-sizing`, egy
+`body` reset, az oldal felülete, az alap szövegszín és betűtípus, a `color-scheme` (hogy a `light-dark()` tokenek
+és a natív vezérlők kövessék a témát), valamint egy alaphivatkozás (base link). Töltsd be egyszer, a komponens- és prózai
+stíluslapok előtt, amikor a pantoken birtokolja az oldalt.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Hagyd ki, amikor komponenseket ágyazol be egy olyan hostba, amely már saját `html` és `body` témával rendelkezik —
-a reset megfesti az oldalfelületet, így nem akarod, hogy a hosttal küzdjön. Minden, amit beállít, alacsony
-specifikusságú `:where()` szelektorokat használ, így a saját szabályaid mindig győznek.
+Hagyd el, ha a komponenseket olyan gazdakörnyezetbe (host) ágyazod be, amely már saját stílust ad a `html` és `body` elemeknek —
+a reset megfesti az oldal felületét, így nem cél, hogy ütközzön a hosttal. Minden, amit beállít,
+alacsony specificitású `:where()` szelektorokat használ, így a saját szabályaid mindig érvényesülnek.
 
-`base.css` _alkalmazza_ a márkabetűtípust (`font-family: var(--instui-font-family-base)`, rendszertartalékokkal);
-_betöltéséhez_ importáld az opcionális `fonts.css`-t — `@font-face` szabályok az Atkinson Hyperlegible
-Next számára, a csomagban szállított woff2-kre mutatva. Külön van, mert a betűkészletek ~350 kB-osak, és
-a betűtípusok saját tárhelyen tartása tudatos választás.
+A `base.css` _alkalmazza_ a márka betűtípusát (`font-family: var(--instui-font-family-base)`, rendszer-
+tartalékokkal); a _betöltéséhez_ importáld az opcionális `fonts.css`-t — `@font-face` szabályok az Atkinson Hyperlegible
+Nexthez, amelyek a csomagban található woff2 fájlokra mutatnak. Ez külön van választva, mivel a betűkészletek mérete ~350 kB, és
+a betűtípusok saját üzemeltetése tudatos döntés.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Képernyőolvasó tartalom
+## Képernyőolvasó-tartalom
 
-<p>Ez a mondat után egy rejtett üzenet található.<span class="instui-screen-reader-content">Csak a képernyőolvasók mondják be ezt.</span></p>
+<p>A mondat után van egy rejtett üzenet.<span class="instui-screen-reader-content">Ezt csak a képernyőolvasók olvassák fel.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` vizuálisan elrejt egy elemet, miközben megtartja az akadálymentesítési fában
-— olyan címkékhez és állapotszövegekhez, amelyeket a segédtechnológiának be kell olvasnia, de a designnak nem szabad megjelenítenie.
+A `.instui-screen-reader-content` vizuálisan elrejti az elemet, miközben megtartja azt a hozzáférhetőségi fában (accessibility tree)
+— olyan címkékhez és állapotszövegekhez, amelyeket a kisegítő technológiáknak fel kell olvasniuk, de a dizájn nem jeleníti meg őket.
 
 ## Segédosztályok
 
-`utilities.css` egy opcionális réteg kereszthivatkozású osztályokból: egy `View` primitív, térközök a token-
-skálán, és szemantikus szín-felülírások. A komponens `-modifier` osztályaival ellentétben ezek bármely
-elemre alkalmazhatók, így egy komponensre vagy egy csupasz címkére is komponálhatók.
+A `utilities.css` egy opcionális réteg átfogó (cross-cutting) osztályokkal: egy `View` primitív, térközök a token-
+skálán és szemantikus színfelülírások. A komponens `-modifier` osztályaitól eltérően ezek bármely
+elemre érvényesek, így komponensekre vagy csupasz HTML-elemekre is felépíthetők.
 
 ```ts
 import "@pantoken/components/utilities.css";
@@ -180,7 +184,7 @@ import "@pantoken/components/utilities.css";
   <span class="instui-text instui-fg-on-color">Accent-blue felület on-color szöveggel.</span>
 </div>
 <div class="instui-view instui-bg-muted instui-p-sm instui-mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Középre igazítva mx-auto-val.</span>
+  <span class="instui-text">Középre igazítva mx-auto segítségével.</span>
 </div>
 
 ```html
@@ -188,35 +192,35 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view instui-bg-muted instui-p-sm instui-mx-auto">…</div>
 ```
 
-**View** — `.instui-view` az InstUI `View` komponense. Ez az alap, amire térközöket és színeket rétegzel, és
-kulcs-érték módosítókat hordoz a saját vizuális propjaihoz, így nem kell segédosztályokért nyúlnod:
-`-background-*` (felületei), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — A `.instui-view` az InstUI `View` megfelelője. Ez az alap, amelyre a térközöket és a színeket rétegezheted, és
+kulcs-érték módosítókat hordoz a saját vizuális propjaihoz, így nem kell segédosztályokhoz nyúlnod:
+`-background-*` (a felületei), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
 `-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*` és `-cursor-*`. A szabad értékű propok
-(width/height/inset) inline stílusok maradnak; `margin`/`padding` a térköz-segédosztályokat használják.
+(width/height/inset) inline stílusok maradnak; a `margin`/`padding` a térköz segédosztályokat használja.
 
-**Térközök** — oldalankénti osztályok a térközskálán. Olvasd őket így: `{m|p}{side}-{step}`: `m` margóhoz
-vagy `p` paddinghez (vagy a teljes szavak: `margin`/`padding`), egy opcionális logikai oldal, majd egy
-lépés. Így `.instui-m-lg` és `.instui-margin-lg` ugyanaz, akárcsak `.instui-pt-md` és
-`.instui-paddingt-md`.
+**Térköz (Spacing)** — oldalankénti osztályok a térközskálán. Értelmezésük a következő formátum szerint történik: `{m|p}{side}-{step}`: `m` a
+margóhoz (margin) vagy `p` a belső margóhoz (padding) (vagy a teljes szavak: `margin`/`padding`), egy opcionális logikai oldal, majd egy
+lépésköz (step). Így a `.instui-m-lg` és a `.instui-margin-lg` megegyezik, ahogy a `.instui-pt-md` és
+a `.instui-paddingt-md` is.
 
-- Oldalak: nincs (mind), `t`/`b` (block eleje/vége), `s`/`e` (inline eleje/vége), `x`/`y` (inline/block
-  tengely). A logikai oldalak jobbról balra elrendezésekben is helyesek maradnak.
-- Lépések: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plusz `auto` csak margóhoz.
+- Oldalak: nincs (mindegyik), `t`/`b` (blokk kezdete/vége), `s`/`e` (inline kezdete/vége), `x`/`y` (inline/blokk
+  tengely). A logikai oldalak jobbról balra (RTL) tartó elrendezésekben is helyesek maradnak.
+- Lépések: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plusz a `auto` kizárólag a margóhoz.
 
-Komponáld őket az InstUI `margin="small auto large"` rövidítéséhez:
+Kombináld őket az InstUI `margin="small auto large"` rövidítéséhez:
 `class="instui-mt-sm instui-mx-auto instui-mb-lg"`.
 
-**Színek** — szemantikus felülírások, amelyek a palettán maradnak: `.instui-bg-<name>` (háttér),
-`.instui-fg-<name>` (szövegszín) és `.instui-border-<name>` (szegélyszín). Minden `<name>` egy
-szemantikus színtoken — a szándékok (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plusz a `accent-*` paletta (`accent-blue`, `accent-green`, és így
-tovább). Egy név csak akkor van ott, ha a token létezik abban a családban, így `fg-brand` nem osztály — a szövegnek
-nincs márkatokene. Nincs mód elérni egy primitívet vagy tetszőleges hex-et, és minden felülírás követi
+**Szín (Color)** — szemantikus felülírások, amelyek a palettán belül maradnak: `.instui-bg-<name>` (háttér),
+`.instui-fg-<name>` (szövegszín) és `.instui-border-<name>` (szegélyszín). Minden egyes `<name>` egy
+szemantikus színtoken — a szándékok (intents) (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) plusz a(z) `accent-*` paletta (`accent-blue`, `accent-green` stb.). Egy
+név csak akkor létezik, ha a token megtalálható az adott családban, így a `fg-brand` nem egy osztály — a szövegnek
+nincs brand tokenje. Nem lehet közvetlenül primitívet vagy tetszőleges hexadecimális értéket elérni, és minden felülírás követi
 a témát.
 
-**Tokencsaládok** — minden „egy token, egy tulajdonság" család egy osztályt kap tokenenként, a token
-után elnevezve. Komponáld őket szabadon:
+**Tokencsaládok** — minden „egy token, egy tulajdonság” család kap egy osztályt tokenenként, a tokenről
+elnevezve. Kombináld őket szabadon:
 
 - `.instui-font-family-heading`, `.instui-font-family-code`, … → `font-family`
 - `.instui-font-weight-body-strong`, `.instui-font-weight-interactive`, … → `font-weight`
@@ -226,27 +230,27 @@ után elnevezve. Komponáld őket szabadon:
 - `.instui-opacity-base`, `.instui-opacity-disabled` → `opacity`
 - `.instui-elevation-resting`/`-above`/`-topmost` (és `-depth1`…`-card`) → `box-shadow`
 
-Mindegyik csak a saját tulajdonságát állítja be, így `border-width`/`border-radius` mellé szükség van egy `border-*` színre és szegélystílusra,
-hogy valóban szegélyt rajzoljon. Ezek a teljes tokennevet használják (`.instui-border-radius-md`), míg a
-fenti szín- és térköz-segédosztályok rövid aliasokat használnak (`.instui-bg-brand`, `.instui-mt-lg`) — az aliasok
-ergonomikus rövidítések; a token-osztályok szó szerintiek és teljes körűek.
+Mindegyik csak az egyetlen tulajdonságát állítja be, így a `border-width`/`border-radius` igényel egy `border-*` színt és egy szegély-
+stílust a tényleges szegély megrajzolásához. Ezek a teljes tokennevet használják (`.instui-border-radius-md`), míg a
+fenti szín- és térközsegítők rövid álneveket (`.instui-bg-brand`, `.instui-mt-lg`) — az álnevek
+ergonómiai rövidítések; a tokenosztályok szó szerintiek és teljes körűek.
 
-**Elrendezés** — `.instui-display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) és `.instui-text-align-<value>` (`start`, `center`, `end`, `justify`) lefedik az InstUI
-kereszthivatkozású `display` és `textAlign` propjait (View, Button, Metric, Tabs, …) komponálható osztályokként —
+**Elrendezés (Layout)** — A `.instui-display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+`none`) és a `.instui-text-align-<value>` (`start`, `center`, `end`, `justify`) lefedik az InstUI átfogó
+`display` és `textAlign` propjait (View, Button, Metric, Tabs, …) kombinálható osztályokként —
 így ezek nem komponensenkénti módosítók.
 
-Itt minden tiszta CSS, amelyet a `--instui-*` tokenek vezérelnek, így a tokenrétegen keresztül követi az InstUI-t.
-Lásd az [API referenciát](/api/) `componentsCss` és a komponensenkénti builderek részleteiért.
+Minden itt található elem tiszta CSS, amelyet a `--instui-*` tokenek vezérelnek, így a tokenrétegen
+keresztül követi az InstUI-t. Lásd az [API-referenciát](/api/) a `componentsCss`-hoz és a komponensenkénti builderekhez.
 
-## Fedőrétegek: dialog és popover
+## Átfedések: dialog és popover
 
-A fedőréteg-komponensek natív platformprimitíveken lovagolnak, így akadálymentesen viselkednek kevés vagy semmi
-JavaScripttel.
+Az átfedő komponensek a natív platform primitívekre épülnek, így kevés vagy semmilyen
+JavaScript nélkül is akadálymentesen működnek.
 
-**Modal** — tedd rá `.instui-modal`-t egy natív `<dialog>` elemre. Ingyen kap fókuszcsapdát, `Esc`-bezárást és
-`::backdrop`-t; a háttér ugyanazzal a `--instui-component-mask-background-color` tokennel van elhomályosítva, mint
-`.instui-mask` (adj hozzá `-blur`-t a fagyasztott üveg hatásához). Nyisd és zárd invoker parancsokkal — nincs script:
+**Modális ablak (Modal)** — helyezd a `.instui-modal`-t egy natív `<dialog>` elemre. Ezzel fókuszcsapdát (focus trapping), `Esc`-gombos bezárást és egy
+`::backdrop`-t kapsz ingyen; a háttér ugyanazzal a `--instui-component-mask-background-color`
+tokkennel sötétedik, mint a `.instui-mask` (add hozzá a `-blur`-t a matt hatáshoz). Nyisd meg és zárd be invoker parancsokkal — szkript nélkül:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -259,31 +263,31 @@ JavaScripttel.
 </dialog>
 ```
 
-**Context view / popover** — tedd rá `.instui-context-view`-t egy `[popover]` elemre, és váltogasd
-`popovertarget`-val. A felső rétegen lovagol, és külső kattintásra vagy `Esc`-re könnyedén bezárul, ismét script nélkül:
+**Kontextus nézet / popover** — helyezd a `.instui-context-view`-t egy `[popover]` elemre, és kapcsold a
+`popovertarget` segítségével. A felső rétegre (top layer) kerül, és külső kattintásra vagy `Esc`-ra automatikusan bezáródik (light-dismiss), szintén szkript nélkül:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Mask** — `.instui-mask` megmarad a folyamon belüli fedőrétegekhez (spinner egy kártya felett); egy modal `::backdrop`-ja
-lefedi a modal esetet.
+**Maszk (Mask)** — A `.instui-mask` a folyamatban lévő (in-flow) átfedésekhez marad (pl. egy spinner egy kártya felett); a modális ablak `::backdrop`
+eleme lefedi a modális esetet.
 
-Mindkét minta viselkedési egyéni elemként is be van csomagolva a `@pantoken/web-components`-ben:
-`<instui-modal open>` (egy `<dialog>`, amelyet `open` attribútuma vezérel) és `<instui-context-view>` (natív
-popover).
+Mindkét minta viselkedési egyéni elemként (behavioral custom elements) is be van csomagolva a `@pantoken/web-components` csomagban:
+`<instui-modal open>` (egy `<dialog>`, amelyet a `open` attribútuma vezérel) és `<instui-context-view>` (egy
+natív popover).
 
-Böngészőtámogatás: a popover API és a `popovertarget` 2024-es Baseline; az invoker parancsok
-(`command`/`commandfor`) 2025-ös Baseline, így régebbi böngészőkön kösd a gombokat a `dialog.showModal()`-hoz
-egysoros tartalékként. A popover pozicionálását a kiváltója mellett CSS anchor positioning használja ott, ahol
-támogatott (Chromium); máshol a felső rétegben középen jelenik meg.
+Böngészőtámogatás: a popover API és a `popovertarget` Baseline 2024-kompatibilisek; az invoker parancsok
+(`command`/`commandfor`) Baseline 2025-kompatibilisek, így a régebbi böngészőkben kösd a gombokat a `dialog.showModal()`-hoz
+egysoros tartalékként (fallback). A popover elhelyezése az indítója (trigger) mellett CSS anchor positioninget használ, ahol
+támogatott (Chromium); máshol a felső réteg (top layer) közepére igazodik.
 
 ## Űrlapok
 
-**FormField** — `.instui-form-field` egy CSS Grid burkoló, amely elhelyez egy címkét, a vezérlőt és bármely
-üzeneteket. Tedd egy `<label>` elemre, hogy a címke natívan társuljon a vezérlőjével. Három rácsterülete van
-— `label`, `controls`, `messages`:
+**FormField** — A `.instui-form-field` egy CSS-Grid wrapper, amely elrendezi a címkét (label), a vezérlőt (control) és az esetleges
+üzeneteket. Helyezd egy `<label>` elemre, hogy a címke natívan kapcsolódjon a vezérlőjéhez. Három grid
+területtel rendelkezik — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -295,24 +299,24 @@ támogatott (Chromium); máshol a felső rétegben középen jelenik meg.
 </label>
 ```
 
-`-layout-stacked` (alapértelmezett) egymásra rakja a területeket; `-layout-inline` a címkét a vezérlő mellé helyezi (hangolható
-`-label-align-{start,end}`-val és `-v-align-{top,middle,bottom}`-vel). `-readonly` átszínezi a címkét.
+A `-layout-stacked` (alapértelmezett) egymásra helyezi a területeket; a `-layout-inline` a vezérlő mellé teszi a címkét (finomhangolható
+a `-label-align-{start,end}` és `-v-align-{top,middle,bottom}` segítségével). A `-readonly` átfesti a címkét.
 
-A **kötelező csillag** akkor jelenik meg, ha a mező kötelező _vagy_ a `-required` osztály miatt, _vagy_ egy
-natív `required` vezérlő miatt benne — így egyszerűen beállíthatod `required`-t a beviteli mezőn, és a jel megjelenik.
-Dekoratív (egy `::after` a címkén, az akadálymentesítési fán kívül); párosítsd egy megjegyzéssel, mint
-„a \*-gal jelölt mezők kötelezők", hacsak az űrlap nem magától értetődő.
+A **kötelező mezőt jelző csillag** akkor jelenik meg, ha a mező kötelező _vagy_ a `-required` osztály, _vagy_ a
+benne lévő natív `required` vezérlő miatt — így elegendő a `required` értéket beállítani a beviteli mezőn, és a jelzés megjelenik.
+Ez dekoratív (egy `::after` a címkén, a hozzáférhetőségi fán kívül); társítsd egy olyan megjegyzéssel, mint
+a „a \*-gal jelölt mezők kitöltése kötelező”, hacsak az űrlap nem magától értetődő.
 
-**FormFieldGroup** — `.instui-form-field-group` kapcsolódó mezőket csoportosít egy `<fieldset>`-be egy
-`<legend>` leírással. Tisztán elrendezés (nincsenek dedikált tokenek): alapértelmezetten egymásra rakja a mezőket;
-`-layout-columns` / `-layout-inline` reszponzív oszlopokba folyatja őket, `-row-spacing-*` /
-`-col-spacing-*` és `-v-align-*` hangolja a rácsot.
+**FormFieldGroup** — A `.instui-form-field-group` a kapcsolódó mezőket egy `<fieldset>` elemben csoportosítja egy
+`<legend>` leírással. Ez tiszta elrendezés (nincsenek dedikált tokenek): alapértelmezés szerint egymásra helyezi a mezőket;
+a `-layout-columns` / `-layout-inline` reszponzív oszlopokba rendezi őket, a grid finomhangolásához pedig a `-row-spacing-*` /
+`-col-spacing-*` és a `-v-align-*` használható.
 
-**RadioInputGroup** — `.instui-radio-input-group` ugyanaz a `<fieldset>`/`<legend>` csoportosítás,
-rádiókhoz specializálva. Mivel a gyermek rádiók egy `name`-et osztanak meg, a kiválasztás natívan egy-választós —
-így egy váltógombkészlet egyetlen vezérlőként viselkedik, nem laza gombokként. `-variant-simple` (alapértelmezett) rendezi
-el a szabványos rádiókat (`-layout-columns`/`-inline` egy sorba folyatja őket); `-variant-toggle` összeköti a
-gyermek `.instui-radio.-variant-toggle` gombokat egyetlen szegmentált vezérlővé (összecsukott szegélyek,
+**RadioInputGroup** — A `.instui-radio-input-group` ugyanez a `<fieldset>`/`<legend>` csoportosítás,
+rádiógombokra specializálva. Mivel a gyermek rádiógombok közös `name` attribútummal rendelkeznek, a kiválasztás natívan egyetlen választásra korlátozódik —
+így a kapcsológombok egyetlen vezérlőként viselkednek, nem különálló gombokként. A `-variant-simple` (alapértelmezett) standard
+rádiógombokat rendez el (a `-layout-columns`/`-inline` egy sorba folyatja őket); a `-variant-toggle` összeköti a
+gyermek `.instui-radio.-variant-toggle` gombokat egyetlen szegmentált vezérlővé (összevont szegélyek,
 lekerekített külső végek):
 
 ```html
@@ -326,39 +330,39 @@ lekerekített külső végek):
 </fieldset>
 ```
 
-**Üzenetek** — `.instui-form-field-messages` a konténer; minden `.instui-form-field-message` egy
-`-type-*`-t vesz: `-type-hint` (szürke, alapértelmezett), `-type-error` (piros szöveg + kör-figyelmeztetés glyph), `-type-success`
-(zöld szöveg + kör-pipa glyph) és `-type-screenreader-only` (vizuálisan kivágva, de mégis bemondva).
-A glyph-ek `currentColor`-ben festődnek, így mindig az üzenet színéhez illeszkednek. `-type-new-error` egy
-elavult aliasa a `-type-error`-nak. Kösd a konténert a vezérlőhöz `aria-describedby`-val, és állítsd be
-`aria-invalid`-t a vezérlőn, ha hiba van.
+**Üzenetek (Messages)** — A `.instui-form-field-messages` a konténer; minden egyes `.instui-form-field-message` egy
+`-type-*` értéket vesz fel: `-type-hint` (szürke, alapértelmezett), `-type-error` (piros szöveg + egy circle-alert ikon), `-type-success`
+(zöld szöveg + egy circle-check ikon) és `-type-screenreader-only` (vizuálisan levágva, továbbra is felolvasva).
+Az ikonok `currentColor` színnel jelennek meg, így mindig illeszkednek az üzenet színéhez. A `-type-new-error` egy
+elavult alias a `-type-error`-re. Kösd össze a konténert a vezérlővel a `aria-describedby` segítségével, és állítsd be
+a `aria-invalid`-t a vezérlőn, ha hiba lép fel.
 
-Egy FormField-en belül egy `-type-error` üzenet követi a kliensoldali érvényesítést: rejtve marad, amíg a
-mező vezérlője `:user-invalid` (natív, miután a felhasználó interakcióba lépett) — vagy kikényszerítheted `-invalid`-val
-a `.instui-form-field`-n (szerveroldali hibához). Egy önálló `.instui-form-field-messages` (mezőn kívül)
-ez nem érinti. A vezérlő fókuszgyűrűje követi: veszély, ha `:user-invalid`/`-invalid`, és
-siker, ha `-success`.
+A FormField belsejében egy `-type-error` üzenet követi az ügyféloldali validációt: rejtve marad, amíg a
+mező vezérlője nem lesz `:user-invalid` (natív, miután a felhasználó interakcióba lépett vele) — vagy kényszerítheted a `-invalid` használatával
+a `.instui-form-field` elemen (szerveroldali hiba esetén). Egy önálló `.instui-form-field-messages` (amely nem mezőben
+található) érintetlen marad. A vezérlő fókuszgyűrűje (focus ring) szintén ehhez igazodik: danger `:user-invalid`/`-invalid` esetén,
+success a `-success` esetén.
 
-**Szövegvezérlők** — `.instui-text-input` (natív `<input>`), `.instui-text-area` (natív `<textarea>`,
-átméretezhető) és `.instui-simple-select` (natív `<select>` egy caret-tel) egy megjelenést osztanak meg, és ugyanazokat az
-állapotokat: `-invalid` (hibaszegély), `-success` (sikerszegély), `-readonly`, natív `:disabled` és
-`-size-{sm,md,lg}`. Vezető/követő ikonhoz (InstUI `renderBeforeInput`/`renderAfterInput`), csomagold
-a bevitelt `.instui-input-group`-be és adj hozzá egy `.before`/`.after` slot-ot (egy `-icon-*` glyph); `-should-not-wrap`
-egy soron tartja. `.instui-number-input` ez a homlokzat plusz egy `.arrows` +/- spinner oszlop (natív
-`type="number"`; kösd a gombokat `stepUp()`/`stepDown()`-hoz). `.instui-range-input` egy stílusozott
-`input[type="range"]`, amelynek értéke `.instui-range-input-value` inverz buborékban renderelődik. Gazdag
-combobox listbox popover-rel, `@instructure/ui`-hez nyúlj — ez a könyvtár a natív vezérlőket fedi le.
+**Szöveges vezérlők (Text controls)** — A `.instui-text-input` (natív `<input>`), a `.instui-text-area` (natív `<textarea>`,
+átméretezhető) és a `.instui-simple-select` (natív `<select>` kurzorral/nyíllal) azonos megjelenést és ugyanazokat az
+állapotokat osztják meg: `-invalid` (hibaszegély), `-success` (sikerszegély), `-readonly`, natív `:disabled` és
+`-size-{sm,md,lg}`. Vezető/záró ikonhoz (InstUI `renderBeforeInput`/`renderAfterInput`) csomagold
+a beviteli mezőt a `.instui-input-group`-ba, és adj hozzá egy `.before`/`.after` slotot (egy `-icon-*` ikont); a `-should-not-wrap`
+egyetlen sorban tartja azt. A `.instui-number-input` ugyanez a homlokzat kiegészítve egy `.arrows` +/- léptetőoszloppal (natív
+`type="number"`; kösd a gombokat a `stepUp()`/`stepDown()`-hez). A `.instui-range-input` egy stilizált
+`input[type="range"]`, amelynek értéke egy `.instui-range-input-value` inverz buborékban jelenik meg. Gazdag funkcionalitású,
+listbox popoverrel rendelkező combobox esetén használd a `@instructure/ui`-ot — ez a könyvtár a natív vezérlőket fedi le.
 
-**Stílusozott select legördülő (kísérleti)** — egy opcionális `select.css` frissíti _ugyanazt_ a
-`.instui-simple-select` elemet: stílusozza a nyitott legördülőt (a panelt és minden opciót, hover és
-kiválasztott állapotokkal) a CSS Customizable Select modell használatával.
+**Stilizált select legördülő (kísérleti)** — egy opcionális (opt-in) `select.css` feljavítja _ugyanezt_
+a `.instui-simple-select` elemet: stilizálja a megnyitott legördülőt (a panelt és az egyes opciókat, hover és
+kijelölt állapotokkal) a CSS Customizable Select modellt használva.
 
 > [!WARNING]
-> `select.css` a `appearance: base-select` / `::picker(select)`-ra támaszkodik, ami **kísérleti**
-> (Chrome 135+, még nem Baseline). Külön opcionális stíluslapként van szállítva, és minden szabály
-> `@supports (appearance: base-select)` mögé van zárva, így nem támogatott böngészőkben semmit sem tesz — a
-> `.instui-simple-select` vezérlő egyszerűen a sima natív select marad. Csak akkor töltsd be, ha szeretnéd
-> a bővített legördülőt, és elfogadod a korlátozott támogatást.
+> A `select.css` a `appearance: base-select` / `::picker(select)` tulajdonságra épül, amely **kísérleti**
+> (Chrome 135+, még nem Baseline). Különálló, opcionális stíluslapként érhető el, és minden szabály a
+> `@supports (appearance: base-select)` mögé van zárva, így a nem támogatott böngészőkben semmit sem csinál — a
+> `.instui-simple-select` vezérlő egyszerű natív select marad. Csak akkor töltsd be, ha szeretnéd a
+> továbbfejlesztett legördülőt, és elfogadod a korlátozott támogatást.
 
 ```ts
 import "@pantoken/components/components.css";
