@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.20
+
+### Patch Changes
+
+- Updated dependencies [853659c]
+- Updated dependencies [853659c]
+  - @pantoken/web-components@0.5.0
+  - @pantoken/i18n@0.1.7
+
 ## 0.1.19
 
 ### Patch Changes

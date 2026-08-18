@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.1.18
+
+### Patch Changes
+
+- @pantoken/drupal@0.1.16
+- @pantoken/hugo@0.1.16
+- @pantoken/jekyll@0.1.16
+- @pantoken/pendo@0.3.5
+
 ## 0.1.17
 
 ### Patch Changes
