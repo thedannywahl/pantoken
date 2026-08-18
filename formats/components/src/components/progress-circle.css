@@ -13,7 +13,7 @@
  * @modifier -size-sm — Small.
  * @modifier -size-md — Medium (default).
  * @modifier -size-lg — Large.
- * @modifier -should-animate — Animate the meter, ring, and centered value into place on mount.
+ * @modifier -should-animate — @interaction Animate the meter, ring, and centered value into place on mount.
  * @modifier -should-animate-on-mount — @deprecated {@link -should-animate}
  * @modifier -shold-animate-on-mount — @deprecated {@link -should-animate}
  * @modifier -meter-color-brand — @deprecated {@link -color-brand}
@@ -105,10 +105,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* stylelint-disable-next-line block-no-empty */
-.pfx-progress-circle.-should-animate {
 }
 
 .pfx-progress-circle.-size-xs {

@@ -14,7 +14,7 @@
  * @modifier -size-sm — Small.
  * @modifier -size-md — Medium (default).
  * @modifier -size-lg — Large.
- * @modifier -should-animate — Animate meter changes over half a second.
+ * @modifier -should-animate — @interaction Animate meter changes over half a second.
  * @modifier -render-value-inside — Renders `.value` inside the track, aligned to its start, instead of beside it; style it for legibility over the meter colour.
  * @modifier -meter-color-brand — @deprecated {@link -color-brand}
  * @modifier -meter-color-info — @deprecated {@link -color-info}
@@ -141,10 +141,6 @@
   :scope:indeterminate > .value {
     visibility: hidden;
   }
-}
-
-/* stylelint-disable-next-line block-no-empty */
-.pfx-progress.-should-animate {
 }
 
 .pfx-progress.-color-brand .bar {
