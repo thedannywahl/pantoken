@@ -1860,6 +1860,7 @@
     "b12ccc045ad0d14d46a45203188873aadcecbab21353b5deb36c589069bcc5ae": "Ábrázoljon egy vezető ikon karaktert a `.hero`-en (pl. `<span class=\"hero -icon-inbox\"></span>`).",
     "b12d77167e314ab564c1690107dc8c204dfa111fd0e2c708dcb9c09481c37fd7": "A karakter dekoratív, ezért jelöld meg `aria-hidden=\"true\"`; adj neki egy `role`-t vagy címkét csak akkor, ha az ikon önmagában jelentést közvetít.",
     "b133201961ce40c1f66e6590a601e83632fff96e930913b0b0c07f46ee0adf61": "unknownReferences",
+    "b135646ed5903bb12c9f63800b4dee4d715ea065e1d94019e83bb12aaf5c3f93": "Közepes (alapértelmezett). A(z) `-size-md` hosszú formátumú aliasa.",
     "b139442eb0ed70af51ee13d8344dc1ef2b3d2ab9d5776e1773e3704d84d3f6b6": "Áttekintés",
     "b139d4b56113b04146ef734dd6a5e4cf8a78cc8889fa4b8f95aaf29245767136": "position: relative.",
     "b13d2e490b29c10f9a50eb6bfff54ac82b53768164f00c387b7ee665afeb78f5": "Egy WordPress `theme.json` dokumentum (amelyet pantoken kitölt).",
