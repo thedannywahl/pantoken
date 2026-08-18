@@ -40,10 +40,12 @@ function pkg(name: string, version = "0.2.0"): WorkspacePackage {
 
 const OK_RESULT: SpawnResult = { status: 0, stdout: "", stderr: "" };
 const NOT_FOUND_RESULT: SpawnResult = { status: 1, stdout: "", stderr: "" };
-const DEFAULT_PACK_STDOUT = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
+const DEFAULT_TARBALL = "/ws/packs/pantoken-css-0.2.0.tgz";
+const DEFAULT_MANIFEST = JSON.stringify({ dependencies: { "@pantoken/utils": "^0.2.0" } });
 const DEFAULT_ROUTE_OVERRIDES: Record<string, SpawnResult> = {
   "npm view": NOT_FOUND_RESULT,
-  "npm pack": { status: 0, stdout: DEFAULT_PACK_STDOUT, stderr: "" },
+  "pnpm pack": { status: 0, stdout: `${DEFAULT_TARBALL}\n`, stderr: "" },
+  "tar -xOzf": { status: 0, stdout: DEFAULT_MANIFEST, stderr: "" },
   "git rev-parse": { status: 0, stdout: "deadbeef\n", stderr: "" },
 };
 const GH_RELEASE_ROUTE_OVERRIDES: Record<string, SpawnResult> = {
@@ -135,7 +137,7 @@ test("normal run publishes pending versions and prepares the release manifest", 
   const spawned = spawnSync.mock.calls.map((c) =>
     `${String(c[0])} ${(c[1] as string[])[0]} ${(c[1] as string[])[1] ?? ""}`.trim(),
   );
-  expect(spawned).toContain("npm publish --provenance");
+  expect(spawned).toContain(`npm publish ${DEFAULT_TARBALL}`);
   // Script no longer creates GH releases directly; that happens in the workflow after attestation.
   expect(spawned.some((s) => s.startsWith("gh release create"))).toBe(false);
   // Release notes and manifest written so the workflow can create releases with all assets.
@@ -198,9 +200,8 @@ test("existing releases are skipped (versionReleased guard is idempotent)", asyn
   expect(process.exitCode).toBeUndefined();
 });
 
-test("prepareRelease packs the tgz and writes a manifest entry when npm pack succeeds", async () => {
-  const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
-  spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
+test("prepareRelease packs via pnpm and writes a manifest entry when pnpm pack succeeds", async () => {
+  spawnSync.mockImplementation(router());
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
@@ -211,8 +212,7 @@ test("prepareRelease packs the tgz and writes a manifest entry when npm pack suc
   const spawned = spawnSync.mock.calls.map((c) =>
     `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
   );
-  // packForManifest: calls mv to move the tgz to the shared packs dir
-  expect(spawned.some((s) => s.startsWith("mv"))).toBe(true);
+  expect(spawned).toContain("pnpm pack");
   // writeReleaseManifest writes the JSON manifest (not appendFileSync/tags file)
   const manifestCall = writeFileSync.mock.calls.find((c: unknown[]) =>
     String(c[0]).includes("pantoken-releases.json"),
@@ -223,11 +223,10 @@ test("prepareRelease packs the tgz and writes a manifest entry when npm pack suc
   );
 });
 
-test("prepareRelease accepts npm 12 object output from npm pack --json", async () => {
-  const packJson = JSON.stringify({
-    "@pantoken/css": { filename: "pantoken-css-0.2.0.tgz" },
-  });
-  spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
+test("pnpmPackToDir tolerates extra progress lines before the tarball path", async () => {
+  spawnSync.mockImplementation(
+    router({ "pnpm pack": { status: 0, stdout: `Packing...\n${DEFAULT_TARBALL}\n`, stderr: "" } }),
+  );
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
@@ -235,58 +234,139 @@ test("prepareRelease accepts npm 12 object output from npm pack --json", async (
     expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("done:"))).toBe(true),
   );
 
-  const spawned = spawnSync.mock.calls.map((c) =>
-    `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
-  );
-  expect(spawned.some((s) => s.startsWith("mv"))).toBe(true);
-  const manifestCall = writeFileSync.mock.calls.find((c: unknown[]) =>
-    String(c[0]).includes("pantoken-releases.json"),
-  );
-  expect(manifestCall).toBeDefined();
   expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed for"))).toBe(
     false,
   );
 });
 
-test("npmPackFilename returns null when npm pack exits non-zero", async () => {
+test("pnpmPackToDir returns null when pnpm pack exits non-zero", async () => {
   spawnSync.mockImplementation(
-    router({ "npm pack": { status: 1, stdout: "", stderr: "pack-failed" } }),
+    router({ "pnpm pack": { status: 1, stdout: "", stderr: "pack-failed" } }),
   );
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
   await vi.waitFor(() => expect(process.exitCode).toBe(1));
 
-  // packForManifest bails out early — pack failed → no mv
-  const spawned = spawnSync.mock.calls.map((c) =>
-    `${String(c[0])} ${(c[1] as string[])[0]}`.trim(),
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pnpm pack failed"))).toBe(
+    true,
   );
-  expect(spawned.some((s) => s.startsWith("mv"))).toBe(false);
-  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to publish"))).toBe(
+    true,
+  );
+});
+
+test("pnpmPackToDir returns null when the reported tarball path doesn't exist", async () => {
+  existsSync.mockReturnValue(false);
+  spawnSync.mockImplementation(router());
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
   expect(
-    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
+    errSpy.mock.calls.some((c: unknown[]) =>
+      String(c[0]).includes("did not report a tarball path"),
+    ),
+  ).toBe(true);
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to publish"))).toBe(
+    true,
+  );
+});
+
+test("publish aborts when the packed tarball still has an unresolved workspace: dependency", async () => {
+  const brokenManifest = JSON.stringify({ dependencies: { "@pantoken/utils": "workspace:*" } });
+  spawnSync.mockImplementation(
+    router({ "tar -xOzf": { status: 0, stdout: brokenManifest, stderr: "" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned).not.toContain("npm publish"); // guard must run before the registry call
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) =>
+      String(c[0]).includes("unresolved pnpm-protocol deps"),
+    ),
   ).toBe(true);
 });
 
-test("npmPackFilename returns null when npm pack stdout is invalid JSON", async () => {
+test("publish aborts when the packed tarball still has an unresolved catalog: dependency", async () => {
+  const brokenManifest = JSON.stringify({ dependencies: { postcss: "catalog:" } });
   spawnSync.mockImplementation(
-    router({ "npm pack": { status: 0, stdout: "not-json", stderr: "" } }),
+    router({ "tar -xOzf": { status: 0, stdout: brokenManifest, stderr: "" } }),
   );
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
   await vi.waitFor(() => expect(process.exitCode).toBe(1));
 
-  // JSON.parse throws → packForManifest gets null → logs "pack failed"
-  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed"))).toBe(true);
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned).not.toContain("npm publish");
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) =>
+      String(c[0]).includes("unresolved pnpm-protocol deps"),
+    ),
+  ).toBe(true);
+});
+
+test("publish aborts when tar fails to read the packed manifest", async () => {
+  spawnSync.mockImplementation(
+    router({ "tar -xOzf": { status: 1, stdout: "", stderr: "tar: not a tarball" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned).not.toContain("npm publish");
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("could not read package.json")),
+  ).toBe(true);
+});
+
+test("publish aborts when the packed manifest is invalid JSON", async () => {
+  spawnSync.mockImplementation(
+    router({ "tar -xOzf": { status: 0, stdout: "not-json", stderr: "" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned).not.toContain("npm publish");
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("could not read package.json")),
+  ).toBe(true);
+});
+
+test("a failing pnpm pack for an already-published version fails its release prepare, not its publish", async () => {
+  // Already on npm → skipped from publish, only reaches packForManifest via prepareReleaseManifest.
+  spawnSync.mockImplementation(
+    router({
+      "npm view": { status: 0, stdout: "0.2.0\n", stderr: "" },
+      "pnpm pack": { status: 1, stdout: "", stderr: "pack-failed" },
+    }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed for"))).toBe(
+    true,
+  );
   expect(
     errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
   ).toBe(true);
 });
 
 test("prepareRelease writes manifest JSON containing the tarball path", async () => {
-  const packJson = JSON.stringify([{ filename: "pantoken-css-0.2.0.tgz" }]);
-  spawnSync.mockImplementation(router({ "npm pack": { status: 0, stdout: packJson, stderr: "" } }));
+  spawnSync.mockImplementation(router());
   process.argv = ["node", MODULE_PATH];
 
   await import("./publish-npm.ts");
@@ -326,20 +406,6 @@ test("releaseNotes falls back to minimal message when CHANGELOG.md is missing", 
     String(c[0]).includes("pantoken-releases.json"),
   );
   expect(manifestWritten).toBe(true);
-});
-
-test("a failed tarball move causes release prepare to fail and exits non-zero", async () => {
-  // existsSync returning false after mv simulates a failed move (mv exits 0 but file not present).
-  existsSync.mockReturnValue(false);
-  spawnSync.mockImplementation(router());
-  process.argv = ["node", MODULE_PATH];
-
-  await import("./publish-npm.ts");
-  await vi.waitFor(() => expect(process.exitCode).toBe(1));
-
-  expect(
-    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
-  ).toBe(true);
 });
 
 test("failedPublish packages are logged and exit code is 1", async () => {
