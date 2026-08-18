@@ -312,6 +312,59 @@ test("publish aborts when the packed tarball still has an unresolved catalog: de
   ).toBe(true);
 });
 
+test("publish aborts when tar fails to read the packed manifest", async () => {
+  spawnSync.mockImplementation(
+    router({ "tar -xOzf": { status: 1, stdout: "", stderr: "tar: not a tarball" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned).not.toContain("npm publish");
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("could not read package.json")),
+  ).toBe(true);
+});
+
+test("publish aborts when the packed manifest is invalid JSON", async () => {
+  spawnSync.mockImplementation(
+    router({ "tar -xOzf": { status: 0, stdout: "not-json", stderr: "" } }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  const spawned = spawnSync.mock.calls.map((c) => `${String(c[0])} ${(c[1] as string[])[0]}`);
+  expect(spawned).not.toContain("npm publish");
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("could not read package.json")),
+  ).toBe(true);
+});
+
+test("a failing pnpm pack for an already-published version fails its release prepare, not its publish", async () => {
+  // Already on npm → skipped from publish, only reaches packForManifest via prepareReleaseManifest.
+  spawnSync.mockImplementation(
+    router({
+      "npm view": { status: 0, stdout: "0.2.0\n", stderr: "" },
+      "pnpm pack": { status: 1, stdout: "", stderr: "pack-failed" },
+    }),
+  );
+  process.argv = ["node", MODULE_PATH];
+
+  await import("./publish-npm.ts");
+  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+
+  expect(errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("pack failed for"))).toBe(
+    true,
+  );
+  expect(
+    errSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("failed to prepare release")),
+  ).toBe(true);
+});
+
 test("prepareRelease writes manifest JSON containing the tarball path", async () => {
   spawnSync.mockImplementation(router());
   process.argv = ["node", MODULE_PATH];
