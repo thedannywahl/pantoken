@@ -251,15 +251,16 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
 /**
  * `classNames` (new in `@cssdoc/markdown` 0.7.2) lets HTML-preserving renderers wrap the deprecation
  * marker — the record-level `> [!WARNING]` banner and every deprecated modifier-table cell — in a
- * `<span class="…">`. We render it as an `instui-pill` in the warning colour (components.css is already
- * loaded on doc pages for the live examples, so the class paints). The extra `pantoken-doc-tag` is a
- * docs-only marker: the shipped pill is a compact fixed-height badge, so `.vitepress/theme/pantoken.css`
- * uses it to relax the pill for the flowing deprecation sentence it wraps — without touching how the
- * real `.instui-pill` renders in a component preview. Keep the deprecated class in sync with the
- * TypeDoc badge transformer via `api-badge-classes.ts`.
+ * `<span class="…">`, and (via `stage`) the `@stable`/etc release-stage marker on the header line the
+ * same way. We render both as an `instui-pill` (components.css is already loaded on doc pages for the
+ * live examples, so the class paints). The extra `pantoken-doc-tag` is a docs-only marker: the shipped
+ * pill is a compact fixed-height badge, so `.vitepress/theme/pantoken.css` uses it to relax the pill for
+ * the flowing sentence it wraps — without touching how the real `.instui-pill` renders in a component
+ * preview. Keep these classes in sync with the TypeDoc badge transformer via `api-badge-classes.ts`.
  */
 const classNames = {
   deprecated: BADGE_CLASS_BY_LABEL.Deprecated,
+  stage: { stable: BADGE_CLASS_BY_LABEL.Stable },
 };
 
 // The repo root (this worktree) and its GitHub blob base, for `**Source:**` links.

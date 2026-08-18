@@ -42,7 +42,15 @@ const ALL_COMPONENTS = [
 ];
 
 // Components with hand-authored entry points — the generator skips these.
-const BEHAVIORAL_COMPONENTS = new Set(["close-button", "modal", "tooltip", "in-place-edit"]);
+const BEHAVIORAL_COMPONENTS = new Set([
+  "alert",
+  "avatar",
+  "close-button",
+  "modal",
+  "tooltip",
+  "in-place-edit",
+  "progress-circle",
+]);
 
 // Components that require command event handling
 const COMMAND_COMPONENTS = new Set([

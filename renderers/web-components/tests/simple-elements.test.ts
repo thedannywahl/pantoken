@@ -1,10 +1,11 @@
 // @vitest-environment happy-dom
-import { afterEach, expect, test } from "vite-plus/test";
+import { afterEach, expect, test, vi } from "vite-plus/test";
 import { register } from "../src/index.ts";
 
 register();
 
 afterEach(() => {
+  vi.useRealTimers();
   document.body.innerHTML = "";
 });
 
@@ -76,19 +77,56 @@ test("avatar with a non-rectangle shape omits the shape modifier", () => {
   expect(el.shadowRoot?.querySelector("span")?.className).toBe("instui-avatar");
 });
 
-test("progress clamps value 0–100 and sets the fill width", () => {
+test("progress clamps current/max values and exposes them through CSS and ARIA", () => {
   const over = mount(`<instui-progress value="150"></instui-progress>`, "instui-progress");
-  expect(over.shadowRoot?.querySelector(".bar")?.getAttribute("style")).toBe("width:100%");
+  const overMeter = over.shadowRoot?.querySelector<HTMLElement>(".instui-progress");
+  expect(overMeter?.style.getPropertyValue("--value")).toBe("100");
+  expect(over.shadowRoot?.querySelector("progress")?.getAttribute("value")).toBe("100");
   const under = mount(`<instui-progress value="-20"></instui-progress>`, "instui-progress");
-  expect(under.shadowRoot?.querySelector(".bar")?.getAttribute("style")).toBe("width:0%");
+  expect(
+    under.shadowRoot
+      ?.querySelector<HTMLElement>(".instui-progress")
+      ?.style.getPropertyValue("--value"),
+  ).toBe("0");
   const mid = mount(
-    `<instui-progress value="60" variant="success"></instui-progress>`,
+    `<instui-progress value-now="40" value-max="60" variant="success" label="Uploaded"></instui-progress>`,
     "instui-progress",
   );
-  const bar = mid.shadowRoot?.querySelector("div.bar");
-  expect(bar?.getAttribute("style")).toBe("width:60%");
-  expect(bar?.className).toBe("bar -color-success");
-  expect(mid.shadowRoot?.querySelector('[role="progressbar"]')).toBeTruthy();
+  const meter = mid.shadowRoot?.querySelector<HTMLElement>(".instui-progress");
+  const native = mid.shadowRoot?.querySelector("progress");
+  expect(meter?.style.getPropertyValue("--value")).toBe("40");
+  expect(meter?.style.getPropertyValue("--min")).toBe("0");
+  expect(meter?.style.getPropertyValue("--max")).toBe("60");
+  expect(meter?.className).toContain("-color-success");
+  expect(native?.getAttribute("value")).toBe("40");
+  expect(native?.getAttribute("max")).toBe("60");
+  expect(native?.getAttribute("aria-label")).toBe("Uploaded");
+});
+
+test("progress uses meter for a non-zero minimum", () => {
+  const el = mount(
+    `<instui-progress min="20" value="40" max="60" label="Range"></instui-progress>`,
+    "instui-progress",
+  );
+  const native = el.shadowRoot?.querySelector("meter");
+  expect(el.shadowRoot?.querySelector("progress")).toBeNull();
+  expect(native?.getAttribute("min")).toBe("20");
+  expect(native?.getAttribute("value")).toBe("40");
+  expect(native?.getAttribute("max")).toBe("60");
+  expect(el.shadowRoot?.querySelector<HTMLElement>(".bar")?.style.width).toBe("50%");
+});
+
+test("progress retains its meter so should-animate transitions value updates", () => {
+  const el = mount(
+    `<instui-progress value="20" should-animate></instui-progress>`,
+    "instui-progress",
+  );
+  const bar = el.shadowRoot?.querySelector(".bar");
+  const meter = el.shadowRoot?.querySelector<HTMLElement>(".instui-progress");
+  expect(meter?.classList.contains("-should-animate")).toBe(true);
+  el.setAttribute("value", "80");
+  expect(el.shadowRoot?.querySelector(".bar")).toBe(bar);
+  expect(meter?.style.getPropertyValue("--value")).toBe("80");
 });
 
 test("metric escapes value/label and renders them (attributes, not slots)", () => {
@@ -130,20 +168,48 @@ test("rating honors an explicit label and clamps value/max", () => {
   );
 });
 
-test("progress-circle clamps value, sets --value, and derives an aria-label", () => {
+test("progress-circle clamps value, sets current/max variables, and derives an aria-label", () => {
   const el = mount(
     `<instui-progress-circle value="75"></instui-progress-circle>`,
     "instui-progress-circle",
   );
   const span = el.shadowRoot?.querySelector("span");
-  expect(span?.getAttribute("style")).toBe("--value:75");
-  expect(span?.getAttribute("aria-label")).toBe("75%");
+  expect(span?.getAttribute("style")).toBe("--value:75;--min:0;--max:100;--animation-delay:0");
+  expect(el.shadowRoot?.querySelector("progress")?.getAttribute("aria-label")).toBe("75%");
   const clamped = mount(
     `<instui-progress-circle value="500" label="Almost"></instui-progress-circle>`,
     "instui-progress-circle",
   );
-  expect(clamped.shadowRoot?.querySelector("span")?.getAttribute("style")).toBe("--value:100");
-  expect(clamped.shadowRoot?.querySelector("span")?.getAttribute("aria-label")).toBe("Almost");
+  expect(clamped.shadowRoot?.querySelector("span")?.getAttribute("style")).toBe(
+    "--value:100;--min:0;--max:100;--animation-delay:0",
+  );
+  expect(clamped.shadowRoot?.querySelector("progress")?.getAttribute("aria-label")).toBe("Almost");
+});
+
+test("progress-circle supports value-now/value-max and releases its mount modifier", () => {
+  vi.useFakeTimers();
+  const el = mount(
+    `<instui-progress-circle value-now="40" value-max="60" should-animate animation-delay="25"></instui-progress-circle>`,
+    "instui-progress-circle",
+  );
+  const ring = el.shadowRoot?.querySelector("span");
+  expect(ring?.getAttribute("style")).toBe("--value:40;--min:0;--max:60;--animation-delay:25");
+  expect(ring?.classList.contains("-should-animate")).toBe(true);
+  vi.advanceTimersByTime(25);
+  expect(ring?.classList.contains("-should-animate")).toBe(false);
+});
+
+test("progress-circle uses meter for a non-zero minimum", () => {
+  const el = mount(
+    `<instui-progress-circle min="20" value="40" max="60"></instui-progress-circle>`,
+    "instui-progress-circle",
+  );
+  const native = el.shadowRoot?.querySelector("meter");
+  expect(el.shadowRoot?.querySelector("progress")).toBeNull();
+  expect(native?.getAttribute("min")).toBe("20");
+  expect(native?.getAttribute("value")).toBe("40");
+  expect(native?.getAttribute("max")).toBe("60");
+  expect(el.shadowRoot?.querySelector("span")?.getAttribute("style")).toContain("--min:20");
 });
 
 test("icon-button applies aria-label from `label` and the square modifier", () => {

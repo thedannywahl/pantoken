@@ -102,17 +102,19 @@ const collectSidebarText = (items: SidebarItem[], out: string[]): void => {
 
 // Translated prose occasionally emits literal HTML tags (for example <dialog>), which Vue markdown
 // parsing treats as real elements and can fail on missing end tags. Escape bare tag tokens in prose
-// segments while leaving preserved HTML blocks/code fences untouched.
-const escapeBareHtmlTags = (text: string): string =>
-  text.replace(/<\/?([A-Za-z][\w-]*)>/g, (match) => {
-    if (match.startsWith("</")) {
-      const name = match.slice(2, -1);
-      return `&lt;/${name}&gt;`;
-    }
+// segments while leaving preserved HTML blocks/code fences untouched. A tag with attributes (the
+// stability-badge pill's `<span class="...">`) is real generated HTML, not a stray mention — its
+// plain closing partner (`</span>`) must stay unescaped too, or the pair goes unbalanced.
+const escapeBareHtmlTags = (text: string): string => {
+  const attributedTagNames = new Set(
+    [...text.matchAll(/<([A-Za-z][\w-]*)\s[^>]*>/g)].map((match) => match[1]),
+  );
 
-    const name = match.slice(1, -1);
-    return `&lt;${name}&gt;`;
+  return text.replace(/<\/?([A-Za-z][\w-]*)>/g, (match, name: string) => {
+    if (attributedTagNames.has(name)) return match;
+    return match.startsWith("</") ? `&lt;/${name}&gt;` : `&lt;${name}&gt;`;
   });
+};
 
 /**
  * Generate the EN API docs (TypeDoc + badge styling + overview) and the CSS API pages. The CSS pages

@@ -38,15 +38,83 @@ pantoken components:
 ```html
 <!-- direct instui props -->
 <div
-  class="instui-alert -variant-success -transition-fade -has-shadow -render-custom-icon-megaphone"
+  class="instui-alert -variant-success instui-transition -fade-entered -has-shadow -render-custom-icon-megaphone"
 >
   This is the alert content.
 </div>
 
 <!-- normalized color/icon props -->
-<div class="instui-alert -color-success -transition-fade -has-shadow -icon-megaphone">
+<div
+  class="instui-alert -color-success instui-transition -fade-entered -has-shadow -icon-megaphone"
+>
   This is the alert content.
 </div>
+```
+
+For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
+the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
+place. Add the transition plugin's `instui-transition -fade-entered` classes for InstUI's fade; omit
+them for immediate removal. The interaction drives the plugin's `-fade-exiting` state and fires a
+cancelable, bubbling `dismiss` event before removal, so an application can call `preventDefault()`
+to keep the alert mounted.
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@pantoken/plugin-transition/dist/transition.css"
+/>
+<div
+  class="instui-alert -color-info instui-transition -fade-entered"
+  style="--timeout: 5000"
+  role="alert"
+>
+  This alert dismisses after five seconds.
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
+```
+
+Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
+(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
+to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
+a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
+instead (style it for legibility against the meter colour). Use a native `<progress>` for a
+zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
+automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
+missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
+sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+
+```html
+<label>
+  Uploading Document:
+  <progress
+    class="instui-progress -color-brand -should-animate"
+    style="--value: 40; --max: 60"
+    value="40"
+    max="60"
+  >
+    40 of 60
+  </progress>
+</label>
+```
+
+Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
+`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
+load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
+unitless millisecond delay. The deprecated `-should-animate-on-mount` and
+`-shold-animate-on-mount` spellings remain functional aliases.
+
+```html
+<label for="upload-progress">Uploading Document</label>
+<progress
+  id="upload-progress"
+  class="instui-progress-circle -should-animate"
+  style="--value: 40; --max: 60; --animation-delay: 500"
+  value="40"
+  max="60"
+>
+  40 of 60
+</progress>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
 ## Class prefix

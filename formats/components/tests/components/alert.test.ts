@@ -26,4 +26,10 @@ test("alert draws its bar + glyph from pseudo-elements (no wrappers) with varian
   expect(css).toContain("var(--instui-elevation-above)");
   expect(css).toContain(".instui-alert.-screen-reader-only");
   expect(css).toContain(".instui-alert:has(> .instui-close-button)");
+  // Timeout mirrors InstUI milliseconds and defaults to a fade unless explicitly disabled.
+  expect(css).toContain("@property --timeout");
+  expect(css).toContain('syntax: "<integer>"');
+  expect(css).toContain("--timeout: 0");
+  expect(css).not.toContain(".instui-alert.-removing");
+  expect(css).not.toContain("transition: opacity");
 });

@@ -42,14 +42,9 @@ const highlighted = useShikiHighlight(outputRef, lang);
           </button>
         </div>
         <div class="panel" role="tabpanel">
-          <!-- Matches VitePress's own fenced-code output exactly (div.language-*, button.copy,
-               span.lang, pre > code) so the default theme's global copy-button click handler and
-               `.vp-doc [class*='language-']` styling both pick this up as if it were static markdown,
-               with no bespoke copy logic or styling of our own. -->
           <div :class="`language-${lang}`">
             <button class="copy" type="button" :title="copyText" :data-copied="copiedText"></button>
             <span class="lang">{{ lang }}</span>
-            <!-- v-html used only for shiki's trusted, server-generated HTML -->
             <div v-if="highlighted" v-html="highlighted" />
             <pre v-else><code>{{ output }}</code></pre>
           </div>
@@ -75,8 +70,15 @@ const highlighted = useShikiHighlight(outputRef, lang);
   display: block;
   margin: 0;
 }
-/* Promote --shiki-dark-bg to background-color in dark mode */
+/* Shiki's dual-theme output sets `--shiki-dark`/`--shiki-dark-bg` inline alongside the light-theme
+   `color`/`background-color` on the <pre> and a `--shiki-dark` alongside `color` on every token
+   <span> — VitePress's own dark-mode CSS promotes those in .vp-doc, but this v-html'd output lives
+   outside .vp-doc, so it needs the same promotion here (both the container and its token spans). */
 :global(.dark) .picker-output :deep(.shiki) {
   background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+:global(.dark) .picker-output :deep(.shiki span) {
+  color: var(--shiki-dark) !important;
 }
 </style>

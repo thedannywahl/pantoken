@@ -43,15 +43,21 @@ export interface DefineInput {
 }
 
 /**
- * Split a record's leading `/** … *\/` doc comment from its CSS body. The alias post-processors scan
- * for `{ … }` rule bodies, so they must never see the comment's `{@link …}` braces — `make()` runs them
- * on the body alone and recombines. Tolerates leading whitespace before `/**` (an authored template
- * literal often opens with a newline); drops the single newline separating the comment from the body.
+ * Split a record's `/** … *\/` doc comment from its CSS body. The alias post-processors scan for
+ * `{ … }` rule bodies, so they must never see the comment's `{@link …}` braces — `make()` runs them on
+ * the body alone and recombines. Tolerates leading whitespace before `/**` (an authored template
+ * literal often opens with a newline); drops the single newline separating the comment from the rest.
+ * The comment isn't always the very first thing: some builders prepend shared, comment-free CSS (like
+ * `@property` registrations) ahead of the record's own doc comment — that prefix stays in `body`, ahead
+ * of the rest, so alias twins still append after the CSS they document instead of vanishing silently.
  */
 function splitLeadingDocComment(raw: string): { comment: string; body: string } {
-  const m = raw.match(/^\s*\/\*\*[\s\S]*?\*\//u);
+  const m = raw.match(/\/\*\*[\s\S]*?\*\//u);
   if (!m) return { comment: "", body: raw };
-  return { comment: m[0].replace(/^\s+/u, ""), body: raw.slice(m[0].length).replace(/^\n/u, "") };
+  const start = raw.indexOf(m[0]);
+  const prefix = raw.slice(0, start).trim();
+  const rest = raw.slice(start + m[0].length).replace(/^\n/u, "");
+  return { comment: m[0], body: prefix ? `${prefix}\n${rest}` : rest };
 }
 
 function make(kind: CssRecordKind, input: DefineInput): Definition {

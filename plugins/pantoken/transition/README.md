@@ -26,6 +26,11 @@ import { transition } from "@pantoken/plugin-transition";
 const css = toCss(byTheme("rebrand"), { plugins: [transition()] });
 ```
 
+The Node-free `@pantoken/plugin-transition/progress` and
+`@pantoken/plugin-transition/progress-circle` subpaths export `progressTransitionRules(prefix)` and
+`progressCircleTransitionRules(prefix)`, the InstUI-compatible transitions used by
+`@pantoken/components`' linear and circular progress indicators.
+
 Then apply a type class and swap the state class over time:
 
 ```html

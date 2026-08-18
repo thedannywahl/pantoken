@@ -24,6 +24,8 @@
 import { definePlugin } from "@pantoken/plugin-kit";
 import { defineToken } from "@pantoken/model";
 import type { PantokenPlugin } from "@pantoken/model";
+export { progressCircleTransitionRules } from "./progress-circle.ts";
+export { progressTransitionRules } from "./progress.ts";
 
 const DEFAULT_DURATION = "300ms";
 const DEFAULT_TIMING = "ease-in-out";

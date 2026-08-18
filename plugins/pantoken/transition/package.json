@@ -19,6 +19,14 @@
   ],
   "exports": {
     ".": "./dist/index.mjs",
+    "./progress": {
+      "types": "./dist/progress.d.mts",
+      "default": "./dist/progress.mjs"
+    },
+    "./progress-circle": {
+      "types": "./dist/progress-circle.d.mts",
+      "default": "./dist/progress-circle.mjs"
+    },
     "./transition.css": "./dist/transition.css",
     "./package.json": "./package.json"
   },
