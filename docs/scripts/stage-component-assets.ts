@@ -22,7 +22,7 @@ import { join } from "node:path";
 // Source import (build-time docs script, never shipped to the browser) so the focus-outline sheet
 // tracks focus.ts edits live via the components cascade. focus.ts lives under formats/components/src,
 // so the `#styles → generate → component-assets` cascade reruns this on a focus edit.
-import { focusOutlineCss } from "../../formats/components/src/declarations/focus.ts";
+import { focusOutlineCss } from "../../formats/components/src/declarations/focus/index.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const repoRoot = join(docsRoot, "..");
