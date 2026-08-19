@@ -1,6 +1,6 @@
-import { defineComponent, type Definition } from "../lib/define.ts";
-import { SENTINEL } from "../lib/sentinel.ts";
-import { breadcrumb as breadcrumbRaw } from "../generated/component-styles.ts";
+import { defineComponent, type Definition } from "../../lib/define.ts";
+import { SENTINEL } from "../../lib/sentinel.ts";
+import { breadcrumb as breadcrumbRaw } from "../../generated/component-styles.ts";
 
 /** The `breadcrumb` component record: a navigation trail with `/` separators, ending on the current page. */
 export const breadcrumb: Definition = defineComponent({

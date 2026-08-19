@@ -13,7 +13,7 @@
  * @a11y Mark a disabled link with `aria-disabled="true"`.
  * @example
  * <a class="pfx-link" href="#">A styled link</a>
- * @related breadcrumb — A breadcrumb trail is built from links.
+ * @related breadcrumb — A breadcrumb trail is built from links; also its small-screen fallback (pair with the `responsive` utility to swap Breadcrumb for a Link below ~768px).
  */
 .pfx-link {
   display: inline-flex;

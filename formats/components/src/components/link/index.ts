@@ -1,6 +1,6 @@
-import { defineComponent, type Definition } from "../lib/define.ts";
-import { SENTINEL } from "../lib/sentinel.ts";
-import { link as linkRaw } from "../generated/component-styles.ts";
+import { defineComponent, type Definition } from "../../lib/define.ts";
+import { SENTINEL } from "../../lib/sentinel.ts";
+import { link as linkRaw } from "../../generated/component-styles.ts";
 
 /** The `link` component record: a styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms. */
 export const link: Definition = defineComponent({

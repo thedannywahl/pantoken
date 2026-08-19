@@ -1,0 +1,71 @@
+/**
+ * @component breadcrumb
+ * @selector .pfx-breadcrumb
+ * @summary A breadcrumb trail with `/` separators; the last crumb is the current page.
+ * @remarks Sets its own responsive `gap` between crumbs (`-size-sm`/`-size-lg` scale it); chaining a `-gap-*` spacing utility modifier overrides that built-in value. See the `breadcrumb.link` member for the individual crumbs.
+ * @remarks Pair with the `responsive` utility and the `link` component to reproduce InstUI's "Breadcrumb becomes a Link under ~768px" pattern — see the `@example` below.
+ * @modifier -size-sm — Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match.
+ * @modifier -size-md — Medium (default). @affects breadcrumb.link — Scales the crumb separator's spacing to match.
+ * @modifier -size-lg — Large. @affects breadcrumb.link — Scales the crumb separator's spacing to match.
+ * @a11y Wrap the `<ol>` in a `<nav aria-label>` landmark; mark the current page's crumb with `aria-current="page"`.
+ * @compat Contains its element styles with the CSS `@scope` at-rule; needs a recent Chromium, Firefox, or Safari.
+ * @structure
+ * .pfx-breadcrumb {
+ *   ol {}
+ * }
+ * @example
+ * ```html
+ * <nav class="pfx-breadcrumb" aria-label="Breadcrumb">
+ *   <ol>
+ *     <li class="link">
+ *       <a href="#"><span class="pfx-icon -icon-house"></span> Home</a>
+ *     </li>
+ *     <li class="link"><a href="#">Guides</a></li>
+ *     <li class="link"><a href="#">Components</a></li>
+ *     <li class="link" aria-current="page">Breadcrumb</li>
+ *   </ol>
+ * </nav>
+ * ```
+ * @example
+ * ### Collapsed breadcrumb
+ * trail with a small-screen fallback link
+ * ```html
+ * <nav class="pfx-breadcrumb instui-hidden-max-md" aria-label="Breadcrumb">
+ *   <ol>
+ *     <li class="link"><a href="#">University of Utah</a></li>
+ *     <li class="link" aria-current="page">Colleges</li>
+ *   </ol>
+ * </nav>
+ * <a class="pfx-link instui-hidden-min-md" href="#">
+ *   <span class="pfx-icon -icon-arrow-left"></span> University of Utah
+ * </a>
+ * ```
+ * @related link — Styles each crumb as a link; also the small-screen fallback for the trail.
+ * @related responsive — Supplies the `-hidden-max-md`/`-hidden-min-md` classes used to swap Breadcrumb for a Link below the tablet breakpoint.
+ */
+.pfx-breadcrumb > ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--instui-component-breadcrumb-gap-md);
+  font-family: var(--instui-component-link-font-family);
+  font-size: var(--instui-component-link-font-size-md);
+}
+
+.pfx-breadcrumb.-size-sm > ol {
+  gap: var(--instui-component-breadcrumb-gap-sm);
+  font-size: var(--instui-component-link-font-size-sm);
+}
+
+.pfx-breadcrumb.-size-md > ol {
+  gap: var(--instui-component-breadcrumb-gap-md);
+  font-size: var(--instui-component-link-font-size-md);
+}
+
+.pfx-breadcrumb.-size-lg > ol {
+  gap: var(--instui-component-breadcrumb-gap-lg);
+  font-size: var(--instui-component-link-font-size-lg);
+}

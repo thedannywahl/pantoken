@@ -1,0 +1,47 @@
+/**
+ * @component breadcrumb.link
+ * @memberOf breadcrumb
+ * @selector .link
+ * @summary A crumb (InstUI `Breadcrumb.Link`), an `<li>` in the parent's `<ol>`; the last one is the current page.
+ * @pseudo ::after — Renders the `/` separator after every crumb except the last.
+ * @modifier -icon-* — Render a glyph icon in the crumb link (for example, home in the first crumb).
+ * @a11y Mark the current page's crumb with `aria-current="page"` — on its `<a>` if it's a link, otherwise on the `<li>` itself.
+ * @remarks The parent `breadcrumb`'s `-size-sm`/`-size-lg` modifiers adjust this member's separator spacing — see `breadcrumb`'s own doc for those modifiers.
+ * @structure
+ * @scope (.pfx-breadcrumb) {
+ *   li.link {
+ *     a {
+ *       [class*="-icon-"]:optional {}
+ *     }
+ *   }
+ * }
+ */
+.pfx-breadcrumb.-size-sm .link:not(:last-child)::after {
+  margin-inline-start: var(--instui-component-breadcrumb-gap-sm);
+}
+
+.pfx-breadcrumb.-size-lg .link:not(:last-child)::after {
+  margin-inline-start: var(--instui-component-breadcrumb-gap-lg);
+}
+
+@scope (.pfx-breadcrumb) {
+  :scope a {
+    color: var(--instui-component-link-text-color);
+    text-decoration: none;
+  }
+
+  :scope a [class*="-icon-"] {
+    line-height: 1;
+  }
+
+  :scope a:hover {
+    color: var(--instui-component-link-text-hover-color);
+    text-decoration: underline;
+  }
+
+  :scope > .link:not(:last-child)::after {
+    content: "/";
+    margin-inline-start: var(--instui-component-breadcrumb-gap-md);
+    color: var(--instui-color-text-muted);
+  }
+}
