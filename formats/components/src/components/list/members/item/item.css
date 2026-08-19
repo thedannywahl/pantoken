@@ -1,0 +1,55 @@
+/**
+ * @component list.item
+ * @memberOf list
+ * @selector .pfx-list > li
+ * @summary A list item (InstUI `List.Item`).
+ * @remarks The parent `list`'s `-size-sm`/`-size-lg`, `-ordered`, and `-delimiter-solid`/`-delimiter-dashed` modifiers restyle this member — see `list`'s own doc for those modifiers.
+ * @pseudo ::marker — Renders the list bullet or ordered-list number.
+ * @modifier -delimiter-solid — Separate items with a solid rule. @affects list.item — Adds the delimiter rule between items.
+ * @modifier -delimiter-dashed — Separate items with a dashed rule. @affects list.item — Adds the delimiter rule between items.
+ * @modifier -ordered — Ordered-list numbering. @affects list.item — Adds marker weight and indentation.
+ * @structure
+ * .pfx-list {
+ *   li {}
+ * }
+ */
+
+@scope (.pfx-list) {
+  :scope>li {
+    color: var(--instui-component-list-item-color);
+    font-family: var(--instui-component-list-item-font-family);
+    font-size: var(--instui-component-list-item-font-size-medium);
+    font-weight: var(--instui-component-list-item-font-weight);
+    line-height: var(--instui-component-list-item-line-height);
+  }
+
+  :scope.-size-sm>li {
+    font-size: var(--instui-component-list-item-font-size-small);
+  }
+
+  :scope.-size-md>li {
+    font-size: var(--instui-component-list-item-font-size-medium);
+  }
+
+  :scope.-size-lg>li {
+    font-size: var(--instui-component-list-item-font-size-large);
+  }
+
+  :scope.-ordered>li::marker {
+    font-weight: var(--instui-component-list-ordered-number-font-weight);
+  }
+
+  :scope.-ordered>li {
+    padding-inline-start: var(--instui-component-list-ordered-number-margin);
+  }
+
+  :scope.-delimiter-solid>li+li {
+    border-top: var(--instui-component-list-item-delimiter-solid-border-width) var(--instui-component-list-item-delimiter-solid-border-style) var(--instui-component-list-item-delimiter-solid-border-color);
+    padding-top: var(--instui-component-list-item-spacing-medium);
+  }
+
+  :scope.-delimiter-dashed>li+li {
+    border-top: var(--instui-component-list-item-delimiter-dashed-border-width) var(--instui-component-list-item-delimiter-dashed-border-style) var(--instui-component-list-item-delimiter-dashed-border-color);
+    padding-top: var(--instui-component-list-item-spacing-medium);
+  }
+}

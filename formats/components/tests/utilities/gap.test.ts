@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { gapCss } from "../../src/index.ts";
-import { gap } from "../../src/utilities/gap.ts";
+import { gap } from "../../src/utilities/gap/index.ts";
 import { validate } from "../_validate.ts";
 
 test("gap: emits exactly one well-formed cssdoc record with no token drift", () => {

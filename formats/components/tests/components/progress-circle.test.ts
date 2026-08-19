@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { progressCircleCss } from "../../src/index.ts";
-import { progressCircle } from "../../src/components/progress-circle.ts";
+import { progressCircle } from "../../src/components/progress-circle/index.ts";
 import { validate } from "../_validate.ts";
 
 test("progress-circle: emits exactly one well-formed cssdoc record with no token drift", () => {

@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { proseCss } from "../../src/index.ts";
-import { prose } from "../../src/rules/prose.ts";
+import { prose } from "../../src/rules/prose/index.ts";
 import { validate } from "../_validate.ts";
 
 test("prose: emits exactly one well-formed cssdoc record with no token drift", () => {

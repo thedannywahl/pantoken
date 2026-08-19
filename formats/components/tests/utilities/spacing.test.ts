@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { spacingUtilitiesCss } from "../../src/index.ts";
-import { spacing } from "../../src/utilities/spacing.ts";
+import { spacing } from "../../src/utilities/spacing/index.ts";
 import { validate } from "../_validate.ts";
 
 test("spacing: emits exactly one well-formed cssdoc record with no token drift", () => {

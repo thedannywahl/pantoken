@@ -7,14 +7,14 @@
  * @module
  */
 import type { Definition } from "../lib/define.ts";
-import { gap } from "./gap.ts";
-import { icon } from "./icon.ts";
-import { layout } from "./layout.ts";
-import { mask } from "./mask.ts";
-import { responsive } from "./responsive.ts";
-import { screenReaderContent } from "./screen-reader-content.ts";
-import { spacing } from "./spacing.ts";
-import { view } from "./view.ts";
+import { gap } from "./gap/index.ts";
+import { icon } from "./icon/index.ts";
+import { layout } from "./layout/index.ts";
+import { mask } from "./mask/index.ts";
+import { responsive } from "./responsive/index.ts";
+import { screenReaderContent } from "./screen-reader-content/index.ts";
+import { spacing } from "./spacing/index.ts";
+import { view } from "./view/index.ts";
 
 /** Every documented utility record. */
 export const UTILITIES: readonly Definition[] = [

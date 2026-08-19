@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { viewCss } from "../../src/index.ts";
-import { view } from "../../src/utilities/view.ts";
+import { view } from "../../src/utilities/view/index.ts";
 import { validate } from "../_validate.ts";
 
 test("view: emits exactly one well-formed cssdoc record with no token drift", () => {

@@ -5,14 +5,64 @@ CSS. Each documented record is one file; the bucket `index.ts` is a barrel + reg
 
 ## Source layout
 
-- `src/components/<name>.ts` + `index.ts` (`COMPONENTS` registry).
-- `src/utilities/<name>.ts` + `index.ts` (`UTILITIES`).
-- `src/rules/{base,prose}.ts` + `index.ts` (`RULES`).
-- `src/declarations/<name>.ts` + `index.ts` (`DECLARATIONS`).
+- `src/components/<name>/index.ts` + `<name>.css` (`COMPONENTS` registry).
+- `src/components/<name>/members/<member>/index.ts` + `<member>.css` — a promoted sub-component (see
+  "Sub-components (`@memberOf`)" below).
+- `src/utilities/<name>/index.ts` + `<name>.css` (`UTILITIES`).
+- `src/rules/{base,prose}/index.ts` + `<name>.css` (`RULES`).
+- `src/declarations/<name>/index.ts` + `<name>.css` (`DECLARATIONS`).
 - `src/lib/`: `helpers.ts` (ns/scope/glyph consts/spacing scales/`ComponentOptions`/`DEFAULT_PREFIX`),
   `define.ts` (`defineComponent`/`defineUtility`/`defineRule`/`defineDeclaration`), `aliases.ts`
   (`withSizeAliases`/`withAliases`), `css.ts` (the identity `css` tag), `headings.ts`,
   `field-controls.ts`.
+
+## Sub-components (`@memberOf`)
+
+When a component maps to a real, separately-named instui sub-component export (`Tabs.Panel`,
+`Table.Row`, `Menu.Item`, …), promote it to its own record instead of documenting it as a `@part`
+bullet on the parent:
+
+- New files: `src/components/<parent>/members/<member>/<member>.css` + `index.ts`, same shape as any
+  other record (`defineComponent`, registered in `COMPONENTS`, exported from `src/index.ts`).
+- The record's cssdoc name is **dotted**: `@component <parent>.<member>` (e.g. `@component menu.item`)
+  — this keeps member names globally unique across the whole registry even when two different parents
+  have a same-named part (`menu.item` vs `side-nav-bar.item`), which a bare `item`/`item` collision
+  would break for the `providers`-indexed cross-file `@memberOf`/`@structure` resolution. The TS
+  identifier stays camelCase (`menuItem`/`menuItemCss`), since a dot isn't legal there anyway.
+- Add `@memberOf <parent>` on the member's own record.
+- **Always author an explicit `@class .<member>`** (or `@selector`) rather than relying on inference —
+  a member's CSS typically keeps the parent's `@scope (.pfx-<parent>) { … }` wrapper (real cascade
+  scoping, not just documentation), and inference across that boundary is unreliable; the fallback
+  className for a dotted name (`.menu.item`) would also be misleading.
+- **Physically move the CSS** into the member's own file — don't leave a doc-only record pointing at
+  rules that still live in the parent. The aggregator just concatenates raw CSS text regardless of
+  which file it came from, so this is safe even for native-element selectors with no `@scope` (e.g.
+  `table.row`'s `tr`) or where a shared declaration has to be duplicated across a couple of sibling
+  members (e.g. `table.-layout-stacked`'s box-reset, split per part rather than kept as one
+  five-selector compound rule) — cssdoc requires each record's own file to own its own selectors.
+- Remove the promoted `@part` line and any `@structure` entry that named the member's selector — a
+  `@memberOf` record documents its own structure on its own page and doesn't need to also appear in the
+  parent's `@structure` tree (that's what the generated "Subcomponents" section is for).
+- If a parent-level modifier restyles a promoted member (e.g. `tabs`'s `-variant-secondary` restyling
+  `tabs.tab`, or `table`'s `-layout-stacked` restyling all six of its members), mark it inline:
+  `@modifier -variant-secondary — … @affects tabs.tab — …`. Multiple `@affects <parent>.<member>`
+  markers can follow one another on the same `@modifier` line.
+- Register the member in `COMPONENTS` right after its parent, export `<member>Css` from `src/index.ts`
+  next to the parent's export, and add it to `tests/public-surface.test.ts`'s `EXPECTED` list (that
+  array is sorted before comparison, so insertion position doesn't matter). Fix any existing test that
+  asserted on the parent's `xxxCss` for content that moved to the member.
+- Don't promote a `@part` just because it's stylistically distinct — the bar is a **real, separately
+  exported instui component** (`List.Item` yes; a passive style hook like byline's `.title`/`.description`
+  or tabs' `.list`, which has no corresponding `Tabs.List` export, no).
+
+## Alternate DOM shapes (`@variant`)
+
+`@structure` supports `@variant <name>? { … }` blocks for a component that genuinely renders one of
+several alternative DOM shapes (e.g. a `<label>` wrapping a control vs. a `<label for>` plus a sibling
+control). Only add one when a second shape is **already real and CSS-supported** — check the record's
+existing `@example`s and rules first; don't invent a shape the component doesn't actually render. As of
+this pass, no component in this package authors a genuine second DOM shape (things like a checkbox's
+`-label-placement-*` only reorder the same markup via CSS, which isn't a `@variant`), so none carry one.
 
 ## Authoring a record
 

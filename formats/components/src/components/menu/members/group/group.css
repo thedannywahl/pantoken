@@ -1,0 +1,21 @@
+/**
+ * @component menu.group
+ * @memberOf menu
+ * @selector .group
+ * @summary A labelled group heading (InstUI `Menu.Group`/`Menu.ItemGroup`).
+ * @structure
+ * @scope (.pfx-menu) {
+ *   :scope > .group {}
+ * }
+ */
+@scope (.pfx-menu) {
+  :scope > .group {
+    padding: var(--instui-component-menu-group-padding-vertical)
+      var(--instui-component-menu-group-padding-horizontal);
+    background: var(--instui-component-menu-group-background);
+    color: var(--instui-component-menu-group-color);
+    font-family: var(--instui-component-menu-group-font-family);
+    font-size: var(--instui-component-menu-group-font-size);
+    font-weight: var(--instui-component-menu-group-font-weight);
+  }
+}

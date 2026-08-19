@@ -14,8 +14,10 @@ import {
   headingCss,
   linkCss,
   listCss,
+  listItemCss,
   maskCss,
-  menuCss,
+  menuGroupCss,
+  menuItemCss,
   metricCss,
   modalCss,
   pillCss,
@@ -27,7 +29,12 @@ import {
   screenReaderContentCss,
   selectCss,
   tableCss,
+  tableCellCss,
+  tableColHeaderCss,
+  tableRowCss,
+  tableRowHeaderCss,
   tabsCss,
+  tabsTabCss,
   tagCss,
   textAreaCss,
   textCss,
@@ -188,8 +195,9 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   // Sub-elements live inside an @scope block, so they're authored as bare, ancestor-scoped classes.
   const tabs = tabsCss({ prefix: "instui" });
   expect(tabs).toContain("@scope (.instui-tabs)");
-  expect(tabs).toContain(".tab.-selected");
-  expect(tabs).toContain(".tab.-disabled");
+  const tabsTab = tabsTabCss({ prefix: "instui" });
+  expect(tabsTab).toContain(".tab.-selected");
+  expect(tabsTab).toContain(".tab.-disabled");
   const metric = norm(metricCss({ prefix: "instui" }));
   expect(metric).toContain("@scope (.instui-metric)");
   expect(metric).toContain(".value {");
@@ -204,31 +212,37 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   expect(byline).toContain(
     ".instui-byline.-size-lg { max-width: var(--instui-component-byline-large,",
   );
-  expect(tableCss({ prefix: "instui" })).toContain(".instui-table th");
+  expect(tableColHeaderCss({ prefix: "instui" })).toContain(".instui-table th");
 });
 
 test("table styles row-header cells and a row hover; menu has active/group parts", () => {
-  const table = norm(tableCss({ prefix: "instui" }));
-  expect(table).toContain('.instui-table th[scope="row"]');
-  expect(table).toContain("var(--instui-component-table-row-header-background)");
+  const tableRowHeader = norm(tableRowHeaderCss({ prefix: "instui" }));
+  expect(tableRowHeader).toContain('.instui-table th[scope="row"]');
+  expect(tableRowHeader).toContain("var(--instui-component-table-row-header-background)");
   // Hover is opt-in (`-hover`) and paints inline (left/right) borders — NOT a full-box outline.
-  expect(table).toContain(".instui-table.-hover tbody tr:hover");
-  expect(table).toContain("var(--instui-component-table-row-hover-border-color)");
-  expect(table).not.toContain("outline:");
-  expect(table).not.toContain("tbody tr:hover { outline");
+  const tableRow = norm(tableRowCss({ prefix: "instui" }));
+  expect(tableRow).toContain(".instui-table.-hover tbody tr:hover");
+  expect(tableRow).toContain("var(--instui-component-table-row-hover-border-color)");
+  expect(tableRow).not.toContain("outline:");
+  expect(tableRow).not.toContain("tbody tr:hover { outline");
   // The row separator sits on the row (uniform), not mismatched per-cell borders.
-  expect(table).toContain(".instui-table tbody tr { border-bottom: var(--instui-border-width-sm)");
+  expect(tableRow).toContain(
+    ".instui-table tbody tr { border-bottom: var(--instui-border-width-sm)",
+  );
   // Caption + layout=stacked (each row a card; cells labelled via data-label).
+  const table = norm(tableCss({ prefix: "instui" }));
   expect(table).toContain(".instui-table caption");
   expect(table).toContain(".instui-table.-layout-stacked");
-  expect(table).toContain("td[data-label]::before");
-  expect(table).toContain("content: attr(data-label)");
-  const menu = menuCss({ prefix: "instui" });
-  expect(menu).toContain("@scope (.instui-menu)");
-  expect(menu).toContain(".item.-active");
-  expect(menu).toContain("var(--instui-component-menu-item-active-background)");
-  expect(menu).toContain(".group {");
-  expect(menu).toContain(".item-info {");
+  const tableCell = norm(tableCellCss({ prefix: "instui" }));
+  expect(tableCell).toContain("td[data-label]::before");
+  expect(tableCell).toContain("content: attr(data-label)");
+  const menuItem = menuItemCss({ prefix: "instui" });
+  const menuGroup = menuGroupCss({ prefix: "instui" });
+  expect(menuGroup).toContain("@scope (.instui-menu)");
+  expect(menuGroup).toContain(".group {");
+  expect(menuItem).toContain(".item.-active");
+  expect(menuItem).toContain("var(--instui-component-menu-item-active-background)");
+  expect(menuItem).toContain(".item-info {");
 });
 
 test("context-view floats with elevation, has placements + inverse, and hides as a closed popover", () => {
@@ -250,8 +264,8 @@ test("context-view floats with elevation, has placements + inverse, and hides as
 });
 
 test("tabs have a secondary variant; link has sizes, on-color, inline and unstyled", () => {
-  expect(tabsCss({ prefix: "instui" })).toContain(":scope.-variant-secondary .tab");
-  expect(tabsCss({ prefix: "instui" })).toContain(
+  expect(tabsTabCss({ prefix: "instui" })).toContain(":scope.-variant-secondary .tab");
+  expect(tabsTabCss({ prefix: "instui" })).toContain(
     "var(--instui-component-tabs-tab-secondary-selected-background)",
   );
   const link = linkCss({ prefix: "instui" });
@@ -263,7 +277,7 @@ test("tabs have a secondary variant; link has sizes, on-color, inline and unstyl
 });
 
 test("list has sizes and solid/dashed delimiters; toggle-details, rating and breadcrumb have sizes", () => {
-  const list = listCss({ prefix: "instui" });
+  const list = listItemCss({ prefix: "instui" });
   expect(list).toContain(".instui-list.-delimiter-solid");
   expect(list).toContain(".instui-list.-delimiter-dashed");
   expect(list).toContain("var(--instui-component-list-item-delimiter-solid-border-color)");
@@ -414,7 +428,7 @@ test("InstUI prop-coverage gaps: text-transform, list unstyled/inline, table fix
   expect(norm(tableCss({ prefix: "instui" }))).toContain(
     ".instui-table.-layout-fixed { table-layout: fixed; }",
   );
-  expect(menuCss({ prefix: "instui" })).toContain(".item.-disabled");
+  expect(menuItemCss({ prefix: "instui" })).toContain(".item.-disabled");
   expect(modalCss({ prefix: "instui" })).toContain(".instui-modal.-overflow-fit");
 });
 

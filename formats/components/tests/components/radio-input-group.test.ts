@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { radioInputGroupCss } from "../../src/index.ts";
-import { radioInputGroup } from "../../src/components/radio-input-group.ts";
+import { radioInputGroup } from "../../src/components/radio-input-group/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

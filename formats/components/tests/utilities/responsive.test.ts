@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { responsiveUtilitiesCss } from "../../src/index.ts";
-import { responsive } from "../../src/utilities/responsive.ts";
+import { responsive } from "../../src/utilities/responsive/index.ts";
 import { validate } from "../_validate.ts";
 
 test("responsive: emits exactly one well-formed cssdoc record with no token drift", () => {

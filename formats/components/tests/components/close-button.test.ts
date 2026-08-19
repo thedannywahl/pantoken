@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { closeButtonCss } from "../../src/index.ts";
-import { closeButton } from "../../src/components/close-button.ts";
+import { closeButton } from "../../src/components/close-button/index.ts";
 import { validate } from "../_validate.ts";
 
 test("close-button: emits exactly one well-formed cssdoc record with no token drift", () => {

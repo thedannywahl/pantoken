@@ -1,0 +1,16 @@
+/**
+ * @component table.body
+ * @memberOf table
+ * @selector tbody
+ * @summary The table's data row group (InstUI `Table.Body`).
+ * @remarks The parent `table`'s `-layout-stacked` modifier restyles this member — see `table`'s own doc for that modifier.
+ * @structure
+ * .pfx-table {
+ *   tbody {}
+ * }
+ */
+/* layout="stacked": each row becomes a card; the body itself just stops being a table row-group box. */
+.pfx-table.-layout-stacked tbody {
+  display: block;
+  width: auto;
+}

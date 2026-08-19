@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { formFieldMessagesCss } from "../../src/index.ts";
-import { formFieldMessages } from "../../src/components/form-field-messages.ts";
+import { formFieldMessages } from "../../src/components/form-field-messages/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

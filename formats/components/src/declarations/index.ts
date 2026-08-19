@@ -5,8 +5,8 @@
  * @module
  */
 import type { Definition } from "../lib/define.ts";
-import { focus } from "./focus.ts";
-import { elevation } from "./elevation.ts";
+import { focus } from "./focus/index.ts";
+import { elevation } from "./elevation/index.ts";
 
 /** Every documented declaration record. */
 export const DECLARATIONS: readonly Definition[] = [focus, elevation];

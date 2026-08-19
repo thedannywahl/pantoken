@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { iconCss } from "../../src/index.ts";
-import { icon } from "../../src/utilities/icon.ts";
+import { icon } from "../../src/utilities/icon/index.ts";
 import { validate } from "../_validate.ts";
 
 test("icon: emits exactly one well-formed cssdoc record with no token drift", () => {

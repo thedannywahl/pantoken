@@ -1,0 +1,56 @@
+/**
+ * @component list
+ * @summary A list with token-driven item spacing.
+ * @remarks Sets its own `padding-inline-start` for list indentation; chaining a `-p*`/`-padding*` spacing utility modifier overrides that built-in value. See the `list.item` member for the individual items.
+ * @modifier -inline — Lay items out inline (horizontal).
+ * @modifier -unstyled — Remove markers and padding.
+ * @modifier -size-sm — Small. @affects list.item — Scales the item spacing to match.
+ * @modifier -size-md — Medium (default). @affects list.item — Scales the item spacing to match.
+ * @modifier -size-lg — Large. @affects list.item — Scales the item spacing to match.
+ * @example
+ * <ul class="pfx-list">
+ *   <li>First item</li>
+ *   <li>Second item</li>
+ *   <li>Third item</li>
+ * </ul>
+ */
+.pfx-list {
+  color: var(--instui-component-list-item-color);
+  font-family: var(--instui-component-list-item-font-family);
+  font-size: var(--instui-component-list-item-font-size-medium);
+  font-weight: var(--instui-component-list-item-font-weight);
+  line-height: var(--instui-component-list-item-line-height);
+  padding-inline-start: var(--instui-component-list-list-padding);
+}
+
+.pfx-list.-size-sm {
+  font-size: var(--instui-component-list-item-font-size-small);
+}
+
+.pfx-list.-size-md {
+  font-size: var(--instui-component-list-item-font-size-medium);
+}
+
+.pfx-list.-size-lg {
+  font-size: var(--instui-component-list-item-font-size-large);
+}
+
+/* isUnstyled: strip markers and indentation. */
+.pfx-list.-unstyled {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+/* InlineList: lay items out in a wrapping row (`.pfx-list.-inline`). */
+.pfx-list.-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--instui-component-list-item-spacing-medium);
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.pfx-list.-inline>li {
+  margin: 0;
+}

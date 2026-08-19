@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { imgCss } from "../../src/index.ts";
-import { img } from "../../src/components/img.ts";
+import { img } from "../../src/components/img/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

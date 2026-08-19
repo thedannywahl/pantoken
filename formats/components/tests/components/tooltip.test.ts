@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { tooltipCss } from "../../src/index.ts";
-import { tooltip } from "../../src/components/tooltip.ts";
+import { tooltip } from "../../src/components/tooltip/index.ts";
 import { validate } from "../_validate.ts";
 
 test("tooltip: emits exactly one well-formed cssdoc record with no token drift", () => {

@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { numberInputCss } from "../../src/index.ts";
-import { numberInput } from "../../src/components/number-input.ts";
+import { numberInput } from "../../src/components/number-input/index.ts";
 import { validate } from "../_validate.ts";
 
 test("number-input: emits exactly one well-formed cssdoc record with no token drift", () => {

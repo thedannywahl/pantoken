@@ -221,20 +221,20 @@ catalogs:
       specifier: ^21.2.2
       version: 21.2.2
     '@cssdoc/config':
-      specifier: ^0.13.0
-      version: 0.13.0
+      specifier: ^0.13.1
+      version: 0.13.1
     '@cssdoc/core':
-      specifier: ^0.13.0
-      version: 0.13.0
+      specifier: ^0.13.1
+      version: 0.13.1
     '@cssdoc/eslint-plugin':
-      specifier: ^0.13.0
-      version: 0.13.0
+      specifier: ^0.13.1
+      version: 0.13.1
     '@cssdoc/stylelint-plugin':
-      specifier: ^0.13.0
-      version: 0.13.0
+      specifier: ^0.13.1
+      version: 0.13.1
     '@cssdoc/typedoc':
-      specifier: ^0.13.0
-      version: 0.13.0
+      specifier: ^0.13.1
+      version: 0.13.1
     '@eslint/css':
       specifier: ^1.4.0
       version: 1.4.0
@@ -441,10 +441,10 @@ importers:
         version: 21.2.2
       '@cssdoc/eslint-plugin':
         specifier: 'catalog:'
-        version: 0.13.0(@eslint/css@1.4.0)(eslint@10.8.1(jiti@2.6.1)(supports-color@10.2.2))
+        version: 0.13.1(@eslint/css@1.4.0)(eslint@10.8.1(jiti@2.6.1)(supports-color@10.2.2))
       '@cssdoc/stylelint-plugin':
         specifier: 'catalog:'
-        version: 0.13.0(stylelint@17.14.1(supports-color@10.2.2)(typescript@5.6.1-rc))
+        version: 0.13.1(stylelint@17.14.1(supports-color@10.2.2)(typescript@5.6.1-rc))
       '@eslint/css':
         specifier: 'catalog:'
         version: 1.4.0
@@ -695,13 +695,13 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.13.0
+        version: 0.13.1
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.13.0
+        version: 0.13.1
       '@cssdoc/typedoc':
         specifier: 'catalog:'
-        version: 0.13.0(typedoc@0.28.20(@typescript/typescript6@6.0.2))
+        version: 0.13.1(typedoc@0.28.20(@typescript/typescript6@6.0.2))
       '@pantoken/components':
         specifier: workspace:*
         version: link:../formats/components
@@ -810,10 +810,10 @@ importers:
     devDependencies:
       '@cssdoc/config':
         specifier: 'catalog:'
-        version: 0.13.0
+        version: 0.13.1
       '@cssdoc/core':
         specifier: 'catalog:'
-        version: 0.13.0
+        version: 0.13.1
       '@pantoken/icons':
         specifier: workspace:*
         version: link:../icons
@@ -3190,20 +3190,20 @@ packages:
     resolution: {integrity: sha512-aalGyl7dbB5PArRebDIX43ZvBlXrYm9uWzGJ26t+4SzJVPsOuvfILGGbw5X4yX7i50YEmJ8zvbiWnqH/AAnZqg==}
     engines: {node: '>=22'}
 
-  '@cssdoc/config@0.13.0':
-    resolution: {integrity: sha512-c+5Klwvi38uZi0QWNS8k5eOc4JkDVSftLag0MQDrqXVOiPJXjPViX//C4otwuit0PzTMvyeOXDid0kqafgLrIQ==}
+  '@cssdoc/config@0.13.1':
+    resolution: {integrity: sha512-fzAwW2byfMbwNvgE//RJv6MfiMe/HYeHbJJypKV8ddbPm+Ak/ZcplpV6pBBMgiIdj6/fv9tr1cmRypJ/JrfhxQ==}
 
-  '@cssdoc/core@0.13.0':
-    resolution: {integrity: sha512-xTNbLXwW5wFhEIXB09VAZZjhT4o2iCq4TCKdLEVs4QW2tVDnliGE6SBHQlDnTKYz4vuLuBJyxoM51a3d5+9z0A==}
+  '@cssdoc/core@0.13.1':
+    resolution: {integrity: sha512-UxJ9+3EAE1rp83KTxFPTlt5o6/mf69/AUJK7rS/nW+I0S1/Z22BSBHhVC2CEO7upSYWefwQVaXi6giVJeQ1ZRg==}
 
-  '@cssdoc/dialects@0.13.0':
-    resolution: {integrity: sha512-diL/ydyOkvinF7x6zN2YNKAJxml0bfzXQBC2xV6N/JuhAKygYejSb4zkBM16LcKGhFZpvhib0Z6DPmUrBiajbw==}
+  '@cssdoc/dialects@0.13.1':
+    resolution: {integrity: sha512-Oo5+v2b+H308vUchounxMa8N5nPVbG9hHk3y1DK6RqO9s0w1SGFTisuB/AQ3DlmLKApqAsgCFip4K9atScC1Jg==}
 
-  '@cssdoc/embedded@0.13.0':
-    resolution: {integrity: sha512-nT6WZYphXM5mc+FSVgFVydOe8oEyb/rYHvOcdzLAJLwX/Q5ILkcVE56ESE9n9ECvkC8cDVlz1AjFPf7KNUiahg==}
+  '@cssdoc/embedded@0.13.1':
+    resolution: {integrity: sha512-YzARle9EvVh1l5mdW9dgl49qzBxHo6EqbUh7ou0PKuRRlS2J8b+eP50eYJFjRrA92Ei0j61dHtc2lJhb7jIWqw==}
 
-  '@cssdoc/eslint-plugin@0.13.0':
-    resolution: {integrity: sha512-XFAH3LcmGQbwkPXK5D78wu0oap7x4hkpmxNjAadRKU1eZtKOMMoNbmH+F62cqkfbNZoxRBhhiejoVPQ1yK80FQ==}
+  '@cssdoc/eslint-plugin@0.13.1':
+    resolution: {integrity: sha512-v9YUzjmzqNVjM3LUNm2TRNzaurOQwEFB6rfrjy2bChcBBdheyxbCl1Ingrw6lDevv0aZ5LLsfH21v5ggIe6p1A==}
     peerDependencies:
       '@eslint/css': '>=1'
       '@html-eslint/parser': '>=0.63'
@@ -3214,28 +3214,28 @@ packages:
       '@html-eslint/parser':
         optional: true
 
-  '@cssdoc/index@0.13.0':
-    resolution: {integrity: sha512-HAsfPpVi+XuF7u87nl1nggET2qVrC8mxm4+W3jryppQv2pw6iReAwDJx6IyPMcOfaoRDXnc+c5cLX3E0GWAHRw==}
+  '@cssdoc/index@0.13.1':
+    resolution: {integrity: sha512-GKLRqYeLBkv0aDommuY9xA+VsNAG9gvlJROq8iIJZTbR/wzWxNxjz/TIkYuM3XcmwWx3EAvaNmSPUstfmAnltg==}
 
-  '@cssdoc/lint-core@0.13.0':
-    resolution: {integrity: sha512-yuw78eIpEREhpzCJ6/jkLButzwocjeRHWBTYWv83swlowa7q1NylJVZWtTgkIw50Gei6ImI3jyMTTE1iKHWqsg==}
+  '@cssdoc/lint-core@0.13.1':
+    resolution: {integrity: sha512-yAQFr2FEgG83TgISZemmLg7p5tD8IrOp4SqHHwLy/AD+KSViYb6DCfJfLDcY9WIeMwZxwWKhCr7K/3uhznUPfA==}
 
-  '@cssdoc/markdown@0.13.0':
-    resolution: {integrity: sha512-up4a0ON1BbRWt5Ijv6gD8a2FYy3ayflADY4h/8gcmHMUnHnyRmdu7DEUhhrkj4XmrZiDimAb/PNQr6L2WKaU9Q==}
+  '@cssdoc/markdown@0.13.1':
+    resolution: {integrity: sha512-EjvWRPPiNaq83E88YoyRUsQA5b0+Ng02rRhqCjbAnBzq9iPV7RC3SazOeFoC0NO+wXmawynMVR7Gl5jGLavUcA==}
 
-  '@cssdoc/providers@0.13.0':
-    resolution: {integrity: sha512-8Z/juJ4Diyim4ccfgYkayw8Vjhm0VELEVrvYmmJ1MUq7hpcC3mzE6DkFwFVxks+OBO/U9vJdDIpOvftW+ShSWQ==}
+  '@cssdoc/providers@0.13.1':
+    resolution: {integrity: sha512-nIoJVuG5kQNdkq+AReuOBypEO97vM01tTCqpCjiXcvtO+psfHzGInlCfV0iUl1wJfuHjOUAA12X+XtlMGQ8UFw==}
 
-  '@cssdoc/spec@0.13.0':
-    resolution: {integrity: sha512-LlN/708FXewp4jnGTvwkI3hTE6k7pnNVdHlW3UTipK5KuCXyNwWPmv6lCFrd3uoXWtIZuyOCTx5GSVdc0HTYqw==}
+  '@cssdoc/spec@0.13.1':
+    resolution: {integrity: sha512-oktbSdKG8DFSubvNtYc2AoYVQw4WnI7grZofOlWzz2sMkPJRYgDj7zAqLk88nZhSApfRQep0j1eAcsEidfdopQ==}
 
-  '@cssdoc/stylelint-plugin@0.13.0':
-    resolution: {integrity: sha512-r2UgbT64GBSHivcF1b8MuW02siS2/xuK1wZgYqJsqFlKu3WQGn8yAn0CFtaURjuBNAl/rzeC0j4SmU2vUcUnXg==}
+  '@cssdoc/stylelint-plugin@0.13.1':
+    resolution: {integrity: sha512-F8EJtAs6ec6YBsK4W/wRZZc8DiSgq+4RdzWWsBdapQocx2wv5+KPbMQZiibX6PSm1jO2rvZZ+0GCXJwsVNoQbw==}
     peerDependencies:
       stylelint: '>=16'
 
-  '@cssdoc/typedoc@0.13.0':
-    resolution: {integrity: sha512-kXb86t/zdHB0mzFa4umKMRQKr0hOLy6P+OY9FXxBn/qiXYHOk+qqPblACfTPC26amYcOe6nR+dhDKGhf8U0OYw==}
+  '@cssdoc/typedoc@0.13.1':
+    resolution: {integrity: sha512-bDFSKezZYdbvJ2HwXhGU/49y4H+ZjGiwmHDx8UBe66lcrGcuoekN8rLmF6Co0AkOYViuwo8phHuDDdiepvJJKA==}
     peerDependencies:
       typedoc: '>=0.28'
 
@@ -9592,79 +9592,79 @@ snapshots:
 
   '@conventional-changelog/template@1.4.0': {}
 
-  '@cssdoc/config@0.13.0':
+  '@cssdoc/config@0.13.1':
     dependencies:
-      '@cssdoc/core': 0.13.0
+      '@cssdoc/core': 0.13.1
       ajv: 8.20.0
       jsonc-parser: 3.3.1
 
-  '@cssdoc/core@0.13.0':
+  '@cssdoc/core@0.13.1':
     dependencies:
-      '@cssdoc/spec': 0.13.0
+      '@cssdoc/spec': 0.13.1
       postcss: 8.5.26
 
-  '@cssdoc/dialects@0.13.0':
+  '@cssdoc/dialects@0.13.1':
     dependencies:
       postcss: 8.5.26
       postcss-less: 6.0.0(postcss@8.5.26)
       postcss-scss: 4.0.9(postcss@8.5.26)
 
-  '@cssdoc/embedded@0.13.0':
+  '@cssdoc/embedded@0.13.1':
     dependencies:
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/dialects': 0.13.0
-      '@cssdoc/lint-core': 0.13.0
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/dialects': 0.13.1
+      '@cssdoc/lint-core': 0.13.1
 
-  '@cssdoc/eslint-plugin@0.13.0(@eslint/css@1.4.0)(eslint@10.8.1(jiti@2.6.1)(supports-color@10.2.2))':
+  '@cssdoc/eslint-plugin@0.13.1(@eslint/css@1.4.0)(eslint@10.8.1(jiti@2.6.1)(supports-color@10.2.2))':
     dependencies:
-      '@cssdoc/config': 0.13.0
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/embedded': 0.13.0
-      '@cssdoc/index': 0.13.0
-      '@cssdoc/lint-core': 0.13.0
-      '@cssdoc/providers': 0.13.0
+      '@cssdoc/config': 0.13.1
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/embedded': 0.13.1
+      '@cssdoc/index': 0.13.1
+      '@cssdoc/lint-core': 0.13.1
+      '@cssdoc/providers': 0.13.1
       eslint: 10.8.1(jiti@2.6.1)(supports-color@10.2.2)
     optionalDependencies:
       '@eslint/css': 1.4.0
 
-  '@cssdoc/index@0.13.0':
+  '@cssdoc/index@0.13.1':
     dependencies:
-      '@cssdoc/core': 0.13.0
+      '@cssdoc/core': 0.13.1
       postcss: 8.5.26
       postcss-value-parser: 4.2.0
 
-  '@cssdoc/lint-core@0.13.0':
+  '@cssdoc/lint-core@0.13.1':
     dependencies:
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/index': 0.13.0
-      '@cssdoc/providers': 0.13.0
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/index': 0.13.1
+      '@cssdoc/providers': 0.13.1
 
-  '@cssdoc/markdown@0.13.0':
+  '@cssdoc/markdown@0.13.1':
     dependencies:
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/dialects': 0.13.0
-      '@cssdoc/embedded': 0.13.0
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/dialects': 0.13.1
+      '@cssdoc/embedded': 0.13.1
 
-  '@cssdoc/providers@0.13.0':
+  '@cssdoc/providers@0.13.1':
     dependencies:
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/index': 0.13.0
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/index': 0.13.1
       css-tree: 3.2.1
 
-  '@cssdoc/spec@0.13.0': {}
+  '@cssdoc/spec@0.13.1': {}
 
-  '@cssdoc/stylelint-plugin@0.13.0(stylelint@17.14.1(supports-color@10.2.2)(typescript@5.6.1-rc))':
+  '@cssdoc/stylelint-plugin@0.13.1(stylelint@17.14.1(supports-color@10.2.2)(typescript@5.6.1-rc))':
     dependencies:
-      '@cssdoc/config': 0.13.0
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/lint-core': 0.13.0
+      '@cssdoc/config': 0.13.1
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/lint-core': 0.13.1
       stylelint: 17.14.1(supports-color@10.2.2)(typescript@5.6.1-rc)
 
-  '@cssdoc/typedoc@0.13.0(typedoc@0.28.20(@typescript/typescript6@6.0.2))':
+  '@cssdoc/typedoc@0.13.1(typedoc@0.28.20(@typescript/typescript6@6.0.2))':
     dependencies:
-      '@cssdoc/config': 0.13.0
-      '@cssdoc/core': 0.13.0
-      '@cssdoc/markdown': 0.13.0
+      '@cssdoc/config': 0.13.1
+      '@cssdoc/core': 0.13.1
+      '@cssdoc/markdown': 0.13.1
       typedoc: 0.28.20(@typescript/typescript6@6.0.2)
 
   '@csstools/css-calc@3.3.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)':

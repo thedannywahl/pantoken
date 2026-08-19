@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { layoutUtilitiesCss } from "../../src/index.ts";
-import { layout } from "../../src/utilities/layout.ts";
+import { layout } from "../../src/utilities/layout/index.ts";
 import { validate } from "../_validate.ts";
 
 test("layout: emits exactly one well-formed cssdoc record with no token drift", () => {

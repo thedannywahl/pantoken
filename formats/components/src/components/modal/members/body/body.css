@@ -1,0 +1,41 @@
+/**
+ * @component modal.body
+ * @memberOf modal
+ * @selector .body
+ * @summary The content region (InstUI `Modal.Body`); a lone `<img>` goes full-bleed.
+ * @remarks The parent `modal`'s `-overflow-fit`, `-density-compact`, and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
+ * @structure
+ * @scope (.pfx-modal) {
+ *   :scope > .body {
+ *     code {}
+ *   }
+ * }
+ */
+@scope (.pfx-modal) {
+  :scope.-overflow-fit > .body {
+    overflow-y: auto;
+  }
+
+  :scope > .body {
+    padding: var(--instui-component-modal-body-padding);
+  }
+
+  /* A media modal: when the body holds an image it goes full-bleed (no padding) so the media meets the
+   modal edges. Pair with -color-inverse for the on-dark chrome InstUI uses around media. */
+  :scope > .body:has(> img) {
+    padding: 0;
+  }
+
+  :scope > .body:has(> img) img {
+    display: block;
+    width: 100%;
+  }
+
+  :scope.-density-compact > .body {
+    padding: var(--instui-component-modal-body-padding-compact);
+  }
+
+  :scope.-color-inverse > .body {
+    background: var(--instui-component-modal-body-inverse-background-color);
+  }
+}

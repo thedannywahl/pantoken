@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
-import { sideNavBarCss } from "../../src/index.ts";
-import { sideNavBar } from "../../src/components/side-nav-bar.ts";
+import { sideNavBarCss, sideNavBarItemCss } from "../../src/index.ts";
+import { sideNavBar } from "../../src/components/side-nav-bar/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 
@@ -10,9 +10,10 @@ test("side-nav-bar: emits exactly one well-formed cssdoc record with no token dr
 
 test("side-nav-bar is a vertical rail with selected + minimized states", () => {
   const css = norm(sideNavBarCss({ prefix: "instui" }));
-  expect(css).toContain("@scope (.instui-side-nav-bar)");
-  expect(css).toContain(":scope > .item");
-  expect(css).toContain(":scope > .item.-selected");
+  const item = norm(sideNavBarItemCss({ prefix: "instui" }));
+  expect(item).toContain("@scope (.instui-side-nav-bar)");
+  expect(item).toContain(":scope > .item");
+  expect(item).toContain(":scope > .item.-selected");
   expect(css).toContain(".instui-side-nav-bar.-minimized");
   expect(css).toContain(".instui-side-nav-bar.-minimized .item .label { display: none; }");
 });

@@ -1,0 +1,41 @@
+import { defineComponent, type Definition } from "../../lib/define.ts";
+import { css } from "../../lib/css.ts";
+import { fieldControlBase } from "../../lib/field-controls.ts";
+
+/** The `textArea` component record: a styled, resizable native `<textarea>` sharing the text input's states and sizes. */
+export const textArea: Definition = defineComponent({
+  name: "text-area",
+  css: (p) => {
+    const t = (s: string): string => `var(--instui-component-text-area-${s})`;
+    // prettier-ignore
+    return css`
+/**
+ * @component text-area
+ * @summary A styled, resizable native \`<textarea>\` with the same states and sizes as the text input.
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-lg — Large.
+ * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
+ * @cssstate disabled
+ * @example
+ * <textarea class="${p}text-area" placeholder="Write a comment…"></textarea>
+ * @related text-input — The single-line counterpart with the same states and sizes.
+ */
+${fieldControlBase(p, "text-area", "text-area")}
+.${p}text-area {
+  padding: ${t("padding")};
+  font-size: ${t("font-size-md")};
+  line-height: 1.5;
+  min-block-size: 4rem;
+  resize: vertical;
+}
+.${p}text-area.-size-sm { font-size: ${t("font-size-sm")}; }
+.${p}text-area.-size-lg { font-size: ${t("font-size-lg")}; }`;
+  },
+});
+
+/** Standalone `textArea` stylesheet — the prefixed CSS for the textarea, ready to ship as a `.css` file. */
+export const textAreaCss: Definition["css"] = textArea.css;

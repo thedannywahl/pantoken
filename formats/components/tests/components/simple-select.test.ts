@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { simpleSelectCss } from "../../src/index.ts";
-import { simpleSelect } from "../../src/components/simple-select.ts";
+import { simpleSelect } from "../../src/components/simple-select/index.ts";
 import { validate } from "../_validate.ts";
 
 test("simple-select: emits exactly one well-formed cssdoc record with no token drift", () => {

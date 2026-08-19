@@ -1,0 +1,45 @@
+/**
+ * @component table.row-header
+ * @memberOf table
+ * @selector th[scope="row"]
+ * @summary A row-header cell (InstUI `Table.RowHeader`); styled from the row-header tokens, not the column-header ones.
+ * @remarks The parent `table`'s `-layout-stacked` modifier stacks this member as a block and labels it via `::before` — see `table`'s own doc for that modifier.
+ * @structure
+ * .pfx-table {
+ *   tbody {
+ *     tr {
+ *       th[scope="row"] {}
+ *     }
+ *   }
+ * }
+ */
+/* A row-header cell (th scope=row) — styled from the row-header tokens, not the column-header ones. */
+.pfx-table tbody th,
+.pfx-table th[scope="row"] {
+  background: var(--instui-component-table-row-header-background);
+  color: var(--instui-component-table-row-header-color);
+  font-weight: var(--instui-component-table-row-header-font-weight);
+  line-height: var(--instui-component-table-row-header-line-height);
+  padding: var(--instui-component-table-row-header-padding-vertical)
+    var(--instui-component-table-row-header-padding-horizontal);
+}
+
+/* No border of its own — the separator lives on the row (see table.row). Reset with tbody specificity
+ (0,1,2) so a host stylesheet's cell borders (e.g. `.pantoken-prose td`, 0,1,1) can't leak in. */
+.pfx-table tbody th {
+  border: 0;
+}
+
+/* layout="stacked": stack as a block, labelled by its column via ::before (pure CSS can't pull the
+ <th> text automatically, so the author supplies a `data-label` per cell). */
+.pfx-table.-layout-stacked th {
+  display: block;
+  width: auto;
+}
+
+.pfx-table.-layout-stacked tbody th[data-label]::before {
+  content: attr(data-label);
+  display: block;
+  font-weight: var(--instui-component-table-head-font-weight);
+  color: var(--instui-component-table-col-header-color);
+}

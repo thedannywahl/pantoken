@@ -1,0 +1,42 @@
+/**
+ * @component calendar.day
+ * @memberOf calendar
+ * @selector .day
+ * @summary A day cell (InstUI `Calendar.Day`); `-today`, `-selected`, and `-outside-month` mark its state.
+ * @modifier -today — Today's date.
+ * @modifier -selected — The selected date.
+ * @modifier -outside-month — A day from the adjacent month (leading/trailing filler).
+ * @structure
+ * @scope (.pfx-calendar) {
+ *   .day {}
+ * }
+ */
+@scope (.pfx-calendar) {
+  .day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--instui-component-calendar-day-min-width);
+    block-size: var(--instui-component-calendar-day-height);
+    font-size: var(--instui-component-calendar-day-font-size);
+    color: var(--instui-component-calendar-day-color);
+    background: var(--instui-component-calendar-day-background);
+    cursor: pointer;
+  }
+
+  .day.-outside-month {
+    color: var(--instui-component-calendar-day-outside-month-color);
+  }
+
+  .day.-today {
+    background: var(--instui-component-calendar-day-today-background);
+    color: var(--instui-component-calendar-day-today-color);
+    border-radius: var(--instui-component-calendar-day-today-border-radius);
+  }
+
+  .day.-selected {
+    background: var(--instui-component-calendar-day-selected-background);
+    color: var(--instui-component-calendar-day-selected-color);
+    border-radius: var(--instui-component-calendar-day-selected-border-radius);
+  }
+}

@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { textInputCss } from "../../src/index.ts";
-import { textInput } from "../../src/components/text-input.ts";
+import { textInput } from "../../src/components/text-input/index.ts";
 import { validate } from "../_validate.ts";
 
 test("text-input: emits exactly one well-formed cssdoc record with no token drift", () => {
