@@ -371,7 +371,6 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "context-view",
     "progress-circle",
     "pagination",
-    "truncate",
     "toggle-details",
     "file-drop",
     "side-nav-bar",
@@ -399,7 +398,7 @@ test("componentsCss bundles every component; proseCss scopes to a content root",
     "in-place-edit",
   ];
   for (const c of components) expect(all).toContain(`.instui-${c}`);
-  expect(components).toHaveLength(52);
+  expect(components).toHaveLength(51);
   // The icon "component" is the glyph ::before painter, not a `.instui-icon` class.
   expect(all).toContain('[class*="-icon-"]::before');
   expect(proseCss({ scope: ".vp-doc" })).toContain(".vp-doc table");
@@ -412,9 +411,9 @@ test("new components render their key tokens", () => {
   );
   expect(rangeInputCss({ prefix: "instui" })).toContain("::-webkit-slider-thumb");
   const truncate = truncateCss({ prefix: "instui" });
-  expect(truncate).toContain("@scope (.instui-truncate)");
+  expect(truncate).toContain(".instui-truncate, .instui-button.-truncate");
   expect(truncate).toContain("-webkit-line-clamp");
-  expect(truncate).not.toContain(".instui-truncate.-lines");
+  expect(truncate).toContain(".instui-button.-truncate.-max-lines-3");
 });
 
 test("progress bar keeps the deprecated -meter-color-* aliases (incl. alert→warning)", () => {

@@ -41,6 +41,7 @@ vi.mock("../src/index.ts", () => ({
   stackingUtilityCss: () => "/* stacking */",
   spacingUtilitiesCss: () => "/* spacing */",
   gapCss: () => "/* gap */",
+  truncateCss: () => "/* truncate */",
   ELEVATION_NAMES: [],
 }));
 

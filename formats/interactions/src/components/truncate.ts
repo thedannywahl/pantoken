@@ -12,7 +12,9 @@ function wantsAutoLines(el: HTMLElement): boolean {
 
 // Initialize on page load
 function inittruncate() {
-  for (const el of document.querySelectorAll(".instui-truncate")) {
+  // `-truncate` is chainable onto any component (`.instui-button.-truncate`), so match both the
+  // bare utility class and the bare modifier class, not just `.instui-truncate`.
+  for (const el of document.querySelectorAll(".instui-truncate, .-truncate")) {
     const host = el as HTMLElement;
     applySpacing(host);
     if (wantsAutoLines(host)) initTruncateAuto(host, host);

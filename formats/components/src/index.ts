@@ -118,7 +118,6 @@ export { contextViewCss } from "./components/context-view/index.ts";
 export { progressCircleCss } from "./components/progress-circle/index.ts";
 export { paginationCss } from "./components/pagination/index.ts";
 export { paginationPageCss } from "./components/pagination/members/page/index.ts";
-export { truncateCss } from "./components/truncate/index.ts";
 export { toggleDetailsCss } from "./components/toggle-details/index.ts";
 export { fileDropCss } from "./components/file-drop/index.ts";
 export { sideNavBarCss } from "./components/side-nav-bar/index.ts";
@@ -158,6 +157,7 @@ export { overflowUtilitiesCss } from "./utilities/overflow/index.ts";
 export { cursorUtilitiesCss } from "./utilities/cursor/index.ts";
 export { stackingUtilityCss } from "./utilities/stacking/index.ts";
 export { maskUtilityCss } from "./utilities/mask/index.ts";
+export { truncateCss } from "./utilities/truncate/index.ts";
 export { iconCss } from "./utilities/icon/index.ts";
 export { screenReaderContentCss } from "./utilities/screen-reader-content/index.ts";
 // Bespoke: the glyph-token half of the icon system (no cssdoc record).

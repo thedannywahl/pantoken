@@ -79,7 +79,6 @@ import { toggleGroup } from "./toggle-group/index.ts";
 import { tooltip } from "./tooltip/index.ts";
 import { tray } from "./tray/index.ts";
 import { treeBrowser } from "./tree-browser/index.ts";
-import { truncate } from "./truncate/index.ts";
 import { view } from "./view/index.ts";
 
 /** Every component (+ the two in-sheet utilities) in `componentsCss()`'s exact concat order. */
@@ -128,7 +127,6 @@ export const COMPONENTS: readonly Definition[] = [
   progressCircle,
   pagination,
   paginationPage,
-  truncate,
   toggleDetails,
   fileDrop,
   sideNavBar,
