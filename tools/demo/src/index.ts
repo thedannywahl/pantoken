@@ -23,6 +23,8 @@
  */
 import type MarkdownIt from "markdown-it";
 
+export { buildExampleSrcdoc, escapeSrcdoc, type ExampleSrcdocOptions } from "./srcdoc.ts";
+
 /** Options for resolving a demo spec. Only the `self` provider uses the runner/demos/css fields. */
 export interface ResolveOptions {
   /** Site base path, e.g. `/pantoken/` (default `/`). */
@@ -134,6 +136,18 @@ const escapeAttr = (value: string): string =>
   value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 /**
+ * A hoverable "view fullscreen" button, overlaid on a demo/example frame the same way VitePress's own
+ * code-block "copy" button reveals on hover. Purely markup — wire a delegated click handler in your
+ * host page (`button.closest(...).querySelector("iframe")?.requestFullscreen()`; see the pantoken docs
+ * theme for the reference wiring) and style the reveal-on-hover with `@pantoken/demo/demo.css`.
+ */
+export const FULLSCREEN_BUTTON_HTML: string =
+  '<button type="button" class="pantoken-demo__fullscreen" title="View fullscreen" aria-label="View fullscreen">' +
+  '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+  '<path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>' +
+  "</svg></button>";
+
+/**
  * Render the demo panel HTML for a resolved demo: a bare, sandboxed, lazy-loaded iframe framed like a
  * live example (no host chrome — the runner inside carries its own tab toolbar). Style it with
  * `@pantoken/demo/demo.css`.
@@ -146,7 +160,7 @@ export function renderDemoFigure(resolved: ResolvedDemo): string {
   return (
     `<figure class="pantoken-demo">` +
     `<iframe class="pantoken-demo__frame" src="${src}" title="Live demo" loading="lazy" sandbox="${escapeAttr(resolved.sandbox)}"></iframe>` +
-    `</figure>\n`
+    `${FULLSCREEN_BUTTON_HTML}</figure>\n`
   );
 }
 
@@ -215,6 +229,20 @@ function setInlineContent(
     return;
   }
   inline.children = [];
+}
+
+/** Merge parsed `-flag` tokens into a fence's info string (base language plus the flag set), shared by
+ * the paragraph/inline flag-migration passes below. */
+function mergeFlagsIntoFence(
+  tokens: Array<{ info: string }>,
+  fenceIndex: number,
+  parsed: { flags: string[] },
+): void {
+  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
+  const base = parts.length > 0 ? parts[0] : "html";
+  const existing = new Set(parts.slice(1));
+  for (const flag of parsed.flags) existing.add(flag);
+  tokens[fenceIndex].info = [base, ...existing].join(" ");
 }
 
 /** Hide a paragraph marker token triplet (`paragraph_open`, `inline`, `paragraph_close`). */
@@ -301,11 +329,7 @@ function moveParagraphFlagsToFence(
   }
   const parsed = splitHeadingFlags(inline.content ?? "");
   if (!parsed) return;
-  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
-  const base = parts.length > 0 ? parts[0] : "html";
-  const existing = new Set(parts.slice(1));
-  for (const flag of parsed.flags) existing.add(flag);
-  tokens[fenceIndex].info = [base, ...existing].join(" ");
+  mergeFlagsIntoFence(tokens, fenceIndex, parsed);
   setInlineContent(
     inline as { content?: string; children?: Array<{ type: string; content: string }> },
     parsed.stripped,
@@ -361,11 +385,7 @@ function moveInlineFlagsToFence(
   if (inline.type !== "inline") return;
   const parsed = splitHeadingFlags(inline.content ?? "");
   if (!parsed) return;
-  const parts = tokens[fenceIndex].info.trim().split(/\s+/u).filter(Boolean);
-  const base = parts.length > 0 ? parts[0] : "html";
-  const existing = new Set(parts.slice(1));
-  for (const flag of parsed.flags) existing.add(flag);
-  tokens[fenceIndex].info = [base, ...existing].join(" ");
+  mergeFlagsIntoFence(tokens, fenceIndex, parsed);
   setInlineContent(inline, parsed.stripped);
   if (parsed.flags.includes("-noshow")) {
     inline.hidden = true;

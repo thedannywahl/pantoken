@@ -1,6 +1,11 @@
 import { expect, test } from "vite-plus/test";
 import type MarkdownIt from "markdown-it";
-import { demoMarkdownIt, renderDemoFigure, resolveDemo } from "../src/index.ts";
+import {
+  demoMarkdownIt,
+  FULLSCREEN_BUTTON_HTML,
+  renderDemoFigure,
+  resolveDemo,
+} from "../src/index.ts";
 
 test("bare URLs and paths resolve as the url provider", () => {
   expect(resolveDemo("https://example.com/x")).toMatchObject({
@@ -54,13 +59,19 @@ test("renderDemoFigure emits a sandboxed iframe and escapes the src", () => {
 test("renderDemoFigure is chrome-free — just the framed iframe, no host toolbar", () => {
   const html = renderDemoFigure(resolveDemo("https://example.com/a"));
   // Modeled on the live @example: no bar, no provider tag, no action buttons (the runner inside
-  // carries its own tab toolbar).
+  // carries its own tab toolbar) other than the shared fullscreen button.
   expect(html).not.toContain("pantoken-demo__bar");
   expect(html).not.toContain("data-role=");
   expect(html).not.toContain("pantoken-demo__provider");
   expect(html).toBe(
-    `<figure class="pantoken-demo"><iframe class="pantoken-demo__frame" src="https://example.com/a" title="Live demo" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe></figure>\n`,
+    `<figure class="pantoken-demo"><iframe class="pantoken-demo__frame" src="https://example.com/a" title="Live demo" loading="lazy" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"></iframe>${FULLSCREEN_BUTTON_HTML}</figure>\n`,
   );
+});
+
+test("FULLSCREEN_BUTTON_HTML is a labeled button with no host-wired behavior of its own", () => {
+  expect(FULLSCREEN_BUTTON_HTML).toContain('class="pantoken-demo__fullscreen"');
+  expect(FULLSCREEN_BUTTON_HTML).toContain('aria-label="View fullscreen"');
+  expect(FULLSCREEN_BUTTON_HTML).not.toContain("onclick");
 });
 
 test("demoMarkdownIt rewrites a demo fence and leaves other fences alone", () => {

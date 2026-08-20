@@ -4,6 +4,7 @@
  * @summary The live-sample panel emitted by `renderDemoFigure` / `demoMarkdownIt` — a bordered, token-themed frame around the sandboxed demo iframe, modeled on the live `@example` blocks.
  * @remarks Import this in your docs so `demo` fenced blocks render as live samples. The figure is chrome-free: the runner inside the iframe carries its own tab toolbar (Result / HTML / CSS / JS). The iframe mirrors the runner's height (posted over postMessage): the runner hugs the demo by default (capped at 30rem) and the reader can drag its native resize handle to grow or shrink the player.
  * @part .pantoken-demo__frame — The sandboxed demo iframe; mirrors the runner's height (default hugs the demo, capped at 30rem; the reader can resize past that).
+ * @part .pantoken-demo__fullscreen — The hoverable corner button (`FULLSCREEN_BUTTON_HTML`) that views the frame's iframe fullscreen.
  * @structure
  * .pantoken-demo {
  *   .pantoken-demo__frame {}
@@ -14,6 +15,7 @@
  * </figure>
  */
 .pantoken-demo {
+  position: relative;
   margin: var(--instui-spacing-space-md, 1rem) 0;
   overflow: hidden;
   background: var(--instui-color-background-base, #fff);
@@ -29,4 +31,33 @@
   height: auto;
   border: 0;
   background: var(--instui-color-background-base, #fff);
+}
+
+/*
+ * A hoverable "view fullscreen" corner button (`FULLSCREEN_BUTTON_HTML`), the same reveal-on-hover
+ * interaction VitePress's own code-block "copy" button uses. Its container needs `position: relative`
+ * (set on `.pantoken-demo` above) so it anchors to the frame; a host embedding the plain iframe markup
+ * elsewhere needs the same on its own wrapper.
+ */
+.pantoken-demo__fullscreen {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid var(--instui-color-stroke-base, currentColor);
+  border-radius: 6px;
+  color: inherit;
+  background: var(--instui-color-background-container, #fff);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.pantoken-demo:hover .pantoken-demo__fullscreen,
+.pantoken-demo__fullscreen:focus-visible {
+  opacity: 1;
 }
