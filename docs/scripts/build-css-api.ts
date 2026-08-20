@@ -495,6 +495,66 @@ export function assertNoUnknownReferences(css: string): void {
   }
 }
 
+/** A `typedoc-vitepress-theme`-compatible sidebar node (mirrors `@cssdoc/markdown`'s `SidebarItem`). */
+interface SidebarItem {
+  text: string;
+  link?: string;
+  collapsed?: boolean;
+  items?: SidebarItem[];
+}
+
+/**
+ * `buildSidebar` (from `@cssdoc/markdown`, via `emitCssApi`) lists every record as a flat sibling within
+ * its group, so a `@memberOf` sub-component (e.g. `breadcrumb.link`) sits next to its parent (`breadcrumb`)
+ * rather than nested under it — both land at the same VitePress sidebar depth. Re-nest each member under
+ * its parent's `items` within the CSS section named `label`, using the `memberOf` already carried on
+ * `entries`, and drop the now-redundant `<parent>.` prefix from its label (`breadcrumb.link` -> `link`).
+ * Parents/members not found in the same group are left flat (defensive: a stale or cross-group
+ * `@memberOf` shouldn't break the build or drop a page from the nav).
+ */
+export function nestCssSidebarMembers(
+  sidebarItems: readonly SidebarItem[],
+  entries: readonly CssDocEntry[],
+  label: string,
+): SidebarItem[] {
+  const entryByName = new Map(entries.map((e) => [e.name, e]));
+
+  const nestGroup = (groupItems: readonly SidebarItem[]): SidebarItem[] => {
+    const byText = new Map(groupItems.map((item) => [item.text, { ...item }]));
+    const topLevel: string[] = [];
+
+    for (const item of groupItems) {
+      const parentName = entryByName.get(item.text)?.memberOf?.component;
+      const parent = parentName ? byText.get(parentName) : undefined;
+      if (parent && parent !== byText.get(item.text)) {
+        const child = byText.get(item.text)!;
+        // Drop the redundant "<parent>." prefix once nested (`breadcrumb.link` -> `link`).
+        const label = child.text.startsWith(`${parentName}.`)
+          ? child.text.slice(parentName!.length + 1)
+          : child.text;
+        parent.items = [...(parent.items ?? []), { ...child, text: label }];
+        parent.collapsed = true;
+      } else {
+        topLevel.push(item.text);
+      }
+    }
+
+    return topLevel.map((text) => byText.get(text)!);
+  };
+
+  const nestSection = (item: SidebarItem): SidebarItem =>
+    item.text === label && item.items
+      ? {
+          ...item,
+          items: item.items.map((group) =>
+            group.items ? { ...group, items: nestGroup(group.items) } : group,
+          ),
+        }
+      : item;
+
+  return sidebarItems.map(nestSection);
+}
+
 /** Generate the CSS API reference: index sheet-local vars, then emit every record via `emitCssApi`. */
 export const build = (): void => {
   // The component sheet is the primary source; base/utilities/prose carry the non-component records
@@ -522,11 +582,12 @@ export const build = (): void => {
   const importSnippet = makeImportSnippet(sheets, PLUGIN_RECORDS, pluginSheet, configuration);
 
   const outSubdir = "css";
+  const cssSectionLabel = "CSS";
   const { entries, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
     css: [...cssPaths, ...pluginPaths],
     outSubdir,
-    label: "CSS",
+    label: cssSectionLabel,
     baseHref: "/api/css/",
     // The four record kinds first, then the plugins' `@group Plugins` subsection last.
     groups: ["Components", "Utilities", "Rules", "Declarations", "Layouts", "Plugins"],
@@ -536,6 +597,17 @@ export const build = (): void => {
     resolveSource,
     importSnippet,
   });
+
+  // `buildSidebar` lists members as flat siblings of their parent; re-nest them so the sidebar reflects
+  // the `@memberOf` hierarchy (see `nestCssSidebarMembers`).
+  if (sidebarMerged) {
+    const sidebarPath = join(docsRoot, "api", "typedoc-sidebar.json");
+    const sidebar = JSON.parse(readFileSync(sidebarPath, "utf8")) as SidebarItem[];
+    writeFileSync(
+      sidebarPath,
+      JSON.stringify(nestCssSidebarMembers(sidebar, entries, cssSectionLabel), null, 2),
+    );
+  }
 
   writeCssIndexBlurb(outSubdir);
 
