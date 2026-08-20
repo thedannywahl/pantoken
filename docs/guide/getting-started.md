@@ -108,7 +108,7 @@ token completion in HTML/CSS without installing a pantoken-specific extension.
 npm i @pantoken/pantoken
 ```
 
-2. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
 
 ```json
 {
@@ -117,7 +117,7 @@ npm i @pantoken/pantoken
 }
 ```
 
-3. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
 
 This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
 `--instui-*` custom properties.
