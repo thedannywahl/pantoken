@@ -97,6 +97,31 @@ npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 
 See [the pantoken CLI](/guide/cli) for every target.
 
+## VS Code authoring hints
+
+`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
+token completion in HTML/CSS without installing a pantoken-specific extension.
+
+1. Install the unified package:
+
+```sh
+npm i @pantoken/pantoken
+```
+
+2. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+
+```json
+{
+  "html.customData": ["./node_modules/@pantoken/pantoken/dist/html-custom-data.json"],
+  "css.customData": ["./node_modules/@pantoken/pantoken/dist/css-custom-data.json"]
+}
+```
+
+3. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+
+This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
+`--instui-*` custom properties.
+
 ## Where to next
 
 - [The package map](/guide/packages) — which package to reach for, by task.

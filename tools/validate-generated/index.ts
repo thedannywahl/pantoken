@@ -152,6 +152,24 @@ else ok("components: generated CSS retains cssdoc comments");
 if (componentFinal.includes("/**")) fail("components: finalized CSS retained cssdoc comments");
 else ok("components: finalized CSS strips cssdoc comments");
 
+// 2b. The unified pantoken package must publish VS Code custom-data artifacts.
+const PANTOKEN_CUSTOM_DATA = ["html-custom-data.json", "css-custom-data.json"] as const;
+for (const artifact of PANTOKEN_CUSTOM_DATA) {
+  const path = join(root, "packages/pantoken/dist", artifact);
+  if (!existsSync(path) || readFileSync(path).byteLength === 0) {
+    fail(`packages/pantoken: ${artifact} is missing or empty`);
+    continue;
+  }
+  try {
+    JSON.parse(readFileSync(path, "utf8"));
+    ok(`packages/pantoken: ${artifact} is present and valid JSON`);
+  } catch (error) {
+    fail(
+      `packages/pantoken: ${artifact} is not valid JSON (${error instanceof Error ? error.message : String(error)})`,
+    );
+  }
+}
+
 // 3. The `pantoken` CLI must emit at least one file for every supported target.
 const CLI_TARGETS = [
   "swift",

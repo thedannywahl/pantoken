@@ -36,6 +36,12 @@ const manifestJson = (): string => {
 const utf8Fixture = (pathName: string): string | null => {
   if (pathName.endsWith("generated/components.css")) return state.componentSource;
   if (pathName.endsWith("dist/components.css")) return state.componentFinal;
+  if (pathName.endsWith("packages/pantoken/dist/html-custom-data.json")) {
+    return JSON.stringify({ version: 1.1, globalAttributes: [] });
+  }
+  if (pathName.endsWith("packages/pantoken/dist/css-custom-data.json")) {
+    return JSON.stringify({ version: 1.1, properties: [] });
+  }
   return ":root{--instui-x:1}";
 };
 

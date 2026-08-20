@@ -45,12 +45,6 @@ test("formatAggregateMessage joins keys deterministically", () => {
   );
 });
 
-test("formatAggregateMessage joins keys deterministically", () => {
-  expect(formatAggregateMessage(["aggregate", "pantoken"])).toBe(
-    "pantoken meta: aggregated aggregate, pantoken",
-  );
-});
-
 test("formatAggregateMessage handles empty target list", () => {
   expect(formatAggregateMessage([])).toBe("pantoken meta: aggregated ");
 });
@@ -78,6 +72,9 @@ test("runAggregate aggregates the discovered targets, logs a summary, and return
     // The exports map is rewritten with a subpath per target.
     const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
     expect(pkg.exports["./three"]).toBe("./dist/three.mjs");
+    // Static JSON exports are always present for VS Code custom-data consumers.
+    expect(pkg.exports["./html-custom-data.json"]).toBe("./dist/html-custom-data.json");
+    expect(pkg.exports["./css-custom-data.json"]).toBe("./dist/css-custom-data.json");
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }
