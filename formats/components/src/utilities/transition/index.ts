@@ -5,7 +5,7 @@
  * (`…-entering`, `…-entered`, `…-exiting`, `…-exited`) on an element as it mounts and unmounts. This
  * utility emits those rules — a base `.instui-transition` (the animated `transition` property) plus the
  * `fade`, `scale`, and `slide-{up,down,left,right}` type/state classes — and defines the
- * `--duration` / `--timing` custom properties.
+ * `--instui-transition-duration` / `--instui-transition-timing` tokens.
  *
  * @module
  */
