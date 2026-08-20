@@ -5,8 +5,7 @@
  * @a11y Keeps text in the accessibility tree for screen readers while removing it from the visual layout.
  * @example
  * ```html
- * <a class="instui-link" href="https://example.com" target="_blank">
- * \3c !-- This text is visually hidden but still available to screen readers. -->
+ * <a class="instui-link" href="#examples" target="_blank">example</a>
  * <span class="instui-screen-reader-content">Opens in a new window</span>
  * ```
  */
