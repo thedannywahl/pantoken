@@ -7,7 +7,7 @@
  * @modifier -color-warning — A cautionary message.
  * @modifier -color-danger — An error message.
  * @modifier -without-shadow — Remove the default elevation shadow (InstUI `hasShadow={false}`).
- * @modifier -has-shadow-false — @deprecated {@link -without-shadow}
+ * @modifier -has-shadow-false — @alias {@link -without-shadow}
  * @modifier -screen-reader-only — Visually hidden but announced.
  * @modifier -variant-info — @deprecated {@link -color-info}
  * @modifier -variant-success — @deprecated {@link -color-success}

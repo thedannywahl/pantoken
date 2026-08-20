@@ -128,11 +128,17 @@ export const fooCss = foo.css;
   form-field-group, form-field-messages, link, list, metric, pagination, radio, radio-input-group,
   rating, side-nav-bar, and tag for the pattern.
 
-## Deprecated aliases (auto-discovered, always functional)
+## Deprecated and alias modifiers (auto-discovered, always functional)
 
-- Author a modifier's metadata with `deprecated: "{@link -canonical}"`. `withAliases` reads that and
-  clones each canonical rule under the alias name. There is no hardcoded pairs list.
-- **A deprecated modifier must be a functional alias — never a doc-only noop** (user's absolute rule).
+- Author a modifier's metadata with `alias: "{@link -canonical}"` for a **pure rename** (no behavior
+  change, e.g. `-toggle` → `-variant-toggle`), or `deprecated: "{@link -canonical}"` for a **true
+  deprecation** (behavior changed, e.g. the color/spacing normalization renames like avatar's
+  `-color-accent*` or alert's `-variant-*`). `withAliases` reads either tag and clones each canonical
+  rule under the alias name — there is no hardcoded pairs list, and both tags render a functional twin.
+- **A deprecated or aliased modifier must be a functional alias — never a doc-only noop** (user's
+  absolute rule).
+- The docs render `@alias` as a blue "Alias" pill (informational rename) and `@deprecated` as a red
+  "Deprecated" pill (a real behavior change) — see `docs/scripts/api-badge-classes.ts`.
 - The alias post-processors run on the CSS **body only**, before the doc block is prepended, because
   the doc block's `{@link}` braces confuse the brace-based scanners. They anchor on the base class
   (`.instui-radio.-variant-toggle`), not the bare token, so a bare `.-canonical` match doesn't wrongly

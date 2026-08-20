@@ -27,10 +27,10 @@
  * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
  * @pseudo :indeterminate — Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`.
  * @cssproperty --value <number> — The current progress value.
- * @cssproperty --value-now <number> — @deprecated Alias for `--value`.
+ * @cssproperty --value-now <number> — @alias Alias for `--value`.
  * @cssproperty --min <number> — The minimum meter value (default `0`).
  * @cssproperty --max <number> — The maximum progress value (default `100`).
- * @cssproperty --value-max <number> — @deprecated {@link --max} The maximum progress value (default `100`).
+ * @cssproperty --value-max <number> — @alias {@link --max} The maximum progress value (default `100`).
  * @accessibility Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
  * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
  * @example

@@ -26,7 +26,7 @@
  * @modifier -color-accent4 — @deprecated {@link -color-orange}
  * @modifier -color-accent5 — @deprecated {@link -color-ash}
  * @modifier -color-accent6 — @deprecated {@link -color-grey}
- * @modifier -show-border — @deprecated {@link -show-border-always}
+ * @modifier -show-border — @alias {@link -show-border-always}
  * @part .name — Optional: wrap the full name to clip it to a single leading letter without data-initials or JS.
  * @part .first-name — Optional (pairs with .last-name): wraps the given name, clipped to its leading letter.
  * @part .last-name — Optional (pairs with .first-name): wraps the family name, clipped to its leading letter.
