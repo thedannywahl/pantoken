@@ -67,8 +67,15 @@
 
   // defineDeclaration is part of the authoring API trio (defineComponent/defineRule/defineDeclaration)
   // and is documented as such; it's currently referenced only in prose, so keep it exported.
+  // SPACING_ALIAS_TARGETS is re-exported from spacing for backward-compat imports (documented
+  // in docs/conventions/authoring.md); gap imports directly from global-alias instead, so this
+  // export appears unused to static analysis, but it's intentional for external consumers.
   "ignoreExports": [
-    { "file": "formats/components/src/lib/define.ts", "exports": ["defineDeclaration"] }
+    { "file": "formats/components/src/lib/define.ts", "exports": ["defineDeclaration"] },
+    {
+      "file": "formats/components/src/utilities/spacing/index.ts",
+      "exports": ["SPACING_ALIAS_TARGETS"]
+    }
   ],
 
   // Generated specifiers that only exist after `build:all`; some environments analyze pre-build.
