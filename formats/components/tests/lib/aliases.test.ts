@@ -1,8 +1,8 @@
 import { expect, test } from "vite-plus/test";
 import { buttonCss } from "../../src/components/button/index.ts";
+import { viewCss } from "../../src/components/view/index.ts";
 import { gapCss } from "../../src/utilities/gap/index.ts";
 import { spacingUtilitiesCss } from "../../src/utilities/spacing/index.ts";
-import { viewCss } from "../../src/utilities/view/index.ts";
 
 test("spacing and gap utility records are marked global", () => {
   expect(spacingUtilitiesCss({ prefix: "instui" })).toContain("@global");

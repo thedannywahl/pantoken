@@ -1,14 +1,14 @@
 /**
- * The View primitive utility — InstUI's `View` as a neutral box with key-value modifiers for its
+ * The View primitive component — InstUI's `View` as a neutral box with key-value modifiers for its
  * visual props (background, border, radius, shadow, display, position, overflow, cursor).
  *
  * @module
  */
-import { defineUtility, type Definition } from "../../lib/define.ts";
+import { defineComponent, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
 
-/** The View utility — a neutral box with key-value modifiers for its visual props (background, border, radius, shadow, display, position, overflow, cursor). */
-export const view: Definition = defineUtility({
+/** The View component — a neutral box with key-value modifiers for its visual props (background, border, radius, shadow, display, position, overflow, cursor). */
+export const view: Definition = defineComponent({
   name: "view",
   css: (p) => {
     const rule = (mod: string, decls: string): string => `.${p}view.-${mod} { ${decls} }`;
@@ -86,8 +86,8 @@ export const view: Definition = defineUtility({
     }
     // prettier-ignore
     return css`/**
- * @utility view
- * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor.
+ * @component view
+ * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor. Every one of these modifiers is also available globally (bare, or chained onto any other component) — see the \`background\`/\`border\`/\`shadow\`/\`display\`/\`position\`/\`overflow\`/\`cursor\` utilities.
  * @modifier -background-primary — Primary surface background.
  * @modifier -background-secondary — Secondary surface background.
  * @modifier -background-primary-inverse — Inverse primary surface background.
@@ -151,5 +151,5 @@ ${rules.join("\n")}`;
   },
 });
 
-/** The View utility as a standalone, header-wrapped stylesheet. */
+/** The View component as a standalone, header-wrapped stylesheet. */
 export const viewCss: Definition["css"] = view.css;
