@@ -7,7 +7,7 @@
 import { defineUtility, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
 import { SPACING_STEPS } from "../../lib/helpers.ts";
-import { SPACING_ALIAS_TARGETS } from "../spacing/index.ts";
+import { GLOBAL_ALIAS_TARGETS as SPACING_ALIAS_TARGETS } from "../../lib/global-alias.ts";
 
 /** `[key, value]` pairs for every step's short and long key, deduped (e.g. `"0"` and `"none"` both present). */
 const STEP_ENTRIES: ReadonlyArray<readonly [string, string]> = (() => {

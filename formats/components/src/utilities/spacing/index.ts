@@ -6,7 +6,7 @@
  */
 import { defineUtility, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
-import { COMPONENTS } from "../../components/index.ts";
+import { GLOBAL_ALIAS_TARGETS } from "../../lib/global-alias.ts";
 import {
   SPACING_AUTO_STEP,
   SPACING_PROPERTIES,
@@ -15,13 +15,10 @@ import {
   type SpacingProperty,
   type SpacingStep,
 } from "../../lib/helpers.ts";
-import { view } from "../view/index.ts";
 
-/** Every component base class, plus `view` — the chainable bases a spacing modifier can attach to. */
-export const SPACING_ALIAS_TARGETS: readonly string[] = [
-  ...COMPONENTS.filter((entry) => entry.kind === "component").map((entry) => entry.name),
-  view.name,
-];
+/** Every component base class (`view` included, now a real component) — the chainable bases a
+ *  spacing modifier can attach to. Re-exported for `gap`'s and other utilities' backward-compat imports. */
+export const SPACING_ALIAS_TARGETS: readonly string[] = GLOBAL_ALIAS_TARGETS;
 
 /** The steps a boxed property takes — margin also gets `auto`. */
 const stepsFor = (property: SpacingProperty): readonly SpacingStep[] =>
