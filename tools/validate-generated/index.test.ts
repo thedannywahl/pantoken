@@ -34,14 +34,20 @@ const manifestJson = (): string => {
 
 /** UTF-8 fixture content by path, or null to fall back to binary payload. */
 const utf8Fixture = (pathName: string): string | null => {
-  if (pathName.endsWith("generated/components.css")) return state.componentSource;
-  if (pathName.endsWith("dist/components.css")) return state.componentFinal;
-  if (pathName.endsWith("packages/pantoken/dist/html-custom-data.json")) {
-    return JSON.stringify({ version: 1.1, globalAttributes: [] });
+  // Direct path mappings with state-based content
+  const mappings: Record<string, () => string | null> = {
+    "generated/components.css": () => state.componentSource,
+    "dist/components.css": () => state.componentFinal,
+    "packages/pantoken/dist/html-custom-data.json": () =>
+      JSON.stringify({ version: 1.1, globalAttributes: [] }),
+    "packages/pantoken/dist/css-custom-data.json": () =>
+      JSON.stringify({ version: 1.1, properties: [] }),
+  };
+
+  for (const [key, getValue] of Object.entries(mappings)) {
+    if (pathName.endsWith(key)) return getValue();
   }
-  if (pathName.endsWith("packages/pantoken/dist/css-custom-data.json")) {
-    return JSON.stringify({ version: 1.1, properties: [] });
-  }
+
   return ":root{--instui-x:1}";
 };
 

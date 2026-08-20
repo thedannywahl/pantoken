@@ -522,19 +522,32 @@ export function nestCssSidebarMembers(
 ): SidebarItem[] {
   const entryByName = new Map(entries.map((e) => [e.name, e]));
 
+  /** Get the parent component name for an item, if it exists in the group. */
+  // fallow-ignore-next-line complexity
+  const getParent = (
+    item: SidebarItem,
+    byText: Map<string, SidebarItem>,
+  ): SidebarItem | undefined => {
+    const parentName = entryByName.get(item.text)?.memberOf?.component;
+    return parentName && byText.has(parentName) && byText.get(parentName) !== byText.get(item.text)
+      ? byText.get(parentName)
+      : undefined;
+  };
+
+  /** Compute the display label for a child item (strip parent prefix). */
+  const getChildLabel = (childText: string, parentName: string): string =>
+    childText.startsWith(`${parentName}.`) ? childText.slice(parentName.length + 1) : childText;
+
   const nestGroup = (groupItems: readonly SidebarItem[]): SidebarItem[] => {
     const byText = new Map(groupItems.map((item) => [item.text, { ...item }]));
     const topLevel: string[] = [];
 
     for (const item of groupItems) {
-      const parentName = entryByName.get(item.text)?.memberOf?.component;
-      const parent = parentName ? byText.get(parentName) : undefined;
-      if (parent && parent !== byText.get(item.text)) {
+      const parent = getParent(item, byText);
+      if (parent) {
         const child = byText.get(item.text)!;
-        // Drop the redundant "<parent>." prefix once nested (`breadcrumb.link` -> `link`).
-        const label = child.text.startsWith(`${parentName}.`)
-          ? child.text.slice(parentName!.length + 1)
-          : child.text;
+        const parentName = entryByName.get(item.text)!.memberOf!.component!;
+        const label = getChildLabel(child.text, parentName);
         parent.items = [...(parent.items ?? []), { ...child, text: label }];
         parent.collapsed = true;
       } else {

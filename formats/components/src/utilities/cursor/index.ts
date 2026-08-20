@@ -19,14 +19,23 @@ const CURSORS = [
   "wait",
 ] as const;
 
+/** Build CSS rules for a property/value map. Helper for cursor/position utilities. */
+const buildPropertyRules = (
+  p: string,
+  prefix: string,
+  property: string,
+  values: readonly string[],
+): string[] =>
+  values.map((value) => {
+    const selectors = globalSelectors(p, `.${p}${prefix}-${value}`, `.-${prefix}-${value}`);
+    return `${selectors.join(", ")} { ${property}: ${value}; }`;
+  });
+
 /** The cursor utility — `cursor` as composable, global classes. */
 export const cursor: Definition = defineUtility({
   name: "cursor",
   css: (p) => {
-    const rules = CURSORS.map((value) => {
-      const selectors = globalSelectors(p, `.${p}cursor-${value}`, `.-cursor-${value}`);
-      return `${selectors.join(", ")} { cursor: ${value}; }`;
-    });
+    const rules = buildPropertyRules(p, "cursor", "cursor", Array.from(CURSORS));
     // prettier-ignore
     return css`/**
  * @utility cursor

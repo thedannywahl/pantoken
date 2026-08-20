@@ -10,14 +10,23 @@ import { globalSelectors } from "../../lib/global-alias.ts";
 
 const POSITIONS = ["static", "relative", "absolute", "fixed", "sticky"] as const;
 
+/** Build CSS rules for a property/value map. Helper for cursor/position utilities. */
+const buildPropertyRules = (
+  p: string,
+  prefix: string,
+  property: string,
+  values: readonly string[],
+): string[] =>
+  values.map((value) => {
+    const selectors = globalSelectors(p, `.${p}${prefix}-${value}`, `.-${prefix}-${value}`);
+    return `${selectors.join(", ")} { ${property}: ${value}; }`;
+  });
+
 /** The position utility — `position` as composable, global classes. */
 export const position: Definition = defineUtility({
   name: "position",
   css: (p) => {
-    const rules = POSITIONS.map((value) => {
-      const selectors = globalSelectors(p, `.${p}position-${value}`, `.-position-${value}`);
-      return `${selectors.join(", ")} { position: ${value}; }`;
-    });
+    const rules = buildPropertyRules(p, "position", "position", Array.from(POSITIONS));
     // prettier-ignore
     return css`/**
  * @utility position
