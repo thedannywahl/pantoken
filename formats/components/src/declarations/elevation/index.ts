@@ -33,6 +33,8 @@ const ELEVATION_DOC = css`/**
  * @cssproperty --instui-elevation-card — Alias of \`resting\`, for card surfaces.
  * @cssproperty --instui-elevation-cardHover — Alias of \`topmost\`, for hovered cards.
  * @related view — The View primitive's \`-shadow-*\` modifiers read these shadows.
+ * @remarks Every level also ships as a global \`box-shadow\` utility class (via \`utilities.css\`), usable
+ *   bare (\`.instui-elevation-resting\`) or chained onto any component (\`.instui-button.-elevation-above\`).
  * @demo self:elevation
  */`;
 

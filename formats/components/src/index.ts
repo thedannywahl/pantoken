@@ -160,6 +160,7 @@ export { maskUtilityCss } from "./utilities/mask/index.ts";
 export { truncateCss } from "./utilities/truncate/index.ts";
 export { iconCss } from "./utilities/icon/index.ts";
 export { screenReaderContentCss } from "./utilities/screen-reader-content/index.ts";
+export { visualDebugCss } from "./utilities/visual-debug/index.ts";
 // Bespoke: the glyph-token half of the icon system (no cssdoc record).
 export { iconGlyphsCss, type IconGlyphsOptions } from "./utilities/icon-glyphs/index.ts";
 

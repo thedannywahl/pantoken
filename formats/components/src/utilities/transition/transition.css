@@ -4,13 +4,27 @@
  * @modifier -transition-* — Transition type/state class toggled by runtime (`fade|scale|slide-*` + `entering|entered|exiting|exited`).
  * @global
  * @summary Animation state classes for the `Transition` component — `.instui-transition` and state classes (`-transition-fade-entering`, `-transition-scale-exited`, etc.) — usable bare or chained onto any component.
+ * @cssproperty --duration — Animation duration (default `300ms`); override to speed up or slow down every transition state.
+ * @cssproperty --timing — Animation timing function (default `ease-in-out`).
  * @example
  * <div class="instui-transition -transition-fade-entering">Animated content</div>
  */
+@property --duration {
+  syntax: "<time>";
+  inherits: true;
+  initial-value: 300ms;
+}
+
+@property --timing {
+  syntax: "*";
+  inherits: true;
+  initial-value: ease-in-out;
+}
+
 .pfx-transition {
   transition:
-    opacity var(--instui-transition-duration) var(--instui-transition-timing),
-    transform var(--instui-transition-duration) var(--instui-transition-timing);
+    opacity var(--duration) var(--timing),
+    transform var(--duration) var(--timing);
 }
 
 .pfx-transition.-transition-fade-exiting,

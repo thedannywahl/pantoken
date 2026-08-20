@@ -103,6 +103,7 @@ const EXPECTED = [
   "treeBrowserCss",
   "truncateCss",
   "viewCss",
+  "visualDebugCss",
 ].sort();
 
 test("the barrel's runtime export names are exactly the frozen public surface", () => {

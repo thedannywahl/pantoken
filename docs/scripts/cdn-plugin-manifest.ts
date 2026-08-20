@@ -30,8 +30,10 @@ const customIcons = vendoredCustomIcons.map((i) => ({ name: i.name }));
 
 // ── Other plugins ─────────────────────────────────────────────────────────────
 // Single-file CSS plugins that aren't rolled into Base/Utilities and aren't components, icons, or
-// logos — one checkbox each. Excludes @pantoken/plugin-colors and @pantoken/plugin-deprecations,
-// which ship no browser-consumable CSS file.
+// logos — one checkbox each. Excludes @pantoken/plugin-colors, @pantoken/plugin-deprecations,
+// @pantoken/plugin-stacking, and @pantoken/plugin-transition, which ship no browser-consumable CSS
+// file (stacking/transition's CSS now lives in @pantoken/components' own utilities; those plugins
+// are tokens-only).
 const otherPlugins = [
   {
     key: "primitives",
@@ -40,13 +42,6 @@ const otherPlugins = [
     label: "Primitives",
   },
   { key: "layouts", pkg: "@pantoken/plugin-layouts", file: "layouts.css", label: "Layouts" },
-  { key: "stacking", pkg: "@pantoken/plugin-stacking", file: "stacking.css", label: "Stacking" },
-  {
-    key: "transition",
-    pkg: "@pantoken/plugin-transition",
-    file: "transition.css",
-    label: "Transition",
-  },
   {
     key: "visual-debug",
     pkg: "@pantoken/plugin-visual-debug",

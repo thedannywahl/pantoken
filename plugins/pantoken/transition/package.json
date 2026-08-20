@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/plugin-transition",
   "version": "0.3.2",
-  "description": "pantoken plugin: the CSS for InstUI's Transition utility — duration/timing tokens plus fade, scale, and slide enter/exit state classes.",
+  "description": "pantoken plugin: the --instui-transition-duration/--instui-transition-timing tokens behind InstUI's Transition utility (the CSS itself lives in @pantoken/components).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -14,20 +14,9 @@
     "dist"
   ],
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./progress": {
-      "types": "./dist/progress.d.mts",
-      "default": "./dist/progress.mjs"
-    },
-    "./progress-circle": {
-      "types": "./dist/progress-circle.d.mts",
-      "default": "./dist/progress-circle.mjs"
-    },
-    "./transition.css": "./dist/transition.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -35,8 +24,7 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
-    "dev": "vp run generate && vp pack --watch",
+    "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
   },

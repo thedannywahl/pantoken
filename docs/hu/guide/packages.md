@@ -100,7 +100,7 @@ Opcionális transzformációk, amelyek kiterjesztik a token- vagy CSS-kimenetet.
 
 | Csomag                                                                                | Mit ad hozzá                                                                                     |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Elnevezett z-index mélységek tokenként + `.instui-stack-*` osztályok.                            |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Elnevezett z-index mélységek `--instui-stacking-*` tokenként.                                    |
 | [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | A `-with-visual-debug` elrendezés-hibakereső kontúr (outline).                                   |
 | [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Márkaikonok a simple-icons gyűjteményből.                                                        |
 | [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure terméklogók SVG-ként, data URI-ként és képtokenként.                                 |

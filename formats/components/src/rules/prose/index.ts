@@ -14,9 +14,10 @@ import { headingLevelRules } from "../../lib/headings.ts";
 // prettier-ignore
 const PROSE_DOC = css`/**
  * @rule prose
- * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — under the \`.pantoken-prose\` scope.
+ * @selector :where(body)
+ * @summary Typographic defaults for raw HTML — headings, paragraphs, lists, links, and code — applied automatically wherever it's imported (default \`:where(body)\`); pass \`options.scope\` to target a different content root instead (e.g. \`.vp-doc\`).
  * @example
- * <article class="pantoken-prose">
+ * <article>
  *   <h2>Release notes</h2>
  *   <p>Body copy with a <a href="/">link</a>.</p>
  * </article>
@@ -139,12 +140,14 @@ ${s} table:not([class]) td {
 
 /** Options for {@link proseCss}. */
 export interface ProseOptions {
-  /** The content-root selector the rules attach to (default `".pantoken-prose"`). */
+  /** The content-root selector the rules attach to (default `":where(body)"`, applied automatically
+   *  like `base.css` — pass a class like `".vp-doc"` to scope to a different content root instead). */
   scope?: string;
 }
 
 /**
- * Build the InstUI-look prose stylesheet, scoped to `options.scope` (default `.pantoken-prose`).
+ * Build the InstUI-look prose stylesheet, scoped to `options.scope` (default `:where(body)`, so it
+ * applies automatically without a wrapper class — like `base.css`).
  *
  * @param options - {@link ProseOptions}.
  * @returns The CSS string.
@@ -152,17 +155,17 @@ export interface ProseOptions {
  * @demo self:prose
  */
 export function proseCss(options: ProseOptions = {}): string {
-  const scope = options.scope ?? ".pantoken-prose";
+  const scope = options.scope ?? ":where(body)";
   return `/* InstUI-look prose styles (@pantoken/components) — scope: ${scope} */\n${PROSE_DOC}\n${proseBody(scope).trim()}\n`;
 }
 
 /**
  * The {@link Definition}-shaped view of the prose rule for the RULES registry + `validate()`. `css()`
- * emits the default-scoped, doc-bearing single record ({@link PROSE_DOC} + the `.pantoken-prose` body).
+ * emits the default-scoped, doc-bearing single record ({@link PROSE_DOC} + the `:where(body)` body).
  */
 export const prose: Definition = {
   name: "prose",
   kind: "rule",
-  rules: () => `${PROSE_DOC}\n${proseBody(".pantoken-prose").trim()}\n`,
-  css: () => `${PROSE_DOC}\n${proseBody(".pantoken-prose").trim()}\n`,
+  rules: () => `${PROSE_DOC}\n${proseBody(":where(body)").trim()}\n`,
+  css: () => `${PROSE_DOC}\n${proseBody(":where(body)").trim()}\n`,
 };

@@ -36,8 +36,8 @@ function transitionFallbackDelay(target: HTMLElement): number {
  *
  * The timeout is an explicit millisecond option or the target's computed, unitless `--timeout` CSS
  * custom property. Missing, non-finite, and non-positive values don't arm a timer. A fade uses the
- * `@pantoken/plugin-transition` classes (`.instui-transition` + `-fade-*`), then waits for
- * `transitionend` (with a fallback); `transition: "none"` removes immediately.
+ * `@pantoken/components` `transition` utility's classes (`.instui-transition` + `-fade-*`), then waits
+ * for `transitionend` (with a fallback); `transition: "none"` removes immediately.
  */
 export function initRemove(target: HTMLElement, options: RemoveOptions = {}): RemoveHandle {
   const cssTimeout = getComputedStyle(target).getPropertyValue("--timeout").trim();

@@ -2,6 +2,7 @@ import { expect, test } from "vite-plus/test";
 import { progressCircleCss } from "../../src/index.ts";
 import { progressCircle } from "../../src/components/progress-circle/index.ts";
 import { validate } from "../_validate.ts";
+import { norm } from "../_css.ts";
 
 test("progress-circle: emits exactly one well-formed cssdoc record with no token drift", () => {
   validate(progressCircle);
@@ -47,8 +48,8 @@ test("progress circle registers current, maximum, and animation inputs", () => {
 });
 
 test("progress circle embeds the shared mount transition and a functional deprecated alias", () => {
-  const css = progressCircleCss({ prefix: "instui" });
-  expect(css).toContain(".instui-progress-circle { transition: --value 1s; }");
+  const css = norm(progressCircleCss({ prefix: "instui" }));
+  expect(css).toContain("transition: --value 1s;");
   expect(css).toContain(".instui-progress-circle.-should-animate");
   expect(css).toContain(".instui-progress-circle.-should-animate-on-mount");
   expect(css).toContain(".instui-progress-circle.-shold-animate-on-mount");

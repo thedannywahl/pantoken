@@ -90,6 +90,7 @@
   font-family: var(--instui-component-progress-circle-font-family);
   font-weight: var(--instui-component-progress-circle-font-weight);
   line-height: var(--instui-component-progress-circle-line-height);
+  transition: --value 1s;
 }
 
 /* The ring is a masked conic donut on ::before; the value sits in the hole. */
@@ -109,6 +110,11 @@
     #000 0
   );
   mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
+
+  transition:
+    opacity 0.5s 0.2s,
+    transform 0.5s;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .pfx-progress-circle .value {
@@ -210,4 +216,25 @@
 
 .pfx-progress-circle:indeterminate .value {
   visibility: hidden;
+}
+
+.pfx-progress-circle > .value {
+  transition:
+    opacity 0.5s 1s,
+    transform 0.5s 1s;
+  transform: translate3d(0, 0, 0);
+}
+
+.pfx-progress-circle.-should-animate {
+  --value: 0 !important;
+}
+
+.pfx-progress-circle.-should-animate::before {
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(0.75);
+}
+
+.pfx-progress-circle.-should-animate > .value {
+  opacity: 0;
+  transform: translate3d(0, 10%, 0);
 }

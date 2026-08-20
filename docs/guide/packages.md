@@ -100,7 +100,7 @@ Optional transforms that extend the token or CSS output. See [Plugins](/guide/pl
 
 | Package                                                                               | What it adds                                                    |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as tokens + `.instui-stack-*` classes.     |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as `--instui-stacking-*` tokens.           |
 | [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.              |
 | [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                  |
 | [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |

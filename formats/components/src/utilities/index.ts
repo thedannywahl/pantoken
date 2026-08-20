@@ -21,6 +21,7 @@ import { spacing } from "./spacing/index.ts";
 import { stacking } from "./stacking/index.ts";
 import { transition } from "./transition/index.ts";
 import { truncate } from "./truncate/index.ts";
+import { visualDebug } from "./visual-debug/index.ts";
 
 /** Every documented utility record. */
 export const UTILITIES: readonly Definition[] = [
@@ -37,4 +38,5 @@ export const UTILITIES: readonly Definition[] = [
   screenReaderContent,
   transition,
   truncate,
+  visualDebug,
 ];

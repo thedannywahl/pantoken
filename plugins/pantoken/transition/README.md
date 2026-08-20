@@ -1,12 +1,10 @@
 # @pantoken/plugin-transition
 
-The CSS behind InstUI's `Transition` utility, as a pantoken plugin. It emits a base
-`.instui-transition` class (the animated `transition` property) plus the `fade`, `scale`, and
-`slide-{up,down,left,right}` type/state classes, and defines the `--instui-transition-duration` and
-`--instui-transition-timing` tokens they read.
-
-InstUI's `Transition` toggles per-state class names as an element mounts and unmounts. This plugin
-ships those rules; you (or a framework transition group) toggle the state class.
+The `--instui-transition-duration`/`--instui-transition-timing` tokens behind InstUI's `Transition`
+utility, as a pantoken plugin. The CSS itself (the `.instui-transition` base rule plus the `fade`,
+`scale`, and `slide-{up,down,left,right}` state classes) lives in `@pantoken/components`' own
+`transition` utility — this plugin only bakes the two tokens for consumers using the lower-level
+`@pantoken/css`/`@pantoken/tokens` pipeline directly.
 
 ## Install
 
@@ -19,25 +17,11 @@ Also available as `pantoken/transition`.
 ## Usage
 
 ```ts
-import { toCss } from "@pantoken/css";
-import { byTheme } from "@pantoken/tokens";
+import { buildTokens } from "@pantoken/core";
 import { transition } from "@pantoken/plugin-transition";
 
-const css = toCss(byTheme("rebrand"), { plugins: [transition()] });
+const tokens = buildTokens({ theme: "rebrand", plugins: [transition()] });
+// → includes --instui-transition-duration: 300ms, --instui-transition-timing: ease-in-out
 ```
 
-The Node-free `@pantoken/plugin-transition/progress` and
-`@pantoken/plugin-transition/progress-circle` subpaths export `progressTransitionRules(prefix)` and
-`progressCircleTransitionRules(prefix)`, the InstUI-compatible transitions used by
-`@pantoken/components`' linear and circular progress indicators.
-
-Then apply a type class and swap the state class over time:
-
-```html
-<div class="instui-transition -fade-exited">…</div>
-<!-- → -fade-entering → …--fade-entered -->
-```
-
-States are `-entering`, `-entered`, `-exiting`, `-exited`. Types are `fade`, `scale`, and
-`slide-up` / `slide-down` / `slide-left` / `slide-right`. Duration defaults to `300ms` and timing to
-`ease-in-out` (both overridable via options).
+Duration defaults to `300ms` and timing to `ease-in-out` (both overridable via options).

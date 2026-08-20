@@ -311,23 +311,14 @@ export function componentSources(componentsRoot: string): string[] {
 type PluginRecord = { pkg: string; sheet: string; import: string };
 
 /**
- * The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives/layouts) carry cssdoc records in
- * their generated sheets. Plugins use `@group Plugins`; the layouts plugin uses `@group Layouts` so it
+ * The CSS-emitting plugins (visual-debug/logos/primitives/layouts) carry cssdoc records in their
+ * generated sheets. Plugins use `@group Plugins`; the layouts plugin uses `@group Layouts` so it
  * gets its own sidebar section. They render in the SAME pass as the component records — one `emitCssApi`
- * call, one "CSS" section.
+ * call, one "CSS" section. `stacking`/`transition` are excluded here — they're tokens-only plugins now;
+ * their CSS records live in `@pantoken/components`' own utilities and are picked up via `files()` above.
  */
 export function pluginRecords(): PluginRecord[] {
   return [
-    {
-      pkg: "plugins/pantoken/stacking",
-      sheet: "stacking.css",
-      import: "@pantoken/plugin-stacking/stacking.css",
-    },
-    {
-      pkg: "plugins/pantoken/transition",
-      sheet: "transition.css",
-      import: "@pantoken/plugin-transition/transition.css",
-    },
     {
       pkg: "plugins/pantoken/visual-debug",
       sheet: "visual-debug.css",

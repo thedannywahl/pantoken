@@ -45,8 +45,8 @@ label="…">` — an arbitrary-scale ring with the same native-element selection
   supported shorthand attributes.
 
 Alert timeout dismissal uses the shared `@pantoken/interactions` behavior. Load
-`@pantoken/plugin-transition/transition.css` for its default fade treatment; `transition="none"`
-removes the alert immediately without that stylesheet.
+`@pantoken/components/utilities.css` for its default fade treatment (the `transition` utility);
+`transition="none"` removes the alert immediately without that stylesheet.
 
 - `<instui-metric value="…" label="…">`, `<instui-rating value="3" max="5">`.
 - `<instui-icon-button label="…">`, `<instui-toggle-button pressed="true|false">`.

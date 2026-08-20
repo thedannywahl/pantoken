@@ -441,7 +441,7 @@ test("heading levels are the single source of truth shared with prose", () => {
   for (const level of ["h1", "h2", "h3", "h4", "h5", "h6"]) {
     const token = `var(--instui-component-heading-${level}-font-size)`;
     expect(heading).toContain(`.instui-heading.-level-${level} { font-size: ${token}`);
-    expect(prose).toContain(`.pantoken-prose ${level} { font-size: ${token}`);
+    expect(prose).toContain(`:where(body) ${level} { font-size: ${token}`);
   }
 });
 

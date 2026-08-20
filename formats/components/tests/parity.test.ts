@@ -20,7 +20,7 @@ test("every registered definition is a single well-formed record (sanity: the re
   // `table.head`/`table.body`/`table.row`/`table.cell`/`table.col-header`/`table.row-header`, and
   // `list.item` members).
   expect(COMPONENTS.length).toBe(71);
-  expect(UTILITIES.length).toBe(13);
+  expect(UTILITIES.length).toBe(14);
   expect(RULES.length).toBe(2);
   expect(DECLARATIONS.length).toBe(2);
 });

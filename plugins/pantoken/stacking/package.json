@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/plugin-stacking",
   "version": "0.2.3",
-  "description": "pantoken plugin: named z-index depths (deepest, below, above, topmost) as --instui-stacking-* tokens plus .instui-stack-* utility classes, from InstUI's view stacking scale.",
+  "description": "pantoken plugin: named z-index depths (deepest, below, above, topmost) as --instui-stacking-* tokens, from InstUI's view stacking scale (the .instui-stack-* utility classes live in @pantoken/components).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -14,12 +14,9 @@
     "dist"
   ],
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./stacking.css": "./dist/stacking.css",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -27,8 +24,7 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
-    "dev": "vp run generate && vp pack --watch",
+    "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
   },

@@ -53,15 +53,15 @@ pantoken components:
 
 For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
 the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the transition plugin's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the plugin's `-fade-exiting` state and fires a
-cancelable, bubbling `dismiss` event before removal, so an application can call `preventDefault()`
-to keep the alert mounted.
+place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
+them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
+bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
+alert mounted.
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@pantoken/plugin-transition/dist/transition.css"
+  href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/utilities.css"
 />
 <div
   class="instui-alert -color-info instui-transition -fade-entered"

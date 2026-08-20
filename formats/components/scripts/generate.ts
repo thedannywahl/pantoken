@@ -41,6 +41,7 @@ import {
   spacingUtilitiesCss,
   stackingUtilityCss,
   truncateCss,
+  visualDebugCss,
 } from "../src/index.ts";
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
@@ -264,7 +265,7 @@ const aiTextRule = (() => {
 })();
 writeFileSync(
   join(outDir, "utilities.css"),
-  `${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${positionUtilitiesCss(opts)}\n${overflowUtilitiesCss(opts)}\n${cursorUtilitiesCss(opts)}\n${stackingUtilityCss(opts)}\n${maskUtilityCss(opts)}\n${truncateCss(opts)}\n${spacingUtilitiesCss(opts)}\n${gapCss(opts)}\n${colorDoc}${colorUtilitiesCss(
+  `${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${positionUtilitiesCss(opts)}\n${overflowUtilitiesCss(opts)}\n${cursorUtilitiesCss(opts)}\n${stackingUtilityCss(opts)}\n${maskUtilityCss(opts)}\n${truncateCss(opts)}\n${visualDebugCss(opts)}\n${spacingUtilitiesCss(opts)}\n${gapCss(opts)}\n${colorDoc}${colorUtilitiesCss(
     {
       background: [...names("background"), ...backgroundExtras],
       text: [...names("text"), ...textExtras],

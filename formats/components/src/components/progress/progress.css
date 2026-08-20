@@ -200,3 +200,8 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+/* Mount/value transition — the interactions layer toggles `-should-animate` on value changes. */
+.pfx-progress.-should-animate > .bar {
+  transition: all 0.5s;
+}

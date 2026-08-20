@@ -79,7 +79,8 @@ namespace every class.
 - **`buttonCss` / `alertCss` / `badgeCss` (options?)** — one component's stylesheet.
 - **`baseCss(): string`** — the global reset plus the focus-outline ring.
 - **`proseCss(options?): string`** — the prose/content stylesheet. `options.scope` sets the
-  content-root selector (default `".pantoken-prose"`).
+  content-root selector (default `":where(body)"`, applied automatically like `baseCss()` — no wrapper
+  class required unless you pass a different `scope`, e.g. `".vp-doc"`).
 - **`elevationCss(options?)`, `focusOutlineCss(options?)`** — the shadow scale and focus ring, exposed
   for renderers that compose their own sheets (`@pantoken/pendo` does this).
 - **`viewCss`, `spacingUtilitiesCss`, `layoutUtilitiesCss`, `responsiveUtilitiesCss` (options?)** — the

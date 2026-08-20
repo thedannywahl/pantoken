@@ -112,20 +112,8 @@ const orchestrator = workspaceOrchestrator({
     // `node scripts/generate.ts` (no `vp pack`; the sheet is a sibling of `src`, so no watch loop). The
     // three with a demo sheet re-stage it into demos-assets AND rebuild their CSS-API `@example` pages;
     // logos/primitives have `@example` pages but no demo sheet, so they only cascade to the CSS-API build.
-    {
-      name: "@pantoken/plugin-transition",
-      dir: at("plugins/pantoken/transition"),
-      watchPaths: [at("plugins/pantoken/transition/src")],
-      build: ["node", "scripts/generate.ts"],
-      dependents: ["@pantoken/docs#plugin-assets", "@pantoken/docs#docs:api:css"],
-    },
-    {
-      name: "@pantoken/plugin-stacking",
-      dir: at("plugins/pantoken/stacking"),
-      watchPaths: [at("plugins/pantoken/stacking/src")],
-      build: ["node", "scripts/generate.ts"],
-      dependents: ["@pantoken/docs#plugin-assets", "@pantoken/docs#docs:api:css"],
-    },
+    // `transition`/`stacking` are tokens-only plugins now (no generated CSS) — their CSS lives in, and
+    // rebuilds via, `@pantoken/components` above.
     {
       name: "@pantoken/plugin-visual-debug",
       dir: at("plugins/pantoken/visual-debug"),
@@ -170,9 +158,9 @@ const orchestrator = workspaceOrchestrator({
       dependents: ["@pantoken/docs#docs:api:css"],
     },
     {
-      // Re-stage the transition/stacking/visual-debug decoration sheets into public/demos-assets/ from the
-      // plugins' freshly-generated sheets. Dependent-only; writing into public/ triggers a Vite full reload
-      // so the <head>-linked chrome and the /play iframes refetch. See stage-plugin-assets.ts.
+      // Re-stage the visual-debug decoration sheet into public/demos-assets/ from the plugin's
+      // freshly-generated sheet. Dependent-only; writing into public/ triggers a Vite full reload so the
+      // <head>-linked chrome and the /play iframes refetch. See stage-plugin-assets.ts.
       name: "@pantoken/docs#plugin-assets",
       dir: at("docs"),
       watchPaths: [],
@@ -430,9 +418,11 @@ export default defineConfig({
   base,
   title: "pantoken",
   description,
-  // The focus-outline ring and the transition/stacking/visual-debug classes live in plugins, not the
-  // source tokens, so layer their generated sheets (staged once by scripts/demos.ts) over the site's
-  // token sheet. `.instui-card` (the shared example/demo surface) is bundled via the theme instead.
+  // The focus-outline ring and visual-debug classes live in plugins, not the source tokens, so layer
+  // their generated sheets (staged once by scripts/demos.ts) over the site's token sheet. Transition
+  // and stacking classes ship inside `@pantoken/components`' own utilities.css (imported by the theme)
+  // now that those plugins are tokens-only. `.instui-card` (the shared example/demo surface) is bundled
+  // via the theme instead.
   head: [
     // Apply the stored pantoken theme before first paint (no flash). The palette selector in the nav
     // writes `pantoken-theme`; non-rebrand themes have no light/dark, so drop `.dark` for them.
@@ -443,8 +433,6 @@ export default defineConfig({
     ],
     ["link", { rel: "icon", type: "image/png", href: `${base}favicon.png` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/focus-outline.css` }],
-    ["link", { rel: "stylesheet", href: `${base}demos-assets/transition.css` }],
-    ["link", { rel: "stylesheet", href: `${base}demos-assets/stacking.css` }],
     ["link", { rel: "stylesheet", href: `${base}demos-assets/visual-debug.css` }],
     ["meta", { name: "author", content: "Danny Wahl" }],
     [

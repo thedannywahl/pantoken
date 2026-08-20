@@ -53,15 +53,15 @@ pantoken komponensek:
 
 Az InstUI `timeout` propjához állítsd be a mértékegység nélküli `--timeout` egyéni tulajdonságot milliszekundumban, és töltsd be
 az Alert interakciót. A pozitív érték ütemezi az eltüntetést; a `0` (az alapértelmezett) a helyén hagyja az értesítést.
-Add hozzá az áttűnési (transition) plugin `instui-transition -fade-entered` osztályait az InstUI áttűnéséhez (fade); hagyd el
-őket az azonnali eltávolításhoz. Az interakció vezérli a plugin `-fade-exiting` állapotát, és egy
+Add hozzá a `transition` segédprogram `instui-transition -fade-entered` osztályait az InstUI áttűnéséhez (fade); hagyd el
+őket az azonnali eltávolításhoz. Az interakció vezérli a `-fade-exiting` állapotot, és egy
 megszakítható, buborékoló `dismiss` eseményt vált ki az eltávolítás előtt, így az alkalmazás meghívhatja a `preventDefault()`-t,
 hogy az alert csatolva maradjon.
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@pantoken/plugin-transition/dist/transition.css"
+  href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/utilities.css"
 />
 <div
   class="instui-alert -color-info instui-transition -fade-entered"
