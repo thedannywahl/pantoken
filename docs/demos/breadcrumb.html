@@ -3,41 +3,43 @@
     <!-- Each crumb is a link; the last (current page) is plain text. A crumb can lead with an icon. -->
     <nav class="instui-breadcrumb" aria-label="Breadcrumb">
       <ol>
-        <li class="link">
-          <a href="#"><span class="instui-icon -icon-house"></span> Home</a>
+        <li>
+          <a class="-icon-house" href="#">Home</a>
         </li>
-        <li class="link"><a href="#">Guides</a></li>
-        <li class="link"><a href="#">Components</a></li>
-        <li class="link" aria-current="page">Breadcrumb</li>
+        <li><a href="#">Guides</a></li>
+        <li><a href="#">Components</a></li>
+        <li aria-current="page">Breadcrumb</li>
       </ol>
     </nav>
 
     <!-- -size-sm and -size-lg scale the text and separator gap. -->
     <nav class="instui-breadcrumb -size-sm" aria-label="Breadcrumb (small)">
       <ol>
-        <li class="link"><a href="#">Course</a></li>
-        <li class="link"><a href="#">Module 3</a></li>
-        <li class="link" aria-current="page">Assignment</li>
+        <li><a href="#">Course</a></li>
+        <li><a href="#">Module 3</a></li>
+        <li aria-current="page">Assignment</li>
       </ol>
     </nav>
 
     <nav class="instui-breadcrumb -size-lg" aria-label="Breadcrumb (large)">
       <ol>
-        <li class="link"><a href="#">Dashboard</a></li>
-        <li class="link"><a href="#">Reports</a></li>
-        <li class="link" aria-current="page">Q3 summary</li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Reports</a></li>
+        <li aria-current="page">Q3 summary</li>
       </ol>
     </nav>
 
-    <!-- Below ~768px, hide the trail and show a Link back to the parent page instead (resize to see it). -->
-    <nav class="instui-breadcrumb instui-hidden-max-md" aria-label="Breadcrumb (responsive)">
+    <!-- breadcrumbs without any links are automatically hidden. This code is below:
+      <nav class="instui-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li class="-icon-house" aria-current="page">Home Page</li>
+        </ol>
+      </nav> 
+    -->
+    <nav class="instui-breadcrumb" aria-label="Breadcrumb">
       <ol>
-        <li class="link"><a href="#">University of Utah</a></li>
-        <li class="link" aria-current="page">Colleges</li>
+        <li class="-icon-house" aria-current="page">Home Page</li>
       </ol>
     </nav>
-    <a class="instui-link instui-hidden-min-md" href="#">
-      <span class="instui-icon -icon-arrow-left"></span> University of Utah
-    </a>
   </div>
 </div>

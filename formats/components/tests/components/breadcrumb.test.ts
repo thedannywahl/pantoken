@@ -24,3 +24,27 @@ test("breadcrumb.link separators scale with the parent's size modifiers", () => 
   expect(css).toContain(".instui-breadcrumb.-size-lg .link:not(:last-child)::after");
   expect(css).toContain(":scope > .link:not(:last-child)::after");
 });
+
+test("breadcrumb.link collapses to a back-link at each breakpoint", () => {
+  const css = breadcrumbLinkCss({ prefix: "instui" });
+  for (const [name, width] of [
+    ["sm", "30rem"],
+    ["md", "48rem"],
+    ["lg", "64rem"],
+    ["xl", "80rem"],
+  ]) {
+    expect(css).toContain(`@media (max-width: ${width})`);
+    expect(css).toContain(
+      `:scope.-collapse-${name} > ol:has(> .link:nth-last-child(2)) > .link:not(:nth-last-child(2))`,
+    );
+    expect(css).toContain(`:scope.-collapse-${name} > .link:nth-last-child(2)::after`);
+    expect(css).toContain(
+      `:scope.-collapse-${name} > .link:nth-last-child(2) > a > [class*="-icon-"]`,
+    );
+    expect(css).toContain(`:scope.-collapse-${name} > .link:nth-last-child(2) > a::before`);
+    expect(css).toContain("var(--instui-icon-arrow-left)");
+    expect(css).toContain(
+      `[dir="rtl"] :scope.-collapse-${name} > .link:nth-last-child(2) > a::before`,
+    );
+  }
+});
