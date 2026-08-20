@@ -105,23 +105,53 @@ export const fooCss = foo.css;
   (`.instui-badge-wrapper`). A guard test rejects `__` and `--`.
 - Avoid hyphen-then-digit tokens (`-2xs` needs escaping); keep tokens letter-leading.
 
+## Reuse an existing global utility — don't invent a parallel one
+
+`view`'s and `text`'s own key-value modifiers (background, border, shadow, display, position,
+overflow, cursor, colour, weight, size, transform, variants) are **copied** into global, dual-selector
+utilities — usable bare (`<div class="instui-bg-secondary">`) or chained onto any component
+(`<button class="instui-button -bg-danger">`) — without touching the component's own chained
+modifiers, which stay exactly as authored.
+
+- **Never invent a new class word for something a global utility already covers.** If a generic
+  `bg`/`text`/`border`/`border-radius`/`border-width`/`box-shadow`/`display` utility already exists,
+  extend it (add a name, or an explicit `[name, token]` pair for a value outside its usual token
+  family) — don't author a parallel word like `-stroke-*` or a word-spelled duplicate like
+  `-border-radius-small` next to the existing `-border-radius-sm`.
+- Only a genuinely new concept (no existing global analogue) gets its own utility file — see
+  `utilities/position/`, `utilities/overflow/`, `utilities/cursor/`.
+- The dual-selector mechanism is `GLOBAL_ALIAS_TARGETS`/`globalSelectors()` (`lib/global-alias.ts`) —
+  the same pattern spacing/gap pioneered, generalized so any utility can reuse it. It lives in its own
+  module (not `helpers.ts`) specifically to avoid a component → helpers → global-alias → components
+  import cycle.
+- `packages/utils`'s `colorUtilitiesCss`/`tokenUtilitiesCss` take an optional `chainTargets` option for
+  the same dual behavior, and `colorUtilitiesCss` accepts `[name, value]` pairs (not just
+  prefix-relative names) so a component's own token family can feed the same class word.
+- **Watch the combinatorial cost**: a rule's selector list is `1 + chainTargets.length` selectors long.
+  For a utility with many breakpoint/name variants (like `responsive`), multiplying that by ~70
+  components pushes the shared alias post-processors (`withSizeAliases`/`deprecatedAliasPairs` in
+  `lib/aliases.ts`, which scan with unanchored regexes) into unusably slow territory — confirmed by a
+  multi-minute hang during authoring. `responsive` stays bare-only for this reason; anything with a
+  similarly large modifier surface should be measured before adding `chainTargets`.
+- `cssdoc.jsonc`'s `globalPrecedence: "base"` (pinned explicitly at the repo root) is the tie-breaker
+  when a component's own modifier and a `@global` utility's copy share a name: the component's own
+  documentation wins.
+
 ## Universal spacing/gap modifiers
 
 - `margin`/`padding`/`gap` utility classes (`utilities/spacing.ts`, `utilities/gap.ts`) are
   **universal**: every component and `view` get a component-attached alias for free
-  (`.instui-card.-mb-sm`), with no per-record authoring — see `SPACING_ALIAS_TARGETS` in
-  `utilities/spacing.ts`.
+  (`.instui-card.-mb-sm`), with no per-record authoring — see `GLOBAL_ALIAS_TARGETS` in
+  `lib/global-alias.ts` (spacing/gap re-export it as `SPACING_ALIAS_TARGETS` for backward compat).
 - Each value ships in exactly two spellings: **short** (`-mb-sm`, unchanged since before the long
   spelling existed) and fully **long**, word-spelled (`-margin-bottom-small`) — never a mixed-segment
   form (no `-margin-e-small`, no `-me-small`).
 - Because these modifiers are documented on the separate `spacing`/`gap` utility records, not on the
-  component they're chained onto, `withSpacingModifierDocs()` (`lib/aliases.ts`) injects five wildcard
-  `@modifier` families (`-m*`, `-margin*`, `-p*`, `-padding*`, `-gap*`) into every component's and
-  `view`'s own doc comment. This is what keeps a consumer's `@cssdoc/eslint-plugin`
-  `valid-class-usage` check from flagging `.instui-card.-mb-sm` as an unknown modifier — that rule
-  looks up modifiers against the record the base class belongs to, not wherever the CSS rule happens
-  to be authored. A more durable fix (a utility's modifiers implicitly valid on any component) is a
-  cssdoc feature request, not a pantoken workaround.
+  component they're chained onto, a consumer's `@cssdoc/eslint-plugin` `valid-class-usage` check may
+  flag `.instui-card.-mb-sm` as an unknown modifier — that rule looks up modifiers against the record
+  the base class belongs to, not wherever the CSS rule happens to be authored. A wildcard doc-injection
+  helper to close this gap (for spacing/gap and every other dual utility in this section) is still a
+  cssdoc-tooling follow-up, not yet implemented.
 - If a component already sets its own `margin`/`padding`/`gap` from a component-specific token (e.g.
   card's responsive padding, breadcrumb's `gap`), document that in `@remarks` and warn that chaining a
   spacing/gap utility modifier overrides it — see breadcrumb, button, byline, checkbox, form-field,
