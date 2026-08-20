@@ -9,8 +9,12 @@ test("layout: emits exactly one well-formed cssdoc record with no token drift", 
 
 test("layout utilities cover display and text-align (InstUI cross-cutting props)", () => {
   const css = layoutUtilitiesCss({ prefix: "instui" });
-  expect(css).toContain(".instui-display-flex { display: flex; }");
-  expect(css).toContain(".instui-display-inline-block { display: inline-block; }");
-  expect(css).toContain(".instui-text-align-center { text-align: center; }");
-  expect(css).toContain(".instui-text-align-end { text-align: end; }");
+  expect(css).toContain(".instui-display-flex, .instui-button.-display-flex");
+  expect(css).toContain("display: flex;");
+  expect(css).toContain(".instui-display-inline-block, .instui-button.-display-inline-block");
+  expect(css).toContain("display: inline-block;");
+  expect(css).toContain(".instui-text-align-center, .instui-button.-text-align-center");
+  expect(css).toContain("text-align: center;");
+  expect(css).toContain(".instui-text-align-end, .instui-button.-text-align-end");
+  expect(css).toContain("text-align: end;");
 });

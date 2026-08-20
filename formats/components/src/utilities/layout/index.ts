@@ -1,12 +1,14 @@
 /**
- * The layout utilities — `display` and `text-align` as composable classes.
+ * The layout utilities — `display` and `text-align` as composable, globally-available classes (bare,
+ * or chained onto any component).
  *
  * @module
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
+import { globalSelectors } from "../../lib/global-alias.ts";
 
-/** The layout utility — composable `display` and `text-align` classes. */
+/** The layout utility — composable, global `display` and `text-align` classes. */
 export const layout: Definition = defineUtility({
   name: "layout",
   css: (p) =>
@@ -14,7 +16,8 @@ export const layout: Definition = defineUtility({
     css`/**
  * @utility layout
  * @selector .instui-display-flex
- * @summary Display and text-align utilities — \`.instui-display-<value>\` and \`.instui-text-align-<value>\` — as composable classes.
+ * @global
+ * @summary Display and text-align utilities — \`.instui-display-<value>\` and \`.instui-text-align-<value>\` — as composable, global classes, usable bare or chained onto any component.
  * @example
  * <div class="instui-display-flex instui-text-align-center">
  *   <span>One</span>
@@ -22,9 +25,10 @@ export const layout: Definition = defineUtility({
  * </div>
  */
 ${[
-      ...["block", "inline-block", "inline", "flex", "inline-flex", "none"].map(
-        (v) => `.${p}display-${v} { display: ${v}; }`,
-      ),
+      ...["block", "inline-block", "inline", "flex", "inline-flex", "none"].map((v) => {
+        const selectors = globalSelectors(p, `.${p}display-${v}`, `.-display-${v}`);
+        return `${selectors.join(", ")} { display: ${v}; }`;
+      }),
       ...(
         [
           ["start", "start"],
@@ -32,7 +36,10 @@ ${[
           ["end", "end"],
           ["justify", "justify"],
         ] as const
-      ).map(([name, value]) => `.${p}text-align-${name} { text-align: ${value}; }`),
+      ).map(([name, value]) => {
+        const selectors = globalSelectors(p, `.${p}text-align-${name}`, `.-text-align-${name}`);
+        return `${selectors.join(", ")} { text-align: ${value}; }`;
+      }),
     ].join("\n")}`,
 });
 

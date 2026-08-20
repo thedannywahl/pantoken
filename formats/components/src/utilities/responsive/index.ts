@@ -2,6 +2,12 @@
  * The responsive-visibility utilities — the closest pure-CSS analogue to InstUI's `<Responsive>`:
  * viewport-width hide classes plus `-cq-` container-query variants.
  *
+ * Bare-only (not dual-chained onto every component like spacing/gap/layout): the alias
+ * post-processors (`withSizeAliases`/`deprecatedAliasPairs` in `lib/aliases.ts`) scan this record's
+ * CSS body with unanchored regexes, and this utility's selector lists (breakpoint × infix ×
+ * short/long/device name) are already large enough that adding ~70 more chained selectors per rule
+ * pushes the scan into unusable-slow territory (confirmed: multi-minute hang during implementation).
+ *
  * @module
  */
 import { tokens } from "@pantoken/tokens";
@@ -167,6 +173,7 @@ export const responsive: Definition = defineUtility({
 /**
  * @utility responsive
  * @selector [class*="-hidden-"],[class*="-show-"]
+ * @global
  * @summary Viewport- or container-width show/hide classes across a themed breakpoint scale.
  * @remarks \`.instui-hidden-max-<bp>\`/\`-hidden-min-<bp>\` hide by viewport width; \`.instui-show-max-<bp>\`/\`-show-min-<bp>\` are the inverse (hidden by default, shown only inside the range via \`display: revert\`); the \`-cq-\` variants react to a \`.instui-container\` ancestor's width instead, not the viewport's. Scale tiers \`xs\`/\`sm\`/\`md\`/\`lg\`/\`xl\` (sourced from the IR's tray-width component tokens) are each aliased to a long-form spelling (\`x-small\`\u2013\`x-large\`) and a device name (\`mobile\`/\`phablet\`/\`tablet\`/\`laptop\`/\`desktop\`) \u2014 both deprecated in favor of the short name \u2014 plus the unscaled, themed \`content\`/\`content-full-width\` tiers (the main content area's max-width).
  * @example
