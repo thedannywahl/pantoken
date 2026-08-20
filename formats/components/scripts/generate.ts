@@ -5,7 +5,8 @@
  * - `generated/components.css` — the class-based components (button, alert, badge), `.instui-*`.
  * - `generated/prose.css` — the prose/content styling, scoped to `.pantoken-prose`.
  * - `generated/icons.css` — one `.instui-icon-<name>` glyph class per icon (large; kept separate).
- * - `generated/utilities.css` — cross-cutting spacing/colour utilities + the View primitive.
+ * - `generated/utilities.css` — cross-cutting spacing/colour/layout utilities, including the global
+ *   dual copies of `view`'s/`text`'s own modifiers (bare, or chained onto any component).
  *
  * Per-component CSS files (`generated/<name>.css`) are emitted separately by `scripts/build-entries.ts`
  * which only runs as part of `build`, not `generate`. This keeps the generate step (used by docs:dev)
@@ -19,21 +20,25 @@ import { join, resolve } from "node:path";
 import { applyMinify } from "@pantoken/plugin-props-minify";
 import { icons } from "@pantoken/icons";
 import { tokens } from "@pantoken/tokens";
-import { colorUtilitiesCss, tokenUtilitiesCss } from "@pantoken/utils";
+import { colorUtilitiesCss, tokenUtilitiesCss, type ColorUtilityEntry } from "@pantoken/utils";
 import { css } from "../src/lib/css.ts";
+import { GLOBAL_ALIAS_TARGETS, globalSelectors } from "../src/lib/global-alias.ts";
 import { fontsCss } from "./fonts.ts";
 import {
   baseCss,
   componentsCss,
+  cursorUtilitiesCss,
   ELEVATION_NAMES,
   gapCss,
   iconGlyphsCss,
   layoutUtilitiesCss,
+  maskUtilityCss,
+  overflowUtilitiesCss,
+  positionUtilitiesCss,
   proseCss,
   responsiveUtilitiesCss,
   selectCss,
   spacingUtilitiesCss,
-  viewCss,
 } from "../src/index.ts";
 const outDir = resolve(import.meta.dirname, "../generated");
 mkdirSync(outDir, { recursive: true });
@@ -51,6 +56,9 @@ const writeIfChanged = (path: string, next: string): void => {
 // The shipped stylesheets carry the default `instui` prefix. The builders opt out of a prefix on any
 // falsy value, so pass it explicitly here (the `prefix: null` opt-out is a consumer-side choice).
 const opts = { prefix: "instui" } as const;
+/** Join a class prefix to its separator, matching `lib/helpers.ts`'s `ns()` (kept local here so this
+ *  script doesn't need to pull in `helpers.ts`'s `@pantoken/utils` dependency just for one string join). */
+const ns = (prefix: string): string => (prefix ? `${prefix}-` : "");
 
 // The semantic colour "intents" worth exposing as override utilities — the surface/text/border
 // vocabulary an author actually reaches for. This deliberately skips the control-state subtree
@@ -96,10 +104,11 @@ const family = (prefix: string): string[] =>
     .sort();
 
 // Semantic families that map cleanly to a single CSS property. Colour and spacing are excluded — they
-// have bespoke builders (bg/fg/border, m/p) since one token maps to several properties there.
+// have bespoke builders (bg/text/border, m/p) since one token maps to several properties there.
 const tokenGroups = [
   { property: "font-family", tokens: family("--instui-font-family-") },
   { property: "font-weight", tokens: family("--instui-font-weight-") },
+  { property: "font-size", tokens: family("--instui-font-size-") },
   { property: "line-height", tokens: family("--instui-line-height-") },
   { property: "border-radius", tokens: family("--instui-border-radius-") },
   { property: "border-width", tokens: family("--instui-border-width-") },
@@ -107,6 +116,59 @@ const tokenGroups = [
   // Elevation shadows are defined by elevationCss (in components.css), not the base IR; reference them.
   { property: "box-shadow", tokens: ELEVATION_NAMES.map((n) => `--instui-elevation-${n}`) },
 ];
+
+// A handful of `view`'s/`text`'s own short-spelled modifier names are value-equal aliases of an
+// already-emitted token-scale class above (or a literal, non-token value) — copied here as their own
+// global dual rule rather than invented under a new class word. See docs/conventions/authoring.md.
+const aliasRule = (bareClass: string, modifier: string, prop: string, value: string): string => {
+  const selectors = globalSelectors(ns(opts.prefix), bareClass, modifier);
+  return `${selectors.join(", ")} { ${prop}: ${value}; }`;
+};
+const extraAliases = [
+  // `-weight-bold` (text) — same value as the existing `.instui-font-weight-body-strong`.
+  aliasRule(
+    ".instui-font-weight-bold",
+    ".-font-weight-bold",
+    "font-weight",
+    "var(--instui-font-weight-body-strong)",
+  ),
+  // `-size-{xs,sm,lg,xl}` (text) — same values as the existing `.instui-font-size-text-*` scale.
+  aliasRule(
+    ".instui-font-size-xs",
+    ".-font-size-xs",
+    "font-size",
+    "var(--instui-font-size-text-xs)",
+  ),
+  aliasRule(
+    ".instui-font-size-sm",
+    ".-font-size-sm",
+    "font-size",
+    "var(--instui-font-size-text-sm)",
+  ),
+  aliasRule(
+    ".instui-font-size-lg",
+    ".-font-size-lg",
+    "font-size",
+    "var(--instui-font-size-text-lg)",
+  ),
+  aliasRule(
+    ".instui-font-size-xl",
+    ".-font-size-xl",
+    "font-size",
+    "var(--instui-font-size-text2xl)",
+  ),
+  // `-size-xx-large` (text) — no matching generic tier; a genuinely new value.
+  aliasRule(".instui-font-size-xx-large", ".-font-size-xx-large", "font-size", "2.375rem"),
+  // `-border-radius-{circle,pill}` (view) — circle is a literal shape value; pill reuses the
+  // existing `full` token.
+  aliasRule(".instui-border-radius-circle", ".-border-radius-circle", "border-radius", "50%"),
+  aliasRule(
+    ".instui-border-radius-pill",
+    ".-border-radius-pill",
+    "border-radius",
+    "var(--instui-border-radius-full)",
+  ),
+].join("\n");
 
 const componentsSheet = componentsCss(opts);
 writeFileSync(join(outDir, "base.css"), applyMinify(baseCss(), { flatten: true }));
@@ -159,15 +221,55 @@ writeFileSync(
 const colorDoc = css`/**
  * @utility color
  * @selector .instui-text-danger
- * @summary Semantic colour utilities: \`.instui-bg-<name>\`, \`.instui-text-<name>\`, and \`.instui-stroke-<name>\` for the curated semantic palette.
+ * @global
+ * @summary Semantic colour utilities: \`.instui-bg-<name>\`, \`.instui-text-<name>\`, and \`.instui-border-<name>\` for the curated semantic palette. Every one of these also has a component-attached alias modifier (for example \`-bg-danger\` on any \`.instui-<component>\`).
  * @example <p class="instui-text-danger">Something went wrong.</p>
  */\n`;
+// `view`'s/`text`'s own component-specific token families, merged onto the SAME generic class words
+// (`bg`/`border`/`text`) rather than inventing a parallel word — see docs/conventions/authoring.md.
+// Names that already exist generically (brand/info/success/warning) are intentionally NOT repeated
+// here: their view-surface tokens are confirmed literal `var()` aliases of the generic ones already
+// emitted above, so re-emitting them would be a harmless but pointless duplicate rule.
+const backgroundExtras: ColorUtilityEntry[] = [
+  ["primary", "--instui-component-view-background-primary"],
+  ["secondary", "--instui-component-view-background-secondary"],
+  ["primary-inverse", "--instui-component-view-background-primary-inverse"],
+  ["alert", "--instui-component-view-background-alert"],
+  ["danger", "--instui-component-view-background-danger"],
+  ["transparent", "transparent"],
+];
+const strokeExtras: ColorUtilityEntry[] = [
+  ["primary", "--instui-color-stroke-base"],
+  ["danger", "--instui-color-stroke-error"],
+];
+const textExtras: ColorUtilityEntry[] = [
+  ["primary", "--instui-component-text-primary-color"],
+  ["secondary", "--instui-component-text-muted-color"],
+  [
+    "brand",
+    "light-dark(var(--instui-color-institutional-brand-primary), var(--instui-color-institutional-brand-font-color-dark))",
+  ],
+  ["danger", "--instui-component-text-error-color"],
+  ["primary-inverse", "--instui-component-text-inverse-color"],
+  ["secondary-inverse", "--instui-component-text-inverse-color"],
+  ["primary-on", "--instui-component-text-base-on-color"],
+  ["secondary-on", "--instui-component-text-muted-on-color"],
+];
+// `-color-ai`/`-color-ai-highlight` (text) — two properties, so it can't be a `[name, value]` pair.
+const aiTextRule = (() => {
+  const selectors = globalSelectors(ns(opts.prefix), ".instui-text-ai", ".-text-ai");
+  return `${selectors.join(", ")} { color: var(--instui-component-text-ai-color); background: var(--instui-component-text-ai-background-color); }`;
+})();
 writeFileSync(
   join(outDir, "utilities.css"),
-  `${viewCss(opts)}\n${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${spacingUtilitiesCss(opts)}\n${gapCss(opts)}\n${colorDoc}${colorUtilitiesCss(
-    { background: names("background"), text: names("text"), stroke: names("stroke") },
-    opts,
-  )}\n${tokenUtilitiesCss(tokenGroups, opts)}`,
+  `${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${positionUtilitiesCss(opts)}\n${overflowUtilitiesCss(opts)}\n${cursorUtilitiesCss(opts)}\n${maskUtilityCss(opts)}\n${spacingUtilitiesCss(opts)}\n${gapCss(opts)}\n${colorDoc}${colorUtilitiesCss(
+    {
+      background: [...names("background"), ...backgroundExtras],
+      text: [...names("text"), ...textExtras],
+      stroke: [...names("stroke"), ...strokeExtras],
+    },
+    { ...opts, chainTargets: GLOBAL_ALIAS_TARGETS },
+  )}\n${aiTextRule}\n${tokenUtilitiesCss(tokenGroups, { ...opts, chainTargets: GLOBAL_ALIAS_TARGETS })}\n${extraAliases}`,
 );
 console.log(
   `✓ components: wrote base.css + components.css + component-icons.css (${usedIcons.length} icons) + fonts.css + prose.css + select.css + icons.css + utilities.css`,

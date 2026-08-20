@@ -1,15 +1,15 @@
 /**
  * The `COMPONENTS` registry — every component `Definition` in the EXACT order `componentsCss()`
  * concatenates them. This order is load-bearing (NOT alphabetical): the CSS rule-equivalence net
- * catches any reordering. The three icon/overlay utilities that historically ship inside
- * `components.css` (`icon`, `mask`, `screen-reader-content`) sit at their original concat positions
- * here even though they're authored as `@utility` records under `utilities/`.
+ * catches any reordering. `icon` and `screen-reader-content` historically ship inside
+ * `components.css` and sit at their original concat positions here even though they're authored as
+ * `@utility` records under `utilities/`. `view` and `mask` are real components (moved from
+ * `utilities/`) — every one of their own modifiers also ships as a global dual utility elsewhere.
  *
  * @module
  */
 import type { Definition } from "../lib/define.ts";
 import { icon } from "../utilities/icon/index.ts";
-import { mask } from "../utilities/mask/index.ts";
 import { screenReaderContent } from "../utilities/screen-reader-content/index.ts";
 import { alert } from "./alert/index.ts";
 import { avatar } from "./avatar/index.ts";
@@ -35,6 +35,7 @@ import { inputGroup } from "./input-group/index.ts";
 import { link } from "./link/index.ts";
 import { list } from "./list/index.ts";
 import { listItem } from "./list/members/item/index.ts";
+import { mask } from "./mask/index.ts";
 import { menu } from "./menu/index.ts";
 import { menuGroup } from "./menu/members/group/index.ts";
 import { menuItem } from "./menu/members/item/index.ts";
@@ -79,8 +80,9 @@ import { tooltip } from "./tooltip/index.ts";
 import { tray } from "./tray/index.ts";
 import { treeBrowser } from "./tree-browser/index.ts";
 import { truncate } from "./truncate/index.ts";
+import { view } from "./view/index.ts";
 
-/** Every component (+ the three in-sheet utilities) in `componentsCss()`'s exact concat order. */
+/** Every component (+ the two in-sheet utilities) in `componentsCss()`'s exact concat order. */
 export const COMPONENTS: readonly Definition[] = [
   button,
   alert,
@@ -153,4 +155,5 @@ export const COMPONENTS: readonly Definition[] = [
   inputGroup,
   numberInput,
   inPlaceEdit,
+  view,
 ];

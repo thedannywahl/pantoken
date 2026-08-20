@@ -18,6 +18,13 @@ vi.mock("@pantoken/utils", () => ({
   tokenUtilitiesCss: () => "/* token-utilities */",
 }));
 vi.mock("../src/lib/css.ts", () => ({ css: String.raw }));
+vi.mock("../src/lib/global-alias.ts", () => ({
+  GLOBAL_ALIAS_TARGETS: ["button"],
+  globalSelectors: (p: string, bareSelector: string, modifier: string) => [
+    bareSelector,
+    `.${p}button${modifier}`,
+  ],
+}));
 vi.mock("./fonts.ts", () => ({ fontsCss: () => "/* fonts */" }));
 vi.mock("../src/index.ts", () => ({
   baseCss: () => "/* base */",
@@ -25,9 +32,12 @@ vi.mock("../src/index.ts", () => ({
   proseCss: () => "/* prose */",
   selectCss: () => "/* select */",
   iconGlyphsCss: () => "/* icons */",
-  viewCss: () => "/* view */",
   layoutUtilitiesCss: () => "/* layout */",
   responsiveUtilitiesCss: () => "/* responsive */",
+  positionUtilitiesCss: () => "/* position */",
+  overflowUtilitiesCss: () => "/* overflow */",
+  cursorUtilitiesCss: () => "/* cursor */",
+  maskUtilityCss: () => "/* mask */",
   spacingUtilitiesCss: () => "/* spacing */",
   gapCss: () => "/* gap */",
   ELEVATION_NAMES: [],

@@ -96,6 +96,7 @@ export { tableRowHeaderCss } from "./components/table/members/row-header/index.t
 export { linkCss } from "./components/link/index.ts";
 export { listCss } from "./components/list/index.ts";
 export { listItemCss } from "./components/list/members/item/index.ts";
+export { maskCss } from "./components/mask/index.ts";
 export { checkboxCss } from "./components/checkbox/index.ts";
 export { radioCss } from "./components/radio/index.ts";
 export { spinnerCss } from "./components/spinner/index.ts";
@@ -142,18 +143,21 @@ export { formFieldMessagesCss } from "./components/form-field-messages/index.ts"
 export { formFieldCss } from "./components/form-field/index.ts";
 export { formFieldGroupCss } from "./components/form-field-group/index.ts";
 export { radioInputGroupCss } from "./components/radio-input-group/index.ts";
+export { viewCss } from "./components/view/index.ts";
 
 // Bespoke: the experimental customizable-select enhancement (no cssdoc record).
 export { selectCss } from "./components/select/index.ts";
 
 // ── Utilities ───────────────────────────────────────────────────────────────
-export { viewCss } from "./utilities/view/index.ts";
 export { spacingUtilitiesCss } from "./utilities/spacing/index.ts";
 export { gapCss } from "./utilities/gap/index.ts";
 export { layoutUtilitiesCss } from "./utilities/layout/index.ts";
 export { responsiveUtilitiesCss } from "./utilities/responsive/index.ts";
+export { positionUtilitiesCss } from "./utilities/position/index.ts";
+export { overflowUtilitiesCss } from "./utilities/overflow/index.ts";
+export { cursorUtilitiesCss } from "./utilities/cursor/index.ts";
+export { maskUtilityCss } from "./utilities/mask/index.ts";
 export { iconCss } from "./utilities/icon/index.ts";
-export { maskCss } from "./utilities/mask/index.ts";
 export { screenReaderContentCss } from "./utilities/screen-reader-content/index.ts";
 // Bespoke: the glyph-token half of the icon system (no cssdoc record).
 export { iconGlyphsCss, type IconGlyphsOptions } from "./utilities/icon-glyphs/index.ts";
