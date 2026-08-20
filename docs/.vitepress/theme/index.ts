@@ -60,7 +60,19 @@ function applyRunnerSize(event: MessageEvent, height: number): void {
   const frame = [...document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")].find(
     (f) => f.contentWindow === event.source,
   );
-  if (frame) frame.style.height = `${height}px`;
+  if (!frame) return;
+  // The reported height is the iframe's own content; `.css-example` (unlike the borderless `/play`
+  // frame) carries a border, which under border-box sizing would otherwise eat into that content and
+  // clip it — pad the assigned height back out by the border's width.
+  const border = frame.classList.contains("css-example") ? 2 : 0;
+  frame.style.height = `${height + border}px`;
+}
+
+/** View a demo/example's iframe fullscreen when its hoverable corner button is clicked. */
+function requestDemoFullscreen(event: MouseEvent): void {
+  const button = (event.target as Element | null)?.closest(".pantoken-demo__fullscreen");
+  const frame = button?.closest(".pantoken-demo, .css-example-frame")?.querySelector("iframe");
+  void frame?.requestFullscreen?.();
 }
 
 /** Demo message payloads accepted from runner iframes. */
@@ -138,6 +150,10 @@ export default {
       // (which hugs the demo by default, capped at 30rem, or whatever height the reader dragged it to).
       // Match the message to its frame by source window and set the height so the iframe mirrors it.
       window.addEventListener("message", relayDemoMessage);
+
+      // The hoverable corner button on every demo/example frame — delegated so it covers frames added
+      // after mount (e.g. inside an SSR-hydrated content area).
+      document.addEventListener("click", requestDemoFullscreen);
     }
   },
 } satisfies Theme;

@@ -2,7 +2,12 @@ import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { type DefaultTheme, defineConfig } from "vitepress";
 import { workspaceOrchestrator } from "@pantoken/vite-workspace-orchestrator";
-import { demoMarkdownIt } from "@pantoken/demo";
+import {
+  demoMarkdownIt,
+  buildExampleSrcdoc,
+  escapeSrcdoc,
+  FULLSCREEN_BUTTON_HTML,
+} from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import { partitionApiSidebar } from "./api-sidebar.js";
 import { LOCALES, type DocsLocale } from "./i18n.js";
@@ -576,37 +581,45 @@ export default defineConfig({
     config: (md) => {
       md.use(mermaidPlugin);
       md.use(tokenValuePreview);
+      // Everything the runner (and the isolated `.css-example` srcdoc previews) inject, all served
+      // static files: the component sheets, the one multi-theme token sheet (themed by the
+      // `data-pantoken-theme` attribute), the plugin sheets, and the shared `.instui-card` surface.
+      const cssUrls = [
+        `${base}demos-assets/base.css`,
+        `${base}demos-assets/components.css`,
+        `${base}demos-assets/prose.css`,
+        `${base}demos-assets/icons.css`,
+        `${base}demos-assets/utilities.css`,
+        `${base}demos-assets/select.css`,
+        `${base}demos-assets/site-themes.css`,
+        `${base}demos-assets/focus-outline.css`,
+        `${base}demos-assets/transition.css`,
+        `${base}demos-assets/stacking.css`,
+        `${base}demos-assets/visual-debug.css`,
+        `${base}demos-assets/card.css`,
+      ];
       md.use(demoMarkdownIt, {
         base,
-        // Everything the runner injects, all served static files: the component sheets, the one
-        // multi-theme token sheet (themed by the `data-pantoken-theme` attribute), the plugin sheets,
-        // and the shared `.instui-card` surface.
-        cssUrls: [
-          `${base}demos-assets/base.css`,
-          `${base}demos-assets/components.css`,
-          `${base}demos-assets/prose.css`,
-          `${base}demos-assets/icons.css`,
-          `${base}demos-assets/utilities.css`,
-          `${base}demos-assets/select.css`,
-          `${base}demos-assets/site-themes.css`,
-          `${base}demos-assets/focus-outline.css`,
-          `${base}demos-assets/transition.css`,
-          `${base}demos-assets/stacking.css`,
-          `${base}demos-assets/visual-debug.css`,
-          `${base}demos-assets/card.css`,
-        ],
-        // Seam a live preview onto each `@example` HTML fence at compile time: the same markup inside
-        // the shared `.instui-card`, wrapped in `.css-example` (styled by the theme). One mechanism for
-        // both surfaces that carry live HTML examples — the CSS-API class pages (`api/css/`) and the
-        // web-components variable pages (`api/renderers/web-components/src/variables/`) — plus the cloned
-        // locale pages (`hu/…`). Overlay examples (`<dialog>`, `[popover]`) are skipped inside the plugin.
+        cssUrls,
+        // Seam a live preview onto each `@example` HTML fence at compile time: the same markup,
+        // rendered in an isolated `<iframe srcdoc>` so none of the page's own `.vp-doc` styles (ours or
+        // VitePress's native theme CSS) can reach it, wrapped in `.css-example` (framed by the theme).
+        // One mechanism for both surfaces that carry live HTML examples — the CSS-API class pages
+        // (`api/css/`) and the web-components variable pages
+        // (`api/renderers/web-components/src/variables/`) — plus the cloned locale pages (`hu/…`).
+        // Overlay examples (`<dialog>`, `[popover]`) are skipped inside the plugin.
         liveExample: {
           match: (relativePath: string) =>
             /(^|\/)api\/(css|renderers\/web-components\/src\/variables)\//.test(relativePath),
-          wrap: (html: string, flags: Set<string>) =>
-            flags.has("-nocard")
-              ? `<div class="css-example">\n${html}\n</div>`
-              : `<div class="css-example">\n<div class="instui-card">\n${html}\n</div>\n</div>`,
+          wrap: (html: string, flags: Set<string>) => {
+            const doc = buildExampleSrcdoc(html, { cssUrls, card: !flags.has("-nocard") });
+            return (
+              `<div class="css-example-frame">` +
+              `<iframe class="pantoken-demo__frame css-example" sandbox="allow-scripts" ` +
+              `title="Live example" loading="lazy" srcdoc="${escapeSrcdoc(doc)}"></iframe>` +
+              `${FULLSCREEN_BUTTON_HTML}</div>`
+            );
+          },
         },
       });
     },

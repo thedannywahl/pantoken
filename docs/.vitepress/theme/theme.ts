@@ -60,19 +60,31 @@ export function getStoredTheme(): PantokenTheme {
 // theme so we can restore it when they switch back.
 let rememberedDark: boolean | null = null;
 
+/**
+ * The postMessage target origin for a demo frame: a srcdoc-only frame (no `src`, e.g. an inline
+ * `.css-example` preview) is sandboxed without `allow-same-origin`, so it has an opaque origin — no
+ * concrete origin string can ever match it, only "*". A frame with a real `src` (the `/play` runner)
+ * gets that origin-scoped target instead, so the theme post is delivered only to that runner and
+ * never leaks to a frame at a different origin.
+ */
+function themeTargetOrigin(frame: HTMLIFrameElement): string {
+  if (!frame.hasAttribute("src")) return "*";
+  try {
+    return new URL(frame.src, window.location.href).origin;
+  } catch {
+    // Malformed src — fall back to our own origin (same-origin runner is the common case).
+    return window.location.origin;
+  }
+}
+
 /** Post the active theme to every embedded demo runner so it re-themes its rendered result. */
 export function broadcastTheme(theme: PantokenTheme): void {
   if (typeof document === "undefined") return;
   for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
-    // Target each frame's own origin rather than "*", so the theme post is delivered only to that
-    // demo runner and never leaks to a frame that happens to sit at a different origin.
-    let target = window.location.origin;
-    try {
-      target = new URL(frame.src, window.location.href).origin;
-    } catch {
-      // Malformed src — fall back to our own origin (same-origin runner is the common case).
-    }
-    frame.contentWindow?.postMessage({ type: "pantoken-demo-theme", theme }, target);
+    frame.contentWindow?.postMessage(
+      { type: "pantoken-demo-theme", theme },
+      themeTargetOrigin(frame),
+    );
   }
 }
 

@@ -29,40 +29,54 @@ html.dark {
 }
 
 /* Each CSS-API `@example` is a source fence that seams into a bordered, page-background frame
-   (`.css-example`) below it — the fence loses its bottom rounding + margin so the two read as one unit
-   (square BOTH the outer wrapper and the inner <pre>, which paints the dark bg + carries its own radius,
-   so no rounded corner peeks through the seam). Inside the frame, the live example sits in the same
-   elevated `.instui-card` the /demos use (from `@pantoken/demo/card.css`, bundled by the theme). */
-div[class*="language-"]:has(+ .css-example) {
+   (`.css-example`, now an isolated `<iframe srcdoc>` — see `@pantoken/demo`'s `buildExampleSrcdoc` —
+   so nothing from `.vp-doc` leaks into the live preview), wrapped in `.css-example-frame` (the actual
+   sibling of the fence, so the button below can overlay the iframe) — the fence loses its bottom
+   rounding + margin so the two read as one unit (square BOTH the frame and the inner <pre>, which
+   paints the dark bg + carries its own radius, so no rounded corner peeks through the seam). Inside the
+   frame, the live example sits in the same elevated `.instui-card` the /demos use (from
+   `@pantoken/demo/card.css`, loaded inside the iframe itself). */
+div[class*="language-"]:has(+ .css-example-frame) {
   margin-bottom: 0;
 }
 
-div[class*="language-"]:has(+ .css-example),
-div[class*="language-"]:has(+ .css-example) > pre {
+div[class*="language-"]:has(+ .css-example-frame),
+div[class*="language-"]:has(+ .css-example-frame) > pre {
   border-end-start-radius: 0;
   border-end-end-radius: 0;
   max-height: 21rem;
 }
 
+.css-example-frame {
+  position: relative;
+  display: block;
+}
+
 .css-example {
+  display: block;
+  width: 100%;
+  /* A sane floor before the iframe's `pantoken-demo-size` postMessage arrives and sets an inline height. */
+  min-height: 4rem;
   border: 1px solid var(--vp-c-divider);
   border-block-start: 0;
   border-end-start-radius: 8px;
   border-end-end-radius: 8px;
-  padding: 12px;
   margin: 0 0 16px;
   /* Match the page background (like the demo frame), so only the inner .instui-card reads as elevated. */
   background: var(--instui-color-background-page);
+}
 
-  h2 {
-    border-top: unset;
-  }
+/* Reveal-on-hover corner button: base appearance ships with `@pantoken/demo/demo.css` (also used by
+   `/play`'s `.pantoken-demo` figure); this just adds the extra hover trigger for the CSS-API wrapper. */
+.css-example-frame:hover .pantoken-demo__fullscreen,
+.pantoken-demo__fullscreen:focus-visible {
+  opacity: 1;
 }
 
 /* VitePress makes code blocks full-bleed (negative margins, no radius) on narrow viewports; keep the
    paired example fence contained so it stays aligned with the frame below it. */
 @media (max-width: 639px) {
-  .vp-doc div[class*="language-"]:has(+ .css-example) {
+  .vp-doc div[class*="language-"]:has(+ .css-example-frame) {
     margin-inline: 0;
     border-radius: 8px 8px 0 0;
   }
