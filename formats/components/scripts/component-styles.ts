@@ -43,6 +43,7 @@ interface UtilityDocMeta {
 }
 
 /** Parse `@utility` and `@selector` from the leading cssdoc block in a utility stylesheet. */
+// fallow-ignore-next-line complexity
 const parseUtilityDocMeta = (css: string): UtilityDocMeta | null => {
   const firstDoc = css.match(/\/\*\*[\s\S]*?\*\//u)?.[0];
   if (!firstDoc) return null;
@@ -78,6 +79,7 @@ const expandUtilitySelectors = (css: string): string => {
   const baseSelector = `.pfx-${meta.baseName}`;
   const modifierSelectorPattern = new RegExp(`^\\.pfx-${meta.baseName}(\\.-[a-z0-9-]+)$`, "u");
 
+  // fallow-ignore-next-line complexity
   root.walkRules((rule) => {
     const expanded: string[] = [];
     let changed = false;
@@ -124,6 +126,7 @@ const expandUtilitySelectors = (css: string): string => {
  * `components`, every `<parent>/members/<member>/<member>.css` alongside it. A member's identifier is
  * its parent's, camel-cased, followed by its own name capitalized (`menu` + `item` → `menuItem`).
  */
+// fallow-ignore-next-line complexity
 const findCssRecords = (bucketDir: string): CssRecordFile[] => {
   const records: CssRecordFile[] = [];
   for (const name of readdirSync(bucketDir).sort()) {

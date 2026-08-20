@@ -18,10 +18,3 @@ export const transition: Definition = defineUtility({
   name: "transition",
   css: (p) => transitionRaw.replaceAll(SENTINEL, p),
 });
-
-/** The transition utility as a standalone, header-wrapped stylesheet. */
-export const transitionUtilityCss: Definition["css"] = transition.css;
-
-// Export progress/progress-circle CSS builders (Node-free, internal use)
-export { progressTransitionRules } from "./progress.ts";
-export { progressCircleTransitionRules } from "./progress-circle.ts";
