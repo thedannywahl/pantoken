@@ -50,6 +50,7 @@ const BEHAVIORAL_COMPONENTS = new Set([
   "tooltip",
   "in-place-edit",
   "progress-circle",
+  "truncate",
 ]);
 
 // Components that require command event handling

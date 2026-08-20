@@ -1,25 +1,81 @@
 /**
  * @component truncate
- * @summary Single-line ellipsis truncation, or a multi-line clamp via `--lines`.
- * @remarks The `-lines` clamp switches to `display: -webkit-box` and reads the `--lines` custom property, so the text wraps to that many lines before it ends in an ellipsis.
- * @modifier -lines — Multi-line clamp; set the line count via the `--lines` custom property (default 2).
- * @compat The `-lines` clamp relies on `-webkit-line-clamp` with `display: -webkit-box`, paired with the standard `line-clamp`.
+ * @summary Text truncation with ellipsis and optional multi-line clamping via `--lines`.
+ * @remarks The base class uses `display: -webkit-box` and reads the `--lines` custom property to clamp text to a fixed number of lines before it ends in an ellipsis.
+ * @modifier -truncate-character — (default) Truncate at the character level.
+ * @modifier -truncate-word — Truncate at the word level.
+ * @modifier -max-lines-1 — Clamp to one line (default).
+ * @modifier -max-lines-2 — Clamp to two lines.
+ * @modifier -max-lines-3 — Clamp to three lines.
+ * @modifier -max-lines-4 — Clamp to four lines.
+ * @modifier -max-lines-5 — Clamp to five lines.
+ * @modifier -max-lines-auto - @interaction — Clamp to the number of lines that fit in the container, based on its height and the line height of the text.
+ * @modifier -lines-1 — @alias {@link -max-lines-1}
+ * @modifier -lines-2 — @alias {@link -max-lines-2}
+ * @modifier -lines-3 — @alias {@link -max-lines-3}
+ * @modifier -lines-4 — @alias {@link -max-lines-4}
+ * @modifier -lines-5 — @alias {@link -max-lines-5}
+ * @compat Clamping relies on `-webkit-line-clamp` with `display: -webkit-box`, paired with the standard `line-clamp`.
  * @example
- * <div class="pfx-truncate">This single line keeps going past the edge of its box, so it ends in an ellipsis.</div>
+ * ```html
+ * <div class="pfx-truncate">This text is clamped to one line by default and ends in an ellipsis.</div>
+ * <div class="pfx-truncate" style="--lines: 3">This text is clamped to three lines and ends in an ellipsis.</div>
+ * ```
  * @related text — Body typography that this truncates.
  */
-.pfx-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: var(--instui-component-truncate-text-font-family);
-  line-height: var(--instui-component-truncate-text-line-height);
+
+@property --lines {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 1;
 }
-.pfx-truncate.-lines {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: var(--lines, 2);
-  line-clamp: var(--lines, 2);
-  white-space: normal;
-  overflow: hidden;
+
+@property --ellipsis {
+  syntax: "clip | ellipsis | <string> | fade | <fade()>";
+  inherits: false;
+  initial-value: ellipsis;
+}
+
+@scope (.pfx-truncate) {
+  :scope {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--lines, 1);
+    line-clamp: var(--lines, 1);
+    overflow: hidden;
+    text-overflow: var(--ellipsis);
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    font-family: var(--instui-component-truncate-text-font-family);
+    line-height: var(--instui-component-truncate-text-line-height);
+  }
+
+  :scope.-truncate-character {
+    word-break: break-all;
+  }
+
+  :scope.-truncate-word {
+    word-break: break-word;
+  }
+
+  :scope:is(.-max-lines-1, .-lines-1) {
+    --lines: 1;
+  }
+
+  :scope:is(.-max-lines-2, .-lines-2) {
+    --lines: 2;
+  }
+
+  :scope:is(.-max-lines-3, .-lines-3) {
+    --lines: 3;
+  }
+
+  :scope:is(.-max-lines-4, .-lines-4) {
+    --lines: 4;
+  }
+
+  :scope:is(.-max-lines-5, .-lines-5) {
+    --lines: 5;
+  }
 }

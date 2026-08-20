@@ -411,7 +411,10 @@ test("new components render their key tokens", () => {
     "var(--instui-component-file-drop-border-color)",
   );
   expect(rangeInputCss({ prefix: "instui" })).toContain("::-webkit-slider-thumb");
-  expect(truncateCss({ prefix: "instui" })).toContain("-webkit-line-clamp");
+  const truncate = truncateCss({ prefix: "instui" });
+  expect(truncate).toContain("@scope (.instui-truncate)");
+  expect(truncate).toContain("-webkit-line-clamp");
+  expect(truncate).not.toContain(".instui-truncate.-lines");
 });
 
 test("progress bar keeps the deprecated -meter-color-* aliases (incl. alert→warning)", () => {

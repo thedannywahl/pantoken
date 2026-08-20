@@ -11,3 +11,4 @@ export * from "./behaviors/progress-circle.js";
 export * from "./behaviors/modal.js";
 export * from "./behaviors/tooltip.js";
 export * from "./behaviors/in-place-edit.js";
+export * from "./behaviors/truncate.js";

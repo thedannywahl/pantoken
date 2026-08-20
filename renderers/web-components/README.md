@@ -50,7 +50,7 @@ removes the alert immediately without that stylesheet.
 
 - `<instui-metric value="…" label="…">`, `<instui-rating value="3" max="5">`.
 - `<instui-icon-button label="…">`, `<instui-toggle-button pressed="true|false">`.
-- `<instui-truncate lines="2">` — omit `lines` for a single-line ellipsis.
+- `<instui-truncate lines="2|auto">` — use a number for fixed clamping, `auto` to fit lines to available host height, or omit `lines` for the default one-line ellipsis.
 - `<instui-img src="…" alt="…" constrain="cover|contain" display="block">`.
 - `<instui-side-nav-bar minimized="true|false">`, `<instui-tree-browser>`, `<instui-calendar>` —
   containers; slot the items / tree / day cells.
