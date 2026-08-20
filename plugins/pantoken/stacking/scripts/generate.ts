@@ -28,7 +28,7 @@ const PROPERTY_RULES = STACKING_LEVELS.map((level) => {
 
 const DOC = `/**
  * @utility stacking
- * @class .instui-stack-topmost
+ * @selector .instui-stack-topmost
  * @group Plugins
  * @summary z-index depth utilities: \`.instui-stack-<level>\` (\`deepest\`, \`below\`, \`above\`, \`topmost\`) set \`z-index\` from the \`--instui-stacking-*\` scale, so layers stack predictably instead of by hand-tuned numbers.
  * @cssproperty --instui-stacking-deepest — The lowest stacking depth.

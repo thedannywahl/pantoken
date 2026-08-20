@@ -158,7 +158,7 @@ writeFileSync(
 // prettier-ignore
 const colorDoc = css`/**
  * @utility color
- * @class .instui-text-danger
+ * @selector .instui-text-danger
  * @summary Semantic colour utilities: \`.instui-bg-<name>\`, \`.instui-text-<name>\`, and \`.instui-stroke-<name>\` for the curated semantic palette.
  * @example <p class="instui-text-danger">Something went wrong.</p>
  */\n`;

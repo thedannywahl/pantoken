@@ -28,6 +28,9 @@
     "test": "vp test",
     "check": "vp check"
   },
+  "dependencies": {
+    "@pantoken/tokens": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "catalog:",
     "postcss": "catalog:",

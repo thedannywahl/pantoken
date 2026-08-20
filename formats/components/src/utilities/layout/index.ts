@@ -13,7 +13,7 @@ export const layout: Definition = defineUtility({
     // prettier-ignore
     css`/**
  * @utility layout
- * @class .instui-display-flex
+ * @selector .instui-display-flex
  * @summary Display and text-align utilities — \`.instui-display-<value>\` and \`.instui-text-align-<value>\` — as composable classes.
  * @example
  * <div class="instui-display-flex instui-text-align-center">

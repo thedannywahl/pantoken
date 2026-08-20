@@ -1,6 +1,6 @@
 /**
  * @component runner
- * @class .runner
+ * @selector .runner
  * @summary The self-hosted demo runner — a tab toolbar over a resizable code/result body. The Result tab shows the demo alone; a code tab stacks the read-only source above it. A spinner stands in until everything has loaded and rendered, then the built runner is revealed in one step.
  * @remarks Layout only. The chrome (the tab group) reuses injected `.instui-*` classes, so its colours come from paired `--instui-*` tokens; the whole runner follows the site theme, pushed in from the docs header via postMessage. The body is reader-resizable (native `resize: vertical`) — its default height hugs the demo, capped at 30rem — and the runner reports its height so the embedding figure iframe mirrors it.
  * @modifier runner--show-result — Result view: hide the code so the demo takes the whole body.

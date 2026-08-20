@@ -34,7 +34,7 @@ export const gap: Definition = defineUtility({
     // prettier-ignore
     return css`/**
  * @utility gap
- * @class .instui-gap-md
+ * @selector .instui-gap-md
  * @global
  * @summary Flex/grid \`gap\` utilities on the spacing scale, short (\`-gap-sm\`) or long (\`-gap-small\`) spelling. Every utility also has a component-attached alias modifier (for example \`-gap-sm\` on any \`.instui-<component>\` or \`.instui-view\`) — components that already set their own \`gap\` from a component-specific token may have it overridden by this alias.
  * @demo self:gap

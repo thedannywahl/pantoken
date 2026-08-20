@@ -1,6 +1,6 @@
 /**
  * @component pages
- * @class :host
+ * @selector :host
  * @summary The pages web component — shows one slotted `[data-page]` at a time (the rest stay hidden).
  * @remarks To show one panel at a time with a visible tablist instead, see the [tabs](/api/css/tabs.md) component.
  * @cssstate hidden — Set on a slotted `[data-page]` to hide it while another page shows.

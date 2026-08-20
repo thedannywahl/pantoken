@@ -83,8 +83,11 @@ namespace every class.
 - **`elevationCss(options?)`, `focusOutlineCss(options?)`** — the shadow scale and focus ring, exposed
   for renderers that compose their own sheets (`@pantoken/pendo` does this).
 - **`viewCss`, `spacingUtilitiesCss`, `layoutUtilitiesCss`, `responsiveUtilitiesCss` (options?)** — the
-  utility builders. `responsiveUtilitiesCss` emits viewport `.<prefix>-hidden-{max,min}-{sm,md,lg,xl}`
-  classes plus a `.<prefix>-container` marker with `@container` `.<prefix>-cq-hidden-{max,min}-*`
+  utility builders. `responsiveUtilitiesCss` emits viewport `.<prefix>-hidden-{max,min}-<bp>` classes
+  at the `--instui-component-tray-width-*` scale (`xs`/`sm`/`md`/`lg`/`xl`, each also aliased to a
+  long-form spelling — `x-small`…`x-large` — and a device name — `mobile`/`phablet`/`tablet`/`laptop`/
+  `desktop`), plus the unscaled, themed `content`/`content-full-width` tiers (the main content area's
+  max-width) — and a `.<prefix>-container` marker with `@container` `.<prefix>-cq-hidden-{max,min}-*`
   variants (component-width responsiveness). The generic token→class emitters (`colorUtilitiesCss`,
   `tokenUtilitiesCss`) come from `@pantoken/utils`.
 - **`ComponentOptions`, `ProseOptions`** — the option types.

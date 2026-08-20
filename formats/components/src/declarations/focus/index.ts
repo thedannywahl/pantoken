@@ -26,7 +26,7 @@ export { FOCUSABLE_SELECTOR, focusOutlineDeclarations, focusOutlineRules } from 
 // prettier-ignore
 const FOCUS_DOC = css`/**
  * @declaration focus
- * @class :focus-visible
+ * @selector :focus-visible
  * @summary The focus-outline system: the \`--instui-focus-outline-*\` custom properties (declared on \`:root\`) plus the \`:focus-visible\` ring every focusable gets, and opt-in tuning classes.
  * @modifier -focus-color-success — Success-coloured ring.
  * @modifier -focus-color-danger — Danger-coloured ring.

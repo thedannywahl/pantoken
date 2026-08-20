@@ -45,6 +45,7 @@
   "dependencies": {
     "@pantoken/plugin-colors": "workspace:*",
     "@pantoken/plugin-transition": "workspace:*",
+    "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*"
   },
   "devDependencies": {
@@ -53,7 +54,6 @@
     "@pantoken/icons": "workspace:*",
     "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/plugin-theme-custom-media": "workspace:*",
-    "@pantoken/tokens": "workspace:*",
     "@types/node": "catalog:",
     "postcss": "catalog:",
     "typescript": "catalog:",

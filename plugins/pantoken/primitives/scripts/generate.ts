@@ -21,7 +21,7 @@ const family = (prefix: string): string[] =>
 // comment `primitivesCss` leads with, so it attaches to the first `.instui-bg-primitive-color-*` class.
 const DOC = `/**
  * @utility primitives
- * @class .instui-bg-primitive-color-white
+ * @selector .instui-bg-primitive-color-white
  * @group Plugins
  * @summary Opt-in utility classes for the raw primitive palette: \`.instui-bg-\`/\`fg-\`/\`border-primitive-color-<name>\` paint a colour from the primitive colour tokens, plus \`font-family\`/\`font-weight\` utilities for the primitive font tokens. Kept out of the semantic utilities so overrides there stay semantic-only.
  * @example

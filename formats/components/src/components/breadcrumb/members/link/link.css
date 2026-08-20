@@ -6,7 +6,7 @@
  * @remarks The parent `breadcrumb`'s `-size-sm`/`-size-lg` modifiers adjust this member's separator spacing — see `breadcrumb`'s own doc for those modifiers.
  * @pseudo ::after — Renders the chevron separator after every crumb except the last; mirrors to `chevron-left` in `[dir="rtl"]`.
  * @pseudo ::before — In a collapsed parent draws a masked back-arrow before this crumb's second-to-last link.
- * @media (max-width: 48rem) — Collapses the trail, showing only the previous crumb and a back arrow.
+ * @media (--breakpoint-large-down) — Collapses the trail, showing only the previous crumb and a back arrow.
  * @a11y Mark the current page's crumb with `aria-current="page"` — on its `<a>` if it's a link, otherwise on the `<li>` itself.
  * @structure
  * @scope (.pfx-breadcrumb) {
@@ -70,7 +70,7 @@
     mask: var(--instui-icon-chevron-left) center / contain no-repeat;
   }
 
-  @media (max-width: 48rem) {
+  @media (--breakpoint-large-down) {
     :scope > ol:has(> li:nth-last-child(2)) > li:not(:nth-last-child(2)) {
       display: none;
     }
