@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { utilityVariantRule } from "../../lib/helpers.ts";
 
 const OVERFLOWS = ["visible", "hidden", "auto", "scroll", "clip"] as const;
 const AXES = ["x", "y"] as const;
@@ -17,12 +17,14 @@ export const overflow: Definition = defineUtility({
   css: (p) => {
     const rules = AXES.flatMap((axis) =>
       OVERFLOWS.map((value) => {
-        const selectors = globalSelectors(
-          p,
-          `.${p}overflow-${axis}-${value}`,
-          `.-overflow-${axis}-${value}`,
+        const bareModifier = `-${axis}-${value}`;
+        const baseClass = `.${p}overflow`;
+        return utilityVariantRule(
+          baseClass,
+          "overflow",
+          bareModifier,
+          `overflow-${axis}: ${value}`,
         );
-        return `${selectors.join(", ")} { overflow-${axis}: ${value}; }`;
       }),
     );
     // prettier-ignore

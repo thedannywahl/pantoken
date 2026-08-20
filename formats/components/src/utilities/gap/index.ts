@@ -6,8 +6,7 @@
  */
 import { defineUtility, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
-import { SPACING_STEPS } from "../../lib/helpers.ts";
-import { GLOBAL_ALIAS_TARGETS as SPACING_ALIAS_TARGETS } from "../../lib/global-alias.ts";
+import { SPACING_STEPS, utilityVariantRule } from "../../lib/helpers.ts";
 
 /** `[key, value]` pairs for every step's short and long key, deduped (e.g. `"0"` and `"none"` both present). */
 const STEP_ENTRIES: ReadonlyArray<readonly [string, string]> = (() => {
@@ -24,12 +23,13 @@ export const gap: Definition = defineUtility({
   name: "gap",
   css: (p) => {
     const rules: string[] = [];
-    const componentAliases = (modifier: string): string[] =>
-      SPACING_ALIAS_TARGETS.map((name) => `.${p}${name}.${modifier}`);
+    const baseClass = `.${p}gap`;
     for (const [step, value] of STEP_ENTRIES) {
-      const modifier = `-gap-${step}`;
-      const selectors = [`.${p}gap-${step}`, ...componentAliases(modifier)];
-      rules.push(`${selectors.join(", ")} { gap: ${value}; }`);
+      // Bare modifier for composition (just the step, not repeated "gap")
+      const bareModifier = `-${step}`;
+      rules.push(
+        utilityVariantRule(baseClass, "gap", bareModifier, `gap: ${value}`, `-gap${bareModifier}`),
+      );
     }
     // prettier-ignore
     return css`/**

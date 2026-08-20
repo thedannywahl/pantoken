@@ -1,0 +1,75 @@
+/**
+ * @utility transition
+ * @selector .instui-transition.-transition-fade-entering
+ * @modifier -transition-* — Transition type/state class toggled by runtime (`fade|scale|slide-*` + `entering|entered|exiting|exited`).
+ * @global
+ * @summary Animation state classes for the `Transition` component — `.instui-transition` and state classes (`-transition-fade-entering`, `-transition-scale-exited`, etc.) — usable bare or chained onto any component.
+ * @example
+ * <div class="instui-transition -transition-fade-entering">Animated content</div>
+ */
+.pfx-transition {
+  transition:
+    opacity var(--instui-transition-duration) var(--instui-transition-timing),
+    transform var(--instui-transition-duration) var(--instui-transition-timing);
+}
+
+.pfx-transition.-transition-fade-exiting,
+.pfx-transition.-transition-fade-exited {
+  opacity: 0.01;
+}
+
+.pfx-transition.-transition-fade-entering,
+.pfx-transition.-transition-fade-entered {
+  opacity: 1;
+}
+
+.pfx-transition.-transition-scale-exiting,
+.pfx-transition.-transition-scale-exited {
+  transform: scale(0.01) translate3d(0, 0, 0);
+  opacity: 0.01;
+}
+
+.pfx-transition.-transition-scale-entering,
+.pfx-transition.-transition-scale-entered {
+  transform: scale(1) translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.pfx-transition.-transition-slide-right-exited,
+.pfx-transition.-transition-slide-left-exited,
+.pfx-transition.-transition-slide-up-exited,
+.pfx-transition.-transition-slide-down-exited {
+  opacity: 0.01;
+}
+
+.pfx-transition.-transition-slide-right-exiting,
+.pfx-transition.-transition-slide-right-exited {
+  transform: translate3d(100%, 0, 0);
+}
+
+.pfx-transition.-transition-slide-left-exiting,
+.pfx-transition.-transition-slide-left-exited {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.pfx-transition.-transition-slide-up-exiting,
+.pfx-transition.-transition-slide-up-exited {
+  transform: translate3d(0, -100%, 0);
+}
+
+.pfx-transition.-transition-slide-down-exiting,
+.pfx-transition.-transition-slide-down-exited {
+  transform: translate3d(0, 100%, 0);
+}
+
+.pfx-transition.-transition-slide-right-entering,
+.pfx-transition.-transition-slide-left-entering,
+.pfx-transition.-transition-slide-up-entering,
+.pfx-transition.-transition-slide-down-entering,
+.pfx-transition.-transition-slide-right-entered,
+.pfx-transition.-transition-slide-left-entered,
+.pfx-transition.-transition-slide-up-entered,
+.pfx-transition.-transition-slide-down-entered {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}

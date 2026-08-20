@@ -6,7 +6,6 @@
  */
 import { defineUtility, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
-import { GLOBAL_ALIAS_TARGETS } from "../../lib/global-alias.ts";
 import {
   SPACING_AUTO_STEP,
   SPACING_PROPERTIES,
@@ -14,11 +13,8 @@ import {
   SPACING_STEPS,
   type SpacingProperty,
   type SpacingStep,
+  utilityVariantRule,
 } from "../../lib/helpers.ts";
-
-/** Every component base class (`view` included, now a real component) — the chainable bases a
- *  spacing modifier can attach to. Re-exported for `gap`'s and other utilities' backward-compat imports. */
-export const SPACING_ALIAS_TARGETS: readonly string[] = GLOBAL_ALIAS_TARGETS;
 
 /** The steps a boxed property takes — margin also gets `auto`. */
 const stepsFor = (property: SpacingProperty): readonly SpacingStep[] =>
@@ -38,26 +34,28 @@ const legacyStepEntries = (steps: readonly SpacingStep[]): Array<readonly [strin
       : ([[step.short, step.value]] as const),
   );
 
-/** A selector-list builder: modifier token → every selector it should apply to (bare + attached). */
-type SelectorsFor = (p: string, modifier: string) => string[];
-
-const selectorsFor: SelectorsFor = (p, modifier) =>
-  SPACING_ALIAS_TARGETS.map((name) => `.${p}${name}.${modifier}`);
-
 /**
  * Short spellings (`-m-sm`) and the legacy long-property-word twin (`-margin-sm`) — concatenated
  * side, short step. Unchanged shape from before the long spelling existed.
  */
 function shortAndLegacyRules(p: string): string[] {
   const rules: string[] = [];
+  const baseClass = `.${p}spacing`;
   for (const property of SPACING_PROPERTIES) {
     const stepEntries = legacyStepEntries(stepsFor(property));
     for (const letter of [property.short, property.long]) {
       for (const side of SPACING_SIDES) {
         for (const [step, value] of stepEntries) {
-          const modifier = `-${letter}${side.short}-${step}`;
-          const selectors = [`.${p}${letter}${side.short}-${step}`, ...selectorsFor(p, modifier)];
-          rules.push(`${selectors.join(", ")} { ${property.css}${side.suffix}: ${value}; }`);
+          // Bare modifier for composition
+          const bareModifier = `-${letter}${side.short}-${step}`;
+          rules.push(
+            utilityVariantRule(
+              baseClass,
+              "spacing",
+              bareModifier,
+              `${property.css}${side.suffix}: ${value}`,
+            ),
+          );
         }
       }
     }
@@ -72,14 +70,22 @@ function shortAndLegacyRules(p: string): string[] {
  */
 function fullyLongRules(p: string): string[] {
   const rules: string[] = [];
+  const baseClass = `.${p}spacing`;
   for (const property of SPACING_PROPERTIES) {
     for (const side of SPACING_SIDES) {
       for (const step of stepsFor(property)) {
         const sidePart = side.long ? `${side.long}-` : "";
         const name = `${property.long}-${sidePart}${step.long}`;
-        const modifier = `-${name}`;
-        const selectors = [`.${p}${name}`, ...selectorsFor(p, modifier)];
-        rules.push(`${selectors.join(", ")} { ${property.css}${side.suffix}: ${step.value}; }`);
+        // Bare modifier for composition
+        const bareModifier = `-${name}`;
+        rules.push(
+          utilityVariantRule(
+            baseClass,
+            "spacing",
+            bareModifier,
+            `${property.css}${side.suffix}: ${step.value}`,
+          ),
+        );
       }
     }
   }

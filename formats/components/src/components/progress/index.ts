@@ -1,5 +1,5 @@
 import { defineComponent, type Definition } from "../../lib/define.ts";
-import { progressTransitionRules } from "@pantoken/plugin-transition/progress";
+import { progressTransitionRules } from "../../utilities/transition/progress.ts";
 import { PROGRESS_NUMERIC_PROPERTIES } from "../../lib/helpers.ts";
 import { SENTINEL } from "../../lib/sentinel.ts";
 import { progress as progressRaw } from "../../generated/component-styles.ts";

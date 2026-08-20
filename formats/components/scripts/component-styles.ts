@@ -36,6 +36,89 @@ interface CssRecordFile {
   id: string;
 }
 
+/** Utility metadata we can derive from the leading cssdoc block. */
+interface UtilityDocMeta {
+  utilityName: string;
+  baseName: string;
+}
+
+/** Parse `@utility` and `@selector` from the leading cssdoc block in a utility stylesheet. */
+const parseUtilityDocMeta = (css: string): UtilityDocMeta | null => {
+  const firstDoc = css.match(/\/\*\*[\s\S]*?\*\//u)?.[0];
+  if (!firstDoc) return null;
+
+  const utilityName = firstDoc.match(/@utility\s+([a-z0-9-]+)/u)?.[1];
+  if (!utilityName) return null;
+
+  const selectorSample = firstDoc.match(/@selector\s+([^\n*]+)/u)?.[1]?.trim();
+  const baseFromSelector = selectorSample?.match(/\.instui-([a-z0-9-]+)/u)?.[1];
+
+  return {
+    utilityName,
+    baseName: baseFromSelector ?? utilityName,
+  };
+};
+
+/**
+ * Auto-emit utility selector variants from canonical selectors in CSS-authored utilities.
+ *
+ * Canonical forms authored in CSS:
+ * - `.pfx-<base>`
+ * - `.pfx-<base>.-<modifier>`
+ *
+ * Emitted variants:
+ * - base: canonical + `.-<utility>-<base>` + `.-<base>`
+ * - modifier: canonical + `.-<utility>-<modifier>` + bare modifier class
+ */
+const expandUtilitySelectors = (css: string): string => {
+  const meta = parseUtilityDocMeta(css);
+  if (!meta) return css;
+
+  const root = postcss.parse(css);
+  const baseSelector = `.pfx-${meta.baseName}`;
+  const modifierSelectorPattern = new RegExp(`^\\.pfx-${meta.baseName}(\\.-[a-z0-9-]+)$`, "u");
+
+  root.walkRules((rule) => {
+    const expanded: string[] = [];
+    let changed = false;
+
+    for (const selector of rule.selectors) {
+      const s = selector.trim();
+
+      if (s === baseSelector) {
+        changed = true;
+        expanded.push(s);
+        // Avoid awkward duplicate long-form aliases like
+        // `.-screen-reader-content-screen-reader-content`.
+        if (!(meta.utilityName === meta.baseName && meta.baseName.includes("-"))) {
+          expanded.push(`.-${meta.utilityName}-${meta.baseName}`);
+        }
+        expanded.push(`.-${meta.baseName}`);
+        continue;
+      }
+
+      const modifierMatch = s.match(modifierSelectorPattern);
+      if (modifierMatch) {
+        changed = true;
+        const modifierClass = modifierMatch[1]; // e.g. ".-transition-fade-entering"
+        const modifier = modifierClass.slice(1); // e.g. "-transition-fade-entering"
+        expanded.push(s);
+        expanded.push(`.-${meta.utilityName}${modifier}`);
+        expanded.push(`.${modifier}`);
+        continue;
+      }
+
+      expanded.push(s);
+    }
+
+    if (changed) {
+      rule.selectors = [...new Set(expanded)];
+    }
+  });
+
+  return root.toString();
+};
+
 /**
  * Find every `<record>/<record>.css` under a bucket directory, one folder per record — and, for
  * `components`, every `<parent>/members/<member>/<member>.css` alongside it. A member's identifier is
@@ -72,7 +155,10 @@ const findCssRecords = (bucketDir: string): CssRecordFile[] => {
 const entries: string[] = [];
 for (const dir of sources) {
   for (const { path, id } of findCssRecords(dir)) {
-    const css = readFileSync(path, "utf8");
+    const rawCss = readFileSync(path, "utf8");
+    const css = path.includes(`${join(srcDir, "utilities")}/`)
+      ? expandUtilitySelectors(rawCss)
+      : rawCss;
     const byTheme: Record<(typeof THEMES)[number], string> = {
       rebrand: css,
       canvas: css,

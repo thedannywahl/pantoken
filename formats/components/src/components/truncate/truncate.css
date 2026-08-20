@@ -31,7 +31,10 @@
 }
 
 @property --ellipsis {
-  syntax: "clip | ellipsis | <string> | fade | <fade()>";
+  /* Keep the strictest grammar our current CSS parser accepts.
+     `fade()` is valid per modern specs/MDN but currently rejected in this
+     descriptor by the toolchain parser during pack/build. */
+  syntax: "clip | ellipsis | <string> | fade";
   inherits: false;
   initial-value: ellipsis;
 }

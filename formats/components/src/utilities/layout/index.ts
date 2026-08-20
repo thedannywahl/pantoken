@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { utilityVariantRule } from "../../lib/helpers.ts";
 
 /** The layout utility — composable, global `display` and `text-align` classes. */
 export const layout: Definition = defineUtility({
@@ -26,8 +26,8 @@ export const layout: Definition = defineUtility({
  */
 ${[
       ...["block", "inline-block", "inline", "flex", "inline-flex", "none"].map((v) => {
-        const selectors = globalSelectors(p, `.${p}display-${v}`, `.-display-${v}`);
-        return `${selectors.join(", ")} { display: ${v}; }`;
+        const bareModifier = `-display-${v}`;
+        return utilityVariantRule(`.${p}layout`, "layout", bareModifier, `display: ${v}`);
       }),
       ...(
         [
@@ -37,8 +37,8 @@ ${[
           ["justify", "justify"],
         ] as const
       ).map(([name, value]) => {
-        const selectors = globalSelectors(p, `.${p}text-align-${name}`, `.-text-align-${name}`);
-        return `${selectors.join(", ")} { text-align: ${value}; }`;
+        const bareModifier = `-text-align-${name}`;
+        return utilityVariantRule(`.${p}layout`, "layout", bareModifier, `text-align: ${value}`);
       }),
     ].join("\n")}`,
 });

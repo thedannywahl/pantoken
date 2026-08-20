@@ -19,6 +19,7 @@ import { responsive } from "./responsive/index.ts";
 import { screenReaderContent } from "./screen-reader-content/index.ts";
 import { spacing } from "./spacing/index.ts";
 import { stacking } from "./stacking/index.ts";
+import { transition } from "./transition/index.ts";
 
 /** Every documented utility record. */
 export const UTILITIES: readonly Definition[] = [
@@ -33,4 +34,5 @@ export const UTILITIES: readonly Definition[] = [
   maskUtility,
   icon,
   screenReaderContent,
+  transition,
 ];
