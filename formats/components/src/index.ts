@@ -156,6 +156,7 @@ export { responsiveUtilitiesCss } from "./utilities/responsive/index.ts";
 export { positionUtilitiesCss } from "./utilities/position/index.ts";
 export { overflowUtilitiesCss } from "./utilities/overflow/index.ts";
 export { cursorUtilitiesCss } from "./utilities/cursor/index.ts";
+export { stackingUtilityCss } from "./utilities/stacking/index.ts";
 export { maskUtilityCss } from "./utilities/mask/index.ts";
 export { iconCss } from "./utilities/icon/index.ts";
 export { screenReaderContentCss } from "./utilities/screen-reader-content/index.ts";

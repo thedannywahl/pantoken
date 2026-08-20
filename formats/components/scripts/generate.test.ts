@@ -38,6 +38,7 @@ vi.mock("../src/index.ts", () => ({
   overflowUtilitiesCss: () => "/* overflow */",
   cursorUtilitiesCss: () => "/* cursor */",
   maskUtilityCss: () => "/* mask */",
+  stackingUtilityCss: () => "/* stacking */",
   spacingUtilitiesCss: () => "/* spacing */",
   gapCss: () => "/* gap */",
   ELEVATION_NAMES: [],

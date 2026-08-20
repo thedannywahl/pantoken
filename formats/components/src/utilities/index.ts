@@ -18,6 +18,7 @@ import { position } from "./position/index.ts";
 import { responsive } from "./responsive/index.ts";
 import { screenReaderContent } from "./screen-reader-content/index.ts";
 import { spacing } from "./spacing/index.ts";
+import { stacking } from "./stacking/index.ts";
 
 /** Every documented utility record. */
 export const UTILITIES: readonly Definition[] = [
@@ -28,6 +29,7 @@ export const UTILITIES: readonly Definition[] = [
   position,
   overflow,
   cursor,
+  stacking,
   maskUtility,
   icon,
   screenReaderContent,

@@ -81,6 +81,7 @@ const EXPECTED = [
   "simpleSelectCss",
   "spacingUtilitiesCss",
   "spinnerCss",
+  "stackingUtilityCss",
   "tableCss",
   "tableBodyCss",
   "tableCellCss",
