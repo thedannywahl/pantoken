@@ -10,6 +10,12 @@
  * that bumps the upstream pin has to bless the baseline in the same change. That surfaces every token
  * and icon delta in the PR diff and in the printed report.
  *
+ * `check` auto-heals (writes the baseline itself, no `--bless` needed) when the drift ISN'T from an
+ * upstream bump — e.g. a `formats/tokens/known-syntax-issues.json` patch rewriting a token's value.
+ * Provenance (design-tokens ref/commit, ui-icons version) unchanged means there's no upstream commit to
+ * review, so the change was already reviewed as a normal PR diff; only a real provenance change (or an
+ * enforcement failure) still requires a manual `vp run upgrade:bless`.
+ *
  * Bless also enforces the deprecation lifecycle: a bump that DROPS an upstream token can't be blessed
  * until that token has a `deprecations.json` entry (so no removal ships silently), and once a
  * deprecation's `removeIn` upstream minor is reached, bless fails until the entry is retired (forcing
@@ -50,7 +56,12 @@ const currentUpstream = {
 /** Deprecations whose `removeIn` upstream minor the current build has reached — shims to retire now. */
 const due = dueForRemoval(ledger, currentUpstream);
 
-if (bless) {
+/**
+ * Enforces the retirement + coverage rules, then writes the baseline. Returns `false` (without
+ * exiting) instead of blessing when a rule blocks it, so a caller can choose to fail loudly (an
+ * explicit `--bless`) or fall back to requiring a manual one (an auto-heal attempt during `check`).
+ */
+function tryBless(previous: Manifest | undefined): boolean {
   // Enforcement 1 — retirement: once an entry's removeIn minor is adopted, the shim must be dropped
   // (delete the entry) and the consumer cuts a minor. Refuse to bless while any are still present.
   if (due.length) {
@@ -61,21 +72,15 @@ if (bless) {
     console.error(
       "\nRemove each retired entry from formats/tokens/deprecations.json (dropping the shim) and cut a consumer minor, then re-run `vp run upgrade:bless`.",
     );
-    process.exit(1);
+    return false;
   }
 
   // Enforcement 2 — coverage: a bump that drops a REAL upstream token requires a ledger entry, so no
   // removal ships silently. A dropped token that was itself a deprecation SHIM in the previous baseline
   // is exempt — retiring a shim is a deliberate pantoken action, not an unhandled upstream removal.
-  let previous: Manifest | undefined;
-  try {
-    previous = JSON.parse(readFileSync(baselinePath, "utf8")) as Manifest;
-  } catch {
-    // No baseline yet — fresh bootstrap; treat all removals as covered (nothing to diff against).
-  }
   if (previous !== undefined) {
     const wasShim = (name: string): boolean =>
-      Object.values((previous as Manifest).themes).some((theme) => theme[name]?.deprecated);
+      Object.values(previous.themes).some((theme) => theme[name]?.deprecated);
     const uncovered = diffManifests(previous, current)
       .buckets.removedTokens.map((change) => change.name)
       .filter((name) => !ledgerCovers(ledger, name) && !wasShim(name));
@@ -87,7 +92,7 @@ if (bless) {
       console.error(
         "\nAdd each to formats/tokens/deprecations.json with a lifecycle (deprecatedIn / removeIn, plus a replacement or a frozen value), then re-run `vp run upgrade:bless`.",
       );
-      process.exit(1);
+      return false;
     }
   }
 
@@ -96,7 +101,17 @@ if (bless) {
   console.log(
     `✓ blessed baseline: design-tokens ${provenance.designTokens.ref}@${provenance.designTokens.commit.slice(0, 7)}, ui-icons ${provenance.uiIcons.resolved}`,
   );
-  process.exit(0);
+  return true;
+}
+
+if (bless) {
+  let previous: Manifest | undefined;
+  try {
+    previous = JSON.parse(readFileSync(baselinePath, "utf8")) as Manifest;
+  } catch {
+    // No baseline yet — fresh bootstrap; treat all removals as covered (nothing to diff against).
+  }
+  process.exit(tryBless(previous) ? 0 : 1);
 }
 
 let baseline: Manifest;
@@ -126,10 +141,20 @@ writeFileSync(join(reportDir, "report.md"), `${markdown}\n`);
 console.log(markdown);
 
 if (!manifestsEqual(baseline, current)) {
-  console.error(
-    "\n✗ upstream-diff: the committed baseline is stale. Review the drift above, then run `vp run upgrade:bless` and commit tools/upstream-diff/baseline/manifest.json in this change.",
+  // The drift isn't necessarily an unreviewed upstream bump: our OWN generator can rewrite a token's
+  // value (e.g. a `formats/tokens/known-syntax-issues.json` patch) without touching upstream at all.
+  // When provenance hasn't moved, there's nothing upstream to review — self-heal the baseline instead
+  // of demanding a manual `vp run upgrade:bless` for a change that was already reviewed as a PR diff.
+  const sameUpstream = JSON.stringify(baseline.provenance) === JSON.stringify(current.provenance);
+  if (!sameUpstream || !tryBless(baseline)) {
+    console.error(
+      "\n✗ upstream-diff: the committed baseline is stale. Review the drift above, then run `vp run upgrade:bless` and commit tools/upstream-diff/baseline/manifest.json in this change.",
+    );
+    process.exit(1);
+  }
+  console.log(
+    "\n✓ upstream-diff: auto-healed the baseline (drift wasn't from an upstream bump) — commit tools/upstream-diff/baseline/manifest.json.",
   );
-  process.exit(1);
 }
 
 if (due.length) {
