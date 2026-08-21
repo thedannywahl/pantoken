@@ -89,7 +89,7 @@ jobs:
       # deploy): no CI artifact exists, so build the site fresh here.
       - name: Set up Vite+
         if: github.event_name == 'workflow_dispatch'
-        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        uses: voidzero-dev/setup-vp@313600b80b104eadebb9111787d37a2e83e014ca # v1.17.0
         with:
           cache: true
           run-install: true

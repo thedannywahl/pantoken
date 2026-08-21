@@ -27,7 +27,8 @@
  *   .arrow {
  *     [class*="-icon-"]:optional {}
  *   }
- *   .ellipsis {}
+ *   .page:many {}
+ *   .ellipsis:optional {}
  * }
  */
 .pfx-pagination {

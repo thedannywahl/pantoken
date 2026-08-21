@@ -81,6 +81,8 @@ ${s} blockquote {
   color: var(--instui-component-text-base-color);
   font-size: var(--instui-component-text-content-quote-font-size);
   line-height: var(--instui-component-text-content-quote-line-height);
+  font-weight: var(--instui-component-text-content-quote-font-weight);
+  font-style: var(--instui-component-text-content-quote-font-style);
 }
 
 ${s} code {

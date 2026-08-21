@@ -1,34 +1,19 @@
 /**
  * @component drawer-layout
  * @selector :host
- * @summary A slide-in tray beside a scrollable content area, with a draggable resize handle — the drawer-layout web component's shadow styles.
- * @remarks The `.handle` starts fully transparent and fades in on hover or while dragging, so the resize control only shows when the user reaches for it. Both the tray and the handle stay hidden until the host carries the `open` attribute. For a simple slide-in surface without the resizable content pane, see the [tray](/api/css/tray.md) component.
+ * @summary Additive host/wrapper glue for the drawer-layout web component; core layout/tray/content styles come from `@pantoken/components`.
+ * @remarks The element composes `drawerLayoutCss` + `drawerLayoutTrayCss` + `drawerLayoutContentCss`, then layers these host-scoped rules for shadow-root sizing and overlay-state mirroring.
+ * @remarks The interactions behavior (`initResponsiveOverlay`) controls host `open`/`should-overlay-tray`; this stylesheet mirrors those host states onto the internal `.layout` wrapper so the shared `@pantoken/components` selectors apply without reimplementation.
  * @part .layout — The flex row holding the tray and content.
- * @part .tray — The drawer panel.
- * @part .handle — The drag-to-resize handle between the tray and content.
- * @part .content — The main content area.
- * @cssproperty --drawer-width — The tray's width (default 16rem).
- * @cssstate open — The tray and handle show; without it both are hidden.
- * @cssstate dragging — The handle is being dragged, so it stays highlighted.
+ * @cssstate open — The tray shows; without it the tray is hidden.
+ * @cssstate should-overlay-tray — The tray overlays content instead of shrinking it.
  * @slot tray — The drawer panel's content. The default slot holds the main content beside it.
- * @accessibility The resize handle is a `role="separator"` with `aria-orientation="vertical"`; the tray and handle only render while the host carries the `open` attribute.
+ * @accessibility The tray only renders while the host carries the `open` attribute. The content pane carries `role="region"` (InstUI's DrawerLayout convention); name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
  * @example
  * <instui-drawer-layout open placement="start">
  *   <nav slot="tray">Navigation</nav>
  *   <article>Main content</article>
  * </instui-drawer-layout>
- * @structure
- * :host {
- *   .layout {
- *     .tray {
- *       slot[name="tray"] {}
- *     }
- *     .handle {}
- *     .content {
- *       slot {}
- *     }
- *   }
- * }
  */
 :host {
   display: block;
@@ -36,42 +21,6 @@
 }
 
 .layout {
-  display: flex;
+  inline-size: 100%;
   block-size: 100%;
-}
-
-:host([placement="end"]) .layout {
-  flex-direction: row-reverse;
-}
-
-.tray {
-  flex: 0 0 var(--drawer-width, 16rem);
-  inline-size: var(--drawer-width, 16rem);
-  overflow: auto;
-  background: var(--instui-color-background-elevated-surface-base);
-  border-inline: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
-}
-
-:host(:not([open])) .tray,
-:host(:not([open])) .handle {
-  display: none;
-}
-
-.handle {
-  flex: 0 0 0.375rem;
-  cursor: col-resize;
-  background: var(--instui-color-stroke-base);
-  opacity: 0;
-  transition: opacity 0.15s ease;
-}
-
-.handle:hover,
-.handle.-dragging {
-  opacity: 0.4;
-}
-
-.content {
-  flex: 1 1 auto;
-  overflow: auto;
-  min-inline-size: 0;
 }

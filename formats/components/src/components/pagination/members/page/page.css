@@ -6,8 +6,8 @@
  * @modifier -current — The current page; same styling as `[aria-current]`.
  * @cssstate current
  * @structure
- * @scope (.pfx-pagination) {
- *   :scope > .page {}
+ * @component pagination {
+ *   .page {}
  * }
  */
 @scope (.pfx-pagination) {

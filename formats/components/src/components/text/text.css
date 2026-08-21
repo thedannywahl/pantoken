@@ -153,9 +153,8 @@
 
 .pfx-text.-variant-content-quote {
   font-size: var(--instui-component-text-content-quote-font-size);
-  /* @todo - `--instui-component-text-content-quote-font-weight` token is broken upstream */
-  font-weight: 500;
-  font-style: italic;
+  font-weight: var(--instui-component-text-content-quote-font-weight);
+  font-style: var(--instui-component-text-content-quote-font-style);
   line-height: var(--instui-component-text-content-quote-line-height);
 }
 

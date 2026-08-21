@@ -21,6 +21,7 @@ import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
+import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
 import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
@@ -104,20 +105,14 @@ export function inferSyntax(value: string): string | undefined {
  * it feeds — so map it to that property's CSS value-definition grammar (CSS Values 4 §2.1 notation:
  * `|` `||` `&&` `[]` `?` `{a,b}` `#`). Matched by name substring, most-specific first, so it also catches
  * variants (`…-text-decoration-outside-text`) and non-IR tokens (elevation shadows, the focus ring).
+ * `BESPOKE_SYNTAX` (shared with `@pantoken/utils`' build-time token validator) covers every entry
+ * except `font-family`: the validator matches that against the REAL `font-family` property via
+ * `css-tree`, so it isn't in the shared grammar table — this docs-only entry just needs a
+ * human-readable string for display, unrelated to how the validator checks it.
  */
-const LINE_STYLE =
-  "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset";
-const PROPERTY_SYNTAX: [RegExp, string][] = [
+const PROPERTY_SYNTAX: (readonly [RegExp, string])[] = [
   [/font-family/u, "[ <font-family-name> | <generic-font-family> ]#"],
-  [/elevation/u, "[ inset? && <length>{2,4} && <color>? ]# | none"],
-  [/text-decoration/u, "none | underline || overline || line-through || blink"],
-  [/focus-outline-color/u, "<color> | invert"],
-  [/focus-outline-style/u, `auto | ${LINE_STYLE}`],
-  [/focus-outline-(width|offset|radius)/u, "<length>"],
-  [/border-style/u, LINE_STYLE],
-  // Icon glyph vars hold a url-encoded SVG; type by name so even the value-less placeholder resolves.
-  [/glyph/u, "<url>"],
-  [/-filter\b/u, "<filter-value-list> | none"],
+  ...BESPOKE_SYNTAX,
 ];
 
 /**

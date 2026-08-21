@@ -25,7 +25,7 @@ vi.mock("@cssdoc/core", () => ({ parseCssDocs }));
 vi.mock("@pantoken/tokens", () => ({
   tokens: [{ name: "--instui-ok", value: "#000", syntax: "<color>", inherits: true }],
 }));
-vi.mock("@pantoken/utils", () => ({ makeResolver, unknownReferences }));
+vi.mock("@pantoken/utils", () => ({ makeResolver, unknownReferences, BESPOKE_SYNTAX: [] }));
 vi.mock("@cssdoc/config", () => ({
   CssDocConfigFile: { loadForFolder: () => ({ toConfiguration: () => ({}) }) },
 }));

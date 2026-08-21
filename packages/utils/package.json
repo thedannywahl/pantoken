@@ -17,6 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./token-syntax": "./dist/token-syntax.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -30,9 +31,11 @@
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
-    "arkregex": "catalog:"
+    "arkregex": "catalog:",
+    "css-tree": "catalog:"
   },
   "devDependencies": {
+    "@types/css-tree": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

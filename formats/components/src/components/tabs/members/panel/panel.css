@@ -5,8 +5,8 @@
  * @summary The content panel for a tab (InstUI `Tabs.Panel`).
  * @cssstate hidden
  * @structure
- * @scope (.pfx-tabs) {
- *   :scope > .panel {}
+ * @component tabs {
+ *   .panel {}
  * }
  */
 @scope (.pfx-tabs) {

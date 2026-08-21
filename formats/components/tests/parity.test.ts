@@ -13,13 +13,14 @@ import { validate } from "./_validate.ts";
 const ALL = [...COMPONENTS, ...UTILITIES, ...RULES, ...DECLARATIONS];
 
 test("every registered definition is a single well-formed record (sanity: the registries are populated)", () => {
-  // COMPONENTS is the load-bearing concat order (71: 48 components + icon/screen-reader-content +
+  // COMPONENTS is the load-bearing concat order (74: 49 components + icon/screen-reader-content +
   // view/mask (moved here from UTILITIES, real components now) + the `menu.item`/`menu.group`/
   // `menu.separator`, `tabs.tab`/`tabs.panel`, `breadcrumb.link`, `calendar.day`, `pagination.page`,
-  // `side-nav-bar.item`, `modal.header`/`modal.body`/`modal.footer`,
+  // `side-nav-bar.item`, `modal.header`/`modal.body`/`modal.footer`, and
+  // `drawer-layout.tray`/`drawer-layout.content`,
   // `table.head`/`table.body`/`table.row`/`table.cell`/`table.col-header`/`table.row-header`, and
   // `list.item` members).
-  expect(COMPONENTS.length).toBe(71);
+  expect(COMPONENTS.length).toBe(74);
   expect(UTILITIES.length).toBe(14);
   expect(RULES.length).toBe(2);
   expect(DECLARATIONS.length).toBe(2);

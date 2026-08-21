@@ -1,0 +1,20 @@
+[
+  {
+    "name": "--instui-component-text-content-quote-font-weight",
+    "upstreamValue": "Medium Italic",
+    "rewriteValue": 500,
+    "supplemental": [
+      {
+        "name": "--instui-component-text-content-quote-font-style",
+        "value": "italic"
+      }
+    ],
+    "note": "Upstream squashed a font-weight AND a font-style into one string; split them."
+  },
+  {
+    "name": "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position",
+    "upstreamValue": "undefined",
+    "rewriteValue": "var(--instui-component-top-nav-bar-layout-small-viewport-height)",
+    "note": "A stringified JS `undefined` instead of the top-offset length InstUI's smallViewportTrayFixTopPosition theme variable expects (default equals the navbar height) — referencing the sibling height token instead of hardcoding it keeps them in sync."
+  }
+]

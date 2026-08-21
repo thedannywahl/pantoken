@@ -143,6 +143,56 @@ test("check: a stale baseline exits 1", async () => {
   expect(errSpy.mock.calls.flat().join("\n")).toContain("baseline is stale");
 });
 
+test("check: a value-only drift with unchanged provenance auto-heals (no --bless needed)", async () => {
+  // Same token set, just a different value — e.g. a known-syntax-issues.json patch, not an upstream
+  // bump. Provenance is untouched, so this should self-heal rather than demand a manual bless.
+  state.baselineJson = JSON.stringify(
+    buildManifest({
+      themes: { rebrand: [tok("--a", "#000000")] } as Record<Theme, Token[]>,
+      provenance,
+    }),
+  );
+  const code = await run(false);
+  expect(code).toBeUndefined();
+  expect(writeFileSync.mock.calls.some(([p]) => String(p).endsWith("baseline/manifest.json"))).toBe(
+    true,
+  );
+  expect(logSpy.mock.calls.flat().join("\n")).toContain("auto-healed the baseline");
+});
+
+test("check: drift alongside a REAL upstream bump still requires a manual bless", async () => {
+  // Same value-only drift as above, but provenance also changed — a real upstream commit landed.
+  state.baselineJson = JSON.stringify(
+    buildManifest({
+      themes: { rebrand: [tok("--a", "#000000")] } as Record<Theme, Token[]>,
+      provenance: { ...provenance, uiIcons: { ...provenance.uiIcons, resolved: "11.7.4" } },
+    }),
+  );
+  const code = await run(false);
+  expect(code).toBe(1);
+  expect(errSpy.mock.calls.flat().join("\n")).toContain("baseline is stale");
+  expect(writeFileSync.mock.calls.some(([p]) => String(p).endsWith("baseline/manifest.json"))).toBe(
+    false,
+  );
+});
+
+test("check: a value-only drift auto-heal still enforces uncovered-removal coverage", async () => {
+  // The drift also drops a token with no ledger coverage — auto-heal must NOT bypass that rule.
+  state.baselineJson = JSON.stringify(
+    buildManifest({
+      themes: { rebrand: [tok("--a", "#000000"), tok("--dropped", "#222222")] } as Record<
+        Theme,
+        Token[]
+      >,
+      provenance,
+    }),
+  );
+  state.covers = false;
+  const code = await run(false);
+  expect(code).toBe(1);
+  expect(errSpy.mock.calls.flat().join("\n")).toContain("baseline is stale");
+});
+
 test("check: no baseline exits 1 with a bootstrap hint", async () => {
   state.existsBaseline = false;
   const code = await run(false);

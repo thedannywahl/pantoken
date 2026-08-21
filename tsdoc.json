@@ -4,6 +4,8 @@
   "tagDefinitions": [
     { "tagName": "@property", "syntaxKind": "block" },
     { "tagName": "@module", "syntaxKind": "block" },
-    { "tagName": "@demo", "syntaxKind": "block" }
+    { "tagName": "@demo", "syntaxKind": "block" },
+    { "tagName": "@accessibility", "syntaxKind": "block" },
+    { "tagName": "@a11y", "syntaxKind": "block" }
   ]
 }

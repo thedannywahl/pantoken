@@ -271,6 +271,23 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
+**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
+children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
+(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
+`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
+extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
+(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
+`--instui-breakpoints-sm`, then `30rem`):
+
+```html
+<button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
+<div id="drawer" class="instui-drawer-layout" open>
+  <aside class="tray">…</aside>
+  <main class="content" role="region">…</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
+```
+
 **Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
 covers the modal case.
 

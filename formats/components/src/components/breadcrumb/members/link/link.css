@@ -9,9 +9,11 @@
  * @media (--breakpoint-large-down) — Collapses the trail, showing only the previous crumb and a back arrow.
  * @a11y Mark the current page's crumb with `aria-current="page"` — on its `<a>` if it's a link, otherwise on the `<li>` itself.
  * @structure
- * @scope (.pfx-breadcrumb) {
- *   li {
- *     a { }
+ * @component breadcrumb {
+ *   ol {
+ *     li {
+ *       a {}
+ *     }
  *   }
  * }
  * @sealed

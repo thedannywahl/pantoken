@@ -42,6 +42,14 @@
  * @structure
  * .pfx-table.-hover {
  *   caption {}
+ *   thead {
+ *     th {}
+ *   }
+ *   tbody {
+ *     tr {
+ *       td, th[scope="row"] {}
+ *     }
+ *   }
  * }
  */
 .pfx-table {

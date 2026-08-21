@@ -7,8 +7,8 @@
  * @part .label — The item's text label; hidden when the rail is minimized.
  * @remarks The parent `side-nav-bar`'s `-minimized` modifier hides this member's `.label` — see `side-nav-bar`'s own doc for that modifier.
  * @structure
- * @scope (.pfx-side-nav-bar) {
- *   :scope > .item {
+ * @component side-nav-bar {
+ *   .item {
  *     [class*="-icon-"]:optional {}
  *     .label {}
  *   }

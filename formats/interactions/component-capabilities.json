@@ -48,7 +48,8 @@
     },
     {
       "name": "drawer-layout",
-      "type": "js-only",
+      "type": "both",
+      "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/drawer-layout.css",
       "js": "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"
     },
     {

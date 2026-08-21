@@ -129,9 +129,7 @@ describe("resolveSyntax", () => {
   test("falls back to inferring from a sheet-local value", () => {
     const locals = new Map([["--instui-elevation-x", "0 1px 2px #000"]]);
     // Not a known token, no property-grammar match → infer from the resolved local (a colour shadow).
-    expect(resolveSyntax("--instui-elevation-x", empty, locals, id)).toBe(
-      "[ inset? && <length>{2,4} && <color>? ]# | none",
-    );
+    expect(resolveSyntax("--instui-elevation-x", empty, locals, id)).toBe("none | <shadow>#");
   });
   test("a local value with no grammar match infers the primitive type", () => {
     const locals = new Map([["--x-plain", "12px"]]);

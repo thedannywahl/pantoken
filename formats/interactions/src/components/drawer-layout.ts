@@ -2,14 +2,17 @@
 /* c8 ignore file */ // side-effect module, tested via behavior functions and IIFE bundles
 // Per-component interaction entry point for drawer-layout
 
-import { applySpacing } from "../shared/index.js";
-import { syncInvoker } from "../shared/index.js";
+import { initResponsiveOverlay } from "../behaviors/responsive-overlay.js";
+import { applySpacing, makeOnCommand } from "../shared/index.js";
 
 // Initialize on page load
 function initdrawerLayout() {
+  const invokerSupported = "command" in (HTMLButtonElement.prototype as object);
+  const onCommand = makeOnCommand(invokerSupported);
   for (const el of document.querySelectorAll(".instui-drawer-layout")) {
-    applySpacing(el as HTMLElement);
-    syncInvoker(el as HTMLElement);
+    const host = el as HTMLElement;
+    applySpacing(host);
+    initResponsiveOverlay(host, onCommand);
   }
 }
 

@@ -24,6 +24,9 @@ import { calendarDay } from "./calendar/members/day/index.ts";
 import { checkbox } from "./checkbox/index.ts";
 import { closeButton } from "./close-button/index.ts";
 import { contextView } from "./context-view/index.ts";
+import { drawerLayout } from "./drawer-layout/index.ts";
+import { drawerLayoutContent } from "./drawer-layout/members/content/index.ts";
+import { drawerLayoutTray } from "./drawer-layout/members/tray/index.ts";
 import { fileDrop } from "./file-drop/index.ts";
 import { formField } from "./form-field/index.ts";
 import { formFieldGroup } from "./form-field-group/index.ts";
@@ -124,6 +127,9 @@ export const COMPONENTS: readonly Definition[] = [
   rating,
   toggleGroup,
   contextView,
+  drawerLayout,
+  drawerLayoutTray,
+  drawerLayoutContent,
   progressCircle,
   pagination,
   paginationPage,

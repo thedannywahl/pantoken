@@ -4,8 +4,8 @@
  * @selector .group
  * @summary A labelled group heading (InstUI `Menu.Group`/`Menu.ItemGroup`).
  * @structure
- * @scope (.pfx-menu) {
- *   :scope > .group {}
+ * @component menu {
+ *   .group {}
  * }
  */
 @scope (.pfx-menu) {

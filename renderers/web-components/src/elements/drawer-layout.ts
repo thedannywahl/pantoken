@@ -1,13 +1,16 @@
+import { drawerLayoutContentCss, drawerLayoutCss, drawerLayoutTrayCss } from "@pantoken/components";
+import { initResponsiveOverlay } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 import DRAWER_CSS from "./drawer-layout.css?inline";
 
 /**
- * `<instui-drawer-layout>` — a side tray plus main content in a resizable row. The `open` attribute
- * reveals the tray; `placement` (`start`|`end`) picks the side; a drag handle resizes the
- * `--drawer-width` custom property (clamped 8–40rem) via pointer capture. Drivable from light DOM via
- * Invoker Commands: `<button command="--toggle|--open|--close" commandfor="drawer-id">`. Content goes
- * in the default slot; the tray in `slot="tray"`.
+ * `<instui-drawer-layout>` — a side tray plus main content area. The `open` attribute reveals the
+ * tray; `placement` (`start`|`end`) picks the side. Drivable from light DOM via Invoker Commands:
+ * `<button command="--toggle|--open|--close" commandfor="drawer-id">`. Content goes in the default
+ * slot; the tray in `slot="tray"`. The interactions behavior auto-toggles overlay mode based on the
+ * `--pantoken-bp-md` threshold.
  *
+ * @accessibility The content pane carries `role="region"`, matching InstUI's DrawerLayout; label it with `aria-label`/`aria-labelledby` when the surrounding context doesn't already name it.
  * @example
  * ```html
  * <button command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -24,7 +27,7 @@ export const drawerLayout: ElementDefinition = {
     ctx.registry.define(
       "instui-drawer-layout",
       class extends HTMLElement {
-        static observedAttributes = ["open", "placement"];
+        static observedAttributes = ["open", "placement", "should-overlay-tray"];
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
@@ -32,51 +35,62 @@ export const drawerLayout: ElementDefinition = {
         connectedCallback(): void {
           const root = this.shadowRoot;
           if (!root || root.querySelector(".layout")) return;
-          root.innerHTML =
-            `<style>${DRAWER_CSS}</style>` +
-            `<div class="layout"><aside class="tray" part="tray"><slot name="tray"></slot></aside>` +
-            `<div class="handle" part="handle" role="separator" aria-orientation="vertical"></div>` +
-            `<main class="content" part="content"><slot></slot></main></div>`;
-          const handle = root.querySelector<HTMLElement>(".handle");
-          if (handle) this.#wireResize(handle);
-          // Drivable from light DOM via Invoker Commands: `<button command="--toggle|--open|--close"
-          // commandfor="drawer-id">`.
-          ctx.onCommand(this, (command) => {
-            if (command === "--toggle") this.toggle();
-            else if (command === "--open") this.toggle(true);
-            else if (command === "--close") this.toggle(false);
-          });
+
+          const style =
+            drawerLayoutCss(ctx.I) +
+            drawerLayoutTrayCss(ctx.I) +
+            drawerLayoutContentCss(ctx.I) +
+            DRAWER_CSS;
+
+          const styleEl = document.createElement("style");
+          styleEl.textContent = style;
+
+          const layout = document.createElement("div");
+          layout.className = `layout ${ctx.I.prefix}-drawer-layout`;
+
+          const tray = document.createElement("aside");
+          tray.className = "tray";
+          tray.setAttribute("part", "tray");
+
+          const traySlot = document.createElement("slot");
+          traySlot.name = "tray";
+          tray.append(traySlot);
+
+          const content = document.createElement("main");
+          content.className = "content";
+          content.setAttribute("part", "content");
+          content.setAttribute("role", "region");
+
+          const contentSlot = document.createElement("slot");
+          content.append(contentSlot);
+
+          layout.append(tray, content);
+          root.replaceChildren(styleEl, layout);
+          this.syncLayoutState();
+          initResponsiveOverlay(this, ctx.onCommand);
         }
+        attributeChangedCallback(): void {
+          this.syncLayoutState();
+        }
+
+        private syncLayoutState(): void {
+          const layout = this.shadowRoot?.querySelector(".layout");
+          if (!(layout instanceof HTMLElement)) return;
+
+          const placement = this.getAttribute("placement");
+          const hasOverlay =
+            this.hasAttribute("should-overlay-tray") ||
+            this.classList.contains("-should-overlay-tray");
+
+          layout.classList.toggle("-open", this.hasAttribute("open"));
+          layout.classList.toggle("-placement-end", placement === "end");
+          layout.classList.toggle("-placement-start", placement !== "end");
+          layout.classList.toggle("-should-overlay-tray", hasOverlay);
+        }
+
         toggle(force?: boolean): void {
           if (force ?? !this.hasAttribute("open")) this.setAttribute("open", "");
           else this.removeAttribute("open");
-        }
-        #wireResize(handle: HTMLElement): void {
-          const rem = (): number =>
-            parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-          let startX = 0;
-          let startW = 0;
-          const onMove = (event: PointerEvent): void => {
-            const dir = this.getAttribute("placement") === "end" ? -1 : 1;
-            const next = startW + dir * (event.clientX - startX);
-            const px = Math.max(8 * rem(), Math.min(40 * rem(), next));
-            this.style.setProperty("--drawer-width", `${String(px)}px`);
-          };
-          const onUp = (event: PointerEvent): void => {
-            handle.classList.remove("-dragging");
-            handle.releasePointerCapture(event.pointerId);
-            handle.removeEventListener("pointermove", onMove);
-            handle.removeEventListener("pointerup", onUp);
-          };
-          handle.addEventListener("pointerdown", (event) => {
-            startX = event.clientX;
-            const tray = this.shadowRoot?.querySelector<HTMLElement>(".tray");
-            startW = tray?.getBoundingClientRect().width ?? 0;
-            handle.classList.add("-dragging");
-            handle.setPointerCapture(event.pointerId);
-            handle.addEventListener("pointermove", onMove);
-            handle.addEventListener("pointerup", onUp);
-          });
         }
       },
     );

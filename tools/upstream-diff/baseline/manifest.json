@@ -21788,10 +21788,15 @@
         "syntax": "*",
         "value": "var(--instui-font-size-text-base)"
       },
+      "--instui-component-text-content-quote-font-style": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "italic"
+      },
       "--instui-component-text-content-quote-font-weight": {
         "inherits": true,
         "syntax": "*",
-        "value": "Medium Italic"
+        "value": "500"
       },
       "--instui-component-text-content-quote-line-height": {
         "inherits": true,
@@ -23004,7 +23009,7 @@
       "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position": {
         "inherits": true,
         "syntax": "*",
-        "value": "undefined"
+        "value": "var(--instui-component-top-nav-bar-layout-small-viewport-height)"
       },
       "--instui-component-top-nav-bar-layout-small-viewport-tray-position": {
         "inherits": true,
@@ -37898,10 +37903,15 @@
         "syntax": "*",
         "value": "var(--instui-font-size-text-base)"
       },
+      "--instui-component-text-content-quote-font-style": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "italic"
+      },
       "--instui-component-text-content-quote-font-weight": {
         "inherits": true,
         "syntax": "*",
-        "value": "Medium Italic"
+        "value": "500"
       },
       "--instui-component-text-content-quote-line-height": {
         "inherits": true,
@@ -39114,7 +39124,7 @@
       "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position": {
         "inherits": true,
         "syntax": "*",
-        "value": "undefined"
+        "value": "var(--instui-component-top-nav-bar-layout-small-viewport-height)"
       },
       "--instui-component-top-nav-bar-layout-small-viewport-tray-position": {
         "inherits": true,
@@ -54048,10 +54058,15 @@
         "syntax": "*",
         "value": "var(--instui-font-size-text-base)"
       },
+      "--instui-component-text-content-quote-font-style": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "italic"
+      },
       "--instui-component-text-content-quote-font-weight": {
         "inherits": true,
         "syntax": "*",
-        "value": "Medium Italic"
+        "value": "500"
       },
       "--instui-component-text-content-quote-line-height": {
         "inherits": true,
@@ -55266,7 +55281,7 @@
       "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position": {
         "inherits": true,
         "syntax": "*",
-        "value": "undefined"
+        "value": "var(--instui-component-top-nav-bar-layout-small-viewport-height)"
       },
       "--instui-component-top-nav-bar-layout-small-viewport-tray-position": {
         "inherits": true,
