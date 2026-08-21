@@ -22,6 +22,18 @@ test("syntaxMismatches accepts a real font-weight value", () => {
   expect(syntaxMismatches([good])).toEqual([]);
 });
 
+test("syntaxMismatches validates a real font-style value and flags a bad one", () => {
+  const good: Token = {
+    name: "--instui-component-text-content-quote-font-style",
+    syntax: "*",
+    inherits: true,
+    value: "italic",
+  };
+  const bad: Token = { ...good, value: "Medium Italic" };
+  expect(syntaxMismatches([good])).toEqual([]);
+  expect(syntaxMismatches([bad])).toEqual([{ name: bad.name, value: bad.value, kind: "mismatch" }]);
+});
+
 test("syntaxMismatches accepts decomposed box-shadow/drop-shadow pieces as bare lengths, not the full composite grammar", () => {
   const pieces: Token[] = [
     {

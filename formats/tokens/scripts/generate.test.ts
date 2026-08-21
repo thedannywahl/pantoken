@@ -129,6 +129,78 @@ test("generate.ts patches a known upstream issue to an explicit rewriteValue", a
   expect(token.value).toBe("500");
 });
 
+test("generate.ts adds a known issue's supplemental token to the IR", async () => {
+  const tokens = [
+    {
+      name: "--instui-component-text-content-quote-font-weight",
+      syntax: "*",
+      inherits: true,
+      value: "Medium Italic",
+    },
+  ];
+  buildTokens.mockReturnValue(tokens);
+  readFileSync.mockImplementation((p: unknown) =>
+    String(p).endsWith("known-syntax-issues.json")
+      ? JSON.stringify([
+          {
+            name: "--instui-component-text-content-quote-font-weight",
+            upstreamValue: "Medium Italic",
+            rewriteValue: 500,
+            supplemental: [
+              { name: "--instui-component-text-content-quote-font-style", value: "italic" },
+            ],
+          },
+        ])
+      : "[]",
+  );
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("added supplemental token"));
+  expect(tokens).toContainEqual({
+    name: "--instui-component-text-content-quote-font-style",
+    syntax: "*",
+    inherits: true,
+    value: "italic",
+  });
+});
+
+test("generate.ts skips a supplemental token that already exists in the IR", async () => {
+  const existing = {
+    name: "--instui-component-text-content-quote-font-style",
+    syntax: "*",
+    inherits: true,
+    value: "normal",
+  };
+  const tokens = [
+    {
+      name: "--instui-component-text-content-quote-font-weight",
+      syntax: "*",
+      inherits: true,
+      value: "Medium Italic",
+    },
+    existing,
+  ];
+  buildTokens.mockReturnValue(tokens);
+  readFileSync.mockImplementation((p: unknown) =>
+    String(p).endsWith("known-syntax-issues.json")
+      ? JSON.stringify([
+          {
+            name: "--instui-component-text-content-quote-font-weight",
+            upstreamValue: "Medium Italic",
+            rewriteValue: 500,
+            supplemental: [{ name: existing.name, value: "italic" }],
+          },
+        ])
+      : "[]",
+  );
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(tokens.filter((t) => t.name === existing.name)).toEqual([existing]);
+});
+
 test("generate.ts treats a changed upstream value as a new issue, dropping the stale ledger entry", async () => {
   buildTokens.mockReturnValue([
     {

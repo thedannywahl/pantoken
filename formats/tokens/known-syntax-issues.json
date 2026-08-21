@@ -3,7 +3,13 @@
     "name": "--instui-component-text-content-quote-font-weight",
     "upstreamValue": "Medium Italic",
     "rewriteValue": 500,
-    "note": "A font-style-like string instead of a numeric font-weight."
+    "supplemental": [
+      {
+        "name": "--instui-component-text-content-quote-font-style",
+        "value": "italic"
+      }
+    ],
+    "note": "Upstream squashed a font-weight AND a font-style into one string; split them."
   },
   {
     "name": "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position",

@@ -159,6 +159,7 @@ export const BESPOKE_SYNTAX: SyntaxRule<Grammar> = [
 export const TOKEN_NAME_TO_PROPERTY: SyntaxRule<PropertyName> = [
   [/font-family/u, realProperty("font-family")],
   [/font-weight/u, realProperty("font-weight")],
+  [/font-style/u, realProperty("font-style")],
   [/font-size/u, realProperty("font-size")],
   [/line-height/u, realProperty("line-height")],
   [/letter-spacing/u, realProperty("letter-spacing")],
