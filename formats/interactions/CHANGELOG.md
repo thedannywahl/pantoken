@@ -1,5 +1,13 @@
 # @pantoken/interactions
 
+## 0.3.2
+
+### Patch Changes
+
+- 90ce910: Regenerate `component-capabilities.json` after the `@pantoken/components` per-record directory migration (no behavioral change).
+- Updated dependencies [90ce910]
+  - @pantoken/utils@0.4.0
+
 ## 0.3.1
 
 ### Patch Changes

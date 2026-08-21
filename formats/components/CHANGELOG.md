@@ -1,5 +1,122 @@
 # CHANGELOG
 
+## 0.7.0
+
+### Minor Changes
+
+- 90ce910: Add auto-collapse to the breadcrumb based on window size using media queries.
+- 90ce910: `responsiveUtilitiesCss`/`responsive`: the breakpoint scale now comes from
+  `--instui-component-tray-width-*` instead of a hand-typed `sm`/`md`/`lg`/`xl` @ 30/48/64/80rem
+  scale — **breaking**: values shift to `xs`/`sm`/`md`/`lg`/`xl` @ 16/20/30/48/62em (a new `xs` tier,
+  and every existing tier's threshold moves down one step). Each scale tier now also emits a
+  long-form-spelling alias (`x-small`…`x-large`) and a device-name alias
+  (`mobile`/`phablet`/`tablet`/`laptop`/`desktop`) alongside the short name — e.g.
+  `.instui-hidden-max-lg`, `.instui-hidden-max-large`, and `.instui-hidden-max-laptop` are equivalent.
+
+  Also adds two new, unscaled breakpoint tiers for the main content area's max-width — `content` and
+  `content-full-width` — themed (1100px/1580px in `rebrand`, 59.25em in `canvas`/`canvasHighContrast`).
+
+  Adds `-show-max-<bp>`/`-show-min-<bp>` (and their `-cq-show-*` container-query twins) as the inverse
+  of `-hidden-max-*`/`-hidden-min-*`: hidden by default (`display: none`), then `revert`ed back to
+  their natural display only inside the matching breakpoint range. Same short/long-form/device-name
+  alias scheme as the hide classes.
+
+  Long-form and device-name classes (`-hidden-max-small`, `-hidden-max-phablet`, etc.) are now
+  documented as `@deprecated` aliases of the short name (`-hidden-max-sm`), matching the codebase's
+  existing `-size-small`/`-size-sm` convention. Every `-hidden-max-*`/`-hidden-min-*` class (and its
+  `-cq-` container-query twin) is individually documented, the `@media`/`@container` breakpoint
+  thresholds describe the boundary itself (not the hide behavior), and the breakpoint scale is now
+  also exposed as inspectable `--pantoken-bp-*` `@property` custom properties (informational only —
+  they don't affect the compiled thresholds) whose scale-tier values consume the real
+  `--instui-component-tray-width-*` tokens.
+
+  `breadcrumb.link`'s trail-collapse breakpoint now uses the `@pantoken/plugin-theme-custom-media`
+  `--breakpoint-large-down` alias instead of a hardcoded `max-width: 48rem` (still 48em/`lg`/`large`
+  under the new scale, so this specific component's behavior is unchanged).
+
+- 90ce910: Make `view`'s and `text`'s key-value modifiers (background, border, shadow, display, position,
+  overflow, cursor, colour, weight, size) available globally, without requiring the `.instui-view`/
+  `.instui-text` base class:
+
+  - Every one of these modifiers now also works as a bare, standalone class (`instui-bg-secondary`) and
+    as a component-attached alias on any other component (`.instui-button.-bg-danger`) — the same dual
+    pattern `spacing`/`gap` already used, generalized via a new shared `GLOBAL_ALIAS_TARGETS`/
+    `globalSelectors()` helper.
+  - Reuses existing global class words (`bg`, `text`, `border`, `border-radius`, `border-width`,
+    `box-shadow`, `display`, `text-align`, `font-weight`) rather than inventing parallel vocabulary; only
+    genuinely new concepts get a new utility (`position`, `overflow`, `cursor`, a new `font-size`
+    utility, and a global `mask`/`mask-fullscreen`/`mask-blur` copy of the `mask` component's modifiers).
+  - `view` and `mask` moved from `utilities/` to `components/` (still exported as `viewCss`/`maskCss`
+    from the package root — their own chained modifiers are unchanged) so they can participate in the
+    same component-list the dual selectors chain onto.
+  - `@pantoken/utils`'s `colorUtilitiesCss`/`tokenUtilitiesCss` gained an optional `chainTargets` option
+    for the dual-selector behavior, and `colorUtilitiesCss` now accepts explicit `[name, value]` pairs
+    (not just prefix-relative names) so a component's own token family can feed the same class word.
+    Also fixes a doc/code mismatch: the text-colour utility's class is now `.instui-text-<name>` (as its
+    own doc comment always claimed), not `.instui-fg-<name>`.
+  - `cssdoc.jsonc` pins `globalPrecedence: "base"` explicitly, so a component's own modifier always wins
+    over a same-named global-utility copy.
+  - `responsive`'s viewport/container show-hide classes stay bare-only (not dual-chained) — their
+    breakpoint × infix × alias-name surface is already large enough that adding ~70 more chained
+    selectors per rule makes the shared alias post-processors unusably slow.
+
+- 90ce910: `breadcrumb` now renders as a semantic `<nav><ol><li class="link">…</li></ol></nav>` trail instead
+  of a flat `<nav><span class="link">…</span></nav>` list, matching the WAI-ARIA breadcrumb pattern.
+  **Breaking for existing markup**: the flex layout, gap, and font-size that used to live on
+  `.pfx-breadcrumb` now live on `.pfx-breadcrumb > ol`, and each crumb must be an `<li>` instead of a
+  `<span>`. `breadcrumb.link` and the `link` component now document how to pair `.pfx-breadcrumb` with
+  the `responsive` utility's `-hidden-max-md`/`-hidden-min-md` classes and a `.pfx-link` to reproduce
+  InstUI's "Breadcrumb becomes a Link under ~768px" behavior in pure CSS.
+- 90ce910: Move all CSS generation for `transition` and `stacking` fully into `@pantoken/components`' own
+  utilities, and port `@pantoken/plugin-visual-debug`'s `-with-visual-debug` outline as a new
+  `@pantoken/components` utility.
+
+  - `@pantoken/components`: the `transition` utility now registers local `--duration` (`300ms`) and
+    `--timing` (`ease-in-out`) `@property`-backed custom properties (override either to retime every
+    transition), matching the unnamespaced-local-property convention other components/utilities already
+    use (e.g. `progress`'s `--value`/`--min`/`--max`) and fixing a prior token-drift bug where the
+    utility referenced `--instui-transition-*` custom properties without ever defining them. Added a new
+    `visual-debug` utility (`-with-visual-debug`), ported from `@pantoken/plugin-visual-debug`. The
+    `prose` rule's default `scope` changed from `.pantoken-prose` to `:where(body)`, so importing
+    `prose.css` applies automatically — no wrapper class required — the same way `base.css` does;
+    pass `options.scope` (unchanged) to target a different content root instead. Also moved the
+    `progress`/`progress-circle` mount and value transition CSS out of a shared, hand-duplicated helper
+    and into each component's own `.css` source (matching `popover`/`tray`); the generated
+    `progressCss`/`progressCircleCss` output is unchanged. Also fixed several bugs surfaced while
+    wiring up the new utilities: `transitionCss` was never exported, so its CSS never shipped; the
+    `stacking` and `mask` utilities emitted an invalid selector missing its leading `.` (e.g.
+    `-stack-topmost` instead of `.-stack-topmost`), now fixed via the same `globalSelectors` helper
+    `cursor`/`position`/`truncate` already use; and the 12 utility subpath exports declared in
+    `package.json` (`./utilities/*.css`) now actually resolve to built `dist/utilities/*.css` files
+    (previously missing).
+  - `@pantoken/plugin-transition` (**breaking**): narrowed to a tokens-only plugin. It no longer emits
+    the `.instui-transition` base rule or `fade`/`scale`/`slide-*` state classes, and no longer ships a
+    standalone `transition.css` (the `./transition.css` export, and the `prefix`/`position` options, are
+    removed) — that CSS now lives exclusively in `@pantoken/components`' own `transition` utility. The
+    plugin still bakes `--instui-transition-duration`/`--instui-transition-timing` tokens for consumers
+    using the lower-level `@pantoken/css`/`@pantoken/tokens` pipeline directly.
+  - `@pantoken/plugin-stacking` (**breaking**): narrowed to a tokens-only plugin. It no longer emits
+    `.instui-stack-<level>` classes and no longer ships a standalone `stacking.css` (the `./stacking.css`
+    export is removed) — those classes now live exclusively in `@pantoken/components`' own `stacking`
+    utility. The plugin still bakes the resolved `--instui-stacking-<level>` tokens.
+
+- 90ce910: Update truncate to apply line clamping on the base class and remove the `-lines` modifier contract.
+
+  The `truncate` component now reads `--lines` directly on `.instui-truncate` / `.pfx-truncate` and no longer exposes a separate `-lines` modifier path.
+
+### Patch Changes
+
+- 90ce910: Adopt cssdoc's `@alias` tag for modifiers that are pure renames (no behavior change), reserving
+  `@deprecated` for true deprecations from the color/spacing normalization work. `-toggle`,
+  `-show-border`, `-has-shadow-false`, `-size-small`, `-type-new-error`, `-should-animate-on-mount`, the
+  `--value-now`/`--value-max` custom properties, and the responsive long-form/device-name breakpoint
+  classes are now documented as `@alias` instead of `@deprecated`. Avatar's `-color-accent*`, alert's
+  `-variant-*`, and progress(-circle)'s `-meter-color-*` remain `@deprecated`. All aliased modifiers keep
+  their functional CSS twin; only the generated docs badge changes (blue "Alias" vs. red "Deprecated").
+- Updated dependencies [90ce910]
+  - @pantoken/utils@0.4.0
+  - @pantoken/tokens@0.2.3
+
 ## 0.6.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/vite",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Vite plugin for pantoken: virtual modules for tokens and CSS, plus optional stylesheet injection.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.5.3
+
+### Patch Changes
+
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+  - @pantoken/components@0.7.0
+  - @pantoken/interactions@0.3.2
+  - @pantoken/icons@0.1.7
+
 ## 0.5.2
 
 ### Patch Changes
