@@ -144,7 +144,7 @@ export const BESPOKE_SYNTAX: SyntaxRule<Grammar> = [
  *
  * Order matters: `color` is LAST and end-anchored (`color$`, not a bare `/color/` substring)
  * because several UNRELATED components merely have "color" in their own name (`ColorPicker`,
- * `ColorContrast`, `ColorIndicator`, `ColorPreset") with an unrelated leaf property afterwards —
+ * `ColorContrast`, `ColorIndicator`, `ColorPreset`) with an unrelated leaf property afterwards —
  * e.g. `--instui-component-color-picker-hash-mark-container-left-padding` (a `padding`, caught
  * earlier) or `--instui-component-color-indicator-background-size` (a `background-size`, not
  * modeled at all — left `unmodeled` rather than misrouted to `color`). Anchoring to the literal
