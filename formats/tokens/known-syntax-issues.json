@@ -14,7 +14,7 @@
   {
     "name": "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position",
     "upstreamValue": "undefined",
-    "rewriteValue": "3.5rem",
-    "note": "A stringified JS `undefined` instead of the top-offset length InstUI's smallViewportTrayFixTopPosition theme variable expects (see its docs/source: default '3.5rem', the standard navbar height)."
+    "rewriteValue": "var(--instui-component-top-nav-bar-layout-small-viewport-height)",
+    "note": "A stringified JS `undefined` instead of the top-offset length InstUI's smallViewportTrayFixTopPosition theme variable expects (default equals the navbar height) — referencing the sibling height token instead of hardcoding it keeps them in sync."
   }
 ]
