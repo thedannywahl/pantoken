@@ -12,6 +12,7 @@
  * @modifier -size-xl — Extra large.
  * @modifier -size-regular - @deprecated {@link -size-md} is the new default size.
  * @compat Opens with the native `[popover]` API and `@starting-style`; the slide-in sits behind an `@supports (transition-behavior: allow-discrete)` guard, so browsers without it still open the tray, just without the slide.
+ * @remarks Start/end placements resolve against `inset-inline` (logical, direction-aware); the slide-in transform mirrors automatically under an ancestor `[dir="rtl"]`, so no extra markup is needed for right-to-left layouts.
  * @accessibility The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.pfx-close-button` in the example uses `aria-label="Close"`).
  * @example
  * ```html
@@ -96,54 +97,51 @@ dialog.pfx-tray {
   border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
 }
 
-/* Slide in from the docked edge on open (native popover + @starting-style, no JS). The transform is
-   keyed to placement; inert where allow-discrete transitions aren't supported. */
+/* Slide in from the docked edge on open (native popover + @starting-style, no JS). --tray-slide-x/y
+   hold the hidden-state offset per placement; inert where allow-discrete transitions aren't supported. */
 @supports (transition-behavior: allow-discrete) {
   [popover].pfx-tray {
+    --tray-slide-x: -100%;
+    --tray-slide-y: 0%;
     transition:
       transform 0.2s ease,
       overlay 0.2s allow-discrete,
       display 0.2s allow-discrete;
-    transform: translateX(0);
+    transform: translate(0, 0);
   }
 
   [popover].pfx-tray:not(:popover-open) {
-    transform: translateX(-100%);
+    transform: translate(var(--tray-slide-x), var(--tray-slide-y));
   }
 
   @starting-style {
     [popover].pfx-tray:popover-open {
-      transform: translateX(-100%);
+      transform: translate(var(--tray-slide-x), var(--tray-slide-y));
     }
   }
 
-  [popover].pfx-tray.-placement-end:not(:popover-open) {
-    transform: translateX(100%);
+  /* Inline placements dock to logical start/end, so the slide direction must mirror under an
+     ancestor [dir="rtl"]; the end-in-rtl override must win, so it needs one extra class of
+     specificity, and the top/bottom resets must come after this generic flip in source order. */
+  [dir="rtl"] .pfx-tray {
+    --tray-slide-x: 100%;
   }
 
-  @starting-style {
-    [popover].pfx-tray.-placement-end:popover-open {
-      transform: translateX(100%);
-    }
+  .pfx-tray.-placement-end {
+    --tray-slide-x: 100%;
   }
 
-  [popover].pfx-tray.-placement-top:not(:popover-open) {
-    transform: translateY(-100%);
+  [dir="rtl"] .pfx-tray.-placement-end {
+    --tray-slide-x: -100%;
   }
 
-  @starting-style {
-    [popover].pfx-tray.-placement-top:popover-open {
-      transform: translateY(-100%);
-    }
+  .pfx-tray.-placement-top {
+    --tray-slide-x: 0%;
+    --tray-slide-y: -100%;
   }
 
-  [popover].pfx-tray.-placement-bottom:not(:popover-open) {
-    transform: translateY(100%);
-  }
-
-  @starting-style {
-    [popover].pfx-tray.-placement-bottom:popover-open {
-      transform: translateY(100%);
-    }
+  .pfx-tray.-placement-bottom {
+    --tray-slide-x: 0%;
+    --tray-slide-y: 100%;
   }
 }
