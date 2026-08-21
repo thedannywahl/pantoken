@@ -1,3 +1,4 @@
+import { drawerLayoutContentCss, drawerLayoutCss, drawerLayoutTrayCss } from "@pantoken/components";
 import { initResponsiveOverlay } from "@pantoken/interactions";
 import type { ElementDefinition } from "../lib/context.ts";
 import DRAWER_CSS from "./drawer-layout.css?inline";
@@ -26,7 +27,7 @@ export const drawerLayout: ElementDefinition = {
     ctx.registry.define(
       "instui-drawer-layout",
       class extends HTMLElement {
-        static observedAttributes = ["open", "placement"];
+        static observedAttributes = ["open", "placement", "should-overlay-tray"];
         constructor() {
           super();
           this.attachShadow({ mode: "open" });
@@ -34,12 +35,39 @@ export const drawerLayout: ElementDefinition = {
         connectedCallback(): void {
           const root = this.shadowRoot;
           if (!root || root.querySelector(".layout")) return;
+
+          const style =
+            drawerLayoutCss(ctx.I) +
+            drawerLayoutTrayCss(ctx.I) +
+            drawerLayoutContentCss(ctx.I) +
+            DRAWER_CSS;
+
           root.innerHTML =
-            `<style>${DRAWER_CSS}</style>` +
-            `<div class="layout"><aside class="tray" part="tray"><slot name="tray"></slot></aside>` +
+            `<style>${style}</style>` +
+            `<div class="layout ${ctx.I}-drawer-layout"><aside class="tray" part="tray"><slot name="tray"></slot></aside>` +
             `<main class="content" part="content" role="region"><slot></slot></main></div>`;
+          this.syncLayoutState();
           initResponsiveOverlay(this, ctx.onCommand);
         }
+        attributeChangedCallback(): void {
+          this.syncLayoutState();
+        }
+
+        private syncLayoutState(): void {
+          const layout = this.shadowRoot?.querySelector(".layout");
+          if (!(layout instanceof HTMLElement)) return;
+
+          const placement = this.getAttribute("placement");
+          const hasOverlay =
+            this.hasAttribute("should-overlay-tray") ||
+            this.classList.contains("-should-overlay-tray");
+
+          layout.classList.toggle("-open", this.hasAttribute("open"));
+          layout.classList.toggle("-placement-end", placement === "end");
+          layout.classList.toggle("-placement-start", placement !== "end");
+          layout.classList.toggle("-should-overlay-tray", hasOverlay);
+        }
+
         toggle(force?: boolean): void {
           if (force ?? !this.hasAttribute("open")) this.setAttribute("open", "");
           else this.removeAttribute("open");

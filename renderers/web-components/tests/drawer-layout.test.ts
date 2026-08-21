@@ -1,6 +1,4 @@
 // @vitest-environment happy-dom
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { afterEach, expect, test } from "vite-plus/test";
 import { register } from "../src/index.ts";
 
@@ -76,10 +74,8 @@ test("re-connecting does not double-render the layout", () => {
 });
 
 test('placement styling uses only logical (inline-*) properties, never left/right, so it flips under dir="rtl"', () => {
-  const css = readFileSync(
-    resolve(import.meta.dirname, "../src/elements/drawer-layout.css"),
-    "utf8",
-  );
+  const el = drawer("open placement=end");
+  const css = (el.shadowRoot?.querySelector("style") as HTMLStyleElement).textContent ?? "";
   expect(css).toContain("flex-direction: row-reverse");
   expect(css).toContain("inset-inline-start: 0");
   expect(css).not.toMatch(/(?<![a-z-])(left|right)\s*:/i);

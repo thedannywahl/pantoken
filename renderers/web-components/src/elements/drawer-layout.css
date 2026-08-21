@@ -1,14 +1,10 @@
 /**
  * @component drawer-layout
  * @selector :host
- * @summary A slide-in tray beside a scrollable content area, with breakpoint-driven overlay mode — the drawer-layout web component's shadow styles.
- * @remarks The tray stays hidden until the host carries `open`. Overlay mode is activated automatically by a `@container` query once the host's own inline-size drops below `--drawer-layout-tray-width` plus `--drawer-layout-min-width`; the interactions behavior additionally toggles `should-overlay-tray` for the `overlaytraychange` event and older browsers.
- * @remarks `placement="end"` and the default (start) both resolve through `flex-direction`/`inset-inline-*` logical properties, so the tray's side follows the host's `direction`/`dir="rtl"` automatically.
+ * @summary Additive host/wrapper glue for the drawer-layout web component; core layout/tray/content styles come from `@pantoken/components`.
+ * @remarks The element composes `drawerLayoutCss` + `drawerLayoutTrayCss` + `drawerLayoutContentCss`, then layers these host-scoped rules for shadow-root sizing and overlay-state mirroring.
+ * @remarks The interactions behavior (`initResponsiveOverlay`) controls host `open`/`should-overlay-tray`; this stylesheet mirrors those host states onto the internal `.layout` wrapper so the shared `@pantoken/components` selectors apply without reimplementation.
  * @part .layout — The flex row holding the tray and content.
- * @part .tray — The drawer panel.
- * @part .content — The main content area.
- * @cssproperty --drawer-layout-min-width — Width threshold for switching to overlay tray mode.
- * @cssproperty --drawer-layout-tray-width — The tray width in inline and overlay modes.
  * @cssstate open — The tray shows; without it the tray is hidden.
  * @cssstate should-overlay-tray — The tray overlays content instead of shrinking it.
  * @slot tray — The drawer panel's content. The default slot holds the main content beside it.
@@ -18,90 +14,13 @@
  *   <nav slot="tray">Navigation</nav>
  *   <article>Main content</article>
  * </instui-drawer-layout>
- * @structure
- * :host {
- *   .layout {
- *     .tray {
- *       slot[name="tray"] {}
- *     }
- *     .content {
- *       slot {}
- *     }
- *   }
- * }
  */
 :host {
   display: block;
   block-size: 100%;
-  /* Named so the container query below reads this host's own width, not an unrelated ancestor. */
-  container: pantoken-drawer-layout / inline-size;
 }
 
 .layout {
-  display: flex;
+  inline-size: 100%;
   block-size: 100%;
-}
-
-:host([placement="end"]) .layout {
-  flex-direction: row-reverse;
-}
-
-.tray {
-  flex: 0 0 var(--drawer-layout-tray-width, var(--instui-component-tray-width-md));
-  inline-size: var(--drawer-layout-tray-width, var(--instui-component-tray-width-md));
-  max-inline-size: 100%;
-  overflow: auto;
-  background: var(--instui-color-background-elevated-surface-base);
-  border-inline: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
-}
-
-:host(:not([open])) .tray {
-  display: none;
-}
-
-:host([should-overlay-tray]) .tray,
-:host(.-should-overlay-tray) .tray {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  z-index: var(--instui-component-tray-z-index, 1);
-  box-shadow: var(--instui-elevation-topmost);
-}
-
-:host([should-overlay-tray][placement="end"]) .tray,
-:host(.-should-overlay-tray[placement="end"]) .tray,
-:host([should-overlay-tray].-placement-end) .tray,
-:host(.-should-overlay-tray.-placement-end) .tray {
-  inset-inline: auto 0;
-}
-
-.content {
-  flex: 1 1 auto;
-  overflow: auto;
-  min-inline-size: var(--drawer-layout-min-width, var(--instui-breakpoints-sm, 30rem));
-}
-
-:host([should-overlay-tray]) .content,
-:host(.-should-overlay-tray) .content {
-  min-inline-size: 0;
-}
-
-/* Automatic overlay: no JS required for the visual switch. Threshold mirrors the manual
-   [should-overlay-tray] override above. */
-@container pantoken-drawer-layout (width < calc(var(--drawer-layout-tray-width, var(--instui-component-tray-width-md)) + var(--drawer-layout-min-width, var(--instui-breakpoints-sm, 30rem)))) {
-  .tray {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-start: 0;
-    z-index: var(--instui-component-tray-z-index, 1);
-    box-shadow: var(--instui-elevation-topmost);
-  }
-
-  :host([placement="end"]) .tray {
-    inset-inline: auto 0;
-  }
-
-  .content {
-    min-inline-size: 0;
-  }
 }
