@@ -93,17 +93,17 @@ catalog:
   vitepress-plugin-llms: ^1.13.5
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.13.3
-  "@cssdoc/config": ^0.13.3
-  "@cssdoc/typedoc": ^0.13.3
-  "@cssdoc/stylelint-plugin": ^0.13.3
-  "@cssdoc/eslint-plugin": ^0.13.3
+  "@cssdoc/core": ^0.13.4
+  "@cssdoc/config": ^0.13.4
+  "@cssdoc/typedoc": ^0.13.4
+  "@cssdoc/stylelint-plugin": ^0.13.4
+  "@cssdoc/eslint-plugin": ^0.13.4
   # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
   grammarkdown: ^3.3.2
   stylelint: ^17.14.1
-  eslint: ^10.8.1
+  eslint: ^10.9.0
   "@eslint/css": ^1.4.0
   "@typescript-eslint/parser": ^8.67.0
   eslint-plugin-tsdoc: ^0.5.2
