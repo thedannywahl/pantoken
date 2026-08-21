@@ -12,19 +12,18 @@ export function initResponsiveOverlay(host: HTMLElement, onCommand: OnCommand): 
     else if (command === "--close") host.removeAttribute("open");
   });
 
+  // Ordered longest-suffix-first so "rem" isn't shadowed by a hypothetical shorter match.
+  const unitMultipliers: Array<[unit: string, multiplier: () => number]> = [
+    ["rem", () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16],
+    ["em", () => parseFloat(getComputedStyle(host).fontSize) || 16],
+    ["px", () => 1],
+  ];
+
   const toPx = (value: string): number => {
     const v = value.trim();
     if (!v) return 0;
-    if (v.endsWith("px")) return Number.parseFloat(v) || 0;
-    if (v.endsWith("rem")) {
-      const root = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
-      return (Number.parseFloat(v) || 0) * root;
-    }
-    if (v.endsWith("em")) {
-      const self = parseFloat(getComputedStyle(host).fontSize) || 16;
-      return (Number.parseFloat(v) || 0) * self;
-    }
-    return Number.parseFloat(v) || 0;
+    const [, multiplier] = unitMultipliers.find(([unit]) => v.endsWith(unit)) ?? [, () => 1];
+    return (Number.parseFloat(v) || 0) * multiplier();
   };
 
   const resolveMinWidth = (): number => {
