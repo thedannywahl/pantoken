@@ -24,14 +24,16 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // `candidatePropertyCoverage`-style verification found `drop-shadow-blur-elevation1-dropshadow1:
   // 2px` fails the composite `elevation` grammar (it isn't a whole shadow list on its own).
   [/drop-shadow-(blur|spread|x|y)-/u, "<length>"],
-  // `<shadow>` is `mdn-data`'s own registered type — identical to what the real `box-shadow`
-  // property (`none | <shadow>#`) resolves to, so the composite grammar is never hand-duplicated.
+  // `<shadow>`/`<outline-line-style>`/`<'text-decoration-line'>` are `mdn-data`'s own registered
+  // types/property — referencing them by name (CSS Value Definition Syntax, resolved by
+  // `css-tree`'s typed `match()`/`matchProperty()` at match time) means the grammar is never
+  // hand-copied, even though the token NAME pattern ("elevation", "focus-outline-*") differs from
+  // the real property name (that's why these stay bespoke instead of `TOKEN_NAME_TO_PROPERTY`).
   [/elevation/u, "none | <shadow>#"],
-  // `<'text-decoration-line'>` is a quoted property reference (CSS spec notation) resolving to the
-  // REAL `text-decoration-line` property's own grammar — always in sync with it, never hand-typed.
   [/text-decoration/u, "<'text-decoration-line'>"],
-  // Matches the real `outline-color`/`outline-style` properties' own grammar (not `<line-style>`,
-  // which incorrectly allows `hidden` — outline has no distinct sides, so `outline-style` excludes it).
+  // Not `<color> | invert` (a removed CSS2 keyword) or `<line-style>` (which wrongly allows
+  // `hidden` — outline has no distinct sides) — these match the real `outline-color`/`outline-style`
+  // properties' own grammar instead.
   [/focus-outline-color/u, "auto | <color>"],
   [/focus-outline-style/u, "auto | <outline-line-style>"],
   [/focus-outline-(width|offset|radius)/u, "<length>"],
