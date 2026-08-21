@@ -21,6 +21,7 @@
     "@arethetypeswrong/cli": "catalog:",
     "@changesets/cli": "catalog:",
     "@codecov/vite-plugin": "catalog:",
+    "@codspeed/vitest-plugin": "catalog:",
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@cssdoc/eslint-plugin": "catalog:",
