@@ -149,6 +149,11 @@ const findCssRecords = (bucketDir: string): CssRecordFile[] => {
       const memberCss = join(membersDir, member, `${member}.css`);
       const memberId =
         toIdentifier(name) + toIdentifier(member).replace(/^./u, (c) => c.toUpperCase());
+      try {
+        readFileSync(memberCss);
+      } catch {
+        continue; // no `<member>/<member>.css` for this member directory
+      }
       records.push({ path: memberCss, id: memberId });
     }
   }

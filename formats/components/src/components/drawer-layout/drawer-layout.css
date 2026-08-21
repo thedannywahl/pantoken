@@ -1,0 +1,56 @@
+/**
+ * @component drawer-layout
+ * @summary A split layout with a collapsible side tray and a primary scrollable content pane.
+ * @modifier -placement-start — Dock the tray on the inline-start side (the default; sets it explicitly).
+ * @modifier -placement-end — Dock the tray on the inline-end side.
+ * @modifier -should-overlay-tray — Render the tray as an overlay instead of shrinking content inline.
+ * @modifier -open — Show the tray even when the `open` attribute is absent.        
+ * @part .tray — The side panel.
+ * @part .content — The main pane.
+ * @cssproperty --pantoken-bp-md — Width threshold for overlay mode (`30em`, themed via responsive utilities).
+ * @remarks This record defines layout, placement, and open-state gates; the tray surface and content scrolling live in the `drawer-layout.tray` and `drawer-layout.content` members.
+ * @remarks The tray stays hidden until `open` (attribute) or `-open` (class) is present.
+ * @remarks A `container-type: inline-size` container (named `pantoken-drawer-layout`) lets the `drawer-layout.tray`/`drawer-layout.content` members auto-detect overlay mode from this element's own computed inline-size — no JS required for the visual switch.
+ * @remarks `-placement-end` and the default (start) both use `flex-direction`/`inset-inline-*` logical properties, not `left`/`right`, so the tray's side follows `direction`/`dir="rtl"` automatically — no separate RTL rules are needed.
+ * @accessibility When the tray acts as navigation, label it with an accessible heading or `aria-label`. Give `.content` `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
+ * @compat The `drawer-layout.tray`/`drawer-layout.content` members switch to overlay mode automatically via a `@container` query once this element's inline-size drops below tray-width + `--pantoken-bp-md`. The `@pantoken/interactions` behavior additionally toggles `[should-overlay-tray]`/`.-should-overlay-tray` (a manual override) and emits `overlaytraychange` for apps that need the change as an event.
+ * @example
+ * <div class="pfx-drawer-layout" id="drawer" open>
+ *   <aside class="tray">Navigation</aside>
+ *   <main class="content" role="region">Main content</main>
+ * </div>
+ * @structure
+ * .pfx-drawer-layout {
+ *   @member tray {}
+ *   @member content {}
+ * }
+ * @related tray — A standalone edge overlay; this layout keeps tray and content in the same flow.
+ * @related context-view — A smaller anchored surface for contextual actions and detail.
+ */
+
+.pfx-drawer-layout {
+  display: flex;
+  block-size: 100%;
+  position: relative;
+  /* Named so the tray/content members can query this element's own width, not an unrelated ancestor. */
+  container: pantoken-drawer-layout / inline-size;
+}
+
+.pfx-drawer-layout[placement="start"],
+.pfx-drawer-layout.-placement-start {
+  flex-direction: row;
+}
+
+.pfx-drawer-layout[placement="end"],
+.pfx-drawer-layout.-placement-end {
+  flex-direction: row-reverse;
+}
+
+.pfx-drawer-layout:not([open]):not(.-open) > .tray {
+  display: none;
+}
+
+.pfx-drawer-layout[should-overlay-tray],
+.pfx-drawer-layout.-should-overlay-tray {
+  min-inline-size: 0;
+}

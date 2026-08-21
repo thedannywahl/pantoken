@@ -1,0 +1,79 @@
+/**
+ * @component drawer-layout.tray
+ * @memberOf drawer-layout
+ * @selector .tray
+ * @summary The side panel beside main content, with optional overlay and tray-like surface modifiers.
+ * @modifier -placement-end — Dock this tray to inline-end when overlay mode is active.
+ * @modifier -without-border — Remove the panel edge border.
+ * @modifier -without-shadow — Remove elevation when overlay mode is active.
+ * @remarks Inline mode keeps the tray in flex flow; overlay mode (set on `drawer-layout`) absolutely positions it above content.
+ * @remarks Overlay mode also applies automatically — via a `@container` query on the parent's `pantoken-drawer-layout` container — once the parent's inline-size drops below the tray width plus `--pantoken-bp-md`.
+ * @remarks Positioning uses `inset-inline-start`/`inset-inline` (never `left`/`right`), so `-placement-end` docks to the true trailing edge in both LTR and RTL.
+ * @accessibility If used as navigation, wrap links in a semantic `<nav>` and provide an accessible name.
+ * @related drawer-layout.content — The primary pane that flexes alongside this member.
+ * @structure
+ * @scope (@component drawer-layout) {
+ *   .tray {
+ *     slot {}
+ *   }
+ * }
+ */
+
+@scope (.pfx-drawer-layout) {
+  :scope > .tray {
+    flex: 0 0 var(--instui-component-tray-width-xs, 16em);
+    inline-size: var(--drawer-layout-tray-width, var(--instui-component-tray-width-xs, 16em));
+    max-inline-size: 100%;
+    overflow: auto;
+    background: var(--instui-color-background-elevated-surface-base);
+    border-inline-end: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
+  }
+
+  :scope > .tray.-without-border {
+    border-inline: 0;
+  }
+}
+
+.pfx-drawer-layout[should-overlay-tray] > .tray,
+.pfx-drawer-layout.-should-overlay-tray > .tray {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  z-index: var(--instui-component-tray-z-index, 9999);
+  box-shadow: var(--instui-elevation-topmost);
+}
+
+.pfx-drawer-layout[should-overlay-tray] > .tray.-placement-end,
+.pfx-drawer-layout.-should-overlay-tray > .tray.-placement-end,
+.pfx-drawer-layout[should-overlay-tray][placement="end"] > .tray,
+.pfx-drawer-layout.-should-overlay-tray[placement="end"] > .tray,
+.pfx-drawer-layout[should-overlay-tray].-placement-end > .tray,
+.pfx-drawer-layout.-should-overlay-tray.-placement-end > .tray {
+  inset-inline: auto 0;
+}
+
+.pfx-drawer-layout[should-overlay-tray] > .tray.-without-shadow,
+.pfx-drawer-layout.-should-overlay-tray > .tray.-without-shadow {
+  box-shadow: none;
+}
+
+/* Automatic overlay: no JS required. Threshold mirrors the manual [should-overlay-tray] override above. */
+@container pantoken-drawer-layout (width < calc(var(--instui-component-tray-width-xs, 16em) + var(--pantoken-bp-md, 30em))) {
+  .pfx-drawer-layout > .tray {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: var(--instui-component-tray-z-index, 1);
+    box-shadow: var(--instui-elevation-topmost);
+  }
+
+  .pfx-drawer-layout > .tray.-placement-end,
+  .pfx-drawer-layout[placement="end"] > .tray,
+  .pfx-drawer-layout.-placement-end > .tray {
+    inset-inline: auto 0;
+  }
+
+  .pfx-drawer-layout > .tray.-without-shadow {
+    box-shadow: none;
+  }
+}
