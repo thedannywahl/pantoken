@@ -48,7 +48,9 @@
     "@inlineType",
     "@preventExpand",
     "@expandType",
-    "@demo"
+    "@demo",
+    "@accessibility",
+    "@a11y"
   ],
   "docsRoot": ".",
   "entryPointStrategy": "resolve",
