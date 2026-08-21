@@ -34,6 +34,18 @@ vp install
    vp test    # unit tests
    ```
 
+   Performance-sensitive changes (the transformer, the reference resolver, the emitters) should also
+   be measured. The benchmarks live in `bench/` and need a build first, because they import package
+   sources whose `@pantoken/*` specifiers resolve to built `dist/`:
+
+   ```sh
+   vp run -r build
+   vp exec vitest bench --run --config vite.bench.config.ts
+   ```
+
+   CI runs the same command through [CodSpeed](https://codspeed.io) on every PR and reports the
+   instruction-level delta against `main`.
+
 6. If your change affects a published package, add a changeset:
 
    ```sh
