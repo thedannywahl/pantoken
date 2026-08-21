@@ -9,10 +9,11 @@ test("drawer-layout: emits exactly one well-formed cssdoc record with no token d
 
 test("drawer-layout supports placement, open-state gates, and overlay mode", () => {
   const css = drawerLayoutCss({ prefix: "instui" });
-  expect(css).toContain('.instui-drawer-layout[placement="end"]');
-  expect(css).toContain(".instui-drawer-layout.-should-overlay-tray");
-  expect(css).toContain(".instui-drawer-layout.-placement-end");
-  expect(css).toContain(".instui-drawer-layout:not([open]):not(.-open) > .tray");
+  expect(css).toContain("@scope (.instui-drawer-layout)");
+  expect(css).toContain('&[placement="end"]');
+  expect(css).toContain("&.-should-overlay-tray");
+  expect(css).toContain("&.-placement-end");
+  expect(css).toMatch(/&:not\(\[open\]\):not\(\.-open\)\s*>\s*\.tray/);
 });
 
 test("drawer-layout members emit tray and content rules", () => {
@@ -20,21 +21,20 @@ test("drawer-layout members emit tray and content rules", () => {
     "inline-size: var(--drawer-layout-tray-width, var(--instui-component-tray-width-xs, 16em))",
   );
   expect(drawerLayoutContentCss({ prefix: "instui" })).toContain(
-    "min-inline-size: var(--min-width)",
+    "min-inline-size: var(--drawer-layout-content-min-inline-size, var(--pantoken-bp-md, 30em))",
   );
 });
 
 test("drawer-layout auto-switches to overlay mode via a container query, without JS", () => {
-  const threshold =
-    "calc(var(--instui-component-tray-width-xs, 16em) + var(--pantoken-bp-md, 30em))";
+  const threshold = "46em";
   expect(drawerLayoutCss({ prefix: "instui" })).toContain(
     "container: pantoken-drawer-layout / inline-size",
   );
   expect(drawerLayoutTrayCss({ prefix: "instui" })).toContain(
-    `@container pantoken-drawer-layout (width < ${threshold})`,
+    `@container pantoken-drawer-layout (max-width: ${threshold})`,
   );
   expect(drawerLayoutContentCss({ prefix: "instui" })).toContain(
-    `@container pantoken-drawer-layout (width < ${threshold})`,
+    `@container pantoken-drawer-layout (max-width: ${threshold})`,
   );
 });
 
@@ -43,7 +43,7 @@ test('placement uses only logical (inline-*) properties, never left/right, so it
     drawerLayoutCss({ prefix: "instui" }) +
     drawerLayoutTrayCss({ prefix: "instui" }) +
     drawerLayoutContentCss({ prefix: "instui" });
-  expect(css).toContain(".instui-drawer-layout.-placement-start");
+  expect(css).toContain("&.-placement-start");
   expect(css).toContain("flex-direction: row-reverse");
   expect(css).not.toMatch(/(?<![a-z-])(left|right)\s*:/i);
 });

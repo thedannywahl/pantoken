@@ -5,7 +5,7 @@
  * @summary The primary content pane that fills remaining space beside the tray.
  * @remarks `min-inline-size` follows `--pantoken-bp-md` (fallback `30em`) so narrow layouts can switch tray to overlay mode.
  * @remarks `overflow: auto` keeps the tray and content independently scrollable.
- * @remarks Once the parent's inline-size drops below the tray width plus `--pantoken-bp-md`, a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override.
+ * @remarks Once the parent's inline-size drops below `46em` (`16em` tray width + `30em` breakpoint), a `@container` query on the parent's `pantoken-drawer-layout` container drops this member's `min-inline-size` to `0` automatically, matching the manual `[should-overlay-tray]` override.
  * @related drawer-layout.tray — The adjacent panel in the same flex row.
  * @accessibility Carry `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
  * @structure
@@ -24,27 +24,23 @@
  * ```
  */
 
-@property --min-width {
-  syntax: "<length>";
-  inherits: false;
-  initial-value: var(--pantoken-bp-md, 30em);
-}
-
 @scope (.pfx-drawer-layout) {
-  :scope > .content {
-    flex: 1 1 auto;
-    overflow: auto;
-    min-inline-size: var(--min-width);
+  :scope {
+    > .content {
+      flex: 1 1 auto;
+      overflow: auto;
+      min-inline-size: var(--drawer-layout-content-min-inline-size, var(--pantoken-bp-md, 30em));
+    }
+
+    &[should-overlay-tray] > .content,
+    &.-should-overlay-tray > .content {
+      min-inline-size: 0;
+    }
   }
 }
 
-.pfx-drawer-layout[should-overlay-tray] > .content,
-.pfx-drawer-layout.-should-overlay-tray > .content {
-  min-inline-size: 0;
-}
-
-/* Automatic overlay: no JS required. Threshold mirrors the manual [should-overlay-tray] override above and the drawer-layout.tray member. */
-@container pantoken-drawer-layout (width < calc(var(--instui-component-tray-width-xs, 16em) + var(--pantoken-bp-md, 30em))) {
+/* Automatic overlay: no JS required. 46em = 16em tray width + 30em content breakpoint. */
+@container pantoken-drawer-layout (max-width: 46em) {
   .pfx-drawer-layout > .content {
     min-inline-size: 0;
   }
