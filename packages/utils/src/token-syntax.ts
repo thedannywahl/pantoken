@@ -10,15 +10,33 @@
  */
 import * as csstree from "css-tree";
 
+/** The registered `css-tree` property descriptor for `name`, or throws — never silently unmatched. */
+function requireProperty(name: string): NonNullable<ReturnType<typeof csstree.lexer.getProperty>> {
+  const property = csstree.lexer.getProperty(name);
+  if (!property) throw new Error(`css-tree has no registered property named "${name}"`);
+  return property;
+}
+
 /**
  * The REAL CSS grammar string for a property, generated from `css-tree`'s own lexer (the same
  * instance {@link isSyntaxValid} matches against) rather than hand-typed — guaranteed byte-identical
  * to what the lexer actually validates, so it can never drift out of sync with itself.
  */
 function propertyGrammar(name: string): string {
-  const syntax = csstree.lexer.getProperty(name)?.syntax;
-  if (!syntax) throw new Error(`css-tree has no registered property named "${name}"`);
+  const syntax = requireProperty(name).syntax;
+  if (!syntax) throw new Error(`css-tree property "${name}" has no generatable grammar`);
   return csstree.definitionSyntax.generate(syntax);
+}
+
+/**
+ * A real CSS property name for {@link TOKEN_NAME_TO_PROPERTY}, validated against `css-tree`'s
+ * registry at module load — the same fail-fast safety net as {@link propertyGrammar}, so a typo'd
+ * property name throws immediately with a clear message instead of silently flagging every
+ * matching token as a mismatch at build time.
+ */
+function realProperty(name: string): string {
+  requireProperty(name);
+  return name;
 }
 
 /**
@@ -115,51 +133,51 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
  * first, so `gap` IS included, verified safe once that precedence is accounted for.
  */
 export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
-  [/font-family/u, "font-family"],
-  [/font-weight/u, "font-weight"],
-  [/font-size/u, "font-size"],
-  [/line-height/u, "line-height"],
-  [/letter-spacing/u, "letter-spacing"],
-  [/opacity(?!\d)/u, "opacity"],
-  [/primitive-opacity\d+$/u, "opacity"],
-  [/z-index|stacking/u, "z-index"],
-  [/transition-duration|-duration\b/u, "transition-duration"],
-  [/border-width/u, "border-width"],
-  [/-radius/u, "border-radius"],
-  [/border-style/u, "border-style"],
+  [/font-family/u, realProperty("font-family")],
+  [/font-weight/u, realProperty("font-weight")],
+  [/font-size/u, realProperty("font-size")],
+  [/line-height/u, realProperty("line-height")],
+  [/letter-spacing/u, realProperty("letter-spacing")],
+  [/opacity(?!\d)/u, realProperty("opacity")],
+  [/primitive-opacity\d+$/u, realProperty("opacity")],
+  [/z-index|stacking/u, realProperty("z-index")],
+  [/transition-duration|-duration\b/u, realProperty("transition-duration")],
+  [/border-width/u, realProperty("border-width")],
+  [/-radius/u, realProperty("border-radius")],
+  [/border-style/u, realProperty("border-style")],
   // Unanchored: also catches a `-bottom-border-inverse` suffix variant, not just the bare `-bottom-
   // border` ending.
-  [/bottom-border/u, "border-bottom"],
-  [/box-shadow/u, "box-shadow"],
-  [/margin/u, "margin"],
-  [/padding/u, "padding"],
-  [/height/u, "height"],
-  [/width/u, "width"],
-  [/gap/u, "gap"],
-  [/inset/u, "inset"],
-  [/overflow-x$/u, "overflow-x"],
-  [/overflow-y$/u, "overflow-y"],
+  [/bottom-border/u, realProperty("border-bottom")],
+  [/box-shadow/u, realProperty("box-shadow")],
+  [/margin/u, realProperty("margin")],
+  [/padding/u, realProperty("padding")],
+  [/height/u, realProperty("height")],
+  [/width/u, realProperty("width")],
+  [/gap/u, realProperty("gap")],
+  [/inset/u, realProperty("inset")],
+  [/overflow-x$/u, realProperty("overflow-x")],
+  [/overflow-y$/u, realProperty("overflow-y")],
   // `text-transform` is real and specific; checked before the narrower button `transform` rule
   // right below (which only matches a bare/`-hover-` suffix, so the two never actually collide).
-  [/text-transform$/u, "text-transform"],
-  [/base-button-(hover-)?transform$/u, "transform"],
+  [/text-transform$/u, realProperty("text-transform")],
+  [/base-button-(hover-)?transform$/u, realProperty("transform")],
   // The three specific `background-*` properties are checked before the generic `position$`
   // fallback and the generic `background$` one, since their names also end in "position"/"size"
   // respectively and need the MORE specific (and differently-shaped) real grammar.
-  [/background-image$/u, "background-image"],
-  [/background-position$/u, "background-position"],
-  [/background-size$/u, "background-size"],
-  [/background$/u, "background"],
-  [/border-color/u, "border-color"],
-  [/primitive-color-/u, "color"],
+  [/background-image$/u, realProperty("background-image")],
+  [/background-position$/u, realProperty("background-position")],
+  [/background-size$/u, realProperty("background-size")],
+  [/background$/u, realProperty("background")],
+  [/border-color/u, realProperty("border-color")],
+  [/primitive-color-/u, realProperty("color")],
   // `color\d*$` also covers a digit-suffixed leaf like `--instui-color-drop-shadow-shadow-color1`;
   // `color-inverse$` covers the single `--instui-component-top-nav-bar-item-color-inverse: inherit`
   // token specifically (kept narrow rather than a bare `-inverse` match, to avoid over-matching).
-  [/color(?:\d*|-inverse)$/u, "color"],
+  [/color(?:\d*|-inverse)$/u, realProperty("color")],
   // Generic `position$` fallback (after the more specific `background-position$` above) also
   // catches `--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position: undefined`
   // — a genuine upstream data bug (a stringified JS `undefined`), correctly failing the build.
-  [/position$/u, "position"],
+  [/position$/u, realProperty("position")],
 ];
 
 function firstMatch<T>(name: string, table: readonly [RegExp, T][]): T | undefined {
