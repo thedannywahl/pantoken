@@ -40,9 +40,14 @@ bullet on the parent:
   `table.row`'s `tr`) or where a shared declaration has to be duplicated across a couple of sibling
   members (e.g. `table.-layout-stacked`'s box-reset, split per part rather than kept as one
   five-selector compound rule) — cssdoc requires each record's own file to own its own selectors.
-- Remove the promoted `@part` line and any `@structure` entry that named the member's selector — a
-  `@memberOf` record documents its own structure on its own page and doesn't need to also appear in the
-  parent's `@structure` tree (that's what the generated "Subcomponents" section is for).
+- Remove the promoted `@part` line — a `@memberOf` record documents its own structure on its own page,
+  and `@memberOf` alone (independent of nesting in the parent's own `@structure`) already feeds the
+  parent's generated "Subcomponents" section.
+- Give the member's own `@structure` an `@component <parent> { … }` node instead of a bare
+  `@scope (.pfx-<parent>) { … }` wrapper — this embeds the member's real ancestor path (down to the
+  member's own selector, with any of its own nested parts) as a cross-linked record reference, e.g.
+  `@component table { tbody { tr { td {} } } }` for `table.cell`. See the `table.*` members for the
+  full pattern, including a sibling-alternation node like `table.body`'s `tbody`.
 - If a parent-level modifier restyles a promoted member (e.g. `tabs`'s `-variant-secondary` restyling
   `tabs.tab`, or `table`'s `-layout-stacked` restyling all six of its members), mark it inline:
   `@modifier -variant-secondary — … @affects tabs.tab — …`. Multiple `@affects <parent>.<member>`
