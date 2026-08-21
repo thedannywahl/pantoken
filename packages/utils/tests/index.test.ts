@@ -239,6 +239,55 @@ test("syntaxMismatches doesn't shadow a real `margin`/`letter-spacing`/`backgrou
   expect(syntaxMismatches(clean)).toEqual([]);
 });
 
+test("syntaxMismatches accepts the final manually-mapped stragglers (border-bottom-inverse, transform, text-transform, digit/inverse-suffixed color)", () => {
+  const clean: Token[] = [
+    {
+      name: "--instui-component-top-nav-bar-layout-small-viewport-bottom-border-inverse",
+      syntax: "*",
+      inherits: true,
+      value: "0.0625rem solid #E8EAEC",
+    },
+    {
+      name: "--instui-component-base-button-transform",
+      syntax: "*",
+      inherits: true,
+      value: "none",
+    },
+    {
+      name: "--instui-component-base-button-text-transform",
+      syntax: "*",
+      inherits: true,
+      value: "none",
+    },
+    {
+      name: "--instui-component-progress-circle-large-transform",
+      syntax: "*",
+      inherits: true,
+      value: "4.5em",
+    },
+    {
+      name: "--instui-color-drop-shadow-shadow-color1",
+      syntax: "*",
+      inherits: true,
+      value: "rgba(0,0,0,0.1)",
+    },
+    {
+      name: "--instui-component-top-nav-bar-item-color-inverse",
+      syntax: "*",
+      inherits: true,
+      value: "inherit",
+    },
+    { name: "--instui-component-icon-illu-lg", syntax: "*", inherits: true, value: "10rem" },
+    {
+      name: "--instui-component-img-image-blur-amount",
+      syntax: "*",
+      inherits: true,
+      value: "0.25em",
+    },
+  ];
+  expect(syntaxMismatches(clean)).toEqual([]);
+});
+
 test("syntaxMismatches skips contextual (var()/light-dark()) values", () => {
   const ref: Token = {
     name: "--instui-font-weight-body-base",

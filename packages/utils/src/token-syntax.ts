@@ -65,6 +65,12 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // Breakpoint/byline-size lengths — anchored so `byline-title-margin` (a real `margin`, handled
   // below) isn't shadowed by a broader `byline-` match.
   [/breakpoints-|byline-(large|medium|small)$/u, "<length>"],
+  // Decomposed progress-circle geometry PIECES (e.g. `progress-circle-large-transform: 4.5em`) are
+  // each a bare length used to build a `transform` elsewhere, not a valid `transform` value on
+  // their own — distinct from the real button `transform`/`text-transform` tokens below, whose
+  // values are always the `none` keyword.
+  [/progress-circle-.*-transform$/u, "<length>"],
+  [/icon-illu-|img-image-blur-amount$/u, "<length>"],
 ];
 
 /**
@@ -104,7 +110,9 @@ export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/transition-duration|-duration\b/u, "transition-duration"],
   [/border-width/u, "border-width"],
   [/-radius/u, "border-radius"],
-  [/bottom-border$/u, "border-bottom"],
+  // Unanchored: also catches a `-bottom-border-inverse` suffix variant, not just the bare `-bottom-
+  // border` ending.
+  [/bottom-border/u, "border-bottom"],
   [/box-shadow/u, "box-shadow"],
   [/margin/u, "margin"],
   [/padding/u, "padding"],
@@ -114,6 +122,10 @@ export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/inset/u, "inset"],
   [/overflow-x$/u, "overflow-x"],
   [/overflow-y$/u, "overflow-y"],
+  // `text-transform` is real and specific; checked before the narrower button `transform` rule
+  // right below (which only matches a bare/`-hover-` suffix, so the two never actually collide).
+  [/text-transform$/u, "text-transform"],
+  [/base-button-(hover-)?transform$/u, "transform"],
   // The three specific `background-*` properties are checked before the generic `position$`
   // fallback and the generic `background$` one, since their names also end in "position"/"size"
   // respectively and need the MORE specific (and differently-shaped) real grammar.
@@ -123,7 +135,10 @@ export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/background$/u, "background"],
   [/border-color/u, "border-color"],
   [/primitive-color-/u, "color"],
-  [/color$/u, "color"],
+  // `color\d*$` also covers a digit-suffixed leaf like `--instui-color-drop-shadow-shadow-color1`;
+  // `color-inverse$` covers the single `--instui-component-top-nav-bar-item-color-inverse: inherit`
+  // token specifically (kept narrow rather than a bare `-inverse` match, to avoid over-matching).
+  [/color(?:\d*|-inverse)$/u, "color"],
   // Generic `position$` fallback (after the more specific `background-position$` above) also
   // catches `--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position: undefined`
   // — a genuine upstream data bug (a stringified JS `undefined`), correctly failing the build.
