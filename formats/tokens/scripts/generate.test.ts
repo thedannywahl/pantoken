@@ -8,10 +8,14 @@ const writeFileSync = vi.fn();
 const mkdirSync = vi.fn();
 const existsSync = vi.fn<(...args: unknown[]) => boolean>();
 const requireResolve = vi.fn<(...args: unknown[]) => string>();
+const buildTokens = vi.fn<(...args: unknown[]) => unknown[]>();
 
 vi.mock("node:fs", () => ({ readFileSync, writeFileSync, mkdirSync, existsSync }));
 vi.mock("node:module", () => ({ createRequire: () => ({ resolve: requireResolve }) }));
-vi.mock("@pantoken/core", () => ({ buildTokens: () => [], defineToken: (t: unknown) => t }));
+vi.mock("@pantoken/core", () => ({
+  buildTokens: (...args: unknown[]) => buildTokens(...args),
+  defineToken: (t: unknown) => t,
+}));
 vi.mock("@instructure/instructure-design-tokens", () => ({ themeTokens: {} }));
 vi.mock("@pantoken/plugin-deprecations", () => ({ deprecationShims: () => ({}) }));
 
@@ -27,12 +31,45 @@ beforeEach(async () => {
   readFileSync.mockReturnValue("[]");
   existsSync.mockReturnValue(false);
   requireResolve.mockImplementation((id: unknown) => `/node_modules/${String(id)}`);
+  buildTokens.mockReturnValue([]);
   vi.spyOn(console, "log").mockImplementation(() => {});
   mod = await import(MODULE_PATH);
 });
 
 afterEach(() => {
   vi.restoreAllMocks();
+  process.exitCode = undefined;
+});
+
+// --- syntax validation (build-time) -----------------------------------------
+
+test("generate.ts fails the build when a token's value fails its CSS grammar", async () => {
+  buildTokens.mockReturnValue([
+    {
+      name: "--instui-component-text-content-quote-font-weight",
+      syntax: "*",
+      inherits: true,
+      value: "Medium Italic",
+    },
+  ]);
+  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining("fails its CSS grammar"));
+  expect(process.exitCode).toBe(1);
+});
+
+test("generate.ts warns (without failing) on a token with no modeled CSS property", async () => {
+  buildTokens.mockReturnValue([
+    { name: "--instui-totally-unmapped-thing", syntax: "*", inherits: true, value: "anything" },
+  ]);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("unmodeled"));
+  expect(process.exitCode).toBeUndefined();
 });
 
 // --- catalogRef ------------------------------------------------------------

@@ -14,6 +14,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { buildTokens } from "@pantoken/core";
 import { themeTokens } from "@instructure/instructure-design-tokens";
 import { deprecationShims } from "@pantoken/plugin-deprecations";
+import { syntaxMismatches } from "@pantoken/utils";
 import type { DeprecationLedger, Theme } from "@pantoken/model";
 
 const require = createRequire(import.meta.url);
@@ -40,6 +41,20 @@ const shims = deprecationShims(ledger);
 for (const theme of THEMES) {
   const base = buildTokens({ theme });
   const tokens = shims.tokens?.({ tokens: base, theme }) ?? base;
+  // Catches upstream data corruption (a value that doesn't match its property's real CSS grammar)
+  // before it ships as an invalid `@property`/declaration — see syntaxMismatches' doc comment.
+  for (const issue of syntaxMismatches(tokens)) {
+    if (issue.kind === "mismatch") {
+      process.exitCode = 1;
+      console.error(
+        `[pantoken] ${theme}: "${issue.name}" fails its CSS grammar — value: "${issue.value}"`,
+      );
+    } else {
+      console.warn(
+        `[pantoken] ${theme}: "${issue.name}" maps to no known CSS property (unmodeled)`,
+      );
+    }
+  }
   writeFileSync(join(outDir, `${theme}.json`), `${JSON.stringify(tokens)}\n`);
   console.log(`✓ ${theme}: ${tokens.length} tokens`);
 }
