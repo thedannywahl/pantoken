@@ -1,5 +1,6 @@
 /**
  * @component spinner
+ * @selector .pfx-spinner
  * @summary An animated loading ring; give it role="status" and an aria-label.
  * @modifier -size-xs — Extra-small.
  * @modifier -size-sm — Small.
@@ -24,15 +25,21 @@
   }
 }
 
-.pfx-spinner {
-  display: inline-block;
-  width: var(--instui-component-spinner-spinner-size-md);
-  height: var(--instui-component-spinner-spinner-size-md);
-  border: var(--instui-component-spinner-stroke-width-md) solid
-    var(--instui-component-spinner-track-color);
-  border-top-color: var(--instui-component-spinner-color);
-  border-radius: 50%;
-  animation: pantoken-spinner-rotate 0.8s linear infinite;
+@scope (.pfx-spinner) {
+  :scope {
+    display: inline-block;
+    width: var(--instui-component-spinner-spinner-size-md);
+    height: var(--instui-component-spinner-spinner-size-md);
+    border: var(--instui-component-spinner-stroke-width-md) solid
+      var(--instui-component-spinner-track-color);
+    border-top-color: var(--instui-component-spinner-color);
+    border-radius: 50%;
+    animation: pantoken-spinner-rotate 0.8s linear infinite;
+
+    &.-color-inverse {
+      border-top-color: var(--instui-component-spinner-inverse-color);
+    }
+  }
 }
 
 .pfx-spinner.-size-xs {
@@ -51,8 +58,4 @@
   width: var(--instui-component-spinner-spinner-size-lg);
   height: var(--instui-component-spinner-spinner-size-lg);
   border-width: var(--instui-component-spinner-stroke-width-lg);
-}
-
-.pfx-spinner.-color-inverse {
-  border-top-color: var(--instui-component-spinner-inverse-color);
 }

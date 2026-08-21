@@ -3,11 +3,14 @@
  * @summary An edge-pinned panel that slides in from any side; a native `[popover]` or `<dialog>`.
  * @modifier -placement-top — Pin to the top edge.
  * @modifier -placement-bottom — Pin to the bottom edge.
+ * @modifier -placement-start — (default) Pin to the start (inline-start) edge.
  * @modifier -placement-end — Pin to the end (inline-end) edge.
  * @modifier -size-xs — Extra small.
  * @modifier -size-sm — Small.
+ * @modifier -size-md — (default) Medium.
  * @modifier -size-lg — Large.
  * @modifier -size-xl — Extra large.
+ * @modifier -size-regular - @deprecated {@link -size-md} is the new default size.
  * @compat Opens with the native `[popover]` API and `@starting-style`; the slide-in sits behind an `@supports (transition-behavior: allow-discrete)` guard, so browsers without it still open the tray, just without the slide.
  * @accessibility The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.pfx-close-button` in the example uses `aria-label="Close"`).
  * @example
@@ -43,6 +46,10 @@
   box-shadow: var(--instui-elevation-topmost);
 }
 
+.pfx-tray.-placement-start {
+  inset-inline: 0 auto;
+}
+
 .pfx-tray.-placement-end {
   inset-inline: auto 0;
 }
@@ -65,6 +72,10 @@
 
 .pfx-tray.-size-sm {
   inline-size: var(--instui-component-tray-width-sm);
+}
+
+.pfx-tray.-size-md {
+  inline-size: var(--instui-component-tray-width-md);
 }
 
 .pfx-tray.-size-lg {

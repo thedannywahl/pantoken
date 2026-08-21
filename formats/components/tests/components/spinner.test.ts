@@ -12,6 +12,6 @@ test("spinner has sizes and an inverse track", () => {
   expect(css).toContain(".instui-spinner.-size-xs");
   expect(css).toContain(".instui-spinner.-size-sm");
   expect(css).toContain(".instui-spinner.-size-lg");
-  expect(css).toContain(".instui-spinner.-color-inverse");
+  expect(css).toContain("&.-color-inverse");
   expect(css).toContain("var(--instui-component-spinner-inverse-color)");
 });

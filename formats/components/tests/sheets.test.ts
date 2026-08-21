@@ -126,7 +126,7 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
   expect(css).toContain(".instui-button.-size-sm");
   expect(css).toContain(".instui-button.-shape-circle");
   expect(css).toContain(".instui-heading.-level-h1");
-  expect(css).toContain(".instui-badge.-placement-top-end");
+  expect(css).toContain("&.-placement-top-end");
   // Size scale is emitted with both short and long spellings.
   expect(css).toContain(".instui-button.-size-sm");
   expect(css).toContain(".instui-button.-size-small");
@@ -164,7 +164,7 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   // showBorder: auto by default (border only without an image), forced with -always/-never; the
   // legacy -show-border name is a deprecated functional alias of -show-border-always.
   const avatar = avatarCss({ prefix: "instui" });
-  expect(avatar).toContain(".instui-avatar:not(:has(> img))");
+  expect(avatar).toContain("&:not(:has(> img))");
   expect(avatar).toContain(".instui-avatar.-show-border-always");
   expect(avatar).toContain(".instui-avatar.-show-border-never");
   expect(avatar).toContain(".instui-avatar.-show-border {");
@@ -179,19 +179,17 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   // Overflowing bare text hard-clips (no ellipsis — text-overflow doesn't apply to a flex container).
   expect(avatar).toContain("white-space: nowrap;");
   // data-initials: the real name stays as content (accessible), ::before shows the compact form.
-  expect(avatar).toContain(".instui-avatar[data-initials] {\n  font-size: 0;");
-  expect(avatar).toContain(
-    ".instui-avatar[data-initials]::before {\n  content: attr(data-initials);",
-  );
+  expect(avatar).toContain("&[data-initials] {");
+  expect(avatar).toContain("content: attr(data-initials);");
   expect(avatar).toContain(".instui-avatar.-size-lg[data-initials]::before {");
   // .name: an opt-in single-leading-letter clip for the no-data-initials, no-JS static case; the
   // .first-name/.last-name pair is the two-letter variant, each guarding against the other's markup.
   expect(avatar).toContain("@scope (.instui-avatar)");
   expect(avatar).toContain(".name,");
   expect(avatar).toContain("max-width: 1ch;");
-  expect(avatar).toContain(':not(:has([class*="-name"])) .name');
-  expect(avatar).toContain(":not(:has(.name)) .first-name");
-  expect(avatar).toContain(":not(:has(.name)) .last-name");
+  expect(avatar).toContain('&:not(:has([class*="-name"])) .name');
+  expect(avatar).toContain("&:not(:has(.name)) .first-name");
+  expect(avatar).toContain("&:not(:has(.name)) .last-name");
   // Sub-elements live inside an @scope block, so they're authored as bare, ancestor-scoped classes.
   const tabs = tabsCss({ prefix: "instui" });
   expect(tabs).toContain("@scope (.instui-tabs)");
@@ -202,13 +200,13 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
   expect(metric).toContain("@scope (.instui-metric)");
   expect(metric).toContain(".value {");
   // textAlign maps to align-items on the flex column (text-align alone is a no-op on the shrink box).
-  expect(metric).toContain(".instui-metric.-text-align-center { align-items: center;");
-  expect(metric).toContain(".instui-metric.-text-align-end { align-items: flex-end;");
+  expect(metric).toContain("&.-text-align-center { align-items: center;");
+  expect(metric).toContain("&.-text-align-end { align-items: flex-end;");
   const byline = norm(bylineCss({ prefix: "instui" }));
   expect(byline).toContain("@scope (.instui-byline)");
   expect(byline).toContain(".title {");
   // alignContent + size (max-width) modifiers.
-  expect(byline).toContain(".instui-byline.-align-content-top { align-items: flex-start; }");
+  expect(byline).toContain("&.-align-content-top { align-items: flex-start; }");
   expect(byline).toContain(
     ".instui-byline.-size-lg { max-width: var(--instui-component-byline-large,",
   );

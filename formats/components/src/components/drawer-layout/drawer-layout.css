@@ -1,5 +1,6 @@
 /**
  * @component drawer-layout
+ * @selector .pfx-drawer-layout
  * @summary A split layout with a collapsible side tray and a primary scrollable content pane.
  * @modifier -placement-start — Dock the tray on the inline-start side (the default; sets it explicitly).
  * @modifier -placement-end — Dock the tray on the inline-end side.
@@ -15,10 +16,12 @@
  * @accessibility When the tray acts as navigation, label it with an accessible heading or `aria-label`. Give `.content` `role="region"` (InstUI's DrawerLayout convention) and name it with `aria-label`/`aria-labelledby` when context alone doesn't identify it.
  * @compat The `drawer-layout.tray`/`drawer-layout.content` members switch to overlay mode automatically via a `@container` query once this element's inline-size drops below tray-width + `--pantoken-bp-md`. The `@pantoken/interactions` behavior additionally toggles `[should-overlay-tray]`/`.-should-overlay-tray` (a manual override) and emits `overlaytraychange` for apps that need the change as an event.
  * @example
+ * ```html
  * <div class="pfx-drawer-layout" id="drawer" open>
  *   <aside class="tray">Navigation</aside>
  *   <main class="content" role="region">Main content</main>
  * </div>
+ * ```
  * @structure
  * .pfx-drawer-layout {
  *   @member tray {}
@@ -28,29 +31,31 @@
  * @related context-view — A smaller anchored surface for contextual actions and detail.
  */
 
-.pfx-drawer-layout {
-  display: flex;
-  block-size: 100%;
-  position: relative;
-  /* Named so the tray/content members can query this element's own width, not an unrelated ancestor. */
-  container: pantoken-drawer-layout / inline-size;
-}
+@scope (.pfx-drawer-layout) {
+  :scope {
+    display: flex;
+    block-size: 100%;
+    position: relative;
+    /* Named so the tray/content members can query this element's own width, not an unrelated ancestor. */
+    container: pantoken-drawer-layout / inline-size;
 
-.pfx-drawer-layout[placement="start"],
-.pfx-drawer-layout.-placement-start {
-  flex-direction: row;
-}
+    &[placement="start"],
+    &.-placement-start {
+      flex-direction: row;
+    }
 
-.pfx-drawer-layout[placement="end"],
-.pfx-drawer-layout.-placement-end {
-  flex-direction: row-reverse;
-}
+    &[placement="end"],
+    &.-placement-end {
+      flex-direction: row-reverse;
+    }
 
-.pfx-drawer-layout:not([open]):not(.-open) > .tray {
-  display: none;
-}
+    &:not([open]):not(.-open) > .tray {
+      display: none;
+    }
 
-.pfx-drawer-layout[should-overlay-tray],
-.pfx-drawer-layout.-should-overlay-tray {
-  min-inline-size: 0;
+    &[should-overlay-tray],
+    &.-should-overlay-tray {
+      min-inline-size: 0;
+    }
+  }
 }

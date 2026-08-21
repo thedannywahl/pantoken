@@ -9,11 +9,11 @@ test("badge: emits exactly one well-formed cssdoc record with no token drift", (
 
 test("badge fills from the badge color tokens", () => {
   const css = badgeCss({ prefix: "instui" });
-  expect(css).toContain(".instui-badge");
+  expect(css).toContain("@scope (.instui-badge)");
   expect(css).toContain("var(--instui-component-badge-color-primary)");
-  expect(css).toContain(".instui-badge.-color-danger");
+  expect(css).toContain("&.-color-danger");
   // Inverse swaps fill/text: light chip (badge-color) with dark text (color-inverse).
-  expect(css).toContain(".instui-badge.-color-inverse");
+  expect(css).toContain("&.-color-inverse");
   expect(css).toContain("var(--instui-component-badge-color-inverse)");
   expect(css).toContain("--pantoken-badge-accent: var(--instui-component-badge-color)");
 });
@@ -21,10 +21,10 @@ test("badge fills from the badge color tokens", () => {
 test("badge supports standalone, notification, pulse, and placement", () => {
   const css = badgeCss({ prefix: "instui" });
   // Notification dot (no count).
-  expect(css).toContain(".instui-badge.-type-notification");
+  expect(css).toContain("&.-type-notification");
   expect(css).toContain("var(--instui-spacing-space-sm)");
   // Pulse ring in the accent colour.
-  expect(css).toContain(".instui-badge.-pulse::before");
+  expect(css).toContain("&.-pulse::before");
   // Animation identifiers use a constant internal namespace, decoupled from the class prefix.
   expect(css).toContain("@keyframes pantoken-badge-pulse");
   // Placement over a positioned wrapper.
@@ -37,7 +37,7 @@ test("badge supports standalone, notification, pulse, and placement", () => {
     "start-center",
     "end-center",
   ]) {
-    expect(css).toContain(`.instui-badge.-placement-${place}`);
+    expect(css).toContain(`&.-placement-${place}`);
   }
-  expect(css).toContain(".instui-badge.-standalone");
+  expect(css).toContain("&.-standalone");
 });

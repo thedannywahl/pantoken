@@ -1,5 +1,6 @@
 /**
  * @component avatar
+ * @selector .pfx-avatar
  * @summary A user avatar showing initials or an image, circular by default.
  * @remarks By default the palette colour tints the initials on a transparent surface; `-has-inverse-color` fills the surface with the colour and puts the initials on-colour. The `-color-ai` variant always fills with the violet→sea gradient. For a full display name, put it in the content (so it stays in the accessibility tree) and add `data-initials="XX"` for the compact visual — the real text is what a screen reader announces. Without `data-initials`, overflowing content just hard-clips (no ellipsis); wrap it in `.name` for a precise single-leading-letter clip instead, or split it into `.first-name`/`.last-name` for two clipped letters (either half can be omitted and the other stays centred).
  * @modifier -color-ai — AI-accent palette colour.
@@ -51,30 +52,72 @@
  * @sealed
  * @stable
  */
-.pfx-avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--instui-component-avatar-size-md);
-  height: var(--instui-component-avatar-size-md);
-  border-radius: 50%;
-  overflow: hidden;
-  white-space: nowrap;
-  background: var(--instui-component-avatar-background-color);
-  color: var(--instui-component-avatar-blue-text-color);
-  border: var(--instui-component-avatar-border-width-sm) solid transparent;
-  font-family: var(--instui-component-avatar-font-family);
-  font-size: var(--instui-component-avatar-font-size-md);
-  font-weight: var(--instui-component-avatar-font-weight);
-}
+@scope (.pfx-avatar) {
+  :scope {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--instui-component-avatar-size-md);
+    height: var(--instui-component-avatar-size-md);
+    border-radius: 50%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--instui-component-avatar-background-color);
+    color: var(--instui-component-avatar-blue-text-color);
+    border: var(--instui-component-avatar-border-width-sm) solid transparent;
+    font-family: var(--instui-component-avatar-font-family);
+    font-size: var(--instui-component-avatar-font-size-md);
+    font-weight: var(--instui-component-avatar-font-weight);
 
-.pfx-avatar.-shape-rectangle {
-  border-radius: var(--instui-component-avatar-rectangle-radius);
-}
+    &.-shape-rectangle {
+      border-radius: var(--instui-component-avatar-rectangle-radius);
+    }
 
-/* showBorder (unset/auto): only an avatar without an image gets the default border ring. */
-.pfx-avatar:not(:has(> img)) {
-  border-color: var(--instui-component-avatar-border-color);
+    /* showBorder (unset/auto): only an avatar without an image gets the default border ring. */
+    &:not(:has(> img)) {
+      border-color: var(--instui-component-avatar-border-color);
+    }
+
+    /* data-initials: the real name stays as content for accessibility; ::before shows the compact form. */
+    &[data-initials] {
+      font-size: 0;
+
+      &::before {
+        content: attr(data-initials);
+        font-size: var(--instui-component-avatar-font-size-md);
+      }
+    }
+
+    /* A photo: an <img> child fills the chip and covers the initials (image takes priority). Its
+       radius is duplicated per shape (not `inherit`) so a sealed record never carries a reset-like
+       value. */
+    > img {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    &.-shape-rectangle > img {
+      border-radius: var(--instui-component-avatar-rectangle-radius);
+    }
+
+    /* .name / .first-name+.last-name are mutually exclusive alternatives for a display name, so each
+       guards against the other's markup also being present; either way, each part clips to a single
+       leading letter — an inline-block can be clamped to 1ch independently of the host's own fixed
+       dimensions, which a bare text node inside the flex host cannot. Missing one of first/last just
+       leaves the other centred (the host is already a centred flex box) — a precise no-data-initials,
+       no-JS fallback either way. */
+    &:not(:has([class*="-name"])) .name,
+    &:not(:has(.name)) .first-name,
+    &:not(:has(.name)) .last-name {
+      display: inline-block;
+      max-width: 1ch;
+      overflow: hidden;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
 }
 
 .pfx-avatar.-size-sm {
@@ -117,16 +160,6 @@
 .pfx-avatar.-size-md {
   width: var(--instui-component-avatar-size-md);
   height: var(--instui-component-avatar-size-md);
-  font-size: var(--instui-component-avatar-font-size-md);
-}
-
-/* data-initials: the real name stays as content for accessibility; ::before shows the compact form. */
-.pfx-avatar[data-initials] {
-  font-size: 0;
-}
-
-.pfx-avatar[data-initials]::before {
-  content: attr(data-initials);
   font-size: var(--instui-component-avatar-font-size-md);
 }
 
@@ -231,36 +264,4 @@
 /* showBorder="never": force the ring off, even without an image. */
 .pfx-avatar.-show-border-never {
   border-color: transparent;
-}
-
-/* A photo: an <img> child fills the chip and covers the initials (image takes priority). Its
-   radius is duplicated per shape (not `inherit`) so a sealed record never carries a reset-like
-   value. */
-.pfx-avatar > img {
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.pfx-avatar.-shape-rectangle > img {
-  border-radius: var(--instui-component-avatar-rectangle-radius);
-}
-
-/* .name / .first-name+.last-name are mutually exclusive alternatives for a display name, so each
-   guards against the other's markup also being present; either way, each part clips to a single
-   leading letter — an inline-block can be clamped to 1ch independently of the host's own fixed
-   dimensions, which a bare text node inside the flex host cannot. Missing one of first/last just
-   leaves the other centred (the host is already a centred flex box) — a precise no-data-initials,
-   no-JS fallback either way. */
-@scope (.pfx-avatar) {
-  :scope:not(:has([class*="-name"])) .name,
-  :scope:not(:has(.name)) .first-name,
-  :scope:not(:has(.name)) .last-name {
-    display: inline-block;
-    max-width: 1ch;
-    overflow: hidden;
-    white-space: nowrap;
-    vertical-align: middle;
-  }
 }
