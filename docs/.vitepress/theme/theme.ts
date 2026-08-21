@@ -81,6 +81,7 @@ function themeTargetOrigin(frame: HTMLIFrameElement): string {
 export function broadcastTheme(theme: PantokenTheme): void {
   if (typeof document === "undefined") return;
   for (const frame of document.querySelectorAll<HTMLIFrameElement>(".pantoken-demo__frame")) {
+    // deepcode ignore TooPermissiveCorsPostMessage: "*" only targets opaque-origin sandboxed frames (no concrete origin can match); a real-src frame gets its own origin, and the payload is a non-sensitive theme name.
     frame.contentWindow?.postMessage(
       { type: "pantoken-demo-theme", theme },
       themeTargetOrigin(frame),

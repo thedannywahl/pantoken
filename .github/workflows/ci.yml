@@ -8,6 +8,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  # `workflow_dispatch` lets CodSpeed trigger a backtest run to seed baseline data for the
+  # `benchmarks` job; jobs gated on `pull_request` simply no-op on a manual run.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -101,6 +104,42 @@ jobs:
         run: vp run -r build
       - name: Test all packages
         run: vp run -r test
+
+  # Continuous performance testing for the transform pipeline, run inside the CI gate so it reuses the
+  # `build` job's cached task outputs instead of rebuilding from scratch. Advisory only — a CodSpeed
+  # regression must never block merge, so failures here are swallowed with `continue-on-error`.
+  benchmarks:
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@250f29ce396baf5e8f24498e17c0dfdebabc26eb # v1
+        with:
+          cache: true
+          run-install: true
+      - name: Restore vp task cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: ${{ env.VP_TASK_CACHE }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
+            ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
+      - name: Materialize generated output
+        run: vp run -r build
+      - name: Run benchmarks
+        uses: CodSpeedHQ/action@4296e51e7041e24dadb86d1d6e8b9320d223dbe8 # v5
+        with:
+          mode: simulation
+          run: vp exec vitest bench --run --config vite.bench.config.ts
 
   coverage:
     needs: build
