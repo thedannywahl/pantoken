@@ -9,6 +9,7 @@
  * @module
  */
 import * as csstree from "css-tree";
+import type { Token } from "@pantoken/model";
 
 /** A registered, real CSS property name (e.g. `"font-weight"`), matched via `matchProperty()`. */
 export type PropertyName = string & { readonly __brand: "PropertyName" };
@@ -208,12 +209,12 @@ function firstMatch<T>(name: string, table: SyntaxRule<T>): T | undefined {
 }
 
 /** True when a value cannot be a typed CSS value at all (`var()` / `light-dark()`). */
-export function isContextualValue(value: string): boolean {
+function isContextualValue(value: string): boolean {
   return /var\(|light-dark\(/.test(value);
 }
 
 /** Whether `name` maps to a modeled property/grammar at all (real or bespoke). */
-export function hasModeledSyntax(name: string): boolean {
+function hasModeledSyntax(name: string): boolean {
   return (
     firstMatch(name, BESPOKE_SYNTAX) !== undefined ||
     TOKEN_NAME_TO_PROPERTY.some(([re]) => re.test(name))
@@ -224,16 +225,8 @@ export function hasModeledSyntax(name: string): boolean {
  * Whether a concrete value satisfies the real (or bespoke) CSS grammar for `name`'s property.
  * Returns `true` for any name with no modeled expectation — call {@link hasModeledSyntax} first
  * to distinguish "valid" from "not checked".
- *
- * @example
- * ```ts
- * import { isSyntaxValid } from "@pantoken/utils";
- *
- * isSyntaxValid("--instui-font-weight-base", "400");           // → true
- * isSyntaxValid("--instui-font-weight-base", "Medium Italic");  // → false
- * ```
  */
-export function isSyntaxValid(name: string, value: string): boolean {
+function isSyntaxValid(name: string, value: string): boolean {
   const bespoke = firstMatch(name, BESPOKE_SYNTAX);
   const property = bespoke ? undefined : firstMatch(name, TOKEN_NAME_TO_PROPERTY);
   if (!bespoke && !property) return true;
@@ -296,4 +289,53 @@ export function candidatePropertyCoverage(
     if (csstree.lexer.matchProperty(candidateProperty, ast).error) invalid.push({ name, value });
   }
   return { matched, invalid };
+}
+
+/** One token whose value doesn't satisfy its property's CSS grammar, or whose name maps to none. */
+export interface TokenSyntaxIssue {
+  /** The token's `--instui-*` name. */
+  name: string;
+  /** The token's resolved value. */
+  value: string;
+  /** `"mismatch"` fails a known property's real CSS grammar; `"unmodeled"` maps to no known property. */
+  kind: "mismatch" | "unmodeled";
+}
+
+/**
+ * Type-integrity check: every concrete token value validated against the REAL CSS grammar for the
+ * property its name implies (via `css-tree`'s `mdn-data`-backed lexer, plus the shared
+ * `BESPOKE_SYNTAX` table for pantoken-only properties) — catches upstream data corruption (e.g. a
+ * `font-weight` token whose value ends up as a non-numeric string) that a value-shape sniff alone
+ * would silently accept. Contextual values (`var()` / `light-dark()`) are skipped: their real type
+ * lives at the reference target. Sorted by name; empty means every modeled token is valid.
+ *
+ * @param tokens - The IR.
+ * @returns Tokens that fail their property's grammar (`"mismatch"`) or map to no known property
+ * (`"unmodeled"`).
+ *
+ * @example
+ * ```ts
+ * import { syntaxMismatches } from "@pantoken/utils";
+ * import type { Token } from "@pantoken/model";
+ *
+ * const ir: Token[] = [
+ *   { name: "--instui-font-weight-base", syntax: "<integer>", inherits: true, value: "400" },
+ *   { name: "--instui-content-quote-font-weight", syntax: "*", inherits: true, value: "Medium Italic" },
+ * ];
+ *
+ * syntaxMismatches(ir);
+ * // → [{ name: "--instui-content-quote-font-weight", value: "Medium Italic", kind: "mismatch" }]
+ * ```
+ */
+export function syntaxMismatches(tokens: readonly Token[]): TokenSyntaxIssue[] {
+  const issues: TokenSyntaxIssue[] = [];
+  for (const { name, value } of tokens) {
+    if (isContextualValue(value)) continue;
+    if (!hasModeledSyntax(name)) {
+      issues.push({ name, value, kind: "unmodeled" });
+    } else if (!isSyntaxValid(name, value)) {
+      issues.push({ name, value, kind: "mismatch" });
+    }
+  }
+  return issues.sort((a, b) => a.name.localeCompare(b.name));
 }

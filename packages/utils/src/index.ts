@@ -1,18 +1,18 @@
 /**
  * `@pantoken/utils` — shared, upstream-free helpers used across the pantoken packages: the token
  * reference resolver (with `light-dark()` handling), the two token regexes (typed via `arkregex`),
- * kebab→camel case, hex-colour parsing, the shared spacing scale ({@link SPACING_STEPS}), and the
- * generic token→utility-class emitters ({@link colorUtilitiesCss}, {@link tokenUtilitiesCss}) that
- * both `@pantoken/components` (semantic tier) and `@pantoken/plugin-primitives` (raw-palette tier)
+ * kebab→camel case, hex-colour parsing, SVG sanitization, the pantoken spacing scale, reference-drift
+ * validation, the css-tree-backed token syntax validator, and the generic token→utility-class emitters
+ * that both `@pantoken/components` (semantic tier) and `@pantoken/plugin-primitives` (raw-palette tier)
  * build on. Depends only on `@pantoken/model` (types) + `arkregex`, so any package can use it without
  * pulling the GitHub-only upstream.
+ *
+ * A pure barrel — every implementation lives in its own discrete module; add new helpers there and
+ * re-export them here, don't grow this file.
  *
  * @module
  * @beta
  */
-import { regex } from "arkregex";
-import { hasModeledSyntax, isContextualValue, isSyntaxValid } from "./token-syntax.ts";
-import type { Token } from "@pantoken/model";
 
 // The elevation + focus-outline composite custom-property builders. They live in their own module (no
 // `arkregex`/resolver deps) so `@pantoken/css` can pull just the declarations without the rest of utils.
@@ -25,512 +25,48 @@ export {
 } from "./declarations.ts";
 
 // The token-name → CSS-property syntax table (real properties via `css-tree`/`mdn-data`, bespoke
-// pantoken properties via a shared grammar table) — also consumed by `docs/scripts/build-css-api.ts`.
+// pantoken properties via a shared grammar table) and the build-time token syntax validator — also
+// consumed by `docs/scripts/build-css-api.ts`.
 export {
   BESPOKE_SYNTAX,
   TOKEN_NAME_TO_PROPERTY,
   candidatePropertyCoverage,
+  syntaxMismatches,
 } from "./token-syntax.ts";
-export type { Grammar, PropertyName, SyntaxRule } from "./token-syntax.ts";
+export type {
+  Grammar,
+  PatternCoverage,
+  PropertyName,
+  SyntaxRule,
+  TokenSyntaxIssue,
+} from "./token-syntax.ts";
 
-/** The colour mode to collapse `light-dark()` to. */
-export type Mode = "light" | "dark";
+// The token reference resolver: expands `var(--x)` chains, with optional `light-dark()` collapsing.
+export { LIGHT_DARK_RE, VAR_RE, makeResolver, resolveTokens } from "./resolver.ts";
+export type { Mode, ResolveOptions } from "./resolver.ts";
 
-/** One entry of the pantoken spacing scale: the short key, the long (word) key, and the shared CSS value. */
-export interface SpacingStep {
-  /** The short scale key, e.g. `"sm"` (the zero step's short key is `"0"`). */
-  short: string;
-  /** The long, word-spelled key, e.g. `"small"` (the zero step's long key is `"none"`). */
-  long: string;
-  /** The CSS value — a token reference, or a plain `"0"`/`"auto"`. */
-  value: string;
-}
+// Reference-integrity validation: drift vs. the source IR, and dangling `var()` refs.
+export { danglingReferences, extractInstuiRefs, tokenNames, unknownReferences } from "./drift.ts";
 
-/**
- * The pantoken spacing scale, `none`/`0` → `2xl` — the single shared source for
- * `@pantoken/components`' spacing/gap utilities and `@pantoken/interactions`' `resolveSpace`, so the
- * two never drift apart.
- */
-export const SPACING_STEPS: readonly SpacingStep[] = [
-  {
-    short: "0",
-    long: "none",
-    value: "var(--instui-component-shared-tokens-spacing-general-space-none)",
-  },
-  { short: "2xs", long: "xx-small", value: "var(--instui-spacing-space2xs)" },
-  { short: "xs", long: "x-small", value: "var(--instui-spacing-space-xs)" },
-  { short: "sm", long: "small", value: "var(--instui-spacing-space-sm)" },
-  { short: "md", long: "medium", value: "var(--instui-spacing-space-md)" },
-  { short: "lg", long: "large", value: "var(--instui-spacing-space-lg)" },
-  { short: "xl", long: "x-large", value: "var(--instui-spacing-space-xl)" },
-  { short: "2xl", long: "xx-large", value: "var(--instui-spacing-space2xl)" },
-];
+// kebab-case → camelCase.
+export { camelCase } from "./case.ts";
 
-/** The `auto` step — margin only, spelled the same both ways. */
-export const SPACING_AUTO_STEP: SpacingStep = { short: "auto", long: "auto", value: "auto" };
+// Hex-colour parsing.
+export { parseHexColor } from "./color.ts";
+export type { Rgba } from "./color.ts";
 
-/**
- * Strip `<script>` elements and event-handler attributes from SVG markup.
- *
- * Defense-in-depth for SVG decoded from vendored data URIs or contributed by plugins.
- * Not a full HTML parser — relies on the upstream source being trusted and pinned.
- */
-export function sanitizeSvg(svg: string): string {
-  let sanitized = svg;
-  let previous: string;
-  // Loop until stable: malformed/nested script fragments can survive a single pass.
-  do {
-    previous = sanitized;
-    sanitized = sanitized.replace(/<script\b[^>]*>[\s\S]*?<\/script\b[^>]*>/gi, "");
-  } while (sanitized !== previous);
-  // Loop until stable: nested or concatenated on* attributes can survive a single pass.
-  do {
-    previous = sanitized;
-    sanitized = sanitized.replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "");
-  } while (sanitized !== previous);
-  return sanitized;
-}
+// SVG sanitization for glyphs decoded from vendored data URIs or contributed by plugins.
+export { sanitizeSvg } from "./svg.ts";
 
-// Pattern sources (also used to build fresh regexes where reuse would be unsafe).
-const VAR_SOURCE = "var\\(\\s*(--[\\w-]+)[^)]*\\)";
-const LIGHT_DARK_SOURCE = "^light-dark\\(\\s*(.+?)\\s*,\\s*(.+?)\\s*\\)$";
+// The pantoken spacing scale — shared by `@pantoken/components` and `@pantoken/interactions`.
+export { SPACING_AUTO_STEP, SPACING_STEPS } from "./spacing.ts";
+export type { SpacingStep } from "./spacing.ts";
 
-/** A `var(--custom-prop)` reference (optional fallback); capture group 1 is the property name. */
-export const VAR_RE: RegExp = regex(VAR_SOURCE, "g");
-/** A `light-dark(<light>, <dark>)` value; capture groups 1 and 2 are the two branches. */
-export const LIGHT_DARK_RE: RegExp = regex(LIGHT_DARK_SOURCE);
-
-const MAX_DEPTH = 12;
-
-/** Options for {@link makeResolver}. */
-export interface ResolveOptions {
-  /** Collapse `light-dark()` to this branch; omit to keep `light-dark()` intact. */
-  mode?: Mode;
-  /** Tokens that override the base set (win on name collisions, e.g. a caller's IR over a theme). */
-  overrides?: readonly Token[];
-}
-
-/**
- * Build a resolver that expands `var(--x)` references to concrete leaf values against `base` (plus
- * any `overrides`). With `mode` it collapses `light-dark()` to that branch; without, it leaves
- * `light-dark()` in place.
- *
- * @param base - The token set to resolve references against.
- * @param options - {@link ResolveOptions}.
- * @returns A function that resolves a value string.
- *
- * @example Expand a reference chain to its concrete leaf
- * ```ts
- * import { makeResolver } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-leaf", syntax: "<color>", inherits: true, value: "#0374B5" },
- *   { name: "--instui-brand", syntax: "*", inherits: true, value: "var(--instui-leaf)" },
- * ];
- *
- * const resolve = makeResolver(ir);
- * resolve("var(--instui-brand)"); // → "#0374B5"
- * ```
- *
- * @example Collapse light-dark() with a mode, or keep it without one
- * ```ts
- * import { makeResolver } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-bg", syntax: "*", inherits: true, value: "light-dark(#fff, #000)" },
- * ];
- *
- * makeResolver(ir)("var(--instui-bg)");                 // → "light-dark(#fff, #000)"
- * makeResolver(ir, { mode: "light" })("var(--instui-bg)"); // → "#fff"
- * makeResolver(ir, { mode: "dark" })("var(--instui-bg)");  // → "#000"
- * ```
- *
- * @example Layer overrides that win on name collisions
- * ```ts
- * import { makeResolver } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-leaf", syntax: "<color>", inherits: true, value: "#0374B5" },
- *   { name: "--instui-brand", syntax: "*", inherits: true, value: "var(--instui-leaf)" },
- * ];
- * const overrides: Token[] = [
- *   { name: "--instui-leaf", syntax: "<color>", inherits: true, value: "#000" },
- * ];
- *
- * makeResolver(ir, { overrides })("var(--instui-brand)"); // → "#000"
- * ```
- */
-export function makeResolver(
-  base: readonly Token[],
-  options: ResolveOptions = {},
-): (value: string) => string {
-  const map = new Map(base.map((t) => [t.name, t.value]));
-  for (const t of options.overrides ?? []) map.set(t.name, t.value);
-
-  const pickMode = (value: string): string => {
-    if (!options.mode) return value;
-    const m = LIGHT_DARK_RE.exec(value.trim());
-    return m ? (options.mode === "light" ? m[1] : m[2]) : value;
-  };
-
-  const expand = (value: string, depth: number): string => {
-    const picked = pickMode(value);
-    if (depth >= MAX_DEPTH || !picked.includes("var(")) return picked;
-    // Fresh regex per call — a shared /g regex would corrupt its lastIndex across these recursive
-    // replace() calls.
-    return picked.replace(new RegExp(VAR_SOURCE, "g"), (whole, name: string) => {
-      const inner = map.get(name);
-      return inner === undefined ? whole : expand(inner, depth + 1);
-    });
-  };
-
-  return (value) => expand(value, 0);
-}
-
-/**
- * Resolve every token's value against the set (see {@link makeResolver}), keyed by name.
- *
- * @example Resolve a whole IR to a name → value map
- * ```ts
- * import { resolveTokens } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-leaf", syntax: "<color>", inherits: true, value: "#0374B5" },
- *   { name: "--instui-brand", syntax: "*", inherits: true, value: "var(--instui-leaf)" },
- *   { name: "--instui-bg", syntax: "*", inherits: true, value: "light-dark(#fff, #000)" },
- * ];
- *
- * const byName = resolveTokens(ir, { mode: "dark" });
- * byName.get("--instui-brand"); // → "#0374B5"
- * byName.get("--instui-bg");    // → "#000"
- * ```
- */
-export function resolveTokens(
-  base: readonly Token[],
-  options: ResolveOptions = {},
-): Map<string, string> {
-  const resolve = makeResolver(base, options);
-  return new Map(base.map((t) => [t.name, resolve(t.value)]));
-}
-
-/**
- * Convert a kebab-case string to camelCase (`color-background-brand` → `colorBackgroundBrand`).
- *
- * @example
- * ```ts
- * import { camelCase } from "@pantoken/utils";
- *
- * camelCase("color-background-brand"); // → "colorBackgroundBrand"
- * ```
- */
-export function camelCase(kebab: string): string {
-  return kebab.replace(/-([a-z0-9])/g, (_, c: string) => c.toUpperCase());
-}
-
-/** An RGBA colour: `r`/`g`/`b` are 0–255 integers, `a` is 0–1 (defaults to 1). */
-export interface Rgba {
-  r: number;
-  g: number;
-  b: number;
-  a: number;
-}
-
-/**
- * Parse `#rgb`, `#rrggbb`, or `#rrggbbaa` to {@link Rgba}; returns `undefined` otherwise.
- *
- * @example
- * ```ts
- * import { parseHexColor } from "@pantoken/utils";
- *
- * parseHexColor("#fff");      // → { r: 255, g: 255, b: 255, a: 1 }
- * parseHexColor("#0374B5");   // → { r: 3, g: 116, b: 181, a: 1 }
- * parseHexColor("#00000080"); // → { r: 0, g: 0, b: 0, a: 0.5019… }
- * parseHexColor("nope");      // → undefined
- * ```
- */
-export function parseHexColor(hex: string): Rgba | undefined {
-  const m = /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.exec(hex.trim());
-  if (!m) return undefined;
-  let h = m[1];
-  if (h.length === 3) h = h.replace(/(.)/g, "$1$1");
-  return {
-    r: Number.parseInt(h.slice(0, 2), 16),
-    g: Number.parseInt(h.slice(2, 4), 16),
-    b: Number.parseInt(h.slice(4, 6), 16),
-    a: h.length === 8 ? Number.parseInt(h.slice(6, 8), 16) / 255 : 1,
-  };
-}
-
-// ── Drift / reference-integrity validation ──────────────────────────────────────────────────────
-// Helpers to check that generated output stays faithful to the token IR: no references to tokens
-// that don't exist (drift vs the source), and no `var()` refs left undefined within a stylesheet.
-
-/**
- * Every `--instui-*` custom-property name that appears anywhere in `text`.
- *
- * @example
- * ```ts
- * import { extractInstuiRefs } from "@pantoken/utils";
- *
- * extractInstuiRefs(".b { color: var(--instui-color-text-base); }");
- * // → Set { "--instui-color-text-base" }
- * ```
- */
-export function extractInstuiRefs(text: string): Set<string> {
-  return new Set([...text.matchAll(/--instui-[\w-]+/g)].map((m) => m[0]));
-}
-
-/**
- * The set of token names an IR defines.
- *
- * @example
- * ```ts
- * import { tokenNames } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-leaf", syntax: "<color>", inherits: true, value: "#0374B5" },
- * ];
- * tokenNames(ir); // → Set { "--instui-leaf" }
- * ```
- */
-export function tokenNames(ir: readonly Token[]): Set<string> {
-  return new Set(ir.map((t) => t.name));
-}
-
-/**
- * Drift check: `--instui-*` names in `text` that the IR doesn't define (sorted; empty means no
- * drift). Use for outputs that *reference* tokens defined elsewhere — e.g. the docusaurus/vitepress
- * bridges, whose `var(--instui-*)` targets must all be real tokens.
- *
- * @param text - The generated output.
- * @param ir - The source token IR.
- * @returns The unknown token names.
- *
- * @example
- * ```ts
- * import { unknownReferences } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-leaf", syntax: "<color>", inherits: true, value: "#0374B5" },
- * ];
- *
- * unknownReferences("--x: var(--instui-leaf); --y: var(--instui-gone);", ir);
- * // → ["--instui-gone"]
- * unknownReferences("--x: var(--instui-leaf);", ir); // → []  (no drift)
- * ```
- */
-export function unknownReferences(text: string, ir: readonly Token[]): string[] {
-  const names = tokenNames(ir);
-  return [...extractInstuiRefs(text)].filter((name) => !names.has(name)).sort();
-}
-
-/**
- * Self-containment check: `--instui-*` names referenced via `var()` in a stylesheet that it never
- * defines (as an `@property` registration or a `--x:` declaration). Sorted; empty means every
- * reference resolves within the same output. Use for self-contained stylesheets (css, pendo).
- *
- * @param css - The generated stylesheet.
- * @returns The dangling reference names.
- *
- * @example
- * ```ts
- * import { danglingReferences } from "@pantoken/utils";
- *
- * // Self-contained: the referenced property is also defined here.
- * danglingReferences("@property --instui-a {} .b { color: var(--instui-a); }"); // → []
- *
- * // Dangling: `--instui-b` is referenced but never defined.
- * danglingReferences(
- *   ":root { --instui-a: red; } .b { color: var(--instui-a); background: var(--instui-b); }",
- * ); // → ["--instui-b"]
- * ```
- */
-export function danglingReferences(css: string): string[] {
-  const referenced = new Set([...css.matchAll(/var\(\s*?(--instui-[\w-]+)/g)].map((m) => m[1]));
-  const defined = new Set<string>();
-  for (const m of css.matchAll(/@property\s+(--instui-[\w-]+)/g)) defined.add(m[1]);
-  for (const m of css.matchAll(/(--instui-[\w]+(?:-[\w]+)*)\s*:/g)) defined.add(m[1]);
-  return [...referenced].filter((name) => !defined.has(name)).sort();
-}
-
-/** One token whose value doesn't satisfy its property's CSS grammar, or whose name maps to none. */
-export interface TokenSyntaxIssue {
-  /** The token's `--instui-*` name. */
-  name: string;
-  /** The token's resolved value. */
-  value: string;
-  /** `"mismatch"` fails a known property's real CSS grammar; `"unmodeled"` maps to no known property. */
-  kind: "mismatch" | "unmodeled";
-}
-
-/**
- * Type-integrity check: every concrete token value validated against the REAL CSS grammar for the
- * property its name implies (via `css-tree`'s `mdn-data`-backed lexer, plus the shared
- * `BESPOKE_SYNTAX` table for pantoken-only properties) — catches upstream data corruption (e.g. a
- * `font-weight` token whose value ends up as a non-numeric string) that a value-shape sniff alone
- * would silently accept. Contextual values (`var()` / `light-dark()`) are skipped: their real type
- * lives at the reference target. Sorted by name; empty means every modeled token is valid.
- *
- * @param tokens - The IR.
- * @returns Tokens that fail their property's grammar (`"mismatch"`) or map to no known property
- * (`"unmodeled"`).
- *
- * @example
- * ```ts
- * import { syntaxMismatches } from "@pantoken/utils";
- * import type { Token } from "@pantoken/model";
- *
- * const ir: Token[] = [
- *   { name: "--instui-font-weight-base", syntax: "<integer>", inherits: true, value: "400" },
- *   { name: "--instui-content-quote-font-weight", syntax: "*", inherits: true, value: "Medium Italic" },
- * ];
- *
- * syntaxMismatches(ir);
- * // → [{ name: "--instui-content-quote-font-weight", value: "Medium Italic", kind: "mismatch" }]
- * ```
- */
-export function syntaxMismatches(tokens: readonly Token[]): TokenSyntaxIssue[] {
-  const issues: TokenSyntaxIssue[] = [];
-  for (const { name, value } of tokens) {
-    if (isContextualValue(value)) continue;
-    if (!hasModeledSyntax(name)) {
-      issues.push({ name, value, kind: "unmodeled" });
-    } else if (!isSyntaxValid(name, value)) {
-      issues.push({ name, value, kind: "mismatch" });
-    }
-  }
-  return issues.sort((a, b) => a.name.localeCompare(b.name));
-}
-
-// Token → utility-class emitters. Pure string transforms (token name → `.class { prop: var(--token) }`),
-// with no InstUI-look opinion — the caller supplies which token names to render. `@pantoken/components`
-// feeds them a curated *semantic* allowlist; `@pantoken/plugin-primitives` feeds the raw palette. They
-// live here (not in a format) so the primitive tier doesn't have to reach up into the component library.
-
-/** Options shared by the utility-class emitters. */
-export interface UtilityOptions {
-  /**
-   * The class prefix. Any truthy string namespaces every class (`"instui"` → `.instui-bg-…`); any
-   * falsy value (`null`/`undefined`/`""`) drops the prefix entirely (`.bg-…`).
-   */
-  prefix?: string | null;
-  /**
-   * Component base-class names (e.g. `"button"`, `"view"`) to also emit a chained alias for, per
-   * rule — `.<prefix>-bg-danger` (bare) plus `.<prefix>-button.-bg-danger` (chained), so the same
-   * modifier works standalone or attached to any component. Omit for bare-only output (unchanged
-   * behavior).
-   */
-  chainTargets?: readonly string[];
-}
-
-/** One semantic colour family entry: a bare name (resolved against `--instui-color-<family>-<name>`)
- *  or an explicit `[name, value]` pair — the second element is `var()`-wrapped if it's a `--custom-prop`
- *  name, or used verbatim otherwise (a `light-dark(…)` expression, a raw keyword like `transparent`). */
-export type ColorUtilityEntry = string | readonly [name: string, value: string];
-
-/** The semantic colour token names (or explicit `[name, token]` pairs) per family. */
-export interface ColorUtilityNames {
-  background: readonly ColorUtilityEntry[];
-  text: readonly ColorUtilityEntry[];
-  stroke: readonly ColorUtilityEntry[];
-}
-
-/**
- * Build the semantic-colour utility stylesheet: `.<prefix>-bg-<name>` (background),
- * `.<prefix>-text-<name>` (text colour), `.<prefix>-border-<name>` (border colour), one per semantic
- * colour token. Overrides are therefore only ever token-valid — no primitives, no arbitrary hex. Pass
- * the token names per family (e.g. from `@pantoken/tokens`), or an explicit `[name, token]` pair to
- * source a name from a different token than the family's own scale.
- *
- * @param names - {@link ColorUtilityNames}.
- * @param options - {@link UtilityOptions}.
- * @returns The CSS string.
- *
- * @demo self:color-utilities
- */
-export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOptions = {}): string {
-  const prefix = options.prefix || "";
-  const p = prefix ? `${prefix}-` : "";
-  const chainTargets = options.chainTargets ?? [];
-  const emit = (
-    family: string,
-    util: string,
-    prop: string,
-    list: readonly ColorUtilityEntry[],
-  ): string =>
-    list
-      .map((entry) => {
-        const isPair = (e: ColorUtilityEntry): e is readonly [string, string] =>
-          typeof e !== "string";
-        const [n, token] = isPair(entry) ? entry : [entry, `--instui-color-${family}-${entry}`];
-        // A `--custom-prop` name gets wrapped in `var()`; anything else (a `light-dark(…)` expression,
-        // a raw keyword like `transparent`) is used verbatim — lets a `[name, value]` pair source a
-        // computed value, not just a single token reference.
-        const value = token.startsWith("--") ? `var(${token})` : token;
-        const modifier = `.-${util}-${n}`;
-        const selectors = [
-          `.${p}${util}-${n}`,
-          ...chainTargets.map((target) => `.${p}${target}${modifier}`),
-        ];
-        return `${selectors.join(", ")} { ${prop}: ${value}; }`;
-      })
-      .join("\n");
-  const rules = [
-    emit("background", "bg", "background", names.background),
-    emit("text", "text", "color", names.text),
-    emit("stroke", "border", "border-color", names.stroke),
-  ].join("\n");
-  return `/* InstUI semantic colour utilities (@pantoken/utils) — prefix: ${prefix} */\n${rules}\n`;
-}
-
-/** A set of tokens that all map to one CSS property (e.g. every `--instui-font-weight-*` → `font-weight`). */
-export interface TokenUtilityGroup {
-  /** The CSS property the tokens set (e.g. `"font-weight"`, `"border-radius"`, `"box-shadow"`). */
-  property: string;
-  /** Full token names (e.g. `"--instui-font-weight-body-strong"`); the `--instui-` tail becomes the class. */
-  tokens: readonly string[];
-}
-
-/**
- * Build token-driven utility classes: one class per token, applying it to its natural CSS property. The
- * token's `--instui-` tail is the class name, so `--instui-font-weight-body-strong` under property
- * `font-weight` yields
- * `.<prefix>-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }`. Use it for
- * every "one token → one property" family (font-family/weight, line-height, border-radius, border-width,
- * opacity, box-shadow). Colour and spacing keep their own builders — one token maps to several
- * properties there. Pass the token names per property (e.g. filtered from `@pantoken/tokens`).
- *
- * @param groups - one {@link TokenUtilityGroup} per CSS property.
- * @param options - {@link UtilityOptions}.
- * @returns The CSS string.
- *
- * @demo self:token-utilities
- */
-export function tokenUtilitiesCss(
-  groups: readonly TokenUtilityGroup[],
-  options: UtilityOptions = {},
-): string {
-  const prefix = options.prefix || "";
-  const p = prefix ? `${prefix}-` : "";
-  const chainTargets = options.chainTargets ?? [];
-  const rules = groups
-    .flatMap(({ property, tokens }) =>
-      tokens.map((token) => {
-        const name = token.replace(/^--instui-/, "");
-        const modifier = `.-${name}`;
-        const selectors = [
-          `.${p}${name}`,
-          ...chainTargets.map((target) => `.${p}${target}${modifier}`),
-        ];
-        return `${selectors.join(", ")} { ${property}: var(${token}); }`;
-      }),
-    )
-    .join("\n");
-  return `/* InstUI token utilities (@pantoken/utils) — prefix: ${prefix} */\n${rules}\n`;
-}
+// Token → utility-class emitters (semantic colour + generic one-token-one-property families).
+export { colorUtilitiesCss, tokenUtilitiesCss } from "./utility-css.ts";
+export type {
+  ColorUtilityEntry,
+  ColorUtilityNames,
+  TokenUtilityGroup,
+  UtilityOptions,
+} from "./utility-css.ts";
