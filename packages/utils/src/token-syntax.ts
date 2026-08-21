@@ -11,6 +11,17 @@
 import * as csstree from "css-tree";
 
 /**
+ * The REAL CSS grammar string for a property, generated from `css-tree`'s own lexer (the same
+ * instance {@link isSyntaxValid} matches against) rather than hand-typed — guaranteed byte-identical
+ * to what the lexer actually validates, so it can never drift out of sync with itself.
+ */
+function propertyGrammar(name: string): string {
+  const syntax = csstree.lexer.getProperty(name)?.syntax;
+  if (!syntax) throw new Error(`css-tree has no registered property named "${name}"`);
+  return csstree.definitionSyntax.generate(syntax);
+}
+
+/**
  * Non-standard, pantoken-authored property grammars `css-tree`/`mdn-data` don't know about —
  * matched by token-name substring, most-specific first, as raw CSS Value Definition Syntax
  * (CSS Values 4 §2.1: `|` `||` `&&` `[]` `?` `{a,b}` `#`) rather than a real property name. Only
@@ -24,18 +35,15 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // `candidatePropertyCoverage`-style verification found `drop-shadow-blur-elevation1-dropshadow1:
   // 2px` fails the composite `elevation` grammar (it isn't a whole shadow list on its own).
   [/drop-shadow-(blur|spread|x|y)-/u, "<length>"],
-  // `<shadow>`/`<outline-line-style>`/`<'text-decoration-line'>` are `mdn-data`'s own registered
-  // types/property — referencing them by name (CSS Value Definition Syntax, resolved by
-  // `css-tree`'s typed `match()`/`matchProperty()` at match time) means the grammar is never
-  // hand-copied, even though the token NAME pattern ("elevation", "focus-outline-*") differs from
-  // the real property name (that's why these stay bespoke instead of `TOKEN_NAME_TO_PROPERTY`).
-  [/elevation/u, "none | <shadow>#"],
-  [/text-decoration/u, "<'text-decoration-line'>"],
-  // Not `<color> | invert` (a removed CSS2 keyword) or `<line-style>` (which wrongly allows
-  // `hidden` — outline has no distinct sides) — these match the real `outline-color`/`outline-style`
-  // properties' own grammar instead.
-  [/focus-outline-color/u, "auto | <color>"],
-  [/focus-outline-style/u, "auto | <outline-line-style>"],
+  // These four resolve to a REAL CSS property's grammar (box-shadow/text-decoration-line/
+  // outline-color/outline-style), so the string is computed via {@link propertyGrammar} — never
+  // hand-typed — even though the token NAME pattern ("elevation", "focus-outline-*") doesn't match
+  // the real property name (that's why these live here and not in `TOKEN_NAME_TO_PROPERTY`, which
+  // maps a name pattern to a property matched by `matchProperty` directly, string-free).
+  [/elevation/u, propertyGrammar("box-shadow")],
+  [/text-decoration/u, propertyGrammar("text-decoration-line")],
+  [/focus-outline-color/u, propertyGrammar("outline-color")],
+  [/focus-outline-style/u, propertyGrammar("outline-style")],
   [/focus-outline-(width|offset|radius)/u, "<length>"],
   // `--instui-icon-color-*` holds a special CSS colour value (`currentColor`, or a `var()`-based
   // gradient) — NOT an SVG glyph url like every other `--instui-icon-*` token — so it must be
@@ -45,7 +53,7 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // required — css-tree tokenizes an unquoted `url(...)` as a single `Url` AST node, not a
   // Function+String pair, so a literal `url(<string>)` definition mismatches a real glyph value.
   [/glyph|instui-icon/u, "<url>"],
-  [/-filter\b/u, "<filter-value-list> | none"],
+  [/-filter\b/u, propertyGrammar("filter")],
   // Decomposed box-shadow PIECES (one component's `box-shadow-{blur,spread,x,y,color}` leaves) are
   // each a single value, not the full composite `box-shadow` shorthand — checked before the real
   // `box-shadow` property below (whose name pattern would otherwise also match these), since
