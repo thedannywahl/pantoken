@@ -1,5 +1,80 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- 90ce910: Ship VS Code custom-data artifacts in `@pantoken/pantoken` so downstream consumers can enable
+  HTML/CSS authoring hints without a custom extension.
+
+  - Publish `dist/html-custom-data.json` (class and modifier tokens, including `instui-*` utilities).
+  - Publish `dist/css-custom-data.json` (the `--instui-*` custom-property catalog).
+  - Expose both via package subpath exports:
+    - `@pantoken/pantoken/html-custom-data.json`
+    - `@pantoken/pantoken/css-custom-data.json`
+  - Document consumer setup in the getting-started guide via `html.customData` and `css.customData`.
+
+### Patch Changes
+
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+  - @pantoken/components@0.7.0
+  - @pantoken/plugin-theme-custom-media@0.2.0
+  - @pantoken/plugin-transition@1.0.0
+  - @pantoken/plugin-stacking@1.0.0
+  - @pantoken/drupal@0.1.19
+  - @pantoken/angular@0.1.22
+  - @pantoken/astro@0.1.14
+  - @pantoken/bootstrap@0.1.1
+  - @pantoken/css-in-js@0.1.10
+  - @pantoken/docusaurus@0.1.1
+  - @pantoken/foundation@0.1.2
+  - @pantoken/mui@0.1.10
+  - @pantoken/pendo@0.3.8
+  - @pantoken/react@0.1.23
+  - @pantoken/shadcn@0.1.1
+  - @pantoken/storybook@0.1.10
+  - @pantoken/svelte@0.1.23
+  - @pantoken/vitepress@0.2.0
+  - @pantoken/vue@0.1.23
+  - @pantoken/web-components@0.5.3
+  - @pantoken/panda@0.1.10
+  - @pantoken/figma@0.1.9
+  - @pantoken/swatches@0.1.10
+  - @pantoken/css@0.3.4
+  - @pantoken/dtcg@0.1.9
+  - @pantoken/icons@0.1.7
+  - @pantoken/less@0.1.10
+  - @pantoken/scss@0.1.10
+  - @pantoken/stylus@0.1.10
+  - @pantoken/email@0.1.10
+  - @pantoken/vanilla@0.1.9
+  - @pantoken/wordpress@0.1.9
+  - @pantoken/plugin-primitives@0.1.10
+  - @pantoken/mintlify@0.1.10
+  - @pantoken/react-native@0.1.10
+  - @pantoken/cli@0.1.21
+  - @pantoken/postcss@0.1.14
+  - @pantoken/vite@0.1.14
+  - @pantoken/webpack@0.1.14
+  - @pantoken/markdown-it@0.1.7
+  - @pantoken/react-markdown@0.1.9
+  - @pantoken/rehype@0.1.7
+  - @pantoken/tokens@0.2.3
+  - @pantoken/android@0.1.13
+  - @pantoken/compose@0.1.13
+  - @pantoken/flutter@0.1.13
+  - @pantoken/swift@0.1.13
+  - @pantoken/plugin-logos@0.3.3
+  - @pantoken/plugin-simple-icons@0.3.3
+  - @pantoken/plugin-visual-debug@0.1.12
+
 ## 0.1.26
 
 ### Patch Changes

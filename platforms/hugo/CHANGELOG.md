@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## 0.1.19
+
+### Patch Changes
+
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+- Updated dependencies [90ce910]
+  - @pantoken/components@0.7.0
+  - @pantoken/css@0.3.4
+  - @pantoken/scss@0.1.10
+
 ## 0.1.18
 
 ### Patch Changes
