@@ -44,7 +44,11 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   [/text-decoration/u, propertyGrammar("text-decoration-line")],
   [/focus-outline-color/u, propertyGrammar("outline-color")],
   [/focus-outline-style/u, propertyGrammar("outline-style")],
-  [/focus-outline-(width|offset|radius)/u, "<length>"],
+  [/focus-outline-width/u, propertyGrammar("outline-width")],
+  [/focus-outline-offset/u, propertyGrammar("outline-offset")],
+  // No standard "outline-radius" property exists — `declarations.ts` assigns this token straight
+  // to a real `border-radius` declaration, so that's the authoritative grammar to check it against.
+  [/focus-outline-radius/u, propertyGrammar("border-radius")],
   // `--instui-icon-color-*` holds a special CSS colour value (`currentColor`, or a `var()`-based
   // gradient) — NOT an SVG glyph url like every other `--instui-icon-*` token — so it must be
   // checked before the generic icon-glyph rule right below it.
