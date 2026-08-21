@@ -10,9 +10,6 @@
  */
 import * as csstree from "css-tree";
 
-const LINE_STYLE =
-  "none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset";
-
 /**
  * Non-standard, pantoken-authored property grammars `css-tree`/`mdn-data` don't know about —
  * matched by token-name substring, most-specific first, as raw CSS Value Definition Syntax
@@ -30,9 +27,10 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   [/elevation/u, "[ inset? && <length>{2,4} && <color>? ]# | none"],
   [/text-decoration/u, "none | underline || overline || line-through || blink"],
   [/focus-outline-color/u, "<color> | invert"],
-  [/focus-outline-style/u, `auto | ${LINE_STYLE}`],
+  // `<line-style>` is `mdn-data`'s own registered type (the same one `border-style` below resolves
+  // to) — referencing it directly means the keyword list is never hand-duplicated/goes stale.
+  [/focus-outline-style/u, "auto | <line-style>"],
   [/focus-outline-(width|offset|radius)/u, "<length>"],
-  [/border-style/u, LINE_STYLE],
   // `--instui-icon-color-*` holds a special CSS colour value (`currentColor`, or a `var()`-based
   // gradient) — NOT an SVG glyph url like every other `--instui-icon-*` token — so it must be
   // checked before the generic icon-glyph rule right below it.
@@ -110,6 +108,7 @@ export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/transition-duration|-duration\b/u, "transition-duration"],
   [/border-width/u, "border-width"],
   [/-radius/u, "border-radius"],
+  [/border-style/u, "border-style"],
   // Unanchored: also catches a `-bottom-border-inverse` suffix variant, not just the bare `-bottom-
   // border` ending.
   [/bottom-border/u, "border-bottom"],
