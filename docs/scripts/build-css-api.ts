@@ -109,7 +109,7 @@ export function inferSyntax(value: string): string | undefined {
  * `css-tree`, so it isn't in the shared grammar table — this docs-only entry just needs a
  * human-readable string for display, unrelated to how the validator checks it.
  */
-const PROPERTY_SYNTAX: [RegExp, string][] = [
+const PROPERTY_SYNTAX: (readonly [RegExp, string])[] = [
   [/font-family/u, "[ <font-family-name> | <generic-font-family> ]#"],
   ...BESPOKE_SYNTAX,
 ];
