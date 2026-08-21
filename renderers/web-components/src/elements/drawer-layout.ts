@@ -42,10 +42,30 @@ export const drawerLayout: ElementDefinition = {
             drawerLayoutContentCss(ctx.I) +
             DRAWER_CSS;
 
-          root.innerHTML =
-            `<style>${style}</style>` +
-            `<div class="layout ${ctx.I}-drawer-layout"><aside class="tray" part="tray"><slot name="tray"></slot></aside>` +
-            `<main class="content" part="content" role="region"><slot></slot></main></div>`;
+          const styleEl = document.createElement("style");
+          styleEl.textContent = style;
+
+          const layout = document.createElement("div");
+          layout.className = `layout ${ctx.I.prefix}-drawer-layout`;
+
+          const tray = document.createElement("aside");
+          tray.className = "tray";
+          tray.setAttribute("part", "tray");
+
+          const traySlot = document.createElement("slot");
+          traySlot.name = "tray";
+          tray.append(traySlot);
+
+          const content = document.createElement("main");
+          content.className = "content";
+          content.setAttribute("part", "content");
+          content.setAttribute("role", "region");
+
+          const contentSlot = document.createElement("slot");
+          content.append(contentSlot);
+
+          layout.append(tray, content);
+          root.replaceChildren(styleEl, layout);
           this.syncLayoutState();
           initResponsiveOverlay(this, ctx.onCommand);
         }
