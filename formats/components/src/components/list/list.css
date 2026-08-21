@@ -7,6 +7,10 @@
  * @modifier -size-sm — Small. @affects list.item — Scales the item spacing to match.
  * @modifier -size-md — Medium (default). @affects list.item — Scales the item spacing to match.
  * @modifier -size-lg — Large. @affects list.item — Scales the item spacing to match.
+ * @structure
+ * .pfx-list {
+ *   li:many {}
+ * }
  * @example
  * <ul class="pfx-list">
  *   <li>First item</li>

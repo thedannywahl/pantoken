@@ -2,6 +2,12 @@
  * @component menu
  * @summary A dropdown surface of items, groups, and separators.
  * @remarks Compose entries as `.item` (see the `menu.item` member), label a section with `.group` (see `menu.group`), and divide sections with `.separator` (see `menu.separator`).
+ * @structure
+ * .pfx-menu {
+ *   .group:optional {}
+ *   .item:many {}
+ *   .separator:optional {}
+ * }
  * @example -nocard
  * ```html
  * <div class="pfx-menu">

@@ -5,6 +5,10 @@
  * @modifier -minimized — Collapse to icons only (labels hidden). @affects side-nav-bar.item — Hides the item's label.
  * @modifier -icon-* — Render a glyph icon in each nav item.
  * @a11y Label the `<nav>` with aria-label so it's announced as a named navigation landmark.
+ * @structure
+ * .pfx-side-nav-bar {
+ *   .item:one-or-more {}
+ * }
  * @example
  * <nav class="pfx-side-nav-bar" aria-label="Primary">
  *   <a class="item -selected" href="#">
