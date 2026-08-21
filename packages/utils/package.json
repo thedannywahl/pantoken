@@ -30,9 +30,11 @@
   },
   "dependencies": {
     "@pantoken/model": "workspace:*",
-    "arkregex": "catalog:"
+    "arkregex": "catalog:",
+    "css-tree": "catalog:"
   },
   "devDependencies": {
+    "@types/css-tree": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

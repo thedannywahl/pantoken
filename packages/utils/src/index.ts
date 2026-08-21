@@ -11,6 +11,7 @@
  * @beta
  */
 import { regex } from "arkregex";
+import { hasModeledSyntax, isContextualValue, isSyntaxValid } from "./token-syntax.ts";
 import type { Token } from "@pantoken/model";
 
 // The elevation + focus-outline composite custom-property builders. They live in their own module (no
@@ -22,6 +23,14 @@ export {
   focusOutlineDeclarations,
   focusOutlineRules,
 } from "./declarations.ts";
+
+// The token-name → CSS-property syntax table (real properties via `css-tree`/`mdn-data`, bespoke
+// pantoken properties via a shared grammar table) — also consumed by `docs/scripts/build-css-api.ts`.
+export {
+  BESPOKE_SYNTAX,
+  TOKEN_NAME_TO_PROPERTY,
+  candidatePropertyCoverage,
+} from "./token-syntax.ts";
 
 /** The colour mode to collapse `light-dark()` to. */
 export type Mode = "light" | "dark";
@@ -347,6 +356,55 @@ export function danglingReferences(css: string): string[] {
   for (const m of css.matchAll(/@property\s+(--instui-[\w-]+)/g)) defined.add(m[1]);
   for (const m of css.matchAll(/(--instui-[\w]+(?:-[\w]+)*)\s*:/g)) defined.add(m[1]);
   return [...referenced].filter((name) => !defined.has(name)).sort();
+}
+
+/** One token whose value doesn't satisfy its property's CSS grammar, or whose name maps to none. */
+export interface TokenSyntaxIssue {
+  /** The token's `--instui-*` name. */
+  name: string;
+  /** The token's resolved value. */
+  value: string;
+  /** `"mismatch"` fails a known property's real CSS grammar; `"unmodeled"` maps to no known property. */
+  kind: "mismatch" | "unmodeled";
+}
+
+/**
+ * Type-integrity check: every concrete token value validated against the REAL CSS grammar for the
+ * property its name implies (via `css-tree`'s `mdn-data`-backed lexer, plus the shared
+ * `BESPOKE_SYNTAX` table for pantoken-only properties) — catches upstream data corruption (e.g. a
+ * `font-weight` token whose value ends up as a non-numeric string) that a value-shape sniff alone
+ * would silently accept. Contextual values (`var()` / `light-dark()`) are skipped: their real type
+ * lives at the reference target. Sorted by name; empty means every modeled token is valid.
+ *
+ * @param tokens - The IR.
+ * @returns Tokens that fail their property's grammar (`"mismatch"`) or map to no known property
+ * (`"unmodeled"`).
+ *
+ * @example
+ * ```ts
+ * import { syntaxMismatches } from "@pantoken/utils";
+ * import type { Token } from "@pantoken/model";
+ *
+ * const ir: Token[] = [
+ *   { name: "--instui-font-weight-base", syntax: "<integer>", inherits: true, value: "400" },
+ *   { name: "--instui-content-quote-font-weight", syntax: "*", inherits: true, value: "Medium Italic" },
+ * ];
+ *
+ * syntaxMismatches(ir);
+ * // → [{ name: "--instui-content-quote-font-weight", value: "Medium Italic", kind: "mismatch" }]
+ * ```
+ */
+export function syntaxMismatches(tokens: readonly Token[]): TokenSyntaxIssue[] {
+  const issues: TokenSyntaxIssue[] = [];
+  for (const { name, value } of tokens) {
+    if (isContextualValue(value)) continue;
+    if (!hasModeledSyntax(name)) {
+      issues.push({ name, value, kind: "unmodeled" });
+    } else if (!isSyntaxValid(name, value)) {
+      issues.push({ name, value, kind: "mismatch" });
+    }
+  }
+  return issues.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // Token → utility-class emitters. Pure string transforms (token name → `.class { prop: var(--token) }`),
