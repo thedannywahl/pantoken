@@ -129,6 +129,10 @@ export const BESPOKE_SYNTAX: SyntaxRule<Grammar> = [
   // values are always the `none` keyword.
   [/progress-circle-.*-transform$/u, typeReference("length")],
   [/(?:icon-illu-)|(?:img-image-blur-amount$)/u, typeReference("length")],
+  // Despite the "position" suffix, InstUI's `smallViewportTrayFixTopPosition` theme variable is a
+  // `top`/`inset-block-start` OFFSET LENGTH (e.g. `"3.5rem"`), not a CSS `position` keyword — checked
+  // before the generic `position$` real-property rule below, which would otherwise misclassify it.
+  [/tray-fix-top-position$/u, typeReference("length")],
 ];
 
 /**
@@ -199,9 +203,8 @@ export const TOKEN_NAME_TO_PROPERTY: SyntaxRule<PropertyName> = [
   // `color-inverse$` covers the single `--instui-component-top-nav-bar-item-color-inverse: inherit`
   // token specifically (kept narrow rather than a bare `-inverse` match, to avoid over-matching).
   [/color(?:\d*|-inverse)$/u, realProperty("color")],
-  // Generic `position$` fallback (after the more specific `background-position$` above) also
-  // catches `--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position: undefined`
-  // — a genuine upstream data bug (a stringified JS `undefined`), correctly failing the build.
+  // Generic `position$` fallback, after the more specific `background-position$` above AND the
+  // bespoke `tray-fix-top-position$` length rule (which is checked first and wins for that name).
   [/position$/u, realProperty("position")],
 ];
 

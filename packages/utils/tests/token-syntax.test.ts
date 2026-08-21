@@ -90,6 +90,16 @@ test("syntaxMismatches flags a stringified `undefined` value (a real upstream bu
   expect(syntaxMismatches([bad])).toEqual([{ name: bad.name, value: bad.value, kind: "mismatch" }]);
 });
 
+test("syntaxMismatches accepts tray-fix-top-position as a length, not a CSS position keyword", () => {
+  const good: Token = {
+    name: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position",
+    syntax: "*",
+    inherits: true,
+    value: "3.5rem",
+  };
+  expect(syntaxMismatches([good])).toEqual([]);
+});
+
 test("syntaxMismatches accepts the primitive colour palette and background-* real properties", () => {
   const clean: Token[] = [
     {
