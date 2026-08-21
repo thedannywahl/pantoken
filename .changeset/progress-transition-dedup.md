@@ -19,7 +19,13 @@ utilities, and port `@pantoken/plugin-visual-debug`'s `-with-visual-debug` outli
   pass `options.scope` (unchanged) to target a different content root instead. Also moved the
   `progress`/`progress-circle` mount and value transition CSS out of a shared, hand-duplicated helper
   and into each component's own `.css` source (matching `popover`/`tray`); the generated
-  `progressCss`/`progressCircleCss` output is unchanged.
+  `progressCss`/`progressCircleCss` output is unchanged. Also fixed several bugs surfaced while
+  wiring up the new utilities: `transitionCss` was never exported, so its CSS never shipped; the
+  `stacking` and `mask` utilities emitted an invalid selector missing its leading `.` (e.g.
+  `-stack-topmost` instead of `.-stack-topmost`), now fixed via the same `globalSelectors` helper
+  `cursor`/`position`/`truncate` already use; and the 12 utility subpath exports declared in
+  `package.json` (`./utilities/*.css`) now actually resolve to built `dist/utilities/*.css` files
+  (previously missing).
 - `@pantoken/plugin-transition` (**breaking**): narrowed to a tokens-only plugin. It no longer emits
   the `.instui-transition` base rule or `fade`/`scale`/`slide-*` state classes, and no longer ships a
   standalone `transition.css` (the `./transition.css` export, and the `prefix`/`position` options, are

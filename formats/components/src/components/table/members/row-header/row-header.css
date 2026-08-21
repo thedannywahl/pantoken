@@ -5,7 +5,7 @@
  * @summary A row-header cell (InstUI `Table.RowHeader`); styled from the row-header tokens, not the column-header ones.
  * @remarks The parent `table`'s `-layout-stacked` modifier stacks this member as a block and labels it via `::before` — see `table`'s own doc for that modifier.
  * @structure
- * .pfx-table {
+ * @component table {
  *   tbody {
  *     tr {
  *       th[scope="row"] {}

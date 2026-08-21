@@ -5,7 +5,7 @@
  * @summary The table's data row group (InstUI `Table.Body`).
  * @remarks The parent `table`'s `-layout-stacked` modifier restyles this member — see `table`'s own doc for that modifier.
  * @structure
- * .pfx-table {
+ * @component table {
  *   tbody {}
  * }
  */

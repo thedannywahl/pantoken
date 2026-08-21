@@ -6,7 +6,6 @@
  * @modifier -size-sm — Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match.
  * @modifier -size-md — Medium (default). @affects breadcrumb.link — Scales the crumb separator's spacing to match.
  * @modifier -size-lg — Large. @affects breadcrumb.link — Scales the crumb separator's spacing to match.
- * @modifier -size-small - @alias {@link -size-sm}
  * @a11y Wrap the `<ol>` in a `<nav aria-label>` landmark; mark the current page's crumb with `aria-current="page"`.
  * @structure
  * .pfx-breadcrumb {

@@ -101,6 +101,7 @@ function collectClassValues(definitions: readonly Definition[]): CustomDataValue
     .map(([name, description]) => ({ name, description }));
 }
 
+/** Build the VS Code HTML custom-data payload: every component/utility class + modifier as a `class` attribute value. */
 export function buildHtmlCustomData(
   definitions: readonly Definition[] = DEFINITIONS,
 ): HtmlCustomData {
@@ -118,6 +119,7 @@ export function buildHtmlCustomData(
   };
 }
 
+/** Build the VS Code CSS custom-data payload: every `--instui-*` token as a documented custom property. */
 export function buildCssCustomData(): CssCustomData {
   const properties = tokens
     .filter((token) => token.name.startsWith("--instui-"))
@@ -137,6 +139,7 @@ export function buildCssCustomData(): CssCustomData {
   };
 }
 
+/** Build and write both VS Code custom-data JSON files to `distDir`, returning their paths and counts. */
 export function emitCustomData(distDir: string = join(import.meta.dirname, "..", "dist")): {
   htmlPath: string;
   cssPath: string;

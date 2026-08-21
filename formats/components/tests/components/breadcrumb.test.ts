@@ -20,31 +20,18 @@ test("breadcrumb lays out its ol, not the nav wrapper", () => {
 
 test("breadcrumb.link separators scale with the parent's size modifiers", () => {
   const css = breadcrumbLinkCss({ prefix: "instui" });
-  expect(css).toContain(".instui-breadcrumb.-size-sm .link:not(:last-child)::after");
-  expect(css).toContain(".instui-breadcrumb.-size-lg .link:not(:last-child)::after");
-  expect(css).toContain(":scope > .link:not(:last-child)::after");
+  expect(css).toContain(":scope.-size-sm li:not(:last-child)::after");
+  expect(css).toContain(":scope.-size-lg li:not(:last-child)::after");
+  expect(css).toContain(":scope li:not(:last-child)::after");
 });
 
-test("breadcrumb.link collapses to a back-link at each breakpoint", () => {
+test("breadcrumb.link collapses to a back-link at a shared breakpoint", () => {
   const css = breadcrumbLinkCss({ prefix: "instui" });
-  for (const [name, width] of [
-    ["sm", "30rem"],
-    ["md", "48rem"],
-    ["lg", "64rem"],
-    ["xl", "80rem"],
-  ]) {
-    expect(css).toContain(`@media (max-width: ${width})`);
-    expect(css).toContain(
-      `:scope.-collapse-${name} > ol:has(> .link:nth-last-child(2)) > .link:not(:nth-last-child(2))`,
-    );
-    expect(css).toContain(`:scope.-collapse-${name} > .link:nth-last-child(2)::after`);
-    expect(css).toContain(
-      `:scope.-collapse-${name} > .link:nth-last-child(2) > a > [class*="-icon-"]`,
-    );
-    expect(css).toContain(`:scope.-collapse-${name} > .link:nth-last-child(2) > a::before`);
-    expect(css).toContain("var(--instui-icon-arrow-left)");
-    expect(css).toContain(
-      `[dir="rtl"] :scope.-collapse-${name} > .link:nth-last-child(2) > a::before`,
-    );
-  }
+  expect(css).toContain("@media (max-width: 47.9375em)");
+  expect(css).toContain(":scope > ol:has(> li:nth-last-child(2)) > li:not(:nth-last-child(2))");
+  expect(css).toContain(":scope li:nth-last-child(2)::before");
+  expect(css).toContain(
+    "-webkit-mask: var(--instui-icon-chevron-left) center / contain no-repeat;",
+  );
+  expect(css).toContain('[dir="rtl"] :scope > li:nth-last-child(2) > a::before');
 });

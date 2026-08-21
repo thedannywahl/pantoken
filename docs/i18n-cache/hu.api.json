@@ -2064,6 +2064,7 @@
     "b7096a7e636d2c346b3bb63b81b3fb94cad96a147d93ce56331d7dfe4cc2cbae": "Opcionális fejlécgombok a felső sor végén.",
     "b710306ae1718f402b4c8ccdb77c55a18a0d097f44c3010ae9c8b562ab227e19": "Egy folyamatba illeszkedő (in-flow) átfedés, amely kitölti pozicionált szülőjét és középre igazítja annak tartalmát — pl. egy spinner egy kártya felett. Modális ablak esetén érdemesebb natív `<dialog>` elemet használni (ennek `::backdrop` eleme a maszk). E módosítók mindegyike globálisan is elérhető (önmagában vagy bármely más komponenshez láncolva) — lásd a(z) `mask` globális segédprogramot.",
     "b7270748b7afad80f58a186808b95ae387000039479accc2ec4376a541022678": "A szín állapot-sáv kitöltés a karakter mögött; minden `-color-*` variáns beállítja a sajátját.",
+    "b727e1139e07896ea647182f570b4e0a3061529ee62f1d68d495ab4b3ad45963": "Kicsi. @affects breadcrumb.link — Megfelelően skálázza a morzsaelválasztó térközét. A(z) `-size-sm` hosszú formátumú aliasa.",
     "b72cf719b302f6d34854df473c9d88a87b529cf0e200e5bd5b0573d44da4321d": "ToThemeJsonOptions",
     "b74f1c96bdb949cfef5542d3587e9fdb129cc3a15b7179e3aac65fbb6b438a2b": "CSS",
     "b74f3a7c683e5bdcb93476a3fb12ac431489af144d9bc7399a08fa86f195bf37": "Egy csillagértékelés töltött és üres szimbólumokkal és egy opcionális numerikus címkével.",

@@ -10,10 +10,10 @@ test("responsive: emits exactly one well-formed cssdoc record with no token drif
 test("responsive utilities emit viewport hidden-max/min classes at the tray-width breakpoint scale", () => {
   const css = responsiveUtilitiesCss({ prefix: "instui" });
   expect(css).toContain(
-    "@media (max-width: 48em) { .instui-hidden-max-lg, .instui-hidden-max-large, .instui-hidden-max-laptop { display: none !important; } }",
+    "@media (max-width: 48em) { .instui-hidden-max-lg, .-hidden-max-lg, .instui-hidden-max-large, .-hidden-max-large, .instui-hidden-max-laptop, .-hidden-max-laptop { display: none !important; } }",
   );
   expect(css).toContain(
-    "@media (min-width: 48em) { .instui-hidden-min-lg, .instui-hidden-min-large, .instui-hidden-min-laptop { display: none !important; } }",
+    "@media (min-width: 48em) { .instui-hidden-min-lg, .-hidden-min-lg, .instui-hidden-min-large, .-hidden-min-large, .instui-hidden-min-laptop, .-hidden-min-laptop { display: none !important; } }",
   );
   expect(css).toContain(".instui-hidden-max-sm");
   expect(css).toContain(".instui-hidden-max-small");
@@ -24,7 +24,7 @@ test("responsive utilities emit viewport hidden-max/min classes at the tray-widt
   // Container-query variants react to a marked container's width, not the viewport.
   expect(css).toContain(".instui-container { container-type: inline-size; }");
   expect(css).toContain(
-    "@container (max-width: 48em) { .instui-cq-hidden-max-lg, .instui-cq-hidden-max-large, .instui-cq-hidden-max-laptop { display: none !important; } }",
+    "@container (max-width: 48em) { .instui-cq-hidden-max-lg, .-cq-hidden-max-lg, .instui-cq-hidden-max-large, .-cq-hidden-max-large, .instui-cq-hidden-max-laptop, .-cq-hidden-max-laptop { display: none !important; } }",
   );
   expect(css).toContain(".instui-cq-hidden-min-lg");
 });
@@ -36,32 +36,32 @@ test("responsive utilities emit show-max/min classes as the inverse of hidden-ma
   expect(css).toContain(".instui-cq-show-min-lg");
   // ...then revert()ed back to its natural display only inside the matching range.
   expect(css).toContain(
-    "@media (max-width: 20em) { .instui-show-max-sm, .instui-show-max-small, .instui-show-max-phablet { display: revert !important; } }",
+    "@media (max-width: 20em) { .instui-show-max-sm, .-show-max-sm, .instui-show-max-small, .-show-max-small, .instui-show-max-phablet, .-show-max-phablet { display: revert !important; } }",
   );
   expect(css).toContain(
-    "@media (min-width: 20em) { .instui-show-min-sm, .instui-show-min-small, .instui-show-min-phablet { display: revert !important; } }",
+    "@media (min-width: 20em) { .instui-show-min-sm, .-show-min-sm, .instui-show-min-small, .-show-min-small, .instui-show-min-phablet, .-show-min-phablet { display: revert !important; } }",
   );
   expect(css).toContain(
-    "@container (max-width: 48em) { .instui-cq-show-max-lg, .instui-cq-show-max-large, .instui-cq-show-max-laptop { display: revert !important; } }",
+    "@container (max-width: 48em) { .instui-cq-show-max-lg, .-cq-show-max-lg, .instui-cq-show-max-large, .-cq-show-max-large, .instui-cq-show-max-laptop, .-cq-show-max-laptop { display: revert !important; } }",
   );
 });
 
 test("responsive utilities emit the unscaled, theme-dependent content breakpoints (no long-form/device aliases)", () => {
   const rebrand = responsiveUtilitiesCss({ prefix: "instui", theme: "rebrand" });
   expect(rebrand).toContain(
-    "@media (max-width: 68.75em) { .instui-hidden-max-content { display: none !important; } }",
+    "@media (max-width: 68.75em) { .instui-hidden-max-content, .-hidden-max-content { display: none !important; } }",
   );
   expect(rebrand).toContain(
-    "@media (max-width: 98.75em) { .instui-hidden-max-content-full-width { display: none !important; } }",
+    "@media (max-width: 98.75em) { .instui-hidden-max-content-full-width, .-hidden-max-content-full-width { display: none !important; } }",
   );
   expect(rebrand).not.toContain("hidden-max-content-small");
 
   const canvas = responsiveUtilitiesCss({ prefix: "instui", theme: "canvas" });
   expect(canvas).toContain(
-    "@media (max-width: 59.25em) { .instui-hidden-max-content { display: none !important; } }",
+    "@media (max-width: 59.25em) { .instui-hidden-max-content, .-hidden-max-content { display: none !important; } }",
   );
   expect(canvas).toContain(
-    "@media (max-width: 59.25em) { .instui-hidden-max-content-full-width { display: none !important; } }",
+    "@media (max-width: 59.25em) { .instui-hidden-max-content-full-width, .-hidden-max-content-full-width { display: none !important; } }",
   );
 });
 

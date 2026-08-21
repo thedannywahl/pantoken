@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { utilityVariantRule } from "../../lib/helpers.ts";
+import { globalSelectors } from "../../lib/global-alias.ts";
 
 /** The stacking depths, deepest → topmost — same order and names as `@pantoken/plugin-stacking`. */
 const STACKING_LEVELS = ["deepest", "below", "above", "topmost"] as const;
@@ -16,14 +16,8 @@ export const stacking: Definition = defineUtility({
   name: "stacking",
   css: (p) => {
     const rules = STACKING_LEVELS.map((level) => {
-      const bareModifier = `-stack-${level}`;
-      const baseClass = `.${p}stacking`;
-      return utilityVariantRule(
-        baseClass,
-        "stacking",
-        bareModifier,
-        `z-index: var(--instui-component-view-stacking-${level})`,
-      );
+      const selectors = globalSelectors(p, `.${p}stack-${level}`, `.-stack-${level}`);
+      return `${selectors.join(", ")} { z-index: var(--instui-component-view-stacking-${level}); }`;
     });
     // prettier-ignore
     return css`/**

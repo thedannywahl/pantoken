@@ -18,3 +18,5 @@ export const transition: Definition = defineUtility({
   name: "transition",
   css: (p) => transitionRaw.replaceAll(SENTINEL, p),
 });
+/** The transition utility as a standalone, header-wrapped stylesheet. */
+export const transitionCss: Definition["css"] = transition.css;

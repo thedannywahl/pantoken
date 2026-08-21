@@ -194,7 +194,7 @@ export default defineConfig({
       },
       "lint:js": {
         command:
-          'vp exec eslint "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
+          'vp exec eslint --no-error-on-unmatched-pattern "formats/components/src/{components,utilities,rules}/*.css" "formats/components/generated/*.css" "plugins/pantoken/*/generated/*.css" "renderers/web-components/src/**/*.css"',
         dependsOn: ["build:all"],
       },
       // ── Property-based testing ────────────────────────────────────────────────────────────────

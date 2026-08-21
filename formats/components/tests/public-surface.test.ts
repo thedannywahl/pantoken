@@ -100,6 +100,7 @@ const EXPECTED = [
   "toggleGroupCss",
   "tooltipCss",
   "trayCss",
+  "transitionCss",
   "treeBrowserCss",
   "truncateCss",
   "viewCss",

@@ -2,6 +2,7 @@
  * @component modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
  * @remarks On a native <dialog>, `showModal()` puts the modal in the top layer and its `::backdrop` becomes the mask, so no z-index is needed. An `<img>` alone in `.body` goes full-bleed.
+ * @element dialog
  * @modifier -size-sm — A narrow modal.
  * @modifier -size-lg — A wide modal.
  * @modifier -size-auto — Sized to content.
@@ -22,6 +23,12 @@
  *     <button class="pfx-button">Close</button>
  *   </div>
  * </dialog>
+ * @structure
+ * .pfx-modal {
+ *   .header {}
+ *   .body {}
+ *   .footer {}
+ * }
  * @related tray — A tray is the same dismissible overlay pattern, anchored to a screen edge.
  * @demo self:modal
  */

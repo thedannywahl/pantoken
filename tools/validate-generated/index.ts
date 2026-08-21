@@ -71,8 +71,6 @@ const GENERATOR_PKGS = [
   "renderers/vitepress",
   "ai/pantoken-ai",
   "plugins/pantoken/primitives",
-  "plugins/pantoken/stacking",
-  "plugins/pantoken/transition",
   "plugins/pantoken/visual-debug",
 ];
 for (const pkg of GENERATOR_PKGS) {
@@ -87,8 +85,6 @@ const FINALIZED_CSS_PKGS = [
   "formats/css",
   "plugins/pantoken/logos",
   "plugins/pantoken/primitives",
-  "plugins/pantoken/stacking",
-  "plugins/pantoken/transition",
   "plugins/pantoken/visual-debug",
   "renderers/angular",
   "renderers/astro",
@@ -211,11 +207,6 @@ const readFinalized = (pkg: string, file: string): string =>
 const SELF_CONTAINED = [
   ["formats/css", "style.css"],
   ["renderers/pendo", "global.css"],
-  // stacking/transition define their own `--instui-stacking-*`/`--instui-transition-*` tokens in the
-  // sheet's `:root` and reference only those, so nothing should dangle. (visual-debug is excluded — its
-  // outline colour is a `--pantoken-visual-debug-color` var with an inline fallback, defined nowhere.)
-  ["plugins/pantoken/stacking", "stacking.css"],
-  ["plugins/pantoken/transition", "transition.css"],
 ] as const;
 for (const [pkg, file] of SELF_CONTAINED) {
   for (const [stage, css] of [

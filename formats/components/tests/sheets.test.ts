@@ -278,10 +278,10 @@ test("tabs have a secondary variant; link has sizes, on-color, inline and unstyl
 
 test("list has sizes and solid/dashed delimiters; toggle-details, rating and breadcrumb have sizes", () => {
   const list = listItemCss({ prefix: "instui" });
-  expect(list).toContain(".instui-list.-delimiter-solid");
-  expect(list).toContain(".instui-list.-delimiter-dashed");
+  expect(list).toContain(":scope.-delimiter-solid > li + li");
+  expect(list).toContain(":scope.-delimiter-dashed > li + li");
   expect(list).toContain("var(--instui-component-list-item-delimiter-solid-border-color)");
-  expect(list).toContain(".instui-list.-ordered > li::marker");
+  expect(list).toContain(":scope.-ordered > li::marker");
   expect(toggleDetailsCss({ prefix: "instui" })).toContain(".instui-toggle-details.-size-lg");
   const rating = norm(ratingCss({ prefix: "instui" }));
   expect(rating).toContain(".instui-rating.-size-sm");

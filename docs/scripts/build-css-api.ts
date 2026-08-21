@@ -502,7 +502,7 @@ interface SidebarItem {
  * its group, so a `@memberOf` sub-component (e.g. `breadcrumb.link`) sits next to its parent (`breadcrumb`)
  * rather than nested under it — both land at the same VitePress sidebar depth. Re-nest each member under
  * its parent's `items` within the CSS section named `label`, using the `memberOf` already carried on
- * `entries`, and drop the now-redundant `<parent>.` prefix from its label (`breadcrumb.link` -> `link`).
+ * `entries`, and drop the now-redundant `<parent>.` prefix from its label (`breadcrumb.link` -\> `link`).
  * Parents/members not found in the same group are left flat (defensive: a stale or cross-group
  * `@memberOf` shouldn't break the build or drop a page from the nav).
  */

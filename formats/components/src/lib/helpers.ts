@@ -47,7 +47,7 @@ export const wrap = (name: string, prefix: string, rules: string): string =>
  * 2) namespaced bare modifier,
  * 3) bare modifier (or an override for legacy shapes).
  */
-export const utilityVariantSelectors = (
+const utilityVariantSelectors = (
   baseClass: string,
   namespace: string,
   modifier: string,

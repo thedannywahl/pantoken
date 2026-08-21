@@ -6,19 +6,18 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { utilityVariantSelectors } from "../../lib/helpers.ts";
+import { globalSelectors } from "../../lib/global-alias.ts";
 
 /** The mask utility — a global, dual copy of the `mask` component's own modifiers. */
 export const maskUtility: Definition = defineUtility({
   name: "maskglobal",
   css: (p) => {
-    const baseClass = `.${p}mask`;
-    const threeSelectors = (bareModifier: string) =>
-      utilityVariantSelectors(baseClass, "mask", bareModifier).join(", ");
+    const selectors = (name: string) =>
+      globalSelectors(p, `.${p}mask-${name}`, `.-mask-${name}`).join(", ");
 
-    const base = threeSelectors("-mask-overlay");
-    const fullscreen = threeSelectors("-mask-fullscreen");
-    const blur = threeSelectors("-mask-blur");
+    const base = selectors("overlay");
+    const fullscreen = selectors("fullscreen");
+    const blur = selectors("blur");
     // prettier-ignore
     return css`/**
  * @utility maskglobal

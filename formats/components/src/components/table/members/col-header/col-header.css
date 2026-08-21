@@ -4,7 +4,7 @@
  * @selector th
  * @summary A column-header cell (InstUI `Table.ColHeader`); the default `th` styling, overridden by `table.row-header` for `th[scope="row"]`.
  * @structure
- * .pfx-table {
+ * @component table {
  *   thead {
  *     th {}
  *   }

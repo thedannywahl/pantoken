@@ -1,5 +1,5 @@
 import { expect, test } from "vite-plus/test";
-import { transition } from "@pantoken/plugin-transition";
+import { customComponents } from "@pantoken/plugin-custom-components";
 import { InstUI, pantokenCss } from "../src/index.ts";
 
 test("pantokenCss emits the token stylesheet for a theme", () => {
@@ -9,8 +9,8 @@ test("pantokenCss emits the token stylesheet for a theme", () => {
 });
 
 test("plugins contribute CSS to the injected sheet", () => {
-  const css = pantokenCss({ plugins: [transition()] });
-  expect(css).toContain(".instui-transition");
+  const css = pantokenCss({ plugins: [customComponents()] });
+  expect(css).toContain(".instui-card");
 });
 
 test("InstUI is a Starlight plugin that injects a head style entry", () => {

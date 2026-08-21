@@ -7,7 +7,7 @@
  * @structure
  * @scope (.pfx-modal) {
  *   :scope > .footer {
- *     .pfx-button {}
+ *     @component button {}
  *   }
  * }
  */

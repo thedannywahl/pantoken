@@ -5,7 +5,7 @@
  * @summary A table row (InstUI `Table.Row`).
  * @remarks The parent `table`'s `-hover` and `-layout-stacked` modifiers restyle this member — see `table`'s own doc for those modifiers.
  * @structure
- * .pfx-table {
+ * @component table {
  *   tbody {
  *     tr {}
  *   }

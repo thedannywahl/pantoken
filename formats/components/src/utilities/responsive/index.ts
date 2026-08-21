@@ -2,11 +2,14 @@
  * The responsive-visibility utilities — the closest pure-CSS analogue to InstUI's `<Responsive>`:
  * viewport-width hide classes plus `-cq-` container-query variants.
  *
- * Bare-only (not dual-chained onto every component like spacing/gap/layout): the alias
- * post-processors (`withSizeAliases`/`deprecatedAliasPairs` in `lib/aliases.ts`) scan this record's
- * CSS body with unanchored regexes, and this utility's selector lists (breakpoint × infix ×
- * short/long/device name) are already large enough that adding ~70 more chained selectors per rule
+ * Not dual-chained onto every real component (unlike spacing/gap/layout): the alias post-processors
+ * (`withSizeAliases`/`deprecatedAliasPairs` in `lib/aliases.ts`) scan this record's CSS body with
+ * unanchored regexes, and this utility's selector lists (breakpoint × infix × short/long/device name)
+ * are already large enough that adding ~70 more chained selectors per rule (one per real component)
  * pushes the scan into unusable-slow territory (confirmed: multi-minute hang during implementation).
+ * Each rule does carry a bare `.-hidden-max-xs`-style dash modifier alongside the prefixed
+ * `.instui-hidden-max-xs` class (a flat, constant-factor addition, not a per-component fan-out), so the
+ * documented `@modifier` names resolve to a real selector.
  *
  * @module
  */
@@ -58,7 +61,7 @@ export const responsive: Definition = defineUtility({
       [["content-full-width"], contentFullWidth],
     ];
     const selectors = (prefix: string, infix: string, names: string[]): string =>
-      names.map((name) => `.${prefix}${infix}${name}`).join(", ");
+      names.map((name) => `.${prefix}${infix}${name}, .-${infix}${name}`).join(", ");
     const viewport = bp
       .map(
         ([names, w]) =>
