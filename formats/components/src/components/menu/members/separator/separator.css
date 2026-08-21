@@ -4,8 +4,8 @@
  * @selector .separator
  * @summary A divider rule between items (InstUI `Menu.Separator`).
  * @structure
- * @scope (.pfx-menu) {
- *   :scope > .separator {}
+ * @component menu {
+ *   .separator {}
  * }
  */
 @scope (.pfx-menu) {

@@ -5,8 +5,8 @@
  * @summary The actions row (InstUI `Modal.Footer`).
  * @remarks The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
  * @structure
- * @scope (.pfx-modal) {
- *   :scope > .footer {
+ * @component modal {
+ *   .footer {
  *     @component button {}
  *   }
  * }

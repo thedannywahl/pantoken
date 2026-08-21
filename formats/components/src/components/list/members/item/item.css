@@ -9,7 +9,7 @@
  * @modifier -delimiter-dashed — Separate items with a dashed rule. @affects list.item — Adds the delimiter rule between items.
  * @modifier -ordered — Ordered-list numbering. @affects list.item — Adds marker weight and indentation.
  * @structure
- * .pfx-list {
+ * @component list {
  *   li {}
  * }
  */

@@ -9,8 +9,8 @@
  * @part .item-info — Secondary info text within the item.
  * @a11y Mark a checked item with `aria-checked="true"` (same styling as `-active`).
  * @structure
- * @scope (.pfx-menu) {
- *   :scope > .item {
+ * @component menu {
+ *   .item {
  *     .item-info {}
  *   }
  * }

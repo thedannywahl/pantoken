@@ -9,8 +9,10 @@
  * @cssstate disabled
  * @remarks The parent `tabs`'s `-variant-secondary` modifier restyles this member into a rounded "folder" tab — see `tabs`'s own doc for that modifier.
  * @structure
- * @scope (.pfx-tabs) {
- *   .tab {}
+ * @component tabs {
+ *   .list {
+ *     .tab {}
+ *   }
  * }
  */
 @scope (.pfx-tabs) {

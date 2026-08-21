@@ -7,8 +7,10 @@
  * @modifier -selected — The selected date.
  * @modifier -outside-month — A day from the adjacent month (leading/trailing filler).
  * @structure
- * @scope (.pfx-calendar) {
- *   .day {}
+ * @component calendar {
+ *   .grid {
+ *     .day {}
+ *   }
  * }
  */
 @scope (.pfx-calendar) {
