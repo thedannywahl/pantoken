@@ -40,6 +40,17 @@ function realProperty(name: string): string {
 }
 
 /**
+ * A `<type>` reference for {@link BESPOKE_SYNTAX}, validated against `css-tree`'s registry at
+ * module load — the same fail-fast safety net as {@link realProperty}, for the terminal/generic
+ * types (`length`, `color`, `url`, `time`, …) that don't belong to any single real property.
+ */
+function typeReference(name: string): string {
+  if (!csstree.lexer.getType(name))
+    throw new Error(`css-tree has no registered type named "${name}"`);
+  return `<${name}>`;
+}
+
+/**
  * Non-standard, pantoken-authored property grammars `css-tree`/`mdn-data` don't know about —
  * matched by token-name substring, most-specific first, as raw CSS Value Definition Syntax
  * (CSS Values 4 §2.1: `|` `||` `&&` `[]` `?` `{a,b}` `#`) rather than a real property name. Only
@@ -52,7 +63,7 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // a single value, not the full composite grammar `elevation` (below) expects — checked first, since
   // `candidatePropertyCoverage`-style verification found `drop-shadow-blur-elevation1-dropshadow1:
   // 2px` fails the composite `elevation` grammar (it isn't a whole shadow list on its own).
-  [/drop-shadow-(blur|spread|x|y)-/u, "<length>"],
+  [/drop-shadow-(blur|spread|x|y)-/u, typeReference("length")],
   // These four resolve to a REAL CSS property's grammar (box-shadow/text-decoration-line/
   // outline-color/outline-style), so the string is computed via {@link propertyGrammar} — never
   // hand-typed — even though the token NAME pattern ("elevation", "focus-outline-*") doesn't match
@@ -70,41 +81,41 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // `--instui-icon-color-*` holds a special CSS colour value (`currentColor`, or a `var()`-based
   // gradient) — NOT an SVG glyph url like every other `--instui-icon-*` token — so it must be
   // checked before the generic icon-glyph rule right below it.
-  [/--instui-icon-color-/u, "<color>"],
+  [/--instui-icon-color-/u, typeReference("color")],
   // Icon glyph vars hold a url-encoded SVG; `<url>` (not the literal `url(<string>)` grammar) is
   // required — css-tree tokenizes an unquoted `url(...)` as a single `Url` AST node, not a
   // Function+String pair, so a literal `url(<string>)` definition mismatches a real glyph value.
-  [/glyph|instui-icon/u, "<url>"],
+  [/glyph|instui-icon/u, typeReference("url")],
   [/-filter\b/u, propertyGrammar("filter")],
   // Decomposed box-shadow PIECES (one component's `box-shadow-{blur,spread,x,y,color}` leaves) are
   // each a single value, not the full composite `box-shadow` shorthand — checked before the real
   // `box-shadow` property below (whose name pattern would otherwise also match these), since
   // `candidatePropertyCoverage` found `--instui-component-avatar-box-shadow-blur: 1rem` fails
   // `box-shadow`'s real grammar (it isn't a whole shadow value on its own).
-  [/box-shadow-(blur|spread|x|y)$/u, "<length>"],
-  [/box-shadow-color$/u, "<color>"],
+  [/box-shadow-(blur|spread|x|y)$/u, typeReference("length")],
+  [/box-shadow-color$/u, typeReference("color")],
   // These name suffixes describe a generic length/time CONCEPT, not a specific CSS property —
   // there's no real `size`/`spacing`/`offset`/`thickness`/`circumference` property to validate
   // against, so the grammar is asserted directly. `size`/`spacing` explicitly exclude the
   // `background-size`/`letter-spacing` suffixes, which ARE real properties (see below) with
   // different (non-single-length) grammars.
-  [/(?<!background)-size(?:-|\d|$)/u, "<length>"],
-  [/(?<!letter)-spacing/u, "<length>"],
-  [/offset$/u, "<length>"],
-  [/thickness$/u, "<length>"],
-  [/circumference$/u, "<length>"],
+  [/(?<!background)-size(?:-|\d|$)/u, typeReference("length")],
+  [/(?<!letter)-spacing/u, typeReference("length")],
+  [/offset$/u, typeReference("length")],
+  [/thickness$/u, typeReference("length")],
+  [/circumference$/u, typeReference("length")],
   // Named "timing" but holds a bare duration (e.g. `0.2s`), not a `transition-timing-function`
   // keyword/`cubic-bezier()` — asserting `<time>` validates the actual value shape shipped.
-  [/transition-timing|toggle-transition$/u, "<time>"],
+  [/transition-timing|toggle-transition$/u, typeReference("time")],
   // Breakpoint/byline-size lengths — anchored so `byline-title-margin` (a real `margin`, handled
   // below) isn't shadowed by a broader `byline-` match.
-  [/breakpoints-|byline-(large|medium|small)$/u, "<length>"],
+  [/breakpoints-|byline-(large|medium|small)$/u, typeReference("length")],
   // Decomposed progress-circle geometry PIECES (e.g. `progress-circle-large-transform: 4.5em`) are
   // each a bare length used to build a `transform` elsewhere, not a valid `transform` value on
   // their own — distinct from the real button `transform`/`text-transform` tokens below, whose
   // values are always the `none` keyword.
-  [/progress-circle-.*-transform$/u, "<length>"],
-  [/icon-illu-|img-image-blur-amount$/u, "<length>"],
+  [/progress-circle-.*-transform$/u, typeReference("length")],
+  [/icon-illu-|img-image-blur-amount$/u, typeReference("length")],
 ];
 
 /**
