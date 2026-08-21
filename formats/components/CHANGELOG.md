@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.7.1
+
+### Patch Changes
+
+- e6c0d3b: Embed each `@memberOf` member's ancestor path in its own `@structure` via `@component <parent> { … }`
+  (replacing the older `@scope (.pfx-<parent>) { … }` doc wrapper), and complete parent-side `@structure`
+  blocks (`breadcrumb`, `calendar`, `list`, `menu`, `modal`, `pagination`, `side-nav-bar`, `table`, `tabs`)
+  so every documented member appears in its parent's structure tree.
+- e6c0d3b: Add a new `drawer-layout` CSS component with `tray`, `handle`, and `content` members in `@pantoken/components`.
+
+  Extract DrawerLayout command and responsive-overlay wiring into a shared `initResponsiveOverlay()` behavior in `@pantoken/interactions` (named for the interaction it provides, not the component), and wire both the interactions entry point and the web component to import it.
+
+  Update interactions capability metadata so `drawer-layout` is marked as `both` (CSS + JS).
+
+- e6c0d3b: `known-syntax-issues.json` entries can now declare `supplemental` tokens to add to the IR alongside a patched value, for upstream bugs that squash two properties into one bad string (e.g. `--instui-component-text-content-quote-font-weight: "Medium Italic"` now also emits `--instui-component-text-content-quote-font-style: italic`). `@pantoken/utils`' token syntax validator also gains a real `font-style` property mapping. The component CSS/utilities and `base.css` that hand-authored a `500`/`italic` literal fallback for the broken token now reference it directly.
+- e6c0d3b: Fix `tray`'s slide-in transform to mirror automatically under an ancestor `[dir="rtl"]`, so the default (start) and `-placement-end` edges open from the correct physical side in right-to-left layouts without extra markup.
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+  - @pantoken/tokens@0.2.4
+  - @pantoken/utils@0.5.0
+
 ## 0.7.0
 
 ### Minor Changes

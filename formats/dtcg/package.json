@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/dtcg",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "W3C Design Tokens (DTCG) JSON export of the Instructure tokens — an interchange format for Style Dictionary, Figma, and other tools.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

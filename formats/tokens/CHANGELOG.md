@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.4
+
+### Patch Changes
+
+- e6c0d3b: The token generator no longer fails the build on a syntax mismatch covered by `formats/tokens/known-syntax-issues.json` — it patches the value (to the entry's `rewriteValue`, or the `unset` CSS-wide keyword by default) and warns instead. The ledger self-maintains on every generator run: entries that stop reproducing are dropped, and newly discovered mismatches are appended for review via the committed file's git diff.
+- e6c0d3b: `known-syntax-issues.json` entries can now declare `supplemental` tokens to add to the IR alongside a patched value, for upstream bugs that squash two properties into one bad string (e.g. `--instui-component-text-content-quote-font-weight: "Medium Italic"` now also emits `--instui-component-text-content-quote-font-style: italic`). `@pantoken/utils`' token syntax validator also gains a real `font-style` property mapping. The component CSS/utilities and `base.css` that hand-authored a `500`/`italic` literal fallback for the broken token now reference it directly.
+- e6c0d3b: Add `syntaxMismatches` to `@pantoken/utils/token-syntax`: validates a resolved token's value against the real CSS grammar for the property its name implies (via `css-tree`'s `mdn-data`-backed lexer), catching upstream data corruption a value-shape sniff alone would miss. It's a separate entry point (not the main `@pantoken/utils` barrel) because `css-tree` isn't Node-free — bundling it into a browser/SSR graph breaks its runtime JSON require. `@pantoken/tokens`' generator now fails the build on a mismatch (e.g. a `font-weight` token holding a non-numeric string) and warns on a token name with no modeled CSS property.
+
 ## 0.2.3
 
 ### Patch Changes

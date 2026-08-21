@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.15
+
+### Patch Changes
+
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+  - @pantoken/tokens@0.2.4
+  - @pantoken/css@0.3.5
+
 ## 0.1.14
 
 ### Patch Changes
