@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { inPlaceEditCss } from "../../src/index.ts";
-import { inPlaceEdit } from "../../src/components/in-place-edit.ts";
+import { inPlaceEdit } from "../../src/components/in-place-edit/index.ts";
 import { validate } from "../_validate.ts";
 
 test("in-place-edit: emits exactly one well-formed cssdoc record with no token drift", () => {

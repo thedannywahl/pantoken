@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { radioCss } from "../../src/index.ts";
-import { radio } from "../../src/components/radio.ts";
+import { radio } from "../../src/components/radio/index.ts";
 import { validate } from "../_validate.ts";
 
 test("radio: emits exactly one well-formed cssdoc record with no token drift", () => {

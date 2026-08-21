@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { progressCss } from "../../src/index.ts";
-import { progress } from "../../src/components/progress.ts";
+import { progress } from "../../src/components/progress/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

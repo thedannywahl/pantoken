@@ -1,0 +1,207 @@
+/**
+ * @component progress
+ * @summary A determinate progress bar with a coloured meter, sizes, and an optional value label.
+ * @remarks `.value` is a sibling of `.bar`, both children of the root — mirroring how progress-circle nests its own `.value` part. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), animating `.bar` as a sliding segment and hiding `.value` since there's no meaningful number to show. `<meter>` has no indeterminate state, so it's unaffected.
+ * @element progress, meter
+ * @modifier -color-brand — Brand meter colour.
+ * @modifier -color-info — Informational meter colour.
+ * @modifier -color-success — Success meter colour.
+ * @modifier -color-warning — Warning meter colour.
+ * @modifier -color-danger — Danger meter colour.
+ * @modifier -color-inverse — For dark backgrounds.
+ * @modifier -color-primary-inverse — On-dark (primary inverse) meter colour.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — Medium (default).
+ * @modifier -size-lg — Large.
+ * @modifier -should-animate — @interaction Animate meter changes over half a second.
+ * @modifier -render-value-inside — Renders `.value` inside the track, aligned to its start, instead of beside it; style it for legibility over the meter colour.
+ * @modifier -meter-color-brand — @deprecated {@link -color-brand}
+ * @modifier -meter-color-info — @deprecated {@link -color-info}
+ * @modifier -meter-color-success — @deprecated {@link -color-success}
+ * @modifier -meter-color-warning — @deprecated {@link -color-warning}
+ * @modifier -meter-color-alert — @deprecated {@link -color-warning}
+ * @modifier -meter-color-danger — @deprecated {@link -color-danger}
+ * @part .bar — The filled meter bar.
+ * @part .value — The value text beside the bar.
+ * @pseudo ::after — Draws the track's bottom rule as its own layer over the meter, so the full border and the bottom border stay independent across themes.
+ * @pseudo :indeterminate — Custom, not part of InstUI. Applies only to a native `<progress>` missing its `value` attribute; animates `.bar` as a sliding segment and hides `.value`.
+ * @cssproperty --value <number> — The current progress value.
+ * @cssproperty --value-now <number> — @alias Alias for `--value`.
+ * @cssproperty --min <number> — The minimum meter value (default `0`).
+ * @cssproperty --max <number> — The maximum progress value (default `100`).
+ * @cssproperty --value-max <number> — @alias {@link --max} The maximum progress value (default `100`).
+ * @accessibility Use native `<progress>` for a zero-based task completion range and `<meter>` when the minimum is non-zero. Give either element an accessible name by nesting it in `<label>` or associating a separate `<label>` through matching `for` and `id` values.
+ * @compat Scopes the meter part rules with the `@scope` at-rule; browsers without `@scope` support ignore those scoped rules.
+ * @example
+ * ### Nested label
+ * ```html
+ * <label>
+ *   Uploading Document: <progress class="pfx-progress -color-brand" value="70">70%</progress>
+ * </label>
+ * ```
+ * ### External label
+ * ```html
+ * <label for="storage-used">Storage used</label>
+ * <meter id="storage-used" class="pfx-progress -color-warning" min="20" value="40" max="60">50%</meter>
+ * ```
+ * @structure
+ * @variant nested-label {
+ *   label {
+ *     .pfx-progress {
+ *       .bar {}
+ *       .value {}
+ *     }
+ *   }
+ * }
+ * @variant external-label {
+ *   label {}
+ *   .pfx-progress {
+ *     .bar {}
+ *     .value {}
+ *   }
+ * }
+ * @related progress-circle — The circular form of the same determinate progress.
+ * @stable
+ * @sealed
+ */
+/* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
+   --value) reads as loading rather than rendering a broken 0%-width bar. */
+@keyframes pantoken-progress-indeterminate {
+  0% {
+    left: -40%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+.pfx-progress {
+  --value: var(--value-now);
+  --min: 0;
+  --max: var(--value-max);
+  position: relative;
+  display: block;
+  width: 100%;
+  height: var(--instui-component-progress-bar-medium-height);
+  background: var(--instui-component-progress-bar-track-color);
+  /* The full border (InstUI trackLayout.border) frames the track on all sides. */
+  border: var(--instui-component-progress-bar-track-bottom-border-width) solid
+    var(--instui-component-progress-bar-border-color);
+  border-radius: var(--instui-component-progress-bar-border-radius);
+  overflow: hidden;
+}
+
+/* InstUI layers a distinct bottom rule (trackBottomBorderColor) over the meter, separate from the full
+   border. In legacy Canvas the full border is transparent so only this rule shows; in the newer themes
+   the full border shows and this rule is transparent. A pseudo keeps both layers independent. */
+.pfx-progress::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--instui-component-progress-bar-track-bottom-border-width);
+  background: var(--instui-component-progress-bar-track-bottom-border-color);
+  pointer-events: none;
+}
+
+.pfx-progress.-size-xs {
+  height: var(--instui-component-progress-bar-x-small-height);
+}
+
+.pfx-progress.-size-sm {
+  height: var(--instui-component-progress-bar-small-height);
+}
+
+.pfx-progress.-size-md {
+  height: var(--instui-component-progress-bar-medium-height);
+}
+
+.pfx-progress.-size-lg {
+  height: var(--instui-component-progress-bar-large-height);
+}
+
+@scope (.pfx-progress) {
+  :scope > .bar {
+    height: 100%;
+    width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
+    background: var(--instui-color-background-brand);
+    border-radius: var(--instui-component-progress-bar-border-radius);
+  }
+
+  :scope > .value {
+    padding: 0 var(--instui-component-progress-bar-value-padding);
+    color: var(--instui-component-progress-bar-text-color);
+    font-family: var(--instui-component-progress-bar-font-family);
+    font-size: var(--instui-component-progress-bar-medium-value-font-size);
+    font-weight: var(--instui-component-progress-bar-font-weight);
+    line-height: var(--instui-component-progress-bar-line-height);
+  }
+
+  :scope.-color-inverse > .value,
+  :scope > .value.-color-inverse {
+    color: var(--instui-component-progress-bar-text-color-inverse);
+  }
+
+  /* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
+  :scope:indeterminate > .bar {
+    position: absolute;
+    width: 40%;
+    animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
+  }
+
+  :scope:indeterminate > .value {
+    visibility: hidden;
+  }
+}
+
+.pfx-progress.-color-brand .bar {
+  background: var(--instui-color-background-brand);
+}
+
+.pfx-progress.-color-info .bar {
+  background: var(--instui-color-background-info);
+}
+
+.pfx-progress.-color-success .bar {
+  background: var(--instui-color-background-success);
+}
+
+.pfx-progress.-color-warning .bar {
+  background: var(--instui-color-background-warning);
+}
+
+.pfx-progress.-color-danger .bar {
+  background: var(--instui-color-background-error);
+}
+
+/* color="primary-inverse": the on-dark scheme. It's a distinct axis from meterColor and overrides it —
+   InstUI's inverse meter tokens all collapse to background-base — so it comes AFTER the meter rules and
+   wins at equal specificity. Pair it with a dark surface. */
+.pfx-progress.-color-primary-inverse {
+  background: var(--instui-component-progress-bar-track-color-inverse);
+  border-color: var(--instui-component-progress-bar-border-color-inverse);
+  color: var(--instui-component-progress-bar-text-color-inverse);
+}
+
+.pfx-progress.-color-primary-inverse::after {
+  background: var(--instui-component-progress-bar-track-bottom-border-color-inverse);
+}
+
+.pfx-progress.-color-primary-inverse .bar {
+  background: var(--instui-component-progress-bar-meter-color-brand-inverse);
+}
+
+.pfx-progress.-render-value-inside .value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Mount/value transition — the interactions layer toggles `-should-animate` on value changes. */
+.pfx-progress.-should-animate > .bar {
+  transition: all 0.5s;
+}

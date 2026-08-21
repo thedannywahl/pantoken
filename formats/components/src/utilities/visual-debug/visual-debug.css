@@ -1,0 +1,18 @@
+/**
+ * @utility visual-debug
+ * @selector .-with-visual-debug
+ * @global
+ * @summary A layout-debugging outline: compound `.-with-visual-debug` onto any element to outline the box and its immediate children, so a layout's structure is visible at a glance.
+ * @cssproperty --pantoken-visual-debug-color — The outline colour (default a bright magenta); retint it to change every debug outline.
+ * @example
+ * <div class="instui-view -with-visual-debug">
+ *   <span>Outlined child.</span>
+ * </div>
+ */
+.-with-visual-debug {
+  outline: 0.0625rem solid var(--pantoken-visual-debug-color, #f42272);
+}
+
+.-with-visual-debug > * {
+  outline: 0.0625rem dashed var(--pantoken-visual-debug-color, #f42272);
+}

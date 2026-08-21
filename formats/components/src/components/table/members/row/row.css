@@ -1,0 +1,41 @@
+/**
+ * @component table.row
+ * @memberOf table
+ * @selector tr
+ * @summary A table row (InstUI `Table.Row`).
+ * @remarks The parent `table`'s `-hover` and `-layout-stacked` modifiers restyle this member — see `table`'s own doc for those modifiers.
+ * @structure
+ * @component table {
+ *   tbody {
+ *     tr {}
+ *   }
+ * }
+ */
+/* The row separator is a single border on the ROW (InstUI puts it there), so it's uniform across the
+ row-header and data cells — no mismatched per-cell borders. */
+.pfx-table tbody tr {
+  border-bottom: var(--instui-border-width-sm) solid var(--instui-component-table-row-border-color);
+}
+
+/* hover="true" (InstUI's opt-in `hover` prop): every row reserves a transparent 3px inline border and
+ colours it with the brand hover-border on hover — a vertical bar on each edge, NOT a full box, and no
+ layout shift. Only rows in a `.-hover` table react. */
+.pfx-table.-hover tbody tr {
+  border-inline: 0.1875rem solid transparent;
+}
+
+.pfx-table.-hover tbody tr:hover {
+  border-inline-color: var(--instui-component-table-row-hover-border-color);
+}
+
+/* layout="stacked": each row becomes a card; InstUI's stacked row is just padding + the single
+ bottom-border separator (the row's existing border-bottom carries over) — NOT a full card box. */
+.pfx-table.-layout-stacked tr {
+  display: block;
+  width: auto;
+}
+
+.pfx-table.-layout-stacked tbody tr {
+  padding: var(--instui-component-table-row-padding-vertical)
+    var(--instui-component-table-row-padding-horizontal);
+}

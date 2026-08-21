@@ -2,9 +2,10 @@
  * Per-record alias post-processors, applied inside each `Definition.rules()` (so an alias documents on
  * its OWN component's page, not whichever record happens to be last in the bundle):
  * - {@link withSizeAliases} appends a long-spelled twin (`.-size-small`) for every short size class.
- * - {@link withAliases} appends deprecated-alias twins discovered from the record's own doc comment
- *   ({@link deprecatedAliasPairs}) — each modifier whose `@deprecated` note carries a `{@link -canonical}`
- *   gets a rule cloned from that canonical modifier.
+ * - {@link withAliases} appends alias twins discovered from the record's own doc comment
+ *   ({@link deprecatedAliasPairs}) — each modifier whose note carries `@alias {@link -canonical}` (a
+ *   pure rename) or `@deprecated {@link -canonical}` (a true deprecation that still works) gets a rule
+ *   cloned from that canonical modifier.
  *
  * NOTE: this module stays free of `@cssdoc/core` (the postcss-based parser) ON PURPOSE — it runs at
  * record-definition time, so importing it would bake postcss (and its `node:module`/`createRequire`
@@ -20,13 +21,14 @@ export interface AliasPair {
   canonical: string;
 }
 
-/** `@modifier -alias — @deprecated {@link -canonical}` (em-dash or hyphen separator; optional leading dot). */
+/** `@modifier -alias — @alias|@deprecated {@link -canonical}` (em-dash/hyphen separator; optional leading dot). */
 const DEPRECATED_ALIAS =
-  /@modifier\s+(-[\w-]+)\s+[—-]\s+@deprecated\s+\{@link\s+\.?(-[\w-]+)\s*\}/gu;
+  /@modifier\s+(-[\w-]+)\s+[—-]\s+@(?:alias|deprecated)\s+\{@link\s+\.?(-[\w-]+)\s*\}/gu;
 
 /**
- * The deprecated-alias pairs in a record, read from its own doc comment (in authored order): every
- * `@modifier` whose note is `@deprecated {@link -canonical}`. Returns `[]` for records with none.
+ * The alias pairs in a record, read from its own doc comment (in authored order): every `@modifier`
+ * whose note is `@alias {@link -canonical}` or `@deprecated {@link -canonical}`. Returns `[]` for
+ * records with none.
  */
 export function deprecatedAliasPairs(rawRecord: string): AliasPair[] {
   return [...rawRecord.matchAll(DEPRECATED_ALIAS)].map((m) => ({ alias: m[1], canonical: m[2] }));
@@ -91,9 +93,9 @@ export function withSizeAliasDocs(comment: string, body: string): string {
 }
 
 /**
- * Append deprecated-alias twins for a record, given its {@link AliasPair}s (from
- * {@link deprecatedAliasPairs}): every deprecated modifier that `{@link}`s a canonical one is a legacy
- * alias, so we clone each rule using the canonical modifier token under the alias name. Matching by
+ * Append alias twins for a record, given its {@link AliasPair}s (from
+ * {@link deprecatedAliasPairs}): every `@alias`/`@deprecated` modifier that `{@link}`s a canonical one
+ * is a legacy alias, so we clone each rule using the canonical modifier token under the alias name. Matching by
  * modifier token (not the full component selector) keeps it base-class-agnostic — e.g.
  * Form-Field-Messages' record name is plural but its class is singular.
  */

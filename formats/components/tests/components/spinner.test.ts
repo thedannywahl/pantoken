@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { spinnerCss } from "../../src/index.ts";
-import { spinner } from "../../src/components/spinner.ts";
+import { spinner } from "../../src/components/spinner/index.ts";
 import { validate } from "../_validate.ts";
 
 test("spinner: emits exactly one well-formed cssdoc record with no token drift", () => {

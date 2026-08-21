@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
-import { modalCss } from "../../src/index.ts";
-import { modal } from "../../src/components/modal.ts";
+import { modalBodyCss, modalCss } from "../../src/index.ts";
+import { modal } from "../../src/components/modal/index.ts";
 import { norm } from "../_css.ts";
 import { validate } from "../_validate.ts";
 
@@ -14,7 +14,9 @@ test("modal has sizes, a compact density, and an inverse scheme", () => {
   expect(css).toContain(".instui-modal.-size-lg");
   expect(css).toContain(".instui-modal.-size-auto");
   expect(css).toContain(".instui-modal.-size-fullscreen");
-  expect(css).toContain("var(--instui-component-modal-body-padding-compact)");
+  expect(norm(modalBodyCss({ prefix: "instui" }))).toContain(
+    "var(--instui-component-modal-body-padding-compact)",
+  );
   expect(css).toContain(".instui-modal.-color-inverse");
   expect(css).toContain("var(--instui-component-modal-inverse-background-color)");
   // Modals float, so they carry elevation (from the elevation plugin, like alert's shadow).

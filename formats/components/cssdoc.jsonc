@@ -14,5 +14,16 @@
   "extends": ["../../cssdoc.jsonc"],
   "modifierConvention": "rscss",
   "inlineComments": "ignore",
-  "providers": [{ "path": "./src/generated/_records.css" }]
+  "providers": [{ "path": "./src/generated/_records.css" }],
+  "rules": {
+    // cssdoc 0.13.3 taught `name-not-in-css` to also check the `@affects <component>.<target>` name
+    // against that component's own CSS, but it resolves `<component>` as a bare record name — it
+    // doesn't handle our `@memberOf`-nested naming convention (e.g. `@affects table.row` needs the
+    // "table.row" record, not "table"'s own selectors). A handful of modifiers are documented on a
+    // PARENT record (`table`'s `-hover`, `tabs`'s `-variant-secondary`, `modal`'s `-density-compact`,
+    // `side-nav-bar`'s `-icon-*`/`.label`) via `@affects <member>` prose, but their real selector lives
+    // in that MEMBER's own file/record, so this rule still can't see them. Same precedent as
+    // `renderers/pendo/cssdoc.jsonc`.
+    "name-not-in-css": "off"
+  }
 }

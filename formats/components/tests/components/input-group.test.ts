@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { inputGroupCss } from "../../src/index.ts";
-import { inputGroup } from "../../src/components/input-group.ts";
+import { inputGroup } from "../../src/components/input-group/index.ts";
 import { validate } from "../_validate.ts";
 
 test("input-group: emits exactly one well-formed cssdoc record with no token drift", () => {

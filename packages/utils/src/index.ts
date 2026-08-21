@@ -361,20 +361,33 @@ export interface UtilityOptions {
    * falsy value (`null`/`undefined`/`""`) drops the prefix entirely (`.bg-…`).
    */
   prefix?: string | null;
+  /**
+   * Component base-class names (e.g. `"button"`, `"view"`) to also emit a chained alias for, per
+   * rule — `.<prefix>-bg-danger` (bare) plus `.<prefix>-button.-bg-danger` (chained), so the same
+   * modifier works standalone or attached to any component. Omit for bare-only output (unchanged
+   * behavior).
+   */
+  chainTargets?: readonly string[];
 }
 
-/** The semantic colour token names (without the `--instui-color-<family>-` prefix) per family. */
+/** One semantic colour family entry: a bare name (resolved against `--instui-color-<family>-<name>`)
+ *  or an explicit `[name, value]` pair — the second element is `var()`-wrapped if it's a `--custom-prop`
+ *  name, or used verbatim otherwise (a `light-dark(…)` expression, a raw keyword like `transparent`). */
+export type ColorUtilityEntry = string | readonly [name: string, value: string];
+
+/** The semantic colour token names (or explicit `[name, token]` pairs) per family. */
 export interface ColorUtilityNames {
-  background: readonly string[];
-  text: readonly string[];
-  stroke: readonly string[];
+  background: readonly ColorUtilityEntry[];
+  text: readonly ColorUtilityEntry[];
+  stroke: readonly ColorUtilityEntry[];
 }
 
 /**
  * Build the semantic-colour utility stylesheet: `.<prefix>-bg-<name>` (background),
- * `.<prefix>-fg-<name>` (text colour), `.<prefix>-border-<name>` (border colour), one per semantic
+ * `.<prefix>-text-<name>` (text colour), `.<prefix>-border-<name>` (border colour), one per semantic
  * colour token. Overrides are therefore only ever token-valid — no primitives, no arbitrary hex. Pass
- * the token names per family (e.g. from `@pantoken/tokens`).
+ * the token names per family (e.g. from `@pantoken/tokens`), or an explicit `[name, token]` pair to
+ * source a name from a different token than the family's own scale.
  *
  * @param names - {@link ColorUtilityNames}.
  * @param options - {@link UtilityOptions}.
@@ -385,13 +398,33 @@ export interface ColorUtilityNames {
 export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOptions = {}): string {
   const prefix = options.prefix || "";
   const p = prefix ? `${prefix}-` : "";
-  const emit = (family: string, util: string, prop: string, list: readonly string[]): string =>
+  const chainTargets = options.chainTargets ?? [];
+  const emit = (
+    family: string,
+    util: string,
+    prop: string,
+    list: readonly ColorUtilityEntry[],
+  ): string =>
     list
-      .map((n) => `.${p}${util}-${n} { ${prop}: var(--instui-color-${family}-${n}); }`)
+      .map((entry) => {
+        const isPair = (e: ColorUtilityEntry): e is readonly [string, string] =>
+          typeof e !== "string";
+        const [n, token] = isPair(entry) ? entry : [entry, `--instui-color-${family}-${entry}`];
+        // A `--custom-prop` name gets wrapped in `var()`; anything else (a `light-dark(…)` expression,
+        // a raw keyword like `transparent`) is used verbatim — lets a `[name, value]` pair source a
+        // computed value, not just a single token reference.
+        const value = token.startsWith("--") ? `var(${token})` : token;
+        const modifier = `.-${util}-${n}`;
+        const selectors = [
+          `.${p}${util}-${n}`,
+          ...chainTargets.map((target) => `.${p}${target}${modifier}`),
+        ];
+        return `${selectors.join(", ")} { ${prop}: ${value}; }`;
+      })
       .join("\n");
   const rules = [
     emit("background", "bg", "background", names.background),
-    emit("text", "fg", "color", names.text),
+    emit("text", "text", "color", names.text),
     emit("stroke", "border", "border-color", names.stroke),
   ].join("\n");
   return `/* InstUI semantic colour utilities (@pantoken/utils) — prefix: ${prefix} */\n${rules}\n`;
@@ -426,11 +459,17 @@ export function tokenUtilitiesCss(
 ): string {
   const prefix = options.prefix || "";
   const p = prefix ? `${prefix}-` : "";
+  const chainTargets = options.chainTargets ?? [];
   const rules = groups
     .flatMap(({ property, tokens }) =>
       tokens.map((token) => {
         const name = token.replace(/^--instui-/, "");
-        return `.${p}${name} { ${property}: var(${token}); }`;
+        const modifier = `.-${name}`;
+        const selectors = [
+          `.${p}${name}`,
+          ...chainTargets.map((target) => `.${p}${target}${modifier}`),
+        ];
+        return `${selectors.join(", ")} { ${property}: var(${token}); }`;
       }),
     )
     .join("\n");

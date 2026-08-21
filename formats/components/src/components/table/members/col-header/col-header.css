@@ -1,0 +1,26 @@
+/**
+ * @component table.col-header
+ * @memberOf table
+ * @selector th
+ * @summary A column-header cell (InstUI `Table.ColHeader`); the default `th` styling, overridden by `table.row-header` for `th[scope="row"]`.
+ * @structure
+ * @component table {
+ *   thead {
+ *     th {}
+ *   }
+ * }
+ */
+.pfx-table th {
+  text-align: start;
+  background: var(--instui-component-table-col-header-background);
+  color: var(--instui-component-table-col-header-color);
+  font-weight: var(--instui-component-table-head-font-weight);
+  line-height: var(--instui-component-table-col-header-line-height);
+  padding: var(--instui-component-table-col-header-padding-vertical)
+    var(--instui-component-table-col-header-padding-horizontal);
+}
+
+/* The column-header underline lives on the head only — a distinct 2px rule under the header row. */
+.pfx-table thead th {
+  border-bottom: var(--instui-border-width-md) solid var(--instui-component-table-row-border-color);
+}

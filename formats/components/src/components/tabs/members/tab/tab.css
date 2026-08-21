@@ -1,0 +1,89 @@
+/**
+ * @component tabs.tab
+ * @memberOf tabs
+ * @selector .tab
+ * @summary A single tab button (InstUI `Tabs.Tab`, configured via the parent `Tabs`'s tab list); `-selected` marks the active one.
+ * @modifier -selected — The active tab; same styling as `[aria-selected="true"]`.
+ * @modifier -disabled — Non-interactive; same styling as `[aria-disabled="true"]`/`:disabled`.
+ * @cssstate selected
+ * @cssstate disabled
+ * @remarks The parent `tabs`'s `-variant-secondary` modifier restyles this member into a rounded "folder" tab — see `tabs`'s own doc for that modifier.
+ * @structure
+ * @scope (.pfx-tabs) {
+ *   .tab {}
+ * }
+ */
+@scope (.pfx-tabs) {
+  .tab {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    color: var(--instui-component-tabs-tab-default-text-color);
+    font-family: var(--instui-component-tabs-tab-font-family);
+    font-size: var(--instui-component-tabs-tab-font-size);
+    font-weight: var(--instui-component-tabs-tab-font-weight);
+    line-height: 1;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    /* Layout-stable underline: always 0.25rem, coloured only when hovered or selected. */
+    border-bottom: 0.25rem solid transparent;
+    margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
+  }
+
+  .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not(
+      [aria-disabled="true"]
+    ) {
+    border-bottom-color: var(--instui-component-tabs-tab-default-hover-border-color);
+  }
+
+  .tab.-selected,
+  .tab[aria-selected="true"] {
+    border-bottom-color: var(--instui-component-tabs-tab-default-selected-border-color);
+  }
+
+  .tab.-disabled,
+  .tab[aria-disabled="true"],
+  .tab:disabled {
+    opacity: 0.5;
+    font-weight: normal;
+    cursor: default;
+  }
+
+  /* Secondary variant (the parent tabs's `-variant-secondary`): rounded "folder" tabs; the selected
+   tab's bottom border matches the panel background so it visually connects into the panel below. */
+  :scope.-variant-secondary .tab {
+    padding: 0.75rem 1rem;
+    line-height: var(--instui-component-tabs-tab-line-height);
+    color: var(--instui-component-tabs-tab-secondary-text-color);
+    margin-inline-end: 0.2em;
+    margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
+    border: var(--instui-component-tabs-panel-border-width) solid transparent;
+    border-radius: 0.1875rem 0.1875rem 0 0;
+  }
+
+  :scope.-variant-secondary .tab:first-of-type {
+    margin-inline-start: 0;
+  }
+
+  :scope.-variant-secondary
+    .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not(
+      [aria-disabled="true"]
+    ) {
+    background: var(--instui-component-tabs-tab-secondary-selected-background);
+    border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
+    color: var(--instui-component-tabs-tab-secondary-selected-text-color);
+  }
+
+  :scope.-variant-secondary .tab.-selected,
+  :scope.-variant-secondary .tab[aria-selected="true"] {
+    background: var(--instui-component-tabs-tab-secondary-selected-background);
+    border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
+    border-bottom-color: var(--instui-component-tabs-tab-secondary-selected-background);
+    color: var(--instui-component-tabs-tab-secondary-selected-text-color);
+  }
+}

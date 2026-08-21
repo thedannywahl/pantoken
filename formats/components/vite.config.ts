@@ -28,6 +28,19 @@ const componentEntries = existsSync(generatedDir)
     )
   : {};
 
+// The individually-exported utilities (`./spacing.css`, `./mask.css`, …) — written by
+// `scripts/build-entries.ts` into `generated/utilities/`, packed under a `utilities/` entry key so
+// they land at `dist/utilities/<name>.css`, matching `package.json`'s `exports` map.
+const utilitiesDir = join(generatedDir, "utilities");
+const utilityEntries = existsSync(utilitiesDir)
+  ? Object.fromEntries(
+      readdirSync(utilitiesDir)
+        .filter((f) => f.endsWith(".css"))
+        .map((f) => f.replace(/\.css$/u, ""))
+        .map((name) => [`utilities/${name}`, `generated/utilities/${name}.css`]),
+    )
+  : {};
+
 export default extendBase({
   pack: {
     entry: {
@@ -36,6 +49,7 @@ export default extendBase({
       components: "generated/components.css",
       "component-icons": "generated/component-icons.css",
       ...componentEntries,
+      ...utilityEntries,
       fonts: "generated/fonts.css",
       prose: "generated/prose.css",
       select: "generated/select.css",

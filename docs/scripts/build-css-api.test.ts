@@ -183,12 +183,12 @@ describe("indexLocalVars", () => {
 });
 
 describe("pluginRecords", () => {
-  test("returns the seven CSS-emitting plugin records", () => {
+  test("returns the five CSS-emitting plugin records", () => {
     const records = pluginRecords();
-    expect(records).toHaveLength(7);
-    expect(records.map((r) => r.sheet)).toContain("stacking.css");
-    expect(records.find((r) => r.sheet === "stacking.css")?.import).toBe(
-      "@pantoken/plugin-stacking/stacking.css",
+    expect(records).toHaveLength(5);
+    expect(records.map((r) => r.sheet)).toContain("visual-debug.css");
+    expect(records.find((r) => r.sheet === "visual-debug.css")?.import).toBe(
+      "@pantoken/plugin-visual-debug/visual-debug.css",
     );
     expect(records.map((r) => r.sheet)).toContain("custom-components.css");
     expect(records.find((r) => r.sheet === "custom-components.css")?.import).toBe(

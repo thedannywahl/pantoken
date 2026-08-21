@@ -1,0 +1,266 @@
+/**
+ * @component avatar
+ * @summary A user avatar showing initials or an image, circular by default.
+ * @remarks By default the palette colour tints the initials on a transparent surface; `-has-inverse-color` fills the surface with the colour and puts the initials on-colour. The `-color-ai` variant always fills with the violet→sea gradient. For a full display name, put it in the content (so it stays in the accessibility tree) and add `data-initials="XX"` for the compact visual — the real text is what a screen reader announces. Without `data-initials`, overflowing content just hard-clips (no ellipsis); wrap it in `.name` for a precise single-leading-letter clip instead, or split it into `.first-name`/`.last-name` for two clipped letters (either half can be omitted and the other stays centred).
+ * @modifier -color-ai — AI-accent palette colour.
+ * @modifier -color-ash — Ash palette colour.
+ * @modifier -color-blue — Blue palette colour.
+ * @modifier -color-green — Green palette colour.
+ * @modifier -color-grey — Grey palette colour.
+ * @modifier -color-orange — Orange palette colour.
+ * @modifier -color-red — Red palette colour.
+ * @modifier -has-inverse-color — Use the inverse (on-dark) text colour.
+ * @modifier -shape-rectangle — Square (rectangular) shape instead of a circle.
+ * @modifier -show-border-always — Force the border ring on, even over an image or an inverse fill.
+ * @modifier -show-border-never — Force the border ring off.
+ * @modifier -size-2xs — Two sizes smaller.
+ * @modifier -size-xs — Extra small.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — Medium (the default).
+ * @modifier -size-lg — Large.
+ * @modifier -size-xl — Extra large.
+ * @modifier -size-2xl — Two sizes larger.
+ * @modifier -color-accent1 — @deprecated {@link -color-blue}
+ * @modifier -color-accent2 — @deprecated {@link -color-green}
+ * @modifier -color-accent3 — @deprecated {@link -color-red}
+ * @modifier -color-accent4 — @deprecated {@link -color-orange}
+ * @modifier -color-accent5 — @deprecated {@link -color-ash}
+ * @modifier -color-accent6 — @deprecated {@link -color-grey}
+ * @modifier -show-border — @alias {@link -show-border-always}
+ * @part .name — Optional: wrap the full name to clip it to a single leading letter without data-initials or JS.
+ * @part .first-name — Optional (pairs with .last-name): wraps the given name, clipped to its leading letter.
+ * @part .last-name — Optional (pairs with .first-name): wraps the family name, clipped to its leading letter.
+ * @a11y Give an image avatar a meaningful `alt` (the person's name), not a generic "avatar"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name.
+ * @example
+ * ```html
+ * <span class="pfx-avatar instui-me-sm">LH</span>
+ * <span class="pfx-avatar -color-ai instui-me-sm">AI</span>
+ * <span class="pfx-avatar instui-me-sm" data-initials="NV">Dr. Nguyen Van Thoc</span>
+ * <span class="pfx-avatar"><span class="name">Miguel Sanchez</span></span>
+ * <span class="pfx-avatar"><span class="first-name">Miguel</span> <span class="last-name">Sanchez</span></span>
+ * ```
+ * @structure
+ * The avatar shows one of: an <img>, bare/data-initials text, a .name wrap, or a .first-name/.last-name pair.
+ * .pfx-avatar {
+ *   img:optional {}
+ *   .name:optional {}
+ *   .first-name:optional {}
+ *   .last-name:optional {}
+ * }
+ * @related byline — Can host an avatar as its leading hero figure.
+ * @sealed
+ * @stable
+ */
+.pfx-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--instui-component-avatar-size-md);
+  height: var(--instui-component-avatar-size-md);
+  border-radius: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: var(--instui-component-avatar-background-color);
+  color: var(--instui-component-avatar-blue-text-color);
+  border: var(--instui-component-avatar-border-width-sm) solid transparent;
+  font-family: var(--instui-component-avatar-font-family);
+  font-size: var(--instui-component-avatar-font-size-md);
+  font-weight: var(--instui-component-avatar-font-weight);
+}
+
+.pfx-avatar.-shape-rectangle {
+  border-radius: var(--instui-component-avatar-rectangle-radius);
+}
+
+/* showBorder (unset/auto): only an avatar without an image gets the default border ring. */
+.pfx-avatar:not(:has(> img)) {
+  border-color: var(--instui-component-avatar-border-color);
+}
+
+.pfx-avatar.-size-sm {
+  width: var(--instui-component-avatar-size-sm);
+  height: var(--instui-component-avatar-size-sm);
+  font-size: var(--instui-component-avatar-font-size-sm);
+}
+
+.pfx-avatar.-size-2xs {
+  width: var(--instui-component-avatar-size2xs);
+  height: var(--instui-component-avatar-size2xs);
+  font-size: var(--instui-component-avatar-font-size2xs);
+}
+
+.pfx-avatar.-size-xs {
+  width: var(--instui-component-avatar-size-xs);
+  height: var(--instui-component-avatar-size-xs);
+  font-size: var(--instui-component-avatar-font-size-xs);
+}
+
+.pfx-avatar.-size-lg {
+  width: var(--instui-component-avatar-size-lg);
+  height: var(--instui-component-avatar-size-lg);
+  font-size: var(--instui-component-avatar-font-size-lg);
+}
+
+.pfx-avatar.-size-xl {
+  width: var(--instui-component-avatar-size-xl);
+  height: var(--instui-component-avatar-size-xl);
+  font-size: var(--instui-component-avatar-font-size-xl);
+}
+
+.pfx-avatar.-size-2xl {
+  width: var(--instui-component-avatar-size2xl);
+  height: var(--instui-component-avatar-size2xl);
+  font-size: var(--instui-component-avatar-font-size2xl);
+}
+
+/* Explicit (redundant-with-default) so the medium long-form size alias has a rule to clone. */
+.pfx-avatar.-size-md {
+  width: var(--instui-component-avatar-size-md);
+  height: var(--instui-component-avatar-size-md);
+  font-size: var(--instui-component-avatar-font-size-md);
+}
+
+/* data-initials: the real name stays as content for accessibility; ::before shows the compact form. */
+.pfx-avatar[data-initials] {
+  font-size: 0;
+}
+
+.pfx-avatar[data-initials]::before {
+  content: attr(data-initials);
+  font-size: var(--instui-component-avatar-font-size-md);
+}
+
+.pfx-avatar.-size-2xs[data-initials]::before {
+  font-size: var(--instui-component-avatar-font-size2xs);
+}
+
+.pfx-avatar.-size-xs[data-initials]::before {
+  font-size: var(--instui-component-avatar-font-size-xs);
+}
+
+.pfx-avatar.-size-sm[data-initials]::before {
+  font-size: var(--instui-component-avatar-font-size-sm);
+}
+
+.pfx-avatar.-size-lg[data-initials]::before {
+  font-size: var(--instui-component-avatar-font-size-lg);
+}
+
+.pfx-avatar.-size-xl[data-initials]::before {
+  font-size: var(--instui-component-avatar-font-size-xl);
+}
+
+.pfx-avatar.-size-2xl[data-initials]::before {
+  font-size: var(--instui-component-avatar-font-size2xl);
+}
+
+.pfx-avatar.-color-ash {
+  color: var(--instui-component-avatar-ash-text-color);
+}
+
+.pfx-avatar.-color-ash.-has-inverse-color {
+  background: var(--instui-component-avatar-ash-background-color);
+}
+
+.pfx-avatar.-color-blue {
+  color: var(--instui-component-avatar-blue-text-color);
+}
+
+.pfx-avatar.-color-blue.-has-inverse-color {
+  background: var(--instui-component-avatar-blue-background-color);
+}
+
+.pfx-avatar.-color-green {
+  color: var(--instui-component-avatar-green-text-color);
+}
+
+.pfx-avatar.-color-green.-has-inverse-color {
+  background: var(--instui-component-avatar-green-background-color);
+}
+
+.pfx-avatar.-color-grey {
+  color: var(--instui-component-avatar-grey-text-color);
+}
+
+.pfx-avatar.-color-grey.-has-inverse-color {
+  background: var(--instui-component-avatar-grey-background-color);
+}
+
+.pfx-avatar.-color-orange {
+  color: var(--instui-component-avatar-orange-text-color);
+}
+
+.pfx-avatar.-color-orange.-has-inverse-color {
+  background: var(--instui-component-avatar-orange-background-color);
+}
+
+.pfx-avatar.-color-red {
+  color: var(--instui-component-avatar-red-text-color);
+}
+
+.pfx-avatar.-color-red.-has-inverse-color {
+  background: var(--instui-component-avatar-red-background-color);
+}
+
+/* ai: always the violet→sea gradient fill with on-colour text (no border). */
+.pfx-avatar.-color-ai {
+  background: linear-gradient(
+    to bottom,
+    var(--instui-component-avatar-ai-top-gradient-color),
+    var(--instui-component-avatar-ai-bottom-gradient-color)
+  );
+  color: var(--instui-component-avatar-text-on-color);
+  border-color: transparent;
+}
+
+/* hasInverseColor: solid fill (default the accent1/blue surface) + on-colour initials, no ring. A
+   `-color-*` companion overrides the fill per colour (that rule is more specific). */
+.pfx-avatar.-has-inverse-color {
+  background: var(--instui-component-avatar-blue-background-color);
+  color: var(--instui-component-avatar-text-on-color);
+  border-color: transparent;
+}
+
+/* showBorder="always": force the ring back on, even over an inverse fill or a photo. */
+.pfx-avatar.-show-border-always {
+  border-width: var(--instui-component-avatar-border-width-md);
+  border-style: solid;
+  border-color: var(--instui-component-avatar-border-color);
+}
+
+/* showBorder="never": force the ring off, even without an image. */
+.pfx-avatar.-show-border-never {
+  border-color: transparent;
+}
+
+/* A photo: an <img> child fills the chip and covers the initials (image takes priority). Its
+   radius is duplicated per shape (not `inherit`) so a sealed record never carries a reset-like
+   value. */
+.pfx-avatar > img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.pfx-avatar.-shape-rectangle > img {
+  border-radius: var(--instui-component-avatar-rectangle-radius);
+}
+
+/* .name / .first-name+.last-name are mutually exclusive alternatives for a display name, so each
+   guards against the other's markup also being present; either way, each part clips to a single
+   leading letter — an inline-block can be clamped to 1ch independently of the host's own fixed
+   dimensions, which a bare text node inside the flex host cannot. Missing one of first/last just
+   leaves the other centred (the host is already a centred flex box) — a precise no-data-initials,
+   no-JS fallback either way. */
+@scope (.pfx-avatar) {
+  :scope:not(:has([class*="-name"])) .name,
+  :scope:not(:has(.name)) .first-name,
+  :scope:not(:has(.name)) .last-name {
+    display: inline-block;
+    max-width: 1ch;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+}

@@ -16,7 +16,8 @@ import type { Definition } from "../src/lib/define.ts";
 // configuration the docs emitter and lint plugins use. `loadForFolder` walks up from the tests dir.
 const configuration = CssDocConfigFile.loadForFolder(import.meta.dirname).toConfiguration();
 
-// Elevation shadows and the focus ring are declared by the sheets themselves, not the base token IR.
+// Elevation shadows and the focus ring are declared by the sheets themselves (via `@property`), not
+// the base token IR.
 const isLocal = (ref: string): boolean =>
   ref.startsWith("--instui-elevation-") || ref.startsWith("--instui-focus-outline-");
 

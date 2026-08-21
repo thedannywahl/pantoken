@@ -71,8 +71,6 @@ const GENERATOR_PKGS = [
   "renderers/vitepress",
   "ai/pantoken-ai",
   "plugins/pantoken/primitives",
-  "plugins/pantoken/stacking",
-  "plugins/pantoken/transition",
   "plugins/pantoken/visual-debug",
 ];
 for (const pkg of GENERATOR_PKGS) {
@@ -87,8 +85,6 @@ const FINALIZED_CSS_PKGS = [
   "formats/css",
   "plugins/pantoken/logos",
   "plugins/pantoken/primitives",
-  "plugins/pantoken/stacking",
-  "plugins/pantoken/transition",
   "plugins/pantoken/visual-debug",
   "renderers/angular",
   "renderers/astro",
@@ -152,6 +148,24 @@ else ok("components: generated CSS retains cssdoc comments");
 if (componentFinal.includes("/**")) fail("components: finalized CSS retained cssdoc comments");
 else ok("components: finalized CSS strips cssdoc comments");
 
+// 2b. The unified pantoken package must publish VS Code custom-data artifacts.
+const PANTOKEN_CUSTOM_DATA = ["html-custom-data.json", "css-custom-data.json"] as const;
+for (const artifact of PANTOKEN_CUSTOM_DATA) {
+  const path = join(root, "packages/pantoken/dist", artifact);
+  if (!existsSync(path) || readFileSync(path).byteLength === 0) {
+    fail(`packages/pantoken: ${artifact} is missing or empty`);
+    continue;
+  }
+  try {
+    JSON.parse(readFileSync(path, "utf8"));
+    ok(`packages/pantoken: ${artifact} is present and valid JSON`);
+  } catch (error) {
+    fail(
+      `packages/pantoken: ${artifact} is not valid JSON (${error instanceof Error ? error.message : String(error)})`,
+    );
+  }
+}
+
 // 3. The `pantoken` CLI must emit at least one file for every supported target.
 const CLI_TARGETS = [
   "swift",
@@ -193,11 +207,6 @@ const readFinalized = (pkg: string, file: string): string =>
 const SELF_CONTAINED = [
   ["formats/css", "style.css"],
   ["renderers/pendo", "global.css"],
-  // stacking/transition define their own `--instui-stacking-*`/`--instui-transition-*` tokens in the
-  // sheet's `:root` and reference only those, so nothing should dangle. (visual-debug is excluded — its
-  // outline colour is a `--pantoken-visual-debug-color` var with an inline fallback, defined nowhere.)
-  ["plugins/pantoken/stacking", "stacking.css"],
-  ["plugins/pantoken/transition", "transition.css"],
 ] as const;
 for (const [pkg, file] of SELF_CONTAINED) {
   for (const [stage, css] of [

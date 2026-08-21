@@ -252,14 +252,17 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
  * `classNames` (new in `@cssdoc/markdown` 0.7.2) lets HTML-preserving renderers wrap the deprecation
  * marker — the record-level `> [!WARNING]` banner and every deprecated modifier-table cell — in a
  * `<span class="…">`, and (via `stage`) the `@stable`/etc release-stage marker on the header line the
- * same way. We render both as an `instui-pill` (components.css is already loaded on doc pages for the
- * live examples, so the class paints). The extra `pantoken-doc-tag` is a docs-only marker: the shipped
- * pill is a compact fixed-height badge, so `.vitepress/theme/pantoken.css` uses it to relax the pill for
- * the flowing sentence it wraps — without touching how the real `.instui-pill` renders in a component
- * preview. Keep these classes in sync with the TypeDoc badge transformer via `api-badge-classes.ts`.
+ * same way. `alias` (new in 0.13.2) wraps the `@alias` marker in a modifier-table cell the same way,
+ * kept visually distinct from `deprecated` since an alias is a plain rename, not a warning. We render
+ * all as an `instui-pill` (components.css is already loaded on doc pages for the live examples, so the
+ * class paints). The extra `pantoken-doc-tag` is a docs-only marker: the shipped pill is a compact
+ * fixed-height badge, so `.vitepress/theme/pantoken.css` uses it to relax the pill for the flowing
+ * sentence it wraps — without touching how the real `.instui-pill` renders in a component preview.
+ * Keep these classes in sync with the TypeDoc badge transformer via `api-badge-classes.ts`.
  */
 const classNames = {
   deprecated: BADGE_CLASS_BY_LABEL.Deprecated,
+  alias: BADGE_CLASS_BY_LABEL.Alias,
   stage: { stable: BADGE_CLASS_BY_LABEL.Stable },
 };
 
@@ -308,23 +311,14 @@ export function componentSources(componentsRoot: string): string[] {
 type PluginRecord = { pkg: string; sheet: string; import: string };
 
 /**
- * The CSS-emitting plugins (stacking/transition/visual-debug/logos/primitives/layouts) carry cssdoc records in
- * their generated sheets. Plugins use `@group Plugins`; the layouts plugin uses `@group Layouts` so it
+ * The CSS-emitting plugins (visual-debug/logos/primitives/layouts) carry cssdoc records in their
+ * generated sheets. Plugins use `@group Plugins`; the layouts plugin uses `@group Layouts` so it
  * gets its own sidebar section. They render in the SAME pass as the component records — one `emitCssApi`
- * call, one "CSS" section.
+ * call, one "CSS" section. `stacking`/`transition` are excluded here — they're tokens-only plugins now;
+ * their CSS records live in `@pantoken/components`' own utilities and are picked up via `files()` above.
  */
 export function pluginRecords(): PluginRecord[] {
   return [
-    {
-      pkg: "plugins/pantoken/stacking",
-      sheet: "stacking.css",
-      import: "@pantoken/plugin-stacking/stacking.css",
-    },
-    {
-      pkg: "plugins/pantoken/transition",
-      sheet: "transition.css",
-      import: "@pantoken/plugin-transition/transition.css",
-    },
     {
       pkg: "plugins/pantoken/visual-debug",
       sheet: "visual-debug.css",
@@ -495,6 +489,79 @@ export function assertNoUnknownReferences(css: string): void {
   }
 }
 
+/** A `typedoc-vitepress-theme`-compatible sidebar node (mirrors `@cssdoc/markdown`'s `SidebarItem`). */
+interface SidebarItem {
+  text: string;
+  link?: string;
+  collapsed?: boolean;
+  items?: SidebarItem[];
+}
+
+/**
+ * `buildSidebar` (from `@cssdoc/markdown`, via `emitCssApi`) lists every record as a flat sibling within
+ * its group, so a `@memberOf` sub-component (e.g. `breadcrumb.link`) sits next to its parent (`breadcrumb`)
+ * rather than nested under it — both land at the same VitePress sidebar depth. Re-nest each member under
+ * its parent's `items` within the CSS section named `label`, using the `memberOf` already carried on
+ * `entries`, and drop the now-redundant `<parent>.` prefix from its label (`breadcrumb.link` -\> `link`).
+ * Parents/members not found in the same group are left flat (defensive: a stale or cross-group
+ * `@memberOf` shouldn't break the build or drop a page from the nav).
+ */
+export function nestCssSidebarMembers(
+  sidebarItems: readonly SidebarItem[],
+  entries: readonly CssDocEntry[],
+  label: string,
+): SidebarItem[] {
+  const entryByName = new Map(entries.map((e) => [e.name, e]));
+
+  /** Get the parent component name for an item, if it exists in the group. */
+  // fallow-ignore-next-line complexity
+  const getParent = (
+    item: SidebarItem,
+    byText: Map<string, SidebarItem>,
+  ): SidebarItem | undefined => {
+    const parentName = entryByName.get(item.text)?.memberOf?.component;
+    return parentName && byText.has(parentName) && byText.get(parentName) !== byText.get(item.text)
+      ? byText.get(parentName)
+      : undefined;
+  };
+
+  /** Compute the display label for a child item (strip parent prefix). */
+  const getChildLabel = (childText: string, parentName: string): string =>
+    childText.startsWith(`${parentName}.`) ? childText.slice(parentName.length + 1) : childText;
+
+  const nestGroup = (groupItems: readonly SidebarItem[]): SidebarItem[] => {
+    const byText = new Map(groupItems.map((item) => [item.text, { ...item }]));
+    const topLevel: string[] = [];
+
+    for (const item of groupItems) {
+      const parent = getParent(item, byText);
+      if (parent) {
+        const child = byText.get(item.text)!;
+        const parentName = entryByName.get(item.text)!.memberOf!.component!;
+        const label = getChildLabel(child.text, parentName);
+        parent.items = [...(parent.items ?? []), { ...child, text: label }];
+        parent.collapsed = true;
+      } else {
+        topLevel.push(item.text);
+      }
+    }
+
+    return topLevel.map((text) => byText.get(text)!);
+  };
+
+  const nestSection = (item: SidebarItem): SidebarItem =>
+    item.text === label && item.items
+      ? {
+          ...item,
+          items: item.items.map((group) =>
+            group.items ? { ...group, items: nestGroup(group.items) } : group,
+          ),
+        }
+      : item;
+
+  return sidebarItems.map(nestSection);
+}
+
 /** Generate the CSS API reference: index sheet-local vars, then emit every record via `emitCssApi`. */
 export const build = (): void => {
   // The component sheet is the primary source; base/utilities/prose carry the non-component records
@@ -522,11 +589,12 @@ export const build = (): void => {
   const importSnippet = makeImportSnippet(sheets, PLUGIN_RECORDS, pluginSheet, configuration);
 
   const outSubdir = "css";
+  const cssSectionLabel = "CSS";
   const { entries, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
     css: [...cssPaths, ...pluginPaths],
     outSubdir,
-    label: "CSS",
+    label: cssSectionLabel,
     baseHref: "/api/css/",
     // The four record kinds first, then the plugins' `@group Plugins` subsection last.
     groups: ["Components", "Utilities", "Rules", "Declarations", "Layouts", "Plugins"],
@@ -536,6 +604,17 @@ export const build = (): void => {
     resolveSource,
     importSnippet,
   });
+
+  // `buildSidebar` lists members as flat siblings of their parent; re-nest them so the sidebar reflects
+  // the `@memberOf` hierarchy (see `nestCssSidebarMembers`).
+  if (sidebarMerged) {
+    const sidebarPath = join(docsRoot, "api", "typedoc-sidebar.json");
+    const sidebar = JSON.parse(readFileSync(sidebarPath, "utf8")) as SidebarItem[];
+    writeFileSync(
+      sidebarPath,
+      JSON.stringify(nestCssSidebarMembers(sidebar, entries, cssSectionLabel), null, 2),
+    );
+  }
 
   writeCssIndexBlurb(outSubdir);
 

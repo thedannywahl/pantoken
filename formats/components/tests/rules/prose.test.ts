@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { proseCss } from "../../src/index.ts";
-import { prose } from "../../src/rules/prose.ts";
+import { prose } from "../../src/rules/prose/index.ts";
 import { validate } from "../_validate.ts";
 
 test("prose: emits exactly one well-formed cssdoc record with no token drift", () => {
@@ -9,9 +9,9 @@ test("prose: emits exactly one well-formed cssdoc record with no token drift", (
 
 test("prose styles GFM strikethrough and task lists", () => {
   const css = proseCss();
-  expect(css).toContain(".pantoken-prose del");
+  expect(css).toContain(":where(body) del");
   expect(css).toContain("line-through");
-  expect(css).toContain('.pantoken-prose input[type="checkbox"]');
+  expect(css).toContain(':where(body) input[type="checkbox"]');
 });
 
 test("prose headings map to the Heading component tokens; body to Text content", () => {

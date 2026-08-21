@@ -1,6 +1,6 @@
 /**
  * @component date-time-input
- * @class :host
+ * @selector :host
  * @summary The date-time input web component — a date field and a time field side by side.
  * @part .dt — The inline-flex row holding the date and time fields.
  * @accessibility Pairs a date field with a native `<input type="time">`, each carrying its own `aria-label`.

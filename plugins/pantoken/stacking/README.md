@@ -1,19 +1,14 @@
 # @pantoken/plugin-stacking
 
 Named z-index depths from InstUI's view stacking scale — `deepest`, `below`, `above`, `topmost` — as
-`--instui-stacking-*` tokens plus `.instui-stack-*` utility classes.
+`--instui-stacking-*` tokens. The matching `.instui-stack-*` utility classes now live in
+`@pantoken/components`' own `stacking` utility — this plugin only bakes the tokens for consumers
+using the lower-level `@pantoken/css`/`@pantoken/tokens` pipeline directly.
 
 ```ts
-import { toCss } from "@pantoken/css";
-import { byTheme } from "@pantoken/tokens";
+import { buildTokens } from "@pantoken/core";
 import { stacking } from "@pantoken/plugin-stacking";
 
-const css = toCss(byTheme("rebrand"), { plugins: [stacking()] });
+const tokens = buildTokens({ theme: "rebrand", plugins: [stacking()] });
+// → includes --instui-stacking-topmost: …
 ```
-
-```html
-<div class="instui-view -position-relative instui-stack-above">…</div>
-```
-
-It defines both a `tokens` hook (bake `--instui-stacking-*` into any output) and a `css` hook
-(self-contained `.instui-stack-*` classes), so you pick the layer.

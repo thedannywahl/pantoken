@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { formFieldGroupCss } from "../../src/index.ts";
-import { formFieldGroup } from "../../src/components/form-field-group.ts";
+import { formFieldGroup } from "../../src/components/form-field-group/index.ts";
 import { validate } from "../_validate.ts";
 
 test("form-field-group: emits exactly one well-formed cssdoc record with no token drift", () => {

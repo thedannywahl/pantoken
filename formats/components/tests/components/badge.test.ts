@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { badgeCss } from "../../src/index.ts";
-import { badge } from "../../src/components/badge.ts";
+import { badge } from "../../src/components/badge/index.ts";
 import { validate } from "../_validate.ts";
 
 test("badge: emits exactly one well-formed cssdoc record with no token drift", () => {

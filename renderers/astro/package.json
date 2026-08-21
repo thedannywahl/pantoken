@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@pantoken/components": "workspace:*",
-    "@pantoken/plugin-transition": "workspace:*",
+    "@pantoken/plugin-custom-components": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

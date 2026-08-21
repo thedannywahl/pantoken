@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
-import { calendarCss } from "../../src/index.ts";
-import { calendar } from "../../src/components/calendar.ts";
+import { calendarCss, calendarDayCss } from "../../src/index.ts";
+import { calendar } from "../../src/components/calendar/index.ts";
 import { validate } from "../_validate.ts";
 
 test("calendar: emits exactly one well-formed cssdoc record with no token drift", () => {
@@ -16,7 +16,8 @@ test("calendar is a seven-column grid with day states", () => {
   );
   expect(css).toContain("justify-content: center;");
   expect(css).toContain(":scope > .grid");
-  expect(css).toContain(".day.-today {");
-  expect(css).toContain(".day.-selected {");
-  expect(css).toContain(".day.-outside-month {");
+  const day = calendarDayCss({ prefix: "instui" });
+  expect(day).toContain(".day.-today {");
+  expect(day).toContain(".day.-selected {");
+  expect(day).toContain(".day.-outside-month {");
 });

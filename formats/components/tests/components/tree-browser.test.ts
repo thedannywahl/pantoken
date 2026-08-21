@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { treeBrowserCss } from "../../src/index.ts";
-import { treeBrowser } from "../../src/components/tree-browser.ts";
+import { treeBrowser } from "../../src/components/tree-browser/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

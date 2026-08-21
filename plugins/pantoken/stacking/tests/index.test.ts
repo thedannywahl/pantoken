@@ -2,8 +2,8 @@ import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
 import { stacking, STACKING_LEVELS } from "../src/index.ts";
 
-test("is a factoried plugin with tokens + css capabilities", () => {
-  expect(capabilitiesOf(stacking())).toEqual(["tokens", "css"]);
+test("is a factoried plugin with a tokens-only capability", () => {
+  expect(capabilitiesOf(stacking())).toEqual(["tokens"]);
 });
 
 test("tokens hook resolves --instui-stacking-* from the view stacking scale", () => {
@@ -15,11 +15,4 @@ test("tokens hook resolves --instui-stacking-* from the view stacking scale", ()
   // Values resolve to concrete z-index numbers (not a dangling var()).
   const topmost = out.find((t) => t.name === "--instui-stacking-topmost");
   expect(topmost?.value).not.toContain("var(");
-});
-
-test("css hook emits .instui-stack-* z-index classes", () => {
-  const out = stacking().css?.({ tokens: [], css: "" });
-  const css = out && "append" in out ? (out.append as string) : "";
-  expect(css).toContain(".instui-stack-topmost { z-index: var(--instui-stacking-topmost); }");
-  expect(css).toContain(".instui-stack-deepest { z-index: var(--instui-stacking-deepest); }");
 });

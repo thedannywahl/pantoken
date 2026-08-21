@@ -1,0 +1,18 @@
+/**
+ * @component menu.separator
+ * @memberOf menu
+ * @selector .separator
+ * @summary A divider rule between items (InstUI `Menu.Separator`).
+ * @structure
+ * @scope (.pfx-menu) {
+ *   :scope > .separator {}
+ * }
+ */
+@scope (.pfx-menu) {
+  :scope > .separator {
+    height: var(--instui-component-menu-separator-height);
+    background: var(--instui-component-menu-separator-background);
+    margin: var(--instui-component-menu-separator-margin-vertical)
+      var(--instui-component-menu-separator-margin-horizontal);
+  }
+}

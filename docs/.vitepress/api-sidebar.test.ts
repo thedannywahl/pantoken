@@ -38,7 +38,17 @@ const sidebar: TestItem[] = [
     text: "CSS",
     items: [
       { text: "Overview", link: "/api/css/" },
-      { text: "Components", items: [{ text: "button", link: "/api/css/button.md" }] },
+      {
+        text: "Components",
+        items: [
+          {
+            text: "breadcrumb",
+            link: "/api/css/breadcrumb.md",
+            items: [{ text: "link", link: "/api/css/breadcrumb.link.md" }],
+          },
+          { text: "button", link: "/api/css/button.md" },
+        ],
+      },
     ],
   },
 ];
@@ -82,6 +92,10 @@ describe("partitionApiSidebar", () => {
 
     expect(findItem(cssRoute, "button")?.link).toBe("/api/css/button.md");
     expect(findItem(cssRoute, "core")?.items).toBeUndefined();
+    // Members stay nested under their parent rather than flattening to siblings.
+    expect(findItem(cssRoute, "breadcrumb")?.items).toEqual([
+      { text: "link", link: "/api/css/breadcrumb.link.md" },
+    ]);
   });
 
   test("derives localized route prefixes from localized generated links", () => {

@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { billboardCss } from "../../src/index.ts";
-import { billboard } from "../../src/components/billboard.ts";
+import { billboard } from "../../src/components/billboard/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

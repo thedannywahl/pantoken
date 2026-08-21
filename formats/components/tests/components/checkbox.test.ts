@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { checkboxCss } from "../../src/index.ts";
-import { checkbox } from "../../src/components/checkbox.ts";
+import { checkbox } from "../../src/components/checkbox/index.ts";
 import { validate } from "../_validate.ts";
 
 test("checkbox: emits exactly one well-formed cssdoc record with no token drift", () => {

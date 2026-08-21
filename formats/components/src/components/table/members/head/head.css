@@ -1,0 +1,29 @@
+/**
+ * @component table.head
+ * @memberOf table
+ * @selector thead
+ * @summary The table's header row group (InstUI `Table.Head`).
+ * @remarks The parent `table`'s `-layout-stacked` modifier visually hides this member (its column titles surface per-cell instead) — see `table`'s own doc for that modifier.
+ * @structure
+ * @component table {
+ *   thead {}
+ * }
+ */
+.pfx-table thead {
+  background: var(--instui-component-table-head-background);
+}
+
+/* layout="stacked": the header row is redundant (each cell shows its own label instead), so it's
+ visually hidden rather than removed (keeps it in the accessibility tree for non-visual users). */
+.pfx-table.-layout-stacked thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

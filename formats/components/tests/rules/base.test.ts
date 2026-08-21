@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { baseCss } from "../../src/index.ts";
-import { base } from "../../src/rules/base.ts";
+import { base } from "../../src/rules/base/index.ts";
 import { validate } from "../_validate.ts";
 
 test("base: emits exactly one well-formed cssdoc record with no token drift", () => {

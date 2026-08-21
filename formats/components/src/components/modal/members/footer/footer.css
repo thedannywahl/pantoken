@@ -1,0 +1,32 @@
+/**
+ * @component modal.footer
+ * @memberOf modal
+ * @selector .footer
+ * @summary The actions row (InstUI `Modal.Footer`).
+ * @remarks The parent `modal`'s `-density-compact` and `-color-inverse` modifiers restyle this member — see `modal`'s own doc for those modifiers.
+ * @structure
+ * @scope (.pfx-modal) {
+ *   :scope > .footer {
+ *     @component button {}
+ *   }
+ * }
+ */
+@scope (.pfx-modal) {
+  :scope > .footer {
+    padding: var(--instui-component-modal-footer-padding);
+    background: var(--instui-component-modal-footer-background-color);
+    border-top: var(--instui-component-modal-footer-border-width) solid
+      var(--instui-component-modal-footer-border-color);
+    border-radius: 0 0 var(--instui-component-modal-footer-border-radius)
+      var(--instui-component-modal-footer-border-radius);
+  }
+
+  :scope.-density-compact > .footer {
+    padding: var(--instui-component-modal-footer-padding-compact);
+  }
+
+  :scope.-color-inverse > .footer {
+    background: var(--instui-component-modal-footer-inverse-background-color);
+    border-top-color: var(--instui-component-modal-footer-inverse-border-color);
+  }
+}

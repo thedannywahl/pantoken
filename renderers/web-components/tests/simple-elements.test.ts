@@ -239,9 +239,71 @@ test("toggle-button reflects pressed=true to aria-pressed and defaults to false"
 
 test("truncate sets --lines when given, omits the style otherwise", () => {
   const el = mount(`<instui-truncate lines="2">Long text</instui-truncate>`, "instui-truncate");
+  expect(el.shadowRoot?.querySelector("span")?.className).toBe("instui-truncate");
   expect(el.shadowRoot?.querySelector("span")?.getAttribute("style")).toBe("--lines:2");
   const single = mount(`<instui-truncate>Long text</instui-truncate>`, "instui-truncate");
+  expect(single.shadowRoot?.querySelector("span")?.className).toBe("instui-truncate");
   expect(single.shadowRoot?.querySelector("span")?.hasAttribute("style")).toBe(false);
+});
+
+test("truncate lines=auto computes --lines from available height", () => {
+  const originalResizeObserver = globalThis.ResizeObserver;
+  class TestResizeObserver {
+    readonly #cb: ResizeObserverCallback;
+    constructor(cb: ResizeObserverCallback) {
+      this.#cb = cb;
+    }
+    observe(_target: Element): void {
+      this.#cb([], this as unknown as ResizeObserver);
+    }
+    disconnect(): void {}
+    unobserve(_target: Element): void {}
+  }
+  globalThis.ResizeObserver = TestResizeObserver as unknown as typeof ResizeObserver;
+  const rect = {
+    x: 0,
+    y: 0,
+    top: 0,
+    left: 0,
+    right: 300,
+    bottom: 60,
+    width: 300,
+    height: 60,
+    toJSON: () => ({}),
+  } as DOMRect;
+  const rectSpy = vi
+    .spyOn(HTMLElement.prototype, "getBoundingClientRect")
+    .mockImplementation(function (this: HTMLElement): DOMRect {
+      if (this.tagName === "INSTUI-TRUNCATE") {
+        return Object.assign(Object.create(Object.getPrototypeOf(rect)), rect, {
+          height: 0,
+          bottom: 0,
+        }) as DOMRect;
+      }
+      return rect;
+    });
+  const styleSpy = vi
+    .spyOn(window, "getComputedStyle")
+    .mockImplementation(
+      () => ({ lineHeight: "20px", fontSize: "16px" }) as unknown as CSSStyleDeclaration,
+    );
+  try {
+    const el = mount(
+      `<div><instui-truncate lines="auto">Long text</instui-truncate></div>`,
+      "instui-truncate",
+    );
+    const span = el.shadowRoot?.querySelector<HTMLElement>("span");
+    expect(span?.style.getPropertyValue("--lines")).toBe("3");
+  } finally {
+    rectSpy.mockRestore();
+    styleSpy.mockRestore();
+    globalThis.ResizeObserver = originalResizeObserver;
+  }
+});
+
+test("truncate ignores invalid lines values", () => {
+  const el = mount(`<instui-truncate lines="abc">Long text</instui-truncate>`, "instui-truncate");
+  expect(el.shadowRoot?.querySelector("span")?.hasAttribute("style")).toBe(false);
 });
 
 test("img builds an <img> from src/alt with constrain and display-block modifiers", () => {

@@ -71,6 +71,8 @@
     "./webComponents": "./dist/webComponents.mjs",
     "./webpack": "./dist/webpack.mjs",
     "./wordpress": "./dist/wordpress.mjs",
+    "./html-custom-data.json": "./dist/html-custom-data.json",
+    "./css-custom-data.json": "./dist/css-custom-data.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

@@ -8,8 +8,8 @@ import type { ElementDefinition } from "../lib/context.ts";
  * set `has-shadow="false"` to flatten one (→ `-without-shadow`, mirroring InstUI's `hasShadow={false}`).
  * The `timeout` attribute (milliseconds) auto-dismisses the alert after that delay — it fades out,
  * removes itself from the DOM, and fires a cancelable bubbling `dismiss` event (call `preventDefault()`
- * on it to keep the alert mounted). The fade states use `@pantoken/plugin-transition`; load its
- * stylesheet when using timeout dismissal. Slotted content is the message body.
+ * on it to keep the alert mounted). The fade states use `@pantoken/components`' `transition` utility;
+ * load its stylesheet when using timeout dismissal. Slotted content is the message body.
  *
  * @example
  * ```html

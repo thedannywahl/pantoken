@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { toggleDetailsCss } from "../../src/index.ts";
-import { toggleDetails } from "../../src/components/toggle-details.ts";
+import { toggleDetails } from "../../src/components/toggle-details/index.ts";
 import { validate } from "../_validate.ts";
 import { norm } from "../_css.ts";
 

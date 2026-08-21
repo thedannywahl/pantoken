@@ -1,0 +1,67 @@
+/**
+ * @component breadcrumb
+ * @selector .pfx-breadcrumb
+ * @summary A breadcrumb trail with separators; the last crumb is the current page.
+ * @remarks Automatically collapses to a back arrow on small screens. Use `breadcrumb.link` for each crumb.
+ * @modifier -size-sm — Small. @affects breadcrumb.link — Scales the crumb separator's spacing to match.
+ * @modifier -size-md — Medium (default). @affects breadcrumb.link — Scales the crumb separator's spacing to match.
+ * @modifier -size-lg — Large. @affects breadcrumb.link — Scales the crumb separator's spacing to match.
+ * @a11y Wrap the `<ol>` in a `<nav aria-label>` landmark; mark the current page's crumb with `aria-current="page"`.
+ * @structure
+ * .pfx-breadcrumb {
+ *   ol {
+ *     li:one-or-more {}
+ *   }
+ * }
+ * @example
+ * ```html
+ * <nav class="pfx-breadcrumb" aria-label="Breadcrumb">
+ *   <ol>
+ *     <li>
+ *       <a class="-icon-house" href="#">Home</a>
+ *     </li>
+ *     <li><a href="#">Guides</a></li>
+ *     <li><a href="#">Components</a></li>
+ *     <li aria-current="page">Breadcrumb</li>
+ *   </ol>
+ * </nav>
+ * ```
+ * @sealed
+ * @stable
+ */
+
+.pfx-breadcrumb {
+  display: block;
+}
+
+/* Hide the breadcrumb if it has no links. */
+.pfx-breadcrumb:not(:has(> ol > li > a)) {
+  display: none;
+}
+
+.pfx-breadcrumb > ol {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: var(--instui-component-breadcrumb-gap-md);
+  font-family: var(--instui-component-link-font-family);
+  font-size: var(--instui-component-link-font-size-md);
+}
+
+.pfx-breadcrumb.-size-sm > ol {
+  gap: var(--instui-component-breadcrumb-gap-sm);
+  font-size: var(--instui-component-link-font-size-sm);
+}
+
+.pfx-breadcrumb.-size-md > ol {
+  gap: var(--instui-component-breadcrumb-gap-md);
+  font-size: var(--instui-component-link-font-size-md);
+}
+
+.pfx-breadcrumb.-size-lg > ol {
+  gap: var(--instui-component-breadcrumb-gap-lg);
+  font-size: var(--instui-component-link-font-size-lg);
+}

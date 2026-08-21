@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { headingCss } from "../../src/index.ts";
-import { heading } from "../../src/components/heading.ts";
+import { heading } from "../../src/components/heading/index.ts";
 import { validate } from "../_validate.ts";
 
 test("heading: emits exactly one well-formed cssdoc record with no token drift", () => {
