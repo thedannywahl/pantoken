@@ -24,12 +24,16 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // `candidatePropertyCoverage`-style verification found `drop-shadow-blur-elevation1-dropshadow1:
   // 2px` fails the composite `elevation` grammar (it isn't a whole shadow list on its own).
   [/drop-shadow-(blur|spread|x|y)-/u, "<length>"],
-  [/elevation/u, "[ inset? && <length>{2,4} && <color>? ]# | none"],
-  [/text-decoration/u, "none | underline || overline || line-through || blink"],
-  [/focus-outline-color/u, "<color> | invert"],
-  // `<line-style>` is `mdn-data`'s own registered type (the same one `border-style` below resolves
-  // to) — referencing it directly means the keyword list is never hand-duplicated/goes stale.
-  [/focus-outline-style/u, "auto | <line-style>"],
+  // `<shadow>` is `mdn-data`'s own registered type — identical to what the real `box-shadow`
+  // property (`none | <shadow>#`) resolves to, so the composite grammar is never hand-duplicated.
+  [/elevation/u, "none | <shadow>#"],
+  // `<'text-decoration-line'>` is a quoted property reference (CSS spec notation) resolving to the
+  // REAL `text-decoration-line` property's own grammar — always in sync with it, never hand-typed.
+  [/text-decoration/u, "<'text-decoration-line'>"],
+  // Matches the real `outline-color`/`outline-style` properties' own grammar (not `<line-style>`,
+  // which incorrectly allows `hidden` — outline has no distinct sides, so `outline-style` excludes it).
+  [/focus-outline-color/u, "auto | <color>"],
+  [/focus-outline-style/u, "auto | <outline-line-style>"],
   [/focus-outline-(width|offset|radius)/u, "<length>"],
   // `--instui-icon-color-*` holds a special CSS colour value (`currentColor`, or a `var()`-based
   // gradient) — NOT an SVG glyph url like every other `--instui-icon-*` token — so it must be
