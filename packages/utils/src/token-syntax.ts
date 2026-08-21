@@ -10,6 +10,18 @@
  */
 import * as csstree from "css-tree";
 
+/** A registered, real CSS property name (e.g. `"font-weight"`), matched via `matchProperty()`. */
+export type PropertyName = string & { readonly __brand: "PropertyName" };
+
+/**
+ * A CSS Value Definition Syntax grammar string (CSS Values 4 §2.1: `|` `||` `&&` `[]` `?` `{a,b}`
+ * `#`, e.g. `"<length>"` or `"none | <shadow>#"`), matched via `match()`.
+ */
+export type Grammar = string & { readonly __brand: "Grammar" };
+
+/** An ordered token-name-pattern → value table, checked first-match-wins via {@link firstMatch}. */
+export type SyntaxRule<T> = readonly (readonly [RegExp, T])[];
+
 /** The registered `css-tree` property descriptor for `name`, or throws — never silently unmatched. */
 function requireProperty(name: string): NonNullable<ReturnType<typeof csstree.lexer.getProperty>> {
   const property = csstree.lexer.getProperty(name);
@@ -22,10 +34,10 @@ function requireProperty(name: string): NonNullable<ReturnType<typeof csstree.le
  * instance {@link isSyntaxValid} matches against) rather than hand-typed — guaranteed byte-identical
  * to what the lexer actually validates, so it can never drift out of sync with itself.
  */
-function propertyGrammar(name: string): string {
+function propertyGrammar(name: string): Grammar {
   const syntax = requireProperty(name).syntax;
   if (!syntax) throw new Error(`css-tree property "${name}" has no generatable grammar`);
-  return csstree.definitionSyntax.generate(syntax);
+  return csstree.definitionSyntax.generate(syntax) as Grammar;
 }
 
 /**
@@ -34,9 +46,9 @@ function propertyGrammar(name: string): string {
  * property name throws immediately with a clear message instead of silently flagging every
  * matching token as a mismatch at build time.
  */
-function realProperty(name: string): string {
+function realProperty(name: string): PropertyName {
   requireProperty(name);
-  return name;
+  return name as PropertyName;
 }
 
 /**
@@ -44,10 +56,10 @@ function realProperty(name: string): string {
  * module load — the same fail-fast safety net as {@link realProperty}, for the terminal/generic
  * types (`length`, `color`, `url`, `time`, …) that don't belong to any single real property.
  */
-function typeReference(name: string): string {
+function typeReference(name: string): Grammar {
   if (!csstree.lexer.getType(name))
     throw new Error(`css-tree has no registered type named "${name}"`);
-  return `<${name}>`;
+  return `<${name}>` as Grammar;
 }
 
 /**
@@ -58,7 +70,7 @@ function typeReference(name: string): string {
  * NOT `<font-family-name>`, which only exists inline inside the real `font-family` property's own
  * definition — that's matched via `TOKEN_NAME_TO_PROPERTY` instead).
  */
-export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
+export const BESPOKE_SYNTAX: SyntaxRule<Grammar> = [
   // Decomposed drop-shadow PIECES (e.g. `--instui-drop-shadow-blur-elevation1-dropshadow1`) are each
   // a single value, not the full composite grammar `elevation` (below) expects — checked first, since
   // `candidatePropertyCoverage`-style verification found `drop-shadow-blur-elevation1-dropshadow1:
@@ -143,7 +155,7 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
  * here in practice — the bespoke icon-glyph rule above already claims every `instui-icon-*` name
  * first, so `gap` IS included, verified safe once that precedence is accounted for.
  */
-export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
+export const TOKEN_NAME_TO_PROPERTY: SyntaxRule<PropertyName> = [
   [/font-family/u, realProperty("font-family")],
   [/font-weight/u, realProperty("font-weight")],
   [/font-size/u, realProperty("font-size")],
@@ -191,7 +203,7 @@ export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/position$/u, realProperty("position")],
 ];
 
-function firstMatch<T>(name: string, table: readonly [RegExp, T][]): T | undefined {
+function firstMatch<T>(name: string, table: SyntaxRule<T>): T | undefined {
   return table.find(([re]) => re.test(name))?.[1];
 }
 

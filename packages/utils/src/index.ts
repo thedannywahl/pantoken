@@ -31,6 +31,7 @@ export {
   TOKEN_NAME_TO_PROPERTY,
   candidatePropertyCoverage,
 } from "./token-syntax.ts";
+export type { Grammar, PropertyName, SyntaxRule } from "./token-syntax.ts";
 
 /** The colour mode to collapse `light-dark()` to. */
 export type Mode = "light" | "dark";
