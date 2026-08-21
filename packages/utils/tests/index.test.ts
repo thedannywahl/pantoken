@@ -180,6 +180,65 @@ test("syntaxMismatches doesn't misroute a component whose NAME merely contains a
   expect(syntaxMismatches([colorPickerPadding])).toEqual([]);
 });
 
+test("syntaxMismatches flags a stringified `undefined` value (a real upstream bug)", () => {
+  const bad: Token = {
+    name: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position",
+    syntax: "*",
+    inherits: true,
+    value: "undefined",
+  };
+  expect(syntaxMismatches([bad])).toEqual([{ name: bad.name, value: bad.value, kind: "mismatch" }]);
+});
+
+test("syntaxMismatches accepts the primitive colour palette and background-* real properties", () => {
+  const clean: Token[] = [
+    {
+      name: "--instui-primitive-color-aurora-aurora10",
+      syntax: "*",
+      inherits: true,
+      value: "#D8FCEB",
+    },
+    { name: "--instui-primitive-opacity50", syntax: "*", inherits: true, value: "0.5" },
+    {
+      name: "--instui-component-color-indicator-background-size",
+      syntax: "*",
+      inherits: true,
+      value: "0.5rem 0.5rem",
+    },
+    {
+      name: "--instui-component-drawer-layout-tray-overflow-y",
+      syntax: "*",
+      inherits: true,
+      value: "auto",
+    },
+    {
+      name: "--instui-component-shared-tokens-focus-outline-inset",
+      syntax: "*",
+      inherits: true,
+      value: "0rem",
+    },
+  ];
+  expect(syntaxMismatches(clean)).toEqual([]);
+});
+
+test("syntaxMismatches doesn't shadow a real `margin`/`letter-spacing`/`background-size` with a generic length cluster", () => {
+  const clean: Token[] = [
+    {
+      name: "--instui-component-byline-title-margin",
+      syntax: "*",
+      inherits: true,
+      value: "0 0 0.5rem 0",
+    },
+    {
+      name: "--instui-component-base-button-letter-spacing",
+      syntax: "*",
+      inherits: true,
+      value: "normal",
+    },
+  ];
+  expect(syntaxMismatches(clean)).toEqual([]);
+});
+
 test("syntaxMismatches skips contextual (var()/light-dark()) values", () => {
   const ref: Token = {
     name: "--instui-font-weight-body-base",

@@ -49,6 +49,22 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
   // `box-shadow`'s real grammar (it isn't a whole shadow value on its own).
   [/box-shadow-(blur|spread|x|y)$/u, "<length>"],
   [/box-shadow-color$/u, "<color>"],
+  // These name suffixes describe a generic length/time CONCEPT, not a specific CSS property —
+  // there's no real `size`/`spacing`/`offset`/`thickness`/`circumference` property to validate
+  // against, so the grammar is asserted directly. `size`/`spacing` explicitly exclude the
+  // `background-size`/`letter-spacing` suffixes, which ARE real properties (see below) with
+  // different (non-single-length) grammars.
+  [/(?<!background)-size(?:-|\d|$)/u, "<length>"],
+  [/(?<!letter)-spacing/u, "<length>"],
+  [/offset$/u, "<length>"],
+  [/thickness$/u, "<length>"],
+  [/circumference$/u, "<length>"],
+  // Named "timing" but holds a bare duration (e.g. `0.2s`), not a `transition-timing-function`
+  // keyword/`cubic-bezier()` — asserting `<time>` validates the actual value shape shipped.
+  [/transition-timing|toggle-transition$/u, "<time>"],
+  // Breakpoint/byline-size lengths — anchored so `byline-title-margin` (a real `margin`, handled
+  // below) isn't shadowed by a broader `byline-` match.
+  [/breakpoints-|byline-(large|medium|small)$/u, "<length>"],
 ];
 
 /**
@@ -70,9 +86,11 @@ export const BESPOKE_SYNTAX: readonly [RegExp, string][] = [
  * icon glyphs already resolved by the bespoke `--instui-icon-` pattern above, which runs first).
  * `opacity` excludes a digit suffix so a colour-with-baked-in-alpha primitive
  * (`--instui-primitive-color-grey-opacity10`, a colour, not a CSS `opacity` value) isn't misrouted
- * either way. A plain substring like `gap` looks plausible but ISN'T here: it also matches
- * `--instui-icon-megaphone` (an unrelated icon), which `candidatePropertyCoverage` caught as an
- * invalid match against `gap` — another real example of why entries are verified, not guessed.
+ * either way (`primitive-opacity\d+$` below is a separate, narrower pattern for the genuine
+ * standalone opacity primitives, e.g. `--instui-primitive-opacity50`). `gap` was tried and rejected
+ * naively (it also matches `--instui-icon-megaphone`), but that collision never actually reaches
+ * here in practice — the bespoke icon-glyph rule above already claims every `instui-icon-*` name
+ * first, so `gap` IS included, verified safe once that precedence is accounted for.
  */
 export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/font-family/u, "font-family"],
@@ -81,16 +99,35 @@ export const TOKEN_NAME_TO_PROPERTY: readonly [RegExp, string][] = [
   [/line-height/u, "line-height"],
   [/letter-spacing/u, "letter-spacing"],
   [/opacity(?!\d)/u, "opacity"],
+  [/primitive-opacity\d+$/u, "opacity"],
   [/z-index|stacking/u, "z-index"],
   [/transition-duration|-duration\b/u, "transition-duration"],
   [/border-width/u, "border-width"],
   [/-radius/u, "border-radius"],
+  [/bottom-border$/u, "border-bottom"],
   [/box-shadow/u, "box-shadow"],
   [/margin/u, "margin"],
   [/padding/u, "padding"],
   [/height/u, "height"],
   [/width/u, "width"],
+  [/gap/u, "gap"],
+  [/inset/u, "inset"],
+  [/overflow-x$/u, "overflow-x"],
+  [/overflow-y$/u, "overflow-y"],
+  // The three specific `background-*` properties are checked before the generic `position$`
+  // fallback and the generic `background$` one, since their names also end in "position"/"size"
+  // respectively and need the MORE specific (and differently-shaped) real grammar.
+  [/background-image$/u, "background-image"],
+  [/background-position$/u, "background-position"],
+  [/background-size$/u, "background-size"],
+  [/background$/u, "background"],
+  [/border-color/u, "border-color"],
+  [/primitive-color-/u, "color"],
   [/color$/u, "color"],
+  // Generic `position$` fallback (after the more specific `background-position$` above) also
+  // catches `--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position: undefined`
+  // — a genuine upstream data bug (a stringified JS `undefined`), correctly failing the build.
+  [/position$/u, "position"],
 ];
 
 function firstMatch<T>(name: string, table: readonly [RegExp, T][]): T | undefined {
