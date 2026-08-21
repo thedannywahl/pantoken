@@ -11,20 +11,17 @@
  * @compat Opens with the native `[popover]` API and `@starting-style`; the slide-in sits behind an `@supports (transition-behavior: allow-discrete)` guard, so browsers without it still open the tray, just without the slide.
  * @accessibility The tray is a dialog or popover surface, so name it with `aria-label` or `aria-labelledby`, and its close control carries an `aria-label` (the `.pfx-close-button` in the example uses `aria-label="Close"`).
  * @example
- * <div class="pfx-tray -size-sm" id="tray-start">
- *   <div>
- *     <strong>Filters</strong>
- *     <button class="pfx-close-button" aria-label="Close"></button>
- *   </div>
- *   <p class="pfx-text -size-sm">A tray slides in from the start edge and fills the viewport height.</p>
+ * ```html
+ * <div class="pfx-tray -placement-end -size-sm">
+ *   <span class="pfx-heading -level-h3">Filters</span>
+ *   <p class="-size-sm">A tray slides in from the start edge and fills the viewport height.</p>
  * </div>
+ * <button class="pfx-button -toggle">toggle tray</button>
+ * ```
  * @structure
  * .pfx-tray {
- *   div {
- *     strong {}
- *     .pfx-close-button {}
- *   }
- *   .pfx-text {}
+ *   @component close-button:optional {}
+ *   slot {}
  * }
  * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
  * @related popover — The generic top-layer surface this builds on.
@@ -45,39 +42,49 @@
   z-index: var(--instui-component-tray-z-index);
   box-shadow: var(--instui-elevation-topmost);
 }
+
 .pfx-tray.-placement-end {
   inset-inline: auto 0;
 }
+
 .pfx-tray.-placement-top {
   inset: 0 0 auto 0;
   inline-size: 100%;
   block-size: auto;
 }
+
 .pfx-tray.-placement-bottom {
   inset: auto 0 0 0;
   inline-size: 100%;
   block-size: auto;
 }
+
 .pfx-tray.-size-xs {
   inline-size: var(--instui-component-tray-width-xs);
 }
+
 .pfx-tray.-size-sm {
   inline-size: var(--instui-component-tray-width-sm);
 }
+
 .pfx-tray.-size-lg {
   inline-size: var(--instui-component-tray-width-lg);
 }
+
 .pfx-tray.-size-xl {
   inline-size: var(--instui-component-tray-width-xl);
 }
+
 [popover].pfx-tray {
   margin: 0;
 }
+
 dialog.pfx-tray {
   margin: 0;
   padding: var(--instui-component-tray-padding);
   border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
 }
+
 /* Slide in from the docked edge on open (native popover + @starting-style, no JS). The transform is
    keyed to placement; inert where allow-discrete transitions aren't supported. */
 @supports (transition-behavior: allow-discrete) {
@@ -88,33 +95,41 @@ dialog.pfx-tray {
       display 0.2s allow-discrete;
     transform: translateX(0);
   }
+
   [popover].pfx-tray:not(:popover-open) {
     transform: translateX(-100%);
   }
+
   @starting-style {
     [popover].pfx-tray:popover-open {
       transform: translateX(-100%);
     }
   }
+
   [popover].pfx-tray.-placement-end:not(:popover-open) {
     transform: translateX(100%);
   }
+
   @starting-style {
     [popover].pfx-tray.-placement-end:popover-open {
       transform: translateX(100%);
     }
   }
+
   [popover].pfx-tray.-placement-top:not(:popover-open) {
     transform: translateY(-100%);
   }
+
   @starting-style {
     [popover].pfx-tray.-placement-top:popover-open {
       transform: translateY(-100%);
     }
   }
+
   [popover].pfx-tray.-placement-bottom:not(:popover-open) {
     transform: translateY(100%);
   }
+
   @starting-style {
     [popover].pfx-tray.-placement-bottom:popover-open {
       transform: translateY(100%);
