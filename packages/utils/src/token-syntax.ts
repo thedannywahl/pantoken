@@ -63,7 +63,7 @@ function typeReference(name: string): Grammar {
 }
 
 /**
- * Non-standard, pantoken-authored property grammars `css-tree`/`mdn-data` don't know about —
+ * Non-standard property grammars `css-tree`/`mdn-data` don't know about —
  * matched by token-name substring, most-specific first, as raw CSS Value Definition Syntax
  * (CSS Values 4 §2.1: `|` `||` `&&` `[]` `?` `{a,b}` `#`) rather than a real property name. Only
  * `<...>` references to types `mdn-data` registers as standalone generic types belong here (e.g.
