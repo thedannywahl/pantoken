@@ -2827,6 +2827,7 @@
     "f1aab029f5c90393091288354f7a93e4b99e07ac6433531a930bdcf6221c1ffe": "Egy rehype beépülőmodul, amely önálló szín értékeket csomagol az `<span data-color-code=\"…\">`-be, így a React\nréteg megjelenítheti a mintát. Tükrözése az ikon-token feldolgozási folyamatnak.",
     "f1c1c73f0215bfeebb123d4b76237e163763d920897c11bea7165cef20715981": "tabsTabCss",
     "f1cde32fbd6f56a699943d20f045618c8ecb58c00200eb66d1ea517567238e6a": "A Lucide karakterek belefoglalása az `@instructure/ui-icons` által kitettként (alapértelmezett: igaz).",
+    "f1d0bf55d4b74ab2386c3b806cf1801f74b3195ccbe76e0a5c3e6eafd6f817d2": "A start/end elhelyezések a(z) `inset-inline` alapján oldódnak fel (logikai, irányérzékeny); a becsúsztatási transzformáció automatikusan tükröződik egy `[dir=\"rtl\"]` ős alatt, így nincs szükség további jelölésre a jobbról balra haladó elrendezéseknél.",
     "f1d7a3e61758ce9a760b825f2fb02c8ed778742a158a2a303c3fc089a7250250": "toKebab",
     "f2262ae3368af73bceddfedeb43189f117b5075ae4ad3054c2421bdca3d92e49": "ASSETS",
     "f2292c3b015fbfe2e17c5b68a89ed63d5117ce8c79e49f3bd49db8caadc48d55": "radioCss",
