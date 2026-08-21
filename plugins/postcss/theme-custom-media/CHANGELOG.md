@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+  - @pantoken/tokens@0.2.4
+
 ## 0.2.0
 
 ### Minor Changes

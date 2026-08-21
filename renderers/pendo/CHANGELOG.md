@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.3.9
+
+### Patch Changes
+
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+- Updated dependencies [e6c0d3b]
+  - @pantoken/components@0.7.1
+  - @pantoken/tokens@0.2.4
+  - @pantoken/css@0.3.5
+
 ## 0.3.8
 
 ### Patch Changes

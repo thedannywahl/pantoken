@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/tokens",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "The npm-published, semver'd home for Instructure design tokens: the resolved @property-aligned IR plus the raw Tokens Studio JSON.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
