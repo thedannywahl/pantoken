@@ -1,0 +1,13 @@
+[
+  {
+    "name": "--instui-component-text-content-quote-font-weight",
+    "upstreamValue": "Medium Italic",
+    "rewriteValue": 500,
+    "note": "A font-style-like string instead of a numeric font-weight."
+  },
+  {
+    "name": "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position",
+    "upstreamValue": "undefined",
+    "note": "A stringified JS `undefined` instead of a `position` keyword."
+  }
+]

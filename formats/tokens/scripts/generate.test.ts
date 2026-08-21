@@ -43,7 +43,7 @@ afterEach(() => {
 
 // --- syntax validation (build-time) -----------------------------------------
 
-test("generate.ts fails the build when a token's value fails its CSS grammar", async () => {
+test("generate.ts patches a newly discovered CSS grammar mismatch to `unset` and adds it to the ledger", async () => {
   buildTokens.mockReturnValue([
     {
       name: "--instui-component-text-content-quote-font-weight",
@@ -52,12 +52,19 @@ test("generate.ts fails the build when a token's value fails its CSS grammar", a
       value: "Medium Italic",
     },
   ]);
-  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
   vi.resetModules();
   await import(MODULE_PATH);
 
-  expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining("fails its CSS grammar"));
-  expect(process.exitCode).toBe(1);
+  expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("newly discovered upstream issue"));
+  expect(process.exitCode).toBeUndefined();
+
+  const [, written] = writeFileSync.mock.calls.findLast(([p]) =>
+    String(p).endsWith("known-syntax-issues.json"),
+  ) as [string, string];
+  expect(JSON.parse(written)).toEqual([
+    { name: "--instui-component-text-content-quote-font-weight", upstreamValue: "Medium Italic" },
+  ]);
 });
 
 test("generate.ts warns (without failing) on a token with no modeled CSS property", async () => {
@@ -70,6 +77,112 @@ test("generate.ts warns (without failing) on a token with no modeled CSS propert
 
   expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("unmodeled"));
   expect(process.exitCode).toBeUndefined();
+});
+
+// --- known-syntax-issues.json (interim upstream-bug allowlist) -------------
+
+test("generate.ts patches a known upstream issue to `unset` instead of failing the build", async () => {
+  const token = {
+    name: "--instui-component-text-content-quote-font-weight",
+    syntax: "*",
+    inherits: true,
+    value: "Medium Italic",
+  };
+  buildTokens.mockReturnValue([token]);
+  readFileSync.mockImplementation((p: unknown) =>
+    String(p).endsWith("known-syntax-issues.json")
+      ? JSON.stringify([{ name: token.name, upstreamValue: token.value }])
+      : "[]",
+  );
+  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('patched to "unset"'));
+  expect(errorSpy).not.toHaveBeenCalled();
+  expect(process.exitCode).toBeUndefined();
+  expect(token.value).toBe("unset");
+});
+
+test("generate.ts patches a known upstream issue to an explicit rewriteValue", async () => {
+  const token = {
+    name: "--instui-component-text-content-quote-font-weight",
+    syntax: "*",
+    inherits: true,
+    value: "Medium Italic",
+  };
+  buildTokens.mockReturnValue([token]);
+  readFileSync.mockImplementation((p: unknown) =>
+    String(p).endsWith("known-syntax-issues.json")
+      ? JSON.stringify([{ name: token.name, upstreamValue: token.value, rewriteValue: 500 }])
+      : "[]",
+  );
+  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('patched to "500"'));
+  expect(errorSpy).not.toHaveBeenCalled();
+  expect(process.exitCode).toBeUndefined();
+  expect(token.value).toBe("500");
+});
+
+test("generate.ts treats a changed upstream value as a new issue, dropping the stale ledger entry", async () => {
+  buildTokens.mockReturnValue([
+    {
+      name: "--instui-component-text-content-quote-font-weight",
+      syntax: "*",
+      inherits: true,
+      value: "Extra Bold Italic",
+    },
+  ]);
+  readFileSync.mockImplementation((p: unknown) =>
+    String(p).endsWith("known-syntax-issues.json")
+      ? JSON.stringify([
+          {
+            name: "--instui-component-text-content-quote-font-weight",
+            upstreamValue: "Medium Italic",
+          },
+        ])
+      : "[]",
+  );
+  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(errorSpy).not.toHaveBeenCalled();
+  expect(process.exitCode).toBeUndefined();
+
+  const [, written] = writeFileSync.mock.calls.findLast(([p]) =>
+    String(p).endsWith("known-syntax-issues.json"),
+  ) as [string, string];
+  expect(JSON.parse(written)).toEqual([
+    {
+      name: "--instui-component-text-content-quote-font-weight",
+      upstreamValue: "Extra Bold Italic",
+    },
+  ]);
+});
+
+test("generate.ts removes a ledger entry that never reproduces in any theme", async () => {
+  buildTokens.mockReturnValue([]);
+  readFileSync.mockImplementation((p: unknown) =>
+    String(p).endsWith("known-syntax-issues.json")
+      ? JSON.stringify([{ name: "--instui-gone-now", upstreamValue: "bad" }])
+      : "[]",
+  );
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.resetModules();
+  await import(MODULE_PATH);
+
+  expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('removed "--instui-gone-now"'));
+
+  const [, written] = writeFileSync.mock.calls.findLast(([p]) =>
+    String(p).endsWith("known-syntax-issues.json"),
+  ) as [string, string];
+  expect(JSON.parse(written)).toEqual([]);
 });
 
 // --- catalogRef ------------------------------------------------------------
