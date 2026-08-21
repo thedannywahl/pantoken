@@ -119,16 +119,16 @@ export const BESPOKE_SYNTAX: SyntaxRule<Grammar> = [
   [/circumference$/u, typeReference("length")],
   // Named "timing" but holds a bare duration (e.g. `0.2s`), not a `transition-timing-function`
   // keyword/`cubic-bezier()` — asserting `<time>` validates the actual value shape shipped.
-  [/transition-timing|toggle-transition$/u, typeReference("time")],
+  [/(?:transition-timing)|(?:toggle-transition$)/u, typeReference("time")],
   // Breakpoint/byline-size lengths — anchored so `byline-title-margin` (a real `margin`, handled
   // below) isn't shadowed by a broader `byline-` match.
-  [/breakpoints-|byline-(large|medium|small)$/u, typeReference("length")],
+  [/(?:breakpoints-)|(?:byline-(?:large|medium|small)$)/u, typeReference("length")],
   // Decomposed progress-circle geometry PIECES (e.g. `progress-circle-large-transform: 4.5em`) are
   // each a bare length used to build a `transform` elsewhere, not a valid `transform` value on
   // their own — distinct from the real button `transform`/`text-transform` tokens below, whose
   // values are always the `none` keyword.
   [/progress-circle-.*-transform$/u, typeReference("length")],
-  [/icon-illu-|img-image-blur-amount$/u, typeReference("length")],
+  [/(?:icon-illu-)|(?:img-image-blur-amount$)/u, typeReference("length")],
 ];
 
 /**
