@@ -2,10 +2,15 @@
  * `@pantoken/utils` — shared, upstream-free helpers used across the pantoken packages: the token
  * reference resolver (with `light-dark()` handling), the two token regexes (typed via `arkregex`),
  * kebab→camel case, hex-colour parsing, SVG sanitization, the pantoken spacing scale, reference-drift
- * validation, the css-tree-backed token syntax validator, and the generic token→utility-class emitters
- * that both `@pantoken/components` (semantic tier) and `@pantoken/plugin-primitives` (raw-palette tier)
- * build on. Depends only on `@pantoken/model` (types) + `arkregex`, so any package can use it without
- * pulling the GitHub-only upstream.
+ * validation, and the generic token→utility-class emitters that both `@pantoken/components`
+ * (semantic tier) and `@pantoken/plugin-primitives` (raw-palette tier) build on. Depends only on
+ * `@pantoken/model` (types) + `arkregex`, so any package can use it without pulling the GitHub-only
+ * upstream.
+ *
+ * The css-tree-backed token syntax validator lives at the separate `@pantoken/utils/token-syntax`
+ * entry, not this barrel — `css-tree` bundles a runtime `createRequire()` JSON load that breaks when
+ * pulled into a browser/SSR bundle, and this barrel is imported by browser-facing packages (e.g.
+ * `@pantoken/components`) for the Node-free helpers above.
  *
  * A pure barrel — every implementation lives in its own discrete module; add new helpers there and
  * re-export them here, don't grow this file.
@@ -23,23 +28,6 @@ export {
   focusOutlineDeclarations,
   focusOutlineRules,
 } from "./declarations.ts";
-
-// The token-name → CSS-property syntax table (real properties via `css-tree`/`mdn-data`, bespoke
-// pantoken properties via a shared grammar table) and the build-time token syntax validator — also
-// consumed by `docs/scripts/build-css-api.ts`.
-export {
-  BESPOKE_SYNTAX,
-  TOKEN_NAME_TO_PROPERTY,
-  candidatePropertyCoverage,
-  syntaxMismatches,
-} from "./token-syntax.ts";
-export type {
-  Grammar,
-  PatternCoverage,
-  PropertyName,
-  SyntaxRule,
-  TokenSyntaxIssue,
-} from "./token-syntax.ts";
 
 // The token reference resolver: expands `var(--x)` chains, with optional `light-dark()` collapsing.
 export { LIGHT_DARK_RE, VAR_RE, makeResolver, resolveTokens } from "./resolver.ts";

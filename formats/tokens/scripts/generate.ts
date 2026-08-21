@@ -14,7 +14,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { buildTokens } from "@pantoken/core";
 import { themeTokens } from "@instructure/instructure-design-tokens";
 import { deprecationShims } from "@pantoken/plugin-deprecations";
-import { syntaxMismatches } from "@pantoken/utils";
+import { syntaxMismatches } from "@pantoken/utils/token-syntax";
 import { defineToken } from "@pantoken/model";
 import type { DeprecationLedger, Theme } from "@pantoken/model";
 

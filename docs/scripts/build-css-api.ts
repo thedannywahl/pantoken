@@ -20,7 +20,8 @@ import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
-import { makeResolver, unknownReferences, BESPOKE_SYNTAX } from "@pantoken/utils";
+import { makeResolver, unknownReferences } from "@pantoken/utils";
+import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
 import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
