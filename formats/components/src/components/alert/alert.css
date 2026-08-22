@@ -36,12 +36,13 @@
  * </div>
  * <div class="pfx-alert -color-success">
  *   Congratulations! You're using the "success" color.
+ *   <button class="pfx-close-button -size-sm" aria-label="Close"></button>
  * </div>
  * ```
  * @structure
  * .pfx-alert {
  *   slot {}
- *   .pfx-close-button:optional {}
+ *   @component close-button:optional {}
  * }
  * @related close-button — The dismiss control an alert may include.
  * @sealed
@@ -54,7 +55,7 @@
 }
 
 @scope (.pfx-alert) {
-  :scope {
+  & {
     --timeout: 0;
     position: relative;
     min-inline-size: 12rem;
@@ -74,10 +75,18 @@
     line-height: var(--instui-component-alert-content-line-height);
     --pantoken-alert-icon-bg: var(--instui-component-alert-info-icon-background);
     --pantoken-alert-glyph: var(--instui-icon-info);
+
+    /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
+     takes a small symmetric inset, not the content padding), and reserve room only when it's present. */
+    > .pfx-close-button {
+      position: absolute;
+      inset-block-start: var(--instui-spacing-space-xs);
+      inset-inline-end: var(--instui-spacing-space-xs);
+    }
   }
 
   /* The solid variant-coloured bar, flush to the rounded left edge (overlapping the border). */
-  :scope::before {
+  &::before {
     content: "";
     position: absolute;
     inset-block: calc(-1 * var(--instui-component-alert-border-width));
@@ -89,7 +98,7 @@
   }
 
   /* The white variant glyph, centred over the bar (masked, so it takes the icon-colour token). */
-  :scope::after {
+  &::after {
     content: "";
     position: absolute;
     inset-block: 0;
@@ -100,28 +109,20 @@
     mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
   }
 
-  /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
-   takes a small symmetric inset, not the content padding), and reserve room only when it's present. */
-  :scope(>.pfx-close-button) {
-    position: absolute;
-    inset-block-start: var(--instui-spacing-space-xs);
-    inset-inline-end: var(--instui-spacing-space-xs);
-  }
-
-  :scope:has(> .pfx-close-button) {
+  &:has(> .pfx-close-button) {
     padding-inline-end: calc(
       var(--instui-component-base-button-medium-height) + var(--instui-spacing-space-xs)
     );
   }
 
   /* Opt out of the default elevation (InstUI's hasShadow={false}). */
-  :scope.-without-shadow {
+  &.-without-shadow {
     box-shadow: none;
   }
 
   /* screenReaderOnly: announced to assistive tech, but visually hidden. */
   /* fallow-ignore-next-line css-duplicate-block -- screenReaderOnly is a public Alert prop; declarations cannot be extracted without breaking the component API */
-  :scope.-screen-reader-only {
+  &.-screen-reader-only {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -134,23 +135,23 @@
     border: 0;
   }
 
-  :scope.-color-info {
+  &.-color-info {
     border-color: var(--instui-component-alert-info-border-color);
   }
 
-  :scope.-color-success {
+  &.-color-success {
     border-color: var(--instui-component-alert-success-border-color);
     --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
     --pantoken-alert-glyph: var(--instui-icon-circle-check);
   }
 
-  :scope.-color-warning {
+  &.-color-warning {
     border-color: var(--instui-component-alert-warning-border-color);
     --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
     --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
   }
 
-  :scope.-color-danger {
+  &.-color-danger {
     border-color: var(--instui-component-alert-danger-border-color);
     --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
     --pantoken-alert-glyph: var(--instui-icon-circle-x);
@@ -160,11 +161,11 @@
    bar), keeping the variant's bar colour. Last, so it wins over the per-variant glyph above. The
    generic icon painter also targets `[class*="-icon-"]::before` at equal specificity and later in the
    sheet — it would consume the bar — so re-assert the bar here at higher specificity. */
-  :scope[class*="-icon-"] {
+  &[class*="-icon-"] {
     --pantoken-alert-glyph: var(--pantoken-glyph);
   }
 
-  :scope[class*="-icon-"]::before {
+  &[class*="-icon-"]::before {
     inline-size: 2.5rem;
     block-size: auto;
     background: var(--pantoken-alert-icon-bg);
@@ -172,23 +173,23 @@
     mask: none;
   }
 
-  :scope.-timeout-1 {
+  &.-timeout-1 {
     --timeout: 1000;
   }
 
-  :scope.-timeout-2 {
+  &.-timeout-2 {
     --timeout: 2000;
   }
 
-  :scope.-timeout-3 {
+  &.-timeout-3 {
     --timeout: 3000;
   }
 
-  :scope.-timeout-4 {
+  &.-timeout-4 {
     --timeout: 4000;
   }
 
-  :scope.-timeout-5 {
+  &.-timeout-5 {
     --timeout: 5000;
   }
 }
