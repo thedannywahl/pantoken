@@ -259,6 +259,7 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
 const classNames = {
   deprecated: BADGE_CLASS_BY_LABEL.Deprecated,
   alias: BADGE_CLASS_BY_LABEL.Alias,
+  interaction: BADGE_CLASS_BY_LABEL.Interaction,
   stage: { stable: BADGE_CLASS_BY_LABEL.Stable },
 };
 
