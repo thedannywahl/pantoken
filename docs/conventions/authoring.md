@@ -181,20 +181,37 @@ chained modifiers, which stay exactly as authored.
   (`.instui-radio.-variant-toggle`), not the bare token, so a bare `.-canonical` match doesn't wrongly
   clone `:not(.-canonical)` or compound rules.
 
-## `@scope` and child-combinator scoping
+## `@scope`, nesting, and root targeting
 
-`scope(root, body, children?)` (in `helpers.ts`) rewrites element rules and wraps them in
-`@scope (root) { … }`. Two constraints that bite:
+The default authoring system is the `alert.css` pattern:
 
-1. Keep the component **root rule and every root-modifier-only rule (especially `-size-*`) outside**
-   the scope, prefixed — because `withSizeAliases`/`withAliases` append twin rules at top level by
-   scanning flat CSS; a `:scope.-size-*` twin emitted inside a scope block would be orphaned.
-2. Never pass a body whose root token prefixes a sibling class (e.g. `.instui-progress` prefixes
-   `.instui-progress-value`) — the string split would corrupt it to `:scope-value`. Keep flat
-   siblings out of the scoped body.
+- Use a single scoped root block: `@scope (.instui-foo) { :scope { … } }`.
+- Keep root-owned behavior nested under that root with `&` (`&::before`, `&.-variant-x`,
+  `&[class*="-icon-"]`, `&:has(> .part)`).
+- Keep child-only selectors as structural descendants inside the root (`> .part`, `.part`,
+  `.part::before`) instead of restating independent top-level `:scope > ...` rules.
+- Never use functional `:scope(...)`; use standard combinators (`:scope > .part`) or nested child
+  selectors inside `:scope`.
+
+This keeps ownership explicit (root vs descendant), reduces duplicated selector prefixes, and produces
+more stable diffs when modifier/state branches are added.
+
+When you must support legacy generator behavior (`scope(root, body, children?)` in `helpers.ts`) during
+migration, preserve semantic parity first, then normalize toward the scoped-root nested form above.
 
 `@scope`/`:is`/`:has`/`:where` are **not** namespacing tools — only a unique or prefixed name prevents
 a collision. Scoping narrows intent and deep-nesting collisions; it isn't collision-proof.
+
+## Local utility `@property` values
+
+For repeated record-local dimensions or timings (for example rail/glyph sizes), define short local custom
+properties and register them with `@property` near the top of the file:
+
+- Use local names without global namespace prefixes when the property is record-scoped
+  (`--rail-size`, `--glyph-size`, `--duration`).
+- Keep global prefixes (`--instui-*`, `--pantoken-*`) only for truly shared cross-record/token surfaces.
+- Document internal-only utility properties with valid `@cssproperty` prose and `@readonly` markers when
+  they are not public customization API.
 
 ## Icons
 
