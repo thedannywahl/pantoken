@@ -298,9 +298,9 @@ test("billboard has sizes and a clickable variant; range has handle states and a
   const bbSelectors = norm(bb).replaceAll(/\s*>\s*/g, " > ");
   expect(bb).toContain(".instui-billboard.-clickable");
   expect(bb).toContain("var(--instui-component-billboard-clickable-active-bg)");
-  // A hero (icon/image) + heading lead the message (sub-elements, so scoped as :scope > .x).
-  expect(bbSelectors).toContain(":scope > .hero {");
-  expect(bbSelectors).toContain(":scope > .heading {");
+  // A hero (icon/image) + heading lead the message (sub-elements, nested under :scope).
+  expect(bbSelectors).toMatch(/:scope\s*\{[\s\S]*>\s*\.hero\s*\{/u);
+  expect(bbSelectors).toContain(" > .heading {");
   const range = rangeInputCss({ prefix: "instui" });
   expect(range).toContain(".instui-range-input");
   expect(range).toContain(":hover::-webkit-slider-thumb");

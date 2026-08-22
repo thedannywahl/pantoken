@@ -21,81 +21,83 @@
  */
 
 @scope (.pfx-breadcrumb) {
-  :scope.-size-sm li:not(:last-child)::after {
-    margin-inline-start: var(--instui-component-breadcrumb-gap-sm);
-  }
-
-  :scope.-size-md li:not(:last-child)::after {
-    margin-inline-start: var(--instui-component-breadcrumb-gap-md);
-  }
-
-  :scope.-size-lg li:not(:last-child)::after {
-    margin-inline-start: var(--instui-component-breadcrumb-gap-lg);
-  }
-
-  :scope > ol > li {
-    margin: 0;
-  }
-
-  :scope a {
-    color: var(--instui-component-link-text-color);
-    text-decoration: none;
-  }
-
-  :scope a[class*="-icon-"]::before {
-    margin-inline-end: var(--instui-spacing-space2xs);
-  }
-
-  :scope a:hover {
-    color: var(--instui-component-link-text-hover-color);
-    text-decoration: underline;
-  }
-
-  :scope li:not(:last-child) {
-    color: var(--instui-color-text-muted);
-  }
-
-  :scope li:not(:last-child)::after {
-    content: "";
-    display: inline-block;
-    inline-size: 1em;
-    block-size: 1em;
-    vertical-align: -0.125em;
-    margin-inline-start: var(--instui-component-breadcrumb-gap-md);
-    background: currentColor;
-    -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
-    mask: var(--instui-icon-chevron-right) center / contain no-repeat;
-  }
-
-  [dir="rtl"] :scope li:not(:last-child)::after {
-    -webkit-mask: var(--instui-icon-chevron-left) center / contain no-repeat;
-    mask: var(--instui-icon-chevron-left) center / contain no-repeat;
-  }
-
-  @media (--breakpoint-large-down) {
-    :scope > ol:has(> li:nth-last-child(2)) > li:not(:nth-last-child(2)) {
-      display: none;
+  :scope {
+    &.-size-sm li:not(:last-child)::after {
+      margin-inline-start: var(--instui-component-breadcrumb-gap-sm);
     }
 
-    :scope li:not(:last-child)::after {
-      display: none;
+    &.-size-md li:not(:last-child)::after {
+      margin-inline-start: var(--instui-component-breadcrumb-gap-md);
     }
 
-    :scope li:nth-last-child(2)::before {
+    &.-size-lg li:not(:last-child)::after {
+      margin-inline-start: var(--instui-component-breadcrumb-gap-lg);
+    }
+
+    > ol > li {
+      margin: 0;
+    }
+
+    a {
+      color: var(--instui-component-link-text-color);
+      text-decoration: none;
+    }
+
+    a[class*="-icon-"]::before {
+      margin-inline-end: var(--instui-spacing-space2xs);
+    }
+
+    a:hover {
+      color: var(--instui-component-link-text-hover-color);
+      text-decoration: underline;
+    }
+
+    li:not(:last-child) {
+      color: var(--instui-color-text-muted);
+    }
+
+    li:not(:last-child)::after {
       content: "";
       display: inline-block;
       inline-size: 1em;
       block-size: 1em;
       vertical-align: -0.125em;
-      margin-inline-end: var(--instui-component-breadcrumb-gap-md);
+      margin-inline-start: var(--instui-component-breadcrumb-gap-md);
       background: currentColor;
+      -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+      mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+    }
+
+    [dir="rtl"] & li:not(:last-child)::after {
       -webkit-mask: var(--instui-icon-chevron-left) center / contain no-repeat;
       mask: var(--instui-icon-chevron-left) center / contain no-repeat;
     }
 
-    [dir="rtl"] :scope > li:nth-last-child(2) > a::before {
-      -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
-      mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+    @media (--breakpoint-large-down) {
+      > ol:has(> li:nth-last-child(2)) > li:not(:nth-last-child(2)) {
+        display: none;
+      }
+
+      li:not(:last-child)::after {
+        display: none;
+      }
+
+      li:nth-last-child(2)::before {
+        content: "";
+        display: inline-block;
+        inline-size: 1em;
+        block-size: 1em;
+        vertical-align: -0.125em;
+        margin-inline-end: var(--instui-component-breadcrumb-gap-md);
+        background: currentColor;
+        -webkit-mask: var(--instui-icon-chevron-left) center / contain no-repeat;
+        mask: var(--instui-icon-chevron-left) center / contain no-repeat;
+      }
+
+      [dir="rtl"] & > li:nth-last-child(2) > a::before {
+        -webkit-mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+        mask: var(--instui-icon-chevron-right) center / contain no-repeat;
+      }
     }
   }
 }

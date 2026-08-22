@@ -153,76 +153,78 @@
 }
 
 @scope (.pfx-billboard) {
-  /* The hero (an icon or image) leads the block. Size it via font-size on the glyph in the markup. */
-  :scope > .hero {
-    display: inline-flex;
-    justify-content: center;
-    margin-block-end: var(--instui-spacing-space-sm);
-    color: var(--instui-color-text-base);
-    font-size: var(--instui-component-icon-illu-md);
-  }
+  :scope {
+    /* The hero (an icon or image) leads the block. Size it via font-size on the glyph in the markup. */
+    > .hero {
+      display: inline-flex;
+      justify-content: center;
+      margin-block-end: var(--instui-spacing-space-sm);
+      color: var(--instui-color-text-base);
+      font-size: var(--instui-component-icon-illu-md);
+    }
 
-  /* The documented `-icon-*` modifier lives directly on .hero. */
-  :scope > .hero[class*="-icon-"] {
-    line-height: 1;
-  }
+    /* The documented `-icon-*` modifier lives directly on .hero. */
+    > .hero[class*="-icon-"] {
+      line-height: 1;
+    }
 
-  :scope.-size-sm > .hero {
-    font-size: var(--instui-component-icon-illu-sm);
-  }
+    &.-size-sm > .hero {
+      font-size: var(--instui-component-icon-illu-sm);
+    }
 
-  :scope.-size-md > .hero,
-  :scope.-size-medium > .hero {
-    font-size: var(--instui-component-icon-illu-md);
-  }
+    &.-size-md > .hero,
+    &.-size-medium > .hero {
+      font-size: var(--instui-component-icon-illu-md);
+    }
 
-  :scope.-size-lg > .hero {
-    font-size: var(--instui-component-icon-illu-lg);
-  }
+    &.-size-lg > .hero {
+      font-size: var(--instui-component-icon-illu-lg);
+    }
 
-  :scope.-size-large > .hero {
-    font-size: var(--instui-component-icon-illu-lg);
-  }
+    &.-size-large > .hero {
+      font-size: var(--instui-component-icon-illu-lg);
+    }
 
-  :scope.-size-sm > .hero[class*="-icon-"] {
-    font-size: var(--instui-component-icon-illu-sm);
-  }
+    &.-size-sm > .hero[class*="-icon-"] {
+      font-size: var(--instui-component-icon-illu-sm);
+    }
 
-  :scope.-size-small > .hero[class*="-icon-"] {
-    font-size: var(--instui-component-icon-illu-sm);
-  }
+    &.-size-small > .hero[class*="-icon-"] {
+      font-size: var(--instui-component-icon-illu-sm);
+    }
 
-  :scope.-size-md > .hero[class*="-icon-"],
-  :scope.-size-medium > .hero[class*="-icon-"] {
-    font-size: var(--instui-component-icon-illu-md);
-  }
+    &.-size-md > .hero[class*="-icon-"],
+    &.-size-medium > .hero[class*="-icon-"] {
+      font-size: var(--instui-component-icon-illu-md);
+    }
 
-  :scope.-size-lg > .hero[class*="-icon-"] {
-    font-size: var(--instui-component-icon-illu-lg);
-  }
+    &.-size-lg > .hero[class*="-icon-"] {
+      font-size: var(--instui-component-icon-illu-lg);
+    }
 
-  :scope.-size-large > .hero[class*="-icon-"] {
-    font-size: var(--instui-component-icon-illu-lg);
-  }
+    &.-size-large > .hero[class*="-icon-"] {
+      font-size: var(--instui-component-icon-illu-lg);
+    }
 
-  /* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
-  :scope > .heading {
-    margin: 0 0 var(--instui-spacing-space-xs);
-    color: var(--instui-color-text-base);
-    font-weight: bold;
-    font-size: var(--instui-component-text-font-size-x-x-large);
-  }
+    /* The heading sits above the message — bolder and larger (Billboard renders a Heading here). */
+    > .heading {
+      margin: 0 0 var(--instui-spacing-space-xs);
+      color: var(--instui-color-text-base);
+      font-weight: bold;
+      font-size: var(--instui-component-text-font-size-x-x-large);
+    }
 
-  :scope > .message {
-    color: var(--instui-color-text-base);
-    font-size: var(--instui-font-size-text-base);
-  }
+    > .message {
+      color: var(--instui-color-text-base);
+      font-size: var(--instui-font-size-text-base);
+    }
 
-  :scope.-clickable:hover > .hero {
-    color: var(--instui-component-link-text-color);
-  }
+    &.-clickable:hover > .hero {
+      color: var(--instui-component-link-text-color);
+    }
 
-  :scope.-clickable:active > .hero {
-    color: var(--instui-component-link-on-color-text-color);
+    &.-clickable:active > .hero {
+      color: var(--instui-component-link-on-color-text-color);
+    }
   }
 }
