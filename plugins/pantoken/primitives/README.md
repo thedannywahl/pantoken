@@ -20,7 +20,7 @@ import "@pantoken/plugin-primitives/primitives.css";
 - **Colors** — `.instui-bg-<name>`, `.instui-fg-<name>`, `.instui-border-<name>` for every
   `--instui-primitive-color-*` token (same shape as the semantic color utilities, keyed on the
   primitive name).
-- **Fonts** — `.instui-primitive-font-family-*` → `font-family`, `.instui-primitive-font-weight-*` →
+- **Fonts** — `.--primitive-font-family-*` → `font-family`, `.--primitive-font-weight-*` →
   `font-weight`.
 
 ## API
