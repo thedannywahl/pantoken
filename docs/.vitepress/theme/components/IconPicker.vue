@@ -339,7 +339,7 @@ const output = computed(() => {
       <legend class="instui-screen-reader-content">Icons</legend>
 
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
-        <div class="icon-picker__sections instui-view -border-radius-medium instui-p-sm">
+        <div class="icon-picker__sections instui-view -border-radius-medium --p-sm">
           <p
             v-if="loadingInstui"
             class="instui-text -color-secondary -style-italic icon-picker__status"

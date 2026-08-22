@@ -31,9 +31,9 @@
  * @modifier -size-xl — Extra large.
  * @example
  * ```html
- * <span class="pfx-text -size-xs instui-display-block">x-small text</span>
- * <span class="pfx-text -size-sm instui-display-block">small text</span>
- * <span class="pfx-text -variant-content-quote instui-display-block">AI highlight text</span>
+ * <span class="pfx-text -size-xs --display-block">x-small text</span>
+ * <span class="pfx-text -size-sm --display-block">small text</span>
+ * <span class="pfx-text -variant-content-quote --display-block">AI highlight text</span>
  * <span class="pfx-text -color-ai-highlight">AI highlight text</span>
  * ```
  * @related heading — Typography for headings rather than body text.

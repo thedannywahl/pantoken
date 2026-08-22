@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { globalModifierSelector } from "@pantoken/utils";
 
 /** The stacking depths, deepest → topmost — same order and names as `@pantoken/plugin-stacking`. */
 const STACKING_LEVELS = ["deepest", "below", "above", "topmost"] as const;
@@ -16,21 +16,21 @@ export const stacking: Definition = defineUtility({
   name: "stacking",
   css: (p) => {
     const rules = STACKING_LEVELS.map((level) => {
-      const selectors = globalSelectors(p, `.${p}stack-${level}`, `.-stack-${level}`);
-      return `${selectors.join(", ")} { z-index: var(--instui-component-view-stacking-${level}); }`;
+      const selector = globalModifierSelector(p, `stack-${level}`);
+      return `${selector} { z-index: var(--instui-component-view-stacking-${level}); }`;
     });
     // prettier-ignore
     return css`/**
  * @utility stacking
- * @selector .instui-stack-topmost
+ * @selector .--stack-topmost
  * @global
- * @summary z-index depth utilities — \`.instui-stack-<level>\` (\`deepest\`, \`below\`, \`above\`, \`topmost\`) — usable bare or chained onto any component, so layers stack predictably instead of by hand-tuned numbers.
- * @modifier -stack-deepest — The lowest stacking depth.
- * @modifier -stack-below — Below the default flow.
- * @modifier -stack-above — Above the default flow.
- * @modifier -stack-topmost — The highest stacking depth (overlays, menus).
+ * @summary z-index depth utilities — \`.--stack-<level>\` (\`deepest\`, \`below\`, \`above\`, \`topmost\`) — usable bare or chained onto any component, so layers stack predictably instead of by hand-tuned numbers.
+ * @modifier --stack-deepest — The lowest stacking depth.
+ * @modifier --stack-below — Below the default flow.
+ * @modifier --stack-above — Above the default flow.
+ * @modifier --stack-topmost — The highest stacking depth (overlays, menus).
  * @example
- * <div class="instui-stack-topmost">Always on top.</div>
+ * <div class="--stack-topmost">Always on top.</div>
  */
 ${rules.join("\n")}`;
   },

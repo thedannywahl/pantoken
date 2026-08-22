@@ -23,10 +23,10 @@ test("primitive colors emit bg/fg/border utilities keyed on the primitive token"
 test("primitive fonts map to their one property via the token transformer", () => {
   const css = primitivesCss(names, { prefix: "instui" });
   expect(css).toContain(
-    ".instui-primitive-font-family-lato { font-family: var(--instui-primitive-font-family-lato); }",
+    ":where(*).--primitive-font-family-lato.--primitive-font-family-lato.--primitive-font-family-lato { font-family: var(--instui-primitive-font-family-lato); }",
   );
   expect(css).toContain(
-    ".instui-primitive-font-weight-regular { font-weight: var(--instui-primitive-font-weight-regular); }",
+    ":where(*).--primitive-font-weight-regular.--primitive-font-weight-regular.--primitive-font-weight-regular { font-weight: var(--instui-primitive-font-weight-regular); }",
   );
 });
 

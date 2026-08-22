@@ -41,33 +41,6 @@ export const ns = (prefix: string | null | undefined): string => (prefix ? `${pr
 export const wrap = (name: string, prefix: string, rules: string): string =>
   `/* InstUI ${name} (@pantoken/components) — prefix: ${prefix} */\n${rules.trim()}\n`;
 
-/**
- * Emit the three utility selector variants from one canonical modifier token:
- * 1) namespaced utility class + modifier,
- * 2) namespaced bare modifier,
- * 3) bare modifier (or an override for legacy shapes).
- */
-const utilityVariantSelectors = (
-  baseClass: string,
-  namespace: string,
-  modifier: string,
-  bareSelector: string = modifier,
-): [string, string, string] => [
-  `${baseClass}${modifier}`,
-  `.-${namespace}${modifier}`,
-  bareSelector,
-];
-
-/** Emit one CSS rule from utility selector variants plus a declaration body. */
-export const utilityVariantRule = (
-  baseClass: string,
-  namespace: string,
-  modifier: string,
-  declaration: string,
-  bareSelector?: string,
-): string =>
-  `${utilityVariantSelectors(baseClass, namespace, modifier, bareSelector).join(", ")} { ${declaration}; }`;
-
 // ── Masked-glyph constants ─────────────────────────────────────────────────────
 /**
  * A contained, centred mask value pointing at a shared `--instui-icon-<name>` token, painted via

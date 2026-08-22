@@ -11,13 +11,14 @@
  *     anything beyond applySpacing (indicating real browser-side behavior).
  */
 
-import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import {
   ELEMENTS,
   ICON_ELEMENTS,
   NESTED_DEPS,
 } from "../../../renderers/web-components/src/lib/elements-meta.ts";
+import { findCssIconNames, findCssNames } from "./css-components.ts";
 
 // Web component elements with no CSS counterpart and no interactions JS role.
 const SKIP_WEB_ELEMENTS = new Set(["icon"]);
@@ -41,22 +42,13 @@ function hasBehavior(name: string): boolean {
 // Read CSS component names from the filesystem — avoids importing formats/components
 // source which depends on generated output that may not exist yet in CI.
 const cssComponentsDir = resolve(import.meta.dirname, "../../../formats/components/src/components");
-// select.ts is experimental and explicitly not in the COMPONENTS registry — skip it.
-const CSS_FS_SKIP = new Set(["select"]);
-const cssNames = new Set(
-  readdirSync(cssComponentsDir)
-    .filter((f) => f.endsWith(".ts") && f !== "index.ts")
-    .map((f) => f.replace(/\.ts$/, ""))
-    .filter((n) => !CSS_FS_SKIP.has(n)),
-);
+
+// Each component is a per-record directory (<name>/index.ts, some with a co-located <name>.css);
+// only "index.ts" and "generate.ts" (color-utility-style scripts) sit alongside them as flat files.
+const cssNames = findCssNames(cssComponentsDir);
 
 // Detect icon usage by reading source text — no import needed.
-const cssIconNames = new Set(
-  [...cssNames].filter((name) => {
-    const src = readFileSync(resolve(cssComponentsDir, `${name}.ts`), "utf8");
-    return /var\(--instui-icon-/.test(src);
-  }),
-);
+const cssIconNames = findCssIconNames(cssComponentsDir, cssNames);
 
 const webNames = new Set(ELEMENTS as readonly string[]);
 const iconElementNames = new Set(ICON_ELEMENTS as readonly string[]);

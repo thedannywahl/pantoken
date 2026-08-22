@@ -24,7 +24,7 @@
  * @accessibility For an important message, add `role="alert"` or an `aria-live` region so assistive tech announces it; the dismiss control is a labelled close button (the `.pfx-close-button` in the example carries `aria-label="Close"`).
  * @example -nocard
  * ```html
- * <div class="pfx-alert -icon-megaphone pfx-mb-md">
+ * <div class="pfx-alert -icon-megaphone --mb-md">
  *   An alert with the default <code>info</code> color, and a custom icon.
  * </div>
  * <div class="pfx-alert -color-success">

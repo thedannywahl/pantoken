@@ -22,6 +22,7 @@ import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
+import capabilities from "@pantoken/interactions/component-capabilities.json" with { type: "json" };
 import { BADGE_CLASS_BY_LABEL } from "./api-badge-classes.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
@@ -285,6 +286,19 @@ export const makeResolveSource =
   };
 
 /**
+ * Recursively collect every `.ts`/`.css` file under `dir` — each record now lives in its own
+ * `<name>/` directory (some nesting members further, e.g. `breadcrumb/members/link/`), so a flat
+ * single-level `readdirSync` misses everything.
+ */
+function walkSourceFiles(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) return walkSourceFiles(path);
+    return entry.name.endsWith(".ts") || entry.name.endsWith(".css") ? [path] : [];
+  });
+}
+
+/**
  * Every authoring source under `<componentsRoot>/src/{components,utilities,rules,declarations}` + the
  * color record's generate.ts. Scans both `.css` (the migrated static records carry the `@component` tag
  * in their co-located `.css`) and `.ts` (the parametric records — button, the input controls, heading —
@@ -292,12 +306,9 @@ export const makeResolveSource =
  * `sourceMap` skips it and links to the `.css`.
  */
 export function componentSources(componentsRoot: string): string[] {
-  const files = ["components", "utilities", "rules", "declarations"].flatMap((d) => {
-    const dir = join(componentsRoot, "src", d);
-    return readdirSync(dir)
-      .filter((f) => f.endsWith(".ts") || f.endsWith(".css"))
-      .map((f) => join(dir, f));
-  });
+  const files = ["components", "utilities", "rules", "declarations"].flatMap((d) =>
+    walkSourceFiles(join(componentsRoot, "src", d)),
+  );
   files.push(join(componentsRoot, "scripts", "generate.ts")); // the `color` utility's doc lives here
   return files;
 }
@@ -474,6 +485,57 @@ export function writeCssIndexBlurb(
   }
 }
 
+/**
+ * Component name → capability type (`"css-only" | "js-only" | "both"`), read from the same
+ * auto-detected `component-capabilities.json` the CDN picker uses — the single source of truth for
+ * whether a component needs `@pantoken/interactions`, so the docs badge can't drift from it.
+ */
+const capabilityByName = new Map(
+  (capabilities.components as { name: string; type: string }[]).map((c) => [c.name, c.type]),
+);
+
+const JS_REQUIREMENT_MARKER = "<!-- js-requirement -->";
+
+/** The "Requires JS" callout body for a `js-only` (no CSS at all) vs. `both` (CSS + behavior) record. */
+function jsRequirementCallout(type: "js-only" | "both"): string {
+  const note =
+    type === "js-only"
+      ? "This component ships no CSS of its own — its markup and behavior come entirely from `@pantoken/interactions`."
+      : "This component's CSS alone is inert — pair it with `@pantoken/interactions` for the interactive behavior.";
+  return [
+    JS_REQUIREMENT_MARKER,
+    "> [!TIP]",
+    `> **Requires JS** — ${note} See the [CDN picker](/guide/cdn-picker) for the per-component bundle URL.`,
+    "",
+  ].join("\n");
+}
+
+/**
+ * Insert an idempotent "Requires JS" callout into each generated component page whose
+ * `component-capabilities.json` type isn't `"css-only"`, right before its first `##` section (after
+ * the title/summary/meta-line header `@cssdoc/markdown` renders — there's no hook to inject into that
+ * header directly, so this post-processes the written file).
+ */
+export function annotateJsRequirement(
+  entries: readonly CssDocEntry[],
+  pages: readonly string[],
+  capabilityMap: ReadonlyMap<string, string> = capabilityByName,
+): void {
+  entries.forEach((entry, i) => {
+    const type = capabilityMap.get(entry.name);
+    if (type !== "js-only" && type !== "both") return;
+    const page = pages[i];
+    const md = readFileSync(page, "utf8");
+    if (md.includes(JS_REQUIREMENT_MARKER)) return;
+
+    const lines = md.split("\n");
+    const sectionIndex = lines.findIndex((l) => l.startsWith("## "));
+    const insertAt = sectionIndex === -1 ? lines.length : sectionIndex;
+    lines.splice(insertAt, 0, jsRequirementCallout(type), "");
+    writeFileSync(page, lines.join("\n"));
+  });
+}
+
 /** Drift guard: every consumed token must exist in the IR (a typo'd var() is a build failure). */
 export function assertNoUnknownReferences(css: string): void {
   const missing = unknownReferences(css, tokens).filter(
@@ -585,7 +647,7 @@ export const build = (): void => {
 
   const outSubdir = "css";
   const cssSectionLabel = "CSS";
-  const { entries, sidebarMerged } = emitCssApi({
+  const { entries, pages, sidebarMerged } = emitCssApi({
     outputDirectory: join(docsRoot, "api"),
     css: [...cssPaths, ...pluginPaths],
     outSubdir,
@@ -612,6 +674,7 @@ export const build = (): void => {
   }
 
   writeCssIndexBlurb(outSubdir);
+  annotateJsRequirement(entries, pages);
 
   // `@cssdoc/markdown` keeps `@example` as a plain code fence (generic — it can't assume the host loads
   // the component CSS). Our docs do, so `demoMarkdownIt` seams a live preview onto each fence at compile

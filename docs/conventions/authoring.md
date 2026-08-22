@@ -113,10 +113,10 @@ export const fooCss = foo.css;
 ## Reuse an existing global utility — don't invent a parallel one
 
 `view`'s and `text`'s own key-value modifiers (background, border, shadow, display, position,
-overflow, cursor, colour, weight, size, transform, variants) are **copied** into global, dual-selector
-utilities — usable bare (`<div class="instui-bg-secondary">`) or chained onto any component
-(`<button class="instui-button -bg-danger">`) — without touching the component's own chained
-modifiers, which stay exactly as authored.
+overflow, cursor, colour, weight, size, transform, variants) are **copied** into global utilities —
+usable bare (`<div class="--bg-secondary">`) or chained onto any component, core or
+plugin-authored (`<button class="instui-button --bg-danger">`) — without touching the component's own
+chained modifiers, which stay exactly as authored.
 
 - **Never invent a new class word for something a global utility already covers.** If a generic
   `bg`/`text`/`border`/`border-radius`/`border-width`/`box-shadow`/`display` utility already exists,
@@ -125,38 +125,40 @@ modifiers, which stay exactly as authored.
   `-border-radius-small` next to the existing `-border-radius-sm`.
 - Only a genuinely new concept (no existing global analogue) gets its own utility file — see
   `utilities/position/`, `utilities/overflow/`, `utilities/cursor/`.
-- The dual-selector mechanism is `GLOBAL_ALIAS_TARGETS`/`globalSelectors()` (`lib/global-alias.ts`) —
-  the same pattern spacing/gap pioneered, generalized so any utility can reuse it. It lives in its own
-  module (not `helpers.ts`) specifically to avoid a component → helpers → global-alias → components
-  import cycle.
-- `packages/utils`'s `colorUtilitiesCss`/`tokenUtilitiesCss` take an optional `chainTargets` option for
-  the same dual behavior, and `colorUtilitiesCss` accepts `[name, value]` pairs (not just
-  prefix-relative names) so a component's own token family can feed the same class word.
-- **Watch the combinatorial cost**: a rule's selector list is `1 + chainTargets.length` selectors long.
-  For a utility with many breakpoint/name variants (like `responsive`), multiplying that by ~70
-  components pushes the shared alias post-processors (`withSizeAliases`/`deprecatedAliasPairs` in
-  `lib/aliases.ts`, which scan with unanchored regexes) into unusably slow territory — confirmed by a
-  multi-minute hang during authoring. `responsive` stays bare-only for this reason; anything with a
-  similarly large modifier surface should be measured before adding `chainTargets`.
-- `cssdoc.jsonc`'s `globalPrecedence: "base"` (pinned explicitly at the repo root) is the tie-breaker
-  when a component's own modifier and a `@global` utility's copy share a name: the component's own
-  documentation wins.
+- A global utility modifier is spelled with a **double dash** (`--bg-secondary`), never a single dash
+  (single-dash `-mod` is reserved for a component's own modifiers) — this is a deliberate,
+  non-colliding namespace split, not a stylistic choice.
+- The selector mechanism is `globalModifierSelector(p, name)` (`@pantoken/utils`):
+  `:where(*).--name.--name.--name`. A plain repeated class selector already matches _any_ element
+  carrying it — standalone, or chained onto a component, core or plugin-authored (`.instui-card`,
+  `.instui-agent-shell`) — no per-component enumeration needed; the `:where(*)` wrapper contributes
+  zero specificity of its own (documentation that this is a global modifier, not a scoping condition),
+  while the modifier class repeated 3x gives the rule (0,3,0) specificity, which deterministically
+  outranks any real 2-class component-modifier compound (`.instui-view.-mod`, 0,2,0) **regardless of
+  source/import order**. `packages/utils`'s `colorUtilitiesCss`/`tokenUtilitiesCss` build on the same
+  helper.
+- This replaced an older per-component compound-selector fan-out (`GLOBAL_ALIAS_TARGETS`/
+  `globalSelectors()`/`chainTargets`, one `.instui-<component>.-mod` selector per real core
+  component) that: couldn't reach plugin-authored components at all (the core package can't know a
+  plugin's class names at its own build time); relied on `cssdoc.jsonc`'s `globalPrecedence: "base"`
+  and import order for override behavior, which only ever affected generated _documentation_ merge
+  order, not real browser cascade; and didn't scale to a utility with a large modifier surface (see
+  spacing below).
 
 ## Universal spacing/gap modifiers
 
-- `margin`/`padding`/`gap` utility classes (`utilities/spacing.ts`, `utilities/gap.ts`) are
-  **universal**: every component and `view` get a component-attached alias for free
-  (`.instui-card.-mb-sm`), with no per-record authoring — see `GLOBAL_ALIAS_TARGETS` in
-  `lib/global-alias.ts` (spacing/gap re-export it as `SPACING_ALIAS_TARGETS` for backward compat).
-- Each value ships in exactly two spellings: **short** (`-mb-sm`, unchanged since before the long
-  spelling existed) and fully **long**, word-spelled (`-margin-bottom-small`) — never a mixed-segment
-  form (no `-margin-e-small`, no `-me-small`).
+- `margin`/`padding`/`gap` utility classes (`utilities/spacing/`, `utilities/gap/`) are **universal**:
+  every registered component (core or plugin) gets the modifier for free via `globalModifierSelector`,
+  with no per-record authoring — see the mechanism above.
+- Each value ships in exactly two spellings: **short** (`--mb-sm`) and fully **long**, word-spelled
+  (`--margin-bottom-small`) — never a mixed-segment form (no `-margin-e-small`, no `-me-small`).
 - Because these modifiers are documented on the separate `spacing`/`gap` utility records, not on the
   component they're chained onto, a consumer's `@cssdoc/eslint-plugin` `valid-class-usage` check may
-  flag `.instui-card.-mb-sm` as an unknown modifier — that rule looks up modifiers against the record
-  the base class belongs to, not wherever the CSS rule happens to be authored. A wildcard doc-injection
-  helper to close this gap (for spacing/gap and every other dual utility in this section) is still a
-  cssdoc-tooling follow-up, not yet implemented.
+  still flag `.instui-card.--mb-sm` as an unknown modifier — that rule looks up modifiers against the
+  record the base class belongs to, not wherever the CSS rule happens to be authored. The `--`
+  namespace split at least guarantees a global modifier never collides with (or gets shadowed by) a
+  component's own same-named modifier; closing the remaining lint gap is still a cssdoc-tooling
+  follow-up, not yet implemented.
 - If a component already sets its own `margin`/`padding`/`gap` from a component-specific token (e.g.
   card's responsive padding, breadcrumb's `gap`), document that in `@remarks` and warn that chaining a
   spacing/gap utility modifier overrides it — see breadcrumb, button, byline, checkbox, form-field,

@@ -7,18 +7,16 @@ test("layout: emits exactly one well-formed cssdoc record with no token drift", 
   validate(layout);
 });
 
-test("layout utilities: three-selector pattern (base + namespaced + bare modifiers)", () => {
+test("layout utilities: global modifier selector shape, chainable onto any component", () => {
   const css = layoutUtilitiesCss({ prefix: "instui" });
-  expect(css).toContain(".instui-layout-display-flex, .-layout-display-flex, -display-flex");
+  expect(css).toContain(":where(*).--display-flex.--display-flex.--display-flex");
   expect(css).toContain("display: flex;");
   expect(css).toContain(
-    ".instui-layout-display-inline-block, .-layout-display-inline-block, -display-inline-block",
+    ":where(*).--display-inline-block.--display-inline-block.--display-inline-block",
   );
   expect(css).toContain("display: inline-block;");
-  expect(css).toContain(
-    ".instui-layout-text-align-center, .-layout-text-align-center, -text-align-center",
-  );
+  expect(css).toContain(":where(*).--text-align-center.--text-align-center.--text-align-center");
   expect(css).toContain("text-align: center;");
-  expect(css).toContain(".instui-layout-text-align-end, .-layout-text-align-end, -text-align-end");
+  expect(css).toContain(":where(*).--text-align-end.--text-align-end.--text-align-end");
   expect(css).toContain("text-align: end;");
 });

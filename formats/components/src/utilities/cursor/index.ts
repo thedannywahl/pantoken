@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { globalModifierSelector } from "@pantoken/utils";
 
 const CURSORS = [
   "auto",
@@ -26,10 +26,9 @@ const buildPropertyRules = (
   property: string,
   values: readonly string[],
 ): string[] =>
-  values.map((value) => {
-    const selectors = globalSelectors(p, `.${p}${prefix}-${value}`, `.-${prefix}-${value}`);
-    return `${selectors.join(", ")} { ${property}: ${value}; }`;
-  });
+  values.map(
+    (value) => `${globalModifierSelector(p, `${prefix}-${value}`)} { ${property}: ${value}; }`,
+  );
 
 /** The cursor utility — `cursor` as composable, global classes. */
 export const cursor: Definition = defineUtility({
@@ -39,19 +38,19 @@ export const cursor: Definition = defineUtility({
     // prettier-ignore
     return css`/**
  * @utility cursor
- * @selector .instui-cursor-pointer
+ * @selector .--cursor-pointer
  * @global
- * @summary \`cursor\` as a composable, global class — \`.instui-cursor-<value>\` — usable bare or chained onto any component (\`.instui-button.-cursor-pointer\`).
- * @modifier -cursor-auto — cursor: auto.
- * @modifier -cursor-default — cursor: default.
- * @modifier -cursor-pointer — cursor: pointer.
- * @modifier -cursor-not-allowed — cursor: not-allowed.
- * @modifier -cursor-text — cursor: text.
- * @modifier -cursor-move — cursor: move.
- * @modifier -cursor-grab — cursor: grab.
- * @modifier -cursor-wait — cursor: wait.
+ * @summary \`cursor\` as a composable, global class — \`.--cursor-<value>\` — usable bare or chained onto any component (\`.instui-button.--cursor-pointer\`).
+ * @modifier --cursor-auto — cursor: auto.
+ * @modifier --cursor-default — cursor: default.
+ * @modifier --cursor-pointer — cursor: pointer.
+ * @modifier --cursor-not-allowed — cursor: not-allowed.
+ * @modifier --cursor-text — cursor: text.
+ * @modifier --cursor-move — cursor: move.
+ * @modifier --cursor-grab — cursor: grab.
+ * @modifier --cursor-wait — cursor: wait.
  * @example
- * <div class="instui-cursor-pointer">…</div>
+ * <div class="--cursor-pointer">…</div>
  */
 ${rules.join("\n")}`;
   },

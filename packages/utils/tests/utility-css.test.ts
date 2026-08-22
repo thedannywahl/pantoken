@@ -1,5 +1,9 @@
-import { expect, test } from "vite-plus/test";
-import { colorUtilitiesCss, tokenUtilitiesCss } from "../src/utility-css.ts";
+import { describe, expect, test } from "vite-plus/test";
+import {
+  colorUtilitiesCss,
+  globalModifierSelector,
+  tokenUtilitiesCss,
+} from "../src/utility-css.ts";
 
 test("colorUtilitiesCss maps bg/text/border to semantic colour tokens only", () => {
   const css = colorUtilitiesCss(
@@ -10,9 +14,29 @@ test("colorUtilitiesCss maps bg/text/border to semantic colour tokens only", () 
     },
     { prefix: "instui" },
   );
-  expect(css).toContain(".instui-bg-brand { background: var(--instui-color-background-brand); }");
-  expect(css).toContain(".instui-text-secondary { color: var(--instui-color-text-secondary); }");
-  expect(css).toContain(".instui-border-base { border-color: var(--instui-color-stroke-base); }");
+  expect(css).toContain(
+    ":where(*).--bg-brand.--bg-brand.--bg-brand { background: var(--instui-color-background-brand); }",
+  );
+  expect(css).toContain(
+    ":where(*).--text-secondary.--text-secondary.--text-secondary, :where(*).--color-secondary.--color-secondary.--color-secondary { color: var(--instui-color-text-secondary); }",
+  );
+  expect(css).toContain(
+    ":where(*).--border-base.--border-base.--border-base { border-color: var(--instui-color-stroke-base); }",
+  );
+});
+
+test("colorUtilitiesCss aliases --color-* onto the same declaration as --text-*", () => {
+  const css = colorUtilitiesCss(
+    {
+      background: [],
+      text: ["danger"],
+      stroke: [],
+    },
+    { prefix: "instui" },
+  );
+  expect(css).toContain(
+    ":where(*).--text-danger.--text-danger.--text-danger, :where(*).--color-danger.--color-danger.--color-danger { color: var(--instui-color-text-danger); }",
+  );
 });
 
 test("colorUtilitiesCss accepts explicit [name, token] pairs alongside plain names", () => {
@@ -25,17 +49,7 @@ test("colorUtilitiesCss accepts explicit [name, token] pairs alongside plain nam
     { prefix: "instui" },
   );
   expect(css).toContain(
-    ".instui-bg-primary { background: var(--instui-component-view-background-primary); }",
-  );
-});
-
-test("colorUtilitiesCss chainTargets emits a bare selector plus one per target", () => {
-  const css = colorUtilitiesCss(
-    { background: ["brand"], text: [], stroke: [] },
-    { prefix: "instui", chainTargets: ["button", "view"] },
-  );
-  expect(css).toContain(
-    ".instui-bg-brand, .instui-button.-bg-brand, .instui-view.-bg-brand { background: var(--instui-color-background-brand); }",
+    ":where(*).--bg-primary.--bg-primary.--bg-primary { background: var(--instui-component-view-background-primary); }",
   );
 });
 
@@ -48,15 +62,28 @@ test("tokenUtilitiesCss maps each token to its property; class name is the token
     { prefix: "instui" },
   );
   expect(css).toContain(
-    ".instui-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }",
+    ":where(*).--font-weight-body-strong.--font-weight-body-strong.--font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }",
   );
   expect(css).toContain(
-    ".instui-border-radius-md { border-radius: var(--instui-border-radius-md); }",
+    ":where(*).--border-radius-md.--border-radius-md.--border-radius-md { border-radius: var(--instui-border-radius-md); }",
   );
-  // Unprefixed opt-out drops the prefix but keeps the full token tail.
+  // The prefix option no longer affects the selector: matching is by class name alone now.
   expect(
     tokenUtilitiesCss([{ property: "font-weight", tokens: ["--instui-font-weight-body-strong"] }], {
       prefix: null,
     }),
-  ).toContain(".font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }");
+  ).toContain(
+    ":where(*).--font-weight-body-strong.--font-weight-body-strong.--font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }",
+  );
+});
+
+describe("globalModifierSelector", () => {
+  test("wraps the modifier class in :where(*) and repeats it 3x, regardless of prefix", () => {
+    expect(globalModifierSelector("instui-", "bg-secondary")).toBe(
+      ":where(*).--bg-secondary.--bg-secondary.--bg-secondary",
+    );
+    expect(globalModifierSelector("", "bg-secondary")).toBe(
+      ":where(*).--bg-secondary.--bg-secondary.--bg-secondary",
+    );
+  });
 });
