@@ -18,6 +18,9 @@ export const layout: Definition = defineUtility({
  * @selector .--display-flex
  * @global
  * @summary Display and text-align utilities — \`.--display-<value>\` and \`.--text-align-<value>\` — as composable, global classes, usable bare or chained onto any component.
+ * @modifier --display-flex — Sets \`display: flex\`.
+ * @modifier --display-* — Display utilities: \`block\`, \`inline-block\`, \`inline\`, \`flex\`, \`inline-flex\`, and \`none\`.
+ * @modifier --text-align-* — Text-alignment utilities: \`start\`, \`center\`, \`end\`, and \`justify\`.
  * @example
  * <div class="--display-flex --text-align-center">
  *   <span>One</span>

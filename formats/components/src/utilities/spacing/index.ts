@@ -95,6 +95,9 @@ export const spacing: Definition = defineUtility({
  * @selector .--p-md
  * @global
  * @summary Margin and padding utilities — \`.--m<side>-<step>\` / \`.--margin-<side>-<step>\` and \`.--p<side>-<step>\` / \`.--padding-<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none, spelled short or fully long — for example \`--mb-sm\` and \`--margin-bottom-small\` are the same rule; margin also takes \`auto\`). Usable bare or chained onto any component (for example \`class="instui-view --mb-sm"\`).
+ * @modifier --p-md — Applies medium padding on all sides.
+ * @modifier --m* — Margin utilities across short, legacy-long, and fully long spellings.
+ * @modifier --p* — Padding utilities across short, legacy-long, and fully long spellings.
  * @demo self:spacing
  * @example
  * <div class="--p-md --mt-lg">Padded box with a large top margin.</div>

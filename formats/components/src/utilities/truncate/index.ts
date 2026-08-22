@@ -37,6 +37,7 @@ export const truncate: Definition = defineUtility({
  * @global
  * @summary Ellipsis truncation with line clamping controlled by \`--lines\` — usable bare or chained onto any component (\`.instui-button.--truncate\`).
  * @remarks The base class uses \`display: -webkit-box\` and reads the \`--lines\` custom property to clamp text to a fixed number of lines before it ends in an ellipsis.
+ * @modifier --truncate — Enables truncation and line clamping on the target element.
  * @modifier --truncate-character — (default) Truncate at the character level.
  * @modifier --truncate-word — Truncate at the word level.
  * @modifier --max-lines-1 — Clamp to one line (default).

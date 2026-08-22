@@ -35,6 +35,8 @@ export const gap: Definition = defineUtility({
  * @selector .--gap-md
  * @global
  * @summary Flex/grid \`gap\` utilities on the spacing scale, short (\`--gap-sm\`) or long (\`--gap-small\`) spelling. Usable bare or chained onto any component (\`.instui-view.--gap-sm\`) — components that already set their own \`gap\` from a component-specific token may have it overridden.
+ * @modifier --gap-md — Applies the medium spacing token as the gap.
+ * @modifier --gap-* — Gap utilities across short and long spacing-step spellings.
  * @demo self:gap
  * @example
  * <div class="--display-flex --gap-sm">
