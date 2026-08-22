@@ -173,72 +173,77 @@ import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next
 ## Utilities
 
 `utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these apply to any
-element, so they compose onto a component or a bare tag.
+scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
+dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
+element — bare, or composed onto a component.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
-<div class="instui-view instui-bg-accent-blue instui-fg-on-color instui-p-md instui-mb-sm" style="border-radius: 6px;">
-  <span class="instui-text instui-fg-on-color">Accent-blue surface with on-color text.</span>
+<div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
+  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
 </div>
-<div class="instui-view instui-bg-muted instui-p-sm instui-mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
+<div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
   <span class="instui-text">Centered with mx-auto.</span>
 </div>
 
 ```html
-<div class="instui-view instui-bg-accent-blue instui-fg-on-color instui-p-md">…</div>
-<div class="instui-view instui-bg-muted instui-p-sm instui-mx-auto">…</div>
+<div class="instui-view --bg-accent-blue --text-on-color --p-md">…</div>
+<div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
 **View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
 carries key-value modifiers for its own visual props so you don't have to reach for utilities:
 `-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*`. Free-value props
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
+single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
 (width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
 
 **Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
 margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.instui-m-lg` and `.instui-margin-lg` are the same, as are `.instui-pt-md` and
-`.instui-paddingt-md`.
+step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
 
 - Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
   axis). Logical sides stay correct in right-to-left layouts.
 - Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
 
 Compose them for InstUI's `margin="small auto large"` shorthand:
-`class="instui-mt-sm instui-mx-auto instui-mb-lg"`.
+`class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.instui-bg-<name>` (background),
-`.instui-fg-<name>` (text color), and `.instui-border-<name>` (border color). Each `<name>` is a
+**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
+`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
 semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
 `inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `fg-brand` isn't a class — text has
+on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
 no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
 the theme.
 
 **Token families** — every "one token, one property" family gets a class per token, named after the
 token. Compose them freely:
 
-- `.instui-font-family-heading`, `.instui-font-family-code`, … → `font-family`
-- `.instui-font-weight-body-strong`, `.instui-font-weight-interactive`, … → `font-weight`
-- `.instui-line-height-*` → `line-height`
-- `.instui-border-radius-md`, `.instui-border-radius-full`, … → `border-radius`
-- `.instui-border-width-sm`/`-md`/`-lg` → `border-width`
-- `.instui-opacity-base`, `.instui-opacity-disabled` → `opacity`
-- `.instui-elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--font-family-heading`, `.--font-family-code`, … → `font-family`
+- `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
+- `.--line-height-*` → `line-height`
+- `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
+- `.--border-width-sm`/`-md`/`-lg` → `border-width`
+- `.--opacity-base`, `.--opacity-disabled` → `opacity`
+- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
 
 Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.instui-border-radius-md`), while the
-color and spacing helpers above use short aliases (`.instui-bg-brand`, `.instui-mt-lg`) — the aliases
+style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
+color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
 are ergonomic shortcuts; the token classes are literal and exhaustive.
 
-**Layout** — `.instui-display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.instui-text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
+**Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
 cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
 so those aren't per-component modifiers.
+
+Every double-dash class wins the cascade deterministically over a same-named single-dash component
+modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
+for the mechanism.
 
 Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
 layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.

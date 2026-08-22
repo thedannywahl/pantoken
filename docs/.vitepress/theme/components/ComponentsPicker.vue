@@ -362,7 +362,7 @@ const jsOutput = computed(() => {
         />
       </span>
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
-        <div class="components-picker__sections instui-view -border-radius-medium instui-p-sm">
+        <div class="components-picker__sections instui-view -border-radius-medium --p-sm">
           <PickerSection
             :label="t.sectionComponents"
             :all-selected="allComponentsSelected"
@@ -497,14 +497,14 @@ const jsOutput = computed(() => {
         </div>
       </div>
     </fieldset>
-    <div class="instui-view instui-mt-sm">
+    <div class="instui-view --mt-sm">
       <div
-        class="instui-icon -icon-javascript instui-ms-sm"
+        class="instui-icon -icon-javascript --ms-sm"
         style="color: var(--instui-color-text-info)"
       ></div>
       {{ t.enhancement }}
       <div
-        class="instui-icon -icon-javascript instui-ms-sm"
+        class="instui-icon -icon-javascript --ms-sm"
         style="color: var(--instui-color-text-error)"
       ></div>
       {{ t.requirement }}

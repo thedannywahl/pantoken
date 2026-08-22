@@ -33,7 +33,7 @@ function updateIncludeDarkMode(event: Event): void {
 </script>
 
 <template>
-  <div class="instui-card -bg-secondary">
+  <div class="instui-card --bg-secondary">
     <div class="picker-theme-controls__row">
       <label class="instui-text" :for="`${props.idPrefix}-theme`">
         {{ props.strings.themeLabel }}

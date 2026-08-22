@@ -1,37 +1,27 @@
 <div class="instui-card">
   <h2 class="instui-heading -level-h3">Layout utilities</h2>
   <p class="instui-text">
-    <code>.instui-display-*</code> and <code>.instui-text-align-*</code> cover InstUI's
-    cross-cutting <code>display</code> and <code>textAlign</code> props as composable classes —
-    reach for them on any element instead of a per-component modifier.
+    <code>.--display-*</code> and <code>.--text-align-*</code> cover InstUI's cross-cutting
+    <code>display</code> and <code>textAlign</code> props as composable classes — reach for them on
+    any element instead of a per-component modifier.
   </p>
 
-  <h3 class="instui-heading -level-h5 instui-mt-lg">Display</h3>
+  <h3 class="instui-heading -level-h5 --mt-lg">Display</h3>
   <p class="instui-text -color-secondary">
-    <code>.instui-display-flex</code> lays these chips out in a row; each chip is
-    <code>.instui-display-inline-block</code>.
+    <code>.--display-flex</code> lays these chips out in a row; each chip is
+    <code>.--display-inline-block</code>.
   </p>
   <div
-    class="instui-display-flex instui-bg-muted instui-p-sm"
+    class="--display-flex --bg-muted --p-sm"
     style="gap: var(--instui-spacing-space-sm); border-radius: var(--instui-border-radius-md)"
   >
-    <span class="instui-display-inline-block instui-bg-accent-blue instui-fg-on-color instui-p-xs">
-      one
-    </span>
-    <span class="instui-display-inline-block instui-bg-accent-blue instui-fg-on-color instui-p-xs">
-      two
-    </span>
-    <span class="instui-display-inline-block instui-bg-accent-blue instui-fg-on-color instui-p-xs">
-      three
-    </span>
+    <span class="--display-inline-block --bg-accent-blue --text-on-color --p-xs"> one </span>
+    <span class="--display-inline-block --bg-accent-blue --text-on-color --p-xs"> two </span>
+    <span class="--display-inline-block --bg-accent-blue --text-on-color --p-xs"> three </span>
   </div>
 
-  <h3 class="instui-heading -level-h5 instui-mt-lg">Text align</h3>
-  <p class="instui-text instui-text-align-start instui-bg-muted instui-p-xs instui-mb-2xs">
-    text-align-start
-  </p>
-  <p class="instui-text instui-text-align-center instui-bg-muted instui-p-xs instui-mb-2xs">
-    text-align-center
-  </p>
-  <p class="instui-text instui-text-align-end instui-bg-muted instui-p-xs">text-align-end</p>
+  <h3 class="instui-heading -level-h5 --mt-lg">Text align</h3>
+  <p class="instui-text --text-align-start --bg-muted --p-xs --mb-2xs">text-align-start</p>
+  <p class="instui-text --text-align-center --bg-muted --p-xs --mb-2xs">text-align-center</p>
+  <p class="instui-text --text-align-end --bg-muted --p-xs">text-align-end</p>
 </div>

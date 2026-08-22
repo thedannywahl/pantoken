@@ -193,7 +193,7 @@ const note = computed(() => {
         />
       </span>
       <div style="overflow: hidden" class="instui-view -border-radius-medium -border-width-small">
-        <div class="interactions-picker__components instui-view -border-radius-medium instui-p-sm">
+        <div class="interactions-picker__components instui-view -border-radius-medium --p-sm">
           <label class="instui-checkbox">
             <input
               ref="allCheckboxEl"

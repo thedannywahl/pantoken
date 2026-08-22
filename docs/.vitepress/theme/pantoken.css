@@ -213,3 +213,44 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
     --vp-c-divider: transparent;
   }
 }
+
+.custom-block {
+  border-width: 2px;
+  box-shadow: var(--instui-elevation-above);
+
+  &.tip {
+    background-color: transparent;
+    border-color: var(--vp-custom-block-tip-bg);
+
+    code {
+      background: transparent;
+    }
+  }
+
+  &.warning {
+    background-color: transparent;
+    border-color: var(--vp-custom-block-warning-bg);
+
+    code {
+      background: transparent;
+    }
+  }
+
+  &.info {
+    background-color: transparent;
+    border-color: var(--vp-custom-block-info-bg);
+
+    code {
+      background: transparent;
+    }
+  }
+
+  &.danger {
+    background-color: transparent;
+    border-color: var(--vp-custom-block-danger-bg);
+
+    code {
+      background: transparent;
+    }
+  }
+}
