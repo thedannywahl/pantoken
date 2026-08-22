@@ -1,5 +1,13 @@
 # @pantoken/interactions
 
+## 0.3.4
+
+### Patch Changes
+
+- Updated dependencies [aaf4751]
+- Updated dependencies [aaf4751]
+  - @pantoken/utils@1.0.0
+
 ## 0.3.3
 
 ### Patch Changes

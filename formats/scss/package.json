@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/scss",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "Instructure design tokens as SCSS variables (resolved, single-mode) from the pantoken IR.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

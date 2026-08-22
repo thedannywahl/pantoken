@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.5.5
+
+### Patch Changes
+
+- Updated dependencies [aaf4751]
+- Updated dependencies [aaf4751]
+  - @pantoken/components@1.0.0
+  - @pantoken/icons@0.1.9
+  - @pantoken/interactions@0.3.4
+
 ## 0.5.4
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.3.10
+
+### Patch Changes
+
+- Updated dependencies [aaf4751]
+- Updated dependencies [aaf4751]
+  - @pantoken/components@1.0.0
+  - @pantoken/css@0.3.6
+  - @pantoken/tokens@0.2.4
+
 ## 0.3.9
 
 ### Patch Changes

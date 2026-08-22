@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-transition",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "pantoken plugin: the --instui-transition-duration/--instui-transition-timing tokens behind InstUI's Transition utility (the CSS itself lives in @pantoken/components).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
