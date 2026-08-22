@@ -6,6 +6,7 @@ import { CssDocConfigFile } from "@cssdoc/config";
 import type { CssDocEntry } from "@cssdoc/core";
 import type { Token } from "@pantoken/tokens";
 import {
+  annotateJsRequirement,
   assertNoUnknownReferences,
   componentSources,
   indexLocalVars,
@@ -253,6 +254,26 @@ describe("componentSources", () => {
     expect(files.some((f) => f.endsWith("scripts/generate.ts"))).toBe(true);
     expect(files.some((f) => f.endsWith(".md"))).toBe(false);
   });
+
+  test("recurses into per-record directories, including nested members", () => {
+    const root = mkdtempSync(join(tmp, "cs-nested-"));
+    for (const d of ["components", "utilities", "rules", "declarations"]) {
+      mkdirSync(join(root, "src", d), { recursive: true });
+    }
+    mkdirSync(join(root, "scripts"), { recursive: true });
+    mkdirSync(join(root, "src", "components", "breadcrumb", "members", "link"), {
+      recursive: true,
+    });
+    writeFileSync(join(root, "src", "components", "breadcrumb", "index.ts"), "");
+    writeFileSync(join(root, "src", "components", "breadcrumb", "breadcrumb.css"), "");
+    writeFileSync(join(root, "src", "components", "breadcrumb", "members", "link", "index.ts"), "");
+    writeFileSync(join(root, "scripts", "generate.ts"), "");
+
+    const files = componentSources(root);
+    expect(files.some((f) => f.endsWith("components/breadcrumb/index.ts"))).toBe(true);
+    expect(files.some((f) => f.endsWith("components/breadcrumb/breadcrumb.css"))).toBe(true);
+    expect(files.some((f) => f.endsWith("members/link/index.ts"))).toBe(true);
+  });
 });
 
 describe("makeSourceResolver", () => {
@@ -336,6 +357,51 @@ describe("assertNoUnknownReferences", () => {
     expect(() =>
       assertNoUnknownReferences(".x { color: var(--instui-definitely-not-a-real-token-xyz); }"),
     ).toThrow(/unknown token reference/u);
+  });
+});
+
+describe("annotateJsRequirement", () => {
+  const page = (dir: string, name: string, body: string): string => {
+    const path = join(dir, `${name}.md`);
+    writeFileSync(path, body);
+    return path;
+  };
+
+  test("inserts a callout before the first section for js-only/both records, skips css-only", () => {
+    const dir = mkdtempSync(join(tmp, "js-req-"));
+    const jsOnly = page(dir, "drilldown", "# drilldown\n\nSummary.\n\n## Modifiers\n\n...\n");
+    const both = page(dir, "modal", "# modal\n\n**Source:** [x](y)\n\n## Modifiers\n\n...\n");
+    const cssOnly = page(dir, "badge", "# badge\n\nSummary.\n\n## Modifiers\n\n...\n");
+    const capabilityMap = new Map([
+      ["drilldown", "js-only"],
+      ["modal", "both"],
+      ["badge", "css-only"],
+    ]);
+
+    annotateJsRequirement(
+      [
+        asEntry("drilldown", "component"),
+        asEntry("modal", "component"),
+        asEntry("badge", "component"),
+      ],
+      [jsOnly, both, cssOnly],
+      capabilityMap,
+    );
+
+    expect(readFileSync(jsOnly, "utf8")).toContain("**Requires JS**");
+    expect(readFileSync(both, "utf8")).toContain("**Requires JS**");
+    expect(readFileSync(cssOnly, "utf8")).not.toContain("**Requires JS**");
+  });
+
+  test("is idempotent", () => {
+    const dir = mkdtempSync(join(tmp, "js-req-idem-"));
+    const file = page(dir, "tooltip", "# tooltip\n\nSummary.\n\n## Modifiers\n\n...\n");
+    const capabilityMap = new Map([["tooltip", "js-only"]]);
+
+    annotateJsRequirement([asEntry("tooltip", "component")], [file], capabilityMap);
+    const once = readFileSync(file, "utf8");
+    annotateJsRequirement([asEntry("tooltip", "component")], [file], capabilityMap);
+    expect(readFileSync(file, "utf8")).toBe(once);
   });
 });
 

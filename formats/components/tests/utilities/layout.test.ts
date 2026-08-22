@@ -7,18 +7,15 @@ test("layout: emits exactly one well-formed cssdoc record with no token drift", 
   validate(layout);
 });
 
-test("layout utilities: three-selector pattern (base + namespaced + bare modifiers)", () => {
+test("layout utilities: dual-selector pattern (bare class + component-attached alias)", () => {
   const css = layoutUtilitiesCss({ prefix: "instui" });
-  expect(css).toContain(".instui-layout-display-flex, .-layout-display-flex, -display-flex");
+  expect(css).toContain(".instui-display-flex, .instui-button.-display-flex");
   expect(css).toContain("display: flex;");
-  expect(css).toContain(
-    ".instui-layout-display-inline-block, .-layout-display-inline-block, -display-inline-block",
-  );
+  expect(css).toContain(".instui-display-inline-block, .instui-button.-display-inline-block");
   expect(css).toContain("display: inline-block;");
-  expect(css).toContain(
-    ".instui-layout-text-align-center, .-layout-text-align-center, -text-align-center",
-  );
+  expect(css).toContain(".instui-text-align-center, .instui-button.-text-align-center");
   expect(css).toContain("text-align: center;");
-  expect(css).toContain(".instui-layout-text-align-end, .-layout-text-align-end, -text-align-end");
+  expect(css).toContain(".instui-text-align-end, .instui-button.-text-align-end");
   expect(css).toContain("text-align: end;");
+  expect(css).toContain(".instui-view.-display-flex");
 });

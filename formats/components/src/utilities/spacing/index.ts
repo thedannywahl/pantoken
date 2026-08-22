@@ -2,6 +2,14 @@
  * The spacing utilities — margin/padding classes on the pantoken spacing scale, with logical sides,
  * each in a short spelling (`-mb-sm`) and a fully long, word-spelled one (`-margin-bottom-small`).
  *
+ * Not dual-chained onto every real component (unlike gap/layout/overflow): the combined side x step x
+ * property x short/long surface is large enough that fanning each rule out across ~70 components pushes
+ * the alias post-processors' unanchored regex scans (`lib/aliases.ts`) into multi-second/near-hang
+ * territory (confirmed while authoring) — the same tradeoff `responsive` already documents. Each rule
+ * still carries a bare `.-mt-xl`-style dash modifier alongside the prefixed `.instui-mt-xl` class (a
+ * flat, constant-factor addition), so the class works standalone or alongside any other class on the
+ * same element.
+ *
  * @module
  */
 import { defineUtility, type Definition } from "../../lib/define.ts";
@@ -13,7 +21,6 @@ import {
   SPACING_STEPS,
   type SpacingProperty,
   type SpacingStep,
-  utilityVariantRule,
 } from "../../lib/helpers.ts";
 
 /** The steps a boxed property takes — margin also gets `auto`. */
@@ -40,7 +47,6 @@ const legacyStepEntries = (steps: readonly SpacingStep[]): Array<readonly [strin
  */
 function shortAndLegacyRules(p: string): string[] {
   const rules: string[] = [];
-  const baseClass = `.${p}spacing`;
   for (const property of SPACING_PROPERTIES) {
     const stepEntries = legacyStepEntries(stepsFor(property));
     for (const letter of [property.short, property.long]) {
@@ -49,12 +55,7 @@ function shortAndLegacyRules(p: string): string[] {
           // Bare modifier for composition
           const bareModifier = `-${letter}${side.short}-${step}`;
           rules.push(
-            utilityVariantRule(
-              baseClass,
-              "spacing",
-              bareModifier,
-              `${property.css}${side.suffix}: ${value}`,
-            ),
+            `.${p}${bareModifier.slice(1)}, .${bareModifier} { ${property.css}${side.suffix}: ${value}; }`,
           );
         }
       }
@@ -70,7 +71,6 @@ function shortAndLegacyRules(p: string): string[] {
  */
 function fullyLongRules(p: string): string[] {
   const rules: string[] = [];
-  const baseClass = `.${p}spacing`;
   for (const property of SPACING_PROPERTIES) {
     for (const side of SPACING_SIDES) {
       for (const step of stepsFor(property)) {
@@ -79,12 +79,7 @@ function fullyLongRules(p: string): string[] {
         // Bare modifier for composition
         const bareModifier = `-${name}`;
         rules.push(
-          utilityVariantRule(
-            baseClass,
-            "spacing",
-            bareModifier,
-            `${property.css}${side.suffix}: ${step.value}`,
-          ),
+          `.${p}${name}, .${bareModifier} { ${property.css}${side.suffix}: ${step.value}; }`,
         );
       }
     }
@@ -103,7 +98,7 @@ export const spacing: Definition = defineUtility({
  * @utility spacing
  * @selector .instui-p-md
  * @global
- * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` / \`.instui-margin-<side>-<step>\` and \`.instui-p<side>-<step>\` / \`.instui-padding-<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none, spelled short or fully long — for example \`-mb-sm\` and \`-margin-bottom-small\` are the same rule; margin also takes \`auto\`). Every utility also has a component-attached alias modifier (for example \`-mb-sm\` on any \`.instui-<component>\` or \`.instui-view\`).
+ * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` / \`.instui-margin-<side>-<step>\` and \`.instui-p<side>-<step>\` / \`.instui-padding-<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none, spelled short or fully long — for example \`-mb-sm\` and \`-margin-bottom-small\` are the same rule; margin also takes \`auto\`). Each class also ships as a bare, unprefixed dash modifier (\`-mb-sm\`) usable alongside any other class on the same element (for example \`class="instui-view -mb-sm"\`).
  * @demo self:spacing
  * @example
  * <div class="instui-p-md instui-mt-lg">Padded box with a large top margin.</div>

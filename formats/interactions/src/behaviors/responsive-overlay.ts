@@ -22,7 +22,10 @@ export function initResponsiveOverlay(host: HTMLElement, onCommand: OnCommand): 
   const toPx = (value: string): number => {
     const v = value.trim();
     if (!v) return 0;
-    const [, multiplier] = unitMultipliers.find(([unit]) => v.endsWith(unit)) ?? [, () => 1];
+    const [, multiplier] = unitMultipliers.find(([unit]) => v.endsWith(unit)) ?? [
+      undefined,
+      () => 1,
+    ];
     return (Number.parseFloat(v) || 0) * multiplier();
   };
 
