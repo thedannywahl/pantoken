@@ -60,7 +60,7 @@ test("container variant adds border and responsive gap/border-radius to direct c
 test("@scope block contains container-variant direct-child rules", () => {
   const css = cssOf(customComponents());
   expect(css).toContain("@scope (.instui-card)");
-  expect(css).toContain(":scope.-variant-container > *");
+  expect(css).toContain("&.-variant-container > *");
 });
 
 test("cardRules() defaults to instui- prefix and equals the plugin css output", () => {
