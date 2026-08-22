@@ -47,12 +47,16 @@ const byName = resolveTokens(tokens, { mode: "dark" });
 - **`extractInstuiRefs(text)` / `tokenNames(ir)`** — the primitives the two checks build on,
   exposed for custom assertions.
 - **`colorUtilitiesCss(names, options?)`** — the semantic-colour utility emitter:
-  `.<prefix>-bg-<name>` / `-fg-` / `-border-` from `--instui-color-<family>-<name>`, one per token.
+  `--bg-<name>` / `--text-<name>` / `--border-<name>` from `--instui-color-<family>-<name>`, one per
+  token.
 - **`tokenUtilitiesCss(groups, options?)`** — the generic token→class emitter: one class per token,
   applied to its CSS property (the `--instui-` tail is the class name). Both emitters carry no
   InstUI-look opinion — the caller supplies the names. `@pantoken/components` feeds them a curated
-  _semantic_ allowlist; `@pantoken/plugin-primitives` feeds the raw palette. `options.prefix` sets the
-  class prefix; any falsy value drops it.
+  _semantic_ allowlist; `@pantoken/plugin-primitives` feeds the raw palette. Every class is a
+  double-dash global modifier built via `globalModifierSelector` — matches standalone or chained onto
+  any component, and wins the cascade deterministically over a same-named component modifier.
+- **`globalModifierSelector(p, name)`** — the shared selector builder behind the two emitters above
+  (and every double-dash utility in `@pantoken/components`): `:where(*).--name.--name.--name`.
 - **`VAR_RE` / `LIGHT_DARK_RE`** — the two token regexes, built with `arkregex`'s `regex()` so
   their capture groups are typed on `.exec()` / `.matchAll()`. They're real `RegExp` instances.
 - **`Mode`, `ResolveOptions`, `Rgba`, `UtilityOptions`, `ColorUtilityNames`, `TokenUtilityGroup`** —

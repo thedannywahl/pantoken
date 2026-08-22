@@ -51,7 +51,7 @@ export { SPACING_AUTO_STEP, SPACING_STEPS } from "./spacing.ts";
 export type { SpacingStep } from "./spacing.ts";
 
 // Token → utility-class emitters (semantic colour + generic one-token-one-property families).
-export { colorUtilitiesCss, tokenUtilitiesCss } from "./utility-css.ts";
+export { colorUtilitiesCss, globalModifierSelector, tokenUtilitiesCss } from "./utility-css.ts";
 export type {
   ColorUtilityEntry,
   ColorUtilityNames,

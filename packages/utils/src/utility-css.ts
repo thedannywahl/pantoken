@@ -14,13 +14,22 @@ export interface UtilityOptions {
    * falsy value (`null`/`undefined`/`""`) drops the prefix entirely (`.bg-…`).
    */
   prefix?: string | null;
-  /**
-   * Component base-class names (e.g. `"button"`, `"view"`) to also emit a chained alias for, per
-   * rule — `.<prefix>-bg-danger` (bare) plus `.<prefix>-button.-bg-danger` (chained), so the same
-   * modifier works standalone or attached to any component. Omit for bare-only output (unchanged
-   * behavior).
-   */
-  chainTargets?: readonly string[];
+}
+
+/**
+ * Build a global-utility modifier selector: `:where(*).--name.--name.--name`. The modifier class
+ * repeated 3x gives the rule (0,3,0) specificity, which deterministically outranks any real 2-class
+ * component-modifier compound (`.instui-view.-mod`, 0,2,0) regardless of source order — the `:where(*)`
+ * wrapper contributes zero specificity of its own, so it's purely documentation that this is a global
+ * modifier, not a scoping condition. A plain class selector already matches standalone (`--mt-lg` with
+ * no other class) or chained onto any component, core or plugin-authored, with no per-component
+ * enumeration needed. Replaces the old bare-class-plus-enumerated-per-component-compound pattern
+ * (`globalSelectors`/`chainTargets`), which couldn't reach plugin-authored components and didn't scale
+ * to high-cardinality utilities like spacing.
+ */
+export function globalModifierSelector(p: string, name: string): string {
+  const cls = `.--${name}`;
+  return `:where(*)${cls}${cls}${cls}`;
 }
 
 /** One semantic colour family entry: a bare name (resolved against `--instui-color-<family>-<name>`)
@@ -51,7 +60,6 @@ export interface ColorUtilityNames {
 export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOptions = {}): string {
   const prefix = options.prefix || "";
   const p = prefix ? `${prefix}-` : "";
-  const chainTargets = options.chainTargets ?? [];
   const emit = (
     family: string,
     util: string,
@@ -67,12 +75,8 @@ export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOpti
         // a raw keyword like `transparent`) is used verbatim — lets a `[name, value]` pair source a
         // computed value, not just a single token reference.
         const value = token.startsWith("--") ? `var(${token})` : token;
-        const modifier = `.-${util}-${n}`;
-        const selectors = [
-          `.${p}${util}-${n}`,
-          ...chainTargets.map((target) => `.${p}${target}${modifier}`),
-        ];
-        return `${selectors.join(", ")} { ${prop}: ${value}; }`;
+        const selector = globalModifierSelector(p, `${util}-${n}`);
+        return `${selector} { ${prop}: ${value}; }`;
       })
       .join("\n");
   const rules = [
@@ -112,17 +116,12 @@ export function tokenUtilitiesCss(
 ): string {
   const prefix = options.prefix || "";
   const p = prefix ? `${prefix}-` : "";
-  const chainTargets = options.chainTargets ?? [];
   const rules = groups
     .flatMap(({ property, tokens }) =>
       tokens.map((token) => {
         const name = token.replace(/^--instui-/, "");
-        const modifier = `.-${name}`;
-        const selectors = [
-          `.${p}${name}`,
-          ...chainTargets.map((target) => `.${p}${target}${modifier}`),
-        ];
-        return `${selectors.join(", ")} { ${property}: var(${token}); }`;
+        const selector = globalModifierSelector(p, name);
+        return `${selector} { ${property}: var(${token}); }`;
       }),
     )
     .join("\n");
