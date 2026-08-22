@@ -30,19 +30,21 @@
 }
 
 @scope (.pfx-tabs) {
-  :scope > .list {
-    display: flex;
-    width: 100%;
-    flex-flow: row wrap;
-  }
+  :scope {
+    > .list {
+      display: flex;
+      width: 100%;
+      flex-flow: row wrap;
+    }
 
-  :scope.-overflow-scroll > .list {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
+    &.-overflow-scroll > .list {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
 
-  :scope.-overflow-scroll > .list::-webkit-scrollbar {
-    display: none;
+    &.-overflow-scroll > .list::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

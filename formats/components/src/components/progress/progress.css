@@ -123,36 +123,38 @@
 }
 
 @scope (.pfx-progress) {
-  :scope > .bar {
-    height: 100%;
-    width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
-    background: var(--instui-color-background-brand);
-    border-radius: var(--instui-component-progress-bar-border-radius);
-  }
+  :scope {
+    > .bar {
+      height: 100%;
+      width: clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%);
+      background: var(--instui-color-background-brand);
+      border-radius: var(--instui-component-progress-bar-border-radius);
+    }
 
-  :scope > .value {
-    padding: 0 var(--instui-component-progress-bar-value-padding);
-    color: var(--instui-component-progress-bar-text-color);
-    font-family: var(--instui-component-progress-bar-font-family);
-    font-size: var(--instui-component-progress-bar-medium-value-font-size);
-    font-weight: var(--instui-component-progress-bar-font-weight);
-    line-height: var(--instui-component-progress-bar-line-height);
-  }
+    > .value {
+      padding: 0 var(--instui-component-progress-bar-value-padding);
+      color: var(--instui-component-progress-bar-text-color);
+      font-family: var(--instui-component-progress-bar-font-family);
+      font-size: var(--instui-component-progress-bar-medium-value-font-size);
+      font-weight: var(--instui-component-progress-bar-font-weight);
+      line-height: var(--instui-component-progress-bar-line-height);
+    }
 
-  :scope.-color-inverse > .value,
-  :scope > .value.-color-inverse {
-    color: var(--instui-component-progress-bar-text-color-inverse);
-  }
+    &.-color-inverse > .value,
+    > .value.-color-inverse {
+      color: var(--instui-component-progress-bar-text-color-inverse);
+    }
 
-  /* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
-  :scope:indeterminate > .bar {
-    position: absolute;
-    width: 40%;
-    animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
-  }
+    /* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
+    &:indeterminate > .bar {
+      position: absolute;
+      width: 40%;
+      animation: pantoken-progress-indeterminate 1.4s ease-in-out infinite;
+    }
 
-  :scope:indeterminate > .value {
-    visibility: hidden;
+    &:indeterminate > .value {
+      visibility: hidden;
+    }
   }
 }
 

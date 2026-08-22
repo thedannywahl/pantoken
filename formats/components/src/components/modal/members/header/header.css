@@ -12,19 +12,21 @@
  * }
  */
 @scope (.pfx-modal) {
-  :scope > .header {
-    padding: var(--instui-component-modal-header-padding);
-    background: var(--instui-component-modal-header-background-color);
-    border-bottom: var(--instui-component-modal-header-border-width) solid
-      var(--instui-component-modal-header-border-color);
-  }
+  :scope {
+    > .header {
+      padding: var(--instui-component-modal-header-padding);
+      background: var(--instui-component-modal-header-background-color);
+      border-bottom: var(--instui-component-modal-header-border-width) solid
+        var(--instui-component-modal-header-border-color);
+    }
 
-  :scope.-density-compact > .header {
-    padding: var(--instui-component-modal-header-padding-compact);
-  }
+    &.-density-compact > .header {
+      padding: var(--instui-component-modal-header-padding-compact);
+    }
 
-  :scope.-color-inverse > .header {
-    background: var(--instui-component-modal-header-inverse-background-color);
-    border-bottom-color: var(--instui-component-modal-header-inverse-border-color);
+    &.-color-inverse > .header {
+      background: var(--instui-component-modal-header-inverse-background-color);
+      border-bottom-color: var(--instui-component-modal-header-inverse-border-color);
+    }
   }
 }

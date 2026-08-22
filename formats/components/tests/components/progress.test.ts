@@ -43,7 +43,7 @@ test("progress bar has sizes, the full meter palette, and an inverse scheme", ()
   expect(css).toContain(".instui-progress.-color-primary-inverse");
   expect(css).toContain("var(--instui-component-progress-bar-border-color)");
   expect(css).toContain("var(--instui-component-progress-bar-track-color-inverse)");
-  expect(css).toMatch(/:scope\s*>\s*\.value/u);
+  expect(css).toMatch(/@scope\s*\(\.instui-progress\)\s*\{\s*:scope\s*\{[\s\S]*>\s*\.value\s*\{/u);
 });
 
 test("progress bar can render its value overlaid inside the track via -render-value-inside", () => {
@@ -56,7 +56,7 @@ test("progress bar can render its value overlaid inside the track via -render-va
 
 test("progress bar falls back to a custom :indeterminate state for a valueless <progress>", () => {
   const css = norm(progressCss({ prefix: "instui" }));
-  expect(css).toMatch(/:scope:indeterminate\s*>\s*\.bar/u);
+  expect(css).toMatch(/&:indeterminate\s*>\s*\.bar/u);
   expect(css).toContain("animation: pantoken-progress-indeterminate");
-  expect(css).toMatch(/:scope:indeterminate\s*>\s*\.value \{ visibility: hidden; \}/u);
+  expect(css).toMatch(/&:indeterminate\s*>\s*\.value \{ visibility: hidden; \}/u);
 });

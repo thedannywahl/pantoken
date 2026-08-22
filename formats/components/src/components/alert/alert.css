@@ -193,3 +193,30 @@
     --timeout: 5000;
   }
 }
+
+/* Legacy aliases stay functional even with nested scoped root authoring. */
+.pfx-alert.-has-shadow-false {
+  box-shadow: none;
+}
+
+.pfx-alert.-variant-info {
+  border-color: var(--instui-component-alert-info-border-color);
+}
+
+.pfx-alert.-variant-success {
+  border-color: var(--instui-component-alert-success-border-color);
+  --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
+  --pantoken-alert-glyph: var(--instui-icon-circle-check);
+}
+
+.pfx-alert.-variant-warning {
+  border-color: var(--instui-component-alert-warning-border-color);
+  --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
+  --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
+}
+
+.pfx-alert.-variant-error {
+  border-color: var(--instui-component-alert-danger-border-color);
+  --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
+  --pantoken-alert-glyph: var(--instui-icon-circle-x);
+}
