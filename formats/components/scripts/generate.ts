@@ -198,7 +198,7 @@ const colorDoc = css`/**
  * @utility color
  * @selector .--text-danger
  * @global
- * @summary Semantic colour utilities: \`.--bg-<name>\`, \`.--text-<name>\`, and \`.--border-<name>\` for the curated semantic palette. Every one of these also has a component-attached alias modifier (for example \`-bg-danger\` on any \`.instui-<component>\`).
+ * @summary Semantic colour utilities: \`.--bg-<name>\`, \`.--text-<name>\` (aliased as \`.--color-<name>\`), and \`.--border-<name>\` for the curated semantic palette. Every one of these also has a component-attached alias modifier (for example \`-bg-danger\` on any \`.instui-<component>\`).
  * @example <p class="--text-danger">Something went wrong.</p>
  */\n`;
 // `view`'s/`text`'s own component-specific token families, merged onto the SAME generic class words

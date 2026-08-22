@@ -47,9 +47,10 @@ export interface ColorUtilityNames {
 /**
  * Build the semantic-colour utility stylesheet: `.<prefix>-bg-<name>` (background),
  * `.<prefix>-text-<name>` (text colour), `.<prefix>-border-<name>` (border colour), one per semantic
- * colour token. Overrides are therefore only ever token-valid — no primitives, no arbitrary hex. Pass
- * the token names per family (e.g. from `@pantoken/tokens`), or an explicit `[name, token]` pair to
- * source a name from a different token than the family's own scale.
+ * colour token. `.<prefix>-color-<name>` is emitted alongside `.<prefix>-text-<name>` as an alias — same
+ * declaration, either class name works. Overrides are therefore only ever token-valid — no primitives,
+ * no arbitrary hex. Pass the token names per family (e.g. from `@pantoken/tokens`), or an explicit
+ * `[name, token]` pair to source a name from a different token than the family's own scale.
  *
  * @param names - {@link ColorUtilityNames}.
  * @param options - {@link UtilityOptions}.
@@ -62,7 +63,7 @@ export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOpti
   const p = prefix ? `${prefix}-` : "";
   const emit = (
     family: string,
-    util: string,
+    util: string | readonly string[],
     prop: string,
     list: readonly ColorUtilityEntry[],
   ): string =>
@@ -75,13 +76,17 @@ export function colorUtilitiesCss(names: ColorUtilityNames, options: UtilityOpti
         // a raw keyword like `transparent`) is used verbatim — lets a `[name, value]` pair source a
         // computed value, not just a single token reference.
         const value = token.startsWith("--") ? `var(${token})` : token;
-        const selector = globalModifierSelector(p, `${util}-${n}`);
+        // `util` may list more than one class word (e.g. `--text-*` aliased as `--color-*`) — they
+        // share one declaration, so combine their selectors into a single comma-separated rule.
+        const selector = (typeof util === "string" ? [util] : util)
+          .map((word) => globalModifierSelector(p, `${word}-${n}`))
+          .join(", ");
         return `${selector} { ${prop}: ${value}; }`;
       })
       .join("\n");
   const rules = [
     emit("background", "bg", "background", names.background),
-    emit("text", "text", "color", names.text),
+    emit("text", ["text", "color"], "color", names.text),
     emit("stroke", "border", "border-color", names.stroke),
   ].join("\n");
   return `/* InstUI semantic colour utilities (@pantoken/utils) — prefix: ${prefix} */\n${rules}\n`;

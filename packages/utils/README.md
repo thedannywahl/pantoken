@@ -48,7 +48,7 @@ const byName = resolveTokens(tokens, { mode: "dark" });
   exposed for custom assertions.
 - **`colorUtilitiesCss(names, options?)`** — the semantic-colour utility emitter:
   `--bg-<name>` / `--text-<name>` / `--border-<name>` from `--instui-color-<family>-<name>`, one per
-  token.
+  token. `--color-<name>` is emitted as an alias of `--text-<name>` (same declaration).
 - **`tokenUtilitiesCss(groups, options?)`** — the generic token→class emitter: one class per token,
   applied to its CSS property (the `--instui-` tail is the class name). Both emitters carry no
   InstUI-look opinion — the caller supplies the names. `@pantoken/components` feeds them a curated

@@ -18,10 +18,24 @@ test("colorUtilitiesCss maps bg/text/border to semantic colour tokens only", () 
     ":where(*).--bg-brand.--bg-brand.--bg-brand { background: var(--instui-color-background-brand); }",
   );
   expect(css).toContain(
-    ":where(*).--text-secondary.--text-secondary.--text-secondary { color: var(--instui-color-text-secondary); }",
+    ":where(*).--text-secondary.--text-secondary.--text-secondary, :where(*).--color-secondary.--color-secondary.--color-secondary { color: var(--instui-color-text-secondary); }",
   );
   expect(css).toContain(
     ":where(*).--border-base.--border-base.--border-base { border-color: var(--instui-color-stroke-base); }",
+  );
+});
+
+test("colorUtilitiesCss aliases --color-* onto the same declaration as --text-*", () => {
+  const css = colorUtilitiesCss(
+    {
+      background: [],
+      text: ["danger"],
+      stroke: [],
+    },
+    { prefix: "instui" },
+  );
+  expect(css).toContain(
+    ":where(*).--text-danger.--text-danger.--text-danger, :where(*).--color-danger.--color-danger.--color-danger { color: var(--instui-color-text-danger); }",
   );
 });
 
