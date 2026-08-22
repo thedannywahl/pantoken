@@ -40,54 +40,56 @@
 }
 
 @scope (.pfx-pagination) {
-  /* A nav arrow — an <a> or <button>. Text-style primary button: brand text, no fill. */
-  :scope > .arrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-inline-size: 2rem;
-    min-block-size: 2rem;
-    padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
-    color: var(--instui-color-text-interactive-navigation-primary-base);
-    background: transparent;
-    border: var(--instui-border-width-md) solid transparent;
-    border-radius: var(--instui-component-base-button-border-radius);
-    font: inherit;
-    font-weight: var(--instui-font-weight-interactive);
-    text-decoration: none;
-    cursor: pointer;
-  }
+  :scope {
+    /* A nav arrow — an <a> or <button>. Text-style primary button: brand text, no fill. */
+    > .arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-inline-size: 2rem;
+      min-block-size: 2rem;
+      padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
+      color: var(--instui-color-text-interactive-navigation-primary-base);
+      background: transparent;
+      border: var(--instui-border-width-md) solid transparent;
+      border-radius: var(--instui-component-base-button-border-radius);
+      font: inherit;
+      font-weight: var(--instui-font-weight-interactive);
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  :scope > .arrow [class*="-icon-"] {
-    line-height: 1;
-  }
+    > .arrow [class*="-icon-"] {
+      line-height: 1;
+    }
 
-  :scope > .arrow:hover {
-    background: var(--instui-color-background-muted);
-    color: var(--instui-color-text-interactive-navigation-primary-hover);
-  }
+    > .arrow:hover {
+      background: var(--instui-color-background-muted);
+      color: var(--instui-color-text-interactive-navigation-primary-hover);
+    }
 
-  /* Disabled nav arrows (first/prev at page 1, etc.) — shown muted (InstUI showDisabledButtons). */
-  :scope > .arrow:disabled,
-  :scope > .arrow[aria-disabled="true"] {
-    color: var(--instui-color-text-muted);
-    background: transparent;
-    opacity: var(--instui-opacity-disabled);
-    cursor: not-allowed;
-  }
+    /* Disabled nav arrows (first/prev at page 1, etc.) — shown muted (InstUI showDisabledButtons). */
+    > .arrow:disabled,
+    > .arrow[aria-disabled="true"] {
+      color: var(--instui-color-text-muted);
+      background: transparent;
+      opacity: var(--instui-opacity-disabled);
+      cursor: not-allowed;
+    }
 
-  /* The truncation ellipsis — inert text. */
-  :scope > .ellipsis {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-inline-size: 2rem;
-    color: var(--instui-color-text-muted);
-  }
+    /* The truncation ellipsis — inert text. */
+    > .ellipsis {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-inline-size: 2rem;
+      color: var(--instui-color-text-muted);
+    }
 
-  /* variant="input" label ("Page … of N"). */
-  :scope > .page-input-label {
-    color: var(--instui-component-pagination-page-input-label-color);
+    /* variant="input" label ("Page … of N"). */
+    > .page-input-label {
+      color: var(--instui-component-pagination-page-input-label-color);
+    }
   }
 }
 

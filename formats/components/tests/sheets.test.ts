@@ -284,11 +284,11 @@ test("list has sizes and solid/dashed delimiters; toggle-details, rating and bre
   const rating = norm(ratingCss({ prefix: "instui" }));
   expect(rating).toContain(".instui-rating.-size-sm");
   // Stars are icon glyphs (filled = solid glyph); a .label carries the visible value text. Sub-element
-  // rules render inside @scope, so the filled-star selector is bare and the label reads :scope > .label.
+  // rules render inside @scope, so the filled-star selector is bare and the label is nested as > .label.
   expect(rating).toContain(
     ".-icon-star-solid { color: var(--instui-component-rating-icon-icon-filled-color); }",
   );
-  expect(rating).toContain(":scope > .label {");
+  expect(rating).toMatch(/:scope\s*\{[\s\S]*?>\s*\.label\s*\{/u);
   expect(rating).not.toContain(".star ");
   expect(breadcrumbCss({ prefix: "instui" })).toContain(".instui-breadcrumb.-size-lg");
 });

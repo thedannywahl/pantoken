@@ -68,31 +68,33 @@
 }
 
 @scope (.pfx-calendar) {
-  /* Full-width nav: prev/next hug the calendar edges, the month label centres between them (InstUI
-   only spaces the row below itself, so margin is block-end only — no inline inset). */
-  :scope > .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-block-end: var(--instui-component-calendar-nav-margin);
-  }
+  :scope {
+    /* Full-width nav: prev/next hug the calendar edges, the month label centres between them (InstUI
+     only spaces the row below itself, so margin is block-end only — no inline inset). */
+    > .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-block-end: var(--instui-component-calendar-nav-margin);
+    }
 
-  /* Fixed square day cells, centred as a block (1fr columns would stretch the cells unevenly and
-   off-centre inside the inline-block calendar). The gap is symmetric on both axes to match InstUI,
-   whose day table spaces cells with the browser-default border-spacing in both directions. */
-  :scope > .grid {
-    display: grid;
-    grid-template-columns: repeat(7, var(--instui-component-calendar-day-min-width));
-    justify-content: center;
-    gap: var(--instui-spacing-space2xs);
-  }
+    /* Fixed square day cells, centred as a block (1fr columns would stretch the cells unevenly and
+     off-centre inside the inline-block calendar). The gap is symmetric on both axes to match InstUI,
+     whose day table spaces cells with the browser-default border-spacing in both directions. */
+    > .grid {
+      display: grid;
+      grid-template-columns: repeat(7, var(--instui-component-calendar-day-min-width));
+      justify-content: center;
+      gap: var(--instui-spacing-space2xs);
+    }
 
-  .weekday {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    inline-size: var(--instui-component-calendar-day-min-width);
-    block-size: var(--instui-component-calendar-day-height);
-    font-weight: var(--instui-font-weight-interactive);
+    .weekday {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      inline-size: var(--instui-component-calendar-day-min-width);
+      block-size: var(--instui-component-calendar-day-height);
+      font-weight: var(--instui-font-weight-interactive);
+    }
   }
 }

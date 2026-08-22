@@ -20,7 +20,7 @@ test("form-field is a grid with label/controls/messages areas and inline layout"
   const css = norm(formFieldCss({ prefix: "instui" }));
   expect(css).toContain('grid-template-areas: "label" "controls" "messages"');
   expect(css).toContain("@scope (.instui-form-field)");
-  expect(css).toContain(":scope > .label");
+  expect(css).toMatch(/:scope\s*\{\s*>\s*\.label/u);
   expect(css).toContain(".instui-form-field.-layout-inline");
   // Messages placement stays flat (outside @scope — shared form-field prefix).
   expect(css).toContain(".instui-form-field > .instui-form-field-messages { grid-area: messages;");
