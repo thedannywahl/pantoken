@@ -159,16 +159,16 @@ const extraAliases = [
   ),
   // `-style-italic` (text) — no existing global font-style utility, so this introduces one.
   aliasRule(["font-style-italic", "text-italic"], "font-style", "italic"),
-  // `-transform-{uppercase,lowercase,capitalize}` (text) — `text-transform` already reads as "text",
-  // so there's no separate short `--text-*` alias here (would be redundant with the property name).
-  aliasRule("text-transform-uppercase", "text-transform", "uppercase"),
-  aliasRule("text-transform-lowercase", "text-transform", "lowercase"),
-  aliasRule("text-transform-capitalize", "text-transform", "capitalize"),
+  // `-transform-{uppercase,lowercase,capitalize}` (text) — short `--text-*` reads clearly on its own.
+  aliasRule(["text-transform-uppercase", "text-uppercase"], "text-transform", "uppercase"),
+  aliasRule(["text-transform-lowercase", "text-lowercase"], "text-transform", "lowercase"),
+  aliasRule(["text-transform-capitalize", "text-capitalize"], "text-transform", "capitalize"),
   // `-size-{xs,sm,lg,xl}` (text) — same values as the existing `.instui-font-size-text-*` scale.
-  aliasRule("font-size-xs", "font-size", "var(--instui-font-size-text-xs)"),
-  aliasRule("font-size-sm", "font-size", "var(--instui-font-size-text-sm)"),
-  aliasRule("font-size-lg", "font-size", "var(--instui-font-size-text-lg)"),
-  aliasRule("font-size-xl", "font-size", "var(--instui-font-size-text2xl)"),
+  // Also aliased as `--text-*`, matching the `--text-bold`/`--text-italic`/etc. dispatch pattern.
+  aliasRule(["font-size-xs", "text-xs"], "font-size", "var(--instui-font-size-text-xs)"),
+  aliasRule(["font-size-sm", "text-sm"], "font-size", "var(--instui-font-size-text-sm)"),
+  aliasRule(["font-size-lg", "text-lg"], "font-size", "var(--instui-font-size-text-lg)"),
+  aliasRule(["font-size-xl", "text-xl"], "font-size", "var(--instui-font-size-text2xl)"),
   // `-size-xx-large` (text) — no matching generic tier; a genuinely new value.
   aliasRule("font-size-xx-large", "font-size", "2.375rem"),
   // `-border-radius-{circle,pill}` (view) — circle is a literal shape value; pill reuses the
