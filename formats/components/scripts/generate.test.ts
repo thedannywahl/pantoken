@@ -16,15 +16,9 @@ vi.mock("@pantoken/tokens", () => ({ tokens: [] }));
 vi.mock("@pantoken/utils", () => ({
   colorUtilitiesCss: () => "/* color-utilities */",
   tokenUtilitiesCss: () => "/* token-utilities */",
+  globalModifierSelector: (p: string, name: string) => `:where([class*="${p}"]).--${name}`,
 }));
 vi.mock("../src/lib/css.ts", () => ({ css: String.raw }));
-vi.mock("../src/lib/global-alias.ts", () => ({
-  GLOBAL_ALIAS_TARGETS: ["button"],
-  globalSelectors: (p: string, bareSelector: string, modifier: string) => [
-    bareSelector,
-    `.${p}button${modifier}`,
-  ],
-}));
 vi.mock("./fonts.ts", () => ({ fontsCss: () => "/* fonts */" }));
 vi.mock("../src/index.ts", () => ({
   baseCss: () => "/* base */",

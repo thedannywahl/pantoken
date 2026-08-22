@@ -7,7 +7,7 @@
 import { defineUtility, type Definition } from "../../lib/define.ts";
 import { css } from "../../lib/css.ts";
 import { SPACING_STEPS } from "../../lib/helpers.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { globalModifierSelector } from "@pantoken/utils";
 
 /** `[key, value]` pairs for every step's short and long key, deduped (e.g. `"0"` and `"none"` both present). */
 const STEP_ENTRIES: ReadonlyArray<readonly [string, string]> = (() => {
@@ -27,19 +27,17 @@ export const gap: Definition = defineUtility({
     for (const [step, value] of STEP_ENTRIES) {
       // Bare modifier for composition (just the step, not repeated "gap")
       const name = `gap-${step}`;
-      const modifier = `-${name}`;
-      const selectors = globalSelectors(p, `.${p}${name}`, `.${modifier}`);
-      rules.push(`${selectors.join(", ")} { gap: ${value}; }`);
+      rules.push(`${globalModifierSelector(p, name)} { gap: ${value}; }`);
     }
     // prettier-ignore
     return css`/**
  * @utility gap
- * @selector .instui-gap-md
+ * @selector .--gap-md
  * @global
- * @summary Flex/grid \`gap\` utilities on the spacing scale, short (\`-gap-sm\`) or long (\`-gap-small\`) spelling. Every utility also has a component-attached alias modifier (for example \`-gap-sm\` on any \`.instui-<component>\` or \`.instui-view\`) — components that already set their own \`gap\` from a component-specific token may have it overridden by this alias.
+ * @summary Flex/grid \`gap\` utilities on the spacing scale, short (\`--gap-sm\`) or long (\`--gap-small\`) spelling. Usable bare or chained onto any component (\`.instui-view.--gap-sm\`) — components that already set their own \`gap\` from a component-specific token may have it overridden.
  * @demo self:gap
  * @example
- * <div class="instui-display-flex instui-gap-sm">
+ * <div class="--display-flex --gap-sm">
  *   <span>One</span>
  *   <span>Two</span>
  * </div>

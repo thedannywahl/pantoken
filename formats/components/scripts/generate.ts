@@ -20,9 +20,13 @@ import { join, resolve } from "node:path";
 import { applyMinify } from "@pantoken/plugin-props-minify";
 import { icons } from "@pantoken/icons";
 import { tokens } from "@pantoken/tokens";
-import { colorUtilitiesCss, tokenUtilitiesCss, type ColorUtilityEntry } from "@pantoken/utils";
+import {
+  colorUtilitiesCss,
+  globalModifierSelector,
+  tokenUtilitiesCss,
+  type ColorUtilityEntry,
+} from "@pantoken/utils";
 import { css } from "../src/lib/css.ts";
-import { GLOBAL_ALIAS_TARGETS, globalSelectors } from "../src/lib/global-alias.ts";
 import { fontsCss } from "./fonts.ts";
 import {
   baseCss,
@@ -124,54 +128,22 @@ const tokenGroups = [
 // A handful of `view`'s/`text`'s own short-spelled modifier names are value-equal aliases of an
 // already-emitted token-scale class above (or a literal, non-token value) — copied here as their own
 // global dual rule rather than invented under a new class word. See docs/conventions/authoring.md.
-const aliasRule = (bareClass: string, modifier: string, prop: string, value: string): string => {
-  const selectors = globalSelectors(ns(opts.prefix), bareClass, modifier);
-  return `${selectors.join(", ")} { ${prop}: ${value}; }`;
-};
+const aliasRule = (name: string, prop: string, value: string): string =>
+  `${globalModifierSelector(ns(opts.prefix), name)} { ${prop}: ${value}; }`;
 const extraAliases = [
   // `-weight-bold` (text) — same value as the existing `.instui-font-weight-body-strong`.
-  aliasRule(
-    ".instui-font-weight-bold",
-    ".-font-weight-bold",
-    "font-weight",
-    "var(--instui-font-weight-body-strong)",
-  ),
+  aliasRule("font-weight-bold", "font-weight", "var(--instui-font-weight-body-strong)"),
   // `-size-{xs,sm,lg,xl}` (text) — same values as the existing `.instui-font-size-text-*` scale.
-  aliasRule(
-    ".instui-font-size-xs",
-    ".-font-size-xs",
-    "font-size",
-    "var(--instui-font-size-text-xs)",
-  ),
-  aliasRule(
-    ".instui-font-size-sm",
-    ".-font-size-sm",
-    "font-size",
-    "var(--instui-font-size-text-sm)",
-  ),
-  aliasRule(
-    ".instui-font-size-lg",
-    ".-font-size-lg",
-    "font-size",
-    "var(--instui-font-size-text-lg)",
-  ),
-  aliasRule(
-    ".instui-font-size-xl",
-    ".-font-size-xl",
-    "font-size",
-    "var(--instui-font-size-text2xl)",
-  ),
+  aliasRule("font-size-xs", "font-size", "var(--instui-font-size-text-xs)"),
+  aliasRule("font-size-sm", "font-size", "var(--instui-font-size-text-sm)"),
+  aliasRule("font-size-lg", "font-size", "var(--instui-font-size-text-lg)"),
+  aliasRule("font-size-xl", "font-size", "var(--instui-font-size-text2xl)"),
   // `-size-xx-large` (text) — no matching generic tier; a genuinely new value.
-  aliasRule(".instui-font-size-xx-large", ".-font-size-xx-large", "font-size", "2.375rem"),
+  aliasRule("font-size-xx-large", "font-size", "2.375rem"),
   // `-border-radius-{circle,pill}` (view) — circle is a literal shape value; pill reuses the
   // existing `full` token.
-  aliasRule(".instui-border-radius-circle", ".-border-radius-circle", "border-radius", "50%"),
-  aliasRule(
-    ".instui-border-radius-pill",
-    ".-border-radius-pill",
-    "border-radius",
-    "var(--instui-border-radius-full)",
-  ),
+  aliasRule("border-radius-circle", "border-radius", "50%"),
+  aliasRule("border-radius-pill", "border-radius", "var(--instui-border-radius-full)"),
 ].join("\n");
 
 const componentsSheet = componentsCss(opts);
@@ -224,10 +196,10 @@ writeFileSync(
 // prettier-ignore
 const colorDoc = css`/**
  * @utility color
- * @selector .instui-text-danger
+ * @selector .--text-danger
  * @global
- * @summary Semantic colour utilities: \`.instui-bg-<name>\`, \`.instui-text-<name>\`, and \`.instui-border-<name>\` for the curated semantic palette. Every one of these also has a component-attached alias modifier (for example \`-bg-danger\` on any \`.instui-<component>\`).
- * @example <p class="instui-text-danger">Something went wrong.</p>
+ * @summary Semantic colour utilities: \`.--bg-<name>\`, \`.--text-<name>\`, and \`.--border-<name>\` for the curated semantic palette. Every one of these also has a component-attached alias modifier (for example \`-bg-danger\` on any \`.instui-<component>\`).
+ * @example <p class="--text-danger">Something went wrong.</p>
  */\n`;
 // `view`'s/`text`'s own component-specific token families, merged onto the SAME generic class words
 // (`bg`/`border`/`text`) rather than inventing a parallel word — see docs/conventions/authoring.md.
@@ -260,10 +232,7 @@ const textExtras: ColorUtilityEntry[] = [
   ["secondary-on", "--instui-component-text-muted-on-color"],
 ];
 // `-color-ai`/`-color-ai-highlight` (text) — two properties, so it can't be a `[name, value]` pair.
-const aiTextRule = (() => {
-  const selectors = globalSelectors(ns(opts.prefix), ".instui-text-ai", ".-text-ai");
-  return `${selectors.join(", ")} { color: var(--instui-component-text-ai-color); background: var(--instui-component-text-ai-background-color); }`;
-})();
+const aiTextRule = `${globalModifierSelector(ns(opts.prefix), "text-ai")} { color: var(--instui-component-text-ai-color); background: var(--instui-component-text-ai-background-color); }`;
 writeFileSync(
   join(outDir, "utilities.css"),
   `${layoutUtilitiesCss(opts)}\n${responsiveUtilitiesCss(opts)}\n${positionUtilitiesCss(opts)}\n${overflowUtilitiesCss(opts)}\n${cursorUtilitiesCss(opts)}\n${stackingUtilityCss(opts)}\n${maskUtilityCss(opts)}\n${transitionCss(opts)}\n${truncateCss(opts)}\n${visualDebugCss(opts)}\n${spacingUtilitiesCss(opts)}\n${gapCss(opts)}\n${colorDoc}${colorUtilitiesCss(
@@ -272,8 +241,8 @@ writeFileSync(
       text: [...names("text"), ...textExtras],
       stroke: [...names("stroke"), ...strokeExtras],
     },
-    { ...opts, chainTargets: GLOBAL_ALIAS_TARGETS },
-  )}\n${aiTextRule}\n${tokenUtilitiesCss(tokenGroups, { ...opts, chainTargets: GLOBAL_ALIAS_TARGETS })}\n${extraAliases}`,
+    opts,
+  )}\n${aiTextRule}\n${tokenUtilitiesCss(tokenGroups, opts)}\n${extraAliases}`,
 );
 console.log(
   `✓ components: wrote base.css + components.css + component-icons.css (${usedIcons.length} icons) + fonts.css + prose.css + select.css + icons.css + utilities.css`,

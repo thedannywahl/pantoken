@@ -10,7 +10,7 @@
  * @pseudo ::before — The leading icon glyph, sized and spaced to the pill.
  * @example
  * ```html
- * <div class="instui-display-flex" style="gap: 12px;">
+ * <div class="pfx-pill --display-flex" style="gap: 12px;">
  *   <span class="instui-pill -color-success -icon-check">Published</span>
  *   <span class="instui-pill">Draft</span>
  *   <span class="instui-pill -color-info">In review</span>

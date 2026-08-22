@@ -409,9 +409,9 @@ test("new components render their key tokens", () => {
   );
   expect(rangeInputCss({ prefix: "instui" })).toContain("::-webkit-slider-thumb");
   const truncate = truncateCss({ prefix: "instui" });
-  expect(truncate).toContain(".instui-truncate, .instui-button.-truncate");
+  expect(truncate).toContain(":where(*).--truncate.--truncate.--truncate");
   expect(truncate).toContain("-webkit-line-clamp");
-  expect(truncate).toContain(".instui-button.-truncate.-max-lines-3");
+  expect(truncate).toContain(":where(*).--truncate.--max-lines-3");
 });
 
 test("progress bar keeps the deprecated -meter-color-* aliases (incl. alert→warning)", () => {

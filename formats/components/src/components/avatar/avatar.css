@@ -34,9 +34,9 @@
  * @a11y Give an image avatar a meaningful `alt` (the person's name), not a generic "avatar"; for initials-only avatars, prefer real name content (bare text, data-initials, .name, or .first-name/.last-name) over pre-abbreviated letters, so assistive tech announces the real name.
  * @example
  * ```html
- * <span class="pfx-avatar instui-me-sm">LH</span>
- * <span class="pfx-avatar -color-ai instui-me-sm">AI</span>
- * <span class="pfx-avatar instui-me-sm" data-initials="NV">Dr. Nguyen Van Thoc</span>
+ * <span class="pfx-avatar --me-sm">LH</span>
+ * <span class="pfx-avatar -color-ai --me-sm">AI</span>
+ * <span class="pfx-avatar --me-sm" data-initials="NV">Dr. Nguyen Van Thoc</span>
  * <span class="pfx-avatar"><span class="name">Miguel Sanchez</span></span>
  * <span class="pfx-avatar"><span class="first-name">Miguel</span> <span class="last-name">Sanchez</span></span>
  * ```

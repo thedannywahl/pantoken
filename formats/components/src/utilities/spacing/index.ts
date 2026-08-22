@@ -2,13 +2,11 @@
  * The spacing utilities — margin/padding classes on the pantoken spacing scale, with logical sides,
  * each in a short spelling (`-mb-sm`) and a fully long, word-spelled one (`-margin-bottom-small`).
  *
- * Not dual-chained onto every real component (unlike gap/layout/overflow): the combined side x step x
- * property x short/long surface is large enough that fanning each rule out across ~70 components pushes
- * the alias post-processors' unanchored regex scans (`lib/aliases.ts`) into multi-second/near-hang
- * territory (confirmed while authoring) — the same tradeoff `responsive` already documents. Each rule
- * still carries a bare `.-mt-xl`-style dash modifier alongside the prefixed `.instui-mt-xl` class (a
- * flat, constant-factor addition), so the class works standalone or alongside any other class on the
- * same element.
+ * Each rule matches via `globalModifierSelector` (`@pantoken/utils`) — the modifier class repeated 3x
+ * for a deterministic specificity win, applying to any registered component (core or plugin-authored)
+ * or standalone, with a single fixed-size selector per rule, no per-component fan-out. This replaced an
+ * earlier bare-only fallback that avoided a real ~3s/940KB generation-time regression from enumerating
+ * ~70 components per rule under the old mechanism.
  *
  * @module
  */
@@ -22,6 +20,7 @@ import {
   type SpacingProperty,
   type SpacingStep,
 } from "../../lib/helpers.ts";
+import { globalModifierSelector } from "@pantoken/utils";
 
 /** The steps a boxed property takes — margin also gets `auto`. */
 const stepsFor = (property: SpacingProperty): readonly SpacingStep[] =>
@@ -52,10 +51,9 @@ function shortAndLegacyRules(p: string): string[] {
     for (const letter of [property.short, property.long]) {
       for (const side of SPACING_SIDES) {
         for (const [step, value] of stepEntries) {
-          // Bare modifier for composition
-          const bareModifier = `-${letter}${side.short}-${step}`;
+          const name = `${letter}${side.short}-${step}`;
           rules.push(
-            `.${p}${bareModifier.slice(1)}, .${bareModifier} { ${property.css}${side.suffix}: ${value}; }`,
+            `${globalModifierSelector(p, name)} { ${property.css}${side.suffix}: ${value}; }`,
           );
         }
       }
@@ -76,10 +74,8 @@ function fullyLongRules(p: string): string[] {
       for (const step of stepsFor(property)) {
         const sidePart = side.long ? `${side.long}-` : "";
         const name = `${property.long}-${sidePart}${step.long}`;
-        // Bare modifier for composition
-        const bareModifier = `-${name}`;
         rules.push(
-          `.${p}${name}, .${bareModifier} { ${property.css}${side.suffix}: ${step.value}; }`,
+          `${globalModifierSelector(p, name)} { ${property.css}${side.suffix}: ${step.value}; }`,
         );
       }
     }
@@ -96,12 +92,12 @@ export const spacing: Definition = defineUtility({
     // prettier-ignore
     return css`/**
  * @utility spacing
- * @selector .instui-p-md
+ * @selector .--p-md
  * @global
- * @summary Margin and padding utilities — \`.instui-m<side>-<step>\` / \`.instui-margin-<side>-<step>\` and \`.instui-p<side>-<step>\` / \`.instui-padding-<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none, spelled short or fully long — for example \`-mb-sm\` and \`-margin-bottom-small\` are the same rule; margin also takes \`auto\`). Each class also ships as a bare, unprefixed dash modifier (\`-mb-sm\`) usable alongside any other class on the same element (for example \`class="instui-view -mb-sm"\`).
+ * @summary Margin and padding utilities — \`.--m<side>-<step>\` / \`.--margin-<side>-<step>\` and \`.--p<side>-<step>\` / \`.--padding-<side>-<step>\` on the spacing scale (sides \`t\`/\`b\`/\`s\`/\`e\`/\`x\`/\`y\` or none, spelled short or fully long — for example \`--mb-sm\` and \`--margin-bottom-small\` are the same rule; margin also takes \`auto\`). Usable bare or chained onto any component (for example \`class="instui-view --mb-sm"\`).
  * @demo self:spacing
  * @example
- * <div class="instui-p-md instui-mt-lg">Padded box with a large top margin.</div>
+ * <div class="--p-md --mt-lg">Padded box with a large top margin.</div>
  */
 ${rules.join("\n")}`;
   },

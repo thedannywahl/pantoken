@@ -25,7 +25,7 @@
  * @accessibility A native `<input type="checkbox">` drives `:checked`, `:indeterminate`, and `:disabled`; set `el.indeterminate = true` in JavaScript for the mixed state, and note that `-readonly` is styling only since checkboxes have no native readonly attribute.
  * @example
  * ```html
- * <label class="pfx-checkbox instui-display-block instui-mb-sm">
+ * <label class="pfx-checkbox --display-block --mb-sm">
  *   <input type="checkbox" checked>Checkbox
  * </label>
  * <label class="pfx-checkbox -variant-toggle">

@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { globalModifierSelector } from "@pantoken/utils";
 
 const OVERFLOWS = ["visible", "hidden", "auto", "scroll", "clip"] as const;
 const AXES = ["x", "y"] as const;
@@ -18,28 +18,27 @@ export const overflow: Definition = defineUtility({
     const rules = AXES.flatMap((axis) =>
       OVERFLOWS.map((value) => {
         const name = `overflow-${axis}-${value}`;
-        const selectors = globalSelectors(p, `.${p}${name}`, `.-${name}`);
-        return `${selectors.join(", ")} { overflow-${axis}: ${value}; }`;
+        return `${globalModifierSelector(p, name)} { overflow-${axis}: ${value}; }`;
       }),
     );
     // prettier-ignore
     return css`/**
  * @utility overflow
- * @selector .instui-overflow-x-hidden
+ * @selector .--overflow-x-hidden
  * @global
- * @summary \`overflow-x\`/\`overflow-y\` as composable, global classes — \`.instui-overflow-x-<value>\` / \`.instui-overflow-y-<value>\` — usable bare or chained onto any component.
- * @modifier -overflow-x-visible — overflow-x: visible.
- * @modifier -overflow-x-hidden — overflow-x: hidden.
- * @modifier -overflow-x-auto — overflow-x: auto.
- * @modifier -overflow-x-scroll — overflow-x: scroll.
- * @modifier -overflow-x-clip — overflow-x: clip.
- * @modifier -overflow-y-visible — overflow-y: visible.
- * @modifier -overflow-y-hidden — overflow-y: hidden.
- * @modifier -overflow-y-auto — overflow-y: auto.
- * @modifier -overflow-y-scroll — overflow-y: scroll.
- * @modifier -overflow-y-clip — overflow-y: clip.
+ * @summary \`overflow-x\`/\`overflow-y\` as composable, global classes — \`.--overflow-x-<value>\` / \`.--overflow-y-<value>\` — usable bare or chained onto any component.
+ * @modifier --overflow-x-visible — overflow-x: visible.
+ * @modifier --overflow-x-hidden — overflow-x: hidden.
+ * @modifier --overflow-x-auto — overflow-x: auto.
+ * @modifier --overflow-x-scroll — overflow-x: scroll.
+ * @modifier --overflow-x-clip — overflow-x: clip.
+ * @modifier --overflow-y-visible — overflow-y: visible.
+ * @modifier --overflow-y-hidden — overflow-y: hidden.
+ * @modifier --overflow-y-auto — overflow-y: auto.
+ * @modifier --overflow-y-scroll — overflow-y: scroll.
+ * @modifier --overflow-y-clip — overflow-y: clip.
  * @example
- * <div class="instui-overflow-y-auto">…</div>
+ * <div class="--overflow-y-auto">…</div>
  */
 ${rules.join("\n")}`;
   },

@@ -6,7 +6,7 @@
  */
 import { css } from "../../lib/css.ts";
 import { defineUtility, type Definition } from "../../lib/define.ts";
-import { globalSelectors } from "../../lib/global-alias.ts";
+import { globalModifierSelector } from "@pantoken/utils";
 
 const POSITIONS = ["static", "relative", "absolute", "fixed", "sticky"] as const;
 
@@ -17,10 +17,9 @@ const buildPropertyRules = (
   property: string,
   values: readonly string[],
 ): string[] =>
-  values.map((value) => {
-    const selectors = globalSelectors(p, `.${p}${prefix}-${value}`, `.-${prefix}-${value}`);
-    return `${selectors.join(", ")} { ${property}: ${value}; }`;
-  });
+  values.map(
+    (value) => `${globalModifierSelector(p, `${prefix}-${value}`)} { ${property}: ${value}; }`,
+  );
 
 /** The position utility — `position` as composable, global classes. */
 export const position: Definition = defineUtility({
@@ -30,16 +29,16 @@ export const position: Definition = defineUtility({
     // prettier-ignore
     return css`/**
  * @utility position
- * @selector .instui-position-relative
+ * @selector .--position-relative
  * @global
- * @summary \`position\` as a composable, global class — \`.instui-position-<value>\` — usable bare or chained onto any component (\`.instui-button.-position-relative\`).
- * @modifier -position-static — position: static.
- * @modifier -position-relative — position: relative.
- * @modifier -position-absolute — position: absolute.
- * @modifier -position-fixed — position: fixed.
- * @modifier -position-sticky — position: sticky.
+ * @summary \`position\` as a composable, global class — \`.--position-<value>\` — usable bare or chained onto any component (\`.instui-button.--position-relative\`).
+ * @modifier --position-static — position: static.
+ * @modifier --position-relative — position: relative.
+ * @modifier --position-absolute — position: absolute.
+ * @modifier --position-fixed — position: fixed.
+ * @modifier --position-sticky — position: sticky.
  * @example
- * <div class="instui-position-relative">…</div>
+ * <div class="--position-relative">…</div>
  */
 ${rules.join("\n")}`;
   },
