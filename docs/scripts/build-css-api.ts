@@ -506,18 +506,21 @@ function formatModifierList(names: readonly string[]): string {
 }
 
 /**
- * The "Requires JS" callout body for a `js-only` (no CSS at all) vs. `both` (CSS + behavior) record.
- * `interactionModifiers` are the record's `@modifier -x — @interaction …` entries — the specific
- * script-toggled modifiers, when any are documented, named here instead of leaving the reader to guess.
+ * The JS callout body: "JS Requirement" for `js-only` (no CSS at all — JS is mandatory) vs.
+ * "JS Enhancement" for `both` (the CSS renders and works on its own; `@pantoken/interactions` only
+ * adds the interactive behavior on top, it isn't required to use the component). `interactionModifiers`
+ * are the record's `@modifier -x — @interaction …` entries — the specific script-toggled modifiers,
+ * when any are documented, named here instead of leaving the reader to guess.
  */
 function jsRequirementCallout(
   type: "js-only" | "both",
   interactionModifiers: readonly CssModifier[],
 ): string {
+  const label = type === "js-only" ? "JS Requirement" : "JS Enhancement";
   const note =
     type === "js-only"
       ? "This component ships no CSS of its own — its markup and behavior come entirely from `@pantoken/interactions`."
-      : "This component's CSS alone is inert — pair it with `@pantoken/interactions` for the interactive behavior.";
+      : "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior.";
   const plural = interactionModifiers.length > 1;
   const modifierNote = interactionModifiers.length
     ? ` Its ${formatModifierList(interactionModifiers.map((m) => m.name))} modifier${plural ? "s are" : " is"} driven by that behavior.`
@@ -525,16 +528,16 @@ function jsRequirementCallout(
   return [
     JS_REQUIREMENT_MARKER,
     "> [!TIP]",
-    `> **Requires JS** — ${note}${modifierNote} See the [modifier table below](#modifiers).`,
+    `> **${label}** — ${note}${modifierNote} See the [modifier table below](#modifiers).`,
     "",
   ].join("\n");
 }
 
 /**
- * Insert an idempotent "Requires JS" callout into each generated component page whose
- * `component-capabilities.json` type isn't `"css-only"`, right before its first `##` section (after
- * the title/summary/meta-line header `@cssdoc/markdown` renders — there's no hook to inject into that
- * header directly, so this post-processes the written file).
+ * Insert an idempotent "JS Requirement"/"JS Enhancement" callout into each generated component page
+ * whose `component-capabilities.json` type isn't `"css-only"`, right before its first `##` section
+ * (after the title/summary/meta-line header `@cssdoc/markdown` renders — there's no hook to inject
+ * into that header directly, so this post-processes the written file).
  */
 export function annotateJsRequirement(
   entries: readonly CssDocEntry[],

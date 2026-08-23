@@ -393,9 +393,10 @@ describe("annotateJsRequirement", () => {
 
     const jsOnlyMd = readFileSync(jsOnly, "utf8");
     const bothMd = readFileSync(both, "utf8");
-    expect(jsOnlyMd).toContain("**Requires JS**");
-    expect(bothMd).toContain("**Requires JS**");
-    expect(readFileSync(cssOnly, "utf8")).not.toContain("**Requires JS**");
+    // js-only truly requires JS; both is CSS that works alone, JS only enhances it.
+    expect(jsOnlyMd).toContain("**JS Requirement**");
+    expect(bothMd).toContain("**JS Enhancement**");
+    expect(readFileSync(cssOnly, "utf8")).not.toContain("[!TIP]");
 
     // Points at the modifier table below, not the CDN picker.
     expect(jsOnlyMd).toContain("[modifier table below](#modifiers)");
