@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.5.6
+
+### Patch Changes
+
+- Updated dependencies [343c59d]
+- Updated dependencies [343c59d]
+- Updated dependencies [343c59d]
+  - @pantoken/components@1.0.1
+  - @pantoken/interactions@0.3.5
+
 ## 0.5.5
 
 ### Patch Changes

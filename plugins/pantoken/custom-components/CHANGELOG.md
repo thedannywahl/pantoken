@@ -1,5 +1,11 @@
 # @pantoken/plugin-custom-components
 
+## 0.2.6
+
+### Patch Changes
+
+- 343c59d: Migrate the custom card component to nested scoped root selectors so `-variant-container` child styling follows the modern alert-style authoring pattern.
+
 ## 0.2.5
 
 ### Patch Changes

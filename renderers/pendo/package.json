@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/pendo",
-  "version": "0.3.10",
+  "version": "0.3.11",
   "description": "Instructure-styled global CSS for Pendo guides, built on pantoken tokens (ported from @instructure/pendo-global-css).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
