@@ -4,7 +4,7 @@
  * @summary A split layout with a collapsible side tray and a primary scrollable content pane.
  * @modifier -placement-start — Dock the tray on the inline-start side (the default; sets it explicitly).
  * @modifier -placement-end — Dock the tray on the inline-end side.
- * @modifier -should-overlay-tray — Render the tray as an overlay instead of shrinking content inline.
+ * @modifier -should-overlay-tray — @interaction Render the tray as an overlay instead of shrinking content inline.
  * @modifier -open — Show the tray even when the `open` attribute is absent.        
  * @part .tray — The side panel.
  * @part .content — The main pane.

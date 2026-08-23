@@ -3,7 +3,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { CssDocConfigFile } from "@cssdoc/config";
-import type { CssDocEntry } from "@cssdoc/core";
+import type { CssDocEntry, CssModifier } from "@cssdoc/core";
 import type { Token } from "@pantoken/tokens";
 import {
   annotateJsRequirement,
@@ -30,8 +30,11 @@ const tok = (name: string, extra: Partial<Token> = {}): Token => ({
   value: "",
   ...extra,
 });
-const asEntry = (name: string, kind: CssDocEntry["kind"]): CssDocEntry =>
-  ({ name, kind }) as CssDocEntry;
+const asEntry = (
+  name: string,
+  kind: CssDocEntry["kind"],
+  modifiers: readonly Partial<CssModifier>[] = [],
+): CssDocEntry => ({ name, kind, modifiers }) as CssDocEntry;
 
 const repoRoot = join(import.meta.dirname, "..", "..");
 let configuration: ReturnType<CssDocConfigFile["toConfiguration"]>;
@@ -388,9 +391,49 @@ describe("annotateJsRequirement", () => {
       capabilityMap,
     );
 
-    expect(readFileSync(jsOnly, "utf8")).toContain("**Requires JS**");
-    expect(readFileSync(both, "utf8")).toContain("**Requires JS**");
+    const jsOnlyMd = readFileSync(jsOnly, "utf8");
+    const bothMd = readFileSync(both, "utf8");
+    expect(jsOnlyMd).toContain("**Requires JS**");
+    expect(bothMd).toContain("**Requires JS**");
     expect(readFileSync(cssOnly, "utf8")).not.toContain("**Requires JS**");
+
+    // Points at the modifier table below, not the CDN picker.
+    expect(jsOnlyMd).toContain("[modifier table below](#modifiers)");
+    expect(jsOnlyMd).not.toContain("CDN picker");
+    expect(bothMd).not.toContain("CDN picker");
+  });
+
+  test("names @interaction-tagged modifiers instead of a generic notice", () => {
+    const dir = mkdtempSync(join(tmp, "js-req-interaction-"));
+    const single = page(dir, "alert", "# alert\n\nSummary.\n\n## Modifiers\n\n...\n");
+    const multiple = page(dir, "widget", "# widget\n\nSummary.\n\n## Modifiers\n\n...\n");
+    const capabilityMap = new Map([
+      ["alert", "both"],
+      ["widget", "both"],
+    ]);
+
+    annotateJsRequirement(
+      [
+        asEntry("alert", "component", [
+          { name: "-timeout", interaction: true },
+          { name: "-color-danger" },
+        ]),
+        asEntry("widget", "component", [
+          { name: "-open", interaction: true },
+          { name: "-should-animate", interaction: true },
+        ]),
+      ],
+      [single, multiple],
+      capabilityMap,
+    );
+
+    const singleMd = readFileSync(single, "utf8");
+    const multipleMd = readFileSync(multiple, "utf8");
+    expect(singleMd).toContain("Its `-timeout` modifier is driven by that behavior.");
+    expect(singleMd).not.toContain("-color-danger");
+    expect(multipleMd).toContain(
+      "Its `-open` and `-should-animate` modifiers are driven by that behavior.",
+    );
   });
 
   test("is idempotent", () => {

@@ -18,7 +18,7 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
-import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
+import { parseCssDocs, type CssDocEntry, type CssModifier } from "@cssdoc/core";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
@@ -497,16 +497,35 @@ const capabilityByName = new Map(
 
 const JS_REQUIREMENT_MARKER = "<!-- js-requirement -->";
 
-/** The "Requires JS" callout body for a `js-only` (no CSS at all) vs. `both` (CSS + behavior) record. */
-function jsRequirementCallout(type: "js-only" | "both"): string {
+/** Render modifier names as inline code, joined "`a`, `b`, and `c`" / "`a` and `b`" / "`a`". */
+function formatModifierList(names: readonly string[]): string {
+  const code = names.map((n) => `\`${n}\``);
+  if (code.length <= 1) return code.join("");
+  if (code.length === 2) return `${code[0]} and ${code[1]}`;
+  return `${code.slice(0, -1).join(", ")}, and ${code.at(-1)}`;
+}
+
+/**
+ * The "Requires JS" callout body for a `js-only` (no CSS at all) vs. `both` (CSS + behavior) record.
+ * `interactionModifiers` are the record's `@modifier -x — @interaction …` entries — the specific
+ * script-toggled modifiers, when any are documented, named here instead of leaving the reader to guess.
+ */
+function jsRequirementCallout(
+  type: "js-only" | "both",
+  interactionModifiers: readonly CssModifier[],
+): string {
   const note =
     type === "js-only"
       ? "This component ships no CSS of its own — its markup and behavior come entirely from `@pantoken/interactions`."
       : "This component's CSS alone is inert — pair it with `@pantoken/interactions` for the interactive behavior.";
+  const plural = interactionModifiers.length > 1;
+  const modifierNote = interactionModifiers.length
+    ? ` Its ${formatModifierList(interactionModifiers.map((m) => m.name))} modifier${plural ? "s are" : " is"} driven by that behavior.`
+    : "";
   return [
     JS_REQUIREMENT_MARKER,
     "> [!TIP]",
-    `> **Requires JS** — ${note} See the [CDN picker](/guide/cdn-picker) for the per-component bundle URL.`,
+    `> **Requires JS** — ${note}${modifierNote} See the [modifier table below](#modifiers).`,
     "",
   ].join("\n");
 }
@@ -529,10 +548,11 @@ export function annotateJsRequirement(
     const md = readFileSync(page, "utf8");
     if (md.includes(JS_REQUIREMENT_MARKER)) return;
 
+    const interactionModifiers = (entry.modifiers ?? []).filter((m) => m.interaction);
     const lines = md.split("\n");
     const sectionIndex = lines.findIndex((l) => l.startsWith("## "));
     const insertAt = sectionIndex === -1 ? lines.length : sectionIndex;
-    lines.splice(insertAt, 0, jsRequirementCallout(type), "");
+    lines.splice(insertAt, 0, jsRequirementCallout(type, interactionModifiers), "");
     writeFileSync(page, lines.join("\n"));
   });
 }
