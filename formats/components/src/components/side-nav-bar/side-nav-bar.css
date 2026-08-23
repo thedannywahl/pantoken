@@ -1,9 +1,11 @@
 /**
  * @component side-nav-bar
+ * @selector .pfx-side-nav-bar
  * @summary A vertical navigation rail of icon-over-label items, with a minimized icons-only mode.
  * @remarks Sets its own `gap` between nav items and its own `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. See the `side-nav-bar.item` member for the individual nav entries.
  * @modifier -minimized — Collapse to icons only (labels hidden). @affects side-nav-bar.item — Hides the item's label.
  * @modifier -icon-* — Render a glyph icon in each nav item.
+ * @part .label — The nav item's text label.
  * @a11y Label the `<nav>` with aria-label so it's announced as a named navigation landmark.
  * @structure
  * .pfx-side-nav-bar {
@@ -29,26 +31,28 @@
  *   </a>
  * </nav>
  */
-.pfx-side-nav-bar {
-  display: flex;
-  flex-direction: column;
-  gap: var(--instui-component-side-nav-bar-content-gap);
-  padding: var(--instui-component-side-nav-bar-content-margin);
-  box-sizing: border-box;
-  inline-size: fit-content;
-  /* The rail sits on the page and runs full height (InstUI SideNavBar is 100% of its layout column). */
-  block-size: 100%;
-  min-block-size: 100%;
-  background: var(--instui-component-side-nav-bar-background-color);
-  color: var(--instui-component-side-nav-bar-font-color);
-  font-family: var(--instui-component-side-nav-bar-item-font-family);
-}
+@scope (.pfx-side-nav-bar) {
+  & {
+    display: flex;
+    flex-direction: column;
+    gap: var(--instui-component-side-nav-bar-content-gap);
+    padding: var(--instui-component-side-nav-bar-content-margin);
+    box-sizing: border-box;
+    inline-size: fit-content;
+    /* The rail sits on the page and runs full height (InstUI SideNavBar is 100% of its layout column). */
+    block-size: 100%;
+    min-block-size: 100%;
+    background: var(--instui-component-side-nav-bar-background-color);
+    color: var(--instui-component-side-nav-bar-font-color);
+    font-family: var(--instui-component-side-nav-bar-item-font-family);
+  }
 
-/* minimized: a narrow rail — the icons stay, the labels are hidden. */
-.pfx-side-nav-bar.-minimized {
-  inline-size: var(--instui-component-side-nav-bar-minimized-width);
-}
+  /* minimized: a narrow rail — the icons stay, the labels are hidden. */
+  &.-minimized {
+    inline-size: var(--instui-component-side-nav-bar-minimized-width);
+  }
 
-.pfx-side-nav-bar.-minimized .item .label {
-  display: none;
+  &.-minimized .item .label {
+    display: none;
+  }
 }

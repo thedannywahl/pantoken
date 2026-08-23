@@ -115,11 +115,6 @@
     );
   }
 
-  /* Opt out of the default elevation (InstUI's hasShadow={false}). */
-  &.-without-shadow {
-    box-shadow: none;
-  }
-
   /* screenReaderOnly: announced to assistive tech, but visually hidden. */
   /* fallow-ignore-next-line css-duplicate-block -- screenReaderOnly is a public Alert prop; declarations cannot be extracted without breaking the component API */
   &.-screen-reader-only {
@@ -192,31 +187,31 @@
   &.-timeout-5 {
     --timeout: 5000;
   }
-}
 
-/* Legacy aliases stay functional even with nested scoped root authoring. */
-.pfx-alert.-has-shadow-false {
-  box-shadow: none;
-}
+  /* Deprecated aliases paired with supported modifiers via :is() for backward compatibility. */
+  &:is(.-has-shadow-false, .-without-shadow) {
+    box-shadow: none;
+  }
 
-.pfx-alert.-variant-info {
-  border-color: var(--instui-component-alert-info-border-color);
-}
+  &:is(.-variant-info, .-color-info) {
+    border-color: var(--instui-component-alert-info-border-color);
+  }
 
-.pfx-alert.-variant-success {
-  border-color: var(--instui-component-alert-success-border-color);
-  --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
-  --pantoken-alert-glyph: var(--instui-icon-circle-check);
-}
+  &:is(.-variant-success, .-color-success) {
+    border-color: var(--instui-component-alert-success-border-color);
+    --pantoken-alert-icon-bg: var(--instui-component-alert-success-icon-background);
+    --pantoken-alert-glyph: var(--instui-icon-circle-check);
+  }
 
-.pfx-alert.-variant-warning {
-  border-color: var(--instui-component-alert-warning-border-color);
-  --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
-  --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
-}
+  &:is(.-variant-warning, .-color-warning) {
+    border-color: var(--instui-component-alert-warning-border-color);
+    --pantoken-alert-icon-bg: var(--instui-component-alert-warning-icon-background);
+    --pantoken-alert-glyph: var(--instui-icon-triangle-alert);
+  }
 
-.pfx-alert.-variant-error {
-  border-color: var(--instui-component-alert-danger-border-color);
-  --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
-  --pantoken-alert-glyph: var(--instui-icon-circle-x);
+  &:is(.-variant-error, .-color-danger) {
+    border-color: var(--instui-component-alert-danger-border-color);
+    --pantoken-alert-icon-bg: var(--instui-component-alert-danger-icon-background);
+    --pantoken-alert-glyph: var(--instui-icon-circle-x);
+  }
 }

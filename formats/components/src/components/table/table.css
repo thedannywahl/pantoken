@@ -1,5 +1,6 @@
 /**
  * @component table
+ * @selector .pfx-table
  * @summary A styled data table for `th` and `td` plus an optional caption, with hover, fixed, and stacked-card layouts.
  * @remarks For `-layout-stacked`, pure CSS can't pull each column header's text into its cell, so give every cell a `data-label` and the stacked card shows it via `::before`. See the `table.head`, `table.body`, `table.row`, `table.cell`, `table.col-header`, and `table.row-header` members for the individual parts.
  * @modifier -hover — Highlight rows on hover. @affects table.row — Reserves and colours the row's hover border.
@@ -52,31 +53,33 @@
  *   }
  * }
  */
-.pfx-table {
-  border-collapse: collapse;
-  width: 100%;
-  background: var(--instui-component-table-background);
-  color: var(--instui-component-table-color);
-  font-family: var(--instui-component-table-font-family);
-  font-size: var(--instui-component-table-font-size);
-}
+@scope (.pfx-table) {
+  & {
+    border-collapse: collapse;
+    width: 100%;
+    background: var(--instui-component-table-background);
+    color: var(--instui-component-table-color);
+    font-family: var(--instui-component-table-font-family);
+    font-size: var(--instui-component-table-font-size);
+  }
 
-.pfx-table caption {
-  text-align: start;
-  padding: var(--instui-component-table-cell-padding-vertical)
-    var(--instui-component-table-cell-padding-horizontal);
-  color: var(--instui-component-table-col-header-color);
-  font-weight: var(--instui-component-table-head-font-weight);
-}
+  & caption {
+    text-align: start;
+    padding: var(--instui-component-table-cell-padding-vertical)
+      var(--instui-component-table-cell-padding-horizontal);
+    color: var(--instui-component-table-col-header-color);
+    font-weight: var(--instui-component-table-head-font-weight);
+  }
 
-/* layout="fixed": columns size to the header/first row, not content (InstUI `layout`). */
-.pfx-table.-layout-fixed {
-  table-layout: fixed;
-}
+  /* layout="fixed": columns size to the header/first row, not content (InstUI `layout`). */
+  &.-layout-fixed {
+    table-layout: fixed;
+  }
 
-/* layout="stacked": the table itself just stops being a table box; see the head/body/row/cell/
- col-header/row-header members for how each part restacks. */
-.pfx-table.-layout-stacked {
-  display: block;
-  width: auto;
+  /* layout="stacked": the table itself just stops being a table box; see the head/body/row/cell/
+   col-header/row-header members for how each part restacks. */
+  &.-layout-stacked {
+    display: block;
+    width: auto;
+  }
 }

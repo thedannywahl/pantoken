@@ -1,5 +1,6 @@
 /**
  * @component menu
+ * @selector .pfx-menu
  * @summary A dropdown surface of items, groups, and separators.
  * @remarks Compose entries as `.item` (see the `menu.item` member), label a section with `.group` (see `menu.group`), and divide sections with `.separator` (see `menu.separator`).
  * @structure
@@ -21,11 +22,13 @@
  * @related tree-browser — Both present nested, selectable entries.
  * @related simple-select — A select's dropdown reuses this menu surface.
  */
-.pfx-menu {
-  min-width: var(--instui-component-menu-min-width);
-  max-width: var(--instui-component-menu-max-width);
-  background: var(--instui-component-menu-item-background);
-  border: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
-  border-radius: var(--instui-border-radius-md);
-  padding: var(--instui-spacing-space-xs) 0;
+@scope (.pfx-menu) {
+  & {
+    min-width: var(--instui-component-menu-min-width);
+    max-width: var(--instui-component-menu-max-width);
+    background: var(--instui-component-menu-item-background);
+    border: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);
+    border-radius: var(--instui-border-radius-md);
+    padding: var(--instui-spacing-space-xs) 0;
+  }
 }

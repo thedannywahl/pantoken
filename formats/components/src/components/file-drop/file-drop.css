@@ -1,5 +1,6 @@
 /**
  * @component file-drop
+ * @selector .pfx-file-drop
  * @summary A file dropzone with hover, accepted, and rejected states.
  * @modifier -icon-* — Render the leading dropzone glyph icon.
  * @modifier -accepted — Drag state for an acceptable file.
@@ -23,30 +24,32 @@
  *   input {}
  * }
  */
-.pfx-file-drop {
-  display: block;
-  text-align: center;
-  padding: var(--instui-spacing-space-lg);
-  color: var(--instui-color-text-base);
-  background: var(--instui-component-file-drop-background-color);
-  border: var(--instui-component-file-drop-border-width)
-    var(--instui-component-file-drop-border-style) var(--instui-component-file-drop-border-color);
-  border-radius: var(--instui-component-file-drop-border-radius);
-}
+@scope (.pfx-file-drop) {
+  & {
+    display: block;
+    text-align: center;
+    padding: var(--instui-spacing-space-lg);
+    color: var(--instui-color-text-base);
+    background: var(--instui-component-file-drop-background-color);
+    border: var(--instui-component-file-drop-border-width)
+      var(--instui-component-file-drop-border-style) var(--instui-component-file-drop-border-color);
+    border-radius: var(--instui-component-file-drop-border-radius);
+  }
 
-.pfx-file-drop:hover,
-.pfx-file-drop.-hover {
-  border-color: var(--instui-component-file-drop-hover-border-color);
-}
+  &:hover,
+  &.-hover {
+    border-color: var(--instui-component-file-drop-hover-border-color);
+  }
 
-.pfx-file-drop.-accepted {
-  border-color: var(--instui-component-file-drop-accepted-color);
-}
+  &.-accepted {
+    border-color: var(--instui-component-file-drop-accepted-color);
+  }
 
-.pfx-file-drop.-rejected {
-  border-color: var(--instui-component-file-drop-rejected-color);
-}
+  &.-rejected {
+    border-color: var(--instui-component-file-drop-rejected-color);
+  }
 
-.pfx-file-drop > [class*="-icon-"] {
-  line-height: 1;
+  & > [class*="-icon-"] {
+    line-height: 1;
+  }
 }

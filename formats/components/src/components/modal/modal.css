@@ -1,5 +1,6 @@
 /**
  * @component modal
+ * @selector .pfx-modal
  * @summary A dialog surface (works on a native <dialog>); header/body/footer parts.
  * @remarks On a native <dialog>, `showModal()` puts the modal in the top layer and its `::backdrop` becomes the mask, so no z-index is needed. An `<img>` alone in `.body` goes full-bleed.
  * @element dialog
@@ -32,73 +33,78 @@
  * @related tray — A tray is the same dismissible overlay pattern, anchored to a screen edge.
  * @demo self:modal
  */
-.pfx-modal {
-  max-width: var(--instui-component-modal-medium-max-width);
-  background: var(--instui-component-modal-background-color);
-  color: var(--instui-component-modal-text-color);
-  border: var(--instui-component-modal-border-width) solid
-    var(--instui-component-modal-border-color);
-  border-radius: var(--instui-component-modal-border-radius);
-  font-family: var(--instui-component-modal-font-family);
-  overflow: hidden;
-  /* Modals float above the page; the elevation tokens are defined at the top of components.css. */
-  box-shadow: var(--instui-elevation-topmost);
-}
+@scope (.pfx-modal) {
+  & {
+    max-width: var(--instui-component-modal-medium-max-width);
+    background: var(--instui-component-modal-background-color);
+    color: var(--instui-component-modal-text-color);
+    border: var(--instui-component-modal-border-width) solid
+      var(--instui-component-modal-border-color);
+    border-radius: var(--instui-component-modal-border-radius);
+    font-family: var(--instui-component-modal-font-family);
+    overflow: hidden;
+    /* Modals float above the page; the elevation tokens are defined at the top of components.css. */
+    box-shadow: var(--instui-elevation-topmost);
+  }
 
-/* On a native <dialog>, drop the UA padding and centre it; `showModal()` puts it in the top layer, so
-   no z-index is needed. The dialog's ::backdrop IS the modal's mask — dim it with the Mask token; the
-   optional -blur modifier frosts it (mirrors .pfx-mask.-blur). */
-dialog.pfx-modal {
-  margin: auto;
-  padding: 0;
-}
+  /* On a native <dialog>, drop the UA padding and centre it; `showModal()` puts it in the top layer, so
+     no z-index is needed. The dialog's ::backdrop IS the modal's mask — dim it with the Mask token; the
+     optional -blur modifier frosts it (mirrors .pfx-mask.-blur). */
+  &[is="dialog"],
+  dialog& {
+    margin: auto;
+    padding: 0;
+  }
 
-dialog.pfx-modal::backdrop {
-  background: var(--instui-component-mask-background-color);
-}
+  &[is="dialog"]::backdrop,
+  dialog&::backdrop {
+    background: var(--instui-component-mask-background-color);
+  }
 
-dialog.pfx-modal.-blur::backdrop {
-  backdrop-filter: blur(0.5rem);
-}
+  &[is="dialog"].-blur::backdrop,
+  dialog&.-blur::backdrop {
+    backdrop-filter: blur(0.5rem);
+  }
 
-.pfx-modal.-size-sm {
-  max-width: var(--instui-component-modal-small-max-width);
-}
+  &.-size-sm {
+    max-width: var(--instui-component-modal-small-max-width);
+  }
 
-.pfx-modal.-size-lg {
-  max-width: var(--instui-component-modal-large-max-width);
-}
+  &.-size-lg {
+    max-width: var(--instui-component-modal-large-max-width);
+  }
 
-.pfx-modal.-size-auto {
-  max-width: none;
-  min-width: var(--instui-component-modal-auto-min-width);
-}
+  &.-size-auto {
+    max-width: none;
+    min-width: var(--instui-component-modal-auto-min-width);
+  }
 
-/* Fullscreen is truly edge-to-edge (InstUI has no inset). It pins itself fixed and stretches via
-   inset:0 + auto sizing, overriding both a <dialog>'s UA `width: fit-content`/`margin: auto` and its
-   `:modal` max-width cap, so it works on a native dialog or a plain positioned div. No rounded corners
-   at the viewport edge. */
-.pfx-modal.-size-fullscreen {
-  position: fixed;
-  inset: 0;
-  width: auto;
-  height: auto;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  border-radius: 0;
-}
+  /* Fullscreen is truly edge-to-edge (InstUI has no inset). It pins itself fixed and stretches via
+     inset:0 + auto sizing, overriding both a <dialog>'s UA `width: fit-content`/`margin: auto` and its
+     `:modal` max-width cap, so it works on a native dialog or a plain positioned div. No rounded corners
+     at the viewport edge. */
+  &.-size-fullscreen {
+    position: fixed;
+    inset: 0;
+    width: auto;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border-radius: 0;
+  }
 
-/* overflow="fit" (InstUI): cap the modal to the viewport and scroll the body, so the header/footer
-   stay pinned. The default (overflow="scroll") lets the whole modal grow and the overlay scroll. */
-.pfx-modal.-overflow-fit {
-  display: flex;
-  flex-direction: column;
-  max-block-size: calc(100dvh - var(--instui-spacing-space-xl) * 2);
-}
+  /* overflow="fit" (InstUI): cap the modal to the viewport and scroll the body, so the header/footer
+     stay pinned. The default (overflow="scroll") lets the whole modal grow and the overlay scroll. */
+  &.-overflow-fit {
+    display: flex;
+    flex-direction: column;
+    max-block-size: calc(100dvh - var(--instui-spacing-space-xl) * 2);
+  }
 
-.pfx-modal.-color-inverse {
-  background: var(--instui-component-modal-inverse-background-color);
-  color: var(--instui-component-modal-inverse-text-color);
-  border-color: var(--instui-component-modal-inverse-border-color);
+  &.-color-inverse {
+    background: var(--instui-component-modal-inverse-background-color);
+    color: var(--instui-component-modal-inverse-text-color);
+    border-color: var(--instui-component-modal-inverse-border-color);
+  }
 }

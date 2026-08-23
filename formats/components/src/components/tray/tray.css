@@ -1,5 +1,6 @@
 /**
  * @component tray
+ * @selector .pfx-tray
  * @summary An edge-pinned panel that slides in from any side; a native `[popover]` or `<dialog>`.
  * @modifier -placement-top — Pin to the top edge.
  * @modifier -placement-bottom — Pin to the bottom edge.
@@ -30,118 +31,123 @@
  * @related modal — The same dismissible overlay pattern, centred instead of edge-pinned.
  * @related popover — The generic top-layer surface this builds on.
  */
-.pfx-tray {
-  position: fixed;
-  inset-block: 0;
-  inset-inline-start: 0;
-  inline-size: var(--instui-component-tray-width-md);
-  max-inline-size: 100%;
-  /* block-size:auto lets inset-block:0 stretch it full height, overriding the UA popover's
-     height:fit-content; so the edge shadows fall outside the viewport. */
-  block-size: auto;
-  max-block-size: none;
-  background: var(--instui-component-tray-background-color);
-  border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
-  padding: var(--instui-component-tray-padding);
-  z-index: var(--instui-component-tray-z-index);
-  box-shadow: var(--instui-elevation-topmost);
-}
-
-.pfx-tray.-placement-start {
-  inset-inline: 0 auto;
-}
-
-.pfx-tray.-placement-end {
-  inset-inline: auto 0;
-}
-
-.pfx-tray.-placement-top {
-  inset: 0 0 auto 0;
-  inline-size: 100%;
-  block-size: auto;
-}
-
-.pfx-tray.-placement-bottom {
-  inset: auto 0 0 0;
-  inline-size: 100%;
-  block-size: auto;
-}
-
-.pfx-tray.-size-xs {
-  inline-size: var(--instui-component-tray-width-xs);
-}
-
-.pfx-tray.-size-sm {
-  inline-size: var(--instui-component-tray-width-sm);
-}
-
-.pfx-tray.-size-md {
-  inline-size: var(--instui-component-tray-width-md);
-}
-
-.pfx-tray.-size-lg {
-  inline-size: var(--instui-component-tray-width-lg);
-}
-
-.pfx-tray.-size-xl {
-  inline-size: var(--instui-component-tray-width-xl);
-}
-
-[popover].pfx-tray {
-  margin: 0;
-}
-
-dialog.pfx-tray {
-  margin: 0;
-  padding: var(--instui-component-tray-padding);
-  border: var(--instui-component-tray-border-width) solid var(--instui-component-tray-border-color);
-}
-
-/* Slide in from the docked edge on open (native popover + @starting-style, no JS). --tray-slide-x/y
-   hold the hidden-state offset per placement; inert where allow-discrete transitions aren't supported. */
-@supports (transition-behavior: allow-discrete) {
-  [popover].pfx-tray {
-    --tray-slide-x: -100%;
-    --tray-slide-y: 0%;
-    transition:
-      transform 0.2s ease,
-      overlay 0.2s allow-discrete,
-      display 0.2s allow-discrete;
-    transform: translate(0, 0);
+@scope (.pfx-tray) {
+  & {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--instui-component-tray-width-md);
+    max-inline-size: 100%;
+    /* block-size:auto lets inset-block:0 stretch it full height, overriding the UA popover's
+       height:fit-content; so the edge shadows fall outside the viewport. */
+    block-size: auto;
+    max-block-size: none;
+    background: var(--instui-component-tray-background-color);
+    border: var(--instui-component-tray-border-width) solid
+      var(--instui-component-tray-border-color);
+    padding: var(--instui-component-tray-padding);
+    z-index: var(--instui-component-tray-z-index);
+    box-shadow: var(--instui-elevation-topmost);
   }
 
-  [popover].pfx-tray:not(:popover-open) {
-    transform: translate(var(--tray-slide-x), var(--tray-slide-y));
+  &.-placement-start {
+    inset-inline: 0 auto;
   }
 
-  @starting-style {
-    [popover].pfx-tray:popover-open {
+  &.-placement-end {
+    inset-inline: auto 0;
+  }
+
+  &.-placement-top {
+    inset: 0 0 auto 0;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  &.-placement-bottom {
+    inset: auto 0 0 0;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  &.-size-xs {
+    inline-size: var(--instui-component-tray-width-xs);
+  }
+
+  &.-size-sm {
+    inline-size: var(--instui-component-tray-width-sm);
+  }
+
+  &.-size-md {
+    inline-size: var(--instui-component-tray-width-md);
+  }
+
+  &.-size-lg {
+    inline-size: var(--instui-component-tray-width-lg);
+  }
+
+  &.-size-xl {
+    inline-size: var(--instui-component-tray-width-xl);
+  }
+
+  &[popover] {
+    margin: 0;
+  }
+
+  &[is="dialog"],
+  dialog& {
+    margin: 0;
+    padding: var(--instui-component-tray-padding);
+    border: var(--instui-component-tray-border-width) solid
+      var(--instui-component-tray-border-color);
+  }
+
+  /* Slide in from the docked edge on open (native popover + @starting-style, no JS). --tray-slide-x/y
+     hold the hidden-state offset per placement; inert where allow-discrete transitions aren't supported. */
+  @supports (transition-behavior: allow-discrete) {
+    &[popover] {
+      --tray-slide-x: -100%;
+      --tray-slide-y: 0%;
+      transition:
+        transform 0.2s ease,
+        overlay 0.2s allow-discrete,
+        display 0.2s allow-discrete;
+      transform: translate(0, 0);
+    }
+
+    &[popover]:not(:popover-open) {
       transform: translate(var(--tray-slide-x), var(--tray-slide-y));
     }
-  }
 
-  /* Inline placements dock to logical start/end, so the slide direction must mirror under an
-     ancestor [dir="rtl"]; the end-in-rtl override must win, so it needs one extra class of
-     specificity, and the top/bottom resets must come after this generic flip in source order. */
-  [dir="rtl"] .pfx-tray {
-    --tray-slide-x: 100%;
-  }
+    @starting-style {
+      &[popover]:popover-open {
+        transform: translate(var(--tray-slide-x), var(--tray-slide-y));
+      }
+    }
 
-  .pfx-tray.-placement-end {
-    --tray-slide-x: 100%;
-  }
+    /* Inline placements dock to logical start/end, so the slide direction must mirror under an
+       ancestor [dir="rtl"]; the end-in-rtl override must win, so it needs one extra class of
+       specificity, and the top/bottom resets must come after this generic flip in source order. */
+    [dir="rtl"] & {
+      --tray-slide-x: 100%;
+    }
 
-  [dir="rtl"] .pfx-tray.-placement-end {
-    --tray-slide-x: -100%;
-  }
+    &.-placement-end {
+      --tray-slide-x: 100%;
+    }
 
-  .pfx-tray.-placement-top {
-    --tray-slide-x: 0%;
-    --tray-slide-y: -100%;
-  }
+    [dir="rtl"] &.-placement-end {
+      --tray-slide-x: -100%;
+    }
 
-  .pfx-tray.-placement-bottom {
-    --tray-slide-x: 0%;
-    --tray-slide-y: 100%;
+    &.-placement-top {
+      --tray-slide-x: 0%;
+      --tray-slide-y: -100%;
+    }
+
+    &.-placement-bottom {
+      --tray-slide-x: 0%;
+      --tray-slide-y: 100%;
+    }
   }
 }

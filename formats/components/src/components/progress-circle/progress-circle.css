@@ -1,5 +1,6 @@
 /**
  * @component progress-circle
+ * @selector .pfx-progress-circle
  * @summary A circular progress ring driven by `--value` and `--value-max` custom properties.
  * @remarks The ring is a `conic-gradient` donut painted on `::before` and clipped with a radial-gradient mask; `--value` divided by `--value-max` drives the arc. Add `-should-animate` and load the interactions entry point to animate it from zero on mount. InstUI has no indeterminate state; `:indeterminate` is a pantoken-only best guess (native `<progress>` without a `value` attribute), spinning the ring at a fixed arc and hiding `.value` since there's no meaningful number to show. `<meter>` has no indeterminate state, so it's unaffected.
  * @element progress, meter
@@ -66,175 +67,207 @@
  * @stable
  * @sealed
  */
+
+@property --value {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --value-now {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --min {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --max {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 100;
+}
+
+@property --value-max {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 100;
+}
+
 @property --animation-delay {
   syntax: "<number>";
   inherits: true;
   initial-value: 0;
 }
 
-.pfx-progress-circle {
-  --value: var(--value-now);
-  --min: 0;
-  --max: var(--value-max);
-  --animation-delay: 0;
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
-  --pantoken-pc-track: var(--instui-component-progress-circle-track-color);
-  --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--instui-component-progress-circle-medium-size);
-  height: var(--instui-component-progress-circle-medium-size);
-  color: var(--instui-component-progress-circle-color);
-  font-family: var(--instui-component-progress-circle-font-family);
-  font-weight: var(--instui-component-progress-circle-font-weight);
-  line-height: var(--instui-component-progress-circle-line-height);
-  transition: --value 1s;
-}
-
-/* The ring is a masked conic donut on ::before; the value sits in the hole. */
-.pfx-progress-circle::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--pantoken-pc-fill)
-      clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%),
-    var(--pantoken-pc-track) 0
-  );
-  -webkit-mask: radial-gradient(
-    farthest-side,
-    #0000 calc(100% - var(--pantoken-pc-stroke)),
-    #000 0
-  );
-  mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
-
-  transition:
-    opacity 0.5s 0.2s,
-    transform 0.5s;
-  transform: translate3d(0, 0, 0) scale(1);
-}
-
-.pfx-progress-circle .value {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pfx-progress-circle.-size-xs {
-  width: var(--instui-component-progress-circle-x-small-size);
-  height: var(--instui-component-progress-circle-x-small-size);
-  --pantoken-pc-stroke: var(--instui-component-progress-circle-x-small-stroke-width);
-}
-
-.pfx-progress-circle.-size-sm {
-  width: var(--instui-component-progress-circle-small-size);
-  height: var(--instui-component-progress-circle-small-size);
-  --pantoken-pc-stroke: var(--instui-component-progress-circle-small-stroke-width);
-}
-
-.pfx-progress-circle.-size-md {
-  width: var(--instui-component-progress-circle-medium-size);
-  height: var(--instui-component-progress-circle-medium-size);
-  --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
-}
-
-.pfx-progress-circle.-size-lg {
-  width: var(--instui-component-progress-circle-large-size);
-  height: var(--instui-component-progress-circle-large-size);
-  --pantoken-pc-stroke: var(--instui-component-progress-circle-large-stroke-width);
-}
-
-.pfx-progress-circle.-color-brand {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
-}
-
-.pfx-progress-circle.-color-primary-inverse.-color-brand {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
-}
-
-.pfx-progress-circle.-color-info {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-info);
-}
-
-.pfx-progress-circle.-color-primary-inverse.-color-info {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-info-inverse);
-}
-
-.pfx-progress-circle.-color-success {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-success);
-}
-
-.pfx-progress-circle.-color-primary-inverse.-color-success {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-success-inverse);
-}
-
-.pfx-progress-circle.-color-warning {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-warning);
-}
-
-.pfx-progress-circle.-color-primary-inverse.-color-warning {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-warning-inverse);
-}
-
-.pfx-progress-circle.-color-danger {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-danger);
-}
-
-.pfx-progress-circle.-color-primary-inverse.-color-danger {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-danger-inverse);
-}
-
-.pfx-progress-circle.-color-primary-inverse {
-  --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
-  --pantoken-pc-track: var(--instui-component-progress-circle-track-color-inverse);
-  color: var(--instui-component-progress-circle-color-inverse);
-}
-
-/* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
-   --value) reads as loading rather than rendering a static, potentially-empty ring. */
-@keyframes pantoken-progress-circle-indeterminate {
-  to {
-    transform: rotate(1turn);
+@scope (.pfx-progress-circle) {
+  & {
+    --value: var(--value-now);
+    --min: 0;
+    --max: var(--value-max);
+    --animation-delay: 0;
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
+    --pantoken-pc-track: var(--instui-component-progress-circle-track-color);
+    --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--instui-component-progress-circle-medium-size);
+    height: var(--instui-component-progress-circle-medium-size);
+    color: var(--instui-component-progress-circle-color);
+    font-family: var(--instui-component-progress-circle-font-family);
+    font-weight: var(--instui-component-progress-circle-font-weight);
+    line-height: var(--instui-component-progress-circle-line-height);
+    transition: --value 1s;
   }
-}
 
-/* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
-.pfx-progress-circle:indeterminate {
-  --value: 25;
-  --min: 0;
-  --max: 100;
-}
+  /* The ring is a masked conic donut on ::before; the value sits in the hole. */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      var(--pantoken-pc-fill)
+        clamp(0%, calc((var(--value) - var(--min)) / (var(--max) - var(--min)) * 100%), 100%),
+      var(--pantoken-pc-track) 0
+    );
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      #0000 calc(100% - var(--pantoken-pc-stroke)),
+      #000 0
+    );
+    mask: radial-gradient(farthest-side, #0000 calc(100% - var(--pantoken-pc-stroke)), #000 0);
+    transition:
+      opacity 0.5s 0.2s,
+      transform 0.5s;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 
-.pfx-progress-circle:indeterminate::before {
-  animation: pantoken-progress-circle-indeterminate 1s linear infinite;
-}
+  & .value {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.pfx-progress-circle:indeterminate .value {
-  visibility: hidden;
-}
+  &.-size-xs {
+    width: var(--instui-component-progress-circle-x-small-size);
+    height: var(--instui-component-progress-circle-x-small-size);
+    --pantoken-pc-stroke: var(--instui-component-progress-circle-x-small-stroke-width);
+  }
 
-.pfx-progress-circle > .value {
-  transition:
-    opacity 0.5s 1s,
-    transform 0.5s 1s;
-  transform: translate3d(0, 0, 0);
-}
+  &.-size-sm {
+    width: var(--instui-component-progress-circle-small-size);
+    height: var(--instui-component-progress-circle-small-size);
+    --pantoken-pc-stroke: var(--instui-component-progress-circle-small-stroke-width);
+  }
 
-.pfx-progress-circle.-should-animate {
-  --value: 0 !important;
-}
+  &.-size-md {
+    width: var(--instui-component-progress-circle-medium-size);
+    height: var(--instui-component-progress-circle-medium-size);
+    --pantoken-pc-stroke: var(--instui-component-progress-circle-medium-stroke-width);
+  }
 
-.pfx-progress-circle.-should-animate::before {
-  opacity: 0;
-  transform: translate3d(0, 0, 0) scale(0.75);
-}
+  &.-size-lg {
+    width: var(--instui-component-progress-circle-large-size);
+    height: var(--instui-component-progress-circle-large-size);
+    --pantoken-pc-stroke: var(--instui-component-progress-circle-large-stroke-width);
+  }
 
-.pfx-progress-circle.-should-animate > .value {
-  opacity: 0;
-  transform: translate3d(0, 10%, 0);
+  &:is(.-color-brand, .-meter-color-brand) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand);
+  }
+
+  &.-color-primary-inverse:is(.-color-brand, .-meter-color-brand) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
+  }
+
+  &:is(.-color-info, .-meter-color-info) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-info);
+  }
+
+  &.-color-primary-inverse:is(.-color-info, .-meter-color-info) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-info-inverse);
+  }
+
+  &:is(.-color-success, .-meter-color-success) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-success);
+  }
+
+  &.-color-primary-inverse:is(.-color-success, .-meter-color-success) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-success-inverse);
+  }
+
+  &:is(.-color-warning, .-meter-color-warning, .-meter-color-alert) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-warning);
+  }
+
+  &.-color-primary-inverse:is(.-color-warning, .-meter-color-warning, .-meter-color-alert) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-warning-inverse);
+  }
+
+  &:is(.-color-danger, .-meter-color-danger) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-danger);
+  }
+
+  &.-color-primary-inverse:is(.-color-danger, .-meter-color-danger) {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-danger-inverse);
+  }
+
+  &.-color-primary-inverse {
+    --pantoken-pc-fill: var(--instui-component-progress-circle-meter-color-brand-inverse);
+    --pantoken-pc-track: var(--instui-component-progress-circle-track-color-inverse);
+    color: var(--instui-component-progress-circle-color-inverse);
+  }
+
+  /* Not an InstUI concept: a best guess so a <progress> missing its value attribute (or fed a bad
+     --value) reads as loading rather than rendering a static, potentially-empty ring. */
+  @keyframes pantoken-progress-circle-indeterminate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  /* :indeterminate only matches a valueless <progress>; <meter> always requires a value. */
+  &:indeterminate {
+    --value: 25;
+    --min: 0;
+    --max: 100;
+  }
+
+  &:indeterminate::before {
+    animation: pantoken-progress-circle-indeterminate 1s linear infinite;
+  }
+
+  &:indeterminate .value {
+    visibility: hidden;
+  }
+
+  & > .value {
+    transition:
+      opacity 0.5s 1s,
+      transform 0.5s 1s;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount) {
+    --value: 0 !important;
+  }
+
+  &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount)::before {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.75);
+  }
+
+  &:is(.-should-animate, .-should-animate-on-mount, .-shold-animate-on-mount) > .value {
+    opacity: 0;
+    transform: translate3d(0, 10%, 0);
+  }
 }

@@ -1,5 +1,6 @@
 /**
  * @component link
+ * @selector .pfx-link
  * @summary A styled hyperlink with sizes, an inverse variant for dark backgrounds, and inline or unstyled forms.
  * @remarks Sets its own responsive `gap` between an icon and its text (`-size-sm`/`-size-lg` scale it); chaining a `-gap-*` spacing utility modifier overrides that built-in value.
  * @modifier -color-inverse — For dark backgrounds.
@@ -15,38 +16,40 @@
  * <a class="pfx-link" href="#">A styled link</a>
  * @related breadcrumb — A breadcrumb trail is built from links; also its small-screen fallback (pair with the `responsive` utility to swap Breadcrumb for a Link below ~768px).
  */
-.pfx-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--instui-component-link-gap-md);
-  color: var(--instui-component-link-text-color);
-  font-family: var(--instui-component-link-font-family);
-  font-size: var(--instui-component-link-font-size-md);
-  font-weight: var(--instui-component-link-font-weight);
-  line-height: var(--instui-component-link-line-height-md);
-  text-decoration: var(--instui-component-link-text-decoration-outside-text);
-  cursor: pointer;
-}
+@scope (.pfx-link) {
+  & {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--instui-component-link-gap-md);
+    color: var(--instui-component-link-text-color);
+    font-family: var(--instui-component-link-font-family);
+    font-size: var(--instui-component-link-font-size-md);
+    font-weight: var(--instui-component-link-font-weight);
+    line-height: var(--instui-component-link-line-height-md);
+    text-decoration: var(--instui-component-link-text-decoration-outside-text);
+    cursor: pointer;
+  }
 
-.pfx-link:hover {
-  color: var(--instui-component-link-text-hover-color);
-}
+  &:hover {
+    color: var(--instui-component-link-text-hover-color);
+  }
 
-.pfx-link[aria-disabled="true"] {
-  color: var(--instui-component-link-text-disabled-color);
-  cursor: not-allowed;
-}
+  &[aria-disabled="true"] {
+    color: var(--instui-component-link-text-disabled-color);
+    cursor: not-allowed;
+  }
 
-.pfx-link.-size-sm {
-  gap: var(--instui-component-link-gap-sm);
-  font-size: var(--instui-component-link-font-size-sm);
-  line-height: var(--instui-component-link-line-height-sm);
-}
+  &.-size-sm {
+    gap: var(--instui-component-link-gap-sm);
+    font-size: var(--instui-component-link-font-size-sm);
+    line-height: var(--instui-component-link-line-height-sm);
+  }
 
-.pfx-link.-size-lg {
-  gap: var(--instui-component-link-gap-lg);
-  font-size: var(--instui-component-link-font-size-lg);
-  line-height: var(--instui-component-link-line-height-lg);
+  &.-size-lg {
+    gap: var(--instui-component-link-gap-lg);
+    font-size: var(--instui-component-link-font-size-lg);
+    line-height: var(--instui-component-link-line-height-lg);
+  }
 }
 
 .pfx-link.-color-inverse {
