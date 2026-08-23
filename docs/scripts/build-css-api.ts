@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
 import { parseCssDocs, type CssDocEntry, type CssModifier } from "@cssdoc/core";
+import { JS_CALLOUT_MARKER } from "./segment-markdown.ts";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
@@ -495,8 +496,6 @@ const capabilityByName = new Map(
   (capabilities.components as { name: string; type: string }[]).map((c) => [c.name, c.type]),
 );
 
-const JS_REQUIREMENT_MARKER = "<!-- js-requirement -->";
-
 /** Render modifier names as inline code, joined "`a`, `b`, and `c`" / "`a` and `b`" / "`a`". */
 function formatModifierList(names: readonly string[]): string {
   const code = names.map((n) => `\`${n}\``);
@@ -526,7 +525,7 @@ function jsRequirementCallout(
     ? ` Its ${formatModifierList(interactionModifiers.map((m) => m.name))} modifier${plural ? "s are" : " is"} driven by that behavior.`
     : "";
   return [
-    JS_REQUIREMENT_MARKER,
+    JS_CALLOUT_MARKER,
     "> [!TIP]",
     `> **${label}** — ${note}${modifierNote} See the [modifier table below](#modifiers).`,
     "",
@@ -549,7 +548,7 @@ export function annotateJsRequirement(
     if (type !== "js-only" && type !== "both") return;
     const page = pages[i];
     const md = readFileSync(page, "utf8");
-    if (md.includes(JS_REQUIREMENT_MARKER)) return;
+    if (md.includes(JS_CALLOUT_MARKER)) return;
 
     const interactionModifiers = (entry.modifiers ?? []).filter((m) => m.interaction);
     const lines = md.split("\n");

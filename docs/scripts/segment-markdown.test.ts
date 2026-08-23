@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vite-plus/test";
 import {
+  JS_CALLOUT_MARKER,
   type Segment,
   type TranslationKind,
   collectUnits,
@@ -81,7 +82,9 @@ const identity = (text: string): string => text;
 
 /** Find the single segment whose text contains `needle`. */
 const find = (segments: Segment[], needle: string): Segment => {
-  const match = segments.filter((s) => s.kind !== "table" && s.text.includes(needle));
+  const match = segments.filter(
+    (s) => s.kind !== "table" && s.kind !== "callout" && s.text.includes(needle),
+  );
   expect(match.length, `exactly one segment contains ${JSON.stringify(needle)}`).toBe(1);
   return match[0];
 };
@@ -136,6 +139,56 @@ describe("classification", () => {
   test("tables become table segments", () => {
     const tables = cssdoc.filter((s) => s.kind === "table");
     expect(tables.length).toBe(2);
+  });
+});
+
+describe("the js-requirement callout", () => {
+  const page = [
+    "# CSS: alert",
+    "",
+    "Summary.",
+    "",
+    JS_CALLOUT_MARKER,
+    "> [!TIP]",
+    "> **JS Enhancement** — Pair it with `@pantoken/interactions`. See the [modifier table below](#modifiers).",
+    "",
+    "## Modifiers",
+    "",
+  ].join("\n");
+
+  test("splits into a glossary label and a prose note", () => {
+    const segments = segmentMarkdown(page);
+    const callout = segments.find((s) => s.kind === "callout");
+    expect(callout).toBeDefined();
+    if (callout?.kind !== "callout") throw new Error("expected a callout segment");
+    expect(callout.label).toBe("JS Enhancement");
+    expect(callout.note).toBe(
+      "Pair it with `@pantoken/interactions`. See the [modifier table below](#modifiers).",
+    );
+
+    const units = collectUnits(segments);
+    expect(units).toContainEqual({ text: "JS Enhancement", kind: "glossary" });
+    expect(units).toContainEqual({
+      text: "Pair it with `@pantoken/interactions`. See the [modifier table below](#modifiers).",
+      kind: "prose",
+    });
+  });
+
+  test("round-trips losslessly with the identity resolver", () => {
+    expect(reassemble(segmentMarkdown(page), identity)).toBe(page);
+  });
+
+  test("resolves the label and note independently on translation", () => {
+    const resolve = (text: string, kind: TranslationKind): string =>
+      kind === "glossary" ? "JS-bővítmény" : "Párosítsd a `@pantoken/interactions`-szal.";
+    const out = reassemble(segmentMarkdown(page), resolve);
+    expect(out).toContain("> **JS-bővítmény** — Párosítsd a `@pantoken/interactions`-szal.");
+  });
+
+  test("falls back to preserve when the shape doesn't match (e.g. no [!TIP] line)", () => {
+    const malformed = [JS_CALLOUT_MARKER, "> **JS Enhancement** — note.", ""].join("\n");
+    const segments = segmentMarkdown(malformed);
+    expect(segments.some((s) => s.kind === "callout")).toBe(false);
   });
 });
 

@@ -109,6 +109,12 @@ test("glossary adapter translateBatch fires onChunk with the full result", async
   expect(chunks[0].k1).toBe("Áttekintés");
 });
 
+test("glossary adapter translates the js-requirement callout labels", async () => {
+  const g = new GlossaryTranslationAdapter();
+  expect(await g.translateText("JS Requirement")).toBe("JS-követelmény");
+  expect(await g.translateText("JS Enhancement")).toBe("JS-bővítmény");
+});
+
 // --- createTranslationAdapter ---
 
 test("createTranslationAdapter defaults to the glossary adapter", () => {
