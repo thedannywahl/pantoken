@@ -14,10 +14,10 @@ test("pagination: brand page links, a filled current page, nav arrows, ellipsis,
   expect(pg).toContain("var(--instui-color-text-interactive-navigation-primary-base)");
   expect(page).toContain("var(--instui-color-background-interactive-action-primary-base)");
   expect(page).toContain(".page[aria-current]");
-  // Nav arrows (first/prev/next/last), a disabled state, and the truncation ellipsis (scoped forms).
-  expect(pg).toContain(":scope > .arrow");
+  // Nav arrows (first/prev/next/last), a disabled state, and the truncation ellipsis (nested scoped forms).
+  expect(pg).toMatch(/:scope\s*\{[\s\S]*?>\s*\.arrow/u);
   expect(pg).toContain('.arrow[aria-disabled="true"]');
-  expect(pg).toContain(":scope > .ellipsis");
+  expect(pg).toMatch(/>\s*\.ellipsis/u);
   // variant="input" sizes the input from the page-input token.
   expect(pg).toContain(".instui-pagination.-variant-input");
   expect(pg).toContain("var(--instui-component-pagination-page-input-input-width)");

@@ -1,5 +1,6 @@
 /**
  * @component form-field-group
+ * @selector .pfx-form-field-group
  * @summary A `<fieldset>` group with a legend, a column or inline layout, and configurable spacing.
  * @remarks Sets its own `gap` between fields, tunable with the `-col-spacing-*`/`-row-spacing-*` modifiers below — prefer those over chaining a generic `-gap-*` spacing utility modifier, which overrides the built-in value outright.
  * @modifier -col-spacing-none — No column gap.
@@ -58,96 +59,98 @@
  * @related form-field — The single field this group repeats.
  * @related radio-input-group — Groups radio inputs under a legend.
  */
-.pfx-form-field-group {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--instui-component-form-field-layout-gap-inputs);
-  min-inline-size: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
+@scope (.pfx-form-field-group) {
+  & {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--instui-component-form-field-layout-gap-inputs);
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
 
-.pfx-form-field-group > legend {
-  grid-column: 1 / -1;
-  padding: 0;
-  margin-block-end: var(--instui-component-form-field-layout-gap-primitives);
-  color: var(--instui-component-form-field-layout-text-color);
-  font-family: var(--instui-component-form-field-layout-font-family);
-  font-weight: var(--instui-component-form-field-layout-font-weight);
-  font-size: var(--instui-component-form-field-layout-font-size);
-  line-height: var(--instui-component-form-field-layout-line-height);
-}
+  & > legend {
+    grid-column: 1 / -1;
+    padding: 0;
+    margin-block-end: var(--instui-component-form-field-layout-gap-primitives);
+    color: var(--instui-component-form-field-layout-text-color);
+    font-family: var(--instui-component-form-field-layout-font-family);
+    font-weight: var(--instui-component-form-field-layout-font-weight);
+    font-size: var(--instui-component-form-field-layout-font-size);
+    line-height: var(--instui-component-form-field-layout-line-height);
+  }
 
-.pfx-form-field-group.-required > legend::after {
-  content: "*";
-  margin-inline-start: 0.25rem;
-  color: var(--instui-component-form-field-layout-asterisk-color);
-}
+  &.-required > legend::after {
+    content: "*";
+    margin-inline-start: 0.25rem;
+    color: var(--instui-component-form-field-layout-asterisk-color);
+  }
 
-.pfx-form-field-group.-layout-columns,
-.pfx-form-field-group.-layout-inline {
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-}
+  &.-layout-columns,
+  &.-layout-inline {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
 
-.pfx-form-field-group.-row-spacing-none {
-  row-gap: 0;
-}
+  &.-row-spacing-none {
+    row-gap: 0;
+  }
 
-.pfx-form-field-group.-row-spacing-small {
-  row-gap: var(--instui-spacing-space-sm);
-}
+  &.-row-spacing-small {
+    row-gap: var(--instui-spacing-space-sm);
+  }
 
-.pfx-form-field-group.-row-spacing-medium {
-  row-gap: var(--instui-spacing-space-md);
-}
+  &.-row-spacing-medium {
+    row-gap: var(--instui-spacing-space-md);
+  }
 
-.pfx-form-field-group.-row-spacing-large {
-  row-gap: var(--instui-spacing-space-lg);
-}
+  &.-row-spacing-large {
+    row-gap: var(--instui-spacing-space-lg);
+  }
 
-.pfx-form-field-group.-col-spacing-none {
-  column-gap: 0;
-}
+  &.-col-spacing-none {
+    column-gap: 0;
+  }
 
-.pfx-form-field-group.-col-spacing-small {
-  column-gap: var(--instui-spacing-space-sm);
-}
+  &.-col-spacing-small {
+    column-gap: var(--instui-spacing-space-sm);
+  }
 
-.pfx-form-field-group.-col-spacing-medium {
-  column-gap: var(--instui-spacing-space-md);
-}
+  &.-col-spacing-medium {
+    column-gap: var(--instui-spacing-space-md);
+  }
 
-.pfx-form-field-group.-col-spacing-large {
-  column-gap: var(--instui-spacing-space-lg);
-}
+  &.-col-spacing-large {
+    column-gap: var(--instui-spacing-space-lg);
+  }
 
-.pfx-form-field-group.-v-align-top {
-  align-items: start;
-}
+  &.-v-align-top {
+    align-items: start;
+  }
 
-.pfx-form-field-group.-v-align-middle {
-  align-items: center;
-}
-
-.pfx-form-field-group.-v-align-bottom {
-  align-items: end;
-}
-
-/* -layout-aligned: the group's inline fields share one [label | controls] grid via subgrid, so every
-   label lines up in a single column (Chromium/Firefox). Inert where subgrid is unsupported — the fields
-   just fall back to their own stacked layout. */
-@supports (grid-template-columns: subgrid) {
-  .pfx-form-field-group.-layout-aligned {
-    grid-template-columns: auto 1fr;
+  &.-v-align-middle {
     align-items: center;
   }
 
-  .pfx-form-field-group.-layout-aligned > .pfx-form-field {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: subgrid;
-    grid-template-areas: "label controls" ". messages";
-    align-items: center;
+  &.-v-align-bottom {
+    align-items: end;
+  }
+
+  /* -layout-aligned: the group's inline fields share one [label | controls] grid via subgrid, so every
+     label lines up in a single column (Chromium/Firefox). Inert where subgrid is unsupported — the fields
+     just fall back to their own stacked layout. */
+  @supports (grid-template-columns: subgrid) {
+    &.-layout-aligned {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+
+    &.-layout-aligned > .pfx-form-field {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: subgrid;
+      grid-template-areas: "label controls" ". messages";
+      align-items: center;
+    }
   }
 }

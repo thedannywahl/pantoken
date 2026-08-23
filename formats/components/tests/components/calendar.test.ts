@@ -15,7 +15,7 @@ test("calendar is a seven-column grid with day states", () => {
     "grid-template-columns: repeat(7, var(--instui-component-calendar-day-min-width));",
   );
   expect(css).toContain("justify-content: center;");
-  expect(css).toContain(":scope > .grid");
+  expect(css).toMatch(/:scope\s*\{[\s\S]*?>\s*\.grid/u);
   const day = calendarDayCss({ prefix: "instui" });
   expect(day).toContain(".day.-today {");
   expect(day).toContain(".day.-selected {");

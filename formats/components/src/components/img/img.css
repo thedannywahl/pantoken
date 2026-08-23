@@ -1,5 +1,6 @@
 /**
  * @component img
+ * @selector .pfx-img
  * @summary A styled `<img>` with display, crop, and effect modifiers that stack.
  * @modifier -display-block — Display as a block element.
  * @modifier -constrain-cover — Scale to fill the box (cover).
@@ -11,35 +12,43 @@
  * @example
  * <img class="pfx-img" alt="Gradient">
  */
-.pfx-img {
-  display: inline-block;
-  max-inline-size: 100%;
-  block-size: auto;
-  --pantoken-img-filter: none;
-  filter: var(--pantoken-img-filter);
-  transition: filter var(--instui-component-img-effect-transition-duration) ease;
-}
-.pfx-img.-display-block {
-  display: block;
-}
-/* constrain: fill a sized box (the consumer sets width/height). */
-.pfx-img.-constrain-cover {
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: cover;
-}
-.pfx-img.-constrain-contain {
-  inline-size: 100%;
-  block-size: 100%;
-  object-fit: contain;
-}
-/* Effects compose through the custom property, so grayscale + blur can apply together. */
-.pfx-img.-with-grayscale {
-  --pantoken-img-filter: grayscale(1);
-}
-.pfx-img.-with-blur {
-  --pantoken-img-filter: blur(var(--instui-component-img-image-blur-amount));
-}
-.pfx-img.-with-grayscale.-with-blur {
-  --pantoken-img-filter: grayscale(1) blur(var(--instui-component-img-image-blur-amount));
+@scope (.pfx-img) {
+  & {
+    display: inline-block;
+    max-inline-size: 100%;
+    block-size: auto;
+    --pantoken-img-filter: none;
+    filter: var(--pantoken-img-filter);
+    transition: filter var(--instui-component-img-effect-transition-duration) ease;
+  }
+
+  &.-display-block {
+    display: block;
+  }
+
+  /* constrain: fill a sized box (the consumer sets width/height). */
+  &.-constrain-cover {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  &.-constrain-contain {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: contain;
+  }
+
+  /* Effects compose through the custom property, so grayscale + blur can apply together. */
+  &.-with-grayscale {
+    --pantoken-img-filter: grayscale(1);
+  }
+
+  &.-with-blur {
+    --pantoken-img-filter: blur(var(--instui-component-img-image-blur-amount));
+  }
+
+  &.-with-grayscale.-with-blur {
+    --pantoken-img-filter: grayscale(1) blur(var(--instui-component-img-image-blur-amount));
+  }
 }

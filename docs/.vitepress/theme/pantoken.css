@@ -91,8 +91,9 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
    theme text colour and stay visible in light and dark; the SVG is capped so wide logos don't overflow
    the table cell. */
 .pantoken-token-preview {
-  display: block;
-  margin-block-start: 8px;
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 0;
   line-height: 0;
 }
 
@@ -111,7 +112,7 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   flex-wrap: wrap;
   gap: 12px;
   align-items: last baseline;
-  margin-left: 0.25rem;
+  margin-right: 0.5rem;
 }
 
 .pantoken-swatch__item {
@@ -155,6 +156,23 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
    prose. Scoped to `.pantoken-doc-tag`, so real `.instui-pill` previews in a `.css-example` are untouched. */
 .vp-doc .instui-pill.pantoken-doc-tag {
   vertical-align: middle;
+}
+
+/* `@interaction` modifier markers in CSS API tables use the same badge treatment as deprecated/alias,
+   but with an interaction-specific violet accent text colour. */
+.vp-doc .instui-pill.pantoken-doc-tag.pantoken-doc-tag-interaction {
+  color: var(--instui-color-text-accent-violet);
+  border-color: var(--instui-color-text-accent-violet);
+}
+
+/* In docs tables, prevent wrap overlap where description prose mixes pills + inline code.
+   Scope to the last cell only (the description-style column in API/guide tables), and only style
+   the inline badge/code elements — nothing outside table cells is affected. */
+.vp-doc
+  table
+  td:last-child:has(.instui-pill.pantoken-doc-tag, code)
+  :is(.instui-pill.pantoken-doc-tag, code) {
+  line-height: 1.5rem;
 }
 
 /* Home styles */

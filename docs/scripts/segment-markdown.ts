@@ -23,6 +23,13 @@
 /** How a translatable segment is handled: cheap `glossary` substitution or real `prose` translation. */
 export type TranslationKind = "glossary" | "prose";
 
+/**
+ * The marker `docs/scripts/build-css-api.ts` prepends to its JS Requirement/Enhancement callout
+ * (`jsRequirementCallout`) — recognized here so the bold label and note translate instead of the
+ * whole block being swallowed by the generic blockquote `preserve` rule below.
+ */
+export const JS_CALLOUT_MARKER = "<!-- js-requirement -->";
+
 /** One block of split markdown, tagged by how it should be emitted or translated. */
 export type Segment =
   | { kind: "preserve"; text: string }
@@ -35,6 +42,15 @@ export type Segment =
       separatorRow: number;
       /** Column indices whose body cells hold prose (a `Description`/`Summary` column). */
       descCols: number[];
+    }
+  | {
+      /** The `<!-- js-requirement -->` callout: `marker`/`alertLine` are verbatim, `label` (e.g.
+       *  "JS Requirement"/"JS Enhancement") is a fixed glossary term, `note` is real prose. */
+      kind: "callout";
+      marker: string;
+      alertLine: string;
+      label: string;
+      note: string;
     };
 
 /** A translatable unit: source text plus how it should be translated. */
@@ -89,6 +105,23 @@ const isSeparatorRow = (line: string): boolean => {
   return cells.length > 0 && cells.every((cell) => /^:?-+:?$/.test(cell));
 };
 
+const CALLOUT_LINE_RE = /^> \*\*(.+?)\*\* — (.+)$/u;
+
+/**
+ * The `<!-- js-requirement -->`-marked callout `build-css-api.ts` emits: `marker` + `> [!TIP]` +
+ * `> **{label}** — {note}`. Only classified as `"callout"` when it rebuilds byte-for-byte to the
+ * source (mirrors the table round-trip guard); otherwise `undefined`, and the generic blockquote
+ * `preserve` rule in {@link classifyBlock} takes over.
+ */
+const classifyJsCallout = (lines: string[]): Segment | undefined => {
+  if (lines.length !== 3 || lines[0] !== JS_CALLOUT_MARKER || lines[1] !== "> [!TIP]")
+    return undefined;
+  const match = CALLOUT_LINE_RE.exec(lines[2]);
+  if (!match) return undefined;
+  const [, label, note] = match;
+  return { kind: "callout", marker: lines[0], alertLine: lines[1], label, note };
+};
+
 /** Classify a run of consecutive non-blank, non-fenced lines. */
 const classifyBlock = (lines: string[]): Segment => {
   const text = lines.join("\n");
@@ -106,6 +139,9 @@ const classifyBlock = (lines: string[]): Segment => {
     }
     return { kind: "preserve", text };
   }
+
+  const callout = classifyJsCallout(lines);
+  if (callout) return callout;
 
   // Headings and stability-badge pills → deterministic glossary. The glossary no-ops on identifiers
   // (`### options?`) and on words it doesn't know, so routing every heading here is safe.
@@ -227,6 +263,10 @@ export function collectUnits(segments: readonly Segment[]): TranslatableUnit[] {
     }
     if (segment.kind === "table") {
       units.push(...collectTableUnits(segment));
+      continue;
+    }
+    if (segment.kind === "callout") {
+      units.push({ text: segment.label, kind: "glossary" }, { text: segment.note, kind: "prose" });
     }
   }
   return units;
@@ -246,6 +286,12 @@ const renderSegment = (segment: Segment, resolve: Resolve): string => {
       return resolve(segment.text, segment.kind);
     case "table":
       return renderTable(segment, resolve);
+    case "callout":
+      return [
+        segment.marker,
+        segment.alertLine,
+        `> **${resolve(segment.label, "glossary")}** — ${resolve(segment.note, "prose")}`,
+      ].join("\n");
   }
 };
 

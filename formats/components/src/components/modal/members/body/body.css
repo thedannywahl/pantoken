@@ -12,30 +12,32 @@
  * }
  */
 @scope (.pfx-modal) {
-  :scope.-overflow-fit > .body {
-    overflow-y: auto;
-  }
+  :scope {
+    &.-overflow-fit > .body {
+      overflow-y: auto;
+    }
 
-  :scope > .body {
-    padding: var(--instui-component-modal-body-padding);
-  }
+    > .body {
+      padding: var(--instui-component-modal-body-padding);
+    }
 
-  /* A media modal: when the body holds an image it goes full-bleed (no padding) so the media meets the
-   modal edges. Pair with -color-inverse for the on-dark chrome InstUI uses around media. */
-  :scope > .body:has(> img) {
-    padding: 0;
-  }
+    /* A media modal: when the body holds an image it goes full-bleed (no padding) so the media meets the
+     modal edges. Pair with -color-inverse for the on-dark chrome InstUI uses around media. */
+    > .body:has(> img) {
+      padding: 0;
+    }
 
-  :scope > .body:has(> img) img {
-    display: block;
-    width: 100%;
-  }
+    > .body:has(> img) img {
+      display: block;
+      width: 100%;
+    }
 
-  :scope.-density-compact > .body {
-    padding: var(--instui-component-modal-body-padding-compact);
-  }
+    &.-density-compact > .body {
+      padding: var(--instui-component-modal-body-padding-compact);
+    }
 
-  :scope.-color-inverse > .body {
-    background: var(--instui-component-modal-body-inverse-background-color);
+    &.-color-inverse > .body {
+      background: var(--instui-component-modal-body-inverse-background-color);
+    }
   }
 }

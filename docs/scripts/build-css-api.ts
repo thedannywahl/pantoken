@@ -18,7 +18,8 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { CssDocConfigFile } from "@cssdoc/config";
 import { emitCssApi } from "@cssdoc/typedoc";
-import { parseCssDocs, type CssDocEntry } from "@cssdoc/core";
+import { parseCssDocs, type CssDocEntry, type CssModifier } from "@cssdoc/core";
+import { JS_CALLOUT_MARKER } from "./segment-markdown.ts";
 import { tokens, type Token } from "@pantoken/tokens";
 import { makeResolver, unknownReferences } from "@pantoken/utils";
 import { BESPOKE_SYNTAX } from "@pantoken/utils/token-syntax";
@@ -259,6 +260,7 @@ const readCss = (subpath: string): string => readFileSync(cssPath(subpath), "utf
 const classNames = {
   deprecated: BADGE_CLASS_BY_LABEL.Deprecated,
   alias: BADGE_CLASS_BY_LABEL.Alias,
+  interaction: BADGE_CLASS_BY_LABEL.Interaction,
   stage: { stable: BADGE_CLASS_BY_LABEL.Stable },
 };
 
@@ -494,27 +496,47 @@ const capabilityByName = new Map(
   (capabilities.components as { name: string; type: string }[]).map((c) => [c.name, c.type]),
 );
 
-const JS_REQUIREMENT_MARKER = "<!-- js-requirement -->";
+/** Render modifier names as inline code, joined "`a`, `b`, and `c`" / "`a` and `b`" / "`a`". */
+function formatModifierList(names: readonly string[]): string {
+  const code = names.map((n) => `\`${n}\``);
+  if (code.length <= 1) return code.join("");
+  if (code.length === 2) return `${code[0]} and ${code[1]}`;
+  return `${code.slice(0, -1).join(", ")}, and ${code.at(-1)}`;
+}
 
-/** The "Requires JS" callout body for a `js-only` (no CSS at all) vs. `both` (CSS + behavior) record. */
-function jsRequirementCallout(type: "js-only" | "both"): string {
+/**
+ * The JS callout body: "JS Requirement" for `js-only` (no CSS at all — JS is mandatory) vs.
+ * "JS Enhancement" for `both` (the CSS renders and works on its own; `@pantoken/interactions` only
+ * adds the interactive behavior on top, it isn't required to use the component). `interactionModifiers`
+ * are the record's `@modifier -x — @interaction …` entries — the specific script-toggled modifiers,
+ * when any are documented, named here instead of leaving the reader to guess.
+ */
+function jsRequirementCallout(
+  type: "js-only" | "both",
+  interactionModifiers: readonly CssModifier[],
+): string {
+  const label = type === "js-only" ? "JS Requirement" : "JS Enhancement";
   const note =
     type === "js-only"
       ? "This component ships no CSS of its own — its markup and behavior come entirely from `@pantoken/interactions`."
-      : "This component's CSS alone is inert — pair it with `@pantoken/interactions` for the interactive behavior.";
+      : "This component's CSS renders and works on its own; pair it with `@pantoken/interactions` to add the interactive behavior.";
+  const plural = interactionModifiers.length > 1;
+  const modifierNote = interactionModifiers.length
+    ? ` Its ${formatModifierList(interactionModifiers.map((m) => m.name))} modifier${plural ? "s are" : " is"} driven by that behavior.`
+    : "";
   return [
-    JS_REQUIREMENT_MARKER,
+    JS_CALLOUT_MARKER,
     "> [!TIP]",
-    `> **Requires JS** — ${note} See the [CDN picker](/guide/cdn-picker) for the per-component bundle URL.`,
+    `> **${label}** — ${note}${modifierNote} See the [modifier table below](#modifiers).`,
     "",
   ].join("\n");
 }
 
 /**
- * Insert an idempotent "Requires JS" callout into each generated component page whose
- * `component-capabilities.json` type isn't `"css-only"`, right before its first `##` section (after
- * the title/summary/meta-line header `@cssdoc/markdown` renders — there's no hook to inject into that
- * header directly, so this post-processes the written file).
+ * Insert an idempotent "JS Requirement"/"JS Enhancement" callout into each generated component page
+ * whose `component-capabilities.json` type isn't `"css-only"`, right before its first `##` section
+ * (after the title/summary/meta-line header `@cssdoc/markdown` renders — there's no hook to inject
+ * into that header directly, so this post-processes the written file).
  */
 export function annotateJsRequirement(
   entries: readonly CssDocEntry[],
@@ -526,12 +548,13 @@ export function annotateJsRequirement(
     if (type !== "js-only" && type !== "both") return;
     const page = pages[i];
     const md = readFileSync(page, "utf8");
-    if (md.includes(JS_REQUIREMENT_MARKER)) return;
+    if (md.includes(JS_CALLOUT_MARKER)) return;
 
+    const interactionModifiers = (entry.modifiers ?? []).filter((m) => m.interaction);
     const lines = md.split("\n");
     const sectionIndex = lines.findIndex((l) => l.startsWith("## "));
     const insertAt = sectionIndex === -1 ? lines.length : sectionIndex;
-    lines.splice(insertAt, 0, jsRequirementCallout(type), "");
+    lines.splice(insertAt, 0, jsRequirementCallout(type, interactionModifiers), "");
     writeFileSync(page, lines.join("\n"));
   });
 }

@@ -1,5 +1,6 @@
 /**
  * @component text
+ * @selector .pfx-text
  * @summary Body-text typography with size, weight, colour, and style modifiers.
  * @modifier -color-brand — Brand text colour.
  * @modifier -color-secondary — Secondary (muted) text colour.
@@ -33,7 +34,7 @@
  * ```html
  * <span class="pfx-text -size-xs --display-block">x-small text</span>
  * <span class="pfx-text -size-sm --display-block">small text</span>
- * <span class="pfx-text -variant-content-quote --display-block">AI highlight text</span>
+ * <span class="pfx-text -variant-content-quote --display-block">Quoted text</span>
  * <span class="pfx-text -color-ai-highlight">AI highlight text</span>
  * ```
  * @related heading — Typography for headings rather than body text.
@@ -41,137 +42,139 @@
  * @stable
  * @sealed
  */
-.pfx-text {
-  font-family: var(--instui-component-text-content-font-family);
-  color: var(--instui-component-text-base-color);
-  font-size: var(--instui-component-text-font-size-medium);
-  font-weight: var(--instui-component-text-font-weight-normal);
-  line-height: var(--instui-component-text-content-line-height);
-}
+@scope (.pfx-text) {
+  & {
+    font-family: var(--instui-component-text-content-font-family);
+    color: var(--instui-component-text-base-color);
+    font-size: var(--instui-component-text-font-size-medium);
+    font-weight: var(--instui-component-text-font-weight-normal);
+    line-height: var(--instui-component-text-content-line-height);
+  }
 
-.pfx-text.-size-xs {
-  font-size: var(--instui-component-text-font-size-x-small);
-}
+  &.-size-xs {
+    font-size: var(--instui-component-text-font-size-x-small);
+  }
 
-.pfx-text.-size-sm {
-  font-size: var(--instui-component-text-font-size-small);
-}
+  &.-size-sm {
+    font-size: var(--instui-component-text-font-size-small);
+  }
 
-.pfx-text.-size-lg {
-  font-size: var(--instui-component-text-font-size-large);
-}
+  &.-size-lg {
+    font-size: var(--instui-component-text-font-size-large);
+  }
 
-.pfx-text.-size-xl {
-  font-size: var(--instui-component-text-font-size-x-large);
-}
+  &.-size-xl {
+    font-size: var(--instui-component-text-font-size-x-large);
+  }
 
-.pfx-text.-weight-bold {
-  font-weight: var(--instui-component-text-font-weight-bold);
-}
+  &.-weight-bold {
+    font-weight: var(--instui-component-text-font-weight-bold);
+  }
 
-.pfx-text.-style-italic {
-  font-style: italic;
-}
+  &.-style-italic {
+    font-style: italic;
+  }
 
-.pfx-text.-color-primary {
-  color: var(--instui-component-text-primary-color);
-}
+  &.-color-primary {
+    color: var(--instui-component-text-primary-color);
+  }
 
-.pfx-text.-color-secondary {
-  color: var(--instui-component-text-muted-color);
-}
+  &.-color-secondary {
+    color: var(--instui-component-text-muted-color);
+  }
 
-.pfx-text.-color-brand {
-  color: light-dark(
-    var(--instui-color-institutional-brand-primary),
-    var(--instui-color-institutional-brand-font-color-dark)
-  );
-}
+  &.-color-brand {
+    color: light-dark(
+      var(--instui-color-institutional-brand-primary),
+      var(--instui-color-institutional-brand-font-color-dark)
+    );
+  }
 
-.pfx-text.-color-success {
-  color: var(--instui-component-text-success-color);
-}
+  &.-color-success {
+    color: var(--instui-component-text-success-color);
+  }
 
-.pfx-text.-color-danger {
-  color: var(--instui-component-text-error-color);
-}
+  &.-color-danger {
+    color: var(--instui-component-text-error-color);
+  }
 
-.pfx-text.-color-warning {
-  color: var(--instui-component-text-warning-color);
-}
+  &.-color-warning {
+    color: var(--instui-component-text-warning-color);
+  }
 
-.pfx-text:is(.-color-ai-highlight, .-color-ai) {
-  color: var(--instui-component-text-ai-color);
-  background: var(--instui-component-text-ai-background-color);
-}
+  &:is(.-color-ai-highlight, .-color-ai) {
+    color: var(--instui-component-text-ai-color);
+    background: var(--instui-component-text-ai-background-color);
+  }
 
-.pfx-text.-color-primary-inverse {
-  color: var(--instui-component-text-inverse-color);
-}
+  &.-color-primary-inverse {
+    color: var(--instui-component-text-inverse-color);
+  }
 
-.pfx-text.-color-secondary-inverse {
-  color: var(--instui-component-text-inverse-color);
-}
+  &.-color-secondary-inverse {
+    color: var(--instui-component-text-inverse-color);
+  }
 
-.pfx-text.-color-primary-on {
-  color: var(--instui-component-text-base-on-color);
-}
+  &.-color-primary-on {
+    color: var(--instui-component-text-base-on-color);
+  }
 
-.pfx-text.-color-secondary-on {
-  color: var(--instui-component-text-muted-on-color);
-}
+  &.-color-secondary-on {
+    color: var(--instui-component-text-muted-on-color);
+  }
 
-.pfx-text.-variant-description-page {
-  font-size: var(--instui-component-text-description-page-font-size);
-  font-weight: var(--instui-component-text-description-page-font-weight);
-  line-height: var(--instui-component-text-description-page-line-height);
-}
+  &.-variant-description-page {
+    font-size: var(--instui-component-text-description-page-font-size);
+    font-weight: var(--instui-component-text-description-page-font-weight);
+    line-height: var(--instui-component-text-description-page-line-height);
+  }
 
-.pfx-text.-variant-description-section {
-  font-size: var(--instui-component-text-description-section-font-size);
-  font-weight: var(--instui-component-text-description-section-font-weight);
-  line-height: var(--instui-component-text-description-section-line-height);
-}
+  &.-variant-description-section {
+    font-size: var(--instui-component-text-description-section-font-size);
+    font-weight: var(--instui-component-text-description-section-font-weight);
+    line-height: var(--instui-component-text-description-section-line-height);
+  }
 
-.pfx-text.-variant-content {
-  font-size: var(--instui-component-text-content-font-size);
-  line-height: var(--instui-component-text-content-line-height);
-  font-weight: var(--instui-component-text-content-font-weight);
-}
+  &.-variant-content {
+    font-size: var(--instui-component-text-content-font-size);
+    line-height: var(--instui-component-text-content-line-height);
+    font-weight: var(--instui-component-text-content-font-weight);
+  }
 
-.pfx-text.-variant-content-small {
-  font-size: var(--instui-component-text-content-small-font-size);
-  font-weight: var(--instui-component-text-content-small-font-weight);
-  line-height: var(--instui-component-text-content-small-line-height);
-}
+  &.-variant-content-small {
+    font-size: var(--instui-component-text-content-small-font-size);
+    font-weight: var(--instui-component-text-content-small-font-weight);
+    line-height: var(--instui-component-text-content-small-line-height);
+  }
 
-.pfx-text.-variant-content-important {
-  font-size: var(--instui-component-text-content-important-font-size);
-  line-height: var(--instui-component-text-content-important-line-height);
-  font-weight: var(--instui-component-text-content-important-font-weight);
-}
+  &.-variant-content-important {
+    font-size: var(--instui-component-text-content-important-font-size);
+    line-height: var(--instui-component-text-content-important-line-height);
+    font-weight: var(--instui-component-text-content-important-font-weight);
+  }
 
-.pfx-text.-variant-content-quote {
-  font-size: var(--instui-component-text-content-quote-font-size);
-  font-weight: var(--instui-component-text-content-quote-font-weight);
-  font-style: var(--instui-component-text-content-quote-font-style);
-  line-height: var(--instui-component-text-content-quote-line-height);
-}
+  &.-variant-content-quote {
+    font-size: var(--instui-component-text-content-quote-font-size);
+    font-weight: var(--instui-component-text-content-quote-font-weight);
+    font-style: var(--instui-component-text-content-quote-font-style);
+    line-height: var(--instui-component-text-content-quote-line-height);
+  }
 
-.pfx-text.-variant-legend {
-  font-size: var(--instui-component-text-legend-font-size);
-  line-height: var(--instui-component-text-legend-line-height);
-  font-weight: var(--instui-component-text-legend-font-weight);
-}
+  &.-variant-legend {
+    font-size: var(--instui-component-text-legend-font-size);
+    line-height: var(--instui-component-text-legend-line-height);
+    font-weight: var(--instui-component-text-legend-font-weight);
+  }
 
-.pfx-text.-transform-uppercase {
-  text-transform: uppercase;
-}
+  &.-transform-uppercase {
+    text-transform: uppercase;
+  }
 
-.pfx-text.-transform-lowercase {
-  text-transform: lowercase;
-}
+  &.-transform-lowercase {
+    text-transform: lowercase;
+  }
 
-.pfx-text.-transform-capitalize {
-  text-transform: capitalize;
+  &.-transform-capitalize {
+    text-transform: capitalize;
+  }
 }

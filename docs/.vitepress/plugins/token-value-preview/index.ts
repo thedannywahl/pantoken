@@ -185,6 +185,6 @@ export function tokenValuePreview(md: MarkdownIt): void {
     const rendered = defaultRender(tokens, index, options, env, self);
     const content = tokens[index].content;
     const preview = imagePreview(content) ?? colorPreview(content);
-    return preview ? `${rendered}${preview}` : rendered;
+    return preview ? `${preview}${rendered}` : rendered;
   };
 }

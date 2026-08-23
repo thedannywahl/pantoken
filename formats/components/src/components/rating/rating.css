@@ -35,16 +35,18 @@
 }
 
 @scope (.pfx-rating) {
-  /* The container paints the empty (outline) stars; a filled (solid) star overrides to the filled colour. */
-  .-icon-star-solid {
-    color: var(--instui-component-rating-icon-icon-filled-color);
-  }
+  :scope {
+    /* The container paints the empty (outline) stars; a filled (solid) star overrides to the filled colour. */
+    .-icon-star-solid {
+      color: var(--instui-component-rating-icon-icon-filled-color);
+    }
 
-  /* The value label sits after the stars, reset to text size so it isn't scaled to the star glyph. */
-  :scope > .label {
-    margin-inline-start: var(--instui-component-rating-icon-icon-margin);
-    color: var(--instui-color-text-base);
-    font-family: var(--instui-font-family-base);
-    font-size: var(--instui-font-size-text-base);
+    /* The value label sits after the stars, reset to text size so it isn't scaled to the star glyph. */
+    > .label {
+      margin-inline-start: var(--instui-component-rating-icon-icon-margin);
+      color: var(--instui-color-text-base);
+      font-family: var(--instui-font-family-base);
+      font-size: var(--instui-font-size-text-base);
+    }
   }
 }

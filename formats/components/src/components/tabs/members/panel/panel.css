@@ -10,21 +10,23 @@
  * }
  */
 @scope (.pfx-tabs) {
-  :scope > .panel {
-    box-sizing: border-box;
-    border-top: var(--instui-component-tabs-panel-border-width) solid
-      var(--instui-component-tabs-panel-border-color);
-    background: var(--instui-component-tabs-panel-background);
-    color: var(--instui-component-tabs-panel-text-color);
-    font-family: var(--instui-component-tabs-panel-font-family);
-    font-size: var(--instui-component-tabs-panel-font-size);
-    font-weight: var(--instui-component-tabs-panel-font-weight);
-    line-height: var(--instui-component-tabs-panel-line-height);
-    padding: var(--instui-spacing-space-sm) var(--instui-spacing-space-md)
-      var(--instui-spacing-space-md);
-  }
+  :scope {
+    > .panel {
+      box-sizing: border-box;
+      border-top: var(--instui-component-tabs-panel-border-width) solid
+        var(--instui-component-tabs-panel-border-color);
+      background: var(--instui-component-tabs-panel-background);
+      color: var(--instui-component-tabs-panel-text-color);
+      font-family: var(--instui-component-tabs-panel-font-family);
+      font-size: var(--instui-component-tabs-panel-font-size);
+      font-weight: var(--instui-component-tabs-panel-font-weight);
+      line-height: var(--instui-component-tabs-panel-line-height);
+      padding: var(--instui-spacing-space-sm) var(--instui-spacing-space-md)
+        var(--instui-spacing-space-md);
+    }
 
-  :scope > .panel[hidden] {
-    display: none;
+    > .panel[hidden] {
+      display: none;
+    }
   }
 }

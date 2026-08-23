@@ -9,13 +9,15 @@
  * }
  */
 @scope (.pfx-menu) {
-  :scope > .group {
-    padding: var(--instui-component-menu-group-padding-vertical)
-      var(--instui-component-menu-group-padding-horizontal);
-    background: var(--instui-component-menu-group-background);
-    color: var(--instui-component-menu-group-color);
-    font-family: var(--instui-component-menu-group-font-family);
-    font-size: var(--instui-component-menu-group-font-size);
-    font-weight: var(--instui-component-menu-group-font-weight);
+  :scope {
+    > .group {
+      padding: var(--instui-component-menu-group-padding-vertical)
+        var(--instui-component-menu-group-padding-horizontal);
+      background: var(--instui-component-menu-group-background);
+      color: var(--instui-component-menu-group-color);
+      font-family: var(--instui-component-menu-group-font-family);
+      font-size: var(--instui-component-menu-group-font-size);
+      font-weight: var(--instui-component-menu-group-font-weight);
+    }
   }
 }

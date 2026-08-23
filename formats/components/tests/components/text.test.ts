@@ -9,11 +9,12 @@ test("text: emits exactly one well-formed cssdoc record with no token drift", ()
 
 test("text exposes sizes, weights, colours, and content variants (dash-prefixed compound modifiers)", () => {
   const css = textCss({ prefix: "instui" });
-  expect(css).toContain(".instui-text.-size-sm");
+  expect(css).toContain("@scope (.instui-text)");
+  expect(css).toMatch(/&\.-size-sm/u);
   expect(css).toContain("var(--instui-component-text-font-size-x-large)");
-  expect(css).toContain(".instui-text.-weight-bold");
-  expect(css).toContain(".instui-text.-color-danger");
+  expect(css).toMatch(/&\.-weight-bold/u);
+  expect(css).toMatch(/&\.-color-danger/u);
   expect(css).toContain("var(--instui-component-text-error-color)");
-  expect(css).toContain(".instui-text.-variant-description-page");
-  expect(css).toContain(".instui-text.-variant-legend");
+  expect(css).toMatch(/&\.-variant-description-page/u);
+  expect(css).toMatch(/&\.-variant-legend/u);
 });

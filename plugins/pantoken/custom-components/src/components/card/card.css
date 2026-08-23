@@ -99,25 +99,27 @@
 }
 
 @scope (.pfx-card) {
-  /* @ref 4 */
-  :scope.-variant-container > * {
-    padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
-    border: var(--instui-component-shared-tokens-stroke-width-sm) solid
-      var(--instui-component-shared-tokens-stroke-muted-color);
-    border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-sm);
-  }
-
-  @media (min-width: 20rem) {
-    :scope.-variant-container > * {
-      padding: var(--instui-component-shared-tokens-spacing-padding-card-md);
-      border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-md);
+  :scope {
+    /* @ref 4 */
+    &.-variant-container > * {
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+      border: var(--instui-component-shared-tokens-stroke-width-sm) solid
+        var(--instui-component-shared-tokens-stroke-muted-color);
+      border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-sm);
     }
-  }
 
-  @media (min-width: 42.75rem) {
-    :scope.-variant-container > * {
-      padding: var(--instui-component-shared-tokens-spacing-padding-card-lg);
-      border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-lg);
+    @media (min-width: 20rem) {
+      &.-variant-container > * {
+        padding: var(--instui-component-shared-tokens-spacing-padding-card-md);
+        border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-md);
+      }
+    }
+
+    @media (min-width: 42.75rem) {
+      &.-variant-container > * {
+        padding: var(--instui-component-shared-tokens-spacing-padding-card-lg);
+        border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-lg);
+      }
     }
   }
 }

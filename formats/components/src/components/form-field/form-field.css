@@ -46,17 +46,19 @@
 }
 
 @scope (.pfx-form-field) {
-  :scope > .label {
-    grid-area: label;
-    color: var(--instui-component-form-field-layout-text-color);
-    font-family: var(--instui-component-form-field-layout-font-family);
-    font-weight: var(--instui-component-form-field-layout-font-weight);
-    font-size: var(--instui-component-form-field-layout-font-size);
-    line-height: var(--instui-component-form-field-layout-line-height);
-  }
+  :scope {
+    > .label {
+      grid-area: label;
+      color: var(--instui-component-form-field-layout-text-color);
+      font-family: var(--instui-component-form-field-layout-font-family);
+      font-weight: var(--instui-component-form-field-layout-font-weight);
+      font-size: var(--instui-component-form-field-layout-font-size);
+      line-height: var(--instui-component-form-field-layout-line-height);
+    }
 
-  :scope > .controls {
-    grid-area: controls;
+    > .controls {
+      grid-area: controls;
+    }
   }
 }
 

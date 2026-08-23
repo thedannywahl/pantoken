@@ -11,41 +11,43 @@
  * }
  */
 @scope (.pfx-pagination) {
-  /* A page number — an <a> or <button>. Text-style primary button: brand text, no fill. */
-  :scope > .page {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-inline-size: 2rem;
-    min-block-size: 2rem;
-    padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
-    color: var(--instui-color-text-interactive-navigation-primary-base);
-    background: transparent;
-    border: var(--instui-border-width-md) solid transparent;
-    border-radius: var(--instui-component-base-button-border-radius);
-    font: inherit;
-    font-weight: var(--instui-font-weight-interactive);
-    text-decoration: none;
-    cursor: pointer;
-  }
+  :scope {
+    /* A page number — an <a> or <button>. Text-style primary button: brand text, no fill. */
+    > .page {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-inline-size: 2rem;
+      min-block-size: 2rem;
+      padding: var(--instui-spacing-space2xs) var(--instui-spacing-space-xs);
+      color: var(--instui-color-text-interactive-navigation-primary-base);
+      background: transparent;
+      border: var(--instui-border-width-md) solid transparent;
+      border-radius: var(--instui-component-base-button-border-radius);
+      font: inherit;
+      font-weight: var(--instui-font-weight-interactive);
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  :scope > .page:hover {
-    background: var(--instui-color-background-muted);
-    color: var(--instui-color-text-interactive-navigation-primary-hover);
-  }
+    > .page:hover {
+      background: var(--instui-color-background-muted);
+      color: var(--instui-color-text-interactive-navigation-primary-hover);
+    }
 
-  /* The current page — a filled primary button (InstUI: color="primary" withBackground withBorder). */
-  :scope > .page[aria-current],
-  :scope > .page.-current {
-    background: var(--instui-color-background-interactive-action-primary-base);
-    color: var(--instui-color-text-interactive-action-primary-base);
-    border-color: var(--instui-color-background-interactive-action-primary-base);
-  }
+    /* The current page — a filled primary button (InstUI: color="primary" withBackground withBorder). */
+    > .page[aria-current],
+    > .page.-current {
+      background: var(--instui-color-background-interactive-action-primary-base);
+      color: var(--instui-color-text-interactive-action-primary-base);
+      border-color: var(--instui-color-background-interactive-action-primary-base);
+    }
 
-  :scope > .page[aria-current]:hover,
-  :scope > .page.-current:hover {
-    background: var(--instui-color-background-interactive-action-primary-hover);
-    border-color: var(--instui-color-background-interactive-action-primary-hover);
-    color: var(--instui-color-text-interactive-action-primary-base);
+    > .page[aria-current]:hover,
+    > .page.-current:hover {
+      background: var(--instui-color-background-interactive-action-primary-hover);
+      border-color: var(--instui-color-background-interactive-action-primary-hover);
+      color: var(--instui-color-text-interactive-action-primary-base);
+    }
   }
 }

@@ -58,34 +58,36 @@
 
   /* Secondary variant (the parent tabs's `-variant-secondary`): rounded "folder" tabs; the selected
    tab's bottom border matches the panel background so it visually connects into the panel below. */
-  :scope.-variant-secondary .tab {
-    padding: 0.75rem 1rem;
-    line-height: var(--instui-component-tabs-tab-line-height);
-    color: var(--instui-component-tabs-tab-secondary-text-color);
-    margin-inline-end: 0.2em;
-    margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
-    border: var(--instui-component-tabs-panel-border-width) solid transparent;
-    border-radius: 0.1875rem 0.1875rem 0 0;
-  }
+  :scope {
+    &.-variant-secondary .tab {
+      padding: 0.75rem 1rem;
+      line-height: var(--instui-component-tabs-tab-line-height);
+      color: var(--instui-component-tabs-tab-secondary-text-color);
+      margin-inline-end: 0.2em;
+      margin-bottom: calc(-1 * var(--instui-component-tabs-panel-border-width));
+      border: var(--instui-component-tabs-panel-border-width) solid transparent;
+      border-radius: 0.1875rem 0.1875rem 0 0;
+    }
 
-  :scope.-variant-secondary .tab:first-of-type {
-    margin-inline-start: 0;
-  }
+    &.-variant-secondary .tab:first-of-type {
+      margin-inline-start: 0;
+    }
 
-  :scope.-variant-secondary
-    .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not(
-      [aria-disabled="true"]
-    ) {
-    background: var(--instui-component-tabs-tab-secondary-selected-background);
-    border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
-    color: var(--instui-component-tabs-tab-secondary-selected-text-color);
-  }
+    &.-variant-secondary
+      .tab:hover:not(.-selected):not(.-disabled):not([aria-selected="true"]):not(
+        [aria-disabled="true"]
+      ) {
+      background: var(--instui-component-tabs-tab-secondary-selected-background);
+      border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
+      color: var(--instui-component-tabs-tab-secondary-selected-text-color);
+    }
 
-  :scope.-variant-secondary .tab.-selected,
-  :scope.-variant-secondary .tab[aria-selected="true"] {
-    background: var(--instui-component-tabs-tab-secondary-selected-background);
-    border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
-    border-bottom-color: var(--instui-component-tabs-tab-secondary-selected-background);
-    color: var(--instui-component-tabs-tab-secondary-selected-text-color);
+    &.-variant-secondary .tab.-selected,
+    &.-variant-secondary .tab[aria-selected="true"] {
+      background: var(--instui-component-tabs-tab-secondary-selected-background);
+      border-color: var(--instui-component-tabs-tab-secondary-selected-border-color);
+      border-bottom-color: var(--instui-component-tabs-tab-secondary-selected-background);
+      color: var(--instui-component-tabs-tab-secondary-selected-text-color);
+    }
   }
 }

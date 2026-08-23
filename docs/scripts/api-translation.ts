@@ -132,6 +132,10 @@ const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
   // API-overview table first-column headers (the second column is `Description`, handled above).
   [/^Area$/g, "Terület"],
   [/^Group$/g, "Csoport"],
+  // The `<!-- js-requirement -->` callout's bold label (build-css-api.ts / segment-markdown.ts).
+  // Whole-string anchored — it's an isolated glossary unit, never a substring inside prose.
+  [/^JS Requirement$/g, "JS-követelmény"],
+  [/^JS Enhancement$/g, "JS-bővítmény"],
   // CSS reference section groups (from formats/components via @cssdoc/typedoc). These label the CSS
   // nav tree (typedoc-sidebar.json) as isolated strings AND appear as `## …` headings in
   // api/css/index.md, so each gets both a whole-string form (^…$) for the sidebar label and a

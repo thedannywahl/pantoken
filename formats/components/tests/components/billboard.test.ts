@@ -25,29 +25,29 @@ test("billboard size variants map to InstUI icon and text scales", () => {
   expect(selectors).toContain(".instui-billboard.-size-large .message {");
   expect(selectors).toContain("font-size: var(--instui-font-size-text-sm);");
   expect(selectors).toContain("font-size: 1.375rem;");
-  expect(selectors).toContain(":scope>.hero {");
-  expect(selectors).toContain(":scope.-size-sm>.hero {");
-  expect(selectors).toContain(":scope.-size-md>.hero,");
-  expect(selectors).toContain(":scope.-size-medium>.hero {");
-  expect(selectors).toContain(":scope.-size-lg>.hero {");
-  expect(selectors).toContain(":scope.-size-large>.hero {");
+  expect(selectors).toMatch(/:scope\s*\{[\s\S]*>\s*\.hero\s*\{/u);
+  expect(selectors).toContain("&.-size-sm>.hero {");
+  expect(selectors).toContain("&.-size-md>.hero,");
+  expect(selectors).toContain("&.-size-medium>.hero {");
+  expect(selectors).toContain("&.-size-lg>.hero {");
+  expect(selectors).toContain("&.-size-large>.hero {");
 
-  expect(selectors).toContain(":scope>.heading {");
+  expect(selectors).toMatch(/>\s*\.heading\s*\{/u);
   expect(selectors).toContain("font-size: var(--instui-component-text-font-size-x-x-large);");
-  expect(selectors).not.toContain(":scope.-size-sm>.heading {");
-  expect(selectors).not.toContain(":scope.-size-lg>.heading {");
-  expect(selectors).not.toContain(":scope.-size-small>.heading {");
-  expect(selectors).not.toContain(":scope.-size-large>.heading {");
+  expect(selectors).not.toContain("&.-size-sm>.heading {");
+  expect(selectors).not.toContain("&.-size-lg>.heading {");
+  expect(selectors).not.toContain("&.-size-small>.heading {");
+  expect(selectors).not.toContain("&.-size-large>.heading {");
 
-  expect(selectors).toContain(':scope>.hero[class*="-icon-"] {');
-  expect(selectors).toContain(':scope.-size-sm>.hero[class*="-icon-"] {');
-  expect(selectors).toContain(':scope.-size-lg>.hero[class*="-icon-"] {');
-  expect(selectors).toContain(':scope.-size-small>.hero[class*="-icon-"] {');
-  expect(selectors).toContain(':scope.-size-large>.hero[class*="-icon-"] {');
+  expect(selectors).toContain('>.hero[class*="-icon-"] {');
+  expect(selectors).toContain('&.-size-sm>.hero[class*="-icon-"] {');
+  expect(selectors).toContain('&.-size-lg>.hero[class*="-icon-"] {');
+  expect(selectors).toContain('&.-size-small>.hero[class*="-icon-"] {');
+  expect(selectors).toContain('&.-size-large>.hero[class*="-icon-"] {');
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-md);");
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-sm);");
   expect(selectors).toContain("font-size: var(--instui-component-icon-illu-lg);");
-  expect(selectors).toContain(":scope>.message {");
+  expect(selectors).toMatch(/>\s*\.message\s*\{/u);
   expect(selectors).toContain("font-size: var(--instui-font-size-text-base);");
   expect(compact).toContain("color:var(--instui-color-text-base);");
 });
@@ -59,21 +59,21 @@ test("billboard clickable states scope icon, focus ring, and active inversion co
   expect(selectors).toContain(".instui-billboard.-clickable:hover {");
   expect(selectors).toContain("border-style: dashed;");
   expect(selectors).toContain("border-color: var(--instui-color-text-base);");
-  expect(selectors).toContain(":scope.-clickable:hover>.hero {");
+  expect(selectors).toContain("&.-clickable:hover>.hero {");
   expect(selectors).toContain("color: var(--instui-component-link-text-color);");
 
   expect(selectors).toContain(".instui-billboard.-clickable:focus {");
   expect(selectors).toContain("border-style: solid;");
   expect(selectors).toContain("border-color: var(--instui-color-text-base);");
   expect(selectors).toContain("outline: var(--instui-focus-outline-width)");
-  expect(selectors).not.toContain(":scope.-clickable:focus>.hero {");
+  expect(selectors).not.toContain("&.-clickable:focus>.hero {");
 
   expect(selectors).toContain(".instui-billboard.-clickable:active {");
   expect(selectors).toContain("background: var(--instui-component-billboard-clickable-active-bg);");
   expect(selectors).toContain("border-color: var(--instui-color-text-base);");
-  expect(selectors).toContain(":scope.-clickable:active>.hero {");
+  expect(selectors).toContain("&.-clickable:active>.hero {");
   expect(selectors).toContain("color: var(--instui-component-link-on-color-text-color);");
-  expect(selectors).not.toContain(":scope.-clickable:active>.message {");
+  expect(selectors).not.toContain("&.-clickable:active>.message {");
   expect(selectors).not.toContain(":scope.-clickable>.heading,");
 });
 

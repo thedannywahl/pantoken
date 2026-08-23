@@ -15,45 +15,47 @@
  */
 
 @scope (.pfx-list) {
-  :scope > li {
-    color: var(--instui-component-list-item-color);
-    font-family: var(--instui-component-list-item-font-family);
-    font-size: var(--instui-component-list-item-font-size-medium);
-    font-weight: var(--instui-component-list-item-font-weight);
-    line-height: var(--instui-component-list-item-line-height);
-  }
+  :scope {
+    > li {
+      color: var(--instui-component-list-item-color);
+      font-family: var(--instui-component-list-item-font-family);
+      font-size: var(--instui-component-list-item-font-size-medium);
+      font-weight: var(--instui-component-list-item-font-weight);
+      line-height: var(--instui-component-list-item-line-height);
+    }
 
-  :scope.-size-sm > li {
-    font-size: var(--instui-component-list-item-font-size-small);
-  }
+    &.-size-sm > li {
+      font-size: var(--instui-component-list-item-font-size-small);
+    }
 
-  :scope.-size-md > li {
-    font-size: var(--instui-component-list-item-font-size-medium);
-  }
+    &.-size-md > li {
+      font-size: var(--instui-component-list-item-font-size-medium);
+    }
 
-  :scope.-size-lg > li {
-    font-size: var(--instui-component-list-item-font-size-large);
-  }
+    &.-size-lg > li {
+      font-size: var(--instui-component-list-item-font-size-large);
+    }
 
-  :scope.-ordered > li::marker {
-    font-weight: var(--instui-component-list-ordered-number-font-weight);
-  }
+    &.-ordered > li::marker {
+      font-weight: var(--instui-component-list-ordered-number-font-weight);
+    }
 
-  :scope.-ordered > li {
-    padding-inline-start: var(--instui-component-list-ordered-number-margin);
-  }
+    &.-ordered > li {
+      padding-inline-start: var(--instui-component-list-ordered-number-margin);
+    }
 
-  :scope.-delimiter-solid > li + li {
-    border-top: var(--instui-component-list-item-delimiter-solid-border-width)
-      var(--instui-component-list-item-delimiter-solid-border-style)
-      var(--instui-component-list-item-delimiter-solid-border-color);
-    padding-top: var(--instui-component-list-item-spacing-medium);
-  }
+    &.-delimiter-solid > li + li {
+      border-top: var(--instui-component-list-item-delimiter-solid-border-width)
+        var(--instui-component-list-item-delimiter-solid-border-style)
+        var(--instui-component-list-item-delimiter-solid-border-color);
+      padding-top: var(--instui-component-list-item-spacing-medium);
+    }
 
-  :scope.-delimiter-dashed > li + li {
-    border-top: var(--instui-component-list-item-delimiter-dashed-border-width)
-      var(--instui-component-list-item-delimiter-dashed-border-style)
-      var(--instui-component-list-item-delimiter-dashed-border-color);
-    padding-top: var(--instui-component-list-item-spacing-medium);
+    &.-delimiter-dashed > li + li {
+      border-top: var(--instui-component-list-item-delimiter-dashed-border-width)
+        var(--instui-component-list-item-delimiter-dashed-border-style)
+        var(--instui-component-list-item-delimiter-dashed-border-color);
+      padding-top: var(--instui-component-list-item-spacing-medium);
+    }
   }
 }

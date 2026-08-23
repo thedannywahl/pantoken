@@ -11,12 +11,13 @@ test("progress-circle: emits exactly one well-formed cssdoc record with no token
 test("progress circle has sizes, the meter palette, and an inverse scheme via custom props", () => {
   const css = progressCircleCss({ prefix: "instui" });
   expect(css).toContain("conic-gradient");
-  expect(css).toContain(".instui-progress-circle.-size-sm");
-  expect(css).toContain(".instui-progress-circle.-size-md");
-  expect(css).toContain(".instui-progress-circle.-size-lg");
-  expect(css).toContain(".instui-progress-circle.-color-success");
+  expect(css).toContain("@scope (.instui-progress-circle)");
+  expect(css).toMatch(/&\.-size-sm/u);
+  expect(css).toMatch(/&\.-size-md/u);
+  expect(css).toMatch(/&\.-size-lg/u);
+  expect(css).toMatch(/&:is\(\.-color-success,\s*\.-meter-color-success\)/u);
   expect(css).toContain("var(--instui-component-progress-circle-meter-color-brand-inverse)");
-  expect(css).toContain(".instui-progress-circle.-color-primary-inverse");
+  expect(css).toMatch(/&\.-color-primary-inverse/u);
 });
 
 test("progress circle registers current, maximum, and animation inputs", () => {
@@ -42,24 +43,24 @@ test("progress circle registers current, maximum, and animation inputs", () => {
   );
   expect(css).toContain('<label for="score">Score</label>');
   expect(css).toContain('<meter id="score"');
-  expect(css).toContain(".instui-progress-circle::before");
-  expect(css).toContain(".instui-progress-circle .value");
-  expect(css).toContain(".instui-progress-circle.-color-success");
+  expect(css).toMatch(/&::before/u);
+  expect(css).toMatch(/&\s+\.value/u);
+  expect(css).toMatch(/&:is\(\.-color-success,\s*\.-meter-color-success\)/u);
 });
 
 test("progress circle embeds the shared mount transition and a functional deprecated alias", () => {
   const css = norm(progressCircleCss({ prefix: "instui" }));
   expect(css).toContain("transition: --value 1s;");
-  expect(css).toContain(".instui-progress-circle.-should-animate");
-  expect(css).toContain(".instui-progress-circle.-should-animate-on-mount");
-  expect(css).toContain(".instui-progress-circle.-shold-animate-on-mount");
+  expect(css).toMatch(
+    /&:is\(\.-should-animate,\s*\.-should-animate-on-mount,\s*\.-shold-animate-on-mount\)/u,
+  );
   expect(css).toContain("opacity 0.5s 1s");
 });
 
 test("progress circle falls back to a custom :indeterminate state for a valueless <progress>", () => {
   const css = progressCircleCss({ prefix: "instui" });
-  expect(css).toContain(".instui-progress-circle:indeterminate {");
-  expect(css).toContain(".instui-progress-circle:indeterminate::before");
+  expect(css).toMatch(/&:indeterminate\s*\{/u);
+  expect(css).toMatch(/&:indeterminate::before/u);
   expect(css).toContain("animation: pantoken-progress-circle-indeterminate");
-  expect(css).toContain(".instui-progress-circle:indeterminate .value");
+  expect(css).toMatch(/&:indeterminate\s+\.value/u);
 });
