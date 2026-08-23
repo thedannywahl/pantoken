@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.3.11
+
+### Patch Changes
+
+- Updated dependencies [343c59d]
+- Updated dependencies [343c59d]
+  - @pantoken/components@1.0.1
+
 ## 0.3.10
 
 ### Patch Changes

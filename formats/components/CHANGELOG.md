@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.0.1
+
+### Patch Changes
+
+- 343c59d: Codify the alert component as the modern authoring reference by adopting scoped root nesting, local typed utility properties, and updated conventions documentation.
+- 343c59d: Tag `drawer-layout`'s `-should-overlay-tray` modifier with `@interaction`, matching `alert`'s `-timeout` and `progress-circle`'s `-should-animate` — it's toggled by the `@pantoken/interactions` responsive-overlay behavior, not authored directly.
+
 ## 1.0.0
 
 ### Major Changes

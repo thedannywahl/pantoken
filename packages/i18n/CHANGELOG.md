@@ -1,5 +1,11 @@
 # @pantoken/i18n
 
+## 0.1.13
+
+### Patch Changes
+
+- @pantoken/web-components@0.5.6
+
 ## 0.1.12
 
 ### Patch Changes
