@@ -10,10 +10,11 @@ test("tree-browser: emits exactly one well-formed cssdoc record with no token dr
 
 test("tree-browser styles nested details with a rotating chevron + hover/selected", () => {
   const css = norm(treeBrowserCss({ prefix: "instui" }));
-  expect(css).toContain(".instui-tree-browser details > summary");
-  expect(css).toContain(
-    ".instui-tree-browser details[open] > summary::before { transform: rotate(90deg); }",
+  expect(css).toContain("@scope (.instui-tree-browser)");
+  expect(css).toMatch(/&\s+details\s*>\s*summary/u);
+  expect(css).toMatch(
+    /&\s+details\[open\]\s*>\s*summary::before\s*\{\s*transform:\s*rotate\(90deg\)/u,
   );
-  expect(css).toContain(".instui-tree-browser .item.-selected");
-  expect(css).toContain(".instui-tree-browser.-size-lg");
+  expect(css).toMatch(/&\s+\.item\.-selected/u);
+  expect(css).toMatch(/&\.-size-lg/u);
 });

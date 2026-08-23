@@ -22,7 +22,9 @@ test("alert draws its bar + glyph from pseudo-elements (no wrappers) with varian
   expect(css).not.toContain(".instui-alert__icon");
   expect(css).not.toContain(".instui-alert__content");
   // Optional shadow, screen-reader-only, and close-button detection via :has().
-  expect(css).toContain("&.-without-shadow");
+  expect(css).toMatch(
+    /&:is\(\.-has-shadow-false,\s*\.-without-shadow\)\s*\{\s*box-shadow:\s*none/u,
+  );
   expect(css).toContain("var(--instui-elevation-above)");
   expect(css).toContain("&.-screen-reader-only");
   expect(css).toContain("&:has(> .instui-close-button)");

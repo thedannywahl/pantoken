@@ -14,6 +14,6 @@ test("side-nav-bar is a vertical rail with selected + minimized states", () => {
   expect(item).toContain("@scope (.instui-side-nav-bar)");
   expect(item).toMatch(/:scope\s*\{\s*>\s*\.item/u);
   expect(item).toMatch(/>\s*\.item\.-selected/u);
-  expect(css).toContain(".instui-side-nav-bar.-minimized");
-  expect(css).toContain(".instui-side-nav-bar.-minimized .item .label { display: none; }");
+  expect(css).toMatch(/&\.-minimized/u);
+  expect(css).toMatch(/&\.-minimized\s+\.item\s+\.label\s*\{\s*display:\s*none/u);
 });

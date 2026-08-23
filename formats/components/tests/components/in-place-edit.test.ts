@@ -9,9 +9,10 @@ test("in-place-edit: emits exactly one well-formed cssdoc record with no token d
 
 test("in-place-edit reads as text, gets input chrome on focus, and has a readonly mode", () => {
   const css = inPlaceEditCss({ prefix: "instui" });
-  expect(css).toContain(".instui-in-place-edit {");
-  expect(css).toContain(".instui-in-place-edit:hover");
-  expect(css).toContain(".instui-in-place-edit:focus");
+  expect(css).toContain("@scope (.instui-in-place-edit)");
+  expect(css).toMatch(/&\s*\{/u);
+  expect(css).toMatch(/&:hover/u);
+  expect(css).toMatch(/&:focus/u);
   expect(css).toContain("var(--instui-component-text-input-border-color)");
-  expect(css).toContain(".instui-in-place-edit.-readonly");
+  expect(css).toMatch(/&\.-readonly/u);
 });

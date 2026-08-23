@@ -9,10 +9,11 @@ test("close-button: emits exactly one well-formed cssdoc record with no token dr
 
 test("close-button is a transparent icon button with an auto glyph, sizes, and inverse", () => {
   const css = closeButtonCss({ prefix: "instui" });
-  expect(css).toContain(".instui-close-button");
-  expect(css).toContain(".instui-close-button::before");
+  expect(css).toContain("@scope (.instui-close-button)");
+  expect(css).toMatch(/&\s*\{/u);
+  expect(css).toMatch(/&::before/u);
   expect(css).toContain("var(--instui-icon-x)");
-  expect(css).toContain(".instui-close-button.-size-sm");
-  expect(css).toContain(".instui-close-button.-size-lg");
-  expect(css).toContain(".instui-close-button.-color-inverse");
+  expect(css).toMatch(/&\.-size-sm/u);
+  expect(css).toMatch(/&\.-size-lg/u);
+  expect(css).toMatch(/&\.-color-inverse/u);
 });

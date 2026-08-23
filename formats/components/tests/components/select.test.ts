@@ -6,13 +6,14 @@ test("selectCss is an experimental @supports enhancement of simple-select using 
   // Everything is gated behind the experimental customizable-select feature query.
   expect(css).toContain("@supports (appearance: base-select)");
   expect(css).toContain("appearance: base-select");
-  expect(css).toContain(".instui-simple-select::picker(select)");
-  expect(css).toContain(".instui-simple-select option");
-  expect(css).toContain(".instui-simple-select option::checkmark");
+  expect(css).toContain("@scope (.instui-simple-select)");
+  expect(css).toMatch(/&::picker\(select\)/u);
+  expect(css).toMatch(/&\s+option/u);
+  expect(css).toMatch(/&\s+option::checkmark/u);
   // Options are painted from the options-item token family (panel + hover + selected).
   expect(css).toContain("var(--instui-component-options-item-background)");
   expect(css).toContain("var(--instui-component-options-item-highlighted-background)");
   expect(css).toContain("var(--instui-component-options-item-selected-background)");
-  // It targets .instui-simple-select — no new component class.
+  // It targets simple-select — no new component class.
   expect(css).not.toContain(".instui-select ");
 });

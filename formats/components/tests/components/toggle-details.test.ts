@@ -11,9 +11,8 @@ test("toggle-details: emits exactly one well-formed cssdoc record with no token 
 test("toggle-details hides the native marker, has a rotating chevron + filled variant", () => {
   const css = norm(toggleDetailsCss({ prefix: "instui" }));
   expect(css).toContain("summary::-webkit-details-marker { display: none; }");
-  expect(css).toContain(".instui-toggle-details > summary::before");
-  expect(css).toContain(
-    ".instui-toggle-details[open] > summary::before { transform: rotate(90deg); }",
-  );
-  expect(css).toContain(".instui-toggle-details.-variant-filled > summary");
+  expect(css).toContain("@scope (.instui-toggle-details)");
+  expect(css).toMatch(/&\s*>\s*summary::before/u);
+  expect(css).toMatch(/&\[open\]\s*>\s*summary::before\s*\{\s*transform:\s*rotate\(90deg\)/u);
+  expect(css).toMatch(/&\.-variant-filled\s*>\s*summary/u);
 });

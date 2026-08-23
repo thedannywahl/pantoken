@@ -14,7 +14,8 @@ test("breadcrumb.link: emits exactly one well-formed cssdoc record with no token
 
 test("breadcrumb lays out its ol, not the nav wrapper", () => {
   const css = breadcrumbCss({ prefix: "instui" });
-  expect(css).toContain(".instui-breadcrumb > ol {");
+  expect(css).toContain("@scope (.instui-breadcrumb)");
+  expect(css).toMatch(/&\s*>\s*ol\s*\{/u);
   expect(css).toContain("list-style: none;");
 });
 
@@ -28,10 +29,14 @@ test("breadcrumb.link separators scale with the parent's size modifiers", () => 
 test("breadcrumb.link collapses to a back-link at a shared breakpoint", () => {
   const css = breadcrumbLinkCss({ prefix: "instui" });
   expect(css).toContain("@media (max-width: 47.9375em)");
-  expect(css).toContain("> ol:has(> li:nth-last-child(2)) > li:not(:nth-last-child(2))");
-  expect(css).toContain("li:nth-last-child(2)::before");
+  expect(css).toMatch(
+    />\s*ol:has\(\s*>\s*li:nth-last-child\(2\)\s*\)\s*>\s*li:not\(\s*:nth-last-child\(2\)\s*\)/u,
+  );
+  expect(css).toMatch(
+    /li:nth-last-child\(2\)::before\s*\{[\s\S]*mask:\s*var\(--instui-icon-chevron-left\)/u,
+  );
   expect(css).toContain(
     "-webkit-mask: var(--instui-icon-chevron-left) center / contain no-repeat;",
   );
-  expect(css).toContain('[dir="rtl"] & > li:nth-last-child(2) > a::before');
+  expect(css).toMatch(/\[dir="rtl"\]\s*&\s*>\s*li:nth-last-child\(2\)\s*>\s*a::before/u);
 });

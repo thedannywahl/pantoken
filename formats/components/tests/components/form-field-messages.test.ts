@@ -11,16 +11,17 @@ test("form-field-messages: emits exactly one well-formed cssdoc record with no t
 test("form-field messages colour by type and paint circle glyphs for error/success", () => {
   const css = norm(formFieldMessagesCss({ prefix: "instui" }));
   expect(css).toContain("var(--instui-component-form-field-message-hint-text-color)");
-  expect(css).toContain(
-    ".instui-form-field-message.-type-error { color: var(--instui-component-form-field-message-error-text-color)",
+  expect(css).toContain("@scope (.instui-form-field-message)");
+  expect(css).toMatch(
+    /&\.-type-error\s*\{\s*color:\s*var\(--instui-component-form-field-message-error-text-color\)/u,
   );
-  expect(css).toContain(
-    ".instui-form-field-message.-type-success { color: var(--instui-component-form-field-message-success-text-color)",
+  expect(css).toMatch(
+    /&\.-type-success\s*\{\s*color:\s*var\(--instui-component-form-field-message-success-text-color\)/u,
   );
   // error/success get a masked circle glyph painted in currentColor.
-  expect(css).toContain(".instui-form-field-message.-type-error::before");
+  expect(css).toMatch(/&\.-type-error::before/u);
   expect(css).toContain("background: currentColor");
   // screenreader-only is visually clipped.
-  expect(css).toContain(".instui-form-field-message.-type-screenreader-only");
+  expect(css).toMatch(/&\.-type-screenreader-only/u);
   expect(css).toContain("clip-path: inset(50%)");
 });

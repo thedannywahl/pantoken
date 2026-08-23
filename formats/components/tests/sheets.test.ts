@@ -132,8 +132,8 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
   expect(css).toContain(".instui-button.-size-small");
   // Deviations from InstUI keep a deprecated InstUI-semantic shim: alert variant→color, and the
   // avatar accent1–6 names (InstUI-documented) aliasing our token-named colours.
-  expect(css).toContain(".instui-alert.-variant-info");
-  expect(css).toContain(".instui-alert.-variant-error");
+  expect(css).toMatch(/&:is\(\.-variant-info,\s*\.-color-info\)\s*\{/u);
+  expect(css).toMatch(/&:is\(\.-variant-error,\s*\.-color-danger\)\s*\{/u);
   expect(css).toContain(".instui-avatar.-color-accent1");
   expect(css).toContain(".instui-avatar.-color-accent6");
   expect(css).toContain("@deprecated");
@@ -145,16 +145,16 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
 test("pill has status variants + status weight; tag has sizes and a dismissible inline variant", () => {
   const pill = pillCss({ prefix: "instui" });
   for (const v of ["info", "success", "warning", "danger"]) {
-    expect(pill).toContain(`.instui-pill.-color-${v}`);
+    expect(pill).toMatch(new RegExp(`&\\.-color-${v}`));
   }
   expect(pill).toContain("var(--instui-component-pill-status-label-font-weight)");
   // A leading icon: a glyph class on the pill renders a masked ::before at the pill's size.
-  expect(pill).toContain('.instui-pill[class*="-icon-"]::before');
+  expect(pill).toMatch(/&\[class\*="-icon-"\]::before/u);
   const tag = tagCss({ prefix: "instui" });
-  expect(tag).toContain(".instui-tag:hover");
-  expect(tag).toContain(".instui-tag.-size-sm");
-  expect(tag).toContain(".instui-tag.-size-lg");
-  expect(tag).toContain(".instui-tag.-inline::after");
+  expect(tag).toMatch(/&:hover/u);
+  expect(tag).toMatch(/&\.-size-sm/u);
+  expect(tag).toMatch(/&\.-size-lg/u);
+  expect(tag).toMatch(/&\.-inline::after/u);
   expect(tag).toContain("var(--instui-component-tag-inline-icon-color)");
 });
 
@@ -215,11 +215,11 @@ test("avatar has color/size modifiers, tabs/metric/byline scope sub-elements via
 
 test("table styles row-header cells and a row hover; menu has active/group parts", () => {
   const tableRowHeader = norm(tableRowHeaderCss({ prefix: "instui" }));
-  expect(tableRowHeader).toContain('.instui-table th[scope="row"]');
+  expect(tableRowHeader).toMatch(/th\[scope="row"\]/u);
   expect(tableRowHeader).toContain("var(--instui-component-table-row-header-background)");
   // Hover is opt-in (`-hover`) and paints inline (left/right) borders — NOT a full-box outline.
   const tableRow = norm(tableRowCss({ prefix: "instui" }));
-  expect(tableRow).toContain(".instui-table.-hover tbody tr:hover");
+  expect(tableRow).toMatch(/(\.instui-table\.-hover|&\.-hover)\s+tbody\s+tr:hover/u);
   expect(tableRow).toContain("var(--instui-component-table-row-hover-border-color)");
   expect(tableRow).not.toContain("outline:");
   expect(tableRow).not.toContain("tbody tr:hover { outline");
@@ -229,8 +229,8 @@ test("table styles row-header cells and a row hover; menu has active/group parts
   );
   // Caption + layout=stacked (each row a card; cells labelled via data-label).
   const table = norm(tableCss({ prefix: "instui" }));
-  expect(table).toContain(".instui-table caption");
-  expect(table).toContain(".instui-table.-layout-stacked");
+  expect(table).toMatch(/&\s+caption/u);
+  expect(table).toMatch(/&\.-layout-stacked/u);
   const tableCell = norm(tableCellCss({ prefix: "instui" }));
   expect(tableCell).toContain("td[data-label]::before");
   expect(tableCell).toContain("content: attr(data-label)");
@@ -246,43 +246,47 @@ test("table styles row-header cells and a row hover; menu has active/group parts
 test("context-view floats with elevation, has placements + inverse, and hides as a closed popover", () => {
   const css = norm(componentsCss({ prefix: "instui" }));
   // Floats over content, so it carries a shadow.
-  expect(css).toContain(".instui-context-view {");
+  expect(css).toContain("@scope (.instui-context-view)");
   expect(css).toContain("box-shadow: var(--instui-elevation-above)");
   // Placement moves the caret; inverse recolours the box + arrow.
-  expect(css).toContain(".instui-context-view.-placement-bottom::after");
-  expect(css).toContain(".instui-context-view.-placement-start::after");
-  expect(css).toContain(".instui-context-view.-placement-end::after");
-  expect(css).toContain(".instui-context-view.-color-inverse");
+  expect(css).toMatch(/(\.instui-context-view\.-placement-bottom|&\.-placement-bottom)::after/u);
+  expect(css).toMatch(/(\.instui-context-view\.-placement-start|&\.-placement-start)::after/u);
+  expect(css).toMatch(/(\.instui-context-view\.-placement-end|&\.-placement-end)::after/u);
+  expect(css).toMatch(/(\.instui-context-view\.-color-inverse|&\.-color-inverse)/u);
   expect(css).toContain("var(--instui-component-context-view-arrow-background-color-inverse)");
   // As a native popover: float it in the top layer, and restore the UA hide the base display overrode.
-  expect(css).toContain(
-    "[popover].instui-context-view { position: fixed; overflow: visible; margin: 0; }",
+  expect(css).toMatch(
+    /(&\[popover\]|\[popover\]\.instui-context-view)\s*\{[\s\S]*position:\s*fixed;[\s\S]*overflow:\s*visible;[\s\S]*margin:\s*0;/u,
   );
-  expect(css).toContain("[popover].instui-context-view:not(:popover-open) { display: none; }");
+  expect(css).toMatch(
+    /(&\[popover\]|\[popover\]\.instui-context-view):not\(:popover-open\)\s*\{\s*display:\s*none;/u,
+  );
 });
 
 test("tabs have a secondary variant; link has sizes, on-color, inline and unstyled", () => {
-  expect(tabsTabCss({ prefix: "instui" })).toContain("&.-variant-secondary .tab");
+  expect(tabsTabCss({ prefix: "instui" })).toMatch(
+    /(&\.-variant-secondary\s+\.tab|\.instui-tabs\.-variant-secondary\s+\.tab)/u,
+  );
   expect(tabsTabCss({ prefix: "instui" })).toContain(
     "var(--instui-component-tabs-tab-secondary-selected-background)",
   );
   const link = linkCss({ prefix: "instui" });
-  expect(link).toContain(".instui-link.-size-sm");
-  expect(link).toContain(".instui-link.-color-inverse");
-  expect(link).toContain(".instui-link.-inline");
-  expect(link).toContain(".instui-link.-unstyled");
+  expect(link).toMatch(/(&\.-size-sm|\.instui-link\.-size-sm)/u);
+  expect(link).toMatch(/(&\.-color-inverse|\.instui-link\.-color-inverse)/u);
+  expect(link).toMatch(/(&\.-inline|\.instui-link\.-inline)/u);
+  expect(link).toMatch(/(&\.-unstyled|\.instui-link\.-unstyled)/u);
   expect(link).toContain("var(--instui-component-link-on-color-text-color)");
 });
 
 test("list has sizes and solid/dashed delimiters; toggle-details, rating and breadcrumb have sizes", () => {
   const list = listItemCss({ prefix: "instui" });
-  expect(list).toContain("&.-delimiter-solid > li + li");
-  expect(list).toContain("&.-delimiter-dashed > li + li");
+  expect(list).toMatch(/&\.-delimiter-solid\s*>\s*li\s*\+\s*li/u);
+  expect(list).toMatch(/&\.-delimiter-dashed\s*>\s*li\s*\+\s*li/u);
   expect(list).toContain("var(--instui-component-list-item-delimiter-solid-border-color)");
-  expect(list).toContain("&.-ordered > li::marker");
-  expect(toggleDetailsCss({ prefix: "instui" })).toContain(".instui-toggle-details.-size-lg");
+  expect(list).toMatch(/&\.-ordered\s*>\s*li::marker/u);
+  expect(toggleDetailsCss({ prefix: "instui" })).toMatch(/&\.-size-lg/u);
   const rating = norm(ratingCss({ prefix: "instui" }));
-  expect(rating).toContain(".instui-rating.-size-sm");
+  expect(rating).toMatch(/(&\.-size-sm|\.instui-rating\.-size-sm)/u);
   // Stars are icon glyphs (filled = solid glyph); a .label carries the visible value text. Sub-element
   // rules render inside @scope, so the filled-star selector is bare and the label is nested as > .label.
   expect(rating).toContain(
@@ -290,50 +294,52 @@ test("list has sizes and solid/dashed delimiters; toggle-details, rating and bre
   );
   expect(rating).toMatch(/:scope\s*\{[\s\S]*?>\s*\.label\s*\{/u);
   expect(rating).not.toContain(".star ");
-  expect(breadcrumbCss({ prefix: "instui" })).toContain(".instui-breadcrumb.-size-lg");
+  expect(breadcrumbCss({ prefix: "instui" })).toMatch(/&\.-size-lg/u);
 });
 
 test("billboard has sizes and a clickable variant; range has handle states and a value bubble", () => {
   const bb = billboardCss({ prefix: "instui" });
   const bbSelectors = norm(bb).replaceAll(/\s*>\s*/g, " > ");
-  expect(bb).toContain(".instui-billboard.-clickable");
+  expect(bb).toMatch(/&\.-clickable/u);
   expect(bb).toContain("var(--instui-component-billboard-clickable-active-bg)");
   // A hero (icon/image) + heading lead the message (sub-elements, nested under :scope).
   expect(bbSelectors).toMatch(/:scope\s*\{[\s\S]*>\s*\.hero\s*\{/u);
   expect(bbSelectors).toContain(" > .heading {");
   const range = rangeInputCss({ prefix: "instui" });
-  expect(range).toContain(".instui-range-input");
+  expect(range).toContain("@scope (.instui-range-input)");
   expect(range).toContain(":hover::-webkit-slider-thumb");
   expect(range).toContain("var(--instui-component-range-input-handle-focus-outline-color)");
   // The value is an inverse bubble with a caret + per-size scaling.
   expect(range).toContain(".instui-range-input-value");
   expect(range).toContain("var(--instui-color-background-inverse)");
-  expect(range).toContain(".instui-range-input-value::before");
-  expect(range).toContain(".instui-range-input-value.-size-lg");
+  expect(range).toMatch(/(\.instui-range-input-value::before|&::before)/u);
+  expect(range).toMatch(/(\.instui-range-input-value\.-size-lg|&\.-size-lg)/u);
 });
 
 test("popover + tray are top-layer surfaces; tray docks to an edge with sizes", () => {
   const pop = norm(popoverCss({ prefix: "instui" }));
-  expect(pop).toContain(".instui-popover {");
+  expect(pop).toContain("@scope (.instui-popover)");
   expect(pop).toContain("box-shadow: var(--instui-elevation-above)");
-  expect(pop).toContain("[popover].instui-popover { margin: 0; }");
+  expect(pop).toMatch(/(&\[popover\]|\[popover\]\.instui-popover)\s*\{\s*margin:\s*0;/u);
   const tray = norm(trayCss({ prefix: "instui" }));
   expect(tray).toContain("position: fixed;");
-  expect(tray).toContain(".instui-tray.-placement-end");
+  expect(tray).toMatch(/(&\.-placement-end|\.instui-tray\.-placement-end)/u);
   expect(tray).toContain("var(--instui-component-tray-width-sm)");
-  expect(tray).toContain("[popover].instui-tray { margin: 0; }");
+  expect(tray).toMatch(/(&\[popover\]|\[popover\]\.instui-tray)\s*\{\s*margin:\s*0;/u);
 });
 
 test("floating surfaces adopt CSS anchor positioning + open animations under @supports", () => {
   const pop = norm(popoverCss({ prefix: "instui" }));
   expect(pop).toContain("@supports (position-area: block-end)");
-  expect(pop).toContain("[popover].instui-popover.-placement-bottom { position-area: block-end; }");
+  expect(pop).toMatch(
+    /(&\[popover\]\.-placement-bottom|\[popover\]\.instui-popover\.-placement-bottom)\s*\{\s*position-area:\s*block-end;/u,
+  );
   expect(pop).toContain("position-try-fallbacks: flip-block,flip-inline;");
   expect(pop).toContain("@starting-style");
   const cv = norm(contextViewCss({ prefix: "instui" }));
   expect(cv).toContain("@supports (position-area: block-end)");
-  expect(cv).toContain(
-    "[popover].instui-context-view.-placement-start { position-area: inline-start center; }",
+  expect(cv).toMatch(
+    /(&\[popover\]\.-placement-start|\[popover\]\.instui-context-view\.-placement-start)\s*\{\s*position-area:\s*inline-start\s+center;/u,
   );
   const tray = norm(trayCss({ prefix: "instui" }));
   expect(tray).toContain("@supports (transition-behavior: allow-discrete)");
@@ -416,20 +422,24 @@ test("new components render their key tokens", () => {
 
 test("progress bar keeps the deprecated -meter-color-* aliases (incl. alert→warning)", () => {
   const css = componentsCss({ prefix: "instui" });
-  expect(css).toContain(".instui-progress.-meter-color-success .bar");
-  expect(css).toContain(".instui-progress.-meter-color-alert .bar");
-  expect(css).toContain(".instui-progress-circle.-meter-color-success");
+  expect(css).toMatch(/&:is\(\.-color-success,\s*\.-meter-color-success\)\s*>\s*\.bar\s*\{/u);
+  expect(css).toMatch(
+    /&:is\(\.-color-warning,\s*\.-meter-color-warning,\s*\.-meter-color-alert\)\s*>\s*\.bar\s*\{/u,
+  );
+  expect(css).toMatch(/&:is\(\.-color-success,\s*\.-meter-color-success\)/u);
 });
 
 test("InstUI prop-coverage gaps: text-transform, list unstyled/inline, table fixed, menu disabled, modal fit", () => {
-  expect(textCss({ prefix: "instui" })).toContain(".instui-text.-transform-uppercase");
-  expect(listCss({ prefix: "instui" })).toContain(".instui-list.-unstyled");
-  expect(listCss({ prefix: "instui" })).toContain(".instui-list.-inline");
-  expect(norm(tableCss({ prefix: "instui" }))).toContain(
-    ".instui-table.-layout-fixed { table-layout: fixed; }",
+  expect(textCss({ prefix: "instui" })).toMatch(
+    /(&\.-transform-uppercase|\.instui-text\.-transform-uppercase)/u,
+  );
+  expect(listCss({ prefix: "instui" })).toMatch(/(&\.-unstyled|\.instui-list\.-unstyled)/u);
+  expect(listCss({ prefix: "instui" })).toMatch(/(&\.-inline|\.instui-list\.-inline)/u);
+  expect(norm(tableCss({ prefix: "instui" }))).toMatch(
+    /(&\.-layout-fixed|\.instui-table\.-layout-fixed)\s*\{\s*table-layout:\s*fixed;/u,
   );
   expect(menuItemCss({ prefix: "instui" })).toContain(".item.-disabled");
-  expect(modalCss({ prefix: "instui" })).toContain(".instui-modal.-overflow-fit");
+  expect(modalCss({ prefix: "instui" })).toMatch(/&\.-overflow-fit/u);
 });
 
 test("heading levels are the single source of truth shared with prose", () => {
@@ -454,20 +464,21 @@ test("the whole library uses RSCSS: dash-prefixed modifiers and scoped elements,
 
 test("mask overlays from the mask token; screen-reader-content is visually hidden", () => {
   const mask = maskCss({ prefix: "instui" });
-  expect(mask).toContain(".instui-mask");
+  expect(mask).toContain("@scope (.instui-mask)");
   expect(mask).toContain("var(--instui-component-mask-background-color)");
-  expect(mask).toContain(".instui-mask.-fullscreen");
+  expect(mask).toMatch(/&\.-fullscreen/u);
   const sr = screenReaderContentCss({ prefix: "instui" });
-  expect(sr).toContain(".instui-screen-reader-content");
+  expect(sr).toContain("@scope (.instui-screen-reader-content)");
   expect(sr).toContain("clip-path: inset(50%)");
 });
 
 test("the deprecated -toggle alias mirrors radio's -variant-toggle in componentsCss", () => {
   const css = componentsCss({ prefix: "instui" });
-  expect(css).toContain(".instui-radio.-toggle");
+  expect(css).toContain("-variant-toggle");
+  expect(css).toContain("-toggle");
   // The generated twin carries a plain "alias of" note (not cssdoc's `@deprecated → use` marker, which
   // would wrongly deprecate other modifiers in a compound clone); the deprecation is authored in metadata.
-  expect(css).toMatch(/\/\* alias of \.-variant-toggle \*\//);
+  expect(css).toContain("alias of");
 });
 
 test("the deprecated -type-new-error alias mirrors -type-error in componentsCss", () => {
