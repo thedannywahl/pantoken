@@ -1,14 +1,9 @@
-import { Icon } from "@pantoken/react";
+import "@pantoken/plugin-layouts/layouts.css";
 
 export function App() {
   return (
-    <main style={{ padding: "var(--instui-spacing-space-lg)" }}>
-      <h1 style={{ color: "var(--instui-color-text-primary)" }}>{"{{projectName}}"}</h1>
-      <p>
-        Styled with <code>@pantoken/react</code> and <code>@pantoken/css</code> — Instructure design
-        tokens and icons.
-      </p>
-      <Icon name="check-mark" />
-    </main>
+    <div className="{{wrapperRootClass}}">
+{{wrapperContainer:jsx:3}}
+    </div>
   );
 }

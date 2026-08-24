@@ -1,11 +1,8 @@
 // Defines every --instui-* custom property this app can reference.
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
+import "@pantoken/plugin-layouts/layouts.css";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-  <main class="instui-agent-shell -p-lg">
-    <h1 class="instui-heading">{{projectName}}</h1>
-    <p>Styled with <code>@pantoken/components</code> — Instructure design tokens and icons.</p>
-    <button class="instui-button -color-primary" type="button">Get started</button>
-  </main>
+{{wrapperContainer:html:1}}
 `;

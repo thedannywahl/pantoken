@@ -15,7 +15,8 @@ npm run dev
 ## What's here
 
 - `src/main.tsx` imports `@pantoken/css/inject`, which defines every `--instui-*` custom property.
-- `src/App.tsx` references tokens with `var(--instui-*)` and renders an icon via `@pantoken/react`'s
-  `<Icon>`.
-- For InstUI's full React component library (buttons, modals, etc.), add the specific
-  `@instructure/ui-*` packages you need — see <https://instructure.design>.
+- `src/App.tsx` renders markup following the `wrapper` app-shell layout from
+  [`@pantoken/plugin-layouts`](https://www.npmjs.com/package/@pantoken/plugin-layouts)
+  (`.container` / `.header` / `.content` parts) styled with `instui-*` classes.
+- For InstUI's full React component library (buttons, modals, etc. — including `@pantoken/react`'s
+  `<Icon>`), add the specific `@instructure/ui-*` packages you need — see <https://instructure.design>.

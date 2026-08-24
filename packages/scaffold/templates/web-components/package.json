@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@pantoken/components": "latest",
-    "@pantoken/plugin-layouts": "latest"
+    "@pantoken/plugin-layouts": "latest",
+    "@pantoken/web-components": "latest"
   },
   "devDependencies": {
     "@pantoken/pantoken": "latest",

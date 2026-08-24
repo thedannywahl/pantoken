@@ -9,10 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@pantoken/components": "latest",
-    "@pantoken/plugin-layouts": "latest"
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@pantoken/angular": "latest",
+    "@pantoken/plugin-layouts": "latest",
+    "rxjs": "^7.8.0",
+    "zone.js": "^0.15.0"
   },
   "devDependencies": {
+    "@analogjs/vite-plugin-angular": "^1.10.0",
     "@pantoken/pantoken": "latest",
     "typescript": "^5.7.0",
     "vite": "^6.0.0"

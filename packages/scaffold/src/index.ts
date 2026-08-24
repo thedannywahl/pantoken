@@ -20,7 +20,7 @@ export type ScaffoldPlatform = keyof typeof SCAFFOLDS;
  * ```ts
  * import { SCAFFOLD_PLATFORMS } from "@pantoken/scaffold";
  *
- * console.log(SCAFFOLD_PLATFORMS); // → ["web", "react", "next"]
+ * console.log(SCAFFOLD_PLATFORMS); // → ["html", "react", "next", "angular", "web-components"]
  * ```
  */
 export const SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[] = Object.keys(

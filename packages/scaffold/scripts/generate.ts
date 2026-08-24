@@ -4,9 +4,21 @@
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { renderWrapperContainer, wrapperRootClassName } from "./wrapper-layout.ts";
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");
+
+// Every template's entry markup is patterned off `@pantoken/plugin-layouts`'s `wrapper` app-shell
+// layout via these tokens, so editing that layout's cssdoc regenerates every platform's markup.
+const rootClassName = wrapperRootClassName();
+function substituteWrapperTokens(content: string): string {
+  return content
+    .replaceAll("{{wrapperRootClass}}", rootClassName)
+    .replace(/\{\{wrapperContainer:(html|jsx):(\d+)\}\}/g, (_match, format, depth) =>
+      renderWrapperContainer(format as "html" | "jsx", Number(depth)).replace(/^\s+/, ""),
+    );
+}
 
 const scaffolds: Record<string, Record<string, string>> = {};
 for (const platform of readdirSync(templatesRoot, { withFileTypes: true })) {
@@ -19,10 +31,8 @@ for (const platform of readdirSync(templatesRoot, { withFileTypes: true })) {
     // .tmpl-suffixed template files (.ts/.tsx) are stripped back to their real extension here, so
     // they're never picked up by this package's own TypeScript tooling as real source.
     const relPath = relative(platformDir, abs).split("\\").join("/");
-    files[relPath.endsWith(".tmpl") ? relPath.slice(0, -".tmpl".length) : relPath] = readFileSync(
-      abs,
-      "utf8",
-    );
+    files[relPath.endsWith(".tmpl") ? relPath.slice(0, -".tmpl".length) : relPath] =
+      substituteWrapperTokens(readFileSync(abs, "utf8"));
   }
   scaffolds[platform.name] = files;
 }
