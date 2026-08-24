@@ -9,7 +9,7 @@ function getHighlighter() {
     highlighterPromise = import("shiki").then(({ createHighlighter }) =>
       createHighlighter({
         themes: ["github-light", "github-dark"],
-        langs: ["html", "css", "js"],
+        langs: ["html", "css", "js", "bash"],
       }),
     );
   }
