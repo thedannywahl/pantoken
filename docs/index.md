@@ -28,6 +28,7 @@ features:
     details: The tokens ship vendored as static JSON, so npm i pantoken never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
 ---
 
+<!-- markdownlint-disable-next-line MD041 -- VitePress "home" layout uses frontmatter `hero.name` as the page title; no markdown H1 follows it. -->
 <div class="instui-agent-shell --mt-2xl --p-lg --elevation-resting" style="min-height: 0;">
 <h2 class="instui-heading -color-ai">Boostrap with AI</h2>
 
