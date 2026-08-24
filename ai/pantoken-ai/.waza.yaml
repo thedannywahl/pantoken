@@ -1,0 +1,7 @@
+tokens:
+  warningThreshold: 2200
+  limits:
+    defaults:
+      "SKILL.md": 500
+    overrides:
+      "skills/scaffold-pantoken/SKILL.md": 2200

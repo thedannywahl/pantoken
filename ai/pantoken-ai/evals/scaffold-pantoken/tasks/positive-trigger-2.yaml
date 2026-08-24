@@ -1,0 +1,16 @@
+id: positive-trigger-002
+name: Positive Trigger 2
+description: User wants pantoken added to an existing app, not just AI assets.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Add Instructure/InstUI theming to my existing Next.js project"
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: contains-keywords
+    config:
+      contains:
+        - "pantoken"
+        - "@pantoken/next"

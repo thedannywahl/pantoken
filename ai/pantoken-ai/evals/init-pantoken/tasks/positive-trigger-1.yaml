@@ -1,0 +1,16 @@
+id: positive-trigger-001
+name: Positive Trigger 1
+description: User wants Copilot/Cursor/Windsurf rules for pantoken set up in this repo.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Set up Copilot rules so it knows how to use pantoken in this repo"
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: contains-keywords
+    config:
+      contains:
+        - "pantoken-ai init"
+        - "AGENTS.md"
