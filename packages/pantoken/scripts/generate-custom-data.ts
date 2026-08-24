@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tokens } from "@pantoken/tokens";
@@ -143,6 +143,7 @@ export function buildCssCustomData(): CssCustomData {
 export function emitCustomData(distDir: string = join(import.meta.dirname, "..", "dist")): {
   htmlPath: string;
   cssPath: string;
+  cssdocPath: string;
   classCount: number;
   propertyCount: number;
 } {
@@ -151,15 +152,19 @@ export function emitCustomData(distDir: string = join(import.meta.dirname, "..",
 
   const htmlPath = join(distDir, "html-custom-data.json");
   const cssPath = join(distDir, "css-custom-data.json");
+  const cssdocPath = join(distDir, "cssdoc-base.json");
+  const cssdocTemplatePath = join(import.meta.dirname, "..", "src", "cssdoc-base.json");
 
   mkdirSync(dirname(htmlPath), { recursive: true });
   writeFileSync(htmlPath, `${JSON.stringify(htmlData, null, 2)}\n`);
   writeFileSync(cssPath, `${JSON.stringify(cssData, null, 2)}\n`);
+  writeFileSync(cssdocPath, readFileSync(cssdocTemplatePath, "utf8"));
 
   const classValues = htmlData.globalAttributes.find((attr) => attr.name === "class")?.values ?? [];
   return {
     htmlPath,
     cssPath,
+    cssdocPath,
     classCount: classValues.length,
     propertyCount: cssData.properties.length,
   };

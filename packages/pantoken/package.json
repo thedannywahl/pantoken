@@ -73,6 +73,7 @@
     "./wordpress": "./dist/wordpress.mjs",
     "./html-custom-data.json": "./dist/html-custom-data.json",
     "./css-custom-data.json": "./dist/css-custom-data.json",
+    "./cssdoc-base.json": "./dist/cssdoc-base.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

@@ -8,6 +8,7 @@ import { renderWrapperContainer, wrapperRootClassName } from "./wrapper-layout.t
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");
+const sharedCssdocTemplate = readFileSync(join(templatesRoot, "cssdoc.json"), "utf8");
 
 // Every template's entry markup is patterned off `@pantoken/plugin-layouts`'s `wrapper` app-shell
 // layout via these tokens, so editing that layout's cssdoc regenerates every platform's markup.
@@ -34,6 +35,8 @@ for (const platform of readdirSync(templatesRoot, { withFileTypes: true })) {
     files[relPath.endsWith(".tmpl") ? relPath.slice(0, -".tmpl".length) : relPath] =
       substituteWrapperTokens(readFileSync(abs, "utf8"));
   }
+  // Every scaffold gets the same cssdoc schema file from one shared template source.
+  files["cssdoc.json"] = sharedCssdocTemplate;
   scaffolds[platform.name] = files;
 }
 
