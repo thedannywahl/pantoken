@@ -312,6 +312,8 @@ const localesConfig = Object.fromEntries(
         themeSelector: locale.themeSelector,
         // Read by the CDN picker (CdnPicker.vue) via `useData().theme`.
         cdnPicker: locale.cdnPicker,
+        // Read by the "Get started" scaffold tabs (GetStartedTabs.vue) via `useData().theme`.
+        getStartedTabs: locale.getStartedTabs,
       },
     },
   ]),

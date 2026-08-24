@@ -1,53 +1,64 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { useData } from "vitepress";
 import { useShikiHighlight } from "../composables/useShikiHighlight";
+import { GET_STARTED_TABS_DEFAULTS, type GetStartedTabsStrings } from "../get-started";
 
-const scaffoldOptions = [
-  {
-    id: "ai",
-    label: "AI",
-    iconClass: "-icon-claude",
-    command:
-      "Run `npx @pantoken/ai init` in this project, then run the `/scaffold-pantoken` skill.",
-  },
-  {
-    id: "html",
-    label: "HTML",
-    iconClass: "-icon-html5",
-    command: "npx @pantoken/scaffold html",
-  },
-  {
-    id: "web-components",
-    label: "Web Components",
-    iconClass: "-icon-webcomponentsdotorg",
-    command: "npx @pantoken/scaffold web-components",
-  },
-  {
-    id: "react",
-    label: "React",
-    iconClass: "-icon-react",
-    command: "npx @pantoken/scaffold react",
-  },
-  {
-    id: "next",
-    label: "Next",
-    iconClass: "-icon-nextdotjs",
-    command: "npx @pantoken/scaffold next",
-  },
-  {
-    id: "angular",
-    label: "Angular",
-    iconClass: "-icon-angular",
-    command: "npx @pantoken/scaffold angular",
-  },
-] as const;
+// Localized strings from the active locale's `themeConfig.getStartedTabs`, falling back to English.
+const { theme } = useData();
+const t = computed<GetStartedTabsStrings>(() => ({
+  ...GET_STARTED_TABS_DEFAULTS,
+  ...(theme.value as { getStartedTabs?: Partial<GetStartedTabsStrings> }).getStartedTabs,
+}));
 
-type ScaffoldTarget = (typeof scaffoldOptions)[number]["id"];
+const scaffoldOptions = computed(
+  () =>
+    [
+      {
+        id: "ai",
+        label: "AI",
+        iconClass: "-icon-claude",
+        command: t.value.aiCommand,
+      },
+      {
+        id: "html",
+        label: "HTML",
+        iconClass: "-icon-html5",
+        command: "npx @pantoken/scaffold html",
+      },
+      {
+        id: "web-components",
+        label: "Web Components",
+        iconClass: "-icon-webcomponentsdotorg",
+        command: "npx @pantoken/scaffold web-components",
+      },
+      {
+        id: "react",
+        label: "React",
+        iconClass: "-icon-react",
+        command: "npx @pantoken/scaffold react",
+      },
+      {
+        id: "next",
+        label: "Next",
+        iconClass: "-icon-nextdotjs",
+        command: "npx @pantoken/scaffold next",
+      },
+      {
+        id: "angular",
+        label: "Angular",
+        iconClass: "-icon-angular",
+        command: "npx @pantoken/scaffold angular",
+      },
+    ] as const,
+);
+
+type ScaffoldTarget = (typeof scaffoldOptions.value)[number]["id"];
 
 const activeTarget = ref<ScaffoldTarget>("ai");
 
 const activeCommand = computed(
-  () => scaffoldOptions.find((option) => option.id === activeTarget.value)?.command ?? "",
+  () => scaffoldOptions.value.find((option) => option.id === activeTarget.value)?.command ?? "",
 );
 
 const commandLang = computed(() => (activeTarget.value === "ai" ? "text" : "bash"));

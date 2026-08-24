@@ -1,4 +1,5 @@
 import type { CdnPickerStrings } from "./theme/cdn";
+import type { GetStartedTabsStrings } from "./theme/get-started";
 
 /** The locales the docs site builds: `root` (English) and `hu` (Hungarian). */
 export type DocsLocale = "root" | "hu";
@@ -39,6 +40,9 @@ type LocaleMeta = {
   // The interactive CDN combine-URL builder on the CDN guide page (see theme/components/CdnPicker.vue
   // and theme/cdn.ts). Component names and the generated URL are not translated.
   cdnPicker: CdnPickerStrings;
+  // The "Get started" scaffold tabs (see theme/components/GetStartedTabs.vue and theme/get-started.ts).
+  // Only the AI tab's instructions are prose; the other tabs' `npx …` commands are not translated.
+  getStartedTabs: GetStartedTabsStrings;
   // Default-theme chrome VitePress renders around the content. Without these the Hungarian site shows
   // English labels (outline heading, prev/next footer, dark-mode toggle, the 404 page, etc.).
   chrome: {
@@ -135,6 +139,10 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
         "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them.",
       iconsNote: "component-icons.css is included because a selected component uses icons.",
     },
+    getStartedTabs: {
+      aiCommand:
+        "Run `npx @pantoken/ai init` in this project, then run the `/scaffold-pantoken` skill.",
+    },
     chrome: {
       outlineLabel: "On this page",
       docFooterPrev: "Previous page",
@@ -225,6 +233,10 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
         "A betűtípusok külön töltődnek be — adj hozzá egy <link> elemet a @pantoken/components/fonts.css fájlhoz, ha szükséged van rájuk.",
       iconsNote:
         "A component-icons.css azért szerepel, mert egy kiválasztott komponens ikonokat használ.",
+    },
+    getStartedTabs: {
+      aiCommand:
+        "Futtasd az `npx @pantoken/ai init` parancsot ebben a projektben, majd futtasd a `/scaffold-pantoken` skillt.",
     },
     chrome: {
       outlineLabel: "Ezen az oldalon",
