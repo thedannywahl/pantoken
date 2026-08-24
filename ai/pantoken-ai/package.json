@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/ai",
   "version": "0.1.4",
-  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and a Claude Code bootstrap skill, with an installer CLI.",
+  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and init-pantoken/scaffold-pantoken Claude Code skills, with an installer CLI (init, scaffold <platform>).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
@@ -33,7 +33,11 @@
     "generate": "node scripts/generate.ts",
     "dev": "vp pack --watch",
     "test": "vp run generate && vp test",
-    "check": "vp check"
+    "check": "vp check",
+    "eval": "waza run evals --discover -v"
+  },
+  "dependencies": {
+    "@pantoken/scaffold": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",
