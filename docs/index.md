@@ -27,3 +27,31 @@ features:
   - title: No upstream coupling
     details: The tokens ship vendored as static JSON, so npm i pantoken never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
 ---
+
+<div class="instui-agent-shell --mt-2xl --p-lg --elevation-resting" style="min-height: 0;">
+<h2 class="instui-heading -color-ai">Boostrap with AI</h2>
+
+::: code-group
+
+```sh [npm]
+npx pantoken-ai init
+```
+
+```sh [pnpm]
+pnpm dlx pantoken-ai init
+```
+
+```sh [yarn]
+yarn dlx pantoken-ai init
+```
+
+```sh [bun]
+bunx pantoken-ai init
+```
+
+:::
+
+In your client:
+`/scaffold-pantoken`
+skill
+</div>
