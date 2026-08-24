@@ -36,9 +36,11 @@ Or scaffold a new starter project with pantoken already installed and wired in, 
 assets from `init`:
 
 ```sh
-npx pantoken-ai scaffold web      # plain HTML/CSS (Vite + TS) + @pantoken/components
-npx pantoken-ai scaffold react    # Vite + React + @pantoken/react
-npx pantoken-ai scaffold next     # Next.js (App Router) + @pantoken/next
+npx pantoken-ai scaffold html            # plain HTML/CSS (Vite + TS) + @pantoken/components
+npx pantoken-ai scaffold react           # Vite + React + @pantoken/react
+npx pantoken-ai scaffold next            # Next.js (App Router) + @pantoken/next
+npx pantoken-ai scaffold angular         # Vite + Angular (standalone) + @pantoken/angular
+npx pantoken-ai scaffold web-components  # Vite + @pantoken/web-components (no framework)
 ```
 
 If you only want the starter project without the agent assets, run

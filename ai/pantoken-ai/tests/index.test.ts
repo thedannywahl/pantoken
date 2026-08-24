@@ -48,9 +48,11 @@ test("rejects unknown tools with a clear error", () => {
 });
 
 test("re-exports a known scaffold platform set from @pantoken/scaffold", () => {
-  expect(SCAFFOLD_PLATFORMS).toContain("web");
+  expect(SCAFFOLD_PLATFORMS).toContain("html");
   expect(SCAFFOLD_PLATFORMS).toContain("react");
   expect(SCAFFOLD_PLATFORMS).toContain("next");
+  expect(SCAFFOLD_PLATFORMS).toContain("angular");
+  expect(SCAFFOLD_PLATFORMS).toContain("web-components");
 });
 
 test("scaffolds a platform with projectName substituted", () => {
@@ -70,7 +72,7 @@ test("rejects unknown platforms with a clear error", () => {
 test("scaffoldAndInit writes both the scaffold and the agent assets", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-scaffold-init-"));
   const target = join(dir, "my-app");
-  const written = scaffoldAndInit("web", target, "cursor");
+  const written = scaffoldAndInit("html", target, "cursor");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
   expect(written.length).toBeGreaterThan(1);

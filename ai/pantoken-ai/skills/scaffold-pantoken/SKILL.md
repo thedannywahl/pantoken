@@ -14,7 +14,7 @@ in the current project. Work through these steps.
   already done for you by the template):
 
   ```sh
-  npx @pantoken/ai scaffold <web|react|next> [--dir .]
+  npx @pantoken/ai scaffold <html|react|next|angular|web-components> [--dir .]
   ```
 
   This writes a minimal starter (`package.json`, entry file(s), README) for the chosen platform
