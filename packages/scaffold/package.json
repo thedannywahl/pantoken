@@ -34,6 +34,10 @@
     "test": "vp run scan && vp run generate && vp test",
     "check": "vp run scan && vp check"
   },
+  "dependencies": {
+    "@pantoken/scaffold-base": "workspace:*",
+    "bingo-stratum": "catalog:"
+  },
   "devDependencies": {
     "@pantoken/plugin-layouts": "workspace:*",
     "@pantoken/scaffold-base": "workspace:*",

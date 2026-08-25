@@ -10,6 +10,7 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { producePreset } from "bingo-stratum";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
 import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
 
@@ -59,21 +60,40 @@ export async function scaffoldProject(platform: string, dir = "."): Promise<stri
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
   const written: string[] = [];
 
-  // Validate platform is available in the preset ledger
-  // The preset is exported by each platform package and available in PRESET_LEDGER
-  // Future: invoke preset with Bingo to render template
-  // For now, fall back to scaffold template system below
-  void PRESET_LEDGER[platform]; // Ensure platform has a registered preset
+  // Get the preset for this platform
+  const preset = PRESET_LEDGER[platform];
 
-  // Write platform-specific scaffold templates
-  const templates = SCAFFOLDS[platform as keyof typeof SCAFFOLDS];
-  if (templates) {
-    for (const [file, content] of Object.entries(templates)) {
-      const substituted = content.replaceAll("{{projectName}}", projectName);
-      const path = join(dir, file);
-      mkdirSync(dirname(path), { recursive: true });
-      writeFileSync(path, substituted);
-      written.push(path);
+  // Use Bingo stratum to render the preset with options
+  try {
+    const creation = producePreset(preset, {
+      offline: true,
+      options: { name: projectName },
+    });
+
+    // Write the files created by the preset
+    if (creation.files) {
+      for (const [file, rawContent] of Object.entries(creation.files)) {
+        const path = join(dir, file);
+        mkdirSync(dirname(path), { recursive: true });
+        // Handle both string and Buffer/ArrayBuffer content types
+        const content =
+          rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : String(rawContent);
+        writeFileSync(path, content);
+        written.push(path);
+      }
+    }
+  } catch {
+    // Fallback to scaffold template system if Bingo rendering fails
+    // This allows incremental adoption of Bingo templates
+    const templates = SCAFFOLDS[platform as keyof typeof SCAFFOLDS];
+    if (templates) {
+      for (const [file, content] of Object.entries(templates)) {
+        const substituted = content.replaceAll("{{projectName}}", projectName);
+        const path = join(dir, file);
+        mkdirSync(dirname(path), { recursive: true });
+        writeFileSync(path, substituted);
+        written.push(path);
+      }
     }
   }
 
