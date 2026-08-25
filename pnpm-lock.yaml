@@ -2261,6 +2261,9 @@ importers:
       '@angular/core':
         specifier: '>=16'
         version: 22.1.3(rxjs@7.8.2)
+      '@pantoken/scaffold-base':
+        specifier: workspace:*
+        version: link:../../packages/scaffold-base
       '@pantoken/web-components':
         specifier: workspace:*
         version: link:../web-components
@@ -2268,9 +2271,6 @@ importers:
       '@pantoken/components':
         specifier: workspace:*
         version: link:../../formats/components
-      '@pantoken/scaffold-base':
-        specifier: workspace:*
-        version: link:../../packages/scaffold-base
       '@types/node':
         specifier: 'catalog:'
         version: 26.3.0
@@ -2783,6 +2783,9 @@ importers:
       '@pantoken/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
+      '@pantoken/scaffold-base':
+        specifier: workspace:*
+        version: link:../../packages/scaffold-base
       '@pantoken/web-components':
         specifier: workspace:*
         version: link:../web-components
@@ -2793,9 +2796,6 @@ importers:
       '@pantoken/components':
         specifier: workspace:*
         version: link:../../formats/components
-      '@pantoken/scaffold-base':
-        specifier: workspace:*
-        version: link:../../packages/scaffold-base
       '@types/node':
         specifier: 'catalog:'
         version: 26.3.0
