@@ -120,6 +120,8 @@ catalog:
   vscode-languageserver-textdocument: ^1.0.12
   # Continuous performance testing — the vitest bench harness reported to CodSpeed.
   "@codspeed/vitest-plugin": ^5.7.1
+  bingo-stratum: ^0.5.13
+  zod: ^4.4.3
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches

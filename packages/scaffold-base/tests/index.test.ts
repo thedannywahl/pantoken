@@ -2,7 +2,7 @@ import { expect, test } from "vite-plus/test";
 import { blockCssdoc, getWrapperContext } from "../src/index.ts";
 
 test("blockCssdoc produces the shared cssdoc.json file", () => {
-  const production = blockCssdoc.produce({ options: { name: "test-app" } });
+  const production = blockCssdoc.produce({ options: { name: "test-app", preset: "test" } });
 
   expect(production.files?.["cssdoc.json"]).toContain(
     '"$schema": "https://cssdoc.dev/cssdoc.schema.json"',
