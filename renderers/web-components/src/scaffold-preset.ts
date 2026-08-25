@@ -11,8 +11,7 @@ import { base } from "@pantoken/scaffold-base";
  * Platform: `web-components`
  */
 export const presetWebComponents = {
-  name: "web-components",
-  baseId: "scaffold-base",
-  bases: [base],
+  about: { name: "web-components" },
+  base,
   blocks: [],
 } as const;

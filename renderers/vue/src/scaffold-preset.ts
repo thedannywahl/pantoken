@@ -11,8 +11,7 @@ import { base } from "@pantoken/scaffold-base";
  * Platform: `vue`
  */
 export const presetVue = {
-  name: "vue",
-  baseId: "scaffold-base",
-  bases: [base],
+  about: { name: "vue" },
+  base,
   blocks: [],
 } as const;
