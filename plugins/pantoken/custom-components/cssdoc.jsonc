@@ -4,7 +4,8 @@
   // in the @component card @structure (heading, button) resolve from the components sheet.
   "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "extends": ["../../../cssdoc.jsonc"],
-  "modifierConvention": "rscss",
-  "inlineComments": "ignore",
-  "providers": [{ "path": "../../../formats/components/src/generated/_records.css" }]
+  "providers": [
+    { "path": "../../../formats/components/src/generated/_records.css" },
+    { "path": "../../../formats/components/generated/utilities.css" }
+  ]
 }

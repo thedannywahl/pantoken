@@ -5,7 +5,11 @@
   // `@structure` (e.g. tree-browser's structure names `.pfx-icon`).
   "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "extends": ["../../cssdoc.jsonc"],
-  "providers": [{ "path": "./src/generated/_records.css" }],
+  "providers": [
+    { "path": "./src/generated/_records.css" },
+    // @global utilities (spacing/gap/layout/etc.) — authored in .ts, so this is their only doc-comment source.
+    { "path": "./generated/utilities.css" }
+  ],
   "rules": {
     "name-not-in-css": "off"
   }
