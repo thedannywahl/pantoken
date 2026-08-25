@@ -6,7 +6,7 @@
 
 - 8aa88bb: Document the previously-undocumented `tabs` `-overflow-scroll` and `checkbox` `-required` modifiers.
 - 8aa88bb: Bump `@instructure/instructure-design-tokens` from `v1.5.0` to `v1.8.0`.
-  
+
   - New dedicated `--instui-component-card-*` tokens (border-radius, padding, background, nested-border,
     and breakpoints) replace the legacy `--instui-component-shared-tokens-*card*` variables the custom
     `card` component previously used. `card`'s `lg` breakpoint moves from 684px (42.75rem) to 640px
@@ -24,34 +24,36 @@
     `--instui-line-height-paragraph-base`, directly) and `--instui-component-badge-notification-z-index`
     (the real upstream token has returned with a proper `<integer>` `@property` syntax, so the frozen
     shim is no longer needed).
+
 - 8aa88bb: Add preset ledger infrastructure and platform presets for scaffold migration to Bingo.
-  
+
   **Scaffold-Base Package (`@pantoken/scaffold-base`):**
-  
+
   - Switch template source to `.jsonc` for comment support
   - Generate static `cssdoc.ts` at build time, template remains as source
-  
+
   **Scaffold Presets:**
-  
+
   - Create platform presets in `@pantoken/components`, `@pantoken/react`, `@pantoken/vue`, `@pantoken/web-components`
   - Each platform exports `./scaffold-preset` entry point with Bingo-compatible preset definition
   - Presets extend shared scaffold-base with common options (name, cssdoc block, wrapper context)
-  
+
   **Scaffold Package (`@pantoken/scaffold`):**
-  
+
   - Introduce `scan-presets.ts` script that discovers all packages exporting `./scaffold-preset`
   - Generate static `preset-ledger.ts` registry at pre-build time, used by CLI to validate platforms
   - Wire preset scanning into scaffold build/test/check pipeline
   - Update `scaffoldProject` function to async, validates platform is in PRESET_LEDGER
   - Update CLI to handle async scaffolding with proper error handling
   - Update scaffold/generate.ts to read cssdoc template from scaffold-base with JSONC parsing (strips comments for output)
-  
+
   **Key Features:**
-  
+
   - Decentralized preset ownership: each platform package maintains its own preset definition
   - Static ledger generation enables type-safe platform discovery at runtime
   - JSONC source templates with comments for documentation
   - Foundation for future Bingo template rendering integration (presets are now validated and available)
+
 - 8aa88bb: format and lint component modifiers
 - 8aa88bb: Fix cssdoc consumer-side lint incorrectly flagging `@global` utility modifiers (e.g. `--p-lg`,
   `--mt-2xl`, `--mx-none` from the spacing/gap/layout/etc. utilities) as `unknown-modifier` when chained

@@ -5,7 +5,7 @@
 ### Minor Changes
 
 - 8aa88bb: Bump `@instructure/instructure-design-tokens` from `v1.5.0` to `v1.8.0`.
-  
+
   - New dedicated `--instui-component-card-*` tokens (border-radius, padding, background, nested-border,
     and breakpoints) replace the legacy `--instui-component-shared-tokens-*card*` variables the custom
     `card` component previously used. `card`'s `lg` breakpoint moves from 684px (42.75rem) to 640px
@@ -23,11 +23,12 @@
     `--instui-line-height-paragraph-base`, directly) and `--instui-component-badge-notification-z-index`
     (the real upstream token has returned with a proper `<integer>` `@property` syntax, so the frozen
     shim is no longer needed).
+
 - 8aa88bb: Retire two deprecation shims that passed their removeIn window:
-  
+
   - --instui-component-truncate-text-line-height
   - --instui-component-badge-notification-z-index
-  
+
   This aligns deprecations with the current upstream contract and unblocks the upstream-drift gate.
 
 ### Patch Changes

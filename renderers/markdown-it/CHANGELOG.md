@@ -5,8 +5,9 @@
 ### Patch Changes
 
 - 8aa88bb: Export `buildIconResolverChain` from `@pantoken/icons` and use it from `@pantoken/rehype` and `@pantoken/markdown-it`, removing the duplicated resolver-chain logic between the two renderers.
-  
+
   Refactor the `pantoken-ai` CLI's command dispatch and `@pantoken/scaffold`'s JSONC comment stripping to reduce cognitive complexity; no behavior change.
+
 - 8aa88bb: Migrate published `dependencies`/`peerDependencies` to `pnpm-workspace.yaml` `catalog:` references. No
   behavior change — the resolved versions are unchanged, but the `package.json` a consumer installs now
   points at the shared catalog entry instead of an inline semver range, so the range is no longer visible
