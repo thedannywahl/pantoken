@@ -6,12 +6,12 @@
 import { base } from "@pantoken/scaffold-base";
 
 /**
- * Preset for scaffolding React projects with pantoken components.
+ * Preset for scaffolding React projects with pantoken.
  *
  * Platform: `react`
  */
 export const presetReact = {
-  about: { name: "react" },
+  about: { name: "react" as const },
   base,
   blocks: [],
 } as const;
