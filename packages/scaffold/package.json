@@ -37,7 +37,7 @@
     "@pantoken/plugin-layouts": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
     "vite-plus": "catalog:"
   },
   "engines": {

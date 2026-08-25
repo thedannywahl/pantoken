@@ -39,7 +39,7 @@
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
   },
