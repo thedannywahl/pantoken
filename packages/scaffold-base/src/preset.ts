@@ -15,7 +15,7 @@ interface PresetInput {
 /**
  * Create a scaffold Preset with explicit return type for TypeScript `--isolatedDeclarations`.
  *
- * @param input Preset configuration with name, base, and optional blocks
+ * @param input - Preset configuration with name, base, and optional blocks
  * @returns Properly typed Bingo Preset
  */
 export function createPreset(input: PresetInput): Preset {
