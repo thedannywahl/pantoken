@@ -9,7 +9,7 @@
  * @beta
  */
 import { tokens } from "@pantoken/tokens";
-import type { IconResolver } from "@pantoken/model";
+import type { IconResolver, PantokenPlugin } from "@pantoken/model";
 import { sanitizeSvg } from "@pantoken/utils";
 
 /** A pantoken icon, derived from an `<image>` token. */
@@ -110,3 +110,41 @@ export const resolve: IconResolver = (code) => {
     ? { name: icon.name, svg: icon.svg, viewBox: icon.viewBox, source: icon.source }
     : undefined;
 };
+
+/** Options shared by the icon-resolving renderers ({@link buildIconResolverChain}). */
+export interface IconResolverChainOptions {
+  /** An explicit resolver, tried before the built-in pantoken icon set. */
+  resolve?: IconResolver;
+  /** Plugins whose `rehype` hooks contribute resolvers (tried first). */
+  plugins?: readonly PantokenPlugin[];
+}
+
+/**
+ * Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit
+ * `resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and
+ * `@pantoken/markdown-it` so the resolution order stays identical across renderers.
+ *
+ * @example
+ * ```ts
+ * import { buildIconResolverChain } from "@pantoken/icons";
+ *
+ * const resolveIcon = buildIconResolverChain({ plugins: [myBrandIconsPlugin] });
+ * resolveIcon("arrow-left"); // { name, svg, viewBox, source } | undefined
+ * ```
+ */
+export function buildIconResolverChain(options: IconResolverChainOptions): IconResolver {
+  const resolvers: IconResolver[] = [];
+  for (const plugin of options.plugins ?? []) {
+    const contributed = plugin.rehype?.({ resolve });
+    if (contributed?.resolve) resolvers.push(contributed.resolve);
+  }
+  if (options.resolve) resolvers.push(options.resolve);
+  resolvers.push(resolve);
+  return (code) => {
+    for (const resolver of resolvers) {
+      const hit = resolver(code);
+      if (hit) return hit;
+    }
+    return undefined;
+  };
+}

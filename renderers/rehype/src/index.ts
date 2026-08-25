@@ -9,7 +9,7 @@
  * @module
  * @experimental
  */
-import { resolve as pantokenResolve } from "@pantoken/icons";
+import { buildIconResolverChain } from "@pantoken/icons";
 import { visit } from "unist-util-visit";
 import type { IconEntry, IconResolver, PantokenPlugin } from "@pantoken/model";
 
@@ -38,23 +38,6 @@ interface HastElement {
 interface HastRaw {
   type: "raw";
   value: string;
-}
-
-function buildChain(options: RehypeOptions): IconResolver {
-  const resolvers: IconResolver[] = [];
-  for (const plugin of options.plugins ?? []) {
-    const contributed = plugin.rehype?.({ resolve: pantokenResolve });
-    if (contributed?.resolve) resolvers.push(contributed.resolve);
-  }
-  if (options.resolve) resolvers.push(options.resolve);
-  resolvers.push(pantokenResolve);
-  return (code) => {
-    for (const r of resolvers) {
-      const hit = r(code);
-      if (hit) return hit;
-    }
-    return undefined;
-  };
 }
 
 function iconElement(entry: IconEntry, className: string): HastElement {
@@ -104,7 +87,7 @@ function iconElement(entry: IconEntry, className: string): HastElement {
  * ```
  */
 export function rehypePantokenIcons(options: RehypeOptions = {}) {
-  const resolve = buildChain(options);
+  const resolve = buildIconResolverChain(options);
   const className = options.className ?? "pantoken-icon";
 
   return (tree: unknown): void => {
