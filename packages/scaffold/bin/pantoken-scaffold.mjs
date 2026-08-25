@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import { SCAFFOLD_PLATFORMS, scaffoldProject } from "../dist/index.mjs";
+import { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "../dist/index.mjs";
 
 const argv = process.argv.slice(2);
-const PLATFORM_SET = new Set(SCAFFOLD_PLATFORMS);
 
 const usage = () => `Usage: pantoken-scaffold <${SCAFFOLD_PLATFORMS.join("|")}> [--dir .]`;
 
@@ -18,7 +17,7 @@ if (argv[0] === "--help" || argv[0] === "-h") {
 
 const platform = argv[0];
 const dir = flag("dir") ?? ".";
-if (!platform || !PLATFORM_SET.has(platform)) {
+if (!platform || !isScaffoldPlatform(platform)) {
   console.error(`Unknown platform "${platform ?? ""}".`);
   console.error(usage());
   process.exit(1);

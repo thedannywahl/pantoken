@@ -2,10 +2,9 @@
 // Flat-name alias for @pantoken/scaffold's CLI, so `npm create pantoken-app` (or `npm init
 // pantoken-app`) works the way npm's create-* convention expects. Same argv contract as
 // `pantoken-scaffold` — see that package's bin for the canonical implementation.
-import { SCAFFOLD_PLATFORMS, scaffoldProject } from "@pantoken/scaffold";
+import { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "@pantoken/scaffold";
 
 const argv = process.argv.slice(2);
-const PLATFORM_SET = new Set(SCAFFOLD_PLATFORMS);
 
 const usage = () => `Usage: npm create pantoken-app -- <${SCAFFOLD_PLATFORMS.join("|")}> [--dir .]`;
 
@@ -21,7 +20,7 @@ if (argv[0] === "--help" || argv[0] === "-h") {
 
 const platform = argv[0];
 const dir = flag("dir") ?? ".";
-if (!platform || !PLATFORM_SET.has(platform)) {
+if (!platform || !isScaffoldPlatform(platform)) {
   console.error(`Unknown platform "${platform ?? ""}".`);
   console.error(usage());
   process.exit(1);

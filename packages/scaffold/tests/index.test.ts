@@ -2,13 +2,22 @@ import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
-import { SCAFFOLD_PLATFORMS, scaffoldProject } from "../src/index.ts";
+import { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "../src/index.ts";
 
 test("ships a known scaffold platform set", () => {
   expect(SCAFFOLD_PLATFORMS).toContain("components");
   expect(SCAFFOLD_PLATFORMS).toContain("react");
   expect(SCAFFOLD_PLATFORMS).toContain("vue");
   expect(SCAFFOLD_PLATFORMS).toContain("web-components");
+});
+
+test("html is accepted as an alias for components", async () => {
+  expect(isScaffoldPlatform("html")).toBe(true);
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-html-"));
+  const target = join(dir, "my-app");
+  const written = await scaffoldProject("html", target);
+  expect(written.length).toBeGreaterThan(0);
+  expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
 test("scaffolds a platform with projectName substituted", async () => {

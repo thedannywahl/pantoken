@@ -16,7 +16,7 @@ import { scaffoldProject } from "@pantoken/scaffold";
 import { ASSETS } from "../generated/assets.ts";
 
 export { ASSETS } from "../generated/assets.ts";
-export { SCAFFOLD_PLATFORMS, scaffoldProject } from "@pantoken/scaffold";
+export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "@pantoken/scaffold";
 export type { ScaffoldPlatform } from "@pantoken/scaffold";
 
 /**

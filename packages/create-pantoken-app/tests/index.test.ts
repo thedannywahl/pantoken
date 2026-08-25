@@ -22,3 +22,10 @@ test("scaffolds the same output as @pantoken/scaffold for a known platform", () 
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
 });
+
+test("accepts the html alias for components", () => {
+  const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-html-"));
+  const target = join(dir, "my-app");
+  execFileSync("node", [bin, "html", "--dir", target], { encoding: "utf8" });
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+});

@@ -33,8 +33,19 @@ export const SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[] = Object.keys(
 
 const SCAFFOLD_PLATFORM_SET = new Set<string>(SCAFFOLD_PLATFORMS);
 
-function ensureScaffoldPlatform(platform: string): asserts platform is ScaffoldPlatform {
-  if (SCAFFOLD_PLATFORM_SET.has(platform)) return;
+/** Alternate platform names accepted alongside the canonical preset key (e.g. the pre-Bingo `html`). */
+const PLATFORM_ALIASES: Record<string, ScaffoldPlatform> = {
+  html: "components",
+};
+
+/** Whether `platform` is a known {@link ScaffoldPlatform} or one of its aliases (e.g. `html`). */
+export function isScaffoldPlatform(platform: string): boolean {
+  return SCAFFOLD_PLATFORM_SET.has(platform) || platform in PLATFORM_ALIASES;
+}
+
+function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
+  const resolved = PLATFORM_ALIASES[platform] ?? platform;
+  if (SCAFFOLD_PLATFORM_SET.has(resolved)) return resolved as ScaffoldPlatform;
   throw new Error(
     `Unknown platform "${platform}". Expected one of: ${SCAFFOLD_PLATFORMS.join(", ")}.`,
   );
@@ -56,12 +67,12 @@ function ensureScaffoldPlatform(platform: string): asserts platform is ScaffoldP
  * ```
  */
 export async function scaffoldProject(platform: string, dir = "."): Promise<string[]> {
-  ensureScaffoldPlatform(platform);
+  const resolvedPlatform = resolveScaffoldPlatform(platform);
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
   const written: string[] = [];
 
   // Get the preset for this platform
-  const preset = PRESET_LEDGER[platform];
+  const preset = PRESET_LEDGER[resolvedPlatform];
 
   // Use Bingo stratum to render the preset with options
   try {
@@ -87,7 +98,7 @@ export async function scaffoldProject(platform: string, dir = "."): Promise<stri
   // Presets with no blocks yet (or a failed render) produce no files — fall back to the legacy
   // scaffold template system so every platform still scaffolds something.
   if (written.length === 0) {
-    const templates = SCAFFOLDS[platform as keyof typeof SCAFFOLDS];
+    const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
     if (templates) {
       for (const [file, content] of Object.entries(templates)) {
         const substituted = content.replaceAll("{{projectName}}", projectName);
