@@ -569,8 +569,8 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      md.use(mermaidPlugin);
-      md.use(tokenValuePreview);
+      mermaidPlugin(md);
+      tokenValuePreview(md);
       // Everything the runner (and the isolated `.css-example` srcdoc previews) inject, all served
       // static files: the component sheets, the one multi-theme token sheet (themed by the
       // `data-pantoken-theme` attribute), the plugin sheets, and the shared `.instui-card` surface.
@@ -588,7 +588,7 @@ export default defineConfig({
         `${base}demos-assets/visual-debug.css`,
         `${base}demos-assets/card.css`,
       ];
-      md.use(demoMarkdownIt, {
+      demoMarkdownIt(md, {
         base,
         cssUrls,
         // Seam a live preview onto each `@example` HTML fence at compile time: the same markup,

@@ -21,10 +21,17 @@
  *
  * @module
  */
-import type MarkdownIt from "markdown-it";
+/** Minimal renderer-rule shape this plugin needs, independent of any specific markdown-it major
+ * version — vitepress bundles its own copy that can differ from the repo's catalog version. */
+type RendererRule = (tokens: any, index: number, options: any, env: any, self: any) => string;
+
+/** Minimal markdown-it shape this plugin needs. */
+interface MarkdownItLike {
+  renderer: { rules: Record<string, RendererRule | undefined> };
+  core: { ruler: { push(name: string, fn: (state: any) => void): void } };
+}
 
 export { buildExampleSrcdoc, escapeSrcdoc, type ExampleSrcdocOptions } from "./srcdoc.ts";
-
 /** Options for resolving a demo spec. Only the `self` provider uses the runner/demos/css fields. */
 export interface ResolveOptions {
   /** Site base path, e.g. `/pantoken/` (default `/`). */
@@ -467,28 +474,28 @@ function migrateLiveExampleFlags(
  * });
  * ```
  */
-export function demoMarkdownIt(md: MarkdownIt, options: DemoMarkdownItOptions = {}): void {
+export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOptions = {}): void {
   const fence = md.renderer.rules.fence;
   if (!fence) return;
 
   // Core rule: migrate `-flag` tokens from heading inline content into the following html fence's info
   // string, and strip them from the heading so they don't appear in the rendered title.
   if (options.liveExample) {
-    md.core.ruler.push("live_example_flags", (state) => {
+    md.core.ruler.push("live_example_flags", (state: { tokens: unknown[] }) => {
       migrateLiveExampleFlags(
         state.tokens as Array<{ type: string; info: string; content?: string }>,
       );
     });
   }
 
-  md.renderer.rules.fence = (...args) => {
+  md.renderer.rules.fence = (...args: Parameters<RendererRule>) => {
     const [tokens, index, , env] = args;
     const token = tokens[index];
     const info = token.info.trim();
     if (info === "demo") {
       return renderDemoFigure(resolveDemo(token.content.trim(), options));
     }
-    const flags = new Set(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
+    const flags = new Set<string>(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
     // `-noshow` strips the html source fence and its live preview from rendered output.
     if (info.startsWith("html") && flags.has("-noshow")) {
       return "";

@@ -26,7 +26,7 @@
  * @experimental
  */
 import { resolve as pantokenResolve } from "@pantoken/icons";
-import type MarkdownIt from "markdown-it";
+import type { MarkdownIt } from "markdown-it";
 import type { IconEntry, IconResolver, PantokenPlugin } from "@pantoken/model";
 
 /**
@@ -137,7 +137,7 @@ export function pantokenMarkdownIt(md: MarkdownIt, options: MarkdownItOptions = 
   const doSwatches = options.swatches ?? true;
   const { escapeHtml } = md.utils;
 
-  md.core.ruler.push("pantoken", (rawState) => {
+  md.core.ruler.push("pantoken", (rawState: unknown) => {
     const state = rawState as unknown as MdStateCore;
     const make = (type: string, content: string): MdToken => {
       const token = new state.Token(type, "", 0);

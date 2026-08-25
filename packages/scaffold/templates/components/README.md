@@ -1,6 +1,7 @@
 # {{projectName}}
 
-Scaffolded with `pantoken-scaffold html` (or `pantoken-ai scaffold html`) — a plain TypeScript app (via Vite) styled with
+Scaffolded with `pantoken-scaffold components` (or `pantoken-ai scaffold components`) — a plain
+TypeScript app (via Vite) styled with
 [`@pantoken/components`](https://www.npmjs.com/package/@pantoken/components), Instructure's
 design tokens and icons.
 
