@@ -56,7 +56,7 @@
     "remark-gfm": "catalog:",
     "simple-icons": "catalog:",
     "typescript": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+    "vite": "catalog",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
@@ -78,9 +78,6 @@
     "@mdx-js/react": {
       "optional": true
     }
-  },
-  "engines": {
-    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "react-markdown",

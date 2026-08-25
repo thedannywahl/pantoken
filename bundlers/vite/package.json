@@ -35,14 +35,11 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "vite": ">=5"
-  },
-  "engines": {
-    "node": ">=22.18.0"
+    "vite": ">=8"
   },
   "pantoken": {
     "key": "vite",

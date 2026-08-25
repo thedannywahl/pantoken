@@ -40,14 +40,11 @@
     "@types/node": "catalog:",
     "simple-icons": "catalog:",
     "typescript": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+    "vite": "catalog",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
     "simple-icons": ">=13"
-  },
-  "engines": {
-    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "simpleIcons",

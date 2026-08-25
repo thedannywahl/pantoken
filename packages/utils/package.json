@@ -38,10 +38,7 @@
     "@types/css-tree": "catalog:",
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
-  },
-  "engines": {
-    "node": ">=22.18.0"
   }
 }

@@ -39,14 +39,11 @@
     "markdown-it": "catalog:",
     "simple-icons": "catalog:",
     "typescript": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+    "vite": "catalog",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
     "markdown-it": ">=14"
-  },
-  "engines": {
-    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "markdown-it",
