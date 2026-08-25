@@ -28,10 +28,11 @@
     "provenance": true
   },
   "scripts": {
+    "scan": "node scripts/scan-presets.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp pack --watch",
-    "test": "vp run generate && vp test",
-    "check": "vp check"
+    "test": "vp run scan && vp run generate && vp test",
+    "check": "vp run scan && vp check"
   },
   "devDependencies": {
     "@pantoken/plugin-layouts": "workspace:*",

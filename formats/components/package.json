@@ -42,6 +42,7 @@
     "./screen-reader-content.css": "./dist/utilities/screen-reader-content.css",
     "./transition.css": "./dist/utilities/transition.css",
     "./responsive.css": "./dist/utilities/responsive.css",
+    "./scaffold-preset": "./dist/scaffold-preset.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -56,6 +57,7 @@
   },
   "dependencies": {
     "@pantoken/plugin-colors": "workspace:*",
+    "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@pantoken/utils": "workspace:*"
   },
@@ -65,7 +67,9 @@
     "@pantoken/icons": "workspace:*",
     "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/plugin-theme-custom-media": "workspace:*",
+    "@pantoken/scaffold-base": "workspace:*",
     "@types/node": "catalog:",
+    "bingo-stratum": "catalog:",
     "postcss": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
