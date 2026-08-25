@@ -148,7 +148,7 @@ const orchestrator = workspaceOrchestrator({
       dir: at("plugins/pantoken/custom-components"),
       watchPaths: [],
       build: ["node", "scripts/generate.ts"],
-      dependents: ["@pantoken/docs#docs:api:css"],
+      dependents: ["@pantoken/docs#docs:api:css", "@pantoken/docs#plugin-assets"],
     },
     {
       name: "@pantoken/plugin-layouts",
@@ -587,6 +587,7 @@ export default defineConfig({
         `${base}demos-assets/stacking.css`,
         `${base}demos-assets/visual-debug.css`,
         `${base}demos-assets/card.css`,
+        `${base}demos-assets/custom-components.css`,
       ];
       demoMarkdownIt(md, {
         base,
