@@ -66,12 +66,14 @@ const ledgerContent = `/**
  * @generated
  */
 
+import type { Preset } from "@pantoken/scaffold-base";
+
 ${presets.map((p) => `import { ${p.exportName} } from "${p.importPath}";`).join("\n")}
 
 /**
  * Registry of all available pantoken scaffold presets, keyed by platform name.
  */
-export const PRESET_LEDGER = {
+export const PRESET_LEDGER: Record<string, Preset> = {
 ${presets.map((p) => `  "${p.platform}": ${p.exportName},`).join("\n")}
 } as const;
 
