@@ -7,7 +7,7 @@
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { cardRules, agentShellRules } from "../src/components/index.ts";
+import { cardRules, agentShellRules, bannerRules } from "../src/components/index.ts";
 
 const opts = "instui-" as const;
 const outDir = resolve(import.meta.dirname, "../generated");
@@ -16,6 +16,7 @@ mkdirSync(outDir, { recursive: true });
 const components: Array<[string, (prefix: string) => string]> = [
   ["card", cardRules],
   ["agent-shell", agentShellRules],
+  ["banner", bannerRules],
 ];
 
 let count = 0;

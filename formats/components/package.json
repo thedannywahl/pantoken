@@ -67,7 +67,6 @@
     "@pantoken/icons": "workspace:*",
     "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/plugin-theme-custom-media": "workspace:*",
-    "@pantoken/scaffold-base": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
     "postcss": "catalog:",

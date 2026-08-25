@@ -9,6 +9,7 @@ import { resolve } from "node:path";
 import {
   cardRules,
   agentShellRules,
+  bannerRules,
 } from "../../plugins/pantoken/custom-components/src/components/index.ts";
 import { icons as vendoredCustomIcons } from "../../plugins/pantoken/custom-icons/src/index.ts";
 import { logos, products } from "../../plugins/pantoken/logos/src/index.ts";
@@ -21,6 +22,7 @@ mkdirSync(outDir, { recursive: true });
 const customComponents = [
   ["card", cardRules],
   ["agent-shell", agentShellRules],
+  ["banner", bannerRules],
 ].map(([name]) => ({ name }));
 
 // ── Custom icons ──────────────────────────────────────────────────────────────

@@ -14,6 +14,23 @@ test("every theme is addressable", () => {
   expect(canvasTokens.length).toBeGreaterThan(500);
 });
 
+test("new v1.8.0 component tokens resolve per theme (card, banner, tag)", () => {
+  const cardRadius = tokens.find((t) => t.name === "--instui-component-card-border-radius-base-sm");
+  expect(cardRadius).toBeDefined();
+  const bannerColor = tokens.find((t) => t.name === "--instui-component-banner-color");
+  expect(bannerColor).toBeDefined();
+  const leadElementLabel = tokens.find(
+    (t) => t.name === "--instui-component-tag-lead-element-label",
+  );
+  expect(leadElementLabel).toBeDefined();
+  expect(leadElementLabel?.syntax).toBe("*");
+  const canvasLeadElementLabel = canvasTokens.find(
+    (t) => t.name === "--instui-component-tag-lead-element-label",
+  );
+  expect(canvasLeadElementLabel?.value).toBe("var(--instui-spacing-space-sm)");
+  expect(leadElementLabel?.value).toBe("var(--instui-spacing-space-xs)");
+});
+
 test("icons are present as <image> tokens in the vendored IR", () => {
   const arrow = tokens.find((t) => t.name === "--instui-icon-arrow-left");
   expect(arrow?.syntax).toBe("<image>");

@@ -5,6 +5,7 @@ Custom, cssdoc-documented component rules for downstream consumers.
 This package currently ships:
 
 - `card` rules (the plugin output)
+- `banner` rules (the plugin output)
 - `agent-shell` rules (exported for direct composition)
 
 ## Install
@@ -37,6 +38,7 @@ import "@pantoken/plugin-custom-components/custom-components.css";
 
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `cardRules(prefix?)` — returns the card rules as CSS text.
+- `bannerRules(prefix?)` — returns the banner rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
 
 ## cssdoc

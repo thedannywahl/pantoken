@@ -3,6 +3,7 @@
  * @summary A tabbed panel set: a tab list, selectable tabs, and their panels.
  * @remarks See the `tabs.tab` and `tabs.panel` members for the individual tab buttons and their content panels.
  * @modifier -variant-secondary — Rounded "folder" tabs with a selected tab that visually connects into the panel below. @affects tabs.tab — Restyles the tab buttons into the rounded "folder" look.
+ * @modifier -overflow-scroll — Keep the tab list on one line and let it scroll horizontally instead of wrapping, hiding the scrollbar.
  * @part .list — The row of tabs.
  * @a11y Wire the tab list with role="tablist", each tab with role="tab" and aria-selected, and each panel with role="tabpanel".
  * @example

@@ -44,7 +44,7 @@ After selecting a base package, also consider `@pantoken/plugin-layouts` (app-sh
   `@pantoken/components` into an app-shell structure. Use alongside `@pantoken/components` when
   bootstrapping a full page layout.
 - `@pantoken/plugin-custom-components` — additional cssdoc-documented components beyond the core set
-  (currently `card`, `agent-shell`). Use alongside `@pantoken/components` for extra component patterns.
+  (currently `card`, `banner`, `agent-shell`). Use alongside `@pantoken/components` for extra component patterns.
 - `@pantoken/css` — all tokens emitted as `--instui-*` CSS custom-property (`var()`) declarations, with
   no class-based components. `import "@pantoken/css/inject"` (side-effect) or
   `import { css } from "@pantoken/css"`. Reach for this when you're building your own component styles
@@ -84,7 +84,7 @@ After selecting a base package, also consider `@pantoken/plugin-layouts` (app-sh
 - **Bootstrap a plain web app:** `npm i @pantoken/components` then import `base.css` +
   `components.css` (+ `utilities.css` as needed). Apply classes like `class="instui-button"` to your
   markup. Add `@pantoken/plugin-layouts` for an app-shell layout and
-  `@pantoken/plugin-custom-components` for extra components (`card`, `agent-shell`).
+  `@pantoken/plugin-custom-components` for extra components (`card`, `banner`, `agent-shell`).
 - **Style from raw tokens only (no components):** `npm i @pantoken/css` then
   `import "@pantoken/css/inject";`. Use `var(--instui-color-background-brand)` etc. in your own CSS.
 - **Icons anywhere:** `npm i @pantoken/web-components`, `import "@pantoken/web-components";`, then
