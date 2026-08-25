@@ -39,6 +39,9 @@
     "vite": "catalog:",
     "vite-plus": "catalog:"
   },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "pantoken": {
     "key": "email",
     "kind": "subpath"

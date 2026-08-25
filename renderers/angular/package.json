@@ -34,11 +34,11 @@
     "check": "vp check"
   },
   "dependencies": {
+    "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/web-components": "workspace:*"
   },
   "devDependencies": {
     "@pantoken/components": "workspace:*",
-    "@pantoken/scaffold-base": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
     "typescript": "catalog:",
@@ -52,6 +52,9 @@
     "@angular/core": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "angular",

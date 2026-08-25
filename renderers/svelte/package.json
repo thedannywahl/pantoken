@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@pantoken/i18n": "workspace:*",
+    "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/web-components": "workspace:*"
   },
   "devDependencies": {
     "@pantoken/components": "workspace:*",
-    "@pantoken/scaffold-base": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
     "typescript": "catalog:",
@@ -53,6 +53,9 @@
     "svelte": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=22.18.0"
   },
   "pantoken": {
     "key": "svelte",

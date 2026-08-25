@@ -46,6 +46,9 @@
       "optional": true
     }
   },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "pantoken": {
     "key": "tailwind",
     "kind": "subpath"
