@@ -48,31 +48,31 @@ test("rejects unknown tools with a clear error", () => {
 });
 
 test("re-exports a known scaffold platform set from @pantoken/scaffold", () => {
-  expect(SCAFFOLD_PLATFORMS).toContain("html");
+  expect(SCAFFOLD_PLATFORMS).toContain("components");
   expect(SCAFFOLD_PLATFORMS).toContain("react");
-  expect(SCAFFOLD_PLATFORMS).toContain("next");
+  expect(SCAFFOLD_PLATFORMS).toContain("vue");
   expect(SCAFFOLD_PLATFORMS).toContain("angular");
   expect(SCAFFOLD_PLATFORMS).toContain("web-components");
 });
 
-test("scaffolds a platform with projectName substituted", () => {
+test("scaffolds a platform with projectName substituted", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-scaffold-"));
   const target = join(dir, "my-app");
-  const written = scaffoldProject("react", target);
+  const written = await scaffoldProject("react", target);
   expect(written.length).toBeGreaterThan(0);
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).not.toContain("{{projectName}}");
 });
 
-test("rejects unknown platforms with a clear error", () => {
-  expect(() => scaffoldProject("invalid" as never)).toThrow(/Unknown platform/);
+test("rejects unknown platforms with a clear error", async () => {
+  await expect(scaffoldProject("invalid" as never)).rejects.toThrow(/Unknown platform/);
 });
 
-test("scaffoldAndInit writes both the scaffold and the agent assets", () => {
+test("scaffoldAndInit writes both the scaffold and the agent assets", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-scaffold-init-"));
   const target = join(dir, "my-app");
-  const written = scaffoldAndInit("html", target, "cursor");
+  const written = await scaffoldAndInit("components", target, "cursor");
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
   expect(written.length).toBeGreaterThan(1);
