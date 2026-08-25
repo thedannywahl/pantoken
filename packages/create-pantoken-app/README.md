@@ -1,6 +1,6 @@
-![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.iywahl.com/og.png)
-
 # create-pantoken-app
+
+![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.iywahl.com/og.png)
 
 pantoken resolves Instructure UI's design tokens and icons once, then turns that single model into many small packages — scaffold a starter project with pantoken already installed and wired in.
 
