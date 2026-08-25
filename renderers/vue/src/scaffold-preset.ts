@@ -12,6 +12,6 @@ import { base } from "@pantoken/scaffold-base";
  */
 export const presetVue = {
   about: { name: "vue" as const },
-  base,
+  base: base,
   blocks: [],
 } as const;

@@ -12,6 +12,6 @@ import { base } from "@pantoken/scaffold-base";
  */
 export const presetReact = {
   about: { name: "react" as const },
-  base,
+  base: base,
   blocks: [],
 } as const;
