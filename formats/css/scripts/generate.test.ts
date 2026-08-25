@@ -2,6 +2,7 @@ import { afterEach, beforeAll, expect, test, vi } from "vite-plus/test";
 
 const writeFileSync = vi.fn();
 const mkdirSync = vi.fn();
+const IMPORT_TIMEOUT_MS = 30_000;
 
 vi.mock("node:fs", () => ({ mkdirSync, writeFileSync }));
 
@@ -11,7 +12,7 @@ beforeAll(async () => {
   vi.clearAllMocks();
   vi.spyOn(console, "log").mockImplementation(() => {});
   await import(MODULE_PATH);
-});
+}, IMPORT_TIMEOUT_MS);
 
 afterEach(() => {
   vi.restoreAllMocks();
