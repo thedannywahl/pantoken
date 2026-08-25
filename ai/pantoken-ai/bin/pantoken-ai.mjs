@@ -25,44 +25,51 @@ const flag = (name) => {
   return i !== -1 ? argv[i + 1] : undefined;
 };
 
-if (argv[0] === "--help" || argv[0] === "-h") {
-  console.log(usage());
-  process.exit(0);
+async function main() {
+  if (argv[0] === "--help" || argv[0] === "-h") {
+    console.log(usage());
+    process.exit(0);
+  }
+
+  if (argv[0] === "init") {
+    const tool = flag("tool") ?? "all";
+    const dir = flag("dir") ?? ".";
+    if (tool !== "all" && !TOOL_SET.has(tool)) {
+      console.error(`Unknown tool "${tool}".`);
+      console.error(usage());
+      process.exit(1);
+    }
+    const written = installAgentAssets(tool, dir);
+    for (const path of written) console.log(`✓ wrote ${path}`);
+  } else if (argv[0] === "scaffold") {
+    const platform = argv[1];
+    const dir = flag("dir") ?? ".";
+    const tool = flag("tool") ?? "all";
+    if (!platform || !PLATFORM_SET.has(platform)) {
+      console.error(`Unknown platform "${platform ?? ""}".`);
+      console.error(usage());
+      process.exit(1);
+    }
+    if (tool !== "all" && !TOOL_SET.has(tool)) {
+      console.error(`Unknown tool "${tool}".`);
+      console.error(usage());
+      process.exit(1);
+    }
+    try {
+      const written = await scaffoldAndInit(platform, dir, tool);
+      for (const path of written) console.log(`✓ wrote ${path}`);
+      console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
+    } catch (err) {
+      console.error("Error scaffolding project:", err);
+      process.exit(1);
+    }
+  } else {
+    console.error(usage());
+    process.exit(1);
+  }
 }
 
-if (argv[0] === "init") {
-  const tool = flag("tool") ?? "all";
-  const dir = flag("dir") ?? ".";
-  if (tool !== "all" && !TOOL_SET.has(tool)) {
-    console.error(`Unknown tool "${tool}".`);
-    console.error(usage());
-    process.exit(1);
-  }
-  const written = installAgentAssets(tool, dir);
-  for (const path of written) console.log(`✓ wrote ${path}`);
-} else if (argv[0] === "scaffold") {
-  const platform = argv[1];
-  const dir = flag("dir") ?? ".";
-  const tool = flag("tool") ?? "all";
-  if (!platform || !PLATFORM_SET.has(platform)) {
-    console.error(`Unknown platform "${platform ?? ""}".`);
-    console.error(usage());
-    process.exit(1);
-  }
-  if (tool !== "all" && !TOOL_SET.has(tool)) {
-    console.error(`Unknown tool "${tool}".`);
-    console.error(usage());
-    process.exit(1);
-  }
-  try {
-    const written = await scaffoldAndInit(platform, dir, tool);
-    for (const path of written) console.log(`✓ wrote ${path}`);
-    console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
-  } catch (err) {
-    console.error("Error scaffolding project:", err);
-    process.exit(1);
-  }
-} else {
-  console.error(usage());
+main().catch((err) => {
+  console.error("Fatal error:", err);
   process.exit(1);
-}
+});
