@@ -23,8 +23,9 @@
     "access": "public"
   },
   "scripts": {
+    "generate": "node scripts/generate.ts",
     "dev": "vp pack --watch",
-    "test": "vp test",
+    "test": "vp run generate && vp test",
     "check": "vp check"
   },
   "dependencies": {

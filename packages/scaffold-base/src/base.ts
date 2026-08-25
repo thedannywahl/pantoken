@@ -7,11 +7,12 @@
  * @module
  * @alpha
  */
+import type { Base } from "bingo-stratum";
 import { createBase } from "bingo-stratum";
 import { z } from "zod";
 
 /** Shared options every pantoken scaffold platform Preset takes in. */
-export const base = createBase({
+export const base: Base<{ name: z.ZodDefault<z.ZodString> }> = createBase({
   options: {
     name: z.string().default("pantoken-app").describe("Name of the scaffolded project"),
   },
