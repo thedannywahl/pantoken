@@ -9,6 +9,7 @@ import {
 
 const argv = process.argv.slice(2);
 const ALL_TOOL_SET = new Set([...AGENT_TOOLS, "all"]);
+const HELP_FLAGS = new Set(["--help", "-h"]);
 
 const usage = () =>
   `Usage:\n` +
@@ -24,6 +25,15 @@ const flag = (name) => {
   const i = argv.indexOf(`--${name}`);
   return i !== -1 ? argv[i + 1] : undefined;
 };
+
+function printUsageAndExit(code) {
+  if (code === 0) {
+    console.log(usage());
+  } else {
+    console.error(usage());
+  }
+  process.exit(code);
+}
 
 /** Prints an "unknown X" error plus usage, and exits 1, unless `value` is in `set`. */
 function requireChoice(value, set, label) {
@@ -42,40 +52,41 @@ function runInit() {
   for (const path of written) console.log(`✓ wrote ${path}`);
 }
 
-async function runScaffold() {
+function resolvePlatform() {
   const platform = argv[1];
-  const dir = flag("dir") ?? ".";
-  const tool = flag("tool") ?? "all";
   if (!platform || !isScaffoldPlatform(platform)) {
     console.error(`Unknown platform "${platform ?? ""}".`);
-    console.error(usage());
-    process.exit(1);
+    printUsageAndExit(1);
   }
-  requireChoice(tool, ALL_TOOL_SET, "tool");
-  try {
-    const written = await scaffoldAndInit(platform, dir, tool);
-    for (const path of written) console.log(`✓ wrote ${path}`);
-    console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
-  } catch (err) {
-    console.error("Error scaffolding project:", err);
-    process.exit(1);
-  }
+  return platform;
 }
 
-async function main() {
-  if (argv[0] === "--help" || argv[0] === "-h") {
-    console.log(usage());
-    process.exit(0);
-  }
+async function writeScaffold(platform, dir, tool) {
+  const written = await scaffoldAndInit(platform, dir, tool);
+  for (const path of written) console.log(`✓ wrote ${path}`);
+  console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
+}
 
-  if (argv[0] === "init") {
-    runInit();
-  } else if (argv[0] === "scaffold") {
-    await runScaffold();
-  } else {
-    console.error(usage());
-    process.exit(1);
-  }
+async function runScaffold() {
+  const platform = resolvePlatform();
+  const dir = flag("dir") ?? ".";
+  const tool = flag("tool") ?? "all";
+  requireChoice(tool, ALL_TOOL_SET, "tool");
+  await writeScaffold(platform, dir, tool);
+}
+
+const COMMANDS = {
+  init: runInit,
+  scaffold: runScaffold,
+};
+
+async function main() {
+  const command = argv[0];
+  if (HELP_FLAGS.has(command)) printUsageAndExit(0);
+
+  const run = COMMANDS[command];
+  if (!run) printUsageAndExit(1);
+  await run();
 }
 
 main().catch((err) => {

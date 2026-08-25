@@ -54,14 +54,14 @@
 
   /* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
   &::-moz-range-thumb {
+    border-radius: 50%;
+    cursor: pointer;
     inline-size: var(--instui-component-range-input-handle-size);
     block-size: var(--instui-component-range-input-handle-size);
-    background: var(--instui-component-range-input-handle-background);
     border: var(--instui-component-range-input-handle-border-size) solid
       var(--instui-component-range-input-handle-border-color);
-    border-radius: 50%;
+    background: var(--instui-component-range-input-handle-background);
     box-shadow: 0 0 0 0 var(--instui-component-range-input-handle-shadow-color);
-    cursor: pointer;
   }
 
   &:hover::-webkit-slider-thumb {

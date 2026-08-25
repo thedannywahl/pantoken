@@ -8,28 +8,50 @@ const argv = process.argv.slice(2);
 
 const usage = () => `Usage: npm create pantoken-app -- <${SCAFFOLD_PLATFORMS.join("|")}> [--dir .]`;
 
-const flag = (name) => {
-  const i = argv.indexOf(`--${name}`);
-  return i !== -1 ? argv[i + 1] : undefined;
-};
+function parseArgs(args) {
+  let platform;
+  let dir = ".";
 
-if (argv[0] === "--help" || argv[0] === "-h") {
+  for (let i = 0; i < args.length; i += 1) {
+    const arg = args[i];
+    if (arg === "--help" || arg === "-h") return { help: true, platform: undefined, dir };
+    if (arg === "--dir") {
+      dir = args[i + 1] ?? ".";
+      i += 1;
+      continue;
+    }
+    if (arg.startsWith("-")) {
+      console.error(`Unknown option "${arg}".`);
+      console.error(usage());
+      process.exit(1);
+    }
+    if (!platform) {
+      platform = arg;
+      continue;
+    }
+    console.error(`Unexpected argument "${arg}".`);
+    console.error(usage());
+    process.exit(1);
+  }
+
+  return { help: false, platform, dir };
+}
+
+const parsed = parseArgs(argv);
+if (parsed.help) {
   console.log(usage());
   process.exit(0);
 }
-
-const platform = argv[0];
-const dir = flag("dir") ?? ".";
-if (!platform || !isScaffoldPlatform(platform)) {
-  console.error(`Unknown platform "${platform ?? ""}".`);
+if (!parsed.platform || !isScaffoldPlatform(parsed.platform)) {
+  console.error(`Unknown platform "${parsed.platform ?? ""}".`);
   console.error(usage());
   process.exit(1);
 }
 
 try {
-  const written = await scaffoldProject(platform, dir);
+  const written = await scaffoldProject(parsed.platform, parsed.dir);
   for (const path of written) console.log(`✓ wrote ${path}`);
-  console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
+  console.log(`\nNext: cd ${parsed.dir} && npm install (or pnpm/yarn/bun install)`);
 } catch (err) {
   console.error(`Error scaffolding project:`, err instanceof Error ? err.message : err);
   process.exit(1);

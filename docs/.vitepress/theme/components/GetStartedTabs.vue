@@ -24,7 +24,7 @@ const scaffoldOptions = computed(
         id: "components",
         label: "HTML",
         iconClass: "-icon-html5",
-        command: "npx create-pantoken-app components",
+        command: "npx create-pantoken-app html",
       },
       {
         id: "web-components",

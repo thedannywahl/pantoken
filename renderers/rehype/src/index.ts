@@ -111,7 +111,8 @@ export function rehypePantokenIcons(options: RehypeOptions = {}) {
         replaced = true;
       }
       if (!replaced) return;
-      if (last < text.length) out.push({ type: "text", value: text.slice(last) });
+      const tail = text.slice(last);
+      if (tail.length > 0) out.push({ type: "text", value: tail });
 
       (parent as { children: unknown[] }).children.splice(index, 1, ...out);
       return index + out.length;
