@@ -6,15 +6,15 @@
  *
  * @module
  */
-import { base } from "@pantoken/scaffold-base";
+import { base, createPreset } from "@pantoken/scaffold-base";
 
 /**
  * Preset for scaffolding component-only (HTML/CSS/JS) projects with pantoken components.
  *
  * Platform: `html`
  */
-export const presetComponents = {
-  about: { name: "components" as const },
+export const presetComponents = createPreset({
+  name: "components",
   base: base,
   blocks: [],
-} as const;
+});
