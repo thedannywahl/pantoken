@@ -3,7 +3,14 @@ import { extendBase } from "../../../vite.config.base.ts";
 export default extendBase({
   run: {
     tasks: {
-      build: { command: ["node scripts/component-styles.ts", "vp run generate", "vp pack"] },
+      build: {
+        command: [
+          "node scripts/component-styles.ts",
+          "vp run generate",
+          "vp pack",
+          "node scripts/generate-model.ts",
+        ],
+      },
       generate: { command: "node scripts/component-styles.ts && node scripts/generate.ts" },
     },
   },

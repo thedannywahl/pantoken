@@ -21,6 +21,7 @@
     ".": "./dist/index.mjs",
     "./custom-components.css": "./dist/custom-components.css",
     "./*.css": "./dist/*.css",
+    "./model.json": "./dist/model.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -37,6 +38,7 @@
     "@pantoken/plugin-kit": "workspace:*"
   },
   "devDependencies": {
+    "@pantoken/cssdoc-model": "workspace:*",
     "@pantoken/tokens": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",

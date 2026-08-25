@@ -38,4 +38,16 @@ import "@pantoken/plugin-custom-components/custom-components.css";
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `cardRules(prefix?)` — returns the card rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
+
+## cssdoc
+
+`./model.json` publishes the documented `card`/`agent-shell` records as a `CssDocEntry[]` model. Add it
+to your `cssdoc.json` `providers` so a consumer project resolves these classes/modifiers:
+
+```json
+{
+  "providers": [{ "path": "./node_modules/@pantoken/plugin-custom-components/model.json" }]
+}
+```
+
 - `./custom-components.css` — published stylesheet export.

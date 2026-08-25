@@ -20,6 +20,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./layouts.css": "./dist/layouts.css",
+    "./model.json": "./dist/model.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -36,6 +37,7 @@
     "@pantoken/plugin-kit": "workspace:*"
   },
   "devDependencies": {
+    "@pantoken/cssdoc-model": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",

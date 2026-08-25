@@ -9,6 +9,7 @@ export default extendBase({
           "vp run generate",
           "node scripts/build-entries.ts",
           "vp pack",
+          "node scripts/generate-model.ts",
         ],
       },
       generate: { command: "node scripts/component-styles.ts && node scripts/generate.ts" },

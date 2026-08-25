@@ -1,8 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { CssDocConfiguration } from "@cssdoc/core";
-import { parseCssDocs } from "@cssdoc/core";
+import { buildCssDocModel as buildModel } from "@pantoken/cssdoc-model";
 import { tokens } from "@pantoken/tokens";
 import { COMPONENTS } from "../../../formats/components/src/components/index.ts";
 import { DECLARATIONS } from "../../../formats/components/src/declarations/index.ts";
@@ -142,7 +141,7 @@ export function buildCssCustomData(): CssCustomData {
 }
 
 /** Build a published provider model in the cssdoc `CssDocEntry[]` shape. */
-export function buildCssDocModel(): ReturnType<typeof parseCssDocs> {
+export function buildCssDocModel(): ReturnType<typeof buildModel> {
   const generatedDir = join(
     import.meta.dirname,
     "..",
@@ -155,14 +154,7 @@ export function buildCssDocModel(): ReturnType<typeof parseCssDocs> {
   // Components + utilities: `@global` utilities (spacing/gap/layout/etc.) live only in `utilities.css`
   // — without them, a downstream consumer's cssdoc providers can't resolve those modifiers and every
   // component they're chained onto shows a false-positive `unknown-modifier`.
-  const source = [
-    readFileSync(join(generatedDir, "components.css"), "utf8"),
-    readFileSync(join(generatedDir, "utilities.css"), "utf8"),
-  ].join("\n");
-  const configuration = new CssDocConfiguration();
-  configuration.setModifierConvention("rscss");
-  configuration.setInlineComments("ignore");
-  return parseCssDocs(source, { configuration });
+  return buildModel([join(generatedDir, "components.css"), join(generatedDir, "utilities.css")]);
 }
 
 /** Build and write VS Code custom-data files and the cssdoc model to `distDir`. */
