@@ -252,12 +252,13 @@ export default defineConfig({
       // Bump versions AND refresh the fallow regression baseline so each release re-bases the floor
       // (the changesets action commits both into the Version PR). fallow runs as a direct bin — never
       // a nested `vp` — and `|| true` keeps its non-zero "findings present" exit from failing the
-      // version step; it still writes fallow-baseline.json. fallow writes that JSON unformatted, so
-      // `vp fmt` it afterwards — otherwise the Version PR's baseline fails the `vp check` format gate.
+      // version step; it still writes fallow-baseline.json. fallow writes that JSON unformatted, and
+      // changesets can emit changelog lines with trailing whitespace, so `vp fmt` both afterwards —
+      // otherwise the Version PR can fail the `vp check` format gate on generated files.
       // Assumes build already ran (release.yml).
       "release:version": {
         command:
-          "vpx changeset version && (node_modules/.bin/fallow dead-code --save-regression-baseline fallow-baseline.json || true) && vp fmt fallow-baseline.json",
+          'vpx changeset version && (node_modules/.bin/fallow dead-code --save-regression-baseline fallow-baseline.json || true) && vp fmt "**/CHANGELOG.md" fallow-baseline.json',
       },
       "release:publish": {
         command: "node scripts/release/publish-npm.ts",
