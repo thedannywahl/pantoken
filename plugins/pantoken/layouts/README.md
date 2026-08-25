@@ -41,8 +41,11 @@ import "@pantoken/plugin-layouts/layouts.css";
 `./model.json` publishes the documented `wrapper` layout record as a `CssDocEntry[]` model. Add it to
 your `cssdoc.json` `providers` so a consumer project resolves these classes/modifiers:
 
-```json
+```jsonc
 {
-  "providers": [{ "path": "./node_modules/@pantoken/plugin-layouts/model.json" }]
+  "providers": [{ "path": "./node_modules/@pantoken/plugin-layouts/model.json" }],
+  // Built with a different prefix than the default "instui-" (or none)? Rewrite it — `to` is used
+  // verbatim, no separator assumed:
+  //   "prefix": { "from": "instui-", "to": "acme-" }
 }
 ```

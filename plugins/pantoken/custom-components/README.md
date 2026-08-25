@@ -44,9 +44,12 @@ import "@pantoken/plugin-custom-components/custom-components.css";
 `./model.json` publishes the documented `card`/`agent-shell` records as a `CssDocEntry[]` model. Add it
 to your `cssdoc.json` `providers` so a consumer project resolves these classes/modifiers:
 
-```json
+```jsonc
 {
-  "providers": [{ "path": "./node_modules/@pantoken/plugin-custom-components/model.json" }]
+  "providers": [{ "path": "./node_modules/@pantoken/plugin-custom-components/model.json" }],
+  // Built with a different prefix than the default "instui-" (or none)? Rewrite it — `to` is used
+  // verbatim, no separator assumed:
+  //   "prefix": { "from": "instui-", "to": "acme-" }
 }
 ```
 

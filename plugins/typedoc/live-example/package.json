@@ -31,14 +31,14 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "typedoc": "catalog:",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+    "typescript": "^6.0.3",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
     "typedoc": ">=0.28"
   },
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=26.0.0"
   }
 }
