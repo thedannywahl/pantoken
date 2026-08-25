@@ -1,6 +1,8 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CssDocConfiguration } from "@cssdoc/core";
+import { parseCssDocs } from "@cssdoc/core";
 import { tokens } from "@pantoken/tokens";
 import { COMPONENTS } from "../../../formats/components/src/components/index.ts";
 import { DECLARATIONS } from "../../../formats/components/src/declarations/index.ts";
@@ -36,27 +38,6 @@ interface CssCustomData {
   atDirectives: Array<{ name: string; description?: string }>;
   pseudoClasses: Array<{ name: string; description?: string }>;
   pseudoElements: Array<{ name: string; description?: string }>;
-}
-
-interface CssDocModifier {
-  name: string;
-  prop: string;
-  value?: string;
-  description?: string;
-}
-
-interface CssDocEntry {
-  name: string;
-  className: string;
-  summary?: string;
-  modifiers: CssDocModifier[];
-  parts: Array<{ name: string; description?: string }>;
-  cssPropertiesConsumed: Array<{ name: string; description?: string }>;
-  cssPropertiesDeclared: Array<{ name: string; syntax?: string; description?: string }>;
-  examples: string[];
-  see: string[];
-  compat: string[];
-  related: Array<{ name: string; description?: string }>;
 }
 
 const DEFINITIONS: readonly Definition[] = [...COMPONENTS, ...UTILITIES, ...RULES, ...DECLARATIONS];
@@ -104,25 +85,6 @@ function classDescription(definition: Definition, className: string): string {
     return `Pantoken modifier class used with ${recordLabel}.`;
   }
   return `Pantoken class from ${recordLabel}.`;
-}
-
-function parseModifierShape(modifierName: string): CssDocModifier {
-  const body = modifierName.replace(/^-/, "");
-  const [prop, ...rest] = body.split("-");
-  const value = rest.length > 0 ? rest.join("-") : undefined;
-  return {
-    name: modifierName,
-    prop: prop || body,
-    ...(value ? { value } : {}),
-  };
-}
-
-function extractConsumedInstuiProperties(
-  css: string,
-): Array<{ name: string; description?: string }> {
-  const refs = new Set<string>();
-  for (const match of css.matchAll(/--instui-[A-Za-z0-9_-]+/gu)) refs.add(match[0]);
-  return [...refs].sort((left, right) => left.localeCompare(right)).map((name) => ({ name }));
 }
 
 function collectClassValues(definitions: readonly Definition[]): CustomDataValue[] {
@@ -180,40 +142,22 @@ export function buildCssCustomData(): CssCustomData {
 }
 
 /** Build a published provider model in the cssdoc `CssDocEntry[]` shape. */
-export function buildCssDocModel(definitions: readonly Definition[] = DEFINITIONS): CssDocEntry[] {
-  const entries: CssDocEntry[] = [];
-
-  for (const definition of definitions) {
-    const rendered = definition.rules(PREFIX_NS, { theme: "rebrand" });
-    const classNames = extractClassNames(rendered);
-    const tagged = extractTaggedClasses(rendered);
-    const merged = new Set<string>([...classNames, ...tagged]);
-
-    const baseClass =
-      [...merged].find((name) => name.startsWith(PREFIX_NS)) ??
-      `${PREFIX_NS}${definition.name.replace(/\./gu, "-")}`;
-
-    const modifiers = [...merged]
-      .filter((name) => name.startsWith("-"))
-      .sort((left, right) => left.localeCompare(right))
-      .map((name) => parseModifierShape(name));
-
-    entries.push({
-      name: definition.name,
-      className: `.${baseClass}`,
-      summary: `Pantoken ${definition.kind} ${definition.name}.`,
-      modifiers,
-      parts: [],
-      cssPropertiesConsumed: extractConsumedInstuiProperties(rendered),
-      cssPropertiesDeclared: [],
-      examples: [],
-      see: [],
-      compat: [],
-      related: [],
-    });
-  }
-
-  return entries.sort((left, right) => left.name.localeCompare(right.name));
+export function buildCssDocModel(): ReturnType<typeof parseCssDocs> {
+  const componentsSourcePath = join(
+    import.meta.dirname,
+    "..",
+    "..",
+    "..",
+    "formats",
+    "components",
+    "generated",
+    "components.css",
+  );
+  const source = readFileSync(componentsSourcePath, "utf8");
+  const configuration = new CssDocConfiguration();
+  configuration.setModifierConvention("rscss");
+  configuration.setInlineComments("ignore");
+  return parseCssDocs(source, { configuration });
 }
 
 /** Build and write VS Code custom-data files and the cssdoc model to `distDir`. */
