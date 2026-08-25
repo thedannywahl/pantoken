@@ -1,0 +1,8 @@
+import { createApp } from "vue";
+import { PantokenVue } from "@pantoken/vue";
+// Defines every --instui-* custom property this app can reference.
+import "@pantoken/css";
+import "@pantoken/plugin-layouts/layouts.css";
+import App from "./App.vue";
+
+createApp(App).use(PantokenVue).mount("#app");

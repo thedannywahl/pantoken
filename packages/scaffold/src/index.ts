@@ -71,20 +71,22 @@ export async function scaffoldProject(platform: string, dir = "."): Promise<stri
     });
 
     // Write the files created by the preset
-    if (creation.files) {
-      for (const [file, rawContent] of Object.entries(creation.files)) {
-        const path = join(dir, file);
-        mkdirSync(dirname(path), { recursive: true });
-        // Handle both string and Buffer/ArrayBuffer content types
-        const content =
-          rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : String(rawContent);
-        writeFileSync(path, content);
-        written.push(path);
-      }
+    for (const [file, rawContent] of Object.entries(creation.files ?? {})) {
+      const path = join(dir, file);
+      mkdirSync(dirname(path), { recursive: true });
+      // Handle both string and Buffer/ArrayBuffer content types
+      const content =
+        rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : (rawContent as string);
+      writeFileSync(path, content);
+      written.push(path);
     }
   } catch {
-    // Fallback to scaffold template system if Bingo rendering fails
-    // This allows incremental adoption of Bingo templates
+    // Preset threw — fall through to the legacy template system below.
+  }
+
+  // Presets with no blocks yet (or a failed render) produce no files — fall back to the legacy
+  // scaffold template system so every platform still scaffolds something.
+  if (written.length === 0) {
     const templates = SCAFFOLDS[platform as keyof typeof SCAFFOLDS];
     if (templates) {
       for (const [file, content] of Object.entries(templates)) {

@@ -1,0 +1,4 @@
+{
+  "html.customData": ["./node_modules/@pantoken/pantoken/dist/html-custom-data.json"],
+  "css.customData": ["./node_modules/@pantoken/pantoken/dist/css-custom-data.json"]
+}
