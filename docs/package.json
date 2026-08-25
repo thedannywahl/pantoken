@@ -46,7 +46,6 @@
     "@pantoken/vitepress": "workspace:*",
     "@pantoken/web-components": "workspace:*",
     "@resvg/resvg-js": "catalog:",
-    "@types/markdown-it": "catalog:",
     "@types/node": "catalog:",
     "markdown-it": "catalog:",
     "mermaid": "catalog:",

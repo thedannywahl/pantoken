@@ -34,12 +34,11 @@
   },
   "devDependencies": {
     "@pantoken/plugin-simple-icons": "workspace:*",
-    "@types/markdown-it": "catalog:",
     "@types/node": "catalog:",
     "markdown-it": "catalog:",
     "simple-icons": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {

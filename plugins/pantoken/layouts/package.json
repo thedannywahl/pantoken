@@ -40,7 +40,7 @@
     "@pantoken/cssdoc-model": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "pantoken": {

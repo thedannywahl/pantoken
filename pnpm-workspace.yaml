@@ -17,7 +17,7 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^24.13.3
+  "@types/node": ^26.3.0
   typescript: ^7.0.2
   arkregex: ^0.0.8
   vite: npm:@voidzero-dev/vite-plus-core@0.3.0
@@ -34,10 +34,9 @@ catalog:
   # Rehype / unist
   unist-util-visit: ^5.1.0
   # markdown-it integration
-  markdown-it: ^14.3.0
-  "@types/markdown-it": ^14.2.0
+  markdown-it: ^15.0.0
   # Brand icons (plugin)
-  simple-icons: ^15.22.0
+  simple-icons: ^16.28.0
   # React markdown integration
   react: ^19.2.8
   react-dom: ^19.2.8
@@ -70,9 +69,8 @@ catalog:
   # Quality gates
   "@commitlint/cli": ^21.2.2
   "@commitlint/config-conventional": ^21.2.2
-  "@changesets/cli": ^2.31.1
-  "@vitest/coverage-v8": 4.1.10
-  vitest: 4.1.10
+  "@changesets/cli": ^3.0.1
+  "@vitest/coverage-v8": 4.1.11
   markdownlint-cli2: ^0.23.2
   "@manypkg/cli": ^0.25.1
   fallow: ^3.18.0
@@ -80,24 +78,24 @@ catalog:
   snyk: ^1.1306.4
   publint: ^0.3.24
   "@arethetypeswrong/cli": ^0.18.5
-  bumpp: ^11.1.0
+  bumpp: ^12.2.1
   vitepress-plugin-mermaid: ^2.0.17
   mermaid: ^11.17.2
   shiki: ^4.4.3
   vue: ^3.5.41
   vitepress: 2.0.0-alpha.19
-  oxc-minify: ^0.142.0
+  oxc-minify: ^0.147.0
   typedoc: ^0.28.20
   typedoc-plugin-markdown: ^4.12.0
   typedoc-vitepress-theme: ^1.1.3
   vitepress-plugin-llms: ^1.13.5
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
-  "@cssdoc/core": ^0.13.8
-  "@cssdoc/config": ^0.13.8
-  "@cssdoc/typedoc": ^0.13.8
-  "@cssdoc/stylelint-plugin": ^0.13.8
-  "@cssdoc/eslint-plugin": ^0.13.8
+  "@cssdoc/core": ^0.13.9
+  "@cssdoc/config": ^0.13.9
+  "@cssdoc/typedoc": ^0.13.9
+  "@cssdoc/stylelint-plugin": ^0.13.9
+  "@cssdoc/eslint-plugin": ^0.13.9
   # Transitive deps that pantoken also uses directly (stylelint/eslint configs); the rest were mirrored
   # only for the linked cssdoc source and are now unused, kept harmless under `catalogMode: prefer`.
   ajv: ^8.20.0
@@ -108,12 +106,12 @@ catalog:
   "@typescript-eslint/parser": ^8.68.0
   eslint-plugin-tsdoc: ^0.5.2
   eslint-plugin-tsdoc-require-2: ^1.2.7
-  "@html-eslint/parser": ^0.64.0
+  "@html-eslint/parser": ^0.65.0
   postcss-value-parser: ^4.2.0
   css-tree: ^3.2.1
   "@types/css-tree": ^3.2.0
   "@resvg/resvg-js": ^2.6.2
-  esbuild: ^0.28.1
+  esbuild: ^0.28.2
   changelogen: ^0.6.2
   "@vscode/vsce": ^3.9.2
   ovsx: ^1.0.2
@@ -123,7 +121,7 @@ catalog:
   # Continuous performance testing — the vitest bench harness reported to CodSpeed.
   "@codspeed/vitest-plugin": ^5.7.1
 overrides:
-  vite: "catalog:"
+  vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
   # them. We can't drop the peer (pnpm auto-installs it), so pin the resolved version to the fix.
   next: "^16.2.11"

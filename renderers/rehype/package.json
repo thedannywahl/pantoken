@@ -38,7 +38,7 @@
     "@types/node": "catalog:",
     "simple-icons": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "pantoken": {

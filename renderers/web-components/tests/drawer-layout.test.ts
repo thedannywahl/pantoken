@@ -75,7 +75,7 @@ test("re-connecting does not double-render the layout", () => {
 
 test('placement styling uses only logical (inline-*) properties, never left/right, so it flips under dir="rtl"', () => {
   const el = drawer("open placement=end");
-  const css = (el.shadowRoot?.querySelector("style") as HTMLStyleElement).textContent ?? "";
+  const css = el.shadowRoot?.querySelector("style")?.textContent ?? "";
   expect(css).toContain("flex-direction: row-reverse");
   expect(css).toContain("inset-inline-start: 0");
   expect(css).not.toMatch(/(?<![a-z-])(left|right)\s*:/i);

@@ -45,7 +45,7 @@
     "@types/node": "catalog:",
     "happy-dom": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "pantoken": {
