@@ -7,6 +7,19 @@ Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and mo
 You install the smallest package that fits your task. Everything is also re-exported by the unified
 `pantoken` package, so you can start there and narrow down later.
 
+## Scaffold a starter project
+
+The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+
+```sh
+npx create-pantoken-app react
+```
+
+Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
+programmatic use. Using an AI coding agent? `npx @pantoken/ai init` installs agent rules and a
+`/scaffold-pantoken` skill that does the same thing from inside your editor.
+
 ## The token model
 
 Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
