@@ -54,9 +54,14 @@ if (argv[0] === "init") {
     console.error(usage());
     process.exit(1);
   }
-  const written = scaffoldAndInit(platform, dir, tool);
-  for (const path of written) console.log(`✓ wrote ${path}`);
-  console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
+  try {
+    const written = await scaffoldAndInit(platform, dir, tool);
+    for (const path of written) console.log(`✓ wrote ${path}`);
+    console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
+  } catch (err) {
+    console.error("Error scaffolding project:", err);
+    process.exit(1);
+  }
 } else {
   console.error(usage());
   process.exit(1);
