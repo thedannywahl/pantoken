@@ -100,6 +100,16 @@ test("syntaxMismatches accepts tray-fix-top-position as a length, not a CSS posi
   expect(syntaxMismatches([good])).toEqual([]);
 });
 
+test("syntaxMismatches accepts a singular per-component breakpoint as a length", () => {
+  const good: Token = {
+    name: "--instui-component-card-breakpoint-lg",
+    syntax: "*",
+    inherits: true,
+    value: "40rem",
+  };
+  expect(syntaxMismatches([good])).toEqual([]);
+});
+
 test("syntaxMismatches accepts the primitive colour palette and background-* real properties", () => {
   const clean: Token[] = [
     {

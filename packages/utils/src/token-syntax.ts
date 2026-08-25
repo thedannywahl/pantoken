@@ -121,8 +121,9 @@ export const BESPOKE_SYNTAX: SyntaxRule<Grammar> = [
   // keyword/`cubic-bezier()` — asserting `<time>` validates the actual value shape shipped.
   [/(?:transition-timing)|(?:toggle-transition$)/u, typeReference("time")],
   // Breakpoint/byline-size lengths — anchored so `byline-title-margin` (a real `margin`, handled
-  // below) isn't shadowed by a broader `byline-` match.
-  [/(?:breakpoints-)|(?:byline-(?:large|medium|small)$)/u, typeReference("length")],
+  // below) isn't shadowed by a broader `byline-` match. Matches both the plural `breakpoints-`
+  // (global) and singular `breakpoint-lg`/`-md`/etc. (per-component, e.g. `card-breakpoint-lg`).
+  [/(?:breakpoints?-)|(?:byline-(?:large|medium|small)$)/u, typeReference("length")],
   // Decomposed progress-circle geometry PIECES (e.g. `progress-circle-large-transform: 4.5em`) are
   // each a bare length used to build a `transform` elsewhere, not a valid `transform` value on
   // their own — distinct from the real button `transform`/`text-transform` tokens below, whose
