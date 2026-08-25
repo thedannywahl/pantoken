@@ -1,9 +1,9 @@
 import { mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { renderWrapperContainer, wrapperRootClassName } from "@pantoken/scaffold-base";
 import { expect, test } from "vite-plus/test";
 import { SCAFFOLD_PLATFORMS, scaffoldProject } from "../src/index.ts";
-import { renderWrapperContainer, wrapperRootClassName } from "../scripts/wrapper-layout.ts";
 
 test("wrapper layout root class is a real instui-* class", () => {
   expect(wrapperRootClassName()).toMatch(/^instui-/);
@@ -29,7 +29,7 @@ test("every platform's scaffolded output has the wrapper layout baked in, no lef
     const dir = mkdtempSync(join(tmpdir(), `pantoken-scaffold-wrapper-${platform}-`));
     const written = await scaffoldProject(platform, join(dir, "app"));
     const entryContent = written
-      .filter((path: string) => /\.(ts|tsx|html)$/.test(path))
+      .filter((path: string) => /\.(ts|tsx|html|vue|svelte)$/.test(path))
       .map((path: string) => readFileSync(path, "utf8"))
       .join("\n");
     expect(entryContent).not.toContain("{{wrapperContainer:");

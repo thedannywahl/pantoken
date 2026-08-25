@@ -4,7 +4,7 @@
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import { renderWrapperContainer, wrapperRootClassName } from "./wrapper-layout.ts";
+import { renderWrapperContainer, wrapperRootClassName } from "@pantoken/scaffold-base";
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");

@@ -99,7 +99,7 @@ function stripLeadingDocComment(css: string): string {
 }
 
 /** The wrapper layout's root class name and its `.container` node (everything the root wraps). */
-export function parseWrapperLayout(): { rootClassName: string; container: WrapperNode } {
+function parseWrapperLayout(): { rootClassName: string; container: WrapperNode } {
   const [root] = parseNodes(stripLeadingDocComment(wrapperRules()));
   if (!root) throw new Error("wrapper layout: no root rule found");
   const container = root.children.find((n) => n.className === "container");
@@ -109,7 +109,7 @@ export function parseWrapperLayout(): { rootClassName: string; container: Wrappe
 
 /** Placeholder text injected at specific parts, keyed by class name. */
 const PART_TEXT: Record<string, string> = {
-  title: "{{name}}",
+  title: "{{projectName}}",
   description:
     "Styled with <code>@pantoken/components</code> and laid out with the <code>wrapper</code> layout from <code>@pantoken/plugin-layouts</code>.",
 };
@@ -166,7 +166,8 @@ export function wrapperRootClassName(): string {
 
 /**
  * The wrapper layout markup/tokens every platform Preset feeds into its own Handlebars context —
- * `{{name}}` inside the rendered markup is left as-is, for the platform's own template to resolve.
+ * `{{projectName}}` inside the rendered markup is left as-is, for the platform's own template to
+ * resolve.
  */
 export function getWrapperContext(): {
   wrapperRootClass: string;
