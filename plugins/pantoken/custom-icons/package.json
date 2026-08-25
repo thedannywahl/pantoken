@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-custom-icons",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "pantoken plugin: vendored custom icon glyphs (e.g. product/brand icons not in the InstUI set) as --instui-icon-<name> image tokens, usable via the same -icon-<name> painter class.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",

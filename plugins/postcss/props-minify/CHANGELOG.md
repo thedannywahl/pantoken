@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## 0.1.3
+
+### Patch Changes
+
+- 8aa88bb: Migrate published `dependencies`/`peerDependencies` to `pnpm-workspace.yaml` `catalog:` references. No
+  behavior change — the resolved versions are unchanged, but the `package.json` a consumer installs now
+  points at the shared catalog entry instead of an inline semver range, so the range is no longer visible
+  at a glance without cross-referencing `pnpm-workspace.yaml`.
+- Updated dependencies [8aa88bb]
+  - @pantoken/plugin-flatten-property@0.1.2
+  - @pantoken/plugin-mangle-custom-props@0.1.2
+  - @pantoken/plugin-prune-custom-props@0.1.5
+
 ## 0.1.2
 
 ### Patch Changes

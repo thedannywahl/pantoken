@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 0.3.12
+
+### Patch Changes
+
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+  - @pantoken/css@0.3.7
+  - @pantoken/model@0.3.1
+  - @pantoken/plugin-props-minify@0.1.3
+  - @pantoken/tokens@0.3.0
+  - @pantoken/components@1.0.2
+
 ## 0.3.11
 
 ### Patch Changes

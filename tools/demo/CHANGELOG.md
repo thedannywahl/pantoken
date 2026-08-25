@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- 8aa88bb: Decouple `demoMarkdownIt` from the `markdown-it` package's `MarkdownIt` type export, using a minimal structural shape instead — vitepress bundles its own copy of `markdown-it` that can differ from the repo's catalog version.
+
 ## 0.2.0
 
 ### Minor Changes

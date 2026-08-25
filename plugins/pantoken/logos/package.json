@@ -1,6 +1,6 @@
 {
   "name": "@pantoken/plugin-logos",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "pantoken plugin: Instructure product logos (Canvas, Mastery, Parchment, and more) as SVGs, data URIs, and --instui-logo-* image tokens.",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
