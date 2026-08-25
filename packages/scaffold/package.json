@@ -35,7 +35,13 @@
     "check": "vp run scan && vp check"
   },
   "dependencies": {
+    "@pantoken/angular": "workspace:*",
+    "@pantoken/components": "workspace:*",
+    "@pantoken/react": "workspace:*",
     "@pantoken/scaffold-base": "workspace:*",
+    "@pantoken/svelte": "workspace:*",
+    "@pantoken/vue": "workspace:*",
+    "@pantoken/web-components": "workspace:*",
     "bingo-stratum": "catalog:"
   },
   "devDependencies": {
