@@ -40,18 +40,17 @@
     "snyk": "catalog:",
     "stylelint": "catalog:",
     "vite": "catalog:",
-    "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "vite-plus": "catalog:"
   },
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.21.0",
+      "version": "11.23.0",
       "onFail": "warn"
     }
   },
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=26.0.0"
   },
   "manypkg": {
     "ignoredRules": [

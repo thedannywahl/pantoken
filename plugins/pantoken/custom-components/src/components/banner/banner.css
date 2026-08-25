@@ -1,0 +1,114 @@
+/**
+ * @component banner
+ * @summary A dismissible, iconed message surface for page-level or in-context announcements.
+ * @remarks
+ *   **Size** controls padding and gap: `relaxed` (default) is roomier; `compact` tightens both.
+ *   **Color** sets the fill: bare (no modifier) is unfilled — border and icon only; `-color-violet`
+ *   and `-color-sea` add a tinted background plus a matching icon swatch. `-variant-ai` replaces the
+ *   fill with a top-to-bottom gradient instead, for AI-attributed messaging.
+ * @sealed
+ * @annotations
+ * 1. The icon swatch is a plain child slot — drop an `@pantoken/components` icon (or any glyph) inside; its background and corner radius come from the active size/color.
+ * 2. The close button isn't absolutely positioned (unlike `alert`'s) — it's a flex sibling, nudged into place with its own margin tokens.
+ * 3. `-variant-ai`'s gradient direction (top to bottom) isn't specified upstream; picked to read as a subtle top-lit sheen, matching `agent-shell`'s border gradient orientation.
+ * @modifier -size-relaxed — Roomier padding and gap (default).
+ * @modifier -size-compact — Tighter padding and gap.
+ * @modifier -color-violet — Violet-tinted background and icon swatch.
+ * @modifier -color-sea — Sea-tinted background and icon swatch.
+ * @modifier -variant-ai — AI-attributed gradient background in place of a flat fill.
+ * @structure
+ * .pfx-banner {
+ *   .icon:optional {}
+ *   .content:optional {}
+ *   @component close-button:optional {}
+ * }
+ * @part .icon — The optional icon swatch; its background and corner radius come from the active size/color.
+ * @part .content — The message content, stacked in a column.
+ * @a11y Add `role="status"` (or `role="alert"` for urgent messages) so assistive tech announces the
+ *   banner; mark a decorative icon `aria-hidden="true"` and give the close button an `aria-label`.
+ * @usage @import "@pantoken/plugin-custom-components/custom-components.css";
+ * @example -nocard
+ * ```html
+ * <div class="pfx-banner -color-violet" role="status">
+ *   <span class="icon" aria-hidden="true"></span>
+ *   <div class="content">This is a violet banner with an icon.</div>
+ *   <button class="pfx-close-button -size-xs" aria-label="Close"></button>
+ * </div>
+ * ```
+ * @related alert — A non-dismissible, status-coloured counterpart for inline messages.
+ * @related close-button — The dismiss control a banner may include.
+ */
+.pfx-banner {
+  display: flex;
+  align-items: flex-start;
+  color: var(--instui-component-banner-color);
+  border: var(--instui-component-banner-border-width) var(--instui-component-banner-border-style)
+    var(--instui-component-banner-border-color);
+  border-radius: var(--instui-component-banner-border-radius);
+  padding-block: var(--instui-component-banner-relaxed-padding-vertical);
+  padding-inline: var(--instui-component-banner-relaxed-padding-horizontal);
+  gap: var(--instui-component-banner-relaxed-content-gap-horizontal);
+}
+
+.pfx-banner.-size-compact {
+  padding-block: var(--instui-component-banner-compact-padding-vertical);
+  padding-inline: var(--instui-component-banner-compact-padding-horizontal);
+  gap: var(--instui-component-banner-compact-content-gap-horizontal);
+}
+
+/* relaxed is the default; selector exists so cssdoc can verify the modifier */
+.pfx-banner.-size-relaxed {
+  --pantoken-banner-size: relaxed;
+}
+
+.pfx-banner.-color-violet {
+  background: var(--instui-component-banner-violet-background);
+}
+
+.pfx-banner.-color-sea {
+  background: var(--instui-component-banner-sea-background);
+}
+
+.pfx-banner.-variant-ai {
+  /* @ref 3 */
+  background: linear-gradient(
+    to bottom,
+    var(--instui-component-banner-ai-background-top-gradient-color),
+    var(--instui-component-banner-ai-background-bottom-gradient-color)
+  );
+}
+
+@scope (.pfx-banner) {
+  :scope {
+    /* @ref 1 */
+    > .icon {
+      color: var(--instui-component-banner-icon-color);
+      border-radius: var(--instui-component-banner-relaxed-icon-border-radius);
+    }
+
+    &.-size-compact > .icon {
+      border-radius: var(--instui-component-banner-compact-icon-border-radius);
+    }
+
+    &.-color-violet > .icon {
+      background: var(--instui-component-banner-violet-icon-background);
+    }
+
+    &.-color-sea > .icon {
+      background: var(--instui-component-banner-sea-icon-background);
+    }
+
+    > .content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: var(--instui-component-banner-content-gap-vertical);
+    }
+
+    /* @ref 2 */
+    > .pfx-close-button {
+      margin-top: var(--instui-component-banner-close-button-margin-top);
+      margin-inline-end: var(--instui-component-banner-close-button-margin-right);
+    }
+  }
+}

@@ -4,11 +4,18 @@
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import { renderWrapperContainer, wrapperRootClassName } from "./wrapper-layout.ts";
+import { renderWrapperContainer, wrapperRootClassName } from "@pantoken/scaffold-base";
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");
-const sharedCssdocTemplate = readFileSync(join(templatesRoot, "cssdoc.json"), "utf8");
+// Read the shared cssdoc template from scaffold-base (JSONC with comments)
+const scaffoldBaseTemplates = resolve(root, "../scaffold-base/templates");
+const cssdocJsonc = readFileSync(join(scaffoldBaseTemplates, "cssdoc.jsonc"), "utf8");
+// Parse JSONC: strip line comments outside of string literals (block comments are not used in
+// this repo's templates). Matching whole strings first keeps a `//` inside a string untouched.
+const stripJsoncComments = (input: string): string =>
+  input.replace(/"(?:[^"\\]|\\.)*"|\/\/[^\n]*/g, (match) => (match.startsWith("//") ? "" : match));
+const sharedCssdocTemplate = JSON.stringify(JSON.parse(stripJsoncComments(cssdocJsonc)), null, 2);
 
 // Every template's entry markup is patterned off `@pantoken/plugin-layouts`'s `wrapper` app-shell
 // layout via these tokens, so editing that layout's cssdoc regenerates every platform's markup.

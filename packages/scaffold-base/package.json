@@ -1,0 +1,46 @@
+{
+  "name": "@pantoken/scaffold-base",
+  "version": "0.1.0",
+  "description": "Shared bingo-stratum Base for pantoken's scaffold presets: common options, the cssdoc.json block, and wrapper-layout markup context.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "packages/scaffold-base"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "generate": "node scripts/generate.ts",
+    "dev": "vp pack --watch",
+    "test": "vp run generate && vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@pantoken/plugin-layouts": "workspace:*",
+    "bingo-stratum": "catalog:",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

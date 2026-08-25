@@ -16,7 +16,7 @@ import { scaffoldProject } from "@pantoken/scaffold";
 import { ASSETS } from "../generated/assets.ts";
 
 export { ASSETS } from "../generated/assets.ts";
-export { SCAFFOLD_PLATFORMS, scaffoldProject } from "@pantoken/scaffold";
+export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, scaffoldProject } from "@pantoken/scaffold";
 export type { ScaffoldPlatform } from "@pantoken/scaffold";
 
 /**
@@ -141,10 +141,12 @@ export function installAgentAssets(tool: AgentTool | "all", dir = "."): string[]
  * scaffoldAndInit("react", "./my-app");
  * ```
  */
-export function scaffoldAndInit(
+export async function scaffoldAndInit(
   platform: string,
   dir = ".",
   tool: AgentTool | "all" = "all",
-): string[] {
-  return [...scaffoldProject(platform, dir), ...installAgentAssets(tool, dir)];
+): Promise<string[]> {
+  const scaffoldPaths = await scaffoldProject(platform, dir);
+  const assetPaths = installAgentAssets(tool, dir);
+  return [...scaffoldPaths, ...assetPaths];
 }

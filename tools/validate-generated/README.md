@@ -27,8 +27,10 @@ It prints a `✓`/`✗` line per check and exits non-zero if anything fails.
   jekyll, and hugo), run into a temp dir.
 - **Reference integrity** — no generated stylesheet drifts from the token IR. Self-contained sheets
   (`formats/css`, `renderers/pendo`) must have no dangling `var()` references
-  (`danglingReferences`); bridge sheets (`renderers/bootstrap`, `shadcn`, `docusaurus`, `vitepress`)
-  must reference only real tokens (`unknownReferences`). Both checkers come from `@pantoken/utils`.
+  (`danglingReferences`); bridge sheets (`renderers/bootstrap`, `shadcn`, `docusaurus`, `vitepress`,
+  `plugins/pantoken/custom-components`) must reference only real tokens (`unknownReferences`), aside
+  from the shared `--instui-elevation-*`/`--instui-focus-outline-*` sheets they intentionally lean on.
+  Both checkers come from `@pantoken/utils`.
 
 ## Related
 

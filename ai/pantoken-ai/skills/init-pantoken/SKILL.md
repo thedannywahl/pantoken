@@ -20,5 +20,5 @@ on the package manager detected in the repo (look for `pnpm-lock.yaml`, `yarn.lo
 
 That's all this skill does — it only writes the asset files above, it does not install any
 `@pantoken/*` package or modify application code. Once the assets are installed, use the
-`scaffold-pantoken` skill (or run `npx @pantoken/ai scaffold <platform>` directly) to scaffold a
+`scaffold-pantoken` skill (or run `npx pantoken-ai scaffold <platform>` directly) to scaffold a
 new project or wire pantoken into an existing one.

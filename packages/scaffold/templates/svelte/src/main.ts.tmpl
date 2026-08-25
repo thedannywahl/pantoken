@@ -1,0 +1,10 @@
+import { mount } from "svelte";
+import { register } from "@pantoken/svelte";
+// Defines every --instui-* custom property this app can reference.
+import "@pantoken/css";
+import "@pantoken/plugin-layouts/layouts.css";
+import App from "./App.svelte";
+
+register(); // auto-registers <instui-icon> and friends
+
+mount(App, { target: document.getElementById("app")! });

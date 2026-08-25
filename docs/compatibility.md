@@ -14,7 +14,7 @@ every package consumes, while the `@instructure/ui-*` React packages are used on
 
 | Package                                  | Feeds        | Range                                                 | Resolved              |
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
-| `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v1.5.0` | `v1.5.0@ae8f600e8ad4` |
+| `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v1.8.0` | `v1.8.0@b85c96436131` |
 | `@instructure/ui-icons`                  | icons        | `^11.7.4`                                             | `11.7.4`              |
 | `@instructure/ui-heading`                | instui-react | `^11.7.4`                                             | `11.7.4`              |
 | `@instructure/ui-text`                   | instui-react | `^11.7.4`                                             | `11.7.4`              |

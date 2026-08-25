@@ -38,6 +38,17 @@ test("buildCssDocModel includes documented component entries", () => {
   expect(model.some((entry) => entry.className === ".instui-button")).toBe(true);
 });
 
+test("buildCssDocModel includes @global utility entries (spacing, gap, layout, etc.)", () => {
+  // Downstream consumers resolve `@global` modifiers (e.g. `--p-lg`) chained onto a component through
+  // this published model as a cssdoc `providers` entry — without utilities in the model, every one of
+  // those classes reads as an unknown-modifier false positive.
+  const model = buildCssDocModel();
+  const spacing = model.find((entry) => entry.name === "spacing");
+  expect(spacing).toBeDefined();
+  expect(spacing?.global).toBe(true);
+  expect(spacing?.modifiers.some((m) => m.name === "--m*")).toBe(true);
+});
+
 test("emitCustomData writes html/css custom-data artifacts", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-custom-data-"));
   try {

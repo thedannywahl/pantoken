@@ -9407,9 +9407,9 @@
   },
   "provenance": {
     "designTokens": {
-      "commit": "ae8f600e8ad4cbadddbaad857f0b6477c4a1e1d6",
+      "commit": "b85c96436131df6a23174a54bcbd3b03a5da1b8a",
       "package": "@instructure/instructure-design-tokens",
-      "ref": "v1.5.0"
+      "ref": "v1.8.0"
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
@@ -10954,6 +10954,18 @@
         "refersTo": "--instui-primitive-color-white",
         "syntax": "*",
         "value": "var(--instui-primitive-color-white)"
+      },
+      "--instui-color-background-pastel-sea": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-sea-sea20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-sea-sea20)"
+      },
+      "--instui-color-background-pastel-violet": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-violet-violet20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-violet-violet20)"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -12976,9 +12988,8 @@
         "value": "0.125rem"
       },
       "--instui-component-badge-notification-z-index": {
-        "deprecated": true,
         "inherits": true,
-        "syntax": "*",
+        "syntax": "<integer>",
         "value": "1"
       },
       "--instui-component-badge-padding": {
@@ -13007,6 +13018,141 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
+      },
+      "--instui-component-banner-ai-background-bottom-gradient-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
+      },
+      "--instui-component-banner-ai-background-top-gradient-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
+      },
+      "--instui-component-banner-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-banner-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-banner-border-style": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "solid"
+      },
+      "--instui-component-banner-border-width": {
+        "inherits": true,
+        "refersTo": "--instui-border-width-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-width-sm)"
+      },
+      "--instui-component-banner-close-button-margin-right": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.5rem"
+      },
+      "--instui-component-banner-close-button-margin-top": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.5rem"
+      },
+      "--instui-component-banner-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-font-color-dark",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-font-color-dark)"
+      },
+      "--instui-component-banner-compact-content-gap-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-banner-compact-icon-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-banner-compact-padding-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-compact-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-content-gap-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-icon-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-icon-on-color",
+        "syntax": "*",
+        "value": "var(--instui-color-icon-on-color)"
+      },
+      "--instui-component-banner-relaxed-content-gap-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-banner-relaxed-icon-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-lg",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-banner-relaxed-padding-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xl)"
+      },
+      "--instui-component-banner-relaxed-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xl)"
+      },
+      "--instui-component-banner-sea-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-sea)"
+      },
+      "--instui-component-banner-sea-icon-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-accent-sea)"
+      },
+      "--instui-component-banner-violet-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-violet)"
+      },
+      "--instui-component-banner-violet-icon-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-accent-violet)"
       },
       "--instui-component-base-button-ai-active-background-bottom-gradient-color": {
         "inherits": true,
@@ -14400,6 +14546,100 @@
         "refersTo": "--instui-spacing-space-lg",
         "syntax": "*",
         "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-card-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-container",
+        "syntax": "*",
+        "value": "var(--instui-color-background-container)"
+      },
+      "--instui-component-card-border-radius-base-lg": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-card-border-radius-base-md": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-card-border-radius-base-sm": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-sm)"
+      },
+      "--instui-component-card-border-radius-nested-lg": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-card-border-radius-nested-md": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-card-border-radius-nested-sm": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-card-breakpoint-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "40rem"
+      },
+      "--instui-component-card-breakpoint-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "20rem"
+      },
+      "--instui-component-card-nested-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-muted",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-muted)"
+      },
+      "--instui-component-card-padding-base-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-md)"
+      },
+      "--instui-component-card-padding-base-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-sm)"
+      },
+      "--instui-component-card-padding-base-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xs)"
+      },
+      "--instui-component-card-padding-nested-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-sm)"
+      },
+      "--instui-component-card-padding-nested-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xs)"
+      },
+      "--instui-component-card-padding-nested-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xxs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xxs)"
       },
       "--instui-component-chart-alert-critical": {
         "inherits": true,
@@ -21533,6 +21773,12 @@
         "syntax": "*",
         "value": "var(--instui-color-background-interactive-action-primary-hover)"
       },
+      "--instui-component-tag-lead-element-label": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
       "--instui-component-tag-max-width": {
         "inherits": true,
         "syntax": "*",
@@ -23293,13 +23539,6 @@
         "refersTo": "--instui-font-family-base",
         "syntax": "*",
         "value": "var(--instui-font-family-base)"
-      },
-      "--instui-component-truncate-text-line-height": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-line-height-paragraph-base",
-        "syntax": "*",
-        "value": "var(--instui-line-height-paragraph-base)"
       },
       "--instui-component-view-background-alert": {
         "inherits": true,
@@ -27070,6 +27309,18 @@
         "syntax": "*",
         "value": "var(--instui-primitive-color-white)"
       },
+      "--instui-color-background-pastel-sea": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-sea-sea20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-sea-sea20)"
+      },
+      "--instui-color-background-pastel-violet": {
+        "inherits": true,
+        "refersTo": "--instui-primitive-color-violet-violet20",
+        "syntax": "*",
+        "value": "var(--instui-primitive-color-violet-violet20)"
+      },
       "--instui-color-background-success": {
         "inherits": true,
         "refersTo": "--instui-primitive-color-green-green140",
@@ -29091,9 +29342,8 @@
         "value": "0.125rem"
       },
       "--instui-component-badge-notification-z-index": {
-        "deprecated": true,
         "inherits": true,
-        "syntax": "*",
+        "syntax": "<integer>",
         "value": "1"
       },
       "--instui-component-badge-padding": {
@@ -29122,6 +29372,141 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
+      },
+      "--instui-component-banner-ai-background-bottom-gradient-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
+      },
+      "--instui-component-banner-ai-background-top-gradient-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
+      },
+      "--instui-component-banner-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-banner-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-banner-border-style": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "solid"
+      },
+      "--instui-component-banner-border-width": {
+        "inherits": true,
+        "refersTo": "--instui-border-width-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-width-sm)"
+      },
+      "--instui-component-banner-close-button-margin-right": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.5rem"
+      },
+      "--instui-component-banner-close-button-margin-top": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.5rem"
+      },
+      "--instui-component-banner-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-font-color-dark",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-font-color-dark)"
+      },
+      "--instui-component-banner-compact-content-gap-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-banner-compact-icon-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-banner-compact-padding-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-compact-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-content-gap-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-icon-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-icon-on-color",
+        "syntax": "*",
+        "value": "var(--instui-color-icon-on-color)"
+      },
+      "--instui-component-banner-relaxed-content-gap-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-banner-relaxed-icon-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-lg",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-banner-relaxed-padding-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xl)"
+      },
+      "--instui-component-banner-relaxed-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xl)"
+      },
+      "--instui-component-banner-sea-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-sea)"
+      },
+      "--instui-component-banner-sea-icon-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-accent-sea)"
+      },
+      "--instui-component-banner-violet-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-violet)"
+      },
+      "--instui-component-banner-violet-icon-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-accent-violet)"
       },
       "--instui-component-base-button-ai-active-background-bottom-gradient-color": {
         "inherits": true,
@@ -30515,6 +30900,100 @@
         "refersTo": "--instui-spacing-space-lg",
         "syntax": "*",
         "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-card-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-container",
+        "syntax": "*",
+        "value": "var(--instui-color-background-container)"
+      },
+      "--instui-component-card-border-radius-base-lg": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-card-border-radius-base-md": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-card-border-radius-base-sm": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-sm)"
+      },
+      "--instui-component-card-border-radius-nested-lg": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-card-border-radius-nested-md": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-card-border-radius-nested-sm": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-sm)"
+      },
+      "--instui-component-card-breakpoint-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "40rem"
+      },
+      "--instui-component-card-breakpoint-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "20rem"
+      },
+      "--instui-component-card-nested-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-muted",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-muted)"
+      },
+      "--instui-component-card-padding-base-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-md)"
+      },
+      "--instui-component-card-padding-base-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-sm)"
+      },
+      "--instui-component-card-padding-base-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xs)"
+      },
+      "--instui-component-card-padding-nested-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-sm)"
+      },
+      "--instui-component-card-padding-nested-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xs)"
+      },
+      "--instui-component-card-padding-nested-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xxs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xxs)"
       },
       "--instui-component-chart-alert-critical": {
         "inherits": true,
@@ -37648,6 +38127,12 @@
         "syntax": "*",
         "value": "var(--instui-color-background-interactive-action-primary-hover)"
       },
+      "--instui-component-tag-lead-element-label": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
       "--instui-component-tag-max-width": {
         "inherits": true,
         "syntax": "*",
@@ -39408,13 +39893,6 @@
         "refersTo": "--instui-font-family-base",
         "syntax": "*",
         "value": "var(--instui-font-family-base)"
-      },
-      "--instui-component-truncate-text-line-height": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-line-height-paragraph-base",
-        "syntax": "*",
-        "value": "var(--instui-line-height-paragraph-base)"
       },
       "--instui-component-view-background-alert": {
         "inherits": true,
@@ -43033,13 +43511,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-navy-navy40), var(--instui-primitive-color-navy-navy140))"
+        "value": "light-dark(var(--instui-primitive-color-navy-navy110), var(--instui-primitive-color-navy-navy140))"
       },
       "--instui-color-background-interactive-action-secondary-base": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-navy-navy30), var(--instui-primitive-color-navy-navy130))"
+        "value": "light-dark(var(--instui-primitive-color-navy-navy110), var(--instui-primitive-color-navy-navy130))"
       },
       "--instui-color-background-interactive-action-secondary-disabled": {
         "inherits": true,
@@ -43051,7 +43529,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-navy-navy20), var(--instui-primitive-color-navy-navy120))"
+        "value": "light-dark(var(--instui-primitive-color-navy-navy110), var(--instui-primitive-color-navy-navy120))"
       },
       "--instui-color-background-interactive-action-success-active": {
         "inherits": true,
@@ -43184,6 +43662,18 @@
         "syntax": "*",
         "themed": true,
         "value": "light-dark(var(--instui-primitive-color-grey-grey10), var(--instui-primitive-color-grey-grey200))"
+      },
+      "--instui-color-background-pastel-sea": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-sea-sea20), var(--instui-primitive-color-sea-sea160))"
+      },
+      "--instui-color-background-pastel-violet": {
+        "inherits": true,
+        "syntax": "*",
+        "themed": true,
+        "value": "light-dark(var(--instui-primitive-color-violet-violet20), var(--instui-primitive-color-violet-violet160))"
       },
       "--instui-color-background-success": {
         "inherits": true,
@@ -43975,13 +44465,13 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-navy-navy40), var(--instui-primitive-color-navy-navy140))"
+        "value": "light-dark(var(--instui-primitive-color-navy-navy110), var(--instui-primitive-color-navy-navy140))"
       },
       "--instui-color-stroke-interactive-action-secondary-base": {
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-navy-navy30), var(--instui-primitive-color-navy-navy130))"
+        "value": "light-dark(var(--instui-primitive-color-navy-navy110), var(--instui-primitive-color-navy-navy130))"
       },
       "--instui-color-stroke-interactive-action-secondary-disabled": {
         "inherits": true,
@@ -43993,7 +44483,7 @@
         "inherits": true,
         "syntax": "*",
         "themed": true,
-        "value": "light-dark(var(--instui-primitive-color-navy-navy20), var(--instui-primitive-color-navy-navy120))"
+        "value": "light-dark(var(--instui-primitive-color-navy-navy110), var(--instui-primitive-color-navy-navy120))"
       },
       "--instui-color-stroke-interactive-action-secondary-on-color-active": {
         "inherits": true,
@@ -45209,9 +45699,8 @@
         "value": "0.125rem"
       },
       "--instui-component-badge-notification-z-index": {
-        "deprecated": true,
         "inherits": true,
-        "syntax": "*",
+        "syntax": "<integer>",
         "value": "1"
       },
       "--instui-component-badge-padding": {
@@ -45240,6 +45729,141 @@
         "inherits": true,
         "syntax": "*",
         "value": "0.75rem"
+      },
+      "--instui-component-banner-ai-background-bottom-gradient-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient)"
+      },
+      "--instui-component-banner-ai-background-top-gradient-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-interactive-action-ai-secondary-active-top-gradient",
+        "syntax": "*",
+        "value": "var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient)"
+      },
+      "--instui-component-banner-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-strong",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-strong)"
+      },
+      "--instui-component-banner-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-banner-border-style": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "solid"
+      },
+      "--instui-component-banner-border-width": {
+        "inherits": true,
+        "refersTo": "--instui-border-width-sm",
+        "syntax": "*",
+        "value": "var(--instui-border-width-sm)"
+      },
+      "--instui-component-banner-close-button-margin-right": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.5rem"
+      },
+      "--instui-component-banner-close-button-margin-top": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.5rem"
+      },
+      "--instui-component-banner-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-institutional-brand-font-color-dark",
+        "syntax": "*",
+        "value": "var(--instui-color-institutional-brand-font-color-dark)"
+      },
+      "--instui-component-banner-compact-content-gap-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-sm)"
+      },
+      "--instui-component-banner-compact-icon-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-banner-compact-padding-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-compact-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-content-gap-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-md)"
+      },
+      "--instui-component-banner-icon-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-icon-on-color",
+        "syntax": "*",
+        "value": "var(--instui-color-icon-on-color)"
+      },
+      "--instui-component-banner-relaxed-content-gap-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-lg",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-banner-relaxed-icon-border-radius": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-lg",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-banner-relaxed-padding-horizontal": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xl)"
+      },
+      "--instui-component-banner-relaxed-padding-vertical": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xl",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xl)"
+      },
+      "--instui-component-banner-sea-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-sea)"
+      },
+      "--instui-component-banner-sea-icon-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-accent-sea",
+        "syntax": "*",
+        "value": "var(--instui-color-background-accent-sea)"
+      },
+      "--instui-component-banner-violet-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-pastel-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-pastel-violet)"
+      },
+      "--instui-component-banner-violet-icon-background": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-accent-violet",
+        "syntax": "*",
+        "value": "var(--instui-color-background-accent-violet)"
       },
       "--instui-component-base-button-ai-active-background-bottom-gradient-color": {
         "inherits": true,
@@ -46633,6 +47257,99 @@
         "refersTo": "--instui-spacing-space-lg",
         "syntax": "*",
         "value": "var(--instui-spacing-space-lg)"
+      },
+      "--instui-component-card-background-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-background-container",
+        "syntax": "*",
+        "value": "var(--instui-color-background-container)"
+      },
+      "--instui-component-card-border-radius-base-lg": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-card-border-radius-base-md": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-container-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-container-md)"
+      },
+      "--instui-component-card-border-radius-base-sm": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "0.75rem"
+      },
+      "--instui-component-card-border-radius-nested-lg": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-lg",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-lg)"
+      },
+      "--instui-component-card-border-radius-nested-md": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-card-border-radius-nested-sm": {
+        "inherits": true,
+        "refersTo": "--instui-border-radius-md",
+        "syntax": "*",
+        "value": "var(--instui-border-radius-md)"
+      },
+      "--instui-component-card-breakpoint-lg": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "40rem"
+      },
+      "--instui-component-card-breakpoint-md": {
+        "inherits": true,
+        "syntax": "*",
+        "value": "20rem"
+      },
+      "--instui-component-card-nested-border-color": {
+        "inherits": true,
+        "refersTo": "--instui-color-stroke-muted",
+        "syntax": "*",
+        "value": "var(--instui-color-stroke-muted)"
+      },
+      "--instui-component-card-padding-base-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-md",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-md)"
+      },
+      "--instui-component-card-padding-base-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-sm)"
+      },
+      "--instui-component-card-padding-base-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xs)"
+      },
+      "--instui-component-card-padding-nested-lg": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-sm",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-sm)"
+      },
+      "--instui-component-card-padding-nested-md": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xs)"
+      },
+      "--instui-component-card-padding-nested-sm": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-padding-container-xxs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-padding-container-xxs)"
       },
       "--instui-component-chart-alert-critical": {
         "inherits": true,
@@ -53802,6 +54519,12 @@
         "syntax": "*",
         "value": "var(--instui-color-background-interactive-action-primary-hover)"
       },
+      "--instui-component-tag-lead-element-label": {
+        "inherits": true,
+        "refersTo": "--instui-spacing-space-xs",
+        "syntax": "*",
+        "value": "var(--instui-spacing-space-xs)"
+      },
       "--instui-component-tag-max-width": {
         "inherits": true,
         "syntax": "*",
@@ -55565,13 +56288,6 @@
         "refersTo": "--instui-font-family-base",
         "syntax": "*",
         "value": "var(--instui-font-family-base)"
-      },
-      "--instui-component-truncate-text-line-height": {
-        "deprecated": true,
-        "inherits": true,
-        "refersTo": "--instui-line-height-paragraph-base",
-        "syntax": "*",
-        "value": "var(--instui-line-height-paragraph-base)"
       },
       "--instui-component-view-background-alert": {
         "inherits": true,

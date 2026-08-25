@@ -46,7 +46,6 @@
     "@pantoken/vitepress": "workspace:*",
     "@pantoken/web-components": "workspace:*",
     "@resvg/resvg-js": "catalog:",
-    "@types/markdown-it": "catalog:",
     "@types/node": "catalog:",
     "markdown-it": "catalog:",
     "mermaid": "catalog:",
@@ -56,7 +55,7 @@
     "typedoc": "catalog:",
     "typedoc-plugin-markdown": "catalog:",
     "typedoc-vitepress-theme": "catalog:",
-    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript": "^6.0.3",
     "vitepress": "catalog:",
     "vitepress-plugin-llms": "catalog:",
     "vue": "catalog:"

@@ -1,19 +1,4 @@
 {
   "version": 1,
-  "entries": [
-    {
-      "token": "--instui-component-truncate-text-line-height",
-      "deprecatedIn": "design-tokens@v1.5.0",
-      "removeIn": "design-tokens@v1.6.0",
-      "replacement": "--instui-line-height-paragraph-base",
-      "note": "TruncateText v2 no longer sets line-height (it inherits); the design-tokens repo dropped the component token. Forwarded to its last-known target for the deprecation window."
-    },
-    {
-      "token": "--instui-component-badge-notification-z-index",
-      "deprecatedIn": "design-tokens@v1.5.0",
-      "removeIn": "design-tokens@v1.6.0",
-      "value": "1",
-      "note": "Dropped upstream in design-tokens v1.5.0 with no replacement; frozen to its last-known value so any consumer keeps resolving it through the deprecation window."
-    }
-  ]
+  "entries": []
 }

@@ -230,7 +230,12 @@ const BRIDGES = [
   ["renderers/vitepress", "custom.css"],
   // The primitive utilities only ever reference real `--instui-primitive-*` tokens.
   ["plugins/pantoken/primitives", "primitives.css"],
+  // Consumes tokens from elsewhere (card/banner) and declares none of its own.
+  ["plugins/pantoken/custom-components", "custom-components.css"],
 ] as const;
+// Declared by the shared elevation/focus-ring sheets at final assembly, not this token IR.
+const isLocalRef = (ref: string): boolean =>
+  ref.startsWith("--instui-elevation-") || ref.startsWith("--instui-focus-outline-");
 for (const [pkg, file] of BRIDGES) {
   const stages = file.endsWith(".css")
     ? ([
@@ -239,7 +244,7 @@ for (const [pkg, file] of BRIDGES) {
       ] as const)
     : ([["generated", readGenerated(pkg, file)]] as const);
   for (const [stage, css] of stages) {
-    const unknown = unknownReferences(css, tokens);
+    const unknown = unknownReferences(css, tokens).filter((ref) => !isLocalRef(ref));
     if (unknown.length) {
       fail(`${pkg}/${file} (${stage}): references unknown tokens ${unknown.join(", ")}`);
     } else ok(`${pkg}/${file} (${stage}): all token references resolve`);

@@ -21,34 +21,40 @@ const scaffoldOptions = computed(
         command: t.value.aiCommand,
       },
       {
-        id: "html",
+        id: "components",
         label: "HTML",
         iconClass: "-icon-html5",
-        command: "npx @pantoken/scaffold html",
+        command: "npx create-pantoken-app html",
       },
       {
         id: "web-components",
         label: "Web Components",
         iconClass: "-icon-webcomponentsdotorg",
-        command: "npx @pantoken/scaffold web-components",
+        command: "npx create-pantoken-app web-components",
       },
       {
         id: "react",
         label: "React",
         iconClass: "-icon-react",
-        command: "npx @pantoken/scaffold react",
+        command: "npx create-pantoken-app react",
       },
       {
-        id: "next",
-        label: "Next",
-        iconClass: "-icon-nextdotjs",
-        command: "npx @pantoken/scaffold next",
+        id: "vue",
+        label: "Vue",
+        iconClass: "-icon-vuedotjs",
+        command: "npx create-pantoken-app vue",
+      },
+      {
+        id: "svelte",
+        label: "Svelte",
+        iconClass: "-icon-svelte",
+        command: "npx create-pantoken-app svelte",
       },
       {
         id: "angular",
         label: "Angular",
         iconClass: "-icon-angular",
-        command: "npx @pantoken/scaffold angular",
+        command: "npx create-pantoken-app angular",
       },
     ] as const,
 );
@@ -106,7 +112,8 @@ const highlightedCommand = useShikiHighlight(activeCommand, commandLang);
 <style>
 @import "@pantoken/plugin-simple-icons/icons/html5.css";
 @import "@pantoken/plugin-simple-icons/icons/react.css";
-@import "@pantoken/plugin-simple-icons/icons/nextdotjs.css";
+@import "@pantoken/plugin-simple-icons/icons/vuedotjs.css";
+@import "@pantoken/plugin-simple-icons/icons/svelte.css";
 @import "@pantoken/plugin-simple-icons/icons/angular.css";
 @import "@pantoken/plugin-simple-icons/icons/webcomponentsdotorg.css";
 @import "@pantoken/plugin-simple-icons/icons/claude.css";

@@ -1,23 +1,36 @@
 # Első lépések
 
-A pantoken átveszi az Instructure UI design tokenjeit és ikonjait, egyszer feloldja őket, és ezt az egyetlen
-modellt számos platform csomagjává formálja: egyszerű stíluslapok, SCSS és Less, React, Vue és Svelte,
+A pantoken átveszi az Instructure UI designtokenjeit és ikonjait, egyszer feloldja őket, és ezt az egyetlen
+modellt számos platformhoz készült csomagokká formálja: egyszerű stíluslapok, SCSS és Less, React, Vue és Svelte,
 Tailwind és Panda, natív Swift és Kotlin, WordPress és Drupal, Figma és még sok más.
 
-Telepítsd a feladatodhoz illő legkisebb csomagot. Mindent újraexportál az egységesített
-`pantoken` csomag is, így kezdhetsz ott is, és később szűkíthetsz.
+A feladatodhoz legjobban illeszkedő, legkisebb csomagot telepíted. Az egységesített
+`pantoken` csomag mindent újraexportál, így kezdhetsz ott is, és később leszűkítheted.
+
+## Kezdőprojekt létrehozása
+
+A leggyorsabb módja a pantoken kipróbálásának: egy olyan kezdőprojekt generálása, amelybe már telepítve és bekötve érkezik.
+
+```sh
+npx create-pantoken-app react
+```
+
+Platformok: `components` (egyszerű HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Lásd:
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) a(z) `--dir <path>` és
+programozott használathoz. AI kódoló ágenst használsz? A(z) `npx @pantoken/ai init` ágens-szabályokat és egy olyan
+`/scaffold-pantoken` skillt telepít, amely ugyanezt teszi közvetlenül a szerkesztődből.
 
 ## A tokenmodell
 
-A tokenek `--instui-<group>-<name>` elnevezésű egyéni CSS-tulajdonságok, például
+A tokenek `--instui-<group>-<name>` nevű egyéni CSS-tulajdonságok, például
 `--instui-color-background-brand` vagy `--instui-spacing-space-md`. Három téma érhető el: `rebrand`
-(az alapértelmezett, `light-dark()` értékkel, ahol a világos és sötét mód eltér), `canvas` és `canvasHighContrast`.
-Az ikonok a Lucide-ból és az Instructure egyedi glifáiból származtatott
-`<image>` tokenek (`--instui-icon-<name>`).
+(az alapértelmezett, `light-dark()` értékekkel, ahol a világos és a sötét eltér), `canvas` és `canvasHighContrast`.
+Az ikonok `<image>` tokenek (`--instui-icon-<name>`), amelyek a Lucide-ból és az Instructure egyedi
+glifáiból származnak.
 
 ## Webalkalmazás stílusozása
 
-Telepítsd a stíluslapot, és importáld egyszer. Ez definiálja az összes `--instui-*` tulajdonságot, így közvetlenül
+Telepítsd a stíluslapot, és importáld egyszer. Ez definiál minden egyes `--instui-*` tulajdonságot, így közvetlenül
 hivatkozhatsz rájuk a saját CSS-edből.
 
 ```sh
@@ -37,7 +50,7 @@ import "@pantoken/css/inject";
 
 ## Ikonok használata bárhol
 
-A webkomponens bármilyen keretrendszerben működik, portolás nélkül.
+A webkomponens bármely keretrendszerben működik, portolás nélkül.
 
 ```sh
 npm i @pantoken/web-components
@@ -54,7 +67,7 @@ import "@pantoken/web-components";
 ### CSS-tokenek
 
 Az ikonok egyéni CSS-tulajdonságok (`--instui-icon-<name>`). Töltsd be a stíluslapot egyszer, és hivatkozz bármelyik
-ikonra mint `mask-image` vagy `background-image` — nincs szükség ikononkénti importra.
+ikonra mint `mask-image` vagy `background-image` — nincs szükség ikononkénti importálásra.
 
 ```css
 .my-icon {
@@ -64,7 +77,7 @@ ikonra mint `mask-image` vagy `background-image` — nincs szükség ikononként
 
 ### JavaScript — egyetlen ikon vs. teljes készlet
 
-A `@pantoken/icons` két elnevezett exportot biztosít. Használd a `iconsByName` exportot egyetlen ikon lekéréséhez a teljes tömb
+A(z) `@pantoken/icons` két nevesített exportot biztosít. Használd a(z) `iconsByName` exportot egyetlen ikon lekéréséhez a teljes tömb
 bejárása nélkül:
 
 ```ts
@@ -74,7 +87,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Használd a `icons` exportot, amikor a teljes készletre van szükséged (pl. egy választó felület készítéséhez):
+Használd a(z) `icons` exportot, amikor a teljes készletre szükséged van (pl. egy választó építéséhez):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -83,24 +96,24 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Mindkét export a modul inicializálásakor betölti a teljes IR-t — ezen a szinten nincs ikononkénti
-tree-shaking. A karcsú, csak CSS-alapú betöltéshez használd a [CDN-választót](/guide/cdn-picker) egy kombinált URL előállításához,
-amely csak a szükséges ikonokat tartalmazza.
+Mindkét export betölti a teljes IR-t a modul inicializálásakor — ezen a szinten nincs ikononkénti
+tree-shaking. A karcsú, csak CSS-alapú betöltéshez használd a [CDN-választót](/guide/cdn-picker), hogy létrehozz egy combine URL-t
+kizárólag a szükséges ikonokhoz.
 
 ## Generálás natív platformra
 
-A CLI a tokenforrást a célrepóba írja. A futtatón kívül nincs szükség egyéb telepítésre:
+A CLI beírja a token forráskódját a célrepóba. A futtatón kívül nincs szükség más telepítésre:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Az összes célplatformhoz lásd: [a pantoken CLI](/guide/cli).
+Lásd [a pantoken CLI-t](/guide/cli) az összes célplatformhoz.
 
 ## VS Code szerkesztési tippek
 
-A `@pantoken/pantoken` mostantól VS Code custom-data fájlokat is biztosít, így a downstream projektek
-osztály- és token-kiegészítést kaphatnak HTML/CSS-ben anélkül, hogy pantoken-specifikus kiterjesztést kellene telepíteniük.
+A(z) `@pantoken/pantoken` mostantól tartalmazza a VS Code custom-data fájljait, így a felhasználó projektek osztály- és
+token-kiegészítést kaphatnak HTML/CSS-ben anélkül, hogy külön pantoken-specifikus kiterjesztést kellene telepíteniük.
 
 1. Telepítsd az egységesített csomagot:
 
@@ -108,7 +121,7 @@ osztály- és token-kiegészítést kaphatnak HTML/CSS-ben anélkül, hogy panto
 npm i @pantoken/pantoken
 ```
 
-1. Mutass rá a VS Code-ban a mellékelt custom-data JSON-ra a felhasználói munkaterületedről:
+1. Irányítsd a VS Code-ot a mellékelt custom-data JSON-ra a munkaterületedről:
 
 ```json
 {
@@ -117,14 +130,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Töltsd újra a VS Code-ot (vagy futtasd a „Developer: Reload Window” parancsot) az új adatok érvénybe léptetéséhez.
+1. Töltsd újra a VS Code-ot (vagy futtasd a "Developer: Reload Window" parancsot) az új adatok alkalmazásához.
 
-Ez engedélyezi a javaslatokat a `instui-*` osztálytokenekhez (és a `-modifier` osztálytokenekhez), valamint a
-`--instui-*` egyéni tulajdonságokhoz.
+Ez engedélyezi a javaslatokat a(z) `instui-*` osztálytokenekhez (és a(z) `-modifier` osztálytokenekhez), valamint
+a(z) `--instui-*` egyéni tulajdonságokhoz.
 
 ## Merre tovább
 
-- [A csomagtérkép](/guide/packages) — melyik csomagot érdemes választani feladatonként.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ügynökeszközök és szabályok telepítése egy fogyasztói repóban.
-- [Architektúra](/guide/architecture) — hogyan illeszkedik össze a tokenmodell, a mag és a kimenetek.
-- [API referencia](/api/) — minden exportált szimbólum, a forráskódból generálva.
+- [A csomagtérkép](/guide/packages) — melyik csomagot válaszd, feladat szerint.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ágenseszközök és szabályok telepítése a fogadó repóban.
+- [Architektúra](/guide/architecture) — hogyan illeszkedik össze a tokenmodell, a mag (core) és a kimenetek.
+- [API-referencia](/api/) — minden exportált szimbólum, a forrásból generálva.

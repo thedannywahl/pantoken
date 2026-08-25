@@ -37,6 +37,7 @@
     border-radius: 999px;
   }
 
+  /* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -51,15 +52,16 @@
     cursor: pointer;
   }
 
+  /* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
   &::-moz-range-thumb {
+    border-radius: 50%;
+    cursor: pointer;
     inline-size: var(--instui-component-range-input-handle-size);
     block-size: var(--instui-component-range-input-handle-size);
-    background: var(--instui-component-range-input-handle-background);
     border: var(--instui-component-range-input-handle-border-size) solid
       var(--instui-component-range-input-handle-border-color);
-    border-radius: 50%;
+    background: var(--instui-component-range-input-handle-background);
     box-shadow: 0 0 0 0 var(--instui-component-range-input-handle-shadow-color);
-    cursor: pointer;
   }
 
   &:hover::-webkit-slider-thumb {
@@ -85,48 +87,47 @@
     box-shadow: 0 0 0 var(--instui-component-range-input-handle-focus-outline-width)
       var(--instui-component-range-input-handle-focus-outline-color);
   }
-}
 
-/* The value bubble: an inverse pill with a caret pointing back toward the track (InstUI ContextView). */
-@scope (.pfx-range-input-value) {
-  & {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    /* Hug the number: the value line-height token is oversized (a container height), and as a flex item
+  .pfx-range-input-value {
+    & {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      /* Hug the number: the value line-height token is oversized (a container height), and as a flex item
        the bubble must not stretch to the row — so pin line-height to the text and never self-stretch. */
-    align-self: center;
-    margin-inline-start: 0.5rem;
-    background: var(--instui-color-background-inverse);
-    color: var(--instui-color-text-inverse);
-    border-radius: var(--instui-border-radius-md);
-    padding: var(--instui-component-range-input-value-medium-padding);
-    font-family: var(--instui-component-range-input-value-font-family);
-    font-size: var(--instui-component-range-input-value-medium-font-size);
-    font-weight: var(--instui-component-range-input-value-font-weight);
-    line-height: 1;
-  }
+      align-self: center;
+      margin-inline-start: 0.5rem;
+      background: var(--instui-color-background-inverse);
+      color: var(--instui-color-text-inverse);
+      border-radius: var(--instui-border-radius-md);
+      padding: var(--instui-component-range-input-value-medium-padding);
+      font-family: var(--instui-component-range-input-value-font-family);
+      font-size: var(--instui-component-range-input-value-medium-font-size);
+      font-weight: var(--instui-component-range-input-value-font-weight);
+      line-height: 1;
+    }
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: -0.375rem;
-    inset-block-start: 50%;
-    transform: translateY(-50%);
-    border-block: 0.375rem solid transparent;
-    border-inline-end: 0.375rem solid var(--instui-color-background-inverse);
-    border-inline-start: 0;
-  }
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: -0.375rem;
+      inset-block-start: 50%;
+      transform: translateY(-50%);
+      border-block: 0.375rem solid transparent;
+      border-inline-end: 0.375rem solid var(--instui-color-background-inverse);
+      border-inline-start: 0;
+    }
 
-  &.-size-sm {
-    padding: var(--instui-component-range-input-value-small-padding);
-    font-size: var(--instui-component-range-input-value-small-font-size);
-    line-height: var(--instui-component-range-input-value-small-line-height);
-  }
+    &.-size-sm {
+      padding: var(--instui-component-range-input-value-small-padding);
+      font-size: var(--instui-component-range-input-value-small-font-size);
+      line-height: var(--instui-component-range-input-value-small-line-height);
+    }
 
-  &.-size-lg {
-    padding: var(--instui-component-range-input-value-large-padding);
-    font-size: var(--instui-component-range-input-value-large-font-size);
-    line-height: var(--instui-component-range-input-value-large-line-height);
+    &.-size-lg {
+      padding: var(--instui-component-range-input-value-large-padding);
+      font-size: var(--instui-component-range-input-value-large-font-size);
+      line-height: var(--instui-component-range-input-value-large-line-height);
+    }
   }
 }

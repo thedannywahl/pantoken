@@ -25,8 +25,8 @@
  * @module
  * @experimental
  */
-import { resolve as pantokenResolve } from "@pantoken/icons";
-import type MarkdownIt from "markdown-it";
+import { buildIconResolverChain } from "@pantoken/icons";
+import type { MarkdownIt } from "markdown-it";
 import type { IconEntry, IconResolver, PantokenPlugin } from "@pantoken/model";
 
 /**
@@ -75,24 +75,6 @@ interface MdStateCore {
 const ICON_RE = /:([a-z0-9][a-z0-9-]*):/gi;
 const COLOR_RE = /(#[0-9a-f]{3,8}\b|(?:rgb|rgba|hsl|hsla|hwb|lab|lch|oklab|oklch)\([^)]*\))/gi;
 
-/** Build the icon-resolver chain: plugin resolvers, then explicit `resolve`, then the built-in set. */
-function buildChain(options: MarkdownItOptions): IconResolver {
-  const resolvers: IconResolver[] = [];
-  for (const plugin of options.plugins ?? []) {
-    const contributed = plugin.rehype?.({ resolve: pantokenResolve });
-    if (contributed?.resolve) resolvers.push(contributed.resolve);
-  }
-  if (options.resolve) resolvers.push(options.resolve);
-  resolvers.push(pantokenResolve);
-  return (code) => {
-    for (const resolver of resolvers) {
-      const hit = resolver(code);
-      if (hit) return hit;
-    }
-    return undefined;
-  };
-}
-
 /** The inline SVG for an entry: its own `svg`, or a single-path fallback, or empty. */
 function iconSvg(entry: IconEntry): string {
   if (entry.svg) return entry.svg;
@@ -130,14 +112,14 @@ function swatchHtml(color: string, className: string, escapeHtml: (s: string) =>
  * ```
  */
 export function pantokenMarkdownIt(md: MarkdownIt, options: MarkdownItOptions = {}): void {
-  const resolve = buildChain(options);
+  const resolve = buildIconResolverChain(options);
   const iconClassName = options.iconClassName ?? "pantoken-icon";
   const swatchClassName = options.swatchClassName ?? "pantoken-color-swatch";
   const doIcons = options.icons ?? true;
   const doSwatches = options.swatches ?? true;
   const { escapeHtml } = md.utils;
 
-  md.core.ruler.push("pantoken", (rawState) => {
+  md.core.ruler.push("pantoken", (rawState: unknown) => {
     const state = rawState as unknown as MdStateCore;
     const make = (type: string, content: string): MdToken => {
       const token = new state.Token(type, "", 0);

@@ -34,14 +34,13 @@
     "check": "vp check"
   },
   "devDependencies": {
-    "@shikijs/langs": "^4.3.1",
-    "@shikijs/themes": "^4.3.1",
-    "@shikijs/types": "^4.3.1",
-    "@types/markdown-it": "catalog:",
+    "@shikijs/langs": "^4.4.3",
+    "@shikijs/themes": "^4.4.3",
+    "@shikijs/types": "^4.4.3",
     "@types/node": "catalog:",
-    "dompurify": "^3.4.12",
+    "dompurify": "^3.4.14",
     "markdown-it": "catalog:",
-    "shiki": "^4.3.1",
+    "shiki": "^4.4.3",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

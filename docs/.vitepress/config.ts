@@ -148,7 +148,7 @@ const orchestrator = workspaceOrchestrator({
       dir: at("plugins/pantoken/custom-components"),
       watchPaths: [],
       build: ["node", "scripts/generate.ts"],
-      dependents: ["@pantoken/docs#docs:api:css"],
+      dependents: ["@pantoken/docs#docs:api:css", "@pantoken/docs#plugin-assets"],
     },
     {
       name: "@pantoken/plugin-layouts",
@@ -569,8 +569,8 @@ export default defineConfig({
   },
   markdown: {
     config: (md) => {
-      md.use(mermaidPlugin);
-      md.use(tokenValuePreview);
+      mermaidPlugin(md);
+      tokenValuePreview(md);
       // Everything the runner (and the isolated `.css-example` srcdoc previews) inject, all served
       // static files: the component sheets, the one multi-theme token sheet (themed by the
       // `data-pantoken-theme` attribute), the plugin sheets, and the shared `.instui-card` surface.
@@ -587,8 +587,9 @@ export default defineConfig({
         `${base}demos-assets/stacking.css`,
         `${base}demos-assets/visual-debug.css`,
         `${base}demos-assets/card.css`,
+        `${base}demos-assets/custom-components.css`,
       ];
-      md.use(demoMarkdownIt, {
+      demoMarkdownIt(md, {
         base,
         cssUrls,
         // Seam a live preview onto each `@example` HTML fence at compile time: the same markup,

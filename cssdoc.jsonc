@@ -2,6 +2,10 @@
   "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "modifierConvention": "rscss",
   "inlineComments": "ignore",
+  // Unminified, comment-intact source for @global utilities (spacing/gap/layout/etc.), authored in
+  // .ts and otherwise invisible to cssdoc — without this, any file resolving to this root config (e.g.
+  // docs/) flags global utility modifiers chained onto a component as "unknown-modifier".
+  "providers": [{ "path": "./formats/components/generated/utilities.css" }],
   "render": {
     "sectionOrder": [
       "accessibility",

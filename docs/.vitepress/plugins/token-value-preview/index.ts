@@ -18,7 +18,16 @@
  *
  * @module
  */
-import type MarkdownIt from "markdown-it";
+/** Minimal renderer-rule shape this plugin needs, independent of any specific markdown-it major
+ * version — vitepress bundles its own copy that can differ from the repo's catalog version.
+ * Uses `any` for the token/renderer args since a real rule's concrete `Token[]`/`Renderer` types
+ * differ (and aren't structurally narrower) across markdown-it majors. */
+type RendererRule = (tokens: any, index: number, options: any, env: any, self: any) => string;
+
+/** Minimal markdown-it shape this plugin needs. */
+interface MarkdownItLike {
+  renderer: { rules: Record<string, RendererRule | undefined> };
+}
 
 // --- Images -----------------------------------------------------------------
 
@@ -176,8 +185,8 @@ function escapeAttr(value: string): string {
  * Register the plugin: `md.use(tokenValuePreview)`. Wraps the default `code_inline` renderer and, when
  * the code span holds a `data:image` value or a whole-cell colour, appends a preview block after it.
  */
-export function tokenValuePreview(md: MarkdownIt): void {
-  const defaultRender =
+export function tokenValuePreview(md: MarkdownItLike): void {
+  const defaultRender: RendererRule =
     md.renderer.rules.code_inline ??
     ((tokens, index, options, _env, self) => self.renderToken(tokens, index, options));
 

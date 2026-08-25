@@ -3,12 +3,13 @@ import {
   AGENT_TOOLS,
   SCAFFOLD_PLATFORMS,
   installAgentAssets,
+  isScaffoldPlatform,
   scaffoldAndInit,
 } from "../dist/index.mjs";
 
 const argv = process.argv.slice(2);
-const TOOL_SET = new Set(AGENT_TOOLS);
-const PLATFORM_SET = new Set(SCAFFOLD_PLATFORMS);
+const ALL_TOOL_SET = new Set([...AGENT_TOOLS, "all"]);
+const HELP_FLAGS = new Set(["--help", "-h"]);
 
 const usage = () =>
   `Usage:\n` +
@@ -25,39 +26,70 @@ const flag = (name) => {
   return i !== -1 ? argv[i + 1] : undefined;
 };
 
-if (argv[0] === "--help" || argv[0] === "-h") {
-  console.log(usage());
-  process.exit(0);
+function printUsageAndExit(code) {
+  if (code === 0) {
+    console.log(usage());
+  } else {
+    console.error(usage());
+  }
+  process.exit(code);
 }
 
-if (argv[0] === "init") {
-  const tool = flag("tool") ?? "all";
-  const dir = flag("dir") ?? ".";
-  if (tool !== "all" && !TOOL_SET.has(tool)) {
-    console.error(`Unknown tool "${tool}".`);
+/** Prints an "unknown X" error plus usage, and exits 1, unless `value` is in `set`. */
+function requireChoice(value, set, label) {
+  if (!set.has(value)) {
+    console.error(`Unknown ${label} "${value ?? ""}".`);
     console.error(usage());
     process.exit(1);
   }
+}
+
+function runInit() {
+  const tool = flag("tool") ?? "all";
+  const dir = flag("dir") ?? ".";
+  requireChoice(tool, ALL_TOOL_SET, "tool");
   const written = installAgentAssets(tool, dir);
   for (const path of written) console.log(`✓ wrote ${path}`);
-} else if (argv[0] === "scaffold") {
+}
+
+function resolvePlatform() {
   const platform = argv[1];
-  const dir = flag("dir") ?? ".";
-  const tool = flag("tool") ?? "all";
-  if (!platform || !PLATFORM_SET.has(platform)) {
+  if (!platform || !isScaffoldPlatform(platform)) {
     console.error(`Unknown platform "${platform ?? ""}".`);
-    console.error(usage());
-    process.exit(1);
+    printUsageAndExit(1);
   }
-  if (tool !== "all" && !TOOL_SET.has(tool)) {
-    console.error(`Unknown tool "${tool}".`);
-    console.error(usage());
-    process.exit(1);
-  }
-  const written = scaffoldAndInit(platform, dir, tool);
+  return platform;
+}
+
+async function writeScaffold(platform, dir, tool) {
+  const written = await scaffoldAndInit(platform, dir, tool);
   for (const path of written) console.log(`✓ wrote ${path}`);
   console.log(`\nNext: cd ${dir} && npm install (or pnpm/yarn/bun install)`);
-} else {
-  console.error(usage());
-  process.exit(1);
 }
+
+async function runScaffold() {
+  const platform = resolvePlatform();
+  const dir = flag("dir") ?? ".";
+  const tool = flag("tool") ?? "all";
+  requireChoice(tool, ALL_TOOL_SET, "tool");
+  await writeScaffold(platform, dir, tool);
+}
+
+const COMMANDS = {
+  init: runInit,
+  scaffold: runScaffold,
+};
+
+async function main() {
+  const command = argv[0];
+  if (HELP_FLAGS.has(command)) printUsageAndExit(0);
+
+  const run = COMMANDS[command];
+  if (!run) printUsageAndExit(1);
+  await run();
+}
+
+main().catch((err) => {
+  console.error("Fatal error:", err);
+  process.exit(1);
+});

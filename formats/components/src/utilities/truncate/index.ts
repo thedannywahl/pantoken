@@ -85,7 +85,7 @@ ${base} {
   overflow-wrap: break-word;
   word-break: break-all;
   font-family: var(--instui-component-truncate-text-font-family);
-  line-height: var(--instui-component-truncate-text-line-height);
+  line-height: var(--instui-line-height-paragraph-base);
 }
 
 ${character} { word-break: break-all; }

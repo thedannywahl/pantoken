@@ -6,13 +6,13 @@
  *   unstyled; `container` stacks them as bordered, padded sections. Padding scales with
  *   viewport width and is the same across both variants.
  *   **Size** is fully responsive — padding and border-radius step up automatically at 320px
- *   (20rem) and 684px (42.75rem) via standard `min-width` media queries; no size class is needed.
+ *   (20rem) and 640px (40rem) via standard `min-width` media queries; no size class is needed.
  *   Pair with `@pantoken/components` for heading, button, and other inline components.
  * @sealed
  * @annotations
  * 1. `overflow: hidden` clips child content at the rounded corner and is required for @scope containment.
  * 2. `flex-shrink: 0` prevents the card collapsing when placed in a flex row without an explicit width.
- * 3. Sizing is purely responsive — `@media (min-width: 20rem)` applies md properties, `@media (min-width: 42.75rem)` applies lg; sm is the mobile-first default.
+ * 3. Sizing is purely responsive — `@media (min-width: 20rem)` applies md properties, `@media (min-width: 40rem)` applies lg; sm is the mobile-first default.
  * 4. `-variant-container` targets direct children only so deeply nested elements are not affected.
  * @modifier -variant-content — Standard content card; children are unstyled. Default when no variant is set.
  * @modifier -variant-container — Container card; direct children become bordered, padded sections.
@@ -49,10 +49,10 @@
  * ```
  */
 .pfx-card {
-  background: var(--instui-color-background-container);
-  border-radius: var(--instui-component-shared-tokens-border-radius-card-sm);
+  background: var(--instui-component-card-background-color);
+  border-radius: var(--instui-component-card-border-radius-base-sm);
   box-shadow: var(--instui-elevation-card);
-  padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+  padding: var(--instui-component-card-padding-base-sm);
   overflow: hidden;
   /* @ref 1 */
   flex-shrink: 0;
@@ -62,15 +62,15 @@
 /* @ref 3 */
 @media (min-width: 20rem) {
   .pfx-card {
-    padding: var(--instui-component-shared-tokens-spacing-padding-card-md);
-    border-radius: var(--instui-component-shared-tokens-border-radius-card-md);
+    padding: var(--instui-component-card-padding-base-md);
+    border-radius: var(--instui-component-card-border-radius-base-md);
   }
 }
 
-@media (min-width: 42.75rem) {
+@media (min-width: 40rem) {
   .pfx-card {
-    padding: var(--instui-component-shared-tokens-spacing-padding-card-lg);
-    border-radius: var(--instui-component-shared-tokens-border-radius-card-lg);
+    padding: var(--instui-component-card-padding-base-lg);
+    border-radius: var(--instui-component-card-border-radius-base-lg);
   }
 }
 
@@ -92,7 +92,7 @@
   }
 }
 
-@media (min-width: 42.75rem) {
+@media (min-width: 40rem) {
   .pfx-card.-variant-container {
     gap: var(--instui-component-shared-tokens-spacing-gap-cards-nested-containers-lg);
   }
@@ -102,23 +102,23 @@
   :scope {
     /* @ref 4 */
     &.-variant-container > * {
-      padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+      padding: var(--instui-component-card-padding-nested-sm);
       border: var(--instui-component-shared-tokens-stroke-width-sm) solid
-        var(--instui-component-shared-tokens-stroke-muted-color);
-      border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-sm);
+        var(--instui-component-card-nested-border-color);
+      border-radius: var(--instui-component-card-border-radius-nested-sm);
     }
 
     @media (min-width: 20rem) {
       &.-variant-container > * {
-        padding: var(--instui-component-shared-tokens-spacing-padding-card-md);
-        border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-md);
+        padding: var(--instui-component-card-padding-nested-md);
+        border-radius: var(--instui-component-card-border-radius-nested-md);
       }
     }
 
-    @media (min-width: 42.75rem) {
+    @media (min-width: 40rem) {
       &.-variant-container > * {
-        padding: var(--instui-component-shared-tokens-spacing-padding-card-lg);
-        border-radius: var(--instui-component-shared-tokens-border-radius-card-nested-container-lg);
+        padding: var(--instui-component-card-padding-nested-lg);
+        border-radius: var(--instui-component-card-border-radius-nested-lg);
       }
     }
   }

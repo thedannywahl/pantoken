@@ -23,6 +23,7 @@
     "./i18n.json": "./src/i18n.json",
     "./components.css": "./dist/components.css",
     "./*.css": "./dist/*.css",
+    "./scaffold-preset": "./dist/scaffold-preset.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -39,10 +40,12 @@
     "@pantoken/components": "workspace:*",
     "@pantoken/icons": "workspace:*",
     "@pantoken/interactions": "workspace:*",
-    "@pantoken/model": "workspace:*"
+    "@pantoken/model": "workspace:*",
+    "@pantoken/scaffold-base": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "bingo-stratum": "catalog:",
     "happy-dom": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

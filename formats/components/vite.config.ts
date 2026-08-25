@@ -45,6 +45,7 @@ export default extendBase({
   pack: {
     entry: {
       index: "src/index.ts",
+      "scaffold-preset": "src/scaffold-preset.ts",
       base: "generated/base.css",
       components: "generated/components.css",
       "component-icons": "generated/component-icons.css",

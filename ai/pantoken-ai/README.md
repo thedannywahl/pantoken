@@ -7,6 +7,11 @@ Code skills (`init-pantoken`, `scaffold-pantoken`) — plus an installer CLI wit
 project via [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) and install
 the agent assets into the same directory).
 
+The scaffold system is **preset-based**: each platform package (`@pantoken/components`, `@pantoken/react`,
+`@pantoken/vue`, `@pantoken/web-components`) exports a Bingo preset that defines its own scaffold
+templates and options. This enables decentralized template ownership — each platform team can update
+their starter without coordination.
+
 ## Install
 
 ```sh
@@ -36,10 +41,9 @@ Or scaffold a new starter project with pantoken already installed and wired in, 
 assets from `init`:
 
 ```sh
-npx pantoken-ai scaffold html            # plain HTML/CSS (Vite + TS) + @pantoken/components
+npx pantoken-ai scaffold components      # plain HTML/CSS (Vite + TS) + @pantoken/components
 npx pantoken-ai scaffold react           # Vite + React + @pantoken/react
-npx pantoken-ai scaffold next            # Next.js (App Router) + @pantoken/next
-npx pantoken-ai scaffold angular         # Vite + Angular (standalone) + @pantoken/angular
+npx pantoken-ai scaffold vue             # Vite + Vue 3 + @pantoken/vue
 npx pantoken-ai scaffold web-components  # Vite + @pantoken/web-components (no framework)
 ```
 

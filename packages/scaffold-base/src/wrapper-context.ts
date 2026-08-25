@@ -1,7 +1,11 @@
 /**
  * Derives each scaffold platform's entry markup from `@pantoken/plugin-layouts`'s `wrapper` layout,
- * so every template stays structurally in sync with that layout automatically. Run by
- * `scripts/generate.ts` before templates are inlined — never shipped in the published package.
+ * so every preset's template stays structurally in sync with that layout automatically. Called at
+ * scaffold-produce-time (not build-time) — every platform preset feeds these values into its own
+ * Handlebars context instead of hand-authoring the wrapper markup.
+ *
+ * @module
+ * @alpha
  */
 import { wrapperRules } from "@pantoken/plugin-layouts";
 
@@ -95,7 +99,7 @@ function stripLeadingDocComment(css: string): string {
 }
 
 /** The wrapper layout's root class name and its `.container` node (everything the root wraps). */
-export function parseWrapperLayout(): { rootClassName: string; container: WrapperNode } {
+function parseWrapperLayout(): { rootClassName: string; container: WrapperNode } {
   const [root] = parseNodes(stripLeadingDocComment(wrapperRules()));
   if (!root) throw new Error("wrapper layout: no root rule found");
   const container = root.children.find((n) => n.className === "container");
@@ -158,4 +162,21 @@ export function renderWrapperContainer(format: "html" | "jsx", depth = 0): strin
 /** The wrapper layout's root class name (applied to the real document `<body>` or component root). */
 export function wrapperRootClassName(): string {
   return parseWrapperLayout().rootClassName;
+}
+
+/**
+ * The wrapper layout markup/tokens every platform Preset feeds into its own Handlebars context —
+ * `{{projectName}}` inside the rendered markup is left as-is, for the platform's own template to
+ * resolve.
+ */
+export function getWrapperContext(): {
+  wrapperRootClass: string;
+  wrapperContainerHtml: (depth?: number) => string;
+  wrapperContainerJsx: (depth?: number) => string;
+} {
+  return {
+    wrapperRootClass: wrapperRootClassName(),
+    wrapperContainerHtml: (depth = 0) => renderWrapperContainer("html", depth),
+    wrapperContainerJsx: (depth = 0) => renderWrapperContainer("jsx", depth),
+  };
 }

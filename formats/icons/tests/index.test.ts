@@ -1,5 +1,5 @@
 import { expect, test } from "vite-plus/test";
-import { getIcon, icons, resolve } from "../src/index.ts";
+import { buildIconResolverChain, getIcon, icons, resolve } from "../src/index.ts";
 import { sanitizeSvg } from "@pantoken/utils";
 
 test("exposes the full icon set derived from the IR", () => {
@@ -40,4 +40,38 @@ test("icon svgs from the IR contain no script elements", () => {
 test("resolve() returns an IconEntry for known codes and undefined otherwise", () => {
   expect(resolve("arrow-left")?.svg?.startsWith("<svg")).toBe(true);
   expect(resolve("not-a-real-icon")).toBeUndefined();
+});
+
+test("buildIconResolverChain prefers plugin resolvers, then explicit resolver", () => {
+  const pluginHit = { name: "plugin", svg: "<svg/>", source: "custom" as const };
+  const explicitHit = { name: "explicit", svg: "<svg/>", source: "custom" as const };
+
+  const chain = buildIconResolverChain({
+    plugins: [
+      {
+        name: "plugin-resolver",
+        rehype: () => ({
+          resolve(code) {
+            return code === "brand-icon" ? pluginHit : undefined;
+          },
+        }),
+      },
+      {
+        name: "noop-plugin",
+        rehype: () => undefined,
+      },
+    ],
+    resolve(code) {
+      return code === "fallback-icon" ? explicitHit : undefined;
+    },
+  });
+
+  expect(chain("brand-icon")?.name).toBe("plugin");
+  expect(chain("fallback-icon")?.name).toBe("explicit");
+});
+
+test("buildIconResolverChain falls through to built-in resolver", () => {
+  const chain = buildIconResolverChain({});
+  expect(chain("arrow-left")?.svg?.startsWith("<svg")).toBe(true);
+  expect(chain("not-a-real-icon")).toBeUndefined();
 });

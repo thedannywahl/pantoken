@@ -1,5 +1,4 @@
 import { expect, test } from "vite-plus/test";
-import type MarkdownIt from "markdown-it";
 import {
   demoMarkdownIt,
   FULLSCREEN_BUTTON_HTML,
@@ -86,7 +85,7 @@ test("demoMarkdownIt rewrites a demo fence and leaves other fences alone", () =>
       },
     },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, { base: "/pantoken/" });
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], { base: "/pantoken/" });
 
   const render = md.renderer.rules.fence;
   const demoOut = render([{ info: "demo", content: "self:button" }], 0, {}, {}, {});
@@ -112,7 +111,7 @@ test("liveExample seams a preview onto html fences on matching pages, skipping o
       },
     },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     base: "/pantoken/",
     liveExample: {
       match: (relativePath) => /(^|\/)api\/css\//.test(relativePath),
@@ -176,7 +175,7 @@ test("live_example_flags core rule strips -flags from heading and migrates them 
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: {
       match: () => true,
       wrap: (html, flags) => `<div class="${[...flags].join(" ")}">${html}</div>`,
@@ -210,7 +209,7 @@ test("live_example_flags keeps heading text singular when markdown-it splits tex
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -243,7 +242,7 @@ test("live_example_flags strips a heading that is entirely flags", () => {
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -271,7 +270,7 @@ test("live_example_flags migrates standalone flag paragraph before html fence", 
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -306,7 +305,7 @@ test("live_example_flags promotes caption paragraph to h3 and strips trailing fl
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -361,7 +360,7 @@ test("live_example_flags migrates inline-only marker token and hides it when emp
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -392,7 +391,7 @@ test("-noshow on heading caption hides title tokens and marks fence", () => {
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -425,7 +424,7 @@ test("-noshow on paragraph caption hides title paragraph and marks fence", () =>
     },
     renderer: { rules: { fence: () => "" } },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: { match: () => true, wrap: (html, flags) => `${[...flags].join(" ")}${html}` },
   });
   const [, rule] = coreRules[0];
@@ -464,7 +463,7 @@ test("renderer omits html fences tagged with -noshow", () => {
       },
     },
   };
-  demoMarkdownIt(md as unknown as MarkdownIt, {
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
     liveExample: {
       match: () => true,
       wrap: (html) => `<div class="css-example">${html}</div>`,

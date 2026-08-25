@@ -9,7 +9,7 @@
 - [Unified package](https://www.npmjs.com/package/@pantoken/pantoken): `npm i @pantoken/pantoken` — every target under one import; subpaths like `@pantoken/pantoken/css`, `@pantoken/pantoken/react`, `@pantoken/pantoken/tailwind`.
 - Ready-made styled components (plain HTML/CSS): `@pantoken/components` — `components.css`, `base.css`,
 	`utilities.css`, `prose.css`. Pair with `@pantoken/plugin-layouts` (app-shell layout) and
-	`@pantoken/plugin-custom-components` (extra components like `card`, `agent-shell`).
+	`@pantoken/plugin-custom-components` (extra components like `card`, `banner`, `agent-shell`).
 - Web CSS from raw tokens (no components): `@pantoken/css` — `import "@pantoken/css/inject"` defines all `--instui-*` properties.
 - Tokens as data: `@pantoken/tokens` — `import { tokens, byTheme } from "@pantoken/tokens"`.
 - Icons: `@pantoken/icons` for raw decoded SVG markup/data (`getIcon("arrow-left")`), or

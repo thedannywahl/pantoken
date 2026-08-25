@@ -206,7 +206,7 @@ This regenerates `dist/component-capabilities.json` and updates the type declara
 Tests run in `happy-dom` (lightweight DOM environment) via Vitest:
 
 ```typescript
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach } from "vite-plus/test";
 import { initMyBehavior } from "./my-behavior.js";
 
 describe("initMyBehavior", () => {

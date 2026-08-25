@@ -20,6 +20,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./components.css": "./dist/components.css",
+    "./scaffold-preset": "./dist/scaffold-preset.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -34,11 +35,13 @@
   },
   "dependencies": {
     "@pantoken/i18n": "workspace:*",
+    "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/web-components": "workspace:*"
   },
   "devDependencies": {
     "@pantoken/components": "workspace:*",
     "@types/node": "catalog:",
+    "bingo-stratum": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:"

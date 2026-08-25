@@ -16,8 +16,8 @@
  */
 import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
-import { cardRules } from "./components/index.ts";
-export { cardRules } from "./components/index.ts";
+import { cardRules, bannerRules } from "./components/index.ts";
+export { cardRules, bannerRules } from "./components/index.ts";
 
 /** Options for the {@link customComponents} plugin. */
 export interface CustomComponentsOptions {
@@ -33,7 +33,7 @@ export interface CustomComponentsOptions {
  */
 export function customComponents(options: CustomComponentsOptions = {}): PantokenPlugin {
   const position = options.position ?? "append";
-  const rules = cardRules();
+  const rules = [cardRules(), bannerRules()].join("\n");
 
   return definePlugin({
     name: "@pantoken/plugin-custom-components",

@@ -5,6 +5,7 @@ Custom, cssdoc-documented component rules for downstream consumers.
 This package currently ships:
 
 - `card` rules (the plugin output)
+- `banner` rules (the plugin output)
 - `agent-shell` rules (exported for direct composition)
 
 ## Install
@@ -37,5 +38,21 @@ import "@pantoken/plugin-custom-components/custom-components.css";
 
 - `customComponents(options?)` — returns a CSS plugin with `position: "append" | "prepend"`.
 - `cardRules(prefix?)` — returns the card rules as CSS text.
+- `bannerRules(prefix?)` — returns the banner rules as CSS text.
 - `agentShellRules(prefix?)` — returns the agent-shell rules as CSS text.
+
+## cssdoc
+
+`./model.json` publishes the documented `card`/`agent-shell` records as a `CssDocEntry[]` model. Add it
+to your `cssdoc.json` `providers` so a consumer project resolves these classes/modifiers:
+
+```jsonc
+{
+  "providers": [{ "path": "./node_modules/@pantoken/plugin-custom-components/model.json" }],
+  // Built with a different prefix than the default "instui-" (or none)? Rewrite it — `to` is used
+  // verbatim, no separator assumed:
+  //   "prefix": { "from": "instui-", "to": "acme-" }
+}
+```
+
 - `./custom-components.css` — published stylesheet export.

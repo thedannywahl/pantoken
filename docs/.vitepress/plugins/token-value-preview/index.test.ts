@@ -4,7 +4,7 @@ import { tokenValuePreview } from "./index.js";
 
 function renderInlineCode(content: string): string {
   const md = new MarkdownIt();
-  md.use(tokenValuePreview);
+  tokenValuePreview(md);
   return md.renderInline(`\`${content}\``);
 }
 

@@ -7,6 +7,7 @@
  * @modifier -label-placement-start — Place the label before the control.
  * @modifier -label-placement-top — Place the label above the control.
  * @modifier -readonly — Read-only state.
+ * @modifier -required — Show the required-field asterisk next to the label.
  * @modifier -variant-toggle — Render as a switch instead of a box.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.

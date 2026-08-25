@@ -14,17 +14,18 @@ in the current project. Work through these steps.
   already done for you by the template):
 
   ```sh
-  npx @pantoken/ai scaffold <html|react|next|angular|web-components> [--dir .]
+  npx pantoken-ai scaffold <components|react|vue|svelte|web-components|angular> [--dir .]
   ```
 
   This writes a minimal starter (`package.json`, entry file(s), README) for the chosen platform
   with pantoken already installed and wired in, and also installs pantoken's agent assets
-  (AGENTS.md, editor/agent rules, skills) into the same directory. If you only want the starter
-  project without the agent assets, run `npx @pantoken/scaffold <platform> [--dir .]` directly
-  instead. Run `npm install` (or the detected package manager's install) in the target directory
-  afterward, substituting `pnpm`/`yarn`/`bun` for `npm` as detected. More platforms land over time;
-  if the desired platform is not yet supported by the scaffold CLI, skip the CLI entirely and
-  proceed directly to step 2 to manually install and wire pantoken.
+  (AGENTS.md, editor/agent rules, skills) into the same directory. `components` is plain HTML/CSS
+  (also accepts the alias `html`). If you only want the starter project without the agent assets,
+  run `npx create-pantoken-app <platform> [--dir .]` (or `npx @pantoken/scaffold <platform>
+[--dir .]`) directly instead. Run `npm install` (or the detected package manager's install) in
+  the target directory afterward, substituting `pnpm`/`yarn`/`bun` for `npm` as detected. More
+  platforms land over time; if the desired platform is not yet supported by the scaffold CLI, skip
+  the CLI entirely and proceed directly to step 2 to manually install and wire pantoken.
 
 - **Existing repo you want to add pantoken to** — continue to step 2.
 

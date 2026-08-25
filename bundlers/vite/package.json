@@ -35,11 +35,11 @@
   "devDependencies": {
     "@types/node": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.3.0",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {
-    "vite": ">=5"
+    "vite": ">=8"
   },
   "engines": {
     "node": ">=22.18.0"
