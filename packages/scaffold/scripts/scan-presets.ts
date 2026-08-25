@@ -14,12 +14,11 @@ const ledgerFile = join(generatedDir, "preset-ledger.ts");
 // Workspace packages that may export presets (in discovery order)
 const PRESET_SCAN_PATHS = [
   "../../formats/components", // CSS-only component library
-  "../../formats/react", // React component wrapper
-  "../../formats/next", // Next.js preset
-  "../../formats/angular", // Angular preset
-  "../../formats/web-components", // Web components preset
-  "../../formats/vue", // Vue preset
-  "../../formats/svelte", // Svelte preset
+  "../../renderers/react", // React component wrapper
+  "../../renderers/vue", // Vue plugin
+  "../../renderers/web-components", // Web Components custom elements
+  "../../renderers/angular", // Angular component wrapper (if present)
+  "../../renderers/svelte", // Svelte component wrapper (if present)
 ];
 
 interface PresetRef {
@@ -44,12 +43,14 @@ for (const relPath of PRESET_SCAN_PATHS) {
       // We'll import it as: import * from "@pantoken/components/scaffold-preset"
       const scanPath = relPath.split("/").pop();
       const packageName = pkg.name;
+      // Convert hyphenated names to camelCase for variable names
+      const exportName = `preset${scanPath ? scanPath[0]!.toUpperCase() + scanPath.slice(1).replace(/-(.)/g, (_: string, c: string) => c.toUpperCase()) : "Unknown"}`;
 
       presets.push({
         packageName,
         platform: scanPath || "unknown",
         importPath: `${packageName}/scaffold-preset`,
-        exportName: `preset${scanPath ? scanPath[0]!.toUpperCase() + scanPath.slice(1) : "Unknown"}`,
+        exportName,
       });
     }
   } catch {
