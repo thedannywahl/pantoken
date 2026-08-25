@@ -37,6 +37,7 @@
     border-radius: 999px;
   }
 
+  /* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -51,6 +52,7 @@
     cursor: pointer;
   }
 
+  /* fallow-ignore-next-line css-duplicate-block -- vendor pseudo-elements must be in separate rules */
   &::-moz-range-thumb {
     inline-size: var(--instui-component-range-input-handle-size);
     block-size: var(--instui-component-range-input-handle-size);

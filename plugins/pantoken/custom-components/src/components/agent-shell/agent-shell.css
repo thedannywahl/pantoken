@@ -9,7 +9,7 @@
  * @see https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738
  * @example -nocard
  * ```html
- * <div class="pfx-agent-shell instui-p-md">
+ * <div class="pfx-agent-shell --p-md">
  *   <h2 class="pfx-heading -variant-title-card-large">AI Agent</h2>
  *   <p>Content here.</p>
  *   <button class="pfx-button">Action</button>

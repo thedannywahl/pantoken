@@ -32,7 +32,7 @@
  * <div class="pfx-banner -color-violet" role="status">
  *   <span class="icon" aria-hidden="true"></span>
  *   <div class="content">This is a violet banner with an icon.</div>
- *   <button class="pfx-close-button" aria-label="Close"></button>
+ *   <button class="pfx-close-button -size-xs" aria-label="Close"></button>
  * </div>
  * ```
  * @related alert — A non-dismissible, status-coloured counterpart for inline messages.
