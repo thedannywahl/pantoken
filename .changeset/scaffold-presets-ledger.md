@@ -1,12 +1,17 @@
 ---
 "@pantoken/scaffold": minor
+"@pantoken/scaffold-base": patch
 "@pantoken/components": patch
+"@pantoken/react": patch
+"@pantoken/vue": patch
+"@pantoken/web-components": patch
 ---
 
-Add preset ledger generation to scaffold build pipeline.
+Add scaffold presets for all major platforms.
 
-- Introduce `scan-presets.ts` script that discovers all packages exporting `./scaffold-preset`
-- Generate static `preset-ledger.ts` registry at pre-build time
-- Add `@pantoken/components` scaffold-preset export for HTML/CSS projects
-- Wire preset scanning into scaffold build/test/check tasks
-- Enable Bingo CLI integration with decentralized preset ownership
+- Create preset exports in components, react, vue, and web-components
+- Update scaffold/generate.ts to read cssdoc template from scaffold-base with JSONC parsing
+- Add JSONC comment stripping in generate script for proper JSON output
+- Restore comments to scaffold-base cssdoc.jsonc template
+- Preset ledger scanner now discovers 4 platforms at build time
+- Each package can independently export its preset via `./scaffold-preset` entry point
