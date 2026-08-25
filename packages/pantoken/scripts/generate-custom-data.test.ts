@@ -2,7 +2,12 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
-import { buildCssCustomData, buildHtmlCustomData, emitCustomData } from "./generate-custom-data.ts";
+import {
+  buildCssCustomData,
+  buildCssDocModel,
+  buildHtmlCustomData,
+  emitCustomData,
+} from "./generate-custom-data.ts";
 
 test("buildHtmlCustomData includes InstUI class and modifier tokens", { timeout: 15_000 }, () => {
   const htmlData = buildHtmlCustomData();
@@ -26,12 +31,21 @@ test("buildCssCustomData includes pantoken token custom properties", () => {
   expect(cssData.properties.every((property) => property.name.startsWith("--instui-"))).toBe(true);
 });
 
+test("buildCssDocModel includes documented component entries", () => {
+  const model = buildCssDocModel();
+  expect(model.length).toBeGreaterThan(30);
+  expect(model.some((entry) => entry.name === "button")).toBe(true);
+  expect(model.some((entry) => entry.className === ".instui-button")).toBe(true);
+});
+
 test("emitCustomData writes html/css custom-data artifacts", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-custom-data-"));
   try {
-    const { htmlPath, cssPath, classCount, propertyCount } = emitCustomData(dir);
+    const { htmlPath, cssPath, modelPath, classCount, propertyCount, entryCount } =
+      emitCustomData(dir);
     expect(classCount).toBeGreaterThan(150);
     expect(propertyCount).toBeGreaterThan(1000);
+    expect(entryCount).toBeGreaterThan(30);
 
     const htmlData = JSON.parse(readFileSync(htmlPath, "utf8")) as {
       version: number;
@@ -41,6 +55,10 @@ test("emitCustomData writes html/css custom-data artifacts", () => {
       version: number;
       properties?: Array<{ name: string }>;
     };
+    const model = JSON.parse(readFileSync(modelPath, "utf8")) as Array<{
+      name?: string;
+      className?: string;
+    }>;
 
     expect(htmlData.version).toBe(1.1);
     expect(htmlData.globalAttributes?.some((attribute) => attribute.name === "class")).toBe(true);
@@ -48,6 +66,8 @@ test("emitCustomData writes html/css custom-data artifacts", () => {
     expect(
       cssData.properties?.some((property) => property.name === "--instui-color-background-brand"),
     ).toBe(true);
+    expect(model.some((entry) => entry.name === "button")).toBe(true);
+    expect(model.some((entry) => entry.className === ".instui-button")).toBe(true);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

@@ -31,4 +31,5 @@ test("package exports include VS Code custom data subpaths", () => {
   };
   expect(manifest.exports?.["./html-custom-data.json"]).toBe("./dist/html-custom-data.json");
   expect(manifest.exports?.["./css-custom-data.json"]).toBe("./dist/css-custom-data.json");
+  expect(manifest.exports?.["./model.json"]).toBe("./dist/model.json");
 });

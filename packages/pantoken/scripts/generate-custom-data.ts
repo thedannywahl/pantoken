@@ -38,6 +38,27 @@ interface CssCustomData {
   pseudoElements: Array<{ name: string; description?: string }>;
 }
 
+interface CssDocModifier {
+  name: string;
+  prop: string;
+  value?: string;
+  description?: string;
+}
+
+interface CssDocEntry {
+  name: string;
+  className: string;
+  summary?: string;
+  modifiers: CssDocModifier[];
+  parts: Array<{ name: string; description?: string }>;
+  cssPropertiesConsumed: Array<{ name: string; description?: string }>;
+  cssPropertiesDeclared: Array<{ name: string; syntax?: string; description?: string }>;
+  examples: string[];
+  see: string[];
+  compat: string[];
+  related: Array<{ name: string; description?: string }>;
+}
+
 const DEFINITIONS: readonly Definition[] = [...COMPONENTS, ...UTILITIES, ...RULES, ...DECLARATIONS];
 
 function normalizeClassName(token: string): string | undefined {
@@ -83,6 +104,25 @@ function classDescription(definition: Definition, className: string): string {
     return `Pantoken modifier class used with ${recordLabel}.`;
   }
   return `Pantoken class from ${recordLabel}.`;
+}
+
+function parseModifierShape(modifierName: string): CssDocModifier {
+  const body = modifierName.replace(/^-/, "");
+  const [prop, ...rest] = body.split("-");
+  const value = rest.length > 0 ? rest.join("-") : undefined;
+  return {
+    name: modifierName,
+    prop: prop || body,
+    ...(value ? { value } : {}),
+  };
+}
+
+function extractConsumedInstuiProperties(
+  css: string,
+): Array<{ name: string; description?: string }> {
+  const refs = new Set<string>();
+  for (const match of css.matchAll(/--instui-[A-Za-z0-9_-]+/gu)) refs.add(match[0]);
+  return [...refs].sort((left, right) => left.localeCompare(right)).map((name) => ({ name }));
 }
 
 function collectClassValues(definitions: readonly Definition[]): CustomDataValue[] {
@@ -139,40 +179,84 @@ export function buildCssCustomData(): CssCustomData {
   };
 }
 
-/** Build and write both VS Code custom-data JSON files to `distDir`, returning their paths and counts. */
+/** Build a published provider model in the cssdoc `CssDocEntry[]` shape. */
+export function buildCssDocModel(definitions: readonly Definition[] = DEFINITIONS): CssDocEntry[] {
+  const entries: CssDocEntry[] = [];
+
+  for (const definition of definitions) {
+    const rendered = definition.rules(PREFIX_NS, { theme: "rebrand" });
+    const classNames = extractClassNames(rendered);
+    const tagged = extractTaggedClasses(rendered);
+    const merged = new Set<string>([...classNames, ...tagged]);
+
+    const baseClass =
+      [...merged].find((name) => name.startsWith(PREFIX_NS)) ??
+      `${PREFIX_NS}${definition.name.replace(/\./gu, "-")}`;
+
+    const modifiers = [...merged]
+      .filter((name) => name.startsWith("-"))
+      .sort((left, right) => left.localeCompare(right))
+      .map((name) => parseModifierShape(name));
+
+    entries.push({
+      name: definition.name,
+      className: `.${baseClass}`,
+      summary: `Pantoken ${definition.kind} ${definition.name}.`,
+      modifiers,
+      parts: [],
+      cssPropertiesConsumed: extractConsumedInstuiProperties(rendered),
+      cssPropertiesDeclared: [],
+      examples: [],
+      see: [],
+      compat: [],
+      related: [],
+    });
+  }
+
+  return entries.sort((left, right) => left.name.localeCompare(right.name));
+}
+
+/** Build and write VS Code custom-data files and the cssdoc model to `distDir`. */
 export function emitCustomData(distDir: string = join(import.meta.dirname, "..", "dist")): {
   htmlPath: string;
   cssPath: string;
   cssdocPath: string;
+  modelPath: string;
   classCount: number;
   propertyCount: number;
+  entryCount: number;
 } {
   const htmlData = buildHtmlCustomData();
   const cssData = buildCssCustomData();
+  const model = buildCssDocModel();
 
   const htmlPath = join(distDir, "html-custom-data.json");
   const cssPath = join(distDir, "css-custom-data.json");
   const cssdocPath = join(distDir, "cssdoc-base.json");
+  const modelPath = join(distDir, "model.json");
   const cssdocTemplatePath = join(import.meta.dirname, "..", "src", "cssdoc-base.json");
 
   mkdirSync(dirname(htmlPath), { recursive: true });
   writeFileSync(htmlPath, `${JSON.stringify(htmlData, null, 2)}\n`);
   writeFileSync(cssPath, `${JSON.stringify(cssData, null, 2)}\n`);
   writeFileSync(cssdocPath, readFileSync(cssdocTemplatePath, "utf8"));
+  writeFileSync(modelPath, `${JSON.stringify(model, null, 2)}\n`);
 
   const classValues = htmlData.globalAttributes.find((attr) => attr.name === "class")?.values ?? [];
   return {
     htmlPath,
     cssPath,
     cssdocPath,
+    modelPath,
     classCount: classValues.length,
     propertyCount: cssData.properties.length,
+    entryCount: model.length,
   };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { classCount, propertyCount } = emitCustomData();
+  const { classCount, propertyCount, entryCount } = emitCustomData();
   console.log(
-    `pantoken meta: generated VS Code custom data (${classCount} class entries, ${propertyCount} token properties)`,
+    `pantoken meta: generated VS Code custom data and cssdoc model (${classCount} class entries, ${propertyCount} token properties, ${entryCount} model entries)`,
   );
 }

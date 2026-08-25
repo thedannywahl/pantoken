@@ -74,6 +74,7 @@
     "./html-custom-data.json": "./dist/html-custom-data.json",
     "./css-custom-data.json": "./dist/css-custom-data.json",
     "./cssdoc-base.json": "./dist/cssdoc-base.json",
+    "./model.json": "./dist/model.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
