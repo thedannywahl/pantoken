@@ -143,7 +143,7 @@ export function buildCssCustomData(): CssCustomData {
 
 /** Build a published provider model in the cssdoc `CssDocEntry[]` shape. */
 export function buildCssDocModel(): ReturnType<typeof parseCssDocs> {
-  const componentsSourcePath = join(
+  const generatedDir = join(
     import.meta.dirname,
     "..",
     "..",
@@ -151,9 +151,14 @@ export function buildCssDocModel(): ReturnType<typeof parseCssDocs> {
     "formats",
     "components",
     "generated",
-    "components.css",
   );
-  const source = readFileSync(componentsSourcePath, "utf8");
+  // Components + utilities: `@global` utilities (spacing/gap/layout/etc.) live only in `utilities.css`
+  // — without them, a downstream consumer's cssdoc providers can't resolve those modifiers and every
+  // component they're chained onto shows a false-positive `unknown-modifier`.
+  const source = [
+    readFileSync(join(generatedDir, "components.css"), "utf8"),
+    readFileSync(join(generatedDir, "utilities.css"), "utf8"),
+  ].join("\n");
   const configuration = new CssDocConfiguration();
   configuration.setModifierConvention("rscss");
   configuration.setInlineComments("ignore");
