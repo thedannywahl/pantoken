@@ -623,6 +623,7 @@ jobs:
         with:
           name: docs-site
           path: docs/.vitepress/dist
+          include-hidden-files: true
           retention-days: 1
 
   # The single required status check for branch protection. It `needs` every other job here and runs
