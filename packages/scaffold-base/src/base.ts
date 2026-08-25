@@ -1,5 +1,5 @@
 /**
- * The shared `bingo-stratum` {@link https://www.create.bingo/engines/stratum/concepts/bases Base}
+ * The shared `bingo-stratum` {@link https://www.create.bingo/engines/stratum/concepts/bases | Base}
  * every pantoken scaffold Preset (one per platform: html, react, next, angular, web-components) is
  * built from — its options schema is what makes those Presets composable into a single
  * `--preset`-driven Bingo template in `@pantoken/scaffold`.
