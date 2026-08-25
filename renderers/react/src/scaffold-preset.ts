@@ -3,6 +3,7 @@
  *
  * @module
  */
+import type { Preset } from "@pantoken/scaffold-base";
 import { base, createPreset } from "@pantoken/scaffold-base";
 
 /**
@@ -10,7 +11,7 @@ import { base, createPreset } from "@pantoken/scaffold-base";
  *
  * Platform: `react`
  */
-export const presetReact = createPreset({
+export const presetReact: Preset = createPreset({
   name: "react",
   base: base,
   blocks: [],

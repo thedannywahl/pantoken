@@ -7,6 +7,7 @@
  * @module
  * @alpha
  */
+export type { Preset } from "bingo-stratum";
 export { base } from "./base.ts";
 export { createPreset } from "./preset.ts";
 export { blockCssdoc } from "./blocks/cssdoc.ts";

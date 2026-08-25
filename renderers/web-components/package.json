@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
+    "bingo-stratum": "catalog:",
     "happy-dom": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
