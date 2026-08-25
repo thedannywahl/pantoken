@@ -28,7 +28,7 @@ export type ScaffoldPlatform = keyof typeof PRESET_LEDGER;
  */
 export const SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[] = Object.keys(
   PRESET_LEDGER,
-) as ScaffoldPlatform[];
+) as readonly ScaffoldPlatform[];
 
 const SCAFFOLD_PLATFORM_SET = new Set<string>(SCAFFOLD_PLATFORMS);
 
