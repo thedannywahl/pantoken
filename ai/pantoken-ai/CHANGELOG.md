@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 0.2.0
+
+### Minor Changes
+
+- efed45f: Split the `bootstrap-pantoken` Claude skill in two: `init-pantoken` now covers installing pantoken's agent assets (AGENTS.md, llms.txt, editor/agent rules, skills), while `scaffold-pantoken` covers scaffolding a new project or wiring pantoken into an existing one. Renamed the `bootstrap <platform>` CLI command to `scaffold <platform>` (it now wraps the new `@pantoken/scaffold` package's scaffold plus `init`'s agent-asset install into one command), and added a `scaffoldAndInit` API. `scaffoldProject`/`SCAFFOLD_PLATFORMS`/`ScaffoldPlatform` are now re-exported from the new `@pantoken/scaffold` package instead of being implemented locally.
+
+### Patch Changes
+
+- efed45f: Add a "Full documentation" section to `AGENTS.md` pointing agents at the hosted docs' `/llms.txt`, `/llms-full.txt`, per-page `.md` mirrors, and `/.well-known/api-catalog` for anything the bundled cheatsheet doesn't cover.
+- efed45f: `pantoken-ai scaffold` and `scaffoldAndInit` now support the renamed `html` platform (was `web`) plus the new `angular` and `web-components` platforms, re-exported from the updated `@pantoken/scaffold`.
+- efed45f: Sync the Cursor rule body with the Copilot instructions body at generate time so the two rule files can't drift out of sync, and refresh both with the current `@pantoken/components` package and full CLI target list.
+- Updated dependencies [efed45f]
+- Updated dependencies [efed45f]
+- Updated dependencies [efed45f]
+  - @pantoken/scaffold@0.2.0
+
 ## 0.1.4
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.4
+
+### Patch Changes
+
+- efed45f: Update `@pantoken/pantoken` metadata generation to build `dist/model.json` from cssdoc's parser output (`@cssdoc/core` 0.13.6), and keep the published provider-model export stable for downstream `cssdoc` consumers.
+- efed45f: Ship a `./cssdoc-base.json` export alongside the generated VS Code custom-data files, so tools that
+  integrate with the `cssdoc` ecosystem (e.g. the `cssdoc.cssdoc-vscode` extension) can resolve
+  pantoken's base cssdoc schema from the published package.
+- efed45f: Emit and publish `model.json` from `@pantoken/pantoken` so downstream `cssdoc` configs can use a stable provider model path (for example `@pantoken/pantoken/model.json`) without depending on source stylesheets.
+
 ## 0.2.3
 
 ### Patch Changes
