@@ -8,7 +8,46 @@ import { renderWrapperContainer, wrapperRootClassName } from "./wrapper-layout.t
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");
-const sharedCssdocTemplate = readFileSync(join(templatesRoot, "cssdoc.json"), "utf8");
+// Read the shared cssdoc template from scaffold-base (JSONC with comments)
+const scaffoldBaseTemplates = resolve(root, "../scaffold-base/templates");
+const cssdocJsonc = readFileSync(join(scaffoldBaseTemplates, "cssdoc.jsonc"), "utf8");
+// Parse JSONC: remove line comments while preserving string content
+const stripJsoncComments = (input: string): string => {
+  let result = "";
+  let inString = false;
+  let escapeNext = false;
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+    const next = input[i + 1];
+    if (escapeNext) {
+      result += char;
+      escapeNext = false;
+      continue;
+    }
+    if (char === "\\" && inString) {
+      result += char;
+      escapeNext = true;
+      continue;
+    }
+    if (char === '"') {
+      result += char;
+      inString = !inString;
+      continue;
+    }
+    if (inString) {
+      result += char;
+      continue;
+    }
+    if (char === "/" && next === "/") {
+      // Skip to end of line
+      while (i < input.length && input[i] !== "\n") i++;
+      continue;
+    }
+    result += char;
+  }
+  return result;
+};
+const sharedCssdocTemplate = JSON.stringify(JSON.parse(stripJsoncComments(cssdocJsonc)), null, 2);
 
 // Every template's entry markup is patterned off `@pantoken/plugin-layouts`'s `wrapper` app-shell
 // layout via these tokens, so editing that layout's cssdoc regenerates every platform's markup.
