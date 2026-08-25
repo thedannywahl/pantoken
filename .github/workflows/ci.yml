@@ -139,7 +139,7 @@ jobs:
         uses: CodSpeedHQ/action@4296e51e7041e24dadb86d1d6e8b9320d223dbe8 # v5
         with:
           mode: simulation
-          run: vp exec vitest bench --run --config vite.bench.config.ts
+          run: vp test bench --run --config vite.bench.config.ts
 
   coverage:
     needs: build
