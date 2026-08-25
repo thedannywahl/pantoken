@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 1.0.1
+
+### Patch Changes
+
+- 8aa88bb: `syntaxMismatches` now recognizes singular per-component `breakpoint-{lg,md,sm}` tokens (e.g.
+  `--instui-component-card-breakpoint-lg`) as lengths, alongside the existing plural `breakpoints-`
+  global tokens — previously these fell through as unmodeled.
+- 8aa88bb: Migrate published `dependencies`/`peerDependencies` to `pnpm-workspace.yaml` `catalog:` references. No
+  behavior change — the resolved versions are unchanged, but the `package.json` a consumer installs now
+  points at the shared catalog entry instead of an inline semver range, so the range is no longer visible
+  at a glance without cross-referencing `pnpm-workspace.yaml`.
+- Updated dependencies [8aa88bb]
+  - @pantoken/model@0.3.1
+
 ## 1.0.0
 
 ### Major Changes

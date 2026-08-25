@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.27
+
+### Patch Changes
+
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+  - @pantoken/scaffold-base@0.2.0
+  - @pantoken/web-components@0.5.7
+  - @pantoken/i18n@0.1.14
+
 ## 0.1.26
 
 ### Patch Changes

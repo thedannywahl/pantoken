@@ -1,5 +1,29 @@
 # @pantoken/plugin-layouts
 
+## 0.2.0
+
+### Minor Changes
+
+- 8aa88bb: Publish `./model.json` — a cssdoc `CssDocEntry[]` provider model for the documented `card`/`agent-shell`
+  (custom-components) and `wrapper` (layouts) records, built from the unminified generated CSS (the
+  published `.css` exports are minified and strip doc comments, so they can't be used as raw-CSS
+  providers). Downstream consumers can now wire these packages into their own `cssdoc.json` `providers`
+  array, the same way `@pantoken/pantoken/model.json` already works for `@pantoken/components`.
+
+### Patch Changes
+
+- 8aa88bb: Fix cssdoc consumer-side lint incorrectly flagging `@global` utility modifiers (e.g. `--p-lg`,
+  `--mt-2xl`, `--mx-none` from the spacing/gap/layout/etc. utilities) as `unknown-modifier` when chained
+  onto a component outside `@pantoken/components`' own scope. The utilities are authored in `.ts`, so
+  their doc comments only ever existed in the unminified `generated/utilities.css` — which no
+  `cssdoc.jsonc` referenced as a `providers` entry. Wired it into the root config and the `layouts`/
+  `custom-components` configs alongside the existing `_records.css` entry. Also removed
+  `modifierConvention`/`inlineComments` re-declarations in `layouts`/`custom-components` that were
+  already inherited from the root config.
+- Updated dependencies [8aa88bb]
+  - @pantoken/model@0.3.1
+  - @pantoken/plugin-kit@0.2.7
+
 ## 0.1.6
 
 ### Patch Changes

@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.2.1
+
+### Patch Changes
+
+- 8aa88bb: Export `buildIconResolverChain` from `@pantoken/icons` and use it from `@pantoken/rehype` and `@pantoken/markdown-it`, removing the duplicated resolver-chain logic between the two renderers.
+  
+  Refactor the `pantoken-ai` CLI's command dispatch and `@pantoken/scaffold`'s JSONC comment stripping to reduce cognitive complexity; no behavior change.
+- 8aa88bb: Reduce CLI complexity and clone-group duplication in the create/app bootstrap commands, and clean up audit/workspace-discovery friction in fallow config.
+  
+  Also includes non-breaking internal refactors in supporting CSS and rehype helper paths that remove duplicate-block findings from quality checks.
+- 8aa88bb: Update the `scaffold-pantoken` and `init-pantoken` skills for the current Bingo-based scaffold
+  CLI: the platform list is now `components` (alias `html`), `react`, `vue`, `svelte`,
+  `web-components`, `angular` (the stale `next`/pre-Bingo `html`-only list is gone), the CLI
+  invocation is `npx pantoken-ai scaffold <platform>`, and the flat `npx create-pantoken-app
+  <platform>` alias is documented alongside `npx @pantoken/scaffold <platform>` for scaffolding
+  without the agent assets.
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+  - @pantoken/scaffold@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.3.1
+
+### Patch Changes
+
+- 8aa88bb: Update the homepage's Get Started tabs to use the `npx create-pantoken-app <platform>` flat-name
+  alias instead of `npx @pantoken/scaffold <platform>`, matching the docs guide's quickstart.
+
 ## 0.3.0
 
 ### Minor Changes

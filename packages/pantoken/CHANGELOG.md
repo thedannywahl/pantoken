@@ -1,5 +1,77 @@
 # CHANGELOG
 
+## 0.2.5
+
+### Patch Changes
+
+- 8aa88bb: Fix `@pantoken/pantoken`'s published `model.json` (the cssdoc provider model downstream consumers use)
+  to include `@global` utility records (spacing/gap/layout/etc.) — previously `buildCssDocModel()` only
+  parsed `generated/components.css`, so consumer projects had no way to resolve `--p-lg`-style global
+  modifier classes as documented. Wired `model.json` into `@pantoken/scaffold`'s templated `cssdoc.json`
+  as a `providers` entry so scaffolded projects pick this up out of the box.
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+- Updated dependencies [8aa88bb]
+  - @pantoken/icons@0.2.0
+  - @pantoken/rehype@0.1.10
+  - @pantoken/markdown-it@0.1.10
+  - @pantoken/android@0.1.16
+  - @pantoken/astro@0.1.17
+  - @pantoken/bootstrap@0.1.2
+  - @pantoken/compose@0.1.16
+  - @pantoken/css@0.3.7
+  - @pantoken/css-in-js@0.1.13
+  - @pantoken/docusaurus@0.1.2
+  - @pantoken/dtcg@0.1.12
+  - @pantoken/email@0.1.13
+  - @pantoken/figma@0.1.12
+  - @pantoken/flutter@0.1.16
+  - @pantoken/foundation@0.1.3
+  - @pantoken/less@0.1.13
+  - @pantoken/mintlify@0.1.13
+  - @pantoken/mui@0.1.13
+  - @pantoken/next@0.1.2
+  - @pantoken/panda@0.1.13
+  - @pantoken/plugin-colors@0.1.2
+  - @pantoken/plugin-logos@0.3.6
+  - @pantoken/plugin-primitives@1.0.1
+  - @pantoken/plugin-prune-custom-props@0.1.5
+  - @pantoken/plugin-simple-icons@0.3.6
+  - @pantoken/plugin-stacking@1.0.3
+  - @pantoken/plugin-theme-custom-media@0.2.2
+  - @pantoken/plugin-transition@1.0.3
+  - @pantoken/plugin-visual-debug@0.1.15
+  - @pantoken/postcss@0.1.17
+  - @pantoken/react-markdown@0.1.12
+  - @pantoken/react-native@0.1.13
+  - @pantoken/scss@0.1.13
+  - @pantoken/shadcn@0.1.2
+  - @pantoken/storybook@0.1.13
+  - @pantoken/stylus@0.1.13
+  - @pantoken/swatches@0.1.13
+  - @pantoken/swift@0.1.16
+  - @pantoken/tailwind@0.1.7
+  - @pantoken/tokens@0.3.0
+  - @pantoken/vanilla@0.1.12
+  - @pantoken/vite@0.1.17
+  - @pantoken/vitepress@0.2.1
+  - @pantoken/webpack@0.1.17
+  - @pantoken/wordpress@0.1.12
+  - @pantoken/components@1.0.2
+  - @pantoken/react@0.1.27
+  - @pantoken/vue@0.1.27
+  - @pantoken/web-components@0.5.7
+  - @pantoken/pendo@0.3.12
+  - @pantoken/cli@0.1.25
+  - @pantoken/drupal@0.1.23
+  - @pantoken/angular@0.1.26
+  - @pantoken/svelte@0.1.27
+
 ## 0.2.4
 
 ### Patch Changes
