@@ -1,0 +1,14 @@
+// Defines every --instui-* custom property this app can reference.
+import "@pantoken/components/base.css";
+import "@pantoken/components/components.css";
+import "@pantoken/plugin-layouts/layouts.css";
+import "@pantoken/web-components"; // auto-registers <instui-icon> and friends
+
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
+{{wrapperContainer:html:1}}
+`;
+
+// Framework-agnostic custom elements work anywhere — no per-framework port required.
+document
+  .querySelector('.content slot[name="content"]')
+  ?.insertAdjacentHTML("afterbegin", '<instui-icon name="check-mark"></instui-icon>\n');

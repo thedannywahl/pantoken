@@ -3,17 +3,21 @@
  * developing pantoken itself).
  *
  * It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and
- * a Claude Code bootstrap skill, plus {@link installAgentAssets} / the `pantoken-ai` CLI to drop
- * them into a consumer repo at the conventional paths.
+ * Claude Code skills (`init-pantoken`, `scaffold-pantoken`), plus {@link installAgentAssets} /
+ * {@link scaffoldAndInit} / the `pantoken-ai` CLI to drop them into a consumer repo at the
+ * conventional paths.
  *
  * @module
  * @alpha
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { scaffoldProject } from "@pantoken/scaffold";
 import { ASSETS } from "../generated/assets.ts";
 
 export { ASSETS } from "../generated/assets.ts";
+export { SCAFFOLD_PLATFORMS, scaffoldProject } from "@pantoken/scaffold";
+export type { ScaffoldPlatform } from "@pantoken/scaffold";
 
 /**
  * The `AGENTS.md` content (consumer usage guide).
@@ -57,7 +61,8 @@ const TARGETS: Record<AgentTool, AssetTarget[]> = {
   copilot: [{ file: ".github/copilot-instructions.md", content: ASSETS.copilot }],
   windsurf: [{ file: ".windsurf/rules/pantoken.md", content: ASSETS.windsurf }],
   claude: [
-    { file: ".claude/skills/bootstrap-pantoken/SKILL.md", content: ASSETS.skill },
+    { file: ".claude/skills/init-pantoken/SKILL.md", content: ASSETS.initSkill },
+    { file: ".claude/skills/scaffold-pantoken/SKILL.md", content: ASSETS.scaffoldSkill },
     { file: "AGENTS.md", content: ASSETS.agents },
   ],
 };
@@ -117,4 +122,29 @@ export function installAgentAssets(tool: AgentTool | "all", dir = "."): string[]
     }
   }
   return [...written];
+}
+
+/**
+ * Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's
+ * agent assets (via {@link installAgentAssets}) into the same directory.
+ *
+ * @param platform - A {@link ScaffoldPlatform}.
+ * @param dir - The target directory (default `"."`). Its basename (or `"pantoken-app"` for `"."`)
+ *   is substituted for `{{projectName}}` in the scaffold's template files.
+ * @param tool - Which agent tool's assets to install alongside the scaffold (default `"all"`).
+ * @returns The paths written, scaffold files first.
+ *
+ * @example Scaffold a React starter with every agent asset installed
+ * ```ts
+ * import { scaffoldAndInit } from "@pantoken/ai";
+ *
+ * scaffoldAndInit("react", "./my-app");
+ * ```
+ */
+export function scaffoldAndInit(
+  platform: string,
+  dir = ".",
+  tool: AgentTool | "all" = "all",
+): string[] {
+  return [...scaffoldProject(platform, dir), ...installAgentAssets(tool, dir)];
 }

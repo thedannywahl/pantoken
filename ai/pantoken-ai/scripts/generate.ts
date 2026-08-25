@@ -8,13 +8,18 @@ import { join, resolve } from "node:path";
 const root = resolve(import.meta.dirname, "..");
 const read = (path: string): string => readFileSync(join(root, path), "utf8");
 
+// cursor.mdc holds only frontmatter; its body is interpolated from copilot-instructions.md so the
+// two rule files can't drift out of sync.
+const copilot = read("assets/copilot-instructions.md");
+
 const assets: Record<string, string> = {
   agents: read("assets/AGENTS.md"),
   llms: read("assets/llms.txt"),
-  cursor: read("assets/cursor.mdc"),
-  copilot: read("assets/copilot-instructions.md"),
+  cursor: `${read("assets/cursor.mdc").trimEnd()}\n\n${copilot}`,
+  copilot,
   windsurf: read("assets/windsurf.md"),
-  skill: read("skills/bootstrap-pantoken/SKILL.md"),
+  initSkill: read("skills/init-pantoken/SKILL.md"),
+  scaffoldSkill: read("skills/scaffold-pantoken/SKILL.md"),
 };
 
 const outDir = join(root, "generated");

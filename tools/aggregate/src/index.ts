@@ -123,6 +123,8 @@ export function aggregate(options: AggregateOptions): Target[] {
   // Static non-module exports consumed by VS Code language services.
   exportsMap["./html-custom-data.json"] = "./dist/html-custom-data.json";
   exportsMap["./css-custom-data.json"] = "./dist/css-custom-data.json";
+  exportsMap["./cssdoc-base.json"] = "./dist/cssdoc-base.json";
+  exportsMap["./model.json"] = "./dist/model.json";
   exportsMap["./package.json"] = "./package.json";
 
   // Rewrite the meta package.json exports map, preserving everything else.

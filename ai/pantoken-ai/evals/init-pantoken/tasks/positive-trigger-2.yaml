@@ -1,0 +1,16 @@
+id: positive-trigger-002
+name: Positive Trigger 2
+description: User asks to add AI agent support for pantoken without naming init-pantoken directly.
+tags:
+  - positive-trigger
+inputs:
+  prompt: "Add pantoken AI support to this project so assistants understand our design tokens"
+expected:
+  should_trigger: true
+graders:
+  - type: text
+    name: contains-keywords
+    config:
+      contains:
+        - "pantoken-ai init"
+        - "llms.txt"

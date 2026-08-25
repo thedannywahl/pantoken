@@ -2,7 +2,14 @@ import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { expect, test } from "vite-plus/test";
-import { AGENTS_MD, AGENT_TOOLS, installAgentAssets } from "../src/index.ts";
+import {
+  AGENTS_MD,
+  AGENT_TOOLS,
+  SCAFFOLD_PLATFORMS,
+  installAgentAssets,
+  scaffoldAndInit,
+  scaffoldProject,
+} from "../src/index.ts";
 
 test("ships a non-empty AGENTS guide and a known tool set", () => {
   expect(AGENTS_MD).toContain("pantoken");
@@ -19,10 +26,11 @@ test("installs a single tool's asset at its conventional path", () => {
   expect(readFileSync(rule, "utf8")).toContain("pantoken");
 });
 
-test("installs the Claude skill + AGENTS.md", () => {
+test("installs both Claude skills + AGENTS.md", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-claude-"));
   installAgentAssets("claude", dir);
-  expect(existsSync(join(dir, ".claude/skills/bootstrap-pantoken/SKILL.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/init-pantoken/SKILL.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/scaffold-pantoken/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, "AGENTS.md"))).toBe(true);
 });
 
@@ -37,4 +45,35 @@ test("'all' writes every asset, deduped", () => {
 
 test("rejects unknown tools with a clear error", () => {
   expect(() => installAgentAssets("invalid" as never)).toThrow(/Unknown tool/);
+});
+
+test("re-exports a known scaffold platform set from @pantoken/scaffold", () => {
+  expect(SCAFFOLD_PLATFORMS).toContain("html");
+  expect(SCAFFOLD_PLATFORMS).toContain("react");
+  expect(SCAFFOLD_PLATFORMS).toContain("next");
+  expect(SCAFFOLD_PLATFORMS).toContain("angular");
+  expect(SCAFFOLD_PLATFORMS).toContain("web-components");
+});
+
+test("scaffolds a platform with projectName substituted", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-scaffold-"));
+  const target = join(dir, "my-app");
+  const written = scaffoldProject("react", target);
+  expect(written.length).toBeGreaterThan(0);
+  const pkg = readFileSync(join(target, "package.json"), "utf8");
+  expect(pkg).toContain('"name": "my-app"');
+  expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("rejects unknown platforms with a clear error", () => {
+  expect(() => scaffoldProject("invalid" as never)).toThrow(/Unknown platform/);
+});
+
+test("scaffoldAndInit writes both the scaffold and the agent assets", () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-scaffold-init-"));
+  const target = join(dir, "my-app");
+  const written = scaffoldAndInit("html", target, "cursor");
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
+  expect(written.length).toBeGreaterThan(1);
 });

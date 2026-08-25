@@ -153,12 +153,14 @@ chained modifiers, which stay exactly as authored.
 - Each value ships in exactly two spellings: **short** (`--mb-sm`) and fully **long**, word-spelled
   (`--margin-bottom-small`) — never a mixed-segment form (no `-margin-e-small`, no `-me-small`).
 - Because these modifiers are documented on the separate `spacing`/`gap` utility records, not on the
-  component they're chained onto, a consumer's `@cssdoc/eslint-plugin` `valid-class-usage` check may
-  still flag `.instui-card.--mb-sm` as an unknown modifier — that rule looks up modifiers against the
-  record the base class belongs to, not wherever the CSS rule happens to be authored. The `--`
-  namespace split at least guarantees a global modifier never collides with (or gets shadowed by) a
-  component's own same-named modifier; closing the remaining lint gap is still a cssdoc-tooling
-  follow-up, not yet implemented.
+  component they're chained onto, resolving `.instui-card.--mb-sm` requires cssdoc to fall back from
+  the base record to any record tagged `@global` — every utility record here carries that tag for
+  exactly this reason. `@cssdoc/eslint-plugin`'s `valid-class-usage` (and the shared `isModifier`/
+  `deprecationOf` lookups behind it) already do this fallback automatically; no `cssdoc.jsonc` option
+  is involved. The one real prerequisite is that whatever CSS is passed to `valid-class-usage`'s `css`
+  option still carries the doc comments (an unminified build) — the published `dist/*.css` bundles are
+  minified and strip all comments, so pointing consumer-side lint at them would flag everything, not
+  just globals.
 - If a component already sets its own `margin`/`padding`/`gap` from a component-specific token (e.g.
   card's responsive padding, breadcrumb's `gap`), document that in `@remarks` and warn that chaining a
   spacing/gap utility modifier overrides it — see breadcrumb, button, byline, checkbox, form-field,

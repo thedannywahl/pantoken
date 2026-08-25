@@ -75,6 +75,7 @@ test("runAggregate aggregates the discovered targets, logs a summary, and return
     // Static JSON exports are always present for VS Code custom-data consumers.
     expect(pkg.exports["./html-custom-data.json"]).toBe("./dist/html-custom-data.json");
     expect(pkg.exports["./css-custom-data.json"]).toBe("./dist/css-custom-data.json");
+    expect(pkg.exports["./model.json"]).toBe("./dist/model.json");
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

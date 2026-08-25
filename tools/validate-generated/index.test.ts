@@ -42,6 +42,7 @@ const utf8Fixture = (pathName: string): string | null => {
       JSON.stringify({ version: 1.1, globalAttributes: [] }),
     "packages/pantoken/dist/css-custom-data.json": () =>
       JSON.stringify({ version: 1.1, properties: [] }),
+    "packages/pantoken/dist/model.json": () => JSON.stringify([]),
   };
 
   for (const [key, getValue] of Object.entries(mappings)) {

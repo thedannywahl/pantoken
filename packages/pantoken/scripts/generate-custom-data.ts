@@ -1,6 +1,8 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CssDocConfiguration } from "@cssdoc/core";
+import { parseCssDocs } from "@cssdoc/core";
 import { tokens } from "@pantoken/tokens";
 import { COMPONENTS } from "../../../formats/components/src/components/index.ts";
 import { DECLARATIONS } from "../../../formats/components/src/declarations/index.ts";
@@ -139,35 +141,66 @@ export function buildCssCustomData(): CssCustomData {
   };
 }
 
-/** Build and write both VS Code custom-data JSON files to `distDir`, returning their paths and counts. */
+/** Build a published provider model in the cssdoc `CssDocEntry[]` shape. */
+export function buildCssDocModel(): ReturnType<typeof parseCssDocs> {
+  const componentsSourcePath = join(
+    import.meta.dirname,
+    "..",
+    "..",
+    "..",
+    "formats",
+    "components",
+    "generated",
+    "components.css",
+  );
+  const source = readFileSync(componentsSourcePath, "utf8");
+  const configuration = new CssDocConfiguration();
+  configuration.setModifierConvention("rscss");
+  configuration.setInlineComments("ignore");
+  return parseCssDocs(source, { configuration });
+}
+
+/** Build and write VS Code custom-data files and the cssdoc model to `distDir`. */
 export function emitCustomData(distDir: string = join(import.meta.dirname, "..", "dist")): {
   htmlPath: string;
   cssPath: string;
+  cssdocPath: string;
+  modelPath: string;
   classCount: number;
   propertyCount: number;
+  entryCount: number;
 } {
   const htmlData = buildHtmlCustomData();
   const cssData = buildCssCustomData();
+  const model = buildCssDocModel();
 
   const htmlPath = join(distDir, "html-custom-data.json");
   const cssPath = join(distDir, "css-custom-data.json");
+  const cssdocPath = join(distDir, "cssdoc-base.json");
+  const modelPath = join(distDir, "model.json");
+  const cssdocTemplatePath = join(import.meta.dirname, "..", "src", "cssdoc-base.json");
 
   mkdirSync(dirname(htmlPath), { recursive: true });
   writeFileSync(htmlPath, `${JSON.stringify(htmlData, null, 2)}\n`);
   writeFileSync(cssPath, `${JSON.stringify(cssData, null, 2)}\n`);
+  writeFileSync(cssdocPath, readFileSync(cssdocTemplatePath, "utf8"));
+  writeFileSync(modelPath, `${JSON.stringify(model, null, 2)}\n`);
 
   const classValues = htmlData.globalAttributes.find((attr) => attr.name === "class")?.values ?? [];
   return {
     htmlPath,
     cssPath,
+    cssdocPath,
+    modelPath,
     classCount: classValues.length,
     propertyCount: cssData.properties.length,
+    entryCount: model.length,
   };
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const { classCount, propertyCount } = emitCustomData();
+  const { classCount, propertyCount, entryCount } = emitCustomData();
   console.log(
-    `pantoken meta: generated VS Code custom data (${classCount} class entries, ${propertyCount} token properties)`,
+    `pantoken meta: generated VS Code custom data and cssdoc model (${classCount} class entries, ${propertyCount} token properties, ${entryCount} model entries)`,
   );
 }

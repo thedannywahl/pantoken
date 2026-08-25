@@ -82,6 +82,10 @@
   // Workspace @pantoken/* specifiers resolve to each package's built dist, so they're "unresolved"
   // only before a build — ignore them so the regression baseline and the pre-push audit are accurate
   // without a full build (a no-op post-build, where they resolve; TypeScript still catches real breaks).
+  // `/src/main.tsx`/`/src/main.ts`: scaffolded starter-project templates reference their OWN sibling
+  // file by its post-scaffold name — the scaffold script strips the `.tmpl` suffix the file actually
+  // has on disk (`src/main.tsx.tmpl`) when it copies the template into a consumer's project, so these
+  // "unresolved" imports in packages/scaffold/templates/**/index.html are correct by design.
   "ignoreUnresolvedImports": [
     "**/generated/**",
     "../generated/**",
@@ -89,7 +93,9 @@
     "../dist/**",
     "**/public/**",
     "@pantoken/*",
-    "@pantoken/*/**"
+    "@pantoken/*/**",
+    "/src/main.tsx",
+    "/src/main.ts"
   ],
 
   "duplicates": {

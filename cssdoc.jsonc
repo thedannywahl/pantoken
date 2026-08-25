@@ -2,10 +2,6 @@
   "$schema": "https://cssdoc.dev/cssdoc.schema.json",
   "modifierConvention": "rscss",
   "inlineComments": "ignore",
-  // A component's own `@modifier` always wins over a same-named `@global` utility modifier (e.g.
-  // `view`'s `-background-secondary` vs. the global `background` utility's copy of the same name) —
-  // "base" is already the default; pinned explicitly so the tie-break is documented, not implicit.
-  "globalPrecedence": "base",
   "render": {
     "sectionOrder": [
       "accessibility",

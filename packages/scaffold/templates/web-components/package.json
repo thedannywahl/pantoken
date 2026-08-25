@@ -1,0 +1,21 @@
+{
+  "name": "{{projectName}}",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@pantoken/components": "latest",
+    "@pantoken/plugin-layouts": "latest",
+    "@pantoken/web-components": "latest"
+  },
+  "devDependencies": {
+    "@pantoken/pantoken": "latest",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}

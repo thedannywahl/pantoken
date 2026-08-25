@@ -1,0 +1,16 @@
+id: negative-trigger-002
+name: Negative Trigger 2
+description: Unrelated request with no connection to pantoken or scaffolding.
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Tell me a short joke about coffee."
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: omits-skill-keywords
+    config:
+      not_contains:
+        - "pantoken"
+        - "scaffold"

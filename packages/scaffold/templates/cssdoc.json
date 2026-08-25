@@ -1,0 +1,6 @@
+{
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "extends": ["./node_modules/@pantoken/pantoken/cssdoc-base.json"],
+  "modifierConvention": "rscss",
+  "inlineComments": "ignore"
+}

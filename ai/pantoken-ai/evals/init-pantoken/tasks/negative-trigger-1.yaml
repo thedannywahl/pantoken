@@ -1,0 +1,16 @@
+id: negative-trigger-001
+name: Negative Trigger 1
+description: A near-miss request that belongs to scaffold-pantoken (installing packages/wiring code), not init-pantoken (which only writes agent asset files).
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Add Instructure's design tokens to my existing Next.js app"
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: omits-skill-keywords
+    config:
+      not_contains:
+        - "pantoken-ai init"
+        - "AGENTS.md"

@@ -1,0 +1,14 @@
+import "@pantoken/css/inject";
+import "@pantoken/plugin-layouts/layouts.css";
+
+export const metadata = {
+  title: "{{projectName}}",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="{{wrapperRootClass}}">{children}</body>
+    </html>
+  );
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://cssdoc.dev/cssdoc.schema.json",
+  "modifierConvention": "rscss",
+  "inlineComments": "ignore",
+  "globalPrecedence": "base",
+  "render": {
+    "sectionOrder": [
+      "accessibility",
+      "usage",
+      "demo",
+      "examples",
+      "structure",
+      "slots",
+      "modifiers",
+      "parts",
+      "shadowParts",
+      "pseudoElements",
+      "states",
+      "cssProperties",
+      "functions",
+      "animations",
+      "layers",
+      "conditions",
+      "tokensConsumed",
+      "compat",
+      "subcomponents",
+      "related",
+      "see"
+    ],
+    "headingPrefix": "CSS:",
+    "structureView": "both"
+  }
+}
