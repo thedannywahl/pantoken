@@ -1,5 +1,19 @@
 # create-pantoken-app
 
+## 0.3.0
+
+### Minor Changes
+
+- 14c883b: `pantoken-scaffold` and `create-pantoken-app` now share a single CLI implementation
+  (`@pantoken/scaffold/cli`). When `--dir` is omitted and stdin is an interactive TTY, the CLI now
+  prompts for a target directory instead of silently scaffolding into the current folder. The
+  post-scaffold "next steps" message now recommends `vp install` alongside npm/pnpm/yarn/bun.
+
+### Patch Changes
+
+- Updated dependencies [14c883b]
+  - @pantoken/scaffold@0.4.0
+
 ## 0.2.0
 
 ### Minor Changes
