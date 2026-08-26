@@ -11,6 +11,7 @@ export const inputGroup: Definition = defineComponent({
 /**
  * @component input-group
  * @summary A facade around a text input with leading and trailing icon slots.
+ * @remarks Wraps the same field chrome as \`text-input\` with icon slots either side of it; \`-should-not-wrap\` is only needed when the group's contents would otherwise overflow onto a second line.
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.

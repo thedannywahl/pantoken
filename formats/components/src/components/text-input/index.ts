@@ -12,6 +12,7 @@ export const textInput: Definition = defineComponent({
 /**
  * @component text-input
  * @summary A styled native \`<input>\` — including \`date\`, \`time\`, and \`datetime-local\`, where the browser supplies the picker — with validation states and sizes.
+ * @remarks Shares its border, background, and state chrome with \`text-area\`, \`simple-select\`, \`number-input\`, and \`input-group\` via \`fieldControlBase\`; for \`date\`/\`time\`/\`datetime-local\` types the browser supplies its own picker UI, which this stylesheet doesn't style.
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.

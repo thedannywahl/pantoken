@@ -2,6 +2,7 @@
  * @component context-view
  * @selector .pfx-context-view
  * @summary An elevated callout with a caret, positionable on any side; works as a native `[popover]`.
+ * @remarks The caret is two stacked `::before`/`::after` triangles (border then fill) so it reads correctly against a matching surface; as a `[popover]` it needs the same open/`popovertarget` wiring as `popover`, but unlike `tooltip`, it dismisses on outside click or Escape.
  * @modifier -color-inverse — Dark (inverse) colour scheme.
  * @modifier -placement-top — Sit above the anchor.
  * @modifier -placement-bottom — Sit below the anchor.

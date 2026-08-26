@@ -2,6 +2,7 @@
  * @component popover
  * @selector .pfx-popover
  * @summary An elevated surface for a native `[popover]`, positioned with CSS anchor positioning.
+ * @remarks Anchor positioning is Chromium-only; the `@supports` guard means `-placement-*` is silently inert elsewhere and the UA centers the popover in the top layer instead of failing.
  * @modifier -placement-top — Sit above the anchor.
  * @modifier -placement-bottom — Sit below the anchor.
  * @modifier -placement-start — Sit at the start (inline-start) of the anchor.

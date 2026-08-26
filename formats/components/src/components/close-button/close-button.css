@@ -2,6 +2,7 @@
  * @component close-button
  * @selector .pfx-close-button
  * @summary A transparent icon button that draws its own × glyph, in three sizes plus an inverse variant.
+ * @remarks Always renders as an icon-only control with no visible label, so an `aria-label` is required, not optional; compare to `button`'s `-without-background` ghost variant, which keeps a text label.
  * @modifier -color-inverse — For dark backgrounds.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.

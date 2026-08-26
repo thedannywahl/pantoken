@@ -2,6 +2,7 @@
  * @component text
  * @selector .pfx-text
  * @summary Body-text typography with size, weight, colour, and style modifiers.
+ * @remarks The `-variant-*` presets and the `-color-*`/`-size-*`/`-weight-*` modifiers all compose on the same element; unlike `heading`, it renders no implicit semantic level.
  * @modifier -color-brand — Brand text colour.
  * @modifier -color-secondary — Secondary (muted) text colour.
  * @modifier -color-ai — @deprecated {@link -color-ai-highlight}

@@ -13,6 +13,7 @@ export const simpleSelect: Definition = defineComponent({
 /**
  * @component simple-select
  * @summary A styled native \`<select>\` with a caret, matching the text-input states and sizes.
+ * @remarks Wraps a plain native \`<select>\` with no custom dropdown/menu markup, so browser-native option rendering and keyboard behavior apply as-is; it shares its field chrome with \`text-input\` via \`fieldControlBase\`.
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.

@@ -11,6 +11,7 @@ export const heading: Definition = defineComponent({
 /**
  * @component heading
  * @summary Heading typography from \`-level-h1\` to \`-level-h6\`.
+ * @remarks The \`-variant-*\` presets override a \`-level-*\`'s font-size and font-weight, so combine only one of each family per element.
  * @modifier -level-h1 — Render at the h1 type scale.
  * @modifier -level-h2 — Render at the h2 type scale.
  * @modifier -level-h3 — Render at the h3 type scale.
