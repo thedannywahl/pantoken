@@ -2,6 +2,7 @@
  * @component tooltip
  * @selector .pfx-tooltip
  * @summary A CSS hover and focus tooltip bubble, positionable on any side.
+ * @remarks Toggling is pure CSS (`:hover`/`:focus-within`), so the bubble only reaches keyboard users through a focusable trigger; unlike `popover`, it isn't dismissible or click-triggered.
  * @modifier -icon-* — Render a trigger glyph icon next to the tooltip bubble.
  * @part .tip — The bubble; `-placement-*` sets its side.
  * @a11y Point the trigger at the bubble with aria-describedby and give the bubble role="tooltip".

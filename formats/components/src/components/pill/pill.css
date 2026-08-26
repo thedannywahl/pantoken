@@ -2,6 +2,7 @@
  * @component pill
  * @selector .pfx-pill
  * @summary A compact status label; add a leading glyph with the shared `-icon-<name>` form.
+ * @remarks Unlike `badge`, which shows a count, or `tag`, which is removable, the pill is a static status label; its leading glyph is a masked `::before`, not an `<img>`.
  * @modifier -color-info — Informational status.
  * @modifier -color-success — Positive status.
  * @modifier -color-warning — Cautionary status.

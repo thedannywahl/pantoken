@@ -2,6 +2,7 @@
  * @component img
  * @selector .pfx-img
  * @summary A styled `<img>` with display, crop, and effect modifiers that stack.
+ * @remarks Effects compose through the shared `--pantoken-img-filter` custom property, so `-with-grayscale` and `-with-blur` can apply together; the `-constrain-*` crop modifiers require the consumer to size the box explicitly.
  * @modifier -display-block — Display as a block element.
  * @modifier -constrain-cover — Scale to fill the box (cover).
  * @modifier -constrain-contain — Scale to fit within the box (contain).

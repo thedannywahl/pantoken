@@ -2,6 +2,7 @@
  * @component file-drop
  * @selector .pfx-file-drop
  * @summary A file dropzone with hover, accepted, and rejected states.
+ * @remarks The `-hover`/`-accepted`/`-rejected` classes are purely visual — actual drag-and-drop detection and file validation are the consumer's JS to wire up around the wrapped native input.
  * @modifier -icon-* — Render the leading dropzone glyph icon.
  * @modifier -accepted — Drag state for an acceptable file.
  * @modifier -hover — Hover or drag-over state.

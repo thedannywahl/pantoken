@@ -2,6 +2,7 @@
  * @component spinner
  * @selector .pfx-spinner
  * @summary An animated loading ring; give it role="status" and an aria-label.
+ * @remarks `-color-inverse` only repaints the animated top border segment, not the whole track, so it still reads correctly on a dark card without needing a separate track color.
  * @modifier -size-xs — Extra-small.
  * @modifier -size-sm — Small.
  * @modifier -size-lg — Large.

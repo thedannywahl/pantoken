@@ -15,6 +15,7 @@ export const numberInput: Definition = defineComponent({
 /**
  * @component number-input
  * @summary A number-input facade with a +/- spinner column.
+ * @remarks The \`.arrows\` buttons are \`aria-hidden\` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up.
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.

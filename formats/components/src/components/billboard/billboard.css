@@ -1,6 +1,7 @@
 /**
  * @component billboard
  * @summary A large empty-state or call-to-action block: a hero icon or image, a heading, and a message.
+ * @remarks The `.hero`/`.heading`/`.message` parts are composed by the consumer's markup, not enforced structure; `-clickable` only adds hover styling, so a real click target still needs `tabindex` and a keyboard handler.
  * @modifier -clickable — Interactive (clickable) styling with hover feedback.
  * @modifier -icon-* — Render a leading icon glyph on `.hero` (e.g. `<span class="hero -icon-inbox"></span>`).
  * @modifier -size-sm — Small: tighter spacing with smaller heading, message, and hero icon.

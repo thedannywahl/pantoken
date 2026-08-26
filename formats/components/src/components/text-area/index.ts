@@ -12,6 +12,7 @@ export const textArea: Definition = defineComponent({
 /**
  * @component text-area
  * @summary A styled, resizable native \`<textarea>\` with the same states and sizes as the text input.
+ * @remarks Shares \`fieldControlBase\` with \`text-input\` and \`simple-select\`, so it renders the same border, background, and focus states; only \`resize: vertical\` and the taller minimum height are unique to it.
  * @modifier -disabled — Disabled state.
  * @modifier -invalid — Invalid (error) state.
  * @modifier -readonly — Read-only state.
