@@ -1,5 +1,17 @@
 # @pantoken/scaffold
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [f053604]
+  - @pantoken/components@1.0.3
+  - @pantoken/angular@0.1.27
+  - @pantoken/react@0.1.28
+  - @pantoken/svelte@0.1.28
+  - @pantoken/vue@0.1.28
+  - @pantoken/web-components@0.5.8
+
 ## 0.4.0
 
 ### Minor Changes

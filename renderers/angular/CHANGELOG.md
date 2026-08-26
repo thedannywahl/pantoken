@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.27
+
+### Patch Changes
+
+- @pantoken/web-components@0.5.8
+
 ## 0.1.26
 
 ### Patch Changes

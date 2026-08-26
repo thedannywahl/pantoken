@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.5.8
+
+### Patch Changes
+
+- Updated dependencies [f053604]
+  - @pantoken/components@1.0.3
+
 ## 0.5.7
 
 ### Patch Changes

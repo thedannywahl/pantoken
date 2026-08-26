@@ -1,5 +1,11 @@
 # create-pantoken-app
 
+## 0.3.1
+
+### Patch Changes
+
+- @pantoken/scaffold@0.4.1
+
 ## 0.3.0
 
 ### Minor Changes
