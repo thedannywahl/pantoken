@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
   "fallow_version": "3.18.0",
-  "timestamp": "2026-08-25T23:15:53Z",
-  "git_sha": "8aa88bb59d135fc12f8a0297b491a3196fc414a1",
+  "timestamp": "2026-08-26T00:59:23Z",
+  "git_sha": "14c883bad0f30e9c7ebe3290e0fa2bd7fe7e76ab",
   "analysis_identity": {
     "mode": "syntactic",
     "semantic_schema_version": 1,

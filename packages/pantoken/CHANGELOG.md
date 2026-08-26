@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.2.6
+
+### Patch Changes
+
+- @pantoken/android@0.1.17
+  - @pantoken/compose@0.1.17
+  - @pantoken/flutter@0.1.17
+  - @pantoken/swift@0.1.17
+  - @pantoken/cli@0.1.26
+
 ## 0.2.5
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 0.1.17
+
+### Patch Changes
+
+- Updated dependencies [14c883b]
+  - @pantoken/sd-config@0.1.5
+
 ## 0.1.16
 
 ### Patch Changes
