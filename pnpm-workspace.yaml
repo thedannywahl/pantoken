@@ -89,6 +89,11 @@ catalog:
   typedoc-plugin-markdown: ^4.13.0
   typedoc-vitepress-theme: ^1.1.3
   vitepress-plugin-llms: ^1.13.5
+  # CLI framework (commander-based scaffolding CLI rebuild)
+  commander: ^15.0.0
+  "@commander-js/extra-typings": ^15.0.0
+  "@clack/prompts": ^1.7.0
+  "@bomb.sh/tab": ^0.0.22
   # @cssdoc/* toolchain — @cssdoc/markdown arrives transitively
   # via @cssdoc/typedoc; the entries below are pantoken's direct dependencies.
   "@cssdoc/core": ^0.14.2
