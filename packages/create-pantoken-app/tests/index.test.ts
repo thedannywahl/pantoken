@@ -18,9 +18,10 @@ test("rejects an unknown platform", () => {
 test("scaffolds the same output as @pantoken/scaffold for a known platform", () => {
   const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-"));
   const target = join(dir, "my-app");
-  execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
+  const output = execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
+  expect(output).toContain("vp install");
 });
 
 test("accepts the html alias for components", () => {

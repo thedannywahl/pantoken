@@ -14,4 +14,4 @@ Scaffolding a pantoken app is a one-liner, just choose your target platform:
 npx create-pantoken-app <platform>
 ```
 
-[📖 Full Docs](https://pantoken.iywahl.com) · [Instructure UI](https://instructure.design/)
+[📖 Full Docs](https://pantoken.iywahl.com/) · [Instructure UI](https://instructure.design/)
