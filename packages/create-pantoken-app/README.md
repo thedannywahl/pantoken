@@ -12,6 +12,17 @@ Scaffolding a pantoken app is a one-liner, just choose your target platform:
 
 ```sh
 npx create-pantoken-app <platform>
+
+# Target a directory other than the current one:
+npx create-pantoken-app react ./my-app
+
+# Non-interactive (CI-safe): errors instead of prompting for a missing platform/directory
+npx create-pantoken-app react --dir ./my-app --yes
+
+# Override the auto-detected display language
+npx create-pantoken-app --lang hu
 ```
+
+Run `npx create-pantoken-app --help` for the full flag reference.
 
 [📖 Full Docs](https://pantoken.iywahl.com/) · [Instructure UI](https://instructure.design/)

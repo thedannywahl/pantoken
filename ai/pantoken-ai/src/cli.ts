@@ -8,13 +8,12 @@
  * @alpha
  */
 
-import { Command, Option, CommanderError } from "commander";
+import { Argument, Command, Option, CommanderError } from "commander";
 import tab from "@bomb.sh/tab/commander";
 
 import {
   detectLocale,
   createLocaleLookup,
-  type LocaleLookup,
   validateScaffoldPlatform,
   resolveScaffoldTarget,
   scaffoldWithSpinner,
@@ -23,7 +22,7 @@ import {
   LOCALES as SCAFFOLD_LOCALES,
 } from "@pantoken/scaffold/cli";
 
-import { installAgentAssets, type AgentTool, AGENT_TOOLS } from "./index.ts";
+import { installAgentAssets, AGENT_TOOLS } from "./index.ts";
 import { LOCALES } from "../generated/locales/index.ts";
 
 export { installAgentAssets, type AgentTool } from "./index.ts";
@@ -84,7 +83,13 @@ export function createAiCommand(options?: AiCommandOptions): Command {
 
   // `scaffold` subcommand
   program
-    .command("scaffold [platform]")
+    .command("scaffold")
+    .addArgument(
+      new Argument(
+        "[platform]",
+        `Platform to scaffold (${SCAFFOLD_PLATFORMS.join("|")}; "html" is an alias for "components")`,
+      ).argParser(validateScaffoldPlatform),
+    )
     .description(
       "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it",
     )
@@ -101,39 +106,27 @@ export function createAiCommand(options?: AiCommandOptions): Command {
       const { t: aiT } = createLocaleLookup(LOCALES, locale); // ai/pantoken-ai's own bundle
       const { t: scaffoldT } = createLocaleLookup(SCAFFOLD_LOCALES, locale); // @pantoken/scaffold's bundle
 
-      try {
-        // Validate platform first to give immediate feedback
-        if (platformArg) validateScaffoldPlatform(platformArg);
+      // Resolve platform and directory using scaffold's logic
+      const { platform, dir } = await resolveScaffoldTarget({
+        platformArg,
+        dirOption: opts.dir,
+        yes: opts.yes,
+        t: scaffoldT,
+      });
 
-        // Resolve platform and directory using scaffold's logic
-        const { platform, dir } = await resolveScaffoldTarget({
-          platformArg,
-          dirOption: opts.dir,
-          yes: opts.yes,
-          t: scaffoldT,
-        });
+      // Scaffold the project
+      const scaffoldFiles = await scaffoldWithSpinner(platform, dir, scaffoldT);
 
-        // Scaffold the project
-        const scaffoldFiles = await scaffoldWithSpinner(platform, dir, scaffoldT);
+      // Install agent assets
+      const assetFiles = installAgentAssets(opts.tool, dir);
 
-        // Install agent assets
-        const assetFiles = installAgentAssets(opts.tool, dir);
-
-        // Print all written files
-        for (const p of [...scaffoldFiles, ...assetFiles]) {
-          console.log(aiT("wroteFile", { path: p }));
-        }
-
-        // Print next steps (using scaffold's shared formatting, but with ai's locale lookup)
-        printNextSteps(dir, scaffoldFiles, scaffoldT);
-      } catch (err) {
-        if (err instanceof CommanderError || err instanceof InvalidArgumentError) {
-          throw err; // Let runAiCli handle it
-        }
-
-        // Re-throw ScaffoldCliError and other errors
-        throw err;
+      // Print all written files
+      for (const p of [...scaffoldFiles, ...assetFiles]) {
+        console.log(aiT("wroteFile", { path: p }));
       }
+
+      // Print next steps (using scaffold's shared formatting, but with ai's locale lookup)
+      printNextSteps(dir, scaffoldFiles, scaffoldT);
     });
 
   // Enable completions
@@ -167,6 +160,3 @@ export async function runAiCli(argv: string[], options?: AiCommandOptions): Prom
     process.exit(1);
   }
 }
-
-// Re-export needed for error handling in the subcommand
-import { InvalidArgumentError } from "commander";

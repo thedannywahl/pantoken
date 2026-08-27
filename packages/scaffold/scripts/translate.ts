@@ -11,10 +11,14 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { spawnPrompt, sha256 } from "@pantoken/translation-adapters";
+import { extractJsonObject, spawnPrompt, sha256 } from "@pantoken/translation-adapters";
 
 const adapter = process.env.I18N_TRANSLATION_ADAPTER || "ai";
-const command = process.env.I18N_TRANSLATION_COMMAND;
+const command = process.env.I18N_TRANSLATION_COMMAND ?? "claude";
+const commandArgs = (process.env.I18N_TRANSLATION_COMMAND_ARGS ?? "")
+  .split(" ")
+  .map((p) => p.trim())
+  .filter((p) => p.length > 0);
 
 async function main() {
   const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
@@ -64,19 +68,24 @@ ${stringsList}
 Respond with a JSON object mapping each original key to its translation, using the exact same keys. Only the translations, nothing else.`;
 
     try {
-      const result = await spawnPrompt(prompt, {
-        adapter,
+      const result = await spawnPrompt(
         command,
-        model: undefined, // Let the adapter choose default
-      });
+        [...commandArgs, "-p"],
+        prompt,
+        `locale "${locale}"`,
+      );
 
       // Parse the translation result
-      const translated = JSON.parse(result);
+      const translated = extractJsonObject(result);
+      if (!translated) {
+        throw new Error(`AI response could not be parsed as JSON for locale "${locale}".`);
+      }
 
       // Merge translations into cache
       for (const key of missingKeys) {
-        if (key in translated) {
-          cache[key] = translated[key];
+        const value = translated[key];
+        if (typeof value === "string") {
+          cache[key] = value;
         }
       }
 

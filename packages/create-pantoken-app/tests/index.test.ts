@@ -11,8 +11,20 @@ test("--help prints usage without scaffolding anything", () => {
   expect(output).toContain("npm create pantoken-app");
 });
 
+test("--version prints this package's own version", () => {
+  const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) as {
+    version: string;
+  };
+  const output = execFileSync("node", [bin, "--version"], { encoding: "utf8" });
+  expect(output.trim()).toBe(pkg.version);
+});
+
 test("rejects an unknown platform", () => {
   expect(() => execFileSync("node", [bin, "not-a-real-platform"], { encoding: "utf8" })).toThrow();
+});
+
+test("requires a platform argument under --yes", () => {
+  expect(() => execFileSync("node", [bin, "--yes"], { encoding: "utf8" })).toThrow();
 });
 
 test("scaffolds the same output as @pantoken/scaffold for a known platform", () => {
@@ -21,7 +33,7 @@ test("scaffolds the same output as @pantoken/scaffold for a known platform", () 
   const output = execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
   expect(existsSync(join(target, "package.json"))).toBe(true);
   expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
-  expect(output).toContain("vp install");
+  expect(output).toContain("install");
 });
 
 test("accepts the html alias for components", () => {

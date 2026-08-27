@@ -16,10 +16,23 @@ npx @pantoken/scaffold web-components  # Vite + @pantoken/web-components (no fra
 
 # Target a directory other than the current one:
 npx @pantoken/scaffold react ./my-app
+
+# Omit the platform (and/or directory) on a TTY to be prompted interactively:
+npx @pantoken/scaffold
+
+# Non-interactive (CI-safe): errors instead of prompting for a missing platform/directory
+npx @pantoken/scaffold react --dir ./my-app --yes
+
+# Override the auto-detected display language
+npx @pantoken/scaffold --lang hu
 ```
 
 `npx` works regardless of which package manager you use. Substitute `pnpm dlx`, `yarn dlx`, or
-`bunx` for `npx` if you prefer.
+`bunx` for `npx` if you prefer — the printed "Next steps" install command matches whichever one
+invoked the CLI (detected from `npm_config_user_agent`).
+
+Run `npx @pantoken/scaffold --help` for the full flag reference, or `npx @pantoken/scaffold
+completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
 
 Or use it programmatically:
 
@@ -37,6 +50,21 @@ await scaffoldProject("react", "./my-app");
 - **`SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[]`** — every scaffoldable platform key (discovered
   from available presets at build time).
 - **`ScaffoldPlatform`** — the platform union, derived from preset registry.
+
+## CLI flags
+
+| Flag                 | Description                                                               |
+| -------------------- | ------------------------------------------------------------------------- |
+| `[platform]`         | Platform to scaffold (prompted interactively if omitted on a TTY)         |
+| `-d, --dir <path>`   | Target directory (prompted interactively if omitted on a TTY)             |
+| `-y, --yes`          | Never prompt; error instead of prompting for a missing platform/directory |
+| `-l, --lang <tag>`   | Override the auto-detected display language (e.g. `"hu"`)                 |
+| `-v, --version`      | Print the installed version                                               |
+| `-h, --help`         | Print usage                                                               |
+| `completion <shell>` | Generate a bash/zsh/fish/PowerShell completion script                     |
+
+The CLI auto-detects its display language from `--lang` > `LC_ALL`/`LANG` > the runtime's `Intl`
+locale > English, falling back to English for any untranslated string.
 
 ## Architecture
 

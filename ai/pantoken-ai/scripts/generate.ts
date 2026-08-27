@@ -64,11 +64,11 @@ ${Object.entries(localeMap)
   .map(([locale, varName]) => `import { ${varName} } from "./${locale}.js";`)
   .join("\n")}
 
-export const LOCALES = {
+export const LOCALES: Record<string, Record<string, string>> = {
 ${Object.entries(localeMap)
   .map(([locale, varName]) => `  ${locale}: ${varName},`)
   .join("\n")}
-} as const;
+};
 `;
 writeFileSync(join(localesDir, "index.ts"), indexContent);
 if (Object.keys(localeMap).length > 0) {

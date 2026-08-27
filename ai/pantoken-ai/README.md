@@ -45,12 +45,19 @@ npx pantoken-ai scaffold components      # plain HTML/CSS (Vite + TS) + @pantoke
 npx pantoken-ai scaffold react           # Vite + React + @pantoken/react
 npx pantoken-ai scaffold vue             # Vite + Vue 3 + @pantoken/vue
 npx pantoken-ai scaffold web-components  # Vite + @pantoken/web-components (no framework)
+
+# Non-interactive (CI-safe): errors instead of prompting for a missing platform/directory
+npx pantoken-ai scaffold react --dir ./my-app --yes --tool cursor
+
+# Override the auto-detected display language
+npx pantoken-ai --lang hu scaffold react
 ```
 
 If you only want the starter project without the agent assets, run
 [`npx @pantoken/scaffold <platform>`](https://www.npmjs.com/package/@pantoken/scaffold) directly.
 
-Use `npx pantoken-ai --help` to print usage.
+Run `npx pantoken-ai --help` (or `init --help`/`scaffold --help`) for the full flag reference, or
+`npx pantoken-ai completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
 
 Or install programmatically:
 
