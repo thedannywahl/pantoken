@@ -1,0 +1,18 @@
+{
+  "promptPlatform": "Select a platform to scaffold:",
+  "promptDir": "Target directory:",
+  "spinnerStart": "Scaffolding...",
+  "spinnerStop": "Done scaffolding.",
+  "wroteFile": "✓ {{path}}",
+  "nextStepsInstall": "Install dependencies: {{command}}",
+  "nextStepsDependencies": "2. Install dependencies (npm install, pnpm install, yarn install, or bun install)",
+  "nextStepsInstallGeneric": "2. Install dependencies",
+  "nextStepsNav": "3. Start developing: cd {{dir}}",
+  "nextStepsDevServer": "4. Start the dev server (if your template has one)",
+  "errorMissingPlatform": "Missing required argument \"platform\". Expected one of: {{platforms}}",
+  "cancelled": "Cancelled.",
+  "helpPlatformDescription": "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\")",
+  "helpDirDescription": "Target directory (prompts interactively on a TTY if omitted)",
+  "helpYesDescription": "Never prompt; error instead of prompting for a missing platform/directory",
+  "helpLangDescription": "Override the auto-detected display language (e.g. \"hu\")"
+}
