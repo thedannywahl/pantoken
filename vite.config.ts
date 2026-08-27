@@ -213,21 +213,48 @@ export default defineConfig({
       },
       // i18n locale bundle management. translate is local-only (AI credentials required);
       // check:drift asserts committed caches are current (CI-safe, no network).
-      "i18n:translate": {
+      // UI (web-components) string localization.
+      "ui:translate": {
         command: "vp run @pantoken/i18n#translate",
         cache: false,
       },
-      "i18n:translate:agy": {
+      "ui:translate:agy": {
         command: "vp run @pantoken/i18n#translate:agy",
         cache: false,
       },
-      // docs locale translation via agy — local-only (AI credentials required).
+      // Docs locale translation (both claude and agy variants).
+      "docs:translate": {
+        command: "vp run @pantoken/docs#docs:locales:translate",
+        cache: false,
+      },
       "docs:translate:agy": {
         command: "vp run @pantoken/docs#docs:locales:translate:agy",
         cache: false,
       },
+      // CLI (scaffold and ai) string localization.
+      "cli:translate": {
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        cache: false,
+      },
+      "cli:translate:agy": {
+        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+        cache: false,
+      },
+      // Umbrella tasks for all translation domains.
+      "i18n:translate": {
+        command: "true",
+        dependsOn: ["ui:translate", "docs:translate", "cli:translate"],
+        cache: false,
+      },
+      "i18n:translate:agy": {
+        command: "true",
+        dependsOn: ["ui:translate:agy", "docs:translate:agy", "cli:translate:agy"],
+        cache: false,
+      },
+      // Drift checks for all i18n domains (UI, docs, CLI).
       "i18n:check:drift": {
-        command: "vp run @pantoken/i18n#check:drift",
+        command:
+          "vp run @pantoken/i18n#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       "i18n:bundles:build": {
         command: "vp run @pantoken/i18n#generate",

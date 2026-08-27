@@ -556,6 +556,10 @@ jobs:
             i18n:
               - 'packages/i18n/**'
               - 'renderers/web-components/src/lib/strings.ts'
+              - 'packages/scaffold/src/i18n.json'
+              - 'packages/scaffold/i18n-cache/**'
+              - 'ai/pantoken-ai/src/i18n.json'
+              - 'ai/pantoken-ai/i18n-cache/**'
 
   # Verify all Canvas locale caches are current relative to the English source strings.
   # AI translation is never wired here — fill drift locally with `vp run i18n:translate`.
@@ -650,6 +654,8 @@ jobs:
         upstream-drift,
         docs-changes,
         docs,
+        i18n-changes,
+        i18n-drift,
       ]
     if: always()
     runs-on: ubuntu-latest
