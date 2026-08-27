@@ -170,11 +170,12 @@ export async function scaffoldWithSpinner(
  */
 export function detectPackageManager(
   env?: NodeJS.ProcessEnv,
-): "npm" | "pnpm" | "yarn" | "bun" | undefined {
+): "npm" | "pnpm" | "yarn" | "bun" | "deno" | undefined {
   const userAgent = (env ?? process.env).npm_config_user_agent ?? "";
   if (userAgent.includes("pnpm")) return "pnpm";
   if (userAgent.includes("yarn")) return "yarn";
   if (userAgent.includes("bun")) return "bun";
+  if (userAgent.includes("deno")) return "deno";
   if (userAgent.includes("npm")) return "npm";
   return undefined;
 }

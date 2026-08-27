@@ -23,7 +23,7 @@ in the current project. Work through these steps.
   (also accepts the alias `html`). If you only want the starter project without the agent assets,
   run `npx create-pantoken-app <platform> [--dir .]` (or `npx @pantoken/scaffold <platform>
 [--dir .]`) directly instead. Run `npm install` (or the detected package manager's install) in
-  the target directory afterward, substituting `pnpm`/`yarn`/`bun` for `npm` as detected. More
+  the target directory afterward, substituting `pnpm`/`yarn`/`bun`/`deno` for `npm` as detected. More
   platforms land over time; if the desired platform is not yet supported by the scaffold CLI, skip
   the CLI entirely and proceed directly to step 2 to manually install and wire pantoken.
 
@@ -52,12 +52,13 @@ Corroborate with the repo when possible, and prefer the user's answer if it conf
 Also detect the package manager from the lockfile present in the repo, and use its equivalent
 command for every install/run step below instead of assuming npm:
 
-| Lockfile found             | Package manager | Add package(s)   | Run a package's CLI |
-| -------------------------- | --------------- | ---------------- | ------------------- |
-| `pnpm-lock.yaml`           | pnpm            | `pnpm add <pkg>` | `pnpm dlx <pkg>`    |
-| `yarn.lock`                | yarn            | `yarn add <pkg>` | `yarn dlx <pkg>`    |
-| `bun.lock`/`bun.lockb`     | bun             | `bun add <pkg>`  | `bunx <pkg>`        |
-| `package-lock.json` / none | npm             | `npm i <pkg>`    | `npx <pkg>`         |
+| Lockfile found             | Package manager | Add package(s)       | Run a package's CLI  |
+| -------------------------- | --------------- | -------------------- | -------------------- |
+| `pnpm-lock.yaml`           | pnpm            | `pnpm add <pkg>`     | `pnpm dlx <pkg>`     |
+| `yarn.lock`                | yarn            | `yarn add <pkg>`     | `yarn dlx <pkg>`     |
+| `bun.lock`/`bun.lockb`     | bun             | `bun add <pkg>`      | `bunx <pkg>`         |
+| `deno.lock`                | deno            | `deno add npm:<pkg>` | `deno run npm:<pkg>` |
+| `package-lock.json` / none | npm             | `npm i <pkg>`        | `npx <pkg>`          |
 
 If no lockfile exists yet, default to npm (or whatever the user prefers).
 
@@ -131,7 +132,7 @@ For native / CMS targets, no install — run the CLI (step 5).
 npx pantoken generate <swift|android|compose|flutter|rust|wordpress|vanilla|drupal|jekyll|hugo> --out <dir> [--icons a,b] [--theme rebrand]
 ```
 
-Substitute `pnpm dlx`, `yarn dlx`, or `bunx` for `npx` per the package manager detected in step 1.
+Substitute `pnpm dlx`, `yarn dlx`, `bunx`, or `deno run npm:` for `npx` per the package manager detected in step 1.
 
 ## Conventions to follow afterward
 

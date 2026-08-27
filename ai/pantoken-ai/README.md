@@ -32,8 +32,8 @@ npx pantoken-ai init --tool claude --dir ./my-app
 ```
 
 `npx` works regardless of which package manager your project uses. If you prefer to run it through
-your own package manager instead: `pnpm dlx pantoken-ai init`, `yarn dlx pantoken-ai init`, or
-`bunx pantoken-ai init`.
+your own package manager instead: `pnpm dlx pantoken-ai init`, `yarn dlx pantoken-ai init`,
+`bunx pantoken-ai init`, or `deno run npm:pantoken-ai init`.
 
 Tools: `agents`, `llms`, `cursor`, `copilot`, `windsurf`, `claude`, or `all`.
 

@@ -14,7 +14,7 @@ npx pantoken-ai init
 
 This installs every asset by default. To scope it to one tool, pass
 `--tool <agents|llms|cursor|copilot|windsurf|claude>`. To target a directory other than the
-current one, pass `--dir <path>`. Substitute `pnpm dlx`, `yarn dlx`, or `bunx` for `npx` depending
+current one, pass `--dir <path>`. Substitute `pnpm dlx`, `yarn dlx`, `bunx`, or `deno run npm:` for `npx` depending
 on the package manager detected in the repo (look for `pnpm-lock.yaml`, `yarn.lock`, or
 `bun.lock`/`bun.lockb`; default to npm/npx if none is found).
 

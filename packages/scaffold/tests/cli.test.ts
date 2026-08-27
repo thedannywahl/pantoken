@@ -63,6 +63,7 @@ test("detectPackageManager reads npm_config_user_agent", () => {
   expect(detectPackageManager({ npm_config_user_agent: "pnpm/9.0.0 node/22" })).toBe("pnpm");
   expect(detectPackageManager({ npm_config_user_agent: "yarn/4.0.0 node/22" })).toBe("yarn");
   expect(detectPackageManager({ npm_config_user_agent: "bun/1.0.0" })).toBe("bun");
+  expect(detectPackageManager({ npm_config_user_agent: "deno/2.1.0 npm/? node/22" })).toBe("deno");
   expect(detectPackageManager({ npm_config_user_agent: "npm/10.0.0 node/22" })).toBe("npm");
   expect(detectPackageManager({})).toBeUndefined();
 });

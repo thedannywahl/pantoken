@@ -27,9 +27,9 @@ npx @pantoken/scaffold react --dir ./my-app --yes
 npx @pantoken/scaffold --lang hu
 ```
 
-`npx` works regardless of which package manager you use. Substitute `pnpm dlx`, `yarn dlx`, or
-`bunx` for `npx` if you prefer — the printed "Next steps" install command matches whichever one
-invoked the CLI (detected from `npm_config_user_agent`).
+`npx` works regardless of which package manager you use. Substitute `pnpm dlx`, `yarn dlx`,
+`bunx`, or `deno run npm:` for `npx` if you prefer — the printed "Next steps" install command
+matches whichever one invoked the CLI (detected from `npm_config_user_agent`).
 
 Run `npx @pantoken/scaffold --help` for the full flag reference, or `npx @pantoken/scaffold
 completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
