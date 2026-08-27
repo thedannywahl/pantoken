@@ -31,11 +31,17 @@
   "scripts": {
     "scan": "node scripts/scan-presets.ts",
     "generate": "node scripts/generate.ts",
+    "translate": "I18N_TRANSLATION_ADAPTER=ai node scripts/translate.ts",
+    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate.ts",
+    "check:drift": "node scripts/check-drift.ts",
     "dev": "vp pack --watch",
     "test": "vp run scan && vp run generate && vp test",
-    "check": "vp run scan && vp check"
+    "check": "vp run scan && vp check && node scripts/check-drift.ts"
   },
   "dependencies": {
+    "@bomb.sh/tab": "catalog:",
+    "@clack/prompts": "catalog:",
+    "@commander-js/extra-typings": "catalog:",
     "@pantoken/angular": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/react": "workspace:*",
@@ -43,10 +49,12 @@
     "@pantoken/svelte": "workspace:*",
     "@pantoken/vue": "workspace:*",
     "@pantoken/web-components": "workspace:*",
-    "bingo-stratum": "catalog:"
+    "bingo-stratum": "catalog:",
+    "commander": "catalog:"
   },
   "devDependencies": {
     "@pantoken/plugin-layouts": "workspace:*",
+    "@pantoken/translation-adapters": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
