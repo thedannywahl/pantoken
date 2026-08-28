@@ -17,10 +17,19 @@ in the current project. Work through these steps.
   so resolve every input yourself first, then call it in one non-interactive shot:
 
   1. **Platform** — ask the user, offering the supported list: `components` (plain HTML/CSS;
-     `html` is an accepted alias), `react`, `vue`, `svelte`, `web-components`, `angular`. Skip
-     asking only if it's unambiguous from the conversation. More platforms land over time; if the
+     `html` is an accepted alias), `react`, `vue`, `svelte`, `web-components`, `angular`,
+     `canvas-theme-editor` (Canvas LMS Theme Editor uploads + an RCE content page template
+     starter; `theme-editor` is an accepted alias). Skip asking only if it's unambiguous from the
+     conversation — route requests like "use pantoken with my Canvas theme editor" or "build RCE
+     page templates" straight to `canvas-theme-editor`. More platforms land over time; if the
      desired one isn't yet supported by the scaffold CLI, skip the CLI entirely and proceed
      directly to step 2 to manually install and wire pantoken instead.
+
+     For `canvas-theme-editor`, after scaffolding, tell the user to: (1) upload the generated
+     `theme.css`/`theme.js` under Canvas's Theme Editor → Advanced, and (2) open `preview/index.html`
+     (via a local static server, e.g. `npx serve .`) to author and copy RCE page templates from
+     `templates/pages/` into Canvas.
+
   2. **Package manager** — if a lockfile already exists in the target directory, use it (see the
      detection table in step 2); a genuinely empty directory has no lockfile to detect from, so
      ask the user (npm/pnpm/yarn/bun/deno).

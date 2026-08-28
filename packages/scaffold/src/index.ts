@@ -14,11 +14,15 @@ import { producePreset } from "bingo-stratum";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
 import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
 
-/** A platform pantoken can scaffold a starter project for. */
+/**
+ * A platform pantoken can scaffold a starter project for — either preset-ledger-backed (Bingo)
+ * or a legacy template-only entry (e.g. `canvas-theme-editor`) with no preset yet.
+ */
 export type ScaffoldPlatform = keyof typeof PRESET_LEDGER;
 
 /**
- * Every scaffoldable platform key (discovered from available presets).
+ * Every scaffoldable platform key (discovered from available presets, plus any legacy
+ * template-only platforms not yet backed by a preset).
  *
  * @example List available platforms
  * ```ts
@@ -27,8 +31,8 @@ export type ScaffoldPlatform = keyof typeof PRESET_LEDGER;
  * console.log(SCAFFOLD_PLATFORMS); // → ["components", "react", "vue", "web-components"]
  * ```
  */
-export const SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[] = Object.keys(
-  PRESET_LEDGER,
+export const SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[] = Array.from(
+  new Set([...Object.keys(PRESET_LEDGER), ...Object.keys(SCAFFOLDS)]),
 ) as readonly ScaffoldPlatform[];
 
 const SCAFFOLD_PLATFORM_SET = new Set<string>(SCAFFOLD_PLATFORMS);
@@ -36,6 +40,7 @@ const SCAFFOLD_PLATFORM_SET = new Set<string>(SCAFFOLD_PLATFORMS);
 /** Alternate platform names accepted alongside the canonical preset key (e.g. the pre-Bingo `html`). */
 const PLATFORM_ALIASES: Record<string, ScaffoldPlatform> = {
   html: "components",
+  "theme-editor": "canvas-theme-editor",
 };
 
 /** Whether `platform` is a known {@link ScaffoldPlatform} or one of its aliases (e.g. `html`). */
@@ -71,11 +76,12 @@ export async function scaffoldProject(platform: string, dir = "."): Promise<stri
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
   const written: string[] = [];
 
-  // Get the preset for this platform
-  const preset = PRESET_LEDGER[resolvedPlatform];
+  // Get the preset for this platform (undefined for template-only platforms, e.g. canvas-theme-editor)
+  const preset = PRESET_LEDGER[resolvedPlatform as keyof typeof PRESET_LEDGER];
 
-  // Use Bingo stratum to render the preset with options
+  // Use Bingo stratum to render the preset with options (skipped for template-only platforms)
   try {
+    if (!preset) throw new Error(`No preset for platform "${resolvedPlatform}".`);
     const creation = producePreset(preset, {
       offline: true,
       options: { name: projectName },

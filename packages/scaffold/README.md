@@ -13,6 +13,7 @@ npx @pantoken/scaffold components      # plain HTML/CSS (Vite + TS) + @pantoken/
 npx @pantoken/scaffold react           # Vite + React + @pantoken/react
 npx @pantoken/scaffold vue             # Vite + Vue 3 + @pantoken/vue
 npx @pantoken/scaffold web-components  # Vite + @pantoken/web-components (no framework)
+npx @pantoken/scaffold canvas-theme-editor  # Canvas Theme Editor uploads + RCE template starter
 
 # Target a directory other than the current one:
 npx @pantoken/scaffold react ./my-app
@@ -48,8 +49,10 @@ await scaffoldProject("react", "./my-app");
   `ScaffoldPlatform` into `dir` (defaults to `"."`). Its basename (or `"pantoken-app"` for `"."`)
   is passed as the project name to the Bingo preset. Returns the paths written.
 - **`SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[]`** — every scaffoldable platform key (discovered
-  from available presets at build time).
-- **`ScaffoldPlatform`** — the platform union, derived from preset registry.
+  from available presets at build time, plus legacy template-only platforms like
+  `canvas-theme-editor` that aren't backed by a preset yet).
+- **`ScaffoldPlatform`** — the platform union, derived from the preset registry and the legacy
+  template map.
 
 ## CLI flags
 

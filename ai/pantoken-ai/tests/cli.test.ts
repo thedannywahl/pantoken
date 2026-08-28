@@ -128,6 +128,14 @@ test("scaffold writes both the scaffold and the agent assets", async () => {
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
+test("scaffold accepts canvas-theme-editor and writes both the scaffold and the agent assets", async () => {
+  const dir = mktemp();
+  const target = join(dir, "canvas-app");
+  await runAiCli(["scaffold", "canvas-theme-editor", "--dir", target, "--yes", "--tool", "cursor"]);
+  expect(existsSync(join(target, "theme.css"))).toBe(true);
+  expect(existsSync(join(target, ".cursor/rules/pantoken.mdc"))).toBe(true);
+});
+
 test("scaffold prompts for a platform and directory on a TTY", async () => {
   const dir = mktemp();
   const target = join(dir, "prompted-app");

@@ -20,6 +20,33 @@ test("html is accepted as an alias for components", async () => {
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
+test("canvas-theme-editor is a known, template-only platform (no preset)", async () => {
+  expect(SCAFFOLD_PLATFORMS).toContain("canvas-theme-editor");
+  expect(isScaffoldPlatform("canvas-theme-editor")).toBe(true);
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-canvas-"));
+  const target = join(dir, "my-app");
+  const written = await scaffoldProject("canvas-theme-editor", target);
+  expect(written.length).toBeGreaterThan(0);
+  expect(existsSync(join(target, "theme.css"))).toBe(true);
+  expect(existsSync(join(target, "theme.js"))).toBe(true);
+  expect(existsSync(join(target, "preview/index.html"))).toBe(true);
+  expect(existsSync(join(target, "templates/manifest.json"))).toBe(true);
+  expect(existsSync(join(target, "templates/pages/hero.html"))).toBe(true);
+  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain("@pantoken/css/dist/style.css");
+  const pkg = readFileSync(join(target, "package.json"), "utf8");
+  expect(pkg).toContain('"name": "my-app"');
+  expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("theme-editor is accepted as an alias for canvas-theme-editor", async () => {
+  expect(isScaffoldPlatform("theme-editor")).toBe(true);
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-editor-"));
+  const target = join(dir, "my-app");
+  const written = await scaffoldProject("theme-editor", target);
+  expect(written.length).toBeGreaterThan(0);
+  expect(existsSync(join(target, "theme.css"))).toBe(true);
+});
+
 test("scaffolds a platform with projectName substituted", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-"));
   const target = join(dir, "my-app");

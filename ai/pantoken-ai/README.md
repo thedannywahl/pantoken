@@ -45,6 +45,7 @@ npx pantoken-ai scaffold components      # plain HTML/CSS (Vite + TS) + @pantoke
 npx pantoken-ai scaffold react           # Vite + React + @pantoken/react
 npx pantoken-ai scaffold vue             # Vite + Vue 3 + @pantoken/vue
 npx pantoken-ai scaffold web-components  # Vite + @pantoken/web-components (no framework)
+npx pantoken-ai scaffold canvas-theme-editor  # Canvas Theme Editor uploads + RCE template starter
 
 # Non-interactive (CI-safe): errors instead of prompting for a missing platform/directory
 npx pantoken-ai scaffold react --dir ./my-app --yes --tool cursor

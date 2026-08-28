@@ -1,0 +1,21 @@
+/**
+ * pantoken for Canvas Theme Editor
+ * Upload this file under Theme Editor → Advanced → CSS.
+ *
+ * Defaults to pantoken's rebrand-light design tokens (currently the only theme it ships) via
+ * jsDelivr. Pin a specific version (e.g. "@pantoken/css@1.0.0") once you're ready to lock it down.
+ */
+
+/* 1. Token foundation — every --instui-* custom property, defaulting to rebrand-light. */
+@import url("https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css");
+
+/* 2. Component styles — every .instui-* class used by the starter page templates. */
+@import url("https://cdn.jsdelivr.net/npm/@pantoken/components/dist/components.css");
+
+/* 3. Fonts — loaded last since font-face declarations can't be rewritten by a combine URL. */
+@import url("https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css");
+
+/* ---------------------------------------------------------------------------------------------
+ * Your overrides go below this line. Canvas loads Theme Editor CSS after its own stylesheet, so
+ * anything added here can safely override pantoken's defaults too.
+ * ------------------------------------------------------------------------------------------- */

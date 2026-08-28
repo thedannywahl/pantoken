@@ -25,7 +25,10 @@ test("wrapper layout jsx format uses className and JS comments, not HTML comment
 });
 
 test("every platform's scaffolded output has the wrapper layout baked in, no leftover tokens", async () => {
-  for (const platform of SCAFFOLD_PLATFORMS) {
+  // canvas-theme-editor scaffolds Canvas Theme Editor uploads + RCE content templates, not an
+  // app-shell demo page, so it doesn't use the wrapper layout convention.
+  const platforms = SCAFFOLD_PLATFORMS.filter((platform) => platform !== "canvas-theme-editor");
+  for (const platform of platforms) {
     const dir = mkdtempSync(join(tmpdir(), `pantoken-scaffold-wrapper-${platform}-`));
     const written = await scaffoldProject(platform, join(dir, "app"));
     const entryContent = written

@@ -260,18 +260,8 @@ function openPopoverIfEnabled() {
   }
 }
 
-.gs-command-row__suffix.-terminal {
-  color: light-dark(
-    var(--instui-color-institutional-brand-primary),
-    var(--instui-color-institutional-brand-font-color-dark)
-  );
-}
-
-.gs-command-row__suffix.-agent {
-  color: light-dark(
-    var(--instui-color-institutional-brand-primary),
-    var(--instui-color-institutional-brand-font-color-dark)
-  );
+.gs-command-row__suffix:is(.-terminal, .-agent) {
+  color: var(--vp-c-text-1);
 }
 
 .gs-command-row__icon {

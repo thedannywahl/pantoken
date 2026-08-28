@@ -8,7 +8,8 @@ pantoken resolves Instructure UI's design tokens and icons once, then turns that
 
 Scaffolding a pantoken app is a one-liner, just choose your target platform:
 
-`HTML` (or `components`) · `web-components` · `react` · `vue` · `svelte` · `angular`
+`HTML` (or `components`) · `web-components` · `react` · `vue` · `svelte` · `angular` ·
+`canvas-theme-editor` (or `theme-editor`)
 
 ```sh
 npx create-pantoken-app <platform>

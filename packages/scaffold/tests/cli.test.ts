@@ -77,6 +77,11 @@ test("validateScaffoldPlatform accepts a known platform and rejects unknown ones
   expect(() => validateScaffoldPlatform("not-a-real-platform")).toThrow(InvalidArgumentError);
 });
 
+test("validateScaffoldPlatform accepts canvas-theme-editor and its theme-editor alias", () => {
+  expect(validateScaffoldPlatform("canvas-theme-editor")).toBe("canvas-theme-editor");
+  expect(validateScaffoldPlatform("theme-editor")).toBe("theme-editor");
+});
+
 // ---------------------------------------------------------------------------
 // printNextSteps
 // ---------------------------------------------------------------------------

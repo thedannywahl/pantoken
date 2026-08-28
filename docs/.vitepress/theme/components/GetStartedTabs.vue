@@ -109,6 +109,15 @@ const timings = {
   blinkMs: BLINK_MS,
 };
 
+// Agent prompts are longer than package-manager commands, so type/delete ~1.5x faster to keep
+// the cycle feeling brisk.
+const AGENT_SPEED_MULTIPLIER = 1.5;
+const agentTimings = {
+  ...timings,
+  typeMs: TYPE_MS / AGENT_SPEED_MULTIPLIER,
+  deleteMs: DELETE_MS / AGENT_SPEED_MULTIPLIER,
+};
+
 const terminalCycle = useCommandCycle({
   options: pmOptions,
   suffix: BASE_COMMAND,
@@ -122,7 +131,7 @@ const agentCycle = useCommandCycle({
   suffix: AGENT_PROMPT,
   isPaused,
   reducedMotion,
-  timings,
+  timings: agentTimings,
 });
 
 onMounted(() => {
@@ -182,6 +191,19 @@ function leaveAgent() {
   agentTextHovered.value = false;
   resume();
 }
+
+function tone(option: CommandCycleOption): string {
+  return option.darkColor ? `light-dark(${option.color}, ${option.darkColor})` : option.color;
+}
+
+// The active command's color, mapped to a CSS var so the stage can react to it.
+const highlightColor = computed(() =>
+  tone(
+    activeSurface.value === "terminal"
+      ? terminalCycle.activeOption.value
+      : agentCycle.activeOption.value,
+  ),
+);
 </script>
 
 <template>
@@ -209,7 +231,11 @@ function leaveAgent() {
       </button>
     </div>
 
-    <div class="gs-started__stage" :class="{ '-agent': activeSurface === 'agent' }">
+    <div
+      class="gs-started__stage"
+      :class="{ '-agent': activeSurface === 'agent' }"
+      :style="{ '--gs-highlight': highlightColor }"
+    >
       <div class="gs-started__flipper">
         <div class="gs-started__face gs-started__face--terminal">
           <div
@@ -333,10 +359,6 @@ function leaveAgent() {
 </style>
 
 <style scoped>
-.gs-started {
-  margin-top: 2rem;
-}
-
 .gs-started__mode {
   display: inline-flex;
   gap: 0.35rem;
@@ -377,15 +399,39 @@ function leaveAgent() {
   perspective: 1100px;
 }
 
+/* A shadow beneath the card, outside the flipper's 3D transform (so it doesn't get its own
+   backface-hidden face), but rotated in lockstep with the flipper so it reads as attached to
+   whichever face is currently up rather than a shadow fixed to the terminal face alone. */
+.gs-started__stage::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset-inline: 4%;
+  inset-block-end: -48px;
+  block-size: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  filter: blur(10px);
+  pointer-events: none;
+  transform: rotateY(-15deg);
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gs-started__stage.-agent::after {
+  transform: rotateY(165deg);
+}
+
 .gs-started__flipper {
   position: absolute;
+  z-index: 1;
   inset: 0;
   transform-style: preserve-3d;
+  transform: rotateY(-15deg);
   transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .gs-started__stage.-agent .gs-started__flipper {
-  transform: rotateY(180deg);
+  transform: rotateY(165deg);
 }
 
 .gs-started__face {
@@ -497,7 +543,6 @@ function leaveAgent() {
   min-inline-size: 0;
   min-block-size: 0;
   border-radius: 0 0 8px 8px;
-  border-width: 4px;
   overflow: visible;
 }
 
@@ -574,8 +619,27 @@ function leaveAgent() {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gs-started__flipper {
+  .gs-started__flipper,
+  .gs-started__stage::after {
     transition: none;
+  }
+}
+
+/* On narrow viewports there's no room to read the 3D tilt as depth, so square the flip up to a
+   flat 0/180 and give the stage some breathing room instead. */
+@media (max-width: 959px) {
+  .gs-started {
+    margin-block: 2rem;
+  }
+
+  .gs-started__flipper,
+  .gs-started__stage::after {
+    transform: rotateY(0deg);
+  }
+
+  .gs-started__stage.-agent .gs-started__flipper,
+  .gs-started__stage.-agent::after {
+    transform: rotateY(180deg);
   }
 }
 </style>
