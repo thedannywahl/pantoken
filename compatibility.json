@@ -58,6 +58,11 @@
       "governedBy": "token-ir"
     },
     {
+      "package": "@pantoken/canvas-theme-editor",
+      "path": "platforms/canvas-theme-editor",
+      "governedBy": "token-ir"
+    },
+    {
       "package": "@pantoken/compose",
       "path": "platforms/compose",
       "governedBy": "token-ir"

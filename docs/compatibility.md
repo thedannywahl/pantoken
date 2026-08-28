@@ -27,39 +27,40 @@ every package consumes, while the `@instructure/ui-*` React packages are used on
 
 ## Consumers
 
-| Package                    | Path                       | Governed by  |
-| -------------------------- | -------------------------- | ------------ |
-| `@pantoken/android`        | `platforms/android`        | token-ir     |
-| `@pantoken/compose`        | `platforms/compose`        | token-ir     |
-| `@pantoken/drupal`         | `platforms/drupal`         | token-ir     |
-| `@pantoken/email`          | `platforms/email`          | token-ir     |
-| `@pantoken/flutter`        | `platforms/flutter`        | token-ir     |
-| `@pantoken/hugo`           | `platforms/hugo`           | token-ir     |
-| `@pantoken/jekyll`         | `platforms/jekyll`         | token-ir     |
-| `@pantoken/rust`           | `platforms/rust`           | token-ir     |
-| `@pantoken/swift`          | `platforms/swift`          | token-ir     |
-| `@pantoken/vanilla`        | `platforms/vanilla`        | token-ir     |
-| `@pantoken/wordpress`      | `platforms/wordpress`      | token-ir     |
-| `@pantoken/angular`        | `renderers/angular`        | token-ir     |
-| `@pantoken/astro`          | `renderers/astro`          | token-ir     |
-| `@pantoken/bootstrap`      | `renderers/bootstrap`      | token-ir     |
-| `@pantoken/css-in-js`      | `renderers/css-in-js`      | token-ir     |
-| `@pantoken/docusaurus`     | `renderers/docusaurus`     | token-ir     |
-| `@pantoken/foundation`     | `renderers/foundation`     | token-ir     |
-| `@pantoken/markdown-it`    | `renderers/markdown-it`    | token-ir     |
-| `@pantoken/mintlify`       | `renderers/mintlify`       | token-ir     |
-| `@pantoken/mui`            | `renderers/mui`            | token-ir     |
-| `@pantoken/pendo`          | `renderers/pendo`          | token-ir     |
-| `@pantoken/react`          | `renderers/react`          | token-ir     |
-| `@pantoken/react-markdown` | `renderers/react-markdown` | instui-react |
-| `@pantoken/react-native`   | `renderers/react-native`   | token-ir     |
-| `@pantoken/rehype`         | `renderers/rehype`         | token-ir     |
-| `@pantoken/shadcn`         | `renderers/shadcn`         | token-ir     |
-| `@pantoken/storybook`      | `renderers/storybook`      | token-ir     |
-| `@pantoken/svelte`         | `renderers/svelte`         | token-ir     |
-| `@pantoken/vitepress`      | `renderers/vitepress`      | token-ir     |
-| `@pantoken/vue`            | `renderers/vue`            | token-ir     |
-| `@pantoken/web-components` | `renderers/web-components` | token-ir     |
+| Package                         | Path                            | Governed by  |
+| ------------------------------- | ------------------------------- | ------------ |
+| `@pantoken/android`             | `platforms/android`             | token-ir     |
+| `@pantoken/canvas-theme-editor` | `platforms/canvas-theme-editor` | token-ir     |
+| `@pantoken/compose`             | `platforms/compose`             | token-ir     |
+| `@pantoken/drupal`              | `platforms/drupal`              | token-ir     |
+| `@pantoken/email`               | `platforms/email`               | token-ir     |
+| `@pantoken/flutter`             | `platforms/flutter`             | token-ir     |
+| `@pantoken/hugo`                | `platforms/hugo`                | token-ir     |
+| `@pantoken/jekyll`              | `platforms/jekyll`              | token-ir     |
+| `@pantoken/rust`                | `platforms/rust`                | token-ir     |
+| `@pantoken/swift`               | `platforms/swift`               | token-ir     |
+| `@pantoken/vanilla`             | `platforms/vanilla`             | token-ir     |
+| `@pantoken/wordpress`           | `platforms/wordpress`           | token-ir     |
+| `@pantoken/angular`             | `renderers/angular`             | token-ir     |
+| `@pantoken/astro`               | `renderers/astro`               | token-ir     |
+| `@pantoken/bootstrap`           | `renderers/bootstrap`           | token-ir     |
+| `@pantoken/css-in-js`           | `renderers/css-in-js`           | token-ir     |
+| `@pantoken/docusaurus`          | `renderers/docusaurus`          | token-ir     |
+| `@pantoken/foundation`          | `renderers/foundation`          | token-ir     |
+| `@pantoken/markdown-it`         | `renderers/markdown-it`         | token-ir     |
+| `@pantoken/mintlify`            | `renderers/mintlify`            | token-ir     |
+| `@pantoken/mui`                 | `renderers/mui`                 | token-ir     |
+| `@pantoken/pendo`               | `renderers/pendo`               | token-ir     |
+| `@pantoken/react`               | `renderers/react`               | token-ir     |
+| `@pantoken/react-markdown`      | `renderers/react-markdown`      | instui-react |
+| `@pantoken/react-native`        | `renderers/react-native`        | token-ir     |
+| `@pantoken/rehype`              | `renderers/rehype`              | token-ir     |
+| `@pantoken/shadcn`              | `renderers/shadcn`              | token-ir     |
+| `@pantoken/storybook`           | `renderers/storybook`           | token-ir     |
+| `@pantoken/svelte`              | `renderers/svelte`              | token-ir     |
+| `@pantoken/vitepress`           | `renderers/vitepress`           | token-ir     |
+| `@pantoken/vue`                 | `renderers/vue`                 | token-ir     |
+| `@pantoken/web-components`      | `renderers/web-components`      | token-ir     |
 
 ## Deprecations
 

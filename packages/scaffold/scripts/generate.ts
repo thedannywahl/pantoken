@@ -4,8 +4,15 @@
  */
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
+import { THEME_CSS, THEME_JS } from "@pantoken/canvas-theme-editor";
 import { renderWrapperContainer, wrapperRootClassName } from "@pantoken/scaffold-base";
 import { generateLocaleBundles } from "@pantoken/translation-adapters";
+
+// canvas-theme-editor's theme.css/theme.js are owned by @pantoken/canvas-theme-editor (so they can
+// be published/consumed standalone too) rather than duplicated as on-disk template files here.
+const THEME_ASSET_OVERRIDES: Record<string, Record<string, string>> = {
+  "canvas-theme-editor": { "theme.css": THEME_CSS, "theme.js": THEME_JS },
+};
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");
@@ -45,6 +52,7 @@ for (const platform of readdirSync(templatesRoot, { withFileTypes: true })) {
   }
   // Every scaffold gets the same cssdoc schema file from one shared template source.
   files["cssdoc.json"] = sharedCssdocTemplate;
+  Object.assign(files, THEME_ASSET_OVERRIDES[platform.name]);
   scaffolds[platform.name] = files;
 }
 

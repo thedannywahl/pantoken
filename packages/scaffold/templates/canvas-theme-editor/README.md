@@ -9,7 +9,8 @@ Content Editor (RCE) page templates styled with
 
 - `theme.css` / `theme.js` — upload these two files under **Theme Editor → Advanced** in Canvas.
   They're pre-populated with pantoken's CDN imports (defaulting to pantoken's `rebrand-light`
-  design, currently the only theme it ships) and a safe no-op JS bootstrap.
+  design, currently the only theme it ships) and a loader for `@pantoken/interactions` (wires up
+  component behaviors like modal, tooltip, and drilldown).
 - `preview/` — a local, TinyMCE-based editor that mirrors Canvas's RCE so you can author page
   templates against pantoken's classes before copying them into Canvas.
 - `templates/pages/` — starter HTML snippets (hero, callout, two-column, rubric note, testimonial)
@@ -41,5 +42,5 @@ for you.
 Canvas's Rich Content Editor runs TinyMCE and sanitizes submitted HTML on the server, so keep
 templates to semantic HTML pantoken already supports (`div`, `p`, `span`, `a`, `img`, headings,
 lists, tables) and class-based styling — avoid inline `style` attributes and `<script>` tags, since
-Canvas strips or ignores them. `theme.js` is a safe, no-op-by-default extension point; see its
-comments before adding behavior, since it runs in Canvas's global page scope.
+Canvas strips or ignores them. `theme.js` loads `@pantoken/interactions` from the CDN, which runs
+in Canvas's global page scope.
