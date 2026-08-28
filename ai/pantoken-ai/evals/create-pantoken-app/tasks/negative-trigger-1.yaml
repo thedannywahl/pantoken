@@ -1,6 +1,6 @@
 id: negative-trigger-001
 name: Negative Trigger 1
-description: A near-miss request that belongs to init-pantoken (agent assets only), not scaffold-pantoken (installs packages/wires code).
+description: A near-miss request that belongs to init-pantoken (agent assets only), not create-pantoken-app (installs packages/wires code).
 tags:
   - negative-trigger
 inputs:

@@ -1,6 +1,6 @@
-name: scaffold-pantoken-eval
-description: Eval suite for the scaffold-pantoken skill (project scaffolding and package wiring).
-skill: scaffold-pantoken
+name: create-pantoken-app-eval
+description: Eval suite for the create-pantoken-app skill (project scaffolding and package wiring).
+skill: create-pantoken-app
 version: "1.0"
 config:
   trials_per_task: 1

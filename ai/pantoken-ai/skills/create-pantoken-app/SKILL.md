@@ -1,5 +1,5 @@
 ---
-name: scaffold-pantoken
+name: create-pantoken-app
 description: Scaffold a new project, or add Instructure design tokens and icons (pantoken) to an existing one. Use when the user wants to start a new app with pantoken already wired in, or wants to add Instructure/Canvas theming, InstUI design tokens, or the pantoken packages to an existing app — detects the framework, installs the right @pantoken/* packages, and wires the token CSS.
 ---
 

@@ -3,7 +3,7 @@
  * developing pantoken itself).
  *
  * It ships an `AGENTS.md`, an `llms.txt`, editor/agent rule files (Cursor, Copilot, Windsurf), and
- * Claude Code skills (`init-pantoken`, `scaffold-pantoken`), plus {@link installAgentAssets} /
+ * Claude Code skills (`init-pantoken`, `create-pantoken-app`), plus {@link installAgentAssets} /
  * {@link scaffoldAndInit} / the `pantoken-ai` CLI to drop them into a consumer repo at the
  * conventional paths.
  *
@@ -62,7 +62,7 @@ const TARGETS: Record<AgentTool, AssetTarget[]> = {
   windsurf: [{ file: ".windsurf/rules/pantoken.md", content: ASSETS.windsurf }],
   claude: [
     { file: ".claude/skills/init-pantoken/SKILL.md", content: ASSETS.initSkill },
-    { file: ".claude/skills/scaffold-pantoken/SKILL.md", content: ASSETS.scaffoldSkill },
+    { file: ".claude/skills/create-pantoken-app/SKILL.md", content: ASSETS.createAppSkill },
     { file: "AGENTS.md", content: ASSETS.agents },
   ],
 };

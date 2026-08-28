@@ -19,7 +19,7 @@ const assets: Record<string, string> = {
   copilot,
   windsurf: read("assets/windsurf.md"),
   initSkill: read("skills/init-pantoken/SKILL.md"),
-  scaffoldSkill: read("skills/scaffold-pantoken/SKILL.md"),
+  createAppSkill: read("skills/create-pantoken-app/SKILL.md"),
 };
 
 const outDir = join(root, "generated");

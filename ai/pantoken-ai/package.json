@@ -1,7 +1,7 @@
 {
   "name": "@pantoken/ai",
   "version": "0.2.3",
-  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and init-pantoken/scaffold-pantoken Claude Code skills, with an installer CLI (init, scaffold <platform>).",
+  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and init-pantoken/create-pantoken-app Claude Code skills, with an installer CLI (init, scaffold <platform>).",
   "homepage": "https://pantoken.iywahl.com",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",

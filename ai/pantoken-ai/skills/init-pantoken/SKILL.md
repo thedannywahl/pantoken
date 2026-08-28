@@ -1,12 +1,12 @@
 ---
 name: init-pantoken
-description: Install pantoken's agent assets (AGENTS.md, llms.txt, editor/agent rule files, and the scaffold-pantoken skill) into this repo so AI tools know how to work with pantoken. Use when the user asks to add pantoken AI support, or wants Copilot/Cursor/Windsurf/Claude rules for pantoken set up in a repo.
+description: Install pantoken's agent assets (AGENTS.md, llms.txt, editor/agent rule files, and the create-pantoken-app skill) into this repo so AI tools know how to work with pantoken. Use when the user asks to add pantoken AI support, or wants Copilot/Cursor/Windsurf/Claude rules for pantoken set up in a repo.
 ---
 
 # Init pantoken (AI assets)
 
 Install pantoken's consumer-facing agent assets into the current repo: `AGENTS.md`, `llms.txt`,
-editor/agent rule files (Cursor, Copilot, Windsurf), and the `scaffold-pantoken` skill.
+editor/agent rule files (Cursor, Copilot, Windsurf), and the `create-pantoken-app` skill.
 
 ```sh
 npx pantoken-ai init
@@ -20,5 +20,5 @@ on the package manager detected in the repo (look for `pnpm-lock.yaml`, `yarn.lo
 
 That's all this skill does — it only writes the asset files above, it does not install any
 `@pantoken/*` package or modify application code. Once the assets are installed, use the
-`scaffold-pantoken` skill (or run `npx pantoken-ai scaffold <platform>` directly) to scaffold a
+`create-pantoken-app` skill (or run `npx pantoken-ai scaffold <platform>` directly) to scaffold a
 new project or wire pantoken into an existing one.

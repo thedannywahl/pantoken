@@ -30,7 +30,7 @@ test("installs both Claude skills + AGENTS.md", () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-ai-claude-"));
   installAgentAssets("claude", dir);
   expect(existsSync(join(dir, ".claude/skills/init-pantoken/SKILL.md"))).toBe(true);
-  expect(existsSync(join(dir, ".claude/skills/scaffold-pantoken/SKILL.md"))).toBe(true);
+  expect(existsSync(join(dir, ".claude/skills/create-pantoken-app/SKILL.md"))).toBe(true);
   expect(existsSync(join(dir, "AGENTS.md"))).toBe(true);
 });
 
