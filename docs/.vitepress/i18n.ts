@@ -1,4 +1,4 @@
-import type { CdnPickerStrings } from "./theme/cdn";
+import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "./theme/cdn";
 import type { GetStartedTabsStrings } from "./theme/get-started";
 
 /** The locales the docs site builds: `root` (English) and `hu` (Hungarian). */
@@ -110,35 +110,9 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       canvas: "Canvas",
       canvasHighContrast: "Canvas high contrast",
     },
-    cdnPicker: {
-      themeLabel: "Theme",
-      themeRebrand: "Rebrand",
-      themeCanvas: "Canvas",
-      themeCanvasHighContrast: "Canvas high contrast",
-      modeLabel: "Rebrand mode",
-      modeAdaptive: "Light + dark",
-      modeLightOnly: "Light only",
-      includeDarkMode: "Include dark mode",
-      componentsLabel: "Components",
-      allComponents: "All components",
-      formatLabel: "Output",
-      formatLink: "<link>",
-      formatImport: "@import",
-      includeBase: "Base",
-      baseInfoLabel: "About the base reset",
-      baseInfo:
-        "The opt-in global reset: box-sizing, the page surface, base text colour and font, color-scheme, and link defaults.",
-      includeUtilities: "Utilities",
-      utilitiesInfoLabel: "About the utility classes",
-      utilitiesInfo:
-        "An opt-in layer of cross-cutting classes: a View primitive, spacing on the token scale, and semantic color overrides.",
-      copy: "Copy",
-      copied: "Copied",
-      empty: "Select one or more components to build a URL.",
-      fontsNote:
-        "Fonts load separately — add a <link> to @pantoken/components/fonts.css when you need them.",
-      iconsNote: "component-icons.css is included because a selected component uses icons.",
-    },
+    // Identical to CDN_PICKER_DEFAULTS by design — this *is* the component's fallback (see
+    // theme/cdn.ts's docblock) — imported rather than re-typed so the two can't drift apart.
+    cdnPicker: CDN_PICKER_DEFAULTS,
     getStartedTabs: {
       aiCommand: "Run `npx @pantoken/ai init` in this repo, then run `/scaffold-pantoken`.",
       copied: "Copied",

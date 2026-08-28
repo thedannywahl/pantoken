@@ -99,51 +99,66 @@ export function useCommandCycle({
     });
   }
 
-  function scheduleNext() {
-    clearTimeout(timeoutId);
-    if (isPaused.value || reducedMotion.value) return;
+  /** Schedule `run` after `ms`, tracked as the cycle's single pending timer. */
+  function after(ms: number, run: () => void) {
+    timeoutId = setTimeout(run, ms);
+  }
 
-    if (phase.value === "idle") {
-      timeoutId = setTimeout(() => {
-        activeIndex.value = (activeIndex.value + 1) % options.length;
-        phase.value = "typing";
-        scheduleNext();
-      }, timings.startHoldMs);
+  // One handler per phase (below), keyed by `phase.value` — each owns just that phase's own
+  // branching, so `scheduleNext` itself is a flat dispatch rather than one large state machine.
+
+  function scheduleIdle() {
+    after(timings.startHoldMs, () => {
+      activeIndex.value = (activeIndex.value + 1) % options.length;
+      phase.value = "typing";
+      scheduleNext();
+    });
+  }
+
+  function scheduleTyping() {
+    if (charCount.value >= totalLength.value) {
+      phase.value = "paused";
+      beatBlink();
+      scheduleNext();
       return;
     }
+    after(timings.typeMs, () => {
+      charCount.value++;
+      scheduleNext();
+    });
+  }
 
-    if (phase.value === "typing") {
-      if (charCount.value < totalLength.value) {
-        timeoutId = setTimeout(() => {
-          charCount.value++;
-          scheduleNext();
-        }, timings.typeMs);
-      } else {
-        phase.value = "paused";
-        beatBlink();
-        scheduleNext();
-      }
-      return;
-    }
+  function schedulePaused() {
+    after(timings.holdMs, () => {
+      phase.value = "deleting";
+      scheduleNext();
+    });
+  }
 
-    if (phase.value === "paused") {
-      timeoutId = setTimeout(() => {
-        phase.value = "deleting";
-        scheduleNext();
-      }, timings.holdMs);
-      return;
-    }
-
-    if (charCount.value > 0) {
-      timeoutId = setTimeout(() => {
-        charCount.value--;
-        scheduleNext();
-      }, timings.deleteMs);
-    } else {
+  function scheduleDeleting() {
+    if (charCount.value <= 0) {
       phase.value = "idle";
       beatBlink();
       scheduleNext();
+      return;
     }
+    after(timings.deleteMs, () => {
+      charCount.value--;
+      scheduleNext();
+    });
+  }
+
+  const phaseHandlers: Record<CyclePhase, () => void> = {
+    idle: scheduleIdle,
+    typing: scheduleTyping,
+    paused: schedulePaused,
+    deleting: scheduleDeleting,
+  };
+
+  function scheduleNext() {
+    clearTimeout(timeoutId);
+    if (isPaused.value || reducedMotion.value) return;
+    phaseHandlers[phase.value]();
   }
 
   function start() {
