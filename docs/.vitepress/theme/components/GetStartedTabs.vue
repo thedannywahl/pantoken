@@ -24,6 +24,29 @@ const pmOptions: CommandCycleOption[] = [
 const aiProviderOptions: CommandCycleOption[] = [
   { id: "claude", label: "claude", launcher: "claude ", color: "#D97757", icon: "claudecode" },
   { id: "gemini", label: "gemini", launcher: "gemini ", color: "#4785ff", icon: "googlegemini" },
+  {
+    id: "cursor",
+    label: "cursor",
+    // The installed binary is `agent` (marketed as "Cursor CLI"/"cursor-agent" in its own docs).
+    launcher: "agent ",
+    // Cursor's brand mark is flat black — unreadable on a dark background, so light/dark instead
+    // of the raw simple-icons hex.
+    color: "#000000",
+    darkColor: "#f2f2f2",
+    icon: "cursor",
+  },
+  { id: "codex", label: "codex", launcher: "codex ", color: "#412991", icon: "openai" },
+  {
+    id: "copilot",
+    label: "copilot",
+    // -p puts Copilot CLI in "programmatic mode" (its docs' term) for a plain prompt argument.
+    launcher: "copilot -p ",
+    color: "#000000",
+    darkColor: "#f2f2f2",
+    icon: "githubcopilot",
+  },
+  // No bundled icon: simple-icons (this repo's icon set) has no Amazon/AWS entry.
+  { id: "q", label: "q", launcher: "q chat ", color: "#FF9900" },
 ];
 
 const activeSurface = ref<"terminal" | "agent">("terminal");
@@ -33,7 +56,10 @@ const agentHovered = ref(false);
 const agentTextHovered = ref(false);
 
 const BASE_COMMAND = "create-pantoken-app";
-const AGENT_PROMPT = "/scaffold-pantoken";
+// Quoted so the copied/typed line is one valid shell argument for every launcher above — unlike
+// the old bare `/scaffold-pantoken` slash command, this prompt is a full sentence with spaces.
+const AGENT_PROMPT =
+  '"Fetch https://pantoken.iywahl.com/create-pantoken-app.md and follow it to set up pantoken in this project."';
 
 type DocsThemeWithGetStartedTabs = {
   getStartedTabs?: GetStartedTabsStrings;
@@ -248,6 +274,9 @@ function leaveAgent() {
 @import "@pantoken/plugin-simple-icons/icons/yarn.css";
 @import "@pantoken/plugin-simple-icons/icons/claudecode.css";
 @import "@pantoken/plugin-simple-icons/icons/googlegemini.css";
+@import "@pantoken/plugin-simple-icons/icons/cursor.css";
+@import "@pantoken/plugin-simple-icons/icons/openai.css";
+@import "@pantoken/plugin-simple-icons/icons/githubcopilot.css";
 </style>
 
 <style scoped>

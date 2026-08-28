@@ -17,8 +17,18 @@ npx create-pantoken-app react
 
 Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
 [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use. Using an AI coding agent? `npx @pantoken/ai init` installs agent rules and a
-`/scaffold-pantoken` skill that does the same thing from inside your editor.
+programmatic use.
+
+Using an AI coding agent? No install needed — point it at the skill directly:
+
+```sh
+claude "Fetch https://pantoken.iywahl.com/create-pantoken-app.md and follow it to set up pantoken in this project."
+```
+
+Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
+Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
+rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
+of this skill), run `npx @pantoken/ai init` instead.
 
 ## The token model
 

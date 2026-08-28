@@ -114,7 +114,6 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     // theme/cdn.ts's docblock) — imported rather than re-typed so the two can't drift apart.
     cdnPicker: CDN_PICKER_DEFAULTS,
     getStartedTabs: {
-      aiCommand: "Run `npx @pantoken/ai init` in this repo, then run `/scaffold-pantoken`.",
       copied: "Copied",
       cliInstall: "CLI install",
       aiInstall: "AI install",
@@ -211,8 +210,6 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
         "A component-icons.css azért szerepel, mert egy kiválasztott komponens ikonokat használ.",
     },
     getStartedTabs: {
-      aiCommand:
-        "Futtasd az `npx @pantoken/ai init` parancsot ebben a projektben, majd futtasd a `/scaffold-pantoken` skillt.",
       copied: "Másolva",
       cliInstall: "CLI telepítés",
       aiInstall: "AI telepítés",
