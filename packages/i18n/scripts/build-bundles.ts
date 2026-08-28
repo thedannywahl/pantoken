@@ -7,9 +7,15 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { ENGLISH_STRINGS } from "@pantoken/web-components";
 import { CANVAS_LOCALES } from "../src/lib/canvas-locales.ts";
 import { keyFor } from "./lib/keys.ts";
-import { ENGLISH_SOURCES, TRANSLATABLE_KEYS } from "./lib/keys.ts";
+import { ENGLISH_SOURCES } from "./lib/keys.ts";
+
+// This bundle only carries `WebComponentStrings` — `keys.ts`'s auto-discovered set spans every
+// package's `src/i18n.json` (for the shared drift/translate tooling), so scope down to just the
+// keys `@pantoken/web-components` actually declares (`weekdays` is derived at runtime, not a key).
+const WEB_COMPONENT_KEYS = Object.keys(ENGLISH_STRINGS).filter((k) => k !== "weekdays");
 
 const root = new URL("..", import.meta.url).pathname;
 const cacheDir = join(root, "i18n-cache");
@@ -40,7 +46,7 @@ export function buildLocaleFile(locale: string): string {
 
   // Collect only strings that differ from the English source (true translations).
   const overrides: Record<string, string> = {};
-  for (const key of TRANSLATABLE_KEYS) {
+  for (const key of WEB_COMPONENT_KEYS) {
     const cacheKey = keyFor(key, ENGLISH_SOURCES[key]);
     const translated = entries[cacheKey];
     if (translated !== undefined && translated !== ENGLISH_SOURCES[key]) {
