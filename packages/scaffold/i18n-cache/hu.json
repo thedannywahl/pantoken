@@ -1,0 +1,18 @@
+{
+  "promptPlatform": "Válassz ki egy platformot a projektváz létrehozásához:",
+  "promptDir": "Célkönyvtár:",
+  "spinnerStart": "Projektváz létrehozása...",
+  "spinnerStop": "A projektváz elkészült.",
+  "wroteFile": "✓ {{path}}",
+  "nextStepsInstall": "Függőségek telepítése: {{command}}",
+  "nextStepsDependencies": "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)",
+  "nextStepsInstallGeneric": "2. Függőségek telepítése",
+  "nextStepsNav": "3. Fejlesztés megkezdése: cd {{dir}}",
+  "nextStepsDevServer": "4. Fejlesztői szerver elindítása (ha a sablon tartalmaz ilyet)",
+  "errorMissingPlatform": "Hiányzik a kötelező \"platform\" argumentum. Várt értékek egyike: {{platforms}}",
+  "cancelled": "Megszakítva.",
+  "helpPlatformDescription": "Platform a projektváz létrehozásához ({{platforms}}; a \"html\" a \"components\", a \"theme-editor\" pedig a \"canvas-theme-editor\" aliasa)",
+  "helpDirDescription": "Célkönyvtár (ha nincs megadva, interaktív rákérdezés TTY-n)",
+  "helpYesDescription": "Soha ne kérdezzen rá; hibát jelez a hiányzó platform/könyvtár rákérdezése helyett",
+  "helpLangDescription": "Az automatikusan felismert megjelenítési nyelv felülbírálása (pl. \"hu\")"
+}

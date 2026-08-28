@@ -1,12 +1,33 @@
 {
   "version": 1,
   "entries": {
+    "051b85d3ee5cd714c82bc73a4f14bf4b3c201999c4abfcd0c45d5a3998ebf5b2": "3. Börja utveckla: cd {{dir}}",
+    "1012c614dc5a395a21f539892622aeaa1e5827292024675a75665ca4f6a67559": "2. Installera beroenden",
     "10bb93fa2ecbbdfb4265392eae20c7fabbde4abc0ca6069fd11cb6e227ec9482": "Tid",
     "1309efc6c74b3989d84b4272c06cda0b52860a25a13c756a4d64762a4bf67075": "Nästa månad",
+    "148b027669c7301fdc3050ef15af08a14524df678ba6f8075124c6470e1be8f3": "Avbrutet.",
+    "23b1900c234aa1ae25dcd6b5b059fec331da8590eb7e74f0a8f3c3eca0ee50fa": "Obligatoriskt argument \"platform\" saknas. Förväntade ett av: {{platforms}}",
+    "261c9a82da92a280c62d69784029c2b02c35f576d6fb5f67efc846cb5aa361e6": "Målkatalog (frågar interaktivt på en TTY om den utelämnas)",
+    "2fc9c8b4dd14d5dad0a538055f994e359a82ae062cf4212c0ed6d0df43fd1830": "Plattform att generera ({{platforms}}; \"html\" är ett alias för \"components\", \"theme-editor\" är ett alias för \"canvas-theme-editor\")",
+    "3320fb0c2e6d23a5837bc2f0139f998aad8c95b4d7a14c033b7d2a14cbf78fce": "Installera beroenden: {{command}}",
+    "3ad30a8e3c95e419e3267a7f6208fcf526a9539ed28fce2027fa9d37fba2715e": "Generera ett startprojekt (via @pantoken/scaffold) och installera agentresurser i det",
     "4282594bb6ecc39addb16f2eae41190ca4cac00515134365fc73de565aa8baf6": "yyyy-mm-dd",
+    "45b2465bce02fb2ed4178ae7c4a15bf43a6a186ad8ab1cbb7a7f9beace47f43d": "Fråga aldrig; visa fel istället för att fråga vid saknad plattform/katalog",
+    "5017f6d589eab4c4bc8b744520b8bc590aa0e5e90fd61646cb886e92b96d06c9": "Välj en plattform att generera:",
     "674b916b3b6f14ae9042e25d8c9fc6e14cf3ca2747aa27906a5d5838781a8f12": "Datum",
     "6f2878ba3f22a8e6be9d4c3b9d603c9b352c4c495cae7d9d1108099012d8e67e": "Föregående månad",
+    "7a79c5c54e2add5b2aaf50f4c4518cc2b07e68c58c129fefde544038ce3692e0": "Målkatalog:",
     "89009c9065d64bd4585302677e2bab2ae7ce07ac7b745ff9b09a673ae71c2d79": "Öppna kalender",
-    "eb326b84ede7432e2d42fdb9a15d067b92aae782c6166b892439c76b6dd48377": "Tillbaka"
+    "8c5043a30b3c0c0853cded8418e0f0c4237d6378a97d9a5f1e8e1e7c49627185": "Genererar...",
+    "9359390a0f162cb8ec68f75f04488f1f45acc9d5595e50af37be7e27fae76312": "Målkatalog",
+    "bfc3247c3141a75f8ddb4664e96d189e30eb13629c49ebbb7be303b7570cb8a7": "4. Starta utvecklingsservern (om din mall har en)",
+    "df43cae191e4dbf8085087b2e5d900d9ddeca1717111b142d320cbab27e1e226": "Generering klar.",
+    "e945ffa6ac734502b647cad66c135e73aa3d1ba81e75218a1eeae2b0ff2131f0": "Agentverktyg (all|cursor|copilot|windsurf)",
+    "eb326b84ede7432e2d42fdb9a15d067b92aae782c6166b892439c76b6dd48377": "Tillbaka",
+    "ec674b834b5c43c2fe2b050b0ee8cdf4e1de9aa9b9e870b863c34ee4fa3a16f2": "2. Installera beroenden (npm install, pnpm install, yarn install eller bun install)",
+    "ec87dc92f5adb73501c21f9ae9269175542c1e0eddb10e3e8fd47776c55d14a5": "Skriv pantokens agentresurser till ett repo",
+    "f1bf7bb608aea734cad3536b671ee046a0b25875c0e219e9bdd0ea2bc14ec628": "Åsidosätt det automatiskt identifierade visningsspråket (t.ex. \"hu\")",
+    "f2c43a17cc81f5eab98ac236de6ced14274c6f699b3516410f684cb20e90a5d1": "Agentverktyg (all|cursor|copilot|windsurf)",
+    "f2dc42d4c926e9c3b8379551ba519e9273a96e6f0dc10f1d0284a83554650beb": "✓ {{path}}"
   }
 }

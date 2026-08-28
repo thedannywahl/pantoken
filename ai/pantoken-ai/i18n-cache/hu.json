@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "A pantoken ágens-erőforrásainak kiírása egy tárolóba",
+  "helpInitToolDescription": "Ágens eszköz (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Célkönyvtár",
+  "helpScaffoldDescription": "Kezdőprojekt létrehozása (a @pantoken/scaffold segítségével) és ágens-erőforrások telepítése bele",
+  "helpScaffoldToolDescription": "Ágens eszköz (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Az automatikusan felismert megjelenítési nyelv felülbírálása (pl. \"hu\")"
+}
