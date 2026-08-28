@@ -65,6 +65,80 @@ export interface ResolveScaffoldTargetOptions {
 }
 
 /**
+ * Resolves the platform: uses `platformArg` when given, otherwise prompts via clack `select()`
+ * on a TTY (not --yes), otherwise throws a localized `ScaffoldCliError`.
+ *
+ * @throws ScaffoldCliError when missing non-interactively, cancelled, or invalid
+ */
+async function resolvePlatform(
+  platformArg: string | undefined,
+  opts: { yes?: boolean; isTTY: boolean; t: LocaleLookup["t"] },
+): Promise<string> {
+  const { yes, isTTY, t } = opts;
+  let platform = platformArg ?? "";
+
+  if (!platform) {
+    if (!shouldPrompt(platform, { yes, isTTY })) {
+      throw new ScaffoldCliError(
+        t("errorMissingPlatform", { platforms: SCAFFOLD_PLATFORMS.join(", ") }),
+      );
+    }
+
+    const result = await select({
+      message: t("promptPlatform"),
+      options: SCAFFOLD_PLATFORMS.map((p) => ({ value: p, label: p })),
+    });
+
+    if (isCancel(result)) {
+      cancel(t("cancelled"));
+      throw new ScaffoldCliError(t("cancelled"), 1);
+    }
+
+    platform = result as string;
+  }
+
+  if (!checkScaffoldPlatform(platform)) {
+    throw new ScaffoldCliError(
+      t("errorMissingPlatform", { platforms: SCAFFOLD_PLATFORMS.join(", ") }),
+    );
+  }
+
+  return platform;
+}
+
+/**
+ * Resolves the target directory: uses `dirOption` when given, otherwise prompts via clack
+ * `text()` on a TTY (not --yes), otherwise defaults to `"."`.
+ *
+ * @throws ScaffoldCliError when the prompt is cancelled
+ */
+async function resolveDir(
+  dirOption: string | undefined,
+  opts: { yes?: boolean; isTTY: boolean; t: LocaleLookup["t"] },
+): Promise<string> {
+  const { yes, isTTY, t } = opts;
+  const dir = dirOption ?? "";
+  if (dir) return dir;
+
+  if (!shouldPrompt(dir, { yes, isTTY })) {
+    return "."; // Non-interactive default
+  }
+
+  const result = await text({
+    message: t("promptDir"),
+    placeholder: ".",
+    defaultValue: ".",
+  });
+
+  if (isCancel(result)) {
+    cancel(t("cancelled"));
+    throw new ScaffoldCliError(t("cancelled"), 1);
+  }
+
+  return (result as string) || ".";
+}
+
+/**
  * Resolves platform + directory: prompts via clack select()/text() when omitted on a TTY
  * (not --yes); throws ScaffoldCliError with a clear, localized message when a required
  * value is missing non-interactively.
@@ -81,59 +155,10 @@ export async function resolveScaffoldTarget(
   const { platformArg, dirOption, yes, t } = options;
   const isTTY = options.isTTY ?? process.stdin?.isTTY ?? false;
 
-  // Resolve platform
-  let platform = platformArg ?? "";
-  if (!platform) {
-    if (!shouldPrompt(platform, { yes, isTTY })) {
-      throw new ScaffoldCliError(
-        t("errorMissingPlatform", { platforms: SCAFFOLD_PLATFORMS.join(", ") }),
-      );
-    }
+  const platform = await resolvePlatform(platformArg, { yes, isTTY, t });
+  const dir = await resolveDir(dirOption, { yes, isTTY, t });
 
-    // Prompt for platform
-    const result = await select({
-      message: t("promptPlatform"),
-      options: SCAFFOLD_PLATFORMS.map((p) => ({ value: p, label: p })),
-    });
-
-    if (isCancel(result)) {
-      cancel(t("cancelled"));
-      throw new ScaffoldCliError(t("cancelled"), 1);
-    }
-
-    platform = result as string;
-  }
-
-  // Validate the platform
-  if (!checkScaffoldPlatform(platform)) {
-    throw new ScaffoldCliError(
-      t("errorMissingPlatform", { platforms: SCAFFOLD_PLATFORMS.join(", ") }),
-    );
-  }
-
-  // Resolve directory
-  let dir = dirOption ?? "";
-  if (!dir) {
-    if (!shouldPrompt(dir, { yes, isTTY })) {
-      dir = "."; // Non-interactive default
-    } else {
-      // Prompt for directory
-      const result = await text({
-        message: t("promptDir"),
-        placeholder: ".",
-        defaultValue: ".",
-      });
-
-      if (isCancel(result)) {
-        cancel(t("cancelled"));
-        throw new ScaffoldCliError(t("cancelled"), 1);
-      }
-
-      dir = result as string;
-    }
-  }
-
-  return { platform, dir: dir || "." };
+  return { platform, dir };
 }
 
 /**

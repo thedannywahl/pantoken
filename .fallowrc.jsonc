@@ -58,7 +58,14 @@
     "renderers/vitepress/src/vitepress-vars.css",
     "tools/demo/runner/*.css",
     "plugins/pantoken/custom-components/src/**/*.css",
-    "plugins/pantoken/layouts/src/**/*.css"
+    "plugins/pantoken/layouts/src/**/*.css",
+    // Scaffold theme/preview assets (e.g. canvas-theme-editor's theme.css/theme.js) are
+    // user-uploaded directly to the target platform (never imported in-repo), and any preview.js
+    // is loaded via a plain `<script src>` in preview/index.html — neither is traced by fallow's
+    // import graph.
+    "packages/scaffold/templates/*/theme.css",
+    "packages/scaffold/templates/*/theme.js",
+    "packages/scaffold/templates/*/preview/**"
   ],
 
   // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported

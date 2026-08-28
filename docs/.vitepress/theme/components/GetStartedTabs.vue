@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from "vue";
 import { useData } from "vitepress";
 import { useCommandCycle, type CommandCycleOption } from "./useCommandCycle";
 import CommandCycleRow from "./CommandCycleRow.vue";
+import TerminalChrome from "./TerminalChrome.vue";
 import { GET_STARTED_TABS_DEFAULTS, type GetStartedTabsStrings } from "../get-started";
 
 const pmOptions: CommandCycleOption[] = [
@@ -245,20 +246,12 @@ const highlightColor = computed(() =>
             @focusin="pause"
             @focusout="resume"
           >
-            <div class="gs-terminal__chrome">
-              <span class="gs-terminal__dot -red" aria-hidden="true" />
-              <span class="gs-terminal__dot -yellow" aria-hidden="true" />
-              <span class="gs-terminal__dot -green" aria-hidden="true" />
-              <button
-                type="button"
-                class="instui-button -shape-circle -without-background -without-border gs-terminal__pause-btn"
-                :class="manuallyPaused ? '-icon-play' : '-icon-pause'"
-                :aria-label="
-                  manuallyPaused ? getStartedTabs.playAnimation : getStartedTabs.pauseAnimation
-                "
-                @click="toggleManualPause"
-              ></button>
-            </div>
+            <TerminalChrome
+              :manually-paused="manuallyPaused"
+              :play-label="getStartedTabs.playAnimation"
+              :pause-label="getStartedTabs.pauseAnimation"
+              @toggle="toggleManualPause"
+            />
 
             <div class="gs-terminal__body">
               <div
@@ -292,20 +285,12 @@ const highlightColor = computed(() =>
             @focusin="pause"
             @focusout="resume"
           >
-            <div class="gs-terminal__chrome">
-              <span class="gs-terminal__dot -red" aria-hidden="true" />
-              <span class="gs-terminal__dot -yellow" aria-hidden="true" />
-              <span class="gs-terminal__dot -green" aria-hidden="true" />
-              <button
-                type="button"
-                class="instui-button -shape-circle -without-background -without-border gs-terminal__pause-btn"
-                :class="manuallyPaused ? '-icon-play' : '-icon-pause'"
-                :aria-label="
-                  manuallyPaused ? getStartedTabs.playAnimation : getStartedTabs.pauseAnimation
-                "
-                @click="toggleManualPause"
-              ></button>
-            </div>
+            <TerminalChrome
+              :manually-paused="manuallyPaused"
+              :play-label="getStartedTabs.playAnimation"
+              :pause-label="getStartedTabs.pauseAnimation"
+              @toggle="toggleManualPause"
+            />
 
             <div class="gs-terminal__body gs-agent-terminal__body">
               <div class="instui-agent-shell gs-agent-shell">
