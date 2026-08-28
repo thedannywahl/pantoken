@@ -31,6 +31,7 @@
     "@cssdoc/config": "catalog:",
     "@cssdoc/core": "catalog:",
     "@cssdoc/typedoc": "catalog:",
+    "@pantoken/cdn": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/css": "workspace:*",
     "@pantoken/demo": "workspace:*",

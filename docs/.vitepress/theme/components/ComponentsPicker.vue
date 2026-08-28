@@ -1,10 +1,18 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
+import {
+  buildFileUrls,
+  toEsmImportStatements,
+  toImportStatements,
+  toLinkTags,
+  toScriptTagLines,
+  type CdnFile,
+} from "@pantoken/cdn";
 import type { PantokenTheme } from "../theme";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
+import { tokenSheetFile, type PickerMode } from "../composables/usePickerTheme";
 import { COMPONENTS, getAllDependencies } from "./componentMetadata";
 import pluginManifest from "../generated/cdn-plugin-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
@@ -13,6 +21,7 @@ import PickerSection from "./PickerSection.vue";
 const props = defineProps<{
   themeKey: PantokenTheme;
   mode: PickerMode;
+  provider: string;
 }>();
 
 const components = [...COMPONENTS].sort((a, b) => a.name.localeCompare(b.name));
@@ -216,7 +225,7 @@ const someOtherPluginsSelected = computed(
 
 const needsIconSheet = computed(() => selectedMetadata.value.some((c) => c.needsIcons));
 
-const tokenSheet = computed(() => tokenLeanSheet(props.themeKey, props.mode));
+const tokenSheet = computed(() => tokenSheetFile(props.themeKey, props.mode));
 
 // ── CSS Generation ──────────────────────────────────────────────────────────────
 
@@ -230,42 +239,52 @@ const hasAnyCss = computed(
   () => hasCss.value || customSelected.value.size > 0 || otherPluginsSelected.value.size > 0,
 );
 
-const cssCombineUrl = computed(() => {
-  const c = "npm/@pantoken/components/dist";
-  const cc = "npm/@pantoken/plugin-custom-components/dist";
-  const files = [tokenSheet.value];
+const cssFiles = computed<CdnFile[]>(() => {
+  const files: CdnFile[] = [tokenSheet.value];
   // base and utilities: forced on when any CSS component is selected, otherwise honour the checkbox
-  if (hasCss.value || includeBase.value) files.push(`${c}/base.css`);
-  if (needsIconSheet.value) files.push(`${c}/component-icons.css`);
+  if (hasCss.value || includeBase.value)
+    files.push({ package: "@pantoken/components", path: "dist/base.css" });
+  if (needsIconSheet.value)
+    files.push({ package: "@pantoken/components", path: "dist/component-icons.css" });
 
   // If all CSS components are selected, use the barrel
   if (
     allCssComponents.value.length ===
     components.filter((comp) => comp.type === "css-only" || comp.type === "both").length
   ) {
-    files.push(`${c}/components.css`);
+    files.push({ package: "@pantoken/components", path: "dist/components.css" });
   } else {
     for (const name of allCssComponents.value) {
-      files.push(`${c}/${name}.css`);
+      files.push({ package: "@pantoken/components", path: `dist/${name}.css` });
     }
   }
-  if (hasCss.value || includeUtilities.value) files.push(`${c}/utilities.css`);
+  if (hasCss.value || includeUtilities.value)
+    files.push({ package: "@pantoken/components", path: "dist/utilities.css" });
 
   if (customSelected.value.size > 0) {
-    if (allCustomSelected.value) files.push(`${cc}/custom-components.css`);
-    else for (const name of customSelected.value) files.push(`${cc}/${name}.css`);
+    if (allCustomSelected.value) {
+      files.push({
+        package: "@pantoken/plugin-custom-components",
+        path: "dist/custom-components.css",
+      });
+    } else {
+      for (const name of customSelected.value)
+        files.push({ package: "@pantoken/plugin-custom-components", path: `dist/${name}.css` });
+    }
   }
   for (const plugin of otherPlugins) {
     if (otherPluginsSelected.value.has(plugin.key))
-      files.push(`npm/${plugin.pkg}/dist/${plugin.file}`);
+      files.push({ package: plugin.pkg, path: `dist/${plugin.file}` });
   }
 
-  return `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+  return files;
 });
 
-const cssLinkOutput = computed(() => `<link rel="stylesheet" href="${cssCombineUrl.value}">`);
+const cssUrls = computed(() => buildFileUrls(cssFiles.value, props.provider));
 
-const cssImportOutput = computed(() => `@import url("${cssCombineUrl.value}");`);
+const cssLinkOutput = computed(() => toLinkTags(cssUrls.value));
+
+const cssImportOutput = computed(() => toImportStatements(cssUrls.value));
 
 const cssOutput = computed(() =>
   cssFormat.value === "link" ? cssLinkOutput.value : cssImportOutput.value,
@@ -304,38 +323,27 @@ const jsComponentsOrdered = computed(() => {
   return prioritized;
 });
 
-const jsIifeSnippet = computed(() => {
-  if (jsComponents.value.length === 0) return "";
+const jsFiles = computed<CdnFile[]>(() => {
+  if (jsComponents.value.length === 0) return [];
   // Every JS-capable component selected collapses to the full interactions bundle, mirroring how
   // the CSS side collapses to components.css, instead of combining every per-component file.
-  const src = allJsCapableSelected.value
-    ? "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/interactions.iife.js"
-    : (() => {
-        const files = jsComponentsOrdered.value.map(
-          (name) => `npm/@pantoken/interactions/dist/${name}.iife.js`,
-        );
-        return files.length === 1
-          ? `https://cdn.jsdelivr.net/${files[0]}`
-          : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
-      })();
-  // DOM calls avoid writing a literal closing-script-tag inside the SFC script block
-  return `(function () {
-  var script = document.createElement("script");
-  script.src = "${src}";
-  document.head.appendChild(script);
-})();`;
+  if (allJsCapableSelected.value)
+    return [{ package: "@pantoken/interactions", path: "dist/interactions.iife.js" }];
+  return jsComponentsOrdered.value.map((name) => ({
+    package: "@pantoken/interactions",
+    path: `dist/${name}.iife.js`,
+  }));
 });
 
-const jsEsmSnippet = computed(() => {
-  if (jsComponents.value.length === 0) return "";
-  if (allJsCapableSelected.value) {
-    return `import "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/interactions.iife.js";`;
-  }
-  const imports = jsComponentsOrdered.value.map(
-    (name) => `import "https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/${name}.iife.js";`,
-  );
-  return imports.join("\n");
+const jsUrls = computed(() => buildFileUrls(jsFiles.value, props.provider));
+
+// DOM calls avoid writing a literal closing-script-tag inside the SFC script block
+const jsIifeSnippet = computed(() => {
+  if (jsUrls.value.length === 0) return "";
+  return `(function () {\n${toScriptTagLines(jsUrls.value)}\n})();`;
 });
+
+const jsEsmSnippet = computed(() => toEsmImportStatements(jsUrls.value));
 
 const jsOutput = computed(() => {
   if (jsComponents.value.length === 0) return "";

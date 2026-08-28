@@ -1,4 +1,5 @@
 import { computed, ref, watch } from "vue";
+import type { CdnFile } from "@pantoken/cdn";
 import { readHashParam, writeHashParam } from "./useHashParams";
 import { getStoredTheme, type PantokenTheme } from "../theme";
 
@@ -39,4 +40,17 @@ export function tokenLeanSheet(theme: PantokenTheme, mode: PickerMode): string {
   if (theme === "canvas") return `${root}/style.canvas.lean.css`;
   if (theme === "canvasHighContrast") return `${root}/style.canvas-high-contrast.lean.css`;
   return mode === "light" ? `${root}/style.rebrand.light.lean.css` : `${root}/style.lean.css`;
+}
+
+/** Provider-agnostic equivalent of {@link tokenLeanSheet}, for pickers built on `@pantoken/cdn`. */
+export function tokenSheetFile(theme: PantokenTheme, mode: PickerMode): CdnFile {
+  const file =
+    theme === "canvas"
+      ? "style.canvas.lean.css"
+      : theme === "canvasHighContrast"
+        ? "style.canvas-high-contrast.lean.css"
+        : mode === "light"
+          ? "style.rebrand.light.lean.css"
+          : "style.lean.css";
+  return { package: "@pantoken/css", path: `dist/${file}` };
 }

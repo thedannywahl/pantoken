@@ -190,6 +190,7 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       modeAdaptive: "Világos + sötét",
       modeLightOnly: "Csak világos",
       includeDarkMode: "Sötét mód belefoglalása",
+      providerLabel: "CDN szolgáltató",
       componentsLabel: "Komponensek",
       allComponents: "Minden komponens",
       formatLabel: "Kimenet",

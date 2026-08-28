@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { CDN_PROVIDERS } from "@pantoken/cdn";
 import type { PantokenTheme } from "../theme";
 import type { PickerMode } from "../composables/usePickerTheme";
 
@@ -8,6 +9,7 @@ interface ThemeControlStrings {
   themeCanvas: string;
   themeCanvasHighContrast: string;
   includeDarkMode: string;
+  providerLabel?: string;
 }
 
 const props = defineProps<{
@@ -16,12 +18,16 @@ const props = defineProps<{
   mode: PickerMode;
   showMode: boolean;
   strings: ThemeControlStrings;
+  provider?: string;
 }>();
 
 const emit = defineEmits<{
   (event: "update:themeKey", value: PantokenTheme): void;
   (event: "update:mode", value: PickerMode): void;
+  (event: "update:provider", value: string): void;
 }>();
+
+const providers = Object.values(CDN_PROVIDERS);
 
 function updateTheme(event: Event): void {
   emit("update:themeKey", (event.target as HTMLSelectElement).value as PantokenTheme);
@@ -29,6 +35,10 @@ function updateTheme(event: Event): void {
 
 function updateIncludeDarkMode(event: Event): void {
   emit("update:mode", (event.target as HTMLInputElement).checked ? "adaptive" : "light");
+}
+
+function updateProvider(event: Event): void {
+  emit("update:provider", (event.target as HTMLSelectElement).value);
 }
 </script>
 
@@ -60,6 +70,19 @@ function updateIncludeDarkMode(event: Event): void {
         />
         {{ props.strings.includeDarkMode }}
       </label>
+    </div>
+    <div v-if="props.provider !== undefined" class="picker-theme-controls__row">
+      <label class="instui-text" :for="`${props.idPrefix}-cdn-provider`">
+        {{ props.strings.providerLabel }}
+      </label>
+      <select
+        :id="`${props.idPrefix}-cdn-provider`"
+        :value="props.provider"
+        class="instui-simple-select picker-theme-controls__select"
+        @change="updateProvider"
+      >
+        <option v-for="p in providers" :key="p.id" :value="p.id">{{ p.label }}</option>
+      </select>
     </div>
   </div>
 </template>
