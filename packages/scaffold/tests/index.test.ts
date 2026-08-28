@@ -32,7 +32,9 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "preview/index.html"))).toBe(true);
   expect(existsSync(join(target, "templates/manifest.json"))).toBe(true);
   expect(existsSync(join(target, "templates/pages/hero.html"))).toBe(true);
-  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain("@pantoken/css/dist/style.css");
+  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
+    "@pantoken/css/dist/style.rebrand.light.lean.css",
+  );
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).not.toContain("{{projectName}}");
@@ -55,6 +57,30 @@ test("scaffolds a platform with projectName substituted", async () => {
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("defaults every scaffold's pantoken CSS import to the rebrand/light theme", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-default-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("react", target);
+  const main = readFileSync(join(target, "src/main.tsx"), "utf8");
+  expect(main).toContain('import "@pantoken/css/style.rebrand.light.lean.css";');
+  expect(main).not.toContain("{{pantokenCssImport}}");
+});
+
+test("--theme/--theme-mode select which @pantoken/css sheet a scaffold imports", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-"));
+  const canvasTarget = join(dir, "canvas-app");
+  await scaffoldProject("vue", canvasTarget, { theme: "canvas" });
+  expect(readFileSync(join(canvasTarget, "src/main.ts"), "utf8")).toContain(
+    'import "@pantoken/css/style.canvas.lean.css";',
+  );
+
+  const adaptiveTarget = join(dir, "adaptive-app");
+  await scaffoldProject("svelte", adaptiveTarget, { theme: "rebrand", mode: "adaptive" });
+  expect(readFileSync(join(adaptiveTarget, "src/main.ts"), "utf8")).toContain(
+    'import "@pantoken/css/style.lean.css";',
+  );
 });
 
 test("defaults to pantoken-app when dir is '.'", async () => {

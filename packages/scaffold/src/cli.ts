@@ -21,6 +21,12 @@ import { SCAFFOLD_PLATFORMS, isScaffoldPlatform as checkScaffoldPlatform } from 
 import { scaffoldProject } from "./index.ts";
 import { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
 import { LOCALES } from "../generated/locales/index.ts";
+import {
+  validateThemeMode,
+  validateThemeVariant,
+  type ThemeMode,
+  type ThemeVariant,
+} from "./theme.ts";
 
 /**
  * Thrown for user-facing CLI errors (e.g., missing platform under --yes);
@@ -167,18 +173,20 @@ export async function resolveScaffoldTarget(
  * @param platform - The scaffold platform
  * @param dir - The target directory
  * @param t - Localized string lookup
+ * @param options - `theme`/`mode` forwarded to {@link scaffoldProject}
  * @returns The paths written by scaffoldProject
  */
 export async function scaffoldWithSpinner(
   platform: string,
   dir: string,
   t: LocaleLookup["t"],
+  options?: { theme?: ThemeVariant; mode?: ThemeMode },
 ): Promise<string[]> {
   const s = spinner();
   s.start(t("spinnerStart"));
 
   try {
-    const written = await scaffoldProject(platform, dir);
+    const written = await scaffoldProject(platform, dir, options);
     s.stop(t("spinnerStop"));
     return written;
   } catch (err) {
@@ -278,7 +286,17 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       "Never prompt; error instead of prompting for a missing platform/directory",
       false,
     )
-    .option("-l, --lang <tag>", 'Override the auto-detected display language (e.g. "hu")');
+    .option("-l, --lang <tag>", 'Override the auto-detected display language (e.g. "hu")')
+    .option(
+      "--theme <name>",
+      "Token theme: rebrand (default), canvas, canvasHighContrast",
+      validateThemeVariant,
+    )
+    .option(
+      "--theme-mode <mode>",
+      "Rebrand token mode: light (default) or adaptive; ignored outside the rebrand theme",
+      validateThemeMode,
+    );
 
   if (options?.version) {
     program.version(options.version, "-v, --version");
@@ -295,7 +313,10 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
         yes: opts.yes as boolean | undefined,
         t,
       });
-      const written = await scaffoldWithSpinner(platform, dir, t);
+      const written = await scaffoldWithSpinner(platform, dir, t, {
+        theme: opts.theme as ThemeVariant | undefined,
+        mode: opts.themeMode as ThemeMode | undefined,
+      });
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }

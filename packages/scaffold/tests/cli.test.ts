@@ -269,6 +269,35 @@ test("scaffolds and prints next steps when --dir is given", async () => {
   expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
+test("--theme selects which @pantoken/css sheet the scaffolded project imports", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  await runScaffoldCli(["vue", "--dir", target, "--yes", "--theme", "canvas"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  expect(readFileSync(join(target, "src/main.ts"), "utf8")).toContain(
+    'import "@pantoken/css/style.canvas.lean.css";',
+  );
+});
+
+test("rejects an unknown --theme value", async () => {
+  await runScaffoldCli(["react", "--yes", "--theme", "not-a-theme"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-theme");
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+test("rejects an unknown --theme-mode value", async () => {
+  await runScaffoldCli(["react", "--yes", "--theme-mode", "not-a-mode"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-mode");
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
 test("reports a scaffolding failure and exits non-zero", async () => {
   const dir = mktemp();
   const notADirectory = join(dir, "im-a-file");

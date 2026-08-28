@@ -52,6 +52,7 @@
     "commander": "catalog:"
   },
   "devDependencies": {
+    "@pantoken/canvas-theme-editor": "workspace:*",
     "@pantoken/plugin-layouts": "workspace:*",
     "@pantoken/translation-adapters": "workspace:*",
     "@types/node": "catalog:",

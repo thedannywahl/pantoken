@@ -1,7 +1,7 @@
 import { mount } from "svelte";
 import { register } from "@pantoken/svelte";
 // Defines every --instui-* custom property this app can reference.
-import "@pantoken/css";
+{{pantokenCssImport}}
 import "@pantoken/plugin-layouts/layouts.css";
 import App from "./App.svelte";
 

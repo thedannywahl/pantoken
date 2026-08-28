@@ -13,6 +13,15 @@ import { dirname, join } from "node:path";
 import { producePreset } from "bingo-stratum";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
 import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
+import { themeStylesheetImport, type ThemeMode, type ThemeVariant } from "./theme.ts";
+
+export {
+  themeStylesheetImport,
+  validateThemeMode,
+  validateThemeVariant,
+  type ThemeMode,
+  type ThemeVariant,
+} from "./theme.ts";
 
 /**
  * A platform pantoken can scaffold a starter project for — either preset-ledger-backed (Bingo)
@@ -62,6 +71,8 @@ function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
  * @param platform - A {@link ScaffoldPlatform}.
  * @param dir - The target directory (default `"."`). Its basename (or `"pantoken-app"` for `"."`)
  *   is substituted for `{{projectName}}` in the template files.
+ * @param options - `theme`/`mode` select which `@pantoken/css` token sheet scaffolded files
+ *   import (default `"rebrand"`/`"light"`), applied across every platform.
  * @returns The paths written.
  *
  * @example Scaffold a React starter
@@ -69,11 +80,17 @@ function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
  * import { scaffoldProject } from "@pantoken/scaffold";
  *
  * scaffoldProject("react", "./my-app");
+ * scaffoldProject("vue", "./my-vue-app", { theme: "canvas" });
  * ```
  */
-export async function scaffoldProject(platform: string, dir = "."): Promise<string[]> {
+export async function scaffoldProject(
+  platform: string,
+  dir = ".",
+  options?: { theme?: ThemeVariant; mode?: ThemeMode },
+): Promise<string[]> {
   const resolvedPlatform = resolveScaffoldPlatform(platform);
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
+  const cssImport = themeStylesheetImport(options?.theme, options?.mode);
   const written: string[] = [];
 
   // Get the preset for this platform (undefined for template-only platforms, e.g. canvas-theme-editor)
@@ -107,7 +124,9 @@ export async function scaffoldProject(platform: string, dir = "."): Promise<stri
     const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
     if (templates) {
       for (const [file, content] of Object.entries(templates)) {
-        const substituted = content.replaceAll("{{projectName}}", projectName);
+        const substituted = content
+          .replaceAll("{{projectName}}", projectName)
+          .replaceAll("{{pantokenCssImport}}", cssImport);
         const path = join(dir, file);
         mkdirSync(dirname(path), { recursive: true });
         writeFileSync(path, substituted);

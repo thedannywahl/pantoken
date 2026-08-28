@@ -56,15 +56,17 @@ await scaffoldProject("react", "./my-app");
 
 ## CLI flags
 
-| Flag                 | Description                                                               |
-| -------------------- | ------------------------------------------------------------------------- |
-| `[platform]`         | Platform to scaffold (prompted interactively if omitted on a TTY)         |
-| `-d, --dir <path>`   | Target directory (prompted interactively if omitted on a TTY)             |
-| `-y, --yes`          | Never prompt; error instead of prompting for a missing platform/directory |
-| `-l, --lang <tag>`   | Override the auto-detected display language (e.g. `"hu"`)                 |
-| `-v, --version`      | Print the installed version                                               |
-| `-h, --help`         | Print usage                                                               |
-| `completion <shell>` | Generate a bash/zsh/fish/PowerShell completion script                     |
+| Flag                  | Description                                                               |
+| --------------------- | ------------------------------------------------------------------------- |
+| `[platform]`          | Platform to scaffold (prompted interactively if omitted on a TTY)         |
+| `-d, --dir <path>`    | Target directory (prompted interactively if omitted on a TTY)             |
+| `-y, --yes`           | Never prompt; error instead of prompting for a missing platform/directory |
+| `-l, --lang <tag>`    | Override the auto-detected display language (e.g. `"hu"`)                 |
+| `--theme <name>`      | Token theme: `rebrand` (default), `canvas`, `canvasHighContrast`          |
+| `--theme-mode <mode>` | Rebrand token mode: `light` (default) or `adaptive`                       |
+| `-v, --version`       | Print the installed version                                               |
+| `-h, --help`          | Print usage                                                               |
+| `completion <shell>`  | Generate a bash/zsh/fish/PowerShell completion script                     |
 
 The CLI auto-detects its display language from `--lang` > `LC_ALL`/`LANG` > the runtime's `Intl`
 locale > English, falling back to English for any untranslated string.
