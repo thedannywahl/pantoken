@@ -177,6 +177,16 @@ const orchestrator = workspaceOrchestrator({
       dependents: [],
     },
     {
+      // Re-stage the create-pantoken-app skill (ai/pantoken-ai/skills/create-pantoken-app/SKILL.md) into
+      // public/create-pantoken-app.md on edit, so the fetchable copy an agent CLI reads never drifts
+      // from the local .claude/skills/ install. See stage-create-pantoken-app-skill.ts.
+      name: "@pantoken/docs#create-pantoken-app-skill",
+      dir: at("docs"),
+      watchPaths: [at("ai/pantoken-ai/skills/create-pantoken-app")],
+      build: ["node", "scripts/stage-create-pantoken-app-skill.ts"],
+      dependents: [],
+    },
+    {
       // Rebuild the TypeDoc API pages so TSDoc `@example` markup edits go live (the web-component element
       // `@example` blocks render on api/renderers/web-components/**). Scoped to the RENDERER TS sources:
       // TypeDoc reparses the whole entry-point set on any run, so a broader watch would make every
