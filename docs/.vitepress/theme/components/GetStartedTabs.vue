@@ -479,13 +479,15 @@ function leaveAgent() {
 }
 
 .gs-agent__input-wrap :deep(.gs-command-row) {
-  inline-size: 100%;
+  /* Plain inline flow, not flex: flex-wrap wraps whole items (icon/launcher/suffix/cursor), which
+     breaks right at the tool-name boundary and can strand the cursor on its own near-empty flex
+     line. Normal inline layout wraps within the text itself (word boundaries, or anywhere inside
+     the long URL via the suffix's overflow-wrap below) and keeps the cursor glued to wherever the
+     text currently ends. `inline-block` (not `inline`) keeps it a single fragment, so the
+     copy/popover overlays' `position: absolute` stays anchored to one box even once this wraps
+     across multiple lines. */
+  display: inline-block;
   max-inline-size: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  column-gap: 0.35rem;
-  white-space: normal;
 }
 
 .gs-agent__input-wrap :deep(.gs-command-row__suffix.-agent) {
