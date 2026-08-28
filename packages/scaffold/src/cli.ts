@@ -12,6 +12,7 @@ import { cancel, isCancel, select, spinner, text } from "@clack/prompts";
 import { Argument, Command, InvalidArgumentError, CommanderError } from "commander";
 import tab from "@bomb.sh/tab/commander";
 import { homedir } from "node:os";
+import { join } from "node:path";
 
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
@@ -64,17 +65,19 @@ export function shouldPrompt(
 
 /**
  * Expands a tilde (`~`) in a file path to the user's home directory.
+ * On interactive prompts, shells don't expand `~`, so this handles it explicitly.
+ * Uses `node:path.join()` for cross-platform robustness (Windows, macOS, Linux).
  *
  * @param dir - The directory path (may start with `~`)
  * @returns The expanded path
  */
 export function expandHome(dir: string): string {
-  if (dir.startsWith("~")) {
-    return dir.replace(/^~(?:\/|$)/, (match) => {
-      return match === "~" ? homedir() : homedir() + "/";
-    });
+  if (!dir.startsWith("~")) {
+    return dir;
   }
-  return dir;
+  // `~` or `~/something` → `/home/user` or `/home/user/something`
+  const home = homedir();
+  return dir === "~" ? home : join(home, dir.slice(2));
 }
 
 /** Options for {@link resolveScaffoldTarget}. */
