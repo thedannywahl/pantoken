@@ -9,6 +9,7 @@ import {
   createLocaleLookup,
   createScaffoldCommand,
   detectPackageManager,
+  expandHome,
   printNextSteps,
   resolveScaffoldTarget,
   runScaffoldCli,
@@ -53,6 +54,27 @@ test("shouldPrompt only prompts when the value is omitted, --yes is unset, and i
   expect(shouldPrompt(undefined, {})).toBe(false);
   expect(shouldPrompt("./my-app", { isTTY: true })).toBe(false);
   expect(shouldPrompt(undefined, { yes: true, isTTY: true })).toBe(false);
+});
+
+// ---------------------------------------------------------------------------
+// expandHome
+// ---------------------------------------------------------------------------
+
+test("expandHome expands ~ to the home directory", () => {
+  const home = process.env.HOME || "";
+  expect(expandHome("~/my-app")).toBe(`${home}/my-app`);
+  expect(expandHome("~/Desktop/test")).toBe(`${home}/Desktop/test`);
+});
+
+test("expandHome returns non-tilde paths unchanged", () => {
+  expect(expandHome("./my-app")).toBe("./my-app");
+  expect(expandHome("/absolute/path")).toBe("/absolute/path");
+  expect(expandHome("relative/path")).toBe("relative/path");
+});
+
+test("expandHome handles bare tilde correctly", () => {
+  const home = process.env.HOME || "";
+  expect(expandHome("~")).toBe(home);
 });
 
 // ---------------------------------------------------------------------------

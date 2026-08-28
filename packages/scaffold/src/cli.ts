@@ -11,6 +11,7 @@
 import { cancel, isCancel, select, spinner, text } from "@clack/prompts";
 import { Argument, Command, InvalidArgumentError, CommanderError } from "commander";
 import tab from "@bomb.sh/tab/commander";
+import { homedir } from "node:os";
 
 export { SCAFFOLD_PLATFORMS, isScaffoldPlatform } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
@@ -59,6 +60,21 @@ export function shouldPrompt(
   // Check TTY status; default to process.stdin.isTTY
   const isTTY = opts.isTTY ?? process.stdin?.isTTY ?? false;
   return isTTY;
+}
+
+/**
+ * Expands a tilde (`~`) in a file path to the user's home directory.
+ *
+ * @param dir - The directory path (may start with `~`)
+ * @returns The expanded path
+ */
+export function expandHome(dir: string): string {
+  if (dir.startsWith("~")) {
+    return dir.replace(/^~(?:\/|$)/, (match) => {
+      return match === "~" ? homedir() : homedir() + "/";
+    });
+  }
+  return dir;
 }
 
 /** Options for {@link resolveScaffoldTarget}. */
@@ -313,14 +329,15 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
         yes: opts.yes as boolean | undefined,
         t,
       });
-      const written = await scaffoldWithSpinner(platform, dir, t, {
+      const expandedDir = expandHome(dir);
+      const written = await scaffoldWithSpinner(platform, expandedDir, t, {
         theme: opts.theme as ThemeVariant | undefined,
         mode: opts.themeMode as ThemeMode | undefined,
       });
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
-      printNextSteps(dir, written, t);
+      printNextSteps(expandedDir, written, t);
     } catch (err) {
       if (err instanceof ScaffoldCliError) {
         throw err; // Let runScaffoldCli handle it
