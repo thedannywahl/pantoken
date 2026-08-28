@@ -736,6 +736,9 @@ importers:
       '@cssdoc/typedoc':
         specifier: 'catalog:'
         version: 0.14.2(typedoc@0.28.20(typescript@6.0.3))
+      '@pantoken/cdn':
+        specifier: workspace:*
+        version: link:../packages/cdn
       '@pantoken/components':
         specifier: workspace:*
         version: link:../formats/components
@@ -1115,6 +1118,21 @@ importers:
       '@pantoken/utils':
         specifier: workspace:*
         version: link:../../packages/utils
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.4.0
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite:
+        specifier: 'catalog:'
+        version: '@voidzero-dev/vite-plus-core@0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(esbuild@0.25.12)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0)'
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(@vitest/coverage-v8@4.1.11)(@voidzero-dev/vite-plus-core@0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0))(happy-dom@20.11.13)(jiti@2.6.1)(publint@0.3.24)(svelte@5.56.10(@typescript-eslint/types@8.68.0))(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0)
+
+  packages/cdn:
+    devDependencies:
       '@types/node':
         specifier: 'catalog:'
         version: 26.4.0
@@ -1524,6 +1542,9 @@ importers:
         specifier: 'catalog:'
         version: 15.0.0
     devDependencies:
+      '@pantoken/canvas-theme-editor':
+        specifier: workspace:*
+        version: link:../../platforms/canvas-theme-editor
       '@pantoken/plugin-layouts':
         specifier: workspace:*
         version: link:../../plugins/pantoken/layouts
@@ -1610,6 +1631,25 @@ importers:
       '@pantoken/tokens':
         specifier: workspace:*
         version: link:../../formats/tokens
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 26.4.0
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite:
+        specifier: 'catalog:'
+        version: '@voidzero-dev/vite-plus-core@0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(esbuild@0.25.12)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0)'
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(@vitest/coverage-v8@4.1.11)(@voidzero-dev/vite-plus-core@0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0))(happy-dom@20.11.13)(jiti@2.6.1)(publint@0.3.24)(svelte@5.56.10(@typescript-eslint/types@8.68.0))(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0)
+
+  platforms/canvas-theme-editor:
+    dependencies:
+      '@pantoken/cdn':
+        specifier: workspace:*
+        version: link:../../packages/cdn
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
