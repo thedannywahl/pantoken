@@ -26,7 +26,7 @@ catalog:
   # the 11.7.x line, so it's pinned to a release tag (its package.json version is unreliable — stuck at
   # 1.0.0 across tags — so the tag + resolved commit are the provenance the upgrade pipeline records).
   "@instructure/instructure-design-tokens": "github:instructure/instructure-design-tokens#v1.8.0"
-  "@instructure/ui-icons": ^11.7.4
+  "@instructure/ui-icons": ^11.7.5
   lucide: ^1.23.0
   # Native token transforms
   style-dictionary: ^5.5.2
@@ -53,14 +53,14 @@ catalog:
   svg2ttf: ^6.1.0
   ttf2woff2: ^8.0.1
   "@mdx-js/react": ^3.1.1
-  "@instructure/ui-heading": ^11.7.4
-  "@instructure/ui-text": ^11.7.4
-  "@instructure/ui-link": ^11.7.4
-  "@instructure/ui-list": ^11.7.4
-  "@instructure/ui-table": ^11.7.4
-  "@instructure/ui-view": ^11.7.4
-  "@instructure/ui-img": ^11.7.4
-  "@instructure/ui-alerts": ^11.7.4
+  "@instructure/ui-heading": ^11.7.5
+  "@instructure/ui-text": ^11.7.5
+  "@instructure/ui-link": ^11.7.5
+  "@instructure/ui-list": ^11.7.5
+  "@instructure/ui-table": ^11.7.5
+  "@instructure/ui-view": ^11.7.5
+  "@instructure/ui-img": ^11.7.5
+  "@instructure/ui-alerts": ^11.7.5
   core-js: ^3.50.0
   # Property-based testing
   fast-check: ^4.9.0

@@ -15,15 +15,15 @@ every package consumes, while the `@instructure/ui-*` React packages are used on
 | Package                                  | Feeds        | Range                                                 | Resolved              |
 | ---------------------------------------- | ------------ | ----------------------------------------------------- | --------------------- |
 | `@instructure/instructure-design-tokens` | token-ir     | `github:instructure/instructure-design-tokens#v1.8.0` | `v1.8.0@b85c96436131` |
-| `@instructure/ui-icons`                  | icons        | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-heading`                | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-text`                   | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-link`                   | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-list`                   | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-table`                  | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-view`                   | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-img`                    | instui-react | `^11.7.4`                                             | `11.7.4`              |
-| `@instructure/ui-alerts`                 | instui-react | `^11.7.4`                                             | `11.7.4`              |
+| `@instructure/ui-icons`                  | icons        | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-heading`                | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-text`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-link`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-list`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-table`                  | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-view`                   | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-img`                    | instui-react | `^11.7.5`                                             | `11.7.5`              |
+| `@instructure/ui-alerts`                 | instui-react | `^11.7.5`                                             | `11.7.5`              |
 
 ## Consumers
 
@@ -67,7 +67,4 @@ Tokens upstream dropped that pantoken still ships as a compatibility shim. Each 
 its `Removed in` upstream minor is adopted, at which point the shim is retired and a consumer minor
 is cut. A shim either forwards to a `Replacement` token or freezes its last-known value.
 
-| Token                                           | Deprecated in          | Removed in             | Replacement                           |
-| ----------------------------------------------- | ---------------------- | ---------------------- | ------------------------------------- |
-| `--instui-component-badge-notification-z-index` | `design-tokens@v1.5.0` | `design-tokens@v1.6.0` | _frozen value_                        |
-| `--instui-component-truncate-text-line-height`  | `design-tokens@v1.5.0` | `design-tokens@v1.6.0` | `--instui-line-height-paragraph-base` |
+_No active token deprecations._

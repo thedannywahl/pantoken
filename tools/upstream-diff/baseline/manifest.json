@@ -8951,6 +8951,12 @@
       "source": "lucide",
       "viewBox": "0 0 24 24"
     },
+    "--instui-icon-user-round-star": {
+      "hash": "c342bba6bb00ba74",
+      "source": "custom",
+      "style": "Custom",
+      "viewBox": "0 0 24 24"
+    },
     "--instui-icon-user-round-x": {
       "hash": "1dd9ef59c1865384",
       "source": "lucide",
@@ -9024,6 +9030,12 @@
     "--instui-icon-venetian-mask": {
       "hash": "eac9f64ed65d543e",
       "source": "lucide",
+      "viewBox": "0 0 24 24"
+    },
+    "--instui-icon-venetian-mask-stem": {
+      "hash": "fac78407e9a3bb3d",
+      "source": "custom",
+      "style": "Custom",
       "viewBox": "0 0 24 24"
     },
     "--instui-icon-venus": {
@@ -9413,7 +9425,7 @@
     },
     "uiIcons": {
       "package": "@instructure/ui-icons",
-      "resolved": "11.7.4"
+      "resolved": "11.7.5"
     }
   },
   "themes": {
