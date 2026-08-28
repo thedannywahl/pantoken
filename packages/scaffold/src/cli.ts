@@ -1,5 +1,5 @@
 /**
- * Commander-based CLI for @pantoken/scaffold.
+ * Commander-based CLI for \@pantoken/scaffold.
  *
  * Exports granular, independently reusable pieces for composition by other CLIs (notably
  * `@pantoken/ai`), not one opaque function.
@@ -55,6 +55,7 @@ export function shouldPrompt(
   return isTTY;
 }
 
+/** Options for {@link resolveScaffoldTarget}. */
 export interface ResolveScaffoldTargetOptions {
   platformArg?: string;
   dirOption?: string;
@@ -71,7 +72,7 @@ export interface ResolveScaffoldTargetOptions {
  * All prompt copy (message/placeholder/option labels) is looked up via `t`.
  *
  * @param options - Resolution options
- * @returns Promise resolving to { platform, dir }
+ * @returns Promise resolving to \{ platform, dir \}
  * @throws ScaffoldCliError when required values are missing non-interactively
  */
 export async function resolveScaffoldTarget(
@@ -217,6 +218,7 @@ export function validateScaffoldPlatform(value: string): string {
   );
 }
 
+/** Options for {@link createScaffoldCommand}. */
 export interface ScaffoldCommandOptions {
   name?: string; // program name shown in help/usage; default "pantoken-scaffold"
   usageCommand?: string; // exact invocation string for help examples; defaults to `name`

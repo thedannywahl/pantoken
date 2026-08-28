@@ -359,6 +359,10 @@ const highlightColor = computed(() =>
 </style>
 
 <style scoped>
+.home-started-terminal {
+  margin-inline-end: 2rem;
+}
+
 .gs-started__mode {
   display: inline-flex;
   gap: 0.35rem;
@@ -508,7 +512,9 @@ const highlightColor = computed(() =>
   flex: 1;
   min-block-size: 0;
   padding: 1.5rem;
-  overflow: hidden;
+  /* Visible, not hidden: the copy button's "copied" popover sits above the command row and would
+     otherwise get clipped right where it overlaps the chrome bar. */
+  overflow: visible;
 }
 
 .gs-terminal__body pre {

@@ -36,8 +36,7 @@ import GetStartedTabs from "./components/GetStartedTabs.vue";
 // `@pantoken/components` *Css() functions, so Vite hot-reloads element `.ts` + co-located `.css` edits
 // directly. register() is idempotent (it skips already-defined tags), so the barrel's own load-time
 // register() plus the enhanceApp call below are safe.
-// Extensionless (this file is type-checked; an explicit `.ts` needs allowImportingTsExtensions). Vite
-// resolves it to src/index.ts at build/dev time.
+// Extensionless; Vite resolves it to src/index.ts at build/dev time.
 import { register as registerWebComponents } from "../../../renderers/web-components/src/index";
 import "@pantoken/demo/demo.css";
 // `.instui-card` — the shared surface for the in-page CSS-API `@example` previews (`.css-example`) and

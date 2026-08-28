@@ -5,6 +5,7 @@
  * @alpha
  */
 
+/** Resolved locale plus a message lookup function. */
 export interface LocaleLookup {
   readonly locale: string;
   /** Looks up `key`, substituting any `{{param}}` placeholders from `params`. */
@@ -12,12 +13,11 @@ export interface LocaleLookup {
 }
 
 /**
- * Resolves the active locale: --lang flag > LC_ALL/LANG env > Intl > "en".
+ * Resolves the active locale: --lang flag \> LC_ALL/LANG env \> Intl \> "en".
  *
- * @param options - Detection options
- * @param options.langFlag - Optional --lang flag value
- * @param options.env - Environment variables (defaults to process.env)
- * @param options.intl - Optional injected Intl.DateTimeFormat locale function (for testing)
+ * @param options - Detection options. `langFlag` is an optional --lang flag value; `env` is
+ * environment variables (defaults to process.env); `intl` is an optional injected
+ * Intl.DateTimeFormat locale function (for testing).
  * @returns The resolved locale tag
  */
 export function detectLocale(options: {

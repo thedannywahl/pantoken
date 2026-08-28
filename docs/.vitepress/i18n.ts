@@ -1,5 +1,5 @@
-import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "./theme/cdn";
-import type { GetStartedTabsStrings } from "./theme/get-started";
+import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "./theme/cdn.ts";
+import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 
 /** The locales the docs site builds: `root` (English) and `hu` (Hungarian). */
 export type DocsLocale = "root" | "hu";

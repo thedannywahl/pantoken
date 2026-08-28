@@ -1,5 +1,5 @@
 /**
- * Commander-based CLI for @pantoken/ai.
+ * Commander-based CLI for \@pantoken/ai.
  *
  * Provides `init` (write agent assets) and `scaffold` (scaffold + install assets) subcommands.
  * Reuses locale detection and scaffold logic from `@pantoken/scaffold/cli`.
@@ -29,6 +29,7 @@ export { installAgentAssets, type AgentTool } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "@pantoken/scaffold/cli";
 export { LOCALES } from "../generated/locales/index.ts";
 
+/** Options for {@link createAiCommand}. */
 export interface AiCommandOptions {
   name?: string; // program name shown in help/usage; default "pantoken-ai"
   version?: string; // no default — callers pass their own package.json version

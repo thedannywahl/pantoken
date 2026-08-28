@@ -1,5 +1,6 @@
 import { computed, ref, type ComputedRef, type Ref } from "vue";
 
+/** A single launcher command shown in the cycling animation. */
 export interface CommandCycleOption {
   id: string;
   label: string;
@@ -9,6 +10,7 @@ export interface CommandCycleOption {
   icon?: string;
 }
 
+/** Durations (in milliseconds) driving each phase of the type/delete cycle. */
 export interface CommandCycleTimings {
   typeMs: number;
   deleteMs: number;
@@ -19,6 +21,7 @@ export interface CommandCycleTimings {
 
 type CyclePhase = "idle" | "typing" | "paused" | "deleting";
 
+/** Options for {@link useCommandCycle}. */
 export interface UseCommandCycleOptions {
   options: CommandCycleOption[];
   suffix: string | ComputedRef<string>;
@@ -27,6 +30,7 @@ export interface UseCommandCycleOptions {
   timings: CommandCycleTimings;
 }
 
+/** Reactive state and controls returned by {@link useCommandCycle}. */
 export interface CommandCycleController {
   activeIndex: Ref<number>;
   activeOption: ComputedRef<CommandCycleOption>;
@@ -43,6 +47,7 @@ export interface CommandCycleController {
   pick: (index: number) => void;
 }
 
+/** Animates cycling through a list of launcher commands with a type/hold/delete effect. */
 export function useCommandCycle({
   options,
   suffix,
