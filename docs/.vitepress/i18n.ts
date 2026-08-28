@@ -117,6 +117,8 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       copied: "Copied",
       cliInstall: "CLI install",
       aiInstall: "AI install",
+      pauseAnimation: "Pause animation",
+      playAnimation: "Resume animation",
     },
     chrome: {
       outlineLabel: "On this page",
@@ -213,6 +215,8 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       copied: "Másolva",
       cliInstall: "CLI telepítés",
       aiInstall: "AI telepítés",
+      pauseAnimation: "Animáció szüneteltetése",
+      playAnimation: "Animáció folytatása",
     },
     chrome: {
       outlineLabel: "Ezen az oldalon",

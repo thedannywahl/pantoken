@@ -23,7 +23,14 @@ const pmOptions: CommandCycleOption[] = [
 
 const aiProviderOptions: CommandCycleOption[] = [
   { id: "claude", label: "claude", launcher: "claude ", color: "#D97757", icon: "claudecode" },
-  { id: "gemini", label: "gemini", launcher: "gemini ", color: "#4785ff", icon: "googlegemini" },
+  {
+    id: "gemini",
+    label: "gemini",
+    launcher: "gemini ",
+    color: "#0072e3",
+    darkColor: "#ffddba",
+    icon: "googlegemini",
+  },
   {
     id: "cursor",
     label: "cursor",
@@ -31,22 +38,35 @@ const aiProviderOptions: CommandCycleOption[] = [
     launcher: "agent ",
     // Cursor's brand mark is flat black — unreadable on a dark background, so light/dark instead
     // of the raw simple-icons hex.
-    color: "#000000",
-    darkColor: "#f2f2f2",
+    color: "#26251e",
+    darkColor: "#edecec",
     icon: "cursor",
   },
-  { id: "codex", label: "codex", launcher: "codex ", color: "#412991", icon: "openai" },
+  {
+    id: "codex",
+    label: "codex",
+    launcher: "codex ",
+    color: "#000",
+    darkColor: "#fff",
+    icon: "openai",
+  },
   {
     id: "copilot",
     label: "copilot",
     // -p puts Copilot CLI in "programmatic mode" (its docs' term) for a plain prompt argument.
     launcher: "copilot -p ",
-    color: "#000000",
-    darkColor: "#f2f2f2",
+    color: "#8534F3",
     icon: "githubcopilot",
   },
   // No bundled icon: simple-icons (this repo's icon set) has no Amazon/AWS entry.
-  { id: "q", label: "q", launcher: "q chat ", color: "#FF9900" },
+  {
+    id: "q",
+    label: "q",
+    launcher: "q chat ",
+    color: "#5921b8",
+    darkColor: "#2fabff",
+    icon: "amazon-q",
+  },
 ];
 
 const activeSurface = ref<"terminal" | "agent">("terminal");
@@ -71,6 +91,8 @@ const getStartedTabs = computed<GetStartedTabsStrings>(
 
 const isPaused = ref(false);
 const reducedMotion = ref(false);
+// User-toggled pause, independent of (and overriding) the hover/focus auto-pause below.
+const manuallyPaused = ref(false);
 
 const TYPE_MS = 70;
 const DELETE_MS = 40;
@@ -105,6 +127,7 @@ const agentCycle = useCommandCycle({
 
 onMounted(() => {
   reducedMotion.value = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (window.location.hash === "#ai") activeSurface.value = "agent";
   terminalCycle.start();
   agentCycle.start();
 });
@@ -122,9 +145,20 @@ function pause() {
   agentCycle.pauseAtFull();
 }
 function resume() {
+  // The manual toggle wins over a hover/focus-driven resume (e.g. mouseleave while paused).
+  if (manuallyPaused.value) return;
   isPaused.value = false;
   terminalCycle.resume();
   agentCycle.resume();
+}
+
+function toggleManualPause() {
+  manuallyPaused.value = !manuallyPaused.value;
+  if (manuallyPaused.value) {
+    pause();
+  } else {
+    resume();
+  }
 }
 
 function enterTerminal() {
@@ -185,10 +219,19 @@ function leaveAgent() {
             @focusin="pause"
             @focusout="resume"
           >
-            <div class="gs-terminal__chrome" aria-hidden="true">
-              <span class="gs-terminal__dot -red" />
-              <span class="gs-terminal__dot -yellow" />
-              <span class="gs-terminal__dot -green" />
+            <div class="gs-terminal__chrome">
+              <span class="gs-terminal__dot -red" aria-hidden="true" />
+              <span class="gs-terminal__dot -yellow" aria-hidden="true" />
+              <span class="gs-terminal__dot -green" aria-hidden="true" />
+              <button
+                type="button"
+                class="instui-button -shape-circle -without-background -without-border gs-terminal__pause-btn"
+                :class="manuallyPaused ? '-icon-play' : '-icon-pause'"
+                :aria-label="
+                  manuallyPaused ? getStartedTabs.playAnimation : getStartedTabs.pauseAnimation
+                "
+                @click="toggleManualPause"
+              ></button>
             </div>
 
             <div class="gs-terminal__body">
@@ -223,10 +266,19 @@ function leaveAgent() {
             @focusin="pause"
             @focusout="resume"
           >
-            <div class="gs-terminal__chrome" aria-hidden="true">
-              <span class="gs-terminal__dot -red" />
-              <span class="gs-terminal__dot -yellow" />
-              <span class="gs-terminal__dot -green" />
+            <div class="gs-terminal__chrome">
+              <span class="gs-terminal__dot -red" aria-hidden="true" />
+              <span class="gs-terminal__dot -yellow" aria-hidden="true" />
+              <span class="gs-terminal__dot -green" aria-hidden="true" />
+              <button
+                type="button"
+                class="instui-button -shape-circle -without-background -without-border gs-terminal__pause-btn"
+                :class="manuallyPaused ? '-icon-play' : '-icon-pause'"
+                :aria-label="
+                  manuallyPaused ? getStartedTabs.playAnimation : getStartedTabs.pauseAnimation
+                "
+                @click="toggleManualPause"
+              ></button>
             </div>
 
             <div class="gs-terminal__body gs-agent-terminal__body">
@@ -267,6 +319,7 @@ function leaveAgent() {
 
 <style>
 @import "@pantoken/plugin-custom-icons/icons/vite-plus.css";
+@import "@pantoken/plugin-custom-icons/icons/amazon-q.css";
 @import "@pantoken/plugin-simple-icons/icons/npm.css";
 @import "@pantoken/plugin-simple-icons/icons/pnpm.css";
 @import "@pantoken/plugin-simple-icons/icons/deno.css";
@@ -363,7 +416,7 @@ function leaveAgent() {
   justify-content: flex-start;
   flex: none;
   gap: 6px;
-  padding: 10px 12px;
+  padding: 6px 6px 6px 12px;
   background: light-dark(#d8dce2, #464d53);
   border-bottom: 1px solid light-dark(#bec5ce, #2f363d);
   border-radius: 8px 8px 0 0;
@@ -382,6 +435,27 @@ function leaveAgent() {
 }
 .gs-terminal__dot.-green {
   background: #27c93f;
+}
+
+.gs-terminal__pause-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.15rem;
+  block-size: 1.15rem;
+  min-inline-size: 0;
+  min-block-size: 0;
+  margin-inline-start: auto;
+  padding: 0;
+  border-radius: 999px;
+  color: light-dark(#5b6572, #c4cad2);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.gs-terminal__pause-btn:hover,
+.gs-terminal__pause-btn:focus-visible {
+  color: light-dark(#2b323b, #f2f4f7);
 }
 
 .gs-terminal__body {
@@ -413,6 +487,8 @@ function leaveAgent() {
 
 .gs-agent-terminal__body {
   padding: 0;
+  /* Lets the AI-tool popover escape the chrome instead of being clipped by it. */
+  overflow: visible;
 }
 
 .gs-agent-shell {
@@ -422,7 +498,7 @@ function leaveAgent() {
   min-block-size: 0;
   border-radius: 0 0 8px 8px;
   border-width: 4px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .gs-agent-shell__prompt-muted {
@@ -452,12 +528,14 @@ function leaveAgent() {
   block-size: 100%;
   display: grid;
   grid-template-rows: minmax(2.5rem, 1fr) auto;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .gs-agent__body {
   position: relative;
   padding: 0.5rem 1rem;
+  /* Clips this gradient layer's own corners since ancestors no longer clip for us. */
+  border-radius: 0 0 8px 8px;
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -474,7 +552,7 @@ function leaveAgent() {
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--vp-c-divider);
   background: light-dark(#ffffff, #11161c);
-  border-radius: 0;
+  border-radius: 0 0 8px 8px;
   font-family: var(--vp-font-family-mono, monospace);
 }
 
