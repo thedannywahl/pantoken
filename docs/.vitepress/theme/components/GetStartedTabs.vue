@@ -344,7 +344,7 @@ const highlightColor = computed(() =>
 </style>
 
 <style scoped>
-.home-started-terminal {
+.gs-started {
   margin-inline-end: 2rem;
 }
 
