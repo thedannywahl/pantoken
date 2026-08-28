@@ -11,21 +11,37 @@ in the current project. Work through these steps.
 ## 1. New project or existing repo?
 
 - **Empty directory, or no repo yet** — scaffold a starter with the CLI, then stop (steps 2-3 are
-  already done for you by the template):
+  already done for you by the template).
+
+  The CLI's own prompts only show up for a human at a real terminal — you're the one invoking it,
+  so resolve every input yourself first, then call it in one non-interactive shot:
+
+  1. **Platform** — ask the user, offering the supported list: `components` (plain HTML/CSS;
+     `html` is an accepted alias), `react`, `vue`, `svelte`, `web-components`, `angular`. Skip
+     asking only if it's unambiguous from the conversation. More platforms land over time; if the
+     desired one isn't yet supported by the scaffold CLI, skip the CLI entirely and proceed
+     directly to step 2 to manually install and wire pantoken instead.
+  2. **Package manager** — if a lockfile already exists in the target directory, use it (see the
+     detection table in step 2); a genuinely empty directory has no lockfile to detect from, so
+     ask the user (npm/pnpm/yarn/bun/deno).
+  3. **Directory** — ask where to scaffold (default `.` for the current directory; confirm before
+     defaulting to `.` if you're not sure that's what they want).
+
+  Then run the fully-resolved command, substituting the chosen package manager's "run a package's
+  CLI" form from step 2's table for `npx`, and passing `--yes` so the CLI never falls back to its
+  own interactive prompts:
 
   ```sh
-  npx pantoken-ai scaffold <components|react|vue|svelte|web-components|angular> [--dir .]
+  npx pantoken-ai scaffold <platform> --dir <dir> --yes
   ```
 
   This writes a minimal starter (`package.json`, entry file(s), README) for the chosen platform
   with pantoken already installed and wired in, and also installs pantoken's agent assets
-  (AGENTS.md, editor/agent rules, skills) into the same directory. `components` is plain HTML/CSS
-  (also accepts the alias `html`). If you only want the starter project without the agent assets,
-  run `npx create-pantoken-app <platform> [--dir .]` (or `npx @pantoken/scaffold <platform>
-[--dir .]`) directly instead. Run `npm install` (or the detected package manager's install) in
-  the target directory afterward, substituting `pnpm`/`yarn`/`bun`/`deno` for `npm` as detected. More
-  platforms land over time; if the desired platform is not yet supported by the scaffold CLI, skip
-  the CLI entirely and proceed directly to step 2 to manually install and wire pantoken.
+  (AGENTS.md, editor/agent rules, skills) into the same directory. If you only want the starter
+  project without the agent assets, run `npx create-pantoken-app <platform> --dir <dir> --yes`
+  (or `npx @pantoken/scaffold <platform> --dir <dir> --yes`) directly instead — substituting the
+  chosen package manager's launcher for `npx` on either command. Run `npm install` (or the chosen
+  package manager's install) in the target directory afterward.
 
 - **Existing repo you want to add pantoken to** — continue to step 2.
 
