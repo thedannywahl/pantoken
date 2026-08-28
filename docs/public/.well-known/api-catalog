@@ -24,6 +24,11 @@
           "href": "https://pantoken.iywahl.com/llms-full.txt",
           "type": "text/plain",
           "title": "Full documentation as one document"
+        },
+        {
+          "href": "https://pantoken.iywahl.com/create-pantoken-app.md",
+          "type": "text/markdown",
+          "title": "create-pantoken-app agent skill"
         }
       ]
     }

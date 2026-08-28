@@ -123,6 +123,7 @@ to confirm a detail, fetch the live docs at `https://pantoken.iywahl.com/`:
 - `/llms.txt` — an agent-legible index of the whole site.
 - `/llms-full.txt` — the entire site as one document.
 - Any page as Markdown by appending `.md` to its URL (e.g. `/guide/packages.md`).
+- `/create-pantoken-app.md` — the `create-pantoken-app` agent skill.
 - `/.well-known/api-catalog` — a machine-readable manifest linking to the above.
 
 ## Rules
