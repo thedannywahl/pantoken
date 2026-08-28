@@ -140,8 +140,10 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
       iconsNote: "component-icons.css is included because a selected component uses icons.",
     },
     getStartedTabs: {
-      aiCommand:
-        "Run `npx @pantoken/ai init` in this project, then run the `/scaffold-pantoken` skill.",
+      aiCommand: "Run `npx @pantoken/ai init` in this repo, then run `/scaffold-pantoken`.",
+      copied: "Copied",
+      cliInstall: "CLI install",
+      aiInstall: "AI install",
     },
     chrome: {
       outlineLabel: "On this page",
@@ -237,6 +239,9 @@ export const LOCALES: Record<DocsLocale, LocaleMeta> = {
     getStartedTabs: {
       aiCommand:
         "Futtasd az `npx @pantoken/ai init` parancsot ebben a projektben, majd futtasd a `/scaffold-pantoken` skillt.",
+      copied: "Másolva",
+      cliInstall: "CLI telepítés",
+      aiInstall: "AI telepítés",
     },
     chrome: {
       outlineLabel: "Ezen az oldalon",

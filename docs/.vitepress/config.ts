@@ -564,6 +564,12 @@ export default defineConfig({
             new URL("theme/components/VPNavBarExtra.vue", import.meta.url),
           ),
         },
+        {
+          // Override the default home hero so GetStartedTabs can mount as a sibling right after
+          // `.main` inside the hero `.container`.
+          find: /^.*[/\\]VPHomeHero\.vue$/,
+          replacement: fileURLToPath(new URL("theme/components/VPHomeHero.vue", import.meta.url)),
+        },
       ],
     },
   },
