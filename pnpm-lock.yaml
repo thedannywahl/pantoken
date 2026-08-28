@@ -223,9 +223,6 @@ catalogs:
     '@codspeed/vitest-plugin':
       specifier: ^5.7.1
       version: 5.7.1
-    '@commander-js/extra-typings':
-      specifier: ^15.0.0
-      version: 15.0.0
     '@commitlint/cli':
       specifier: ^21.2.2
       version: 21.2.2
@@ -520,9 +517,6 @@ importers:
       '@bomb.sh/tab':
         specifier: 'catalog:'
         version: 0.0.22(cac@7.0.0)(commander@15.0.0)
-      '@commander-js/extra-typings':
-        specifier: 'catalog:'
-        version: 15.0.0(commander@15.0.0)
       '@pantoken/scaffold':
         specifier: workspace:*
         version: link:../../packages/scaffold
@@ -1502,9 +1496,6 @@ importers:
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.7.0
-      '@commander-js/extra-typings':
-        specifier: 'catalog:'
-        version: 15.0.0(commander@15.0.0)
       '@pantoken/angular':
         specifier: workspace:*
         version: link:../../renderers/angular
@@ -3353,11 +3344,6 @@ packages:
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
-
-  '@commander-js/extra-typings@15.0.0':
-    resolution: {integrity: sha512-yeJlba62xqmkgELUsn7356MEnzLLu/fw2x4lofFqGnXh6YysRdEs2BaLeLtg1+KU0AXvMeqQvTTp+3hBEBK+EA==}
-    peerDependencies:
-      commander: ~15.0.0
 
   '@commitlint/cli@21.2.2':
     resolution: {integrity: sha512-a+6hQxIxnpdvSvS2apvttPNbEliYsVC3PqFYDiiB2kjbwIsQsj1urvQ4Tkf70pKYozPalKAuRQmm/GHwndduqA==}
@@ -9918,10 +9904,6 @@ snapshots:
 
   '@colors/colors@1.5.0':
     optional: true
-
-  '@commander-js/extra-typings@15.0.0(commander@15.0.0)':
-    dependencies:
-      commander: 15.0.0
 
   '@commitlint/cli@21.2.2(@types/node@26.3.0)(conventional-commits-parser@7.1.2)(typescript@5.6.1-rc)':
     dependencies:

@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "@bomb.sh/tab": "catalog:",
-    "@commander-js/extra-typings": "catalog:",
     "@pantoken/scaffold": "workspace:*",
     "commander": "catalog:"
   },

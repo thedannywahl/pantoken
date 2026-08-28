@@ -41,7 +41,6 @@
   "dependencies": {
     "@bomb.sh/tab": "catalog:",
     "@clack/prompts": "catalog:",
-    "@commander-js/extra-typings": "catalog:",
     "@pantoken/angular": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/react": "workspace:*",
