@@ -417,6 +417,9 @@ const highlightColor = computed(() =>
   transform-style: preserve-3d;
   transform: rotateY(-15deg);
   transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  /* Keeps the tilted bitmap on its own compositor layer so per-keystroke typewriter repaints
+     don't force Firefox to re-rasterize it, which otherwise tears the tilted edges. */
+  will-change: transform;
 }
 
 .gs-started__stage.-agent .gs-started__flipper {
@@ -427,6 +430,7 @@ const highlightColor = computed(() =>
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
+  will-change: transform;
 }
 
 .gs-started__face--agent {
