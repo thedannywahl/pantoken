@@ -1,0 +1,111 @@
+<task-notification>
+<task-id>abaa08777d21bd4be</task-id>
+<tool-use-id>toolu_015c795SCAR2xG8Se1Smkv9o</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/abaa08777d21bd4be.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore elevation/focus declaration source" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture. Here's the full report.
+
+## 1. What the two builders return and where their values come from
+
+### `elevationDeclarations()` — `formats/components/src/declarations/elevation.ts`
+
+Returns `[name: string, value: string][]` — one `[customProperty, value]` pair per level/alias. **8 pairs**, each named `--instui-elevation-&lt;name&gt;` with a multi-layer `box-shadow` value.
+
+- Geometry (hardcoded constants in `ELEVATION_GEOMETRY`, `[tight, wide]` = `offset-x offset-y blur`):
+  - `resting`: `["0 0.0625rem 0.125rem", "0 0.0625rem 0.1875rem"]`
+  - `above`: `["0 0.1875rem 0.375rem", "0 0.1875rem 0.375rem"]`
+  - `topmost`: `["0 0.375rem 0.4375rem", "0 0.625rem 1.75rem"]`
+- Aliases (`ELEVATION_ALIASES`): `depth1→resting`, `depth2→above`, `depth3→topmost`, `card→resting`, `cardHover→topmost`.
+- Each value = `` `${tight} var(--instui-color-drop-shadow-shadow-color2), ${wide} var(--instui-color-drop-shadow-shadow-color1)` `` — tight layer takes the soft color token, wide layer the strong one.
+
+So the **geometry is hardcoded**, but the **colors are themed token references** (`--instui-color-drop-shadow-shadow-color1/2`). Those tokens exist in the IR (`formats/tokens/generated/{rebrand,canvas,canvasHighContrast}.json`), i.e. `@pantoken/css` already emits them.
+
+Also exported: `ELEVATION_NAMES` (readonly string[] of all 8 names), `elevationCss({selector=":root"})` (wraps the pairs in a rule + leading `ELEVATION_DOC` cssdoc block), and `elevation: Definition` (`kind: "declaration"`, delegates to `elevationCss`).
+
+### `focusOutlineDeclarations()` — `formats/components/src/declarations/focus.ts`
+
+Returns `[name, value][]` — **11 pairs**, each `--instui-focus-outline-&lt;x&gt;`:
+
+| property | value | kind |
+|---|---|---|
+| `-color` | `var(--instui-component-shared-tokens-focus-outline-info-color)` | token ref |
+| `-color-start` | `transparent` | constant |
+| `-width` | `var(--instui-component-shared-tokens-focus-outline-width)` | token ref |
+| `-offset` | `var(--instui-component-shared-tokens-focus-outline-offset)` | token ref |
+| `-radius` | `var(--instui-border-radius-md)` | token ref |
+| `-style` | `solid` | constant |
+| `-transition` | `outline-color 0.2s, outline-offset 0.25s` | constant |
+| `-color-success` | `var(...focus-outline-success-color)` | token ref |
+| `-color-danger` | `var(...focus-outline-danger-color)` | token ref |
+| `-color-inverse` | `var(...focus-outline-on-color)` | token ref |
+| `-inset` | `0rem` | constant |
+
+So values are a **mix**: colors/width/offset/radius are themed shared-token references (all present in the IR, emitted by `@pantoken/css`); start/style/transition/inset are hardcoded constants.
+
+The file also exports `FOCUSABLE_SELECTOR`, `focusOutlineRules(selector)` (the zero-specificity `:where()` ring rules — separate from the token defs), `focusOutlineCss({selector, tokenSelector=":where(:root)"})` (DOC block + token defs + rules), and `focus: Definition`.
+
+## 2. Full importer/consumer list
+
+Excluding the stale copy under `.claude/worktrees/cssdoc-migration-c2d14c/` (a worktree mirror), the live consumers are:
+
+**Inside `@pantoken/components`:**
+- `formats/components/src/index.ts` — the barrel. Imports `elevationCss` and `focusOutlineCss`; re-exports `ELEVATION_NAMES, elevationCss, elevationDeclarations, FOCUSABLE_SELECTOR, focusOutlineCss, focusOutlineDeclarations, focusOutlineRules`. `componentsCss()` **leads** its sheet with `${elevationCss()}`; `baseCss()` appends `${focusOutlineCss()}`.
+- `formats/components/src/declarations/index.ts` — imports the `focus` and `elevation` `Definition` objects into the `DECLARATIONS` registry (drives cssdoc doc pages + `validate()`).
+- `formats/components/scripts/generate.ts` — imports `ELEVATION_NAMES` (line 27), uses it (line 106) to declare the `box-shadow` utility token list.
+- `formats/components/src/utilities/view.ts` — does **not** import the functions; it hardcodes `var(--instui-elevation-${s})` in the `-shadow-*` modifiers (consumes the property names).
+
+**Other packages:**
+- `renderers/web-components/src/index.ts` — imports `elevationDeclarations, focusOutlineDeclarations` from `@pantoken/components`. `foundationCss()` concatenates both into one `:root {…}` block; `register()` injects it as `&lt;style id="pantoken-foundation"&gt;`. This is the piece that re-bundles the values because the token sheet doesn't carry them.
+- `renderers/pendo/src/build.ts` — imports `elevationCss, focusOutlineDeclarations, focusOutlineRules`. Wraps them in `@layer instui.elevation` and `@layer instui.focusOutline` under a `GUIDE_SELECTOR` (line 94 composes the full sheet).
+- `docs/scripts/stage-component-assets.ts` — imports `focusOutlineCss` from the source path and writes a staged asset file.
+
+**Tests / comments:**
+- `formats/components/tests/public-surface.test.ts` — asserts `ELEVATION_NAMES, elevationCss, elevationDeclarations, focusOutlineCss, focusOutlineDeclarations, focusOutlineRules` are all exported.
+- `formats/components/tests/sheets.test.ts` — asserts `box-shadow: var(--instui-elevation-above)` usage and filters `--instui-elevation-*` / `--instui-focus-outline-*` out of the IR-drift check (comment confirms elevation defs live in components.css, focus defs in base.css).
+- `docs/scripts/demos.ts` — comment reference only.
+
+## 3. Where the values are emitted into shipped CSS
+
+- **`components.css`**: `componentsCss()` in `formats/components/src/index.ts` prepends `${elevationCss()}` before all component rules, so the `--instui-elevation-*` `:root` block **leads the sheet**. Confirmed.
+- **`base.css`**: `baseCss()` = base reset rules + `focusOutlineCss()`. `focusOutlineCss()` emits **both** the `--instui-focus-outline-*` token definitions (on `:where(:root)`) **and** the `:focus-visible` ring rules. So **base.css DEFINES the `--instui-focus-outline-*` values**, not just consumes them. The `sheets.test.ts` comment states this explicitly.
+- Neither value block lives in the token sheet (`@pantoken/css`), which is exactly why `web-components` `foundationCss()` re-bundles both at `:root`.
+
+## 4. Package layering and the right home
+
+Runtime dependency directions (from each `package.json`):
+- `@pantoken/model` — **leaf, zero runtime deps** (types only).
+- `@pantoken/utils` → `@pantoken/model` (+ arkregex).
+- `@pantoken/tokens` → `@pantoken/model`.
+- `@pantoken/css` → `@pantoken/model`, `@pantoken/plugin-kit`, `@pantoken/tokens` (`@pantoken/utils` is devDep only).
+- `@pantoken/components` → `@pantoken/plugin-colors` (runtime); `@pantoken/tokens`, `@pantoken/utils`, `@pantoken/icons`, `@pantoken/plugin-theme-custom-media`, `@cssdoc/*` are **devDeps** (the CSS is generated at build time by its scripts).
+
+Key facts:
+- `@pantoken/components` does **not** depend on `@pantoken/css`, and `@pantoken/css` does **not** depend on `@pantoken/components`. Moving the builders down avoids any upward/cyclic dependency.
+- Both packages already sit above `@pantoken/tokens` and `@pantoken/model`. `@pantoken/css` uses `tokens` at runtime; `@pantoken/components` uses `tokens`/`utils` as devDeps (fine, since it emits CSS in build scripts).
+
+Best homes for the **pure builders** (`elevationDeclarations`, `focusOutlineDeclarations`, plus `ELEVATION_GEOMETRY`/`ELEVATION_ALIASES`/`ELEVATION_NAMES`, `focusOutlineRules`, `FOCUSABLE_SELECTOR`):
+- **`@pantoken/tokens`** — conceptually the strongest fit ("the token sheet"), and `@pantoken/css` already depends on it at runtime, so `css` can import them with no new dep. `@pantoken/components` already has it as a devDep. Caveat: `tokens` is currently pure IR data (`Token[]`), so this adds a small CSS-value-builder surface to it.
+- **`@pantoken/utils`** — "shared pantoken helpers," depends only on `model`. The builders are pure string functions, which fits. Downside: `utils` is currently a devDep of both, so `@pantoken/css` would need to promote it to a runtime dep.
+- **`@pantoken/model`** — wrong home; it's zero-dependency **type contracts only**, no value/string builders.
+
+Important detail that makes this clean: the builders return `[string, string][]`, which is **exactly** the shape of `CssSection.pairs` in `formats/css/src/emit.ts` and of `CssContribution.declarations` in `to-css.ts`. So once the builders live in a shared package, `@pantoken/css`'s `toCss()` can emit a "foundation" section natively (either as an extra `sections[]` entry in `buildCssFile`, or via the existing plugin `css` hook). The values are all `var(...)`/composite (contextual), so `toCss`'s `isContextual()` path correctly routes them to plain declarations, not `@property` registrations.
+
+What should **stay** in `@pantoken/components`: the cssdoc `Definition`-shaped `elevation`/`focus` objects, the `ELEVATION_DOC`/`FOCUS_DOC` comment blocks, the `DECLARATIONS` registry, and `elevationCss`/`focusOutlineCss` (the header-wrapped, doc-carrying builders). These depend on `CssRecordKind` from `@cssdoc/core`, the `css` identity tag (`src/lib/css.ts`), and `Definition` (`src/lib/define.ts`) — all cssdoc/registry concerns. They can keep working by importing the moved pure builders.
+
+## 5. Are these really design tokens?
+
+Yes. Both are token systems that **compose base tokens into composite custom properties**: elevation is a shadow scale built from `--instui-color-drop-shadow-*`; focus-outline is a themed ring-variable set built from `--instui-component-shared-tokens-focus-outline-*` and `--instui-border-radius-md`. They exist as bespoke builder functions (not `defineDeclaration`) only because (a) their output is a `:root` token block rather than modifier classes, and (b) focus additionally emits ring rules on a second selector. The doc comments literally call them `@declaration` records.
+
+Relevant types:
+- `CssRecordKind` (from `@cssdoc/core`) — includes the `"declaration"` kind; both `elevation` and `focus` set `kind: "declaration"`.
+- `Definition` (`formats/components/src/lib/define.ts`) — `{ name, kind, rules(prefix), css(options) }`; `defineDeclaration` is the wrapper these two deliberately bypass.
+
+Two refactor depths are possible:
+- **Light (matches your plan):** move only the two pure `[name,value][]` builders down to `@pantoken/tokens` (or `@pantoken/utils`); have `@pantoken/css` emit them as a foundation section, delete the proposed `foundation.css`, and repoint `web-components`/`pendo`/`components` at the shared builders. The cssdoc `Definition` objects stay in `@pantoken/components`.
+- **Deep:** model elevation/focus as first-class IR `Token` entries in `@pantoken/model`/`@pantoken/tokens`, so `@pantoken/css` emits them like any other token and the bespoke builders disappear entirely. Larger change; touches the IR and every cssdoc doc page.
+
+One consistency win either way: every base token these values reference is already present in the IR and emitted by `@pantoken/css`, so relocating the emission into `@pantoken/css` introduces no dangling references.</result>
+<usage><subagent_tokens>49532</subagent_tokens><tool_uses>22</tool_uses><duration_ms>173909</duration_ms></usage>
+</task-notification>
