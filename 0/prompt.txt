@@ -1,0 +1,1 @@
+the line wrapping behaves a little odd it breaks on the tool name, and the 'cursor' drops to the bottom of the screen after a line wrap instead of staying with the text.
