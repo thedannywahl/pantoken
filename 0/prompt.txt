@@ -1,0 +1,5 @@
+* rename the labels for base and utilities to just 'base' and 'utilities' and append an info icon and a context-view with a brief blurb of what's included (only for these two, not all components)
+* create the shared helper for CdnPicker and IconPicker for the next task
+* add a top-level tab for web-components that works like components. it should support either the module export version or the iife version
+
+* if possible, preferring through native vitepress options - the url hash or the query parameter should be updated as the user checks/unchecks options & views tabs/subtabs to support deep linking of configurations for bookmarking and sharing.
