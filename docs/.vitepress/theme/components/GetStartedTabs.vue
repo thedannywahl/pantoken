@@ -431,6 +431,11 @@ const highlightColor = computed(() =>
   inset: 0;
   backface-visibility: hidden;
   will-change: transform;
+  background: light-dark(
+    var(--instui-color-background-container),
+    var(--instui-color-background-page)
+  );
+  border-radius: 8px;
 }
 
 .gs-started__face--agent {
@@ -447,6 +452,9 @@ const highlightColor = computed(() =>
     var(--instui-color-background-container),
     var(--instui-color-background-page)
   );
+  /* Own compositor layer so interior repaints (copy button hover, popovers) don't re-rasterize
+     the tilted face bitmap and tear its edges. */
+  will-change: transform;
 }
 
 .gs-terminal__body {
