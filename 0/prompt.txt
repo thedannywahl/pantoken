@@ -1,0 +1,84 @@
+<task-notification>
+<task-id>a262317912ef1daa5</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/4f3348ab-1f38-41f4-a9a1-525113466cf9/tasks/a262317912ef1daa5.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore docs i18n workflow" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete, confirmed picture. Here's my report.
+
+## Summary
+
+The i18n machinery is fully built and already runs over the API + CSS trees — but only with the **deterministic `glossary` adapter**, which swaps a fixed list of TypeDoc structural terms and leaves all actual prose in English. Adding "API typedoc / cssdoc prose" to translation is really about routing that tree through the **`claude-code` adapter** (real prose translation, like the guides already get) without the cold-cache cost the maintainers explicitly warned against.
+
+---
+
+## 1. Docs site structure
+
+- **Site root:** `/Users/dwahl/Scripts/pantoken/docs` — a VitePress site, package `@pantoken/docs` (`docs/package.json`).
+- **VitePress config dir:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/`
+  - `config.ts` (20 KB) — main config. Reads `LOCALES` from `i18n.ts`, builds `localesConfig` per locale, loads per-locale TypeDoc sidebars via `typedocSidebarByLocale` (line 71), and splits the API sidebar with `splitApiSidebar` (line 169). Live CSS `@example` previews are seamed in via `demoMarkdownIt` from `@pantoken/demo` (imported line 5).
+  - **`i18n.ts`** (the translation/UI layer) — `/Users/dwahl/Scripts/pantoken/docs/.vitepress/i18n.ts`. Defines `DocsLocale = "root" | "hu"` and `LOCALES`, holding every localizable UI string: nav/sidebar labels, `editText`, `themeSelector`, VitePress chrome, and local-search UI. Note `typedocSidebarPath` differs per locale (`../api/...` vs `../hu/api/...`).
+- **Locales:** two — `root` (English, `/…`) and `hu` (Magyar/Hungarian, `/hu/…`). Symmetric prefix swap using VitePress default routing (no custom `i18nRouting`).
+- **Content trees:** `docs/guide/` (hand-written EN guides), `docs/hu/guide/` (translated), `docs/api/` (generated EN API + CSS), `docs/hu/api/` (cloned + adapter-processed).
+
+## 2. The i18n translation workflow
+
+Scripts live in `/Users/dwahl/Scripts/pantoken/docs/scripts/`:
+
+- **`api-translation.ts`** — the adapter architecture. Interface `TranslationAdapter` (`translateMarkdown` / `translateText` / optional `translateBatch`). Two implementations:
+  - `GlossaryTranslationAdapter` (`name = "glossary"`, the CI-safe default) — applies `SORTED_REPLACEMENTS`, a fixed ~55-term glossary of TypeDoc structural words (Parameters→Paraméterek, Returns→Visszatérés, etc.). Preserves fenced/inline code and `@scope/pkg` names. **Does not translate prose.**
+  - `ClaudeCodeTranslationAdapter` (`name = "claude-code"`) — shells out to `claude -p`, real translation, with code/package placeholder protection and JSON batch mode.
+  - `createTranslationAdapter()` picks via `DOCS_TRANSLATION_ADAPTER` env (default `glossary`).
+- **`translation-memory.ts`** — content-addressed cache (`TranslationMemory`, `keyFor` = sha256 of kind+source, `translateUnits`). Committed cache dir `docs/i18n-cache/` (`hu.guides.json`, `hu.api.json`). Only new/edited units reach the adapter; markdown translated per-file, short labels batched.
+- **`build-api-locales.ts`** — regenerates EN API (TypeDoc → `style-api-badges.ts` → `write-api-overview.ts`), builds CSS API, **clones `docs/api` → `docs/hu/api`**, then runs the adapter over every `.md` and every `typedoc-sidebar.json` label. This is where the API/CSS prose translation would plug in.
+- **`translate-guides.ts`** — translates `docs/guide/*.md` → `docs/&lt;locale&gt;/guide/`. Same adapter selector. This is a **manual, committed** workflow.
+- **`check-locale-parity.ts`** — asserts HU guide + API trees mirror root page-for-page.
+
+**Relevant package.json scripts** (`docs/package.json`):
+- `docs:api:locales` → glossary (default); `docs:api:locales:claude` → `DOCS_TRANSLATION_ADAPTER=claude-code`
+- `docs:guides:locales` → glossary; `docs:guides:locales:claude` → claude-code
+- `docs:check:locales`, `docs:build`, `docs:build:claude`
+- Root `package.json` proxies: `docs:dev`, `docs:build`, `docs:api`.
+
+## 3. Guides vs API/cssdoc prose — what's actually translated
+
+This is the crux. **Both trees run through the same pipeline, but with different adapters in practice:**
+
+- **Guides** — the committed `docs/hu/guide/*.md` are **real Hungarian prose** (verified: `docs/hu/guide/packages.md` opens "# A csomagtérkép / A pantoken egy monorepo…"). Produced by the **claude-code** adapter. `hu.guides.json` holds 7 full-page translations.
+- **API (TypeDoc) + CSS (cssdoc) prose** — committed `docs/hu/api/**` is **glossary output only**. Verified against `docs/hu/api/css/button.md` vs `docs/api/css/button.md`: only structural labels changed (`Source`→`Forrás`, `Examples`→`Példák`, `Description`→`Leírás`). The actual prose is still English — component description, the Accessibility paragraph, modifier descriptions ("An AI action.", "A destructive action."), and even section headings `Accessibility` / `Usage` / `Demo` / `Modifiers` (these cssdoc headings aren't in the glossary at all — confirmed no match in `api-translation.ts`).
+- `hu.api.json` has ~1,130 entries, but they're glossary-processed markdown/labels (mostly-English bodies), not real translations.
+
+**Why:** `docs/conventions/build-and-docs.md` "Adapter split" — "Hand-written guides use the `claude-code` adapter; the generated API tree (TypeDoc + CSS reference) uses the deterministic `glossary` adapter. Don't run `:claude` over the whole API tree — a cold cache means hundreds of sequential `claude -p` calls."
+
+So the scoping gap is deliberate: nobody wanted hundreds of sequential Claude calls in the build. The pipeline already *supports* claude-code for the API tree (`docs:api:locales:claude` exists); it's just not used because of cost/latency, and the incremental memory only helps after the first expensive full run.
+
+## 4. Where API/cssdoc content comes from
+
+- **TypeDoc config:** `/Users/dwahl/Scripts/pantoken/docs/typedoc.json` (+ `tsconfig.typedoc.json`). Plugins: `typedoc-plugin-markdown`, `typedoc-vitepress-theme`, and local `../plugins/typedoc/demo/dist/index.mjs`. ~24 entry points across `packages/`, `formats/`, `platforms/`, `renderers/`, `bundlers/`, `design/`, `ai/`, `plugins/`, `tools/`. Prose comes from TSDoc comments in source. Output → `docs/api/`, sidebar → `docs/api/typedoc-sidebar.json`.
+- **CSS API (cssdoc):** `/Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts`. A thin wrapper: builds pantoken's `resolveToken`/`resolveSource`/`importSnippet` hooks, then calls `@cssdoc/typedoc`'s `emitCssApi`, which writes `docs/api/css/**` and merges a "CSS" section into the TypeDoc sidebar. Prose comes from `@component`/`@utility`/`@rule`/`@declaration` doc comments in `formats/components/**` CSS/TS sources, parsed by `@cssdoc/core`. Rendering lives in `@cssdoc/markdown` (consumed from npm, not workspace). Config: `/Users/dwahl/Scripts/pantoken/cssdoc.jsonc` (section order, `headingPrefix: "CSS:"`). Live `&lt;div class="css-example"&gt;` previews are pantoken's `@pantoken/typedoc-plugin-live-example`, seamed at compile time by `demoMarkdownIt`, not baked into the `.md`.
+- **Post-processing:** `style-api-badges.ts` + `api-badge-classes.ts` (badge classes, kept in sync with cssdoc deprecation markers), `write-api-overview.ts` (API landing blurb).
+- Both TypeDoc and CSS pages land under `docs/api/` (then cloned to `docs/hu/api/`), so they share one sidebar and nav — the CSS section rides inside `typedoc-sidebar.json`.
+
+## What is vs isn't translated (bottom line)
+
+| Content | Adapter used | Prose translated? |
+|---|---|---|
+| VitePress UI chrome, nav, sidebar labels | `i18n.ts` `LOCALES` (hand-authored) | Yes |
+| Hand-written guides (`docs/hu/guide/`) | `claude-code` | Yes (real Hungarian) |
+| TypeDoc API prose (`docs/hu/api/**`) | `glossary` | No — structural terms only |
+| cssdoc prose (`docs/hu/api/css/**`) | `glossary` | No — and cssdoc section headings (Accessibility/Usage/Demo/Modifiers) aren't even in the glossary |
+
+## Key files for the work
+
+- `docs/scripts/build-api-locales.ts` — the integration point; already calls `translateUnits` over the whole cloned tree.
+- `docs/scripts/api-translation.ts` — where an improved API-prose strategy (e.g. a hybrid glossary+claude adapter, or extending the glossary with cssdoc section headings) would live.
+- `docs/scripts/translation-memory.ts` — the incremental cache that makes a one-time full claude run affordable on re-runs (`autosave` already supports resumable long runs).
+- `docs/package.json` — `docs:api:locales:claude` already wires claude-code for the API tree.
+- `docs/i18n-cache/hu.api.json` — currently holds glossary output; would need regeneration.
+- `docs/conventions/build-and-docs.md` — documents the adapter split and the nested-`vp`-spawn limitation (API locale node must run as `node scripts/...`, not nested `vp run`).
+- `cssdoc.jsonc`, `docs/typedoc.json` — source-of-prose configs.
+
+One nuance worth flagging for the scope: the cssdoc **section headings** (`Accessibility`, `Usage`, `Demo`, `Modifiers`, etc. from `cssdoc.jsonc` `sectionOrder`) render in English even under the glossary adapter because they aren't in `SORTED_REPLACEMENTS`. Whatever approach you pick, those headings need handling too — either added to the glossary or covered by full-prose translation.</result>
+<usage><subagent_tokens>63983</subagent_tokens><tool_uses>18</tool_uses><duration_ms>127290</duration_ms></usage>
+</task-notification>
