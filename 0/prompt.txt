@@ -1,0 +1,12 @@
+```
+https://cdn.jsdelivr.net/combine/npm/@pantoken/css@0.1.0/style.lean.css,npm/@pantoken/components@0.1.1/base.css,npm/@pantoken/components@0.1.1/component-icons.css,npm/@pantoken/components@0.1.1/alert.css,npm/@pantoken/components@0.1.1/avatar.css,npm/@pantoken/components@0.1.1/badge.css
+```
+
+throws this error:
+
+```
+Couldn't combine file npm/@pantoken/css@0.1.0/style.lean.css.
+Couldn't find the requested file /style.lean.css in @pantoken/css.
+```
+
+do we need to release pantoken/css or pantoken/components?
