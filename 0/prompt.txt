@@ -1,0 +1,1 @@
+plugins/pantoken/logos and plugins/pantoken/stacking tokens should all have types and defaults enumerated in the documentation.
