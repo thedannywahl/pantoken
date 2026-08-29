@@ -1,0 +1,9 @@
+<task-notification>
+<task-id>adf907ac66f464b62</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/adf907ac66f464b62.output</output-file>
+<status>failed</status>
+<summary>Agent "Map the pantoken release pipeline" failed: Agent stalled: no progress for 600s (stream watchdog did not recover)</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Now let me read the remaining scripts and the changeset/vite config.</result>
+</task-notification>
