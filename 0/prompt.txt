@@ -1,0 +1,1 @@
+Translation drift: 35 block(s) missing from the committed cache. Run `vp run docs:locales:translate` locally, then commit docs/i18n-cache/.
