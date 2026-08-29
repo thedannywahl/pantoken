@@ -1,0 +1,109 @@
+<task-notification>
+<task-id>a220a13f77d1f2e80</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/028d6ae2-85d2-4001-bdcb-e047a6059788/tasks/a220a13f77d1f2e80.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore token IR and InstUI resolution" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture now. Here's my report.
+
+---
+
+## Token model and InstUI resolution in `pantoken`
+
+### 1. The canonical token IR — `@pantoken/model`
+
+The IR is defined as pure TypeScript type contracts (zero runtime, zero deps) in `/Users/dwahl/Scripts/pantoken/packages/model/src/index.ts`. The canonical unit is the `Token` interface, aligned to the CSS `@property` schema:
+
+```ts
+export interface Token {
+  name: string;      // custom-property name, e.g. --instui-color-background-base
+  syntax: string;    // @property syntax: "&lt;color&gt;", "&lt;length&gt;", "&lt;image&gt;", or "*" for contextual
+  inherits: boolean; // @property inherits flag
+  value: string;     // a concrete value, a var(...) reference, or a light-dark(a, b) pair
+  themed?: boolean;  // true when light/dark resolutions differ (value is a light-dark())
+  refersTo?: string; // the token this one references, when value is a single var(...)
+  meta?: TokenMeta;  // non-value metadata (icons, deprecation, color modifiers)
+}
+```
+
+Value representation (confirmed against generated output in `/Users/dwahl/Scripts/pantoken/formats/tokens/generated/canvas.json` and `rebrand.json`):
+
+- **Primitives** carry literal values — hex colors and rem/px lengths. These are the resolution endpoints:
+  - `--instui-primitive-color-white` → `"#ffffff"` (syntax `&lt;color&gt;`)
+  - `--instui-primitive-size-size12` → `"0.75rem"` (syntax `*`)
+- **Semantic / layout / component tokens** carry `var(...)` references, never inlined literals, plus a `refersTo` back-pointer:
+  - `--instui-spacing-space-md` → `"var(--instui-primitive-size-size12)"`, `refersTo: "--instui-primitive-size-size12"`
+- **Themed colors** use `light-dark()` wrapping both resolved references, with `themed: true`:
+  - `--instui-color-background-base` → `"light-dark(var(--instui-primitive-color-white), var(--instui-primitive-color-grey-grey200))"`, `themed: true`
+
+Key point for 1:1 matching: the IR stores each token's **authored** value (a reference or literal), not a fully-flattened leaf. To compare against a component's computed CSS you must walk the `refersTo` chain down to a primitive literal yourself (see #5).
+
+### 2. Raw InstUI upstream source + committed baseline
+
+Upstream ingestion lives in `/Users/dwahl/Scripts/pantoken/packages/core/src/build.ts`. `buildTokens()` imports `themeTokens` from `@instructure/instructure-design-tokens` (a GitHub-only Tokens Studio package) and `@instructure/ui-icons`, then walks the nested tree (`primitives`, `rebrand`, `canvas`, `semantic.layout`, `semantic.color`, `component`) into the `Token[]` IR. Theme selection is in `THEME_SPECS` (rebrand → rebrandLight/rebrandDark, etc.).
+
+- Module declaration for the untyped upstream package: `/Users/dwahl/Scripts/pantoken/packages/core/src/instructure-design-tokens.d.ts`.
+- The raw tree is re-published verbatim as `@pantoken/tokens/raw` — `/Users/dwahl/Scripts/pantoken/formats/tokens/src/raw.ts` (from `generated/raw.json`).
+- Upstream provenance (exact pin) is recorded in `/Users/dwahl/Scripts/pantoken/formats/tokens/generated/meta.json` and typed in `src/meta.ts`:
+  - design-tokens `v1.5.0` @ commit `ae8f600e…`, ui-icons `11.7.4`.
+
+**The upstream-diff drift gate + committed baseline** (this is the "committed snapshot" from memory):
+
+- Baseline: `/Users/dwahl/Scripts/pantoken/tools/upstream-diff/baseline/manifest.json` (~2 MB, key-sorted, pretty-printed JSON of every token per theme + icon hashes + provenance).
+- Library (pure, no IO): `/Users/dwahl/Scripts/pantoken/tools/upstream-diff/lib.ts` — `buildManifest()` projects the built IR into a compact `Manifest`, `diffManifests()` classifies changes into buckets (`token-value-changed`, `token-ref-changed`, `token-syntax-changed`, added/removed, icon rename/change), and `manifestsEqual()` is the exact drift check.
+- Runner/gate: `/Users/dwahl/Scripts/pantoken/tools/upstream-diff/index.ts` — `vp run upgrade:check` diffs current build vs baseline and exits non-zero on unblessed drift; `vp run upgrade:bless` rewrites the baseline. Bless also enforces the deprecation lifecycle against `/Users/dwahl/Scripts/pantoken/formats/tokens/deprecations.json`.
+
+Note in `lib.ts`: the manifest stores the *authored* value so a primitive change reads as root-cause rather than fanning out; and reference integrity (dangling `var()`) is gated separately by `validate-generated`, not here.
+
+### 3. Real `@instructure/ui-*` React components rendered in the repo
+
+Yes, one place renders the actual InstUI React components: `/Users/dwahl/Scripts/pantoken/renderers/react-markdown/src/components.tsx`. It imports and mounts `Alert`, `Heading`, `Img`, `Link`, `List`, `Table`, `Text`, and `View` from `@instructure/ui-alerts`, `-heading`, `-img`, `-link`, `-list`, `-table`, `-text`, `-view` (deps in that package's `package.json`).
+
+Important caveat for your goal: this renderer only produces **static markup via `renderToStaticMarkup`** (server-side — see `renderers/react-markdown/tests/components.test.tsx`). It does **not** extract computed CSS. There is **no** `getComputedStyle`-based harness anywhere in the repo that mounts an InstUI component in a browser/jsdom to read back its resolved emotion styles. The only `getComputedStyle` calls are in `/Users/dwahl/Scripts/pantoken/tools/demo/runner/main.ts` and they measure the pantoken demo page's own layout (rem→px, divider widths), not InstUI components.
+
+InstUI is fully installed under `node_modules/.pnpm` (buttons, heading, view, themes, emotion, color-utils, etc., at `11.7.3`/`11.7.4`), so an InstUI theme (`@instructure/ui-themes`) + emotion render harness *could* be built — but nothing does today. If you want the "InstUI values" side of a 1:1 comparison, you would need to render those components with `@instructure/emotion` + `@instructure/ui-themes` and read computed styles yourself; the repo does not already capture them.
+
+### 4. How component CSS references tokens — `var()`, not resolved literals
+
+Component records author CSS with **`var(--instui-...)` references**, and the emitted CSS keeps them as `var()` — nothing is flattened to literals. Example: `/Users/dwahl/Scripts/pantoken/formats/components/src/components/button.ts`:
+
+```css
+min-height: var(--instui-component-base-button-medium-height);
+background: var(--instui-color-background-interactive-action-primary-base);
+color: var(--instui-color-text-interactive-action-primary-base);
+```
+
+The `css` tag (`/Users/dwahl/Scripts/pantoken/formats/components/src/lib/css.ts`) is an identity template — it emits byte-for-byte what was authored. Confirmed in generated output: `/Users/dwahl/Scripts/pantoken/formats/components/generated/button.css` contains 88 `var(--instui-...)` occurrences; every component `.css` keeps references. Definition/record plumbing is in `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/define.ts`.
+
+Consequence: to compare a rendered pantoken component's computed CSS against "the actual token IR value," the browser resolves the `var()` cascade at runtime; to compare against the IR statically you must resolve the same reference chain (#5) and match the final literal.
+
+### 5. Resolving a token reference to its final literal value
+
+There is no single "flatten to literal" resolver exported — resolution is split:
+
+- **Authoring/ingestion resolver** (Tokens Studio `{path}` → `var(...)`): `resolveValue()` in `/Users/dwahl/Scripts/pantoken/packages/core/src/resolve.ts`:
+
+```ts
+export function resolveValue(raw: string): string {
+  const match = raw.match(REFERENCE);            // /^\{([^}]+)\}$/
+  return match ? `var(${referenceToVarName(match[1])})` : raw.trim();
+}
+```
+
+  Supporting utilities in the same file: `referenceToVarName()` (maps `semantic.color.background.base` → `--instui-color-background-base`, primitives → `--instui-primitive-…`), `collectLeaves()` (walks the tree to leaves), and `varName()` (builds the kebab custom-property name). This is what turns upstream references into the IR's `var(...)` values.
+
+- **Reference back-pointer**: each `Token.refersTo` (populated by `defineToken`, see `packages/core/src/plugin.ts` and `build.ts`) gives you the single token a `var(...)` value points at.
+
+To get a **final literal** you follow the `refersTo` / `var()` chain across the `Token[]` set until you hit a primitive whose `value` is a hex/rem literal (or a `light-dark()` you split by mode). The repo does this transitively for validation (dangling-ref checks in `validate-generated`) but does not expose a one-call "resolve to computed literal" helper — you'd implement that walk over `buildTokens()` output (or over the per-theme `generated/*.json`) using `refersTo`.
+
+---
+
+### Summary for a 1:1 comparison harness
+
+- **IR value** = `Token.value` (authored reference/literal) in `@pantoken/model` shape; get the concrete literal by walking `refersTo` to a primitive in `formats/tokens/generated/{rebrand,canvas,canvasHighContrast}.json`.
+- **Emitted component CSS** keeps `var()` references (`formats/components/generated/*.css`), so a rendered pantoken component's computed style is the browser's resolution of those vars — compare that computed value to the resolved IR literal.
+- **InstUI upstream values** come from `@instructure/instructure-design-tokens` via `buildTokens()`; a byte-exact committed snapshot exists at `tools/upstream-diff/baseline/manifest.json` guarded by the `upgrade:check`/`upgrade:bless` drift gate.
+- **Real InstUI React components** render only in `renderers/react-markdown` (SSR markup, no computed-style capture). No existing harness extracts InstUI's computed CSS — that side would need to be built with `@instructure/ui-themes` + emotion.</result>
+<usage><subagent_tokens>65228</subagent_tokens><tool_uses>26</tool_uses><duration_ms>145003</duration_ms></usage>
+</task-notification>
