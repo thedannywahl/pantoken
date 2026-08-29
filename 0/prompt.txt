@@ -1,0 +1,125 @@
+<task-notification>
+<task-id>a3948cc26d63d35e7</task-id>
+<tool-use-id>toolu_01Rqbfq1wVW1W7uDmV9T7MC6</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/b23a51be-7c3d-47d9-91dd-ad98fbc5ddc0/tasks/a3948cc26d63d35e7.output</output-file>
+<status>completed</status>
+<summary>Agent "Find vitepress-plugin-llms config" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed for a complete report.
+
+---
+
+# Docs site + `vitepress-plugin-llms` findings
+
+## 1. Where the plugin is configured
+
+**File:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts`
+
+The plugin is imported at line 6 (`import llmstxt from "vitepress-plugin-llms";`) and registered inside the Vite plugins array (`vite.plugins`) at lines 363–369. The **full options passed are just two**:
+
+```ts
+vite: {
+  plugins: [
+    orchestrator,
+    llmstxt({
+      title: "pantoken",
+      description,
+    }) as never,
+  ],
+  ...
+}
+```
+
+where `description` (line 235–236) is:
+```ts
+const description =
+  "Instructure design tokens and icons, reshaped for every platform and framework.";
+```
+
+That's the entire config. **No `workDir`, `ignoreFiles`, `ignoreFilesPerOutput`, `domain`, `customLLMsTxtTemplate`, `generateLLMsFullTxt`, `exclude*`, or `experimental.depth` is set** — everything else runs at the plugin defaults. The `as never` cast is there to bridge Vite plugin-type mismatches (the repo aliases `vite` to `vite-plus-core`; see the comment at lines 358–362).
+
+Related (not plugin config, but the surfacing of its output): a nav social link points at `${base}llms.txt` (lines 435–440).
+
+There is **no `srcDir` or `srcExclude`** set in the VitePress config, so VitePress's source root is `docs/` and the plugin's `workDir` defaults to that whole tree — meaning it processes **both** `docs/hu/**` and the generated `docs/api/**` alongside the English guides, producing a single combined `llms.txt`/`llms-full.txt` with no per-locale separation. This is likely the crux of the "capturing everything" concern: with no `workDir` or `ignoreFiles`, the Hungarian tree and the full generated API reference are all folded into the same output.
+
+## 2. Plugin version and available options
+
+**Version: `1.13.3`**
+- Declared in `/Users/dwahl/Scripts/pantoken/docs/package.json` line 53 as `"vitepress-plugin-llms": "catalog:"`.
+- Resolved via `/Users/dwahl/Scripts/pantoken/pnpm-workspace.yaml` line 80: `vitepress-plugin-llms: ^1.13.3`.
+- Installed at `/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress-plugin-llms@1.13.3/node_modules/vitepress-plugin-llms` (`package.json` confirms `"version": "1.13.3"`).
+
+The default export signature is `llmstxt(userSettings?: LlmstxtSettings): [Plugin, Plugin]`.
+
+**Full `LlmstxtSettings` option set** (verbatim from `dist/index.d.ts`), including inherited `TemplateVariables`:
+
+Template variables (inherited, also usable as top-level options):
+- `title?: string`
+- `description?: string`
+- `details?: string`
+- `toc?: string`
+
+Core options:
+- `domain?: string` — prepended to URLs in outputs; must **not** end with `/`.
+- `generateLLMsTxt?: boolean` (default `true`) — emit `llms.txt` (link index).
+- `generateLLMsFullTxt?: boolean` (default `true`) — emit `llms-full.txt` (whole site in one file).
+- `generateLLMFriendlyDocsForEachPage?: boolean` (default `true`) — per-page `.md` outputs.
+- `stripHTML?: boolean` (default `true`).
+- `injectLLMHint?: boolean` (default `true`) — inserts machine-visible/human-hidden hint text on every page.
+- `workDir?: string` (default `vitepress.srcDir`) — the directory processed; **the documented use case is exactly per-language scoping**, e.g. `workDir: 'en'`.
+- `ignoreFiles?: string[]` (default `[]`) — glob patterns excluded from all outputs (e.g. `'about/team/*'`, `'sponsor/*'`).
+- `ignoreFilesPerOutput?: { llmsTxt?: string[]; llmsFullTxt?: string[]; pages?: string[] }` — per-output ignore patterns **merged** with global `ignoreFiles`; each supports `!`-prefixed negation.
+- `excludeUnnecessaryFiles?: boolean` (default `true`) — drop blog/sponsor/team-type files.
+- `excludeIndexPage?: boolean` (default `true`).
+- `excludeBlog?: boolean` (default `true`).
+- `excludeTeam?: boolean` (default `true`).
+- `customLLMsTxtTemplate?: string` — template with `{title}`, `{description}`, `{details}`, `{toc}` placeholders plus custom vars.
+- `customTemplateVariables?: Record&lt;string, string | undefined&gt;`.
+- `sidebar?: DefaultTheme.Sidebar | ((configSidebar) =&gt; ... )` — override sidebar source.
+- `experimental?: { depth?: number }` (default `1`) — how many directory levels deep to emit `llms.txt` files (`1` = root only, `2` = root + first-level subdirs, etc.).
+
+Also exported: `copyOrDownloadAsMarkdownButtons(md: MarkdownIt, componentName?: string)` — a markdown-it plugin that injects a copy/download-as-markdown button component after the first H1 (not used in this repo's config).
+
+Relevant to the three concerns the task raised:
+- **Filtering/ignoring paths:** `ignoreFiles`, `ignoreFilesPerOutput` (per-output: `llmsTxt`/`llmsFullTxt`/`pages`), plus the `exclude*` presets. None are currently set.
+- **Per-locale outputs:** There is no dedicated locale option — the documented approach is `workDir` (e.g. one plugin instance per language) and/or `ignoreFiles` to exclude other-locale trees. Not currently used, so all locales land in one output.
+- **Customizing `llms.txt` content:** `title`, `description`, `details`, `customLLMsTxtTemplate`, `customTemplateVariables`, `domain`. Only `title` + `description` are set here.
+
+Full README is at `/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vitepress-plugin-llms@1.13.3/node_modules/vitepress-plugin-llms/README.md` (12.8 KB) if you need prose examples.
+
+## 3. How the docs i18n is structured
+
+**Locale definitions:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/i18n.ts` exports `LOCALES: Record&lt;DocsLocale, LocaleMeta&gt;` where `DocsLocale = "root" | "hu"`.
+- `root` (English): `label: "English"`, `lang: "en-US"`, `guidePrefix: "/guide/"`, `apiPrefix: "/api/"`, `typedocSidebarPath: "../api/typedoc-sidebar.json"`.
+- `hu` (Hungarian): `label: "Magyar"`, `lang: "hu-HU"`, `guidePrefix: "/hu/guide/"`, `apiPrefix: "/hu/api/"`, `typedocSidebarPath: "../hu/api/typedoc-sidebar.json"`.
+- Each locale carries fully translated `nav`, `sidebar`, `chrome` (default-theme UI: outline label, prev/next, dark-mode toggles, 404 page), `search` (local-search UI strings), `themeSelector`, and `editText`.
+
+**Locale routing (config.ts):**
+- `localesConfig` (lines 119–201) builds VitePress's `locales` map from `LOCALES`, keyed by `root` and `hu`. Registered at line 343 (`locales: localesConfig`).
+- `cleanUrls: true` (line 344).
+- Per-locale `nav`, `sidebar` (keyed by `guidePrefix`/`apiPrefix`), `editLink`, `outline`, `docFooter`, and other chrome are set per locale.
+- Search: `searchLocales` (lines 206–226) feeds `themeConfig.search.options.locales` (line 431) because the local-search index reads the root themeConfig, not per-route.
+- `transformHead` (lines 306–334) detects locale by testing `pageData.relativePath.startsWith("hu/")` and sets per-page canonical URL, OG/Twitter tags, and `og:locale` (`hu_HU` vs `en_US`).
+- The big comment at lines 335–342 explains routing is a **symmetric prefix swap** (`/…` ↔ `/hu/…`), relying on VitePress's default `i18nRouting` / `correspondingLink` behavior; no custom function is set, and parity is enforced instead (see below).
+
+**Where the Hungarian files live:** `/Users/dwahl/Scripts/pantoken/docs/hu/` mirrors the English root page-for-page:
+- `docs/hu/index.md` — home page (`layout: home`, translated hero; e.g. "Instructure design tokenek, mindenhol").
+- `docs/hu/guide/` — `architecture.md`, `cli.md`, `components.md`, `generated-output.md`, `getting-started.md`, `packages.md`, `plugins.md` (mirrors `docs/guide/`).
+- `docs/hu/api/` — full mirror of `docs/api/` (`bundlers/`, `design/`, `renderers/`, `platforms/`, `tools/`, `formats/`, `css/`, `plugins/`, `ai/`, `packages/`, `index.md`, `typedoc-sidebar.json`).
+
+**How they're generated / authored:** Hungarian is machine-generated from the English source, not hand-authored, via scripts in `/Users/dwahl/Scripts/pantoken/docs/scripts/`:
+- **Guides:** `translate-guides.ts` — reads `docs/guide/*.md` as source, writes `docs/&lt;locale&gt;/guide/*.md`. Uses a translation adapter (`api-translation.ts`), defaulting to a keyless deterministic `glossary` adapter; `DOCS_TRANSLATION_ADAPTER=claude-code` shells out to `claude`. Diffed against a committed translation memory keyed by content hash (`translation-memory.ts`), so only changed guides get re-translated. **Manual workflow** — guide translations are committed, not regenerated per build.
+- **API reference:** `build-api-locales.ts` — English API is generated directly by TypeDoc to `docs/api/`; the HU tree is cloned to `docs/hu/api/` then localized with the same adapter, segmenting markdown (`segment-markdown.ts`) so code/identifiers survive.
+- **Translation memory cache:** `/Users/dwahl/Scripts/pantoken/docs/i18n-cache/hu.guides.json` and `hu.api.json`.
+- **Parity gate:** `check-locale-parity.ts` verifies HU guide pages mirror root guide routes, the HU API tree mirrors root page-for-page, required locale files exist, and the localized home page keeps the same hero actions. This prevents English-only additions from silently missing translation.
+
+**npm scripts (docs/package.json)** that wire this together:
+- `docs:guides:locales` / `docs:guides:locales:claude` → `translate-guides.ts`
+- `docs:api:locales` / `docs:api:locales:claude` → `build-api-locales.ts`
+- `docs:check:locales` → `check-locale-parity.ts`
+- `docs:build` runs assets → `docs:api:locales` → `docs:check:locales` → `vitepress build`.
+
+### Interaction note (i18n × llms plugin)
+Because the plugin receives no `workDir` and no `ignoreFiles`, it operates over VitePress's full `srcDir` (`docs/`). The generated Hungarian tree (`docs/hu/**`) and the entire generated API reference (`docs/api/**` + `docs/hu/api/**`) are therefore all pulled into the single `llms.txt` / `llms-full.txt`. If the goal is English-only or per-locale llms output, the relevant levers on this version are `workDir` (documented per-language use), `ignoreFiles` (e.g. `hu/*`), or `ignoreFilesPerOutput` — none of which are currently configured.</result>
+<usage><subagent_tokens>49823</subagent_tokens><tool_uses>16</tool_uses><duration_ms>115999</duration_ms></usage>
+</task-notification>
