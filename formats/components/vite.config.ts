@@ -72,6 +72,7 @@ export default extendBase({
           "node scripts/build-icon-entries.ts",
           "vp pack",
           "node scripts/post-pack.ts",
+          "node scripts/generate-model.ts",
         ],
       },
       // The stylesheet generator as a first-class task: run the `.css`→consts codegen, then emit every

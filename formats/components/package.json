@@ -43,6 +43,7 @@
     "./transition.css": "./dist/utilities/transition.css",
     "./responsive.css": "./dist/utilities/responsive.css",
     "./scaffold-preset": "./dist/scaffold-preset.mjs",
+    "./model.json": "./dist/model.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -64,6 +65,7 @@
   "devDependencies": {
     "@cssdoc/config": "catalog:",
     "@cssdoc/core": "catalog:",
+    "@pantoken/cssdoc-model": "workspace:*",
     "@pantoken/icons": "workspace:*",
     "@pantoken/plugin-props-minify": "workspace:*",
     "@pantoken/plugin-theme-custom-media": "workspace:*",
