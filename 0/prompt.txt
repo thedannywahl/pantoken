@@ -1,0 +1,103 @@
+<task-notification>
+<task-id>aab1a6a13bd47707c</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/45b81add-2a72-4587-a2cd-6f3296a7b52a/tasks/aab1a6a13bd47707c.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore token map and normalization" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a comprehensive picture of the machinery. Here are my findings.
+
+## Overview of the pipeline
+
+The whole transform is a single source function: `buildTokens()` in `/Users/dwahl/Scripts/pantoken/packages/core/src/build.ts` (line 92). It reads the GitHub-pinned upstream `@instructure/instructure-design-tokens` + `@instructure/ui-icons` (Tokens Studio JSON), normalizes it into the canonical `--instui-*` `@property`-aligned IR, and every downstream format/renderer/platform consumes the vendored JSON from `@pantoken/tokens`. There is no separate hand-kept "token map" or "deprecation set" file — the mapping is algorithmic (name-derivation) and deprecations are authored inline in doc comments. Below are the concrete locations per question.
+
+---
+
+### 1. The "token map" — upstream → canonical name mapping
+
+Not a lookup table; it's derived by kebab-casing the Tokens Studio path with a layer prefix.
+
+- `/Users/dwahl/Scripts/pantoken/packages/core/src/resolve.ts`
+  - `referenceToVarName(reference)` — line 102. Maps a `{…}` reference body to a var name; a leading `semantic.` discriminates the semantic layer from primitives:
+    - `referenceToVarName("color.white")` → `--instui-primitive-color-white`
+    - `referenceToVarName("semantic.color.background.base")` → `--instui-color-background-base`
+  - `resolveValue(raw)` — line 121. A `{ref}` becomes `var(...)`, a concrete value passes through. `REFERENCE = /^\{([^}]+)\}$/` at line 12.
+  - `varName(prefix, path)` — line 139. Builds `--instui-[prefix-]&lt;kebab path&gt;`. Called from `build.ts` with prefixes `"primitive"`, `""` (semantic layout/color), and `"component"`.
+- `/Users/dwahl/Scripts/pantoken/packages/core/src/build.ts` — the layer walk that assigns each prefix: primitives (line 107, `varName("primitive", …)`), layout (line 113, `varName("", …)`), semantic colors (line 126), components (line 136, `varName("component", …)`), icons rolled in as `--instui-icon-*` (lines 144-150).
+- `refersTo` (the per-token forward reference) is recorded in `defineToken()` at `/Users/dwahl/Scripts/pantoken/packages/core/src/plugin.ts` line 56-63 via `refMatch = input.value.match(/^var\((--instui-[\w-]+)\)$/)`.
+
+Component-level "aliases" (the closest thing to a remap table) live in `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/aliases.ts` (see #3).
+
+---
+
+### 2. Normalization of raw upstream values
+
+Normalization is spread across three concerns — name (kebab), value (references/color math), and `@property` syntax sniffing:
+
+- `/Users/dwahl/Scripts/pantoken/packages/core/src/utils.ts`
+  - `toKebab(str)` — line 21. CamelCase/spaced → kebab.
+  - `cssSyntaxForValue(value)` — line 60. Sniffs the `@property` syntax (`&lt;color&gt;`, `&lt;length&gt;`, `&lt;percentage&gt;`, `&lt;angle&gt;`, `&lt;integer&gt;`, `&lt;number&gt;`, …), falling back to `"*"`. Note `ABSOLUTE_LENGTH_UNITS` at line 31 — rem/em/viewport units deliberately fall back to `*` because Chromium discards non-computationally-independent `@property` initial-values.
+  - `isContextual(value)` — line 95 (`var()`/`light-dark()`).
+  - `ICON_COLOR_SPECIAL_VALUES` — line 113.
+- `/Users/dwahl/Scripts/pantoken/packages/core/src/build.ts`
+  - `resolveLeaf(leaf)` — line 44. Normalizes each leaf's value and either applies a concrete color modifier or preserves it as metadata.
+  - Semantic color light/dark collapse into `light-dark(...)` — lines 118-133 (the only layer that emits `light-dark()`).
+- `/Users/dwahl/Scripts/pantoken/packages/core/src/color.ts` — color normalization math: `applyModify(value, modify)` (line 88) applies Tokens Studio darken/lighten/alpha to concrete hex; `parseHex`, `rgbToHsl`, `hslToRgb` helpers. `mix` returns undefined and is preserved as metadata.
+- `/Users/dwahl/Scripts/pantoken/packages/pantoken/src/colors.ts` is generated and just re-exports `@pantoken/plugin-colors`. The real CSS color math (the browser-side mirror of `@instructure/ui-color-utils`) is `/Users/dwahl/Scripts/pantoken/plugins/pantoken/colors/src/index.ts`: `alpha` (42), `darken` (62), `lighten` (79), `overlayColors` (101), `onColor` (124) — all `color-mix()` / relative-color expressions.
+- Size normalization (short↔long spelling) lives in the components layer: `SIZE_LONG` map and `withSizeAliases` at `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/aliases.ts` lines 37-88.
+- Type sniffing for the native/DTCG lineages: `sdType` at `/Users/dwahl/Scripts/pantoken/packages/core/src/style-dictionary.ts` line 39, and `sniff`/`dtcgType` at `/Users/dwahl/Scripts/pantoken/formats/dtcg/src/transform.ts` lines 14-37.
+
+---
+
+### 3. The "deprecation set"
+
+There is **no central deprecation list**. Deprecations are authored inline in each component's cssdoc doc comment and discovered by regex:
+
+- `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/aliases.ts`
+  - `DEPRECATED_ALIAS` regex — line 25-26: `/@modifier\s+(-[\w-]+)\s+[—-]\s+@deprecated\s+\{@link\s+\.?(-[\w-]+)\s*\}/gu`
+  - `deprecatedAliasPairs(rawRecord)` — line 32. Extracts `{ alias, canonical }` pairs from a record's own doc comment.
+  - `withAliases(css, aliases)` — line 97. Clones the canonical rule under the deprecated alias name (e.g. `-toggle` → `-variant-toggle`).
+  - Comment at lines 5-6, 121-123 explains the design (deprecation authored in metadata, not a central hand-kept list).
+- `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/define.ts` — line 11 imports `deprecatedAliasPairs`; line 58 calls it inside each `Definition.rules()`.
+- `/Users/dwahl/Scripts/pantoken/formats/components/src/utilities/icon-glyphs.ts` — deprecated InstUI prop-name glyph aliases. `IconGlyphsOptions.deprecatedAliases` (line 19); the prefixes `["-icon", "-render-icon", "-render-custom-icon"]` (lines 52-54) emit functional aliases for the old `renderIcon`/`renderCustomIcon` prop names.
+- `/Users/dwahl/Scripts/pantoken/formats/components/scripts/generate.ts` line 151 passes `deprecatedAliases: true`.
+- `/Users/dwahl/Scripts/pantoken/formats/components/src/generated/component-styles.ts` — the generated cssdoc records where the `@deprecated {@link -x}` notes actually live (per-component `@modifier` lines).
+
+---
+
+### 4. Dangling / unresolved reference validation
+
+- `/Users/dwahl/Scripts/pantoken/packages/utils/src/index.ts` (section header "Drift / reference-integrity validation", line 203):
+  - `extractInstuiRefs(text)` — line 218.
+  - `tokenNames(ir)` — line 236.
+  - `unknownReferences(text, ir)` — line 263. Drift check: `--instui-*` names in output the IR doesn't define (for "bridge" sheets that reference tokens defined elsewhere).
+  - `danglingReferences(css)` — line 289. Self-containment check: `var(--instui-*)` refs never defined (as `@property` or `--x:` declaration) within the same stylesheet.
+- `/Users/dwahl/Scripts/pantoken/tools/validate-generated/index.ts` — the drift gate that runs both. Imports at line 17. Self-contained sheets checked via `danglingReferences` at lines 193-212 (`SELF_CONTAINED` list). Bridge sheets checked via `unknownReferences` at lines 214-238 (`BRIDGES` list). It also verifies every generator wrote non-empty `generated/` (lines 57-82), CSS exports point at finalized `dist/` (85-142), and the CLI emits for every target (156-184). Fails the process at line 240-242.
+- `/Users/dwahl/Scripts/pantoken/tools/validate-generated/match-wildcard.ts` supports the wildcard export matching.
+
+---
+
+### 5. Alias / reference resolution between tokens
+
+- `/Users/dwahl/Scripts/pantoken/packages/utils/src/index.ts`
+  - `VAR_RE` / `VAR_SOURCE` (line 30, 34) and `LIGHT_DARK_RE` / `LIGHT_DARK_SOURCE` (line 31, 36) — the two token regexes (typed via `arkregex`).
+  - `makeResolver(base, options)` — line 101. Builds a resolver that expands `var(--x)` chains against a name→value `Map`, honoring `overrides` (later wins) and collapsing `light-dark()` to a `mode`. `MAX_DEPTH = 12` (line 38) guards cycles; uses a fresh regex per recursive call (line 119) to avoid `lastIndex` corruption.
+  - `resolveTokens(base, options)` — line 147. Resolves the whole IR to a name→value `Map`.
+- `/Users/dwahl/Scripts/pantoken/packages/core/src/style-dictionary.ts`
+  - `resolveReferences(tokens, mode)` — line 32 (wraps `resolveTokens`); `toStyleDictionary(tokens, mode)` — line 79 flattens for the native lineage.
+- `/Users/dwahl/Scripts/pantoken/formats/dtcg/src/transform.ts` — `toDtcg()` line 66 uses `resolveTokens` to fully flatten for W3C DTCG (no `light-dark()`), excluding icon tokens.
+- `defineToken()` at `/Users/dwahl/Scripts/pantoken/packages/core/src/plugin.ts` line 54 records the single-hop `refersTo` and the `themed` flag; `dedupeByName()` (line 83) resolves collisions "last wins."
+
+---
+
+### Type contracts &amp; upgrade-relevant provenance
+
+- Canonical IR types: `/Users/dwahl/Scripts/pantoken/packages/model/src/index.ts` — `Theme` (line 15), `TokenModify` (18), `TokenMeta` (30), `Token` with `refersTo`/`themed`/`meta` (54), `TokenInput` (68), plus the full plugin contract (`PantokenPlugin`, hook contexts). `/Users/dwahl/Scripts/pantoken/packages/core/src/model.ts` just re-exports these.
+- Theme spec: `THEME_SPECS` at `/Users/dwahl/Scripts/pantoken/packages/core/src/build.ts` line 37 (`rebrand`, `canvas`, `canvasHighContrast`).
+- **Upstream pin (key for your upgrade):** `/Users/dwahl/Scripts/pantoken/pnpm-workspace.yaml` catalog — `@instructure/instructure-design-tokens` is `github:instructure/instructure-design-tokens` (GitHub, not semver-pinned), while `@instructure/ui-icons` and the `@instructure/ui-*` component packages are pinned to `^11.7.3`. `/Users/dwahl/Scripts/pantoken/packages/core/package.json` references both via `catalog:`.
+- **Provenance capture:** `/Users/dwahl/Scripts/pantoken/formats/tokens/scripts/generate.ts` writes `generated/meta.json` recording the exact vendored upstream version (lines 28-40), and `generated/raw.json` (the verbatim Tokens Studio JSON, line 26). The per-theme resolved IR JSON (`rebrand.json`, `canvas.json`, `canvasHighContrast.json`) is written at lines 19-23. This is the single place the upstream version is snapshotted, so a `@instructure/ui` upgrade flows through `buildTokens()` → these JSON files → all consumers.
+- Docs worth reading for the upgrade: `/Users/dwahl/Scripts/pantoken/docs/architecture/overview.md`, `/Users/dwahl/Scripts/pantoken/docs/internal/MIGRATION-seed.md`, and `/Users/dwahl/Scripts/pantoken/docs/internal/release-strategy.md` (all matched "deprecat/upgrade/upstream/version").
+
+Note: your prompt referenced `@pantoken/model` as a search target — confirmed it's `packages/model`, but it holds only zero-dependency **types**, not runtime mapping logic. The actual mapping/normalization/resolution runtime lives in `packages/core` (`build.ts`, `resolve.ts`, `color.ts`, `utils.ts`, `plugin.ts`, `style-dictionary.ts`) and `packages/utils` (`index.ts`).</result>
+<usage><subagent_tokens>83516</subagent_tokens><tool_uses>32</tool_uses><duration_ms>167801</duration_ms></usage>
+</task-notification>
