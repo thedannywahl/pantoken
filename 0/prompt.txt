@@ -1,0 +1,2 @@
+export NESTED_DEPS and refactor the iife web-components exports to support single components like we did for icons so that it can be `/web-components/dist/alert.iife.js` etc. and also validate whether we need the entire css/dist/style.css or if we can use formats/components or whether style.css needs to be chuncked too.
+when selecting all web-components on ESM it should be a full import statement, not just a bare URL.
