@@ -1,0 +1,90 @@
+<task-notification>
+<task-id>a8813ed7e3919c28d</task-id>
+<tool-use-id>toolu_011LmKkLL2vxWab72vbFS3Y8</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/a8813ed7e3919c28d.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore formats/components CSS packaging" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a comprehensive picture. Here's my report.
+
+## Report: `@pantoken/components` CSS package — CDN distribution analysis
+
+### Package location and identity
+- Package directory: `formats/components/` (relative to repo root)
+- Exact package name: `@pantoken/components` (version `0.1.1`)
+- README notes it's also aliased as `pantoken/components`.
+
+### 1. package.json fields (`formats/components/package.json`)
+
+- **`name`**: `@pantoken/components`
+- **`files`**: `["dist", "assets/fonts"]` — only the `dist/` output and the font woff2s are published. The `generated/` dir is an intermediate build artifact and is NOT shipped.
+- **`type`**: `module`
+- **`main`/`module`/`style`**: none of these legacy fields exist. Entry resolution is entirely via the `exports` map.
+- **`sideEffects`**: NOT present (no `sideEffects` field at all).
+- **`exports`** map:
+  ```json
+  {
+    ".":              "./dist/index.mjs",
+    "./base.css":     "./dist/base.css",
+    "./components.css":"./dist/components.css",
+    "./*.css":        "./dist/*.css",
+    "./fonts.css":    "./dist/fonts.css",
+    "./prose.css":    "./dist/prose.css",
+    "./select.css":   "./dist/select.css",
+    "./icons.css":    "./dist/icons.css",
+    "./utilities.css":"./dist/utilities.css",
+    "./package.json": "./package.json"
+  }
+  ```
+  Key point for CDN: the wildcard `"./*.css": "./dist/*.css"` means **any** file in `dist/` is importable by name — including every per-component file. So `@pantoken/components/button.css` resolves to `dist/button.css`. The explicit entries (base, components, fonts, prose, select, icons, utilities) are redundant with the wildcard but hand-listed so they survive and are documented as the stable public surface.
+- The `"."` root export is a **JS module** (`dist/index.mjs`), not CSS. It exports builder functions (`componentsCss`, `proseCss`, `buttonCss`, `baseCss`, etc.) that generate CSS strings at runtime with a configurable class prefix/scope. It is not a CSS entry.
+
+### 2. CSS output layout on disk (`formats/components/dist/`)
+
+It is **both** — a big barrel plus per-component files. There are 61 `.css` files. Naming is flat, kebab-case, one file per component/aggregate, no subdirectories:
+
+- **Aggregate/named sheets** (the documented public surface): `base.css`, `components.css`, `prose.css`, `utilities.css`, `fonts.css`, `select.css`, `icons.css`.
+- **Per-component sheets**: `alert.css`, `avatar.css`, `badge.css`, `billboard.css`, `breadcrumb.css`, `button.css`, `checkbox.css`, `modal.css`, `table.css`, `tabs.css`, `tooltip.css`, `tray.css`, `tree-browser.css`, etc. — roughly 46 of these.
+
+`generated/` (repo-only, gitignored intermediate) mirrors the same file set; `dist/` is the packed/minified published copy. A CDN pulling from npm (jsDelivr/unpkg) serves `dist/`.
+
+### 3. Per-component isolation and interdependencies
+
+- Individual component CSS **can** be imported on its own. `dist/button.css` (11,347 bytes) exists as a standalone file separate from the `components.css` barrel, and the `./*.css` export makes `@pantoken/components/button.css` a valid specifier.
+- Each per-component file is self-contained CSS for that component's classes (e.g. `button.css` contains only `.instui-button` rules and its modifiers). It does **not** inline a reset or token definitions.
+- **Interdependency model — via CSS custom properties, not via imported CSS**: every component references `var(--instui-*)` tokens (colors, spacing, fonts, component tokens). Those token values are NOT defined inside the component files. They come from the external `@pantoken/tokens` package's token sheet, which the consumer must load separately. So a lone `button.css` renders correctly only if the `--instui-*` token variables are present on the page.
+- **`base.css` is opt-in and separate** — it holds the global reset (`box-sizing`, body/html defaults, `color-scheme`) plus the `:focus-visible` focus-outline ring. Components do NOT bundle it. I confirmed `components.css` contains zero `:where(html)` base-reset markers (the `box-sizing` hits inside `components.css` are per-component local rules like the tabs panel, not the global reset). So base/reset is a peer opt-in layer, not a hard dependency baked into each component.
+- **Elevation shadow scale** (`--instui-elevation-*`) is the exception: it's defined at the top of `components.css` (the `:root{...}` block). It leads the barrel so shadows are intrinsic. Individual component files that use elevation reference those custom properties (defined in the barrel), so a standalone component file that uses a shadow would need the elevation vars too. `elevationCss()` is also exposed as a builder for renderers composing their own sheets.
+
+### 4. Build process and sizes
+
+Build is driven by `pnpm build` → `vp pack` (vite-plus / rolldown-based). The `build` task in `formats/components/vite.config.ts` runs this pipeline:
+1. `vp run @pantoken/plugin-theme-custom-media#build`
+2. `node scripts/component-styles.ts` — compiles authored `src/{components,utilities,rules}/*.css` into a generated TS module of string constants (`src/generated/component-styles.ts`).
+3. `node scripts/generate.ts` — emits the aggregate sheets into `generated/`: `base.css`, `components.css`, `prose.css`, `icons.css`, `utilities.css`, `fonts.css`, `select.css`.
+4. `node scripts/build-entries.ts` — emits the ~46 **per-component** files into `generated/` (one file per `COMPONENTS` entry via `component.css(opts)`). This step is deliberately build-only (not part of `generate`/`docs:dev`) to avoid a hot-reload write loop.
+5. `vp pack` — bundles/minifies each `generated/*.css` and `src/index.ts` into `dist/`. Config uses `css.splitting: true`, `minify: true`, `inject: false`, and `exports: false` (exports map is hand-managed).
+
+Sizes (from `dist/`, minified):
+- Full barrel **`components.css`: 144,139 bytes (~141 KB)**.
+- Single component **`button.css`: 11,347 bytes (~11 KB)**; median component ~2 KB (e.g. `badge.css` 2,483; `truncate.css` just 367 bytes).
+- Largest files overall: `icons.css` 225,775 bytes (~220 KB, separate by design) and `utilities.css` 28,885 bytes (~28 KB).
+- All 61 CSS files combined: ~554 KB. The JS module `index.mjs` is ~656 KB (builder source, not CSS).
+
+So for a CDN, pointing at `components.css` is ~141 KB; a targeted single-component URL (e.g. `button.css`) is roughly 1–11 KB, an order of magnitude smaller.
+
+### 5. "Meta"/barrel CSS entry
+
+Yes — **`components.css` is the barrel**. `generate.ts` builds it from `componentsCss(opts)`, which bundles every class-based component into one sheet (led by the `--instui-elevation-*` `:root` block). It's the documented "import everything" entry: `@pantoken/components/components.css`. There is no separate `index.css`; the root `"."`/`index` entry is JS (`index.mjs`), not a CSS barrel. The other aggregates (`utilities.css`, `icons.css`, `prose.css`) are themselves category-level barrels but are kept separate from `components.css` by design (opt-in layers). There is no single mega-file that concatenates base + components + utilities + icons + prose together; consumers compose those layers via multiple imports.
+
+### CDN implications (summary)
+A CDN URL can point at any of:
+- The full barrel: `.../dist/components.css` (~141 KB) — needs external `@pantoken/tokens` vars.
+- A single component: `.../dist/button.css` (~11 KB) via the `./*.css` wildcard export — needs both the token vars and, if it uses shadows, the elevation `:root` block that currently lives only in the barrel.
+- Opt-in layers: `base.css`, `utilities.css`, `fonts.css`, `prose.css`, `select.css`, `icons.css`.
+
+Notable gap for per-component CDN delivery: standalone component files assume `--instui-*` tokens (external, from `@pantoken/tokens`) and, for shadow-using components, the elevation vars defined in `components.css` — so a per-component CDN URL is not fully self-sufficient without also loading the token sheet (and possibly elevation).
+
+Key files for reference: `formats/components/package.json`, `formats/components/vite.config.ts`, `formats/components/scripts/generate.ts`, `formats/components/scripts/build-entries.ts`, `formats/components/scripts/component-styles.ts`, `formats/components/README.md`, and the output dirs `formats/components/dist/` and `formats/components/generated/`.</result>
+<usage><subagent_tokens>40727</subagent_tokens><tool_uses>11</tool_uses><duration_ms>95370</duration_ms></usage>
+</task-notification>
