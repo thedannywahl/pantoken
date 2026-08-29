@@ -1,0 +1,69 @@
+<task-notification>
+<task-id>ac4a3d303b3e76c1c</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/b9181a1d-35a0-49a3-a294-cc93f8671d93/tasks/ac4a3d303b3e76c1c.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore component CSS transform pipeline" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture of the pipeline. Here's my report.
+
+## formats/components CSS transform pipeline
+
+### 1. How the build works — entry points and transforms
+
+**Package:** `/Users/dwahl/Scripts/pantoken/formats/components/package.json` (`@pantoken/components`). Scripts of note:
+- `build` (via `vp run build`, defined in `vite.config.ts` `run.tasks.build`): runs, in order:
+  1. `vp run @pantoken/plugin-theme-custom-media#build`
+  2. `node scripts/component-styles.ts`
+  3. `node scripts/generate.ts`
+  4. `node scripts/build-entries.ts`
+  5. `vp pack` (rolldown-based, per `vite.config.ts` `pack`)
+- `generate` task: just `component-styles.ts &amp;&amp; generate.ts` (this is what docs:dev invokes).
+
+**Authoring source of truth:** real `.css` files under `src/components/*.css`, `src/utilities/*.css`, `src/rules/*.css` (e.g. `/Users/dwahl/Scripts/pantoken/formats/components/src/components/billboard.css`). They carry:
+- a `pfx-` class-prefix **sentinel** (`.pfx-billboard`, `.pfx-billboard.-clickable`) — defined in `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/sentinel.ts` (`SENTINEL = "pfx-"`).
+- `@media (--theme-canvas)` etc. theme custom-media at-rules.
+- `@scope` at-rules and `var(--instui-…)` token refs, both passed through verbatim.
+
+**The transform steps:**
+
+1. **`scripts/component-styles.ts`** (`/Users/dwahl/Scripts/pantoken/formats/components/scripts/component-styles.ts`): reads each source `.css`, and for each of the three themes `["rebrand","canvas","canvasHighContrast"]` runs PostCSS with the single plugin `themeCustomMedia({ theme })`. It emits `src/generated/component-styles.ts` — a TS module of string consts: `billboardByTheme = { rebrand, canvas, canvasHighContrast }` plus `billboard = billboardByTheme.rebrand`. This is where **custom-media theme resolution** happens (see plugin below). Doc comments are retained (load-bearing for the CSS-API docs).
+
+2. **Prefix / modifier rewriting** happens at record-build time, not in PostCSS. Each record wrapper (e.g. `/Users/dwahl/Scripts/pantoken/formats/components/src/components/billboard.ts`) imports `billboardByTheme` and does `raw.replaceAll(SENTINEL, p)` inside `defineComponent({ css: (p, options) =&gt; … })`. `p` comes from `ns(prefix)` in `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/helpers.ts` (`ns("instui")` → `"instui-"`, so `.pfx-billboard` → `.instui-billboard`; empty prefix → `.billboard`). The trailing dash in `pfx-` keeps `.-clickable` modifiers valid after the swap. `define.ts` (`/Users/dwahl/.../src/lib/define.ts`) then splits the leading doc comment, appends size-alias and deprecated-alias twins (`lib/aliases.ts`), and `wrap()`s the standalone sheet.
+
+3. **`scripts/generate.ts`**: emits the shipped aggregate sheets into `generated/` — `base.css`, `components.css`, `fonts.css`, `prose.css`, `select.css`, `icons.css`, `utilities.css` — all with the default `instui` prefix. It also writes `src/generated/_records.css` (the `pfx`-prefixed sheet used only as the cssdoc `providers` source-lint index; gitignored, never shipped).
+
+4. **`scripts/build-entries.ts`**: emits one `generated/&lt;name&gt;.css` per component (46+ files) for the per-component subpath exports. **Build-only** — deliberately excluded from `generate` so docs:dev hot-reload doesn't write 46 files and trigger a watcher loop.
+
+5. **`vp pack`** (config in `/Users/dwahl/Scripts/pantoken/formats/components/vite.config.ts`): bundles `src/index.ts` + every `generated/*.css` into `dist/` with CSS splitting + minify, `inject:false`. Entry list is built dynamically from `generated/*.css` minus the aggregate sheet names.
+
+**The theme plugin** (Q3 detail): `/Users/dwahl/Scripts/pantoken/plugins/postcss/theme-custom-media/src/index.ts` (`@pantoken/plugin-theme-custom-media`, export `themeCustomMedia`). It walks `@media` at-rules, expands `--theme-*` aliases (`--theme-canvas` → `(theme: canvas)`, plus `--theme-light/dark` combos), **prunes branches for non-target themes**, strips the matching `theme:` clause from kept queries, unwraps always-true theme-only wrappers, and removes `@custom-media --theme-*` declarations. It never touches `@scope` or resolves `var()`.
+
+### 2. Multi-theme component stylesheet generation for the docs demos (commit b399069)
+
+The shipped `components.css` is lowered to a single theme (rebrand), so its `@media (--theme-*)` overrides are pruned and the docs' runtime theme toggle (`&lt;html data-pantoken-theme="…"&gt;`) can't bring them back. The docs generate their own multi-theme sheet:
+
+- **`/Users/dwahl/Scripts/pantoken/docs/scripts/lib/scope-components.ts`** — `scopedComponentsCss(prefix="instui")`. Calls `componentsCss({ prefix, theme })` from `@pantoken/components` for each theme, emits the rebrand rules unscoped as the base, then **diffs** each of `["canvas","canvasHighContrast"]` against the base at PostCSS-node granularity; the theme-only extra rules get their selectors re-scoped under `:root[data-pantoken-theme="&lt;theme&gt;"]`. It throws if a theme-only delta is a non-`rule` at-rule (unsupported nesting).
+
+- **`/Users/dwahl/Scripts/pantoken/docs/scripts/components-sheet.ts`** (new in this commit) — `writeComponentsSheet()` writes the result to **two outputs**:
+  1. `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/generated/components.css` — imported by the docs theme (`docs/.vitepress/theme/index.ts`, which the commit changed from importing `@pantoken/components/components.css` to `./generated/components.css`). Powers the inline CSS-API `@example` previews.
+  2. `/Users/dwahl/Scripts/pantoken/docs/public/demos-assets/components.css` (copy) — loaded by the `/play` runner iframes via `demos.ts`'s `cssUrls`.
+
+- **`/Users/dwahl/Scripts/pantoken/docs/scripts/demos.ts`** now imports and calls `writeComponentsSheet()` (replacing an inline `writeFileSync(scopedComponentsCss(...))`). `demos.ts` runs as part of the `docs:assets` npm script.
+
+### 3. PostCSS plugins / @cssdoc packages involved
+
+- **PostCSS plugin:** `@pantoken/plugin-theme-custom-media` (`themeCustomMedia`) — the only PostCSS transform over the component CSS (used in both `component-styles.ts` and, indirectly via `componentsCss`, in `scope-components.ts`). Raw `postcss` is also used in `scope-components.ts` for parsing/diffing.
+- **@cssdoc packages** (from package.json devDeps): `@cssdoc/config`, `@cssdoc/core`. These drive doc-comment parsing/linting, not CSS value transforms. `@cssdoc/core`'s `CssRecordKind` type is used in `lib/define.ts`. Config: `/Users/dwahl/Scripts/pantoken/formats/components/cssdoc.jsonc` (extends repo-root `/Users/dwahl/Scripts/pantoken/cssdoc.jsonc`, adds `providers: ["./src/generated/_records.css"]`). The docs CSS-API pages are built by `docs/scripts/build-css-api.ts` parsing `generated/components.css`.
+
+### 4. File-watching during docs dev — mostly one-shot, with a gap
+
+Watching is set up in **`/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts`** via `workspaceOrchestrator({...})` (`@pantoken/vite-workspace-orchestrator`). For components it watches `formats/components/src` and on change runs **`node scripts/generate.ts`** (in `formats/components`), then cascades to the `@pantoken/docs#docs:api:css` dependent (`build-css-api.ts`). `outputWatchPaths` includes `formats/components/generated` for HMR.
+
+So during `docs:dev`:
+- The **shipped single-theme** `formats/components/generated/components.css` **is** regenerated live on `src` edits, and the CSS-API `.md` pages rebuild.
+- The **multi-theme docs sheet** (`theme/generated/components.css` + `public/demos-assets/components.css`) is generated **one-shot at startup only**, via `docs:assets` → `demos.ts` → `writeComponentsSheet()`. The orchestrator config does **not** wire `components-sheet.ts` into the watch.
+
+Note a documentation/behavior discrepancy worth flagging: the header comment in `docs/scripts/components-sheet.ts` (lines 20–22) claims it "runs again on component edits during docs:dev (the config's workspace orchestrator invokes this script directly)," and its `if (import.meta.url === …)` self-run guard is labeled "the docs:dev watch path." But nothing in `docs/.vitepress/config.ts` invokes `components-sheet.ts` (or `writeComponentsSheet`). The components watch entry only runs `formats/components/scripts/generate.ts`. As wired today, editing a component during docs:dev updates the shipped sheet and CSS-API pages live, but the multi-theme demo/preview sheet stays stale until the next `docs:assets` run.</result>
+<usage><subagent_tokens>52807</subagent_tokens><tool_uses>28</tool_uses><duration_ms>149482</duration_ms></usage>
+</task-notification>
