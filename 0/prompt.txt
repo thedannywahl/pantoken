@@ -1,0 +1,118 @@
+<task-notification>
+<task-id>a8517c54e033e2121</task-id>
+<tool-use-id>toolu_01AYRoKW5H9j9hU2eAEmbR65</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/b4068939-9bd0-47dc-b8f3-949dda393a39/tasks/a8517c54e033e2121.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore package.json metadata conventions" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed. Here's the complete map.
+
+## 1. Publishable package.json files — count and location
+
+The pnpm workspace globs (`pnpm-workspace.yaml`) cover: `apps/*`, `docs`, `packages/*`, `formats/*`, `platforms/*`, `renderers/*`, `bundlers/*`, `design/*`, `ai/*`, `plugins/pantoken/*`, `plugins/postcss/*`, `plugins/typedoc/*`, `plugins/vite/*`, `tools/*`. (No `apps/` exists yet.)
+
+**73 workspace package.json files** in the main tree (ignore `.worktrees/` and `.claude/worktrees/` — those are stale git-worktree duplicates).
+
+**4 are `"private": true`** (never published):
+- `docs/package.json` (`@pantoken/docs`)
+- `tools/sd-config/package.json` (`@pantoken/sd-config`)
+- `tools/aggregate/package.json` (`@pantoken/aggregate`)
+- `tools/validate-generated/package.json` (`@pantoken/validate-generated`)
+
+The root `/Users/dwahl/Scripts/pantoken/package.json` (name `pantoken`) is also `"private": true`.
+
+**69 are publishable** — every non-private `@pantoken/*` package. The publishability rule is in `/Users/dwahl/Scripts/pantoken/scripts/release/workspace-packages.ts`:
+```ts
+export function isPublishablePackage(pkg) {
+  return !candidate.private &amp;&amp; candidate.name.startsWith("@pantoken/");
+}
+```
+Breakdown: `packages/` 6, `tools/demo` 1, `ai/pantoken-ai` 1, `renderers/` 21, `formats/` 9, `platforms/` 11, `bundlers/` 6, `design/` 2, `plugins/` 12.
+
+## 2. Current metadata fields
+
+Every publishable package already has `license`, `repository`, and `publishConfig` — and **only those three**. There is **no `homepage`, no `bugs`, and no `author` field anywhere** (grep across all 73 files returned zero hits for those). The private `tools/*` packages have `license` only (no `repository`/`publishConfig`).
+
+**Yes — every publishable package already has a `repository` field**, and every one is identical:
+
+`packages/core/package.json`:
+```json
+"license": "MIT",
+"repository": {
+  "type": "git",
+  "url": "git+https://github.com/thedannywahl/pantoken.git"
+},
+...
+"publishConfig": {
+  "access": "public"
+}
+```
+`formats/css/package.json`, `renderers/web-components/package.json`, and `packages/pantoken/package.json` (the meta package) all carry the exact same three blocks verbatim:
+```json
+"repository": {
+  "type": "git",
+  "url": "git+https://github.com/thedannywahl/pantoken.git"
+},
+"publishConfig": { "access": "public" }
+```
+None of them includes a per-package `repository.directory`. So your planned change is: add `directory` inside the existing `repository` object, plus new `homepage` and `bugs` fields.
+
+## 3. Shared / generated metadata
+
+There is **no template or generator that injects common metadata**. Each package.json hard-codes its own `repository`/`license`/`publishConfig` literally. There is no root field inheritance (npm doesn't inherit these), and pnpm catalog usage (`pnpm-workspace.yaml`) is only for dependency versions, not metadata.
+
+The one script that writes package.json is the meta-package aggregator, `/Users/dwahl/Scripts/pantoken/tools/aggregate/src/index.ts`. It is deliberately narrow — it only rewrites the `exports` map of `packages/pantoken/package.json` and preserves everything else:
+```ts
+// Rewrite the meta package.json exports map, preserving everything else.
+const metaPkgPath = join(metaDir, "package.json");
+...
+writeFileSync(metaPkgPath, `${JSON.stringify(metaPkg, null, 2)}\n`);
+```
+It's driven by `packages/pantoken/scripts/aggregate.ts`. This means adding `repository.directory`/`homepage`/`bugs` to the meta package's package.json is safe — the aggregator won't clobber them.
+
+So there is no single inherited source. To add fields across all 69 packages you either edit each file or write a codemod (there is no existing "sync"/"meta" script to hook into).
+
+## 4. Publish + validation pipeline
+
+**Publish:** `/Users/dwahl/Scripts/pantoken/scripts/release/publish-npm.ts`. It uses the **npm CLI with OIDC trusted publishing** (`npm publish --provenance --access public`) rather than `changeset publish`, publishes in dependency order, then creates git tags + GitHub releases via `gh`. Driven by `.github/workflows/release.yml` through the `release:publish` task.
+
+**Validation gate:** wired in `/Users/dwahl/Scripts/pantoken/vite.config.ts` under `run.tasks`. The root `check:publish` script → `gate:publish`, which fans out to three checks:
+- `gate:repository` → `node scripts/release/check-repository-metadata.ts`
+- `gate:publint` → `publint` across all package globs
+- `gate:attw` → `attw --pack --profile strict`
+
+There is also a standalone root script `check:repository` → `gate:repository`.
+
+**The repository gate — `/Users/dwahl/Scripts/pantoken/scripts/release/check-repository-metadata.ts`** — is the field validator. It loads all publishable packages and enforces an exact match:
+```ts
+const EXPECTED_REPOSITORY_URL = "git+https://github.com/thedannywahl/pantoken.git";
+...
+if (repositoryUrl !== EXPECTED_REPOSITORY_URL) {
+  violations.push(`${pkg.name} ...: repository.url is ..., expected ...`);
+}
+```
+So **yes, the gate requires `repository`** — specifically `repository.url` must equal the exact GitHub URL — on every publishable package. It does **not** currently check `repository.directory`, `homepage`, or `bugs`. The comment in `vite.config.ts` explains why it exists: `repository.url` is needed for npm OIDC provenance, and a missing value silently breaks it. If you add `directory`/`homepage`/`bugs`, this is the natural place to extend the validation.
+
+## 5. The root / meta package
+
+There is **no unscoped `pantoken` package published to npm**. Two things share the name "pantoken" but neither is an unscoped published package:
+
+- The **repo root** `/Users/dwahl/Scripts/pantoken/package.json` — name `"pantoken"`, but `"private": true`, version `0.1.0`. It holds only workspace scripts, devDependencies, and engines. No `repository`/`homepage`/`bugs`.
+- The **published meta package** `/Users/dwahl/Scripts/pantoken/packages/pantoken/package.json` — scoped name `@pantoken/pantoken`, version `0.1.4`. This is the auto-aggregated "everything" package (54 subpath exports). It has the same `repository`/`license`/`publishConfig` trio as the rest, no `homepage`/`bugs`.
+
+## Bottom line for your change
+
+There is no central template to edit — the metadata is duplicated literally across all 69 publishable package.json files. To add `repository.directory` (per-package), `homepage`, and `bugs`:
+
+- The cleanest mechanized approach is a **codemod** that walks the same package set as the gate (reuse `loadWorkspacePackages()` + `isPublishablePackage()` from `scripts/release/workspace-packages.ts`), injects `repository.directory` derived from `pkg.path`, plus shared `homepage`/`bugs`, and writes each package.json. Note the meta package aggregator only touches `exports`, so it won't fight you.
+- Extend the existing validator `scripts/release/check-repository-metadata.ts` (and its `gate:repository` task) to also assert the new fields, so the publish gate keeps them correct going forward.
+
+Key file paths:
+- `/Users/dwahl/Scripts/pantoken/scripts/release/check-repository-metadata.ts` (the field gate)
+- `/Users/dwahl/Scripts/pantoken/scripts/release/workspace-packages.ts` (package discovery + `isPublishablePackage`)
+- `/Users/dwahl/Scripts/pantoken/scripts/release/publish-npm.ts` (OIDC publish)
+- `/Users/dwahl/Scripts/pantoken/vite.config.ts` (`gate:*` / `check:publish` wiring)
+- `/Users/dwahl/Scripts/pantoken/tools/aggregate/src/index.ts` (only writer of a package.json — meta `exports` only)
+- `/Users/dwahl/Scripts/pantoken/packages/pantoken/package.json` (the `@pantoken/pantoken` meta package)</result>
+<usage><subagent_tokens>54928</subagent_tokens><tool_uses>9</tool_uses><duration_ms>110285</duration_ms></usage>
+</task-notification>
