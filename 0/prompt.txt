@@ -1,0 +1,1 @@
+we need to upgrade from typescript 6 to typescript 7 and from vite-plus 0.24.0 to 0.26.0
