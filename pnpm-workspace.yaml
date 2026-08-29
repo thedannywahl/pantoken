@@ -127,6 +127,17 @@ catalog:
   "@codspeed/vitest-plugin": ^5.7.1
   bingo-stratum: ^0.5.13
   zod: ^4.4.3
+  # @pantoken/tinymce + canvas-theme-editor scaffold — tinymce is pinned to the 5.x line to match
+  # instructure/canvas-lms's own production RCE version, not the current tinymce major.
+  tinymce: ^5.9
+  codemirror: ^6.0.2
+  "@codemirror/lang-html": ^6.4.12
+  "@codemirror/lang-css": ^6.3.1
+  "@codemirror/lang-javascript": ^6.2.5
+  "@codemirror/lint": ^6.9.7
+  "@codemirror/autocomplete": ^6.20.3
+  "@codemirror/state": ^6.7.1
+  "@codemirror/view": ^6.28.0
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
