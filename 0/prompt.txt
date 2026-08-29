@@ -1,0 +1,1 @@
+I'm re-running this, but getting teh same hung appearance, inspect it again. `vp run @pantoken/docs#docs:api:locales:claude`
