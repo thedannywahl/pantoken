@@ -322,6 +322,12 @@ export default defineConfig({
         command: "true",
         dependsOn: ["gate:repository", "gate:publint", "gate:attw"],
       },
+      // Root convenience alias so `vp run scaffold:dev <platform>` works from anywhere in the repo;
+      // args pass through to the underlying package task. See packages/scaffold/scripts/scaffold-dev.ts.
+      "scaffold:dev": {
+        command: "vp run @pantoken/scaffold#scaffold:dev",
+        cache: false,
+      },
     },
   },
 });

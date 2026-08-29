@@ -27,6 +27,9 @@ dist-ssr
 # Generated build artifacts — per-package generated/ dirs, reproduced by `vp run -r build`.
 **/generated/
 
+# Materialized `scaffold:dev` preview instances (packages/scaffold/scripts/scaffold-dev.ts).
+packages/scaffold/.dev/
+
 # Docs site build output (TypeDoc API markdown, VitePress cache, generated nav logos; reproduced by `docs:build`).
 docs/api/
 docs/hu/api/
