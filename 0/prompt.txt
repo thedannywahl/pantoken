@@ -1,0 +1,1 @@
+can't we reuse a connection so the startup cost is only incurred once?
