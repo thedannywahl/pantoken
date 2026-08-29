@@ -1,0 +1,1 @@
+add more granular incremental status updates as well, waiting 2+ minutes and getting (87 of 1167) is too long.
