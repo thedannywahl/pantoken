@@ -1,0 +1,11 @@
+running `vpr docs:dev` and viewing `/api/css/billboard` with the theme set to 'canvas' is still only showing the `instui-billboard.-clickable` with the following rules:
+
+```
+.instui-billboard.-clickable {
+	cursor: pointer;
+	border: var(--instui-component-billboard-button-border-width) var(--instui-component-billboard-button-border-style) transparent;
+	border-radius: var(--instui-component-billboard-button-border-radius);
+}
+```
+
+we're still not seeing the custom media theme values resolved (i.e. the hover border color resolves to text, not link). I don't know if it's because something is stale and not being rebuilt, or is cached, or if something's not resolving correctly.
