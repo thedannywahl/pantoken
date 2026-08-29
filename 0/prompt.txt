@@ -1,0 +1,99 @@
+<task-notification>
+<task-id>ab8c7aaa42059c5e5</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/b9181a1d-35a0-49a3-a294-cc93f8671d93/tasks/ab8c7aaa42059c5e5.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore web-components build pipeline" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture. Here's my report.
+
+## Summary
+
+Importing the web-components **source** into the docs theme is **viable and Node-free**. The runtime graph has no `node:`/`postcss`/`@cssdoc` value imports, and — unlike `@pantoken/components` — the web-component elements do **not** depend on any generated styles module at runtime. There is essentially **no codegen step to run on watch**; element CSS comes from `.css?inline` (Vite handles it) plus `xxxCss()` string functions from `@pantoken/components`.
+
+---
+
+## 1. The `@pantoken/web-components` package
+
+`/Users/dwahl/Scripts/pantoken/renderers/web-components/package.json`
+
+- **`exports["."]` → `./dist/index.mjs`** — so `@pantoken/web-components` resolves to **dist**, not src. Other exports: `./components.css` → `dist/components.css`, `./*.css` → `dist/*.css`.
+- **Build uses `vp pack`.** The build task (in `vite.config.ts` `run.tasks.build.command`) is: `node scripts/generate.ts` → `node scripts/build-entries.ts` → `vp pack`. The `dev` script is `node scripts/generate.ts &amp;&amp; node scripts/build-entries.ts &amp;&amp; vp pack --watch`.
+- `vite.config.ts` `pack.entry` = `{ index: "src/index.ts", components: "generated/components.css", ...cssEntries }`, `dts: true`, `css.inject: false`, `exports: false` (exports hand-managed).
+- `files: ["dist"]`, so only dist is published.
+
+## 2. Shadow CSS / styles codegen
+
+Two totally different CSS mechanisms — and the important finding is the **runtime doesn't use the generated files**:
+
+- **Runtime element CSS comes from two places**, neither of which is a generated module:
+  1. Functions imported from `@pantoken/components`: `buttonCss(ctx.I)`, `tooltipCss(ctx.I)`, `alertCss`, etc. (see every `src/elements/*.ts`).
+  2. Co-located `.css` files imported with Vite's `?inline` query. The 8 co-located files: `src/elements/{calendar,date-input,date-time-input,drawer-layout,drilldown,pages,tooltip}.css` and `src/lib/popover-reset.css`. Importers: `date-input.ts`, `date-time-input.ts`, `calendar.ts`, `drawer-layout.ts`, `drilldown.ts`, `pages.ts`, `tooltip.ts`, `popover.ts`, `context-view.ts`, `tray.ts`. The `?inline` module is declared in `/Users/dwahl/Scripts/pantoken/renderers/web-components/src/css.d.ts`.
+- **`scripts/generate.ts`** aggregates those co-located `.css` files into `generated/components.css` (one file) — used only for the aggregate `./components.css` export.
+- **`scripts/build-entries.ts`** emits one `generated/&lt;record&gt;.css` per co-located file — used only for the per-record `./*.css` subpath exports. Both scripts explicitly avoid running on every hot-reload (comments cite a workspace-observer re-render loop).
+- **`src/generated/styles.ts` is STALE/DEAD.** Its header says "AUTO-GENERATED … by `scripts/styles.ts`", but **no `scripts/styles.ts` exists** and **nothing imports `generated/styles`** (grep returned zero importers). It is not part of the runtime graph.
+- Contrast with the model the user referenced: `/Users/dwahl/Scripts/pantoken/formats/components/scripts/component-styles.ts` generates `/Users/dwahl/Scripts/pantoken/formats/components/src/generated/component-styles.ts` (a 567 KB TS string module) using `postcss` + `@pantoken/plugin-theme-custom-media` at **build time**. That codegen is required for the components package because `vp pack`/rolldown can't resolve `?raw`. Web-components has no equivalent required module — it uses Vite `?inline` instead (which works fine under the docs Vite server).
+
+## 3. `register()` and element definitions
+
+- Source barrel: `/Users/dwahl/Scripts/pantoken/renderers/web-components/src/index.ts` — exports `register()`, `DEFINITIONS`, `ELEMENTS`, `iconSvg`, `foundationCss`, `DEFAULT_PREFIX`, and each element factory.
+- `register(target = globalThis.customElements, { prefix })`: early-returns when `!target || typeof HTMLElement === "undefined"` (the Node-safe guard). It injects a `:root` foundation `&lt;style&gt;` (elevation + focus tokens from `@pantoken/components`), builds a prefix-aware `RegisterContext` (`/Users/dwahl/Scripts/pantoken/renderers/web-components/src/lib/context.ts`), wraps each element with a spacing mixin, and calls `def.define(ctx)` for every entry in `DEFINITIONS`.
+- Elements live one-per-file in `src/elements/*.ts`, each exporting an `ElementDefinition`. Registration order comes from `src/elements/index.ts` (`DEFINITIONS`), which is load-bearing (nesting: date-input→calendar, date-time-input→date-input).
+- Helpers: `/Users/dwahl/Scripts/pantoken/renderers/web-components/src/lib/helpers.ts` (`applySpacing`, `frag`, `esc`).
+- **The barrel auto-registers**: the last line of `src/index.ts` is a bare `register();` call (no-op without a DOM).
+
+## 4. How the theme imports it, and Node-safety
+
+`/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/index.ts`:
+```ts
+import { register as registerWebComponents } from "@pantoken/web-components";
+```
+This resolves to **dist** (`dist/index.mjs`) via the exports map. It's called in `enhanceApp`.
+
+**Node-safety of a SOURCE import — clean:**
+- `grep` for `@cssdoc`, `postcss`, `node:` across `renderers/web-components/src/` returns **zero** hits. No Node-only value imports.
+- Cross-package value imports from web-components src are only: `@pantoken/components` (button/alert/etc. `*Css` functions + `elevationDeclarations`/`focusOutlineDeclarations`), `@pantoken/icons` (`resolve`), and a **type-only** import from `@pantoken/model` (`import type { IconResolver }`).
+- `@pantoken/components` resolves to its **dist** (`formats/components/package.json` `.` → `dist/index.mjs`), and that runtime is node-free: the only `@cssdoc/core` reference in `formats/components/src` is a **type-only** import in `src/lib/define.ts`; `postcss` appears only in `scripts/component-styles.ts` (build time), not the runtime barrel. So the CLAUDE.md `@cssdoc` value-import hazard does **not** apply here.
+- `?inline` CSS imports are declared in `src/css.d.ts` and are handled natively by Vite (which the docs VitePress dev server runs), so a source import resolves them without any codegen.
+
+Note: the theme already deliberately imports several **source-generated** sheets to keep them live (utilities/icons):
+```ts
+import "../../../formats/components/generated/utilities.css";
+import "../../../formats/components/generated/icons.css";
+```
+with a comment explaining they avoid `@pantoken/components/*` precisely because that resolves to dist "only rebuilt by the nested-forbidden `vp pack`." Same pattern would apply to switching the `register` import to source.
+
+## 5. Where the web-component `@example` API pages are generated
+
+- Generated by **TypeDoc**, not the CSS-API build. `docs/package.json` script `docs:api:en`: `typedoc --options typedoc.json --out api &amp;&amp; …`.
+- `/Users/dwahl/Scripts/pantoken/docs/typedoc.json`: `entryPoints` includes `"../renderers/*/src/index.ts"` (covers web-components `src/index.ts`), `entryPointStrategy: "resolve"`, plugins `typedoc-plugin-markdown` + the demo plugin. TypeDoc parses the TS source and its TSDoc `@example` HTML blocks.
+- Output pages: `/Users/dwahl/Scripts/pantoken/docs/api/renderers/web-components/src/` (`functions/`, `interfaces/`, `variables/`, `index.md`).
+- **Important for live-reload**: this runs only at `docs:dev` **startup** (`docs:dev` = `… &amp;&amp; vp run docs:api:en &amp;&amp; … &amp;&amp; vitepress dev`). TypeDoc is **not** wired into the orchestrator cascade, so editing an element's TSDoc `@example` does **not** regenerate the API `.md` live — only element runtime behavior (source `.ts`/`.css`) would hot-reload if source-imported.
+
+## 6. Is `renderers/web-components/dist` in `outputWatchPaths`?
+
+**Yes.** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts` lines 104–108:
+```ts
+outputWatchPaths: [
+  at("formats/css/generated"),
+  at("formats/components/generated"),
+  at("renderers/web-components/dist"),   // line 107
+],
+```
+The comment at lines 26–29 confirms the current state: `register()`'s bundle needs `vp pack` (can't run nested under `vpr`), so it's **not** auto-rebuilt by the orchestrator; you rebuild manually via `vpr @pantoken/web-components#build`, and `outputWatchPaths` bridges the new `dist` into HMR.
+
+Custom-element handling (lines ~395–400): Vue is told `isCustomElement: (tag) =&gt; tag.startsWith("instui-")` so the `&lt;instui-…&gt;` `@example` markup renders live rather than as Vue components.
+
+---
+
+## Bottom line for the live-reload goal
+
+Switching the theme's `register` import from `@pantoken/web-components` (dist) to the **source** barrel (e.g. a relative `../../../renderers/web-components/src/index.ts`, mirroring the existing utilities/icons source-import pattern) is:
+
+- **Node-free** — no `node:`/`postcss`/`@cssdoc` value imports in the web-components runtime graph; cross-package deps resolve to node-free dist/type-only imports.
+- **Codegen-free for runtime** — elements get CSS via Vite `?inline` and `@pantoken/components` `*Css()` functions. `scripts/generate.ts` / `scripts/build-entries.ts` / the stale `src/generated/styles.ts` are **not** in the runtime path, so **no watch codegen step is needed** (unlike components' `component-styles.ts`).
+- Vite would then hot-reload edits to `src/elements/*.ts`, `src/lib/*.ts`, and the co-located `.css` files directly — no `vp pack`, no manual rebuild, and the `renderers/web-components/dist` entry in `outputWatchPaths` becomes unnecessary for the register path.
+
+The one thing that still won't live-update is the TypeDoc-generated `@example` **API page markup** (section 5) — that's a separate startup-only step regardless of dist-vs-source.</result>
+<usage><subagent_tokens>57677</subagent_tokens><tool_uses>17</tool_uses><duration_ms>163047</duration_ms></usage>
+</task-notification>
