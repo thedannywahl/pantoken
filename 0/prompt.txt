@@ -1,0 +1,6 @@
+despite having lots of packages published to npm, the repo homepages show:
+Packages
+No packages published
+[publish your first package](https://github.com/thedannywahl/pantoken/packages)
+
+I think we need to add the `repository` link to the package.json files https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-multiple-packages-to-the-same-repository
