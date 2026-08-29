@@ -1,0 +1,14 @@
+running `vpr docs:dev` throws these warnings:
+
+```
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[warning] The comment for renderers/web-components/src.register.options links to "NESTED_DEPS" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/web-components": { "NESTED_DEPS": "#" }} to the externalSymbolLinkMappings option
+[warning] The comment for renderers/angular/src.register.options links to "ELEMENTS" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/web-components": { "ELEMENTS": "#" }} to the externalSymbolLinkMappings option
+[warning] Failed to resolve link to "NESTED_DEPS" in comment for renderers/angular/src.register.options
+[info] markdown generated at ./api
+[warning] Found 0 errors and 3 warnings
+✓ API badges: styled 535 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+```
