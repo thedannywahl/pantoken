@@ -1,0 +1,85 @@
+<task-notification>
+<task-id>a96d60edff66cb14a</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/3f73fc33-f1ac-4794-beb2-21035af9401f/tasks/a96d60edff66cb14a.output</output-file>
+<status>completed</status>
+<summary>Agent "Research pantoken's docs translation engine" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I now have a complete, verified picture. Here's the full report.
+
+## Summary verdict up front
+
+Your memory notes are wrong on almost every specific detail (wrong file paths, wrong adapter names, a docs-only mental model), but the *conclusion* they're groping toward is actually better than they realize: there is **already a second, more general-purpose translation pipeline in this monorepo** — `packages/i18n` — that is a much closer match for "translate a small JSON of short UI/CLI strings" than the docs pipeline is, and it auto-discovers new string sources by convention. Reusing *that* infrastructure for a CLI is a small addition. Reusing the *docs* pipeline directly would be the wrong layer (it's built for markdown files and VitePress routing).
+
+Locale detection, however, doesn't exist anywhere in the repo today (not for docs, not for `i18n`) — every consumer picks the locale explicitly. That part you'd build from scratch for a CLI.
+
+---
+
+## 1. How translation actually happens
+
+`/Users/dwahl/Scripts/pantoken/docs/scripts/translation-memory.ts` is **not** a translation engine itself — it's the shared batch driver + content-addressed cache facade that both docs pipelines (guides and API) use. It calls out to a pluggable `TranslationAdapter` (defined in `docs/scripts/api-translation.ts`), which is where the actual translation happens:
+
+- **`GlossaryTranslationAdapter`** (`docs/scripts/api-translation.ts:160`) — deterministic, keyless, regex-based term substitution (a hardcoded EN→HU glossary of ~80 structural terms like "Parameters," "Returns," heading labels). `translatesProse = false`. This is the **default** adapter and is what CI actually runs.
+- **`AiTranslationAdapter`** (`docs/scripts/api-translation.ts:328`) — shells out to a **CLI tool**, not a hosted API. It spawns `claude -p` (or a configurable command via `DOCS_TRANSLATION_COMMAND`/`_ARGS`) via `spawnPrompt()` in `tools/translation-adapters/src/index.ts:44`, writes the prompt to stdin, and parses JSON out of stdout. No `ANTHROPIC_API_KEY` or SDK call anywhere — confirmed by grep, zero hits for `ANTHROPIC_API_KEY`/`OPENAI_API_KEY`/`DEEPL` in the whole translation stack. There's also an `agy-wrapper.sh` (`tools/translation-adapters/agy-wrapper.sh`) that adapts the same stdin interface to an internal Anthropic CLI called `agy` (github.com/anthropics/agy), selected via `DOCS_TRANSLATION_COMMAND`.
+- Adapter selection is via `DOCS_TRANSLATION_ADAPTER` env var (`glossary` default, `ai` to enable real translation) — see `createTranslationAdapter()` at `docs/scripts/api-translation.ts:468`.
+
+Caching: `TranslationMemory` (docs facade, wrapping the shared `SharedTranslationMemory` class in `tools/translation-adapters/src/index.ts:97`) keys each unit by `sha256(kind + "\0" + sourceText)` and persists to committed JSON files under `docs/i18n-cache/*.json`. Unchanged source text is served from cache; only new/edited text reaches the adapter. This is genuinely incremental, human-run, and committed-cache-based, matching your memory's framing — just with a `claude`/`agy` CLI spawn as the "AI API," not a hosted API call.
+
+**Key correction to your memory:** there is no "claude-code" vs "glossary" adapter split by guides-vs-API. Both `translate-guides.ts` and `build-api-locales.ts` call the *same* `createTranslationAdapter()` factory (selectable `glossary`/`ai`). The real split in `build-api-locales.ts` is structural: headings/badges/table labels *always* go through `GlossaryTranslationAdapter` (deterministic, never cached as "translated"), while prose blocks go through whichever adapter is selected via `DOCS_TRANSLATION_ADAPTER`.
+
+## 2. Short UI-string translation for the docs site
+
+Wrong path in your memory — it's `docs/.vitepress/i18n.ts` (top-level, not under `theme/`; there is no `theme/i18n.ts`). Structure is exactly the `{ en: {...}, hu: {...} }` shape you guessed, but typed as `Record&lt;DocsLocale, LocaleMeta&gt;` with `DocsLocale = "root" | "hu"` (root, not "en"). It's a **hand-written, hand-translated object literal** — nav labels, sidebar labels, search UI strings, 404 page copy, theme-selector labels, etc. — checked into git directly, **not** run through the AI/glossary adapter pipeline at all. `docs/.vitepress/config.ts` imports `LOCALES` from it to build VitePress's `locales` config and the local-search `options.locales`.
+
+This is a hand-maintained key-value map, the closest structural analog to a CLI string table, but it's not automated/generated — someone writes the Hungarian strings by hand in this file.
+
+## 3. A generic, non-VitePress translate module — yes, and it's not the one you were thinking of
+
+`docs/scripts/translation-memory.ts` is *not* independently importable for this purpose — its `TranslationUnit` kinds (`"markdown" | "text" | "prose"`) and its adapter contract (`translateMarkdown`, `translateText`, `translateBatch`) are specific to the docs/VitePress content model, and `api-translation.ts`'s adapters hardcode "Translate ... from English to Hungarian" in their prompts.
+
+But there's a **separate, genuinely generic pipeline** built for exactly your use case: `/Users/dwahl/Scripts/pantoken/packages/i18n/`. It exists to translate short UI-string key/value sets (originally for `@pantoken/web-components`) into 45 Canvas-parity BCP47 locales, and it's designed for auto-discovery across the monorepo:
+
+- **`packages/i18n/scripts/lib/discover-sources.ts`** — `discoverStringSources(monoRoot)` walks every workspace package (globs read from `pnpm-workspace.yaml`) and treats **any package with a `src/i18n.json`** as a string source. Comment right in the file: *"Any package in the monorepo whose `src/i18n.json` exists is automatically included as a string source."* Today only one exists: `renderers/web-components/src/i18n.json` (a flat `{ "prevMonth": "Previous month", ... }` map, 7 keys).
+- **`packages/i18n/scripts/lib/keys.ts`** — merges all discovered `src/i18n.json` files into `ENGLISH_SOURCES`/`TRANSLATABLE_KEYS`, with `keyFor(stringKey, englishValue)` hashing (note: hardcodes a `"wc\0"` namespace prefix — a residue from being built for web-components only, but harmless as long as keys are unique across contributing packages).
+- **`packages/i18n/scripts/lib/translation-adapter.ts`** — a parallel, JSON-key-value-only adapter interface (`translateBatch(items, locale, localeLabel, onChunk)`), with the same `glossary` (passthrough, CI-safe) / `ai` (shells out to `claude -p` or `agy`, via `I18N_TRANSLATION_ADAPTER`/`I18N_TRANSLATION_COMMAND`) split as docs, but its AI prompt is generic UI-string phrasing ("Translate these UI strings from English into {locale}..."), not markdown-specific.
+- **`packages/i18n/scripts/translate-bundles.ts`** — the driver: for each locale, finds cache misses, calls `adapter.translateBatch`, writes to `packages/i18n/i18n-cache/{locale}.json`.
+- **`packages/i18n/scripts/build-bundles.ts`** — pure offline codegen: reads the committed `i18n-cache/*.json` and `ENGLISH_SOURCES`, writes `src/locales/{locale}.ts` files exporting `LocaleBundle` objects (`defineBundle({ locale, dir, label, strings: makeStrings(...) })`). **No network, no adapter, just local file reads/writes** — this is the `generate` package.json script.
+
+**This directly answers your Q3**: if `packages/scaffold` added its own `packages/scaffold/src/i18n.json` with CLI prompt/help/error strings, `discoverStringSources` would pick it up automatically (scaffold is in the workspace globs), and `pnpm --filter @pantoken/i18n run translate` / `run generate` would translate and codegen it into the existing 45-locale set, for free, with zero changes to `packages/i18n` itself — just adding the JSON file and giving the keys unique names. You would *not* need to import anything from `packages/i18n` into `packages/scaffold`; you'd consume the generated output (or replicate the same generic pattern locally in scaffold if you want the strings to live and version inside the scaffold package itself rather than centralized in `packages/i18n`'s output).
+
+## 4. Locale detection — none exists, anywhere, confirmed by code and by absence
+
+`docs/.vitepress/config.ts` (~line 500) has an explicit comment confirming your memory's claim: VitePress's default `i18nRouting` (URL-prefix swap, e.g. `/…` ↔ `/hu/…`) is deliberately left un-customized because the locales are a symmetric prefix pair; a custom function would only reimplement the default. This is **pure URL-path routing** — no cookie, no `Accept-Language`, no `navigator.language` detection anywhere in `docs/.vitepress/theme/`.
+
+I also checked `packages/i18n` and `renderers/web-components` for the same thing (`process.env.LANG`, `navigator.language`, `Intl.DateTimeFormat().resolvedOptions()`) — zero hits. `registerLocalized()` in `packages/i18n/src/index.ts` requires the consumer to pass a bundle or BCP47 tag explicitly; nothing in this codebase infers the user's language automatically today. **You'd be writing the env-var-based detection logic (`LANG`/`LC_ALL`/`LC_MESSAGES` parsing, or `Intl.DateTimeFormat().resolvedOptions().locale`) from scratch** — there's no adaptable precedent in-repo, though the `CANVAS_LOCALES` registry (`packages/i18n/src/lib/canvas-locales.ts`) with its BCP47 tags + `dir` metadata would be a reasonable target format to resolve *into*.
+
+## 5. What triggers translation generation, and network/key requirements
+
+Docs (`docs/package.json` scripts):
+- `docs:build` (the default CI path) → `docs:api:locales` (`node scripts/build-api-locales.ts`, no env override) → **default `glossary` adapter, no network, no CLI needed**.
+- `docs:build:claude` → sets `DOCS_TRANSLATION_ADAPTER=ai` and `DOCS_TRANSLATION_COMMAND_ARGS="--model claude-haiku-4-5-20251001 ..."` → requires a working, authenticated `claude` CLI on the machine running the build (not an API key env var).
+- `docs:locales:translate` / `:agy` — manual, human-run commands (`vp run docs:guides:locales:claude &amp;&amp; vp run docs:api:locales:claude`), explicitly documented in `translate-guides.ts`'s header comment as "a manual workflow — guide translations are committed, not regenerated on every build."
+- `docs:check:locales` / `docs:check:drift` — parity/drift checks that run in normal CI without needing the AI adapter.
+
+i18n package (`packages/i18n/package.json` scripts):
+- `generate` (`node scripts/build-bundles.ts`) — **fully offline**, reads committed cache JSON only. This is the direct analog to scaffold's existing offline `vp run generate`.
+- `translate` / `translate:agy` — manual, sets `I18N_TRANSLATION_ADAPTER=ai`, requires `claude` or `agy` CLI.
+- `check:drift` (`check-bundle-drift.ts`) — explicitly documented as "Safe to run without AI credentials — no network required," runs in CI (an `i18n-drift` workflow job per its own comment) to fail fast if English source strings have no corresponding cache entry, forcing a human to run `translate` locally and commit the result.
+
+**Implication for scaffold's `vp run generate`:** if you follow the `packages/i18n` pattern, scaffold's *existing offline* `generate` step stays offline — you'd add a parallel, separate, manually-invoked `translate` step (network + CLI-dependent) that only updates a committed cache file, and `generate` would keep just reading that cache, same as today. You would not be making scaffold's routine codegen depend on network access.
+
+## 6. History and engineering-log findings
+
+- The whole shared pipeline — `tools/translation-adapters`, `@pantoken/i18n`, RTL support, and the docs `AiTranslationAdapter` refactor — landed in one commit: `40987c46 feat: i18n — Canvas-parity locale support, @pantoken/i18n, RTL, shared translation tooling (#66)`.
+- Docs' own translation scaffolding predates that and evolved incrementally: `9f92a6b9` (initial commit) → `148fea65` (block-level API segmentation + glossary) → `0c54e589`/`0c1e2dee` (concurrency/model tuning) → `07a126e0`/`21a9a63b` (HU-specific fixes) → `424f57a3` (security baseline) → `40987c46` (the shared-tooling consolidation) → `343c59d3` (later refactor).
+- **`docs/engineering-log.md` has zero entries about translation, i18n, locales, rate limits, or cost** — I grepped the whole 251-line file for `i18n|translat|locale|hungarian|claude -p|agy|rate limit|cost|quota` and got no matches. Whatever operational lessons were learned building this (and there clearly were some, given the concurrency/chunk-budget tuning commits and the "poison-cache guard" comments in the code) were **not** captured in the engineering log — they only exist as inline code comments (e.g. the `translateBatchableMisses` docstring in `translation-memory.ts` explaining why streaming persistence matters for resumability, and the `translation-memory.ts` module docstring noting the pipelines "used to re-translate every file on every run — one `claude -p` spawn per API markdown file and per sidebar label," which the memory/cache system was built to fix). CHANGELOG.md files for `docs`, `packages/i18n`, and `tools/translation-adapters` likewise have no cost/rate-limit/API-key mentions.
+
+## Recommendation
+
+For a CLI's runtime-detected locale strings, the lightweight and clean path is:
+1. Add `packages/scaffold/src/i18n.json` (or a new small package) with your CLI's short strings — this is auto-discovered by `packages/i18n`'s existing `discoverStringSources`.
+2. Reuse the `packages/i18n` translate/generate split as your template (or literally run its `translate`/`generate` scripts if you're fine centralizing scaffold's strings there) — same glossary/ai adapter pattern, same offline-codegen-vs-manual-network-translate separation scaffold already has.
+3. Write new, CLI-specific locale-detection code (`LANG`/`LC_ALL`/`LC_MESSAGES` parsing or `Intl.DateTimeFormat().resolvedOptions().locale`, resolved against `CANVAS_LOCALES`'s tag set) — there is no existing detection logic anywhere in the repo to adapt; this part is genuinely new work, not reuse.
+4. Do **not** try to reuse `docs/scripts/translation-memory.ts` or `api-translation.ts` directly — they're markdown/VitePress-shaped and would need non-trivial adaptation; `packages/i18n`'s scripts are already the right shape.</result>
+<usage><subagent_tokens>100927</subagent_tokens><tool_uses>38</tool_uses><duration_ms>202093</duration_ms></usage>
+</task-notification>
