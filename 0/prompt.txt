@@ -1,0 +1,3 @@
+on `vpr ready` I keep getting error: Formatting issues found
+docs/hu/guide/packages.md (68ms)
+even after `vp check --fix`
