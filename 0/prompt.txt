@@ -1,0 +1,1 @@
+the vitepress theme default color isn't being inherited/set as the instui brand theme in this component.
