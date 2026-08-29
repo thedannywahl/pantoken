@@ -1,0 +1,10 @@
+while we wait for CI to run:
+a couple of more changes for this PR and then we can also cut the release of @pantoken/docs to test that:
+
+* sidebar links are always to english - even when in Hungarian
+
+* /hu/api is in English because it gets written on build - it doesn't exist locally.  We should write it to a file locally that can be translated.
+
+* locally we can check for translation drift and run translations automatically locally and add a CI check to error on misisng/drift
+
+will the tag created on the pr branch "carry over" to main to trigger the release workflow?
