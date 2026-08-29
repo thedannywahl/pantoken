@@ -1,0 +1,6 @@
+those changes were merged, so we'll need a new worktree.  every push to main still fires two workflows in parallel:
+
+* CI
+* Deploy docs
+
+Docs deploys should be gated behind successful CI AND it should re-use the build assets from CI's build step instead of rebuilding everything again. but it should also keep its manual trigger that does call build since the assets won't exist. this is an escape hatch for `[skip ci]` or failed docs deploys.
