@@ -1,0 +1,24 @@
+the workspace orchestrator for the docs server via vitepress should be able to fully run the transforms / rebuilds.  I want to be able to take:
+formats/components/src/components/billboard.css while running `vpr docs:dev` and if I for example edit & save
+
+```
+@media (--theme-canvas),
+(--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:hover {
+    border-color: var(--instui-component-link-text-color);
+  }
+}
+```
+
+to:
+
+```
+@media (--theme-canvas),
+(--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:hover {
+    border-color: red;
+  }
+}
+```
+
+for the HMR to go through the whole process for the styles on refresh to show a red border.
