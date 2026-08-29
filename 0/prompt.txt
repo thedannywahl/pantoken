@@ -1,0 +1,294 @@
+<task-notification>
+<task-id>a460f3b613838fd5c</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/fe9c6a89-7dbe-4817-8dce-af28838c5648/tasks/a460f3b613838fd5c.output</output-file>
+<status>completed</status>
+<summary>Agent "Map cssdoc grouping + @group tag" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed. Here's the complete report.
+
+---
+
+# cssdoc grouping &amp; `@group` investigation (v0.7.8)
+
+All packages resolve to `@cssdoc/*@0.7.8`. pantoken's `docs/scripts/build-css-api.ts` imports `emitCssApi` from `@cssdoc/typedoc`, `parseCssDocs` + `CssDocEntry` from `@cssdoc/core`, and `CssDocConfigFile` from `@cssdoc/config`. Types ship in each package's `dist/index.d.mts`; the runtime `dist/index.mjs` files are **formatted (not minified)** and readable.
+
+---
+
+## 1. `KIND_GROUPS` and the two functions that consume it
+
+**File:** `node_modules/.pnpm/@cssdoc+markdown@0.7.8/node_modules/@cssdoc/markdown/dist/index.mjs`
+
+`KIND_GROUPS` (lines 31–49) — display order is fixed: component, utility, rule, declaration.
+
+```js
+/** Sidebar/index groups, in display order. Only kinds with records appear. */
+const KIND_GROUPS = [
+  { kind: "component",   label: "Components" },
+  { kind: "utility",     label: "Utilities" },
+  { kind: "rule",        label: "Rules" },
+  { kind: "declaration", label: "Declarations" },
+];
+```
+
+It is consumed by exactly two exported functions. **The grouping key is `record.kind` in both** — never `group`/`category`.
+
+**(a) Index-page groups — `renderIndex`** (index.mjs lines 305–323):
+
+```js
+function renderIndex(entries, options = {}) {
+  const baseHref = options.baseHref ?? "/";
+  const lines = [`# ${options.title ?? "CSS API reference"}`, ""];
+  if (options.intro) lines.push(escProse(options.intro), "");
+  for (const group of KIND_GROUPS) {
+    const inGroup = entries.filter((e) =&gt; e.kind === group.kind);
+    if (!inGroup.length) continue;                    // empty groups dropped
+    lines.push(`## ${group.label}`, "", ...table(
+      ["Name", "Class", "Summary"],
+      inGroup.map((e) =&gt; [
+        `[${e.name}](${baseHref}${e.name}.md)`,
+        `\`${e.className}\``,
+        cell(e.summary),
+      ])));
+  }
+  return `${lines.join("\n")}\n`;
+}
+```
+
+**(b) Sidebar groups — `buildSidebar`** (index.mjs lines 334–351):
+
+```js
+/** Build the sidebar tree (Overview, then a group per kind). */
+function buildSidebar(entries, baseHref = "/") {
+  const sidebar = [{ text: "Overview", link: baseHref }];
+  for (const group of KIND_GROUPS) {
+    const items = entries.filter((e) =&gt; e.kind === group.kind).map((e) =&gt; ({
+      text: e.name,
+      link: `${baseHref}${e.name}.md`,
+    }));
+    if (items.length) sidebar.push({ text: group.label, collapsed: false, items });  // empty groups dropped
+  }
+  return sidebar;
+}
+```
+
+**Signatures** (from `dist/index.d.mts` lines 148–149, 102–103):
+
+```ts
+declare function buildSidebar(entries: readonly CssDocEntry[], baseHref?: string): SidebarItem[];
+declare function renderIndex(entries: readonly CssDocEntry[], options?: RenderIndexOptions): string;
+```
+
+`SidebarItem` (index.d.mts 107–112): `{ text: string; link?: string; collapsed?: boolean; items?: SidebarItem[] }`.
+
+**Grouping logic summary:** both functions iterate `KIND_GROUPS` in its fixed array order; for each group they `entries.filter(e =&gt; e.kind === group.kind)`; a group producing zero records is skipped (`continue` in renderIndex, `if (items.length)` in buildSidebar). No sort within a group (entries arrive already sorted by name — see `BuildCssApiResult.entries` "sorted by name", index.d.mts line 140). Group order and labels are hard-coded in `KIND_GROUPS`; there is no option to reorder or relabel them.
+
+---
+
+## 2. The `@group` / `@category` tag — definition and current use
+
+**Definition — `@cssdoc/spec`**, `dist/index.mjs` lines 71–79 (inside `CSSDOC_TAGS`):
+
+```js
+{ name: "group",    kind: "block" },
+{ name: "category", kind: "block", aliasFor: "group" },
+```
+
+So `group` is a **block** tag, single-valued (no `allowMultiple`), and `category` is a straight alias of it. The `CssdocTag` shape is in spec's `index.d.mts` (lines 24–37). Mirror definitions/derivations:
+- `@cssdoc/core` `ParsedDoc.group` — `dist/lite-CLGf1QSF.d.mts` line 698: `/** @group/@category — a documentation group. */ group?: string;`
+- `CssDocEntry.group` — same file, line 454: `/** A documentation group/category, from @group/@category. */ group?: string;`
+
+**Is it rendered / used?** — **Not a pure no-op, but it does NOT drive sidebar or index grouping.** A grep of the markdown runtime for `.group` finds exactly one consumer: the per-page **meta line** in `renderEntry`.
+
+`@cssdoc/markdown/dist/index.mjs` lines 152–157:
+
+```js
+const meta = [];
+if (entry.since)  meta.push(`**Since:** ${escProse(entry.since)}`);
+if (entry.group)  meta.push(`**Group:** ${escProse(entry.group)}`);          // &lt;-- the only use
+const src = options.resolveSource?.(entry);
+if (src) meta.push(`**Source:** [${escProse(src.label ?? "source")}](${src.href})`);
+if (meta.length) lines.push(meta.join(" · "), "");
+```
+
+So `entry.group` renders as a `**Group:** &lt;value&gt;` fragment on the fixed header meta line (joined with Since/Source by ` · `). It is **display-only metadata**: it does not feed `buildSidebar`, `renderIndex`, `buildCssApi`, or any sidebar/section grouping. Sidebar and index grouping are driven solely by `record.kind`. (The `RenderEntryOptions` doc comment confirms this — index.d.mts lines 20–23 describe "the Since/Group/Source meta line" as part of the fixed page header.)
+
+Implication for the proposal: `@group`/`@category` is currently free to repurpose for sidebar/index grouping — its only existing behavior is the one-line meta string, which a grouping feature could either keep, subsume, or supersede.
+
+---
+
+## 3. `CssDocEntry` (record type) — full shape
+
+**File:** `@cssdoc/core/dist/lite-CLGf1QSF.d.mts` lines 436–516. Grouping-relevant fields highlighted (`name`, `kind`, `className`, `group`, `releaseStage`):
+
+```ts
+/** One documented CSS record: its base class plus everything derived from the CSS + doc comments. */
+interface CssDocEntry {
+  /** The record name from @component/@utility/@rule/@declaration/@name, e.g. `button`. */
+  name: string;
+  /** Which kind of CSS surface this documents (defaults to `component`). */
+  kind: CssRecordKind;
+  /** The base class selector, e.g. `.button` (inferred from the first bare-class rule). */
+  className: string;
+  /** One-line summary from @summary. */
+  summary?: string;
+  /** Extended prose from @remarks. */
+  remarks?: string;
+  /** Internal-only prose from @privateRemarks (emitters may choose to omit it from public output). */
+  privateRemarks?: string;
+  /** The release stage from a modifier flag tag (@alpha/@beta/@experimental/@internal/@public). */
+  releaseStage?: CssReleaseStage;
+  /** Version introduced, from @since. */
+  since?: string;
+  /** A documentation group/category, from @group/@category. */
+  group?: string;
+  /** Accessibility guidance, from @a11y/@accessibility. */
+  accessibility?: string;
+  modifiers: CssModifier[];
+  parts: CssPart[];
+  shadowParts: CssPart[];
+  pseudoElements: CssPseudoElement[];
+  states: CssState[];
+  slots: CssSlot[];
+  todos: string[];
+  cssPropertiesConsumed: CssTokenConsumed[];
+  cssPropertiesDeclared: CssPropertyDeclared[];
+  functions: CssFunction[];
+  animations: CssAnimation[];
+  layers: CssLayer[];
+  conditions: CssCondition[];
+  examples: string[];
+  structure?: StructureNode[];
+  structureDescription?: string;
+  demo?: string;
+  deprecated?: string;
+  see: string[];
+  usage?: string;
+  compat: string[];
+  related: CssRelated[];
+  source?: CssSource;
+  /** Content of registered custom (block) tags, keyed by tag name without its `@`. Absent when none found. */
+  customBlocks?: Record&lt;string, string[]&gt;;
+}
+```
+
+Supporting types (same file):
+```ts
+type CssRecordKind = "component" | "utility" | "rule" | "declaration";               // line 381
+type CssReleaseStage = "alpha" | "beta" | "experimental" | "internal" | "public";     // line 386
+```
+
+So the record exposes `kind` (the current grouping key), `name`, and `group` (currently meta-only) but **no** dedicated group-order/group-label field. `customBlocks` is the one open-ended metadata escape hatch.
+
+---
+
+## 4. `emitCssApi` options + `mergeCssSidebar`
+
+**File:** `@cssdoc/typedoc/dist/index.d.mts`. The options interface is named **`EmitCssApiOptions`** and `extends RenderEntryOptions` (so it inherits `resolveToken`, `resolveDemo`, `resolveSource`, `importSnippet`, `baseHref`, `resolveComponent`, `sectionOrder`, `headingPrefix`, `structureView`, `classNames`). Lines 10–32:
+
+```ts
+/** Options for {@link emitCssApi}. */
+interface EmitCssApiOptions extends RenderEntryOptions {
+  /** The TypeDoc output root (where `typedoc-sidebar.json` lives). */
+  outputDirectory: string;
+  /** CSS source file paths (resolved against `cwd`). */
+  css: string[];
+  /** Subdirectory under the output root for the CSS pages (default `"css"`). */
+  outSubdir?: string;
+  /** The sidebar section label (default `"CSS"`). */
+  label?: string;
+  /** Link prefix for the emitted pages/sidebar (default `"&lt;outSubdir&gt;/"`). */
+  baseHref?: string;
+  /** The tag configuration to parse with. */
+  configuration?: CssDocConfiguration;
+  /**
+   * A loaded `cssdoc.json` (from @cssdoc/config). When given, it supplies the parse `configuration`
+   * (unless one is passed explicitly) and the render defaults
+   * sectionOrder/headingPrefix/baseHref/structureView from its `render` block. Any explicit
+   * option above still overrides the config file.
+   */
+  configFile?: CssDocConfigFile;
+  /** Base directory the `css` paths are resolved against (default `process.cwd()`). */
+  cwd?: string;
+}
+```
+
+Return type (index.d.mts 49–51): `BuildCssApiResult &amp; { sidebarMerged: boolean }`. `BuildCssApiResult` (markdown index.d.mts 138–147): `{ entries: CssDocEntry[]; pages: string[]; indexPath: string; sidebarPath: string }`.
+
+Note the classNames / resolveToken / resolveSource / importSnippet fields the user listed live on **`RenderEntryOptions`** (markdown `index.d.mts` lines 28–77), inherited here. No option relates to sidebar-group ordering or labels — only the single `label` for the top-level section.
+
+**How the top-level section is built + merge semantics** — `@cssdoc/typedoc/dist/index.mjs`:
+
+`emitCssApi` (lines 37–72) resolves `label = options.label ?? "CSS"`, calls `buildCssApi(...)` to write pages, then if `typedoc-sidebar.json` exists:
+
+```js
+const merged = mergeCssSidebar(
+  JSON.parse(readFileSync(sidebarPath, "utf8")),
+  label,
+  buildSidebar(result.entries, baseHref)      // Overview + one group per kind (KIND_GROUPS)
+);
+writeFileSync(sidebarPath, `${JSON.stringify(merged, null, 2)}\n`);
+```
+
+`mergeCssSidebar` (lines 23–29) — **replace-by-label**, matching on the node's `text`:
+
+```js
+function mergeCssSidebar(existing, label, cssItems) {
+  return [...existing.filter((item) =&gt; item.text !== label), {
+    text: label,          // the top-level section node, labelled by `label`
+    collapsed: false,
+    items: cssItems,      // Overview + the per-kind child groups from buildSidebar
+  }];
+}
+```
+
+So the merge drops any existing top-level node whose `text` equals `label` and appends a fresh one. The section's **children are the kind groups** produced by `buildSidebar` (Overview node first, then Components/Utilities/Rules/Declarations, empty kinds omitted). This is exactly why pantoken's two `emitCssApi` calls (labels `"CSS"` and `"CSS plugins"`) coexist — different labels, so neither replaces the other. `render.baseHref`/`sectionOrder`/`headingPrefix`/`structureView` are pulled from `configFile.render` as fallbacks (lines 41–45), explicit options winning.
+
+---
+
+## 5. Render config (`@cssdoc/config`) — is there any group option?
+
+**File:** `@cssdoc/config/dist/index.d.mts`. The `render` block type is **`RenderConfig`** (lines 16–22):
+
+```ts
+interface RenderConfig {
+  sectionOrder?: readonly string[];
+  headingPrefix?: string;
+  baseHref?: string;
+  /** Which Structure representation(s) to emit: "text", "diagram", or "both" (default). */
+  structureView?: "text" | "diagram" | "both";
+}
+```
+
+Exposed on the loaded config as `CssDocConfigFile.render: Readonly&lt;RenderConfig&gt;` (index.d.mts lines 80–85), merged across the `extends` chain.
+
+The JSON Schema `render` object (`cssDocSchema`, index.d.mts lines 317–342) enumerates exactly the same four keys — `sectionOrder`, `headingPrefix`, `baseHref`, `structureView` — with `additionalProperties: false`. `sectionOrder` controls the reorderable **`##` sections within one record page** (keys from `SectionKey`), not sidebar groups.
+
+**There is no existing option anywhere for sidebar groups, group ordering, or group labels.** The whole kind-grouping (`KIND_GROUPS`) is hard-coded in `@cssdoc/markdown`, and `additionalProperties: false` at both the top level and inside `render` means a new option would need a schema addition. This is the gap the proposal addresses.
+
+---
+
+## 6. Public API surface per package
+
+All five packages export only `"."` (→ `dist/index.mjs`) plus `"./package.json"`; `@cssdoc/core` additionally exports `"./lite"` (→ `dist/lite.mjs`). Public symbols (from each `index.d.mts` export list):
+
+- **`@cssdoc/spec`**: `CSSDOC_TAGS`, `CSSDOC_TAG_NAMES`, `cssdocTagNamesByKind`, `cssdocTagNamesByArgument`; types `CssdocTag`, `CssdocTagKind`, `CssdocRecordKind`, `CssdocTagArgument`.
+
+- **`@cssdoc/core`**: `parseCssDocs`, `parseDocComment`, `parseStructure`, `recordNameOf`, `stripCommentFraming`, `toJson`, `toMermaid`, `resolveModifierConvention`, classes `CssDocConfiguration`, `CssDocTagDefinition`, `ModifierMatcher`, consts `RECORD_TAGS`, `MODIFIER_PRESETS`, `DEFAULT_MODIFIER_CONVENTION`, `DEFAULT_PSEUDO_ELEMENTS`, `DEFAULT_STATE_PSEUDO_CLASSES`; types including `CssDocEntry`, `CssRecordKind`, `CssReleaseStage`, `ParseOptions`, `ParsedDoc`, `CssModifier`, `CssPart`, `CssState`, `StructureNode`, etc. (pantoken uses `parseCssDocs` + type `CssDocEntry`).
+
+- **`@cssdoc/markdown`**: `buildCssApi`, `buildSidebar`, `renderEntry`, `renderIndex`, `cell`, `escProse`, `KIND_GROUPS`, `DEFAULT_SECTION_ORDER`; types `BuildCssApiOptions`, `BuildCssApiResult`, `RenderEntryOptions`, `RenderIndexOptions`, `SectionKey`, `SidebarItem`, `ResolveSource`, `ResolveToken`. (Note: `KIND_GROUPS` **is** a public export — but it's a `readonly` const array with no override hook.)
+
+- **`@cssdoc/typedoc`**: `emitCssApi`, `mergeCssSidebar`, `load`, `TYPEDOC_SIDEBAR_FILE`; type `EmitCssApiOptions`. (pantoken uses `emitCssApi`.)
+
+- **`@cssdoc/config`**: `CssDocConfigFile`, `resolveProviders`, `cssDocSchema`, `CSSDOC_CONFIG_FILENAME`, `CSSDOC_CONFIG_FILENAMES`; types `ProviderRef`, `ResolvedProviders` (and internal-but-exported-shape `RenderConfig`/`NamingOverride`/`RuleSeverityOverride` are referenced via `CssDocConfigFile` members, though only `ProviderRef`/`ResolvedProviders` are named in the export list — `RenderConfig` is reachable as the type of `CssDocConfigFile.render`). (pantoken uses `CssDocConfigFile`.)
+
+---
+
+## Proposal-relevant conclusions
+
+1. Sidebar and index grouping is **100% driven by `record.kind`** via the hard-coded `KIND_GROUPS` array in `@cssdoc/markdown`, consumed identically by `buildSidebar` and `renderIndex` (fixed order, empty groups dropped, no per-group sort/label/order option).
+2. `@group`/`@category` currently drives **only** the `**Group:**` per-page meta-line string (`renderEntry`, markdown index.mjs line 154). It is otherwise unused — safe to repurpose as a grouping key.
+3. `CssDocEntry` already carries `group?: string` parsed from the tag, so a grouping feature needs **no new parse field**.
+4. The config surface (`RenderConfig`, JSON Schema, both `additionalProperties: false`) has **no group option**; adding group-order/label config would require touching `@cssdoc/config`'s `RenderConfig` + `cssDocSchema`, and the grouping functions in `@cssdoc/markdown` (`buildSidebar`/`renderIndex`), plus threading through `EmitCssApiOptions`/`emitCssApi` like the existing `sectionOrder`/`structureView` defaults.</result>
+<usage><subagent_tokens>77631</subagent_tokens><tool_uses>28</tool_uses><duration_ms>213734</duration_ms></usage>
+</task-notification>
