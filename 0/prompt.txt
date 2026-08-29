@@ -1,0 +1,153 @@
+<task-notification>
+<task-id>a995d82a1eb4cafbf</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/5fc59c52-1c24-40a9-a169-9cf87df10774/tasks/a995d82a1eb4cafbf.output</output-file>
+<status>completed</status>
+<summary>Agent "Find billboard record source" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have the complete picture. Here are the findings.
+
+## Source of truth
+
+The billboard component record is authored in one file:
+
+**`/Users/dwahl/Scripts/pantoken/formats/components/src/components/billboard.css`**
+
+The `.ts` record (`/Users/dwahl/Scripts/pantoken/formats/components/src/components/billboard.ts`) just wraps pre-built, per-theme CSS strings from the generated `component-styles.ts` and swaps the class prefix via a `SENTINEL` placeholder:
+
+```ts
+export const billboard = defineComponent({
+  name: "billboard",
+  css: (p, options) =&gt;
+    (billboardByTheme[options?.theme ?? "rebrand"] ?? billboardByTheme.rebrand).replaceAll(SENTINEL, p),
+});
+```
+
+Authoring uses the `.pfx-billboard` prefix in source; the emitted CSS uses `.instui-billboard` (that's just the sentinel prefix substitution).
+
+## 1 + 2. The `.-clickable` rules with hover/focus/active and the theme-conditional media queries
+
+Verbatim from `billboard.css` (lines 78-129). Note the base rule sets the border color to `text`, and a following `@media (--theme-canvas), (--theme-canvas-high-contrast)` block overrides it to `link`:
+
+```css
+.pfx-billboard.-clickable {
+  cursor: pointer;
+  border: var(--instui-component-billboard-button-border-width)
+    var(--instui-component-billboard-button-border-style) transparent;
+  border-radius: var(--instui-component-billboard-button-border-radius);
+}
+
+.pfx-billboard.-clickable:hover {
+  border-style: dashed;
+  border-color: var(--instui-color-text-base);
+}
+
+@media (--theme-canvas), (--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:hover {
+    border-color: var(--instui-component-link-text-color);
+  }
+}
+
+.pfx-billboard.-clickable:focus {
+  border-style: solid;
+  border-color: var(--instui-color-text-base);
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+}
+
+@media (--theme-canvas), (--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:focus {
+    border-style: dashed;
+    border-color: var(--instui-component-link-text-color);
+  }
+}
+
+.pfx-billboard.-clickable:focus-visible {
+  outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+    var(--instui-focus-outline-color);
+  outline-offset: var(--instui-focus-outline-offset);
+}
+
+.pfx-billboard.-clickable:active {
+  background: var(--instui-component-billboard-clickable-active-bg);
+  border-style: solid;
+  border-color: var(--instui-color-text-base);
+}
+
+@media (--theme-canvas), (--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:active {
+    border-style: dashed;
+    background: var(--instui-focus-outline-color);
+    border-color: var(--instui-component-link-text-color);
+  }
+}
+```
+
+There is also a `@scope (.pfx-billboard)` block (lines 155-228) styling `.hero`, `.heading`, `.message`, and the hero color on interaction (unconditional, not theme-gated):
+
+```css
+:scope.-clickable:hover &gt; .hero {
+  color: var(--instui-component-link-text-color);
+}
+:scope.-clickable:active &gt; .hero {
+  color: var(--instui-component-link-on-color-text-color);
+}
+```
+
+## 3. Where the hover border-color value is defined (the important part)
+
+There is **no** `--instui-component-billboard-button-hover-border-color` token. The hover border color is set inline in the rule, and which value wins depends entirely on the theme, resolved at build time:
+
+- **Base / rebrand:** `border-color: var(--instui-color-text-base)` → **text** color.
+- **Canvas and Canvas high contrast:** the `@media (--theme-canvas), (--theme-canvas-high-contrast)` override sets `border-color: var(--instui-component-link-text-color)` → **link** color.
+
+### How the custom media is resolved
+
+`--theme-canvas` / `--theme-canvas-high-contrast` are custom-media aliases handled by a PostCSS plugin, not a `@custom-media` declaration in the CSS source:
+
+**`/Users/dwahl/Scripts/pantoken/plugins/postcss/theme-custom-media/src/index.ts`**
+
+```ts
+const THEME_ALIAS = new Map&lt;string, string&gt;([
+  ["--theme-rebrand", "(theme: rebrand)"],
+  ["--theme-canvas", "(theme: canvas)"],
+  ["--theme-canvas-high-contrast", "(theme: canvasHighContrast)"],
+  ["--theme-light", "(theme: rebrand) and (prefers-color-scheme: light)"],
+  ["--theme-dark", "(theme: rebrand) and (prefers-color-scheme: dark)"],
+]);
+```
+
+For a given target theme the plugin (`themeCustomMedia({ theme })`):
+- Drops `@media` branches that reference a non-target theme.
+- Unwraps a branch into bare rules when it becomes unconditionally true for the target theme (`rule.replaceWith(...rule.nodes)`).
+- Removes the `@custom-media --theme-*` declarations from output.
+
+The build result is baked into `billboardByTheme` in **`/Users/dwahl/Scripts/pantoken/formats/components/src/generated/component-styles.ts`**, which has three keys: `rebrand`, `canvas`, `canvasHighContrast` (`billboard = billboardByTheme.rebrand`):
+
+- **`rebrand`:** the `@media (--theme-canvas)…` blocks are stripped entirely, so hover border-color stays `--instui-color-text-base`.
+- **`canvas` / `canvasHighContrast`:** the media wrappers are removed and the inner rule is emitted as a duplicate, later-source-order selector that overrides the base. For example, in the canvas string:
+
+```css
+.pfx-billboard.-clickable:hover {
+  border-style: dashed;
+  border-color: var(--instui-color-text-base);
+}
+
+.pfx-billboard.-clickable:hover {
+    border-color: var(--instui-component-link-text-color);
+  }
+```
+
+The prebuilt default-theme output is also on disk at **`/Users/dwahl/Scripts/pantoken/formats/components/generated/billboard.css`** (the `.instui-` rebrand build) and **`/Users/dwahl/Scripts/pantoken/formats/components/dist/billboard.css`** — in those the canvas overrides are gone, so hover = text.
+
+## Modifier / state authoring convention
+
+- **Modifiers** are chained classes with a leading hyphen on the block class: `.pfx-billboard.-clickable`, `.pfx-billboard.-size-sm`, `.pfx-billboard.-size-md`/`.-size-medium` (short + long-form aliases), `.-size-lg`/`.-size-large`. Icon modifier is an attribute-substring match on the part: `.hero[class*="-icon-"]`. Modifiers are documented via `@modifier` JSDoc tags at the top of the file.
+- **States** are standard pseudo-classes chained after the modifier: `.-clickable:hover`, `:focus`, `:focus-visible`, `:active`.
+- **Parts** (`.hero`, `.heading`, `.message`) are styled inside `@scope (.pfx-billboard)` using `:scope &gt; .part`, with non-scoped fallback rules duplicated above the `@scope` block for engines that don't apply `@scope`.
+- **Theme-conditional styling** is authored with `@media (--theme-canvas), (--theme-canvas-high-contrast)` custom-media wrappers, resolved per theme at build time by the `theme-custom-media` PostCSS plugin.
+
+One thing worth flagging: the `@scope` hero rules (`:scope.-clickable:hover &gt; .hero`) always use `--instui-component-link-text-color` regardless of theme, whereas the border color is theme-gated — so in the rebrand theme the hero icon turns "link" color on hover but the border turns "text" color.</result>
+<usage><subagent_tokens>45177</subagent_tokens><tool_uses>12</tool_uses><duration_ms>84991</duration_ms></usage>
+</task-notification>
