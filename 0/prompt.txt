@@ -1,0 +1,86 @@
+<task-notification>
+<task-id>a2bb512685e100d1f</task-id>
+<tool-use-id>toolu_01WqTorMBNFRMuUAnuyjEjmh</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/b4068939-9bd0-47dc-b8f3-949dda393a39/tasks/a2bb512685e100d1f.output</output-file>
+<status>completed</status>
+<summary>Agent "Find CSS component classes" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed. Here's the complete report.
+
+## 1. Paths to the component CSS
+
+The InstUI-look component library is the **`@pantoken/components`** package at **`/Users/dwahl/Scripts/pantoken/formats/components`**.
+
+- Source: `/Users/dwahl/Scripts/pantoken/formats/components/src/components/*.css` (+ `.ts` co-files)
+- Built output (one sheet per component + a barrel): `/Users/dwahl/Scripts/pantoken/formats/components/dist/*.css`
+  - Barrel: `formats/components/dist/components.css` (all components)
+  - Also `base.css`, `prose.css`, `utilities.css`, `icons.css`, `component-icons.css`, `fonts.css`, `select.css`
+- Generated (source-derived, used live by docs): `/Users/dwahl/Scripts/pantoken/formats/components/generated/{utilities,icons,...}.css`
+- Package entry map is in `formats/components/package.json` (`exports`): e.g. `@pantoken/components/components.css`, `@pantoken/components/button.css`, `@pantoken/components/prose.css`, `@pantoken/components/fonts.css`, etc.
+
+Note: `@pantoken/css` (`formats/css`) is a *different* package — it emits the design-token sheet (`--instui-*` custom properties), not component classes. The component classes consume those tokens.
+
+## 2. Concrete class-name vocabulary
+
+**Naming convention:** each component has a base class `instui-&lt;name&gt;`, and variants are separate dash-prefixed modifier classes applied alongside it, e.g. `class="instui-button -color-secondary -size-lg"`. The `instui-` prefix is configurable (a builder can emit no prefix, giving `class="heading -level-h1"`), but the docs site uses the default `instui-` prefix.
+
+**Base component classes** (one per file in `dist/`):
+`instui-alert`, `instui-avatar`, `instui-badge` (+ `instui-badge-wrapper`), `instui-billboard`, `instui-breadcrumb`, `instui-button`, `instui-byline`, `instui-calendar`, `instui-checkbox`, `instui-close-button`, `instui-context-view`, `instui-file-drop`, `instui-form-field` (+ `instui-form-field-group`, `instui-form-field-messages`, `instui-form-field-message`), `instui-heading`, `instui-img`, `instui-in-place-edit`, `instui-input-group`, `instui-link`, `instui-list`, `instui-menu`, `instui-metric`, `instui-modal`, `instui-number-input`, `instui-pagination`, `instui-pill`, `instui-popover`, `instui-progress` (+ `instui-progress-value`), `instui-progress-circle`, `instui-radio` (+ `instui-radio-input-group`), `instui-range-input` (+ `instui-range-input-value`), `instui-rating`, `instui-simple-select`, `instui-side-nav-bar`, `instui-spinner`, `instui-table`, `instui-tabs`, `instui-tag`, `instui-text`, `instui-text-area`, `instui-text-input`, `instui-toggle-details`, `instui-toggle-group`, `instui-tooltip`, `instui-tray`, `instui-tree-browser`, `instui-truncate`.
+
+**Card:** there is **no** `instui-card` in the component library. `.instui-card` is a **docs-only** demo surface defined at `/Users/dwahl/Scripts/pantoken/tools/demo/assets/card.css` (published as `@pantoken/demo/card.css`). It's a padded, rounded, elevated view surface. If you want a card look from the shipped library, compose `instui-view` + a `instui-bg-*` + `instui-border-radius-*` + an `instui-elevation-*` utility (see below).
+
+**Common modifiers** (concrete strings, applied next to the base class):
+- Button (`instui-button`): `-color-secondary`, `-color-danger`, `-color-success`, `-color-tertiary`, `-color-primary-inverse`, `-color-ai`, `-color-ai-secondary`, `-size-sm`/`-size-small`, `-size-lg`/`-size-large`, `-shape-square`, `-shape-circle`, `-display-block`, `-without-background`, `-ghost`, `-without-border`, `-condensed`, `-toggle`
+- Alert (`instui-alert`): `-variant-info`, `-variant-success`, `-variant-warning`, `-variant-error` (also `-color-info/-success/-warning/-danger`), `-has-shadow`/`-without-shadow`/`-has-shadow-false`, `-screen-reader-only`, plus icon modifiers like `-icon-megaphone`
+- Heading (`instui-heading`): `-level-h1` … `-level-h6`, `-color-secondary`, `-color-primary-inverse`, `-color-ai`, `-border-top`, `-border-bottom`, `-variant-title-page`, `-variant-title-section`, `-variant-title-card-regular`, `-variant-title-card-section`, `-variant-title-card-mini`, `-variant-label`
+- Text (`instui-text`): `-size-x-small`…`-size-x-large` (and `-size-xs`/`-sm`/`-lg`/`-xl`), `-color-secondary`, `-color-brand`, `-color-success`, `-color-warning`, `-color-danger`, `-color-ai`, `-color-primary-inverse`, `-weight-bold`, `-style-italic`, `-transform-uppercase`/`-lowercase`/`-capitalize`, `-variant-content-small`, `-variant-description-page`, `-variant-description-section`, `-variant-legend`
+- Link (`instui-link`): `-size-sm`/`-size-small`, `-size-lg`/`-size-large`, `-inline`, `-unstyled`, `-color-inverse`
+- Pill (`instui-pill`): `-color-info`, `-color-success`, `-color-warning`, `-color-danger`
+- Tag (`instui-tag`): `-inline`, `-readonly`, `-size-sm`/`-small`, `-size-lg`/`-large`
+- Badge (`instui-badge`): `-type-notification`, `-standalone`, `-pulse`, `-color-success`, `-color-danger`, `-color-inverse`, `-placement-top-start`/`-top-end`/`-bottom-start`/`-bottom-end`/`-start-center`/`-end-center`
+- List (`instui-list`): `-ordered`, `-inline`, `-unstyled`, `-delimiter-solid`, `-delimiter-dashed`, `-size-sm`/`-small`, `-size-lg`/`-large`
+- Table (`instui-table`): `-hover`, `-layout-fixed`, `-layout-stacked`
+- Form field message (`instui-form-field-message`): `-type-hint` (and error/etc.)
+- Radio/toggle groups: `-variant-toggle`
+
+**Prose / content styling** — wrapper class **`.pantoken-prose`** (in `prose.css`, note the `pantoken-` prefix, not `instui-`). Wrapping a container in `pantoken-prose` styles raw HTML descendants: `h1`–`h6`, `p`, `a`, `strong/b`, `em/i`, `small`, `del/s`, `ul/ol/li`, `blockquote`, inline `code`, `pre` (code blocks), `hr`, `img`, and unclassed `table`. This is your route for code blocks and headings without per-element classes.
+
+**Utility classes** (in `utilities.css`), all `instui-` prefixed:
+- Surface: `instui-view`, `instui-container`
+- Background: `instui-bg-{base,page,container,muted,brand,inverse,dark,on-color,success,warning,error,info}` and `instui-bg-accent-{blue,green,red,orange,honey,sea,sky,violet,plum,stone,ash,grey,aurora}`
+- Foreground/text color: `instui-fg-*` (same value set as `bg`)
+- Border color: `instui-border-*` / `instui-border-accent-*`; border radius: `instui-border-radius-{xs,sm,md,lg,xl,xxl,full,...}`; border width: `instui-border-width-{sm,md,lg,...}`
+- Elevation: `instui-elevation-{resting,above,topmost,card,cardHover,depth1,depth2,depth3}`
+- Spacing: margin `instui-m-{0,2xs,xs,sm,md,lg,xl,2xl,auto}` with directional variants `mt/mb/ms/me/mx/my` (and long forms `margin-`, `margint-`, etc.); padding `instui-p-*` with `pt/pb/ps/pe/px/py` (and `padding-*` long forms)
+- Display: `instui-display-{block,inline,inline-block,flex,inline-flex,none}`
+- Typography: `instui-font-family-{base,heading,code}`, `instui-font-weight-*`, `instui-line-height-*`, `instui-text-align-{start,center,end,justify}`
+- Visibility / responsive: `instui-hidden-{min,max}-{sm,md,lg,xl}`, container-query variants `instui-cq-hidden-*`, `instui-screen-reader-content`, `instui-opacity-{base,disabled}`
+
+## 3. How the CSS loads into the VitePress docs site
+
+The theme entry **`/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/index.ts`** imports the sheets (lines 9–42):
+- `./generated/components.css` (line 17) — the docs' multi-theme build of the component barrel (byte-for-byte the shipped `@pantoken/components/components.css` plus theme-scoped overrides; generated by `docs/.vitepress/scripts/components-sheet.ts`)
+- `../../../formats/components/generated/utilities.css` and `.../icons.css` (lines 23–24) — imported from `formats/components/generated/` (not `dist`) so edits hot-reload during `docs:dev`
+- `@pantoken/components/fonts.css` (line 25)
+- `@pantoken/demo/card.css` (line 41) — provides the docs-only `.instui-card`
+- `@pantoken/vitepress/custom.css` + `@pantoken/vitepress/components.css` (lines 10–11) and `./generated/site-themes.css` (line 9) — the token/theme bridge
+- `./pantoken.css` (line 42) — docs-local overrides at `docs/.vitepress/theme/pantoken.css`
+
+So to use these classes in a docs `.vue` component, no extra import is needed — the classes are already global once the theme loads.
+
+## 4. Existing usage examples in the docs
+
+The authoritative usage page is **`/Users/dwahl/Scripts/pantoken/docs/guide/components.md`**. Concrete markup already in it:
+- `&lt;button class="instui-button" command="show-modal" commandfor="dlg"&gt;Open&lt;/button&gt;` and `&lt;dialog class="instui-modal"&gt;` (lines 188–193)
+- `&lt;div class="instui-alert -color-success -transition-fade -has-shadow -icon-megaphone"&gt;` (line 47)
+- View + utilities composition: `&lt;div class="instui-view instui-bg-accent-blue instui-fg-on-color instui-p-md instui-mb-sm"&gt;` and `&lt;span class="instui-text instui-fg-on-color"&gt;` (lines 115–124)
+- Form field: `&lt;label class="instui-form-field"&gt;` with `&lt;input class="instui-text-input"&gt;`, `&lt;div class="instui-form-field-messages"&gt;`, `&lt;span class="instui-form-field-message -type-hint"&gt;` (lines 225–229)
+- Toggle radios: `&lt;fieldset class="instui-radio-input-group -variant-toggle"&gt;` with `&lt;label class="instui-radio -variant-toggle"&gt;` (lines 255–261)
+- Context view popover: `&lt;div popover class="instui-context-view"&gt;` (line 203)
+- Screen-reader utility: `&lt;span class="instui-screen-reader-content"&gt;` (lines 96–99)
+
+Other files referencing these classes: `docs/guide/cdn.md`, `docs/conventions/authoring.md`, and the Hungarian mirror `docs/hu/guide/components.md`. For a Vue file already using the classes, see the CDN picker at `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/CdnPicker.vue` (referenced by `docs/guide/cdn.md`), plus `ThemeSelector.vue` and `VPNavBarExtra.vue` in the same `docs/.vitepress/theme/components/` directory.
+
+One more useful reference for the full API and modifier list: `/Users/dwahl/Scripts/pantoken/formats/components/README.md`.</result>
+<usage><subagent_tokens>50406</subagent_tokens><tool_uses>18</tool_uses><duration_ms>131083</duration_ms></usage>
+</task-notification>
