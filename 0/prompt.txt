@@ -1,0 +1,1 @@
+this landed in cssdoc 0.7.9 which is now on main, so we can continue the implementation.
