@@ -1,0 +1,1 @@
+formats/components has robust cssdoc declarations including structure.  We should be able to automate robust DOM testing and fixtures across all (or most) variants and ensure that the display resolves to the actual css declarations / token IR value for 1:1 matching of components to instui values.
