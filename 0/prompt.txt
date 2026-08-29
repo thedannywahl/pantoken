@@ -1,0 +1,42 @@
+<task-notification>
+<task-id>a772debf3ec777662</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/c1989bfc-2fd9-4e8a-b005-2a6e9cc174cb/tasks/a772debf3ec777662.output</output-file>
+<status>completed</status>
+<summary>Agent "Check latest versions group A" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>All 25 packages resolved cleanly via npm. Here's the comparison:
+
+| Package | Current pin | Latest stable | Bump type | Caveat |
+|---|---|---|---|---|
+| @types/node | ^24.13.3 | 26.1.1 | major | Large jump — 2 majors (24 → 26); many TS-version dist-tags exist but `latest` is 26.1.1 |
+| arkregex | ^0.0.8 | 0.0.8 | none-already-current | 0.0.x package, very early |
+| core-js | ^3.49.0 | 3.49.0 | none-already-current | Newer prerelease major line exists (`alpha` 4.0.0-alpha.1) |
+| @commitlint/cli | ^21.2.1 | 21.2.1 | none-already-current | — |
+| @commitlint/config-conventional | ^21.2.0 | 21.2.0 | none-already-current | — |
+| @changesets/cli | ^2.29.7 | 2.31.1 | minor | Newer prerelease line exists (`next` 3.0.0-next.10) |
+| @vitest/coverage-v8 | ^4.1.10 | 4.1.10 | none-already-current | Newer prerelease line exists (`beta` 5.0.0-beta.7) |
+| markdownlint-cli2 | ^0.23.0 | 0.23.1 | patch | 0.x package |
+| publint | ^0.3.21 | 0.3.22 | patch | 0.x package |
+| @arethetypeswrong/cli | ^0.18.5 | 0.18.5 | none-already-current | 0.x package |
+| bumpp | ^11.1.0 | 12.0.0 | major | Single major (11 → 12) |
+| oxc-minify | ^0.140.0 | 0.141.0 | minor | 0.x package; tracks oxc toolchain, versions move fast |
+| ajv | ^8.20.0 | 8.20.0 | none-already-current | `legacy`/`beta` tags point to older lines; `latest` is 8.20.0 |
+| grammarkdown | ^3.3.2 | 3.3.2 | none-already-current | — |
+| stylelint | ^17.14.0 | 17.14.1 | patch | — |
+| eslint | ^10.7.0 | 10.8.0 | minor | `maintenance` tag is 9.39.5 (older v9 line); `latest` is 10.8.0 |
+| @eslint/css | ^1.4.0 | 1.4.0 | none-already-current | — |
+| @html-eslint/parser | ^0.64.0 | 0.64.0 | none-already-current | 0.x package |
+| esbuild | ^0.28.1 | 0.28.1 | none-already-current | 0.x package (esbuild uses 0.x as stable) |
+| changelogen | ^0.6.2 | 0.6.2 | none-already-current | 0.x package |
+| @cssdoc/core | ^0.7.9 | 0.7.9 | none-already-current | Local `@cssdoc/*` line, 0.x |
+| @cssdoc/config | ^0.7.9 | 0.7.9 | none-already-current | 0.x |
+| @cssdoc/typedoc | ^0.7.9 | 0.7.9 | none-already-current | 0.x |
+| @cssdoc/stylelint-plugin | ^0.7.9 | 0.7.9 | none-already-current | 0.x |
+| @cssdoc/eslint-plugin | ^0.7.9 | 0.7.9 | none-already-current | 0.x |
+
+Unresolved packages: none — all 25 returned a valid `latest` dist-tag from the npm registry.
+
+Headline upgrades to scope: `@types/node` (2-major jump, biggest risk), `bumpp` (1 major), plus minor bumps on `@changesets/cli`, `eslint`, and `oxc-minify`, and patch bumps on `markdownlint-cli2`, `publint`, and `stylelint`. Everything else is already at latest stable. No files were edited.</result>
+<usage><subagent_tokens>36307</subagent_tokens><tool_uses>2</tool_uses><duration_ms>40281</duration_ms></usage>
+</task-notification>
