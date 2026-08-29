@@ -1,0 +1,1 @@
+the cdn guide VUE component should be using the css component classes since it's loaded in vitepress - it should look like instui
