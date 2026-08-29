@@ -1,0 +1,81 @@
+<task-notification>
+<task-id>a0b03f0964d86ae61</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/7d3eefd3-3a14-4830-8fa8-61a363c617ba/tasks/a0b03f0964d86ae61.output</output-file>
+<status>completed</status>
+<summary>Agent "Research web-components IIFE build &amp; NESTED_DEPS export" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result># Research: `@pantoken/web-components` — export `NESTED_DEPS` + per-element IIFE builds
+
+## Part 1 — Exporting `NESTED_DEPS`
+
+**File:** `/Users/dwahl/Scripts/pantoken/renderers/web-components/src/index.ts`
+
+- `NESTED_DEPS` is defined at **lines 179–182**:
+  ```ts
+  const NESTED_DEPS: Readonly&lt;Record&lt;string, readonly string[]&gt;&gt; = {
+    "date-input": ["calendar"],
+    "date-time-input": ["date-input"],
+  };
+  ```
+- `withNestedDeps()` (private helper that expands a requested set through the map) is at **lines 184–194**, and is called from `register()` at **line 398** (`options.only ? withNestedDeps(options.only) : null`).
+- The existing "Public types"/"Element definitions" export blocks are at **lines 32–73**:
+  - Type-only exports at lines 33–39 (`export type { ... } from "./lib/context.ts"`, `export type { WebComponentStrings } ...`).
+  - Value exports at lines 40–73 (`ENGLISH_STRINGS`, `makeStrings`, `resolveFirstDay`, `DEFINITIONS`, then every individual element function `alert`, `avatar`, … `truncate`).
+  - `DEFAULT_PREFIX` is exported separately at line 76, and `ELEMENTS` (the public, already-exported array `NESTED_DEPS` is meant to complement) at **lines 84–115**.
+
+**What to add:** simply add `export` to the existing const at line 179, and place it near `ELEMENTS` (line 84) since it's the same kind of "public, static metadata" as `ELEMENTS`, not near the private `register()` internals below it. E.g., turn line 179 into `export const NESTED_DEPS: Readonly&lt;Record&lt;string, readonly string[]&gt;&gt; = { ... }` and move/keep it directly after `ELEMENTS` (before `iconSvg`, i.e., before current line 117), with a doc comment analogous to the one already on `ELEMENTS` (lines 78–83) explaining it's consumed by `register()`'s `only` expansion. No signature or behavior change is needed — `withNestedDeps()` at lines 184–194 can stay private and unexported since it's trivial for a consumer to write its own expansion (which is exactly what the docs picker already does — see below) once it has the map itself.
+
+**Important caveat found while reading the docs consumer:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/WebComponentsPicker.vue` is the actual "docs picker tool" in question. It **already hand-copies three things**, not just `NESTED_DEPS`:
+- `ELEMENTS` array, lines 13–44 (comment at lines 8–12 explains why: *"Copied rather than imported: the source module pulls in raw `.css` files for its bundler to process, and the compiled output isn't guaranteed to exist when the docs site builds"*).
+- `NESTED_DEPS`, lines 49–52 (comment at lines 47–48: *"mirrors the same, currently unexported, `NESTED_DEPS` in the source module"*).
+- `withNestedDeps()`, lines 53–62 — a duplicate of the private helper.
+
+So exporting `NESTED_DEPS` from `src/index.ts` **does not by itself let the Vue component drop the duplication**, because that component explicitly avoids importing the source module at all (build-time CSS-import concern), not just because `NESTED_DEPS` was unexported. If the actual goal is to eliminate the docs duplication (not just make the constant technically importable), the repo already has a working precedent for this exact problem on the CSS side: `/Users/dwahl/Scripts/pantoken/docs/scripts/cdn-manifest.ts` generates `docs/.vitepress/theme/generated/cdn-manifest.json` at doc-build time by importing the **source-of-truth registry** (`COMPONENTS` from `formats/components/src/components/index.ts`, line 12) rather than a compiled dist file, and writing a plain JSON manifest the Vue component reads (no CSS import problem because it's consumed as JSON, not TS/CSS). The same pattern — a `docs/scripts/*-manifest.ts` that imports `ELEMENTS`/`NESTED_DEPS` from `renderers/web-components/src/index.ts` (once exported) and emits a JSON manifest — would let `WebComponentsPicker.vue` consume real data without hitting the raw-`.css`-import build issue. Worth flagging to whoever owns the docs picker change; exporting `NESTED_DEPS` is a necessary but not sufficient step if the goal is "no duplicate copy."
+
+## Part 2 — Per-element IIFE builds
+
+### Current single-bundle build
+**File:** `/Users/dwahl/Scripts/pantoken/renderers/web-components/scripts/build-iife.ts` (40 lines, full file read). It calls Vite's `build()` API once, with `build.lib.entry = src/index.ts`, `formats: ["iife"]`, `fileName: () =&gt; "web-components.iife.js"`, and `rollupOptions.external: []` (line 35) so `@pantoken/components` and `@pantoken/icons` get bundled in rather than externalized (unlike the ESM `dist/index.mjs`, per the doc comment at lines 2–7). It's invoked as the last step of the `build` task in `/Users/dwahl/Scripts/pantoken/renderers/web-components/vite.config.ts:26`, after `vp pack`.
+
+**Measured size:** `dist/web-components.iife.js` is currently **2,532,265 bytes (~2.5 MB)**. The dominant contributor is `@pantoken/icons` → `@pantoken/tokens`: `formats/tokens/dist/index.mjs` is **6,365,406 bytes (~6.3 MB)** raw, and `formats/icons/dist/index.mjs` (2,192 bytes) does `const icons = tokens.filter(t =&gt; t.meta?.kind === "icon").map(...)` at module scope (`formats/icons/dist/index.mjs:14-15,~34-40`) — an eager pass over the *entire* IR array with no way for a bundler to tree-shake it down to "just the icons this consumer needs." `formats/components/dist/index.mjs` is a further **667,367 bytes**.
+
+Critically, `src/index.ts:20` has a **static, module-top-level import**: `import { resolve as pantokenResolve } from "@pantoken/icons";`, used as the default resolver in `iconSvg()` (lines 130–132), which `register()` wires into every element's `ctx.iconSvg` (line 439) regardless of which elements are requested via `only`. Since this import is unconditional at the top of the file that `register()`/every element definition lives in, **any bundle that includes `register()` — i.e., any per-element bundle built the "call register({only:[name]})" way — pulls in the entire ~2.5 MB icon/token payload**, even for an element like `alert` that never touches icons.
+
+### `formats/components`'s CSS pattern (the reference for "one big + N small")
+Two different sub-patterns exist there, and they matter for what's feasible for JS:
+
+1. **Per-*component* CSS** (`generated/&lt;name&gt;.css`, e.g. `alert.css`, `button.css`) — these are hand-authored source `.css` files that already exist per-element (`src/elements/*.css`, `src/lib/*.css` in web-components' case; analogous location in `formats/components`). `/Users/dwahl/Scripts/pantoken/renderers/web-components/scripts/build-entries.ts` (29 lines, full file read) just copies each such file into `generated/` (trivial `readFileSync`/`writeFileSync`, no bundler). Then `vite.config.ts`'s `pack.entry` (lines 32–36) lists each generated CSS file as its own **named entry point** for `vp pack` (tsdown/vite), which is how `dist/alert.css`, `dist/button.css`, etc. get produced — i.e., genuine multi-entry bundling, but for CSS, where cross-entry code splitting isn't a concern the way it is for JS/IIFE.
+2. **Per-*icon* CSS** (`formats/components/generated/icons/&lt;name&gt;.css`, one per icon, 1800+ files) — `/Users/dwahl/Scripts/pantoken/formats/components/scripts/build-icon-entries.ts` (29 lines, full file read) does **not** go through the bundler at all: for each icon it hand-writes a tiny literal string (line 26: `` `:root{--instui-icon-${icon.name}:${icon.dataUri}}.-icon-${icon.name}{--pantoken-glyph:var(--instui-icon-${icon.name})}\n` ``) directly with `writeFileSync`. `/Users/dwahl/Scripts/pantoken/formats/components/scripts/post-pack.ts` (full file read) then just `cpSync`s the whole `generated/icons/` directory into `dist/icons/` **after** `vp pack` — these files are explicitly called out (post-pack.ts lines 4–6) as *"NOT tsdown entry points."* This sidesteps ever asking a bundler to produce 1800+ chunked entries.
+   - `formats/components/package.json` exposes them via a **wildcard subpath export**: `"./icons/*.css": "./dist/icons/*.css"` (line 27), alongside the single aggregate `"./icons.css": "./dist/icons.css"` (line 31) and the generic `"./*.css": "./dist/*.css"` (line 26) that covers the per-component files from pattern 1.
+
+Neither CSS pattern involves JS module bundling/tree-shaking across shared internals in the way IIFE elements would — CSS strings don't have the "shared runtime code duplicated across independent bundles" problem that JS does.
+
+### Feasibility of per-element IIFE outputs
+
+**Is it feasible with the same tool (Vite/Rollup)?** Only by running the build **once per element**, not by giving `vite build()` multiple entries in one call. Vite's `build.lib` mode explicitly disallows multiple entries when `formats` includes `"iife"`/`"umd"` — and even bypassing `lib` mode and going straight to `rollupOptions.input` as a multi-entry object, Rollup itself refuses code-split output in `iife`/`umd` format ("UMD and IIFE output formats are not supported for code-splitting builds") **whenever two entries would share a chunk** (which they would here — every element imports shared context/wrapper machinery from `src/lib/` and `src/index.ts`, and several import `@pantoken/components`/`@pantoken/icons`). So the only workable shape is: `build-iife.ts` loops over `ELEMENTS` (30 entries, `src/index.ts:84-115`) and calls Vite's `build()` **30 separate times**, once per element, each with its own `lib.entry` (a synthetic per-element entry module — e.g. one that imports just `register` and calls `register(customElements, { only: ["alert"] })`) and its own `fileName: () =&gt; "alert.iife.js"`. This is a straightforward extension of the existing single-entry script (`build-iife.ts:17-38`), just wrapped in a `for (const name of ELEMENTS)` loop with `only: [name]` passed through, expanded via the (now-exported, per Part 1) `NESTED_DEPS`/`withNestedDeps` so e.g. `date-time-input.iife.js` also registers `date-input` and `calendar`.
+
+**Would each per-element IIFE duplicate shared internals? Yes, unavoidably, given the current source shape:**
+- Since Rollup/Vite can't share chunks across independent IIFE builds, every one of the 30 files would re-bundle: `src/lib/context.ts` (70 lines), `src/lib/helpers.ts` (120 lines), `src/lib/strings.ts` (82 lines) plus all the `register()`/`makeWrapper`/`makeRegistry`/`makeOnCommand`/`withSpacing`/`syncInvoker` plumbing in `src/index.ts` (roughly lines 149–450) — i.e. a fixed multi-KB "runtime tax" repeated 30×.
+- **Far more significant:** because `register()`'s `iconSvg` default resolver is wired to `@pantoken/icons` unconditionally at `src/index.ts:20` (not lazily, not injected per-element), **every** per-element bundle that goes through `register()` — which is all of them, since that's the shared registration pipeline — would embed the same ~2.5 MB icon/token payload that's already measured in the current single bundle. 30 × ~2.5 MB ≈ **75 MB** of published `dist/*.iife.js` output, almost entirely duplicate bytes, for elements that mostly don't even render icons (`alert`, `badge`, `pill`, `progress`, etc. — only `icon` and `icon-button`, at `src/elements/icon.ts:29` and via `ctx.iconSvg`, actually call it). This is the single biggest, concrete blocker, not a minor inefficiency.
+- Each element's own CSS builder (`alertCss`, `buttonCss`, from `@pantoken/components`, confirmed via `src/elements/alert.ts:1` and `src/elements/button.ts:1`) would tree-shake reasonably well per file since `@pantoken/components`'s `dist/index.mjs` (667 KB) doesn't itself pull in `@pantoken/tokens`/icons (its only imports are `@pantoken/plugin-colors` and `@pantoken/utils`, per its dist file's import lines) — so this part of the duplication concern is real but much smaller than the icon problem.
+
+**What would need to change to make this actually small-per-file (not just "technically 30 files"):**
+1. Decouple `iconSvg`'s default resolver from a static top-level import — make it lazy/dynamic (`await import("@pantoken/icons")` only inside the function body, so it's only pulled in by files that actually call it) or make it an injectable/optional dependency that per-element IIFE builds simply omit unless the entry is `icon`/`icon-button` (and anything indirectly nested under them).
+2. Accept that some duplication of the small `src/lib/*` runtime plumbing (a few KB) across 30 files is an inherent cost of the iife/no-code-splitting constraint — this is the "note the drawback plainly" part: it's real but modest once the icon problem above is fixed.
+3. Decide whether nested-dependency elements (`date-input`, `date-time-input`) get a dedicated combined file (as today's `register({only:[...]})` already supports) or whether their IIFE should also bundle `calendar` inline — i.e. `date-input.iife.js` would need to embed `calendar`'s definition too, duplicating it again versus a hypothetical standalone `calendar.iife.js`.
+
+### Package `exports` changes needed
+`/Users/dwahl/Scripts/pantoken/renderers/web-components/package.json` exports map (**lines 21–27**):
+```json
+"exports": {
+  ".": "./dist/index.mjs",
+  "./i18n.json": "./src/i18n.json",
+  "./components.css": "./dist/components.css",
+  "./*.css": "./dist/*.css",
+  "./package.json": "./package.json"
+}
+```
+There is currently **no export at all for the existing single `dist/web-components.iife.js`** — it's published under `files: ["dist", ...]` (line 14) but not exposed via a subpath export, so it's presumably consumed only by direct CDN URL (jsDelivr/unpkg path into `dist/`), not via Node/bundler resolution. To publish 30 per-element files the same way `formats/components` exposes per-icon CSS, the minimal analogous change would be adding a wildcard subpath export mirroring `formats/components/package.json:27` (`"./icons/*.css": "./dist/icons/*.css"`) — e.g. `"./*.iife.js": "./dist/*.iife.js"` (or nest them, e.g. `dist/iife/&lt;name&gt;.js` + `"./iife/*.js": "./dist/iife/*.js"`, to keep them visually separate from the ESM/CSS files already flatly dumped in `dist/`). Since none of the iife outputs currently have an `exports` entry, this is a net-new addition either way, not a modification of an existing mapping — worth confirming with whoever relies on the current CDN-URL-only access pattern before changing `dist/` layout.</result>
+<usage><subagent_tokens>65288</subagent_tokens><tool_uses>24</tool_uses><duration_ms>229508</duration_ms></usage>
+</task-notification>
