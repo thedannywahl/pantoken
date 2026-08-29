@@ -1,0 +1,1 @@
+it's that `--vp-c-brand-1` is mapped to `--instui-text-color-interactive-navigation-primary-base` but the `--instui-color-institutional-brand-primary` hasn't been set to the same in the vitepress theme css, so it's displaying the default very dark blue.
