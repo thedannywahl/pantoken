@@ -12,17 +12,23 @@ import { cancel, isCancel, select, spinner, text } from "@clack/prompts";
 import { Argument, Command, InvalidArgumentError, CommanderError } from "commander";
 import tab from "@bomb.sh/tab/commander";
 import { homedir } from "node:os";
-import { join } from "node:path";
+import { join, basename } from "node:path";
+import { readFileSync } from "node:fs";
 
-export { SCAFFOLD_PLATFORMS, isScaffoldPlatform } from "./index.ts";
+export { SCAFFOLD_PLATFORMS, isScaffoldPlatform, resolveScaffoldPlatform } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
 export { scaffoldProject } from "./index.ts";
 export { LOCALES } from "../generated/locales/index.ts";
 
-import { SCAFFOLD_PLATFORMS, isScaffoldPlatform as checkScaffoldPlatform } from "./index.ts";
+import {
+  SCAFFOLD_PLATFORMS,
+  isScaffoldPlatform as checkScaffoldPlatform,
+  resolveScaffoldPlatform,
+} from "./index.ts";
 import { scaffoldProject } from "./index.ts";
 import { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
 import { LOCALES } from "../generated/locales/index.ts";
+import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
 import {
   validateThemeMode,
   validateThemeVariant,
@@ -214,44 +220,119 @@ export async function scaffoldWithSpinner(
   }
 }
 
+/** Package managers `detectPackageManager` can identify. */
+export type PackageManager = "npm" | "pnpm" | "yarn" | "bun" | "deno" | "vp";
+
 /**
- * Detects the invoking package manager from npm_config_user_agent
- * (the technique create-vite and create-vue use).
+ * Detects the invoking package manager: first from `npm_config_user_agent` (the technique
+ * create-vite and create-vue use), then — since `vp`/`vpx` set no such env var — falling back to
+ * whether the running Node binary itself is Vite+-managed (`execPath` resolves under a
+ * `vite-plus` directory).
  *
  * @param env - Environment variables (defaults to process.env)
+ * @param execPath - The running Node binary's path (defaults to process.execPath)
  * @returns Detected package manager, or undefined
  */
 export function detectPackageManager(
   env?: NodeJS.ProcessEnv,
-): "npm" | "pnpm" | "yarn" | "bun" | "deno" | undefined {
+  execPath?: string,
+): PackageManager | undefined {
   const userAgent = (env ?? process.env).npm_config_user_agent ?? "";
   if (userAgent.includes("pnpm")) return "pnpm";
   if (userAgent.includes("yarn")) return "yarn";
   if (userAgent.includes("bun")) return "bun";
   if (userAgent.includes("deno")) return "deno";
   if (userAgent.includes("npm")) return "npm";
+  if ((execPath ?? process.execPath).includes("vite-plus")) return "vp";
   return undefined;
 }
 
+/** Fully-composed command fragments per package manager, so callers never hand-compose them. */
+const PM_COMMANDS: Record<PackageManager, { install: string; run: string; execute: string }> = {
+  npm: { install: "npm install", run: "npm run", execute: "npx" },
+  pnpm: { install: "pnpm install", run: "pnpm run", execute: "pnpm dlx" },
+  yarn: { install: "yarn install", run: "yarn run", execute: "yarn dlx" },
+  bun: { install: "bun install", run: "bun run", execute: "bunx" },
+  deno: { install: "deno install", run: "deno task", execute: "deno run -A npm:" },
+  vp: { install: "vp install", run: "vp run", execute: "vpx" },
+};
+
+function pmCommands(pm: PackageManager | undefined): {
+  install: string;
+  run: string;
+  execute: string;
+} {
+  return PM_COMMANDS[pm ?? "npm"];
+}
+
 /**
- * Prints the post-scaffold "Next steps" block, leading with the detected package
- * manager's install command (falling back to a generic localized line when detection fails).
+ * Finds the scaffolded `package.json` among `written` and returns its preferred run script name
+ * (`dev`, else `preview`), or `undefined` if no such file/script exists (or can't be read).
+ */
+function detectRunScript(written: string[]): string | undefined {
+  const pkgPath = written.find((p) => basename(p) === "package.json");
+  if (!pkgPath) return undefined;
+
+  try {
+    const pkg = JSON.parse(readFileSync(pkgPath, "utf8")) as { scripts?: Record<string, string> };
+    if (pkg.scripts?.dev) return "dev";
+    if (pkg.scripts?.preview) return "preview";
+    return undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Substitutes `{{var}}` placeholders in `text` from `vars`, leaving unknown placeholders as-is. */
+function substituteVars(text: string, vars: Record<string, string>): string {
+  return text.replace(/\{\{(\w+)\}\}/g, (match, name: string) => vars[name] ?? match);
+}
+
+/**
+ * Prints the post-scaffold "Next steps" block (plus any template-authored notes/caveats).
  *
- * All copy comes from `t`.
+ * When `platform` has a `scaffold.json`-derived entry in `SCAFFOLD_METADATA`, next steps/notes/
+ * caveats are rendered from its (localized, `{{var}}`-substituted) authored strings. Otherwise a
+ * generic cd/install/run-script fallback is used, with the run script itself detected from the
+ * scaffolded `package.json` (`dev`, else `preview`).
  *
  * @param dir - The scaffold directory
  * @param written - The paths written by scaffoldProject
  * @param t - Localized string lookup
+ * @param platform - The resolved (alias-free) scaffold platform, used to look up `scaffold.json` metadata
  */
-export function printNextSteps(dir: string, written: string[], t: LocaleLookup["t"]): void {
+export function printNextSteps(
+  dir: string,
+  written: string[],
+  t: LocaleLookup["t"],
+  platform?: string,
+): void {
   const pm = detectPackageManager();
-  const installCmd = pm ? `${pm} install` : "npm install";
+  const { install, run } = pmCommands(pm);
+  const script = detectRunScript(written);
+  const dev = script ? `${run} ${script}` : t("nextStepsDevServer");
+  const vars: Record<string, string> = {
+    dir,
+    pm: pm ?? "npm",
+    install,
+    run,
+    execute: pmCommands(pm).execute,
+    dev,
+  };
+
+  const meta = platform ? SCAFFOLD_METADATA[platform] : undefined;
+  const steps = meta?.nextStepsKeys.length
+    ? meta.nextStepsKeys.map((key) => substituteVars(t(key), vars))
+    : [t("nextStepsNav", { dir }), t("nextStepsInstall", { command: install }), dev];
 
   console.log();
-  console.log("Next steps:");
-  console.log(`1. ${t("nextStepsInstall", { command: installCmd })}`);
-  console.log(`${t("nextStepsNav", { dir })}`);
-  console.log(t("nextStepsDevServer"));
+  console.log(t("nextStepsHeading"));
+  steps.forEach((step, i) => console.log(`${i + 1}. ${step}`));
+
+  if (meta?.notesKey)
+    console.log(`\n${t("notesHeading")} ${substituteVars(t(meta.notesKey), vars)}`);
+  if (meta?.caveatsKey)
+    console.log(`${t("caveatsHeading")} ${substituteVars(t(meta.caveatsKey), vars)}`);
 }
 
 /**
@@ -340,7 +421,7 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       for (const path of written) {
         console.log(t("wroteFile", { path }));
       }
-      printNextSteps(expandedDir, written, t);
+      printNextSteps(expandedDir, written, t, resolveScaffoldPlatform(platform));
     } catch (err) {
       if (err instanceof ScaffoldCliError) {
         throw err; // Let runScaffoldCli handle it

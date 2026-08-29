@@ -57,7 +57,14 @@ export function isScaffoldPlatform(platform: string): boolean {
   return SCAFFOLD_PLATFORM_SET.has(platform) || platform in PLATFORM_ALIASES;
 }
 
-function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
+/**
+ * Resolves `platform` to its canonical {@link ScaffoldPlatform} key, following aliases (e.g.
+ * `"theme-editor"` → `"canvas-theme-editor"`). Exported so callers (e.g. the CLI's next-steps
+ * printer) can key off the same canonical platform the scaffolder itself uses.
+ *
+ * @throws Error when `platform` isn't a known platform or alias
+ */
+export function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
   const resolved = PLATFORM_ALIASES[platform] ?? platform;
   if (SCAFFOLD_PLATFORM_SET.has(resolved)) return resolved as ScaffoldPlatform;
   throw new Error(

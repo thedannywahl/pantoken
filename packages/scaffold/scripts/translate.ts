@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { extractJsonObject, spawnPrompt, sha256 } from "@pantoken/translation-adapters";
+import { collectI18nSource } from "./i18n-sources.ts";
 
 const adapter = process.env.I18N_TRANSLATION_ADAPTER || "ai";
 const command = process.env.I18N_TRANSLATION_COMMAND ?? "claude";
@@ -21,7 +22,7 @@ const commandArgs = (process.env.I18N_TRANSLATION_COMMAND_ARGS ?? "")
   .filter((p) => p.length > 0);
 
 async function main() {
-  const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
+  const source = collectI18nSource(resolve("."));
   const sourceKeys = new Set(Object.keys(source));
 
   // Define target locales (English is always the source, never needs translation)

@@ -7,8 +7,9 @@
 
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { collectI18nSource } from "./i18n-sources.ts";
 
-const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
+const source = collectI18nSource(resolve("."));
 
 // Check all cache files
 let failed = false;

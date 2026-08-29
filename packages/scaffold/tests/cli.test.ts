@@ -19,6 +19,7 @@ import {
   LOCALES,
 } from "../src/cli.ts";
 import { select, spinner, text } from "@clack/prompts";
+import { collectI18nSource } from "../scripts/i18n-sources.ts";
 
 // clack's real cancel sentinel is a module-private `Symbol("clack:cancel")`, unreachable from
 // outside the package, so tests use their own well-known sentinel and mock `isCancel` to match it.
@@ -87,7 +88,26 @@ test("detectPackageManager reads npm_config_user_agent", () => {
   expect(detectPackageManager({ npm_config_user_agent: "bun/1.0.0" })).toBe("bun");
   expect(detectPackageManager({ npm_config_user_agent: "deno/2.1.0 npm/? node/22" })).toBe("deno");
   expect(detectPackageManager({ npm_config_user_agent: "npm/10.0.0 node/22" })).toBe("npm");
-  expect(detectPackageManager({})).toBeUndefined();
+  expect(detectPackageManager({}, "/usr/local/bin/node")).toBeUndefined();
+});
+
+test("detectPackageManager falls back to vp when running under a vite-plus-managed node", () => {
+  expect(
+    detectPackageManager({}, "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node"),
+  ).toBe("vp");
+});
+
+test("detectPackageManager prefers npm_config_user_agent over the vite-plus execPath fallback", () => {
+  expect(
+    detectPackageManager(
+      { npm_config_user_agent: "pnpm/9.0.0 node/22" },
+      "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node",
+    ),
+  ).toBe("pnpm");
+});
+
+test("detectPackageManager returns undefined for a plain system node with no user agent", () => {
+  expect(detectPackageManager({}, "/usr/local/bin/node")).toBeUndefined();
 });
 
 // ---------------------------------------------------------------------------
@@ -128,16 +148,95 @@ test("printNextSteps prints an install command using the detected package manage
 test("printNextSteps falls back to npm install when no package manager is detected", () => {
   const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
   const originalUserAgent = process.env.npm_config_user_agent;
+  const originalExecPath = process.execPath;
   delete process.env.npm_config_user_agent;
+  Object.defineProperty(process, "execPath", { value: "/usr/local/bin/node", configurable: true });
   let printed: string;
   try {
     printNextSteps(".", [], t);
     printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
   } finally {
     if (originalUserAgent !== undefined) process.env.npm_config_user_agent = originalUserAgent;
+    Object.defineProperty(process, "execPath", { value: originalExecPath, configurable: true });
     logSpy.mockRestore();
   }
   expect(printed).toContain("npm install");
+});
+
+test("printNextSteps renders scaffold.json-authored next steps/notes/caveats for canvas-theme-editor under vp", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-theme-app");
+  const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const originalUserAgent = process.env.npm_config_user_agent;
+  const originalExecPath = process.execPath;
+  delete process.env.npm_config_user_agent;
+  Object.defineProperty(process, "execPath", {
+    value: "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node",
+    configurable: true,
+  });
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "canvas-theme-editor");
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    if (originalUserAgent !== undefined) process.env.npm_config_user_agent = originalUserAgent;
+    Object.defineProperty(process, "execPath", { value: originalExecPath, configurable: true });
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain(`cd ${target}`);
+  expect(printed).toContain("vp install");
+  expect(printed).toContain("vp run preview");
+  expect(printed).toContain("Theme Editor");
+  expect(printed).toContain("Canvas sanitizes pasted HTML");
+});
+
+test("printNextSteps uses the generic fallback (with detected dev script) for platforms with no scaffold.json", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-react-app");
+  const written = await scaffoldWithSpinner("react", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "pnpm/9.0.0 node/22";
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "react");
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain("pnpm install");
+  expect(printed).toContain("pnpm run dev");
+});
+
+test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-theme-app");
+  const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
+  expect(written.some((p) => p.endsWith("scaffold.json"))).toBe(false);
+});
+
+// ---------------------------------------------------------------------------
+// collectI18nSource
+// ---------------------------------------------------------------------------
+
+test("collectI18nSource merges src/i18n.json with every template's scaffold.json without mutating either", () => {
+  const root = new URL("..", import.meta.url).pathname;
+  const source = collectI18nSource(root);
+
+  // Static CLI copy is present.
+  expect(source.nextStepsHeading).toBe("Next steps:");
+  // Template-derived keys are present, namespaced by platform.
+  expect(source["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("cd {{dir}}");
+  expect(source["scaffold.canvas-theme-editor.notes"]).toContain("Theme Editor");
+  // Platforms with no scaffold.json contribute no derived keys.
+  expect(Object.keys(source).some((k) => k.startsWith("scaffold.react."))).toBe(false);
 });
 
 // ---------------------------------------------------------------------------

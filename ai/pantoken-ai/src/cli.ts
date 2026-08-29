@@ -16,6 +16,7 @@ import {
   createLocaleLookup,
   validateScaffoldPlatform,
   resolveScaffoldTarget,
+  resolveScaffoldPlatform,
   scaffoldWithSpinner,
   printNextSteps,
   SCAFFOLD_PLATFORMS,
@@ -127,7 +128,7 @@ export function createAiCommand(options?: AiCommandOptions): Command {
       }
 
       // Print next steps (using scaffold's shared formatting, but with ai's locale lookup)
-      printNextSteps(dir, scaffoldFiles, scaffoldT);
+      printNextSteps(dir, scaffoldFiles, scaffoldT, resolveScaffoldPlatform(platform));
     });
 
   // Enable completions
