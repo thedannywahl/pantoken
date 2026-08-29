@@ -1,0 +1,193 @@
+<task-notification>
+<task-id>a3599ae2ae1f01300</task-id>
+<tool-use-id>toolu_01NgDk9KV9DR9XVndRuze9J9</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/028d6ae2-85d2-4001-bdcb-e047a6059788/tasks/a3599ae2ae1f01300.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore renderers/web-components" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a thorough picture now. Here is my report.
+
+---
+
+# `renderers/web-components` — DOM computed-style parity exploration
+
+Root: `/Users/dwahl/Scripts/pantoken/renderers/web-components`
+
+## 1. Package structure &amp; how shadow CSS is authored/bundled
+
+**`package.json`** (`/Users/dwahl/Scripts/pantoken/renderers/web-components/package.json`)
+- Name `@pantoken/web-components`, `"type": "module"`, `"sideEffects": ["**/*.css"]`.
+- **Exports**: `.` → `./dist/index.mjs`; `./components.css` → `./dist/components.css`; a wildcard `./*.css` → `./dist/*.css` (per-record sheets like `./tooltip.css`); plus `./package.json`.
+- **Deps** (all `workspace:*`): `@pantoken/components`, `@pantoken/icons`, `@pantoken/model`. Dev: `vite`, `vite-plus`, `typescript`, `@types/node`.
+- **Scripts**: `generate` = `node scripts/generate.ts`; `dev` = generate + build-entries + `vp pack --watch`; `test` = `vp test`; `check` = `vp check`. (Note: the full build pipeline is in `vite.config.ts` under `run.tasks.build`, not in `package.json` scripts.)
+
+**`src` layout**
+- `src/index.ts` — barrel: exports every element definition, `DEFAULT_PREFIX`, `ELEMENTS`, `iconSvg`, `register`, and calls `register()` at module end (auto-register in browser, no-op in Node).
+- `src/elements/&lt;name&gt;.ts` — one `ElementDefinition` per file (30 files). `src/elements/index.ts` lists them in canonical order as `DEFINITIONS`.
+- `src/elements/*.css` and `src/lib/popover-reset.css` — co-located shadow CSS for the behavioral elements (`calendar.css`, `date-input.css`, `date-time-input.css`, `drawer-layout.css`, `drilldown.css`, `pages.css`, `tooltip.css`, `popover-reset.css`).
+- `src/lib/context.ts` — `RegisterContext`, `ElementDefinition`, `ElementRegistry`, `CommandEventish` types.
+- `src/lib/helpers.ts` — pure helpers: `esc`, `frag`, spacing (`resolveSpace`, `spacingValue`, `applySpacing`), and local-date ISO utils.
+- `src/css.d.ts` — declares `*.css?inline` → default string export.
+
+**Codegen — note a naming mismatch.** The task referenced `scripts/styles.ts`; that file does **not** exist in this package (it only exists in a detached worktree: `/Users/dwahl/Scripts/pantoken/.claude/worktrees/cssdoc-migration-c2d14c/renderers/web-components/scripts/styles.ts`). The actual scripts are:
+- `scripts/generate.ts` — reads all `.css` from `src/elements` + `src/lib`, concatenates them into `generated/components.css` (the aggregate sheet). Runs on `generate`.
+- `scripts/build-entries.ts` — emits one `generated/&lt;name&gt;.css` per co-located source file, for the per-record subpath exports. Runs only in `build` (kept out of `generate`/hot-reload to avoid a workspace-observer re-render loop).
+- `scripts/build-iife.ts` — IIFE bundle (not read in detail).
+
+Also present: **`src/generated/styles.ts`** — a stale artifact with header `// AUTO-GENERATED from src/**/*.css by scripts/styles.ts`. It is **imported nowhere** (grep confirms zero references in `src`/`tests`). Ignore it for the parity plan; it's dead.
+
+**How shadow CSS is authored &amp; bundled — two distinct sources:**
+1. **Component CSS via builder functions** — most elements import a `xxxCss` builder from `@pantoken/components` (e.g. `import { buttonCss } from "@pantoken/components"`) and inline the returned string into the shadow `&lt;style&gt;`.
+2. **Bespoke co-located CSS via `?inline`** — behavioral elements import their own `.css` file with the `?inline` query (Vite+ `@tsdown/css` returns the processed sheet as a tree-shakeable string). Confirmed importers:
+   - `date-input.css` → date-input.ts; `drawer-layout.css` → drawer-layout.ts; `popover-reset.css` (from `../lib/`) → popover.ts, context-view.ts, tray.ts; `drilldown.css` → drilldown.ts; `pages.css` → pages.ts; `calendar.css` → calendar.ts; `date-time-input.css` → date-time-input.ts; `tooltip.css` → tooltip.ts.
+
+Per docs (`docs/conventions/web-components.md`), co-located `.css` is the lint/format/docs source of truth; the CSS finalizer strips doc comments and minifies the inline string. Use `?inline`, not `?raw`.
+
+## 2. Component definition &amp; registration
+
+**Tag naming / prefix.** `DEFAULT_PREFIX = "instui"`. `ELEMENTS` is the list of 30 base names (`icon`, `button`, `alert`, …, `date-time-input`). A prefix is **always** applied (custom-element names require a hyphen), so empty/whitespace/null falls back to `instui`. `register(target?, { prefix?, only? })`:
+- `tag(base)` = `${prefix}-${base}`.
+- A **scoped registry adapter** rewrites the canonical `instui-&lt;base&gt;` literals used internally to the active prefix on both `get` and `define` (`name.replace(/^instui-/u, "")` then re-prefix). This is why every element file can hardcode `"instui-alert"` etc. and still honor `{prefix:"x"}`.
+- `withSpacing(ctor)` wraps **every** ctor in `define`, adding universal `margin`/`padding` (+ per-side) handling via `applySpacing` and a per-host `MutationObserver`.
+- `only` limits registration to a subset, expanded through `NESTED_DEPS` (`date-input`→`calendar`, `date-time-input`→`date-input`) so cherry-picking still works.
+- `register()` returns early (`if (!target || typeof HTMLElement === "undefined") return;`) — the SSR/Node-safe guard.
+
+**The `wrapper` factory** (inside `register`) defines the presentational elements. Key facts for a browser parity harness:
+- `constructor` does `this.attachShadow({ mode: "open" })`.
+- `static observedAttributes` is a fixed list: `variant, size, shape, value, max, label, pressed, lines, placement, minimized, constrain, src, alt, tip, has-shadow`, plus the invoker attrs.
+- `paint()` sets `shadowRoot.innerHTML = \`&lt;style&gt;:host{display:${display}}${css}&lt;/style&gt;${render(this)}\``. `display` defaults to `inline-block` (explicit because custom elements default to `display:inline`, which would collapse internal `width:100%`).
+- Re-paints on every `attributeChangedCallback`.
+
+**The `register()` function — full source** is at `src/index.ts` lines 222–403 (quoted key parts):
+
+```ts
+export function register(
+  target: ElementRegistry | undefined = globalThis.customElements,
+  options: { prefix?: string | null; only?: readonly string[] } = {},
+): void {
+  if (!target || typeof HTMLElement === "undefined") return;
+  const wanted = options.only ? withNestedDeps(options.only) : null;
+  const prefix =
+    typeof options.prefix === "string" &amp;&amp; options.prefix.trim() !== ""
+      ? options.prefix
+      : DEFAULT_PREFIX;
+  const tag = (base: string): string =&gt; `${prefix}-${base}`;
+  const host = target;
+  const registry: ElementRegistry = {
+    get: (name) =&gt; host.get(tag(name.replace(/^instui-/u, ""))),
+    define: (name, ctor) =&gt; {
+      const resolved = tag(name.replace(/^instui-/u, ""));
+      if (!host.get(resolved)) host.define(resolved, withSpacing(ctor));
+    },
+  };
+  // …syncInvoker, wrapper, variantClass, onCommand defined here…
+  const I = { prefix: "instui" } as const;
+  const ctx: RegisterContext = {
+    registry, tag, I, invokerSupported: INVOKER_SUPPORTED,
+    onCommand, wrapper, variantClass, iconSvg,
+  };
+  for (const def of DEFINITIONS) {
+    if (wanted &amp;&amp; !wanted.has(def.name)) continue;
+    def.define(ctx);
+  }
+}
+register(); // auto-register; no-op in Node
+```
+
+**A full representative component — `&lt;instui-button&gt;`** (`src/elements/button.ts`, complete):
+
+```ts
+import { buttonCss } from "@pantoken/components";
+import type { ElementDefinition } from "../lib/context.ts";
+
+export const button: ElementDefinition = {
+  name: "button",
+  define: (ctx) =&gt;
+    ctx.wrapper(
+      "instui-button",
+      buttonCss(ctx.I),
+      (host) =&gt;
+        `&lt;button class="${ctx.variantClass("button", host)}" part="button"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/button&gt;`,
+      { invoker: true },
+    ),
+};
+```
+
+So its shadow root is `&lt;style&gt;:host{display:inline-block}&lt;button CSS…&gt;&lt;/style&gt;&lt;button class="instui-button [-color-&lt;variant&gt;]" part="button"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/button&gt;`. For `getComputedStyle` parity you'd read the inner `button[part="button"]` inside `element.shadowRoot`.
+
+`&lt;instui-alert&gt;` (`src/elements/alert.ts`) is a bespoke class (not the `wrapper`) with a `#timer`/`timeout` auto-dismiss, `observedAttributes = ["variant","has-shadow"]`, `:host{display:block}`, and renders `&lt;div class="instui-alert [-color-&lt;variant&gt;] [-without-shadow]" role="alert" part="alert"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;`.
+
+## 3. Variant/state surface — how consumers select variants
+
+Variants are selected almost entirely by **HTML attributes on the host**, which the render function maps to `.instui-*` classes with `-modifier` fragments inside the shadow root. There are no reflected IDL properties for variants; state re-paints via `attributeChangedCallback`.
+
+- **`variant` → `-color-&lt;variant&gt;`**, via `ctx.variantClass(name, host)`:
+  ```ts
+  const variantClass = (name, host) =&gt; {
+    const variant = frag(host.getAttribute("variant"));
+    return variant ? `instui-${name} -color-${variant}` : `instui-${name}`;
+  };
+  ```
+  `frag()` sanitizes to `[a-z0-9-]`. So `&lt;instui-button variant="secondary"&gt;` → inner class `instui-button -color-secondary`, which matches `@pantoken/components`' `.instui-button.-color-secondary` selector exactly.
+- **Per-element bespoke mappings** (the generic `variantClass` only handles `variant`):
+  - `avatar`: `size` → `-size-&lt;size&gt;`, `shape="rectangle"` → `-shape-rectangle`.
+  - `img`: `display="block"` → `-display-block`, `constrain` → `-constrain-&lt;value&gt;`.
+  - `tray`: `size` → `-size-&lt;value&gt;`.
+  - `toggle-button`: `pressed="true"` → renders `&lt;button class="instui-button -toggle" aria-pressed="true"&gt;`.
+  - `icon-button`: always `class="instui-button -shape-square"`; `label` → `aria-label`.
+  - `alert`: `has-shadow="false"` → appends `-without-shadow`.
+- **Behavioral state via `:host([attr])` selectors** in the co-located CSS (drive from the host attribute): e.g. drawer-layout — `:host([placement="end"]) .layout {flex-direction:row-reverse}`, `:host(:not([open])) .tray,:host(:not([open])) .handle {display:none}`, `.handle.-dragging`. Modal drives a real `&lt;dialog&gt;` open/close from the `open` attribute (no CSS state class).
+
+**Important parity gap:** the `wrapper` observes `size`/`shape` but `&lt;instui-button&gt;` itself only wires `variant`. `&lt;instui-button size="small"&gt;` triggers a repaint but produces **no** `-size-sm` class. Size/shape modifiers exist in `@pantoken/components` button CSS (`.instui-button.-size-sm`, `.-shape-square`, etc.) but are only reachable on the web-component for `avatar`/`tray`/`icon-button`/internal calendar buttons — not on the public `&lt;instui-button&gt;`. Worth an explicit test-plan note.
+
+It **reuses the same `-color-secondary` style modifiers as `@pantoken/components`** — it does not have parallel bespoke color CSS. The presentational elements inject the identical builder output.
+
+## 4. Relationship to `@pantoken/components`
+
+- Web-components **imports the CSS builder functions** from `@pantoken/components` for all presentational elements (confirmed importers: `alert, avatar, badge, button, calendar, contextView, dateInput, dateTimeInput, drilldown, iconButton, img, inPlaceEdit, metric, modal, pill, popover, progress, progressCircle, rating, sideNavBar, spinner, tag, toggleButton, tooltip, tray, treeBrowser, truncate` — all `import { xxxCss } from "@pantoken/components"`). These are called with `ctx.I = { prefix: "instui" }`.
+- How the builder resolves: `@pantoken/components`' `defineComponent` (`formats/components/src/lib/define.ts`) returns `css(options)` where `prefix = options.prefix || ""`, then `ns(prefix)` joins to `"instui-"`, producing `.instui-button { … }`. So `buttonCss({prefix:"instui"})` yields the same class names the web-component renders — that is the parity contract.
+- The component CSS is entirely **token-referencing**: `formats/components/src/components/button.ts` shows every declaration uses `var(--instui-*)` (e.g. `var(--instui-color-background-interactive-action-primary-base)`, `var(--instui-spacing-space-xs)`). Ghost hover/active states derive washes via `@pantoken/plugin-colors` `alpha(darken(...))`.
+- **Bespoke shadow CSS exists only for behaviors without a components equivalent** (calendar reset, date-input dropdown, drawer-layout, drilldown, pages, tooltip gate, popover reset), and that CSS also references `var(--instui-*)` tokens (e.g. `generated/date-input.css`: `border: var(--instui-border-width-sm) solid var(--instui-color-stroke-base)`).
+
+**Where `--instui-*` custom properties come from in a shadow root at runtime:** they are **inherited** custom properties that pierce the shadow boundary. Nothing injects them into each shadow root. Per `src/index.ts` module docblock (lines 19–25): load `@pantoken/css` (or any pantoken token sheet) in the **document** to define `--instui-*` on `:root`; they cascade into every shadow root. The docblock explicitly states the elevation scale (`--instui-elevation-*`) and focus outline (`--instui-focus-outline-*`) "ship in the token sheet too … nothing extra to inject."
+
+**Discrepancy to flag for the plan:** `docs/conventions/web-components.md` claims `register()` also injects `foundationCss()` once into `document.head` as `&lt;style id="pantoken-foundation"&gt;` (elevation + focus declarations). That is **not true of the current source** — grep for `foundationCss`, `pantoken-foundation`, `document.head`, `elevationDeclarations`, `focusOutlineDeclarations` in `src` returns **zero** matches, and the module docblock contradicts it. The docs are describing a different/newer branch (the `cssdoc-migration` worktree). For a browser harness: you must load a token sheet in the document yourself; do not rely on `register()` injecting foundation tokens.
+
+## 5. Existing tests + why DOM tests don't exist yet
+
+`renderers/web-components/tests/index.test.ts` (read in full, 88 lines, `vite-plus/test`):
+- Pure-function tests: `resolveSpace`, `spacingValue`, `iconSvg` (known/unknown/custom resolver).
+- `register(undefined)` is a no-op (SSR/build safe).
+- A **`definedTags(options)` helper stubs the DOM**: it builds a fake registry `{ get, define }` backed by a `Map`, and if `HTMLElement` is absent from `globalThis` it temporarily assigns `g.HTMLElement = class {}` for the duration of the `register()` call, then deletes it in `finally`. It returns the defined tag names. So `register()` needs only (a) a `target` with `get`/`define`, and (b) `HTMLElement` to be defined globally — it never instantiates elements or touches a shadow root.
+- Registration assertions: default `instui-` prefix produces `ELEMENTS.map(b =&gt; \`instui-${b}\`)` in order; custom `{prefix:"x"}`; empty/whitespace/null fall back to `instui`; `only:["button","alert"]`; and `only:["date-time-input"]` pulls in `date-input` + `calendar` transitively with dependency-before-dependent ordering asserted.
+
+**Documented reason DOM tests don't exist** — `docs/conventions/web-components.md`, Testing section (verbatim intent): the harness has no DOM lib (happy-dom/jsdom absent), so `tests/index.test.ts` only asserts registration + pure `iconSvg`; behavior must be verified in a real browser. Also noted: `.focus()` fires no focus events when `document.hasFocus()` is false (headless) — dispatch a composed `focusin` to exercise focus-show. This is exactly the gap your DOM computed-style parity plan fills.
+
+## 6. JS-behavior tier vs pure CSS
+
+Two tiers (from `docs/conventions/web-components.md` "JS-behavior tier" + code):
+
+**Pure-CSS / presentational** (via `wrapper` or a thin bespoke class, state = attribute → class, re-paint on attr change): `button`, `alert` (has a JS `timeout` timer but visual state is CSS), `badge`, `pill`, `tag`, `avatar`, `spinner`, `progress`, `progress-circle`, `metric`, `rating`, `icon-button`, `toggle-button`, `truncate`, `img`, `side-nav-bar`, `tree-browser`, `icon`.
+
+**Interactive JS behavior** — the consistent declarative driver is the **Invoker Commands API** (light-DOM `&lt;button command="…" commandfor="id"&gt;`), routed by the shared `onCommand(target, handler)` helper, which falls back to a click-delegate on `target.getRootNode()` when `!("command" in HTMLButtonElement.prototype)`:
+- `modal` — real `&lt;dialog&gt;`; `open` attribute → `showModal()`/`close()`; native dismissal reflects back to `open` and re-fires a bubbling `close`; custom commands `--show`/`--close`/`--toggle`.
+- `popover` / `tray` / `context-view` — native `[popover]` (use `popovertarget`/`command="toggle-popover"`); the shadow `&lt;button&gt;` invoker is bridged to light-DOM targets via `syncInvoker` (mirrors `popovertarget`/`commandfor` onto the inner button's IDL properties, resolving the id against the host's root).
+- `drilldown` — stateful multi-level menu; `--goto` (reads `data-page`) / `--back`.
+- `pages` — one panel at a time via View Transitions; `--push` / `--back`; slotted `[data-page]` panels, hidden via `::slotted([data-page][hidden]){display:none}`.
+- `drawer-layout` — `open` attribute reveals tray; `placement` picks side; drag handle resizes `--drawer-width` (clamped 8–40rem) via pointer capture; commands `--toggle`/`--open`/`--close`.
+- `calendar` — interactive month grid; `value`/`view` (`yyyy-mm-dd`) attributes; prev/next/day are `&lt;button&gt;`s driving `--calendar-prev`/`--calendar-next`/`--calendar-select`; selecting sets `value`+`view` and dispatches composed bubbling `change`.
+- `date-input` / `date-time-input` — field + calendar-dropdown popover; nest `calendar` (dependency ordering enforced).
+
+**How states are represented in the DOM/shadow** (relevant for your parity reads):
+- `open` — host attribute; drives a real `&lt;dialog&gt;` (modal) or `:host([open])` CSS selectors (drawer-layout). Popover/tray use the native popover top-layer.
+- `selected` — calendar sets the `value` attribute and re-renders the grid (selected day is a `&lt;button&gt;` with a selected class in its shadow markup).
+- `pressed` — toggle-button maps `pressed="true"` to `aria-pressed="true"` on the inner `.instui-button.-toggle` (components CSS keys off `.-toggle[aria-pressed="true"]`).
+- `focus` — CSS `:focus`/focus-outline tokens; in headless mode focus events don't fire on `.focus()`, so dispatch a composed `focusin` (per docs).
+
+### Quick pointers for the browser parity harness
+- Load a token sheet (`@pantoken/css`) into the document `:root` first — tokens do **not** get injected into shadow roots; they inherit. Don't rely on any `foundationCss()` injection.
+- Call `register()` (auto-runs on import in a browser). Read internals via `host.shadowRoot.querySelector('[part="…"]')` (`part` attributes exist on most inner nodes: `button`, `alert`, `badge`, `modal`, `tray`, `handle`, `content`, etc.).
+- Compare `getComputedStyle(innerNode)` against `@pantoken/components` markup rendered in light DOM with the same `.instui-*` + `-color-*` classes — the builder output is identical, so parity should hold declaration-for-declaration.
+- Variant matrix comes from host attributes: `variant` (all), plus element-specific `size`/`shape`/`pressed`/`has-shadow`/`display`/`constrain`/`open`/`placement`/`value`/`view`. Remember `&lt;instui-button&gt;` ignores `size`/`shape` (test-plan gap).</result>
+<usage><subagent_tokens>80477</subagent_tokens><tool_uses>29</tool_uses><duration_ms>220166</duration_ms></usage>
+</task-notification>
