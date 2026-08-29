@@ -1,0 +1,112 @@
+<task-notification>
+<task-id>a48299d2ceb8dc801</task-id>
+<tool-use-id>toolu_01ToozBFUmhpMEaT2iEJC561</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/7d3eefd3-3a14-4830-8fa8-61a363c617ba/tasks/a48299d2ceb8dc801.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore CdnPicker.vue structure" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have full contents of the file plus the directory listing. Here's the thorough report.
+
+## File: `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/CdnPicker.vue` (253 lines)
+
+### 1. Template structure (lines 83–177)
+
+- **Root wrapper** (lines 84–86): `&lt;div class="cdn-picker instui-view -background-secondary -border-radius-large -border-width-small instui-p-md"&gt;` — the card/panel container, styled via InstUI utility classes (background, border radius, border width, padding), not custom CSS.
+
+- **Components fieldset** (lines 87–115): `&lt;fieldset class="instui-form-field-group cdn-picker__group"&gt;`
+  - Legend (line 88): `{{ t.componentsLabel }}`
+  - "All components" checkbox (lines 89–92): `&lt;label class="instui-checkbox cdn-picker__all"&gt;` bound to `v-model="allComponents"`.
+  - Search/filter input (lines 93–100): `&lt;input v-model="search" type="search" class="instui-text-input cdn-picker__search" placeholder="Filter components…" :disabled="allComponents" aria-label="Filter components" /&gt;`
+  - Component checkbox grid (lines 101–114): `&lt;div class="cdn-picker__components instui-view -background-primary -border-radius-medium -border-width-small instui-p-sm" :class="{ 'cdn-picker__components--disabled': allComponents }"&gt;` containing a `v-for="c in filteredComponents"` loop (lines 105–113) rendering `&lt;label class="instui-checkbox"&gt;` with a checkbox bound via `:checked`/`@change="toggle(c.name)"` and `:disabled="allComponents"`.
+
+- **Options block** (lines 117–150): `&lt;div class="cdn-picker__options"&gt;`
+  - Token sheet size radio group (lines 118–128): `&lt;fieldset class="instui-radio-input-group"&gt;`, legend `{{ t.tokenSheetLabel }}`, two `.instui-radio -variant-toggle` labels for `lean` (122) and `full` (125) bound to `v-model="tokenSheet"` (radio name `cdn-token-sheet`).
+  - Output format radio group (lines 130–140): same pattern, legend `{{ t.formatLabel }}`, options `link` (134) / `import` (137) bound to `v-model="format"` (radio name `cdn-format`).
+  - "Include base reset" checkbox (lines 142–145): `&lt;label class="instui-checkbox cdn-picker__base"&gt;` bound to `v-model="includeBase"`, text `{{ t.includeBase }}`.
+  - "Include utilities" checkbox (lines 146–149): same pattern, `v-model="includeUtilities"`, text `{{ t.includeUtilities }}`.
+
+- **Output block** (lines 152–175): `&lt;div class="cdn-picker__output"&gt;`
+  - `v-if="hasSelection"` branch (lines 153–171):
+    - Code panel (lines 154–163): `&lt;div class="cdn-picker__code"&gt;` containing the Copy button (155–161, `.instui-button -size-small -color-secondary cdn-picker__copy`, text toggles between `t.copied`/`t.copy`) and a `&lt;pre&gt;&lt;code&gt;{{ output }}&lt;/code&gt;&lt;/pre&gt;` (162) showing the generated `&lt;link&gt;`/`@import` snippet.
+    - Icons note (lines 164–169): conditional `&lt;p v-if="needsIconSheet"&gt;` with `t.iconsNote`.
+    - Fonts note (line 170): always-shown `&lt;p&gt;` with `t.fontsNote`.
+  - `v-else` empty state (lines 172–174): italic `&lt;p&gt;` with `t.empty`.
+
+### 2. Script logic (lines 1–81, `&lt;script setup lang="ts"&gt;`)
+
+**Imports** (lines 2–5): `computed`, `ref` from vue; `useData` from vitepress; `CDN_PICKER_DEFAULTS`, `CdnPickerStrings` type from `../cdn`; `manifest` JSON from `../generated/cdn-manifest.json`.
+
+**Types/data setup** (lines 7–11): `ManifestComponent` type; `components` array built by sorting `manifest.components` alphabetically by name.
+
+**i18n** (lines 13–18): pulls `theme` via `useData()`; `t` computed merges `CDN_PICKER_DEFAULTS` with locale-specific `theme.value.cdnPicker` overrides.
+
+**State (refs)** (lines 20–27):
+- `selected` — `Set&lt;string&gt;` of chosen component names
+- `allComponents` — boolean, "all" toggle
+- `tokenSheet` — `"lean" | "full"`
+- `includeBase` — boolean
+- `includeUtilities` — boolean
+- `format` — `"link" | "import"`
+- `copied` — boolean (copy-button feedback)
+- `search` — string filter text
+
+**Methods**:
+- `toggle(name)` (lines 29–35): clones the `selected` Set, adds/removes `name`, resets `copied` to false.
+- `copy()` (lines 72–80): async, writes `output.value` to clipboard, sets `copied = true` for 1500ms via `setTimeout`, swallows clipboard errors silently.
+
+**Computed properties**:
+- `chosen` (line 37): components filtered to those in `selected`.
+- `active` (line 39): all components if `allComponents` else `chosen`.
+- `hasSelection` (line 40): true if `allComponents` or any chosen.
+- `filteredComponents` (lines 41–44): components list filtered by lowercase `search` substring match on name.
+- `needsIconSheet` (lines 47–49): true when `tokenSheet === "lean"` and any active component `needsIcons`.
+- `combineUrl` (lines 51–64): builds the jsDelivr `/combine/` URL — starts with the token sheet file (`style.lean.css` or `style.css`), conditionally appends `base.css`, `utilities.css`, `component-icons.css` (if needed), then either `components.css` (all) or per-component `${name}.css` files.
+- `output` (lines 66–70): formats `combineUrl` as either a `&lt;link rel="stylesheet"&gt;` tag or an `@import url(...)` statement based on `format`.
+
+### 3. Style section (lines 179–252, `&lt;style scoped&gt;`)
+
+Top comment (lines 180–181) states layout-only philosophy: surface/controls/typography come from InstUI classes; scoped CSS here only handles grid/flow.
+
+No custom pantoken CSS variables are used for colors/tokens in this component — it relies on InstUI utility classes (`instui-view`, `-background-*`, `-border-*`, `instui-p-*`, `instui-button`, `instui-checkbox`, `instui-radio`, `instui-text-input`, `instui-text`) for surface/color/spacing. The only CSS variables referenced are VitePress theme vars, not pantoken tokens:
+- `var(--vp-code-block-bg)` (line 229) — code block background
+- `var(--vp-c-text-1)` (line 236) — code text color
+
+Classes defined, by block:
+- `.cdn-picker` (182–184): `margin: 1.5rem 0;` — outer spacing only (card chrome comes from InstUI classes on the div itself).
+- `.cdn-picker__group` (185–187): `margin: 0 0 1rem;`
+- `.cdn-picker__all` (188–190): `margin-bottom: 0.5rem;`
+- `.cdn-picker__search` (191–194): `width: 100%; margin-bottom: 0.5rem;`
+- `.cdn-picker__components` (195–202): grid layout — `display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.25rem 0.75rem; max-height: 16rem; overflow-y: auto;` (comment at 195 notes chrome is on `.instui-view` classes).
+- `.cdn-picker__components--disabled` (203–206): `opacity: 0.45; pointer-events: none;`
+- `.cdn-picker__options` (207–213): flex row, `display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem 1.5rem;` (comment explains bottom-align rationale).
+- `.cdn-picker__base` (214–216): `margin-bottom: 0.25rem;`
+- `.cdn-picker__output` (217–219): `margin-top: 0.5rem;`
+- `.cdn-picker__code` (220–223): `position: relative;` (comment: floats copy button over code block).
+- `.cdn-picker__code pre` (224–232): `overflow-x: auto; padding: 1rem; padding-right: 5rem; border-radius: 8px; background: var(--vp-code-block-bg); font-size: 0.8125rem; line-height: 1.5;`
+- `.cdn-picker__code code` (233–237): `white-space: pre-wrap; word-break: break-all; color: var(--vp-c-text-1);`
+- `.cdn-picker__copy` (238–243): `position: absolute; top: 0.5rem; right: 0.5rem; z-index: 1;`
+- `.cdn-picker__note` (244–247): `display: block; margin: 0.5rem 0 0;`
+- `.cdn-picker__empty` (248–251): `display: block; margin: 0;`
+
+Buttons, checkboxes, radios, and the card wrapper itself are visually styled entirely by InstUI classes applied inline in the template (`instui-button`, `instui-checkbox`, `instui-radio-input-group`/`-variant-toggle`, `instui-view`/`-background-*`/`-border-*`), not by anything in this `&lt;style&gt;` block. Tabs are not present in this component at all — there's no tab UI, just fieldsets/radio-toggle groups for token sheet size and output format.
+
+### 4. Imports/dependencies (lines 2–5)
+
+- `vue` — `computed`, `ref` (external package)
+- `vitepress` — `useData` (external package)
+- `../cdn` — relative import: `CDN_PICKER_DEFAULTS` (default label strings) and `CdnPickerStrings` type. Path resolves to `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/cdn.ts` (or similar) — one directory up from `components/`.
+- `../generated/cdn-manifest.json` — relative import of the generated component manifest (list of `{ name, needsIcons }`), resolves to `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/generated/cdn-manifest.json`.
+
+### Sibling files in `docs/.vitepress/theme/components/`
+
+```
+CdnPicker.vue       8427 bytes  (this file)
+CdnPickerPage.vue   1482 bytes
+IconPicker.vue     13862 bytes
+ThemeSelector.vue   3968 bytes
+VPNavBarExtra.vue   4573 bytes
+```
+
+`CdnPickerPage.vue` is likely a thin page wrapper around `CdnPicker.vue` (small size suggests it just mounts/frames the picker for a docs page). `IconPicker.vue` is a similarly-shaped, larger sibling component (likely analogous UI for picking icons rather than components) — worth reading directly if you want a UI-pattern precedent for tabs/search/checkbox-grid styling used elsewhere in this theme. I did not read the contents of `CdnPickerPage.vue` or `IconPicker.vue` since the task only asked me to list directory contents for context — let me know if you want their full contents read too.</result>
+<usage><subagent_tokens>30247</subagent_tokens><tool_uses>2</tool_uses><duration_ms>44236</duration_ms></usage>
+</task-notification>
