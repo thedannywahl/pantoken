@@ -1,0 +1,1 @@
+while we wait, the workflows trigger release, which builds packages and CI, which builds packages when merged o main.
