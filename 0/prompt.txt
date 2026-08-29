@@ -1,0 +1,83 @@
+<task-notification>
+<task-id>af846b53d3a2a59d6</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/12527e0e-ef4b-422b-8829-88173ec2d07f/tasks/af846b53d3a2a59d6.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore docs sidebar i18n" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Investigation complete. Here's the precise report.
+
+## Root cause
+
+The Hungarian API sidebar links are **not** locale-prefixed. The labels get translated to Magyar, but every `link` still points at the English `/api/...` tree instead of `/hu/api/...`.
+
+I confirmed this empirically: `docs/hu/api/typedoc-sidebar.json` has **592 links starting with `/api/`** and **0 starting with `/hu/`** (e.g. line 16: `"link": "/api/tools/aggregate/src/interfaces/Target.md"` under the translated `"text": "Cél"`).
+
+## 1. Where sidebar `link` values are set, and whether they're locale-prefixed
+
+There are two distinct sidebar sources per locale, built in `docs/.vitepress/config.ts`:
+
+**Guide + nav sidebar — correctly prefixed.** Built inline (lines 128–167) using `locale.guidePrefix` / `locale.apiPrefix`. For `hu` these are `/hu/guide/` and `/hu/api/` (from `docs/.vitepress/i18n.ts` lines 132–133), so guide/nav links are correct. Example (config.ts:140–142):
+```ts
+{
+  text: locale.sidebar.gettingStarted,
+  link: `${locale.guidePrefix}getting-started`,
+},
+```
+
+**API (TypeDoc) sidebar — NOT prefixed (the bug).** Loaded from a pre-generated JSON file, not built from prefixes (config.ts:67–76):
+```ts
+const loadSidebar = (relativePath: string): DefaultTheme.SidebarItem[] =&gt; {
+  const sidebarPath = fileURLToPath(new URL(relativePath, import.meta.url));
+  return existsSync(sidebarPath)
+    ? (JSON.parse(readFileSync(sidebarPath, "utf8")) as DefaultTheme.SidebarItem[])
+    : [];
+};
+
+const typedocSidebarByLocale = Object.fromEntries(
+  localeEntries.map(([localeKey, locale]) =&gt; [localeKey, loadSidebar(locale.typedocSidebarPath)]),
+) ...
+```
+For `hu`, `typedocSidebarPath` is `../hu/api/typedoc-sidebar.json` (i18n.ts:150). That JSON's `link` values are all `/api/...`, so they leak the English locale even though the section is registered under `[locale.apiPrefix]` = `/hu/api/` (config.ts:172).
+
+## 2. Shared once vs. generated per-locale
+
+Mixed. The TypeDoc sidebar JSON *is* generated per-locale by `docs/scripts/build-api-locales.ts`: it clones `docs/api` → `docs/hu/api` (lines 120–122) and translates the sidebars. But the per-locale pass only translates the `text` labels — it never touches `link`. See `translateSidebar` (build-api-locales.ts:67–79), which recurses on `text` and `items` only:
+```ts
+const translateSidebar = (item: SidebarItem, translate: (text: string) =&gt; string): SidebarItem =&gt; {
+  const translated: SidebarItem = { ...item };
+  if (translated.text) {
+    translated.text = translate(translated.text);
+  }
+  if (translated.items) {
+    translated.items = translated.items.map((child) =&gt; translateSidebar(child, translate));
+  }
+  return translated;
+};
+```
+And the rebuild loop (lines 180–183) writes back only the label-translated tree. So the HU sidebar is per-locale for labels but effectively shares English links.
+
+## 3. Exact file + line where the fix goes
+
+Best fix — in `docs/scripts/build-api-locales.ts`, in the sidebar rebuild loop at **lines 180–183**:
+```ts
+for (const { filePath, tree } of sidebars) {
+  const translated = tree.map((item) =&gt; translateSidebar(item, translateLabel));
+  writeFileSync(filePath, `${JSON.stringify(translated, null, 2)}\n`);
+}
+```
+Here the code already knows it's writing the HU tree (`huApiDir`), so prefix each `link` with `/hu` (i.e. rewrite `/api/...` → `/hu/api/...`). You'd extend `translateSidebar` (lines 67–79) — or add a sibling walk — to also rewrite `link`. The `SidebarItem` type at lines 61–65 already declares `link?: string`, so no type change is needed.
+
+Alternative fix location — in `docs/.vitepress/config.ts` at the `loadSidebar` call site (lines 67–76), map over the loaded tree for non-root locales and prepend the locale's base to each absolute `/api/...` link. This fixes it at read time without regenerating the JSON. The build-script fix is cleaner because it keeps the on-disk `/hu/api/` JSON internally consistent (and the cloned `.md` files under `docs/hu/api/` have the same `/api/...` cross-link issue, so a shared rewrite helper there would address both).
+
+## 4. Existing locale-prefixing utility to reuse
+
+There is **none**. My search for link-rewriting/prefixing helpers (`prefix.*link`, `/hu/`, `rewriteLink`, `localizeLink`, `withLocale`) across `docs/scripts` and `docs/.vitepress` found only the inline `guidePrefix`/`apiPrefix` template-literal usages in config.ts and the `LOCALES` definitions in i18n.ts. The only reusable building block is `LOCALES.hu.apiPrefix` (`/hu/api/`) in `i18n.ts:133`, but `build-api-locales.ts` doesn't currently import `i18n.ts`. A new small helper (`/api/…` → `/hu/api/…`) would need to be written.
+
+## 5. VitePress version and auto-rewrite behavior
+
+Version is **`2.0.0-alpha.18`** (`pnpm-workspace.yaml:75`; `docs/package.json` references it via `"vitepress": "catalog:"`).
+
+VitePress does **not** auto-rewrite absolute sidebar links per-locale. Confirmed by the maintainer's own comment in config.ts (lines 335–342): the locale switcher uses `useLangs({ correspondingLink: true })` to map the *current page* to its counterpart when you toggle language, but that's runtime nav-switcher behavior — it does not rewrite the `link` fields inside a `themeConfig.sidebar` entry. Absolute links like `/api/...` render verbatim. So the design assumes each locale supplies already-prefixed links; the guide/nav sidebar honors that, but the loaded TypeDoc JSON does not.</result>
+<usage><subagent_tokens>42968</subagent_tokens><tool_uses>10</tool_uses><duration_ms>73478</duration_ms></usage>
+</task-notification>
