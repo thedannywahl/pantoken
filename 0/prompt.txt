@@ -1,0 +1,1 @@
+on the Icons tab checking "All icons" creates a single output for all the instui icons (/components/icons.css) but it creates an output chain for every single simple-icon instead of using the combined stylesheet.
