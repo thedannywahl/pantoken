@@ -1,0 +1,1 @@
+for the updated guides/docs - add a new vitepress Vue component that is a "picker" allowing users to check what components they want that builds the import or link URL with the appropriate packages.
