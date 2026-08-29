@@ -7,7 +7,7 @@ import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 const spawn = vi.fn();
 vi.mock("node:child_process", () => ({ spawn }));
 
-const { extractJsonObject, sha256, spawnPrompt, TranslationMemory } =
+const { extractJsonObject, generateLocaleBundles, sha256, spawnPrompt, TranslationMemory } =
   await import("../src/index.ts");
 
 // ── extractJsonObject ─────────────────────────────────────────────────────────
@@ -197,4 +197,98 @@ test("spawnPrompt includes context in the error message when provided", async ()
 test("spawnPrompt omits the context clause when context is not provided", async () => {
   useSpawn(() => ({ stdout: "", code: 1, stderr: "oops" }));
   await expect(spawnPrompt("cmd", ["-p"], "p")).rejects.toThrow(/exited 1: oops/u);
+});
+
+// ── generateLocaleBundles ──────────────────────────────────────────────────────
+
+let localeTestDir: string;
+
+beforeEach(() => {
+  localeTestDir = join(
+    tmpdir(),
+    `ptk-locales-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+  );
+  mkdirSync(localeTestDir, { recursive: true });
+});
+
+afterEach(() => {
+  rmSync(localeTestDir, { recursive: true, force: true });
+});
+
+test("generateLocaleBundles writes one module per locale plus an index re-exporting LOCALES", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "hu.json"), JSON.stringify({ greeting: "Szia" }));
+  writeFileSync(join(root, "i18n-cache", "fr.json"), JSON.stringify({ greeting: "Salut" }));
+
+  generateLocaleBundles(root, outDir);
+
+  const localesDir = join(outDir, "locales");
+  const huContent = readFileSync(join(localesDir, "hu.ts"), "utf8");
+  expect(huContent).toContain("export const LOCALE_HU");
+  expect(huContent).toContain("Szia");
+
+  const indexContent = readFileSync(join(localesDir, "index.ts"), "utf8");
+  expect(indexContent).toContain('import { LOCALE_HU } from "./hu.js";');
+  expect(indexContent).toContain('import { LOCALE_FR } from "./fr.js";');
+  expect(indexContent).toContain("hu: LOCALE_HU,");
+  expect(indexContent).toContain("fr: LOCALE_FR,");
+});
+
+test("generateLocaleBundles ignores non-JSON files in the cache directory", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "hu.json"), JSON.stringify({ greeting: "Szia" }));
+  writeFileSync(join(root, "i18n-cache", "README.md"), "not a locale");
+
+  generateLocaleBundles(root, outDir);
+
+  const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
+  expect(indexContent).toContain("hu: LOCALE_HU,");
+  expect(indexContent).not.toContain("README");
+});
+
+test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn't exist", () => {
+  const root = join(localeTestDir, "no-cache-root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(root, { recursive: true });
+
+  generateLocaleBundles(root, outDir);
+
+  const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
+  expect(indexContent).toContain(
+    "export const LOCALES: Record<string, Record<string, string>> = {",
+  );
+  expect(existsSync(join(outDir, "locales", "hu.ts"))).toBe(false);
+});
+
+test("generateLocaleBundles logs the generated locales when at least one is produced", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "hu.json"), JSON.stringify({ greeting: "Szia" }));
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    generateLocaleBundles(root, outDir);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("hu"));
+  } finally {
+    logSpy.mockRestore();
+  }
+});
+
+test("generateLocaleBundles does not log when no locales were produced", () => {
+  const root = join(localeTestDir, "no-cache-root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(root, { recursive: true });
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    generateLocaleBundles(root, outDir);
+    expect(logSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+  }
 });

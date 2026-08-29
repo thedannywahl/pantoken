@@ -117,4 +117,5 @@ ignore:
   - "**/*.{test,spec}.*"
   - "**/*.config.*"
   - "**/*.d.ts"
+  - "**/*.json"
   - "packages/model/**"

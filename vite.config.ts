@@ -54,6 +54,8 @@ export default defineConfig({
         "**/dist/**",
         "**/*.config.*",
         "**/*.d.ts",
+        // Data files, not executable code — nothing for v8 to instrument.
+        "**/*.json",
         // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
         "packages/model/**",
       ],
