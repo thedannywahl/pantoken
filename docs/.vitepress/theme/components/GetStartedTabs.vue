@@ -339,7 +339,7 @@ const highlightColor = computed(() =>
 @import "@pantoken/plugin-simple-icons/icons/claudecode.css";
 @import "@pantoken/plugin-simple-icons/icons/googlegemini.css";
 @import "@pantoken/plugin-simple-icons/icons/cursor.css";
-@import "@pantoken/plugin-simple-icons/icons/openai.css";
+@import "@pantoken/plugin-custom-icons/icons/openai.css";
 @import "@pantoken/plugin-simple-icons/icons/githubcopilot.css";
 </style>
 
