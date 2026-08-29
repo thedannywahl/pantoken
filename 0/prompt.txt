@@ -1,0 +1,6 @@
+25 failed again on ENEEDAUTH. I'm checking an example failure and trusted publisher is configured in npm:
+
+* publisher: github actions
+* repo: thedannywahl/pantoken
+* workflow: release.yml
+* allowed actions: `npm publish`
