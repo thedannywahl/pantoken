@@ -1246,6 +1246,9 @@ importers:
 
   packages/create-pantoken-app:
     dependencies:
+      '@pantoken/cli':
+        specifier: workspace:*
+        version: link:../cli
       '@pantoken/scaffold':
         specifier: workspace:*
         version: link:../scaffold

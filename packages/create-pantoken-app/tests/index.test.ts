@@ -42,3 +42,10 @@ test("accepts the html alias for components", () => {
   execFileSync("node", [bin, "html", "--dir", target], { encoding: "utf8" });
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
+
+test("generate <target> delegates to @pantoken/cli instead of scaffolding", () => {
+  const dir = mkdtempSync(join(tmpdir(), "create-pantoken-app-generate-"));
+  execFileSync("node", [bin, "generate", "vanilla", "--out", dir], { encoding: "utf8" });
+  expect(existsSync(join(dir, "variables.json"))).toBe(true);
+  expect(existsSync(join(dir, "package.json"))).toBe(false);
+});
