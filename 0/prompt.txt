@@ -1,0 +1,72 @@
+<task-notification>
+<task-id>a9d01e28346a823ea</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/7d3eefd3-3a14-4830-8fa8-61a363c617ba/tasks/a9d01e28346a823ea.output</output-file>
+<status>completed</status>
+<summary>Agent "Investigate dark-mode theming mechanism" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>IconPicker.vue is the only source-level offender (excluding build cache/dist artifacts, which are regenerated). Here's the full picture:
+
+## 1. Where `.dark` gets added to `&lt;html&gt;`
+
+Two independent mechanisms both toggle `.dark` on `&lt;html&gt;`, and they must stay in sync:
+
+- **VitePress's own appearance switch** (the sun/moon icon in the nav, `.VPNavBarAppearance`) — this is VitePress's built-in default-theme behavior (not overridden here), which toggles `html.classList.add/remove('dark')` and persists to its own `vitepress-theme-appearance` localStorage key. There's no custom override of this in the repo; `docs/.vitepress/theme/pantoken.css:172-175` only hides that switch when the pantoken theme isn't `rebrand`.
+- **pantoken's own theme system**, in `docs/.vitepress/theme/theme.ts`:
+  - `applyTheme()` (theme.ts:106-113) sets `html.dataset.pantokenTheme = theme` (i.e., `data-pantoken-theme` attribute) and calls `syncSchemeClass()`.
+  - `syncSchemeClass()` (theme.ts:88-100) removes the `.dark` class from `&lt;html&gt;` when a single-scheme theme (`canvas`/`canvasHighContrast`) is active, and restores the remembered light/dark choice when switching back to `rebrand` (the only scheme-aware theme, per `supportsScheme()` at theme.ts:48).
+  - A blocking inline `&lt;head&gt;` script in `docs/.vitepress/config.ts:451-456` runs before first paint, reading the `pantoken-theme` localStorage key and stripping `.dark` for non-rebrand themes to avoid a flash.
+  - `docs/.vitepress/theme/index.ts:130-133` calls `applyTheme(getStoredTheme())` on `enhanceApp` to reconcile state client-side.
+  - `ThemeSelector.vue` (`docs/.vitepress/theme/components/ThemeSelector.vue:24-28`) is the UI for picking the pantoken palette (rebrand/canvas/canvasHighContrast) — it calls `applyTheme(theme)` on selection. It is **not** the light/dark switch itself; that's VitePress's separate `.VPNavBarAppearance` toggle, gated visible only for `rebrand` (pantoken.css:172-175).
+
+So the canonical light/dark signal is the `.dark` class on `&lt;html&gt;`, set by VitePress's appearance toggle and gated/cleared by pantoken's `syncSchemeClass`. The `data-pantoken-theme` attribute (also on `&lt;html&gt;`) selects the palette (rebrand vs. canvas vs. canvasHighContrast), a separate axis from light/dark.
+
+## 2. How the generated component CSS keys dark-mode overrides
+
+Searched `formats/css/generated/style.css`, `formats/css/dist/`, and `formats/components/generated/*.css` for `.dark`, `data-theme`, and `prefers-color-scheme` — **none of the pantoken-generated token/component CSS uses any of those selectors.** Instead it uses the native CSS `light-dark()` function, e.g. `formats/css/generated/style.css:2628`:
+
+```css
+--instui-color-background-base: light-dark(var(--instui-primitive-color-white), var(--instui-primitive-color-grey-grey200));
+```
+
+`light-dark()` resolves based on the inherited `color-scheme` CSS property, not a class selector. The docs site is the one place that actually flips `color-scheme`, in `docs/.vitepress/theme/pantoken.css:3-19`:
+
+```css
+:root { color-scheme: light; ... }
+html.dark { color-scheme: dark; ... }
+```
+
+So the real chain is: VitePress toggles `.dark` on `&lt;html&gt;` → docs' `pantoken.css` sets `color-scheme: dark` off that class → every `light-dark()` token in the generated pantoken CSS resolves to its dark branch. There is no `[data-theme="dark"]` or `prefers-color-scheme` selector anywhere in `formats/` or `packages/`.
+
+## 3. `ThemeSelector.vue`
+
+Read in full (`docs/.vitepress/theme/components/ThemeSelector.vue`, 154 lines). It's a palette dropdown (Rebrand/Canvas/Canvas high contrast), not a light/dark switch. On mount it reads `getStoredTheme()` (theme.ts:53-57) and on selection calls `applyTheme(t.key)` (line 26), which is the `theme.ts` function described above. It does not itself touch `prefers-color-scheme` or the `.dark` class beyond delegating to `applyTheme`/`syncSchemeClass`.
+
+## 4. Other `prefers-color-scheme` usages
+
+Grepped all of `docs/.vitepress/` (excluding `/cache/` and `/dist/` build artifacts, which regenerate from source and legitimately contain compiled `light-dark()` output). **The only source-level match is `IconPicker.vue:395`**:
+
+```css
+/* docs/.vitepress/theme/components/IconPicker.vue:392-399 */
+.icon-picker__img {
+  ...
+  filter: var(--icon-picker-img-filter, none);
+}
+@media (prefers-color-scheme: dark) {
+  .icon-picker__img {
+    filter: invert(1);
+  }
+}
+```
+
+This is the bug: it reacts to the OS-level media query instead of the site's actual dark-mode state (`html.dark`, set/cleared per section 1). It should instead be something like:
+
+```css
+html.dark .icon-picker__img {
+  filter: invert(1);
+}
+```
+
+No other file in `docs/.vitepress/` uses `prefers-color-scheme`.</result>
+<usage><subagent_tokens>45750</subagent_tokens><tool_uses>23</tool_uses><duration_ms>87528</duration_ms></usage>
+</task-notification>
