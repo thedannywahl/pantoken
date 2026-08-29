@@ -1,0 +1,77 @@
+<task-notification>
+<task-id>ab236d05b6a4722f6</task-id>
+<tool-use-id>toolu_013oLBWWNzLwjo2ufcgJpqyJ</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/7d3eefd3-3a14-4830-8fa8-61a363c617ba/tasks/ab236d05b6a4722f6.output</output-file>
+<status>completed</status>
+<summary>Agent "Research token sheet composition and chunking feasibility" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result># Report: chunking the `@pantoken/css` token sheet for the docs picker
+
+## 1. What `style.css`/`style.lean.css` are actually made of
+
+**Package:** `formats/css/` (`@pantoken/css`), built by `formats/css/scripts/generate.ts:21-22`:
+
+```
+write("style.css", applyMinify(css, { flatten: true }));
+write("style.lean.css", applyMinify(leanCss, { flatten: true }));
+```
+
+`css` and `leanCss` are defined in `formats/css/src/index.ts:34` and `:52-55`. Both are pure **custom-property sheets** — I confirmed the built files contain exactly **one selector, `:root{...}`** (`grep -o '[a-zA-Z.#][a-zA-Z0-9._-]*{' formats/css/dist/style.css` → only `root{`). There are no element/class selectors, no component layout rules — it's a flat bag of `--instui-*` declarations (`formats/css/src/to-css.ts:66-95` builds `@property` registrations for concrete tokens and plain declarations for themed/reference ones; the `flatten: true` minify pass in `generate.ts` collapses those into the single `:root` block seen in dist — it does **not** resolve `var()` chains, see below).
+
+**Lean vs. full**, confirmed exactly as documented (`formats/css/src/index.ts:5-10, 36-46`): `leanCss` is `tokens.filter(t =&gt; !t.name.startsWith("--instui-icon-"))` — i.e., lean omits **only** the `--instui-icon-*` glyph data-URI tokens (~1,830 of them). Nothing else is dropped; both variants carry the same elevation/focus-outline foundation (`formats/css/src/foundation.ts`).
+
+**Actual sizes** (dist files exist and are current — Aug 3):
+
+| file | raw bytes | gzip bytes |
+|---|---|---|
+| `formats/css/dist/style.css` | 1,477,583 (1.4 MB) | 148,376 (145 KB) |
+| `formats/css/dist/style.lean.css` | 257,096 (251 KB) | 23,089 (22.5 KB) |
+
+Byte-weight breakdown of `style.css` by declared-property category (4,655 unique custom properties total):
+
+| category | unique props | bytes | % of file |
+|---|---|---|---|
+| icon | 1,830 | 1,220,487 | 82.6% |
+| component (e.g. `--instui-component-alert-*`) | 1,911 | 167,845 | 11.4% |
+| color (semantic, e.g. `--instui-color-background-*`) | 476 | 65,540 | 4.4% |
+| primitive (raw color/size scale) | 299 | 13,918 | 0.9% |
+| everything else (spacing/border/font/line/elevation/focus/size/breakpoints/opacity/drop-shadow) | ~135 | ~9,625 | 0.6% |
+
+So icons are essentially the entire full sheet's weight, exactly matching the code comment at `formats/css/src/index.ts:36` ("`--instui-icon-*`... ~86% of the sheet's bytes") and `:41` ("Roughly a sixth the size"). Removing them (→ lean) is overwhelmingly the effective lever; everything else is comparatively tiny.
+
+## 2. Do web-components elements have their own documented token dependency?
+
+No dedicated manifest exists for web-components specifically, but the dependency is discoverable and it **is small and well-defined per element** — with one important caveat about cross-component sharing.
+
+`renderers/web-components/src/elements/alert.ts:1,54` doesn't hardcode any `var(--instui-*)` itself — it imports `alertCss` from `@pantoken/components` and inlines the *generated string* into the shadow DOM (`` `&lt;style&gt;...${alertCss(ctx.I)}&lt;/style&gt;` ``). So an element's real token surface lives in the underlying `@pantoken/components` CSS module. I checked `formats/components/dist/alert.css` (3,970 bytes) directly:
+
+- 19 refs to its own `--instui-component-alert-*` namespace
+- 1 ref to **another component's** token: `--instui-component-base-button-medium-height` (for close-button padding math)
+- `--instui-elevation-above`, `--instui-spacing-space-xs`
+- 4 icon glyphs: `--instui-icon-info`, `-circle-check`, `-triangle-alert`, `-circle-x`
+
+`formats/components/dist/button.css` (11,347 bytes) goes further — it reads **56 refs to raw semantic `--instui-color-background-interactive-*` tokens directly**, not routed through a `component-button-*` alias, plus border/font/line/spacing tokens. `badge.css`, `avatar.css`, `modal.css`, `tag.css` are each dominated by their own `--instui-component-&lt;name&gt;-*` namespace (16–71 refs) with a scattering of shared spacing/elevation/icon refs.
+
+Crucially, these declarations are **not flattened to final values** — they're `var()` chains: e.g. `--instui-component-alert-background:var(--instui-color-background-elevated-surface-base)`, and that in turn resolves through `light-dark(var(--instui-primitive-color-navy-navy170), ...)`. So a component's token footprint isn't self-contained; it depends transitively on the semantic-color layer and the primitive-scale layer underneath it.
+
+**Is there an existing "needsIcons"-style mechanism?** Yes, for icons only: `docs/scripts/cdn-manifest.ts:17-22` regex-scans each component's generated CSS (`/var\(--instui-icon-/`) to set a `needsIcons` boolean per component, written to `docs/.vitepress/theme/generated/cdn-manifest.json`. An analogous scan for broader categories (color/spacing/typography/elevation) would work mechanically the same way, but per the byte breakdown above, nearly every component touches "color" and several also touch "spacing"/"elevation" — so a category-level `needsX` flag would be `true` for almost everything except icon, which is already the one flag that's actually discriminating. A per-*component* (not per-category) breakdown is meaningfully sparse (elements load only their own ~1-3KB namespace + shared primitives), but a per-*token-category* breakdown is not (nearly universal color/spacing usage) — chunking by category specifically would be close to pointless; chunking by component namespace has more signal, with the caveat that cross-component refs exist (alert → button) and none of it works without the shared primitive/semantic base layer loaded too.
+
+For web-components elements themselves, 27 of the 30 files import one or more `@pantoken/components` `*Css` builders (`grep -o 'import.*from "@pantoken/components"' renderers/web-components/src/elements/*.ts`), and some already compose more than one underlying component (`calendar.ts` → `buttonCss, calendarCss`; `date-input.ts` → `buttonCss, textInputCss`), mirroring the `NESTED_DEPS` map already hand-maintained in `docs/.vitepress/theme/components/WebComponentsPicker.vue:49-52`. So an element→underlying-component(s)→`needsIcons` chain is computable the same way `cdn-manifest.ts` already does it for the components picker — it just isn't wired up for the web-components picker yet.
+
+## 3. Is the token sheet already chunked anywhere?
+
+No. `formats/css/package.json:20-26` exports exactly four entries: `.`, `./inject`, `./style.css`, `./style.lean.css` (plus `package.json`) — no per-category or per-component token exports. `formats/css/dist/` and `formats/css/generated/` contain only `style.css`/`style.lean.css` (plus the JS `index.mjs`/`inject.mjs`). A repo-wide search for category-named CSS (`*color*.css`, `*spacing*.css`, `*typography*.css`, `*elevation*.css`) outside icons turns up nothing in `formats/css`.
+
+By contrast, `@pantoken/components` (`formats/components/package.json` exports block) *is* already granular: `./base.css`, `./utilities.css`, `./component-icons.css`, `./*.css` (57 per-component files in `formats/components/dist/`), `./icons.css`, `./icons/*.css` (1,828 individual per-glyph files, avg. 744 bytes each — `formats/components/dist/icons/monitor-pause.css` is 661 bytes), and `./components.css` (the full 142,825-byte barrel). Icons in `@pantoken/components` are chunked to the single-glyph level; tokens in `@pantoken/css` are chunked only at the icon/non-icon (lean/full) level, and not any finer.
+
+## 4. Would splitting the token sheet by category actually help, given jsDelivr `/combine/`?
+
+**Existing combine precedent:** `docs/.vitepress/theme/components/CdnPicker.vue:84-96` already builds `https://cdn.jsdelivr.net/combine/npm/@pantoken/css/dist/style.lean.css,{base.css},{utilities.css},{component-icons.css},{&lt;name&gt;.css...}` — i.e., it **already uses the lean, not full, token sheet**, combined with per-component pieces and a conditional `component-icons.css` add-on (line 91, gated by the per-component `needsIcons` manifest flag). `IconPicker.vue:178-189` goes even further, combining individual per-glyph files (`icons/&lt;name&gt;.css`) rather than the icon barrel.
+
+**The gap is specifically in `WebComponentsPicker.vue`:** its `tokenNote` text (line 78) tells users to load `@pantoken/css/dist/style.css` — the **full 1.4 MB / 148 KB-gzip** sheet — regardless of which elements are selected, and its `iifeSnippet` (line 147) hardcodes the same full `style.css`. It has no `needsIcons`-equivalent and doesn't use `/combine/` at all for the token side.
+
+**Would category-splitting the sheet pay off?** Given the byte breakdown in §1, no — once icons are already excluded (lean.css, 257 KB raw / 23 KB gzip), the remainder is small and *not independently addressable*: "component" tokens (168 KB, 65% of lean) are `var()`-chained to "color" (66 KB) and "primitive" (14 KB) tokens underneath them, so a hypothetical `colors.css`/`spacing.css`/`components.css` split would still require loading essentially all of the non-icon layers together for any component to render correctly (unresolved custom properties in a `var()` chain make the depending declaration invalid, not just missing). The remaining categories (spacing/border/font/line/elevation/focus/size/breakpoints/opacity) sum to under 10 KB combined — far too small to be worth a request-count vs. byte-count trade-off, especially since `/combine/` already turns N small files into 1 request, so the only real win from splitting would be *bytes*, and there are barely any bytes left to save once icons are gone.
+
+**Bottom line:** the actionable, low-risk fix here is not "chunk the token sheet by category" — it's **making `WebComponentsPicker.vue` do what `CdnPicker.vue` already does**: switch its token reference from `style.css` to `style.lean.css` (an immediate ~145 KB → ~22.5 KB gzip drop for anyone not using icon-heavy elements), and compute an element-level `needsIcons` (via the same `var(--instui-icon-` scan already run per-component in `docs/scripts/cdn-manifest.ts:21`, unioned across each web-component's underlying `@pantoken/components` import(s) per `renderers/web-components/src/elements/*.ts`) to conditionally add `component-icons.css` to a combine URL, exactly mirroring lines 84-96 of `CdnPicker.vue`. Splitting `style.css` itself further by token category would add build/export complexity for negligible byte savings, since the token sheet (minus icons) is already fairly compact and its internal `var()` dependency graph makes clean category boundaries impossible without breaking rendering.</result>
+<usage><subagent_tokens>77489</subagent_tokens><tool_uses>38</tool_uses><duration_ms>313349</duration_ms></usage>
+</task-notification>
