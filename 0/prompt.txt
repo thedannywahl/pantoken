@@ -1,0 +1,104 @@
+<task-notification>
+<task-id>a98c4aa927ce10d91</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/fe9c6a89-7dbe-4817-8dce-af28838c5648/tasks/a98c4aa927ce10d91.output</output-file>
+<status>completed</status>
+<summary>Agent "Design plugin cssdoc + API integration" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture of the system. Let me deliver the design.
+
+---
+
+# Design: bring `plugins/pantoken/*` CSS into the cssdoc system
+
+## What I verified
+
+**The proven pattern already exists in-repo.** `formats/components/scripts/generate.ts` (lines 134-147) authors a cssdoc block for a *generated* utility whose emitted classes are `.instui-*`, not `pfx-`:
+
+```
+/**
+ * @utility color
+ * @class .instui-text-danger
+ * @summary Semantic colour utilities: `.instui-bg-&lt;name&gt;`, ...
+ * @example &lt;p class="instui-text-danger"&gt;...&lt;/p&gt;
+ */
+```
+
+It prepends this to `colorUtilitiesCss(...)` and writes the whole thing into `generated/utilities.css`. That single record:
+- lint-validates because `generated/*.css` is in the `lint:css`/`lint:js` globs (root `vite.config.ts` lines 77, 82),
+- feeds `build-css-api.ts` because it reads `formats/components/generated/utilities.css`,
+- covers *hundreds* of sibling `.instui-bg-*`/`.instui-text-*`/`.instui-stroke-*` classes under one `@utility` record, with `@class` naming a representative.
+
+This resolves the two hardest questions up front:
+- **The SENTINEL/prefix problem is a non-issue.** Plugin sheets are emitted at the fixed `instui` prefix and never re-prefixed by a consumer's `raw.replaceAll(SENTINEL, p)`, so they carry no `pfx-` sentinel. cssdoc associates the doc comment with the immediately-following rules and uses `@class` to name the canonical selector — exactly as the `color` utility does. No sentinel needed.
+- **`@utility` + `@class` is the record kind.** The RECORD regex in `build-css-api.ts` (`@(?:component|utility|rule|declaration)`, lines 155, 181) and the shipping `color` record both confirm `@utility` parses and renders today.
+
+**Gitignore reality (important for ordering):** `.gitignore` ignores `**/generated/`. NONE of the generated sheets are committed — `formats/components/generated/*.css` and the existing `plugins/pantoken/{logos,primitives}/generated/*.css` are all reproduced by `vp run -r build` (the `build:all` node). So `build-css-api` already depends on `build:all` having run first (true in CI; `docs:dev` additionally runs `@pantoken/components#generate`). Plugin sheets slot into this exact model.
+
+**Two plugin shapes:**
+- `logos`, `primitives` already have `scripts/generate.ts` + committed-shape `generated/*.css` + a static `./x.css` export + are already in `tools/validate-generated/index.ts`. They only lack a cssdoc block.
+- `stacking`, `transition`, `visual-debug` build rules inline in JS, have no generate script, no generated sheet, and export only `.` — they need the full generate/pack/export scaffold (mirroring `primitives`).
+
+## Design decisions
+
+1. **Where the doc block lives:** author it in each plugin's `scripts/generate.ts` (not in `src/index.ts`), so it never bloats the runtime `toCss` output — matching the `color` precedent. `generate.ts` composes `:root{declarations}` + doc block + rules and writes `generated/&lt;name&gt;.css`. The doc block must sit *immediately before* the class rules (cssdoc binds a comment to the next rule), so the `:root` declarations block goes *first*, then doc, then the `.instui-*` rules.
+
+2. **Node-free constraint respected:** the doc/composition logic lives in `scripts/generate.ts` (a build script, not in `files`), which may use `node:fs` — exactly as `logos`/`primitives` already do. `src/index.ts` stays Node-free. To let `generate.ts` compose without duplicating the rules, export the module-level `rules` string (and a small declarations accessor) from each plugin `src/index.ts` — these are plain strings, still Node-free.
+
+3. **Feeding `build-css-api.ts`: a second `emitCssApi` call.** `emitCssApi`'s `mergeCssSidebar` *replaces the section with the same label* and preserves others, so a second call with a distinct `label` (e.g. `"CSS plugins"`) and its own `outSubdir`/`baseHref` cleanly appends a second section while keeping the existing `"CSS"` section. A second call is preferable to extending the single `css[]` array because every plugin-specific hook diverges from the component path:
+   - `importSnippet` must emit `@import "@pantoken/plugin-stacking/stacking.css";`, not `@pantoken/components/...`,
+   - `resolveSource` must point at the plugin's `scripts/generate.ts` (its own `sourceMap`),
+   - `resolveToken`/`localVars` must be rebuilt from the plugin sheets so `--instui-stacking-*` and `--instui-transition-*` resolve (they're defined in each sheet's `:root`, so the existing `matchAll(/(--[\w-]+)\s*:\s*.../)` localVars scan picks them up once the plugin sheets are in the scanned string),
+   - the drift guard `unknownReferences(css, tokens)` (lines 269-274) would flag `--instui-stacking-*`, `--instui-transition-*`, `--pantoken-visual-debug-color` — a second call keeps that guard scoped to component sheets only, avoiding widening the allow-filter.
+
+   (Alternative if a *unified* "CSS" section is wanted: keep one call, add plugin sheets to `sheets`/`cssPaths`, add a name→package map for `importSnippet`, include plugin generate scripts in `componentSources`, and extend the drift-guard prefix filter to allow `--instui-stacking-`, `--instui-transition-`, `--pantoken-`. More branching, one section.)
+
+4. **Lint globs:** add `"plugins/pantoken/*/generated/*.css"` to both `lint:css` and `lint:js` in root `vite.config.ts` (lines 76-83). Both tasks already `dependsOn: ["build:all"]`, and each plugin's `build` will run its `generate` (see below), so the sheets exist before lint runs — same "generate exactly once through build:all" guarantee noted in that file. No new race.
+
+## Ordered implementation plan
+
+**A. Runtime-only plugins (`stacking`, `transition`, `visual-debug`) — add the generate scaffold**
+
+1. `plugins/pantoken/{stacking,transition,visual-debug}/src/index.ts` — export the rules string (already module-level in `stacking`/`transition`; `visual-debug` builds `rules` from the default color — export a `visualDebugRules` const or a zero-arg helper). Keep Node-free.
+2. New `plugins/pantoken/{stacking,transition,visual-debug}/scripts/generate.ts` — compose `:root { &lt;declarations&gt; }` (resolved via the plugin's `definitions`/`declarations`, or `toCss([], { plugins:[x()] })` split so the `:root` block leads) + the authored cssdoc `/** @utility &lt;name&gt; @class .instui-... @summary ... @modifier ... @example ... */` + the rules, then `writeFileSync(generated/&lt;name&gt;.css)`. Model file: `plugins/pantoken/primitives/scripts/generate.ts`. Transition needs one `@modifier` line per state class (`-fade-entering`, `-scale-exiting`, `-slide-*`, …) or the `undocumented-modifier` rule trips; visual-debug is `@utility visual-debug` + `@class .-with-visual-debug`.
+3. `plugins/pantoken/{stacking,transition,visual-debug}/vite.config.ts` — add the `build` task `["vp run generate","vp pack"]`, a `generate` task, and a `pack.entry` for `generated/&lt;name&gt;.css`, mirroring `plugins/pantoken/primitives/vite.config.ts`.
+4. `plugins/pantoken/{stacking,transition,visual-debug}/package.json` — add `"generate": "node scripts/generate.ts"` and a static `"./&lt;name&gt;.css": "./dist/&lt;name&gt;.css"` export (mirror `primitives`).
+
+**B. Already-generated plugins (`logos`, `primitives`) — add the doc block only**
+
+5. `plugins/pantoken/logos/scripts/generate.ts` and `plugins/pantoken/primitives/scripts/generate.ts` — prepend a `@utility` doc block (with a representative `@class`, e.g. `.instui-bg-primitive-color-aurora-aurora10` for primitives) to the emitted sheet before writing. No new export/task needed — they already ship the sheet and are in `validate-generated`.
+
+**C. Lint**
+
+6. Root `vite.config.ts` — add `"plugins/pantoken/*/generated/*.css"` to the `stylelint` (`lint:css`) and `eslint` (`lint:js`) glob lists.
+
+**D. Docs CSS-API**
+
+7. `docs/scripts/build-css-api.ts` — add a second `emitCssApi` call after the existing one, reading `plugins/pantoken/{stacking,transition,visual-debug,logos,primitives}/generated/*.css`, with `label:"CSS plugins"`, its own `resolveSource` (sourceMap over the plugin `scripts/generate.ts` files), `importSnippet` (`@import "@pantoken/plugin-&lt;x&gt;/&lt;x&gt;.css";`), and a `resolveToken` whose `localVars` are rebuilt from the plugin sheets. Keep the component drift guard scoped to the component `css` string only. Run the plugin call *after* the component call so its `mergeCssSidebar` preserves the existing `"CSS"` section.
+
+**E. Drift guard / build ordering**
+
+8. `tools/validate-generated/index.ts` — add `plugins/pantoken/{stacking,transition,visual-debug}` to `GENERATOR_PKGS` (non-empty `generated/`) and `FINALIZED_CSS_PKGS` (their new `./x.css` dist export), and add the `stacking`/`transition` (self-defining) sheets to `SELF_CONTAINED` for the dangling-ref check. Verify `visual-debug`'s `--pantoken-visual-debug-color` (a var *with* an inline fallback, defined nowhere) doesn't trip `danglingReferences` — if it does, that sheet stays out of `SELF_CONTAINED` or the fallback var is exempted.
+9. `docs/package.json` `docs:dev` — it runs `@pantoken/components#generate` before `docs:api:css` but not the plugins'. In CI (`docs:build` → `build-api-locales.ts`) the plugin sheets come from `build:all`, so CI is fine; for `docs:dev` freshness, add the three plugin `#generate` runs (or rely on a prior `build:all`). This is orchestration only — do NOT make `build-css-api.ts` spawn `vp run` (the nested-vp-spawn limitation): it must stay a pure file reader.
+
+**F. Optional DRY**
+
+10. `docs/scripts/demos.ts` (lines 82-94) currently regenerates `stacking.css`/`transition.css`/`visual-debug.css` into `public/demos-assets/` in-process via `toCss` (no doc comments — fine for painting). Optionally switch these to `copyFileSync(require.resolve("@pantoken/plugin-&lt;x&gt;/&lt;x&gt;.css"), ...)` to reuse the new generated sheets. Not load-bearing; leave as-is for a minimal change.
+
+## Risks / gotchas
+
+- **Doc-comment adjacency:** cssdoc binds the comment to the *next* rule. Emit the `:root{}` declarations first, then the doc block immediately before the `.instui-*` class rules — otherwise the record attaches to `:root` and validation/rendering break.
+- **`undocumented-modifier` volume:** `transition` has ~14 state classes; every `-fade-*`/`-scale-*`/`-slide-*` modifier must be listed as `@modifier` or the lint rule fails. `stacking`'s four `.instui-stack-&lt;level&gt;` are sibling utility classes (not modifiers) under one `@utility` record — the `color` utility proves cssdoc tolerates many pattern-siblings with one `@class`.
+- **Token resolution:** `--instui-stacking-*`/`--instui-transition-*` must be present in the plugin sheet's `:root` for `resolveToken`'s `localVars` scan to resolve them in the "Tokens consumed" table; ensure `generate.ts` includes the declarations block. `--pantoken-visual-debug-color` has an inline fallback and no IR/token entry — `resolveToken` returns undefined (acceptable), but confirm the two drift guards (`build-css-api` and `validate-generated`) don't flag it.
+- **Ordering:** plugin `generated/*.css` is gitignored and must be produced by `build:all` before `lint:css`/`lint:js` and before `build-css-api`. The new per-plugin `build` task (`vp run generate` → `vp pack`) plus the existing `dependsOn:["build:all"]` on the lint tasks preserves the "generate exactly once" guarantee — no concurrent writes to the same `generated/` dir.
+- **`validate-generated` gates:** adding a `./x.css` export without adding the package to `FINALIZED_CSS_PKGS`/`GENERATOR_PKGS` will fail the guard (or silently skip); keep them in sync.
+- **Browser Node-free constraint:** all `node:fs` stays in `scripts/generate.ts`; only plain strings are exported from `src/index.ts`.
+
+### Critical Files for Implementation
+- /Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts
+- /Users/dwahl/Scripts/pantoken/formats/components/scripts/generate.ts (the `@utility color` + `@class` reference pattern to copy)
+- /Users/dwahl/Scripts/pantoken/plugins/pantoken/primitives/scripts/generate.ts and /Users/dwahl/Scripts/pantoken/plugins/pantoken/primitives/vite.config.ts (scaffold to mirror for stacking/transition/visual-debug)
+- /Users/dwahl/Scripts/pantoken/vite.config.ts (lint:css / lint:js globs)
+- /Users/dwahl/Scripts/pantoken/tools/validate-generated/index.ts (GENERATOR_PKGS / FINALIZED_CSS_PKGS / SELF_CONTAINED)</result>
+<usage><subagent_tokens>90079</subagent_tokens><tool_uses>39</tool_uses><duration_ms>458464</duration_ms></usage>
+</task-notification>
