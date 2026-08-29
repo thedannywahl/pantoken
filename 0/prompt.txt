@@ -1,0 +1,80 @@
+<task-notification>
+<task-id>abaa4ec32804ee48d</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/abaa4ec32804ee48d.output</output-file>
+<status>completed</status>
+<summary>Agent "Audit animated custom properties" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>My investigation is complete. Here are the findings.
+
+## Summary conclusion
+
+No `--instui-*` token is ever animated as a custom property. Every animation and transition in the codebase animates a regular, natively-registered CSS property (`outline-color`, `outline-offset`, `transform`, `opacity`, `background-color`, `border-color`, `width`, `filter`, `inset-inline-start`, `color`, plus `overlay`/`display` for discrete transitions). These read `--instui-*` tokens through `var()`, but the interpolation happens on the CSS property, not on the custom property. That means stripping the token-sheet `@property` registrations is safe with respect to animation. The single custom property that IS interpolated (`--value`) is component-local and registered in the component's own CSS, not the token sheet.
+
+## 1. Every animation/transition found (non-generated sources)
+
+| File (repo-relative) | Line | Animated property | Custom prop or regular? |
+|---|---|---|---|
+| `formats/components/src/declarations/focus.ts` | 87, 103 | `outline-color`, `outline-offset` (via `--instui-focus-outline-transition` = `"outline-color 0.2s, outline-offset 0.25s"`, line 66) | Regular CSS props |
+| `formats/components/src/components/badge.css` | 36-45, 104 | `@keyframes pantoken-badge-pulse`: `transform`, `opacity` | Regular CSS props |
+| `formats/components/src/components/spinner.css` | 13-26 | `@keyframes pantoken-spinner-rotate`: `transform: rotate()` | Regular CSS props |
+| `formats/components/src/components/checkbox.css` | 68-70, 88, 174, 188, 202 | `background-color`, `border-color`, `transform`, `inset-inline-start` | Regular CSS props |
+| `formats/components/src/components/radio.css` | 47-49, 64, 150-152 | `border-color`, `background-color`, `transform`, `color` | Regular CSS props |
+| `formats/components/src/components/img.css` | 20 | `filter` (duration read from `--instui-component-img-effect-transition-duration`) | Regular CSS prop |
+| `formats/components/src/components/progress.css` | 71 | `width` | Regular CSS prop |
+| `formats/components/src/components/popover.css` | 58-66 | `opacity`, `transform`, `overlay`, `display` | Regular CSS props |
+| `formats/components/src/components/tray.css` | 83-90 | `transform`, `overlay`, `display` | Regular CSS props |
+| `formats/components/src/components/tooltip.css` | 48 | `opacity` | Regular CSS prop |
+| `formats/components/src/components/toggle-details.css` | 50 | `transform` | Regular CSS prop |
+| `formats/components/src/components/toggle-group.css` | 53 | `transform` | Regular CSS prop |
+| `formats/components/src/components/tree-browser.css` | 95 | `transform` | Regular CSS prop |
+| `renderers/web-components/src/elements/drawer-layout.css` | 65 | `opacity` | Regular CSS prop |
+| `renderers/web-components/src/elements/alert.ts` | 63 | `opacity` (set via JS: `this.style.transition = "opacity 0.3s ease"`) | Regular CSS prop |
+| `formats/components/src/components/progress-circle.css` | 35-39 | `--value` interpolated via `@property` + `conic-gradient(... calc(var(--value) * 1%) ...)` | **Custom property — but component-local, see below** |
+
+`formats/components/src/lib/aliases.ts:48` and the `@property` comments in `number-input.ts:62` / `byline.css:48` are only comments, not animations.
+
+## 2. Focus-outline detail (as requested)
+
+In `formats/components/src/declarations/focus.ts`:
+- Resting rule (line 85-87): sets `outline`, `outline-offset: 0`, and `transition: var(--instui-focus-outline-transition)`.
+- The transition value is defined at line 66 as `"outline-color 0.2s, outline-offset 0.25s"` — it names the regular properties `outline-color` and `outline-offset`.
+- `:focus-visible` (lines 89-93) then changes `outline-color`, `outline-offset`, `border-radius`, each reading an `--instui-focus-outline-*` token via `var()`.
+
+So focus-outline interpolates `outline-color` and `outline-offset` (native CSS properties). It does NOT interpolate any `--instui-*` custom property. The `@property` for `--instui-focus-outline-color`, `--instui-focus-outline-offset`, etc. is NOT load-bearing for this animation. `outline-color` is a natively-registered animatable property, so the color transition works regardless of whether the token has an `@property`.
+
+## 3. Badge detail (as requested)
+
+In `formats/components/src/components/badge.css`, `@keyframes pantoken-badge-pulse` (lines 36-45) interpolates `transform: scale()` and `opacity` on the `-pulse::before` ring. Both are native animatable properties. The keyframes do NOT touch any custom property. No `@property`-dependence on the token sheet.
+
+## 4. The one animated custom property — and why it's safe
+
+`--value` in `formats/components/src/components/progress-circle.css`:
+- Registered by the component itself at lines 35-39: `@property --value { syntax: "&lt;number&gt;"; inherits: true; initial-value: 0; }`.
+- It is a bare local property (`--value`), NOT an `--instui-*` token.
+- Confirmed NOT present in the token sheet: `grep -c "@property --value" formats/css/dist/style.css` → `0`.
+- Its `@property` ships in the component's own dist: `formats/components/dist/progress-circle.css` contains `@property --value{syntax:"&lt;number&gt;";inherits:true;initial-value:0}`.
+
+So its registration lives entirely in component CSS. Stripping the token sheet's `@property` blocks has no effect on it.
+
+## 5. Token-IR `@property` blocks (context)
+
+`formats/css/dist/style.css` contains 2,490 `@property` blocks. Syntax distribution:
+- `"*"` → 350
+- `"&lt;image&gt;"` → 1,777
+- `"&lt;color&gt;"` → 281
+- `"&lt;length&gt;"` → 34
+- `"&lt;integer&gt;"` → 30
+- `"&lt;percentage&gt;"` → 12
+- `"&lt;time&gt;"` → 5
+- `"&lt;number&gt;"` → 1
+
+None of these `--instui-*` tokens are the subject of any `transition`/`animation`/`@keyframes` in the components or web-components sources. Searches for `transition: --instui`, `transition-property: --instui`, and `animation-name: --instui` returned no real hits (the only textual match was `transition: filter var(--instui-...-duration)`, which animates `filter` and merely reads a token as the duration value).
+
+## Deliverable: tokens that must retain `@property` in the lean sheet
+
+Based on animation/transition usage: none. There is no `--instui-*` token whose `@property` registration is required by an animation or transition. Every animation targets a regular CSS property that reads tokens via `var()`, and the only directly-interpolated custom property (`--value`) is component-local and registered in the component's own CSS.
+
+Caveat on scope: this conclusion covers animation/transition safety only, which is exactly what you asked. `@property` registrations can still be load-bearing for non-animation reasons (type-checked fallbacks, `initial-value` behavior, `inherits` semantics, and correct interpretation of tokens used inside `calc()`/`conic-gradient`/color functions). If the lean sheet strips `@property` wholesale, animations won't break — but verify those other behaviors separately before shipping.</result>
+<usage><subagent_tokens>46867</subagent_tokens><tool_uses>17</tool_uses><duration_ms>118572</duration_ms></usage>
+</task-notification>
