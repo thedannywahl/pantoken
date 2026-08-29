@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>bpl1lvauw</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/9bb0c94a-6663-40e5-81b3-aeec4c9dd1db/tasks/bpl1lvauw.output</output-file>
+<status>completed</status>
+<summary>Background command "Backfill all missing GitHub releases (releases-only)" completed (exit code 0)</summary>
+</task-notification>
