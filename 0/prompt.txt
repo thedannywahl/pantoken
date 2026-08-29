@@ -1,0 +1,100 @@
+<task-notification>
+<task-id>ae1fbfb82c4e2a305</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/ae1fbfb82c4e2a305.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore toCss plugin CSS contributions" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture. Here is my report.
+
+---
+
+## Summary
+
+The lean mode's flatten-`@property`-to-declaration behavior should also cover plugin-contributed `c.properties`, but as of today **no shipped plugin emits any `c.properties`**, and the default `@pantoken/css` sheet passes **no plugins at all**. So "include css plugins in the scope" is mostly future-proofing plus fixing one inconsistency in `appendContribution`. Details below.
+
+## 1. How `toCss`'s `plugins` mechanism works
+
+**File: `formats/css/src/to-css.ts`**
+
+- The base loop (lines 71–74) splits tokens: contextual values (`var(...)` / `light-dark(...)`, detected by `isContextual`, line 12) become `:root` declarations; everything concrete becomes a typed `@property` via `PropertyRule`.
+- After the base sheet is built, plugins run (lines 88–92): only plugins that define a `css` hook are kept (`checkPlugins(plugins, "css")` from `@pantoken/plugin-kit`). Each hook receives `{ tokens, css }` and may return a `CssContribution`.
+- `appendContribution` (lines 97–110) emits the contribution:
+  - `c.prepend` → prepended raw CSS.
+  - `c.properties` → **`@property` blocks**, with `inherits: true` **hardcoded** (lines 99–104). Note: unlike the base loop, this path has **no `isContextual` guard** — a plugin passing a `var()`/`light-dark()` initial-value would emit an invalid `@property`.
+  - `c.declarations` → a `:root { --n: v; }` block (lines 105–107).
+  - `c.append` → appended raw CSS.
+- Final assembly (line 94): `[...prepends, css, ...appends]`.
+
+**Does the shipped default sheet pass any plugins? No — confirmed.** `formats/css/src/index.ts:29` is `export const css: string = toCss(tokens);` with no options/plugins. The `@pantoken/css` shipped stylesheet contains only the base token output.
+
+Consumers that *do* pass plugins: `renderers/astro/src/index.ts:57` (`pantokenCss` forwards caller `plugins`) and `renderers/pendo/src/build.ts` (postcss prune, not a `css` hook).
+
+## 2. Inventory of CSS-contributing plugins
+
+| Package (path) | Kind | Contributes to token/component sheet? |
+|---|---|---|
+| `@pantoken/plugin-colors` (`plugins/pantoken/colors/src/index.ts`) | **Not a `PantokenPlugin`** — pure helper functions (`alpha`, `darken`, `lighten`, `overlayColors`, `onColor`). No `css` hook, no `definePlugin`. | Used at **authoring time** inside `formats/components` CSS (e.g. `formats/components/src/components/button.ts:4`). Emits inline `color-mix()` / relative-color expressions. Never reaches `toCss` plugins; no `@property`. |
+| `@pantoken/plugin-theme-custom-media` (`plugins/postcss/theme-custom-media/src/index.ts`) | **PostCSS plugin** (not a `css` hook). | Used by `formats/components/scripts/component-styles.ts:45` (and `formats/components/vite.config.ts:60` via `#build`) to lower `@media (--theme-*)`/`(theme:*)` branches for the components sheet. Rewrites/prunes `@media`; contributes no `@property` or declarations. |
+| `@pantoken/plugin-prune-custom-props` (`plugins/postcss/prune-custom-props/src/index.ts`) | **PostCSS plugin.** | Used in `renderers/pendo/src/build.ts:100`. Drops unused `@property` registrations + declarations. Reductive only. |
+| `@pantoken/plugin-kit` (`packages/plugin-kit/src/index.ts`) | Helper (`checkPlugins`, `definePlugin`). | Not a CSS contributor. |
+| **`transition`** (`plugins/pantoken/transition/src/index.ts:108`) | `PantokenPlugin` **`css` hook.** | Returns `c.declarations` (`--instui-transition-duration`, `--instui-transition-timing`) when not already present as tokens, plus raw `append`/`prepend` transition rules. **No `c.properties`.** |
+| **`stacking`** (`plugins/pantoken/stacking/src/index.ts:85`) | `css` hook. | Returns `c.declarations` (z-index scale) when absent, plus raw `append` rules. **No `c.properties`.** |
+| **`logos`** (`plugins/pantoken/logos/src/index.ts:184`) | `css` hook. | Returns raw `append`/`prepend` `LOGOS_CSS` (the `--instui-logo-*` image tokens as `url(data:…)`). **No `c.properties`.** |
+| **`visual-debug`** (`plugins/pantoken/visual-debug/src/index.ts:61`) | `css` hook. | Returns raw `append`/`prepend` `.-with-visual-debug` outline rules. **No `c.properties`.** |
+
+`plugins/pantoken/primitives` and `plugins/pantoken/simple-icons` have **no `css` hook** (grep for `css:`/`css(` returned only the four above).
+
+**Confirmed: no plugin anywhere sets `properties:` in a `CssContribution`.** (The only `properties:` hits in the repo are `packages/core/src/icon-assets.ts` — unrelated SVG metadata — and doc/base-loop code in `formats/css`.)
+
+## 3. What appears in `@pantoken/css` vs `@pantoken/components`
+
+- **Shipped `@pantoken/css` (`css` export):** base tokens only — **zero plugin output**, because `toCss(tokens)` gets no plugins. Plugin `css`-hook output appears only when a consumer explicitly passes plugins (astro `pantokenCss`, manual `toCss` calls, the plugin docstring examples).
+- **`@pantoken/components` sheets:** built on a **separate path** — authored CSS composed via `formats/components/src/lib`, then lowered by the PostCSS `themeCustomMedia` plugin (`component-styles.ts`). They do **not** go through `toCss`'s `css`-hook mechanism. `plugin-colors` helpers are baked into that authored CSS at build time.
+
+So "including css plugins in scope" for the lean sheet is about the **`toCss` `css`-hook path** (the `appendContribution` `@property` branch), not the components pipeline.
+
+## 4. Animatable/typed vs inert plugin properties
+
+- Because no shipped plugin emits `c.properties`, there are currently **no plugin-contributed typed `@property` registrations**. Nothing today "must stay typed."
+- All current plugin values flow through `c.declarations` or raw `append`/`prepend`: transition `duration`/`timing` (a `&lt;time&gt;` and a timing function), the `stacking` z-index integers, logo `url(data:…)`, and debug outline rules. These are emitted as plain declarations by design — the transition plugin deliberately chose `declarations` over `properties` even though `--instui-transition-duration` is nominally a `&lt;time&gt;` that could be animated.
+- The only reason a custom property *must* be a real `@property` is if it's interpolated/animated/transitioned and needs typed interpolation (a `&lt;color&gt;`, `&lt;length&gt;`, `&lt;angle&gt;`, `&lt;time&gt;` that a keyframe or `transition` animates). No plugin exercises that today.
+
+## 5. Type definitions (`@pantoken/model`, `packages/model/src/index.ts`)
+
+`PropertyRule` (lines 99–104):
+```ts
+export interface PropertyRule {
+  name: string;
+  syntax: string;
+  value: string;
+}
+```
+
+`CssContribution` (lines 106–118):
+```ts
+export interface CssContribution {
+  prepend?: string;
+  append?: string;
+  properties?: PropertyRule[];
+  declarations?: [string, string][];
+  marker?: string;
+}
+```
+
+`PantokenPlugin` (lines 148–161) — every hook optional; relevant one is `css?(ctx: CssHookContext): CssContribution | void`. `CssHookContext` (lines 133–137) is `{ tokens: Token[]; css: string }`.
+
+## Deliverable: what "include css plugins in the scope" should mean concretely
+
+The lean mode flattens the **base loop's** typed `@property` registrations into `:root` declarations. Plugin output is emitted separately by `appendContribution`, whose `c.properties` branch (`to-css.ts:99–104`) still writes `@property` blocks. "Include css plugins in the scope" means:
+
+**In lean mode, route plugin-contributed `c.properties` through the same flatten-to-declaration treatment** — i.e. `appendContribution` should, in lean mode, emit each `PropertyRule` as a `--name: value;` `:root` declaration (merged with `c.declarations`) instead of an `@property` block. Raw `c.prepend`/`c.append`/`c.declarations` are already declaration-shaped and need no change.
+
+Practical notes for the plan:
+- **No shipped plugin uses `c.properties`,** so this change is a no-op for the current plugin ecosystem and for the default sheet (which passes no plugins). It matters for third-party/consumer plugins that pass typed properties.
+- **This flattening is also a correctness fix:** `appendContribution` currently emits `@property` for plugin properties with a hardcoded `inherits: true` and **no `isContextual` guard**, so a plugin passing a `var()`/`light-dark()` initial-value already produces an invalid `@property`. Lean flattening sidesteps that.
+- **"Must stay typed" set is empty today.** If a future plugin needs a genuinely animatable typed property, it would need an explicit opt-out (e.g. a per-property "keep typed" flag), since lean mode's whole point is to drop `@property`. Worth flagging as a design question, but nothing in the repo requires it now.
+
+Key file paths (repo-root-relative): `formats/css/src/to-css.ts`, `formats/css/src/emit.ts`, `formats/css/src/index.ts`, `packages/model/src/index.ts`, `packages/plugin-kit/src/index.ts`, `plugins/pantoken/{transition,stacking,logos,visual-debug,colors}/src/index.ts`, `plugins/postcss/{theme-custom-media,prune-custom-props}/src/index.ts`, `formats/components/scripts/component-styles.ts`, `renderers/astro/src/index.ts`, `renderers/pendo/src/build.ts`.</result>
+<usage><subagent_tokens>42964</subagent_tokens><tool_uses>20</tool_uses><duration_ms>145118</duration_ms></usage>
+</task-notification>
