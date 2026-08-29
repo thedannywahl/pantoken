@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>btksbrped</task-id>
+<tool-use-id>toolu_01XAkFAaMxtTs7Z8th77Tz3s</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/b23a51be-7c3d-47d9-91dd-ad98fbc5ddc0/tasks/btksbrped.output</output-file>
+<status>killed</status>
+<summary>Monitor "docs build completion/error" stopped</summary>
+</task-notification>
