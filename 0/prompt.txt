@@ -1,0 +1,3 @@
+* rename the labels for base and utilities to just 'base' and 'utilities' and append an info icon and a context-view with a brief blurb of what's included (only for these two, not all components)
+* create the shared helper for CdnPicker and IconPicker for the next task
+* add a top-level tab for web-components that works like components. it should support either the module export version or the iife version
