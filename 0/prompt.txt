@@ -1,0 +1,46 @@
+<task-notification>
+<task-id>a1a4bf378b4ab4e22</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/5abcd71e-4852-415e-94f8-1570a31e9ef2/tasks/a1a4bf378b4ab4e22.output</output-file>
+<status>completed</status>
+<summary>Agent "Find docs Vue components for tables" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I now have the complete picture. Here's my report.
+
+## Report: token/API table rendering in the pantoken VitePress docs
+
+### 1. Docs site location and theme directory
+- **Docs site root:** `/Users/dwahl/Scripts/pantoken/docs/` (VitePress). Package: `/Users/dwahl/Scripts/pantoken/docs/package.json`.
+- **VitePress config:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts`
+- **Theme directory:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/`
+  - `index.ts` — theme entry (extends DefaultTheme, imports the generated CSS bridges and component sheets)
+  - `Layout.vue`, `theme.ts`, `pantoken.css` (the docs-only override sheet, 109 lines)
+  - `components/` — only `VPNavBarExtra.vue` and `ThemeSelector.vue` (nav/theme-switcher; **not** table-related)
+- The only other Vue files are `docs/.vitepress/plugins/vitepress-mermaid/index.vue` (mermaid) — none render tables.
+
+### 2. Key conclusion: the docs token tables are plain markdown, not Vue components
+The "Tokens consumed" tables you see on pages like `/Users/dwahl/Scripts/pantoken/docs/api/css/color.md` (and every `docs/api/css/*.md`) are **plain markdown tables** with columns `| Token | Type | Value |`. There is currently **no Vue component, swatch, or visual preview** rendered in these tables. Value cells are just backticked code spans.
+
+- **Who emits the table:** the external package `@cssdoc/markdown` at `/Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@cssdoc+markdown@0.7.9/node_modules/@cssdoc/markdown/dist/index.mjs` (see the `## Tokens consumed` block ~line 284). The Value cell is literally `code(info?.value)` — no HTML injection hook.
+- **Who drives it in this repo:** `/Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts`. Its `resolveToken(name)` (lines 123–128) returns `{ syntax, value }` strings only — the value is resolved to primitives and then backticked. This is the only pantoken-owned seam into the table, and it can't emit markup (value is wrapped in `code()`).
+
+### 3. How image-valued tokens currently appear (your detection signal)
+Image tokens render in the same table with **Type `&lt;image&gt;` or `&lt;url&gt;`** and a `url('data:image/svg+xml;utf8,…')` value. Real examples in `/Users/dwahl/Scripts/pantoken/docs/api/css/alert.md` (lines ~117–119), e.g. `--instui-icon-circle-check` → Type `&lt;image&gt;`, Value `url('data:image/svg+xml;utf8,%3Csvg…')`.
+- The type is assigned in `build-css-api.ts`: `inferSyntax` returns `&lt;url&gt;` for `url(|data:` values (line ~53), and `PROPERTY_SYNTAX` maps `glyph` name tokens to `&lt;url&gt;` (line ~86). So **"image-valued" = Type cell is `&lt;image&gt;`/`&lt;url&gt;`, or Value matches `url(...)`/`data:`**.
+
+### 4. The existing swatch / color-preview pattern (exists, but NOT wired into the docs site)
+There is a prior-art "visual preview beside a value" pattern, but it lives in the **standalone markdown renderers**, not the VitePress pipeline:
+- `/Users/dwahl/Scripts/pantoken/renderers/markdown-it/src/index.ts` — `swatchHtml()` (lines 111–115) emits `&lt;span class="pantoken-color-swatch" data-color-code="…"&gt;&lt;span class="pantoken-color-swatch__chip" style="background:…"&gt;&lt;/span&gt;…&lt;/span&gt;`. Detection is regex-based (`COLOR_RE`, line 76) over inline text. Toggled by the `swatches` option.
+- `/Users/dwahl/Scripts/pantoken/renderers/react-markdown/src/components.tsx` (lines ~81–100) — reads a `data-color-code` attribute and renders an inline-flex chip (`background: colorCode`) + `&lt;code&gt;`. Class `pantoken-color`.
+- **Important caveat:** this `pantokenMarkdownIt` plugin is **not registered** in the docs `config.ts`. The docs `markdown.config` only wires `mermaidPlugin` and `demoMarkdownIt` (config.ts lines 404–437). I found **no CSS defining `.pantoken-color-swatch`** anywhere in the repo's own sheets (`formats/components/src` or `generated/`), so even the chip styling isn't present in the docs bundle. Net: the swatch pattern is a design reference, not a live docs feature.
+
+### 5. The real integration precedent for what you want to add
+The closest live mechanism — and the pattern to follow — is **`demoMarkdownIt`** (`@pantoken/demo`), wired in `config.ts` lines 406–436. It post-processes generated markdown at compile time: it matches pages by `relativePath` (`match:` targets `api/css/**` and the web-components variables pages) and seams extra HTML (`wrap:` a `.css-example` / `.instui-card`) onto `@example` fences. An inline image preview below image-valued token rows would naturally be a sibling markdown-it plugin registered the same way in `config.ts`, walking the rendered token-table rows and injecting an `&lt;img&gt;`/preview when the Type cell is `&lt;image&gt;`/`&lt;url&gt;`.
+
+### 6. Styling conventions for preview/example elements
+- Docs-only overrides live in `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/pantoken.css`. It already styles the live-example seam: `.css-example` (lines 31–40: bordered, page-bg frame, `--vp-c-divider` border, 8px radius, 12px padding) and the `div[class*="language-"]:has(+ .css-example)` fence-joining rules. This is the established place and idiom for any new preview element's CSS.
+- Colors use InstUI tokens via the VitePress bridge (`--vp-c-*` → `var(--instui-*)`), generated by `/Users/dwahl/Scripts/pantoken/renderers/vitepress/src/index.ts` and imported as `@pantoken/vitepress/custom.css`. Prefer `--vp-c-divider`, `--vp-c-bg-soft`, etc. for consistency.
+
+**Bottom line for your plan:** there's no existing per-cell preview component in the docs to extend — value cells are plain `code()` output from `@cssdoc/markdown`. The right hook is a new markdown-it post-processing plugin registered in `docs/.vitepress/config.ts` (mirroring `demoMarkdownIt`), detecting rows whose Type is `&lt;image&gt;`/`&lt;url&gt;` (or whose Value is `url(...)`/`data:`), with styling added to `docs/.vitepress/theme/pantoken.css`. The `pantoken-color-swatch` chip markup in the markdown-it/react-markdown renderers is the design pattern to echo, but it is not currently active in the docs.</result>
+<usage><subagent_tokens>67013</subagent_tokens><tool_uses>28</tool_uses><duration_ms>174119</duration_ms></usage>
+</task-notification>
