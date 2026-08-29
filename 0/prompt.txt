@@ -1,0 +1,1 @@
+I want to update the vite taask for claude to default to that model.
