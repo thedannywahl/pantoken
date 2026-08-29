@@ -1,0 +1,1 @@
+forget making it async, it's good now.  are we also cacheing the new prose translations so that we don't generate ~1,700 chunks again in the future?
