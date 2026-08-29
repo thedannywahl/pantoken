@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>baetvr50t</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/fe9c6a89-7dbe-4817-8dce-af28838c5648/tasks/baetvr50t.output</output-file>
+<status>completed</status>
+<summary>Background command "Watch fresh canary to completion" completed (exit code 0)</summary>
+</task-notification>
