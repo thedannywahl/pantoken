@@ -1,0 +1,1 @@
+instead of post-processing the sidebar, write a proposal for a modification of cssdoc that we can send.
