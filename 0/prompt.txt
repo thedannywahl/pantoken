@@ -1,0 +1,83 @@
+<task-notification>
+<task-id>a88be2fb190e4c5d4</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/a88be2fb190e4c5d4.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore web-components packaging" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture. Here's my report.
+
+## Package: `@pantoken/web-components`
+
+Location: `/Users/dwahl/Scripts/pantoken/renderers/web-components/`
+
+### 1. package.json
+File: `/Users/dwahl/Scripts/pantoken/renderers/web-components/package.json`
+
+- **name**: `@pantoken/web-components` (version `0.1.1`)
+- **type**: `module`
+- **main / module / browser**: none of these fields exist. Entry is defined only through `exports`.
+- **exports**:
+  ```json
+  {
+    ".": "./dist/index.mjs",
+    "./components.css": "./dist/components.css",
+    "./*.css": "./dist/*.css",
+    "./package.json": "./package.json"
+  }
+  ```
+  ESM-only (`.mjs`). No `require`/CJS condition, no `browser` condition, no separate `register` subpath.
+- **files**: `["dist"]`
+- **sideEffects**: not declared (absent). This matters — the module runs a top-level `register()` at import time, so it is genuinely side-effectful; the absence of `"sideEffects": false` is what keeps a bundler from tree-shaking the auto-registration away.
+- **scripts**: `generate` (`node scripts/generate.ts`), `dev`, `test` (`vp test`), `check` (`vp check`), `prepublishOnly` (`vp run build`). The build task itself is defined in `vite.config.ts` under `run.tasks.build`: `node scripts/generate.ts` → `node scripts/build-entries.ts` → `vp pack`.
+- **dependencies**: `@pantoken/components`, `@pantoken/icons`, `@pantoken/model` (all `workspace:*`).
+- Also exposed through the umbrella package as `pantoken/webComponents` (`/Users/dwahl/Scripts/pantoken/packages/pantoken/package.json`, export `./webComponents` → `./dist/webComponents.mjs`).
+
+### 2. JS output organization
+Built by `vp pack` (vite-plus). See `/Users/dwahl/Scripts/pantoken/renderers/web-components/vite.config.ts`.
+
+- **One single bundled ESM file**: `dist/index.mjs` (~1648 lines) plus types `dist/index.d.mts`. All 30 element definitions are bundled into this one file — not per-component files.
+- **No IIFE / UMD / global build exists.** Grepping the whole package for `iife|umd|globalName` returns nothing.
+- The bundle keeps two **external bare imports** un-bundled at the top of `dist/index.mjs`:
+  - `import { ...Css, elevationDeclarations, focusOutlineDeclarations } from "@pantoken/components"`
+  - `import { resolve } from "@pantoken/icons"`
+- CSS files emitted to `dist/` are per-record co-located reset/gate sheets plus an aggregate: `dist/components.css` (aggregate) and per-element files like `dist/tooltip.css`, `dist/calendar.css`, `dist/date-input.css`, `dist/drawer-layout.css`, `dist/pages.css`, `dist/drilldown.css`, `dist/date-time-input.css`, `dist/popover-reset.css`. Naming = `&lt;record&gt;.css`, matched by the `./*.css` export.
+
+### 3. Consumer registration
+Public API lives in `/Users/dwahl/Scripts/pantoken/renderers/web-components/src/index.ts`.
+
+- **`register(target?, options?)`** — `target` defaults to `globalThis.customElements`; no-op when there's no DOM (SSR-safe). `options.prefix` sets the tag prefix, mirroring the CSS layer. A hyphen is required for custom elements, so an empty/nullish prefix falls back to `DEFAULT_PREFIX = "instui"` → `&lt;instui-button&gt;`; `{ prefix: "x" }` → `&lt;x-button&gt;`.
+- **Auto-registration**: the module calls `register()` at the bottom (line 409 in src, `register();` in dist), so a bare `import "@pantoken/web-components"` registers everything in the browser automatically.
+- **All-or-nothing.** `register()` iterates `DEFINITIONS` (all 30 elements from `src/elements/index.ts`) and defines each. The individual element definitions (`button`, `alert`, …) are exported, but each is an `ElementDefinition` whose `.define(ctx)` needs a `RegisterContext` that only `register()` builds internally. There is no public path to register/import a single component standalone — you get the full set.
+- Also exported: `iconSvg(name, resolve?)`, `foundationCss()`, `ELEMENTS` (tuple of base names), `DEFAULT_PREFIX`, `DEFINITIONS`, and the type exports.
+
+### 4. CSS into the shadow root
+Confirmed: components **inline their own CSS into shadow DOM**; they do not depend on an external component stylesheet at runtime. Mechanism:
+
+- The generic `wrapper()` in `src/index.ts` writes `this.shadowRoot.innerHTML = \`&lt;style&gt;:host{display:${display}}${css}&lt;/style&gt;${render(host)}\``. The `css` comes from `@pantoken/components` CSS-as-JS functions, e.g. `buttonCss(ctx.I)` — these are string-returning functions (`const buttonCss = button.css` in `/Users/dwahl/Scripts/pantoken/formats/components/dist/index.mjs`, package `@pantoken/components`). Prefix `I` is always `"instui"` for the class names.
+- Co-located element CSS is inlined via Vite's `?inline` import (types in `src/css.d.ts`): e.g. `tooltip.ts` does `import tooltipGate from "./tooltip.css?inline"` and `calendar.ts` does `import calendarReset from "./calendar.css?inline"`, appended into the shadow `&lt;style&gt;`. These string literals get baked into `dist/index.mjs` at build time.
+- The `scripts/generate.ts` + `scripts/build-entries.ts` step concatenates `src/elements/*.css` and `src/lib/*.css` into `generated/components.css` (aggregate) and per-record `generated/&lt;name&gt;.css` — but these feed the **CSS subpath exports** (`@pantoken/web-components/tooltip.css`), not the shadow injection.
+- Note on the `scripts/styles.ts` codegen you mentioned: `src/generated/styles.ts` carries a header "AUTO-GENERATED from src/**/*.css by scripts/styles.ts", but no such script exists in this package's `scripts/` (only `generate.ts` and `build-entries.ts`); the only `scripts/styles.ts` is under a git worktree at `.claude/worktrees/cssdoc-migration-c2d14c/...`. And `src/generated/styles.ts` has **no importers** in `src/` — it appears to be a stale/orphaned artifact. The live shadow-CSS path is the `?inline` imports plus the `@pantoken/components` `*Css()` functions.
+- **Tokens are NOT inlined.** The `--instui-*` custom properties are inherited and pierce the shadow boundary, so consumers must load `@pantoken/css` (a token sheet) in the document. `register()` additionally injects a one-time `:root` `&lt;style id="pantoken-foundation"&gt;` (`foundationCss()`) carrying the elevation scale and focus-outline properties, since those live in the components/base layer, not the token sheet.
+
+### 5. Browser-ready standalone vs bundler-only
+**Bundler/ESM-only. There is no drop-in `&lt;script src&gt;` build.**
+
+- The only JS artifact is `dist/index.mjs`, an ESM module with two unresolved bare specifiers (`@pantoken/components`, `@pantoken/icons`). A plain `&lt;script type="module" src="…/index.mjs"&gt;` from a CDN will fail unless those bare imports are resolved — via an import map, or via an ESM CDN that rewrites specifiers (e.g. `https://esm.sh/@pantoken/web-components` or `.../@pantoken/web-components/+esm` on jsDelivr, which would also pull `@pantoken/components` and `@pantoken/icons`).
+- No IIFE/UMD/global-name output and no dedicated "register" bundle exist to point a classic CDN `&lt;script&gt;` at.
+- Even via an ESM CDN, the runtime still needs a token sheet (`@pantoken/css`) loaded in the document for colors/spacing to resolve; the component look CSS and icon SVGs travel inside the JS (icon glyphs come from `@pantoken/icons` `resolve`).
+
+**CDN implication:** an ESM import URL is viable (`import "@pantoken/web-components"` → auto-registers all elements); a raw `&lt;script src&gt;` classic-global drop-in is not currently producible from this package without adding an IIFE/UMD bundle target.
+
+### 6. Interdependencies and shared runtime
+- **External package deps at runtime**: `@pantoken/components` (CSS-as-JS `*Css()` functions + `elevationDeclarations`/`focusOutlineDeclarations`), `@pantoken/icons` (`resolve` for glyphs), `@pantoken/model` (types only). Token CSS is a separate external concern (`@pantoken/css`).
+- **Shared internal runtime**:
+  - `src/lib/context.ts` — the `RegisterContext` / `ElementDefinition` contract and `ElementRegistry` adapter. Every element registers through the one shared, prefix-aware context that `register()` builds.
+  - `src/lib/helpers.ts` — pure string/date/spacing helpers (`esc`, `frag`, `applySpacing`, ISO-date utils).
+  - `withSpacing()` mixin in `src/index.ts` wraps every element so `margin`/`padding` attributes work universally.
+  - `src/lib/popover-reset.css` and per-element `?inline` CSS.
+- **Registration order is load-bearing** (`src/elements/index.ts` `DEFINITIONS`): `date-input` renders a nested `calendar`, and `date-time-input` renders a nested `date-input`, so those must be defined in order. This coupling is another reason single-component registration isn't offered — nested elements assume their dependencies are already defined.
+
+**Bottom line for CDN:** point an ESM CDN URL at the package root (resolves to `dist/index.mjs`, auto-registers all 30 `instui-*` elements on import, prefix overridable only by calling `register(customElements, { prefix })` yourself instead of relying on auto-registration). There is no CDN-droppable classic `&lt;script src&gt;` build today, and consumers still need a `--instui-*` token sheet in the page.</result>
+<usage><subagent_tokens>53544</subagent_tokens><tool_uses>20</tool_uses><duration_ms>153198</duration_ms></usage>
+</task-notification>
