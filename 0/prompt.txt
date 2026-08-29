@@ -1,0 +1,97 @@
+<task-notification>
+<task-id>a8c77703eb038d80f</task-id>
+<tool-use-id>toolu_015CFbEa43P5RryR9r6zH3e5</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/7d3eefd3-3a14-4830-8fa8-61a363c617ba/tasks/a8c77703eb038d80f.output</output-file>
+<status>completed</status>
+<summary>Agent "Research VitePress code-fence + copy button internals" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>## Summary
+
+VitePress's code-fence + copy-button system is split cleanly into two independently-reusable pieces: a **markdown-it plugin that emits a plain HTML string at build time** (no Vue/directive involvement), and a **single global delegated DOM click-listener** that the client app wires up once. The Shiki highlighting itself is 100% Node/build-time and isn't shipped to the browser at all. Below are the exact files/lines, followed by the reuse implications.
+
+All paths resolve through the pnpm symlink `docs/node_modules/vitepress -&gt; ../../node_modules/.pnpm/vitepress@2.0.0-alpha.19_.../node_modules/vitepress`. Everything under `dist/node` is bundled into one file, `dist/node/chunk-B0BRqWJx.js` — there's no separate `highlight.ts`/`.js` in `dist/`, it's inlined.
+
+### 1. HTML structure — generated as a plain string, at build time
+
+`.../vitepress/dist/node/chunk-B0BRqWJx.js:21221-21226` — `preWrapperPlugin(md, options)`:
+
+```js
+md.renderer.rules.fence = (...args) =&gt; {
+  ...
+  return `&lt;div class="language-${lang}${active}"&gt;&lt;button title="${tooltipText}" data-copied="${copiedText}" class="copy"&gt;&lt;/button&gt;&lt;span class="lang"&gt;${label}&lt;/span&gt;` + fence(...args) + "&lt;/div&gt;";
+};
+```
+
+This is a **markdown-it renderer-rule override that string-concatenates HTML** — it wraps whatever the base `fence` renderer (Shiki's `codeToHtml` output) produced. Nothing here is a Vue component, directive, or client-side hydration step. The final structure, in DOM order, is:
+
+```html
+&lt;div class="language-js"&gt;
+  &lt;button title="Copy Code" data-copied="Copied" class="copy"&gt;&lt;/button&gt;
+  &lt;span class="lang"&gt;js&lt;/span&gt;
+  &lt;pre class="shiki ..."&gt;&lt;code&gt;...&lt;span class="line"&gt;...&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+```
+
+Sibling order matters — see §2.
+
+### 2. The copy button's click handler — global delegated listener, DOM-agnostic
+
+`.../vitepress/dist/client/app/composables/copyCode.js:4-39` — `useCopyCode()`:
+
+```js
+window.addEventListener('click', (e) =&gt; {
+  const el = e.target;
+  if (el.matches('div[class*="language-"] &gt; button.copy')) {
+    const parent = el.parentElement;
+    const sibling = el.nextElementSibling?.nextElementSibling; // &lt;pre&gt; tag
+    ...
+    const clone = sibling.cloneNode(true);
+    ...
+    let text = clone.textContent || '';
+    const lang = /language-(\w+)/.exec(parent.className)?.[1] || '';
+    if (isShell(lang)) text = text.replace(/^ *(\$|&gt;) /gm, '').trim();
+    copyToClipboard(text).then(() =&gt; { el.classList.add('copied'); ...});
+  }
+});
+```
+
+Registered exactly once, for the app's lifetime, in `dist/client/app/index.js:6,45` — inside the root `VitePressApp` component's `setup()` (comment: `// setup global copy code handler`), alongside `useCodeGroups()`.
+
+**This is a real `window`-level delegated listener using `Element.matches()`** — it has zero knowledge of how the matching DOM got there. It doesn't care whether the `&lt;div class="language-*"&gt;` came from pre-rendered markdown HTML or was rendered at runtime by any Vue component. **Answer to your question (a): yes, it will fire correctly for a Vue-rendered structure**, provided the DOM shape matches exactly:
+
+- Element clicked must satisfy `div[class*="language-"] &gt; button.copy` (direct child, not just descendant).
+- `parent.className` must contain `language-&lt;lang&gt;` (used only to special-case shell prompts).
+- Critically: `el.nextElementSibling.nextElementSibling` must be the `&lt;pre&gt;` element — i.e., **the button must be followed by exactly one sibling before the `&lt;pre&gt;`** (the `&lt;span class="lang"&gt;`, even if you don't need/want a visible label — you can render it empty/hidden but it must occupy that sibling slot, or the copy handler will grab the wrong node or `undefined`).
+- `copyToClipboard` (same file, lines 42-77) does `navigator.clipboard.writeText`, falling back to a `document.execCommand('copy')` textarea hack — same behavior as your current bespoke button, no VitePress-specific state needed.
+- Visual feedback (`.copied` class, tooltip swap) is handled purely via CSS (`data-copied` attribute + `::before` content), not JS — see §4.
+
+### 3. Shiki highlighting — Node-only, not reusable client-side without adding a new dependency
+
+`.../vitepress/dist/node/chunk-B0BRqWJx.js:21544-21677` — `async function highlight(theme, options, logger)` calls `createHighlighter(...)` (imported from `shiki`, confirmed via `grep -n "shiki\|createHighlighter" chunk-B0BRqWJx.js:29-30`) and `highlighter.codeToHtml(str, {...})`. This whole function is `async`, uses dynamic `highlighter.loadLanguage(...)`, and is invoked from the markdown-it config pipeline during the Node build — it's never bundled into `dist/client`:
+
+```
+grep -rl "shiki" dist/client → only dist/client/theme-default/styles/components/vp-code.css
+```
+
+That CSS file (`.shiki span { color: var(--shiki-light/dark, inherit) }`) is pure CSS reading inline custom-properties Shiki injects per `&lt;span&gt;` — no JS. So Shiki's runtime footprint on the client is **zero**; it's exclusively a devDependency-side, build-time tool.
+
+Confirmed in `vitepress`'s own `package.json`: `shiki@^4.4.1`, `@shikijs/core`, `@shikijs/transformers`, `@shikijs/types` are all under vitepress's **regular `dependencies`**, and none appear anywhere in `dist/client`. In this repo's own manifests, `docs/package.json` has no `shiki`/`@shikijs/*` entry at all (only `vitepress: catalog:` at `docs/package.json:59`); `pnpm-lock.yaml` shows `shiki@4.4.1` and the `@shikijs/*` family only as **transitive** entries pulled in by vitepress itself (lines ~4736-4780, ~8257, ~11176+), not as a direct project dependency.
+
+**Answer to (b):** Using Shiki client-side for the dynamic snippet would be a genuinely new client-bundle addition, not "free" — you'd need to add `shiki`/`@shikijs/*` directly to `docs/package.json` and call `createHighlighter`/`codeToHtml` yourself in the Vue component (Shiki does support browser/WASM usage, but it's still extra weight: the oniguruma/JS regex engine plus per-language grammar JSON, easily tens to a couple hundred KB depending on how many languages/themes you load and whether you use the WASM or pure-JS engine, fetched async). It is *not* pulled in "free" by vitepress's own client build, because vitepress's client only needs the CSS variables Shiki already baked into the pre-rendered HTML at build time — it never re-highlights in the browser.
+
+### 4. Precedent and existing CSS in this docs site
+
+- `docs/.vitepress/theme/pantoken.css:26-59` already targets **native** VitePress fences directly by selector — `div[class*="language-"]:has(+ .css-example)` and `.vp-doc div[class*="language-"]:has(+ .css-example)` — to seam code fences into `.css-example` preview frames used on CSS-API pages (`docs/.vitepress/config.ts:614-624`, the `liveExample` markdown-it hook). This confirms native `.language-*` fences are already used and styled elsewhere in this exact theme, and that theme CSS piggybacks on VitePress's default `.vp-doc [class*='language-']` rules rather than reimplementing them.
+- No existing Vue component in `docs/.vitepress/theme/` renders a runtime `.language-*`/`button.copy` structure — `PickerOutput.vue` (`docs/.vitepress/theme/components/PickerOutput.vue:55-64`) is the only dynamic code-block component, and it's fully bespoke (`.picker-output__code`, `.picker-output__copy` using InstUI button classes, plain `&lt;pre&gt;&lt;code&gt;{{ output }}&lt;/code&gt;&lt;/pre&gt;`, own `navigator.clipboard.writeText` in `copy()` at lines 24-32).
+- `PickerOutput.vue` is only ever used inside `CdnPicker.vue`, `IconPicker.vue`, `WebComponentsPicker.vue` (`grep` for `PickerOutput` import), which are embedded in normal markdown docs pages (e.g. `docs/guide/cdn-picker.md`). Those pages render through the theme's `Layout.vue` (`docs/.vitepress/theme/Layout.vue:1-9`), which is a thin wrapper (slots only) around VitePress's default `Layout` — so the default theme's `VPDoc.vue` still supplies the `.vp-doc` wrapper class (`node_modules/.pnpm/.../vitepress/dist/client/theme-default/components/VPDoc.vue:46`). **This matters**: nearly all of the native code-fence CSS is scoped under `.vp-doc` (e.g. `.vp-doc [class*='language-'] &gt; button.copy` at `vp-doc.css:491`), so a runtime-rendered block inside `PickerOutput.vue` on a normal doc page will already sit inside `.vp-doc` and pick up the full default styling automatically, with no extra CSS work.
+- Full relevant style block: `node_modules/.pnpm/.../vitepress/dist/client/theme-default/styles/components/vp-doc.css:338-583` — covers the outer `div[class*='language-']` container, `pre`/`code` padding and tab-size, `button.copy` (idle opacity 0, hover/focus opacity 1, `.copied` state swapping in `--vp-icon-copied` and a `content: attr(data-copied)` tooltip pseudo-element), and `span.lang` (absolute-positioned language label, fades out on hover so the copy button tooltip has room). These are all pure CSS variables (`--vp-code-copy-code-bg`, `--vp-code-lang-color`, etc.) — no JS wiring beyond the click listener in §2.
+
+### Direct answers
+
+**(a) Can you reuse VitePress's real copy-button handler as-is?** Yes. It's a single `window`-level delegated `click` listener (`copyCode.js:7`) registered once for the whole SPA lifetime by the root app (`app/index.js:45`), matched purely by CSS selector (`div[class*="language-"] &gt; button.copy`) and DOM sibling-position (`button.nextElementSibling.nextElementSibling` → `&lt;pre&gt;`). It has no awareness of build-time vs. runtime origin. To use it, your Vue component's render output must exactly match markdown-it's emitted shape: `&lt;div class="language-xxx"&gt;&lt;button class="copy" title="…" data-copied="…"&gt;&lt;/button&gt;&lt;span class="lang"&gt;xxx&lt;/span&gt;&lt;pre&gt;&lt;code&gt;…&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;` — same tag types, same sibling order (the `span.lang` slot is load-bearing for the sibling-walk even if you hide it), rendered inside a `.vp-doc`-ancestor page so the CSS applies.
+
+**(b) Is client-side Shiki realistically wireable?** Yes it's technically possible (Shiki ships a browser/WASM build), but it's a real new dependency you'd add to `docs/package.json` — not something already riding along in the client bundle. Budget for grammar/theme JSON payload and async `createHighlighter()`/`loadLanguage()` calls; it's comparable in shape to adding a lightweight syntax highlighter, not "turning on a switch."
+
+**(c) Minimal faithful approach:** Reuse the DOM shape from `preWrapperPlugin` (§1) and the `.vp-doc` CSS (§4) as-is — that gets you pixel-identical styling and the working native copy button (§2) for free, with zero new dependencies. The only piece VitePress can't give you for free on dynamic content is the syntax-highlighting `&lt;span&gt;`s themselves (§3): either accept plain/unhighlighted `&lt;code&gt;` text inside the native wrapper (still gets the real copy button + matching visual chrome), or take on Shiki client-side as a deliberate, separately-justified dependency addition if colored tokens are a hard requirement.</result>
+<usage><subagent_tokens>60223</subagent_tokens><tool_uses>29</tool_uses><duration_ms>239568</duration_ms></usage>
+</task-notification>
