@@ -1,0 +1,67 @@
+<task-notification>
+<task-id>a21c28e3bd592d0fa</task-id>
+<tool-use-id>toolu_01TLbanNf6TZy2WR1nSmTK3K</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/5fc59c52-1c24-40a9-a169-9cf87df10774/tasks/a21c28e3bd592d0fa.output</output-file>
+<status>completed</status>
+<summary>Agent "Find custom-media theme resolution in docs" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I now have a complete picture of the pipeline. Here are my findings.
+
+## Summary
+
+The docs CSS API page has **two separate rendering surfaces**, and the theme-override bug lives in the mismatch between them. The theme-conditional CSS (`@media (--theme-canvas)`) is **stripped at build time** and only re-injected into a sheet that the inline preview never loads.
+
+## 1. How `/api/css/:component` is rendered
+
+The pages are **generated Markdown artifacts**, not live-rendered components.
+
+- **Generator:** `/Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts` — drives `@cssdoc/typedoc`'s `emitCssApi` (with `@cssdoc/core`'s `parseCssDocs`, `@cssdoc/config`'s `CssDocConfigFile`). It writes `docs/api/css/**.md` and merges a "CSS" section into the TypeDoc sidebar.
+- **Config:** `/Users/dwahl/Scripts/pantoken/cssdoc.jsonc` (loaded via `CssDocConfigFile.loadForFolder(repoRoot)`), plus badge classes in `docs/scripts/api-badge-classes.ts`.
+- **Output for billboard:** `/Users/dwahl/Scripts/pantoken/docs/api/css/billboard.md` — a plain source fence, a "Tokens consumed" table, structure diagram, modifiers, etc. It does **not** emit raw per-state CSS rule blocks; theme-conditional hover colors are not documented here at all.
+- **Live preview seam:** the `@example` HTML fence is turned into a visible preview at compile time by `demoMarkdownIt` in `/Users/dwahl/Scripts/pantoken/tools/demo/src/index.ts` (lines 194–218), wired in `/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts` (lines 408–438). Crucially, for CSS-API pages the preview is rendered **inline in the main document** via `liveExample.wrap` (`&lt;div class="css-example"&gt;&lt;div class="instui-card"&gt;…&lt;/div&gt;&lt;/div&gt;`), *not* in an iframe. So it inherits the **main document's** stylesheets.
+
+## 2. How themes / `@custom-media` are resolved
+
+- **Theme switch is runtime, attribute-based:** `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/theme.ts` `applyTheme()` sets `&lt;html data-pantoken-theme="canvas"&gt;` and persists it. UI is `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/ThemeSelector.vue`; bootstrap in `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/index.ts` (line 42).
+- **Token *values* re-theme** via `site-themes.css` (`:root[data-pantoken-theme="…"]`), imported in `theme/index.ts` line 9.
+- **The `@media (--theme-*)` rules are lowered away at build time.** The shipped `@pantoken/components/components.css` is a single-theme (rebrand) sheet; the `themeCustomMedia` plugin prunes the canvas branches. This is documented verbatim in `/Users/dwahl/Scripts/pantoken/docs/scripts/lib/scope-components.ts` lines 6–19, which even names the billboard case:
+
+&gt; *"A theme rule that changes which TOKEN a property references (e.g. billboard's `-clickable:hover` border-color: `--instui-color-text-base` → `--instui-component-link-text-color`) can't be recovered by re-scoping token VALUES alone, so those overrides never appear when the reader switches themes."*
+
+- **The recovery mechanism** (`scopedComponentsCss` in `scope-components.ts`) diffs `componentsCss({theme:"rebrand"})` against `componentsCss({theme:"canvas"})`, then re-emits the canvas/canvasHighContrast-only rules **scoped under `:root[data-pantoken-theme="…"]`**. It writes this multi-theme sheet to `docs/public/demos-assets/components.css` (see `/Users/dwahl/Scripts/pantoken/docs/scripts/demos.ts` line 52).
+
+I confirmed the scoped override **does exist** in the staged artifact `/Users/dwahl/Scripts/pantoken/docs/public/demos-assets/components.css` (lines 5944–5973):
+
+```css
+/* canvas theme overrides — attribute-scoped for the docs runtime theme switch */
+:root[data-pantoken-theme="canvas"] .instui-billboard.-clickable:hover {
+    border-color: var(--instui-component-link-text-color);
+  }
+```
+
+## 3. Where the source CSS comes from (and the root cause)
+
+Two different sheets, and this is the bug:
+
+- **The markdown generator** (`build-css-api.ts` line 132) reads from `/Users/dwahl/Scripts/pantoken/formats/components/generated/*.css` — a **built artifact** (not `dist`, chosen because it retains doc comments). I confirmed `formats/components/generated/billboard.css` and `generated/components.css` are **rebrand-only**: no `@media (--theme-canvas)`, no scoped overrides. So the documented tokens/rules never carry the canvas hover value.
+- **The inline live preview** renders in the main document, which loads its component CSS from `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/index.ts` **line 12: `import "@pantoken/components/components.css"`** — the **single-theme rebrand sheet with the theme `@media` branches pruned**.
+
+The `demoMarkdownIt` `cssUrls` list in `config.ts` (lines 413–426), which *does* include `demos-assets/components.css` with the scoped canvas overrides, is **only used for iframe demos** (`resolveDemo` → runner `?css=`). The inline CSS-API `@example` preview (`live.wrap`, `index.ts` line 213) is plain in-page HTML and never receives those `cssUrls`.
+
+**Root cause:** When the reader selects "canvas", `data-pantoken-theme="canvas"` re-themes token *values*, but the billboard `-clickable:hover` rule loaded in the main document still points at `--instui-color-text-base` (from the pruned rebrand sheet). The rule that would repoint it to `--instui-component-link-text-color` (link) exists only in `demos-assets/components.css`, which the main document does not import. Result: the hover border "falls back to text" instead of resolving to link. This is precisely the failure `scope-components.ts` was written to prevent — the fix was applied to the `/play` iframe sheet but not to the main-document inline previews.
+
+## Key files
+
+- `/Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts` — page generator (reads `formats/components/generated/`)
+- `/Users/dwahl/Scripts/pantoken/docs/scripts/lib/scope-components.ts` — theme-override recovery logic (the diagnosis is in its header comment)
+- `/Users/dwahl/Scripts/pantoken/docs/scripts/demos.ts` — stages `public/demos-assets/components.css`
+- `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/index.ts` line 12 — main doc loads pruned single-theme `components.css` (the gap)
+- `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/theme.ts` — `applyTheme` / attribute toggle
+- `/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts` lines 408–438 — `demoMarkdownIt` wiring; `cssUrls` only reach iframes
+- `/Users/dwahl/Scripts/pantoken/tools/demo/src/index.ts` lines 194–218 — inline `liveExample` renders in-page, no `cssUrls`
+- `/Users/dwahl/Scripts/pantoken/formats/components/src/components/billboard.css` lines 85–127 — source with the `@media (--theme-canvas)` hover/focus/active overrides
+- `/Users/dwahl/Scripts/pantoken/docs/public/demos-assets/components.css` lines 5944–5973 — the scoped canvas override that exists but isn't loaded by the main document
+
+**Staleness note (surface #2, but relevant):** in `docs:dev` (package.json line 21), `docs:assets` (which runs `demos.ts` → `scopedComponentsCss` via the *built* `@pantoken/components` JS API) runs **before** `@pantoken/components#generate`. If the components package dist is stale, the staged `demos-assets/components.css` can lag the source. The staged file is currently fresh (regenerated today with the override present), so the live-visual bug is the loading gap above, not staleness — but running plain `vitepress dev` without `docs:assets` would serve a stale/missing asset.</result>
+<usage><subagent_tokens>62621</subagent_tokens><tool_uses>23</tool_uses><duration_ms>191224</duration_ms></usage>
+</task-notification>
