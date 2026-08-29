@@ -1,0 +1,1 @@
+pantoken has a skill in the @pantoken/ai package called `/create-pantoken-app` what's the current 2026 future-forward, modern best practice cutting edge way to use a bootstrap prompt to install and kickstart that skill for somebody that wants to try pantoken. think they're using claude cli, or gemini and want a one-liner to fire off the skill.
