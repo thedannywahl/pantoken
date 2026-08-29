@@ -1,0 +1,1 @@
+since CI on PRs now builds docs - can we simplify the docs.yml to use those assets? it runs on successful CI.
