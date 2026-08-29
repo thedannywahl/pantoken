@@ -1,0 +1,180 @@
+<task-notification>
+<task-id>a2a8a52b05d15f273</task-id>
+<tool-use-id>toolu_013RxtRdT9ofwELmrDgREGJF</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/028d6ae2-85d2-4001-bdcb-e047a6059788/tasks/a2a8a52b05d15f273.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore formats/components structure" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a thorough picture. Here's my report.
+
+# `formats/components` package — exploration findings
+
+Package root: `/Users/dwahl/Scripts/pantoken/formats/components`. It's `@pantoken/components` (v0.2.2) — a pure-CSS, InstUI-look component library derived entirely from the `--instui-*` token IR, with no dependency on the InstUI React packages.
+
+## 1. Overall structure
+
+**Manifest** — `/Users/dwahl/Scripts/pantoken/formats/components/package.json`
+- `"type": "module"`, `"sideEffects": ["**/*.css"]`.
+- Entry points via `exports`: main is `./dist/index.mjs`; individual prebuilt sheets are exposed as subpath exports (`./base.css`, `./components.css`, `./prose.css`, `./utilities.css`, `./fonts.css`, `./select.css`, `./icons.css`, `./component-icons.css`, plus a `./*.css` wildcard for per-component sheets).
+- `"pantoken": { "key": "components", "kind": "namespace" }`.
+- Dependencies: `@pantoken/plugin-colors`, `@pantoken/utils`; devDeps include `@cssdoc/config`, `@cssdoc/core`, `@pantoken/tokens`, `@pantoken/icons`, `@pantoken/plugin-theme-custom-media`.
+
+**Build scripts** (all under `scripts/`, run via `vite-plus`/`vp`):
+- `scripts/component-styles.ts` — compiles the `.css`-authored records into `src/generated/component-styles.ts` (a TS module of string constants, per theme).
+- `scripts/generate.ts` — emits the default shipped sheets into `generated/`.
+- `scripts/build-entries.ts` — emits the per-component `generated/&lt;name&gt;.css` files (build-only).
+- `scripts/fonts.ts` — `@font-face` emitter.
+- The `dev`/`test`/`check` scripts chain: build custom-media plugin → `component-styles.ts` → `generate.ts` → `build-entries.ts` → `vp pack`.
+
+**Directory layout** (`src/`):
+- `src/index.ts` — the barrel (compose/validate + `xxxCss` exports).
+- `src/lib/` — the compose API: `define.ts`, `css.ts`, `helpers.ts`, `aliases.ts`, `sentinel.ts`, plus `field-controls.ts`, `headings.ts`.
+- `src/components/` — 94 files: **43 `.css` records** (the migrated authoring source of truth) and **51 `.ts` files** (thin wrappers + a handful of still-TS-authored records like `button.ts`), plus `index.ts` (the `COMPONENTS` registry).
+- `src/utilities/`, `src/rules/`, `src/declarations/` — utility/rule/declaration records (each has its own `index.ts` registry).
+- `src/generated/` — `component-styles.ts` (auto-generated consts) and `_records.css` (internal cssdoc provider index, gitignored).
+- `generated/` — the committed, shipped output sheets (`components.css`, `base.css`, `prose.css`, `utilities.css`, one per component, etc.).
+- `tests/` — `_validate.ts`, `_css.ts`, `sheets.test.ts`, `parity.test.ts`, `public-surface.test.ts`.
+- Config: `cssdoc.jsonc` (scoped), root `/Users/dwahl/Scripts/pantoken/cssdoc.jsonc`, `vite.config.ts`, `tsconfig.json`.
+
+## 2. What a "record" looks like
+
+Two authoring styles converge on one `Definition` shape.
+
+**TS-authored record** (e.g. `/Users/dwahl/Scripts/pantoken/formats/components/src/components/button.ts`): calls `defineComponent({ name, css: (p) =&gt; css`…` })`, where `css` is an identity tagged-template and `${p}` is the prefix. The cssdoc doc comment is the leading `/** … */` inside the template.
+
+**CSS-authored record** (the majority, e.g. `tree-browser.css`): a real `.css` file where the class prefix is written as the sentinel `.pfx-` (`/Users/dwahl/Scripts/pantoken/formats/components/src/lib/sentinel.ts`). A thin `.ts` wrapper wires it up — `/Users/dwahl/Scripts/pantoken/formats/components/src/components/tree-browser.ts`:
+```ts
+export const treeBrowser = defineComponent({
+  name: "tree-browser",
+  css: (p) =&gt; treeBrowserRaw.replaceAll(SENTINEL, p),
+});
+export const treeBrowserCss = treeBrowser.css;
+```
+`SENTINEL = "pfx-"` (chosen because it never collides with `--instui-*` tokens, `--pantoken-*` custom props, or `pantoken-*` keyframes, keeps a valid `.alert` when the prefix is dropped, and — being lowercase-first — makes cssdoc treat it exactly like the real `instui-` prefix so the source `.css` lints).
+
+**The compose core** — `/Users/dwahl/Scripts/pantoken/formats/components/src/lib/define.ts`. `defineComponent`/`defineUtility`/`defineRule`/`defineDeclaration` all call `make(kind, input)`, returning a `Definition`:
+- `name`, `kind`
+- `rules(prefix, options)` — doc block + CSS body, what the aggregator concatenates
+- `css(options)` — the standalone header-wrapped sheet, what `xxxCss` returns
+
+`make()` splits the leading doc comment from the body (`splitLeadingDocComment`), then per-record appends alias twins to the **body only** (never the comment, so the alias post-processors' brace scanners don't see `{@link …}` braces).
+
+**Variants/modifiers/aliases** are declared in the cssdoc comment and mirrored in selectors:
+- **Modifiers**: `@modifier -color-secondary — A lower-emphasis secondary action.` matched by a `.-color-secondary` selector.
+- **Size aliases** (`src/lib/aliases.ts`): `withSizeAliases` auto-appends long-form twins (`.-size-sm` → `.-size-small`) and `withSizeAliasDocs` adds the matching `@modifier -size-small` line so the twin isn't undocumented.
+- **Deprecated aliases**: authored as metadata, e.g. in `alert.css`: `@modifier -has-shadow-false — @deprecated {@link -without-shadow}`. `deprecatedAliasPairs` regex-scans the comment (deliberately avoiding importing `@cssdoc/core`/postcss into the runtime bundle), and `withAliases` clones the canonical rule under the alias name with an `/* alias of … */` note.
+
+**`@scope`** refers to the CSS `@scope` at-rule that many records use to contain their descendant styles. Example from `/Users/dwahl/Scripts/pantoken/formats/components/src/components/tabs.css`:
+```css
+@scope (.pfx-tabs) {
+  :scope &gt; .list { display: flex; width: 100%; flex-flow: row wrap; }
+  .tab { appearance: none; … }
+}
+```
+These records carry a `@compat` note (e.g. `@compat Contains its element styles with the CSS @scope at-rule; needs a recent Chromium, Firefox, or Safari.`). Separately, the `prose` rule (`src/rules/prose.ts`) is parameterized by a `scope` **selector** option (default `.pantoken-prose`) rather than a class prefix.
+
+## 3. The robust cssdoc declarations, including `@structure`
+
+The cssdoc comment is the load-bearing metadata. Across `src/components/*.ts`+`.css`, the tags in use are: `@component`/`@utility`, `@summary`, `@remarks`, `@modifier`, `@part`, `@slot`, `@pseudo`, `@cssstate`, `@cssproperty`, `@a11y`/`@accessibility`, `@example`, `@structure`, `@related`, `@supports`/`@compat`, `@demo`. **28 records carry a `@structure` block.**
+
+`@structure` captures the **DOM/element hierarchy** as a nested, selector-shaped tree (elements, classes, attribute selectors, `:optional` markers). The root `cssdoc.jsonc` config (`/Users/dwahl/Scripts/pantoken/cssdoc.jsonc`) lists `structure` in `render.sectionOrder` and sets `"structureView": "both"`.
+
+Concrete example — `tree-browser.css` (lines 39–53):
+```
+ * @structure
+ * .pfx-tree-browser {
+ *   details {
+ *     summary {
+ *       [class*="-icon-"]:optional {}
+ *     }
+ *     ul {
+ *       li {
+ *         .item {
+ *           [class*="-icon-"]:optional {}
+ *         }
+ *       }
+ *     }
+ *   }
+ * }
+```
+It pairs with a full `@example` DOM sample, `@part .item`, `@pseudo ::before`, `@cssstate open`, and `@a11y` roles.
+
+A part/panel example — `tabs.css`:
+```
+ * @part .list — The row of tabs.
+ * @part .tab — A single tab; `-selected` marks the active one.
+ * @part .panel — The content panel for a tab.
+ …
+ * @structure
+ * .pfx-tabs {
+ *   .list {
+ *     .tab {}
+ *   }
+ *   .panel {}
+ * }
+```
+
+A slot + custom-property example — `alert.css`:
+```
+ * @slot content — The alert's message content; may include a dismiss button.
+ * @cssproperty --pantoken-alert-glyph &lt;url&gt; — The low-level status-glyph source; `-icon-&lt;name&gt;` sets it for you.
+ * @cssproperty --pantoken-alert-icon-bg &lt;color&gt; — The coloured status-bar fill behind the glyph.
+ …
+ * @structure
+ * .pfx-alert {
+ *   slot {}
+ *   .pfx-close-button:optional {}
+ * }
+```
+Note `@structure` can name **sibling records** by class (`.pfx-close-button`) — which is why the scoped `cssdoc.jsonc` adds a `providers` entry (`./src/generated/_records.css`) so single-file linting can resolve cross-record references.
+
+## 4. How CSS is generated/emitted
+
+Two-stage pipeline:
+
+**Stage 1 — `.css` → TS consts** (`scripts/component-styles.ts`): reads every `src/{components,utilities,rules}/*.css`, runs each through postcss with the `themeCustomMedia({ theme })` plugin for all three themes (`rebrand`, `canvas`, `canvasHighContrast`), and writes `src/generated/component-styles.ts` as `export const treeBrowserByTheme = {…} as const;` + `export const treeBrowser = treeBrowserByTheme.rebrand;`. Doc comments are **retained verbatim** (they flow into the CSS-API docs). Rolldown can't resolve Vite's `?raw`, so a generated `.ts` module is how the CSS text reaches the published bundle.
+
+**Stage 2 — records → sheets** (`scripts/generate.ts`): calls `componentsCss({ prefix: "instui" })` etc. and writes `generated/base.css`, `components.css`, `prose.css`, `utilities.css`, `fonts.css`, `select.css`, `icons.css`. It also derives `component-icons.css` by regex-scanning the emitted sheet for `var(--instui-icon-*)` references and valuing them from the token IR, and writes the internal `src/generated/_records.css` at the `pfx` prefix (the cssdoc providers index — carries every record including the TS holdouts).
+
+`componentsCss` (in `src/index.ts`) is a plain concat of `COMPONENTS.map(d =&gt; d.rules(ns(prefix), options).trim())` in the registry's exact, load-bearing order.
+
+**Final emitted CSS** — the comment survives, `pfx-`/`${p}` becomes `instui-`, and alias-twin `@modifier` lines are appended. From `generated/tree-browser.css`:
+```css
+/* InstUI tree-browser (@pantoken/components) — prefix: instui */
+/**
+ * @component tree-browser
+ …
+ * @structure
+ * .instui-tree-browser { details { summary { [class*="-icon-"]:optional {} } … } }
+ * @related menu — Both present nested, selectable entries.
+ * @modifier -size-small — Small. Long-form alias of `-size-sm`.
+ * @modifier -size-large — Large. Long-form alias of `-size-lg`.
+ */
+.instui-tree-browser {
+  border-radius: var(--instui-component-tree-browser-border-radius);
+  …
+}
+```
+
+## 5. The compose/validate API (`src/index.ts` barrel)
+
+`/Users/dwahl/Scripts/pantoken/formats/components/src/index.ts` exports:
+- **Aggregate builders**: `componentsCss(options?)`, `baseCss()`, `proseCss(options?)`.
+- **Per-component builders**: `buttonCss`, `alertCss`, `badgeCss`, … (one `xxxCss` per record — the full list, ~60 exports).
+- **Declarations**: `elevationCss`/`elevationDeclarations`/`ELEVATION_NAMES`, `focusOutlineCss`/`focusOutlineDeclarations`/`focusOutlineRules`/`FOCUSABLE_SELECTOR`.
+- **Utilities**: `viewCss`, `spacingUtilitiesCss`, `layoutUtilitiesCss`, `responsiveUtilitiesCss`, `iconCss`, `maskCss`, `screenReaderContentCss`, `iconGlyphsCss`.
+- **Bespoke (no cssdoc record)**: `selectCss` (experimental customizable-select), `iconGlyphsCss`.
+- **Types + constants**: `ComponentOptions`, `ProseOptions`, `DEFAULT_PREFIX` (`"instui"`).
+- `ComponentOptions` (`src/lib/helpers.ts`): `{ prefix?: string | null; theme?: "rebrand" | "canvas" | "canvasHighContrast" }`. Any falsy prefix drops the namespace (`.button`).
+
+**Validate** lives in the test layer, not the barrel — `/Users/dwahl/Scripts/pantoken/formats/components/tests/_validate.ts`. `validate(def)` re-parses a definition's emitted CSS with the real `@cssdoc/core` parser (`parseCssDocs`) using the shared root config, and asserts: exactly one cssdoc record, matching `kind` and `name`, and (via `@pantoken/utils`' `unknownReferences` against `byTheme(theme)`) that every `var(--instui-*)` reference resolves in the token IR for all three themes. `--instui-elevation-*` and `--instui-focus-outline-*` are whitelisted as sheet-local. The registries (`COMPONENTS`/`UTILITIES`/`RULES`/`DECLARATIONS`) drive both aggregation and the parity test (`tests/parity.test.ts`); `tests/public-surface.test.ts` guards the barrel's exports.
+
+## 6. How a component maps to InstUI values
+
+The mapping is **entirely through token references**, not any code-level reference to upstream InstUI React components. Every declaration reads `var(--instui-component-&lt;name&gt;-…)` custom properties supplied by the `@pantoken/tokens` package (the InstUI token IR). Examples from `alert.css`: `var(--instui-component-alert-background)`, `var(--instui-component-alert-info-border-color)`, `var(--instui-component-alert-content-padding-horizontal)`; from `button.ts`: `var(--instui-component-base-button-medium-height)`, `var(--instui-color-background-interactive-action-primary-base)`.
+
+So a component's "InstUI values" come from the `--instui-component-&lt;component&gt;-*` and `--instui-color-*`/`--instui-spacing-*` token families, resolved per theme at build time via `@pantoken/plugin-theme-custom-media`. `validate()` enforces that every referenced token actually exists in the IR, so the library tracks InstUI purely through the tokens. The only place InstUI is referenced by *name* is in prose/comments (e.g. button.ts explains "InstUI's `withBackground={false}`", "InstUI's ai-primary technique") and in the AI glyph mask sourced from `@instructure/ui-icons` — these are documentation, not runtime dependencies. There is no import of any `@instructure/ui-*` package in `src/` (they're mentioned in the README only as the alternative for real interactive components).
+
+**Key files to anchor on**: `src/index.ts` (barrel), `src/lib/define.ts` + `src/lib/aliases.ts` + `src/lib/sentinel.ts` (compose core), `src/components/index.ts` (registry), `src/components/tree-browser.css` / `alert.css` / `tabs.css` (rich cssdoc + `@structure` examples), `scripts/component-styles.ts` + `scripts/generate.ts` (emission pipeline), `tests/_validate.ts` (validate), and both `cssdoc.jsonc` configs.</result>
+<usage><subagent_tokens>65818</subagent_tokens><tool_uses>22</tool_uses><duration_ms>132958</duration_ms></usage>
+</task-notification>
