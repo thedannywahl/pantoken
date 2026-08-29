@@ -1,0 +1,97 @@
+<task-notification>
+<task-id>a1470596df26e529a</task-id>
+<tool-use-id>toolu_01EoEtfaNsEBfuhB6Ef4P52Z</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/5fc59c52-1c24-40a9-a169-9cf87df10774/tasks/a1470596df26e529a.output</output-file>
+<status>completed</status>
+<summary>Agent "Find docs build/caching for CSS API" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed. Here's my complete report.
+
+## Summary
+
+The `/api/css/billboard` page is a **fully generated, gitignored artifact**. It is not committed and not read from any hand-authored source at request time. Under `vpr docs:dev` it is regenerated on startup and re-run on source changes via a watch cascade, so a stale page is unlikely under normal operation — but there is one real staleness seam worth knowing about (the aggregate `components.css`).
+
+---
+
+## 1. What `vpr docs:dev` runs
+
+**Root script** — `/Users/dwahl/Scripts/pantoken/package.json` (line 10):
+```json
+"docs:dev": "vp run @pantoken/demo#build &amp;&amp; vp run @pantoken/docs#docs:dev",
+```
+
+**Docs orchestrator script** — `/Users/dwahl/Scripts/pantoken/docs/package.json` (the `docs:dev` line):
+```json
+"docs:dev": "vp run docs:assets &amp;&amp; vp run docs:api:en &amp;&amp; vp run @pantoken/components#generate &amp;&amp; vp run @pantoken/plugin-stacking#generate &amp;&amp; vp run @pantoken/plugin-transition#generate &amp;&amp; vp run @pantoken/plugin-visual-debug#generate &amp;&amp; vp run @pantoken/plugin-logos#generate &amp;&amp; vp run @pantoken/plugin-primitives#generate &amp;&amp; vp run docs:api:css &amp;&amp; vitepress dev",
+```
+
+Startup sequence (each `&amp;&amp;`-chained, before the dev server boots):
+1. `docs:assets` — logos, OG images, site themes, demos.
+2. `docs:api:en` — TypeDoc: **cleans `docs/api`**, writes the API markdown + `typedoc-sidebar.json`, styles badges, writes overview.
+3. `@pantoken/components#generate` — regenerates `formats/components/generated/*.css`.
+4. Five plugin `#generate` steps — regenerate each plugin's `generated/*.css`.
+5. `docs:api:css` → `node scripts/build-css-api.ts` — **generates the CSS API pages, including `docs/api/css/billboard.md`.**
+6. `vitepress dev` — starts the server.
+
+**The "direct `node`, not nested `vp`" note** lives in `/Users/dwahl/Scripts/pantoken/docs/.vitepress/config.ts` (lines 15–29) and is corroborated in `/Users/dwahl/Scripts/pantoken/docs/engineering-log.md` ("A nested `vp` spawn dies under `vpr docs:dev`"). It applies to the **in-dev-server watch rebuilds**, not the startup chain above. The `workspaceOrchestrator` plugin (config.ts lines 30–64) rebuilds upstream packages during `vitepress dev` by invoking `["node", "scripts/generate.ts"]` / `["node", "scripts/build-css-api.ts"]` directly, because vite-plus can't spawn a nested `vp` from inside the running VitePress process (`Failed to spawn process: os error 22`).
+
+---
+
+## 2. Which step generates the CSS records, and where they live
+
+**The generator:** `/Users/dwahl/Scripts/pantoken/docs/scripts/build-css-api.ts` (the `docs:api:css` script). It calls `emitCssApi` from `@cssdoc/typedoc`, which parses cssdoc records out of the shipped stylesheets and writes one `.md` per record into `docs/api/css/`.
+
+**Crucial detail — what it parses (not what you'd expect):** it reads the **aggregate** sheets, not the per-component files:
+```js
+const sheets = ["components.css", "utilities.css", "prose.css", "base.css"];
+const cssPaths = sheets.map(cssPath);
+const css = sheets.map(readCss).join("\n");
+```
+where `cssPath` resolves under `/Users/dwahl/Scripts/pantoken/formats/components/generated/`. So the `billboard` record on `/api/css/billboard` is extracted from `formats/components/generated/components.css` (the ~253 KB bundled sheet), **not** from `formats/components/generated/billboard.css` and **not** directly from the authoring source `formats/components/src/components/billboard.css`.
+
+**Is there a committed JSON/data "cssdoc" artifact?** No. There is no checked-in extraction blob. The records are extracted in-memory each run (`parseCssDocs` / `emitCssApi`) and written straight to markdown. The outputs are all gitignored:
+- `/Users/dwahl/Scripts/pantoken/.gitignore` line 31 → `docs/api/` (covers `docs/api/css/*.md` and `docs/api/css/css-sidebar.json`)
+- line 28 → `**/generated/` (covers `formats/components/generated/*.css`)
+
+So both the extraction input (`components.css`) and the output (`billboard.md`) are built, never committed.
+
+**Config that drives extraction/rendering:** the root `/Users/dwahl/Scripts/pantoken/cssdoc.jsonc` (loaded via `CssDocConfigFile.loadForFolder(repoRoot)` in build-css-api.ts) — it sets the parse model and section order.
+
+**Is it rebuilt on startup / watched?** Both:
+- Startup: step 5 above always runs `build-css-api.ts` before `vitepress dev`.
+- Watched: the orchestrator (config.ts lines 40–57) watches `formats/components/src` → runs `components`' `node scripts/generate.ts` → cascades via `dependents: ["@pantoken/docs#docs:api:css"]` → runs `node scripts/build-css-api.ts`. It also directly watches `cssdoc.json` (line 54) as a rebuild trigger. VitePress itself watches the emitted `.md` under its source tree, so the page hot-reloads once rewritten.
+
+The billboard authoring source chain is:
+`formats/components/src/components/billboard.css` → (`components#generate`) → `formats/components/generated/components.css` (aggregate) → (`docs:api:css`) → `docs/api/css/billboard.md` → VitePress render.
+
+---
+
+## 3. Caching that could go stale
+
+There are three cache/artifact layers. None is a committed cssdoc blob, but note the fourth item — the real seam.
+
+1. **VitePress cache** — `/Users/dwahl/Scripts/pantoken/docs/.vitepress/cache/` (gitignored, `.gitignore` line 33). Currently holds only `deps/` (Vite dep-optimizer, dated earlier than the last build). This caches bundled deps, not the CSS records, so it won't hold stale billboard rules.
+
+2. **vp task cache** — `node_modules/.vite/task-cache` (mentioned in `docs/conventions/build-and-docs.md`). This is the layer behind the engineering-log's "cache-hit replays looked fine" note. If a `docs:api:css` run were served from a stale task-cache hit, the `.md` wouldn't be re-emitted — but the orchestrator's in-dev rebuilds bypass `vp` and call `node` directly, so this mainly matters for the startup `vp run` chain.
+
+3. **i18n translation cache** — `/Users/dwahl/Scripts/pantoken/docs/i18n-cache/` (`hu.api.json`, `hu.guides.json`) and `docs/hu/api/`. Only affects Hungarian translations, not the English `/api/css/billboard`.
+
+4. **The actual staleness seam — the aggregate `components.css` + `writeIfChanged`.** `build-css-api.ts` parses the **aggregate** `formats/components/generated/components.css`, and that aggregate is written by `/Users/dwahl/Scripts/pantoken/formats/components/scripts/generate.ts` through a **write-if-unchanged guard**:
+   ```js
+   const writeIfChanged = (path, next) =&gt; {
+     try { const prev = readFileSync(path, "utf8"); if (prev === next) return; }
+     catch { /* no-op */ }
+     writeFileSync(path, next);
+   };
+   ...
+   writeIfChanged(join(outDir, "components.css"), componentsCss(opts));
+   ```
+   By contrast the per-component files (`build-entries.ts`) use an unconditional `writeFileSync`. This explains the mtime skew you'd see on disk (e.g. `components.css` older than `billboard.css`): it is expected and does **not** by itself mean the page is stale — content, not mtime, is what `build-css-api` consumes.
+
+   The way this could actually surface stale billboard rules: `build-css-api` extracts records only from the aggregate `components.css`. If the billboard record source changed but the components `generate` step did **not** re-run (or ran but its output diffed only in a per-component file while the aggregate `componentsCss(opts)` output happened not to change), then `docs:api:css` would re-emit `billboard.md` from an unchanged aggregate — i.e. the page reflects the aggregate, not the raw `src/components/billboard.css`. Under normal `vpr docs:dev` this is guarded: editing `formats/components/src` triggers `generate` (rewriting the aggregate when content changes) and cascades into `docs:api:css`. The risk window is if `components#generate` is skipped/short-circuited (task-cache hit, or the aggregate not regenerated) while the source moved.
+
+   There is also a build-time **drift guard** in `build-css-api.ts` that throws on unknown `--instui-*` token references, but that guards token references, not record-body freshness.
+
+**Bottom line:** `/api/css/billboard` is generated from `formats/components/generated/components.css` by `docs/scripts/build-css-api.ts`, rebuilt on `docs:dev` startup and re-run via the orchestrator watch cascade. A stale page requires the aggregate `components.css` to not reflect the current billboard source — most plausibly from `components#generate` being skipped or its `writeIfChanged` aggregate not updating. To force-clear: delete `formats/components/generated/` and `docs/api/` (both regenerate) and re-run the `docs:dev` chain; clearing `docs/.vitepress/cache/` alone won't fix a stale record because the records don't live there.</result>
+<usage><subagent_tokens>53368</subagent_tokens><tool_uses>20</tool_uses><duration_ms>139569</duration_ms></usage>
+</task-notification>
