@@ -30,8 +30,10 @@ This opens a Vite dev server with:
 - An **editor** pane (TinyMCE, matching the version/config
   [instructure/canvas-lms](https://github.com/instructure/canvas-lms) itself uses — see below).
   Use the **Insert template** button to load one of the bundled starters (this replaces the whole
-  document, after a confirm, rather than inserting at the cursor), and the **Source code** button
-  (from TinyMCE's `code` plugin) to view/edit the raw HTML directly.
+  document, after a confirm, rather than inserting at the cursor), and the **Source code** toggle
+  to hand-edit the raw HTML in a syntax-highlighted (CodeMirror) view alongside the editor, with
+  the preview pane updating live as you type — unlike TinyMCE's stock `code` plugin, which edits in
+  a one-shot modal dialog with no live preview.
 - A **preview** pane showing the editor's content with the actual resolved pantoken stylesheet
   applied — a faithful "what this will look like once uploaded to Canvas" check, updated live as
   you type or change the CDN provider/theme/mode selects.

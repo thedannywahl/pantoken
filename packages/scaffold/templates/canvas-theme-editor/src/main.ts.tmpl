@@ -7,7 +7,6 @@
 import tinymce from "tinymce";
 import "tinymce/themes/silver/theme";
 import "tinymce/icons/default";
-import "tinymce/plugins/code/plugin";
 // canvas-lms injects its skin CSS as a raw string via a custom mechanism (RCEWrapper.tsx's
 // injectTinySkin()) — out of scope here; plain side-effect imports achieve the same look.
 import "tinymce/skins/ui/oxide/skin.css";
@@ -22,7 +21,12 @@ import {
   type ThemeVariant,
 } from "@pantoken/canvas-theme-editor";
 import { buildFileUrls } from "@pantoken/cdn";
-import type { Editor } from "tinymce";
+import type { Editor, Ui } from "tinymce";
+import { basicSetup, EditorView } from "codemirror";
+import { html } from "@codemirror/lang-html";
+
+// Shared with the toolbar's source-view editor so both stay the same size.
+const EDITOR_HEIGHT_PX = 400;
 
 // Bundled starter templates: filename (minus .html) -> raw HTML content.
 const templateModules = import.meta.glob<string>("../templates/pages/*.html", {
@@ -39,7 +43,7 @@ const starterTemplates = Object.entries(templateModules).map(([path, content]) =
 // `instructure_*` RCE plugins use — modeled on TinyMCE's stock `template` plugin's UX (toolbar
 // button + "Insert template" menu item, dialog listing title), but replaces the whole document
 // (with a confirm) instead of the stock plugin's insert-at-cursor behavior.
-tinymce.PluginManager.add("pantoken_templates", (editor: Editor) => {
+tinymce.PluginManager.add("pantoken_templates", function (editor: Editor) {
   const openDialog = () => {
     editor.windowManager.open({
       title: "Insert template",
@@ -67,7 +71,10 @@ tinymce.PluginManager.add("pantoken_templates", (editor: Editor) => {
         editor.windowManager.confirm(
           `Replace the current content with the "${chosen.title}" template?`,
           (confirmed: boolean) => {
-            if (confirmed) editor.setContent(chosen.content);
+            if (!confirmed) return;
+            editor.setContent(chosen.content);
+            replaceSourceDoc(chosen.content);
+            refreshAll();
           },
         );
       },
@@ -81,6 +88,64 @@ tinymce.PluginManager.add("pantoken_templates", (editor: Editor) => {
   editor.ui.registry.addMenuItem("pantokenTemplates", {
     text: "Insert template…",
     onAction: openDialog,
+  });
+
+  return {};
+});
+
+/** Lazily creates the CodeMirror instance (HTML syntax highlighting) alongside the hidden iframe. */
+function ensureSourceView(editor: Editor): EditorView {
+  if (sourceView) return sourceView;
+  const container = document.createElement("div");
+  container.style.cssText = `display: none; width: 100%; height: ${EDITOR_HEIGHT_PX}px; box-sizing: border-box; overflow: auto; border: 1px solid #ccc; font-size: 13px;`;
+  editor.contentAreaContainer.insertAdjacentElement("afterend", container);
+  sourceContainer = container;
+  sourceView = new EditorView({
+    extensions: [
+      basicSetup,
+      html(),
+      EditorView.lineWrapping,
+      EditorView.updateListener.of((update) => {
+        if (update.docChanged) debouncedUpdatePreview();
+      }),
+    ],
+    parent: container,
+  });
+  return sourceView;
+}
+
+/** Replaces the CodeMirror document's full contents, if the source view has been created. */
+function replaceSourceDoc(content: string): void {
+  if (!sourceView) return;
+  sourceView.dispatch({ changes: { from: 0, to: sourceView.state.doc.length, insert: content } });
+}
+
+// Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view so
+// authors can hand-edit markup with the preview pane updating live as they type — unlike TinyMCE's
+// stock `code` plugin, which edits raw HTML in a one-shot modal dialog with no live preview.
+tinymce.PluginManager.add("pantoken_source_toggle", function (editor: Editor) {
+  const toggle = (api: Ui.Toolbar.ToolbarToggleButtonInstanceApi) => {
+    sourceMode = !sourceMode;
+    api.setActive(sourceMode);
+    const view = ensureSourceView(editor);
+    const contentArea = editor.contentAreaContainer;
+    if (sourceMode) {
+      replaceSourceDoc(editor.getContent());
+      contentArea.style.display = "none";
+      sourceContainer!.style.display = "block";
+      view.focus();
+    } else {
+      contentArea.style.display = "";
+      sourceContainer!.style.display = "none";
+      editor.setContent(view.state.doc.toString());
+    }
+    refreshAll();
+  };
+
+  editor.ui.registry.addToggleButton("sourcecode", {
+    icon: "sourcecode",
+    tooltip: "Source code",
+    onAction: toggle,
   });
 
   return {};
@@ -106,6 +171,15 @@ const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
 let activeEditor: Editor | undefined;
 let cssObjectUrl: string | undefined;
 let jsObjectUrl: string | undefined;
+let sourceView: EditorView | undefined;
+let sourceContainer: HTMLDivElement | undefined;
+let sourceMode = false;
+
+/** Reads the author's current HTML from whichever view (WYSIWYG or raw source) is active. */
+function getEditorHtml(): string {
+  if (sourceMode && sourceView) return sourceView.state.doc.toString();
+  return activeEditor?.getContent() ?? "";
+}
 
 function currentSelection(): { provider: string; theme: ThemeVariant; mode: ThemeMode } {
   return {
@@ -130,7 +204,7 @@ function updatePreview(): void {
   const { provider, theme, mode } = currentSelection();
   const cssUrls = buildFileUrls(defaultThemeCssAssets(theme, mode), provider);
   const linkTags = cssUrls.map((url) => `<link rel="stylesheet" href="${url}">`).join("\n");
-  previewFrame.srcdoc = `<!doctype html><html><head>${linkTags}</head><body>${activeEditor.getContent()}</body></html>`;
+  previewFrame.srcdoc = `<!doctype html><html><head>${linkTags}</head><body>${getEditorHtml()}</body></html>`;
 }
 const debouncedUpdatePreview = debounce(updatePreview, 300);
 
@@ -156,8 +230,7 @@ themeSelect.addEventListener("change", refreshAll);
 modeSelect.addEventListener("change", refreshAll);
 
 copyButton.addEventListener("click", () => {
-  if (!activeEditor) return;
-  void navigator.clipboard.writeText(activeEditor.getContent()).then(() => {
+  void navigator.clipboard.writeText(getEditorHtml()).then(() => {
     copyStatus.textContent = "Copied. Paste into Canvas's Rich Content Editor HTML view.";
   });
 });
@@ -165,15 +238,15 @@ copyButton.addEventListener("click", () => {
 void tinymce
   .init({
     selector: "#editor",
-    plugins: "code pantoken_templates",
-    toolbar: "pantokenTemplates code",
+    plugins: "pantoken_templates pantoken_source_toggle",
+    toolbar: "pantokenTemplates sourcecode",
     menubar: false,
     theme: "silver",
     branding: false,
     browser_spellcheck: true,
     convert_urls: false,
     toolbar_mode: "floating",
-    height: 400,
+    height: EDITOR_HEIGHT_PX,
     skin: false,
     content_css: false,
     setup(editor: Editor) {

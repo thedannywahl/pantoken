@@ -13,6 +13,8 @@
     "@pantoken/cdn": "latest"
   },
   "devDependencies": {
+    "@codemirror/lang-html": "^6.4.12",
+    "codemirror": "^6.0.2",
     "tinymce": "^5.9",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
