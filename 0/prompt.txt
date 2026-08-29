@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>bjcw83tk3</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/9bb0c94a-6663-40e5-81b3-aeec4c9dd1db/tasks/bjcw83tk3.output</output-file>
+<status>completed</status>
+<summary>Background command "Wait for the Release run to complete" completed (exit code 0)</summary>
+</task-notification>
