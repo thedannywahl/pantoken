@@ -1,0 +1,1 @@
+I ran `vp run @pantoken/docs#docs:api:locales:claude` and it's been on "Cloning API docs for HU locale..." for 5+ minutes. I can't t tell if it's hung, processing, or what.
