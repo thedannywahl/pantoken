@@ -9,7 +9,7 @@
 export interface LocaleLookup {
   readonly locale: string;
   /** Looks up `key`, substituting any `{{param}}` placeholders from `params`. */
-  t(key: string, params?: Record<string, string>): string;
+  t: (key: string, params?: Record<string, string>) => string;
 }
 
 /**
@@ -68,7 +68,7 @@ export function createLocaleLookup(
 
   return {
     locale: resolvedLocale,
-    t(key: string, params?: Record<string, string>): string {
+    t: (key: string, params?: Record<string, string>): string => {
       let value = resolved[key] ?? fallbackBundle[key] ?? key;
 
       // Substitute {{param}} placeholders
