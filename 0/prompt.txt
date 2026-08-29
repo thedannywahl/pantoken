@@ -1,0 +1,96 @@
+<task-notification>
+<task-id>ad89373b99c94d7f3</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/4f3348ab-1f38-41f4-a9a1-525113466cf9/tasks/ad89373b99c94d7f3.output</output-file>
+<status>completed</status>
+<summary>Agent "Validate API prose i18n design" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Write isn't available in this read-only context, so here's the assessment directly.
+
+# Critical assessment: block-level prose translation for generated API docs
+
+First, two premises to correct up front, because they change the cost math:
+
+- **There are no `Defined in` lines in the current output** (0 of 589 files). That churn source doesn't exist today, so it can't be a justification. The real whole-file churn drivers are: signature edits, cssdoc token *value* changes (the `## Tokens consumed` table in `docs/api/css/button.md:71-148`), and stability-badge flips (`&lt;span class="... pantoken-doc-tag"&gt;` — Alpha 97, Beta 481, Experimental 308, Deprecated 27). Badges flip often and sit at the top of nearly every TypeDoc page, so a single stability re-tag currently busts the whole page. That's a genuinely good argument for block-level — but it's the badge/token churn, not line numbers.
+- **Block-level does NOT reduce cold-run cost — it increases it, unless you batch.** Distinct prose lines are ~2029 (TypeDoc) + ~550 (css) ≈ 2600, versus 589 whole files. Per-segment `translateMarkdown` would mean ~2600 sequential `claude -p` calls — worse than the whole-file path and a direct violation of the `build-and-docs.md` constraint. The win from block-level is **warm-cache stability**, not cold cost. To also win on cold cost you must **batch prose** (see Q3).
+
+## Q1 — Is the adapter-agnostic cache serving claude prose to a glossary CI build sound?
+
+**The read path is sound; the write path has one real corruption vector.**
+
+Read path: `keyFor(kind, source)` (`translation-memory.ts:32`) omits the adapter, so a claude-populated `prose` entry is served to a glossary run as a plain cache hit (`translateUnits`, `translation-memory.ts:123-127`). This is exactly how the guides already work. Fine.
+
+`save()` pruning is also fine for *retention*: on any run, every segment present in the tree is `get()`-ed (marked used) or `set()` on miss (marked used), so pruning only drops orphans — segments no longer emitted. It never drops claude prose that's still in use. And CI never commits (docs.yml builds + deploys only), so a CI glossary run rewriting hu.api.json in the runner is harmless.
+
+**The corruption vector — poison-cache.** The `glossary` adapter does not translate prose; it only does structural term replacement. If a glossary run hits a **miss** on a `prose` segment (new or edited paragraph), `translateUnits` still calls the adapter, gets back near-English text, and `memory.set(...)` stores it under the prose key (`translation-memory.ts:140` / `162`). If that file is ever committed, a later claude run will `get()` that key, hit the cache, and **never re-translate it** — the English stub is permanently masked from claude until the source text changes. In the whole-file design this is latent but avoided by workflow discipline; at block granularity the surface is every new paragraph, so it will bite.
+
+Mitigation (required, not optional): the pipeline must not persist glossary output for `prose` units. Cleanest options: (a) `GlossaryTranslationAdapter` signals "I don't handle prose" and `translateUnits` skips `set()` for prose misses under glossary (leaving the English passthrough in the rendered file but not in the cache); or (b) add per-entry provenance to the cache (`{value, by: "glossary"|"claude"}`) and let a claude run overwrite glossary-authored prose entries. I'd take (a) — smaller change, keeps the cache file a plain string map, and matches the intended workflow (claude authors prose; glossary only ever fills structural text).
+
+## Q2 — Segmentation hard cases and the recommended boundary
+
+Concrete boundaries from the real files:
+
+`docs/api/bundlers/next/src/functions/withPantoken.md`:
+- L1 breadcrumb (`[pantoken](...) / [bundlers/next/src](...) / withPantoken`) → **preserve**.
+- L3 `# Function: withPantoken()` → **heading**: glossary the `Function:` label, keep identifier.
+- L5 `&gt; **withPantoken**(...): [...]` signature blockquote → **preserve**.
+- L7 `&lt;span class="instui-pill ..."&gt;Experimental&lt;/span&gt;` → **preserve** (HTML). Note: `Experimental`/`Alpha`/`Beta` are English and NOT in the glossary — they'll stay English unless you add them (`Deprecated` is already mapped).
+- L9 `Wrap a Next.js config so the Instructure UI packages are transpiled.` → **prose**.
+- L11 `## Parameters` → heading (glossary).
+- L13 `### nextConfig?` → **preserve** (identifier heading).
+- L15 type line, L23 link-only `[WithPantokenOptions](...).` → **preserve**.
+- L17 `The existing Next config (default \`{}\`).` → **prose** (contains inline code → needs placeholder protection).
+- L33 `**Wrap your next.config.mjs**` (an `@example` caption) → **prose**, but it's a bold single line; low volume, translate it.
+- L35-50 fenced code → **preserve**.
+
+Good news: TypeDoc renders params/properties as heading + blockquote + standalone paragraph (confirmed in `WithPantokenOptions.md:11-18` and `AggregateOptions.md:11-17`), **not tables**. So the "prose inside tables" worry is almost entirely a cssdoc problem — only 1 non-css TypeDoc page uses a GFM table.
+
+cssdoc (`docs/api/css/button.md`):
+- L1 `# CSS: button` → heading; `CSS:` prefix (from `cssdoc.jsonc:29`) is not glossary-mapped.
+- L3, L5 → **prose** (L3 leads with inline code `.instui-button`).
+- L7 `**Source:** [button.ts](...)` → preserve/heading (`Source` is glossary-mapped).
+- L9/L13/L20/L32/... section headings → **heading**. Grep shows ~20 distinct cssdoc headings actually emitted; only `Examples` is in the glossary today. You need entries for Usage, Tokens consumed, Modifiers, Related, Accessibility, Pseudo-elements, Structure, Parts, States, Browser support, Demo, Subcomponents, Custom properties, Conditions, Animations, Slots (not just the four in your brief).
+- L34-54 Modifiers table: header labels structural, but the **Description column is real prose**. States/Tokens tables are code/`—` only.
+- L152 `- [close-button](...) — The icon-only dismiss button.` → link + trailing prose after em-dash.
+
+**Recommended boundary:** blank-line-delimited blocks with a stateful fence scanner (reuse the `inFence` logic in `api-translation.ts:179-200`). Classify: fenced/HTML/blockquote/breadcrumb/type-line/table/link-only/identifier-heading → preserve; structural/cssdoc headings → heading (glossary); everything else that is running text → prose.
+
+**Param/property/table descriptions:** for TypeDoc they're already standalone paragraphs — translate them as ordinary prose in v1 (they're the bulk of the value). For **cssdoc table Description cells, defer to v1** (preserve tables whole). Rationale: cell-level prose needs GFM table parsing, isolating the last column, protecting the code-token column, and reassembling — high complexity for terse content. The high-value cssdoc prose (top summary + per-section intro paragraphs) is standalone and captured without touching tables. Add a v1.1 table-cell prose extractor if the untranslated Modifiers columns prove visible enough to matter.
+
+## Q3 — Concrete integration
+
+**New module `docs/scripts/segment-markdown.ts`:** `segmentMarkdown(md): Segment[]` where `Segment = { kind: "prose" | "preserve" | "heading"; text: string }`, plus `reassemble(segments, translations): string`. Keep it pure/tested.
+
+**`api-translation.ts`:**
+- Extend `SORTED_REPLACEMENTS` (`:20-73`) with the ~20 cssdoc headings and the `Alpha`/`Beta`/`Experimental` badge labels. These stay deterministic and never enter the cache.
+- **Extend `translateBatch`/`runBatch` (`:258-302`) with per-value inline-code + package placeholder protection.** Today the batch path protects neither; prose values carry inline code (`transpilePackages`) and `@scope/pkg` names. Wrap each value through `preserveMarkdownSensitiveBlocks` + `preservePackageNames` before the JSON payload and restore after.
+
+**`translation-memory.ts`:**
+- Widen `TranslationUnit.kind` (`:22`) to include `"prose"`.
+- Route `prose` misses through the **batched** path, not the per-file loop (`:137-151`). Prose paragraphs at a 6000-char budget → roughly 30-40 batch calls for the whole cold tree. That both respects the no-hundreds-of-calls constraint and gives per-paragraph warm granularity.
+- Add the poison-cache guard from Q1 (skip `set()` for `prose` misses when the adapter is glossary).
+
+**`build-api-locales.ts`:** replace the per-file markdown loop (`:116-129`). New flow per md file: read → `segmentMarkdown` → collect `prose` segments as units → one `translateUnits` pass over all files' prose → `reassemble` each file → write. Sidebar handling (`:133-149`) is unchanged. Keep `autosave: true` for resumability.
+
+**Tangential but worth flagging:** `build-api-locales.ts:96` shells out to `pnpm exec typedoc`, while `docs:api:en` uses bare `typedoc`. CI (docs.yml) reaches this file via `docs:build` and has no pnpm on PATH per `build-and-docs.md`. Either this already breaks the deploy, or something makes pnpm available; verify before you rewrite the file, since you'll be editing right next to it.
+
+## Q4 — Cache migration
+
+Confirmed and bounded. The first block-level run emits only `prose`/`text` units, never `markdown`, so the old whole-file `markdown` keys are never `get()`-ed, never marked used, and `save()` prunes them out automatically (`translation-memory.ts:82-91`) — the migration is self-cleaning, no manual step. The first run **must** be `docs:api:locales:claude`; a glossary-first run would (with the guard) leave prose untranslated in the rendered files, or (without the guard) poison the cache. Cold cost with batched prose is ~30-40 `claude -p` calls, resumable via autosave — well within the "don't do hundreds of sequential calls" constraint, and a one-time event. Acceptable.
+
+## Q5 — Simpler viable alternative
+
+**Hash normalization (stopgap).** Keep whole-file units but normalize the source before hashing: strip/neutralize the volatile lines (stability `&lt;span&gt;` badges, and — if they ever return — `Defined in` lines) and normalize cssdoc token *values* to a placeholder before computing the key. Cost: a ~20-line normalizer, no segmenter, no reassembly, no new kind. Tradeoff: still coarse — any *real* prose/signature edit anywhere on a page reverts the **entire** page's prose to English under a glossary CI run, and it doesn't bound cold cost to paragraphs. Given badge flips are your single biggest churn source, normalizing just the badge spans out of the hash would kill most of the thrash cheaply.
+
+**Section-level split (middle ground).** Split at `##` boundaries only. Simpler classifier, and a token-value change busts one section not the page. But sections interleave prose + tables + code, so you still can't cleanly send only prose to claude without the same sub-classification — it doesn't actually save you the segmenter.
+
+**Recommendation:** block-level (paragraph) with **batched** prose is the right target and the only option that bounds both warm churn and cold cost. But land the poison-cache guard and the batch placeholder-protection in the same change — without them the block-level cache is more fragile than the whole-file one it replaces. If you want an incremental step, ship badge-span hash-normalization first (kills the dominant churn source in an afternoon), then do block-level.
+
+### Critical files for implementation
+- /Users/dwahl/Scripts/pantoken/docs/scripts/build-api-locales.ts
+- /Users/dwahl/Scripts/pantoken/docs/scripts/translation-memory.ts
+- /Users/dwahl/Scripts/pantoken/docs/scripts/api-translation.ts
+- /Users/dwahl/Scripts/pantoken/docs/scripts/segment-markdown.ts (new)
+- /Users/dwahl/Scripts/pantoken/cssdoc.jsonc (heading source of truth for the glossary extension)</result>
+<usage><subagent_tokens>60060</subagent_tokens><tool_uses>17</tool_uses><duration_ms>284481</duration_ms></usage>
+</task-notification>
