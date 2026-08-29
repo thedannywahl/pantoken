@@ -58,7 +58,10 @@
     "renderers/vitepress/src/vitepress-vars.css",
     "tools/demo/runner/*.css",
     "plugins/pantoken/custom-components/src/**/*.css",
-    "plugins/pantoken/layouts/src/**/*.css"
+    "plugins/pantoken/layouts/src/**/*.css",
+    // Only imported from src/main.ts.tmpl, which fallow doesn't trace as a real entry point (the
+    // scaffold strips the .tmpl suffix at scaffold-time, same as the /src/main.ts convention below).
+    "packages/scaffold/templates/canvas-theme-editor/src/app.css"
   ],
 
   // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported

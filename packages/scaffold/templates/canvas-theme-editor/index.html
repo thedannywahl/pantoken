@@ -5,62 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{projectName}} — RCE template authoring</title>
   </head>
-  <body>
-    <main style="padding: 1rem; font-family: sans-serif">
-      <h1>RCE template authoring</h1>
-      <p>
-        Pick a starter template, edit it like you would in Canvas's Rich Content Editor, then click
-        <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML
-        editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt
-        to replicate that, so always verify the pasted result in Canvas.
-      </p>
-
-      <fieldset>
-        <legend>theme.css / theme.js</legend>
-        <label>
-          CDN provider
-          <select id="cdn-provider"></select>
-        </label>
-        <label>
-          Theme
-          <select id="theme-variant">
-            <option value="rebrand">rebrand</option>
-            <option value="canvas">canvas</option>
-            <option value="canvasHighContrast">canvasHighContrast</option>
-          </select>
-        </label>
-        <label>
-          Mode
-          <select id="theme-mode">
-            <option value="light">light</option>
-            <option value="adaptive">adaptive</option>
-          </select>
-        </label>
-        <a id="download-theme-css" download="theme.css">Download theme.css</a>
-        <a id="download-theme-js" download="theme.js">Download theme.js</a>
-      </fieldset>
-
-      <p>
-        <button type="button" id="copy-html">Copy HTML</button>
-        <span id="copy-status" role="status"></span>
-      </p>
-
-      <div style="display: flex; gap: 1rem; align-items: flex-start">
-        <div style="flex: 1; min-width: 0">
-          <h2>Editor</h2>
-          <textarea id="editor"></textarea>
-        </div>
-        <div style="flex: 1; min-width: 0">
-          <h2>Preview</h2>
-          <p>How this content will look once its stylesheet is uploaded to Canvas.</p>
-          <iframe
-            id="preview"
-            title="Styled preview"
-            style="width: 100%; height: 480px; border: 1px solid #ccc"
-          ></iframe>
-        </div>
-      </div>
-    </main>
+  <body class="{{wrapperRootClass}}">
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

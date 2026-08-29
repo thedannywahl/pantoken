@@ -13,8 +13,10 @@ Content Editor (RCE) page templates styled with
   `@pantoken/interactions` (wires up component behaviors like modal, tooltip, and drilldown).
 - `index.html` / `src/main.ts` — a local, TinyMCE-based editor (`npm run dev`) that mirrors Canvas's
   RCE so you can author page templates against pantoken's classes before copying them into Canvas.
-  It also lets you regenerate `theme.css`/`theme.js` for a different CDN provider/theme/mode
-  without re-running the CLI.
+  The page itself is built with pantoken's `wrapper` layout: click **Edit theme** to open a tray
+  with **Config** / **CSS** / **JS** tabs (CDN provider/theme/mode selects, and syntax-highlighted,
+  hand-editable copies of `theme.css`/`theme.js` that feed the live preview), and the **?** button
+  for full instructions.
 - `templates/pages/` — starter HTML snippets (hero, callout, two-column, rubric note, testimonial)
   available from the editor's **Insert template** toolbar button.
 
@@ -34,11 +36,18 @@ This opens a Vite dev server with:
   to hand-edit the raw HTML in a syntax-highlighted (CodeMirror) view alongside the editor, with
   the preview pane updating live as you type — unlike TinyMCE's stock `code` plugin, which edits in
   a one-shot modal dialog with no live preview.
-- A **preview** pane showing the editor's content with the actual resolved pantoken stylesheet
-  applied — a faithful "what this will look like once uploaded to Canvas" check, updated live as
-  you type or change the CDN provider/theme/mode selects.
-- CDN provider/theme/mode selects and **Download theme.css** / **Download theme.js** links, for
-  regenerating those two files without re-running the CLI.
+- A **preview** pane showing the editor's content with the current CSS/JS tab's stylesheet/script
+  applied (not just the resolved CDN URLs), wrapped to match Canvas's own content-area background
+  and max width — a faithful "what this will look like once uploaded to Canvas" check, updated
+  live as you type or edit the theme.
+- The editor and preview panes sit in a split view you can resize by dragging the divider, stack
+  vertically instead of side by side, and swap the order of (drag a pane's toolbar onto the other,
+  or use the **Swap panes** button). Each pane has its own fullscreen button.
+- The **Edit theme** tray's **Config** tab holds the CDN provider/theme/mode selects and
+  **Download theme.css** / **Download theme.js** links; its **CSS**/**JS** tabs are editable copies
+  of the generated files — hand-edit them and the preview picks up your changes directly. Changing
+  a Config select re-generates the CSS/JS tabs unless you've already edited them, in which case a
+  **Regenerate from config** button appears instead of silently overwriting your edit.
 
 ## Workflow
 
