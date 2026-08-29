@@ -12,9 +12,9 @@
  *    wired into a synthesized `vite.config.dev.ts` (see {@link writeDevViteConfig}) — this script
  *    doesn't watch or rebuild those itself.
  *
- * Usage: `vp run scaffold:dev <platform>` (root) or `vp run @pantoken/scaffold#scaffold:dev
- * <platform>`. `next` isn't supported yet — `next dev` isn't Vite, so the orchestrator plugin has
- * nowhere to attach.
+ * Usage: `vp run scaffold:dev <platform>` (root) or
+ * `vp run @pantoken/scaffold#scaffold:dev <platform>`. `next` isn't supported yet — `next dev`
+ * isn't Vite, so the orchestrator plugin has nowhere to attach.
  */
 import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, watch as watchFs, writeFileSync } from "node:fs";

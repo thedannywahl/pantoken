@@ -1,7 +1,7 @@
 /**
  * Merges the static `src/i18n.json` CLI copy with per-template strings synthesized from every
  * `templates/<platform>/scaffold.json` (`nextSteps`/`notes`/`caveats`), so both flow through the
- * same translate/check-drift pipeline as one flat key\u2192value source.
+ * same translate/check-drift pipeline as one flat key → value source.
  */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
