@@ -1,0 +1,86 @@
+<task-notification>
+<task-id>a40bd4be1f3fe8c87</task-id>
+<tool-use-id>toolu_015eUR7SfsEQr5AQEeuBRz1J</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/7d3eefd3-3a14-4830-8fa8-61a363c617ba/tasks/a40bd4be1f3fe8c87.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore InstUI component patterns in pantoken" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Confirms there's no `card.ts` in the registry. Now I have everything needed for a complete report.
+
+## Summary of findings
+
+**Package location:** `/Users/dwahl/Scripts/pantoken/formats/components/` (`@pantoken/components`). Source layout per `docs/conventions/authoring.md`: `src/components/&lt;name&gt;.ts` (+ paired `.css` for static records), `src/utilities/&lt;name&gt;.ts`, `src/rules/`, `src/declarations/`. The `COMPONENTS` registry lives in `src/components/index.ts` — no `card.ts` exists there, confirmed by absence in that file's imports.
+
+**Class-prefix mechanics** (`src/lib/sentinel.ts`, `src/lib/helpers.ts:10`): source `.css` files author classes with a placeholder `.pfx-` (`SENTINEL`), swapped at build time for the real prefix. Default prefix is `instui` (`DEFAULT_PREFIX = "instui"`), so `.pfx-checkbox` → `.instui-checkbox`. `docs/conventions/authoring.md:19-25` documents the modifier convention: `.${p}&lt;comp&gt;.-&lt;prop&gt;-&lt;val&gt;` (e.g. `-color-secondary`, `-size-sm`), booleans as bare prop names (`-clickable`), sizes on one scale (`xs,sm,md,lg,xl`) with short+long aliases, and nested parts as unprefixed descendant classes (`.instui-tabs .tab`, not BEM `__`).
+
+---
+
+### 1. Card (with elevation)
+There is **no dedicated `.instui-card` component**. InstUI/pantoken builds cards from the **View utility** — `formats/components/src/utilities/view.ts` (lines 10-152) — composed with the **elevation declaration** — `formats/components/src/declarations/elevation.ts` and `packages/utils/src/declarations.ts:19-42`.
+
+- Classes: `.instui-view` + modifiers `-background-{primary,secondary,primary-inverse,brand,info,alert,success,danger,warning,transparent}`, `-border-radius-{small,medium,large,circle,pill}`, `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`.
+- Elevation tokens: `--instui-elevation-resting/above/topmost`, plus aliases `--instui-elevation-depth1-3`, and **card-specific aliases `--instui-elevation-card` (= resting) and `--instui-elevation-cardHover` (= topmost)** — `packages/utils/src/declarations.ts:27-32`. These are also exposed as standalone box-shadow utility classes `.instui-elevation-card` / `.instui-elevation-cardHover` (generated in `formats/components/scripts/generate.ts:107` via `tokenUtilitiesCss`, `packages/utils/src/index.ts:390-405`).
+- Example markup (from `view.ts:148`): `&lt;div class="instui-view -background-secondary -border-radius-medium -shadow-resting"&gt;A card-like surface.&lt;/div&gt;`. For elevation on hover, swap `-shadow-resting` for `var(--instui-elevation-cardHover)` inline or add the `.instui-elevation-cardHover` utility on `:hover`.
+- Card title/header text uses **heading variants**, not a card part: `.instui-heading -variant-title-card-mini/-card-regular/-card-section` (`formats/components/src/components/heading.ts:28-30,48-50`), plus `-border-bottom`/`-border-top` for a rule under a card header (line 61-67).
+- CdnPicker.vue already does exactly this pattern today: `class="instui-view -background-secondary -border-radius-large -border-width-small instui-p-md"` (`docs/.vitepress/theme/components/CdnPicker.vue:85`).
+
+### 2. Tabs
+File: `formats/components/src/components/tabs.ts` (thin wrapper) + `formats/components/src/components/tabs.css` (actual CSS/doc, 131 lines).
+- Root: `.instui-tabs` (flex column). Parts: `.list` (row of tabs, `role="tablist"`), `.tab` (`role="tab"`), `.panel` (`role="tabpanel"`).
+- Modifiers: `.tab.-selected` / `[aria-selected="true"]`, `.tab.-disabled` / `[aria-disabled="true"]`/`:disabled`, root `-overflow-scroll` (horizontal scrolling tab list, hides scrollbar), root `-variant-secondary` ("folder" tab style with rounded borders that visually merge into the panel).
+- State can be driven by class OR ARIA attribute — CSS matches both (`tabs.css:74-77`).
+- Tokens: `--instui-component-tabs-default-background`, `--instui-component-tabs-tab-{default,secondary}-{text-color,font-*,hover-border-color,selected-*}`, `--instui-component-tabs-panel-{border-width,border-color,background,text-color,font-*}`.
+- Example markup (`tabs.css:13-21`):
+```html
+&lt;div class="instui-tabs"&gt;
+  &lt;div class="list" role="tablist" aria-label="Default tabs"&gt;
+    &lt;button class="tab -selected" role="tab" aria-selected="true"&gt;Overview&lt;/button&gt;
+    &lt;button class="tab" role="tab" aria-selected="false"&gt;Details&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="panel" role="tabpanel"&gt;The Overview tab's content shows here.&lt;/div&gt;
+&lt;/div&gt;
+```
+Uses `@scope (.instui-tabs)` so `.list`/`.tab`/`.panel` are unprefixed descendant classes, per the authoring convention.
+
+### 3. TextInput / search-filter field
+Two files combine for a search box with icon:
+- `formats/components/src/components/text-input.ts` (+ shared base in `formats/components/src/lib/field-controls.ts:15-55`, `fieldControlBase`). Root class `.instui-text-input`; modifiers `-disabled`, `-invalid`, `-readonly`, `-success`, `-size-sm`, `-size-lg`. Tokens: `--instui-component-text-input-{height,padding-horizontal,font-size}-{sm,md,lg}`, `-border-{width,color,radius}`, `-background-color`, `-{hover,disabled,readonly}-*`, `-error-border-color`, `-success-border-color`, `-placeholder-color`.
+  - Example: `&lt;input class="instui-text-input" placeholder="Default"&gt;`.
+- For a **search-with-icon** field specifically, use **InputGroup** — `formats/components/src/components/input-group.ts` + `inputFacadeBase` (`field-controls.ts:63-125`). Root `.instui-input-group` (flex row) with `.before`/`.after` icon slots, the same size/state modifiers, chromeless inner `&lt;input&gt;`.
+  - Example (`input-group.ts:24-27`): `&lt;span class="instui-input-group"&gt;&lt;span class="before"&gt;@&lt;/span&gt;&lt;input type="text" placeholder="username"&gt;&lt;/span&gt;` — swap `.before` content for a search-glyph span using the icon utility (`-icon-search` on a `&lt;span&gt;`, or `[class*="-icon-"]` painter described in `authoring.md`).
+  - Wrap either in **FormField** (`form-field.css`, below) for a labeled filter field, e.g. `.instui-form-field` → `.controls` → `.instui-input-group`.
+
+### 4. Checkbox
+File: `formats/components/src/components/checkbox.css` (217 lines) + thin `checkbox.ts` wrapper.
+- Root: `&lt;label class="instui-checkbox"&gt;` wrapping a native `&lt;input type="checkbox"&gt;`. Modifiers: `-invalid`, `-readonly`, `-label-placement-{end,start,top}`, `-variant-toggle` (renders as a switch), `-size-sm`, `-size-lg`.
+- State comes from native `:checked`/`:indeterminate`/`:disabled` — set `el.indeterminate = true` in JS for the mixed dash.
+- Tokens: `--instui-component-checkbox-{gap,font-family,font-size-*,line-height,label-*-color,control-size-*,border-*,background-*}`, plus internal `--pantoken-cb-glyph`/`--pantoken-toggle-*` custom props for the mask glyph and switch geometry.
+- Example (`checkbox.css:27`): `&lt;label class="instui-checkbox"&gt;&lt;input type="checkbox" checked&gt; Checked&lt;/label&gt;`.
+- CdnPicker.vue already uses this exact pattern (`.instui-checkbox`, lines 89-93, 105-106, 142-147 of the .vue file).
+
+### 5. Button (primary/secondary)
+File: `formats/components/src/components/button.ts` (290 lines, CSS authored inline as a template literal, not a paired `.css` file).
+- Root: `.instui-button` — primary by default (filled `background-interactive-action-primary-base`).
+- Color modifiers: `-color-secondary` (outlined/lower-emphasis), `-color-tertiary` (text-style), `-color-danger`, `-color-success`, `-color-ai`/`-color-ai-secondary` (gradient AI variants), `-color-primary-inverse` (for dark backgrounds).
+- Other modifiers: `-shape-circle`/`-shape-square` (icon-only), `-condensed`, `-toggle` (drive with `aria-pressed`), `-without-background` (ghost fill), `-without-border`, `-display-block` (full width), `-size-sm`/`-size-lg`, `-icon-&lt;name&gt;` (leading glyph via the shared icon painter, e.g. `-icon-arrow-right`).
+- Key tokens: `--instui-color-background-interactive-action-{primary,secondary,destructive,success,tertiary,ai}-{base,hover,active,disabled}`, `--instui-color-text-interactive-action-*`, `--instui-color-stroke-interactive-action-secondary-*`, `--instui-component-base-button-{medium,small,large}-{height,font-size,padding-horizontal}`, `--instui-component-base-button-border-radius`, `--instui-spacing-space-xs`.
+- Example: `&lt;button class="instui-button"&gt;Primary&lt;/button&gt;` / `&lt;button class="instui-button -color-secondary"&gt;Secondary&lt;/button&gt;`.
+- CdnPicker.vue already uses `class="instui-button -size-small -color-secondary"` (line 156 of the .vue file) — confirms `-size-small`/`-size-sm` long/short aliasing works.
+
+### 6. Horizontal divider / rule
+**No standalone divider component or utility exists.** Three partial patterns instead:
+1. Inside a menu: `.instui-menu .separator` — a `height`/`background`/`margin` rule using `--instui-component-menu-separator-{height,background,margin-vertical,margin-horizontal}` (`formats/components/src/components/menu.css:86-91`). Menu-scoped only.
+2. Inside prose/markdown content: raw `&lt;hr&gt;` styled only within `.instui-prose` scope — `border-top: var(--instui-border-width-sm) solid var(--instui-color-stroke-base); margin: var(--instui-spacing-space-lg) 0;` (`formats/components/src/rules/prose.ts:101-105`). Not applied outside `.instui-prose`.
+3. Inside disclosure groups: `.instui-toggle-group &gt; :not(summary)` gets `border-block-start: var(--instui-border-width-sm) solid var(--instui-component-toggle-group-border-color)` as a separator between header and content (`formats/components/src/components/toggle-group.css:59-62`).
+
+For a general-purpose divider outside those contexts, the idiomatic approach given this codebase's token system is to compose it from primitives directly (there's precedent for exactly this in prose's `hr` rule): `border-top: var(--instui-border-width-sm) solid var(--instui-color-stroke-base);` with `margin` from the spacing utility scale (`.instui-mt-md`/`.instui-mb-md`, documented in `docs/guide/components.md:134-144`) — no bespoke color/width values needed. There is no `-border-top`/`-border-bottom`-style modifier on `.instui-view` today (View has `-border-width-*` which draws all four sides, not one).
+
+---
+
+### Additional relevant files
+- `docs/conventions/authoring.md` — the modifier convention, `@scope` rules, deprecated-alias mechanism (all summarized above; full file at `/Users/dwahl/Scripts/pantoken/docs/conventions/authoring.md`).
+- `docs/guide/components.md` — consumer-facing guide with Utilities (`view`, spacing `m/p` scale, semantic color classes) at lines 105-176, and Forms (`FormField`, `FormFieldGroup`, `RadioInputGroup`) at lines 218+.
+- `/Users/dwahl/Scripts/pantoken/formats/components/src/components/form-field.css` and `form-field-messages.css` — the label/controls/messages grid wrapper and hint/error/success message parts, useful for wrapping the search field and any validated inputs in CdnPicker.
+- `/Users/dwahl/Scripts/pantoken/docs/.vitepress/theme/components/CdnPicker.vue` — the current bespoke component already uses several real pantoken classes (`instui-view`, `instui-checkbox`, `instui-text-input`, `instui-radio-input-group`, `instui-button`, `instui-text`, `instui-form-field-group`) but has no Tabs, no Card wrapper beyond the raw View utility, and no divider — those are the three gaps your refactor will need to fill using the View+elevation composition (for Card) and the raw token composition (for the divider), since Tabs is the only one of your six with a genuine first-class component.</result>
+<usage><subagent_tokens>94125</subagent_tokens><tool_uses>43</tool_uses><duration_ms>273633</duration_ms></usage>
+</task-notification>
