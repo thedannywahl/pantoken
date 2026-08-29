@@ -1,0 +1,1 @@
+is it possible to decipher the url-encoded images in plugins/pantoken/logos and anywhere else (such as formats/components/alert's tokens consumed table) that is a `data:image` URL or an `<image>` syntax to actually render it in a new line below the "value" on the relevant table?  Same for icon-glyphs, etc.
