@@ -1,0 +1,201 @@
+<task-notification>
+<task-id>ad022a083c31f53bb</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/3f73fc33-f1ac-4794-beb2-21035af9401f/tasks/ad022a083c31f53bb.output</output-file>
+<status>completed</status>
+<summary>Agent "Locate scaffold/create-pantoken-app tooling" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed. Here's the full report.
+
+## 1. `create-pantoken-app` package location and `package.json`
+
+**Path:** `/Users/dwahl/Scripts/pantoken/packages/create-pantoken-app`
+
+It's a thin flat-name alias package (for the `npm create pantoken-app` / `npm init pantoken-app` convention) that wraps `@pantoken/scaffold`. Key `package.json` facts:
+- `"name": "create-pantoken-app"`, version `0.3.1`
+- `"bin": { "create-pantoken-app": "bin/create-pantoken-app.mjs" }`
+- `"dependencies": { "@pantoken/scaffold": "workspace:*" }` — its **only** dependency
+- `devDependencies`: `@types/node`, `typescript`, `vite`, `vite-plus` (build/test tooling only, no CLI libs)
+- `"files": ["bin"]`, ESM (`"type": "module"`)
+
+Entry point `bin/create-pantoken-app.mjs`:
+```js
+import { runScaffoldCli } from "@pantoken/scaffold/cli";
+await runScaffoldCli(process.argv.slice(2), { usageCommand: "npm create pantoken-app --" });
+```
+It contains **zero CLI logic of its own** — it just calls into `@pantoken/scaffold`'s shared `runScaffoldCli`.
+
+The real implementation lives one level down at **`/Users/dwahl/Scripts/pantoken/packages/scaffold`** (`@pantoken/scaffold`, v0.4.1), which is also independently installable/runnable via `npx @pantoken/scaffold &lt;platform&gt;` (bin `pantoken-scaffold` → `bin/pantoken-scaffold.mjs` → `dist/cli.mjs`). Source for the shared CLI: `packages/scaffold/src/cli.ts`. There is also a third, higher-level wrapper: `ai/pantoken-ai` (`pantoken-ai scaffold &lt;platform&gt;`, bin `ai/pantoken-ai/bin/pantoken-ai.mjs`), which calls `scaffoldAndInit()` (in `ai/pantoken-ai/src/index.ts`) — scaffolds via `@pantoken/scaffold` and then also drops in agent assets (AGENTS.md, skills, editor rules).
+
+## 2. CLI framework — hand-rolled, no library
+
+Confirmed by reading `packages/scaffold/src/cli.ts`: it's entirely hand-rolled using plain `node:readline/promises` (`createInterface`) for the one prompt, and a manual `for` loop (`parseArgs`) for flag parsing. No `commander`, `yargs`, `@clack/prompts`, `inquirer`, `cac`, or `meow` anywhere. I grepped every `package.json` in the repo for those names and got zero hits.
+
+Notably there are **three independently hand-rolled argv parsers** in this problem space, each with its own idiom:
+- `packages/scaffold/src/cli.ts` — `parseArgs(argv)` loop with an `Unknown option "..."` throw
+- `ai/pantoken-ai/bin/pantoken-ai.mjs` — an `argv.indexOf` based `flag(name)` helper + a `COMMANDS` dispatch object (init/scaffold subcommands)
+- `packages/cli/src/index.ts` (`@pantoken/cli`, the unrelated `pantoken generate &lt;target&gt;` native-token CLI) — its own `run(argv)` entry (bin at `packages/cli/bin/pantoken.mjs`)
+
+This duplication (explicitly called out in the scaffold CHANGELOG: *"Reduce CLI complexity and clone-group duplication in the create/app bootstrap commands"*) is a strong candidate for consolidation in a CLI-framework refactor.
+
+## 3. Interactive vs. non-interactive mode, flag parsing
+
+Yes, there's a narrow interactive mode, defined in `packages/scaffold/src/cli.ts`:
+
+```ts
+export function shouldPromptForDir(dirFlag: string | undefined, isTTY: boolean | undefined): boolean {
+  return dirFlag === undefined &amp;&amp; isTTY === true;
+}
+```
+
+- If `--dir` is **omitted** and `process.stdin.isTTY === true` → prompts once via readline: `"Project directory (. for current folder): "` (blank answer → `"."`).
+- Otherwise (non-TTY, e.g. CI/piped, or `--dir` given) → uses `parsed.dirFlag ?? "."` silently, no prompt.
+
+Flags supported (all hand-parsed in `parseArgs`):
+- Positional platform arg (first non-`-` token)
+- `--dir &lt;path&gt;`
+- `--help` / `-h`
+- Anything else throws `Unknown option "&lt;arg&gt;"`.
+
+There is **no** `--yes`/`--silent`/`--non-interactive` flag — non-interactive behavior is implicit from `!isTTY` or presence of `--dir`. This exact contract is locked in by tests in `packages/scaffold/tests/cli.test.ts` (prompt-on-TTY, no-prompt-with-`--dir`, blank-answer-fallback, non-TTY-defaults-to-`.`, unknown-option/platform rejections, etc.) — any refactor introducing a CLI framework needs to preserve these behaviors or update these tests.
+
+The `pantoken-ai` CLI (`ai/pantoken-ai/bin/pantoken-ai.mjs`) layers `init`/`scaffold` subcommands and a `--tool &lt;name&gt;` flag on top, via its own separate `flag()`/`requireChoice()` helpers — it does not reuse `packages/scaffold/src/cli.ts`'s parser, it reuses only `scaffoldAndInit`/`installAgentAssets` from `@pantoken/ai`'s index.
+
+## 4. `--help`, shell completions, docs generation
+
+- `--help`/`-h` is supported and tested (`packages/scaffold/tests/cli.test.ts`, `packages/create-pantoken-app/tests/index.test.ts`) — prints a one-line `Usage: &lt;cmd&gt; &lt;platform1|platform2|...&gt; [--dir .]` string built inline in `runScaffoldCli`.
+- **No shell completions** (bash/zsh/fish) anywhere in the repo.
+- **No CLI docs-generation tooling** (no `--help` markdown export, no `oclif`-style manifest). Usage docs are hand-written in each package's `README.md` (`packages/scaffold/README.md`, `packages/create-pantoken-app/README.md`, `ai/pantoken-ai/README.md`) and in `docs/guide/getting-started.md` / `docs/hu/guide/getting-started.md`, plus a Vue component `docs/.vitepress/theme/components/GetStartedTabs.vue` that renders the "Get started" install-tab UI on the docs site.
+
+## 5. `scaffold_fetch` (coe-mcp) — commit `f0536042`
+
+`git log --all --grep` finds it: commit **`f0536042` — "feat: pantoken support for coe-mcp's scaffold_fetch tool (#116)"** (merged PR, Aug 26 2026). Important: **the literal string `scaffold_fetch` and `coe-mcp` do not appear anywhere in this repo's source** — I grepped the whole tree and found zero hits. `coe-mcp` is an external tool/repo not vendored here; this commit is pantoken's side of supporting it.
+
+What the commit actually changed (its real diff, despite the scaffold-sounding title):
+- **New file `docs/scripts/icon-manifest.ts`** (+ test `docs/scripts/icon-manifest.test.ts`): aggregates the CDN icon-picker's per-source manifests (InstUI icons, Simple Icons, custom icons, logos) into one stable published file, **`docs/public/icon-manifest.json`**. Each entry is tagged with its `source` (`instui` | `simple-icons` | `custom-icons` | `logos`) and an exact per-item CDN CSS URL (`https://cdn.jsdelivr.net/npm/@pantoken/...`), explicitly so "external tools have a single fetchable index instead of scraping picker JSON" (per the file's own doc comment).
+- It also refreshes `docs/public/component-capabilities.json` as a copy of the authoritative `formats/interactions/component-capabilities.json` (previously stale/unsynced), and wires both into the `docs:assets` build step.
+- The rest of the commit (component `@remarks` doc comments, hu i18n cache updates) is unrelated docs polish bundled into the same PR.
+
+**Relation to `create-pantoken-app`:** none directly in code — `coe-mcp`'s `scaffold_fetch` tool is (per the commit title) presumably an MCP tool that fetches these published JSON manifests (`icon-manifest.json`, `component-capabilities.json`) from `pantoken.iywahl.com/*.json` to let an AI agent discover pantoken's icons/components programmatically — likely as an input into an agent-driven scaffolding/theming flow, not as a change to the `create-pantoken-app`/`@pantoken/scaffold` package itself. If a refactor plan wants to actually integrate `scaffold_fetch`-style consumption into the CLI, there is currently **no code doing that** — this would be new work, not an existing integration point.
+
+## 6. Bingo — how templates are built with `bingo-stratum`
+
+`@pantoken/scaffold` depends on **`bingo-stratum` (catalog pin `^0.5.13`; author "Josh Goldberg ✨", i.e. `create.bingo`)** — confirmed installed at `node_modules/.pnpm/bingo-stratum@0.5.13_...`. Architecture (also documented in `packages/scaffold/README.md` under "Architecture"):
+
+- **`packages/scaffold-base`** (`@pantoken/scaffold-base`) defines the shared Bingo `Base`:
+  - `src/base.ts` — `createBase({ options: { name: z.string().default("pantoken-app")... } })`
+  - `src/preset.ts` — `createPreset({ name, base, blocks })` factory (typed for `--isolatedDeclarations`)
+  - `src/blocks/cssdoc.ts`, `src/wrapper-context.ts` — shared Bingo "blocks"/context (cssdoc.json content, wrapper app-shell markup generated from `@pantoken/plugin-layouts`'s `wrapper.css`)
+  - `generated/cssdoc.ts` is build-generated from `templates/cssdoc.jsonc` via `scripts/generate.ts`
+
+- **Each platform package** exports a Bingo Preset via a `./scaffold-preset` subpath export:
+  - `formats/components/src/scaffold-preset.ts` → `presetComponents`
+  - `renderers/react/src/scaffold-preset.ts` → `presetReact`
+  - `renderers/vue/src/scaffold-preset.ts` → `presetVue`
+  - `renderers/web-components/src/scaffold-preset.ts` → `presetWebComponents`
+  - `renderers/angular/src/scaffold-preset.ts` → `presetAngular`
+  - `renderers/svelte/src/scaffold-preset.ts` → `presetSvelte`
+  - **All six currently have `blocks: []`** — i.e., every Bingo preset is presently a no-op stub that produces zero files. Confirmed by reading each `scaffold-preset.ts` file — e.g. React's is just `createPreset({ name: "react", base, blocks: [] })`.
+
+- **`packages/scaffold/scripts/scan-presets.ts`** scans a hardcoded `PRESET_SCAN_PATHS` array (`formats/components`, `renderers/react`, `renderers/vue`, `renderers/web-components`, `renderers/angular`, `renderers/svelte`) for packages whose `package.json` has an `exports["./scaffold-preset"]` entry, and generates **`packages/scaffold/generated/preset-ledger.ts`** (a static `PRESET_LEDGER: Record&lt;string, Preset&gt;` import map). This is a build-time codegen step (`npm run scan` / `vp run scan`), not runtime discovery.
+  - **Note:** `bundlers/next` (home of `@pantoken/next`) is **not** in `PRESET_SCAN_PATHS` and has no `scaffold-preset` export, so there is no `next` Bingo preset and `next` is absent from `SCAFFOLD_PLATFORMS`.
+
+- **`packages/scaffold/src/index.ts`** — `scaffoldProject(platform, dir)`:
+  1. Resolves platform (with `html` → `components` alias) against `PRESET_LEDGER`.
+  2. Calls `bingo-stratum`'s `producePreset(preset, { offline: true, options: { name: projectName } })`, wrapped in try/catch.
+  3. Writes `creation.files` to disk if any were produced.
+  4. **Falls back to the legacy `SCAFFOLDS` (plain string-template) system** whenever the Bingo render throws *or* produces zero files (fixed in commit `536bb73c` specifically because empty-`blocks[]` presets don't throw, so the original try/catch fallback never triggered).
+  - **Given all presets currently have `blocks: []`, every real scaffold today goes through the legacy fallback, not actual Bingo-rendered content.** The Bingo preset system is wired up end-to-end (ledger, CLI validation, `SCAFFOLD_PLATFORMS` type derivation) but not yet doing any real template rendering — it's inert plumbing.
+
+- **Legacy `SCAFFOLDS` system** (the thing actually producing files today): `packages/scaffold/generated/scaffolds.ts` is generated by `packages/scaffold/scripts/generate.ts` from the raw files under `packages/scaffold/templates/&lt;platform&gt;/**` (inlined as string constants, `{{projectName}}` substituted at scaffold time, `.tmpl`-suffixed files stripped back to real extensions). Template dirs present: `angular`, `components`, `next`, `react`, `svelte`, `vue`, `web-components` — but **`next` is orphaned/unreachable** since `isScaffoldPlatform("next")` returns false (not in `PRESET_LEDGER` keys, not an alias) — dead template content only reachable if someone imports `SCAFFOLDS.next` directly.
+
+- `create-pantoken-app` doesn't invoke Bingo itself at all — it only calls `runScaffoldCli` → `scaffoldProject`, both defined in `@pantoken/scaffold`.
+
+## 7. Existing docs about scaffolding
+
+- **`docs/guide/getting-started.md`** (and its Hungarian mirror `docs/hu/guide/getting-started.md`) — user-facing "## Scaffold a starter project" section: `npx create-pantoken-app react`, lists platforms (`components`, `react`, `vue`, `svelte`, `web-components`, `angular`), points to `@pantoken/scaffold` for `--dir` and programmatic use, and mentions `npx @pantoken/ai init` for the `/scaffold-pantoken` agent skill.
+- **`packages/scaffold/README.md`** — the most substantive scaffold doc: usage examples, `scaffoldProject`/`SCAFFOLD_PLATFORMS` API, and an "## Architecture" section explaining the Bingo Preset System, template-rendering fallback order, and the wrapper-layout codegen — matches everything found in code above.
+- **`ai/pantoken-ai/README.md`** — documents the Bingo-preset-based scaffold system from `pantoken-ai`'s perspective (added in commit `9fd3e88a`).
+- **`ai/pantoken-ai/skills/scaffold-pantoken/SKILL.md`** — the actual agent skill content: decision tree for new-project-vs-existing-repo, framework detection, package-manager detection table, install matrix per framework/tool, and points to `npx pantoken-ai scaffold &lt;platform&gt;` / `npx create-pantoken-app &lt;platform&gt;` / `npx @pantoken/scaffold &lt;platform&gt;` as equivalent entry points (with pantoken-ai additionally installing agent assets). Companion evals at `ai/pantoken-ai/evals/scaffold-pantoken/` (positive/negative trigger test cases for when this skill should activate).
+- **`docs/conventions/*.md`** — I checked all four files (`authoring.md`, `build-and-docs.md`, `interactions.md`, `web-components.md`); none document the scaffold CLI itself. `build-and-docs.md` uses the word "scaffolding" once but in an unrelated i18n-caching sense ("prose survives the scaffolding churn").
+- **`docs/engineering-log.md`** — no scaffold/bingo/create-pantoken-app entries at all (checked all 22 section headers: Security, Toolchain, Browser/bundling, CSS API surface, CI/release, Code quality gates — none scaffold-related). So there are **no recorded "hard-won lessons" specific to the scaffold tooling** yet, despite the fallback bug fixed in `536bb73c` being exactly the kind of gotcha this log is meant to capture.
+- **`AGENTS.md`** (repo root) — no scaffold-specific mentions found (only unrelated `component-capabilities.json` references for the docs/generate-capabilities workflow).
+
+## 8. Directory trees (2 levels deep)
+
+```
+packages/create-pantoken-app/
+├── CHANGELOG.md
+├── README.md
+├── bin/
+│   └── create-pantoken-app.mjs
+├── package.json
+├── tests/
+│   └── index.test.ts
+└── vite.config.ts
+
+packages/scaffold/
+├── CHANGELOG.md
+├── README.md
+├── bin/
+│   └── pantoken-scaffold.mjs
+├── dist/                    (cli.d.mts, cli.mjs, index.d.mts, index.mjs, src-BKAwxbXv.mjs)
+├── generated/
+│   ├── preset-ledger.ts
+│   └── scaffolds.ts
+├── package.json
+├── scripts/
+│   ├── generate.ts
+│   └── scan-presets.ts
+├── src/
+│   ├── cli.ts
+│   └── index.ts
+├── templates/
+│   ├── angular/  components/  next/  react/  svelte/  vue/  web-components/   (per-platform dirs)
+│   └── cssdoc.json
+├── tests/
+│   ├── cli.test.ts
+│   ├── coverage-branches.test.ts
+│   ├── index.test.ts
+│   └── wrapper-layout.test.ts
+├── tsconfig.json
+└── vite.config.ts
+
+packages/scaffold-base/
+├── CHANGELOG.md
+├── README.md
+├── dist/                    (index.d.mts, index.mjs)
+├── generated/
+│   └── cssdoc.ts
+├── package.json
+├── scripts/
+│   └── generate.ts
+├── src/
+│   ├── base.ts
+│   ├── blocks/               (cssdoc.ts)
+│   ├── index.ts
+│   ├── preset.ts
+│   └── wrapper-context.ts
+├── templates/
+│   └── cssdoc.jsonc
+├── tests/
+│   ├── index.test.ts
+│   └── preset.test.ts
+├── tsconfig.json
+└── vite.config.ts
+```
+
+---
+
+### Summary for the refactor plan
+
+The **primary refactor target files** are almost certainly:
+1. `packages/scaffold/src/cli.ts` (the real shared CLI — hand-rolled parseArgs + readline prompt)
+2. `packages/create-pantoken-app/bin/create-pantoken-app.mjs` (thin pass-through, likely untouched except for whatever new options flow through)
+3. `ai/pantoken-ai/bin/pantoken-ai.mjs` (duplicate hand-rolled parser/dispatch — candidate for consolidation onto whatever CLI approach `packages/scaffold/src/cli.ts` adopts)
+4. `packages/scaffold/src/index.ts` (the Bingo/legacy dual-path `scaffoldProject` — note the Bingo presets are all empty stubs right now, so this is where "real" template content would need to move if the refactor activates Bingo blocks)
+5. Test files `packages/scaffold/tests/cli.test.ts` and `packages/create-pantoken-app/tests/index.test.ts` encode the exact current CLI contract (TTY-prompt behavior, `--help`, error messages) that any refactor must preserve or deliberately change.
+
+Known loose ends worth flagging to the user/planner: the `next` platform template is dead/unreachable, all six Bingo presets are empty (`blocks: []`), and there are three independently hand-rolled argv parsers in the pantoken CLI surface with no shared abstraction.</result>
+<usage><subagent_tokens>94949</subagent_tokens><tool_uses>45</tool_uses><duration_ms>238497</duration_ms></usage>
+</task-notification>
