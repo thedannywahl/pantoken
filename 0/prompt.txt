@@ -1,0 +1,84 @@
+<task-notification>
+<task-id>a5da6534a64c6a0da</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/c1989bfc-2fd9-4e8a-b005-2a6e9cc174cb/tasks/a5da6534a64c6a0da.output</output-file>
+<status>completed</status>
+<summary>Agent "Find TypeScript version pins" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture. Here's my report.
+
+## TypeScript upgrade audit — pantoken monorepo
+
+Scope note: I searched only the live working tree. I excluded the duplicate copies under `.claude/worktrees/` and `.worktrees/` (git worktrees, not part of the main upgrade surface).
+
+### 1. Where the TypeScript version is pinned
+
+There is exactly **one** real version pin. Every workspace package references it through the pnpm catalog.
+
+- **`/Users/dwahl/Scripts/pantoken/pnpm-workspace.yaml`** — the single source of truth:
+  ```yaml
+  catalog:
+    typescript: ^6.0.3
+  ```
+  Catalog behavior modifiers in the same file that matter for the bump:
+  - `catalogMode: prefer`
+  - `minimumReleaseAge: 5` (a 5-day-old-release gate; a fresh TS 7 release could be blocked until it ages)
+  - No `typescript` entry in `minimumReleaseAgeExclude`, `overrides`, or `peerDependencyRules`.
+
+- **74 workspace `package.json` files** each declare `"typescript": "catalog:"` in **devDependencies** (never in `dependencies` or `peerDependencies`). Full list of directories: all of `packages/*` (core, utils, cli, pantoken, plugin-kit, model), `formats/*` (dtcg, css, less, scss, stylus, components, icons, icon-font, tokens), `platforms/*` (jekyll, hugo, drupal, wordpress, rust, compose, flutter, swift, android, vanilla, email), `renderers/*` (all 24 incl. react, vue, svelte, angular, astro, storybook, etc.), `bundlers/*` (next, panda, postcss, tailwind, webpack, vite), `design/*` (figma, swatches), `plugins/*` (pantoken/*, postcss/*, typedoc/*, vite/workspace-orchestrator), `tools/*` (demo, sd-config, upstream-diff, aggregate, validate-generated), `ai/pantoken-ai`, and `docs`.
+
+  Practical consequence: to bump TypeScript you change **one line** in `pnpm-workspace.yaml`. None of the 74 packages carry a literal version string.
+
+- **Root `/Users/dwahl/Scripts/pantoken/package.json`** does **not** list typescript at all (it lists other catalog devDeps like eslint, stylelint, vite). TS reaches the root transitively via `vite`/`vite-plus`.
+
+### 2. Central catalog / npmrc
+
+- Catalog pin: `pnpm-workspace.yaml` as above.
+- **No `.npmrc`** exists anywhere in the tree.
+- `mise.toml` pins Node (`node = "24"`) but not TypeScript.
+- Package manager pinned in root `package.json`: `pnpm 11.13.0`; `engines.node &gt;= 22.18.0`.
+
+Lockfile note (`pnpm-lock.yaml`): the catalog resolves to **`typescript@6.0.3`**. A second version, **`typescript@5.6.1-rc`**, also appears but is a bundled/private dependency of `@arethetypeswrong/core@0.18.5` (the attw type-checker tool) — it is not pantoken's own TS and is not affected by the catalog bump.
+
+### 3. tsconfig files and notable compilerOptions
+
+There are **58 tsconfig files** in the main tree: one per workspace package, plus root `tsconfig.json`, plus `docs/tsconfig.typedoc.json`. **None use `extends`** — each is fully self-contained (there is no `tsconfig.base.json` in the main tree; the ones `find` reported live only inside the worktrees).
+
+- **Root `/Users/dwahl/Scripts/pantoken/tsconfig.json`**: `noEmit`, `module: nodenext`, `moduleResolution: nodenext`, `allowImportingTsExtensions: true`, `esModuleInterop: true`.
+
+- **The dominant per-package shape** (identical across ~55 packages — core, utils, cli, pantoken, formats/*, platforms/*, renderers/*, bundlers/*, etc.). All settings a TS 7 major could affect:
+  - `target: esnext`, `lib: ["es2023"]` (DOM-facing packages add `"dom"`: formats/css, renderers/angular, svelte, vue, react)
+  - `module: nodenext`, `moduleResolution: nodenext`
+  - `moduleDetection: force`
+  - `verbatimModuleSyntax: true`  ← relevant to TS 7 semantics
+  - `isolatedModules: true`
+  - `allowImportingTsExtensions: true` (paired with `noEmit: true`)
+  - `esModuleInterop: true`, `resolveJsonModule: true`
+  - `strict: true`, `noUnusedLocals: true`, `declaration: true`, `skipLibCheck: true`
+  - React/JSX packages add `jsx: react-jsx`.
+
+- **Outliers worth flagging:**
+  - **`docs/tsconfig.json`** — different from all others: `module: esnext`, `moduleResolution: bundler`, `lib: ["ES2020","DOM","DOM.Iterable"]`, `jsx: preserve`, `jsxImportSource: vue`, and **`skipLibCheck: false`** (the only place lib-checking is on — most exposed to new lib.d.ts errors under TS 7). `types: ["node","vite/client"]`.
+  - **`docs/tsconfig.typedoc.json`** — `module/moduleResolution: nodenext`, `jsx: react-jsx`, `allowImportingTsExtensions: true`, `skipLibCheck: true`; a wide `include` globbing `src/**/*.ts(x)` across nearly every workspace (drives TypeDoc API generation).
+
+### 4. References to `tsc` / `tsgo` / the native Go compiler
+
+**None.** No `tsc`, `tsgo`, `@typescript/native-preview`, or any direct compiler binary is referenced in any `package.json` script, config, git hook (`.vite-hooks/`), `vite.config.ts`, `mise.toml`, or `.vscode/settings.json`. The repo never shells out to a TypeScript compiler directly.
+
+### 5. How type-checking actually runs
+
+Type checking is fully delegated to **vite-plus** (`vp`), which bundles TypeScript internally (the catalog `typescript@6.0.3` flows in as a peer of `@voidzero-dev/vite-plus-core@0.2.4`).
+
+- Per-package scripts use `"check": "vp check"` (e.g. `renderers/react/package.json`). No package invokes a compiler itself.
+- Root type-check orchestration is config-driven in **`/Users/dwahl/Scripts/pantoken/vite.config.ts`**:
+  - `lint.options: { typeAware: true, typeCheck: true }` (line ~30) — this is what turns on TS-based checking.
+  - `run.tasks."check:all": { command: "vp check" }`, wired into the `ready:all` gate DAG.
+- Root `package.json` gate scripts (`check:repository`, `check:publish`, `check:attw`) call `vp run gate:*`, not tsc.
+
+### Key implication for the TS 6 → 7 upgrade
+
+Because pantoken never calls `tsc`/`tsgo` directly and routes **all** type checking through `vp check` / `@voidzero-dev/vite-plus-core@0.2.4`, the real gating dependency is whether that vite-plus version accepts `typescript@7`. TypeScript 7 being the native Go port (`tsgo`) matters less here than vite-plus's peer-dependency range — verify that before bumping the single catalog line. Secondary risk concentrates in `docs/tsconfig.json` (the only `skipLibCheck: false` config) and the near-universal `verbatimModuleSyntax` + `nodenext` settings.
+
+No edits were made.</result>
+<usage><subagent_tokens>51892</subagent_tokens><tool_uses>15</tool_uses><duration_ms>128709</duration_ms></usage>
+</task-notification>
