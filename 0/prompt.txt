@@ -1,0 +1,1 @@
+can we wire in npm to handle the publishing with changesets?  the pnpm github workflow forks on OIDC: https://github.com/yankeeinlondon/gha/commit/c54b13615c89b1beb7f0cf840ca4174603b1e393
