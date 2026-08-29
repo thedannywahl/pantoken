@@ -2,10 +2,19 @@
   "name": "{{projectName}}",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "preview": "serve ."
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@pantoken/canvas-theme-editor": "latest",
+    "@pantoken/cdn": "latest"
   },
   "devDependencies": {
-    "serve": "^14.2.6"
+    "tinymce": "^5.9",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
   }
 }

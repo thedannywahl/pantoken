@@ -1,0 +1,186 @@
+/**
+ * Authors starter page templates against pantoken's classes: TinyMCE for editing (pinned/
+ * configured to match instructure/canvas-lms's own RCE — see README), a custom "Insert template"
+ * plugin for the bundled starters, and a live styled preview pane fed by the chosen CDN
+ * provider/theme/mode.
+ */
+import tinymce from "tinymce";
+import "tinymce/themes/silver/theme";
+import "tinymce/icons/default";
+import "tinymce/plugins/code/plugin";
+// canvas-lms injects its skin CSS as a raw string via a custom mechanism (RCEWrapper.tsx's
+// injectTinySkin()) — out of scope here; plain side-effect imports achieve the same look.
+import "tinymce/skins/ui/oxide/skin.css";
+import "tinymce/skins/ui/oxide/content.css";
+import "tinymce/skins/content/default/content.css";
+import {
+  buildTheme,
+  CDN_PROVIDERS,
+  DEFAULT_CDN_PROVIDER_ID,
+  defaultThemeCssAssets,
+  type ThemeMode,
+  type ThemeVariant,
+} from "@pantoken/canvas-theme-editor";
+import { buildFileUrls } from "@pantoken/cdn";
+import type { Editor } from "tinymce";
+
+// Bundled starter templates: filename (minus .html) -> raw HTML content.
+const templateModules = import.meta.glob<string>("../templates/pages/*.html", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+const starterTemplates = Object.entries(templateModules).map(([path, content]) => ({
+  title: path.split("/").pop()!.replace(/\.html$/, ""),
+  content,
+}));
+
+// A small custom plugin — same `tinymce.PluginManager.add` convention canvas-lms's own
+// `instructure_*` RCE plugins use — modeled on TinyMCE's stock `template` plugin's UX (toolbar
+// button + "Insert template" menu item, dialog listing title), but replaces the whole document
+// (with a confirm) instead of the stock plugin's insert-at-cursor behavior.
+tinymce.PluginManager.add("pantoken_templates", (editor: Editor) => {
+  const openDialog = () => {
+    editor.windowManager.open({
+      title: "Insert template",
+      body: {
+        type: "panel",
+        items: [
+          {
+            type: "selectbox",
+            name: "template",
+            label: "Starter template",
+            items: starterTemplates.map((t) => ({ value: t.title, text: t.title })),
+          },
+        ],
+      },
+      initialData: { template: starterTemplates[0]?.title ?? "" },
+      buttons: [
+        { type: "cancel", text: "Cancel" },
+        { type: "submit", text: "Insert", primary: true },
+      ],
+      onSubmit: (api) => {
+        const { template } = api.getData() as { template: string };
+        const chosen = starterTemplates.find((t) => t.title === template);
+        api.close();
+        if (!chosen) return;
+        editor.windowManager.confirm(
+          `Replace the current content with the "${chosen.title}" template?`,
+          (confirmed: boolean) => {
+            if (confirmed) editor.setContent(chosen.content);
+          },
+        );
+      },
+    });
+  };
+
+  editor.ui.registry.addButton("pantokenTemplates", {
+    text: "Insert template",
+    onAction: openDialog,
+  });
+  editor.ui.registry.addMenuItem("pantokenTemplates", {
+    text: "Insert template…",
+    onAction: openDialog,
+  });
+
+  return {};
+});
+
+const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
+for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
+  const option = document.createElement("option");
+  option.value = id;
+  option.textContent = provider.label;
+  providerSelect.append(option);
+}
+providerSelect.value = DEFAULT_CDN_PROVIDER_ID;
+
+const themeSelect = document.querySelector<HTMLSelectElement>("#theme-variant")!;
+const modeSelect = document.querySelector<HTMLSelectElement>("#theme-mode")!;
+const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
+const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
+const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
+const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
+const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
+
+let activeEditor: Editor | undefined;
+let cssObjectUrl: string | undefined;
+let jsObjectUrl: string | undefined;
+
+function currentSelection(): { provider: string; theme: ThemeVariant; mode: ThemeMode } {
+  return {
+    provider: providerSelect.value,
+    theme: themeSelect.value as ThemeVariant,
+    mode: modeSelect.value as ThemeMode,
+  };
+}
+
+/** Debounce helper — the preview pane only needs to refresh a beat after typing settles. */
+function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: number) {
+  let handle: ReturnType<typeof setTimeout> | undefined;
+  return (...args: Args) => {
+    if (handle) clearTimeout(handle);
+    handle = setTimeout(() => fn(...args), ms);
+  };
+}
+
+/** Renders the editor's current HTML with the real, resolved CDN stylesheet URLs `<link>`ed in. */
+function updatePreview(): void {
+  if (!activeEditor) return;
+  const { provider, theme, mode } = currentSelection();
+  const cssUrls = buildFileUrls(defaultThemeCssAssets(theme, mode), provider);
+  const linkTags = cssUrls.map((url) => `<link rel="stylesheet" href="${url}">`).join("\n");
+  previewFrame.srcdoc = `<!doctype html><html><head>${linkTags}</head><body>${activeEditor.getContent()}</body></html>`;
+}
+const debouncedUpdatePreview = debounce(updatePreview, 300);
+
+/** Regenerates the downloadable theme.css/theme.js blobs for the chosen provider/theme/mode. */
+function updateDownloads(): void {
+  const { provider, theme, mode } = currentSelection();
+  const { css, js } = buildTheme({ provider, theme, mode });
+  if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
+  if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
+  cssObjectUrl = URL.createObjectURL(new Blob([css], { type: "text/css" }));
+  jsObjectUrl = URL.createObjectURL(new Blob([js], { type: "text/javascript" }));
+  downloadCss.href = cssObjectUrl;
+  downloadJs.href = jsObjectUrl;
+}
+
+function refreshAll(): void {
+  updatePreview();
+  updateDownloads();
+}
+
+providerSelect.addEventListener("change", refreshAll);
+themeSelect.addEventListener("change", refreshAll);
+modeSelect.addEventListener("change", refreshAll);
+
+copyButton.addEventListener("click", () => {
+  if (!activeEditor) return;
+  void navigator.clipboard.writeText(activeEditor.getContent()).then(() => {
+    copyStatus.textContent = "Copied. Paste into Canvas's Rich Content Editor HTML view.";
+  });
+});
+
+void tinymce
+  .init({
+    selector: "#editor",
+    plugins: "code pantoken_templates",
+    toolbar: "pantokenTemplates code",
+    menubar: false,
+    theme: "silver",
+    branding: false,
+    browser_spellcheck: true,
+    convert_urls: false,
+    toolbar_mode: "floating",
+    height: 400,
+    skin: false,
+    content_css: false,
+    setup(editor: Editor) {
+      editor.on("input change Undo Redo SetContent", () => debouncedUpdatePreview());
+    },
+  })
+  .then((editors) => {
+    activeEditor = editors[0];
+    refreshAll();
+  });

@@ -1,9 +1,0 @@
-{
-  "templates": [
-    { "file": "hero.html", "label": "Hero banner" },
-    { "file": "callout.html", "label": "Callout box" },
-    { "file": "two-column.html", "label": "Two-column info" },
-    { "file": "rubric-note.html", "label": "Rubric note" },
-    { "file": "testimonial.html", "label": "Testimonial quote" }
-  ]
-}

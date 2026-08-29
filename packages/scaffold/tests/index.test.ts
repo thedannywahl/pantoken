@@ -29,8 +29,8 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(written.length).toBeGreaterThan(0);
   expect(existsSync(join(target, "theme.css"))).toBe(true);
   expect(existsSync(join(target, "theme.js"))).toBe(true);
-  expect(existsSync(join(target, "preview/index.html"))).toBe(true);
-  expect(existsSync(join(target, "templates/manifest.json"))).toBe(true);
+  expect(existsSync(join(target, "index.html"))).toBe(true);
+  expect(existsSync(join(target, "src/main.ts"))).toBe(true);
   expect(existsSync(join(target, "templates/pages/hero.html"))).toBe(true);
   expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
     "@pantoken/css/dist/style.rebrand.light.lean.css",
@@ -38,6 +38,15 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("canvas-theme-editor's theme.css/theme.js honor --cdn/--theme at scaffold time", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-canvas-cdn-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("canvas-theme-editor", target, { cdn: "unpkg", theme: "canvas" });
+  const themeCss = readFileSync(join(target, "theme.css"), "utf8");
+  expect(themeCss).toContain("unpkg.com");
+  expect(themeCss).toContain("style.canvas.lean.css");
 });
 
 test("theme-editor is accepted as an alias for canvas-theme-editor", async () => {

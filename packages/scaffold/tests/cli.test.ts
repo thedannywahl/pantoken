@@ -188,7 +188,7 @@ test("printNextSteps renders scaffold.json-authored next steps/notes/caveats for
 
   expect(printed).toContain(`cd ${target}`);
   expect(printed).toContain("vp install");
-  expect(printed).toContain("vp run preview");
+  expect(printed).toContain("vp run dev");
   expect(printed).toContain("Theme Editor");
   expect(printed).toContain("Canvas sanitizes pasted HTML");
 });
@@ -416,6 +416,27 @@ test("rejects an unknown --theme-mode value", async () => {
   });
   const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
   expect(printed).toContain("not-a-mode");
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+test("--cdn selects the CDN provider canvas-theme-editor's theme.css is built for", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  await runScaffoldCli(
+    ["canvas-theme-editor", "--dir", target, "--yes", "--cdn", "unpkg", "--theme", "canvas"],
+    { usageCommand: "pantoken-scaffold" },
+  );
+  const themeCss = readFileSync(join(target, "theme.css"), "utf8");
+  expect(themeCss).toContain("unpkg.com");
+  expect(themeCss).toContain("style.canvas.lean.css");
+});
+
+test("rejects an unknown --cdn value", async () => {
+  await runScaffoldCli(["react", "--yes", "--cdn", "not-a-provider"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-provider");
   expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
