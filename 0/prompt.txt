@@ -1,0 +1,1 @@
+scope adding the api typedoc / cssdoc prose to the i18n workflow.
