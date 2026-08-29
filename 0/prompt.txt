@@ -1,0 +1,1 @@
+vitepress-plugin-llms is capturing all the `/hu` translations so pantoken.iywahl.com/llms.txt contains all english and hungarian outputs without differentiation.  Is this okay?  Should it be english only? Should there be a helper prose about translations?
