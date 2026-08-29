@@ -1,0 +1,5 @@
+* since we now have an icons tab, the components tab doesn't need the tokens sheet radios (lean / full) it should only be lean.
+* Base and Utilities should be included in the components list, and they should be the first two entries, and checked by default.
+* All components doesn't need the (components.css) trail in its label.
+* All components should be a multi-state checkbox (indeterminate) that checks/unchecks the component list - not that disables it, but when everything is checked the built url should be `components.css` and not ever individual combined import.
+* Output radio toggles should instead be secondary tabs that toggle between `@import` and `<link>` snippets.
