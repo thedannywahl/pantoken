@@ -1,0 +1,1 @@
+optimize committing / publishing / releasing / docs generation / workflows / git hooks, etc.
