@@ -1,0 +1,72 @@
+<task-notification>
+<task-id>a92ff71531d7d4b92</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/5abcd71e-4852-415e-94f8-1570a31e9ef2/tasks/a92ff71531d7d4b92.output</output-file>
+<status>completed</status>
+<summary>Agent "Find data:image and image tokens" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have everything needed. Here are the conclusions.
+
+## Summary
+
+There are two distinct image-token encodings in this repo: logos use base64 data URIs, while icons use percent-encoded (`utf8`) data URIs. Both are wrapped in CSS `url(...)` and declared with `syntax: "&lt;image&gt;"`.
+
+## 1. Logos — base64 data URIs
+
+**`/Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/generated/logos.css`** — CSS custom properties, one per logo:
+```
+--instui-logo-canvas-horizontal-color: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94...");
+```
+Format: `url("data:image/svg+xml;base64,&lt;base64 SVG&gt;")`. NOT percent-encoded — base64.
+
+**`/Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/generated/embedded.ts`** — the `LOGOS: LogoMeta[]` array holds only metadata (`product`, `layout`, `colorMode`, `name`, `path` like `"canvas/horizontal-color.svg"`), plus `LOGO_SVGS` and `LOGOS_CSS` exports. Raw SVGs live in `/Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/assets/logos/&lt;product&gt;/*.svg`.
+
+**`/Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/src/index.ts`** — `getLogoDataUri()` (line ~149) builds the value: `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`. Same base64 logic in the generator **`/Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/scripts/generate.ts`** (line 83).
+
+## 2. Icons (simple-icons / IR `&lt;image&gt;` tokens) — percent-encoded utf8 data URIs
+
+**`/Users/dwahl/Scripts/pantoken/plugins/pantoken/simple-icons/src/index.ts`** (line 158) — token value:
+```
+value: `url('data:image/svg+xml;utf8,${encodeURIComponent(svgOf(icon))}')`,
+syntax: "&lt;image&gt;",
+meta: { kind: "icon" },
+```
+Format: `url('data:image/svg+xml;utf8,&lt;percent-encoded SVG&gt;')`. These are the `--instui-icon-*` tokens.
+
+## 3. Icon glyphs — how icon values are represented
+
+Icons are stored as inline SVG (`&lt;path d&gt;`, plus line/circle/rect/polyline/polygon) that gets percent-encoded into the data URI above. They are NOT unicode glyphs at the token level. Downstream consumers decode back to SVG:
+- **`/Users/dwahl/Scripts/pantoken/formats/icons/src/index.ts`** — `@pantoken/icons`, decodes `dataUri` → inline `svg`, exposes `viewBox`, `bidirectional`, `source` ("custom" | "lucide").
+- **`/Users/dwahl/Scripts/pantoken/packages/core/src/icon-assets.ts`** — `decodeIconSvg()` / `getIconSvgs()`, plus SVG→Android VectorDrawable, Xcode imageset, Flutter manifest converters.
+- Unicode only appears in the icon-FONT build (**`/Users/dwahl/Scripts/pantoken/formats/icon-font/src/build.ts`**), which assigns Private Use Area codepoints (U+E000+) when generating a font — a separate output format, not the token value.
+
+## 4. Alert (and other components) — image tokens via indirection, one inline percent-encoded URI
+
+**`/Users/dwahl/Scripts/pantoken/formats/components/src/components/alert.css`** does NOT store data URIs directly; it references icon tokens through a custom property used as a mask:
+```
+--pantoken-alert-glyph: var(--instui-icon-info);      /* also circle-check, triangle-alert, octagon-x */
+-webkit-mask: var(--pantoken-alert-glyph) center / 1.125rem no-repeat;
+```
+The `@cssproperty --pantoken-alert-glyph &lt;url&gt;` is documented as "a url-encoded SVG."
+
+**`/Users/dwahl/Scripts/pantoken/formats/components/src/lib/helpers.ts`** — two inline percent-encoded (NOT base64) data URIs for cases that can't use `var()`/masking:
+- `SELECT_CHEVRON` (line 53): `url("data:image/svg+xml,%3Csvg...%3E")` — a `background-image` with a color baked into `stroke='%236a7883'` (a native `&lt;select&gt;` can't read `currentColor`).
+- `AI_ICON_MASK` (line 64): same `url("data:image/svg+xml,%3Csvg...")` form, used as a mask.
+- `iconMask(name)` (line 47) returns `var(--instui-icon-${name}) center / contain no-repeat` — the normal indirection path.
+
+## 4b. Encoding style + existing decode/encode utilities
+
+- **Two encodings coexist:** logos = `;base64,` (not percent-encoded); icons + component helper URIs = percent-encoded via `encodeURIComponent` (icons use `;utf8,`; the helpers.ts inline ones omit `;utf8` and hand-write `%3C…`).
+- **Encode utilities:** `encodeURIComponent` at simple-icons `src/index.ts:158`; base64 encode at logos `src/index.ts:149` and `scripts/generate.ts:83`.
+- **Decode utilities (already exist):**
+  - `decodeIconSvg()` in `/Users/dwahl/Scripts/pantoken/packages/core/src/icon-assets.ts:26` (exported from `@pantoken/core`) — strips `url('…')` wrapper and `data:image/svg+xml;utf8,` prefix, then `decodeURIComponent`.
+  - A near-identical private `decode()` in `/Users/dwahl/Scripts/pantoken/formats/icons/src/index.ts:33` (same `DATA_PREFIX = "data:image/svg+xml;utf8,"`, same regex `^url\(\s*'?(.*?)'?\s*\)$`).
+  - Note: both decoders only handle the `;utf8,` percent-encoded icon form — neither decodes the logos' `;base64,` form.
+
+## Tests worth noting (confirm the formats)
+- `/Users/dwahl/Scripts/pantoken/plugins/pantoken/logos/tests/index.test.ts:34,39` — asserts `^data:image/svg+xml;base64,` and `url("data:image/svg+xml;base64,`.
+- `/Users/dwahl/Scripts/pantoken/plugins/pantoken/simple-icons/tests/index.test.ts:34` — asserts `url('data:image/svg+xml`.
+- `/Users/dwahl/Scripts/pantoken/formats/components/tests/components/button.test.ts:63` — asserts CSS contains `data:image/svg+xml`.
+- Platform emitters (`platforms/{android,swift,flutter}/tests`) round-trip `url('data:image/svg+xml;utf8,${encodeURIComponent(...)}')`; swift test asserts output must NOT contain `data:image`.</result>
+<usage><subagent_tokens>48825</subagent_tokens><tool_uses>13</tool_uses><duration_ms>74703</duration_ms></usage>
+</task-notification>
