@@ -1,0 +1,1 @@
+the output code snippet can be switched to the native vitepress md codefence which will include syntax highlighting and a built-in copy button.
