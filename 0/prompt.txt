@@ -1,0 +1,1 @@
+create a new branch, make incremental commits, create a PR and when CI is green either release versions of all affected packages and then merge so release.yml runs or merge and then run `vpr release` for all affected packages, whichever our release orchestration treats as best practice.
