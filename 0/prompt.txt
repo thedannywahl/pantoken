@@ -1,0 +1,92 @@
+<task-notification>
+<task-id>abf222aaf90425e68</task-id>
+<tool-use-id>toolu_01Mnie5jWtR6b8uF19FmBFGS</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/15b3fe10-0304-4baa-9621-244521fa71a0/tasks/abf222aaf90425e68.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore token to CSS pipeline" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>Investigation complete. Here's what I found.
+
+## 1. How `formats/css/dist/style.css` and `generated/style.css` are built
+
+Two-stage pipeline, defined in `formats/css/vite.config.ts` (build task = `["vp run generate", "vp pack"]`):
+
+- **Stage 1 — `generated/style.css`**: `formats/css/scripts/generate.ts` imports the `css` string from `formats/css/src/index.ts` and writes it to `../generated/style.css`. That's the full, human-readable 17,043-line sheet.
+- **Stage 2 — `dist/style.css`**: `vp pack` (vite-plus) takes `generated/style.css` as an entry (`style: "generated/style.css"` in the pack config) and emits a **minified single-line** `dist/style.css` (`css.minify: true`).
+
+The `:root` content is produced entirely by `src/index.ts` → `src/to-css.ts`:
+
+```
+// formats/css/src/index.ts
+import { tokens } from "@pantoken/tokens";
+export const css: string = toCss(tokens);
+```
+
+`toCss(tokens, options)` (`src/to-css.ts`) consumes **only** the `@pantoken/tokens` IR array. The default `css` export passes **no plugins and no extra options**, so nothing else contributes to the shipped sheet. (`toCss` does support a `plugins` param with a `css` hook that can `prepend`/`append`/add `properties`/`declarations`, but the default stylesheet uses none.)
+
+## 2. Dependency graph / layering
+
+`formats/css/package.json` `dependencies`:
+- `@pantoken/model`
+- `@pantoken/plugin-kit`
+- `@pantoken/tokens`
+
+It does **not** depend on `@pantoken/components`, and `@pantoken/components` (`formats/components/package.json`) does **not** depend on `@pantoken/css` either. Components' deps are `@pantoken/plugin-colors` (runtime) plus dev deps `@pantoken/tokens`, `@pantoken/icons`, `@pantoken/plugin-theme-custom-media`, `@pantoken/utils`.
+
+**Layering: `@pantoken/css` is BELOW `@pantoken/components`.** Both sit on top of `@pantoken/tokens`, but components is the higher-level consumer that builds semantic composites (elevation, focus ring) on top of the raw token vars. So having css import from components would be an **upward/inverted dependency** — not allowed by the current direction.
+
+## 3. Where the `:root` custom properties come from
+
+Emitted **one-per-token** from the `tokens` array, via a general pass in `src/to-css.ts` (lines 71-74):
+
+```
+for (const token of tokens) {
+  if (isContextual(token.value)) declarations.push([token.name, token.value]); // var()/light-dark() → :root {}
+  else properties.push({ name, syntax, value });                              // concrete → @property
+}
+```
+
+It is **not curated** — every token in the IR becomes either an `@property` registration (concrete values) or a `:root` declaration (values containing `var(` or `light-dark(`). So the two ways to add new `--instui-*` props to the sheet are: (a) add them to the IR so this pass emits them, or (b) pass a plugin with a `css` hook that appends `properties`/`declarations`.
+
+## 4. Does `@pantoken/css` emit elevation / focus-outline props today? No.
+
+Grep of both `generated/style.css` and `dist/style.css`:
+- `--instui-elevation-*` → **zero matches**
+- top-level `--instui-focus-outline-*` → **zero matches**
+
+Only the **ingredient** tokens are present (from the IR):
+- `--instui-color-drop-shadow-shadow-color1`, `--instui-color-drop-shadow-shadow-color2`
+- `--instui-component-shared-tokens-focus-outline-*` (width, offset, info/success/danger/on-color, style, inset)
+- primitives like `--instui-drop-shadow-blur-elevation1-dropshadow1`, `--instui-drop-shadow-spread-elevation1-*`
+
+The semantic `--instui-elevation-*` and `--instui-focus-outline-*` properties are defined only in `@pantoken/components`.
+
+## 5. Are elevation / focus-outline first-class in the model/IR? No — they're bespoke composites in `@pantoken/components`.
+
+The resolved IR (`formats/tokens/generated/rebrand.json`, also canvas/canvasHighContrast) has **no** `--instui-elevation-*` and **no** top-level `--instui-focus-outline-*` names. The tokens package sources from `@instructure/instructure-design-tokens` via `@pantoken/core` `buildTokens` (`formats/tokens/scripts/generate.ts`) — the semantic composites are not in that upstream set.
+
+They are hand-authored composites in two files:
+
+- **`formats/components/src/declarations/elevation.ts`** — `elevationDeclarations()` returns the `[--instui-elevation-&lt;name&gt;, value]` pairs. Values combine **hardcoded rem geometry** (`ELEVATION_GEOMETRY`, `ELEVATION_ALIASES` — `resting`/`above`/`topmost` + `depth1-3`/`card`/`cardHover`) with the themed color tokens `--instui-color-drop-shadow-shadow-color1/2`. Note: it does **not** use the IR's `--instui-drop-shadow-blur/spread-elevation*` primitives — it uses its own geometry constants. Also exposes `elevationCss({selector})` and an `elevation` `Definition` for the cssdoc registry.
+- **`formats/components/src/declarations/focus.ts`** — `focusOutlineDeclarations()` returns the 11 `[--instui-focus-outline-*, value]` pairs. Values reference `--instui-component-shared-tokens-focus-outline-*` (in IR), `--instui-border-radius-md` (in IR), plus constants (`transparent`, `solid`, transition string, `0rem`). It **also** exposes `focusOutlineRules()` / `FOCUSABLE_SELECTOR` — the actual `:focus-visible` ring behavior baked into `base.css`.
+
+Both are registered in `formats/components/src/declarations/index.ts` (`DECLARATIONS = [focus, elevation]`) for cssdoc `@declaration` docs + `validate()`. They're wired into the components sheet via `formats/components/src/index.ts`: `baseCss()` appends `focusOutlineCss()`, and `elevationCss()` leads `componentsCss()`. Component CSS references the vars, e.g. `formats/components/scripts/generate.ts:106` maps `box-shadow` to `ELEVATION_NAMES.map(n =&gt; \`--instui-elevation-${n}\`)`.
+
+## Bottom line for the move
+
+It is **not** a trivial build-script flip. The `--instui-elevation-*` / `--instui-focus-outline-*` property values don't exist in the IR — they're computed in TypeScript inside `@pantoken/components`, the package that sits **above** `@pantoken/css`. To move the custom-property blocks into the token sheet you need one of:
+
+- **Move the pure builders down** to a package `@pantoken/css` can import (e.g. into `@pantoken/tokens`, `@pantoken/model`, or a new shared low-level module), then have `css/src/index.ts` emit them (directly or via a `css` plugin hook), OR
+- **Promote them to first-class IR tokens** (add elevation/focus-outline entries to the token model) so the existing per-token emit pass in `to-css.ts` picks them up automatically.
+
+Either way the ingredient tokens they depend on (`--instui-color-drop-shadow-shadow-color1/2`, `--instui-component-shared-tokens-focus-outline-*`, `--instui-border-radius-md`) already ship in the token sheet, so the composites will resolve. Note one caveat: only the **`:root { --instui-*: … }` declaration blocks** should move to the token sheet. The focus **ring behavior** (`focusOutlineRules()` / `FOCUSABLE_SELECTOR`, the `:focus-visible` rules and `-focus-*` modifiers) is component/base-level styling and should stay in `@pantoken/components` `base.css`. You'll also need to decide what happens to the cssdoc `@declaration` registry entries (`DECLARATIONS`) currently living in components.
+
+Relevant files (all relative to repo root):
+- `formats/css/package.json`, `formats/css/vite.config.ts`, `formats/css/scripts/generate.ts`
+- `formats/css/src/index.ts`, `formats/css/src/to-css.ts`, `formats/css/src/emit.ts`
+- `formats/css/generated/style.css`, `formats/css/dist/style.css`
+- `formats/tokens/package.json`, `formats/tokens/scripts/generate.ts`, `formats/tokens/generated/rebrand.json`
+- `formats/components/package.json`, `formats/components/src/index.ts`, `formats/components/scripts/generate.ts`
+- `formats/components/src/declarations/index.ts`, `formats/components/src/declarations/elevation.ts`, `formats/components/src/declarations/focus.ts`</result>
+<usage><subagent_tokens>43410</subagent_tokens><tool_uses>19</tool_uses><duration_ms>141481</duration_ms></usage>
+</task-notification>
