@@ -1,0 +1,195 @@
+<task-notification>
+<task-id>ab590e15c98825d6d</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/45b81add-2a72-4587-a2cd-6f3296a7b52a/tasks/ab590e15c98825d6d.output</output-file>
+<status>completed</status>
+<summary>Agent "Design deprecation ledger + compat manifest" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have enough grounding. Here is the concrete design.
+
+---
+
+# Design: token deprecation ledger + compatibility manifest
+
+## Grounding summary (what exists today)
+
+- Vendored IR is written by `formats/tokens/scripts/generate.ts` → `formats/tokens/generated/{rebrand,canvas,canvasHighContrast}.json` + `raw.json` + `meta.json` (`{upstream, upstreamVersion}`). `@pantoken/tokens` (`formats/tokens/src/index.ts`) just imports those JSON files and re-exports arrays. Exports are `"."` and `"./raw"` only; `meta.json` is not currently exported.
+- `buildTokens` (`packages/core/src/build.ts`) runs plugin `tokens` hooks as its last step (step 6), and `defineToken` (`packages/core/src/plugin.ts:54`) auto-derives `syntax: "*"` + `refersTo` for a single `var(--instui-*)` value.
+- `toCss` (`formats/css/src/to-css.ts:71`) routes any contextual token (a `var()`/`light-dark()` value) into the `:root` declarations block; concrete tokens become `@property`. So a `var()` forwarder token becomes a real CSS shim in every downstream format for free.
+- Drift primitives live in `@pantoken/utils` (`packages/utils/src/index.ts`): `tokenNames`, `unknownReferences`, `danglingReferences`. `tools/validate-generated/index.ts` is the drift gate; its `GENERATOR_PKGS`, `FINALIZED_CSS_PKGS`, `BRIDGES`, `SELF_CONTAINED` arrays already enumerate exactly which consumers are validated and by which check.
+- Release uses a writer/gate pair convention: `sync:repository` writes, `gate:repository` verifies (`vite.config.ts:116-123`). `check-changeset-coverage.ts` already forces a changeset whenever a publishable package's shipped source changes — regenerating `generated/*.json` counts.
+- The inline-alias philosophy in `formats/components/src/lib/aliases.ts` clones a canonical rule body under the alias name. At the token layer we can do better than a body-copy: a `var()` forwarder keeps theming/`light-dark()` flowing through automatically.
+
+---
+
+## Artifact 1 — token deprecation ledger
+
+### File
+
+`formats/tokens/deprecations.json` — committed, hand-authored (package root, beside `generated/`, not inside it since `generated/` is machine-written). It's the durable, reviewed policy record; the companion drift diff only *proposes* entries.
+
+### Schema
+
+```jsonc
+{
+  "$schema": "./deprecations.schema.json",
+  "version": 1,
+  "entries": [
+    {
+      "token": "--instui-color-background-brand-old", // removed/renamed upstream token
+      "since": "1.0.0",                    // upstream version it disappeared in (== meta.upstreamVersion)
+      "policy": "alias",                   // "alias" | "removed"
+      "replacement": "--instui-color-background-brand",
+      "note": "Renamed upstream; forwards to the canonical brand background."
+    },
+    {
+      "token": "--instui-legacy-spacing-xxs",
+      "since": "1.0.0",
+      "policy": "removed",
+      "replacement": "--instui-spacing-xx-small", // migration target only; no shim emitted
+      "note": "Hard-removed upstream. Migrate to the canonical spacing token."
+    }
+  ]
+}
+```
+
+Policy semantics, reusing the inline-alias philosophy at the token layer:
+- `"alias"` → emit a compatibility-shim token into the IR: `define({ name: token, value: "var(&lt;replacement&gt;)", meta: { deprecated: {...} } })`. `defineToken` yields `syntax:"*"`, `refersTo: replacement`; `toCss` emits it as a `:root` declaration, so css/scss/less/stylus/wordpress/vanilla all get the shim automatically. This is the token analog of `withAliases`, but via `var()` forwarding (theming flows through) instead of a body clone.
+- `"removed"` → **not** emitted. Surfaces only as a migration note (docs + CHANGELOG). Any pantoken-authored output still referencing it is already caught by `unknownReferences` in `validate-generated`.
+
+### `@pantoken/model` type additions (`packages/model/src/index.ts`)
+
+Zero-dependency, types only — fits the package's role as the IR contract:
+
+```ts
+/** Policy for an upstream token that was removed or renamed. */
+export type DeprecationPolicy = "alias" | "removed";
+
+/** One entry in the token deprecation ledger. */
+export interface DeprecationEntry {
+  token: string;
+  since: string;
+  policy: DeprecationPolicy;
+  replacement?: string;   // required for "alias"
+  note?: string;
+}
+
+/** The committed ledger shape (formats/tokens/deprecations.json). */
+export interface DeprecationLedger {
+  version: number;
+  entries: DeprecationEntry[];
+}
+```
+
+And one field on the existing `TokenMeta` (line 29-43) so a shim token carries its provenance into the IR (visible to consumers, docs, and the gate):
+
+```ts
+/** Present on an emitted compatibility-shim token (policy "alias"). */
+deprecated?: { replacement?: string; since?: string; note?: string };
+```
+
+### Production / wiring
+
+- New plugin `plugins/pantoken/deprecations` exporting `deprecationShims(ledger: DeprecationLedger): PantokenPlugin`. Its `tokens` hook appends one forwarder per `alias` entry:
+
+  ```ts
+  tokens: ({ tokens, define }) =&gt; [
+    ...tokens,
+    ...ledger.entries
+      .filter((e) =&gt; e.policy === "alias" &amp;&amp; e.replacement)
+      .map((e) =&gt; define({
+        name: e.token,
+        value: `var(${e.replacement})`,
+        meta: { deprecated: { replacement: e.replacement, since: e.since, note: e.note } },
+      })),
+  ]
+  ```
+
+- Insert it in `formats/tokens/scripts/generate.ts` so shims bake into the vendored JSON everyone reads: `buildTokens({ theme, plugins: [deprecationShims(ledger)] })`. No separate release wiring is then needed — shims ship with `@pantoken/tokens` and every downstream format.
+- **Fed by the drift diff** (companion tool): it compares `tokenNames(previousIR)` vs `tokenNames(newIR)` after an upstream bump; disappeared names become candidate entries pre-filled with `since = new meta.upstreamVersion`. A human sets `policy` + `replacement`. New gate `gate:token-drift` fails if a newly-disappeared upstream token has no `deprecations.json` entry (alias or removed) — this is the forcing function.
+- Optionally export the ledger from `@pantoken/tokens` (`"./deprecations"`) so tooling/docs can read it without a file path.
+
+---
+
+## Artifact 2 — compatibility manifest
+
+### File
+
+`compatibility.json` at repo root (a repo-wide release fact, like a lockfile-adjacent manifest), rendered into a human page at `docs/compatibility.md`. It's a writer/gate pair, mirroring `sync:repository`/`gate:repository`.
+
+### Schema
+
+```jsonc
+{
+  "$schema": "./compatibility.schema.json",
+  "generatedAt": "2026-07-24",
+  "upstream": {
+    // token source — governs the token IR; unpinned github, provenance from meta.json
+    "@instructure/instructure-design-tokens": {
+      "range": "github:instructure/instructure-design-tokens",
+      "resolved": "1.0.0",
+      "feeds": "token-ir"
+    },
+    // icon source — governs the icon layer
+    "@instructure/ui-icons": { "range": "^11.7.3", "resolved": "11.7.4", "feeds": "icons" },
+    // the eight ui-* React packages — govern renderers/react-markdown ONLY
+    "@instructure/ui-view":  { "range": "^11.7.3", "resolved": "11.7.4", "feeds": "react-markdown" }
+    // ...ui-heading, ui-text, ui-link, ui-list, ui-table, ui-img, ui-alerts
+  },
+  "consumers": {
+    "platforms/wordpress":       { "package": "@pantoken/wordpress",  "validatedBy": ["generated", "reference-integrity"] },
+    "renderers/angular":         { "package": "@pantoken/angular",    "validatedBy": ["finalized-css"] },
+    "renderers/vitepress":       { "package": "@pantoken/vitepress",  "validatedBy": ["generated", "reference-integrity", "finalized-css"] },
+    "renderers/react-markdown":  { "package": "@pantoken/react-markdown", "instui": "^11.7.3" }
+  }
+}
+```
+
+The two-tier `upstream` split matters: the github-only design-tokens line (unpinned, "1.0.0") feeds the token IR, while the `^11.7.x` ui-* line feeds only `renderers/react-markdown`. The manifest records which pantoken layer each upstream governs so an 11.7.5/11.8.0 bump maps to the right blast radius.
+
+### Generation + validation
+
+- `scripts/release/generate-compatibility.ts` (writer). Sources:
+  - token-source `resolved` ← `formats/tokens/generated/meta.json`.
+  - each ui-* `resolved` ← installed `node_modules/.../package.json` via `require.resolve` (same technique `generate.ts:31` already uses for provenance).
+  - each `range` ← the `catalog` block in `pnpm-workspace.yaml`.
+  - `consumers` + `validatedBy` ← derived from `validate-generated`'s `GENERATOR_PKGS` / `FINALIZED_CSS_PKGS` / `BRIDGES` arrays (export them as a shared constant so the manifest and the gate can't drift from each other).
+- `scripts/release/check-compatibility.ts` (gate). Regenerates the expected manifest in memory and diffs against committed `compatibility.json`; fails if stale. Also asserts `meta.upstreamVersion === upstream["@instructure/instructure-design-tokens"].resolved`.
+- Human render: a small doc generator turns `compatibility.json` into a support-matrix table in `docs/compatibility.md`, built inside the existing docs VitePress pipeline.
+
+---
+
+## Artifact 3 — release-flow &amp; CI integration
+
+New tasks in `vite.config.ts` `run.tasks`, following the existing DAG conventions (everything needing generated output `dependsOn: ["build:all"]`):
+
+```jsonc
+"sync:compatibility":  { "command": "node scripts/release/generate-compatibility.ts", "dependsOn": ["build:all"] },
+"gate:compatibility":  { "command": "node scripts/release/check-compatibility.ts",     "dependsOn": ["build:all"] },
+"gate:token-drift":    { "command": "node tools/token-drift/index.ts --check",          "dependsOn": ["build:all"] }
+```
+
+Add `gate:compatibility` and `gate:token-drift` to the `ready:all` fan-out (and/or `gate:publish`).
+
+How a future bump behaves:
+- Bumping the catalog (11.7.5 / 11.8.0, or a design-tokens github bump) regenerates `generated/*.json` + `meta.json`. That's shipped-source churn in `@pantoken/tokens`, so `check-changeset-coverage.ts` already forces a changeset — no new wiring needed there.
+- The same PR must also: (a) update `compatibility.json` or `gate:compatibility` fails, and (b) add `deprecations.json` entries for any disappeared token or `gate:token-drift` fails.
+- `alias` shims need no extra release step — they're baked into the vendored IR at generate time and flow through every format. A changeset note ("adds compatibility shim for `--instui-…`") documents them; `removed` entries render as migration notes in `docs/compatibility.md` / the tokens CHANGELOG.
+
+### Notable design choices / trade-offs
+
+- Token-layer aliases use `var()` forwarding (`refersTo`) rather than the component-layer body-clone in `withAliases`, so shims inherit theming and `light-dark()` automatically. Worth calling out as a deliberate divergence from the inline philosophy.
+- Baking shims into the vendored JSON (vs. emitting them live in each consumer's `toCss` call) keeps `@pantoken/tokens` the single source of truth and lets `validate-generated` see shim tokens as *defined* (so bridges referencing them don't trip `unknownReferences`).
+- `deprecations.json` and `compatibility.json` deliberately live in different scopes: the ledger is package-local to `@pantoken/tokens` (it annotates that package's IR), while the manifest is repo-wide (it spans all consumers + two upstream tiers).
+
+### Critical files for implementation
+
+- `/Users/dwahl/Scripts/pantoken/formats/tokens/scripts/generate.ts` (bake alias shims + write meta; ledger read point)
+- `/Users/dwahl/Scripts/pantoken/packages/model/src/index.ts` (add `DeprecationEntry`/`DeprecationLedger`, `TokenMeta.deprecated`)
+- `/Users/dwahl/Scripts/pantoken/tools/validate-generated/index.ts` (export consumer arrays; drift-gate integration)
+- `/Users/dwahl/Scripts/pantoken/vite.config.ts` (new `sync:/gate:compatibility`, `gate:token-drift` tasks in the DAG)
+- `/Users/dwahl/Scripts/pantoken/scripts/release/check-changeset-coverage.ts` (confirms bump PRs stay covered; pattern reference for the new writer/gate scripts)
+
+New files to create (implementation phase): `formats/tokens/deprecations.json`, `plugins/pantoken/deprecations/` (the `deprecationShims` plugin), `compatibility.json`, `scripts/release/generate-compatibility.ts`, `scripts/release/check-compatibility.ts`, `tools/token-drift/index.ts`.</result>
+<usage><subagent_tokens>58966</subagent_tokens><tool_uses>19</tool_uses><duration_ms>178607</duration_ms></usage>
+</task-notification>
