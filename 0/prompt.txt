@@ -1,0 +1,1 @@
+@pantoken/plugin-deprecations@0.2.0 failed to publish- but it should private.
