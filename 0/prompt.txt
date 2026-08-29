@@ -1,0 +1,123 @@
+Translate this technical markdown from English to Hungarian.
+Return only the translated markdown.
+Rules:
+- Keep markdown structure unchanged.
+- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.
+- Do not alter placeholder tokens like __PTK_PACKAGE_#__.
+- Preserve whitespace and line breaks.
+- Keep import paths, package names, URLs, and identifiers intact.
+File: guide/getting-started.md
+--- BEGIN MARKDOWN ---
+# Getting started
+
+pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
+model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
+Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+
+You install the smallest package that fits your task. Everything is also re-exported by the unified
+__PTK_INLINE_CODE_0__ package, so you can start there and narrow down later.
+
+## Scaffold a starter project
+
+The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+
+__PTK_CODE_BLOCK_0__
+
+Platforms: __PTK_INLINE_CODE_1__ (plain HTML/CSS), __PTK_INLINE_CODE_2__, __PTK_INLINE_CODE_3__, __PTK_INLINE_CODE_4__, __PTK_INLINE_CODE_5__, __PTK_INLINE_CODE_6__. See
+[__PTK_INLINE_CODE_7__](https://www.npmjs.com/package/__PTK_PACKAGE_0__) for __PTK_INLINE_CODE_8__ and
+programmatic use.
+
+Using an AI coding agent? No install needed — point it at the skill directly:
+
+__PTK_CODE_BLOCK_1__
+
+Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
+Developer CLI — swap __PTK_INLINE_CODE_9__ for __PTK_INLINE_CODE_10__, __PTK_INLINE_CODE_11__, __PTK_INLINE_CODE_12__, __PTK_INLINE_CODE_13__, or __PTK_INLINE_CODE_14__. If you'd
+rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
+of this skill), run __PTK_INLINE_CODE_15__ instead.
+
+## The token model
+
+Tokens are CSS custom properties named __PTK_INLINE_CODE_16__, for example
+__PTK_INLINE_CODE_17__ or __PTK_INLINE_CODE_18__. Three themes ship: __PTK_INLINE_CODE_19__
+(the default, with __PTK_INLINE_CODE_20__ where light and dark differ), __PTK_INLINE_CODE_21__, and __PTK_INLINE_CODE_22__.
+Icons are __PTK_INLINE_CODE_23__ tokens (__PTK_INLINE_CODE_24__) derived from Lucide plus Instructure's custom
+glyphs.
+
+## Style a web app
+
+Install the stylesheet and import it once. It defines every __PTK_INLINE_CODE_25__ property, so you reference
+them straight from your own CSS.
+
+__PTK_CODE_BLOCK_2__
+
+__PTK_CODE_BLOCK_3__
+
+__PTK_CODE_BLOCK_4__
+
+## Use icons anywhere
+
+The web component works in any framework, with no porting.
+
+__PTK_CODE_BLOCK_5__
+
+__PTK_CODE_BLOCK_6__
+
+__PTK_CODE_BLOCK_7__
+
+### CSS tokens
+
+Icons are CSS custom properties (__PTK_INLINE_CODE_26__). Load the stylesheet once and reference any
+icon as a __PTK_INLINE_CODE_27__ or __PTK_INLINE_CODE_28__ — no per-icon import needed.
+
+__PTK_CODE_BLOCK_8__
+
+### JavaScript — single icon vs. full set
+
+__PTK_INLINE_CODE_29__ exposes two named exports. Use __PTK_INLINE_CODE_30__ to pull one icon without iterating
+the full array:
+
+__PTK_CODE_BLOCK_9__
+
+Use __PTK_INLINE_CODE_31__ when you need the whole set (e.g. to build a picker):
+
+__PTK_CODE_BLOCK_10__
+
+Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
+level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
+for only the icons you need.
+
+## Generate for a native platform
+
+The CLI writes token source into a target repo. No install beyond the runner:
+
+__PTK_CODE_BLOCK_11__
+
+See [the pantoken CLI](/guide/cli) for every target.
+
+## VS Code authoring hints
+
+__PTK_INLINE_CODE_32__ now ships VS Code custom-data files so downstream projects can get class and
+token completion in HTML/CSS without installing a pantoken-specific extension.
+
+1. Install the unified package:
+
+__PTK_CODE_BLOCK_12__
+
+1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+
+__PTK_CODE_BLOCK_13__
+
+1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+
+This enables suggestions for __PTK_INLINE_CODE_33__ class tokens (and __PTK_INLINE_CODE_34__ class tokens) plus
+__PTK_INLINE_CODE_35__ custom properties.
+
+## Where to next
+
+- [The package map](/guide/packages) — which package to reach for, by task.
+- [__PTK_PACKAGE_1__](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
+- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
+- [API reference](/api/) — every exported symbol, generated from the source.
+
+--- END MARKDOWN ---
