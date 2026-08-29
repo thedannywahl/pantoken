@@ -1,0 +1,24 @@
+I don't think that our postcss custom media plugin is resolving correctly. formats/components/src/components/billboard.css has:
+
+```
+.pfx-billboard.-clickable:hover {
+  border-style: dashed;
+  border-color: var(--instui-color-text-base);
+}
+
+@media (--theme-canvas),
+(--theme-canvas-high-contrast) {
+  .pfx-billboard.-clickable:hover {
+    border-color: var(--instui-component-link-text-color);
+  }
+}
+```
+
+however, the only rule that gets inserted into the live vitepress docs site when switching themes to showcase the `@example` + theme switcher is:
+
+```
+.instui-billboard.-clickable:hover {
+	border-style: dashed;
+	border-color: var(--instui-color-text-base);
+}
+```
