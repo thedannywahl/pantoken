@@ -6,6 +6,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { join, relative, resolve } from "node:path";
 import { renderWrapperContainer, wrapperRootClassName } from "@pantoken/scaffold-base";
 import { generateLocaleBundles } from "@pantoken/translation-adapters";
+import type { CompiledScaffoldMetadata, ScaffoldMetadata } from "../src/scaffold-metadata.ts";
 
 const root = resolve(import.meta.dirname, "..");
 const templatesRoot = join(root, "templates");
@@ -60,20 +61,13 @@ console.log(`✓ inlined scaffold templates for ${Object.keys(scaffolds).length}
 
 // Compile each template's optional scaffold.json (nextSteps/notes/caveats) into i18n key names —
 // the resolved text is looked up from the locale bundle at print-time, not baked in here.
-const scaffoldMetadata: Record<
-  string,
-  { nextStepsKeys: string[]; notesKey?: string; caveatsKey?: string }
-> = {};
+const scaffoldMetadata: Record<string, CompiledScaffoldMetadata> = {};
 for (const platform of readdirSync(templatesRoot, { withFileTypes: true })) {
   if (!platform.isDirectory()) continue;
   const metaPath = join(templatesRoot, platform.name, "scaffold.json");
   if (!existsSync(metaPath)) continue;
 
-  const meta = JSON.parse(readFileSync(metaPath, "utf8")) as {
-    nextSteps?: string[];
-    notes?: string;
-    caveats?: string;
-  };
+  const meta = JSON.parse(readFileSync(metaPath, "utf8")) as ScaffoldMetadata;
   const prefix = `scaffold.${platform.name}`;
   scaffoldMetadata[platform.name] = {
     nextStepsKeys: (meta.nextSteps ?? []).map((_, i) => `${prefix}.nextSteps.${i}`),

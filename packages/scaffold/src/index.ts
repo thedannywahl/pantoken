@@ -73,6 +73,74 @@ export function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
   );
 }
 
+/** Writes `content` to `path`, creating parent directories as needed. */
+function writeScaffoldFile(path: string, content: string | Buffer): void {
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, content);
+}
+
+/** Renders `resolvedPlatform`'s Bingo preset (if any) into `dir`; `[]` if there's no preset or it throws. */
+function writePresetFiles(resolvedPlatform: string, dir: string, projectName: string): string[] {
+  const preset = PRESET_LEDGER[resolvedPlatform as keyof typeof PRESET_LEDGER];
+  if (!preset) return [];
+
+  try {
+    const creation = producePreset(preset, { offline: true, options: { name: projectName } });
+    return Object.entries(creation.files ?? {}).map(([file, rawContent]) => {
+      const path = join(dir, file);
+      const content = rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : rawContent;
+      writeScaffoldFile(path, content as string | Buffer);
+      return path;
+    });
+  } catch {
+    return []; // Preset threw — the caller falls back to the legacy template system.
+  }
+}
+
+/** Writes `resolvedPlatform`'s legacy `SCAFFOLDS` templates (for platforms with no preset yet). */
+function writeLegacyTemplateFiles(
+  resolvedPlatform: string,
+  dir: string,
+  projectName: string,
+  cssImport: string,
+): string[] {
+  const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
+  if (!templates) return [];
+
+  return Object.entries(templates).map(([file, content]) => {
+    const substituted = content
+      .replaceAll("{{projectName}}", projectName)
+      .replaceAll("{{pantokenCssImport}}", cssImport);
+    const path = join(dir, file);
+    writeScaffoldFile(path, substituted);
+    return path;
+  });
+}
+
+/**
+ * Builds canvas-theme-editor's `theme.css`/`theme.js` for the chosen CDN provider/theme/mode at
+ * scaffold time (rather than shipping a pre-baked jsDelivr/rebrand default); `[]` for every other
+ * platform.
+ */
+function writeCanvasThemeEditorAssets(
+  resolvedPlatform: string,
+  dir: string,
+  options: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string } | undefined,
+): string[] {
+  if (resolvedPlatform !== "canvas-theme-editor") return [];
+
+  const { css, js } = buildTheme({
+    provider: options?.cdn,
+    theme: options?.theme,
+    mode: options?.mode,
+  });
+  return (["theme.css", "theme.js"] as const).map((file, i) => {
+    const path = join(dir, file);
+    writeScaffoldFile(path, i === 0 ? css : js);
+    return path;
+  });
+}
+
 /**
  * Scaffold a starter project for a platform, with pantoken already installed and wired in.
  *
@@ -101,68 +169,14 @@ export async function scaffoldProject(
   const resolvedPlatform = resolveScaffoldPlatform(platform);
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
   const cssImport = themeStylesheetImport(options?.theme, options?.mode);
-  const written: string[] = [];
 
-  // Get the preset for this platform (undefined for template-only platforms, e.g. canvas-theme-editor)
-  const preset = PRESET_LEDGER[resolvedPlatform as keyof typeof PRESET_LEDGER];
-
-  // Use Bingo stratum to render the preset with options (skipped for template-only platforms)
-  try {
-    if (!preset) throw new Error(`No preset for platform "${resolvedPlatform}".`);
-    const creation = producePreset(preset, {
-      offline: true,
-      options: { name: projectName },
-    });
-
-    // Write the files created by the preset
-    for (const [file, rawContent] of Object.entries(creation.files ?? {})) {
-      const path = join(dir, file);
-      mkdirSync(dirname(path), { recursive: true });
-      // Handle both string and Buffer/ArrayBuffer content types
-      const content =
-        rawContent instanceof ArrayBuffer ? Buffer.from(rawContent) : (rawContent as string);
-      writeFileSync(path, content);
-      written.push(path);
-    }
-  } catch {
-    // Preset threw — fall through to the legacy template system below.
-  }
-
-  // Presets with no blocks yet (or a failed render) produce no files — fall back to the legacy
-  // scaffold template system so every platform still scaffolds something.
+  // Bingo presets with no blocks yet (or a failed render) produce no files — fall back to the
+  // legacy scaffold template system so every platform still scaffolds something.
+  const written = writePresetFiles(resolvedPlatform, dir, projectName);
   if (written.length === 0) {
-    const templates = SCAFFOLDS[resolvedPlatform as keyof typeof SCAFFOLDS];
-    if (templates) {
-      for (const [file, content] of Object.entries(templates)) {
-        const substituted = content
-          .replaceAll("{{projectName}}", projectName)
-          .replaceAll("{{pantokenCssImport}}", cssImport);
-        const path = join(dir, file);
-        mkdirSync(dirname(path), { recursive: true });
-        writeFileSync(path, substituted);
-        written.push(path);
-      }
-    }
+    written.push(...writeLegacyTemplateFiles(resolvedPlatform, dir, projectName, cssImport));
   }
-
-  // canvas-theme-editor's theme.css/theme.js are built for this scaffold's CDN provider/theme/mode
-  // choice at scaffold time, rather than shipping a pre-baked jsDelivr/rebrand default.
-  if (resolvedPlatform === "canvas-theme-editor") {
-    const { css, js } = buildTheme({
-      provider: options?.cdn,
-      theme: options?.theme,
-      mode: options?.mode,
-    });
-    for (const [file, content] of [
-      ["theme.css", css],
-      ["theme.js", js],
-    ] as const) {
-      const path = join(dir, file);
-      mkdirSync(dirname(path), { recursive: true });
-      writeFileSync(path, content);
-      if (!written.includes(path)) written.push(path);
-    }
-  }
+  written.push(...writeCanvasThemeEditorAssets(resolvedPlatform, dir, options));
 
   return written;
 }
