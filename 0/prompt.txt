@@ -1,0 +1,30 @@
+```
+pantoken on ci/cdn-dist-urls ≡ via  24.18.0
+➜ cd plugins/postcss/theme-custom-media && npm publish --access public && cd -
+npm notice
+npm notice 📦  @pantoken/plugin-theme-custom-media@0.1.2
+npm notice Tarball Contents
+npm notice 1.9kB README.md
+npm notice 786B dist/index.d.mts
+npm notice 2.9kB dist/index.mjs
+npm notice 858B package.json
+npm notice Tarball Details
+npm notice name: @pantoken/plugin-theme-custom-media
+npm notice version: 0.1.2
+npm notice filename: pantoken-plugin-theme-custom-media-0.1.2.tgz
+npm notice package size: 2.5 kB
+npm notice unpacked size: 6.5 kB
+npm notice shasum: 46aa7520399888a308b902a3ec53becb4b0e84f4
+npm notice integrity: sha512-YQEKSbxW3Jy85[...]SIAhPJwFlrXVA==
+npm notice total files: 4
+npm notice
+npm notice Publishing to https://registry.npmjs.org/ with tag latest and public access
+npm error code E404
+npm error 404 Not Found - PUT https://registry.npmjs.org/@pantoken%2fplugin-theme-custom-media - Not found
+npm error 404
+npm error 404  The requested resource '@pantoken/plugin-theme-custom-media@0.1.2' could not be found or you do not have permission to access it.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: /Users/dwahl/.npm/_logs/2026-07-24T03_42_07_597Z-debug-0.log
+```
