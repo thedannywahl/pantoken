@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>bjniwb6le</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/9bb0c94a-6663-40e5-81b3-aeec4c9dd1db/tasks/bjniwb6le.output</output-file>
+<status>completed</status>
+<summary>Background command "Watch the Release re-run to completion" completed (exit code 0)</summary>
+</task-notification>
