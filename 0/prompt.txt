@@ -1,0 +1,1 @@
+it's also still very slow, like 10% in 10 minutes.  not 4 minutes total.
