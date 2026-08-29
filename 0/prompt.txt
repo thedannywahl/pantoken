@@ -1,0 +1,1 @@
+now do a similar thing for color swatches a single color resolves to its own swatch.  a `light-dark()` should resolve both with an indicator of which is which.
