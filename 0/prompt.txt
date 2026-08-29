@@ -1,0 +1,114 @@
+<task-notification>
+<task-id>a26f94803d0f616be</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/45b81add-2a72-4587-a2cd-6f3296a7b52a/tasks/a26f94803d0f616be.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore InstUI ingestion pipeline" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete map of how pantoken ingests `@instructure/ui`. Here's the comprehensive report.
+
+## How pantoken ingests `@instructure/ui`
+
+Important framing: pantoken does **not** depend on the umbrella `@instructure/ui` meta-package anywhere. It ingests two narrow upstream sources — `@instructure/instructure-design-tokens` (tokens) and `@instructure/ui-icons` (glyphs) — plus a set of `@instructure/ui-*` React components used only by one renderer. Your "upgrade toward 11.7.4+" maps to the `^11.7.3` pins in the catalog.
+
+---
+
+### 1. Where `@instructure/*` is declared, and pinned versions
+
+All versions flow through the pnpm **catalog** in `/Users/dwahl/Scripts/pantoken/pnpm-workspace.yaml`. Package.json files reference `"catalog:"` rather than literal versions.
+
+Catalog pins (`pnpm-workspace.yaml`):
+- Line 26: `@instructure/instructure-design-tokens: github:instructure/instructure-design-tokens` — GitHub-only, **no semver pin** (this is why the tokens get vendored; see #4).
+- Line 27: `@instructure/ui-icons: ^11.7.3`
+- Lines 54-61: the React component set, all `^11.7.3`: `@instructure/ui-heading`, `-ui-text`, `-ui-link`, `-ui-list`, `-ui-table`, `-ui-view`, `-ui-img`, `-ui-alerts`.
+
+Declaring package.json files:
+- `/Users/dwahl/Scripts/pantoken/packages/core/package.json` lines 32-33 — `@instructure/instructure-design-tokens` and `@instructure/ui-icons` as runtime `dependencies`. This is the ingestion package.
+- `/Users/dwahl/Scripts/pantoken/formats/tokens/package.json` line 37 — `@instructure/instructure-design-tokens` as a **devDependency** (build-time only, for vendoring raw JSON + provenance).
+- `/Users/dwahl/Scripts/pantoken/renderers/react-markdown/package.json` lines 39-46 (deps as `catalog:`) and lines 63-70 (peerDeps as `*`) — the eight `@instructure/ui-*` React components. This is the only consumer of upstream InstUI React components.
+- `/Users/dwahl/Scripts/pantoken/bundlers/next/src/index.ts` line 33 lists `@instructure/ui-icons` in `transpilePackages` (config string, not a dep).
+
+No references to `@instructure/ui-themes` or `@instructure/canvas-theme`. The historical name `@instructure/instructure-icons` doesn't appear; the icon source is `@instructure/ui-icons`.
+
+---
+
+### 2 &amp; 4. The resolution entry point and the upstream-decoupling boundary
+
+The single ingestion point is **`@pantoken/core`** (`packages/core`). Its description: "The pantoken transformer: resolves Instructure design tokens + ui-icons into the canonical @property-aligned token IR."
+
+**Entry point — `buildTokens`:** `/Users/dwahl/Scripts/pantoken/packages/core/src/build.ts`
+- Line 8: `import { themeTokens } from "@instructure/instructure-design-tokens";` — the **only** value-import of the upstream token package in the whole repo (aside from the vendoring script in #5).
+- Lines 92-156: `buildTokens(options)` is the "first and only source transformation" (per its own doc comment, line 1-6). It reads `themeTokens` (line 102) and walks it in layered order:
+  1. Primitives (lines 106-110)
+  2. Layout (lines 112-116)
+  3. Semantic colours, wrapping differing light/dark into `light-dark(...)` (lines 118-133)
+  4. Components (lines 135-141)
+  5. Icons rolled in via `collectIcons` (lines 143-150)
+  6. Plugin icon + token hooks (lines 152-155)
+- `THEME_SPECS` (lines 37-41) maps the three themes to upstream group/light/dark keys.
+
+**Icon ingestion — `collectIcons`:** `/Users/dwahl/Scripts/pantoken/packages/core/src/icons.ts`
+- The only reader of `@instructure/ui-icons`. It resolves the package dir at runtime (line 198, `resolvePackageDir` lines 56-62) and reads glyphs off the filesystem rather than importing them.
+- `readCustomGlyphs` (lines 103-123) reads `svg/Custom/*.svg`; `readLucideGlyphs` (lines 125-172) reads the generated Lucide layer (`es/generated/lucide/index.js`) cross-referenced against `lucide-react`.
+- `readBidirectional` (lines 87-99) reads `icons.config.cjs` for RTL-flip metadata, with a regex heuristic fallback (line 101). Each glyph becomes a `url('data:image/svg+xml;utf8,…')` `&lt;image&gt;` token via `svgToDataUri` (lines 48-50).
+- Note the porting lineage: doc comments in `resolve.ts` (line 3) and `icons.ts` (line 4) say this logic is "Ported and generalized from `@instructure/instui-generate-css-tokens`'s `extract.ts` / `icons.ts`."
+
+**Reference resolution:** `/Users/dwahl/Scripts/pantoken/packages/core/src/resolve.ts`
+- `collectLeaves` (lines 60-88) flattens the Tokens Studio tree.
+- `resolveValue` (lines 121-124) turns `{path.to.token}` refs into `var(--instui-…)`.
+- `referenceToVarName` (lines 102-108) and `varName` (lines 139-142) build the `--instui-` custom-property names.
+- `readModify` (lines 21-32) extracts Tokens Studio `$extensions."studio.tokens".modify` colour modifiers.
+
+**Colour math:** `/Users/dwahl/Scripts/pantoken/packages/core/src/color.ts` — `applyModify` applies darken/lighten/alpha to concrete hex; reference-valued modifiers are preserved as `TokenModify` metadata for the native (Style Dictionary) lineage.
+
+**The decoupling boundary (why `@pantoken/model` and `@pantoken/tokens` exist):**
+- `@pantoken/model` (`packages/model/src/index.ts`) is a **zero-dependency** package holding only the IR type contracts. Its module doc (lines 1-12) states the rationale explicitly: "Every pantoken package depends on this package for the type, so no consumer needs the (GitHub-only) upstream token package just to type the IR."
+- `@pantoken/tokens` (`formats/tokens`) vendors the resolved IR as **static JSON** so downstream packages never touch the GitHub-only upstream. Its `generate.ts` (see #5) doc: "This is what lets the published package ship with no dependency on the (GitHub-only) upstream."
+
+Confirmed by grep: the only value-imports of `@instructure/instructure-design-tokens` are `packages/core/src/build.ts:8` and `formats/tokens/scripts/generate.ts:10`. The only reader of `@instructure/ui-icons` is `packages/core/src/icons.ts`. Everything downstream (all `renderers/*`, `platforms/*`, other `formats/*`) reads from `@pantoken/tokens` or takes an IR array as input — e.g. `formats/css/scripts/generate.ts` → `formats/css/src/index.ts`, which consumes `@pantoken/tokens`. So `@pantoken/core` + `@pantoken/tokens` is the entire upstream blast radius for a version bump.
+
+---
+
+### 3. The canonical model shape
+
+Defined in `/Users/dwahl/Scripts/pantoken/packages/model/src/index.ts`. The IR is a flat `Token[]`, each aligned to the CSS `@property` schema:
+
+- `Token` (lines 54-65): `name` (e.g. `--instui-color-background-base`), `syntax` (`"&lt;color&gt;"` / `"&lt;length&gt;"` / `"&lt;image&gt;"` / `"*"`), `inherits: boolean`, `value` (concrete, a `var(...)` ref, or `light-dark(a, b)`), optional `themed?`, `refersTo?`, `meta?`.
+- `TokenMeta` (lines 30-43): icon metadata (`kind: "icon"`, `style`, `viewBox`, `bidirectional`, `source`) plus a preserved colour `modify`.
+- `TokenModify` (lines 18-27): `type: "darken" | "lighten" | "alpha" | "mix"`, `value`, `space?`, `color?`.
+- `Theme` (line 15): `"rebrand" | "canvas" | "canvasHighContrast"`.
+- Plugin contract (`PantokenPlugin`, lines 148-161) with per-stage hooks (`tokens`, `icons`, `css`, `rehype`, `native`) also lives here.
+
+`core/src/model.ts` just re-exports these types from `@pantoken/model` so core files have a single type source.
+
+**Token construction** happens in `/Users/dwahl/Scripts/pantoken/packages/core/src/plugin.ts`:
+- `defineToken` (lines 54-66) fills defaults: sniffs `syntax` from the value (`cssSyntaxForValue` / `isContextual` in `utils.ts`), sets `themed` for `light-dark(...)`, records `refersTo` for single-`var()` values.
+- `dedupeByName` (lines 83-87), `runTokenPlugins` (lines 112-123), `runIconPlugins` (lines 161-177).
+
+**Vendored form** (`formats/tokens/src/index.ts`): exports `tokens` (default = rebrand), `rebrandTokens`, `canvasTokens`, `canvasHighContrastTokens`, `themes`, and `byTheme(theme)` — each a `Token[]` loaded from `generated/&lt;theme&gt;.json`. Raw Tokens Studio JSON is at `@pantoken/tokens/raw`.
+
+---
+
+### 5. Scripts (resolve / ingest / sync / build:model / extract / generate)
+
+No scripts literally named `resolve`, `ingest`, `sync`, `build:model`, or `extract`. The vendoring/ingestion is driven by **`generate`** scripts plus the `build`/`pack` step.
+
+- **The canonical vendoring script:** `/Users/dwahl/Scripts/pantoken/formats/tokens/scripts/generate.ts` (run via `formats/tokens/package.json` line 28: `"generate": "node scripts/generate.ts"`). It calls `buildTokens({ theme })` for all three themes, writes `generated/&lt;theme&gt;.json`, writes `raw.json` (verbatim `themeTokens`, line 26), and writes `meta.json` with upstream **provenance** — the resolved upstream version (lines 29-40). This is the ingest/extract step in practice.
+- Root `package.json`: `"generate": "vp run -r build"` (line 8) and `"validate:generated"` (line 9) — recursive build across the workspace.
+- Nearly every emitter package has `"generate": "node scripts/generate.ts"` (all `renderers/*`, most `formats/*`, `platforms/{wordpress,vanilla}`, several `plugins/pantoken/*`, `ai/pantoken-ai`). These read the already-vendored IR, not the upstream.
+- `packages/core` and `packages/model` build via `"dev": "vp pack --watch"` / `vp check` (no generate).
+
+---
+
+### Upgrade blast-radius summary
+
+To move `@instructure/*` from `^11.7.3` to `11.7.4+`:
+1. Bump the catalog pins in `pnpm-workspace.yaml` (lines 27, 54-61; the design-tokens entry line 26 is a GitHub ref, not semver).
+2. Real ingestion risk is confined to `packages/core/src/build.ts` (token tree shape from `@instructure/instructure-design-tokens`) and `packages/core/src/icons.ts` (filesystem layout of `@instructure/ui-icons`: `svg/Custom/`, `es/generated/lucide/index.js`, `icons.config.cjs`). These are the files that hardcode upstream structure.
+3. Re-run `generate` in `formats/tokens` to re-vendor `generated/*.json` + provenance; everything downstream reads that vendored IR.
+4. `renderers/react-markdown` is the only consumer of upstream `@instructure/ui-*` React components (separate concern from tokens/icons).
+5. Provenance/version assertions to watch: `formats/tokens/tests/index.test.ts:26` and `formats/tokens/scripts/generate.ts:29-40`.
+
+Note: I did not create a plan file — as the read-only search agent, my deliverable is this report. If you want the findings captured in the plan file at `/Users/dwahl/.claude/plans/`, let me know and the parent session can write it.</result>
+<usage><subagent_tokens>53725</subagent_tokens><tool_uses>24</tool_uses><duration_ms>133194</duration_ms></usage>
+</task-notification>
