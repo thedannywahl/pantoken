@@ -14,5 +14,13 @@
   "helpPlatformDescription": "Platform a projektváz létrehozásához ({{platforms}}; a \"html\" a \"components\", a \"theme-editor\" pedig a \"canvas-theme-editor\" aliasa)",
   "helpDirDescription": "Célkönyvtár (ha nincs megadva, interaktív rákérdezés TTY-n)",
   "helpYesDescription": "Soha ne kérdezzen rá; hibát jelez a hiányzó platform/könyvtár rákérdezése helyett",
-  "helpLangDescription": "Az automatikusan felismert megjelenítési nyelv felülbírálása (pl. \"hu\")"
+  "helpLangDescription": "Az automatikusan felismert megjelenítési nyelv felülbírálása (pl. \"hu\")",
+  "nextStepsHeading": "Következő lépések:",
+  "notesHeading": "Megjegyzés:",
+  "caveatsHeading": "Figyelmeztetés:",
+  "scaffold.canvas-theme-editor.nextSteps.0": "cd {{dir}}",
+  "scaffold.canvas-theme-editor.nextSteps.1": "{{install}}",
+  "scaffold.canvas-theme-editor.nextSteps.2": "{{dev}}",
+  "scaffold.canvas-theme-editor.notes": "Töltse fel a theme.css és a theme.js fájlokat a Canvas Theme Editorjába (Speciális → CSS / JavaScript), hogy a pantoken osztályai minden oldalon elérhetők legyenek.",
+  "scaffold.canvas-theme-editor.caveats": "A Canvas szerveroldalon fertőtleníti a beillesztett HTML-t — mindig ellenőrizze a Canvasban az RCE-előnézetből beillesztett tartalmat."
 }
