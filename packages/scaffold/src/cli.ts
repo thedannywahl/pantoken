@@ -29,6 +29,7 @@ import { scaffoldProject } from "./index.ts";
 import { detectLocale, createLocaleLookup, type LocaleLookup } from "./locale.ts";
 import { LOCALES } from "../generated/locales/index.ts";
 import { SCAFFOLD_METADATA } from "../generated/scaffold-metadata.ts";
+import { CDN_PROVIDERS } from "@pantoken/canvas-theme-editor";
 import {
   validateThemeMode,
   validateThemeVariant,
@@ -198,14 +199,14 @@ export async function resolveScaffoldTarget(
  * @param platform - The scaffold platform
  * @param dir - The target directory
  * @param t - Localized string lookup
- * @param options - `theme`/`mode` forwarded to {@link scaffoldProject}
+ * @param options - `theme`/`mode`/`cdn` forwarded to {@link scaffoldProject}
  * @returns The paths written by scaffoldProject
  */
 export async function scaffoldWithSpinner(
   platform: string,
   dir: string,
   t: LocaleLookup["t"],
-  options?: { theme?: ThemeVariant; mode?: ThemeMode },
+  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string },
 ): Promise<string[]> {
   const s = spinner();
   s.start(t("spinnerStart"));
@@ -351,6 +352,18 @@ export function validateScaffoldPlatform(value: string): string {
   );
 }
 
+/**
+ * Commander Argument validator for `--cdn`.
+ *
+ * @throws InvalidArgumentError if the value isn't a known CDN provider id
+ */
+export function validateCdnProviderId(value: string): string {
+  if (value in CDN_PROVIDERS) return value;
+  throw new InvalidArgumentError(
+    `CDN provider "${value}" is not valid. Expected one of: ${Object.keys(CDN_PROVIDERS).join(", ")}.`,
+  );
+}
+
 /** Options for {@link createScaffoldCommand}. */
 export interface ScaffoldCommandOptions {
   name?: string; // program name shown in help/usage; default "pantoken-scaffold"
@@ -396,6 +409,11 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       "--theme-mode <mode>",
       "Rebrand token mode: light (default) or adaptive; ignored outside the rebrand theme",
       validateThemeMode,
+    )
+    .option(
+      "--cdn <provider>",
+      "CDN provider for canvas-theme-editor's theme.css/theme.js: jsdelivr (default), unpkg, esmsh",
+      validateCdnProviderId,
     );
 
   if (options?.version) {
@@ -417,6 +435,7 @@ export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command
       const written = await scaffoldWithSpinner(platform, expandedDir, t, {
         theme: opts.theme as ThemeVariant | undefined,
         mode: opts.themeMode as ThemeMode | undefined,
+        cdn: opts.cdn as string | undefined,
       });
       for (const path of written) {
         console.log(t("wroteFile", { path }));

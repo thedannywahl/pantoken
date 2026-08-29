@@ -58,13 +58,7 @@
     "renderers/vitepress/src/vitepress-vars.css",
     "tools/demo/runner/*.css",
     "plugins/pantoken/custom-components/src/**/*.css",
-    "plugins/pantoken/layouts/src/**/*.css",
-    // Scaffold theme/preview assets (e.g. canvas-theme-editor's theme.css/theme.js, sourced from
-    // @pantoken/canvas-theme-editor) are user-uploaded directly to the target platform (never
-    // imported in-repo), and any preview.js is loaded via a plain `<script src>` in
-    // preview/index.html — neither is traced by fallow's import graph. canvas-theme-editor's own
-    // generated/theme.{css,js} are gitignored build output, not tracked by fallow at all.
-    "packages/scaffold/templates/*/preview/**"
+    "plugins/pantoken/layouts/src/**/*.css"
   ],
 
   // Runtime-provided or type-only deps fallow can't observe being used: @pantoken/model is imported
@@ -102,8 +96,6 @@
   // file by its post-scaffold name — the scaffold script strips the `.tmpl` suffix the file actually
   // has on disk (`src/main.tsx.tmpl`) when it copies the template into a consumer's project, so these
   // "unresolved" imports in packages/scaffold/templates/**/index.html are correct by design.
-  // `../theme.css`: canvas-theme-editor's preview/index.html references its sibling `theme.css`,
-  // which generate.ts injects from @pantoken/canvas-theme-editor rather than an on-disk template file.
   "ignoreUnresolvedImports": [
     "**/generated/**",
     "../generated/**",
@@ -113,8 +105,7 @@
     "@pantoken/*",
     "@pantoken/*/**",
     "/src/main.tsx",
-    "/src/main.ts",
-    "../theme.css"
+    "/src/main.ts"
   ],
 
   "duplicates": {

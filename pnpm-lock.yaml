@@ -1517,6 +1517,9 @@ importers:
       '@pantoken/angular':
         specifier: workspace:*
         version: link:../../renderers/angular
+      '@pantoken/canvas-theme-editor':
+        specifier: workspace:*
+        version: link:../../platforms/canvas-theme-editor
       '@pantoken/components':
         specifier: workspace:*
         version: link:../../formats/components
@@ -1542,9 +1545,6 @@ importers:
         specifier: 'catalog:'
         version: 15.0.0
     devDependencies:
-      '@pantoken/canvas-theme-editor':
-        specifier: workspace:*
-        version: link:../../platforms/canvas-theme-editor
       '@pantoken/plugin-layouts':
         specifier: workspace:*
         version: link:../../plugins/pantoken/layouts

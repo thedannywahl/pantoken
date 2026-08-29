@@ -11,6 +11,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { producePreset } from "bingo-stratum";
+import { buildTheme } from "@pantoken/canvas-theme-editor";
 import { SCAFFOLDS } from "../generated/scaffolds.ts";
 import { PRESET_LEDGER } from "../generated/preset-ledger.ts";
 import { themeStylesheetImport, type ThemeMode, type ThemeVariant } from "./theme.ts";
@@ -79,7 +80,9 @@ export function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
  * @param dir - The target directory (default `"."`). Its basename (or `"pantoken-app"` for `"."`)
  *   is substituted for `{{projectName}}` in the template files.
  * @param options - `theme`/`mode` select which `@pantoken/css` token sheet scaffolded files
- *   import (default `"rebrand"`/`"light"`), applied across every platform.
+ *   import (default `"rebrand"`/`"light"`), applied across every platform. `cdn` selects the CDN
+ *   provider `canvas-theme-editor`'s `theme.css`/`theme.js` are built for (default jsDelivr);
+ *   ignored by every other platform.
  * @returns The paths written.
  *
  * @example Scaffold a React starter
@@ -93,7 +96,7 @@ export function resolveScaffoldPlatform(platform: string): ScaffoldPlatform {
 export async function scaffoldProject(
   platform: string,
   dir = ".",
-  options?: { theme?: ThemeVariant; mode?: ThemeMode },
+  options?: { theme?: ThemeVariant; mode?: ThemeMode; cdn?: string },
 ): Promise<string[]> {
   const resolvedPlatform = resolveScaffoldPlatform(platform);
   const projectName = dir === "." ? "pantoken-app" : (dir.split("/").pop() ?? "pantoken-app");
@@ -139,6 +142,25 @@ export async function scaffoldProject(
         writeFileSync(path, substituted);
         written.push(path);
       }
+    }
+  }
+
+  // canvas-theme-editor's theme.css/theme.js are built for this scaffold's CDN provider/theme/mode
+  // choice at scaffold time, rather than shipping a pre-baked jsDelivr/rebrand default.
+  if (resolvedPlatform === "canvas-theme-editor") {
+    const { css, js } = buildTheme({
+      provider: options?.cdn,
+      theme: options?.theme,
+      mode: options?.mode,
+    });
+    for (const [file, content] of [
+      ["theme.css", css],
+      ["theme.js", js],
+    ] as const) {
+      const path = join(dir, file);
+      mkdirSync(dirname(path), { recursive: true });
+      writeFileSync(path, content);
+      if (!written.includes(path)) written.push(path);
     }
   }
 
