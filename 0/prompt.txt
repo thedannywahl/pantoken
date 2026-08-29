@@ -1,0 +1,354 @@
+<task-notification>
+<task-id>a08afd29119c3b158</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/3f73fc33-f1ac-4794-beb2-21035af9401f/tasks/a08afd29119c3b158.output</output-file>
+<status>completed</status>
+<summary>Agent "Map pantoken's translation task graph and hooks" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have all the verified information. Here's the complete report.
+
+## 1. Root `package.json` — `/Users/dwahl/Scripts/pantoken/package.json`
+
+Full `scripts` block (lines 6–19):
+
+| Script name | Command |
+|---|---|
+| `ready` | `vp run ready:all` |
+| `docs:dev` | `vp run @pantoken/demo#build &amp;&amp; vp run @pantoken/docs#docs:dev` |
+| `docs:build` | `vp run @pantoken/docs#docs:build` |
+| `docs:preview` | `vp run @pantoken/docs#docs:preview` |
+| `docs:api` | `vp run @pantoken/docs#docs:api` |
+| `check:repository` | `vp run gate:repository` |
+| `check:publish` | `vp run gate:publish` |
+| `check:attw` | `vp run gate:attw` |
+
+None of the root npm scripts contain `i18n`, `translate`, `locale`, or `drift`. There is no `ready:all` npm script — `ready` calls `vp run ready:all`, which is a **vp task** (not an npm script) defined in root `vite.config.ts`.
+
+## 2. `docs/package.json` — `/Users/dwahl/Scripts/pantoken/docs/package.json`
+
+Your prior knowledge is **mostly right, with one correction**: there is no `docs:locales:translate:claude` — the claude-model variant is just plain `docs:locales:translate` (unsuffixed), paired with `docs:locales:translate:agy`.
+
+Full translation/locale/drift-related scripts (verbatim):
+
+| Script name | Command |
+|---|---|
+| `docs:api` | `node scripts/build-api-locales.ts` |
+| `docs:api:en` | `node scripts/build-api-en.ts` |
+| `docs:api:css` | `node scripts/build-css-api.ts` |
+| `docs:api:locales` | `node scripts/build-api-locales.ts` |
+| `docs:api:locales:claude` | `DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_CONCURRENCY=8 DOCS_TRANSLATION_COMMAND_ARGS="--model claude-haiku-4-5-20251001 --strict-mcp-config --setting-sources user" node scripts/build-api-locales.ts` |
+| `docs:api:locales:agy` | `DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts` |
+| `docs:guides:locales` | `node scripts/translate-guides.ts` |
+| `docs:guides:locales:claude` | `DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND_ARGS="--model claude-haiku-4-5-20251001 --strict-mcp-config --setting-sources user" node scripts/translate-guides.ts` |
+| `docs:guides:locales:agy` | `DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh" node scripts/translate-guides.ts` |
+| `docs:locales:translate` | `vp run docs:guides:locales:claude &amp;&amp; vp run docs:api:locales:claude` |
+| `docs:locales:translate:agy` | `vp run docs:guides:locales:agy &amp;&amp; vp run docs:api:locales:agy` |
+| `docs:check:locales` | `node scripts/check-locale-parity.ts` |
+| `docs:check:drift` | `node scripts/check-locale-drift.ts` |
+| `docs:dev` | `vp run @pantoken/components#generate &amp;&amp; vp run @pantoken/plugin-visual-debug#generate &amp;&amp; vp run @pantoken/plugin-logos#generate &amp;&amp; vp run @pantoken/plugin-primitives#generate &amp;&amp; vp run @pantoken/plugin-custom-icons#generate &amp;&amp; vp run docs:assets &amp;&amp; vp run docs:api:en &amp;&amp; vp run docs:api:css &amp;&amp; vitepress dev` |
+| `docs:dev:all` | `vp run docs:assets &amp;&amp; vp run docs:api:locales &amp;&amp; vp run docs:check:locales &amp;&amp; vitepress dev` |
+| `docs:build` | `vp run docs:assets &amp;&amp; vp run docs:api:locales &amp;&amp; vp run docs:check:locales &amp;&amp; vp run docs:check:drift &amp;&amp; vitepress build` |
+| `docs:build:claude` | `vp run docs:assets &amp;&amp; vp run docs:api:locales:claude &amp;&amp; vp run docs:check:locales &amp;&amp; vitepress build` |
+| `docs:preview` | `vitepress preview` |
+
+Note: `docs:build:claude` does **not** run `docs:check:drift` (only `docs:build` does).
+
+## 3. `packages/i18n/package.json` — `/Users/dwahl/Scripts/pantoken/packages/i18n/package.json`
+
+All your prior names are **exactly correct**, verbatim:
+
+| Script name | Command |
+|---|---|
+| `generate` | `node scripts/build-bundles.ts` |
+| `translate` | `I18N_TRANSLATION_ADAPTER=ai node scripts/translate-bundles.ts` |
+| `translate:agy` | `I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh" node scripts/translate-bundles.ts` |
+| `check:drift` | `node scripts/check-bundle-drift.ts` |
+| `dev` | `vp pack --watch` |
+| `test` | `vp test` |
+| `check` | `vp check` |
+
+## 4. Git hooks — NOT `.husky`, NOT lefthook/simple-git-hooks
+
+There is no `.husky` directory and no `husky`/`lefthook`/`simple-git-hooks` config anywhere in the repo. Hooks are managed by **vite-plus** (`vp`) itself via `.vite-hooks/`:
+
+```
+$ git config --get core.hooksPath
+.vite-hooks/_
+```
+
+Source hook files (what you edit) live at repo root in `.vite-hooks/`; the files actually installed under `.vite-hooks/_/{pre-commit,pre-push,commit-msg}` are thin dispatchers (`#!/usr/bin/env sh\n. "$(dirname "$0")/h"`) that source a shared `h` helper and execute the source files below.
+
+**`.vite-hooks/pre-commit`** (verbatim, full file):
+```
+vp staged
+```
+
+**`.vite-hooks/commit-msg`** (verbatim, full file):
+```
+vp exec commitlint --edit "$1"
+```
+
+**`.vite-hooks/pre-push`** (verbatim, full file — this is where i18n drift is gated locally):
+```
+# Block a push that changes a publishable package with no covering changeset (bypass: --no-verify).
+vp run release:coverage
+# Guard against stale i18n bundle caches when strings.ts or i18n package files changed.
+if git diff --name-only "@{upstream}...HEAD" 2&gt;/dev/null | grep -qE '^(packages/i18n/|renderers/web-components/src/lib/strings\.ts)'; then
+  vp run i18n:check:drift
+fi
+# Block a push that introduces new fallow findings (dead code / complexity) in the changed files,
+# measured against the upstream branch (falls back to origin/main). Scoped + fast; bypass: --no-verify.
+vp exec fallow audit --base "$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2&gt;/dev/null || echo origin/main)"
+# Gate on Snyk Code (SAST): Snyk has no GitHub App here, so CI can't run it — this is the enforcement
+# point for code-security findings. Blocks on a high-severity finding; skips (with a warning) when
+# Snyk isn't authenticated, so a contributor without a Snyk account isn't blocked. Bypass: --no-verify.
+vp run snyk:code
+# Catch Markdown formatting issues locally before they fail CI.
+vp run lint:markdown
+# Property-based tests run at default iterations (100) in the CI `test` job on every PR. No separate
+# pre-push gate needed — fast-check failures surface in CI before merge.
+```
+
+Important: **there is no docs-drift check in any git hook** — only `i18n:check:drift` (for `packages/i18n`) is hook-gated, and only conditionally (only when `packages/i18n/` or `renderers/web-components/src/lib/strings.ts` changed since upstream). `docs:check:drift` never runs in a hook.
+
+## 5. CI workflows referencing docs/i18n/translate/locale/drift
+
+Files matching: `.github/workflows/ci.yml`, `.github/workflows/docs.yml`, `.github/workflows/changeset-check.yml` (the last only via an unrelated job named `docs-and-internal-only` used for changeset-skip logic — not a docs/translation check, no drift/translate content there).
+
+### `.github/workflows/ci.yml`
+
+**`upstream-changes`** / **`upstream-drift`** jobs (unrelated to docs/i18n — this is the *token upstream* drift gate, flagged since it matched "drift"):
+```
+upstream-drift:
+    needs: [build, upstream-changes]
+    if: needs.upstream-changes.outputs.upstream == 'true'
+    ...
+      - name: Check upstream drift
+        run: vp run upgrade:check
+```
+
+**`docs-changes`** job (path filter, lines 514–538):
+```
+docs-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect docs-relevant changes
+        id: filter
+        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+              - 'packages/**'
+              - 'formats/**'
+              - 'platforms/**'
+              - ... (renderers/, plugins/, design/, pnpm-lock.yaml, pnpm-workspace.yaml)
+```
+
+**`i18n-changes`** job (lines 540–558, exact):
+```
+i18n-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      i18n: ${{ steps.filter.outputs.i18n }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Detect i18n-relevant changes
+        id: filter
+        uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4
+        with:
+          filters: |
+            i18n:
+              - 'packages/i18n/**'
+              - 'renderers/web-components/src/lib/strings.ts'
+```
+
+**`i18n-drift`** job (lines 560–577, exact — this is the CI-side i18n bundle drift gate):
+```
+i18n-drift:
+    needs: [build, i18n-changes]
+    if: needs.i18n-changes.outputs.i18n == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@1b32467adbe183473499fd9d5d372c3ed9641754 # v1.18.0
+        with:
+          cache: true
+          run-install: true
+      - name: Check i18n bundle drift
+        run: vp run i18n:check:drift
+```
+
+**`docs`** job (lines 586–627, runs the full `docs:build` chain including `docs:check:drift`):
+```
+docs:
+    needs: [build, docs-changes]
+    if: needs.docs-changes.outputs.docs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      ...
+      - name: Build docs (locale parity + drift + VitePress build)
+        run: vp run @pantoken/docs#docs:build
+        env:
+          DOCS_BASE: /
+          DOCS_HOSTNAME: https://pantoken.iywahl.com/
+      ...
+      - name: Upload built docs site
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: docs-site
+          path: docs/.vitepress/dist
+          include-hidden-files: true
+          retention-days: 1
+```
+
+**IMPORTANT FINDING — `ci-gate`'s required-status `needs` list (lines 636–653) does NOT include `i18n-changes`/`i18n-drift`**, even though it does include `docs-changes`/`docs`:
+```
+ci-gate:
+    needs:
+      [
+        build,
+        typecheck,
+        test,
+        coverage,
+        fallow,
+        lint,
+        publint,
+        attw,
+        repository,
+        commitlint,
+        upstream-changes,
+        upstream-drift,
+        docs-changes,
+        docs,
+      ]
+    if: always()
+```
+This means `i18n-drift` currently runs in CI but its pass/fail does **not** block the single required PR status check — it's effectively advisory in CI today (only the pre-push hook actually blocks locally, and only when the changed-files pattern matches). This is a real gap to account for in the task-graph restructure.
+
+### `.github/workflows/docs.yml`
+
+Only reference is the manual `workflow_dispatch` fallback build step:
+```
+- name: Build docs
+  if: github.event_name == 'workflow_dispatch'
+  run: vp run -F "@pantoken/docs..." build &amp;&amp; vp run @pantoken/docs#docs:build
+```
+No drift/i18n/translate content otherwise — it downloads CI's prebuilt `docs-site` artifact in the normal (non-dispatch) path.
+
+## 6. Task DAG — root `vite.config.ts` (`/Users/dwahl/Scripts/pantoken/vite.config.ts`, `run.tasks` block)
+
+This is where the real vp task graph lives (not root `package.json`). Exact relevant task entries:
+
+```ts
+"ready:all": {
+  command: "true",
+  dependsOn: [
+    "check:all",
+    "test:coverage",
+    "lint:css",
+    "lint:js",
+    "lint:tsdoc",
+    "validate:generated:only",
+    "gate:compatibility",
+    "lint:markdown",
+    "check:manypkg",
+    "health:fallow",
+  ],
+},
+```
+
+**`ready:all` does NOT depend on `i18n:check:drift` or `docs:check:drift`/`docs:build` in any form.** Neither `i18n:check:drift` nor any docs-drift/docs-build task appears anywhere in `ready:all`'s `dependsOn` chain, nor is it a transitive dependency of any of `ready:all`'s listed deps (`check:all`, `test:coverage`, `lint:css`, `lint:js`, `lint:tsdoc`, `validate:generated:only`, `gate:compatibility`, `lint:markdown`, `check:manypkg`, `health:fallow` — none of these reference i18n or docs tasks).
+
+The actual translation/drift-related vp tasks (separate, standalone nodes, not wired into `ready:all`):
+```ts
+"i18n:translate": {
+  command: "vp run @pantoken/i18n#translate",
+  cache: false,
+},
+"i18n:translate:agy": {
+  command: "vp run @pantoken/i18n#translate:agy",
+  cache: false,
+},
+"docs:translate:agy": {
+  command: "vp run @pantoken/docs#docs:locales:translate:agy",
+  cache: false,
+},
+"i18n:check:drift": {
+  command: "vp run @pantoken/i18n#check:drift",
+},
+"i18n:bundles:build": {
+  command: "vp run @pantoken/i18n#generate",
+  dependsOn: ["build:all"],
+},
+```
+
+Note the asymmetry: there's an `i18n:translate` / `i18n:translate:agy` pair at root-task level, but for docs there's only `docs:translate:agy` — **no root-level `docs:translate` (claude variant) vp task exists**; only the docs-package-local npm script `docs:locales:translate` covers that path today.
+
+`docs/` has **no `vite.config.ts` of its own** (confirmed — only `docs/package.json`), so there is no docs-local `run.tasks`/`pipeline` block; all docs orchestration happens through plain `vp run &lt;npm-script-name&gt;` chaining inside `docs/package.json`'s own scripts (shown in section 2), not through vp's task-dependency graph.
+
+`packages/i18n/vite.config.ts` (full file) only defines a `build` task and pack options — no translate/drift tasks there either:
+```ts
+import { extendBase } from "../../vite.config.base.ts";
+
+export default extendBase({
+  run: { tasks: { build: { command: "vp pack" } } },
+  pack: { exports: true },
+});
+```
+
+So: **all i18n/docs translate+drift task wiring lives exclusively in the root `vite.config.ts` `run.tasks` block**, and none of it is a dependency of `ready`/`ready:all`.
+
+## 7. `packages/scaffold/package.json` and `ai/pantoken-ai/package.json` — reconfirmed
+
+**`/Users/dwahl/Scripts/pantoken/packages/scaffold/package.json`** scripts (full block):
+```json
+"scripts": {
+  "scan": "node scripts/scan-presets.ts",
+  "generate": "node scripts/generate.ts",
+  "dev": "vp pack --watch",
+  "test": "vp run scan &amp;&amp; vp run generate &amp;&amp; vp test",
+  "check": "vp run scan &amp;&amp; vp check"
+}
+```
+No `i18n`/`translate`/`cli:translate` script present. Confirmed.
+
+**`/Users/dwahl/Scripts/pantoken/ai/pantoken-ai/package.json`** scripts (full block):
+```json
+"scripts": {
+  "generate": "node scripts/generate.ts",
+  "dev": "vp pack --watch",
+  "test": "vp run generate &amp;&amp; vp test",
+  "check": "vp check",
+  "eval": "waza run evals --discover -v"
+}
+```
+No `i18n`/`translate`/`cli:translate` script present. Confirmed.
+
+---
+
+### Summary of corrections to your prior knowledge
+1. `docs/package.json` has `docs:locales:translate` (no `:claude` suffix) as the claude-model variant, not `docs:locales:translate:claude`. `docs:locales:translate:agy` is correct as named.
+2. Git hooks are **not** husky — they're vp/vite-plus-native hooks at `.vite-hooks/{pre-commit,pre-push,commit-msg}`, installed via `git config core.hooksPath = .vite-hooks/_`.
+3. `i18n:check:drift` and `i18n:translate`/`i18n:translate:agy` are **vp task names** defined in root `vite.config.ts` (`run.tasks`), not npm scripts in root `package.json` — the root `package.json` has zero i18n/translate/drift-named scripts of its own.
+4. `docs:check:drift` (npm script in `docs/package.json`) and `i18n:check:drift` (vp task) are two structurally different, unwired checks — `docs:check:drift` runs only inside `docs:build`/`docs:dev:all`; `i18n:check:drift` runs standalone in the pre-push hook (conditionally) and in CI's `i18n-drift` job.
+5. Neither drift check is a dependency of `ready`/`ready:all`.
+6. CI's `i18n-drift` job exists but is **not** in `ci-gate`'s required-check `needs` list (unlike `docs`/`docs-changes`, which are) — worth deciding whether to fix this as part of the restructure.</result>
+<usage><subagent_tokens>68267</subagent_tokens><tool_uses>30</tool_uses><duration_ms>171528</duration_ms></usage>
+</task-notification>
