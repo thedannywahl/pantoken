@@ -1,0 +1,189 @@
+<task-notification>
+<task-id>afd2e5bb1d4e0289e</task-id>
+<tool-use-id>toolu_01DSvX7FDte846Ct3xezQtkP</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/3f73fc33-f1ac-4794-beb2-21035af9401f/tasks/afd2e5bb1d4e0289e.output</output-file>
+<status>completed</status>
+<summary>Agent "Verify current CLI library landscape for scaffolders" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result># CLI Framework Research Report — create-pantoken-app
+
+Research conducted via npm registry API, GitHub API (releases/commits/source), and web search, cross-checked against multiple sources. All dates relative to **today, August 27, 2026**.
+
+---
+
+## 1. citty (unjs/citty)
+
+- **npm:** `citty`, latest **v0.2.2**, published **2026-04-01** (registry `modified` timestamp 2026-08-20, likely a metadata-only touch).
+- **Downloads:** ~**30M/week** (huge, because it's a transitive dependency of Nuxt/nuxi, unbuild, and much of the UnJS ecosystem).
+- **TypeScript/ESM:** Zero-dependency, TS-native, ESM-native. Built directly on Node's native `util.parseArgs` rather than a hand-rolled parser.
+- **Command API** (verified from README):
+```js
+import { defineCommand, runMain } from "citty";
+const main = defineCommand({
+  meta: { name: "hello", version: "1.0.0", description: "My Awesome CLI App" },
+  args: {
+    name: { type: "positional", description: "Your name", required: true },
+    friendly: { type: "boolean", description: "Use friendly greeting" },
+  },
+  setup({ args }) { /* pre-run hook */ },
+  cleanup({ args }) { /* post-run hook, always runs */ },
+  run({ args }) { console.log(`${args.friendly ? "Hi" : "Greetings"} ${args.name}!`); },
+});
+runMain(main);
+```
+Supports nested/lazy-loaded sub-commands, plugins (`defineCittyPlugin`), auto-generated `--help`/usage.
+- **Shell completion:** **No built-in completion generator.** This is the one gap. However, the community project **`@bomb.sh/tab`** (see #9 below) ships a dedicated `citty.ts` adapter, giving citty bash/zsh/fish/PowerShell completions as a companion package. Not "batteries included," but a known, actively-maintained solution exists.
+
+---
+
+## 2. gunshi (kazupon/gunshi)
+
+Confirmed **real and actively maintained** — not a mix-up with anything else.
+
+- **npm:** `gunshi`, latest **v0.37.1**, released **2026-07-19** (dist-tags also show active `alpha`/`beta` channels, i.e., real ongoing release cadence).
+- **Downloads:** ~**74K/week** for the core package — modest but healthy for a library only widely known since ~2024–2025. Real-world adopters include `ccusage` (a well-known Claude Code usage analyzer) and `varlock`.
+- **TypeScript/ESM:** `"type": "module"` — **ESM-only**, no CJS. Runs on Node.js, Deno, and Bun. Type-safe args are powered by kazupon's own `args-tokens` parser.
+- **Command API** (verified from README):
+```js
+import { cli } from 'gunshi'
+const command = {
+  name: 'greet',
+  description: 'A greeting command',
+  args: {
+    name: { type: 'string', short: 'n', description: 'Name to greet' },
+    times: { type: 'number', short: 't', default: 1, description: 'Repeat count' },
+  },
+  run: ctx =&gt; { /* ctx.values.name, ctx.values.times, fully typed */ }
+}
+await cli(process.argv.slice(2), command, { name: 'my-app', version: '1.0.0' })
+```
+- **Shell completions:** Yes — **`@gunshi/plugin-completion`** (part of the gunshi monorepo, versioned in lockstep), built on top of `@bomb.sh/tab`. This gives it a first-party, plugin-based completion story that citty/cac/commander lack natively. Weekly downloads for the plugin itself are small (~2.8K/week), consistent with an early but real adoption curve.
+- **Caveat:** Explicitly inspired by/positioned as a successor to citty ("This project is inspired and powered by citty..."), with a heavier plugin architecture and internationalization built in. It's younger and smaller than citty/cac/commander — worth weighing "current and modern" against "less battle-tested at scale."
+
+---
+
+## 3. clipanion (Yarn Berry)
+
+- **npm:** `clipanion`, latest dist-tag `latest` = **4.0.0-rc.4**.
+- **Maintenance status: looks stale/stalled.** GitHub repo (`arcanis/clipanion`) last pushed **2024-09-06** — essentially **no commits in ~2 years** as of Aug 2026. 42 open issues, not archived, but no evidence of active development. The 4.0 release has been stuck in "rc" for two years.
+- **Downloads:** ~5M/week (large install base because it ships inside Yarn Berry itself, not because people are actively choosing it for new projects).
+- **TypeScript/ESM:** TypeScript-native (uses `typanion` for runtime validation), ships both CJS and ESM builds (`"main"` + `"module"` fields).
+- **Shell completions:** **No built-in completion support**, and the README contains no mention of completions at all. Yarn's own tab-completion is handled outside clipanion, not by it.
+- **Verdict:** Stable and "good enough" because Yarn depends on it in production, but it reads as **effectively unmaintained** for a brand-new project in 2026 — I'd flag this as a risk, not a good pick for a project you want to feel "current."
+
+---
+
+## 4. cac
+
+- **npm:** `cac`, latest **v7.0.0**, published **2026-06-16**.
+- **Maintenance:** Solo-maintained by egoist, but genuinely active — v7.0.0 was a real modernization released mid-2026 (commit history shows `chore(deno): upgrade to cac 7.0.0`, dependency bumps via Dependabot into June 2026). Notably the repo's devDependencies now include `@typescript/native-preview` and TypeScript 6.0.3, and the package itself is now `"type": "module"` — i.e., cac went **ESM-only** in this v7 rewrite.
+- **Downloads:** ~**49M/week** (very high — it's a transitive dependency of Vite/Vitest and similar tools).
+- **Shell completion:** No built-in completion command in cac itself. Same story as citty: the `@bomb.sh/tab` project ships a `cac.ts` adapter as the de facto companion for completions.
+
+---
+
+## 5. commander.js
+
+- **npm:** `commander`, latest **v15.0.0**.
+- **Downloads:** ~**505M/week** — the single most-used CLI arg parser in the npm ecosystem, foundational-package levels of adoption. Very much not going anywhere.
+- **TypeScript:** Core package ships hand-maintained `.d.ts` types; for stronger inference people layer on **`@commander-js/extra-typings`** (official sibling package, versioned in lockstep with commander's major.minor) to get fully-typed `.opts()` and action handlers.
+- **ESM/CJS:** Dual-mode, works fine under Node ESM.
+- **Shell completions in 2026:** Commander has **no built-in completion generator**. The standard 2026 approaches, in order of how current they are:
+  1. **`@bomb.sh/tab`'s `commander.ts` adapter** — same universal completion engine used by citty/cac/gunshi (see #9); this is the most "current" answer and is what I'd recommend if you pick commander.
+  2. Older community packages like `commander-completion` (twolfson) — exist but look unmaintained/legacy; not something I'd build on for a 2026 project.
+- **Real-world validation:** shadcn/ui's CLI (`shadcn` on npm, actively maintained, v4.19.0) uses **commander (^14.0.0) + `prompts` (^2.4.2)** — i.e., commander is still very much the default "boring, safe" choice for scaffolding-style CLIs.
+
+---
+
+## 6. oclif (Salesforce/Heroku)
+
+- **npm:** `oclif`, latest **v4.24.0**, released **2026-08-24** (three days ago — very actively maintained). `@oclif/plugin-autocomplete` is also alive and current: latest **v3.3.0**, released the same day, **2026-08-24**.
+- **Downloads:** `oclif` core ~356K/week; `@oclif/plugin-autocomplete` ~2.46M/week (higher, because it's pulled in as a plugin dependency across many big CLIs — Shopify CLI, Salesforce CLI, Twilio CLI, Heroku CLI, etc.).
+- **Shell completion confirmed:** `@oclif/plugin-autocomplete` supports **bash, zsh, fish, and PowerShell**, and remains the standard way big oclif-based CLIs ship completions.
+- **ESM:** oclif has real ESM support as of the v3/v4 line — `oclif generate` lets you choose ESM or CommonJS at project creation, and ESM/CJS plugins can interoperate in the same CLI.
+- **Heavyweight/opinionated verdict — confirmed true.** oclif is architected around **one class-per-command files** (`src/commands/&lt;topic&gt;/&lt;command&gt;.ts` each exporting a `Command` subclass), a plugin system, a generator/scaffolding CLI of its own, topic-based routing, and its own config/manifest conventions. This is the right tool when you're building a *many-subcommand* CLI (10s–100s of commands) that needs enterprise-grade plugin extensibility (exactly why Shopify/Twilio/Salesforce use it). For **your stated use case — a single main command (`create-pantoken-app &lt;platform&gt; [flags]`)** — oclif is disproportionately heavy: you'd be fighting its multi-file command-class model to express what is fundamentally one command with a positional argument and some flags. I would not recommend it here, despite it being extremely well-maintained.
+
+---
+
+## 7. @clack/prompts / @clack/core
+
+- **npm:** both packages actively maintained; recent release cited as **v1.7.0** (~2 months prior to a late-2026 search snapshot) — consistent with steady, ongoing releases rather than abandonment.
+- **Downloads:** ~**20.45M/week** for `@clack/prompts`, ~**20.4M/week** for `@clack/core` — extremely high adoption, on par with commander-level ubiquity for the "interactive prompts" niche specifically.
+- **Confirmed real-world scaffolder usage (verified via each project's actual npm dependencies, not just claims):**
+  - **`create-t3-app`** and **`create-next-app`** — commonly cited as clack adopters.
+  - **`sv` (the new Svelte CLI, replacing `create-svelte`)** — **confirmed directly from source**: `packages/sv/package.json` depends on `@clack/prompts` (v1.5.0) for prompts and **`commander`** (^15.0.0) for command/arg structure. This is a clean, current example of exactly the split-responsibility pattern you're asking about.
+  - **`shadcn` CLI** — I checked this one specifically because it's often *assumed* to use clack, but as of **v4.19.0** its actual npm dependencies show it uses the older **`prompts`** (terkelg's library, ^2.4.2) alongside commander — **not** `@clack/prompts`. Worth correcting: don't assume shadcn as a clack reference implementation.
+  - **`create-astro`** — I also checked this directly: it depends on `@astrojs/cli-kit` (Astro's own bespoke prompt library, built from `chalk` + `log-update` + `sisteransi` primitives), **not** `@clack/prompts`. A GitHub Actions log title referencing "switch to clack for CLI prompts" turned up in search but doesn't match what's actually in `@astrojs/cli-kit`'s or `create-astro`'s published dependencies — I could not confirm that claim and am flagging it as unverified/likely referring to a different Astro subsystem.
+  - **`create-vue`** and **`drizzle-kit`** — could not verify their prompt libraries directly from public dependency manifests in the time available. Note: the Drizzle team has publicly said they built their own **`hanji`** library (after trying `ink`) rather than adopting clack, so treat "drizzle-kit uses clack" as **unconfirmed/likely false** rather than fact.
+- **Net assessment:** `@clack/prompts` is healthy, current, and one of two or three real leaders in this space in 2026, but it is **not universally used** by every well-known scaffolder — some (shadcn, Astro, Drizzle) roll their own or use older libraries. Treat "everyone uses clack" as directionally true but not literally true.
+
+---
+
+## 8. What bingo (create.bingo, Josh Goldberg) uses for its own CLI
+
+I inspected the actual `bingo-js/bingo` monorepo source (not just docs, which don't state this explicitly):
+
+- The core **`bingo`** package (the runtime that powers `npx create-typescript-app`-style CLIs) depends directly on **`@clack/prompts` (^0.11.0)** for its interactive prompt layer, plus `zod` (^4.4.3) for schema validation of inputs.
+- For argument parsing, bingo does **not** depend on citty/cac/commander/oclif/gunshi at all — it hand-rolls its own minimal parser (`src/cli/parseProcessArgv.ts`, `src/cli/cliArgsOptions.ts` in the `bingo` package). There's no evidence bingo has a stated "opinion" recommending a specific arg-parser to pair with it; it just uses the simplest thing that works for its own needs.
+- Note: the `create` package on npm (the literal package named `create`) is **not** the real scaffolding logic — it's a decoy/trap package that just prints a warning telling people they meant `npm create &lt;template&gt;` instead of `npx create`. Don't confuse it with bingo's actual CLI runtime.
+- **Implication for pantoken:** bingo itself validates the "commander/citty/cac + clack" split pattern from the inside — its own author independently chose `@clack/prompts` for prompting rather than any all-in-one framework, while keeping arg-parsing bespoke and minimal (which for bingo's needs is fine, but for a public `npx create-pantoken-app` CLI with `--help`/completions requirements, you'd still want a real parser library rather than replicating bingo's hand-rolled approach).
+
+---
+
+## 9. The actual 2026 pattern: split arg-parsing from prompting
+
+Confirmed directly from source across three real, current scaffolders — this is not just a general impression, it's what's actually in their `package.json`s:
+
+| Scaffolder | Arg-parsing / help / completions | Interactive prompts |
+|---|---|---|
+| **`sv` (Svelte CLI)** | `commander` ^15.0.0 | `@clack/prompts` 1.5.0 |
+| **`shadcn` CLI** | `commander` ^14.0.0 | `prompts` ^2.4.2 (not clack) |
+| **`create-astro`** | bespoke (`@astrojs/cli-kit`, giget for cloning) | bespoke, built on chalk/log-update/sisteransi (not clack) |
+| **bingo (create.bingo)** | bespoke minimal parser | `@clack/prompts` ^0.11.0 |
+
+**Conclusion: yes, the dominant modern pattern is a lightweight arg-parser paired with a separate prompts library — not a single all-in-one framework like oclif** — but *which* prompt library varies (clack is popular but not unanimous; commander is the most common arg-parser among these, more so than citty/cac in this particular sample).
+
+The most concrete new 2026 development for **completions specifically** is **`@bomb.sh/tab`** (`@bomb.sh/tab` on npm, ~1.5M downloads/week, latest release **v0.0.22 on 2026-08-04** — actively maintained, pre-1.0 but broadly adopted). It's a shell-completion engine, independent of any one arg-parser, that ships first-party adapters for **citty, cac, and commander** (confirmed by inspecting its source tree: `src/cac.ts`, `src/citty.ts`, `src/commander.ts`) plus native generators for **bash, zsh, fish, and PowerShell** (confirmed from its README: "autocompletions that work consistently across zsh, bash, fish, and powershell"). It's also the engine underneath `@gunshi/plugin-completion`. Its README lists Cloudflare, Nuxt, Astro, Vitest, Gunshi, Clerc, and Prisma as adopters. This effectively **solves the "citty/cac/commander have no built-in completions" gap** for you without needing oclif's heavier framework just to get `@oclif/plugin-autocomplete`.
+
+---
+
+## Summary table
+
+| Library | Latest / published | Weekly DL | TS-native | ESM-native | Completions | 2026 health |
+|---|---|---|---|---|---|---|
+| citty | 0.2.2 / 2026-04-01 | ~30M | Yes | Yes | Via `@bomb.sh/tab` adapter | Healthy (UnJS/Nuxt core dep) |
+| gunshi | 0.37.1 / 2026-07-19 | ~74K | Yes | Yes (ESM-only) | Built-in plugin (`@gunshi/plugin-completion`, via tab) | Healthy, real, growing, smaller |
+| clipanion | 4.0.0-rc.4 / no commits since 2024-09-06 | ~5M | Yes | Dual CJS/ESM | None | **Stale — flag as risk** |
+| cac | 7.0.0 / 2026-06-16 | ~49M | Yes (v7 rewrite) | Yes (v7 is ESM-only) | Via `@bomb.sh/tab` adapter | Healthy, actively rewritten in 2026 |
+| commander | 15.0.0 | ~505M | Via `extra-typings` | Dual | Via `@bomb.sh/tab` adapter or legacy 3rd-party packages | Extremely healthy, the safest bet |
+| oclif + plugin-autocomplete | 4.24.0 / 3.3.0, both 2026-08-24 | 356K / 2.46M | Yes | Yes | **Built-in, bash/zsh/fish/PowerShell** | Extremely healthy, but heavyweight/opinionated for a single-command tool |
+| @clack/prompts / core | ~1.7.0 | ~20.4M each | Yes | Yes | N/A (prompts only) | Healthy, but not universally adopted (shadcn/Astro/Drizzle use alternatives) |
+| @bomb.sh/tab | 0.0.22 / 2026-08-04 | ~1.5M | Yes | Yes | The completions engine itself | Young (pre-1.0) but active and broadly adopted |
+
+**Bottom line for your use case** (single-command scaffolder, full `--help`, completions, rich TTY + silent CI mode, cross-platform Node ESM): the evidence points toward pairing a lightweight parser — **commander** (safest/most battle-tested, `@commander-js/extra-typings` for type safety) or **citty** (zero-dep, more UnJS-idiomatic if pantoken already leans UnJS) — with **`@clack/prompts`** for the interactive layer, and **`@bomb.sh/tab`** for bash/zsh/fish/PowerShell completions. Avoid clipanion (stale) and oclif (over-architected for one command) for this specific tool; gunshi is a legitimate but younger option if you want its native plugin-based completion story out of the box.
+
+Sources:
+- [citty - npm](https://www.npmjs.com/package/citty)
+- [GitHub - unjs/citty](https://github.com/unjs/citty)
+- [Gunshi](https://gunshi.dev/)
+- [@gunshi/plugin-completion - npm](https://www.npmjs.com/package/@gunshi/plugin-completion)
+- [GitHub - kazupon/gunshi](https://github.com/kazupon/gunshi)
+- [clipanion - npm](https://www.npmjs.com/package/clipanion?activeTab=readme)
+- [GitHub - arcanis/clipanion](https://github.com/arcanis/clipanion)
+- [cac - npm](https://www.npmjs.com/package/cac/v/5.0.4)
+- [GitHub - cacjs/cac](https://github.com/cacjs/cac)
+- [@commander-js/extra-typings - npm](https://www.npmjs.com/package/@commander-js/extra-typings)
+- [GitHub - tj/commander.js](https://github.com/tj/commander.js)
+- [GitHub - oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete)
+- [GitHub - oclif/oclif](https://github.com/oclif/oclif)
+- [ESM | oclif docs](https://oclif.github.io/docs/esm)
+- [@clack/prompts - npm](https://www.npmjs.com/package/@clack/prompts)
+- [CLI | Bingo](https://www.create.bingo/cli/)
+- [GitHub - bingo-js/bingo](https://github.com/bingo-js/bingo)
+- [GitHub - bombshell-dev/tab](https://github.com/bombshell-dev/tab)
+- [GitHub - sveltejs/cli](https://github.com/sveltejs/cli)
+- [GitHub - shadcn-ui/ui](https://github.com/shadcn-ui/ui)
+- [GitHub - withastro/cli-kit](https://github.com/withastro/cli-kit)
+- [Drizzle ORM on X re: hanji/clack](https://x.com/DrizzleORM/status/1923615088096817293)</result>
+<usage><subagent_tokens>94395</subagent_tokens><tool_uses>75</tool_uses><duration_ms>404296</duration_ms></usage>
+</task-notification>
