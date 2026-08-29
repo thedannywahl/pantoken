@@ -1,0 +1,2 @@
+the labels on the sidebar from formats/components (via cssdoc/typedoc) are still untranslated and should be in the glossary:
+Overview, Components, Utilities, Rules, Declarations
