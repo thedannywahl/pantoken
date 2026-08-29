@@ -1,0 +1,6 @@
+formats/components/src/declarations|lib|rules|utilities and plugins/pantoken/* all write/emit CSS in some capacity, we need to do a sweep for:
+
+1. What should be documented with a cssdoc comment block
+2. What cssdoc blocks are incomplete
+3. What template literal css and be externalized like the formats/components/src/components model
+4. If plugins/pantoken/stacking is dead code since declarations/elevation exists.
