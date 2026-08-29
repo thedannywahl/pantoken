@@ -1,0 +1,94 @@
+<task-notification>
+<task-id>a074b71c627acdec9</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/028d6ae2-85d2-4001-bdcb-e047a6059788/tasks/a074b71c627acdec9.output</output-file>
+<status>completed</status>
+<summary>Agent "Explore testing patterns" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>I have a complete picture. Here's my report.
+
+## Testing infrastructure in the pantoken monorepo
+
+### 1. Test runner and config
+
+The repo uses **vite-plus** (the `vp`/`vpr`/`vpx` CLI, package `vite-plus`), which wraps **Vitest 4.1.10** under the hood. Tests import from the `vite-plus/test` entry point, which is a thin re-export of vitest:
+
+- `/Users/dwahl/Scripts/pantoken/node_modules/vite-plus/dist/test/index.d.ts`:
+  ```ts
+  import 'vitest';
+  export * from 'vitest';
+  ```
+
+Every test file does `import { expect, test } from "vite-plus/test";`. There is no standalone `vitest.config.*` — test config lives in the root `/Users/dwahl/Scripts/pantoken/vite.config.ts` under the `test` key (via `defineConfig` from `vite-plus`):
+
+```ts
+export default defineConfig({
+  test: {
+    include: [
+      "packages/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "formats/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      "renderers/**/*.{test,spec}.?(c|m)[jt]s?(x)",
+      ...
+    ],
+  },
+```
+
+**Naming/location convention:** `*.test.ts` / `*.test.tsx` (also `.spec`), living in a per-package `tests/` directory (e.g. `formats/components/tests/`, `renderers/web-components/tests/`). There is no `__tests__` convention here. The many `vite.config.ts` files under each package configure `pack`/`lint`/`run` tasks, not test settings — test include globs are centralized in the root config only. (Ignore the `.worktrees/` and `.claude/worktrees/` copies — those are duplicate checkouts.)
+
+### 2. DOM / browser-environment tests: none exist, and no DOM lib is installed
+
+- **jsdom and happy-dom are NOT installed** in `node_modules` (confirmed by direct lookup). They appear in `pnpm-lock.yaml` only as optional *peer* dependencies of vitest, not as actual dependencies.
+- No `@vitest-environment` pragmas anywhere, no `environment: "jsdom"` in any config. Tests run in the default **node** environment.
+- No Playwright config, no `@vitest/browser` setup (the `@vitest/browser` and `@playwright/test` entries in the lockfile are transitive/optional vitest peers, not configured or used).
+- The convention is documented explicitly in `/Users/dwahl/Scripts/pantoken/docs/conventions/web-components.md` (Testing section, ~line 76):
+  &gt; "The harness has no DOM lib (happy-dom/jsdom absent), so `tests/index.test.ts` only asserts registration + pure `iconSvg`. Verify behavior in a real browser. `.focus()` fires no focus events when `document.hasFocus()` is false (headless) — dispatch a composed `focusin` to exercise focus-show."
+
+Relevant for your proposal: vite-plus already ships the plumbing to enable a DOM env — it exposes `vite-plus/test/jsdom` (`node_modules/vite-plus/dist/test/jsdom.d.ts` → `export * from 'vitest/jsdom'`), plus `vite-plus/test/browser`, `vite-plus/test/environments`, and full `browser-playwright`/`browser-webdriverio`/`browser-preview` provider subpaths. So enabling DOM tests is a matter of installing `jsdom` (or `happy-dom`, or wiring `@vitest/browser`) and setting the environment — the runner supports it out of the box.
+
+The closest thing to DOM testing today is string-based server rendering, not a real DOM:
+- `/Users/dwahl/Scripts/pantoken/renderers/react/tests/index.test.tsx` uses `renderToStaticMarkup` and asserts on the HTML *string*.
+- `/Users/dwahl/Scripts/pantoken/renderers/react-markdown/tests/components.test.tsx` — same, `renderToStaticMarkup(createElement(...))`.
+- `/Users/dwahl/Scripts/pantoken/renderers/web-components/tests/index.test.ts` manually stubs `globalThis.HTMLElement = class {}` and a fake `CustomElementRegistry` rather than using a DOM.
+
+### 3. How `vp` runs tests
+
+Each package's `package.json` has a `test` script that calls `vp test`. Examples:
+- `formats/components/package.json`: `"test": "vp run @pantoken/plugin-theme-custom-media#build &amp;&amp; node scripts/component-styles.ts &amp;&amp; vp test"`
+- `renderers/web-components/package.json`: `"test": "vp test"`
+
+Repo-wide orchestration is in the root `vite.config.ts` `run.tasks` block. The `test:all` task runs tests across every workspace after the build:
+```ts
+"test:all": {
+  command: "vp run -r test",
+  dependsOn: ["build:all"],
+},
+```
+It's wired into the `ready:all` aggregate gate (`vp run ready:all`, the root `ready` script) alongside `check:all`, lint, etc. CI runs it too (`docs/conventions/build-and-docs.md`, lines 17/25/37 reference the `test` job in the CI workflow). `docs/conventions/build-and-docs.md` documents the task DAG but has no dedicated "how to run a single test" section beyond that.
+
+### 4. Snapshot tests / fixtures: none
+
+There are **no snapshot tests anywhere** — no `toMatchSnapshot`/`toMatchInlineSnapshot` usages, no `__snapshots__` directories, and no `.snap` files in the repo (worktrees excluded). Instead of snapshots, CSS assertions use substring matching against normalized CSS strings. The normalization helper is `/Users/dwahl/Scripts/pantoken/formats/components/tests/_css.ts`:
+```ts
+export const norm = (css: string): string =&gt;
+  css.replace(/\s+/gu, " ").replace(/\(\s+/gu, "(").replace(/\s+\)/gu, ")")
+     .replace(/\s*,\s*/gu, ",").trim();
+```
+
+### 5. What `formats/components` and `renderers/web-components` test today
+
+**`formats/components/tests/`** (three files, all pure string assertions on generated CSS — no DOM):
+- `sheets.test.ts` — the largest. Calls the `xxxCss()` builder functions (`buttonCss`, `componentsCss`, `proseCss`, etc.), then asserts the returned CSS *string* contains expected selectors/declarations, e.g. `expect(buttonCss({ prefix: "instui" })).toContain(".instui-button")`. Also checks token-reference drift against the token IR via `unknownReferences(...)`, prefix handling, the `SENTINEL` prefix placeholder, RSCSS naming, `@scope`/`@supports`/`popover` structure, etc.
+- `parity.test.ts` — iterates the `COMPONENTS`/`UTILITIES`/`RULES`/`DECLARATIONS` registries and asserts each `Definition` emits exactly one well-formed `@cssdoc/core` record with no token drift, using helper `tests/_validate.ts` (which uses `parseCssDocs` from `@cssdoc/core` and `CssDocConfigFile.loadForFolder`).
+- `public-surface.test.ts` — freezes the barrel's exported name set (`Object.keys(api).sort()` equals a hardcoded `EXPECTED` list) plus a type-level check of the options interfaces.
+
+**`renderers/web-components/tests/index.test.ts`** (one file) — tests pure helpers and registration logic only: `resolveSpace`/`spacingValue` (from `src/lib/helpers.ts`), `iconSvg`, and `register()` with a stubbed `HTMLElement` + fake registry to assert which custom-element tags get defined (default `instui-` prefix, custom prefix, `only` subset, nested-dependency ordering). No rendering, no shadow DOM, no computed styles.
+
+### 6. Computed-style / `getComputedStyle` / CSS-value assertions: none
+
+There are **zero** `getComputedStyle` calls and no computed-style assertions anywhere in the test suite. All "CSS value testing" is done by asserting substrings on the emitted CSS *source strings* produced by the `xxxCss()` builders (as in `sheets.test.ts`) — never by rendering into a DOM and reading resolved styles. This is the exact gap your proposed DOM-based tests for `formats/components` would fill: today the tests prove the CSS text contains a rule, but nothing proves the browser resolves those custom properties and cascade to the intended computed values.
+
+### Summary for your proposal
+
+To add DOM-based tests for `formats/components` you'd be introducing a capability the repo doesn't have yet: you'll need to add a DOM environment (install `jsdom`/`happy-dom`, or configure `@vitest/browser` — note that `getComputedStyle` in jsdom does **not** resolve the cascade or CSS custom properties, so real computed-style/CSS-value assertions realistically require `@vitest/browser` with Playwright, whose provider subpaths vite-plus already exports). The runner (`vp test` → vitest) and glob conventions already accommodate new `formats/components/tests/*.test.ts` files with no config change; you'd only need to set the environment (globally in root `vite.config.ts` `test`, or per-file). There are no existing snapshot or fixture patterns to match — the house style is explicit `toContain` assertions with the `norm()` CSS helper.</result>
+<usage><subagent_tokens>70318</subagent_tokens><tool_uses>19</tool_uses><duration_ms>117995</duration_ms></usage>
+</task-notification>
