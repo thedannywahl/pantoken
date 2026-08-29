@@ -1,0 +1,1 @@
+release and CI workflows are still requiring workflow approvals, I thought we were going to use a PAT to allow those.
