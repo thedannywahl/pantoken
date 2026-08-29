@@ -1,0 +1,1 @@
+pantoken docs needs schema, og-meta, images, etc like ~/Scripts/cssdoc/docs has.  pantoken docs theme has a background svg that we can use for a card image.
