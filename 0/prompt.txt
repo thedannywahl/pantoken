@@ -1,0 +1,75 @@
+<task-notification>
+<task-id>aa3475ee3b41339a5</task-id>
+<tool-use-id>toolu_01Kow13Mi6dVPpA1dw99zRUv</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/3f73fc33-f1ac-4794-beb2-21035af9401f/tasks/aa3475ee3b41339a5.output</output-file>
+<status>completed</status>
+<summary>Agent "Verify modern interactive prompt libraries" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result>## Terminal prompts library research (verified against npm/GitHub, August 27, 2026)
+
+### 1. @inquirer/prompts — healthy and actively maintained.
+
+- **Version:** 8.7.0 (dist-tag `latest`), published **2026-08-26** — one day before this report.
+- **Downloads:** ~38.5M/week (last-week point-in-time from the npm downloads API).
+- **Repo activity:** `SBoudrias/Inquirer.js` on GitHub was pushed to **today** (2026-08-27), has 21,616 stars, and only 16 open issues — a well-managed backlog, not a sign of neglect.
+- **ESM/TS status:** ESM-native since v9, and each prompt ships as its own scoped package (`@inquirer/select`, `@inquirer/checkbox`, `@inquirer/confirm`, etc.), all built on `@inquirer/core` (currently v12.0.1). TypeScript types are first-class.
+- **Visual style:** More traditional than clack's connected vertical-line aesthetic. It uses arrows, checkmarks, and inline highlighting, and supports theming through a theme object, but it doesn't group steps into a single visual "flow" the way clack does out of the box. Expect to do more manual styling if you want clack's polished, boxed look.
+- **Spinner:** No built-in spinner or progress primitive. The common pairing is `ora`, which the ecosystem treats as a known, well-tested combination (though there have been historical stdio-conflict bugs between ora and inquirer that got resolved).
+- **Ctrl+C/cancellation:** Rejects the prompt's promise on Ctrl+C by design, so your code can clean up before exiting. It also supports an `AbortController`/`signal` option for programmatic cancellation. There are a few open GitHub issues about a delay before the rejection fires on `@inquirer/select` and about nested-prompt Ctrl+C edge cases, but the overall model is deliberate and documented, not the silent, do-nothing behavior classic `inquirer` was criticized for.
+- **Real-world use:** It's the direct successor to the original `inquirer`, which itself has an enormous install base going back to Yeoman-era tooling. The modern package is newer to broad scaffolder adoption than clack, but it's the default choice for anyone staying inside the Inquirer ecosystem.
+
+### 2. prompts (terkelg) — rule it out; effectively unmaintained.
+
+- **Version:** 2.4.2, last published **2023-10-21** — almost three years with no new release.
+- **Repo activity:** GitHub shows a push on 2025-05-14 (minor housekeeping), but 150 open issues remain unaddressed, and no release has followed.
+- **Downloads:** ~59.6M/week — the highest raw number of the four, but this is a lagging indicator. It reflects legacy transitive dependencies pinned by older tools, not fresh adoption. Both **create-vite** and **create-vue**, which historically used `prompts`, have already migrated to `@clack/prompts` (confirmed in their current `package.json` files: `create-vue` pins `"@clack/prompts": "^0.11.0"`, `create-vite` pins `"@clack/prompts": "^1.4.0"`).
+- **Ctrl+C handling:** This is the exact pain point you're trying to avoid. By default, pressing Ctrl+C on a confirm prompt answers "yes" and continues execution instead of aborting — you have to wire up a custom `onCancel` callback to get sane behavior. There's an open, unresolved GitHub issue asking for this default to change.
+- **Spinner:** None built in.
+- **Verdict:** Stale, with real UX foot-guns baked into the defaults. Not a good choice for a new scaffolding CLI in 2026.
+
+### 3. enquirer — rule it out; more stale than prompts.
+
+- **Version:** 2.4.1, last published **2023-07-28** — over three years ago.
+- **Repo activity:** Last GitHub push was **2024-06-11**, over two years before this report. 207 open issues sit untouched. This confirms your recollection: the historical maintenance gaps have continued, and the project now looks effectively dormant.
+- **Downloads:** ~34.9M/week — still substantial, but almost entirely from legacy pinned dependencies in big, older projects (eslint, webpack, yarn, pnpm, pm2, Cypress, hardhat, AWS Amplify, GitHub Actions Toolkit are the examples GitHub itself lists). These reflect historical integrations, not ongoing new adoption.
+- **Spinner:** None built in.
+- **Ctrl+C handling:** Not actively documented or updated; given the maintenance gap, don't count on fixes if you hit an edge case.
+- **Verdict:** Rule it out for a new project. The download count is misleading; the project itself is dormant.
+
+### 4. Newer 2025–2026 entrants — nothing has displaced clack or inquirer yet.
+
+- Multiple 2026 comparison write-ups (from lower-authority, SEO-style guide sites like pkgpulse.com and starterpick.com — treat these as directional, not authoritative) consistently reaffirm `@clack/prompts` as the default recommendation for scaffolding CLIs, with `@inquirer/prompts` and `enquirer` framed as alternatives for specific needs.
+- **Ink** keeps coming up, but it's a different category of tool: a React-based rendering framework for live, multi-step terminal output (e.g., the Vercel CLI uses it for build progress), typically paired with a prompts library rather than replacing one.
+- One genuinely new package, **termui** (`Arindam200/termui`), surfaced in search results — a TypeScript terminal UI framework offering clack-style prompts plus git integration and AI-provider hooks. I checked it directly: created March 2026, only 136 GitHub stars, last pushed April 2026 (four months stale as of this report), and just 51 npm downloads last week. It's too new and unproven to be a real candidate yet — worth a glance in six to 12 months, not now.
+- No credible new library has meaningfully challenged clack's position as the modern default.
+
+## Verdict
+
+| Library | Version | Last release | Weekly downloads | Status |
+|---|---|---|---|---|
+| **@clack/prompts** | 1.7.0 | 2026-07-03 | ~20.5M | **Healthy — keep it as your pick.** |
+| **@inquirer/prompts** | 8.7.0 | 2026-08-26 | ~38.5M | **Healthy — the strongest alternative.** |
+| **prompts** | 2.4.2 | 2023-10-21 | ~59.6M (legacy-inflated) | **Rule out** — stale, and its Ctrl+C default is a known foot-gun. |
+| **enquirer** | 2.4.1 | 2023-07-28 | ~34.9M (legacy-inflated) | **Rule out** — over three years without a release; GitHub confirms it's dormant. |
+
+Practically: your instinct on `@clack/prompts` holds up, and if you want a second opinion, `@inquirer/prompts` is the only other genuinely current, actively maintained choice — it's more traditional-looking out of the box and needs `ora` for spinners, but its release cadence (a new version the day before this report) and tiny open-issue count make it a legitimate contender. `prompts` and `enquirer` should both be ruled out for a new project; their large download counts are an artifact of old, pinned dependents rather than evidence of ongoing health.
+
+Sources:
+- [@inquirer/prompts - npm](https://www.npmjs.com/package/@inquirer/prompts)
+- [GitHub - SBoudrias/Inquirer.js](https://github.com/SBoudrias/Inquirer.js)
+- [Inquirer.js core README](https://github.com/SBoudrias/Inquirer.js/blob/main/packages/core/README.md)
+- [Ctrl+C handling issue #1502 - SBoudrias/Inquirer.js](https://github.com/SBoudrias/Inquirer.js/issues/1502)
+- [prompt closes after timeout on Ctrl+C - issue #1454](https://github.com/SBoudrias/Inquirer.js/issues/1454)
+- [prompts - npm](https://www.npmjs.com/package/prompts)
+- [GitHub - terkelg/prompts](https://github.com/terkelg/prompts)
+- [Changing confirm prompt so Ctrl+C exits the process - issue #252](https://github.com/terkelg/prompts/issues/252)
+- [enquirer - npm](https://www.npmjs.com/package/enquirer)
+- [GitHub - enquirer/enquirer](https://github.com/enquirer/enquirer)
+- [@clack/prompts - npm](https://www.npmjs.com/package/@clack/prompts)
+- [GitHub - bombshell-dev/clack](https://github.com/bombshell-dev/clack)
+- [clack packages/prompts README](https://github.com/bombshell-dev/clack/blob/main/packages/prompts/README.md)
+- [create-vue package.json](https://github.com/vuejs/create-vue/blob/main/package.json)
+- [Ink vs @clack/prompts vs Enquirer 2026 — PkgPulse Guides](https://www.pkgpulse.com/guides/ink-vs-clack-vs-enquirer-interactive-cli-nodejs-2026)
+- [GitHub - Arindam200/termui](https://github.com/Arindam200/termui/)</result>
+<usage><subagent_tokens>57421</subagent_tokens><tool_uses>21</tool_uses><duration_ms>187287</duration_ms></usage>
+</task-notification>
