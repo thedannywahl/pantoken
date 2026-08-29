@@ -1,0 +1,64 @@
+{
+  "name": "@pantoken/tinymce",
+  "version": "0.1.0",
+  "description": "Shared TinyMCE + CodeMirror editor integration for pantoken: content-CSS wiring, an Insert Template plugin, components/icons/logos pickers with dynamic @import injection, and CodeMirror HTML lint/autocomplete driven by cssdoc.",
+  "homepage": "https://pantoken.iywahl.com",
+  "bugs": "https://github.com/thedannywahl/pantoken/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thedannywahl/pantoken.git",
+    "directory": "renderers/tinymce"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "@cssdoc/core": "catalog:",
+    "@pantoken/cdn": "workspace:*",
+    "@pantoken/components": "workspace:*",
+    "@pantoken/plugin-custom-components": "workspace:*",
+    "@pantoken/plugin-logos": "workspace:*",
+    "@pantoken/plugin-simple-icons": "workspace:*"
+  },
+  "devDependencies": {
+    "@codemirror/autocomplete": "catalog:",
+    "@codemirror/lang-html": "catalog:",
+    "@codemirror/lint": "catalog:",
+    "@codemirror/state": "catalog:",
+    "@codemirror/view": "catalog:",
+    "@types/node": "catalog:",
+    "codemirror": "catalog:",
+    "tinymce": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@codemirror/autocomplete": "^6.20.3",
+    "@codemirror/lang-html": "^6.4.12",
+    "@codemirror/lint": "^6.9.7",
+    "@codemirror/state": "^6.7.1",
+    "@codemirror/view": "^6.0.0",
+    "codemirror": "^6.0.2",
+    "tinymce": "^5.9"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

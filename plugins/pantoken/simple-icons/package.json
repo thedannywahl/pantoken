@@ -21,6 +21,7 @@
     ".": "./dist/index.mjs",
     "./simple-icons.css": "./dist/simple-icons.css",
     "./icons/*.css": "./dist/icons/*.css",
+    "./manifest.json": "./dist/manifest.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
