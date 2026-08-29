@@ -1,0 +1,410 @@
+<task-notification>
+<task-id>a120a7d67075c1cf9</task-id>
+<tool-use-id>REDACTED</tool-use-id>
+<output-file>/private/tmp/claude-502/-Users-dwahl-Scripts-pantoken/3f73fc33-f1ac-4794-beb2-21035af9401f/tasks/a120a7d67075c1cf9.output</output-file>
+<status>completed</status>
+<summary>Agent "Design create-pantoken-app CLI rewrite plan" finished</summary>
+<note>A task-notification fires each time this agent stops with no live background children of its own. The user can send it another message and resume it, so the same task-id may notify more than once.</note>
+<result># Implementation plan: rebuilding pantoken's scaffold CLI tooling on commander + @clack/prompts + @bomb.sh/tab
+
+This plan is based on direct reads of every file in scope, plus live verification of the three new dependencies' real APIs (`npm view &lt;pkg&gt; readme`/`peerDependencies` — not guessed). Key findings that shape the design are called out inline as **Finding:**.
+
+---
+
+## Phase 0 — Dependency and catalog setup
+
+**File: `pnpm-workspace.yaml`** — add three new `catalog:` entries, matching the existing style (grouped, one-per-line, no comment needed unless clarifying):
+
+```yaml
+commander: ^15.0.0
+"@commander-js/extra-typings": ^15.0.0
+"@clack/prompts": ^1.7.0
+"@bomb.sh/tab": ^0.0.22
+```
+
+**Finding (verified via `npm view`):**
+- `commander@15.0.0`, `@commander-js/extra-typings@15.0.0` with peer `commander: ~15.0.0` — exact match, safe to pair.
+- `@clack/prompts@1.7.0` is **already resolved in `pnpm-lock.yaml`** (transitively, via `bingo-stratum`/`@changesets/cli`) — promoting it to a direct catalog dep at `^1.7.0` will not change what's actually installed.
+- `@bomb.sh/tab@0.0.22` declares `peerDependencies: { commander: "^13.1.0 || ^14.0.0 || ^15.0.0", cac: ..., citty: ... }` (peer deps for frameworks you don't use are fine to leave unmet — npm won't install cac/citty) and exports a `./commander` subpath (`dist/commander.mjs`).
+
+**File: `packages/scaffold/package.json`**
+- Add to `dependencies`: `"commander": "catalog:"`, `"@commander-js/extra-typings": "catalog:"`, `"@clack/prompts": "catalog:"`, `"@bomb.sh/tab": "catalog:"`.
+- No changes to `exports` (keep `"./cli": "./dist/cli.mjs"`).
+
+**File: `ai/pantoken-ai/package.json`**
+- Add to `dependencies`: `"commander": "catalog:"`, `"@commander-js/extra-typings": "catalog:"`, `"@bomb.sh/tab": "catalog:"`.
+- **Do not** add `@clack/prompts` here — `ai/pantoken-ai/src/cli.ts` never imports clack directly; it only calls exported functions from `@pantoken/scaffold/cli` that internally use clack. Node resolves `@clack/prompts` from inside `@pantoken/scaffold`'s own dependency graph (it's a real `dependency`, not `devDependency`, there), so it's present wherever `@pantoken/scaffold` is installed. Declaring it again in `@pantoken/ai` would be redundant.
+- No changes needed to `packages/create-pantoken-app/package.json` (stays dependency-free beyond `@pantoken/scaffold: workspace:*`, confirmed by its current thin-shim design).
+
+**File: `packages/scaffold/vite.config.ts`** — no change needed; `pack: { entry: { index: "src/index.ts", cli: "src/cli.ts" }, exports: true }` already builds `dist/cli.mjs` from `src/cli.ts`.
+
+**File: `ai/pantoken-ai/vite.config.ts`** — currently `pack: { exports: true }` with no explicit `entry`. Add an explicit entry map so the new `src/cli.ts` gets built to `dist/cli.mjs`:
+```ts
+pack: { entry: { index: "src/index.ts", cli: "src/cli.ts" }, exports: true }
+```
+(Mirrors `packages/scaffold/vite.config.ts` exactly.)
+
+**File: `ai/pantoken-ai/package.json`** — no public `"./cli"` export needed (nothing outside this package imports `@pantoken/ai/cli`; `bin/pantoken-ai.mjs` imports the built file by relative path, same as `packages/scaffold/bin/pantoken-scaffold.mjs` does today).
+
+---
+
+## Phase 1 — Rewrite `packages/scaffold/src/cli.ts`
+
+Replace the manual `parseArgs` loop with a commander-based command builder, exporting granular, independently reusable pieces (not just one opaque function), so `ai/pantoken-ai/src/cli.ts` can compose its own subcommand from the same logic instead of reimplementing it or wrapping an entire pre-built `Command`.
+
+### New exports from `packages/scaffold/src/cli.ts`
+
+```ts
+// Re-exported for convenience so cli.ts consumers need one import, not two.
+export { SCAFFOLD_PLATFORMS, isScaffoldPlatform } from "./index.ts";
+
+/** Thrown for user-facing CLI errors (missing platform under --yes, etc.); carries an exit code. */
+export class ScaffoldCliError extends Error {
+  constructor(message: string, public readonly exitCode: number = 1) { super(message); }
+}
+
+/** Whether a value should be interactively prompted for: no flag/arg given, not --yes, and stdin is a TTY. */
+export function shouldPrompt(value: string | undefined, opts: { yes?: boolean; isTTY?: boolean }): boolean;
+
+export interface ResolveScaffoldTargetOptions {
+  platformArg?: string;
+  dirOption?: string;
+  yes?: boolean;
+  /** Injectable for tests; defaults to `process.stdin.isTTY`. */
+  isTTY?: boolean;
+}
+
+/**
+ * Resolve platform + directory: validates/prompts for platform via clack `select()` when omitted
+ * on a TTY (not --yes); validates/prompts for dir via clack `text()` under the same conditions;
+ * throws ScaffoldCliError with a clear message when a required value is missing non-interactively.
+ */
+export async function resolveScaffoldTarget(
+  options: ResolveScaffoldTargetOptions,
+): Promise&lt;{ platform: ScaffoldPlatform; dir: string }&gt;;
+
+/** Runs `scaffoldProject()` wrapped in a clack `spinner()`; returns the written paths. */
+export async function scaffoldWithSpinner(platform: ScaffoldPlatform, dir: string): Promise&lt;string[]&gt;;
+
+/** Detects the invoking package manager from `npm_config_user_agent` (create-vite/create-vue technique). */
+export function detectPackageManager(
+  env?: NodeJS.ProcessEnv,
+): "npm" | "pnpm" | "yarn" | "bun" | undefined;
+
+/** Prints the post-scaffold "Next steps" block. See Phase 1a for the exact text/behavior decision. */
+export function printNextSteps(dir: string, written: string[]): void;
+
+/** A commander `Argument` validator for the platform positional, shared by both CLIs. */
+export function validateScaffoldPlatform(value: string): string; // throws commander.InvalidArgumentError
+
+export interface ScaffoldCommandOptions {
+  /** Program name shown in help/usage. Default: "pantoken-scaffold". */
+  name?: string;
+  /** Exact invocation string for help examples, e.g. "npm create pantoken-app --". Defaults to `name`. */
+  usageCommand?: string;
+  /** Version string for `--version`. No default — callers pass their own package.json version. */
+  version?: string;
+  /**
+   * Whether to auto-register @bomb.sh/tab completion subcommands on this Command. Default: true.
+   * Set false only if this Command will be mounted as a subcommand of a larger root program that
+   * wires completions itself (not used by the current design — see Phase 4 — but kept for flexibility).
+   */
+  enableCompletions?: boolean;
+}
+
+/** Builds the full, ready-to-parse commander Command for `pantoken-scaffold`/`create-pantoken-app`. */
+export function createScaffoldCommand(options?: ScaffoldCommandOptions): Command;
+
+/** Back-compat wrapper preserving the old call shape, now implemented via createScaffoldCommand(). */
+export async function runScaffoldCli(
+  argv: string[],
+  options: { usageCommand: string; version?: string },
+): Promise&lt;void&gt;;
+```
+
+Note: `shouldPromptForDir` is removed (renamed/generalized to `shouldPrompt`, now used for both platform and dir); this is the one deliberate breaking rename to a previously-exported-and-tested symbol, called out explicitly in the changeset and the test rewrite (Phase 5).
+
+### `createScaffoldCommand()` shape (commander v15 + `@commander-js/extra-typings`)
+
+```ts
+import { Argument, InvalidArgumentError, CommanderError } from "commander";
+import { Command } from "@commander-js/extra-typings";
+import tab from "@bomb.sh/tab/commander";
+
+const program = new Command(options?.name ?? "pantoken-scaffold")
+  .exitOverride()                       // throw CommanderError instead of calling process.exit
+  .configureOutput({ writeOut: (s) =&gt; process.stdout.write(s), writeErr: (s) =&gt; process.stderr.write(s) })
+  .addArgument(new Argument("[platform]", `Platform to scaffold (${SCAFFOLD_PLATFORMS.join("|")}; "html" is an alias for "components")`).argParser(validateScaffoldPlatform))
+  .option("-d, --dir &lt;path&gt;", "Target directory (defaults to \".\"; prompts interactively on a TTY if omitted)")
+  .option("-y, --yes", "Never prompt; fail with an error instead of prompting for a missing platform or directory", false);
+
+if (options?.version) program.version(options.version, "-v, --version");
+
+program.action(async (platformArg, opts) =&gt; {
+  const { platform, dir } = await resolveScaffoldTarget({ platformArg, dirOption: opts.dir, yes: opts.yes });
+  const written = await scaffoldWithSpinner(platform, dir);
+  for (const path of written) console.log(`✓ wrote ${path}`);
+  printNextSteps(dir, written);
+});
+
+if (options?.enableCompletions ?? true) tab(program, { completionCommandName: "completion" });
+return program;
+```
+
+Key precision points:
+- **Platform validation happens at commander's argument-parse layer** via `validateScaffoldPlatform` (an `Argument.argParser`), not `.choices()` — `.choices()` can't be used because `isScaffoldPlatform("html")` must pass even though `"html"` is an alias not in `SCAFFOLD_PLATFORMS`. The validator message becomes commander's own `error: command-argument value '...' is invalid for argument 'platform'. &lt;our message&gt;` format — this is a real, user-visible wording change from today's `Unknown platform "...".` (see Phase 5 for the test-contract implication).
+- **A second stray positional (e.g. `pantoken-scaffold react extra`) is now rejected by commander itself** ("too many arguments") since only one `[platform]` argument is declared — replaces the old `Unknown option "extra".` message with commander's own wording. This is a deliberate, acceptable behavior change (still fails clearly, just different text).
+- **`.exitOverride()` + `.configureOutput()`** is the standard, well-documented commander pattern for making a Command safe to `parseAsync()` from a library context and for unit-testing without a real `process.exit` — it throws `CommanderError` (carrying `.exitCode` and `.code`, e.g. `"commander.helpDisplayed"`, `"commander.version"`, `"commander.invalidArgument"`) instead of exiting or bypassing mocked I/O.
+- **`--yes`/`-y`**: forces `resolveScaffoldTarget` to skip both prompts; if platform is still missing, it throws `ScaffoldCliError('Missing required argument "platform". Expected one of: ...')`, which the caller (`runScaffoldCli`, see below) reports the same way as any other user-facing error.
+
+### `resolveScaffoldTarget` internals (the reusable prompt flow)
+
+- Platform: if `platformArg` is given, it's already been validated by commander's argParser by the time this runs (when called from `createScaffoldCommand`); when called from `ai/pantoken-ai`'s own hand-built subcommand (Phase 4), `resolveScaffoldTarget` must **also** validate an unvalidated `platformArg` itself (since that caller may not run it through commander's argParser) — so `resolveScaffoldTarget` should call `isScaffoldPlatform`/throw its own `ScaffoldCliError` defensively even if the argument theoretically arrives pre-validated. This makes it safe to call from either context.
+- If `platformArg` is omitted:
+  - `shouldPrompt(platformArg, { yes, isTTY })` false → throw `ScaffoldCliError` (missing platform, non-interactive).
+  - true → `@clack/prompts` `select({ message: "Which platform?", options: SCAFFOLD_PLATFORMS.map((p) =&gt; ({ value: p, label: p })) })`. On `isCancel(result)` → `cancel("Cancelled.")`, throw `ScaffoldCliError("Cancelled.", 1)`.
+- Directory: same `shouldPrompt` gate; on true, `text({ message: "Project directory", placeholder: ".", defaultValue: "." })` (clack returns the default automatically on empty Enter — replaces the old manual `.trim() || "."`). Same cancel handling.
+- On `--yes` with `--dir` omitted: silently defaults to `"."` (unchanged from today's non-TTY default) — `--yes` does **not** require `--dir`, only `platform`.
+
+### 1a. The "next steps" / package-manager-detection fork — **flagging for your decision**
+
+**Finding:** the scaffolded projects' generated `package.json` files (checked `packages/scaffold/generated/scaffolds.ts`) never depend on `vite-plus`/`vp` — `vp install` is pantoken's own convention recommendation, not something tied to the scaffolded project itself. Today's message is a static string:
+```
+Next steps:
+  cd &lt;dir&gt;
+  vp install   (or npm/pnpm/yarn/bun install)
+```
+**Finding (test-breaking risk):** `packages/create-pantoken-app/tests/index.test.ts` and `packages/scaffold/tests/cli.test.ts` both assert `output.toContain("vp install")` on the output of the **spawned child-process bin**, run under this monorepo's own pnpm-driven test runner — meaning `process.env.npm_config_user_agent` is already set to `pnpm/...` for that child process. If `detectPackageManager()` is used to *replace* the printed line, these tests would see `"pnpm install"` instead and fail.
+
+Two options — **recommend Option A as the default; Option B needs explicit sign-off** since it changes visible output and requires updating 3 existing test assertions:
+- **Option A (recommended, zero test breakage):** implement `detectPackageManager()` and export it, but do **not** wire it into `printNextSteps()`'s primary line yet. Keep printing the exact current static text. This satisfies "investigate" without a behavior change; `detectPackageManager` becomes available for `ai/pantoken-ai` or a later follow-up to use.
+- **Option B (behavior change):** `printNextSteps` prints `${detectPackageManager() ?? "vp"} install` as the primary line, falling back to today's full static text only when detection fails. Requires updating the two "vp install" assertions in `packages/scaffold/tests/cli.test.ts` and one in `packages/create-pantoken-app/tests/index.test.ts` to either force-clear `npm_config_user_agent` in the test's `env` before spawning, or assert `/install/` instead of the literal string.
+
+Plan proceeds with **Option A**; flip to Option B only if you confirm you want the behavior change.
+
+### Backward-compatible `runScaffoldCli`
+
+```ts
+export async function runScaffoldCli(argv: string[], options: { usageCommand: string; version?: string }) {
+  const program = createScaffoldCommand({ name: options.usageCommand, usageCommand: options.usageCommand, version: options.version });
+  try {
+    await program.parseAsync(argv, { from: "user" });
+  } catch (err) {
+    if (err instanceof CommanderError) {
+      if (err.code === "commander.helpDisplayed" || err.code === "commander.version") return; // matches old "--help returns without exiting" contract
+      process.exit(err.exitCode);
+    }
+    if (err instanceof ScaffoldCliError) {
+      console.error(err.message);
+      process.exit(err.exitCode);
+    }
+    console.error("Error scaffolding project:", err instanceof Error ? err.message : err);
+    process.exit(1);
+  }
+}
+```
+This is what both `packages/scaffold/bin/pantoken-scaffold.mjs` and `packages/create-pantoken-app/bin/create-pantoken-app.mjs` continue to call — **both bin files need zero or near-zero changes**. The only optional addition: pass a `version` read from each package's own `package.json` via `import pkg from "../package.json" with { type: "json" }` (Node 22 JSON import attributes — safe given `engines.node &gt;=22.18.0`), so `--version` reports the correct package version per binary.
+
+---
+
+## Phase 2 — `packages/scaffold/bin/pantoken-scaffold.mjs`
+
+Minimal change (adds `--version` support, otherwise identical):
+```js
+#!/usr/bin/env node
+import { runScaffoldCli } from "../dist/cli.mjs";
+import pkg from "../package.json" with { type: "json" };
+
+await runScaffoldCli(process.argv.slice(2), { usageCommand: "pantoken-scaffold", version: pkg.version });
+```
+
+## Phase 3 — `packages/create-pantoken-app/bin/create-pantoken-app.mjs`
+
+Same pattern, its own package.json version:
+```js
+#!/usr/bin/env node
+import { runScaffoldCli } from "@pantoken/scaffold/cli";
+import pkg from "../package.json" with { type: "json" };
+
+await runScaffoldCli(process.argv.slice(2), {
+  usageCommand: "npm create pantoken-app --",
+  version: pkg.version,
+});
+```
+`npx create-pantoken-app &lt;platform&gt; [--dir]` and `npm create pantoken-app -- &lt;platform&gt;` keep working unchanged; they also transparently gain `--yes`, prompts, and completions via the shared `runScaffoldCli`.
+
+---
+
+## Phase 4 — `ai/pantoken-ai` consolidation
+
+**Finding:** `ai/pantoken-ai/tests/index.test.ts` has **no CLI-parsing tests at all** — only library-level tests of `installAgentAssets`/`scaffoldAndInit`/`scaffoldProject`. This means the `bin/pantoken-ai.mjs` argv contract is unlocked by tests today, giving full freedom to redesign it (still worth adding new tests, per Phase 5).
+
+### New file: `ai/pantoken-ai/src/cli.ts`
+
+Mirrors `packages/scaffold/src/cli.ts`'s pattern: exports a builder + a run wrapper.
+
+```ts
+export interface AiCommandOptions { name?: string; version?: string }
+
+export function createAiCommand(options?: AiCommandOptions): Command {
+  const program = new Command(options?.name ?? "pantoken-ai")
+    .exitOverride()
+    .configureOutput({ writeOut: (s) =&gt; process.stdout.write(s), writeErr: (s) =&gt; process.stderr.write(s) });
+  if (options?.version) program.version(options.version, "-v, --version");
+
+  program
+    .command("init")
+    .description("Write pantoken's agent assets into a repo")
+    .addOption(new Option("-t, --tool &lt;tool&gt;", `Tool (${["all", ...AGENT_TOOLS].join("|")})`).default("all").choices(["all", ...AGENT_TOOLS]))
+    .option("-d, --dir &lt;path&gt;", "Target directory", ".")
+    .action((opts) =&gt; {
+      const written = installAgentAssets(opts.tool, opts.dir);
+      for (const p of written) console.log(`✓ wrote ${p}`);
+    });
+
+  program
+    .command("scaffold")
+    .description("Scaffold a starter project (via @pantoken/scaffold) and install agent assets into the same directory")
+    .addArgument(new Argument("[platform]", `Platform (${SCAFFOLD_PLATFORMS.join("|")})`).argParser(validateScaffoldPlatform))
+    .option("-d, --dir &lt;path&gt;", "Target directory (prompts interactively on a TTY if omitted)")
+    .option("-y, --yes", "Never prompt", false)
+    .addOption(new Option("-t, --tool &lt;tool&gt;", `Agent tool (${["all", ...AGENT_TOOLS].join("|")})`).default("all").choices(["all", ...AGENT_TOOLS]))
+    .action(async (platformArg, opts) =&gt; {
+      const { platform, dir } = await resolveScaffoldTarget({ platformArg, dirOption: opts.dir, yes: opts.yes });
+      const scaffoldFiles = await scaffoldWithSpinner(platform, dir);
+      const assetFiles = installAgentAssets(opts.tool, dir);
+      for (const p of [...scaffoldFiles, ...assetFiles]) console.log(`✓ wrote ${p}`);
+      printNextSteps(dir, scaffoldFiles);
+    });
+
+  tab(program, { completionCommandName: "completion" }); // wired once, on this program's own root
+  return program;
+}
+
+export async function runAiCli(argv: string[], options?: AiCommandOptions): Promise&lt;void&gt; {
+  // same exitOverride/CommanderError/ScaffoldCliError catch pattern as runScaffoldCli
+}
+```
+
+- Note the `scaffold` command here uses `.command("scaffold")` + a manually attached `Argument` (rather than the string-shorthand `.command("scaffold &lt;platform&gt;")`) specifically so `validateScaffoldPlatform` (imported from `@pantoken/scaffold/cli`) can be attached via `.argParser`, keeping a single source of truth for the platform-validation error message across all three CLIs.
+- `resolveScaffoldTarget`, `scaffoldWithSpinner`, `printNextSteps`, `validateScaffoldPlatform` are all imported from `@pantoken/scaffold/cli` — this is the literal reuse the task calls for: the platform-select/dir-text/spinner UI runs unmodified, then `installAgentAssets` runs after.
+- `printNextSteps` is now shared verbatim across all three CLIs, which changes `pantoken-ai scaffold`'s old output from `"\nNext: cd ${dir} &amp;&amp; npm install (or pnpm/yarn/bun install)"` to the same `"Next steps:\n  cd ...\n  vp install ..."` block used by `pantoken-scaffold`. **This is a deliberate, user-visible behavior change for `@pantoken/ai`**, worth its own line in that package's changeset.
+- Completions (`tab(program, ...)`) are wired **exactly once**, on `ai/pantoken-ai`'s own root `Command`, covering both its `init` and `scaffold` subcommands. `createScaffoldCommand()` (from `@pantoken/scaffold/cli`) is deliberately **not** mounted wholesale here via `addCommand()` — reusing granular functions instead avoids double-registering a nested `completion` subcommand and gives room for the `--tool` option that `createScaffoldCommand()` doesn't know about.
+
+### `ai/pantoken-ai/bin/pantoken-ai.mjs` — becomes a thin shim
+
+```js
+#!/usr/bin/env node
+import { runAiCli } from "../dist/cli.mjs";
+import pkg from "../package.json" with { type: "json" };
+
+await runAiCli(process.argv.slice(2), { version: pkg.version });
+```
+This matches `packages/scaffold/bin/pantoken-scaffold.mjs`'s bin/src split convention exactly, as required.
+
+---
+
+## Phase 5 — Test rewrite plan
+
+### `packages/scaffold/tests/cli.test.ts` — rewrite, new assertions
+
+- Drop the `readline/promises` mocking block entirely; replace with `vi.doMock("@clack/prompts", () =&gt; ({ select: vi.fn(), text: vi.fn(), spinner: () =&gt; ({ start: vi.fn(), stop: vi.fn() }), isCancel: () =&gt; false, cancel: vi.fn() }))`, same `vi.resetModules()` + fresh dynamic `import("../src/cli.ts")` pattern already used today for the readline mock — same mechanics, different module.
+- Replace `shouldPromptForDir` direct-unit-test with a `shouldPrompt` unit test covering the same four cases plus a `{ yes: true }` case that forces `false` regardless of TTY.
+- `--help` test: still assert `execFileSync(["--help"])` output contains `"pantoken-scaffold"`; additionally assert it lists the platform choices and mentions `--dir`, `--yes`.
+- Replace `'Unknown option "--bogus".'` exact-string assertion with: assert the process exits non-zero and stderr contains `"unknown option"` (commander's own casing/wording) rather than the old literal string.
+- Replace `'Unknown option "extra".'` (second positional) with: assert non-zero exit and stderr contains `"too many arguments"`.
+- Replace `'Unknown platform "not-a-real-platform".'` with: assert non-zero exit and stderr contains both `"not-a-real-platform"` and `"platform"`.
+- Replace `'Unknown platform "".'` (missing platform, non-TTY, no `--yes`) with: assert non-zero exit and stderr mentions `"platform"` is required — **new case to add**: same missing-platform scenario but with `--yes` explicitly passed on a TTY-simulated stdin, asserting it still errors immediately (proves `--yes` suppresses the prompt it would otherwise trigger) instead of hanging.
+- Prompt tests (`"prompts for a directory..."`, `"a blank prompt answer falls back..."`): rewrite to mock `@clack/prompts.text` returning the target path (or empty, relying on `defaultValue: "."`) instead of mocking `readline`'s `question`/`close`.
+- **New test:** platform omitted + TTY + no `--yes` → mock `select` to resolve a platform, assert it scaffolds using that platform.
+- **New test:** `isCancel` mocked `true` on the platform `select` → assert a clean non-zero exit with a "Cancelled." message, no scaffold attempted.
+- Keep the "reports a non-Error scaffolding failure" and "reports a scaffolding failure" tests essentially as-is (still exercise `scaffoldProject` failure paths through the new `scaffoldWithSpinner`/`resolveScaffoldTarget` composition) — same `vi.doMock("../src/index.ts", ...)` technique still applies.
+- Keep the "still substitutes projectName" and "prints vp install as the preferred next step" black-box bin tests unchanged in intent (Option A means the printed text doesn't change).
+
+### `packages/create-pantoken-app/tests/index.test.ts`
+
+- Keep all four existing tests' *intent* unchanged (`--help`, unknown platform rejects, scaffolds with `--dir`, `html` alias) — they exercise the bin as a black box via `execFileSync`, and the new CLI preserves that exact surface (`&lt;platform&gt; [--dir]`).
+- The `"rejects an unknown platform"` test currently only asserts `execFileSync(...)` throws (no message assertion) — no change needed there, it will still throw (non-zero exit) under commander.
+- **New test to add:** `--yes` with no platform on a spawned child process (whose stdin, in `execFileSync`, is never a TTY anyway, so this mostly documents the existing non-interactive default) still exits non-zero with a clear message — cheap to add for parity/documentation of the new flag on this binary too.
+- No changes needed for the "vp install" assertion (Option A preserves it).
+
+### `ai/pantoken-ai` — new file `ai/pantoken-ai/tests/cli.test.ts`
+
+No prior CLI tests exist to preserve, so this is a clean new test file (already covered by the root `vite.config.ts`'s `include: ["ai/**/*.{test,spec}...]"` glob and its coverage `include` for `ai/*/src/**`). Cover:
+- `pantoken-ai --help` (spawned bin) lists both `init` and `scaffold` subcommands.
+- `pantoken-ai init --tool cursor --dir &lt;tmp&gt;` writes the expected asset (mirrors the existing `installAgentAssets` unit test, but through the CLI).
+- `pantoken-ai init --tool bogus` exits non-zero (commander's `Option.choices()` validation).
+- `pantoken-ai scaffold react --dir &lt;tmp&gt; --yes` (or non-TTY) writes both scaffold files and agent assets, and prints the shared "Next steps" block (proves the reuse from `@pantoken/scaffold/cli`).
+- `pantoken-ai scaffold` with no platform, non-interactive → exits non-zero with a clear "platform" message (mirrors the scaffold package's own equivalent test, proving the shared `resolveScaffoldTarget` behaves identically here).
+- Mock `@clack/prompts` (via `vi.doMock`) the same way as in `packages/scaffold/tests/cli.test.ts` for a TTY-prompt case exercised through `runAiCli` directly rather than the spawned bin.
+
+---
+
+## Phase 6 — Docs updates
+
+- **`packages/scaffold/README.md`**: add `--yes`/`-y`, `--version`, and a "Shell completions" section (`pantoken-scaffold completion zsh` etc.). **Also fix a pre-existing stale example** found while reading this file: `npx @pantoken/scaffold react ./my-app` (positional second arg) does not and never did work — the CLI only ever accepted `--dir`. Correct it to `npx @pantoken/scaffold react --dir ./my-app`. This is an opportunistic doc fix, not a scope-creep code change.
+- **`packages/create-pantoken-app/README.md`**: mention `--dir`, `--yes`, and that it's interactive on a TTY when `--dir` is omitted.
+- **`ai/pantoken-ai/README.md`**: update the `Usage` section for `--dir`/`--yes` on `scaffold`, note the shared prompt/spinner UX, and add a completions blurb. Update the "Or scaffold..." example block only if flags changed there (they didn't structurally).
+- **`docs/guide/getting-started.md`** and its mirror **`docs/hu/guide/getting-started.md`**: the "Scaffold a starter project" section's `npx create-pantoken-app react` example still works verbatim; add one sentence noting the CLI now prompts interactively for platform/directory when run without arguments in a terminal, and supports `--yes` for scripting. Mirror the exact same added sentence's meaning in Hungarian in the `docs/hu/` file (do not attempt to translate it yourself beyond a plain, simple sentence — flag for translator review per this repo's existing localization pipeline if there's a translation-memory/API step, per `docs/scripts/translation-memory.ts` referenced in the root vite.config.ts).
+- **Auto-generated API docs** (`docs/api/**/pantoken-ai/src/*.md`, `docs/api/**/scaffold/src/*.md`) regenerate from source JSDoc — no manual edits; just ensure the new exported functions/types in `src/cli.ts` carry proper `/** ... */` doc comments (module-level `@module`/`@alpha` tags matching the existing style in both `cli.ts` files) so the generated docs stay accurate.
+
+---
+
+## Phase 7 — Changesets
+
+Following the precedent found in git history (`.changeset/scaffold-cli-prompt-and-vp-install.md`, from the *previous* CLI-unification commit `ef503aa0`, which used a single multi-package changeset file with a YAML frontmatter block listing every affected package), generate **one changeset covering all three packages**:
+
+`.changeset/&lt;slug&gt;.md` (e.g. `commander-clack-scaffold-cli.md`):
+```md
+---
+"@pantoken/scaffold": minor
+"create-pantoken-app": minor
+"@pantoken/ai": minor
+---
+
+`pantoken-scaffold`, `create-pantoken-app`, and `pantoken-ai scaffold` now share one commander-based
+CLI engine (exported from `@pantoken/scaffold/cli`) with proper `--help`, `--version`, and shell
+completions (`&lt;command&gt; completion &lt;shell&gt;`). Interactive prompts (platform selection, directory
+input, a progress spinner) are now powered by `@clack/prompts` instead of raw `readline`. Add a new
+`--yes`/`-y` flag to force fully non-interactive behavior for scripts and CI even on a TTY.
+`pantoken-ai scaffold` gains the same platform/directory prompts as the other two CLIs, and its
+post-scaffold message now matches theirs ("Next steps: cd ... / vp install ...") instead of its
+previous, slightly different wording.
+```
+
+Use bump level `minor` for all three (new flags/behavior, no breaking removal of documented public argv contract — `shouldPromptForDir`'s rename is an internal/`@alpha`-tagged export, not a documented stable API per the module's own `@alpha` JSDoc tag).
+
+---
+
+## Phase 8 — Explicitly out of scope (do not touch, flag as follow-up only)
+
+- Bingo presets currently being empty (`blocks: []`) stubs, causing every platform to fall through to the legacy `SCAFFOLDS` string-template system in `scaffoldProject()` — a template-content issue, unrelated to this CLI-UX layer.
+- The orphaned/unreachable `next` platform template.
+- `packages/cli` (`@pantoken/cli`, `pantoken generate &lt;target&gt;`) — a third hand-rolled parser, different domain (native token generation), not touched or mentioned as a consolidation candidate.
+- Option B of the package-manager-detection fork (Phase 1a) unless you explicitly confirm you want it.
+
+---
+
+## Execution order (dependency-respecting)
+
+1. Phase 0 (catalog/deps/pack config).
+2. Phase 1 (`packages/scaffold/src/cli.ts` rewrite) — build and get its own tests green in isolation first.
+3. Phases 2–3 (both bin shims) — trivial once Phase 1's exports are stable.
+4. Phase 4 (`ai/pantoken-ai/src/cli.ts` + bin) — depends on Phase 1's exports being finalized (`resolveScaffoldTarget`, `scaffoldWithSpinner`, `printNextSteps`, `validateScaffoldPlatform`).
+5. Phase 5 (test rewrites) — can start alongside Phase 1/4 (TDD) but must finalize after the exact exported names/signatures settle.
+6. Phase 6 (docs), Phase 7 (changeset) last, once behavior is final.
+7. Run `vp run scan &amp;&amp; vp run generate &amp;&amp; vp test` in `packages/scaffold`, `vp test` in `ai/pantoken-ai` and `packages/create-pantoken-app`, then repo-wide `vp check` / `fallow` gates before considering the change done.
+
+---
+
+### Critical Files for Implementation
+
+- /Users/dwahl/Scripts/pantoken/packages/scaffold/src/cli.ts
+- /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/src/cli.ts (new file)
+- /Users/dwahl/Scripts/pantoken/packages/scaffold/tests/cli.test.ts
+- /Users/dwahl/Scripts/pantoken/pnpm-workspace.yaml
+- /Users/dwahl/Scripts/pantoken/packages/scaffold/package.json
+- /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/package.json
+- /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/bin/pantoken-ai.mjs</result>
+<usage><subagent_tokens>96508</subagent_tokens><tool_uses>25</tool_uses><duration_ms>410856</duration_ms></usage>
+</task-notification>
