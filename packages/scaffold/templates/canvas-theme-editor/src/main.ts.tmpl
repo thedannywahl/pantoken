@@ -32,6 +32,20 @@ import { basicSetup, EditorView } from "codemirror";
 import { css } from "@codemirror/lang-css";
 import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
+import type { CdnFile } from "@pantoken/cdn";
+import {
+  createTemplatesPlugin,
+  createComponentsPlugin,
+  createIconsPlugin,
+  createLogosPlugin,
+  listComponents,
+  listUtilities,
+  loadAllIcons,
+  logos,
+  products,
+  pantokenHtmlLinter,
+  pantokenHtmlCompletion,
+} from "@pantoken/tinymce";
 
 // Shared with the toolbar's source-view editor so both stay the same size.
 const EDITOR_HEIGHT_PX = 400;
@@ -165,57 +179,30 @@ for (const tab of tabButtons) {
   });
 }
 
-// A small custom plugin — same `tinymce.PluginManager.add` convention canvas-lms's own
-// `instructure_*` RCE plugins use — modeled on TinyMCE's stock `template` plugin's UX (toolbar
-// button + "Insert template" menu item, dialog listing title), but replaces the whole document
-// (with a confirm) instead of the stock plugin's insert-at-cursor behavior.
-tinymce.PluginManager.add("pantoken_templates", function (editor: Editor) {
-  const openDialog = () => {
-    editor.windowManager.open({
-      title: "Insert template",
-      body: {
-        type: "panel",
-        items: [
-          {
-            type: "selectbox",
-            name: "template",
-            label: "Starter template",
-            items: starterTemplates.map((t) => ({ value: t.title, text: t.title })),
-          },
-        ],
-      },
-      initialData: { template: starterTemplates[0]?.title ?? "" },
-      buttons: [
-        { type: "cancel", text: "Cancel" },
-        { type: "submit", text: "Insert", primary: true },
-      ],
-      onSubmit: (api: any): void => {
-        const { template } = api.getData() as { template: string };
-        const chosen = starterTemplates.find((t) => t.title === template);
-        api.close();
-        if (!chosen) return;
-        editor.windowManager.confirm(
-          `Replace the current content with the "${chosen.title}" template?`,
-          (confirmed: boolean): void => {
-            if (!confirmed) return;
-            editor.setContent((chosen as { title: string; content: string }).content);
-            replaceSourceDoc(chosen.content);
-            refreshAll();
-          },
-        );
-      },
-    });
+// Shared CSS assets array — tracks stylesheet URLs for dynamic injection into WYSIWYG editor.
+// Each picker plugin calls onMissingAsset to add new assets, and they're injected when an item is inserted.
+const currentAssets: CdnFile[] = [];
+const onMissingAsset = (asset: CdnFile) => {
+  currentAssets.push(asset);
+  // In a real app, you'd also trigger a download/export of the aggregated theme.css here.
+};
+
+// Register custom templates plugin (replaces whole document on template selection).
+const templatesPlugin = createTemplatesPlugin({
+  templates: starterTemplates.map((t) => ({
+    title: t.title,
+    content: t.content,
+  })),
+});
+tinymce.PluginManager.add("pantoken_templates", (editor: Editor) => {
+  templatesPlugin(editor);
+  // Wire the template selection to also update the source view and refresh preview.
+  const originalInsertContent = editor.insertContent;
+  editor.insertContent = function (value: string) {
+    originalInsertContent.call(this, value);
+    replaceSourceDoc(editor.getContent());
+    refreshAll();
   };
-
-  editor.ui.registry.addButton("pantokenTemplates", {
-    text: "Insert template",
-    onAction: openDialog,
-  });
-  editor.ui.registry.addMenuItem("pantokenTemplates", {
-    text: "Insert template…",
-    onAction: openDialog,
-  });
-
   return {};
 });
 
@@ -227,16 +214,26 @@ function createEditor(
   onChange: () => void,
 ): EditorView {
   const langExtension = lang === "css" ? css() : lang === "javascript" ? javascript() : html();
+  const extensions: any[] = [
+    basicSetup,
+    langExtension,
+    EditorView.lineWrapping,
+    EditorView.updateListener.of((update: any): void => {
+      if (update.docChanged) onChange();
+    }),
+  ];
+  
+  // Add pantoken linter + autocomplete for HTML editor only.
+  if (lang === "html") {
+    extensions.push(
+      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any }),
+      pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any })
+    );
+  }
+  
   return new EditorView({
     doc: value,
-    extensions: [
-      basicSetup,
-      langExtension,
-      EditorView.lineWrapping,
-      EditorView.updateListener.of((update: any): void => {
-        if (update.docChanged) onChange();
-      }),
-    ],
+    extensions,
     parent: container,
   });
 }
@@ -263,9 +260,37 @@ function replaceSourceDoc(content: string): void {
   replaceEditorDoc(sourceView, content);
 }
 
-// Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view so
-// authors can hand-edit markup with the preview pane updating live as they type — unlike TinyMCE's
-// stock `code` plugin, which edits raw HTML in a one-shot modal dialog with no live preview.
+// Register the three pantoken pickers (components, icons, logos) as TinyMCE plugins.
+// Each picker has its own toolbar button and manages CSS asset tracking.
+(async () => {
+  const componentModel = [...listComponents(), ...listUtilities()];
+  const allIcons = await loadAllIcons();
+  
+  const componentsPlugin = createComponentsPlugin({
+    model: componentModel as any,
+    currentAssets,
+    onMissingAsset,
+  });
+  tinymce.PluginManager.add("pantoken_components", componentsPlugin);
+  
+  const iconsPlugin = createIconsPlugin({
+    icons: allIcons,
+    currentAssets,
+    onMissingAsset,
+  });
+  tinymce.PluginManager.add("pantoken_icons", iconsPlugin);
+  
+  const logosPlugin = createLogosPlugin({
+    logos,
+    products,
+    currentAssets,
+    onMissingAsset,
+  });
+  tinymce.PluginManager.add("pantoken_logos", logosPlugin);
+})();
+
+// Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view.
+// The source view also includes pantoken linter (validation) and autocomplete (IntelliSense).
 tinymce.PluginManager.add("pantoken_source_toggle", function (editor: Editor) {
   const toggle = (api: Ui.Toolbar.ToolbarToggleButtonInstanceApi) => {
     sourceMode = !sourceMode;
@@ -534,8 +559,10 @@ for (const button of document.querySelectorAll<HTMLButtonElement>(".pane-fullscr
 void tinymce
   .init({
     selector: "#editor",
-    plugins: "pantoken_templates pantoken_source_toggle",
-    toolbar: "pantokenTemplates sourcecode",
+    // Load all five plugin modules: templates (custom), source-toggle (custom), and three pickers (from @pantoken/tinymce).
+    plugins: "pantoken_templates pantoken_source_toggle pantoken_components pantoken_icons pantoken_logos",
+    // Toolbar includes the custom templates button, source-view toggle, and the three picker buttons.
+    toolbar: "pantokenTemplates sourcecode | pantokenComponents pantokenIcons pantokenLogos",
     menubar: false,
     theme: "silver",
     branding: false,

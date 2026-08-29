@@ -13,14 +13,15 @@
     "@pantoken/cdn": "latest",
     "@pantoken/components": "latest",
     "@pantoken/css": "latest",
-    "@pantoken/plugin-layouts": "latest"
+    "@pantoken/plugin-layouts": "latest",
+    "@pantoken/tinymce": "latest"
   },
   "devDependencies": {
-    "@codemirror/lang-css": "^6.3.1",
-    "@codemirror/lang-html": "^6.4.12",
-    "@codemirror/lang-javascript": "^6.2.5",
-    "codemirror": "^6.0.2",
-    "tinymce": "^5.9",
+    "@codemirror/lang-css": "catalog:",
+    "@codemirror/lang-html": "catalog:",
+    "@codemirror/lang-javascript": "catalog:",
+    "codemirror": "catalog:",
+    "tinymce": "catalog:",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
   }
