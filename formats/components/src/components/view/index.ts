@@ -5,13 +5,12 @@
  * @module
  */
 import { defineComponent, type Definition } from "../../lib/define.ts";
-import { css } from "../../lib/css.ts";
+import { SENTINEL } from "../../lib/sentinel.ts";
+import { appendGenerated } from "../../lib/aliases.ts";
+import { view as viewRaw } from "../../generated/component-styles.ts";
 
 /** Generate rules for background modifiers. */
-const buildBackgroundRules = (
-  p: string,
-  rule: (mod: string, decls: string) => string,
-): string[] => {
+const buildBackgroundRules = (rule: (mod: string, decls: string) => string): string[] => {
   const backgrounds = [
     "primary",
     "secondary",
@@ -32,7 +31,7 @@ const buildBackgroundRules = (
 };
 
 /** Generate rules for border modifiers (radius, width, color). */
-const buildBorderRules = (p: string, rule: (mod: string, decls: string) => string): string[] => {
+const buildBorderRules = (rule: (mod: string, decls: string) => string): string[] => {
   const radiusRules = [
     ["small", "var(--instui-border-radius-sm)"],
     ["medium", "var(--instui-border-radius-md)"],
@@ -67,7 +66,7 @@ const buildBorderRules = (p: string, rule: (mod: string, decls: string) => strin
 };
 
 /** Generate rules for shadow, display, position, overflow, and cursor modifiers. */
-const buildEnumRules = (p: string, rule: (mod: string, decls: string) => string): string[] => {
+const buildEnumRules = (rule: (mod: string, decls: string) => string): string[] => {
   const shadowRules = ["resting", "above", "topmost"].map((s) =>
     rule(`shadow-${s}`, `box-shadow: var(--instui-elevation-${s});`),
   );
@@ -103,75 +102,13 @@ const buildEnumRules = (p: string, rule: (mod: string, decls: string) => string)
 export const view: Definition = defineComponent({
   name: "view",
   css: (p) => {
-    const rule = (mod: string, decls: string): string => `.${p}view.-${mod} { ${decls} }`;
-    const rules: string[] = [`.${p}view { display: block; box-sizing: border-box; }`];
-    rules.push(...buildBackgroundRules(p, rule));
-    rules.push(...buildBorderRules(p, rule));
-    rules.push(...buildEnumRules(p, rule));
-    // prettier-ignore
-    return css`/**
- * @component view
- * @summary The View primitive: a neutral box with key-value modifiers for background, border, radius, shadow, display, position, overflow, and cursor. Every one of these modifiers is also available globally (bare, or chained onto any other component) — see the \`background\`/\`border\`/\`shadow\`/\`display\`/\`position\`/\`overflow\`/\`cursor\` utilities.
- * @modifier -background-primary — Primary surface background.
- * @modifier -background-secondary — Secondary surface background.
- * @modifier -background-primary-inverse — Inverse primary surface background.
- * @modifier -background-brand — Brand surface background.
- * @modifier -background-info — Info surface background.
- * @modifier -background-alert — Alert surface background.
- * @modifier -background-success — Success surface background.
- * @modifier -background-danger — Danger surface background.
- * @modifier -background-warning — Warning surface background.
- * @modifier -background-transparent — Transparent background.
- * @modifier -border-radius-small — Small corner radius.
- * @modifier -border-radius-medium — Medium corner radius.
- * @modifier -border-radius-large — Large corner radius.
- * @modifier -border-radius-circle — Fully circular (50%) radius.
- * @modifier -border-radius-pill — Pill (full) radius.
- * @modifier -border-width-small — Small solid border in the base stroke colour.
- * @modifier -border-width-medium — Medium solid border in the base stroke colour.
- * @modifier -border-width-large — Large solid border in the base stroke colour.
- * @modifier -border-color-primary — Base stroke border colour.
- * @modifier -border-color-brand — Brand stroke border colour.
- * @modifier -border-color-success — Success stroke border colour.
- * @modifier -border-color-info — Info stroke border colour.
- * @modifier -border-color-warning — Warning stroke border colour.
- * @modifier -border-color-danger — Error stroke border colour.
- * @modifier -shadow-resting — Resting elevation shadow.
- * @modifier -shadow-above — Above elevation shadow.
- * @modifier -shadow-topmost — Topmost elevation shadow.
- * @modifier -display-block — display: block.
- * @modifier -display-inline-block — display: inline-block.
- * @modifier -display-inline — display: inline.
- * @modifier -display-flex — display: flex.
- * @modifier -display-inline-flex — display: inline-flex.
- * @modifier -display-none — display: none.
- * @modifier -position-static — position: static.
- * @modifier -position-relative — position: relative.
- * @modifier -position-absolute — position: absolute.
- * @modifier -position-fixed — position: fixed.
- * @modifier -position-sticky — position: sticky.
- * @modifier -overflow-x-visible — overflow-x: visible.
- * @modifier -overflow-x-hidden — overflow-x: hidden.
- * @modifier -overflow-x-auto — overflow-x: auto.
- * @modifier -overflow-x-scroll — overflow-x: scroll.
- * @modifier -overflow-x-clip — overflow-x: clip.
- * @modifier -overflow-y-visible — overflow-y: visible.
- * @modifier -overflow-y-hidden — overflow-y: hidden.
- * @modifier -overflow-y-auto — overflow-y: auto.
- * @modifier -overflow-y-scroll — overflow-y: scroll.
- * @modifier -overflow-y-clip — overflow-y: clip.
- * @modifier -cursor-auto — cursor: auto.
- * @modifier -cursor-default — cursor: default.
- * @modifier -cursor-pointer — cursor: pointer.
- * @modifier -cursor-not-allowed — cursor: not-allowed.
- * @modifier -cursor-text — cursor: text.
- * @modifier -cursor-move — cursor: move.
- * @modifier -cursor-grab — cursor: grab.
- * @modifier -cursor-wait — cursor: wait.
- * @example
- * <div class="instui-view -background-secondary -border-radius-medium -shadow-resting">A card-like surface.</div>
- */
-${rules.join("\n")}`;
+    const rule = (mod: string, decls: string): string => `&.-${mod} { ${decls} }`;
+    const rules: string[] = [
+      ...buildBackgroundRules(rule),
+      ...buildBorderRules(rule),
+      ...buildEnumRules(rule),
+    ];
+    return appendGenerated(viewRaw.replaceAll(SENTINEL, p), rules.join("\n"));
   },
 });
 

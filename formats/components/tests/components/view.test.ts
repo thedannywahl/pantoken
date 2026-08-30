@@ -8,6 +8,6 @@ test("view: emits exactly one well-formed cssdoc record with no token drift", ()
 });
 
 test("view is a neutral box primitive", () => {
-  expect(viewCss({ prefix: "instui" })).toContain(".instui-view {");
+  expect(viewCss({ prefix: "instui" })).toContain("@scope (.instui-view)");
   expect(viewCss({ prefix: "instui" })).toContain("display: block");
 });
