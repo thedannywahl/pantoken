@@ -1,0 +1,61 @@
+/**
+ * @layout testimonial
+ * @summary Quote or testimonial display with attribution and optional imagery.
+ * @remarks
+ * ✅ Use Testimonial when:
+ * - Displaying customer or user testimonials and quotes
+ * - You want to highlight a statement with visual emphasis
+ * - Attribution and context (name, title, image) are important
+ * 🚫 Don't use Testimonial when:
+ * - Displaying inline quotes in body text — use a blockquote element instead
+ * - The statement is the main focus — use Hero or Card instead
+ * @accessibility
+ * - Use `<blockquote>` semantically for the quote
+ * - Ensure attribution is clear and associated with the quote
+ * - If using images, provide alt text
+ * @selector div[class~="pfx-testimonial"]
+ * @part .pfx-avatar - Optional author profile image.
+ * @part .pfx-content - Container for quote and attribution.
+ * @part .pfx-quote - The quoted text.
+ * @part .pfx-author - Attribution author name.
+ * @part .pfx-title - Optional author title or affiliation.
+ * @related card
+ */
+div[class~="pfx-testimonial"] {
+  display: flex;
+  gap: var(--instui-space-medium);
+  padding: var(--instui-space-large);
+  border-left: 4px solid var(--instui-color-primary);
+  background-color: var(--instui-color-surface);
+  border-radius: var(--instui-radius-medium);
+}
+
+div[class~="pfx-testimonial"] .pfx-avatar:optional {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--instui-color-background);
+}
+
+div[class~="pfx-testimonial"] .pfx-content {
+  flex: 1;
+}
+
+div[class~="pfx-testimonial"] .pfx-content .pfx-quote {
+  font-style: italic;
+  color: var(--instui-color-text-primary);
+  margin: 0 0 var(--instui-space-small) 0;
+}
+
+div[class~="pfx-testimonial"] .pfx-content .pfx-author {
+  font-weight: var(--instui-font-weight-semibold);
+  margin: 0;
+}
+
+div[class~="pfx-testimonial"] .pfx-content .pfx-title:optional {
+  font-size: var(--instui-font-size-small);
+  color: var(--instui-color-text-secondary);
+  margin: 0;
+}

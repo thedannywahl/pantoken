@@ -1,0 +1,56 @@
+/**
+ * @layout two-column
+ * @summary Two-column layout with left and right content regions.
+ * @remarks
+ * ✅ Use Two-Column when:
+ * - You have two content areas of roughly equal importance
+ * - Comparing or contrasting two sets of content side-by-side
+ * - Building a responsive layout that stacks on mobile
+ * 🚫 Don't use Two-Column when:
+ * - One column dominates the page — use asymmetric layout instead
+ * - Content doesn't benefit from side-by-side presentation
+ * @accessibility
+ * - Ensure both columns are perceivable and usable on narrow viewports
+ * - Use semantic landmarks (e.g., `<section>`) to wrap column content
+ * - Maintain sufficient space and contrast between columns
+ * @selector div[class~="pfx-two-column"]
+ * @part .pfx-left - Left column content area.
+ * @part .pfx-right - Right column content area.
+ * @part .pfx-divider - Optional visual divider between columns.
+ * @related page-layout
+ */
+div[class~="pfx-two-column"] {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--instui-space-large);
+  padding: var(--instui-space-large);
+}
+
+div[class~="pfx-two-column"] slot[name="left"].pfx-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-space-medium);
+}
+
+div[class~="pfx-two-column"] .pfx-divider:optional {
+  display: none;
+}
+
+div[class~="pfx-two-column"] .pfx-divider.-visible {
+  display: block;
+  width: 1px;
+  background-color: var(--instui-color-border);
+}
+
+div[class~="pfx-two-column"] slot[name="right"].pfx-right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-space-medium);
+}
+
+@media (max-width: 768px) {
+  div[class~="pfx-two-column"] {
+    grid-template-columns: 1fr;
+    gap: var(--instui-space-medium);
+  }
+}
