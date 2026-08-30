@@ -1,0 +1,30 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M19K8NC2Y4GG4V04TS0H7XJH",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "packages/plugin-kit/package.json",
+    "packages/plugin-kit/src/index.ts",
+    "packages/plugin-kit/tests/index.test.ts",
+    "packages/plugin-kit/tests/sandbox-error-paths.test.ts",
+    "packages/plugin-kit/vite.config.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
