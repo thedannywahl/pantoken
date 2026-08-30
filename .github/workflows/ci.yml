@@ -455,6 +455,36 @@ jobs:
       - name: Lint PR commit messages
         run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose
 
+  # Advisory only: warns when a PR commit has no linked Entire checkpoint (missing `Entire-Checkpoint`
+  # trailer), but never blocks merge. Pure git — no Entire CLI, login, or agent credentials needed,
+  # since checkpoint linkage is recorded as a commit trailer at commit time.
+  entire-checkpoint-linkage:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Check for Entire-Checkpoint trailers
+        shell: bash
+        run: |
+          missing=0
+          for sha in $(git log --no-merges --format=%H "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"); do
+            author_email="$(git log -1 --format=%ae "$sha")"
+            # Skip bot-authored commits (e.g. release automation) — they never go through an agent session.
+            case "$author_email" in
+              *"[bot]"*@users.noreply.github.com) continue ;;
+            esac
+            if ! git log -1 --format=%B "$sha" | grep -q '^Entire-Checkpoint:'; then
+              echo "::warning::Commit ${sha} has no linked Entire checkpoint (missing Entire-Checkpoint trailer)"
+              missing=$((missing + 1))
+            fi
+          done
+          echo "${missing} commit(s) without an Entire checkpoint link. Advisory only; does not block merge."
+
   # Detect changes that could shift the vendored token IR, so the upstream-drift gate runs only when a
   # bump (or the pipeline itself) changed. Runs on both events so `upstream-drift`'s `needs` resolves.
   upstream-changes:

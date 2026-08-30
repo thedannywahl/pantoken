@@ -15,3 +15,5 @@ vp run snyk:code
 vp run lint:markdown
 # Property-based tests run at default iterations (100) in the CI `test` job on every PR. No separate
 # pre-push gate needed — fast-check failures surface in CI before merge.
+# Report (non-blocking) stuck/uncondensed Entire sessions; no --force, so it only reports, never discards.
+if command -v entire >/dev/null 2>&1; then entire doctor || true; fi

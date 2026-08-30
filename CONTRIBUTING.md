@@ -87,6 +87,8 @@ package name (e.g. `components`, `core`, `css`). The commit-msg hook enforces th
 
 - Keep PRs focused — one concern per PR.
 - The PR title must also follow Conventional Commits format.
+- Before opening a PR, run `entire recap --static` to see what agent work went into it, and
+  `entire review` to run the cross-agent review before requesting a merge.
 - All CI checks must pass before merge.
 - A maintainer will review and merge.
 
