@@ -1,0 +1,73 @@
+extract the html in main.ts.tmpl to app.html which gets read in with the ?raw parameter for use.
+
+remove the second set of queryselector transforms and just bake them into app.html, same for the tabs, etc.  main.ts.tmpl should carry the transforms, etc required to load tinymce and its plugins and other interactive things.
+
+the content of the html needs to be worked through the i18n pipeline, using something simple like handlebars for string swaps.
+
+---
+
+In the pantoken repo, examine `packages/scaffold/templates/canvas-theme-editor/` in full (list all files, read package.json, vite.config.ts, and src/ directory contents). Also check `packages/scaffold/` for the scaffold generator itself (how it processes templates — is there any templating/substitution mechanism already, e.g. handlebars, mustache, string replace, EJS?). Check package.json/tsconfig for the canvas-theme-editor template to see if vite is configured to support `?raw` imports (it should by default) and whether there's an existing `.html` file already used with `?raw` anywhere else in the repo (grep for `?raw` imports across the workspace). Also check if `handlebars` or similar templating libs are already a dependency anywhere in the monorepo (grep package.json files or pnpm-lock.yaml for handlebars, mustache, ejs, nunjucks). 
+
+Report back:
+1. Full file tree of packages/scaffold/templates/canvas-theme-editor/
+2. Contents of its package.json and vite.config.ts
+3. Any existing `?raw` import usage patterns elsewhere in repo (file + snippet)
+4. Whether handlebars/mustache/ejs already exists as a dependency anywhere, and its version if so
+5. How the scaffold tool processes/copies templates (is app.html renamed .tmpl too, or would it be copied as-is)
+6. List of other files in the templates dir that use `.tmpl` extension and how the scaffold CLI decides what to do with .tmpl vs non-tmpl files (look in packages/scaffold/src or bin for the copy/render logic)
+
+---
+
+In the pantoken repo, examine the i18n pipeline used for localizable UI strings. Look at:
+1. `packages/i18n/` — read its README/package.json and source files to understand what utilities it exports (translation lookup, string interpolation, locale loading, etc.)
+2. `docs/.vitepress/i18n.ts` — read it to understand the "glossary"/"ai" adapter pattern mentioned in repo conventions
+3. Search the workspace for any existing usage of `@pantoken/i18n` in scaffold or renderer packages, especially anything related to templates or generated apps (grep for `@pantoken/i18n` imports)
+4. Check if the canvas-theme-editor scaffold template already has any i18n/locale handling (grep for "i18n", "locale", "translate" in packages/scaffold/templates/canvas-theme-editor)
+5. Read `docs/conventions/i18n-localization.md` if it exists, or search docs/conventions for i18n rules
+6. Check memory file /memories/repo/i18n-localization.md is not accessible to you but note if you find similar patterns
+
+Report back: what tools/conventions exist for a scaffold template's static HTML strings to go through an i18n pipeline (e.g., does @pantoken/i18n support Handlebars-style {{key}} substitution, is there a "translate this template's strings" build step elsewhere, what locale data format is used — flat JSON key-value, ICU messages, etc.), with file paths and relevant code snippets.
+
+---
+
+In the pantoken repo, do a thorough read of `packages/i18n/`. I need exact file paths and code for:
+
+1. `packages/i18n/src/index.ts` — full contents (exports, WebComponentStrings type, registerLocalized, createLocaleSet)
+2. `packages/i18n/src/locale-bundle.ts` — full contents (LocaleBundle type)
+3. One example generated locale file, e.g. `packages/i18n/src/locales/hu.ts` and `packages/i18n/src/locales/en.ts` (if it exists) — full contents
+4. The script that generates `src/locales/*.ts` from the i18n-cache (likely `packages/i18n/scripts/build-bundles.ts` or similar) — full contents
+5. `packages/i18n/package.json` — scripts section
+6. The i18n-cache file format, e.g. `packages/i18n/i18n-cache/hu.json` — show a few entries and explain the key format (what generates the sha256 hash — is it computed from a "wc\0"+key+"\0"+english string as noted in memory, find the exact hashing code)
+7. Any translation script (`translate.ts` or similar) that fills the cache, and how it decides WHICH strings need translating (does it read from index.ts's WebComponentStrings type definition + English base strings somewhere, e.g. an `en.ts` or a strings map)
+8. Where the master ENGLISH strings live (the source of truth English text for each of the 7 keys) — full file/snippet
+9. `docs/conventions/i18n-localization.md` or any doc describing how to ADD a new translatable string key to this system (step-by-step) — read it if it exists, or infer the steps from the scripts and report them
+
+Report back with concrete file paths, full relevant code excerpts, and a clear step-by-step of "how would a developer add 20 new string keys (unrelated to date-picker) to this i18n system for a completely different consumer (a scaffold template, not a web component)". Be very literal — I need to build an execution plan from this.
+
+---
+
+In the pantoken repo, I need to understand exactly how `packages/scaffold` builds and materializes templates, focused on i18n. Read and report:
+
+1. `packages/scaffold/src/i18n.json` — full contents (the 18 existing CLI-prompt keys)
+2. `packages/scaffold/scripts/i18n-sources.ts` — full contents (collectI18nSource function)
+3. `packages/scaffold/scripts/translate.ts` and `packages/scaffold/scripts/check-drift.ts` — full contents
+4. `packages/scaffold/i18n-cache/en.json` and one other locale like `hu.json` — show contents/structure
+5. `packages/scaffold/scripts/generate.ts` — full contents (the SCAFFOLDS-constant generator, substituteWrapperTokens, writeLegacyTemplateFiles or equivalent, and how it decides what gets inlined into `generated/scaffolds.ts`)
+6. `packages/scaffold/src/index.ts` — the `scaffoldProject()` (or equivalently named) function signature — does it accept a `locale` option today? Does anything in the CLI prompt for a locale? grep for "locale" across packages/scaffold and packages/cli and packages/create-pantoken-app.
+7. Is there any existing mechanism where a scaffolded app's OWN runtime (browser, after `vite dev`) reads/selects a locale and substitutes translated strings into static text? (grep "locale" in any templates/ dir, and check if any template ships a strings.ts/i18n runtime helper)
+8. `packages/translation-adapters` package (mentioned as `@pantoken/translation-adapters`, exposing `runI18nTranslationCli`) — read its main export to understand the CLI helper's inputs/outputs (source strings, target locales, cachePath, isCached signature) fully.
+
+Report back with full file contents/snippets for items 1-8, and explicitly state: (a) does packages/scaffold's i18n system currently ever ship translated strings INTO a generated project's runtime bundle, or is it solely for the CLI's own terminal prompts (english reference + translated CLI messages shown to the developer running `create-pantoken-app`, never reaching the browser)? (b) what's the simplest way to get a per-template locale-keyed strings object baked into the scaffolded project's generated `src/` output during templating, following existing generate.ts conventions (e.g. a new `{{i18nStrings:<lang>}}` substitution token, or a generated `strings.ts` file copied alongside main.ts).
+
+---
+
+should web-components be moved to the broader i18n pipeline or should localeBundle() be moved to the i18n package?
+ultimately what we're trying to do is where packages / components need to carry localized strings they should run through the i18n ai translation pipeline and then bundle the translation strings with the package.  this is separate from but similar to the docs translations.
+
+---
+
+yes
+
+---
+
+Start implementation
