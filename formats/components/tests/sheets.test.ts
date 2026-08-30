@@ -488,12 +488,11 @@ test("the deprecated -type-new-error alias mirrors -type-error in componentsCss"
 
 test("text-input and text-area style a native control with states and sizes", () => {
   const input = textInputCss({ prefix: "instui" });
-  expect(input).toContain(".instui-text-input {");
+  expect(input).toContain("@scope (.instui-text-input)");
   expect(input).toContain("var(--instui-component-text-input-border-color)");
-  expect(input).toContain(
-    ".instui-text-input.-invalid { border-color: var(--instui-component-text-input-error-border-color)",
-  );
-  expect(input).toContain(".instui-text-input.-size-sm");
+  expect(input).toContain("&.-invalid {");
+  expect(input).toContain("border-color: var(--instui-component-text-input-error-border-color)");
+  expect(input).toContain("&.-size-sm");
   expect(input).toContain("var(--instui-component-text-input-height-lg)");
   const area = textAreaCss({ prefix: "instui" });
   expect(area).toContain(".instui-text-area {");
