@@ -1,0 +1,9 @@
+{
+  "prevMonth": "前月",
+  "nextMonth": "翌月",
+  "dateLabel": "日付",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "カレンダーを開く",
+  "timeLabel": "時刻",
+  "back": "戻る"
+}

@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Föregående månad",
+  "nextMonth": "Nästa månad",
+  "dateLabel": "Datum",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Öppna kalender",
+  "timeLabel": "Tid",
+  "back": "Tillbaka"
+}

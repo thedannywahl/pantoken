@@ -1,0 +1,9 @@
+{
+  "prevMonth": "이전 달",
+  "nextMonth": "다음 달",
+  "dateLabel": "날짜",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "달력 열기",
+  "timeLabel": "시간",
+  "back": "뒤로"
+}

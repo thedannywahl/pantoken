@@ -1296,9 +1296,6 @@ importers:
         specifier: workspace:*
         version: link:../../renderers/web-components
     devDependencies:
-      '@pantoken/translation-adapters':
-        specifier: workspace:*
-        version: link:../../tools/translation-adapters
       '@types/node':
         specifier: 'catalog:'
         version: 26.4.0
@@ -3049,6 +3046,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/scaffold-base
     devDependencies:
+      '@pantoken/translation-adapters':
+        specifier: workspace:*
+        version: link:../../tools/translation-adapters
       '@types/node':
         specifier: 'catalog:'
         version: 26.4.0

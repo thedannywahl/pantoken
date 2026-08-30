@@ -1,0 +1,9 @@
+{
+  "prevMonth": "เดือนก่อนหน้า",
+  "nextMonth": "เดือนถัดไป",
+  "dateLabel": "วันที่",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "เปิดปฏิทิน",
+  "timeLabel": "เวลา",
+  "back": "ย้อนกลับ"
+}

@@ -1,6 +1,8 @@
 /**
- * Generate `src/locales/{locale}.ts` files from the committed `i18n-cache/*.json` translation
- * memory. Run via `pnpm generate` or `vp run @pantoken/i18n#generate`.
+ * Generate `src/locales/{locale}.ts` files from `@pantoken/web-components`'s committed
+ * `i18n-cache/*.json` translation memory (that package owns the source-of-truth English strings
+ * and their translations; this script only reshapes them into this package's `LocaleBundle`s).
+ * Run via `pnpm generate` or `vp run @pantoken/i18n#generate`.
  *
  * Strings absent from a locale's cache fall back to the English source value. Weekday names are
  * always derived at runtime via `Intl.DateTimeFormat` — they are not committed to the cache.
@@ -9,29 +11,22 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { ENGLISH_STRINGS } from "@pantoken/web-components";
 import { CANVAS_LOCALES } from "../src/lib/canvas-locales.ts";
-import { keyFor } from "./lib/keys.ts";
-import { ENGLISH_SOURCES } from "./lib/keys.ts";
 
-// This bundle only carries `WebComponentStrings` — `keys.ts`'s auto-discovered set spans every
-// package's `src/i18n.json` (for the shared drift/translate tooling), so scope down to just the
-// keys `@pantoken/web-components` actually declares (`weekdays` is derived at runtime, not a key).
+// This bundle only carries `WebComponentStrings` (`weekdays` is derived at runtime, not a key).
 const WEB_COMPONENT_KEYS = Object.keys(ENGLISH_STRINGS).filter((k) => k !== "weekdays");
 
 const root = new URL("..", import.meta.url).pathname;
-const cacheDir = join(root, "i18n-cache");
+const cacheDir = join(root, "..", "..", "renderers", "web-components", "i18n-cache");
 const localesDir = join(root, "src", "locales");
 mkdirSync(localesDir, { recursive: true });
-
-interface CacheFile {
-  version: number;
-  entries: Record<string, string>;
-}
 
 function loadCache(locale: string): Record<string, string> {
   const path = join(cacheDir, `${locale}.json`);
   if (!existsSync(path)) return {};
-  return (JSON.parse(readFileSync(path, "utf8")) as CacheFile).entries ?? {};
+  return JSON.parse(readFileSync(path, "utf8"));
 }
+
+const englishSources = loadCache("en");
 
 /** Derive the JS identifier used in the export (handles subtag locales like en-AU → enAU). */
 export function toIdentifier(locale: string): string {
@@ -47,9 +42,8 @@ export function buildLocaleFile(locale: string): string {
   // Collect only strings that differ from the English source (true translations).
   const overrides: Record<string, string> = {};
   for (const key of WEB_COMPONENT_KEYS) {
-    const cacheKey = keyFor(key, ENGLISH_SOURCES[key]);
-    const translated = entries[cacheKey];
-    if (translated !== undefined && translated !== ENGLISH_SOURCES[key]) {
+    const translated = entries[key];
+    if (translated !== undefined && translated !== englishSources[key]) {
       overrides[key] = translated;
     }
   }

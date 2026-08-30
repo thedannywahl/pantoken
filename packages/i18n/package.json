@@ -25,9 +25,6 @@
   },
   "scripts": {
     "generate": "node scripts/build-bundles.ts",
-    "translate": "I18N_TRANSLATION_ADAPTER=ai node scripts/translate-bundles.ts",
-    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate-bundles.ts",
-    "check:drift": "node scripts/check-bundle-drift.ts",
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check"
@@ -36,7 +33,6 @@
     "@pantoken/web-components": "workspace:*"
   },
   "devDependencies": {
-    "@pantoken/translation-adapters": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

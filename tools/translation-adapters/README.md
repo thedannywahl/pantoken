@@ -2,7 +2,7 @@
 
 Shared primitives for the pantoken translation pipelines: the AI command bridge, JSON response parser, SHA-256 helper, and the content-addressed translation-memory core.
 
-Both the docs site (`docs/scripts/`) and the i18n bundle generator (`packages/i18n/scripts/`) depend on this package rather than duplicating the logic.
+The docs site (`docs/scripts/`), the UI string bundler (`renderers/web-components/scripts/`), and the CLI string bundlers (`packages/scaffold/scripts/`, `ai/pantoken-ai/scripts/`) all depend on this package rather than duplicating the logic.
 
 ## Exports
 
@@ -40,15 +40,15 @@ mem.save(); // writes sorted JSON; prune:true discards untouched keys
 
 **`prune: false`** (default, i18n pipeline) — `save()` writes all entries across runs.
 
-Pipeline-specific facades (`docs/scripts/translation-memory.ts`, `packages/i18n/scripts/lib/translation-memory.ts`) wrap this class with their own key-construction logic and factory methods.
+`docs/scripts/translation-memory.ts` wraps this class with its own content-addressed key-construction logic. The UI/CLI pipelines (`renderers/web-components`, `packages/scaffold`, `ai/pantoken-ai`) don't need a facade — `runI18nTranslationCli` reads/writes their `i18n-cache/*.json` files directly as flat `{ key: value }` maps, keyed by the plain source string key rather than a content hash.
 
 ## agy wrapper
 
 `agy-wrapper.sh` (in this package) adapts the stdin-based interface to [agy](https://github.com/anthropics/agy)'s positional-arg interface. Scripts reference it via `$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh`, which resolves correctly from any directory in the repo:
 
 ```sh
-# i18n pipeline — use the package.json alias:
-vp run @pantoken/i18n#translate:agy
+# UI (web-components) pipeline — use the package.json alias:
+vp run @pantoken/web-components#translate:agy
 
 # docs pipeline — use the package.json alias:
 vp run docs:translate:agy
@@ -57,5 +57,5 @@ vp run docs:translate:agy
 I18N_TRANSLATION_ADAPTER=ai \
   I18N_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh" \
   I18N_TRANSLATION_COMMAND_ARGS="--model gemini-3.6-flash-medium" \
-  node scripts/translate-bundles.ts
+  node scripts/translate.ts
 ```

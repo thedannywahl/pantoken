@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Önceki ay",
+  "nextMonth": "Sonraki ay",
+  "dateLabel": "Tarih",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Takvimi aç",
+  "timeLabel": "Saat",
+  "back": "Geri"
+}

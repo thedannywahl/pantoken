@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Poprzedni miesiąc",
+  "nextMonth": "Następny miesiąc",
+  "dateLabel": "Data",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Otwórz kalendarz",
+  "timeLabel": "Czas",
+  "back": "Wstecz"
+}

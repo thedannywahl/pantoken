@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Vorige maand",
+  "nextMonth": "Volgende maand",
+  "dateLabel": "Datum",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Kalender openen",
+  "timeLabel": "Tijd",
+  "back": "Terug"
+}

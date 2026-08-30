@@ -33,6 +33,9 @@
   "scripts": {
     "generate": "node scripts/generate.ts",
     "dev": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
+    "translate": "I18N_TRANSLATION_ADAPTER=ai node scripts/translate.ts",
+    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate.ts",
+    "check:drift": "node scripts/check-drift.ts",
     "test": "vp test",
     "check": "vp check"
   },
@@ -44,6 +47,7 @@
     "@pantoken/scaffold-base": "workspace:*"
   },
   "devDependencies": {
+    "@pantoken/translation-adapters": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
     "happy-dom": "catalog:",

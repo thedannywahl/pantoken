@@ -217,11 +217,11 @@ export default defineConfig({
       // check:drift asserts committed caches are current (CI-safe, no network).
       // UI (web-components) string localization.
       "ui:translate": {
-        command: "vp run @pantoken/i18n#translate",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:agy": {
-        command: "vp run @pantoken/i18n#translate:agy",
+        command: "vp run @pantoken/web-components#translate:agy",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -256,7 +256,7 @@ export default defineConfig({
       // Drift checks for all i18n domains (UI, docs, CLI).
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/i18n#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       "i18n:bundles:build": {
         command: "vp run @pantoken/i18n#generate",
