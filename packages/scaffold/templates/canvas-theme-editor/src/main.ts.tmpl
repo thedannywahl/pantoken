@@ -34,7 +34,7 @@ import { html } from "@codemirror/lang-html";
 import { javascript } from "@codemirror/lang-javascript";
 import type { CdnFile } from "@pantoken/cdn";
 import {
-  createTemplatesPlugin,
+  createLayoutsPlugin,
   createComponentsPlugin,
   createIconsPlugin,
   createLogosPlugin,
@@ -51,17 +51,6 @@ import {
 const EDITOR_HEIGHT_PX = 400;
 // Canvas's content area caps out at this width — the preview mirrors that constraint.
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
-
-// Bundled starter templates: filename (minus .html) -> raw HTML content.
-const templateModules = (import.meta as any).glob("../templates/pages/*.html", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-});
-const starterTemplates = Object.entries(templateModules).map(([path, module]) => ({
-  title: path.split("/").pop()!.replace(/\.html$/, ""),
-  content: (module as unknown as { default: string }).default,
-}));
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 {{wrapperContainer:html:1}}
@@ -187,16 +176,12 @@ const onMissingAsset = (asset: CdnFile) => {
   // In a real app, you'd also trigger a download/export of the aggregated theme.css here.
 };
 
-// Register custom templates plugin (replaces whole document on template selection).
-const templatesPlugin = createTemplatesPlugin({
-  templates: starterTemplates.map((t) => ({
-    title: t.title,
-    content: t.content,
-  })),
-});
-tinymce.PluginManager.add("pantoken_templates", function (editor: Editor) {
-  templatesPlugin(editor);
-  // Wire the template selection to also update the source view and refresh preview.
+// Register the Layouts plugin (replaces whole document on layout selection), sourced from
+// pantoken's own bundled starter page layouts (@pantoken/plugin-layouts).
+const layoutsPlugin = createLayoutsPlugin();
+tinymce.PluginManager.add("pantoken_layouts", function (editor: Editor) {
+  layoutsPlugin(editor);
+  // Wire the layout selection to also update the source view and refresh preview.
   const originalInsertContent = editor.insertContent;
   editor.insertContent = function (value: string) {
     originalInsertContent.call(this, value);
@@ -561,10 +546,10 @@ void registerPickerPlugins.then(() =>
   tinymce
     .init({
       selector: "#editor",
-      // Load all five plugin modules: templates (custom), source-toggle (custom), and three pickers (from @pantoken/tinymce).
-      plugins: "pantoken_templates pantoken_source_toggle pantoken_components pantoken_icons pantoken_logos",
-      // Toolbar includes the custom templates button, source-view toggle, and the three picker buttons.
-      toolbar: "pantokenTemplates sourcecode | pantokenComponents pantokenIcons pantokenLogos",
+      // Load all five plugin modules: layouts, source-toggle (custom), and three pickers (from @pantoken/tinymce).
+      plugins: "pantoken_layouts pantoken_source_toggle pantoken_components pantoken_icons pantoken_logos",
+      // Toolbar includes the layouts button, source-view toggle, and the three picker buttons.
+      toolbar: "pantokenLayouts sourcecode | pantokenComponents pantokenIcons pantokenLogos",
       menubar: false,
       theme: "silver",
       branding: false,

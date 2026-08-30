@@ -31,7 +31,6 @@ test("canvas-theme-editor is a known, template-only platform (no preset)", async
   expect(existsSync(join(target, "theme.js"))).toBe(true);
   expect(existsSync(join(target, "index.html"))).toBe(true);
   expect(existsSync(join(target, "src/main.ts"))).toBe(true);
-  expect(existsSync(join(target, "templates/pages/hero.html"))).toBe(true);
   expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
     "@pantoken/css/dist/style.rebrand.light.lean.css",
   );

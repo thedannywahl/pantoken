@@ -26,9 +26,9 @@ in the current project. Work through these steps.
      directly to step 2 to manually install and wire pantoken instead.
 
      For `canvas-theme-editor`, after scaffolding, tell the user to: (1) upload the generated
-     `theme.css`/`theme.js` under Canvas's Theme Editor → Advanced, and (2) open `preview/index.html`
-     (via a local static server, e.g. `npx serve .`) to author and copy RCE page templates from
-     `templates/pages/` into Canvas.
+     `theme.css`/`theme.js` under Canvas's Theme Editor → Advanced, and (2) run `npm run dev` to
+     author RCE page templates in the local TinyMCE editor, using the **Layouts** toolbar button to
+     start from a bundled starter layout before copying the result into Canvas.
 
   2. **Package manager** — if a lockfile already exists in the target directory, use it (see the
      detection table in step 2); a genuinely empty directory has no lockfile to detect from, so

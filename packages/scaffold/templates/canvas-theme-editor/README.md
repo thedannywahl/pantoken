@@ -16,9 +16,9 @@ Content Editor (RCE) page templates styled with
   The page itself is built with pantoken's `wrapper` layout: click **Edit theme** to open a tray
   with **Config** / **CSS** / **JS** tabs (CDN provider/theme/mode selects, and syntax-highlighted,
   hand-editable copies of `theme.css`/`theme.js` that feed the live preview), and the **?** button
-  for full instructions.
-- `templates/pages/` — starter HTML snippets (hero, callout, two-column, rubric note, testimonial)
-  available from the editor's **Insert template** toolbar button.
+  for full instructions. Use the **Layouts** toolbar button to start from one of pantoken's bundled
+  starter page layouts (hero, callout, two-column, rubric note, testimonial), sourced from
+  [`@pantoken/plugin-layouts`](https://www.npmjs.com/package/@pantoken/plugin-layouts).
 
 ## Develop
 
@@ -31,7 +31,7 @@ This opens a Vite dev server with:
 
 - An **editor** pane (TinyMCE, matching the version/config
   [instructure/canvas-lms](https://github.com/instructure/canvas-lms) itself uses — see below).
-  Use the **Insert template** button to load one of the bundled starters (this replaces the whole
+  Use the **Layouts** button to load one of the bundled starter layouts (this replaces the whole
   document, after a confirm, rather than inserting at the cursor), and the **Source code** toggle
   to hand-edit the raw HTML in a syntax-highlighted (CodeMirror) view alongside the editor, with
   the preview pane updating live as you type — unlike TinyMCE's stock `code` plugin, which edits in
@@ -53,7 +53,7 @@ This opens a Vite dev server with:
 
 1. Upload `theme.css` and `theme.js` to Canvas's Theme Editor (**Advanced → CSS / JavaScript**) so
    pantoken's classes are available on every page.
-2. Run `npm run dev`, use **Insert template** to start from a bundled starter, and edit it like you
+2. Run `npm run dev`, use **Layouts** to start from a bundled starter, and edit it like you
    would in Canvas's own RCE.
 3. Click **Copy HTML** and paste the result into a Canvas page's RCE (switch to the HTML editor
    view first). Canvas sanitizes pasted HTML server-side — this scaffold doesn't attempt to
