@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CDN_PROVIDERS } from "@pantoken/cdn";
 import type { PantokenTheme } from "../theme";
-import type { PickerMode } from "../composables/usePickerTheme";
+import type { PickerMode } from "../composables/pickerMode";
 
 interface ThemeControlStrings {
   themeLabel: string;

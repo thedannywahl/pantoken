@@ -9,7 +9,7 @@
  */
 import { wrapperRules } from "@pantoken/plugin-layouts";
 
-interface WrapperNode {
+export interface WrapperNode {
   /** Real element tag, e.g. "div", "slot", "button". "body" is remapped by the caller. */
   tag: string;
   className?: string;
@@ -34,7 +34,7 @@ function extractSelector(raw: string): string {
 }
 
 /** Split CSS text into top-level (brace-depth-aware) rules, ignoring plain declarations. */
-function splitRules(css: string): RawRule[] {
+export function splitRules(css: string): RawRule[] {
   const rules: RawRule[] = [];
   let depth = 0;
   let selectorStart = 0;
@@ -59,7 +59,7 @@ function splitRules(css: string): RawRule[] {
 }
 
 /** Parse a single selector into a node shape (tag/class/attrs), or `null` for a `&`-scoped state rule. */
-function parseSelector(selector: string): Omit<WrapperNode, "children"> | null {
+export function parseSelector(selector: string): Omit<WrapperNode, "children"> | null {
   if (selector.startsWith("@")) {
     return { tag: "", comment: selector.replace(/^@component\s+/, "") };
   }
@@ -80,7 +80,7 @@ function parseSelector(selector: string): Omit<WrapperNode, "children"> | null {
   return { tag: tagMatch?.[0] ?? "div", className: classMatch?.[1], optional };
 }
 
-function parseNodes(css: string): WrapperNode[] {
+export function parseNodes(css: string): WrapperNode[] {
   const nodes: WrapperNode[] = [];
   for (const { selector, body } of splitRules(css)) {
     for (const single of selector.split(",")) {
@@ -128,7 +128,7 @@ function comment(format: "html" | "jsx", text: string): string {
   return format === "jsx" ? `{/* ${text} */}` : `<!-- ${text} -->`;
 }
 
-function renderNode(node: WrapperNode, format: "html" | "jsx", depth: number): string {
+export function renderNode(node: WrapperNode, format: "html" | "jsx", depth: number): string {
   const pad = "  ".repeat(depth);
   if (node.comment) return `${pad}${comment(format, node.comment)}`;
 

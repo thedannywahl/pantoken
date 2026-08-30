@@ -12,7 +12,8 @@ import {
 import type { PantokenTheme } from "../theme";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenSheetFile, type PickerMode } from "../composables/usePickerTheme";
+import { type PickerMode } from "../composables/pickerMode";
+import { tokenSheetFile } from "../composables/tokenSheetPaths";
 import { COMPONENTS, getAllDependencies } from "./componentMetadata";
 import pluginManifest from "../generated/cdn-plugin-manifest.json";
 import PickerOutput from "./PickerOutput.vue";

@@ -6,7 +6,8 @@ import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "../cdn";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
+import { type PickerMode } from "../composables/pickerMode";
+import { tokenLeanSheet } from "../composables/tokenSheetPaths";
 import manifest from "../generated/cdn-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
 

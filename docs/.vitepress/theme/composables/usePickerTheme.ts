@@ -1,10 +1,7 @@
 import { computed, ref, watch } from "vue";
-import type { CdnFile } from "@pantoken/cdn";
 import { readHashParam, writeHashParam } from "./useHashParams";
 import { getStoredTheme, type PantokenTheme } from "../theme";
-
-/** Picker mode for rebrand token URLs. */
-export type PickerMode = "adaptive" | "light";
+import type { PickerMode } from "./pickerMode";
 
 const VALID_THEMES = new Set<PantokenTheme>(["rebrand", "canvas", "canvasHighContrast"]);
 
@@ -32,25 +29,4 @@ export function usePickerTheme() {
   });
 
   return { themeKey, mode, showMode };
-}
-
-/** Resolve the lean token-sheet path for a selected theme/mode pair. */
-export function tokenLeanSheet(theme: PantokenTheme, mode: PickerMode): string {
-  const root = "npm/@pantoken/css/dist";
-  if (theme === "canvas") return `${root}/style.canvas.lean.css`;
-  if (theme === "canvasHighContrast") return `${root}/style.canvas-high-contrast.lean.css`;
-  return mode === "light" ? `${root}/style.rebrand.light.lean.css` : `${root}/style.lean.css`;
-}
-
-/** Provider-agnostic equivalent of {@link tokenLeanSheet}, for pickers built on `@pantoken/cdn`. */
-export function tokenSheetFile(theme: PantokenTheme, mode: PickerMode): CdnFile {
-  const file =
-    theme === "canvas"
-      ? "style.canvas.lean.css"
-      : theme === "canvasHighContrast"
-        ? "style.canvas-high-contrast.lean.css"
-        : mode === "light"
-          ? "style.rebrand.light.lean.css"
-          : "style.lean.css";
-  return { package: "@pantoken/css", path: `dist/${file}` };
 }
