@@ -9,6 +9,7 @@
  */
 import { wrapperRules } from "@pantoken/plugin-layouts";
 
+/** A parsed wrapper-layout element, ready to render as HTML/JSX markup. */
 export interface WrapperNode {
   /** Real element tag, e.g. "div", "slot", "button". "body" is remapped by the caller. */
   tag: string;
@@ -80,6 +81,7 @@ export function parseSelector(selector: string): Omit<WrapperNode, "children"> |
   return { tag: tagMatch?.[0] ?? "div", className: classMatch?.[1], optional };
 }
 
+/** Recursively parse CSS rule bodies into a tree of {@link WrapperNode}s. */
 export function parseNodes(css: string): WrapperNode[] {
   const nodes: WrapperNode[] = [];
   for (const { selector, body } of splitRules(css)) {
@@ -128,6 +130,7 @@ function comment(format: "html" | "jsx", text: string): string {
   return format === "jsx" ? `{/* ${text} */}` : `<!-- ${text} -->`;
 }
 
+/** Render a {@link WrapperNode} (and its children) as indented HTML or JSX markup. */
 export function renderNode(node: WrapperNode, format: "html" | "jsx", depth: number): string {
   const pad = "  ".repeat(depth);
   if (node.comment) return `${pad}${comment(format, node.comment)}`;
