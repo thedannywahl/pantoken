@@ -7,8 +7,14 @@ import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 const spawn = vi.fn();
 vi.mock("node:child_process", () => ({ spawn }));
 
-const { extractJsonObject, generateLocaleBundles, sha256, spawnPrompt, TranslationMemory } =
-  await import("../src/index.ts");
+const {
+  extractJsonObject,
+  generateLocaleBundles,
+  runI18nTranslationCli,
+  sha256,
+  spawnPrompt,
+  TranslationMemory,
+} = await import("../src/index.ts");
 
 // ── extractJsonObject ─────────────────────────────────────────────────────────
 
@@ -197,6 +203,110 @@ test("spawnPrompt includes context in the error message when provided", async ()
 test("spawnPrompt omits the context clause when context is not provided", async () => {
   useSpawn(() => ({ stdout: "", code: 1, stderr: "oops" }));
   await expect(spawnPrompt("cmd", ["-p"], "p")).rejects.toThrow(/exited 1: oops/u);
+});
+
+// ── runI18nTranslationCli ─────────────────────────────────────────────────────
+
+let cliTestDir: string;
+
+beforeEach(() => {
+  cliTestDir = join(tmpdir(), `ptk-i18n-cli-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+  mkdirSync(cliTestDir, { recursive: true });
+});
+
+afterEach(() => {
+  rmSync(cliTestDir, { recursive: true, force: true });
+});
+
+test("runI18nTranslationCli creates a new cache and saves translated missing keys", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Szia" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    hello: "Szia",
+  });
+});
+
+test("runI18nTranslationCli skips a locale whose cache already has every key", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ hello: "Szia" }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(spawn).not.toHaveBeenCalled();
+});
+
+test("runI18nTranslationCli always skips the 'en' locale, without touching its cache path", async () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["en"],
+      cachePath: () => join(cliTestDir, "unreachable.json"),
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(spawn).not.toHaveBeenCalled();
+  expect(existsSync(join(cliTestDir, "unreachable.json"))).toBe(false);
+});
+
+test("runI18nTranslationCli supports a custom isCached predicate for legacy hash-keyed caches", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ [sha256("hello")]: "Szia" }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      isCached: (key, cache) => sha256(key) in cache,
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(spawn).not.toHaveBeenCalled();
+});
+
+test("runI18nTranslationCli exits the process when a locale's translation request fails", async () => {
+  useSpawn(() => ({ stdout: "", code: 1, stderr: "boom" }));
+  const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => undefined as never);
+  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+    expect(exitSpy).toHaveBeenCalledWith(1);
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining("Failed to translate for locale hu"),
+      expect.anything(),
+    );
+  } finally {
+    exitSpy.mockRestore();
+    errorSpy.mockRestore();
+    logSpy.mockRestore();
+  }
 });
 
 // ── generateLocaleBundles ──────────────────────────────────────────────────────

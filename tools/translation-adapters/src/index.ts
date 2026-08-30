@@ -9,7 +9,7 @@
  */
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { spawn } from "node:child_process";
 
 /**
@@ -160,6 +160,107 @@ export class TranslationMemory {
 /** Compute a SHA-256 hex digest of `input`. */
 export function sha256(input: string): string {
   return createHash("sha256").update(input).digest("hex");
+}
+
+// ── CLI translation runner ────────────────────────────────────────────────────
+
+/** Options for {@link runI18nTranslationCli}. */
+export interface I18nTranslationOptions {
+  /** Label shown in the startup banner, e.g. `"@pantoken/scaffold strings"`. */
+  label: string;
+  /** The English source key → string map to translate from. */
+  source: Record<string, string>;
+  /** Target locale codes to translate into (`"en"` is always skipped, it's the source). */
+  targetLocales: string[];
+  /** Resolve the on-disk cache path for a locale, e.g. "i18n-cache/${locale}.json". */
+  cachePath: (locale: string) => string;
+  /**
+   * Whether `key` is already present in `cache`. Defaults to a plain `key in cache` check;
+   * override to also recognize a legacy hash-keyed cache (see `sha256`).
+   */
+  isCached?: (key: string, cache: Record<string, string>) => boolean;
+}
+
+/** Translate `locale`'s missing keys (per `isCached`) and merge/save the result into its cache file. */
+async function translateLocale(
+  locale: string,
+  command: string,
+  commandArgs: string[],
+  options: I18nTranslationOptions,
+  isCached: (key: string, cache: Record<string, string>) => boolean,
+): Promise<void> {
+  const cacheFile = resolve(options.cachePath(locale));
+  let cache: Record<string, string>;
+  try {
+    cache = JSON.parse(readFileSync(cacheFile, "utf8"));
+  } catch {
+    console.log(`Creating new cache for locale: ${locale}`);
+    cache = {};
+  }
+
+  const missingKeys = Object.keys(options.source).filter((key) => !isCached(key, cache));
+  if (missingKeys.length === 0) {
+    console.log(`✓ ${locale}: all strings translated`);
+    return;
+  }
+
+  console.log(`🔄 ${locale}: translating ${missingKeys.length} new string(s)...`);
+
+  const stringsList = missingKeys.map((k) => `- "${k}": "${options.source[k]}"`).join("\n");
+  const prompt = `Translate these UI strings from English into ${locale} (for a CLI):
+
+${stringsList}
+
+Respond with a JSON object mapping each original key to its translation, using the exact same keys. Only the translations, nothing else.`;
+
+  try {
+    const result = await spawnPrompt(command, [...commandArgs, "-p"], prompt, `locale "${locale}"`);
+
+    const translated = extractJsonObject(result);
+    if (!translated) {
+      throw new Error(`AI response could not be parsed as JSON for locale "${locale}".`);
+    }
+
+    for (const key of missingKeys) {
+      const value = translated[key];
+      if (typeof value === "string") cache[key] = value;
+    }
+
+    writeFileSync(cacheFile, JSON.stringify(cache, null, 2) + "\n", "utf8");
+    console.log(`✓ ${locale}: saved ${missingKeys.length} translation(s)\n`);
+  } catch (err) {
+    console.error(`❌ Failed to translate for locale ${locale}:`, err);
+    process.exit(1);
+  }
+}
+
+/**
+ * Shell out to an AI CLI to translate every source string missing from each target locale's
+ * on-disk cache, merging the results back in. Shared by `ai/pantoken-ai/scripts/translate.ts` and
+ * `packages/scaffold/scripts/translate.ts`, whose i18n CLIs both translate a flat key → string map
+ * the same way, differing only in where the source strings and cache files come from.
+ *
+ * Reads `I18N_TRANSLATION_ADAPTER`/`I18N_TRANSLATION_COMMAND`/`I18N_TRANSLATION_COMMAND_ARGS` env
+ * vars to choose the model/command, matching both callers' existing conventions. Exits the process
+ * with code 1 if a locale's translation request fails.
+ */
+export async function runI18nTranslationCli(options: I18nTranslationOptions): Promise<void> {
+  const adapter = process.env.I18N_TRANSLATION_ADAPTER || "ai";
+  const command = process.env.I18N_TRANSLATION_COMMAND ?? "claude";
+  const commandArgs = (process.env.I18N_TRANSLATION_COMMAND_ARGS ?? "")
+    .split(" ")
+    .map((p) => p.trim())
+    .filter((p) => p.length > 0);
+  const isCached = options.isCached ?? ((key, cache) => key in cache);
+
+  console.log(`📋 Translating ${options.label} (${adapter})\n`);
+
+  for (const locale of options.targetLocales) {
+    if (locale === "en") continue; // Skip English, it's the source
+    await translateLocale(locale, command, commandArgs, options, isCached);
+  }
+
+  console.log(`✨ All translations complete!`);
 }
 
 // ── Locale bundle codegen ──────────────────────────────────────────────────────
