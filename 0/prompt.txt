@@ -1,0 +1,505 @@
+finish configuring [entire](https://docs.entire.io/llms.txt) in this repo according to best practices, documentation, and other recommendations. so far all we've done is run `entire enable` and scanned existing sessions for claude code and copilot-cli.
+
+---
+
+if there's any CI practices or any sort of best-practies for checkpoints, or sessions, or dispatches that we can integrate with this repo do that here too.
+
+---
+
+for recap/review/dispatch/doctor can we add it as git hooks and/or as part of our `vpr ready` flow and then add a CI for PRs or merges to main or releases that checks for the existence of the execution of the files?  So it can still all run locally but be appropriately integrated?
+
+---
+
+Start implementation
+
+---
+
+[Terminal cdc559fd-390a-469a-a7e6-77ba4bc340de notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="cdc559fd-390a-469a-a7e6-77ba4bc340de" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="cdc559fd-390a-469a-a7e6-77ba4bc340de" to continue polling.
+Terminal output:
+pantoken on cli ≡  ?3 via  26.8.1 
+➜  entire version && entire status --detailed
+Entire CLI 0.10.3
+Go version: go1.26.6
+OS/Arch: darwin/arm64
+● Enabled · branch cli
+  Agents · Claude Code, Copilot CLI
+  Checkpoints sync to: origin
+  222 checkpoints not yet on origin — they sync with your next 'git push origin'
+
+Project · enabled
+
+── Active Sessions ─────────────────────────────────────────────────────────────
+
+Copilot CLI · 1284475c-80cf-43e3-b0c2-e1362fd9c00b
+> "Start implementation"
+started 1h ago · active now
+
+────────────────────────────────────────────────────────────────────────────────
+1 session
+
+Agents: run `entire agent-help` for machine-readable usage.
+pantoken on cli ≡  ?3 via  26.8.1 
+➜  entire plugin install graph && entire graph version
+Installed plugin "graph" v0.4.0 from https://github.com/entireio/entire-graph
+v0.4.0
+pantoken on cli ≡  ?3 via  26.8.1 
+➜  entire graph init-agents --repo .
+wrote /Users/dwahl/Scripts/pantoken/.entire/graph-agent.md
+updated /Users/dwahl/Scripts/pantoken/AGENTS.md
+updated /Users/dwahl/Scripts/pantoken/CLAUDE.md
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git diff AGENTS.md CLAUDE.md
+diff --git a/AGENTS.md b/AGENTS.md
+index 620c8170..53a34545 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -137,3 +137,10 @@ Owner of the VitePress docs site, i18n, the cssdoc integration, and the release
+   API tree and the `ai` adapter only for hand-written guides.
+ - The docs orchestrator and CSS-API node spawn `node scripts/x.ts`, not a nested `vp run`.
+ - Full rules live in `docs/conventions/build-and-docs.md`.
++
++<!-- entire-graph:begin -->
++This repo has the entire-graph code graph installed. Before exploring code with
++grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
++for using graph retrieval, focused source inspection, and verification.
++@.entire/graph-agent.md
++<!-- entire-graph:end -->
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 3a9e9ec8..cb62cf39 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -54,3 +54,10 @@ serializations (css, icons, scss, components, …) · `platforms/` generated for
+ plugins · `design/` Figma + swatches · `plugins/{pantoken,postcss,typedoc,vite}/` · `tools/` internal
+ build tooling · `ai/` consumer-facing agent assets. The gate is `pnpm run ready` +
+ `pnpm run check:publish`.
++
++<!-- entire-graph:begin -->
++This repo has the entire-graph code graph installed. Before exploring code with
++grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
++for using graph retrieval, focused source inspection, and verification.
++@.entire/graph-agent.md
++<!-- entire-graph:end -->
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git status --short .entire/ AGENTS.md CLAUDE.md
+ M AGENTS.md
+ M CLAUDE.md
+?? .entire/
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git ls-files .entire; echo ---; git check-ignore -v .entire/settings.json; echo ---; cat .gitignore | grep -n entire
+---
+---
+pantoken on cli ≡  ?3 ~2 via  26.8.1 x 
+➜  git status --short --ignored .entire/
+?? .entire/
+!! .entire/logs/
+!! .entire/metadata/
+!! .entire/tmp/
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git add .entire/.gitignore .entire/settings.json .entire/graph-agent.md AGENTS.md CLAUDE.md && git status --short
+A  .entire/.gitignore
+A  .entire/graph-agent.md
+A  .entire/settings.json
+M  AGENTS.md
+M  CLAUDE.md
+?? .claude/settings.json
+?? .github/hooks/
+pantoken on cli ≡  ?2 |  +3 ~2 via  26.8.1 
+➜  git commit -s -m "chore(entire): install and enable entire-graph"
+✔ Backed up original state in git stash (268521ec)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[cli 73e0cdc5] chore(entire): install and enable entire-graph
+ 5 files changed, 73 insertions(+)
+ create mode 100644 .entire/.gitignore
+ create mode 100644 .entire/graph-agent.md
+ create mode 100644 .entire/settings.json
+pantoken on cli ↑1  ?2 via  26.8.1 
+➜  entire agent add claude-code --agent-help-skill --search-skill
+  Agent: Claude Code
+  ✓ Installed Claude Code search skill
+    .claude/agents/entire-search.md
+  ✓ Installed Claude Code agent-help skill
+    .claude/skills/entire/SKILL.md
+  Hooks for Claude Code - Anthropic's CLI coding assistant already installed
+  ✓ Configured project
+    .entire/settings.json
+
+Ready.
+pantoken on cli ↑1  ?4 via  26.8.1 
+➜  entire agent add copilot-cli --agent-help-skill --search-skill
+  Agent: Copilot CLI
+  Search skill is not supported for Copilot CLI
+  Agent-help skill is not supported for Copilot CLI
+    Copilot CLI discovers entire via `entire agent-help` (passive — no skill file needed)
+  Hooks for Copilot CLI - GitHub's AI-powered coding agent already installed (Preview)
+  ✓ Configured project
+    .entire/settings.json
+
+Ready.
+pantoken on cli ↑1  ?4 via  26.8.1 
+➜  entire agent list && echo --- && git status --short && echo --- && git diff .entire/settings.json
+Agents:
+  ✓ claude-code
+    codex
+  ✓ copilot-cli
+    cursor
+    factoryai-droid
+    gemini
+    opencode
+    pi
+---
+?? .claude/agents/
+?? .claude/settings.json
+?? .claude/skills/
+?? .github/hooks/
+---
+pantoken on cli ↑1  ?4 via  26.8.1 
+➜  git add .claude/settings.json .claude/agents/ .claude/skills/ .github/hooks/ && git status --short
+A  .claude/agents/entire-search.md
+A  .claude/settings.json
+A  .claude/skills/entire/SKILL.md
+A  .github/hooks/entire.json
+pantoken on cli ↑1  +4 via  26.8.1 
+➜  git commit -s -m "chore(entire): commit agent hooks and install agent-help/search skills"
+✔ Backed up original state in git stash (70a256da)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[cli 619850ad] chore(entire): commit agent hooks and install agent-help/search skills
+ 4 files changed, 196 insertions(+)
+ create mode 100644 .claude/agents/entire-search.md
+ create mode 100644 .claude/settings.json
+ create mode 100644 .claude/skills/entire/SKILL.md
+ create mode 100644 .github/hooks/entire.json
+pantoken on cli ↑2 via  26.8.1 
+➜  npx skills add https://github.com/entireio/skills --all
+npm warn EBADDEVENGINES The developer of this package has specified the following through devEngines
+npm warn EBADDEVENGINES Invalid devEngines.packageManager
+npm warn EBADDEVENGINES Invalid name "pnpm" does not match "npm" for "packageManager"
+npm warn EBADDEVENGINES {
+npm warn EBADDEVENGINES   current: { name: 'npm', version: '11.19.0' },
+npm warn EBADDEVENGINES   required: { name: 'pnpm', version: '11.23.0', onFail: 'warn' }
+npm warn EBADDEVENGINES }
+Need to install the following packages:
+skills@1.5.23
+Ok to proceed? (y) 
+
+[Terminal cdc559fd-390a-469a-a7e6-77ba4bc340de notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on cli ≡  ?3 via  26.8.1 
+➜  entire version && entire status --detailed
+Entire CLI 0.10.3
+Go version: go1.26.6
+OS/Arch: darwin/arm64
+● Enabled · branch cli
+  Agents · Claude Code, Copilot CLI
+  Checkpoints sync to: origin
+  222 checkpoints not yet on origin — they sync with your next 'git push origin'
+
+Project · enabled
+
+── Active Sessions ─────────────────────────────────────────────────────────────
+
+Copilot CLI · 1284475c-80cf-43e3-b0c2-e1362fd9c00b
+> "Start implementation"
+started 1h ago · active now
+
+────────────────────────────────────────────────────────────────────────────────
+1 session
+
+Agents: run `entire agent-help` for machine-readable usage.
+pantoken on cli ≡  ?3 via  26.8.1 
+➜  entire plugin install graph && entire graph version
+Installed plugin "graph" v0.4.0 from https://github.com/entireio/entire-graph
+v0.4.0
+pantoken on cli ≡  ?3 via  26.8.1 
+➜  entire graph init-agents --repo .
+wrote /Users/dwahl/Scripts/pantoken/.entire/graph-agent.md
+updated /Users/dwahl/Scripts/pantoken/AGENTS.md
+updated /Users/dwahl/Scripts/pantoken/CLAUDE.md
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git diff AGENTS.md CLAUDE.md
+diff --git a/AGENTS.md b/AGENTS.md
+index 620c8170..53a34545 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -137,3 +137,10 @@ Owner of the VitePress docs site, i18n, the cssdoc integration, and the release
+   API tree and the `ai` adapter only for hand-written guides.
+ - The docs orchestrator and CSS-API node spawn `node scripts/x.ts`, not a nested `vp run`.
+ - Full rules live in `docs/conventions/build-and-docs.md`.
++
++<!-- entire-graph:begin -->
++This repo has the entire-graph code graph installed. Before exploring code with
++grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
++for using graph retrieval, focused source inspection, and verification.
++@.entire/graph-agent.md
++<!-- entire-graph:end -->
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 3a9e9ec8..cb62cf39 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -54,3 +54,10 @@ serializations (css, icons, scss, components, …) · `platforms/` generated for
+ plugins · `design/` Figma + swatches · `plugins/{pantoken,postcss,typedoc,vite}/` · `tools/` internal
+ build tooling · `ai/` consumer-facing agent assets. The gate is `pnpm run ready` +
+ `pnpm run check:publish`.
++
++<!-- entire-graph:begin -->
++This repo has the entire-graph code graph installed. Before exploring code with
++grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
++for using graph retrieval, focused source inspection, and verification.
++@.entire/graph-agent.md
++<!-- entire-graph:end -->
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git status --short .entire/ AGENTS.md CLAUDE.md
+ M AGENTS.md
+ M CLAUDE.md
+?? .entire/
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git ls-files .entire; echo ---; git check-ignore -v .entire/settings.json; echo ---; cat .gitignore | grep -n entire
+---
+---
+pantoken on cli ≡  ?3 ~2 via  26.8.1 x 
+➜  git status --short --ignored .entire/
+?? .entire/
+!! .entire/logs/
+!! .entire/metadata/
+!! .entire/tmp/
+pantoken on cli ≡  ?3 ~2 via  26.8.1 
+➜  git add .entire/.gitignore .entire/settings.json .entire/graph-agent.md AGENTS.md CLAUDE.md && git status --short
+A  .entire/.gitignore
+A  .entire/graph-agent.md
+A  .entire/settings.json
+M  AGENTS.md
+M  CLAUDE.md
+?? .claude/settings.json
+?? .github/hooks/
+pantoken on cli ≡  ?2 |  +3 ~2 via  26.8.1 
+➜  git commit -s -m "chore(entire): install and enable entire-graph"
+✔ Backed up original state in git stash (268521ec)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[cli 73e0cdc5] chore(entire): install and enable entire-graph
+ 5 files changed, 73 insertions(+)
+ create mode 100644 .entire/.gitignore
+ create mode 100644 .entire/graph-agent.md
+ create mode 100644 .entire/settings.json
+pantoken on cli ↑1  ?2 via  26.8.1 
+➜  entire agent add claude-code --agent-help-skill --search-skill
+  Agent: Claude Code
+  ✓ Installed Claude Code search skill
+    .claude/agents/entire-search.md
+  ✓ Installed Claude Code agent-help skill
+    .claude/skills/entire/SKILL.md
+  Hooks for Claude Code - Anthropic's CLI coding assistant already installed
+  ✓ Configured project
+    .entire/settings.json
+
+Ready.
+pantoken on cli ↑1  ?4 via  26.8.1 
+➜  entire agent add copilot-cli --agent-help-skill --search-skill
+  Agent: Copilot CLI
+  Search skill is not supported for Copilot CLI
+  Agent-help skill is not supported for Copilot CLI
+    Copilot CLI discovers entire via `entire agent-help` (passive — no skill file needed)
+  Hooks for Copilot CLI - GitHub's AI-powered coding agent already installed (Preview)
+  ✓ Configured project
+    .entire/settings.json
+
+Ready.
+pantoken on cli ↑1  ?4 via  26.8.1 
+➜  entire agent list && echo --- && git status --short && echo --- && git diff .entire/settings.json
+Agents:
+  ✓ claude-code
+    codex
+  ✓ copilot-cli
+    cursor
+    factoryai-droid
+    gemini
+    opencode
+    pi
+---
+?? .claude/agents/
+?? .claude/settings.json
+?? .claude/skills/
+?? .github/hooks/
+---
+pantoken on cli ↑1  ?4 via  26.8.1 
+➜  git add .claude/settings.json .claude/agents/ .claude/skills/ .github/hooks/ && git status --short
+A  .claude/agents/entire-search.md
+A  .claude/settings.json
+A  .claude/skills/entire/SKILL.md
+A  .github/hooks/entire.json
+pantoken on cli ↑1  +4 via  26.8.1 
+➜  git commit -s -m "chore(entire): commit agent hooks and install agent-help/search skills"
+✔ Backed up original state in git stash (70a256da)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[cli 619850ad] chore(entire): commit agent hooks and install agent-help/search skills
+ 4 files changed, 196 insertions(+)
+ create mode 100644 .claude/agents/entire-search.md
+ create mode 100644 .claude/settings.json
+ create mode 100644 .claude/skills/entire/SKILL.md
+ create mode 100644 .github/hooks/entire.json
+pantoken on cli ↑2 via  26.8.1 
+➜  npx skills add https://github.com/entireio/skills --all
+npm warn EBADDEVENGINES The developer of this package has specified the following through devEngines
+npm warn EBADDEVENGINES Invalid devEngines.packageManager
+npm warn EBADDEVENGINES Invalid name "pnpm" does not match "npm" for "packageManager"
+npm warn EBADDEVENGINES {
+npm warn EBADDEVENGINES   current: { name: 'npm', version: '11.19.0' },
+npm warn EBADDEVENGINES   required: { name: 'pnpm', version: '11.23.0', onFail: 'warn' }
+npm warn EBADDEVENGINES }
+Need to install the following packages:
+skills@1.5.23
+Ok to proceed? (y) y
+
+│
+●   github_copilot_vscode_agent  Agent detected — installing non-interactively
+│
+◇  Source: https://github.com/entireio/skills.git
+│
+◇  Repository cloned
+│
+◇  Found 12 skills
+│
+●  Installing all 12 skills
+│
+●  Installing to all 77 agents
+
+│
+◇  Installation Summary ─────────────────────────────────────────────────────╮
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/address-findings                        │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/explain                                 │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/recall                                  │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/replay                                  │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/review                                  │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/search                                  │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/session-crosslink                       │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/session-handoff                         │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/session-to-skill                        │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/teach                                   │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/using-entire                            │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+│  ~/Scripts/pantoken/.agents/skills/what-happened                           │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more     │
+│    symlink → AiderDesk, AstrBot, Autohand Code CLI, Augment, IBM Bob +53   │
+│  more                                                                      │
+│                                                                            │
+├────────────────────────────────────────────────────────────────────────────╯
+│
+◇  Security Risk Assessments ────────────────────────────────────────╮
+│                                                                    │
+│                     Gen               Socket            Snyk       │
+│  address-findings   Safe              0 alerts          Med Risk   │
+│  explain            Safe              0 alerts          Low Risk   │
+│  recall             Safe              0 alerts          Med Risk   │
+│  replay             Safe              0 alerts          Med Risk   │
+│  review             Safe              0 alerts          Med Risk   │
+│  search             Safe              0 alerts          Low Risk   │
+│  session-crosslink  Safe              0 alerts          Low Risk   │
+│  session-handoff    Med Risk          0 alerts          High Risk  │
+│  session-to-skill   Safe              0 alerts          Low Risk   │
+│  teach              Safe              0 alerts          Med Risk   │
+│  using-entire       Safe              0 alerts          Low Risk   │
+│  what-happened      Safe              0 alerts          High Risk  │
+│                                                                    │
+│  Details: https://skills.sh/entireio/skills                        │
+│                                                                    │
+├────────────────────────────────────────────────────────────────────╯
+│
+◇  Installation complete
+
+│
+◇  Installed 12 skills ───────────────────────────────────────────────────╮
+│                                                                         │
+│  ✓ ~/Scripts/pantoken/.agents/skills/address-findings                   │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/explain                            │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/recall                             │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/replay                             │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/review                             │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/search                             │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/session-crosslink                  │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/session-handoff                    │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/session-to-skill                   │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/teach                              │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/using-entire                       │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│  ✓ ~/Scripts/pantoken/.agents/skills/what-happened                      │
+│    universal: Amp, Antigravity, Antigravity CLI, Cline, Codex +14 more  │
+│    symlinked: Claude Code, Eve                                          │
+│                                                                         │
+├─────────────────────────────────────────────────────────────────────────╯
+
+│
+└  Done!  Review skills before use; they run with full agent permissions.
