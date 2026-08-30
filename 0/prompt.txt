@@ -1,0 +1,45 @@
+vpr scaffold:dev canvas-theme-editor
+~/packages/scaffold$ node scripts/scaffold-dev.ts canvas-theme-editor ⊘ cache disabled
+✓ scanned presets: 6 found
+  - @pantoken/components (components)
+  - @pantoken/react (react)
+  - @pantoken/vue (vue)
+  - @pantoken/web-components (web-components)
+  - @pantoken/angular (angular)
+  - @pantoken/svelte (svelte)
+✓ wrote /Users/dwahl/Scripts/pantoken/packages/scaffold/generated/preset-ledger.ts
+✓ inlined scaffold templates for 8 platforms
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ generated locale bundles for: en, hu
+
+  VITE v8.2.2  ready in 111 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+8:54:06 PM [vite] Internal server error: Failed to resolve import "@pantoken/css/style.rebrand.light.lean.css" from "src/main.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/src/main.ts:8:7
+  6  |  * tabs) so this authoring tool dogfoods the same library it's previewing.
+  7  |  */
+  8  |  import "@pantoken/css/style.rebrand.light.lean.css";
+     |          ^
+  9  |  import "@pantoken/components/base.css";
+  10 |  import "@pantoken/components/components.css";
+      at TransformPluginContext._formatLog (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:31147:39)
+      at TransformPluginContext.error (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:31144:14)
+      at normalizeUrl (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:28083:18)
+      at async file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:28153:30
+      at async Promise.all (index 5)
+      at async TransformPluginContext.transform (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:28119:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:30932:14)
+      at async loadAndTransform (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:20671:26)
+8:54:06 PM [vite] (client) Pre-transform error: Failed to resolve import "@pantoken/css/style.rebrand.light.lean.css" from "src/main.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/src/main.ts:8:7
+  6  |  * tabs) so this authoring tool dogfoods the same library it's previewing.
+  7  |  */
+  8  |  import "@pantoken/css/style.rebrand.light.lean.css";
+     |          ^
+  9  |  import "@pantoken/components/base.css";
+  10 |  import "@pantoken/components/components.css";
