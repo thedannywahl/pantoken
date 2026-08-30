@@ -10,6 +10,8 @@ import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 import "@pantoken/plugin-layouts/layouts.css";
 import "./app.css";
+import appHtml from "./app.html?raw";
+import { STRINGS } from "./strings.ts";
 import tinymce from "tinymce";
 import "tinymce/themes/silver/theme";
 import "tinymce/icons/default";
@@ -52,106 +54,12 @@ const EDITOR_HEIGHT_PX = 400;
 // Canvas's content area caps out at this width — the preview mirrors that constraint.
 const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
 
-document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
-{{wrapperContainer:html:1}}
-<div class="instui-tray -placement-end -size-md" popover id="theme-tray" aria-label="Theme settings">
-  <div class="instui-tabs">
-    <div class="list" role="tablist" aria-label="Theme settings">
-      <button class="tab -selected" role="tab" aria-selected="true" id="tab-config" aria-controls="panel-config" type="button">Config</button>
-      <button class="tab" role="tab" aria-selected="false" id="tab-css" aria-controls="panel-css" type="button">CSS</button>
-      <button class="tab" role="tab" aria-selected="false" id="tab-js" aria-controls="panel-js" type="button">JS</button>
-    </div>
-    <div class="panel" role="tabpanel" id="panel-config" aria-labelledby="tab-config">
-      <label>
-        CDN provider
-        <select id="cdn-provider"></select>
-      </label>
-      <label>
-        Theme
-        <select id="theme-variant">
-          <option value="rebrand">rebrand</option>
-          <option value="canvas">canvas</option>
-          <option value="canvasHighContrast">canvasHighContrast</option>
-        </select>
-      </label>
-      <label>
-        Mode
-        <select id="theme-mode">
-          <option value="light">light</option>
-          <option value="adaptive">adaptive</option>
-        </select>
-      </label>
-      <p>
-        <a id="download-theme-css" download="theme.css">Download theme.css</a>
-        <a id="download-theme-js" download="theme.js">Download theme.js</a>
-      </p>
-    </div>
-    <div class="panel" role="tabpanel" id="panel-css" hidden aria-labelledby="tab-css">
-      <p><button type="button" id="regenerate-css" hidden>Regenerate from config</button></p>
-      <div id="css-editor" class="code-editor"></div>
-    </div>
-    <div class="panel" role="tabpanel" id="panel-js" hidden aria-labelledby="tab-js">
-      <p><button type="button" id="regenerate-js" hidden>Regenerate from config</button></p>
-      <div id="js-editor" class="code-editor"></div>
-    </div>
-  </div>
-</div>
-<dialog class="instui-modal" id="help-modal" aria-labelledby="help-modal-title">
-  <div class="header"><strong id="help-modal-title">How to use this page</strong></div>
-  <div class="body">
-    <p>
-      Pick a starter template, edit it like you would in Canvas's Rich Content Editor, then click
-      <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML
-      editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt
-      to replicate that, so always verify the pasted result in Canvas.
-    </p>
-    <p>
-      Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit
-      the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.
-    </p>
-  </div>
-  <div class="footer">
-    <button class="instui-button" type="button" command="close" commandfor="help-modal">Close</button>
-  </div>
-</dialog>
-`;
+/** Minimal `{{key}}` substitution — every key must exist in `strings`, values are inserted raw. */
+function render(template: string, strings: Record<string, string>): string {
+  return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
+}
 
-// The generated wrapper markup ships generic placeholder text/actions — replace them with this
-// app's own copy and controls.
-document.querySelector(".title")!.textContent = "RCE template authoring";
-document.querySelector(".description")!.textContent =
-  "Author Canvas RCE page templates styled with pantoken, with a live preview.";
-document.querySelector(".actions")!.innerHTML = `
-  <button class="instui-button" type="button" popovertarget="theme-tray">Edit theme</button>
-  <button class="instui-button -color-secondary" type="button" command="show-modal" commandfor="help-modal" aria-label="Help">?</button>
-`;
-document.querySelector('slot[name="content"]')!.innerHTML = `
-  <p>
-    <button type="button" id="copy-html">Copy HTML</button>
-    <span id="copy-status" role="status"></span>
-  </p>
-  <div class="split-pane" id="split-pane">
-    <div class="pane editor-pane" id="editor-pane">
-      <div class="pane-toolbar" data-pane-handle="editor-pane">
-        <span>Editor</span>
-        <button type="button" class="pane-fullscreen" data-pane="editor-pane" aria-label="Fullscreen editor">⤢</button>
-      </div>
-      <textarea id="editor"></textarea>
-    </div>
-    <div class="split-handle" id="split-handle" role="separator" aria-orientation="vertical" aria-label="Resize editor and preview" tabindex="0"></div>
-    <div class="pane preview-pane" id="preview-pane">
-      <div class="pane-toolbar" data-pane-handle="preview-pane">
-        <span>Preview</span>
-        <button type="button" class="pane-fullscreen" data-pane="preview-pane" aria-label="Fullscreen preview">⤢</button>
-      </div>
-      <iframe id="preview" title="Styled preview"></iframe>
-    </div>
-  </div>
-  <p class="split-controls">
-    <button type="button" id="toggle-orientation">Stack vertically</button>
-    <button type="button" id="swap-panes">Swap panes</button>
-  </p>
-`;
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
 
 // Tabs (Config | CSS | JS) — the .instui-tabs record is CSS-only; wiring selection is the
 // consumer's job, same as the component's own documented @example.
@@ -466,7 +374,8 @@ orientationButton.addEventListener("click", () => {
   orientation = orientation === "row" ? "column" : "row";
   splitPane.classList.toggle("-orientation-column", orientation === "column");
   splitHandle.setAttribute("aria-orientation", orientation === "row" ? "vertical" : "horizontal");
-  orientationButton.textContent = orientation === "row" ? "Stack vertically" : "Stack side by side";
+  orientationButton.textContent =
+    orientation === "row" ? STRINGS.stackVerticallyLabel : STRINGS.stackSideBySideLabel;
   setPaneFlexBasis(0.5);
 });
 
