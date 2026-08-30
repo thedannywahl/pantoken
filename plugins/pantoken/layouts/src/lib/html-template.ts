@@ -4,7 +4,7 @@
  */
 
 /**
- * Metadata about a layout part extracted from cssdoc @part tags.
+ * Metadata about a layout part extracted from cssdoc {@part} tags.
  */
 export interface LayoutPart {
   name: string;
@@ -14,7 +14,7 @@ export interface LayoutPart {
 }
 
 /**
- * Metadata about a layout slot extracted from cssdoc @slot tags.
+ * Metadata about a layout slot extracted from cssdoc {@slot} tags.
  */
 export interface LayoutSlot {
   name: string;
@@ -32,7 +32,7 @@ export interface LayoutMetadata {
 }
 
 /**
- * Extract cssdoc @part and @slot definitions from a CSS string.
+ * Extract cssdoc {@part} and {@slot} definitions from a CSS string.
  * Returns arrays of parsed parts and slots.
  */
 function extractPartsAndSlots(css: string): {
@@ -93,7 +93,7 @@ function extractMetadata(css: string): { name: string; summary: string } {
 }
 
 /**
- * Extract the root selector from the CSS (the @selector tag in cssdoc).
+ * Extract the root selector from the CSS (the {@selector} tag in cssdoc).
  */
 function extractRootSelector(css: string): string {
   const docMatch = css.match(/\/\*\*([\s\S]*?)\*\//);

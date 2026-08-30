@@ -172,7 +172,7 @@ export interface I18nTranslationOptions {
   source: Record<string, string>;
   /** Target locale codes to translate into (`"en"` is always skipped, it's the source). */
   targetLocales: string[];
-  /** Resolve the on-disk cache path for a locale, e.g. "i18n-cache/${locale}.json". */
+  /** Resolve the on-disk cache path for a locale, e.g. `i18n-cache/\${locale}.json`. */
   cachePath: (locale: string) => string;
   /**
    * Whether `key` is already present in `cache`. Defaults to a plain `key in cache` check;

@@ -79,7 +79,7 @@ export function extractSlotPlaceholdersWithContext(css: string): SlotPlaceholder
 
 /**
  * Build an i18n cache key for a slot placeholder.
- * Schema: "layout::{layoutName}::{slotName}"
+ * Schema: `layout::\{layoutName\}::\{slotName\}`
  */
 export function makeSlotI18nKey(layoutName: string, slotName: string): string {
   return `layout::${layoutName}::${slotName}`;
