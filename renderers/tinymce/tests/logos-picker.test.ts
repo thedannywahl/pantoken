@@ -206,9 +206,9 @@ test("insertLogo inserts HTML, tracks the CSS asset, and injects the stylesheet"
     onMissingAsset,
   });
 
-  expect(editor.insertContent).toHaveBeenCalledWith(
-    expect.stringContaining('data-product="canvas"'),
-  );
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).toHaveBeenCalledWith(expect.stringContaining('data-product="canvas"'));
   expect(currentAssets).toEqual([
     { package: "@pantoken/plugin-logos", path: "dist/canvas-horizontal-color.css" },
   ]);
@@ -254,6 +254,8 @@ test("submitting the dialog without a selected product just closes it", () => {
   const api = { close: vi.fn() };
   dialogConfig.onSubmit(api);
 
-  expect(editor.insertContent).not.toHaveBeenCalled();
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).not.toHaveBeenCalled();
   expect(api.close).toHaveBeenCalled();
 });

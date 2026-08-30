@@ -219,7 +219,9 @@ test("insertIcon inserts HTML, tracks the CSS asset, and injects the stylesheet"
 
   insertIcon(editor, icon, { icons: mockIcons, currentAssets, onMissingAsset });
 
-  expect(editor.insertContent).toHaveBeenCalledWith('<i class="instui-icon -icon-heart"></i>');
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).toHaveBeenCalledWith('<i class="instui-icon -icon-heart"></i>');
   expect(currentAssets).toEqual([
     { package: "@pantoken/components", path: "dist/icons/heart.css" },
   ]);
@@ -260,6 +262,8 @@ test("submitting the dialog without a selected icon just closes it", () => {
   const api = { close: vi.fn() };
   dialogConfig.onSubmit(api);
 
-  expect(editor.insertContent).not.toHaveBeenCalled();
+  const insertContent = (editor as unknown as { insertContent: (html: string) => void })
+    .insertContent;
+  expect(insertContent).not.toHaveBeenCalled();
   expect(api.close).toHaveBeenCalled();
 });
