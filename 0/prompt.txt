@@ -1,0 +1,49 @@
+❌ Patch coverage is `74.75177%` with `178 lines` in your changes missing coverage. Please review.
+
+✅ Project coverage is 94.73%. Comparing base ([`93f616c`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/93f616cb16502680ce12d931eaa0736a5cb945e6?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)) to head ([`9971905`](https://app.codecov.io/gh/thedannywahl/pantoken/commit/99719052be9f31fe7838f08a0384c2844c134c8d?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)).
+
+✅ All tests successful. No failed tests found.
+
+[Files with missing lines](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?dropdown=coverage&src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+Patch %
+Lines
+
+[renderers/tinymce/src/plugins/source-toggle.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Fplugins%2Fsource-toggle.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+0.00%
+[39 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[renderers/tinymce/src/codemirror/autocomplete.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Fcodemirror%2Fautocomplete.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+0.00%
+[38 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[renderers/tinymce/src/plugins/icons.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Fplugins%2Ficons.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+41.17%
+[30 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[renderers/tinymce/src/plugins/logos.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Fplugins%2Flogos.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+26.66%
+[22 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[renderers/tinymce/src/codemirror/lint.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Fcodemirror%2Flint.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+0.00%
+[18 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[renderers/tinymce/src/icons.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Ficons.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+0.00%
+[12 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[renderers/tinymce/src/cssdoc/model.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=renderers%2Ftinymce%2Fsrc%2Fcssdoc%2Fmodel.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+80.55%
+[7 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[formats/components/scripts/generate-model.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=formats%2Fcomponents%2Fscripts%2Fgenerate-model.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+50.00%
+[3 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[...pantoken/simple-icons/scripts/generate-manifest.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=plugins%2Fpantoken%2Fsimple-icons%2Fscripts%2Fgenerate-manifest.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+75.00%
+[3 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
+
+[packages/cdn/src/define-provider.ts](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&filepath=packages%2Fcdn%2Fsrc%2Fdefine-provider.ts&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl#REDACTED)
+85.71%
+[2 Missing ⚠️](https://app.codecov.io/gh/thedannywahl/pantoken/pull/118?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=Danny+Wahl)
