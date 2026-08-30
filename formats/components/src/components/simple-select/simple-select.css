@@ -1,0 +1,118 @@
+/**
+ * @component simple-select
+ * @summary A styled native `<select>` with a caret, matching the text-input states and sizes.
+ * @remarks Wraps a plain native `<select>` with no custom dropdown/menu markup, so browser-native option rendering and keyboard behavior apply as-is; it shares its field chrome with `text-input`.
+ * @selector .pfx-simple-select
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — (default) Medium.
+ * @modifier -size-lg — Large.
+ * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
+ * @cssstate disabled
+ * @example
+ * <select class="pfx-simple-select">
+ *   <option>Choose a fruit…</option>
+ *   <option>Apple</option>
+ *   <option>Orange</option>
+ *   <option>Pear</option>
+ * </select>
+ * @structure
+ * .pfx-simple-select {
+ *   option {}
+ * }
+ * @related text-input — Shares the same field chrome, states, and sizes.
+ * @related menu — The dropdown surface a richer select reuses.
+ */
+@scope (.pfx-simple-select) {
+  & {
+    display: block;
+    inline-size: 100%;
+    box-sizing: border-box;
+    font-family: var(--instui-component-text-input-font-family);
+    font-weight: var(--instui-component-text-input-font-weight);
+    color: var(--instui-component-text-input-text-color);
+    background-color: var(--instui-component-text-input-background-color);
+    border: var(--instui-component-text-input-border-width) solid
+      var(--instui-component-text-input-border-color);
+    border-radius: var(--instui-component-text-input-border-radius);
+    block-size: var(--instui-component-text-input-height-md);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-md);
+    padding-inline-end: calc(var(--instui-component-text-input-padding-horizontal-md) + 1.5rem);
+    font-size: var(--instui-component-text-input-font-size-md);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a7883' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--instui-component-text-input-padding-horizontal-md) center;
+    background-size: 1em;
+  }
+
+  &::placeholder {
+    color: var(--instui-component-text-input-placeholder-color);
+  }
+
+  &:hover {
+    background-color: var(--instui-component-text-input-background-hover-color);
+    border-color: var(--instui-component-text-input-border-hover-color);
+  }
+
+  &:hover::placeholder {
+    color: var(--instui-component-text-input-placeholder-hover-color);
+  }
+
+  &:disabled,
+  &.-disabled {
+    background-color: var(--instui-component-text-input-background-disabled-color);
+    border-color: var(--instui-component-text-input-border-disabled-color);
+    color: var(--instui-component-text-input-text-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &.-readonly {
+    background-color: var(--instui-component-text-input-background-readonly-color);
+    border-color: var(--instui-component-text-input-border-readonly-color);
+    color: var(--instui-component-text-input-text-readonly-color);
+  }
+
+  &.-invalid {
+    border-color: var(--instui-component-text-input-error-border-color);
+  }
+
+  &.-success {
+    border-color: var(--instui-component-text-input-success-border-color);
+  }
+
+  /* Focus ring tracks the validity: danger when explicitly -invalid OR natively :user-invalid (after
+   the user has interacted), success on -success — overriding base.css's info-blue ring for focusables. */
+  &:is(.-invalid, :user-invalid):focus-visible {
+    outline-color: var(--instui-focus-outline-color-danger);
+  }
+
+  &.-success:focus-visible {
+    outline-color: var(--instui-focus-outline-color-success);
+  }
+
+  &.-size-sm {
+    block-size: var(--instui-component-text-input-height-sm);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-sm);
+    padding-inline-end: calc(var(--instui-component-text-input-padding-horizontal-sm) + 1.5rem);
+    font-size: var(--instui-component-text-input-font-size-sm);
+  }
+
+  &.-size-md {
+    block-size: var(--instui-component-text-input-height-md);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-md);
+    padding-inline-end: calc(var(--instui-component-text-input-padding-horizontal-md) + 1.5rem);
+    font-size: var(--instui-component-text-input-font-size-md);
+  }
+
+  &.-size-lg {
+    block-size: var(--instui-component-text-input-height-lg);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-lg);
+    padding-inline-end: calc(var(--instui-component-text-input-padding-horizontal-lg) + 1.5rem);
+    font-size: var(--instui-component-text-input-font-size-lg);
+  }
+}

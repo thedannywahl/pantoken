@@ -125,7 +125,7 @@ test("modifiers are key-value: sizes alias short/long, deviations keep a depreca
   expect(css).toContain("&.-color-secondary");
   expect(css).toContain("&.-size-sm");
   expect(css).toContain("&.-shape-circle");
-  expect(css).toContain(".instui-heading.-level-h1");
+  expect(css).toContain("&.-level-h1");
   expect(css).toContain("&.-placement-top-end");
   // Size scale is emitted with both short and long spellings.
   expect(css).toContain("&.-size-sm");
@@ -448,7 +448,7 @@ test("heading levels are the single source of truth shared with prose", () => {
   const prose = proseCss();
   for (const level of ["h1", "h2", "h3", "h4", "h5", "h6"]) {
     const token = `var(--instui-component-heading-${level}-font-size)`;
-    expect(heading).toContain(`.instui-heading.-level-${level} { font-size: ${token}`);
+    expect(heading).toContain(`&.-level-${level} {\n    font-size: ${token}`);
     expect(prose).toContain(`:where(body) ${level} { font-size: ${token}`);
   }
 });
@@ -495,7 +495,7 @@ test("text-input and text-area style a native control with states and sizes", ()
   expect(input).toContain("&.-size-sm");
   expect(input).toContain("var(--instui-component-text-input-height-lg)");
   const area = textAreaCss({ prefix: "instui" });
-  expect(area).toContain(".instui-text-area {");
+  expect(area).toContain("@scope (.instui-text-area)");
   expect(area).toContain("resize: vertical");
   expect(area).toContain("var(--instui-component-text-area-error-border-color)");
 });

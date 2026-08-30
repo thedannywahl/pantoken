@@ -1,0 +1,206 @@
+/**
+ * @component number-input
+ * @summary A number-input facade with a +/- spinner column.
+ * @remarks The `.arrows` buttons are `aria-hidden` and purely presentational — incrementing/decrementing the value on click is the consumer's JS to wire up.
+ * @selector .pfx-number-input
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — (default) Medium.
+ * @modifier -size-lg — Large.
+ * @part .arrows — The +/- spinner column at the inline-end.
+ * @part .down — The decrement button; the unclassed button increments.
+ * @pseudo ::before — The masked chevron glyph on each spinner button: up to increment, down on `.down`.
+ * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
+ * @cssstate disabled
+ * @accessibility Put the accessible name on the `<input>` (e.g. `aria-label`) so the field owns the value; the +/- spinner buttons are decorative and marked `aria-hidden="true"`.
+ * @example
+ * <span class="pfx-number-input">
+ *   <input id="qty" type="number" value="1" aria-label="Quantity">
+ *   <span class="arrows">
+ *     <button type="button" id="up" aria-hidden="true"></button>
+ *     <button class="down" type="button" id="down" aria-hidden="true"></button>
+ *   </span>
+ * </span>
+ * @structure
+ * .pfx-number-input {
+ *   input {}
+ *   .arrows {
+ *     button {}
+ *     .down {}
+ *   }
+ * }
+ * @related text-input — Shares the same input facade chrome.
+ * @related range-input — Another numeric input control.
+ */
+@scope (.pfx-number-input) {
+  & {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    box-sizing: border-box;
+    block-size: var(--instui-component-text-input-height-md);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-md);
+    gap: var(--instui-component-text-input-gap-content);
+    background-color: var(--instui-component-text-input-background-color);
+    border: var(--instui-component-text-input-border-width) solid
+      var(--instui-component-text-input-border-color);
+    border-radius: var(--instui-component-text-input-border-radius);
+    color: var(--instui-component-text-input-text-color);
+    font-family: var(--instui-component-text-input-font-family);
+    font-size: var(--instui-component-text-input-font-size-md);
+    /* the arrow column sits flush at the inline-end; drop the facade's end padding, and clip the column
+     to the facade's radius so it doesn't overhang the rounded corners (Firefox especially). The focus
+     ring is an outline, so overflow:hidden doesn't clip it. */
+    padding-inline-end: 0;
+    overflow: hidden;
+  }
+
+  &:hover {
+    background-color: var(--instui-component-text-input-background-hover-color);
+    border-color: var(--instui-component-text-input-border-hover-color);
+  }
+
+  /* The inner control is chromeless — the facade provides border/bg/ring. */
+  & > input,
+  & .pfx-text-input {
+    flex: 1;
+    min-inline-size: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    block-size: auto;
+    font: inherit;
+    color: inherit;
+    outline: none;
+  }
+
+  & > input::placeholder {
+    color: var(--instui-component-text-input-placeholder-color);
+  }
+
+  /* native UA spinners off — we supply our own */
+  & > input::-webkit-outer-spin-button,
+  & > input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  & > input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  &.-disabled,
+  &:has(> input:disabled) {
+    background-color: var(--instui-component-text-input-background-disabled-color);
+    border-color: var(--instui-component-text-input-border-disabled-color);
+    color: var(--instui-component-text-input-text-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &.-readonly {
+    background-color: var(--instui-component-text-input-background-readonly-color);
+    border-color: var(--instui-component-text-input-border-readonly-color);
+    color: var(--instui-component-text-input-text-readonly-color);
+  }
+
+  &.-invalid {
+    border-color: var(--instui-component-text-input-error-border-color);
+  }
+
+  &.-success {
+    border-color: var(--instui-component-text-input-success-border-color);
+  }
+
+  /* Focus ring lives on the facade (the input has no chrome). */
+  &:has(:focus-visible) {
+    outline: var(--instui-focus-outline-width) var(--instui-focus-outline-style)
+      var(--instui-focus-outline-color);
+    outline-offset: var(--instui-focus-outline-offset);
+    border-radius: var(--instui-focus-outline-radius);
+  }
+
+  &:is(.-invalid, :has(> input:user-invalid)):has(:focus-visible) {
+    outline-color: var(--instui-focus-outline-color-danger);
+  }
+
+  &.-success:has(:focus-visible) {
+    outline-color: var(--instui-focus-outline-color-success);
+  }
+
+  &.-size-sm {
+    block-size: var(--instui-component-text-input-height-sm);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-sm);
+    font-size: var(--instui-component-text-input-font-size-sm);
+  }
+
+  &.-size-md {
+    block-size: var(--instui-component-text-input-height-md);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-md);
+    font-size: var(--instui-component-text-input-font-size-md);
+  }
+
+  &.-size-lg {
+    block-size: var(--instui-component-text-input-height-lg);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-lg);
+    font-size: var(--instui-component-text-input-font-size-lg);
+  }
+
+  & .arrows {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    align-self: stretch;
+    /* the arrows-container-width token is @property-only (value-less upstream), so a literal is used */
+    inline-size: 1.5rem;
+    border-inline-start: var(--instui-component-text-input-border-width) solid
+      var(--instui-component-text-input-border-color);
+  }
+
+  & .arrows button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: var(--instui-component-text-input-arrows-background-color);
+    color: var(--instui-color-icon-interactive-action-secondary-base);
+    cursor: pointer;
+  }
+
+  & .arrows button + button {
+    border-block-start: var(--instui-component-text-input-border-width) solid
+      var(--instui-component-text-input-border-color);
+  }
+
+  & .arrows button:hover {
+    background: var(--instui-component-text-input-arrows-background-hover-color);
+  }
+
+  & .arrows button:active {
+    background: var(--instui-component-text-input-arrows-background-active-color);
+  }
+
+  & .arrows button:disabled {
+    background: var(--instui-component-text-input-arrows-background-disabled-color);
+    cursor: not-allowed;
+  }
+
+  & .arrows button::before {
+    content: "";
+    inline-size: 0.875em;
+    block-size: 0.875em;
+    background: currentColor;
+    -webkit-mask: var(--instui-icon-chevron-up) center / contain no-repeat;
+    mask: var(--instui-icon-chevron-up) center / contain no-repeat;
+  }
+
+  & .arrows button.down::before {
+    -webkit-mask: var(--instui-icon-chevron-down) center / contain no-repeat;
+    mask: var(--instui-icon-chevron-down) center / contain no-repeat;
+  }
+}

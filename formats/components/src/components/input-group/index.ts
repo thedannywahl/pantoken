@@ -1,35 +1,11 @@
 import { defineComponent, type Definition } from "../../lib/define.ts";
-import { css } from "../../lib/css.ts";
-import { inputFacadeBase } from "../../lib/field-controls.ts";
+import { SENTINEL } from "../../lib/sentinel.ts";
+import { inputGroup as inputGroupRaw } from "../../generated/component-styles.ts";
 
 /** The `inputGroup` component record: a facade around a text input with leading and trailing icon slots. */
 export const inputGroup: Definition = defineComponent({
   name: "input-group",
-  css: (p) =>
-    // prettier-ignore
-    css`
-/**
- * @component input-group
- * @summary A facade around a text input with leading and trailing icon slots.
- * @remarks Wraps the same field chrome as \`text-input\` with icon slots either side of it; \`-should-not-wrap\` is only needed when the group's contents would otherwise overflow onto a second line.
- * @modifier -disabled — Disabled state.
- * @modifier -invalid — Invalid (error) state.
- * @modifier -readonly — Read-only state.
- * @modifier -success — Success (valid) state.
- * @modifier -size-sm — Small.
- * @modifier -size-lg — Large.
- * @modifier -should-not-wrap — Keep the group on one line (no wrapping).
- * @pseudo ::placeholder — The placeholder text of the inner input, in a muted color.
- * @cssstate disabled
- * @example
- * <span class="${p}input-group">
- *   <span class="before">@</span>
- *   <input type="text" placeholder="username">
- * </span>
- * @related text-input — Wraps a text input, adding leading and trailing icon slots.
- */
-${inputFacadeBase(p, "input-group")}
-.${p}input-group.-should-not-wrap { flex-wrap: nowrap; }`,
+  css: (p) => inputGroupRaw.replaceAll(SENTINEL, p),
 });
 
 /** Standalone `inputGroup` stylesheet — the prefixed CSS for the input group, ready to ship as a `.css` file. */
