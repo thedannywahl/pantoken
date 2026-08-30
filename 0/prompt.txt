@@ -1,0 +1,53 @@
+button css is carried as a ts literal because of the use of alpha() and `${AI_ICON_MASK}` interpolation.
+abstract the rest of the css to a css file like the other components and then in index.ts append the remaining declarations that require interpolation.
+
+---
+
+can these rules be moved to the css file? they don't carry any literals
+
+---
+
+now re-write the selectors to follow the @scope pattern the other components do.
+
+---
+
+now this should be rewriten to use scoped selectors with appendGenerated()
+
+---
+
+add tests for new -color-primary and -size-md variants
+
+---
+
+now do the same treatment for view, moving its cssdoc block and its single static rule to a css file.
+
+---
+
+rewrite this for @scope and then use appendGenerated() in index.ts
+
+---
+
+extract text-input to a css file, removing the interpolation altogether.
+
+---
+
+give text-input the same robust rewrite treatmetn. we can remove the shorthand t() and author static css for consistentcy across components.
+
+---
+
+add tests for the new -size-md modifier
+
+---
+
+same robust treatment for:
+text-area
+simple-select
+number-input
+input-group
+heading
+
+---
+
+[undocumented-part] (line 65) Part ".before" of "input-group" has no @part description. (cssdoc/valid-doc-comments)
+
+[undocumented-part] (line 65) Part ".after" of "input-group" has no @part description. (cssdoc/valid-doc-comments)
