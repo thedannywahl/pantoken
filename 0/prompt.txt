@@ -1,0 +1,4 @@
+Avoid referencing unbound methods which may cause unintentional scoping of `this`.
+help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
+logos-picker.test.ts(209, 17): This reference may be unbound and lose `this` context
+logos-picker.test.ts(209, 10):
