@@ -17,6 +17,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./sandbox": "./dist/sandbox.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {

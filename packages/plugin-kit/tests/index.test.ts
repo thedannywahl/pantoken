@@ -8,13 +8,11 @@ import {
   definePlugin,
   extendPlugin,
   isFactoried,
-  isSandboxed,
   makeResolver,
   mergePlugin,
-  runPluginHook,
   validatePlugin,
-  type SandboxedPluginEntry,
 } from "../src/index.ts";
+import { isSandboxed, runPluginHook, type SandboxedPluginEntry } from "../src/sandbox.ts";
 import type { PantokenPlugin, Token } from "@pantoken/model";
 
 afterEach(() => vi.restoreAllMocks());
