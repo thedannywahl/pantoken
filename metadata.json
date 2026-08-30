@@ -3,11 +3,14 @@
   "checkpoint_id": "01M19N44VWX7Y9Q5G3KWWPRB3K",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 4,
+  "checkpoints_count": 5,
   "files_touched": [
     "pnpm-lock.yaml",
     "renderers/tinymce/package.json",
-    "renderers/tinymce/src/index.ts"
+    "renderers/tinymce/src/index.ts",
+    "renderers/tinymce/src/layouts.ts",
+    "renderers/tinymce/src/plugins/layouts.ts",
+    "renderers/tinymce/tests/layouts.test.ts"
   ],
   "sessions": [
     {
@@ -16,6 +19,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
