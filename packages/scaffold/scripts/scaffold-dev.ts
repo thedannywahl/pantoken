@@ -37,6 +37,7 @@ const PACKAGE_DIRS: Record<string, string> = {
   "@pantoken/svelte": "renderers/svelte",
   "@pantoken/web-components": "renderers/web-components",
   "@pantoken/angular": "renderers/angular",
+  "@pantoken/tinymce": "renderers/tinymce",
   "@pantoken/canvas-theme-editor": "platforms/canvas-theme-editor",
   "@pantoken/cdn": "packages/cdn",
   "@pantoken/vite-workspace-orchestrator": "plugins/vite/workspace-orchestrator",
@@ -182,8 +183,31 @@ function prepareDevDir(platform: string): string {
   // reads auth/registry settings from .npmrc): the published `@pantoken/pantoken` meta package
   // devDependency every scaffold ships pulls in a git-hosted transitive dep pnpm's default policy
   // rejects as a subdependency.
-  writeFileSync(join(devDir, "pnpm-workspace.yaml"), "packages: []\nblockExoticSubdeps: false\n");
+  writeFileSync(
+    join(devDir, "pnpm-workspace.yaml"),
+    `packages: []\nblockExoticSubdeps: false\n${readRootCatalogBlock()}`,
+  );
   return devDir;
+}
+
+/**
+ * Extracts the root `pnpm-workspace.yaml`'s `catalog:` block verbatim so the isolated dev dir's
+ * workspace file can resolve real scaffold templates' `"catalog:"`-specifier deps (e.g. codemirror,
+ * tinymce) — those specifiers only mean something relative to the monorepo root's own catalog.
+ */
+function readRootCatalogBlock(): string {
+  const rootWorkspaceYaml = readFileSync(join(REPO_ROOT, "pnpm-workspace.yaml"), "utf8");
+  const lines = rootWorkspaceYaml.split("\n");
+  const startIndex = lines.findIndex((line) => line === "catalog:");
+  if (startIndex === -1) return "";
+  let endIndex = lines.length;
+  for (let i = startIndex + 1; i < lines.length; i++) {
+    if (/^\S/.test(lines[i]!)) {
+      endIndex = i;
+      break;
+    }
+  }
+  return `${lines.slice(startIndex, endIndex).join("\n")}\n`;
 }
 
 /** Watches Layer-A authoring source for `platform`, debounced re-materializing into `devDir`. */
