@@ -155,7 +155,6 @@ test("component example is inserted into editor", () => {
   dialogConfig.onSubmit(mockApi);
 
   // Verify insertContent was called with the example HTML.
-  expect(editor.insertContent).toHaveBeenCalledWith(
-    '<button class="instui-button">Click me</button>',
-  );
+  const insertContent = (editor as unknown as Record<string, unknown>).insertContent;
+  expect(insertContent).toHaveBeenCalledWith('<button class="instui-button">Click me</button>');
 });

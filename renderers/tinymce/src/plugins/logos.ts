@@ -68,8 +68,8 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
           name: "product",
           label: "Product",
           items: productItems,
-          onChange: (_api: any) => {
-            // In a real implementation, update layout/colorMode options here.
+          onChange: (api: any) => {
+            selectedProduct = (api.target as HTMLSelectElement).value;
           },
         } as any,
         {
