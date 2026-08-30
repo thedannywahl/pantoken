@@ -1,0 +1,121 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1A6QG2EETPSW2XSD5GVSPQ0",
+  "session_id": "029fb029-5a07-4114-a74b-55668e88f8b8",
+  "strategy": "manual-commit",
+  "created_at": "2026-08-30T20:45:43.227136Z",
+  "branch": "cli",
+  "checkpoints_count": 7,
+  "save_step_count": 4,
+  "files_touched": [
+    "plugins/pantoken/layouts/src/layouts/callout/callout.css",
+    "plugins/pantoken/layouts/src/layouts/callout/callout.ts",
+    "plugins/pantoken/layouts/src/layouts/hero/hero.css",
+    "plugins/pantoken/layouts/src/layouts/hero/hero.ts",
+    "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css",
+    "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.ts",
+    "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.css",
+    "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.ts",
+    "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.css",
+    "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.ts",
+    "plugins/pantoken/layouts/src/layouts/two-column/two-column.css",
+    "plugins/pantoken/layouts/src/layouts/two-column/two-column.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "97442aea80d0",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 8
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-08-30T20:45:43.203856Z",
+    "agent_lines": 189,
+    "agent_removed": 0,
+    "human_added": 22,
+    "human_modified": 188,
+    "human_removed": 0,
+    "total_committed": 352,
+    "total_lines_changed": 399,
+    "agent_percentage": 47.368421052631575,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 44,
+      "user_lines_removed": 44,
+      "agent_lines_added": 1029,
+      "agent_lines_removed": 5,
+      "user_added_per_file": {
+        "plugins/pantoken/layouts/src/layouts/callout/callout.css": 2,
+        "plugins/pantoken/layouts/src/layouts/hero/hero.css": 38,
+        "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css": 1,
+        "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.css": 1,
+        "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.css": 1,
+        "plugins/pantoken/layouts/src/layouts/two-column/two-column.css": 1
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/layouts/src/layouts/callout/callout.css": 2,
+        "plugins/pantoken/layouts/src/layouts/hero/hero.css": 38,
+        "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css": 1,
+        "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.css": 1,
+        "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.css": 1,
+        "plugins/pantoken/layouts/src/layouts/two-column/two-column.css": 1
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 16,
+      "user_lines_removed": 4,
+      "agent_lines_added": 1029,
+      "agent_lines_removed": 5,
+      "user_added_per_file": {
+        "plugins/pantoken/layouts/src/layouts/callout/callout.css": 16
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css": 1,
+        "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.css": 1,
+        "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.css": 1,
+        "plugins/pantoken/layouts/src/layouts/two-column/two-column.css": 1
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 96,
+      "user_lines_removed": 91,
+      "agent_lines_added": 1029,
+      "agent_lines_removed": 5,
+      "user_added_per_file": {
+        "plugins/pantoken/layouts/src/layouts/callout/callout.css": 22,
+        "plugins/pantoken/layouts/src/layouts/hero/hero.css": 44,
+        "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css": 5,
+        "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.css": 6,
+        "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.css": 10,
+        "plugins/pantoken/layouts/src/layouts/two-column/two-column.css": 9
+      },
+      "user_removed_per_file": {
+        "plugins/pantoken/layouts/src/layouts/callout/callout.css": 9,
+        "plugins/pantoken/layouts/src/layouts/hero/hero.css": 47,
+        "plugins/pantoken/layouts/src/layouts/page-layout/page-layout.css": 7,
+        "plugins/pantoken/layouts/src/layouts/rubric-note/rubric-note.css": 8,
+        "plugins/pantoken/layouts/src/layouts/testimonial/testimonial.css": 14,
+        "plugins/pantoken/layouts/src/layouts/two-column/two-column.css": 6
+      }
+    }
+  ]
+}
