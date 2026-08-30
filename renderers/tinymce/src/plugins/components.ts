@@ -41,7 +41,9 @@ interface ComponentRecord {
  *   );
  */
 export function createComponentsPlugin(options: ComponentsPickerOptions): (editor: Editor) => void {
-  return (editor: Editor) => {
+  // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
+  // function expression, not an arrow function (arrows throw "is not a constructor").
+  return function pantokenComponentsPlugin(editor: Editor) {
     // Build a flattened list of all available components/utilities.
     const componentList = buildComponentList(options.model);
 

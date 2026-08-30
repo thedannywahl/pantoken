@@ -28,7 +28,9 @@ const ICONS_PER_PAGE = 50; // Adjust for performance
  * Returns a function suitable for `tinymce.PluginManager.add()`.
  */
 export function createIconsPlugin(options: IconsPickerOptions): (editor: Editor) => void {
-  return (editor: Editor) => {
+  // TinyMCE always instantiates plugins with `new Plugin(editor, ...)` — must be a constructible
+  // function expression, not an arrow function (arrows throw "is not a constructor").
+  return function pantokenIconsPlugin(editor: Editor) {
     // Register the toolbar button.
     editor.ui.registry.addButton("pantokenIcons", {
       text: "Icons",
