@@ -198,6 +198,11 @@
       "governedBy": "token-ir"
     },
     {
+      "package": "@pantoken/tinymce",
+      "path": "renderers/tinymce",
+      "governedBy": "token-ir"
+    },
+    {
       "package": "@pantoken/vitepress",
       "path": "renderers/vitepress",
       "governedBy": "token-ir"

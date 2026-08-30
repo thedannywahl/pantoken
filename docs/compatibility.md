@@ -58,6 +58,7 @@ every package consumes, while the `@instructure/ui-*` React packages are used on
 | `@pantoken/shadcn`              | `renderers/shadcn`              | token-ir     |
 | `@pantoken/storybook`           | `renderers/storybook`           | token-ir     |
 | `@pantoken/svelte`              | `renderers/svelte`              | token-ir     |
+| `@pantoken/tinymce`             | `renderers/tinymce`             | token-ir     |
 | `@pantoken/vitepress`           | `renderers/vitepress`           | token-ir     |
 | `@pantoken/vue`                 | `renderers/vue`                 | token-ir     |
 | `@pantoken/web-components`      | `renderers/web-components`      | token-ir     |
