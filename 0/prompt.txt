@@ -1,0 +1,10 @@
+/Users/dwahl/Scripts/pantoken/packages/scaffold-base/src/wrapper-context.ts
+   12:8  error  Missing TSDoc for interface WrapperNode  tsdoc-require-2/require
+   83:8  error  Missing TSDoc for function parseNodes    tsdoc-require-2/require
+  131:8  error  Missing TSDoc for function renderNode    tsdoc-require-2/require
+
+/Users/dwahl/Scripts/pantoken/tools/translation-adapters/src/index.ts
+  175:57  error  tsdoc-code-span-empty: A code span must contain at least one character between the backticks  tsdoc/syntax
+  175:88  error  tsdoc-code-span-empty: A code span must contain at least one character between the backticks  tsdoc/syntax
+
+✖ 5 problems (5 errors, 0 warnings)
