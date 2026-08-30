@@ -1,0 +1,19 @@
+warn: Lint or type warnings found
+⚠ eslint(no-unassigned-vars): 'selectedProduct' is always 'undefined' because it's never assigned.
+    ╭─[renderers/tinymce/src/plugins/logos.ts:51:7]
+ 50 │ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
+ 51 │   let selectedProduct: string | undefined;
+    ·       ───────────────
+ 52 │   let selectedLayout: string | undefined;
+    ╰────
+  help: Variable declared without assignment. Either assign a value or remove the declaration.
+
+  ⚠ typescript(unbound-method): Avoid referencing unbound methods which may cause unintentional scoping of `this`.
+     ╭─[renderers/tinymce/tests/components-picker.test.ts:158:10]
+ 157 │   // Verify insertContent was called with the example HTML.
+ 158 │   expect(editor.insertContent).toHaveBeenCalledWith(
+     ·          ────────────────────┬
+     ·                    │         ╰── This reference may be unbound and lose `this` context
+ 159 │     '<button class="instui-button">Click me</button>',
+     ╰────
+  help: If your function does not access `this`, you can annotate it with `this: void`, or consider using an arrow function instead.
