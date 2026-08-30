@@ -169,6 +169,7 @@
     {
       "name": "number-input",
       "type": "css-only",
+      "needsIcons": true,
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/number-input.css"
     },
     {
