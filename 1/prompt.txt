@@ -1,0 +1,1 @@
+scaffold/canvas-theme-editor/templates should be written as layouts for plugins/pantoken/layouts, then imported into renderers/tinymce/layouts and exported as the "Layouts" plugin alongside Components, Icons, Logos, which is then in turn imported into scaffold/canvas-theme-editor
