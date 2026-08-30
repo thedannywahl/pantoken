@@ -121,7 +121,7 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
 /**
  * Insert the selected logo into the editor.
  */
-function insertLogo(
+export function insertLogo(
   editor: Editor,
   productId: string,
   layout: string,
@@ -157,7 +157,7 @@ function insertLogo(
  * Generate the HTML snippet for inserting a logo.
  * Uses an `<img>` tag pointing to the SVG asset with a data attribute for variant.
  */
-function generateLogoHtml(productId: string, layout: string, colorMode: string): string {
+export function generateLogoHtml(productId: string, layout: string, colorMode: string): string {
   // The data attribute encodes the variant for CSS targeting.
   return `<img class="pantoken-logo" data-product="${productId}" data-layout="${layout}" data-color-mode="${colorMode}" src="about:blank" alt="${productId} logo" style="max-width: 200px;" />`;
 }

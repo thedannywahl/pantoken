@@ -67,3 +67,15 @@ test("validateClassToken detects unknown components", () => {
   const errors = validateClassToken("instui-nonexistent");
   expect(errors.some((e) => e.includes("Unknown component"))).toBe(true);
 });
+
+test("validateClassToken accepts a known modifier on a known component", () => {
+  const errors = validateClassToken("instui-button-color-danger");
+  expect(errors).toHaveLength(0);
+});
+
+test("validateClassToken skips pattern-based modifiers like -icon-*", () => {
+  // "button" has a pattern modifier (-icon-*) that can't be validated by substring match;
+  // it must be skipped rather than reported as an error.
+  const errors = validateClassToken("instui-button-icon-arrow-right");
+  expect(errors).toHaveLength(0);
+});

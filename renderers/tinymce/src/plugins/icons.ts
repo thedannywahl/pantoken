@@ -103,7 +103,7 @@ function openIconsDialog(editor: Editor, options: IconsPickerOptions): void {
 /**
  * Render an HTML grid of icons for the current page.
  */
-function renderIconGrid(
+export function renderIconGrid(
   icons: TaggedIcon[],
   page: number,
   perPage: number,
@@ -131,7 +131,7 @@ function renderIconGrid(
 /**
  * Insert the selected icon into the editor.
  */
-function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOptions): void {
+export function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOptions): void {
   // Generate the HTML snippet based on icon source.
   const html = generateIconHtml(icon);
 
@@ -159,7 +159,7 @@ function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPickerOption
  * For component icons, use an `<i class="instui-icon-...">` element.
  * For simple-icons, use a similar convention with a class prefix.
  */
-function generateIconHtml(icon: TaggedIcon): string {
+export function generateIconHtml(icon: TaggedIcon): string {
   switch (icon.source) {
     case "components":
       // Component icons use `-icon-{name}` modifier convention.

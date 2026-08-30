@@ -59,8 +59,15 @@ export function pantokenHtmlCompletion(options: AutocompleteOptions) {
         // Generate completions based on the partial token.
         const completions = generateCompletions(partial, options.model);
 
+        // Anchor `from` at the last "-" boundary (or right after "instui-" for a bare component
+        // name), not at the start of the whole typed token — CodeMirror's default fuzzy matcher
+        // filters options against the text between `from` and `pos`, and none of our option
+        // labels include the "instui-" prefix or earlier segments.
+        const lastDash = partial.lastIndexOf("-");
+        const matchLength = partial.length - (lastDash + 1);
+
         return {
-          from: pos - partial.length,
+          from: pos - matchLength,
           options: completions,
         };
       },

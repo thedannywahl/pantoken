@@ -2,7 +2,63 @@
  * @vitest-environment happy-dom
  */
 import { expect, test } from "vite-plus/test";
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { completionStatus, currentCompletions, startCompletion } from "@codemirror/autocomplete";
 import type { CssDocEntry } from "../src/cssdoc/model.js";
+import { pantokenHtmlCompletion } from "../src/codemirror/autocomplete.js";
+
+/** Builds a detached `EditorView` positioned at `pos` with the real completion extension. */
+function completionView(doc: string, pos: number): EditorView {
+  const state = EditorState.create({
+    doc,
+    selection: { anchor: pos },
+    extensions: [pantokenHtmlCompletion({ model: [] })],
+  });
+  return new EditorView({ state, parent: document.body });
+}
+
+/** Waits for the async completion source to resolve before asserting on results. */
+async function waitForCompletions(view: EditorView): Promise<void> {
+  for (let i = 0; i < 20 && completionStatus(view.state) === "pending"; i++) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+}
+
+test("pantokenHtmlCompletion suggests component/utility names after 'instui-'", async () => {
+  const doc = '<button class="instui-b">';
+  const pos = doc.indexOf('"instui-b') + '"instui-b'.length;
+  const view = completionView(doc, pos);
+  startCompletion(view);
+  await waitForCompletions(view);
+
+  const labels = currentCompletions(view.state).map((c) => c.label);
+  expect(labels).toContain("button");
+  view.destroy();
+});
+
+test("pantokenHtmlCompletion suggests modifiers once a component name is complete", async () => {
+  const doc = '<button class="instui-button-">';
+  const pos = doc.indexOf('"instui-button-') + '"instui-button-'.length;
+  const view = completionView(doc, pos);
+  startCompletion(view);
+  await waitForCompletions(view);
+
+  const labels = currentCompletions(view.state).map((c) => c.label);
+  expect(labels.length).toBeGreaterThan(0);
+  view.destroy();
+});
+
+test("pantokenHtmlCompletion returns no completions outside a class attribute", async () => {
+  const doc = "<p>instui-button</p>";
+  const pos = doc.indexOf("instui-button") + "instui-button".length;
+  const view = completionView(doc, pos);
+  startCompletion(view);
+  await waitForCompletions(view);
+
+  expect(currentCompletions(view.state)).toHaveLength(0);
+  view.destroy();
+});
 
 // Mock model with components
 const mockModel: CssDocEntry[] = [
