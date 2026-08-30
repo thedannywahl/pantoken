@@ -1,0 +1,13 @@
+Start implementation
+
+---
+
+these layouts should be arranged in src/
+src/callout/callout.css, callout.ts
+etc. like wrapper currently is.
+
+these layouts should be cssdoc layout css files.
+
+we need a common utility that transforms a layout to an html template and then we can export both the layouts and the templates for everything.
+
+we also need to figure out a way to carry i18n from placeholder text in :slot() areas in the html.
