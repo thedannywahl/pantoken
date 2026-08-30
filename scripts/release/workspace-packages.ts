@@ -76,19 +76,16 @@ async function listChildDirs(basePath: string): Promise<string[]> {
 }
 
 function collectWorkspaceDeps(manifest: PackageManifest): Set<string> {
-  const buckets = [
-    manifest.dependencies ?? {},
-    manifest.optionalDependencies ?? {},
-    manifest.peerDependencies ?? {},
+  const entries = [
+    ...Object.entries(manifest.dependencies ?? {}),
+    ...Object.entries(manifest.optionalDependencies ?? {}),
+    ...Object.entries(manifest.peerDependencies ?? {}),
   ];
 
   const deps = new Set<string>();
-
-  for (const bucket of buckets) {
-    for (const [depName, depRange] of Object.entries(bucket)) {
-      if (typeof depRange === "string" && depRange.startsWith(WORKSPACE_PROTOCOL)) {
-        deps.add(depName);
-      }
+  for (const [depName, depRange] of entries) {
+    if (typeof depRange === "string" && depRange.startsWith(WORKSPACE_PROTOCOL)) {
+      deps.add(depName);
     }
   }
 
@@ -159,25 +156,24 @@ export async function loadWorkspacePackages(): Promise<WorkspacePackages> {
   };
 }
 
+/** Get (or lazily create) the dependents `Set` for `name` in a reverse-dependency map. */
+function dependentsOf(reverse: Map<string, Set<string>>, name: string): Set<string> {
+  let dependents = reverse.get(name);
+  if (!dependents) {
+    dependents = new Set<string>();
+    reverse.set(name, dependents);
+  }
+  return dependents;
+}
+
 /** Build a map from each package to the set of packages that depend on it (its dependents). */
 export function buildReverseDependencyMap(packages: WorkspacePackage[]): Map<string, Set<string>> {
   const reverse = new Map<string, Set<string>>();
 
   for (const pkg of packages) {
-    if (!reverse.has(pkg.name)) {
-      reverse.set(pkg.name, new Set());
-    }
-  }
-
-  for (const pkg of packages) {
+    dependentsOf(reverse, pkg.name); // Every package gets an entry, even with no dependents.
     for (const dep of pkg.workspaceDeps) {
-      if (!reverse.has(dep)) {
-        reverse.set(dep, new Set());
-      }
-      const dependents = reverse.get(dep);
-      if (dependents) {
-        dependents.add(pkg.name);
-      }
+      dependentsOf(reverse, dep).add(pkg.name);
     }
   }
 
