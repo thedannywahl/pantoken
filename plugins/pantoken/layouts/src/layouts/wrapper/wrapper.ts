@@ -1,5 +1,6 @@
 import { SENTINEL } from "../../lib/sentinel.ts";
 import { wrapper } from "../../generated/component-styles.ts";
+import { htmlTemplate } from "../../lib/html-template.ts";
 
 /**
  * Build the wrapper layout CSS (doc comment + rules), substituting `prefix` for the `pfx-` sentinel.
@@ -7,4 +8,11 @@ import { wrapper } from "../../generated/component-styles.ts";
  */
 export function wrapperRules(prefix = "instui-"): string {
   return wrapper.replaceAll(SENTINEL, prefix);
+}
+
+/**
+ * Generate an HTML template for the wrapper layout.
+ */
+export function wrapperTemplate(prefix = "instui-"): string {
+  return htmlTemplate(wrapperRules(prefix), { prefix, layoutName: "wrapper" });
 }
