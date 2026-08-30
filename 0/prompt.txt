@@ -12,3 +12,7 @@ now re-write the selectors to follow the @scope pattern the other components do.
 ---
 
 now this should be rewriten to use scoped selectors with appendGenerated()
+
+---
+
+add tests for new -color-primary and -size-md variants
