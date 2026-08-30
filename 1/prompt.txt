@@ -1,0 +1,19 @@
+build a comprehensive plan to change the i18n everywhere to carry all the languages. currently docs and some other things are only en/hu and packages carry ~45 languages.
+one core thing to update is the vitepress language picker to a select.
+
+---
+
+Research the i18n / localization architecture in this pantoken monorepo, thoroughly. I need to understand:
+
+1. `packages/i18n` — what languages/locales does it support (list all ~45), where is the locale list defined (source of truth file), what format (JSON? TS?), what does the package export (functions, types), and how do other packages/formats consume it (e.g. formats/tokens, formats/css, etc. — do they generate per-locale outputs)?
+2. `docs/.vitepress/i18n.ts` — how is docs i18n currently implemented? It's mentioned to support only "root" (English) and "hu" (Hungarian) locales. Show the full structure: how locales are configured in VitePress config (`docs/.vitepress/config.ts` or similar), the translation dictionary/glossary system referenced in copilot-instructions (`glossary` adapter, `ai` adapter, translation-adapters), and where the actual hu translation strings live (docs/hu/ directory structure).
+3. Where is the VitePress "language picker" / locale switcher UI currently implemented? Look for VitePress theme config `themeConfig.langMenuLabel`, `localeLinks`, nav locale switcher, or any custom Vue component for language switching. Find exact file and current UI (is it a dropdown/menu currently, and why does the user want it changed "to a select"?).
+4. Are there other places besides docs that only support en/hu (or a subset of languages) but should support the full ~45 language set? Search broadly: `tools/translation-adapters`, any i18n cache files (`docs/i18n-cache/`), README translations, CONTRIBUTING translations, ai/pantoken-ai assets, cssdoc glossary/ai adapters.
+5. Any existing scripts that generate/sync locale files (e.g. scripts to add a new locale, translation build scripts) — how do they currently hardcode "hu" or "root" instead of iterating over all supported locales?
+6. Check `/memories/repo/i18n-localization.md` and `/memories/repo/typedoc-locale-analysis.md` content is already available in context if referenced — but do your own fresh file reads to confirm current state, since memory may be stale.
+
+Report back:
+- The canonical list of ~45 locale codes and where it's defined (exact file path).
+- Exact file paths and line ranges for: VitePress config locale setup, the language picker/switcher UI code, the docs/hu translation directory contents (just list files), the i18n.ts adapter code (root vs hu handling), any hardcoded "hu"/"root" strings found via grep across the repo (list files/lines).
+- How packages/i18n's locale data is structured (sample of a few locale entries) so I can plan how docs would consume all ~45.
+- Any build/CI implications (e.g. does adding 45 locales balloon build time significantly per existing scripts).
