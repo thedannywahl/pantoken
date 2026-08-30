@@ -1,0 +1,430 @@
+```
+vpr scaffold:dev canvas-theme-editor
+~/packages/scaffold$ node scripts/scaffold-dev.ts canvas-theme-editor ⊘ cache disabled
+✓ scanned presets: 6 found
+  - @pantoken/components (components)
+  - @pantoken/react (react)
+  - @pantoken/vue (vue)
+  - @pantoken/web-components (web-components)
+  - @pantoken/angular (angular)
+  - @pantoken/svelte (svelte)
+✓ wrote /Users/dwahl/Scripts/pantoken/packages/scaffold/generated/preset-ledger.ts
+✓ inlined scaffold templates for 8 platforms
+✓ compiled scaffold.json metadata for 1 platform(s)
+✓ generated locale bundles for: en, hu
+
+  VITE v8.2.2  ready in 137 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/rolldown@1.2.6/node_modules/rolldown/dist/shared/error-HDibX49O.mjs:48
+        const wrapper = new Error(summary);
+                        ^
+
+Error: Error during dependency optimization:
+
+Build failed with 1 error:
+
+[plugin vite:dep-pre-bundle]
+Error: "./manifest.json" is not exported under the conditions ["module", "browser", "development", "import"] from package /Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/@pantoken+tinymce@0.1.0_@codemirror+autocomplete@6.20.3_@codemirror+lang-html@6.4.12_@c_8e6c4752aa32e906745136485f1f293f/node_modules/@pantoken/plugin-simple-icons (see exports field in /Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/@pantoken+tinymce@0.1.0_@codemirror+autocomplete@6.20.3_@codemirror+lang-html@6.4.12_@c_8e6c4752aa32e906745136485f1f293f/node_modules/@pantoken/plugin-simple-icons/package.json)
+    at async EnvironmentPluginContainer.resolveId (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:30848:19)
+    at async resolve (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:22256:10)
+    at async file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:22268:11
+    at async file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:36863:12
+    at async PluginContextImpl.handler (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:31974:22)
+    at async plugin (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/rolldown@1.2.6/node_modules/rolldown/dist/shared/bindingify-input-options-4JJxbZl2.mjs:1459:16)
+    at async plugin.<computed> (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/rolldown@1.2.6/node_modules/rolldown/dist/shared/bindingify-input-options-4JJxbZl2.mjs:2127:12)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/rolldown@1.2.6/node_modules/rolldown/dist/shared/error-HDibX49O.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/rolldown@1.2.6/node_modules/rolldown/dist/shared/error-HDibX49O.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/rolldown@1.2.6/node_modules/rolldown/dist/shared/rolldown-C9Hfg50O.mjs:133:34)
+    at async Object.build (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/node_modules/.pnpm/vite@8.2.2/node_modules/vite/dist/node/chunks/node.js:32407:11) {
+  errors: [Getter/Setter]
+}
+```
+
+---
+
+Uncaught Error: Module "node:child_process" has been externalized for browser compatibility. Cannot access "node:child_process.spawn" in client code.  See [https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility](https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility) for more details.
+
+---
+
+```
+[vite] new window visibility hidden `003fb4f1-fde9-4927-a259-607994e246a6:63:12`
+
+[vite] new window visibility hidden `003fb4f1-fde9-4927-a259-607994e246a6:63:12`
+
+[vite] new window visibility hidden `003fb4f1-fde9-4927-a259-607994e246a6:63:12`
+
+[vite] new window visibility hidden `003fb4f1-fde9-4927-a259-607994e246a6:63:12`
+
+[vite] new window visibility hidden `003fb4f1-fde9-4927-a259-607994e246a6:63:12`
+
+[vite] connecting... [client:859:9](http://localhost:5174/@vite/client)
+
+GET[http://localhost:5174//plugins/pantoken_icons/plugin.js](http://localhost:5174//plugins/pantoken_icons/plugin.js)[HTTP/1.1 404 Not Found 1ms] 
+
+GET[http://localhost:5174//plugins/pantoken_components/plugin.js](http://localhost:5174//plugins/pantoken_components/plugin.js)[HTTP/1.1 404 Not Found 1ms] 
+
+GET[http://localhost:5174//plugins/pantoken_logos/plugin.js](http://localhost:5174//plugins/pantoken_logos/plugin.js)[HTTP/1.1 404 Not Found 1ms] 
+
+Loading failed for the <script> with source “[http://localhost:5174//plugins/pantoken_components/plugin.js](http://localhost:5174//plugins/pantoken_components/plugin.js)”. [localhost:5174:1:1](http://localhost:5174/)
+
+Failed to load plugin: pantoken_components from url plugins/pantoken_components/plugin.js [tinymce.js:20382:15](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+Loading failed for the <script> with source “[http://localhost:5174//plugins/pantoken_icons/plugin.js](http://localhost:5174//plugins/pantoken_icons/plugin.js)”. [localhost:5174:1:1](http://localhost:5174/)
+
+Failed to load plugin: pantoken_icons from url plugins/pantoken_icons/plugin.js [tinymce.js:20382:15](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+Loading failed for the <script> with source “[http://localhost:5174//plugins/pantoken_logos/plugin.js](http://localhost:5174//plugins/pantoken_logos/plugin.js)”. [localhost:5174:1:1](http://localhost:5174/)
+
+Failed to load plugin: pantoken_logos from url plugins/pantoken_logos/plugin.js [tinymce.js:20382:15](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+Failed to initialize plugin: pantoken_templates TypeError: Plugin is not a constructor    initPlugin tinymce.js:27043
+
+    initPlugins tinymce.js:27060
+
+    each$i tinymce.js:569
+
+    initPlugins tinymce.js:27059
+
+    init tinymce.js:27147
+
+    loadScripts tinymce.js:27278
+
+    loadScripts tinymce.js:7562
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7548
+
+    error tinymce.js:7455
+
+    loadScript tinymce.js:7471
+
+    loadScripts tinymce.js:7538
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7526
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadScripts tinymce.js:27272
+
+    waitFor tinymce.js:7784
+
+    loadTheme tinymce.js:27189
+
+    loadScripts tinymce.js:7558
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadTheme tinymce.js:27188
+
+    loadScripts tinymce.js:27268
+
+    render tinymce.js:27376
+
+    render tinymce.js:28733
+
+    createEditor tinymce.js:29263
+
+    initEditors tinymce.js:29293
+
+    each$i tinymce.js:569
+
+    initEditors tinymce.js:29289
+
+    executeHandlers tinymce.js:4737
+
+    defaultNativeHandler tinymce.js:4539
+
+    readyHandler tinymce.js:4511
+
+    bindOnReady tinymce.js:4516
+
+    bind tinymce.js:4606
+
+    bind tinymce.js:7253
+
+    init tinymce.js:29299
+
+    <anonymous> main.ts:595
+
+ [tinymce.js:20413:25](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+Failed to initialize plugin: pantoken_components TypeError: Plugin is not a constructor    initPlugin tinymce.js:27043
+
+    initPlugins tinymce.js:27060
+
+    each$i tinymce.js:569
+
+    initPlugins tinymce.js:27059
+
+    init tinymce.js:27147
+
+    loadScripts tinymce.js:27278
+
+    loadScripts tinymce.js:7562
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7548
+
+    error tinymce.js:7455
+
+    loadScript tinymce.js:7471
+
+    loadScripts tinymce.js:7538
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7526
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadScripts tinymce.js:27272
+
+    waitFor tinymce.js:7784
+
+    loadTheme tinymce.js:27189
+
+    loadScripts tinymce.js:7558
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadTheme tinymce.js:27188
+
+    loadScripts tinymce.js:27268
+
+    render tinymce.js:27376
+
+    render tinymce.js:28733
+
+    createEditor tinymce.js:29263
+
+    initEditors tinymce.js:29293
+
+    each$i tinymce.js:569
+
+    initEditors tinymce.js:29289
+
+    executeHandlers tinymce.js:4737
+
+    defaultNativeHandler tinymce.js:4539
+
+    readyHandler tinymce.js:4511
+
+    bindOnReady tinymce.js:4516
+
+    bind tinymce.js:4606
+
+    bind tinymce.js:7253
+
+    init tinymce.js:29299
+
+    <anonymous> main.ts:595
+
+ [tinymce.js:20413:25](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+Failed to initialize plugin: pantoken_icons TypeError: Plugin is not a constructor    initPlugin tinymce.js:27043
+
+    initPlugins tinymce.js:27060
+
+    each$i tinymce.js:569
+
+    initPlugins tinymce.js:27059
+
+    init tinymce.js:27147
+
+    loadScripts tinymce.js:27278
+
+    loadScripts tinymce.js:7562
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7548
+
+    error tinymce.js:7455
+
+    loadScript tinymce.js:7471
+
+    loadScripts tinymce.js:7538
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7526
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadScripts tinymce.js:27272
+
+    waitFor tinymce.js:7784
+
+    loadTheme tinymce.js:27189
+
+    loadScripts tinymce.js:7558
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadTheme tinymce.js:27188
+
+    loadScripts tinymce.js:27268
+
+    render tinymce.js:27376
+
+    render tinymce.js:28733
+
+    createEditor tinymce.js:29263
+
+    initEditors tinymce.js:29293
+
+    each$i tinymce.js:569
+
+    initEditors tinymce.js:29289
+
+    executeHandlers tinymce.js:4737
+
+    defaultNativeHandler tinymce.js:4539
+
+    readyHandler tinymce.js:4511
+
+    bindOnReady tinymce.js:4516
+
+    bind tinymce.js:4606
+
+    bind tinymce.js:7253
+
+    init tinymce.js:29299
+
+    <anonymous> main.ts:595
+
+ [tinymce.js:20413:25](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+Failed to initialize plugin: pantoken_logos TypeError: Plugin is not a constructor    initPlugin tinymce.js:27043
+
+    initPlugins tinymce.js:27060
+
+    each$i tinymce.js:569
+
+    initPlugins tinymce.js:27059
+
+    init tinymce.js:27147
+
+    loadScripts tinymce.js:27278
+
+    loadScripts tinymce.js:7562
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7548
+
+    error tinymce.js:7455
+
+    loadScript tinymce.js:7471
+
+    loadScripts tinymce.js:7538
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7526
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadScripts tinymce.js:27272
+
+    waitFor tinymce.js:7784
+
+    loadTheme tinymce.js:27189
+
+    loadScripts tinymce.js:7558
+
+    each$i tinymce.js:569
+
+    loadScripts tinymce.js:7555
+
+    loadScripts tinymce.js:7568
+
+    loadQueue tinymce.js:7505
+
+    loadTheme tinymce.js:27188
+
+    loadScripts tinymce.js:27268
+
+    render tinymce.js:27376
+
+    render tinymce.js:28733
+
+    createEditor tinymce.js:29263
+
+    initEditors tinymce.js:29293
+
+    each$i tinymce.js:569
+
+    initEditors tinymce.js:29289
+
+    executeHandlers tinymce.js:4737
+
+    defaultNativeHandler tinymce.js:4539
+
+    readyHandler tinymce.js:4511
+
+    bindOnReady tinymce.js:4516
+
+    bind tinymce.js:4606
+
+    bind tinymce.js:7253
+
+    init tinymce.js:29299
+
+    <anonymous> main.ts:595
+
+ [tinymce.js:20413:25](http://localhost:5174/node_modules/.pnpm/tinymce@5.10.9/node_modules/tinymce/tinymce.js)
+
+GET[http://localhost:5174/favicon.ico](http://localhost:5174/favicon.ico)[HTTP/1.1 404 Not Found 1ms] 
+
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. `srcdoc`
+
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. `srcdoc`
+
+MouseEvent.mozInputSource is deprecated. Use PointerEvent.pointerType instead.
+```
+
+---
+
+incremental conventional commits, changesets, and push
