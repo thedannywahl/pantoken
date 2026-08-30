@@ -1,0 +1,43 @@
+Start implementation
+
+---
+
+these layouts should be arranged in src/
+src/callout/callout.css, callout.ts
+etc. like wrapper currently is.
+
+these layouts should be cssdoc layout css files.
+
+we need a common utility that transforms a layout to an html template and then we can export both the layouts and the templates for everything.
+
+we also need to figure out a way to carry i18n from placeholder text in :slot() areas in the html.
+
+---
+
+create the comprehensive plan
+
+---
+
+Examine the wrapper layout pattern in plugins/pantoken/layouts to understand how it's currently structured. Show me:
+1. The current directory structure of wrapper (files and their purposes)
+2. How wrapper.css and wrapper.ts are authored and what they export
+3. How wrapper is used/imported elsewhere
+Focus on the file organization, naming conventions, and export patterns. Return a clear picture of what "arrange like wrapper currently is" means for the layouts refactor.
+
+---
+
+Investigate i18n (internationalization) handling in this repo, specifically:
+1. How the i18n package works and what patterns it uses (look at packages/i18n)
+2. How placeholder text or slot descriptions are currently i18n'd (search for i18n usage in components, interactions, or web-components)
+3. How :slot() elements and their content are handled in web-components or elsewhere
+4. Whether there are existing patterns for extracting/managing i18n strings from template literals or CSS
+Focus on concrete examples of how text extraction, translation layers, and runtime i18n work. Return patterns applicable to pulling i18n from :slot() areas.
+
+---
+
+Research the current cssdoc integration and layout CSS file authoring in this repo. Show me:
+1. How cssdoc layout CSS files are authored (examples from formats/components or anywhere they exist)
+2. The cssdoc configuration and what metadata/comments are used for layouts
+3. How these layout CSS files integrate with the build pipeline
+4. Any existing templates or HTML generation from CSS files
+Focus on cssdoc-specific syntax, metadata patterns, and how the build system processes them. Return patterns that can be applied to the new layouts.
