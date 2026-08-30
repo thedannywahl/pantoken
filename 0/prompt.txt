@@ -1,0 +1,26 @@
+✗ fallow duplication gate: ratio exceeds the .fallowrc `duplicates.threshold`
+remediate this, not suppress it.
+
+---
+
+also this:
+```
+
+● Unused exports (1)
+  renderers/tinymce/src/plugins/templates.ts
+    :21 TEMPLATES_PLUGIN_NAME
+  Exported symbols with no known consumers — https://docs.fallow.tools/explanations/dead-code#unused-exports
+
+● Unused type exports (2)
+  renderers/tinymce/src/plugins/components.ts
+    :24 ComponentRecord
+  renderers/tinymce/src/types.ts
+    :12 MissingAssetHandler
+  Type exports with no known consumers — https://docs.fallow.tools/explanations/dead-code#unused-types
+
+✗ fallow regression gate: findings grew beyond fallow-baseline.json
+```
+
+---
+
+what does fallow health show now?
