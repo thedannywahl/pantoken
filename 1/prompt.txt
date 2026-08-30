@@ -1,0 +1,5 @@
+Start implementation
+
+---
+
+watch ci on pr 118 via the gh cli and incrementally fix all issues doing conventional commits and pushing until it is green. do not merge.  it is currently in a failed state.
