@@ -69,7 +69,7 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
           label: "Product",
           items: productItems,
           onChange: (api: any) => {
-            selectedProduct = (api.target as HTMLSelectElement).value;
+            selectedProduct = (api?.target as HTMLSelectElement)?.value ?? selectedProduct;
           },
         } as any,
         {
@@ -82,7 +82,7 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
             { text: "Stacked", value: "stacked" },
           ],
           onChange: (api: any) => {
-            selectedLayout = (api.target as HTMLSelectElement).value;
+            selectedLayout = (api?.target as HTMLSelectElement)?.value ?? selectedLayout;
           },
         } as any,
         {
@@ -95,7 +95,7 @@ function openLogosDialog(editor: Editor, options: LogosPickerOptions): void {
             { text: "Light", value: "light" },
           ],
           onChange: (api: any) => {
-            selectedColorMode = (api.target as HTMLSelectElement).value;
+            selectedColorMode = (api?.target as HTMLSelectElement)?.value ?? selectedColorMode;
           },
         } as any,
       ],

@@ -10,12 +10,17 @@
  * `LocaleBundle`s.
  */
 import { existsSync, readFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
-const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8")) as Record<string, string>;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const source = JSON.parse(readFileSync(resolve(__dirname, "../src/i18n.json"), "utf8")) as Record<
+  string,
+  string
+>;
 const keys = Object.keys(source);
-const cacheDir = resolve("i18n-cache");
+const cacheDir = resolve(__dirname, "../i18n-cache");
 const targets = Object.keys(CANVAS_LOCALES).filter((l) => l !== "en");
 
 /** Return every (locale, key) pair missing from its cache file — exported for testing. */
