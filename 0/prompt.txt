@@ -1,0 +1,14 @@
+button css is carried as a ts literal because of the use of alpha() and `${AI_ICON_MASK}` interpolation.
+abstract the rest of the css to a css file like the other components and then in index.ts append the remaining declarations that require interpolation.
+
+---
+
+can these rules be moved to the css file? they don't carry any literals
+
+---
+
+now re-write the selectors to follow the @scope pattern the other components do.
+
+---
+
+now this should be rewriten to use scoped selectors with appendGenerated()
