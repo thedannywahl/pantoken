@@ -8,7 +8,8 @@
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
 import type { LogoMeta, Product } from "../logos.js";
-import { injectContentStylesheet } from "../content-css.js";
+import type { MissingAssetHandler } from "../types.js";
+import { trackAndInjectAsset } from "../content-css.js";
 
 /**
  * Configuration options for the logos picker plugin.
@@ -17,7 +18,7 @@ export interface LogosPickerOptions {
   logos: readonly LogoMeta[];
   products: readonly Product[];
   currentAssets: CdnFile[];
-  onMissingAsset?: (asset: CdnFile) => void;
+  onMissingAsset?: MissingAssetHandler;
 }
 
 /**
@@ -139,18 +140,7 @@ export function insertLogo(
     package: "@pantoken/plugin-logos",
     path: `dist/${productId}-${layout}-${colorMode}.css`,
   };
-
-  // Add to current assets if not already present.
-  if (!options.currentAssets.find((a) => a.path === cssFile.path)) {
-    options.currentAssets.push(cssFile);
-    if (options.onMissingAsset) {
-      options.onMissingAsset(cssFile);
-    }
-  }
-
-  // Inject the stylesheet into the WYSIWYG editor's content area.
-  const cssUrl = `https://unpkg.com/${cssFile.package}@latest/${cssFile.path}`;
-  injectContentStylesheet(editor, cssUrl);
+  trackAndInjectAsset(editor, cssFile, options);
 }
 
 /**

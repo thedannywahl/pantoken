@@ -9,7 +9,8 @@ import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
 import type { TaggedIcon } from "../icons.js";
 import { getIconCdnFile } from "../icons.js";
-import { injectContentStylesheet } from "../content-css.js";
+import type { MissingAssetHandler } from "../types.js";
+import { trackAndInjectAsset } from "../content-css.js";
 
 /**
  * Configuration options for the icons picker plugin.
@@ -17,7 +18,7 @@ import { injectContentStylesheet } from "../content-css.js";
 export interface IconsPickerOptions {
   icons: TaggedIcon[];
   currentAssets: CdnFile[];
-  onMissingAsset?: (asset: CdnFile) => void;
+  onMissingAsset?: MissingAssetHandler;
 }
 
 const ICONS_PER_PAGE = 50; // Adjust for performance
@@ -140,18 +141,7 @@ export function insertIcon(editor: Editor, icon: TaggedIcon, options: IconsPicke
 
   // Get the CDN file for this icon and track it.
   const cssFile = getIconCdnFile(icon);
-
-  // Add to current assets if not already present.
-  if (!options.currentAssets.find((a) => a.path === cssFile.path)) {
-    options.currentAssets.push(cssFile);
-    if (options.onMissingAsset) {
-      options.onMissingAsset(cssFile);
-    }
-  }
-
-  // Inject the stylesheet into the WYSIWYG editor's content area.
-  const cssUrl = `https://unpkg.com/${cssFile.package}@latest/${cssFile.path}`;
-  injectContentStylesheet(editor, cssUrl);
+  trackAndInjectAsset(editor, cssFile, options);
 }
 
 /**

@@ -11,6 +11,7 @@
 import { buildFileUrls } from "@pantoken/cdn";
 import type { CdnFile, CdnProvider } from "@pantoken/cdn";
 import type { Editor } from "tinymce";
+import type { MissingAssetHandler } from "./types.js";
 
 /** Resolves a set of {@link CdnFile}s to URLs suitable for TinyMCE's `content_css` init option. */
 export function pantokenContentCssUrls(
@@ -31,4 +32,22 @@ export function injectContentStylesheet(editor: Editor, url: string): void {
   link.rel = "stylesheet";
   link.href = url;
   head.append(link);
+}
+
+/**
+ * Tracks `cssFile` in `currentAssets` (once per path, notifying `onMissingAsset`) and injects its
+ * stylesheet into the editor's content area — the shared "insert an item whose CSS isn't loaded
+ * yet" tail shared by the components/icons/logos pickers.
+ */
+export function trackAndInjectAsset(
+  editor: Editor,
+  cssFile: CdnFile,
+  target: { currentAssets: CdnFile[]; onMissingAsset?: MissingAssetHandler },
+): void {
+  if (!target.currentAssets.find((a) => a.path === cssFile.path)) {
+    target.currentAssets.push(cssFile);
+    target.onMissingAsset?.(cssFile);
+  }
+  const cssUrl = `https://unpkg.com/${cssFile.package}@latest/${cssFile.path}`;
+  injectContentStylesheet(editor, cssUrl);
 }

@@ -7,7 +7,8 @@
 import type { Editor } from "tinymce";
 import type { CdnFile } from "@pantoken/cdn";
 import type { CssDocEntry } from "../cssdoc/model.js";
-import { injectContentStylesheet } from "../content-css.js";
+import type { MissingAssetHandler } from "../types.js";
+import { trackAndInjectAsset } from "../content-css.js";
 
 /**
  * Configuration options for the components picker plugin.
@@ -15,13 +16,13 @@ import { injectContentStylesheet } from "../content-css.js";
 export interface ComponentsPickerOptions {
   model: CssDocEntry[];
   currentAssets: CdnFile[];
-  onMissingAsset?: (asset: CdnFile) => void;
+  onMissingAsset?: MissingAssetHandler;
 }
 
 /**
  * A component/utility record for display in the picker.
  */
-export interface ComponentRecord {
+interface ComponentRecord {
   name: string;
   className: string;
   kind: "component" | "utility" | "custom-component";
@@ -140,18 +141,7 @@ function openComponentsDialog(
           package: "@pantoken/components",
           path: `dist/${component.name}.css`,
         };
-
-        // Track the asset and notify the callback.
-        if (!options.currentAssets.find((a) => a.path === cssFile.path)) {
-          options.currentAssets.push(cssFile);
-          if (options.onMissingAsset) {
-            options.onMissingAsset(cssFile);
-          }
-        }
-
-        // Inject the stylesheet into the WYSIWYG editor's content area.
-        const cssUrl = `https://unpkg.com/${cssFile.package}@latest/${cssFile.path}`;
-        injectContentStylesheet(editor, cssUrl);
+        trackAndInjectAsset(editor, cssFile, options);
       }
 
       api.close();

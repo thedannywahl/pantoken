@@ -1,11 +1,19 @@
 import { expect, test, vi } from "vite-plus/test";
-import { createTemplatesPlugin, TEMPLATES_TOOLBAR_NAME } from "../src/plugins/templates.js";
+import {
+  createTemplatesPlugin,
+  TEMPLATES_PLUGIN_NAME,
+  TEMPLATES_TOOLBAR_NAME,
+} from "../src/plugins/templates.js";
 import type { StarterTemplate } from "../src/types.js";
 
 const templates: StarterTemplate[] = [
   { title: "Hero", content: "<div>hero</div>" },
   { title: "Callout", content: "<div>callout</div>" },
 ];
+
+test("exposes the plugin name used in TinyMCE's init options", () => {
+  expect(TEMPLATES_PLUGIN_NAME).toBe("pantoken_templates");
+});
 
 /** A minimal `Editor`-shaped stub recording the calls this plugin makes. */
 function fakeEditor() {
