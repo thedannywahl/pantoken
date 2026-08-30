@@ -94,12 +94,12 @@ test("component classes use the configured prefix; any falsy prefix drops it ent
   expect(buttonCss({ prefix: "ui" })).not.toContain(".instui-button");
   // Falsy → no prefix: `.button`, not `.-button` or `.instui-button`.
   for (const unprefixed of [buttonCss({ prefix: null }), buttonCss(), buttonCss({ prefix: "" })]) {
-    expect(unprefixed).toContain(".button {");
+    expect(unprefixed).toContain("@scope (.button)");
     expect(unprefixed).not.toContain(".instui-");
     expect(unprefixed).not.toContain(".-button");
   }
-  // The dash-prefixed modifiers survive unprefixed (`.button.-secondary`).
-  expect(buttonCss({ prefix: null })).toContain(".button.-color-secondary");
+  // The dash-prefixed modifiers survive unprefixed (`&.-secondary`, scoped to `.button`).
+  expect(buttonCss({ prefix: null })).toContain("&.-color-secondary");
 });
 
 test("the PFX- prefix sentinel never survives into emitted CSS, at any prefix, and is collision-free", () => {
@@ -122,14 +122,14 @@ test("the PFX- prefix sentinel never survives into emitted CSS, at any prefix, a
 test("modifiers are key-value: sizes alias short/long, deviations keep a deprecated InstUI shim", () => {
   const css = componentsCss({ prefix: "instui" });
   // Canonical key-value forms.
-  expect(css).toContain(".instui-button.-color-secondary");
-  expect(css).toContain(".instui-button.-size-sm");
-  expect(css).toContain(".instui-button.-shape-circle");
+  expect(css).toContain("&.-color-secondary");
+  expect(css).toContain("&.-size-sm");
+  expect(css).toContain("&.-shape-circle");
   expect(css).toContain(".instui-heading.-level-h1");
   expect(css).toContain("&.-placement-top-end");
   // Size scale is emitted with both short and long spellings.
-  expect(css).toContain(".instui-button.-size-sm");
-  expect(css).toContain(".instui-button.-size-small");
+  expect(css).toContain("&.-size-sm");
+  expect(css).toContain("&.-size-small");
   // Deviations from InstUI keep a deprecated InstUI-semantic shim: alert variant→color, and the
   // avatar accent1–6 names (InstUI-documented) aliasing our token-named colours.
   expect(css).toMatch(/&:is\(\.-variant-info,\s*\.-color-info\)\s*\{/u);
