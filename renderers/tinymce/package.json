@@ -33,6 +33,7 @@
     "@pantoken/cdn": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/plugin-custom-components": "workspace:*",
+    "@pantoken/plugin-layouts": "workspace:*",
     "@pantoken/plugin-logos": "workspace:*",
     "@pantoken/plugin-simple-icons": "workspace:*"
   },

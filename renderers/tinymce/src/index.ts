@@ -12,6 +12,15 @@ export { injectContentStylesheet, pantokenContentCssUrls } from "./content-css.j
 // Phase 2: templates plugin.
 export { createTemplatesPlugin } from "./plugins/templates.js";
 
+// Layouts: starter page layouts sourced from @pantoken/plugin-layouts, alongside Components/Icons/Logos.
+export { type PageLayout, pageLayouts } from "./layouts.js";
+export {
+  createLayoutsPlugin,
+  LAYOUTS_PLUGIN_NAME,
+  LAYOUTS_TOOLBAR_NAME,
+  type LayoutsPluginOptions,
+} from "./plugins/layouts.js";
+
 // Phase 3 prerequisites: data modules.
 export type { TaggedIcon } from "./icons.js";
 export {

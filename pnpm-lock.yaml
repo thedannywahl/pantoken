@@ -2929,6 +2929,9 @@ importers:
       '@pantoken/plugin-custom-components':
         specifier: workspace:*
         version: link:../../plugins/pantoken/custom-components
+      '@pantoken/plugin-layouts':
+        specifier: workspace:*
+        version: link:../../plugins/pantoken/layouts
       '@pantoken/plugin-logos':
         specifier: workspace:*
         version: link:../../plugins/pantoken/logos
