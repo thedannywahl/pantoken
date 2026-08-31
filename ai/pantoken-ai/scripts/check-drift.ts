@@ -7,6 +7,7 @@
 
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
 
@@ -23,15 +24,20 @@ for (const [key] of Object.entries(source)) {
     failed = true;
   }
 
-  // Hungarian and other locales: optional, but if they exist, must be complete
-  try {
-    const huPath = resolve(cacheDir, "hu.json");
-    const hu = JSON.parse(readFileSync(huPath, "utf8"));
-    if (!(key in hu)) {
-      console.warn(`⚠️  Key "${key}" missing from i18n-cache/hu.json (will fall back to English)`);
+  // Every other Canvas locale is optional, but if its cache exists, it must be complete.
+  for (const locale of Object.keys(CANVAS_LOCALES)) {
+    if (locale === "en") continue;
+    try {
+      const localePath = resolve(cacheDir, `${locale}.json`);
+      const localeCache = JSON.parse(readFileSync(localePath, "utf8"));
+      if (!(key in localeCache)) {
+        console.warn(
+          `⚠️  Key "${key}" missing from i18n-cache/${locale}.json (will fall back to English)`,
+        );
+      }
+    } catch {
+      // <locale>.json doesn't exist yet, that's fine
     }
-  } catch {
-    // hu.json doesn't exist yet, that's fine
   }
 }
 
