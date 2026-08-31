@@ -203,6 +203,33 @@ const restorePackageNames = (input: string, packageNames: string[]): string => {
   return out;
 };
 
+// TypeDoc renders a generic type as several separately backtick-wrapped tokens joined by bare escaped
+// angle brackets (e.g. `` `Readonly`\<`Record`\<`string`, `string`\>\> ``) — each `` `Token` `` is
+// masked on its own by preserveMarkdownSensitiveBlocks, but the `\<`/`\>` glue between them is NOT (it's
+// outside any code span), so it reaches the model as bare punctuation in an otherwise-prose sentence or
+// caption. Asked to "translate" text containing that, a model has duplicated/mangled the brackets
+// (`\>` → `>>>>>>>\>`) rather than leaving them alone. Masking them unconditionally, everywhere text
+// reaches the model, removes the ambiguity instead of relying on the model to recognize and preserve it.
+const ESCAPED_ANGLE_BRACKET = /\\[<>]/g;
+
+const preserveEscapedAngleBrackets = (input: string): { text: string; brackets: string[] } => {
+  const brackets: string[] = [];
+  const text = input.replace(ESCAPED_ANGLE_BRACKET, (match) => {
+    const marker = `__PTK_ESC_${brackets.length}__`;
+    brackets.push(match);
+    return marker;
+  });
+  return { text, brackets };
+};
+
+const restoreEscapedAngleBrackets = (input: string, brackets: string[]): string => {
+  let out = input;
+  for (const [index, bracket] of brackets.entries()) {
+    out = out.replaceAll(`__PTK_ESC_${index}__`, bracket);
+  }
+  return out;
+};
+
 const translateWithoutFencedCode = (input: string, translate: (line: string) => string): string => {
   const lines = input.split("\n");
   const out: string[] = [];
@@ -288,23 +315,25 @@ export class AiTranslationAdapter implements TranslationAdapter {
   async translateMarkdown(input: string, filePath: string): Promise<string> {
     const preservedMarkdown = preserveMarkdownSensitiveBlocks(input);
     const preservedPackages = preservePackageNames(preservedMarkdown.text);
+    const preservedBrackets = preserveEscapedAngleBrackets(preservedPackages.text);
     const prompt = [
       `Translate this technical markdown from English to ${this.targetLanguage}.`,
       "Return only the translated markdown.",
       "Rules:",
       "- Keep markdown structure unchanged.",
       "- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.",
-      "- Do not alter placeholder tokens like __PTK_PACKAGE_#__.",
+      "- Do not alter placeholder tokens like __PTK_PACKAGE_#__ or __PTK_ESC_#__.",
       "- Preserve whitespace and line breaks.",
       "- Keep import paths, package names, URLs, and identifiers intact.",
       `File: ${filePath}`,
       "--- BEGIN MARKDOWN ---",
-      preservedPackages.text,
+      preservedBrackets.text,
       "--- END MARKDOWN ---",
     ].join("\n");
 
     const translated = await this.runClaude(prompt, `markdown file ${filePath}`);
-    const restoredPackages = restorePackageNames(translated, preservedPackages.packageNames);
+    const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
+    const restoredPackages = restorePackageNames(restoredBrackets, preservedPackages.packageNames);
     return restoreMarkdownSensitiveBlocks(
       restoredPackages,
       preservedMarkdown.codeBlocks,
@@ -314,17 +343,19 @@ export class AiTranslationAdapter implements TranslationAdapter {
 
   async translateText(input: string): Promise<string> {
     const preserved = preservePackageNames(input);
+    const preservedBrackets = preserveEscapedAngleBrackets(preserved.text);
     const prompt = [
       `Translate this technical UI text from English to ${this.targetLanguage}.`,
       "Return only the translation.",
       "Keep identifiers and package names unchanged.",
-      "Do not alter placeholder tokens like __PTK_PACKAGE_#__.",
+      "Do not alter placeholder tokens like __PTK_PACKAGE_#__ or __PTK_ESC_#__.",
       "Text:",
-      preserved.text,
+      preservedBrackets.text,
     ].join("\n");
 
     const translated = (await this.runClaude(prompt, "single text line")).trim();
-    return restorePackageNames(translated, preserved.packageNames);
+    const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
+    return restorePackageNames(restoredBrackets, preserved.packageNames);
   }
 
   async translateBatch(
@@ -361,17 +392,22 @@ export class AiTranslationAdapter implements TranslationAdapter {
   private async runBatch(
     items: readonly { id: string; text: string }[],
   ): Promise<Record<string, string>> {
-    // Protect code and package names in every value before it reaches the model — prose cells and
-    // captions carry inline code and `@scope/pkg` names that must survive verbatim — then restore per
-    // id. Without this the batch path (unlike translateMarkdown) would let the model rewrite them.
+    // Protect code, package names, and escaped generic-type brackets in every value before it reaches
+    // the model — prose cells and captions carry inline code, `@scope/pkg` names, and TypeDoc's
+    // `` `Foo`\<`Bar`\> `` bracket glue that must survive verbatim — then restore per id. Without this
+    // the batch path (unlike translateMarkdown) would let the model rewrite them.
     const masked = items.map((item) => {
       const markdown = preserveMarkdownSensitiveBlocks(item.text);
       const packages = preservePackageNames(markdown.text);
-      return { id: item.id, masked: packages.text, markdown, packages };
+      const brackets = preserveEscapedAngleBrackets(packages.text);
+      return { id: item.id, masked: brackets.text, markdown, packages, brackets };
     });
     const restore = (entry: (typeof masked)[number], value: string): string =>
       restoreMarkdownSensitiveBlocks(
-        restorePackageNames(value, entry.packages.packageNames),
+        restorePackageNames(
+          restoreEscapedAngleBrackets(value, entry.brackets.brackets),
+          entry.packages.packageNames,
+        ),
         entry.markdown.codeBlocks,
         entry.markdown.inlineCodeBlocks,
       );
@@ -381,7 +417,7 @@ export class AiTranslationAdapter implements TranslationAdapter {
       `Translate the VALUES of this JSON object from English to ${this.targetLanguage}.`,
       "Return ONLY a JSON object with the same keys and translated values.",
       "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
-      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, or __PTK_PACKAGE_#__.",
+      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, __PTK_PACKAGE_#__, or __PTK_ESC_#__.",
       JSON.stringify(payload, null, 2),
     ].join("\n");
 
