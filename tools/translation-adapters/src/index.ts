@@ -162,6 +162,15 @@ export function sha256(input: string): string {
   return createHash("sha256").update(input).digest("hex");
 }
 
+/**
+ * True when `translated` is just `source` echoed back (trimmed, case-insensitive) — the shape a
+ * silently-failing AI adapter tends to produce: it exits 0 with syntactically valid JSON, so nothing
+ * else flags the run as unhealthy.
+ */
+export function isPassthroughTranslation(source: string, translated: string): boolean {
+  return source.trim().toLowerCase() === translated.trim().toLowerCase();
+}
+
 // ── CLI translation runner ────────────────────────────────────────────────────
 
 /** Options for {@link runI18nTranslationCli}. */
@@ -179,6 +188,32 @@ export interface I18nTranslationOptions {
    * override to also recognize a legacy hash-keyed cache (see `sha256`).
    */
   isCached?: (key: string, cache: Record<string, string>) => boolean;
+  /**
+   * Read `key`'s current cached value, for the passthrough audit. Defaults to `cache[key]`;
+   * override alongside a custom `isCached` when a legacy cache stores values under `sha256(key)`.
+   */
+  cachedValue?: (key: string, cache: Record<string, string>) => string | undefined;
+}
+
+/**
+ * Drop any entry from `cache` whose value is an untranslated echo of its English source, so it's
+ * retranslated this run instead of sitting there looking done forever. Returns the reset keys.
+ */
+function resetPassthroughEntries(
+  cache: Record<string, string>,
+  source: Record<string, string>,
+  cachedValue: (key: string, cache: Record<string, string>) => string | undefined,
+): string[] {
+  const reset: string[] = [];
+  for (const key of Object.keys(source)) {
+    const current = cachedValue(key, cache);
+    if (current !== undefined && isPassthroughTranslation(source[key], current)) {
+      delete cache[key];
+      delete cache[sha256(key)];
+      reset.push(key);
+    }
+  }
+  return reset;
 }
 
 /** Translate `locale`'s missing keys (per `isCached`) and merge/save the result into its cache file. */
@@ -196,6 +231,14 @@ async function translateLocale(
   } catch {
     console.log(`Creating new cache for locale: ${locale}`);
     cache = {};
+  }
+
+  const cachedValue = options.cachedValue ?? ((key: string, c: Record<string, string>) => c[key]);
+  const resetKeys = resetPassthroughEntries(cache, options.source, cachedValue);
+  if (resetKeys.length > 0) {
+    console.warn(
+      `⚠ ${locale}: reset ${resetKeys.length} previously-cached entr${resetKeys.length === 1 ? "y" : "ies"} that matched the English source (will retry): ${resetKeys.join(", ")}`,
+    );
   }
 
   const missingKeys = Object.keys(options.source).filter((key) => !isCached(key, cache));
@@ -221,13 +264,27 @@ Respond with a JSON object mapping each original key to its translation, using t
       throw new Error(`AI response could not be parsed as JSON for locale "${locale}".`);
     }
 
+    const suspectKeys: string[] = [];
+    let saved = 0;
     for (const key of missingKeys) {
       const value = translated[key];
-      if (typeof value === "string") cache[key] = value;
+      if (typeof value !== "string" || value.trim().length === 0) {
+        suspectKeys.push(`${key} (missing or empty)`);
+      } else if (isPassthroughTranslation(options.source[key], value)) {
+        suspectKeys.push(`${key} (identical to source)`);
+      } else {
+        cache[key] = value;
+        saved++;
+      }
+    }
+    if (suspectKeys.length > 0) {
+      console.warn(
+        `⚠ ${locale}: ${suspectKeys.length} response(s) not cached, will retry next run: ${suspectKeys.join(", ")}`,
+      );
     }
 
     writeFileSync(cacheFile, JSON.stringify(cache, null, 2) + "\n", "utf8");
-    console.log(`✓ ${locale}: saved ${missingKeys.length} translation(s)\n`);
+    console.log(`✓ ${locale}: saved ${saved} translation(s)\n`);
   } catch (err) {
     console.error(`❌ Failed to translate for locale ${locale}:`, err);
     process.exit(1);

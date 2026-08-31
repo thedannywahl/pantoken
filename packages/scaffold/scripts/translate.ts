@@ -23,6 +23,7 @@ async function main(): Promise<void> {
     targetLocales: Object.keys(CANVAS_LOCALES),
     cachePath: (locale) => `i18n-cache/${locale}.json`,
     isCached: (key, cache) => sha256(key) in cache || key in cache,
+    cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],
   });
 }
 
