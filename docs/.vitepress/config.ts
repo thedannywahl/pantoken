@@ -10,7 +10,7 @@ import {
 } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import { partitionApiSidebar } from "./api-sidebar.js";
-import { LOCALES, type DocsLocale } from "./i18n.js";
+import { LOCALES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
 import { tokenValuePreview } from "./plugins/token-value-preview/index.js";
 
@@ -370,35 +370,41 @@ function canonicalUrl(relativePath: string): string {
  * The Open Graph title: the wordmark plus the hero tagline on the home page (which has no title of
  * its own and is the most-shared URL), otherwise the page's own title, then the site title.
  */
-function homeOgTitle(isHu: boolean): string {
-  return isHu
-    ? "pantoken — Instructure design tokenek, mindenhol"
-    : "pantoken — Instructure design tokens, everywhere";
+function homeOgTitle(locale: (typeof LOCALES)[DocsLocale]): string {
+  return locale === LOCALES.root
+    ? "pantoken — Instructure design tokens, everywhere"
+    : `pantoken — ${locale.description}`;
 }
 
 function ogTitle(
   frontmatter: { layout?: string; title?: string },
   pageTitle: string,
   siteTitle: string,
-  isHu: boolean,
+  locale: (typeof LOCALES)[DocsLocale],
 ): string {
-  if (frontmatter.layout === "home") return homeOgTitle(isHu);
+  if (frontmatter.layout === "home") return homeOgTitle(locale);
   return frontmatter.title || pageTitle || siteTitle;
+}
+
+// Best-effort `og:locale` tag (`language_TERRITORY`) from a BCP47 tag: a region subtag maps directly
+// (`en-GB` → `en_GB`); a bare language code doesn't carry a territory, so it's doubled as a plausible
+// guess (`hu` → `hu_HU`) — good enough for a non-critical SEO tag, not a real locale-to-territory table.
+function ogLocaleFor(lang: string): string {
+  return lang.includes("-") ? lang.replace("-", "_") : `${lang}_${lang.toUpperCase()}`;
 }
 
 /** Locale and Open Graph locale tags derived from a page path. */
 function localeHeadInfo(relativePath: string): {
-  isHu: boolean;
   locale: (typeof LOCALES)[DocsLocale];
   ogLocale: string;
   alternateOgLocale: string;
 } {
-  const isHu = relativePath.startsWith("hu/");
+  const localeKey = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
+  const locale = localeKey ? LOCALES[localeKey] : LOCALES.root;
   return {
-    isHu,
-    locale: isHu ? LOCALES.hu : LOCALES.root,
-    ogLocale: isHu ? "hu_HU" : "en_US",
-    alternateOgLocale: isHu ? "en_US" : "hu_HU",
+    locale,
+    ogLocale: ogLocaleFor(locale.lang),
+    alternateOgLocale: ogLocaleFor(LOCALES.root.lang),
   };
 }
 
@@ -496,7 +502,7 @@ export default defineConfig({
   // than the site-wide default. The `hu/` tree mirrors the root, so detect the locale from the path.
   transformHead: ({ pageData, siteData }) => {
     const localeInfo = localeHeadInfo(pageData.relativePath);
-    const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, localeInfo.isHu);
+    const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, localeInfo.locale);
     const pageDescription =
       pageData.frontmatter.description || pageData.description || localeInfo.locale.description;
     return pageSocialHead({
@@ -542,16 +548,26 @@ export default defineConfig({
       llmstxt({
         title: "pantoken",
         description,
-        // Hungarian (docs/hu/**) is a machine-translated mirror of the English source. Keep it out
-        // of the aggregate indexes so llms.txt / llms-full.txt stay canonical-English (the plugin
-        // author's own guidance), but leave per-page .md generation on so a /hu/ page can still be
-        // fetched as markdown. Patterns are minimatch against paths relative to workDir (docs/), so
-        // `hu/**` matches hu/index.md and every hu/guide/** and hu/api/** file.
+        // Non-root locales (docs/<locale>/**) are machine-translated mirrors of the English source.
+        // Keep them out of the aggregate indexes so llms.txt / llms-full.txt stay canonical-English (the
+        // plugin author's own guidance), but leave per-page .md generation on so a locale page can still
+        // be fetched as markdown. Patterns are minimatch against paths relative to workDir (docs/).
         details:
-          "This index covers the canonical English documentation. A Hungarian translation of every page is available under /hu/.",
+          "This index covers the canonical English documentation. Translations of every page are " +
+          "available under each locale's route prefix (for example /hu/).",
         ignoreFilesPerOutput: {
-          llmsTxt: ["hu/**", "CHANGELOG.md", "compatibility.md", "engineering-log.md"],
-          llmsFullTxt: ["hu/**", "CHANGELOG.md", "compatibility.md", "engineering-log.md"],
+          llmsTxt: [
+            ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
+            "CHANGELOG.md",
+            "compatibility.md",
+            "engineering-log.md",
+          ],
+          llmsFullTxt: [
+            ...NON_ROOT_LOCALES.map((locale) => `${locale}/**`),
+            "CHANGELOG.md",
+            "compatibility.md",
+            "engineering-log.md",
+          ],
         },
       }) as never,
     ],

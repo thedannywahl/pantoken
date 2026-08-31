@@ -19,8 +19,15 @@ vi.mock("node:fs", () => ({
   mkdirSync,
   writeFileSync,
 }));
-// One target locale keeps the loop deterministic (targets = keys minus "root").
-vi.mock("../.vitepress/i18n.ts", () => ({ LOCALES: { root: {}, hu: {} } }));
+// One target locale keeps the loop deterministic. ENGLISH_UI_STRINGS is empty so chromeDrift
+// contributes no items to these fixtures; flattenStrings is stubbed rather than pulling in the real
+// i18n.ts (which would eagerly load translation-memory caches through this file's mocked node:fs and
+// choke on the guide/API markdown fixtures below).
+vi.mock("../.vitepress/i18n.ts", () => ({
+  NON_ROOT_LOCALES: ["hu"],
+  ENGLISH_UI_STRINGS: {},
+  flattenStrings: () => [],
+}));
 
 const GUIDE_MD = "# Guide\n\nA whole guide file, translated as one markdown unit.\n";
 const API_MD = [

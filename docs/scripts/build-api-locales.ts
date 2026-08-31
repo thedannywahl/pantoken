@@ -2,7 +2,8 @@
  * Build locale-specific TypeDoc output.
  *
  * EN API docs are generated directly by TypeDoc to `docs/api/`.
- * HU API docs are cloned to `docs/hu/api/` and then localized with the configured adapter.
+ * Every other locale's API docs are cloned to `docs/<locale>/api/` and localized with the configured
+ * adapter (see `.vitepress/i18n.ts`'s `NON_ROOT_LOCALES`).
  */
 import {
   cpSync,
@@ -16,6 +17,7 @@ import {
 } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
+import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
 import { type Resolve, collectUnits, reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import {
@@ -27,7 +29,7 @@ import {
 
 const docsRoot = join(import.meta.dirname, "..");
 const enApiDir = join(docsRoot, "api");
-const huApiDir = join(docsRoot, "hu/api");
+const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 
 const run = (command: string, args: string[]): void => {
   const result = spawnSync(command, args, {
@@ -64,17 +66,22 @@ type SidebarItem = {
   items?: SidebarItem[];
 };
 
-// TypeDoc emits absolute API links as `/api/...`; the cloned HU tree must point at `/hu/api/...` or the
-// Hungarian sidebar navigates back into the English pages. Idempotent — never double-prefixes.
-const localizeApiLink = (link: string): string => (/^\/api(\/|$)/.test(link) ? `/hu${link}` : link);
+// TypeDoc emits absolute API links as `/api/...`; the cloned tree must point at `/<locale>/api/...` or
+// the localized sidebar navigates back into the English pages. Idempotent — never double-prefixes.
+const localizeApiLink = (link: string, locale: string): string =>
+  /^\/api(\/|$)/.test(link) ? `/${locale}${link}` : link;
 
 // Same rewrite for absolute `/api/...` links inside the cloned markdown (overview cards, CSS
 // breadcrumbs). Only touches markdown-link `](…)` and `href="…"` targets, so it leaves relative links
 // (`../index.md`) and any prose mentioning `/api` alone.
-const localizeMarkdownApiLinks = (markdown: string): string =>
-  markdown.replace(/(\]\(|href=")\/api(?=[/")])/g, "$1/hu/api");
+const localizeMarkdownApiLinks = (markdown: string, locale: string): string =>
+  markdown.replace(/(\]\(|href=")\/api(?=[/")])/g, `$1/${locale}/api`);
 
-const translateSidebar = (item: SidebarItem, translate: (text: string) => string): SidebarItem => {
+const translateSidebar = (
+  item: SidebarItem,
+  translate: (text: string) => string,
+  locale: string,
+): SidebarItem => {
   const translated: SidebarItem = { ...item };
 
   if (translated.text) {
@@ -82,11 +89,11 @@ const translateSidebar = (item: SidebarItem, translate: (text: string) => string
   }
 
   if (translated.link) {
-    translated.link = localizeApiLink(translated.link);
+    translated.link = localizeApiLink(translated.link, locale);
   }
 
   if (translated.items) {
-    translated.items = translated.items.map((child) => translateSidebar(child, translate));
+    translated.items = translated.items.map((child) => translateSidebar(child, translate, locale));
   }
 
   return translated;
@@ -131,11 +138,10 @@ const generateBaseApiDocs = (): void => {
   run("node", ["scripts/build-css-api.ts"]);
 };
 
-/** Clone the generated EN API tree into the HU locale directory. */
-const cloneApiForHu = (): void => {
-  console.log("Cloning API docs for HU locale...");
-  mkdirSync(dirname(huApiDir), { recursive: true });
-  cpSync(enApiDir, huApiDir, { recursive: true });
+/** Clone the generated EN API tree into a locale directory. */
+const cloneApiForLocale = (localeApiDir: string): void => {
+  mkdirSync(dirname(localeApiDir), { recursive: true });
+  cpSync(enApiDir, localeApiDir, { recursive: true });
 };
 
 /**
@@ -149,8 +155,9 @@ const translateMarkdownFiles = async (
   markdownFiles: string[],
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
+  locale: string,
 ): Promise<{ glossaryTerms: number; proseBlocks: number }> => {
-  const glossary = new GlossaryTranslationAdapter();
+  const glossary = new GlossaryTranslationAdapter(locale);
   const segmented = markdownFiles.map((filePath) => ({
     filePath,
     segments: segmentMarkdown(readFileSync(filePath, "utf8")),
@@ -178,7 +185,7 @@ const translateMarkdownFiles = async (
     return escapeBareHtmlTags(translated);
   };
   for (const { filePath, segments } of segmented) {
-    writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve)));
+    writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve), locale));
   }
 
   const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
@@ -193,6 +200,7 @@ const translateSidebars = async (
   sidebarFiles: string[],
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
+  locale: string,
 ): Promise<number> => {
   const sidebars = sidebarFiles.map((filePath) => ({
     filePath,
@@ -208,23 +216,22 @@ const translateSidebars = async (
   const translateLabel = (text: string): string =>
     labelTranslations.get(keyFor("text", text)) ?? text;
   for (const { filePath, tree } of sidebars) {
-    const translated = tree.map((item) => translateSidebar(item, translateLabel));
+    const translated = tree.map((item) => translateSidebar(item, translateLabel, locale));
     writeFileSync(filePath, `${JSON.stringify(translated, null, 2)}\n`);
   }
   return labels.length;
 };
 
-const build = async (): Promise<void> => {
-  const adapter = createTranslationAdapter();
-  const memory = TranslationMemory.load("hu", "api");
+/** Clone + translate the EN API tree into one locale's directory. */
+const buildLocale = async (locale: string): Promise<void> => {
+  const adapter = createTranslationAdapter(locale);
+  const memory = TranslationMemory.load(locale, "api");
+  const localeApiDir = apiDirFor(locale);
 
-  rmSync(enApiDir, { recursive: true, force: true });
-  rmSync(huApiDir, { recursive: true, force: true });
+  rmSync(localeApiDir, { recursive: true, force: true });
+  cloneApiForLocale(localeApiDir);
 
-  generateBaseApiDocs();
-  cloneApiForHu();
-
-  const files = walkFiles(huApiDir);
+  const files = walkFiles(localeApiDir);
   const markdownFiles = files.filter((f) => f.endsWith(".md"));
   // The TypeDoc sidebar carries the CSS section too (merged by @cssdoc/typedoc), so its labels cover
   // both the TS API and the CSS reference.
@@ -235,15 +242,29 @@ const build = async (): Promise<void> => {
     markdownFiles,
     adapter,
     memory,
+    locale,
   );
-  const labelCount = await translateSidebars(sidebarFiles, adapter, memory);
+  const labelCount = await translateSidebars(sidebarFiles, adapter, memory, locale);
 
   memory.save();
   console.log(
-    `Localized ${markdownFiles.length} API markdown files for HU via '${adapter.name}': ` +
+    `Localized ${markdownFiles.length} API markdown files for '${locale}' via '${adapter.name}': ` +
       `${glossaryTerms} glossary terms, ${proseBlocks} prose blocks, ${labelCount} sidebar labels ` +
-      `(${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, huApiDir)}`,
+      `(${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, localeApiDir)}`,
   );
+};
+
+const build = async (): Promise<void> => {
+  rmSync(enApiDir, { recursive: true, force: true });
+  for (const locale of NON_ROOT_LOCALES) {
+    rmSync(apiDirFor(locale), { recursive: true, force: true });
+  }
+
+  generateBaseApiDocs();
+
+  for (const locale of NON_ROOT_LOCALES) {
+    await buildLocale(locale);
+  }
 };
 
 build().catch((error: unknown) => {

@@ -19,7 +19,7 @@
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
-import { LOCALES } from "../.vitepress/i18n.ts";
+import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
@@ -28,7 +28,7 @@ const cacheDir = join(docsRoot, "i18n-cache");
 const guideDir = join(docsRoot, "guide");
 const apiDir = join(docsRoot, "api");
 
-const targets = Object.keys(LOCALES).filter((key) => key !== "root");
+const targets = NON_ROOT_LOCALES;
 
 interface Missing {
   file: string;
@@ -87,9 +87,25 @@ export const apiDrift = (locale: string): Missing[] => {
   return missing;
 };
 
+const chromeLeaves = flattenStrings(ENGLISH_UI_STRINGS);
+
+/** Chrome drift: every UI-string leaf (nav/sidebar/CDN picker/etc.) needs a cached translation. */
+const chromeDrift = (locale: string): Missing[] => {
+  if (chromeLeaves.length === 0) return [];
+  const cached = loadCacheKeys(locale, "chrome");
+  const missing: Missing[] = [];
+  for (const { path, text } of chromeLeaves) {
+    if (!cached.has(keyFor("text", text))) {
+      missing.push({ file: `.vitepress/i18n.ts#${path}`, kind: "text", sample: preview(text) });
+    }
+  }
+  return missing;
+};
+
 let drifted = 0;
 for (const locale of targets) {
   const guides = guideDrift(locale);
+  const chrome = chromeDrift(locale);
   const apiGenerated = existsSync(apiDir);
   const api = apiGenerated ? apiDrift(locale) : [];
 
@@ -99,7 +115,7 @@ for (const locale of targets) {
     );
   }
 
-  const all = [...guides, ...api];
+  const all = [...guides, ...chrome, ...api];
   if (all.length === 0) {
     console.log(`✓ ${locale}: no translation drift${apiGenerated ? "" : " (guides only)"}.`);
     continue;

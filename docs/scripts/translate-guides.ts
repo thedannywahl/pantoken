@@ -14,24 +14,24 @@
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { LOCALES } from "../.vitepress/i18n.ts";
+import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { createTranslationAdapter } from "./api-translation.ts";
 import { TranslationMemory, keyFor, translateUnits } from "./translation-memory.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const guideDir = join(docsRoot, "guide");
-const adapter = createTranslationAdapter();
 
 const pages = readdirSync(guideDir)
   .filter((name) => name.endsWith(".md"))
   .toSorted();
 
-const targets = Object.keys(LOCALES).filter((key) => key !== "root");
+const targets = NON_ROOT_LOCALES;
 
 for (const locale of targets) {
   const outDir = join(docsRoot, locale, "guide");
   mkdirSync(outDir, { recursive: true });
 
+  const adapter = createTranslationAdapter(locale);
   const memory = TranslationMemory.load(locale, "guides");
   const sources = pages.map((page) => ({
     page,

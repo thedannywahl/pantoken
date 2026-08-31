@@ -769,6 +769,9 @@ importers:
       '@pantoken/demo':
         specifier: workspace:*
         version: link:../tools/demo
+      '@pantoken/i18n':
+        specifier: workspace:*
+        version: link:../packages/i18n
       '@pantoken/interactions':
         specifier: workspace:*
         version: link:../formats/interactions
