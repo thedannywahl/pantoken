@@ -1,0 +1,48 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/ai/create-pantoken-app-site/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Contradiction: "If you only want the starter project without the agent assets, run `npx create-pantoken-app <platform> --dir <dir> --yes` (or `npx @pantoken/scaffold <platform> --dir <dir> --yes`) directly instead" conflicts with "npx @pantoken/ai scaffold <platform> --dir <dir> --yes". The prompt presents three different CLI commands for scaffolding (npx @pantoken/ai scaffold, npx create-pantoken-app, npx @pantoken/scaffold) without clearly specifying which one to use in the primary flow. A model would be uncertain which command to run by default and may mix them up or present all three to the user.
+
+
+ - line: 1
+ - lineText: ---
+ - message: Cognitive load (deep-decision-tree): Step 3's install logic combines a prose checklist (a/b/c), a numbered decision tree with stop conditions, and a large table, all of which must be reconciled simultaneously. The 'prepend @pantoken/css unless native web' rule in the checklist conflicts in phrasing with the numbered steps that handle @pantoken/css inline, making it likely the model double-installs or omits @pantoken/css for some targets.. Suggestion: Replace the prose checklist + numbered steps + table with a single unified table that has columns: Detected Target | Packages to install (complete list). Remove the separate prose rules so the model only needs to look up one row.
+  suggestion: Replace the prose checklist + numbered steps + table with a single unified table that has columns: Detected Target | Packages to install (complete list). Remove the separate prose rules so the model only needs to look up one row.
+
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: No guidance on what to do when both React and Next.js are detected in package.json dependencies (e.g. a Next.js project that also lists 'react' explicitly). The model may install both @pantoken/react and @pantoken/next.. Suggestion: Add: 'If both react and next are found in package.json dependencies, treat the project as Next.js only. The presence of react as a dependency does not trigger the @pantoken/react install row.'
+  suggestion: Add: 'If both react and next are found in package.json dependencies, treat the project as Next.js only. The presence of react as a dependency does not trigger the @pantoken/react install row.'
+
+
+ - line: 1
+ - lineText: ---
+ - message: Missing error handling: No package.json exists and the user wants a native/CMS project but also has no lockfile, so the package manager detection table cannot be used and step 5's CLI command defaults to npx with no basis.. Suggestion: Add: 'If no package.json and no lockfile exist and the target is native/CMS, default to npx for the step 5 CLI command unless the user has specified a package manager preference earlier in the conversation.'
+  suggestion: Add: 'If no package.json and no lockfile exist and the target is native/CMS, default to npx for the step 5 CLI command unless the user has specified a package manager preference earlier in the conversation.'
+
+
+ - line: 57
+ - lineText:   npx @pantoken/ai scaffold <platform> --dir <dir> --yes
+ - message: Conflicts with line 1: "If you only want the starter project without the agent assets, run `npx create-pantoken-app <platform> --dir <dir> --yes` (or `npx @pantoken/scaffold <platform> --dir <dir> --yes`) directly instead". The prompt presents three different CLI commands for scaffolding (npx @pantoken/ai scaffold, npx create-pantoken-app, npx @pantoken/scaffold) without clearly specifying which one to use in the primary flow. A model would be uncertain which command to run by default and may mix them up or present all three to the user.
+
+
+ - line: 146
+ - lineText: | Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` (always install `@pantoken/web-components` alongside the framework package — it's required for icon support, not optional)                                                                 |
+ - message: Ambiguous: "Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` (always install `@pantoken/web-components` alongside the framework package — it's required for icon support, not optional)". The instruction says to always install @pantoken/web-components alongside Vue/Svelte/Angular, but the table also has a separate 'Icons anywhere' row for @pantoken/web-components. It is unclear whether @pantoken/web-components should also be installed for React, Next.js, or native web when icons are needed, or only for these three frameworks. Suggestion: Add an explicit note: 'For React, Next.js, and native web targets, install @pantoken/web-components only if the user explicitly requests icon support. For Vue, Svelte, and Angular it is always required regardless.'
+  suggestion: Add an explicit note: 'For React, Next.js, and native web targets, install @pantoken/web-components only if the user explicitly requests icon support. For Vue, Svelte, and Angular it is always required regardless.'
