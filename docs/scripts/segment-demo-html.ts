@@ -10,6 +10,7 @@
  * @module
  */
 
+/** One run of a segmented demo HTML fragment — translatable prose or verbatim markup. */
 export interface DemoSegment {
   kind: "prose" | "preserve";
   text: string;

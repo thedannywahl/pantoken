@@ -240,6 +240,7 @@ const uiStringsFor = (locale: DocsLocale): UiStrings => {
   return applyOverrides(ENGLISH_UI_STRINGS, overrides);
 };
 
+/** Per-locale route structure plus all translated UI chrome strings. */
 export type LocaleMeta = LocaleStructure & UiStrings;
 
 // Computed lazily (and memoized) behind a Proxy: merely importing this module — e.g. for

@@ -4,8 +4,8 @@
  * chrome strings.
  *
  * Run with `DOCS_TRANSLATION_ADAPTER=ai` for real translations; the default `glossary` adapter can't
- * translate itself, so this always uses `createTranslationAdapter`'s selection, not `new
- * GlossaryTranslationAdapter()`. Content-addressed by English term text (`kind: "text"`, same
+ * translate itself, so this always uses `createTranslationAdapter`'s selection, not
+ * `new GlossaryTranslationAdapter()`. Content-addressed by English term text (`kind: "text"`, same
  * convention as sidebar labels and chrome strings), so only new or edited terms reach the adapter.
  */
 import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";

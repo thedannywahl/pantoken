@@ -26,6 +26,7 @@ export interface GlossaryTerm {
   term: string;
 }
 
+/** The English source-of-truth term list; see the module doc comment above for what this covers. */
 // prettier-ignore
 export const GLOSSARY_TERMS: GlossaryTerm[] = [
   // Word-boundary terms — TypeDoc's per-symbol section labels and inline phrases.
