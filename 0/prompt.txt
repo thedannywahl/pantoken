@@ -1,0 +1,5 @@
+add a hand-coded .well-known api end point and an llms.txt to the create-pantoken-app-site submodule.
+
+---
+
+we don't need this parity alias in the repo at all or in the api-catalog
