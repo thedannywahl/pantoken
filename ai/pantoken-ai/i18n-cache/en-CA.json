@@ -1,6 +1,6 @@
 {
   "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Write pantoken's agent assets into a repo",
+  "helpInitDescription": "Write pantoken's agent assets into a repository",
   "helpInitToolDescription": "Agent tool (all|cursor|copilot|windsurf)",
   "helpInitDirDescription": "Target directory",
   "helpScaffoldDescription": "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it",

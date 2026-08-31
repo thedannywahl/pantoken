@@ -1,9 +1,9 @@
 {
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Schreibt die Agent-Assets von pantoken in ein Repository",
-  "helpInitToolDescription": "Agent-Tool (all|cursor|copilot|windsurf)",
+  "wroteFile": "✓ {{path}} geschrieben",
+  "helpInitDescription": "Schreibt pantoken-Agent-Assets in ein Repository",
+  "helpInitToolDescription": "Agententool (all|cursor|copilot|windsurf)",
   "helpInitDirDescription": "Zielverzeichnis",
-  "helpScaffoldDescription": "Erstellt ein Starterprojekt (über @pantoken/scaffold) und installiert die Agent-Assets darin",
-  "helpScaffoldToolDescription": "Agent-Tool (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Überschreibt die automatisch erkannte Anzeigesprache (z. B. „hu“)"
+  "helpScaffoldDescription": "Erstellt ein Starter-Projekt (via @pantoken/scaffold) und installiert Agent-Assets darin",
+  "helpScaffoldToolDescription": "Agententool (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Überschreibt die automatisch erkannte Anzeigesprache (z. B. \"hu\")"
 }

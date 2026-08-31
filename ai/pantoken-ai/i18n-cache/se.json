@@ -1,9 +1,9 @@
 {
   "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Čále pantoken agentaresurssaid repoi",
-  "helpInitToolDescription": "Agentareaidu (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Ulbmilmáhppa",
-  "helpScaffoldDescription": "Ráhkat álgoprošeavtta (@pantoken/scaffold bokte) ja sajáiduhte agentaresurssaid dasa",
-  "helpScaffoldToolDescription": "Agentareaidu (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Rievdat automáhtalaččat fuomášuvvon čájehangiela (omd. «hu»)"
+  "helpInitDescription": "Rievda pantoken agentta materiálaid reppaan",
+  "helpInitToolDescription": "Agentta cuovgga (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Barget direktorija",
+  "helpScaffoldDescription": "Skeaffolda starta projektu (via @pantoken/scaffold) ja rievda agentta materiálaid into",
+  "helpScaffoldToolDescription": "Agentta cuovgga (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Ovttasneaddji automahtalaš čujudit giella (d.d. \"hu\")"
 }

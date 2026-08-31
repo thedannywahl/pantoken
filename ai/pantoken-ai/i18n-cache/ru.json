@@ -1,9 +1,9 @@
 {
   "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Записать агентские ресурсы pantoken в репозиторий",
-  "helpInitToolDescription": "Агентский инструмент (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Целевой каталог",
-  "helpScaffoldDescription": "Создать стартовый проект (через @pantoken/scaffold) и установить в него агентские ресурсы",
-  "helpScaffoldToolDescription": "Агентский инструмент (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Переопределить автоматически определённый язык интерфейса (например, \"hu\")"
+  "helpInitDescription": "Записать в репозиторий ассеты агента pantoken",
+  "helpInitToolDescription": "Инструмент агента (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Целевая директория",
+  "helpScaffoldDescription": "Сгенерировать стартовый проект (через @pantoken/scaffold) и установить в него ассеты агента",
+  "helpScaffoldToolDescription": "Инструмент агента (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Переопределить автоматически определённый язык отображения (например \"hu\")"
 }

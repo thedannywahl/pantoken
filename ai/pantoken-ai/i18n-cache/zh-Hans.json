@@ -1,9 +1,9 @@
 {
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "将 pantoken 的智能体资源写入代码仓库",
-  "helpInitToolDescription": "智能体工具（all|cursor|copilot|windsurf）",
+  "wroteFile": "✓ 已写入：{{path}}",
+  "helpInitDescription": "将 pantoken 的代理资产写入仓库",
+  "helpInitToolDescription": "代理工具（all|cursor|copilot|windsurf）",
   "helpInitDirDescription": "目标目录",
-  "helpScaffoldDescription": "创建起始项目脚手架（通过 @pantoken/scaffold）并将智能体资源安装到其中",
-  "helpScaffoldToolDescription": "智能体工具（all|cursor|copilot|windsurf）",
-  "helpLangDescription": "覆盖自动检测的显示语言（例如 \"hu\"）"
+  "helpScaffoldDescription": "搭建入门项目（通过 @pantoken/scaffold）并将代理资产安装到其中",
+  "helpScaffoldToolDescription": "代理工具（all|cursor|copilot|windsurf）",
+  "helpLangDescription": "覆盖自动检测的显示语言（例如：\"hu\"）"
 }
