@@ -1,0 +1,1 @@
+when an ai translator fails it may return the original strings which then get written to the cache, it looks like a valid translation because it didn't exit non-zero but it was a failure.  we should be detecting this and/or re-evaluating on future runs based on the existing data.
