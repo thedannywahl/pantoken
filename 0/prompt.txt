@@ -1,0 +1,1 @@
+I created the repo thedannywahl/create-pantoken-app and it's currently checked out at ~/Scripts/create-pantoken-app
