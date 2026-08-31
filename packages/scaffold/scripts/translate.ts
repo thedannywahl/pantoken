@@ -16,7 +16,7 @@ import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 // Legacy caches may still key entries by sha256(key) instead of the plain key.
 async function main(): Promise<void> {
-  const { source, verbatimKeys } = collectI18nSource(resolve("."));
+  const { source, verbatim } = collectI18nSource(resolve("."));
   await runI18nTranslationCli({
     label: "@pantoken/scaffold strings",
     source,
@@ -24,7 +24,7 @@ async function main(): Promise<void> {
     cachePath: (locale) => `i18n-cache/${locale}.json`,
     isCached: (key, cache) => sha256(key) in cache || key in cache,
     cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],
-    verbatimKeys,
+    verbatim,
   });
 }
 

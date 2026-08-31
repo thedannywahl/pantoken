@@ -11,7 +11,8 @@ const {
   extractJsonObject,
   generateLocaleBundles,
   isPassthroughTranslation,
-  readVerbatimKeys,
+  parseI18nSource,
+  resolveVerbatimAction,
   runI18nTranslationCli,
   sha256,
   spawnPrompt,
@@ -78,28 +79,56 @@ test("isPassthroughTranslation is true for two empty strings", () => {
   expect(isPassthroughTranslation("", "")).toBe(true);
 });
 
-// ── readVerbatimKeys ──────────────────────────────────────────────────
+// ── parseI18nSource ────────────────────────────────────────────────────
 
-test("readVerbatimKeys reads a string array from disk", () => {
-  const path = join(testDir, "i18n.verbatim.json");
-  writeFileSync(path, JSON.stringify(["datePlaceholder", "shortcut"]));
-  expect(readVerbatimKeys(path)).toEqual(["datePlaceholder", "shortcut"]);
+test("parseI18nSource passes plain string entries through unchanged", () => {
+  expect(parseI18nSource({ back: "Back" })).toEqual({ strings: { back: "Back" }, verbatim: {} });
 });
 
-test("readVerbatimKeys returns an empty array when the file doesn't exist", () => {
-  expect(readVerbatimKeys(join(testDir, "missing.json"))).toEqual([]);
+test("parseI18nSource flattens a rich entry's string and captures its verbatim policy", () => {
+  const result = parseI18nSource({
+    datePlaceholder: { string: "yyyy-mm-dd", verbatim: "allow" },
+  });
+  expect(result.strings).toEqual({ datePlaceholder: "yyyy-mm-dd" });
+  expect(result.verbatim).toEqual({ datePlaceholder: "allow" });
 });
 
-test("readVerbatimKeys returns an empty array for non-array or malformed JSON", () => {
-  const path = join(testDir, "bad.json");
-  writeFileSync(path, JSON.stringify({ not: "an array" }));
-  expect(readVerbatimKeys(path)).toEqual([]);
+test("parseI18nSource omits the verbatim map entry when a rich entry has no policy", () => {
+  const result = parseI18nSource({ back: { string: "Back" } });
+  expect(result.strings).toEqual({ back: "Back" });
+  expect(result.verbatim).toEqual({});
 });
 
-test("readVerbatimKeys filters out non-string array entries", () => {
-  const path = join(testDir, "mixed.json");
-  writeFileSync(path, JSON.stringify(["ok", 1, null]));
-  expect(readVerbatimKeys(path)).toEqual(["ok"]);
+// ── resolveVerbatimAction ──────────────────────────────────────────────
+
+test("resolveVerbatimAction defaults to error when no policy is declared", () => {
+  expect(resolveVerbatimAction(undefined, "hu")).toBe("error");
+});
+
+test('resolveVerbatimAction treats "allow" as allow for every locale', () => {
+  expect(resolveVerbatimAction("allow", "hu")).toBe("allow");
+});
+
+test("resolveVerbatimAction matches an exact locale code in the allow tier", () => {
+  expect(resolveVerbatimAction({ allow: ["en-GB"] }, "en-GB")).toBe("allow");
+  expect(resolveVerbatimAction({ allow: ["en-GB"] }, "en-CA")).toBe("error");
+});
+
+test("resolveVerbatimAction matches a prefix glob", () => {
+  expect(resolveVerbatimAction({ allow: ["en*"] }, "en-GB")).toBe("allow");
+  expect(resolveVerbatimAction({ allow: ["en*"] }, "hu")).toBe("error");
+});
+
+test("resolveVerbatimAction matches the wildcard for every locale", () => {
+  expect(resolveVerbatimAction({ warn: ["*"] }, "hu")).toBe("warn");
+});
+
+test("resolveVerbatimAction checks allow before warn", () => {
+  expect(resolveVerbatimAction({ allow: ["hu"], warn: ["*"] }, "hu")).toBe("allow");
+});
+
+test("resolveVerbatimAction falls back to error when no tier matches", () => {
+  expect(resolveVerbatimAction({ allow: ["en*"], warn: ["fr"] }, "hu")).toBe("error");
 });
 
 // ── TranslationMemory ─────────────────────────────────────────────────────────
@@ -458,7 +487,7 @@ test("runI18nTranslationCli audits a legacy hash-keyed cache via a custom cached
   expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({ hello: "Szia" });
 });
 
-test("runI18nTranslationCli caches a verbatimKeys entry even when identical to the source", async () => {
+test('runI18nTranslationCli caches an "allow" verbatim entry even when identical to the source', async () => {
   useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }) }));
   const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
   const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
@@ -468,7 +497,7 @@ test("runI18nTranslationCli caches a verbatimKeys entry even when identical to t
       source: { datePlaceholder: "yyyy-mm-dd" },
       targetLocales: ["hu"],
       cachePath: (locale) => join(cliTestDir, `${locale}.json`),
-      verbatimKeys: ["datePlaceholder"],
+      verbatim: { datePlaceholder: "allow" },
     });
     expect(warnSpy).not.toHaveBeenCalled();
   } finally {
@@ -480,7 +509,7 @@ test("runI18nTranslationCli caches a verbatimKeys entry even when identical to t
   });
 });
 
-test("runI18nTranslationCli does not reset a previously-cached verbatimKeys entry", async () => {
+test('runI18nTranslationCli does not reset a previously-cached "allow" verbatim entry', async () => {
   writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }));
   const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
   const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
@@ -490,7 +519,7 @@ test("runI18nTranslationCli does not reset a previously-cached verbatimKeys entr
       source: { datePlaceholder: "yyyy-mm-dd" },
       targetLocales: ["hu"],
       cachePath: (locale) => join(cliTestDir, `${locale}.json`),
-      verbatimKeys: ["datePlaceholder"],
+      verbatim: { datePlaceholder: "allow" },
     });
     expect(spawn).not.toHaveBeenCalled();
     expect(warnSpy).not.toHaveBeenCalled();
@@ -498,6 +527,52 @@ test("runI18nTranslationCli does not reset a previously-cached verbatimKeys entr
     logSpy.mockRestore();
     warnSpy.mockRestore();
   }
+});
+
+test('runI18nTranslationCli caches but warns on a "warn"-tier verbatim entry identical to the source', async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatim: { datePlaceholder: { warn: ["hu"] } },
+    });
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("verbatim policy: warn"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    datePlaceholder: "yyyy-mm-dd",
+  });
+});
+
+test('runI18nTranslationCli still resets a verbatim entry for a locale outside its "allow" tier', async () => {
+  writeFileSync(join(cliTestDir, "fr.json"), JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }));
+  useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "aaaa-mm-jj" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["fr"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatim: { datePlaceholder: { allow: ["en*"] } },
+    });
+    expect(spawn).toHaveBeenCalled();
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("reset 1 previously-cached"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "fr.json"), "utf8"))).toEqual({
+    datePlaceholder: "aaaa-mm-jj",
+  });
 });
 
 // ── generateLocaleBundles ──────────────────────────────────────────────────────

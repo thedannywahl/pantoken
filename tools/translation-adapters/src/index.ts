@@ -172,20 +172,68 @@ export function isPassthroughTranslation(source: string, translated: string): bo
 }
 
 /**
- * Read a sibling `<name>.verbatim.json` array of keys allowed to legitimately match their English
- * source verbatim (see `verbatimKeys` on {@link I18nTranslationOptions}), returning `[]` when the
- * file is absent or isn't a string array. Lets a `src/i18n.json` source's verbatim-key list live
- * alongside it as its own file — never mixed into `i18n.json` itself, which some packages (e.g.
- * `@pantoken/web-components`) also import directly as their runtime English-defaults object — so a
- * marker key can never leak into a public strings type.
+ * A key's verbatim policy: `"allow"` permits every locale to legitimately match the English source;
+ * otherwise a per-tier list of locale patterns (an exact code like `"en-GB"`, a `"prefix*"` glob, or
+ * `"*"` for every locale) decides the outcome for a locale whose response is identical to the
+ * source — `allow` caches it silently, `warn` caches it but logs a note, and any locale matched by
+ * neither list (the implicit `error` tier) is treated as a likely AI failure: not cached, retried
+ * next run. Omitting `verbatim` entirely is the strict default, equivalent to `error: ["*"]`.
  */
-export function readVerbatimKeys(path: string): string[] {
-  try {
-    const parsed = JSON.parse(readFileSync(path, "utf8")) as unknown;
-    return Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : [];
-  } catch {
-    return [];
+export type VerbatimPolicy =
+  | "allow"
+  | { allow?: readonly string[]; warn?: readonly string[]; error?: readonly string[] };
+
+/** One `src/i18n.json` entry: a plain translatable string, or a string plus its verbatim policy. */
+export type I18nSourceEntry = string | { string: string; verbatim?: VerbatimPolicy };
+
+/** A raw `src/i18n.json`-shaped object, before {@link parseI18nSource} flattens it. */
+export type RawI18nSource = Record<string, I18nSourceEntry>;
+
+/** {@link parseI18nSource}'s result: flattened strings plus each key's declared verbatim policy. */
+export interface ParsedI18nSource {
+  strings: Record<string, string>;
+  verbatim: Record<string, VerbatimPolicy>;
+}
+
+/**
+ * Flatten a `src/i18n.json` source into its plain strings and any per-key `verbatim` policy, so a
+ * package can declare "this key is allowed to stay untranslated (for some/all locales)" inline with
+ * its source string. `{ "datePlaceholder": { "string": "yyyy-mm-dd", "verbatim": "allow" } }` and
+ * `{ "dateLabel": "Date" }` both parse cleanly — a plain string entry just has no policy.
+ */
+export function parseI18nSource(raw: RawI18nSource): ParsedI18nSource {
+  const strings: Record<string, string> = {};
+  const verbatim: Record<string, VerbatimPolicy> = {};
+  for (const [key, entry] of Object.entries(raw)) {
+    if (typeof entry === "string") {
+      strings[key] = entry;
+    } else {
+      strings[key] = entry.string;
+      if (entry.verbatim !== undefined) verbatim[key] = entry.verbatim;
+    }
   }
+  return { strings, verbatim };
+}
+
+/** True when `locale` matches a verbatim-policy pattern: an exact code, a `"prefix*"` glob, or `"*"`. */
+function localeMatchesPattern(pattern: string, locale: string): boolean {
+  if (pattern === "*") return true;
+  return pattern.endsWith("*") ? locale.startsWith(pattern.slice(0, -1)) : pattern === locale;
+}
+
+/**
+ * Resolve what a passthrough (identical-to-source) value should do for `locale`, given a key's
+ * declared `policy` (`undefined` — no `verbatim` field — is the strict default, `"error"`).
+ */
+export function resolveVerbatimAction(
+  policy: VerbatimPolicy | undefined,
+  locale: string,
+): "allow" | "warn" | "error" {
+  if (policy === undefined) return "error";
+  if (policy === "allow") return "allow";
+  if (policy.allow?.some((p) => localeMatchesPattern(p, locale))) return "allow";
+  if (policy.warn?.some((p) => localeMatchesPattern(p, locale))) return "warn";
+  return "error";
 }
 
 // ── CLI translation runner ────────────────────────────────────────────────────
@@ -211,38 +259,42 @@ export interface I18nTranslationOptions {
    */
   cachedValue?: (key: string, cache: Record<string, string>) => string | undefined;
   /**
-   * Source keys allowed to legitimately match the English source in some or all locales (e.g. a
-   * format placeholder like `"yyyy-mm-dd"` that most locales keep verbatim, while others — Dutch's
-   * `"jjjj-mm-dd"`, say — translate it). Exempt from the passthrough guard entirely: identical
-   * output for these keys is cached normally, never stripped or warned about. Per-key, not
-   * per-locale — this doesn't force a locale to stay verbatim, it just stops flagging it as a
-   * likely AI failure when it does.
+   * Per-key verbatim policies (see {@link VerbatimPolicy}), typically produced by
+   * {@link parseI18nSource} from the same `src/i18n.json` `source` came from. Keys absent here use
+   * the strict default: identical output is treated as a likely AI failure for every locale.
    */
-  verbatimKeys?: readonly string[];
+  verbatim?: Record<string, VerbatimPolicy>;
 }
 
 /**
- * Drop any entry from `cache` whose value is an untranslated echo of its English source, so it's
- * retranslated this run instead of sitting there looking done forever. Skips any key in
- * `verbatimKeys`. Returns the reset keys.
+ * Drop any entry from `cache` whose value is an untranslated echo of its English source and whose
+ * key resolves to the `"error"` tier for `locale`, so it's retranslated this run instead of sitting
+ * there looking done forever. A `"warn"`-tier match is left cached but reported. Returns the reset
+ * and warned keys.
  */
 function resetPassthroughEntries(
   cache: Record<string, string>,
   source: Record<string, string>,
   cachedValue: (key: string, cache: Record<string, string>) => string | undefined,
-  verbatimKeys: ReadonlySet<string>,
-): string[] {
+  verbatim: Record<string, VerbatimPolicy>,
+  locale: string,
+): { reset: string[]; warned: string[] } {
   const reset: string[] = [];
+  const warned: string[] = [];
   for (const key of Object.keys(source)) {
-    if (verbatimKeys.has(key)) continue;
     const current = cachedValue(key, cache);
-    if (current !== undefined && isPassthroughTranslation(source[key], current)) {
-      delete cache[key];
-      delete cache[sha256(key)];
-      reset.push(key);
+    if (current === undefined || !isPassthroughTranslation(source[key], current)) continue;
+    const action = resolveVerbatimAction(verbatim[key], locale);
+    if (action === "allow") continue;
+    if (action === "warn") {
+      warned.push(key);
+      continue;
     }
+    delete cache[key];
+    delete cache[sha256(key)];
+    reset.push(key);
   }
-  return reset;
+  return { reset, warned };
 }
 
 /** Translate `locale`'s missing keys (per `isCached`) and merge/save the result into its cache file. */
@@ -263,11 +315,22 @@ async function translateLocale(
   }
 
   const cachedValue = options.cachedValue ?? ((key: string, c: Record<string, string>) => c[key]);
-  const verbatimKeys = new Set(options.verbatimKeys ?? []);
-  const resetKeys = resetPassthroughEntries(cache, options.source, cachedValue, verbatimKeys);
+  const verbatim = options.verbatim ?? {};
+  const { reset: resetKeys, warned: warnedResetKeys } = resetPassthroughEntries(
+    cache,
+    options.source,
+    cachedValue,
+    verbatim,
+    locale,
+  );
   if (resetKeys.length > 0) {
     console.warn(
       `⚠ ${locale}: reset ${resetKeys.length} previously-cached entr${resetKeys.length === 1 ? "y" : "ies"} that matched the English source (will retry): ${resetKeys.join(", ")}`,
+    );
+  }
+  if (warnedResetKeys.length > 0) {
+    console.warn(
+      `⚠ ${locale}: ${warnedResetKeys.length} cached entr${warnedResetKeys.length === 1 ? "y matches" : "ies match"} the English source (verbatim policy: warn): ${warnedResetKeys.join(", ")}`,
     );
   }
 
@@ -295,21 +358,33 @@ Respond with a JSON object mapping each original key to its translation, using t
     }
 
     const suspectKeys: string[] = [];
+    const warnedKeys: string[] = [];
     let saved = 0;
     for (const key of missingKeys) {
       const value = translated[key];
       if (typeof value !== "string" || value.trim().length === 0) {
         suspectKeys.push(`${key} (missing or empty)`);
-      } else if (!verbatimKeys.has(key) && isPassthroughTranslation(options.source[key], value)) {
-        suspectKeys.push(`${key} (identical to source)`);
-      } else {
-        cache[key] = value;
-        saved++;
+        continue;
       }
+      if (isPassthroughTranslation(options.source[key], value)) {
+        const action = resolveVerbatimAction(verbatim[key], locale);
+        if (action === "error") {
+          suspectKeys.push(`${key} (identical to source)`);
+          continue;
+        }
+        if (action === "warn") warnedKeys.push(key);
+      }
+      cache[key] = value;
+      saved++;
     }
     if (suspectKeys.length > 0) {
       console.warn(
         `⚠ ${locale}: ${suspectKeys.length} response(s) not cached, will retry next run: ${suspectKeys.join(", ")}`,
+      );
+    }
+    if (warnedKeys.length > 0) {
+      console.warn(
+        `⚠ ${locale}: ${warnedKeys.length} response(s) identical to the English source (verbatim policy: warn), cached anyway: ${warnedKeys.join(", ")}`,
       );
     }
 

@@ -12,24 +12,19 @@
  */
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { readVerbatimKeys, runI18nTranslationCli } from "@pantoken/translation-adapters";
+import { parseI18nSource, runI18nTranslationCli } from "@pantoken/translation-adapters";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 async function main(): Promise<void> {
-  const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8")) as Record<
-    string,
-    string
-  >;
-  // "yyyy-mm-dd" is the ISO date format most locales keep verbatim; some (e.g. Dutch's
-  // "jjjj-mm-dd") do localize it — see src/i18n.verbatim.json.
-  const verbatimKeys = readVerbatimKeys(resolve("src/i18n.verbatim.json"));
+  const raw = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
+  const { strings: source, verbatim } = parseI18nSource(raw);
 
   await runI18nTranslationCli({
     label: "@pantoken/web-components strings",
     source,
     targetLocales: Object.keys(CANVAS_LOCALES),
     cachePath: (locale: string) => `i18n-cache/${locale}.json`,
-    verbatimKeys,
+    verbatim,
   });
 }
 
