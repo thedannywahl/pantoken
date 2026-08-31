@@ -1,0 +1,5 @@
+now do a sweep through each of the source strings (ui, cli, docs, etc.) and evaluate which (if any) may need further verbatim overrides and make those changes so we can continue the translation workflow with the new guards.
+
+---
+
+good call, moving things to a glossary is also an acceptable action.
