@@ -1,0 +1,9 @@
+would it help to be setting up a contract for the translation with an arktype/zod schema?
+
+---
+
+yes
+
+---
+
+track your work with changesets, incremental conventional commits and pushes. ignore the in-flight translations that are landing now, we can run this on the next translation pass.
