@@ -11,7 +11,7 @@ export const ru: LocaleBundle = defineBundle({
     prevMonth: "Предыдущий месяц",
     nextMonth: "Следующий месяц",
     dateLabel: "Дата",
-    datePlaceholder: "гггг-мм-дд",
+    datePlaceholder: "гггг‑мм‑дд",
     openCalendar: "Открыть календарь",
     timeLabel: "Время",
     back: "Назад",

@@ -9,7 +9,7 @@ export const pt: LocaleBundle = defineBundle({
   label: "Portuguese (Português)",
   strings: makeStrings("pt", {
     prevMonth: "Mês anterior",
-    nextMonth: "Mês seguinte",
+    nextMonth: "Próximo mês",
     dateLabel: "Data",
     datePlaceholder: "aaaa-mm-dd",
     openCalendar: "Abrir calendário",

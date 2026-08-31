@@ -11,8 +11,9 @@ export const hy: LocaleBundle = defineBundle({
     prevMonth: "Նախորդ ամիս",
     nextMonth: "Հաջորդ ամիս",
     dateLabel: "Ամսաթիվ",
+    datePlaceholder: "թթթթ-մմ-օօ",
     openCalendar: "Բացել օրացույցը",
     timeLabel: "Ժամ",
-    back: "Հետ",
+    back: "Վերադառնալ",
   }),
 });

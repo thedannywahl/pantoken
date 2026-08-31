@@ -12,7 +12,7 @@ export const he: LocaleBundle = defineBundle({
     nextMonth: "החודש הבא",
     dateLabel: "תאריך",
     openCalendar: "פתח לוח שנה",
-    timeLabel: "שעה",
+    timeLabel: "זמן",
     back: "חזור",
   }),
 });

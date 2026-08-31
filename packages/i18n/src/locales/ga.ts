@@ -9,9 +9,9 @@ export const ga: LocaleBundle = defineBundle({
   label: "Irish Gaelic",
   strings: makeStrings("ga", {
     prevMonth: "Mí roimhe",
-    nextMonth: "Mí seo chugainn",
+    nextMonth: "Mí ina dhiaidh",
     dateLabel: "Dáta",
-    openCalendar: "Oscail an féilire",
+    openCalendar: "Oscail an fhéilire",
     timeLabel: "Am",
     back: "Ar ais",
   }),

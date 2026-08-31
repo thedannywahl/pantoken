@@ -11,7 +11,7 @@ export const ar: LocaleBundle = defineBundle({
     prevMonth: "الشهر السابق",
     nextMonth: "الشهر التالي",
     dateLabel: "التاريخ",
-    openCalendar: "افتح التقويم",
+    openCalendar: "فتح التقويم",
     timeLabel: "الوقت",
     back: "رجوع",
   }),

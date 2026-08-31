@@ -7,7 +7,5 @@ export const enAU: LocaleBundle = defineBundle({
   locale: "en-AU",
   dir: "ltr",
   label: "English (Australia)",
-  strings: makeStrings("en-AU", {
-    datePlaceholder: "dd/mm/yyyy",
-  }),
+  strings: makeStrings("en-AU"),
 });
