@@ -19,7 +19,7 @@ export type DocsLocale = string;
 export const NON_ROOT_LOCALES = Object.keys(CANVAS_LOCALES).filter((key) => key !== "en");
 
 /** Every docs locale, `root` first. */
-export const ALL_DOCS_LOCALES: readonly DocsLocale[] = ["root", ...NON_ROOT_LOCALES];
+const ALL_DOCS_LOCALES: readonly DocsLocale[] = ["root", ...NON_ROOT_LOCALES];
 
 /**
  * Translatable UI chrome — everything that gets machine-translated into the per-locale cache (see
