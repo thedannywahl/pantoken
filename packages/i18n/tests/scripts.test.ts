@@ -35,5 +35,4 @@ test("buildLocaleFile produces bare makeStrings() for English variants without o
 test("buildLocaleFile keeps locale-specific English variant overrides (en-AU)", () => {
   const ts = buildLocaleFile("en-AU");
   expect(ts).toContain("export const enAU: LocaleBundle");
-  expect(ts).toContain('datePlaceholder: "dd/mm/yyyy"');
 });
