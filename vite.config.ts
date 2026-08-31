@@ -235,6 +235,10 @@ export default defineConfig({
         command: "vp run @pantoken/web-components#translate:force",
         cache: false,
       },
+      "ui:translate:force:agy": {
+        command: "vp run @pantoken/web-components#translate:agy:force",
+        cache: false,
+      },
       // Docs locale translation (both claude and agy variants).
       "docs:translate": {
         command: "vp run @pantoken/docs#docs:locales:translate",
@@ -248,6 +252,10 @@ export default defineConfig({
         command: "vp run @pantoken/docs#docs:locales:translate:force",
         cache: false,
       },
+      "docs:translate:force:agy": {
+        command: "vp run @pantoken/docs#docs:locales:translate:agy:force",
+        cache: false,
+      },
       // CLI (scaffold and ai) string localization.
       "cli:translate": {
         command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
@@ -259,6 +267,11 @@ export default defineConfig({
       },
       "cli:translate:force": {
         command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
+        cache: false,
+      },
+      "cli:translate:force:agy": {
+        command:
+          "vp run @pantoken/scaffold#translate:agy:force && vp run @pantoken/ai#translate:agy:force",
         cache: false,
       },
       // Umbrella tasks for all translation domains.
@@ -278,6 +291,16 @@ export default defineConfig({
       "i18n:translate:force": {
         command: "true",
         dependsOn: ["ui:translate:force", "docs:translate:force", "cli:translate:force"],
+        cache: false,
+      },
+      // Same as i18n:translate:force but routed through the agy adapter wrapper.
+      "i18n:translate:force:agy": {
+        command: "true",
+        dependsOn: [
+          "ui:translate:force:agy",
+          "docs:translate:force:agy",
+          "cli:translate:force:agy",
+        ],
         cache: false,
       },
       // Drift checks for all i18n domains (UI, docs, CLI).

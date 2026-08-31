@@ -36,6 +36,7 @@
     "translate": "I18N_TRANSLATION_ADAPTER=ai node scripts/translate.ts",
     "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate.ts",
     "translate:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 node scripts/translate.ts",
+    "translate:agy:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate.ts",
     "check:drift": "node scripts/check-drift.ts",
     "test": "vp test",
     "check": "vp check"
