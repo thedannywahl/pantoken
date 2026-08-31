@@ -199,17 +199,16 @@ test("translateUnits autosaves after each markdown miss when asked", async () =>
   expect(writeFileSync).toHaveBeenCalled();
 });
 
-test("translateUnits logs progress every 25 markdown files", async () => {
+test("translateUnits logs progress for each markdown file translated", async () => {
   const memory = TranslationMemory.load("hu", "api");
-  const units: TranslationUnit[] = Array.from({ length: 25 }, (_, i) => ({
+  const units: TranslationUnit[] = Array.from({ length: 3 }, (_, i) => ({
     kind: "markdown",
     source: `# File ${i}`,
     filePath: `f${i}.md`,
   }));
   await translateUnits(adapter(), memory, units);
-  expect(
-    logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("25/25 markdown files")),
-  ).toBe(true);
+  expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("1/3 f0.md"))).toBe(true);
+  expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("3/3 f2.md"))).toBe(true);
 });
 
 test("translateUnits logs and skips a markdown file that fails, without caching it", async () => {
