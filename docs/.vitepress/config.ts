@@ -187,6 +187,16 @@ const orchestrator = workspaceOrchestrator({
       dependents: [],
     },
     {
+      // Re-stage the same skill into the ai/create-pantoken-app-site/ submodule, which GitHub Pages
+      // serves at create.pantoken.app. Only stages the submodule's working tree — committing and
+      // pushing that repo is a separate, manual step. See stage-create-pantoken-app-domain.ts.
+      name: "@pantoken/docs#create-pantoken-app-domain",
+      dir: at("docs"),
+      watchPaths: [at("ai/pantoken-ai/skills/create-pantoken-app")],
+      build: ["node", "scripts/stage-create-pantoken-app-domain.ts"],
+      dependents: [],
+    },
+    {
       // Rebuild the TypeDoc API pages so TSDoc `@example` markup edits go live (the web-component element
       // `@example` blocks render on api/renderers/web-components/**). Scoped to the RENDERER TS sources:
       // TypeDoc reparses the whole entry-point set on any run, so a broader watch would make every

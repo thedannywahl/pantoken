@@ -78,7 +78,10 @@ export default defineConfig({
     // `string`\>\> ``) — each pass through `vp check --fix` (including the `staged` pre-commit hook)
     // duplicated more `>` characters into already-committed locale API docs. Excluded the same way
     // `.markdownlint-cli2.yaml` already excludes this tree.
-    ignorePatterns: ["docs/api/**", "docs/*/api/**"],
+    // `ai/create-pantoken-app-site` is a separate git submodule (github.com/thedannywahl/
+    // create-pantoken-app): its `index.html` is plain-text skill content wearing an `.html`
+    // extension only so GitHub Pages resolves it as the directory index, not real markup to format.
+    ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
   },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],

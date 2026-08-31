@@ -100,6 +100,40 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   run. Raise concurrency for more speed if you're not rate-limited; lower the budget if a run trips the
   per-item fallback (the model dropping a key from a large response).
 
+## Publishing the create-pantoken-app skill
+
+`ai/pantoken-ai/skills/create-pantoken-app/SKILL.md` is the one canonical source, staged into two
+places by tasks in `docs/.vitepress/config.ts`:
+
+- `stage-create-pantoken-app-skill.ts` → `docs/public/create-pantoken-app.md`, served by the main
+  docs site at `pantoken.app/create-pantoken-app.md`.
+- `stage-create-pantoken-app-domain.ts` → `ai/create-pantoken-app-site/` (a git submodule pointing at
+  [`thedannywahl/create-pantoken-app`](https://github.com/thedannywahl/create-pantoken-app)), whose
+  GitHub Pages deployment serves the same content at the domain root `create.pantoken.app` — a
+  URL-hack shortcut so an agent CLI can fetch the skill without the `/create-pantoken-app.md` path.
+
+Both tasks only stage the local working tree. The submodule is a separate GitHub repo, so publishing
+a skill update to `create.pantoken.app` needs a commit + push inside it. `.github/workflows/
+publish-create-pantoken-app.yml` automates this: on every push to `main` that touches
+`ai/pantoken-ai/skills/create-pantoken-app/**`, it re-runs the staging script, commits+pushes the
+submodule if changed, then bumps the submodule pointer in this repo. It needs a repo secret
+`CREATE_PANTOKEN_APP_PAT` (a fine-grained PAT scoped to just `thedannywahl/create-pantoken-app`,
+Contents: Read and write — the default `GITHUB_TOKEN` can't push to a different repo); without it
+the workflow warns and skips the push instead of failing.
+
+To do the same thing manually (e.g. testing a change before it's merged, or if the secret isn't set
+yet):
+
+```sh
+vp exec node docs/scripts/stage-create-pantoken-app-domain.ts
+cd ai/create-pantoken-app-site
+git commit -am "sync create-pantoken-app skill"
+git push
+```
+
+Then, in the main repo, commit the submodule's new pinned commit (`git add
+ai/create-pantoken-app-site && git commit`) so the two stay in lockstep.
+
 ## The cssdoc integration
 
 pantoken consumes `@cssdoc/*` from **npm** (catalog entries; consumers use `catalog:`), not a local

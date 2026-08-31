@@ -26,7 +26,7 @@
           "title": "Full documentation as one document"
         },
         {
-          "href": "https://pantoken.app/create-pantoken-app.md",
+          "href": "https://create.pantoken.app",
           "type": "text/markdown",
           "title": "create-pantoken-app agent skill"
         }
