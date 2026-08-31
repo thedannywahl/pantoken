@@ -1,0 +1,41 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/create-pantoken-app/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Contradiction: "Prepend `@pantoken/css` to the list unless the target is native web." conflicts with "Is it native web (plain HTML/CSS, no framework and no build tool detected)? Install only `@pantoken/components` — it ships the token CSS baked in, so no separate `@pantoken/css` install is needed — and stop". The worked checklist in step 3 says to prepend @pantoken/css 'unless the target is native web', which is consistent. However, the checklist preamble describes steps (a), (b), (c), (d) as a unified flow, and step (c) says prepend @pantoken/css unless native web, while step 1 of the decision checklist says to stop immediately for native web. A model following the lettered checklist sequentially might reach step (c) before evaluating the numbered decision list, causing it to add @pantoken/css for native web before the 'stop' instruction is encountered.
+
+
+ - line: 1
+ - lineText: ---
+ - message: Cognitive load (deep-decision-tree): Step 3 presents two overlapping instruction structures for determining what to install: a lettered worked checklist (a-d) and a numbered decision checklist (1-3), followed by a table. These two structures partially duplicate each other and a model must reconcile them simultaneously. The lettered checklist modifies the list before the numbered checklist runs, but the numbered checklist contains its own stop conditions. A model is likely to either apply both structures redundantly or skip one, especially for the Next.js case which appears in both the lettered checklist (step b) and the numbered checklist (step 2).. Suggestion: Consolidate into a single ordered checklist. Remove the lettered checklist and fold its logic (Next.js deduplication, @pantoken/css prepending) into the numbered decision steps explicitly, so there is only one instruction sequence to follow.
+  suggestion: Consolidate into a single ordered checklist. Remove the lettered checklist and fold its logic (Next.js deduplication, @pantoken/css prepending) into the numbered decision steps explicitly, so there is only one instruction sequence to follow.
+
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: A project using both React and Vite where the user also wants icons — the prompt doesn't clarify whether @pantoken/web-components should be added alongside @pantoken/react + @pantoken/vite.. Suggestion: Add a note to the 'Icons anywhere' row or to step 4: 'If the user wants to use <instui-icon> in any web framework project (React, Vue, Vite, etc.), add @pantoken/web-components to the install command regardless of framework.'
+  suggestion: Add a note to the 'Icons anywhere' row or to step 4: 'If the user wants to use <instui-icon> in any web framework project (React, Vue, Vite, etc.), add @pantoken/web-components to the install command regardless of framework.'
+
+
+ - line: 146
+ - lineText: | Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` (always install `@pantoken/web-components` alongside the framework package — it's required for icon support, not optional)                                                                 |
+ - message: Ambiguous: "Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` (always install `@pantoken/web-components` alongside the framework package — it's required for icon support, not optional)". The instruction to 'always install @pantoken/web-components alongside the framework package' only appears in the Vue/Svelte/Angular row, but the 'Icons anywhere' row also lists @pantoken/web-components. It's unclear whether React, Next.js, or other framework projects that want icons should also install @pantoken/web-components, or if this is truly only required for Vue/Svelte/Angular. Suggestion: Add a clarifying note: 'For React, Next.js, React Native, and tool-only setups, install @pantoken/web-components only if the user explicitly wants icon support (<instui-icon> elements). For Vue, Svelte, and Angular, always install it alongside the framework package regardless.'
+  suggestion: Add a clarifying note: 'For React, Next.js, React Native, and tool-only setups, install @pantoken/web-components only if the user explicitly wants icon support (<instui-icon> elements). For Vue, Svelte, and Angular, always install it alongside the framework package regardless.'
+
+---
+
+you're in edit mode.
