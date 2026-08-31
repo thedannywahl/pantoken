@@ -2,7 +2,7 @@
 
 # Variable: ICON\_COLOR\_SPECIAL\_VALUES
 
-> `const` **ICON\_COLOR\_SPECIAL\_VALUES**: `Readonly`\<`Record`\<`string`, `string`>>>>>>>>\>\>
+> `const` **ICON\_COLOR\_SPECIAL\_VALUES**: `Readonly`\<`Record`\<`string`, `string`\>\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

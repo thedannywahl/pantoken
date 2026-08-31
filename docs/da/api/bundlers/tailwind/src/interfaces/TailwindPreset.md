@@ -20,12 +20,12 @@ En minimal form for den del af Tailwind konfiguration som dette preset bidrager 
 
 ##### extend.colors
 
-> **colors**: `Record`\<`string`, `string`>>>>\>
+> **colors**: `Record`\<`string`, `string`\>
 
 ##### extend.spacing
 
-> **spacing**: `Record`\<`string`, `string`>>>>\>
+> **spacing**: `Record`\<`string`, `string`\>
 
 ##### extend.fontFamily
 
-> **fontFamily**: `Record`\<`string`, `string`>>>>\>
+> **fontFamily**: `Record`\<`string`, `string`\>

@@ -2,7 +2,7 @@
 
 # Variable: iconsByName
 
-> `const` **iconsByName**: `Map`\<`string`, [`PantokenIcon`](../interfaces/PantokenIcon.md)>>>>\>
+> `const` **iconsByName**: `Map`\<`string`, [`PantokenIcon`](../interfaces/PantokenIcon.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

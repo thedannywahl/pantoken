@@ -57,7 +57,7 @@ El missatge té forma `{ type: "mangle-map", plugin: "pantoken-mangle-custom-pro
 
 ### sharedManifest?
 
-> `optional` **sharedManifest?**: `Map`\<`string`, `string`>>>>\>
+> `optional` **sharedManifest?**: `Map`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

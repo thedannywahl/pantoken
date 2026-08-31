@@ -2,7 +2,7 @@
 
 # Variable: pantokenTheme
 
-> `const` **pantokenTheme**: `Record`\<`string`, `string`>>>>\>
+> `const` **pantokenTheme**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

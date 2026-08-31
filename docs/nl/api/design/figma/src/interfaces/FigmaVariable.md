@@ -26,6 +26,6 @@ A Figma variable in the payload.
 
 ### valuesByMode
 
-> **valuesByMode**: `Record`\<`string`, [`FigmaColor`](FigmaColor.md) \| `number` \| `string`>>>>\>
+> **valuesByMode**: `Record`\<`string`, [`FigmaColor`](FigmaColor.md) \| `number` \| `string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>

@@ -2,7 +2,7 @@
 
 # Type Alias: StorybookTheme
 
-> **StorybookTheme** = `object` & `Record`\<`string`, `string`>>>>\>
+> **StorybookTheme** = `object` & `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

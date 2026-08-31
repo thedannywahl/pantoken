@@ -2,7 +2,7 @@
 
 # Variable: variables
 
-> `const` **variables**: `Record`\<`string`, `unknown`>>>>\>
+> `const` **variables**: `Record`\<`string`, `unknown`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

@@ -40,7 +40,7 @@ WOFF2 շրիֆտի բայտերը:
 
 ### codepoints
 
-> **codepoints**: `Record`\<`string`, `string`>>>>\>
+> **codepoints**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

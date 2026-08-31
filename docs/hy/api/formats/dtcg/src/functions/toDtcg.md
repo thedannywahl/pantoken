@@ -2,7 +2,7 @@
 
 # Function: toDtcg()
 
-> **toDtcg**(`tokens`, `mode?`): `Record`\<`string`, [`DtcgNode`](../type-aliases/DtcgNode.md)>>>>\>
+> **toDtcg**(`tokens`, `mode?`): `Record`\<`string`, [`DtcgNode`](../type-aliases/DtcgNode.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

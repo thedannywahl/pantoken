@@ -28,7 +28,7 @@ element subset directly).
 
 ### strings?
 
-> `optional` **strings?**: `Partial`\<[`WebComponentStrings`](WebComponentStrings.md)>>>>\>
+> `optional` **strings?**: `Partial`\<[`WebComponentStrings`](WebComponentStrings.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

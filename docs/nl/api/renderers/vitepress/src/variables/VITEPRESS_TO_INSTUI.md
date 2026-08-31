@@ -2,7 +2,7 @@
 
 # Variable: VITEPRESS\_TO\_INSTUI
 
-> `const` **VITEPRESS\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`>>>>>>>>\>\>
+> `const` **VITEPRESS\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`\>\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

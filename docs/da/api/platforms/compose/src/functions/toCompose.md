@@ -2,7 +2,7 @@
 
 # Function: toCompose()
 
-> **toCompose**(`tokens`, `options`): `Promise`\<`string`>>>>\>
+> **toCompose**(`tokens`, `options`): `Promise`\<`string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

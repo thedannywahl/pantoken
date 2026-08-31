@@ -80,7 +80,7 @@ Script(s). Defaults to [DEFAULT\_THEME\_JS\_ASSETS](../variables/DEFAULT_THEME_J
 
 ### strings?
 
-> `optional` **strings?**: `Partial`\<[`ThemeStrings`](ThemeStrings.md)>>>>\>
+> `optional` **strings?**: `Partial`\<[`ThemeStrings`](ThemeStrings.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

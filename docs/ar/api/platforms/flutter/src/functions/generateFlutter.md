@@ -2,7 +2,7 @@
 
 # Function: generateFlutter()
 
-> **generateFlutter**(`options`): `Promise`\<`string`>>>>\>
+> **generateFlutter**(`options`): `Promise`\<`string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

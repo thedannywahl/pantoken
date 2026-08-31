@@ -2,7 +2,7 @@
 
 # Variable: dark
 
-> `const` **dark**: `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)>>>>\>
+> `const` **dark**: `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

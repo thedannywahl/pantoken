@@ -2,7 +2,7 @@
 
 # Function: run()
 
-> **run**(`argv`): `Promise`\<`void`>>>>\>
+> **run**(`argv`): `Promise`\<`void`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

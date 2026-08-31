@@ -2,7 +2,7 @@
 
 # Function: resolveTokens()
 
-> **resolveTokens**(`base`, `options?`): `Map`\<`string`, `string`>>>>\>
+> **resolveTokens**(`base`, `options?`): `Map`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

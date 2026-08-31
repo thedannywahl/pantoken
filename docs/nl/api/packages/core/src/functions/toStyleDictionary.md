@@ -2,7 +2,7 @@
 
 # Function: toStyleDictionary()
 
-> **toStyleDictionary**(`tokens`, `mode?`): `Record`\<`string`, [`SdLeaf`](../interfaces/SdLeaf.md)>>>>\>
+> **toStyleDictionary**(`tokens`, `mode?`): `Record`\<`string`, [`SdLeaf`](../interfaces/SdLeaf.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

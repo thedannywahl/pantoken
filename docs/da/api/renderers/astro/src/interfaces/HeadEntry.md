@@ -18,7 +18,7 @@ En minimal strukturel type for en Starlight head-indgang (undgår en hård afhæ
 
 ### attrs
 
-> **attrs**: `Record`\<`string`, `string`>>>>\>
+> **attrs**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

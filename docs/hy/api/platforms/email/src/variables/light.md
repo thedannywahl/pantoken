@@ -2,7 +2,7 @@
 
 # Variable: light
 
-> `const` **light**: `Record`\<`string`, `string`>>>>\>
+> `const` **light**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

@@ -18,7 +18,7 @@ Un tipus estructural mínim per a una entrada de capçalera de Starlight (evita 
 
 ### attrs
 
-> **attrs**: `Record`\<`string`, `string`>>>>\>
+> **attrs**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

@@ -2,7 +2,7 @@
 
 # Function: generateCompose()
 
-> **generateCompose**(`options`): `Promise`\<`string`>>>>\>
+> **generateCompose**(`options`): `Promise`\<`string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

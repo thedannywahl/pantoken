@@ -40,7 +40,7 @@ The `@font-face` + `.instui-icon-<name>` stylesheet.
 
 ### codepoints
 
-> **codepoints**: `Record`\<`string`, `string`>>>>\>
+> **codepoints**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

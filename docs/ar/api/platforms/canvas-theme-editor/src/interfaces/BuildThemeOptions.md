@@ -80,7 +80,7 @@
 
 ### strings?
 
-> `optional` **strings?**: `Partial`\<[`ThemeStrings`](ThemeStrings.md)>>>>\>
+> `optional` **strings?**: `Partial`\<[`ThemeStrings`](ThemeStrings.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

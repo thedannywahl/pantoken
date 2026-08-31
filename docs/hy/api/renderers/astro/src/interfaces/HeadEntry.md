@@ -18,7 +18,7 @@
 
 ### attrs
 
-> **attrs**: `Record`\<`string`, `string`>>>>\>
+> **attrs**: `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

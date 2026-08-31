@@ -2,7 +2,7 @@
 
 # Function: emailTokens()
 
-> **emailTokens**(`mode?`): `Record`\<`string`, `string`>>>>\>
+> **emailTokens**(`mode?`): `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

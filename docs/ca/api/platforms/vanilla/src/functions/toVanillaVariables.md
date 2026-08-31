@@ -2,7 +2,7 @@
 
 # Function: toVanillaVariables()
 
-> **toVanillaVariables**(`tokens`, `options?`): `Record`\<`string`, `unknown`>>>>\>
+> **toVanillaVariables**(`tokens`, `options?`): `Record`\<`string`, `unknown`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

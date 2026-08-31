@@ -2,7 +2,7 @@
 
 # Function: tokenNames()
 
-> **tokenNames**(`ir`): `Set`\<`string`>>>>\>
+> **tokenNames**(`ir`): `Set`\<`string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

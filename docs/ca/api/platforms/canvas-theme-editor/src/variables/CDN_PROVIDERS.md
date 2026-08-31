@@ -2,7 +2,7 @@
 
 # Variable: CDN\_PROVIDERS
 
-> `const` **CDN\_PROVIDERS**: `Readonly`\<`Record`\<`string`, [`CdnProvider`](../interfaces/CdnProvider.md)>>>>>>>>\>\>
+> `const` **CDN\_PROVIDERS**: `Readonly`\<`Record`\<`string`, [`CdnProvider`](../interfaces/CdnProvider.md)\>\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
 

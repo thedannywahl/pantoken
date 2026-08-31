@@ -2,7 +2,7 @@
 
 # Variable: BOOTSTRAP\_TO\_INSTUI
 
-> `const` **BOOTSTRAP\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`>>>>>>>>\>\>
+> `const` **BOOTSTRAP\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`\>\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

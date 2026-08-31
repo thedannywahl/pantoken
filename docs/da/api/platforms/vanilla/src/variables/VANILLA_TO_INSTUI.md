@@ -2,7 +2,7 @@
 
 # Variable: VANILLA\_TO\_INSTUI
 
-> `const` **VANILLA\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`>>>>>>>>\>\>
+> `const` **VANILLA\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`\>\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

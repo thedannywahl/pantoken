@@ -2,7 +2,7 @@
 
 # Type Alias: StyledTheme
 
-> **StyledTheme** = `Record`\<`string`, `string`>>>>\>
+> **StyledTheme** = `Record`\<`string`, `string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

@@ -2,7 +2,7 @@
 
 # Function: defaultRegistry()
 
-> **defaultRegistry**(): `Promise`\<[`SimpleIconsRegistry`](../type-aliases/SimpleIconsRegistry.md)>>>>\>
+> **defaultRegistry**(): `Promise`\<[`SimpleIconsRegistry`](../type-aliases/SimpleIconsRegistry.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

@@ -2,7 +2,7 @@
 
 # Function: toSwift()
 
-> **toSwift**(`tokens`, `options`): `Promise`\<`string`>>>>\>
+> **toSwift**(`tokens`, `options`): `Promise`\<`string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

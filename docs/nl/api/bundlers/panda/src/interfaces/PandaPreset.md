@@ -24,8 +24,8 @@ A Panda preset (shaped for `definePreset`).
 
 #### tokens
 
-> **tokens**: `CategoryMap`\<[`PandaToken`](PandaToken.md)>>>>\>
+> **tokens**: `CategoryMap`\<[`PandaToken`](PandaToken.md)\>
 
 #### semanticTokens
 
-> **semanticTokens**: `CategoryMap`\<[`PandaSemanticToken`](PandaSemanticToken.md)>>>>\>
+> **semanticTokens**: `CategoryMap`\<[`PandaSemanticToken`](PandaSemanticToken.md)\>

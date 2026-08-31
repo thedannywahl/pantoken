@@ -2,7 +2,7 @@
 
 # Function: buildIconFont()
 
-> **buildIconFont**(`options?`): `Promise`\<[`IconFontResult`](../interfaces/IconFontResult.md)>>>>\>
+> **buildIconFont**(`options?`): `Promise`\<[`IconFontResult`](../interfaces/IconFontResult.md)\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

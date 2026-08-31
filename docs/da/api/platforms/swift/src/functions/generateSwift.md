@@ -2,7 +2,7 @@
 
 # Function: generateSwift()
 
-> **generateSwift**(`options`): `Promise`\<`string`>>>>\>
+> **generateSwift**(`options`): `Promise`\<`string`\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

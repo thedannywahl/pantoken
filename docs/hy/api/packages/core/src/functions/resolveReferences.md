@@ -2,7 +2,7 @@
 
 # Function: resolveReferences()
 
-> **resolveReferences**(`tokens`, `mode?`): `Map`\<`string`, `string`>>>>\>
+> **resolveReferences**(`tokens`, `mode?`): `Map`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

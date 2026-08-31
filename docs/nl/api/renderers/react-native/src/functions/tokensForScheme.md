@@ -2,7 +2,7 @@
 
 # Function: tokensForScheme()
 
-> **tokensForScheme**(`scheme`): `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)>>>>\>
+> **tokensForScheme**(`scheme`): `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)\>
 
 <span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
 

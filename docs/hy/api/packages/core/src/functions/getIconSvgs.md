@@ -2,7 +2,7 @@
 
 # Function: getIconSvgs()
 
-> **getIconSvgs**(`tokens`): `Map`\<`string`, `string`>>>>\>
+> **getIconSvgs**(`tokens`): `Map`\<`string`, `string`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 

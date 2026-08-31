@@ -2,7 +2,7 @@
 
 # Type Alias: SimpleIconsRegistry
 
-> **SimpleIconsRegistry** = `Record`\<`string`, `unknown`>>>>\>
+> **SimpleIconsRegistry** = `Record`\<`string`, `unknown`\>
 
 <span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
 
