@@ -1,0 +1,19 @@
+evaluate this failure:
+```
+❌ Failed to translate for locale nn: Error: AI response could not be parsed as JSON for locale "nn".
+    at translateLocale (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/dist/index.mjs:160:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async runI18nTranslationCli (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/dist/index.mjs:192:3)
+    at async main (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/scripts/translate.ts:20:3)
+```
+
+---
+
+evaluate this failure:
+```
+❌ Failed to translate for locale nn: Error: AI response could not be parsed as JSON for locale "nn".
+    at translateLocale (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/dist/index.mjs:160:26)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async runI18nTranslationCli (file:///Users/dwahl/Scripts/pantoken/tools/translation-adapters/dist/index.mjs:192:3)
+    at async main (file:///Users/dwahl/Scripts/pantoken/packages/scaffold/scripts/translate.ts:20:3)
+```
