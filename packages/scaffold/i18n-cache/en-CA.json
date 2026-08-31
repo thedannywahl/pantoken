@@ -19,7 +19,7 @@
   "scaffold.canvas-theme-editor.nextSteps.0": "cd {{dir}}",
   "scaffold.canvas-theme-editor.nextSteps.1": "{{install}}",
   "scaffold.canvas-theme-editor.nextSteps.2": "{{dev}}",
-  "scaffold.canvas-theme-editor.notes": "Upload theme.css and theme.js to the Canvas Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page.",
+  "scaffold.canvas-theme-editor.notes": "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page.",
   "scaffold.canvas-theme-editor.caveats": "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas.",
   "scaffold.canvas-theme-editor.i18n.pageTitle": "RCE template authoring",
   "scaffold.canvas-theme-editor.i18n.pageDescription": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
@@ -46,7 +46,7 @@
   "scaffold.canvas-theme-editor.i18n.downloadJsLabel": "Download theme.js",
   "scaffold.canvas-theme-editor.i18n.regenerateLabel": "Regenerate from config",
   "scaffold.canvas-theme-editor.i18n.helpModalTitle": "How to use this page",
-  "scaffold.canvas-theme-editor.i18n.helpModalBody1": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
+  "scaffold.canvas-theme-editor.i18n.helpModalBody1": "Pick a starter template, edit it like you would in Canvas's Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
   "scaffold.canvas-theme-editor.i18n.helpModalBody2": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
   "scaffold.canvas-theme-editor.i18n.closeLabel": "Close"
 }
