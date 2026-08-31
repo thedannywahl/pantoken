@@ -10,7 +10,7 @@ import { resolve } from "node:path";
 import { collectI18nSource } from "./i18n-sources.ts";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
-const source = collectI18nSource(resolve("."));
+const { source } = collectI18nSource(resolve("."));
 
 // Check all cache files
 let failed = false;

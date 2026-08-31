@@ -171,6 +171,23 @@ export function isPassthroughTranslation(source: string, translated: string): bo
   return source.trim().toLowerCase() === translated.trim().toLowerCase();
 }
 
+/**
+ * Read a sibling `<name>.verbatim.json` array of keys allowed to legitimately match their English
+ * source verbatim (see `verbatimKeys` on {@link I18nTranslationOptions}), returning `[]` when the
+ * file is absent or isn't a string array. Lets a `src/i18n.json` source's verbatim-key list live
+ * alongside it as its own file — never mixed into `i18n.json` itself, which some packages (e.g.
+ * `@pantoken/web-components`) also import directly as their runtime English-defaults object — so a
+ * marker key can never leak into a public strings type.
+ */
+export function readVerbatimKeys(path: string): string[] {
+  try {
+    const parsed = JSON.parse(readFileSync(path, "utf8")) as unknown;
+    return Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
 // ── CLI translation runner ────────────────────────────────────────────────────
 
 /** Options for {@link runI18nTranslationCli}. */
@@ -193,19 +210,31 @@ export interface I18nTranslationOptions {
    * override alongside a custom `isCached` when a legacy cache stores values under `sha256(key)`.
    */
   cachedValue?: (key: string, cache: Record<string, string>) => string | undefined;
+  /**
+   * Source keys allowed to legitimately match the English source in some or all locales (e.g. a
+   * format placeholder like `"yyyy-mm-dd"` that most locales keep verbatim, while others — Dutch's
+   * `"jjjj-mm-dd"`, say — translate it). Exempt from the passthrough guard entirely: identical
+   * output for these keys is cached normally, never stripped or warned about. Per-key, not
+   * per-locale — this doesn't force a locale to stay verbatim, it just stops flagging it as a
+   * likely AI failure when it does.
+   */
+  verbatimKeys?: readonly string[];
 }
 
 /**
  * Drop any entry from `cache` whose value is an untranslated echo of its English source, so it's
- * retranslated this run instead of sitting there looking done forever. Returns the reset keys.
+ * retranslated this run instead of sitting there looking done forever. Skips any key in
+ * `verbatimKeys`. Returns the reset keys.
  */
 function resetPassthroughEntries(
   cache: Record<string, string>,
   source: Record<string, string>,
   cachedValue: (key: string, cache: Record<string, string>) => string | undefined,
+  verbatimKeys: ReadonlySet<string>,
 ): string[] {
   const reset: string[] = [];
   for (const key of Object.keys(source)) {
+    if (verbatimKeys.has(key)) continue;
     const current = cachedValue(key, cache);
     if (current !== undefined && isPassthroughTranslation(source[key], current)) {
       delete cache[key];
@@ -234,7 +263,8 @@ async function translateLocale(
   }
 
   const cachedValue = options.cachedValue ?? ((key: string, c: Record<string, string>) => c[key]);
-  const resetKeys = resetPassthroughEntries(cache, options.source, cachedValue);
+  const verbatimKeys = new Set(options.verbatimKeys ?? []);
+  const resetKeys = resetPassthroughEntries(cache, options.source, cachedValue, verbatimKeys);
   if (resetKeys.length > 0) {
     console.warn(
       `⚠ ${locale}: reset ${resetKeys.length} previously-cached entr${resetKeys.length === 1 ? "y" : "ies"} that matched the English source (will retry): ${resetKeys.join(", ")}`,
@@ -270,7 +300,7 @@ Respond with a JSON object mapping each original key to its translation, using t
       const value = translated[key];
       if (typeof value !== "string" || value.trim().length === 0) {
         suspectKeys.push(`${key} (missing or empty)`);
-      } else if (isPassthroughTranslation(options.source[key], value)) {
+      } else if (!verbatimKeys.has(key) && isPassthroughTranslation(options.source[key], value)) {
         suspectKeys.push(`${key} (identical to source)`);
       } else {
         cache[key] = value;

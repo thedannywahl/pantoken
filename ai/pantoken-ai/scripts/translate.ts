@@ -8,16 +8,18 @@
 
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { runI18nTranslationCli } from "@pantoken/translation-adapters";
+import { readVerbatimKeys, runI18nTranslationCli } from "@pantoken/translation-adapters";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 async function main(): Promise<void> {
   const source = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
+  const verbatimKeys = readVerbatimKeys(resolve("src/i18n.verbatim.json"));
   await runI18nTranslationCli({
     label: "@pantoken/ai strings",
     source,
     targetLocales: Object.keys(CANVAS_LOCALES),
     cachePath: (locale) => `i18n-cache/${locale}.json`,
+    verbatimKeys,
   });
 }
 

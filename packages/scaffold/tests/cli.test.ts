@@ -228,7 +228,7 @@ test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", as
 
 test("collectI18nSource merges src/i18n.json with every template's scaffold.json without mutating either", () => {
   const root = new URL("..", import.meta.url).pathname;
-  const source = collectI18nSource(root);
+  const { source } = collectI18nSource(root);
 
   // Static CLI copy is present.
   expect(source.nextStepsHeading).toBe("Next steps:");

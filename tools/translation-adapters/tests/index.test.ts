@@ -11,6 +11,7 @@ const {
   extractJsonObject,
   generateLocaleBundles,
   isPassthroughTranslation,
+  readVerbatimKeys,
   runI18nTranslationCli,
   sha256,
   spawnPrompt,
@@ -75,6 +76,30 @@ test("isPassthroughTranslation is false for a genuine translation", () => {
 
 test("isPassthroughTranslation is true for two empty strings", () => {
   expect(isPassthroughTranslation("", "")).toBe(true);
+});
+
+// ── readVerbatimKeys ──────────────────────────────────────────────────
+
+test("readVerbatimKeys reads a string array from disk", () => {
+  const path = join(testDir, "i18n.verbatim.json");
+  writeFileSync(path, JSON.stringify(["datePlaceholder", "shortcut"]));
+  expect(readVerbatimKeys(path)).toEqual(["datePlaceholder", "shortcut"]);
+});
+
+test("readVerbatimKeys returns an empty array when the file doesn't exist", () => {
+  expect(readVerbatimKeys(join(testDir, "missing.json"))).toEqual([]);
+});
+
+test("readVerbatimKeys returns an empty array for non-array or malformed JSON", () => {
+  const path = join(testDir, "bad.json");
+  writeFileSync(path, JSON.stringify({ not: "an array" }));
+  expect(readVerbatimKeys(path)).toEqual([]);
+});
+
+test("readVerbatimKeys filters out non-string array entries", () => {
+  const path = join(testDir, "mixed.json");
+  writeFileSync(path, JSON.stringify(["ok", 1, null]));
+  expect(readVerbatimKeys(path)).toEqual(["ok"]);
 });
 
 // ── TranslationMemory ─────────────────────────────────────────────────────────
@@ -431,6 +456,48 @@ test("runI18nTranslationCli audits a legacy hash-keyed cache via a custom cached
   }
   // The stale hash-keyed entry is stripped and the fresh translation is saved under the plain key.
   expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({ hello: "Szia" });
+});
+
+test("runI18nTranslationCli caches a verbatimKeys entry even when identical to the source", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatimKeys: ["datePlaceholder"],
+    });
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    datePlaceholder: "yyyy-mm-dd",
+  });
+});
+
+test("runI18nTranslationCli does not reset a previously-cached verbatimKeys entry", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatimKeys: ["datePlaceholder"],
+    });
+    expect(spawn).not.toHaveBeenCalled();
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
 });
 
 // ── generateLocaleBundles ──────────────────────────────────────────────────────
