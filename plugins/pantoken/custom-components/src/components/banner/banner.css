@@ -19,8 +19,9 @@
  * @modifier -icon-* — Swap the default `info` glyph for an icon from the shared icon set (for example, `-icon-megaphone`).
  * @structure
  * .pfx-banner {
- *   .title:optional {}
- *   .content {}
+ *   .content {
+ *     .title:optional {}
+ *   }
  *   @component close-button:optional {}
  * }
  * @part .title — An optional title, using title-card typography appropriate to the active size.
@@ -31,8 +32,10 @@
  * @example -nocard
  * ```html
  * <div class="pfx-banner -color-violet -icon-megaphone" role="status">
- *   <div class="title">New feature</div>
- *   <div class="content">This is a violet banner with a custom icon.</div>
+ *   <div class="content">
+ *     <div class="title">New feature</div>
+ *     This is a violet banner with a custom icon.
+ *   </div>
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
@@ -133,16 +136,6 @@
 
 @scope (.pfx-banner) {
   :scope {
-    > .title {
-      font-size: var(--instui-component-heading-title-card-regular-font-size);
-      font-weight: var(--instui-component-heading-title-card-regular-font-weight);
-    }
-
-    &.-size-compact > .title {
-      font-size: var(--instui-component-heading-title-card-mini-font-size);
-      font-weight: var(--instui-component-heading-title-card-mini-font-weight);
-    }
-
     > .content {
       display: flex;
       flex-direction: column;
@@ -150,6 +143,16 @@
       gap: var(--instui-component-banner-content-gap-vertical);
       font-size: var(--instui-font-size-text-base);
       line-height: var(--instui-line-height-standalone-text-base);
+    }
+
+    > .content > .title {
+      font-size: var(--instui-component-heading-title-card-regular-font-size);
+      font-weight: var(--instui-component-heading-title-card-regular-font-weight);
+    }
+
+    &.-size-compact > .content > .title {
+      font-size: var(--instui-component-heading-title-card-mini-font-size);
+      font-weight: var(--instui-component-heading-title-card-mini-font-weight);
     }
 
     &.-size-compact > .content {
