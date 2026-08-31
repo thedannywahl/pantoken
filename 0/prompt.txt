@@ -3,3 +3,17 @@ should I set 'main' as the deploy branch?
 ---
 
 agents are struggling with raw-md-in-html, can we write a redirect in index.html that points to /SKILL.md ?
+
+---
+
+what about removing index.html and using the custom 404 page with 404.md being the skill and 
+```
+---
+permalink: /404.html
+---
+```
+as the frontmatter?
+
+---
+
+and as the copy let's call it `SKILL.md` so it's `create.pantoken.app/skill.md`
