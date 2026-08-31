@@ -152,6 +152,7 @@ test("banner icon is top-aligned and sizes its swatch by spacing variant", () =>
 
 test("banner title and content use typography appropriate to the spacing variant", () => {
   const css = bannerRules("instui-");
+  expect(css).toContain("> .content > .title");
   expect(css).toContain("var(--instui-component-heading-title-card-regular-font-size)");
   expect(css).toContain("var(--instui-component-heading-title-card-mini-font-size)");
   expect(css).toContain("var(--instui-font-size-text-base)");
