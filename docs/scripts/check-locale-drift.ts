@@ -20,6 +20,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
+import { GLOSSARY_TERMS } from "./glossary.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
@@ -102,10 +103,24 @@ const chromeDrift = (locale: string): Missing[] => {
   return missing;
 };
 
+/** Glossary drift: every structural term (headings/badges/table labels) needs a cached translation. */
+const glossaryDrift = (locale: string): Missing[] => {
+  if (GLOSSARY_TERMS.length === 0) return [];
+  const cached = loadCacheKeys(locale, "glossary");
+  const missing: Missing[] = [];
+  for (const { id, term } of GLOSSARY_TERMS) {
+    if (!cached.has(keyFor("text", term))) {
+      missing.push({ file: `glossary.ts#${id}`, kind: "text", sample: preview(term) });
+    }
+  }
+  return missing;
+};
+
 let drifted = 0;
 for (const locale of targets) {
   const guides = guideDrift(locale);
   const chrome = chromeDrift(locale);
+  const glossary = glossaryDrift(locale);
   const apiGenerated = existsSync(apiDir);
   const api = apiGenerated ? apiDrift(locale) : [];
 
@@ -115,7 +130,7 @@ for (const locale of targets) {
     );
   }
 
-  const all = [...guides, ...chrome, ...api];
+  const all = [...guides, ...chrome, ...glossary, ...api];
   if (all.length === 0) {
     console.log(`✓ ${locale}: no translation drift${apiGenerated ? "" : " (guides only)"}.`);
     continue;
