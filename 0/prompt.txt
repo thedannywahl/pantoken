@@ -1,0 +1,20 @@
+we have moved this repo from pantoken.iywahl.com to pantoken.app.  we have the homepage of the docs site demo so agent utilities to run the ai skill that says "get from... pantoken.iywahl.com/create-pantoken-app.md ..." (it might now say pantoken.app/create-pantoken-app.md).
+I want to do a URL hack so that `create.pantoken.app` serves the skill file directly as the index, if we need to create a new DNS entry in cloudflare and a new github repo as a submodule in this repo that's fine. we can remove/update the script that writes the file to /create-pantoken-app.md to this new one.
+
+---
+
+In this repo (pantoken), search thoroughly for:
+1. All references to "pantoken.iywahl.com" or "iywahl.com" across the repo (docs, scripts, config, DNS/Cloudflare config, GitHub workflows).
+2. All references to "create-pantoken-app.md" - especially any script that generates/writes this file (likely serves as an "AI skill" bootstrap file for agent tooling), where it's written to (e.g. docs/public/create-pantoken-app.md), and what content it contains (the "get from pantoken.iywahl.com/create-pantoken-app.md" instruction).
+3. Any existing Cloudflare configuration in this repo (wrangler.toml, cloudflare pages config, DNS records as code, workers, etc.)
+4. Any existing git submodules in this repo (check .gitmodules) and how they're used - especially any pattern of a submodule repo used for hosting a specific domain/subdomain (e.g. is there already a separate github repo used as a submodule for a custom domain like pantoken.app or docs)
+5. The docs site homepage content that currently shows "agent utilities" / "run the ai skill" text mentioning the URL to fetch create-pantoken-app.md - find the exact file and exact wording.
+6. Look at ai/pantoken-ai directory structure and content - this seems related to consumer-facing agent assets, understand what it contains and how it relates to create-pantoken-app.md.
+7. Check package.json and any deploy scripts for how docs site / homepage is built and deployed (VitePress build), and any custom domain config (CNAME files, vercel.json, netlify.toml, cloudflare pages config).
+
+Report back:
+- Exact file paths and line numbers/snippets for all of the above.
+- The exact current domain name used (pantoken.iywahl.com vs already pantoken.app) in each location found.
+- Whether there's a github workflow that deploys docs and what it deploys to (Cloudflare Pages? GitHub Pages? Vercel?).
+- Any existing submodule usage pattern to model a new submodule after.
+- Full content of the script that writes create-pantoken-app.md if found.
