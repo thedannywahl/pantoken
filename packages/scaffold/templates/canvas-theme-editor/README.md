@@ -62,7 +62,7 @@ This opens a Vite dev server with:
 
 ## Notes on Canvas's RCE
 
-Canvas's Rich Content Editor runs TinyMCE and sanitizes submitted HTML on the server against an
+The Canvas Rich Content Editor runs TinyMCE and sanitizes submitted HTML on the server against an
 allowlist (`gems/canvas_sanitize` in canvas-lms, kept in sync with TinyMCE's own
 `valid_elements`/`extended_valid_elements`). What that allowlist means for templates built here:
 

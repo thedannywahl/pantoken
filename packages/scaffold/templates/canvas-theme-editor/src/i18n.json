@@ -24,7 +24,7 @@
   "downloadJsLabel": "Download theme.js",
   "regenerateLabel": "Regenerate from config",
   "helpModalTitle": "How to use this page",
-  "helpModalBody1": "Pick a starter template, edit it like you would in Canvas's Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
+  "helpModalBody1": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
   "helpModalBody2": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
   "closeLabel": "Close"
 }
