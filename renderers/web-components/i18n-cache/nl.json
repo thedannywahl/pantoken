@@ -2,8 +2,8 @@
   "prevMonth": "Vorige maand",
   "nextMonth": "Volgende maand",
   "dateLabel": "Datum",
-  "datePlaceholder": "yyyy-mm-dd",
-  "openCalendar": "Kalender openen",
+  "datePlaceholder": "jjjj-mm-dd",
+  "openCalendar": "Open kalender",
   "timeLabel": "Tijd",
   "back": "Terug"
 }

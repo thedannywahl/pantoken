@@ -1,9 +1,9 @@
 {
-  "prevMonth": "Ovddit mánnu",
-  "nextMonth": "Boahtte mánnu",
-  "dateLabel": "Beaivemearri",
-  "datePlaceholder": "yyyy-mm-dd",
-  "openCalendar": "Raba kaleándara",
+  "prevMonth": "Ovtta mánnu",
+  "nextMonth": "Maŋŋel mánnu",
+  "dateLabel": "Dátuma",
+  "datePlaceholder": "åååå-mm-dd",
+  "openCalendar": "Ávnnat kalendára",
   "timeLabel": "Áigi",
-  "back": "Ruovttoluotta"
+  "back": "Boađe"
 }

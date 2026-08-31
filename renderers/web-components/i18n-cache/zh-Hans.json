@@ -1,6 +1,6 @@
 {
-  "prevMonth": "上一月",
-  "nextMonth": "下一月",
+  "prevMonth": "上个月",
+  "nextMonth": "下个月",
   "dateLabel": "日期",
   "datePlaceholder": "yyyy-mm-dd",
   "openCalendar": "打开日历",

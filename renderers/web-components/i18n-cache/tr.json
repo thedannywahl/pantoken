@@ -2,7 +2,7 @@
   "prevMonth": "Önceki ay",
   "nextMonth": "Sonraki ay",
   "dateLabel": "Tarih",
-  "datePlaceholder": "yyyy-mm-dd",
+  "datePlaceholder": "yyyy-aa-gg",
   "openCalendar": "Takvimi aç",
   "timeLabel": "Saat",
   "back": "Geri"
