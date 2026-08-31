@@ -1,0 +1,46 @@
+~/packages/scaffold$ vp pack ○ cache miss: 'renderers/web-components/package.json' modified, executing
+pantoken meta: generated VS Code custom data and cssdoc model (672 class entries, 4683 token properties, 87 model entries)
+
+ℹ entry: src/index.ts, src/cli.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+error: Build failed with 2 errors:
+
+[PARSE_ERROR] Expected `,` or `}` but found `-`
+   ╭─[ generated/locales/index.ts:8:19 ]
+   │
+ 8 │ import { LOCALE_EN-AU } from "./en-AU.js";
+   │        ┬          ┬
+   │        ╰───────────── Opened here
+   │                   │
+   │                   ╰── `,` or `}` expected
+───╯
+
+[plugin rolldown-plugin-dts:generate]
+RolldownError: Expected `,` or `}` but found `-`
+  x Expected `,` or `}` but found `-`
+   ,-[/Users/dwahl/Scripts/pantoken/packages/scaffold/generated/locales/index.ts:8:19]
+ 7 | import { LOCALE_EL } from "./el.js";
+ 8 | import { LOCALE_EN-AU } from "./en-AU.js";
+   :        |          |
+   :        |          `-- `,` or `}` expected
+   :        `-- Opened here
+ 9 | import { LOCALE_EN-CA } from "./en-CA.js";
+   `----
+    at error (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/logs-DmYCAKcW.mjs:159:24)
+    at LoadPluginContextImpl.error (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-V9YvAjrr.mjs:111:10)
+    at LoadPluginContextImpl.handler (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/tsdown/dist-BsS7BOcb.js:1479:19)
+    at plugin (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-V9YvAjrr.mjs:1569:30)
+    at file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-V9YvAjrr.mjs:1928:21
+    at plugin.<computed> (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/bindingify-input-options-V9YvAjrr.mjs:2125:18)
+    at aggregateBindingErrorsIntoJsError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-NcRuXAVN.mjs:48:18)
+    at unwrapBindingResult (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/error-NcRuXAVN.mjs:18:128)
+    at #build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/shared/rolldown-Bblizyw1.mjs:132:34)
+    at async build (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/rolldown/index.mjs:48:22)
+    at async Promise.all (index 0)
+    at async buildSingle (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/tsdown/build-D_enfyvD-tOzhITac.js:6382:19)
+    at async Promise.all (index 0)
+    at async buildWithConfigs (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/tsdown/build-D_enfyvD-tOzhITac.js:6338:18)
+    at async runBuild (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vite-plus@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_@vitest+coverage-v8@4._7dc91ea5beec7cf6015d1a898f1021e8/node_modules/vite-plus/dist/pack-bin.js:702:3)
+    at async CAC.<anonymous> (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/vite-plus@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_@vitest+coverage-v8@4._7dc91ea5beec7cf6015d1a898f1021e8/node_modules/vite-plus/dist/pack-bin.js:704:2)
