@@ -1,0 +1,32 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1C1MPEF20NA99PAG114T8TD",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/package.json",
+    "docs/scripts/api-translation.ts",
+    "docs/scripts/build-api-locales.test.ts",
+    "docs/scripts/check-locale-drift.test.ts",
+    "docs/scripts/check-locale-drift.ts",
+    "docs/scripts/glossary.ts",
+    "docs/scripts/translate-glossary.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
