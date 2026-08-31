@@ -24,10 +24,16 @@ test("buildLocaleFile produces valid TS for a translated locale (hu)", () => {
   expect(ts).toContain("Vissza");
 });
 
-test("buildLocaleFile produces bare makeStrings() for English variants (en-AU)", () => {
+test("buildLocaleFile produces bare makeStrings() for English variants without overrides (en-CA)", () => {
+  const ts = buildLocaleFile("en-CA");
+  expect(ts).toContain("export const enCA: LocaleBundle");
+  // en-CA has same values as English so no overrides argument
+  expect(ts).toContain('makeStrings("en-CA")');
+  expect(ts).not.toContain("prevMonth");
+});
+
+test("buildLocaleFile keeps locale-specific English variant overrides (en-AU)", () => {
   const ts = buildLocaleFile("en-AU");
   expect(ts).toContain("export const enAU: LocaleBundle");
-  // en-AU has same values as English so no overrides argument
-  expect(ts).toContain('makeStrings("en-AU")');
-  expect(ts).not.toContain("prevMonth");
+  expect(ts).toContain('datePlaceholder: "dd/mm/yyyy"');
 });
