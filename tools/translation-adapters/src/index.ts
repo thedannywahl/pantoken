@@ -175,9 +175,11 @@ export function isPassthroughTranslation(source: string, translated: string): bo
  * A key's verbatim policy: `"allow"` permits every locale to legitimately match the English source;
  * otherwise a per-tier list of locale patterns (an exact code like `"en-GB"`, a `"prefix*"` glob, or
  * `"*"` for every locale) decides the outcome for a locale whose response is identical to the
- * source — `allow` caches it silently, `warn` caches it but logs a note, and any locale matched by
- * neither list (the implicit `error` tier) is treated as a likely AI failure: not cached, retried
- * next run. Omitting `verbatim` entirely is the strict default, equivalent to `error: ["*"]`.
+ * source — `allow` caches it silently, `warn` caches it but logs a note, and an explicit `error`
+ * tier match forces retranslation even over a caller-supplied default policy. A locale matched by
+ * none of the tiers falls through to that default policy (see {@link resolveVerbatimAction}); still
+ * unmatched is the strict default: not cached, retried next run. Omitting `verbatim` entirely is
+ * equivalent to no tiers at all.
  */
 export type VerbatimPolicy =
   | "allow"
@@ -238,19 +240,34 @@ function formatKeyList(keys: readonly string[]): string {
   return keys.map((key) => `  - ${key}`).join("\n");
 }
 
+/** Check a single (non-`"allow"`-shorthand) policy's tiers for `locale`, `error` first. */
+function matchPolicyTiers(
+  policy: Exclude<VerbatimPolicy, "allow">,
+  locale: string,
+): "allow" | "warn" | "error" | undefined {
+  if (policy.error?.some((p) => localeMatchesPattern(p, locale))) return "error";
+  if (policy.allow?.some((p) => localeMatchesPattern(p, locale))) return "allow";
+  if (policy.warn?.some((p) => localeMatchesPattern(p, locale))) return "warn";
+  return undefined;
+}
+
 /**
  * Resolve what a passthrough (identical-to-source) value should do for `locale`, given a key's
- * declared `policy` (`undefined` — no `verbatim` field — is the strict default, `"error"`).
+ * declared `policy` and an optional `defaultPolicy` fallback. `policy`'s own tiers are checked
+ * first (its `error` tier always wins, even over a permissive default); if none of its tiers match
+ * `locale`, `defaultPolicy`'s tiers are checked the same way. Still no match (or both are
+ * `undefined`) is the strict default: `"error"`.
  */
 export function resolveVerbatimAction(
   policy: VerbatimPolicy | undefined,
   locale: string,
+  defaultPolicy?: VerbatimPolicy,
 ): "allow" | "warn" | "error" {
-  if (policy === undefined) return "error";
   if (policy === "allow") return "allow";
-  if (policy.allow?.some((p) => localeMatchesPattern(p, locale))) return "allow";
-  if (policy.warn?.some((p) => localeMatchesPattern(p, locale))) return "warn";
-  return "error";
+  const matched = policy && matchPolicyTiers(policy, locale);
+  if (matched !== undefined) return matched;
+  if (defaultPolicy === "allow") return "allow";
+  return (defaultPolicy && matchPolicyTiers(defaultPolicy, locale)) ?? "error";
 }
 
 // ── CLI translation runner ────────────────────────────────────────────────────
@@ -277,16 +294,16 @@ export interface I18nTranslationOptions {
   cachedValue?: (key: string, cache: Record<string, string>) => string | undefined;
   /**
    * Per-key verbatim policies (see {@link VerbatimPolicy}), typically produced by
-   * {@link parseI18nSource} from the same `src/i18n.json` `source` came from. Keys absent here use
-   * `defaultVerbatim` (if set), then the strict default: identical output is treated as a likely
-   * AI failure for every locale.
+   * {@link parseI18nSource} from the same `src/i18n.json` `source` came from. For a locale not
+   * covered by a key's own tiers, resolution falls through to `defaultVerbatim` (if set), then the
+   * strict default: identical output is treated as a likely AI failure for every locale.
    */
   verbatim?: Record<string, VerbatimPolicy>;
   /**
-   * A fallback {@link VerbatimPolicy} applied to every key that has no entry in `verbatim` — e.g. a
-   * blanket "these language families are close enough to English that an identical response isn't
-   * necessarily a translator failure" rule, built with {@link localeFamilyGlobs}. A key's own entry
-   * in `verbatim` always takes precedence over this default.
+   * A fallback {@link VerbatimPolicy} applied to every locale not covered by a key's own `verbatim`
+   * tiers — e.g. a blanket "these language families are close enough to English that an identical
+   * response isn't necessarily a translator failure" rule, built with {@link localeFamilyGlobs}. A
+   * key's own `error` tier still wins over this default for a matching locale.
    */
   defaultVerbatim?: VerbatimPolicy;
 }
@@ -310,7 +327,7 @@ function resetPassthroughEntries(
   for (const key of Object.keys(source)) {
     const current = cachedValue(key, cache);
     if (current === undefined || !isPassthroughTranslation(source[key], current)) continue;
-    const action = resolveVerbatimAction(verbatim[key] ?? defaultVerbatim, locale);
+    const action = resolveVerbatimAction(verbatim[key], locale, defaultVerbatim);
     if (action === "allow") continue;
     if (action === "warn") {
       warned.push(key);
@@ -394,7 +411,7 @@ Respond with a JSON object mapping each original key to its translation, using t
         continue;
       }
       if (isPassthroughTranslation(options.source[key], value)) {
-        const action = resolveVerbatimAction(verbatim[key] ?? options.defaultVerbatim, locale);
+        const action = resolveVerbatimAction(verbatim[key], locale, options.defaultVerbatim);
         if (action === "error") {
           suspectKeys.push(`${key} (identical to source)`);
           continue;

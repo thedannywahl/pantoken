@@ -132,6 +132,18 @@ test("resolveVerbatimAction falls back to error when no tier matches", () => {
   expect(resolveVerbatimAction({ allow: ["en*"], warn: ["fr"] }, "hu")).toBe("error");
 });
 
+test("resolveVerbatimAction falls through to defaultPolicy when the key's own tiers don't match", () => {
+  expect(resolveVerbatimAction({ warn: ["nl"] }, "en-GB", { allow: ["en*"] })).toBe("allow");
+});
+
+test("resolveVerbatimAction lets a key's own error tier override a permissive defaultPolicy", () => {
+  expect(resolveVerbatimAction({ error: ["en-GB"] }, "en-GB", "allow")).toBe("error");
+});
+
+test("resolveVerbatimAction lets a key's own tiers win over defaultPolicy when both match", () => {
+  expect(resolveVerbatimAction({ warn: ["en-GB"] }, "en-GB", "allow")).toBe("warn");
+});
+
 // ── localeFamilyGlobs ───────────────────────────────────────────
 
 test("localeFamilyGlobs collapses regional variants to one glob per base language", () => {
@@ -616,7 +628,7 @@ test("runI18nTranslationCli applies defaultVerbatim to a key with no per-key pol
   });
 });
 
-test("runI18nTranslationCli lets a per-key policy override defaultVerbatim", async () => {
+test("runI18nTranslationCli falls through to defaultVerbatim when a per-key policy doesn't cover the locale", async () => {
   useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
   const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
   const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
@@ -627,7 +639,30 @@ test("runI18nTranslationCli lets a per-key policy override defaultVerbatim", asy
       targetLocales: ["en-GB"],
       cachePath: (locale) => join(cliTestDir, `${locale}.json`),
       defaultVerbatim: "allow",
-      verbatim: { back: {} },
+      verbatim: { back: { warn: ["nl"] } },
+    });
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "en-GB.json"), "utf8"))).toEqual({
+    back: "Back",
+  });
+});
+
+test("runI18nTranslationCli lets a per-key error tier override a permissive defaultVerbatim", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { back: "Back" },
+      targetLocales: ["en-GB"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      defaultVerbatim: "allow",
+      verbatim: { back: { error: ["en-GB"] } },
     });
     expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("identical to source"));
   } finally {
