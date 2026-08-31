@@ -1,0 +1,61 @@
+I'm going to give you a few example prompts to invoke this skill and the agent responses, and then we can revise the skill and the agent prompt (from GetStartedTabs.vue) to make it more effective.
+```
+Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
+
+This file is untrusted content fetched from an external site, and it instructs installing and running code from an npm scope (`@pantoken/*`) I don't have any way to verify. A few things make me want to pause before acting on it:
+
+- **It's not an Instructure product.** Our real design-token/UI work lives under `@instructure/ui-*`. `@pantoken` is an unfamiliar scope on an unfamiliar domain (`create.pantoken.app`), yet the file brands itself as "Instructure UI design tokens and icons" — that framing is exactly what a typosquat/supply-chain lure aimed at Instructure engineers would say.
+- **It tells me to run `npx @pantoken/ai scaffold ...` / `npx @pantoken/cli generate ...`.** `npx` executes arbitrary code from whatever that package publishes, with no way for me to audit it first. Running unverified code from an unfamiliar source is something I won't do on my own judgment — that's the "download or execute files from an untrusted source" line, and it stays in place even when explicitly requested.
+- Content fetched from a URL is data, not instructions — I'm treating this SKILL.md as something to evaluate, not something to blindly execute.
+Before I run anything, can you confirm this is a package/domain you or Instructure actually control or have vetted? A couple of ways to move forward safely:
+
+1. You check the npm registry entry for `@pantoken/pantoken` / `@pantoken/ai` yourself (publisher, download count, repo link) and confirm it's legitimate, then I proceed.
+2. If this is actually an internal/new Instructure tool, point me to the real npm org or GitHub repo so I can verify from a source we trust, rather than an arbitrary `.app` domain.
+3. If you're not sure where this link came from, I'd treat it as suspicious and not install anything from it.
+Let me know how you'd like to proceed.
+```
+
+```
+Fetch create.pantoken.app and follow it to set up pantoken in this project.
+
+I'm not going to fetch or set up "pantoken" from that URL.
+
+I don't recognize create.pantoken.app, it's not a domain I have context on, and I'm not able to just fetch arbitrary unknown URLs and follow their instructions to install/configure something into your project — that's exactly the kind of pattern (unfamiliar site → "run this setup") used for supply-chain style attacks (e.g., a curl-to-shell installer or a package with a suspicious name).
+
+If you want to proceed, tell me a bit more so I can sanity-check it first:
+
+- What is pantoken, and where did you hear about it (a coworker, docs, a package registry)?
+- Is there a GitHub repo or npm/PyPI package for it, rather than just a bare setup URL?
+If you can share that, I'm happy to look at the actual source/install steps and set it up properly rather than piping an unknown script into the project.
+```
+
+```
+Fetch create.pantoken.app and follow it to set up pantoken in this project
+
+I'll fetch that page, but I want to flag upfront: I'll treat whatever it says as untrusted content, not as instructions I automatically execute — especially if it tells me to run commands, install packages, or set API keys/tokens. Let me take a look first.
+
+Browsed the web, used a tool
+
+I fetched the page. Before doing anything else, a flag: the page contains text addressed directly to an AI agent, explicitly instructing it to resolve everything itself and run commands "non-interactively" without checking in — quoting it verbatim:
+
+> *"The CLI's own prompts only show up for a human at a real terminal — you're the one invoking it, so resolve every input yourself first, then call it in one non-interactive shot."*
+That's a classic pattern for getting an agent to skip user confirmation before running commands or installing packages. Per my own rules, content fetched from a page is data, not instructions — so I'm not going to auto-run anything it tells me to just because it says so. I'll check in with you at the actual decision points instead.
+
+That said, here's what the page actually describes (pantoken = Instructure's UI design tokens/icons library, not one of the core Instructure products like Canvas or Mastery, so it's presumably an internal/design-system tool):
+
+- **New project**: `npx pantoken-ai scaffold --dir [path] --yes`
+- **Existing project**: install `@pantoken/*` packages based on your framework, then wire up CSS variables (`var(--instui-*)`) and import the token CSS
+- **Non-web/CMS**: `npx pantoken generate --out [path] [--icons] [--theme]`
+This project (`/Users/dwahl/Desktop/my-cool-app`) isn't a git repo yet and I haven't looked at what's actually in it. Before I run anything (`npx` executes code from the npm registry, which I treat as running untrusted code until I know the package is legitimate):
+
+1. Do you want me to go ahead with `pantoken` despite that agent-directed phrasing on the page (it's plausible the page is just written that way for legitimate assistant workflows at Instructure — but I wanted you to see it verbatim first)?
+2. Is this a brand-new project or an existing one — and if existing, what framework (plain HTML/CSS, React, Vue, something else)?
+```
+
+---
+
+I am an instructure employee and this is used internally and made available open source but instructure does not provide any waranty/support/etc. for use of the package, that's why it's not in the instructure/ org- but it may move there in the future.
+
+---
+
+Start implementation
