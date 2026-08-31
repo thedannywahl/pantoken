@@ -353,7 +353,7 @@ export default defineConfig({
       // Drift checks for all i18n domains (UI, docs, CLI).
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       "i18n:bundles:build": {
         command: "vp run @pantoken/i18n#generate",
