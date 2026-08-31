@@ -1,0 +1,2 @@
+commitlint is failing in ci on pr 118 use gh cli to investigate and fix.
+https://github.com/thedannywahl/pantoken/actions/runs/33437052058/job/99635900415?pr=118
