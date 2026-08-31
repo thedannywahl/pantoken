@@ -1,0 +1,5 @@
+these joins should output lists for legibility in a console.
+
+---
+
+now we need a global config option that applies to all strings so we can say verbatim en* is allowed, pt* is allowed, etc that you build from the list of ~47 locales.
