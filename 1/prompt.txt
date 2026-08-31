@@ -1,0 +1,1 @@
+these joins should output lists for legibility in a console.
