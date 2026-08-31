@@ -9,6 +9,9 @@ export default defineConfig({
     // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
     // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
     setupFiles: [`${__dir}/scripts/quality/fast-check-setup.ts`],
+    // Default (5000ms) is too tight for a full-suite local run (277 files) where module transform/
+    // import contends for CPU; slower CI/gh runners need the same headroom.
+    testTimeout: 20_000,
     include: [
       "packages/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "formats/**/*.{test,spec}.?(c|m)[jt]s?(x)",
