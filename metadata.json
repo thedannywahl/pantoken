@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1CFG1G6HVP0AZC0Y1YG32ZA",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 5,
+  "checkpoints_count": 6,
   "files_touched": [
     ".changeset/docs-translate-units-passthrough-guard.md",
     "docs/scripts/translation-memory.test.ts",
@@ -23,6 +23,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
