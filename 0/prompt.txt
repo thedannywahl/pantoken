@@ -1,0 +1,25 @@
+❯ docs/scripts/build-api-locales.test.ts (2 tests | 1 failed) 7085ms
+   × build localizes markdown headings, prose, and sidebars, then logs the summary 6245ms
+
+---
+
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ docs/scripts/build-api-locales.test.ts:100:1
+     98| }
+     99|
+    100| test("build localizes markdown headings, prose, and sidebars, then log…
+       | ^
+    101|   await import("./build-api-locales.ts");
+    102|   await vi.waitFor(() =>
+ ❯ VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:1273:59
+ ❯ VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:1180:73
+ ❯ VitestModuleRunner.import node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:1135:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 276 passed (277)
+      Tests  1 failed | 1766 passed (1767)
+   Start at  11:09:11
+   Duration  56.38s (transform 75.59s, setup 10.74s, import 274.16s, tests 98.02s, environment 17.39s)
