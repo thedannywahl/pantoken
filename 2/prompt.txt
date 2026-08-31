@@ -11,3 +11,11 @@ do we need to provide better hints for the translation tools when dealing with m
 ---
 
 we need a way to do translations with a force or no-cache flag.
+
+---
+
+I don't have a translation workflow running, but these 255 files keep getting re-added with their broken ts docs.
+
+---
+
+I think it's something in the `vpr ready` pipeline and possibly a linter/formatter.  These files are already broken, so maybe if we manually fix them once it'll resolve?
