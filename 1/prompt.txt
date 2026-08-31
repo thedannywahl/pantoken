@@ -1,0 +1,21 @@
+this is a partial translation, does the new verbatim workflow just skip translations or did something break?
+
+---
+
+I thought the default was configured for en* ?
+
+---
+
+wire it up.
+
+---
+
+we need defaultVerbatim on every translation pipeline.
+
+---
+
+what about docs and cli?
+
+---
+
+nuke that NUL byte if it's not supposed to be there.
