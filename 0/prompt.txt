@@ -1,0 +1,25 @@
+FAIL  packages/create-pantoken-app/tests/index.test.ts > --version prints this package's own version
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ packages/create-pantoken-app/tests/index.test.ts:14:1
+     12| });
+     13|
+     14| test("--version prints this package's own version", () => {
+       | ^
+     15|   const pkg = JSON.parse(readFileSync(new URL("../package.json", impor…
+     16|     version: string;
+ ❯ VitestModuleRunner.directRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:1273:59
+ ❯ VitestModuleRunner.cachedRequest node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:1180:73
+ ❯ VitestModuleRunner.import node_modules/.pnpm/@voidzero-dev+vite-plus-core@0.3.0_@arethetypeswrong+core@0.18.5_@types+node@26.4.0_jit_c642cfd3cc9ad6f847a1a12a8fe26b2c/node_modules/@voidzero-dev/vite-plus-core/dist/vite/node/module-runner.js:1135:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 276 passed (277)
+      Tests  1 failed | 1766 passed (1767)
+   Start at  11:17:08
+   Duration  55.11s (transform 118.75s, setup 9.65s, import 276.41s, tests 108.53s, environment 13.36s)
+
+---
+
+bump the testTimeout - this was running locally and not on a gh runner which will be slower.
