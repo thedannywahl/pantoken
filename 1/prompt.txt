@@ -1,0 +1,5 @@
+our defautls are still not applying to he scaffold translation package, it's dropping several english verbatims but en* should be allowed.
+
+---
+
+I have manually added back the missing strings so no need to regenerate the translations.
