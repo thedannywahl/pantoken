@@ -2,7 +2,7 @@
   "prevMonth": "Førre månad",
   "nextMonth": "Neste månad",
   "dateLabel": "Dato",
-  "datePlaceholder": "yyyy-mm-dd",
+  "datePlaceholder": "åååå-mm-dd",
   "openCalendar": "Opne kalender",
   "timeLabel": "Tid",
   "back": "Tilbake"

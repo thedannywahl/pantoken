@@ -2,7 +2,7 @@
   "prevMonth": "Προηγούμενος μήνας",
   "nextMonth": "Επόμενος μήνας",
   "dateLabel": "Ημερομηνία",
-  "datePlaceholder": "εεεε-μμ-ηη",
+  "datePlaceholder": "yyyy-mm-dd",
   "openCalendar": "Άνοιγμα ημερολογίου",
   "timeLabel": "Ώρα",
   "back": "Πίσω"

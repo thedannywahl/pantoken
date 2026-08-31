@@ -2,7 +2,7 @@
   "prevMonth": "Previous month",
   "nextMonth": "Next month",
   "dateLabel": "Date",
-  "datePlaceholder": "yyyy-mm-dd",
+  "datePlaceholder": "dd/mm/yyyy",
   "openCalendar": "Open calendar",
   "timeLabel": "Time",
   "back": "Back"
