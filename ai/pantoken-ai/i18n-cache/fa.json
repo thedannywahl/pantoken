@@ -2,8 +2,8 @@
   "wroteFile": "✓ {{path}}",
   "helpInitDescription": "نوشتن دارایی‌های عامل pantoken در یک مخزن",
   "helpInitToolDescription": "ابزار عامل (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "پوشهٔ مقصد",
-  "helpScaffoldDescription": "ساخت یک پروژهٔ شروع (با @pantoken/scaffold) و نصب دارایی‌های عامل در آن",
+  "helpInitDirDescription": "دایرکتوری هدف",
+  "helpScaffoldDescription": "ایجاد پروژهٔ آغازین (از طریق @pantoken/scaffold) و نصب دارایی‌های عامل در آن",
   "helpScaffoldToolDescription": "ابزار عامل (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "بازنویسی زبان نمایش شناسایی‌شدهٔ خودکار (مثلاً «hu»)"
+  "helpLangDescription": "بازنویسی زبان نمایش تشخیص‌شدهٔ خودکار (مثلاً \"hu\")"
 }

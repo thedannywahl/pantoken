@@ -1,9 +1,9 @@
 {
   "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Escriu els recursos d'agent de pantoken en un repositori",
+  "helpInitDescription": "Escriu els actius d'agent de pantoken en un repositori",
   "helpInitToolDescription": "Eina d'agent (all|cursor|copilot|windsurf)",
   "helpInitDirDescription": "Directori de destinació",
-  "helpScaffoldDescription": "Crea l'estructura d'un projecte inicial (amb @pantoken/scaffold) i hi instal·la els recursos d'agent",
+  "helpScaffoldDescription": "Genera un projecte inicial (via @pantoken/scaffold) i hi instal·la els actius d'agent",
   "helpScaffoldToolDescription": "Eina d'agent (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Substitueix l'idioma de visualització detectat automàticament (p. ex. «hu»)"
+  "helpLangDescription": "Anul·la l'idioma de visualització autodetectat (p. ex. \"hu\")"
 }

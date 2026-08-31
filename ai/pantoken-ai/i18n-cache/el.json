@@ -1,9 +1,9 @@
 {
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Εγγραφή των πόρων πράκτορα του pantoken σε ένα αποθετήριο",
-  "helpInitToolDescription": "Εργαλείο πράκτορα (all|cursor|copilot|windsurf)",
+  "wroteFile": "✓ Έγραψε: {{path}}",
+  "helpInitDescription": "Εγγράφει τα αρχεία agent του pantoken σε αποθετήριο",
+  "helpInitToolDescription": "Εργαλείο agent (all|cursor|copilot|windsurf)",
   "helpInitDirDescription": "Κατάλογος προορισμού",
-  "helpScaffoldDescription": "Δημιουργία ενός αρχικού έργου (μέσω @pantoken/scaffold) και εγκατάσταση των πόρων πράκτορα σε αυτό",
-  "helpScaffoldToolDescription": "Εργαλείο πράκτορα (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Παράκαμψη της αυτόματα εντοπισμένης γλώσσας εμφάνισης (π.χ. \"hu\")"
+  "helpScaffoldDescription": "Δημιουργεί ένα αρχικό έργο (μέσω @pantoken/scaffold) και εγκαθιστά τα αρχεία agent σε αυτό",
+  "helpScaffoldToolDescription": "Εργαλείο agent (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Αντικαθιστά τη γλώσσα εμφάνισης που εντοπίστηκε αυτόματα (π.χ. \"hu\")"
 }

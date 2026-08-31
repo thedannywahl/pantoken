@@ -1,9 +1,9 @@
 {
   "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Tulis aset ejen pantoken ke dalam repo",
+  "helpInitDescription": "Tulis aset ejen pantoken ke dalam repositori",
   "helpInitToolDescription": "Alat ejen (all|cursor|copilot|windsurf)",
   "helpInitDirDescription": "Direktori sasaran",
-  "helpScaffoldDescription": "Bina rangka projek permulaan (melalui @pantoken/scaffold) dan pasang aset ejen ke dalamnya",
+  "helpScaffoldDescription": "Imbas projek permulaan (melalui @pantoken/scaffold) dan pasang aset ejen ke dalamnya",
   "helpScaffoldToolDescription": "Alat ejen (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Ganti bahasa paparan yang dikesan secara automatik (cth. \"hu\")"
+  "helpLangDescription": "Gantikan bahasa paparan yang dikesan secara automatik (contoh: \"hu\")"
 }

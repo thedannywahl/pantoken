@@ -1,9 +1,9 @@
 {
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Ekri resous ajan pantoken yo nan yon repo",
+  "wroteFile": "✓ Ekri {{path}}",
+  "helpInitDescription": "Ekri resous ajan pantoken nan yon depo",
   "helpInitToolDescription": "Zouti ajan (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Dosye sib",
-  "helpScaffoldDescription": "Kreye yon pwojè demaraj (avèk @pantoken/scaffold) epi enstale resous ajan yo ladan l",
+  "helpInitDirDescription": "Katab destinasyon",
+  "helpScaffoldDescription": "Eskafonnen yon pwojè demaraj (via @pantoken/scaffold) epi enstale resous ajan ladan li",
   "helpScaffoldToolDescription": "Zouti ajan (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Ranplase lang afichaj yo detekte otomatikman an (pa egzanp \"hu\")"
+  "helpLangDescription": "Ranplase lang afichaj otomatikman detekte a (egzanp \"hu\")"
 }

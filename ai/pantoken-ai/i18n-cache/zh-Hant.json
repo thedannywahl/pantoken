@@ -1,9 +1,9 @@
 {
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "將 pantoken 的 AI 代理資產寫入儲存庫",
-  "helpInitToolDescription": "AI 代理工具 (all|cursor|copilot|windsurf)",
+  "wroteFile": "✓ 已寫入 {{path}}",
+  "helpInitDescription": "將 pantoken 的代理資產寫入到倉庫中",
+  "helpInitToolDescription": "代理工具（all|cursor|copilot|windsurf）",
   "helpInitDirDescription": "目標目錄",
-  "helpScaffoldDescription": "建立入門專案（透過 @pantoken/scaffold）並將 AI 代理資產安裝其中",
-  "helpScaffoldToolDescription": "AI 代理工具 (all|cursor|copilot|windsurf)",
+  "helpScaffoldDescription": "生成範例專案（透過 @pantoken/scaffold），並將代理資產安裝至其中",
+  "helpScaffoldToolDescription": "代理工具（all|cursor|copilot|windsurf）",
   "helpLangDescription": "覆寫自動偵測的顯示語言（例如「hu」）"
 }
