@@ -1,0 +1,21 @@
+I have reviewed the design brief and banner is largely a variant component of the alert component, it just doesn't carry all of its tokens yet.  Fill in the rest of the component styles using the existing alert tokens. things about the banner:
+* it carries a mandatory icon, but the default icon is not defined yet so let's use the 'info' icon from the alert (its default)
+* the icon is positioned to the top of its container, not the middle like an alert.
+* it carries an optional title in heading/titleCardMini in banner-color on compact and heading/titleCardRegular on relaxed spacing.
+* it carries an optional close button positioned the same as the alert close button.
+* compact slot: text/contentSmall relaxed slot: semantic/fontSize/textBase
+* icon size: relaxed: 32px, compact: 24px
+* banners do not carry elevation.
+* a button in a banner should be colored as onColorPrimary variant by default.
+
+---
+
+Quick, read-only exploration in /Users/dwahl/Scripts/pantoken. Research how plugins/pantoken/custom-components defines and tests banner and alert. Identify exact files, selectors, existing token use, demos/docs/registries that need changes for the user's requested banner completion: mandatory default info icon, top-aligned icon, title typography varying by size, alert-positioned close button, text slots/sizes, icon 32/24px, no elevation, button onColorPrimary default. Read only focused relevant files. Return succinct findings, relevant paths and symbols, expected implementation points, test/validation commands, and ambiguities. Do not edit.
+
+---
+
+Medium, read-only exploration in /Users/dwahl/Scripts/pantoken. Determine exact existing token names that should implement requested missing banner styles by examining available token IR/raw data and related components. Focus: alert default info icon, heading/titleCardMini and heading/titleCardRegular mappings, text/contentSmall and semantic/fontSize/textBase mappings, icon sizing or spacing values, alert close button position tokens, and what 'onColorPrimary' means for buttons (relevant CSS button component variants/tokens). Also inspect custom-components source/index generation entry patterns to determine whether docs/generation/demos require source edits. Return verified exact CSS variables and likely selectors/markup, noting any requirement that cannot be directly satisfied by CSS alone. Do not edit.
+
+---
+
+plan should include incremental conventional commits, changesets, and push - avoid changes that aren't yours there's translation workflows in flight.
