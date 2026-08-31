@@ -1,0 +1,44 @@
+our defautls are still not applying to he scaffold translation package, it's dropping several english verbatims but en* should be allowed.
+
+---
+
+I have manually added back the missing strings so no need to regenerate the translations.
+
+---
+
+are these error are are they proper outputs from tests:
+```
+ ✓ renderers/tinymce/tests/content-css.test.ts (3 tests) 37ms
+Error: getaddrinfo ENOTFOUND cdn.example.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.example.com'
+}
+DOMException [NetworkError]: Failed to execute "fetch()" on "Window" with URL "https://cdn.example.com/a.css": getaddrinfo ENOTFOUND cdn.example.com
+    at Fetch.onError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/happy-dom@20.12.0/node_modules/happy-dom/lib/fetch/Fetch.js:540:21)
+    at ClientRequest.emit (node:events:514:20)
+    at emitErrorEvent (node:_http_client:114:11)
+    at TLSSocket.socketErrorListener (node:_http_client:768:5)
+    at TLSSocket.emit (node:events:514:20)
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+Error: getaddrinfo ENOTFOUND cdn.example.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'cdn.example.com'
+}
+DOMException [NetworkError]: Failed to execute "fetch()" on "Window" with URL "https://cdn.example.com/a.css": getaddrinfo ENOTFOUND cdn.example.com
+    at Fetch.onError (file:///Users/dwahl/Scripts/pantoken/node_modules/.pnpm/happy-dom@20.12.0/node_modules/happy-dom/lib/fetch/Fetch.js:540:21)
+    at ClientRequest.emit (node:events:514:20)
+    at emitErrorEvent (node:_http_client:114:11)
+    at TLSSocket.socketErrorListener (node:_http_client:768:5)
+    at TLSSocket.emit (node:events:514:20)
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at processTicksAndRejections (node:internal/process/task_queues:90:21)
+    ```
