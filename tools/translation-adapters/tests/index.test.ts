@@ -11,6 +11,7 @@ const {
   extractJsonObject,
   generateLocaleBundles,
   isPassthroughTranslation,
+  localeFamilyGlobs,
   parseI18nSource,
   resolveVerbatimAction,
   runI18nTranslationCli,
@@ -129,6 +130,24 @@ test("resolveVerbatimAction checks allow before warn", () => {
 
 test("resolveVerbatimAction falls back to error when no tier matches", () => {
   expect(resolveVerbatimAction({ allow: ["en*"], warn: ["fr"] }, "hu")).toBe("error");
+});
+
+// ── localeFamilyGlobs ───────────────────────────────────────────
+
+test("localeFamilyGlobs collapses regional variants to one glob per base language", () => {
+  expect(localeFamilyGlobs(["en-GB", "en-AU", "en-CA"])).toEqual(["en*"]);
+});
+
+test("localeFamilyGlobs handles a locale with no region subtag", () => {
+  expect(localeFamilyGlobs(["hu"])).toEqual(["hu*"]);
+});
+
+test("localeFamilyGlobs returns a sorted, deduped glob per unique base language", () => {
+  expect(localeFamilyGlobs(["fr-CA", "en-GB", "fr", "en-AU", "hu"])).toEqual(["en*", "fr*", "hu*"]);
+});
+
+test("localeFamilyGlobs returns an empty array for an empty locale list", () => {
+  expect(localeFamilyGlobs([])).toEqual([]);
 });
 
 // ── TranslationMemory ─────────────────────────────────────────────────────────
@@ -573,6 +592,49 @@ test('runI18nTranslationCli still resets a verbatim entry for a locale outside i
   expect(JSON.parse(readFileSync(join(cliTestDir, "fr.json"), "utf8"))).toEqual({
     datePlaceholder: "aaaa-mm-jj",
   });
+});
+
+test("runI18nTranslationCli applies defaultVerbatim to a key with no per-key policy", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { back: "Back" },
+      targetLocales: ["en-GB"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      defaultVerbatim: { allow: localeFamilyGlobs(["en-GB", "en-AU"]) },
+    });
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "en-GB.json"), "utf8"))).toEqual({
+    back: "Back",
+  });
+});
+
+test("runI18nTranslationCli lets a per-key policy override defaultVerbatim", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { back: "Back" },
+      targetLocales: ["en-GB"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      defaultVerbatim: "allow",
+      verbatim: { back: {} },
+    });
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("identical to source"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "en-GB.json"), "utf8"))).toEqual({});
 });
 
 // ── generateLocaleBundles ──────────────────────────────────────────────────────

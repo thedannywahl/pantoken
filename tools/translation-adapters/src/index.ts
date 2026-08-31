@@ -221,6 +221,18 @@ function localeMatchesPattern(pattern: string, locale: string): boolean {
   return pattern.endsWith("*") ? locale.startsWith(pattern.slice(0, -1)) : pattern === locale;
 }
 
+/**
+ * Derive one `"<lang>*"` glob per unique base language present in `locales` (e.g. the ~47 keys of
+ * `CANVAS_LOCALES`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error` lists without
+ * hand-typing every regional variant. `"en-GB"` and `"en-AU"` both collapse to `"en*"`; a locale
+ * with no region subtag (e.g. `"hu"`) becomes `"hu*"` too. Returned sorted and deduped — callers
+ * pick which families go in which tier, e.g. `{ allow: localeFamilyGlobs(["en-GB", "en-AU"]) }`.
+ */
+export function localeFamilyGlobs(locales: readonly string[]): string[] {
+  const families = new Set(locales.map((locale) => locale.split("-")[0]));
+  return [...families].sort().map((lang) => `${lang}*`);
+}
+
 /** Render `keys` as an indented bullet list (one per line) for legible multi-key console warnings. */
 function formatKeyList(keys: readonly string[]): string {
   return keys.map((key) => `  - ${key}`).join("\n");
@@ -266,9 +278,17 @@ export interface I18nTranslationOptions {
   /**
    * Per-key verbatim policies (see {@link VerbatimPolicy}), typically produced by
    * {@link parseI18nSource} from the same `src/i18n.json` `source` came from. Keys absent here use
-   * the strict default: identical output is treated as a likely AI failure for every locale.
+   * `defaultVerbatim` (if set), then the strict default: identical output is treated as a likely
+   * AI failure for every locale.
    */
   verbatim?: Record<string, VerbatimPolicy>;
+  /**
+   * A fallback {@link VerbatimPolicy} applied to every key that has no entry in `verbatim` — e.g. a
+   * blanket "these language families are close enough to English that an identical response isn't
+   * necessarily a translator failure" rule, built with {@link localeFamilyGlobs}. A key's own entry
+   * in `verbatim` always takes precedence over this default.
+   */
+  defaultVerbatim?: VerbatimPolicy;
 }
 
 /**
@@ -282,6 +302,7 @@ function resetPassthroughEntries(
   source: Record<string, string>,
   cachedValue: (key: string, cache: Record<string, string>) => string | undefined,
   verbatim: Record<string, VerbatimPolicy>,
+  defaultVerbatim: VerbatimPolicy | undefined,
   locale: string,
 ): { reset: string[]; warned: string[] } {
   const reset: string[] = [];
@@ -289,7 +310,7 @@ function resetPassthroughEntries(
   for (const key of Object.keys(source)) {
     const current = cachedValue(key, cache);
     if (current === undefined || !isPassthroughTranslation(source[key], current)) continue;
-    const action = resolveVerbatimAction(verbatim[key], locale);
+    const action = resolveVerbatimAction(verbatim[key] ?? defaultVerbatim, locale);
     if (action === "allow") continue;
     if (action === "warn") {
       warned.push(key);
@@ -326,6 +347,7 @@ async function translateLocale(
     options.source,
     cachedValue,
     verbatim,
+    options.defaultVerbatim,
     locale,
   );
   if (resetKeys.length > 0) {
@@ -372,7 +394,7 @@ Respond with a JSON object mapping each original key to its translation, using t
         continue;
       }
       if (isPassthroughTranslation(options.source[key], value)) {
-        const action = resolveVerbatimAction(verbatim[key], locale);
+        const action = resolveVerbatimAction(verbatim[key] ?? options.defaultVerbatim, locale);
         if (action === "error") {
           suspectKeys.push(`${key} (identical to source)`);
           continue;
