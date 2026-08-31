@@ -3,9 +3,15 @@
   "promptDir": "Target directory:",
   "spinnerStart": "Scaffolding...",
   "spinnerStop": "Done scaffolding.",
-  "wroteFile": "✓ {{path}}",
+  "wroteFile": {
+    "string": "✓ {{path}}",
+    "verbatim": "allow"
+  },
   "nextStepsHeading": "Next steps:",
-  "nextStepsNav": "cd {{dir}}",
+  "nextStepsNav": {
+    "string": "cd {{dir}}",
+    "verbatim": "allow"
+  },
   "nextStepsInstall": "Install dependencies: {{command}}",
   "nextStepsDevServer": "Start the dev server (if your template has one)",
   "notesHeading": "Note:",
