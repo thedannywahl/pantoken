@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1C3651H2305SE7SHQY9BBNY",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
     "docs/scripts/api-translation.test.ts",
     "docs/scripts/api-translation.ts"
@@ -22,6 +22,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
