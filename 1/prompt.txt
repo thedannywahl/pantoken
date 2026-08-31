@@ -1,0 +1,21 @@
+would it help to be setting up a contract for the translation with an arktype/zod schema?
+
+---
+
+yes
+
+---
+
+track your work with changesets, incremental conventional commits and pushes. ignore the in-flight translations that are landing now, we can run this on the next translation pass.
+
+---
+
+Start implementation
+
+---
+
+there will undoubtedly be keys that use the same literal translation for example in web-components date picker most locales will use "yyyy-mm-dd" which is the default. this plan should include indicating where verbatim is okay or a gate should be disabled/skipped/warned instead of dropped.
+
+---
+
+verbatim keys should be able to be carried with the default locales string files as well which some other adapters use like scaffold does.
