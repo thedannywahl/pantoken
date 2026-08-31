@@ -350,7 +350,7 @@ modeSelect.addEventListener("change", refreshAll);
 
 copyButton.addEventListener("click", () => {
   void navigator.clipboard.writeText(getEditorHtml()).then(() => {
-    copyStatus.textContent = "Copied. Paste into Canvas's Rich Content Editor HTML view.";
+    copyStatus.textContent = "Copied. Paste into the Canvas Rich Content Editor HTML view.";
   });
 });
 
@@ -477,4 +477,3 @@ void registerPickerPlugins.then(() =>
       refreshAll();
     }),
 );
-
