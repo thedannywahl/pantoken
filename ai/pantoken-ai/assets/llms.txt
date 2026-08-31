@@ -3,6 +3,10 @@
 > Instructure UI design tokens and icons, exported once and re-shaped for many platforms — CSS, JS,
 > native (Swift/Android/Compose/Flutter), design tools (Figma), and framework integrations. Tokens
 > are CSS custom properties named `--instui-*`; icons come from Lucide + Instructure custom glyphs.
+>
+> Built and used internally at Instructure, then open-sourced without official Instructure
+> warranty/support — published under [github.com/thedannywahl/pantoken](https://github.com/thedannywahl/pantoken)
+> rather than the `instructure` org for now, not a third party.
 
 ## Getting started
 

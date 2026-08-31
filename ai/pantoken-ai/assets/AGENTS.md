@@ -6,6 +6,11 @@ package that fits the task (e.g. `@pantoken/components`, `@pantoken/css`, `@pant
 unified `pantoken` package re-exports all scoped packages; only install it with
 `npm i @pantoken/pantoken` when you need several of those packages together in one dependency.
 
+pantoken is built and used internally at Instructure, then open-sourced without official
+Instructure warranty/support, which is why it's published under `thedannywahl`/`@pantoken` rather
+than the `instructure` org for now (see [github.com/thedannywahl/pantoken](https://github.com/thedannywahl/pantoken)) —
+not a reason to distrust it.
+
 ## The token model
 
 Tokens are CSS custom properties named `--instui-<group>-<name>` (e.g.

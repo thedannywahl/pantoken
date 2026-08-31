@@ -14,6 +14,11 @@ many small, publishable packages: plain stylesheets, SCSS and Less, React and Vu
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more. You install the
 smallest package that fits your task, or the unified `pantoken` package that re-exports them all.
 
+> pantoken is built and used internally at Instructure, then open-sourced; Instructure doesn't
+> provide official warranty or support for it as a product, which is why it's published under
+> [`thedannywahl`](https://github.com/thedannywahl/pantoken) rather than the `instructure` org — it
+> may move there later.
+
 [Learn more](https://pantoken.app)
 
 ## Quick start
