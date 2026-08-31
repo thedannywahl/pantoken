@@ -221,6 +221,11 @@ function localeMatchesPattern(pattern: string, locale: string): boolean {
   return pattern.endsWith("*") ? locale.startsWith(pattern.slice(0, -1)) : pattern === locale;
 }
 
+/** Render `keys` as an indented bullet list (one per line) for legible multi-key console warnings. */
+function formatKeyList(keys: readonly string[]): string {
+  return keys.map((key) => `  - ${key}`).join("\n");
+}
+
 /**
  * Resolve what a passthrough (identical-to-source) value should do for `locale`, given a key's
  * declared `policy` (`undefined` — no `verbatim` field — is the strict default, `"error"`).
@@ -325,12 +330,12 @@ async function translateLocale(
   );
   if (resetKeys.length > 0) {
     console.warn(
-      `⚠ ${locale}: reset ${resetKeys.length} previously-cached entr${resetKeys.length === 1 ? "y" : "ies"} that matched the English source (will retry): ${resetKeys.join(", ")}`,
+      `⚠ ${locale}: reset ${resetKeys.length} previously-cached entr${resetKeys.length === 1 ? "y" : "ies"} that matched the English source (will retry):\n${formatKeyList(resetKeys)}`,
     );
   }
   if (warnedResetKeys.length > 0) {
     console.warn(
-      `⚠ ${locale}: ${warnedResetKeys.length} cached entr${warnedResetKeys.length === 1 ? "y matches" : "ies match"} the English source (verbatim policy: warn): ${warnedResetKeys.join(", ")}`,
+      `⚠ ${locale}: ${warnedResetKeys.length} cached entr${warnedResetKeys.length === 1 ? "y matches" : "ies match"} the English source (verbatim policy: warn):\n${formatKeyList(warnedResetKeys)}`,
     );
   }
 
@@ -379,12 +384,12 @@ Respond with a JSON object mapping each original key to its translation, using t
     }
     if (suspectKeys.length > 0) {
       console.warn(
-        `⚠ ${locale}: ${suspectKeys.length} response(s) not cached, will retry next run: ${suspectKeys.join(", ")}`,
+        `⚠ ${locale}: ${suspectKeys.length} response(s) not cached, will retry next run:\n${formatKeyList(suspectKeys)}`,
       );
     }
     if (warnedKeys.length > 0) {
       console.warn(
-        `⚠ ${locale}: ${warnedKeys.length} response(s) identical to the English source (verbatim policy: warn), cached anyway: ${warnedKeys.join(", ")}`,
+        `⚠ ${locale}: ${warnedKeys.length} response(s) identical to the English source (verbatim policy: warn), cached anyway:\n${formatKeyList(warnedKeys)}`,
       );
     }
 
