@@ -2,7 +2,7 @@
   "name": "@pantoken/astro",
   "version": "0.1.17",
   "description": "Astro / Starlight integration for pantoken: inject Instructure design tokens and icons as CSS.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

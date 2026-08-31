@@ -2,7 +2,7 @@
   "name": "@pantoken/pantoken",
   "version": "0.2.7",
   "description": "The unified pantoken package: Instructure design tokens, icons, and platform integrations, auto-aggregated from @pantoken/*.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

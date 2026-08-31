@@ -358,7 +358,7 @@ const searchLocales = Object.fromEntries(
 // building for alternative environments (for example, a project-site path on github.io).
 const base = process.env.DOCS_BASE ?? "/";
 
-const rawHostname = process.env.DOCS_HOSTNAME ?? "https://pantoken.iywahl.com/";
+const rawHostname = process.env.DOCS_HOSTNAME ?? "https://pantoken.app/";
 const hostname = rawHostname.endsWith("/") ? rawHostname : `${rawHostname}/`;
 
 /** The canonical URL for a page from its source-relative path (cleanUrls drops the extension). */

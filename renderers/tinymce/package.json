@@ -2,7 +2,7 @@
   "name": "@pantoken/tinymce",
   "version": "0.1.0",
   "description": "Shared TinyMCE + CodeMirror editor integration for pantoken: content-CSS wiring, an Insert Template plugin, components/icons/logos pickers with dynamic @import injection, and CodeMirror HTML lint/autocomplete driven by cssdoc.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

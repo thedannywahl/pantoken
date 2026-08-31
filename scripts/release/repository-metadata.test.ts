@@ -11,7 +11,7 @@ import {
 
 test("the canonical URL/engine constants are the values the gate enforces", () => {
   expect(REPOSITORY_URL).toBe("git+https://github.com/thedannywahl/pantoken.git");
-  expect(HOMEPAGE_URL).toBe("https://pantoken.iywahl.com");
+  expect(HOMEPAGE_URL).toBe("https://pantoken.app");
   expect(BUGS_URL).toBe("https://github.com/thedannywahl/pantoken/issues");
   expect(ENGINES).toEqual({ node: ">=22.18.0" });
 });

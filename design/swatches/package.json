@@ -2,7 +2,7 @@
   "name": "@pantoken/swatches",
   "version": "0.1.13",
   "description": "Export Instructure colours as designer swatch palettes: Adobe ASE, GIMP .gpl, and Sketch .sketchpalette.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

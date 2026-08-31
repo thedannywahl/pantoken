@@ -2,7 +2,7 @@
   "name": "@pantoken/stylus",
   "version": "0.1.13",
   "description": "Instructure design tokens as Stylus variables (resolved, single-mode) from the pantoken IR.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

@@ -651,12 +651,12 @@ jobs:
         run: vp run @pantoken/docs#docs:build
         env:
           DOCS_BASE: /
-          DOCS_HOSTNAME: https://pantoken.iywahl.com/
+          DOCS_HOSTNAME: https://pantoken.app/
       # On main, hand the built site to the Deploy docs workflow (workflow_run) so it publishes without
       # rebuilding. The CNAME is baked in here so the downloaded artifact is deploy-ready as-is.
       - name: Add custom domain file
         if: github.ref == 'refs/heads/main'
-        run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
+        run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
       - name: Upload built docs site
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7

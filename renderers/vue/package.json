@@ -2,7 +2,7 @@
   "name": "@pantoken/vue",
   "version": "0.1.28",
   "description": "Vue plugin for pantoken: registers the web components and reads tokens.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

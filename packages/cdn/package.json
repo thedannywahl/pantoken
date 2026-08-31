@@ -2,7 +2,7 @@
   "name": "@pantoken/cdn",
   "version": "0.1.0",
   "description": "Model CDN providers (jsDelivr, unpkg, esm.sh) and build correct asset URLs for any npm package, combining files where a provider supports it.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

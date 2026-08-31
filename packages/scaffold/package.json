@@ -2,7 +2,7 @@
   "name": "@pantoken/scaffold",
   "version": "0.4.1",
   "description": "npx @pantoken/scaffold <platform> — scaffold a starter project (html, react, next, angular, web-components, ...) with pantoken already installed and wired in.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

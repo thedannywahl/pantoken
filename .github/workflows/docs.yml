@@ -98,10 +98,10 @@ jobs:
         run: vp run -F "@pantoken/docs..." build && vp run @pantoken/docs#docs:build
         env:
           DOCS_BASE: /
-          DOCS_HOSTNAME: https://pantoken.iywahl.com/
+          DOCS_HOSTNAME: https://pantoken.app/
       - name: Write custom domain file
         if: github.event_name == 'workflow_dispatch'
-        run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
+        run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5

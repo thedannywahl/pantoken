@@ -80,7 +80,7 @@ const BASE_COMMAND = "create-pantoken-app";
 // Quoted so the copied/typed line is one valid shell argument for every launcher above — unlike
 // the old bare `/scaffold-pantoken` slash command, this prompt is a full sentence with spaces.
 const AGENT_PROMPT =
-  '"Fetch https://pantoken.iywahl.com/create-pantoken-app.md and follow it to set up pantoken in this project."';
+  '"Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."';
 
 type DocsThemeWithGetStartedTabs = {
   getStartedTabs?: GetStartedTabsStrings;

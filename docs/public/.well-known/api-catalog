@@ -1,32 +1,32 @@
 {
   "linkset": [
     {
-      "anchor": "https://pantoken.iywahl.com/",
+      "anchor": "https://pantoken.app/",
       "service-doc": [
         {
-          "href": "https://pantoken.iywahl.com/guide/getting-started",
+          "href": "https://pantoken.app/guide/getting-started",
           "type": "text/html",
           "title": "pantoken documentation"
         },
         {
-          "href": "https://pantoken.iywahl.com/guide/getting-started.md",
+          "href": "https://pantoken.app/guide/getting-started.md",
           "type": "text/markdown",
           "title": "pantoken documentation (Markdown)"
         }
       ],
       "alternate": [
         {
-          "href": "https://pantoken.iywahl.com/llms.txt",
+          "href": "https://pantoken.app/llms.txt",
           "type": "text/plain",
           "title": "LLM-friendly documentation index"
         },
         {
-          "href": "https://pantoken.iywahl.com/llms-full.txt",
+          "href": "https://pantoken.app/llms-full.txt",
           "type": "text/plain",
           "title": "Full documentation as one document"
         },
         {
-          "href": "https://pantoken.iywahl.com/create-pantoken-app.md",
+          "href": "https://pantoken.app/create-pantoken-app.md",
           "type": "text/markdown",
           "title": "create-pantoken-app agent skill"
         }

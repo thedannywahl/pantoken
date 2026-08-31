@@ -23,7 +23,7 @@ programozott használathoz.
 AI kódolóügynököt használsz? Nem kell telepíteni semmit — irányítsd rá közvetlenül a képességre:
 
 ```sh
-claude "Fetch https://pantoken.iywahl.com/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
 ```
 
 Ugyanígy működik a Gemini CLI, a Cursor CLI, az OpenAI Codex CLI, a GitHub Copilot CLI és az Amazon Q

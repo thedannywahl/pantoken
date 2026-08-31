@@ -2,7 +2,7 @@
   "name": "@pantoken/typedoc-plugin-live-example",
   "version": "0.1.4",
   "description": "TypeDoc plugin: embed a live HTML preview beneath each @example on a CSS reference page.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

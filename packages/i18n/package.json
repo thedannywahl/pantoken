@@ -2,7 +2,7 @@
   "name": "@pantoken/i18n",
   "version": "0.1.15",
   "description": "locale bundles for @pantoken/web-components, with AI-powered translation tooling and drift detection.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

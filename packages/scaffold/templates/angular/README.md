@@ -22,4 +22,4 @@ npm run dev
   compiler accept pantoken's custom element tags) whose template follows the `wrapper` app-shell
   layout from `@pantoken/plugin-layouts` (`.container` / `.header` / `.content` parts).
 - Apply classes like `class="instui-button"` to markup; see the
-  [component reference](https://pantoken.iywahl.com/api/css) for the full class list.
+  [component reference](https://pantoken.app/api/css) for the full class list.

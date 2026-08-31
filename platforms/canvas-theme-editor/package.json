@@ -2,7 +2,7 @@
   "name": "@pantoken/canvas-theme-editor",
   "version": "0.1.0",
   "description": "Upload-ready theme.css/theme.js for Canvas LMS's Theme Editor, pre-wired to pantoken's CDN-hosted CSS.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

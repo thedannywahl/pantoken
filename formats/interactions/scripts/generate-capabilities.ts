@@ -92,7 +92,7 @@ const components: ComponentCapability[] = [...new Set([...cssNames, ...webNames]
 const cdn = "https://cdn.jsdelivr.net";
 
 const output = {
-  $schema: "https://pantoken.iywahl.com/component-capabilities.schema.json",
+  $schema: "https://pantoken.app/component-capabilities.schema.json",
   description:
     "InstUI component capability map: which components need CSS, JS (interactions), or both, with CDN URLs and dependency graph.",
   components: components.map((c) => {

@@ -2,7 +2,7 @@
   "name": "@pantoken/scaffold-base",
   "version": "0.2.0",
   "description": "Shared bingo-stratum Base for pantoken's scaffold presets: common options, the cssdoc.json block, and wrapper-layout markup context.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

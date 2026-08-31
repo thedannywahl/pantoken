@@ -2,7 +2,7 @@
   "name": "@pantoken/bootstrap",
   "version": "0.1.2",
   "description": "Theme Bootstrap 5 with Instructure tokens: maps Bootstrap's --bs-* CSS variables to var(--instui-*).",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

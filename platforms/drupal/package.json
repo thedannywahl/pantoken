@@ -2,7 +2,7 @@
   "name": "@pantoken/drupal",
   "version": "0.1.24",
   "description": "Emit an Instructure-themed Drupal sub-theme: token CSS plus *.info.yml and *.libraries.yml.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

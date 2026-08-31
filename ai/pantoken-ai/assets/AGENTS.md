@@ -118,7 +118,7 @@ After selecting a base package, also consider `@pantoken/plugin-layouts` (app-sh
 ## Full documentation
 
 This file is a cheatsheet and can lag behind the real API surface. For anything it doesn't cover, or
-to confirm a detail, fetch the live docs at `https://pantoken.iywahl.com/`:
+to confirm a detail, fetch the live docs at `https://pantoken.app/`:
 
 - `/llms.txt` — an agent-legible index of the whole site.
 - `/llms-full.txt` — the entire site as one document.

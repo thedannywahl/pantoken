@@ -2,7 +2,7 @@
   "name": "@pantoken/swift",
   "version": "0.1.17",
   "description": "Emit Instructure design tokens as Swift, via Style Dictionary. The native proof for pantoken.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

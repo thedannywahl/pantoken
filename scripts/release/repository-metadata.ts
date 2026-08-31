@@ -8,7 +8,7 @@
 export const REPOSITORY_URL = "git+https://github.com/thedannywahl/pantoken.git";
 
 /** `homepage` — the docs site root, identical for every package. */
-export const HOMEPAGE_URL = "https://pantoken.iywahl.com";
+export const HOMEPAGE_URL = "https://pantoken.app";
 
 /** `bugs` — the shared issue tracker. */
 export const BUGS_URL = "https://github.com/thedannywahl/pantoken/issues";
