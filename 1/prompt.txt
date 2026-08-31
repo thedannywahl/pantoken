@@ -7,3 +7,7 @@ yes
 ---
 
 do we need to provide better hints for the translation tools when dealing with markdown instead of pure text strings? like how to handle function refs / typescript signatures inline code blocks and code blocks?
+
+---
+
+we need a way to do translations with a force or no-cache flag.
