@@ -135,6 +135,8 @@ test("banner -variant-ai uses the gradient background tokens", () => {
 
 test("banner close button is nudged with its own margin tokens", () => {
   const css = bannerRules("instui-");
+  expect(css).toContain('> .instui-close-button:not([class*="-size-"])');
+  expect(css).toContain("var(--instui-component-base-button-small-height)");
   expect(css).toContain("var(--instui-component-banner-close-button-margin-top)");
   expect(css).toContain("var(--instui-component-banner-close-button-margin-right)");
 });

@@ -1,7 +1,7 @@
 /**
  * @component alert
  * @summary An inline message with a status colour bar and a masked status glyph from the shared icon set.
- * @remarks A custom `-icon-<name>` swaps the status glyph but keeps the variant's coloured bar; the bar fill is re-asserted at higher specificity so the shared icon painter doesn't consume it.
+ * @remarks A custom `-icon-<name>` swaps the status glyph but keeps the variant's coloured bar; the bar fill is re-asserted at higher specificity so the shared icon painter doesn't consume it. A direct close button defaults to small; add a size modifier to override it.
  * @selector .pfx-alert
  * @modifier -color-info — Informational (default).
  * @modifier -color-success — A positive/confirmation message.
@@ -36,7 +36,7 @@
  * </div>
  * <div class="pfx-alert -color-success">
  *   Congratulations! You're using the "success" color.
- *   <button class="pfx-close-button -size-sm" aria-label="Close"></button>
+ *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
  * @structure
@@ -78,6 +78,10 @@
 
     /* Close/dismiss is optional: pin it in the top-end corner (the button's own box centres the ×, so it
      takes a small symmetric inset, not the content padding), and reserve room only when it's present. */
+    > .pfx-close-button:not([class*="-size-"]) {
+      min-height: var(--instui-component-base-button-small-height);
+    }
+
     > .pfx-close-button {
       position: absolute;
       inset-block-start: var(--instui-spacing-space-xs);

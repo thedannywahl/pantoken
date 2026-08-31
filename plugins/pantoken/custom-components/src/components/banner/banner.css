@@ -9,7 +9,7 @@
  * @sealed
  * @annotations
  * 1. The icon swatch is a plain child slot — drop an `@pantoken/components` icon (or any glyph) inside; its background and corner radius come from the active size/color.
- * 2. The close button isn't absolutely positioned (unlike `alert`'s) — it's a flex sibling, nudged into place with its own margin tokens.
+ * 2. The close button isn't absolutely positioned (unlike `alert`'s) — it's a small-by-default flex sibling, nudged into place with its own margin tokens. Add a size modifier to override the contextual default.
  * 3. `-variant-ai`'s gradient direction (top to bottom) isn't specified upstream; picked to read as a subtle top-lit sheen, matching `agent-shell`'s border gradient orientation.
  * @modifier -size-relaxed — Roomier padding and gap (default).
  * @modifier -size-compact — Tighter padding and gap.
@@ -32,7 +32,7 @@
  * <div class="pfx-banner -color-violet" role="status">
  *   <span class="icon" aria-hidden="true"></span>
  *   <div class="content">This is a violet banner with an icon.</div>
- *   <button class="pfx-close-button -size-xs" aria-label="Close"></button>
+ *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
  * @related alert — A non-dismissible, status-coloured counterpart for inline messages.
@@ -106,6 +106,10 @@
     }
 
     /* @ref 2 */
+    > .pfx-close-button:not([class*="-size-"]) {
+      min-height: var(--instui-component-base-button-small-height);
+    }
+
     > .pfx-close-button {
       margin-top: var(--instui-component-banner-close-button-margin-top);
       margin-inline-end: var(--instui-component-banner-close-button-margin-right);
