@@ -1,0 +1,5 @@
+should I set 'main' as the deploy branch?
+
+---
+
+agents are struggling with raw-md-in-html, can we write a redirect in index.html that points to /SKILL.md ?
