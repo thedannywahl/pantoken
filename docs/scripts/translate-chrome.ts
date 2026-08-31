@@ -19,14 +19,19 @@ const units = flattenStrings(ENGLISH_UI_STRINGS).map(({ text }) => ({
   source: text,
 }));
 
-// Not prose: a literal HTTP status code, and the CDN picker's output-format tokens (an HTML tag and
-// a CSS at-rule keyword, not English words) — allowed to match the source without flagging a
-// failure. `getStartedTabs.agentPrompt` is a real sentence (see get-started.ts's docblock) and goes
-// through translation normally, even though its URL must survive unchanged.
+// Not prose: a literal HTTP status code, the CDN picker's output-format tokens (an HTML tag and a
+// CSS at-rule keyword, not English words), and "Canvas"/"Canvas high contrast" — InstUI's declared
+// theme names, not generic English words, so every locale keeps them as-is. `getStartedTabs.
+// agentPrompt` is a real sentence (see get-started.ts's docblock) and goes through translation
+// normally, even though its URL must survive unchanged.
 const verbatimSources = new Set([
   ENGLISH_UI_STRINGS.chrome.notFound.code,
   ENGLISH_UI_STRINGS.cdnPicker.formatLink,
   ENGLISH_UI_STRINGS.cdnPicker.formatImport,
+  ENGLISH_UI_STRINGS.cdnPicker.themeCanvas,
+  ENGLISH_UI_STRINGS.cdnPicker.themeCanvasHighContrast,
+  ENGLISH_UI_STRINGS.themeSelector.canvas,
+  ENGLISH_UI_STRINGS.themeSelector.canvasHighContrast,
 ]);
 
 for (const locale of NON_ROOT_LOCALES) {
