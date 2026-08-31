@@ -70,12 +70,12 @@ onMounted(() => {
 <template>
   <VPFlyout v-if="hasExtraContent" class="VPNavBarExtra" label="extra navigation">
     <div v-if="showTranslations" class="group translations">
-      <p class="trans-title">{{ currentLang.label }}</p>
+      <label class="trans-title" for="lang-select">{{ langMenuLabel }}</label>
 
       <div class="item">
         <select
+          id="lang-select"
           class="lang-select"
-          :aria-label="langMenuLabel"
           :value="currentLang.link"
           @change="onLangChange"
         >
