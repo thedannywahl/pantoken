@@ -1,0 +1,1 @@
+yes theme names are explicitly declared in instui so they should go to the glossary and stay verbatim.
