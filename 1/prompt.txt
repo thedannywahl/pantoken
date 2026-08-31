@@ -1,1 +1,9 @@
 why are there so many `>` being inserted, is this correct?
+
+---
+
+yes
+
+---
+
+do we need to provide better hints for the translation tools when dealing with markdown instead of pure text strings? like how to handle function refs / typescript signatures inline code blocks and code blocks?
