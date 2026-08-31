@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "pantoken のエージェントアセットをリポジトリに書き込みます",
+  "helpInitToolDescription": "エージェントツール (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "対象ディレクトリ",
+  "helpScaffoldDescription": "スタータープロジェクトを作成し (@pantoken/scaffold 経由)、エージェントアセットをインストールします",
+  "helpScaffoldToolDescription": "エージェントツール (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "自動検出された表示言語を上書きします (例: \"hu\")"
+}

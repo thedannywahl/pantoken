@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "pantoken의 에이전트 자산을 저장소에 작성합니다",
+  "helpInitToolDescription": "에이전트 도구 (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "대상 디렉터리",
+  "helpScaffoldDescription": "스타터 프로젝트를 생성하고(@pantoken/scaffold 사용) 여기에 에이전트 자산을 설치합니다",
+  "helpScaffoldToolDescription": "에이전트 도구 (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "자동 감지된 표시 언어를 재정의합니다 (예: \"hu\")"
+}

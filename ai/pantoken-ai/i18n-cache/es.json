@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Escribe los recursos de agente de pantoken en un repositorio",
+  "helpInitToolDescription": "Herramienta de agente (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Directorio de destino",
+  "helpScaffoldDescription": "Crea un proyecto inicial (con @pantoken/scaffold) e instala en él los recursos de agente",
+  "helpScaffoldToolDescription": "Herramienta de agente (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Anula el idioma de visualización detectado automáticamente (p. ej. \"hu\")"
+}

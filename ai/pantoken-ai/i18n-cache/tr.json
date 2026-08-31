@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "pantoken'ın aracı varlıklarını bir depoya yazar",
+  "helpInitToolDescription": "Aracı aracı (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Hedef dizin",
+  "helpScaffoldDescription": "Başlangıç projesi oluşturur (@pantoken/scaffold ile) ve aracı varlıklarını içine kurar",
+  "helpScaffoldToolDescription": "Aracı aracı (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Otomatik algılanan görüntü dilini geçersiz kılar (ör. \"hu\")"
+}

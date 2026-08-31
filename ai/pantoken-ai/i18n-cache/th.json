@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "เขียน agent assets ของ pantoken ลงในรีโพซิทอรี",
+  "helpInitToolDescription": "เครื่องมือ agent (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "ไดเรกทอรีเป้าหมาย",
+  "helpScaffoldDescription": "สร้างโครงร่างโปรเจกต์เริ่มต้น (ผ่าน @pantoken/scaffold) และติดตั้ง agent assets ลงในโปรเจกต์นั้น",
+  "helpScaffoldToolDescription": "เครื่องมือ agent (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "แทนที่ภาษาที่แสดงผลซึ่งตรวจพบอัตโนมัติ (เช่น \"hu\")"
+}

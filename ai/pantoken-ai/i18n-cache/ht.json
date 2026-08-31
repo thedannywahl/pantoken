@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Ekri resous ajan pantoken yo nan yon repo",
+  "helpInitToolDescription": "Zouti ajan (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Dosye sib",
+  "helpScaffoldDescription": "Kreye yon pwojè demaraj (avèk @pantoken/scaffold) epi enstale resous ajan yo ladan l",
+  "helpScaffoldToolDescription": "Zouti ajan (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Ranplase lang afichaj yo detekte otomatikman an (pa egzanp \"hu\")"
+}

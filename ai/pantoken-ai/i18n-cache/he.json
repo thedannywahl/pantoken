@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "כתיבת נכסי הסוכן של pantoken אל מאגר",
+  "helpInitToolDescription": "כלי סוכן (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "תיקיית יעד",
+  "helpScaffoldDescription": "יצירת שלד לפרויקט התחלתי (באמצעות @pantoken/scaffold) והתקנת נכסי הסוכן בתוכו",
+  "helpScaffoldToolDescription": "כלי סוכן (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "עקיפת שפת התצוגה שזוהתה אוטומטית (למשל \"hu\")"
+}

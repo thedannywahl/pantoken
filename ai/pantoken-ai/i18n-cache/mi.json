@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Tuhia ngā rawa māngai a pantoken ki tētahi pātaka",
+  "helpInitToolDescription": "Taputapu māngai (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Whaiaronga whāinga",
+  "helpScaffoldDescription": "Waihangatia tētahi kaupapa tīmata (mā @pantoken/scaffold) me te whakauru i ngā rawa māngai ki roto",
+  "helpScaffoldToolDescription": "Taputapu māngai (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Whakakapia te reo whakaatu i kitea aunoatia (hei tauira \"hu\")"
+}

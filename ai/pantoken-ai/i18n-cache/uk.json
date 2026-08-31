@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Записати агентські ресурси pantoken у репозиторій",
+  "helpInitToolDescription": "Інструмент агента (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Цільовий каталог",
+  "helpScaffoldDescription": "Створити стартовий проєкт (через @pantoken/scaffold) і встановити в нього агентські ресурси",
+  "helpScaffoldToolDescription": "Інструмент агента (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Перевизначити автоматично визначену мову інтерфейсу (напр. \"hu\")"
+}

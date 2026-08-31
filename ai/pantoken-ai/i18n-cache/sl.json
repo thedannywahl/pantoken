@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Zapiši sredstva agenta za pantoken v repozitorij",
+  "helpInitToolDescription": "Orodje agenta (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Ciljni imenik",
+  "helpScaffoldDescription": "Ustvari začetni projekt (prek @pantoken/scaffold) in vanj namesti sredstva agenta",
+  "helpScaffoldToolDescription": "Orodje agenta (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Preglasi samodejno zaznani jezik prikaza (npr. \"hu\")"
+}

@@ -1,0 +1,39 @@
+[pantoken](../../../../../index.md) / [plugins/pantoken/simple-icons/src](../index.md) / SimpleIcon
+
+# Interface: SimpleIcon
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+La forma d'una entrada de Simple Icons (un subconjunt de l'objecte d'icona publicat).
+
+## Properties
+
+### title
+
+> **title**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+---
+
+### slug
+
+> **slug**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+---
+
+### path
+
+> **path**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+---
+
+### hex?
+
+> `optional` **hex?**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>

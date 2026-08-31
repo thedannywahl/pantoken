@@ -1,0 +1,23 @@
+[pantoken](../../../../index.md) / [packages/model/src](../index.md) / CssHookContext
+
+# Interface: CssHookContext
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+السياق الذي يتم تمريره إلى خطاف `css` للمكون الإضافي.
+
+## Properties
+
+### tokens
+
+> **tokens**: [`Token`](Token.md)[]
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+---
+
+### css
+
+> **css**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>

@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Tulis aset agen pantoken ke dalam sebuah repo",
+  "helpInitToolDescription": "Alat agen (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Direktori target",
+  "helpScaffoldDescription": "Buat kerangka proyek awal (melalui @pantoken/scaffold) dan pasang aset agen ke dalamnya",
+  "helpScaffoldToolDescription": "Alat agen (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Timpa bahasa tampilan yang terdeteksi otomatis (mis. \"hu\")"
+}

@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Ysgrifennu asedau asiant pantoken i ystorfa",
+  "helpInitToolDescription": "Offeryn asiant (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Cyfeiriadur targed",
+  "helpScaffoldDescription": "Sgaffaldio prosiect cychwynnol (drwy @pantoken/scaffold) a gosod asedau asiant ynddo",
+  "helpScaffoldToolDescription": "Offeryn asiant (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Diystyru'r iaith arddangos a ganfuwyd yn awtomatig (e.e. \"hu\")"
+}

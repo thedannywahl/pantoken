@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Skrifa agent-gögn pantoken í kóðageymslu",
+  "helpInitToolDescription": "Agent-verkfæri (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Markmappa",
+  "helpScaffoldDescription": "Búa til grunnverkefni (með @pantoken/scaffold) og setja agent-gögn inn í það",
+  "helpScaffoldToolDescription": "Agent-verkfæri (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Yfirskrifa sjálfvirkt greint birtingarmál (t.d. „hu“)"
+}

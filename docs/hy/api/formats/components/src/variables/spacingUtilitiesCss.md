@@ -1,0 +1,9 @@
+[pantoken](../../../../index.md) / [formats/components/src](../index.md) / spacingUtilitiesCss
+
+# Variable: spacingUtilitiesCss
+
+> `const` **spacingUtilitiesCss**: `Definition`\[`"css"`\] = `spacing.css`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+Բացատ օգտակարություններ՝ որպես ինքնուրույն, գլխավորով փաղաքված ոճային թերթ:

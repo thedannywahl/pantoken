@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Գրել pantoken-ի գործակալի ռեսուրսները պահոցում",
+  "helpInitToolDescription": "Գործակալի գործիք (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Նպատակային գրացուցակ",
+  "helpScaffoldDescription": "Ստեղծել մեկնարկային նախագծի կաղապար (@pantoken/scaffold-ի միջոցով) և տեղադրել գործակալի ռեսուրսները դրանում",
+  "helpScaffoldToolDescription": "Գործակալի գործիք (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Փոխարինել ինքնաշխատ հայտնաբերված ցուցադրման լեզուն (օր. \"hu\")"
+}

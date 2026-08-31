@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "كتابة أصول وكيل pantoken في مستودع",
+  "helpInitToolDescription": "أداة الوكيل (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "المجلد الهدف",
+  "helpScaffoldDescription": "إنشاء مشروع مبدئي (عبر @pantoken/scaffold) وتثبيت أصول الوكيل فيه",
+  "helpScaffoldToolDescription": "أداة الوكيل (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "تجاوز لغة العرض المكتشفة تلقائيًا (مثل \"hu\")"
+}
