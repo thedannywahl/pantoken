@@ -1,0 +1,23 @@
+✗ changeset coverage: these publishable packages changed but no pending changeset bumps them:
+  - @pantoken/bootstrap
+  - @pantoken/docusaurus
+  - @pantoken/dtcg
+  - @pantoken/figma
+  - @pantoken/foundation
+  - @pantoken/model
+  - @pantoken/next
+  - @pantoken/plugin-colors
+  - @pantoken/plugin-flatten-property
+  - @pantoken/plugin-mangle-custom-props
+  - @pantoken/plugin-primitives
+  - @pantoken/plugin-props-minify
+  - @pantoken/plugin-prune-custom-props
+  - @pantoken/sd-config
+  - @pantoken/shadcn
+  - @pantoken/typedoc-plugin-demo
+  - @pantoken/typedoc-plugin-live-example
+  - @pantoken/utils
+  - @pantoken/vanilla
+  - @pantoken/vite-workspace-orchestrator
+  - @pantoken/vitepress
+  - @pantoken/wordpress
