@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1BW89DG4NGRE77BAGBJ96KA",
+  "session_id": "7a722705-6930-4d3a-924f-ab652ca6a0e0",
+  "strategy": "manual-commit",
+  "created_at": "2026-08-31T12:21:07.992058Z",
+  "branch": "cli",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/.vitepress/theme/components/VPNavBarExtra.vue"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "347c45107114",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-08-31T12:21:07.975203Z",
+    "agent_lines": 40,
+    "agent_removed": 11,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 40,
+    "total_lines_changed": 51,
+    "agent_percentage": 100,
+    "metric_version": 2
+  }
+}
