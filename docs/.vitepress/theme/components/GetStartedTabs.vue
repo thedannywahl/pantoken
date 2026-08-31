@@ -77,10 +77,6 @@ const agentHovered = ref(false);
 const agentTextHovered = ref(false);
 
 const BASE_COMMAND = "create-pantoken-app";
-// Quoted so the copied/typed line is one valid shell argument for every launcher above — unlike
-// the old bare `/scaffold-pantoken` slash command, this prompt is a full sentence with spaces.
-const AGENT_PROMPT =
-  '"Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project."';
 
 type DocsThemeWithGetStartedTabs = {
   getStartedTabs?: GetStartedTabsStrings;
@@ -127,9 +123,10 @@ const terminalCycle = useCommandCycle({
   timings,
 });
 
+const agentPrompt = computed(() => getStartedTabs.value.agentPrompt);
 const agentCycle = useCommandCycle({
   options: aiProviderOptions,
-  suffix: AGENT_PROMPT,
+  suffix: agentPrompt,
   isPaused,
   reducedMotion,
   timings: agentTimings,

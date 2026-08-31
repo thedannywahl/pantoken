@@ -129,6 +129,8 @@ export const ENGLISH_UI_STRINGS: UiStrings = {
     aiInstall: "AI install",
     pauseAnimation: "Pause animation",
     playAnimation: "Resume animation",
+    agentPrompt:
+      '"Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project."',
   },
   chrome: {
     outlineLabel: "On this page",
