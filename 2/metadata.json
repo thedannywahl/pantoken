@@ -1,0 +1,40 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1C4MDQ7XE6RC6X5WJQYF8CW",
+  "session_id": "7a722705-6930-4d3a-924f-ab652ca6a0e0",
+  "strategy": "manual-commit",
+  "created_at": "2026-08-31T14:47:34.298092Z",
+  "branch": "cli",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/docs-fix-corrupted-api-signatures.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "9899f9d5fd1c",
+  "checkpoint_transcript_start": 2277,
+  "transcript_lines_at_start": 2277,
+  "compact_transcript_start": 450,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 11
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-08-31T14:47:34.255613Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 7,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 7,
+    "total_lines_changed": 7,
+    "agent_percentage": 0,
+    "metric_version": 2
+  }
+}
