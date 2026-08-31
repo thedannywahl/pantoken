@@ -72,6 +72,13 @@ export default defineConfig({
   },
   fmt: {
     overrides: [{ files: ["**/*.jsonc"], options: { trailingComma: "none" } }],
+    // Generated TypeDoc API reference (including per-locale copies) is never hand-edited and is
+    // rebuilt by `docs:build`; oxfmt's markdown formatter isn't idempotent on the escaped generic-type
+    // angle brackets TypeDoc emits in signature lines (e.g. `` `Readonly`\<`Record`\<`string`,
+    // `string`\>\> ``) — each pass through `vp check --fix` (including the `staged` pre-commit hook)
+    // duplicated more `>` characters into already-committed locale API docs. Excluded the same way
+    // `.markdownlint-cli2.yaml` already excludes this tree.
+    ignorePatterns: ["docs/api/**", "docs/*/api/**"],
   },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
