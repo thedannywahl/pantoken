@@ -20,6 +20,8 @@ export interface ExampleSrcdocOptions {
   cssUrls: readonly string[];
   /** Wrap `html` in the shared `.instui-card` surface (default `true`). */
   card?: boolean;
+  /** Text direction for the isolated document's `<html>` (default `"ltr"`) — a srcdoc never inherits it from the embedding page. */
+  dir?: "ltr" | "rtl";
 }
 
 // Boots the preview: asks the parent for the active theme (a sandboxed srcdoc frame without
@@ -62,7 +64,7 @@ export function buildExampleSrcdoc(html: string, options: ExampleSrcdocOptions):
   const links = options.cssUrls.map((href) => `<link rel="stylesheet" href="${href}">`).join("");
   const body = options.card === false ? html : `<div class="instui-card">${html}</div>`;
   return (
-    `<!doctype html><html><head><meta charset="utf-8">${links}` +
+    `<!doctype html><html dir="${options.dir ?? "ltr"}"><head><meta charset="utf-8">${links}` +
     `<style>body{padding:var(--instui-spacing-space-md, 1rem);margin:0}</style></head>` +
     `<body class="pantoken-prose">${body}${BOOT_SCRIPT}</body></html>`
   );

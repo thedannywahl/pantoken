@@ -651,8 +651,14 @@ export default defineConfig({
         liveExample: {
           match: (relativePath: string) =>
             /(^|\/)api\/(css|renderers\/web-components\/src\/variables)\//.test(relativePath),
-          wrap: (html: string, flags: Set<string>) => {
-            const doc = buildExampleSrcdoc(html, { cssUrls, card: !flags.has("-nocard") });
+          wrap: (html: string, flags: Set<string>, relativePath: string) => {
+            const locale =
+              NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
+            const doc = buildExampleSrcdoc(html, {
+              cssUrls,
+              card: !flags.has("-nocard"),
+              dir: LOCALES[locale].dir,
+            });
             return (
               `<div class="css-example-frame">` +
               `<iframe class="pantoken-demo__frame css-example" sandbox="allow-scripts" ` +

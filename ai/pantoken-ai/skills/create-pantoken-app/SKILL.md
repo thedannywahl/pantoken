@@ -105,12 +105,7 @@ If no lockfile exists yet, default to npm (or whatever the user prefers).
 Use the package manager detected in step 2 for every command below (the examples use `npm i`;
 substitute `pnpm add`, `yarn add`, or `bun add` as appropriate).
 
-Worked checklist: (a) identify every matching row in the table below. (b) If Next.js is matched,
-remove `@pantoken/react` from the list — `@pantoken/next` already includes it. (c) Prepend
-`@pantoken/css` to the list unless the target is native web. (d) Run one install command with all
-collected packages.
-
-Follow this decision checklist in order:
+Follow this decision checklist in order, then run one install command with all collected packages:
 
 1. **Is it native web** (plain HTML/CSS, no framework and no build tool detected)? Install only
    `@pantoken/components` — it ships the token CSS baked in, so no separate `@pantoken/css` install
@@ -120,19 +115,17 @@ Follow this decision checklist in order:
    npm i @pantoken/components
    ```
 
-2. **Is it Next.js?** Install `@pantoken/css` plus `@pantoken/next` (do NOT also install
+2. **Is it Next.js?** Collect `@pantoken/css` plus `@pantoken/next` (do NOT also add
    `@pantoken/react` — `@pantoken/next` includes the React integration), then add any matching tool
    packages (Tailwind, Vite, etc.) from the table below.
 
-3. **Otherwise**, install `@pantoken/css` first:
+3. **Otherwise**, collect `@pantoken/css` first, then add the framework package and every matching
+   tool row's package from the table. Framework rows (React, Vue, etc.) and tool rows (Tailwind,
+   PostCSS, Vite, Webpack) are all additive — collect every matching row's package alongside
+   `@pantoken/css`.
 
-   ```sh
-   npm i @pantoken/css
-   ```
-
-   Then add the framework package and every matching tool row's package from the table. Framework
-   rows (React, Vue, etc.) and tool rows (Tailwind, PostCSS, Vite, Webpack) are all additive —
-   install every matching row's package alongside `@pantoken/css`.
+4. If the user wants to use `<instui-icon>` in any web framework project (React, Vue, Vite, etc.),
+   also collect `@pantoken/web-components` — regardless of which framework rows already matched.
 
 For example:
 
@@ -143,7 +136,7 @@ For example:
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Native web (default)    | `@pantoken/components`                                                                                                                                                                                                                                                             |
 | React                   | `@pantoken/react`; if the user also wants full InstUI components (buttons, modals, etc.), additionally install the specific `@instructure/ui-*` packages needed, e.g. `@instructure/ui-buttons @instructure/ui-modal` (see <https://instructure.design> for the full package list) |
-| Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` (always install `@pantoken/web-components` alongside the framework package — it's required for icon support, not optional)                                                                 |
+| Vue / Svelte / Angular  | `@pantoken/vue` / `@pantoken/svelte` / `@pantoken/angular` + `@pantoken/web-components` (always install `@pantoken/web-components` alongside the framework package here — it's required for icon support in these three, not optional)                                             |
 | React Native            | `@pantoken/react-native`                                                                                                                                                                                                                                                           |
 | Next.js                 | `@pantoken/next` — Next.js projects do NOT also need `@pantoken/react`; `@pantoken/next` includes the React integration. Do not install both.                                                                                                                                      |
 | Vite                    | `@pantoken/vite`                                                                                                                                                                                                                                                                   |
@@ -151,7 +144,7 @@ For example:
 | PostCSS / Webpack       | `@pantoken/postcss` / `@pantoken/webpack`                                                                                                                                                                                                                                          |
 | shadcn / Bootstrap      | `@pantoken/shadcn` / `@pantoken/bootstrap`                                                                                                                                                                                                                                         |
 | markdown-it / css-in-js | `@pantoken/markdown-it` / `@pantoken/css-in-js`                                                                                                                                                                                                                                    |
-| Icons anywhere          | `@pantoken/web-components`                                                                                                                                                                                                                                                         |
+| Icons anywhere          | `@pantoken/web-components` — for React, Next.js, React Native, and tool-only setups, only add this if the user explicitly wants icon support (`<instui-icon>` elements); for Vue, Svelte, and Angular it's always required (see that row)                                          |
 
 For native / CMS targets, no install — run the CLI (step 5). If the project contains both a
 `package.json` and native/CMS files, treat it as a web project and follow the web install steps

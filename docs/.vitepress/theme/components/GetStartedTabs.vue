@@ -407,6 +407,16 @@ const highlightColor = computed(() =>
   transform: rotateY(165deg);
 }
 
+/* The tilt is a left/right lean, so mirror it for RTL locales rather than leaving it pointing
+   the same physical way regardless of reading direction. */
+:dir(rtl) .gs-started__stage::after {
+  transform: rotateY(15deg);
+}
+
+:dir(rtl) .gs-started__stage.-agent::after {
+  transform: rotateY(-165deg);
+}
+
 .gs-started__flipper {
   position: absolute;
   z-index: 1;
@@ -421,6 +431,14 @@ const highlightColor = computed(() =>
 
 .gs-started__stage.-agent .gs-started__flipper {
   transform: rotateY(165deg);
+}
+
+:dir(rtl) .gs-started__flipper {
+  transform: rotateY(15deg);
+}
+
+:dir(rtl) .gs-started__stage.-agent .gs-started__flipper {
+  transform: rotateY(-165deg);
 }
 
 .gs-started__face {

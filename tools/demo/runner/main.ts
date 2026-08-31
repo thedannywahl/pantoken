@@ -49,6 +49,17 @@ function isDark(): boolean {
   }
   return matchMedia("(prefers-color-scheme: dark)").matches;
 }
+/** The embedding page's text direction; doesn't cross the iframe boundary on its own. */
+function isRtl(): boolean {
+  try {
+    if (window.parent && window.parent !== window) {
+      return window.parent.document.documentElement.dir === "rtl";
+    }
+  } catch {
+    // Cross-origin parent.
+  }
+  return false;
+}
 /** The scheme actually rendered: the override if set, otherwise the inherited scheme. */
 const effectiveDark = (): boolean => (schemeOverride ? schemeOverride === "dark" : isDark());
 const schemeName = (): string => (effectiveDark() ? "dark" : "light");
@@ -299,6 +310,7 @@ function render(ctx: RunnerCtx): void {
   const scheme = schemeName();
   // The chrome stays on the inherited (page) scheme; only the rendered result follows the toggle.
   document.documentElement.style.colorScheme = isDark() ? "dark" : "light";
+  document.documentElement.dir = isRtl() ? "rtl" : "ltr";
   const links = cssUrls.map((href) => `<link rel="stylesheet" href="${href}">`).join("");
   // The markup can be arbitrary (edited live, or a shared ?src= URL), so sanitize it — strip
   // scripts and event handlers, keep HTML + SVG. The demo's own JS runs from the JS tab below.
@@ -319,7 +331,7 @@ function render(ctx: RunnerCtx): void {
   // runner asks it to hide its own scrollbar so it doesn't flicker as the height recomputes.
   const sizeReporter = `<script>(function(){var p=window.parent;function r(){p.postMessage({type:"pantoken-demo-result-size",height:Math.ceil(document.body.getBoundingClientRect().height)},"*");}addEventListener("load",r);if(window.ResizeObserver){new ResizeObserver(r).observe(document.body);}addEventListener("message",function(e){if(e&&e.data&&e.data.type==="pantoken-demo-freeze"){document.documentElement.style.overflow=e.data.value?"hidden":"";}});r();})()</script>`;
   ctx.resultFrame.srcdoc =
-    `<!doctype html><html data-pantoken-theme="${ctx.currentTheme}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
+    `<!doctype html><html dir="${isRtl() ? "rtl" : "ltr"}" data-pantoken-theme="${ctx.currentTheme}" style="color-scheme:${scheme}"><head><meta charset="utf-8">${links}${gutter}` +
     `<style>${ctx.original.css}</style></head><body class="pantoken-prose">${safeHtml}` +
     `<script>${ctx.original.js}</script>${sizeReporter}</body></html>`;
 }
@@ -619,13 +631,13 @@ function requestTheme(ctx: RunnerCtx): void {
   }
 }
 
-/** Keep the demo in sync with later light/dark toggles on the embedding page. */
+/** Keep the demo in sync with later light/dark or direction toggles on the embedding page. */
 function observeParentTheme(ctx: RunnerCtx): void {
   try {
     if (window.parent && window.parent !== window) {
       new MutationObserver(() => applyTheme(ctx)).observe(window.parent.document.documentElement, {
         attributes: true,
-        attributeFilter: ["class"],
+        attributeFilter: ["class", "dir"],
       });
     }
   } catch {

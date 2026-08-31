@@ -9,6 +9,14 @@ test("buildExampleSrcdoc emits a link per cssUrls entry", () => {
   expect(doc).toContain('<link rel="stylesheet" href="/demos-assets/components.css">');
 });
 
+test("buildExampleSrcdoc defaults to dir=ltr, and honors an rtl override", () => {
+  const ltr = buildExampleSrcdoc("<p>Hi</p>", { cssUrls: [] });
+  expect(ltr).toContain('<html dir="ltr">');
+
+  const rtl = buildExampleSrcdoc("<p>Hi</p>", { cssUrls: [], dir: "rtl" });
+  expect(rtl).toContain('<html dir="rtl">');
+});
+
 test("buildExampleSrcdoc wraps in .instui-card by default, and omits it when card is false", () => {
   const withCard = buildExampleSrcdoc("<button>Save</button>", { cssUrls: [] });
   expect(withCard).toContain('<div class="instui-card"><button>Save</button></div>');

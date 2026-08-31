@@ -175,8 +175,8 @@ export function renderDemoFigure(resolved: ResolvedDemo): string {
 export interface LiveExampleOptions {
   /** Only wrap fences on pages whose markdown-it `env.relativePath` matches (e.g. the CSS-API pages). */
   match: (relativePath: string) => boolean;
-  /** Build the preview block appended after each non-overlay `html` fence, from its markup and any `-flag` tokens parsed from the fence info string. */
-  wrap: (html: string, flags: Set<string>) => string;
+  /** Build the preview block appended after each non-overlay `html` fence, from its markup, any `-flag` tokens parsed from the fence info string, and the page's `env.relativePath` (for locale/direction lookups). */
+  wrap: (html: string, flags: Set<string>, relativePath: string) => string;
 }
 
 /** Options for {@link demoMarkdownIt}: the {@link resolveDemo} fields plus optional live-example seaming. */
@@ -521,7 +521,7 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
       const html = token.content.replace(/\n$/u, "");
       // Parse -flag tokens from the info string (migrated by the core rule above).
       if (live.match(relativePath) && !isOverlay(html)) {
-        return `${rendered}\n${live.wrap(html, flags)}\n`;
+        return `${rendered}\n${live.wrap(html, flags, relativePath)}\n`;
       }
     }
     return rendered;
