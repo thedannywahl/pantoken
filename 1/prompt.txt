@@ -1,0 +1,16 @@
+do we need to add verbatims for translate-guides strings?
+
+---
+
+```
+➜ bash /tmp/translate-all-copilot-force.sh
+  … 1/9 guide/architecture.md translated
+  … 2/9 guide/cdn-picker.md translated
+  … 3/9 guide/cdn.md translated
+  … 4/9 guide/cli.md translated
+  … 5/9 guide/components.md translated
+  … 6/9 guide/generated-output.md translated
+```
+this is closer to what I want, but the other scripts like:
+"$ROOT/renderers/web-components" && node scripts/translate.ts
+give me a per-language translation status with hte number of strings, that's what I want.
