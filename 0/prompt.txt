@@ -17,3 +17,7 @@ Quick, read-only exploration in /Users/dwahl/Scripts/pantoken. Locate the custom
 ---
 
 Start implementation
+
+---
+
+add a change set and a conventional commit for the files you touched.
