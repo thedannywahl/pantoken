@@ -1,0 +1,5 @@
+some strings are getting dropped here - were they moved to the glossary or do we need to adjust the verbatim settings?
+
+---
+
+there are likely other short strings in this i18n file that could use allow or switch to warn.
