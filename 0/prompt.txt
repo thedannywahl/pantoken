@@ -1,0 +1,12 @@
+➜ vpr i18n:translate:force:copilot
+~/renderers/web-components$ I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" I18N_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node scripts/translate.ts
+~/packages/scaffold$ I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" I18N_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node scripts/translate.ts
+~/docs$ export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:copilot && vp run docs:home:locales:copilot && vp run docs:chrome:locales:copilot && vp run docs:glossary:locales:copilot && vp run docs:demos:locales:copilot && vp run docs:api:locales:copilot
+📋 Translating @pantoken/scaffold strings (ai)
+
+📋 Translating @pantoken/web-components strings (ai)
+
+🔄 ar: translating 7 new string(s)...
+🔄 ar: translating 50 new string(s)...
+~/docs$ DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" node scripts/translate-guides.ts
+✗ Failed to spawn process: underlying os error: Invalid argument (os error 22)
