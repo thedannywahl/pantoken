@@ -1,0 +1,7 @@
+running:
+```
+➜ bash /tmp/translate-all-copilot-force.sh
+  ! skipped guide/generated-output.md: looks untranslated (identical to source), will retry next run
+```
+
+sits silently for minutes.  (I've updated this to only do one of the translation workflows) the other translations output the number of strings, the language , the status, etc....
