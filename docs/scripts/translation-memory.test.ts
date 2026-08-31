@@ -347,3 +347,72 @@ test("translateUnits persist ignores a re-seen chunk without double counting", a
   // One real unit → set exactly once despite the duplicate stream.
   expect(memory.misses).toBe(1);
 });
+
+test("translateUnits does not cache a markdown translation identical to its source", async () => {
+  const memory = TranslationMemory.load("hu", "api");
+  const translateMarkdown = vi.fn((input: string) => Promise.resolve(input));
+
+  const result = await translateUnits(adapter({ translateMarkdown }), memory, [
+    { kind: "markdown", source: "# Same", filePath: "same.md" },
+  ]);
+
+  expect(result.has(keyFor("markdown", "# Same"))).toBe(false);
+  expect(memory.misses).toBe(0);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(true);
+});
+
+test("translateUnits does not cache a batched translation identical to its source", async () => {
+  const memory = TranslationMemory.load("hu", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((i) => [i.id, i.text]))),
+  );
+
+  const result = await translateUnits(adapter({ translateBatch }), memory, [
+    { kind: "text", source: "Home" },
+  ]);
+
+  expect(result.get(keyFor("text", "Home"))).toBe("Home");
+  expect(memory.misses).toBe(0);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(true);
+});
+
+test("translateUnits retranslates a cached hit that matches its source instead of serving it", async () => {
+  const key = keyFor("text", "Home");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "Home" } }));
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
+
+  const result = await translateUnits(
+    adapter({ translateText, translateBatch: undefined }),
+    memory,
+    [{ kind: "text", source: "Home" }],
+  );
+
+  expect(translateText).toHaveBeenCalledWith("Home");
+  expect(result.get(key)).toBe("fresh:Home");
+});
+
+test("translateUnits verbatimSources exempts a matching source from the passthrough guard", async () => {
+  const memory = TranslationMemory.load("hu", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((i) => [i.id, i.text]))),
+  );
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source: "yyyy-mm-dd" }],
+    { verbatimSources: new Set(["yyyy-mm-dd"]) },
+  );
+
+  expect(result.get(keyFor("text", "yyyy-mm-dd"))).toBe("yyyy-mm-dd");
+  expect(memory.misses).toBe(1);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(false);
+});
