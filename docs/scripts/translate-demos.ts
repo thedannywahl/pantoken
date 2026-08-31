@@ -39,7 +39,10 @@ for (const locale of NON_ROOT_LOCALES) {
     units.map((source) => ({ kind: "text" as const, source })),
   );
 
-  const translations = await translateUnits(adapter, memory, allUnits);
+  const translations = await translateUnits(adapter, memory, allUnits, {
+    locale,
+    defaultVerbatim: { allow: ["en*"] },
+  });
 
   for (const { file, segments } of parsed) {
     const resolved = reassembleDemoHtml(

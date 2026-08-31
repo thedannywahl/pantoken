@@ -19,7 +19,10 @@ for (const locale of NON_ROOT_LOCALES) {
   const adapter = createTranslationAdapter(locale);
   const memory = TranslationMemory.load(locale, "glossary");
 
-  await translateUnits(adapter, memory, units);
+  await translateUnits(adapter, memory, units, {
+    locale,
+    defaultVerbatim: { allow: ["en*"] },
+  });
 
   memory.save();
   console.log(

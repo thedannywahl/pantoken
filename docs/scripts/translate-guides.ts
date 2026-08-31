@@ -42,6 +42,7 @@ for (const locale of targets) {
     adapter,
     memory,
     sources.map(({ page, source }) => ({ kind: "markdown", source, filePath: `guide/${page}` })),
+    { locale, defaultVerbatim: { allow: ["en*"] } },
   );
 
   for (const { page, source } of sources) {

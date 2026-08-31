@@ -174,7 +174,11 @@ const translateMarkdownFiles = async (
   const proseUnits: TranslationUnit[] = units
     .filter((unit) => unit.kind === "prose")
     .map((unit) => ({ kind: "prose", source: unit.text }));
-  const proseTranslations = await translateUnits(adapter, memory, proseUnits, { autosave: true });
+  const proseTranslations = await translateUnits(adapter, memory, proseUnits, {
+    autosave: true,
+    locale,
+    defaultVerbatim: { allow: ["en*"] },
+  });
 
   const resolve: Resolve = (text, kind) => {
     if (kind === "glossary") {
@@ -212,6 +216,7 @@ const translateSidebars = async (
     adapter,
     memory,
     labels.map((source) => ({ kind: "text", source })),
+    { locale, defaultVerbatim: { allow: ["en*"] } },
   );
   const translateLabel = (text: string): string =>
     labelTranslations.get(keyFor("text", text)) ?? text;

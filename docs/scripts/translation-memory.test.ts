@@ -416,3 +416,23 @@ test("translateUnits verbatimSources exempts a matching source from the passthro
     warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
   ).toBe(false);
 });
+
+test("translateUnits defaultVerbatim caches an English regional identity translation", async () => {
+  const memory = TranslationMemory.load("en-GB", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((item) => [item.id, item.text]))),
+  );
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source: "Home" }],
+    { locale: "en-GB", defaultVerbatim: { allow: ["en*"] } },
+  );
+
+  expect(result.get(keyFor("text", "Home"))).toBe("Home");
+  expect(memory.misses).toBe(1);
+  expect(
+    warnSpy.mock.calls.some((call: unknown[]) => String(call[0]).includes("looks untranslated")),
+  ).toBe(false);
+});

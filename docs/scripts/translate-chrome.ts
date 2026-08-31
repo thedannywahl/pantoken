@@ -38,7 +38,11 @@ for (const locale of NON_ROOT_LOCALES) {
   const adapter = createTranslationAdapter(locale);
   const memory = TranslationMemory.load(locale, "chrome");
 
-  await translateUnits(adapter, memory, units, { verbatimSources });
+  await translateUnits(adapter, memory, units, {
+    verbatimSources,
+    locale,
+    defaultVerbatim: { allow: ["en*"] },
+  });
 
   memory.save();
   console.log(
