@@ -4,69 +4,69 @@
        the -size-* modifiers (medium is the default); each trigger opens its matching dialog. -->
   <div style="display: flex; gap: 8px; flex-wrap: wrap">
     <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-sm">
-      Small
+      صغير
     </button>
     <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-md">
-      Medium
+      متوسط
     </button>
     <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-lg">
-      Large
+      كبير
     </button>
     <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-auto">
-      Auto
+      تلقائي
     </button>
     <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-full">
-      Full screen
+      ملء الشاشة
     </button>
     <button class="instui-button -color-secondary" command="show-modal" commandfor="modal-media">
-      Media
+      وسائط
     </button>
   </div>
 
   <dialog id="modal-sm" class="instui-modal -size-sm">
-    <div class="header"><strong>Small</strong></div>
-    <div class="body"><code>-size-sm</code> — a narrow modal.</div>
+    <div class="header"><strong>صغير</strong></div>
+    <div class="body"><code>-size-sm</code> — نافذة مشروطة ضيقة.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
-      <button class="instui-button" command="close" commandfor="modal-sm">Close</button>
+      <button class="instui-button" command="close" commandfor="modal-sm">إغلاق</button>
     </div>
   </dialog>
 
   <dialog id="modal-md" class="instui-modal">
-    <div class="header"><strong>Medium</strong></div>
-    <div class="body">The default size — no modifier needed.</div>
+    <div class="header"><strong>متوسط</strong></div>
+    <div class="body">الحجم الافتراضي — لا يلزم وجود معدِّل.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
-      <button class="instui-button" command="close" commandfor="modal-md">Close</button>
+      <button class="instui-button" command="close" commandfor="modal-md">إغلاق</button>
     </div>
   </dialog>
 
   <dialog id="modal-lg" class="instui-modal -size-lg">
-    <div class="header"><strong>Large</strong></div>
-    <div class="body"><code>-size-lg</code> — a wider modal for denser content.</div>
+    <div class="header"><strong>كبير</strong></div>
+    <div class="body"><code>-size-lg</code> — نافذة مشروطة أوسع للمحتوى الأكثر كثافة.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
-      <button class="instui-button" command="close" commandfor="modal-lg">Close</button>
+      <button class="instui-button" command="close" commandfor="modal-lg">إغلاق</button>
     </div>
   </dialog>
 
   <dialog id="modal-auto" class="instui-modal -size-auto">
-    <div class="header"><strong>Auto</strong></div>
-    <div class="body"><code>-size-auto</code> sizes to its content.</div>
+    <div class="header"><strong>تلقائي</strong></div>
+    <div class="body"><code>-size-auto</code> يتكيف حجمها وفقاً لمحتواها.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
-      <button class="instui-button" command="close" commandfor="modal-auto">Close</button>
+      <button class="instui-button" command="close" commandfor="modal-auto">إغلاق</button>
     </div>
   </dialog>
 
   <dialog id="modal-full" class="instui-modal -size-fullscreen">
-    <div class="header"><strong>Full screen</strong></div>
-    <div class="body"><code>-size-fullscreen</code> fills the viewport.</div>
+    <div class="header"><strong>ملء الشاشة</strong></div>
+    <div class="body"><code>-size-fullscreen</code> يملأ نافذة العرض.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
-      <button class="instui-button" command="close" commandfor="modal-full">Close</button>
+      <button class="instui-button" command="close" commandfor="modal-full">إغلاق</button>
     </div>
   </dialog>
 
   <!-- A media modal: -color-inverse gives the on-dark chrome, and an <img> directly in the body goes
        full-bleed (the .body:has(> img) rule drops the padding). -->
   <dialog id="modal-media" class="instui-modal -color-inverse">
-    <div class="header"><strong>Media</strong></div>
+    <div class="header"><strong>وسائط</strong></div>
     <div class="body">
       <img
         alt="A gradient placeholder"
@@ -74,7 +74,7 @@
       />
     </div>
     <div class="footer" style="display: flex; justify-content: flex-end">
-      <button class="instui-button" command="close" commandfor="modal-media">Close</button>
+      <button class="instui-button" command="close" commandfor="modal-media">إغلاق</button>
     </div>
   </dialog>
 </div>
