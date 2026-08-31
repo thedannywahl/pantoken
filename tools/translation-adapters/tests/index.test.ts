@@ -252,6 +252,28 @@ test("runI18nTranslationCli skips a locale whose cache already has every key", a
   expect(spawn).not.toHaveBeenCalled();
 });
 
+test("I18N_TRANSLATION_FORCE=1 retranslates and overwrites an already-cached key", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ hello: "stale" }));
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Szia" }) }));
+  process.env.I18N_TRANSLATION_FORCE = "1";
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+  } finally {
+    logSpy.mockRestore();
+    delete process.env.I18N_TRANSLATION_FORCE;
+  }
+  expect(spawn).toHaveBeenCalled();
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    hello: "Szia",
+  });
+});
+
 test("runI18nTranslationCli always skips the 'en' locale, without touching its cache path", async () => {
   const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
   try {

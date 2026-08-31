@@ -26,6 +26,8 @@
     "docs:demos:locales:agy": "DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" node scripts/translate-demos.ts",
     "docs:locales:translate": "vp run docs:guides:locales:claude && vp run docs:chrome:locales:claude && vp run docs:glossary:locales:claude && vp run docs:demos:locales:claude && vp run docs:api:locales:claude",
     "docs:locales:translate:agy": "vp run docs:guides:locales:agy && vp run docs:chrome:locales:agy && vp run docs:glossary:locales:agy && vp run docs:demos:locales:agy && vp run docs:api:locales:agy",
+    "docs:locales:translate:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:claude && vp run docs:chrome:locales:claude && vp run docs:glossary:locales:claude && vp run docs:demos:locales:claude && vp run docs:api:locales:claude",
+    "docs:locales:translate:agy:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:agy && vp run docs:chrome:locales:agy && vp run docs:glossary:locales:agy && vp run docs:demos:locales:agy && vp run docs:api:locales:agy",
     "docs:check:locales": "node scripts/check-locale-parity.ts",
     "docs:check:drift": "node scripts/check-locale-drift.ts",
     "docs:assets": "node scripts/logo.ts && node scripts/gen-og.ts && node scripts/site-themes.ts && node scripts/demos.ts && node scripts/cdn-manifest.ts && node scripts/cdn-icon-manifest.ts && node scripts/cdn-plugin-manifest.ts && node scripts/icon-manifest.ts && node scripts/stage-create-pantoken-app-skill.ts",

@@ -122,6 +122,48 @@ test("translateUnits serves cache hits without calling the adapter", async () =>
   expect(memory.hits).toBe(1);
 });
 
+test("translateUnits force option retranslates and overwrites an existing cache hit", async () => {
+  const key = keyFor("text", "Home");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "stale" } }));
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
+
+  const result = await translateUnits(
+    adapter({ translateText, translateBatch: undefined }),
+    memory,
+    [{ kind: "text", source: "Home" }],
+    { force: true },
+  );
+
+  expect(translateText).toHaveBeenCalledWith("Home");
+  expect(result.get(key)).toBe("fresh:Home");
+  memory.save();
+  const payload = JSON.parse(writeFileSync.mock.calls[0][1]) as { entries: Record<string, string> };
+  expect(payload.entries[key]).toBe("fresh:Home");
+});
+
+test("translateUnits defaults force to the DOCS_TRANSLATION_FORCE env var", async () => {
+  const key = keyFor("text", "Home");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "stale" } }));
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
+  process.env.DOCS_TRANSLATION_FORCE = "1";
+
+  try {
+    const result = await translateUnits(
+      adapter({ translateText, translateBatch: undefined }),
+      memory,
+      [{ kind: "text", source: "Home" }],
+    );
+    expect(translateText).toHaveBeenCalledWith("Home");
+    expect(result.get(key)).toBe("fresh:Home");
+  } finally {
+    delete process.env.DOCS_TRANSLATION_FORCE;
+  }
+});
+
 test("translateUnits dedupes identical sources into one translation", async () => {
   const memory = TranslationMemory.load("hu", "api");
   const translateText = vi.fn((input: string) => Promise.resolve(`text:${input}`));

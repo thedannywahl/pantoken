@@ -241,8 +241,10 @@ Respond with a JSON object mapping each original key to its translation, using t
  * the same way, differing only in where the source strings and cache files come from.
  *
  * Reads `I18N_TRANSLATION_ADAPTER`/`I18N_TRANSLATION_COMMAND`/`I18N_TRANSLATION_COMMAND_ARGS` env
- * vars to choose the model/command, matching both callers' existing conventions. Exits the process
- * with code 1 if a locale's translation request fails.
+ * vars to choose the model/command, matching both callers' existing conventions.
+ * `I18N_TRANSLATION_FORCE=1` bypasses `isCached` entirely — every key is retranslated and its
+ * cached value overwritten, even if already present — for a forced refresh after fixing an adapter
+ * bug or a bad translation. Exits the process with code 1 if a locale's translation request fails.
  */
 export async function runI18nTranslationCli(options: I18nTranslationOptions): Promise<void> {
   const adapter = process.env.I18N_TRANSLATION_ADAPTER || "ai";
@@ -251,7 +253,8 @@ export async function runI18nTranslationCli(options: I18nTranslationOptions): Pr
     .split(" ")
     .map((p) => p.trim())
     .filter((p) => p.length > 0);
-  const isCached = options.isCached ?? ((key, cache) => key in cache);
+  const force = process.env.I18N_TRANSLATION_FORCE === "1";
+  const isCached = force ? () => false : (options.isCached ?? ((key, cache) => key in cache));
 
   console.log(`📋 Translating ${options.label} (${adapter})\n`);
 

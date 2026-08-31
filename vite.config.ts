@@ -224,6 +224,10 @@ export default defineConfig({
         command: "vp run @pantoken/web-components#translate:agy",
         cache: false,
       },
+      "ui:translate:force": {
+        command: "vp run @pantoken/web-components#translate:force",
+        cache: false,
+      },
       // Docs locale translation (both claude and agy variants).
       "docs:translate": {
         command: "vp run @pantoken/docs#docs:locales:translate",
@@ -231,6 +235,10 @@ export default defineConfig({
       },
       "docs:translate:agy": {
         command: "vp run @pantoken/docs#docs:locales:translate:agy",
+        cache: false,
+      },
+      "docs:translate:force": {
+        command: "vp run @pantoken/docs#docs:locales:translate:force",
         cache: false,
       },
       // CLI (scaffold and ai) string localization.
@@ -242,6 +250,10 @@ export default defineConfig({
         command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
         cache: false,
       },
+      "cli:translate:force": {
+        command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
+        cache: false,
+      },
       // Umbrella tasks for all translation domains.
       "i18n:translate": {
         command: "true",
@@ -251,6 +263,14 @@ export default defineConfig({
       "i18n:translate:agy": {
         command: "true",
         dependsOn: ["ui:translate:agy", "docs:translate:agy", "cli:translate:agy"],
+        cache: false,
+      },
+      // Bypasses every domain's translation-memory cache — retranslates and overwrites everything,
+      // even already-cached content. Use after fixing an adapter bug or a bad translation; see
+      // DOCS_TRANSLATION_FORCE / I18N_TRANSLATION_FORCE in the respective translation pipelines.
+      "i18n:translate:force": {
+        command: "true",
+        dependsOn: ["ui:translate:force", "docs:translate:force", "cli:translate:force"],
         cache: false,
       },
       // Drift checks for all i18n domains (UI, docs, CLI).
