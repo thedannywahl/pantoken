@@ -19,3 +19,7 @@ Medium, read-only exploration in /Users/dwahl/Scripts/pantoken. Determine exact 
 ---
 
 plan should include incremental conventional commits, changesets, and push - avoid changes that aren't yours there's translation workflows in flight.
+
+---
+
+Start implementation
