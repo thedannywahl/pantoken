@@ -38,6 +38,8 @@ for (const locale of targets) {
     source: readFileSync(join(guideDir, page), "utf8"),
   }));
 
+  console.log(`🔄 ${locale}: checking ${pages.length} guide page(s) via '${adapter.name}'...`);
+
   const translations = await translateUnits(
     adapter,
     memory,
@@ -53,7 +55,7 @@ for (const locale of targets) {
 
   memory.save();
   console.log(
-    `✓ localized ${pages.length} guide pages for '${locale}' via '${adapter.name}' ` +
+    `✓ ${locale}: localized ${pages.length} guide pages via '${adapter.name}' ` +
       `(${memory.misses} translated, ${memory.hits} cached)`,
   );
 }
