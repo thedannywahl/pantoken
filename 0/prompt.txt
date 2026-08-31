@@ -1,0 +1,13 @@
+write a translation adapter for github copilot cli.
+
+---
+
+now the vite tasks need to be wired to support copilot.
+
+---
+
+we need a good default translation model and effort level for copilot based on the models available to choose from (you are copilot)
+
+---
+
+now do the same for agy and claude.
