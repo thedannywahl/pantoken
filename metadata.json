@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1CFGWW0TAQV5W6NKTGAN5V9",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 5,
+  "checkpoints_count": 6,
   "files_touched": [
     ".changeset/i18n-verbatim-allowlist.md",
     "ai/pantoken-ai/scripts/translate.ts",
@@ -30,6 +30,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": "/1/prompt.txt"
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": ""
     }
   ],
   "token_usage": {
