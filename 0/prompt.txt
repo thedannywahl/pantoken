@@ -1,0 +1,12 @@
+✗ fallow dead-code gate failed
+✓ fallow health: 85.6 (A)
+pass: All 5285 files are correctly formatted (9623ms, 10 threads)
+── Unused Code ─────────────────────────────────────
+
+● Unused exports (1)
+  docs/.vitepress/i18n.ts
+    :22 ALL_DOCS_LOCALES
+  Exported symbols with no known consumers — https://docs.fallow.tools/explanations/dead-code#unused-exports
+
+✗ fallow regression gate: findings grew beyond fallow-baseline.json
+✓ fallow duplication: within the .fallowrc threshold
