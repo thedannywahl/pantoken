@@ -1,8 +1,7 @@
 /**
  * Publish the `create-pantoken-app` skill to the `create.pantoken.app` submodule
  * (`ai/create-pantoken-app-site`): the raw content goes to `SKILL.md` (the canonical short path,
- * `create.pantoken.app/SKILL.md`) and `create-pantoken-app.md` (parity alias with the
- * `pantoken.app/create-pantoken-app.md` path). `index.html` is a redirect stub pointing "/" at
+ * `create.pantoken.app/SKILL.md`). `index.html` is a redirect stub pointing "/" at
  * `SKILL.md` (proper 200 + `text/markdown` for clients that render HTML/meta-refresh or run JS),
  * and `404.html` is a raw copy of the skill (GitHub Pages serves it for any unmatched path,
  * including "/" — no Jekyll/`permalink` frontmatter needed, this repo is `.nojekyll`) so a plain
@@ -40,7 +39,6 @@ const redirectHtml = `<!doctype html>
 
 mkdirSync(siteDir, { recursive: true });
 copyFileSync(source, join(siteDir, "SKILL.md"));
-copyFileSync(source, join(siteDir, "create-pantoken-app.md"));
 writeFileSync(join(siteDir, "index.html"), redirectHtml);
 copyFileSync(source, join(siteDir, "404.html"));
 
