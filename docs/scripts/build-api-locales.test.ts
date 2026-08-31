@@ -128,7 +128,7 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   expect(summary).toMatch(/glossary terms/);
   expect(summary).toMatch(/prose blocks/);
   expect(process.exitCode).toBeUndefined();
-});
+}, 20000); // dynamic import of build-api-locales.ts can exceed the default 5s under full-suite load
 
 test("build surfaces a generation failure as a non-zero exit code", async () => {
   spawnSync.mockReturnValue({ status: 1 }); // TypeDoc/run() fails
