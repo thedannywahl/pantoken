@@ -8,30 +8,31 @@
  *   fill with a top-to-bottom gradient instead, for AI-attributed messaging.
  * @sealed
  * @annotations
- * 1. The icon swatch is a plain child slot — drop an `@pantoken/components` icon (or any glyph) inside; its background and corner radius come from the active size/color.
- * 2. The close button isn't absolutely positioned (unlike `alert`'s) — it's a small-by-default flex sibling, nudged into place with its own margin tokens. Add a size modifier to override the contextual default.
+ * 1. Banner renders an `info` glyph by default. Add `-icon-<name>` to swap it for any glyph from the shared icon set.
+ * 2. The close button follows `alert`'s top-end positioning. It defaults to small; add a size modifier to override it.
  * 3. `-variant-ai`'s gradient direction (top to bottom) isn't specified upstream; picked to read as a subtle top-lit sheen, matching `agent-shell`'s border gradient orientation.
  * @modifier -size-relaxed — Roomier padding and gap (default).
  * @modifier -size-compact — Tighter padding and gap.
  * @modifier -color-violet — Violet-tinted background and icon swatch.
  * @modifier -color-sea — Sea-tinted background and icon swatch.
  * @modifier -variant-ai — AI-attributed gradient background in place of a flat fill.
+ * @modifier -icon-* — Swap the default `info` glyph for an icon from the shared icon set (for example, `-icon-megaphone`).
  * @structure
  * .pfx-banner {
- *   .icon:optional {}
- *   .content:optional {}
+ *   .title:optional {}
+ *   .content {}
  *   @component close-button:optional {}
  * }
- * @part .icon — The optional icon swatch; its background and corner radius come from the active size/color.
+ * @part .title — An optional title, using title-card typography appropriate to the active size.
  * @part .content — The message content, stacked in a column.
  * @a11y Add `role="status"` (or `role="alert"` for urgent messages) so assistive tech announces the
  *   banner; mark a decorative icon `aria-hidden="true"` and give the close button an `aria-label`.
  * @usage @import "@pantoken/plugin-custom-components/custom-components.css";
  * @example -nocard
  * ```html
- * <div class="pfx-banner -color-violet" role="status">
- *   <span class="icon" aria-hidden="true"></span>
- *   <div class="content">This is a violet banner with an icon.</div>
+ * <div class="pfx-banner -color-violet -icon-megaphone" role="status">
+ *   <div class="title">New feature</div>
+ *   <div class="content">This is a violet banner with a custom icon.</div>
  *   <button class="pfx-close-button" aria-label="Close"></button>
  * </div>
  * ```
@@ -39,6 +40,14 @@
  * @related close-button — The dismiss control a banner may include.
  */
 .pfx-banner {
+  --pantoken-banner-glyph: var(--instui-icon-info);
+  --pantoken-banner-icon-background: transparent;
+  --pantoken-banner-icon-size: 2rem;
+  --pantoken-banner-icon-inset-block-start: var(--instui-component-banner-relaxed-padding-vertical);
+  --pantoken-banner-icon-inset-inline-start: var(
+    --instui-component-banner-relaxed-padding-horizontal
+  );
+  position: relative;
   display: flex;
   align-items: flex-start;
   color: var(--instui-component-banner-color);
@@ -51,6 +60,11 @@
 }
 
 .pfx-banner.-size-compact {
+  --pantoken-banner-icon-size: 1.5rem;
+  --pantoken-banner-icon-inset-block-start: var(--instui-component-banner-compact-padding-vertical);
+  --pantoken-banner-icon-inset-inline-start: var(
+    --instui-component-banner-compact-padding-horizontal
+  );
   padding-block: var(--instui-component-banner-compact-padding-vertical);
   padding-inline: var(--instui-component-banner-compact-padding-horizontal);
   gap: var(--instui-component-banner-compact-content-gap-horizontal);
@@ -62,10 +76,12 @@
 }
 
 .pfx-banner.-color-violet {
+  --pantoken-banner-icon-background: var(--instui-component-banner-violet-icon-background);
   background: var(--instui-component-banner-violet-background);
 }
 
 .pfx-banner.-color-sea {
+  --pantoken-banner-icon-background: var(--instui-component-banner-sea-icon-background);
   background: var(--instui-component-banner-sea-background);
 }
 
@@ -78,24 +94,53 @@
   );
 }
 
+.pfx-banner::before {
+  /* @ref 1 */
+  content: "";
+  flex: 0 0 var(--pantoken-banner-icon-size);
+  block-size: var(--pantoken-banner-icon-size);
+  border-radius: var(--instui-component-banner-relaxed-icon-border-radius);
+  background: var(--pantoken-banner-icon-background);
+}
+
+.pfx-banner::after {
+  /* @ref 1 */
+  content: "";
+  position: absolute;
+  inset-block-start: var(--pantoken-banner-icon-inset-block-start);
+  inset-inline-start: var(--pantoken-banner-icon-inset-inline-start);
+  inline-size: var(--pantoken-banner-icon-size);
+  block-size: var(--pantoken-banner-icon-size);
+  background: var(--instui-component-banner-icon-color);
+  -webkit-mask: var(--pantoken-banner-glyph) center / 1.125rem no-repeat;
+  mask: var(--pantoken-banner-glyph) center / 1.125rem no-repeat;
+}
+
+.pfx-banner.-size-compact::before {
+  border-radius: var(--instui-component-banner-compact-icon-border-radius);
+}
+
+/* Preserve the icon swatch when the shared `-icon-*` painter targets ::before. */
+.pfx-banner[class*="-icon-"] {
+  --pantoken-banner-glyph: var(--pantoken-glyph);
+}
+
+.pfx-banner[class*="-icon-"]::before {
+  background: var(--pantoken-banner-icon-background);
+  -webkit-mask: none;
+  mask: none;
+}
+
 @scope (.pfx-banner) {
   :scope {
-    /* @ref 1 */
-    > .icon {
-      color: var(--instui-component-banner-icon-color);
-      border-radius: var(--instui-component-banner-relaxed-icon-border-radius);
+    > .title {
+      font-size: var(--instui-component-heading-title-card-regular-font-size);
+      font-weight: var(--instui-component-heading-title-card-regular-font-weight);
     }
 
-    &.-size-compact > .icon {
-      border-radius: var(--instui-component-banner-compact-icon-border-radius);
-    }
-
-    &.-color-violet > .icon {
-      background: var(--instui-component-banner-violet-icon-background);
-    }
-
-    &.-color-sea > .icon {
-      background: var(--instui-component-banner-sea-icon-background);
+    &.-size-compact > .title {
+      font-size: var(--instui-component-heading-title-card-mini-font-size);
+      font-weight: var(--instui-component-heading-title-card-mini-font-weight);
     }
 
     > .content {
@@ -103,6 +148,14 @@
       flex-direction: column;
       flex: 1;
       gap: var(--instui-component-banner-content-gap-vertical);
+      font-size: var(--instui-font-size-text-base);
+      line-height: var(--instui-line-height-standalone-text-base);
+    }
+
+    &.-size-compact > .content {
+      font-size: var(--instui-component-text-content-small-font-size);
+      font-weight: var(--instui-component-text-content-small-font-weight);
+      line-height: var(--instui-component-text-content-small-line-height);
     }
 
     /* @ref 2 */
@@ -111,8 +164,38 @@
     }
 
     > .pfx-close-button {
-      margin-top: var(--instui-component-banner-close-button-margin-top);
-      margin-inline-end: var(--instui-component-banner-close-button-margin-right);
+      position: absolute;
+      inset-block-start: var(--instui-component-banner-close-button-margin-top);
+      inset-inline-end: var(--instui-component-banner-close-button-margin-right);
+    }
+
+    &:has(> .pfx-close-button) > .content {
+      padding-inline-end: calc(
+        var(--instui-component-base-button-medium-height) +
+          var(--instui-component-banner-close-button-margin-right)
+      );
+    }
+
+    .pfx-button:not([class*="-color-"]) {
+      background: var(--instui-component-base-button-primary-inverse-background);
+      color: var(--instui-component-base-button-primary-inverse-color);
+      border-color: var(--instui-component-base-button-primary-inverse-border-color);
+    }
+
+    .pfx-button:not([class*="-color-"]):hover {
+      background: var(--instui-component-base-button-primary-inverse-hover-background);
+      border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+    }
+
+    .pfx-button:not([class*="-color-"]):active {
+      background: var(--instui-component-base-button-primary-inverse-active-background);
+      border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+    }
+
+    .pfx-button:not([class*="-color-"]):disabled,
+    .pfx-button:not([class*="-color-"])[aria-disabled="true"] {
+      background: var(--instui-color-background-interactive-action-primary-disabled);
+      color: var(--instui-color-text-interactive-action-primary-disabled);
     }
   }
 }
