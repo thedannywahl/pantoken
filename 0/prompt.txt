@@ -1,0 +1,17 @@
+adding more translations means that we now need to make sure that the docs site itself supports rtl automatically based on the locale.  We should also be trying to detect the local of the browser and auto-setting it on load.
+
+---
+
+In the pantoken repo, investigate how the VitePress docs site (docs/) is configured for internationalization (i18n).
+
+I need detailed findings on:
+1. Where the VitePress config lives (docs/.vitepress/config.ts or similar) and how `locales` are defined (list all locale codes configured, e.g. root, hu, ar, fa, he, ja, ko, zh-Hans, etc.) — read the actual file and show the locale list/config structure.
+2. Whether any locale is currently RTL (right-to-left) — check for existing `dir: "rtl"` or similar attributes anywhere in the docs VitePress config or theme.
+3. The `docs/.vitepress/i18n.ts` file mentioned in project instructions — what does it export/contain? How is it structured (is it a per-locale dictionary, a prefix swap mechanism, etc.)?
+4. Any custom VitePress theme override files (e.g. docs/.vitepress/theme/) — look for a custom Layout.vue, index.ts (theme entry), or similar that could be extended with RTL logic or locale-detection-on-load logic.
+5. How the `<html>` tag lang/dir attributes are currently set - is there a Layout.vue or app.ts that manipulates document.documentElement?
+6. Look for any existing locale-detection or redirect logic (e.g. based on navigator.language, Accept-Language headers, or existing JS that redirects users to a locale subpath).
+7. Note which locale codes among the configured list are RTL languages per ISO 639: Arabic (ar), Persian/Farsi (fa), Hebrew (he), and possibly others like Urdu — cross reference against the actual locale list found in step 1.
+8. Check package.json scripts in docs/ for how the site builds/dev runs (vitepress build, etc.) and if there's an existing translation-adapters package (tools/translation-adapters) relevant to locale metadata that might already store RTL flags per locale.
+
+Report back: the full locale list with paths/labels, the exact file paths and line ranges of the VitePress config's locales block, the i18n.ts structure, any existing theme customization files and their paths, and any existing lang/dir attribute handling code. Be thorough — this is read-only research, do not modify any files.
