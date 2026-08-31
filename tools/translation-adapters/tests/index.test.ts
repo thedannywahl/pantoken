@@ -364,8 +364,8 @@ test("generateLocaleBundles writes one module per locale plus an index re-export
   const indexContent = readFileSync(join(localesDir, "index.ts"), "utf8");
   expect(indexContent).toContain('import { LOCALE_HU } from "./hu.js";');
   expect(indexContent).toContain('import { LOCALE_FR } from "./fr.js";');
-  expect(indexContent).toContain("hu: LOCALE_HU,");
-  expect(indexContent).toContain("fr: LOCALE_FR,");
+  expect(indexContent).toContain('"hu": LOCALE_HU,');
+  expect(indexContent).toContain('"fr": LOCALE_FR,');
 });
 
 test("generateLocaleBundles ignores non-JSON files in the cache directory", () => {
@@ -378,8 +378,21 @@ test("generateLocaleBundles ignores non-JSON files in the cache directory", () =
   generateLocaleBundles(root, outDir);
 
   const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
-  expect(indexContent).toContain("hu: LOCALE_HU,");
+  expect(indexContent).toContain('"hu": LOCALE_HU,');
   expect(indexContent).not.toContain("README");
+});
+
+test("generateLocaleBundles sanitizes hyphenated locale tags into valid JS identifiers", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "en-AU.json"), JSON.stringify({ greeting: "G'day" }));
+
+  generateLocaleBundles(root, outDir);
+
+  const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
+  expect(indexContent).toContain('import { LOCALE_EN_AU } from "./en-AU.js";');
+  expect(indexContent).toContain('"en-AU": LOCALE_EN_AU,');
 });
 
 test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn't exist", () => {
