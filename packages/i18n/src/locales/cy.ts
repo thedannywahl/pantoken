@@ -11,7 +11,7 @@ export const cy: LocaleBundle = defineBundle({
     prevMonth: "Mis blaenorol",
     nextMonth: "Mis nesaf",
     dateLabel: "Dyddiad",
-    openCalendar: "Agor y calendr",
+    openCalendar: "Agor calendr",
     timeLabel: "Amser",
     back: "Yn ôl",
   }),

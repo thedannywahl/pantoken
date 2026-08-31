@@ -8,11 +8,12 @@ export const se: LocaleBundle = defineBundle({
   dir: "ltr",
   label: "Northern Sami",
   strings: makeStrings("se", {
-    prevMonth: "Ovddit mánnu",
-    nextMonth: "Boahtte mánnu",
-    dateLabel: "Beaivemearri",
-    openCalendar: "Raba kaleándara",
+    prevMonth: "Ovtta mánnu",
+    nextMonth: "Maŋŋel mánnu",
+    dateLabel: "Dátuma",
+    datePlaceholder: "åååå-mm-dd",
+    openCalendar: "Ávnnat kalendára",
     timeLabel: "Áigi",
-    back: "Ruovttoluotta",
+    back: "Boađe",
   }),
 });

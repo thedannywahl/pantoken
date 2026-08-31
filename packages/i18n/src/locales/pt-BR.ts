@@ -11,6 +11,7 @@ export const ptBR: LocaleBundle = defineBundle({
     prevMonth: "Mês anterior",
     nextMonth: "Próximo mês",
     dateLabel: "Data",
+    datePlaceholder: "aaaa-mm-dd",
     openCalendar: "Abrir calendário",
     timeLabel: "Hora",
     back: "Voltar",

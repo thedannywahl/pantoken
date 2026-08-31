@@ -11,6 +11,7 @@ export const el: LocaleBundle = defineBundle({
     prevMonth: "Προηγούμενος μήνας",
     nextMonth: "Επόμενος μήνας",
     dateLabel: "Ημερομηνία",
+    datePlaceholder: "εεεε-μμ-ηη",
     openCalendar: "Άνοιγμα ημερολογίου",
     timeLabel: "Ώρα",
     back: "Πίσω",

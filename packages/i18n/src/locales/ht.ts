@@ -8,11 +8,11 @@ export const ht: LocaleBundle = defineBundle({
   dir: "ltr",
   label: "Haitian Creole (Kreyòl Ayisyen)",
   strings: makeStrings("ht", {
-    prevMonth: "Mwa presedan",
+    prevMonth: "Mwa anvan",
     nextMonth: "Mwa pwochen",
     dateLabel: "Dat",
-    openCalendar: "Ouvri kalandriye",
-    timeLabel: "Lè",
-    back: "Retounen",
+    openCalendar: "Louvri kalandriye",
+    timeLabel: "Tan",
+    back: "Tounen",
   }),
 });

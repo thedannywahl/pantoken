@@ -9,9 +9,9 @@ export const mi: LocaleBundle = defineBundle({
   label: "Maori (Reo Māori)",
   strings: makeStrings("mi", {
     prevMonth: "Marama o mua",
-    nextMonth: "Marama o muri",
+    nextMonth: "Marama e whai ake",
     dateLabel: "Rā",
-    openCalendar: "Whakatūwhera maramataka",
+    openCalendar: "Whakatuwhera maramataka",
     timeLabel: "Wā",
     back: "Hoki",
   }),

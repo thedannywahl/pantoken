@@ -11,7 +11,6 @@ export const hu: LocaleBundle = defineBundle({
     prevMonth: "Előző hónap",
     nextMonth: "Következő hónap",
     dateLabel: "Dátum",
-    datePlaceholder: "éééé-hh-nn",
     openCalendar: "Naptár megnyitása",
     timeLabel: "Idő",
     back: "Vissza",
