@@ -1,0 +1,42 @@
+/fix-customization-evaluation-diagnostics
+
+Target file: /Users/dwahl/Scripts/pantoken/ai/pantoken-ai/skills/create-pantoken-app/SKILL.md
+
+Use ONLY the diagnostics below for this target file. Do not lint or rewrite the skill file itself.
+
+Field meanings:
+
+- line: 1-based line number where the diagnostic starts (or start-end for a multi-line range).
+
+- lineText: exact text currently present at the diagnostic start line in the target file.
+
+- message: diagnostic description explaining what is wrong and needs to be fixed.
+
+Diagnostics:
+
+ - line: 1
+ - lineText: ---
+ - message: Conflicts with line 160: "Substitute `pnpm dlx`, `yarn dlx`, `bunx`, or `deno run npm:` for `npx` per the package manager detected in step 1.". Step 5 says to use the package manager detected in step 1, but package manager detection is defined in step 2, not step 1. Step 1 only detects the package manager for new/empty projects. This creates confusion about which detection result to use in step 5, and a model may use the wrong package manager or re-run detection.
+
+
+ - line: 1
+ - lineText: ---
+ - message: Cognitive load (deep-decision-tree): Step 3's install logic has three top-level branches (native web, Next.js, otherwise) where the 'otherwise' branch requires simultaneously cross-referencing a multi-row table, applying additive logic for all matching rows, and remembering the Next.js exclusion rule. Combined with the note that Next.js + Tailwind installs three packages while React + Vite installs three different ones, a model must track multiple detection signals at once and is likely to miss a matching tool row or incorrectly apply the Next.js exclusion to other frameworks.. Suggestion: Add an explicit worked checklist at the top of step 3: '(a) Identify all matching rows in the table. (b) If Next.js is matched, remove @pantoken/react from the list. (c) Prepend @pantoken/css unless native web. (d) Run a single install command with all collected packages.' This makes the multi-row additive logic a mechanical list rather than a prose rule.
+  suggestion: Add an explicit worked checklist at the top of step 3: '(a) Identify all matching rows in the table. (b) If Next.js is matched, remove @pantoken/react from the list. (c) Prepend @pantoken/css unless native web. (d) Run a single install command with all collected packages.' This makes the multi-row additive logic a mechanical list rather than a prose rule.
+
+
+ - line: 1
+ - lineText: ---
+ - message: Coverage gap: No guidance on what to do if the scaffold CLI command fails or the platform is not yet supported and the model proceeds to step 2 — the transition back into the manual steps is only mentioned briefly and does not clarify which parts of steps 2-4 still apply after a failed scaffold.. Suggestion: Add: 'If the CLI fails for any reason (non-zero exit, unsupported platform, network error), fall through to step 2 and treat the project as an existing repo, preserving any files already written by the CLI.'
+  suggestion: Add: 'If the CLI fails for any reason (non-zero exit, unsupported platform, network error), fall through to step 2 and treat the project as an existing repo, preserving any files already written by the CLI.'
+
+
+ - line: 138
+ - lineText: For native / CMS targets, no install — run the CLI (step 5).
+ - message: Ambiguous: "For native / CMS targets, no install — run the CLI (step 5).". It's unclear whether this applies only when the target is exclusively native/CMS, or also when a web project has native/CMS files alongside JS files (e.g. a WordPress theme with a package.json). A model could skip npm installs for mixed projects. Suggestion: Add: 'If the project contains both a package.json and native/CMS files, treat it as a web project and follow the web install steps; only skip to step 5 if there is no package.json and no JS framework detected.'
+  suggestion: Add: 'If the project contains both a package.json and native/CMS files, treat it as a web project and follow the web install steps; only skip to step 5 if there is no package.json and no JS framework detected.'
+
+
+ - line: 160
+ - lineText: Substitute `pnpm dlx`, `yarn dlx`, `bunx`, or `deno run npm:` for `npx` per the package manager detected in step 1.
+ - message: Contradiction: "Substitute `pnpm dlx`, `yarn dlx`, `bunx`, or `deno run npm:` for `npx` per the package manager detected in step 1." conflicts with "Also detect the package manager from the lockfile present in the repo, and use its equivalent command for every install/run step below instead of assuming npm". Step 5 says to use the package manager detected in step 1, but package manager detection is defined in step 2, not step 1. Step 1 only detects the package manager for new/empty projects. This creates confusion about which detection result to use in step 5, and a model may use the wrong package manager or re-run detection.
