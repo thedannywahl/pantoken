@@ -3,3 +3,90 @@ fallow duplication is throwing for all the translated demos sites, the demos sho
 ---
 
 it looks like running the prose translation through demos didn't actually translate anything
+
+---
+
+[Terminal 8d16cf7a-fb61-4d9e-af10-61cb8ce78763 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on cli ≡  +4 ~7 via  26.8.1 
+➜  DOCS_TRANSLATION_FORCE=1 DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="/Users/dwahl/Scripts/pantoken/tools/translation-adapters/agy-wrapper.sh" node /Users/dwahl/Scripts/pantoken/docs/scripts/translate-demos.ts 2>&1 | tail -80
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m53s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m52s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m52s.
+✓ localized 65 demo snippets for 'mi' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m47s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m47s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+✓ localized 65 demo snippets for 'ms' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m42s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m42s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+✓ localized 65 demo snippets for 'se' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m37s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m37s.
+✓ localized 65 demo snippets for 'nb' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m31s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m31s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m28s.
+✓ localized 65 demo snippets for 'nn' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m23s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m23s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+✓ localized 65 demo snippets for 'fa' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m18s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m18s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m18s.
+✓ localized 65 demo snippets for 'pl' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m13s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m13s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m12s.
+✓ localized 65 demo snippets for 'pt' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m8s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m8s.
+✓ localized 65 demo snippets for 'pt-BR' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m3s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m3s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h45m2s.
+✓ localized 65 demo snippets for 'ru' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m58s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m57s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m57s.
+✓ localized 65 demo snippets for 'zh-Hans' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m52s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m52s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+✓ localized 65 demo snippets for 'sl' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m47s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m47s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m45s.
+✓ localized 65 demo snippets for 'es' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m41s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m40s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m40s.
+✓ localized 65 demo snippets for 'sv' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m35s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m35s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m34s.
+✓ localized 65 demo snippets for 'th' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m30s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m29s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m29s.
+✓ localized 65 demo snippets for 'zh-Hant' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m25s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m24s.
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m24s.
+✓ localized 65 demo snippets for 'tr' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m19s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m19s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+✓ localized 65 demo snippets for 'uk' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m14s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m14s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+✓ localized 65 demo snippets for 'vi' via 'ai' (0 translated, 0 cached)
+  ! skipped a batch of 216 strings: AI command exited 1 for batch of 216 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m9s.
+  ! skipped a batch of 53 strings: AI command exited 1 for batch of 53 strings: Error: You have exhausted your capacity on this model. Resets in 0s.
+  ! skipped a batch of 222 strings: AI command exited 1 for batch of 222 strings: Error: Individual quota reached. Please upgrade your subscription to increase your limits. Resets in 30h44m9s.
+✓ localized 65 demo snippets for 'cy' via 'ai' (0 translated, 0 cached)
