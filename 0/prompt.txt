@@ -1,0 +1,19 @@
+component close button defaults to -size-md, in an alert or a banner it should default to a -size-sm so this should be a small close button w/o the specifier:
+```
+ <div class="pfx-alert">
+   Alert.
+   <button class="pfx-close-button" aria-label="Close"></button>
+ </div>
+ ```
+
+---
+
+Quick, read-only exploration in /Users/dwahl/Scripts/pantoken. Determine how @pantoken/components CSS records are authored/tested for close-button sizing, and how alert and banner styles compose .pfx-close-button. Inspect only relevant files and report: exact paths/symbols, current default behavior, closest tests/examples, recommended minimal change, validation commands, and any docs/changeset obligations. Do not edit files.
+
+---
+
+Quick, read-only exploration in /Users/dwahl/Scripts/pantoken. Locate the custom-components plugin's banner component and inspect how it uses or documents .pfx-close-button. Report exact files, CSS selectors/rules, tests/demos, generated artifacts needed, and the minimal implementation/test changes to make a direct child .pfx-close-button default to small within banner. Also verify whether alert needs matching layout-padding changes. Do not edit.
+
+---
+
+Start implementation
