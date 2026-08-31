@@ -244,6 +244,30 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
   fill: none !important;
 }
 
+/* VitePress rounds and scrolls `.VPMenu` on the same box; the translations flyout lists 40+ locales,
+   so its native scrollbar routinely squares off the corners it touches. Move the radius + shadow to
+   the flyout's outer `.menu` wrapper and clip through `overflow: hidden` there instead, leaving
+   `.VPMenu` to scroll unconstrained by rounding. */
+.VPNavBarTranslations .menu {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--vp-shadow-3);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.VPNavBarTranslations .menu .VPMenu {
+  border-radius: 0;
+  box-shadow: none;
+  border: 0 none;
+}
+
+@media (min-width: 768px) {
+  .VPNavBarTranslations .menu,
+  .VPNavBarTranslations .menu .VPMenu {
+    max-height: 50vh;
+  }
+}
+
 @media (min-width: 960px) {
   .VPNavBarTitle.has-sidebar .title {
     --vp-c-divider: transparent;
