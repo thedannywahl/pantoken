@@ -9,11 +9,20 @@ import { CANVAS_LOCALES } from "@pantoken/i18n";
 
 // English display name per locale (e.g. "Hungarian (Magyar)" \u2192 the adapter prompt only needs the
 // leading English name, not the native parenthetical), used to phrase the `AiTranslationAdapter`
-// prompt for any target locale instead of a hardcoded "Hungarian".
+// prompt for any target locale instead of a hardcoded "Hungarian". The three English regional variants
+// are named explicitly instead — stripping their parenthetical would collapse all three (and root) to
+// the bare word "English", losing the spelling/phrasing distinction (colour vs. color, etc.) the prompt
+// needs to actually produce a localized (not identical) translation.
+const ENGLISH_VARIANT_LABELS: Record<string, string> = {
+  "en-AU": "Australian English",
+  "en-CA": "Canadian English",
+  "en-GB": "British English",
+};
+
 const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
   Object.entries(CANVAS_LOCALES).map(([locale, meta]) => [
     locale,
-    meta.label.replace(/\s*\(.*\)$/, ""),
+    ENGLISH_VARIANT_LABELS[locale] ?? meta.label.replace(/\s*\(.*\)$/, ""),
   ]),
 );
 
