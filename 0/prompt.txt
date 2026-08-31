@@ -1,0 +1,13 @@
+yes
+
+---
+
+yes
+
+---
+
+update the root cause in the core strings. instead of `Canvas' Rich Content Editor` it should be `the Canvas Rich Content Editor`
+
+---
+
+update the root cause in the core strings. instead of `Canvas' Rich Content Editor` it should be `the Canvas Rich Content Editor`
