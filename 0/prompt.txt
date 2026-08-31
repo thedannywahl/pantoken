@@ -1,0 +1,17 @@
+/Users/dwahl/Scripts/pantoken/docs/.vitepress/i18n.ts
+  243:8  error  Missing TSDoc for type LocaleMeta  tsdoc-require-2/require
+
+/Users/dwahl/Scripts/pantoken/docs/scripts/glossary.ts
+  30:14  error  Missing TSDoc for variable GLOSSARY_TERMS  tsdoc-require-2/require
+
+/Users/dwahl/Scripts/pantoken/docs/scripts/segment-demo-html.ts
+  13:8  error  Missing TSDoc for interface DemoSegment  tsdoc-require-2/require
+
+/Users/dwahl/Scripts/pantoken/docs/scripts/translate-glossary.ts
+  7:86  error  tsdoc-code-span-missing-delimiter: The code span is missing its closing backtick  tsdoc/syntax
+  8:88  error  tsdoc-code-span-missing-delimiter: The code span is missing its closing backtick  tsdoc/syntax
+
+/Users/dwahl/Scripts/pantoken/packages/scaffold/.dev/canvas-theme-editor/src/strings.ts
+  2:14  error  Missing TSDoc for variable STRINGS  tsdoc-require-2/require
+
+✖ 6 problems (6 errors, 0 warnings)
