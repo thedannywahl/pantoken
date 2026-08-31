@@ -10,7 +10,7 @@
  */
 
 import { resolve } from "node:path";
-import { runI18nTranslationCli, sha256 } from "@pantoken/translation-adapters";
+import { localeFamilyGlobs, runI18nTranslationCli, sha256 } from "@pantoken/translation-adapters";
 import { collectI18nSource } from "./i18n-sources.ts";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
@@ -25,6 +25,7 @@ async function main(): Promise<void> {
     isCached: (key, cache) => sha256(key) in cache || key in cache,
     cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],
     verbatim,
+    defaultVerbatim: { allow: localeFamilyGlobs(["en-AU", "en-CA", "en-GB"]) },
   });
 }
 
