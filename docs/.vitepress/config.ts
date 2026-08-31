@@ -624,6 +624,13 @@ export default defineConfig({
       demoMarkdownIt(md, {
         base,
         cssUrls,
+        // Route a locale page's `demo:self:<name>` fence to its translated clone
+        // (`docs/<locale>/demos/<name>.html`, staged by stage-demo-snippets.ts into
+        // `public/<locale>/demos/`) instead of the English source. See translate-demos.ts.
+        localePrefix: (relativePath: string) => {
+          const locale = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
+          return locale ? `${locale}/` : "";
+        },
         // Seam a live preview onto each `@example` HTML fence at compile time: the same markup,
         // rendered in an isolated `<iframe srcdoc>` so none of the page's own `.vp-doc` styles (ours or
         // VitePress's native theme CSS) can reach it, wrapped in `.css-example` (framed by the theme).

@@ -21,12 +21,14 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
+import { collectDemoUnits, segmentDemoHtml } from "./segment-demo-html.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const cacheDir = join(docsRoot, "i18n-cache");
 const guideDir = join(docsRoot, "guide");
+const demoDir = join(docsRoot, "demos");
 const apiDir = join(docsRoot, "api");
 
 const targets = NON_ROOT_LOCALES;
@@ -116,11 +118,34 @@ const glossaryDrift = (locale: string): Missing[] => {
   return missing;
 };
 
+const demoFiles = existsSync(demoDir)
+  ? readdirSync(demoDir)
+      .filter((name) => name.endsWith(".html"))
+      .toSorted()
+  : [];
+
+/** Demos drift: every prose text node in `docs/demos/*.html` needs a cached translation. */
+const demosDrift = (locale: string): Missing[] => {
+  if (demoFiles.length === 0) return [];
+  const cached = loadCacheKeys(locale, "demos");
+  const missing: Missing[] = [];
+  for (const file of demoFiles) {
+    const units = collectDemoUnits(segmentDemoHtml(readFileSync(join(demoDir, file), "utf8")));
+    for (const text of units) {
+      if (!cached.has(keyFor("text", text))) {
+        missing.push({ file: `demos/${file}`, kind: "text", sample: preview(text) });
+      }
+    }
+  }
+  return missing;
+};
+
 let drifted = 0;
 for (const locale of targets) {
   const guides = guideDrift(locale);
   const chrome = chromeDrift(locale);
   const glossary = glossaryDrift(locale);
+  const demos = demosDrift(locale);
   const apiGenerated = existsSync(apiDir);
   const api = apiGenerated ? apiDrift(locale) : [];
 
@@ -130,7 +155,7 @@ for (const locale of targets) {
     );
   }
 
-  const all = [...guides, ...chrome, ...glossary, ...api];
+  const all = [...guides, ...chrome, ...glossary, ...demos, ...api];
   if (all.length === 0) {
     console.log(`✓ ${locale}: no translation drift${apiGenerated ? "" : " (guides only)"}.`);
     continue;

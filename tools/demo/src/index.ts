@@ -187,6 +187,13 @@ export interface DemoMarkdownItOptions extends ResolveOptions {
    * hidden until opened, so a `## Demo` iframe drives their preview instead.
    */
   liveExample?: LiveExampleOptions;
+  /**
+   * Route a `demo:self:<name>` fence to a locale-specific self-hosted demo directory, from the current
+   * page's markdown-it `env.relativePath` (e.g. `"hu/"` for pages under `hu/`, `""` for the root
+   * locale). Prepended to `demosPath` so the localized clone of a demo (translated prose, same markup)
+   * loads instead of the English source. Omit for a single-locale site.
+   */
+  localePrefix?: (relativePath: string) => string;
 }
 
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
@@ -493,7 +500,12 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
     const token = tokens[index];
     const info = token.info.trim();
     if (info === "demo") {
-      return renderDemoFigure(resolveDemo(token.content.trim(), options));
+      const relativePath = (env as { relativePath?: string } | undefined)?.relativePath ?? "";
+      const prefix = options.localePrefix?.(relativePath) ?? "";
+      const demoOptions = prefix
+        ? { ...options, demosPath: `${prefix}${options.demosPath ?? "demos/"}` }
+        : options;
+      return renderDemoFigure(resolveDemo(token.content.trim(), demoOptions));
     }
     const flags = new Set<string>(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
     // `-noshow` strips the html source fence and its live preview from rendered output.
