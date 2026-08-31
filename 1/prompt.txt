@@ -1,0 +1,1 @@
+`vpr docs:dev` and then switching to arabic throws a 404- but I thought it should just default to the en strings if the translations aren't available?  Same for every new language (en / hu work)
