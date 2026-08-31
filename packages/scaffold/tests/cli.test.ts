@@ -228,12 +228,23 @@ test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", as
 
 test("collectI18nSource merges src/i18n.json with every template's scaffold.json without mutating either", () => {
   const root = new URL("..", import.meta.url).pathname;
-  const { source } = collectI18nSource(root);
+  const { source, verbatim } = collectI18nSource(root);
 
   // Static CLI copy is present.
   expect(source.nextStepsHeading).toBe("Next steps:");
   // Template-derived keys are present, namespaced by platform.
   expect(source["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("cd {{dir}}");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("allow");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.1"]).toBe("allow");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.2"]).toBe("allow");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabCssLabel"]).toBe("allow");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabJsLabel"]).toBe("allow");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.editorPaneLabel"]).toEqual({
+    warn: ["da", "de", "es", "id", "it", "ms", "nb", "nl", "pt*", "se"],
+  });
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.modeLabel"]).toEqual({
+    warn: ["fr*", "id"],
+  });
   expect(source["scaffold.canvas-theme-editor.notes"]).toContain("Theme Editor");
   // Platforms with no scaffold.json contribute no derived keys.
   expect(Object.keys(source).some((k) => k.startsWith("scaffold.react."))).toBe(false);

@@ -2,10 +2,19 @@
   "pageTitle": "RCE template authoring",
   "pageDescription": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
   "editThemeLabel": "Edit theme",
-  "helpAriaLabel": "Help",
+  "helpAriaLabel": {
+    "string": "Help",
+    "verbatim": { "warn": ["nl"] }
+  },
   "copyHtmlLabel": "Copy HTML",
-  "editorPaneLabel": "Editor",
-  "previewPaneLabel": "Preview",
+  "editorPaneLabel": {
+    "string": "Editor",
+    "verbatim": { "warn": ["da", "de", "es", "id", "it", "ms", "nb", "nl", "pt*", "se"] }
+  },
+  "previewPaneLabel": {
+    "string": "Preview",
+    "verbatim": { "warn": ["da", "se"] }
+  },
   "previewFrameTitle": "Styled preview",
   "fullscreenEditorAriaLabel": "Fullscreen editor",
   "fullscreenPreviewAriaLabel": "Fullscreen preview",
@@ -14,14 +23,35 @@
   "stackSideBySideLabel": "Stack side by side",
   "swapPanesLabel": "Swap panes",
   "themeTrayAriaLabel": "Theme settings",
-  "tabConfigLabel": "Config",
-  "tabCssLabel": "CSS",
-  "tabJsLabel": "JS",
+  "tabConfigLabel": {
+    "string": "Config",
+    "verbatim": { "warn": ["nl"] }
+  },
+  "tabCssLabel": {
+    "string": "CSS",
+    "verbatim": "allow"
+  },
+  "tabJsLabel": {
+    "string": "JS",
+    "verbatim": "allow"
+  },
   "cdnProviderLabel": "CDN provider",
-  "themeLabel": "Theme",
-  "modeLabel": "Mode",
-  "downloadCssLabel": "Download theme.css",
-  "downloadJsLabel": "Download theme.js",
+  "themeLabel": {
+    "string": "Theme",
+    "verbatim": { "warn": ["de", "se"] }
+  },
+  "modeLabel": {
+    "string": "Mode",
+    "verbatim": { "warn": ["fr*", "id"] }
+  },
+  "downloadCssLabel": {
+    "string": "Download theme.css",
+    "verbatim": { "warn": ["da", "nl", "se"] }
+  },
+  "downloadJsLabel": {
+    "string": "Download theme.js",
+    "verbatim": { "warn": ["da", "nl", "se"] }
+  },
   "regenerateLabel": "Regenerate from config",
   "helpModalTitle": "How to use this page",
   "helpModalBody1": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",

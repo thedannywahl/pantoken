@@ -39,7 +39,11 @@ export function collectI18nSource(root: string): {
       };
 
       (meta.nextSteps ?? []).forEach((step, i) => {
-        source[`${prefix}.nextSteps.${i}`] = step;
+        const key = `${prefix}.nextSteps.${i}`;
+        source[key] = step;
+        if (/^(?:cd \{\{dir\}\}|\{\{install\}\}|\{\{dev\}\})$/.test(step)) {
+          verbatim[key] = "allow";
+        }
       });
       if (meta.notes) source[`${prefix}.notes`] = meta.notes;
       if (meta.caveats) source[`${prefix}.caveats`] = meta.caveats;
