@@ -1,0 +1,21 @@
+<div class="instui-card">
+  <!-- A CSS hover/focus tooltip: the .tip child shows on hover or keyboard focus of the wrapper. Point
+       aria-describedby at the tip so screen readers announce it. The web-component tier adds delay,
+       Esc-dismiss, and richer positioning. -->
+  <div style="display: flex; gap: 24px; align-items: center; padding: 24px 0">
+    <span class="instui-tooltip" tabindex="0" aria-describedby="tt-1">
+      <span class="instui-icon -icon-info"></span>
+      <span class="tip" id="tt-1" role="tooltip">Default placement is top</span>
+    </span>
+
+    <button class="instui-tooltip instui-button -color-secondary" aria-describedby="tt-2">
+      Hover me
+      <span class="tip -placement-bottom" id="tt-2" role="tooltip">Placement bottom</span>
+    </button>
+
+    <span class="instui-tooltip" tabindex="0" aria-describedby="tt-3">
+      <span class="instui-icon -icon-bell"></span>
+      <span class="tip -placement-end" id="tt-3" role="tooltip">Placement end</span>
+    </span>
+  </div>
+</div>

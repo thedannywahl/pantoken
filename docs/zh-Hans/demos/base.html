@@ -1,0 +1,39 @@
+<div class="instui-card">
+  <h2 class="instui-heading -level-h3">Base reset</h2>
+  <p class="instui-text">
+    This result renders with <code>base.css</code> loaded first. The page surface, base text color
+    and font, and <code>box-sizing</code> all come from the tokens — no rule of your own required.
+  </p>
+  <p class="instui-text">
+    Bare elements pick up sensible defaults, like this
+    <a href="#">base link</a>, and everything sits on the token page surface. Switch the theme (or
+    light/dark) and the surface, text, and link all follow.
+  </p>
+
+  <div class="base-swatches">
+    <span class="base-swatch base-swatch--page">background-page</span>
+    <span class="base-swatch base-swatch--base">background-base</span>
+  </div>
+</div>
+
+<style>
+  .base-swatches {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .base-swatch {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid var(--instui-color-stroke-base);
+    border-radius: var(--instui-border-radius-md);
+    font-size: var(--instui-font-size-text-xs);
+  }
+  .base-swatch--page {
+    background: var(--instui-color-background-page);
+  }
+  .base-swatch--base {
+    background: var(--instui-color-background-base);
+  }
+</style>

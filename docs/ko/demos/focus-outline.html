@@ -1,0 +1,88 @@
+<div class="instui-card">
+  <div class="focus-demo">
+    <p class="hint">
+      Tab through the controls (or click the field) to see the ring. It rides every focusable out of
+      the box from <code>base.css</code>; the modifiers recolour it, inset it, or turn off the
+      animation.
+    </p>
+
+    <section>
+      <h4>Default ring (any focusable)</h4>
+      <div class="row">
+        <button class="instui-button">Button</button>
+        <a class="instui-link" href="#focus-demo">Link</a>
+        <input class="field" placeholder="Input" />
+      </div>
+    </section>
+
+    <section>
+      <h4>Ring colour</h4>
+      <div class="row">
+        <button class="instui-button">Info (default)</button>
+        <button class="instui-button -color-success -focus-color-success">Success</button>
+        <button class="instui-button -color-danger -focus-color-danger">Danger</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Position and animation</h4>
+      <div class="row">
+        <button class="instui-button -focus-position-inset">Inset ring</button>
+        <button class="instui-button -without-focus-animation">No animation</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Focus within (reveals on click too)</h4>
+      <label class="within -focus-within">
+        <span class="lbl">Search</span>
+        <input class="field" placeholder="Focus me — the whole box rings" />
+      </label>
+    </section>
+  </div>
+</div>
+
+<style>
+  .focus-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .focus-demo .hint {
+    margin: 0;
+    color: var(--instui-color-text-secondary, #6a7883);
+    font-size: var(--instui-component-text-font-size-small, 0.875rem);
+  }
+  .focus-demo h4 {
+    margin: 0 0 12px;
+    font: inherit;
+    font-weight: var(--instui-font-weight-body-strong, 700);
+    color: var(--instui-color-text-secondary, #6a7883);
+  }
+  .focus-demo .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .focus-demo .field {
+    padding: 0.5rem 0.75rem;
+    border: 0.0625rem solid var(--instui-color-border-primary, #6a7883);
+    border-radius: var(--instui-border-radius-md, 0.375rem);
+    background: var(--instui-color-background-base, #fff);
+    color: var(--instui-color-text-primary, #2d3b45);
+    font: inherit;
+  }
+  .focus-demo .within {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--instui-border-radius-md, 0.375rem);
+    background: var(--instui-color-background-secondary, #f2f4f4);
+  }
+  .focus-demo .within .lbl {
+    font-weight: var(--instui-font-weight-body-strong, 700);
+    color: var(--instui-color-text-secondary, #6a7883);
+  }
+</style>
