@@ -321,6 +321,7 @@ export class AiTranslationAdapter implements TranslationAdapter {
       "Return only the translated markdown.",
       "Rules:",
       "- Keep markdown structure unchanged.",
+      "- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.",
       "- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.",
       "- Do not alter placeholder tokens like __PTK_PACKAGE_#__ or __PTK_ESC_#__.",
       "- Preserve whitespace and line breaks.",
