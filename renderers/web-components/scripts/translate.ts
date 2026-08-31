@@ -12,7 +12,11 @@
  */
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { parseI18nSource, runI18nTranslationCli } from "@pantoken/translation-adapters";
+import {
+  localeFamilyGlobs,
+  parseI18nSource,
+  runI18nTranslationCli,
+} from "@pantoken/translation-adapters";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 async function main(): Promise<void> {
@@ -25,6 +29,7 @@ async function main(): Promise<void> {
     targetLocales: Object.keys(CANVAS_LOCALES),
     cachePath: (locale: string) => `i18n-cache/${locale}.json`,
     verbatim,
+    defaultVerbatim: { allow: localeFamilyGlobs(["en-AU", "en-CA", "en-GB"]) },
   });
 }
 
