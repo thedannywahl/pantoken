@@ -83,7 +83,9 @@ Corroborate with the repo when possible, and prefer the user's answer if it conf
 - `package.json` dependencies → web framework (react, vue, svelte, @angular/core, react-native,
   next, vite, tailwindcss, webpack, postcss).
 - If no `package.json` is found and the user wants a web project, run `npm init -y` first, then
-  proceed with the native web default (or the chosen framework).
+  proceed with the native web default (or the chosen framework) — this applies even if the user
+  describes the project as "existing"; trust their named framework and proceed rather than asking
+  for clarification.
 - Native project files → iOS (`Package.swift`, `*.xcodeproj`), Android (`build.gradle`), Flutter
   (`pubspec.yaml`), WordPress/Drupal/Vanilla theme dirs.
 

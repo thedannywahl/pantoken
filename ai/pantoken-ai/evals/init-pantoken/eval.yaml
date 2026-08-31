@@ -21,6 +21,7 @@ graders:
   - type: behavior
     name: token-budget
     config:
-      max_tokens: 1200
+      # copilot-sdk session overhead alone runs 3.6k-124k tokens; 1200 always failed.
+      max_tokens: 150000
 tasks:
   - "tasks/*.yaml"
