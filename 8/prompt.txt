@@ -1,0 +1,33 @@
+our CI gates on translation drift, but now that we're adding 45+ more languages translations are slow.  there are a variety of places within the spec that support translations, and we should be able to configure CI as to which block merging and which warn on drift.
+
+---
+
+I think there's a `docs.home` as well.
+
+---
+
+fix the fragility in translate-home.
+
+---
+
+there's lots of translation pipeline scattered around this repo and lots of bespoke tooling - is there a better upstream package we shoudl migrate to or should we abstract it to its own package and import?
+
+---
+
+on hte essential path: 3 can be reworked if a provider provides a vitepress compatible implementation that is performant on static github pages.
+4. if a provider has a better way to cache bust / poison then this becomes optional.
+5. glossary can be rolled into verbatim now so it's not required. classifyBlock if another provider has a structure we can migrate to then this is not required.
+6. it must be open-source to run on this local machine and free, which is why we have the different tooling interfaces as I have multiple paid plans, but optimizing config for token usage and setup is crucial still.
+7. if we need a key we can set up dotenvx in the repo.
+
+Ultimately the goal is a modern, future proof, robust, ai-enabled translation engine that stops the use-case and implementation sprawl that exists in the monorepo today.  We don't even have to use json or sha256 or ts, we use what's best.
+
+---
+
+what we're missing still is the helper utilities that a localization tool would provide like pluralization, punctuation, mid-stream interpolation, etc. also, let's take a look at the verbatim  syntax and formalize it.  we should have a single i18n.config.json that carries the root configuration that gets applied throughout the workspace.  we should be able to promote/add/demote locales on a per-space basis so like we can say translate hy to start only that locale or translate <namespace> <locale> with different config flags, etc.
+
+---
+
+remark has a MDAST or there are likely others that exist instead of having to write one.
+I want to capture prose in code blocks for translation - the css api carries prose-in-html-markdown-in-cssdoc_comment
+some agent commands are pure prose like the agent command in getting-started.md guide.
