@@ -28,5 +28,5 @@ ignores:
   - ".agents/skills/**"
   - "agent/skills"
   - "agent/skills/**"
-  - ".claude/agents/entire-search.md"
-  - ".claude/skills/**"
+  - ".claude"
+  - ".claude/**"
