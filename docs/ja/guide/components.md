@@ -1,31 +1,23 @@
-# Components
+# コンポーネント
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` は Instructure のトークンから構築されたクラスベースのコンポーネントスタイルを出荷します。スタイルシートをインポートしてマークアップにクラスを付与してください — フレームワークは不要です。
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-> [package map](/guide/packages).
+> カスタム要素を好む場合は、`@pantoken/web-components` が同じスタイルを `<instui-button>`、`<instui-alert>`、`<instui-badge>`、`<instui-avatar>`、`<instui-progress>` などとしてラップしています — 詳しくは [package map](/guide/packages) を参照してください。
 
-## Conventions
+## 慣習
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+このパッケージの CSS 慣習は [RSCSS](https://ricostacruz.com/rscss/index.html) の修正版に基づいています。
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+モディファイアは **キーと値** です — `-<prop>-<val>`、InstUI のプロップ名に揃えられているので、それ自体で意味が明確です: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`。ブールプロップはプロップ名だけで、存在することは `true` を意味します（`-has-shadow`, `-clickable`）；デフォルトでオンのブールをオフにすると反転します（`-without-background`, `-without-border`）。サイズは短縮形と長形の両方を受け入れます（`-size-sm` = `-size-small`）。名前が InstUI と異なる場合でも、InstUI 意味のクラスは動作しますが非推奨です（例: `-variant-info` → `-color-info` を使ってください）。
 
-### Example
+### 例
 
-Instructure UI React component:
+Instructure UI の React コンポーネント:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -33,7 +25,7 @@ Instructure UI React component:
 </Alert>
 ```
 
-pantoken components:
+pantoken コンポーネント:
 
 ```html
 <!-- direct instui props -->
@@ -51,12 +43,7 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+InstUI の `timeout` プロップには、単位なしのミリ秒単位 `--timeout` カスタムプロパティを設定し、Alert インタラクションを読み込んでください。正の値は自動閉鎖をスケジュールします；`0`（デフォルト）はアラートを残します。InstUI のフェードに対しては `transition` ユーティリティの `instui-transition -fade-entered` クラスを追加し、即時削除したい場合はこれらを省いてください。インタラクションは `-fade-exiting` 状態を駆動し、削除前に取消可能なバブリングする `dismiss` イベントを発火するので、アプリケーションは `preventDefault()` を呼んでアラートのマウントを維持できます。
 
 ```html
 <link
@@ -73,15 +60,7 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+プログレスバーは任意のスケールを受け入れます：`--min`（デフォルトは `0`）、`--value`、および `--max`（デフォルトは `100`）、非推奨のエイリアス `--value-now` と `--value-max` もあります。値が変わるたびに InstUI の 0.5 秒トランジションを適用するには `-should-animate` を追加してください。`.value` はルートの子要素として `.bar` と並びます；トラックの上に描画して開始位置に揃えるには `-render-value-inside` を追加してください（メーターの色に対して可読性を確保するようスタイルを調整してください）。ゼロベースのレンジにはネイティブの `<progress>` を使用し、最小値がゼロでない場合は `<meter>` を使用してください；ウェブコンポーネントは自身の `min` 属性から自動的に選択します。InstUI には不確定（indeterminate）状態がないため、`<progress>` が `value` 属性を欠く場合は pantoken 独自のベストガスです：`progress-bar` はスライディングセグメントとして `.bar` をアニメートし、`progress-circle` は固定弧でリングを回転させ、どちらも `.value` を隠します。
 
 ```html
 <label>
@@ -97,11 +76,7 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+プログレスサークルは同じ任意のスケールを `--min`, `--value`, `--max` を通じて受け入れます。`--value-now` と `--value-max` は非推奨の機能的エイリアスとして残ります。InstUI のマウントアニメーションを再現するには `-should-animate` を追加し、フォーカスインタラクションバンドルを読み込んでください；`--animation-delay` は単位なしのミリ秒遅延です。非推奨の綴り `-should-animate-on-mount` と `-shold-animate-on-mount` も機能的エイリアスとして残ります。
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,11 +92,9 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## クラス接頭辞
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+デフォルトではすべてのクラスは `instui-` 名前空間が付きます。独自のプレフィックス（またはなし）でスタイルシートをビルドするには、任意のビルダーに `prefix` を渡してください。Falsy 値（`null`, `undefined`, `""`、または省略）を渡すと接頭辞は完全に削除されるので、`class="heading -level-h1"` の代わりに `class="instui-heading -level-h1"` を作成できます:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,62 +103,49 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+ダッシュ接頭辞のモディファイア（`.-color-secondary`, `.-level-h1`）はどちらの場合も変わりません。パッケージが出荷するスタイルシートは `instui` プレフィックスを維持します。
 
-## Base
+## ベース
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+`base.css` はオプトインのリセットで、トークンからドキュメントのグローバルデフォルトを設定します: `box-sizing`、`body` なリセット、ページサーフェス、基本テキスト色とフォント、`color-scheme`（それによって `light-dark()` トークンとネイティブコントロールがテーマに追従します）、およびベースリンク。pantoken がページを所有する場合は、コンポーネントとプローズシートの前に一度だけ読み込んでください。
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+ホストが既に自身の `html` と `body` をテーマしている場合はスキップしてください — リセットはページサーフェスを描画するのでホストと競合してほしくありません。設定されるすべては低優先度の `:where()` セレクタを使っているため、あなたのルールが常に勝ちます。
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+`base.css` はブランドフォントを _適用し_ ます（`font-family: var(--instui-font-family-base)`、システムフォールバック付き）；それを _読み込む_ にはオプトインの `fonts.css` をインポートしてください — `@font-face` は Atkinson Hyperlegible Next のルールで、パッケージに同梱された woff2 を指します。フォントは約 350 kB 程度で自己ホスティングの判断は意図的な選択なので、分離されています。
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Screen reader content
+## スクリーンリーダー用コンテンツ
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>この文の後に隠しメッセージがあります。<span class="instui-screen-reader-content">スクリーンリーダーだけがこれを読み上げます。</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+`.instui-screen-reader-content` は要素を視覚的に隠しつつアクセシビリティツリーには残します — ラベルや補助技術に読ませたいステータステキストなどに使います。
 
-## Utilities
+## ユーティリティ
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+`utilities.css` は横断的なクラス群のオプトインレイヤーです: `View` プリミティブ、トークンスケールのスペーシング、意味的なカラーオーバーライド。コンポーネントの `-modifier` クラスとは異なり、これらは **ダブルダッシュ**（`--mod`）を使うためコンポーネント自身のモディファイア名と衝突せず、どんな要素にも適用できます — 素の要素にも、コンポーネントに合成しても構いません。
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">アクセントブルーのサーフェスにオンカラーのテキスト。</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">mx-auto で中央配置。</span>
 </div>
 
 ```html
@@ -193,35 +153,20 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
-`-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+**View** — `.instui-view` は InstUI の `View` です。スペーシングと色を重ねるためのベースで、独自のビジュアルプロップに対するキーと値のモディファイアを持っているのでユーティリティを呼び出す必要がありません:
+`-background-*`（サーフェス）、`-border-radius-{small,medium,large,circle,pill}`、`-border-width-{small,medium,large}` + `-border-color-*`、`-shadow-{resting,above,topmost}`、`-display-*`、`-position-*`、`-overflow-x-*`/`-overflow-y-*`、および `-cursor-*` — これらは `view` の単一ダッシュモディファイアで、下記のダブルダッシュユーティリティとは無関係です。幅/高さ/インセットなどの自由値プロップはインラインスタイルのままにしてください；`margin`/`padding` はスペーシングユーティリティを使います。
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**スペーシング** — スペーシングスケール上の各辺用クラス。`{m|p}{side}-{step}` のように読んでください: マージンなら `m`、パディングなら `p`（または完全な単語 `margin`/`padding`）、オプションの論理的な辺、そしてステップ番号。したがって `.--m-lg` と `.--margin-lg` は同じで、`.--pt-md` と `.--paddingt-md` も同じです。
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- 辺: none（全方向）, `t`/`b`（ブロック開始/終了）, `s`/`e`（インライン開始/終了）, `x`/`y`（インライン/ブロック軸）。論理的な辺は右→左レイアウトでも正しく動作します。
+- ステップ: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`、およびマージン専用の `auto`。
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
-`class="--mt-sm --mx-auto --mb-lg"`.
+InstUI の `margin="small auto large"` 短縮形のためにこれらを合成してください:
+`class="--mt-sm --mx-auto --mb-lg"`。
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**カラー** — パレット内に留まる意味的なオーバーライド: `.--bg-<name>`（背景）、`.--text-<name>`（テキスト色）、および `.--border-<name>`（境界色）。各 `<name>` は意味的なカラートークンです — インテント（`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`, `inverse`, `on-color`, `strong`, …）と `accent-*` パレット（`accent-blue`, `accent-green`, 等）。そのファミリーにトークンが存在する場合にのみ名前があります。したがって `text-brand` はクラスではありません — テキストにはブランドトークンがありません。プリミティブや任意の16進表記に到達する方法はなく、すべてのオーバーライドはテーマに従います。
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**トークンファミリー** — 「1 トークン 1 プロパティ」ファミリーごとにトークンごとのクラスがあります。自由に組み合わせてください:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +174,21 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost`（および `-depth1`…`-card`）→ `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+各クラスはその一つのプロパティだけを設定するので、`border-width`/`border-radius` は実際にボーダーを描くために `border-*` のカラーとボーダースタイルを必要とします。これらは完全なトークン名（`.--border-radius-md`）を使いますが、上記のカラーとスペーシングヘルパーは短いエイリアス（`.--bg-brand`, `.--mt-lg`）を使います — エイリアスは扱いやすさのためのショートカットで、トークンクラスはリテラルで網羅的です。
 
-**Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+**レイアウト** — `.--display-<value>`（`block`, `inline-block`, `inline`, `flex`, `inline-flex`, `none`）および `.--text-align-<value>`（`start`, `center`, `end`, `justify`）は、InstUI の横断的な `display` と `textAlign` プロップ（View、Button、Metric、Tabs、…）をカバーする合成可能なクラスです — したがってそれらはコンポーネント固有のモディファイアではありません。
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+すべてのダブルダッシュクラスは、同名のシングルダッシュコンポーネントモディファイアよりもカスケードで確定的に勝ちます（スタイルシートの読み込み順に関係なく） — メカニズムについては [Authoring conventions](/conventions/authoring) を参照してください。
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+ここにあるものはすべて `--instui-*` トークンにより純粋に CSS で駆動されているため、トークン層を通じて InstUI に追従します。`componentsCss` と各コンポーネントビルダーについては [API reference](/api/) を参照してください。
 
-## Overlays: dialog and popover
+## オーバーレイ: ダイアログとポップオーバー
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
-JavaScript.
+オーバーレイコンポーネントはネイティブのプラットフォームプリミティブに乗るため、少ないまたはほとんど JavaScript を必要とせずアクセシブルに動作します。
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — ネイティブの `<dialog>` に `.instui-modal` を付与してください。フォーカストラップ、`Esc` での閉鎖、そして `::backdrop` が得られます；バックドロップは `.instui-mask` と同じ `--instui-component-mask-background-color` トークンで暗くされます（フロストにするには `-blur` を追加）。Invoker コマンドで開閉できます — スクリプト不要です:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +201,14 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**コンテキストビュー / ポップオーバー** — `.instui-context-view` を `[popover]` 要素に付け、`popovertarget` でトグルします。最上位レイヤーに乗り、外側クリックや `Esc` でライトディスミスされます、これもスクリプト不要です:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**Drawer layout** — レイアウトルートに `.instui-drawer-layout` を付け、`.tray` と `.content` の子要素を配置します。トレイを表示するには `open` 属性（または `-open`）を追加し、インラインエンド側にドッキングするには `placement="end"`（または `-placement-end`）を使用します — 配置は論理的な `inset-inline-*`/`flex-direction` プロパティを通じて解決されるため、`dir="rtl"` 下で自動的に反転します。フォーカスインタラクションバンドルは Invoker コマンドルーティングを追加し、幅が `--drawer-layout-min-width`（デフォルト `--instui-breakpoints-sm`、その後 `30rem`）を越えるとオーバーレイモード（`should-overlay-tray`）を切り替えます。
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +219,16 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — `.instui-mask` はインフローのオーバーレイ（カード上のスピナー）に使います；モーダルの場合はその `::backdrop` がカバーします。
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
-native popover).
+これらのパターンは `@pantoken/web-components` で行動的なカスタム要素としてもラップされています:
+`<instui-modal open>`（その `open` 属性で駆動される `<dialog>`）および `<instui-context-view>`（ネイティブポップオーバー）。
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+ブラウザサポート: popover API と `popovertarget` は Baseline 2024、Invoker コマンド（`command`/`commandfor`）は Baseline 2025 です。古いブラウザではボタンを `dialog.showModal()` にワイヤする一行のフォールバックを使用してください。トリガーの横にポップオーバーを位置付けるには、対応する場合は CSS アンカーポジショニング（Chromium）を使用します；未対応ではトップレイヤーで中央に配置されます。
 
-## Forms
+## フォーム
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` はラベル、コントロール、及びメッセージをレイアウトする CSS グリッドラッパーです。ラベルがネイティブにコントロールと関連付くように `<label>` に付けてください。三つのグリッドエリアがあります — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +240,13 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+`-layout-stacked`（デフォルト）はエリアを積み重ね、`-layout-inline` はラベルをコントロールの横に置きます（`-label-align-{start,end}` と `-v-align-{top,middle,bottom}` で調整）。`-readonly` はラベルの色を変更します。
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+**必須アスタリスク** はフィールドが必須であるときに表示されます — これは _どちらか一方_ の `-required` クラス _または_ 内部にあるネイティブの `required` コントロールによるものです — したがって入力に `required` を設定するだけでマークが表示されます。これは装飾的です（ラベル上の `::after` で、アクセシビリティツリーからは除外されます）；フォームが自明でない限り「\* の付いた項目は必須です」のような注記と組み合わせてください。
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — `.instui-form-field-group` は関連するフィールドを `<fieldset>` 内にグループ化し、`<legend>` の説明を持ちます。純粋にレイアウトのみ（専用トークンなし）：デフォルトはフィールドを積み重ねます；`-layout-columns` / `-layout-inline` はレスポンシブな列に流し、`-row-spacing-*` / `-col-spacing-*` と `-v-align-*` でグリッドを調整します。
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — `.instui-radio-input-group` は同じ `<fieldset>`/`<legend>` のグルーピングで、ラジオに特化しています。子ラジオが共有の `name` を持つため選択はネイティブに単一選択です — そのためトグルボタンのセットはバラバラのボタンではなく一つのコントロールとして振る舞います。`-variant-simple`（デフォルト）は標準ラジオをレイアウトします（`-layout-columns`/`-inline` は行に流します）；`-variant-toggle` は子の `.instui-radio.-variant-toggle` ボタンを単一のセグメントコントロールに接続します（境界が折りたたまれ、外側が丸められます）:
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +259,16 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**Messages** — `.instui-form-field-messages` がコンテナです；各 `.instui-form-field-message` は `-type-*` を取ります: `-type-hint`（グレー、デフォルト）、`-type-error`（赤いテキスト + サークルアラートのグリフ）、`-type-success`（緑のテキスト + サークルチェックのグリフ）、および `-type-screenreader-only`（視覚的にクリップされるがアナウンスされる）。グリフは `currentColor` で塗られるため常にメッセージ色と一致します。`-type-new-error` は `-type-error` の非推奨エイリアスです。コンテナとコントロールを `aria-describedby` で結びつけ、エラーのときはコントロールに `aria-invalid` を設定してください。
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+FormField 内では、`-type-error` メッセージはクライアント側バリデーションに従います: コントロールが `:user-invalid`（ネイティブ、ユーザーが操作した後）になるまで非表示に留まります — または `.instui-form-field` 上で `-invalid` を設定して強制表示できます（サーバーサイドのエラーの場合）。フィールド外の独立した `.instui-form-field-messages`（フィールド内でないもの）は影響を受けません。コントロールのフォーカスリングも同様に動作します: `:user-invalid`/`-invalid` のときは危険表示、`-success` のときは成功表示。
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**テキストコントロール** — `.instui-text-input`（ネイティブの `<input>`）、`.instui-text-area`（ネイティブの `<textarea>`, リサイズ可能）、および `.instui-simple-select`（ネイティブの `<select>` でキャレットを持つ）は見た目と状態を共有します: `-invalid`（エラーボーダー）、`-success`（成功ボーダー）、`-readonly`、ネイティブの `:disabled`、および `-size-{sm,md,lg}`。先頭/末尾のアイコン（InstUI の `renderBeforeInput`/`renderAfterInput`）を付けるには、入力を `.instui-input-group` でラップし、`.before`/`.after` スロット（`-icon-*` グリフ）を追加してください；`-should-not-wrap` はそれを一行に保ちます。`.instui-number-input` はそのファサードに加えて `.arrows` の +/- スピナーカラムを持ちます（ネイティブの `type="number"`；ボタンを `stepUp()`/`stepDown()` にワイヤしてください）。`.instui-range-input` はスタイリングされた `input[type="range"]` で、その値は `.instui-range-input-value` の逆バブルに表示されます。リストボックスポップオーバーを持つリッチなコンボボックスには `@instructure/ui` を使用してください — このライブラリはネイティブコントロールをカバーします。
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**スタイル付きセレクトドロップダウン（実験的）** — オプトインの `select.css` は同一の `.instui-simple-select` 要素をアップグレードします: 開いたドロップダウン（パネルと各オプション、ホバーおよび選択状態）を CSS Customizable Select モデルでスタイルします。
 
 > [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> `select.css` は `appearance: base-select` / `::picker(select)` に依存しており、これは **実験的**（Chrome 135+、まだ Baseline ではありません）です。これは別のオプトインシートとして出荷され、すべてのルールは `@supports (appearance: base-select)` の背後でゲートされています。非対応ブラウザでは何もしないため、強化されたドロップダウンが欲しく、限定的なサポートを受け入れる場合にのみ読み込んでください。`.instui-simple-select` コントロールは通常のネイティブセレクトのままです。
 
 ```ts
 import "@pantoken/components/components.css";

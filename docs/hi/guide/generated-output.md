@@ -1,36 +1,36 @@
-# Generated output
+# उत्पन्न आउटपुट
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+कई pantoken पैकेज बिल्ड समय पर फ़ाइलें उत्पन्न करते हैं — एक स्टाइलशीट, एक `theme.json`, एक एम्बेडेड टोकन
+मॉड्यूल। रेपो को साफ़ और आउटपुट ईमानदार रखने के लिए, प्रत्येक पैकेज एक कन्वेन्शन का पालन करता है और एक
+वर्कस्पेस टास्क सबका सत्यापन करता है।
 
-## The `generated/` convention
+## `generated/` कन्वेन्शन
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+हर वह पैकेज जो एक बिल्ड आर्टिफैक्ट बनाता है, उसे प्रति-पैकेज `generated/` डायरेक्टरी में लिखता है, और
+वहाँ कुछ और नहीं होता। `.gitignore` में एक नियम उन सभी को कवर करता है:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+तो कोई जेनरेट की गई फ़ाइल कमिट नहीं की जाती — एक बिल्ड उसे पुन:उत्पन्न करता है। वहाँ दो प्रकार के आउटपुट आते हैं:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **शिपेबल स्टैटिक्स** — ऐसी फ़ाइलें जिन्हें ग्राहक इम्पोर्ट करता है, जैसे `@pantoken/css` का `style.css` या
+  `@pantoken/scss` का `tokens.scss`। पैकेज का `exports` मैप सार्वजनिक कुंजी
+  (`"./style.css"`) रखता है पर इसे `generated/` की तरफ पॉइंट करता है, इसलिए कंस्यूमर API कभी नहीं बदलता।
+- **बिल्ड इंटरमीडिएट्स** — ऐसी फ़ाइलें जिन्हें पैकेज का अपना सोर्स इम्पोर्ट करता है और `dist` में बंडल करता है, जैसे
+  `@pantoken/tokens` की वेंडर की हुई JSON। ये अपने आप प्रकाशित नहीं होते; इन्हें कम्पाइल किया जाता है।
 
-## Validating the output
+## आउटपुट का सत्यापन
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (एक प्राइवेट टूल) बिल्ड के बाद चलता है और तीन चीज़ें चेक करता है:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. प्रत्येक जनरेटर पैकेज ने वास्तव में एक नॉन-खाली `generated/` डायरेक्टरी लिखी है,
+2. `pantoken` CLI हर समर्थित टारगेट के लिए कम से कम एक फ़ाइल इमिट करता है, और
+3. कोई जेनरेट की गई स्टाइलशीट टोकन IR से विचलित नहीं होती — स्व-निहित
+   शीट्स के लिए `danglingReferences`, और उन ब्रिजेज़ के लिए `unknownReferences` जो केवल कहीं और परिभाषित टोकन को संदर्भित करते हैं।
 
-## Commands
+## कमांड्स
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +40,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+वैलिडेटर भी `pnpm run ready` में वायर्ड है, इसलिए ड्रिफ्ट को स्टैंडर्ड गेट में पकड़ा जाता है।

@@ -1,53 +1,48 @@
-# CDN & distribution
+# CDN & distribusi
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken menerbitkan setiap paket ke npm, sehingga Anda dapat mengambil tokens, components, dan web components langsung dari CDN — tanpa langkah build, tanpa bundler. Halaman ini membahas URL gabungan CSS (dengan pembangun interaktif), plus drop-in web-component.
 
-## The token foundation
+## Fondasi token
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Setiap komponen pantoken membaca `--instui-*` custom properties dari sebuah token sheet di halaman. Dua varian dikirimkan:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — fondasi CDN yang direkomendasikan. Ini memuat semua token kecuali
+  set ikon penuh, jadi ukurannya sekitar 23 KB gzipped.
+- `@pantoken/css/dist/style.css` — sheet penuh, termasuk semua ~1.777 token glyf ikon
+  (`--instui-icon-*`). Sekitar 140 KB gzipped. Muat ini jika Anda merujuk ikon secara luas melalui
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Skala elevasi dan variabel focus-ring ada di kedua sheet, jadi bayangan dan cincin fokus bekerja dengan
+hanya memuat fondasi.
 
-## Pick your components and icons
+## Pilih komponen dan ikon Anda
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[interactive CDN picker](/guide/cdn-picker) membuat URL combine jsDelivr untuk CSS dan snippet untuk paket JavaScript. Buka, centang apa yang Anda perlukan, dan salin output yang dihasilkan.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Tab Components** — pilih stylesheet komponen individual atau seluruh barrel `components.css`. Tambahkan base reset atau utilities spacing/color jika Anda membutuhkannya.
+- **Tab JS** — salin snippet import ESM untuk `@pantoken/interactions`.
+- **Tab Icons** — pilih ikon individual dari set InstUI (~1.800 ikon) atau dari Simple Icons (~3.300 glyf brand). Picker mengeluarkan URL combine terpisah untuk file CSS ikon sehingga Anda hanya memuat ikon yang sebenarnya Anda gunakan.
+- **Tab Web Components** — buat snippet `@pantoken/web-components` (ESM selective register atau classic script bootstrap).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Setiap file komponen kecil — kebanyakan sekitar 2 KB. Komponen yang merender ikon (`alert`, `checkbox`,
+dan beberapa lainnya) membutuhkan glyf tersebut, jadi pembangun menambahkan `@pantoken/components/dist/component-icons.css` (sekitar
+0.5 KB gzipped — 11 ikon yang digunakan set komponen) kapan pun Anda memilih lean sheet. Sheet penuh
+sudah memuatnya.
 
-### Load order and fonts
+### Urutan pemuatan dan font
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Muat fondasi token terlebih dahulu, lalu base reset opsional, lalu file komponen, dan utilities terakhir — mereka adalah utilities override, jadi mereka hanya benar-benar menimpa aturan komponen ketika mereka datang setelahnya dalam cascade. URL combine di atas sudah mengurutkannya untuk Anda. Font adalah satu pengecualian:
+`@pantoken/components/dist/fonts.css` menunjuk ke file font dengan path relatif, jadi combine tidak bisa menulis ulang
+mereka — muat sebagai `<link>` sendiri:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Semua sekaligus
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Centang **All components** di picker untuk menggantinya ke barrel, atau arahkan langsung ke situ (sekitar 141 KB
+gzipped) bersama sheet token:
 
 ```html
 <link
@@ -58,12 +53,12 @@ gzipped) alongside the token sheet:
 
 ## Web components
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` mendaftarkan framework-agnostic `<instui-*>` custom elements. Mereka menyisipkan
+CSS mereka sendiri, tetapi masih membaca token dari sheet di halaman, jadi muat juga fondasi token.
 
-### ES modules (recommended)
+### ES modules (direkomendasikan)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Sebuah CDN ESM menyelesaikan dependensi paket untuk Anda. Ini mendaftarkan setiap elemen:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +67,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Gunakan sheet token penuh (atau lean sheet ditambah `component-icons.css`) supaya elemen perender-ikon seperti
+`<instui-alert>` dapat menemukan glyf mereka.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Untuk mendaftarkan hanya beberapa elemen — dan dependensi bersarangnya — import `register` dan lewati `only`:
 
 ```html
 <script type="module">
@@ -85,20 +80,18 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Tag script klasik
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Untuk drop-in tanpa modul, muat build IIFE. Ia membundel dependensinya dan otomatis mendaftarkan setiap
+elemen saat dimuat, mengekspos global `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Ukuran lebih besar daripada jalur ESM — ia menyisipkan `@pantoken/components` dan `@pantoken/icons` — jadi gunakan hanya ketika Anda tidak bisa memakai modules.
 
-## Pinning versions
+## Mengunci versi (pinning)
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+URL di atas — dan yang ditulis picker — mengikuti rilis terbaru. Pin major (atau versi tepat) untuk produksi — misalnya `@pantoken/css@0` — sehingga upgrade tidak mengejutkan Anda.

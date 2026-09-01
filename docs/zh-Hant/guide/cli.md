@@ -1,40 +1,39 @@
-# The pantoken CLI
+# pantoken CLI
 
-`@pantoken/cli` provides `pantoken generate <target>`, which writes token source into a target repo.
-Reach for it when a platform needs generated code rather than a runtime dependency — native apps,
-CMS themes, and static-site generators.
+`@pantoken/cli` 提供 `pantoken generate <target>`，會將 token 原始檔寫入目標倉庫。
+當平台需要產生程式碼而非執行時相依（例如原生應用程式、CMS 主題與靜態網站產生器）時，請使用它。
 
 ```sh
 npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 ```
 
-## Targets
+## 目標
 
-| Target      | Output                                                                            |
-| ----------- | --------------------------------------------------------------------------------- |
-| `swift`     | Swift source under `Sources/<name>` plus a `Package.swift` SwiftPM manifest stub. |
-| `android`   | Android XML resource files.                                                       |
-| `compose`   | A Jetpack Compose Kotlin file.                                                    |
-| `flutter`   | A Flutter Dart file.                                                              |
-| `rust`      | A `tokens.rs` for egui (default) or iced (`--format iced`).                       |
-| `wordpress` | A block-theme `theme.json`.                                                       |
-| `vanilla`   | A Vanilla Forums `variables.json`.                                                |
-| `drupal`    | Drupal theme assets.                                                              |
-| `jekyll`    | Jekyll site data.                                                                 |
-| `hugo`      | Hugo site data.                                                                   |
-| `swatches`  | Color swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.       |
-| `icon-font` | An icon web font (TTF, WOFF2), its CSS, and a codepoints map.                     |
-| `pendo`     | The Instructure-styled `global.css` for Pendo guides.                             |
+| Target      | Output                                                                                 |
+| ----------- | -------------------------------------------------------------------------------------- |
+| `swift`     | Swift 原始碼於 `Sources/<name>` 下，並附帶一個 `Package.swift` SwiftPM manifest 範本。 |
+| `android`   | Android XML 資源檔案。                                                                 |
+| `compose`   | 一個 Jetpack Compose 的 Kotlin 檔案。                                                  |
+| `flutter`   | 一個 Flutter 的 Dart 檔案。                                                            |
+| `rust`      | 一個 `tokens.rs`（例如 egui（預設）或 iced（`--format iced`））。                      |
+| `wordpress` | 一個區塊主題的 `theme.json`。                                                          |
+| `vanilla`   | 一個 Vanilla Forums 的 `variables.json`。                                              |
+| `drupal`    | Drupal 主題資產。                                                                      |
+| `jekyll`    | Jekyll 網站資料。                                                                      |
+| `hugo`      | Hugo 網站資料。                                                                        |
+| `swatches`  | 色票 — `ase`（預設）、`gpl`、`sketch`，或透過 `--format` 產生 `svg`。                  |
+| `icon-font` | 一個圖示網頁字型（TTF、WOFF2）、其 CSS，與字元對應表。                                 |
+| `pendo`     | 用於 Pendo 指南的 Instructure 風格 `global.css`。                                      |
 
-## Common flags
+## 常用參數
 
-- `--out <dir>` — where to write (default `./pantoken-out`).
-- `--theme <name>` — `rebrand` (default), `canvas`, or `canvasHighContrast`.
-- `--icons a,b,c` — icon names to emit as native assets, for targets that support them.
-- `--class <Name>` — the generated type or package name, for targets that need one.
-- `--format <fmt>` — the output format, for `swatches` and `rust`.
+- `--out <dir>` — 寫入位置（預設 `./pantoken-out`）。
+- `--theme <name>` — `rebrand`（預設）、`canvas`，或 `canvasHighContrast`。
+- `--icons a,b,c` — 要輸出的圖示名稱，供支援該功能之目標作為原生資產使用。
+- `--class <Name>` — 產生的類型或套件名稱，供需要的目標使用。
+- `--format <fmt>` — 輸出格式，供 `swatches` 與 `rust` 使用。
 
-## Examples
+## 範例
 
 ```sh
 # iOS tokens plus two icons, in the Canvas theme.
@@ -47,5 +46,4 @@ npx pantoken generate wordpress --out ./wp-content/themes/mytheme
 npx pantoken generate rust --out ./src/tokens.rs --format egui
 ```
 
-Several targets also expose a plain function, so you can call them from your own build instead of
-the CLI. See the [API reference](/api/) for each platform package.
+若干目標亦提供一個簡單的函式，讓你可以在自己的建構流程中呼叫，而非使用 CLI。請參閱各平台套件的 [API 參考](/api/)。

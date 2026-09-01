@@ -15,7 +15,7 @@ nothing else lives there. One rule in `.gitignore` covers them all:
 
 So no generated file is committed — a build reproduces it. Two kinds of output land there:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
+- **Shippable static assets** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
   `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
   (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
 - **Build intermediates** — files the package's own source imports and bundles into `dist`, such as

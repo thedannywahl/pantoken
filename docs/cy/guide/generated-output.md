@@ -1,36 +1,33 @@
-# Generated output
+# Allbwn a gynhyrchwyd
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Mae sawl pecyn pantoken yn allyrru ffeiliau yn ystod y broses adeiladu — taflen arddull, `theme.json`, modiwl tokenau wedi'i fewnosod. I gadw'r repositorïa'n daclus a'r allbynnau'n ddibynadwy, mae pob pecyn yn dilyn un confensiwn ac mae tasg gweithle yn dilysu popeth.
 
-## The `generated/` convention
+## Y confensiwn `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Mae pob pecyn sy'n cynhyrchu arteffact adeiladu yn ei ysgrifennu i gyfeiriadur `generated/` per-pecyn, ac nid oes dim arall yn byw yno. Mae un rheol yn `.gitignore` yn eu cwmpasu i gyd:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Felly nid oes unrhyw ffeil a gynhyrchir sy'n cael ei chyflwyno — mae adeilad yn ei atgynhyrchu. Mae dau fath o allbwn yn dod yno:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Stâtigau llongadwy** — ffeiliau y mae cwsmer yn eu mewnforio, megis `@pantoken/css`'s `style.css` neu
+  `@pantoken/scss`'s `tokens.scss`. Mae map `exports` y pecyn yn cadw'r allwedd gyhoeddus
+  (`"./style.css"`) ond yn ei phwyntio at `generated/`, felly nid yw API'r cwsmer byth yn newid.
+- **Canolbwyntiau adeiladu** — ffeiliau y mae ffynhonnell y pecyn ei hun yn eu mewnforio a'u bundleio i `dist`, megis
+  JSON wedi'i gynnwys gan `@pantoken/tokens`. Nid ydynt yn cael eu cyhoeddi ar eu pen eu hunain; mae'n cael eu cyfansoddi ynddo.
 
-## Validating the output
+## Dilysu'r allbwn
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (offeryn preifat) yn rhedeg ar ôl adeiladu ac yn gwirio tair peth:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. bod pob pecyn generadur wedi gwirioneddol ysgrifennu cyfeiriadur `generated/` nad yw'n wag,
+2. bod y CLI `pantoken` yn allyrru o leiaf un ffeil ar gyfer pob targed a gefnogir, a
+3. nad yw unrhyw daflen arddull a gynhyrchir yn llithro o'r token IR — `danglingReferences` ar gyfer taflenni hunangynhwysol,
+   a `unknownReferences` ar gyfer y pontydd sydd ond yn cyfeirio at tokenau a ddiffinnir yn rhywle arall.
 
-## Commands
+## Gorchmynion
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Mae'r dilysydd hefyd wedi'i gysylltu â `pnpm run ready`, felly caiff llithriad ei ddal yn y giât safonol.

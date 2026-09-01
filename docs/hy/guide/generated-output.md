@@ -1,36 +1,29 @@
-# Generated output
+# Ստեղծված ելք
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Այլուր pantoken փաթեթներ գաղտնաբառեր են թողարկում կառուցման ժամանակ — stylesheet, `theme.json`, ներդրված տոկենի մոդուլ։ Ռեպոն մաքուր պահելու և ելքերը ազնիվ դարձնելու համար յուրաքանչյուր փաթեթ հետևում է մեկ կոնվենցիային և աշխատանքային տարածքի առաջադրանքը ստուգում է բոլորը։
 
-## The `generated/` convention
+## `generated/` կոնվենցիան
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Յուրաքանչյուր փաթեթ, որը արտադրում է կառուցման արտահայտվող առարկա, գրում է այն ըստ-փաթեթ `generated/` տիրակոնի մեջ, և այնտեղ ուրիշ ոչինչ չի ապրում։ `.gitignore`-ի մեջ մի կանոն նրանց ամբողջը ծածկում է։
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Միևնույն է որ ոչ մի գեներացված ֆայլ չի կոմիտվում — կառուցումը այն վերարտադրում է։ Երկու տեսակի ելք land են այնտեղ՝
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Առաքելի στατικά (Shippable statics)** — ֆայլեր, որոնք սպառողը ներկրում է, ինչպես `@pantoken/css`-ի `style.css` կամ `@pantoken/scss`-ի `tokens.scss`։ Փաթեթի `exports` քարտեզը պահում է հանրային բանալին (`"./style.css"`) բայց այն ուղղորդում է `generated/`-ին, այնպես որ սպառողի API-ն երբեք չի փոխվում։
+- **Կառուցման միջանկյալներ (Build intermediates)** — ֆայլեր, որոնք փաթեթի սեփական աղբյուրը ներկրում և փաթեթավորում է `dist`-ում, օրինակ `@pantoken/tokens`-ի վենդորբացված JSON-ը։ Դրանք առանձին չեն հրատարակվում; դրանք շարունակում են կոմպիլացնել։
 
-## Validating the output
+## Ելքի վավերացում
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (հատուկ գործիք) կատարվում է կառուցումից հետո և ստուգում է երեք բան՝
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. որ յուրաքանչյուր գեներատորային փաթեթ գրեց ոչ-դատարկ `generated/` տիրակոն,
+2. որ `pantoken` CLI-ն արտահանում է առնվազն մեկ ֆայլ յուրաքանչյուր աջակցվող թիրախի համար, և
+3. որևէ գեներացված stylesheet չի շեղվում տոկեն IR-ից — `danglingReferences` ինքնաբացարար թերթիկների համար, և `unknownReferences` այն ծեսերի համար, որոնք միայն հղվում են αλλ տեղորոշված տոկեններին։
 
-## Commands
+## Կոմանդներ
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +33,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Վավերագիրը նույնպես միացված է `pnpm run ready`-ին, այնպես որ շեղումը բռնվում է ստանդարտ գեյթում։

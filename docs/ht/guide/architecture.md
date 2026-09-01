@@ -1,10 +1,10 @@
-# Architecture
+# Achitekti
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken gen yon sèl travay: rezoud tokens konsepsyon Instructure yo ak ikòn yo yon sèl fwa, epi re-fòme modèl sa a
+pou chak sib. Kouch ki anba yo kenbe refòm sa a onèt epi fè pakè yo pibliye lib
+de nenpòt upstream ki sèlman sou GitHub.
 
-## The layers
+## Kouch yo
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** kenbe kontra tip yo, e pa anyen lòt. Li se sous verite pou
+  fòm `Token` ak kontra plugin nan, san okenn depandans, konsa nenpòt pake ka depann sou li
+  lib.
+- **`@pantoken/core`** se sèl pake ki manyen sous upstream la. Li rezoud tokens ak
+  ikòn yo nan IR kanonik la epi rann CSS.
+- **`@pantoken/tokens`** founi IR sa a kòm JSON estatik nan tan build. Sa a se pwen dekoupaj la:
+  pake downstream yo li `@pantoken/tokens`, pa janm `@pantoken/core`, konsa `npm i pantoken` pa janm
+  ale chèche upstream ki sèlman sou GitHub la.
+- **`@pantoken/utils`** pote èd pataje yo — rezolisè `var(--x)`, regex referans yo,
+  konvèsyon ka ak koulè, ak chèk drift yo ki kenbe rezilta jenere yo fidèl ak IR la.
 
-## Why tokens are vendored
+## Poukisa tokens yo vann (vendored)
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Pake token upstream la sou GitHub, pa sou npm. Si chak pake downstream te depann sou li,
+`npm i pantoken` ta echwe pou nenpòt moun ki pa gen aksè sa a. Olye de sa `@pantoken/tokens` rezoud
+upstream la yon sèl fwa nan tan build epi ekri rezilta a kòm JSON estatik. Pake pibliye yo pote
+JSON sa a, konsa yo enstale pwòp soti nan npm, fikse sou semver, epi travay offline.
 
-## Buckets
+## Bokit (Buckets)
 
-Each downstream bucket is a way of consuming the IR:
+Chak bokit downstream se yon fason pou konsome IR la:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — tounen tokens yo an yon fichye (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — entegrasyon kad ak zouti (React, Vue, Svelte, MUI, Pendo, ak plis).
+- **bundlers/** — plugin ak preset zouti build (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — sib natif ak jeneratè sit (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — payloads pou zouti konsepsyon (Figma, echantiyon koulè).
+- **plugins/** — transfòmasyon opsyonèl ki elaji token oswa pwodiksyon CSS la. Gade [Plugins](/guide/plugins).
 
-## Generated output
+## Rezilta jenere
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
+Chak pake ki emèt yon fichye ekri li nan yon repètwa `generated/` pa-pake ke yon build
+reprodwi, konsa anyen jenere pa komite. Yon task workspace valide tout sa. Gade
 [Generated output](/guide/generated-output).

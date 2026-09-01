@@ -1,47 +1,38 @@
-# Getting started
+# 開始使用
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken 取得 Instructure UI 的設計代幣與圖示，解析成一個模型，然後將該模型重塑為多平台的套件：純樣式表、SCSS 與 Less、React、Vue、Svelte、Tailwind 與 Panda、原生 Swift 與 Kotlin、WordPress 與 Drupal、Figma 等等。
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+安裝最符合任務需求的最小套件。所有內容也會由統一的 `pantoken` 套件重新匯出，因此可以從那裡開始，之後再逐步縮小範圍。
 
-## Scaffold a starter project
+## 快速建立起始專案
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+嘗試 pantoken 的最快方式：建立一個已安裝並已連接好 pantoken 的起始專案。
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+支援平台：`components`（純 HTML/CSS）、`react`、`vue`、`svelte`、`web-components`、`angular`。請參閱
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) 以取得 `--dir <path>` 與程式化使用方式。
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+使用 AI 程式碼代理？不需要安裝 — 直接指向該 skill 即可：
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+對於 Gemini CLI、Cursor CLI、OpenAI Codex CLI、GitHub Copilot CLI 與 Amazon Q Developer CLI 也以相同方式運作 — 將 `claude` 換成 `gemini`、`agent`、`codex`、`copilot -p` 或 `q chat`。若想永久將 pantoken 的代理規則綁進倉庫（AGENTS.md、編輯器規則、此 skill 的本地副本），請改執行 `npx @pantoken/ai init`。
 
-## The token model
+## 代幣模型
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+代幣為 CSS 自訂屬性，命名為 `--instui-<group>-<name>`，例如
+`--instui-color-background-brand` 或 `--instui-spacing-space-md`。預設隨附三個主題：`rebrand`
+（預設，使用 `light-dark()` 表示淺色與深色的差異）、`canvas`，以及 `canvasHighContrast`。
+圖示為 `<image>` 代幣（`--instui-icon-<name>`），來源為 Lucide 加上 Instructure 的自定義字形。
 
-## Style a web app
+## 為 Web 應用套用樣式
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+安裝樣式表並匯入一次。它定義了所有 `--instui-*` 屬性，因此可以直接在自己的 CSS 中引用它們。
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +49,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## 在任何地方使用圖示
 
-The web component works in any framework, with no porting.
+該 Web 元件可在任何框架中使用，無需移植。
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +65,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### CSS 代幣
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+圖示為 CSS 自訂屬性（`--instui-icon-<name>`）。載入樣式表一次，並將任何圖示參考為 `mask-image` 或 `background-image` — 無需為每個圖示單獨匯入。
 
 ```css
 .my-icon {
@@ -85,10 +75,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — 單一圖示 vs 全套
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` 暴露兩個命名匯出。使用 `iconsByName` 以在不遍歷整個陣列的情況下擷取單一圖示：
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +86,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+當需要整套圖示（例如建立挑選器）時，使用 `icons`：
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +95,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+兩個匯出在模組初始化時都會載入完整 IR — 在此層級沒有每個圖示的 tree-shaking。若要精簡僅載入 CSS，請使用 [CDN picker](/guide/cdn-picker) 產生只包含所需圖示的合併 URL。
 
-## Generate for a native platform
+## 為原生平台產生
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI 將代幣原始檔寫入目標倉庫。執行器之外不需安裝任何東西：
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+每個目標請見 [pantoken CLI](/guide/cli)。
 
-## VS Code authoring hints
+## VS Code 撰寫提示
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` 現在隨附 VS Code 的 custom-data 檔案，使下游專案在 HTML/CSS 中無需安裝 pantoken 專用擴充就能獲得 class 與 token 的補完。
 
-1. Install the unified package:
+1. 安裝統一套件：
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. 在消費方工作區中，指向所附的 custom-data JSON 給 VS Code：
 
 ```json
 {
@@ -140,14 +126,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. 重新載入 VS Code（或執行 "Developer: Reload Window"）以套用新資料。
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+這會啟用對 `instui-*` 類別代幣（和 `-modifier` 類別代幣）以及 `--instui-*` 自訂屬性的建議。
 
-## Where to next
+## 下一步去哪裡
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [套件對照表](/guide/packages) — 按任務選擇要使用的套件。
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — 在消費者倉庫中安裝代理資產與規則。
+- [架構](/guide/architecture) — 代幣模型、core 與輸出如何結合。
+- [API 參考](/api/) — 每個匯出符號，從原始碼產生。

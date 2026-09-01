@@ -1,36 +1,33 @@
-# Generated output
+# Wygenerowany output
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Kilka pakietów pantoken emituje pliki podczas budowania — arkusz stylów, `theme.json`, osadzony moduł tokenów. Aby repozytorium pozostało czyste, a outputy uczciwe, każdy pakiet stosuje jedną konwencję, a zadanie workspace weryfikuje całość.
 
-## The `generated/` convention
+## Konwencja `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Każdy pakiet, który produkuje artefakt builda, zapisuje go w katalogu per-pakiet `generated/`, i nic innego tam nie istnieje. Jedna reguła w `.gitignore` obejmuje je wszystkie:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Zatem żaden wygenerowany plik nie jest zatwierdzany — build go reprodukuje. Dwa rodzaje outputu trafiają tam:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Pliki statyczne do wysyłki** — pliki, które konsument importuje, takie jak `@pantoken/css`'s `style.css` lub
+  `@pantoken/scss`'s `tokens.scss`. Mapa `exports` pakietu przechowuje publiczny klucz
+  (`"./style.css"`), ale wskazuje go na `generated/`, więc API konsumenta nigdy się nie zmienia.
+- **Pośrednie pliki budowania** — pliki, które źródło pakietu samo importuje i pakuje do `dist`, takie jak
+  vendorowany JSON `@pantoken/tokens`. Nie są one publikowane samodzielnie; są kompilowane w trakcie builda.
 
-## Validating the output
+## Walidacja outputu
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (narzędzie prywatne) uruchamia się po buildzie i sprawdza trzy rzeczy:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. każdy pakiet generatora faktycznie zapisał niepusty katalog `generated/`,
+2. CLI `pantoken` emituje co najmniej jeden plik dla każdego obsługiwanego targetu, oraz
+3. żaden wygenerowany arkusz styli nie odbiega od IR tokenów — `danglingReferences` dla samodzielnych
+   arkuszy, oraz `unknownReferences` dla mostków, które jedynie odwołują się do tokenów zdefiniowanych gdzie indziej.
 
-## Commands
+## Polecenia
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Weryfikator jest także podłączony do `pnpm run ready`, więc drift jest wykrywany w standardowym gate.

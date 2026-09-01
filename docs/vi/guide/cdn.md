@@ -1,53 +1,52 @@
-# CDN & distribution
+# CDN & phân phối
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken xuất bản mọi package lên npm, vì vậy bạn có thể kéo tokens, components và web components trực tiếp
+từ CDN — không cần bước build, không cần bundler. Trang này bao gồm URL kết hợp CSS (với trình
+xây dựng tương tác), cùng các web-component drop-in.
 
-## The token foundation
+## Nền tảng token
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Mỗi component pantoken đọc các thuộc tính tuỳ chỉnh `--instui-*` từ một bảng token trên trang. Có hai
+biến thể được phát hành:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — nền tảng CDN được khuyên dùng. Nó chứa mọi token ngoại trừ
+  bộ biểu tượng đầy đủ, nên khoảng 23 KB gzip.
+- `@pantoken/css/dist/style.css` — bảng đầy đủ, bao gồm tất cả ~1,777 token ký tự biểu tượng
+  (`--instui-icon-*`). Khoảng 140 KB gzip. Tải cái này nếu bạn tham chiếu biểu tượng rộng rãi qua
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Thang elevation và các biến focus-ring nằm trong cả hai bảng, nên bóng và vòng focus hoạt động chỉ với
+nền tảng được tải.
 
-## Pick your components and icons
+## Chọn components và biểu tượng
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[trình chọn CDN tương tác](/guide/cdn-picker) xây dựng URL ghép jsDelivr cho CSS và các đoạn mã cho package JavaScript. Mở nó, chọn những gì bạn cần, và sao chép đầu ra đã tạo.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Tab Components** — chọn stylesheet cho từng component hoặc toàn bộ thùng `components.css`. Thêm base reset hoặc utilities spacing/color nếu cần.
+- **Tab JS** — sao chép đoạn import ESM cho `@pantoken/interactions`.
+- **Tab Icons** — chọn biểu tượng riêng lẻ từ bộ InstUI (~1,800 icons) hoặc từ Simple Icons (~3,300 glyph thương hiệu). Trình chọn xuất một URL kết hợp riêng cho các file CSS biểu tượng để bạn chỉ tải những biểu tượng thực sự dùng.
+- **Tab Web Components** — xây dựng các đoạn `@pantoken/web-components` (đăng ký chọn lọc ESM hoặc bootstrap script cổ điển).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Mỗi file component nhỏ — phần lớn khoảng 2 KB. Một component có render biểu tượng (`alert`, `checkbox`,
+và một vài cái khác) cần các glyph đó, nên trình tạo thêm `@pantoken/components/dist/component-icons.css` (khoảng
+0.5 KB gzip — 11 biểu tượng mà bộ component sử dụng) mỗi khi bạn chọn bảng gọn. Bảng đầy đủ
+đã chứa sẵn chúng.
 
-### Load order and fonts
+### Thứ tự tải và phông chữ
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Tải nền token trước, sau đó base reset tùy chọn, rồi các file component, và utilities ở cuối — chúng là utilities ghi đè, nên chỉ thực sự ghi đè quy tắc của component khi chúng xuất hiện
+sau nó trong cascade. URL kết hợp ở trên đã sắp xếp chúng cho bạn. Phông chữ là ngoại lệ duy nhất:
+`@pantoken/components/dist/fonts.css` trỏ tới các file font bằng đường dẫn tương đối, nên combine không thể viết lại
+chúng — tải nó như `<link>` riêng:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Tất cả cùng lúc
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Chọn **All components** trong trình chọn để chuyển sang thùng, hoặc trỏ trực tiếp tới nó (khoảng 141 KB
+gzip) cùng với bảng token:
 
 ```html
 <link
@@ -58,12 +57,12 @@ gzipped) alongside the token sheet:
 
 ## Web components
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` đăng ký các phần tử tuỳ chỉnh `<instui-*>` không phụ thuộc framework. Chúng nhúng CSS riêng,
+nhưng vẫn đọc token từ một bảng trên trang, nên cũng phải tải một nền token.
 
-### ES modules (recommended)
+### ES modules (khuyến nghị)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+CDN ESM phân giải phụ thuộc của package cho bạn. Điều này đăng ký mọi phần tử:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +71,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Dùng bảng token đầy đủ (hoặc bảng gọn cộng `component-icons.css`) để các phần tử render biểu tượng như
+`<instui-alert>` tìm được glyph của chúng.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Để chỉ đăng ký một vài phần tử — và các phụ thuộc lồng của chúng — import `register` và truyền `only`:
 
 ```html
 <script type="module">
@@ -85,20 +84,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Thẻ script cổ điển
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Cho một drop-in không dùng modules, tải bản build IIFE. Nó đóng gói phụ thuộc và tự đăng ký mọi
+phần tử khi tải, cung cấp một global `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Nó lớn hơn so với đường dẫn ESM — nó nhúng `@pantoken/components` và `@pantoken/icons` — nên chỉ dùng
+khi không thể dùng modules.
 
-## Pinning versions
+## Ghim phiên bản
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Các URL ở trên — và những URL mà trình chọn tạo — theo dõi release mới nhất. Ghim một major (hoặc chính xác)
+phiên bản cho production — ví dụ `@pantoken/css@0` — để nâng cấp không gây bất ngờ.

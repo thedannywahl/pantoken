@@ -1,13 +1,10 @@
-# Plugins
+# 插件
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+pantoken 插件在不分叉包的情况下扩展令牌或 CSS 输出。使用 `definePlugin` 从 `@pantoken/plugin-kit` 构建，然后将其传递给 `buildTokens` 或 `toCss`。
 
-## Author a plugin
+## 编写插件
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+为 `definePlugin` 提供你实现的钩子。它会返回一个普通插件，并根据这些钩子推断的能力为其打上标记。插件可以扩展 IR（`tokens`、`icons`）、CSS 输出（`css`）或两者兼有。
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## 感知能力的注册
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` 和 `toCss` 会对你传入的插件运行 `checkPlugins`。当插件在其注册的阶段没有匹配的钩子时，它会发出警告 —— 它永远不会抛出错误 —— 因此将仅令牌的插件传给 `toCss` 时，会以注释方式跳过，而不是静默无事发生。
 
-## Compose plugins
+## 组合插件
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+使用 `extendPlugin` 在另一个插件之上构建，或使用 `mergePlugin` 将同级插件合并：
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+同阶段钩子可组合：`tokens` 先运行基础再运行附加，`css` 合并两者的贡献，`icons` 则两者都运行。
 
-## Validate your plugin's output
+## 验证你的插件输出
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+在插件的测试中对其输出运行来自 `@pantoken/utils` 的共享漂移检查，这样拼写错误或重命名的令牌会快速且在本地失败：
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,12 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## 捆绑的插件
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — 将 simple-icons 的图标标记为 icon 令牌。
+- `@pantoken/plugin-logos` — 作为 SVG、Data URI 和 `--instui-logo-*` 图像令牌提供的 Instructure 产品徽标。
+- `@pantoken/plugin-prune-custom-props` — 一个 PostCSS 插件（不是 pantoken 插件），用于从样式表中移除未使用的自定义属性。
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+一些以前作为插件的功能现在随 `@pantoken/components` 一起发布，因为很多组件开箱就需要它们：升降阴影（`--instui-elevation-*`，位于 `components.css` 中）、焦点轮廓环（位于 `base.css` 中 —— 当 pantoken 管理页面时，每个可聚焦元素都会获得它），以及 Instructure 品牌字体（Atkinson Hyperlegible Next：`base.css` 应用 `--instui-font-family-base`；可选的 `@pantoken/components/fonts.css` 会加载 `@font-face` woff2 字体文件）。
 
-See the [API reference](/api/) for each plugin's exports.
+参见每个插件导出的 [API 参考](/api/)。

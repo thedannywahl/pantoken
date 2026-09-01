@@ -1,12 +1,12 @@
-# The package map
+# Карта пакетів
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
+pantoken — це монорепозиторій невеликих пакетів з однією метою, згрупованих у бакети. Встановіть той, що
+відповідає вашому завданню, або встановіть уніфікований пакет `pantoken` і імпортуйте з його підшляхів (наприклад
 `pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
 
-## Core
+## Ядро
 
-The shared model and the transformer everything else builds on.
+Спільна модель і трансформер, на якому будується все інше.
 
 | Package                                                 | What it does                                                                                                       |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -17,9 +17,9 @@ The shared model and the transformer everything else builds on.
 | [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
 | [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
 
-## Formats
+## Формати
 
-Turn the tokens into a file format.
+Перетворює токени у файловий формат.
 
 | Package                                                | Output                                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -33,9 +33,9 @@ Turn the tokens into a file format.
 | [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
 | [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
 
-## Renderers
+## Рендерери
 
-Framework and tool integrations.
+Інтеграції фреймворків та інструментів.
 
 | Package                                                                                                                                          | For                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -55,9 +55,9 @@ Framework and tool integrations.
 | [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |
 | [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |
 
-## Bundlers
+## Бандлери
 
-Build-tool integrations.
+Інтеграції інструментів збірки.
 
 | Package                                             | For                                                   |
 | --------------------------------------------------- | ----------------------------------------------------- |
@@ -68,9 +68,9 @@ Build-tool integrations.
 | [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
 | [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
 
-## Platforms
+## Платформи
 
-Native and site-generator targets, emitted by the CLI or their own API.
+Цільові нативні та генератори сайтів, які емитуються CLI або їхнім API.
 
 | Package                                                                                        | Output                                     |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -85,18 +85,18 @@ Native and site-generator targets, emitted by the CLI or their own API.
 | [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |
 | [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |
 
-## Design
+## Дизайн
 
-For design tools.
+Для дизайнерських інструментів.
 
 | Package                                           | Output                                                                |
 | ------------------------------------------------- | --------------------------------------------------------------------- |
 | [`@pantoken/figma`](/api/design/figma/src/)       | A Figma Variables payload.                                            |
 | [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus a viewable SVG specimen sheet. |
 
-## Plugins
+## Плагіни
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+Опціональні трансформації, які розширюють вивід токенів або CSS. Див. [Plugins](/guide/plugins).
 
 | Package                                                                               | What it adds                                                    |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -106,10 +106,10 @@ Optional transforms that extend the token or CSS output. See [Plugins](/guide/pl
 | [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
 | [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
 
-## Tools
+## Інструменти
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+Інфраструктура збірки, документації та демонстрацій для самої монорепозиторії. Більшість — внутрішні, але модулі
+самодостатні, тож їх тут документовано, а деякі публікуються в npm окремо.
 
 | Package                                            | What it does                                                                                                                                                                                          |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -121,17 +121,17 @@ self-contained, so we document them here and some ship to npm on their own.
 `@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
 page; the others do.
 
-## AI
+## Штучний інтелект
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+Споживчі AI-активи. Вони призначені для проєктів, що використовують pantoken, а не для розробки
+pantoken.
 
 - [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
   assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
 
-## Dev plugins
+## Плагіни для розробки
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+Плагіни, які автори створюють для інструментів, з якими вони працюють, згруповані за хостом. Вони автономні та підлягають публікації.
 
 | Package                                                                                  | Plugs into                                                                             |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |

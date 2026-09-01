@@ -1,53 +1,39 @@
-# CDN & distribution
+# CDN & הפצה
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken מפרסם כל חבילה ל‑npm, כך שאפשר לטעון טוקנים, קומפוננטות ו‑web components ישירות מ‑CDN — ללא שלב בנייה, ללא bundler. דף זה מכסה את כתובת ה‑CSS combined (עם בונה אינטראקטיבי), בנוסף ל‑web‑component drop‑ins.
 
-## The token foundation
+## יסוד הטוקנים
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+כל קומפוננטת pantoken קוראת את המאפיינים המותאמים אישית `--instui-*` מדף טוקנים בדף. שתי גרסאות נשלחות:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — יסוד ה‑CDN המומלץ. נושא את כל הטוקנים למעט סט האייקונים השלם, ולכן בערך 23 KB gzip.
+- `@pantoken/css/dist/style.css` — הגיליון המלא, כולל כ־1,777 גליפי אייקונים (`--instui-icon-*`). כ־140 KB gzip. טען את זה אם אתה משתמש באייקונים באופן נרחב דרך `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+סולם ההעלאה ומשתני טבעת המוקד (focus‑ring) נמצאים בשני הגיליונות, כך שהצללות וטבעת המוקד עובדים גם רק עם היסוד הטעון.
 
-## Pick your components and icons
+## בחר את הקומפוננטות והאייקונים שלך
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+ה[picker האינטראקטיבי של ה‑CDN](/guide/cdn-picker) בונה כתובות jsDelivr combined ל‑CSS וקטעי דוגמה לחבילות JavaScript. פתח אותו, סמן מה צריך, והעתק את הפלט שנוצר.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- כרטיסיית Components — בחר גיליונות סגנון לקומפוננטה בודדת או את מכלול ה‑`components.css`. הוסף את ה‑base reset או את utilities של spacing/color אם צריך.
+- כרטיסיית JS — העתק קטע ESM import עבור `@pantoken/interactions`.
+- כרטיסיית Icons — בחר אייקונים בודדים מסט InstUI (כ־1,800 אייקונים) או מ‑Simple Icons (כ־3,300 גליפי מותגים). ה‑picker מוציא כתובת combine נפרדת עבור קבצי ה‑icon CSS כדי שתוכל לטעון רק את האייקונים שבהם אתה משתמש.
+- כרטיסיית Web Components — בנה קטעי `@pantoken/web-components` (ESM selective register או bootstrap בסקריפט קלאסי).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+כל קובץ קומפוננטה קטן — רובם סביב 2 KB. קומפוננטה שמציגה אייקונים (`alert`, `checkbox`
+וכמה אחרות) צריכה את אותם גליפים, ולכן הבונה מוסיף `@pantoken/components/dist/component-icons.css` (כ‑0.5 KB gzip — 11 האייקונים שהסט משתמש בהם) כאשר אתה בוחר את הגיליון הקל. הגיליון המלא כבר כולל אותם.
 
-### Load order and fonts
+### סדר טעינה ופונטים
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+טען קודם את יסוד הטוקנים, אחר כך את ה‑base reset האופציונלי, אחר כך את קבצי הקומפוננטה, ולבסוף את ה‑utilities — הם utilities שמחליפים סגנונות, ולכן הם יחליפו כלל קומפוננטה רק אם ייטענו אחרי הקומפוננטה בקסקדה. כתובת ה‑combine למעלה כבר מסדרת אותם עבורך. פונטים הם החריג היחיד: `@pantoken/components/dist/fonts.css` מפנה לקבצי פונטים בנתיב יחסי, לכן ה‑combine לא יכול לשכתב אותם — טען אותו כ‑`<link>` נפרד:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### הכל יחד
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+סמן **All components** ב‑picker כדי לעבור למכלול, או פנה אליו בעצמך (כ־141 KB gzip) לצד גיליון הטוקנים:
 
 ```html
 <link
@@ -58,12 +44,11 @@ gzipped) alongside the token sheet:
 
 ## Web components
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` מרשום אלמנטים מותאמים אישית `<instui-*>` שאינם תלויים במסגרת. הם מכניסים את ה‑CSS שלהם inline, אך עדיין קוראים טוקנים מגיליון בדף, לכן טען גם יסוד טוקנים.
 
-### ES modules (recommended)
+### מודולי ES (מומלץ)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+CDN של ESM פותר עבורך את התלויות של החבילה. זה מרשום את כל האלמנטים:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +57,9 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+השתמש בגיליון הטוקנים המלא (או בגיליון הקל פלוס `component-icons.css`) כך שאלמנטים שמציירים אייקונים כמו `<instui-alert>` ימצאו את הגליפים שלהם.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+כדי לרשום רק חלק מהאלמנטים — ואת התלויות המוטבעות שלהם — ייבא `register` והעבר `only`:
 
 ```html
 <script type="module">
@@ -85,20 +69,17 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### תג סקריפט קלאסי
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+ל‑drop‑in ללא מודולים, טען את הבנייה IIFE. היא מאחדת את התלויות ומרשמת אוטומטית כל אלמנט בעת הטעינה, וחשפה גלובלי `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+זה גדול יותר מהנתיב ESM — הוא ממקם inline את `@pantoken/components` ו‑`@pantoken/icons` — לכן השתמש בו רק כשאי‑אפשר להשתמש במודולים.
 
-## Pinning versions
+## נעילת גרסאות (Pinning)
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+ה‑URLs שלעיל — וכאלה שה‑picker כותב — עוקבים אחרי ה‑release האחרון. נעול גרסת Major (או גרסה מדויקת) לפרודקשן — למשל `@pantoken/css@0` — כדי שעדכון לא יפתיע אותך.

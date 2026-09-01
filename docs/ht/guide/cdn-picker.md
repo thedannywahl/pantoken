@@ -1,7 +1,7 @@
 ---
 aside: false
 editLink: false
-title: CDN Picker
+title: Chwazi CDN
 ---
 
 <CdnPickerPage />

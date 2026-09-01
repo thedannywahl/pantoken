@@ -1,36 +1,36 @@
-# Generated output
+# Oluşturulan çıktı
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Birden fazla pantoken paketi derleme zamanında dosyalar üretir — bir stil sayfası, bir `theme.json`, gömülü bir token
+modülü. Depoyu temiz tutmak ve çıktıların dürüstlüğünü sağlamak için her paket tek bir sözleşmeyi takip eder ve
+bir workspace görevi bunların tamamını doğrular.
 
-## The `generated/` convention
+## `generated/` kuralı
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Bir yapı artefakti üreten her paket bunu paket-başına `generated/` dizinine yazar ve
+orada başka hiçbir şey yaşamaz. `.gitignore` içindeki tek bir kural hepsini kapsar:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Böylece hiçbir üretilmiş dosya commit edilmez — bir derleme bunu yeniden üretir. Oraya iki tür çıktı düşer:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Gönderilebilir statikler** — bir tüketicinin import ettiği dosyalar, örneğin `@pantoken/css`'ün `style.css`'i veya
+  `@pantoken/scss`'nın `tokens.scss`'si. Paketin `exports` haritası genel anahtarı
+  (`"./style.css"`) tutar ama onu `generated/`'a işaret eder, böylece tüketici API'si asla değişmez.
+- **Derleme ara dosyaları** — paketin kendi kaynağının import edip `dist`'e bundle ettiği dosyalar, örneğin
+  `@pantoken/tokens`'nin vendor edilmiş JSON'u. Bunlar tek başına yayınlanmaz; derlemeye dahil edilir.
 
-## Validating the output
+## Çıktıyı doğrulama
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (özel bir araç) derlemeden sonra çalışır ve üç şeyi kontrol eder:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. her jeneratör paketinin aslında boş olmayan bir `generated/` dizini yazdığı,
+2. `pantoken` CLI'sının her desteklenen hedef için en az bir dosya ürettiği, ve
+3. hiçbir üretilmiş stil sayfasının token IR'den sapmadığı — kendi içinde bütünleşik sayfalar için `danglingReferences` ve
+   token'ları başka yerlerde tanımlanan köprüler için `unknownReferences`.
 
-## Commands
+## Komutlar
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +40,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Doğrulayıcı ayrıca `pnpm run ready` ile bağlanmıştır, böylece sapma standart gate'te yakalanır.

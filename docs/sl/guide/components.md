@@ -1,31 +1,26 @@
-# Components
+# Komponente
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` pošilja slogovne razrede komponent, zgrajene iz Instructure tokenov. Uvozi
+stilno datoteko in označi svojo označevalno kodo — ni potreben noben ogrodje.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
-> [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-> [package map](/guide/packages).
+> [!OPOMBA]
+> Raje prilagojeni elementi? `@pantoken/web-components` ovije iste sloge kot `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` in še več — poglej
+> [mapo paketov](/guide/packages).
 
-## Conventions
+## Konvencije
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+CSS konvencije v tem paketu temeljijo na spremenjeni različici [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+Modifierji so **ključ-vrednost** — `-<prop>-<val>`, usklajeni z imeni InstUI propov — zato pomenijo sami po sebi: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean prop-i so samo ime propa, kjer prisotnost pomeni `true` (`-has-shadow`, `-clickable`); privzeti boolean, vključen po privzetku in izklopljen, se inverzira (`-without-background`, `-without-border`). Velikosti sprejemajo kratke in dolge zapise (`-size-sm` = `-size-small`). Kjer ime odstopa od InstUI, InstUI-semantni razred še vedno deluje, vendar je zastarel (npr. `-variant-info` → uporabi `-color-info`).
 
-### Example
+### Primer
 
-Instructure UI React component:
+Instructure UI React komponenta:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -33,7 +28,7 @@ Instructure UI React component:
 </Alert>
 ```
 
-pantoken components:
+pantoken komponente:
 
 ```html
 <!-- direct instui props -->
@@ -51,12 +46,7 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+Za InstUI-jev prop `timeout` nastavi enotsko brezmerno `--timeout` prilagodljivo lastnost v milisekundah in naloži Alert interakcijo. Pozitivna vrednost načrtuje zapiranje; `0` (privzeto) pusti opozorilo na mestu. Dodaj razrede `instui-transition -fade-entered` pripomočka `transition` za InstUIjev fade; izpusti jih za takojšnje odstranjevanje. Interakcija upravlja stanje `-fade-exiting` in sproži preklicljiv, mehurčkast dogodek `dismiss` pred odstranitvijo, da lahko aplikacija pokliče `preventDefault()` in pusti opozorilo priklopljeno.
 
 ```html
 <link
@@ -73,15 +63,15 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+Napredne vrstice (progress bars) sprejemajo poljubne lestvice preko `--min` (`0` privzeto), `--value` in `--max`
+(`100` privzeto), z zastarelimi aliasi `--value-now` in `--value-max`. Dodaj `-should-animate`
+za uporabo polsekundnega InstUI prehoda vsakič, ko se vrednost spremeni. `.value` stoji ob `.bar` kot
+otrok korena; dodaj `-render-value-inside`, da ga upodobiš nad progo, poravnano na njen začetek,
+namesto tega (stiliraj za berljivost glede na barvo merilnika). Uporabi nativen `<progress>` za
+nulto osnovno lestvico in `<meter>`, kadar je minimum različen od nič; spletne komponente med njima
+samodejno izbirajo glede na atribut `min`. InstUI nima nedoločenega (indeterminate) stanja, zato je `<progress>`
+brez atributa `value` pantoken-ova najboljša ocena: `progress-bar` animira `.bar` kot
+drseči segment in `progress-circle` vrti svoj obroč z določeno loku, oba pa skrivata `.value`.
 
 ```html
 <label>
@@ -97,11 +87,11 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+Napredni krogi (progress circles) sprejemajo iste poljubne lestvice preko `--min`, `--value` in `--max`.
+`--value-now` in `--value-max` ostajata kot zastarela funkcionalna aliasa. Dodaj `-should-animate` in
+naloži focused interaction bundle za reproduciranje InstUI-jeve mount animacije; `--animation-delay` je
+enotsko brezmerno zamik v milisekundah. Zastarela črkovanja `-should-animate-on-mount` in
+`-shold-animate-on-mount` ostajata funkcionalna aliasa.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,11 +107,11 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## Predpona razredov
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+Vsak razred je privzeto imenskoprostorsko `instui-`. Zgradi stilno datoteko s svojo predpono — ali brez — s
+posredovanjem `prefix` kateremukoli graditelju. Vsaka vrednost, ki evalvira v false (`null`, `undefined`, `""` ali njena izpustitev) odstrani
+predpono v celoti, tako da lahko pišeš `class="heading -level-h1"` namesto `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,62 +120,60 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+Kaveljčno-predponjeni modifierji (`.-color-secondary`, `.-level-h1`) ostanejo nespremenjeni v obeh primerih. Slogovne datoteke, ki jih pošilja paket, ohranjajo `instui` predpono.
 
-## Base
+## Baza
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+`base.css` je opcijski reset, ki nastavi globalne privzete vrednosti dokumenta iz tokenov: `box-sizing`, reset `body`, površino strani, osnovno barvo besedila in pisavo, `color-scheme` (tako da `light-dark()` tokeni
+in nativeni kontrolniki sledijo temi), in osnovno povezavo. Naloži ga enkrat, pred komponentnimi in proznimi
+listi, ko pantoken upravlja stran.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+Preskoči ga, ko vgrajuješ komponente v gostitelja, ki že tematizira svojo `html` in `body` —
+reset barva površino strani, zato nočeš, da se bori z gostiteljem. Vse, kar nastavi, uporablja
+nizko-specificne selektorje `:where()`, zato vedno prevladajo tvoje lastne pravila.
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+`base.css` _uporablja_ blagovno pisavo (`font-family: var(--instui-font-family-base)`, s sistemskimi
+rezervnimi pisavami); da jo _naložiš_, uvozi opcijski `fonts.css` — `@font-face` pravila za Atkinson Hyperlegible
+Next, ki kažejo na woff2 datoteke, priložene v paketu. Ločeno je, ker so pisave ~350 kB in
+samostojno gostovanje pisav je premična odločitev.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Screen reader content
+## Vsebina za bralnike zaslona
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>Po tem stavku je skrito sporočilo.<span class="instui-screen-reader-content">Samo bralniki zaslona to najavijo.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+`.instui-screen-reader-content` skrije element vizualno, medtem ko ga pusti v drevesu dostopnosti
+— za oznake in statusna besedila, ki naj jih asistivna tehnologija prebere, vendar jih dizajn ne pokaže.
 
-## Utilities
+## Pomočniki (Utilities)
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+`utilities.css` je opcijska plast prečnih razredov: primitiv `View`, razmiki na token lestvici,
+in semantični barvni presežki. Za razliko od komponentnih `-modifier` razredov, ti uporabljajo **dvojno
+vezaj** (`--mod`), da nikoli ne trčijo s komponentnimi imeni modifierjev, in se uporabljajo na kateremkoli
+elementu — golem ali sestavljenem na komponenti.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">Površina accent-blue z besedilom on-color.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">Na sredini z mx-auto.</span>
 </div>
 
 ```html
@@ -193,35 +181,31 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` je InstUI-jev `View`. Je baza, na katero naneseš razmike in barvo, in
+ima ključ-vrednost modifierje za svoje vizualne prop-e, tako da ni treba posegati po pripomočkih:
+`-background-*` (njegove površine), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, in `-cursor-*` — to so `view`-ovi
+lastni modifierji z eno vezajo, neodvisni od spodaj navedenih pripomočkov z dvojno vezajo. Prop-i z vrednostjo svobode
+(width/height/inset) ostanejo kot inline stili; `margin`/`padding` uporabita pripomočke za razmike.
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**Razmiki** — razredi za vsako stran na lestvici razmikov. Preberi jih kot `{m|p}{side}-{step}`: `m` za
+margino ali `p` za padding (ali polni besedi `margin`/`padding`), opcijska logična stran, nato
+stopnja. Torej `.--m-lg` in `.--margin-lg` sta enaka, prav tako `.--pt-md` in `.--paddingt-md`.
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- Strani: none (vse), `t`/`b` (začetek/konec bloka), `s`/`e` (začetek/konec inline), `x`/`y` (inline/blokovna os). Logične strani ostanejo pravilne v postavitvah desno-levo.
+- Stopnje: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` samo za margino.
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
+Sestavi jih za InstUI-jev `margin="small auto large"` okrajšavo:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**Barva** — semantični presežki, ki ostanejo na paleti: `.--bg-<name>` (ozadje),
+`.--text-<name>` (barva besedila), in `.--border-<name>` (barva obrobe). Vsak `<name>` je
+semantični barvni token — intence (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) plus `accent-*` paleta (`accent-blue`, `accent-green`, in tako naprej). Ime je prisotno samo, če token obstaja v tej družini, zato `text-brand` ni razred — besedilo nima brand tokena. Ni načina, da bi dosegli primitiv ali poljuben hex, in vsak presežek sledi temi.
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**Družine tokenov** — vsaka družina "en token, ena lastnost" dobi razred za vsak token, imenovan po
+tokenu. Sestavljaj jih poljubno:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +213,29 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost` (in `-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+Vsak nastavi samo svojo eno lastnost, zato `border-width`/`border-radius` potrebujeta `border-*` barvo in slog obrobe, da se obroba dejansko nariše. Ti uporabljajo polno ime tokena (`.--border-radius-md`), medtem ko barvni in razmik pripomočki zgoraj uporabljajo kratke alias-e (`.--bg-brand`, `.--mt-lg`) — alias-i so ergonomske bližnjice; razredi tokenov so dobesedni in izčrpni.
 
-**Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+**Postavitev (Layout)** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+`none`) in `.--text-align-<value>` (`start`, `center`, `end`, `justify`) pokrivajo InstUI-jeve
+prečne `display` in `textAlign` prope (View, Button, Metric, Tabs, …) kot sestavljivi razredi —
+torej ti niso modifierji, specifični za posamezno komponento.
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+Vsak razred z dvojno vezajo deterministično zmaga v kaskadi nad enako imenovanim komponentnim
+modifierjem, ne glede na vrstni red uvoza stilnih datotek — poglej [Avtorske konvencije](/conventions/authoring)
+za mehanizem.
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+Vse tukaj je čisti CSS, ki ga poganjajo `--instui-*` tokeni, zato sledi InstUI preko sloja tokenov. Glej [API referenco](/api/) za `componentsCss` in graditelje za posamezne komponente.
 
-## Overlays: dialog and popover
+## Prekrivanja: dialog in popover
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
-JavaScript.
+Overlay komponente uporabljajo nativeni platformni primitiv, zato se vedo dostopno z malo ali brez
+JavaScripta.
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — postavi `.instui-modal` na nativen `<dialog>`. Dobi fokusno ujeto, `Esc`-za-zapiranje, in
+`::backdrop` brezplačno; backdrop je potemnjen z istim tokenom `--instui-component-mask-background-color`
+kot `.instui-mask` (dodaj `-blur` za zameglitev). Odpri in zapri z invoker ukazi — brez skripta:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +248,21 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**Context view / popover** — postavi `.instui-context-view` na element `[popover]` in ga preklapljaj z
+`popovertarget`. Leži na najvišjem sloju in se zapre ob kliku zunaj ali z `Esc`, spet brez skripta:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**Drawer layout** — postavi `.instui-drawer-layout` na koren postavitve z `.tray` in `.content`
+otroki. Dodaj atribut `open` (ali `-open`), da razkriješ predal, in uporabi `placement="end"`
+(ali `-placement-end`) za pritrditev na inline-end stran — postavitev se reši prek logičnih
+`inset-inline-*`/`flex-direction` lastnosti, zato se samodejno obrne pod `dir="rtl"` brez
+dodatnih pravil. Focused interaction bundle doda Invoker usmerjanje ukazov in preklopi overlay način
+(`should-overlay-tray`), ko širina prestopi `--drawer-layout-min-width` (privzeto
+`--instui-breakpoints-sm`, nato `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +273,21 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — `.instui-mask` ostane za v-teku-prekrivanja (spinner nad kartico); modalov `::backdrop`
+pokrije modalni primer.
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
-native popover).
+Oba vzorca sta tudi zavita kot vedenjski prilagojeni elementi v `@pantoken/web-components`:
+`<instui-modal open>` ( `<dialog>` poganjana preko atributa `open`) in `<instui-context-view>` (nativni popover).
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+Podpora brskalnikov: popover API in `popovertarget` sta Baseline 2024; invoker ukazi
+(`command`/`commandfor`) so Baseline 2025, zato na starejših brskalnikih poveži gumbe na `dialog.showModal()`
+kot enovrstični fallback. Pozicioniranje popoverja ob sprožilcu uporablja CSS anchor position, kjer je podprto (Chromium); drugje se centrirano prikaže v zgornjem sloju.
 
-## Forms
+## Obrazci (Forms)
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` je CSS-Grid ovojnica, ki postavi oznako, kontrolnik in morebitna
+sporočila. Postavi ga na `<label>`, da se oznaka nativno poveže s kontrolnikom. Ima tri mrežna
+področja — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +299,24 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+`-layout-stacked` (privzeto) zloži področja; `-layout-inline` postavi oznako ob kontrolnik (nastavi
+s `-label-align-{start,end}` in `-v-align-{top,middle,bottom}`). `-readonly` prebarva oznako.
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+**Zvezdica obveznosti** se prikaže, ko je polje obvezno _bodisi_ razred `-required` _ali_ nativni kontrol `required` znotraj njega — tako lahko preprosto nastaviš `required` na vhodu in oznaka se prikaže.
+Je dekorativna ( `::after` na oznaki, zunaj drevesa dostopnosti); združi jo z opombo, kot je
+"polja označena z \* so obvezna", razen če je obrazec samorazumljiv.
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — `.instui-form-field-group` združuje sorodna polja v `<fieldset>` z
+opisom `<legend>`. Je čista postavitev (brez namenskih tokenov): privzeto zloži polja;
+`-layout-columns` / `-layout-inline` jih pretočita v odzivne stolpce, z `-row-spacing-*` /
+`-col-spacing-*` in `-v-align-*` za prilagoditev mreže.
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — `.instui-radio-input-group` je ista `<fieldset>`/`<legend>` skupina,
+specializirana za radio gumbe. Ker otroški radii delijo `name`, je izbira nativno enostavna —
+torej niz preklopnih gumbov deluje kot ena kontrola, ne kot posamezni gumbi. `-variant-simple` (privzeto) postavi
+standardne radii (`-layout-columns`/`-inline` jih pretočita v vrstico); `-variant-toggle` poveže
+otroške `.instui-radio.-variant-toggle` gumbe v en sam segmentiran kontrol (zdrsne obrobe,
+zaobljeni zunanji konci):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +329,34 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**Sporočila** — `.instui-form-field-messages` je vsebnik; vsako `.instui-form-field-message` prevzame
+`-type-*`: `-type-hint` (sivo, privzeto), `-type-error` (rdeče besedilo + krog-opozorilna ikona), `-type-success`
+(zeleno besedilo + krog-potrditvena ikona), in `-type-screenreader-only` (vizualno odrezano, vendar še vedno najavljeno).
+Ikone se barvajo v `currentColor`, zato vedno ujemajo barvo sporočila. `-type-new-error` je
+zastareli alias za `-type-error`. Poveži vsebnik s kontrolnikom z `aria-describedby`, in nastavi
+`aria-invalid` na kontrolniku, ko je napaka.
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+Znotraj FormField-a, `-type-error` sporočilo sledi validaciji na odjemalcu: ostane skrito dokler kontrola polja ni `:user-invalid` (nativno, po interakciji uporabnika) — ali ga prisiliš z `-invalid`
+na `.instui-form-field` (za napako strežnika). Samostojno `.instui-form-field-messages` (ne v polju) ni prizadeto. Obroč fokusa kontrolnika sledi: nevarnost ko `:user-invalid`/`-invalid`,
+uspeh na `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**Besedilni kontrolniki** — `.instui-text-input` (nativen `<input>`), `.instui-text-area` (nativen `<textarea>`,
+spremenljiv), in `.instui-simple-select` (nativen `<select>` z caret-om) delijo en izgled in ista
+stanja: `-invalid` (obroba napake), `-success` (obroba uspeha), `-readonly`, nativni `:disabled`, in
+`-size-{sm,md,lg}`. Za vodilno/končno ikono (InstUI-jevi `renderBeforeInput`/`renderAfterInput`), zavij vhod v `.instui-input-group` in dodaj reži `.before`/`.after` ( `-icon-*` glifik); `-should-not-wrap`
+ohranja v eni vrstici. `.instui-number-input` je ta fasada plus `.arrows` +/- spinner stolpec (nativen
+`type="number"`; poveži gumbe z `stepUp()`/`stepDown()`). `.instui-range-input` je stiliran
+`input[type="range"]`, katere vrednost se upodobi v `.instui-range-input-value` inverzni oblaček. Za bogat
+combobox z listbox popoverjem, uporabi `@instructure/ui` — ta knjižnica pokriva nativne kontrolnike.
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**Stilirani select dropdown (eksperimentalno)** — opcijski `select.css` nadgradi _isti_
+element `.instui-simple-select`: stilira odprti dropdown (panel in vsako možnost, s hover in
+izbranimi stanji) z uporabo modela CSS Customizable Select.
 
-> [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> [!OPOZORILO]
+> `select.css` se zanaša na `appearance: base-select` / `::picker(select)`, kar je **eksperimentalno**
+> (Chrome 135+, še ni Baseline). Pošilja se kot ločen opcijski list in vsako pravilo je oključeno
+> za `@supports (appearance: base-select)`, zato v nepodprtih brskalnikih ne naredi nič — kontrol `.instui-simple-select` ostane navaden nativni select. Naloži ga samo, če želiš izboljšan dropdown in sprejemaš omejeno podporo.
 
 ```ts
 import "@pantoken/components/components.css";

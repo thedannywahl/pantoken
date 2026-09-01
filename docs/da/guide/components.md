@@ -1,31 +1,30 @@
-# Components
+# Komponenter
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` leverer klassebaserede komponentstylinger bygget fra Instructure-tokenne. Importér
+stylesheetet og tag dit markup — intet framework nødvendigt.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
+> Foretrækker du custom elements? `@pantoken/web-components` pakker de samme styles som `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` og flere — se
 > [package map](/guide/packages).
 
-## Conventions
+## Konventioner
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+CSS-konventionerne i dette package er baseret på en modificeret version af [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+Modifiers er **nøgle-værdi** — `-<prop>-<val>`, tilpasset InstUI prop-navne — så de læser for
+sig selv: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean-props er kun prop-navnet, hvor tilstedeværelse betyder `true` (`-has-shadow`, `-clickable`); en default-aktiveret boolean der slås fra
+inverterer (`-without-background`, `-without-border`). Størrelser accepterer både korte og lange stavemåder
+(`-size-sm` = `-size-small`). Hvor et navn afviger fra InstUI, virker den InstUI-semantiske klasse stadig
+men er forældet (f.eks. `-variant-info` → brug `-color-info`).
 
-### Example
+### Eksempel
 
-Instructure UI React component:
+Instructure UI React-komponent:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -51,12 +50,12 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+For InstUI's `timeout` prop, sæt den unitløse `--timeout` custom property i millisekunder og load
+Alert-interaktionen. En positiv værdi planlægger afvisning; `0` (default) lader alerten blive på
+stedet. Tilføj `transition` utility'ens `instui-transition -fade-entered` klasser for InstUI's fade; udelad
+dem for øjeblikkelig fjernelse. Interaktionen driver `-fade-exiting`-staten og affyrer en cancelerbar,
+boblende `dismiss`-event før fjernelse, så en applikation kan kalde `preventDefault()` for at beholde
+alerten monteret.
 
 ```html
 <link
@@ -73,15 +72,15 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+Progress bars accepterer vilkårlige skalaer gennem `--min` (`0` som standard), `--value`, og `--max`
+(`100` som standard), med forældede `--value-now` og `--value-max` aliaser. Tilføj `-should-animate`
+for at anvende InstUI's halve-sekunds transition når en værdi ændres. `.value` sidder sammen med `.bar` som
+et child af root; tilføj `-render-value-inside` for at rendre den over tracken, justeret til dens start,
+i stedet (style den for læsbarhed mod meter-farven). Brug et native `<progress>` for en
+zero-baseret range og `<meter>` når minimum ikke er nul; webkomponenterne vælger mellem dem
+automatisk ud fra deres `min` attribut. InstUI har ingen indeterminate-tilstand, så en `<progress>`
+uden sit `value` attribut er et pantoken-only bedste gæt: `progress-bar` animerer `.bar` som et
+glidende segment og `progress-circle` spinner sin ring i en fast bue, begge skjuler `.value`.
 
 ```html
 <label>
@@ -97,11 +96,11 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+Progress-cirkler accepterer de samme vilkårlige skalaer gennem `--min`, `--value` og `--max`.
+`--value-now` og `--value-max` forbliver som forældede funktionelle aliaser. Tilføj `-should-animate` og
+load det fokuserede interaction-bundle for at reproducere InstUI's mount-animation; `--animation-delay` er en
+unitløs millisekund-forsinkelse. De forældede `-should-animate-on-mount` og
+`-shold-animate-on-mount` stavemåder forbliver funktionelle aliaser.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,11 +116,11 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## Klasse-præfiks
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+Hver klasse er namespacet `instui-` som standard. Byg et stylesheet med dit eget præfiks — eller ingen — ved
+at sende `prefix` til enhver builder. Enhver falsy værdi (`null`, `undefined`, `""`, eller at udelade den) fjerner
+præfikset fuldstændigt, så du kan forfatte `class="heading -level-h1"` i stedet for `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,62 +129,61 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+De bindestregs-præfiksede modifiers (`.-color-secondary`, `.-level-h1`) ændres ikke. De
+stylesheets som pakkes med package'et bevarer `instui` præfikset.
 
 ## Base
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+`base.css` er en opt-in reset der sætter globale dokumentdefaults fra tokenne: `box-sizing`, en
+`body` reset, sidenes surface, basis tekstfarve og font, `color-scheme` (så `light-dark()` tokenne
+og native controls følger temaet), og en basis link-stil. Load den én gang, før komponent- og prose-
+stylesheets, når pantoken ejer siden.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+Spring den over når du embedder komponenter i et host, der allerede theme'er sin egen `html` og `body` —
+resettet maler pagesurface, så du ikke vil have det kæmpe mod hostens styles. Alt hvad den sætter bruger
+lav-specificitets `:where()` selectors, så dine egne regler altid vinder.
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+`base.css` _anvender_ brand-fonten (`font-family: var(--instui-font-family-base)`, med system
+fallbacks); for at _loade_ den, importér den opt-in `fonts.css` — `@font-face` regler for Atkinson Hyperlegible
+Next, pegende på woff2-filerne pakket i package'et. Den er separat fordi facerne er ~350 kB og
+self-hosting af fonte er et bevidst valg.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Screen reader content
+## Skærmlæserindhold
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>Der er en skjult besked efter denne sætning.<span class="instui-screen-reader-content">Kun skærmlæsere annoncerer dette.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+`.instui-screen-reader-content` skjuler et element visuelt mens det forbliver i tilgængelighedstræet
+— til labels og statustekst som assistiv teknologi skal læse, men designet ikke skal vise.
 
 ## Utilities
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+`utilities.css` er et opt-in lag af tværgående klasser: en `View` primitiv, spacing på token-skalaen, og semantiske farve-overrides. I modsætning til komponent `-modifier` klasserne, bruger disse en **dobbelt
+dash** (`--mod`) så de aldrig kolliderer med en komponents egne modifier-navne, og de anvendes på ethvert
+element — bare, eller komponeret ovenpå en komponent.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">Accent-blue surface med on-color tekst.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">Centreret med mx-auto.</span>
 </div>
 
 ```html
@@ -193,35 +191,33 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` er InstUI's `View`. Det er basislaget du lægger spacing og farve ovenpå, og det
+bærer nøgle-værdi modifiers for sine egne visuelle props så du ikke behøver række efter utilities:
+`-background-*` (dets surfaces), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, og `-cursor-*` — disse er `view`'s egne
+enkelt-bindestregs modifiers, upåvirkede af de dobbelt-dash utilities nedenfor. Fri-værdi props
+(width/height/inset) forbliver inline styles; `margin`/`padding` bruger spacing-utilities.
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**Spacing** — per-side klasser på spacingskalaen. Læs dem som `{m|p}{side}-{step}`: `m` for
+margin eller `p` for padding (eller de fulde ord `margin`/`padding`), en valgfri logisk side, så et
+trin. Så `.--m-lg` og `.--margin-lg` er det samme, ligesom `.--pt-md` og `.--paddingt-md`.
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- Sider: none (alle), `t`/`b` (blok start/slut), `s`/`e` (inline start/slut), `x`/`y` (inline/blok
+  akse). Logiske sider forbliver korrekte i højre-til-venstre layouts.
+- Trin: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` kun for margin.
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
+Kombinér dem for InstUI's `margin="small auto large"` shorthand:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**Color** — semantiske overrides der forbliver på-paletten: `.--bg-<name>` (baggrund),
+`.--text-<name>` (tekstfarve), og `.--border-<name>` (border-farve). Hver `<name>` er en
+semantisk farvetoken — intentsene (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) plus `accent-*` paletten (`accent-blue`, `accent-green`, og så videre). Et navn er kun der hvis tokenen findes i den familie, så `text-brand` er ikke en klasse — tekst har
+ingen brand-token. Der er ingen måde at nå en primitive eller et vilkårligt hex, og hver override følger
+temaet.
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**Token-familier** — hver "én token, én property" familie får en klasse per token, navngivet efter tokenen. Kombinér dem frit:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +225,32 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost` (og `-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+Hver sætter kun sin ene property, så `border-width`/`border-radius` behøver en `border-*` farve og en border
+stil for faktisk at tegne en kant. Disse bruger det fulde token-navn (`.--border-radius-md`), mens
+farve- og spacing-hjælperne ovenfor bruger korte aliaser (`.--bg-brand`, `.--mt-lg`) — aliaserne
+er ergonomiske genveje; token-klasserne er bogstavelige og udtømmende.
 
 **Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+`none`) og `.--text-align-<value>` (`start`, `center`, `end`, `justify`) dækker InstUI's
+tværgående `display` og `textAlign` props (View, Button, Metric, Tabs, …) som komponerbare klasser —
+så de er ikke per-komponent modifiers.
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+Hver dobbelt-dash klasse vinder kaskaden deterministisk over en ens-navngivet enkelt-dash komponents
+modifier, uanset stylesheet-importrækkefølge — se [Authoring conventions](/conventions/authoring)
+for mekanismen.
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+Alt her er ren CSS drevet af `--instui-*` tokenne, så det følger InstUI gennem tokenlaget. Se [API reference](/api/) for `componentsCss` og de per-komponent builders.
 
-## Overlays: dialog and popover
+## Overlays: dialog og popover
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
+Overlay-komponenterne bruger native platform-primitiver, så de opfører sig tilgængeligt med lidt eller ingen
 JavaScript.
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — sæt `.instui-modal` på et native `<dialog>`. Det får fokus-fangst, `Esc`-to-close, og en
+`::backdrop` gratis; backdropen er dimmet med samme `--instui-component-mask-background-color`
+token som `.instui-mask` (tilføj `-blur` for at give frost). Åbn og luk med invoker-kommandoer — intet script:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +263,21 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**Context view / popover** — sæt `.instui-context-view` på et `[popover]` element og toggle det med
+`popovertarget`. Det ligger øverst og lukkes ved klik udenfor eller `Esc`, igen uden script:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**Drawer layout** — sæt `.instui-drawer-layout` på et layout-root med `.tray` og `.content`
+children. Tilføj `open` attributten (eller `-open`) for at vise trayen, og brug `placement="end"`
+(eller `-placement-end`) for at dokke den til inline-end siden — placering løses gennem logiske
+`inset-inline-*`/`flex-direction` properties, så den flipper automatisk under `dir="rtl"` uden
+yderligere regler. Det fokuserede interaction-bundle tilføjer Invoker kommando-routing og toggler overlay-tilstand
+(`should-overlay-tray`) når bredden krydser `--drawer-layout-min-width` (default
+`--instui-breakpoints-sm`, så `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +288,23 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — `.instui-mask` bruges til in-flow overlays (en spinner over et kort); en modals `::backdrop`
+dækker modal-tilfældet.
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
+Begge mønstre er også pakket som behaviorelle custom elements i `@pantoken/web-components`:
+`<instui-modal open>` (en `<dialog>` drevet af sin `open` attribut) og `<instui-context-view>` (en
 native popover).
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+Browser-support: popover-API'en og `popovertarget` er Baseline 2024; invoker-kommandoer
+(`command`/`commandfor`) er Baseline 2025, så på ældre browsere bind knapperne til `dialog.showModal()`
+som en ét-linjers fallback. Positionering af en popover ved siden af triggeren bruger CSS anchor positioning hvor
+det understøttes (Chromium); andre steder centrerer den i top-laget.
 
-## Forms
+## Formularer
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` er en CSS-Grid wrapper der placerer en label, control og eventuelle
+beskeder. Sæt den på et `<label>` så labelen associerer med sin kontrol nativt. Den har tre grid
+områder — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +316,25 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+`-layout-stacked` (default) stabler områderne; `-layout-inline` placerer labelen ved siden af kontrollen (tunes
+med `-label-align-{start,end}` og `-v-align-{top,middle,bottom}`). `-readonly` recolorerer labelen.
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+Det **påkrævede asterisk** vises når feltet er påkrævet af _enten_ `-required` klassen _eller_ en
+native `required` kontrol inde i det — så du kan blot sætte `required` på inputtet og markeringen vises.
+Den er dekorativ (et `::after` på labelen, udenfor tilgængelighedstræet); par den med en note som
+"felter markeret \* er påkrævede" medmindre formen er selvforklarende.
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — `.instui-form-field-group` grupper relaterede felter i et `<fieldset>` med en
+`<legend>` beskrivelse. Det er ren layout (ingen dedikerede tokens): default stabler felterne;
+`-layout-columns` / `-layout-inline` flyder dem i responsive kolonner, med `-row-spacing-*` /
+`-col-spacing-*` og `-v-align-*` for at tune gridet.
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — `.instui-radio-input-group` er den samme `<fieldset>`/`<legend>` gruppering,
+specialiseret til radios. Fordi de child radios deler en `name`, er valg nativt single-choice —
+så et sæt toggle-knapper opfører sig som én kontrol, ikke løse knapper. `-variant-simple` (default) lægger
+standard radios ud (`-layout-columns`/`-inline` flyder dem i en række); `-variant-toggle` forbinder
+child `.instui-radio.-variant-toggle` knapperne til et enkelt segmenteret kontrol (sammenklemte borders,
+afrundede ydre ender):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +347,38 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**Messages** — `.instui-form-field-messages` er containeren; hver `.instui-form-field-message` tager en
+`-type-*`: `-type-hint` (grå, default), `-type-error` (rød tekst + en circle-alert glyph), `-type-success`
+(grøn tekst + en circle-check glyph), og `-type-screenreader-only` (visuelt klippet, stadig annonceret).
+Glyphs males i `currentColor`, så de altid matcher message-farven. `-type-new-error` er et
+forældet alias for `-type-error`. Forbind containeren til kontrollen med `aria-describedby`, og sæt
+`aria-invalid` på kontrollen når der er en fejl.
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+Inde i en FormField følger en `-type-error` besked klient-side validering: den forbliver skjult indtil
+feltets kontrol er `:user-invalid` (naturligt, efter brugerinteraktion) — eller du tvinger den med `-invalid`
+på `.instui-form-field` (for en server-side fejl). En standalone `.instui-form-field-messages` (ikke i
+et felt) er upåvirket. Kontrollens fokus-ring følger samme mønster: danger når `:user-invalid`/`-invalid`,
+success ved `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**Tekstkontroller** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
+resizable), og `.instui-simple-select` (native `<select>` med caret) deler ét udseende og de samme
+stater: `-invalid` (fejl-border), `-success` (succes-border), `-readonly`, native `:disabled`, og
+`-size-{sm,md,lg}`. For et leading/trailing ikon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
+inputtet i `.instui-input-group` og tilføj en `.before`/`.after` slot (en `-icon-*` glyph); `-should-not-wrap`
+holder det på én linje. `.instui-number-input` er den facade plus en `.arrows` +/- spinner-kolonne (native
+`type="number"`; bind knapperne til `stepUp()`/`stepDown()`). `.instui-range-input` er en stylet
+`input[type="range"]` hvis værdi renderes i en `.instui-range-input-value` inverse boble. Til en rich
+combobox med listbox-popover, brug `@instructure/ui` — dette bibliotek dækker de native controls.
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**Styled select dropdown (eksperimentel)** — en opt-in `select.css` opgraderer den _samme_
+`.instui-simple-select` element: den styler den åbnede dropdown (panelet og hver option, med hover og
+selected-states) ved hjælp af CSS Customizable Select-modellen.
 
 > [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> `select.css` afhænger af `appearance: base-select` / `::picker(select)`, hvilket er **eksperimentelt**
+> (Chrome 135+, endnu ikke Baseline). Det leveres som et separat opt-in sheet og hver regel er gated
+> bag `@supports (appearance: base-select)`, så det gør intet i ikke-understøttede browsere — `.instui-simple-select` kontrollen forbliver blot den almindelige native select. Load det kun hvis du ønsker den
+> forbedrede dropdown og accepterer det begrænsede support.
 
 ```ts
 import "@pantoken/components/components.css";

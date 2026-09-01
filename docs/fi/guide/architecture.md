@@ -1,10 +1,10 @@
-# Architecture
+# Arkkitehtuuri
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantokenilla on yksi tehtävä: ratkaista Instructuren design-tokens ja ikonit kerran ja sitten muokata tuota mallia
+jokaiselle kohteelle. Alla olevat kerrokset pitävät tämän muokkauksen rehellisenä ja pitävät julkaistut paketit vapaina
+minkään GitHubille tarkoitetusta upstreamista.
 
-## The layers
+## Kerrokset
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** pitää tyypin sopimukset, eikä mitään muuta. Se on totuuden lähde
+  `Token`-muodolle ja plugin-sopimukselle, täysin ilman riippuvuuksia, joten mikä tahansa paketti voi riippua siitä
+  vapaasti.
+- **`@pantoken/core`** on ainoa paketti, joka koskettaa upstream-lähdettä. Se ratkaisee tokenit ja
+  ikonit kanoniseen IR:ään ja renderöi CSS:n.
+- **`@pantoken/tokens`** toimittaa tuon IR:n staattisena JSON:ina build-aikana. Tämä on irtikytkentäpiste:
+  downstream-paketit lukevat `@pantoken/tokens`, eivät koskaan `@pantoken/core`, joten `npm i pantoken` ei koskaan
+  yletä GitHubille tarkoitetulle upstreamille.
+- **`@pantoken/utils`** kantaa jaetut apurutiinit — `var(--x)`-resolverin, viittaus-regexit,
+  tapa- ja värimuunnokset sekä drift-tarkistukset, jotka pitävät generoiden ulostulon uskollisena IR:lle.
 
-## Why tokens are vendored
+## Miksi tokenit on toimittajakoottu (vendoroitu)
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Upstream-token-paketti sijaitsee GitHubissa, ei npm:ssä. Jos jokainen downstream-paketti riippuisi siitä,
+`npm i pantoken` epäonnistuisi kenellä tahansa ilman pääsyä. Sen sijaan `@pantoken/tokens` ratkaisee
+upstreamin kerran build-aikana ja kirjoittaa tuloksen staattiseen JSON:iin. Julkaistut paketit kantavat tuota
+JSON:ia, joten ne asentuvat puhtaasti npm:stä, pinnaavat semveriin ja toimivat offline-tilassa.
 
 ## Buckets
 
-Each downstream bucket is a way of consuming the IR:
+Jokainen downstream-bucket on tapa hyödyntää IR:ää:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — muuntaa tokenit tiedostoksi (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — framework- ja työkalukytkennät (React, Vue, Svelte, MUI, Pendo ja lisää).
+- **bundlers/** — build-työkalujen plugin- ja preset-integraatiot (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — natiivi- ja sivugeneraattorikohteet (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — payloadit suunnittelutyökaluille (Figma, värinäytteet).
+- **plugins/** — valinnaiset transformaatiot, jotka laajentavat token- tai CSS-ulostuloa. Katso [Plugins](/guide/plugins).
 
-## Generated output
+## Generoitu ulostulo
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
+Jokainen paketti, joka tuottaa tiedoston, kirjoittaa sen per-paketin `generated/`-hakemistoon, jonka build
+uudelleenluo, joten mitään generoituja tiedostoja ei ole commitoitu. Workspace-tehtävä validoi kaiken sen. Katso
 [Generated output](/guide/generated-output).

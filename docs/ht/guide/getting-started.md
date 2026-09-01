@@ -1,47 +1,43 @@
-# Getting started
+# Kòmanse
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken pran token konsepsyon ak ikon Instructure UI yo, rezoud yo yon sèl fwa, epi refòme modèl sa a an pakè pou plizyè platfòm: fichye stil senp, SCSS ak Less, React ak Vue ak Svelte, Tailwind ak Panda, natif Swift ak Kotlin, WordPress ak Drupal, Figma, ak plis ankò.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Enstale pi piti pake ki adapte ak travay ou. Tout bagay tou re-ekspòte pa pake inifye `pantoken`, kidonk ou ka kòmanse la epi rafine pita.
 
-## Scaffold a starter project
+## Kreye yon pwojè demaraj
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+Pi rapid fason pou eseye pantoken: eskafòldyè yon pwojè demaraj ak li deja enstale ak konekte.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Platfòm: `components` (HTML/CSS senp), `react`, `vue`, `svelte`, `web-components`, `angular`. Gade
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) pou `--dir <path>` ak
+itikilasyon pwogramatik.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+W ap itilize yon ajan kodaj AI? Pa bezwen enstalasyon — dirije li sou kapasite a dirèkteman:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Fonksyone menm jan pou Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, ak Amazon Q
+Developer CLI — ranplase `claude` ak `gemini`, `agent`, `codex`, `copilot -p`, oswa `q chat`. Si ou pito konekte règleman ajan pantoken yo nan depo a pèmanan (AGENTS.md, règleman editè, yon kopi lokal
+nan kapasite sa a), kouri `npx @pantoken/ai init` olye.
 
-## The token model
+## Modèl token la
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Token yo se pwopriyete koutim CSS ki rele `--instui-<group>-<name>`, pa egzanp
+`--instui-color-background-brand` oswa `--instui-spacing-space-md`. Twa tèm parèt: `rebrand`
+(defo a, ak `light-dark()` kote limyè ak fènwa diferan), `canvas`, ak `canvasHighContrast`.
+Ikon yo se token `<image>` (`--instui-icon-<name>`) sòti nan Lucide plis glyf koutim
+Instructure yo.
 
-## Style a web app
+## Style yon aplikasyon web
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Enstale fichye stil la epi enpòte li yon sèl fwa. Li defini chak pwopriyete `--instui-*`, kidonk ou ka refere
+yo dirèkteman nan pwòp CSS ou.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +54,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Itilize ikon nenpòt kote
 
-The web component works in any framework, with no porting.
+Konpozan web la mache nan nenpòt kad (framework), san okenn pòte.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +70,10 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### Token CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Ikon yo se pwopriyete koutim CSS (`--instui-icon-<name>`). Chaje fichye stil la yon sèl fwa epi refere nenpòt
+ikon kòm yon `mask-image` oswa `background-image` — pa gen bezwen enpòte pou chak ikon.
 
 ```css
 .my-icon {
@@ -85,10 +81,10 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — yon sèl ikon kont tout ansanm lan
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` ekspoze de ekspòt nonmen. Sèvi ak `iconsByName` pou rale yon ikon san ou pa iterate
+tout tablo a:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +93,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Sèvi ak `icons` lè ou bezwen tout ansanm lan (egzanp pou konstwi yon selector):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +102,32 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+Tou de ekspòt yo chaje IR konplè a nan inisyalizasyon modil la — pa gen tree-shaking sou chak ikon nan
+nivèl sa a. Pou chajman ki lejè sèlman ak CSS, sèvi ak [CDN picker](/guide/cdn-picker) pou jenere yon URL konbine
+pou sèlman ikon ou bezwen yo.
 
-## Generate for a native platform
+## Jenere pou yon platfòm natif
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI a ekri sous token nan yon depo sib. Pa gen okenn enstalasyon depase kouri a:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Gade [pantoken CLI a](/guide/cli) pou chak sib.
 
-## VS Code authoring hints
+## Konsèy otè VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` kounye a voye dosye done koutim VS Code se konsa pwojè konsomatè ka jwenn konplesyon klas ak
+token nan HTML/CSS san yo pa enstale yon ekstansyon espesifik pantoken.
 
-1. Install the unified package:
+1. Enstale pake inifye a:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Pwen VS Code sou JSON done koutim ki voye a soti nan espas travay konsomatè ou:
 
 ```json
 {
@@ -140,14 +136,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Reychaje VS Code (oswa kouri "Developer: Reload Window") pou aplike nouvo done yo.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Sa pèmèt sijesyon pou token klas `instui-*` (ak token klas `-modifier`) ansanm ak
+pwopriyete koutim `--instui-*`.
 
-## Where to next
+## Kote pou ale apre
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [Kat pake yo](/guide/packages) — ki pake pou itilize, selon travay la.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — enstale resous ajan ak règleman nan yon depo konsomatè.
+- [Achitekti](/guide/architecture) — kijan modèl token, nwayo, ak rezilta yo anfòm ansanm.
+- [Referans API](/api/) — chak senbòl ekspòte, jenere soti nan sous la.

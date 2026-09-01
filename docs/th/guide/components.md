@@ -1,31 +1,29 @@
 # Components
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` จัดส่งสไตล์คอมโพเนนต์แบบคลาสที่สร้างจากโทเค็นของ Instructure ให้นำเข้า
+สไตล์ชีตแล้วแท็กมาร์กอัปของคุณ — ไม่ต้องการเฟรมเวิร์ก
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
+> ชอบ custom elements ไหม? `@pantoken/web-components` ห่อสไตล์เดียวกันไว้เป็น `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, และอื่น ๆ — ดูที่
 > [package map](/guide/packages).
 
 ## Conventions
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+ข้อบังคับ CSS ในแพ็กเกจนี้อ้างอิงจากเวอร์ชันที่ปรับแก้ของ [RSCSS](https://ricostacruz.com/rscss/index.html)
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+Modifiers เป็นแบบ **key-value** — `-<prop>-<val>`, จัดแนวตามชื่อ prop ของ InstUI — ดังนั้นอ่านได้ด้วยตัวมันเอง:
+`-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. prop แบบบูลีนคือตัวชื่อ prop เพียงอย่างเดียว ซึ่งการมีอยู่หมายถึง `true` (`-has-shadow`, `-clickable`); บูลีนที่เปิดเป็นค่าเริ่มต้นแล้วปิดจะกลับค่า (`-without-background`, `-without-border`). ขนาดรองรับการสะกดสั้นและยาวทั้งสองแบบ
+(`-size-sm` = `-size-small`). เมื่อชื่อเบี่ยงเบนจาก InstUI คลาสเชิงความหมายของ InstUI ยังคงทำงาน
+แต่ถูกเลิกใช้ (เช่น `-variant-info` → ใช้ `-color-info`).
 
 ### Example
 
-Instructure UI React component:
+คอมโพเนนต์ Instructure UI React:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -51,12 +49,11 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+สำหรับ prop `timeout` ของ InstUI ให้ตั้งค่าคุณสมบัติแบบกำหนดเอง `--timeout` ที่ไม่มีหน่วยเป็นมิลลิวินาทีและโหลด
+การโต้ตอบ Alert ค่าบวกจะกำหนดการปิด; `0` (ค่าเริ่มต้น) จะปล่อยให้ alert อยู่
+เพิ่มคลาส `instui-transition -fade-entered` ของยูทิลิตี้ `transition` สำหรับการเฟดของ InstUI; ไม่ต้องใส่
+ถ้าต้องการลบทันที การโต้ตอบจะขับเคลื่อนสถานะ `-fade-exiting` และยิงเหตุการณ์ `dismiss` ที่ยกเลิกได้และลอยขึ้นก่อนการลบ เพื่อให้แอปสามารถเรียก `preventDefault()` เพื่อเก็บ
+alert ไว้ได้
 
 ```html
 <link
@@ -73,15 +70,13 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+แถบความคืบหน้ารองรับสเกลใด ๆ ผ่าน `--min` (`0` เป็นค่าเริ่มต้น), `--value`, และ `--max`
+(`100` เป็นค่าเริ่มต้น), พร้อมอีลิแอสที่ถูกเลิกใช้ `--value-now` และ `--value-max`. เพิ่ม `-should-animate`
+เพื่อใช้การเปลี่ยนแปลงครึ่งวินาทีของ InstUI เมื่อค่ามีการเปลี่ยนแปลง `.value` นั่งคู่กับ `.bar` ในฐานะ
+ลูกของรูท; เพิ่ม `-render-value-inside` เพื่อเรนเดอร์มันเหนือแทร็ก จัดชิดที่จุดเริ่มต้นของมัน
+แทน (สไตล์ให้อ่านได้กับสีเมตร) ใช้ `<progress>` ดั้งเดิมสำหรับช่วงที่เริ่มที่ศูนย์และ `<meter>` เมื่อค่าต่ำสุดไม่ใช่ศูนย์; web components จะเลือกอัตโนมัติระหว่างพวกมันจากแอตทริบิวต์ `min` ของตน InstUI ไม่มีสถานะ indeterminate ดังนั้น `<progress>`
+ที่ขาดแอตทริบิวต์ `value` เป็นการประมาณการณ์ของ pantoken: `progress-bar` เคลื่อนที่ `.bar` เป็น
+เซกเมนต์เลื่อนและ `progress-circle` หมุนวงแหวนที่มุมคงที่ ทั้งคู่ซ่อน `.value`.
 
 ```html
 <label>
@@ -97,11 +92,11 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+วงกลมความคืบหน้ารองรับสเกลใด ๆ เดียวกันผ่าน `--min`, `--value`, และ `--max`.
+`--value-now` และ `--value-max` ยังคงเป็นอีลิแอสที่ถูกเลิกใช้ในเชิงฟังก์ชัน เพิ่ม `-should-animate` และ
+โหลดแพ็กการโต้ตอบแบบมีโฟกัสเพื่อทำซ้ำแอนิเมชันการเมานต์ของ InstUI; `--animation-delay` เป็น
+ความหน่วงเวลาเป็นมิลลิวินาทีแบบไม่มีหน่วย การสะกดที่ถูกเลิกใช้ `-should-animate-on-mount` และ
+`-shold-animate-on-mount` ยังคงเป็นอีลิแอสที่ทำงานได้
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -119,9 +114,9 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 
 ## Class prefix
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+ทุกคลาสถูกนิมเนมสเปซเป็น `instui-` โดยค่าเริ่มต้น สร้างสไตล์ชีตด้วย prefix ของคุณเอง — หรือไม่มีเลย — โดย
+ส่ง `prefix` ให้กับตัวสร้างใด ๆ ค่า falsy ใด ๆ (`null`, `undefined`, `""`, หรือการเว้นมัน) จะเอา
+prefix ออกทั้งหมด ดังนั้นคุณสามารถเขียน `class="heading -level-h1"` แทน `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,29 +125,27 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+ตัวแก้แบบมีขีดหน้าด้วย dash (`.-color-secondary`, `.-level-h1`) จะไม่เปลี่ยนไม่ว่าจะอย่างไร สไตล์ชีตที่จัดส่งโดยแพ็กเกจจะเก็บ prefix `instui` ไว้
 
 ## Base
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+`base.css` เป็นรีเซ็ตแบบ opt-in ที่ตั้งค่าเริ่มต้นเอกสารระดับโลกจากโทเค็น: `box-sizing`, รีเซ็ต `body`,
+พื้นผิวเพจ, สีข้อความและฟอนต์ฐาน, `color-scheme` (ดังนั้น `light-dark()` โทเค็น
+และคอนโทรลเนทีฟจะติดตามธีม), และลิงก์ฐาน โหลดมันครั้งเดียว ก่อนแผ่นคอมโพเนนต์และโปรสชีต
+เมื่อ pantoken ครอบงำหน้า
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+ข้ามมันเมื่อต้องฝังคอมโพเนนต์เข้าไปในโฮสต์ที่จัดธีม `html` และ `body` ของตัวเองแล้ว —
+รีเซ็ตจะทาสีพื้นผิวเพจ ดังนั้นคุณไม่ต้องการให้มันต่อสู้กับโฮสต์ ทุกอย่างที่มันตั้งใช้นั้นใช้
+ตัวเลือกตัวเลือก `:where()` ที่มีความจำเพาะต่ำ ดังนั้นกฎของคุณชนะเสมอ
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+`base.css` _ใช้_ ฟอนต์แบรนด์ (`font-family: var(--instui-font-family-base)`, พร้อม fallback ระบบ);
+เพื่อ _โหลด_ มัน ให้ import `fonts.css` แบบ opt-in — `@font-face` กฎสำหรับ Atkinson Hyperlegible
+Next ชี้ไปที่ woff2s ที่จัดส่งในแพ็กเกจ แยกไว้เพราะฟอนต์มีขนาด ~350 kB และการโฮสต์ฟอนต์ด้วยตนเองเป็นการตัดสินใจโดยจงใจ
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
@@ -161,31 +154,31 @@ import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next
 
 ## Screen reader content
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>มีข้อความที่ซ่อนอยู่หลังประโยคนี้.<span class="instui-screen-reader-content">มีแต่ screen reader เท่านั้นที่จะประกาศ</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+`.instui-screen-reader-content` ซ่อนองค์ประกอบทางสายตาในขณะที่เก็บไว้ใน accessibility tree
+— สำหรับป้ายชื่อและข้อความสถานะที่เทคโนโลยีช่วยเหลือควรอ่านแต่การออกแบบไม่ควรแสดง
 
 ## Utilities
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+`utilities.css` เป็นเลเยอร์ opt-in ของคลาสข้ามตัด: พร็ิมิทีฟ `View`, ระยะห่างบนสเกลโทเค็น,
+และการแทนสีเชิงความหมาย แตกต่างจากคลาส `-modifier` ของคอมโพเนนต์ ยูทิลิตี้เหล่านี้ใช้ **double
+dash** (`--mod`) ดังนั้นจะไม่ชนกับชื่อ modifier ของคอมโพเนนต์ และสามารถนำไปใช้กับองค์ประกอบใด ๆ
+เปล่า ๆ หรือประสมเข้ากับคอมโพเนนต์ได้
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">พื้นผิว accent-blue พร้อมข้อความบนสี</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">จัดกึ่งกลางด้วย mx-auto</span>
 </div>
 
 ```html
@@ -193,35 +186,31 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` คือ `View` ของ InstUI. มันคือฐานที่คุณวางระยะห่างและสีลงไป และมัน
+มี modifiers แบบ key-value สำหรับ props ทางสายตาของตัวเองเพื่อให้คุณไม่ต้องพึ่งยูทิลิตี้:
+`-background-*` (พื้นผิวของมัน), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, และ `-cursor-*` — เหล่านี้เป็น modifiers แบบ single-dash ของ `view` เอง
+ไม่เกี่ยวกับ double-dash ยูทิลิตี้ด้านล่าง ค่า free-value props
+(ความกว้าง/ความสูง/ตำแหน่ง) อยู่ใน inline styles; `margin`/`padding` ใช้ยูทิลิตี้ระยะห่าง
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**Spacing** — คลาสต่อด้านบนสเกลระยะ อ่านเป็น `{m|p}{side}-{step}`: `m` สำหรับ
+margin หรือ `p` สำหรับ padding (หรือตัวคำเต็ม `margin`/`padding`), ด้านตรรกะทางเลือก, แล้วตามด้วย
+ขั้น ดังนั้น `.--m-lg` และ `.--margin-lg` เหมือนกัน เช่นเดียวกับ `.--pt-md` และ `.--paddingt-md`.
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- ด้าน: none (ทั้งหมด), `t`/`b` (จุดเริ่ม/สิ้นสุดบล็อก), `s`/`e` (จุดเริ่ม/สิ้นสุดอินไลน์), `x`/`y` (แกนอินไลน์/บล็อก). ด้านตรรกะยังถูกต้องในเค้าโครงขวา-ไป-ซ้าย
+- ขั้น: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, บวก `auto` สำหรับ margin เท่านั้น
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
+ประกอบพวกมันเป็นทางย่อ `margin="small auto large"` ของ InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**Color** — การแทนสีเชิงความหมายที่ยังคงอยู่บนพาเลต: `.--bg-<name>` (พื้นหลัง),
+`.--text-<name>` (สีข้อความ), และ `.--border-<name>` (สีเส้นขอบ). แต่ละ `<name>` เป็น
+โทเค็นสีเชิงความหมาย — เจตนา (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) บวกพาเลต `accent-*` (`accent-blue`, `accent-green`, และอื่น ๆ). ชื่อมีอยู่ก็ต่อเมื่อโทเค็นมีในครอบครัวนั้น ดังนั้น `text-brand` ไม่ใช่คลาส — ข้อความไม่มีโทเค็นแบรนด์
+ไม่มีวิธีเข้าถึง primitive หรือตัวเลข hex แบบอิสระ และการแทนแต่ละครั้งปฏิบัติตามธีม
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**Token families** — แต่ละครอบครัว "หนึ่งโทเค็น หนึ่งคุณสมบัติ" จะมีคลาสต่อโทเค็น ชื่อเรียงตามโทเค็น ประกอบได้อย่างอิสระ:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +218,27 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost` (และ `-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+แต่ละอันตั้งค่าคุณสมบัติเดียวของมัน ดังนั้น `border-width`/`border-radius` ต้องการสี `border-*` และสไตล์ขอบจริง ๆ เพื่อวาดเส้นขอบ พวกนี้ใช้ชื่อโทเค็นเต็ม (`.--border-radius-md`), ในขณะที่ helper สีและระยะข้างต้นใช้ตัวย่อ (`.--bg-brand`, `.--mt-lg`) — ตัวย่อเพื่อความสะดวก; คลาสโทเค็นเป็นตัวอักษรและครอบคลุมทั้งหมด
 
 **Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+`none`) และ `.--text-align-<value>` (`start`, `center`, `end`, `justify`) ครอบคลุม props ข้ามตัดของ InstUI
+เช่น `display` และ `textAlign` (View, Button, Metric, Tabs, …) เป็นคลาสที่ประกอบได้ —
+ดังนั้นพวกนั้นไม่ใช่ modifiers ต่อคอมโพเนนต์
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+ทุกคลาส double-dash จะชนะ cascade อย่างแน่นอนเหนือ modifier แบบ single-dash ที่มีชื่อเดียวกัน โดยไม่คำนึงถึงลำดับการนำเข้า stylesheet — ดู [Authoring conventions](/conventions/authoring)
+สำหรับกลไก
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+ทุกอย่างที่นี่ขับเคลื่อนด้วย CSS บริสุทธิ์จากโทเค็น `--instui-*`, ดังนั้นมันจะติดตาม InstUI ผ่านชั้นโทเค็น ดู [API reference](/api/) สำหรับ `componentsCss` และตัวสร้างต่อคอมโพเนนต์
 
 ## Overlays: dialog and popover
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
-JavaScript.
+คอมโพเนนต์ overlay ใช้ primitives แพลตฟอร์มเนทีฟ ดังนั้นพวกมันทำงานแบบเข้าถึงได้ด้วย JavaScript น้อยหรือไม่ต้องใช้เลย
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — ใส่ `.instui-modal` บน `<dialog>` เนทีฟ มันจะได้ focus trapping, `Esc`-เพื่อปิด, และ
+`::backdrop` ฟรี; backdrop ถูกทำให้มืดด้วยโทเค็น `--instui-component-mask-background-color`
+เดียวกับ `.instui-mask` (เพิ่ม `-blur` เพื่อทำให้เป็นฝ้า) เปิดและปิดด้วยคำสั่ง invoker — ไม่มีสคริปต์:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +251,20 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**Context view / popover** — ใส่ `.instui-context-view` บนองค์ประกอบ `[popover]` และสลับด้วย
+`popovertarget`. มันนั่งที่ชั้นบนสุดและปิดเบา ๆ เมื่อคลิกนอกหรือ `Esc`, อีกครั้งไม่มีสคริปต์:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**Drawer layout** — ใส่ `.instui-drawer-layout` บนรูทเลย์เอาต์ที่มีเด็ก `.tray` และ `.content`
+เพิ่มแอตทริบิวต์ `open` (หรือ `-open`) เพื่อเผยให้เห็นถาด และใช้ `placement="end"`
+(หรือ `-placement-end`) เพื่อติดมันที่ด้าน inline-end — การจัดวางจะตัดสินผ่านคุณสมบัติตรรกะ `inset-inline-*`/`flex-direction`, ดังนั้นมันจะพลิกโดยอัตโนมัติภายใต้ `dir="rtl"` โดยไม่ต้องมี
+กฎพิเศษ ชุดการโต้ตอบแบบมีโฟกัสเพิ่มการส่งต่อคำสั่ง Invoker และสลับโหมด overlay
+(`should-overlay-tray`) เมื่อความกว้างข้าม `--drawer-layout-min-width` (ค่าเริ่มต้น
+`--instui-breakpoints-sm`, แล้ว `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +275,20 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — `.instui-mask` อยู่สำหรับ overlays แบบ in-flow (สปินเนอร์เหนือการ์ด); `::backdrop`
+ของ modal ครอบคลุมกรณี modal
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
-native popover).
+ทั้งสองรูปแบบยังถูกห่อเป็น custom elements เชิงพฤติกรรมใน `@pantoken/web-components`:
+`<instui-modal open>` (a `<dialog>` ขับเคลื่อนโดยแอตทริบิวต์ `open`) และ `<instui-context-view>` (popover เนทีฟ)
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+การรองรับเบราว์เซอร์: popover API และ `popovertarget` เป็น Baseline 2024; คำสั่ง invoker
+(`command`/`commandfor`) เป็น Baseline 2025 ดังนั้นบนเบราว์เซอร์เก่ากว่าให้เชื่อมปุ่มกับ `dialog.showModal()`
+เป็น fallback บรรทัดเดียว การจัดตำแหน่ง popover ข้างทริกเกอร์ใช้การกำหนดตำแหน่ง anchor CSS เมื่อรองรับ (Chromium); ในที่อื่นมันจะจัดกึ่งกลางในชั้นบน
 
 ## Forms
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` เป็น wrapper CSS-Grid ที่จัดวางป้ายชื่อ คอนโทรล และข้อความใด ๆ
+ใส่มันบน `<label>` เพื่อให้ป้ายชื่อเชื่อมกับคอนโทรลโดยเนทีฟ มันมีสามกริดพื้นที่ — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +300,21 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+`-layout-stacked` (ค่าเริ่มต้น) ซ้อนพื้นที่; `-layout-inline` วางป้ายข้างคอนโทรล (จูนด้วย `-label-align-{start,end}` และ `-v-align-{top,middle,bottom}`). `-readonly` เปลี่ยนสีป้าย
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+ดอกจัน **required** ปรากฏเมื่อฟิลด์ถูกระบุว่าจำเป็นโดย _ทั้ง_ คลาส `-required` _หรือ_ คอนโทรลเนทีฟ `required` ภายใน — ดังนั้นคุณสามารถตั้ง `required` บน input และเครื่องหมายจะแสดง
+มันเป็นเชิงตกแต่ง (เป็น `::after` บนป้าย ช่วงอยู่นอก accessibility tree); จับคู่กับบันทึกเช่น
+"ฟิลด์ที่ถูกทำเครื่องหมาย \* จำเป็น" เว้นแต่ฟอร์มจะชัดเจนในตัวเอง
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — `.instui-form-field-group` จัดกลุ่มฟิลด์ที่เกี่ยวข้องใน `<fieldset>` พร้อมคำอธิบาย `<legend>`. มันเป็นเพียงเลย์เอาต์ (ไม่มีโทเค็นเฉพาะ): ค่าเริ่มต้นจะซ้อนฟิลด์;
+`-layout-columns` / `-layout-inline` ทำให้พวกมันเป็นคอลัมน์แบบตอบสนอง, พร้อม `-row-spacing-*` /
+`-col-spacing-*` และ `-v-align-*` เพื่อปรับตาราง
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — `.instui-radio-input-group` คือการจัดกลุ่ม `<fieldset>`/`<legend>` เดียวกัน,
+เฉพาะสำหรับวิทยุ เพราะวิทยุลูกแชร์ `name` เลือกจึงเป็นแบบตัวเลือกเดียวโดยเนทีฟ —
+ดังนั้นชุดปุ่มสลับจะทำงานเหมือนคอนโทรลเดียว ไม่ใช่ปุ่มกระจัดกระจาย `-variant-simple` (ค่าเริ่มต้น) วาง
+วิทยุมาตรฐาน (`-layout-columns`/`-inline` ทำให้พวกมันเป็นแถว); `-variant-toggle` เชื่อมต่อ
+ปุ่ม `.instui-radio.-variant-toggle` ลูกเป็น segmented control เดียว (ขอบย่อ ขอบกลมด้านนอก):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +327,30 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**Messages** — `.instui-form-field-messages` คือคอนเทนเนอร์; แต่ละ `.instui-form-field-message` รับ `-type-*`: `-type-hint` (เทา ค่าเริ่มต้น), `-type-error` (ข้อความแดง + glyph วงกลม-เตือน), `-type-success`
+(ข้อความเขียว + glyph วงกลม-เช็ค), และ `-type-screenreader-only` (ถูกตัดทางสายตา ยังคงประกาศ) Glyphs จะทาสีใน `currentColor`, ดังนั้นพวกมันจะตรงกับสีข้อความเสมอ `-type-new-error` เป็นอีลิแอสที่ถูกเลิกใช้ของ `-type-error`. เชื่อมภาชนะกับคอนโทรลด้วย `aria-describedby`, และตั้ง
+`aria-invalid` บนคอนโทรลเมื่อมีข้อผิดพลาด
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+ภายใน FormField, ข้อความ `-type-error` จะตามการตรวจสอบฝั่งไคลเอ็นต์: มันซ่อนจนกว่าคอนโทรลของฟิลด์จะ `:user-invalid` (เนทีฟ หลังผู้ใช้โต้ตอบ) — หรือคุณบังคับมันด้วย `-invalid`
+บน `.instui-form-field` (สำหรับข้อผิดพลาดฝั่งเซิร์ฟเวอร์). `.instui-form-field-messages` แบบสแตนด์อโลน (ไม่อยู่ใน
+ฟิลด์) จะไม่ถูกกระทบ วงแหวนโฟกัสของคอนโทรลตาม: อันตรายเมื่อ `:user-invalid`/`-invalid`,
+สำเร็จเมื่อ `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**Text controls** — `.instui-text-input` (เนทีฟ `<input>`), `.instui-text-area` (เนทีฟ `<textarea>`,
+ปรับขนาดได้), และ `.instui-simple-select` (เนทีฟ `<select>` พร้อม caret) แบ่งปันรูปลักษณ์เดียวกันและสถานะเดียวกัน: `-invalid` (ขอบข้อผิดพลาด), `-success` (ขอบความสำเร็จ), `-readonly`, เนทีฟ `:disabled`, และ
+`-size-{sm,md,lg}`. สำหรับไอคอนนำ/ตาม (ของ InstUI `renderBeforeInput`/`renderAfterInput`), ห่อ
+input ใน `.instui-input-group` และเพิ่ม slot `.before`/`.after` (glyph `-icon-*`); `-should-not-wrap`
+เก็บมันให้อยู่บรรทัดเดียว `.instui-number-input` คือ facade นั้นบวกคอลัมน์ spinner +/- `.arrows` (neative
+`type="number"`; เชื่อมปุ่มกับ `stepUp()`/`stepDown()`). `.instui-range-input` เป็น `input[type="range"]` ที่มีสไตล์ซึ่งค่าจะแสดงใน `.instui-range-input-value` bubble กลับด้าน สำหรับ combobox แบบริชที่มี listbox popover ให้เลือก `@instructure/ui` — ไลบรารีนี้ครอบคลุมคอนโทรลเนทีฟ
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**Styled select dropdown (experimental)** — `select.css` แบบ opt-in อัปเกรด _same_
+องค์ประกอบ `.instui-simple-select`: มันสไตล์ dropdown ที่เปิด (พาเนลและแต่ละออปชัน กับสถานะ hover และ selected) โดยใช้โมเดล CSS Customizable Select
 
 > [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> `select.css` พึ่งพา `appearance: base-select` / `::picker(select)`, ซึ่งเป็น **ทดลอง**
+> (Chrome 135+, ยังไม่เป็น Baseline). มันถูกจัดส่งเป็นแผ่นแยกและทุกกฎถูกกั้น
+> ข้างหลัง `@supports (appearance: base-select)`, ดังนั้นจะไม่มีผลในเบราว์เซอร์ที่ไม่รองรับ — คอนโทรล `.instui-simple-select` จะยังคงเป็น select เนทีฟปกติ โหลดมันเฉพาะเมื่อคุณต้องการ
+> dropdown ที่ปรับปรุงและยอมรับการรองรับที่จำกัด
 
 ```ts
 import "@pantoken/components/components.css";

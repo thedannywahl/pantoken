@@ -1,10 +1,8 @@
-# Architecture
+# Αρχιτεκτονική
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+το pantoken έχει ένα έργο: να επιλύει τα design tokens και τα εικονίδια της Instructure μία φορά, και στη συνέχεια να αναδιαμορφώνει αυτό το μοντέλο για κάθε προορισμό. Τα παρακάτω στρώματα διατηρούν αυτήν την αναδιαμόρφωση αξιόπιστη και κρατούν τα δημοσιευμένα πακέτα απαλλαγμένα από οποιοδήποτε GitHub-only upstream.
 
-## The layers
+## Τα στρώματα
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** περιέχει τα συμβόλαια τύπων, και τίποτε άλλο. Είναι η πηγή της αλήθειας για το σχήμα `Token` και το συμβόλαιο των plugin, με μηδενικές εξαρτήσεις, ώστε οποιοδήποτε πακέτο να μπορεί να εξαρτάται από αυτό απρόσκοπτα.
+- **`@pantoken/core`** είναι το μοναδικό πακέτο που αγγίζει την upstream πηγή. Επιλύει tokens και εικονίδια στην κανονική IR και αποδίδει CSS.
+- **`@pantoken/tokens`** προμηθεύει (vendors) εκείνη την IR ως στατικό JSON κατά το χρόνο build. Αυτό είναι το σημείο αποσύνδεσης: τα downstream πακέτα διαβάζουν `@pantoken/tokens`, ποτέ `@pantoken/core`, οπότε `npm i pantoken` δεν φτάνει ποτέ την GitHub-only upstream.
+- **`@pantoken/utils`** μεταφέρει τους κοινόχρηστους βοηθητικούς — τον resolver `var(--x)`, τα regex για αναφορές, τη μετατροπή πεζών/κεφαλαίων και χρωμάτων, και τους ελέγχους drift που κρατούν την παραγόμενη έξοδο πιστή στην IR.
 
-## Why tokens are vendored
+## Γιατί τα tokens προμηθεύονται ως vendor
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Το upstream πακέτο tokens φιλοξενείται στο GitHub, όχι στο npm. Αν κάθε downstream πακέτο εξαρτιόταν από αυτό, `npm i pantoken` θα απέτυχε για οποιονδήποτε χωρίς εκείνη την πρόσβαση. Αντίθετα, `@pantoken/tokens` επιλύει το upstream μία φορά κατά το χρόνο build και γράφει το αποτέλεσμα σε στατικό JSON. Τα δημοσιευμένα πακέτα φέρουν αυτό το JSON, οπότε εγκαθίστανται καθαρά από το npm, κλειδώνουν σε semver, και δουλεύουν offline.
 
-## Buckets
+## Κάδοι (Buckets)
 
-Each downstream bucket is a way of consuming the IR:
+Κάθε downstream κάδος είναι ένας τρόπος κατανάλωσης της IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — μετατρέπει τα tokens σε αρχείο (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — ενσωματώσεις framework και εργαλείων (React, Vue, Svelte, MUI, Pendo, και άλλα).
+- **bundlers/** — plugin και presets για εργαλεία build (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — native και site-generator προορισμοί (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — payloads για εργαλεία σχεδίασης (Figma, color swatches).
+- **plugins/** — προαιρετικοί μετασχηματισμοί που επεκτείνουν τα tokens ή την έξοδο CSS. Δείτε [Plugins](/guide/plugins).
 
-## Generated output
+## Παραγόμενη έξοδος
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Κάθε πακέτο που εκδίδει ένα αρχείο το γράφει σε έναν ανά-πακέτο κατάλογο `generated/` που αναπαράγει μια διαδικασία build, έτσι τίποτε παραγόμενο δεν δεσμεύεται στο repo. Ένα workspace task επικυρώνει όλο αυτό. Δείτε [Generated output](/guide/generated-output).

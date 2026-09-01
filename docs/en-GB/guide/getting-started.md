@@ -4,12 +4,12 @@ pantoken takes Instructure UI's design tokens and icons, resolves them once, and
 model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
+You install the smallest package that suits your task. Everything is also re-exported by the unified
 `pantoken` package, so you can start there and narrow down later.
 
 ## Scaffold a starter project
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+The quickest way to try pantoken: scaffold a starter project with it already installed and wired in.
 
 ```sh
 npx create-pantoken-app react
@@ -19,10 +19,10 @@ Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-compone
 [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
 programmatic use.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+Using an AI coding agent? No installation required — point it at the skill directly:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
 Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q

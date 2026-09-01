@@ -1,10 +1,10 @@
-# Architecture
+# สถาปัตยกรรม
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken มีหน้าที่เดียว: แปลงโทเค็นการออกแบบและไอคอนของ Instructure หนึ่งครั้ง แล้วปรับรูปแบบโมเดลนั้น
+ให้เหมาะกับแต่ละเป้าหมาย ชั้นด้านล่างช่วยให้การปรับรูปแบบนั้นถูกต้องและรักษาให้แพ็กเกจที่เผยแพร่ปราศจาก
+ขึ้นต้นทางที่เข้าถึงได้เฉพาะบน GitHub
 
-## The layers
+## ชั้นต่างๆ
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** จัดเก็บสัญญาประเภท (type contracts) เท่านั้น และไม่มีอย่างอื่น มันเป็นแหล่งความจริงสำหรับ
+  รูปร่างของ `Token` และสัญญาของปลั๊กอิน โดยไม่มีการพึ่งพาใด ๆ จึงทำให้แพ็กเกจใด ๆ สามารถพึ่งพามันได้
+  อย่างเสรี
+- **`@pantoken/core`** เป็นแพ็กเกจเดียวที่สัมผัสกับแหล่งข้อมูลต้นทาง มันแก้ไขโทเค็นและ
+  ไอคอนเป็น IR แบบ canonical และเรนเดอร์เป็น CSS
+- **`@pantoken/tokens`** จัดเตรียม IR นั้นเป็น JSON คงที่ในเวลาสร้าง นี่คือจุดแยกการถอดคู่:
+  แพ็กเกจปลายน้ำอ่าน `@pantoken/tokens` ไม่ใช่ `@pantoken/core` ดังนั้น `npm i pantoken` จะไม่เคย
+  เข้าถึงแหล่งที่มาที่มีเฉพาะบน GitHub
+- **`@pantoken/utils`** ถือฮีลเปอร์ที่ใช้ร่วม — ตัวแก้ไข `var(--x)` , regex อ้างอิง,
+  การแปลงตัวพิมพ์และสี และการตรวจสอบ drift ที่ทำให้เอาต์พุตที่สร้างขึ้นซื่อสัตย์ต่อ IR
 
-## Why tokens are vendored
+## เหตุผลที่โทเค็นถูกเวนเดอร์
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+แพ็กเกจโทเค็นต้นทางอยู่บน GitHub ไม่ใช่ npm หากแพ็กเกจปลายน้ำทุกตัวพึ่งพามัน,
+`npm i pantoken` จะล้มเหลวสำหรับผู้ใดก็ตามที่ไม่มีการเข้าถึงนั้น แทนที่จะเป็นเช่นนั้น `@pantoken/tokens` แก้ไข
+ต้นทางเพียงครั้งเดียวในเวลาสร้างและเขียนผลลัพธ์เป็น JSON คงที่ แพ็กเกจที่เผยแพร่จึงพก
+JSON นั้นไปด้วย ทำให้ติดตั้งได้สะอาดจาก npm ยึดตาม semver และทำงานแบบออฟไลน์ได้
 
-## Buckets
+## บัคเก็ต
 
-Each downstream bucket is a way of consuming the IR:
+แต่ละบัคเก็ตปลายน้ำเป็นวิธีการบริโภค IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — เปลี่ยนโทเค็นเป็นไฟล์ (CSS, SCSS, Less, Stylus, DTCG)
+- **renderers/** — การรวมกับเฟรมเวิร์กและเครื่องมือ (React, Vue, Svelte, MUI, Pendo, และอื่น ๆ)
+- **bundlers/** — ปลั๊กอินและพรีเซ็ตของเครื่องมือสร้าง (Vite, Next, Tailwind, Panda, PostCSS, webpack)
+- **platforms/** — เป้าหมาย native และตัวสร้างไซต์ (Swift, Kotlin, Rust, WordPress, Drupal)
+- **design/** — เพย์โหลดสำหรับเครื่องมือออกแบบ (Figma, color swatches)
+- **plugins/** — การแปลงทางเลือกที่ขยายผลลัพธ์โทเค็นหรือ CSS ดู [Plugins](/guide/plugins)
 
-## Generated output
+## ผลลัพธ์ที่สร้างขึ้น
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+ทุกแพ็กเกจที่สร้างไฟล์จะเขียนไฟล์ไปยังไดเรกทอรี `generated/` ต่อแพ็กเกจที่กระบวนการสร้าง
+ทำซ้ำได้ ดังนั้นสิ่งที่สร้างขึ้นจะไม่ถูกคอมมิต งานของ workspace จะตรวจสอบความถูกต้องทั้งหมด ดู
+[Generated output](/guide/generated-output)

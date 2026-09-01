@@ -1,47 +1,34 @@
-# Getting started
+# เริ่มต้น
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken รับโทเค็นการออกแบบและไอคอนของ Instructure UI คำนวณและปรับรูปแบบโมเดลเดียวกันนั้นใหม่เป็นแพ็กเกจสำหรับหลายแพลตฟอร์ม: แผ่นสไตล์ธรรมดา, SCSS และ Less, React และ Vue และ Svelte, Tailwind และ Panda, native Swift และ Kotlin, WordPress และ Drupal, Figma, และอื่นๆ
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+ติดตั้งแพ็กเกจที่เล็กที่สุดที่ตรงกับงานของคุณ ทุกอย่างยังถูก re-export โดยแพ็กเกจรวม `pantoken` ดังนั้นสามารถเริ่มที่นั่นแล้วค่อยจำกัดลงภายหลัง
 
-## Scaffold a starter project
+## สร้างโครงงานเริ่มต้น
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+วิธีที่เร็วที่สุดในการลองใช้ pantoken: สร้างโครงงานเริ่มต้นที่ติดตั้งและเชื่อมต่อไว้แล้ว
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+แพลตฟอร์ม: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. ดู [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) สำหรับ `--dir <path>` และการใช้งานเชิงโปรแกรม
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+ใช้เอเย่นต์เขียนโค้ดด้วย AI อยู่หรือไม่? ไม่ต้องติดตั้ง — ชี้ให้มันไปที่สกิลโดยตรง:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+ทำงานแบบเดียวกันสำหรับ Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, และ Amazon Q Developer CLI — แทนที่ `claude` ด้วย `gemini`, `agent`, `codex`, `copilot -p`, หรือ `q chat`. หากต้องการเชื่อมกฎเอเย่นต์ของ pantoken เข้ากับรีโปอย่างถาวร (AGENTS.md, กฎของ editor, สำเนาท้องถิ่นของสกิลนี้) ให้รัน `npx @pantoken/ai init` แทน
 
-## The token model
+## โมเดลโทเค็น
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+โทเค็นเป็นคุณสมบัติ CSS แบบกำหนดเองที่มีชื่อ `--instui-<group>-<name>` เช่น `--instui-color-background-brand` หรือ `--instui-spacing-space-md`. มีธีมสามชุด: `rebrand` (ค่าเริ่มต้น, พร้อม `light-dark()` เมื่อ light และ dark แตกต่างกัน), `canvas`, และ `canvasHighContrast`. ไอคอนเป็นโทเค็น `<image>` (`--instui-icon-<name>`) ที่ได้จาก Lucide บวกกับสัญลักษณ์ที่กำหนดเองของ Instructure
 
-## Style a web app
+## ตกแต่งเว็บแอป
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+ติดตั้งสไตล์ชีทแล้วนำเข้าเพียงครั้งเดียว มันกำหนดคุณสมบัติ `--instui-*` ทุกตัว ดังนั้นจึงอ้างอิงจาก CSS ของคุณโดยตรงได้
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +45,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## ใช้ไอคอนไปที่ไหนก็ได้
 
-The web component works in any framework, with no porting.
+เว็บคอมโพเนนต์ทำงานได้ในทุกเฟรมเวิร์ก โดยไม่ต้องพอร์ต
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### โทเค็น CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+ไอคอนเป็นคุณสมบัติ CSS แบบกำหนดเอง (`--instui-icon-<name>`). โหลดสไตล์ชีทครั้งเดียวและอ้างอิงไอคอนใดก็ได้เป็น `mask-image` หรือ `background-image` — ไม่ต้องนำเข้าแยกต่อไอคอน
 
 ```css
 .my-icon {
@@ -85,10 +71,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — ไอคอนเดี่ยวเทียบกับชุดทั้งหมด
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` เปิดเผยการส่งออกชื่อสองตัว ใช้ `iconsByName` เพื่อดึงไอคอนตัวเดียวโดยไม่ต้องวนผ่านอาเรย์ทั้งหมด:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+ใช้ `icons` เมื่อคุณต้องการชุดทั้งหมด (เช่น เพื่อสร้างตัวเลือก):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+ทั้งสองการส่งออกโหลด IR ทั้งหมดตอนเริ่มโมดูล — ไม่มีการ tree-shaking ต่อไอคอนในระดับนี้ สำหรับการโหลดเฉพาะ CSS ที่บางเบา ให้ใช้ [CDN picker](/guide/cdn-picker) เพื่อสร้าง URL รวมสำหรับเฉพาะไอคอนที่คุณต้องการ
 
-## Generate for a native platform
+## สร้างสำหรับแพลตฟอร์มเนทีฟ
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI เขียนแหล่งโทเค็นลงในรีโปเป้าหมาย ไม่ต้องติดตั้งนอกจาก runner:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+ดู [the pantoken CLI](/guide/cli) สำหรับทุกเป้าหมาย
 
-## VS Code authoring hints
+## เคล็ดลับการเขียนใน VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` ตอนนี้มาพร้อมไฟล์ custom-data ของ VS Code เพื่อให้โปรเจ็กต์ผู้บริโภคได้รับการเติมข้อความอัตโนมัติสำหรับคลาสและโทเค็นใน HTML/CSS โดยไม่ต้องติดตั้งส่วนขยายเฉพาะ pantoken
 
-1. Install the unified package:
+1. ติดตั้งแพ็กเกจรวม:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. ชี้ VS Code ไปที่ไฟล์ custom-data JSON ที่มาพร้อมจาก workspace ผู้บริโภคของคุณ:
 
 ```json
 {
@@ -140,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. รีโหลด VS Code (หรือรัน "Developer: Reload Window") เพื่อใช้ข้อมูลใหม่
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+สิ่งนี้เปิดใช้งานคำแนะนำสำหรับโทเค็นคลาส `instui-*` (และโทเค็นคลาส `-modifier`) พร้อมกับคุณสมบัติแบบกำหนดเอง `--instui-*`
 
-## Where to next
+## ไปที่ไหนต่อ
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [แผนผังแพ็กเกจ](/guide/packages) — เลือกแพ็กเกจที่ควรใช้ตามงาน
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ติดตั้งแอสเซ็ตและกฎของเอเย่นต์ในรีโปผู้บริโภค
+- [สถาปัตยกรรม](/guide/architecture) — วิธีที่โมเดลโทเค็น, core, และเอาต์พุตเชื่อมต่อกัน
+- [เอกสารอ้างอิง API](/api/) — ทุกสัญลักษณ์ที่ส่งออก สร้างจากซอร์ส

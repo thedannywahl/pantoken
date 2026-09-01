@@ -1,10 +1,8 @@
-# Architecture
+# Pensaernïaeth
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+Mae gan pantoken un swydd: datrys tokenau a eiconau dylunio Instructure unwaith, yna ail-lunio’r model hwnnw ar gyfer pob targed. Mae’r haenau isod yn cadw’r ail-lunio hwnnw’n onest ac yn sicrhau nad yw’r pecynnau cyhoeddedig yn ddibynnol ar unrhyw ffynhonnell GitHub-yn-unig.
 
-## The layers
+## Y haenau
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,33 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** yn dal y cytundebau math, dim byd arall. Dyma ffynhonnell y gwir ar gyfer siâp `Token` a’r cytundeb plugin, heb ddibyniaethau, felly gall unrhyw becyn ddibynnu arni’n rhydd.
+- **`@pantoken/core`** yw’r unig becyn sy’n eich cysylltu â’r ffynhonnell upstream. Mae’n datrys tokenau ac eiconau i’r IR canonig ac yn rendro CSS.
+- **`@pantoken/tokens`** yn vendorio’r IR hwnnw fel JSON statig yn ystod y broses adeiladu. Dyma bwynt datgysylltu: mae pecynnau lawr afon yn darllen `@pantoken/tokens`, nid `@pantoken/core`, felly `npm i pantoken` byth
+  yn cyrraedd am y ffynhonnell GitHub-yn-unig.
+- **`@pantoken/utils`** yn cario’r cymorth rhannol — yr `var(--x)` resolver, y regexau cyfeiriad, trosi achos a lliw,
+  a’r gwiriadau drifft sy’n cadw’r allbwn a gynhyrchir yn ffyddlon i’r IR.
 
-## Why tokens are vendored
+## Pam mae tokenau yn cael eu vendorio
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Mae’r pecyn tokenau upstream yn byw ar GitHub, nid yn npm. Pe bai pob pecyn lawr afon yn ddibynnol arno,
+byddai `npm i pantoken` yn methu i unrhyw un heb y mynediad hwnnw. Yn hytrach mae `@pantoken/tokens` yn datrys y
+ffynhonnell unwaith yn ystod y broses adeiladu ac yn ysgrifennu’r canlyniad i JSON statig. Mae’r pecynnau cyhoeddedig yn cario’r
+JSON hwnnw, felly maent yn gosod yn lan o npm, yn cloi ar semver, ac yn gweithio i ffwrdd o’r rhyngrwyd.
 
-## Buckets
+## Adrannau
 
-Each downstream bucket is a way of consuming the IR:
+Mae pob blwch lawr afon yn ffordd o ddefnyddio’r IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — troi’r tokenau yn ffeil (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — integreiddiadau fframwaith a offer (React, Vue, Svelte, MUI, Pendo, a mwy).
+- **bundlers/** — ategion a rhagsetiau offer adeiladu (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — targedau hynafiol a gweithwyr-safle (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — pecynnau ar gyfer offer dylunio (Figma, paletiau lliw).
+- **plugins/** — trawsnewidiadau dewisol sy’n estyn y allbwn token neu CSS. Gweler [Plugins](/guide/plugins).
 
-## Generated output
+## Allbwn a gynhyrchwyd
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Mae pob pecyn sy’n allyrru ffeil yn ei ysgrifennu i gyfeiriadur `generated/` y pecyn penodol a mae proses adeiladu
+yn ei adlewyrchu, felly nid oes dim a gynhyrchir yn cael ei gofrestru. Mae tasg gweithle yn dilysu popeth. Gweler
+[Allbwn a gynhyrchwyd](/guide/generated-output).

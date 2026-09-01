@@ -1,40 +1,40 @@
-# The pantoken CLI
+# واجهة سطر أوامر pantoken
 
-`@pantoken/cli` provides `pantoken generate <target>`, which writes token source into a target repo.
-Reach for it when a platform needs generated code rather than a runtime dependency — native apps,
-CMS themes, and static-site generators.
+`@pantoken/cli` يوفر `pantoken generate <target>`، الذي يكتب مصدر الرموز إلى مستودع هدف.
+استخدمه عندما يحتاج النظام الأساسي إلى رمز مولَّد بدلاً من اعتماد وقت التشغيل — تطبيقات أصلية،
+قوالب نظم إدارة المحتوى، ومنشئات المواقع الثابتة.
 
 ```sh
 npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 ```
 
-## Targets
+## الأهداف
 
-| Target      | Output                                                                            |
+| الهدف       | المخرجات                                                                          |
 | ----------- | --------------------------------------------------------------------------------- |
-| `swift`     | Swift source under `Sources/<name>` plus a `Package.swift` SwiftPM manifest stub. |
-| `android`   | Android XML resource files.                                                       |
-| `compose`   | A Jetpack Compose Kotlin file.                                                    |
-| `flutter`   | A Flutter Dart file.                                                              |
-| `rust`      | A `tokens.rs` for egui (default) or iced (`--format iced`).                       |
-| `wordpress` | A block-theme `theme.json`.                                                       |
-| `vanilla`   | A Vanilla Forums `variables.json`.                                                |
-| `drupal`    | Drupal theme assets.                                                              |
-| `jekyll`    | Jekyll site data.                                                                 |
-| `hugo`      | Hugo site data.                                                                   |
-| `swatches`  | Color swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.       |
-| `icon-font` | An icon web font (TTF, WOFF2), its CSS, and a codepoints map.                     |
-| `pendo`     | The Instructure-styled `global.css` for Pendo guides.                             |
+| `swift`     | مصدر Swift تحت `Sources/<name>` بالإضافة إلى نموذج تهيئة SwiftPM `Package.swift`. |
+| `android`   | ملفات موارد Android بصيغة XML.                                                    |
+| `compose`   | ملف Kotlin لـ Jetpack Compose.                                                    |
+| `flutter`   | ملف Dart لـ Flutter.                                                              |
+| `rust`      | `tokens.rs` لـ egui (الافتراضي) أو iced (`--format iced`).                        |
+| `wordpress` | `theme.json` لكتلة القالب (block-theme).                                          |
+| `vanilla`   | `variables.json` لمنتديات Vanilla.                                                |
+| `drupal`    | أصول قالب Drupal.                                                                 |
+| `jekyll`    | بيانات موقع Jekyll.                                                               |
+| `hugo`      | بيانات موقع Hugo.                                                                 |
+| `swatches`  | عينات ألوان — `ase` (الافتراضي)، `gpl`، `sketch`، أو `svg` عبر `--format`.        |
+| `icon-font` | خط أيقونات ويب (TTF, WOFF2)، ملف CSS خاص به، وخريطة نقاط الشيفرة (codepoints).    |
+| `pendo`     | `global.css` المصممة على نمط Instructure لمرشدات Pendo.                           |
 
-## Common flags
+## الوسيطات الشائعة
 
-- `--out <dir>` — where to write (default `./pantoken-out`).
-- `--theme <name>` — `rebrand` (default), `canvas`, or `canvasHighContrast`.
-- `--icons a,b,c` — icon names to emit as native assets, for targets that support them.
-- `--class <Name>` — the generated type or package name, for targets that need one.
-- `--format <fmt>` — the output format, for `swatches` and `rust`.
+- `--out <dir>` — أين يُكتب (الافتراضي `./pantoken-out`).
+- `--theme <name>` — `rebrand` (الافتراضي)، `canvas`، أو `canvasHighContrast`.
+- `--icons a,b,c` — أسماء الأيقونات التي تُصدر كأصول أصلية، للأهداف التي تدعمها.
+- `--class <Name>` — النوع أو اسم الحزمة المولَّد، للأهداف التي تحتاجه.
+- `--format <fmt>` — صيغة الإخراج، لـ `swatches` و `rust`.
 
-## Examples
+## أمثلة
 
 ```sh
 # iOS tokens plus two icons, in the Canvas theme.
@@ -47,5 +47,5 @@ npx pantoken generate wordpress --out ./wp-content/themes/mytheme
 npx pantoken generate rust --out ./src/tokens.rs --format egui
 ```
 
-Several targets also expose a plain function, so you can call them from your own build instead of
-the CLI. See the [API reference](/api/) for each platform package.
+تعرض عدة أهداف أيضاً دالة عادية، بحيث يمكنك استدعاؤها من نظام البناء الخاص بك بدلاً من
+واجهة سطر الأوامر. راجع [مرجع الـ API](/api/) لكل حزمة منصة.

@@ -1,8 +1,6 @@
 # Architektúra
 
-A pantoken egyetlen feladata: egyszer feloldani az Instructure design tokenjeit és ikonjait, majd újraformálni ezt a modellt
-minden célra. Az alábbi rétegek gondoskodnak arról, hogy ez az újraformálás következetes maradjon, és hogy a publikált csomagok mentesek
-legyenek bármilyen csak-GitHubon elérhető upstream függőségtől.
+pantokennek egy feladata van: egyszer feloldani az Instructure tervezési tokenjeit és ikonait, majd azt a modellt minden célhoz átalakítani. Az alábbi rétegek őrzik ezt az átalakítást és biztosítják, hogy a publikált csomagok mentesek maradjanak bármilyen csak GitHub-on elérhető upstreamtől.
 
 ## A rétegek
 
@@ -26,37 +24,36 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** kizárólag a típusszerződéseket tartalmazza. Ez az igazság forrása az
-  `Token` formájához és a plugin szerződéshez, nulla függőséggel, így bármelyik csomag szabadon
+- **`@pantoken/model`** tartja a típus-kontraktusokat, és semmi mást. Ez az igazság forrása a
+  `Token` alakra és a plugin szerződésre, nulla függőséggel, így bármely csomag nyugodtan
   függhet tőle.
-- **`@pantoken/core`** az egyetlen csomag, amely az upstream forráshoz nyúl. Feloldja a tokeneket és
-  ikonokat a kanonikus IR-be, és CSS-t renderel.
-- **`@pantoken/tokens`** ezt az IR-t statikus JSON-ként ágyazza be build időben. Ez a leválasztási pont:
-  a downstream csomagok `@pantoken/tokens`-t olvasnak, soha nem `@pantoken/core`-t, így `npm i pantoken` soha nem
-  nyúl a csak-GitHubon elérhető upstream forráshoz.
-- **`@pantoken/utils`** hordozza a közös segédeszközöket — az `var(--x)` feloldót, a referencia reguláris kifejezéseket,
-  a kis-nagybetűs és színkonverziót, valamint a drift-ellenőrzéseket, amelyek gondoskodnak arról, hogy a generált kimenet hű maradjon az IR-hez.
+- **`@pantoken/core`** az egyetlen csomag, amely érinti az upstream forrást. Feloldja a tokeneket és
+  ikonokat a kanonikus IR-re és rendereli a CSS-t.
+- **`@pantoken/tokens`** a build időben statikus JSON-ként vendorolja azt az IR-t. Ez a decoupling pont:
+  a downstream csomagok `@pantoken/tokens`-et olvassák, soha nem `@pantoken/core`-öt, így a `npm i pantoken`
+  soha nem nyúl a csak GitHub-on lévő upstream után.
+- **`@pantoken/utils`** hordozza a megosztott segédfüggvényeket — a `var(--x)` resolvert, a referencia-regexeket,
+  esetszabály és színkonverziót, valamint az eltérés-ellenőrzéseket, amelyek biztosítják, hogy a generált kimenet hű maradjon az IR-hez.
 
-## Miért ágyazzuk be a tokeneket
+## Miért vendoroljuk a tokeneket
 
-Az upstream token csomag a GitHubon él, nem az npm-en. Ha minden downstream csomag ettől függne,
-az `npm i pantoken` hibát dobna mindenkinek, aki nem rendelkezik hozzáféréssel. Ehelyett az `@pantoken/tokens` build időben egyszer feloldja az
-upstream forrást, és az eredményt statikus JSON-ba írja. A publikált csomagok magukban hordozzák ezt a
-JSON-t, így tisztán települnek az npm-ről, semver-hez rögzülnek, és offline is működnek.
+Az upstream token csomag GitHubon él, nem az npm-en. Ha minden downstream csomag függne tőle,
+`npm i pantoken` megbukna bárkinél, akinek nincs hozzáférése. Ehelyett `@pantoken/tokens` egyszer feloldja az
+upstreamet build időben és az eredményt statikus JSON-be írja. A publikált csomagok ezt a JSON-t hordozzák, így tisztán
+telepíthetők npm-ről, semver-re vannak rögzítve, és offline is működnek.
 
-## Csoportok
+## Buckets
 
-Minden downstream csoport az IR fogyasztásának egy módja:
+Minden downstream bucket az IR fogyasztásának egy módja:
 
-- **formats/** — a tokeneket fájllá alakítja (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — keretrendszer- és eszközintegrációk (React, Vue, Svelte, MUI, Pendo, és mások).
-- **bundlers/** — build eszköz pluginok és preset-ek (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — natív és oldalgeneráló célok (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — hasznos adatok design eszközökhöz (Figma, színminták).
-- **plugins/** — opcionális transzformációk, amelyek kiterjesztik a token- vagy CSS-kimenetet. Lásd: [Pluginok](/guide/plugins).
+- **formats/** — a tokeneket fájlokká alakítja (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — keretrendszer- és eszközintegrációk (React, Vue, Svelte, MUI, Pendo és továbbiak).
+- **bundlers/** — build-eszköz pluginek és presetek (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — natív és site-generator célok (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — dizájneszközök payloadjai (Figma, színpaletták).
+- **plugins/** — opcionális transzformációk, amelyek kiterjesztik a token vagy CSS kimenetet. Lásd: [Plugins](/guide/plugins).
 
 ## Generált kimenet
 
-Minden csomag, amely fájlt bocsát ki, azt egy csomagonkénti `generated/` könyvtárba írja, amelyet egy build
-reprodukál, így semmi generált nincs a repóban commitolva. Egy munkaterületi feladat mindet validálja. Lásd:
-[Generált kimenet](/guide/generated-output).
+Minden csomag, amely fájlt generál, azt egy csomagonkénti `generated/` könyvtárba írja, amelyet a build reprodukál,
+így semmi generált nincs becommitalva. Egy workspace feladat mindezt érvényesíti. Lásd [Generated output](/guide/generated-output).

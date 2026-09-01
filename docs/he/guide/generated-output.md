@@ -1,36 +1,33 @@
-# Generated output
+# פלט שנוצר
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+כמה חבילות של pantoken משיגות קבצים בזמן הבנייה — גיליון סגנונות, `theme.json`, מודול טוקנים מוטמע. כדי לשמור על המאגר נקי ועל הפלטים אמיתיים, כל חבילה עוקבת אחרי קונבנצייה אחת ומשימת workspace מאמתת את כולם.
 
-## The `generated/` convention
+## הקונבנצייה של `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+כל חבילה שמייצרת ארטיפקט בנייה כותבת אותו לתיקיית `generated/` ייעודית לחבילה, ולא שוהה שם דבר אחר. כלל אחד ב-`.gitignore` מכסה את כולם:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+כך שאף קובץ שנוצר אינו מועבר ל-repo — בנייה משחזרת אותו. שני סוגי פלט נחתים שם:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **סטטיים מסחריים** — קבצים שצרכן מייבא, כמו `@pantoken/css`'s `style.css` או
+  `@pantoken/scss`'s `tokens.scss`. מפת `exports` של החבילה שומרת את המפתח הציבורי
+  (`"./style.css"`) אך מצביעה עליו כ-`generated/`, כך שממשק הצרכן לא משתנה.
+- **מתווכים של הבנייה** — קבצים שקטלוג המקור של החבילה מייבא ומהם הוא מרכיב את `dist`, כמו
+  ה-JSON המוכר מה-`@pantoken/tokens`. אלה לא מפורסמים כעצמם; הם מקומפלים כחלק מהבנייה.
 
-## Validating the output
+## אימות הפלט
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (כלי פרטי) רץ לאחר הבנייה ובודק שלושה דברים:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. שכל חבילת המחולל כתבה בפועל תיקיית `generated/` לא ריקה,
+2. כלי השורת פקודה `pantoken` מפיק לפחות קובץ אחד עבור כל יעד נתמך, ו-
+3. אף גיליון סגנונות שנוצר לא סוטה מ-IR של הטוקנים — `danglingReferences` לגיליונות עצמאיים,
+   ו-`unknownReferences` לגשרים שמצביעים רק על טוקנים המוגדרים במקום אחר.
 
-## Commands
+## פקודות
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+המאמת גם מחובר ל-`pnpm run ready`, כך שסחיפה נתפסת בשער הסטנדרטי.

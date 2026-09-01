@@ -1,13 +1,10 @@
-# Plugins
+# Eklentiler
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Bir pantoken eklentisi, bir paketi çatallamadan token veya CSS çıktısını genişletir. Bir tane `definePlugin` ile `@pantoken/plugin-kit`'den oluşturur, sonra onu `buildTokens` veya `toCss`'e geçirirsiniz.
 
-## Author a plugin
+## Bir eklenti yazın
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Uyguladığınız hook'ları `definePlugin`'e verin. O, bu hook'lardan çıkarılan yeteneklerle markalanmış normal bir eklenti döner. Bir eklenti IR'yi (`tokens`, `icons`), CSS çıktısını (`css`) veya her ikisini genişletebilir.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Yetenek-bilinçli kayıt
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` ve `toCss`, geçirdiğiniz eklentiler üzerinde `checkPlugins` çalıştırır. Bir eklentinin kayıtlı olduğu aşama için eşleşen bir hook'u yoksa uyarır — asla hata fırlatmaz — bu yüzden token-only bir eklenti `toCss`'e geçirildiğinde, sessizce hiçbir şey yapmaktansa bir notla atlanır.
 
-## Compose plugins
+## Eklentileri birleştirin
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Başka bir eklentinin üzerine `extendPlugin` ile inşa edin veya eşleri `mergePlugin` ile birleştirin:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Aynı aşama hook'ları bileşiklenir: `tokens` önce temelini sonra ekleyeni çalıştırır, `css` iki katkıyı birleştirir ve `icons` her ikisini çalıştırır.
 
-## Validate your plugin's output
+## Eklentinizin çıktısını doğrulayın
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Bir yazım hatası veya yeniden adlandırılmış bir token'ın hızlı ve yerelde hata vermesi için, eklentinizin kendi çıktısı üzerinde testte paylaşılmış drift kontrollerini `@pantoken/utils` üzerinden çalıştırın:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,12 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Paketlenmiş eklentiler
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — simple-icons'dan marka simgeleri, icon token'ları olarak kayıtlı.
+- `@pantoken/plugin-logos` — Instructure ürün logoları SVG, data URI ve `--instui-logo-*` image token'ları olarak.
+- `@pantoken/plugin-prune-custom-props` — kullanılmayan özel özellikleri bir stil sayfasından kaldıran bir PostCSS eklentisi (pantoken eklentisi değildir).
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Eskiden eklenti olan birkaç şey artık `@pantoken/components` içinde dağıtılıyor, çünkü birçok bileşenin bunlara kutudan çıktığı gibi ihtiyacı var: elevation gölgeleri (`--instui-elevation-*`, `components.css` içinde), focus-outline yüzüğü ( `base.css` içinde — pantoken sayfaya sahip olduğunda her focusable buna sahip olur) ve Instructure marka fontları (Atkinson Hyperlegible Next: `base.css` `--instui-font-family-base` uygular; opt-in olan `@pantoken/components/fonts.css` `@font-face` woff2'leri yükler).
 
-See the [API reference](/api/) for each plugin's exports.
+Her eklentinin dışa aktarımları için [API referansına](/api/) bakın.

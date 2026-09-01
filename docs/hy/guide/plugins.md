@@ -1,13 +1,13 @@
-# Plugins
+# Պլագիններ
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+pantoken պլագինը ընդլայնում է token կամ CSS ելքը՝ առանց փաթեթը ֆորք անելու: Այն կառուցում եք
+`definePlugin`-ով `@pantoken/plugin-kit`-ից, հետո փոխանցում `buildTokens`-ին կամ `toCss`-ին:
 
-## Author a plugin
+## Պլագին հեղինակել
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Տվեք `definePlugin` այն hooks-ները, որոնք իրականացնում եք: Այն վերադարձնում է սովորական պլագին, որը մարկավորվում է այն
+կարողություններով, որոնք ստացվում են այդ hooks-ներից: Պլագինը կարող է ընդլայնել IR-ն (`tokens`, `icons`), CSS
+ելքը (`css`) կամ երկուսը միաժամանակ:
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Կարողունակություն-խնայող գրանցում
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens`-ը և `toCss`-ը կատարում են `checkPlugins`-ը այն պլագինների վրա, որոնք փոխանցում եք: Այն զգուշացնում է — երբեք չգցում է բացառություն —
+երբ պլագինը չունի համապատասխան hook այն փուլում, որտեղ գրանցվել է, այնպես որ միայն token-ների համար նախատեսված պլագինը, որը փոխանցվում է
+`toCss`-ին, կգերազերծվի նշումով՝ ոչ թե լուռ ոչինչ չանելով:
 
-## Compose plugins
+## Պլագինների կոմպոզիցիա
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Շարունակեք մյուս պլագինի վրա `extendPlugin`-ով, կամ միացրեք հավասարները `mergePlugin`-ով:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Մի փուլում գտնվող hooks-ները կոմպոզում են. `tokens`-ը իրականացնում է base-ը, ապա addition-ը, `css`-ը համախմբում է երկու
+դիմացկունները, և `icons`-ը երկուսը էլ փորձում է:
 
-## Validate your plugin's output
+## Պլագինի ելքի վավերացում
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Ընթացքում միացրեք ընդհանուր drift ստուգումները `@pantoken/utils`-ից ձեր պլագինի սեփական ելքի վրա իր թեստում, որպեսզի
+տառասխալը կամ վերանվանված token-ը անհետաձգելիորեն խախտվի տեղում:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +56,18 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Բունդլացված պլագինները
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — նշանավորում է icons-ները simple-icons-ից, գրանցված որպես icon tokens:
+- `@pantoken/plugin-logos` — Instructure արտադրանքի լոգոներ՝ որպես SVG-ներ, data URI-ներ և `--instui-logo-*`
+  image tokens:
+- `@pantoken/plugin-prune-custom-props` — PostCSS պլագին (ոչ pantoken պլագին), որը հեռացնում է
+  չկիրառված custom properties-ը stylesheet-ից:
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Մի քանի բան, որոնք նախկինում եղել են պլագիններ, հիմա ներմուծվում են `@pantoken/components`-ում, քանի որ շատ կոմպոնենտներ դրանք անհրաժեշտ են
+դուրսի դեպքում՝ elevation ստվերներ (`--instui-elevation-*`, `components.css`-ում), focus-outline
+ring (__`base.css`-ում — ամեն focusable էլ դա ստանում է, երբ pantoken ղեկավարվում է էջով), և Instructure-ի բրենդային
+տառատեսակները (Atkinson Hyperlegible Next: `base.css` կիրառում է `--instui-font-family-base`; պարտադիր չլինող
+`@pantoken/components/fonts.css` բեռնում է `@font-face` woff2-ները):
 
-See the [API reference](/api/) for each plugin's exports.
+Տես [API reference](/api/) յուրաքանչյուր պլագինի экспорт-ների համար:

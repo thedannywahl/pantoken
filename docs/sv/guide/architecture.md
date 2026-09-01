@@ -1,10 +1,10 @@
-# Architecture
+# Arkitektur
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken har ett uppdrag: lös upp Instructure:s designtokens och ikoner en gång, och omforma sedan den modellen
+för varje mål. Lagren nedan håller den omformningen ärlig och håller de publicerade paketen fria
+från någon GitHub-endast upstream.
 
-## The layers
+## Lagren
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** innehåller typkontrakten, och inget annat. Det är sanningskällan för
+  `Token`-formen och plugin-kontraktet, utan beroenden, så vilket paket som helst kan bero på det
+  fritt.
+- **`@pantoken/core`** är det enda paketet som rör upstream-källan. Det löser tokens och
+  ikoner till den kanoniska IR:n och renderar CSS.
+- **`@pantoken/tokens`** levererar den IR:n som statisk JSON vid build-tid. Detta är avkopplingspunkten:
+  downstream-paket läser `@pantoken/tokens`, aldrig `@pantoken/core`, så `npm i pantoken` når aldrig
+  efter den GitHub-endast upstreamen.
+- **`@pantoken/utils`** bär de delade hjälparna — `var(--x)`-resolvern, referens-regexarna,
+  versal-/gemen- och färgkonvertering, och driftkontrollerna som håller genererat output troget IR:n.
 
-## Why tokens are vendored
+## Varför tokens vendoreras
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Upstream-tokenpaketet ligger på GitHub, inte på npm. Om varje downstream-paket berodde på det,
+skulle `npm i pantoken` misslyckas för vem som helst utan den åtkomsten. Istället löser `@pantoken/tokens`
+upstreamen en gång vid build-tid och skriver resultatet till statisk JSON. De publicerade paketen bär den
+JSON:en, så de installeras rent från npm, pinnas till semver och fungerar offline.
 
 ## Buckets
 
-Each downstream bucket is a way of consuming the IR:
+Varje downstream-bucket är ett sätt att konsumera IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — förvandla tokens till en fil (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — ramverks- och verktygsintegrationer (React, Vue, Svelte, MUI, Pendo och fler).
+- **bundlers/** — build-verktygs-plugins och presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — native- och site-generator-mål (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — payloads för designverktyg (Figma, färgprover).
+- **plugins/** — valfria transformationer som utökar token- eller CSS-output. Se [Plugins](/guide/plugins).
 
-## Generated output
+## Genererat output
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
+Varje paket som skriver ut en fil skriver den till en per-paket `generated/`-katalog som en build
+återskapar, så inget genererat är committat. Ett workspace-uppgift validerar allt detta. Se
 [Generated output](/guide/generated-output).

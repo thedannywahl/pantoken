@@ -1,10 +1,8 @@
-# Architecture
+# Կառուցվածք
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken-ի մեկ աշխատանքի նպատակը է՝ մեկ անգամ լուծել Instructure-ի դիզայնի տոկենները և պատկերակները, այնուհետև այդ մոդելը վերակազմակերպել յուրաքանչյուր թիրախի համար։ Ստորևի շերտերը պահպանում են այդ վերակազմակերպումը ճշմարիտ և թողնում են հրատարակված փաթեթները ազատ ցանկացած միայն GitHub-ի upstream-ից։
 
-## The layers
+## Շերտերը
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** պահում է տիպերի պայմանագրերը և ոչինչ ավելին։ Դա է ճշմարտության աղբյուրը `Token` ձևի և plugin պայմանագրի համար՝ զրոյական կախվածություններով, այնպես որ ցանկացած փաթեթ կարող է դրանից ազատորեն կախվել։
+- **`@pantoken/core`** միակ փաթեթն է, որը դիպչում է upstream աղբյուրին։ Այն լուծում է տոկենները և պատկերակները canonical IR- ի մեջ և ձեւավորում CSS։
+- **`@pantoken/tokens`** այդ IR-ը տրամադրում է որպես ստատիկ JSON build-ի պահին։ Դա առանձնացնող կետն է՝ ստորեկրվող փաթեթները կարդում են `@pantoken/tokens`, ոչ երբեք `@pantoken/core`, այնպես որ `npm i pantoken` երբեք չի հասնի միայն GitHub upstream-ի։
+- **`@pantoken/utils`** կրում է ընդհանուր օգնականները — `var(--x)` լուծողը, հղման regex-երը, դեպքի և գույնի վերափոխումները, և drift ստուգումները, որոնք ապահովում են, որ生成ացված ելքը հավատարիմ է IR-ին։
 
-## Why tokens are vendored
+## Ինչու են տոկենները.vendor-ացված
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Upstream տոկենների փաթեթը գտնվում է GitHub-ում, ոչ npm-ում։ Եթե յուրաքանչյուր ստորեկվող փաթեթը կախված լիներ նրանից, `npm i pantoken` կձախողվեր նրանց համար, ովքեր չհասանելի են դրան։ Փոխարենը `@pantoken/tokens` լուծում է upstream-ը մեկ անգամ build-ի պահին և գրում արդյունքը ստատիկ JSON֊ում։ Հրապարակված փաթեթները ներառում են այդ JSON-ը, այնպես որ դրանք տեղադրվում են մաքուր npm-ից, սեղմվում semver-ով և աշխատում են օֆլայն։
 
-## Buckets
+## Բուքետներ
 
-Each downstream bucket is a way of consuming the IR:
+Յուրաքանչյուր ստորեկվող բուքետը IR-ի օգտագործման միջոց է՝
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — վերափոխում է տոկենները ֆայլի (CSS, SCSS, Less, Stylus, DTCG)։
+- **renderers/** — ֆրաենվոր և գործիքային ինտեգրացիաներ (React, Vue, Svelte, MUI, Pendo և այլն)։
+- **bundlers/** — build-գործիքների plugin-ներ և presets (Vite, Next, Tailwind, Panda, PostCSS, webpack)։
+- **platforms/** — բնիկ և site-generator թիրախներ (Swift, Kotlin, Rust, WordPress, Drupal)։
+- **design/** — payload-ներ դիզայնի գործիքների համար (Figma, գունային swatches)։
+- **plugins/** — ընտրովի տրանսֆորմներ, որոնք ընդլայնում են տոկենը կամ CSS ելքը։ Տես [Plugins](/guide/plugins)։
 
-## Generated output
+## Գեներացված ելք
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Յուրաքանչյուր փաթեթ, որը գիտեն արտադրում է ֆայլ, գրում է այն per-package `generated/` գրացուցակում, որը վերարտադրում է build-ը, այնպես որ գեներացված ոչինչ չի հանձնվում commit։ Վоркսփեյսի տասք հաստատում է ամբողջը։ Տես [Generated output](/guide/generated-output).

@@ -1,53 +1,52 @@
-# CDN & distribution
+# CDN og distribusjon
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken publiserer kvar pakke til npm, så du kan hente token, komponentar og web-komponentar direkte
+frå eit CDN — ingen bygge‑steg, ingen bundlar. Denne sida dekkjer CSS combine‑URLen (med ein interaktiv
+bygger), pluss web‑component drop‑ins.
 
-## The token foundation
+## Token‑grunnlaget
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Kvar pantoken‑komponent les `--instui-*` egendefinerte eigenskapar frå eit token‑ark på sida. To
+variantar blir levert:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — den anbefalte CDN‑grunnmuren. Ho inneheld alle tokenar bortsett frå det
+  fullstendige ikonsettet, så ho er om lag 23 KB gzipa.
+- `@pantoken/css/dist/style.css` — det fullstendige arket, inkludert alle ~1,777 ikon‑glyf‑tokenar
+  (`--instui-icon-*`). Om lag 140 KB gzipa. Last dette om du refererer ikonar breitt via
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Elevasjonsskalaen og variablar for fokusring ligg i begge ark, så skuggar og fokusring fungerer med
+berre grunnmuren lasta.
 
-## Pick your components and icons
+## Vel komponentane og ikonane dine
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+Den [interaktive CDN‑veljaren](/guide/cdn-picker) byggjer jsDelivr combine‑URLar for CSS og snippet‑ar for JavaScript‑pakker. Opna han, kryss av det du treng, og kopier den genererte outputen.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components‑fane** — vel individuelle komponent‑stylesheet eller heile `components.css`‑fatet. Legg til base‑reset eller spacing/color‑utilities om du treng dei.
+- **JS‑fane** — kopier eit ESM‑import‑snippet for `@pantoken/interactions`.
+- **Icons‑fane** — vel individuelle ikon frå InstUI‑settet (~1,800 ikon) eller frå Simple Icons (~3,300 merke‑glyfar). Veljaren gir ei eiga combine‑URL for ikon‑CSS‑filene så du berre kan laste dei ikonane du faktisk brukar.
+- **Web Components‑fane** — bygg `@pantoken/web-components`‑snippets (ESM selektiv registrering eller klassisk script‑bootstrap).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Kvar komponentfil er liten — dei fleste rundt 2 KB. Ein komponent som renderar ikon (`alert`, `checkbox`,
+og nokre få andre) treng desse glyfane, så bygget legg til `@pantoken/components/dist/component-icons.css` (om lag
+0.5 KB gzipa — dei 11 ikonane komponent‑settet brukar) når du plukkar det slanke arket. Det fullstendige arket
+har dei allereie.
 
-### Load order and fonts
+### Laste‑rekkefylgja og skrifttypar
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Last token‑grunnmuren først, så valfri base‑reset, deretter komponentfilene, og til slutt utility‑ane — dei er overstyrings‑utilities, så dei overstyrer ein komponent sin eigen regel berre når dei ligg
+etter i kaskaden. Combine‑URLen ovanfor ordnar dette for deg. Skrifttypar er eitt unntak:
+`@pantoken/components/dist/fonts.css` peikar på fontfiler med relativ bane, så combine kan ikkje omskrive
+dei — last han som sin eigen `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Alt samtidig
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Marker **All components** i veljaren for å bytte til fatet, eller pek direkte på det sjølv (om lag 141 KB
+gzipa) saman med token‑arket:
 
 ```html
 <link
@@ -56,14 +55,14 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Web‑komponentar
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` registrerer rammeverks‑agnostiske `<instui-*>` egendefinerte element. Dei inlinear si
+eige CSS, men les framleis token frå eit ark på sida, so last også ein token‑grunnmur.
 
-### ES modules (recommended)
+### ES‑modular (anbefalt)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Ein ESM‑CDN løyser pakkens avhengigheiter for deg. Dette registrerer alle elementa:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +71,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Bruk det fulle token‑arket (eller det slanke arket pluss `component-icons.css`) slik at ikon‑renderande element som
+`<instui-alert>` finn glyfane sine.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+For å registrere berre nokre element — og deira nestede avhengigheiter — importer `register` og send `only`:
 
 ```html
 <script type="module">
@@ -85,20 +84,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Eit klassisk script‑tag
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+For ein drop‑in utan moduler, last IIFE‑bygget. Det bundlar avhengigheitene og auto‑registrerer alle
+element ved last, og eksponerar ein `PantokenWebComponents` global:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Det er større enn ESM‑vegen — det inlinear `@pantoken/components` og `@pantoken/icons` — så bruk det
+berre når du ikkje kan bruke moduler.
 
-## Pinning versions
+## Fastsetje versjonar
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+URL‑ane ovanfor — og dei veljaren skriv — peikar på siste release. Pinfest ein major (eller eksakt)
+versjon for produksjon — til dømes `@pantoken/css@0` — så ein oppgradering aldri kjem som ein overrasking.

@@ -1,53 +1,53 @@
-# CDN & distribution
+# CDN & distribúšuvdna
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken publiseárda buot paketat npm:s, dakko don sáhttát johtit tokenat, komponentat ja web-komponentat suodjalikii
+fassu CDN:s — ii ollu build-steppi, ii bundler. Dán sivdas geavahit CSS combine-URL:in (interaktiivalaš
+builderin) ja web-komponentta drop-in:na.
 
-## The token foundation
+## Tokenasáhttin múttá
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Buot pantoken-komponentat læsihit `--instui-*` muhtun propertijat token-sheet:st sáhttuheapmi. Guovttos
+variantat leat:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — geavahuvvui CDN-sáhttin múttá. Dat čuogá buot tokenat maŋŋil, muhto ii buot
+  ikonaset, das mii lea ovttas 23 KB gzip:na.
+- `@pantoken/css/dist/style.css` — buot sheet, mii sisdoallá buot ~1 777 ikon-glyph-tokenat
+  (`--instui-icon-*`). Omtte 140 KB gzip:na. Lávkát dás dá leat ikonat muhtun dihtii via
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Elevatiovdnaskala ja fokus-ringi variableat leat dahjeheet guovttos beide sheet:des, das sahteagat ja fokus-ringi
+fálemaštit duođaštusat, nu vvuiddja doarji.
 
-## Pick your components and icons
+## Váljit komponentat ja ikonat
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[Interaktiivalaš CDN-picker](/guide/cdn-picker) geavahit jsDelivr combine-URL:at CSS:ii ja snippeta JavaScript-pakettain. Oppen,
+čakčat maid don galggat ja kopiera genererduvvan output.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components tab** — válji eret komponenta stylesheet:at dahje buot `components.css` barrel. Adda base reset dahje spacing/color utilities jos don galgat.
+- **JS tab** — kopiera ESM import-snippet `@pantoken/interactions`.
+- **Icons tab** — válji eret ikonat InstUI-set:st (~1 800 ikonat) dahje Simple Icons: st (~3 300 brand-glyphs). Picker
+  oainná eret combine-URL ikon-CSS fállat dál buot ikonat mii don geavahát.
+- **Web Components tab** — builda `@pantoken/web-components` snippeta (ESM selective register dahje classic script bootstrap).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Buot komponenta failat leat lágidit — most leat ovttas 2 KB. Komponenta mii render-eart ikonat (`alert`, `checkbox`,
+ja nugo few) galggát dán glyph:s, dahje builder addá `@pantoken/components/dist/component-icons.css` (ovttas
+0.5 KB gzip:na — 11 ikonat mii komponentaset geavahát) go don váldit lean sheet:in. Buot sheet already leat dat.
 
-### Load order and fonts
+### Load-ordna ja fonttat
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Lávkát tokenasáhttin oktavuođas, dan maŋŋil base reset, dan maŋŋil komponenta failat, ja utilities badjel — dat leat override utilities,
+dahje dat csakka muitalii komponenta oaidnit oassin geatnga go dat boahtá badjel cascade. Combine URL ávdnán eará ordna du.
+Fonttat leat oktavuohta excepsuvdna: `@pantoken/components/dist/fonts.css` oahpá font-faila dihtii relativalaš path:in, das combine ii sáhtá čuovvut
+dattut — lávkát das mii áigge `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Buot nuppásti
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Čakčat **All components** picker:is mainnán eará barrel:in, dahje viŋŋa árvu (ovttas 141 KB
+gzip:na) token-sheet:in gilvvon:
 
 ```html
 <link
@@ -56,14 +56,14 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Web-komponentat
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` registrer-a framework-agnostic `<instui-*>` custom elements. Dát inlaina
+odu CSS:s, muhto ráhkadit tokenat sheet:st sáhttit maid, dan mii lávkát tokenasáhttin.
 
-### ES modules (recommended)
+### ES modules (recommenddohus)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+ESM CDN resolvra paketin dependencies dutnje. Dát registrer buot elementat:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +72,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Geavahát buot token-sheet (vai lean sheet plus `component-icons.css`) das ikon-rendering elementat nu
+`<instui-alert>` ráhkadit deras glyphs.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Registerit dábálaš elementaid — ja deras nested dependencies — import `register` ja passea `only`:
 
 ```html
 <script type="module">
@@ -85,20 +85,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Classic script tag
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+No-modules drop-in: lávkát IIFE build. Dat bundle-rahka dependencies ja auto-register-eart buot
+elementat load:in, ja exposera `PantokenWebComponents` global:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Dat lea biggán ESM-path:st — dat inlaina `@pantoken/components` ja `@pantoken/icons` — dan dearvvuohttit du
+das galggat ii sáhtát modulis geavahit.
 
-## Pinning versions
+## Versiovnnjit pinna
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+URL:at ovttas — ja dan mii picker lohpi — čállá latest release. Pinna major (vai exact)
+versiuvdna produkšuvnna — d.b. `@pantoken/css@0` — das upgrada neva ráhkadit don.

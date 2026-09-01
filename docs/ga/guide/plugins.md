@@ -1,13 +1,10 @@
-# Plugins
+# Breiseáin
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Síneann breiseán pantoken as an aschur tóicín nó CSS gan pacáiste a fhréamhadh. Tógann tú ceann le `definePlugin` ó `@pantoken/plugin-kit`, ansin passa é chuig `buildTokens` nó `toCss`.
 
-## Author a plugin
+## Údar breiseáin
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Tabhair na hooks a chuireann tú i bhfeidhm do `definePlugin`. Fillfidh sé breiseán gnáth, brandaithe leis na cumais a réitítear ó na hooks sin. Is féidir le breiseán an IR a shíneadh (`tokens`, `icons`), aschur an CSS (`css`), nó an dá rud.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Clárú a thuigeann cumais
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+Ritheann `buildTokens` agus `toCss` `checkPlugins` thar na breiseáin a ritheann tú. Rabhraíonn sé — ní chaithtear é riamh — nuair nach bhfuil hook comhfhreagrach ag breiseán don chéim ina bhfuil sé cláraithe, mar sin scipeáiltear breiseán atá dírithe ar thóicíní amháin a ritheadh chuig `toCss` le nóta seachas gan ghá a dhéanamh gan fhuaim.
 
-## Compose plugins
+## Comhcheangal breiseáin
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Tóg ar bharr breiseán eile le `extendPlugin`, nó cumais a chomhcheangal le comhghleacaithe le `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Comhcheanglaíonn hooks den chéim chéanna: rithann `tokens` an bonn ansin an breiseán breise, comhtháthaíonn `css` an dá rannchuidiú, agus rithann `icons` an dá cheann.
 
-## Validate your plugin's output
+## Bailíochtú aschur do bhreiseáin
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Rith na seiceálacha drift roinnte ó `@pantoken/utils` thar aschur do bhreiseáin féin ina thástáil, ionas go n-eascróidh botún litrithe nó tóicín athainmnithe go tapa agus go háitiúil:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,12 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Na breiseáin phacáistithe
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — siombailí branda ó simple-icons, cláraithe mar thóicíní íocón.
+- `@pantoken/plugin-logos` — lógónna táirgí Instructure mar SVGanna, URIs sonraí, agus tóicíní íomhá `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — breiseán PostCSS (ní breiseán pantoken é) a tharraingíonn airíonna saincheaptha neamhúsáidte as stíleáil.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Tá cúpla rud a bhíodh mar bhreiseáin anois á n-uaslódáil i `@pantoken/components`, ós rud é go dteastaíonn iad ó go leor comhpháirteanna amuigh den bhosca: scáthanna uainíochta (`--instui-elevation-*`, in `components.css`), fáinne téad fócas (in `base.css` — faigheann gach eilimint in-ghníomhach é nuair a bhainfidh pantoken leis an leathanach), agus na clóanna branda Instructure (Atkinson Hyperlegible Next: chuirtear i bhfeidhm `base.css` `--instui-font-family-base`; lódálann an roghnach `@pantoken/components/fonts.css` na woff2s `@font-face`).
 
-See the [API reference](/api/) for each plugin's exports.
+Féach an [API reference](/api/) le haghaidh onnmhairíochtaí gach breiseáin.

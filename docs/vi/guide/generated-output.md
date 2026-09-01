@@ -1,36 +1,30 @@
-# Generated output
+# Đầu ra được tạo
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Một số gói pantoken xuất các tệp khi build — một stylesheet, một `theme.json`, một module token nhúng. Để giữ kho sạch và đầu ra trung thực, mọi gói đều theo một quy ước và một tác vụ workspace xác thực toàn bộ.
 
-## The `generated/` convention
+## Quy ước `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Mỗi gói tạo ra một artifact build ghi nó vào thư mục `generated/` theo từng gói, và không có gì khác sống ở đó. Một quy tắc trong `.gitignore` bao phủ tất cả:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Vì vậy không có tệp sinh ra nào được commit — một build tái tạo nó. Có hai loại đầu ra nằm ở đó:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Tệp tĩnh để phát hành** — các tệp mà người tiêu thụ import, chẳng hạn `@pantoken/css`'s `style.css` hoặc `@pantoken/scss`'s `tokens.scss`. Bản đồ `exports` của gói giữ khóa công khai (`"./style.css"`) nhưng trỏ nó tới `generated/`, vì vậy API cho người tiêu thụ không bao giờ thay đổi.
+- **Các trung gian build** — các tệp mà mã nguồn của gói import và bundle vào `dist`, chẳng hạn JSON được vendored của `@pantoken/tokens`. Chúng không được phát hành riêng; chúng được biên dịch vào.
 
-## Validating the output
+## Xác thực đầu ra
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (một công cụ riêng tư) chạy sau khi build và kiểm tra ba điều:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. mỗi gói generator thực sự đã ghi một thư mục `generated/` không rỗng,
+2. CLI `pantoken` xuất ít nhất một tệp cho mỗi target được hỗ trợ, và
+3. không có stylesheet sinh ra nào bị lệch so với token IR — `danglingReferences` cho các sheet tự chứa,
+   và `unknownReferences` cho các bridge chỉ tham chiếu tokens được định nghĩa ở nơi khác.
 
-## Commands
+## Các lệnh
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +34,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Trình xác thực cũng được nối vào `pnpm run ready`, nên drift bị phát hiện trong gate tiêu chuẩn.

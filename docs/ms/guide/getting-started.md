@@ -1,47 +1,34 @@
-# Getting started
+# Memulakan
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken mengambil token reka bentuk dan ikon Instructure UI, menyelesaikannya sekali, dan membentuk semula model itu menjadi pakej untuk banyak platform: helaian gaya biasa, SCSS dan Less, React dan Vue dan Svelte, Tailwind dan Panda, Swift dan Kotlin asli, WordPress dan Drupal, Figma, dan lain-lain.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Pasang pakej terkecil yang sesuai dengan tugas anda. Semuanya juga dieksport semula oleh pakej bersepadu `pantoken`, jadi anda boleh bermula di situ dan mengecilkan pilihan kemudian.
 
-## Scaffold a starter project
+## Sediakan projek permulaan
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+Cara terpantas untuk mencuba pantoken: sediakan projek permulaan dengan ia sudah dipasang dan dihubungkan.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Platform: `components` (HTML/CSS biasa), `react`, `vue`, `svelte`, `web-components`, `angular`. Lihat [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) untuk `--dir <path>` dan penggunaan berprogram.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+Menggunakan ejen pengkodan AI? Tiada pemasangan diperlukan — arahkan sahaja kepada skill secara langsung:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Berfungsi dengan cara yang sama untuk Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, dan Amazon Q Developer CLI — gantikan `claude` dengan `gemini`, `agent`, `codex`, `copilot -p`, atau `q chat`. Jika anda lebih suka menghubungkan peraturan ejen pantoken ke repositori secara kekal (AGENTS.md, peraturan editor, salinan tempatan skill ini), jalankan `npx @pantoken/ai init` sebaliknya.
 
-## The token model
+## Model token
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Token adalah sifat tersuai CSS bernama `--instui-<group>-<name>`, contohnya `--instui-color-background-brand` atau `--instui-spacing-space-md`. Tiga tema disertakan: `rebrand` (lalai, dengan `light-dark()` di mana terang dan gelap berbeza), `canvas`, dan `canvasHighContrast`. Ikon adalah token `<image>` (`--instui-icon-<name>`) yang berasal dari Lucide ditambah glif tersuai Instructure.
 
-## Style a web app
+## Gaya aplikasi web
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Pasang helaian gaya dan import sekali. Ia mentakrifkan setiap sifat `--instui-*`, jadi anda boleh merujuknya terus dari CSS anda sendiri.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +45,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Gunakan ikon di mana-mana
 
-The web component works in any framework, with no porting.
+Komponen web berfungsi dalam mana-mana rangka kerja, tanpa penyesuaian.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### Token CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Ikon adalah sifat tersuai CSS (`--instui-icon-<name>`). Muatkan helaian gaya sekali dan rujuk mana-mana ikon sebagai `mask-image` atau `background-image` — tiada import per-ikon diperlukan.
 
 ```css
 .my-icon {
@@ -85,10 +71,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — ikon tunggal vs. set penuh
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` mendedahkan dua eksport bernama. Gunakan `iconsByName` untuk menarik satu ikon tanpa mengiterasi seluruh tatasusunan:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Gunakan `icons` apabila anda memerlukan set penuh (contohnya untuk membina pemilih):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+Kedua-dua eksport memuatkan IR penuh semasa inisialisasi modul — tiada tree-shaking per-ikon pada peringkat ini. Untuk pemuatan CSS sahaja yang ringan, gunakan [pemilih CDN](/guide/cdn-picker) untuk menjana URL gabungan hanya untuk ikon yang anda perlukan.
 
-## Generate for a native platform
+## Jana untuk platform asli
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI menulis sumber token ke dalam repositori sasaran. Tiada pemasangan selain pelari:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Lihat [pantoken CLI](/guide/cli) untuk setiap sasaran.
 
-## VS Code authoring hints
+## Petua penggubahan VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` kini dihantar dengan fail data-khusus VS Code supaya projek pengguna hiliran boleh mendapatkan pelengkap kelas dan token dalam HTML/CSS tanpa memasang sambungan khusus pantoken.
 
-1. Install the unified package:
+1. Pasang pakej bersepadu:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Arahkan VS Code kepada JSON data-khusus yang dihantar dari ruang kerja pengguna anda:
 
 ```json
 {
@@ -140,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Muat semula VS Code (atau jalankan "Developer: Reload Window") untuk menerapkan data baru.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Ini membolehkan cadangan untuk token kelas `instui-*` (dan token kelas `-modifier`) serta sifat tersuai `--instui-*`.
 
-## Where to next
+## Ke mana seterusnya
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [Peta pakej](/guide/packages) — pakej mana yang patut dicapai, mengikut tugas.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — pasang aset ejen dan peraturan dalam repositori pengguna.
+- [Senibina](/guide/architecture) — bagaimana model token, teras, dan keluaran sesuai bersama.
+- [Rujukan API](/api/) — setiap simbol yang dieksport, dijana daripada sumber.

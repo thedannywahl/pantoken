@@ -1,31 +1,31 @@
-# Components
+# Ngā Wāhanga
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` ka tuku kāhua wāhanga i runga i ngā karaehe i hangaia mai i ngā tohe Instructure. Kawemai
+te pepa-kāhua ka tapiri i tō tohu — kāore he anga tūtohu e hiahiatia.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-> [package map](/guide/packages).
+> He pai ake ngā wāhanga ritenga? Kōpiritia e `@pantoken/web-components` ēnei kāhua anō hei `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, me ētahi atu — tirohia te
+> [mapa kete](/guide/packages).
 
-## Conventions
+## Ngā Tikanga
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+Ko ngā tikanga CSS i roto i tēnei kete e hāngai ana ki tētahi putanga whakarerekētia o [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+Ko ngā whakakāhoretanga he **kī-uara** — `-<prop>-<val>`, e hāngai ana ki ngā ingoa propa InstUI — nō reira ka pānuitia
+mō rātou anō: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Ko ngā prop
+pūtātea he ingoa prop anake, ā, ko te noho mai o te mea e tohu ana `true` (`-has-shadow`, `-clickable`);
+ko te pūtātea-taunoa kua whakaweto ka huri rānei (`-without-background`, `-without-border`). Ka whakaaehia ngā rahi i ngā
+spelling poto me te roa (`-size-sm` = `-size-small`). Ki te rereke te ingoa i te InstUI, ka mahi tonu te karaehe whai tikanga
+o InstUI engari kua whakakorehia te whakamahi (hei tauira `-variant-info` → whakamahia `-color-info`).
 
-### Example
+### Tauira
 
-Instructure UI React component:
+Wāhanga React Instructure UI:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -51,12 +51,12 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+Mō te prop `timeout` o InstUI, tautuhia te rawa ritenga ahurei `--timeout` me te kore wāhanga i roto i ngā hēkona-miriona ka uta
+i te taunekeneke Alert. Mā te uara pūmanawa e whakarite te whakakore; `0` (te taunoa) ka waiho tonu te whakatūpato i te
+wāhi. Tāpirihia ngā karaehe `instui-transition -fade-entered` o te raupaparorohiko `transition` mō te whakaheke-āhua o InstUI; kaua e tāpiri mō te
+whakakore tonu. Ko te taunekeneke e whakahaere ana i te āhua `-fade-exiting` me te tuku i tētahi kaupapa whakamutu,
+e rewa ana `dismiss` i mua i te tangohanga, nō reira ka taea e tētahi taupānga te waea `preventDefault()` kia noho tonu te
+whakatūpato.
 
 ```html
 <link
@@ -73,15 +73,14 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+E whakaaehia ana e ngā pae ahunga te whānuitanga ritenga mā `--min` (`0` hei taunoa), `--value`, me `--max`
+(`100` hei taunoa), me ngā ingoa āwhina kua whakakorehia `--value-now` me `--value-max`. Tāpirihia `-should-animate`
+kia hoatu te panoni haurua-hēkona a InstUI ina hurihia te uara. `.value` ka noho i te taha o `.bar` hei
+tamaiti o te pakiaka; tāpirihia `-render-value-inside` kia whakaahuatia tēnei i runga i te ara, kia taurite ki tōna tīmatanga,
+nā te tikanga (whakaritehia kia kākāriki ki te tae mita). Whakamahia tētahi `<progress>` taketake hei
+awhe tūnga-kore, me `<meter>` ina kore-zero te iti rawa; ka tīpako a ngā wāhanga paetukutuku i waenga i ēnei mā te āhuatanga `min` arotahi. Kāore he āhua kore-tau i roto i InstUI, nō reira ko te `<progress>`
+kore ana te āhuatanga `value` he tatauranga-a-pantoken anake: `progress-bar` ka whakamāhorahora i `.bar` hei
+wāhanga hīrere, ā `progress-circle` ka hurihuri i tōna mekameka i tētahi kokonga tūnga, e huna ana hoki `.value`.
 
 ```html
 <label>
@@ -97,11 +96,10 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+E whakaaehia ana hoki e ngā porowhita pae te taua whānuitanga mā `--min`, `--value`, me `--max`.
+Kei te noho hei āwhina mahi tonu ngā `--value-now` me `--value-max` kua whakakorehia. Tāpirihia `-should-animate` ka
+uta i te kohinga taunekeneke arotahi kia hanga anō te whakatūnga whakauru o InstUI; ko `--animation-delay` he whakatā-kore wā ahurei. Kei te noho hei ingoa
+āwhina mahi tonu ngā `-should-animate-on-mount` me `-shold-animate-on-mount` kua whakakorehia.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,11 +115,11 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## Tohu karaehe
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+Ka āhukahuka ia karaehe ki te ingoa ā- momo `instui-` hei taunoa. Hangaia tētahi pepa-kāhua me tō ake tūmataraa — kāore ranei — mā te
+tuku `prefix` ki tētahi kaiwhakakī. Mēnā he uara pāheke (`null`, `undefined`, `""`, rānei kia waiho), ka
+tango katoa te tūmataraa, nō reira ka taea te kaituhi `class="heading -level-h1"` hei utu mō `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,62 +128,61 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+Ko ngā whakakāhoretanga te-pāpāho tetahi-tae (`.-color-secondary`, `.-level-h1`) kāore i huri ahakoa pēhea. Ko ngā
+pepa-kāhua i tukuna e te kete e pupuru tonu ana i te tūmataraa `instui`.
 
-## Base
+## Turanga
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+Ko `base.css` he whirihora kōwhiringa e tautuhi ana i ngā taunoa tuhinga o te tuhinga mai i ngā tohe: `box-sizing`, he
+whakaweto `body`, te mata whārangi, te tae tuhinga turanga me te momotuhi, `color-scheme` (nā reira ka whai tohu `light-dark()` me ngā tūemi mana nō te pūnaha),
+me tētahi hono tūpato turanga. Utaia kotahi anake, i mua i ngā pepa wāhanga me te pepa tuhi
+ina ko pantoken te rangatira o te whārangi.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+Kaua e utaina ina whakauru koe i ngā wāhanga ki tētahi mana ahakoa e whakarite ana i āna ake `html` me `body` — ka whakakākahuria te whakaahua whārangi e te whakaweto, nō reira kāore koe e hiahia kia whakataetae te mana. Ko ngā mea katoa e tautuhia ana e ia e whakamahi ana i ngā
+kōwhiringa kaha-iti `:where()`, nō reira ka manumanu tonu āu ake ture.
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+Ko `base.css` e tau ana te momotuhi waitohu (`font-family: var(--instui-font-family-base)`, me ngā
+taumata pūnaha tairitenga); kia _uta_ ia, kawemai te `fonts.css` kōwhiringa — `@font-face` ture mō Atkinson Hyperlegible
+Next, e tohu ana ki ngā woff2 kua tukuna i roto i te kete. He motuhake nā te mea ko ngā āhuatanga he ~350 kB
+ā, ā, ko te manaaki ake i ngā momotuhi he kōwhiringa whai whakaaro.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Screen reader content
+## Ihirangi kaituhi mata
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>Kei reira tētahi karere huna muri i tēnei rerenga.<span class="instui-screen-reader-content">Ko ngā kaituhi mata anake e pānui nei.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+Kei te huna e `.instui-screen-reader-content` tētahi wāhanga i te tirohanga ahakoa ka waiho ia i roto i te rākau tūnga —
+mō ngā tūtohu me ngā kuputuhi tūnga e pānuitia ana e ngā taputapu āwhina engari kāore e whakaatuhia e te hoahoa.
 
-## Utilities
+## Ngā Rauemi
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+Ko `utilities.css` he papanga kōwhiringa o ngā karaehe whakawhiti-whakakapi: tētahi pūmua `View`, te wāhi i runga i te
+taumata tohu, me ngā whakaweto tae whai tikanga. Ka rereke ki ngā karaehe `-modifier` wāhanga, ka whakamahi ēnei he **tawhito rua**
+(`--mod`) kia kaua rātou e tūtaki ki ngā ingoa whakakāhoretanga o tētahi wāhanga, ā, ka taea te tono ki runga i tētahi
+wāhanga — ā-tuhi, rānei kua hangaia ki runga i tētahi wāhanga.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">Te mata ā-papura-accent me te kuputuhi on-color.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">Whakakotahi ki waenga mā te mx-auto.</span>
 </div>
 
 ```html
@@ -193,35 +190,31 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — ko `.instui-view` te `View` o InstUI. Koia te turanga e whakauruhia ai te wāhi me te tae, ā, ka
+pūtaha i ngā kī-uara mō ōna ake āhuatanga ā-visual kia kore koe e hiahia ki ngā utilities:
+`-background-*` (ōna mata), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, me `-cursor-*` — ko ēnei ngā
+whakakāhoretanga tokorua-tae-a-`view` anō, kāore e pā ki ngā utilities rua-tae i raro. Ko ngā prop uara-kore
+(whānui/teitei/taunga) ka mau tonu hei kōrero ā-ipurangi; `margin`/`padding` whakamahia ngā utilities wāhi.
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**Whakatau Wāhi** — ngā karaehe mō ia taha i runga i te tauine wāhi. Pānuitia hei `{m|p}{side}-{step}`: `m` mō
+margin rānei `p` mō te padding (rānei ngā kupu katoa `margin`/`padding`), tētahi taha whakarite,
+ā, tētahi hipanga. Nō reira ko `.--m-lg` me `.--margin-lg` he ōrite, ā ko `.--pt-md` me `.--paddingt-md` ano hoki.
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- Ngā taha: kāore (katoa), `t`/`b` (tīmata/whakamutunga poraka), `s`/`e` (tīmata/whakamutunga tuhinga), `x`/`y` (tuaka tuhinga/poraka). Ka tika tonu ngā taha whai tikanga i ngā whakatakotoranga mata-matau-ki-te-matana.
+- Ngā hipanga: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, me `auto` mō te margin anake.
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
+Whakakotahitia ērā mō te kupu poto `margin="small auto large"` o InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**Tae** — ngā whakaweto whai tikanga e noho ana i runga i te papa tae: `.--bg-<name>` (papamuri),
+`.--text-<name>` (tae kuputuhi), me `.--border-<name>` (tae here). Ia `<name>` he
+taonga tae whai tikanga — ngā whāinga (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) me te kāhui `accent-*` palette (`accent-blue`, `accent-green`, me ērā atu). Ko te ingoa kei reira anake mēnā kei te token taua whenua i taua whānau, nō reira kāore te `text-brand` he karaehe — kāore he token waitohu mō te tuhinga. Kāore he huarahi ki te toro atu ki tētahi kawenga nohonga rānei he hex arā-tonu, ā ia whakaweto ka whai i te kaupapa.
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**Ngā whānau token** — ia whānau "kotahi token, kotahi rawa" ka whiwhi karaehe mō ia token, kua ingoa i muri i te
+token. Whakakotahitia kia āta:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +222,29 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost` (me `-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+Ia mea ka tautuhi anake i tana rawa kotahi, nō reira me tētahi `border-*` tae me tētahi momo here kia kitea tētahi here tūturu mō `border-width`/`border-radius`. Ka whakamahi ēnei i te ingoa token katoa (`.--border-radius-md`), ā, ko ngā āwhina tae me wāhi i runga ake nei ka whakamahi i ngā ingoa pātea (`.--bg-brand`, `.--mt-lg`) — he poto ngā āwhina; ko ngā karaehe token he pūmuri me te kapi katoa.
 
-**Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+**Raupaparanga** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+`none`) me `.--text-align-<value>` (`start`, `center`, `end`, `justify`) e kapi ana i ngā
+prop whakawhiti-whakakāhore o InstUI (`display` me `textAlign`) (View, Button, Metric, Tabs, …) hei karaehe ka taea te whakakotahi —
+nā reira ehara ēnei i te whakakāhoretanga mō ia wāhanga.
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+Ka toa tonu te karaehe rua-tae i te takiwā i runga i tētahi whakakāhoretanga wahanga-rua-tae kotahi-namu, ahakoa te raupapa uta pepa-kāhua — tirohia [Ngā tikanga kaituhi](/conventions/authoring)
+mō te mekameka.
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+Ko ngā mea katoa i konei he CSS mārama e whakahaerehia ana e ngā token `--instui-*`, nō reira ka whai te papa kōrero InstUI mā te paparanga token.
+Tirohia te [tohu API](/api/) mō `componentsCss` me ngā kaiwhakakī per-wāhanga.
 
-## Overlays: dialog and popover
+## Ngā Tāpiri: kairere me popover
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
+Ka eke ngā wāhanga tāpiri ki ngā pūnaha taketake o te tūmau, nō reira ka whanonga haumaru me te iti rawa te
 JavaScript.
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — tāpirihia `.instui-modal` ki runga i tētahi `<dialog>` taketake. Ka riro māna te paparanga rēinga, te `Esc`-kia-kati, me tētahi
+`::backdrop` hei kore utu; ka mākona te papamuri me te token `--instui-component-mask-background-color`
+tahi me `.instui-mask` (tāpiri `-blur` kia mārō). Whakatuwherahia, kati mā ngā whakahau invoker — kāore he skripti:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +257,20 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**Context view / popover** — tāpirihia `.instui-context-view` ki runga i tētahi `[popover]` āhua ka hurihia mā
+`popovertarget`. E tū ana i runga i te papa o runga ka whakamāharatia mā te pāwhiri i waho rānei `Esc`, ā, kāore he skripti:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**Rārapa drawer** — tāpirihia `.instui-drawer-layout` ki runga i tētahi pakiaka whakarite me ngā tamariki `.tray` me `.content`.
+Tāpiri te āhuatanga `open` (rānei `-open`) kia whakaatu i te ipu, ā, whakamahia `placement="end"`
+(rānei `-placement-end`) kia taurite ki te taha mutunga-ipurangi — ka whakatauhia te tuunga mā ngā
+taonga `inset-inline-*`/`flex-direction` whai tikanga, nō reira ka hurihia aunoa i raro i `dir="rtl"` me te kore ture taapiri. Ko te kohinga taunekeneke arotahi ka tāpiri i te ara whakahau Invoker me te hurihuri i te aratau tāpiri
+(`should-overlay-tray`) ina wehe te whanui i te `--drawer-layout-min-width` (taunoa
+`--instui-breakpoints-sm`, katahi `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +281,21 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — ka whakamahia te `.instui-mask` mō ngā tāpiri e rere ana i roto i te toka (he topata i runga i tētahi kāri); ko te `::backdrop`
+o te modal ka kapi i te wā o te modal.
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
-native popover).
+E whakakapi ana ēnei tauira hei wāhanga ritenga whai whanonga i `@pantoken/web-components`:
+`<instui-modal open>` (he `<dialog>` e whakahaerehia ana e tōna āhuatanga `open`) me `<instui-context-view>` (he
+popover taketake).
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+Tautoko pūtirotiro: ko te API popover me `popovertarget` he Paerewa 2024; ko ngā whakahau invoker
+(`command`/`commandfor`) he Paerewa 2025, nō reira i runga i ngā pūtirotiro tawhito ka hono noa ngā pātene ki `dialog.showModal()`
+hei whakahokia-kotahi. Ko te tūunga i tētahi popover i te taha o tōna whakaoho ka whakamahi i te tūnga piri CSS i runga i te tautoko (Chromium);
+ki ērā wāhi ka arotahi ki te papa o runga.
 
-## Forms
+## Ngā Puka
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — ko `.instui-form-field` he wrapa CSS-Grid e whakatakoto ana i tētahi tapanga, te mana, me ngā karere katoa. Tāpirihia ki runga i tētahi `<label>` kia hono te tapanga ki tōna mana māori. Kei a ia e toru ngā wāhi rārangi — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +307,24 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+Ko `-layout-stacked` (taunoa) ka tūteke ngā wāhi; ko `-layout-inline` ka whakaatu te tapanga i te taha o te mana (whakaritea mā te `-label-align-{start,end}` me `-v-align-{top,middle,bottom}`). Ka whakarerekē te tae o te tapanga mā te `-readonly`.
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+Ko te **asterisk taketake** ka puta ina hiahiatia te mara mā _tētahi_ o te karaehe `-required` _rānei_ mā tētahi
+mana `required` taketake kei roto — nō reira ka taea noa te whakarite `required` ki runga i te kōkiri kia whiwhi te tohu.
+He whakapaipai (he `::after` ki runga i te tapanga, kei waho o te rākau uru); hono atu ki tētahi tūtohu pēnei
+"ko ngā wāhanga kua tohu \* he hiahiatanga" mēnā kāore te puka e tino mārama ana.
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — ko `.instui-form-field-group` ka tāpiri i ngā wāhanga whai hononga ki tētahi `<fieldset>` me tētahi
+whakamārama `<legend>`. He mahinga whakatakoto noa (kāore he token motuhake): ko te tūtohi taunoa ka tūteke i ngā wāhanga;
+`-layout-columns` / `-layout-inline` ka whakarite i ngā wāhanga ki roto i ngā pou urupare, me `-row-spacing-*` /
+`-col-spacing-*` me `-v-align-*` hei whakaniko i te rārangi.
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — ko `.instui-radio-input-group` te taua kōpiritanga `<fieldset>`/`<legend>`,
+kua motuhia mō ngā irarangi. Nā te mea ka whakapaehia e ngā irarangi tamariki tētahi `name`, he kōwhiringa kotahi-taonga ā-tangata —
+nā reira ka mahi tētahi huinga pātene tāwhiti hei kotahi mana, ehara i ngā pātene wehe. Ko `-variant-simple` (taunoa) ka whakarite
+i ngā irarangi paerewa (`-layout-columns`/`-inline` ka whakawhānui ki te rārangi); ko `-variant-toggle` ka hono i ngā
+pātene `.instui-radio.-variant-toggle` tamariki hei mana wāhanga kotahi (ngawari ngā here,
+pōro o waho):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +337,33 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**Ngā Karere** — ko `.instui-form-field-messages` te ipu; ia `.instui-form-field-message` ka tango i tētahi
+`-type-*`: `-type-hint` (kōura, taunoa), `-type-error` (kuputuhi whero + ata porowhita-tūpuni), `-type-success`
+(kuputuhi kākāriki + ata porowhita-tīkina), me `-type-screenreader-only` (kāore e kitea i te tirohanga, engari ka pānuitia tonu).
+Ka peitahia ngā ata i roto i `currentColor`, nō reira ka taurite tonu ki te tae karere. Ko `-type-new-error` he ingoa kua whakakorehia mō `-type-error`. Honohono te ipu ki te mana mā `aria-describedby`, ā, tautuhia
+`aria-invalid` ki te mana ina he hapa.
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+I roto i tētahi FormField, ka whai te karere `-type-error` i te tohu-kiritaki o te kaitirohanga: ka noho huna kia tae noa ki te
+mana o te mara kia `:user-invalid` (tārite, i muri i te whakahoatanga mai o te kaiwhakamahi) — rānei ka ūnāia e koe mā te `-invalid`
+i runga i te `.instui-form-field` (mō tētahi hapa server-side). He kore pānga te `.instui-form-field-messages` tū-tawhito (kāore i roto i
+tētahi wāhanga). Ka whai hoki te mekameka aro ki te mana: mō te mōrearea ina `:user-invalid`/`-invalid`,
+mō te angitūtanga ina `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**Ngā mana kuputuhi** — `.instui-text-input` ( `<input>` taketake), `.instui-text-area` ( `<textarea>` taketake,
+ka taea te whakarerekē), me `.instui-simple-select` ( `<select>` taketake me tētahi caret) ka tiritiri i tētahi āhua kotahi me ngā
+āhua ōrite: `-invalid` (here hapa), `-success` (here angitū), `-readonly`, `:disabled` taketake, me
+`-size-{sm,md,lg}`. Mō tētahi ata ā-mua/ā-muri (InstUI `renderBeforeInput`/`renderAfterInput`), whakakīia te tomokanga ki `.instui-input-group` ka tāpirihia he toenga `.before`/`.after` (he ata `-icon-*`); ka
+noho-tahi te `-should-not-wrap` ki runga i te rārangi kotahi. Ko `.instui-number-input` te kanohi ā-tuakiri me tētahi whiti `.arrows` +/- (kolamu spinner) ( `type="number"` taketake; hono ngā pātene ki `stepUp()`/`stepDown()`). Ko `.instui-range-input` he
+`input[type="range"]` kua whakaahua e te kāhua āna uara ka whakaaturia i roto i tētahi `.instui-range-input-value` pūāhua. Mō tētahi combobox rikiriki me tētahi popover rārangi, whakamahia `@instructure/ui` — ka kapi tēnei whare i ngā mana taketake.
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**Pūkete kōwhiri kua whakapaipai (arotake)** — he `select.css` kōwhiringa ka whakahou i te taua
+ēnei `.instui-simple-select` taitara: ka whakapaipai i te pātaka tūwhera (te pani me ia kōwhiringa, me ngā āhua hopu me te tīpakonga) mā te tauira Select Ka taea te Whakarite CSS.
 
 > [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> E whakawhirinaki ana `select.css` ki `appearance: base-select` / `::picker(select)`, ā, he **arotake**
+> (Chrome 135+, kāore anō kia Paerewa). Kua tukuna hei pepa-kāhua motuhake kōwhiringa, ā ia ture kua herea ki muri o `@supports (appearance: base-select)`, nō reira kāore he mahi i ngā pūtirotiro kāore i tautokona — ko te
+> `.instui-simple-select` noa te mana kōwhiri taketake. Utaia mēnā e hiahia ana koe i te
+> kōwhiri hurihuri kua whakapaingia me te whakaae ki te tautoko herekore.
 
 ```ts
 import "@pantoken/components/components.css";

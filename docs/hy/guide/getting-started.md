@@ -1,47 +1,34 @@
-# Getting started
+# Սկիզբ
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken-ը վերցնում է Instructure UI-ի դիզայնի տոկենները և պատկերակները, լուծում է դրանք մեկ անգամ և այդ մեկ մոդելը վերաձևավորում է բազմաթիվ հարթակների համար՝ սովորական ոճաթերթեր, SCSS և Less, React և Vue և Svelte, Tailwind և Panda, տեղական Swift և Kotlin, WordPress և Drupal, Figma և այլն։
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Տեղադրեք այն ամենափոքր փաթեթը, որը համապատասխանում է ձեր խնդրին։ Բոլորը նաև վերարտահանվում են միավորված `pantoken` փաթեթով, այդպիսով կարող եք սկսել այնտեղից և հետագայում նեղացնել ընտրությունը։
 
-## Scaffold a starter project
+## Սկիզբի նախագիծ scaffolding
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+Ամենաարագ ձևը pantoken-ը փորձելու՝ scaffold անել սկսնակ նախագիծ, որտեղ այն արդեն տեղադրված և կապված է։
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Հարթակներ՝ `components` (ամբողջական HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. ՀՏԵՂ [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold)՝ `--dir <path>` և ծրագրային օգտագործման գործառույթների համար։
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+Օգտագործում եք AI կոդավորման գործակալ՞ — ոչ մի տեղադրում անհրաժեշտ չէ — ուղղեք նրան անմիջապես այս skill-ին։
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Այն նույն կերպ է աշխատում Gemini CLI‑ի, Cursor CLI‑ի, OpenAI Codex CLI‑ի, GitHub Copilot CLI‑ի և Amazon Q Developer CLI‑ի համար — փոխարինեք `claude`‑ը `gemini`, `agent`, `codex`, `copilot -p`, կամ `q chat`‑ով համապատասխանաբար։ Եթե նախընտրում եք pantoken-ի գործակալի կանոնները ներդնել պահապան կերպով ռեպոյում (AGENTS.md, խմբագրիչի կանոններ, այս skill-ի տեղական պատճեն), կիրառեք `npx @pantoken/ai init`։
 
-## The token model
+## Տոկենների մոդելը
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Տոկենները CSS-ի custom properties են, անունները `--instui-<group>-<name>`, օրինակ `--instui-color-background-brand` կամ `--instui-spacing-space-md`. Առաքվում են երեք թեմաներ՝ `rebrand` (ստանդարտը, որտեղ `light-dark()` տարբերություններ կան լույսի և մթության միջև), `canvas`, և `canvasHighContrast`։ Պիկտոգրամները `<image>` տոկեններ են (`--instui-icon-<name>`), որոնք مشتق են Lucide-ից և Instructure-ի հարմարեցված գրավներից։
 
-## Style a web app
+## Վեբ հավելվածի ոճավորում
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Տեղադրեք ոճաթերթը և ներմուծեք այն մեկ անգամ։ Այն սահմանում է բոլոր `--instui-*` հատկությունները, այնպես որ դրանք ուղղակիորեն կարող եք ճշգրտել ձեր սեփական CSS-ում։
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +45,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Պիկտոգրամները օգտագործել ցանկացած վայրում
 
-The web component works in any framework, with no porting.
+Վեբ կոմպոնենտը աշխատում է ցանկացած ֆռեյմվորքում՝ առանց պորտական աշխատանքի։
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### CSS տոկեններ
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Պիկտոգրամները CSS custom properties են (`--instui-icon-<name>`)։ Լավաշեք ոճաթերթը մեկ անգամ և վերաբերվեք ցանկացած պիկտոգրամի որպես `mask-image` կամ `background-image` — մշտական առանձին ներմուծումների կարիք չկա։
 
 ```css
 .my-icon {
@@ -85,10 +71,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — մեկ պիկտոգրամ vs ամբողջ հավաքածու
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` բացում է երկու անունավորված արտահանող։ Օգտագործեք `iconsByName` մեկ պիկտոգրամ վերցնելու համար առանց ամբողջ զանգվածը թերթելու։
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Օգտագործեք `icons` երբ ձեզ պետք է ամբողջ հավաքածուն (օր․ ընտրիչ ստեղծելու համար)։
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+Երկու արտահանումներն էլ բեռնում են ամբողջ IR‑ը մոդուլի ինիցիալիզացիայի ժամանակ — այս մակարդակում պեր‑պիկտոգրամի tree‑shaking չկա։ Հիդ բացարձակաբար CSS‑միայն բեռների համար օգտագործեք [CDN picker](/guide/cdn-picker)՝ միայն անհրաժեշտ պիկտոգրամների համակցված URL ստեղծելու համար։
 
-## Generate for a native platform
+## Ծնված որպես բնիկ հարթակ
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI‑ն գրում է տոկենների աղբյուրը՝ նպատակային ռեպոյում։ Բացի ռաններից, տեղադրում անհրաժեշտ չէ։
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Տարբեր նպատակների համար տես [the pantoken CLI](/guide/cli)։
 
-## VS Code authoring hints
+## VS Code հեղինակագրման հուշումներ
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` այժմ ուղարկում է VS Code‑ի custom-data ֆայլեր, որպեսզի սպառող նախագծերը կարողանան ստանալ class և token completion HTML/CSS-ում առանց pantoken‑ման հատուկ ընդլայնման տեղադրման։
 
-1. Install the unified package:
+1. Տեղադրեք միավորված փաթեթը՝
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Նշեք VS Code‑ը այն ուղարկված custom-data JSON-ի վրա ձեր սպառողի workspace‑ից՝
 
 ```json
 {
@@ -140,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Արևացրեք VS Code‑ը (կամ চালեք "Developer: Reload Window")՝ նոր տվյալները կիրառելու համար։
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Սա միացնում է առաջարկները `instui-*` class տոկենների (և `-modifier` class տոկենների) համար, ինչպես նաև `--instui-*` custom properties‑ի համար։
 
-## Where to next
+## Որտեղ հաջորդ
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [Փաթեթների քարտեզը](/guide/packages) — ինչ փաթեթը վերցնել՝ ըստ առաջադրանքի։
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ինստաղի գործակալային ակտիվներ և կանոններ տեղադրեք սպառող ռեպոյում։
+- [Արթեկտուրա](/guide/architecture) — ինչպես տոկենների մոդելը, core‑ը և ելքերը համադրվում են։
+- [API հղում](/api/) — բոլոր արտահանված սիմվոլները, գեներացված աղբյուրից։

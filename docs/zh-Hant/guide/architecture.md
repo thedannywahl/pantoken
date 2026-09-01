@@ -1,10 +1,8 @@
-# Architecture
+# 架構
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken 的一項工作：一次性解析 Instructure 的設計 tokens 與圖示，然後為每個目標重新塑形該模型。下列各層保持該重塑過程的正確性，並確保已發佈的套件不會攜帶任何僅限 GitHub 的上游依賴。
 
-## The layers
+## 層級
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** 保持類型契約（type contracts），僅此而已。它是 `Token` 結構與插件契約的事實來源，且完全沒有依賴，因此任何套件都可以自由地依賴它。
+- **`@pantoken/core`** 是唯一接觸上游來源的套件。它將 tokens 與圖示解析成典範的中繼表示（canonical IR）並渲染 CSS。
+- **`@pantoken/tokens`** 在建置時將該 IR 以靜態 JSON 形式打包。這是解耦點：下游套件讀取 `@pantoken/tokens`，而非 `@pantoken/core`，因此 `npm i pantoken` 永遠不會去取用僅限 GitHub 的上游。
+- **`@pantoken/utils`** 擔負共用輔助工具 —— `var(--x)` 解析器、參考用正規表達式、大小寫與顏色轉換，以及保持輸出與 IR 一致的漂移檢查（drift checks）。
 
-## Why tokens are vendored
+## 為何要把 tokens 打包
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+上游的 token 套件放在 GitHub，而非 npm。如果每個下游套件都依賴它，`npm i pantoken` 對於沒有該存取權的人會失敗。取而代之，`@pantoken/tokens` 在建置時只解決一次上游並將結果寫到靜態 JSON。已發佈的套件攜帶該 JSON，因此可以從 npm 乾淨安裝、鎖定 semver，並支援離線使用。
 
-## Buckets
+## 存放桶（Buckets）
 
-Each downstream bucket is a way of consuming the IR:
+每個下游 bucket 是消費 IR 的一種方式：
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — 將 tokens 轉成檔案（CSS、SCSS、Less、Stylus、DTCG）。
+- **renderers/** — 框架與工具整合（React、Vue、Svelte、MUI、Pendo 等）。
+- **bundlers/** — 建置工具的外掛與預設（Vite、Next、Tailwind、Panda、PostCSS、webpack）。
+- **platforms/** — 原生與站點產生器目標（Swift、Kotlin、Rust、WordPress、Drupal）。
+- **design/** — 提供給設計工具的 payload（Figma、色票）。
+- **plugins/** — 擴展 token 或 CSS 輸出的可選轉換。參見 [Plugins](/guide/plugins)。
 
-## Generated output
+## 產生的輸出
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+每個輸出檔案的套件會將其寫入每個套件的 `generated/` 目錄，該目錄由建置程序重現，因此不會把任何生成的內容提交。工作區任務會驗證所有內容。參見 [Generated output](/guide/generated-output)。

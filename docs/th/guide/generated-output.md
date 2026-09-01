@@ -1,36 +1,33 @@
-# Generated output
+# เอาต์พุตที่สร้างขึ้น
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+แพ็กเกจ pantoken หลายตัวสร้างไฟล์ในระหว่างการสร้าง — ไฟล์สไตล์ชีต, `theme.json`, โมดูลโทเค็นที่ฝังอยู่ เพื่อรักษาคลังให้สะอาดและให้ผลลัพธ์ตรงตามจริง ทุกแพ็กเกจจึงปฏิบัติตามข้อกำหนดข้อเดียวและงานใน workspace จะตรวจสอบทั้งหมด
 
-## The `generated/` convention
+## พฤติกรรม `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+ทุกแพ็กเกจที่ผลิตอาร์ติแฟ็กต์การสร้างจะเขียนลงในไดเรกทอรี `generated/` ต่อแพ็กเกจเท่านั้น และไม่มีอย่างอื่นอยู่ที่นั่น กฎข้อเดียวใน `.gitignore` ครอบคลุมทั้งหมด:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+ดังนั้นไม่มีไฟล์ที่สร้างขึ้นถูกคอมมิต — การสร้างซ้ำจะสร้างไฟล์นั้นขึ้นมา สองประเภทของผลลัพธ์ตกลงที่นั่น:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **สเตติกที่พร้อมส่ง** — ไฟล์ที่ผู้บริโภคนำเข้า เช่น `@pantoken/css`'s `style.css` หรือ
+  `@pantoken/scss`'s `tokens.scss` แผนที่ `exports` ของแพ็กเกจเก็บคีย์สาธารณะ
+  (`"./style.css"`) แต่ชี้ไปที่ `generated/` ดังนั้น API ของผู้บริโภคจึงไม่เปลี่ยนแปลง
+- **อินเทอร์มีเดียทของการสร้าง** — ไฟล์ที่ซอร์สของแพ็กเกจนำเข้าและบันเดิลเข้าเป็น `dist` เช่น
+  JSON ที่ฝังมาใน `@pantoken/tokens` เหล่านี้จะไม่ถูกเผยแพร่แยกต่างหาก; พวกมันถูกคอมไพล์เข้าไป
 
-## Validating the output
+## การตรวจสอบเอาต์พุต
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (เครื่องมือภายใน) ทำงานหลังการสร้างและตรวจสอบสามอย่าง:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. แพ็กเกจตัวสร้างแต่ละตัวเขียนไดเรกทอรี `generated/` ที่ไม่ว่างจริง,
+2. CLI `pantoken` สร้างไฟล์อย่างน้อยหนึ่งไฟล์สำหรับแต่ละเป้าหมายที่รองรับ, และ
+3. ไม่มีสไตล์ชีตที่สร้างขึ้นไหลเบี่ยงจาก IR ของโทเค็น — `danglingReferences` สำหรับชีตที่ประกอบตัวเองครบถ้วน,
+   และ `unknownReferences` สำหรับบริดจ์ที่อ้างอิงโทเค็นที่กำหนดไว้ที่อื่นเท่านั้น
 
-## Commands
+## คำสั่ง
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+ตัวตรวจสอบยังผูกเข้ากับ `pnpm run ready` ดังนั้นการไหลเบี่ยงจะถูกจับในเกตมาตรฐาน

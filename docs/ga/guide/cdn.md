@@ -1,53 +1,49 @@
-# CDN & distribution
+# CDN & dáileadh
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+foilsíonn pantoken gach pacáiste chuig npm, mar sin is féidir leat tarraingt ar na tokení, na comhpháirteanna, agus na comhpháirteanna gréasáin go díreach
+ó CDN — gan céim tógála, gan bundler. Clúdaíonn an leathanach seo an URL comhtháthaithe CSS (le tógálaí idirghníomhach),
+agus na drop-ins do na web-components.
 
-## The token foundation
+## Bunús na dtokán
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Léann gach comhpháirt pantoken `--instui-*` airíonna saincheaptha ó bhileog tokení ar an leathanach. Seoltar dhá
+leagan:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — an bunús CDN molta. Iompraíonn sé gach token seachas an
+  tacar iomlán de shiombailí, mar sin tá sé thart ar 23 KB gzipped.
+- `@pantoken/css/dist/style.css` — an bileog iomlán, lena n-áirítear na thart ar 1,777 siombailí íocón
+  (`--instui-icon-*`). Thart ar 140 KB gzipped. Luchtaigh é seo má luaigh tú íocóin go forleathan trí
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Tá an scála ardaithe agus na hathróga fáinne fócasaithe araon sna bileoga, mar sin oibríonn scáthanna agus an fáinne fócasaithe le
+bunús amháin luchtaithe.
 
-## Pick your components and icons
+## Roghnaigh do chomhpháirteanna agus do shiombailí
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+Tógann an [CDN picker idirghníomhach](/guide/cdn-picker) URLanna comhtháthaithe jsDelivr do CSS agus snippets do phacáistí JavaScript. Oscail é, seiceáil cad is gá duit, agus cóipeáil an t-aschur ginte.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Cluaisín Comhpháirteanna** — roghnaigh stíleanna bileoga comhpháirte aonair nó an biorclár iomlán `components.css`. Cuir an cíor bunús nó na siomptóga spásála/dathanna má tá siad ag teastáil uait.
+- **Cluaisín JS** — cóipeáil sliocht allmhairithe ESM do `@pantoken/interactions`.
+- **Cluaisín Íocón** — roghnaigh íocóin aonair ó thacar InstUI (thart ar 1,800 íocón) nó ó Simple Icons (thart ar 3,300 giolcacha branda). Tá URL comhtháthaithe ar leith ag an picker do na comhaid CSS íocón ionas gur féidir leat luchtú ach na híocóin atá uait a dhéanamh.
+- **Cluaisín Web Components** — tógann sé snippets `@pantoken/web-components` (clárú roghnach ESM nó bootstrap script clasaiceach).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Tá gach comhad comhpháirte beag — tá formhór thart ar 2 KB. Teastaíonn na giolcanna sin ó chomhpháirt a léireoidh íocóin (`alert`, `checkbox`,
+agus roinnt eile) , mar sin cuireann an tógálaí `@pantoken/components/dist/component-icons.css` (thart ar
+0.5 KB gzipped — na 11 íocón a úsáideann an tacar comhpháirte) gach uair a roghnaíonn tú an bileog caol. Tá siad cheana féin sa bhileog iomlán.
 
-### Load order and fonts
+### Ordú luchtaithe agus clóanna
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Luchtaigh an bunús tokení ar dtús, ansin an cíor bunús roghnach, ansin comhaid na gcomhpháirteanna, agus na siomptóga faoi dheireadh — is uirlisí osclaíoch iad sin, mar sin ní dhéanann siad ach rialachán comhpháirte a shárú nuair a thagann siad ina dhiaidh i gcáscáid. Tá an URL comhtháthaithe thuas ordaithe cheana duit. Is é clóanna an t-aon eisceacht:
+tagann `@pantoken/components/dist/fonts.css` ag pointeáil chuig comhaid cló trí bhealach gaolmhar, mar sin ní féidir le combine iad a athscríobh — luchtú mar `<link>` féin é:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Gach rud ag an am céanna
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Seiceáil **All components** sa picker chun é a athrú go dtí an biorclár, nó pointigh leat féin air (thart ar 141 KB
+gzipped) in aice leis an bhileog tokení:
 
 ```html
 <link
@@ -58,12 +54,12 @@ gzipped) alongside the token sheet:
 
 ## Web components
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+Cláraíonn `@pantoken/web-components` eilimintí saincheaptha `<instui-*>` gan brath ar fhrámaimhe. Ionaidíonn siad a
+CSS féin, ach léann siad tokení fós ó bhileog ar an leathanach, mar sin luchtú bunús tokení freisin.
 
-### ES modules (recommended)
+### Modúil ES (molta)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Réitíonn CDN ESM spleáchais an phacáiste duit. Cláraíonn sé gach eilimint:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +68,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Bain úsáid as an bhileog tokení iomlán (nó an bileog caol le `component-icons.css`) ionas go réiteofar ainglocha íocón-léirshúcháin cosúil le
+`<instui-alert>` a ngiolcanna.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Chun roinnt eilimintí amháin — agus a ndíthchláir fholaithe — a chlárú, allmhaigh `register` agus pas `only`:
 
 ```html
 <script type="module">
@@ -85,20 +81,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Lipéad script clasaiceach
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Chun drop-in gan modúil, luchtú an tógáil IIFE. Pacálann sé a spleáchais agus a chláraíonn gach
+eilimint go huathoibríoch ar luchtú, ag nochtadh globál `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Tá sé níos mó ná an bealach ESM — ionaithníonn sé `@pantoken/components` agus `@pantoken/icons` — mar sin bain as é
+amháin nuair nach féidir leat modúil a úsáid.
 
-## Pinning versions
+## Pináil leaganacha
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Leanann na URLanna thuas — agus na cinn a scríobhann an picker — an scaoileadh is déanaí. Pináil leagan mór (nó cruinn)
+don táirgeadh — mar shampla `@pantoken/css@0` — ionas nach gcuirfeadh uasghrádú iontas ort riamh.

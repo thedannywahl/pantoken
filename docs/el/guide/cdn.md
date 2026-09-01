@@ -1,53 +1,53 @@
-# CDN & distribution
+# CDN & διανομή
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken δημοσιεύει κάθε πακέτο στο npm, οπότε μπορείτε να τραβήξετε tokens, components και web components απευθείας
+από ένα CDN — χωρίς βήμα build, χωρίς bundler. Αυτή η σελίδα καλύπτει το URL συνδυασμού CSS (με έναν διαδραστικό
+builder), καθώς και τα web-component drop-ins.
 
-## The token foundation
+## Το θεμέλιο των tokens
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Κάθε pantoken component διαβάζει `--instui-*` custom properties από ένα token sheet στη σελίδα. Δύο
+παραλλαγές παρέχονται:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — το συνιστώμενο CDN θεμέλιο. Φέρει κάθε token εκτός του
+  πλήρους συνόλου εικονιδίων, οπότε είναι περίπου 23 KB gzipped.
+- `@pantoken/css/dist/style.css` — το πλήρες sheet, που περιλαμβάνει όλα τα ~1,777 icon glyph tokens
+  (`--instui-icon-*`). Περίπου 140 KB gzipped. Φορτώστε το αν αναφέρετε εικονίδια ευρέως μέσω
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Η κλίμακα elevation και οι μεταβλητές focus-ring υπάρχουν και στα δύο sheets, οπότε οι σκιές και ο δακτύλιος εστίασης δουλεύουν με
+μόνο το θεμέλιο φορτωμένο.
 
-## Pick your components and icons
+## Επιλέξτε τα components και τα icons σας
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+Ο [interactive CDN picker](/guide/cdn-picker) κατασκευάζει jsDelivr combine URLs για CSS και αποσπάσματα για πακέτα JavaScript. Ανοίξτε το, επιλέξτε ό,τι χρειάζεστε και αντιγράψτε την παραγόμενη έξοδο.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components tab** — επιλέξτε μεμονωμένα stylesheets component ή το ολόκληρο βαρέλι `components.css`. Προσθέστε το base reset ή τα utilities spacing/color αν τα χρειάζεστε.
+- **JS tab** — αντιγράψτε ένα ESM import snippet για `@pantoken/interactions`.
+- **Icons tab** — επιλέξτε μεμονωμένα icons από το σύνολο InstUI (~1,800 icons) ή από τα Simple Icons (~3,300 brand glyphs). Ο picker παράγει ξεχωριστό combine URL για τα icon CSS αρχεία ώστε να φορτώνετε μόνο τα icons που πραγματικά χρησιμοποιείτε.
+- **Web Components tab** — δημιουργήστε `@pantoken/web-components` αποσπάσματα (ESM selective register ή classic script bootstrap).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Κάθε αρχείο component είναι μικρό — τα περισσότερα είναι γύρω στα 2 KB. Ένα component που εμφανίζει icons (`alert`, `checkbox`,
+και μερικά άλλα) χρειάζεται αυτά τα glyphs, οπότε ο builder προσθέτει `@pantoken/components/dist/component-icons.css` (περίπου
+0.5 KB gzipped — τα 11 icons που χρησιμοποιεί το σύνολο component) όποτε επιλέγετε το lean sheet. Το πλήρες sheet
+τα περιέχει ήδη.
 
-### Load order and fonts
+### Σειρά φόρτωσης και γραμματοσειρές
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Φορτώστε πρώτα το token foundation, μετά το προαιρετικό base reset, μετά τα αρχεία component, και τέλος τα utilities —
+είναι override utilities, οπότε πραγματικά υπερισχύουν του κανόνα ενός component μόνο όταν προσγειωθούν
+μετά από αυτό στην cascade. Το combine URL παραπάνω τα έχει ήδη τακτοποιήσει για εσάς. Οι γραμματοσειρές είναι η μόνη εξαίρεση:
+`@pantoken/components/dist/fonts.css` δείχνει σε αρχεία γραμματοσειρών με σχετική διαδρομή, οπότε το combine δεν μπορεί να τα ξαναγράψει —
+φορτώστε το ως το δικό του `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Όλα μαζί
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Επιλέξτε **All components** στο picker για να το αλλάξετε σε barrel, ή δείξτε το εσείς (περίπου 141 KB
+gzipped) δίπλα στο token sheet:
 
 ```html
 <link
@@ -58,12 +58,12 @@ gzipped) alongside the token sheet:
 
 ## Web components
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` καταγράφει framework-agnostic `<instui-*>` custom elements. Ενσωματώνουν το
+δικό τους CSS, αλλά εξακολουθούν να διαβάζουν tokens από ένα sheet στη σελίδα, οπότε φορτώστε και ένα token foundation.
 
-### ES modules (recommended)
+### ES modules (συνιστώμενο)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Ένα ESM CDN επιλύει τις εξαρτήσεις του πακέτου για εσάς. Αυτό καταγράφει κάθε στοιχείο:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +72,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Χρησιμοποιήστε το πλήρες token sheet (ή το lean sheet συν `component-icons.css`) ώστε τα στοιχεία που αποδίδουν εικονίδια όπως
+`<instui-alert>` να επιλύουν τα glyphs τους.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Για να καταγράψετε μόνο μερικά στοιχεία — και τις εμφωλευμένες εξαρτήσεις τους — εισάγετε `register` και περάστε `only`:
 
 ```html
 <script type="module">
@@ -85,20 +85,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Κλασικό script tag
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Για ένα drop-in χωρίς modules, φορτώστε το IIFE build. Πακετάρει τις εξαρτήσεις του και αυτοκαταγράφει κάθε
+στοιχείο κατά τη φόρτωση, εκθέτοντας ένα `PantokenWebComponents` global:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Είναι μεγαλύτερο από το ESM μονοπάτι — ενσωματώνει `@pantoken/components` και `@pantoken/icons` — οπότε χρησιμοποιήστε το
+μόνο όταν δεν μπορείτε να χρησιμοποιήσετε modules.
 
-## Pinning versions
+## Καρφίτσωμα εκδόσεων (Pinning versions)
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Τα URLs παραπάνω — και αυτά που γράφει ο picker — παρακολουθούν την τελευταία release. Καρφιτσώστε μια major (ή ακριβή)
+έκδοση για παραγωγή — για παράδειγμα `@pantoken/css@0` — έτσι ώστε μια αναβάθμιση να μην σας εκπλήσσει.

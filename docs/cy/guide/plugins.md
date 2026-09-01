@@ -1,13 +1,13 @@
-# Plugins
+# Ategion
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Ategyn pantoken yn estyn y allbwn token neu CSS heb fforkio pecyn. Adeiladwch un gyda
+`definePlugin` o `@pantoken/plugin-kit`, yna pasiwch ef i `buildTokens` neu `toCss`.
 
-## Author a plugin
+## Ysgrifennu ategyn
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Rhowch i `definePlugin` y hooks rydych yn eu gweithredu. Mae'n dychwelyd ategyn arferol, wedi'i frandio gyda'r
+capasiti a amcangyfrifwyd o'r hooks hynny. Gall ategyn estyn y IR (`tokens`, `icons`), yr allbwn CSS
+(`css`), neu'r ddau.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Cofrestru sy'n ymwybodol o alluoedd
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` a `toCss` yn rhedeg `checkPlugins` dros yr ategion a basiwch. Mae'n rhybuddio — byth yn taflu —
+pan nad oes hook cyfatebol gan ategyn ar gyfer y cam y mae wedi'i gofrestru ynddo, felly ategyn sy'n unig-token a basiwyd
+i `toCss` yw ei basio heibio gyda nodyn yn hytrach na ddim ei wneud yn ddienw.
 
-## Compose plugins
+## Cyfansoddi ategion
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Adeiladu ar ben ategyn arall gyda `extendPlugin`, neu gyfuno cydymaith gyda `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Mae hooks ar yr un cam yn cyfansoddi: `tokens` yn rhedeg y sylfaen yna'r ychwanegiad, `css` yn uno'r ddwy
+chyfraniad, a `icons` yn rhedeg y ddau.
 
-## Validate your plugin's output
+## Dilysu allbwn eich ategyn
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Rhedwch y gwiriadau drifft rhannol o `@pantoken/utils` dros allbwn eich ategyn eich hun yn ei brofion, fel y
+methiant o achos sillafu neu enwi token yn newid yn methu'n gyflym ac yn lleol:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +56,15 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Y ategion wedi'u bundio
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — brandio eiconau o simple-icons, wedi'u cofrestru fel tokenau eicon.
+- `@pantoken/plugin-logos` — logoau cynnyrch Instructure fel SVGs, URI data, a thokenau delwedd `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — ategyn PostCSS (nid ategyn pantoken) sy'n tynnu
+  eiddo arferol heb ei ddefnyddio o arddullfaen.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Ychydig o bethau a werthodd fel ategion yn awr yn cael eu llongio yn `@pantoken/components`, gan fod cymaint o gydrannau yn eu hangen allan o'r blwch: cysgodion codiad (`--instui-elevation-*`, yn `components.css`), y cylch amgylch-ffocws
+(yn `base.css` — mae pob elfen y gellir ei ffocysu yn ei gael pan fo pantoken yn berchen ar y dudalen), a'r ffynonellau brand Instructure
+(Atkinson Hyperlegible Next: mae `base.css` yn cymhwyso `--instui-font-family-base`; mae'r `@pantoken/components/fonts.css` dewisol yn llwytho'r `@font-face` woff2s).
 
-See the [API reference](/api/) for each plugin's exports.
+Gweler yr [adroddiad API](/api/) ar gyfer allforion pob ategyn.

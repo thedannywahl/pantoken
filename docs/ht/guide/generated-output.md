@@ -1,36 +1,33 @@
-# Generated output
+# Soti jenere
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Plizyè pake pantoken pwodwi fichye pandan konstriksyon — yon estil fey, yon `theme.json`, yon modil token entegre. Pou kenbe depo a pwòp epi fè rezilta yo onèt, chak pake swiv yon konvansyon e yon travay workspace valide tout bagay la.
 
-## The `generated/` convention
+## Konvansyon `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Chak pake ki pwodwi yon atifakt build ekri li nan yon repèrtwar `generated/` pou chak pake, e pa gen anyen lòt ki rete la. Yonn règ nan `.gitignore` kouvri yo tout:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Kidonk pa gen okenn fichye jenere ki komite — yon build reprodwi li. De kalite sòti tonbe la a:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Estatik livrezab** — fichye yon konsomatè enpòte, tankou `@pantoken/css`'s `style.css` oswa
+  `@pantoken/scss`'s `tokens.scss`. Kat jeyografik `exports` pake a kenbe kle piblik la
+  (`"./style.css"`) men li vize l sou `generated/`, konsa API konsomatè a pa janm chanje.
+- **Entèmedyè build** — fichye sous pake a menm enpòte epi pake nan `dist`, tankou
+  JSON vannè `@pantoken/tokens`. Sa yo pa pibliye pou kont yo; yo konpile andedan.
 
-## Validating the output
+## Validasyon sòti a
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (yon zouti prive) kouri apre yon build epi li verifye twa bagay:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. chak pake jeneratè aktyèlman ekri yon repèrtwar `generated/` ki pa vid,
+2. CLI `pantoken` pwodui omwen yon fichye pou chak sib ki sipòte, e
+3. pa gen okenn fey estil jenere ki devye de IR token yo — `danglingReferences` pou fichye ki oto-sèten
+   (self-contained) yo, ak `unknownReferences` pou pon yo ki sèlman refere a token defini lòt kote.
 
-## Commands
+## Kòmand
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Validatè a konekte tou nan `pnpm run ready`, konsa devyasyon (drift) trape nan pòtay estanda a.

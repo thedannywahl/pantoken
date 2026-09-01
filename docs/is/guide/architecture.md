@@ -1,10 +1,8 @@
-# Architecture
+# Arkitektúr
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken hefur eitt verkefni: leysa hönnunar-tákn og táknmyndir Instructure einu sinni og umbreyta síðan þeim gögnum fyrir hvert markmið. Lögin hér fyrir neðan halda þeirri umbreytingu hreinni og tryggja að birtu pakkarnir séu lausir við nokkurt GitHub-einstaklingur upstream.
 
-## The layers
+## Lögin
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** heldur á tegundasamningunum, og ekki neinu fleira. Hann er sannleiksgjafi fyrir `Token` forminu og viðbótarviðmóti plugins, án nokkurra háða, svo hvaða pakki sem er getur treyst á hann frjálst.
+- **`@pantoken/core`** er eina pakkinn sem snertir upstream-gögnin. Hann leysir tákn og táknmyndir í hinn canonical IR og renderar CSS.
+- **`@pantoken/tokens`** útvegar þann IR sem kyrrstætt JSON við byggingu. Þetta er aðskiljunarpunkturinn: niðurstreymispakkar lesa `@pantoken/tokens`, aldrei `@pantoken/core`, svo `npm i pantoken` nær aldrei í GitHub-einstaklinga upstream.
+- **`@pantoken/utils`** ber með sér sameiginlega hjálparfærin — `var(--x)` leysirinn, tilvísunar-regexar, breytni fyrir case og liti, og drift-athuganirnar sem halda framleiðslu útgáfu trú að IR.
 
-## Why tokens are vendored
+## Af hverju táknin eru innbyggð
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Upstream-táknapakkinn býr á GitHub, ekki á npm. Ef allir niðurstreymispakkar treystu á hann, myndi `npm i pantoken` mistakast fyrir hvern sem ekki hefur aðgang. Í staðinn leysir `@pantoken/tokens` upstream einu sinni við byggingu og skrifar niðurstöðuna í kyrrstætt JSON. Birtu pakkarnir bera það JSON með sér, svo þeir setjast upp hreint af npm, festa við sem semver, og virka án nettengingar.
 
-## Buckets
+## Flokkar
 
-Each downstream bucket is a way of consuming the IR:
+Hver niðurstreymisflokkur er leið til að neyta IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — umbreyta táknunum í skrá (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — ramma- og tól samþættingar (React, Vue, Svelte, MUI, Pendo, og fleiri).
+- **bundlers/** — viðbætur og forstillingar fyrir byggitól (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — innfædd og síðu-rafli markmið (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — gagnapakka fyrir hönnunarverkfæri (Figma, litapallar).
+- **plugins/** — valfrjálsar umbreytingar sem stækka tákn- eða CSS-úttak. Sjá [Plugins](/guide/plugins).
 
-## Generated output
+## Framleitt úttak
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Hver pakki sem framleiðir skrá skrifar hana í per-pakka `generated/` möppu sem bygging endursköpar, þannig að ekkert framleitt er skráð í geymslu. Workspacetask sannreynir allt. Sjá [Generated output](/guide/generated-output).

@@ -1,139 +1,133 @@
-# The package map
+# 套件地圖
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
-`pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
+pantoken 是一個由小型、單一用途套件組成的 monorepo，按群組（bucket）排列。安裝適合你任務的套件，或安裝統一的 `pantoken` 套件並從其子路徑匯入（例如 `pantoken/css`, `pantoken/react`, `pantoken/tailwind`）。
 
-## Core
+## 核心
 
-The shared model and the transformer everything else builds on.
+所有其他東西建立之上的共用模型與轉換器。
 
-| Package                                                 | What it does                                                                                                       |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.                                       |
-| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.                                     |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source.                             |
-| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, drift checks, and the token→utility-class emitters. |
-| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
-| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
+| Package                                                 | 功能說明                                                                                        |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [`@pantoken/model`](/api/packages/model/src/)           | 無依賴的 TypeScript 型別：`Token` 結構及 plugin 契約。                                          |
+| [`@pantoken/core`](/api/packages/core/src/)             | 將上游 tokens 與 icons 解析為標準 IR，並渲染 CSS。                                              |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)          | 已解析的 IR 以靜態 JSON 形式提供（按主題），以及原始的 Tokens Studio 源。                       |
+| [`@pantoken/utils`](/api/packages/utils/src/)           | token 解析器、參照正規表達式、大小寫與色彩輔助、漂移檢查，以及 token→utility-class 的 emitter。 |
+| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | 使用 `definePlugin` 建構與組合 pantoken 插件。                                                  |
+| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — 輸出原生與平台程式碼。                                           |
 
-## Formats
+## 格式（Formats）
 
-Turn the tokens into a file format.
+將 tokens 轉換為檔案格式。
 
-| Package                                                | Output                                                                                                                                                                                                     |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                                                                                              |
-| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                                                                                                 |
-| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                            |
-| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                          |
-| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                                                                                                       |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                                                                                                    |
-| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |
-| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
-| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
+| Package                                                | 輸出內容                                                                                                                                                               |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/css`](/api/formats/css/src/)               | 帶有型別的 `@property` CSS，包含 `light-dark()` 與 data-URI 圖示。                                                                                                     |
+| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS 變數，解析為單一模式。                                                                                                                                            |
+| [`@pantoken/less`](/api/formats/less/src/)             | Less 變數。                                                                                                                                                            |
+| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus 變數。                                                                                                                                                          |
+| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | 一份 W3C Design Tokens (DTCG) 文件。                                                                                                                                   |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)         | 以 JavaScript 與 JSON 形式的 IR（也列在核心部分）。                                                                                                                    |
+| [`@pantoken/icons`](/api/formats/icons/src/)           | 對 icon tokens 的符合人體工學的檢視介面。                                                                                                                              |
+| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | 一個 icon 網頁字型（TTF、WOFF2）以及其 CSS。                                                                                                                           |
+| [`@pantoken/components`](/api/formats/components/src/) | 一套具有 InstUI 風格的 CSS 元件庫（button、alert、table 等）及含 focus ring 的基礎 reset、prose 樣式、跨領域工具類別與品牌字體。參見 [Components](/guide/components)。 |
 
-## Renderers
+## 呈現器（Renderers）
 
-Framework and tool integrations.
+框架與工具整合。
 
-| Package                                                                                                                                          | For                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>`, and a token provider.               |
-| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | The web component, wired into each framework.              |
-| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-friendly token objects (no CSS variables).      |
-| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` and styled primitives, framework-agnostic. |
-| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token setup for Astro sites.                               |
-| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon tokens and swatches in Markdown.                      |
-| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | A markdown-it plugin for icon codes and color swatches.    |
-| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | A type-safe theme for styled-components and Emotion.       |
-| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | A Material UI theme.                                       |
-| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-variable bridges for Bootstrap and shadcn/ui.          |
-| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | A Sass settings override and CSS overlay for Foundation.   |
-| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Themes for Docusaurus and VitePress.                       |
-| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | A Mintlify `docs.json` theme (colors + background).        |
-| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |
-| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |
+| Package                                                                                                                                          | 用途                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------- |
+| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks、`<Icon>` 與一個 token provider。        |
+| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | 將 web component 接入各框架。                        |
+| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | 適用於 StyleSheet 的 token 物件（無 CSS 變數）。     |
+| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` 與樣式化原語，框架無關。             |
+| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | 為 Astro 網站準備的 token 設定。                     |
+| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | 在 Markdown 中使用的 icon tokens 與色票。            |
+| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | 一個用於 icon code 與色票的 markdown-it 插件。       |
+| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | 適用於 styled-components 與 Emotion 的型別安全主題。 |
+| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | Material UI 主題。                                   |
+| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | 用於 Bootstrap 與 shadcn/ui 的 CSS 變數橋接。        |
+| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | Foundation 的 Sass 設定覆寫與 CSS 覆蓋層。           |
+| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Docusaurus 與 VitePress 的主題。                     |
+| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | 一個 Mintlify 的 `docs.json` 主題（色彩 + 背景）。   |
+| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | Storybook 主題。                                     |
+| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | 用於 Pendo 指南的 Instructure 風格全局 CSS。         |
 
-## Bundlers
+## 打包器（Bundlers）
 
-Build-tool integrations.
+建構工具整合。
 
-| Package                                             | For                                                   |
-| --------------------------------------------------- | ----------------------------------------------------- |
-| [`@pantoken/vite`](/api/bundlers/vite/src/)         | A Vite plugin with virtual modules and CSS injection. |
-| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` for Next.js `transpilePackages`.       |
-| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | A webpack plugin.                                     |
-| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | The `@pantoken;` at-rule.                             |
-| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
-| [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
+| Package                                             | 用途                                                   |
+| --------------------------------------------------- | ------------------------------------------------------ |
+| [`@pantoken/vite`](/api/bundlers/vite/src/)         | 一個具有虛擬模組與 CSS 注入功能的 Vite 插件。          |
+| [`@pantoken/next`](/api/bundlers/next/src/)         | 為 Next.js 提供的 `withPantoken` `transpilePackages`。 |
+| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | 一個 webpack 插件。                                    |
+| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | `@pantoken;` 的 at-rule。                              |
+| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | 一個 Tailwind preset。                                 |
+| [`@pantoken/panda`](/api/bundlers/panda/src/)       | 一個 Panda CSS preset。                                |
 
-## Platforms
+## 平台（Platforms）
 
-Native and site-generator targets, emitted by the CLI or their own API.
+原生與站點產生器目標，由 CLI 或各自 API 輸出。
 
-| Package                                                                                        | Output                                     |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift source plus a SwiftPM manifest stub. |
-| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML resources.                     |
-| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                    |
-| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                              |
-| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts for egui or iced.              |
-| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | A WordPress block-theme `theme.json`.      |
-| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | A Vanilla Forums `variables.json`.         |
-| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal theme assets.                       |
-| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |
-| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |
+| Package                                                                                        | 輸出                                             |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift 原始程式碼以及一個 SwiftPM manifest 範本。 |
+| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML 資源。                               |
+| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose 的 Kotlin。                      |
+| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter 的 Dart。                                |
+| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | 用於 egui 或 iced 的 Rust 常數。                 |
+| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | 一個 WordPress block-theme `theme.json`.         |
+| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | 一個 Vanilla Forums `variables.json`.            |
+| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal 主題資產。                                |
+| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo 與 Jekyll 的網站資料。                      |
+| [`@pantoken/email`](/api/platforms/email/src/)                                                 | 適合內嵌的 HTML email 值。                       |
 
-## Design
+## 設計（Design）
 
-For design tools.
+設計工具相關。
 
-| Package                                           | Output                                                                |
-| ------------------------------------------------- | --------------------------------------------------------------------- |
-| [`@pantoken/figma`](/api/design/figma/src/)       | A Figma Variables payload.                                            |
-| [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus a viewable SVG specimen sheet. |
+| Package                                           | 輸出                                              |
+| ------------------------------------------------- | ------------------------------------------------- |
+| [`@pantoken/figma`](/api/design/figma/src/)       | 一份 Figma Variables 的 payload。                 |
+| [`@pantoken/swatches`](/api/design/swatches/src/) | 色票（ASE、GPL、Sketch）以及可檢視的 SVG 樣本表。 |
 
-## Plugins
+## 插件（Plugins）
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+可選的轉換器，擴展 token 或 CSS 輸出。參見 [Plugins](/guide/plugins)。
 
-| Package                                                                               | What it adds                                                    |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as `--instui-stacking-*` tokens.           |
-| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.              |
-| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                  |
-| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
-| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
+| Package                                                                               | 增加的功能                                                  |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | 命名的 z-index 深度，作為 `--instui-stacking-*` tokens。    |
+| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | `-with-visual-debug` 的佈局除錯外框。                       |
+| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | 來自 simple-icons 的品牌圖示。                              |
+| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | 以 SVG、data URIs 與圖像 tokens 提供 Instructure 產品標誌。 |
+| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | 一個會移除未使用 custom properties 的 PostCSS 插件。        |
 
-## Tools
+## 工具（Tools）
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+為 monorepo 本身提供建構、文件與示範基礎設施。大多為內部使用，但各部分是自包含的，因此在此記錄，部分也會獨立發佈到 npm。
 
-| Package                                            | What it does                                                                                                                                                                                          |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                                                                                                  |
-| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                                                                                                      |
-| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed.                                                                        |
-| `@cssdoc/core` (external)                          | A generic CSS documentation extractor (TSDoc, for CSS): parses doc-comments + the CSS AST into a model the docs emit as the CSS API reference. Lives in its own repo; consumed via a link dependency. |
+| Package                                            | 功能說明                                                                                                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | 產生統一的 `pantoken` 包的 barrel 與來自其相依項的 `exports`。                                                                                   |
+| `@pantoken/validate-generated`                     | 漂移門檻（drift gate）：檢查每個產生的樣式表是否可針對 token IR 正確解析。                                                                       |
+| [`@pantoken/demo`](/api/tools/demo/src/)           | 自託管的即時示範執行器：解析 `@demo` 規格到 iframe 並呈現同源的裸 HTML/CSS/JS、以 token 為主題。                                                 |
+| `@cssdoc/core` (external)                          | 一個通用的 CSS 文件擷取器（針對 CSS 的 TSDoc）：解析文件註解與 CSS AST 成為 docs 輸出的 CSS API 模型。此工具位於獨立倉庫；以連結相依方式被使用。 |
 
-`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
-page; the others do.
+`@pantoken/validate-generated` 是一個一次性執行腳本（由 `pnpm run ready` 調用），因此沒有 API 頁面；其他套件則有。
 
-## AI
+## 人工智慧（AI）
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+面向消費者的 AI 設定資產。這些是供使用 pantoken 的專案使用，而非用於開發 pantoken 本身。
 
-- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
-  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
+- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) 安裝 `AGENTS.md`, `llms.txt`，以及 assistant/editor 規則（Cursor、Copilot、Windsurf、Claude Code）到消費者倉庫中。
 
-## Dev plugins
+## 開發用插件（Dev plugins）
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+我們為開發時使用的工具所撰寫的插件，按宿主（host）分組。它們是獨立並可發佈的。
 
-| Package                                                                                  | Plugs into                                                                             |
-| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: turns a `@demo <provider>:<ref>` block tag into an embeddable demo fence.     |
-| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: rebuilds upstream workspace packages (and dependents) when their source changes. |
+| Package                                                                                  | 插入點（Plugs into）                                                    |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc：將 `@demo <provider>:<ref>` block 標籤轉成可嵌入的示範 fence。 |
+| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite：在其來源變更時重建上游工作區套件（及其相依套件）。                |

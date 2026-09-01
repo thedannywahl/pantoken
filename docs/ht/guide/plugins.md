@@ -1,13 +1,13 @@
-# Plugins
+# Plugin yo
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Yon plugin pantoken elaji pwodiksyon token oswa CSS san poukisa pou kreye yon pake. Ou bati youn ak
+`definePlugin` soti nan `@pantoken/plugin-kit`, epi pase li bay `buildTokens` oswa `toCss`.
 
-## Author a plugin
+## Ekri yon plugin
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Bay `definePlugin` hook ou enplemante yo. Li retounen yon plugin nòmal, make ak
+kapasite yo dedwi soti nan hook sa yo. Yon plugin ka elaji IR la (`tokens`, `icons`), pwodiksyon CSS la
+(`css`), oswa toude.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Enskripsyon ki konsyan de kapasite
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` ak `toCss` kouri `checkPlugins` sou plugin ou pase yo. Li avèti — li pa janm jete —
+lè yon plugin pa gen okenn hook ki matche ak etap kote li anrejistre a, kidonk yon plugin sèlman-pou-token pase
+bay `toCss` swa sote li ak yon nòt olye ke li fè anyen an silans.
 
-## Compose plugins
+## Konpoze plugin
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Bati sou tèt yon lòt plugin ak `extendPlugin`, oswa konbine parèy ak `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Hook menm-etap konpoze: `tokens` kouri baz la apre sa adisyon an, `css` melanje de
+kontribisyon yo, epi `icons` kouri toude.
 
-## Validate your plugin's output
+## Valide pwodiksyon plugin ou a
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Kouri chèk drift pataje yo soti nan `@pantoken/utils` sou pwodiksyon pwòp plugin ou nan tès li, konsa yon
+typo oswa yon token ki rebaptize echwe rapidman epi lokalman:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +56,17 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Plugin yo ki anbale yo
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — make ikon ki soti nan simple-icons, anrejistre kòm token ikon.
+- `@pantoken/plugin-logos` — logo pwodwi Instructure kòm SVG, URI done, ak `--instui-logo-*`
+  token imaj.
+- `@pantoken/plugin-prune-custom-props` — yon plugin PostCSS (pa yon plugin pantoken) ki retire
+  pwopriyete koutim ki pa itilize nan yon fichye stil.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Gen kèk bagay ki te konn plugin kounye a ki voye ansanm nan `@pantoken/components`, paske anpil konpozan bezwen
+yo depi nan bwat la: lonbraj elevation (`--instui-elevation-*`, nan `components.css`), bag
+focus-outline la (nan `base.css` — chak eleman ki ka resevwa fokus resevwa li lè pantoken posede paj la), ak polis
+brand Instructure yo (Atkinson Hyperlegible Next: `base.css` aplike `--instui-font-family-base`; opsyon `@pantoken/components/fonts.css` chaje `@font-face` woff2s yo).
 
-See the [API reference](/api/) for each plugin's exports.
+Gade [referans API a](/api/) pou ekspòtasyon chak plugin.

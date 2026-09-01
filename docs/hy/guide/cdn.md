@@ -1,53 +1,41 @@
-# CDN & distribution
+# CDN և բաշխում
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken-ը ամեն փաթեթը հրապարակում է npm-ում, այնպես որ կարող եք քաշել tokens, components և web components ուղղակի CDN-ից — առանց build քայլի, առանց bundler։ Այս էջը համաձայնում է CSS combine URL-ին (עם interactive builder), ինչպես նաև web-component drop-ins։
 
-## The token foundation
+## Տոկենի հիմք
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Յուրաքանչյուր pantoken կոմպոնենտ կկարդա `--instui-*` custom properties՝ էջի վրա գտնվող token թարպից։ Ենթակատեգորիաներ են առկա՝
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — առաջարկվող CDN հիմքը։ Այն կրել է բոլոր token-երը բացի ամբողջ icon հավաքածուից, այնպես որ մոտ 23 KB gzipped է։
+- `@pantoken/css/dist/style.css` — ամբողջ թերթը, որը ներառում է բոլոր շուրջ ~1,777 icon glyph token-ները (`--instui-icon-*`)։ մոտ 140 KB gzipped։ Օգտագործեք այսը, եթե լայնորեն հղում եք անում իկոններին `var(--instui-icon-*)`-ի միջոցով։
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Elevation սանդղակը և focus-ring փոփոխականները կան երկուսն էլ թերթերում, այնպես որ ստվերները և focus մատնանշիչը աշխատում են միայն հիմքը լցված լինելու դեպքում։
 
-## Pick your components and icons
+## Ընտրեք ձեր կոմպոնենտներն ու իկոնները
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[interactive CDN picker](/guide/cdn-picker)-ը կառուցում է jsDelivr combine URL-ներ CSS-ի համար և սնիպետներ JavaScript փաթեթների համար։ Բացեք այն, նշեք ինչ պետք է, և պատճենեք գեներացված ելքը։
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components tab** — ընտրեք առանձին կոմպոնենտի stylesheet-ները կամ ամբողջ `components.css` barrel-ը։ Ավելացրեք base reset-ը կամ spacing/color utilities եթե հարկավոր է։
+- **JS tab** — պատճենեք ESM import սնիպետ `@pantoken/interactions`-ի համար։
+- **Icons tab** — ընտրեք առանձին իկոններ InstUI հավաքածուից (~1,800 իկոն) կամ Simple Icons-ից (~3,300 բրենդ glyph)։ Picker-ը հանել է տարբեր combine URL-ի icon CSS ֆայլերի համար որպեսզի կարողանաք լթացնել միայն այն իկոնները որոնք իսկապես օգտագործում եք։
+- **Web Components tab** — կառուցեք `@pantoken/web-components` սնիպետներ (ESM selective register կամ classic script bootstrap)։
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Յուրաքանչյուր կոմպոնենտի ֆայլը փոքր է — մեծամասնությունը մոտ 2 KB է։ Կոմպոնենտ, որը շարունակում է իկոններ (`alert`, `checkbox`,
+և մի քանիսը այլք) պետք է այդ glyph-ները, այնպես որ builder-ը ավելացնում է `@pantoken/components/dist/component-icons.css` (մոտ
+0.5 KB gzipped — այն 11 իկոնը որոնք կոմպոնենտի հավաքածուն օգտագործում է) երբ ընտրում եք lean թերթը։ ամբողջ թերթը արդեն դրանք կրում է։
 
-### Load order and fonts
+### Լիցքավորման կարգը և տառատեսակները
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Առաջին լիցքեք token հիմքը, հետո ցանկության դեպքում base reset-ը, հետո կոմպոնենտ ֆայլերը, և utilities-ը վերջում — դրանք override utilities են, դրա համար իրականում override կնկատվի միայն երբ նրանք cascade-ում տեղ են հասնում կոմպոնենտի own rule-ից հետո։ Combine URL-ը վերևում արդեն դրանք հարմար կարգով է դասավորել։ Թղթաբառերը մի բացառություն են՝ `@pantoken/components/dist/fonts.css`-ը ցույց է տալիս font ֆայլերը հարաբերական ուղիով, այդ պատճառով combine չի կարող դրանք վերանայել — լիցքեք այն որպես իր սեփական `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Բոլորը միանգամից
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Ծանոթացեք picker-ում **All components** նշելով այն որպեսզի այն տեղափոխվի barrel-ին, կամ ուղղեք ուղղակի այն (մոտ 141 KB
+gzipped) token թերթի կողքին։
 
 ```html
 <link
@@ -56,14 +44,13 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Web կոմպոնենտներ
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` գրանցում է framework-agnostic `<instui-*>` custom elements։ Նրանք ներառում են իրենց սեփական CSS-ը inline, բայց դեռ կարդում են tokens էջի թերթից, այդ պատճառով լիցքեք նաև token հիմքը։
 
-### ES modules (recommended)
+### ES մոդուլներ (առաջնահետևյալ)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+ESM CDN-ը լուծում է փաթեթի կախվածությունները ձեզ համար։ Սա գրանցում է բոլոր element-ները։
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +59,9 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Օգտագործեք ամբողջ token թերթը (կամ lean թերթը գումարած `component-icons.css`) այնպես որ իկոն-Rendering element-ներ, ինչպիսիք են `<instui-alert>`, գտնեն իրենց glyph-ները։
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Միայն որոշ element-ներ գրանցելու համար — և նրանց nested կախվածությունները — ներմուծեք `register` և փոխանցեք `only`:
 
 ```html
 <script type="module">
@@ -85,20 +71,18 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Դասիկ script tag
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+No-modules drop-in-ի համար լիցքեք IIFE build-ը։ Այն փաթեթավորում է իր կախվածությունները և auto-register կկատարի յուրաքանչյուր
+element-ի վրա լիցքավորման ժամանակ, բացելով `PantokenWebComponents` գլոբալը։
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Այն ավելի մեծ է քան ESM տարբերակն — inline է `@pantoken/components` և `@pantoken/icons` — այնպես որ օգտագործեք այն միայն երբ modules-ներ չեք կարող օգտագործել։
 
-## Pinning versions
+## Վարկածների pin-ning
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Վերևի URL-ները — և այդ որոնք գրում է picker-ը — հետևում են վերջին թողարկմանը։ Pin արեք major (կամ հստակ) վարկած արտադրության համար — օրինակ `@pantoken/css@0` — որպեսզի թարմացում չգա անակնկալ։

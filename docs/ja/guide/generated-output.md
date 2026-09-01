@@ -1,36 +1,29 @@
-# Generated output
+# 生成された出力
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+いくつかの pantoken パッケージはビルド時にファイル（スタイルシート、`theme.json`、埋め込みトークンモジュールなど）を出力します。リポジトリをクリーンに保ち出力の正当性を担保するため、すべてのパッケージは一つの規約に従い、ワークスペースのタスクがそれらを検証します。
 
-## The `generated/` convention
+## `generated/` 規約
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+ビルド成果物を生成するすべてのパッケージは、それを各パッケージごとの `generated/` ディレクトリに書き出し、そこには他のものは存在しません。`.gitignore` の一つのルールがそれらをすべてカバーします：
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+したがって生成されたファイルはコミットされず、ビルドで再現されます。そこに置かれる出力は二種類です：
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **配布可能な静的ファイル** — 消費者がインポートするファイル（例：`@pantoken/css` の `style.css` や `@pantoken/scss` の `tokens.scss`）。パッケージの `exports` マップは公開キー（`"./style.css"`）を保持しますが、実体を `generated/` に向けるので、消費者向け API は変わりません。
+- **ビルド中間物** — パッケージ自身のソースがインポートして `dist` にバンドルするファイル（例：`@pantoken/tokens` のベンダリングされた JSON）。これらは単独で公開されず、コンパイルされます。
 
-## Validating the output
+## 出力の検証
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+ビルド後に実行される `@pantoken/validate-generated`（プライベートツール）は、次の三点をチェックします：
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. すべてのジェネレータパッケージが非空の `generated/` ディレクトリを書き出していること、
+2. `pantoken` CLI がサポートされる各ターゲットに対して少なくとも一つのファイルを出力すること、
+3. 生成されたスタイルシートがトークン IR から逸脱していないこと — 自立したシートの場合は `danglingReferences`、外部で定義されたトークンのみを参照するブリッジの場合は `unknownReferences`。
 
-## Commands
+## コマンド
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +33,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+バリデータは `pnpm run ready` にも組み込まれているため、ドリフトは標準のゲートで検出されます。

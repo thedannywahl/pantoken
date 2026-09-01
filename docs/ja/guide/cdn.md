@@ -1,53 +1,38 @@
-# CDN & distribution
+# CDN と配布
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken はすべてのパッケージを npm に公開しているため、ビルドやバンドラ不要で CDN からトークン、コンポーネント、Web コンポーネントを直接読み込めます。このページでは CSS 結合 URL（インタラクティブビルダー付き）と Web コンポーネントの導入方法を説明します。
 
-## The token foundation
+## トークンの基盤
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+すべての pantoken コンポーネントはページ上のトークンシートから `--instui-*` カスタムプロパティを読み取ります。次の 2 種類が提供されています:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — 推奨される CDN 基盤。フルアイコンセットを除くすべてのトークンを含み、gzip で約 23 KB です。
+- `@pantoken/css/dist/style.css` — 約 1,777 個のアイコングリフトークン（`--instui-icon-*`）を含むフルシート。gzip で約 140 KB。`var(--instui-icon-*)` 経由で広範にアイコンを参照する場合はこれを読み込んでください。
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+エレベーションスケールとフォーカスリング変数は両方のシートに含まれるため、基盤のみを読み込んでいてもシャドウやフォーカスリングは動作します。
 
-## Pick your components and icons
+## コンポーネントとアイコンを選ぶ
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[インタラクティブ CDN ピッカー](/guide/cdn-picker) は CSS 用の jsDelivr 結合 URL と JavaScript パッケージ用のスニペットを生成します。開いて必要なものにチェックし、生成された出力をコピーしてください。
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components タブ** — 個別のコンポーネントスタイルシートまたは全体の `components.css` バレルを選択します。必要ならベースのリセットやスペーシング／カラーのユーティリティを追加してください。
+- **JS タブ** — `@pantoken/interactions` の ESM インポートスニペットをコピーします。
+- **Icons タブ** — InstUI セット（約 1,800 アイコン）や Simple Icons（約 3,300 ブランドグリフ）から個別アイコンを選べます。ピッカーはアイコン CSS ファイル用に別の結合 URL を出力するので、実際に使用するアイコンだけを読み込めます。
+- **Web Components タブ** — `@pantoken/web-components` スニペット（ESM の選択的登録または従来のスクリプトブートストラップ）を生成します。
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+各コンポーネントファイルは小さく、ほとんどが約 2 KB です。アイコンをレンダリングするコンポーネント（`alert`, `checkbox`、および他いくつか）はグリフを必要とするため、ピッカーはリーンシートを選んだ場合に `@pantoken/components/dist/component-icons.css`（gzip で約 0.5 KB — コンポーネントセットが使う 11 アイコン）を追加します。フルシートは既にこれらを含みます。
 
-### Load order and fonts
+### 読み込み順とフォント
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+トークン基盤を最初に読み込み、その後オプションのベースリセット、次にコンポーネントファイル、最後にユーティリティを読み込んでください — ユーティリティは上書き用なので、カスケードで後に配置されたときにのみコンポーネントのルールを実際に上書きします。上の結合 URL は既に正しい順序に並べています。フォントだけは例外です: `@pantoken/components/dist/fonts.css` は相対パスでフォントファイルを指すため、結合では書き換えられません — そのため単独の `<link>` として読み込んでください:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### 一度に全部読み込む
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+ピッカーで **All components** を選択するとバレルに切り替わりますし、自分でバレルを指すこともできます（gzip で約 141 KB）。トークンシートと一緒に読み込んでください:
 
 ```html
 <link
@@ -56,14 +41,13 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Web コンポーネント
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` はフレームワークに依存しない `<instui-*>` カスタム要素を登録します。これらは自身の CSS をインラインしますが、ページ上のシートからトークンを読み取るため、トークン基盤も読み込んでください。
 
-### ES modules (recommended)
+### ES モジュール（推奨）
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+ESM CDN はパッケージの依存関係を解決してくれます。これで全ての要素が登録されます:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +56,9 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+アイコンをレンダリングする要素（例: `<instui-alert>`）がグリフを解決できるように、フルトークンシート（またはリーンシートに加えて `component-icons.css`）を使用してください。
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+一部の要素だけを登録し、そのネストされた依存も含めたい場合は `register` をインポートし `only` を渡します:
 
 ```html
 <script type="module">
@@ -85,20 +68,17 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### 従来の script タグ
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+モジュールを使えない場合のドロップインとして IIFE ビルドを読み込めます。これは依存をバンドルし、ロード時にすべての要素を自動登録して `PantokenWebComponents` グローバルを公開します:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+ESM 経路より大きく、`@pantoken/components` と `@pantoken/icons` をインラインするため、モジュールを使えない場合にのみ選んでください。
 
-## Pinning versions
+## バージョンの固定
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+上記の URL やピッカーが生成する URL は最新リリースを追跡します。プロダクションではメジャー（または厳密な）バージョンを固定してください — 例えば `@pantoken/css@0` — アップグレードで驚かされないようにします。

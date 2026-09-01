@@ -1,31 +1,31 @@
-# Components
+# Konpozan
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` voye stil konpozan ki baze sou klas bati soti nan tokens Instructure yo. Enpòte
+fèy stil la epi make markup ou — pa bezwen okenn kad.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-> [package map](/guide/packages).
+> Pi pito eleman koutim? `@pantoken/web-components` vlope menm estil sa yo kòm `<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, ak plis ankò — gade
+> [kat pake a](/guide/packages).
 
-## Conventions
+## Konvansyon
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+Konvansyon CSS nan pake sa a baze sou yon vèsyon modifye nan [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+Modifikatè yo se **kle-valè** — `-<prop>-<val>`, aliyen ak non pwop InstUI — konsa yo li
+poukont yo: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Pwop boolean se non pwop la sèlman,
+kote prezans vle di `true` (`-has-shadow`, `-clickable`); yon boolean ki default-on vire
+lè li etenn (`-without-background`, `-without-border`). Gwosè yo aksepte toude fòm kout ak long
+(`-size-sm` = `-size-small`). Lè yon non devye de InstUI, klas semantik InstUI a toujou mache
+men li dezapwouve (egzanp `-variant-info` → itilize `-color-info`).
 
-### Example
+### Egzanp
 
-Instructure UI React component:
+Konpozan React Instructure UI:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -33,7 +33,7 @@ Instructure UI React component:
 </Alert>
 ```
 
-pantoken components:
+pantoken konpozan:
 
 ```html
 <!-- direct instui props -->
@@ -51,12 +51,11 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+Pou pwop `timeout` InstUI a, mete pwopriyete koutim san inite `--timeout` an milisèkond epi chaje
+entèraksyon Alert la. Yon valè pozitif pwograme fèmen; `0` (default) kite alèt la
+nan plas li. Ajoute klas `instui-transition -fade-entered` nan sèvis utilite `transition` pou fade InstUI a; pa mete yo pou retire imedyat. Entèraksyon an kondwi eta `-fade-exiting` epi pouse yon evènman cancellable,
+bubbling `dismiss` anvan retire a, konsa yon aplikasyon ka rele `preventDefault()` pou kenbe
+alèt la monte.
 
 ```html
 <link
@@ -73,15 +72,15 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+Bar pwogrè yo aksepte echèl o aza atravè `--min` (`0` pa default), `--value`, ak `--max`
+(`100` pa default), ak alias dezapwouve `--value-now` ak `--value-max`. Ajoute `-should-animate`
+pou aplike tranzisyon demi-dezyèm InstUI a chak fwa yon valè chanje. `.value` chita ansanm ak `.bar` kòm
+yon pitit rasin; ajoute `-render-value-inside` pou rann li sou tras la, aliyen ak kòmansman li,
+otreman (style li pou li lizib kont koulè mezi a). Sèvi ak yon `<progress>` natif natal pou yon
+ranj zewo-baze epi `<meter>` lè minimòm lan pa zewo; web konpozan yo chwazi ant yo
+otomatikman soti nan atribi `min` yo. InstUI pa gen eta endetèmine, kidonk yon `<progress>`
+ki manke atribi `value` se yon devinèt sèlman pantoken: `progress-bar` anime `.bar` kòm yon
+segment glise epi `progress-circle` vire bag li a nan yon arc fiks, toude kache `.value`.
 
 ```html
 <label>
@@ -97,11 +96,11 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+Sèk pwogrè yo aksepte menm echèl o aza atravè `--min`, `--value`, ak `--max`.
+`--value-now` ak `--value-max` rete kòm alias fonksyonèl dezapwouve. Ajoute `-should-animate` epi
+chaje pakèt entèraksyon pou konsantre pou rekree animasyon monte InstUI a; `--animation-delay` se yon
+reta san inite an milisèkond. Fòm yo dezapwouve `-should-animate-on-mount` ak
+`-shold-animate-on-mount` rete alias fonksyonèl.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,11 +116,11 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## Prefiks klas
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+Chak klas gen non espas `instui-` pa default. Bati yon fèy stil ak pwòp prefiks ou — oswa pa gen okenn — pa
+pase `prefix` bay nenpòt konstriktè. Nenpòt valè falsy (`null`, `undefined`, `""`, oswa lè ou pa mete li) retire
+prefiks la nèt, konsa ou ka otè `class="heading -level-h1"` olye de `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,62 +129,61 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+Modifikatè ki gen tirè-prefiks (`.-color-secondary`, `.-level-h1`) pa chanje nan okenn ka. Fèy stil yo voye pa pake a kenbe prefiks `instui`.
 
-## Base
+## Baz
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+`base.css` se yon reset opsyonèl ki mete default dokiman global soti nan tokens yo: `box-sizing`, yon
+reset `body`, sifas paj la, koulè tèks baz ak font la, `color-scheme` (pou `light-dark()` tokens
+ak kontwòl natif natal suiv tèm nan), ak yon lyen baz. Chaje li yon sèl fwa, anvan fèy konpozan ak fèy pwòz
+yo, lè pantoken posede paj la.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+Sote li lè w ap anbede konpozan nan yon òt ki deja fè tèm pwòp li yo `html` ak `body` —
+reset la pentire sifas paj la, kidonk ou pa vle li konfwonte òt la. Tout sa li mete itilize
+selektè `:where()` ki gen espesifikite ba, kidonk pwòp règ ou yo toujou genyen.
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+`base.css` _aplike_ font mak la (`font-family: var(--instui-font-family-base)`, ak rezerv sistèm);
+pou _chaje_ li, enpòte `fonts.css` opsyonèl la — `@font-face` règ pou Atkinson Hyperlegible
+Next, ki pwen sou woff2 yo distribye nan pake a. Li separe paske fòm yo ~350 kB epi
+òganize tèt pou font se yon chwa delibere.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Screen reader content
+## Kontni lektè ekran
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>Gen yon mesaj kache apre fraz sa a.<span class="instui-screen-reader-content">Se sèlman lektè ekran ki anons sa.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+`.instui-screen-reader-content` kache yon eleman vizyèlman pandan li kenbe li nan pyebwa aksèbilite a
+— pou etikèt ak tèks estati ke teknoloji asistans ta dwe li men konsepsyon an pa ta dwe montre.
 
-## Utilities
+## Utilitè
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+`utilities.css` se yon kouch opsyonèl nan klas kwa-koupe: yon primitif `View`, espas sou echèl token an,
+ak ranplasman koulè semantik. Kontrèman ak klas konpozan `-modifier`, sa yo itilize yon **double
+tirè** (`--mod`) konsa yo pa janm kolizyon ak non modifikatè konpozan yo, epi yo aplike sou nenpòt
+eleman — senp, oswa konpoze sou yon konpozan.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">Sifas accent-blue ak tèks on-color.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">Santre ak mx-auto.</span>
 </div>
 
 ```html
@@ -193,35 +191,35 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` se `View` InstUI a. Li se baz ou aplike espas ak koulè sou li, epi li
+pote modifikatè kle-valè pou pwòp pwop vizyèl li yo konsa ou pa bezwen ale nan utilitè:
+`-background-*` (sifas li yo), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, ak `-cursor-*` — sa yo se modifikatè
+ak yon sèl tirè `view` pou pwòp li, ki pa gen rapò ak utilitè double-tirè yo pi ba. Pwop valè-libre
+(lajè/wotè/inset) rete style inline; `margin`/`padding` itilize utilitè espas yo.
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**Espas** — klas pou chak bò sou echèl espas la. Li yo kòm `{m|p}{side}-{step}`: `m` pou
+marge oswa `p` pou padding (oswa mo konplè `margin`/`padding`), yon bò lojik opsyonèl, epi
+yon etap. Kidonk `.--m-lg` ak `.--margin-lg` se menm bagay la, menm jan `.--pt-md` ak `.--paddingt-md`.
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- Bò: none (tout), `t`/`b` (kòmansman/fin blòk), `s`/`e` (kòmansman/fin entèlen) , `x`/`y` (aks inline/block).
+  Bò lojik rete kòrèk nan layout ki soti adwat-a-goch.
+- Etap: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plis `auto` pou margin sèlman.
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
+Konpoze yo pou `margin="small auto large"` shòthand InstUI a:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**Koulè** — ranplasman semantik ki rete sou palèt la: `.--bg-<name>` (background),
+`.--text-<name>` (koulè tèks), ak `.--border-<name>` (koulè bord). Chak `<name>` se yon
+token koulè semantik — entansyon yo (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) plis palèt `accent-*` (`accent-blue`, `accent-green`, elatriye). Yon non
+la la sèlman si token an egziste nan fanmi sa a, kidonk `text-brand` pa yon klas — tèks pa gen
+token mak. Pa gen fason pou rive sou yon primitif oswa yon hex o aza, epi chak ranplasman swiv
+tèm nan.
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**Fanmi token** — chak fanmi "yon token, yon pwopriyete" gen yon klas pa token, nonmen apre
+token an. Konpoze yo lib:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +227,30 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost` (ak `-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+Chak youn mete sèlman pwopriyete li, kidonk `border-width`/`border-radius` bezwen yon koulè `border-*` ak yon estil bord
+pou aktyèlman trase yon bord. Sa yo itilize non token konplè (`.--border-radius-md`), pandan ke
+helpers koulè ak espas pi wo yo itilize alias kout (`.--bg-brand`, `.--mt-lg`) — alias yo se ti kout,
+klas token yo literal epi egzostif.
 
 **Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+`none`) ak `.--text-align-<value>` (`start`, `center`, `end`, `justify`) kouvri pwopriyete kwa-koupe InstUI yo
+`display` ak `textAlign` (View, Button, Metric, Tabs, …) kòm klas konpozab —
+donk sa yo pa modifikatè pa konpozan.
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+Chak klas double-tirè genyen kaskad la detèmine sou yon modifikatè konpozan menm-non ak yon sèl-tirè, kèlkeswa lòd enpòte fèy stil yo — gade [Konvansyon authoring](/conventions/authoring)
+pou mekanis la.
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+Tout bagay isit la se CSS pwòp ki kondwi pa tokens `--instui-*`, kidonk li suiv InstUI atravè kouch token an. Gade [referans API](/api/) pou `componentsCss` ak konstriktè pa konpozan yo.
 
-## Overlays: dialog and popover
+## Overlays: dialog ak popover
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
-JavaScript.
+Konpozan overlay yo itilize primitif platfòm natif natal, kidonk yo konpòte yo aksesib avèk ti oswa pa gen JavaScript.
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — mete `.instui-modal` sou yon `<dialog>` natif natal. Li jwenn konfinman fokis, fèmen pa `Esc`, ak yon
+`::backdrop` gratis; backdrop la fonse ak menm token `--instui-component-mask-background-color`
+kòm `.instui-mask` (ajoute `-blur` pou kraze li). Louvri ak fèmen li ak invoker commands — pa gen script:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +263,21 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**Context view / popover** — mete `.instui-context-view` sou yon eleman `[popover]` epi alterne li ak
+`popovertarget`. Li monte nan kouch anlè a epi fè light-dismiss sou klik ekstèn oswa `Esc`, ankò pa gen script:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**Drawer layout** — mete `.instui-drawer-layout` sou yon rasin layout ak `.tray` ak `.content`
+pitit. Ajoute atribi `open` (oswa `-open`) pou revele tray la, epi itilize `placement="end"`
+(oswa `-placement-end`) pou dokke li sou bò inline-end — plasman rezoud atravè pwopriyete lojik
+`inset-inline-*`/`flex-direction`, konsa li vire otomatikman anba `dir="rtl"` san
+règ adisyonèl. Pakèt entèraksyon konsantre a ajoute routage koumand Invoker ak altène mòd overlay
+(`should-overlay-tray`) lè lajè travèse `--drawer-layout-min-width` (default
+`--instui-breakpoints-sm`, Lè sa a `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +288,22 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — `.instui-mask` rete pou overlays nan koule (yon spinner sou yon kat); yon modal `::backdrop`
+kouvri ka modal la.
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
-native popover).
+Tou de modèl yo anplis tou vlope kòm eleman koutim konpòtman nan `@pantoken/web-components`:
+`<instui-modal open>` (yon `<dialog>` kondwi pa atribi `open`) ak `<instui-context-view>` (yon
+popover natif natal).
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+Sipò navigatè: popover API a ak `popovertarget` se Baseline 2024; invoker commands
+(`command`/`commandfor`) se Baseline 2025, kidonk sou navigatè ki pi ansyen mare bouton yo ak `dialog.showModal()`
+kòm yon fallback yon-liy. Pozisyone yon popover bò kote trigger li itilize pozisyonman anchor CSS kote
+li sipòte (Chromium); lòt kote li santre nan kouch anlè a.
 
-## Forms
+## Fòm
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` se yon anvlòp CSS-Grid ki ranje yon etikèt, kontwòl la, ak nenpòt
+mesaj. Mete li sou yon `<label>` pou etikèt la asosye nativman ak kontwòl li. Li gen twa zòn rezo — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +315,24 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+`-layout-stacked` (default) pile zòn yo; `-layout-inline` mete etikèt la bò kote kontwòl la (ajiste avèk `-label-align-{start,end}` ak `-v-align-{top,middle,bottom}`). `-readonly` recolor etikèt la.
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+Asterisk **obligatwa** parèt lè chan an obligatwa pa _swa_ klas `-required` _oswa_ yon
+kontwòl natif natal `required` andedan li — kidonk ou ka jis mete `required` sou input la epi mak la parèt.
+Li dekoratif (yon `::after` sou etikèt la, soti nan pyebwa aksèbilite); pè li ak yon nòt tankou
+"chan make \* yo obligatwa" sòf si fòm nan klè pou tèt li.
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — `.instui-form-field-group` gwoupe chan ki gen rapò nan yon `<fieldset>` ak yon
+deskripsyon `<legend>`. Li se sèlman layout (pa gen tokens dedye): default la stack chan yo;
+`-layout-columns` / `-layout-inline` fè yo koule nan kolòn reponn, ak `-row-spacing-*` /
+`-col-spacing-*` ak `-v-align-*` pou ajiste grid la.
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — `.instui-radio-input-group` se menm gwoup `<fieldset>`/`<legend>`,
+espesyalize pou radios. Paske radios pitit yo pataje yon `name`, seleksyon an se natirèlman yon sèl-chwa —
+donk yon seri bouton toggle konpòte yo kòm yon sèl kontwòl, pa bouton lib. `-variant-simple` (default) ranje
+radios estanda (`-layout-columns`/`-inline` fè yo koule nan yon ranje); `-variant-toggle` konekte
+pitit bouton `.instui-radio.-variant-toggle` yo nan yon sèl kontwòl segmante (borders kolapsé,
+bout ekstèn awondi):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +345,37 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**Mesaj** — `.instui-form-field-messages` se kontenè a; chak `.instui-form-field-message` pran yon
+`-type-*`: `-type-hint` (gri, default), `-type-error` (tèks wouj + glyph circle-alert), `-type-success`
+(vèt tèks + glyph circle-check), ak `-type-screenreader-only` (vizyèlman klipé, toujou anons). Glyph yo pentire nan `currentColor`, konsa yo toujou matche koulè mesaj la. `-type-new-error` se yon
+alias dezapwouve nan `-type-error`. Konekte kontenè a ak kontwòl la ak `aria-describedby`, epi mete
+`aria-invalid` sou kontwòl la lè gen yon erè.
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+Anndan yon FormField, yon mesaj `-type-error` swiv validasyon bò-klian: li rete kache jiskaske
+kontwòl chan an vin `:user-invalid` (natif natal, apre itilizatè a entèaji) — oswa ou fòse li ak `-invalid`
+sou `.instui-form-field` (pou yon erè bò-sèvè). Yon `.instui-form-field-messages` endepandan (pa nan
+yon chan) pa afekte. Bag fokis kontwòl la swiv menm bagay la: danje lè `:user-invalid`/`-invalid`,
+siksè sou `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**Kontwòl tèks** — `.instui-text-input` (natif natal `<input>`), `.instui-text-area` (natif natal `<textarea>`,
+rezizable), ak `.instui-simple-select` (natif natal `<select>` ak yon caret) pataje yon sèl aparans ak menm
+eta yo: `-invalid` (bò erè), `-success` (bò siksè), `-readonly`, natif natal `:disabled`, ak
+`-size-{sm,md,lg}`. Pou yon icon avan/dèyè (InstUI `renderBeforeInput`/`renderAfterInput`), anvlòp
+input la nan `.instui-input-group` epi ajoute yon slot `.before`/`.after` (yon glyph `-icon-*`); `-should-not-wrap`
+kenbe li sou yon liy. `.instui-number-input` se fasad sa a plis yon kolòn spinner +/- `.arrows` (natif natal
+`type="number"`; konekte bouton yo ak `stepUp()`/`stepDown()`). `.instui-range-input` se yon
+`input[type="range"]` style kote valè li rann nan yon ti balon inverse `.instui-range-input-value`. Pou yon combobox rich ak yon popover listbox, itilize `@instructure/ui` — bibliyotèk sa a kouvri kontwòl natif natal yo.
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**Select dropdown style (eksperimantal)** — yon `select.css` opsyonèl amelyore menm
+eleman `.instui-simple-select` la: li style dropdown ouvè a (panèl la ak chak opsyon, ak eta hover ak
+selekte) itilize modèl CSS Customizable Select la.
 
 > [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> `select.css` depann sou `appearance: base-select` / `::picker(select)`, ki se **eksperimantal**
+> (Chrome 135+, pa ankò Baseline). Li voye kòm yon fèy opsyonèl separe epi chak règ bloke
+> dèyè `@supports (appearance: base-select)`, kidonk li pa fè anyen nan navigatè ki pa sipòte — kontwòl
+> `.instui-simple-select` la jis rete select natif natal plenn la. Chaje li sèlman si ou vle
+> dropdown amelyore a epi aksepte sipò limite a.
 
 ```ts
 import "@pantoken/components/components.css";

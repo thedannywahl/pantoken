@@ -1,47 +1,46 @@
-# Getting started
+# Empezando
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken toma los tokens de diseño e iconos de Instructure UI, los resuelve una vez y reorganiza ese único
+modelo en paquetes para muchas plataformas: hojas de estilo planas, SCSS y Less, React y Vue y Svelte,
+Tailwind y Panda, nativo Swift y Kotlin, WordPress y Drupal, Figma y más.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Instala el paquete más pequeño que se ajuste a tu tarea. Todo también se re-exporta desde el paquete unificado
+`pantoken`, así que puedes empezar allí y concretar más tarde.
 
-## Scaffold a starter project
+## Crear un proyecto inicial
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+La forma más rápida de probar pantoken: crear un proyecto inicial con él ya instalado y configurado.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Plataformas: `components` (HTML/CSS plano), `react`, `vue`, `svelte`, `web-components`, `angular`. Ver
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) para `--dir <path>` y
+uso programático.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+¿Usando un agente de codificación IA? No se necesita instalación — apúntalo directamente a la skill:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Funciona igual para Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI y Amazon Q
+Developer CLI — intercambia `claude` por `gemini`, `agent`, `codex`, `copilot -p` o `q chat`. Si prefieres
+integrar las reglas del agente de pantoken en el repositorio de forma permanente (AGENTS.md, reglas de editor, una copia local
+de esta skill), ejecuta `npx @pantoken/ai init` en su lugar.
 
-## The token model
+## El modelo de tokens
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Los tokens son propiedades personalizadas CSS llamadas `--instui-<group>-<name>`, por ejemplo
+`--instui-color-background-brand` o `--instui-spacing-space-md`. Se incluyen tres temas: `rebrand`
+(el predeterminado, con `light-dark()` donde claro y oscuro difieren), `canvas` y `canvasHighContrast`.
+Los iconos son tokens `<image>` (`--instui-icon-<name>`) derivados de Lucide más los glifos personalizados de Instructure.
 
-## Style a web app
+## Estilar una aplicación web
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Instala la hoja de estilos e imprótala una vez. Define cada propiedad `--instui-*`, así que las referencias
+directamente desde tu propio CSS.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +57,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Usar iconos en cualquier lugar
 
-The web component works in any framework, with no porting.
+El componente web funciona en cualquier framework, sin necesidad de portar.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +73,10 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### Tokens CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Los iconos son propiedades personalizadas CSS (`--instui-icon-<name>`). Carga la hoja de estilos una vez y referencia cualquier
+icono como un `mask-image` o `background-image` — no se necesita import por icono.
 
 ```css
 .my-icon {
@@ -85,10 +84,10 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — icono individual vs. conjunto completo
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` expone dos exportaciones nombradas. Usa `iconsByName` para obtener un icono sin iterar
+todo el arreglo:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +96,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Usa `icons` cuando necesites el conjunto completo (por ejemplo, para construir un selector):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +105,32 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+Ambas exportaciones cargan el IR completo en la inicialización del módulo — no hay tree-shaking por icono en este
+nivel. Para una carga ligera sólo con CSS, usa el [selector CDN](/guide/cdn-picker) para generar una URL combinada
+sólo con los iconos que necesitas.
 
-## Generate for a native platform
+## Generar para una plataforma nativa
 
-The CLI writes token source into a target repo. No install beyond the runner:
+La CLI escribe la fuente de tokens en un repositorio objetivo. No se necesita instalación más allá del runner:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Ver [la CLI de pantoken](/guide/cli) para cada destino.
 
-## VS Code authoring hints
+## Pistas para authoring en VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` ahora incluye archivos de datos personalizados para VS Code para que los proyectos consumidores obtengan completado de clases y
+tokens en HTML/CSS sin instalar una extensión específica de pantoken.
 
-1. Install the unified package:
+1. Instala el paquete unificado:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Apunta VS Code al JSON de datos personalizados incluido desde tu espacio de trabajo consumidor:
 
 ```json
 {
@@ -140,14 +139,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Recarga VS Code (o ejecuta "Developer: Reload Window") para aplicar los nuevos datos.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Esto habilita sugerencias para tokens de clase `instui-*` (y tokens de clase `-modifier`) además de
+propiedades personalizadas `--instui-*`.
 
-## Where to next
+## ¿Qué sigue?
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [El mapa de paquetes](/guide/packages) — qué paquete elegir, según la tarea.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — instalar activos y reglas del agente en un repositorio consumidor.
+- [Arquitectura](/guide/architecture) — cómo encajan el modelo de tokens, el core y las salidas.
+- [Referencia de la API](/api/) — cada símbolo exportado, generado desde la fuente.

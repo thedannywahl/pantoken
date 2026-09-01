@@ -1,36 +1,33 @@
-# Generated output
+# Generiran izhod
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Več paketov pantoken pri gradnji izpusti datoteke — slogovni list, `theme.json`, vgrajen modul z enotami. Da ostane repozitorij čist in izpisi pošteni, vsak paket sledi eni konvenciji in opravilo v delovnem prostoru vse preveri.
 
-## The `generated/` convention
+## Konvencija `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Vsak paket, ki ustvari artefakt med gradnjo, ga zapiše v mapo na paket (`generated/`), in tam ni nič drugega. Ena pravila v `.gitignore` jih pokriva vseh:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Torej nobena generirana datoteka ni obvezno vključena v repozitorij — gradnja jo reproducira. Tam pristajata dve vrsti izhodov:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Pošiljljivi statični viri** — datoteke, ki jih uporabnik uvozi, kot so `@pantoken/css`'s `style.css` ali
+  `@pantoken/scss`'s `tokens.scss`. Mapa `exports` paketa hrani javni ključ
+  (`"./style.css"`), a ga kaže na `generated/`, zato API za potrošnika nikoli ne spremeni.
+- **Prehodi gradnje** — datoteke, ki jih paket sam uvozi in vključi v `dist`, kot je
+  vendoriziran JSON iz `@pantoken/tokens`. Te same po sebi niso objavljene; so skompilirane v paket.
 
-## Validating the output
+## Preverjanje izhoda
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (zasebno orodje) teče po gradnji in preveri tri stvari:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. da je vsak generator paket dejansko zapisal ne-prazno mapo `generated/`,
+2. da CLI `pantoken` izpiše vsaj eno datoteko za vsak podprt cilj, in
+3. da noben generiran slogovni list ne odstopa od IR enot — `danglingReferences` za samostojne
+   liste in `unknownReferences` za mostove, ki samo referencirajo enote, definirane drugje.
 
-## Commands
+## Ukazi
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Validator je tudi povezan z `pnpm run ready`, zato odstopanja ujame standardni prehod.

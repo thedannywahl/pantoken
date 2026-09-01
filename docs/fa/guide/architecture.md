@@ -1,10 +1,8 @@
-# Architecture
+# معماری
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken یک کار دارد: توکن‌ها و آیکون‌های طراحی Instructure را یک‌بار حل کند، سپس آن مدل را برای هر هدف بازشکل دهد. لایه‌های زیر آن بازشکل‌دهی را معتبر نگه می‌دارند و بسته‌های منتشرشده را از هر منبع upstream فقط-گیت‌هابی جدا نگه می‌دارند.
 
-## The layers
+## لایه‌ها
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** قراردادهای نوع را نگه می‌دارد، و هیچ چیز دیگری. این منبع حقیقت برای شکل `Token` و قرارداد پلاگین است، با صفر وابستگی، بنابراین هر بسته‌ای می‌تواند آزادانه به آن وابسته باشد.
+- **`@pantoken/core`** تنها بسته‌ای است که به منبع upstream دست می‌زند. این بسته توکن‌ها و آیکون‌ها را به IR کانونیکال تبدیل می‌کند و CSS را رندر می‌کند.
+- **`@pantoken/tokens`** آن IR را در زمان ساخت به‌صورت JSON استاتیک درون‌سپاری می‌کند. این نقطه جداسازی است: بسته‌های پایین‌دست `@pantoken/tokens` را می‌خوانند، هرگز `@pantoken/core` را، بنابراین `npm i pantoken` هرگز به upstream فقط-گیت‌هابی دسترسی پیدا نمی‌کند.
+- **`@pantoken/utils`** کمک‌کننده‌های مشترک را حمل می‌کند — حل‌کننده `var(--x)`، رِگِکس‌های ارجاع، تبدیل حروف و رنگ، و چک‌های drift که خروجی تولیدشده را وفادار به IR نگه می‌دارد.
 
-## Why tokens are vendored
+## چرا توکن‌ها درون‌سپاری می‌شوند
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+پکیج توکن upstream روی GitHub است، نه npm. اگر هر بسته‌ی پایین‌دست به آن وابسته می‌شد، `npm i pantoken` برای هر کسی که آن دسترسی را نداشت شکست می‌خورد. در عوض `@pantoken/tokens` یک‌بار در زمان ساخت upstream را حل می‌کند و نتیجه را به JSON استاتیک می‌نویسد. بسته‌های منتشرشده آن JSON را حمل می‌کنند، بنابراین از npm به‌خوبی نصب می‌شوند، به semver چسبیده می‌شوند و آفلاین نیز کار می‌کنند.
 
-## Buckets
+## باکت‌ها
 
-Each downstream bucket is a way of consuming the IR:
+هر باکت پایین‌دست یک روش مصرف IR است:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — تبدیل توکن‌ها به یک فایل (CSS، SCSS، Less، Stylus، DTCG).
+- **renderers/** — یکپارچگی با فِریم‌ورک‌ها و ابزارها (React، Vue، Svelte، MUI، Pendo و غیره).
+- **bundlers/** — پلاگین‌ها و پریست‌های ابزار ساخت (Vite، Next، Tailwind، Panda، PostCSS، webpack).
+- **platforms/** — اهداف بومی و سازندگان سایت (Swift، Kotlin، Rust، WordPress، Drupal).
+- **design/** — payloadها برای ابزارهای طراحی (Figma، پالت‌های رنگ).
+- **plugins/** — تبدیل‌های اختیاری که خروجی توکن یا CSS را گسترش می‌دهند. مشاهده کنید [Plugins](/guide/plugins).
 
-## Generated output
+## خروجی تولیدشده
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+هر بسته‌ای که فایلی منتشر می‌کند آن را در دایرکتوری `generated/` مخصوص بسته می‌نویسد که یک کار ساخت بازتولید می‌کند، بنابراین هیچ چیز تولیدشده‌ای کمیت نمی‌شود. یک تسک workspace همه‌ی آن را اعتبارسنجی می‌کند. ببینید [Generated output](/guide/generated-output).

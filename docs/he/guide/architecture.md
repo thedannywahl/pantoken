@@ -1,10 +1,8 @@
-# Architecture
+# ארכיטקטורה
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+ל-pantoken יש משימה אחת: לפרש את עיצובי הטוקנים והאייקונים של Instructure פעם אחת, ואז לעצב מחדש את המודל לכל יעד. השכבות למטה שומרות על נכונות העיצוב המחודש ושומרות על החבילות שפורסמו נקיות מכל Upstream הייחודי ל-GitHub.
 
-## The layers
+## השכבות
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,27 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** מחזיק את חוזי הטיפוס, ולא שום דבר נוסף. זו המקור האמין לצורת `Token` וחוזה התוסף, ללא תלותיות, כך שכל חבילה יכולה להסתמך עליו בחופשיות.
+- **`@pantoken/core`** היא החבילה היחידה שנוגעת במקור ה-upstream. היא פותרת טוקנים ואייקונים ל-IR הקנוני ומייצרת CSS.
+- **`@pantoken/tokens`** מספקת את ה-IR הזה כ-JSON סטטי בזמן בנייה. זהו נקודת הפיצול: חבילות מטה קוראות ל-`@pantoken/tokens`, לעולם לא ל-`@pantoken/core`, כך ש-`npm i pantoken` לעולם לא מגיע ל-upstream הייחודי ל-GitHub.
+- **`@pantoken/utils`** נושאת את העזרים המשותפים — הפותר `var(--x)`, ה-regexes של ההפניות, המרת תיבות מקרה וצבע, ובדיקות ה-drift שמשמרות שהפלט המיוצר נאמן ל-IR.
 
-## Why tokens are vendored
+## מדוע הטוקנים מושקעים (vendored)
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+חבילת הטוקנים של ה-upstream живёт ב-GitHub, לא ב-npm. אם כל חבילת מטה הייתה תלויה בה,
+`npm i pantoken` הייתה נכשלת לכל מי שאין לו את הגישה הזו. במקום זאת `@pantoken/tokens` פותרת את ה-upstream פעם אחת בזמן בנייה וכותבת את התוצאה כ-JSON סטטי. החבילות שפורסמו נושאות את ה-JSON הזה, כך שהן מתקינות נקי מ-npm, מקבעות ל-semver, ועובדות אופליין.
 
-## Buckets
+## דליים (Buckets)
 
-Each downstream bucket is a way of consuming the IR:
+כל דלי מטה הוא דרך לצרוך את ה-IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — הופך את הטוקנים לקובץ (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — אינטגרציות מסגרת וכלים (React, Vue, Svelte, MUI, Pendo ועוד).
+- **bundlers/** — פלאגינים ופריסטים לכלי בנייה (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — יעדי מקומי ו- site-generator (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — מטענים לכלי עיצוב (Figma, דגימות צבע).
+- **plugins/** — טרנספורמציות אופציונליות שמרחיבות את הפלט של הטוקנים או ה-CSS. ראה [Plugins](/guide/plugins).
 
-## Generated output
+## פלט שנוצר
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+כל חבילה שמפיקה קובץ כותבת אותו לתיקיית `generated/` פר חבילה שהבנייה משחזרת, כך ששום דבר שנוצר אינו מחויב בגרסה. משימה בסביבת העבודה מאמתת את הכל. ראה [Generated output](/guide/generated-output).

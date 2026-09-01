@@ -1,139 +1,133 @@
-# The package map
+# Te mapi mō ngā mōkihi
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
-`pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
+pantoken he monorepo o ngā mōkihi iti, kotahi-whāinga kua whakarōpū ki ngā pukapuka. Tāuta te kotahi e hāngai ana ki tō mahi, rānei tāuta te mōkihi kotahi-whakarōpū `pantoken` ka kawemai mai i ōna ara-hapawhā (hei tauira `pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
 
-## Core
+## Ngā Waahanga Matua
 
-The shared model and the transformer everything else builds on.
+Te tauira tuitui me te huri e hangai ana ngā mea katoa.
 
-| Package                                                 | What it does                                                                                                       |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.                                       |
-| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.                                     |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source.                             |
-| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, drift checks, and the token→utility-class emitters. |
-| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
-| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
+| Package                                                 | He aha tāna e mahi                                                                                                                           |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/model`](/api/packages/model/src/)           | Ngā momo TypeScript kore-tūāpapa: te āhua `Token` me te kirimana mō te pūrere (plugin).                                                      |
+| [`@pantoken/core`](/api/packages/core/src/)             | E whakatau ana i ngā token me ngā pakiaka mai te puna matua ki te IR angitu, ā, ka whakaputa i te CSS.                                       |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)          | Te IR kua whakatau hei JSON ā-roto, mō ia kaupapa-hoahoa, me te raupapa Tokens Studio taketake.                                              |
+| [`@pantoken/utils`](/api/packages/utils/src/)           | Te whakatau token, ngā regex tohutoro, āwhina mō ngā āhua me ngā tae, ngā tirotiro rerenga (drift), me ngā kaiwhakaputa token→utility-class. |
+| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Hanga me te whakakotahi i ngā pūrere pantoken me `definePlugin`.                                                                             |
+| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — whakaputa kōnae taketake me ngā puna tūmau.                                                                   |
 
-## Formats
+## Ngā Hōputu
 
-Turn the tokens into a file format.
+Hurihia ngā token ki tētahi hōputu kōnae.
 
-| Package                                                | Output                                                                                                                                                                                                     |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                                                                                              |
-| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                                                                                                 |
-| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                            |
-| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                          |
-| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                                                                                                       |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                                                                                                    |
-| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |
-| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
-| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
+| Package                                                | Putanga                                                                                                                                                                                                                     |
+| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/css`](/api/formats/css/src/)               | CSS ā-ahua-`@property` me `light-dark()` me ngā pakiaka data-URI.                                                                                                                                                           |
+| [`@pantoken/scss`](/api/formats/scss/src/)             | Ngā rerekētanga SCSS, kua whakatau ki tētahi aratau kotahi.                                                                                                                                                                 |
+| [`@pantoken/less`](/api/formats/less/src/)             | Ngā rerekētanga Less.                                                                                                                                                                                                       |
+| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Ngā rerekētanga Stylus.                                                                                                                                                                                                     |
+| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | Tuhinga DTCG (W3C Design Tokens).                                                                                                                                                                                           |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)         | Te IR hei JavaScript me JSON (ka kitea ano i raro i Ngā Waahanga Matua).                                                                                                                                                    |
+| [`@pantoken/icons`](/api/formats/icons/src/)           | He tirohanga ngāwari ki runga i ngā token tohu (icon tokens).                                                                                                                                                               |
+| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | He pūrere momotuhi tohu tukutuku (TTF, WOFF2) me tōna CSS.                                                                                                                                                                  |
+| [`@pantoken/components`](/api/formats/components/src/) | He whare pukapuka kōwhiringa CSS ā-InstUI (pātu, whakatūpato, ripanga, me ētahi atu) me tētahi tūnga tīmatanga hei tautuhi āhua, ā, ngā taputapu whakawhānui me ngā momotuhi tohu. Tirohia [Components](/guide/components). |
 
-## Renderers
+## Ngā Kaiwhakaatu
 
-Framework and tool integrations.
+Ngā atanga papaanga me ngā taputapu.
 
-| Package                                                                                                                                          | For                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>`, and a token provider.               |
-| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | The web component, wired into each framework.              |
-| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-friendly token objects (no CSS variables).      |
-| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` and styled primitives, framework-agnostic. |
-| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token setup for Astro sites.                               |
-| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon tokens and swatches in Markdown.                      |
-| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | A markdown-it plugin for icon codes and color swatches.    |
-| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | A type-safe theme for styled-components and Emotion.       |
-| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | A Material UI theme.                                       |
-| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-variable bridges for Bootstrap and shadcn/ui.          |
-| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | A Sass settings override and CSS overlay for Foundation.   |
-| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Themes for Docusaurus and VitePress.                       |
-| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | A Mintlify `docs.json` theme (colors + background).        |
-| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |
-| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |
+| Package                                                                                                                                          | Mō                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | Ngā hook React, `<Icon>`, me tētahi kaiwhakarato token.                           |
+| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | Te waahanga tukutuku, kua honoa ki ia anga (framework).                           |
+| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | Ngā tūtohu token ā-ShapeSheet e pai ana ki StyleSheet (kāore he rerekētanga CSS). |
+| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` me ērā mātā o te āhua, kore-hāngai ki tētahi anga ake.            |
+| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Tautuhinga token mō ngā pae Astro.                                                |
+| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Ngā token tohu me ngā ranunga tae i roto i Markdown.                              |
+| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | He plug-in markdown-it mō ngā waehere tohu me ngā ranunga tae.                    |
+| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | He kaupapa-āhua ā-ahua-tipu (type-safe) mō styled-components me Emotion.          |
+| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | He kaupapa mō Material UI.                                                        |
+| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | Ngā whakawhēritanga honohono CSS-variable mō Bootstrap me shadcn/ui.              |
+| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | He whakarerekētanga tautuhinga Sass me tētahi kapi CSS mō Foundation.             |
+| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Ngā kaupapa mō Docusaurus me VitePress.                                           |
+| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | He kaupapa Mintlify `docs.json` (ngā tae + papamuri).                             |
+| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | He kaupapa Storybook.                                                             |
+| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | He CSS ā-ao ā-Instructure mō ngā aratohu Pendo.                                   |
 
-## Bundlers
+## Ngā Kaitapiri
 
-Build-tool integrations.
+Ngā atanga taputapu hanga.
 
-| Package                                             | For                                                   |
-| --------------------------------------------------- | ----------------------------------------------------- |
-| [`@pantoken/vite`](/api/bundlers/vite/src/)         | A Vite plugin with virtual modules and CSS injection. |
-| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` for Next.js `transpilePackages`.       |
-| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | A webpack plugin.                                     |
-| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | The `@pantoken;` at-rule.                             |
-| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
-| [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
+| Package                                             | Mō                                                              |
+| --------------------------------------------------- | --------------------------------------------------------------- |
+| [`@pantoken/vite`](/api/bundlers/vite/src/)         | He plug-in Vite me ngā kōnae marama ā-virtual me te tāpiri CSS. |
+| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` mō Next.js `transpilePackages`.                  |
+| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | He plug-in webpack.                                             |
+| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | Te ture-īpa atanga `@pantoken;`.                                |
+| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | He tautuhinga Tailwind.                                         |
+| [`@pantoken/panda`](/api/bundlers/panda/src/)       | He tautuhinga Panda CSS.                                        |
 
-## Platforms
+## Ngā Pūnaha
 
-Native and site-generator targets, emitted by the CLI or their own API.
+Ngā whāinga taketake me ngā kaiwhakawhiwhi pae, ka whakaputaina e te CLI rānei tō rātou ake API.
 
-| Package                                                                                        | Output                                     |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift source plus a SwiftPM manifest stub. |
-| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML resources.                     |
-| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                    |
-| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                              |
-| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts for egui or iced.              |
-| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | A WordPress block-theme `theme.json`.      |
-| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | A Vanilla Forums `variables.json`.         |
-| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal theme assets.                       |
-| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |
-| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |
+| Package                                                                                        | Putanga                                       |
+| ---------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Puna Swift me tētahi stub manifest SwiftPM.   |
+| [`@pantoken/android`](/api/platforms/android/src/)                                             | Ngā rauemi XML mō Android.                    |
+| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                       |
+| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                                 |
+| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Ngā tūturu Rust mō egui, iced rānei.          |
+| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | He kaupapa ā-Block mō WordPress `theme.json`. |
+| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | He kaupapa ā-Vanilla Forums `variables.json`. |
+| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Ngā rawa kaupapa Drupal.                      |
+| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Raraunga pae mō Hugo me Jekyll.               |
+| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Uara pai mō roto i ngā īmēra HTML.            |
 
-## Design
+## Hoahoa
 
-For design tools.
+Mō ngā taputapu hoahoa.
 
-| Package                                           | Output                                                                |
-| ------------------------------------------------- | --------------------------------------------------------------------- |
-| [`@pantoken/figma`](/api/design/figma/src/)       | A Figma Variables payload.                                            |
-| [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus a viewable SVG specimen sheet. |
+| Package                                           | Putanga                                                                        |
+| ------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [`@pantoken/figma`](/api/design/figma/src/)       | He utaunga Figma Variables.                                                    |
+| [`@pantoken/swatches`](/api/design/swatches/src/) | Ngā rārangi tae (ASE, GPL, Sketch) me tētahi ripanga tauira SVG e tirohia ana. |
 
-## Plugins
+## Tāpiritanga
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+Ngā whakaritenga kōwhiringa e whakawhānui ana i ngā putanga token, CSS rānei. Tirohia [Plugins](/guide/plugins).
 
-| Package                                                                               | What it adds                                                    |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as `--instui-stacking-*` tokens.           |
-| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.              |
-| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                  |
-| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
-| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
+| Package                                                                               | He aha tāna e tapiri ana                                               |
+| ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Ngā tohu ā-z-index kua ingoahia hei token `--instui-stacking-*`.       |
+| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | Te āhua `-with-visual-debug` hei tirohanga whakatūpato kaupapa.        |
+| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Ngā tohu waitohu mai i simple-icons.                                   |
+| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Ngā tohu hua Instructure hei SVG, data URI, me ngā token whakaahua.    |
+| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | He plug-in PostCSS e tangohia ana ngā rawa ritenga-kāore e whakamahia. |
 
-## Tools
+## Ngā Utauta
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+Hanganga hanga, tuhinga, me te papamahi whakaaturanga mō te monorepo. He maha he ā-roto, engari he motuhake ia, nō reira ka tuhia mōhia ā ētahi ka whakaputahia ki npm.
 
-| Package                                            | What it does                                                                                                                                                                                          |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                                                                                                  |
-| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                                                                                                      |
-| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed.                                                                        |
-| `@cssdoc/core` (external)                          | A generic CSS documentation extractor (TSDoc, for CSS): parses doc-comments + the CSS AST into a model the docs emit as the CSS API reference. Lives in its own repo; consumed via a link dependency. |
+| Package                                            | He aha tāna e mahi                                                                                                                                                                                  |
+| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | E whakaputa ana i te mōkihi kotahi-whakarōpū `pantoken` me `exports` mai i ōna whakawhirinaki.                                                                                                      |
+| `@pantoken/validate-generated`                     | Te tatau rerenga: e tirotiro ana mēnā ia pāhekoheko hanga kua whakatau ki te IR token.                                                                                                              |
+| [`@pantoken/demo`](/api/tools/demo/src/)           | Te kaiwhakahaere-ā-tuhi whakaaturanga ora: e whakatau ana i tētahi whakatakotoranga `@demo` ki tētahi iframe ka whakaatu HTML/CSS/JS taketake, ā, kua āhua-token.                                   |
+| `@cssdoc/core` (taiao kē)                          | He whiwhinga tuhinga CSS whānui (TSDoc, mō te CSS): ka tātaritia ngā kōrero-tuku + te AST CSS ki tētahi tauira e whakaputa ana ngā tuhinga API CSS. Kei tōna ake repo; ka whakamahia mā te hononga. |
 
-`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
-page; the others do.
+`@pantoken/validate-generated` he script kotahi-wa (ka karangahia e `pnpm run ready`), nō reira kāore he whārangi API; ko ērā atu he.
 
 ## AI
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+Ngā rawa tautuhi AI mō te kai-kaihoko. Mō ngā kaupapa e whakamahi ana i pantoken, kāore mō te whakawhanaketanga pantoken anake.
 
-- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
-  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
+- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) ka tāuta `AGENTS.md`, `llms.txt`, me ngā ture ā-hoa/taipitopito (Cursor, Copilot, Windsurf, Claude Code) ki roto i tētahi repo kai-kaihoko.
 
-## Dev plugins
+## Ngā Tāpiritanga Whanaketanga
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+Ngā tāpiritanga e waihangahia e mātou mō ngā taputapu e whakamahi ana mātou, kua whakarōpū e ai ki te tāhuhu. He motuhake, ā, ka taea te whakaputa.
 
-| Package                                                                                  | Plugs into                                                                             |
-| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: turns a `@demo <provider>:<ref>` block tag into an embeddable demo fence.     |
-| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: rebuilds upstream workspace packages (and dependents) when their source changes. |
+| Package                                                                                  | Mō te hono ki                                                                                                       |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: ka huri i tētahi tapanga ā-`@demo <provider>:<ref>` hei wāhanga whakaaturanga rūnanga.                     |
+| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: ka whakahou anō i ngā mōkihi puna ā-hapori (workspace) me ō rātou whakawhaiti (dependents) ina huri ngā puna. |

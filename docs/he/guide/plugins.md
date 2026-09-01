@@ -1,13 +1,10 @@
-# Plugins
+# תוספים
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+תוסף pantoken מרחיב את פלט הטוקנים או ה-CSS ללא יצירת fork של חבילה. בונים אותו באמצעות `definePlugin` מ־`@pantoken/plugin-kit`, ואז מעבירים אותו אל `buildTokens` או `toCss`.
 
-## Author a plugin
+## יצירת תוסף
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+תנו ל־`definePlugin` את ה־hooks שאתם מממשים. הוא מחזיר תוסף רגיל, ממותג לפי היכולות הנגזרות מה־hooks האלה. תוסף יכול להרחיב את ה־IR (`tokens`, `icons`), את פלט ה־CSS (`css`), או את שניהם.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## רישום לפי יכולות
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` ו־`toCss` מריצים את `checkPlugins` על פני התוספים שאתם מעבירים. הוא מציג אזהרה — הוא אף פעם לא זורק חריגה — כאשר לתוסף אין hook תואם לשלב שבו הוא נרשם, כך שתוסף שמיועד רק לטוקנים שמועבר ל־`toCss` יידחה עם הודעה במקום להישאר שקט וללא השפעה.
 
-## Compose plugins
+## הרכבת תוספים
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+בנו על בסיס תוסף קיים עם `extendPlugin`, או שלבו תוספים מקבילים עם `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+ה־hooks של אותו שלב מרכיבים זה את זה: `tokens` מריץ קודם את הבסיס ואז את התוספת, `css` ממזג את שני התרומות, ו־`icons` מריץ את שניהם.
 
-## Validate your plugin's output
+## אמתו את פלט התוסף שלכם
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+הריצו את בדיקות ה־drift המשותפות מ־`@pantoken/utils` על פלט התוסף בעמודת הבדיקה שלו, כך שטעות הקלדה או שם טוקן ששונה יכשלו מהר ובמקומי:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,12 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## התוספים המצורפים
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — ממותג אייקונים מ־simple-icons, מרושמים כתוקני אייקון.
+- `@pantoken/plugin-logos` — לוגואים של מוצרי Instructure כ־SVGs, data URIs, ו־`--instui-logo-*` טוקני תמונה.
+- `@pantoken/plugin-prune-custom-props` — תוסף PostCSS (לא תוסף pantoken) שמסיר מאפייני custom שלא בשימוש מקובץ הסגנונות.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+כמה דברים שהיו בעבר תוספים עכשיו משולבים ב־`@pantoken/components`, מכיוון שרבים מהרכיבים זקוקים להם כברירת מחדל: צללי elevation (`--instui-elevation-*`, ב־`components.css`), טבעת קווי מתאר לפוקוס (ב־`base.css` — כל אלמנט שניתן למקד מקבל אותה כאשר pantoken שולט בעמוד), ופונטים של המותג Instructure (Atkinson Hyperlegible Next: `base.css` מיישם את `--instui-font-family-base`; ה־opt-in `@pantoken/components/fonts.css` טוען את קבצי ה־woff2 של `@font-face`).
 
-See the [API reference](/api/) for each plugin's exports.
+ראו את ה[הפניה ל־API](/api/) עבור הייצוא של כל תוסף.

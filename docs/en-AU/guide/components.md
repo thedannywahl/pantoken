@@ -136,7 +136,7 @@ stylesheets shipped by the package keep the `instui` prefix.
 ## Base
 
 `base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
+`body` reset, the page surface, base text colour and font, `color-scheme` (so `light-dark()` tokens
 and native controls track the theme), and a base link. Load it once, before the component and prose
 sheets, when pantoken owns the page.
 
@@ -173,7 +173,7 @@ import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next
 ## Utilities
 
 `utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
+scale, and semantic colour overrides. Unlike the component `-modifier` classes, these use a **double
 dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
 element — bare, or composed onto a component.
 
@@ -193,7 +193,7 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
+**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and colour onto, and it
 carries key-value modifiers for its own visual props so you don't have to reach for utilities:
 `-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
@@ -212,9 +212,9 @@ step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--pa
 Compose them for InstUI's `margin="small auto large"` shorthand:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+**Colour** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
+`.--text-<name>` (text colour), and `.--border-<name>` (border colour). Each `<name>` is a
+semantic colour token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
 `inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
 on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
 no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
@@ -231,9 +231,9 @@ token. Compose them freely:
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
 - `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
+Each sets only its one property, so `border-width`/`border-radius` need a `border-*` colour and a border
 style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
+colour and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
 are ergonomic shortcuts; the token classes are literal and exhaustive.
 
 **Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
@@ -248,7 +248,7 @@ for the mechanism.
 Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
 layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
 
-## Overlays: dialog and popover
+## Overlays: dialogue and popover
 
 The overlay components ride native platform primitives, so they behave accessibly with little or no
 JavaScript.
@@ -296,14 +296,14 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 **Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
 covers the modal case.
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
+Both patterns are also wrapped as behavioural custom elements in `@pantoken/web-components`:
 `<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
 native popover).
 
 Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
 (`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
 as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+supported (Chromium); elsewhere it centres in the top layer.
 
 ## Forms
 
@@ -322,7 +322,7 @@ areas — `label`, `controls`, `messages`:
 ```
 
 `-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolours the label.
 
 The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
 native `required` control inside it — so you can just set `required` on the input and the mark shows.
@@ -355,7 +355,7 @@ rounded outer ends):
 **Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
 `-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
 (green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
+The glyphs paint in `currentColor`, so they always match the message colour. `-type-new-error` is a
 deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
 `aria-invalid` on the control when there's an error.
 
@@ -377,7 +377,7 @@ combobox with a listbox popover, reach for `@instructure/ui` — this library co
 
 **Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
 `.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+selected states) using the CSS Customisable Select model.
 
 > [!WARNING]
 > `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**

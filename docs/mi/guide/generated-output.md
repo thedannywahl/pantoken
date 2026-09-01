@@ -1,36 +1,32 @@
-# Generated output
+# Putanga i hangaia
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+He maha ngā mōrearea pantoken e whakaputa ana i ngā kōnae i te wā hanga — he pepa āhuahanga, he `theme.json`, he wāhanga tohu whakauru. Kia māmā te repo, kia tika hoki ngā putanga, ka whai ia mōrearea i tētahi kawa kotahi, ā, ka whakamana tētahi mahi papaworkspace i aua mea katoa.
 
-## The `generated/` convention
+## Te kawa `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Ia mōrearea e whakaputa ana i tētahi taonga hanga, ka tuhia atu ki tētahi kōpaki `generated/` mō ia mōrearea, ā, kāore he mea kē e noho ana ki reira. He ture kotahi i roto i `.gitignore` e kapi ana i a rātou katoa:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Nō reira kāore he kōnae i hangaia e tukuna ana ki te putunga — ka whakaputa anō te hanga i a ia. E rua ngā momo putanga e tae atu ki reira:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Ngā mea taketake ka tukuna** — ngā kōnae ka kawemai e te kaihoko, pērā i te `@pantoken/css`'s `style.css` rānei te
+  `@pantoken/scss`'s `tokens.scss`. Ko te mapi `exports` o te mōrearea e pupuri ana i te matua tūmatanui
+  (`"./style.css"`) engari ka tohu ana ki `generated/`, nō reira kāore e rerekē te API kaihoko.
+- **Ngā puku hanga-whāhanga** — ngā kōnae e kawemai ana te pūtake o te mōrearea, ā, ka kohia ki roto i `dist`, pērā i te JSON panoni a `@pantoken/tokens`. Kāore ēnei e whakaputaina ā-rātou anō; ka whakarerekea rānei ka tāpirihia ki te hanga.
 
-## Validating the output
+## Te whakamana i ngā putanga
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (he taputapu tūmataiti) ka rere i muri i te hanga, ā, ka tirotiro i ngā mea e toru:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. ia mōrearea kaiwhakawhanake i tuhia tūturu he kōpaki `generated/` kāore i te koropupū,
+2. kei roto i te CLI `pantoken` he kōnae kotahi iti rawa mō ia whāinga kua tautokohia, me
+3. kāore he pepa āhuahanga i hangaia e rere noa i waho i te IR tohu — `danglingReferences` mō ngā pepa motuhake,
+   me `unknownReferences` mō ngā tūāhanga e tohu ana noa ki ngā tohu i tautuhia i ētahi atu wāhi.
 
-## Commands
+## Ngā whakahau
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +36,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Kua hono hoki te kaiwhakamana ki `pnpm run ready`, nō reira ka kitea te kōrere i roto i te ara tatau paerewa.

@@ -1,36 +1,33 @@
-# Generated output
+# Framleitt úttak
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Nokkrir pantoken pakkar framleiða skrár við byggingu — stíll, `theme.json`, innfellt táknamódúl. Til að halda geymslunni hreinni og úttakinu heiðarlegu fylgja öll pakkarnir sömu reglu og verkefni í vinnusvæðinu sannprófar allt.
 
-## The `generated/` convention
+## Regla `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Sá pakki sem býr til byggingarafurð skrifar hana í per-pakka `generated/` möppu, og ekkert annað býr þar. Ein regla í `.gitignore` nær til þeirra allra:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Þannig er engin framleidd skrá skuldbundin — bygging endurgerir hana. Tveir flokkar úttaks lenda þar:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Útgefanlegar static skrár** — skrár sem neytandi innflytur, svo sem `@pantoken/css`'s `style.css` eða
+  `@pantoken/scss`'s `tokens.scss`. Pakkans `exports` kort heldur utan um opinbera lykilinn
+  (`"./style.css"`) en bendir á `generated/`, þannig breytist neytenda-viðmótið aldrei.
+- **Byggingar milliúttak** — skrár sem pakkans eiginn kóði innflytur og bundle-ar í `dist`, eins og
+  `@pantoken/tokens`'s innbyggða JSON. Þessar eru ekki birtar sjálfstætt; þær eru þýddar inn.
 
-## Validating the output
+## Staðfesting úttaksins
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (einkahleður tól) keyrir eftir byggingu og athugar þrjú atriði:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. að hver generator pakki hafi í raun skrifað ekki-tóma `generated/` möppu,
+2. að `pantoken` CLI skili að minnsta kosti einni skrá fyrir hvert studd markmið, og
+3. enginn framleiddur stíll sveiflist frá tákn IR — `danglingReferences` fyrir sjálfstæðar
+   töflur, og `unknownReferences` fyrir brýrnar sem aðeins vísa í tákn skilgreind annars staðar.
 
-## Commands
+## Skipanir
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Vottarinn er einnig tengdur inn í `pnpm run ready`, svo sveiflur uppgötvast í venjulegu hleypihliðinni.

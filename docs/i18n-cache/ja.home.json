@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "entries": {
+    "0e931d439248ea06beb1526804e435763915471cde6ee42f0f7a1b8eda78c234": "1つの解決済みトークンモデルが、スタイルシート、フレームワークバインディング、ネイティブコード、デザインツール用ペイロードに変換されます。",
+    "127a5bf3b67ff10cdc095abd9664a732a4481288aa4ac786b48d49c3637c4380": "すべてのパッケージは同じ解決済みトークン IR を参照します。上流でトークンを変更すると、CSS、SCSS、ネイティブコード、Figma に同じように反映されます。",
+    "28e479a36c4457f0347b5233f4d568c6e07f00d4221b20d9d22e10a4b6e03361": "最小のパッケージを使う",
+    "50762df33928b42d379157c975603cd581a5b8efc78c29ef0abf3cf9ee35091f": "上流への結合なし",
+    "742680a232b7d884bd98c7e9d8bf6141ad440ee1d54229603ff10f301a7bae93": "Swift、Kotlin、Compose、Flutter、Rust、WordPress などを出力するには `pantoken generate` を実行してください。同じトークンを各エコシステムの慣用表現で提供します。",
+    "a2191dbe605aef4cc35dd2e154efde205d43523300949ae0a342ff9b81f4bb82": "CSS リファレンス",
+    "a2e1e3ae973286f9cf9e21e0c05be35aa0a2eb7f36ab0cb88f91e3bcf804b96d": "はじめに",
+    "c88a8c99bb7a8f9b8cb75d2f7c7c487028ae2b3bbc5763f82f850ab796a52a98": "単一の信頼できる情報源",
+    "d5b4fab1eba6c2b03c165d8edd91584dcfe321dadbdc4e2a02cfbe51d3b404de": "任意のプラットフォーム向けに生成",
+    "d663c2a3a159200ebca43ac9e1eab5eaa61232549acb6265409627e4aaacb07b": "スタイルシートには @pantoken/css のみ、フックとアイコンには @pantoken/react を、Tailwind、Panda、または MUI にはバンドラ用プリセットをインストールしてください。",
+    "dc0022c48bbf821783348079101f1112acd00099ae8b14914ae391ecbdb673c1": "トークンはベンダリングされた静的 JSON として配布されるため、`npm i pantoken` が GitHub 専用のソースに依存することはありません。公開可能で semver 管理され、オフラインでも利用できます。",
+    "ddc47d8d57ccfcbea77d4cda3127defb647304481fe34c048e4948725d25e0d9": "Instructure のデザイントークンを、あらゆる場所で",
+    "f0feca6be686b633ef884d256cd5de608422cdb7355436ebd0613ac38fb3d89a": "パッケージマップ",
+    "f217f3a6ff6d054f3b35e2ee04fc1e946866217915154030f5b7f3b29dea1507": "API リファレンス"
+  }
+}

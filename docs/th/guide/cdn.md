@@ -1,53 +1,40 @@
-# CDN & distribution
+# CDN & การแจกจ่าย
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken เผยแพ็กเกจทุกตัวไปยัง npm ดังนั้นจึงสามารถดึงโทเค็น คอมโพเนนต์ และเว็บคอมโพเนนต์ตรงจาก CDN — ไม่มีขั้นตอนบิวด์ ไม่มีบันเดลเลอร์ หน้าสิ่งนี้ครอบคลุม URL การรวม CSS (พร้อมตัวสร้างแบบโต้ตอบ) รวมทั้งการวางเว็บคอมโพเนนต์แบบพร้อมใช้งาน
 
-## The token foundation
+## พื้นฐานโทเค็น
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+ทุกคอมโพเนนต์ pantoken อ่าน `--instui-*` custom properties จากแผ่นโทเค็นบนหน้า มีสองแบบที่แจกจ่าย:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — พื้นฐาน CDN ที่แนะนำ แผ่นนี้มีโทเค็นทุกตัวยกเว้นชุดไอคอนเต็ม ดังนั้นจะประมาณ 23 KB gzip
+- `@pantoken/css/dist/style.css` — แผ่นเต็ม รวมถึง ~1,777 ไอคอน glyph tokens (`--instui-icon-*`) ประมาณ 140 KB gzip โหลดแผ่นนี้ถ้าจะอ้างอิงไอคอนอย่างกว้างขวางผ่าน `var(--instui-icon-*)`
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+สเกลเงา (elevation) และตัวแปรวงแหวนโฟกัสอยู่ทั้งสองแผ่น ดังนั้นเงาและวงแหวนโฟกัสจะทำงานแม้โหลดเฉพาะพื้นฐานเท่านั้น
 
-## Pick your components and icons
+## เลือกคอมโพเนนต์และไอคอนของคุณ
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[interactive CDN picker](/guide/cdn-picker) สร้าง jsDelivr combine URLs สำหรับ CSS และสแนิปเพ็ตสำหรับแพ็กเกจ JavaScript เปิดตัวมัน เลือกสิ่งที่ต้องการ และคัดลอกผลลัพธ์ที่สร้างขึ้น
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- แท็บ **Components** — เลือกสไตล์ชีตของคอมโพเนนต์ทีละตัวหรือทั้งบาร์เรล `components.css` เพิ่ม base reset หรือ utilities ของ spacing/color หากต้องการ
+- แท็บ **JS** — คัดลอกสแนิปเพ็ต ESM import สำหรับ `@pantoken/interactions`
+- แท็บ **Icons** — เลือกไอคอนแต่ละรายการจากชุด InstUI (~1,800 ไอคอน) หรือจาก Simple Icons (~3,300 แบรนด์ glyphs) ตัว picker จะสร้าง combine URL แยกสำหรับไฟล์ไอคอน CSS เพื่อให้โหลดเฉพาะไอคอนที่ใช้จริงเท่านั้น
+- แท็บ **Web Components** — สร้างสแนิปเพ็ต `@pantoken/web-components` (ESM selective register หรือ classic script bootstrap)
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+แต่ละไฟล์คอมโพเนนต์มีขนาดเล็ก — ส่วนใหญ่ประมาณ 2 KB คอมโพเนนต์ที่แสดงไอคอน (`alert`, `checkbox`,
+และบางตัวอื่น) ต้องการ glyph เหล่านั้น ดังนั้นตัวสร้างจะเพิ่ม `@pantoken/components/dist/component-icons.css` (ประมาณ
+0.5 KB gzip — 11 ไอคอนที่ชุดคอมโพเนนต์ใช้) ทุกครั้งที่คุณเลือกแผ่นแบบ lean แผ่นเต็มมีอยู่แล้ว
 
-### Load order and fonts
+### ลำดับการโหลดและฟอนต์
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+โหลดพื้นฐานโทเค็นก่อน จากนั้น base reset แบบไม่จำเป็น แล้วไฟล์คอมโพเนนต์ และสุดท้าย utilities — พวกมันเป็น override utilities ดังนั้นจะ override กฎของคอมโพเนนต์จริงๆ ก็ต่อเมื่อมันมาหลังใน cascade URL การรวมข้างต้นจัดลำดับให้แล้ว ฟอนต์เป็นข้อยกเว้นเดียว: `@pantoken/components/dist/fonts.css` ชี้ไปที่ไฟล์ฟอนต์โดยเส้นทางสัมพัทธ์ ดังนั้น combine ไม่สามารถเขียนทับพวกมันได้ — โหลดมันเป็น `<link>` แยกต่างหาก:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### ทุกอย่างพร้อมกัน
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+เลือก **All components** ใน picker เพื่อสลับไปยังบาร์เรล หรือชี้ไปที่มันเอง (ประมาณ 141 KB gzip) ควบคู่กับแผ่นโทเค็น:
 
 ```html
 <link
@@ -56,14 +43,13 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## เว็บคอมโพเนนต์
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` ลงทะเบียน framework-agnostic `<instui-*>` custom elements พวกมันฝัง CSS ของตัวเอง แต่ยังอ่านโทเค็นจากแผ่นบนหน้า ดังนั้นให้โหลดพื้นฐานโทเค็นด้วย
 
-### ES modules (recommended)
+### ES modules (แนะนำ)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+CDN แบบ ESM แก้ไขการพึ่งพาของแพ็กเกจให้คุณ นี่ลงทะเบียนทุก element:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +58,9 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+ใช้แผ่นโทเค็นแบบเต็ม (หรือแผ่น lean พร้อม `component-icons.css`) เพื่อให้ element ที่เรนเดอร์ไอคอน เช่น `<instui-alert>` หา glyph ได้
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+เพื่อจะลงทะเบียนแค่บาง element — และการพึ่งพาแบบซ้อนของพวกมัน — import `register` แล้วส่ง `only`:
 
 ```html
 <script type="module">
@@ -85,20 +70,17 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### แท็กสคริปต์แบบคลาสสิก
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+สำหรับการวางแบบไม่ใช้โมดูล ให้โหลด build แบบ IIFE มันบันเดิลการพึ่งพาและลงทะเบียนทุก element อัตโนมัติเมื่อโหลด โดยเผยแพร่ global `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+มันใหญ่กว่าเส้นทาง ESM — ฝัง `@pantoken/components` และ `@pantoken/icons` — ใช้เมื่อไม่สามารถใช้โมดูลได้เท่านั้น
 
-## Pinning versions
+## การตรึงเวอร์ชัน (Pinning versions)
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+URL ข้างต้น — และ URL ที่ picker เขียน — ติดตามรีลีสล่าสุด ตรึง major (หรือ exact) เวอร์ชันสำหรับ production — ตัวอย่าง `@pantoken/css@0` — เพื่อให้การอัปเกรดไม่สร้างความประหลาดใจ

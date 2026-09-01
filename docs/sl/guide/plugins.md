@@ -1,13 +1,10 @@
-# Plugins
+# Vtičniki
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Pantoken vtičnik razširi izhod tokenov ali CSS brez forkanja paketa. Zgradite ga z `definePlugin` iz `@pantoken/plugin-kit`, nato pa ga podajte `buildTokens` ali `toCss`.
 
-## Author a plugin
+## Ustvarite vtičnik
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Podajte `definePlugin` kljuke, ki jih implementirate. Vrne običajen vtičnik, označen s sposobnostmi, izpeljanimi iz teh kljuk. Vtičnik lahko razširi IR (`tokens`, `icons`), izhod CSS (`css`), ali oboje.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Registracija, ki upošteva sposobnosti
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` in `toCss` zaženejo `checkPlugins` nad vtičniki, ki jih podate. Opozori — nikoli ne vrže napake — ko vtičnik nima ustrezne kljuke za fazo, v kateri je registriran, zato se vtičnik, ki je samo za tokene in je podan `toCss`, preskoči z opombo namesto da bi tiho nič naredil.
 
-## Compose plugins
+## Sestavljanje vtičnikov
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Zgradite na vrhu drugega vtičnika z `extendPlugin`, ali združite sorodnike z `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Kljuke iste faze se sestavljajo: `tokens` zažene osnovni nato dodatek, `css` združi oba prispevka, in `icons` zažene oba.
 
-## Validate your plugin's output
+## Preverite izhod vašega vtičnika
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Zaženite skupne drift preverbe iz `@pantoken/utils` nad izhodom vašega vtičnika v njegovem testu, tako da tipkarska napaka ali preimenovan token hitro in lokalno odpove:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,14 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Vgrajeni vtičniki
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — blagovne ikone iz simple-icons, registrirane kot ikonni tokeni.
+- `@pantoken/plugin-logos` — Instructure produktne logotipe kot SVG, podatkovne URI in `--instui-logo-*`
+  slikovne tokene.
+- `@pantoken/plugin-prune-custom-props` — PostCSS vtičnik (ni pantoken vtičnik), ki odstrani
+  neuporabljena uporabniška svojstva iz slogovnega lista.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Nekaj stvari, ki so bile prej vtičniki, zdaj izhaja iz `@pantoken/components`, saj jih tako veliko komponent potrebuje privzeto: sence elevacije (`--instui-elevation-*`, v `components.css`), obroček fokus-obrobe (v `base.css` — vsak fokusabilen element ga dobi, ko pantoken upravlja stran), in Instructure blagovne pisave (Atkinson Hyperlegible Next: `base.css` uporablja `--instui-font-family-base`; izbirni `@pantoken/components/fonts.css` naloži `@font-face` woff2 datoteke).
 
-See the [API reference](/api/) for each plugin's exports.
+Poglejte [API referenco](/api/) za izvoze posameznih vtičnikov.

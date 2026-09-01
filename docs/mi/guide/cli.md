@@ -1,40 +1,39 @@
-# The pantoken CLI
+# Te CLI pantoken
 
-`@pantoken/cli` provides `pantoken generate <target>`, which writes token source into a target repo.
-Reach for it when a platform needs generated code rather than a runtime dependency — native apps,
-CMS themes, and static-site generators.
+`@pantoken/cli` e whakarato ana i `pantoken generate <target>`, e tuhi ana i te puna token ki roto i tētahi repo wāhi. Tukua kia whakamahia i ngā wā e hiahiatia ana he waehere i hangaia mō tētahi papa, kaua hei whakawhirinaki ki te wa-tūnga — taupānga taketake,
+ngā kaupapa CMS, me ngā pūhanga pae mārō.
 
 ```sh
 npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 ```
 
-## Targets
+## Ngā Whāinga
 
-| Target      | Output                                                                            |
-| ----------- | --------------------------------------------------------------------------------- |
-| `swift`     | Swift source under `Sources/<name>` plus a `Package.swift` SwiftPM manifest stub. |
-| `android`   | Android XML resource files.                                                       |
-| `compose`   | A Jetpack Compose Kotlin file.                                                    |
-| `flutter`   | A Flutter Dart file.                                                              |
-| `rust`      | A `tokens.rs` for egui (default) or iced (`--format iced`).                       |
-| `wordpress` | A block-theme `theme.json`.                                                       |
-| `vanilla`   | A Vanilla Forums `variables.json`.                                                |
-| `drupal`    | Drupal theme assets.                                                              |
-| `jekyll`    | Jekyll site data.                                                                 |
-| `hugo`      | Hugo site data.                                                                   |
-| `swatches`  | Color swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.       |
-| `icon-font` | An icon web font (TTF, WOFF2), its CSS, and a codepoints map.                     |
-| `pendo`     | The Instructure-styled `global.css` for Pendo guides.                             |
+| Whāinga     | Putanga                                                                                      |
+| ----------- | -------------------------------------------------------------------------------------------- |
+| `swift`     | Puna Swift i raro i `Sources/<name>` me tētahi tūtohu manifest SwiftPM `Package.swift`.      |
+| `android`   | Ngā kōnae rauemi XML mō Android.                                                             |
+| `compose`   | He kōnae Kotlin mō Jetpack Compose.                                                          |
+| `flutter`   | He kōnae Dart mō Flutter.                                                                    |
+| `rust`      | He `tokens.rs` mō egui (taunoa) ranei iced (`--format iced`).                                |
+| `wordpress` | He `theme.json` mō te block-theme.                                                           |
+| `vanilla`   | He `variables.json` mō Vanilla Forums.                                                       |
+| `drupal`    | Ngā rawa kaupapa Drupal.                                                                     |
+| `jekyll`    | Raraunga pae Jekyll.                                                                         |
+| `hugo`      | Raraunga pae Hugo.                                                                           |
+| `swatches`  | Ngā rārangi tae — `ase` (taunoa), `gpl`, `sketch`, ranei `svg` mā te whakamahi i `--format`. |
+| `icon-font` | He pūranga pūoro tukutuku tohu (TTF, WOFF2), tana CSS, me tētahi mapi tohu waehere.          |
+| `pendo`     | Te `global.css` āhua Instructure mō ngā aratohu Pendo.                                       |
 
-## Common flags
+## Ngā Kōwhiringa noa
 
-- `--out <dir>` — where to write (default `./pantoken-out`).
-- `--theme <name>` — `rebrand` (default), `canvas`, or `canvasHighContrast`.
-- `--icons a,b,c` — icon names to emit as native assets, for targets that support them.
-- `--class <Name>` — the generated type or package name, for targets that need one.
-- `--format <fmt>` — the output format, for `swatches` and `rust`.
+- `--out <dir>` — kei hea te tuhi (taunoa `./pantoken-out`).
+- `--theme <name>` — `rebrand` (taunoa), `canvas`, ranei `canvasHighContrast`.
+- `--icons a,b,c` — ngā ingoa tohu hei whakaputa hei rawa taketake, mō ngā whāinga e tautoko ana i aua mea.
+- `--class <Name>` — te momo i hangaia, te ingoa mō te mōkihi rānei, mō ngā whāinga e hiahiatia ana.
+- `--format <fmt>` — te hōputu putanga, mō `swatches` me `rust`.
 
-## Examples
+## Tauira
 
 ```sh
 # iOS tokens plus two icons, in the Canvas theme.
@@ -47,5 +46,4 @@ npx pantoken generate wordpress --out ./wp-content/themes/mytheme
 npx pantoken generate rust --out ./src/tokens.rs --format egui
 ```
 
-Several targets also expose a plain function, so you can call them from your own build instead of
-the CLI. See the [API reference](/api/) for each platform package.
+E tukuna ana e ētahi whāinga he tātai mahi mārama hoki, kia taea ai te kãcall i a rātou mai tōu ake hanga i te tūnga o te CLI. Tirohia te [API reference](/api/) mō ia mōkihi papa.

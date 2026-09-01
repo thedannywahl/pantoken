@@ -1,36 +1,33 @@
-# Generated output
+# Gaskavuohta ovddit
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Muitalusat pantoken-pakčat čuovvut failaid buot gillii gávdnain — stylesheet, `theme.json`, embeddejohkka token-moduála. Dát repo birgejuvvon ja ovddasat gaskavuođaid válddeheapmi birget go dan, buot pakčat leat ovttasvuođa ja oassi workspacesta hálddaša ovddit gohčoduvvon.
 
-## The `generated/` convention
+## `generated/` konveártša
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Buot pakčat maid birget build-artifaktal skrivvadit das per-pakča `generated/` dihte, ja dat eatná eará dan maŋemus. Ođđa reegel `.gitignore` deattuhit buot:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Dakkár ii leat gaskavuohta faila girječuvvan — build dohkket son ovddas. Divrras ovddit leat dahkat das:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Skohtejuvvon statikat** — failat mii konsummea importera, nuppást `@pantoken/css`-s `style.css` dahje
+  `@pantoken/scss`-s `tokens.scss`. Pakčan `exports` mapa rihtagat publicaála dálkká
+  (`"./style.css"`) muhto johtá dan `generated/`-i, nuppi konsummera API ii geavaha.
+- **Build-intermediáhta** — failat mii pakčan iežaset soeruid importera ja bundlera `dist`-i, nuppást
+  `@pantoken/tokens`-s vendorojuvvon JSON. Dát ii leat publiserret eanet; daid leat kompilerejuvvon.
 
-## Validating the output
+## Ovddasat vahkádusat
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (priváhta alat) čađahuvvo go build lea dovddan ja girjjuhit golbma:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. buot generator-pakčat realluš gievdán mii lea eanemearri `generated/` dihte,
+2. `pantoken` CLI guhkkin leat dahkan dánboahtit faila buot suporterašii targetta, ja
+3. in eará gaskavuohta stylesheet dollo token IR-st — `danglingReferences` ovttasvuohta
+   sheets-s, ja `unknownReferences` nu bridges mat doarjávvut maid rihtit tokenat mii leat definerejuvvon eará stuorran.
 
-## Commands
+## Kommandot
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Validator leat muhto hirbmat `pnpm run ready`-in, nuppást drift čađahit standard-gate-s.

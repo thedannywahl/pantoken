@@ -1,13 +1,12 @@
-# Plugins
+# Laajennokset
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+pantoken-laajennus laajentaa token- tai CSS-lähtöä ilman, että pakettia täytyy haarukoida. Rakennat sellaisen
+`definePlugin` avulla `@pantoken/plugin-kit`:sta, ja annat sen sitten `buildTokens`:lle tai `toCss`:lle.
 
-## Author a plugin
+## Laajennuksen kirjoittaminen
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Anna `definePlugin`:lle ne koukut (hooks), jotka toteutat. Se palauttaa tavallisen laajennuksen, brändättynä niistä koukuista
+pääteltyillä kyvykkyyksillä. Laajennus voi laajentaa IR:ää (`tokens`, `icons`), CSS-lähtöä (`css`), tai molempia.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +19,15 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Kyvykkyystietoinen rekisteröinti
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` ja `toCss` ajavat `checkPlugins`:n laajennuksillesi. Ne varoittavat — eivät koskaan heitä poikkeusta —
+kun laajennuksella ei ole vastaavaa koukkua sille vaiheelle, johon se rekisteröidään, joten pelkkä token-laajennus, joka annetaan
+`toCss`:lle, ohitetaan ilmoituksella sen sijaan, että se tekisi hiljaisesti ei-mitään.
 
-## Compose plugins
+## Laajennusten yhdistäminen
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Rakennettu toisen laajennuksen päälle `extendPlugin`:lla, tai yhdistä vertaisia `mergePlugin`:lla:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +36,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Saman vaiheen koukut yhdistyvät: `tokens` ajaa ensin perusosan ja sitten lisän, `css` yhdistää molemmat
+panokset, ja `icons` ajaa molemmat.
 
-## Validate your plugin's output
+## Vahvista laajennuksesi lähtö
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Aja jaetut drift-tarkistukset `@pantoken/utils`:stä laajennuksesi omalle lähdölle testissään, jotta kirjoitusvirhe tai uudelleennimetty token epäonnistuu
+nopeasti ja paikallisesti:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +55,17 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Mukana tulevat laajennukset
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — brändää ikonit simple-icons:sta, rekisteröityinä ikonitokeneina.
+- `@pantoken/plugin-logos` — Instructuren tuotemerkkilogot SVG-muodossa, data-URIina ja `--instui-logo-*`
+  kuva-tokeneina.
+- `@pantoken/plugin-prune-custom-props` — PostCSS-laajennus (ei pantoken-laajennus), joka poistaa
+  käyttämättömät custom propertyt tyylitiedostosta.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Muutama aiemmin laajennuksena tarjottu osa toimitetaan nyt `@pantoken/components`:ssa, koska niin monella komponentilla on
+tarve niille valmiiksi: elevation-varjot (`--instui-elevation-*`, `components.css`), focus-outline-kehä
+(`base.css` — jokainen fokusoitava saa sen, kun pantoken hallitsee sivua), ja Instructure-brändin fontit
+(Atkinson Hyperlegible Next: `base.css` soveltaa `--instui-font-family-base`; opt-in `@pantoken/components/fonts.css` lataa `@font-face` woff2:t).
 
-See the [API reference](/api/) for each plugin's exports.
+Katso [API-viite](/api/) kunkin laajennuksen exporteista.

@@ -1,10 +1,8 @@
-# Architecture
+# Kiến trúc
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken có một nhiệm vụ: giải quyết các design token và icon của Instructure một lần, rồi định hình lại mô hình đó cho mọi đích. Các lớp bên dưới giữ cho việc định hình lại đó minh bạch và giữ cho các package được phát hành không phụ thuộc vào upstream chỉ có trên GitHub.
 
-## The layers
+## Các lớp
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** giữ các hợp đồng kiểu (type contracts), và không có gì khác. Nó là nguồn dữ liệu chính cho
+  hình dạng `Token` và hợp đồng plugin, với không phụ thuộc nào, nên bất kỳ package nào cũng có thể phụ thuộc vào nó
+  một cách tự do.
+- **`@pantoken/core`** là package duy nhất chạm tới nguồn upstream. Nó giải quyết tokens và
+  icons thành IR chuẩn và xuất CSS.
+- **`@pantoken/tokens`** cung cấp IR đó như JSON tĩnh tại thời điểm build. Đây là điểm tách rời:
+  các package hạ nguồn đọc `@pantoken/tokens`, không bao giờ `@pantoken/core`, nên `npm i pantoken` không bao giờ
+  cần truy cập upstream chỉ có trên GitHub.
+- **`@pantoken/utils`** chứa các helper chia sẻ — bộ giải `var(--x)`, các regex tham chiếu,
+  chuyển đổi chữ hoa/chữ thường và màu sắc, cùng các kiểm tra drift giữ cho đầu ra sinh ra trung thực với IR.
 
-## Why tokens are vendored
+## Tại sao tokens được vendor hóa
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Package token upstream nằm trên GitHub, không trên npm. Nếu mọi package hạ nguồn phụ thuộc vào nó,
+`npm i pantoken` sẽ thất bại đối với bất kỳ ai không có quyền truy cập đó. Thay vào đó `@pantoken/tokens` giải quyết
+upstream một lần ở thời điểm build và ghi kết quả ra JSON tĩnh. Các package được phát hành mang theo
+JSON đó, nên chúng cài đặt sạch từ npm, ghim theo semver, và hoạt động ngoại tuyến.
 
 ## Buckets
 
-Each downstream bucket is a way of consuming the IR:
+Mỗi bucket hạ nguồn là một cách tiêu thụ IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — chuyển tokens thành một file (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — tích hợp framework và công cụ (React, Vue, Svelte, MUI, Pendo, và nhiều hơn nữa).
+- **bundlers/** — plugin và preset cho công cụ build (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — đích native và trình tạo trang (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — payload cho công cụ thiết kế (Figma, bảng màu).
+- **plugins/** — các transform tùy chọn mở rộng token hoặc đầu ra CSS. Xem [Plugins](/guide/plugins).
 
-## Generated output
+## Đầu ra sinh ra
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
+Mỗi package phát sinh file ghi nó vào thư mục `generated/` theo từng package mà một build
+tái tạo, nên không có gì sinh ra được commit. Một tác vụ workspace xác thực tất cả. Xem
 [Generated output](/guide/generated-output).

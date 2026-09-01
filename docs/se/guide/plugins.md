@@ -1,13 +1,10 @@
-# Plugins
+# Pluginat
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Pantoken-plugin leat geavahit token- dahje CSS-juvleriid jápmán maidne go leat ii forkán paket'a. Don čájeha nu `definePlugin` dala `@pantoken/plugin-kit`, de geavahát das `buildTokens` dahje `toCss`.
 
-## Author a plugin
+## Buorrehus plugin
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Geavahát `definePlugin` hookaid mii don čuovvut. Dat vuolggeálmmá plugin, mii lea bránndahttán capability-llat mii leat álgit vuosttaldat hálddažat. Plugin sáhttá geavahit IR (`tokens`, `icons`), CSS-juvleriid (`css`), dahje båda.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Capability-čujuhusregistrereapmi
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` ja `toCss` roahppa `checkPlugins` pluginain mii don sidjat. Son varrá — ii álggahuvvo — gos plugin iid maŋŋebealde hook'a stagingis mii das registrerehii, nuvttá token-ain ođđa plugin mii leat sidjan `toCss` lea gávdnoheapmárkkin maŋimuš dahje čuohppat álgguheapmi.
 
-## Compose plugins
+## Komposea pluginat
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Bargá eatnama pluginin boahtte ovtta `extendPlugin` dahje buoridit peerraheapmi `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Sami-stage hook'at compose'ra: `tokens` roahppá basá ja dahje addit, `css` bargga duoraga dahje máŋggašuheapmi, ja `icons` roahppá båda.
 
-## Validate your plugin's output
+## Validere plugin-jes output
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Rohket drift-check'sa mii leat `@pantoken/utils` pluginain ovddasvástádusis testas, nu go typo dahje tokena čájehallat fássá dahje gávdnoheapmi:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,13 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Bundler-pluginat
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — brándaa ikonat leat simple-icons-binna, registrerejuvvo ikon-tokenain.
+- `@pantoken/plugin-logos` — Instructure-produkt logosat SVG:s, data-URI:s ja `--instui-logo-*`
+  image-tokenain.
+- `@pantoken/plugin-prune-custom-props` — PostCSS-plugin (ii lea pantoken-plugin) mii čuodá hástalit custom-properties stilistii.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Muhtun birra mii oaidnigon pluginnaid dál leat sáhttán `@pantoken/components`: elevasuvnnan skávvot (`--instui-elevation-*`, `components.css`), fokus-outline-ringi (`base.css` — buot fokus-eahkesat geavahát das go pantoken leat govvidit sivvii), ja Instructure-bránda font'at (Atkinson Hyperlegible Next: `base.css` čájeha `--instui-font-family-base`; opt-in `@pantoken/components/fonts.css` lohkká `@font-face` woff2-siid).
 
-See the [API reference](/api/) for each plugin's exports.
+Lávkát [API-referenssa](/api/) buot pluginna exporttain.

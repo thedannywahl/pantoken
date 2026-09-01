@@ -1,53 +1,44 @@
-# CDN & distribution
+# CDN ve dağıtım
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken her paketi npm'e yayınlar, böylece token'ları, bileşenleri ve web bileşenlerini doğrudan bir CDN'den çekebilirsiniz — derleme adımı yok, paketleyici yok. Bu sayfa CSS birleştirme URL'sini (etkileşimli bir oluşturucu ile) ve web-bileşen drop-in'lerini kapsar.
 
-## The token foundation
+## Token temeli
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Her pantoken bileşeni sayfadaki bir token sayfasından `--instui-*` özel değişkenlerini okur. İki
+varyant gönderilir:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — önerilen CDN temeli. Tam ikon seti hariç her token'ı taşır, bu yüzden yaklaşık 23 KB gzip'lenmiş boyuttadır.
+- `@pantoken/css/dist/style.css` — tüm ~1.777 ikon glif token'larını içeren tam sayfa
+  (`--instui-icon-*`). Yaklaşık 140 KB gzip'lenmiş. İkonları geniş çapta `var(--instui-icon-*)` aracılığıyla referanslıyorsanız bunu yükleyin.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Yükselti ölçeği ve odak-halkası değişkenleri her iki sayfada da bulunur, bu yüzden gölgeler ve odak halkası yalnızca temel yüklü olsa bile çalışır.
 
-## Pick your components and icons
+## Bileşenlerinizi ve ikonlarınızı seçin
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[etkileşimli CDN seçici](/guide/cdn-picker) CSS için jsDelivr birleştirme URL'leri ve JavaScript paketleri için snippet'ler oluşturur. Açın, ihtiyacınızı işaretleyin ve oluşturulan çıktıyı kopyalayın.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components sekmesi** — tek tek bileşen stillerini veya tüm `components.css` barel'ini seçin. Gerekirse base reset veya spacing/color yardımcılarını ekleyin.
+- **JS sekmesi** — `@pantoken/interactions` için bir ESM import snippet'i kopyalayın.
+- **Icons sekmesi** — InstUI setinden (~1.800 ikon) veya Simple Icons'tan (~3.300 marka glifi) tek tek ikonlar seçin. Seçici, ikon CSS dosyaları için ayrı bir birleştirme URL'si üretir, böylece yalnızca gerçekten kullandığınız ikonları yükleyebilirsiniz.
+- **Web Components sekmesi** — `@pantoken/web-components` snippet'leri (ESM seçici register veya klasik script bootstrap) oluşturun.
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Her bileşen dosyası küçüktür — çoğu yaklaşık 2 KB civarındadır. İkon render eden bir bileşen (`alert`, `checkbox`,
+ve birkaç diğerleri) bu gliflere ihtiyaç duyar, bu nedenle oluşturucu, ince sayfayı seçtiğinizde `@pantoken/components/dist/component-icons.css` (yaklaşık
+0.5 KB gzip'lenmiş — bileşen setinin kullandığı 11 ikon) ekler. Tam sayfa zaten bunları taşır.
 
-### Load order and fonts
+### Yükleme sırası ve fontlar
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Token temelini önce yükleyin, ardından isteğe bağlı base reset'i, sonra bileşen dosyalarını ve en sona yardımcıları — bunlar geçersiz kılma yardımcılarıdır, bu yüzden bir bileşenin kuralını gerçekten geçersiz kılmaları için kaskad içinde ondan sonra gelmeleri gerekir. Yukarıdaki birleştirme URL'si zaten bunları sizin için sıralar. Fontlar tek istisnadır:
+`@pantoken/components/dist/fonts.css` font dosyalarına göreli yollarla işaret ettiği için, birleştirme bunları yeniden yazamaz — bunu kendi `<link>` olarak yükleyin:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Hepsi bir arada
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Seçicide **All components** işaretleyerek barel'e geçiş yapın veya kendiniz işaret edin (yaklaşık 141 KB
+gzip'lenmiş) token sayfası ile birlikte:
 
 ```html
 <link
@@ -56,14 +47,13 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Web bileşenleri
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` framework bağımsız `<instui-*>` özel elementleri kaydeder. Kendi CSS'lerini inline ederler, ancak yine de sayfadaki bir sayfadan token'ları okurlar; bu yüzden bir token temeli de yükleyin.
 
-### ES modules (recommended)
+### ES modülleri (önerilen)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Bir ESM CDN paketin bağımlılıklarını sizin için çözer. Bu her elementi kaydeder:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +62,9 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+İkon render eden elementlerin (`<instui-alert>` gibi) gliflerini çözmesi için tam token sayfasını (veya ince sayfa artı `component-icons.css`) kullanın.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Sadece bazı elementleri — ve onların iç içe bağımlılıklarını — kaydetmek için `register`'yi import edin ve `only`'i iletin:
 
 ```html
 <script type="module">
@@ -85,20 +74,17 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Klasik bir script etiketi
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Modulsüz bir drop-in için IIFE build'i yükleyin. Bu, bağımlılıklarını paketler ve yüklemede her elementi otomatik olarak kaydeder, bir `PantokenWebComponents` global'i açığa çıkarır:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+ESM yolundan daha büyüktür — `@pantoken/components` ve `@pantoken/icons`'i inline eder — bu yüzden yalnızca modülleri kullanamıyorsanız ona yönelin.
 
-## Pinning versions
+## Sürümleri sabitleme
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Yukarıdaki URL'ler — ve seçicinin yazdığı URL'ler — en son sürümü takip eder. Üretimde bir major (veya tam) sürüm sabitlemesi yapın — örneğin `@pantoken/css@0` — böylece bir yükseltme sizi hiç şaşırtmaz.

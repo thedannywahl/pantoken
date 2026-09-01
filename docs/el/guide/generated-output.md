@@ -1,36 +1,36 @@
-# Generated output
+# Παραγόμενο αποτέλεσμα
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Πολλά πακέτα pantoken δημιουργούν αρχεία κατά το build — ένα φύλλο στυλ, ένα `theme.json`, ένα ενσωματωμένο
+module token. Για να παραμείνει το repo καθαρό και τα παραγόμενα σωστά, κάθε πακέτο ακολουθεί μια σύμβαση και ένα
+task του workspace επικυρώνει το σύνολο.
 
-## The `generated/` convention
+## Η σύμβαση `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Κάθε πακέτο που παράγει ένα build artifact το γράφει σε έναν ανά-πακέτο κατάλογο `generated/`, και
+τίποτε άλλο δεν ζει εκεί. Ένας κανόνας σε `.gitignore` τα καλύπτει όλα:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Έτσι κανένα παραγόμενο αρχείο δεν δεσμεύεται — ένα build το αναπαράγει. Δύο είδη εξόδου καταλήγουν εκεί:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Αρχεία προς αποστολή (Shippable statics)** — αρχεία που ένας καταναλωτής εισάγει, όπως το `@pantoken/css`'s `style.css` ή
+  το `@pantoken/scss`'s `tokens.scss`. Ο χάρτης `exports` του πακέτου διατηρεί το δημόσιο κλειδί
+  (`"./style.css"`) αλλά το δείχνει στο `generated/`, έτσι το API του καταναλωτή δεν αλλάζει ποτέ.
+- **Ενδιάμεσα του build (Build intermediates)** — αρχεία που το ίδιο το source του πακέτου εισάγει και δένεται στο `dist`, όπως
+  το παρεχόμενο JSON του `@pantoken/tokens`. Αυτά δεν δημοσιεύονται μόνα τους· συμπιέζονται στο build.
 
-## Validating the output
+## Επικύρωση του αποτελέσματος
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated` (ένα ιδιωτικό εργαλείο) τρέχει μετά το build και ελέγχει τρία πράγματα:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. κάθε generator πακέτο έγραψε πράγματι έναν μη-κενό κατάλογο `generated/`,
+2. το CLI `pantoken` εκπέμπει τουλάχιστον ένα αρχείο για κάθε υποστηριζόμενο target, και
+3. κανένα παραγόμενο φύλλο στυλ δεν αποκλίνει από το token IR — `danglingReferences` για αυτοτελή
+   sheets, και `unknownReferences` για τις γέφυρες που μόνο αναφέρονται σε tokens ορισμένα αλλού.
 
-## Commands
+## Εντολές
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +40,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Ο validator είναι επίσης συνδεδεμένος με το `pnpm run ready`, έτσι η απόκλιση πιάνεται στην τυπική πύλη.

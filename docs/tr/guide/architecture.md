@@ -1,10 +1,10 @@
-# Architecture
+# Mimari
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken'in bir görevi var: Instructure'ın tasarım token'larını ve ikonlarını bir kez çözmek ve sonra bu modeli
+her hedef için yeniden şekillendirmek. Aşağıdaki katmanlar bu yeniden şekillendirmeyi dürüst tutar ve yayımlanan paketlerin
+herhangi bir yalnızca-GitHub üst akışına bağımlı olmasını engeller.
 
-## The layers
+## Katmanlar
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,35 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** yalnızca tür sözleşmelerini tutar ve başka hiçbir şey yapmaz. Bu, `Token` biçiminin
+  ve eklenti sözleşmesinin doğruluk kaynağıdır; sıfır bağımlılıkla herhangi bir paketin ona serbestçe bağımlı olmasını sağlar.
+- **`@pantoken/core`** üst akış kaynağına dokunan tek pakettir. Token'ları ve
+  ikonları kanonik IR'ye çözer ve CSS'i render eder.
+- **`@pantoken/tokens`** bu IR'yi derleme zamanında statik JSON olarak paketler. Bu ayrılma noktasıdır:
+  aşağı akış paketleri `@pantoken/tokens`'ü okur, asla `@pantoken/core`'i değil, böylece `npm i pantoken`
+  asla yalnızca-GitHub üst akışına uzanmaz.
+- **`@pantoken/utils`** paylaşılan yardımcıları taşır — `var(--x)` çözücüsü, referans regex'leri,
+  büyük/küçük harf ve renk dönüşümleri ve üretilen çıktıyı IR'ye sadık tutan sapma kontrolleri.
 
-## Why tokens are vendored
+## Neden token'lar paketleniyor
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Üst akış token paketi GitHub'da yaşıyor, npm'de değil. Eğer her aşağı akış paket buna bağımlı olsaydı,
+`npm i pantoken` erişimi olmayan herkes için başarısız olurdu. Bunun yerine `@pantoken/tokens` üst
+akışı bir kere derleme zamanında çözer ve sonucu statik JSON'a yazar. Yayımlanan paketler bu
+JSON'u taşır, böylece npm'den temiz kurulurlar, semver'e sabitlenirler ve çevrimdışı çalışırlar.
 
-## Buckets
+## Bölümler
 
-Each downstream bucket is a way of consuming the IR:
+Her aşağı akış bölüm IR'yi tüketmenin bir yoludur:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — token'ları bir dosyaya dönüştürür (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — framework ve araç entegrasyonları (React, Vue, Svelte, MUI, Pendo ve daha fazlası).
+- **bundlers/** — build-aracı eklentileri ve ön ayarları (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — yerel ve site üretici hedefleri (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — tasarım araçları için payload'lar (Figma, renk örnekleri).
+- **plugins/** — token veya CSS çıktısını genişleten opsiyonel dönüşümler. Bakınız [Plugins](/guide/plugins).
 
-## Generated output
+## Üretilen çıktı
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
+Bir dosya üreten her paket, derlemenin yeniden ürettiği paket başına bir `generated/` dizinine yazar, bu yüzden üretilen hiçbir şey commit edilmez. Bir workspace görevi bunların tümünü doğrular. Bakınız
 [Generated output](/guide/generated-output).

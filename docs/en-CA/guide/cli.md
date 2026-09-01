@@ -22,7 +22,7 @@ npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 | `drupal`    | Drupal theme assets.                                                              |
 | `jekyll`    | Jekyll site data.                                                                 |
 | `hugo`      | Hugo site data.                                                                   |
-| `swatches`  | Color swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.       |
+| `swatches`  | Colour swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.      |
 | `icon-font` | An icon web font (TTF, WOFF2), its CSS, and a codepoints map.                     |
 | `pendo`     | The Instructure-styled `global.css` for Pendo guides.                             |
 

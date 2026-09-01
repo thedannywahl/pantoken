@@ -1,36 +1,33 @@
-# Generated output
+# 生成的輸出
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+若干 pantoken 套件在建置時會輸出檔案 — 一份樣式表、一個 `theme.json`、一個內嵌的 token 模組。為了保持儲存庫整潔並確保輸出可重現，每個套件遵循一項慣例，且有一個工作區任務會驗證整個流程。
 
-## The `generated/` convention
+## `generated/` 慣例
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+每個產生建置產物的套件都會將其寫入每套件專屬的 `generated/` 目錄，而該目錄中不會有其他檔案。`.gitignore` 裡的一條規則涵蓋全部：
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+因此不會有任何產生的檔案被提交 — 建置會重現它們。兩類輸出會放在那裡：
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **可發布的靜態檔** — 使用者會匯入的檔案，例如 `@pantoken/css` 的 `style.css` 或
+  `@pantoken/scss` 的 `tokens.scss`。該套件的 `exports` 映射保留公共鍵
+  (`"./style.css"`)，但將它指向 `generated/`，因此消費者 API 永遠不會改變。
+- **建置中間產物** — 套件自身原始碼匯入並打包進 `dist` 的檔案，例如
+  `@pantoken/tokens` 的內含 JSON。這些不會單獨發佈；它們會被編譯進去。
 
-## Validating the output
+## 驗證輸出
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+`@pantoken/validate-generated`（一個私有工具）在建置後執行並檢查三件事：
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. 每個產生器套件實際寫入了一個非空的 `generated/` 目錄，
+2. `pantoken` CLI 為每個支援的目標至少輸出一個檔案，及
+3. 沒有任何產生的樣式表偏離 token IR — 對於自包含的樣式表使用 `danglingReferences`，
+   對於僅參考在其他處定義 token 的橋接使用 `unknownReferences`。
 
-## Commands
+## 指令
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+該驗證器也已掛鉤到 `pnpm run ready`，因此偏移會在標準門禁中被偵測。

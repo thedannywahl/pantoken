@@ -1,53 +1,52 @@
-# CDN & distribution
+# CDN in distribucija
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken objavlja vsak paket na npm, zato lahko žetone, komponente in spletne komponente potegneš neposredno
+iz CDN — brez gradnje, brez bundlerja. Ta stran zajema URL za kombiniranje CSS (z interaktivnim
+graditeljem) in priključke za spletne komponente.
 
-## The token foundation
+## Temelj žetonov
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Vsaka pantoken komponenta bere `--instui-*` lastnosti iz lista žetonov na strani. Na voljo sta dve
+varianti:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — priporočena CDN osnova. Vsebuje vse žetone razen
+  celotnega nabora ikon, zato je približno 23 KB stisnjenih z gzip.
+- `@pantoken/css/dist/style.css` — celoten list, vključno z vsemi ~1.777 ikonami (glifi)
+  (`--instui-icon-*`). Približno 140 KB stisnjenih z gzip. Naloži to, če ikone pogosto sklicuješ preko
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Skala elevacije in spremenljivke za fokusni obroč so prisotne v obeh listih, zato senca in fokusni obroč delujeta tudi
+če je naložena samo osnova.
 
-## Pick your components and icons
+## Izberi komponente in ikone
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[Interaktivni izbirnik CDN](/guide/cdn-picker) ustvari jsDelivr combine URL-je za CSS in izrezke za JavaScript pakete. Odpri ga, označi, kar potrebuješ, in kopiraj ustvarjeno vsebino.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Zavihek Components** — izberi posamezne slogovne datoteke komponent ali celoten sod `components.css`. Dodaj osnovni reset ali pripomočke za prostora/obarvanje, če jih potrebuješ.
+- **Zavihek JS** — kopiraj ESM import izrezek za `@pantoken/interactions`.
+- **Zavihek Icons** — izberi posamezne ikone iz InstUI nabora (~1.800 ikon) ali iz Simple Icons (~3.300 blagovnih glifov). Izbirnik izpiše ločen combine URL za datoteke ikon CSS, da naložiš samo tiste ikone, ki jih dejansko uporabljaš.
+- **Zavihek Web Components** — zgradi `@pantoken/web-components` izrezke (ESM selektivna registracija ali klasičen skriptni bootstrap).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Vsaka datoteka komponente je majhna — večina je okoli 2 KB. Komponenta, ki upodablja ikone (`alert`, `checkbox`,
+in nekaj drugih) potrebuje te glife, zato graditelj doda `@pantoken/components/dist/component-icons.css` (približno
+0.5 KB stisnjeno z gzip — 11 ikon, ki jih niz komponent uporablja), kadar izbereš lahki list. Celoten list
+jih že vsebuje.
 
-### Load order and fonts
+### Zaporedje nalaganja in pisave
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Najprej naloži temelj žetonov, nato opcijski osnovni reset, potem datoteke komponent, in na koncu pripomočke —
+so pripomočki za prepisovanje, zato dejansko prepišejo pravilo komponente šele, ko pridejo
+po njem v kaskadi. Combine URL zgoraj jih že pravilno razporedi. Pisave so ena izjema:
+`@pantoken/components/dist/fonts.css` kaže na datoteke pisav z relativno potjo, zato jih combine ne more prepisati — naloži ga kot svoj `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Vse naenkrat
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+V izbirniku označi **All components**, da ga preklopiš na sod, ali ga navedi sam (približno 141 KB
+stisnjenih z gzip) skupaj z listom žetonov:
 
 ```html
 <link
@@ -56,14 +55,14 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Spletne komponente
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` registrira ogrodju nevtralne `<instui-*>` custom elemente. Vgrajujejo svoj
+CSS, vendar še vedno berejo žetone iz lista na strani, zato naloži tudi temelj žetonov.
 
-### ES modules (recommended)
+### ES moduli (priporočeno)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+ESM CDN razreši odvisnosti paketa namesto tebe. To registrira vse elemente:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +71,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Uporabi celoten list žetonov (ali lahki list plus `component-icons.css`), da elementi, ki upodabljajo ikone, kot
+`<instui-alert>`, najdejo svoje glife.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Če želiš registrirati le nekatere elemente — in njihove vgrajene odvisnosti — uvozi `register` in posreduj `only`:
 
 ```html
 <script type="module">
@@ -85,20 +84,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Klasičen script tag
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Za drop-in brez modulov naloži IIFE build. Vključi svoje odvisnosti in ob nalaganju samodejno registrira vse
+elemente, ter razkrije globalno spremenljivko `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+Je večji od poti ESM — vključi `@pantoken/components` in `@pantoken/icons` — zato ga uporabi le,
+ko modulov ne moreš uporabiti.
 
-## Pinning versions
+## Zaklepanje verzij
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Zgornji URL-ji — in tisti, ki jih izbirnik zapiše — sledijo najnovejši izdaji. Za produkcijo zakleni glavno (ali natančno)
+različico — na primer `@pantoken/css@0` — da nadgradnja ne bo presenetila.

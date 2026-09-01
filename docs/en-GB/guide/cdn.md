@@ -1,7 +1,7 @@
 # CDN & distribution
 
 pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
+from a CDN — no build step, no bundler. This page covers the CSS combined URL (with an interactive
 builder), plus the web-component drop-ins.
 
 ## The token foundation
@@ -10,17 +10,17 @@ Every pantoken component reads `--instui-*` custom properties from a token sheet
 variants ship:
 
 - `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
+  full icon set, so it's approximately 23 KB gzipped.
 - `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+  (`--instui-icon-*`). Approximately 140 KB gzipped. Load this if you reference icons broadly via
   `var(--instui-icon-*)`.
 
 The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
 just the foundation loaded.
 
-## Pick your components and icons
+## Choose your components and icons
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, tick what you need, and copy the generated output.
 
 - **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
 - **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
@@ -32,11 +32,11 @@ and a few others) needs those glyphs, so the builder adds `@pantoken/components/
 0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
 already carries them.
 
-### Load order and fonts
+### Loading order and fonts
 
 Load the token foundation first, then the optional base reset, then the component files, and utilities
 last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
+after it in the cascade. The combine URL above already orders them for you. Fonts are the sole exception:
 `@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
 them — load it as its own `<link>`:
 

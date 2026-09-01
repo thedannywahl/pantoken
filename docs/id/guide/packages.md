@@ -1,139 +1,133 @@
-# The package map
+# Peta paket
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
-`pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
+pantoken adalah monorepo dari paket-paket kecil dan bertujuan tunggal yang dikelompokkan ke dalam bucket. Pasang yang sesuai dengan tugas Anda, atau pasang paket terpadu `pantoken` dan impor dari subpath-nya (misalnya `pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
 
-## Core
+## Inti
 
-The shared model and the transformer everything else builds on.
+Model bersama dan transformer yang menjadi dasar semuanya.
 
-| Package                                                 | What it does                                                                                                       |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.                                       |
-| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.                                     |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source.                             |
-| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, drift checks, and the token→utility-class emitters. |
-| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
-| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
+| Package                                                 | Apa yang dilakukannya                                                                                        |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| [`@pantoken/model`](/api/packages/model/src/)           | Tipe TypeScript tanpa dependensi: bentuk `Token` dan kontrak plugin.                                         |
+| [`@pantoken/core`](/api/packages/core/src/)             | Menyelesaikan token dan ikon hulu menjadi IR kanonik, dan merender CSS.                                      |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)          | IR yang sudah diselesaikan yang dijual sebagai JSON statis, per tema, plus sumber Tokens Studio mentah.      |
+| [`@pantoken/utils`](/api/packages/utils/src/)           | Resolver token, regex referensi, helper kasus dan warna, pemeriksaan drift, dan emitter token→utility-class. |
+| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Membangun dan menggabungkan plugin pantoken dengan `definePlugin`.                                           |
+| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — menghasilkan sumber native dan platform.                                      |
 
-## Formats
+## Format
 
-Turn the tokens into a file format.
+Mengubah token menjadi format file.
 
-| Package                                                | Output                                                                                                                                                                                                     |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                                                                                              |
-| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                                                                                                 |
-| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                            |
-| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                          |
-| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                                                                                                       |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                                                                                                    |
-| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |
-| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
-| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
+| Package                                                | Output                                                                                                                                                                                                               |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/css`](/api/formats/css/src/)               | CSS bertipe `@property` dengan `light-dark()` dan ikon data-URI.                                                                                                                                                     |
+| [`@pantoken/scss`](/api/formats/scss/src/)             | Variabel SCSS, diselesaikan ke satu mode.                                                                                                                                                                            |
+| [`@pantoken/less`](/api/formats/less/src/)             | Variabel Less.                                                                                                                                                                                                       |
+| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Variabel Stylus.                                                                                                                                                                                                     |
+| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | Dokumen W3C Design Tokens (DTCG).                                                                                                                                                                                    |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)         | IR sebagai JavaScript dan JSON (juga tercantum di bawah Inti).                                                                                                                                                       |
+| [`@pantoken/icons`](/api/formats/icons/src/)           | Tampilan ergonomis atas token ikon.                                                                                                                                                                                  |
+| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | Font web ikon (TTF, WOFF2) dan CSS-nya.                                                                                                                                                                              |
+| [`@pantoken/components`](/api/formats/components/src/) | Perpustakaan komponen CSS berpenampilan InstUI (button, alert, table, dan lainnya) plus reset dasar dengan focus ring, styling prose, utilitas lintas-potong, dan font brand. Lihat [Components](/guide/components). |
 
-## Renderers
+## Renderer
 
-Framework and tool integrations.
+Integrasi framework dan alat.
 
-| Package                                                                                                                                          | For                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>`, and a token provider.               |
-| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | The web component, wired into each framework.              |
-| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-friendly token objects (no CSS variables).      |
-| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` and styled primitives, framework-agnostic. |
-| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token setup for Astro sites.                               |
-| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon tokens and swatches in Markdown.                      |
-| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | A markdown-it plugin for icon codes and color swatches.    |
-| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | A type-safe theme for styled-components and Emotion.       |
-| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | A Material UI theme.                                       |
-| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-variable bridges for Bootstrap and shadcn/ui.          |
-| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | A Sass settings override and CSS overlay for Foundation.   |
-| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Themes for Docusaurus and VitePress.                       |
-| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | A Mintlify `docs.json` theme (colors + background).        |
-| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |
-| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |
+| Package                                                                                                                                          | Untuk                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
+| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | Hook React, `<Icon>`, dan penyedia token.                             |
+| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | Komponen web, dipasang ke masing-masing framework.                    |
+| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | Objek token ramah StyleSheet (tanpa variabel CSS).                    |
+| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` dan primitif bergaya, tanpa ketergantungan framework. |
+| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Pengaturan token untuk situs Astro.                                   |
+| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Token ikon dan swatch dalam Markdown.                                 |
+| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | Plugin markdown-it untuk kode ikon dan color swatches.                |
+| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | Tema bertipe untuk styled-components dan Emotion.                     |
+| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | Tema Material UI.                                                     |
+| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | Jembatan variabel-CSS untuk Bootstrap dan shadcn/ui.                  |
+| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | Override pengaturan Sass dan overlay CSS untuk Foundation.            |
+| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Tema untuk Docusaurus dan VitePress.                                  |
+| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | Tema Mintlify `docs.json` (warna + latar).                            |
+| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | Tema Storybook.                                                       |
+| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | CSS global bergaya Instructure untuk panduan Pendo.                   |
 
-## Bundlers
+## Bundler
 
-Build-tool integrations.
+Integrasi alat build.
 
-| Package                                             | For                                                   |
-| --------------------------------------------------- | ----------------------------------------------------- |
-| [`@pantoken/vite`](/api/bundlers/vite/src/)         | A Vite plugin with virtual modules and CSS injection. |
-| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` for Next.js `transpilePackages`.       |
-| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | A webpack plugin.                                     |
-| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | The `@pantoken;` at-rule.                             |
-| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
-| [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
+| Package                                             | Untuk                                             |
+| --------------------------------------------------- | ------------------------------------------------- |
+| [`@pantoken/vite`](/api/bundlers/vite/src/)         | Plugin Vite dengan modul virtual dan injeksi CSS. |
+| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` untuk Next.js `transpilePackages`. |
+| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | Plugin webpack.                                   |
+| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | At-rule `@pantoken;`.                             |
+| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | Preset Tailwind.                                  |
+| [`@pantoken/panda`](/api/bundlers/panda/src/)       | Preset Panda CSS.                                 |
 
-## Platforms
+## Platform
 
-Native and site-generator targets, emitted by the CLI or their own API.
+Target native dan generator situs, dihasilkan oleh CLI atau API mereka sendiri.
 
-| Package                                                                                        | Output                                     |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift source plus a SwiftPM manifest stub. |
-| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML resources.                     |
-| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                    |
-| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                              |
-| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts for egui or iced.              |
-| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | A WordPress block-theme `theme.json`.      |
-| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | A Vanilla Forums `variables.json`.         |
-| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal theme assets.                       |
-| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |
-| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |
+| Package                                                                                        | Output                                   |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Sumber Swift plus stub manifest SwiftPM. |
+| [`@pantoken/android`](/api/platforms/android/src/)                                             | Resource XML Android.                    |
+| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                  |
+| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                            |
+| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts untuk egui atau iced.        |
+| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | Tema block WordPress `theme.json`.       |
+| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | `variables.json` untuk Vanilla Forums.   |
+| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Asset tema Drupal.                       |
+| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Data situs Hugo dan Jekyll.              |
+| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Nilai ramah-inline untuk email HTML.     |
 
-## Design
+## Desain
 
-For design tools.
+Untuk alat desain.
 
-| Package                                           | Output                                                                |
-| ------------------------------------------------- | --------------------------------------------------------------------- |
-| [`@pantoken/figma`](/api/design/figma/src/)       | A Figma Variables payload.                                            |
-| [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus a viewable SVG specimen sheet. |
+| Package                                           | Output                                                                       |
+| ------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [`@pantoken/figma`](/api/design/figma/src/)       | Payload Figma Variables.                                                     |
+| [`@pantoken/swatches`](/api/design/swatches/src/) | Swatch warna (ASE, GPL, Sketch) plus lembar spesimen SVG yang dapat dilihat. |
 
-## Plugins
+## Plugin
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+Transform opsional yang memperluas output token atau CSS. Lihat [Plugins](/guide/plugins).
 
-| Package                                                                               | What it adds                                                    |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as `--instui-stacking-*` tokens.           |
-| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.              |
-| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                  |
-| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
-| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
+| Package                                                                               | Apa yang ditambahkan                                                 |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Kedalaman z-index bernama sebagai token `--instui-stacking-*`.       |
+| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | Outline debugging tata letak `-with-visual-debug`.                   |
+| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Ikon merek dari simple-icons.                                        |
+| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Logo produk Instructure sebagai SVG, data URI, dan token gambar.     |
+| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | Plugin PostCSS yang menghapus custom properties yang tidak terpakai. |
 
-## Tools
+## Alat
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+Infrastruktur build, docs, dan demo untuk monorepo itu sendiri. Kebanyakan bersifat internal, tetapi komponennya mandiri, jadi didokumentasikan di sini dan beberapa dipublikasikan ke npm secara terpisah.
 
-| Package                                            | What it does                                                                                                                                                                                          |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                                                                                                  |
-| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                                                                                                      |
-| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed.                                                                        |
-| `@cssdoc/core` (external)                          | A generic CSS documentation extractor (TSDoc, for CSS): parses doc-comments + the CSS AST into a model the docs emit as the CSS API reference. Lives in its own repo; consumed via a link dependency. |
+| Package                                            | Apa yang dilakukannya                                                                                                                                                                                               |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Menghasilkan paket barel terpadu `pantoken` dan `exports` dari dependensinya.                                                                                                                                       |
+| `@pantoken/validate-generated`                     | Gerbang drift: memeriksa setiap stylesheet yang dihasilkan resolves terhadap IR token.                                                                                                                              |
+| [`@pantoken/demo`](/api/tools/demo/src/)           | Runner demo live self-hosted: menyelesaikan spesifikasi `@demo` ke iframe dan merender HTML/CSS/JS bare same-origin, bertema token.                                                                                 |
+| `@cssdoc/core` (eksternal)                         | Ekstraktor dokumentasi CSS generik (TSDoc, untuk CSS): mem-parsing doc-comment + AST CSS menjadi model yang didorong sebagai referensi API CSS dokumen. Berada di repo sendiri; dikonsumsi sebagai dependensi link. |
 
-`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
-page; the others do.
+`@pantoken/validate-generated` adalah skrip sekali-jalankan (dipanggil oleh `pnpm run ready`), jadi tidak memiliki halaman API; yang lainnya ada.
 
 ## AI
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+Aset pengaturan AI untuk konsumen. Ini untuk proyek yang menggunakan pantoken, bukan untuk mengembangkan pantoken itu sendiri.
 
-- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
-  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
+- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) memasang `AGENTS.md`, `llms.txt`, dan aturan asisten/editor (Cursor, Copilot, Windsurf, Claude Code) ke dalam repositori konsumen.
 
-## Dev plugins
+## Plugin pengembang
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+Plugin yang kami buat untuk alat yang kami bangun, dikelompokkan menurut host. Mereka berdiri sendiri dan dapat dipublikasikan.
 
-| Package                                                                                  | Plugs into                                                                             |
-| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: turns a `@demo <provider>:<ref>` block tag into an embeddable demo fence.     |
-| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: rebuilds upstream workspace packages (and dependents) when their source changes. |
+| Package                                                                                  | Terhubung ke                                                                                  |
+| ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: mengubah tag blok `@demo <provider>:<ref>` menjadi fence demo yang dapat disematkan. |
+| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: membangun ulang paket workspace hulu (dan dependennya) ketika sumbernya berubah.        |

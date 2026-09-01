@@ -1,10 +1,8 @@
-# Architecture
+# Ailtireacht
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+tá post amháin ag pantoken: réitigh toghthóirí dearadh agus siombailí Instructure uair amháin, ansin athmhúnlaigh an tsamhail sin do gach sprioc. Coinníonn na sraitheanna thíos an athmhúnlú sin daingean agus coinníonn siad na pacáistí foilsithe saor ó aon upstream atá ar GitHub amháin.
 
-## The layers
+## Na sraitheanna
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** cuireann na conarthaí cineálacha air, agus ní rud ar bith eile. Is í an fhoinse fhírinne don struchtúr `Token` agus don chonradh plugin, gan spleáchais ar bith, mar sin is féidir le haon phacáiste brath air go saor.
+- **`@pantoken/core`** an t-aon phacáiste a théann i dteagmháil leis an fhoinse upstream. Réitíonn sé na toghthóirí agus na siombailí isteach sa IR chanónach agus déanann sé CSS a ghiniúint.
+- **`@pantoken/tokens`** soláthraíonn an IR sin mar JSON statach ag am an tionscnaimh. Is é seo an point dhíchumaisc: léann pacáistí síosreatha `@pantoken/tokens`, ní léann siad `@pantoken/core`, mar sin ní éiríonn le `npm i pantoken` riamh an upstream atá ar GitHub amháin a bhaint amach.
+- **`@pantoken/utils`** iompraíonn na cabhrach roinnte — an réititheoir `var(--x)`, na regexanna tagartha, tiontú cás agus dath, agus na seiceálacha drift a choinníonn aschur ginte dílis don IR.
 
-## Why tokens are vendored
+## Cén fáth a ndéantar na toghthóirí a sholáthar mar chuid den phacáiste
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Tá pacáiste na dtokean upstream ar GitHub, ní ar npm. Dá gcuirfeadh gach pacáiste síosreatha spleáchas air, d’fhéadfadh `npm i pantoken` teip do dhuine ar bith gan an rochtain sin. Ina ionad sin, réitíonn `@pantoken/tokens` an upstream uair amháin ag am an bhfoirgnimh agus scríobhann sé an toradh mar JSON statach. Iomparann na pacáistí foilsithe an JSON sin, mar sin suiteálann siad go glan ó npm, pinteann siad le semver, agus oibríonn siad aslíne.
 
-## Buckets
+## Buicéid
 
-Each downstream bucket is a way of consuming the IR:
+Is bealach é gach buicéad síosreatha chun an IR a ídiú:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — casann sé na toghthóirí isteach i gcomhad (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — comhtháthú le frámaí agus uirlisí (React, Vue, Svelte, MUI, Pendo, agus eile).
+- **bundlers/** — breiseáin agus réamhshocruithe uirlis tógála (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — spriocanna dúchais agus gineadóirí suíomhanna (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — páiréid do uirlisí dearaidh (Figma, paistí dathanna).
+- **plugins/** — claochluithe roghnacha a leathnaíonn an aschur token nó CSS. Féach [Plugins](/guide/plugins).
 
-## Generated output
+## Aschur ginte
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Scríobhann gach pacáiste a ghineann comhad é chuig eolaire `generated/` ar leith do gach pacáiste a athghineann an t-uirlis tógála, mar sin ní chuirtear aon rud ginte i mbun a chomhalta. Bailíonn tasc spásobair an láidir seo iad go léir. Féach [Aschur ginte](/guide/generated-output).

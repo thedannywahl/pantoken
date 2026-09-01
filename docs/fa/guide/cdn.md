@@ -1,53 +1,50 @@
-# CDN & distribution
+# CDN و توزیع
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken هر بسته را در npm منتشر می‌کند، بنابراین می‌توانید توکن‌ها، کامپوننت‌ها و وب‌کامپوننت‌ها را مستقیماً
+از یک CDN بگیرید — بدون مرحله ساخت، بدون باندلر. این صفحه URL ترکیبی CSS (با یک سازنده تعاملی)
+و همچنین drop-in های وب‌کامپوننت را پوشش می‌دهد.
 
-## The token foundation
+## پایه توکن
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+هر کامپوننت pantoken از ویژگی‌های سفارشی `--instui-*` در یک شیت توکن روی صفحه می‌خواند. دو
+ورژن عرضه می‌شوند:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — پایه CDN پیشنهادی. هر توکن به جز مجموعه کامل آیکون‌ها را حمل می‌کند، بنابراین حدود 23 KB فشرده gzip است.
+- `@pantoken/css/dist/style.css` — شیت کامل، شامل حدود ~1,777 توکن گلیف آیکون
+  (`--instui-icon-*`). حدود 140 KB فشرده gzip. این را بارگذاری کنید اگر گسترده از آیکون‌ها از طریق
+  `var(--instui-icon-*)` استفاده می‌کنید.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+مقیاس elevation و متغیرهای focus-ring در هر دو شیت قرار دارند، بنابراین سایه‌ها و حلقه فوکوس با
+فقط بارگذاری foundation کار می‌کنند.
 
-## Pick your components and icons
+## کامپوننت‌ها و آیکون‌ها را انتخاب کنید
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[گزیننده تعاملی CDN](/guide/cdn-picker) URLهای jsDelivr ترکیبی برای CSS و قطعات جاوااسکریپت بسته‌ها را می‌سازد. آن را باز کنید، آنچه نیاز دارید را علامت بزنید و خروجی تولیدشده را کپی کنید.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- تب **Components** — شیپ‌استایل‌های تک‌تک کامپوننت‌ها یا بشکه کامل `components.css` را انتخاب کنید. در صورت نیاز، ریست پایه یا ابزارهای spacing/color را اضافه کنید.
+- تب **JS** — قطعه ایمپورت ESM برای `@pantoken/interactions` را کپی کنید.
+- تب **Icons** — آیکون‌های جداگانه از مجموعه InstUI (~1,800 آیکون) یا از Simple Icons (~3,300 گلیف برند) را انتخاب کنید. گزیننده یک URL ترکیبی جدا برای فایل‌های CSS آیکون‌ها خروجی می‌دهد تا فقط آیکون‌هایی که واقعاً استفاده می‌کنید را بارگذاری کنید.
+- تب **Web Components** — قطعات `@pantoken/web-components` (ثبت انتخابی ESM یا بوت‌استرپ اسکریپت کلاسیک) را بسازید.
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+هر فایل کامپوننت کوچک است — بیشتر آن‌ها حدود 2 KB هستند. یک کامپوننت که آیکون‌ها را رندر می‌کند (`alert`, `checkbox`,
+و چند مورد دیگر) به آن گلیف‌ها نیاز دارد، بنابراین سازنده `@pantoken/components/dist/component-icons.css` را اضافه می‌کند (حدود
+0.5 KB فشرده gzip — 11 آیکونی که مجموعه کامپوننت استفاده می‌کند) هرگاه شیت lean را انتخاب کنید. شیت کامل
+قبلاً آن‌ها را دارد.
 
-### Load order and fonts
+### ترتیب بارگذاری و فونت‌ها
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+ابتدا پایه توکن را بارگذاری کنید، سپس ریست پایه اختیاری، سپس فایل‌های کامپوننت، و در نهایت ابزارها — آن‌ها ابزارهای بازنویسی‌اند، بنابراین تنها زمانی قاعده یک کامپوننت را بازنویسی می‌کنند که در cascade بعد از آن قرار گیرند. URL ترکیبی بالا قبلاً آن‌ها را برای شما مرتب کرده است. فونت‌ها یک استثنا هستند:
+`@pantoken/components/dist/fonts.css` به فایل‌های فونت با مسیر نسبی اشاره می‌کند، بنابراین combine نمی‌تواند
+آن‌ها را بازنویسی کند — آن را به عنوان `<link>` جداگانه بارگذاری کنید:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### همه با هم
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+در گزیننده **All components** را تیک بزنید تا آن را به بشکه تغییر دهد، یا خودتان مستقیم به آن اشاره کنید (حدود 141 KB
+فشرده gzip) همراه با شیت توکن:
 
 ```html
 <link
@@ -56,14 +53,13 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## وب‌کامپوننت‌ها
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` المنت‌های سفارشی `<instui-*>` مستقل از فریم‌ورک را ثبت می‌کند. آن‌ها CSS خود را درون‌خطی می‌کنند، اما همچنان توکن‌ها را از یک شیت روی صفحه می‌خوانند، بنابراین یک پایه توکن نیز بارگذاری کنید.
 
-### ES modules (recommended)
+### ماژول‌های ES (پیشنهادی)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+یک CDN ESM وابستگی‌های بسته را برای شما حل می‌کند. این هر المنت را ثبت می‌کند:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +68,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+از شیت توکن کامل (یا شیت lean به‌علاوه `component-icons.css`) استفاده کنید تا عناصر رندرکننده آیکون مانند
+`<instui-alert>` گلیف‌های خود را پیدا کنند.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+برای ثبت فقط برخی عناصر — و وابستگی‌های تو در تو آن‌ها — `register` را ایمپورت کنید و `only` را پاس دهید:
 
 ```html
 <script type="module">
@@ -85,20 +81,17 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### تگ اسکریپت کلاسیک
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+برای یک drop-in بدون ماژول، بیلد IIFE را بارگذاری کنید. این وابستگی‌هایش را باندل می‌کند و در بارگذاری هر المنت را خودکار ثبت می‌کند، و یک global `PantokenWebComponents` را در دسترس قرار می‌دهد:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+این از مسیر ESM بزرگ‌تر است — `@pantoken/components` و `@pantoken/icons` را درون‌خطی می‌کند — بنابراین فقط زمانی که نتوانید از ماژول‌ها استفاده کنید به آن مراجعه کنید.
 
-## Pinning versions
+## پین کردن نسخه‌ها
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+URLهای بالا — و آن‌هایی که گزیننده می‌نویسد — آخرین نسخه منتشر شده را دنبال می‌کنند. برای محیط تولید یک نسخه major (یا دقیق) را پین کنید — برای مثال `@pantoken/css@0` — تا ارتقا شما را غافلگیر نکند.

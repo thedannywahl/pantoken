@@ -1,53 +1,55 @@
-# CDN & distribution
+# CDN & tohatoha
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+ka panuitia e pantoken ia pūrongo ki npm, nā reira ka taea e koe te tiki i ngā token, ngā kaupapa, me ngā paowa tukutuku tika
+mai i tētahi CDN — kāore he hipanga hanga, kāore he pūkete. E kapi ana tēnei whārangi i te URL whakakotahi CSS (me tētahi
+kaihanga rerekē), ā, me ngā tāpiri paowa tukutuku.
 
-## The token foundation
+## Te tūāpapa token
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Ka pānui ia waahanga pantoken i ngā `--instui-*` rawa ritenga mai i tētahi pepa token kei te whārangi. E rua
+ngā rerekētanga e kawea ana:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — ko te tūāpapa CDN e taunakitia ana. Ka kawe ia ia token haunga te
+  kohinga ā-ata katoa, nō reira tata ki te 23 KB gzipped.
+- `@pantoken/css/dist/style.css` — te pepa katoa, tae atu ki ngā ōwehenga ata ~1,777
+  (`--instui-icon-*`). Tata ki te 140 KB gzipped. Utaina tēnei mēnā ka whakamahia whānui āu ngā ata mā
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+Kei ngā pepa e rua ngā rahi hiki (elevation) me ngā rerekētanga rīngā-arotahi, nō reira ka mahi ngā ātā me te rīnga arotahi
+me te tūāpapa anake kua utaina.
 
-## Pick your components and icons
+## Tīpakohia ōu whakahaere me ngā ata
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+Kei te [kaiwhiri CDN hāngai](/guide/cdn-picker) ngā URL whakakotahi jsDelivr mō te CSS me ngā tauira mō ngā pūrongo JavaScript. Whakatuwherahia,
+tīpakohia ngā mea e hiahia ana koe, ā, kopya mai i te putanga i hangaia.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Ripa Wāhanga** — tīpako i ngā pepa arahanga wāhanga takitahi, rānei te kōpaki `components.css` katoa. Tāpirihia te whakamōhio tūāpapa, te
+  atu rānei o ngā āwhina mokowā / tae mēnā e hiahiatia ana.
+- **Ripa JS** — kopya i tētahi tauira kawenga ESM mō `@pantoken/interactions`.
+- **Ripa Ata** — tīpako i ngā ata takitahi i te kohinga InstUI (~1,800 ata) rānei i Simple Icons (~3,300 tohu waitohu). Ka whakaputa te kaiwhiri i tētahi URL whakakotahi motuhake mō ngā konae CSS ata kia taea ai e koe te utaina noa ngā ata e whakamahia ana e koe.
+- **Ripa Paowa Tukutuku** — hanga `@pantoken/web-components` tauira (rēhitatanga Kōwhiringa ESM rānei te waahanga tukutuku kōrero).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+He iti ngā konae waahanga — ko te nuinga tata ki te 2 KB. He wāhanga e whakaatu ana i ngā ata (`alert`, `checkbox`,
+me ētahi atu) e hiahia ana ki ngā tohu rānei, nō reira ka taapirihia e te kaiwhakairo `@pantoken/components/dist/component-icons.css` (tata
+0.5 KB gzipped — ngā ata 11 e whakamahia ana e te huinga kaupapa) ia wā ka tīpakohia e koe te pepa māmā. Kua kei i te pepa katoa
+ēnei āhuatanga.
 
-### Load order and fonts
+### Te raupapa utaina me ngā tohu
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Utaina tuatahi te tūāpapa token, katahi te whakamōhio tūāpapa optional, katahi ngā konae waahanga, ā, ko ngā āwhina
+i te mutunga — he taputapu whakakapi rānei, nō reira ka whakakapi i tētahi ture o te wāhanga anake mēnā ka tae rānei ki te mutunga
+o te kāpu. Kua whakaritea e te URL whakakotahi i runga ake ngā raupapa māu. Ko ngā tohu te tukanga kotahi:
+`@pantoken/components/dist/fonts.css` e tohu ana ki ngā konae momotuhi mā te ara whakaritea, nō reira kāore e taea e te whakakotahi
+te tuhituhi anō — utaina hei `<link>` motuhake:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Ngā mea katoa i te kotahi
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Tirohia te **Ngā waahanga katoa** i te kaiwhiri kia huri ai ki te kōpaki, rānei tohuhia tōu ake (tata 141 KB
+gzipped) i te taha o te pepa token:
 
 ```html
 <link
@@ -56,14 +58,14 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Ngā paowa tukutuku
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` e rēhita ana i ngā `<instui-*>` āhuatanga ritenga-kāore-i-te-tūmatanui. Ka whakauru rātou i ā rātou
+ake CSS, engari ka pānui tonu i ngā token mai i tētahi pepa kei te whārangi, nō reira utaina hoki tētahi tūāpapa token.
 
-### ES modules (recommended)
+### Ngā modula ES (e taunaki ana)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Ka whakatau te CDN ESM i ngā whakawhitinga mō te pēke mōu. E rēhita ana tēnei i ia āhuatanga:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +74,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Whakamahia te pepa token katoa (rānei te pepa māmā me `component-icons.css`) kia taea ai e ngā wāhanga e hanga ana i ngā ata pēnei i
+`<instui-alert>` te whiwhi i ō rātou tohu.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Hei rēhita i ētahi āhuatanga anake — me ō rātou whakawhitinga hōu — kawemai `register` āhakoa ka tukuna `only`:
 
 ```html
 <script type="module">
@@ -85,20 +87,19 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### He tapanga script kōrero
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Mō te tāpiri kore-modula, utaina te hanga IIFE. Ka kohinga te nuinga o ōna whakawhitinga ka rēhita ia āhuatanga katoa i te utaina, ka whakaatu i tētahi
+tohu `PantokenWebComponents` puta-ao:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+He nui ake i te ara ESM — ka whakauruhia `@pantoken/components` me `@pantoken/icons` — nō reira whakamahia anake mēnā kāore e taea te whakamahi i ngā modula.
 
-## Pinning versions
+## Te pēhanga putanga
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Ko ngā URL kei runga ake — me ngā mea ka tuhia e te kaiwhiri — e whai tonu ana i te whakarewatanga hou. Whakakahangia tētahi putanga matua (rānei tūturu)
+mō te whakaputa — hei tauira `@pantoken/css@0` — kia kore ai e whakamataku te whakahoutanga.

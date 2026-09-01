@@ -1,12 +1,12 @@
-# The package map
+# El mapa de paquets
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
+pantoken és un monorepo de petits paquets d’un únic propòsit agrupats en cubs. Instal·la el que
+s’adapti a la teva tasca, o instal·la el paquet unificat `pantoken` i importa des dels seus subcamins (per exemple
 `pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
 
-## Core
+## Nucli
 
-The shared model and the transformer everything else builds on.
+El model compartit i el transformador sobre el qual es construeix tot la resta.
 
 | Package                                                 | What it does                                                                                                       |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -19,7 +19,7 @@ The shared model and the transformer everything else builds on.
 
 ## Formats
 
-Turn the tokens into a file format.
+Converteix els tokens a un format de fitxer.
 
 | Package                                                | Output                                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -35,7 +35,7 @@ Turn the tokens into a file format.
 
 ## Renderers
 
-Framework and tool integrations.
+Integracions de frameworks i eines.
 
 | Package                                                                                                                                          | For                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -57,7 +57,7 @@ Framework and tool integrations.
 
 ## Bundlers
 
-Build-tool integrations.
+Integracions amb eines de construcció.
 
 | Package                                             | For                                                   |
 | --------------------------------------------------- | ----------------------------------------------------- |
@@ -68,9 +68,9 @@ Build-tool integrations.
 | [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
 | [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
 
-## Platforms
+## Plataformes
 
-Native and site-generator targets, emitted by the CLI or their own API.
+Objectius nadius i per a generadors de llocs, emesos pel CLI o per la seva pròpia API.
 
 | Package                                                                                        | Output                                     |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -85,9 +85,9 @@ Native and site-generator targets, emitted by the CLI or their own API.
 | [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |
 | [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |
 
-## Design
+## Disseny
 
-For design tools.
+Per a eines de disseny.
 
 | Package                                           | Output                                                                |
 | ------------------------------------------------- | --------------------------------------------------------------------- |
@@ -96,7 +96,7 @@ For design tools.
 
 ## Plugins
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+Transformacions opcionals que estenen la sortida de tokens o CSS. Vegeu [Plugins](/guide/plugins).
 
 | Package                                                                               | What it adds                                                    |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -106,10 +106,10 @@ Optional transforms that extend the token or CSS output. See [Plugins](/guide/pl
 | [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
 | [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
 
-## Tools
+## Eines
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+Infraestructura de construcció, documentació i demostració per al monorepo en si. La majoria és interna, però les peces
+són autocontingudes, així que les documentem aquí i algunes es publiquen a npm per separat.
 
 | Package                                            | What it does                                                                                                                                                                                          |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -121,17 +121,17 @@ self-contained, so we document them here and some ship to npm on their own.
 `@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
 page; the others do.
 
-## AI
+## IA
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+Actius d’AI per a consumidors. Aquests són per a projectes que utilitzen pantoken, no per a desenvolupar
+pantoken en si.
 
 - [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
   assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
 
-## Dev plugins
+## Plugins de desenvolupament
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+Plugins que autoritzem per a les eines amb què treballem, agrupats per host. Són autònoms i publicables.
 
 | Package                                                                                  | Plugs into                                                                             |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |

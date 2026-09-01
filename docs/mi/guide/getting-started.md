@@ -1,47 +1,38 @@
-# Getting started
+# Tīmata
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+Ka tango a pantoken i ngā tohu hoahoa me ngā tohu ata o Instructure UI, ka whakatau kotahi, ka hanga anō i taua tauira kotahi hei kete mō ngā papa maha: rauemi tauira ma, SCSS me Less, React, Vue me Svelte, Tailwind me Panda, native Swift me Kotlin, WordPress me Drupal, Figma, rānei atu.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Ka tāuta e koe te kete iti rawa e hāngai ana ki tō mahi. Katoa hoki ka kaweake anō e te `pantoken` mōkī kotahi, nō reira ka tīmata koe i reira ka āta whāngai ā muri ake.
 
-## Scaffold a starter project
+## Whakarau i tētahi kaupapa tīmata
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+Ko te huarahi tere ki te whakamātau i pantoken: whakarau i tētahi kaupapa tīmata kua tāuta, kua whirihorahia hoki.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Ngā papanga: `components` (HTML/CSS mā), `react`, `vue`, `svelte`, `web-components`, `angular`. Tirohia
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) mō `--dir <path>` me te whakamahinga hōtaka.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+E whakamahi ana i tētahi kaitautoko waea AI? Kāore he tāutanga e hiahiatia — tohu atu kia arahina te pūkenga:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Ka mahi anō i taua ara mō Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, me Amazon Q Developer CLI — whakakē `claude` mō `gemini`, `agent`, `codex`, `copilot -p`, rānei `q chat`. Mēnā e pai ana kia whakauruhia ngā ture kaitautoko o pantoken ki te repo mō ake tonu atu (AGENTS.md, ture ētita, tārua ā-rohe o tēnei pūkenga), whakahaerehia `npx @pantoken/ai init` hei tāpiri.
 
-## The token model
+## Te tauira tohu
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Ko ngā tohu he taonga ritenga CSS e ingoa ana `--instui-<group>-<name>`, hei tauira
+`--instui-color-background-brand` rānei `--instui-spacing-space-md`. E toru ngā kaupapa tae e kawea mai ana: `rebrand`
+(te taunoa, me `light-dark()` hei rerekē i te mārama me te pō), `canvas`, me `canvasHighContrast`.
+Ko ngā tohu ata he `<image>` tokens (`--instui-icon-<name>`) i ahu mai i Lucide me ngā oro ritenga a Instructure.
 
-## Style a web app
+## Whakararama i tētahi taupānga tukutuku
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Tāuta te rauemi tauira ka kawemai kotahi. Ka tautuhia ia `--instui-*` rawa, nō reira ka taea e koe te tohu tika i aua wāhi mai i tō ake CSS.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +49,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Whakamahia ngā ata ki ngā wāhi katoa
 
-The web component works in any framework, with no porting.
+Ka mahi te wahanga tukutuku i roto i ngā anga katoa, me te kore whakarerekētanga.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +65,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### Ngā tohu CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Ko ngā ata he taonga ritenga CSS (`--instui-icon-<name>`). Kawemaihia te rauemi tauira kotahi ka tohu i tētahi ata hei `mask-image` rānei `background-image` — kāore he kawemai mō ia ata.
 
 ```css
 .my-icon {
@@ -85,10 +75,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — tētahi ata kotahi vs. te kete katoa
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+Ka whakakitea e `@pantoken/icons` e rua ngā kaweake ingoa. Whakamahia `iconsByName` ki te tango i tētahi ata kotahi me te kore whakawhāiti i te rārangi katoa:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +86,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Whakamahia `icons` mēnā e hiahiatia ana te kete katoa (hei tauira, hei waihanga i tētahi kōwhiringa):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +95,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+E kawemai ana ngā kaweake e rua i te IR katoa i te tīmatanga o te kōwae — kāore he tree-shaking mō ia ata i tēnei taumata. Mō te kawemai māraiti ā-CSS anake, whakamahia te [CDN picker](/guide/cdn-picker) hei hanga i tētahi URL whakauru mō ngā ata anake e hiahiatia ana.
 
-## Generate for a native platform
+## Whakaputa mō tētahi papa taketake
 
-The CLI writes token source into a target repo. No install beyond the runner:
+Ka tuhi te CLI i te puna tohu ki roto i tētahi repo tūnga. Kāore he tāutanga atu i te kawe:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Tirohia [te pantoken CLI](/guide/cli) mō ia tūnga katoa.
 
-## VS Code authoring hints
+## Ngā tohutohu kaituhi VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+Kua kawea mai ināianei e `@pantoken/pantoken` ngā kōnae raraunga-tahua ā-Whakarite mō VS Code kia taea e ngā kaupapa whakarauka te tiki whakaoti ā-kaihanga me ngā tohu kāwai i roto i HTML/CSS me te kore tāuta i tētahi toronga motuhake pantoken.
 
-1. Install the unified package:
+1. Tāuta te mōkī kotahi:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Tohua VS Code ki te kōnae raraunga-tahua kua kawea mai i tō wāhi mahi kaihoko:
 
 ```json
 {
@@ -140,14 +126,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Whakakāhore anō i VS Code (rānei whakahaere "Developer: Reload Window") kia whai hua ai ngā raraunga hou.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Ka whakahohe tēnei i ngā tūtohutanga mō ngā tohu kāwai `instui-*` (me ngā tohu kāwai `-modifier`) me ngā taonga ritenga `--instui-*`.
 
-## Where to next
+## Kei hea te haere ā muri
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [Te mapi mōkī](/guide/packages) — te kete hei toro māu, mā runga i te mahi.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — tāuta ngā rawa me ngā ture kaitautoko ki tētahi repo kaihoko.
+- [Pūhanga](/guide/architecture) — me pēhea te hono o te tauira tohu, te pūnaha matua, me ngā putanga.
+- [Tohutohu API](/api/) — ia tohu kaweake, i hangaia mai i te puna.

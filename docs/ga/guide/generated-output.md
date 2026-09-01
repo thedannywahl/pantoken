@@ -1,36 +1,33 @@
-# Generated output
+# Aschur ginte
 
-Several pantoken packages emit files at build time — a stylesheet, a `theme.json`, an embedded token
-module. To keep the repo clean and the outputs honest, every package follows one convention and a
-workspace task validates the lot.
+Scaoileann roinnt pacáistí pantoken comhaid ag am an tógála — stíleálán, `theme.json`, modúl foinse comharthaí cuimsitheach. Chun an stór a chothabháil glan agus an aschur a bheith ionraic, leanann gach pacáiste nós imeachta amháin agus fíoraíonn tasc an spáis oibre an méid go léir.
 
-## The `generated/` convention
+## An nós imeachta `generated/`
 
-Every package that produces a build artifact writes it to a per-package `generated/` directory, and
-nothing else lives there. One rule in `.gitignore` covers them all:
+Scríobhann gach pacáiste a tháirgeann ealaín tógtha é chuig eolaire `generated/` in aghaidh an phacáiste, agus ní chónaíonn tada eile ann. Clúdaíonn riail amháin i `.gitignore` iad go léir:
 
 ```txt
 **/generated/
 ```
 
-So no generated file is committed — a build reproduces it. Two kinds of output land there:
+Mar sin ní chuirtear aon chomhad ginte isteach sa chóras — tá sé in-athghinte ag tógáil. Téann dhá chineál aschuir ann:
 
-- **Shippable statics** — files a consumer imports, such as `@pantoken/css`'s `style.css` or
-  `@pantoken/scss`'s `tokens.scss`. The package's `exports` map keeps the public key
-  (`"./style.css"`) but points it at `generated/`, so the consumer API never changes.
-- **Build intermediates** — files the package's own source imports and bundles into `dist`, such as
-  `@pantoken/tokens`'s vendored JSON. These aren't published on their own; they're compiled in.
+- **Staiticí in-phacáistithe** — comhaid a iompórtálann tomhaltóir, mar `@pantoken/css`'s `style.css` nó
+  `@pantoken/scss`'s `tokens.scss`. Coinníonn léarscáil `exports` an phacáiste an eochair phoiblí
+  (`"./style.css"`) ach léiríonn sí í chuig `generated/`, mar sin ní athraíonn API an tomhaltóra riamh.
+- **Idirmheánacha tógála** — comhaid a iompórtálann foinsí an phacáiste féin agus a chumascann isteach i `dist`, mar shampla
+  JSONí díoltar `@pantoken/tokens`. Níl siad sin foilsithe ar a n-aonar; déantar iad a chomhdhlúthú sa tógáil.
 
-## Validating the output
+## Ag bailíochtú an aschuir
 
-`@pantoken/validate-generated` (a private tool) runs after a build and checks three things:
+Reáchtáiltear `@pantoken/validate-generated` (uirlis phríobháideach) tar éis tógáil agus seiceálann sé trí ruda:
 
-1. every generator package actually wrote a non-empty `generated/` directory,
-2. the `pantoken` CLI emits at least one file for every supported target, and
-3. no generated stylesheet drifts from the token IR — `danglingReferences` for self-contained
-   sheets, and `unknownReferences` for the bridges that only reference tokens defined elsewhere.
+1. gur scríobh gach pacáiste gineadóra eolaire neamh-fholamh `generated/`,
+2. go sroicheann an CLI `pantoken` ar a laghad comhad amháin do gach sprioc tacaithe, agus
+3. nach mbíonn aon stíleáil ginte ag drifteáil ó IR na n-íomhán — `danglingReferences` do leatháin féinchuidithe,
+   agus `unknownReferences` do na droichid a tagraíonn do thóicní atá sainmhínithe áit eile amháin.
 
-## Commands
+## Orduithe
 
 ```sh
 # Rebuild every package, regenerating all generated/ output.
@@ -40,4 +37,4 @@ pnpm run generate
 pnpm run validate:generated
 ```
 
-The validator is also wired into `pnpm run ready`, so drift is caught in the standard gate.
+Tá an fhíoróir ceangailte freisin le `pnpm run ready`, mar sin gabhtar drifte sa gheata caighdeánach.

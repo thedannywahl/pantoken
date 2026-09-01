@@ -1,10 +1,10 @@
-# Architecture
+# Architectuur
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken heeft één taak: Instructure's designtokens en iconen één keer resolven en dat model vervolgens
+voor elk doelplatform herschikken. De lagen hieronder houden die herschikking zuiver en zorgen dat de gepubliceerde pakketten vrij
+blijven van elk GitHub-only upstream.
 
-## The layers
+## De lagen
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** bevat de typecontracten, en niets meer. Het is de bron van waarheid voor de
+  `Token`-vorm en het plugincontract, met nul afhankelijkheden, zodat elk pakket er vrij
+  op kan vertrouwen.
+- **`@pantoken/core`** is het enige pakket dat het upstream-bronbestand aanraakt. Het lost tokens en
+  iconen op in de canonical IR en rendert CSS.
+- **`@pantoken/tokens`** levert die IR als statische JSON bij build-tijd. Dit is het ontkoppelingspunt:
+  downstream-pakketten lezen `@pantoken/tokens`, nooit `@pantoken/core`, zodat `npm i pantoken` nooit
+  het GitHub-only upstream hoeft te bereiken.
+- **`@pantoken/utils`** draagt de gedeelde hulpfuncties — de `var(--x)`-resolver, de referentie-regexes,
+  case- en kleurconversies, en de driftcontroles die ervoor zorgen dat de gegenereerde output trouw blijft aan de IR.
 
-## Why tokens are vendored
+## Waarom tokens worden opgenomen
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Het upstream tokenpakket staat op GitHub, niet op npm. Als elk downstream-pakket ervan afhankelijk zou zijn,
+zou `npm i pantoken` falen voor iedereen zonder die toegang. In plaats daarvan lost `@pantoken/tokens` het
+upstream eenmaal op tijdens build-tijd en schrijft het resultaat naar statische JSON. De gepubliceerde pakketten dragen die
+JSON mee, zodat ze schoon van npm geïnstalleerd kunnen worden, op semver vastpinnen en offline werken.
 
 ## Buckets
 
-Each downstream bucket is a way of consuming the IR:
+Elke downstream-bucket is een manier om de IR te consumeren:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — zet de tokens om in een bestand (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — framework- en toolintegraties (React, Vue, Svelte, MUI, Pendo, en meer).
+- **bundlers/** — build-tool-plugins en presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — native en site-generator-doelen (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — payloads voor designtools (Figma, kleurstalen).
+- **plugins/** — optionele transformaties die de token- of CSS-output uitbreiden. Zie [Plugins](/guide/plugins).
 
-## Generated output
+## Gegenereerde output
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Elk pakket dat een bestand genereert schrijft het naar een per-pakket `generated/`-directory die een build
+reproduceert, zodat niets van de gegenereerde bestanden wordt gecommit. Een workspace-taak valideert alles. Zie
+[Gegenereerde output](/guide/generated-output).

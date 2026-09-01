@@ -1,13 +1,13 @@
-# Plugins
+# Плагіни
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Плагін pantoken розширює вихідні дані токенів або CSS без форку пакета. Його створюють за допомогою
+`definePlugin` з `@pantoken/plugin-kit`, а потім передають у `buildTokens` або `toCss`.
 
-## Author a plugin
+## Створення плагіна
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Передайте `definePlugin` хуки, які ви реалізуєте. Він повертає звичайний плагін, маркований
+здатностями, виведеними з цих хуків. Плагін може розширювати IR (`tokens`, `icons`), CSS
+вихід (`css`), або обидва.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Реєстрація з урахуванням можливостей
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` та `toCss` виконують `checkPlugins` над плагінами, які ви передаєте. Він попереджає — він ніколи не кидає помилку —
+коли у плагіна немає відповідного хука для етапу, в якому його реєструють, тож плагін тільки для токенів, переданий
+у `toCss`, буде пропущено з повідомленням, а не мовчазно проігноровано.
 
-## Compose plugins
+## Компонування плагінів
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Будуйте поверх іншого плагіна за допомогою `extendPlugin`, або комбінуйте однорангові за допомогою `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Хуки одного етапу композиціюються: `tokens` виконує базовий потім додатковий, `css` об’єднує два
+внески, а `icons` виконує обидва.
 
-## Validate your plugin's output
+## Перевірте вихід вашого плагіна
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Запустіть загальні перевірки дрейфу з `@pantoken/utils` над власним виходом плагіна в його тесті, щоб
+описка або перейменований токен викликали швидку локальну помилку:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +56,18 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Вбудовані плагіни
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — брендує іконки з simple-icons, реєструються як токени іконок.
+- `@pantoken/plugin-logos` — логотипи продуктів Instructure як SVG, data URI і `--instui-logo-*`
+  image-токени.
+- `@pantoken/plugin-prune-custom-props` — плагін PostCSS (не pantoken-плагін), який видаляє
+  невикористовувані кастомні властивості зі стилю.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Кілька речей, що раніше були плагінами, тепер постачаються в `@pantoken/components`, оскільки так багато компонентів потребують
+їх за замовчуванням: тіні підйому (`--instui-elevation-*`, в `components.css`), кільцевий контур фокусу
+(в `base.css` — кожний фокусований елемент його отримує, коли pantoken керує сторінкою), та шрифти бренду Instructure
+(Atkinson Hyperlegible Next: `base.css` застосовує `--instui-font-family-base`; опціональний
+`@pantoken/components/fonts.css` підвантажує `@font-face` woff2).
 
-See the [API reference](/api/) for each plugin's exports.
+Див. [API reference](/api/) для експортів кожного плагіна.

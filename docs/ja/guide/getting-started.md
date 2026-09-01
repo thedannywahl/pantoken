@@ -1,47 +1,34 @@
-# Getting started
+# はじめに
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken は Instructure UI のデザイントークンとアイコンを取り込み、一度解決してからその単一のモデルを複数プラットフォーム向けのパッケージに変換します: プレーンなスタイルシート、SCSS と Less、React・Vue・Svelte、Tailwind と Panda、ネイティブの Swift と Kotlin、WordPress と Drupal、Figma など。
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+作業に必要な最小のパッケージをインストールします。すべては統一された `pantoken` パッケージから再エクスポートされているため、まずそこから始めて後で絞り込むことができます。
 
-## Scaffold a starter project
+## スタータープロジェクトを足場構築する
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+pantoken を試す最速の方法は、あらかじめインストールと接続がされたスタータープロジェクトをスキャフォールドすることです。
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+対応プラットフォーム: `components` (プレーン HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. `--dir <path>` やプログラム的な利用については [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) を参照してください。
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+AI コーディングエージェントを使う場合はインストール不要 — スキルを直接指し示してください:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Gemini CLI、Cursor CLI、OpenAI Codex CLI、GitHub Copilot CLI、Amazon Q Developer CLI に対しても同様に動作します — `claude` を `gemini`、`agent`、`codex`、`copilot -p`、または `q chat` に置き換えてください。pantoken のエージェントルールをリポジトリに恒久的に組み込みたい場合（AGENTS.md、エディタルール、このスキルのローカルコピー）、代わりに `npx @pantoken/ai init` を実行してください。
 
-## The token model
+## トークンモデル
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+トークンは `--instui-<group>-<name>` という名前の CSS カスタムプロパティです。例えば `--instui-color-background-brand` や `--instui-spacing-space-md` のように使います。デフォルトテーマを含む 3 つのテーマが提供されます: `rebrand`（デフォルト。ライトとダークで異なる箇所は `light-dark()`）、`canvas`、および `canvasHighContrast`。アイコンは Lucide と Instructure のカスタムグリフから派生した `<image>` トークン（`--instui-icon-<name>`）です。
 
-## Style a web app
+## Web アプリのスタイリング
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+スタイルシートをインストールして一度インポートします。すべての `--instui-*` プロパティを定義するため、自分の CSS から直接参照できます。
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +45,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## どこでもアイコンを使う
 
-The web component works in any framework, with no porting.
+Web コンポーネントはフレームワークを問いません。移植作業は不要です。
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### CSS トークン
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+アイコンは CSS カスタムプロパティ（`--instui-icon-<name>`）です。スタイルシートを一度読み込み、任意のアイコンを `mask-image` または `background-image` として参照できます — 個別アイコンのインポートは不要です。
 
 ```css
 .my-icon {
@@ -85,10 +71,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — 単一アイコン vs 全セット
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` は 2 つの名前付きエクスポートを公開します。配列全体を反復せずに単一アイコンを取り出すには `iconsByName` を使用します:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+ピッカーを構築するなど全セットが必要な場合は `icons` を使用してください:
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+両方のエクスポートはモジュール初期化時に完全な IR を読み込みます — このレベルではアイコン単位のツリーシェイキングは行われません。軽量な CSS のみの読み込みが必要な場合、[CDN ピッカー](/guide/cdn-picker) を使って必要なアイコンだけをまとめた URL を生成してください。
 
-## Generate for a native platform
+## ネイティブプラットフォーム用に生成する
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI はトークンソースをターゲットリポジトリへ書き込みます。ランナー以外のインストールは不要です:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+すべてのターゲットについては [the pantoken CLI](/guide/cli) を参照してください。
 
-## VS Code authoring hints
+## VS Code の作成支援ヒント
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` は現在、下流プロジェクトが HTML/CSS でクラスやトークンの補完を得られるように VS Code の custom-data ファイルを同梱しています（pantoken 固有の拡張をインストールする必要はありません）。
 
-1. Install the unified package:
+1. 統一パッケージをインストールします:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. コンシューマーワークスペースから同梱の custom-data JSON を VS Code にポイントします:
 
 ```json
 {
@@ -140,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. VS Code を再読み込み（または "Developer: Reload Window" を実行）して新しいデータを適用します。
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+これにより `instui-*` クラストークン（および `-modifier` クラストークン）と `--instui-*` カスタムプロパティの補完が有効になります。
 
-## Where to next
+## 次に進む場所
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [パッケージマップ](/guide/packages) — タスクごとにどのパッケージを使うべきか。
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — コンシューマリポジトリにエージェントアセットとルールをインストールする。
+- [アーキテクチャ](/guide/architecture) — トークンモデル、コア、出力がどのように組み合わさるか。
+- [API リファレンス](/api/) — すべてのエクスポートシンボル（ソースから生成）。

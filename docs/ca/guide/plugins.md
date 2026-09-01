@@ -1,13 +1,13 @@
 # Plugins
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Un plugin de pantoken amplia la sortida de tokens o CSS sense bifurcar un paquet. Se'n construeix un amb
+`definePlugin` des de `@pantoken/plugin-kit`, i després se li passa a `buildTokens` o `toCss`.
 
-## Author a plugin
+## Crear un plugin
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Donar a `definePlugin` els hooks que implementes. Retorna un plugin normal, marcat amb les
+capacitats inferides a partir d'aquests hooks. Un plugin pot ampliar l'IR (`tokens`, `icons`), la
+sortida CSS (`css`), o ambdues coses.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +20,15 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Registre conscient de les capacitats
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` i `toCss` executen `checkPlugins` sobre els plugins que hi passes. Mostra avisos — mai llença excepcions —
+quan un plugin no té cap hook coincident amb l'etapa en què està registrat, així que un plugin només de tokens passat
+a `toCss` s'omet amb una nota en lloc de no fer res en silenci.
 
-## Compose plugins
+## Composar plugins
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Construir a sobre d'un altre plugin amb `extendPlugin`, o combinar iguals amb `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +37,13 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Els hooks de la mateixa etapa es composen: `tokens` executa primer el base i després l'adició, `css` fusiona les dues
+contribucions, i `icons` executa ambdues.
 
-## Validate your plugin's output
+## Validar la sortida del teu plugin
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Executa les comprovacions de deriva compartides de `@pantoken/utils` sobre la sortida del teu plugin en el seu test, perquè una
+errada tipogràfica o un token reanomenat falli ràpidament i localment:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +56,16 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Els plugins empaquetats
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — icones de marca de simple-icons, registrades com a tokens d'icona.
+- `@pantoken/plugin-logos` — logotips de productes Instructure com a SVG, URI de dades, i tokens d'imatge `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — un plugin PostCSS (no un plugin de pantoken) que elimina
+  propietats personalitzades no utilitzades d'una fulla d'estils.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+Algunes coses que abans eren plugins ara s'includeixen a `@pantoken/components`, ja que tants components les necessiten
+per defecte: ombres d'elevació (`--instui-elevation-*`, a `components.css`), l'anell de focus-outline
+(a `base.css` — cada element focusable l'obté quan pantoken controla la pàgina), i les fonts de la marca Instructure
+(Atkinson Hyperlegible Next: `base.css` aplica `--instui-font-family-base`; l'opcional `@pantoken/components/fonts.css` carrega els woff2s de `@font-face`).
 
-See the [API reference](/api/) for each plugin's exports.
+Veure la [referència de l'API](/api/) per les exportacions de cada plugin.

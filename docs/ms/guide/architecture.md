@@ -1,10 +1,8 @@
-# Architecture
+# Seni Bina
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken mempunyai satu tugas: menyelesaikan token reka bentuk dan ikon Instructure sekali sahaja, kemudian membentuk semula model itu untuk setiap sasaran. Lapisan di bawah memastikan pembentukan semula itu tepat dan memastikan pakej yang diterbitkan bebas daripada upstream yang hanya di GitHub.
 
-## The layers
+## Lapisan
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** memegang kontrak jenis, dan tiada apa-apa lagi. Ia adalah sumber kebenaran untuk bentuk `Token` dan kontrak plugin, dengan sifar pergantungan, jadi mana-mana pakej boleh bergantung padanya dengan bebas.
+- **`@pantoken/core`** adalah satu-satunya pakej yang menyentuh sumber upstream. Ia menyelesaikan token dan ikon kepada IR kanonik dan menghasilkan CSS.
+- **`@pantoken/tokens`** menyertakan IR itu sebagai JSON statik pada masa bina. Ini adalah titik pemisahan: pakej hiliran membaca `@pantoken/tokens`, bukan `@pantoken/core`, jadi `npm i pantoken` tidak pernah mencapai upstream yang hanya di GitHub.
+- **`@pantoken/utils`** membawa pembantu bersama — penyelesai `var(--x)`, regex rujukan, penukaran kes dan warna, dan pemeriksaan drift yang memastikan output yang dijana setia kepada IR.
 
-## Why tokens are vendored
+## Mengapa token dibundel
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Pakej token upstream berada di GitHub, bukan npm. Jika setiap pakej hiliran bergantung kepadanya, `npm i pantoken` akan gagal untuk sesiapa yang tidak mempunyai akses itu. Sebaliknya `@pantoken/tokens` menyelesaikan upstream sekali pada masa bina dan menulis hasilnya ke JSON statik. Pakej yang diterbitkan membawa JSON itu, jadi ia dipasang dengan kemas dari npm, dipaut pada semver, dan berfungsi tanpa sambungan.
 
-## Buckets
+## Kumpulan
 
-Each downstream bucket is a way of consuming the IR:
+Setiap kumpulan hiliran adalah satu cara menggunakan IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — menukar token kepada fail (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — integrasi rangka kerja dan alat (React, Vue, Svelte, MUI, Pendo, dan lain-lain).
+- **bundlers/** — plugin dan pratetap alat bina (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — sasaran asli dan penjana laman (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — muatan untuk alat reka bentuk (Figma, palet warna).
+- **plugins/** — transformasi pilihan yang meluaskan output token atau CSS. Lihat [Plugins](/guide/plugins).
 
-## Generated output
+## Output yang Dijana
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+Setiap pakej yang mengeluarkan fail menulisnya ke direktori `generated/` per-pakej yang dihasilkan semula oleh bina, jadi tiada apa yang dijana yang dikomitkan. Tugas ruang kerja mengesahkan semuanya. Lihat [Generated output](/guide/generated-output).

@@ -35,7 +35,7 @@ flowchart TD
   downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
   reaches for the GitHub-only upstream.
 - **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+  case and colour conversion, and the drift checks that keep generated output faithful to the IR.
 
 ## Why tokens are vendored
 
@@ -52,7 +52,7 @@ Each downstream bucket is a way of consuming the IR:
 - **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
 - **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
 - **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
+- **design/** — payloads for design tools (Figma, colour swatches).
 - **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
 
 ## Generated output

@@ -1,47 +1,34 @@
-# Getting started
+# Bắt đầu
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken lấy các design token và biểu tượng của Instructure UI, resolve chúng một lần, và biến mô hình đó thành các gói cho nhiều nền tảng: stylesheet thuần, SCSS và Less, React và Vue và Svelte, Tailwind và Panda, native Swift và Kotlin, WordPress và Drupal, Figma, và hơn thế nữa.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Cài gói nhỏ nhất phù hợp với nhiệm vụ của bạn. Mọi thứ cũng được re-export bởi gói hợp nhất `pantoken`, vì vậy có thể bắt đầu từ đó rồi thu hẹp sau.
 
-## Scaffold a starter project
+## Tạo khung dự án khởi đầu
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+Cách nhanh nhất để thử pantoken: scaffold một dự án khởi đầu đã cài và nối sẵn.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Nền tảng: `components` (HTML/CSS thuần), `react`, `vue`, `svelte`, `web-components`, `angular`. Xem [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) cho `--dir <path>` và việc sử dụng theo chương trình.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+Sử dụng agent mã hóa AI? Không cần cài — chỉ trỏ nó tới skill trực tiếp:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Hoạt động tương tự với Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, và Amazon Q Developer CLI — thay `claude` bằng `gemini`, `agent`, `codex`, `copilot -p`, hoặc `q chat`. Nếu muốn nối quy tắc agent của pantoken vào repo vĩnh viễn (AGENTS.md, quy tắc editor, một bản sao local của skill này), chạy `npx @pantoken/ai init` thay vào đó.
 
-## The token model
+## Mô hình token
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Tokens là CSS custom properties có tên `--instui-<group>-<name>`, ví dụ `--instui-color-background-brand` hoặc `--instui-spacing-space-md`. Ba theme được đóng gói: `rebrand` (mặc định, với `light-dark()` nơi light và dark khác nhau), `canvas`, và `canvasHighContrast`. Biểu tượng là các token `<image>` (`--instui-icon-<name>`) được suy ra từ Lucide cộng với các glyph tùy chỉnh của Instructure.
 
-## Style a web app
+## Tạo style cho ứng dụng web
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Cài stylesheet và import nó một lần. Nó định nghĩa mọi thuộc tính `--instui-*`, vì vậy bạn tham chiếu trực tiếp từ CSS của mình.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +45,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Sử dụng biểu tượng ở bất cứ đâu
 
-The web component works in any framework, with no porting.
+Web component hoạt động trong bất kỳ framework nào, không cần port.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### Tokens CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Biểu tượng là CSS custom properties (`--instui-icon-<name>`). Tải stylesheet một lần và tham chiếu bất kỳ biểu tượng nào như một `mask-image` hoặc `background-image` — không cần import theo từng biểu tượng.
 
 ```css
 .my-icon {
@@ -85,10 +71,9 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — một biểu tượng riêng lẻ vs. toàn bộ tập
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` xuất hai export có tên. Dùng `iconsByName` để kéo một biểu tượng mà không cần lặp toàn bộ mảng:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Dùng `icons` khi cần toàn bộ tập (ví dụ để xây một bộ chọn):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+Cả hai export đều load toàn bộ IR khi module khởi tạo — không có tree-shaking theo từng biểu tượng ở cấp này. Để tải nhẹ chỉ bằng CSS, dùng [CDN picker](/guide/cdn-picker) để tạo URL gộp chỉ cho những biểu tượng bạn cần.
 
-## Generate for a native platform
+## Sinh cho nền tảng native
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI ghi nguồn token vào repo đích. Không cần cài thêm ngoài runner:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Xem [the pantoken CLI](/guide/cli) cho mọi target.
 
-## VS Code authoring hints
+## Gợi ý soạn thảo VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` hiện đi kèm các file VS Code custom-data để các dự án downstream có thể nhận hoàn thành class và token trong HTML/CSS mà không cần cài extension đặc thù cho pantoken.
 
-1. Install the unified package:
+1. Cài gói hợp nhất:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Trỏ VS Code tới custom-data JSON được đóng gói từ workspace consumer của bạn:
 
 ```json
 {
@@ -140,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Reload VS Code (hoặc chạy "Developer: Reload Window") để áp dụng dữ liệu mới.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Điều này kích hoạt gợi ý cho các token lớp `instui-*` (và token lớp `-modifier`) cùng các custom properties `--instui-*`.
 
-## Where to next
+## Đi đâu tiếp theo
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [Bản đồ gói](/guide/packages) — nên dùng gói nào cho nhiệm vụ gì.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — cài tài sản và quy tắc agent vào repo consumer.
+- [Kiến trúc](/guide/architecture) — cách mô hình token, core, và outputs khớp với nhau.
+- [Tham chiếu API](/api/) — mọi symbol export, được sinh từ nguồn.

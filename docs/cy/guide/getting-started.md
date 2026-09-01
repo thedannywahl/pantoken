@@ -1,47 +1,46 @@
-# Getting started
+# Dechrau
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+Mae pantoken yn cymryd tokenau dylunio a eiconau Instructure UI, yn eu datrys unwaith, ac yn ailffurfio'r un
+model hwnnw i becynnau ar gyfer nifer o lwyfannau: taflenni arddull plaen, SCSS a Less, React a Vue a Svelte,
+Tailwind a Panda, Swift a Kotlin naturiol, WordPress a Drupal, Figma, ac eraill.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+Rydych yn gosod y pecyn lleiaf sy'n addas i'ch tasg. Mae popeth hefyd yn cael ei ail- allforio gan y
+`pantoken` undod, felly gallwch ddechrau yno ac yna culhau'n ddiweddarach.
 
-## Scaffold a starter project
+## Sgafell-prosiect dechrau
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+Y ffordd gyflymaf i roi cynnig ar pantoken: sgafell-prosiect dechrau gyda hi eisoes wedi'i gosod a'i diwreo.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+Lwyfannau: `components` (HTML/CSS plaen), `react`, `vue`, `svelte`, `web-components`, `angular`. Gweler
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) am `--dir <path>` a
+defnydd rhaglenol.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+Defnyddiwch asiant codu AI? Dim gosod angen — pwyntiwch ef at y sgil yn uniongyrchol:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+Gweithio yr un peth ar gyfer Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, a Amazon Q
+Developer CLI — newid `claude` i `gemini`, `agent`, `codex`, `copilot -p`, neu `q chat`. Os ydych yn well ffrwd rheolau asiant pantoken i'r repo'n barhaol (AGENTS.md, rheolau golygydd, copi lleol
+o'r sgil hwn), rhedwch `npx @pantoken/ai init` yn lle hynny.
 
-## The token model
+## Y model token
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+Mae tokenau yn eiddo personol CSS a enwir `--instui-<group>-<name>`, er enghraifft
+`--instui-color-background-brand` neu `--instui-spacing-space-md`. Mae tair thema yn dod: `rebrand`
+(y diofyn, gyda `light-dark()` lle mae golau a thywyll yn wahanol), `canvas`, a `canvasHighContrast`.
+Mae eiconau yn tokenau `<image>` (`--instui-icon-<name>`) a deillir o Lucide ynghyd â glyphs
+custom Instructure.
 
-## Style a web app
+## Arddullio ap gwe
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+Gosodwch y taflen arddull a'i mewnforio unwaith. Diffinnir pob eiddo `--instui-*`, felly rydych yn cyfeirio
+atyn nhw'n uniongyrchol o'ch CSS eich hun.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +57,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## Defnyddio eiconau unrhyw le
 
-The web component works in any framework, with no porting.
+Mae'r cydran gwe yn gweithio mewn unrhyw fframwaith, heb unrhyw borthi.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +73,10 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### Tokenau CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+Mae eiconau yn eiddo personol CSS (`--instui-icon-<name>`). Llwythwch y taflen arddull unwaith a chyfeiriwch at unrhyw
+eicon fel `mask-image` neu `background-image` — dim angen mewnforio ar gyfer pob eicon.
 
 ```css
 .my-icon {
@@ -85,10 +84,10 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### JavaScript — eicon sengl vs. set llawn
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+Mae `@pantoken/icons` yn datgelu dwy allbwn wedi'u henwi. Defnyddiwch `iconsByName` i dynnu un eicon heb ddidoli
+y rhestr gyfan:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +96,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+Defnyddiwch `icons` pan fydd angen y set gyfan (e.e. i adeiladu dewiswr):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +105,32 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+Mae'r ddau allbwn yn llwytho'r IR llawn wrth gychwyn y modiwl — nid oes tree-shaking ar gyfer pob eicon ar y
+haen hwn. Ar gyfer llwytho clymu a chlir sy'n seiliedig ar CSS yn unig, defnyddiwch y [dewiswr CDN](/guide/cdn-picker) i greu URL
+cyfuniad ar gyfer dim ond yr eiconau sydd eu hangen arnoch.
 
-## Generate for a native platform
+## Generadu ar gyfer llwyfan naturiol
 
-The CLI writes token source into a target repo. No install beyond the runner:
+Ysgrifennodd y CLI ffynhonnell token i repo targed. Dim gosod heblaw'r rhedegwr:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+Gweler [y pantoken CLI](/guide/cli) i gael pob targed.
 
-## VS Code authoring hints
+## Awgrymiadau awtomeiddio VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+Mae `@pantoken/pantoken` yn cael ffeiliau data-custome VS Code wedi'u rhoi yn awr fel y gall prosiectau defnyddiwr gael cwblhau dosbarth a
+token mewn HTML/CSS heb osod estyniad penodol pantoken.
 
-1. Install the unified package:
+1. Gosodwch y pecyn undod:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Pwyntiwch VS Code at y JSON data-custome a gyflwynwyd o'ch gweithle defnyddiwr:
 
 ```json
 {
@@ -140,14 +139,14 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. Ail-lwytho VS Code (neu redeg "Developer: Reload Window") i gymhwyso'r data newydd.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+Mae hyn yn galluogi awgrymiadau ar gyfer tokenau dosbarth `instui-*` (a tokenau dosbarth `-modifier`) yn ogystal â
+eiddo personol `--instui-*`.
 
-## Where to next
+## Ble i fynd nesaf
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [Map pecynnau](/guide/packages) — pa becyn i'w gyrraedd, yn ôl y dasg.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — gosod asedau asiant a rheolau mewn repo defnyddiwr.
+- [Pensaernïaeth](/guide/architecture) — sut mae'r model token, y craidd, a'r allbethau yn cyfateb.
+- [Cyfeirlyfr API](/api/) — pob symbol a allforir, a gynhyrchir o'r ffynhonell.

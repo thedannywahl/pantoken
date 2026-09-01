@@ -1,10 +1,8 @@
-# Architecture
+# アーキテクチャ
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken の仕事は一つ：Instructure のデザイントークンとアイコンを一度だけ解決し、そのモデルを各ターゲット向けに再形成すること。以下のレイヤーはその再形成を厳密に保ち、公開されるパッケージが GitHub 専用の上流に依存しないようにする。
 
-## The layers
+## レイヤー
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** は型契約のみを保持し、それ以外は何も持たない。これは `Token` の形状とプラグイン契約の真の出典であり、依存関係がゼロなので任意のパッケージが自由に依存できる。
+- **`@pantoken/core`** は上流ソースに唯一触れるパッケージである。トークンとアイコンを正規の IR に解決し、CSS をレンダリングする。
+- **`@pantoken/tokens`** はその IR をビルド時に静的な JSON として提供する。ここがデカップリングのポイントである：下流パッケージは `@pantoken/tokens` を読み、決して `@pantoken/core` を読まないので、`npm i pantoken` は GitHub 専用の上流に手を伸ばすことがない。
+- **`@pantoken/utils`** は共有ヘルパーを担う — `var(--x)` リゾルバ、参照用正規表現、ケースと色の変換、そして生成出力が IR に忠実であることを保つドリフトチェックなど。
 
-## Why tokens are vendored
+## なぜトークンをベンダリングするのか
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+上流のトークンパッケージは npm ではなく GitHub に存在する。もしすべての下流パッケージがそれに依存していたら、`npm i pantoken` はそのアクセス権を持たない誰にとっても失敗するだろう。代わりに `@pantoken/tokens` はビルド時に上流を一度だけ解決し、その結果を静的な JSON に書き出す。公開パッケージはその JSON を含むため、npm からクリーンにインストールでき、セムババージョンに固定され、オフラインでも動作する。
 
-## Buckets
+## バケット
 
-Each downstream bucket is a way of consuming the IR:
+各下流バケットは IR を消費するための方法である：
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — トークンをファイルに変換する（CSS、SCSS、Less、Stylus、DTCG）。
+- **renderers/** — フレームワークやツールとの統合（React、Vue、Svelte、MUI、Pendo など）。
+- **bundlers/** — ビルドツールのプラグインやプリセット（Vite、Next、Tailwind、Panda、PostCSS、webpack）。
+- **platforms/** — ネイティブおよびサイトジェネレータ向けターゲット（Swift、Kotlin、Rust、WordPress、Drupal）。
+- **design/** — デザイツール向けのペイロード（Figma、カラースウォッチ）。
+- **plugins/** — トークンや CSS 出力を拡張するオプショナルな変換。詳細は [Plugins](/guide/plugins) を参照。
 
-## Generated output
+## 生成された出力
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+ファイルを出力するすべてのパッケージは、ビルドで再現されるパッケージごとの `generated/` ディレクトリに書き出すため、生成されたものは何もコミットされない。ワークスペースのタスクがそれらすべてを検証する。詳しくは [Generated output](/guide/generated-output) を参照。

@@ -1,31 +1,25 @@
-# Components
+# רכיבים
 
-`@pantoken/components` ships class-based component styles built from the Instructure tokens. Import
-the stylesheet and tag your markup — no framework required.
+`@pantoken/components` שולח סגנונות רכיבים מבוססי-מחלקה הבנויים מתוך הטוקנים של Instructure. ייבא את גיליון-הסגנון ותיייג את הסימון שלך — אין צורך במסגרת עבודה.
 
 ```ts
 import "@pantoken/components/components.css";
 ```
 
 > [!NOTE]
-> Prefer custom elements? `@pantoken/web-components` wraps these same styles as `<instui-button>`,
-> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>`, and more — see the
-> [package map](/guide/packages).
+> מעדיפים אלמנטים מותאמים? `@pantoken/web-components` עוטף את אותם סגנונות כ־`<instui-button>`,
+> `<instui-alert>`, `<instui-badge>`, `<instui-avatar>`, `<instui-progress>` ועוד — ראה את
+> [מפת החבילות](/guide/packages).
 
-## Conventions
+## קונבנציות
 
-The CSS conventions in this package are based on a modified version of [RSCSS](https://ricostacruz.com/rscss/index.html).
+הקונבנציות של CSS בחבילה זו מבוססות על גרסה מותאמת של [RSCSS](https://ricostacruz.com/rscss/index.html).
 
-Modifiers are **key-value** — `-<prop>-<val>`, aligned to InstUI prop names — so they read for
-themselves: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. Boolean props are the prop
-name alone, where presence means `true` (`-has-shadow`, `-clickable`); a default-on boolean turned off
-inverts (`-without-background`, `-without-border`). Sizes accept both short and long spellings
-(`-size-sm` = `-size-small`). Where a name deviates from InstUI, the InstUI-semantic class still works
-but is deprecated (e.g. `-variant-info` → use `-color-info`).
+המודיפיירים הם **מפתח-ערך** — `-<prop>-<val>`, מיושרים לשמות הפרופס של InstUI — כך שהם קוראים בעצמם: `-color-secondary`, `-size-sm`, `-shape-circle`, `-icon-plus`. פרופסי בוליאן הם שם הפרופ בלבד, ונוכחותם מציינת `true` (`-has-shadow`, `-clickable`); בוליאן שמופעל כברירת מחדל וכבוֹתוּ מַהֲפֵךְ (`-without-background`, `-without-border`). גדלים מקבלים גם צִרְפִיּוּת קצרה וגם ארוכה (`-size-sm` = `-size-small`). כאשר שם סוטה מ‑InstUI, המחלקה לפי המשמעות של InstUI עדיין עובדת אך מיושנת (למשל `-variant-info` → השתמש ב־`-color-info`).
 
-### Example
+### דוגמה
 
-Instructure UI React component:
+רכיב React של Instructure UI:
 
 ```jsx
 <Alert variant="success" transition="fade" hasShadow renderCustomIcon={megaphone}>
@@ -33,7 +27,7 @@ Instructure UI React component:
 </Alert>
 ```
 
-pantoken components:
+רכיבי pantoken:
 
 ```html
 <!-- direct instui props -->
@@ -51,12 +45,7 @@ pantoken components:
 </div>
 ```
 
-For InstUI's `timeout` prop, set the unitless `--timeout` custom property in milliseconds and load
-the Alert interaction. A positive value schedules dismissal; `0` (the default) leaves the alert in
-place. Add the `transition` utility's `instui-transition -fade-entered` classes for InstUI's fade; omit
-them for immediate removal. The interaction drives the `-fade-exiting` state and fires a cancelable,
-bubbling `dismiss` event before removal, so an application can call `preventDefault()` to keep the
-alert mounted.
+עבור הפרופ `timeout` של InstUI, הגדר את תכונת ה‑CSS המותאמת ללא יחידות `--timeout` במילישניות וטעון את האינטראקציה של Alert. ערך חי מתזמן סגירה; `0` (ברירת המחדל) משאיר את האזהרה במקום. הוסף את המחלקות `instui-transition -fade-entered` של היוטיליטי `transition` עבור ה‑fade של InstUI; השמט אותן להסרה מיידית. האינטראקציה מניעה את מצב `-fade-exiting` ושולחת אירוע `dismiss` שניתן לביטול וזורם לפני ההסרה, כך שאפליקציה יכולה לקרוא `preventDefault()` כדי לשמור את האזהרה מותקנת.
 
 ```html
 <link
@@ -73,15 +62,12 @@ alert mounted.
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/alert.iife.js"></script>
 ```
 
-Progress bars accept arbitrary scales through `--min` (`0` by default), `--value`, and `--max`
-(`100` by default), with deprecated `--value-now` and `--value-max` aliases. Add `-should-animate`
-to apply InstUI's half-second transition whenever a value changes. `.value` sits alongside `.bar` as
-a child of the root; add `-render-value-inside` to render it over the track, aligned to its start,
-instead (style it for legibility against the meter colour). Use a native `<progress>` for a
-zero-based range and `<meter>` when the minimum is non-zero; the web components select between them
-automatically from their `min` attribute. InstUI has no indeterminate state, so a `<progress>`
-missing its `value` attribute is a pantoken-only best guess: `progress-bar` animates `.bar` as a
-sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding `.value`.
+ממשקי התקדמות מקבלים סולמות שרירותיים דרך `--min` (`0` כברירת מחדל), `--value`, ו־`--max`
+(`100` כברירת מחדל), עם כינויים מיושנים `--value-now` ו־`--value-max`. הוסף `-should-animate`
+כדי להחיל את הטרנזישן חצי השנייה של InstUI בכל פעם שערך משתנה. `.value` יושב לצד `.bar` בתור
+בן‑ילד של השורש; הוסף `-render-value-inside` כדי להציג אותו מעל הטרק, מיושר להתחלה שלו,
+במקום זאת (עצב אותו לקריאות מול צבע המטר). השתמש ב־`<progress>` מקורי לטווח שמתחיל באפס ו־`<meter>` כאשר המינימום אינו אפס; רכיבי הווב בוחרים ביניהם אוטומטית לפי התכונה `min`. ל‑InstUI אין מצב בלתי‑מוגדר, לכן `<progress>`
+שחסר את התכונה `value` הוא החלטת ברירת מחדל של pantoken: `progress-bar` מאנימט את `.bar` כקטע מחליק ו־`progress-circle` מסובב את הטבעת בקשת קבועה, כששניהם מסתירים `.value`.
 
 ```html
 <label>
@@ -97,11 +83,10 @@ sliding segment and `progress-circle` spins its ring at a fixed arc, both hiding
 </label>
 ```
 
-Progress circles accept the same arbitrary scales through `--min`, `--value`, and `--max`.
-`--value-now` and `--value-max` remain as deprecated functional aliases. Add `-should-animate` and
-load the focused interaction bundle to reproduce InstUI's mount animation; `--animation-delay` is a
-unitless millisecond delay. The deprecated `-should-animate-on-mount` and
-`-shold-animate-on-mount` spellings remain functional aliases.
+מעגלי התקדמות מקבלים את אותם סולמות שרירותיים דרך `--min`, `--value`, ו־`--max`.
+`--value-now` ו־`--value-max` נותרים ככינויים פונקציונליים מיושנים. הוסף `-should-animate` וטעון את חבילת האינטראקציות הממוקדת כדי לשחזר את אנימציית ההרכבה של InstUI; `--animation-delay` הוא
+השהיית מילישניות ללא יחידות. האיותים המיושנים `-should-animate-on-mount` ו‑
+`-shold-animate-on-mount` נשארים ככינויים פונקציונליים.
 
 ```html
 <label for="upload-progress">Uploading Document</label>
@@ -117,11 +102,9 @@ unitless millisecond delay. The deprecated `-should-animate-on-mount` and
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/progress-circle.iife.js"></script>
 ```
 
-## Class prefix
+## קידומת מחלקה
 
-Every class is namespaced `instui-` by default. Build a stylesheet with your own prefix — or none — by
-passing `prefix` to any builder. Any falsy value (`null`, `undefined`, `""`, or omitting it) drops the
-prefix entirely, so you can author `class="heading -level-h1"` instead of `class="instui-heading -level-h1"`:
+כל מחלקה מקוטלגת בברירת מחדל עם שמחה `instui-`. בנה גיליון‑סגנון עם קידומת משלך — או ללא — על‑ידי העברת `prefix` לכל בנאי. כל ערך falsey (`null`, `undefined`, `""`, או השמטתו) מסיר את הקידומת לחלוטין, כך שתוכל לכתוב `class="heading -level-h1"` במקום `class="instui-heading -level-h1"`:
 
 ```ts
 import { componentsCss } from "@pantoken/components";
@@ -130,62 +113,52 @@ componentsCss({ prefix: "ui" }); // .ui-button
 componentsCss({ prefix: null }); // .button, .alert — no prefix
 ```
 
-The dash-prefixed modifiers (`.-color-secondary`, `.-level-h1`) are unchanged either way. The
-stylesheets shipped by the package keep the `instui` prefix.
+המוסיפים המתחילים בקו־מקף (`.-color-secondary`, `.-level-h1`) נשארים ללא שינוי בכל מקרה. גיליונות‑הסגנון שנשלחים עם החבילה שומרים על הקידומת `instui`.
 
-## Base
+## בסיס
 
-`base.css` is an opt-in reset that sets global document defaults from the tokens: `box-sizing`, a
-`body` reset, the page surface, base text color and font, `color-scheme` (so `light-dark()` tokens
-and native controls track the theme), and a base link. Load it once, before the component and prose
-sheets, when pantoken owns the page.
+`base.css` הוא איפוס אופציונלי שמגדיר ברירות מחדל גלובליות במסמך מתוך הטוקנים: `box-sizing`, איפוס `body`, משטח הדף, צבע וטקסט בסיסי וגישת הגופן, `color-scheme` (כך שטוקנים `light-dark()` ושליטה מקומית עוקבים אחר הנושא), וקישור בסיסי. טען אותו פעם, לפני גיליונות הרכיבים והפרוזה, כאשר pantoken שולט על הדף.
 
 ```ts
 import "@pantoken/components/base.css";
 import "@pantoken/components/components.css";
 ```
 
-Skip it when you're embedding components into a host that already themes its own `html` and `body` —
-the reset paints the page surface, so you don't want it fighting the host. Everything it sets uses
-low-specificity `:where()` selectors, so your own rules always win.
+דלג עליו כשאתה משבץ רכיבים בתוך מארח שכבר מנושא את `html` ו־`body` שלו — האיפוס צובע את משטח הדף, כך שלא תרצה שהוא יתנגש עם המארח. כל מה שהוא מגדיר משתמש בבחירות ספציפיות־נמוכות `:where()`, כך שהחוקים שלך תמיד גוברים.
 
-`base.css` _applies_ the brand font (`font-family: var(--instui-font-family-base)`, with system
-fallbacks); to _load_ it, import the opt-in `fonts.css` — `@font-face` rules for Atkinson Hyperlegible
-Next, pointing at the woff2s shipped in the package. It's separate because the faces are ~350 kB and
-self-hosting fonts is a deliberate choice.
+`base.css` מְיַשֵּׂם את גופן המותג (`font-family: var(--instui-font-family-base)`, עם גיבויי מערכת);
+כדי לטעון אותו, ייבא את `fonts.css` האופציונלי — כללי `@font-face` ל־Atkinson Hyperlegible
+Next, המצביעים על ה‑woff2s שנשלחו בחבילה. הוא נפרד כי הגופנים הם ~350 kB
+ואירוח עצמי של גופנים הוא בחירה מכוונת.
 
 ```ts
 import "@pantoken/components/base.css"; // applies the font (falls back to system without fonts.css)
 import "@pantoken/components/fonts.css"; // loads the Atkinson Hyperlegible Next woff2s
 ```
 
-## Screen reader content
+## תוכן לקורא מסכים (screen reader)
 
-<p>There's a hidden message after this sentence.<span class="instui-screen-reader-content">Only screen readers announce this.</span></p>
+<p>יש הודעה מוסתרת אחרי המשפט הזה.<span class="instui-screen-reader-content">רק קוראי מסכים מודיעים על זה.</span></p>
 
 ```html
 <span class="instui-screen-reader-content">Only screen readers announce this.</span>
 ```
 
-`.instui-screen-reader-content` hides an element visually while keeping it in the accessibility tree
-— for labels and status text that assistive tech should read but the design shouldn't show.
+`.instui-screen-reader-content` מסתיר אלמנט חזותית בעוד משאיר אותו בעץ הנגישות — עבור תוויות וטקסט סטטוס שתוכנות מסייעות צריכות לקרוא אך העיצוב לא צריך להציג.
 
-## Utilities
+## יוטיליטים
 
-`utilities.css` is an opt-in layer of cross-cutting classes: a `View` primitive, spacing on the token
-scale, and semantic color overrides. Unlike the component `-modifier` classes, these use a **double
-dash** (`--mod`) so they never collide with a component's own modifier names, and they apply to any
-element — bare, or composed onto a component.
+`utilities.css` הוא שכבה אופציונלית של מחלקות חוצות־חומרה: פרימיטיב `View`, ריווח על סקאלת הטוקנים, והחלפות צבע סמנטיות. בניגוד למחלקות `-modifier` של הרכיבים, אלו משתמשות ב**קו־מקף כפול** (`--mod`) כדי שלא יתנגשו לעולם עם שמות המודיפייר של רכיב, והן חלות על כל אלמנט — יחיד, או מורכב על רכיב.
 
 ```ts
 import "@pantoken/components/utilities.css";
 ```
 
 <div class="instui-view --bg-accent-blue --text-on-color --p-md --mb-sm" style="border-radius: 6px;">
-  <span class="instui-text --text-on-color">Accent-blue surface with on-color text.</span>
+  <span class="instui-text --text-on-color">משטח בצבע accent-blue עם טקסט על‑הצבע.</span>
 </div>
 <div class="instui-view --bg-muted --p-sm --mx-auto" style="max-width: 12rem; border-radius: 6px; text-align: center;">
-  <span class="instui-text">Centered with mx-auto.</span>
+  <span class="instui-text">מוקד עם mx-auto.</span>
 </div>
 
 ```html
@@ -193,35 +166,28 @@ import "@pantoken/components/utilities.css";
 <div class="instui-view --bg-muted --p-sm --mx-auto">…</div>
 ```
 
-**View** — `.instui-view` is InstUI's `View`. It's the base you layer spacing and color onto, and it
-carries key-value modifiers for its own visual props so you don't have to reach for utilities:
-`-background-*` (its surfaces), `-border-radius-{small,medium,large,circle,pill}`,
+**View** — `.instui-view` הוא ה־`View` של InstUI. זה הבסיס שעליו את/ה מקימה ריווח וצבע, והוא
+נושא מודיפיירים מפתח‑ערך לפרופסי הוויזואלי שלו כך שלא תצטרך להשתמש ביוטיליטים:
+`-background-*` (המשטחים שלו), `-border-radius-{small,medium,large,circle,pill}`,
 `-border-width-{small,medium,large}` + `-border-color-*`, `-shadow-{resting,above,topmost}`,
-`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, and `-cursor-*` — these are `view`'s own
-single-dash modifiers, unrelated to the double-dash utilities below. Free-value props
-(width/height/inset) stay inline styles; `margin`/`padding` use the spacing utilities.
+`-display-*`, `-position-*`, `-overflow-x-*`/`-overflow-y-*`, ו־`-cursor-*` — אלה המודיפיירים של `view` עם מקף יחיד, שאינם קשורים ליוטיליטי הקו‑מקף‑הכפול למטה. פרופסי ערך‑חופשי
+(width/height/inset) נשארים בסגנונות inline; `margin`/`padding` משתמשים ביוטיליטי הריווח.
 
-**Spacing** — per-side classes on the spacing scale. Read them as `{m|p}{side}-{step}`: `m` for
-margin or `p` for padding (or the full words `margin`/`padding`), an optional logical side, then a
-step. So `.--m-lg` and `.--margin-lg` are the same, as are `.--pt-md` and `.--paddingt-md`.
+**ריווח (Spacing)** — מחלקות לפרצוות על סקאלת הריווח. קרא להן כ־`{m|p}{side}-{step}`: `m` עבור
+מרג'ין או `p` עבור פדינג (או המילים המלאות `margin`/`padding`), צד לוגי אופציונלי, ואז שלב. לכן `.--m-lg` ו־`.--margin-lg` זהים, וכמו `.--pt-md` ו־`.--paddingt-md`.
 
-- Sides: none (all), `t`/`b` (block start/end), `s`/`e` (inline start/end), `x`/`y` (inline/block
-  axis). Logical sides stay correct in right-to-left layouts.
-- Steps: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, plus `auto` for margin only.
+- צדדים: none (הכול), `t`/`b` (התחלת/סיום בלוק), `s`/`e` (התחלת/סיום אינליין), `x`/`y` (ציר אינליין/בלוק). הצדדים הלוגיים נשארים נכונים בפריסות ימין‑לשמאל.
+- שלבים: `0`, `2xs`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, ועוד `auto` עבור מרג'ין בלבד.
 
-Compose them for InstUI's `margin="small auto large"` shorthand:
+רכיב אותן עבור קיצור הדרך `margin="small auto large"` של InstUI:
 `class="--mt-sm --mx-auto --mb-lg"`.
 
-**Color** — semantic overrides that stay on-palette: `.--bg-<name>` (background),
-`.--text-<name>` (text color), and `.--border-<name>` (border color). Each `<name>` is a
-semantic color token — the intents (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
-`inverse`, `on-color`, `strong`, …) plus the `accent-*` palette (`accent-blue`, `accent-green`, and so
-on). A name is only there if the token exists in that family, so `text-brand` isn't a class — text has
-no brand token. There's no way to reach a primitive or an arbitrary hex, and every override follows
-the theme.
+**צבע** — החלפות סמנטיות שנשארות על‑פלטת הצבעים: `.--bg-<name>` (רקע),
+`.--text-<name>` (צבע טקסט), ו־`.--border-<name>` (צבע גבול). כל `<name>` הוא
+טוקן צבע סמנטי — הכוונות (`base`, `brand`, `muted`, `success`, `warning`, `error`, `info`,
+`inverse`, `on-color`, `strong`, …) בתוספת פלטת `accent-*` (`accent-blue`, `accent-green`, וכן הלאה). שם קיים רק אם הטוקן קיים במשפחה ההיא, לכן `text-brand` אינה מחלקה — לטקסט אין טוקן מותג. אין דרך להגיע לפרימיטיב או להקס שרירותי, וכל החלפה עוקבת אחר הנושא.
 
-**Token families** — every "one token, one property" family gets a class per token, named after the
-token. Compose them freely:
+**משפחות טוקנים** — לכל משפחה של "טוקן אחד, נכס אחד" יש מחלקה לכל טוקן, בשם הטוקן. הרכב אותן חופשי:
 
 - `.--font-family-heading`, `.--font-family-code`, … → `font-family`
 - `.--font-weight-body-strong`, `.--font-weight-interactive`, … → `font-weight`
@@ -229,33 +195,25 @@ token. Compose them freely:
 - `.--border-radius-md`, `.--border-radius-full`, … → `border-radius`
 - `.--border-width-sm`/`-md`/`-lg` → `border-width`
 - `.--opacity-base`, `.--opacity-disabled` → `opacity`
-- `.--elevation-resting`/`-above`/`-topmost` (and `-depth1`…`-card`) → `box-shadow`
+- `.--elevation-resting`/`-above`/`-topmost` (ו‑`-depth1`…`-card`) → `box-shadow`
 
-Each sets only its one property, so `border-width`/`border-radius` need a `border-*` color and a border
-style to actually draw a border. These use the full token name (`.--border-radius-md`), while the
-color and spacing helpers above use short aliases (`.--bg-brand`, `.--mt-lg`) — the aliases
-are ergonomic shortcuts; the token classes are literal and exhaustive.
+כל אחת מגדירה רק את הנכס שלה, כך ש־`border-width`/`border-radius` צריכים צבע `border-*` וסגנון גבול כדי לצייר גבול בפועל. אלה משתמשים בשם הטוקן המלא (`.--border-radius-md`), בעוד העוזרים לצבע ולריווח למעלה משתמשים בכינויים קצרים (`.--bg-brand`, `.--mt-lg`) — הכינויים הם קיצורי נוחות; מחלקות הטוקן הן מילוליות וממצוינות.
 
-**Layout** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
-`none`) and `.--text-align-<value>` (`start`, `center`, `end`, `justify`) cover InstUI's
-cross-cutting `display` and `textAlign` props (View, Button, Metric, Tabs, …) as composable classes —
-so those aren't per-component modifiers.
+**פריסה (Layout)** — `.--display-<value>` (`block`, `inline-block`, `inline`, `flex`, `inline-flex`,
+`none`) ו־`.--text-align-<value>` (`start`, `center`, `end`, `justify`) מכסים את
+הפרופסים החוצי־חומרה של InstUI `display` ו־`textAlign` (View, Button, Metric, Tabs, …) ככיתות קומפוזיציה —
+כך שאלו אינם מודיפיירים per‑component.
 
-Every double-dash class wins the cascade deterministically over a same-named single-dash component
-modifier, regardless of stylesheet import order — see [Authoring conventions](/conventions/authoring)
-for the mechanism.
+כל מחלקת הקו‑מקף‑הכפול גוברת בקסקדה באופן דטרמיניסטי על מודיפייר של רכיב עם אותו השם ומקף יחיד, ללא תלות בסדר ייבוא גיליונות‑הסגנון — ראה [קונבנציות כתיבה](/conventions/authoring) למנגנון.
 
-Everything here is pure CSS driven by the `--instui-*` tokens, so it tracks InstUI through the token
-layer. See the [API reference](/api/) for `componentsCss` and the per-component builders.
+הכול כאן מונע מ‑CSS טהור על‑ידי הטוקנים `--instui-*`, כך שהוא עוקב אחרי InstUI דרך שכבת הטוקנים. ראה את [מכוון ה‑API](/api/) עבור `componentsCss` ובוני הרכיבים לפי‑רכיב.
 
-## Overlays: dialog and popover
+## שכבות עליונות: דיאלוג ופופובר
 
-The overlay components ride native platform primitives, so they behave accessibly with little or no
-JavaScript.
+רכיבי השכבה העליונה משתמשים בפרימיטיבים מקומיים של הפלטפורמה, כך שהם מתנהגים נגיש עם מעט או בלי JavaScript.
 
-**Modal** — put `.instui-modal` on a native `<dialog>`. It gets focus trapping, `Esc`-to-close, and a
-`::backdrop` for free; the backdrop is dimmed with the same `--instui-component-mask-background-color`
-token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoker commands — no script:
+**Modal** — שים `.instui-modal` על `<dialog>` מקורי. הוא מקבל לכידת פוקוס, סגירה ב־`Esc`, ו־`::backdrop` בחינם; הרקע מורדם עם אותו טוקן `--instui-component-mask-background-color`
+כמו `.instui-mask` (הוסף `-blur` כדי לקרר אותו). פתח וסגור עם פקודות Invoker — בלי סקריפט:
 
 ```html
 <button class="instui-button" command="show-modal" commandfor="dlg">Open</button>
@@ -268,21 +226,19 @@ token as `.instui-mask` (add `-blur` to frost it). Open and close it with invoke
 </dialog>
 ```
 
-**Context view / popover** — put `.instui-context-view` on a `[popover]` element and toggle it with
-`popovertarget`. It rides the top layer and light-dismisses on outside-click or `Esc`, again no script:
+**Context view / popover** — שים `.instui-context-view` על אלמנט `[popover]` ו断toggle אותו עם
+`popovertarget`. הוא רוכב על השכבה העליונה ומתבטל בלחיצה מחוץ או ב־`Esc`, שוב ללא סקריפט:
 
 ```html
 <button class="instui-button" popovertarget="cv">Details</button>
 <div id="cv" popover class="instui-context-view">…</div>
 ```
 
-**Drawer layout** — put `.instui-drawer-layout` on a layout root with `.tray` and `.content`
-children. Add the `open` attribute (or `-open`) to reveal the tray, and use `placement="end"`
-(or `-placement-end`) to dock it to the inline-end side — placement resolves through logical
-`inset-inline-*`/`flex-direction` properties, so it flips automatically under `dir="rtl"` with no
-extra rules. The focused interaction bundle adds Invoker command routing and toggles overlay mode
-(`should-overlay-tray`) when width crosses `--drawer-layout-min-width` (default
-`--instui-breakpoints-sm`, then `30rem`):
+**פריסת Drawer** — שים `.instui-drawer-layout` על שורש פריסה עם `.tray` ו־`.content`
+בנים. הוסף את התכונה `open` (או `-open`) כדי לגלות את המגש, והשתמש ב־`placement="end"`
+(או `-placement-end`) כדי לעגן אותו לצד הסיום האינליין — המיקום נפתר דרך תכונות לוגיות `inset-inline-*`/`flex-direction`, כך שהוא מתהפך אוטומטית תחת `dir="rtl"` ללא כל חוקים נוספים. חבילת האינטראקציה הממוקדת מוסיפה ניתוב פקודות Invoker ומחליפה את מצב השכבה העליונה
+(`should-overlay-tray`) כאשר הרוחב חוצה את `--drawer-layout-min-width` (ברירת מחדל
+`--instui-breakpoints-sm`, ואז `30rem`):
 
 ```html
 <button class="instui-button" command="--toggle" commandfor="drawer">Toggle panel</button>
@@ -293,23 +249,17 @@ extra rules. The focused interaction bundle adds Invoker command routing and tog
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/interactions/dist/drawer-layout.iife.js"></script>
 ```
 
-**Mask** — `.instui-mask` stays for in-flow overlays (a spinner over a card); a modal's `::backdrop`
-covers the modal case.
+**Mask** — `.instui-mask` נשאר למשטחי שכבות בזרם (spinner מעל כרטיס); `::backdrop` של מודל מכסה את המקרה של המודאל.
 
-Both patterns are also wrapped as behavioral custom elements in `@pantoken/web-components`:
-`<instui-modal open>` (a `<dialog>` driven by its `open` attribute) and `<instui-context-view>` (a
-native popover).
+שני התבניות גם עטופות כאלמנטים מותנהי‑התנהגות ב־`@pantoken/web-components`:
+`<instui-modal open>` (_`<dialog>`_ מונחה על‑ידי התכונה `open`) ו־`<instui-context-view>` (popover מקורי).
 
-Browser support: the popover API and `popovertarget` are Baseline 2024; invoker commands
-(`command`/`commandfor`) are Baseline 2025, so on older browsers wire the buttons to `dialog.showModal()`
-as a one-line fallback. Positioning a popover next to its trigger uses CSS anchor positioning where
-supported (Chromium); elsewhere it centers in the top layer.
+תמיכת דפדפנים: API של popover ו־`popovertarget` הם Baseline 2024; פקודות Invoker
+(`command`/`commandfor`) הן Baseline 2025, לכן בדפדפנים ישנים יותר חבר/י את הכפתורים ל־`dialog.showModal()` כפתרון ברירת מחדל בשורה אחת. מיקום פופובר לצד הטריגר שלו משתמש במיקום עוגן של CSS כשהוא נתמך (Chromium); במקום אחר הוא מתרכז בשכבה העליונה.
 
-## Forms
+## טפסים
 
-**FormField** — `.instui-form-field` is a CSS-Grid wrapper laying out a label, the control, and any
-messages. Put it on a `<label>` so the label associates with its control natively. It has three grid
-areas — `label`, `controls`, `messages`:
+**FormField** — `.instui-form-field` הוא עטיפה ב‑CSS‑Grid שמסדרת תווית, הבקרה, וכל ההודעות. שים אותו על `<label>` כך שהתווית תשתייך לבקרה באופן מקורי. יש לו שלוש אזורי גריד — `label`, `controls`, `messages`:
 
 ```html
 <label class="instui-form-field">
@@ -321,25 +271,21 @@ areas — `label`, `controls`, `messages`:
 </label>
 ```
 
-`-layout-stacked` (default) stacks the areas; `-layout-inline` puts the label beside the control (tune
-with `-label-align-{start,end}` and `-v-align-{top,middle,bottom}`). `-readonly` recolors the label.
+`-layout-stacked` (ברירת מחדל) מונח את האזורים זה על גבי זה; `-layout-inline` מציב את התווית לצד הבקרה (כוון עם `-label-align-{start,end}` ו־`-v-align-{top,middle,bottom}`). `-readonly` משנה את צבע התווית.
 
-The **required asterisk** appears when the field is required by _either_ the `-required` class _or_ a
-native `required` control inside it — so you can just set `required` on the input and the mark shows.
-It's decorative (a `::after` on the label, out of the accessibility tree); pair it with a note like
-"fields marked \* are required" unless the form is self-evident.
+ה"אסטריסק הנדרש" מופיע כאשר השדה נדרש על‑ידי _אחת_ מהמחלקות `-required` _או_ בקרה מקומית `required` בתוכו — כך שאפשר פשוט להגדיר `required` על הקלט והסימון יופיע.
+הוא קישוטי (אלמנט `::after` על התווית, מחוץ לעץ הנגישות); צמד אותו עם הערה כמו
+"שדות המסומנים ב־\* הם חובה" אלא אם הטופס מובן מאליו.
 
-**FormFieldGroup** — `.instui-form-field-group` groups related fields in a `<fieldset>` with a
-`<legend>` description. It's pure layout (no dedicated tokens): default stacks the fields;
-`-layout-columns` / `-layout-inline` flow them into responsive columns, with `-row-spacing-*` /
-`-col-spacing-*` and `-v-align-*` to tune the grid.
+**FormFieldGroup** — `.instui-form-field-group` מקבץ שדות קשורים בתוך `<fieldset>` עם תאור `<legend>`. זה פריסה טהורה (ללא טוקנים מיוחדים): ברירת המחדל מונחת את השדות; `-layout-columns` / `-layout-inline` מזרימות אותם לעמודות רספונסיביות, עם `-row-spacing-*` /
+`-col-spacing-*` ו־`-v-align-*` לכוונון הגריד.
 
-**RadioInputGroup** — `.instui-radio-input-group` is the same `<fieldset>`/`<legend>` grouping,
-specialized for radios. Because the child radios share a `name`, selection is natively single-choice —
-so a set of toggle buttons behaves as one control, not loose buttons. `-variant-simple` (default) lays
-out standard radios (`-layout-columns`/`-inline` flow them into a row); `-variant-toggle` connects the
-child `.instui-radio.-variant-toggle` buttons into a single segmented control (collapsed borders,
-rounded outer ends):
+**RadioInputGroup** — `.instui-radio-input-group` הוא אותו `<fieldset>`/`<legend>` קיבוץ,
+מוגדר לרדיו. מאחר שהרדיו‑בנים משתפים `name`, הבחירה היא מקומית חד‑ברירתית —
+כך שקבוצת כפתורי toggle מתנהגת כבקר אחד, לא ככפתורים חופשיים. `-variant-simple` (ברירת מחדל) מסדרת
+רדיו סטנדרטיים (`-layout-columns`/`-inline` זורמים אותם לשורה); `-variant-toggle` מחבר את
+כפתורי `.instui-radio.-variant-toggle` של הילדים לבקר מסוגר יחיד (גבולות מצורפות,
+קצוות חיצוניים מעוגלים):
 
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
@@ -352,39 +298,28 @@ rounded outer ends):
 </fieldset>
 ```
 
-**Messages** — `.instui-form-field-messages` is the container; each `.instui-form-field-message` takes a
-`-type-*`: `-type-hint` (gray, default), `-type-error` (red text + a circle-alert glyph), `-type-success`
-(green text + a circle-check glyph), and `-type-screenreader-only` (visually clipped, still announced).
-The glyphs paint in `currentColor`, so they always match the message color. `-type-new-error` is a
-deprecated alias of `-type-error`. Wire the container to the control with `aria-describedby`, and set
-`aria-invalid` on the control when there's an error.
+**הודעות (Messages)** — `.instui-form-field-messages` הוא המכולה; כל `.instui-form-field-message` מקבל
+`-type-*`: `-type-hint` (אפור, ברירת מחדל), `-type-error` (טקסט אדום + גלריית אזהרה מעגלית), `-type-success`
+(טקסט ירוק + גלריית אישור מעגלית), ו־`-type-screenreader-only` (מוצנע ויזואלית, עדיין מוקרא). הגליפים צובעים ב־`currentColor`, כך שהם תמיד תואמים לצבע ההודעה. `-type-new-error` הוא כינוי מיושן של `-type-error`. חבר את המכולה לבקרה באמצעות `aria-describedby`, והגדר
+`aria-invalid` על הבקרה כאשר יש שגיאה.
 
-Inside a FormField, an `-type-error` message follows client-side validation: it stays hidden until the
-field's control is `:user-invalid` (native, after the user interacts) — or you force it with `-invalid`
-on the `.instui-form-field` (for a server-side error). A standalone `.instui-form-field-messages` (not in
-a field) is unaffected. The control's focus ring follows suit: danger when `:user-invalid`/`-invalid`,
-success on `-success`.
+בתוך FormField, הודעת `-type-error` עוקבת ולידציה בצד הלקוח: היא נשארת מוסתרת עד שהבקרה של השדה היא `:user-invalid` (מקומי, אחרי שהמשתמש יצר אינטראקציה) — או שתכפה אותה עם `-invalid` על `.instui-form-field` (לשגיאה מצד השרת). `.instui-form-field-messages` עצמאי (לא בתוך שדה) אינו מושפע. טבעת הפוקוס של הבקרה פועלת בהתאם: סכנה כאשר `:user-invalid`/`-invalid`,
+הצלחה על `-success`.
 
-**Text controls** — `.instui-text-input` (native `<input>`), `.instui-text-area` (native `<textarea>`,
-resizable), and `.instui-simple-select` (native `<select>` with a caret) share one look and the same
-states: `-invalid` (error border), `-success` (success border), `-readonly`, native `:disabled`, and
-`-size-{sm,md,lg}`. For a leading/trailing icon (InstUI's `renderBeforeInput`/`renderAfterInput`), wrap
-the input in `.instui-input-group` and add a `.before`/`.after` slot (an `-icon-*` glyph); `-should-not-wrap`
-keeps it on one line. `.instui-number-input` is that facade plus a `.arrows` +/- spinner column (native
-`type="number"`; wire the buttons to `stepUp()`/`stepDown()`). `.instui-range-input` is a styled
-`input[type="range"]` whose value renders in a `.instui-range-input-value` inverse bubble. For a rich
-combobox with a listbox popover, reach for `@instructure/ui` — this library covers the native controls.
+**בקרי טקסט (Text controls)** — `.instui-text-input` (_`<input>`_ מקורי), `.instui-text-area` (_`<textarea>`_ מקורי,
+ניתן לשינוי גודל), ו־`.instui-simple-select` (_`<select>`_ מקורי עם קרט) חולקים מראה אחד ואת אותן
+מצבים: `-invalid` (גבול שגיאה), `-success` (גבול הצלחה), `-readonly`, `:disabled` מקורי, ו־
+`-size-{sm,md,lg}`. עבור אייקון מוביל/סופי (`renderBeforeInput`/`renderAfterInput` של InstUI), עוטף
+את הקלט ב־`.instui-input-group` והוסף סְלוֹט `.before`/`.after` (גליף `-icon-*`); `-should-not-wrap`
+שומר את הכול על שורה אחת. `.instui-number-input` הוא אותו חזות פלוס עמודת ספינר +/- `.arrows` (_`type="number"`_ מקורי; חבר את הכפתורים ל־`stepUp()`/`stepDown()`). `.instui-range-input` הוא
+_`input[type="range"]`_ מעוצב שערכו מוצג ב־`.instui-range-input-value` בועה הפוכה. עבור קומבובוקס עשיר עם popover של listbox, השתמש ב־`@instructure/ui` — ספריה זו מכסה את הבקרים המקוריים.
 
-**Styled select dropdown (experimental)** — an opt-in `select.css` upgrades the _same_
-`.instui-simple-select` element: it styles the open dropdown (the panel and each option, with hover and
-selected states) using the CSS Customizable Select model.
+**בחר מעוצב (ניסיוני)** — `select.css` אופציונלי משדרג את אותו
+אלמנט `.instui-simple-select`: הוא מעצב את התפריט הפתוח (הלוח וכל אופציה, עם מצבי hover ונבחר) באמצעות מודל ה‑CSS Customizable Select.
 
 > [!WARNING]
-> `select.css` relies on `appearance: base-select` / `::picker(select)`, which is **experimental**
-> (Chrome 135+, not yet Baseline). It's shipped as a separate opt-in sheet and every rule is gated
-> behind `@supports (appearance: base-select)`, so it does nothing in unsupported browsers — the
-> `.instui-simple-select` control just stays the plain native select. Load it only if you want the
-> enhanced dropdown and accept the limited support.
+> `select.css` מסתמך על `appearance: base-select` / `::picker(select)`, שזו תכונה **ניסיונית**
+> (Chrome 135+, עדיין לא Baseline). היא נשלחת כגליון נפרד אופציונלי וכל כלל נתג לבד מאחורי `@supports (appearance: base-select)`, כך שבדפדפנים שלא תומכים היא לא עושה כלום — בקרת `.instui-simple-select` פשוט נשארת ה‑select המובנה הפשוט. טען אותה רק אם אתה רוצה את התפריט המשופר וקולט את התמיכה המוגבלת.
 
 ```ts
 import "@pantoken/components/components.css";

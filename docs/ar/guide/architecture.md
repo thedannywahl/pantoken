@@ -1,10 +1,8 @@
-# Architecture
+# البنية المعمارية
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken لها مهمة واحدة: حل رموز التصميم (design tokens) والأيقونات الخاصة بـ Instructure مرة واحدة، ثم إعادة تشكيل ذلك النموذج لكل هدف. الطبقات أدناه تحافظ على نزاهة عملية إعادة التشكيل وتضمن أن الحزم المنشورة خالية من أي تبعيات خاصة بـ GitHub.
 
-## The layers
+## الطبقات
 
 ```mermaid
 flowchart TD
@@ -26,37 +24,26 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** يحتوي على عقود الأنواع، ولا شيء غيرها. هو مصدر الحقيقة لشكل `Token` وعقدة الإضافة (plugin)، بدون أي تبعيات، بحيث يمكن لأي حزمة الاعتماد عليه بحرية.
+- **`@pantoken/core`** هي الحزمة الوحيدة التي تتعامل مع المصدر الصاعد upstream. تقوم بحل الرموز والأيقونات إلى IR القانوني canonical IR وتولد CSS.
+- **`@pantoken/tokens`** توفر ذلك الـ IR كـ JSON ثابت في وقت البناء. هذه هي نقطة فصل الارتباط: الحزم المتتابعة تقرأ `@pantoken/tokens`، لا `@pantoken/core`، لذا `npm i pantoken` لا تصل أبداً إلى المصدر الصاعد الخاص بـ GitHub.
+- **`@pantoken/utils`** تحمل المساعدات المشتركة — محلل `var(--x)`، تعابير المنتظم للمرجع، تحويل الحالة والألوان، وفحوصات الإنحراف (drift) التي تحافظ على إخراج المولد مطابقاً للـ IR.
 
-## Why tokens are vendored
+## لماذا تُوزّن الرموز
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+حزمة الرموز الصاعدة upstream مستضافة على GitHub، وليست على npm. لو اعتمدت كل الحزم المتتابعة عليها، فـ `npm i pantoken` سيفشل لأي شخص بدون تلك الصلاحية. بدلاً من ذلك `@pantoken/tokens` تحل المصدر الصاعد مرة واحدة في وقت البناء وتكتب النتيجة إلى JSON ثابت. الحزم المنشورة تحمل ذلك الـ JSON، لذا تُثبَّت بسهولة من npm، تُقفل على semver، وتعمل دون اتصال.
 
-## Buckets
+## الدلاء (Buckets)
 
-Each downstream bucket is a way of consuming the IR:
+كل دلاء متتابعة هي وسيلة لاستهلاك الـ IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — تحويل الرموز إلى ملف (CSS، SCSS، Less، Stylus، DTCG).
+- **renderers/** — تكاملات الإطار والأدوات (React، Vue، Svelte، MUI، Pendo، والمزيد).
+- **bundlers/** — ملحقات وإعدادات أدوات البناء (Vite، Next، Tailwind، Panda، PostCSS، webpack).
+- **platforms/** — أهداف أصلية ومنشئي مواقع (Swift، Kotlin، Rust، WordPress، Drupal).
+- **design/** — حمولات لأدوات التصميم (Figma، عينات الألوان).
+- **plugins/** — تحويلات اختيارية توسع مخرجات الرموز أو CSS. انظر [الإضافات](/guide/plugins).
 
-## Generated output
+## الإخراج المولد
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
-[Generated output](/guide/generated-output).
+كل حزمة تُصدر ملفاً تكتبه إلى دليل `generated/` خاص بالحزمة يتم إعادة إنتاجه أثناء البناء، لذا لا يتم الالتزام بأي شيء مولَّد. مهمة مساحة العمل تتحقق من كل ذلك. انظر [الإخراج المولد](/guide/generated-output).

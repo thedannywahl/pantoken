@@ -1,53 +1,38 @@
-# CDN & distribution
+# CDN 与分发
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken 将每个包发布到 npm，因此可以直接从 CDN 获取令牌、组件和 Web 组件——无需构建步骤，也无需打包器。本页涵盖 CSS 合并 URL（带交互式构建器）以及 Web 组件的即插即用说明。
 
-## The token foundation
+## 令牌基础
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+每个 pantoken 组件都会从页面上的令牌表读取 `--instui-*` 自定义属性。提供两种变体：
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
-  `var(--instui-icon-*)`.
+- `@pantoken/css/dist/style.lean.css` — 推荐的 CDN 基础。它包含除完整图标集以外的所有令牌，压缩后大约 23 KB。
+- `@pantoken/css/dist/style.css` — 完整表，包含所有约 1,777 个图标字形令牌（`--instui-icon-*`）。压缩后约 140 KB。如果通过 `var(--instui-icon-*)` 广泛引用图标，请加载此表。
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+高程刻度（elevation scale）和焦点环（focus-ring）变量在两个表中都有，所以只加载基础表即可使阴影和焦点环正常工作。
 
-## Pick your components and icons
+## 选择组件与图标
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+[交互式 CDN 选择器](/guide/cdn-picker) 为 CSS 构建 jsDelivr 合并 URL 并生成 JavaScript 包片段。打开它，勾选所需项，然后复制生成的输出。
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Components 选项卡** — 选择单个组件样式表或整个 `components.css` 档案。若需要，可添加基础重置或间距/颜色工具类。
+- **JS 选项卡** — 复制用于 `@pantoken/interactions` 的 ESM 导入片段。
+- **Icons 选项卡** — 从 InstUI 集（约 1,800 个图标）或 Simple Icons（约 3,300 个品牌字形）中选择单个图标。选择器会为图标 CSS 文件输出单独的合并 URL，以便仅加载实际使用的图标。
+- **Web Components 选项卡** — 构建 `@pantoken/web-components` 片段（ESM 选择性注册或经典脚本引导）。
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+每个组件文件都很小——大多数约 2 KB。渲染图标的组件（`alert`、`checkbox` 以及其他几个）需要这些字形，因此当选择精简表时，构建器会添加 `@pantoken/components/dist/component-icons.css`（压缩后约 0.5 KB——该组件集使用的 11 个图标），完整表则已包含它们。
 
-### Load order and fonts
+### 加载顺序与字体
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+先加载令牌基础，然后是可选的基础重置，再加载组件文件，最后加载工具类——它们是覆盖性工具，只有在层叠中位于组件规则之后时才会实际覆盖组件自身的规则。上面的合并 URL 已为你按顺序排列。字体是唯一的例外：`@pantoken/components/dist/fonts.css` 通过相对路径指向字体文件，因此合并无法重写它们——将其作为单独的 `<link>` 加载：
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### 一次性全部加载
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+在选择器中勾选 **All components** 可将其切换为档案，或直接指向该档案（压缩后约 141 KB），与令牌表一起使用：
 
 ```html
 <link
@@ -56,14 +41,13 @@ gzipped) alongside the token sheet:
 />
 ```
 
-## Web components
+## Web 组件
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` 注册与框架无关的 `<instui-*>` 自定义元素。它们内联自己的 CSS，但仍从页面上的表读取令牌，因此也要加载一个令牌基础表。
 
-### ES modules (recommended)
+### ES 模块（推荐）
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+ESM CDN 会为你解析包的依赖关系。下面的示例会注册所有元素：
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +56,9 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+使用完整令牌表（或精简表加上 `component-icons.css`），这样像 `<instui-alert>` 之类的图标渲染元素才能解析它们的字形。
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+若只注册部分元素及其嵌套依赖，导入 `register` 并传入 `only`：
 
 ```html
 <script type="module">
@@ -85,20 +68,17 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### 经典 script 标签
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+对于无需模块的即插即用，加载 IIFE 构建。它捆绑其依赖并在加载时自动注册所有元素，暴露一个 `PantokenWebComponents` 全局变量：
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+它比 ESM 路径大一些——内联了 `@pantoken/components` 和 `@pantoken/icons` ——因此仅在无法使用模块时使用。
 
-## Pinning versions
+## 固定版本
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+上面的 URL（以及选择器写出的那些）跟踪最新发布版本。生产环境中请为主要版本（或精确版本）加固版本号——例如 `@pantoken/css@0` ——以免升级带来意外变更。

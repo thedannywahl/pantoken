@@ -1,12 +1,12 @@
-# The package map
+# O mapa de pacotes
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
+pantoken é um monorepo de pequenos pacotes de finalidade única agrupados em buckets. Instale aquele que
+se encaixa na sua tarefa, ou instale o pacote unificado `pantoken` e importe de seus subpaths (por exemplo
 `pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
 
-## Core
+## Núcleo
 
-The shared model and the transformer everything else builds on.
+O modelo compartilhado e o transformador sobre o qual todo o resto se baseia.
 
 | Package                                                 | What it does                                                                                                       |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -17,9 +17,9 @@ The shared model and the transformer everything else builds on.
 | [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
 | [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
 
-## Formats
+## Formatos
 
-Turn the tokens into a file format.
+Transforma os tokens em um formato de arquivo.
 
 | Package                                                | Output                                                                                                                                                                                                     |
 | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -33,9 +33,9 @@ Turn the tokens into a file format.
 | [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
 | [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
 
-## Renderers
+## Renderizadores
 
-Framework and tool integrations.
+Integrações com frameworks e ferramentas.
 
 | Package                                                                                                                                          | For                                                        |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -55,9 +55,9 @@ Framework and tool integrations.
 | [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |
 | [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |
 
-## Bundlers
+## Empacotadores
 
-Build-tool integrations.
+Integrações com ferramentas de build.
 
 | Package                                             | For                                                   |
 | --------------------------------------------------- | ----------------------------------------------------- |
@@ -68,9 +68,9 @@ Build-tool integrations.
 | [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
 | [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
 
-## Platforms
+## Plataformas
 
-Native and site-generator targets, emitted by the CLI or their own API.
+Alvos nativos e geradores de site, emitidos pela CLI ou pela própria API.
 
 | Package                                                                                        | Output                                     |
 | ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
@@ -87,7 +87,7 @@ Native and site-generator targets, emitted by the CLI or their own API.
 
 ## Design
 
-For design tools.
+Para ferramentas de design.
 
 | Package                                           | Output                                                                |
 | ------------------------------------------------- | --------------------------------------------------------------------- |
@@ -96,7 +96,7 @@ For design tools.
 
 ## Plugins
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+Transformações opcionais que estendem a saída de tokens ou CSS. Veja [Plugins](/guide/plugins).
 
 | Package                                                                               | What it adds                                                    |
 | ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -106,10 +106,10 @@ Optional transforms that extend the token or CSS output. See [Plugins](/guide/pl
 | [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
 | [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
 
-## Tools
+## Ferramentas
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+Infraestrutura de build, docs e demos para o próprio monorepo. A maior parte é interna, mas as peças são
+autocontidas, então documentamos aqui e algumas são publicadas no npm por conta própria.
 
 | Package                                            | What it does                                                                                                                                                                                          |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -121,17 +121,17 @@ self-contained, so we document them here and some ship to npm on their own.
 `@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
 page; the others do.
 
-## AI
+## IA
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+Ativos de configuração de IA voltados para consumidores. Estes são para projetos que usam pantoken, não para desenvolver
+o próprio pantoken.
 
 - [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
   assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
 
-## Dev plugins
+## Plugins de desenvolvimento
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+Plugins que autoramos para as ferramentas com as quais trabalhamos, agrupados por host. São standalone e publicáveis.
 
 | Package                                                                                  | Plugs into                                                                             |
 | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |

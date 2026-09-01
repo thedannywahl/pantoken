@@ -1,13 +1,10 @@
-# Plugins
+# プラグイン
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+pantoken プラグインはパッケージをフォークせずにトークンや CSS 出力を拡張します。`definePlugin` を `@pantoken/plugin-kit` から使って作成し、それを `buildTokens` または `toCss` に渡します。
 
-## Author a plugin
+## プラグインを作成する
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+実装するフックを `definePlugin` に渡してください。これはそのフックから推測される機能でブランディングされた通常のプラグインを返します。プラグインは IR（`tokens`, `icons`）、CSS 出力（`css`）、またはその両方を拡張できます。
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## 機能対応の登録
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+`buildTokens` と `toCss` は、渡されたプラグインに対して `checkPlugins` を実行します。プラグインが登録されているステージに対して一致するフックを持たない場合、例外は投げずに警告するだけです。したがってトークン専用のプラグインを `toCss` に渡した場合、何も行わずに黙ってスキップされるのではなく、注記と共にスキップされます。
 
-## Compose plugins
+## プラグインを合成する
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+`extendPlugin` を使って他のプラグインの上に構築するか、`mergePlugin` で同等のものを組み合わせます:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+同じステージのフックは合成されます: `tokens` はベースを実行してから追加を実行し、`css` は二つの寄与をマージし、`icons` は両方を実行します。
 
-## Validate your plugin's output
+## プラグインの出力を検証する
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+プラグインのテスト内で共有のドリフトチェック（`@pantoken/utils`）を実行して、タイプミスや名前変更されたトークンが早期かつローカルで失敗するようにします:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,12 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## バンドルされたプラグイン
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — simple-icons からアイコンをブランディングし、アイコントークンとして登録します。
+- `@pantoken/plugin-logos` — Instructure のプロダクトロゴを SVG、データ URI、および `--instui-logo-*` 画像トークンとして提供します。
+- `@pantoken/plugin-prune-custom-props` — 未使用のカスタムプロパティをスタイルシートから削除する PostCSS プラグイン（pantoken プラグインではありません）。
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+以前はプラグインだったいくつかの機能は、今や多くのコンポーネントでデフォルトで必要とされるため `@pantoken/components` に同梱されています: エレベーションシャドウ（`--instui-elevation-*`、`components.css` に含まれる）、フォーカスアウトラインリング（`base.css` に含まれる — pantoken がページを管理しているときはすべてのフォーカス可能要素に適用されます）、および Instructure ブランドフォント（Atkinson Hyperlegible Next: `base.css` が `--instui-font-family-base` を適用します; オプトインの `@pantoken/components/fonts.css` は `@font-face` の woff2 を読み込みます）。
 
-See the [API reference](/api/) for each plugin's exports.
+各プラグインのエクスポートについては [API リファレンス](/api/) を参照してください。

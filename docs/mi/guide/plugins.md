@@ -1,13 +1,10 @@
-# Plugins
+# Mono
 
-A pantoken plugin extends the token or CSS output without forking a package. You build one with
-`definePlugin` from `@pantoken/plugin-kit`, then pass it to `buildTokens` or `toCss`.
+Ka whanui te mono o pantoken i te putanga token, putanga CSS rānei me te kore e hanga i tētahi pākete hou. Ka hangaia tētahi mā `definePlugin` mai i `@pantoken/plugin-kit`, katahi ka tukuna ki `buildTokens` rānei `toCss`.
 
-## Author a plugin
+## Tuhia he mono
 
-Give `definePlugin` the hooks you implement. It returns a normal plugin, branded with the
-capabilities inferred from those hooks. A plugin can extend the IR (`tokens`, `icons`), the CSS
-output (`css`), or both.
+Homai ki `definePlugin` ngā hooks e whakauru ana koe. Ka whakahokia mai he mono noa, kua tohu āna āheinga i whakatau i ngā hooks rā. Ka taea e tētahi mono te whanui i te IR (`tokens`, `icons`), te putanga CSS (`css`), rānei ko ngā taipitopito e rua.
 
 ```ts
 import { definePlugin } from "@pantoken/plugin-kit";
@@ -20,15 +17,13 @@ export const brand = () =>
   });
 ```
 
-## Capability-aware registration
+## Rēhitatanga e mōhio ana ki ngā āheinga
 
-`buildTokens` and `toCss` run `checkPlugins` over the plugins you pass. It warns — it never throws —
-when a plugin has no matching hook for the stage it's registered in, so a token-only plugin passed
-to `toCss` is skipped with a note rather than silently doing nothing.
+Ka whakahaere a `buildTokens` me `toCss` i a `checkPlugins` i runga i ngā mono ka tukuna e koe. Ka whakatūpato — kāore e whiua — mēnā kāore he hook e hāngai ana ki te wāhanga i rēhitatia ai te mono, nō reira ka whakararuraru te mono-token anake ka tukuna ki `toCss` mā te tuhipoka, kaua ko te noho mokowā.
 
-## Compose plugins
+## Whakakotahitia ngā mono
 
-Build on top of another plugin with `extendPlugin`, or combine peers with `mergePlugin`:
+Hangaia he whakawhānui i runga i tētahi mono kē mā `extendPlugin`, kia whakakotahitia rānei ngā hoa mā `mergePlugin`:
 
 ```ts
 import { extendPlugin, mergePlugin } from "@pantoken/plugin-kit";
@@ -37,13 +32,11 @@ const themed = extendPlugin(brand(), { css: () => ({ append: "/* extra */" }) })
 const both = mergePlugin(brand(), icons());
 ```
 
-Same-stage hooks compose: `tokens` runs the base then the addition, `css` merges the two
-contributions, and `icons` runs both.
+Ka whakakotahi ngā hooks o te wāhanga kotahi: ka whakahaere tuatahi te `tokens` i te turanga ā muri ake i te tāpiritanga, ka whakamōhio te `css` i ngā koha e rua, ā ka whakahaere rānei te `icons` i ngā mea e rua.
 
-## Validate your plugin's output
+## Whakamātauria ngā putanga o tō mono
 
-Run the shared drift checks from `@pantoken/utils` over your plugin's own output in its test, so a
-typo or a renamed token fails fast and locally:
+Whakahaerehia ngā tirohanga drift tūturu mai i `@pantoken/utils` i runga i ngā putanga o tō mono i roto i ōna whakamātautau, kia tere te kitea me te rohe mēnā he hapa tuhi, he ingoa token kua hurihia rānei:
 
 ```ts
 import { danglingReferences, unknownReferences } from "@pantoken/utils";
@@ -56,18 +49,12 @@ expect(danglingReferences(myPlugin().css!({ tokens, css: "" }).append ?? "")).to
 expect(unknownReferences(myBridgeCss, tokens)).toEqual([]);
 ```
 
-## The bundled plugins
+## Ngā mono kua kapi
 
-- `@pantoken/plugin-simple-icons` — brand icons from simple-icons, registered as icon tokens.
-- `@pantoken/plugin-logos` — Instructure product logos as SVGs, data URIs, and `--instui-logo-*`
-  image tokens.
-- `@pantoken/plugin-prune-custom-props` — a PostCSS plugin (not a pantoken plugin) that drops
-  unused custom properties from a stylesheet.
+- `@pantoken/plugin-simple-icons` — tohu waitohu mai i simple-icons, kua rēhitatia hei ngā token ā-tahua.
+- `@pantoken/plugin-logos` — ngā tohu hua Instructure hei SVG, URI raraunga, me ngā token whakaahua `--instui-logo-*`.
+- `@pantoken/plugin-prune-custom-props` — he mono PostCSS (ehara i te mono pantoken) e tango ana i ngā rawa ritenga-kāore i whakamahia i roto i tētahi tauira taitara.
 
-A few things that used to be plugins now ship in `@pantoken/components`, since so many components need
-them out of the box: elevation shadows (`--instui-elevation-*`, in `components.css`), the focus-outline
-ring (in `base.css` — every focusable gets it when pantoken owns the page), and the Instructure brand
-fonts (Atkinson Hyperlegible Next: `base.css` applies `--instui-font-family-base`; the opt-in
-`@pantoken/components/fonts.css` loads the `@font-face` woff2s).
+He kōrero poto nō ētahi mea i noho hei mono, ināianei ka kawea i roto i `@pantoken/components`, i te mea he maha ngā wāhanga e hiahiatia ana i ngā taiao kē: ngā ārai atarangi elevation (`--instui-elevation-*`, i roto i `components.css`), te mekameka ā-āhua focus-outline (i roto i `base.css` — ka whakawhiwhia ki ia mea ka taea te aro kaua rānei mēnā ko pantoken te kaitiaki o te whārangi), me ngā momotuhi waitohu o Instructure (Atkinson Hyperlegible Next: `base.css` e tono ana i `--instui-font-family-base`; ko te kōwhiringa ake `@pantoken/components/fonts.css` e uta ana i ngā woff2s o `@font-face`).
 
-See the [API reference](/api/) for each plugin's exports.
+Tirohia te [tuhinga API](/api/) mō ngā kaweake o ia mono.

@@ -1,7 +1,7 @@
 # The pantoken CLI
 
 `@pantoken/cli` provides `pantoken generate <target>`, which writes token source into a target repo.
-Reach for it when a platform needs generated code rather than a runtime dependency — native apps,
+Use it when a platform needs generated code rather than a runtime dependency — native apps,
 CMS themes, and static-site generators.
 
 ```sh
@@ -22,7 +22,7 @@ npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
 | `drupal`    | Drupal theme assets.                                                              |
 | `jekyll`    | Jekyll site data.                                                                 |
 | `hugo`      | Hugo site data.                                                                   |
-| `swatches`  | Color swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.       |
+| `swatches`  | Colour swatches — `ase` (default), `gpl`, `sketch`, or `svg` via `--format`.      |
 | `icon-font` | An icon web font (TTF, WOFF2), its CSS, and a codepoints map.                     |
 | `pendo`     | The Instructure-styled `global.css` for Pendo guides.                             |
 
@@ -47,5 +47,5 @@ npx pantoken generate wordpress --out ./wp-content/themes/mytheme
 npx pantoken generate rust --out ./src/tokens.rs --format egui
 ```
 
-Several targets also expose a plain function, so you can call them from your own build instead of
+Several targets also expose a plain function, so you can call them from your own build rather than
 the CLI. See the [API reference](/api/) for each platform package.

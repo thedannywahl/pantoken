@@ -1,10 +1,10 @@
-# Architecture
+# Arhitektura
 
-pantoken has one job: resolve Instructure's design tokens and icons once, then reshape that model
-for every target. The layers below keep that reshaping honest and keep the published packages free
-of any GitHub-only upstream.
+pantoken ima eno nalogo: enkrat razrešiti Instructure-ove oblikovne (design) tokene in ikone, nato pa to model
+preoblikovati za vsak cilj. Spodnje plasti zagotavljajo poštenost te preoblikave in ohranjajo objavljene pakete brez
+kakršnegakoli GitHub‑samo upstreama.
 
-## The layers
+## Plasti
 
 ```mermaid
 flowchart TD
@@ -26,37 +26,37 @@ flowchart TD
   tokens --> bundlers
 ```
 
-- **`@pantoken/model`** holds the type contracts, and nothing else. It's the source of truth for the
-  `Token` shape and the plugin contract, with zero dependencies, so any package can depend on it
-  freely.
-- **`@pantoken/core`** is the only package that touches the upstream source. It resolves tokens and
-  icons into the canonical IR and renders CSS.
-- **`@pantoken/tokens`** vendors that IR as static JSON at build time. This is the decoupling point:
-  downstream packages read `@pantoken/tokens`, never `@pantoken/core`, so `npm i pantoken` never
-  reaches for the GitHub-only upstream.
-- **`@pantoken/utils`** carries the shared helpers — the `var(--x)` resolver, the reference regexes,
-  case and color conversion, and the drift checks that keep generated output faithful to the IR.
+- **`@pantoken/model`** hrani tipne pogodbe (type contracts) in nič drugega. Je vir resnice za
+  obliko `Token` in pogodbo za vtičnike, z ničelnimi odvisnostmi, zato se lahko nanj vsak paket
+  prostovoljno opre.
+- **`@pantoken/core`** je edini paket, ki se dotika upstream vira. Razreši tokene in
+  ikone v canonical IR in upodobi CSS.
+- **`@pantoken/tokens`** vključuje (vendors) ta IR kot statični JSON med gradnjo. To je točka razvezave:
+  downstream paketi berejo `@pantoken/tokens`, nikoli `@pantoken/core`, zato `npm i pantoken` nikoli
+  ne posega po GitHub‑samo upstreamu.
+- **`@pantoken/utils`** nosi deljene pomočnike — `var(--x)` resolver, regexe za reference,
+  pretvorbe velikosti črk in barv ter drift preverjanja, ki ohranjajo, da je generirana izhodna vsebina zvest IR.
 
-## Why tokens are vendored
+## Zakaj so tokeni vendorirani
 
-The upstream token package lives on GitHub, not npm. If every downstream package depended on it,
-`npm i pantoken` would fail for anyone without that access. Instead `@pantoken/tokens` resolves the
-upstream once at build time and writes the result to static JSON. The published packages carry that
-JSON, so they install cleanly from npm, pin to semver, and work offline.
+Upstream paket s tokeni živi na GitHubu, ne na npm. Če bi se vsak downstream paket nanj zanašal,
+bi `npm i pantoken` odpovedal komurkoli brez tega dostopa. Namesto tega `@pantoken/tokens` razreši
+upstream enkrat med gradnjo in zapiše rezultat v statični JSON. Objavljeni paketi nosijo ta
+JSON, zato se namestijo čisto iz npm, pripnejo se na semver in delujejo brez povezave.
 
-## Buckets
+## Vedra
 
-Each downstream bucket is a way of consuming the IR:
+Vsako downstream vedro je način porabe IR:
 
-- **formats/** — turn the tokens into a file (CSS, SCSS, Less, Stylus, DTCG).
-- **renderers/** — framework and tool integrations (React, Vue, Svelte, MUI, Pendo, and more).
-- **bundlers/** — build-tool plugins and presets (Vite, Next, Tailwind, Panda, PostCSS, webpack).
-- **platforms/** — native and site-generator targets (Swift, Kotlin, Rust, WordPress, Drupal).
-- **design/** — payloads for design tools (Figma, color swatches).
-- **plugins/** — optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+- **formats/** — pretvori tokene v datoteko (CSS, SCSS, Less, Stylus, DTCG).
+- **renderers/** — integracije ogrodij in orodij (React, Vue, Svelte, MUI, Pendo in več).
+- **bundlers/** — vtičniki in prednastavitve gradnikov (Vite, Next, Tailwind, Panda, PostCSS, webpack).
+- **platforms/** — cilji za native in site‑generatorje (Swift, Kotlin, Rust, WordPress, Drupal).
+- **design/** — podatki za oblikovalska orodja (Figma, barvne vzorčne palete).
+- **plugins/** — opcijski transformatorji, ki razširijo izhod tokenov ali CSS. Glej [Plugins](/guide/plugins).
 
-## Generated output
+## Generiran izhod
 
-Every package that emits a file writes it to a per-package `generated/` directory that a build
-reproduces, so nothing generated is committed. A workspace task validates all of it. See
+Vsak paket, ki izda datoteko, jo zapiše v za paket specifično `generated/` mapo, ki jo gradnja
+reproducira, tako da se nič generiranega ne commita. Naloga delovnega prostora vse to preveri. Glej
 [Generated output](/guide/generated-output).

@@ -1,47 +1,38 @@
-# Getting started
+# البدء
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
-model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
-Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
+pantoken يأخذ رموز التصميم والأيقونات الخاصة بـ Instructure UI، يحلّلها مرة واحدة، ويعيد تشكيل ذلك النموذج الواحد إلى حزم لعدة منصات: ملفات أنماط عادية، SCSS و Less، React و Vue و Svelte، Tailwind و Panda، منصات أصلية Swift و Kotlin، WordPress و Drupal، Figma، والمزيد.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
-`pantoken` package, so you can start there and narrow down later.
+قم بتثبيت أصغر حزمة تناسب مهمتك. كل شيء معاد التصدير متاح أيضاً عبر الحزمة الموحدة `pantoken`، لذا يمكنك البدء منها ثم التخصيص لاحقًا.
 
-## Scaffold a starter project
+## تهيئة مشروع بداية
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+أسرع طريقة لتجربة pantoken: تهيئة مشروع بداية مع تثبيته ودمجه مسبقًا.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) for `--dir <path>` and
-programmatic use.
+المنصات: `components` (HTML/CSS عادي)، `react`, `vue`, `svelte`, `web-components`, `angular`. انظر
+[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) لـ `--dir <path>` والاستخدام البرنامجي.
 
-Using an AI coding agent? No install needed — point it at the skill directly:
+تستخدم وكيل برمجة ذكاء اصطناعي؟ لا حاجة للتثبيت — وجه الوكيل إلى المهارة مباشرة:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+يعمل بنفس الطريقة مع Gemini CLI و Cursor CLI و OpenAI Codex CLI و GitHub Copilot CLI و Amazon Q Developer CLI — استبدل `claude` بـ `gemini` أو `agent` أو `codex` أو `copilot -p` أو `q chat`. إذا رغبت بدمج قواعد وكيل pantoken في المستودع بشكل دائم (AGENTS.md، قواعد المحرر، نسخة محلية من هذه المهارة)، شغّل `npx @pantoken/ai init` بدلاً من ذلك.
 
-## The token model
+## نموذج الرموز (Tokens)
 
-Tokens are CSS custom properties named `--instui-<group>-<name>`, for example
-`--instui-color-background-brand` or `--instui-spacing-space-md`. Three themes ship: `rebrand`
-(the default, with `light-dark()` where light and dark differ), `canvas`, and `canvasHighContrast`.
-Icons are `<image>` tokens (`--instui-icon-<name>`) derived from Lucide plus Instructure's custom
-glyphs.
+الرموز هي خصائص مخصصة في CSS مسماة `--instui-<group>-<name>`، على سبيل المثال
+`--instui-color-background-brand` أو `--instui-spacing-space-md`. ثلاثة ثيمات مشمولة: `rebrand`
+(الافتراضي، مع `light-dark()` حيث يختلف الفاتح والداكن)، `canvas`، و `canvasHighContrast`.
+الأيقونات هي رموز `<image>` (`--instui-icon-<name>`) مشتقة من Lucide بالإضافة إلى الرموز المخصصة لـ Instructure.
 
-## Style a web app
+## تزيين تطبيق ويب
 
-Install the stylesheet and import it once. It defines every `--instui-*` property, so you reference
-them straight from your own CSS.
+ثبّت ورقة الأنماط واستوردها مرة واحدة. هي تعرف كل خاصية `--instui-*`، لذلك يمكنك الإشارة إليها مباشرة من CSS الخاص بك.
 
 ```sh
 npm i @pantoken/css
@@ -58,9 +49,9 @@ import "@pantoken/css/inject";
 }
 ```
 
-## Use icons anywhere
+## استخدام الأيقونات في أي مكان
 
-The web component works in any framework, with no porting.
+مكون الويب يعمل في أي إطار عمل، دون حاجة لعملية نقل.
 
 ```sh
 npm i @pantoken/web-components
@@ -74,10 +65,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS tokens
+### رموز CSS
 
-Icons are CSS custom properties (`--instui-icon-<name>`). Load the stylesheet once and reference any
-icon as a `mask-image` or `background-image` — no per-icon import needed.
+الأيقونات هي خصائص مخصصة في CSS (`--instui-icon-<name>`). حمّل ورقة الأنماط مرة واحدة وارجع لأي أيقونة كـ `mask-image` أو `background-image` — لا حاجة لاستيراد كل أيقونة على حدة.
 
 ```css
 .my-icon {
@@ -85,10 +75,10 @@ icon as a `mask-image` or `background-image` — no per-icon import needed.
 }
 ```
 
-### JavaScript — single icon vs. full set
+### جافاسكربت — أيقونة واحدة مقابل المجموعة الكاملة
 
-`@pantoken/icons` exposes two named exports. Use `iconsByName` to pull one icon without iterating
-the full array:
+`@pantoken/icons` يوفّر تصديرين مسمّيين. استخدم `iconsByName` لسحب أيقونة واحدة دون تكرار
+المصفوفة الكاملة:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -97,7 +87,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Use `icons` when you need the whole set (e.g. to build a picker):
+استخدم `icons` عندما تحتاج المجموعة كاملة (مثلًا لبناء منتقِ للأيقونات):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -106,32 +96,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
-for only the icons you need.
+كلا التصديرين يحمّلان IR الكامل عند تهيئة الوحدة النمطية — لا يوجد tree-shaking لكل أيقونة على هذا المستوى. لتحميل نحيف قائم على CSS فقط، استخدم [CDN picker](/guide/cdn-picker) لتوليد عنوان URL مجمّع للأيقونات التي تحتاجها فقط.
 
-## Generate for a native platform
+## التوليد لمنصة أصلية
 
-The CLI writes token source into a target repo. No install beyond the runner:
+CLI يكتب مصدر الرموز إلى مستودع الهدف. لا حاجة لتثبيت إضافي بخلاف المشغّل:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-See [the pantoken CLI](/guide/cli) for every target.
+انظر [the pantoken CLI](/guide/cli) لكل هدف.
 
-## VS Code authoring hints
+## تلميحات التأليف في VS Code
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` الآن يضم ملفات بيانات مخصصة لـ VS Code حتى تتمكن المشاريع اللاحقة من الحصول على إكمال للأصناف والرموز في HTML/CSS دون تثبيت امتداد خاص بـ pantoken.
 
-1. Install the unified package:
+1. ثبّت الحزمة الموحدة:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. دلّ VS Code إلى JSON البيانات المخصصة المشحون من مساحة عمل المستهلك الخاصة بك:
 
 ```json
 {
@@ -140,14 +127,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Reload VS Code (or run "Developer: Reload Window") to apply the new data.
+1. أعد تحميل VS Code (أو شغّل "Developer: Reload Window") لتطبيق البيانات الجديدة.
 
-This enables suggestions for `instui-*` class tokens (and `-modifier` class tokens) plus
-`--instui-*` custom properties.
+هذا يتيح اقتراحات لأصناف `instui-*` (و أصناف `-modifier`) بالإضافة إلى خصائص `--instui-*` المخصصة.
 
-## Where to next
+## إلى أين بعد ذلك
 
-- [The package map](/guide/packages) — which package to reach for, by task.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — install agent assets and rules in a consumer repo.
-- [Architecture](/guide/architecture) — how the token model, core, and outputs fit together.
-- [API reference](/api/) — every exported symbol, generated from the source.
+- [خريطة الحزم](/guide/packages) — أي حزمة تُستخدم لأي مهمة.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ثبّت أصول الوكيل والقواعد في مستودع المستهلك.
+- [العمارة](/guide/architecture) — كيف يتناسب نموذج الرموز، النواة، والمخرجات معًا.
+- [مرجع API](/api/) — كل رمز مُصدّر، مولَّد من المصدر.

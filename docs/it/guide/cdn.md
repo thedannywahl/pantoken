@@ -1,53 +1,51 @@
-# CDN & distribution
+# CDN e distribuzione
 
-pantoken publishes every package to npm, so you can pull tokens, components, and web components straight
-from a CDN — no build step, no bundler. This page covers the CSS combine URL (with an interactive
-builder), plus the web-component drop-ins.
+pantoken pubblica ogni pacchetto su npm, quindi è possibile prelevare token, componenti e web component direttamente
+da un CDN — nessun passo di build, nessun bundler. Questa pagina copre l'URL di combinazione CSS (con un builder interattivo),
+più i drop-in per i web component.
 
-## The token foundation
+## La base dei token
 
-Every pantoken component reads `--instui-*` custom properties from a token sheet on the page. Two
-variants ship:
+Ogni componente pantoken legge le proprietà personalizzate `--instui-*` da un foglio di token nella pagina. Sono
+disponibili due varianti:
 
-- `@pantoken/css/dist/style.lean.css` — the recommended CDN foundation. It carries every token except the
-  full icon set, so it's about 23 KB gzipped.
-- `@pantoken/css/dist/style.css` — the full sheet, including all ~1,777 icon glyph tokens
-  (`--instui-icon-*`). About 140 KB gzipped. Load this if you reference icons broadly via
+- `@pantoken/css/dist/style.lean.css` — la foundation CDN consigliata. Contiene tutti i token eccetto il
+  set completo di icone, quindi è circa 23 KB gzippati.
+- `@pantoken/css/dist/style.css` — il foglio completo, che include tutti i ~1.777 token glifo delle icone
+  (`--instui-icon-*`). Circa 140 KB gzippati. Caricare questo se si fanno riferimenti ampi alle icone tramite
   `var(--instui-icon-*)`.
 
-The elevation scale and focus-ring variables ride in both sheets, so shadows and the focus ring work with
-just the foundation loaded.
+La scala di elevazione e le variabili del focus-ring sono presenti in entrambi i fogli, quindi ombre e anello di focus funzionano con
+solo la foundation caricata.
 
-## Pick your components and icons
+## Scegli i componenti e le icone
 
-The [interactive CDN picker](/guide/cdn-picker) builds jsDelivr combine URLs for CSS and snippets for JavaScript packages. Open it, check what you need, and copy the generated output.
+Il [selettore CDN interattivo](/guide/cdn-picker) costruisce URL di combinazione jsDelivr per il CSS e snippet per i pacchetti JavaScript. Aprilo, seleziona ciò che ti serve e copia l'output generato.
 
-- **Components tab** — choose individual component stylesheets or the whole `components.css` barrel. Add the base reset or spacing/color utilities if you need them.
-- **JS tab** — copy an ESM import snippet for `@pantoken/interactions`.
-- **Icons tab** — choose individual icons from the InstUI set (~1,800 icons) or from Simple Icons (~3,300 brand glyphs). The picker outputs a separate combine URL for the icon CSS files so you can load only the icons you actually use.
-- **Web Components tab** — build `@pantoken/web-components` snippets (ESM selective register or classic script bootstrap).
+- **Scheda Components** — scegli fogli di stile per singoli componenti o l'intero barrel `components.css`. Aggiungi il reset base o le utility di spacing/color se ti servono.
+- **Scheda JS** — copia uno snippet di import ESM per `@pantoken/interactions`.
+- **Scheda Icons** — scegli icone singole dal set InstUI (~1.800 icone) o da Simple Icons (~3.300 glifi di brand). Il picker produce un URL di combinazione separato per i file CSS delle icone in modo da caricare solo le icone effettivamente usate.
+- **Scheda Web Components** — costruisci snippet `@pantoken/web-components` (registrazione selettiva ESM o bootstrap con script classico).
 
-Each component file is small — most are around 2 KB. A component that renders icons (`alert`, `checkbox`,
-and a few others) needs those glyphs, so the builder adds `@pantoken/components/dist/component-icons.css` (about
-0.5 KB gzipped — the 11 icons the component set uses) whenever you pick the lean sheet. The full sheet
-already carries them.
+Ogni file componente è piccolo — la maggior parte è intorno a 2 KB. Un componente che rende icone (`alert`, `checkbox`,
+e alcuni altri) necessita di quei glifi, quindi il builder aggiunge `@pantoken/components/dist/component-icons.css` (circa
+0.5 KB gzippati — le 11 icone usate dal set di componenti) ogni volta che si sceglie il foglio lean. Il foglio completo
+li contiene già.
 
-### Load order and fonts
+### Ordine di caricamento e font
 
-Load the token foundation first, then the optional base reset, then the component files, and utilities
-last — they're override utilities, so they only actually override a component's own rule when they land
-after it in the cascade. The combine URL above already orders them for you. Fonts are the one exception:
-`@pantoken/components/dist/fonts.css` points at font files by relative path, so combine can't rewrite
-them — load it as its own `<link>`:
+Caricare prima la foundation dei token, poi l'eventuale reset base, poi i file dei componenti, e infine le utility — sono utility di override, quindi sovrascrivono effettivamente una regola del componente solo quando arrivano
+dopo di essa nella cascade. L'URL di combinazione sopra li ordina già per te. I font sono l'unica eccezione:
+`@pantoken/components/dist/fonts.css` punta ai file dei font tramite percorso relativo, quindi la combinazione non può riscriverli — caricalo come suo `<link>`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/components/dist/fonts.css" />
 ```
 
-### Everything at once
+### Tutto insieme
 
-Check **All components** in the picker to switch it to the barrel, or point at it yourself (about 141 KB
-gzipped) alongside the token sheet:
+Seleziona **All components** nel picker per passare al barrel, oppure punti direttamente a esso (circa 141 KB
+gzippati) insieme al foglio dei token:
 
 ```html
 <link
@@ -58,12 +56,12 @@ gzipped) alongside the token sheet:
 
 ## Web components
 
-`@pantoken/web-components` registers framework-agnostic `<instui-*>` custom elements. They inline their
-own CSS, but still read tokens from a sheet on the page, so load a token foundation too.
+`@pantoken/web-components` registra elementi custom `<instui-*>` agnostici rispetto al framework. Includono il loro
+CSS inline, ma leggono ancora i token da un foglio nella pagina, quindi caricare anche una foundation dei token.
 
-### ES modules (recommended)
+### Moduli ES (consigliato)
 
-An ESM CDN resolves the package's dependencies for you. This registers every element:
+Un CDN ESM risolve per te le dipendenze del pacchetto. Questo registra ogni elemento:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
@@ -72,10 +70,10 @@ An ESM CDN resolves the package's dependencies for you. This registers every ele
 </script>
 ```
 
-Use the full token sheet (or the lean sheet plus `component-icons.css`) so icon-rendering elements like
-`<instui-alert>` resolve their glyphs.
+Usare il foglio token completo (o il foglio lean più `component-icons.css`) così che elementi che rendono icone come
+`<instui-alert>` possano risolvere i loro glifi.
 
-To register just some elements — and their nested dependencies — import `register` and pass `only`:
+Per registrare solo alcuni elementi — e le loro dipendenze annidate — importa `register` e passa `only`:
 
 ```html
 <script type="module">
@@ -85,20 +83,20 @@ To register just some elements — and their nested dependencies — import `reg
 </script>
 ```
 
-### A classic script tag
+### Un tag script classico
 
-For a no-modules drop-in, load the IIFE build. It bundles its dependencies and auto-registers every
-element on load, exposing a `PantokenWebComponents` global:
+Per un drop-in senza moduli, carica la build IIFE. Bundle le dipendenze e auto-registra ogni
+elemento al caricamento, esponendo una globale `PantokenWebComponents`:
 
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@pantoken/css/dist/style.css" />
 <script src="https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js"></script>
 ```
 
-It's larger than the ESM path — it inlines `@pantoken/components` and `@pantoken/icons` — so reach for it
-only when you can't use modules.
+È più grande del percorso ESM — include inline `@pantoken/components` e `@pantoken/icons` — quindi usarlo
+solo quando non è possibile usare i moduli.
 
-## Pinning versions
+## Blocco delle versioni
 
-The URLs above — and the ones the picker writes — track the latest release. Pin a major (or exact)
-version for production — for example `@pantoken/css@0` — so an upgrade never surprises you.
+Gli URL sopra — e quelli che il picker scrive — puntano alla release più recente. Blocca una major (o una versione esatta)
+per la produzione — per esempio `@pantoken/css@0` — così un aggiornamento non ti sorprenderà.

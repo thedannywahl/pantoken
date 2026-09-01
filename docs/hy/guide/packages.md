@@ -1,139 +1,133 @@
-# The package map
+# Փաթեջ մապը
 
-pantoken is a monorepo of small, single-purpose packages grouped into buckets. Install the one that
-fits your task, or install the unified `pantoken` package and import from its subpaths (for example
-`pantoken/css`, `pantoken/react`, `pantoken/tailwind`).
+pantoken-ը մի մոնոռեպո է՝ փոքր, մեկ նպատակի փաթեթների հավաքածու՝ խմբավորված բաքետներում։ Տեղադրեք այն, որը համապատասխանում է ձեր առաջադրանքի, կամ տեղադրեք միասնական `pantoken` փաթեթը և ներմուծեք նրա ենթաապրանքներից (օրինակ `pantoken/css`, `pantoken/react`, `pantoken/tailwind`)։
 
-## Core
+## Գլուխ
 
-The shared model and the transformer everything else builds on.
+Ընդհանրացված մոդելը և նույն բանի վրա կառուցվող թրանսֆորմերը։
 
-| Package                                                 | What it does                                                                                                       |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [`@pantoken/model`](/api/packages/model/src/)           | Zero-dependency TypeScript types: the `Token` shape and the plugin contract.                                       |
-| [`@pantoken/core`](/api/packages/core/src/)             | Resolves the upstream tokens and icons into the canonical IR, and renders CSS.                                     |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)          | The resolved IR vendored as static JSON, per theme, plus the raw Tokens Studio source.                             |
-| [`@pantoken/utils`](/api/packages/utils/src/)           | The token resolver, reference regexes, case and color helpers, drift checks, and the token→utility-class emitters. |
-| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Build and compose pantoken plugins with `definePlugin`.                                                            |
-| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — emit native and platform source.                                                    |
+| Package                                                 | What it does                                                                                                      |
+| ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/model`](/api/packages/model/src/)           | Ապաքինք-խնդիրից ազատ TypeScript տիպեր՝ `Token` շապիկը և plugin պայմանավորվածությունը։                             |
+| [`@pantoken/core`](/api/packages/core/src/)             | Վերահսկում է վերավերցված tokens-ները և icons-ները canonical IR-ով և էմիտ անում CSS։                               |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)          | Վերահսկված IR-ը՝ որպես ստատիկ JSON, թեմայով մեկերված, նաև Tokens Studio-ի հում աղբյուր։                           |
+| [`@pantoken/utils`](/api/packages/utils/src/)           | Token լուծիչը, reference regex-երը, case և color հելփերները, drift ստուգումները և token→utility-class էմիտերները։ |
+| [`@pantoken/plugin-kit`](/api/packages/plugin-kit/src/) | Ստեղծեք և կոմպոզացրեք pantoken plugin-եր `definePlugin`-ով։                                                       |
+| [`@pantoken/cli`](/api/packages/cli/src/)               | `pantoken generate <target>` — էմիտում է բնիկ և հարթակային աղբյուրներ։                                            |
 
-## Formats
+## Ֆորմատներ
 
-Turn the tokens into a file format.
+Պատրաստում են token-ները ֆայլային ֆորմատների։
 
-| Package                                                | Output                                                                                                                                                                                                     |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-typed CSS with `light-dark()` and data-URI icons.                                                                                                                                              |
-| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS variables, resolved to a single mode.                                                                                                                                                                 |
-| [`@pantoken/less`](/api/formats/less/src/)             | Less variables.                                                                                                                                                                                            |
-| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus variables.                                                                                                                                                                                          |
-| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | A W3C Design Tokens (DTCG) document.                                                                                                                                                                       |
-| [`@pantoken/tokens`](/api/formats/tokens/src/)         | The IR as JavaScript and JSON (also listed under Core).                                                                                                                                                    |
-| [`@pantoken/icons`](/api/formats/icons/src/)           | An ergonomic view over the icon tokens.                                                                                                                                                                    |
-| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | An icon web font (TTF, WOFF2) plus its CSS.                                                                                                                                                                |
-| [`@pantoken/components`](/api/formats/components/src/) | An InstUI-look CSS component library (button, alert, table, and more) plus a base reset with focus ring, prose styling, cross-cutting utilities, and the brand fonts. See [Components](/guide/components). |
+| Package                                                | Output                                                                                                                                                                                                  |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`@pantoken/css`](/api/formats/css/src/)               | `@property`-տիպավորված CSS `light-dark()`-ով և data-URI նշաններով։                                                                                                                                      |
+| [`@pantoken/scss`](/api/formats/scss/src/)             | SCSS փոփոխականներ, լուծված մեկ ռեժիմով։                                                                                                                                                                 |
+| [`@pantoken/less`](/api/formats/less/src/)             | Less փոփոխականներ։                                                                                                                                                                                      |
+| [`@pantoken/stylus`](/api/formats/stylus/src/)         | Stylus փոփոխականներ։                                                                                                                                                                                    |
+| [`@pantoken/dtcg`](/api/formats/dtcg/src/)             | W3C Design Tokens (DTCG) փաստաթուղթ։                                                                                                                                                                    |
+| [`@pantoken/tokens`](/api/formats/tokens/src/)         | IR-ը որպես JavaScript և JSON (տես՝ նաև Գլխի տակ)։                                                                                                                                                       |
+| [`@pantoken/icons`](/api/formats/icons/src/)           | Էրգոնոմիկ տեսք icon token-ների նկատմամբ։                                                                                                                                                                |
+| [`@pantoken/icon-font`](/api/formats/icon-font/src/)   | Icon web font (TTF, WOFF2) և նրա CSS-ը։                                                                                                                                                                 |
+| [`@pantoken/components`](/api/formats/components/src/) | InstUI տեսք ունեցող CSS կոմպոնենտների գրադարան (կոճակ, alert, table և այլք), բազային reset-ով՝ focus ring, prose styling, cross-cutting utilities և brand ֆոնտերը։ Տես [Components](/guide/components). |
 
-## Renderers
+## Renderer-ներ
 
-Framework and tool integrations.
+Ֆրեյմվորք և գործիքի ինտեգրացիաներ։
 
-| Package                                                                                                                                          | For                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>`, and a token provider.               |
-| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | The web component, wired into each framework.              |
-| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-friendly token objects (no CSS variables).      |
-| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` and styled primitives, framework-agnostic. |
-| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token setup for Astro sites.                               |
-| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon tokens and swatches in Markdown.                      |
-| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | A markdown-it plugin for icon codes and color swatches.    |
-| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | A type-safe theme for styled-components and Emotion.       |
-| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | A Material UI theme.                                       |
-| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-variable bridges for Bootstrap and shadcn/ui.          |
-| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | A Sass settings override and CSS overlay for Foundation.   |
-| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Themes for Docusaurus and VitePress.                       |
-| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | A Mintlify `docs.json` theme (colors + background).        |
-| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | A Storybook theme.                                         |
-| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure-styled global CSS for Pendo guides.            |
+| Package                                                                                                                                          | For                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
+| [`@pantoken/react`](/api/renderers/react/src/)                                                                                                   | React hooks, `<Icon>` և token provider։                         |
+| [`@pantoken/vue`](/api/renderers/vue/src/), [`@pantoken/svelte`](/api/renderers/svelte/src/), [`@pantoken/angular`](/api/renderers/angular/src/) | Web component-ը, կապված յուրաքանչյուր ֆրեյմվորքի հետ։           |
+| [`@pantoken/react-native`](/api/renderers/react-native/src/)                                                                                     | StyleSheet-ընթեռնելի token օբյեկտներ (առանց CSS փոփոխականների). |
+| [`@pantoken/web-components`](/api/renderers/web-components/src/)                                                                                 | `<instui-icon>` և styled primitives, framework-անկախ։           |
+| [`@pantoken/astro`](/api/renderers/astro/src/)                                                                                                   | Token կարգավորում Astro կայքերի համար։                          |
+| [`@pantoken/react-markdown`](/api/renderers/react-markdown/src/), [`@pantoken/rehype`](/api/renderers/rehype/src/)                               | Icon token-ներ և swatch-ներ Markdown-ում։                       |
+| [`@pantoken/markdown-it`](/api/renderers/markdown-it/src/)                                                                                       | markdown-it plugin՝ icon code-երի և color swatch-ների համար։    |
+| [`@pantoken/css-in-js`](/api/renderers/css-in-js/src/)                                                                                           | Տիպ-անվտանգ թեմա styled-components և Emotion-ի համար։           |
+| [`@pantoken/mui`](/api/renderers/mui/src/)                                                                                                       | Material UI թեմա։                                               |
+| [`@pantoken/bootstrap`](/api/renderers/bootstrap/src/), [`@pantoken/shadcn`](/api/renderers/shadcn/src/)                                         | CSS-փոփոխականների կամուրջներ Bootstrap և shadcn/ui։             |
+| [`@pantoken/foundation`](/api/renderers/foundation/src/)                                                                                         | Sass settings override և CSS ավերակ Foundation-ի համար։         |
+| [`@pantoken/docusaurus`](/api/renderers/docusaurus/src/), [`@pantoken/vitepress`](/api/renderers/vitepress/src/)                                 | Թեմաներ Docusaurus և VitePress-ի համար։                         |
+| [`@pantoken/mintlify`](/api/renderers/mintlify/src/)                                                                                             | Mintlify `docs.json` թեմա (գույներ + ֆոն)։                      |
+| [`@pantoken/storybook`](/api/renderers/storybook/src/)                                                                                           | Storybook թեմա։                                                 |
+| [`@pantoken/pendo`](/api/renderers/pendo/src/)                                                                                                   | Instructure- ոճավորված գլոբալ CSS Pendo ուղեցույցների համար։    |
 
-## Bundlers
+## Bundler-ներ
 
-Build-tool integrations.
+Շինարար-գործիքների ինտեգրացիաներ։
 
 | Package                                             | For                                                   |
 | --------------------------------------------------- | ----------------------------------------------------- |
-| [`@pantoken/vite`](/api/bundlers/vite/src/)         | A Vite plugin with virtual modules and CSS injection. |
-| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` for Next.js `transpilePackages`.       |
-| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | A webpack plugin.                                     |
-| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | The `@pantoken;` at-rule.                             |
-| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | A Tailwind preset.                                    |
-| [`@pantoken/panda`](/api/bundlers/panda/src/)       | A Panda CSS preset.                                   |
+| [`@pantoken/vite`](/api/bundlers/vite/src/)         | Vite plugin՝ վիրտուալ մոդուլներով և CSS injection-ով։ |
+| [`@pantoken/next`](/api/bundlers/next/src/)         | `withPantoken` Next.js-ի համար `transpilePackages`.   |
+| [`@pantoken/webpack`](/api/bundlers/webpack/src/)   | Webpack plugin։                                       |
+| [`@pantoken/postcss`](/api/bundlers/postcss/src/)   | `@pantoken;` at-rule-ը։                               |
+| [`@pantoken/tailwind`](/api/bundlers/tailwind/src/) | Tailwind preset։                                      |
+| [`@pantoken/panda`](/api/bundlers/panda/src/)       | Panda CSS preset։                                     |
 
-## Platforms
+## Մեքենաներ / Պլատֆորմներ
 
-Native and site-generator targets, emitted by the CLI or their own API.
+Բնական և site-generator թիրախներ՝ եմթված CLI-ից կամ ինքնուրույն API-ներից։
 
-| Package                                                                                        | Output                                     |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift source plus a SwiftPM manifest stub. |
-| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML resources.                     |
-| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin.                    |
-| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart.                              |
-| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust consts for egui or iced.              |
-| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | A WordPress block-theme `theme.json`.      |
-| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | A Vanilla Forums `variables.json`.         |
-| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal theme assets.                       |
-| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo and Jekyll site data.                 |
-| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-friendly values for HTML email.     |
+| Package                                                                                        | Output                                          |
+| ---------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| [`@pantoken/swift`](/api/platforms/swift/src/)                                                 | Swift աղբյուր և SwiftPM manifest stub։          |
+| [`@pantoken/android`](/api/platforms/android/src/)                                             | Android XML ռեսուրսներ։                         |
+| [`@pantoken/compose`](/api/platforms/compose/src/)                                             | Jetpack Compose Kotlin։                         |
+| [`@pantoken/flutter`](/api/platforms/flutter/src/)                                             | Flutter Dart։                                   |
+| [`@pantoken/rust`](/api/platforms/rust/src/)                                                   | Rust const-ներ՝ egui կամ iced օրինակների համար։ |
+| [`@pantoken/wordpress`](/api/platforms/wordpress/src/)                                         | WordPress block-theme `theme.json`.             |
+| [`@pantoken/vanilla`](/api/platforms/vanilla/src/)                                             | Vanilla Forums `variables.json`.                |
+| [`@pantoken/drupal`](/api/platforms/drupal/src/)                                               | Drupal թեմայի անշարժներ։                        |
+| [`@pantoken/hugo`](/api/platforms/hugo/src/), [`@pantoken/jekyll`](/api/platforms/jekyll/src/) | Hugo և Jekyll site տվյալներ։                    |
+| [`@pantoken/email`](/api/platforms/email/src/)                                                 | Inline-համատեղելի արժեքներ HTML էլփոստի համար։  |
 
-## Design
+## Դիզայն
 
-For design tools.
+Դիզայնային գործիքների համար։
 
 | Package                                           | Output                                                                |
 | ------------------------------------------------- | --------------------------------------------------------------------- |
-| [`@pantoken/figma`](/api/design/figma/src/)       | A Figma Variables payload.                                            |
-| [`@pantoken/swatches`](/api/design/swatches/src/) | Color swatches (ASE, GPL, Sketch) plus a viewable SVG specimen sheet. |
+| [`@pantoken/figma`](/api/design/figma/src/)       | Figma Variables payload։                                              |
+| [`@pantoken/swatches`](/api/design/swatches/src/) | Գույնի swatch-ներ (ASE, GPL, Sketch) հանելով դիտվող SVG նմուշաթերթով։ |
 
-## Plugins
+## Պլագիններ
 
-Optional transforms that extend the token or CSS output. See [Plugins](/guide/plugins).
+Ընտրովի թրանսֆորմներ, որոնք ընդլայնում են token կամ CSS ելքը։ Տես [Plugins](/guide/plugins)։
 
-| Package                                                                               | What it adds                                                    |
-| ------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Named z-index depths as `--instui-stacking-*` tokens.           |
-| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | The `-with-visual-debug` layout-debugging outline.              |
-| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Brand icons from simple-icons.                                  |
-| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure product logos as SVGs, data URIs, and image tokens. |
-| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | A PostCSS plugin that drops unused custom properties.           |
+| Package                                                                               | What it adds                                                                |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| [`@pantoken/plugin-stacking`](/api/plugins/pantoken/stacking/src/)                    | Կոչված z-index խորություններ որպես `--instui-stacking-*` token-ներ։         |
+| [`@pantoken/plugin-visual-debug`](/api/plugins/pantoken/visual-debug/src/)            | `-with-visual-debug` layout-debugging outline-ը։                            |
+| [`@pantoken/plugin-simple-icons`](/api/plugins/pantoken/simple-icons/src/)            | Բրենդային նշաններ simple-icons-ից։                                          |
+| [`@pantoken/plugin-logos`](/api/plugins/pantoken/logos/src/)                          | Instructure պատկանող լոգոներ որպես SVG-ներ, data URI-ներ և image token-ներ։ |
+| [`@pantoken/plugin-prune-custom-props`](/api/plugins/postcss/prune-custom-props/src/) | PostCSS plugin, որը հեռացնում է չօգտագործվող custom properties։             |
 
-## Tools
+## Գործիքներ
 
-Build, docs, and demo infrastructure for the monorepo itself. Most is internal, but the pieces are
-self-contained, so we document them here and some ship to npm on their own.
+Մոնոռեպոյի շինարարական, փաստաթղթավորման և դեմո ենթակառուցվածքը։ Շատերը ներքին են, բայց մի մասը ինքնուրույն է և գր documentación ենք տալիս այստեղ։
 
-| Package                                            | What it does                                                                                                                                                                                          |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Generates the unified `pantoken` package barrel and `exports` from its dependencies.                                                                                                                  |
-| `@pantoken/validate-generated`                     | The drift gate: checks every generated stylesheet resolves against the token IR.                                                                                                                      |
-| [`@pantoken/demo`](/api/tools/demo/src/)           | The self-hosted live-demo runner: resolves a `@demo` spec to an iframe and renders bare HTML/CSS/JS same-origin, token-themed.                                                                        |
-| `@cssdoc/core` (external)                          | A generic CSS documentation extractor (TSDoc, for CSS): parses doc-comments + the CSS AST into a model the docs emit as the CSS API reference. Lives in its own repo; consumed via a link dependency. |
+| Package                                            | What it does                                                                                                                                                                                                                               |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [`@pantoken/aggregate`](/api/tools/aggregate/src/) | Ստեղծում է միասնական `pantoken` փաթեթի barrel-ը և `exports` իր կախվածություններից։                                                                                                                                                         |
+| `@pantoken/validate-generated`                     | Drift gate—ստուգում է, որ յուրաքանչյուր գեներացված stylesheet-ը լուծվում է token IR-ի դեմ։                                                                                                                                                 |
+| [`@pantoken/demo`](/api/tools/demo/src/)           | Self-hosted live-demo runner՝ լուծում է `@demo` spec-ին iframe-ում և էմիտում է հին HTML/CSS/JS same-origin, token-թեմատիկ։                                                                                                                 |
+| `@cssdoc/core` (external)                          | Ընդհանուր CSS փաստաթղթավորման արտահանող (TSDoc՝ CSS-ի համար): վերլուծում է doc-comments + CSS AST և վերադարձնում մի մոդել, որը docs-ը էմիտ անում որպես CSS API reference։ Գտնվում է առանձին ռեպոում; օգտագործվում է որպես link dependency։ |
 
-`@pantoken/validate-generated` is a run-once script (invoked by `pnpm run ready`), so it has no API
-page; the others do.
+`@pantoken/validate-generated` միանգամյա script է (կոչվում է `pnpm run ready`-ով), դրա համար API էջ չունի; մյուսները ունեն։
 
 ## AI
 
-Consumer-facing AI setup assets. These are for projects that use pantoken, not for developing
-pantoken itself.
+Ծտրիրողական AI կազմաձևի ակտիվներ՝ սպառողին ուղղված։ Ավելին՝ այսները նախատեսված են այն նախագծերի համար, որոնք օգտագործում են pantoken-ն, ոչ թե pantoken-ի զարգացման համար։
 
-- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) installs `AGENTS.md`, `llms.txt`, and
-  assistant/editor rules (Cursor, Copilot, Windsurf, Claude Code) into a consumer repository.
+- [`@pantoken/ai`](/api/ai/pantoken-ai/src/) տեղադրում է `AGENTS.md`, `llms.txt` և assistant/editor կանոններ (Cursor, Copilot, Windsurf, Claude Code) սպառող ռեպոզիտորի մեջ։
 
-## Dev plugins
+## Dev plugin-ներ
 
-Plugins we author for the tools we build with, grouped by host. They're standalone and publishable.
+Պլագիններ, որոնք հեղինակվում են այնտեղ օգտագործվող գործիքների համար, խմբավորված հոստով։ Դրանք ինքնուրույն և հրապարակելի են։
 
-| Package                                                                                  | Plugs into                                                                             |
-| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc: turns a `@demo <provider>:<ref>` block tag into an embeddable demo fence.     |
-| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite: rebuilds upstream workspace packages (and dependents) when their source changes. |
+| Package                                                                                  | Plugs into                                                                                      |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| [`@pantoken/typedoc-plugin-demo`](/api/plugins/typedoc/demo/src/)                        | TypeDoc՝ `@demo <provider>:<ref>` block tag-ը վերածում է ներդրված դեմո fence-ի։                 |
+| [`@pantoken/vite-workspace-orchestrator`](/api/plugins/vite/workspace-orchestrator/src/) | Vite՝ վերակառուցում է upstream workspace փաթեթները (և կախվածները) երբ դրանց աղբյուրը փոխվում է։ |

@@ -4,12 +4,12 @@ pantoken takes Instructure UI's design tokens and icons, resolves them once, and
 model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
 
-You install the smallest package that fits your task. Everything is also re-exported by the unified
+You install the smallest package that fits your task. Everything is also re‑exported by the unified
 `pantoken` package, so you can start there and narrow down later.
 
 ## Scaffold a starter project
 
-The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
+The quickest way to try pantoken: scaffold a starter project with it already installed and wired in.
 
 ```sh
 npx create-pantoken-app react
@@ -22,7 +22,7 @@ programmatic use.
 Using an AI coding agent? No install needed — point it at the skill directly:
 
 ```sh
-claude "Fetch https://pantoken.app/create-pantoken-app.md and follow it to set up pantoken in this project."
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
 ```
 
 Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
@@ -106,8 +106,8 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Both exports load the full IR at module initialisation — there is no per-icon tree-shaking at this
-level. For lean CSS-only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
+Both exports load the full IR at module initialisation — there is no per-icon tree‑shaking at this
+level. For lean CSS‑only loading, use the [CDN picker](/guide/cdn-picker) to generate a combine URL
 for only the icons you need.
 
 ## Generate for a native platform
@@ -122,8 +122,8 @@ See [the pantoken CLI](/guide/cli) for every target.
 
 ## VS Code authoring hints
 
-`@pantoken/pantoken` now ships VS Code custom-data files so downstream projects can get class and
-token completion in HTML/CSS without installing a pantoken-specific extension.
+`@pantoken/pantoken` now ships VS Code custom‑data files so downstream projects can get class and
+token completion in HTML/CSS without installing a pantoken‑specific extension.
 
 1. Install the unified package:
 
@@ -131,7 +131,7 @@ token completion in HTML/CSS without installing a pantoken-specific extension.
 npm i @pantoken/pantoken
 ```
 
-1. Point VS Code at the shipped custom-data JSON from your consumer workspace:
+1. Point VS Code at the shipped custom‑data JSON from your consumer workspace:
 
 ```json
 {
