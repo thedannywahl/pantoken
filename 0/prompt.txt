@@ -31,3 +31,14 @@ banner relaxed:
 banner compact:
 * pendo title = banner compact styles
 * pendo-sub-title: one token size smaller.
+
+---
+
+okay, the way that pendo works is I can upload a single global stylesheet.  Then I can create custom themes that can carry a single additional class and we're trying to keep it as compact as possible so we need to scaffold it this way:
+* "instui" anywhere triggers the style- that's how we keep the scoped styles from bleeding into Canvas (or another app itself)
+* no additional component name: violet banner, 'lightbulb' default glyph
+* -sea: sea banner, 'lightbulb' default glyph.
+* -megaphone: megaphone glyph
+* -poll: message-circle-question-mark glyph
+* -canvas: icon-canvas-icon-reversed glyph
+* repeat for: parchment, mastery, learnplatform
