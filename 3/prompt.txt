@@ -1,0 +1,18 @@
+the demo iframe is still picking up vitepress styles:
+```
+body {
+	line-height: 24px;
+	color: var(--vp-c-text-1);
+	background-color: var(--vp-c-bg);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-autospace: normal;
+	text-spacing-trim: normal;
+}
+```
+is getting applied so the background color overlays the page background color defined in the demo styles.
+
+---
+
+Continue: "Continue to iterate?"
