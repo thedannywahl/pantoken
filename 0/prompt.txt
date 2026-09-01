@@ -1,0 +1,10 @@
+more demo strings to assess:
+#attachment:Pasted text #1
+
+---
+
+1,2,4
+
+---
+
+you're not going to do the translations - you're going to update the i18n.json verbatim configs
