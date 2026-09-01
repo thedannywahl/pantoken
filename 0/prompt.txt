@@ -1,0 +1,386 @@
+now evaluate docs/scripts/build-api-locales.ts for the same treatment, as robust as possible.
+
+---
+
+[Terminal 720e0e05-6aed-4586-b263-9ed6e245c5e6 notification: command may be waiting for input — assess the output below.]
+This note is not a signal to end the turn — pick one of the actions below and continue.
+  1. If the output clearly ends with a non-secret input prompt (Continue? (y/n), Enter selection, etc. — a normal shell prompt like `$` or `#` does NOT count), determine the answer and immediately call send_to_terminal with id="720e0e05-6aed-4586-b263-9ed6e245c5e6" (which returns the next few lines of output). Repeat one prompt at a time. Never guess passwords, passphrases, tokens, or other secrets — if the prompt requires a secret you do not have, inform the user and stop.
+  2. If the command may still be producing output or the shell prompt has not returned, call get_terminal_output with id="720e0e05-6aed-4586-b263-9ed6e245c5e6" to continue polling.
+Terminal output:
+pantoken on cli ≡ via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec grep -l '"allow": \["en\*"\]' {} \; | head -20
+docs/demos/progress-circle/i18n.json
+docs/demos/tabs/i18n.json
+docs/demos/form-field-group/i18n.json
+docs/demos/responsive/i18n.json
+docs/demos/tree-browser/i18n.json
+docs/demos/pagination/i18n.json
+docs/demos/date-time-inputs/i18n.json
+docs/demos/tooltip/i18n.json
+docs/demos/truncate/i18n.json
+docs/demos/calendar/i18n.json
+docs/demos/radio/i18n.json
+docs/demos/radio-input-group/i18n.json
+docs/demos/color-utilities/i18n.json
+docs/demos/side-nav-bar/i18n.json
+docs/demos/alert/i18n.json
+docs/demos/layout/i18n.json
+docs/demos/file-drop/i18n.json
+docs/demos/heading/i18n.json
+docs/demos/text-area/i18n.json
+docs/demos/range-input/i18n.json
+pantoken on cli ≡ via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec sed -i '' 's/"allow": \["en\*"\]/"allow": ["en*", "ar", "fa", "he", "hu", "fr", "de", "es", "it", "ja", "ko", "pt", "pt-BR", "ru", "uk", "zh-Hans", "zh-Hant", "nl", "pl", "tr", "sv"]/g' {} \;
+pantoken on cli ≡  ~58 via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec grep -l '"allow": \["en\*", "ar"' {} \; | wc -l
+      58
+pantoken on cli ≡  ~58 via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec grep -l '"allow": \["en\*"\]' {} \; | wc -l
+       0
+pantoken on cli ≡  ~58 via  26.8.1 
+➜  head -100 /Users/dwahl/Scripts/pantoken/docs/scripts/translation-memory.ts
+/**
+ * A content-addressed translation memory plus the batch driver both locale pipelines share.
+ *
+ * The pipelines used to re-translate every file on every run — one `claude -p` spawn per API
+ * markdown file and per sidebar label. This module cuts that to the diff: each translatable unit is
+ * keyed by a hash of its source text, so unchanged content is served from a committed cache and only
+ * new or edited units reach the adapter. Small units (sidebar labels) are objectified into a single
+ * batched request; large markdown is translated per file on a miss to keep fidelity.
+ *
+ * The flow is: diff (hash vs. cache) → objectify (batch the misses) → translate → destructure (map
+ * results back by hash) → save (prune to the units seen this run, write JSON).
+ *
+ * @module
+ */
+import { join } from "node:path";
+import {
+  isPassthroughTranslation,
+  resolveVerbatimAction,
+  TranslationMemory as SharedTranslationMemory,
+  sha256,
+  type VerbatimPolicy,
+} from "@pantoken/translation-adapters";
+import type { TranslationAdapter } from "./api-translation.ts";
+
+/**
+ * A translatable unit. `markdown` is translated per file (whole-file, e.g. guides); `text` (short
+ * labels) and `prose` (block-level API/cssdoc prose) units are batched together into one request.
+ */
+export interface TranslationUnit {
+  kind: "markdown" | "text" | "prose";
+  source: string;
+  /** Only used to label markdown units in adapter prompts/logs. */
+  filePath?: string;
+}
+
+/** The cache directory (committed — it's the reusable translation memory, not a build artifact). */
+const cacheDir = join(import.meta.dirname, "..", "i18n-cache");
+
+/** The stable content key for a unit: `sha256(kind \0 source)`, hex. */
+export function keyFor(kind: string, source: string): string {
+  return sha256(`${kind}${source}`);
+}
+
+/** Docs facade: `(kind, source)` API over the shared memory; prunes to touched keys on save. */
+export class TranslationMemory {
+  private readonly _mem: SharedTranslationMemory;
+  get path(): string {
+    return this._mem.path;
+  }
+  get hits(): number {
+    return this._mem.hits;
+  }
+  misses = 0;
+
+  private constructor(mem: SharedTranslationMemory) {
+    this._mem = mem;
+  }
+
+  /** Load (or start) the memory for `<locale>.<namespace>.json`. */
+  static load(locale: string, namespace: string): TranslationMemory {
+    const path = join(cacheDir, `${locale}.${namespace}.json`);
+    return new TranslationMemory(SharedTranslationMemory.open(path, { prune: true }));
+  }
+
+  get(kind: string, source: string): string | undefined {
+    return this._mem.get(keyFor(kind, source));
+  }
+
+  set(kind: string, source: string, translation: string): void {
+    this._mem.set(keyFor(kind, source), translation);
+    this.misses++;
+  }
+
+  save(): void {
+    this._mem.save();
+  }
+}
+
+/**
+ * Translate a set of units against the memory. Returns a map keyed by `keyFor(kind, source)` so
+ * callers can look up each unit's translation (identical sources collapse to one entry).
+ *
+ * Diff: cache hits are served immediately. Objectify + translate: `text` misses are deduped and sent
+ * to {@link TranslationAdapter.translateBatch} in one request; `markdown` misses are translated per
+ * file. Destructure + save: results are written back into the memory keyed by content hash.
+ */
+export interface TranslateOptions {
+  /**
+   * Persist the memory after each markdown miss, so a long run (e.g. hundreds of API files) is
+   * resumable: if a translation fails partway, the completed work is already saved and a re-run
+   * serves it from cache. Off by default.
+   */
+  autosave?: boolean;
+  /**
+   * Bypass the cache entirely: every unit is retranslated (and its cached value overwritten) even
+   * when an unchanged cache hit already exists. Use this to force a fresh pass over already-cached
+   * content (e.g. after fixing an adapter bug that produced bad translations). Defaults to the
+   * `DOCS_TRANSLATION_FORCE` environment variable (`"1"` → `true`), so every caller —
+   * `translate-guides.ts`, `translate-chrome.ts`, `translate-glossary.ts`, `translate-demos.ts`,
+   * `build-api-locales.ts` — honors it without a code change.
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  vp check --ls docs/scripts/translate-demos.ts 2>&1 | head -50
+error: Unexpected argument '--ls'
+
+Use `-- --ls` to pass the argument as a value
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  vp check --typecheck docs/scripts/translate-demos.ts 2>&1
+VITE+ - The Unified Toolchain for the Web
+
+error: Unexpected argument '--typecheck'
+
+Use `-- --typecheck` to pass the argument as a value
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  vp check 2>&1 | grep -A5 "translate-demos" | head -20
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  vp check 2>&1 | tail -30
+error: Formatting issues found
+docs/ar/demos/base.html (4ms)
+docs/ar/demos/byline.html (3ms)
+docs/ar/demos/color-utilities.html (3ms)
+docs/ar/demos/components.html (1ms)
+docs/ar/demos/context-view.html (3ms)
+docs/ar/demos/drawer-layout.html (2ms)
+docs/ar/demos/file-drop.html (1ms)
+docs/ar/demos/focus-outline.html (1ms)
+docs/ar/demos/form-messages.html (2ms)
+docs/ar/demos/icon.html (2ms)
+docs/ar/demos/in-place-edit.html (1ms)
+docs/ar/demos/layout.html (3ms)
+docs/ar/demos/prose.html (2ms)
+docs/ar/demos/radio-input-group.html (2ms)
+docs/ar/demos/radio.html (1ms)
+docs/ar/demos/responsive.html (24ms)
+docs/ar/demos/screen-reader-content.html (1ms)
+docs/ar/demos/spacing.html (2ms)
+docs/ar/demos/tabs.html (1ms)
+docs/ar/demos/toggle-group.html (0ms)
+docs/ar/demos/tree-browser.html (1ms)
+docs/ar/demos/truncate.html (1ms)
+docs/ar/demos/view.html (4ms)
+docs/scripts/build-api-locales.ts (0ms)
+
+Found formatting issues in 24 files (3107ms, 10 threads). Run `vp check --fix` to fix them.
+pantoken on cli ≡  ~57 via  26.8.1 x 
+➜  npx tsx --check docs/scripts/build-api-locales.ts 2>&1
+npm warn EBADDEVENGINES The developer of this package has specified the following through devEngines
+npm warn EBADDEVENGINES Invalid devEngines.packageManager
+npm warn EBADDEVENGINES Invalid name "pnpm" does not match "npm" for "packageManager"
+npm warn EBADDEVENGINES {
+npm warn EBADDEVENGINES   current: { name: 'npm', version: '11.19.0' },
+npm warn EBADDEVENGINES   required: { name: 'pnpm', version: '11.23.0', onFail: 'warn' }
+npm warn EBADDEVENGINES }
+Need to install the following packages:
+tsx@4.23.13
+Ok to proceed? (y) 
+
+[Terminal 720e0e05-6aed-4586-b263-9ed6e245c5e6 notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on cli ≡ via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec grep -l '"allow": \["en\*"\]' {} \; | head -20
+docs/demos/progress-circle/i18n.json
+docs/demos/tabs/i18n.json
+docs/demos/form-field-group/i18n.json
+docs/demos/responsive/i18n.json
+docs/demos/tree-browser/i18n.json
+docs/demos/pagination/i18n.json
+docs/demos/date-time-inputs/i18n.json
+docs/demos/tooltip/i18n.json
+docs/demos/truncate/i18n.json
+docs/demos/calendar/i18n.json
+docs/demos/radio/i18n.json
+docs/demos/radio-input-group/i18n.json
+docs/demos/color-utilities/i18n.json
+docs/demos/side-nav-bar/i18n.json
+docs/demos/alert/i18n.json
+docs/demos/layout/i18n.json
+docs/demos/file-drop/i18n.json
+docs/demos/heading/i18n.json
+docs/demos/text-area/i18n.json
+docs/demos/range-input/i18n.json
+pantoken on cli ≡ via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec sed -i '' 's/"allow": \["en\*"\]/"allow": ["en*", "ar", "fa", "he", "hu", "fr", "de", "es", "it", "ja", "ko", "pt", "pt-BR", "ru", "uk", "zh-Hans", "zh-Hant", "nl", "pl", "tr", "sv"]/g' {} \;
+pantoken on cli ≡  ~58 via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec grep -l '"allow": \["en\*", "ar"' {} \; | wc -l
+      58
+pantoken on cli ≡  ~58 via  26.8.1 
+➜  find docs/demos -name "i18n.json" -exec grep -l '"allow": \["en\*"\]' {} \; | wc -l
+       0
+pantoken on cli ≡  ~58 via  26.8.1 
+➜  head -100 /Users/dwahl/Scripts/pantoken/docs/scripts/translation-memory.ts
+/**
+ * A content-addressed translation memory plus the batch driver both locale pipelines share.
+ *
+ * The pipelines used to re-translate every file on every run — one `claude -p` spawn per API
+ * markdown file and per sidebar label. This module cuts that to the diff: each translatable unit is
+ * keyed by a hash of its source text, so unchanged content is served from a committed cache and only
+ * new or edited units reach the adapter. Small units (sidebar labels) are objectified into a single
+ * batched request; large markdown is translated per file on a miss to keep fidelity.
+ *
+ * The flow is: diff (hash vs. cache) → objectify (batch the misses) → translate → destructure (map
+ * results back by hash) → save (prune to the units seen this run, write JSON).
+ *
+ * @module
+ */
+import { join } from "node:path";
+import {
+  isPassthroughTranslation,
+  resolveVerbatimAction,
+  TranslationMemory as SharedTranslationMemory,
+  sha256,
+  type VerbatimPolicy,
+} from "@pantoken/translation-adapters";
+import type { TranslationAdapter } from "./api-translation.ts";
+
+/**
+ * A translatable unit. `markdown` is translated per file (whole-file, e.g. guides); `text` (short
+ * labels) and `prose` (block-level API/cssdoc prose) units are batched together into one request.
+ */
+export interface TranslationUnit {
+  kind: "markdown" | "text" | "prose";
+  source: string;
+  /** Only used to label markdown units in adapter prompts/logs. */
+  filePath?: string;
+}
+
+/** The cache directory (committed — it's the reusable translation memory, not a build artifact). */
+const cacheDir = join(import.meta.dirname, "..", "i18n-cache");
+
+/** The stable content key for a unit: `sha256(kind \0 source)`, hex. */
+export function keyFor(kind: string, source: string): string {
+  return sha256(`${kind}${source}`);
+}
+
+/** Docs facade: `(kind, source)` API over the shared memory; prunes to touched keys on save. */
+export class TranslationMemory {
+  private readonly _mem: SharedTranslationMemory;
+  get path(): string {
+    return this._mem.path;
+  }
+  get hits(): number {
+    return this._mem.hits;
+  }
+  misses = 0;
+
+  private constructor(mem: SharedTranslationMemory) {
+    this._mem = mem;
+  }
+
+  /** Load (or start) the memory for `<locale>.<namespace>.json`. */
+  static load(locale: string, namespace: string): TranslationMemory {
+    const path = join(cacheDir, `${locale}.${namespace}.json`);
+    return new TranslationMemory(SharedTranslationMemory.open(path, { prune: true }));
+  }
+
+  get(kind: string, source: string): string | undefined {
+    return this._mem.get(keyFor(kind, source));
+  }
+
+  set(kind: string, source: string, translation: string): void {
+    this._mem.set(keyFor(kind, source), translation);
+    this.misses++;
+  }
+
+  save(): void {
+    this._mem.save();
+  }
+}
+
+/**
+ * Translate a set of units against the memory. Returns a map keyed by `keyFor(kind, source)` so
+ * callers can look up each unit's translation (identical sources collapse to one entry).
+ *
+ * Diff: cache hits are served immediately. Objectify + translate: `text` misses are deduped and sent
+ * to {@link TranslationAdapter.translateBatch} in one request; `markdown` misses are translated per
+ * file. Destructure + save: results are written back into the memory keyed by content hash.
+ */
+export interface TranslateOptions {
+  /**
+   * Persist the memory after each markdown miss, so a long run (e.g. hundreds of API files) is
+   * resumable: if a translation fails partway, the completed work is already saved and a re-run
+   * serves it from cache. Off by default.
+   */
+  autosave?: boolean;
+  /**
+   * Bypass the cache entirely: every unit is retranslated (and its cached value overwritten) even
+   * when an unchanged cache hit already exists. Use this to force a fresh pass over already-cached
+   * content (e.g. after fixing an adapter bug that produced bad translations). Defaults to the
+   * `DOCS_TRANSLATION_FORCE` environment variable (`"1"` → `true`), so every caller —
+   * `translate-guides.ts`, `translate-chrome.ts`, `translate-glossary.ts`, `translate-demos.ts`,
+   * `build-api-locales.ts` — honors it without a code change.
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  vp check --ls docs/scripts/translate-demos.ts 2>&1 | head -50
+error: Unexpected argument '--ls'
+
+Use `-- --ls` to pass the argument as a value
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  vp check --typecheck docs/scripts/translate-demos.ts 2>&1
+VITE+ - The Unified Toolchain for the Web
+
+error: Unexpected argument '--typecheck'
+
+Use `-- --typecheck` to pass the argument as a value
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  vp check 2>&1 | grep -A5 "translate-demos" | head -20
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  vp check 2>&1 | tail -30
+error: Formatting issues found
+docs/ar/demos/base.html (4ms)
+docs/ar/demos/byline.html (3ms)
+docs/ar/demos/color-utilities.html (3ms)
+docs/ar/demos/components.html (1ms)
+docs/ar/demos/context-view.html (3ms)
+docs/ar/demos/drawer-layout.html (2ms)
+docs/ar/demos/file-drop.html (1ms)
+docs/ar/demos/focus-outline.html (1ms)
+docs/ar/demos/form-messages.html (2ms)
+docs/ar/demos/icon.html (2ms)
+docs/ar/demos/in-place-edit.html (1ms)
+docs/ar/demos/layout.html (3ms)
+docs/ar/demos/prose.html (2ms)
+docs/ar/demos/radio-input-group.html (2ms)
+docs/ar/demos/radio.html (1ms)
+docs/ar/demos/responsive.html (24ms)
+docs/ar/demos/screen-reader-content.html (1ms)
+docs/ar/demos/spacing.html (2ms)
+docs/ar/demos/tabs.html (1ms)
+docs/ar/demos/toggle-group.html (0ms)
+docs/ar/demos/tree-browser.html (1ms)
+docs/ar/demos/truncate.html (1ms)
+docs/ar/demos/view.html (4ms)
+docs/scripts/build-api-locales.ts (0ms)
+
+Found formatting issues in 24 files (3107ms, 10 threads). Run `vp check --fix` to fix them.
+pantoken on cli ≡  ~57 via  26.8.1 x 
+➜  npx tsx --check docs/scripts/build-api-locales.ts 2>&1
+npm warn EBADDEVENGINES The developer of this package has specified the following through devEngines
+npm warn EBADDEVENGINES Invalid devEngines.packageManager
+npm warn EBADDEVENGINES Invalid name "pnpm" does not match "npm" for "packageManager"
+npm warn EBADDEVENGINES {
+npm warn EBADDEVENGINES   current: { name: 'npm', version: '11.19.0' },
+npm warn EBADDEVENGINES   required: { name: 'pnpm', version: '11.23.0', onFail: 'warn' }
+npm warn EBADDEVENGINES }
+Need to install the following packages:
+tsx@4.23.13
+Ok to proceed? (y) y
