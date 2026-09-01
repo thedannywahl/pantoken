@@ -4,7 +4,7 @@
  * the page, so `hero.text`, `hero.tagline`, each action's `text`, and each feature's `title`/`details`
  * need real translation. `hero.name` (the "pantoken" wordmark), `theme`, `link`, and the icon
  * `light`/`dark` asset paths are structural and stay untouched; `link` values get locale-prefixed
- * instead (`/guide/x` -> `/<locale>/guide/x`), matching the hand-authored `hu/index.md`.
+ * instead (`/guide/x` -\> `/<locale>/guide/x`), matching the hand-authored `hu/index.md`.
  *
  * Run with `DOCS_TRANSLATION_ADAPTER=ai` for real translations; the default `glossary` adapter is a
  * keyless passthrough. Content-addressed by English text (`kind: "text"`), so only new or edited
