@@ -168,7 +168,8 @@ const orchestrator = workspaceOrchestrator({
       dependents: [],
     },
     {
-      // Re-copy the committed demo snippets (docs/demos/*.html) into public/demos/ on edit. Full reload
+      // Re-render the committed demo templates (docs/demos/<component>/index.html) into public/demos/ on
+      // edit. Full reload
       // (public/ write) refreshes an open /play demo. See stage-demo-snippets.ts.
       name: "@pantoken/docs#demo-snippets",
       dir: at("docs"),
