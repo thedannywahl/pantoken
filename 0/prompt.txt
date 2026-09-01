@@ -1,0 +1,41 @@
+✓ web-components: wrote dist/web-components.iife.js
+
+/Users/dwahl/Scripts/pantoken/docs/scripts/demo-i18n.ts
+  13:8  error  Missing TSDoc for interface DemoI18nSource  tsdoc-require-2/require
+
+✖ 1 problem (1 error, 0 warnings)
+
+---
+
+fallow is seeing docs/<lang>/ as unused code, we need to update our fallow config.
+
+---
+
+run `vpr ready` and watch for warnings and errors, addressing them incrementally until it exits successfully.
+
+---
+
+translate-demos needs another level of logging in its output so we can determine what the issue is with these translations and determine which i18n file and which language it is.  we also need to do another pass at the language strings: pantoken class modifiers should not be translated and spacing should not be part of the strings:
+```
+➜ bash /tmp/translate-all-copilot-force.sh
+  ! text unit looks untranslated (identical to source), not cached: "font-weight-body-base"
+  ! text unit looks untranslated (identical to source), not cached: "font-weight-body-strong"
+  ! text unit looks untranslated (identical to source), not cached: "font-family-code"
+  ! text unit looks untranslated (identical to source), not cached: "\n      radius-container-sm\n    "
+  ! text unit looks untranslated (identical to source), not cached: "\n      radius-container-lg\n    "
+  ! text unit looks untranslated (identical to source), not cached: "\n      elevation-resting\n    "
+  ! text unit looks untranslated (identical to source), not cached: "\n      elevation-topmost\n    "
+  ! text unit looks untranslated (identical to source), not cached: "\n      opacity-disabled\n    "
+  ! text unit looks untranslated (identical to source), not cached: " Syllabus.pdf"
+  ! text unit looks untranslated (identical to source), not cached: " Reading.pdf"
+  ! text unit looks untranslated (identical to source), not cached: " Slides.pptx"
+  ! text unit looks untranslated (identical to source), not cached: " Rubric.docx"
+  ! text unit looks untranslated (identical to source), not cached: "-background-primary -border-radius-large"
+  ! text unit looks untranslated (identical to source), not cached: "-border-width-small -border-color-brand "
+  ! text unit looks untranslated (identical to source), not cached: "-background-brand"
+  … 53/491 labels + prose blocks translated
+  ```
+
+---
+
+actually go through the demo i18n files and remove the pantoken modifiers for code blocks and add them back to the html or mark them as required verbatims. actually remove the whitespace from the strings in i18n. we shouldn't be carrying spaces or new lines as they won't render in html anyways.
