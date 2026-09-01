@@ -37,6 +37,8 @@ export interface CommandCycleController {
   iconVisible: ComputedRef<boolean>;
   typedLauncher: ComputedRef<string>;
   typedSuffix: ComputedRef<string>;
+  /** The complete suffix, regardless of how much of it is currently typed. */
+  suffixText: ComputedRef<string>;
   visibleText: ComputedRef<string>;
   cursorBlink: Ref<boolean>;
   totalLength: ComputedRef<number>;
@@ -201,6 +203,7 @@ export function useCommandCycle({
     iconVisible,
     typedLauncher,
     typedSuffix,
+    suffixText: suffixValue,
     visibleText,
     cursorBlink,
     totalLength,

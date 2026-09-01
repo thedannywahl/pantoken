@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useCommandCycle, type CommandCycleOption } from "./useCommandCycle";
 
 // beatBlink() schedules a cursor blink via requestAnimationFrame, a browser API this suite's node
@@ -51,6 +51,20 @@ test("types the launcher and suffix out one character at a time", () => {
   expect(cycle.visibleText.value).toBe("a");
   vi.advanceTimersByTime(TIMINGS.typeMs * (FULL_LENGTH - 1));
   expect(cycle.visibleText.value).toBe("a-cmd");
+});
+
+// The row sizes itself to the longest possible command, so it needs the whole suffix up front
+// rather than however much of it is typed right now.
+test("exposes the full suffix regardless of how much has been typed", () => {
+  const suffix = ref(SUFFIX);
+  const { cycle } = makeCycle({ suffix: computed(() => suffix.value) });
+  cycle.start();
+
+  expect(cycle.typedSuffix.value).toBe("");
+  expect(cycle.suffixText.value).toBe("cmd");
+
+  suffix.value = "other";
+  expect(cycle.suffixText.value).toBe("other");
 });
 
 test("holds at full length, backspaces to empty, then advances to the next option", () => {

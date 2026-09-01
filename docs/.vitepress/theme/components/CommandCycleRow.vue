@@ -109,25 +109,49 @@ function openPopoverIfEnabled() {
       :cycle="props.cycle"
       :active-option="props.cycle.activeOption.value"
     ></slot>
-    <span
-      v-if="props.cycle.iconVisible.value"
-      class="instui-icon gs-command-row__icon"
-      :class="`-icon-${props.cycle.activeOption.value.icon}`"
-      :style="{ color: tone(props.cycle.activeOption.value) }"
-      aria-hidden="true"
-    ></span>
-    <span :style="{ color: tone(props.cycle.activeOption.value) }">{{
-      props.cycle.typedLauncher.value
-    }}</span>
-    <span class="gs-command-row__suffix" :class="`-${props.suffixVariant}`">{{
-      props.cycle.typedSuffix.value
-    }}</span>
-    <span
-      class="gs-command-row__cursor"
-      :class="{ 'gs-command-row__cursor--blink': props.cycle.cursorBlink.value }"
-      :style="{ backgroundColor: tone(props.cycle.activeOption.value) }"
-      aria-hidden="true"
-    ></span>
+    <!-- Every option is laid out hidden in the same grid cell as the live text, so the row's box is
+         already as wide (and tall) as the longest command can ever be. Without that, each typed
+         character resizes the row and reflows the whole tilted card. -->
+    <span class="gs-command-row__text">
+      <span
+        v-for="option in props.options"
+        :key="option.id"
+        class="gs-command-row__sizer"
+        aria-hidden="true"
+      >
+        <span
+          v-if="option.icon"
+          class="instui-icon gs-command-row__icon"
+          :class="`-icon-${option.icon}`"
+        ></span>
+        <span>{{ option.launcher }}</span>
+        <span class="gs-command-row__suffix" :class="`-${props.suffixVariant}`">{{
+          props.cycle.suffixText.value
+        }}</span>
+        <span class="gs-command-row__cursor"></span>
+      </span>
+      <span class="gs-command-row__live">
+        <span
+          v-if="props.cycle.iconVisible.value"
+          class="instui-icon gs-command-row__icon"
+          :class="`-icon-${props.cycle.activeOption.value.icon}`"
+          :style="{ color: tone(props.cycle.activeOption.value) }"
+          aria-hidden="true"
+        ></span>
+        <span :style="{ color: tone(props.cycle.activeOption.value) }">{{
+          props.cycle.typedLauncher.value
+        }}</span>
+        <span class="gs-command-row__suffix" :class="`-${props.suffixVariant}`">{{
+          props.cycle.typedSuffix.value
+        }}</span>
+        <span
+          class="gs-command-row__cursor"
+          :class="{ 'gs-command-row__cursor--blink': props.cycle.cursorBlink.value }"
+          :style="{ backgroundColor: tone(props.cycle.activeOption.value) }"
+          aria-hidden="true"
+        ></span>
+      </span>
+    </span>
     <slot name="inline" :cycle="props.cycle" :active-option="props.cycle.activeOption.value"></slot>
     <button
       v-if="props.showCopy"
@@ -186,6 +210,34 @@ function openPopoverIfEnabled() {
   text-align: start;
   outline: none;
   padding-inline-end: 0.25em;
+}
+
+.gs-command-row__text {
+  display: inline-grid;
+  max-inline-size: 100%;
+  vertical-align: bottom;
+}
+
+.gs-command-row__sizer,
+.gs-command-row__live {
+  grid-area: 1 / 1;
+  min-inline-size: 0;
+}
+
+.gs-command-row__sizer {
+  /* Contributes its width to the shared grid track but no height, so the row is pinned to the
+     widest command without also being pinned to the tallest one's wrapped height — which would
+     cover the agent shell's placeholder. */
+  block-size: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.gs-command-row__live {
+  /* Scopes each keystroke's invalidation to this box. Firefox otherwise re-rasterizes the whole
+     tilted card, which tears its edges. Layout only — `paint` would clip the popovers. */
+  contain: layout style;
 }
 
 .gs-command-row__cursor {
