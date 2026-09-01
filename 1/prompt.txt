@@ -1,0 +1,1 @@
+we're working now on the saved draft- we can stop calling this CANVAS_LOCALES anywhere and just call it LOCALES.  by default source should be 'en' and primary should be 'hu' and that's it, everything else falls into secondary.  what's the difference between local lifecycle and locale tiers? they seem redundanct.
