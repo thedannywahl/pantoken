@@ -1,5 +1,7 @@
 ---
 "@pantoken/docs": patch
+"@pantoken/translation-adapters": patch
 ---
 
-Preserve the CSS label in every localized docs interface.
+Preserve source-identical CSS and technical glossary terms in localized docs, and support required
+verbatim values that bypass translation entirely.

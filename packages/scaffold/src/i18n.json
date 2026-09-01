@@ -5,12 +5,12 @@
   "spinnerStop": "Done scaffolding.",
   "wroteFile": {
     "string": "✓ {{path}}",
-    "verbatim": "allow"
+    "verbatim": "required"
   },
   "nextStepsHeading": "Next steps:",
   "nextStepsNav": {
     "string": "cd {{dir}}",
-    "verbatim": "allow"
+    "verbatim": "required"
   },
   "nextStepsInstall": "Install dependencies: {{command}}",
   "nextStepsDevServer": "Start the dev server (if your template has one)",

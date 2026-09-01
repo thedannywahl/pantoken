@@ -14,12 +14,16 @@ import { createTranslationAdapter } from "./api-translation.ts";
 import { TranslationMemory, translateUnits } from "./translation-memory.ts";
 
 const units = GLOSSARY_TERMS.map(({ term }) => ({ kind: "text" as const, source: term }));
+// Technical glossary terms can legitimately be shared across languages; prose pipelines retain the
+// strict source-identical translation guard.
+const verbatimSources = new Set(GLOSSARY_TERMS.map(({ term }) => term));
 
 for (const locale of NON_ROOT_LOCALES) {
   const adapter = createTranslationAdapter(locale);
   const memory = TranslationMemory.load(locale, "glossary");
 
   await translateUnits(adapter, memory, units, {
+    verbatimSources,
     locale,
     defaultVerbatim: { allow: ["en*"] },
   });

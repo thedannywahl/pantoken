@@ -29,11 +29,11 @@
   },
   "tabCssLabel": {
     "string": "CSS",
-    "verbatim": "allow"
+    "verbatim": "required"
   },
   "tabJsLabel": {
     "string": "JS",
-    "verbatim": "allow"
+    "verbatim": "required"
   },
   "cdnProviderLabel": "CDN provider",
   "themeLabel": {

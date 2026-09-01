@@ -172,18 +172,25 @@ export function isPassthroughTranslation(source: string, translated: string): bo
 }
 
 /**
- * A key's verbatim policy: `"allow"` permits every locale to legitimately match the English source;
+ * A key's verbatim policy: `"required"` copies the English source without invoking the translator,
+ * while `"allow"` permits every locale to legitimately match the English source after translation;
  * otherwise a per-tier list of locale patterns (an exact code like `"en-GB"`, a `"prefix*"` glob, or
  * `"*"` for every locale) decides the outcome for a locale whose response is identical to the
- * source — `allow` caches it silently, `warn` caches it but logs a note, and an explicit `error`
- * tier match forces retranslation even over a caller-supplied default policy. A locale matched by
- * none of the tiers falls through to that default policy (see {@link resolveVerbatimAction}); still
- * unmatched is the strict default: not cached, retried next run. Omitting `verbatim` entirely is
- * equivalent to no tiers at all.
+ * source — `required` skips translation and copies it, `allow` caches it silently, `warn` caches it
+ * but logs a note, and an explicit `error` tier match forces retranslation even over a
+ * caller-supplied default policy. A locale matched by none of the tiers falls through to that default
+ * policy (see {@link resolveVerbatimAction}); still unmatched is the strict default: not cached,
+ * retried next run. Omitting `verbatim` entirely is equivalent to no tiers at all.
  */
 export type VerbatimPolicy =
+  | "required"
   | "allow"
-  | { allow?: readonly string[]; warn?: readonly string[]; error?: readonly string[] };
+  | {
+      required?: readonly string[];
+      allow?: readonly string[];
+      warn?: readonly string[];
+      error?: readonly string[];
+    };
 
 /** One `src/i18n.json` entry: a plain translatable string, or a string plus its verbatim policy. */
 export type I18nSourceEntry = string | { string: string; verbatim?: VerbatimPolicy };
@@ -240,12 +247,13 @@ function formatKeyList(keys: readonly string[]): string {
   return keys.map((key) => `  - ${key}`).join("\n");
 }
 
-/** Check a single (non-`"allow"`-shorthand) policy's tiers for `locale`, `error` first. */
+/** Check a single non-shorthand policy's tiers for `locale`, with explicit errors taking precedence. */
 function matchPolicyTiers(
-  policy: Exclude<VerbatimPolicy, "allow">,
+  policy: Exclude<VerbatimPolicy, "required" | "allow">,
   locale: string,
-): "allow" | "warn" | "error" | undefined {
+): "required" | "allow" | "warn" | "error" | undefined {
   if (policy.error?.some((p) => localeMatchesPattern(p, locale))) return "error";
+  if (policy.required?.some((p) => localeMatchesPattern(p, locale))) return "required";
   if (policy.allow?.some((p) => localeMatchesPattern(p, locale))) return "allow";
   if (policy.warn?.some((p) => localeMatchesPattern(p, locale))) return "warn";
   return undefined;
@@ -262,10 +270,12 @@ export function resolveVerbatimAction(
   policy: VerbatimPolicy | undefined,
   locale: string,
   defaultPolicy?: VerbatimPolicy,
-): "allow" | "warn" | "error" {
+): "required" | "allow" | "warn" | "error" {
+  if (policy === "required") return "required";
   if (policy === "allow") return "allow";
   const matched = policy && matchPolicyTiers(policy, locale);
   if (matched !== undefined) return matched;
+  if (defaultPolicy === "required") return "required";
   if (defaultPolicy === "allow") return "allow";
   return (defaultPolicy && matchPolicyTiers(defaultPolicy, locale)) ?? "error";
 }
@@ -328,7 +338,7 @@ function resetPassthroughEntries(
     const current = cachedValue(key, cache);
     if (current === undefined || !isPassthroughTranslation(source[key], current)) continue;
     const action = resolveVerbatimAction(verbatim[key], locale, defaultVerbatim);
-    if (action === "allow") continue;
+    if (action === "required" || action === "allow") continue;
     if (action === "warn") {
       warned.push(key);
       continue;
@@ -378,8 +388,24 @@ async function translateLocale(
     );
   }
 
-  const missingKeys = Object.keys(options.source).filter((key) => !isCached(key, cache));
+  const requiredKeys = new Set(
+    Object.keys(options.source).filter(
+      (key) => resolveVerbatimAction(verbatim[key], locale, options.defaultVerbatim) === "required",
+    ),
+  );
+  let copiedRequired = false;
+  for (const key of requiredKeys) {
+    const legacyKey = sha256(key);
+    if (cache[key] !== options.source[key] || legacyKey in cache) copiedRequired = true;
+    delete cache[legacyKey];
+    cache[key] = options.source[key];
+  }
+
+  const missingKeys = Object.keys(options.source).filter(
+    (key) => !requiredKeys.has(key) && !isCached(key, cache),
+  );
   if (missingKeys.length === 0) {
+    if (copiedRequired) writeFileSync(cacheFile, JSON.stringify(cache, null, 2) + "\n", "utf8");
     console.log(`✓ ${locale}: all strings translated`);
     return;
   }

@@ -26,6 +26,7 @@ pantoken is a design-token transformation and distribution system. It converts I
 - Browser component configuration, including numeric attributes and CSS custom properties such as ProgressBar's `min`/`value-now`/`value-max`, Alert's `--timeout`, and ProgressCircle's `--animation-delay`, is application-controlled. Web components and interaction helpers validate expected numeric ranges, but applications remain responsible for deciding which elements may be updated, dismissed, or animated.
 - pantoken plugins execute with the privileges of the Node.js build or application process that loads them. Plugin structure is validated by `validatePlugin` (non-empty name, function hooks, no unrecognised keys) and plugin output is validated at the IR boundary before it enters the token graph. Full execution sandboxing is planned. Only trusted plugins and configuration should be used.
 - The CLI validates `--theme`, `--class`, and `--format` inputs against allowlists at parse time; unknown flags are rejected immediately. The CLI warns when the output path escapes the current working directory but still writes to the caller-selected location.
+- Repository translation sources are trusted input. Entries marked `verbatim: "required"` bypass external translation adapters and are copied exactly into locale caches; `allow` only permits a model response to match the source.
 
 ## Reporting a vulnerability
 

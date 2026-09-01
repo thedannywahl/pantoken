@@ -416,6 +416,28 @@ test("translateUnits verbatimSources exempts a matching source from the passthro
   ).toBe(false);
 });
 
+test("translateUnits requiredVerbatimSources bypasses translation and overwrites stale cache", async () => {
+  const source = "-text-align-start";
+  const key = keyFor("text", source);
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "translated" } }));
+  const memory = TranslationMemory.load("hu", "demos");
+  const translateBatch = vi.fn();
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source }],
+    { force: true, requiredVerbatimSources: new Set([source]) },
+  );
+
+  expect(translateBatch).not.toHaveBeenCalled();
+  expect(result.get(key)).toBe(source);
+  memory.save();
+  const payload = JSON.parse(writeFileSync.mock.calls[0][1]) as { entries: Record<string, string> };
+  expect(payload.entries[key]).toBe(source);
+});
+
 test("translateUnits defaultVerbatim caches an English regional identity translation", async () => {
   const memory = TranslationMemory.load("en-GB", "api");
   const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>

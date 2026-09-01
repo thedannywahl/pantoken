@@ -42,7 +42,7 @@ export function collectI18nSource(root: string): {
         const key = `${prefix}.nextSteps.${i}`;
         source[key] = step;
         if (/^(?:cd \{\{dir\}\}|\{\{install\}\}|\{\{dev\}\})$/.test(step)) {
-          verbatim[key] = "allow";
+          verbatim[key] = "required";
         }
       });
       if (meta.notes) source[`${prefix}.notes`] = meta.notes;

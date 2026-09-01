@@ -234,11 +234,11 @@ test("collectI18nSource merges src/i18n.json with every template's scaffold.json
   expect(source.nextStepsHeading).toBe("Next steps:");
   // Template-derived keys are present, namespaced by platform.
   expect(source["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("cd {{dir}}");
-  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("allow");
-  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.1"]).toBe("allow");
-  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.2"]).toBe("allow");
-  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabCssLabel"]).toBe("allow");
-  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabJsLabel"]).toBe("allow");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.1"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.2"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabCssLabel"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabJsLabel"]).toBe("required");
   expect(verbatim["scaffold.canvas-theme-editor.i18n.editorPaneLabel"]).toEqual({
     warn: ["da", "de", "es", "id", "it", "ms", "nb", "nl", "pt*", "se"],
   });

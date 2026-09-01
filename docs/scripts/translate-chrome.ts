@@ -24,7 +24,7 @@ const units = flattenStrings(ENGLISH_UI_STRINGS).map(({ text }) => ({
 // InstUI's declared theme names, not generic English words, so every locale keeps them as-is. `getStartedTabs.
 // agentPrompt` is a real sentence (see get-started.ts's docblock) and goes through translation
 // normally, even though its URL must survive unchanged.
-const verbatimSources = new Set([
+const requiredVerbatimSources = new Set([
   ENGLISH_UI_STRINGS.chrome.notFound.code,
   ENGLISH_UI_STRINGS.nav.css,
   ENGLISH_UI_STRINGS.cdnPicker.formatLink,
@@ -40,7 +40,7 @@ for (const locale of NON_ROOT_LOCALES) {
   const memory = TranslationMemory.load(locale, "chrome");
 
   await translateUnits(adapter, memory, units, {
-    verbatimSources,
+    requiredVerbatimSources,
     locale,
     defaultVerbatim: { allow: ["en*"] },
   });

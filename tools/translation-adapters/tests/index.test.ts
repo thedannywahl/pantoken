@@ -100,6 +100,14 @@ test("parseI18nSource omits the verbatim map entry when a rich entry has no poli
   expect(result.verbatim).toEqual({});
 });
 
+test("parseI18nSource preserves a required verbatim policy", () => {
+  const result = parseI18nSource({
+    cssClass: { string: "-text-align-start", verbatim: "required" },
+  });
+  expect(result.strings).toEqual({ cssClass: "-text-align-start" });
+  expect(result.verbatim).toEqual({ cssClass: "required" });
+});
+
 // ── resolveVerbatimAction ──────────────────────────────────────────────
 
 test("resolveVerbatimAction defaults to error when no policy is declared", () => {
@@ -108,6 +116,15 @@ test("resolveVerbatimAction defaults to error when no policy is declared", () =>
 
 test('resolveVerbatimAction treats "allow" as allow for every locale', () => {
   expect(resolveVerbatimAction("allow", "hu")).toBe("allow");
+});
+
+test('resolveVerbatimAction treats "required" as required for every locale', () => {
+  expect(resolveVerbatimAction("required", "hu")).toBe("required");
+});
+
+test("resolveVerbatimAction matches a locale-specific required tier", () => {
+  expect(resolveVerbatimAction({ required: ["ca"] }, "ca")).toBe("required");
+  expect(resolveVerbatimAction({ required: ["ca"] }, "hu")).toBe("error");
 });
 
 test("resolveVerbatimAction matches an exact locale code in the allow tier", () => {
@@ -138,6 +155,10 @@ test("resolveVerbatimAction falls through to defaultPolicy when the key's own ti
 
 test("resolveVerbatimAction lets a key's own error tier override a permissive defaultPolicy", () => {
   expect(resolveVerbatimAction({ error: ["en-GB"] }, "en-GB", "allow")).toBe("error");
+});
+
+test("resolveVerbatimAction lets a key's own error tier override a required defaultPolicy", () => {
+  expect(resolveVerbatimAction({ error: ["hu"] }, "hu", "required")).toBe("error");
 });
 
 test("resolveVerbatimAction lets a key's own tiers win over defaultPolicy when both match", () => {
@@ -376,6 +397,32 @@ test("I18N_TRANSLATION_FORCE=1 retranslates and overwrites an already-cached key
   expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
     hello: "Szia",
   });
+});
+
+test("required verbatim keys bypass translation and overwrite stale caches even when forced", async () => {
+  const cachePath = join(cliTestDir, "hu.json");
+  writeFileSync(
+    cachePath,
+    JSON.stringify({ literal: "translated", [sha256("literal")]: "legacy" }),
+  );
+  process.env.I18N_TRANSLATION_FORCE = "1";
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { literal: "-text-align-start" },
+      targetLocales: ["hu"],
+      cachePath: () => cachePath,
+      isCached: (key, cache) => sha256(key) in cache || key in cache,
+      cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],
+      verbatim: { literal: "required" },
+    });
+  } finally {
+    logSpy.mockRestore();
+    delete process.env.I18N_TRANSLATION_FORCE;
+  }
+  expect(spawn).not.toHaveBeenCalled();
+  expect(JSON.parse(readFileSync(cachePath, "utf8"))).toEqual({ literal: "-text-align-start" });
 });
 
 test("runI18nTranslationCli always skips the 'en' locale, without touching its cache path", async () => {
