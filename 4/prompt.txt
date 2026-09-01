@@ -1,0 +1,42 @@
+further adjustments for the banner:
+we shouldn't need a <content> layer, it can be flattened.
+the header should style: heading elements, or instui-heading that doesn't carry another variant or modifier class.
+
+---
+
+the heading isn't rendering properly:
+http://localhost:5173/api/css/banner
+
+---
+
+the browser is still available. this button should appear like an inline-block.
+
+---
+
+we need to extend button to have a new modifier `-on-color` that for `-color-primary` and `-color-secondary` switches to use the:
+```
+ --instui-component-base-button-<variant>-on-color
+ ```
+ tokens.
+
+---
+
+now let's update banner's non-close-button handling to apply -color-primary.-on-color by default and if -color-secondary is passed it's styled as -color-secondary.-on-color
+
+---
+
+and if the user passes `-color-primary` it should be treated as `-color-primary.-on-color`
+
+---
+
+that does not look right.  in light mode the -on-color primary should be filled white with dark text. and the -on-color secondary should be transparent background with white text and white border
+
+---
+
+in the button demo the on-color variants of primary and secondary look correct.  in the banner example the secondary does not look correct. you can inspect at:
+http://localhost:5173/api/css/button
+http://localhost:5173/api/css/banner
+
+---
+
+there's a "blessed" way to redefine tokens at the source so we don't have to do inline edits but I forgot how.
