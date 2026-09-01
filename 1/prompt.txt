@@ -1,0 +1,270 @@
+load the plugins/pantoken/logos set into the docs site so we can do `-icon-canvas`
+
+---
+
+load the plugins/pantoken/logos set into the docs site so we can get product logos.
+
+---
+
+logos should emit `-icon-*` classes like plugins/pantoken/simple-icons does so I can do:
+`-icon-canvas-icon-reversed` as a valid icon.
+
+---
+
+the canvas icon isn't rendering on the banner example css api page.
+
+---
+
+the :hover, :active, and :focus states should carry the same values as the primary button.
+
+---
+
+these buttons should carry the specified styles too. (i wrapped them in a flex div)
+
+---
+
+check the browser view - both buttons are showing up as standard 'color-primary' styles.
+
+---
+
+the buttons on both banner sizes should both default to the pfx-button.-size-sm if a size modifier isn't included.
+
+---
+
+there are values in the upsteam design that haven't landed in instructure-design-tokens yet, what's the official way to override those values in the IR? I know there's a map and a bless script but I don't remember where.
+
+---
+
+is there a way to add a net-new token here?
+
+---
+
+is this the correct way to map the upstream value, or do I do the bare var?
+
+---
+
+[Terminal cd6bde7a-990a-4abd-a236-bf15f0e8831c notification: terminal exited. The terminal process ended before the command could complete normally; further commands cannot be sent to this terminal ID.]
+Terminal output:
+pantoken on cli ≡  ?1 ~994 -3280 via  26.8.1 
+➜  pwd && vp exec vitepress dev --port 5199 --strictPort
+/Users/dwahl/Scripts/pantoken
+VITE+ - The Unified Toolchain for the Web
+
+error: Command 'vitepress' not found in node_modules/.bin
+
+Run `vp install` to install dependencies, or use `vpx` for invoking remote commands.
+pantoken on cli ≡  ?1 ~994 -3280 via  26.8.1 x 
+➜
+
+---
+
+[Terminal 09836c98-fb61-48a7-bc87-68de990bd8a0 notification: terminal exited. The terminal process ended before the command could complete normally; further commands cannot be sent to this terminal ID.]
+Terminal output:
+pantoken on cli ≡  ?1 ~1049 -3280 via  26.8.1 
+➜  vp run docs:dev -- --port 5199 --strictPort
+VITE+ - The Unified Toolchain for the Web
+
+~/tools/demo$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 12 files
+ℹ dist/index.mjs    14.05 kB │ gzip: 4.85 kB
+ℹ dist/index.d.mts   8.47 kB │ gzip: 3.30 kB
+ℹ 2 files, total: 22.53 kB
+✔ Build complete in 41ms
+
+~/tools/demo$ vp build -c vite.runner.config.ts ◉ cache hit, replaying
+transforming...
+✓ 84 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/runner/index.html                         0.40 kB │ gzip:  0.27 kB
+dist/runner/assets/index-jUGDjxyQ.css          5.07 kB │ gzip:  1.47 kB
+dist/runner/assets/github-light-EUqPIrTm.js   11.18 kB │ gzip:  2.49 kB
+dist/runner/assets/github-dark-C-LZuMrd.js    11.40 kB │ gzip:  2.53 kB
+dist/runner/assets/css-BsVw1vtW.js            49.03 kB │ gzip: 11.90 kB
+dist/runner/assets/html-BY76lXLH.js           57.24 kB │ gzip: 11.74 kB
+dist/runner/assets/javascript-BgS3c2Ky.js    174.82 kB │ gzip: 16.62 kB
+dist/runner/assets/index-CrtaXG_R.js         201.33 kB │ gzip: 68.21 kB
+
+✓ built in 79ms
+
+~/tools/cssdoc-model$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    1.53 kB │ gzip: 0.79 kB
+ℹ dist/index.d.mts  1.15 kB │ gzip: 0.59 kB
+ℹ 2 files, total: 2.68 kB
+✔ Build complete in 37ms
+
+~/plugins/pantoken/colors$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    4.11 kB │ gzip: 1.51 kB
+ℹ dist/index.d.mts  5.43 kB │ gzip: 2.01 kB
+ℹ 2 files, total: 9.54 kB
+✔ Build complete in 60ms
+
+~/plugins/postcss/props-minify$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    3.14 kB │ gzip: 1.15 kB
+ℹ dist/index.d.mts  2.58 kB │ gzip: 0.98 kB
+ℹ 2 files, total: 5.72 kB
+✔ Build complete in 582ms
+
+~/packages/utils$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts, src/token-syntax.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 4 files
+ℹ dist/index.mjs           20.66 kB │ gzip: 6.54 kB
+ℹ dist/token-syntax.mjs    12.11 kB │ gzip: 4.34 kB
+ℹ dist/index.d.mts         17.20 kB │ gzip: 5.38 kB
+ℹ dist/token-syntax.d.mts   6.66 kB │ gzip: 2.73 kB
+ℹ 4 files, total: 56.62 kB
+✔ Build complete in 551ms
+
+~/plugins/postcss/theme-custom-media$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: ../../../tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    5.03 kB │ gzip: 2.08 kB
+ℹ dist/index.d.mts  0.90 kB │ gzip: 0.46 kB
+ℹ 2 files, total: 5.93 kB
+✔ Build complete in 1425ms
+
+~/formats/tokens$ node scripts/generate.ts ○ cache miss: 'plugins/pantoken/deprecations/node_modules/@pantoken/plugin-kit/package.json' modified, executing
+~/formats/icons$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    3.16 kB │ gzip: 1.32 kB
+ℹ dist/index.d.mts  3.02 kB │ gzip: 1.19 kB
+ℹ 2 files, total: 6.18 kB
+✔ Build complete in 34ms
+
+~/packages/scaffold-base$ node scripts/generate.ts ◉ cache hit, replaying
+✓ inlined templates/cssdoc.jsonc
+
+~/packages/scaffold-base$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 2 files
+ℹ dist/index.mjs    8.52 kB │ gzip: 3.40 kB
+ℹ dist/index.d.mts  1.96 kB │ gzip: 0.89 kB
+ℹ 2 files, total: 10.48 kB
+✔ Build complete in 347ms
+
+[pantoken] rebrand: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] rebrand: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] rebrand: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+✓ rebrand: 4683 tokens
+[pantoken] canvas: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] canvas: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] canvas: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+✓ canvas: 4683 tokens
+[pantoken] canvasHighContrast: "--instui-component-top-nav-bar-layout-small-viewport-tray-fix-top-position" patched to "var(--instui-component-top-nav-bar-layout-small-viewport-height)" — known upstream issue
+[pantoken] canvasHighContrast: "--instui-component-text-content-quote-font-weight" patched to "500" — known upstream issue
+[pantoken] canvasHighContrast: added supplemental token "--instui-component-text-content-quote-font-style": "italic" (split from "--instui-component-text-content-quote-font-weight")
+✓ canvasHighContrast: 4683 tokens
+✓ raw.json + meta.json (design-tokens v1.8.0@b85c964, ui-icons 11.7.5)
+
+~/formats/tokens$ vp pack ◉ cache hit, replaying
+ℹ entry: src/index.ts, src/raw.ts, src/meta.ts
+ℹ target: node22.18.0
+ℹ tsconfig: tsconfig.json
+ℹ Build start
+ℹ Cleaning 7 files
+ℹ dist/index.mjs          6.40 MB
+ℹ dist/raw.mjs            1.89 MB
+ℹ dist/meta.mjs           0.10 kB │ gzip: 0.10 kB
+ℹ dist/meta-CNlF6WYX.mjs  0.95 kB │ gzip: 0.52 kB
+ℹ dist/index.d.mts        1.80 kB │ gzip: 0.52 kB
+ℹ dist/meta.d.mts         0.99 kB │ gzip: 0.46 kB
+ℹ dist/raw.d.mts          0.46 kB │ gzip: 0.30 kB
+ℹ 7 files, total: 8.29 MB
+✔ Build complete in 169ms
+
+~/formats/components$ node scripts/component-styles.ts ◉ cache hit, replaying
+✓ components: wrote src/generated/component-styles.ts (156 stylesheets)
+
+~/formats/components$ node scripts/generate.ts ◉ cache hit, replaying
+✓ components: wrote base.css + components.css + component-icons.css (12 icons) + fonts.css + prose.css + select.css + icons.css + utilities.css
+
+~/plugins/pantoken/visual-debug$ node scripts/generate.ts ◉ cache hit, replaying
+✓ visual-debug: wrote visual-debug.css
+
+~/plugins/pantoken/logos$ node scripts/generate.ts ◉ cache hit, replaying
+✓ logos: 67 logos across 6 products (+ 67 per-logo and 6 per-product sheets)
+
+~/plugins/pantoken/primitives$ node scripts/generate.ts ◉ cache hit, replaying
+✓ primitives: wrote primitives.css (820 lines)
+
+~/plugins/pantoken/custom-icons$ node scripts/generate.ts ◉ cache hit, replaying
+✓ custom-icons: wrote 7 per-icon CSS files + custom-icons.css barrel
+
+~/docs$ node scripts/logo.ts ◉ cache hit, replaying
+✓ wrote 2 nav logos + favicon to docs/public
+
+~/docs$ node scripts/gen-og.ts ◉ cache hit, replaying
+✓ wrote social card → docs/public/og.png (1200×630, 55.4 KB)
+
+~/docs$ node scripts/site-themes.ts
+✓ site-themes: wrote site-themes.css (3 themes, 1773kb)
+
+~/docs$ node scripts/demos.ts
+✓ staged demo runner, the shared token + plugin sheets, and 2860 demo(s) to public/
+
+~/docs$ node scripts/cdn-manifest.ts ◉ cache hit, replaying
+✓ docs: wrote cdn-manifest.json (72 components, 10 use icons)
+
+~/docs$ node scripts/cdn-icon-manifest.ts ◉ cache hit, replaying
+✓ docs: wrote cdn-icon-manifest-instui.json (1830 icons)
+✓ docs: wrote cdn-icon-manifest-simple.json (3457 icons)
+
+~/docs$ node scripts/cdn-plugin-manifest.ts ◉ cache hit, replaying
+✓ docs: wrote cdn-plugin-manifest.json (3 custom components, 3 other plugins, 7 custom icons, 6 logo products)
+
+~/docs$ node scripts/icon-manifest.ts ◉ cache hit, replaying
+✓ docs: wrote icon-manifest.json (5361 entries)
+✓ docs: refreshed public/component-capabilities.json from @pantoken/interactions
+
+~/docs$ node scripts/stage-create-pantoken-app-skill.ts ◉ cache hit, replaying
+✓ staged create-pantoken-app skill to public/create-pantoken-app.md
+
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 648 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+
+~/docs$ node scripts/build-css-api.ts
+✓ CSS API: wrote 102 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+
+~/docs$ vitepress dev -- --port 5199 --strictPort
+Port 5173 is in use, trying another one...
+
+  vitepress 2.0.0-alpha.19  (using vite 8.2.2)
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
