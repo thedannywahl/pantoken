@@ -262,7 +262,7 @@
       + .pfx-button:not(.pfx-close-button):not([class*=" -"]) {
       background-color: transparent;
       color: light-dark(
-        var(--instui-color-text-interactive-primary-on-color-base),
+        var(--instui-color-text-interactive-action-primary-on-color-base),
         var(--instui-color-text-interactive-action-primary-on-color-base)
       );
     }

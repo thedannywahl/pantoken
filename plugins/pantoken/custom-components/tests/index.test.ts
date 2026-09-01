@@ -126,9 +126,9 @@ test("banner color modifiers set background and icon-background tokens", () => {
   expect(css).toContain("var(--instui-component-banner-sea-icon-background)");
 });
 
-test("banner renders an info icon by default and supports custom icon modifiers", () => {
+test("banner renders a megaphone icon by default and supports custom icon modifiers", () => {
   const css = bannerRules("instui-");
-  expect(css).toContain("--pantoken-banner-glyph: var(--instui-icon-info)");
+  expect(css).toContain("--pantoken-banner-glyph: var(--instui-icon-megaphone)");
   expect(css).toContain("--pantoken-banner-glyph: var(--pantoken-glyph)");
   expect(css).toContain("-webkit-mask: var(--pantoken-banner-glyph) center / 1.125rem no-repeat");
 });
