@@ -176,6 +176,7 @@
       var(--instui-component-banner-relaxed-padding-horizontal) +
         var(--_banner-close-button-reserve)
     );
+    box-shadow: none;
     color: var(--instui-component-banner-color);
     background: var(--instui-component-banner-violet-background);
 
@@ -217,6 +218,10 @@
 
   &[class*="-megaphone"] {
     --_banner-glyph: var(--instui-icon-megaphone);
+  }
+
+  &[class*="-verified"] {
+    --_banner-glyph: var(--instui-icon-shield-check);
   }
 
   &[class*="-poll"] {
@@ -269,7 +274,7 @@
 
 /* ─── Embedded alert ─── */
 
-:is(:scope, [class*="instui-alert"])[data-layout="lightboxBlank"] {
+:is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"] {
   /* Variant tokens — set on the container, inherited by all children */
   &,
   &[class*="-info"] {

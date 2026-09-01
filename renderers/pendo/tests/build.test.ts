@@ -42,6 +42,11 @@ test("the focus ring is delegated to the focus-outline plugin in a last-declared
 });
 
 test("close and standard button interactions use the canonical component tokens", () => {
+  expect(chromeCss).toContain("display: inline-flex");
+  expect(chromeCss).toContain("align-items: center");
+  expect(chromeCss).toContain("justify-content: center");
+  expect(chromeCss).toContain("mask: var(--instui-icon-x) center / contain no-repeat");
+  expect(chromeCss).toContain("transform: translateY(2px)");
   expect(chromeCss).toContain("--instui-color-background-interactive-action-tertiary-hover");
   expect(chromeCss).toContain("--instui-color-background-interactive-action-tertiary-active");
   expect(chromeCss).not.toContain("primary-ghost-hover-background");
@@ -109,6 +114,7 @@ test("compact theme class suffixes select banner color and glyph treatments", ()
   expect(containerCss).toContain('[class*="-learnplatform"]');
   expect(containerCss).toContain("--instui-component-banner-violet-background");
   expect(containerCss).toContain("--instui-component-banner-sea-background");
+  expect(containerCss).toContain("box-shadow: none;");
   expect(containerCss).toContain("--instui-icon-lightbulb");
   expect(containerCss).toContain("--instui-icon-megaphone");
   expect(containerCss).toContain("--instui-icon-message-circle-question-mark");
@@ -119,6 +125,9 @@ test("compact theme class suffixes select banner color and glyph treatments", ()
   expect(containerCss).toContain('&[class*="-danger"]');
   expect(containerCss).toContain('&[class*="-success"]');
   expect(containerCss).toContain('&[class*="-warning"]');
+  expect(containerCss).toContain(
+    ':is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"]',
+  );
   expect(PENDO_VARS_CSS).toContain("--instui-logo-canvas-icon-reversed");
   expect(PENDO_VARS_CSS).toContain("--instui-logo-parchment-icon-reversed");
   expect(PENDO_VARS_CSS).toContain("--instui-logo-mastery-icon-reversed");
@@ -131,13 +140,21 @@ test("banner sizing follows the guide container at the InstUI sm breakpoint", ()
   expect(containerCss).toContain("@container pantoken-pendo-guide (max-width: 30em)");
   expect(containerCss).toContain("--instui-component-banner-relaxed-padding-vertical");
   expect(containerCss).toContain("--instui-component-banner-compact-padding-vertical");
+  expect(containerCss).toContain(
+    "inset-block-start: var(--instui-component-banner-relaxed-padding-vertical)",
+  );
+  expect(containerCss).toContain(
+    "inset-block-start: var(--instui-component-banner-compact-padding-vertical)",
+  );
   expect(textCss).toContain("@container pantoken-pendo-guide (max-width: 30em)");
   expect(textCss).toContain("--instui-component-heading-title-card-regular-font-size");
   expect(textCss).toContain("--instui-component-heading-title-card-mini-font-size");
 });
 
 test("layout titles and subtitles follow the banner heading scale", () => {
-  expect(textCss).toContain(':is(:scope, [class*="instui-alert"])[data-layout="lightboxBlank"]');
+  expect(textCss).toContain(
+    ':is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"]',
+  );
   expect(textCss).toContain("--instui-component-heading-title-card-regular-font-size");
   expect(textCss).toContain('[data-layout="tooltipBlank"]');
   expect(textCss).toContain("--instui-component-heading-title-card-mini-font-size");

@@ -59,7 +59,7 @@ h3._pendo-simple-text {
 }
 
 /* Alert titles match relaxed banners; subtitles match compact banner titles. */
-:is(:scope, [class*="instui-alert"])[data-layout="lightboxBlank"] {
+:is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"] {
   h2._pendo-simple-text {
     font-size: var(--instui-component-heading-title-card-regular-font-size);
     font-weight: var(--instui-component-heading-title-card-regular-font-weight);
