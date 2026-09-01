@@ -1,0 +1,29 @@
+many strings in the translate-chrome script were skipped from being written - it looks like we need to extend the 'verbatim' tags for example:
+```
+✓ localized 77 UI strings for 'sl' via 'ai' (69 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  ! text unit looks untranslated (identical to source), not cached: "Plugins"
+  ! text unit looks untranslated (identical to source), not cached: "Base"
+  … 71/71 labels + prose blocks translated
+✓ localized 77 UI strings for 'es' via 'ai' (68 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "Guide"
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  ! text unit looks untranslated (identical to source), not cached: "CDN & distribution"
+  … 71/71 labels + prose blocks translated
+✓ localized 77 UI strings for 'sv' via 'ai' (68 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  … 71/71 labels + prose blocks translated
+✓ localized 77 UI strings for 'th' via 'ai' (70 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  … 71/71 labels + prose blocks translated
+✓ localized 77 UI strings for 'zh-Hant' via 'ai' (70 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  … 71/71 labels + prose blocks translated
+✓ localized 77 UI strings for 'tr' via 'ai' (70 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  … 71/71 labels + prose blocks translated
+✓ localized 77 UI strings for 'uk' via 'ai' (70 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "CSS"
+  ! text unit looks untranslated (identical to source), not cached: "Menu"
+  … 71/71 labels + prose blocks translated
+```
