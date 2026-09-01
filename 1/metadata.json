@@ -1,0 +1,50 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1DDA4D23PKW2SCJY21FHR8Q",
+  "session_id": "71565f98-cb8d-4a8f-a3d6-b5b222966ab4",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-01T02:38:28.694925Z",
+  "branch": "cli",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/i18n-cache/ar.chrome.json"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "b8da417f3e1c",
+  "checkpoint_transcript_start": 441,
+  "transcript_lines_at_start": 441,
+  "compact_transcript_start": 87,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-01T02:38:28.684077Z",
+    "agent_lines": 66,
+    "agent_removed": 65,
+    "human_added": 2473,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 2539,
+    "total_lines_changed": 5107,
+    "agent_percentage": 2.5651067162717838,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
