@@ -1,0 +1,9 @@
+our CI gates on translation drift, but now that we're adding 45+ more languages translations are slow.  there are a variety of places within the spec that support translations, and we should be able to configure CI as to which block merging and which warn on drift.
+
+---
+
+I think there's a `docs.home` as well.
+
+---
+
+fix the fragility in translate-home.
