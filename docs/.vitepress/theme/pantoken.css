@@ -199,6 +199,100 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   background-color: var(--vp-nav-bg-color);
 }
 
+@media (min-width: 768px) {
+  html[dir="rtl"] .VPNavBarSearch {
+    padding-right: 24px;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  html[dir="rtl"] .VPNavBarSearch {
+    padding-right: 32px;
+    padding-left: 0;
+  }
+
+  html[dir="rtl"] .VPSidebar {
+    right: 0;
+    left: auto;
+  }
+
+  html[dir="rtl"] .VPContent.has-sidebar {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .title {
+    right: 0;
+    left: auto;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .content {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 32px;
+  }
+
+  html[dir="rtl"] .VPNavBar:not(.home.top) .content-body {
+    margin-right: 0;
+    margin-left: -100vw;
+    padding-right: 0;
+    padding-left: 100vw;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .divider {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  html[dir="rtl"] .VPDoc .aside {
+    order: 2;
+    padding-right: 32px;
+    padding-left: 0;
+  }
+
+  html[dir="rtl"] .VPDoc .content {
+    order: 1;
+  }
+
+  html[dir="rtl"] .VPNavBar .content-body .appearance {
+    margin-left: 8px;
+  }
+
+  html[dir="rtl"] .VPNavBar .content-body .social-links {
+    margin-right: 0;
+    margin-left: -8px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html[dir="rtl"] .VPSidebar {
+    padding-right: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: 32px;
+  }
+
+  html[dir="rtl"] .VPContent.has-sidebar {
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: calc((100% - var(--vp-layout-max-width)) / 2);
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .title {
+    padding-right: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: 32px;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .content {
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: calc((100% - var(--vp-layout-max-width)) / 2 + 32px);
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .divider {
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: 0;
+  }
+}
+
 .VPHomeHero {
   .heading {
     color: var(--instui-primitive-color-white);

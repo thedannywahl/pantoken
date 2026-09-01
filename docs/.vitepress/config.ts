@@ -272,6 +272,7 @@ const localesConfig = Object.fromEntries(
     {
       label: locale.label,
       lang: locale.lang,
+      dir: locale.dir,
       title: "pantoken",
       description: locale.description,
       themeConfig: {

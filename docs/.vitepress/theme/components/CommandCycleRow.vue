@@ -181,6 +181,9 @@ function openPopoverIfEnabled() {
   position: relative;
   display: inline-block;
   vertical-align: bottom;
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: start;
   outline: none;
   padding-inline-end: 0.25em;
 }

@@ -476,6 +476,8 @@ const highlightColor = computed(() =>
   flex: 1;
   min-block-size: 0;
   padding: 1.5rem;
+  direction: ltr;
+  text-align: start;
   /* Visible, not hidden: the copy button's "copied" popover sits above the command row and would
      otherwise get clipped right where it overlaps the chrome bar. */
   overflow: visible;
@@ -564,6 +566,8 @@ const highlightColor = computed(() =>
   display: flex;
   align-items: center;
   min-block-size: 0;
+  direction: ltr;
+  text-align: start;
   padding: 0.75rem 1rem;
   border-top: 1px solid var(--vp-c-divider);
   background: light-dark(#ffffff, #11161c);
