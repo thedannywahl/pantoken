@@ -1,0 +1,4 @@
+look in the browser to see it:
+http://localhost:5173/api/renderers/pendo/src/
+
+the background of hte iframe body is white which is from the inherited style. the background of the iframe html is the proper page color.
