@@ -13854,13 +13854,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#3D658F33"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-active-text-color": {
         "inherits": true,
@@ -13872,13 +13872,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F33"
       },
       "--instui-component-base-button-secondary-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-box-shadow": {
         "inherits": true,
@@ -13951,13 +13951,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#4D7EB333"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-hover-box-shadow": {
         "inherits": true,
@@ -30208,13 +30208,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#3D658F33"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-active-text-color": {
         "inherits": true,
@@ -30226,13 +30226,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F33"
       },
       "--instui-component-base-button-secondary-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-box-shadow": {
         "inherits": true,
@@ -30305,13 +30305,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#4D7EB333"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-hover-box-shadow": {
         "inherits": true,
@@ -46565,13 +46565,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#3D658F33"
       },
       "--instui-component-base-button-secondary-active-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-active-text-color": {
         "inherits": true,
@@ -46583,13 +46583,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F33"
       },
       "--instui-component-base-button-secondary-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-box-shadow": {
         "inherits": true,
@@ -46662,13 +46662,13 @@
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#4D7EB333"
       },
       "--instui-component-base-button-secondary-hover-border-color": {
         "inherits": true,
         "refersTo": "--instui-color-institutional-brand-button-secondary-bgd",
         "syntax": "*",
-        "value": "var(--instui-color-institutional-brand-button-secondary-bgd)"
+        "value": "#44709F00"
       },
       "--instui-component-base-button-secondary-hover-box-shadow": {
         "inherits": true,

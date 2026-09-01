@@ -22,5 +22,41 @@
     "upstreamValue": "var(--instui-color-stroke-strong)",
     "rewriteValue": "#5F6E7A1A",
     "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+  },
+  {
+    "name": "--instui-component-base-button-secondary-background",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
+    "rewriteValue": "#44709F33",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+  },
+  {
+    "name": "--instui-component-base-button-secondary-border-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
+    "rewriteValue": "#44709F00",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+  },
+  {
+    "name": "--instui-component-base-button-secondary-hover-background",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
+    "rewriteValue": "#4D7EB333",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+  },
+  {
+    "name": "--instui-component-base-button-secondary-hover-border-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
+    "rewriteValue": "#44709F00",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+  },
+  {
+    "name": "--instui-component-base-button-secondary-active-background",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
+    "rewriteValue": "#3D658F33",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+  },
+  {
+    "name": "--instui-component-base-button-secondary-active-border-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
+    "rewriteValue": "#44709F00",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
   }
 ]
