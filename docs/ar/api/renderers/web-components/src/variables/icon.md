@@ -1,16 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / icon
 
-# Variable: icon
+# متغير: icon
 
 > `const` **icon**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-icon&gt;` — رمز SVG مضمن من مجموعة أيقونات pantoken. سمة `name` تختار
-الرمز، `size` (أي طول CSS، الافتراضي `1em`) يحجمه، `color` (أي لون CSS) يلونه، و
-`margin` يضيف مسافة حوله (كلمات أساسية InstUI مثل `small`). يرسم SVG إلى light DOM الخاص به، بحجم/ملون عبر أنماط مضمنة على host، لذا يرث `currentColor` مثل النص.
+`&lt;instui-icon&gt;` — حرف SVG مضمن من مجموعة أيقونات pantoken. الخاصية `name` تختار
+الشكل، `size` (أي طول CSS، الافتراضي `1em`) تحدد حجمه، `color` (أي لون CSS) تلوّنه، و
+`margin` تضيف مسافة حوله (كلمات مفتاحية في InstUI مثل `small`). يعرض الـ SVG في DOM خفيف
+DOM، محدد الحجم/اللون عبر أنماط مضمنة على المضيف، لذا يرث `currentColor` مثل النص.
 
-## Example
+## مثال
 
 ```html
 <instui-icon name="arrow-left" margin="small"></instui-icon>

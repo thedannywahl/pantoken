@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [platforms/drupal/src](../index.md) / ToDrupalThemeOptions
 
-# Interface: ToDrupalThemeOptions
+# واجهة: ToDrupalThemeOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الخيارات لـ [toDrupalTheme](../functions/toDrupalTheme.md).
+خيارات لـ [toDrupalTheme](../functions/toDrupalTheme.md).
 
-## Properties
+## الخصائص
 
 ### name?
 
 > `optional` **name?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اسم الموضوع القابل للقراءة من قبل الإنسان (افتراضي `"Instructure"`).
+الاسم المقروء بشريًا للقالب (الافتراضي `"Instructure"`).
 
----
+***
 
 ### baseTheme?
 
 > `optional` **baseTheme?**: `string` \| `false`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الموضوع الأساسي (افتراضي `false` — موضوع مستقل).
+القالب الأساسي (الافتراضي `false` — قالب مستقل).

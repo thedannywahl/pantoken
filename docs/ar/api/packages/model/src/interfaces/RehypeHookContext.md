@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / RehypeHookContext
 
-# Interface: RehypeHookContext
+# واجهة: RehypeHookContext
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-السياق الذي يتم تمريره إلى خطاف `rehype` للمكون الإضافي.
+السياق المُمرَّر إلى هوك `rehype` الخاص بالمكوّن الإضافي.
 
-## Properties
+## الخصائص
 
 ### resolve
 
 > **resolve**: [`IconResolver`](../type-aliases/IconResolver.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

@@ -1,36 +1,36 @@
 [pantoken](../../../../index.md) / [renderers/mui/src](../index.md) / toMuiTheme
 
-# Function: toMuiTheme()
+# دالة: toMuiTheme()
 
 > **toMuiTheme**(`tokens`, `mode?`): [`PantokenThemeOptions`](../interfaces/PantokenThemeOptions.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء خيارات موضوع MUI من IR للرمز.
+بناء خيارات سمة MUI من IR للرموز.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
 readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### mode?
 
 [`Mode`](../../../../packages/core/src/type-aliases/Mode.md) = `"light"`
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+أي وضع ألوان يجب حله (الافتراضي `"light"`).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenThemeOptions`](../interfaces/PantokenThemeOptions.md)
 
-خيارات جاهزة ل `createTheme` من MUI.
+خيارات جاهزة لـ `createTheme` الخاص بـ MUI.
 
-## Example
+## مثال
 
-**موضوع لكل علامة تجارية، لكل وضع**
+**سمة لكل علامة تجارية ولكل وضع**
 
 ```ts
 import { createTheme } from "@mui/material/styles";

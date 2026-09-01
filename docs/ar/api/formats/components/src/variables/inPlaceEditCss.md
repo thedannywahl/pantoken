@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / inPlaceEditCss
 
-# Variable: inPlaceEditCss
+# متغير: inPlaceEditCss
 
 > `const` **inPlaceEditCss**: `Definition`\[`"css"`\] = `inPlaceEdit.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `inPlaceEdit` مستقلة — CSS المُبدأ لمحرر الموضع، جاهز للشحن كملف `.css`.
+ورقة أنماط `inPlaceEdit` مستقلة — CSS المُسبَّقة البادئة للمحرر في المكان، جاهزة للشحن كملف `.css`.

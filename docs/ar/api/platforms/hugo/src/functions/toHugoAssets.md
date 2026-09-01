@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [platforms/hugo/src](../index.md) / toHugoAssets
 
-# Function: toHugoAssets()
+# دالة: toHugoAssets()
 
 > **toHugoAssets**(): [`HugoFile`](../interfaces/HugoFile.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء ملفات أصول الرموز لموقع Hugo (المسارات نسبية إلى جذر الموقع).
+بناء ملفات أصول التوكن لموقع Hugo (المسارات نسبةً إلى جذر الموقع).
 
-## Returns
+## القيم المرجعة
 
 [`HugoFile`](../interfaces/HugoFile.md)[]
 
-جزء Sass (`assets/scss/_pantoken.scss`)، ورقة الأنماط العادية
-(`assets/css/pantoken.css`)، وورقة أنماط النثر (`assets/css/pantoken-prose.css`).
+الملف الجزئي لـSass (`assets/scss/_pantoken.scss`), وورقة الأنماط العادية
+(`assets/css/pantoken.css`), وورقة أنماط النص (`assets/css/pantoken-prose.css`).
 
-## Example
+## مثال
 
 **اكتب الأصول تحت جذر الموقع**
 

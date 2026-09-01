@@ -1,23 +1,23 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / ParsedRef
 
-# Interface: ParsedRef
+# واجهة: ParsedRef
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرجع أساسي مُحلل `&lt;tier&gt;@&lt;version&gt;`.
+مرجع `&lt;tier&gt;@&lt;version&gt;` upstream مُحلل.
 
-## Properties
+## الخصائص
 
 ### tier
 
 > **tier**: `"ui"` \| `"design-tokens"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### version
 
 > **version**: `number`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

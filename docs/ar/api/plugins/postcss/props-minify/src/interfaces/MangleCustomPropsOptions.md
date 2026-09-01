@@ -1,72 +1,68 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/props-minify/src](../index.md) / MangleCustomPropsOptions
 
-# Interface: MangleCustomPropsOptions
+# واجهة: MangleCustomPropsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [mangleCustomProps](../variables/mangleCustomProps.md).
+خيارات لـ [mangleCustomProps](../variables/mangleCustomProps.md).
 
-## Properties
+## الخصائص
 
 ### prefix?
 
 > `optional` **prefix?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-يتم تشويش أسماء الخصائص المخصصة فقط التي تبدأ بهذه السلسلة.
+يتم تغيير أسماء الخصائص المخصصة فقط إذا بدأت بهذه السلسلة.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `"--instui-"`
 
----
+***
 
 ### method?
 
 > `optional` **method?**: [`MangleMethod`](../type-aliases/MangleMethod.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الخوارزمية المستخدمة لإنشاء أسماء استبدال قصيرة.
+الخوارزمية المستخدمة لتوليد أسماء بديلة قصيرة.
 
-- `"base26"` — `--a`، `--b`، ...، `--z`، `--aa`، `--ab`، ... (الافتراضي؛ الأقصر للمجموعات الكبيرة)
-- `"base36"` — `--0`، `--1`، ...، `--9`، `--a`، ...، `--z`، `--10`، ... (أبجدي رقمي)
-- `"numeric"` — `--0`، `--1`، `--2`، ...
+- `"base26"` — `--a`, `--b`, …, `--z`, `--aa`, `--ab`, … (الافتراضي؛ الأقصر للمجموعات الكبيرة)
+- `"base36"` — `--0`, `--1`, …, `--9`, `--a`, …, `--z`, `--10`, … (أبجدي رقمي)
+- `"numeric"` — `--0`, `--1`, `--2`, …
 
-#### Default Value
+#### القيمة الافتراضية
 
 `"base26"`
 
----
+***
 
 ### propertyMap?
 
 > `optional` **propertyMap?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-عند `true`، يضيف إدخال `mangle-map` إلى رسائل PostCSS `result.messages` بعد المعالجة.
-تحتوي الرسالة على شكل `{ type: "mangle-map", plugin: "pantoken-mangle-custom-props", map: Map<string, string> }`.
+عند `true`، تُضيف إدخال `mangle-map` إلى PostCSS `result.messages` بعد المعالجة.
+الرسالة لها الشكل `{ type: "mangle-map", plugin: "pantoken-mangle-custom-props", map: Map<string, string> }`.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `false`
 
----
+***
 
 ### sharedManifest?
 
 > `optional` **sharedManifest?**: `Map`\<`string`, `string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`Map` قابل للتغيير ومشترك عبر مراحل PostCSS متعددة.
+`Map` قابل للتغيير ويُشارك عبر عدة تمريرات PostCSS.
 
-في كل مرة، يقرأ الملحق الإدخالات الموجودة (إعادة استخدام أسمائها القصيرة) ويكتب إدخالات جديدة
-(متابعة العداد من `sharedManifest.size`). مرر نفس مثيل `Map` إلى
-كل استدعاء `mangleCustomProps` أو `applyMinify` يعالج ملفات CSS التي سيتم
-تحميلها معاً في المتصفح — هذا يضمن أن جميع الملفات تستخدم تعيين أسماء متطابق.
+في كل تمريرة يقرأ الملحق الإدخالات الموجودة (مع إعادة استخدام أسمائها القصيرة) ويكتب إدخالات جديدة (مع استمرار العداد من `sharedManifest.size`). مرّر نفس مثيل `Map` إلى كل استدعاء `mangleCustomProps` أو `applyMinify` الذي يعالج ملفات CSS التي ستُحمَّل معًا في المتصفح — هذا يضمن أن جميع الملفات تستخدم خريطة أسماء متطابقة.
 
-معالجة ورقة الرموز أولاً بحيث يتم بذر أسماؤها في البيان قبل أن تضيف ورقات المكونات
-مراجعها (عادة ما تكون متداخلة).
+عالج ورقة الرموز أولًا حتى تُزرَع أسماؤها في البيان (manifest) قبل أن تضيف أوراق المكونات مراجعها (التي تتداخل عادةً).

@@ -1,17 +1,18 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / makeOnCommand
 
-# Function: makeOnCommand()
+# دالة: makeOnCommand()
 
 > **makeOnCommand**(`invokerSupported`): [`OnCommand`](../type-aliases/OnCommand.md)
 
-بناء موجه حدث `command`: إعادة توجيه أحداث `command` للهدف إلى معالج، وحيث تكون Invoker Commands API غائبة، تفويض نقرات `commandfor` المطابقة عبر شجرة الهدف.
+قم ببناء موجّه أحداث `command`: أعد توجيه أحداث `command` الخاصة بالهدف إلى مُعالِج،
+وحيثما تكون واجهة برمجة تطبيقات Invoker Commands مفقودة، فوّض نقرات `commandfor` المطابقة عبر شجرة الهدف.
 
-## Parameters
+## المعلمات
 
 ### invokerSupported
 
 `boolean`
 
-## Returns
+## القيم المرجعة
 
 [`OnCommand`](../type-aliases/OnCommand.md)

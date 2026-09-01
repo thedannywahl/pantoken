@@ -1,28 +1,28 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / isFactoried
 
-# Function: isFactoried()
+# دالة: isFactoried()
 
 > **isFactoried**(`plugin`): `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-صحيح عندما تم إنشاء مكون إضافي بواسطة [definePlugin](definePlugin.md) (أو [extendPlugin](extendPlugin.md)).
+صحيح إذا تم إنشاء مكوّن إضافي بواسطة [definePlugin](definePlugin.md) (أو [extendPlugin](extendPlugin.md)).
 
-## Parameters
+## المعلمات
 
 ### plugin
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-## Returns
+## القيم المرجعة
 
 `boolean`
 
-## Example
+## مثال
 
 ```ts
 import { definePlugin, isFactoried } from "@pantoken/plugin-kit";
 
 isFactoried(definePlugin({ name: "brand", css: () => ({}) })); // → true
-isFactoried({ name: "hand-written", css: () => ({}) }); // → false
+isFactoried({ name: "hand-written", css: () => ({}) });        // → false
 ```

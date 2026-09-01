@@ -153,6 +153,18 @@ card rests in a flat context that Firefox rasterizes in screen space. Likewise p
 gradient over `filter: blur()` on anything that animates — the filter forces an offscreen surface
 that gets re-rendered every frame.
 
+**Follow-up** — The same tearing came back on hover, from two remaining wide invalidations: the copy
+button's 120ms `background-color`/`border-color`/`color` transitions (~8 repaint frames each) and the
+`--vp-shadow-2`/`--vp-shadow-3` blurs on the two popovers, whose blur radius pushed the dirty rect
+past the card's edge. Hover state now flips in a single frame (only `opacity` still transitions) and
+both popovers use a tight custom shadow, with `contain` on the button and the popover so their
+repaints stay inside their own boxes.
+
+The width-pinning trick has one consequence worth remembering: anything laid out _after_ the shared
+grid cell sits at the widest command's right edge, not at the cursor. The copy button therefore lives
+inside the live text, immediately after the cursor, and each hidden sizer carries a blank same-width
+twin so the pinned track still accounts for it.
+
 ## CSS API surface
 
 ### A `-icon-` modifier hits the glyph painter

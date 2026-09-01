@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [formats/stylus/src](../index.md) / toStylus
 
-# Function: toStylus()
+# دالة: toStylus()
 
 > **toStylus**(`tokens`, `options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار متغيرات Stylus لـ IR الرمز.
+إصدار متغيرات Stylus من IR للرموز.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+قابل للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (مثلًا من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToStylusOptions](../interfaces/ToStylusOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة مصدر Stylus.
 
-## Examples
+## أمثلة
 
-**إصدار المتغيرات الافتراضية (الفاتحة)**
+**إصدار المتغيرات الافتراضية (الوضع الفاتح)**
 
 ```ts
 import { toStylus } from "@pantoken/stylus";
@@ -39,7 +39,7 @@ import { tokens } from "@pantoken/tokens";
 toStylus(tokens); // "instui-color-brand = #0374b5\n…"
 ```
 
-**حل الوضع الداكن لمظهر آخر**
+**حل وضع الظلام لموضوع آخر**
 
 ```ts
 import { toStylus } from "@pantoken/stylus";

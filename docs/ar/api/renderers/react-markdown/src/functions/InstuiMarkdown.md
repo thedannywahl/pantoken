@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / InstuiMarkdown
 
-# Function: InstuiMarkdown()
+# دالة: InstuiMarkdown()
 
 > **InstuiMarkdown**(`props`): `ReactNode`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-عرض Markdown مع تعيينات عناصر Instructure UI ورموز الأيقونات والألوان في pantoken.
+عرض Markdown مع تعيينات عناصر واجهة المستخدم لـ Instructure UI ورموز/ألوان الأيقونات في pantoken.
 
-## Parameters
+## المعلمات
 
 ### props
 
@@ -16,23 +16,21 @@
 
 [InstuiMarkdownProps](../interfaces/InstuiMarkdownProps.md).
 
-## Returns
+## القيم المرجعة
 
 `ReactNode`
 
-## Examples
+## أمثلة
 
 **أساسي**
 
 ```tsx
 import { InstuiMarkdown } from "@pantoken/react-markdown";
 
-<InstuiMarkdown>
-  {"Go :arrow-left: back. Brand is #03893D.\n\n> [!TIP]\n> Helpful."}
-</InstuiMarkdown>;
+<InstuiMarkdown>{"Go :arrow-left: back. Brand is #03893D.\n\n> [!TIP]\n> Helpful."}</InstuiMarkdown>;
 ```
 
-**مع أيقونات العلامة التجارية عبر مكون إضافي**
+**مع أيقونات العلامة التجارية عبر مكوّن إضافي**
 
 ```tsx
 import { InstuiMarkdown } from "@pantoken/react-markdown";

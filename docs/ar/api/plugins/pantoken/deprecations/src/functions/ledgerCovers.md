@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / ledgerCovers
 
-# Function: ledgerCovers()
+# دالة: ledgerCovers()
 
 > **ledgerCovers**(`ledger`, `token`): `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-صحيح عندما يسجل دفتر الأستاذ دورة حياة لـ `token`.
+صحيح عندما يسجل السجل دورة حياة لـ `token`.
 
-## Parameters
+## المعلمات
 
 ### ledger
 
@@ -18,6 +18,6 @@
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `boolean`

@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [bundlers/postcss/src](../index.md) / PantokenPostcssOptions
 
-# Interface: PantokenPostcssOptions
+# واجهة: PantokenPostcssOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات المكون الإضافي.
+خيارات الإضافة.
 
-## Properties
+## الخصائص
 
 ### atRule?
 
 > `optional` **atRule?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اسم قاعدة at-rule المراد توسيعها (الافتراضي `"pantoken"`، أي `@pantoken;`).
+اسم at-rule التي سيتم توسيعها (الافتراضي `"pantoken"`، أي `@pantoken;`).

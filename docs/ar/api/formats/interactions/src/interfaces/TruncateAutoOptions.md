@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / TruncateAutoOptions
 
-# Interface: TruncateAutoOptions
+# واجهة: TruncateAutoOptions
 
-مقابض اختيارية لـ [initTruncateAuto](../functions/initTruncateAuto.md).
+خيارات اختيارية لـ [initTruncateAuto](../functions/initTruncateAuto.md).
 
-## Properties
+## الخصائص
 
 ### observeParent?
 
 > `optional` **observeParent?**: `boolean`
 
-مراقبة حجم المضيف الأب (القيمة الافتراضية صحيح).
+مراقبة حجم عنصر والد المضيف (الافتراضي true).
 
----
+***
 
 ### slot?
 
 > `optional` **slot?**: `HTMLSlotElement` \| `null`
 
-فتحة اختيارية لمراقبة إعادة تزامن `slotchange` في استخدام shadow DOM.
+فتحة اختيارية لمراقبة إعادة تزامن `slotchange` عند استخدام Shadow DOM.

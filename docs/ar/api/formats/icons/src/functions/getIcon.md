@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [formats/icons/src](../index.md) / getIcon
 
-# Function: getIcon()
+# دالة: getIcon()
 
 > **getIcon**(`name`): [`PantokenIcon`](../interfaces/PantokenIcon.md) \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البحث عن رمز بالاسم.
+ابحث عن أيقونة حسب الاسم.
 
-## Parameters
+## المعلمات
 
 ### name
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 [`PantokenIcon`](../interfaces/PantokenIcon.md) \| `undefined`
 
-## Example
+## مثال
 
 ```ts
 import { getIcon } from "@pantoken/icons";

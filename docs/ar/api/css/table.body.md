@@ -1,12 +1,13 @@
 # CSS: table.body
 
-`tbody` — مجموعة صفوف البيانات في الجدول (InstUI `Table.Body`).
+`tbody` — مجموعة صفوف بيانات الجدول (InstUI `Table.Body`).
 
-يعيد تعديل `table` الأب `-layout-stacked` تنسيق هذا العضو — انظر إلى المستند الخاص به `table` لهذا التعديل.
+مُعدِّل `-layout-stacked` الخاص بالوالد `table` يعيد تهيئة هذا العضو — انظر وثيقة `table` نفسها لذلك المُعدِّل.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/table.body.css";
 ```
+

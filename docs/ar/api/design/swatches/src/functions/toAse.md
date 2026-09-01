@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / toAse
 
-# Function: toAse()
+# دالة: toAse()
 
 > **toAse**(`swatches`): `Uint8Array`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تشفير العينات كبايتات ASE. يتم تخطي العينات غير hex.
+ترميز عينات الألوان كبايتات ASE. يتم تخطي عينات الألوان غير بصيغة سداسية.
 
-## Parameters
+## المعلمات
 
 ### swatches
 
@@ -16,15 +16,15 @@ readonly [`Swatch`](../interfaces/Swatch.md)[]
 
 لوحة الألوان.
 
-## Returns
+## القيم المرجعة
 
 `Uint8Array`
 
 ملف ASE كبايتات.
 
-## Example
+## مثال
 
-**كتابة لوحة Adobe .ase**
+**كتابة لوحة ألوان Adobe .ase**
 
 ```ts
 import { writeFileSync } from "node:fs";

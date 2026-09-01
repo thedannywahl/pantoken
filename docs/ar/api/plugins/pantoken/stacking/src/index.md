@@ -2,13 +2,15 @@
 
 # stacking
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-stacking` — أعماق z-index المسماة.
+`@pantoken/plugin-stacking` — أعماق z-index مسمّاة.
 
-يكشف `View` من InstUI عن مقياس تكديس (`deepest`، `below`، `above`، `topmost`) بحيث تتراص الطبقات بطريقة يمكن التنبؤ بها بدلاً من أرقام سحرية مضبوطة يدوياً. يصدر هذا المكون رموز `--instui-stacking-&lt;level&gt;`، يتم حلها إلى قيم z-index ملموسة من رموز `--instui-component-view-stacking-*` المُشحونة، للمستهلكين الذين يستخدمون خط أنابيب `@pantoken/css`/`@pantoken/tokens` ذو المستوى الأقل مباشرة. تعيش فئات أدوات `.instui-stack-&lt;level&gt;` المطابقة الآن في أداة `stacking` الخاصة بـ `@pantoken/components`.
+تعرض `View` الخاصة بـ InstUI مقياس تكديس (`deepest`, `below`, `above`, `topmost`) حتى تتراكم الطبقات بشكل متوقع بدلاً من الاعتماد على أرقام سحرية مُعدَّلة يدوياً. هذا المكوّن الإضافي يُصدر رموز `--instui-stacking-&lt;level&gt;` محُلَّة إلى قيم z-index ملموسة مشتقة من رموز `--instui-component-view-stacking-*` المرفقة، للمستخدمين الذين يستعملون خط التجميع منخفض المستوى `@pantoken/css`/`@pantoken/tokens` مباشرة.
+توجد الآن فئات المرافق المطابقة `.instui-stack-&lt;level&gt;` في المرافق الخاصة بـ `@pantoken/components` ضمن
+المرافق `stacking` الخاصة بها.
 
-## Example
+## مثال
 
 ```ts
 import { buildTokens } from "@pantoken/core";
@@ -18,20 +20,20 @@ const tokens = buildTokens({ theme: "rebrand", plugins: [stacking()] });
 // → includes --instui-stacking-topmost: …
 ```
 
-## Interfaces
+## واجهات
 
 - [StackingOptions](interfaces/StackingOptions.md)
 
-## Variables
+## المتغيرات
 
 - [STACKING\_LEVELS](variables/STACKING_LEVELS.md)
 
-## Functions
+## الدوال
 
 - [stacking](functions/stacking.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [stacking](functions/stacking.md)
+يعيد تسمية ويُعيد تصدير [stacking](functions/stacking.md)

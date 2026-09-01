@@ -1,17 +1,17 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/theme-custom-media/src](../index.md) / ThemeCustomMediaOptions
 
-# Interface: ThemeCustomMediaOptions
+# واجهة: ThemeCustomMediaOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون إضافي الوسائط المخصصة للمظهر.
+خيارات لإضافة theme custom-media.
 
-## Properties
+## الخصائص
 
 ### theme?
 
 > `optional` **theme?**: [`Theme`](../type-aliases/Theme.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مظهر الهدف للإصدار (الافتراضي `"rebrand"`).
+السمة المستهدفة للإخراج (الافتراضي `"rebrand"`).

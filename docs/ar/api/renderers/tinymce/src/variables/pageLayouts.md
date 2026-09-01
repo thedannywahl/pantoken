@@ -1,7 +1,7 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / pageLayouts
 
-# Variable: pageLayouts
+# متغير: pageLayouts
 
 > `const` **pageLayouts**: readonly [`PageLayout`](../interfaces/PageLayout.md)[]
 
-جميع تخطيطات صفحة البداية المجمعة، مرتبة حسب العنوان.
+جميع تخطيطات صفحات البداية المضمّنة، مُرتّبة حسب العنوان.

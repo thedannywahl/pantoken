@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / componentsCss
 
-# Function: componentsCss()
+# دالة: componentsCss()
 
 > **componentsCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء ورقة الأنماط المجمعة للمكون: قواعد كل مكون بترتيب `COMPONENTS` concat.
-يتم إلحاق توأم الحجم والاسم المستعار لكل مكون (داخل كتلته الخاصة) بحيث يتم توثيق كل اسم مستعار على صفحته الخاصة — يتم اكتشاف الأسماء المستعارة من بيانات `@alias {@link -x}` أو
-`@deprecated {@link -x}` لكل سجل (انظر `withAliases`)، وليس من قائمة مركزية محفوظة يدويًا. يتم تعريف مقياس الظل `--instui-elevation-*`
-الذي تشير إليه المكونات في ورقة الرموز (`@pantoken/css`)، لذا لم يعد مضمنًا هنا.
+بناء ملف أنماط المكونات المجمّع: قواعد كل مكون بترتيب الربط `COMPONENTS`.
+يتم إلحاق اسماء الأحجام والاسماء المزدوجة كألقاب لكل مكون على حدة (ضمن قسمه الخاص) بحيث يكون لكل اسم مستعار صفحة توثيق مستقلة — تُكتشف الأسماء المستعارة من بيانات التعريف `@alias {@link -x}` أو
+`@deprecated {@link -x}` لكل سجل (انظر `withAliases`), وليس من قائمة مركزية تُدار يدويًا. مرجع مقياس الظلال `--instui-elevation-*` للمكونات مُعرّف في جدول الرموز
+(`@pantoken/css`), لذا لم يعد مُضمّنًا هنا.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -19,7 +19,7 @@
 
 [ComponentOptions](../interfaces/ComponentOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 

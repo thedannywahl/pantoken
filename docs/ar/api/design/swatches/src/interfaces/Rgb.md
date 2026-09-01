@@ -1,31 +1,31 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / Rgb
 
-# Interface: Rgb
+# واجهة: Rgb
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-قنوات RGB، 0–255.
+قنوات RGB، من 0 إلى 255.
 
-## Properties
+## الخصائص
 
 ### r
 
 > **r**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### g
 
 > **g**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### b
 
 > **b**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

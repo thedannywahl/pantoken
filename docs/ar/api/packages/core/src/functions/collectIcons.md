@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / collectIcons
 
-# Function: collectIcons()
+# دالة: collectIcons()
 
 > **collectIcons**(`options?`): [`IconLayer`](../interfaces/IconLayer.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-جمع طبقة الرموز InstUI الموحدة. الرموز المخصصة لها الأولوية على رموز Lucide
-بنفس الاسم. يتم فرز الإخراج بالاسم للحصول على نتائج حتمية.
+جمع طبقة أيقونات InstUI الموحدة. الرموز المخصصة لها الأولوية على رموز Lucide
+ذات الاسم نفسه. يتم ترتيب الإخراج حسب الاسم للحصول على نتائج حتمية.
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`CollectIconsOptions`](../interfaces/CollectIconsOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 [`IconLayer`](../interfaces/IconLayer.md)
 
-## Examples
+## أمثلة
 
-**جمع كل رمز والقيم الخاصة بلون الرمز**
+**جمع كل الرموز بالإضافة إلى القيم الخاصة بلون الأيقونة**
 
 ```ts
 import { collectIcons } from "@pantoken/core";
@@ -31,7 +31,7 @@ const { glyphs, colors } = collectIcons();
 // colors → [["--instui-icon-color-ai", "…"], ["--instui-icon-color-inherit", "currentColor"]]
 ```
 
-**تقصير الرموز التي كتبتها Instructure فقط**
+**قصر على الرموز المؤلفة بواسطة Instructure فقط**
 
 ```ts
 import { collectIcons } from "@pantoken/core";

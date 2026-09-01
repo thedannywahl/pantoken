@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [design/figma/src](../index.md) / toFigmaVariables
 
-# Function: toFigmaVariables()
+# دالة: toFigmaVariables()
 
 > **toFigmaVariables**(`tokens`, `options?`): [`FigmaVariablesPayload`](../interfaces/FigmaVariablesPayload.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تحويل قائمة IR token إلى Figma Variables payload.
+حوّل قائمة رموز IR إلى حمولة Figma Variables.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
 readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToFigmaOptions](../interfaces/ToFigmaOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`FigmaVariablesPayload`](../interfaces/FigmaVariablesPayload.md)
 
-A [FigmaVariablesPayload](../interfaces/FigmaVariablesPayload.md).
+حمولة [FigmaVariablesPayload](../interfaces/FigmaVariablesPayload.md).
 
-## Examples
+## أمثلة
 
-**تحويل token IR إلى Variables payload**
+**حوّل IR الرموز إلى حمولة Variables**
 
 ```ts
 import { toFigmaVariables } from "@pantoken/figma";
@@ -39,7 +39,7 @@ import { tokens } from "@pantoken/tokens";
 const payload = toFigmaVariables(tokens); // { collection, modes, variables }
 ```
 
-**إعادة تسمية المجموعة والأوضاع**
+**أعد تسمية المجموعة والأوضاع**
 
 ```ts
 import { toFigmaVariables } from "@pantoken/figma";

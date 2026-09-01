@@ -133,9 +133,8 @@ test("banner renders an info icon by default and supports custom icon modifiers"
   expect(css).toContain("-webkit-mask: var(--pantoken-banner-glyph) center / 1.125rem no-repeat");
 });
 
-test("banner icon is top-aligned and sizes its swatch by spacing variant", () => {
+test("banner icon is absolutely positioned and sizes its swatch by spacing variant", () => {
   const css = bannerRules("instui-");
-  expect(css).toContain("align-items: flex-start");
   expect(css).toContain("--pantoken-banner-icon-size: 2rem");
   expect(css).toContain("--pantoken-banner-icon-size: 1.5rem");
   expect(css).toContain("var(--instui-component-banner-relaxed-icon-border-radius)");
@@ -144,7 +143,9 @@ test("banner icon is top-aligned and sizes its swatch by spacing variant", () =>
 
 test("banner title and content use typography appropriate to the spacing variant", () => {
   const css = bannerRules("instui-");
-  expect(css).toMatch(/>\s*\.content\s*>\s*\.title/u);
+  expect(css).toMatch(
+    />\s*:is\(h1, h2, h3, h4, h5, h6, \.instui-heading:not\(\[class\*="-level-"\]\)\)/u,
+  );
   expect(css).toContain("var(--instui-component-heading-title-card-regular-font-size)");
   expect(css).toContain("var(--instui-component-heading-title-card-mini-font-size)");
   expect(css).toContain("var(--instui-font-size-text-base)");
@@ -163,17 +164,45 @@ test("banner pins a small close button at the top end and reserves content space
   expect(css).toContain(
     "inset-inline-end: var(--instui-component-banner-close-button-margin-right)",
   );
-  expect(css).toMatch(/:has\(>\s*\.instui-close-button\)\s*>\s*\.content/u);
+  expect(css).toMatch(/:has\(>\s*\.instui-close-button\)\s*\{/u);
+  expect(css).toContain("--pantoken-banner-close-button-reserve");
 });
 
-test("banner keeps elevation absent and gives uncoloured buttons the on-color primary treatment", () => {
+test("banner keeps elevation absent and treats only unmodified direct-child buttons as -on-color", () => {
   const css = bannerRules("instui-");
   expect(css).not.toContain("box-shadow:");
-  expect(css).toContain("var(--instui-component-base-button-primary-inverse-background)");
-  expect(css).toContain("var(--instui-component-base-button-primary-inverse-hover-background)");
-  expect(css).toContain("var(--instui-component-base-button-primary-inverse-active-background)");
-  expect(css).toContain("var(--instui-component-base-button-primary-on-color-hover-border-color)");
-  expect(css).toContain("var(--instui-component-base-button-primary-on-color-active-border-color)");
+  expect(css).toMatch(
+    />\s*\.instui-button:not\(\[class\*=" -"\]\),\s*>\s*\*\s*>\s*\.instui-button:not\(\[class\*=" -"\]\)\s*\{/u,
+  );
+  expect(css).toContain("var(--instui-color-background-interactive-action-primary-on-color-base)");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-primary-on-color-base)");
+  expect(css).toContain("var(--instui-color-text-interactive-action-primary-on-color-base)");
+  expect(css).toMatch(
+    />\s*\.instui-button:not\(\[class\*=" -"\]\):hover,\s*>\s*\*\s*>\s*\.instui-button:not\(\[class\*=" -"\]\):hover/u,
+  );
+  expect(css).toContain("var(--instui-color-background-interactive-action-primary-on-color-hover)");
+  expect(css).toContain(
+    "var(--instui-color-background-interactive-action-primary-on-color-active)",
+  );
+  expect(css).toContain(
+    "var(--instui-color-background-interactive-action-primary-on-color-disabled)",
+  );
+  expect(css).toMatch(
+    />\s*\.instui-button:not\(\.instui-close-button\)\s*\+\s*\.instui-button:not\(\.instui-close-button\):not\(\[class\*=" -"\]\),/u,
+  );
+  expect(css).toContain("background-color: transparent;");
+  expect(css).not.toContain("interactive-action-secondary-on-color");
+  expect(css).not.toContain('.instui-button:is(:not([class*="-color-"]), .-color-primary)');
+});
+
+test("banner defaults buttons to -size-sm unless a size modifier is present", () => {
+  const css = bannerRules("instui-");
+  expect(css).toMatch(
+    />\s*\.instui-button:not\(\[class\*="-size-"\]\),\s*>\s*\*\s*>\s*\.instui-button:not\(\[class\*="-size-"\]\)\s*\{/u,
+  );
+  expect(css).toContain("var(--instui-component-base-button-small-font-size)");
+  expect(css).toContain("var(--instui-component-base-button-small-height)");
+  expect(css).toContain("var(--instui-component-base-button-small-padding-horizontal)");
 });
 
 test("banner references only real tokens per theme", () => {

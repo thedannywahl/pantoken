@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / pillCss
 
-# Variable: pillCss
+# متغير: pillCss
 
 > `const` **pillCss**: `Definition`\[`"css"`\] = `pill.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `pill` مستقلة — CSS مسبوق لحبة الحالة، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `pill` — CSS ذو البادئة لشارة الحالة، جاهزة للتوزيع كملف `.css`.

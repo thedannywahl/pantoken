@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / getIconCdnFile
 
-# Function: getIconCdnFile()
+# دالة: getIconCdnFile()
 
 > **getIconCdnFile**(`icon`): `object`
 
-احسب ملف CdnFile لرمز معين من مصدره.
-يرجع `{ package, path }` للاستخدام مع buildFileUrl الخاص بـ @pantoken/cdn.
+احسب CdnFile لأيقونة بناءً على مصدرها.
+يُرجع `{ package, path }` لاستخدامه مع buildFileUrl الخاص بـ @pantoken/cdn.
 
-## Parameters
+## المعلمات
 
 ### icon
 
 [`TaggedIcon`](../interfaces/TaggedIcon.md)
 
-## Returns
+## القيم المرجعة
 
 `object`
 

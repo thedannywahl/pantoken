@@ -2,26 +2,26 @@
 
 # icons
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/icons` — عرض ergonomic فوق رموز IR `&lt;image&gt;`.
+`@pantoken/icons` — عرض مريح لرموز `&lt;image&gt;` الخاصة بالـ IR.
 
-هذا ليس مصدراً ثانياً؛ يقوم بتصفية IR القانوني من `@pantoken/tokens` إلى رموز الأيقونات
-ويفك تشفير كل data-URI مرة أخرى إلى SVG مضمن، مما يكشف عن شكل قريب من
-`SimpleIconTokenData` التي يستخدمها بالفعل مستهلكو markdown/rehype.
+هذا ليس مصدرًا ثانويًا؛ بل يقوم بتصفية الـ IR القانوني من `@pantoken/tokens` إلى رموز الأيقونة
+ويفك ترميز كل data-URI مرة أخرى إلى SVG مضمن، كاشفًا عن شكل قريب من
+`SimpleIconTokenData` الذي يستخدمه مستهلكو markdown/rehype بالفعل.
 
-## Interfaces
+## واجهات
 
 - [PantokenIcon](interfaces/PantokenIcon.md)
 - [IconResolverChainOptions](interfaces/IconResolverChainOptions.md)
 
-## Variables
+## المتغيرات
 
 - [icons](variables/icons.md)
 - [iconsByName](variables/iconsByName.md)
 - [resolve](variables/resolve.md)
 
-## Functions
+## الدوال
 
 - [getIcon](functions/getIcon.md)
 - [buildIconResolverChain](functions/buildIconResolverChain.md)

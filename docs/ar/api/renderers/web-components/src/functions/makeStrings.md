@@ -1,15 +1,16 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / makeStrings
 
-# Function: makeStrings()
+# دالة: makeStrings()
 
 > **makeStrings**(`locale`, `overrides?`): [`WebComponentStrings`](../interfaces/WebComponentStrings.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-بناء كائن `WebComponentStrings` لـ `locale`.
-يتم اشتقاق أسماء أيام الأسبوع من `Intl.DateTimeFormat` (وتدوير إلى يوم الأسبوع الأول للإقليم)؛ تعود جميع السلاسل الأخرى إلى اللغة الإنجليزية ما لم يتم توفيرها في `overrides`.
+Build a `WebComponentStrings` object for `locale`.
+Weekday names are derived from `Intl.DateTimeFormat` (and rotated to the locale's first day of
+week); all other strings fall back to English unless provided in `overrides`.
 
-## Parameters
+## المعلمات
 
 ### locale
 
@@ -19,6 +20,6 @@
 
 `Partial`\<[`WebComponentStrings`](../interfaces/WebComponentStrings.md)\>
 
-## Returns
+## القيم المرجعة
 
 [`WebComponentStrings`](../interfaces/WebComponentStrings.md)

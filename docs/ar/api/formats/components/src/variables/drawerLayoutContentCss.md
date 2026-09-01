@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / drawerLayoutContentCss
 
-# Variable: drawerLayoutContentCss
+# متغير: drawerLayoutContentCss
 
 > `const` **drawerLayoutContentCss**: `Definition`\[`"css"`\] = `drawerLayoutContent.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `drawer-layout.content` مستقلة.
+ملف أنماط مستقل `drawer-layout.content`.

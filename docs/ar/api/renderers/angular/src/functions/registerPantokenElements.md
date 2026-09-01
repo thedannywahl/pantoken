@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/angular/src](../index.md) / registerPantokenElements
 
-# Function: registerPantokenElements()
+# دالة: registerPantokenElements()
 
 > **registerPantokenElements**(): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-سجّل عناصر pantoken المخصصة (استدعِ مرة واحدة أثناء بدء تشغيل التطبيق).
+سجّل عناصر pantoken المخصصة (استدعِها مرة واحدة أثناء تهيئة التطبيق).
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
 ```ts
 import { registerPantokenElements } from "@pantoken/angular";

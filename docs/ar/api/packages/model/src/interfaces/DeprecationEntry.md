@@ -1,71 +1,70 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / DeprecationEntry
 
-# Interface: DeprecationEntry
+# واجهة: DeprecationEntry
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إدخال واحد في دفتر الرموز المهجورة — دورة حياة رمز أصلي واحد تم إسقاطه.
+إدخال واحد في دفتر تقادم الرموز — دورة حياة رمز علوي مفرد تم إسقاطه.
 
-تأتي قيمة shim من إما `replacement` (بث `var(replacement)`، بحيث يتدفق المظهر) أو
-`value` (تجميد الحرفي الأخير المعروف، عندما لا يكون للإسقاط بديل قانوني). يتوقع بالضبط واحد؛
-إدخال بدون أي منهما لا يبث shim.
+تأتي قيمة الشيم إما من `replacement` (إصدار `var(replacement)`، بحيث يتدفق التخصيص عبره) أو
+`value` (تجميد الحرف الأخير المعروف عندما لا يوجد بديل معياري للسقوط). من المتوقع وجود واحد بالضبط؛ الإدخال الذي لا يحتوي على أيٍّ منهما لا يصدر شيم.
 
-## Properties
+## الخصائص
 
 ### token
 
 > **token**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم الرمز الأصلي المسقط، على سبيل المثال `--instui-component-truncate-text-line-height`.
+اسم الرمز العلوي المُسقَط، على سبيل المثال `--instui-component-truncate-text-line-height`.
 
----
+***
 
 ### deprecatedIn
 
 > **deprecatedIn**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإصدار الأصلي الذي أسقطه، `&lt;tier&gt;@&lt;version&gt;` (على سبيل المثال `"design-tokens@v1.5.0"`).
+الإصدار العلوي الذي أسقطه، `&lt;tier&gt;@&lt;version&gt;` (مثال: `"design-tokens@v1.5.0"`).
 
----
+***
 
 ### removeIn
 
 > **removeIn**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإصدار الأصلي MINOR الذي يتم فيه إيقاف shim، `&lt;tier&gt;@&lt;version&gt;` (على سبيل المثال `"design-tokens@v1.6.0"`).
+الإصدار الصغير العلوي الذي تُحال عنده الشيم للتقاعد، `&lt;tier&gt;@&lt;version&gt;` (مثال: `"design-tokens@v1.6.0"`).
 
----
+***
 
 ### replacement?
 
 > `optional` **replacement?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إعادة توجيه shim إلى رمز قانوني (بث `var(replacement)`).
+إحالة الشيم إلى رمز معياري (يصدر `var(replacement)`).
 
----
+***
 
 ### value?
 
 > `optional` **value?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تجميد shim إلى حرفي (آخر قيمة معروفة للرمز) عندما لا يكون هناك بديل.
+تجميد الشيم إلى حرف ثابت (القيمة الأخيرة المعروفة للرمز) عندما لا يوجد بديل.
 
----
+***
 
 ### note?
 
 > `optional` **note?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ملاحظة بشرية معروضة في وثائق التوافقية وسجل التغييرات.
+ملاحظة بشرية تُعرض في وثائق التوافق وسجل التغييرات.

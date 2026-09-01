@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [platforms/vanilla/src](../index.md) / variables
 
-# Variable: variables
+# متغير: variables
 
 > `const` **variables**: `Record`\<`string`, `unknown`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-كائن متغيرات Vanilla Foundation `rebrand` الجاهز.
+كائن متغيرات Vanilla Foundation الجاهز `rebrand`.
 
-## Example
+## مثال
 
-**ضعه في ملف variables.json الخاص بالمظهر**
+**ضعه في ملف variables.json الخاص بالثيم**
 
 ```ts
 import { variables } from "@pantoken/vanilla";

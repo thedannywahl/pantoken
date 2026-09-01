@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / findEntry
 
-# Function: findEntry()
+# دالة: findEntry()
 
 > **findEntry**(`name`): [`CssDocEntry`](../interfaces/CssDocEntry.md) \| `undefined`
 
-ابحث عن مكون/أداة/إدخال مخصص حسب الاسم.
+البحث عن مكوّن/أداة مساعدة/إدخال مخصص بالاسم.
 
-## Parameters
+## المعلمات
 
 ### name
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 [`CssDocEntry`](../interfaces/CssDocEntry.md) \| `undefined`

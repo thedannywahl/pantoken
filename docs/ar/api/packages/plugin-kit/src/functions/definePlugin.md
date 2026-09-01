@@ -1,31 +1,31 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / definePlugin
 
-# Function: definePlugin()
+# دالة: definePlugin()
 
 > **definePlugin**(`config`): [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون إضافي pantoken من hooks الخاصة به. النتيجة هي `PantokenPlugin` عادي مميز بـ
-القدرات المستدلة من hooks التي قدمتها.
+إنشاء مكوّن إضافي لـ pantoken من الواجهات (hooks) الخاصة به. النتيجة هي `PantokenPlugin` عادي مُعلَّم بالقدرات المستنتجة من الواجهات التي قدَّمتها.
 
-## Parameters
+
+## المعلمات
 
 ### config
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-المكون الإضافي `name` بالإضافة إلى أي من hooks `tokens`/`icons`/`css`/`rehype`/`native`.
+الإضافة `name` بالإضافة إلى أيٍّ من الواجهات `tokens`/`icons`/`css`/`rehype`/`native`.
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-[PantokenPlugin](../../../core/src/interfaces/PantokenPlugin.md) مميز.
+مكوَّن موسوم من نوع [PantokenPlugin](../../../core/src/interfaces/PantokenPlugin.md).
 
-## Example
+## مثال
 
-**مكون إضافي موحد للرموز + CSS**
+**مكوّن إضافي موحَّد للـ tokens و css**
 
 ```ts
 import { capabilitiesOf, definePlugin } from "@pantoken/plugin-kit";

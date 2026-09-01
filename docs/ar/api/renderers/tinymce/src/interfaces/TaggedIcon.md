@@ -1,22 +1,22 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / TaggedIcon
 
-# Interface: TaggedIcon
+# واجهة: TaggedIcon
 
-أيقونة مع نسب المصدر لتتبع الحزمة التي تأتي منها.
+أيقونة مع إسناد المصدر لتتبع الحزمة التي أتت منها.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
----
+***
 
 ### source
 
 > **source**: `"components"` \| `"simple-icons"`
 
----
+***
 
 ### description?
 

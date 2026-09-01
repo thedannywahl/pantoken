@@ -1,7 +1,7 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / Product
 
-# Type Alias: Product
+# اسم نوع مستعار: Product
 
 > **Product** = `"canvas"` \| `"igniteai"` \| `"instructure"` \| `"learnplatform"` \| `"mastery"` \| `"parchment"`
 
-منتج Instructure مع شعار.
+منتج من Instructure مع شعار.

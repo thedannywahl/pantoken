@@ -1,69 +1,69 @@
 [pantoken](../../../../index.md) / [formats/icons/src](../index.md) / PantokenIcon
 
-# Interface: PantokenIcon
+# واجهة: PantokenIcon
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-رمز pantoken، مشتق من رمز `&lt;image&gt;`.
+أيقونة pantoken، مشتقة من توكن `&lt;image&gt;`.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم الرمز، بدون بادئة `--instui-icon-` (مثال `arrow-left`).
+اسم الأيقونة، بدون بادئة `--instui-icon-` (مثال: `arrow-left`).
 
----
+***
 
 ### dataUri
 
 > **dataUri**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قيمة `url('data:image/svg+xml;utf8,…')`، كما هي مخزنة في IR.
+قيمة `url('data:image/svg+xml;utf8,…')` كما هي مخزنة في IR.
 
----
+***
 
 ### svg
 
 > **svg**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-علامات SVG المضمنة المفككة، المحررة من عناصر `&lt;script&gt;` وخصائص معالج الأحداث.
-يأتي من IR المباع (مثبت في المصب). آمن لسياقات الحقن الموثوقة؛
-لا يجب أن يعتبر المستهلكون هذا آمناً للحقن في HTML يتحكم به المهاجم.
+علامة SVG المضمنة المفكوكة، بعد إزالة عناصر `&lt;script&gt;` وسمات معالجات الأحداث.
+مأخوذة من IR المزود (مثبتة upstream). آمنة لسياقات الحقن الموثوقة;
+يجب ألا يعتبرها المستهلكون آمنة للحقن في HTML يتحكم به المهاجمون.
 
----
+***
 
 ### viewBox?
 
 > `optional` **viewBox?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-SVG `viewBox`، عند معرفته.
+الـ SVG `viewBox`، إذا كان معروفًا.
 
----
+***
 
 ### bidirectional
 
 > **bidirectional**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ما إذا كان الرمز ينقلب أفقياً في السياقات من اليمين إلى اليسار.
+ما إذا كانت الأيقونة تنعكس أفقيًا في سياقات من اليمين إلى اليسار.
 
----
+***
 
 ### source?
 
 > `optional` **source?**: `"custom"` \| `"lucide"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أصل الحرف.
+أصل الرمز.

@@ -1,19 +1,19 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/visual-debug/src](../index.md) / visualDebugRules
 
-# Function: visualDebugRules()
+# دالة: visualDebugRules()
 
 > **visualDebugRules**(`color?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قواعد الخطوط الموضحة `-with-visual-debug` لخطوط موضحة معينة `color` (الإعداد الافتراضي للبديل الأرجواني الساطع).
+تحدد `-with-visual-debug` قواعد المحيط لِـ `color` المعطى (الافتراضي هو بديل الفوشيا الساطع).
 
-## Parameters
+## المعلمات
 
 ### color?
 
 `string` = `DEFAULT_COLOR`
 
-## Returns
+## القيم المرجعة
 
 `string`

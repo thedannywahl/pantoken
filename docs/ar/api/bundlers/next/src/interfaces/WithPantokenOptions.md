@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [bundlers/next/src](../index.md) / WithPantokenOptions
 
-# Interface: WithPantokenOptions
+# واجهة: WithPantokenOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 خيارات لـ [withPantoken](../functions/withPantoken.md).
 
-## Properties
+## الخصائص
 
 ### transpile?
 
 > `optional` **transpile?**: `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أسماء الحزم الإضافية المراد إضافتها إلى `transpilePackages`.
+أسماء حزم إضافية لإضافتها إلى `transpilePackages`.

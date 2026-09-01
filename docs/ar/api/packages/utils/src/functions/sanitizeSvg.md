@@ -1,22 +1,22 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / sanitizeSvg
 
-# Function: sanitizeSvg()
+# دالة: sanitizeSvg()
 
 > **sanitizeSvg**(`svg`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إزالة عناصر `&lt;script&gt;` وسمات معالج الأحداث من ترميز SVG.
+إزالة عناصر `&lt;script&gt;` وسمات معالجات الأحداث من ترميز SVG.
 
-الدفاع متعدد الطبقات لـ SVG المفكوك من URIs بيانات مائعة أو المساهمة من قِبل
-المكونات الإضافية. ليس محلل HTML كامل — يعتمد على مصدر المنبع الموثوق به والمثبت.
+دفاع متعدد الطبقات لـ SVG الذي يتم فك تشفيره من URI بيانات مدمجة أو الذي تسهم به الإضافات.
+ليس محللاً كاملاً لـ HTML — يعتمد على أن يكون المصدر الأعلى موثوقًا ومثبتًا على إصدار محدد.
 
-## Parameters
+## المعلمات
 
 ### svg
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`

@@ -1,52 +1,53 @@
 [pantoken](../../../../index.md) / [platforms/canvas-theme-editor/src](../index.md) / CdnProvider
 
-# Interface: CdnProvider
+# واجهة: CdnProvider
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-شبكة توصيل محتوى (CDN) يمكنها تقديم ملفات حزم npm. لا يقوم المزودون بتحديد اسم حزمة مشفر - فهم يعرفون فقط كيفية تشكيل عنوان URL من [CdnFile](CdnFile.md).
+شبكة توزيع محتوى (CDN) يمكنها تقديم ملفات حزمة npm. لا يقوم المزودون بتضمين اسم الحزمة مباشرةً — هم فقط
+يعرفون كيفية تشكيل عنوان URL من [CdnFile](CdnFile.md).
 
-## Properties
+## الخصائص
 
 ### id
 
 > **id**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-معرف مستقر، على سبيل المثال `"jsdelivr"`.
+مُعرف ثابت، على سبيل المثال `"jsdelivr"`.
 
----
+***
 
 ### label
 
 > **label**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-اسم قابل للقراءة من قبل الإنسان، على سبيل المثال `"jsDelivr"`.
+اسم مقروء من البشر، على سبيل المثال `"jsDelivr"`.
 
----
+***
 
 ### supportsCombine
 
 > **supportsCombine**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-ما إذا تم تنفيذ [CdnProvider.buildCombineUrl](#buildcombineurl).
+ما إذا كان [CdnProvider.buildCombineUrl](#buildcombineurl) مُنفَّذًا.
 
-## Methods
+## الطرق
 
 ### buildUrl()
 
 > **buildUrl**(`file`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 ينشئ عنوان URL لملف واحد.
 
-#### Parameters
+#### المعلمات
 
 ##### file
 
@@ -56,21 +57,21 @@
 
 `CdnBuildOptions`
 
-#### Returns
+#### القيم المرجعة
 
 `string`
 
----
+***
 
 ### buildCombineUrl()?
 
 > `optional` **buildCombineUrl**(`files`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-ينشئ عنوان URL واحد يقدم ملفات متعددة متسلسلة معًا. مطلوب إذا وفقط إذا `supportsCombine`.
+ينشئ عنوان URL واحد يخدم عدة ملفات مدموجة معًا. مطلوب إذا وفقط إذا `supportsCombine`.
 
-#### Parameters
+#### المعلمات
 
 ##### files
 
@@ -80,6 +81,6 @@
 
 `CdnBuildOptions`
 
-#### Returns
+#### القيم المرجعة
 
 `string`

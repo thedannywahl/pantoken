@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [platforms/email/src](../index.md) / emailTokens
 
-# Function: emailTokens()
+# دالة: emailTokens()
 
 > **emailTokens**(`mode?`): `Record`\<`string`, `string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حدد خريطة العلامة لوضع (افتراضي `"light"`).
+حدد خريطة الرموز للوضع (الافتراضي `"light"`).
 
-## Parameters
+## المعلمات
 
 ### mode?
 
 `Mode` = `"light"`
 
-## Returns
+## القيم المرجعة
 
 `Record`\<`string`, `string`\>
 
-## Examples
+## أمثلة
 
-**أدرج علامة في خلية بريد إلكتروني (الوضع الفاتح)**
+**أدرج رمزًا داخل خلية البريد الإلكتروني (الوضع الفاتح)**
 
 ```ts
 import { emailTokens } from "@pantoken/email";

@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / PageLayout
 
-# Interface: PageLayout
+# واجهة: PageLayout
 
-تخطيط صفحة البداية: تكوين بسيط من المكونات الموجودة، بدون محددات CSS جديدة.
+تخطيط صفحة مبدئي: تركيب بسيط للمكونات الموجودة، دون محددات CSS جديدة.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-معرّف مستقر، يطابق اسم ملف المصدر (على سبيل المثال `"hero"`).
+معرّف ثابت، يطابق اسم الملف المصدر (مثال `"hero"`).
 
----
+***
 
 ### title
 
 > **title**: `string`
 
-التسمية الموضحة في محدد التخطيط.
+التسمية المعروضة في أداة اختيار التخطيط.
 
----
+***
 
 ### html
 
 > **html**: `string`
 
-HTML خام للتخطيط، مبني من فئات `@pantoken/components`.
+HTML خام للتخطيط، مبني من أصناف `@pantoken/components`.

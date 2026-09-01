@@ -1,23 +1,23 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / deprecationShims
 
-# Function: deprecationShims()
+# دالة: deprecationShims()
 
 > **deprecationShims**(`ledger`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون الإهمال-shim من دفتر الأستاذ.
+إنشاء الملحق deprecation-shim من دفتر الأستاذ.
 
-## Parameters
+## المعلمات
 
 ### ledger
 
 `DeprecationLedger`
 
-الـ `DeprecationLedger` (على سبيل المثال `formats/tokens/deprecations.json`).
+الـ `DeprecationLedger` (مثل `formats/tokens/deprecations.json`).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) التي يضيف خطاف `tokens` فيها واحد shim لكل إدخال.
+عنصر [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) الذي يقوم هوك `tokens` بإلحاق shim واحد لكل إدخال.

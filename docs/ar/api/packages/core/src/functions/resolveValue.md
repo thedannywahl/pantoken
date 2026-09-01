@@ -1,28 +1,28 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / resolveValue
 
-# Function: resolveValue()
+# دالة: resolveValue()
 
 > **resolveValue**(`raw`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حل قيمة توكن خام: يصبح المرجع `var(...)`؛ تمرير القيمة الملموسة.
+حل قيمة توكن خام: يصبح المرجع `var(...)`; والقيمة الملموسة تمر كما هي.
 
-## Parameters
+## المعلمات
 
 ### raw
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { resolveValue } from "@pantoken/core";
 
 resolveValue("{semantic.color.background.base}"); // → "var(--instui-color-background-base)"
-resolveValue("#ffffff"); // → "#ffffff"
+resolveValue("#ffffff");                          // → "#ffffff"
 ```

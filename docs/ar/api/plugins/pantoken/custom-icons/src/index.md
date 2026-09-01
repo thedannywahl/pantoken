@@ -2,17 +2,17 @@
 
 # custom-icons
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-custom-icons` — حروف الأيقونات المخصصة المباعة للمستهلكين في اتجاه المصب.
+`@pantoken/plugin-custom-icons` — أحرف أيقونات مضمّنة مخصصة للمستهلكين اللاحقين.
 
-يجلب الأيقونات التي ليست جزءًا من مجموعة InstUI (علامات المنتج/العلامة التجارية، وما إلى ذلك) كـ
-رموز صور `--instui-icon-&lt;name&gt;` — نفس مساحة الاسم وفئة الرسام `.-icon-&lt;name&gt;` التي
-تستخدمها أيقونات InstUI المدمجة، بحيث تسقط أيقونة مخصصة في `.instui-icon -icon-&lt;name&gt;` تمامًا مثل
-أيقونة مدمجة. لا بادئة `custom-`: في حالة تضارب الأسماء، يجب أن تفوز أيقونة InstUI المدمجة (قم بتحميل
-بعد CSS لهذه الإضافة في أي دمج URL).
+يجلب أيقونات ليست جزءًا من مجموعة InstUI (علامات المنتج/العلامة التجارية، إلخ) كـ
+`--instui-icon-&lt;name&gt;` رموز صور — نفس فضاء الأسماء وفئة الرسام `.-icon-&lt;name&gt;` التي
+تستخدمها أيقونات InstUI المضمّنة، لذا تُدرج الأيقونة المخصصة في `.instui-icon -icon-&lt;name&gt;` تمامًا مثل
+الأيقونة المضمّنة. لا يوجد بادئة `custom-`: عند تعارض الأسماء، يجب أن تفوز الأيقونة المضمّنة من InstUI (حمّلها
+بعد CSS لهذه الإضافة في أي عنوان URL مدمج).
 
-## Example
+## مثال
 
 ```ts
 import { toCss } from "@pantoken/css";
@@ -23,21 +23,21 @@ const css = toCss(byTheme("rebrand"), { plugins: [customIcons({ names: ["highspo
 // adds --instui-icon-highspot as an <image> token
 ```
 
-## Interfaces
+## واجهات
 
 - [CustomIcon](interfaces/CustomIcon.md)
 - [CustomIconsOptions](interfaces/CustomIconsOptions.md)
 
-## Variables
+## المتغيرات
 
 - [icons](variables/icons.md)
 
-## Functions
+## الدوال
 
 - [customIcons](functions/customIcons.md)
 
-## References
+## المراجع
 
 ### default
 
-يعيد تسمية وإعادة تصدير [customIcons](functions/customIcons.md)
+يعيد تسمية ويُعيد تصدير [customIcons](functions/customIcons.md)

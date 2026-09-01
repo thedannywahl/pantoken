@@ -2,32 +2,33 @@
 
 # stylus
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 `@pantoken/stylus` — رموز تصميم Instructure كمتغيرات Stylus.
 
-[toStylus](functions/toStylus.md) يحول أي IR؛ [stylus](variables/stylus.md) هي مجموعة المتغيرات الجاهزة `rebrand`. يتم نشر ملف ثابت في `@pantoken/stylus/tokens.styl`.
+[toStylus](functions/toStylus.md) يحول أي IR؛ [stylus](variables/stylus.md) هي مجموعة المتغيرات `rebrand` الجاهزة. ملف ثابت
+منشور في `@pantoken/stylus/tokens.styl`.
 
-## Interfaces
+## واجهات
 
 - [ToStylusOptions](interfaces/ToStylusOptions.md)
 
-## Variables
+## المتغيرات
 
 - [stylus](variables/stylus.md)
 
-## Functions
+## الدوال
 
 - [toStylus](functions/toStylus.md)
 
-## References
+## المراجع
 
 ### Mode
 
-إعادة تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
+يعيد تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
 
----
+***
 
 ### default
 
-إعادة تسمية وإعادة تصدير [stylus](variables/stylus.md)
+يعيد تسمية وإعادة تصدير [stylus](variables/stylus.md)

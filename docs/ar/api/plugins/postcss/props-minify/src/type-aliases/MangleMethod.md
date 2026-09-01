@@ -1,9 +1,9 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/props-minify/src](../index.md) / MangleMethod
 
-# Type Alias: MangleMethod
+# اسم نوع مستعار: MangleMethod
 
 > **MangleMethod** = `"base26"` \| `"base36"` \| `"numeric"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-استراتيجية توليد الأسماء القصيرة لـ [mangleCustomProps](../variables/mangleCustomProps.md).
+استراتيجية إنشاء اسم قصير لـ [mangleCustomProps](../variables/mangleCustomProps.md).

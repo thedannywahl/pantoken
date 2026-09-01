@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [bundlers/next/src](../index.md) / INSTUI\_TRANSPILE\_PACKAGES
 
-# Variable: INSTUI\_TRANSPILE\_PACKAGES
+# متغير: INSTUI\_TRANSPILE\_PACKAGES
 
 > `const` **INSTUI\_TRANSPILE\_PACKAGES**: readonly `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حزم Instructure UI التي يحتاج Next إلى نقلها. توسيع عبر [WithPantokenOptions](../interfaces/WithPantokenOptions.md).
+حزم Instructure UI التي يحتاجها Next لتجري عليها عملية transpile. قم بالتمديد عبر [WithPantokenOptions](../interfaces/WithPantokenOptions.md).
 
-## Example
+## مثال
 
-**إدخال القائمة في transpilePackages اليدوي**
+**أدخِل القائمة في transpilePackages اليدوي**
 
 ```ts
 import { INSTUI_TRANSPILE_PACKAGES } from "@pantoken/next";

@@ -1,25 +1,25 @@
 [pantoken](../../../../index.md) / [renderers/react/src](../index.md) / TokenProviderProps
 
-# Interface: TokenProviderProps
+# واجهة: TokenProviderProps
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الخصائص الخاصة بـ [TokenProvider](../functions/TokenProvider.md).
+الخواص الخاصة بـ [TokenProvider](../functions/TokenProvider.md).
 
-## Properties
+## الخصائص
 
 ### children?
 
 > `optional` **children?**: `ReactNode`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### locale?
 
 > `optional` **locale?**: `string` \| [`LocaleBundle`](#)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-علامة محلية BCP47 أو حزمة محلية مُنشأة مسبقًا [LocaleBundle](#). عند تعيينها، تستخدم `registerLocalized`.
+علامة لغة BCP47 أو [LocaleBundle](#) مُعدة مسبقًا. عند التعيين، يستخدم `registerLocalized`.

@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / toSwatches
 
-# Function: toSwatches()
+# دالة: toSwatches()
 
 > **toSwatches**(`tokens`, `mode?`): [`Swatch`](../interfaces/Swatch.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تقليل IR token إلى قائمة مسطحة من عينات الألوان: حل المراجع، اختر وضعاً، احتفظ فقط
-بالرموز التي تكون قيمتها لون hex (يتم حذف الرموز والرموز غير الملونة).
+اختزِل IR التوكن إلى قائمة مسطحة من رقائق الألوان: حل المراجع، اختر وضعًا، احتفظ فقط
+بالتوكنات التي قيمتها لون هكس (تُستبعد الأيقونات والتوكنات غير اللونية).
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (مثلاً من `@pantoken/tokens`).
 
 ### mode?
 
 [`Mode`](../type-aliases/Mode.md) = `"light"`
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+أي وضع لوني سيتم حله (الافتراضي `"light"`).
 
-## Returns
+## القيم المرجعة
 
 [`Swatch`](../interfaces/Swatch.md)[]
 
-قائمة العينات، المسماة حسب الرمز (بدون بادئة `--instui-`).
+قائمة الرقائق، مسماة حسب التوكن (بدون البادئة `--instui-`).
 
-## Examples
+## أمثلة
 
-**تقليل رمز IR إلى عينات الوضع الفاتح**
+**اختزل IR التوكن إلى رقائق الوضع الفاتح**
 
 ```ts
 import { toSwatches } from "@pantoken/swatches";

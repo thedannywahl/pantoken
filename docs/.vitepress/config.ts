@@ -659,6 +659,7 @@ export default defineConfig({
         `${base}demos-assets/visual-debug.css`,
         `${base}demos-assets/card.css`,
         `${base}demos-assets/custom-components.css`,
+        `${base}demos-assets/logos.css`,
       ];
       demoMarkdownIt(md, {
         base,

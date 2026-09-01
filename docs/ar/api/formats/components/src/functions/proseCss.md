@@ -1,18 +1,19 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / proseCss
 
-# Function: proseCss()
+# دالة: proseCss()
 
 > **proseCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء ورقة أنماط النثر بمظهر InstUI، محدودة بـ `options.scope` (الافتراضي `:where(body)`، لذا يتم تطبيقها تلقائياً بدون فئة غلاف — مثل `base.css`).
+إنشاء ورقة أنماط نصية بمظهر InstUI، محددة النطاق إلى `options.scope` (الافتراضي `:where(body)`، لذا فهي
+تُطبق تلقائيًا دون فئة غلاف — مثل `base.css`).
 
 ```demo
 self:prose
 ```
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -20,7 +21,7 @@ self:prose
 
 [ProseOptions](../interfaces/ProseOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 

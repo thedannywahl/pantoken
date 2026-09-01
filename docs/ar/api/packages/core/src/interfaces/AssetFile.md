@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / AssetFile
 
-# Interface: AssetFile
+# واجهة: AssetFile
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ملف تم إنشاؤه: مسار نسبي إلى المستودع ومحتوياته.
+ملف مُنشأ: مسار نسبي للمستودع ومحتوياته.
 
-## Properties
+## الخصائص
 
 ### path
 
 > **path**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### content
 
 > **content**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

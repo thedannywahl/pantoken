@@ -2,14 +2,14 @@
 
 # mui
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/mui` — ضع مظهر MUI (Material UI) برموز Instructure.
+`@pantoken/mui` — سمة MUI (Material UI) مع توكنات Instructure.
 
-[toMuiTheme](functions/toMuiTheme.md) يعين أي IR إلى خيارات موضوع MUI؛ [lightTheme](variables/lightTheme.md) و [darkTheme](variables/darkTheme.md)
-هي خيارات `rebrand` الجاهزة. مررها إلى `createTheme` الخاص بـ MUI.
+[toMuiTheme](functions/toMuiTheme.md) يحول أي IR إلى خيارات سمة MUI؛ [lightTheme](variables/lightTheme.md) و [darkTheme](variables/darkTheme.md)
+هما خيارات `rebrand` الجاهزة. مرّرها إلى `createTheme` الخاص بـ MUI.
 
-## Example
+## مثال
 
 ```tsx
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -18,28 +18,28 @@ const theme = createTheme(lightTheme);
 <ThemeProvider theme={theme}>...</ThemeProvider>;
 ```
 
-## Interfaces
+## واجهات
 
 - [MuiPaletteColor](interfaces/MuiPaletteColor.md)
 - [PantokenThemeOptions](interfaces/PantokenThemeOptions.md)
 
-## Variables
+## المتغيرات
 
 - [lightTheme](variables/lightTheme.md)
 - [darkTheme](variables/darkTheme.md)
 
-## Functions
+## الدوال
 
 - [toMuiTheme](functions/toMuiTheme.md)
 
-## References
+## المراجع
 
 ### Mode
 
-إعادة تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
+يعيد تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
 
----
+***
 
 ### default
 
-إعادة تسمية وإعادة تصدير [lightTheme](variables/lightTheme.md)
+يعيد تسمية ويعيد تصدير [lightTheme](variables/lightTheme.md)

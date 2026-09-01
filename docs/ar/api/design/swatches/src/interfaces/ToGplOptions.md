@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / ToGplOptions
 
-# Interface: ToGplOptions
+# واجهة: ToGplOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الخيارات لـ [toGpl](../functions/toGpl.md).
+خيارات لـ [toGpl](../functions/toGpl.md).
 
-## Properties
+## الخصائص
 
 ### name?
 
 > `optional` **name?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 اسم اللوحة (الافتراضي `"Instructure"`).

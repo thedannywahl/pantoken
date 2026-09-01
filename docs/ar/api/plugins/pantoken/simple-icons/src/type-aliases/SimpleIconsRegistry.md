@@ -1,9 +1,9 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/simple-icons/src](../index.md) / SimpleIconsRegistry
 
-# Type Alias: SimpleIconsRegistry
+# اسم نوع مستعار: SimpleIconsRegistry
 
 > **SimpleIconsRegistry** = `Record`\<`string`, `unknown`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سجل Simple Icons: صادرات `si*` المسماة للوحدة، أو أي خريطة متوافقة.
+سجل Simple Icons: التصديرات المسماة للموديول `si*`، أو أي خريطة متوافقة.

@@ -1,22 +1,21 @@
 # CSS: menu
 
-`.instui-menu` — سطح قائمة منسدلة من العناصر والمجموعات والفواصل.
+`.instui-menu` — سطح منبثق يحتوي على عناصر ومجموعات وفواصل.
 
-قم بإنشاء الإدخالات كـ `.item` (انظر عضو `menu.item`)، وسمّ قسمًا باستخدام `.group` (انظر `menu.group`)، وقسّم الأقسام باستخدام `.separator` (انظر `menu.separator`).
+كوّن الإدخالات كـ `.item` (انظر العضو `menu.item`)، سمِّ قسمًا بـ `.group` (انظر `menu.group`)، وقسّم الأقسام بـ `.separator` (انظر `menu.separator`).
 
 **المصدر:** [group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/menu/members/group/group.css)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/menu.css";
 ```
 
-## Examples
+## أمثلة
 
 -nocard
-
 ```html
 <div class="instui-menu">
   <div class="group">Actions</div>
@@ -27,7 +26,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-menu
@@ -54,26 +53,27 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                     | Type       | Value                          |
-| ----------------------------------------- | ---------- | ------------------------------ |
-| `--instui-border-radius-md`               | `<length>` | `0.5rem`                       |
-| `--instui-border-width-sm`                | `<length>` | `0.0625rem`                    |
-| `--instui-color-stroke-base`              | `<color>`  | `light-dark(#8D959F, #6A7883)` |
-| `--instui-component-menu-item-background` | `<color>`  | `light-dark(#ffffff, #171B21)` |
-| `--instui-component-menu-max-width`       | `<length>` | `16em`                         |
-| `--instui-component-menu-min-width`       | `<length>` | `8em`                          |
-| `--instui-spacing-space-xs`               | `<length>` | `0.25rem`                      |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-border-radius-md` | `<length>` | `0.5rem` |
+| `--instui-border-width-sm` | `<length>` | `0.0625rem` |
+| `--instui-color-stroke-base` | `<color>` | `light-dark(#8D959F, #6A7883)` |
+| `--instui-component-menu-item-background` | `<color>` | `light-dark(#ffffff, #171B21)` |
+| `--instui-component-menu-max-width` | `<length>` | `16em` |
+| `--instui-component-menu-min-width` | `<length>` | `8em` |
+| `--instui-spacing-space-xs` | `<length>` | `0.25rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [menu.group](/ar/api/css/menu.group.md)
 - [menu.item](/ar/api/css/menu.item.md)
 - [menu.separator](/ar/api/css/menu.separator.md)
 - [side-nav-bar.item](/ar/api/css/side-nav-bar.item.md)
 
-## Related
+## ذات صلة
 
-- [tree-browser](/ar/api/css/tree-browser.md) — كلاهما يعرض إدخالات متداخلة قابلة للاختيار.
-- [simple-select](/ar/api/css/simple-select.md) — تعيد قائمة الاختيار استخدام سطح هذه القائمة.
+- [tree-browser](/ar/api/css/tree-browser.md) — كلاهما يعرض إدخالات متداخلة وقابلة للاختيار.
+- [simple-select](/ar/api/css/simple-select.md) — تستخدم القائمة المنسدلة لعنصر select سطح القائمة هذا.
+

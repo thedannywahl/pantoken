@@ -2,16 +2,21 @@
 
 # flatten-property
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-flatten-property` — تحويل قواعس `@property` إلى إعلانات خاصية مخصصة عادية.
+`@pantoken/plugin-flatten-property` — تحويل قواعد at-rules الخاصة بـ `@property` إلى تصريحات خاصية-مخصصة عادية.
 
-تسجل قواعس `@property` خصائص CSS مخصصة بنوع مع وصفات `syntax`، `inherits`، و `initial-value`. تحمل عبء بايت كبير — ~60 بايت من النموذج النشطي لكل خاصية — وغير ضروري عندما تكون ورقة الأنماط حزمة مستقلة حيث لا يوفر تسجيل النوع أي فائدة وقت التشغيل. يستبدل هذا المكون الإضافي كل كتلة `@property` بإعلان `--name: value` بسيط داخل محدد مختار، استعادة كل هذا العبء.
+`@property` at-rules تسجل خصائص CSS المخصصة المُنَفرة بالأنواع باستخدام واصفات `syntax` و `inherits` و
+`initial-value`. إنها تضيف حملًا كبيرًا من البايت — ~60 بايت من القالب لكل
+خاصية — وهي غير ضرورية عندما يكون ملف الأنماط حزمة مكتفية ذاتيًا حيث لا توفر تسجيلات النوع
+فائدة في وقت التشغيل. يستبدل هذا المكون الإضافي كل كتلة `@property` بـ
+تصريح `--name: value` بسيط داخل محدد مختار، مستعيدًا كل ذلك الحمل الزائد.
 
-**ملاحظة دلالية:** إزالة `@property` تفقد تسجيل نوع CSS. الانتقالات/الرسوم المتحركة المكتوبة بنوع،
-`@starting-style`، و CSS Typed OM تعتمد عليها. طبق فقط على الحزم حيث لا تكون تلك الدلالات مطلوبة.
+**ملاحظة دلالية:** إزالة `@property` يؤدي إلى فقدان تسجيل نوع CSS. الانتقالات/التحريكات المطبقة بالأنواع،
+`@starting-style`، وCSS Typed OM تعتمد عليه. طبّق هذا فقط على الحزم التي لا تكون فيها هذه الدلالات
+مطلوبة.
 
-## Example
+## مثال
 
 ```ts
 import postcss from "postcss";
@@ -19,10 +24,10 @@ import { flattenProperty } from "@pantoken/plugin-flatten-property";
 const out = postcss([flattenProperty()]).process(css, { from: undefined }).css;
 ```
 
-## Interfaces
+## واجهات
 
 - [FlattenPropertyOptions](interfaces/FlattenPropertyOptions.md)
 
-## Variables
+## المتغيرات
 
 - [flattenProperty](variables/flattenProperty.md)

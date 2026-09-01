@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [renderers/astro/src](../index.md) / InstUIOptions
 
-# Interface: InstUIOptions
+# واجهة: InstUIOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-خيارات [InstUI](../functions/InstUI.md).
+خيارات لـ [InstUI](../functions/InstUI.md).
 
-## Properties
+## الخصائص
 
 ### theme?
 
 > `optional` **theme?**: [`Theme`](../../../../packages/core/src/type-aliases/Theme.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-الموضوع المراد إصداره (الافتراضي: `"rebrand"`).
+السمة التي سيتم إصدارها (الافتراضي: `"rebrand"`).
 
----
+***
 
 ### plugins?
 
 > `optional` **plugins?**: readonly [`PantokenPlugin`](../../../../packages/core/src/interfaces/PantokenPlugin.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-المكونات التي تساهم خطافات `css` الخاصة بها في ورقة الأنماط المحقونة (الإعدادات المسبقة: بلا).
+الإضافات التي تسهم خطافات `css` الخاصة بها في ورقة الأنماط المُحقنة (الافتراضي: لا شيء).

@@ -1,22 +1,21 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / drawerLayout
 
-# Variable: drawerLayout
+# متغير: drawerLayout
 
 > `const` **drawerLayout**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-drawer-layout&gt;` — درج جانبي بالإضافة إلى منطقة محتوى رئيسية. سمة `open` تكشف
-الدرج؛ `placement` (`start`|`end`) يختار الجانب. قابلة للتشغيل من light DOM عبر أوامر Invoker:
-`<button command="--toggle|--open|--close" commandfor="drawer-id">`. يذهب المحتوى إلى الفتحة الافتراضية؛
-الدرج في `slot="tray"`. سلوك التفاعلات يبدّل تلقائياً وضع overlay بناءً على
-حد `--pantoken-bp-md`.
+`&lt;instui-drawer-layout&gt;` — حاوية جانبية بالإضافة إلى منطقة المحتوى الرئيسية. السمة `open` تكشف الدرج؛ `placement` (`start`|`end`) تختار الجانب. يمكن التحكم بها من الـ light DOM عبر أوامر Invoker:
+`<button command="--toggle|--open|--close" commandfor="drawer-id">`. يوضع المحتوى في الحاوية الافتراضية
+slot؛ والدرج في `slot="tray"`. سلوك التفاعلات يبدل وضع التراكب تلقائيًا بناءً على عتبة
+`--pantoken-bp-md`.
 
-## Accessibility
+## سهولة الوصول
 
-جزء المحتوى يحمل `role="region"`، مطابقاً DrawerLayout الخاص بـ InstUI؛ قم بتسميته باستخدام `aria-label`/`aria-labelledby` عندما لا يكون السياق المحيط قد سماه بالفعل.
+لوحة المحتوى تحمل `role="region"`، مما يطابق DrawerLayout الخاص بـ InstUI؛ وسمّها بـ `aria-label`/`aria-labelledby` عندما لا يكون السياق المحيط قد سمّاها بالفعل.
 
-## Example
+## مثال
 
 ```html
 <button command="--toggle" commandfor="drawer">Toggle panel</button>

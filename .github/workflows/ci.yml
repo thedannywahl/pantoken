@@ -570,10 +570,14 @@ jobs:
               - 'renderers/**'
               - 'plugins/**'
               - 'design/**'
+              - 'tools/translation-adapters/**'
+              - 'i18n-policy.json'
               - 'pnpm-lock.yaml'
               - 'pnpm-workspace.yaml'
 
-  # Detect changes that could introduce translation drift in the i18n bundle caches.
+  # Detect changes that could introduce translation drift in the i18n bundle caches. `i18n-policy.json`
+  # and the shared policy module are in the path set too — editing what blocks a merge has to re-run
+  # the gate that reads it.
   i18n-changes:
     runs-on: ubuntu-latest
     outputs:
@@ -596,8 +600,16 @@ jobs:
               - 'packages/scaffold/i18n-cache/**'
               - 'ai/pantoken-ai/src/i18n.json'
               - 'ai/pantoken-ai/i18n-cache/**'
+              - 'tools/translation-adapters/**'
+              - 'i18n-policy.json'
 
   # Verify all Canvas locale caches are current relative to the English source strings.
+  #
+  # `i18n-policy.json` decides, per surface and per locale tier, which gaps block the merge and which
+  # only warn — so this job fails on English source drift but reports the translation long tail as
+  # GitHub annotations plus a job-summary table without parking the PR. Escalate everything locally
+  # with `vp run i18n:check:drift:strict`.
+  #
   # AI translation is never wired here — fill drift locally with `vp run i18n:translate`.
   i18n-drift:
     needs: [build, i18n-changes]

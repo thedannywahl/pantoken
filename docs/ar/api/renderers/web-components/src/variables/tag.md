@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / tag
 
-# Variable: tag
+# متغير: tag
 
 > `const` **tag**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-tag&gt;` — وسم/شريحة بنمط الرمز المميز. المحتوى المدرج هو التسمية.
+`&lt;instui-tag&gt;` — علامة/شريحة ذات نمط توكن. المحتوى المضمن في الفتحة هو التسمية.
 
-## Example
+## مثال
 
 ```html
 <instui-tag>Design</instui-tag>

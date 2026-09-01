@@ -1,15 +1,16 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initProgressCircle
 
-# Function: initProgressCircle()
+# دالة: initProgressCircle()
 
 > **initProgressCircle**(`target`, `options?`): [`ProgressCircleHandle`](../interfaces/ProgressCircleHandle.md)
 
-تحرير معدل الرسوم المتحركة للتثبيت في ProgressCircle بعد التأخير المكون.
+إطلاق مُعدِّل mount-animation الخاص بـ ProgressCircle بعد مدة التأخير المكوّنة له.
 
-التأخير هو خيار ميلي ثانية صريح أو خاصية CSS مخصصة محسوبة بلا وحدات للهدف
-`--animation-delay`. تصبح القيم المفقودة والسالبة وغير المحدودة صفرًا. يتم قبول كل من المعدِّل الأساسي واسمه المستعار المهجور وإزالتهما.
+مدة التأخير هي خيار صريح بوحدة المِلّي ثانية أو خاصية مخصّصة محتسبة للهدف بدون وحدة
+`--animation-delay`. القيم المفقودة أو السالبة أو غير المنتهية تصبح صفرًا. كل من
+المُعدِّل المعروف والاسم المستعار القديم الناتج عن خطأ مطبعي مقبولان ومُزالان.
 
-## Parameters
+## المعلمات
 
 ### target
 
@@ -19,6 +20,6 @@
 
 [`ProgressCircleOptions`](../interfaces/ProgressCircleOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 [`ProgressCircleHandle`](../interfaces/ProgressCircleHandle.md)

@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/docusaurus/src](../index.md) / INFIMA\_TO\_INSTUI
 
-# Variable: INFIMA\_TO\_INSTUI
+# متغير: INFIMA\_TO\_INSTUI
 
 > `const` **INFIMA\_TO\_INSTUI**: `Readonly`\<`Record`\<`string`, `string`\>\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-متغير Infima CSS → رمز Instructure الذي يتحلل إليه.
+متغير CSS الخاص بـ Infima → رمز Instructure الذي يتم حله إليه.

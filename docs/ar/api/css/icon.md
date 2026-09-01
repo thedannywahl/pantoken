@@ -1,39 +1,40 @@
 # CSS: icon
 
-`.instui-icon` — نظام الأيقونة: حجم `.instui-icon` بالإضافة إلى الرسام المشترك `-icon-&lt;name&gt;` الذي يغطي الحرف الرسومي (في `currentColor`) قبل أي عنصر.
+`.instui-icon` — نظام الأيقونات: أحجام `.instui-icon` بالإضافة إلى المُرسِم المشترك `-icon-&lt;name&gt;` الذي يطبق قناعًا على الرمز (في `currentColor`) قبل أي عنصر.
 
 **المصدر:** [icon.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/icon/icon.css)
 
-## Accessibility
+## سهولة الوصول
 
-الحرف الرسومي زخرفي، لذا اوضحه `aria-hidden="true"`؛ أعطيه `role` أو تسمية فقط عندما تنقل الأيقونة معنى بمفردها.
+الرمز زخرفي، لذا وسمه بـ `aria-hidden="true"`; امنحه `role` أو تسمية فقط عندما تنقل الأيقونة معنى بمفردها.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <span class="instui-icon -icon-megaphone" aria-hidden="true"></span>
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier   | Description                                                                                            |
-| ---------- | ------------------------------------------------------------------------------------------------------ |
-| `.-icon-*` | عيّن رمز الحرف الرسومي (`--pantoken-glyph`) وصيره عبر الرسام المشترك (على سبيل المثال `-icon-search`). |
+| معدّل | الوصف |
+| --- | --- |
+| `.-icon-*` | اضبط توكن الرمز (`--pantoken-glyph`) واعرضه عبر المُرسِم المشترك (على سبيل المثال `-icon-search`). |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description                                                                        |
-| -------------- | ---------------------------------------------------------------------------------- |
-| `::before`     | الحرف الرسومي نفسه: صندوق 1em مغطى من `--pantoken-glyph` ومملوء بـ `currentColor`. |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::before` | الرمز نفسه: صندوق بحجم 1em مقنع من `--pantoken-glyph` ومملوء بـ `currentColor`. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token              | Type    | Value |
-| ------------------ | ------- | ----- |
-| `--pantoken-glyph` | `<url>` | —     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--pantoken-glyph` | `<url>` | — |
+

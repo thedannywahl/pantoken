@@ -1,23 +1,23 @@
 # CSS: tray
 
-`.instui-tray` — لوحة مثبتة على الحافة تنزلق من أي جانب؛ أصلية `[popover]` أو `&lt;dialog&gt;`.
+`.instui-tray` — لوحة مثبتة على الحافة تنزلق من أي جانب؛ `[popover]` أو `&lt;dialog&gt;` أصلي.
 
-تتحل عمليات البدء/النهاية ضد `inset-inline` (منطقي، واعي بالاتجاه)؛ تعكس تحويل الشريحة تلقائياً تحت سلف `[dir="rtl"]`، لذلك لا يتطلب تخطيط إضافي للتخطيطات من اليمين إلى اليسار.
+يُحل موضع البداية/النهاية بالنسبة إلى `inset-inline` (منطقي، واعٍ للاتجاه)؛ تحويل الانزلاق يعكس تلقائيًا تحت سلف `[dir="rtl"]`، لذا لا حاجة إلى تعليمات إضافية لتخطيط من اليمين إلى اليسار.
 
 **المصدر:** [tray.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tray/tray.css)
 
-## Accessibility
+## سهولة الوصول
 
-الدرج عبارة عن سطح حوار أو popover، لذا أطلق عليه اسم `aria-label` أو `aria-labelledby`، وتحمل أداة التحكم الخاصة به `aria-label` (`.instui-close-button` في المثال يستخدم `aria-label="Close"`).
+الصينية هي سطح حوار أو منبثق، فسميها `aria-label` أو `aria-labelledby`، وزر الإغلاق يحمل `aria-label` (في المثال `.instui-close-button` يستخدم `aria-label="Close"`).
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/tray.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-tray -placement-end -size-sm">
@@ -27,7 +27,7 @@
 <button class="instui-button -toggle">toggle tray</button>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-tray
@@ -49,59 +49,60 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier             | Description                                                                                   |
-| -------------------- | --------------------------------------------------------------------------------------------- |
-| `.-placement-bottom` | اربط إلى الحافة السفلية.                                                                      |
-| `.-placement-end`    | اربط إلى الحافة النهائية (inline-end).                                                        |
-| `.-placement-start`  | (افتراضي) اربط إلى حافة البداية (inline-start).                                               |
-| `.-placement-top`    | اربط إلى الحافة العليا.                                                                       |
-| `.-size-large`       | كبير. اسم مستعار طويل الشكل لـ `-size-lg`.                                                    |
-| `.-size-lg`          | كبير.                                                                                         |
-| `.-size-md`          | (افتراضي) متوسط.                                                                              |
-| `.-size-medium`      | (افتراضي) متوسط. اسم مستعار طويل `-size-md`.                                                  |
-| `.-size-regular`     | <span class="instui-pill -color-danger pantoken-doc-tag">Deprecated</span> — use `.-size-md`. |
-| `.-size-sm`          | صغير.                                                                                         |
-| `.-size-small`       | صغير. اسم مستعار طويل الشكل لـ `-size-sm`.                                                    |
-| `.-size-x-large`     | كبير جداً. اسم مستعار طويل الشكل لـ `-size-xl`.                                               |
-| `.-size-x-small`     | صغير جداً. اسم مستعار طويل الشكل لـ `-size-xs`.                                               |
-| `.-size-xl`          | كبير جداً.                                                                                    |
-| `.-size-xs`          | صغير جداً.                                                                                    |
+| معدّل | الوصف |
+| --- | --- |
+| `.-placement-bottom` | ثبتها على الحافة السفلية. |
+| `.-placement-end` | ثبتها على الحافة النهائية (inline-end). |
+| `.-placement-start` | (الافتراضي) ثبتها على الحافة البادئة (inline-start). |
+| `.-placement-top` | ثبتها على الحافة العلوية. |
+| `.-size-large` | كبير. اسم بديل طويل لـ `-size-lg`. |
+| `.-size-lg` | كبير. |
+| `.-size-md` | (الافتراضي) متوسط. |
+| `.-size-medium` | (الافتراضي) متوسط. اسم بديل طويل لـ `-size-md`. |
+| `.-size-regular` | <span class="instui-pill -color-danger pantoken-doc-tag">مهجور</span> — use `.-size-md`. |
+| `.-size-sm` | صغير. |
+| `.-size-small` | صغير. اسم بديل طويل لـ `-size-sm`. |
+| `.-size-x-large` | كبير جدًا. اسم بديل طويل لـ `-size-xl`. |
+| `.-size-x-small` | صغير جدًا. اسم بديل طويل لـ `-size-xs`. |
+| `.-size-xl` | كبير جدًا. |
+| `.-size-xs` | صغير جدًا. |
 
-## Conditions
+## الشروط
 
-| Type     | Query                                   | Description |
-| -------- | --------------------------------------- | ----------- |
-| supports | `(transition-behavior: allow-discrete)` | —           |
+| نوع | استعلام | الوصف |
+| --- | --- | --- |
+| supports | `(transition-behavior: allow-discrete)` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                      | Type                | Value                          |
-| ------------------------------------------ | ------------------- | ------------------------------ |
-| `--instui-component-tray-background-color` | `<color>`           | `light-dark(#ffffff, #1C222B)` |
-| `--instui-component-tray-border-color`     | `<color>`           | `light-dark(#E8EAEC, #334450)` |
-| `--instui-component-tray-border-width`     | `<length>`          | `0.0625rem`                    |
-| `--instui-component-tray-padding`          | `<length>`          | `1.5rem`                       |
-| `--instui-component-tray-width-lg`         | `<length>`          | `48em`                         |
-| `--instui-component-tray-width-md`         | `<length>`          | `30em`                         |
-| `--instui-component-tray-width-sm`         | `<length>`          | `20em`                         |
-| `--instui-component-tray-width-xl`         | `<length>`          | `62em`                         |
-| `--instui-component-tray-width-xs`         | `<length>`          | `16em`                         |
-| `--instui-component-tray-z-index`          | `<integer>`         | `9999`                         |
-| `--instui-elevation-topmost`               | `none \| <shadow>#` | —                              |
-| `--tray-slide-x`                           | —                   | `-100%`                        |
-| `--tray-slide-y`                           | —                   | `0%`                           |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-tray-background-color` | `<color>` | `light-dark(#ffffff, #1C222B)` |
+| `--instui-component-tray-border-color` | `<color>` | `light-dark(#E8EAEC, #334450)` |
+| `--instui-component-tray-border-width` | `<length>` | `0.0625rem` |
+| `--instui-component-tray-padding` | `<length>` | `1.5rem` |
+| `--instui-component-tray-width-lg` | `<length>` | `48em` |
+| `--instui-component-tray-width-md` | `<length>` | `30em` |
+| `--instui-component-tray-width-sm` | `<length>` | `20em` |
+| `--instui-component-tray-width-xl` | `<length>` | `62em` |
+| `--instui-component-tray-width-xs` | `<length>` | `16em` |
+| `--instui-component-tray-z-index` | `<integer>` | `9999` |
+| `--instui-elevation-topmost` | `none \| <shadow>#` | — |
+| `--tray-slide-x` | — | `-100%` |
+| `--tray-slide-y` | — | `0%` |
 
-## Browser support
+## دعم المتصفّح
 
-- يفتح باستخدام API `[popover]` الأصلي و `@starting-style`؛ تجلس الشريحة خلف حارس `@supports (transition-behavior: allow-discrete)`، لذلك تفتح المتصفحات بدونها الدرج فقط بدون الشريحة.
+- يفتح بواجهة `[popover]` الأصلية و`@starting-style`؛ الانزلاق يجلس خلف حارس `@supports (transition-behavior: allow-discrete)`، لذا المتصفحات التي لا تدعمه تفتح الصينية مع ذلك، لكن بدون الانزلاق.
 
-## Subcomponents
+## مكونات فرعية
 
 - [close-button](/ar/api/css/close-button.md)
 
-## Related
+## ذات صلة
 
-- [modal](/ar/api/css/modal.md) — نفس نمط الطبقة الفوقية القابلة للرفض، متمركزة بدلاً من أن تكون مثبتة على الحافة.
-- [popover](/ar/api/css/popover.md) — السطح الجنريك من الطبقة العليا الذي يبني عليه.
+- [modal](/ar/api/css/modal.md) — نفس نمط التراكب القابل للإلغاء، موضوع في الوسط بدل التثبيت على الحافة.
+- [popover](/ar/api/css/popover.md) — السطح العام العلوي الذي يبنى عليه هذا.
+

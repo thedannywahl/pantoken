@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [renderers/css-in-js/src](../index.md) / toThemeKey
 
-# Function: toThemeKey()
+# دالة: toThemeKey()
 
 > **toThemeKey**(`name`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تحويل `--instui-color-background-brand` إلى `colorBackgroundBrand`.
+حوّل `--instui-color-background-brand` إلى `colorBackgroundBrand`.
 
-## Parameters
+## المعلمات
 
 ### name
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { toThemeKey } from "@pantoken/css-in-js";

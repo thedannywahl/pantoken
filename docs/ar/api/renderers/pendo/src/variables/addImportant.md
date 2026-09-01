@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [renderers/pendo/src](../index.md) / addImportant
 
-# Variable: addImportant
+# متغير: addImportant
 
 > `const` **addImportant**: \{(): [`Plugin`](https://postcss.org/api/#plugin); `postcss`: `true`; \}
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون إضافة `!important`.
+أنشئ المكوّن الإضافي add-`!important`.
 
 ## Type Declaration
 
-## Returns
+## القيم المرجعة
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
@@ -18,9 +18,9 @@
 
 > **postcss**: `true`
 
-علامة المكون الإضافي PostCSS المطلوبة.
+علامة المكوّن الإضافي المطلوبة لـ PostCSS.
 
-## Example
+## مثال
 
 ```ts
 import postcss from "postcss";

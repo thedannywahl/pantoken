@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [platforms/vanilla/src](../index.md) / toVanillaVariables
 
-# Function: toVanillaVariables()
+# دالة: toVanillaVariables()
 
 > **toVanillaVariables**(`tokens`, `options?`): `Record`\<`string`, `unknown`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تحويل قائمة رموز IR إلى كائن Vanilla Foundation `variables.json`.
+حوّل قائمة رموز IR إلى كائن Vanilla Foundation `variables.json`.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (مثلاً من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToVanillaOptions](../interfaces/ToVanillaOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `Record`\<`string`, `unknown`\>
 
-كائن المتغيرات المتداخلة المراد PUT إلى أصل الموضوع `variables.json`.
+كائن المتغيرات المتداخل لإرساله (PUT) إلى أصل `variables.json` الخاص بالسمة.
 
-## Examples
+## أمثلة
 
-**تحويل IR إلى كائن المتغيرات المتداخلة**
+**تحويل IR إلى كائن المتغيرات المتداخل**
 
 ```ts
 import { toVanillaVariables } from "@pantoken/vanilla";

@@ -1,7 +1,7 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / ASSETS
 
-# Variable: ASSETS
+# متغير: ASSETS
 
 > `const` **ASSETS**: `Record`\<`string`, `string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>

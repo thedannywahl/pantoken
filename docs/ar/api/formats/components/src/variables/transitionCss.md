@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / transitionCss
 
-# Variable: transitionCss
+# متغير: transitionCss
 
 > `const` **transitionCss**: `Definition`\[`"css"`\] = `transition.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أداة الانتقال كورقة نمط مستقلة مغلفة برأس.
+أداة الانتقال كملف أنماط مستقل مغلف برأس.

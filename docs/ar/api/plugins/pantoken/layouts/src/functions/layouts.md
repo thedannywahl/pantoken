@@ -1,24 +1,24 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/layouts/src](../index.md) / layouts
 
-# Function: layouts()
+# دالة: layouts()
 
 > **layouts**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون إضافي pantoken يصدر قواعد تكوين التخطيط.
+إنشاء مكوّن إضافي لـ pantoken يقوم بإصدار قواعد تأليف التخطيط.
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`LayoutsOptions`](../interfaces/LayoutsOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-## Example
+## مثال
 
 ```ts
 const css = toCss(byTheme("rebrand"), { plugins: [layouts()] });

@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/docusaurus/src](../index.md) / toDocusaurusCss
 
-# Function: toDocusaurusCss()
+# دالة: toDocusaurusCss()
 
 > **toDocusaurusCss**(`options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار جسر متغير Infima → Instructure CSS.
+إخراج جسر متغيرات CSS من Infima → Instructure.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,13 +16,13 @@
 
 [ToDocusaurusCssOptions](../interfaces/ToDocusaurusCssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة CSS الجسرية.
+سلسلة CSS الخاصة بالجسر.
 
-## Example
+## مثال
 
 ```ts
 import { toDocusaurusCss } from "@pantoken/docusaurus";

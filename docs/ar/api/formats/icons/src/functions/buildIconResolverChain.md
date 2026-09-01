@@ -1,26 +1,25 @@
 [pantoken](../../../../index.md) / [formats/icons/src](../index.md) / buildIconResolverChain
 
-# Function: buildIconResolverChain()
+# دالة: buildIconResolverChain()
 
 > **buildIconResolverChain**(`options`): [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء سلسلة محل الأيقونات المشتركة: أولاً محل الإضافة `rehype`، ثم
-`resolve` صريح، ثم مجموعة أيقونات pantoken المدمجة. يستخدمها `@pantoken/rehype` و
-`@pantoken/markdown-it` بحيث يبقى ترتيب الدقة متطابقاً عبر العارضات.
+بناء سلسلة مُحلّل الأيقونات المشتركة: محلِّلات الإضافة `rehype` أولاً، ثم `resolve` الصريح، ثم مجموعة أيقونات pantoken المدمجة. تُستخدم بواسطة `@pantoken/rehype` و
+`@pantoken/markdown-it` بحيث يظل ترتيب الحلول متماثلاً عبر العارضين.
 
-## Parameters
+## المعلمات
 
 ### options
 
 [`IconResolverChainOptions`](../interfaces/IconResolverChainOptions.md)
 
-## Returns
+## القيم المرجعة
 
 [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-## Example
+## مثال
 
 ```ts
 import { buildIconResolverChain } from "@pantoken/icons";

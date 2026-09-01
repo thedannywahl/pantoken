@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / InstuiMarkdownProps
 
-# Interface: InstuiMarkdownProps
+# واجهة: InstuiMarkdownProps
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الخصائص الخاصة بمكون [InstuiMarkdown](../functions/InstuiMarkdown.md).
+خصائص لمكوّن [InstuiMarkdown](../functions/InstuiMarkdown.md).
 
-## Properties
+## الخصائص
 
 ### children
 
 > **children**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 مصدر Markdown.
 
----
+***
 
 ### renderOptions?
 
 > `optional` **renderOptions?**: [`InstuiMarkdownRenderOptions`](InstuiMarkdownRenderOptions.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 خيارات العرض.

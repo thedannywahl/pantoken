@@ -1,35 +1,35 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / flutterIconManifest
 
-# Function: flutterIconManifest()
+# دالة: flutterIconManifest()
 
 > **flutterIconManifest**(`names`, `assetDir?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء بيان Flutter/Dart من مسارات أصول الرموز (لـ `flutter_svg`). زوج مع SVGs الخام
-منسوخ تحت `assetDir`.
+بناء ملف تعريف (manifest) لـ Flutter/Dart لمسارات أصول الأيقونات (لـ `flutter_svg`). اقترن مع ملفات SVG الخام
+المنسوخة تحت `assetDir`.
 
-## Parameters
+## المعلمات
 
 ### names
 
-readonly `string`[]
+للقراءة فقط `string`[]
 
-أسماء الرموز.
+أسماء الأيقونات.
 
 ### assetDir?
 
 `string` = `"assets/pantoken/icons"`
 
-دليل الأصول يتم نسخ SVGs إليه (افتراضي `assets/pantoken/icons`).
+دليل الأصول الذي تُنسخ إليه ملفات SVG (الافتراضي `assets/pantoken/icons`).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-مصدر Dart يعلن عن فئة `PanTokensIcons` من ثوابت مسار الأصول.
+مصدر Dart يعلن فئة `PanTokensIcons` لثوابت مسارات الأصول.
 
-## Examples
+## أمثلة
 
 **دليل الأصول الافتراضي**
 

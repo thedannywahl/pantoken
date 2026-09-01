@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [platforms/canvas-theme-editor/src](../index.md) / ThemeVariant
 
-# Type Alias: ThemeVariant
+# اسم نوع مستعار: ThemeVariant
 
 > **ThemeVariant** = `"rebrand"` \| `"canvas"` \| `"canvasHighContrast"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-متغير موضوع علامة pantoken.
+متغير سمة توكن pantoken.

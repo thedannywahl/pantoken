@@ -1,20 +1,20 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/custom-components/src](../index.md) / bannerRules
 
-# Function: bannerRules()
+# دالة: bannerRules()
 
 > **bannerRules**(`prefix?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء CSS لتخطيط الشريط (التعليق + القواعد)، استبدال `prefix` بـ `pfx-` الحارس.
-الافتراضي هو `"instui-"` لورقة الأنماط المشحونة؛ مرر `""` لبناء بدون بادئة.
+بناء CSS لتخطيط البانر (تعليق توثيقي + قواعد)، مع استبدال `prefix` بالعنصر الحارس `pfx-`.
+القيمة الافتراضية هي `"instui-"` لملف الأنماط الموزَّع؛ مرّر `""` لبناء بدون بادئات.
 
-## Parameters
+## المعلمات
 
 ### prefix?
 
 `string` = `"instui-"`
 
-## Returns
+## القيم المرجعة
 
 `string`

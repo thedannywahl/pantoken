@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/icons/src](../index.md) / iconsByName
 
-# Variable: iconsByName
+# متغير: iconsByName
 
 > `const` **iconsByName**: `Map`\<`string`, [`PantokenIcon`](../interfaces/PantokenIcon.md)\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كل رمز pantoken، مفهرس حسب الاسم.
+كل أيقونة pantoken، مفهرسة حسب الاسم.
 
-## Example
+## مثال
 
 ```ts
 import { iconsByName } from "@pantoken/icons";

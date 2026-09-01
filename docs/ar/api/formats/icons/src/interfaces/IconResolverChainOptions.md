@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [formats/icons/src](../index.md) / IconResolverChainOptions
 
-# Interface: IconResolverChainOptions
+# واجهة: IconResolverChainOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مشتركة بواسطة عارضات حل الأيقونات ([buildIconResolverChain](../functions/buildIconResolverChain.md)).
+خيارات مشتركة بين العارضات التي تحل الأيقونات ([buildIconResolverChain](../functions/buildIconResolverChain.md)).
 
-## Properties
+## الخصائص
 
 ### resolve?
 
 > `optional` **resolve?**: [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-محل صريح، يتم تجربته قبل مجموعة أيقونات pantoken المدمجة.
+مُحلل صريح، يُجرَّب قبل مجموعة أيقونات pantoken المدمجة.
 
----
+***
 
 ### plugins?
 
 > `optional` **plugins?**: readonly [`PantokenPlugin`](../../../../packages/core/src/interfaces/PantokenPlugin.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإضافات التي توصل hooks `rehype` بها (يتم تجربتها أولاً).
+الإضافات التي تُساهم خطافات `rehype` الخاصة بها في المُحللات (تُجرَّب أولاً).

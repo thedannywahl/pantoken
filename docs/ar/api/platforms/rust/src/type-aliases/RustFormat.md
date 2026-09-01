@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [platforms/rust/src](../index.md) / RustFormat
 
-# Type Alias: RustFormat
+# اسم نوع مستعار: RustFormat
 
 > **RustFormat** = `"egui"` \| `"iced"`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إطار عمل واجهة Rust المستهدف.
+إطار عمل واجهة مستخدم رسومية بلغة Rust المستهدف.

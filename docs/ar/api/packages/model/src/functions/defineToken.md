@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / defineToken
 
-# Function: defineToken()
+# دالة: defineToken()
 
 > **defineToken**(`input`): [`Token`](../interfaces/Token.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء [Token](../interfaces/Token.md) بشكل صحيح من إدخال جزئي، مع تعيين الافتراضي `syntax` إلى `"*"` و
-`inherits` إلى `true`. تستورد الإضافات هذا من `@pantoken/model` لتجنب الاعتماد على
-`@pantoken/core`؛ للاستدلال الذكي على بناء جملة CSS استخدم `defineToken` من `@pantoken/core`.
+بناء [Token](../interfaces/Token.md) مُشكّل بشكل صحيح من مدخلات جزئية، مع افتراض `syntax` إلى `"*"` و
+`inherits` إلى `true`. تقوم الإضافات باستيراد هذا من `@pantoken/model` لتجنّب الاعتماد على
+`@pantoken/core`; للاستخلاص الذكي لصياغة CSS استخدم `defineToken` من `@pantoken/core`.
 
-## Parameters
+## المعلمات
 
 ### input
 
 [`TokenInput`](../interfaces/TokenInput.md)
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../interfaces/Token.md)
 
-## Example
+## مثال
 
 ```ts
 import { defineToken } from "@pantoken/model";

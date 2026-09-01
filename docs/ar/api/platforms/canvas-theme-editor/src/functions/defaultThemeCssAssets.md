@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [platforms/canvas-theme-editor/src](../index.md) / defaultThemeCssAssets
 
-# Function: defaultThemeCssAssets()
+# دالة: defaultThemeCssAssets()
 
 > **defaultThemeCssAssets**(`theme?`, `mode?`): [`CdnFile`](../interfaces/CdnFile.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-أوراق نمط المكون لزوج موضوع/وضع معين (ورقة الرموز بالإضافة إلى المجموعة الثابتة).
+صحائف أنماط المكوّنات لزوج السمة/الوضع المعطى (ورقة الرموز بالإضافة إلى مجموعة الثوابت).
 
-## Parameters
+## المعلمات
 
 ### theme?
 
@@ -18,6 +18,6 @@
 
 [`ThemeMode`](../type-aliases/ThemeMode.md) = `"light"`
 
-## Returns
+## القيم المرجعة
 
 [`CdnFile`](../interfaces/CdnFile.md)[]

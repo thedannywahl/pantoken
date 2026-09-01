@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / Token
 
-# Interface: Token
+# واجهة: Token
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-رمز تصميم واحد في IR المتوافق القانوني `@property`.
+رمز تصميم واحد في تمثيل IR القياسي المتوافق مع `@property`.
 
-## Properties
+## الخصائص
 
 ### name
 
@@ -14,57 +14,56 @@
 
 اسم الخاصية المخصصة، على سبيل المثال `--instui-color-background-base`.
 
----
+***
 
 ### syntax
 
 > **syntax**: `string`
 
-واصف `@property` `syntax` (`"&lt;color&gt;"`, `"&lt;length&gt;"`,
-`"&lt;image&gt;"`, …) أو `"*"` للقيم السياقية.
+وَاصِف `syntax` الخاص بـ `@property` (`"&lt;color&gt;"`, `"&lt;length&gt;"`, `"&lt;image&gt;"`, …) أو `"*"` للقيم السياقية.
 
----
+***
 
 ### inherits
 
 > **inherits**: `boolean`
 
-علم `@property` `inherits`.
+علامة `inherits` الخاصة بـ `@property`.
 
----
+***
 
 ### value
 
 > **value**: `string`
 
-قيمة ملموسة، مرجع `var(...)`، أو زوج `light-dark(a, b)`.
+قيمة ملموسة، إشارة `var(...)`، أو زوج `light-dark(a, b)`.
 
----
+***
 
 ### themed?
 
 > `optional` **themed?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-صحيح عندما تختلف دقات الضوء والظلام (القيمة هي `light-dark()`).
+صحيح عندما تختلف النسختان الفاتحة والداكنة (القيمة هي `light-dark()`).
 
----
+***
 
 ### refersTo?
 
 > `optional` **refersTo?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الرمز الذي يشير إليه هذا، عندما يكون `value` رمز واحد `var(...)`.
+الرمز الذي يشير إليه هذا العنصر، عندما يكون `value` عبارة عن `var(...)` واحد.
 
----
+***
 
 ### meta?
 
 > `optional` **meta?**: [`TokenMeta`](TokenMeta.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البيانات الوصفية غير المرتبطة بالقيمة.
+بيانات وصفية غير متعلقة بالقيمة.

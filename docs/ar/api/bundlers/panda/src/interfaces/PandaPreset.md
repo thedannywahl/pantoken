@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [bundlers/panda/src](../index.md) / PandaPreset
 
-# Interface: PandaPreset
+# واجهة: PandaPreset
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إعداد Panda مسبق (مصمم لـ `definePreset`).
+إعداد مسبق لـ Panda (مصمم لـ `definePreset`).
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### theme
 
 > **theme**: `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 #### tokens
 

@@ -1,32 +1,32 @@
 [pantoken](../../../../index.md) / [platforms/swift/src](../index.md) / toSwift
 
-# Function: toSwift()
+# دالة: toSwift()
 
 > **toSwift**(`tokens`, `options`): `Promise`\<`string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-انبعاث Swift لـ IR رموز صريح.
+إخراج Swift لتمثيل IR لرمز محدد.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
 ### options
 
 [`GenerateSwiftOptions`](../interfaces/GenerateSwiftOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`\>
 
-مسار ملف Swift المكتوب.
+مسار ملف Swift الذي تم كتابته.
 
-## Examples
+## أمثلة
 
-**إصدار IR لموضوع معين**
+**إخراج IR لسمة محددة**
 
 ```ts
 import { toSwift } from "@pantoken/swift";
@@ -36,7 +36,7 @@ const file = await toSwift(byTheme("canvas"), { outDir: "./Sources/Tokens" });
 // writes Tokens.swift (class PanTokens { … })
 ```
 
-**الوضع الليلي باسم فئة مخصص وكتالوج أصول**
+**الوضع الداكن مع اسم فئة مخصص وكتالوج الأصول**
 
 ```ts
 import { toSwift } from "@pantoken/swift";

@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / SdLeaf
 
-# Interface: SdLeaf
+# واجهة: SdLeaf
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة Style Dictionary.
+ورقة في Style Dictionary.
 
-## Properties
+## الخصائص
 
 ### value
 
 > **value**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### type
 
 > **type**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [bundlers/webpack/src](../index.md) / PantokenWebpackOptions
 
-# Interface: PantokenWebpackOptions
+# واجهة: PantokenWebpackOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [PantokenWebpackPlugin](../classes/PantokenWebpackPlugin.md).
+خيارات لـ [PantokenWebpackPlugin](../classes/PantokenWebpackPlugin.md).
 
-## Properties
+## الخصائص
 
 ### filename?
 
 > `optional` **filename?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اسم ملف الأصل المُصدَّر (الافتراضي `"pantoken.css"`).
+اسم الملف الناتج للأصل (الافتراضي `"pantoken.css"`).

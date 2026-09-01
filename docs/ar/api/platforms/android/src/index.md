@@ -2,23 +2,25 @@
 
 # android
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/android` — إصدار رموز تصميم Instructure كـ XML موارد Android.
+`@pantoken/android` — يصدر رموز تصميم Instructure كملف XML لموارد Android.
 
-يقوم بتسطيح IR إلى قيم ملموسة وحيدة الوضع (`@pantoken/core`'s `toStyleDictionary`)، ثم يصدر `res/values/colors.xml` (رموز اللون) و`res/values/dimens.xml` (رموز الأبعاد) عبر `@pantoken/sd-config`. يطبق Style Dictionary تحويلات Android (`#aarrggbb`، `dp`/`sp`).
+يقوم بتسطيح IR إلى قيم ملموسة بنمط واحد (`@pantoken/core`'s `toStyleDictionary`), ثم
+يصدر `res/values/colors.xml` (رموز الألوان) و `res/values/dimens.xml` (رموز الأبعاد) عبر
+`@pantoken/sd-config`. يقوم Style Dictionary بتطبيق تحويلات Android (`#aarrggbb`, `dp`/`sp`).
 
-## Interfaces
+## واجهات
 
 - [GenerateAndroidOptions](interfaces/GenerateAndroidOptions.md)
 
-## Functions
+## الدوال
 
 - [toAndroid](functions/toAndroid.md)
 - [generateAndroid](functions/generateAndroid.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [generateAndroid](functions/generateAndroid.md)
+يعيد تسمية وإعادة تصدير [generateAndroid](functions/generateAndroid.md)

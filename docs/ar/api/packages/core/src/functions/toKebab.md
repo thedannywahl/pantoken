@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / toKebab
 
-# Function: toKebab()
+# دالة: toKebab()
 
 > **toKebab**(`str`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تحويل سلسلة CamelCase / مباعدة إلى kebab-case.
+حوّل سلسلة بنمط CamelCase أو ذات مسافات إلى kebab-case.
 
-## Parameters
+## المعلمات
 
 ### str
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { toKebab } from "@pantoken/core";
 
-toKebab("baseButton"); // → "base-button"
-toKebab("Font Family"); // → "font-family"
+toKebab("baseButton");   // → "base-button"
+toKebab("Font Family");  // → "font-family"
 toKebab("rebrandLight"); // → "rebrand-light"
 ```

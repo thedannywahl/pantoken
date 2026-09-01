@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [formats/less/src](../index.md) / toLess
 
-# Function: toLess()
+# دالة: toLess()
 
 > **toLess**(`tokens`, `options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار متغيرات Less لـ IR للرمز.
+تصدر متغيرات Less لتمثيل الرموم (IR).
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+تمثيل الرموز (IR) (مثلًا من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToLessOptions](../interfaces/ToLessOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة مصدر Less.
 
-## Examples
+## أمثلة
 
-**إصدار المتغيرات الافتراضية (الفاتحة)**
+**تصدير المتغيرات الافتراضية (الوضع الفاتح)**
 
 ```ts
 import { toLess } from "@pantoken/less";
@@ -39,7 +39,7 @@ import { tokens } from "@pantoken/tokens";
 toLess(tokens); // "@instui-color-brand: #0374b5;\n…"
 ```
 
-**حل الوضع الداكن لمظهر آخر**
+**تحديد وضع الظلام لموضوع آخر**
 
 ```ts
 import { toLess } from "@pantoken/less";

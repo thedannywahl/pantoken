@@ -1,25 +1,25 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / focusOutlineCss
 
-# Function: focusOutlineCss()
+# دالة: focusOutlineCss()
 
 > **focusOutlineCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء كتلة المخطط التفصيلي للتركيز: تعريفات رموز `--instui-focus-outline-*` بالإضافة إلى قواعد الحلقة.
-مدمجة في `base.css` (لذا تحصل focusables على الحلقة بسهولة)، وقابلة لإعادة الاستخدام من قبل المخرجات
-الأخرى المرقبة (على سبيل المثال مُصيّر Pendo) عبر خيارات `selector`/`tokenSelector`.
+بناء كتلة مخطط التركيز: تعريفات الرموز `--instui-focus-outline-*` بالإضافة إلى قواعد الحلقة.
+مضمّنة في `base.css` (حتى تحصل العناصر القابلة للتركيز على الحلقة جاهزة من الصندوق)، وقابلة لإعادة الاستخدام بواسطة المخرجات الطبقية الأخرى
+(مثل مكوّن العرض Pendo) عبر خيارات `selector`/`tokenSelector`.
 
 ```demo
 self:focus-outline
 ```
 
-## Parameters
+## المعلمات
 
 ### options?
 
-`selector` — محدد focusable؛ `tokenSelector` — حيث تستقر تعريفات الرموز
-(الافتراضي `:where(:root)`).
+`selector` — محدد العنصر القابل للتركيز؛ `tokenSelector` — المكان الذي تهبط فيه تعريفات الرموز
+  (الافتراضي `:where(:root)`).
 
 #### selector?
 
@@ -29,7 +29,7 @@ self:focus-outline
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 

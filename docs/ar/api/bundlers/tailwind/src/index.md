@@ -2,24 +2,25 @@
 
 # tailwind
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/tailwind` — إعداد Tailwind CSS مسبق يرسم خريطة رموز تصميم Instructure في المظهر.
+`@pantoken/tailwind` — إعداد مسبق لـ Tailwind CSS يربط رموز تصميم Instructure بالثيم.
 
-يتم فضح كل رمز كمرجع `var(--instui-*)` (وليس قيمة فعلية)، لذلك فإن أدوات Tailwind مثل `bg-color-background-base` المظهر من خلال نفس خصائص CSS المخصصة التي
-ينبعث `@pantoken/css` — فاتح/داكن وعالي التباين كل شيء يستمر في العمل.
+كل توكن مكشوف كمرجع `var(--instui-*)` (ليس قيمة ملموسة)، لذا فإن أدوات Tailwind
+مثل `bg-color-background-base` تهيئ الثيم عبر نفس خصائص CSS المخصصة التي
+يصدرها `@pantoken/css` — الوضع الفاتح/الداكن والتباين العالي كلها تظل تعمل.
 
-## Interfaces
+## واجهات
 
 - [TailwindPreset](interfaces/TailwindPreset.md)
 - [PantokenPresetOptions](interfaces/PantokenPresetOptions.md)
 
-## Functions
+## الدوال
 
 - [pantokenPreset](functions/pantokenPreset.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [pantokenPreset](functions/pantokenPreset.md)
+يعيد تسمية وإعادة تصدير [pantokenPreset](functions/pantokenPreset.md)

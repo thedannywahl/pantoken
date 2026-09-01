@@ -2,30 +2,30 @@
 
 # pendo
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/pendo` — ورقة أنماط عامة بتنسيق Instructure لأدلة Pendo.
+`@pantoken/pendo` — ورقة أنماط عالمية بنمط Instructure لأدلة Pendo.
 
-يحقن Pendo HTML الدليل في صفحة مضيفة؛ هذا يعرض DOM الدليل (`._pendo-*`) ليطابق
-واجهة Instructure، باستخدام طبقة الرمزات `--instui-*` الخاصة بـ pantoken للمحاذاة. تم نقل CSS المكون من
-`@instructure/pendo-global-css`؛ توفر pantoken الرمزات والتجميع.
+يقوم Pendo بحقن HTML الخاص بالدليل داخل صفحة المستضيف؛ هذا يقوم بعرض DOM الخاص بالدليل (`._pendo-*`) ليتطابق مع
+Instructure UI، باستخدام طبقة الرموز `--instui-*` من pantoken للمحاذاة. تم
+نقل CSS الخاص بالمكون من `@instructure/pendo-global-css`; يوفر pantoken الرموز والتجميع.
 
-[buildPendoCss](functions/buildPendoCss.md) ينشئ ورقة الأنماط؛ [pendoCss](variables/pendoCss.md) هو البناء `rebrand` الجاهز
-(نطاق، `!important`). يتم نشر ملف ثابت في `@pantoken/pendo/global.css`.
+[buildPendoCss](functions/buildPendoCss.md) يؤلف ورقة الأنماط؛ [pendoCss](variables/pendoCss.md) هو بناء `rebrand` الجاهز
+(مقيد، `!important`). يتم نشر ملف ثابت في `@pantoken/pendo/global.css`.
 
-## Example
+## مثال
 
 ```ts
 import { pendoCss } from "@pantoken/pendo";
 // or a variant: buildPendoCss({ theme: "canvas", scope: false })
 ```
 
-## Interfaces
+## واجهات
 
 - [BuildPendoCssOptions](interfaces/BuildPendoCssOptions.md)
 - [AddScopeOptions](interfaces/AddScopeOptions.md)
 
-## Variables
+## المتغيرات
 
 - [pendoCss](variables/pendoCss.md)
 - [LAYER\_ORDER](variables/LAYER_ORDER.md)
@@ -33,12 +33,12 @@ import { pendoCss } from "@pantoken/pendo";
 - [addImportant](variables/addImportant.md)
 - [addScope](variables/addScope.md)
 
-## Functions
+## الدوال
 
 - [buildPendoCss](functions/buildPendoCss.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [pendoCss](variables/pendoCss.md)
+يعيد تسمية ويُعيد تصدير [pendoCss](variables/pendoCss.md)

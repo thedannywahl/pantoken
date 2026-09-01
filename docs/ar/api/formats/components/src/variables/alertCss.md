@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / alertCss
 
-# Variable: alertCss
+# متغير: alertCss
 
 > `const` **alertCss**: `Definition`\[`"css"`\] = `alert.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `alert` مستقلة — CSS المُبدأ لرسالة الحالة، جاهز للشحن كملف `.css`.
+ورقة أنماط `alert` مستقلة — CSS ذات بادئة لرسالة الحالة، جاهزة للشحن كملف `.css`.

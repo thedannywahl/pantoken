@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / popoverCss
 
-# Variable: popoverCss
+# متغير: popoverCss
 
 > `const` **popoverCss**: `Definition`\[`"css"`\] = `popover.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `popover` مستقلة — CSS مسبوق لسطح الفقاعة، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `popover` — CSS ذات البادئة لسطح النافذة المنبثقة، جاهزة للشحن كملف `.css`.

@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/react-native/src](../index.md) / light
 
-# Variable: light
+# متغير: light
 
 > `const` **light**: `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-كائن الرمز بالوضع `light`.
+كائن التوكن في وضع `light`.

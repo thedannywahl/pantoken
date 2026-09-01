@@ -1,10 +1,10 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / resolveDemo
 
-# Function: resolveDemo()
+# دالة: resolveDemo()
 
 > **resolveDemo**(`spec`, `options?`): [`ResolvedDemo`](../interfaces/ResolvedDemo.md)
 
-## Parameters
+## المعلمات
 
 ### spec
 
@@ -14,6 +14,6 @@
 
 [`ResolveOptions`](../interfaces/ResolveOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 [`ResolvedDemo`](../interfaces/ResolvedDemo.md)

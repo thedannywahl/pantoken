@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/dtcg/src](../index.md) / themes
 
-# Variable: themes
+# متغير: themes
 
 > `const` **themes**: `Record`\<[`Theme`](../../../../packages/core/src/type-aliases/Theme.md), `DtcgDoc`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مستند DTCG لكل مظهر، مفهرس بواسطة [Theme](../../../../packages/core/src/type-aliases/Theme.md).
+مستند DTCG الخاص بكل سمة، مفهرس بمفتاح [Theme](../../../../packages/core/src/type-aliases/Theme.md).
 
-## Example
+## مثال
 
 ```ts
 import { themes } from "@pantoken/dtcg";

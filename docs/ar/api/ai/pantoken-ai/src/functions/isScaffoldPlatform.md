@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / isScaffoldPlatform
 
-# Function: isScaffoldPlatform()
+# دالة: isScaffoldPlatform()
 
 > **isScaffoldPlatform**(`platform`): `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-ما إذا كان `platform` منصة حفر معروفة [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) أو أحد ألقابها (مثل `html`).
+ما إذا كان `platform` عبارة عن [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) معروف أو أحد ألقابه (مثل `html`).
 
-## Parameters
+## المعلمات
 
 ### platform
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `boolean`

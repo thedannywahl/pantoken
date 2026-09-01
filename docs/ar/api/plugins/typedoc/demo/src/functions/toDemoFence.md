@@ -1,31 +1,31 @@
 [pantoken](../../../../../index.md) / [plugins/typedoc/demo/src](../index.md) / toDemoFence
 
-# Function: toDemoFence()
+# دالة: toDemoFence()
 
 > **toDemoFence**(`spec`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-لفّ مواصفات عرض توضيحي واحد في كتلة `demo` مسيّجة.
+ضع مواصفة عرض توضيحي واحدة داخل كتلة `demo` محاطة بأسوار.
 
-## Parameters
+## المعلمات
 
 ### spec
 
 `string`
 
-مواصفات عرض توضيحي: عنوان URL عادي أو زوج `&lt;provider&gt;:&lt;ref&gt;`.
+مواصفة عرض توضيحي: رابط مباشر (URL) أو زوج `&lt;provider&gt;:&lt;ref&gt;`.
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-كتلة الكود المسيّجة كسلسلة نصية.
+كتلة الشيفرة المحاطة بأسوار كسلسلة نصية.
 
-## Example
+## مثال
 
-````ts
+```ts
 import { toDemoFence } from "@pantoken/typedoc-plugin-demo";
 
 toDemoFence("stackblitz:abc123"); // "```demo\nstackblitz:abc123\n```"
-````
+```

@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / ElementDefinition
 
-# Interface: ElementDefinition
+# واجهة: ElementDefinition
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-عنصر مخصص واحد مسجل: اسم العلامة الأساسي الخاص به بالإضافة إلى `define` الذي يسجله عبر السياق.
+عنصر مخصص مسجل واحد: اسم الوسم الأساسي الخاص به بالإضافة إلى `define` الذي يقوم بتسجيله عبر السياق.
 
-## Properties
+## الخصائص
 
 ### name
 
 > `readonly` **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-اسم العلامة الأساسي، مثل `button` (الذي تم إنشاؤه إلى `&lt;instui-button&gt;`/`&lt;x-button&gt;` بواسطة البادئة النشطة).
+اسم الوسم الأساسي، مثال `button` (تم إنشاؤه كـ `&lt;instui-button&gt;`/`&lt;x-button&gt;` بواسطة البادئة النشطة).
 
-## Methods
+## الطرق
 
 ### define()
 
 > **define**(`ctx`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-سجل العنصر في `ctx.registry`، باستخدام المساعدات المشتركة والموعية بالبادئة فقط.
+سجل العنصر في `ctx.registry`، باستخدام أدوات المساعدة المشتركة المدركة للبادئة فقط.
 
-#### Parameters
+#### المعلمات
 
 ##### ctx
 
 [`RegisterContext`](RegisterContext.md)
 
-#### Returns
+#### القيم المرجعة
 
 `void`

@@ -1,61 +1,62 @@
 # CSS: testimonial
 
-`div[class~="instui-testimonial"]` — عرض اقتباس أو شهادة مع نسب وصور اختيارية.
+`div[class~="instui-testimonial"]` — عرض اقتباس أو شهادة مع الإسناد وصور اختيارية.
 
-✅ استخدم الشهادة عندما:
+✅ استخدم Testimonial عندما:
 
-- عرض شهادات العملاء والمستخدمين والاقتباسات
-- تريد تسليط الضوء على بيان بتأكيد مرئي
-- النسب والسياق (الاسم والعنوان والصورة) مهمة
-  🚫 لا تستخدم الشهادة عندما:
+- عرض شهادات واقتباسات العملاء أو المستخدمين
+- تريد إبراز عبارة بتأكيد بصري
+- الإسناد والسياق (الاسم، المسمى، الصورة) مهمان
+🚫 لا تستخدم Testimonial عندما:
 
-- عرض الاقتباسات المدمجة في نص الجسم — استخدم عنصر blockquote بدلاً من ذلك
-- البيان هو التركيز الرئيسي — استخدم Hero أو Card بدلاً من ذلك
+- عرض اقتباسات مضمنة داخل نص الفقرة — استخدم عنصر الاقتباس (blockquote) بدلًا من ذلك
+- العبارة هي محور التركيز — استخدم Hero أو Card بدلًا من ذلك
 
-## Accessibility
+## سهولة الوصول
 
-- استخدم `&lt;blockquote&gt;` بشكل دلالي للاقتباس
-- تأكد من أن النسب واضح ومرتبط بالاقتباس
-- إذا كنت تستخدم الصور، فقدم نص بديل
+- استخدم `&lt;blockquote&gt;` دلاليًا للاقتباس
+- تأكد أن الإسناد واضح ومرتبط بالاقتباس
+- إذا كنت تستخدم صورًا، قدّم نصًا بديلاً
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/plugin-layouts/layouts.css";
 ```
 
-## Parts
+## الأجزاء
 
-| Part              | Description                         |
-| ----------------- | ----------------------------------- |
-| `.instui-author`  | اسم مؤلف النسب.                     |
-| `.instui-avatar`  | صورة ملف تعريف المؤلف الاختيارية.   |
-| `.instui-content` | حاوية للاقتباس والنسب.              |
-| `.instui-quote`   | النص المقتبس.                       |
-| `.instui-title`   | عنوان المؤلف أو الانتماء الاختياري. |
+| جزء | الوصف |
+| --- | --- |
+| `.instui-author` | اسم مؤلف الإسناد. |
+| `.instui-avatar` | صورة ملف تعريف المؤلف (اختياري). |
+| `.instui-content` | حاوية للاقتباس والإسناد. |
+| `.instui-quote` | النص المقتبس. |
+| `.instui-title` | مسمى المؤلف أو انتماؤه (اختياري). |
 
-## States
+## الحالات
 
-| State       | Description |
-| ----------- | ----------- |
-| `:optional` | —           |
+| حالة | الوصف |
+| --- | --- |
+| `:optional` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                           | Type       | Value |
-| ------------------------------- | ---------- | ----- |
-| `--instui-color-background`     | —          | —     |
-| `--instui-color-primary`        | —          | —     |
-| `--instui-color-surface`        | —          | —     |
-| `--instui-color-text-primary`   | —          | —     |
-| `--instui-color-text-secondary` | —          | —     |
-| `--instui-font-size-small`      | `<length>` | —     |
-| `--instui-font-weight-semibold` | —          | —     |
-| `--instui-radius-medium`        | —          | —     |
-| `--instui-space-large`          | —          | —     |
-| `--instui-space-medium`         | —          | —     |
-| `--instui-space-small`          | —          | —     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-color-background` | — | — |
+| `--instui-color-primary` | — | — |
+| `--instui-color-surface` | — | — |
+| `--instui-color-text-primary` | — | — |
+| `--instui-color-text-secondary` | — | — |
+| `--instui-font-size-small` | `<length>` | — |
+| `--instui-font-weight-semibold` | — | — |
+| `--instui-radius-medium` | — | — |
+| `--instui-space-large` | — | — |
+| `--instui-space-medium` | — | — |
+| `--instui-space-small` | — | — |
 
-## Related
+## ذات صلة
 
 - [card](/ar/api/css/card.md)
+

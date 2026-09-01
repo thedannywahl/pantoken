@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / badgeCss
 
-# Variable: badgeCss
+# متغير: badgeCss
 
 > `const` **badgeCss**: `Definition`\[`"css"`\] = `badge.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `badge` مستقلة — CSS المُبدأ لشارة العد والحالة، جاهز للشحن كملف `.css`.
+ورقة أنماط `badge` مستقلة — CSS ذات بادئة لشارة العد والحالة، جاهزة للشحن كملف `.css`.

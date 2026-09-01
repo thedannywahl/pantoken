@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / dedupeByName
 
-# Function: dedupeByName()
+# دالة: dedupeByName()
 
 > **dedupeByName**(`tokens`): [`Token`](../interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إزالة التكرار من التوكنات حسب الاسم، مع الاحتفاظ بالمظهر الأخير (بحيث يفوز المكونات الإضافية لاحقًا).
+إزالة التكرار من الرموز حسب الاسم، مع الاحتفاظ بآخر حدوث لها (لذلك تفوز الإضافات الأحدث).
 
-## Parameters
+## المعلمات
 
 ### tokens
 
 [`Token`](../interfaces/Token.md)[]
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../interfaces/Token.md)[]
 
-## Example
+## مثال
 
 ```ts
 import { dedupeByName } from "@pantoken/core";

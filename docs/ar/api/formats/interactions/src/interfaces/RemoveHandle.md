@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / RemoveHandle
 
-# Interface: RemoveHandle
+# واجهة: RemoveHandle
 
-المؤشر الذي تُرجعه [initRemove](../functions/initRemove.md).
+المعرف الذي تُعيده [initRemove](../functions/initRemove.md).
 
-## Methods
+## الطرق
 
 ### cleanup()
 
 > **cleanup**(): `void`
 
-إلغاء عمل الرفض والحذف المعلق.
+إلغاء عمليات الرفض والإزالة المعلقة.
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
----
+***
 
 ### dismiss()
 
 > **dismiss**(): `void`
 
-رفض فوراً، دون انتظار المهلة الزمنية المكونة.
+رفض فورًا، دون الانتظار لانقضاء المهلة المكوّنة.
 
-#### Returns
+#### القيم المرجعة
 
 `void`

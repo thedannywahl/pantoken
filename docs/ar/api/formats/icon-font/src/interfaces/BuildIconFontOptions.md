@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [formats/icon-font/src](../index.md) / BuildIconFontOptions
 
-# Interface: BuildIconFontOptions
+# واجهة: BuildIconFontOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [buildIconFont](../functions/buildIconFont.md).
+خيارات لـ [buildIconFont](../functions/buildIconFont.md).
 
-## Properties
+## الخصائص
 
 ### icons?
 
 > `optional` **icons?**: `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أسماء الرموز المراد تضمينها (الافتراضي: المجموعة الكاملة).
+أسماء الأيقونات التي يجب تضمينها (الافتراضي: المجموعة بأكملها).
 
----
+***
 
 ### fontName?
 
 > `optional` **fontName?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 اسم عائلة الخط (الافتراضي `"PanTokens"`).
 
----
+***
 
 ### theme?
 
 > `optional` **theme?**: [`Theme`](../../../../packages/core/src/type-aliases/Theme.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المظهر الذي يتم الحصول على الحروف منه (الافتراضي `"rebrand"`).
+السمة التي تُستخرج منها الرموز (الافتراضي `"rebrand"`).

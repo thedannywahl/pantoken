@@ -1,37 +1,37 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/simple-icons/src](../index.md) / SimpleIconsOptions
 
-# Interface: SimpleIconsOptions
+# واجهة: SimpleIconsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون [simpleIcons](../functions/simpleIcons.md).
+خيارات الإضافة [simpleIcons](../functions/simpleIcons.md).
 
-## Properties
+## الخصائص
 
 ### slugs?
 
 > `optional` **slugs?**: `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-عناوين سهلة الاستخدام للعلامة التجارية للإصدار كرموز `&lt;image&gt;` في طبقة الرمز (الافتراضي: بلا).
+سلاجز العلامات التجارية التي تُصدر كـ `&lt;image&gt;` على طبقة الرموز (الافتراضي: لا شيء).
 
----
+***
 
 ### registry?
 
 > `optional` **registry?**: [`SimpleIconsRegistry`](../type-aliases/SimpleIconsRegistry.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سجل Simple Icons (الافتراضي: حزمة `simple-icons`، محملة بكسل).
+سجل Simple Icons (الافتراضي: الحزمة `simple-icons`، يتم تحميلها عند الطلب).
 
----
+***
 
 ### prefix?
 
 > `optional` **prefix?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 بادئة اسم الرمز (الافتراضي: `--instui-icon-`).

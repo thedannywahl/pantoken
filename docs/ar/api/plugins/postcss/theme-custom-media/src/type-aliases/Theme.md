@@ -1,9 +1,9 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/theme-custom-media/src](../index.md) / Theme
 
-# Type Alias: Theme
+# اسم نوع مستعار: Theme
 
 > **Theme** = `"rebrand"` \| `"canvas"` \| `"canvasHighContrast"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مظهر يمكن للمكون الإضافي استهدافه عند إصدار CSS محسوس.
+سمة يمكن للمكوّن الإضافي استهدافها عند إصدار CSS فعلي.

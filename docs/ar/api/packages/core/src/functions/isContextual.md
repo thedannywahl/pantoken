@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / isContextual
 
-# Function: isContextual()
+# دالة: isContextual()
 
 > **isContextual**(`value`): `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-صحيح عندما لا يمكن أن تكون قيمة ما توكنًا `@property` مكتوبًا من القيمة الأولية (`var()` / `light-dark()`).
+صحيح عندما لا يمكن أن تكون القيمة قيمة ابتدائية من نوع `@property` (`var()` / `light-dark()`).
 
-## Parameters
+## المعلمات
 
 ### value
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `boolean`
 
-## Example
+## مثال
 
 ```ts
 import { isContextual } from "@pantoken/core";
 
-isContextual("var(--x)"); // → true
+isContextual("var(--x)");            // → true
 isContextual("light-dark(#fff, #000)"); // → true
-isContextual("#fff"); // → false
+isContextual("#fff");                // → false
 ```

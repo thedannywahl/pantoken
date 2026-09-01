@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [formats/dtcg/src](../index.md) / byTheme
 
-# Function: byTheme()
+# دالة: byTheme()
 
 > **byTheme**(`theme`): `DtcgDoc`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البحث عن مستند DTCG الخاص بمظهر حسب الاسم.
+ابحث عن مستند DTCG الخاص بالسمة بناءً على الاسم.
 
-## Parameters
+## المعلمات
 
 ### theme
 
 [`Theme`](../../../../packages/core/src/type-aliases/Theme.md)
 
-## Returns
+## القيم المرجعة
 
 `DtcgDoc`
 
-## Example
+## مثال
 
 ```ts
 import { byTheme } from "@pantoken/dtcg";

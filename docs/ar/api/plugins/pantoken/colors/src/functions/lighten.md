@@ -1,14 +1,15 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/colors/src](../index.md) / lighten
 
-# Function: lighten()
+# دالة: lighten()
 
 > **lighten**(`color`, `percent?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أضِ بمقدار `percent` نقاط HSL-lightness — المرآة المخصصة بـ CSS فقط لـ ui-color-utils `lighten` (tinycolor يرفع HSL lightness). يستخدم بناء جملة اللون النسبي بحيث يتم الحفاظ على الصبغة والتشبع.
+خفف بمقدار `percent` نقاط سطوع HSL — المرآة الخاصة بـ CSS فقط لـ ui-color-utils `lighten`
+(يزيد tinycolor سطوع HSL). يستخدم صيغة ألوان نسبية بحيث تُحافَظ الدرجة والتشبع.
 
-## Parameters
+## المعلمات
 
 ### color
 
@@ -20,15 +21,15 @@
 
 `number` = `10`
 
-نقاط الإضاءة المراد إضافتها (افتراضي `10`، مطابق الافتراضي من tinycolor).
+نقاط السطوع المراد إضافتها (الافتراضي `10`، مطابق للقيمة الافتراضية في tinycolor).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-تعبير لون نسبي `hsl(from …)`.
+تعبير relative-color من النوع `hsl(from …)`.
 
-## Example
+## مثال
 
 ```ts
 lighten("var(--brand)", 10); // "hsl(from var(--brand) h s calc(l + 10))"

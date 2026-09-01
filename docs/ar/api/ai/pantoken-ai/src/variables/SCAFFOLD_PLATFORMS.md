@@ -1,14 +1,15 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / SCAFFOLD\_PLATFORMS
 
-# Variable: SCAFFOLD\_PLATFORMS
+# متغير: SCAFFOLD\_PLATFORMS
 
 > `const` **SCAFFOLD\_PLATFORMS**: readonly [`ScaffoldPlatform`](../type-aliases/ScaffoldPlatform.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-كل مفتاح منصة قابل للحفر (مكتشف من المسبقات المتاحة، بالإضافة إلى أي منصات قديمة تحتوي على القالب فقط غير مدعومة بـ preset حتى الآن).
+كل مفتاح منصة قابل للتجهيز (تم اكتشافه من الإعدادات المسبقة المتاحة، بالإضافة إلى أي منصات قديمة
+مخصصة للقوالب فقط لم تُدعَم بعد بواسطة إعداد مسبق).
 
-## Example
+## مثال
 
 **قائمة المنصات المتاحة**
 

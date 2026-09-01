@@ -1,22 +1,22 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / makeResolver
 
-# Function: makeResolver()
+# دالة: makeResolver()
 
 > **makeResolver**(`base`, `options?`): (`value`) => `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قم ببناء محلل يوسع مراجع `var(--x)` إلى قيم ورقية ملموسة مقابل `base` (بالإضافة إلى
-أي `overrides`). باستخدام `mode` يطويها `light-dark()` إلى هذا الفرع؛ بدونها، يترك
-`light-dark()` في المكان.
+إنشاء محلل يحوّل مراجع `var(--x)` إلى قيم نهائية ملموسة مقابل `base` (بالإضافة إلى
+أي `overrides`). مع `mode` يقوم بطي `light-dark()` إلى ذلك الفرع؛ وبدونه يترك
+`light-dark()` في مكانه.
 
-## Parameters
+## المعلمات
 
 ### base
 
 readonly [`Token`](../../../core/src/interfaces/Token.md)[]
 
-مجموعة الرموز المراد حل المراجع ضدها.
+مجموعة الرموز المستخدمة لحل المراجع مقابلها.
 
 ### options?
 
@@ -24,15 +24,15 @@ readonly [`Token`](../../../core/src/interfaces/Token.md)[]
 
 [ResolveOptions](../interfaces/ResolveOptions.md).
 
-## Returns
+## القيم المرجعة
 
-دالة تحل سلسلة قيمة.
+دالة تقوم بحل سلسلة القيمة.
 
 (`value`) => `string`
 
-## Examples
+## أمثلة
 
-**وسع سلسلة المراجع إلى ورقتها الملموسة**
+**توسيع سلسلة المراجع إلى قيمتها النهائية الملموسة**
 
 ```ts
 import { makeResolver } from "@pantoken/utils";
@@ -47,7 +47,7 @@ const resolve = makeResolver(ir);
 resolve("var(--instui-brand)"); // → "#0374B5"
 ```
 
-**اطو light-dark() بوضع، أو احفظه بدون أحد**
+**طي light-dark() باستخدام وضع، أو الاحتفاظ به بدون وضع**
 
 ```ts
 import { makeResolver } from "@pantoken/utils";
@@ -57,12 +57,12 @@ const ir: Token[] = [
   { name: "--instui-bg", syntax: "*", inherits: true, value: "light-dark(#fff, #000)" },
 ];
 
-makeResolver(ir)("var(--instui-bg)"); // → "light-dark(#fff, #000)"
+makeResolver(ir)("var(--instui-bg)");                 // → "light-dark(#fff, #000)"
 makeResolver(ir, { mode: "light" })("var(--instui-bg)"); // → "#fff"
-makeResolver(ir, { mode: "dark" })("var(--instui-bg)"); // → "#000"
+makeResolver(ir, { mode: "dark" })("var(--instui-bg)");  // → "#000"
 ```
 
-**طبقات الإلغاءات التي تفوز على تضارب الأسماء**
+**تراكب التجاوزات التي تنتصر عند تصادم الأسماء**
 
 ```ts
 import { makeResolver } from "@pantoken/utils";

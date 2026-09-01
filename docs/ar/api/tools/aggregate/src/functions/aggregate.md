@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [tools/aggregate/src](../index.md) / aggregate
 
-# Function: aggregate()
+# دالة: aggregate()
 
 > **aggregate**(`options`): [`Target`](../interfaces/Target.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء برميل المصدر لحزمة meta، والإدخالات الفرعية، وخريطة `exports`.
+توليد برميل مصدر حزمة meta، مدخلات المسارات الفرعية، وخريطة `exports`.
 
-## Parameters
+## المعلمات
 
 ### options
 
@@ -16,15 +16,15 @@
 
 [AggregateOptions](../interfaces/AggregateOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`Target`](../interfaces/Target.md)[]
 
 الأهداف المكتشفة.
 
-## Example
+## مثال
 
-**إعادة إنشاء حزمة meta**
+**إعادة توليد حزمة meta**
 
 ```ts
 import { aggregate } from "@pantoken/aggregate";

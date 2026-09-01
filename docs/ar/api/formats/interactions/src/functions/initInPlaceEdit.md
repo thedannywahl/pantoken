@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initInPlaceEdit
 
-# Function: initInPlaceEdit()
+# دالة: initInPlaceEdit()
 
 > **initInPlaceEdit**(`host`, `dispatchOn`): `void`
 
-توصيل حقل قابل للتحرير للنقر للتحرير سلوك الالتزام/الاستعادة.
-أدخل الالتزامات، Escape يعيد تعيينها؛ يلتزم الضبابية أيضاً إذا تغيرت القيمة.
-يطلق bubbling `change` CustomEvent مع `detail.value` عند الالتزام.
+قم بتوصيل حقل قابل للتحرير (contenteditable) لسلوك النقر للتحرير (commit/revert).
+زر Enter يقوم بالالتزام، و Escape يقوم بالتراجع؛ الفقدان للتركيز (blur) يلتزم أيضاً إذا تغيرت القيمة.
+يطلق حدث `change` من نوع CustomEvent قابل للتفشي مع `detail.value` عند الالتزام.
 
-CSS: host = عنصر .instui-in-place-edit (الذي يكون قابل للتحرير)
-WC: host = shadow .instui-in-place-edit span
+  CSS:  host = .instui-in-place-edit العنصر (والذي هو contenteditable)
+  WC:   host = shadow .instui-in-place-edit span
 
-## Parameters
+## المعلمات
 
 ### host
 
@@ -21,6 +21,6 @@ WC: host = shadow .instui-in-place-edit span
 
 `HTMLElement`
 
-## Returns
+## القيم المرجعة
 
 `void`

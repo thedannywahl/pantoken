@@ -1,21 +1,21 @@
 # CSS: drawer-layout.tray
 
-`.tray` — لوحة جانبية بجانب المحتوى الرئيسي، مع تراكب اختياري ومعدلات سطح تشبه الدرج.
+`.tray` — لوحة جانبية بجانب المحتوى الرئيسي، مع معدلات اختيارية للتراكب وسطح شبيه بالصينية.
 
-يستخدم التموضع `inset-inline-start`/`inset-inline` (لا `left`/`right` أبداً)، لذا يرسو `-placement-end` على الحافة الزائدة الحقيقية في LTR و RTL.
+تستخدم المواضعة `inset-inline-start`/`inset-inline` (وليس `left`/`right`)، لذا يتم إرساء `-placement-end` عند الحافة الخلفية الحقيقية في كلٍ من LTR وRTL.
 
-## Accessibility
+## سهولة الوصول
 
-إذا تم استخدامه كملاحة، قم بلف الروابط في `&lt;nav&gt;` دلالي وقدم اسماً يمكن الوصول إليه.
+إذا استُخدمت للملاحة، غلّف الروابط بعنصر معنوي `&lt;nav&gt;` ووفّر اسمًا قابلاً للوصول.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/drawer-layout.tray.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-drawer-layout" open>
@@ -26,7 +26,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 @scope (@component drawer-layout)
@@ -47,32 +47,33 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier           | Description                                            |
-| ------------------ | ------------------------------------------------------ |
-| `.-placement-end`  | إرساء هذا الدرج إلى نهاية السطر عند تفعيل وضع التراكب. |
-| `.-without-border` | إزالة حد حافة اللوحة.                                  |
-| `.-without-shadow` | إزالة الارتفاع عند تفعيل وضع التراكب.                  |
+| معدّل | الوصف |
+| --- | --- |
+| `.-placement-end` | أرسِ هذا الدرج إلى inline-end عندما يكون وضع التراكب مفعلًا. |
+| `.-without-border` | أزل حد حافة اللوحة. |
+| `.-without-shadow` | أزل تأثير الارتفاع (elevation) عندما يكون وضع التراكب نشطًا. |
 
-## Conditions
+## الشروط
 
-| Type      | Query                                      | Description |
-| --------- | ------------------------------------------ | ----------- |
-| container | `pantoken-drawer-layout (max-width: 46em)` | —           |
+| نوع | استعلام | الوصف |
+| --- | --- | --- |
+| container | `pantoken-drawer-layout (max-width: 46em)` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                             | Type                | Value                          |
-| ------------------------------------------------- | ------------------- | ------------------------------ |
-| `--drawer-layout-tray-width`                      | —                   | —                              |
-| `--instui-border-width-sm`                        | `<length>`          | `0.0625rem`                    |
-| `--instui-color-background-elevated-surface-base` | `<color>`           | `light-dark(#ffffff, #171B21)` |
-| `--instui-color-stroke-base`                      | `<color>`           | `light-dark(#8D959F, #6A7883)` |
-| `--instui-component-tray-width-xs`                | `<length>`          | `16em`                         |
-| `--instui-component-tray-z-index`                 | `<integer>`         | `9999`                         |
-| `--instui-elevation-topmost`                      | `none \| <shadow>#` | —                              |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--drawer-layout-tray-width` | — | — |
+| `--instui-border-width-sm` | `<length>` | `0.0625rem` |
+| `--instui-color-background-elevated-surface-base` | `<color>` | `light-dark(#ffffff, #171B21)` |
+| `--instui-color-stroke-base` | `<color>` | `light-dark(#8D959F, #6A7883)` |
+| `--instui-component-tray-width-xs` | `<length>` | `16em` |
+| `--instui-component-tray-z-index` | `<integer>` | `9999` |
+| `--instui-elevation-topmost` | `none \| <shadow>#` | — |
 
-## Related
+## ذات صلة
 
-- [drawer-layout.content](/ar/api/css/drawer-layout.content.md) — الجزء الأساسي الذي ينحني إلى جانب هذا العضو.
+- [drawer-layout.content](/ar/api/css/drawer-layout.content.md) — اللوحة الرئيسية التي تتوسع جنبًا إلى جنب مع هذا العنصر.
+

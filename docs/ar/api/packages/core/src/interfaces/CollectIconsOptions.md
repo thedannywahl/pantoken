@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / CollectIconsOptions
 
-# Interface: CollectIconsOptions
+# واجهة: CollectIconsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الخيارات التي تتحكم في مصادر الرموز المضمنة.
+خيارات تتحكم في مصادر الأيقونات التي يتم تضمينها.
 
-## Properties
+## الخصائص
 
 ### includeInstui?
 
 > `optional` **includeInstui?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تضمين الحروف (مخصصة) من تأليف Instructure (الافتراضي: true).
+تضمين الرموز التي أنشأتها Instructure (مخصصة) (الافتراضي: true).
 
----
+***
 
 ### includeLucide?
 
 > `optional` **includeLucide?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تضمين حروف Lucide كما تكشفها `@instructure/ui-icons` (الافتراضي: true).
+تضمين رموز Lucide كما يكشف عنها `@instructure/ui-icons` (الافتراضي: true).

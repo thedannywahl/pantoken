@@ -12,6 +12,24 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { dirname, join, resolve } from "node:path";
 import { spawn } from "node:child_process";
 
+// The configurable drift-severity policy every `check-drift` script reports through. Re-exported here
+// so a checker needs one import for both the translation primitives and the gate.
+export {
+  DEFAULT_DRIFT_POLICY,
+  DriftReporter,
+  loadDriftPolicy,
+  parseDriftPolicy,
+  repoRelative,
+  resetDriftPolicyCache,
+  resolveDriftSeverity,
+  resolveTier,
+  type DriftFinding,
+  type DriftPolicy,
+  type DriftReporterOptions,
+  type DriftSeverity,
+  type SurfacePolicy,
+} from "./drift-policy.ts";
+
 /**
  * Pull the first `{…}` JSON object out of a model response, tolerating surrounding prose or code
  * fences. Returns `null` when no valid object is found.

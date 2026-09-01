@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [platforms/canvas-theme-editor/src](../index.md) / buildThemeJs
 
-# Function: buildThemeJs()
+# دالة: buildThemeJs()
 
 > **buildThemeJs**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-إنشاء محتوى theme.js للاختيار المحدد للموفر/الأصل.
+إنشاء محتوى theme.js للاختيار المحدد للمزوِّد/الأصل.
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`BuildThemeOptions`](../interfaces/BuildThemeOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 `string`

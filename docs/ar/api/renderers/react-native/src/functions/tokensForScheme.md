@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [renderers/react-native/src](../index.md) / tokensForScheme
 
-# Function: tokensForScheme()
+# دالة: tokensForScheme()
 
 > **tokensForScheme**(`scheme`): `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حدد كائن الرمز لمخطط الألوان (اقتران مع `useColorScheme` للشبكة العصبية).
+اختر كائن التوكن لمخطط ألوان (زوج مع `useColorScheme` الخاص بـ RN).
 
-## Parameters
+## المعلمات
 
 ### scheme
 
 `"light"` \| `"dark"` \| `null` \| `undefined`
 
-## Returns
+## القيم المرجعة
 
 `Record`\<`string`, [`RNTokenValue`](../type-aliases/RNTokenValue.md)\>
 
-## Example
+## مثال
 
 ```tsx
 import { useColorScheme } from "react-native";

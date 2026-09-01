@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/less/src](../index.md) / less
 
-# Variable: less
+# متغير: less
 
 > `const` **less**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مجموعة متغيرات Less الجاهزة `rebrand`.
+المجموعة الجاهزة `rebrand` من متغيرات Less
 
-## Example
+## مثال
 
 ```ts
 import { less } from "@pantoken/less";

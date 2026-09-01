@@ -1,36 +1,36 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / checkPlugins
 
-# Function: checkPlugins()
+# دالة: checkPlugins()
 
 > **checkPlugins**(`plugins`, `stage`): [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تصفية قائمة المكونات الإضافية إلى تلك التي تشارك في `stage`، مع تحذير من الباقي.
+تصفية قائمة الإضافات للاحتفاظ بتلك التي تشارك في `stage`، مع تحذير بشأن الباقي.
 
-## Parameters
+## المعلمات
 
 ### plugins
 
-readonly [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]
+قراءة فقط [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]
 
-المكونات الإضافية المسجلة.
+الإضافات المسجلة.
 
 ### stage
 
 [`Stage`](../type-aliases/Stage.md)
 
-المرحلة التي يتم تشغيلها.
+المرحلة الجاري تنفيذها.
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]
 
-المكونات الإضافية التي تحتوي على hook لـ `stage`.
+الإضافات التي لها hook لـ `stage`.
 
-## Example
+## مثال
 
-**الاحتفاظ فقط بالمكونات الإضافية التي تشارك في المرحلة**
+**احتفظ فقط بالإضافات التي تشارك في مرحلة**
 
 ```ts
 import { checkPlugins, definePlugin } from "@pantoken/plugin-kit";

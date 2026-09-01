@@ -2,27 +2,29 @@
 
 # bootstrap
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/bootstrap` — موضوع Bootstrap 5 برموز Instructure.
+`@pantoken/bootstrap` — سمة Bootstrap 5 مع توكنات Instructure.
 
-يشير إلى متغيرات CSS `--bs-*` الخاصة بـ Bootstrap عند `var(--instui-*)`. أسقطه جنباً إلى جنب مع `@pantoken/css` وتبنّي مكونات Bootstrap مظهر Instructure مع الحفاظ على المواضيع من خلال نفس الخصائص المخصصة.
+`--bs-*` الخاص بـ Bootstrap يوجّه متغيرات CSS إلى `var(--instui-*)`. أدرجه إلى جانب
+`@pantoken/css` وستتبنى مكونات Bootstrap مظهر Instructure بينما تحافظ على التخصيص عبر
+نفس الخصائص المخصصة.
 
-## Interfaces
+## واجهات
 
 - [ToBootstrapCssOptions](interfaces/ToBootstrapCssOptions.md)
 
-## Variables
+## المتغيرات
 
 - [BOOTSTRAP\_TO\_INSTUI](variables/BOOTSTRAP_TO_INSTUI.md)
 - [bootstrapCss](variables/bootstrapCss.md)
 
-## Functions
+## الدوال
 
 - [toBootstrapCss](functions/toBootstrapCss.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [bootstrapCss](variables/bootstrapCss.md)
+يعيد تسمية ويعيد تصدير [bootstrapCss](variables/bootstrapCss.md)

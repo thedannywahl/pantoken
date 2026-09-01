@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [platforms/wordpress/src](../index.md) / ToThemeJsonOptions
 
-# Interface: ToThemeJsonOptions
+# واجهة: ToThemeJsonOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toThemeJson](../functions/toThemeJson.md).
+خيارات لـ [toThemeJson](../functions/toThemeJson.md).
 
-## Properties
+## الخصائص
 
 ### mode?
 
 > `optional` **mode?**: [`Mode`](../type-aliases/Mode.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+أي وضع ألوان يجب حله (الافتراضي `"light"`).

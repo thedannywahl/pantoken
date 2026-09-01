@@ -2,24 +2,24 @@
 
 # storybook
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/storybook` — مظهر Storybook مبني من رموز Instructure.
+`@pantoken/storybook` — سمة Storybook مبنية من توكنات Instructure.
 
-[pantokenStorybookTheme](functions/pantokenStorybookTheme.md) يرجع كائناً عادياً بشكل `ThemeVars` (لذا `@storybook/theming`
-يبقى نظيراً اختيارياً) مع حل الألوان بشكل واضح من IR. مرره إلى مظهر Storybook
+[pantokenStorybookTheme](functions/pantokenStorybookTheme.md) تُعيد كائنًا بسيطًا على شكل `ThemeVars` (لذلك يظل `@storybook/theming`
+زميلًا اختياريًا) مع ألوان مُحَلَّة بشكل ملموس من IR. مرِّرها إلى سمة Storybook
 `manager`/`preview`.
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [StorybookTheme](type-aliases/StorybookTheme.md)
 
-## Functions
+## الدوال
 
 - [pantokenStorybookTheme](functions/pantokenStorybookTheme.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [pantokenStorybookTheme](functions/pantokenStorybookTheme.md)
+يعيد تسمية ويُعيد تصدير [pantokenStorybookTheme](functions/pantokenStorybookTheme.md)

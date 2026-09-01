@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / rehypeGithubAlerts
 
-# Function: rehypeGithubAlerts()
+# دالة: rehypeGithubAlerts()
 
 > **rehypeGithubAlerts**(): (`tree`) => `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مكون إضافي rehype يعلم اقتباسات GitHub-alert بالعلامات: يكتشف علامة بأسلوب `[!NOTE]` في
-bداية اقتباس كتلة، ويسجلها كـ `data-alert="note"`، ويزيل نص العلامة. ثم يقوم مكون React `blockquote`
-بعرض `Alert` في InstUI.
+مكوّن rehype إضافي يوسم اقتباسات التنبيه في GitHub: يكتشف وسمًا على نمط `[!NOTE]` في
+بداية الاقتباس، ويسجله كـ `data-alert="note"`، ويزيل نص الوسم. ثم يقوم مكوّن React
+`blockquote` بعرض عنصر InstUI `Alert`.
 
-## Returns
+## القيم المرجعة
 
 (`tree`) => `void`
 
-## Example
+## مثال
 
 ```tsx
 import Markdown from "react-markdown";

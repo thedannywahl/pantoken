@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/scss/src](../index.md) / scss
 
-# Variable: scss
+# متغير: scss
 
 > `const` **scss**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مجموعة متغيرات SCSS الجاهزة `rebrand`.
+مجموعة `rebrand` المتغيرات الجاهزة الخاصة بـ SCSS.
 
-## Example
+## مثال
 
 ```ts
 import { scss } from "@pantoken/scss";

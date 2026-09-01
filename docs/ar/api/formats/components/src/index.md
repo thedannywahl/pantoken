@@ -2,29 +2,29 @@
 
 # components
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/components` — مكتبة مكونات CSS بمظهر InstUI، مبنية من رموز `--instui-*`.
+`@pantoken/components` — مكتبة مكونات CSS بمظهر InstUI، مبنية من الرموز `--instui-*`.
 
-أوراق الأنماط المرسلة:
+أوراق الأنماط الموردة:
 
-- **الأساس** ([baseCss](functions/baseCss.md)) — إعدادات افتراضية اختيارية للمستند العام من الرموز (box-sizing، إعادة تعيين body، سطح الصفحة، لون النص الأساسي/الخط، `color-scheme`). كما أنها تحمل حلقة المخطط التفصيلي للتركيز، لذا يحصل كل عنصر قابل للتركيز على مخطط تفصيلي `:focus-visible` يمكن الوصول إليه مباشرة. قم بتحميله عندما يمتلك pantoken الصفحة.
-- **النثر** ([proseCss](functions/proseCss.md)) — أنماط HTML markdown/نثر معروضة (جداول، عناوين، روابط، قوائم، كود) محدودة بجذر المحتوى، بحيث تبدو صفحة المستندات أو منطقة المحتوى مثل InstUI بدون استبدال DOM بمكونات. هذا ما يشحنه منتجو المواقع باسم `components.css`.
-- **المكونات** ([buttonCss](variables/buttonCss.md), [alertCss](variables/alertCss.md), [badgeCss](variables/badgeCss.md)، يتم تجميعها بواسطة [componentsCss](functions/componentsCss.md)) — أنماط مكونات قائمة على الفئة تطبقها على الترميز الخاص بك (`<button class="instui-button">`)، للحصول على مظهر InstUI خارج إطار عمل المكونات. مقياس الظل `--instui-elevation-*` ([elevationCss](functions/elevationCss.md)) يقود هذه الورقة، حيث يطفو عدد كافٍ من المكونات بحيث تكون الظلال سمة تصميم جوهرية بدلاً من إضافة إضافية.
-- **الأدوات** ([viewCss](variables/viewCss.md), [spacingUtilitiesCss](variables/spacingUtilitiesCss.md), [gapCss](variables/gapCss.md), [layoutUtilitiesCss](variables/layoutUtilitiesCss.md)، بالإضافة إلى مجموعة ألوان دلالية/رموز منتقاة) — طبقة اختيارية من الفئات المتقاطعة. يعيش معدلات token→class العام (`colorUtilitiesCss`, `tokenUtilitiesCss`) في `@pantoken/utils`؛ تغذي هذه الحزمة الأسماء _الدلالية_ المنتقاة، بينما تغذي `@pantoken/plugin-primitives` لوحة الألوان الخام.
-- **الخطوط** (اختيارية `fonts.css`) — قواعد `@font-face` لخطوط العلامة التجارية Instructure. الأساس _يطبق_ الخط؛ `fonts.css` _يحمل_ woff2s، لذا يتدهور النص بأناقة بدونها.
+- **الأساس** ([baseCss](functions/baseCss.md)) — إعدادات افتراضية مستندة إلى الرموز يمكن تفعيلها على مستوى المستند (box-sizing، إعادة تعيين body، سطح الصفحة، لون/خط النص الأساسي، `color-scheme`). كما تتضمّن حلقة مخطط التركيز، لذا يحصل كل عنصر قابل للتركيز على مخطط `:focus-visible` مُتاح افتراضيًا. حمّله عندما تكون pantoken مالك الصفحة.
+- **المقال** ([proseCss](functions/proseCss.md)) — أنماط لmarkdown/HTML المنسق (جداول، عناوين، روابط، قوائم، كود) مُقيّدة بجذر المحتوى، بحيث تبدو صفحة التوثيق أو منطقة المحتوى بمظهر InstUI دون استبدال DOM بالمكونات. هذا ما توردة عارضات الموقع كـ `components.css`.
+- **المكونات** ([buttonCss](variables/buttonCss.md), [alertCss](variables/alertCss.md), [badgeCss](variables/badgeCss.md)، مجمعة بواسطة [componentsCss](functions/componentsCss.md)) — أنماط مكونات مبنية على الكلاسات تطبّقها على تعليماتك الخاصة (`<button class="instui-button">`)، لمظهر InstUI خارج إطار المكونات. مقياس الظل `--instui-elevation-*` ([elevationCss](functions/elevationCss.md)) يقود هذه الورقة، لأن عدداً كافياً من المكونات يطفو فتكون الظلال سمة تصميمية جوهرية بدلاً من إضافة لاحقة.
+- **الأدوات المساعدة** ([viewCss](variables/viewCss.md), [spacingUtilitiesCss](variables/spacingUtilitiesCss.md), [gapCss](variables/gapCss.md), [layoutUtilitiesCss](variables/layoutUtilitiesCss.md)، بالإضافة إلى مجموعة ألوان/رموز معنيوية مُنقّحة) — طبقة اختيارية من الكلاسات الشاملة. مولدات الرمز→الكلاس العامة (`colorUtilitiesCss`, `tokenUtilitiesCss`) موجودة في `@pantoken/utils`; هذه الحزمة تزودها بالأسماء *المعنيوية* المنقّحة، بينما تُزوّد `@pantoken/plugin-primitives` باللوحة الخام.
+- **الخطوط** (اختياري `fonts.css`) — قواعد `@font-face` لخطوط علامة Instructure. يقوم Base *بتطبيق* الخط؛ و`fonts.css` *يحمّل* ملفات woff2، لذا يتدهور النص بلطف إذا لم تكن متاحة.
 
-كل شيء عبارة عن CSS خالص مشتق من رموز IR، لذا فهو يتتبع InstUI من خلال الرموز بدون اعتماد على حزم InstUI React. للمكونات الحقيقية والتفاعلية، استخدم `@pantoken/react-markdown` (المحتوى) أو `@instructure/ui-*` (التطبيقات).
+كل شيء هو CSS نقي مشتق من IR الرموز، لذا يتتبع InstUI عبر الرموز دون اعتماد على حزم React الخاصة بـ InstUI. للمكونات التفاعلية الحقيقية، استخدم `@pantoken/react-markdown` (المحتوى) أو `@instructure/ui-*` (التطبيقات).
 
-هذه الوحدة عبارة عن برميل: كل سجل موثق يعيش في ملفه الخاص تحت `components/`/`utilities/`/`rules/`/`declarations/`، تمت كتابته باستخدام `lib/` compose API. السجلات (`COMPONENTS`/`UTILITIES`/`RULES`/`DECLARATIONS`) تقود التجميع + اختبار التكافؤ.
+هذه الوحدة عبارة عن برميل: كل سجل موثّق يعيش في ملفه الخاص تحت `components/`/`utilities/`/`rules/`/`declarations/`، مؤلف باستخدام واجهة تجميع `lib/`. تسهم السجلات (`COMPONENTS`/`UTILITIES`/`RULES`/`DECLARATIONS`) في التجميع + اختبار التكافؤ.
 
-## Interfaces
+## واجهات
 
 - [ComponentOptions](interfaces/ComponentOptions.md)
 - [ProseOptions](interfaces/ProseOptions.md)
 - [IconGlyphsOptions](interfaces/IconGlyphsOptions.md)
 
-## Variables
+## المتغيرات
 
 - [alertCss](variables/alertCss.md)
 - [avatarCss](variables/avatarCss.md)
@@ -116,7 +116,7 @@
 - [ELEVATION\_NAMES](variables/ELEVATION_NAMES.md)
 - [FOCUSABLE\_SELECTOR](variables/FOCUSABLE_SELECTOR.md)
 
-## Functions
+## الدوال
 
 - [selectCss](functions/selectCss.md)
 - [elevationCss](functions/elevationCss.md)

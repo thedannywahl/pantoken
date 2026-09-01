@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / collectLeaves
 
-# Function: collectLeaves()
+# دالة: collectLeaves()
 
 > **collectLeaves**(`obj`, `path?`, `out?`): [`Leaf`](../interfaces/Leaf.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-جمع كل ورقة من شجرة Tokens Studio. الورقة هي عقدة بها `.value`:
-قيمة السلسلة تحقق ورقة واحدة؛ قيمة كائن مركبة (الطباعة) تحقق ورقة واحدة لكل
-خاصية فرعية باسم `&lt;token&gt;-&lt;subProperty&gt;`؛ قيم المصفوفات (قوائم box-shadow) يتم تخطيها.
+اجمع كل ورقة من شجرة Tokens Studio. الورقة هي عقدة تحتوي على `.value`:
+قيمة نصية تنتج ورقة واحدة؛ قيمة كائن مركب (typography) تنتج ورقة واحدة لكل
+خاصية فرعية باسم `&lt;token&gt;-&lt;subProperty&gt;`; يتم تخطي قيم المصفوفة (قوائم box-shadow).
 
-## Parameters
+## المعلمات
 
 ### obj
 
@@ -24,11 +24,11 @@
 
 [`Leaf`](../interfaces/Leaf.md)[] = `[]`
 
-## Returns
+## القيم المرجعة
 
 [`Leaf`](../interfaces/Leaf.md)[]
 
-## Example
+## مثال
 
 ```ts
 import { collectLeaves } from "@pantoken/core";

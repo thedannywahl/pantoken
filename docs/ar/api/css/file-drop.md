@@ -1,34 +1,34 @@
 # CSS: file-drop
 
-`.instui-file-drop` — منطقة إفلات ملفات مع حالات المرور والقبول والرفض.
+`.instui-file-drop` — منطقة إسقاط ملفات بحالات التحويم والقبول والرفض.
 
-فئات `-hover`/`-accepted`/`-rejected` بصرية بحتة — كشف السحب والإفلات والتحقق من صحة الملف الفعلي هو JS للمستهلك لربطه حول الإدخال الأصلي المغلف.
+فئات `-hover`/`-accepted`/`-rejected` بصرية بحتة — اكتشاف السحب والإفلات الفعلي والتحقق من الملفات هما مسؤولية JS الخاص بالمُستخدم لربطهما حول عنصر الإدخال الأصلي المغلف.
 
 **المصدر:** [file-drop.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/file-drop/file-drop.css)
 
-## Accessibility
+## سهولة الوصول
 
-قم بلف `<input type="file">` أصلي في منطقة الإفلات `&lt;label&gt;` حتى يبقى عنصر تحكم ملف حقيقي ومسمى يمكن للوحة المفاتيح والتكنولوجيا المساعدة تشغيله.
+قم بلف `<input type="file">` الأصلي داخل منطقة الإسقاط `&lt;label&gt;` حتى يظل عنصر تحكم ملف حقيقي ومعلَّم يمكن للوحة المفاتيح وتقنيات المساعدة الوصول إليه.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/file-drop.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <label class="instui-file-drop" id="fd">
   <span class="instui-icon -icon-cloud-upload"></span>
   <div class="instui-text"><strong>Drag an image here</strong>, or click to browse.</div>
   <div class="instui-text -size-sm instui-fg-muted" id="fd-msg">PNG or JPG up to 5&nbsp;MB.</div>
-  <input type="file" id="fd-input" />
+  <input type="file" id="fd-input">
 </label>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-file-drop
@@ -60,30 +60,31 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier     | Description                        |
-| ------------ | ---------------------------------- |
-| `.-accepted` | حالة السحب لملف مقبول.             |
-| `.-hover`    | حالة المرور أو السحب فوق.          |
-| `.-icon-*`   | عرض رمز حرف منطقة الإفلات الرئيسي. |
-| `.-rejected` | حالة السحب لملف مرفوض.             |
+| معدّل | الوصف |
+| --- | --- |
+| `.-accepted` | حالة السحب لملف مقبول. |
+| `.-hover` | حالة التحويم أو السحب فوق. |
+| `.-icon-*` | عرض أيقونة الرمز (glyph) الأولى لمنطقة الإسقاط. |
+| `.-rejected` | حالة السحب لملف مرفوض. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                             | Type       | Value                          |
-| ------------------------------------------------- | ---------- | ------------------------------ |
-| `--instui-color-text-base`                        | `<color>`  | `light-dark(#273540, #F2F4F5)` |
-| `--instui-component-file-drop-accepted-color`     | `<color>`  | `light-dark(#1D354F, #EEF4FD)` |
-| `--instui-component-file-drop-background-color`   | `<color>`  | `light-dark(#ffffff, #1C222B)` |
-| `--instui-component-file-drop-border-color`       | `<color>`  | `light-dark(#7E8792, #5F6E7A)` |
-| `--instui-component-file-drop-border-radius`      | `<length>` | `1rem`                         |
-| `--instui-component-file-drop-border-style`       | —          | `dashed`                       |
-| `--instui-component-file-drop-border-width`       | `<length>` | `0.0625rem`                    |
-| `--instui-component-file-drop-hover-border-color` | `<color>`  | `light-dark(#1D354F, #EEF4FD)` |
-| `--instui-component-file-drop-rejected-color`     | `<color>`  | `light-dark(#CF1F24, #F56050)` |
-| `--instui-spacing-space-lg`                       | `<length>` | `1rem`                         |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-color-text-base` | `<color>` | `light-dark(#273540, #F2F4F5)` |
+| `--instui-component-file-drop-accepted-color` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
+| `--instui-component-file-drop-background-color` | `<color>` | `light-dark(#ffffff, #1C222B)` |
+| `--instui-component-file-drop-border-color` | `<color>` | `light-dark(#7E8792, #5F6E7A)` |
+| `--instui-component-file-drop-border-radius` | `<length>` | `1rem` |
+| `--instui-component-file-drop-border-style` | — | `dashed` |
+| `--instui-component-file-drop-border-width` | `<length>` | `0.0625rem` |
+| `--instui-component-file-drop-hover-border-color` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
+| `--instui-component-file-drop-rejected-color` | `<color>` | `light-dark(#CF1F24, #F56050)` |
+| `--instui-spacing-space-lg` | `<length>` | `1rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [text](/ar/api/css/text.md)
+

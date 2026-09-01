@@ -1,33 +1,32 @@
 # CSS: rating
 
-`.instui-rating` — تصنيف النجوم بالرموز المملوءة والفارغة وتسمية رقمية اختيارية.
+`.instui-rating` — تصنيف بنجوم مع أشكال ممتلئة وفارغة ووسم رقمي اختياري.
 
-يحدد `gap` الخاص به بين رموز النجوم؛ وربط معدل أداة تباعد `-gap-*` يلغي تلك القيمة المدمجة.
+يحدد `gap` الخاص به بين أشكال النجوم؛ ربط معدل مسافة `-gap-*` كـ modifier يتجاوز تلك القيمة المضمنة.
 
 **المصدر:** [rating.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/rating/rating.css)
 
-## Accessibility
+## سهولة الوصول
 
-أعطه role="img" و aria-label يوضح التصنيف، حيث أن النجوم هي رموز الأيقونات.
+امنحه role="img" و aria-label يوضح التقييم، لأن النجوم عبارة عن رموز أيقونات.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/rating.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <span class="instui-rating -size-sm" role="img" aria-label="2 out of 3 stars">
-  <span class="instui-icon -icon-star-solid"></span>
-  <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star"></span>
+  <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star-solid"></span> <span class="instui-icon -icon-star"></span>
   <span class="label">2/3</span>
 </span>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-rating
@@ -48,32 +47,33 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier       | Description                                                              |
-| -------------- | ------------------------------------------------------------------------ |
-| `.-icon-*`     | عرض رموز النجوم مع فئات الأيقونات (على سبيل المثال، `-icon-star-solid`). |
-| `.-size-large` | كبير. اسم مستعار طويل الشكل لـ `-size-lg`.                               |
-| `.-size-lg`    | كبير.                                                                    |
-| `.-size-sm`    | صغير.                                                                    |
-| `.-size-small` | صغير. اسم مستعار طويل الشكل لـ `-size-sm`.                               |
+| معدّل | الوصف |
+| --- | --- |
+| `.-icon-*` | اعرض أشكال النجوم باستخدام فئات الأيقونات (على سبيل المثال، `-icon-star-solid`). |
+| `.-size-large` | كبير. اسم مرادف مطوّل لـ `-size-lg`. |
+| `.-size-lg` | كبير. |
+| `.-size-sm` | صغير. |
+| `.-size-small` | صغير. اسم مرادف مطوّل لـ `-size-sm`. |
 
-## Parts
+## الأجزاء
 
-| Part     | Description                             |
-| -------- | --------------------------------------- |
-| `.label` | التسمية الرقمية، على سبيل المثال "3/5". |
+| جزء | الوصف |
+| --- | --- |
+| `.label` | الوسم الرقمي، مثلاً "3/5". |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                  | Type                                               | Value                                                                        |
-| ------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-color-text-base`                             | `<color>`                                          | `light-dark(#273540, #F2F4F5)`                                               |
-| `--instui-component-rating-icon-icon-empty-color`      | `<color>`                                          | `light-dark(#1D354F, #EEF4FD)`                                               |
-| `--instui-component-rating-icon-icon-filled-color`     | `<color>`                                          | `light-dark(#1D354F, #EEF4FD)`                                               |
-| `--instui-component-rating-icon-icon-margin`           | `<length>`                                         | `0.125rem`                                                                   |
-| `--instui-component-rating-icon-large-icon-font-size`  | `<length>`                                         | `2.375rem`                                                                   |
-| `--instui-component-rating-icon-medium-icon-font-size` | `<length>`                                         | `1.375rem`                                                                   |
-| `--instui-component-rating-icon-small-icon-font-size`  | `<length>`                                         | `1rem`                                                                       |
-| `--instui-font-family-base`                            | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-font-size-text-base`                         | `<length>`                                         | `1rem`                                                                       |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-color-text-base` | `<color>` | `light-dark(#273540, #F2F4F5)` |
+| `--instui-component-rating-icon-icon-empty-color` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
+| `--instui-component-rating-icon-icon-filled-color` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
+| `--instui-component-rating-icon-icon-margin` | `<length>` | `0.125rem` |
+| `--instui-component-rating-icon-large-icon-font-size` | `<length>` | `2.375rem` |
+| `--instui-component-rating-icon-medium-icon-font-size` | `<length>` | `1.375rem` |
+| `--instui-component-rating-icon-small-icon-font-size` | `<length>` | `1rem` |
+| `--instui-font-family-base` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-font-size-text-base` | `<length>` | `1rem` |
+

@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [bundlers/tailwind/src](../index.md) / PantokenPresetOptions
 
-# Interface: PantokenPresetOptions
+# واجهة: PantokenPresetOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [pantokenPreset](../functions/pantokenPreset.md).
+خيارات لـ [pantokenPreset](../functions/pantokenPreset.md).
 
-## Properties
+## الخصائص
 
 ### includePrimitives?
 
 > `optional` **includePrimitives?**: `boolean`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-كما يمكن فضح لوحة الألوان الأساسية تحت بادئة `primitive-` (الافتراضي: false).
+اعرض أيضًا لوحة الألوان الأولية تحت بادئة `primitive-` (الافتراضي: false).

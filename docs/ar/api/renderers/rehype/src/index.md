@@ -2,25 +2,25 @@
 
 # rehype
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/rehype` — عرض أكواد `:icon:` كـ SVG مضمن.
+`@pantoken/rehype` — يعرض رموز `:icon:` كـ SVG مضمن.
 
-يمشي المكون الإضافي عقد نصوص hast ويستبدل رموز `:code:` بعنصر SVG مضمن،
-حل كل كود من خلال سلسلة: محللات مكون إضافي `rehype` أولاً، ثم أي
-`resolve` صريح، ثم مجموعة `@pantoken/icons` المدمجة. ينقل `rehype-instui-markdown` إلى
-بيان الأيقونات المشترك.
+يقوم المكوّن الإضافي بالتنقّل عبر عقد النص في hast ويستبدل رموز `:code:` بعنصر SVG مضمن,
+مع حلّ كل رمز عبر سلسلة: محللات الإضافة `rehype` أولاً، ثم أي
+`resolve` صريحة، ثم مجموعة `@pantoken/icons` المضمّنة. يقوم بترحيل `rehype-instui-markdown` إلى
+سجل الأيقونات المشترك.
 
-## Interfaces
+## واجهات
 
 - [RehypeOptions](interfaces/RehypeOptions.md)
 
-## Functions
+## الدوال
 
 - [rehypePantokenIcons](functions/rehypePantokenIcons.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [rehypePantokenIcons](functions/rehypePantokenIcons.md)
+يعيد تسمية ويُصدِّر [rehypePantokenIcons](functions/rehypePantokenIcons.md)

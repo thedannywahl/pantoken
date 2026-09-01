@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / swatches
 
-# Variable: swatches
+# متغير: swatches
 
 > `const` **swatches**: [`Swatch`](../interfaces/Swatch.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-عينات اللون `rebrand` (اللوحة الافتراضية).
+عينات ألوان `rebrand` (لوحة الألوان الافتراضية).
 
-## Example
+## مثال
 
-**ترميز اللوحة الجاهزة بأي تنسيق**
+**ترميز لوحة الألوان الجاهزة إلى أي تنسيق**
 
 ```ts
 import { writeFileSync } from "node:fs";

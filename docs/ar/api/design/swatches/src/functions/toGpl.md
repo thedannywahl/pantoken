@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / toGpl
 
-# Function: toGpl()
+# دالة: toGpl()
 
 > **toGpl**(`swatches`, `options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تشفير العينات كسلسلة لوحة GIMP `.gpl`.
+ترميز عينات الألوان كسلسلة لوحة GIMP `.gpl`.
 
-## Parameters
+## المعلمات
 
 ### swatches
 
-readonly [`Swatch`](../interfaces/Swatch.md)[]
+للقراءة فقط [`Swatch`](../interfaces/Swatch.md)[]
 
 لوحة الألوان.
 
@@ -22,13 +22,13 @@ readonly [`Swatch`](../interfaces/Swatch.md)[]
 
 [ToGplOptions](../interfaces/ToGplOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Examples
+## أمثلة
 
-**كتابة لوحة GIMP .gpl**
+**اكتب لوحة GIMP بصيغة .gpl**
 
 ```ts
 import { writeFileSync } from "node:fs";

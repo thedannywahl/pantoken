@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/pendo/src](../index.md) / buildPendoCss
 
-# Function: buildPendoCss()
+# دالة: buildPendoCss()
 
 > **buildPendoCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء ورقة أنماط دليل Pendo.
+بناء ملف أنماط دليل Pendo.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [BuildPendoCssOptions](../interfaces/BuildPendoCssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-CSS المؤلفة.
+ملف CSS المركّب.
 
-## Examples
+## أمثلة
 
-**بناء إعادة العلامة التجارية الافتراضي (نطاق، !important، محذوف)**
+**البناء الافتراضي لإعادة العلامة التجارية (محدود النطاق، !important، مقتَصّ)**
 
 ```ts
 import { buildPendoCss } from "@pantoken/pendo";
@@ -32,7 +32,7 @@ import { buildPendoCss } from "@pantoken/pendo";
 const css = buildPendoCss();
 ```
 
-**موضوع Canvas، بدون نطاق، احتفظ بمجموعة الرمزات الكاملة**
+**سمة Canvas، غير مقيّدة النطاق، احتفظ بمجموعة الرموز كاملة**
 
 ```ts
 import { buildPendoCss } from "@pantoken/pendo";

@@ -1,32 +1,32 @@
 [pantoken](../../../../index.md) / [renderers/vue/src](../index.md) / iconSvg
 
-# Function: iconSvg()
+# دالة: iconSvg()
 
 > **iconSvg**(`name`, `resolve?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حل اسم أيقونة إلى SVG مضمن (سلسلة فارغة عند عدم معرفتها). خالصة — العنصر يعيد تصييره.
+حل اسم أيقونة إلى SVG مضمّن (سلسلة فارغة إذا كان غير معروف). نقِي — يقوم العنصر بعرضها.
 
-## Parameters
+## المعلمات
 
 ### name
 
 `string`
 
-اسم الأيقونة (على سبيل المثال `arrow-left`).
+اسم الأيقونة (مثال `arrow-left`).
 
 ### resolve?
 
 [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-المحلل (الافتراضي هو مجموعة أيقونات pantoken المدمجة).
+المُحلّل (افتراضيًا إلى مجموعة أيقونات pantoken المضمّنة).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { iconSvg } from "@pantoken/web-components";

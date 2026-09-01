@@ -1,22 +1,22 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / iconGlyphsCss
 
-# Function: iconGlyphsCss()
+# دالة: iconGlyphsCss()
 
 > **iconGlyphsCss**(`names`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء ورقة أنماط الرموز الرسومية: فئة `.&lt;prefix&gt;-icon-&lt;name&gt;` واحدة لكل أيقونة تشير
-`--pantoken-glyph` إلى رمز `--instui-icon-&lt;name&gt;` المطابق. مبقى خارج حزمة المكون
-(إنها كبيرة)؛ يشحن كـ `icons.css` خاص به. مرر أسماء الأيقونات (على سبيل المثال من `@pantoken/icons`).
+بناء ورقة أنماط رموز الأيقونات: فئة `.&lt;prefix&gt;-icon-&lt;name&gt;` واحدة لكل أيقونة تُشير
+`--pantoken-glyph` إلى رمز `--instui-icon-&lt;name&gt;` المطابق. تُبقى خارج حزمة المكوّن
+(كبيرة الحجم)؛ تُوزّع كـ `icons.css` مستقلة. مرّر أسماء الأيقونات (مثالًا من `@pantoken/icons`).
 
-## Parameters
+## المعلمات
 
 ### names
 
-readonly `string`[]
+للقراءة فقط `string`[]
 
-أسماء الأيقونات بدون بادئة `--instui-icon-` (على سبيل المثال `["megaphone", "check"]`).
+أسماء الأيقونات بدون بادئة `--instui-icon-` (مثالًا `["megaphone", "check"]`).
 
 ### options?
 
@@ -24,13 +24,13 @@ readonly `string`[]
 
 [IconGlyphsOptions](../interfaces/IconGlyphsOptions.md) (يضيف `deprecatedAliases` إلى [ComponentOptions](../interfaces/ComponentOptions.md)).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة CSS.
+نص CSS.
 
-## Example
+## مثال
 
 ```ts
 import { iconGlyphsCss } from "@pantoken/components";
@@ -39,6 +39,6 @@ import { icons } from "@pantoken/icons";
 const css = iconGlyphsCss(icons.map((i) => i.name)); // .-icon-megaphone { --pantoken-glyph: … }
 ```
 
-هذا هو النصف الخاص برموز الصور من نظام الأيقونات (معدّلات `.-icon-&lt;name&gt;`، يتم شحنها كـ
-`icons.css`); أداة `icon` هي النصف الخاص بالرسام (`::before` المشترك). يشاركان عرض `icon`
-التوضيحي.
+هذا هو نصف نظام الأيقونات الخاص ببتّات الرموز (معدِّلات `.-icon-&lt;name&gt;`، الموزّعة كـ
+`icons.css`); الأداة المساعدة `icon` هي النصف الرسّام (الـ `::before` المشتركة). يشتركان في عرض المثال `icon`.
+

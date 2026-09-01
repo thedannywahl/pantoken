@@ -1,30 +1,28 @@
 # CSS: form-field
 
-`.instui-form-field` — غلاف حقل نموذج: تسمية وعناصر تحكمها وتخطيطات مضمنة أو مطلوبة أو للقراءة فقط.
+`.instui-form-field` — غلاف لحقل النموذج: تسمية، عناصر التحكم الخاصة به، وتصاميم متراصة، داخلية، أو للقراءة فقط.
 
-تبقى رسالة الخطأ مخفية حتى يكون التحكم في الحقل `:user-invalid` (بعد تفاعل المستخدم) أو تضيف فئة `-invalid`. استخدم `-layout-inline` لوضع التسمية بجانب عناصر التحكم و `-layout-stacked` لوضعها فوق. يعين أيضاً `gap` الخاص به بين التسمية والتحكمات والرسائل؛ ربط معدل أداة تباعد `-gap-*` يتجاوز تلك القيمة المدمجة.
+تبقى رسالة الخطأ مخفية حتى يصبح عنصر التحكم في الحقل `:user-invalid` (بعد تفاعل المستخدم) أو تضيف الصنف `-invalid`. استخدم `-layout-inline` لوضع التسمية بجانب عناصر التحكم و`-layout-stacked` لوضعها أعلاه. كما يحدد `gap` الخاص به بين التسمية وعناصر التحكم والرسائل؛ سيسيطر تعديل المسافة من فئة المساعدة `-gap-*` على هذه القيمة المضمنة عند تسلسلها.
 
 **المصدر:** [form-field.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field/form-field.css)
 
-## Accessibility
+## سهولة الوصول
 
-عنصر `&lt;label&gt;` يلف التحكم، بحيث ينسب نص التسمية إليه بشكل أصلي؛ علامة النجمة المطلوبة زخرفية ويجب إخفاؤها من تقنيات المساعدة (aria-hidden)، ورسالة الخطأ تظهر بمجرد أن يكون التحكم `:user-invalid` أو تضيف فئة `-invalid`.
+عنصر `&lt;label&gt;` يلف عنصر التحكم، لذا فإن نص التسمية يسميه طبيعياً؛ النجمة الخاصة بالحقل المطلوب زخرفية ويجب إخفاؤها عن التقنيات المساعدة (aria-hidden)، وتظهر رسالة الخطأ بمجرد أن يصبح عنصر التحكم `:user-invalid` أو تضيف الصنف `-invalid`.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/form-field.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <label class="instui-form-field">
   <span class="label">Email address</span>
-  <span class="controls"
-    ><input class="instui-text-input" type="email" placeholder="you@example.com"
-  /></span>
+  <span class="controls"><input class="instui-text-input" type="email" placeholder="you@example.com"></span>
   <div class="instui-form-field-messages">
     <span class="instui-form-field-message -type-hint">We'll never share it.</span>
     <span class="instui-form-field-message -type-error">Enter a valid email address.</span>
@@ -32,7 +30,7 @@
 </label>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-form-field
@@ -61,63 +59,64 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier              | Description                               |
-| --------------------- | ----------------------------------------- |
-| `.-inline`            | تخطيط مضمن (اختصار ل `-layout-inline`).   |
-| `.-invalid`           | حالة غير صحيحة (خطأ).                     |
-| `.-label-align-end`   | محاذاة نص التسمية من النهاية.             |
-| `.-label-align-start` | محاذاة نص التسمية من البداية.             |
-| `.-layout-inline`     | تخطيط مضمن: تسمية بجانب عناصر التحكم.     |
-| `.-layout-stacked`    | تخطيط مكدس: تسمية فوق عناصر التحكم.       |
-| `.-readonly`          | حالة القراءة فقط.                         |
-| `.-v-align-bottom`    | محاذاة التسمية مع عناصر التحكم من الأسفل. |
-| `.-v-align-top`       | محاذاة التسمية مع عناصر التحكم من الأعلى. |
+| معدّل | الوصف |
+| --- | --- |
+| `.-inline` | التخطيط الداخلي (اختصار لـ `-layout-inline`). |
+| `.-invalid` | حالة غير صالحة (خطأ). |
+| `.-label-align-end` | محاذاة نص التسمية إلى النهاية. |
+| `.-label-align-start` | محاذاة نص التسمية إلى البداية. |
+| `.-layout-inline` | التخطيط الداخلي: التسمية بجانب عناصر التحكم. |
+| `.-layout-stacked` | التخطيط المكدس: التسمية أعلى عناصر التحكم. |
+| `.-readonly` | حالة للقراءة فقط. |
+| `.-v-align-bottom` | محاذاة التسمية إلى الأسفل مع عناصر التحكم. |
+| `.-v-align-top` | محاذاة التسمية إلى الأعلى مع عناصر التحكم. |
 
-## Parts
+## الأجزاء
 
-| Part        | Description                         |
-| ----------- | ----------------------------------- |
-| `.controls` | منطقة التحكم بجانب أو أسفل التسمية. |
-| `.label`    | تسمية الحقل.                        |
+| جزء | الوصف |
+| --- | --- |
+| `.controls` | منطقة عناصر التحكم بجانب أو أسفل التسمية. |
+| `.label` | تسمية الحقل. |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description                                                                       |
-| -------------- | --------------------------------------------------------------------------------- |
-| `::after`      | يرسم علامة النجمة الزخرفية للحقل المطلوب بعد نص التسمية عندما يكون الحقل مطلوباً. |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::after` | يعرض النجمة الزخرفية للحقل المطلوب بعد نص التسمية عندما يكون الحقل مطلوبًا. |
 
-## States
+## الحالات
 
-| State       | Description |
-| ----------- | ----------- |
-| `:required` | —           |
+| حالة | الوصف |
+| --- | --- |
+| `:required` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                      | Type                                               | Value                                                                        |
-| ---------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-form-field-layout-asterisk-color`      | `<color>`                                          | `light-dark(#CF1F24, #FA917F)`                                               |
-| `--instui-component-form-field-layout-font-family`         | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-form-field-layout-font-size`           | `<length>`                                         | `1rem`                                                                       |
-| `--instui-component-form-field-layout-font-weight`         | `<integer>`                                        | `400`                                                                        |
-| `--instui-component-form-field-layout-gap-inputs`          | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-form-field-layout-gap-primitives`      | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-form-field-layout-line-height`         | `<length>`                                         | `1.125rem`                                                                   |
-| `--instui-component-form-field-layout-readonly-text-color` | `<color>`                                          | `light-dark(#576773, #AAB0B5)`                                               |
-| `--instui-component-form-field-layout-text-color`          | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-form-field-layout-asterisk-color` | `<color>` | `light-dark(#CF1F24, #FA917F)` |
+| `--instui-component-form-field-layout-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-form-field-layout-font-size` | `<length>` | `1rem` |
+| `--instui-component-form-field-layout-font-weight` | `<integer>` | `400` |
+| `--instui-component-form-field-layout-gap-inputs` | `<length>` | `0.75rem` |
+| `--instui-component-form-field-layout-gap-primitives` | `<length>` | `0.5rem` |
+| `--instui-component-form-field-layout-line-height` | `<length>` | `1.125rem` |
+| `--instui-component-form-field-layout-readonly-text-color` | `<color>` | `light-dark(#576773, #AAB0B5)` |
+| `--instui-component-form-field-layout-text-color` | `<color>` | `light-dark(#273540, #ffffff)` |
 
-## Browser support
+## دعم المتصفّح
 
-- يحتوي على أنماط عنصره مع قاعدة CSS `@scope`؛ يتطلب إصدارًا حديثًا من Chromium أو Firefox أو Safari.
+- يحتوي أنماط عنصره باستخدام قاعدة CSS `@scope`; يتطلب متصفح Chromium أو Firefox أو Safari حديث.
 
-## Subcomponents
+## مكونات فرعية
 
 - [form-field-messages](/ar/api/css/form-field-messages.md)
 - [text-input](/ar/api/css/text-input.md)
 
-## Related
+## ذات صلة
 
-- [form-field-messages](/ar/api/css/form-field-messages.md) — يرسم رسائل التلميح والخطأ والنجاح للحقل.
-- [form-field-group](/ar/api/css/form-field-group.md) — تجميع الحقول ذات الصلة تحت وسيلة إيضاح مشتركة.
+- [form-field-messages](/ar/api/css/form-field-messages.md) — يعرض تلميح الحقل ورسائل الخطأ والنجاح.
+- [form-field-group](/ar/api/css/form-field-group.md) — يجمع الحقول المرتبطة تحت عنوان مشترك.
+

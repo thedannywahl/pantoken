@@ -2,27 +2,28 @@
 
 # rust
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/rust` — انبعاث رموز تصميم Instructure كثوابت Rust لواجهات Rust الأصلية السائدة:
-**egui** (`Color32`) و **iced** (`Color`). تصبح الألوان نوع لون الإطار؛ تصبح الأبعاد `f32` (px). يجب على واجهات Rust المعروضة على الويب (Tauri و Dioxus-web و Leptos و Yew)
+`@pantoken/rust` — يُصدِر رموز تصميم Instructure كثوابت Rust لواجهتي المستخدم الأصليتين الرئيستين لـ
+Rust: **egui** (`Color32`) و **iced** (`Color`). تصبح الألوان نوع لون الإطار
+framework؛ وتصبح الأبعاد `f32` (px). يجب على واجهات Rust المرسومة للويب (Tauri, Dioxus-web, Leptos, Yew)
 استخدام `@pantoken/css` بدلاً من ذلك.
 
-## Interfaces
+## واجهات
 
 - [RustOptions](interfaces/RustOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [RustFormat](type-aliases/RustFormat.md)
 
-## Functions
+## الدوال
 
 - [toRust](functions/toRust.md)
 - [generateRust](functions/generateRust.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [generateRust](functions/generateRust.md)
+يعيد تسمية ويعيد تصدير [generateRust](functions/generateRust.md)

@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / ratingCss
 
-# Variable: ratingCss
+# متغير: ratingCss
 
 > `const` **ratingCss**: `Definition`\[`"css"`\] = `rating.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `rating` مستقلة — CSS مسبوق لتقييم النجوم، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `rating` — ملفات CSS ذات بادئات لتقييم النجوم، جاهزة للتوزيع كملف `.css`.

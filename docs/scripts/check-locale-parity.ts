@@ -5,9 +5,14 @@
  * tree mirrors the root API tree page-for-page, required locale files exist, and the localized home
  * page keeps the same hero actions as the root. These catch English-only additions that never reached
  * the translation layer.
+ *
+ * Parity is structural, not linguistic — every gap here is filled by re-running a generator, no AI
+ * translation pass needed — so `i18n-policy.json` blocks on surface `docs.parity` for every locale by
+ * default. It's still routed through the shared policy so it can be loosened like any other surface.
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, relative } from "node:path";
+import { DriftReporter } from "@pantoken/translation-adapters";
 import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
@@ -48,13 +53,34 @@ const listMarkdownTree = (dir: string): Set<string> => {
 const countHeroActions = (filePath: string): number =>
   (readFileSync(filePath, "utf8").match(/^\s*- theme:/gm) ?? []).length;
 
-const errors: string[] = [];
+const reporter = new DriftReporter({
+  label: "@pantoken/docs locale parity",
+  fixCommand: "vp run docs:api:locales && vp run docs:demos:locales",
+});
+
+/** Record one parity gap. `items` are docs-relative paths; only the first few are shown per gap. */
+const fail = (
+  locale: string,
+  file: string,
+  detail: string,
+  items: readonly string[] = [],
+): void => {
+  const shown = items.slice(0, 5).join(", ");
+  const more = items.length > 5 ? ` …and ${items.length - 5} more` : "";
+  reporter.add({
+    surface: "docs.parity",
+    locale,
+    file: `docs/${file}`,
+    detail: items.length > 0 ? `${detail}: ${shown}${more}` : detail,
+  });
+};
+
 const rootPages = listBasenames(rootGuideDir, ".md");
 const rootApi = listMarkdownTree(rootApiDir);
 const rootDemos = listDemoNames(rootDemoDir);
 
 if (!existsSync(rootIndex)) {
-  errors.push("Missing required locale file:", `- ${rootIndex}`);
+  fail("en", "index.md", "Missing required root locale file");
 }
 
 for (const locale of NON_ROOT_LOCALES) {
@@ -68,9 +94,11 @@ for (const locale of NON_ROOT_LOCALES) {
     (filePath) => !existsSync(filePath),
   );
   if (missingRequired.length > 0) {
-    errors.push(
-      `Missing required '${locale}' locale files:`,
-      ...missingRequired.map((f) => `- ${f}`),
+    fail(
+      locale,
+      `${locale}/api/typedoc-sidebar.json`,
+      "Missing required locale files",
+      missingRequired.map((f) => relative(docsRoot, f)),
     );
   }
 
@@ -78,15 +106,19 @@ for (const locale of NON_ROOT_LOCALES) {
   const missingInLocale = [...rootPages].filter((page) => !localePages.has(page));
   const extraInLocale = [...localePages].filter((page) => !rootPages.has(page));
   if (missingInLocale.length > 0) {
-    errors.push(
-      `Missing '${locale}' guide pages:`,
-      ...missingInLocale.map((p) => `- ${locale}/guide/${p}.md`),
+    fail(
+      locale,
+      `${locale}/guide`,
+      "Missing guide pages",
+      missingInLocale.map((p) => `${p}.md`),
     );
   }
   if (extraInLocale.length > 0) {
-    errors.push(
-      `'${locale}'-only guide pages without root equivalent:`,
-      ...extraInLocale.map((p) => `- ${locale}/guide/${p}.md`),
+    fail(
+      locale,
+      `${locale}/guide`,
+      "Locale-only guide pages without a root equivalent",
+      extraInLocale.map((p) => `${p}.md`),
     );
   }
 
@@ -96,15 +128,19 @@ for (const locale of NON_ROOT_LOCALES) {
   const missingDemos = [...rootDemos].filter((name) => !localeDemos.has(name));
   const extraDemos = [...localeDemos].filter((name) => !rootDemos.has(name));
   if (missingDemos.length > 0) {
-    errors.push(
-      `Missing '${locale}' demo snippets; re-run docs:demos:locales:`,
-      ...missingDemos.map((p) => `- ${locale}/demos/${p}.html`),
+    fail(
+      locale,
+      `${locale}/demos`,
+      "Missing demo snippets; re-run docs:demos:locales",
+      missingDemos.map((p) => `${p}.html`),
     );
   }
   if (extraDemos.length > 0) {
-    errors.push(
-      `'${locale}'-only demo snippets with no root equivalent:`,
-      ...extraDemos.map((p) => `- ${locale}/demos/${p}.html`),
+    fail(
+      locale,
+      `${locale}/demos`,
+      "Locale-only demo snippets with no root equivalent",
+      extraDemos.map((p) => `${p}.html`),
     );
   }
 
@@ -113,17 +149,19 @@ for (const locale of NON_ROOT_LOCALES) {
   const missingApi = [...rootApi].filter((page) => !localeApi.has(page));
   const extraApi = [...localeApi].filter((page) => !rootApi.has(page));
   if (missingApi.length > 0) {
-    errors.push(
-      `Missing '${locale}' API pages (${missingApi.length}); re-run docs:api:locales:`,
-      ...missingApi.slice(0, 20).map((p) => `- ${locale}/api/${p}`),
-      ...(missingApi.length > 20 ? [`  …and ${missingApi.length - 20} more`] : []),
+    fail(
+      locale,
+      `${locale}/api`,
+      `Missing ${missingApi.length} API page(s); re-run docs:api:locales`,
+      missingApi,
     );
   }
   if (extraApi.length > 0) {
-    errors.push(
-      `Stale '${locale}' API pages with no root equivalent (${extraApi.length}); re-run docs:api:locales:`,
-      ...extraApi.slice(0, 20).map((p) => `- ${locale}/api/${p}`),
-      ...(extraApi.length > 20 ? [`  …and ${extraApi.length - 20} more`] : []),
+    fail(
+      locale,
+      `${locale}/api`,
+      `Stale ${extraApi.length} API page(s) with no root equivalent; re-run docs:api:locales`,
+      extraApi,
     );
   }
 
@@ -132,21 +170,19 @@ for (const locale of NON_ROOT_LOCALES) {
     const rootActions = countHeroActions(rootIndex);
     const localeActions = countHeroActions(localeIndex);
     if (rootActions !== localeActions) {
-      errors.push(
-        `Home page hero actions out of sync: index.md has ${rootActions}, ` +
-          `${locale}/index.md has ${localeActions}.`,
+      fail(
+        locale,
+        `${locale}/index.md`,
+        `Home page hero actions out of sync: index.md has ${rootActions}, this locale has ${localeActions}`,
       );
     }
   }
 }
 
-if (errors.length > 0) {
-  console.error("Locale parity check failed.");
-  for (const line of errors) console.error(line);
-  process.exit(1);
+if (!reporter.blocking) {
+  console.log(
+    `Locale parity: ${rootPages.size} guide pages and ${rootApi.size} API pages checked across ` +
+      `${NON_ROOT_LOCALES.length} locales.`,
+  );
 }
-
-console.log(
-  `Locale parity OK: ${rootPages.size} guide pages and ${rootApi.size} API pages matched across ` +
-    `${NON_ROOT_LOCALES.length} locales, required locale files present, hero actions in sync.`,
-);
+process.exitCode = reporter.report();

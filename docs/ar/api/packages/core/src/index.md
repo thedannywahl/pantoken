@@ -2,15 +2,15 @@
 
 # core
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 `@pantoken/core` — محول pantoken.
 
-يحل `@instructure/instructure-design-tokens` + `@instructure/ui-icons` إلى IR الرمز المتوافق القانوني
-`@property` ([buildTokens](functions/buildTokens.md))، ويحدد عقد المكون الموحد
-([PantokenPlugin](interfaces/PantokenPlugin.md))، ويكيف IR للنسب الأصلي ([toStyleDictionary](functions/toStyleDictionary.md)).
+يحلّ `@instructure/instructure-design-tokens` + `@instructure/ui-icons` إلى تمثيل IR للتوكنات القياسي المحاذٍ لـ `@property`
+([buildTokens](functions/buildTokens.md))، ويعرّف عقدة الإضافة الموحدة
+([PantokenPlugin](interfaces/PantokenPlugin.md))، ويتكيف مع الـ IR لسلسلة النشأة الأصلية ([toStyleDictionary](functions/toStyleDictionary.md)).
 
-## Interfaces
+## واجهات
 
 - [BuildTokensOptions](interfaces/BuildTokensOptions.md)
 - [VectorDrawableOptions](interfaces/VectorDrawableOptions.md)
@@ -32,17 +32,17 @@
 - [RehypeHookContext](interfaces/RehypeHookContext.md)
 - [PantokenPlugin](interfaces/PantokenPlugin.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Theme](type-aliases/Theme.md)
 - [IconResolver](type-aliases/IconResolver.md)
 - [Mode](type-aliases/Mode.md)
 
-## Variables
+## المتغيرات
 
 - [ICON\_COLOR\_SPECIAL\_VALUES](variables/ICON_COLOR_SPECIAL_VALUES.md)
 
-## Functions
+## الدوال
 
 - [buildTokens](functions/buildTokens.md)
 - [applyModify](functions/applyModify.md)

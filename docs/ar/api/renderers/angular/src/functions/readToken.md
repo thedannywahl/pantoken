@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/angular/src](../index.md) / readToken
 
-# Function: readToken()
+# دالة: readToken()
 
 > **readToken**(`name`, `fallback?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اقرأ قيمة رمز مُحلَّة. يعيد `fallback` على الخادم.
+اقرأ قيمة توكن مُحللة. تُعيد `fallback` على الخادم.
 
-## Parameters
+## المعلمات
 
 ### name
 
@@ -18,11 +18,11 @@
 
 `string` = `""`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { readToken } from "@pantoken/angular";

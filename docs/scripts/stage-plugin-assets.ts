@@ -25,7 +25,7 @@ const assetsDir = join(docsRoot, "public", "demos-assets");
 /** demos-asset sheet name → the plugin package directory that generates it (sheet basenames match).
  *  `transition`/`stacking` are tokens-only plugins now; their demo CSS ships inside
  *  `formats/components/generated/utilities.css` instead. */
-const PLUGIN_SHEETS = ["visual-debug", "custom-components"] as const;
+const PLUGIN_SHEETS = ["visual-debug", "custom-components", "logos"] as const;
 
 /** Copy each plugin's `generated/<name>.css` into `public/demos-assets/<name>.css`. Returns the paths. */
 export function stagePluginAssets(): string[] {

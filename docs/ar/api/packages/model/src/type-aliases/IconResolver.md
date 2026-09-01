@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / IconResolver
 
-# Type Alias: IconResolver
+# اسم نوع مستعار: IconResolver
 
 > **IconResolver** = (`code`) => [`IconEntry`](../interfaces/IconEntry.md) \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-يعين رمز الرمز إلى [IconEntry](../interfaces/IconEntry.md)، أو `undefined` عندما لا يكون هناك تطابق.
+يربط رمز الأيقونة بـ [IconEntry](../interfaces/IconEntry.md)، أو `undefined` عندما لا يوجد له تطابق.
 
-## Parameters
+## المعلمات
 
 ### code
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 [`IconEntry`](../interfaces/IconEntry.md) \| `undefined`

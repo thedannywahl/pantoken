@@ -1,70 +1,70 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / InstuiMarkdownRenderOptions
 
-# Interface: InstuiMarkdownRenderOptions
+# واجهة: InstuiMarkdownRenderOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات العرض التي تضبط كيفية تعيين Markdown على Instructure UI.
+خيارات العرض التي تضبط كيف يتم تحويل Markdown إلى واجهة Instructure UI.
 
-## Properties
+## الخصائص
 
 ### link?
 
 > `optional` **link?**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سلوك الرابط.
+سلوك الروابط.
 
 #### external?
 
 > `optional` **external?**: `boolean`
 
-إظهار عنصر ارتباط خارجي على الروابط خارج الموقع (الافتراضي: true).
+عرض مؤشر رابط خارجي على الروابط المؤدية لمواقع خارجية (الافتراضي: true).
 
 #### permalinks?
 
 > `optional` **permalinks?**: `boolean`
 
-إضافة أنسام الارتباطات الدائمة إلى العناوين (الافتراضي: false).
+إضافة مراسي روابط دائمة للعناوين (الافتراضي: false).
 
 #### permalinkClassName?
 
 > `optional` **permalinkClassName?**: `string`
 
-اسم الفئة لأنسام الارتباطات الدائمة (الافتراضي: `pantoken-heading-anchor`).
+اسم الصنف لمراسي الرابط الدائم (الافتراضي: `pantoken-heading-anchor`).
 
----
+***
 
 ### code?
 
 > `optional` **code?**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سلوك كتل الأكواد المحاطة.
+سلوك كتل الشيفرة المحاطة.
 
 #### language?
 
 > `optional` **language?**: `boolean`
 
-الحفاظ على تلميح اللغة كسمة `data-language` (الافتراضي: true).
+الحفاظ على تلميح اللغة كخاصية `data-language` (الافتراضي: true).
 
----
+***
 
 ### icons?
 
 > `optional` **icons?**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سلوك رمز `:icon:` المضمن.
+سلوك وسم `:icon:` داخل السطر.
 
 #### enabled?
 
 > `optional` **enabled?**: `boolean`
 
-تفعيل عرض `:icon:` (الافتراضي: true).
+تمكين عرض `:icon:` (الافتراضي: true).
 
 #### color?
 
@@ -76,52 +76,52 @@
 
 > `optional` **resolvers?**: [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)[]
 
-محللات إضافية، يتم محاولتها قبل مجموعة أيقونات pantoken المدمجة.
+محللات إضافية تُجرَّب قبل مجموعة أيقونات pantoken المدمجة.
 
 #### plugins?
 
 > `optional` **plugins?**: [`PantokenPlugin`](../../../../packages/core/src/interfaces/PantokenPlugin.md)[]
 
-المكونات الإضافية التي تساهم خطافاتها `rehype` في المحللات (مثل simple-icons).
+الإضافات التي تساهم خطاطيف `rehype` الخاصة بها بمحللات (مثال: simple-icons).
 
----
+***
 
 ### color?
 
 > `optional` **color?**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-عينات ألوان مشفرة مضمنة (مثل `#03893D`).
+عينات ألوان ضمن السطر (مثال: `#03893D`).
 
 #### enabled?
 
 > `optional` **enabled?**: `boolean`
 
-تفعيل عينات الألوان (الافتراضي: true).
+تمكين عينات الألوان (الافتراضي: true).
 
----
+***
 
 ### alerts?
 
 > `optional` **alerts?**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تنبيهات الاقتباس بأسلوب GitHub.
+تنبيهات اقتباس الكتلة على نمط GitHub.
 
 #### enabled?
 
 > `optional` **enabled?**: `boolean`
 
-تفعيل تعيين `> [!NOTE]` → InstUI Alert (الافتراضي: true).
+تمكين تحويل `> [!NOTE]` → تحذير InstUI (الافتراضي: true).
 
----
+***
 
 ### tableCaption?
 
 > `optional` **tableCaption?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الشرح المستخدم للجداول المعروضة (مطلوب بواسطة InstUI Table للوصول).
+التسمية المستخدمة للجداول المعروضة (مطلوبة من InstUI Table لإمكانية الوصول).

@@ -2,22 +2,22 @@
 
 # icon-font
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/icon-font` — بناء خط Instructure أيقونات قابل للتثبيت (WOFF2 + TTF) مع
-ورقة نمط وخريطة نقطة رمز مطابقة. على عكس مسارات SVG المضمنة، يتم تثبيت الخط على جهاز، لذا
-يعمل في تطبيقات التصميم والسياقات غير المتصلة بالإنترنت حيث لا يمكن الوصول إلى أدوات الويب.
+`@pantoken/icon-font` — بناء خط أيقونات قابل للتثبيت من Instructure (WOFF2 + TTF) مع ورقة أنماط
+ومتعلّم نقاط الترميز المقابل. على عكس مسارات SVG المضمنة، يُثبَّت الخط على الجهاز، لذلك
+يعمل في تطبيقات التصميم وفي السيناريوهات دون اتصال حيث لا تكون أدوات الويب متاحة.
 
-تُحول الحروف القائمة على الحدود (Lucide) إلى ملء بحيث تتم عرضها كحروف خط حقيقية؛ الحروف
-القائمة على الملء (Instructure مخصص) تمر عبرها.
+تُحوَّل الرموز المبنية على السكتة (Lucide) من حدود إلى تعبئة لكي تُعرض كرموز خط حقيقية؛ الرموز المبنية على
+التعبئة (Instructure custom) تُمرّر كما هي.
 
-## Interfaces
+## واجهات
 
 - [IconFontResult](interfaces/IconFontResult.md)
 - [BuildIconFontOptions](interfaces/BuildIconFontOptions.md)
 - [GlyphPath](interfaces/GlyphPath.md)
 
-## Functions
+## الدوال
 
 - [buildIconFont](functions/buildIconFont.md)
 - [svgToGlyphPath](functions/svgToGlyphPath.md)

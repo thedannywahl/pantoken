@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/bootstrap/src](../index.md) / toBootstrapCss
 
-# Function: toBootstrapCss()
+# دالة: toBootstrapCss()
 
 > **toBootstrapCss**(`options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار جسر متغير Bootstrap → Instructure CSS.
+إخراج جسر متغيرات CSS من Bootstrap إلى Instructure.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [ToBootstrapCssOptions](../interfaces/ToBootstrapCssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة CSS الجسرية.
+سلسلة CSS الخاصة بالجسر.
 
-## Examples
+## أمثلة
 
-**جسر :root الافتراضي**
+**الجسر الافتراضي لـ :root**
 
 ```ts
 import { toBootstrapCss } from "@pantoken/bootstrap";
@@ -33,7 +33,7 @@ const css = toBootstrapCss();
 // ":root { --bs-primary: var(--instui-color-background-brand); … }"
 ```
 
-**النطاق لخاصية موضوع Bootstrap**
+**قصر النطاق على سمة theme في Bootstrap**
 
 ```ts
 import { toBootstrapCss } from "@pantoken/bootstrap";

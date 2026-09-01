@@ -1,66 +1,67 @@
 # CSS: callout
 
-`div[class~="instui-callout"]` — تنبيه معلومات مضمن لتذكير قصير أو ملاحظة.
+`div[class~="instui-callout"]` — تنبيه معلوماتي مضمّن لتذكير قصير أو ملاحظة.
 
 ✅ استخدم Callout عندما:
 
-- تحتاج إلى تسليط الضوء على معلومات مهمة أو تذكيرات مضمنة
-- الرسالة قصيرة نسبيًا (جملة إلى فقرة قصيرة)
-- يجب أن ينجذب التنبيه الانتباه دون مقاطعة التدفق الرئيسي
-  🚫 لا تستخدم Callout عندما:
+- تحتاج إلى إبراز معلومات مهمة أو تذكيرات مضمّنة
+- الرسالة قصيرة نسبياً (جملة إلى فقرة قصيرة)
+- يجب أن يجذب التنبيه الانتباه دون مقاطعة السياق الرئيسي
+🚫 لا تستخدم Callout عندما:
 
-- الرسالة تتطلب تفاعل أو إجراءات متعددة — استخدم Modal أو Alert Dialog
-- المحتوى هو التركيز الرئيسي للصفحة — استخدم تخطيط Card أو Hero بدلاً من ذلك
+- تتطلب الرسالة تفاعلاً أو إجراءات متعددة — استخدم Modal أو Alert Dialog
+- المحتوى هو محور الصفحة الرئيسي — استخدم Card أو تنسيق Hero بدلاً من ذلك
 
-## Accessibility
+## سهولة الوصول
 
 - تأكد من تطبيق دور التنبيه بشكل صحيح (role="alert" أو role="status")
 - استخدم تباين ألوان دلالي يلبي معايير WCAG AA
 - لا تعتمد على اللون وحده لنقل المعنى
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/plugin-layouts/layouts.css";
 ```
 
-## Slots
+## فتحات
 
-| Slot      | Description         |
-| --------- | ------------------- |
+| فتحة | الوصف |
+| --- | --- |
 | `message` | محتوى رسالة التنبيه |
 
-## Parts
+## الأجزاء
 
-| Part              | Description                   |
-| ----------------- | ----------------------------- |
-| `.instui-content` | حاوية محتوى النص.             |
-| `.instui-icon`    | رمز اختياري على يسار المحتوى. |
+| جزء | الوصف |
+| --- | --- |
+| `.instui-content` | حاوية لمحتوى النص. |
+| `.instui-icon` | أيقونة اختيارية على يسار المحتوى. |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description |
-| -------------- | ----------- |
-| `::before`     | —           |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::before` | — |
 
-## States
+## الحالات
 
-| State       | Description |
-| ----------- | ----------- |
-| `:optional` | —           |
+| حالة | الوصف |
+| --- | --- |
+| `:optional` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                            | Type       | Value |
-| -------------------------------- | ---------- | ----- |
-| `--instui-color-info-background` | —          | —     |
-| `--instui-color-info-border`     | —          | —     |
-| `--instui-color-info-text`       | —          | —     |
-| `--instui-radius-medium`         | —          | —     |
-| `--instui-size-small`            | `<length>` | —     |
-| `--instui-space-medium`          | —          | —     |
-| `--instui-space-small`           | —          | —     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-color-info-background` | — | — |
+| `--instui-color-info-border` | — | — |
+| `--instui-color-info-text` | — | — |
+| `--instui-radius-medium` | — | — |
+| `--instui-size-small` | `<length>` | — |
+| `--instui-space-medium` | — | — |
+| `--instui-space-small` | — | — |
 
-## Related
+## ذات صلة
 
 - [alert](/ar/api/css/alert.md)
+

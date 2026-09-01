@@ -1,67 +1,68 @@
 [pantoken](../../../../../index.md) / [plugins/vite/workspace-orchestrator/src](../index.md) / FileServerEntry
 
-# Interface: FileServerEntry
+# واجهة: FileServerEntry
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إدخال واحد للبرنامج الوسيط الذي يخدم الملفات الثابتة.
+إدخال واحد لوسيط برمجيات (middleware) لخدمة الملفات الثابتة.
 
-## Properties
+## الخصائص
 
 ### mountPath
 
 > **mountPath**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بادئة مسار URL لتثبيت البرنامج الوسيط عليها، على سبيل المثال `"/styles/apps"`.
+بادئة مسار URL لتركيب الوسيط عندها، على سبيل المثال `"/styles/apps"`.
 
----
+***
 
 ### serveDir
 
 > **serveDir**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الدليل المحلي لخدمة الملفات منه.
+الدليل المحلي الذي تُقدَّم منه الملفات.
 
----
+***
 
 ### extension
 
 > **extension**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خدّم فقط الملفات التي ينتهي مسار URL الخاص بها بهذا الامتداد، على سبيل المثال `".css"`.
+خدمة الملفات فقط التي ينتهي مسار URL الخاص بها بهذا الامتداد، على سبيل المثال `".css"`.
 
----
+***
 
 ### contentType
 
 > **contentType**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 القيمة لرأس الاستجابة `Content-Type`.
 
----
+***
 
 ### pathTransform?
 
 > `optional` **pathTransform?**: (`urlRelativePath`) => `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تحويل اختياري يتم تطبيقه على المسار النسبي لـ URL قبل الحل مقابل `serveDir`، على سبيل المثال `(p) => p.replace(//([^/]+)\.css$/, "/$1/app.css")`.
+تحويل اختياري يُطبَّق على المسار النسبي للـ URL قبل حله مقابل `serveDir`, على سبيل المثال
+`(p) => p.replace(//([^/]+)\.css$/, "/$1/app.css")`.
 
-#### Parameters
+#### المعلمات
 
 ##### urlRelativePath
 
 `string`
 
-#### Returns
+#### القيم المرجعة
 
 `string`

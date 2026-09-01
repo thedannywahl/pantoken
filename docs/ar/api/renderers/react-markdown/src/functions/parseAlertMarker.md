@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / parseAlertMarker
 
-# Function: parseAlertMarker()
+# دالة: parseAlertMarker()
 
 > **parseAlertMarker**(`text`): \{ `marker`: [`AlertMarker`](../type-aliases/AlertMarker.md); `rest`: `string`; \} \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كشف علامة تنبيه GitHub في بداية النص؛ يُرجع العلامة والنص المتبقي.
+كشف علامة تنبيه GitHub في بداية النص؛ يُرجع العلامة والنص المتبقٍ.
 
-## Parameters
+## المعلمات
 
 ### text
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 \{ `marker`: [`AlertMarker`](../type-aliases/AlertMarker.md); `rest`: `string`; \} \| `undefined`
 
-## Example
+## مثال
 
 ```ts
 import { parseAlertMarker } from "@pantoken/react-markdown";

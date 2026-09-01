@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [platforms/wordpress/src](../index.md) / themeJson
 
-# Variable: themeJson
+# متغير: themeJson
 
 > `const` **themeJson**: [`ThemeJson`](../interfaces/ThemeJson.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`rebrand` `theme.json` الجاهز.
+المُعد مسبقًا `rebrand` `theme.json`.
 
-## Example
+## مثال
 
-**اكتبه في مظهر كتل**
+**اكتبها في سمة الكتلة**
 
 ```ts
 import { writeFileSync } from "node:fs";

@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [design/figma/src](../index.md) / toFigmaColor
 
-# Function: toFigmaColor()
+# دالة: toFigmaColor()
 
 > **toFigmaColor**(`hex`): [`FigmaColor`](../interfaces/FigmaColor.md) \| `undefined`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-قم بتحليل `#rgb`/`#rrggbb`/`#rrggbbaa` إلى Figma RGBA (0–1)، أو `undefined` إذا لم يكن لون hex.
+قم بتحليل `#rgb`/`#rrggbb`/`#rrggbbaa` إلى صيغة RGBA الخاصة بـ Figma (0–1)، أو `undefined` إذا لم تكن قيمة لون سداسية.
 
-## Parameters
+## المعلمات
 
 ### hex
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 [`FigmaColor`](../interfaces/FigmaColor.md) \| `undefined`
 
-## Example
+## مثال
 
 ```ts
 import { toFigmaColor } from "@pantoken/figma";

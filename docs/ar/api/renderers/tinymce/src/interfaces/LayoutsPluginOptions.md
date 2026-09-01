@@ -1,31 +1,31 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / LayoutsPluginOptions
 
-# Interface: LayoutsPluginOptions
+# واجهة: LayoutsPluginOptions
 
 خيارات لـ [createLayoutsPlugin](../functions/createLayoutsPlugin.md).
 
-## Properties
+## الخصائص
 
 ### layouts?
 
 > `optional` **layouts?**: readonly [`PageLayout`](PageLayout.md)[]
 
-تخطيطات الصفحة المقدمة في منتقي "إدراج التخطيط". الافتراضي هو [pageLayouts](../variables/pageLayouts.md).
+تخطيطات الصفحة المعروضة في منتقي "Insert layout". القيم الافتراضية من [pageLayouts](../variables/pageLayouts.md).
 
----
+***
 
 ### onInsert?
 
 > `optional` **onInsert?**: (`layout`) => `void`
 
-يُستدعى بعد إدراج التخطيط (على سبيل المثال لتحديث المعاينة المباشرة).
+يتم استدعاؤه بعد إدراج التخطيط (على سبيل المثال لتحديث المعاينة الحية).
 
-#### Parameters
+#### المعلمات
 
 ##### layout
 
 [`PageLayout`](PageLayout.md)
 
-#### Returns
+#### القيم المرجعة
 
 `void`

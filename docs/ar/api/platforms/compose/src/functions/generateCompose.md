@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [platforms/compose/src](../index.md) / generateCompose
 
-# Function: generateCompose()
+# دالة: generateCompose()
 
 > **generateCompose**(`options`): `Promise`\<`string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار Compose Kotlin لموضوع مسمى. يعيد مسار الملف المكتوب.
+يصدر Compose Kotlin لموضوع مسمى. يُرجع مسار الملف المكتوب.
 
-## Parameters
+## المعلمات
 
 ### options
 
 [`GenerateComposeOptions`](../interfaces/GenerateComposeOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`\>
 
-## Example
+## مثال
 
 ```ts
 import { generateCompose } from "@pantoken/compose";

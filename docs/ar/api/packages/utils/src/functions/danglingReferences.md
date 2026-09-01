@@ -1,30 +1,29 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / danglingReferences
 
-# Function: danglingReferences()
+# دالة: danglingReferences()
 
 > **danglingReferences**(`css`): `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-فحص الاحتواء الذاتي: `--instui-*` الأسماء المرجعية عبر `var()` في ورقة نمط لم تفعل أبداً
-تحديد (كـ `@property` التسجيل أو `--x:` الإعلان). تم الفرز؛ فارغ يعني كل
-مرجع يتحل ضمن نفس الإخراج. استخدم لأوراق الأنماط المستقلة بذاتها (css، pendo).
+فحص الاكتفاء الذاتي: الأسماء `--instui-*` المشار إليها عبر `var()` في ورقة أنماط لا تُعرّفها أبدًا (كـ `@property` تسجيل أو `--x:` تعريف). مرتبة؛ الفارغة تعني أن كل
+مرجع يحل ضمن نفس المخرَج. استخدمها لورقات الأنماط المكتفية ذاتيًا (css, pendo).
 
-## Parameters
+## المعلمات
 
 ### css
 
 `string`
 
-ورقة الأنماط المولدة.
+ورقة الأنماط المولَّدة.
 
-## Returns
+## القيم المرجعة
 
 `string`[]
 
 أسماء المراجع المعلقة.
 
-## Example
+## مثال
 
 ```ts
 import { danglingReferences } from "@pantoken/utils";

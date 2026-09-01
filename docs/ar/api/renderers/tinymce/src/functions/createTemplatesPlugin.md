@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / createTemplatesPlugin
 
-# Function: createTemplatesPlugin()
+# دالة: createTemplatesPlugin()
 
 > **createTemplatesPlugin**(`options`): (`editor`) => `object`
 
-ينشئ استدعاء `tinymce.PluginManager.add` لمكون "إدراج القالب".
+يبني دالة الاستدعاء `tinymce.PluginManager.add` لملحق "Insert template".
 
-## Parameters
+## المعلمات
 
 ### options
 
 `TemplatesPluginOptions`
 
-## Returns
+## القيم المرجعة
 
 (`editor`) => `object`

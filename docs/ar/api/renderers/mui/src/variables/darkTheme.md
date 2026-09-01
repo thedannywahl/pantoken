@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/mui/src](../index.md) / darkTheme
 
-# Variable: darkTheme
+# متغير: darkTheme
 
 > `const` **darkTheme**: [`PantokenThemeOptions`](../interfaces/PantokenThemeOptions.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات `rebrand` MUI الجاهزة في الوضع الداكن.
+خيارات `rebrand` الجاهزة لـ MUI في الوضع الداكن.

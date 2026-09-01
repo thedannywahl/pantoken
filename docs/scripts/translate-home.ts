@@ -14,32 +14,33 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { createTranslationAdapter } from "./api-translation.ts";
+import {
+  LINK_KEY,
+  TRANSLATABLE_KEY,
+  collectHomeUnits,
+  frontmatterRange,
+  toBackticks,
+  toGrave,
+} from "./home-i18n.ts";
 import { TranslationMemory, keyFor, translateUnits } from "./translation-memory.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const source = readFileSync(join(docsRoot, "index.md"), "utf8");
 
-// The only frontmatter keys VitePress renders as visible home-page copy.
-const TRANSLATABLE_KEY = /^(\s*)(text|tagline|title|details):(\s*)(.*)$/;
-const LINK_KEY = /^(\s*)link:(\s*)(\/.*)$/;
-
-// `&grave;...&grave;` stands in for backticks in `details` (literal backticks in this hand-authored
-// frontmatter render oddly). Swap them for real backticks before translating so the shared batch
-// masking in `api-translation.ts` protects the wrapped command instead of letting the model translate
-// it as prose, then swap back on the way out.
-const toBackticks = (text: string): string => text.replace(/&grave;([^&]*?)&grave;/g, "`$1`");
-const toGrave = (text: string): string => text.replace(/`([^`]*)`/g, "&grave;$1&grave;");
-
 const lines = source.split("\n");
-const values = lines.flatMap((line) => {
-  const value = line.match(TRANSLATABLE_KEY)?.[4];
-  return value ? [value] : [];
-});
+// All of the page's copy lives in frontmatter, so no frontmatter means the file isn't a home page any
+// more — fail loudly rather than writing 43 untranslated copies.
+const range = frontmatterRange(lines);
+if (!range) {
+  throw new Error("docs/index.md has no YAML frontmatter — the home page's copy lives there.");
+}
+const [frontmatterStart, frontmatterEnd] = range;
+const inFrontmatter = (index: number): boolean =>
+  index >= frontmatterStart && index < frontmatterEnd;
 
-const units = [...new Set(values)].map((value) => ({
-  kind: "text" as const,
-  source: toBackticks(value),
-}));
+// `check-locale-drift.ts` derives the same units from the same helper, so the `docs.home` drift check
+// can never disagree with what this script caches.
+const units = collectHomeUnits(source).map((value) => ({ kind: "text" as const, source: value }));
 
 for (const locale of NON_ROOT_LOCALES) {
   const outPath = join(docsRoot, locale, "index.md");
@@ -58,7 +59,10 @@ for (const locale of NON_ROOT_LOCALES) {
   });
 
   const localized = lines
-    .map((line) => {
+    .map((line, index) => {
+      // Body prose is off limits: the key regexes would happily match a markdown list like
+      // `- title: Naming things` and rewrite it as if it were frontmatter.
+      if (!inFrontmatter(index)) return line;
       const translatable = line.match(TRANSLATABLE_KEY);
       if (translatable) {
         const [, indent, key, gap, value] = translatable;

@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / tableColHeaderCss
 
-# Variable: tableColHeaderCss
+# متغير: tableColHeaderCss
 
 > `const` **tableColHeaderCss**: `Definition`\[`"css"`\] = `tableColHeader.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `table.col-header` مستقلة.
+ورقة أنماط مستقلة `table.col-header`.

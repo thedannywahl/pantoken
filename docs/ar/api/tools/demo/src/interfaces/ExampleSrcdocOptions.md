@@ -1,21 +1,29 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / ExampleSrcdocOptions
 
-# Interface: ExampleSrcdocOptions
+# واجهة: ExampleSrcdocOptions
 
-خيارات [buildExampleSrcdoc](../functions/buildExampleSrcdoc.md).
+خيارات لـ [buildExampleSrcdoc](../functions/buildExampleSrcdoc.md).
 
-## Properties
+## الخصائص
 
 ### cssUrls
 
 > **cssUrls**: readonly `string`[]
 
-عناوين URL لأوراق الأنماط لتحميلها في `&lt;head&gt;` الخاص بـ iframe (الرموز، المكونات، الأدوات المساعدة، الرموز، ...).
+عناوين URL لملفات الأنماط لتحميلها في `&lt;head&gt;` للـ iframe (tokens, components, utilities, icons, …).
 
----
+***
 
 ### card?
 
 > `optional` **card?**: `boolean`
 
-التفاف `html` في سطح `.instui-card` المشترك (الافتراضي `true`).
+لفّ `html` داخل سطح `.instui-card` المشترك (الافتراضي `true`).
+
+***
+
+### dir?
+
+> `optional` **dir?**: `"ltr"` \| `"rtl"`
+
+اتجاه النص في `&lt;html&gt;` للوثيقة المعزولة (الافتراضي `"ltr"`) — srcdoc لا يرثه أبدًا من الصفحة الحاوية.

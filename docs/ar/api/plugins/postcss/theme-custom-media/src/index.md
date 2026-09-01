@@ -2,26 +2,27 @@
 
 # theme-custom-media
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-theme-custom-media` — أنشئ مع معرّفات مخصصة للمظهر (`@media (theme: &lt;name&gt;)`) و/أو أسماء مستعارة لـ `@media (--theme-*)`، ثم أصدر CSS محسوسًا للمظهر المستهدف المختار.
+`@pantoken/plugin-theme-custom-media` — المؤلف مع theme custom-idents
+(`@media (theme: &lt;name&gt;)`) و/أو `@media (--theme-*)` أسماء مستعارة، ثم يصدر CSS ملموسًا لثيم الهدف المختار.
 
-يوسّع المكون الإضافي أسماء `--theme-*` و `--breakpoint-*` المستعارة المدمجة، وينقي فروع المظهر غير المستهدفة، ويزيل بنود `theme:*` المطابقة من الاستعلامات المحفوظة، وينفض أغلفة الوسائط ذات المظهر الفقط دائمة الصحة، ويزيل إعلانات `@custom-media --theme-*`/`--breakpoint-*` من CSS المصدر.
+يقوم البرنامج المساعد بتوسيع الأسماء المستعارة المدمجة `--theme-*` و`--breakpoint-*`، ويقلم فروع الثيم غير المستهدفة، ويزيل عبارات `theme:*` المطابقة من الاستعلامات المحفوظة، ويفك تغليف أغلفة الوسائط الخاصة بالثيم التي تكون دائمًا صحيحة، ويزيل التصريحات `@custom-media --theme-*`/`--breakpoint-*` من CSS المُصدَر.
 
-## Interfaces
+## واجهات
 
 - [ThemeCustomMediaOptions](interfaces/ThemeCustomMediaOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Theme](type-aliases/Theme.md)
 
-## Variables
+## المتغيرات
 
 - [themeCustomMedia](variables/themeCustomMedia.md)
 
-## References
+## المراجع
 
 ### default
 
-يعيد تسمية وإعادة تصدير [themeCustomMedia](variables/themeCustomMedia.md)
+يعيد تسمية ويُعيد تصدير [themeCustomMedia](variables/themeCustomMedia.md)

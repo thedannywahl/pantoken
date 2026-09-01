@@ -1,38 +1,38 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/flatten-property/src](../index.md) / FlattenPropertyOptions
 
-# Interface: FlattenPropertyOptions
+# واجهة: FlattenPropertyOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [flattenProperty](../variables/flattenProperty.md).
+خيارات لـ [flattenProperty](../variables/flattenProperty.md).
 
-## Properties
+## الخصائص
 
 ### injectSelector?
 
 > `optional` **injectSelector?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-محدد القاعدة التي تتلقى إعلانات `--name: value` المستخرجة.
+محدد القاعدة التي تستقبل التصريحات المستخرجة `--name: value`.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `":root"`
 
----
+***
 
 ### onMissingInitialValue?
 
 > `optional` **onMissingInitialValue?**: `"remove"` \| `"keep"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ماذا تفعل مع قاعدة `@property` التي ليس لديها وصفة `initial-value`.
+ماذا يُفعل مع at-rule من نوع `@property` لا يحتوي على واصف `initial-value`.
 
-- `"remove"` — إسقاط القاعدة (الإعداد الافتراضي).
-- `"keep"` — تركها في الإخراج دون تغيير.
+- `"remove"` — إسقاط الـ at-rule (الافتراضي).
+- `"keep"` — إبقاؤه في الإخراج دون تغيير.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `"remove"`

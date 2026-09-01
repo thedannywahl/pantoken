@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / createLogosPlugin
 
-# Function: createLogosPlugin()
+# دالة: createLogosPlugin()
 
 > **createLogosPlugin**(`options`): (`editor`) => `void`
 
-إنشاء مصنع برنامج منتقي الشعارات.
-يرجع دالة مناسبة لـ `tinymce.PluginManager.add()`.
+إنشاء مُصنِّع مكوّن إضافة منتقٍ للشعارات.
+يعيد دالة مناسبة لـ `tinymce.PluginManager.add()`.
 
-## Parameters
+## المعلمات
 
 ### options
 
 `LogosPickerOptions`
 
-## Returns
+## القيم المرجعة
 
 (`editor`) => `void`

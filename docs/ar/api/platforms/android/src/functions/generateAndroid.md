@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [platforms/android/src](../index.md) / generateAndroid
 
-# Function: generateAndroid()
+# دالة: generateAndroid()
 
 > **generateAndroid**(`options`): `Promise`\<`string`[]\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار XML موارد Android لموضوع مسمى (باستخدام IR `@pantoken/tokens` الموزع).
+إصدار XML لموارد Android لموضوع مسمّى (باستخدام IR المزود من `@pantoken/tokens`).
 
-## Parameters
+## المعلمات
 
 ### options
 
 [`GenerateAndroidOptions`](../interfaces/GenerateAndroidOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`[]\>
 
-مسارات `colors.xml` و`dimens.xml` المكتوبة.
+مسارات ملفات `colors.xml` و `dimens.xml` المكتوبة.
 
-## Example
+## مثال
 
 ```ts
 import { generateAndroid } from "@pantoken/android";

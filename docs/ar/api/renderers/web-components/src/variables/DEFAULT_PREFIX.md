@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / DEFAULT\_PREFIX
 
-# Variable: DEFAULT\_PREFIX
+# متغير: DEFAULT\_PREFIX
 
 > `const` **DEFAULT\_PREFIX**: `"instui"` = `"instui"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-بادئة العلامة الافتراضية، مرآة الطبقة CSS — `&lt;instui-icon&gt;`, `.instui-button`، إلخ.
+بادئة الوسم الافتراضية، تعكس طبقة CSS — `&lt;instui-icon&gt;`, `.instui-button`, الخ.

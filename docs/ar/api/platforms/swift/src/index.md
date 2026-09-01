@@ -2,26 +2,26 @@
 
 # swift
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/swift` — انبعاث رموز تصميم Instructure كـ Swift عبر Style Dictionary.
+`@pantoken/swift` — يصدر رموز تصميم Instructure إلى Swift عبر Style Dictionary.
 
-هذا هو إثبات pantoken الأصلي: يقوم بتسطيح IR إلى قيم خرسانية ذات وضع واحد
-(`@pantoken/core` من `toStyleDictionary`)، ويحتفظ بالرموز المكتوبة بشكل أصلي (الألوان، الأبعاد،
-الأرقام)، ويسلمها إلى `@pantoken/sd-config`. يؤدي استبدال `platform` بـ `flutter`/`compose`
-إلى إعادة استخدام نفس المسار.
+هذا دليل pantoken الأصلي: يقوم بتسطيح الـ IR إلى قيم ملموسة أحادية النمط
+(`@pantoken/core`'s `toStyleDictionary`), يحتفظ بالرموز المطبقة بالأنواع الأصلية (الألوان، الأبعاد،
+الأرقام)، ويسلمها إلى `@pantoken/sd-config`. تبديل `platform` إلى `flutter`/`compose`
+يعيد استخدام نفس المسار.
 
-## Interfaces
+## واجهات
 
 - [GenerateSwiftOptions](interfaces/GenerateSwiftOptions.md)
 
-## Functions
+## الدوال
 
 - [toSwift](functions/toSwift.md)
 - [generateSwift](functions/generateSwift.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [generateSwift](functions/generateSwift.md)
+يعيد تسمية ويُعيد تصدير [generateSwift](functions/generateSwift.md)

@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / compareVersions
 
-# Function: compareVersions()
+# دالة: compareVersions()
 
 > **compareVersions**(`a`, `b`): `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قارن مصفوفتي نسخة منقوطة: سالب إذا كان `a < b`، 0 إذا كانت متساوية، موجب إذا كان `a > b`.
+قارن بين مصفوفتين من الإصدارات المفصولة بنقاط: قيمة سالبة إذا `a < b`, 0 إذا كانت متساويتين، وقيمة موجبة إذا `a > b`.
 
-## Parameters
+## المعلمات
 
 ### a
 
@@ -18,6 +18,6 @@
 
 `number`[]
 
-## Returns
+## القيم المرجعة
 
 `number`

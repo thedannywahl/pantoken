@@ -1,27 +1,27 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / UpstreamVersions
 
-# Interface: UpstreamVersions
+# واجهة: UpstreamVersions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإصدار المحلول الحالي لكل مستوى أساسي (من `@pantoken/tokens` provenance).
+الإصدار الحالي المحلول لكل مستوى علوي (من أصل `@pantoken/tokens`).
 
-## Properties
+## الخصائص
 
 ### ui
 
 > **ui**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإصدار المحلول `@instructure/ui-*`، على سبيل المثال `"11.7.4"`.
+`@instructure/ui-*` الإصدار المحلول، على سبيل المثال `"11.7.4"`.
 
----
+***
 
 ### designTokens
 
 > **designTokens**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المرجع المثبت `@instructure/instructure-design-tokens`، على سبيل المثال `"v1.5.0"`.
+المرجع المثبت لـ `@instructure/instructure-design-tokens`، على سبيل المثال `"v1.5.0"`.

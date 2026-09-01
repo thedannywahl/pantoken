@@ -2,27 +2,28 @@
 
 # next
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/next` — محول إعدادات Next.js.
+`@pantoken/next` — مُكَيِّف تكوين Next.js.
 
-يشحن Instructure UI حزم ESM التي يجب على Next نقلها (`transpilePackages`)، المشكلة #1 عند تشغيل InstUI على Next. `withPantoken` يدمج حزم InstUI في تلك القائمة. لف `next.config` الخاص بك، ثم استورد `@pantoken/css` في تخطيطك الجذر للرموز.
+ترسل Instructure UI حزم ESM التي يجب على Next تحويلها (`transpilePackages`)، وهي المشكلة الأكثر إزعاجًا عند تشغيل InstUI على Next.
+يقوم `withPantoken` بدمج حزم InstUI في تلك القائمة. غلِّف `next.config`، ثم استورد `@pantoken/css` في تخطيط الجذر للحصول على الرموز.
 
-## Interfaces
+## واجهات
 
 - [NextConfigLike](interfaces/NextConfigLike.md)
 - [WithPantokenOptions](interfaces/WithPantokenOptions.md)
 
-## Variables
+## المتغيرات
 
 - [INSTUI\_TRANSPILE\_PACKAGES](variables/INSTUI_TRANSPILE_PACKAGES.md)
 
-## Functions
+## الدوال
 
 - [withPantoken](functions/withPantoken.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [withPantoken](functions/withPantoken.md)
+يعيد تسمية ويعيد تصدير [withPantoken](functions/withPantoken.md)

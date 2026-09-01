@@ -1,18 +1,20 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/flatten-property/src](../index.md) / flattenProperty
 
-# Variable: flattenProperty
+# متغير: flattenProperty
 
 > `const` **flattenProperty**: \{(`options?`): [`Plugin`](https://postcss.org/api/#plugin); `postcss`: `true`; \}
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون flatten-`@property` PostCSS الإضافي.
+إنشاء ملحق PostCSS المسمى flatten-`@property`.
 
-يمشي عبر جميع قواعس `@property` في ورقة الأنماط، ويستخرج كل وصفة `initial-value`، ويزيل القاعدة، ويسبق قاعدة `injectSelector { --name: value; … }` واحدة تحتوي على جميع الإعلانات المستخرجة. يتم إسقاط القواعد الفارغة وكتل `@layer` المتبقية بعد الإزالة.
+يمر على جميع تعليمات at-rule من نوع `@property` في ورقة الأنماط، ويستخرج كل واصف `initial-value`، ويزيل
+تعليمات at-rule، ثم يضيف في البداية قاعدة واحدة `injectSelector { --name: value; … }` تحتوي على جميع
+التصريحات المستخرجة. تُسقط القواعد الفارغة وكتل `@layer` المتبقية بعد الإزالة.
 
 ## Type Declaration
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -20,19 +22,19 @@
 
 [FlattenPropertyOptions](../interfaces/FlattenPropertyOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكون إضافي PostCSS [Plugin](https://postcss.org/api/#plugin).
+ملحق PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-علامة المكون الإضافي PostCSS المطلوبة.
+مؤشر ملحق PostCSS المطلوب.
 
-## Examples
+## أمثلة
 
 **الحقن الافتراضي في :root**
 
@@ -43,17 +45,15 @@ import { flattenProperty } from "@pantoken/plugin-flatten-property";
 const out = postcss([flattenProperty()]).process(css, { from: undefined }).css;
 ```
 
-**الحقن في :scope (للاستخدام داخل كتل النطاق)**
+**الحقن في :scope (لاستخدامه داخل كتل النطاق)**
 
 ```ts
 import postcss from "postcss";
 import { flattenProperty } from "@pantoken/plugin-flatten-property";
 
-const out = postcss([flattenProperty({ injectSelector: ":scope" })]).process(css, {
-  from: undefined,
-}).css;
+const out = postcss([flattenProperty({ injectSelector: ":scope" })]).process(css, { from: undefined }).css;
 ```
 
 ```ts
-Preserve;
+Preserve
 ```

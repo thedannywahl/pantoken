@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [formats/tokens/src](../index.md) / byTheme
 
-# Function: byTheme()
+# دالة: byTheme()
 
 > **byTheme**(`theme`): [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البحث عن IR الموضوع حسب الاسم.
+استعلام عن IR لسمة حسب الاسم.
 
-## Parameters
+## المعلمات
 
 ### theme
 
 [`Theme`](../../../../packages/core/src/type-aliases/Theme.md)
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-## Example
+## مثال
 
 ```ts
 import { byTheme } from "@pantoken/tokens";

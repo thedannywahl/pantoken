@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/tokens/src](../index.md) / canvasHighContrastTokens
 
-# Variable: canvasHighContrastTokens
+# متغير: canvasHighContrastTokens
 
 > `const` **canvasHighContrastTokens**: [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-IR موضوع `canvasHighContrast`.
+نموذج IR للسمة `canvasHighContrast`.
 
-## Example
+## مثال
 
 ```ts
 import { canvasHighContrastTokens } from "@pantoken/tokens";

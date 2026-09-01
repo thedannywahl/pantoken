@@ -2,49 +2,55 @@
 
 /**
  * Checks that all keys in src/i18n.json have corresponding entries in committed
- * i18n-cache files. Fails if any key is missing from a non-English locale cache.
+ * i18n-cache files.
+ *
+ * Whether a miss blocks the merge or only warns is decided by `i18n-policy.json` (surface
+ * `cli.scaffold`, keyed by locale tier), not by this script. A key missing from `en.json` is a
+ * source-integrity failure and blocks by default; a missing translation falls back to English at
+ * runtime and only warns.
  */
 
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { DriftReporter, repoRelative } from "@pantoken/translation-adapters";
 import { collectI18nSource } from "./i18n-sources.ts";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 const { source } = collectI18nSource(resolve("."));
-
-// Check all cache files
-let failed = false;
 const cacheDir = resolve("i18n-cache");
+const enPath = resolve(cacheDir, "en.json");
+const en = JSON.parse(readFileSync(enPath, "utf8"));
 
-for (const [key] of Object.entries(source)) {
-  // English cache is the source of truth, always required
-  const enPath = resolve(cacheDir, "en.json");
-  const en = JSON.parse(readFileSync(enPath, "utf8"));
+const reporter = new DriftReporter({
+  label: "@pantoken/scaffold CLI strings",
+  fixCommand: "vp run @pantoken/scaffold#translate",
+});
+
+for (const key of Object.keys(source)) {
   if (!(key in en)) {
-    console.error(`❌ Key "${key}" missing from i18n-cache/en.json`);
-    failed = true;
+    reporter.add({
+      surface: "cli.scaffold",
+      locale: "en",
+      file: repoRelative(enPath),
+      detail: `"${key}" missing from the English source cache`,
+    });
   }
 
-  // Every other Canvas locale is optional, but if its cache exists, it must be complete.
   for (const locale of Object.keys(CANVAS_LOCALES)) {
     if (locale === "en") continue;
-    try {
-      const localePath = resolve(cacheDir, `${locale}.json`);
-      const localeCache = JSON.parse(readFileSync(localePath, "utf8"));
-      if (!(key in localeCache)) {
-        console.warn(
-          `⚠️  Key "${key}" missing from i18n-cache/${locale}.json (will fall back to English)`,
-        );
-      }
-    } catch {
-      // <locale>.json doesn't exist yet, that's fine
+    // A locale cache that doesn't exist yet is fine — the whole locale falls back to English.
+    const localePath = resolve(cacheDir, `${locale}.json`);
+    if (!existsSync(localePath)) continue;
+    const localeCache = JSON.parse(readFileSync(localePath, "utf8"));
+    if (!(key in localeCache)) {
+      reporter.add({
+        surface: "cli.scaffold",
+        locale,
+        file: repoRelative(localePath),
+        detail: `"${key}" missing (falls back to English)`,
+      });
     }
   }
 }
 
-if (failed) {
-  console.error(`\n✗ @pantoken/scaffold: i18n drift detected`);
-  process.exit(1);
-}
-
-console.log(`✓ @pantoken/scaffold: all i18n keys present`);
+process.exitCode = reporter.report();

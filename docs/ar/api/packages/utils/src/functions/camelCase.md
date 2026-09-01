@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / camelCase
 
-# Function: camelCase()
+# دالة: camelCase()
 
 > **camelCase**(`kebab`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تحويل سلسلة kebab-case إلى camelCase (`color-background-brand` → `colorBackgroundBrand`).
+حوّل سلسلة بصيغة kebab-case إلى camelCase (`color-background-brand` → `colorBackgroundBrand`).
 
-## Parameters
+## المعلمات
 
 ### kebab
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { camelCase } from "@pantoken/utils";

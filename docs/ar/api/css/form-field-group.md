@@ -1,38 +1,38 @@
 # CSS: form-field-group
 
-`.instui-form-field-group` — مجموعة `&lt;fieldset&gt;` مع وسيلة إيضاح وتخطيط عمود أو سطر وتباعد قابل للتكوين.
+`.instui-form-field-group` — مجموعة `&lt;fieldset&gt;` مع وسيلة إيضاح، تخطيط عمودي أو متسلسل، وفواصل قابلة للتعديل.
 
-تعيين `gap` الخاص به بين الحقول، قابل للتعديل باستخدام معدلات `-col-spacing-*`/`-row-spacing-*` أدناه — يُفضل استخدام تلك بدلاً من ربط معدل أداة تباعد عام `-gap-*`، الذي يتجاوز القيمة المدمجة تماماً.
+يحدد `gap` الخاص به بين الحقول، يمكن ضبطه بمُعدِّلات `-col-spacing-*`/`-row-spacing-*` أدناه — يُفضَّل استخدامها بدلًا من ربط مُعدِّل فاصل عام `-gap-*`، لأن الأخير يلغي القيمة المدمجة بالكامل.
 
 **المصدر:** [form-field-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/form-field-group/form-field-group.css)
 
-## Accessibility
+## سهولة الوصول
 
-يرسم `&lt;fieldset&gt;` أصلياً مع `&lt;legend&gt;`، بحيث يسمي نص وسيلة الإيضاح المجموعة بأكملها لتقنيات المساعدة.
+يعرض `&lt;fieldset&gt;` أصليًا مع `&lt;legend&gt;`، بحيث تسمّي نص الوسيلة (legend) المجموعة بأكملها لتقنيات المساعدة.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/form-field-group.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <fieldset class="instui-form-field-group -layout-columns -col-spacing-medium">
   <legend>Shipping address</legend>
   <label class="instui-form-field">
     <span class="label">First name</span>
-    <span class="controls"><input class="instui-text-input" /></span>
+    <span class="controls"><input class="instui-text-input"></span>
   </label>
   <label class="instui-form-field">
     <span class="label">Last name</span>
-    <span class="controls"><input class="instui-text-input" /></span>
+    <span class="controls"><input class="instui-text-input"></span>
   </label>
   <label class="instui-form-field">
     <span class="label">City</span>
-    <span class="controls"><input class="instui-text-input" /></span>
+    <span class="controls"><input class="instui-text-input"></span>
   </label>
   <label class="instui-form-field">
     <span class="label">State</span>
@@ -50,7 +50,7 @@
 </fieldset>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-form-field-group.-layout-columns.-col-spacing-medium
@@ -76,64 +76,65 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier               | Description                             |
-| ---------------------- | --------------------------------------- |
-| `.-col-spacing-large`  | فجوة عمود كبيرة.                        |
-| `.-col-spacing-medium` | فجوة عمود متوسطة.                       |
-| `.-col-spacing-none`   | بدون فجوة عمود.                         |
-| `.-col-spacing-small`  | فجوة عمود صغيرة.                        |
-| `.-layout-aligned`     | محاذاة الحقول الفرعية إلى شبكة مشتركة.  |
-| `.-layout-columns`     | ترتيب الحقول الفرعية في أعمدة.          |
-| `.-layout-inline`      | ترتيب الحقول الفرعية في سطر واحد في صف. |
-| `.-required`           | وضع علامة على المجموعة كمطلوبة.         |
-| `.-row-spacing-large`  | فجوة صف كبيرة.                          |
-| `.-row-spacing-medium` | فجوة صف متوسطة.                         |
-| `.-row-spacing-none`   | بدون فجوة صف.                           |
-| `.-row-spacing-small`  | فجوة صف صغيرة.                          |
-| `.-v-align-bottom`     | محاذاة الحقول من الأسفل.                |
-| `.-v-align-middle`     | محاذاة الحقول من الوسط.                 |
-| `.-v-align-top`        | محاذاة الحقول من الأعلى.                |
+| معدّل | الوصف |
+| --- | --- |
+| `.-col-spacing-large` | فاصل أعمدة كبير. |
+| `.-col-spacing-medium` | فاصل أعمدة متوسط. |
+| `.-col-spacing-none` | لا فاصل أعمدة. |
+| `.-col-spacing-small` | فاصل أعمدة صغير. |
+| `.-layout-aligned` | محاذاة الحقول الفرعية على شبكة مشتركة. |
+| `.-layout-columns` | عرض الحقول الفرعية في أعمدة. |
+| `.-layout-inline` | عرض الحقول الفرعية على التوالي في صف. |
+| `.-required` | وَسم المجموعة على أنها مطلوبة. |
+| `.-row-spacing-large` | فاصل صف كبير. |
+| `.-row-spacing-medium` | فاصل صف متوسط. |
+| `.-row-spacing-none` | لا فاصل صف. |
+| `.-row-spacing-small` | فاصل صف صغير. |
+| `.-v-align-bottom` | محاذاة الحقول لأسفل (محاذاة إلى القاعدة). |
+| `.-v-align-middle` | محاذاة الحقول إلى الوسط عموديًا. |
+| `.-v-align-top` | محاذاة الحقول إلى الأعلى. |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description                                                                               |
-| -------------- | ----------------------------------------------------------------------------------------- |
-| `::after`      | يرسم علامة النجمة الزخرفية للحقل المطلوب بعد نص وسيلة الإيضاح عندما تكون المجموعة مطلوبة. |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::after` | يعرض النجمة الزخرفية للحقل المطلوب بعد نص الوسيلة عندما تكون المجموعة مطلوبة. |
 
-## Conditions
+## الشروط
 
-| Type     | Query                              | Description |
-| -------- | ---------------------------------- | ----------- |
-| supports | `(grid-template-columns: subgrid)` | —           |
+| نوع | استعلام | الوصف |
+| --- | --- | --- |
+| supports | `(grid-template-columns: subgrid)` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                 | Type                                               | Value                                                                        |
-| ----------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-form-field-layout-asterisk-color` | `<color>`                                          | `light-dark(#CF1F24, #FA917F)`                                               |
-| `--instui-component-form-field-layout-font-family`    | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-form-field-layout-font-size`      | `<length>`                                         | `1rem`                                                                       |
-| `--instui-component-form-field-layout-font-weight`    | `<integer>`                                        | `400`                                                                        |
-| `--instui-component-form-field-layout-gap-inputs`     | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-form-field-layout-gap-primitives` | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-form-field-layout-line-height`    | `<length>`                                         | `1.125rem`                                                                   |
-| `--instui-component-form-field-layout-text-color`     | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
-| `--instui-spacing-space-lg`                           | `<length>`                                         | `1rem`                                                                       |
-| `--instui-spacing-space-md`                           | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-spacing-space-sm`                           | `<length>`                                         | `0.5rem`                                                                     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-form-field-layout-asterisk-color` | `<color>` | `light-dark(#CF1F24, #FA917F)` |
+| `--instui-component-form-field-layout-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-form-field-layout-font-size` | `<length>` | `1rem` |
+| `--instui-component-form-field-layout-font-weight` | `<integer>` | `400` |
+| `--instui-component-form-field-layout-gap-inputs` | `<length>` | `0.75rem` |
+| `--instui-component-form-field-layout-gap-primitives` | `<length>` | `0.5rem` |
+| `--instui-component-form-field-layout-line-height` | `<length>` | `1.125rem` |
+| `--instui-component-form-field-layout-text-color` | `<color>` | `light-dark(#273540, #ffffff)` |
+| `--instui-spacing-space-lg` | `<length>` | `1rem` |
+| `--instui-spacing-space-md` | `<length>` | `0.75rem` |
+| `--instui-spacing-space-sm` | `<length>` | `0.5rem` |
 
-## Browser support
+## دعم المتصفّح
 
-- يستخدم وضع `-layout-aligned` شبكة فرعية CSS خلف حارس `@supports`؛ حيث لا تكون الشبكة الفرعية مدعومة، تعود الحقول إلى تخطيطها المكدس.
+- وضع `-layout-aligned` يستخدم CSS subgrid وراء شرط `@supports`؛ عندما لا يدعم المتصفح subgrid، تعود الحقول إلى التخطيط المتكدس الخاص بها.
 
-## Subcomponents
+## مكونات فرعية
 
 - [form-field](/ar/api/css/form-field.md)
 - [form-field-messages](/ar/api/css/form-field-messages.md)
 
-## Related
+## ذات صلة
 
-- [form-field](/ar/api/css/form-field.md) — الحقل الفردي الذي تكرره هذه المجموعة.
-- [radio-input-group](/ar/api/css/radio-input-group.md) — تجميع مدخلات الراديو تحت وسيلة إيضاح.
+- [form-field](/ar/api/css/form-field.md) — الحقل المفرد الذي تكرّره هذه المجموعة.
+- [radio-input-group](/ar/api/css/radio-input-group.md) — يجمع مدخلات الراديو تحت وسيلة.
+

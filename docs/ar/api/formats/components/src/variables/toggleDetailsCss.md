@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / toggleDetailsCss
 
-# Variable: toggleDetailsCss
+# متغير: toggleDetailsCss
 
 > `const` **toggleDetailsCss**: `Definition`\[`"css"`\] = `toggleDetails.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `toggleDetails` مستقلة — CSS مسبوق لكشف التفاصيل، جاهز للشحن كملف `.css`.
+ورقة أنماط `toggleDetails` مستقلة — CSS المُسبوقة بالبادئة لكشف التفاصيل، جاهزة للشحن كملف `.css`.

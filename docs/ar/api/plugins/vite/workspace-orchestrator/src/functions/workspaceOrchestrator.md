@@ -1,18 +1,18 @@
 [pantoken](../../../../../index.md) / [plugins/vite/workspace-orchestrator/src](../index.md) / workspaceOrchestrator
 
-# Function: workspaceOrchestrator()
+# دالة: workspaceOrchestrator()
 
 > **workspaceOrchestrator**(`options`): `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-## Parameters
+## المعلمات
 
 ### options
 
 [`OrchestratorOptions`](../interfaces/OrchestratorOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `object`
 
@@ -28,12 +28,12 @@
 
 > **configureServer**(`server`): `void`
 
-#### Parameters
+#### المعلمات
 
 ##### server
 
 `ViteDevServer`
 
-#### Returns
+#### القيم المرجعة
 
 `void`

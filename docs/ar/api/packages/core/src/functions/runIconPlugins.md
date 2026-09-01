@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / runIconPlugins
 
-# Function: runIconPlugins()
+# دالة: runIconPlugins()
 
 > **runIconPlugins**(`tokens`, `plugins`, `theme?`): [`Token`](../interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تشغيل خطاف `icons` لكل مكون، مما يسمح للمكونات بتسجيل رموز إضافية كـ `&lt;image&gt;` توكنات.
-كل خطاف يتلقى قائمة الرموز الحالية ويعود بسجلات [IconEntry](../interfaces/IconEntry.md) جديدة للإضافة.
-يتم إزالة التكرار من النتيجة حسب الاسم.
+تشغيل خطاف `icons` لكل مكون إضافي، مما يسمح للمكونات الإضافية بتسجيل غليفات إضافية كرموز `&lt;image&gt;`.
+يتلقى كل خطاف قائمة الأيقونات الحالية ويُرجع سجلات [IconEntry](../interfaces/IconEntry.md) جديدة لإضافتها.
+يتم إلغاء التكرار في النتيجة بناءً على الاسم.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
@@ -18,19 +18,19 @@
 
 ### plugins
 
-readonly [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]
+للقراءة فقط [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]
 
 ### theme?
 
 [`Theme`](../type-aliases/Theme.md) = `"rebrand"`
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../interfaces/Token.md)[]
 
-## Example
+## مثال
 
-**تسجيل رمز إضافي كتوكن \<image\>**
+**تسجيل غليف إضافي كرمز \<image\>**
 
 ```ts
 import { runIconPlugins, type PantokenPlugin } from "@pantoken/core";

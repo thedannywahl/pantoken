@@ -1,28 +1,28 @@
 # CSS: tooltip
 
-`.instui-tooltip` — فقاعة تلميح CSS عند المرور والتركيز، قابلة للتموضع على أي جانب.
+`.instui-tooltip` — فقاعة تلميح أدوات CSS تظهر عند التحويم والتركيز، قابلة للموضع على أي جهة.
 
-التبديل هو CSS نقي (`:hover`/`:focus-within`)، لذلك تصل الفقاعة فقط لمستخدمي لوحة المفاتيح من خلال محفز قابل للتركيز؛ بخلاف `popover`، إنه غير قابل للرفض أو لا يتم تشغيله بالنقر.
+التبديل هو CSS بحت (`:hover`/`:focus-within`), لذا تصل الفقاعة لمستخدمي لوحة المفاتيح فقط عبر مشغّل قابل للتركيز؛ وعلى عكس `popover`، فهي لا تُغلق بنقرة ولا تُفعل بالنقر.
 
 **المصدر:** [tooltip.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tooltip/tooltip.css)
 
 <!-- js-requirement -->
-
 > [!TIP]
-> **JS Enhancement** — يتم عرض CSS الخاص بهذا المكون والعمل بشكل مستقل؛ اجمعه مع `@pantoken/interactions` لإضافة السلوك التفاعلي. راجع [جدول المعدلات أدناه](#modifiers).
+> **تحسين JS** — يُقدِّم CSS الخاص بهذا المكوّن العرض والوظيفة بمفرده؛ اقترنه بـ `@pantoken/interactions` لإضافة السلوك التفاعلي. راجع [جدول المعدِّلات أدناه](#modifiers).
 
-## Accessibility
 
-وجه المحفز نحو الفقاعة باستخدام aria-describedby وأعط الفقاعة role="tooltip".
+## سهولة الوصول
 
-## Usage
+وجِّه المشغّل نحو الفقاعة باستخدام aria-describedby وأعطِ الفقاعة role="tooltip".
+
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/tooltip.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <span class="instui-tooltip" aria-describedby="tt-1">
@@ -31,7 +31,7 @@
 </span>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-tooltip
@@ -52,32 +52,33 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier   | Description                               |
-| ---------- | ----------------------------------------- |
-| `.-icon-*` | اعرض أيقونة رمز محفز بجانب فقاعة التلميح. |
+| معدّل | الوصف |
+| --- | --- |
+| `.-icon-*` | اعرض رمز غليف المشغّل بجانب فقاعة التلميح. |
 
-## Parts
+## الأجزاء
 
-| Part   | Description                          |
-| ------ | ------------------------------------ |
-| `.tip` | الفقاعة؛ `-placement-*` يحدد جانبها. |
+| جزء | الوصف |
+| --- | --- |
+| `.tip` | الفقاعة؛ `-placement-*` يحدّد جهتها. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                    | Type                                               | Value                                                                        |
-| ---------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-border-radius-sm`              | `<length>`                                         | `0.25rem`                                                                    |
-| `--instui-color-background-inverse`      | `<color>`                                          | `light-dark(#334450, #F2F4F5)`                                               |
-| `--instui-color-text-inverse`            | `<color>`                                          | `light-dark(#ffffff, #1C222B)`                                               |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-border-radius-sm` | `<length>` | `0.25rem` |
+| `--instui-color-background-inverse` | `<color>` | `light-dark(#334450, #F2F4F5)` |
+| `--instui-color-text-inverse` | `<color>` | `light-dark(#ffffff, #1C222B)` |
 | `--instui-component-tooltip-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-tooltip-font-size`   | `<length>`                                         | `0.875rem`                                                                   |
-| `--instui-component-tooltip-font-weight` | `<integer>`                                        | `400`                                                                        |
-| `--instui-component-tooltip-padding`     | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-spacing-space-xs`              | `<length>`                                         | `0.25rem`                                                                    |
+| `--instui-component-tooltip-font-size` | `<length>` | `0.875rem` |
+| `--instui-component-tooltip-font-weight` | `<integer>` | `400` |
+| `--instui-component-tooltip-padding` | `<length>` | `0.75rem` |
+| `--instui-spacing-space-xs` | `<length>` | `0.25rem` |
 
-## Related
+## ذات صلة
 
-- [popover](/ar/api/css/popover.md) — السطح المرتبط الأكبر الذي يتم تشغيله بالنقر.
-- [context-view](/ar/api/css/context-view.md) — سطح مرتبط ذو صلة مع مؤشر.
+- [popover](/ar/api/css/popover.md) — السطح المرتكز الأكبر والمفعل بالنقر.
+- [context-view](/ar/api/css/context-view.md) — سطح مرتبط مرتكز له مؤشر.
+

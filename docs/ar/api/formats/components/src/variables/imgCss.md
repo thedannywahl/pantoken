@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / imgCss
 
-# Variable: imgCss
+# متغير: imgCss
 
 > `const` **imgCss**: `Definition`\[`"css"`\] = `img.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `img` مستقلة — CSS المُبدأ للصورة المُنسقة، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `img` — CSS ذو بادئة للصورة المُنسّقة، جاهز للشحن كملف `.css`.

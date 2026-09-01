@@ -2,15 +2,15 @@
 
 # primitives
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-فئات مساعدة اختيارية لوحة pantoken الأساسية الخام (`--instui-primitive-*`).
+فئات أدوات اختيارية للوحات الألوان الأولية الخام الخاصة بـ pantoken (`--instui-primitive-*`).
 
-الأدوات الدلالية في `@pantoken/components` تكشف عن قصد فقط عن الرموز الدلالية — تجاوز لون هناك هو دائماً دور (`bg-brand`)، وليس بالمثل الخام. هذه الحزمة هي فتحة الهروب: فئة واحدة لكل رمز أساسي للحالة النادرة التي يحتاج فيها المطور إلى الوحة مباشرة. قم بتحميله بمفرده (`@pantoken/plugin-primitives/primitives.css`)، منفصلاً عن الطبقة الدلالية.
+تعرِّض الأدوات الدلالية في `@pantoken/components` عن قصد رموزًا دلالية فقط — تجاوز اللون هناك دائمًا دور (`bg-brand`)، وليس لوحة ألوان خام. هذه الحزمة هي مخرج الطوارئ: فئة واحدة لكل رمز بدائي للحالة النادرة التي يحتاج فيها المطوّر إلى اللوحة مباشرة. حمّلها بمفردها (`@pantoken/plugin-primitives/primitives.css`)، منفصلة عن الطبقة الدلالية.
 
-## Example
+## مثال
 
-**بناء ورقة الأنماط الأساسية**
+**بناء ورقة أنماط البدائيات**
 
 ```ts
 import { primitivesCss } from "@pantoken/plugin-primitives";
@@ -25,16 +25,16 @@ const css = primitivesCss({
 // .instui-bg-primitive-color-white { background: var(--instui-primitive-color-white); }
 ```
 
-## Interfaces
+## واجهات
 
 - [PrimitiveTokenNames](interfaces/PrimitiveTokenNames.md)
 - [PrimitivesOptions](interfaces/PrimitivesOptions.md)
 
-## Functions
+## الدوال
 
 - [primitivesCss](functions/primitivesCss.md)
 
-## References
+## المراجع
 
 ### default
 

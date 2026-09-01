@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / iconButton
 
-# Variable: iconButton
+# متغير: iconButton
 
 > `const` **iconButton**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-icon-button&gt;` — زر مربع يحتوي على أيقونة فقط. `label` يصبح `aria-label` الزر؛
-المحتوى المدرج هو الرمز (مثل `&lt;instui-icon&gt;`).
+`&lt;instui-icon-button&gt;` — زر مربع بأيقونة فقط. يُصبح `label` هو `aria-label` الخاص بالزر;
+المحتوى المُدرج في الشق هو الرمز (مثال: `&lt;instui-icon&gt;`).
 
-## Example
+## مثال
 
 ```html
 <instui-icon-button label="Close">

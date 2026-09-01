@@ -1,30 +1,30 @@
 [pantoken](../../../../index.md) / [platforms/compose/src](../index.md) / toCompose
 
-# Function: toCompose()
+# دالة: toCompose()
 
 > **toCompose**(`tokens`, `options`): `Promise`\<`string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار Compose Kotlin لـ IR علامة صريحة. يعيد مسار الملف المكتوب.
+إصدار Compose Kotlin لتمثيل IR لرمز مُحدد. يعيد مسار الملف المكتوب.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
 ### options
 
 [`GenerateComposeOptions`](../interfaces/GenerateComposeOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`\>
 
-## Examples
+## أمثلة
 
-**إصدار IR لموضوع معين**
+**إصدار IR لموضوع محدد**
 
 ```ts
 import { toCompose } from "@pantoken/compose";
@@ -34,7 +34,7 @@ const file = await toCompose(byTheme("canvas"), { outDir: "./ui/tokens" });
 // writes ./ui/tokens/PanTokens.kt (object PanTokens { … })
 ```
 
-**الوضع الداكن باستخدام اسم كائن مخصص**
+**الوضع الداكن مع اسم كائن مخصص**
 
 ```ts
 import { toCompose } from "@pantoken/compose";

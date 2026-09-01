@@ -1,30 +1,34 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / scaffoldProject
 
-# Function: scaffoldProject()
+# دالة: scaffoldProject()
 
 > **scaffoldProject**(`platform`, `dir?`, `options?`): `Promise`\<`string`[]\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-حفر مشروع بدء لمنصة، مع pantoken المثبت بالفعل والموصل.
+إنشاء مشروع تمهيدي لمنصة، مع تثبيت pantoken وإعداده مسبقًا.
 
-## Parameters
+## المعلمات
 
 ### platform
 
 `string`
 
-منصة حفر [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md).
+من نوع [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md).
 
 ### dir?
 
 `string`
 
-الدليل المستهدف (الافتراضي `"."`). اسمه الأساسي (أو `"pantoken-app"` لـ `"."`) يتم استبداله بـ `{{projectName}}` في ملفات النموذج.
+دليل الهدف (الافتراضي `"."`). يُستبدل اسم القاعدة الخاص به (أو `"pantoken-app"` for `"."`)
+  بـ `{{projectName}}` في ملفات القالب.
 
 ### options?
 
-`theme`/`mode` تحديد ملفات ورقة رمز `@pantoken/css` المحفورة التي تستورد (الافتراضي `"rebrand"`/`"light"`)، مطبقة عبر كل منصة. `cdn` تحديد موفر CDN `canvas-theme-editor`'s `theme.css`/`theme.js` مبني لـ (الافتراضي jsDelivr)؛ تم تجاهله من قبل كل منصة أخرى.
+`theme`/`mode` تحدد أي ملفات قوالب `@pantoken/css` لورقة الرموز يتم
+  استيرادها (الافتراضي `"rebrand"`/`"light"`), وتُطبّق عبر كل منصة. `cdn` يحدد مزود CDN
+  الذي تُبنى له `canvas-theme-editor`'s `theme.css`/`theme.js` (الافتراضي jsDelivr);
+  ويُتجاهل بواسطة كل منصة أخرى.
 
 #### theme?
 
@@ -38,15 +42,15 @@
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`[]\>
 
 المسارات المكتوبة.
 
-## Example
+## مثال
 
-**حفر بدء React**
+**إنشاء مشروع React تمهيدي**
 
 ```ts
 import { scaffoldProject } from "@pantoken/scaffold";

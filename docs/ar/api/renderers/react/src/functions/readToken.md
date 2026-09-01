@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/react/src](../index.md) / readToken
 
-# Function: readToken()
+# دالة: readToken()
 
 > **readToken**(`name`, `fallback?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اقرأ قيمة رمزة محللة من الوثيقة. يعود `fallback` على الخادم.
+قراءة قيمة توكن تم حلها من المستند. تُرجع `fallback` على الخادم.
 
-## Parameters
+## المعلمات
 
 ### name
 
@@ -18,11 +18,11 @@
 
 `string` = `""`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```tsx
 import { readToken } from "@pantoken/react";

@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [platforms/drupal/src](../index.md) / machineName
 
-# Function: machineName()
+# دالة: machineName()
 
 > **machineName**(`name`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تحويل اسم العرض إلى اسم ماكينة Drupal (`lower_snake`).
+تحويل اسم العرض إلى اسم آلة دروبال (`lower_snake`).
 
-## Parameters
+## المعلمات
 
 ### name
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { machineName } from "@pantoken/drupal";

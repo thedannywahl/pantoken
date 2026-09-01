@@ -1,32 +1,37 @@
 [pantoken](../../../../index.md) / [renderers/angular/src](../index.md) / register
 
-# Function: register()
+# دالة: register()
 
 > **register**(`target?`, `options?`): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-سجّل عناصر pantoken المخصصة. عدم عملية عندما لا توجد DOM (SSR / build)، لذلك هذه الوحدة آمنة للاستيراد في أي مكان.
+سجّل عناصر pantoken المخصصة. لا يفعل شيئًا عندما لا يوجد DOM (SSR / البناء)، لذلك هذا الموديول
+آمن للاستيراد في أي مكان.
 
-## Parameters
+## المعلمات
 
 ### target?
 
 `ElementRegistry`
 
-السجل المراد التعريف فيه (الافتراضي هو `globalThis.customElements`).
+السجل الذي سيتم التعريف فيه (الافتراضي هو `globalThis.customElements`).
 
 ### options?
 
 `RegisterContextOptions` & `object`
 
-`prefix` يعيّن بادئة الوسم، ممسحاً طبقة CSS: مرّر سلسلة غير فارغة مثل `x` لـ `&lt;x-icon&gt;`. يتم تطبيق بادئة دائماً (يجب أن يحتوي اسم العنصر المخصص على واصلة)، لذلك بادئة مُحذوفة أو فارغة أو فارغة تعود إلى الافتراضي `instui` (`&lt;instui-icon&gt;`). `only` يقيّد التسجيل إلى مجموعة فرعية من أسماء القاعدة `ELEMENTS` — يتم سحب تبعيات العرض المتداخلة الخاصة بها تلقائياً، لذلك `{ only: ["date-time-input"] }` أيضاً يعرّف `date-input` و `calendar`. تجاهل `only` لتسجيل كل عنصر (الافتراضي).
+`prefix` يحدد بادئة الوسم، معاكسةً لطبقة CSS: مرّر سلسلة غير فارغة مثل
+  `x` لـ `&lt;x-icon&gt;`. تُطبَّق بادئة دائمًا (يجب أن يحتوي اسم العنصر المخصص على واصلة)، لذا فإن
+  البادئة المحذوفة أو الفارغة أو التي تساوي null تعود إلى الافتراضي `instui` (`&lt;instui-icon&gt;`). يحدُّ `only` من
+  التسجيل إلى مجموعة فرعية من أسماء الأساس `ELEMENTS` — تُستدعى تبعيات العرض المتداخلة الخاصة بها تلقائيًا، لذا فإن `{ only: ["date-time-input"] }` يُعرّف أيضًا `date-input` و `calendar`. احذف
+  `only` لتسجيل كل عنصر (الوضع الافتراضي).
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
 ```ts
 import { register } from "@pantoken/web-components";

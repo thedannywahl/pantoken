@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / SpacingStep
 
-# Interface: SpacingStep
+# واجهة: SpacingStep
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إدخال واحد من مقياس التباعد pantoken: المفتاح القصير، والمفتاح الطويل (الكلمة)، والقيمة CSS المشتركة.
+مدخل واحد في مقياس التباعد pantoken: المفتاح القصير، المفتاح الطويل (كلمة)، وقيمة CSS المشتركة.
 
-## Properties
+## الخصائص
 
 ### short
 
 > **short**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مفتاح المقياس القصير، على سبيل المثال `"sm"` (مفتاح المرحلة الصفر القصير هو `"0"`).
+مفتاح المقياس القصير، مثلاً `"sm"` (مفتاح الخطوة الصفرية القصير هو `"0"`).
 
----
+***
 
 ### long
 
 > **long**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المفتاح الطويل المتهجى بالكلمات، على سبيل المثال `"small"` (المفتاح الطويل للخطوة الصفر هو `"none"`).
+المفتاح الطويل المكتوب بالكلمة، مثلاً `"small"` (المفتاح الطويل للخطوة الصفرية هو `"none"`).
 
----
+***
 
 ### value
 
 > **value**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قيمة CSS — مرجع رمز، أو `"0"`/`"auto"` عادية.
+قيمة CSS — إشارة إلى توكن، أو ببساطة `"0"`/`"auto"`.

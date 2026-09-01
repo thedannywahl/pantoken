@@ -1,31 +1,32 @@
 # CSS: maskglobal
 
-`.--mask-overlay` — نسخة عالمية مزدوجة من معدّلات الطبقة العلوية للمكون `mask` — `--mask-overlay`، `--mask-fullscreen`، `--mask-blur` — قابلة للاستخدام عارية أو متسلسلة على أي مكون، بدون الالتفاف في عنصر `.instui-mask`.
+`.--mask-overlay` — نسخة مزدوجة وعالمية من معدِّلات تراكب مكوّن `mask` — `--mask-overlay`, `--mask-fullscreen`, `--mask-blur` — قابلة للاستخدام مباشرة أو متسلسلة على أي مكوّن، دون التغليف داخل عنصر `.instui-mask`.
 
 **المصدر:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/mask/index.ts)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/utilities.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <button class="instui-button --mask-overlay">…</button>
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier             | Description                                             |
-| -------------------- | ------------------------------------------------------- |
-| `.--mask-blur`       | طمّس ما يقع خلف القناع باستخدام backdrop-filter.        |
-| `.--mask-fullscreen` | ثابت على الإطار المرئي، يغطيه برقم z-index عالي.        |
-| `.--mask-overlay`    | طبقة القناع العلوية الكاملة (الموضع، التوسيط، الخلفية). |
+| معدّل | الوصف |
+| --- | --- |
+| `.--mask-blur` | طمس ما خلف القناع باستخدام backdrop-filter. |
+| `.--mask-fullscreen` | مثبت بالنسبة للنافذة (viewport)، ويغطيها عند z-index عالٍ. |
+| `.--mask-overlay` | تراكب القناع الكامل (الموضع، التوسيط، الخلفية). |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                      | Type      | Value                                                     |
-| ------------------------------------------ | --------- | --------------------------------------------------------- |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
 | `--instui-component-mask-background-color` | `<color>` | `light-dark(rgba(255,255,255,0.75), rgba(28,34,43,0.75))` |
+

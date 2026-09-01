@@ -1,36 +1,30 @@
 # CSS: calendar
 
-`.instui-calendar` — شبكة شهرية ثابتة مع التنقل ورؤوس أيام الأسبوع وخلايا اليوم.
+`.instui-calendar` — شبكة شهر ثابتة مع أدوات تنقّل، رؤوس أيام الأسبوع، وخلايا الأيام.
 
-انظر إلى عضو `calendar.day` للحصول على خلايا اليوم الفردية.
+راجع العضو `calendar.day` للخلايا اليومية الفردية.
 
 **المصدر:** [calendar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/calendar/calendar.css)
 
-## Accessibility
+## سهولة الوصول
 
-اكشف الشبكة مع `role="table"` و `aria-label` وصفية، وأعط كل زر تنقل خاص به `aria-label`.
+اعرض الشبكة باستخدام `role="table"` و `aria-label` الوصفي، وامنح كل زر تنقّل `aria-label` الخاص به.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/calendar.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-calendar" role="table" aria-label="March 2026">
   <div class="nav">
-    <button
-      class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-left"
-      aria-label="Previous month"
-    ></button>
+    <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-left" aria-label="Previous month"></button>
     <strong>March 2026</strong>
-    <button
-      class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-right"
-      aria-label="Next month"
-    ></button>
+    <button class="instui-button -color-tertiary -shape-square -without-border -icon-chevron-right" aria-label="Next month"></button>
   </div>
   <div class="grid">
     <span class="weekday">Su</span>
@@ -65,7 +59,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-calendar
@@ -100,31 +94,32 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Parts
+## الأجزاء
 
-| Part       | Description                |
-| ---------- | -------------------------- |
-| `.grid`    | شبكة اليوم ذات سبعة أعمدة. |
-| `.nav`     | صف التنقل الشهري.          |
-| `.weekday` | رأس عمود يوم الأسبوع.      |
+| جزء | الوصف |
+| --- | --- |
+| `.grid` | شبكة الأيام المكوّنة من سبعة أعمدة. |
+| `.nav` | صف تنقّل الشهر. |
+| `.weekday` | رأس عمود يوم من أيام الأسبوع. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                       | Type                                               | Value                                                                        |
-| ------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-calendar-background`    | `<color>`                                          | `light-dark(#ffffff, #171B21)`                                               |
-| `--instui-component-calendar-color`         | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
-| `--instui-component-calendar-day-height`    | `<length>`                                         | `2rem`                                                                       |
-| `--instui-component-calendar-day-min-width` | `<length>`                                         | `2rem`                                                                       |
-| `--instui-component-calendar-font-family`   | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-calendar-font-size`     | `<length>`                                         | `1rem`                                                                       |
-| `--instui-component-calendar-font-weight`   | `<integer>`                                        | `600`                                                                        |
-| `--instui-component-calendar-line-height`   | `<percentage>`                                     | `150%`                                                                       |
-| `--instui-component-calendar-nav-margin`    | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-font-weight-interactive`          | `<integer>`                                        | `500`                                                                        |
-| `--instui-spacing-space2xs`                 | `<length>`                                         | `0.125rem`                                                                   |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-calendar-background` | `<color>` | `light-dark(#ffffff, #171B21)` |
+| `--instui-component-calendar-color` | `<color>` | `light-dark(#273540, #ffffff)` |
+| `--instui-component-calendar-day-height` | `<length>` | `2rem` |
+| `--instui-component-calendar-day-min-width` | `<length>` | `2rem` |
+| `--instui-component-calendar-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-calendar-font-size` | `<length>` | `1rem` |
+| `--instui-component-calendar-font-weight` | `<integer>` | `600` |
+| `--instui-component-calendar-line-height` | `<percentage>` | `150%` |
+| `--instui-component-calendar-nav-margin` | `<length>` | `0.75rem` |
+| `--instui-font-weight-interactive` | `<integer>` | `500` |
+| `--instui-spacing-space2xs` | `<length>` | `0.125rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [button](/ar/api/css/button.md)
 - [calendar.day](/ar/api/css/calendar.day.md)
+

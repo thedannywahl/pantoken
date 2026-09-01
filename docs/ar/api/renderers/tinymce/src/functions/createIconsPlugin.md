@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / createIconsPlugin
 
-# Function: createIconsPlugin()
+# دالة: createIconsPlugin()
 
 > **createIconsPlugin**(`options`): (`editor`) => `void`
 
-إنشاء مصنع برنامج منتقي الرموز.
-يرجع دالة مناسبة لـ `tinymce.PluginManager.add()`.
+إنشاء مصنع الإضافة لمحدد الأيقونات.
+يعيد دالة مناسبة لـ `tinymce.PluginManager.add()`.
 
-## Parameters
+## المعلمات
 
 ### options
 
 `IconsPickerOptions`
 
-## Returns
+## القيم المرجعة
 
 (`editor`) => `void`

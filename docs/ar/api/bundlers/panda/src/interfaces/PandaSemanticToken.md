@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [bundlers/panda/src](../index.md) / PandaSemanticToken
 
-# Interface: PandaSemanticToken
+# واجهة: PandaSemanticToken
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-رمز Panda دلالي: قيمة ثابتة، أو قيمة تختلف حسب شرط `_dark`.
+رمز دلالي لـ Panda: قيمة مسطحة، أو قيمة تختلف حسب شرط `_dark`.
 
-## Properties
+## الخصائص
 
 ### value
 
 > **value**: `string` \| \{ `base`: `string`; `_dark`: `string`; \}
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

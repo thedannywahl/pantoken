@@ -2,18 +2,21 @@
 
 # drupal
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/drupal` — الإصدار من موضوع فرعي Drupal بموضوع Instructure.
+`@pantoken/drupal` — إصدار موضوع فرعي لـ Drupal بطابع Instructure.
 
-ينتج عنه ورقة أنماط العلامة (من `@pantoken/css`) وورقة أنماط نثر بمظهر InstUI (من `@pantoken/components`، تنسيق المحتوى في منطقة `.pantoken-prose`)، بالإضافة إلى `*.info.yml` و `*.libraries.yml` التي يحتاجها موضوع Drupal 10/11 لتحميلها. أسقط الملفات في `themes/custom/&lt;machine&gt;/`.
+ينتج ورقة أنماط الرموز (من `@pantoken/css`) وورقة أنماط نصية بمظهر InstUI (من
+`@pantoken/components`، تُنسّق المحتوى في منطقة `.pantoken-prose`)، بالإضافة إلى `*.info.yml`
+و `*.libraries.yml` التي يحتاجها قالب Drupal 10/11 لتحميلها. ضع الملفات في
+`themes/custom/&lt;machine&gt;/`.
 
-## Interfaces
+## واجهات
 
 - [DrupalFile](interfaces/DrupalFile.md)
 - [ToDrupalThemeOptions](interfaces/ToDrupalThemeOptions.md)
 
-## Functions
+## الدوال
 
 - [machineName](functions/machineName.md)
 - [toDrupalTheme](functions/toDrupalTheme.md)

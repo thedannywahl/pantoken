@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/mui/src](../index.md) / PantokenThemeOptions
 
-# Interface: PantokenThemeOptions
+# واجهة: PantokenThemeOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-المجموعة الفرعية من `ThemeOptions` الخاص بـ MUI التي تصدرها هذه الحزمة (قابلة للإسناد هيكليًا لنوع MUI).
+المجموعة الفرعية من MUI `ThemeOptions` التي تصدرها هذه الحزمة (قابلة للتعيين بنيوياً إلى نوع MUI).
 
-## Properties
+## الخصائص
 
 ### palette
 
 > **palette**: `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 #### mode
 
@@ -74,13 +74,13 @@
 
 > **divider**: `string`
 
----
+***
 
 ### shape
 
 > **shape**: `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 #### borderRadius
 

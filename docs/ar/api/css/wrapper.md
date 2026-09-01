@@ -1,33 +1,33 @@
 # CSS: wrapper
 
-`body[class~="instui-display-flex"]` — صف قشرة التطبيق: الملاحة الجانبية والحاوية مع الرأس واللوحة الاختيارية.
+`body[class~="instui-display-flex"]` — صف غلاف التطبيق: شريط تنقل جانبي، حاوية مع ترويسة، ولوحة اختيارية.
 
 ✅ استخدم Wrapper عندما:
 
-- بناء صفحة منتج Canvas كاملة تحتاج إلى قشرة تخطيط متسقة
-- تستخدم الصفحة GlobalNav كنقطة ارتساء الملاحة الأساسية
+- تبني صفحة منتج Canvas كاملة تحتاج إلى غلاف تخطيط متسق
+- تستخدم الصفحة GlobalNav كنقطة التنقل الأساسية
 - تحتاج الصفحة إلى لوحات جانبية: ContentTabList أو TrailingContentArea أو UtilityPanel
-- تحتاج إلى حشوة حاوية متسقة وأقصى عرض محتوى عبر الصفحة بأكملها
-  🚫 لا تستخدم Wrapper عندما:
+- تحتاج إلى تباعد حاوية ثابت وعرض محتوى أقصى متسق عبر الصفحة بأكملها
+🚫 لا تستخدم Wrapper عندما:
 
-- بناء Modal أو Tray أو Drawer — لديهم حاوياتهم الخاصة للتخطيط
-- تغليف قسم فرعي من صفحة — يحتوي Wrapper على الصفحة الكاملة وليس منطقة
+- تبني Modal أو Tray أو Drawer — فكلٍ منها له حاويات تخطيط خاصة به
+- تغلف جزءًا فرعيًا من الصفحة — Wrapper يحتوي الصفحة كاملة، ليس منطقة جزئية
 
-## Accessibility
+## سهولة الوصول
 
-- قم بتعيين منطقة المحتوى الرئيسي إلى معلم &lt;main&gt; مع رابط skip-nav بحيث يمكن لمستخدمي لوحة المفاتيح تجاوز GlobalNav
-- أعط ContentTabList role="navigation" مع aria-label مميز مثل "Page navigation" — منفصل عن معلم GlobalNav
-- أعط TrailingContentArea role="complementary" مع aria-label وصفي يعكس محتواه، مثل "Student details"
-- أعط كل UtilityPanel aria-label مميز: "AI assistant" أو "Notifications" أو "Filters"
-- عندما ينفتح UtilityPanel، انقل التركيز إلى اللوحة؛ عند الإغلاق، أعد التركيز إلى الزر الذي فتحه
+- عين منطقة المحتوى الرئيسية كمعلم &lt;main&gt; مع رابط تخطي (skip-nav) ليمرّ مستخدمو لوحة المفاتيح فوق GlobalNav
+- أعطِ ContentTabList role="navigation" مع aria-label مميز مثل "Page navigation" — منفصل عن معلم GlobalNav
+- أعطِ TrailingContentArea role="complementary" مع aria-label وصفي يعكس محتواه، مثل "تفاصيل الطالب"
+- أعطِ كل UtilityPanel aria-label مميزًا: "AI assistant"، "Notifications"، أو "Filters"
+- عند فتح UtilityPanel، انقل التركيز إلى اللوحة؛ وعند إغلاقها، أعد التركيز إلى المشغل الذي فتحها
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/plugin-layouts/layouts.css";
 ```
 
-## Structure
+## الهيكل
 
 ```text
 body[class~="instui-display-flex"]
@@ -122,49 +122,49 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Slots
+## فتحات
 
-| Slot       | Description                        |
-| ---------- | ---------------------------------- |
-| `content`  | محتوى الصفحة الأساسي.              |
-| `filters`  | محتوى مرشحات اختياري داخل الرأس.   |
-| `header`   | فتحة رأس اختيارية أسفل وصف الصفحة. |
-| `panel`    | محتوى لوحة الأدوات.                |
-| `trailing` | محتوى مكمل نهائي.                  |
+| فتحة | الوصف |
+| --- | --- |
+| `content` | محتوى الصفحة الأساسي. |
+| `filters` | محتوى عوامل التصفية الاختياري داخل الترويسة. |
+| `header` | مكان ترويسة اختياري أسفل وصف الصفحة. |
+| `panel` | محتوى لوحة الأدوات. |
+| `trailing` | المحتوى التكميلي المتأخر. |
 
-## Parts
+## الأجزاء
 
-| Part           | Description                                               |
-| -------------- | --------------------------------------------------------- |
-| `.actions`     | أزرار رأس اختيارية في نهاية الصف العلوي.                  |
-| `.container`   | عمود الصفحة الرئيسي الذي يحتوي على الرأس والمحتوى.        |
-| `.content`     | منطقة المحتوى الأساسي داخل عمود الحاوية.                  |
-| `.description` | وصف صفحة اختياري أسفل العنوان.                            |
-| `.filters`     | منطقة مرشحات اختيارية داخل الرأس.                         |
-| `.header`      | منطقة الرأس داخل عمود الحاوية.                            |
-| `.info`        | حاوية لعنوان الصفحة والوصف الاختياري.                     |
-| `.list`        | عمود الملاحة الاختياري داخل المحتوى.                      |
-| `.main`        | عمود المحتوى الرئيسي داخل المحتوى.                        |
-| `.panel`       | منطقة لوحة الأدوات التي تفتح على الجانب الأيمن من الصفحة. |
-| `.tabs`        | علامات تبويب ملاحة اختيارية في بداية صف المحتوى.          |
-| `.title`       | عنوان الصفحة أسفل الصف العلوي.                            |
-| `.top`         | صف شبكة يحتوي على breadcrumbs والأدوات.                   |
-| `.trailing`    | عمود مكمل اختياري داخل المحتوى.                           |
-| `.utilities`   | إجراءات الأدوات في نهاية الصف العلوي.                     |
+| جزء | الوصف |
+| --- | --- |
+| `.actions` | أزرار الترويسة الاختيارية في نهاية الصف العلوي. |
+| `.container` | عمود الصفحة الرئيسي الذي يحتوي الترويسة والمحتوى. |
+| `.content` | منطقة المحتوى الأساسية داخل عمود الحاوية. |
+| `.description` | وصف الصفحة الاختياري أسفل العنوان. |
+| `.filters` | منطقة عوامل التصفية الاختيارية داخل الترويسة. |
+| `.header` | منطقة الترويسة داخل عمود الحاوية. |
+| `.info` | حاوية لعنوان الصفحة والوصف الاختياري. |
+| `.list` | عمود تنقل اختياري داخل المحتوى. |
+| `.main` | عمود المحتوى الرئيسي داخل المحتوى. |
+| `.panel` | منطقة لوحة الأدوات التي تفتح على الجانب الأيمن من الصفحة. |
+| `.tabs` | علامات تبويب تنقل اختيارية في بداية صف المحتوى. |
+| `.title` | عنوان الصفحة أسفل الصف العلوي. |
+| `.top` | صف شبكة يحتوي على مسارات التنقل (breadcrumbs) والأدوات المساعدة. |
+| `.trailing` | عمود تكميلي اختياري داخل المحتوى. |
+| `.utilities` | إجراءات الأدوات في نهاية الصف العلوي. |
 
-## States
+## الحالات
 
-| State       | Description |
-| ----------- | ----------- |
-| `:optional` | —           |
+| حالة | الوصف |
+| --- | --- |
+| `:optional` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                            | Type | Value |
-| -------------------------------- | ---- | ----- |
-| `--instui-background-color-page` | —    | —     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-background-color-page` | — | — |
 
-## Subcomponents
+## مكونات فرعية
 
 - [agent-shell](/ar/api/css/agent-shell.md)
 - [breadcrumb](/ar/api/css/breadcrumb.md)
@@ -177,7 +177,7 @@ flowchart TD
 - [tabs](/ar/api/css/tabs.md)
 - [tabs.panel](/ar/api/css/tabs.panel.md)
 
-## Related
+## ذات صلة
 
 - [card](/ar/api/css/card.md)
 - [agent-shell](/ar/api/css/agent-shell.md)
@@ -185,3 +185,4 @@ flowchart TD
 - [tabs](/ar/api/css/tabs.md)
 - [button](/ar/api/css/button.md)
 - [heading](/ar/api/css/heading.md)
+

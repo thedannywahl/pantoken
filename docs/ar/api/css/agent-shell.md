@@ -1,17 +1,16 @@
 # CSS: agent-shell
 
-`.instui-agent-shell` — حاوية سطح لوكلاء الذكاء الاصطناعي.
+`.instui-agent-shell` — حاوية سطحية لوكلاء الذكاء الاصطناعي.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/plugin-custom-components/custom-components.css";
 ```
 
-## Examples
+## أمثلة
 
 -nocard
-
 ```html
 <div class="instui-agent-shell --p-md">
   <h2 class="instui-heading -variant-title-card-large">AI Agent</h2>
@@ -20,7 +19,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-agent-shell
@@ -38,16 +37,17 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                    | Type       | Value                          |
-| -------------------------------------------------------- | ---------- | ------------------------------ |
-| `--instui-border-width-sm`                               | `<length>` | `0.0625rem`                    |
-| `--instui-color-background-base`                         | `<color>`  | `light-dark(#ffffff, #10141A)` |
-| `--instui-color-stroke-ai-bottom-gradient`               | `<color>`  | `light-dark(#00828E, #04A4B7)` |
-| `--instui-color-stroke-ai-top-gradient`                  | `<color>`  | `light-dark(#9E58BD, #B680CC)` |
-| `--instui-component-shared-tokens-border-radius-card-lg` | `<length>` | `1rem`                         |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-border-width-sm` | `<length>` | `0.0625rem` |
+| `--instui-color-background-base` | `<color>` | `light-dark(#ffffff, #10141A)` |
+| `--instui-color-stroke-ai-bottom-gradient` | `<color>` | `light-dark(#00828E, #04A4B7)` |
+| `--instui-color-stroke-ai-top-gradient` | `<color>` | `light-dark(#9E58BD, #B680CC)` |
+| `--instui-component-shared-tokens-border-radius-card-lg` | `<length>` | `1rem` |
 
-## See also
+## انظر أيضا
 
 - https://www.figma.com/design/EmUrCpRWxboBTWEokGiBKP/Agent-Platform?node-id=1045-60738
+

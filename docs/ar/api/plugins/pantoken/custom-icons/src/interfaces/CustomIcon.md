@@ -1,27 +1,27 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/custom-icons/src](../index.md) / CustomIcon
 
-# Interface: CustomIcon
+# واجهة: CustomIcon
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البيانات الوصفية لأيقونة مخصصة مباعة واحدة.
+بيانات وصفية لأيقونة مخصصة مضمّنة.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم الأيقونة، على سبيل المثال `"highspot"` — أيضًا لاحقة المعدِّل `-icon-&lt;name&gt;`.
+اسم الأيقونة، على سبيل المثال `"highspot"` — وكذلك لاحقة المُعدِّل `-icon-&lt;name&gt;`.
 
----
+***
 
 ### svg
 
 > **svg**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مصدر SVG الخام.
+المصدر الخام لـ SVG.

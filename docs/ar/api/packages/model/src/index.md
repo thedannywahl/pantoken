@@ -2,17 +2,17 @@
 
 # model
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/model` — عقود النوع الخالية من الاعتمادية لـ pantoken token IR.
+`@pantoken/model` — عقود أنواع بدون تبعيات لـ pantoken token IR.
 
-[Token](interfaces/Token.md) متوافق مع مخطط CSS `@property` (`name`/`syntax`/`inherits`/
-initial-`value`) وممتد إلى مجموعة فائقة تحمل أيضًا قيمًا ذات مظهر وقيمًا مرجعية،
-بالإضافة إلى [TokenMeta](interfaces/TokenMeta.md) غير القيمة (الرموز، المصدر). يتم دمج الرموز باسم رموز `&lt;image&gt;`.
-تعتمد كل حزمة pantoken على هذه الحزمة للنوع، لذا لا يحتاج أي مستهلك إلى
-حزمة الرمز الأصلية (GitHub فقط) فقط لكتابة IR.
+A [Token](interfaces/Token.md) محاذاة لمخطط CSS `@property` (`name`/`syntax`/`inherits`/
+initial-`value`) وموسَّعة إلى مجموعة فائقة تشمل أيضاً القيم المموّهة والقيم المرجعية،
+بالإضافة إلى [TokenMeta](interfaces/TokenMeta.md) غير القيمية (الأيقونات، مصدرها). تُضمَّن الأيقونات كـ `&lt;image&gt;` tokens.
+كل حزمة من pantoken تعتمد على هذه الحزمة للنوع، لذا لا يحتاج أي مستهلك إلى
+حزمة الرموز العلوية (المتاحة فقط على GitHub) لمجرد كتابة نوع الـ IR.
 
-## Interfaces
+## واجهات
 
 - [TokenModify](interfaces/TokenModify.md)
 - [TokenMeta](interfaces/TokenMeta.md)
@@ -29,12 +29,12 @@ initial-`value`) وممتد إلى مجموعة فائقة تحمل أيضًا �
 - [RehypeHookContext](interfaces/RehypeHookContext.md)
 - [PantokenPlugin](interfaces/PantokenPlugin.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Theme](type-aliases/Theme.md)
 - [UpstreamRef](type-aliases/UpstreamRef.md)
 - [IconResolver](type-aliases/IconResolver.md)
 
-## Functions
+## الدوال
 
 - [defineToken](functions/defineToken.md)

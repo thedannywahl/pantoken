@@ -1,22 +1,22 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/simple-icons/src](../index.md) / defaultRegistry
 
-# Function: defaultRegistry()
+# دالة: defaultRegistry()
 
 > **defaultRegistry**(): `Promise`\<[`SimpleIconsRegistry`](../type-aliases/SimpleIconsRegistry.md)\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-استيراد كسول لحزمة `simple-icons` كـ [SimpleIconsRegistry](../type-aliases/SimpleIconsRegistry.md).
+استورد `simple-icons` كحزمة بشكل كسول كـ [SimpleIconsRegistry](../type-aliases/SimpleIconsRegistry.md).
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<[`SimpleIconsRegistry`](../type-aliases/SimpleIconsRegistry.md)\>
 
-صادرات `si*` من وحدة `simple-icons`.
+تصديرات `si*` الخاصة بوحدة `simple-icons`.
 
-## Example
+## مثال
 
-**إدخال السجل الكسول في خطاف الرمز**
+**زوّد هوك الرموز بالسجل المُحمّل بشكل كسول**
 
 ```ts
 import { simpleIcons, defaultRegistry } from "@pantoken/plugin-simple-icons";

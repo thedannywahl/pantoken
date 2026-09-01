@@ -1,25 +1,25 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / buildIconResolver
 
-# Function: buildIconResolver()
+# دالة: buildIconResolver()
 
 > **buildIconResolver**(`options?`): [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء سلسلة محل الأيقونات: محللات `rehype` للمكون الإضافي أولاً، ثم `resolvers` الصريح، ثم
-مجموعة `@pantoken/icons` المدمجة. التطابق الأول يفوز.
+بناء سلسلة مُحلِّلات الأيقونات: مُحلِّلات الإضافة `rehype` أولاً، ثم `resolvers` الصريحة، ثم
+مجموعة `@pantoken/icons` المضمّنة. الأفضلية لأول تطابق.
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`InstuiMarkdownRenderOptions`](../interfaces/InstuiMarkdownRenderOptions.md)
 
-## Returns
+## القيم المرجعة
 
 [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-## Example
+## مثال
 
 ```ts
 import { buildIconResolver } from "@pantoken/react-markdown";

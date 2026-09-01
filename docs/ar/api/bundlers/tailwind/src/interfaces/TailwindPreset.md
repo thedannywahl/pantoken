@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [bundlers/tailwind/src](../index.md) / TailwindPreset
 
-# Interface: TailwindPreset
+# واجهة: TailwindPreset
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-شكل أدنى لجزء إعدادات Tailwind الذي يساهم به هذا الإعداد المسبق.
+شكل مُبَسَّط لجزء من تكوين Tailwind الذي يقدمه هذا الإعداد المسبق.
 
-## Properties
+## الخصائص
 
 ### theme
 
 > **theme**: `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 #### extend
 

@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / pantokenContentCssUrls
 
-# Function: pantokenContentCssUrls()
+# دالة: pantokenContentCssUrls()
 
 > **pantokenContentCssUrls**(`assets`, `provider?`): `string`[]
 
-يحل مجموعة من [CdnFile](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)s إلى عناوين URL مناسبة لخيار تهيئة `content_css` الخاص بـ TinyMCE.
+يحوّل مجموعة من [CdnFile](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md) إلى عناوين URL مناسبة لخيار التهيئة `content_css` في TinyMCE.
 
-## Parameters
+## المعلمات
 
 ### assets
 
-readonly [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]
+قراءة فقط [`CdnFile`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnFile.md)[]
 
 ### provider?
 
 `string` \| [`CdnProvider`](../../../../platforms/canvas-theme-editor/src/interfaces/CdnProvider.md)
 
-## Returns
+## القيم المرجعة
 
 `string`[]

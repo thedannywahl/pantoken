@@ -1,30 +1,30 @@
 [pantoken](../../../../index.md) / [bundlers/panda/src](../index.md) / toPandaPreset
 
-# Function: toPandaPreset()
+# دالة: toPandaPreset()
 
 > **toPandaPreset**(`tokens`): [`PandaPreset`](../interfaces/PandaPreset.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء مسبقة Panda من رمز IR.
+بناء إعداد مسبق لـ Panda من IR للرموز.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (مثلاً من `@pantoken/tokens`).
 
-## Returns
+## القيم المرجعة
 
 [`PandaPreset`](../interfaces/PandaPreset.md)
 
-كائن مسبق لـ Panda's `definePreset`.
+كائن إعداد مسبق لـ `definePreset` الخاص بـ Panda.
 
-## Example
+## مثال
 
-**بناء مسبقة من IR مخصص**
+**بناء إعداد مسبق من IR مخصص**
 
 ```ts
 import { defineConfig } from "@pandacss/dev";

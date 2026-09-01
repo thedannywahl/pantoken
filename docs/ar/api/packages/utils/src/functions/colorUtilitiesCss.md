@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / colorUtilitiesCss
 
-# Function: colorUtilitiesCss()
+# دالة: colorUtilitiesCss()
 
 > **colorUtilitiesCss**(`names`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء ورقة أنماط أداة اللون الدلالي: `.&lt;prefix&gt;-bg-&lt;name&gt;` (الخلفية)،
-`.&lt;prefix&gt;-text-&lt;name&gt;` (لون النص)، `.&lt;prefix&gt;-border-&lt;name&gt;` (لون الحد)، واحد لكل دلالي
-رمز اللون. `.&lt;prefix&gt;-color-&lt;name&gt;` تم إصداره جنباً إلى جنب مع `.&lt;prefix&gt;-text-&lt;name&gt;` كاسم مستعار — نفس
-الإعلان، اسم فئة إما يعمل. الإلغاءات لذلك فقط صحيحة الرمز — لا بدائيات،
-لا سداسي عشري عشوائي. مرر أسماء الرموز لكل عائلة (على سبيل المثال من `@pantoken/tokens`)، أو صريح
-`[name, token]` زوج لمصدر اسم من رمز مختلف من مقياس العائلة الخاص به.
+بناء ورقة الأنماط المساعدة للألوان الدلالية: `.&lt;prefix&gt;-bg-&lt;name&gt;` (خلفية)،
+`.&lt;prefix&gt;-text-&lt;name&gt;` (لون النص)، `.&lt;prefix&gt;-border-&lt;name&gt;` (لون الحدود)، واحد لكل رمز لون دلالي.
+يتم إصدار `.&lt;prefix&gt;-color-&lt;name&gt;` جنبًا إلى جنب مع `.&lt;prefix&gt;-text-&lt;name&gt;` كمرادف — نفس الإعلان، أي
+اسم صنف منهما يعمل. لذلك فإن التجاوزات دائمًا ما تكون صالحة بالنسبة للرموز — لا بدائل أولية،
+ولا ألوان سداسية عشوائية. مرر أسماء الرموز بحسب العائلة (مثلًا من `@pantoken/tokens`)، أو زوج
+صريح `[name, token]` لاستخراج اسم من رمز مختلف عن مقياس العائلة.
 
 ```demo
 self:color-utilities
 ```
 
-## Parameters
+## المعلمات
 
 ### names
 
@@ -31,7 +31,7 @@ self:color-utilities
 
 [UtilityOptions](../interfaces/UtilityOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 

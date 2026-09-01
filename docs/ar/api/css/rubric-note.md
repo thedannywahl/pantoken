@@ -1,63 +1,64 @@
 # CSS: rubric-note
 
-`div[class~="instui-rubric-note"]` — ملاحظة منظمة مع فئات المعايير ومؤشرات الدرجات.
+`div[class~="instui-rubric-note"]` — ملاحظة منظمة مع فئات المقياس ومؤشرات الدرجات.
 
 ✅ استخدم Rubric-Note عندما:
 
-- عرض معايير التقييم أو معايير التقييم
-- تحتاج إلى هيكلة المحتوى حسب الفئة مع الدرجات أو المؤشرات
-- يجب أن يؤكد التخطيط على الهيكل والتسلسل الهرمي
-  🚫 لا تستخدم Rubric-Note عندما:
+- عرض مقياس التقييم أو معايير التقييم
+- تحتاج إلى تنظيم المحتوى حسب الفئة مع درجات أو مؤشرات
+- يجب أن يبرز التخطيط البنية والتسلسل الهرمي
+🚫 لا تستخدم Rubric-Note عندما:
 
-- عرض ملاحظات أو تعليقات بسيطة — استخدم Callout بدلاً من ذلك
-- منطق التقييم المعقد مطلوب — فكر في مكون مخصص
+- عرض ملاحظات بسيطة أو تعليقات — استخدم Callout بدلاً من ذلك
+- إذا كانت هناك حاجة لمنطق تقييم معقد — فكر في مكوّن مخصص
 
-## Accessibility
+## سهولة الوصول
 
-- استخدم دلالات الجدول إذا كنت تعرض معايير حقيقية بصفوف وأعمدة
-- تأكد من أن مؤشرات الدرجات ليست بالألوان فقط
-- قدم تسميات وصفية لكل فئة
+- استخدم دلالات الجدول إذا كنت تعرض مقياس تقييم حقيقي بصفوف وأعمدة
+- تأكد أن مؤشرات الدرجات ليست معتمدة على اللون فقط
+- قدّم تسميات وصفية لكل فئة
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/plugin-layouts/layouts.css";
 ```
 
-## Parts
+## الأجزاء
 
-| Part                  | Description                       |
-| --------------------- | --------------------------------- |
-| `.instui-criteria`    | حاوية لصفوف معايير المعايير.      |
-| `.instui-description` | وصف مفصل للمعيار.                 |
-| `.instui-header`      | رأس مع العنوان والبيانات الوصفية. |
-| `.instui-name`        | اسم المعيار أو الفئة.             |
-| `.instui-row`         | صف معيار فردي.                    |
-| `.instui-score`       | مؤشر النقاط أو الشارة.            |
+| جزء | الوصف |
+| --- | --- |
+| `.instui-criteria` | حاوية لصفوف معايير التقييم. |
+| `.instui-description` | وصف مفصّل للمعيار. |
+| `.instui-header` | رأس يحتوي على العنوان والبيانات الوصفية. |
+| `.instui-name` | اسم المعيار أو الفئة. |
+| `.instui-row` | صف معيار فردي. |
+| `.instui-score` | مؤشر أو شارة للدرجة. |
 
-## States
+## الحالات
 
-| State       | Description |
-| ----------- | ----------- |
-| `:optional` | —           |
+| حالة | الوصف |
+| --- | --- |
+| `:optional` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                            | Type       | Value |
-| -------------------------------- | ---------- | ----- |
-| `--instui-color-background`      | —          | —     |
-| `--instui-color-border`          | —          | —     |
-| `--instui-color-info-background` | —          | —     |
-| `--instui-color-info-text`       | —          | —     |
-| `--instui-color-primary`         | —          | —     |
-| `--instui-color-surface`         | —          | —     |
-| `--instui-color-text-secondary`  | —          | —     |
-| `--instui-font-size-small`       | `<length>` | —     |
-| `--instui-font-weight-semibold`  | —          | —     |
-| `--instui-radius-medium`         | —          | —     |
-| `--instui-space-medium`          | —          | —     |
-| `--instui-space-small`           | —          | —     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-color-background` | — | — |
+| `--instui-color-border` | — | — |
+| `--instui-color-info-background` | — | — |
+| `--instui-color-info-text` | — | — |
+| `--instui-color-primary` | — | — |
+| `--instui-color-surface` | — | — |
+| `--instui-color-text-secondary` | — | — |
+| `--instui-font-size-small` | `<length>` | — |
+| `--instui-font-weight-semibold` | — | — |
+| `--instui-radius-medium` | — | — |
+| `--instui-space-medium` | — | — |
+| `--instui-space-small` | — | — |
 
-## Related
+## ذات صلة
 
 - [card](/ar/api/css/card.md)
+

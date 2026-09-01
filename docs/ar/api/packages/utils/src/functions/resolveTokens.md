@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / resolveTokens
 
-# Function: resolveTokens()
+# دالة: resolveTokens()
 
 > **resolveTokens**(`base`, `options?`): `Map`\<`string`, `string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حل قيمة كل رمز مقابل المجموعة (انظر [makeResolver](makeResolver.md))، مفتاح باسم.
+حل قيمة كل توكن مقابل المجموعة (انظر [makeResolver](makeResolver.md))، مفهرسة حسب الاسم.
 
-## Parameters
+## المعلمات
 
 ### base
 
@@ -18,13 +18,13 @@ readonly [`Token`](../../../core/src/interfaces/Token.md)[]
 
 [`ResolveOptions`](../interfaces/ResolveOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 `Map`\<`string`, `string`\>
 
-## Example
+## مثال
 
-**حل IR كاملة إلى اسم → خريطة القيمة**
+**حل IR كامل إلى خريطة اسم → قيمة**
 
 ```ts
 import { resolveTokens } from "@pantoken/utils";
@@ -38,5 +38,5 @@ const ir: Token[] = [
 
 const byName = resolveTokens(ir, { mode: "dark" });
 byName.get("--instui-brand"); // → "#0374B5"
-byName.get("--instui-bg"); // → "#000"
+byName.get("--instui-bg");    // → "#000"
 ```

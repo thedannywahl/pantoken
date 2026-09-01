@@ -1,30 +1,30 @@
 [pantoken](../../../../index.md) / [platforms/flutter/src](../index.md) / toFlutter
 
-# Function: toFlutter()
+# دالة: toFlutter()
 
 > **toFlutter**(`tokens`, `options`): `Promise`\<`string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار Flutter Dart لـ IR علامة صريحة. يعيد مسار الملف المكتوب.
+يصدر Flutter Dart لتمثيل IR صريح للرموز. يعيد مسار الملف المكتوب.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
 ### options
 
 [`GenerateFlutterOptions`](../interfaces/GenerateFlutterOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`\>
 
-## Examples
+## أمثلة
 
-**إصدار IR لموضوع معين**
+**إصدار IR لسمة محددة**
 
 ```ts
 import { toFlutter } from "@pantoken/flutter";
@@ -34,7 +34,7 @@ const file = await toFlutter(byTheme("canvas"), { outDir: "./lib/tokens" });
 // writes ./lib/tokens/pantokens.dart (class PanTokens { … })
 ```
 
-**الوضع الداكن مع أصول رموز SVG والبيان**
+**الوضع الداكن مع أصول أيقونات SVG وملف المانيفست**
 
 ```ts
 import { toFlutter } from "@pantoken/flutter";

@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [packages/cli/src](../index.md) / parseArgs
 
-# Function: parseArgs()
+# دالة: parseArgs()
 
 > **parseArgs**(`argv`): [`CliArgs`](../interfaces/CliArgs.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تحليل `generate &lt;target&gt; [--out dir] [--theme t] [--class Name]`.
+حلل `generate &lt;target&gt; [--out dir] [--theme t] [--class Name]`.
 
-## Parameters
+## المعلمات
 
 ### argv
 
-readonly `string`[]
+للقراءة فقط `string`[]
 
-## Returns
+## القيم المرجعة
 
 [`CliArgs`](../interfaces/CliArgs.md)
 
-## Examples
+## أمثلة
 
-**أعلام الموضع الهدفي بالإضافة إلى أعلام القيمة**
+**أعلام الهدف الموضعي بالإضافة إلى القيم**
 
 ```ts
 import { parseArgs } from "@pantoken/cli";
@@ -37,5 +37,5 @@ import { parseArgs } from "@pantoken/cli";
 
 const args = parseArgs(["generate", "pendo", "--no-scope", "--icons", "arrow-left,check-mark"]);
 args.noScope; // → true
-args.icons; // → ["arrow-left", "check-mark"]
+args.icons;   // → ["arrow-left", "check-mark"]
 ```

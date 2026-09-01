@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/stacking/src](../index.md) / stacking
 
-# Function: stacking()
+# دالة: stacking()
 
 > **stacking**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون الرموز المكدسة.
+إنشاء ملحق الرموز المكدسة.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,8 +16,8 @@
 
 [StackingOptions](../interfaces/StackingOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) بخطاف `tokens`.
+ملحق [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) يحتوي على هوك `tokens`.

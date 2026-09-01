@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [platforms/swift/src](../index.md) / generateSwift
 
-# Function: generateSwift()
+# دالة: generateSwift()
 
 > **generateSwift**(`options`): `Promise`\<`string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-انبعاث Swift لموضوع مسمى (باستخدام `@pantoken/tokens` IR المُتاح بالمصدر).
+توليد Swift لنمط مسمّى (باستخدام IR المُدرج المُباعِر `@pantoken/tokens`).
 
-## Parameters
+## المعلمات
 
 ### options
 
 [`GenerateSwiftOptions`](../interfaces/GenerateSwiftOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`\>
 
 مسار ملف Swift المكتوب.
 
-## Example
+## مثال
 
 ```ts
 import { generateSwift } from "@pantoken/swift";

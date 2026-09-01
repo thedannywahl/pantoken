@@ -2,13 +2,14 @@
 
 # angular
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/angular` — مساعدات Angular على `@pantoken/web-components`.
+`@pantoken/angular` — مساعدات Angular فوق `@pantoken/web-components`.
 
-استدعِ [registerPantokenElements](functions/registerPantokenElements.md) أثناء البدء، وأضف `CUSTOM_ELEMENTS_SCHEMA` إلى المكون/الوحدة التي تستخدم `&lt;instui-icon&gt;`. [readToken](functions/readToken.md) يقرأ قيمة `--instui-*` المحلولة.
+استدعِ [registerPantokenElements](functions/registerPantokenElements.md) أثناء التمهيد، وأضف `CUSTOM_ELEMENTS_SCHEMA` إلى
+المكوّن/الوحدة التي تستخدم `&lt;instui-icon&gt;`. تقرأ [readToken](functions/readToken.md) قيمة `--instui-*` المحللة.
 
-## Functions
+## الدوال
 
 - [registerPantokenElements](functions/registerPantokenElements.md)
 - [readToken](functions/readToken.md)

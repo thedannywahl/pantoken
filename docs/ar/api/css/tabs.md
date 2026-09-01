@@ -1,23 +1,23 @@
 # CSS: tabs
 
-`.instui-tabs` — مجموعة لوحات بعلامات تبويب: قائمة علامات تبويب وعلامات تبويب قابلة للاختيار وألواحها.
+`.instui-tabs` — مجموعة لوحات بعلامات تبويب: قائمة علامات تبويب، علامات قابلة للاختيار، ولوحاتها.
 
-انظر إلى أعضاء `tabs.tab` و `tabs.panel` لأزرار التبويب الفردية وألواح المحتوى الخاصة بهم.
+انظر إلى الأعضاء `tabs.tab` و `tabs.panel` لأزرار علامات التبويب الفردية ولوحات المحتوى الخاصة بها.
 
 **المصدر:** [panel.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tabs/members/panel/panel.css)
 
-## Accessibility
+## سهولة الوصول
 
-قم بتوصيل قائمة علامات التبويب بـ role="tablist"، كل علامة تبويب بـ role="tab" و aria-selected، وكل لوحة بـ role="tabpanel".
+اربط قائمة علامات التبويب بالـ role="tablist"، وكل علامة تبويب بالـ role="tab" و aria-selected، وكل لوحة بالـ role="tabpanel".
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/tabs.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-tabs">
@@ -31,7 +31,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-tabs
@@ -58,27 +58,28 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier              | Description                                                                                                                                                 |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.-overflow-scroll`   | احتفظ بقائمة علامات التبويب في سطر واحد واسمح لها بالتمرير أفقيًا بدلاً من الالتفاف، مع إخفاء شريط التمرير.                                                 |
-| `.-variant-secondary` | علامات تبويب "مجلد" مستديرة مع علامة تبويب محددة تتصل بصريًا باللوحة أدناه. @affects tabs.tab — يعيد تنسيق أزرار علامات التبويب إلى مظهر "المجلد" المستدير. |
+| معدّل | الوصف |
+| --- | --- |
+| `.-overflow-scroll` | حافظ على قائمة علامات التبويب في سطر واحد ودعها تنزلق أفقياً بدلاً من الالتفاف، مع إخفاء شريط التمرير. |
+| `.-variant-secondary` | علامات تبويب "مجلد" مستديرة مع علامة مختارة تتصل بصرياً باللوحة أدناه. @affects tabs.tab — يعيد تنسيق أزرار علامات التبويب لتبدو بمظهر "مجلد" مستدير. |
 
-## Parts
+## الأجزاء
 
-| Part    | Description        |
-| ------- | ------------------ |
+| جزء | الوصف |
+| --- | --- |
 | `.list` | صف علامات التبويب. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                        | Type      | Value       |
-| -------------------------------------------- | --------- | ----------- |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
 | `--instui-component-tabs-default-background` | `<color>` | `#00000000` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [list](/ar/api/css/list.md)
 - [tabs.panel](/ar/api/css/tabs.panel.md)
 - [tabs.tab](/ar/api/css/tabs.tab.md)
+

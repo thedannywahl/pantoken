@@ -100,8 +100,16 @@ function writtenTo(suffix: string): string | undefined {
 test("build localizes markdown headings, prose, and sidebars, then logs the summary", async () => {
   await import("./build-api-locales.ts");
   await vi.waitFor(() =>
-    expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("Localized"))).toBe(true),
+    expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("✓ hu: rendered"))).toBe(
+      true,
+    ),
   );
+
+  const glossaryEntryFor = (source: string): string => {
+    const entries = JSON.parse(GLOSSARY_JSON) as { entries: Record<string, string> };
+    const key = keyFor("text", source);
+    return entries.entries[key];
+  };
 
   // Generation ran (TypeDoc + the three node scripts) before the clone.
   expect(spawnSync).toHaveBeenCalled();
@@ -110,23 +118,28 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
   // The markdown file was rewritten with the glossary-translated heading; prose is passed through.
   const md = writtenTo("index.md");
   expect(md).toBeDefined();
-  expect(md).toContain("## Használat"); // "## Usage" → Hungarian
+  expect(md).toContain(`## ${glossaryEntryFor("Usage")}`);
   expect(md).toContain("Regular prose describing how to use the component.");
 
   // The sidebar labels are translated and its absolute /api links point into the HU tree.
   const sidebar = writtenTo("typedoc-sidebar.json");
   expect(sidebar).toBeDefined();
-  expect(sidebar).toContain("Áttekintés"); // "Overview"
-  expect(sidebar).toContain("Függvények"); // "Functions"
+  expect(sidebar).toContain(glossaryEntryFor("Overview"));
+  expect(sidebar).toContain(glossaryEntryFor("Functions"));
   expect(sidebar).toContain("/hu/api/index.md");
 
-  // Summary log reports one markdown file and both glossary + prose counts.
+  // Summary log reports prose + glossary totals after the per-file output.
   const summary = logSpy.mock.calls
     .map((c: unknown[]) => String(c[0]))
-    .find((m: string) => m.includes("Localized"));
-  expect(summary).toContain("Localized 1 API markdown files");
-  expect(summary).toMatch(/glossary terms/);
+    .find((m: string) => m.includes("📄 Summary:"));
+  const sidebarSummary = logSpy.mock.calls
+    .map((c: unknown[]) => String(c[0]))
+    .find((m: string) => m.includes("📋 Summary:"));
+
   expect(summary).toMatch(/prose blocks/);
+  expect(summary).toMatch(/glossary terms/);
+  expect(sidebarSummary).toContain("2 labels");
+  expect(summary).toMatch(/\(\d+ cached, \d+ translated\)/);
   expect(process.exitCode).toBeUndefined();
 }, 20000); // dynamic import of build-api-locales.ts can exceed the default 5s under full-suite load
 

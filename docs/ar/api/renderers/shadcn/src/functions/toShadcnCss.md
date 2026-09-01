@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/shadcn/src](../index.md) / toShadcnCss
 
-# Function: toShadcnCss()
+# دالة: toShadcnCss()
 
 > **toShadcnCss**(`options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار جسر متغيرات CSS shadcn → Instructure.
+أصدر جسر shadcn → Instructure لـ CSS-variable.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,13 +16,13 @@
 
 [ToShadcnCssOptions](../interfaces/ToShadcnCssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة CSS الجسرية.
+سلسلة CSS الخاصة بالجسر.
 
-## Example
+## مثال
 
 ```ts
 import { toShadcnCss } from "@pantoken/shadcn";

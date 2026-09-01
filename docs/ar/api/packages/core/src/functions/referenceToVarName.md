@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / referenceToVarName
 
-# Function: referenceToVarName()
+# دالة: referenceToVarName()
 
 > **referenceToVarName**(`reference`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خريطة نص مرجع Tokens Studio (النص داخل `{…}`) إلى اسم الخاصية المخصصة CSS
-للتوكن الذي يشير إليه. قيادة `semantic.` تميز طبقة دلالية من البدائيات.
+قم بتعيين نص مرجع Tokens Studio (النص داخل `{…}`) إلى اسم الخاصية المخصصة في CSS للرمز الذي يُشير إليه.
+البادئة `semantic.` تميّز الطبقة الدلالية عن البدائيات.
 
-## Parameters
+## المعلمات
 
 ### reference
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { referenceToVarName } from "@pantoken/core";
 
-referenceToVarName("color.white"); // → "--instui-primitive-color-white"
+referenceToVarName("color.white");                  // → "--instui-primitive-color-white"
 referenceToVarName("semantic.color.background.base"); // → "--instui-color-background-base"
 ```

@@ -15,13 +15,20 @@
  * Guides drift is pure (the English source is committed). API drift needs the generated EN tree
  * (`docs/api/**`), so run it after `docs:api:en`; if `docs/api` is absent it is skipped with a note.
  *
+ * Whether a given miss blocks the merge or only warns is decided by `i18n-policy.json`, per surface
+ * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.glossary`, `docs.demos`) and per
+ * locale tier — so adding an English guide doesn't have to wait on ~90 translations. See
+ * `tools/translation-adapters/src/drift-policy.ts`.
+ *
  * @module
  */
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { DriftReporter } from "@pantoken/translation-adapters";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
+import { collectHomeUnits } from "./home-i18n.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
@@ -30,6 +37,7 @@ const cacheDir = join(docsRoot, "i18n-cache");
 const guideDir = join(docsRoot, "guide");
 const demoDir = join(docsRoot, "demos");
 const apiDir = join(docsRoot, "api");
+const homeIndex = join(docsRoot, "index.md");
 
 const targets = NON_ROOT_LOCALES;
 
@@ -118,6 +126,25 @@ const glossaryDrift = (locale: string): Missing[] => {
   return missing;
 };
 
+const homeUnits = existsSync(homeIndex) ? collectHomeUnits(readFileSync(homeIndex, "utf8")) : [];
+
+/**
+ * Home drift: every translatable `docs/index.md` frontmatter value (hero text/tagline, action labels,
+ * feature titles and details) needs a cached translation, or the localized home page falls back to
+ * showing English copy under a locale route.
+ */
+const homeDrift = (locale: string): Missing[] => {
+  if (homeUnits.length === 0) return [];
+  const cached = loadCacheKeys(locale, "home");
+  const missing: Missing[] = [];
+  for (const text of homeUnits) {
+    if (!cached.has(keyFor("text", text))) {
+      missing.push({ file: "index.md", kind: "text", sample: preview(text) });
+    }
+  }
+  return missing;
+};
+
 const demoNames = existsSync(demoDir) ? listDemoNames(demoDir) : [];
 
 /** Demos drift: every demo-local i18n string needs a cached translation. */
@@ -136,45 +163,40 @@ const demosDrift = (locale: string): Missing[] => {
   return missing;
 };
 
-let drifted = 0;
+const reporter = new DriftReporter({
+  label: "@pantoken/docs",
+  fixCommand: "vp run docs:locales:translate",
+});
+
+/**
+ * A `Missing.file` is either a real docs-relative path (`guide/foo.md`) or a symbolic
+ * `file#anchor` locator (`glossary.ts#tokens`). Annotations need a path GitHub can resolve, so the
+ * anchor moves into the detail text and the path is made repo-relative.
+ */
+const record = (surface: string, locale: string, items: readonly Missing[]): void => {
+  for (const item of items) {
+    const [path, anchor] = item.file.split("#");
+    reporter.add({
+      surface,
+      locale,
+      file: `docs/${path}`,
+      detail: `[${item.kind}]${anchor ? ` ${anchor}:` : ""} ${item.sample}`,
+    });
+  }
+};
+
+const apiGenerated = existsSync(apiDir);
+if (!apiGenerated) {
+  console.warn(`! docs/api not generated — skipping API drift (run docs:api:en first).`);
+}
+
 for (const locale of targets) {
-  const guides = guideDrift(locale);
-  const chrome = chromeDrift(locale);
-  const glossary = glossaryDrift(locale);
-  const demos = demosDrift(locale);
-  const apiGenerated = existsSync(apiDir);
-  const api = apiGenerated ? apiDrift(locale) : [];
-
-  if (!apiGenerated) {
-    console.warn(
-      `! ${locale}: docs/api not generated — skipping API drift (run docs:api:en first).`,
-    );
-  }
-
-  const all = [...guides, ...chrome, ...glossary, ...demos, ...api];
-  if (all.length === 0) {
-    console.log(`✓ ${locale}: no translation drift${apiGenerated ? "" : " (guides only)"}.`);
-    continue;
-  }
-
-  drifted += all.length;
-  console.error(`\n✗ ${locale}: ${all.length} untranslated/drifted block(s):`);
-  // Group by file, cap the per-file sample list so the output stays readable.
-  const byFile = new Map<string, Missing[]>();
-  for (const m of all) byFile.set(m.file, [...(byFile.get(m.file) ?? []), m]);
-  for (const [file, items] of byFile) {
-    console.error(`  ${file} (${items.length})`);
-    for (const item of items.slice(0, 3)) console.error(`    - [${item.kind}] ${item.sample}`);
-    if (items.length > 3) console.error(`    … and ${items.length - 3} more`);
-  }
+  record("docs.guides", locale, guideDrift(locale));
+  record("docs.home", locale, homeDrift(locale));
+  record("docs.chrome", locale, chromeDrift(locale));
+  record("docs.glossary", locale, glossaryDrift(locale));
+  record("docs.demos", locale, demosDrift(locale));
+  if (apiGenerated) record("docs.api", locale, apiDrift(locale));
 }
 
-if (drifted > 0) {
-  console.error(
-    `\nTranslation drift: ${drifted} block(s) missing from the committed cache. ` +
-      `Run \`vp run docs:locales:translate\` locally, then commit docs/i18n-cache/.`,
-  );
-  process.exitCode = 1;
-} else {
-  console.log("\nNo translation drift.");
-}
+process.exitCode = reporter.report();

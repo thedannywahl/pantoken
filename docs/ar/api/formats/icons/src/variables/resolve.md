@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/icons/src](../index.md) / resolve
 
-# Variable: resolve
+# متغير: resolve
 
 > `const` **resolve**: [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-[IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) مدعوم بمجموعة أيقونات pantoken (لمراحل الإضافة/rehype).
+مُحلل [IconResolver](../../../../packages/core/src/type-aliases/IconResolver.md) مدعوم بواسطة مجموعة أيقونات pantoken (لمراحل plugin/rehype).
 
-## Example
+## مثال
 
 ```ts
 import { resolve } from "@pantoken/icons";

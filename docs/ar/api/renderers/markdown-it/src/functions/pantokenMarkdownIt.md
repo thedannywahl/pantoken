@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/markdown-it/src](../index.md) / pantokenMarkdownIt
 
-# Function: pantokenMarkdownIt()
+# دالة: pantokenMarkdownIt()
 
 > **pantokenMarkdownIt**(`md`, `options?`): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مصنع مكون إضافي markdown-it. استخدمه مع `md.use(pantokenMarkdownIt, options)`.
+مصنع مكوّن إضافي لـ markdown-it. استخدمه مع `md.use(pantokenMarkdownIt, options)`.
 
-## Parameters
+## المعلمات
 
 ### md
 
@@ -22,13 +22,13 @@
 
 [MarkdownItOptions](../interfaces/MarkdownItOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
-**إنشاء معالج مكون إضافي لأيقونة العلامة التجارية**
+**تأليف مُحلّل مكوّن إضافي لأيقونة العلامة التجارية**
 
 ```ts
 import MarkdownIt from "markdown-it";

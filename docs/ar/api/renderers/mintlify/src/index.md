@@ -2,13 +2,13 @@
 
 # mintlify
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/mintlify` — ضع مظهر موقع Mintlify للمستندات برموز Instructure.
+`@pantoken/mintlify` — طبق سمة على موقع توثيق Mintlify باستخدام توكنات Instructure.
 
-[toMintlifyConfig](functions/toMintlifyConfig.md) يرسم أي IR على مفاتيح `colors` + `background` من `docs.json` من Mintlify؛ [docsJson](variables/docsJson.md) هو جزء `rebrand` الجاهز. امزجه في `docs.json` الخاص بك.
+[toMintlifyConfig](functions/toMintlifyConfig.md) يحوّل أي IR إلى مفاتيح `colors` + `background` في `docs.json` الخاص بـ Mintlify؛ [docsJson](variables/docsJson.md) هو مقتطف `rebrand` الجاهز. ادمجه في `docs.json`.
 
-## Example
+## مثال
 
 ```jsonc
 // docs.json
@@ -16,26 +16,26 @@
   "name": "My docs",
   "theme": "mint",
   "colors": { "primary": "#1D354F", "light": "#EEF4FD", "dark": "#1D354F" },
-  "background": { "color": { "light": "#F2F4F5", "dark": "#10141A" } },
+  "background": { "color": { "light": "#F2F4F5", "dark": "#10141A" } }
 }
 ```
 
-## Interfaces
+## واجهات
 
 - [MintlifyColors](interfaces/MintlifyColors.md)
 - [MintlifyBackground](interfaces/MintlifyBackground.md)
 - [MintlifyTheme](interfaces/MintlifyTheme.md)
 
-## Variables
+## المتغيرات
 
 - [docsJson](variables/docsJson.md)
 
-## Functions
+## الدوال
 
 - [toMintlifyConfig](functions/toMintlifyConfig.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [docsJson](variables/docsJson.md)
+يعيد تسمية ويُعيد تصدير [docsJson](variables/docsJson.md)

@@ -1,21 +1,21 @@
 # CSS: drawer-layout.content
 
-`.content` — جزء المحتوى الرئيسي الذي يملأ المساحة المتبقية بجانب الدرج.
+`.content` — لوحة المحتوى الأساسية التي تملأ المساحة المتبقية بجانب الدرج.
 
-عندما ينخفض حجم العنصر الأب بالخط أقل من `46em` (عرض الدرج `16em` + نقطة التوقف `30em`)، سيؤدي استعلام `@container` على حاوية `pantoken-drawer-layout` الخاصة بالعنصر الأب إلى إسقاط `min-inline-size` لهذا العضو إلى `0` تلقائياً، مطابقاً لاستبدال `[should-overlay-tray]` اليدوي.
+عندما تنخفض المساحة الخطية للحاوية الأصلية أدنى من `46em` (`16em` عرض الدرج + `30em` نقطة الانقطاع)، تقوم استعلام `@container` على حاوية `pantoken-drawer-layout` للأصل بتخفيض `min-inline-size` لهذا العنصر إلى `0` تلقائياً، مطابقة لتجاوز `[should-overlay-tray]` اليدوي.
 
-## Accessibility
+## سهولة الوصول
 
-احمل `role="region"` (اتفاقية InstUI's DrawerLayout) وسمه باستخدام `aria-label`/`aria-labelledby` عندما لا يحدد السياق وحده.
+احتفظ بـ `role="region"` (اتفاقية DrawerLayout في InstUI) وسمِّهِ باستخدام `aria-label`/`aria-labelledby` عندما لا يكفي السياق لتحديده.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/drawer-layout.content.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-drawer-layout">
@@ -25,7 +25,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 @scope (@component drawer-layout)
@@ -46,19 +46,20 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Conditions
+## الشروط
 
-| Type      | Query                                      | Description |
-| --------- | ------------------------------------------ | ----------- |
-| container | `pantoken-drawer-layout (max-width: 46em)` | —           |
+| نوع | استعلام | الوصف |
+| --- | --- | --- |
+| container | `pantoken-drawer-layout (max-width: 46em)` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                     | Type       | Value  |
-| ----------------------------------------- | ---------- | ------ |
-| `--drawer-layout-content-min-inline-size` | `<length>` | —      |
-| `--pantoken-bp-md`                        | `<length>` | `30em` |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--drawer-layout-content-min-inline-size` | `<length>` | — |
+| `--pantoken-bp-md` | `<length>` | `30em` |
 
-## Related
+## ذات صلة
 
-- [drawer-layout.tray](/ar/api/css/drawer-layout.tray.md) — لوحة مجاورة في نفس صف flex.
+- [drawer-layout.tray](/ar/api/css/drawer-layout.tray.md) — اللوحة المجاورة في نفس صف الفليكس.
+

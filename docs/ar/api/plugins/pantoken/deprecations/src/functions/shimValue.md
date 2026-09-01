@@ -1,19 +1,19 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / shimValue
 
-# Function: shimValue()
+# دالة: shimValue()
 
 > **shimValue**(`entry`): `string` \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قيمة shim للإدخال: `var(replacement)`، الحرف المجمد، أو `undefined` إذا لم يكن أي منهما.
+قيمة الشيم لإدخال: `var(replacement)`, القيمة الحرفية المجمدة، أو `undefined` إذا لم يكن أيٌ منهما.
 
-## Parameters
+## المعلمات
 
 ### entry
 
 `DeprecationEntry`
 
-## Returns
+## القيم المرجعة
 
 `string` \| `undefined`

@@ -2,17 +2,17 @@
 
 # visual-debug
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-visual-debug` — ال CSS للخاصية `withVisualDebug` من InstUI.
+`@pantoken/plugin-visual-debug` — CSS لخاصية `withVisualDebug` في InstUI.
 
-تأخذ البدائيات الحالة من InstUI (View, Flex, Grid, List, …) `withVisualDebug` لتحديد صندوق
-وأطفاله أثناء تصحيح الخطأ في الحالة. ينبعث هذا المكون الإضافي من مُعدِّل واحد مع بادئة شرطة،
-`-with-visual-debug`، يعمل على أي عنصر (مركب مع أي قاعدة، على سبيل المثال
-`.instui-view -with-visual-debug`). لون الخطوط الموضحة هو خاصية مخصصة `--pantoken-visual-debug-color`
-(الإعداد الافتراضي أرجواني ساطع) حتى يسهل إعادة الصبغة.
+تتلقى البنيات الأساسية للتخطيط في InstUI (View, Flex, Grid, List, …) قيمة `withVisualDebug` لتحديد محيط الصندوق
+والمكوّنات الفرعية أثناء تصحيح التخطيط. يُصدر هذا المكوّن الإضافي مُعدّلاً واحداً مسبوقاً بشرطة,
+`-with-visual-debug`, يعمل على أي عنصر (مركب مع أي أساس، على سبيل المثال
+`.instui-view -with-visual-debug`). لون المحيط هو خاصية مخصصة من نوع `--pantoken-visual-debug-color`
+(افتراضياً مغنِتا زاهية) لذا من السهل إعادة تلوينه.
 
-## Example
+## مثال
 
 ```ts
 import { toCss } from "@pantoken/css";
@@ -23,21 +23,21 @@ const css = toCss(byTheme("rebrand"), { plugins: [visualDebug()] });
 // <div class="instui-view -with-visual-debug">…</div>
 ```
 
-## Interfaces
+## واجهات
 
 - [VisualDebugOptions](interfaces/VisualDebugOptions.md)
 
-## Variables
+## المتغيرات
 
 - [VISUAL\_DEBUG\_RULES](variables/VISUAL_DEBUG_RULES.md)
 
-## Functions
+## الدوال
 
 - [visualDebugRules](functions/visualDebugRules.md)
 - [visualDebug](functions/visualDebug.md)
 
-## References
+## المراجع
 
 ### default
 
-يعيد تسمية وإعادة تصدير [visualDebug](functions/visualDebug.md)
+يعيد تسمية ويُعيد تصدير [visualDebug](functions/visualDebug.md)

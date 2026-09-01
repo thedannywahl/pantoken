@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [platforms/canvas-theme-editor/src](../index.md) / ENGLISH\_THEME\_STRINGS
 
-# Variable: ENGLISH\_THEME\_STRINGS
+# متغير: ENGLISH\_THEME\_STRINGS
 
 > `const` **ENGLISH\_THEME\_STRINGS**: [`ThemeStrings`](../interfaces/ThemeStrings.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-الإعدادات الافتراضية بالإنجليزية، المستخدمة لأي مفتاح لم يوفره تجاوز المتصل `strings`.
+الإعدادات الافتراضية باللغة الإنجليزية، تُستخدم لأي مفتاح لا يوفّره تجاوز `strings` الخاص بالنداء.

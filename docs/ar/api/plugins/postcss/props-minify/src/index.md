@@ -2,39 +2,39 @@
 
 # props-minify
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-props-minify` — يؤلف تحويلات الحذف والتسطيح والتشويش لـ
-`--instui-*` الخصائص المخصصة عبر أداة [applyMinify](functions/applyMinify.md) واحدة.
+`@pantoken/plugin-props-minify` — تجميع محولات prune و flatten و mangle لـ
+الخصائص المخصصة `--instui-*` عبر أداة مساعدة واحدة [applyMinify](functions/applyMinify.md).
 
-يستخدم كل خط أنابيب إصدار CSS (توليد البرامج النصية، المصيرون) `applyMinify` لسطح تصغير متسق
-بدون الاعتماد المباشر على PostCSS.
+كل مسار إنتاج CSS (سكريبتات التوليد، الريندررز) يستخدم `applyMinify` لسطح تصغير متسق
+دون الاعتماد المباشر على PostCSS.
 
-**الحذف + التشويش آمن فقط للحزم المكتفية ذاتياً** حيث تعيش جميع مراجع `var(--instui-*)`
-وتعريفاتها في نفس الناتج. بالنسبة لمستهلكي الملفات المنفصلة (`@pantoken/css` +
-`@pantoken/components` محملة بشكل مستقل)، طبق `{ flatten: true }` فقط.
+**Prune + mangle آمنان فقط للحُزَم المتكاملة ذاتياً** حيث تعيش كل مراجع `var(--instui-*)`
+وتعريفاتها في نفس المخرج. للمستهلكين بملفات منفصلة (`@pantoken/css` +
+`@pantoken/components` محمّلان بشكل مستقل)، طبّق `{ flatten: true }` فقط.
 
-**تشويش عبر حدود الملف:** مرر نفس مثيل `Map` باسم
-`mangle.sharedManifest` لكل استدعاء `applyMinify` يعالج ملفات CSS محملة معاً.
-معالجة ورقة الرموز أولاً (تبذر البيان)، ثم ورقات المكونات.
+**Mangle عبر حدود الملفات:** مرّر نفس مثيل `Map` كـ
+`mangle.sharedManifest` إلى كل استدعاء `applyMinify` الذي يعالج ملفات CSS المحمّلة معاً.
+عالج ورقة الرموز أولاً (فهي تهيئ السجل)، ثم أوراق المكونات.
 
-## Examples
+## أمثلة
 
-**تطبيق التحويلات الثلاثة جميعها على حزمة مكتفية ذاتياً**
+**تطبيق المحولات الثلاثة كلها على حزْمَة متكاملة ذاتياً**
 
 ```ts
 import { applyMinify } from "@pantoken/plugin-props-minify";
 const out = applyMinify(css, { prune: true, flatten: true, mangle: true });
 ```
 
-**تسطيح فقط (آمن لمستهلكي الملفات المنفصلة)**
+**Flatten فقط (آمن لمستهلكي الملفات المنفصلة)**
 
 ```ts
 import { applyMinify } from "@pantoken/plugin-props-minify";
 const out = applyMinify(css, { flatten: true });
 ```
 
-**تشويش ملفين بنفس التعيين**
+**Mangle لملفين باستخدام نفس التعيين**
 
 ```ts
 import { applyMinify } from "@pantoken/plugin-props-minify";
@@ -43,22 +43,22 @@ const tokenCss = applyMinify(rawTokens, { mangle: { sharedManifest: manifest } }
 const componentCss = applyMinify(rawComponents, { mangle: { sharedManifest: manifest } });
 ```
 
-## Interfaces
+## واجهات
 
 - [FlattenPropertyOptions](interfaces/FlattenPropertyOptions.md)
 - [MangleCustomPropsOptions](interfaces/MangleCustomPropsOptions.md)
 - [PropsMinifyOptions](interfaces/PropsMinifyOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [MangleMethod](type-aliases/MangleMethod.md)
 
-## Variables
+## المتغيرات
 
 - [flattenProperty](variables/flattenProperty.md)
 - [mangleCustomProps](variables/mangleCustomProps.md)
 - [pruneCustomProps](variables/pruneCustomProps.md)
 
-## Functions
+## الدوال
 
 - [applyMinify](functions/applyMinify.md)

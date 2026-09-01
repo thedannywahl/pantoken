@@ -1,20 +1,20 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/layouts/src](../index.md) / wrapperRules
 
-# Function: wrapperRules()
+# دالة: wrapperRules()
 
 > **wrapperRules**(`prefix?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء CSS تخطيط المجمع (تعليق المستند + القواعد)، مع استبدال `prefix` بـ `pfx-` sentinel.
-الافتراضي هو `"instui-"` لجدول الأنماط المشحون؛ مرر `""` لبناء بدون بادئة.
+بناء CSS لتخطيط الغلاف (تعليق توثيقي + قواعد)، مع استبدال `prefix` بالعنصر الحارس `pfx-`.
+القيمة الافتراضية هي `"instui-"` لملف الأنماط الموزّع؛ مرِّر `""` لبناء بدون بادئة.
 
-## Parameters
+## المعلمات
 
 ### prefix?
 
 `string` = `"instui-"`
 
-## Returns
+## القيم المرجعة
 
 `string`

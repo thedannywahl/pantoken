@@ -1,32 +1,32 @@
 [pantoken](../../../../index.md) / [renderers/astro/src](../index.md) / StarlightPluginLike
 
-# Interface: StarlightPluginLike
+# واجهة: StarlightPluginLike
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-نوع هيكلي بسيط لمكون Starlight.
+نوع بنيوي بسيط لإضافة Starlight.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
----
+***
 
 ### hooks
 
 > **hooks**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 #### config:setup()
 
 > **config:setup**(`context`): `void`
 
-##### Parameters
+##### المعلمات
 
 ###### context
 
@@ -46,6 +46,6 @@
 
 ###### logger.info
 
-##### Returns
+##### القيم المرجعة
 
 `void`

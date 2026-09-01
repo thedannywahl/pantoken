@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/shadcn/src](../index.md) / ToShadcnCssOptions
 
-# Interface: ToShadcnCssOptions
+# واجهة: ToShadcnCssOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toShadcnCss](../functions/toShadcnCss.md).
+خيارات لـ [toShadcnCss](../functions/toShadcnCss.md).
 
-## Properties
+## الخصائص
 
 ### selector?
 
 > `optional` **selector?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-المحدد الذي يتم إصدار المتغيرات تحته (افتراضي `":root"`).
+المحدد الذي تُصدَر تحته المتغيرات (الافتراضي `":root"`).

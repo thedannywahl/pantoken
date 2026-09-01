@@ -1,34 +1,36 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / unknownReferences
 
-# Function: unknownReferences()
+# دالة: unknownReferences()
 
 > **unknownReferences**(`text`, `ir`): `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-فحص الانجراف: أسماء `--instui-*` في `text` التي لا تحددها الأشعة تحت الحمراء (مرتبة؛ فارغة تعني عدم وجود انجراف). استخدمها للمخرجات التي _ترجع إلى_ الرموز المحددة في مكان آخر — على سبيل المثال، جسور docusaurus/vitepress، التي يجب أن تكون `var(--instui-*)` الهدف الخاص بها كلها رموز حقيقية.
+فحص الانحراف: أسماء `--instui-*` في `text` التي لا يعرفها الـ IR (مرتبة؛ الفراغ يعني عدم وجود
+انحراف). يُستخدم للمخرجات التي *تشير إلى* توكنات معرفة في مكان آخر — مثال: جسور docusaurus/vitepress
+التي يجب أن تكون جميع أهداف `var(--instui-*)` الخاصة بها توكنات فعلية.
 
-## Parameters
+## المعلمات
 
 ### text
 
 `string`
 
-المخرجات المُنتجة.
+المخرجات المُولَّدة.
 
 ### ir
 
 readonly [`Token`](../../../core/src/interfaces/Token.md)[]
 
-الأشعة تحت الحمراء الرمز المصدر.
+نموذج IR للتوكن المصدر.
 
-## Returns
+## القيم المرجعة
 
 `string`[]
 
-أسماء الرموز المجهولة.
+أسماء التوكنات المجهولة.
 
-## Example
+## مثال
 
 ```ts
 import { unknownReferences } from "@pantoken/utils";

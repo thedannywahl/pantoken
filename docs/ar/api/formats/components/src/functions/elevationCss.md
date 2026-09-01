@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / elevationCss
 
-# Function: elevationCss()
+# دالة: elevationCss()
 
 > **elevationCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء كتلة رموز الارتفاع: `&lt;selector&gt; { --instui-elevation-*: … }`. موزع داخل
-`components.css` (لذا الظلال متأصلة — لا توجد ملحقة، لا استيراد إضافي)، وقابل لإعادة الاستخدام من قبل المخرجات
-الأخرى المرقبة (على سبيل المثال مُصيّر Pendo) عبر خيار `selector`.
+بِنْيَة كتلة توكن الارتفاع: `&lt;selector&gt; { --instui-elevation-*: … }`. تُشحن داخل
+`components.css` (لذلك الظلال مضمَّنة — لا مكوِّن إضافي، ولا استيراد إضافي)، وقابلة لإعادة الاستخدام من قِبَل مخرجات
+مُدَرَّجة أخرى (مثل مُصيِّغ Pendo) عبر خيار `selector`.
 
 ```demo
 self:elevation
 ```
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -24,13 +24,13 @@ self:elevation
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة CSS.
 
-## Example
+## مثال
 
 ```ts
 import { elevationCss } from "@pantoken/components";

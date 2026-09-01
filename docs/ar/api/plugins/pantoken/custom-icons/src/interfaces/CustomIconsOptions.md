@@ -1,27 +1,27 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/custom-icons/src](../index.md) / CustomIconsOptions
 
-# Interface: CustomIconsOptions
+# واجهة: CustomIconsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات لمكون [customIcons](../functions/customIcons.md).
+خيارات لملحق [customIcons](../functions/customIcons.md).
 
-## Properties
+## الخصائص
 
 ### names?
 
 > `optional` **names?**: `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أسماء الأيقونات المراد إصدارها كرموز `&lt;image&gt;` (افتراضي: جميع الأيقونات المباعة).
+أسماء الأيقونات التي ستُصدر كـ `&lt;image&gt;` توكنات (الافتراضي: جميع الأيقونات المورَّدة).
 
----
+***
 
 ### prefix?
 
 > `optional` **prefix?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بادئة اسم الرمز (افتراضي: `--instui-icon-`، مطابقة لمساحة اسم أيقونة InstUI).
+بادئة اسم التوكن (الافتراضي: `--instui-icon-`، متطابقة مع مساحة أسماء أيقونات InstUI).

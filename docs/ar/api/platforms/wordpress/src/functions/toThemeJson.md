@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [platforms/wordpress/src](../index.md) / toThemeJson
 
-# Function: toThemeJson()
+# دالة: toThemeJson()
 
 > **toThemeJson**(`tokens`, `options?`): [`ThemeJson`](../interfaces/ThemeJson.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تحويل قائمة رمز IR إلى `theme.json` في WordPress.
+حوّل قائمة رموز IR إلى WordPress `theme.json`.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (مثلًا من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToThemeJsonOptions](../interfaces/ToThemeJsonOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`ThemeJson`](../interfaces/ThemeJson.md)
 
-وثيقة `theme.json`.
+مستند `theme.json`.
 
-## Examples
+## أمثلة
 
-**تحويل IR إلى theme.json بوضع فاتح**
+**حوّل الـ IR إلى theme.json بنمط فاتح**
 
 ```ts
 import { toThemeJson } from "@pantoken/wordpress";

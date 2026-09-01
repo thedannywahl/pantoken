@@ -1,19 +1,19 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / describeLifecycle
 
-# Function: describeLifecycle()
+# دالة: describeLifecycle()
 
 > **describeLifecycle**(`entry`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-وصف بسطر واحد من البشر لدورة حياة الإدخال، للمستندات وسجلات التغييرات.
+وصف بشري في سطر واحد لدورة حياة عنصر، للمستندات وسجلات التغييرات.
 
-## Parameters
+## المعلمات
 
 ### entry
 
 `DeprecationEntry`
 
-## Returns
+## القيم المرجعة
 
 `string`

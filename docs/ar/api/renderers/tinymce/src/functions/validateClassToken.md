@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / validateClassToken
 
-# Function: validateClassToken()
+# دالة: validateClassToken()
 
 > **validateClassToken**(`token`): `string`[]
 
-تحقق من صحة رمز فئة pantoken (على سبيل المثال، "instui-button"، "instui-button.-color-primary").
-يُرجع مصفوفة من أخطاء التحقق (فارغة إذا كانت صحيحة).
+تحقق من رمز فئة pantoken (مثل "instui-button"، "instui-button.-color-primary").
+يعيد مصفوفة من أخطاء التحقق (فارغة إذا كانت صالحة).
 
-## Parameters
+## المعلمات
 
 ### token
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`[]

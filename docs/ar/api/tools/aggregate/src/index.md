@@ -2,17 +2,17 @@
 
 # aggregate
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المجمع لحزمة `pantoken` الموحدة. يقوم بمسح تبعيات حزمة البيانات الوصفية
-للبحث عن حقل `pantoken`، ثم يقوم بإنشاء البرميل (`export * as &lt;key&gt; from "&lt;pkg&gt;"`)، ملف إدخال مسار فرعي واحد لكل هدف، وخريطة `package.json` `exports` الوصفية — بحيث تؤدي إضافة حزمة هدف جديدة بحقل `pantoken` إلى تسجيلها تلقائياً، بدون تعديلات برميل يدوية.
+مجمّع لحزمة الميتا الموحدة `pantoken`. يقوم بمسح تبعيات حزمة الميتا
+للبحث عن الحقل `pantoken`، ثم يُولّد الـ barrel (`export * as &lt;key&gt; from "&lt;pkg&gt;"`)، ملف إدخال مسار فرعي واحد لكل هدف، وخرائط الميتا `package.json` `exports` — لذا فإن إضافة حزمة هدف جديدة تحتوي على الحقل `pantoken` تقوم بتسجيلها تلقائيًا، دون الحاجة لتعديلات يدوية على الـ barrel.
 
-## Interfaces
+## واجهات
 
 - [Target](interfaces/Target.md)
 - [AggregateOptions](interfaces/AggregateOptions.md)
 
-## Functions
+## الدوال
 
 - [discoverTargets](functions/discoverTargets.md)
 - [aggregate](functions/aggregate.md)

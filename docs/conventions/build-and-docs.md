@@ -100,6 +100,59 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
   run. Raise concurrency for more speed if you're not rate-limited; lower the budget if a run trips the
   per-item fallback (the model dropping a key from a large response).
 
+## Translation drift: what blocks a merge
+
+Every drift checker in the repo reports through one shared policy, `i18n-policy.json` at the repo
+root. A checker no longer decides its own exit code — it hands findings to a `DriftReporter`
+(`tools/translation-adapters/src/drift-policy.ts`), which resolves a severity per finding and returns
+the exit code.
+
+- **`block`** fails the job, so `ci-gate` blocks the merge.
+- **`warn`** reports the finding as a GitHub annotation on the PR diff plus a job-summary table, and
+  exits clean.
+- **`off`** drops the finding entirely.
+
+Severity is a `(surface, locale-tier)` matrix. Tiers are named locale groups matched in declaration
+order, so a specific tier must precede the `"*"` catch-all; patterns use the same syntax as a
+`VerbatimPolicy` (exact tag, `"prefix*"` glob, or `"*"`). This matters because a hard gate's cost
+scales with locale count — blocking every surface across ~90 locales means no English string lands
+until every translation does.
+
+| Surface         | Checker                                | What it covers                                                     |
+| --------------- | -------------------------------------- | ------------------------------------------------------------------ |
+| `ui.strings`    | `@pantoken/web-components#check:drift` | `src/i18n.json` → `i18n-cache/<locale>.json`                       |
+| `cli.scaffold`  | `@pantoken/scaffold#check:drift`       | scaffold CLI strings                                               |
+| `cli.ai`        | `@pantoken/ai#check:drift`             | `@pantoken/ai` CLI strings                                         |
+| `docs.guides`   | `docs:check:drift`                     | whole-file `docs/guide/*.md` units                                 |
+| `docs.api`      | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                        |
+| `docs.home`     | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features) |
+| `docs.chrome`   | `docs:check:drift`                     | UI-string leaves in `.vitepress/i18n.ts`                           |
+| `docs.glossary` | `docs:check:drift`                     | structural terms in `scripts/glossary.ts`                          |
+| `docs.demos`    | `docs:check:drift`                     | per-demo `i18n.json` strings                                       |
+| `docs.parity`   | `docs:check:locales`                   | structural locale-tree parity                                      |
+
+The committed default: **English source integrity blocks, translations warn.** A key missing from an
+`en.json` cache, or a structural parity gap, fails the build — both are fixed by re-running a
+generator, no AI pass needed. Every actual translation gap warns, because a missing translation falls
+back to English at runtime rather than breaking anything. `docs.parity` blocks for every locale for
+the same reason: `docs:build` runs `docs:api:locales` before it, so a gap there means a generator
+didn't run, not that a translator is behind.
+
+A surface the config doesn't name inherits `fallback`, which is tier-aware — so a checker's brand-new
+surface id still blocks on English before anyone edits the policy.
+
+Two escape hatches:
+
+- `I18N_DRIFT_STRICT=1` escalates every `warn` to `block` (it never resurrects an `off`).
+  `vp run i18n:check:drift:strict` sweeps every surface that way — use it for a pre-release audit.
+- `I18N_DRIFT_POLICY=/path/to/policy.json` swaps the policy file.
+
+CI wiring: the `i18n-drift` job runs `vp run i18n:check:drift` (UI + CLI) when the i18n path filter
+matches; docs drift and parity run inside `@pantoken/docs#docs:build` in the `docs` job, because API
+prose drift needs the generated EN tree. `i18n-policy.json` and `tools/translation-adapters/**` are in
+both path filters — editing what blocks a merge re-runs the gate that reads it. AI translation is
+never wired into CI; fill drift locally with `vp run i18n:translate`.
+
 ## Publishing the create-pantoken-app skill
 
 `ai/pantoken-ai/skills/create-pantoken-app/SKILL.md` is the one canonical source, staged into two

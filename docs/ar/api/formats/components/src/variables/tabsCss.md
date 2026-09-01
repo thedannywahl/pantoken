@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / tabsCss
 
-# Variable: tabsCss
+# متغير: tabsCss
 
 > `const` **tabsCss**: `Definition`\[`"css"`\] = `tabs.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `tabs` مستقلة — CSS مسبوق للألواح ذات علامات التبويب، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `tabs` — CSS ذات بادئة للوحات بعلامات التبويب، جاهزة للشحن كملف `.css`.

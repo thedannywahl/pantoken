@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [platforms/rust/src](../index.md) / generateRust
 
-# Function: generateRust()
+# دالة: generateRust()
 
 > **generateRust**(`options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-انبعاث ثوابت Rust لموضوع مسمى (باستخدام `@pantoken/tokens` IR المُتاح بالمصدر).
+تصدير ثوابت Rust لموضوع مسمّى (باستخدام IR المورّدة `@pantoken/tokens`).
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`RustOptions`](../interfaces/RustOptions.md) & `object` = `{}`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { writeFileSync } from "node:fs";

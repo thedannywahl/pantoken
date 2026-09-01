@@ -3,7 +3,11 @@
 /**
  * Detect drift between `src/i18n.json`'s English source strings and the committed
  * `i18n-cache/*.json` translation memory — every key must exist in every Canvas locale's cache
- * file (except `en`, which is the source). Exits non-zero on any miss so CI fails fast.
+ * file (except `en`, which is the source).
+ *
+ * Whether a miss blocks the merge or only warns is decided by `i18n-policy.json` (surface
+ * `ui.strings`, keyed by locale tier), not by this script. See
+ * `tools/translation-adapters/src/drift-policy.ts`.
  *
  * Fill drift locally with `I18N_TRANSLATION_ADAPTER=ai node scripts/translate.ts`, then commit the
  * updated cache files, then run `vp run @pantoken/i18n#generate` to refresh the downstream
@@ -12,7 +16,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseI18nSource } from "@pantoken/translation-adapters";
+import { DriftReporter, parseI18nSource, repoRelative } from "@pantoken/translation-adapters";
 import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -43,13 +47,21 @@ export function findMissingTranslations(
 
 const missing = findMissingTranslations(cacheDir, targets, keys);
 
-if (missing.length > 0) {
-  console.error(`\n✗ i18n drift: ${missing.length} missing translation(s):\n`);
-  for (const { locale, key } of missing) {
-    console.error(`  ${locale} — "${key}" (English: ${JSON.stringify(source[key])})`);
-  }
-  console.error(`\nRun \`node scripts/translate.ts\` to fill missing translations.`);
-  process.exit(1);
+const reporter = new DriftReporter({
+  label: "@pantoken/web-components UI strings",
+  fixCommand: "vp run @pantoken/web-components#translate",
+});
+
+for (const { locale, key } of missing) {
+  reporter.add({
+    surface: "ui.strings",
+    locale,
+    file: repoRelative(join(cacheDir, `${locale}.json`)),
+    detail: `"${key}" (English: ${JSON.stringify(source[key])})`,
+  });
 }
 
-console.log(`✓ i18n drift: all ${targets.length} locales × ${keys.length} keys are current`);
+if (missing.length === 0) {
+  console.log(`  ${targets.length} locales × ${keys.length} keys checked`);
+}
+process.exitCode = reporter.report();

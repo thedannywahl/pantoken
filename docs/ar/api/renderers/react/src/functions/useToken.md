@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/react/src](../index.md) / useToken
 
-# Function: useToken()
+# دالة: useToken()
 
 > **useToken**(`name`, `fallback?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خطاف React يعيد قيمة رمزة محللة `--instui-*` (إعادة قراءة عند تغيير `name`).
+هوك React يعيد قيمة التوكن المحللة `--instui-*` (يعيد القراءة عند تغيير `name`).
 
-## Parameters
+## المعلمات
 
 ### name
 
@@ -18,11 +18,11 @@
 
 `string` = `""`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```tsx
 import { useToken } from "@pantoken/react";

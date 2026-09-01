@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [platforms/android/src](../index.md) / toAndroid
 
-# Function: toAndroid()
+# دالة: toAndroid()
 
 > **toAndroid**(`tokens`, `options`): `Promise`\<`string`[]\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار XML موارد Android لـ IR رموز صريح.
+إنشاء ملف XML لموارد Android لتمثيل IR لرمز محدد.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
@@ -18,15 +18,15 @@ readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
 [`GenerateAndroidOptions`](../interfaces/GenerateAndroidOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`[]\>
 
-مسارات `colors.xml` و`dimens.xml` المكتوبة.
+مسارات الـ `colors.xml` و `dimens.xml` المكتوبة.
 
-## Examples
+## أمثلة
 
-**إصدار IR لموضوع معين**
+**إصدار IR لموضوع محدد**
 
 ```ts
 import { toAndroid } from "@pantoken/android";

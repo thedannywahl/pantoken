@@ -1,11 +1,11 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / listComponents
 
-# Function: listComponents()
+# دالة: listComponents()
 
 > **listComponents**(): [`CssDocEntry`](../interfaces/CssDocEntry.md)[]
 
-اسرد جميع المكونات (النوع: "مكون").
+عرض جميع المكونات (النوع: "component").
 
-## Returns
+## القيم المرجعة
 
 [`CssDocEntry`](../interfaces/CssDocEntry.md)[]

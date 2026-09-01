@@ -1,34 +1,34 @@
 [pantoken](../../../../index.md) / [renderers/svelte/src](../index.md) / registerLocalized
 
-# Function: registerLocalized()
+# دالة: registerLocalized()
 
 > **registerLocalized**(`bundle`, `target?`, `options?`): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تسجيل `@pantoken/web-components` عناصر مخصصة مع سلاسل خاصة باللغة والاتجاه.
+سجّل عناصر مخصّصة `@pantoken/web-components` مع سلاسل نصية مخصّصة للغة والاتجاه.
 
-يقبل [LocaleBundle](#) مُحلل بالكامل _أو_ سلسلة علامة BCP47 خام. عند تمرير سلسلة،
-[makeStrings](#) يشتق أسماء أيام الأسبوع عبر `Intl.DateTimeFormat` وجميع السلاسل الأخرى
-تعود إلى الإنجليزية؛ مرر حزمة للحصول على ترجمات كاملة.
+يقبل [LocaleBundle](#) مُحلَّلًا بالكامل *أو* سلسلة علامة BCP47 خام. عند تمرير سلسلة
+تستخرج [makeStrings](#) أسماء أيام الأسبوع عبر `Intl.DateTimeFormat` وتعود كل السلاسل الأخرى
+إلى الإنجليزية؛ مرّر حزمة للحصول على ترجمات كاملة.
 
-## Parameters
+## المعلمات
 
 ### bundle
 
 `string` \| [`LocaleBundle`](#)
 
-كائن [LocaleBundle](#)، أو علامة BCP47 (`"hu"`، `"ar"`، …).
+كائن [LocaleBundle](#)، أو علامة BCP47 (`"hu"`, `"ar"`, …).
 
 ### target?
 
 `ElementRegistry`
 
-السجل المراد التعريف فيه (الافتراضي هو `globalThis.customElements`).
+سجل التعريف الذي سيتم التعريف فيه (الافتراضي هو `globalThis.customElements`).
 
 ### options?
 
-مرر إلى `register()` (على سبيل المثال `prefix`، `only`).
+يُمرَّر إلى `register()` (مثلاً `prefix`, `only`).
 
 #### prefix?
 
@@ -36,13 +36,13 @@
 
 #### only?
 
-readonly `string`[]
+للقراءة فقط `string`[]
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
 ```ts
 import { registerLocalized, hu } from "@pantoken/i18n";

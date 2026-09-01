@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [renderers/react/src](../index.md) / TokenProvider
 
-# Function: TokenProvider()
+# دالة: TokenProvider()
 
 > **TokenProvider**(`__namedParameters`): `ReactNode`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تسجيل عناصر pantoken المخصصة (على جانب العميل) وعرض الأطفال.
+تسجيل عناصر pantoken المخصصة (جهة العميل) وعرض العناصر الفرعية.
 
-## Parameters
+## المعلمات
 
 ### \_\_namedParameters
 
 [`TokenProviderProps`](../interfaces/TokenProviderProps.md)
 
-## Returns
+## القيم المرجعة
 
 `ReactNode`
 
-## Example
+## مثال
 
 ```tsx
 import { TokenProvider, Icon } from "@pantoken/react";

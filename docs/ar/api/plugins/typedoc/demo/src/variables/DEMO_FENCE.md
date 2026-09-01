@@ -1,9 +1,9 @@
 [pantoken](../../../../../index.md) / [plugins/typedoc/demo/src](../index.md) / DEMO\_FENCE
 
-# Variable: DEMO\_FENCE
+# متغير: DEMO\_FENCE
 
 > `const` **DEMO\_FENCE**: `"demo"` = `"demo"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-لغة الكود المسيجة التي يتم إصدار مواصفات العرض التوضيحي تحتها — استهدفها في أداة العرض الخاصة بك.
+لغة كتلة الشيفرة المحاطة التي تُصدر بموجبها مواصفة العرض التجريبي — استهدفها في العارض الخاص بك.

@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [bundlers/panda/src](../index.md) / PandaToken
 
-# Interface: PandaToken
+# واجهة: PandaToken
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-رمز Panda خام: `{ value }`.
+رمز باندا خام: `{ value }`.
 
-## Properties
+## الخصائص
 
 ### value
 
 > **value**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

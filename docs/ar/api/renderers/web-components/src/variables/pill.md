@@ -1,14 +1,15 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / pill
 
-# Variable: pill
+# متغير: pill
 
 > `const` **pill**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-pill&gt;` — حبة حالة مضغوطة. تعيين السمة `variant` إلى معدل `-color-&lt;variant&gt;`؛ المحتوى المدرج هو التسمية.
+`&lt;instui-pill&gt;` — عنصر حالة مدمج ومضغوط. الخاصية `variant` تطابق المُعدِّل `-color-&lt;variant&gt;`
+; المحتوى الموضوع في الفتحة هو التسمية.
 
-## Example
+## مثال
 
 ```html
 <instui-pill variant="success">Active</instui-pill>

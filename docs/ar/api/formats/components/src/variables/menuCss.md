@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / menuCss
 
-# Variable: menuCss
+# متغير: menuCss
 
 > `const` **menuCss**: `Definition`\[`"css"`\] = `menu.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `menu` مستقلة — CSS مسبوق لقائمة القائمة المنسدلة، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `menu` — CSS ذات بادئة لقائمة منسدلة، جاهزة للشحن كملف `.css`.

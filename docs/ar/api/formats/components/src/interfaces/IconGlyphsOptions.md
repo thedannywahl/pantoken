@@ -1,49 +1,49 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / IconGlyphsOptions
 
-# Interface: IconGlyphsOptions
+# واجهة: IconGlyphsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [iconGlyphsCss](../functions/iconGlyphsCss.md).
+خيارات لـ [iconGlyphsCss](../functions/iconGlyphsCss.md).
 
-## Extends
+## يمتد
 
 - [`ComponentOptions`](ComponentOptions.md)
 
-## Properties
+## الخصائص
 
 ### prefix?
 
 > `optional` **prefix?**: `string` \| `null`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بادئة الفئة. سلسلة صحيحة تضع مساحة اسم لكل فئة (`"instui"` → `.instui-button`); أي قيمة خاطئة (`null`، `undefined`، `""`، أو حذف الخيار) تحذف البادئة بالكامل (`.button`)، لذا يمكنك كتابة `class="heading -h1"`. تم بناء أوراق الأنماط المرسلة بهذه الحزمة باستخدام `"instui"`.
+بادئة الصنف. قيمة نصية صحيحة (truthy) تمنح نطاقًا لكل صنف (`"instui"` → `.instui-button`); أي قيمة زائفة (falsy) (`null`، `undefined`، `""`، أو عند حذف الخيار) تُزيل البادئة تمامًا (`.button`)، مما يتيح لك تأليف `class="heading -h1"`. أوراق الأنماط المرفقة بهذه الحزمة مُبنية باستخدام `"instui"`.
 
-#### Inherited from
+#### موروث من
 
 [`ComponentOptions`](ComponentOptions.md).[`prefix`](ComponentOptions.md#prefix)
 
----
+***
 
 ### theme?
 
 > `optional` **theme?**: `ComponentTheme`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-موضوع الهدف لـ CSS المُصدر. الافتراضي هو `"rebrand"` عند الحذف.
+السمة المستهدفة لـ CSS الصادر. القيمة الافتراضية هي "rebrand" عند حذفها.
 
-#### Inherited from
+#### موروث من
 
 [`ComponentOptions`](ComponentOptions.md).[`theme`](ComponentOptions.md#theme)
 
----
+***
 
 ### deprecatedAliases?
 
 > `optional` **deprecatedAliases?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أصدر أيضاً بدائل الرموز المهملة InstUI-prop (`-render-icon-&lt;name&gt;`، `-render-custom-icon-&lt;name&gt;`) كبدائل وظيفية لـ `-icon-&lt;name&gt;`. مُطفأ افتراضياً — تشغيله يضاعف الورقة تقريباً، لذا فعّله فقط عندما تحتاج إلى علامات مكتوبة مقابل أسماء الخصائص القديمة `renderIcon`/`renderCustomIcon` للحفاظ على العرض. تم بناء `icons.css` المُرسل بهذا الخيار.
+قم أيضًا بإصدار أسماء الرموز المهملة من InstUI-prop (`-render-icon-&lt;name&gt;`, `-render-custom-icon-&lt;name&gt;`) كأسماء مستعارة وظيفية لـ `-icon-&lt;name&gt;`. معطلة افتراضياً — تفعيلها يضاعف الورقة تقريبًا، لذا فعّلها فقط عند الحاجة إلى أن تستمر الوسوم المكتوبة بأسماء الخاصيتين القديمتين `renderIcon`/`renderCustomIcon` في العرض. تم بناء ملف `icons.css` الموزَّع مع هذا التفعيل.

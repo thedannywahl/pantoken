@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / decodeIconSvg
 
-# Function: decodeIconSvg()
+# دالة: decodeIconSvg()
 
 > **decodeIconSvg**(`value`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-فك رموز قيمة التوكن icon `url('data:…')` مرة أخرى إلى SVG مضمن.
+فك ترميز قيمة `url('data:…')` لرمز الأيقونة مرة أخرى إلى SVG مضمن.
 
-## Parameters
+## المعلمات
 
 ### value
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { decodeIconSvg } from "@pantoken/core";

@@ -1,268 +1,266 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / CssDocEntry
 
-# Interface: CssDocEntry
+# واجهة: CssDocEntry
 
-سجل CSS موثّق واحد: فئته الأساسية بالإضافة إلى كل شيء مشتق من CSS + تعليقات الوثائق.
+سجل CSS موثق واحد: فئته الأساسية وكل ما تم اشتقاقه من CSS + تعليقات التوثيق.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-اسم السجل من `@component`/`@utility`/`@rule`/`@declaration`/`@name`، على سبيل المثال `button`.
+اسم السجل من `@component`/`@utility`/`@rule`/`@declaration`/`@name`، مثلاً `button`.
 
----
+***
 
 ### kind
 
 > **kind**: `CssRecordKind`
 
-نوع سطح CSS الذي توثقه (الافتراضي هو `component`).
+نوع سطح CSS الذي يوثقه هذا (الافتراضي `component`).
 
----
+***
 
 ### className
 
 > **className**: `string`
 
-محدد CSS الأساسي — فئة (`.button`)، سمة (`[data-layout="x"]`)، معرّف (`#foo`),
-أو shadow-DOM pseudo (`:host`) — مشتق من القاعدة الأولى bare-class أو تعيينه بشكل صريح عبر
-`@selector`. دائماً غير فارغ (يرجع إلى `.${name}` عند فشل الاستدلال).
+محدد CSS الأساسي — فئة (`.button`)، سمة (`[data-layout="x"]`)، معرف (`#foo`)،
+أو موهوم shadow-DOM (`:host`) — مستنتَج من أول قاعدة بفئة عارية أو مُضبَط صراحةً عبر
+`@selector`. دائماً غير فارغ (يرجع إلى `.${name}` عند فشل الاستنتاج).
 
----
+***
 
 ### summary?
 
 > `optional` **summary?**: `string`
 
-ملخص سطر واحد من `@summary`.
+ملخص من سطر واحد من `@summary`.
 
----
+***
 
 ### remarks?
 
 > `optional` **remarks?**: `string`
 
-نثر موسع من `@remarks`.
+نص مطول من `@remarks`.
 
----
+***
 
 ### privateRemarks?
 
 > `optional` **privateRemarks?**: `string`
 
-نثر داخلي فقط من `@privateRemarks` (قد تختار الباعثات حذفه من الإخراج العام).
+نص داخلي فقط من `@privateRemarks` (قد تختار المُصدِّرات عدم تضمينه في المخرجات العامة).
 
----
+***
 
 ### releaseStage?
 
 > `optional` **releaseStage?**: `CssReleaseStage`
 
-مرحلة الإصدار من علامة المعدّل (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`).
+مرحلة الإصدار من وسم علم المُعدِّل (`@alpha`/`@beta`/`@experimental`/`@internal`/`@public`).
 
----
+***
 
 ### since?
 
 > `optional` **since?**: `string`
 
-الإصدار المقدم، من `@since`.
+الإصدار الذي أُدخِل فيه، من `@since`.
 
----
+***
 
 ### group?
 
 > `optional` **group?**: `string`
 
-مجموعة/فئة توثيق، من `@group`/`@category`.
+مجموعة/فئة التوثيق، من `@group`/`@category`.
 
----
+***
 
 ### accessibility?
 
 > `optional` **accessibility?**: `string`
 
-إرشادات الوصول، من `@a11y`/`@accessibility`.
+إرشادات إمكانية الوصول، من `@a11y`/`@accessibility`.
 
----
+***
 
 ### global?
 
 > `optional` **global?**: `boolean`
 
-تعيين عندما يحمل هذا السجل علامة `@global` — معدّلاته (وعلامات `@global` لكل معدّل)
-تنطبق على أي component/layout/rule/declaration، وليس فقط فئته الأساسية. يُستخدم أثناء
-فحوصات التحقق والاستهلاك لحل تطابقات المعدّل عالمياً.
+يُعيَّن عندما يحمل هذا السجل وسم `@global` — مُعدِّلاته (وعلامات `@global` لكل مُعدِّل)
+تنطبق على أي مكوّن/تخطيط/قاعدة/تصريح، وليس فقط على فئة هذا السجل الأساسية. يُستخدم أثناء
+التحقق والاستهلاك لحل تطابقات المُعدِّلات على مستوى العالم.
 
----
+***
 
 ### modifiers
 
 > **modifiers**: `CssModifier`[]
 
-معدّلات مستخرجة من AST، معلقة مع نثر `@modifier` حيث تم تأليفها.
+المعدِّلات المستخرجة من AST، مشروحة بنص `@modifier` حيث كُتبت.
 
----
+***
 
 ### parts
 
 > **parts**: `CssPart`[]
 
-أجزاء العنصر الفرعي المستخرجة من AST (قائمة على الفئة)، معلقة مع نثر `@part` حيث تم تأليفها.
+أجزاء العناصر الفرعية المستخرجة من AST (بناءً على الفئات)، مشروحة بنص `@part` حيث كُتبت.
 
----
+***
 
 ### shadowParts
 
 > **shadowParts**: `CssPart`[]
 
-أجزاء Shadow-DOM المكشوفة (`::part(name)`)، من `@csspart` أو محدد `::part()`.
+الأجزاء المكشوفة في Shadow-DOM (`::part(name)`), من `@csspart` أو محدد `::part()`.
 
----
+***
 
 ### pseudoElements
 
 > **pseudoElements**: `CssPseudoElement`[]
 
-عناصر pseudo الأصلية التي يصمتها المكون (`::before`، `::marker`، ...)، من `@pseudo` أو محدد.
+الزوايا الوهمية الأصلية التي تُطبَّق على المكوّن (`::before`, `::marker`, …)، من `@pseudo` أو محدد.
 
----
+***
 
 ### states
 
 > **states**: `CssState`[]
 
-الحالات التي يتفاعل معها المكون، من `@cssstate`، `:state()`، pseudo-classes، أو فئات الحالة.
+الحالات التي يتفاعل معها المكوّن، من `@cssstate`, `:state()`, الصفات الزائفة، أو فئات الحالة.
 
----
+***
 
 ### slots
 
 > **slots**: `CssSlot`[]
 
-الفتحات المسماة التي يكشفها غلاف المكون، من `@slot`.
+المقاطع المسماة التي يكشفها هيكل المكوّن، من `@slot`.
 
----
+***
 
 ### elements?
 
 > `optional` **elements?**: `CssElementConstraints`
 
-عناصر HTML المسموحة من `@element` (الافتراضي + الملفات الشخصية المسماة الاختيارية).
+عناصر HTML المسموح بها من `@element` (الملف الافتراضي + ملفات تعريف مسماة اختيارية).
 
----
+***
 
 ### todos
 
 > **todos**: `string`[]
 
-ملاحظات المهام الداخلية، من علامات `@todo` وتعليقات `/* @todo … */` المضمنة. ملاحظات التطوير،
-ليس API عام — قد تحذفها الباعثات (مثل [CssDocEntry.privateRemarks](#privateremarks)).
+ملاحظات مهام داخلية، من وسوم `@todo` وتعليقات سطرية `/* @todo … */`. ملاحظات تطوير،
+ليست واجهة عامة — قد تقوم المُصدِّرات بحذفها (مثل [CssDocEntry.privateRemarks](#privateremarks)).
 
----
+***
 
 ### cssPropertiesConsumed
 
 > **cssPropertiesConsumed**: `CssTokenConsumed`[]
 
-رموز التصميم التي يستهلكها هذا المكون: كل خاصية مخصصة `--*` مرجعية عبر `var(...)` داخل
-قواعده، كل واحدة معلقة مع نثر `@tokens` حيث تم تأليفها (ويشمل أي رمز معلن بـ `@tokens`
-غير الموجود حرفياً عبر `var()`).
+رموز التصميم التي يستهلكها هذا المكوّن: كل خاصية مخصصة `--*` مشار إليها عبر `var(...)` داخل
+قواعده، موشحة بنص `@tokens` حيث كُتبت (وبضمنها أي رمز مُعلن عبر `@tokens` غير الموجود حرفياً عبر `var()`).
 
----
+***
 
 ### cssPropertiesDeclared
 
 > **cssPropertiesDeclared**: `CssPropertyDeclared`[]
 
-الخصائص المخصصة التي يعلنها هذا المكون (`@property`) أو يوثقها (`@cssproperty`).
+الخصائص المخصصة التي يعلنها هذا المكوّن (`@property`) أو يوثّقها (`@cssproperty`).
 
----
+***
 
 ### functions
 
 > **functions**: `CssFunction`[]
 
-دوال CSS المخصصة (`@function`) التي يحددها هذا المكون.
+دوال CSS المخصصة (`@function`) التي يعرّفها هذا المكوّن.
 
----
+***
 
 ### animations
 
 > **animations**: `CssAnimation`[]
 
-الرسوم المتحركة (`@keyframes`) التي يكشفها هذا المكون.
+الحركات (`@keyframes`) التي يكشفها هذا المكوّن.
 
----
+***
 
 ### layers
 
 > **layers**: `CssLayer`[]
 
-طبقات Cascade (`@layer`) التي يشارك فيها هذا المكون.
+طبقات التتابع (`@layer`) التي يشارك فيها هذا المكوّن.
 
----
+***
 
 ### conditions
 
 > **conditions**: `CssCondition`[]
 
-كتل الدعم الشرطي (`@container`/`@supports`/`@media`) التي تقع القواعد تحتها.
+كتل دعم شرطية (`@container`/`@supports`/`@media`) تقع تحتها القواعد.
 
----
+***
 
 ### examples
 
 > **examples**: `string`[]
 
-كتل `@example`، حرفياً.
+كتل `@example`، حرفيًّا.
 
----
+***
 
 ### structure?
 
 > `optional` **structure?**: `StructureNode`[]
 
-شجرة العنصر `@structure` المأليفة (العقد من المستوى الأعلى)، عند وجودها. عندما يستخدم جسم `@structure`
-كتل `@variant` (انظر [structureVariants](#structurevariants))، يحتفظ هذا بعقد النوع الأول فقط،
-للتوافق للخلف مع أي رمز لم يتم تحديثه لقراءة `structureVariants`.
+شجرة عناصر `@structure` المؤلفة من المؤلف (العُقد العلوية)، عندما تكون موجودة. عندما يستخدم جسم `@structure` كتل `@variant` (انظر [structureVariants](#structurevariants))، فهذا يحتوي على عقد المتغيّر الأول فقط،
+للحفاظ على التوافق مع أي كود لم يتم تحديثه لقراءة `structureVariants`.
 
----
+***
 
 ### structureVariants?
 
 > `optional` **structureVariants?**: `StructureVariant`[]
 
-أشكال DOM بديلة لهذا المكون، عندما يحتوي جسم `@structure` المأليف على واحد أو
-أكثر من كتل `@variant` من المستوى الأعلى — غائب بالنسبة للحالة الشائعة من هيكل واحد غير متغير.
+أشكال DOM البديلة لهذا المكوّن، عندما يحتوي جسم `@structure` المؤلّف على كتلة أو
+أكثر من كتل `@variant` العلوية — غير موجود للحالة الشائعة لبنية واحدة غير متغيرة.
 
----
+***
 
 ### structureDescription?
 
 > `optional` **structureDescription?**: `string`
 
-وصف نثر اختياري يقود جسم `@structure`، عند تأليفه.
+وصف نصي اختياري يسبق جسم `@structure`، عندما يُكتب.
 
----
+***
 
 ### demo?
 
 > `optional` **demo?**: `string`
 
-`@demo &lt;spec&gt;` (على سبيل المثال `self:button`)، عند تأليفه.
+`@demo &lt;spec&gt;` (مثال `self:button`), عندما يُكتب.
 
----
+***
 
 ### deprecated?
 
 > `optional` **deprecated?**: `string`
 
-نص استبدال الإهمال على مستوى المكون، عند تأليفه (الحجة لعلامة `@deprecated`).
+نص استبدال الإهمال على مستوى المكوّن، عندما يُكتب (الوسيط لوسم `@deprecated`).
 
----
+***
 
 ### see
 
@@ -270,92 +268,91 @@
 
 المراجع المتقاطعة `@see &lt;ref&gt;`.
 
----
+***
 
 ### usage?
 
 > `optional` **usage?**: `string`
 
-نثر الاستخدام من `@usage` — كيفية تضمين ورقة الأنماط / استخدام المكون.
+نص الاستخدام من `@usage` — كيفية تضمين ورقة الأنماط / استخدام المكوّن.
 
----
+***
 
 ### annotations
 
 > **annotations**: `CssAnnotation`[]
 
-صفوف وسيلة إيضاح التعليقات المحلية من `@annotations`، بترتيب المؤلف.
+صفوف أسطورة التعليقات المحلية من `@annotations`، بترتيب المؤلف.
 
----
+***
 
 ### refs
 
 > **refs**: `number`[]
 
-المراجع المحلية للتعليقات من `@ref`، بترتيب المؤلف.
+مراجع التعليقات المحلية من `@ref`، بترتيب المؤلف.
 
----
+***
 
 ### decorators
 
 > **decorators**: `CssDecorator`[]
 
-مزخرفات نموذج الكائنات على مستوى السجل.
+مزخرفات نموذج الكائن على مستوى السجل.
 
----
+***
 
 ### compat
 
 > **compat**: `string`[]
 
-ملاحظات الدعم للمتصفح / توافق الميزات من `@compat`.
+ملاحظات دعم المتصفح / توافق الميزة من `@compat`.
 
----
+***
 
 ### related
 
 > **related**: `CssRelated`[]
 
-مكونات ذات صلة من `@related`.
+المكوّنات ذات الصلة من `@related`.
 
----
+***
 
 ### memberOf?
 
 > `optional` **memberOf?**: `CssMemberOf`
 
-عضوية العائلة المُعلنة من `@memberOf` — هذا السجل هو عضو في سجل مسمى آخر،
-بشكل اختياري `private` (يجب أن يظهر فقط داخل ذلك الوالد). غائب عند عدم التأليف.
+عضوية العائلة المعلنة من `@memberOf` — هذا السجل عضو في سجل مسمّى آخر،
+اختياريًا `private` (يجب أن يظهر فقط داخل ذلك الأصل). غائب عندما لا يُكتب.
 
----
+***
 
 ### members?
 
 > `optional` **members?**: `string`[]
 
-أسماء سجلات الأعضاء من `@members` — الاتجاه العكسي، المُعلن على الوالد.
+أسماء سجلات الأعضاء من `@members` — الاتجاه العكسي، معلَن على الأصل.
 
----
+***
 
 ### memberDeclarations?
 
 > `optional` **memberDeclarations?**: `CssMemberDeclaration`[]
 
-إعلانات أعضاء من جانب الوالد المُنظمة من علامات `@member` المتكررة.
+إعلانات الأعضاء المهيكلة على جانب الأصل من وسوم `@member` المكرّرة.
 
----
+***
 
 ### source?
 
 > `optional` **source?**: `CssSource`
 
-حيث تم تأليف السجل، عند توفر معلومات الموضع (للروابط المصدرية).
+مكان تأليف السجل، عندما تتوفر معلومات الموضع (لروابط المصدر).
 
----
+***
 
 ### customBlocks?
 
 > `optional` **customBlocks?**: `Record`\<`string`, `string`[]\>
 
-محتوى علامات مخصصة مسجلة (كتلة)، مفهرسة حسب اسم العلامة بدون `@`. تم ملؤها فقط لـ
-العلامات المضافة عبر التكوين؛ يتم تجاهل العلامات المجهولة غير المسجلة. غائبة عند عدم العثور على أي منها.
+محتوى الوسوم المخصصة المسجلة (block)، مفهرس باسم الوسم دون الـ`@`. يُملأ فقط للوسوم المضافة عبر التكوين؛ تُتجاهل الوسوم غير المسجلة وغير المعروفة. غائب عندما لا يتم العثور على أيٍ منها.

@@ -2,27 +2,28 @@
 
 # react-markdown
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/react-markdown` — عرض Markdown مع مكونات Instructure UI وأيقونات pantoken.
+`@pantoken/react-markdown` — عرض Markdown باستخدام مكونات واجهة Instructure وأيقونات pantoken.
 
-يعرض الإدخال الافتراضي Markdown بنكهة GitHub، رموز `:icon:` مضمنة (عبر
-`@pantoken/rehype` + `@pantoken/icons`)، عينات ألوان مشفرة، وتنبيهات بأسلوب GitHub. يوجد موفر MDX في `@pantoken/react-markdown/mdx`.
+تقوم الإدخال الافتراضي بعرض GitHub-Flavored Markdown، وعلامات `:icon:` المضمنة (عبر
+`@pantoken/rehype` + `@pantoken/icons`), ومعاينات ألوان مُرمّزة، وتنبيهات على نمط GitHub. موفر MDX
+موجود في `@pantoken/react-markdown/mdx`.
 
-## Interfaces
+## واجهات
 
 - [InstuiMarkdownRenderOptions](interfaces/InstuiMarkdownRenderOptions.md)
 - [InstuiMarkdownProps](interfaces/InstuiMarkdownProps.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [AlertMarker](type-aliases/AlertMarker.md)
 
-## Variables
+## المتغيرات
 
 - [instuiMarkdownComponents](variables/instuiMarkdownComponents.md)
 
-## Functions
+## الدوال
 
 - [createInstuiMarkdownComponents](functions/createInstuiMarkdownComponents.md)
 - [buildIconResolver](functions/buildIconResolver.md)

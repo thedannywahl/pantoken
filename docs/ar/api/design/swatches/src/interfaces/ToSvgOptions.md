@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / ToSvgOptions
 
-# Interface: ToSvgOptions
+# واجهة: ToSvgOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الخيارات لـ [toSvg](../functions/toSvg.md).
+خيارات الدالة [toSvg](../functions/toSvg.md).
 
-## Properties
+## الخصائص
 
 ### title?
 
 > `optional` **title?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 عنوان الورقة (الافتراضي `"Instructure color tokens"`).
 
----
+***
 
 ### columns?
 
 > `optional` **columns?**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-رقائق لكل صف في القسم (الافتراضي `6`).
+عدد الشرائح لكل صف داخل القسم (الافتراضي `6`).

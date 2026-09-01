@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / resolveFirstDay
 
-# Function: resolveFirstDay()
+# دالة: resolveFirstDay()
 
 > **resolveFirstDay**(`locale`): `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-أول يوم من الأسبوع كفهرس `Date.getDay()` بلغة جافا سكريبت (0=الأحد … 6=السبت).
+أول يوم في الأسبوع كمؤشر JS `Date.getDay()` (0=الأحد … 6=السبت).
 
-## Parameters
+## المعلمات
 
 ### locale
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `number`

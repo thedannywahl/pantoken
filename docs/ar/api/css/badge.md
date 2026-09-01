@@ -2,24 +2,24 @@
 
 `.instui-badge` — نقطة صغيرة للعد أو الحالة توضع فوق زاوية الهدف.
 
-لوضع شارة فوق هدف، لف كلاهما في `.instui-badge-wrapper` (مرساة الموضع) وثبت الشارة باستخدام معدل `-placement-*`.
+لوضع شارة فوق هدف، غلف كليهما داخل `.instui-badge-wrapper` (مرساة الموضع) وثبت الشارة بمعدِّل `-placement-*`.
 
 **المصدر:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/badge.css";
 ```
 
-## Demo
+## عرض توضيحي
 
 ```demo
 self:badge
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <span class="instui-badge-wrapper">
@@ -28,9 +28,9 @@ self:badge
 </span>
 ```
 
-## Structure
+## الهيكل
 
-تعرض الشارة بشكل مضمن بمفردها، أو داخل `instui-badge-wrapper` اختياري يرسيها فوق هدف.
+تعرض الشارة كسطر داخلي بمفردها، أو داخل `instui-badge-wrapper` اختياري يربطها فوق هدف.
 
 ```text
 .instui-badge-wrapper (0..1)
@@ -51,60 +51,61 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier                   | Description                                  |
-| -------------------------- | -------------------------------------------- |
-| `.-color-danger`           | عداد الانتباه/الخطأ.                         |
-| `.-color-inverse`          | على الظلام: شريحة فاتحة مع نص داكن.          |
-| `.-color-success`          | عداد إيجابي/كامل.                            |
-| `.-placement-bottom-end`   | الموضع في زاوية النهاية السفلى.              |
-| `.-placement-bottom-start` | الموضع في زاوية البداية السفلى.              |
-| `.-placement-end-center`   | موضع متمركز على حافة النهاية.                |
-| `.-placement-start-center` | موضع متمركز على حافة البداية.                |
-| `.-placement-top-end`      | الموضع في زاوية النهاية العليا.              |
-| `.-placement-top-start`    | الموضع في زاوية البداية العليا.              |
-| `.-pulse`                  | حلقة انتباه نابضة.                           |
-| `.-standalone`             | عرض بشكل مضمن، وليس موضعيًا فوق زاوية الهدف. |
-| `.-type-notification`      | نقطة فقط، بدون عد.                           |
+| معدّل | الوصف |
+| --- | --- |
+| `.-color-danger` | عدد انتباه/خطأ. |
+| `.-color-inverse` | على الخلفيات الداكنة: شريحة فاتحة بنص داكن. |
+| `.-color-success` | عدد إيجابي/مكتمل. |
+| `.-placement-bottom-end` | الموضع عند الزاوية السفلية-عند النهاية. |
+| `.-placement-bottom-start` | الموضع عند الزاوية السفلية-عند البداية. |
+| `.-placement-end-center` | الموضع مركزي على الحافة النهائية. |
+| `.-placement-start-center` | الموضع مركزي على الحافة الابتدائية. |
+| `.-placement-top-end` | الموضع عند الزاوية العلوية-عند النهاية. |
+| `.-placement-top-start` | الموضع عند الزاوية العلوية-عند البداية. |
+| `.-pulse` | حلقة انتباه نابضة. |
+| `.-standalone` | تعرض كسطر داخلي، ولا تُوضع فوق زاوية هدف. |
+| `.-type-notification` | نقطة فقط، بدون عد. |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description                                                              |
-| -------------- | ------------------------------------------------------------------------ |
-| `::before`     | حلقة الانتباه النابضة المرسومة بلون التركيز على الشارة (متغير `-pulse`). |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::before` | حلقة الانتباه النابضة مرسومة بلون تمييز الشارة (متغير `-pulse`). |
 
-## Custom properties
+## خصائص مخصّصة
 
-| Property                  | Type      | Default | Description                                             |
-| ------------------------- | --------- | ------- | ------------------------------------------------------- |
-| `--pantoken-badge-accent` | `<color>` | —       | ملء الشريحة؛ كل متغير `-color-*` وحلقة النبض تقرأ منها. |
-| `--pantoken-badge-text`   | `<color>` | —       | لون النص، مقترن بالتركيز ليبقى مقروءًا.                 |
+| خاصية | نوع | افتراضي | الوصف |
+| --- | --- | --- | --- |
+| `--pantoken-badge-accent` | `<color>` | — | ملء الشريحة؛ يُقرأ كل متغير `-color-*` وحلقة النبض منه. |
+| `--pantoken-badge-text` | `<color>` | — | لون النص، مرتبط بالتمييز ليبقى مقروءًا. |
 
-## Animations
+## التحريكات
 
-| Animation              | Description            |
-| ---------------------- | ---------------------- |
-| `pantoken-badge-pulse` | رسم متحرك لحلقة النبض. |
+| تحريك | الوصف |
+| --- | --- |
+| `pantoken-badge-pulse` | الرسوم المتحركة لحلقة النبض. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                    | Type                                               | Value                                                                        |
-| ---------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-border-width-md`               | `<length>`                                         | `0.125rem`                                                                   |
-| `--instui-component-badge-border-radius` | `<length>`                                         | `999rem`                                                                     |
-| `--instui-component-badge-color`         | `<color>`                                          | `#ffffff`                                                                    |
-| `--instui-component-badge-color-danger`  | `<color>`                                          | `#E62429`                                                                    |
-| `--instui-component-badge-color-inverse` | `<color>`                                          | `#273540`                                                                    |
-| `--instui-component-badge-color-primary` | `<color>`                                          | `light-dark(#1D354F, #EEF4FD)`                                               |
-| `--instui-component-badge-color-success` | `<color>`                                          | `#03893D`                                                                    |
-| `--instui-component-badge-font-family`   | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-badge-font-size`     | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-badge-font-weight`   | `<integer>`                                        | `600`                                                                        |
-| `--instui-component-badge-padding`       | `<length>`                                         | `0.25rem`                                                                    |
-| `--instui-component-badge-size`          | `<length>`                                         | `1rem`                                                                       |
-| `--instui-spacing-space-sm`              | `<length>`                                         | `0.5rem`                                                                     |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-border-width-md` | `<length>` | `0.125rem` |
+| `--instui-component-badge-border-radius` | `<length>` | `999rem` |
+| `--instui-component-badge-color` | `<color>` | `#ffffff` |
+| `--instui-component-badge-color-danger` | `<color>` | `#E62429` |
+| `--instui-component-badge-color-inverse` | `<color>` | `#273540` |
+| `--instui-component-badge-color-primary` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
+| `--instui-component-badge-color-success` | `<color>` | `#03893D` |
+| `--instui-component-badge-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-badge-font-size` | `<length>` | `0.75rem` |
+| `--instui-component-badge-font-weight` | `<integer>` | `600` |
+| `--instui-component-badge-padding` | `<length>` | `0.25rem` |
+| `--instui-component-badge-size` | `<length>` | `1rem` |
+| `--instui-spacing-space-sm` | `<length>` | `0.5rem` |
 
-## Related
+## ذات صلة
 
-- [pill](/ar/api/css/pill.md) — نظير شريحة التسمية المضمنة.
+- [pill](/ar/api/css/pill.md) — النظير الشريحي الملصق الداخلي.
+

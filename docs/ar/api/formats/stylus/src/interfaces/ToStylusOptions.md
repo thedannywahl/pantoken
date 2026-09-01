@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [formats/stylus/src](../index.md) / ToStylusOptions
 
-# Interface: ToStylusOptions
+# واجهة: ToStylusOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toStylus](../functions/toStylus.md).
+خيارات لـ [toStylus](../functions/toStylus.md).
 
-## Properties
+## الخصائص
 
 ### mode?
 
 > `optional` **mode?**: [`Mode`](../../../../packages/core/src/type-aliases/Mode.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+أي وضع لون يجب حله (الافتراضي `"light"`).

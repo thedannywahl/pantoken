@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/icon-font/src](../index.md) / buildIconFont
 
-# Function: buildIconFont()
+# دالة: buildIconFont()
 
 > **buildIconFont**(`options?`): `Promise`\<[`IconFontResult`](../interfaces/IconFontResult.md)\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء خط الرموز.
+بناء خط الأيقونات.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [BuildIconFontOptions](../interfaces/BuildIconFontOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<[`IconFontResult`](../interfaces/IconFontResult.md)\>
 
-[IconFontResult](../interfaces/IconFontResult.md).
+الـ[IconFontResult](../interfaces/IconFontResult.md).
 
-## Examples
+## أمثلة
 
-**بناء الخط الكامل وكتابة القطع الأثرية**
+**بناء الخط الكامل وكتابة المخرجات**
 
 ```ts
 import { buildIconFont } from "@pantoken/icon-font";
@@ -36,7 +36,7 @@ writeFileSync("PanTokens.ttf", font.ttf);
 writeFileSync("icons.css", font.css);
 ```
 
-**اسم خط مخصص ومجموعة فرعية من الرموز من مظهر آخر**
+**اسم خط مخصص ومجموعة فرعية من الأيقونات من سمة أخرى**
 
 ```ts
 import { buildIconFont } from "@pantoken/icon-font";

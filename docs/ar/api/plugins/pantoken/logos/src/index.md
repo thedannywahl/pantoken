@@ -2,39 +2,42 @@
 
 # logos
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-logos` — شعارات منتجات Instructure كـ SVGs و URIs ورموز صور.
+`@pantoken/plugin-logos` — شعارات منتجات Instructure كملفات SVG وسلاسل بيانات URI ورموز صور.
 
-إنه يوفر شعارات SVG من إرشادات UX الخاصة بـ Instructure لـ Canvas و Mastery و Parchment و Instructure و LearnPlatform و Ignite AI، في التخطيطات القياسية (أفقي، مكدس، رمز) وأوضاع اللون (ألوان كاملة، لون، مظلم، معكوس، وما إلى ذلك). كل شعار متاح بثلاث طرق: SVG الخام ([getLogoSvg](functions/getLogoSvg.md))، و data URI ([getLogoDataUri](functions/getLogoDataUri.md))، و رمز صورة `--instui-logo-&lt;product&gt;-&lt;layout&gt;-&lt;mode&gt;` في `@pantoken/plugin-logos/logos.css`.
+يوفر شعارات SVG من إرشادات تجربة المستخدم الخاصة بـ Instructure لمنتجات Canvas وMastery وParchment وInstructure وLearnPlatform وIgnite AI، بالتصميمات القياسية (أفقي، مكدس، أيقونة)
+وأنماط الألوان (ملون بالكامل، ملون، داكن، معكوس، وما إلى ذلك). كل شعار متاح بثلاث طرق:
+الـ SVG الخام ([getLogoSvg](functions/getLogoSvg.md))، وسلسلة بيانات URI ([getLogoDataUri](functions/getLogoDataUri.md))، و
+`--instui-logo-&lt;product&gt;-&lt;layout&gt;-&lt;mode&gt;` توكن صورة في `@pantoken/plugin-logos/logos.css`.
 
-كمكون إضافي pantoken، يساهم `css` hook برموز الصور تلك.
+باعتباره مكوِّنًا إضافيًا لـ pantoken، يساهم الخطاف `css` بتلك توكنات الصور.
 
-## Interfaces
+## واجهات
 
 - [LogoMeta](interfaces/LogoMeta.md)
 - [LogosOptions](interfaces/LogosOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Product](type-aliases/Product.md)
 - [LogoLayout](type-aliases/LogoLayout.md)
 - [LogoColorMode](type-aliases/LogoColorMode.md)
 
-## Variables
+## المتغيرات
 
 - [logos](variables/logos.md)
 - [products](variables/products.md)
 - [logosCss](variables/logosCss.md)
 
-## Functions
+## الدوال
 
 - [getLogoSvg](functions/getLogoSvg.md)
 - [getLogoDataUri](functions/getLogoDataUri.md)
 - [logosPlugin](functions/logosPlugin.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [logosPlugin](functions/logosPlugin.md)
+يعيد تسمية ويعيد تصدير [logosPlugin](functions/logosPlugin.md)

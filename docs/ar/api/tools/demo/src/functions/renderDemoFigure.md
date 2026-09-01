@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / renderDemoFigure
 
-# Function: renderDemoFigure()
+# دالة: renderDemoFigure()
 
 > **renderDemoFigure**(`resolved`): `string`
 
-عرض HTML لوحة العرض التوضيحي لعرض توضيحي تم حله: iframe عارية، معزولة، كسولة التحميل مؤطرة مثل
-مثال حي (بدون شريط أدوات المضيف — يحمل العامل الداخلي شريط علامات التبويب الخاص به). نمطها مع
+قم بتصيير HTML لوحة العينة (demo) لعينة محلولة: iframe عاري، معزول، يُحمّل كسولاً ومؤطر كمثال حي
+(بدون عناصر واجهة مضيف — المشغّل بداخل الـ iframe يحمل شريط أدوات تبويباته الخاص). زيّنه بـ
 `@pantoken/demo/demo.css`.
 
-## Parameters
+## المعلمات
 
 ### resolved
 
 [`ResolvedDemo`](../interfaces/ResolvedDemo.md)
 
-رقم [ResolvedDemo](../interfaces/ResolvedDemo.md).
+مثال لـ [ResolvedDemo](../interfaces/ResolvedDemo.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة HTML لوحة التثبيت.
+سلسلة HTML الخاصة باللوحة.

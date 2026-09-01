@@ -1,20 +1,20 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/custom-components/src](../index.md) / cardRules
 
-# Function: cardRules()
+# دالة: cardRules()
 
 > **cardRules**(`prefix?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء CSS لتخطيط البطاقة (التعليق + القواعد)، استبدال `prefix` بـ `pfx-` الحارس.
-الافتراضي هو `"instui-"` لورقة الأنماط المشحونة؛ مرر `""` لبناء بدون بادئة.
+بناء CSS لتخطيط البطاقة (تعليق توثيقي + قواعد)، مع استبدال `prefix` بعلامة الحارس `pfx-`.
+الافتراضي هو `"instui-"` لورقة الأنماط المرفقة؛ مرّر `""` لبناء بدون بادئات.
 
-## Parameters
+## المعلمات
 
 ### prefix?
 
 `string` = `"instui-"`
 
-## Returns
+## القيم المرجعة
 
 `string`

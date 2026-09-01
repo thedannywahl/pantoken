@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / focusOutlineRules
 
-# Function: focusOutlineRules()
+# دالة: focusOutlineRules()
 
 > **focusOutlineRules**(`selector?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-قواعد حلقة التركيز لمحدد focusable معين: حلقة راحة شفافة تتحول إلى
-على `:focus-visible`، بالإضافة إلى معدلات `-focus-color-*` / `-focus-position-inset` / `-focus-within` /
-`-without-focus-animation`. الكل `:where()`-ملفوف، لذا صفر-التحديد.
+قواعد حلقة التركيز للمُحدِّد القابل للتركيز: حلقة راحة شفافة تنتقل للدخول
+عند `:focus-visible`، بالإضافة إلى مُعدِّلات `-focus-color-*` / `-focus-position-inset` / `-focus-within` /
+`-without-focus-animation`. كل ذلك مغلف بـ `:where()`، لذا ذات خصوصية صفرية.
 
-## Parameters
+## المعلمات
 
 ### selector?
 
 `string` = `FOCUSABLE_SELECTOR`
 
-محدد focusable الذي تنطبق عليه الحلقة الأساسية (الافتراضي [FOCUSABLE\_SELECTOR](../variables/FOCUSABLE_SELECTOR.md)).
+المُحدِّد القابل للتركيز الذي تنطبق عليه الحلقة الأساسية (الافتراضي [FOCUSABLE\_SELECTOR](../variables/FOCUSABLE_SELECTOR.md)).
 
-## Returns
+## القيم المرجعة
 
 `string`
 

@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / elevationDeclarations
 
-# Function: elevationDeclarations()
+# دالة: elevationDeclarations()
 
 > **elevationDeclarations**(): \[`string`, `string`\][]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 أزواج الاسم/القيمة `--instui-elevation-*` (كل منها `box-shadow` متعدد الطبقات). تشير القيم إلى
-رموز لون الظل المنسوجة بالموضوع، لذا تتكيف حسب الموضوع أينما تحمل ورقة رموز.
+رموز ألوان ظل الإسقاط ذات السمات، لذا فهي تتكيف حسب السمة أينما تم تحميل ورقة الرموز.
 
-## Returns
+## القيم المرجعة
 
 \[`string`, `string`\][]
 
-زوج `[customProperty, value]` واحد لكل مستوى واسم مستعار.
+زوج واحد `[customProperty, value]` لكل مستوى ولكل اسم مستعار.
 
-## Example
+## مثال
 
 ```ts
 import { elevationDeclarations } from "@pantoken/utils";

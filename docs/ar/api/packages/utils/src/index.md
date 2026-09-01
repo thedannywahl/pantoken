@@ -2,15 +2,15 @@
 
 # utils
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/utils` — مساعدات مشتركة خالية من المنبع المستخدمة في جميع حزم pantoken: محلل مرجع الرمز (مع معالجة `light-dark()`)، ونمط الرمز الثنائي (مكتوب عبر `arkregex`)، وحالة kebab→camel، وتحليل اللون السادس عشر، وتنظيف SVG، ومقياس التباعد pantoken، والتحقق من انجراف المرجع، ومرسلات رمز→فئة الأداة العامة التي `@pantoken/components` (طبقة دلالية) و `@pantoken/plugin-primitives` (طبقة لوحة خام) كلاهما يبني عليه. يعتمد فقط على `@pantoken/model` (الأنواع) + `arkregex`، لذا يمكن لأي حزمة استخدامها دون سحب المنبع الخاص بـ GitHub فقط.
+`@pantoken/utils` — أدوات مساعدة مشتركة وخالية من الاعتماد على المستودع العلوي تُستخدم عبر حزم pantoken: محلل مراجع الرموز (`light-dark()` يتولى المعالجة)، وتعابير رتبتي الرموز (مكتوبة بأنواع عبر `arkregex`), تحويل kebab→camel، تحليل ألوان hex، تنظيف SVG، مقياس التباعد الخاص بـ pantoken، تحقق انحراف المراجع، ومولّدات عامة من token→utility-class التي يبني عليها كل من `@pantoken/components` (الطبقة الدلالية) و`@pantoken/plugin-primitives` (طبقة اللوحة الخام). يعتمد فقط على `@pantoken/model` (الأنواع) + `arkregex`، لذا يمكن لأي حزمة استخدامه دون جلب المستودع العلوي الخاص بـ GitHub.
 
-مدقق بناء جملة الرمز المدعوم بـ css-tree يقيم في `@pantoken/utils/token-syntax` دخول منفصل، وليس هذا البرميل — `css-tree` يجمع تحميل JSON `createRequire()` في وقت التشغيل الذي ينقطع عند السحب إلى حزمة متصفح/SSR، وهذا البرميل يتم استيراده بواسطة حزم متجهة للمتصفح (على سبيل المثال `@pantoken/components`) للمساعدين الخالين من العقدة أعلاه.
+مدقق صياغة الرموز المعتمد على css-tree موجود في نقطة دخول منفصلة `@pantoken/utils/token-syntax`، وليس في هذا البرّال — يقوم `css-tree` بتجميع تحميل JSON وقت التشغيل عبر `createRequire()` والذي يتعطل عند ضمه إلى حزمة متصفح/SSR، وهذا البرّال مستورد من الحزم الموجهة للمتصفح (مثل `@pantoken/components`) من أجل الأدوات الخالية من الاعتماد على Node المذكورة أعلاه.
 
-برميل نقي — كل تنفيذ يعيش في وحدة منفصلة منفصلة؛ أضف مساعدين جدد هناك وأعد تصديرهم هنا، لا تنمي هذا الملف.
+برّال نقي — كل تنفيذ يعيش في وحدة منفصلة خاصة به؛ أضف الأدوات المساعدة الجديدة هناك وأعد تصديرها هنا، لا توسع هذا الملف.
 
-## Interfaces
+## واجهات
 
 - [Rgba](interfaces/Rgba.md)
 - [ResolveOptions](interfaces/ResolveOptions.md)
@@ -19,12 +19,12 @@
 - [ColorUtilityNames](interfaces/ColorUtilityNames.md)
 - [TokenUtilityGroup](interfaces/TokenUtilityGroup.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Mode](type-aliases/Mode.md)
 - [ColorUtilityEntry](type-aliases/ColorUtilityEntry.md)
 
-## Variables
+## المتغيرات
 
 - [ELEVATION\_NAMES](variables/ELEVATION_NAMES.md)
 - [FOCUSABLE\_SELECTOR](variables/FOCUSABLE_SELECTOR.md)
@@ -33,7 +33,7 @@
 - [SPACING\_STEPS](variables/SPACING_STEPS.md)
 - [SPACING\_AUTO\_STEP](variables/SPACING_AUTO_STEP.md)
 
-## Functions
+## الدوال
 
 - [camelCase](functions/camelCase.md)
 - [parseHexColor](functions/parseHexColor.md)

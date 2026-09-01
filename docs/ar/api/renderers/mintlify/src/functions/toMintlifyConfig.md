@@ -1,28 +1,28 @@
 [pantoken](../../../../index.md) / [renderers/mintlify/src](../index.md) / toMintlifyConfig
 
-# Function: toMintlifyConfig()
+# دالة: toMintlifyConfig()
 
 > **toMintlifyConfig**(`tokens`): [`MintlifyTheme`](../interfaces/MintlifyTheme.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء مفاتيح المواضيع `docs.json` من Mintlify من IR للرمز.
+بناء مفاتيح الثيم في Mintlify `docs.json` من تمثيل IR للرموز.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
 readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+تمثيل IR (على سبيل المثال من `@pantoken/tokens`).
 
-## Returns
+## القيم المرجعة
 
 [`MintlifyTheme`](../interfaces/MintlifyTheme.md)
 
-مفاتيح `colors` + `background` للدمج في `docs.json` من Mintlify.
+مفاتيح `colors` + `background` للدمج في Mintlify `docs.json`.
 
-## Example
+## مثال
 
 ```ts
 import { toMintlifyConfig } from "@pantoken/mintlify";

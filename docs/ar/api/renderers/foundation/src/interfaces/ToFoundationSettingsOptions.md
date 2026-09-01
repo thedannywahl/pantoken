@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/foundation/src](../index.md) / ToFoundationSettingsOptions
 
-# Interface: ToFoundationSettingsOptions
+# واجهة: ToFoundationSettingsOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات ل [toFoundationSettings](../functions/toFoundationSettings.md).
+خيارات لـ [toFoundationSettings](../functions/toFoundationSettings.md).
 
-## Properties
+## الخصائص
 
 ### useDefault?
 
 > `optional` **useDefault?**: `boolean`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أضف `!default` إلى كل تخصيص، حتى تفوز تجاوزات المستهلك (الافتراضي `false`).
+أضف `!default` إلى كل تعيين، حتى تظل تجاوزات المستهلك هي الفائزة (الافتراضي `false`).

@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / createInstuiMarkdownComponents
 
-# Function: createInstuiMarkdownComponents()
+# دالة: createInstuiMarkdownComponents()
 
 > **createInstuiMarkdownComponents**(`options?`): `Components`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 بناء خريطة مكونات react-markdown لمجموعة من خيارات العرض.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [InstuiMarkdownRenderOptions](../interfaces/InstuiMarkdownRenderOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `Components`
 
-خريطة `components` في react-markdown مدعومة بـ Instructure UI.
+خريطة `components` لِـ react-markdown مدعومة بواسطة Instructure UI.
 
-## Example
+## مثال
 
-**مرر الخريطة مباشرة إلى react-markdown**
+**مرِّر الخريطة مباشرةً إلى react-markdown**
 
 ```tsx
 import Markdown from "react-markdown";

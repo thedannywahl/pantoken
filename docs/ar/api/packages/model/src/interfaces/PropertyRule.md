@@ -1,31 +1,31 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / PropertyRule
 
-# Interface: PropertyRule
+# واجهة: PropertyRule
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تسجيل `@property` مكتوب.
+تسجيل `@property` مُحدَّدُ النَّوع.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### syntax
 
 > **syntax**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### value
 
 > **value**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

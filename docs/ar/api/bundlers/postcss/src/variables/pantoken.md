@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [bundlers/postcss/src](../index.md) / pantoken
 
-# Variable: pantoken
+# متغير: pantoken
 
 > `const` **pantoken**: \{(`options?`): [`Plugin`](https://postcss.org/api/#plugin); `postcss`: `true`; \}
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مكون pantoken الإضافي PostCSS.
+إضافة pantoken لـ PostCSS.
 
 ## Type Declaration
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -18,21 +18,21 @@
 
 [PantokenPostcssOptions](../interfaces/PantokenPostcssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكون إضافي PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-علامة المكون الإضافي PostCSS المطلوبة.
+علامة المكوّن الإضافي المطلوبة لـ PostCSS.
 
-## Examples
+## أمثلة
 
-**سجل المكون الإضافي في postcss.config.js**
+**سجِّل الإضافة في postcss.config.js**
 
 ```js
 import pantoken from "@pantoken/postcss";
@@ -41,7 +41,7 @@ export default { plugins: [pantoken()] };
 // In your entry stylesheet, `@pantoken;` expands to the token stylesheet.
 ```
 
-**وسّع قاعدة at-rule مخصصة (atRule: "instui" بدلاً من الافتراضي)**
+**توسيع at-rule مخصص (atRule: "instui" بدلاً من الافتراضي)**
 
 ```js
 import { pantoken } from "@pantoken/postcss";

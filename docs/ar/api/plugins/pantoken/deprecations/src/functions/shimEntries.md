@@ -1,19 +1,19 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / shimEntries
 
-# Function: shimEntries()
+# دالة: shimEntries()
 
 > **shimEntries**(`ledger`): `DeprecationEntry`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإدخالات التي يمكنها إصدار shim (تحمل بديل أو قيمة مجمدة).
+الإدخالات التي يمكنها إصدار شيم (تحمل بديلاً أو قيمة مجمّدة).
 
-## Parameters
+## المعلمات
 
 ### ledger
 
 `DeprecationLedger`
 
-## Returns
+## القيم المرجعة
 
 `DeprecationEntry`[]

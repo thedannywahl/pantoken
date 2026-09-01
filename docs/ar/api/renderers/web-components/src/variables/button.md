@@ -1,20 +1,21 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / button
 
-# Variable: button
+# متغير: button
 
 > `const` **button**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-button&gt;` — `&lt;button&gt;` بأسلوب الرمز. ترسم السمة `variant` إلى معدِّل `-color-&lt;variant&gt;`
-(`secondary`، `tertiary`، `success`، `danger`، `ai`، ...)؛ تضيف `margin` مسافة حول المضيف (كلمات رئيسية من InstUI مثل `small` / `medium large`); محتوى الفتحة هو التسمية.
+`&lt;instui-button&gt;` — نمط رمز `&lt;button&gt;`. سمة `variant` تُطابق المُعدِّل `-color-&lt;variant&gt;`
+(`secondary`, `tertiary`, `success`, `danger`, `ai`, …); `margin` يضيف تباعدًا حول
+المضيف (كلمات مفتاحية في InstUI مثل `small` / `medium large`); المحتوى المزوَّد في الشق هو التسمية.
 
-وهو أيضاً معطِّل أصلي: `popovertarget` (مع `popovertargetaction` اختياري) يتبدل أي
-`[popover]` خفيف DOM مثل `&lt;instui-context-view&gt;`، `&lt;instui-popover&gt;`، أو `&lt;instui-tray&gt;`، و
-`command`/`commandfor` يقود المكونات القائمة على الأوامر (`&lt;instui-modal&gt;` مع `--show`/`--close`،
-إلخ.). يتم إعادة توجيه المعرِّف إلى الزر الداخلي عبر معطِّل IDL، لذا يتم حله عبر حدود الظل وقد يشير إلى الأمام إلى عنصر معلَّن لاحقاً في الوثيقة.
+وهو أيضًا مُشغِّل أصلي: `popovertarget` (مع `popovertargetaction` اختياري) يبدّل أي
+light-DOM `[popover]` مثل `&lt;instui-context-view&gt;`, `&lt;instui-popover&gt;`, أو `&lt;instui-tray&gt;`، و
+`command`/`commandfor` تُشغِّل المكونات القائمة على الأوامر (`&lt;instui-modal&gt;` مع `--show`/`--close`,
+إلخ). يتم تمرير id إلى الزر الداخلي عبر invoker IDL، لذا فإنه يحل عبر حد الظل وقد يشير إلى عنصر يتم إعلانه لاحقًا في المستند.
 
-## Example
+## مثال
 
 ```html
 <instui-button variant="primary" margin="small">Save changes</instui-button>

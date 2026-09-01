@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [platforms/email/src](../index.md) / light
 
-# Variable: light
+# متغير: light
 
 > `const` **light**: `Record`\<`string`, `string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-قيم العلامات ملموسة بوضع `light`، لتنسيق البريد الإلكتروني المضمن.
+قيم الرموز بنمط `light` المحددة، لتنسيق البريد الإلكتروني المضمّن.
 
-## Example
+## مثال
 
 ```ts
 import { light } from "@pantoken/email";

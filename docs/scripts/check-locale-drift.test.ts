@@ -45,6 +45,15 @@ const API_MD = [
   "",
 ].join("\n");
 
+const HOME_MD = [
+  "---",
+  "layout: home",
+  "hero:",
+  "  name: pantoken",
+  "  text: InstUI, everywhere",
+  "---",
+].join("\n");
+
 // segment-markdown + translation-memory are deterministic and fs-free for the surface we touch, but
 // they must be imported dynamically (after the vi.fn stubs initialize) so the node:fs mock factory
 // doesn't run against uninitialized bindings.
@@ -60,6 +69,25 @@ beforeAll(async () => {
     .map((u) => keyFor("prose", u.text));
 });
 
+/**
+ * The drift policy the script reads through `DriftReporter`. Served from the mocked node:fs so each
+ * test controls whether a `hu` finding blocks or only warns — that severity now lives in
+ * `i18n-policy.json`, not in this script.
+ */
+const blockingPolicy = {
+  tiers: { source: ["en"], rest: ["*"] },
+  surfaces: {
+    "docs.guides": { source: "block", rest: "block" },
+    "docs.api": { source: "block", rest: "block" },
+  },
+  fallback: { source: "block", rest: "block" },
+};
+const advisoryPolicy = {
+  tiers: { source: ["en"], rest: ["*"] },
+  surfaces: {},
+  fallback: { source: "block", rest: "warn" },
+};
+
 interface Fixtures {
   guideFiles: string[];
   apiFiles: string[];
@@ -68,6 +96,9 @@ interface Fixtures {
   guidesCache: Record<string, string> | null;
   apiCache: Record<string, string> | null;
   apiDirExists: boolean;
+  policy: unknown;
+  homeMd: string;
+  homeCache: Record<string, string> | null;
 }
 const fixtures: Fixtures = {
   guideFiles: [],
@@ -77,12 +108,16 @@ const fixtures: Fixtures = {
   guidesCache: {},
   apiCache: {},
   apiDirExists: true,
+  policy: blockingPolicy,
+  homeMd: "",
+  homeCache: {},
 };
 
 /** Resolve whether a mocked path should be treated as existing. */
 function fixtureExists(pathName: string): boolean {
   if (pathName.endsWith(".guides.json")) return fixtures.guidesCache !== null;
   if (pathName.endsWith(".api.json")) return fixtures.apiCache !== null;
+  if (pathName.endsWith(".home.json")) return fixtures.homeCache !== null;
   if (pathName.endsWith("/api")) return fixtures.apiDirExists;
   return true;
 }
@@ -94,8 +129,10 @@ function fixtureDirEntries(pathName: string): string[] {
   return [];
 }
 
-/** Mock file-content lookup for caches and markdown files. */
+/** Mock file-content lookup for the drift policy, caches, and markdown files. */
 function fixtureFileContents(pathName: string): string {
+  if (pathName.endsWith("i18n-policy.json")) return JSON.stringify(fixtures.policy);
+  if (pathName.endsWith("/index.md")) return fixtures.homeMd;
   return fixtureCacheFileContents(pathName) ?? fixtureMarkdownContents(pathName);
 }
 
@@ -111,6 +148,7 @@ function cacheFixtureFor(pathName: string): Record<string, string> | null {
   const cacheBySuffix: [string, Record<string, string> | null][] = [
     [".guides.json", fixtures.guidesCache],
     [".api.json", fixtures.apiCache],
+    [".home.json", fixtures.homeCache],
   ];
   for (const [suffix, cache] of cacheBySuffix) {
     if (pathName.endsWith(suffix)) return cache;
@@ -146,6 +184,9 @@ beforeEach(() => {
     guidesCache: {},
     apiCache: {},
     apiDirExists: true,
+    policy: blockingPolicy,
+    homeMd: "",
+    homeCache: {},
   });
   applyFsMocks();
   logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
@@ -216,7 +257,7 @@ describe("apiDrift", () => {
 });
 
 describe("top-level drift check", () => {
-  test("logs success and leaves the exit code unset when everything is cached", async () => {
+  test("logs success and exits 0 when everything is cached", async () => {
     fixtures.guideFiles = ["intro.md"];
     fixtures.apiFiles = ["page.md"];
     fixtures.guidesCache = { [keyFor("markdown", GUIDE_MD)]: "t" };
@@ -224,12 +265,11 @@ describe("top-level drift check", () => {
 
     await import("./check-locale-drift.ts");
 
-    expect(logText()).toContain("✓ hu: no translation drift");
-    expect(logText()).toContain("No translation drift.");
-    expect(process.exitCode).toBeUndefined();
+    expect(logText()).toContain("no translation drift");
+    expect(process.exitCode).toBe(0);
   });
 
-  test("reports drifted blocks, caps the per-file sample list, and exits 1", async () => {
+  test("exits 1 when the policy blocks the drifted surfaces", async () => {
     fixtures.guideFiles = ["intro.md"];
     fixtures.apiFiles = ["page.md"];
     fixtures.guidesCache = {}; // guide drifts
@@ -238,11 +278,79 @@ describe("top-level drift check", () => {
     await import("./check-locale-drift.ts");
 
     const out = errText();
-    expect(out).toContain("✗ hu:");
-    expect(out).toContain("untranslated/drifted block(s)");
-    expect(out).toContain("… and 1 more"); // 4 api blocks in one file → 3 shown + 1 capped
+    expect(out).toContain("blocking drift finding(s)");
+    expect(out).toContain("[docs.guides]");
+    expect(out).toContain("[docs.api]");
     expect(out).toContain("Run `vp run docs:locales:translate`");
     expect(process.exitCode).toBe(1);
+  });
+
+  test("reports the same drift as advisory and exits 0 when the policy only warns", async () => {
+    fixtures.policy = advisoryPolicy;
+    fixtures.guideFiles = ["intro.md"];
+    fixtures.apiFiles = ["page.md"];
+    fixtures.guidesCache = {};
+    fixtures.apiCache = {};
+
+    await import("./check-locale-drift.ts");
+
+    const warned = warnSpy.mock.calls.flat().map(String).join("\n");
+    expect(warned).toContain("advisory drift finding(s)");
+    expect(warned).toContain("[docs.api]");
+    expect(warned).toContain("not blocking this merge");
+    expect(errText()).not.toContain("blocking drift finding(s)");
+    expect(process.exitCode).toBe(0);
+  });
+
+  test("I18N_DRIFT_STRICT escalates an advisory policy back to blocking", async () => {
+    vi.stubEnv("I18N_DRIFT_STRICT", "1");
+    fixtures.policy = advisoryPolicy;
+    fixtures.guideFiles = ["intro.md"];
+    fixtures.apiFiles = ["page.md"];
+    fixtures.guidesCache = {};
+    fixtures.apiCache = {};
+
+    await import("./check-locale-drift.ts");
+
+    expect(errText()).toContain("blocking drift finding(s)");
+    expect(process.exitCode).toBe(1);
+    vi.unstubAllEnvs();
+  });
+
+  test("caps the per-file sample list at three", async () => {
+    fixtures.apiFiles = ["page.md"];
+    fixtures.apiCache = {}; // all 4 api prose blocks drift, one file
+
+    await import("./check-locale-drift.ts");
+
+    // 4 findings collapse into one `page.md` row, of which only 3 samples print.
+    const samples = errText()
+      .split("\n")
+      .filter((line) => line.trimStart().startsWith("- [prose]"));
+    expect(samples).toHaveLength(3);
+  });
+
+  test("flags an uncached home-page frontmatter value under docs.home", async () => {
+    fixtures.homeMd = HOME_MD;
+    fixtures.homeCache = {}; // nothing translated
+
+    await import("./check-locale-drift.ts");
+
+    const out = errText();
+    expect(out).toContain("[docs.home]");
+    expect(out).toContain("docs/index.md");
+    expect(out).toContain("InstUI, everywhere");
+    expect(process.exitCode).toBe(1);
+  });
+
+  test("reports no docs.home drift when the frontmatter value is cached", async () => {
+    fixtures.homeMd = HOME_MD;
+    fixtures.homeCache = { [keyFor("text", "InstUI, everywhere")]: "t" };
+
+    await import("./check-locale-drift.ts");
+
+    expect(errText()).not.toContain("[docs.home]");
+    expect(process.exitCode).toBe(0);
   });
 
   test("skips API drift with a warning when docs/api is not generated", async () => {
@@ -253,7 +361,6 @@ describe("top-level drift check", () => {
     await import("./check-locale-drift.ts");
 
     expect(warnSpy.mock.calls.flat().map(String).join("\n")).toContain("docs/api not generated");
-    expect(logText()).toContain("(guides only)");
-    expect(process.exitCode).toBeUndefined();
+    expect(process.exitCode).toBe(0);
   });
 });

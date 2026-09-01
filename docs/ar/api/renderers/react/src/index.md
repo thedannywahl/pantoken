@@ -2,35 +2,35 @@
 
 # react
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/react` — مساعدات React رقيقة فوق `@pantoken/web-components` و CSS الرمزة.
+`@pantoken/react` — مساعدات React خفيفة على `@pantoken/web-components` وCSS للرموز.
 
-- `&lt;Icon&gt;` يعرض عنصر `&lt;instui-icon&gt;` المخصص (React 19 يمرر props إلى العناصر المخصصة).
-- `useToken` يقرأ قيمة `--instui-*` محللة في وقت التشغيل (آمن SSR: يعيد العودة على
+- `&lt;Icon&gt;` يقوم برندر عنصر مخصص `&lt;instui-icon&gt;` (React 19 يمرر props إلى العناصر المخصصة).
+- `useToken` يقرأ قيمة `--instui-*` المحللة في وقت التشغيل (آمن مع SSR: يعيد القيمة الاحتياطية على
   الخادم).
-- `&lt;TokenProvider&gt;` يسجل العناصر وهو المكان الذي يمكن لتطبيق حقن ورقة الأنماط فيه.
+- `&lt;TokenProvider&gt;` يسجل العناصر وهنا يمكن للتطبيق حقن ملف الأنماط.
 
-## Interfaces
+## واجهات
 
 - [IconProps](interfaces/IconProps.md)
 - [TokenProviderProps](interfaces/TokenProviderProps.md)
 
-## Functions
+## الدوال
 
 - [readToken](functions/readToken.md)
 - [useToken](functions/useToken.md)
 - [Icon](functions/Icon.md)
 - [TokenProvider](functions/TokenProvider.md)
 
-## References
+## المراجع
 
 ### register
 
-إعادة تصدير [register](../../angular/src/functions/register.md)
+يعيد تصدير [register](../../angular/src/functions/register.md)
 
----
+***
 
 ### registerLocalized
 
-إعادة تصدير [registerLocalized](../../svelte/src/functions/registerLocalized.md)
+يعيد تصدير [registerLocalized](../../svelte/src/functions/registerLocalized.md)

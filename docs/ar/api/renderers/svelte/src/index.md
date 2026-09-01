@@ -2,26 +2,25 @@
 
 # svelte
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/svelte` — مساعدات Svelte على `@pantoken/web-components`.
+`@pantoken/svelte` — إضافات Svelte مبنية على `@pantoken/web-components`.
 
-`icon` هو إجراء Svelte يعرض حرف Instructure في عنصر. `readToken` يقرأ
-قيمة `--instui-*` محللة (آمنة SSR). تعمل العناصر المخصصة أيضاً مباشرة بمجرد `register()`
-قد يعمل.
+`icon` هو إجراء Svelte يقوم بعرض رمز Instructure داخل عنصر. `readToken` يقرأ قيمة `--instui-*` المحللة (آمنة لـ SSR).
+تعمل العناصر المخصصة أيضًا مباشرةً بمجرد تشغيل `register()`.
 
-## Interfaces
+## واجهات
 
 - [ActionResult](interfaces/ActionResult.md)
 
-## Functions
+## الدوال
 
 - [registerLocalized](functions/registerLocalized.md)
 - [readToken](functions/readToken.md)
 - [icon](functions/icon.md)
 
-## References
+## المراجع
 
 ### register
 
-إعادة تصدير [register](../../angular/src/functions/register.md)
+يعيد تصدير [register](../../angular/src/functions/register.md)

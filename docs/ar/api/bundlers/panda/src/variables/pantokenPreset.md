@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [bundlers/panda/src](../index.md) / pantokenPreset
 
-# Variable: pantokenPreset
+# متغير: pantokenPreset
 
 > `const` **pantokenPreset**: [`PandaPreset`](../interfaces/PandaPreset.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إعداد Panda المسبق الجاهز `rebrand`.
+الإعداد المسبق الجاهز `rebrand` من Panda.
 
-## Example
+## مثال
 
-**انشره في panda.config.ts**
+**ادمجه في panda.config.ts**
 
 ```ts
 import { defineConfig } from "@pandacss/dev";

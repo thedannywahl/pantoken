@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [formats/css/src](../index.md) / ToCssOptions
 
-# Interface: ToCssOptions
+# واجهة: ToCssOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [toCss](../functions/toCss.md).
+خيارات لـ [toCss](../functions/toCss.md).
 
-## Properties
+## الخصائص
 
 ### scope?
 
 > `optional` **scope?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المحدد الذي يتم إصدار الإعلانات المحدودة النطاق تحته (الافتراضي `":root"`).
+يتم إصدار التصريحات المحصورة بالمحدد تحت (الافتراضي `":root"`).
 
----
+***
 
 ### plugins?
 
 > `optional` **plugins?**: readonly [`PantokenPlugin`](../../../../packages/core/src/interfaces/PantokenPlugin.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المكونات الإضافية التي تعمل خطافات `css` بعد بناء CSS الأساسي (الافتراضي: بدون).
+الإضافات التي تُشغّل لها خطافات `css` بعد بناء CSS الأساسي (الافتراضي: لا شيء).

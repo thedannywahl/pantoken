@@ -1,18 +1,19 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/theme-custom-media/src](../index.md) / themeCustomMedia
 
-# Variable: themeCustomMedia
+# متغير: themeCustomMedia
 
 > `const` **themeCustomMedia**: \{(`options?`): [`Plugin`](https://postcss.org/api/#plugin); `postcss`: `true`; \}
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أنشئ مكون إضافي خفض الوسائط المخصصة للمظهر.
+إنشاء إضافة لخفض custom-media في الثيم.
 
-يدعم الإنشاء باستخدام معرّفات مخصصة مباشرة للمظهر في ميزات الوسائط (على سبيل المثال، `(theme: canvas)`) أو أسماء `@custom-media --theme-*` المستعارة المدمجة.
+يدعم التأليف باستخدام إما custom-idents الخاصة بالثيم مباشرةً في ميزات الوسائط (على سبيل المثال,
+`(theme: canvas)`) أو الأسماء المستعارة المدمجة `@custom-media --theme-*`.
 
 ## Type Declaration
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -20,14 +21,14 @@
 
 [ThemeCustomMediaOptions](../interfaces/ThemeCustomMediaOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكون إضافي PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-علامة المكون الإضافي PostCSS المطلوبة.
+مؤشّر مطلوب لإضافة PostCSS.

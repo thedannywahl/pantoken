@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/astro/src](../index.md) / InstUI
 
-# Function: InstUI()
+# دالة: InstUI()
 
 > **InstUI**(`options?`): [`StarlightPluginLike`](../interfaces/StarlightPluginLike.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-إنشاء مكون Starlight pantoken.
+إنشاء ملحق pantoken Starlight.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,13 +16,13 @@
 
 [InstUIOptions](../interfaces/InstUIOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`StarlightPluginLike`](../interfaces/StarlightPluginLike.md)
 
-مكون Starlight يحقن ورقة أنماط pantoken في رأس الصفحة.
+ملحق Starlight يقوم بحقن ورقة أنماط pantoken في رأس الصفحة.
 
-## Example
+## مثال
 
 **astro.config.mjs**
 

@@ -1,19 +1,18 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / selectCss
 
-# Function: selectCss()
+# دالة: selectCss()
 
 > **selectCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تحسين **تجريبي** قابل للتخصيص للـ `.&lt;prefix&gt;-simple-select`. كل شيء محمي خلف `@supports (appearance: base-select)` (نموذج CSS Customizable Select — Chrome 135+،
-ليس بعد Baseline)، لذا فهو تحسين تدريجي بحت: المتصفحات التي لا تدعم تحتفظ بعنصر تحكم `simpleSelectCss` عادي؛ المتصفحات الداعمة تحصل على لوحة `::picker(select)` مصممة و`option`s مصممة (hover/selected) من رموز `--instui-component-options-item-*`. تم شحنها كـ `select.css` اختيارية خاصة بها (مثل `fonts.css`) بدلاً من طيها في `components.css`، بالضبط لأن الميزة تجريبية — تختار بشكل متعمد.
+التحسين القابل للتخصيص لاختيار **تجريبي** لـ `.&lt;prefix&gt;-simple-select`. كل شيء محجوب خلف `@supports (appearance: base-select)` (نموذج CSS Customizable Select — Chrome 135+، لم يصل بعد إلى Baseline)، لذا هو تحسين تقدمي نقي: المتصفحات التي لا تدعم تحتفظ بعنصر التحكم البسيط `simpleSelectCss`; المتصفحات الداعمة تحصل على لوحة `::picker(select)` ذات تنسيق وعناصر `option`s ذات تنسيق (عند التحويم/المحدد) من رموز `--instui-component-options-item-*`. يُوزع كـ `select.css` اختياري (مثل `fonts.css`) بدلًا من دمجه في `components.css`، وذلك لأن الميزة تجريبية — الاشتراك فيها يتم عن قصد.
 
 ```demo
 self:simple-select
 ```
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -21,13 +20,13 @@ self:simple-select
 
 [ComponentOptions](../interfaces/ComponentOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة CSS.
 
-## Example
+## مثال
 
 ```ts
 import { selectCss } from "@pantoken/components";

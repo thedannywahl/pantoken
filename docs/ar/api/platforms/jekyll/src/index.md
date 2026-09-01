@@ -2,19 +2,19 @@
 
 # jekyll
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/jekyll` — انبعاث ورقة أنماط رموز Instructure لموقع Jekyll.
+`@pantoken/jekyll` — يصدر ملف ورقة أنماط رموز Instructure لموقع Jekyll.
 
-Jekyll ليس لديها عقد متغير مواضيع قياسي، لذا هذا يسلم الرموز كأصول جاهزة للاستخدام:
-جزء Sass لـ `_sass/` (استيراده من ورقة الأنماط الرئيسية لديك) وملف CSS عادي لـ
-`assets/css/` (من `@pantoken/scss` و `@pantoken/css`)، بالإضافة إلى ورقة أنماط نثر تبدو مثل InstUI
-(من `@pantoken/components`) التي تنمط المحتوى في منطقة `.pantoken-prose`.
+لا يمتلك Jekyll عقدًا معياريًا لمتغيرات السمات، لذا يوفّر هذا الرموز كأصول جاهزة للإدراج:
+جزء Sass لـ `_sass/` (استورده من ملف ورقة الأنماط الرئيسي) وملف CSS عادي لـ
+`assets/css/` (من `@pantoken/scss` و `@pantoken/css`)، بالإضافة إلى ملف ورقة أنماط نصية بمظهر InstUI
+(من `@pantoken/components`) يقوم بتنسيق المحتوى داخل منطقة `.pantoken-prose`.
 
-## Interfaces
+## واجهات
 
 - [JekyllFile](interfaces/JekyllFile.md)
 
-## Functions
+## الدوال
 
 - [toJekyllAssets](functions/toJekyllAssets.md)

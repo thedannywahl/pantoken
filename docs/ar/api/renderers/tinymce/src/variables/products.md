@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / products
 
-# Variable: products
+# متغير: products
 
 > `const` **products**: readonly [`Product`](../type-aliases/Product.md)[]
 
-المنتجات التي تحتوي على شعارات.
+المنتجات التي لها شعارات.
 
-## Example
+## مثال
 
 ```ts
 import { products } from "@pantoken/plugin-logos";

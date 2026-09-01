@@ -2,32 +2,32 @@
 
 # vanilla
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/vanilla` — رموز تصميم Instructure كـ Vanilla Forums Foundation `variables.json`.
+`@pantoken/vanilla` — رموز تصميم Instructure كـ `variables.json` لمؤسسة Vanilla Forums.
 
-[toVanillaVariables](functions/toVanillaVariables.md) يحول أي IR؛ [variables](variables/variables.md) هو الكائن `rebrand` الجاهز.
-ادفعه إلى موضوع باستخدام Vanilla API: `PUT /themes/{themeID}/assets/variables.json`.
+[toVanillaVariables](functions/toVanillaVariables.md) يحوّل أي IR; [variables](variables/variables.md) هو كائن `rebrand` الجاهز.
+ادفعه إلى سمة باستخدام واجهة برمجة تطبيقات Vanilla: `PUT /themes/{themeID}/assets/variables.json`.
 
-## Interfaces
+## واجهات
 
 - [ToVanillaOptions](interfaces/ToVanillaOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Mode](type-aliases/Mode.md)
 
-## Variables
+## المتغيرات
 
 - [variables](variables/variables.md)
 - [VANILLA\_TO\_INSTUI](variables/VANILLA_TO_INSTUI.md)
 
-## Functions
+## الدوال
 
 - [toVanillaVariables](functions/toVanillaVariables.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [variables](variables/variables.md)
+يعيد تسمية ويُعيد تصدير [variables](variables/variables.md)

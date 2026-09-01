@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / truncateCss
 
-# Variable: truncateCss
+# متغير: truncateCss
 
 > `const` **truncateCss**: `Definition`\[`"css"`\] = `truncate.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أداة الاقتطاع كورقة نمط مستقلة مغلفة برأس.
+أداة truncate كملف أنماط مستقل، ملفوف بترويسة.

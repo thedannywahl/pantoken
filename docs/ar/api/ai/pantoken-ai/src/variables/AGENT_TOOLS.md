@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / AGENT\_TOOLS
 
-# Variable: AGENT\_TOOLS
+# متغير: AGENT\_TOOLS
 
 > `const` **AGENT\_TOOLS**: readonly [`AgentTool`](../type-aliases/AgentTool.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 كل مفتاح أداة قابل للتثبيت.
 
-## Example
+## مثال
 
-**تثبيت كل أداة على حدة**
+**قم بتثبيت كل أداة بشكل فردي**
 
 ```ts
 import { AGENT_TOOLS, installAgentAssets } from "@pantoken/ai";

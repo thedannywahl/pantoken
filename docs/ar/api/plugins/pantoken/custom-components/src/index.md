@@ -2,11 +2,11 @@
 
 # custom-components
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-custom-components` — مكونات مخصصة للمستهلكين في اتجاه المصب.
+`@pantoken/plugin-custom-components` — مكونات مخصصة للمستهلكين اللاحقين.
 
-## Example
+## مثال
 
 ```ts
 import { toCss } from "@pantoken/css";
@@ -17,18 +17,18 @@ const css = toCss(byTheme("rebrand"), { plugins: [customComponents()] });
 // appends all custom-component rules to the token sheet
 ```
 
-## Interfaces
+## واجهات
 
 - [CustomComponentsOptions](interfaces/CustomComponentsOptions.md)
 
-## Functions
+## الدوال
 
 - [bannerRules](functions/bannerRules.md)
 - [cardRules](functions/cardRules.md)
 - [customComponents](functions/customComponents.md)
 
-## References
+## المراجع
 
 ### default
 
-يعيد تسمية وإعادة تصدير [customComponents](functions/customComponents.md)
+يعيد تسمية ويعيد تصدير [customComponents](functions/customComponents.md)

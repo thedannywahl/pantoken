@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [formats/scss/src](../index.md) / ToScssOptions
 
-# Interface: ToScssOptions
+# واجهة: ToScssOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toScss](../functions/toScss.md).
+خيارات لـ [toScss](../functions/toScss.md).
 
-## Properties
+## الخصائص
 
 ### mode?
 
 > `optional` **mode?**: [`Mode`](../../../../packages/core/src/type-aliases/Mode.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+أي وضع لون سيتم حله (الافتراضي `"light"`).

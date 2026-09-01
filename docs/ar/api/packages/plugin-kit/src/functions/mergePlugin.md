@@ -1,30 +1,30 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / mergePlugin
 
-# Function: mergePlugin()
+# دالة: mergePlugin()
 
 > **mergePlugin**(...`plugins`): [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-دمج عدة مكونات إضافية في واحدة، بطيها من اليسار إلى اليمين باستخدام [extendPlugin](extendPlugin.md).
+دمج عدة ملحقات في واحد، طيها من اليسار إلى اليمين باستخدام [extendPlugin](extendPlugin.md).
 
-## Parameters
+## المعلمات
 
 ### plugins
 
 ...[`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)[]
 
-المكونات الإضافية المراد دمجها (واحد على الأقل).
+الملحقات المراد دمجها (مطلوب واحد على الأقل).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-مكون إضافي واحد موسوم.
+ملحق واحد بعلامة تجارية.
 
-## Example
+## مثال
 
-**دمج المكونات الإضافية النظيرة في واحدة**
+**دمج الملحقات النظيرة في واحد**
 
 ```ts
 import { capabilitiesOf, definePlugin, mergePlugin } from "@pantoken/plugin-kit";

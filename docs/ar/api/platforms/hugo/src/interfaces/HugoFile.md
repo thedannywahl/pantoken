@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [platforms/hugo/src](../index.md) / HugoFile
 
-# Interface: HugoFile
+# واجهة: HugoFile
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-ملف تم إنشاؤه: مسار نسبي للموقع ومحتوياته.
+ملف مُولَّد: مسار نسبي للموقع ومحتوياته.
 
-## Properties
+## الخصائص
 
 ### path
 
 > **path**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### content
 
 > **content**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

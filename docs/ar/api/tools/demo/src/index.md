@@ -2,14 +2,18 @@
 
 # demo
 
-`@pantoken/demo` — جانب العرض التوضيحي لنظام `@demo`.
+`@pantoken/demo` — جانب العرض لنظام `@demo`.
 
-`@pantoken/typedoc-plugin-demo` يحول علامة `@demo &lt;spec&gt;` إلى كتلة `demo` المحاطة بسياج
-جسمها هو المواصفات (عنوان URL عاري أو زوج `&lt;provider&gt;:&lt;ref&gt;`). تحل هذه الحزمة هذه المواصفات إلى iframe قابل للتضمين وتعرض اللوحة المحيطة — عينة حية بأسلوب MDN.
+`@pantoken/typedoc-plugin-demo` يحوّل وسم `@demo &lt;spec&gt;` إلى كتلة محاطة بأسوار `demo` يكون جسمها
+المواصفة (عنوان URL خام أو زوج `&lt;provider&gt;:&lt;ref&gt;`). تقوم هذه الحزمة بحلّ تلك المواصفة إلى
+iframe قابل للتضمين وتعرض اللوحة المحيطة — "عينة حية" على نمط MDN.
 
-يتم شحنها بثلاثة أشياء: [resolveDemo](functions/resolveDemo.md) (مواصفات → سمات iframe، غير محددة بإطار عمل)، مكون إضافي markdown-it ([demoMarkdownIt](functions/demoMarkdownIt.md)) يحول سياجات `demo` إلى HTML لوحة التثبيت، وعامل مستضاف ذاتياً (`@pantoken/demo/runner.html`) — صفحة نفس الأصل تجلب عرضاً توضيحياً HTML/CSS/JS عارياً وتعرضه مع أوراق الرموز الخاصة بك المحقونة، بحيث لا تحتاج عروض `self:` إلى حساب طرف ثالث ولا حيل التأطير.
+تتضمن الحزمة ثلاثة عناصر: [resolveDemo](functions/resolveDemo.md) (المواصفة → سمات iframe، مستقل عن الإطار)، و
+مُلحق markdown-it ([demoMarkdownIt](functions/demoMarkdownIt.md)) الذي يحوّل أسوار `demo` إلى HTML اللوحة المحيطة، و
+مشغل مستضاف ذاتيًا (`@pantoken/demo/runner.html`) — صفحة من نفس الأصل تقوم بجلب عرض توضيحي HTML/CSS/JS خام وتعرضه مع حقن ملفات أنماط الرموز الخاصة بك، لذا لا تحتاج عروض `self:` إلى
+حساب طرف ثالث ولا إلى حلول تأطير بديلة.
 
-## Example
+## مثال
 
 ```ts
 import { resolveDemo } from "@pantoken/demo";
@@ -18,7 +22,7 @@ resolveDemo("stackblitz:abc123").src; // → "https://stackblitz.com/edit/abc123
 resolveDemo("self:button", { base: "/docs/", cssUrls: ["/docs/tokens.css"] }).src;
 ```
 
-## Interfaces
+## واجهات
 
 - [ResolveOptions](interfaces/ResolveOptions.md)
 - [ResolvedDemo](interfaces/ResolvedDemo.md)
@@ -26,11 +30,11 @@ resolveDemo("self:button", { base: "/docs/", cssUrls: ["/docs/tokens.css"] }).sr
 - [DemoMarkdownItOptions](interfaces/DemoMarkdownItOptions.md)
 - [ExampleSrcdocOptions](interfaces/ExampleSrcdocOptions.md)
 
-## Variables
+## المتغيرات
 
 - [FULLSCREEN\_BUTTON\_HTML](variables/FULLSCREEN_BUTTON_HTML.md)
 
-## Functions
+## الدوال
 
 - [resolveDemo](functions/resolveDemo.md)
 - [renderDemoFigure](functions/renderDemoFigure.md)

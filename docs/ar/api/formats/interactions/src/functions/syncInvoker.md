@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / syncInvoker
 
-# Function: syncInvoker()
+# دالة: syncInvoker()
 
 > **syncInvoker**(`host`): `void`
 
-انعكاس سمات المستدعي للمضيف على خصائص IDL `&lt;button&gt;` الداخلية، وحل المعرفات
-مقابل جذر المضيف بحيث يمكن لزر shadow-DOM أن يقود هدف light-DOM `[popover]`/command.
+عكس سمات المستدعي للمضيف على خصائص IDL الخاصة بـ `&lt;button&gt;` الداخلية، مع حل المعرفات
+بالنسبة إلى جذر المضيف بحيث يمكن لزر في shadow-DOM أن يتحكم في هدف `[popover]`/command في light-DOM.
 
-## Parameters
+## المعلمات
 
 ### host
 
 `HTMLElement`
 
-## Returns
+## القيم المرجعة
 
 `void`

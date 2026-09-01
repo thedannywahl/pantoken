@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [formats/css/src](../index.md) / toCss
 
-# Function: toCss()
+# دالة: toCss()
 
 > **toCss**(`tokens`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إصدار CSS لـ token IR.
+إخراج CSS لتمثيل IR للرموز.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
 readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+تمثيل IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToCssOptions](../interfaces/ToCssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة CSS.
 
-## Examples
+## أمثلة
 
-**بناء ورقة النمط الافتراضية**
+**بناء ورقة الأنماط الافتراضية**
 
 ```ts
 import { toCss } from "@pantoken/css";
@@ -39,7 +39,7 @@ import { tokens } from "@pantoken/tokens";
 const stylesheet = toCss(tokens); // declarations under :root
 ```
 
-**تحديد نطاق الإعلانات لفئة وبناء مظهر آخر**
+**تقييد التصريحات إلى فئة وبناء سمة أخرى**
 
 ```ts
 import { toCss } from "@pantoken/css";
@@ -48,7 +48,7 @@ import { byTheme } from "@pantoken/tokens";
 toCss(byTheme("canvas"), { scope: '[class*="instui"]' });
 ```
 
-**معالجة لاحقة باستخدام خطاف css للمكون الإضافي**
+**المعالجة اللاحقة باستخدام هوك CSS للملحق**
 
 ```ts
 import { toCss } from "@pantoken/css";

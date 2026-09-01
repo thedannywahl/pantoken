@@ -1,30 +1,31 @@
 # CSS: cursor
 
-`.--cursor-pointer` — `cursor` كفئة عامة قابلة للتكوين — `.--cursor-&lt;value&gt;` — قابلة للاستخدام بمفردها أو مرتبطة بأي مكون (`.instui-button.--cursor-pointer`).
+`.--cursor-pointer` — `cursor` كفئة مركبة قابلة للتجميع على مستوى العالم — `.--cursor-&lt;value&gt;` — قابلة للاستخدام بمفردها أو متسلسلة على أي مكوّن (`.instui-button.--cursor-pointer`).
 
 **المصدر:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/cursor/index.ts)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/utilities.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="--cursor-pointer">…</div>
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier                | Description          |
-| ----------------------- | -------------------- |
-| `.--cursor-auto`        | cursor: auto.        |
-| `.--cursor-default`     | cursor: default.     |
-| `.--cursor-grab`        | cursor: grab.        |
-| `.--cursor-move`        | cursor: move.        |
-| `.--cursor-not-allowed` | cursor: not-allowed. |
-| `.--cursor-pointer`     | cursor: pointer.     |
-| `.--cursor-text`        | cursor: text.        |
-| `.--cursor-wait`        | cursor: wait.        |
+| معدّل | الوصف |
+| --- | --- |
+| `.--cursor-auto` | cursor: تلقائي. |
+| `.--cursor-default` | cursor: افتراضي. |
+| `.--cursor-grab` | cursor: قابل للسحب. |
+| `.--cursor-move` | cursor: نقل. |
+| `.--cursor-not-allowed` | cursor: غير مسموح. |
+| `.--cursor-pointer` | cursor: مؤشر (قابل للنقر). |
+| `.--cursor-text` | cursor: نص. |
+| `.--cursor-wait` | cursor: انتظار. |
+

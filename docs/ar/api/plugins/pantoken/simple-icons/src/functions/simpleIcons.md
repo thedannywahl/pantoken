@@ -1,30 +1,31 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/simple-icons/src](../index.md) / simpleIcons
 
-# Function: simpleIcons()
+# دالة: simpleIcons()
 
 > **simpleIcons**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون Simple Icons.
+إنشاء ملحق Simple Icons.
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`SimpleIconsOptions`](../interfaces/SimpleIconsOptions.md) = `{}`
 
-[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). مرر `registry` لتجنب الاستيراد الكسول (على سبيل المثال في استخدام مرحلة الرمز، حيث تكون الخطافات متزامنة).
+[SimpleIconsOptions](../interfaces/SimpleIconsOptions.md). مرّر `registry` لتجنّب الاستيراد الكسول (على سبيل المثال في
+  token-stage use، حيث الخطافات متزامنة).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-مكون [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مع خطافات `tokens` و`rehype`.
+A [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مع خطافات `tokens` و `rehype`.
 
-## Examples
+## أمثلة
 
-**إصدار الرموز الخاصة بالعلامة التجارية كرموز \<image\>**
+توليد رموز العلامة التجارية كتوكنات \<image\>
 
 ```ts
 import { buildTokens } from "@pantoken/core";
@@ -38,7 +39,7 @@ buildTokens({
 // adds --instui-icon-github, --instui-icon-react as <image> tokens
 ```
 
-**حل رموز :brand: عند العرض (طبقة rehype)**
+حل أكواد :brand: أثناء العرض (طبقة rehype)
 
 ```ts
 import { simpleIcons } from "@pantoken/plugin-simple-icons";

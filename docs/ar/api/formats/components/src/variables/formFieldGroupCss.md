@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / formFieldGroupCss
 
-# Variable: formFieldGroupCss
+# متغير: formFieldGroupCss
 
 > `const` **formFieldGroupCss**: `Definition`\[`"css"`\] = `formFieldGroup.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `formFieldGroup` مستقلة — CSS المُبدأ لمجموعة Fieldset، جاهز للشحن كملف `.css`.
+ورقة أنماط `formFieldGroup` مستقلة — CSS المسبوق بالبادئة لمجموعة الحقل، جاهزة للشحن كملف `.css`.

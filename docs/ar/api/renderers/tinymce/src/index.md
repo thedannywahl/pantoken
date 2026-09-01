@@ -2,7 +2,7 @@
 
 # tinymce
 
-## Interfaces
+## واجهات
 
 - [CssDocEntry](interfaces/CssDocEntry.md)
 - [PageLayout](interfaces/PageLayout.md)
@@ -10,11 +10,11 @@
 - [TaggedIcon](interfaces/TaggedIcon.md)
 - [LayoutsPluginOptions](interfaces/LayoutsPluginOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Product](type-aliases/Product.md)
 
-## Variables
+## المتغيرات
 
 - [pageLayouts](variables/pageLayouts.md)
 - [logos](variables/logos.md)
@@ -22,7 +22,7 @@
 - [LAYOUTS\_PLUGIN\_NAME](variables/LAYOUTS_PLUGIN_NAME.md)
 - [LAYOUTS\_TOOLBAR\_NAME](variables/LAYOUTS_TOOLBAR_NAME.md)
 
-## Functions
+## الدوال
 
 - [pantokenHtmlCompletion](functions/pantokenHtmlCompletion.md)
 - [pantokenHtmlLinter](functions/pantokenHtmlLinter.md)

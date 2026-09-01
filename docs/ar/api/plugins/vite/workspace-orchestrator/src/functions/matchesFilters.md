@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/vite/workspace-orchestrator/src](../index.md) / matchesFilters
 
-# Function: matchesFilters()
+# دالة: matchesFilters()
 
 > **matchesFilters**(`filename`, `node`): `boolean`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-يعيد `true` إذا كان اسم الملف المتغيّر يجتاز مرشحات include/ignore للعقدة.
+يعيد `true` إذا كان اسم الملف المُعدَّل يمر عبر مرشحات include/ignore الخاصة بالعقدة.
 
-## Parameters
+## المعلمات
 
 ### filename
 
@@ -18,11 +18,11 @@
 
 [`UpstreamNode`](../interfaces/UpstreamNode.md)
 
-## Returns
+## القيم المرجعة
 
 `boolean`
 
-## Example
+## مثال
 
 ```ts
 import { matchesFilters } from "@pantoken/vite-workspace-orchestrator";

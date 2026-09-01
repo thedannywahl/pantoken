@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / TooltipOptions
 
-# Interface: TooltipOptions
+# واجهة: TooltipOptions
 
-خيارات توقيت الظهور/الإخفاء.
+خيارات توقيت الإظهار/الإخفاء.
 
-## Properties
+## الخصائص
 
 ### showDelay?
 
 > `optional` **showDelay?**: `number`
 
----
+***
 
 ### hideDelay?
 

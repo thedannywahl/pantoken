@@ -1,36 +1,36 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/colors/src](../index.md) / onColor
 
-# Function: onColor()
+# دالة: onColor()
 
 > **onColor**(`surface`, `threshold?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المقدمة المقروءة — أسود أو أبيض — للمحتوى الموضوع _على_ `surface`. هذا هو شكل CSS فقط من متغيرات `*-on-color` المتكررة في InstUI (حلقة تركيز على زر العلامة التجارية، نص زر primary-inverse، أيقونة على سطح ملون): بدلاً من رمز معكوس ثابت، فإنه يختار التباين من السطح نفسه، لذا يبقى صحيحًا مع تغير السطح.
+اللون الأمامي المقروء — أسود أو أبيض — للمحتوى الموضوع *على* `surface`. هذا هو الشكل الخاص بـ CSS فقط من متغيرات InstUI المتكررة `*-on-color` (حلقة التركيز على زر العلامة التجارية، نص زر معكوس-أساسي، أيقونة على سطح ملون): بدلاً من رمز عكسي ثابت، يختار التباين من السطح نفسه، لذلك يبقى صحيحاً مع تغيّر السطح.
 
-يقرأ OKLCH lightness للسطح من خلال بناء جملة اللون النسبي وينقره إلى `0` (أسود) أو `1` (أبيض) في `threshold` باستخدام حيلة `calc(… * infinity)` clamp — لا JS، لا hex ثابت.
+يقرأ خفة OKLCH للسطح عبر صيغة الألوان النسبية ويقربها إلى `0` (أسود) أو `1` (أبيض) عند `threshold` باستخدام خدعة الكُمّ `calc(… * infinity)` — لا جافاسكربت، لا ألوان سداسية ثابتة.
 
-## Parameters
+## المعلمات
 
 ### surface
 
 `string`
 
-اللون الخلفي الذي يجلس عليه المحتوى (حرفي، `var(--token)`، أو مساعد متداخل).
+لون الخلفية التي يجلس عليها المحتوى (حرفياً، `var(--token)`، أو مُساعد متداخل).
 
 ### threshold?
 
 `number` = `0.62`
 
-OKLCH lightness (0–1) فوقها يتم حساب السطح كـ "فاتح" (افتراضي `0.62`).
+خفة OKLCH (0–1) التي تُعتبر فوقها السطح "فاتحاً" (الافتراضي `0.62`).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-تعبير `oklch(from …)` يتحل إلى أسود أو أبيض.
+تعبير `oklch(from …)` يحلّ إلى اللون الأسود أو الأبيض.
 
-## Example
+## مثال
 
 ```ts
 onColor("var(--instui-color-background-brand)"); // white on a dark brand surface, black on a light one

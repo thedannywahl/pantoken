@@ -1,30 +1,32 @@
 [pantoken](../../../../../index.md) / [plugins/typedoc/demo/src](../index.md) / rewriteComment
 
-# Function: rewriteComment()
+# دالة: rewriteComment()
 
 > **rewriteComment**(`comment`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-انقل كل علامة كتلة `@demo` على تعليق إلى أسوار `demo` مرفقة بملخصه، بالترتيب. يتم إعادة تسييج محتوى الكتلة بواسطة مظهر markdown، لذا يجب أن يعيش السياج في نثر الملخص، والذي يتم إصداره كما هو.
+نقل كل وسم كتلة `@demo` في التعليق إلى أسوار `demo` المضافة إلى الملخص، وبالترتيب.
+يُعاد تسييج محتوى وسم الكتلة بواسطة سمة الماركداون، لذا يجب أن يكون السياج داخل نص الملخص
+الذي يُصدَر حرفيًا.
 
-## Parameters
+## المعلمات
 
 ### comment
 
 `Comment`
 
-التعليق لإعادة كتابة موضعه.
+التعليق الذي يُعاد كتابته في موضعه.
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
-````ts
+```ts
 import { rewriteComment } from "@pantoken/typedoc-plugin-demo";
 
 // Given a comment with `@demo self:button`, appends a ```demo``` fence and drops the tag.
 rewriteComment(comment);
-````
+```

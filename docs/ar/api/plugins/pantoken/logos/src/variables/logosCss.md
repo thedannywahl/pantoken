@@ -1,16 +1,16 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / logosCss
 
-# Variable: logosCss
+# متغير: logosCss
 
 > `const` **logosCss**: `string` = `LOGOS_CSS`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-جدول الأنماط الجاهز للاستخدام (نفس النص مثل `./logos.css`).
+ورقة أنماط image-token الجاهزة (نفس النص مثل `./logos.css`).
 
-## Example
+## مثال
 
-**ضمّن رموز الشعار في صفحة**
+**أدرج رموز الشعار داخل الصفحة**
 
 ```ts
 import { logosCss } from "@pantoken/plugin-logos";

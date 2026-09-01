@@ -1,11 +1,11 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / listUtilities
 
-# Function: listUtilities()
+# دالة: listUtilities()
 
 > **listUtilities**(): [`CssDocEntry`](../interfaces/CssDocEntry.md)[]
 
-اسرد جميع الأدوات (النوع: "أداة").
+قائمة بجميع الأدوات المساعدة (النوع: "utility").
 
-## Returns
+## القيم المرجعة
 
 [`CssDocEntry`](../interfaces/CssDocEntry.md)[]

@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [packages/cli/src](../index.md) / run
 
-# Function: run()
+# دالة: run()
 
 > **run**(`argv`): `Promise`\<`void`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تشغيل CLI.
+شغّل واجهة سطر الأوامر.
 
-## Parameters
+## المعلمات
 
 ### argv
 
-readonly `string`[]
+للقراءة فقط `string`[]
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`void`\>
 
-## Examples
+## أمثلة
 
-**إنشاء رموز Swift في مستودع المستهلك**
+**توليد رموز Swift داخل مستودع المستهلك**
 
 ```ts
 import { run } from "@pantoken/cli";
@@ -29,7 +29,7 @@ import { run } from "@pantoken/cli";
 await run(["generate", "swift", "--out", "./ios/DesignTokens"]);
 ```
 
-**إنشاء لوحة عينات بموضوع معين في صيغة محددة**
+**توليد لوحة عينات ألوان ذات طابع محدد بصيغة معينة**
 
 ```ts
 import { run } from "@pantoken/cli";

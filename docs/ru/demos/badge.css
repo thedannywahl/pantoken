@@ -1,8 +1,0 @@
-.badge-on-color {
-  display: inline-flex;
-  padding: 8px 12px;
-  border-radius: var(--instui-border-radius-md);
-  /* A fixed dark brand surface (the navy primitive doesn't flip with the mode), so the light
-       inverse chip reads in both light and dark. */
-  background: var(--instui-primitive-color-navy-navy170);
-}

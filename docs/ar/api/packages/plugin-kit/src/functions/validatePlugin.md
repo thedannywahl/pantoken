@@ -1,38 +1,38 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / validatePlugin
 
-# Function: validatePlugin()
+# دالة: validatePlugin()
 
 > **validatePlugin**(`plugin`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-التأكيد من أن المكون الإضافي له بنية صحيحة: اسم غير فارغ، جميع الخطافات هي وظائف،
-وعدم سقوط مفتاح خطاف خارج مجموعة المرحلة المعروفة.
+تأكد من أن المكوّن الإضافي له بنية صحيحة: اسم غير فارغ، جميع الـ hooks هي دوال،
+ولا يقع مفتاح أي hook خارج مجموعة المراحل المعترف بها.
 
-يتم الاتصال به تلقائياً بواسطة [definePlugin](definePlugin.md). قم بتصديره حتى يمكن التحقق من المكونات الإضافية المكتوبة يدويًا
-قبل تمريرها إلى مشغل المرحلة.
+يتم استدعاؤه تلقائيًا بواسطة [definePlugin](definePlugin.md). صدّره حتى يمكن التحقق من المكوّنات الإضافية المكتوبة يدويًا
+قبل تمريرها إلى مشغّل المرحلة.
 
-## Parameters
+## المعلمات
 
 ### plugin
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Throws
+## يرمي
 
-عندما يفشل المكون الإضافي في التحقق من الصحة الهيكلية.
+عندما يفشل المكوّن الإضافي في التحقق البنيوي.
 
-## Example
+## مثال
 
-**تحقق من صحة مكون إضافي مكتوب يدويًا**
+**التحقق من مكوّن إضافي مكتوب يدويًا**
 
 ```ts
 import { validatePlugin } from "@pantoken/plugin-kit";
 
 validatePlugin({ name: "brand", css: () => ({}) }); // ok
-validatePlugin({ name: "", css: () => ({}) }); // throws
+validatePlugin({ name: "", css: () => ({}) });      // throws
 ```

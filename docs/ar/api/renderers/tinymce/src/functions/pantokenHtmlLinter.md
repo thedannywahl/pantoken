@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / pantokenHtmlLinter
 
-# Function: pantokenHtmlLinter()
+# دالة: pantokenHtmlLinter()
 
 > **pantokenHtmlLinter**(`_options`): `Extension`
 
-إنشاء امتداد linter CodeMirror 6 لـ pantoken HTML.
-تتحقق من سمات الفئة التي تحتوي على `.instui-*` tokens.
+امتداد linter لـ CodeMirror 6 من أجل pantoken HTML.
+يتحقق من سمات class التي تحتوي على توكنات `.instui-*`.
 
 الاستخدام:
-new EditorView({
-extensions: [
-basicSetup,
-html(),
-pantokenHtmlLinter({ model }),
-],
-});
+  new EditorView({
+    extensions: [
+      basicSetup,
+      html(),
+      pantokenHtmlLinter({ model }),
+    ],
+  });
 
-## Parameters
+## المعلمات
 
 ### \_options
 
 `PantokenLinterOptions`
 
-## Returns
+## القيم المرجعة
 
 `Extension`

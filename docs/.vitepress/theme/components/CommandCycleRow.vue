@@ -129,6 +129,7 @@ function openPopoverIfEnabled() {
           props.cycle.suffixText.value
         }}</span>
         <span class="gs-command-row__cursor"></span>
+        <span v-if="props.showCopy" class="gs-command-row__copy-wrap"></span>
       </span>
       <span class="gs-command-row__live">
         <span
@@ -150,26 +151,26 @@ function openPopoverIfEnabled() {
           :style="{ backgroundColor: tone(props.cycle.activeOption.value) }"
           aria-hidden="true"
         ></span>
+        <!-- Inside the live text (not a sibling of the grid) so it trails the cursor instead of the
+             widest sizer's right edge. Each sizer reserves an equal-width blank twin. -->
+        <span v-if="props.showCopy" class="gs-command-row__copy-wrap">
+          <button
+            ref="copyButtonRef"
+            type="button"
+            class="gs-command-row__copy"
+            :class="{ '-copied': copyFeedback, '-visible': props.copyVisible }"
+            :aria-label="props.copyLabel"
+            @click="copyVisibleCommand"
+          >
+            <span class="instui-icon -icon-copy" aria-hidden="true"></span>
+          </button>
+          <span v-if="copyFeedback" class="gs-command-row__copy-popover" aria-live="polite">{{
+            props.copiedLabel
+          }}</span>
+        </span>
       </span>
     </span>
     <slot name="inline" :cycle="props.cycle" :active-option="props.cycle.activeOption.value"></slot>
-    <button
-      v-if="props.showCopy"
-      ref="copyButtonRef"
-      type="button"
-      class="gs-command-row__copy"
-      :class="{ '-copied': copyFeedback, '-visible': props.copyVisible }"
-      :aria-label="props.copyLabel"
-      @click="copyVisibleCommand"
-    >
-      <span class="instui-icon -icon-copy" aria-hidden="true"></span>
-    </button>
-    <span
-      v-if="props.showCopy && copyFeedback"
-      class="gs-command-row__copy-popover"
-      aria-live="polite"
-      >{{ props.copiedLabel }}</span
-    >
     <span
       v-if="props.showSelector && resolvedPopoverOpen"
       class="gs-command-row__popover"
@@ -248,25 +249,32 @@ function openPopoverIfEnabled() {
   vertical-align: -0.15em;
 }
 
-.gs-command-row__copy {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.gs-command-row__copy-wrap {
+  position: relative;
+  display: inline-block;
   inline-size: 1.5rem;
   block-size: 1.5rem;
   margin-inline-start: 0.35rem;
+  vertical-align: -0.35em;
+}
+
+.gs-command-row__copy {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid transparent;
   border-radius: 999px;
   background: transparent;
   color: var(--vp-c-text-2);
   opacity: 0;
-  transform: translateY(1px);
   cursor: pointer;
-  transition:
-    opacity 120ms ease,
-    border-color 120ms ease,
-    background-color 120ms ease,
-    color 120ms ease;
+  /* Firefox re-rasterizes the tilted card for any repaint that reaches it; keeping this button's
+     hover invalidation inside its own box (and instant rather than animated across ~8 frames) is
+     what stops the card's edges from tearing. */
+  contain: layout style paint;
+  transition: opacity 120ms ease;
 }
 
 .gs-command-row:hover .gs-command-row__copy,
@@ -292,7 +300,7 @@ function openPopoverIfEnabled() {
 .gs-command-row__copy-popover {
   position: absolute;
   inset-inline-end: 0;
-  inset-block-end: calc(100% + 0.45rem);
+  inset-block-end: calc(100% + 0.35rem);
   z-index: 2;
   padding: 0.18rem 0.45rem;
   border: 1px solid var(--vp-c-divider);
@@ -302,7 +310,9 @@ function openPopoverIfEnabled() {
   font-size: 0.72rem;
   line-height: 1.2;
   white-space: nowrap;
-  box-shadow: var(--vp-shadow-2);
+  /* A tight shadow instead of --vp-shadow-2: a wide blur makes the invalidated rect span the card
+     edge, and Firefox tears the rotated quad when it re-rasterizes that far out. */
+  box-shadow: 0 1px 3px rgb(0 0 0 / 22%);
 }
 
 .gs-command-row__cursor--blink {
@@ -340,7 +350,10 @@ function openPopoverIfEnabled() {
     var(--instui-color-background-container),
     var(--instui-color-background-page)
   );
-  box-shadow: var(--vp-shadow-3);
+  /* Same reason as the copy popover: --vp-shadow-3's wide blur pushes each hover repaint past the
+     card's edge and tears the rotated quad. */
+  box-shadow: 0 2px 8px rgb(0 0 0 / 26%);
+  contain: layout style;
 }
 
 .gs-command-row__popover.-above {
@@ -356,6 +369,7 @@ function openPopoverIfEnabled() {
   font: inherit;
   text-align: start;
   cursor: pointer;
+  contain: layout style paint;
 }
 
 .gs-command-row__popover button:hover,

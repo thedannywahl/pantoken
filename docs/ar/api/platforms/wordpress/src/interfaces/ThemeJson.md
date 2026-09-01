@@ -1,34 +1,34 @@
 [pantoken](../../../../index.md) / [platforms/wordpress/src](../index.md) / ThemeJson
 
-# Interface: ThemeJson
+# واجهة: ThemeJson
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-وثيقة `theme.json` في WordPress (الشريحة التي يملأها pantoken).
+مستند WordPress `theme.json` (المقطع الذي يملؤه pantoken).
 
-## Properties
+## الخصائص
 
 ### $schema
 
 > **$schema**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### version
 
 > **version**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### settings
 
 > **settings**: `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 #### color
 

@@ -2,21 +2,22 @@
 
 # compose
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/compose` — الإصدار من علامات تصميم Instructure كـ Jetpack Compose (Kotlin)، عبر Style Dictionary. يقوم بتسطيح IR إلى قيم ملموسة أحادية الوضع والحفاظ على العلامات المكتوبة بشكل أصلي (الألوان والأبعاد والأرقام).
+`@pantoken/compose` — يصدر رموز التصميم الخاصة بـ Instructure كـ Jetpack Compose (Kotlin)، عبر Style
+Dictionary. يقوم بتسطيح الـ IR إلى قيم ملموسة بنمط واحد ويحتفظ بالرموز المصنفة أصلاً (الألوان، الأبعاد، الأرقام).
 
-## Interfaces
+## واجهات
 
 - [GenerateComposeOptions](interfaces/GenerateComposeOptions.md)
 
-## Functions
+## الدوال
 
 - [toCompose](functions/toCompose.md)
 - [generateCompose](functions/generateCompose.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [generateCompose](functions/generateCompose.md)
+يعيد تسمية ويعيد تصدير [generateCompose](functions/generateCompose.md)

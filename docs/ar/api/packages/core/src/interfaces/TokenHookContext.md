@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / TokenHookContext
 
-# Interface: TokenHookContext
+# واجهة: TokenHookContext
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-السياق الذي يتم تمريره إلى خطاف `tokens` للمكون الإضافي.
+السياق المُمرّر إلى خطاف `tokens` الخاص بالمكوّن الإضافي.
 
-## Properties
+## الخصائص
 
 ### tokens
 
 > **tokens**: [`Token`](Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### theme
 
 > **theme**: [`Theme`](../type-aliases/Theme.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

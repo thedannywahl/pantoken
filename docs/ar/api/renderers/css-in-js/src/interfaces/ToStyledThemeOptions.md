@@ -1,17 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/css-in-js/src](../index.md) / ToStyledThemeOptions
 
-# Interface: ToStyledThemeOptions
+# واجهة: ToStyledThemeOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toStyledTheme](../functions/toStyledTheme.md).
+خيارات لـ [toStyledTheme](../functions/toStyledTheme.md).
 
-## Properties
+## الخصائص
 
 ### resolve?
 
 > `optional` **resolve?**: [`Mode`](../../../../packages/core/src/type-aliases/Mode.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خبز قيم ملموسة لوضع اللون هذا بدلاً من مراجع `var(--instui-*)`. حذف للاحتفاظ بالموضوع مدعوم بـ var() (الافتراضي — يسمح `@pantoken/css` بقيادة تبديل المواضيع في وقت التشغيل).
+قم بخَبز قيم ملموسة لنمط الألوان هذا بدلاً من المراجع `var(--instui-*)`. اتركه
+مدعومًا عبر var() للسمة (الإعداد الافتراضي — يسمح لـ `@pantoken/css` بتشغيل تبديل السمة أثناء وقت التشغيل).

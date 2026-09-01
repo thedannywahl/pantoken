@@ -2,21 +2,21 @@
 
 # react-native
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/react-native` — رموز تصميم Instructure كأجسام صديقة `StyleSheet` لـ React Native.
-لا تحتوي React Native على متغيرات CSS، لذا يتم حل الرموز بالكامل إلى قيم محددة:
-تبقى الألوان سلاسل سادسة عشرية، والأبعاد تصبح أرقامًا (dp)، والأيقونات يتم استبعادها.
+`@pantoken/react-native` — رموز تصميم Instructure ككائنات صديقة لـ `StyleSheet` في React Native.
+لا يحتوي React Native على متغيرات CSS، لذا تُحل الرموز بالكامل إلى قيم ملموسة:
+الألوان تبقى سلاسل سداسية، الأبعاد تصبح أرقامًا (dp)، والرموز مستثناة.
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [RNTokenValue](type-aliases/RNTokenValue.md)
 
-## Variables
+## المتغيرات
 
 - [light](variables/light.md)
 - [dark](variables/dark.md)
 
-## Functions
+## الدوال
 
 - [tokensForScheme](functions/tokensForScheme.md)

@@ -2,22 +2,22 @@
 
 # webpack
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/webpack` — مكون إضافي Webpack يصدر ورقة نمط رموز Instructure كأصل بناء
-(الافتراضي `pantoken.css`)، لذا يمكنك الإشارة إليه من HTML الخاص بك دون استيراد الحزمة الكبيرة
-في مجموعة.
+`@pantoken/webpack` — مكوّن إضافي لـ Webpack يقوم بإصدار ورقة أنماط رموز Instructure كمورد بناء
+(الافتراضي `pantoken.css`), بحيث يمكنك الإشارة إليه من HTML الخاص بك دون استيراد الحزمة الكبيرة
+إلى البندل.
 
-## Classes
+## فئات
 
 - [PantokenWebpackPlugin](classes/PantokenWebpackPlugin.md)
 
-## Interfaces
+## واجهات
 
 - [PantokenWebpackOptions](interfaces/PantokenWebpackOptions.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [PantokenWebpackPlugin](classes/PantokenWebpackPlugin.md)
+يعيد تسمية ويعيد تصدير [PantokenWebpackPlugin](classes/PantokenWebpackPlugin.md)

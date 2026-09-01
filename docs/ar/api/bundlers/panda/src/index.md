@@ -2,15 +2,14 @@
 
 # panda
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/panda` — مسبقة رمز التصميم الخاصة بـ Instructure لـ Panda CSS.
+`@pantoken/panda` — إعداد مُسبق لرموز التصميم Instructure لـ Panda CSS.
 
-[toPandaPreset](functions/toPandaPreset.md) يحول أي IR؛ [pantokenPreset](variables/pantokenPreset.md) هو الإعداد المسبق الجاهز `rebrand`.
-قم بنشره في `panda.config.ts` `presets` الخاص بك، وتتبع شرط `_dark` رموز pantoken
-`light-dark()` تلقائياً.
+[toPandaPreset](functions/toPandaPreset.md) يحول أي IR؛ [pantokenPreset](variables/pantokenPreset.md) هو الإعداد المُسبق الجاهز `rebrand`.
+انشره في `panda.config.ts` `presets` الخاص بك، وتقوم حالة `_dark` بتتبع رموز `light-dark()` الخاصة بـ pantoken تلقائيًا.
 
-## Example
+## مثال
 
 **panda.config.ts**
 
@@ -21,26 +20,26 @@ export default defineConfig({ presets: [pantokenPreset] });
 // then: css({ color: "token(colors.color-text-base)" })
 ```
 
-## Interfaces
+## واجهات
 
 - [PandaToken](interfaces/PandaToken.md)
 - [PandaSemanticToken](interfaces/PandaSemanticToken.md)
 - [PandaPreset](interfaces/PandaPreset.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [PandaCategory](type-aliases/PandaCategory.md)
 
-## Variables
+## المتغيرات
 
 - [pantokenPreset](variables/pantokenPreset.md)
 
-## Functions
+## الدوال
 
 - [toPandaPreset](functions/toPandaPreset.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [pantokenPreset](variables/pantokenPreset.md)
+يعيد تسمية ويُعيد تصدير [pantokenPreset](variables/pantokenPreset.md)

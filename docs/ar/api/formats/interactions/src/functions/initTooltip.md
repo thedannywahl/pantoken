@@ -1,16 +1,16 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initTooltip
 
-# Function: initTooltip()
+# دالة: initTooltip()
 
 > **initTooltip**(`wrapper`, `tip`, `options?`): [`TooltipHandle`](../interfaces/TooltipHandle.md)
 
-توصيل إظهار/إخفاء التمرير/التركيز مع التأخير على غلاف تلميح الأداة وفقاعته.
-يرجع دالة تنظيف للاستخدام في disconnectedCallback لمكون ويب.
+ربط سلوك العرض/الإخفاء عند التحويم أو التركيز مع تأخير على غلاف التلميح ونقطة الفقاعة الخاصة به.
+يعيد دالة تنظيف لاستخدامها في disconnectedCallback لمكوّن الويب.
 
-CSS: wrapper = عنصر .instui-tooltip، tip = طفله .tip
-WC: wrapper = shadow .instui-tooltip، tip = shadow .tip
+  CSS:  wrapper = عنصر .instui-tooltip، tip = عنصر .tip التابع له
+  WC:   wrapper = عنصر .instui-tooltip داخل الظل، tip = عنصر .tip داخل الظل
 
-## Parameters
+## المعلمات
 
 ### wrapper
 
@@ -24,6 +24,6 @@ WC: wrapper = shadow .instui-tooltip، tip = shadow .tip
 
 [`TooltipOptions`](../interfaces/TooltipOptions.md)
 
-## Returns
+## القيم المرجعة
 
 [`TooltipHandle`](../interfaces/TooltipHandle.md)

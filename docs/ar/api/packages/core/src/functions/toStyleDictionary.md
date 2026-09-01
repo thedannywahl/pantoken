@@ -1,36 +1,37 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / toStyleDictionary
 
-# Function: toStyleDictionary()
+# دالة: toStyleDictionary()
 
 > **toStyleDictionary**(`tokens`, `mode?`): `Record`\<`string`, [`SdLeaf`](../interfaces/SdLeaf.md)\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-شكّل IR المحل كقاموس توكن Style Dictionary مسطح مفتاح حسب اسم التوكن (مع البادئة `--` المحررة). اطعمه إلى `tools/sd-config` للمنبعثات الأصلية.
+شكل الـ IR المحلّل كقاموس مسطح لرموز Style Dictionary مفهرس باسم الرمز (مع
+إزالة `--` البادئة). قدّم هذا إلى `tools/sd-config` للمصدِّرين الأصليين.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../interfaces/Token.md)[]
+للقراءة فقط [`Token`](../interfaces/Token.md)[]
 
-IR.
+الـ IR.
 
 ### mode?
 
 [`Mode`](../type-aliases/Mode.md) = `"light"`
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+وضع اللون الذي سيتم حله (الافتراضي `"light"`).
 
-## Returns
+## القيم المرجعة
 
 `Record`\<`string`, [`SdLeaf`](../interfaces/SdLeaf.md)\>
 
-كائن قاموس Style Dictionary.
+كائن قاموس لـ Style Dictionary.
 
-## Example
+## مثال
 
-**شكّل IR للنسب الأصلية**
+**شكل الـ IR للسلالة الأصلية**
 
 ```ts
 import { buildTokens, toStyleDictionary } from "@pantoken/core";

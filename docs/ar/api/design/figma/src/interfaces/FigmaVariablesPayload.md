@@ -1,31 +1,31 @@
 [pantoken](../../../../index.md) / [design/figma/src](../index.md) / FigmaVariablesPayload
 
-# Interface: FigmaVariablesPayload
+# واجهة: FigmaVariablesPayload
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حمولة Figma Variables: مجموعة واحدة مع الأوضاع والمتغيرات.
+حمولة Figma Variables: مجموعة واحدة تحتوي على أوضاع ومتغيرات.
 
-## Properties
+## الخصائص
 
 ### collection
 
 > **collection**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### modes
 
 > **modes**: `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### variables
 
 > **variables**: [`FigmaVariable`](FigmaVariable.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

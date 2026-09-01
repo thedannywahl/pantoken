@@ -1,16 +1,16 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / logos
 
-# Variable: logos
+# متغير: logos
 
 > `const` **logos**: readonly [`LogoMeta`](../interfaces/LogoMeta.md)[] = `LOGOS`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كل شعار متاح، مرتب حسب الاسم.
+كل شعار متاح، مرتّب حسب الاسم.
 
-## Example
+## مثال
 
-**قائمة التخطيطات المتاحة لـ Canvas**
+**سرد التخطيطات المتاحة لـ Canvas**
 
 ```ts
 import { logos } from "@pantoken/plugin-logos";

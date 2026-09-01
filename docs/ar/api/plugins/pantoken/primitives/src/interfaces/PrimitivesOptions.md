@@ -1,17 +1,18 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/primitives/src](../index.md) / PrimitivesOptions
 
-# Interface: PrimitivesOptions
+# واجهة: PrimitivesOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [primitivesCss](../functions/primitivesCss.md).
+خيارات لـ [primitivesCss](../functions/primitivesCss.md).
 
-## Properties
+## الخصائص
 
 ### prefix?
 
 > `optional` **prefix?**: `string` \| `null`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بادئة الفئة. سلسلة صحيحة تمجيد كل فئة (`"instui"` → `.instui-bg-…`); أي قيمة خاطئة تسقط البادئة بالكامل (`.bg-…`). يتم بناء `primitives.css` المُشحون باستخدام `"instui"`.
+بادئة الفئة. سلسلة ذات قيمة صحيحة (truthy) تُنشئ مساحة أسماء لكل فئة (`"instui"` → `.instui-bg-…`); أي قيمة زائفة
+تُزيل البادئة بالكامل (`.bg-…`). `primitives.css` المزود مبني باستخدام `"instui"`.

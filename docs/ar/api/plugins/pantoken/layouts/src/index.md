@@ -2,11 +2,11 @@
 
 # layouts
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-layouts` — سجلات تكوين التخطيط للمستهلكين النهائيين.
+`@pantoken/plugin-layouts` — سجلات تكوين التخطيط للمستهلكين في المراحل اللاحقة.
 
-## Example
+## مثال
 
 ```ts
 import { toCss } from "@pantoken/css";
@@ -17,16 +17,16 @@ const css = toCss(byTheme("rebrand"), { plugins: [layouts()] });
 // appends all layout rules to the token sheet
 ```
 
-## Interfaces
+## واجهات
 
 - [LayoutsOptions](interfaces/LayoutsOptions.md)
 - [PageLayout](interfaces/PageLayout.md)
 
-## Variables
+## المتغيرات
 
 - [pageLayouts](variables/pageLayouts.md)
 
-## Functions
+## الدوال
 
 - [layouts](functions/layouts.md)
 - [wrapperRules](functions/wrapperRules.md)

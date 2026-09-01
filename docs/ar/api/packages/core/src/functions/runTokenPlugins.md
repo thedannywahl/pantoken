@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / runTokenPlugins
 
-# Function: runTokenPlugins()
+# دالة: runTokenPlugins()
 
 > **runTokenPlugins**(`tokens`, `theme`, `plugins`): [`Token`](../interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تشغيل خطاف `tokens` لكل مكون بالترتيب. كل خطاف يتلقى القائمة الحالية ويعود بالاستبدال الكامل؛ يتم إزالة التكرار من النتيجة حسب الاسم.
+تشغيل معرّف `tokens` لكل مكوّن إضافي بالترتيب. يستقبل كل معلّق القائمة الحالية ويعيد الاستبدال الكامل؛ تُزال التكرارات من النتيجة حسب الاسم.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
@@ -20,22 +20,27 @@
 
 ### plugins
 
-readonly [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]
+قراءة فقط [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../interfaces/Token.md)[]
 
-## Example
+## مثال
 
 ```ts
 import { runTokenPlugins, type PantokenPlugin } from "@pantoken/core";
 import type { Token } from "@pantoken/model";
 
-const base: Token[] = [{ name: "--instui-x", syntax: "<color>", inherits: true, value: "#fff" }];
+const base: Token[] = [
+  { name: "--instui-x", syntax: "<color>", inherits: true, value: "#fff" },
+];
 const addBrand: PantokenPlugin = {
   name: "brand",
-  tokens: ({ tokens }) => [...tokens, defineToken({ name: "--instui-brand", value: "#0374B5" })],
+  tokens: ({ tokens }) => [
+    ...tokens,
+    defineToken({ name: "--instui-brand", value: "#0374B5" }),
+  ],
 };
 
 runTokenPlugins(base, "rebrand", [addBrand]); // → base + the --instui-brand token

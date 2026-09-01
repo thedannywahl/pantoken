@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / listCss
 
-# Variable: listCss
+# متغير: listCss
 
 > `const` **listCss**: `Definition`\[`"css"`\] = `list.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `list` مستقلة — CSS مسبوق للقائمة المباعدة، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `list` — CSS مزوّد بالبادئة للقائمة المتباعدة، جاهز للشحن كملف `.css`.

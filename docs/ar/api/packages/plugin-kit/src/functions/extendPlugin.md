@@ -1,38 +1,38 @@
 [pantoken](../../../../index.md) / [packages/plugin-kit/src](../index.md) / extendPlugin
 
-# Function: extendPlugin()
+# دالة: extendPlugin()
 
 > **extendPlugin**(`base`, `overrides`): [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء مكون إضافي فوق آخر. يتم تكوين hooks من نفس المرحلة: `tokens` يشغل `base` ثم
-`overrides` (الذي يرى مخرجات base)؛ `css` يدمج كلا `CssContribution`s؛ `icons`/`native` يشغل
-كلاهما؛ `rehype` chains resolvers (يتجاوز أولاً). القدرات هي الاتحاد.
+بناء مكوّن إضافي فوق آخر. تُركَّب خطافات نفس المرحلة: `tokens` يشغّل `base` ثم
+`overrides` (الذي يرى مخرجات الأساس)؛ `css` يدمج كلا `CssContribution`s؛ `icons`/`native` تشغّلان
+كلاهما؛ `rehype` يربط المحللات (يتجاوز الأول). القدرات هي الاتحاد.
 
-## Parameters
+## المعلمات
 
 ### base
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-المكون الإضافي للتوسيع.
+الإضافة المراد توسيعها.
 
 ### overrides
 
 `Partial`\<[`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)\>
 
-Hooks (و`name` اختياري) متطبقة في الأعلى.
+خطافات (و `name` اختياري) مضافة فوقها.
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../core/src/interfaces/PantokenPlugin.md)
 
-مكون إضافي مميز جديد.
+مكوّن إضافي جديد ذو علامة تجارية.
 
-## Example
+## مثال
 
-**إضافة مساهمة CSS إضافية فوق مكون إضافي أساسي**
+**أضف مساهمة CSS إضافية فوق مكوّن إضافي أساسي**
 
 ```ts
 import { definePlugin, extendPlugin } from "@pantoken/plugin-kit";

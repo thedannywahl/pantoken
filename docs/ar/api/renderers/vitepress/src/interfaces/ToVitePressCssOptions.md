@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/vitepress/src](../index.md) / ToVitePressCssOptions
 
-# Interface: ToVitePressCssOptions
+# واجهة: ToVitePressCssOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 خيارات لـ `toVitePressCss`.
 
-## Properties
+## الخصائص
 
 ### selector?
 
 > `optional` **selector?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المحدد الذي يتم إصدار المتغيرات تحته (افتراضي `":root"`).
+المحدد الذي تُصدَر تحته المتغيرات (الافتراضي `":root"`).

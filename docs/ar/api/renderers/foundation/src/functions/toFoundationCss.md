@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/foundation/src](../index.md) / toFoundationCss
 
-# Function: toFoundationCss()
+# دالة: toFoundationCss()
 
 > **toFoundationCss**(`options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار طبقة تراكب CSS رقيقة في وقت التشغيل: موضوع فئات Foundation المترجمة مع `var(--instui-*)`.
+أصدر تراكب CSS خفيف لوقت التشغيل: قصر/تفعيل فئات Foundation المجمعة للثيم باستخدام `var(--instui-*)`.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [ToFoundationCssOptions](../interfaces/ToFoundationCssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة طبقة التراكب CSS.
+سلسلة CSS الخاصة بالتراكب.
 
-## Example
+## مثال
 
-**نطاق طبقة التراكب إلى حاوية**
+**قصر التراكب على حاوية**
 
 ```ts
 toFoundationCss({ scope: ".instui" });

@@ -350,10 +350,28 @@ export default defineConfig({
         ],
         cache: false,
       },
-      // Drift checks for all i18n domains (UI, docs, CLI).
+      // Drift checks for the UI and CLI i18n domains. Severity per surface and locale tier comes from
+      // `i18n-policy.json` — these tasks report every gap but only exit non-zero on a `block`, so an
+      // English-only change lands without waiting on ~90 translations. Docs drift runs in
+      // `@pantoken/docs#docs:build` (it needs the generated EN API tree); `i18n:check:drift:all` runs
+      // both.
       "i18n:check:drift": {
         command:
           "vp run @pantoken/translation-adapters#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+      },
+      // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
+      // prose drift is skipped with a note when `docs/api` is absent.
+      "i18n:check:drift:all": {
+        command:
+          "vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
+        cache: false,
+      },
+      // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
+      // "show me every gap, fail if any remain" command for a local audit or a scheduled full-locale
+      // run before a release.
+      "i18n:check:drift:strict": {
+        command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
+        cache: false,
       },
       "i18n:bundles:build": {
         command: "vp run @pantoken/i18n#generate",

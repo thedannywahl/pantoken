@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / sideNavBar
 
-# Variable: sideNavBar
+# متغير: sideNavBar
 
 > `const` **sideNavBar**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-side-nav-bar&gt;` — الصدفة المصممة لسكة التنقل الرأسية. يضيف `minimized="true"`
-معدل `-minimized` (السكة المطوية)؛ يدرج المستهلك عناصر التنقل.
+`&lt;instui-side-nav-bar&gt;` — الغلاف المصمم لشريط التنقل العمودي. `minimized="true"` يضيف
+المُعدّل `-minimized` (الشريط المطوي); يضع المستهلك عناصر التنقل في الفتحات.
 
-## Example
+## مثال
 
 ```html
 <instui-side-nav-bar>

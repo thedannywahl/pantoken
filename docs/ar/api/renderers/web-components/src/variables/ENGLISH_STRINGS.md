@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / ENGLISH\_STRINGS
 
-# Variable: ENGLISH\_STRINGS
+# متغير: ENGLISH\_STRINGS
 
 > `const` **ENGLISH\_STRINGS**: [`WebComponentStrings`](../interfaces/WebComponentStrings.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-الافتراضيات الإنجليزية المستخدمة عندما لا يتم توفير حزمة محلية.
+الإعدادات الافتراضية باللغة الإنجليزية المستخدمة عندما لا يتم توفير حزمة لغة.

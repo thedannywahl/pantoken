@@ -1,30 +1,30 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/prune-custom-props/src](../index.md) / pruneCustomProps
 
-# Variable: pruneCustomProps
+# متغير: pruneCustomProps
 
 > `const` **pruneCustomProps**: \{(): [`Plugin`](https://postcss.org/api/#plugin); `postcss`: `true`; \}
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أنشئ مكون إضافي PostCSS لتقليم الخصائص المخصصة غير المستخدمة.
+إنشاء مكوّن PostCSS prune-unused-custom-properties.
 
 ## Type Declaration
 
-## Returns
+## القيم المرجعة
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكون إضافي PostCSS [Plugin](https://postcss.org/api/#plugin).
+مكوّن PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-علامة المكون الإضافي PostCSS المطلوبة.
+علامة مكوّن PostCSS المطلوبة.
 
-## Example
+## مثال
 
-**قم بتشغيله كممر PostCSS مستقل**
+**شغّله كمرور PostCSS مستقل**
 
 ```ts
 import postcss from "postcss";

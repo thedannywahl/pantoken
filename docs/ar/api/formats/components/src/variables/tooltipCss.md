@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / tooltipCss
 
-# Variable: tooltipCss
+# متغير: tooltipCss
 
 > `const` **tooltipCss**: `Definition`\[`"css"`\] = `tooltip.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة نمط `tooltip` مستقلة — CSS المعادي للمؤشر الأداة، جاهز للشحن كملف `.css`.
+ورقة أنماط `tooltip` مستقلة — CSS ذات بادئة لفقاعة التلميح، جاهزة للشحن كملف `.css`.

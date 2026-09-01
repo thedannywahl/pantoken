@@ -1,17 +1,17 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/layouts/src](../index.md) / LayoutsOptions
 
-# Interface: LayoutsOptions
+# واجهة: LayoutsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون الإضافة [layouts](../functions/layouts.md).
+خيارات الإضافة [layouts](../functions/layouts.md).
 
-## Properties
+## الخصائص
 
 ### position?
 
 > `optional` **position?**: `"append"` \| `"prepend"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حيث تهبط القواعد بالنسبة إلى ورقة الأنماط: `"append"` (افتراضي) أو `"prepend"`.
+مكان وضع القواعد بالنسبة لورقة الأنماط: `"append"` (الافتراضي) أو `"prepend"`.

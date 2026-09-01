@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [platforms/flutter/src](../index.md) / generateFlutter
 
-# Function: generateFlutter()
+# دالة: generateFlutter()
 
 > **generateFlutter**(`options`): `Promise`\<`string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار Flutter Dart لموضوع مسمى. يعيد مسار الملف المكتوب.
+يصدر Flutter Dart لسمة مسمّاة. يعيد مسار الملف المكتوب.
 
-## Parameters
+## المعلمات
 
 ### options
 
 [`GenerateFlutterOptions`](../interfaces/GenerateFlutterOptions.md)
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<`string`\>
 
-## Example
+## مثال
 
 ```ts
 import { generateFlutter } from "@pantoken/flutter";

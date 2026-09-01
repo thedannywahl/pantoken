@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / VectorDrawableOptions
 
-# Interface: VectorDrawableOptions
+# واجهة: VectorDrawableOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الخيارات الخاصة بـ [toVectorDrawable](../functions/toVectorDrawable.md).
+خيارات لـ [toVectorDrawable](../functions/toVectorDrawable.md).
 
-## Properties
+## الخصائص
 
 ### color?
 
 > `optional` **color?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اللون المطبق على الرسم (الافتراضي `#FF000000`؛ تلوين عند الاستخدام).
+اللون المطبق على العنصر القابل للرسم (الافتراضي `#FF000000`; يتم التلوين عند الاستخدام).

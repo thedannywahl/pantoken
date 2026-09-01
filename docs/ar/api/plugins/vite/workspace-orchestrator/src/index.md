@@ -2,15 +2,18 @@
 
 # workspace-orchestrator
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/vite-workspace-orchestrator` — إضافة خادم تطوير Vite التي تراقب حزم مساحة العمل الأعلى وتعيد بناءها (وتوابعها) عند تغيير المصدر.
+`@pantoken/vite-workspace-orchestrator` — مكوّن إضافي لخادم التطوير Vite يراقب حزم مساحة العمل العلوية ويعيد بنائها (ومعتمديها) عند تغيّر الشيفرة المصدرية.
 
-أثناء التطوير، عادة ما تحتاج التغييرات على حزمة مساحة العمل المحلية إلى إعادة بناء يدوية قبل أن يعكسها خادم التطوير. تؤتمت هذه الإضافة ذلك: فهي تراقب مصدر كل حزمة أعلى باستخدام `fs.watch` الأصلي (وليس chokidar الخاص بـ Vite، الذي يصفي المسارات خارج جذر المشروع)، وتخفف التغييرات السريعة، وتعيد البناء بترتيب طوبولوجي، وتسجل المخرجات المدمجة مع مراقب Vite حتى يعيد تحميل المتصفح. في مستندات pantoken، تحافظ على CSS المُنشأ (`@pantoken/css`، `@pantoken/components`) طازجاً عند تحرير المكتبات، بدلاً من فقط وقت البناء.
+أثناء التطوير، عادةً ما تتطلب التغييرات على حزمة مساحة العمل المحلية إعادة بناء يدوية قبل أن يعكسها خادم التطوير.
+يقوم هذا المكوّن بأتمتة ذلك: يراقب مصدر كل حزمة علوية باستخدام `fs.watch` الأصلي (وليس chokidar الخاص بـ Vite، الذي يقوم بتصفية المسارات خارج جذر المشروع)،
+يُخمّد التغييرات السريعة، يعيد البناء بترتيب طوبولوجي، ويسجل المخرجات المبنية لدى مراقب Vite حتى يعاد تحميل المتصفح.
+في توثيق pantoken يحافظ على CSS المولَّد (`@pantoken/css`, `@pantoken/components`) محدثًا أثناء تحرير المكتبات، بدلًا من التحديث فقط عند وقت البناء.
 
-يتم تطبيقه خلال `serve` فقط، لذلك لا تتأثر عمليات البناء الإنتاجية.
+يُطبَّق فقط أثناء `serve`، لذا تظل عمليات البناء للإنتاج دون مساس.
 
-## Example
+## مثال
 
 ```ts
 import { resolve } from "node:path";
@@ -30,13 +33,13 @@ workspaceOrchestrator({
 });
 ```
 
-## Interfaces
+## واجهات
 
 - [UpstreamNode](interfaces/UpstreamNode.md)
 - [FileServerEntry](interfaces/FileServerEntry.md)
 - [OrchestratorOptions](interfaces/OrchestratorOptions.md)
 
-## Functions
+## الدوال
 
 - [matchesFilters](functions/matchesFilters.md)
 - [workspaceOrchestrator](functions/workspaceOrchestrator.md)

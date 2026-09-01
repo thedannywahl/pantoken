@@ -1,29 +1,27 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initCloseButton
 
-# Function: initCloseButton()
+# دالة: initCloseButton()
 
 > **initCloseButton**(`btn`): `void`
 
-توصيل زر الإغلاق لرفض هدفه.
+وصل زر إغلاق لإخفاء هدفه.
 
-دقة الهدف (أول تطابق يفوز):
+تحديد الهدف (أول تطابق يفوز):
+1. `data-close-target="id"` — إخفاء العنصر ذي هذا المعرف
+2. `popovertarget` / `commandfor` — تخطٍّ؛ المتصفح الأصلي يتعامل معه
+3. الصعود إلى أقرب `&lt;dialog&gt;` أو `[popover]` أو `[data-dismissible]`
 
-1. `data-close-target="id"` — رفض العنصر بهذا المعرف
-2. `popovertarget` / `commandfor` — تخطي؛ يتعامل معه المتصفح الأصلي
-3. الصعود إلى أقرب `&lt;dialog&gt;`، `[popover]`، أو `[data-dismissible]`
-
-استراتيجية الرفض:
-
+استراتيجية الإغلاق:
 - `&lt;dialog&gt;` → `dialog.close()`
 - `[popover]` → `el.hidePopover()`
-- `[data-dismissible]` أو `[open]` → إزالة خاصية open + إطلاق bubbling `close`
+- `[data-dismissible]` أو `[open]` → إزالة السمة open + إطلاق حدث `close` الذي ينتشر (bubbling)
 
-## Parameters
+## المعلمات
 
 ### btn
 
 `HTMLElement`
 
-## Returns
+## القيم المرجعة
 
 `void`

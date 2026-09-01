@@ -1,39 +1,39 @@
 [pantoken](../../../../index.md) / [design/figma/src](../index.md) / FigmaColor
 
-# Interface: FigmaColor
+# واجهة: FigmaColor
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-لون Figma RGBA، قنوات 0–1.
+لون RGBA من Figma، القنوات 0–1.
 
-## Properties
+## الخصائص
 
 ### r
 
 > **r**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### g
 
 > **g**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### b
 
 > **b**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### a
 
 > **a**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

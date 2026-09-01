@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/pendo/src](../index.md) / pendoCss
 
-# Variable: pendoCss
+# متغير: pendoCss
 
 > `const` **pendoCss**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط دليل `rebrand` Pendo الجاهزة (نطاق، `!important`).
+ورقة أنماط دليل Pendo الجاهزة `rebrand` (محددة النطاق، `!important`).

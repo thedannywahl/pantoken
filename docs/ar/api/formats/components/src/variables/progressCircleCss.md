@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / progressCircleCss
 
-# Variable: progressCircleCss
+# متغير: progressCircleCss
 
 > `const` **progressCircleCss**: `Definition`\[`"css"`\] = `progressCircle.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `progressCircle` مستقلة — CSS مسبوق لحلقة التقدم، جاهز للشحن كملف `.css`.
+ورقة أنماط `progressCircle` مستقلة — CSS ذات بادئة لحلقة التقدم، جاهزة للشحن كملف `.css`.

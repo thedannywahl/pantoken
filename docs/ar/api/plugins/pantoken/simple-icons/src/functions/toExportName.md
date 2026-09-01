@@ -1,24 +1,24 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/simple-icons/src](../index.md) / toExportName
 
-# Function: toExportName()
+# دالة: toExportName()
 
 > **toExportName**(`slug`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تحويل عنوان سهل الاستخدام (`"github-actions"`) إلى اسم تصديره Simple Icons (`"siGithubActions"`).
+حوّل الـslug (`"github-actions"`) إلى اسم التصدير الخاص بـ Simple Icons (`"siGithubActions"`).
 
-## Parameters
+## المعلمات
 
 ### slug
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { toExportName } from "@pantoken/plugin-simple-icons";

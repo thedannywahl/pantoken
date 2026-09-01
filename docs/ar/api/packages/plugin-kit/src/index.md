@@ -2,36 +2,32 @@
 
 # plugin-kit
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-kit` — بناء وتكوين مكونات pantoken الإضافية، مع تسجيل التوعية بالقدرات.
+`@pantoken/plugin-kit` — بناء وتأليف ملحقات pantoken، مع تسجيل واعٍ بالإمكانات.
 
-[definePlugin](functions/definePlugin.md) هو المصنع الحديث: مرر الخطافات التي تطبقها وسيرجع طبيعي
-`PantokenPlugin` موسوم بالقدرات المستنتجة من تلك الخطافات. المستهلكون
-(`buildTokens`, `toCss`) تشغيل [checkPlugins](functions/checkPlugins.md) للتحذير — لا خطأ أبداً — عند تسجيل مكون إضافي
-حيث ليس له تأثير: مكون إضافي غير مصنع (فحوصات القدرات غير متاحة) أو
-مكون إضافي مصنوع في مرحلة لا ينفذها (على سبيل المثال، مكون إضافي يحتوي على رموز فقط تم تمريره إلى `toCss`).
+[definePlugin](functions/definePlugin.md) هو المصنع الحديث: مرّر الخطاطيف التي تنفذها وسيرجع `PantokenPlugin` عاديًا مُعلّمًا بالإمكانات التي تم استنتاجها من تلك الخطاطيف. المستهلكون
+(`buildTokens`, `toCss`) يشغّلون [checkPlugins](functions/checkPlugins.md) للإبلاغ — دون إحداث خطأ — عندما يتم تسجيل ملحق في موضع لا يؤثر فيه: ملحق غير مصنع (فحوصات الإمكانات غير متاحة) أو ملحق مصنع في مرحلة لا ينفذها (مثال: ملحق خاص بالرموز تم تمريره إلى `toCss`).
 
-مراحل التحويل التي يقودها مصفوفة `plugins:` بالفعل هي `tokens`، `icons`، و `css`؛ `rehype`
-(محلل رمز وقت التصيير) و `native` (قاموس النمط) يتم تسجيلها كقدرات ولكنها
-مستهلكون في اتجاه المصب، غير محمية هنا.
+مراحل التحويل التي يديرها فعليًا مصفوفة `plugins:` هي `tokens`, `icons`, و`css`; `rehype`
+(مُحلّل أيقونات وقت العرض) و`native` (Style Dictionary) مسجّلان كإمكانات لكنهما مستهلكان لاحقان، وليس محميين هنا.
 
-## Example
+## مثال
 
 ```ts
 const brand = definePlugin({ name: "brand", tokens: (c) => [...c.tokens], css: () => ({ ... }) });
 // capabilitiesOf(brand) → ["tokens", "css"]
 ```
 
-## Interfaces
+## واجهات
 
 - [ResolveOptions](interfaces/ResolveOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Stage](type-aliases/Stage.md)
 
-## Functions
+## الدوال
 
 - [definePlugin](functions/definePlugin.md)
 - [isFactoried](functions/isFactoried.md)
@@ -43,7 +39,7 @@ const brand = definePlugin({ name: "brand", tokens: (c) => [...c.tokens], css: (
 - [makeResolver](functions/makeResolver.md)
 - [resolveTokens](functions/resolveTokens.md)
 
-## References
+## المراجع
 
 ### Mode
 

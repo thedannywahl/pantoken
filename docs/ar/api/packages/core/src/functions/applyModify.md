@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / applyModify
 
-# Function: applyModify()
+# دالة: applyModify()
 
 > **applyModify**(`value`, `modify`): `string` \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تطبيق Tokens Studio [TokenModify](../interfaces/TokenModify.md) على لون hex محدد.
+تطبيق Tokens Studio [TokenModify](../interfaces/TokenModify.md) على لون سداسي محدد.
 
-## Parameters
+## المعلمات
 
 ### value
 
@@ -18,29 +18,29 @@
 
 [`TokenModify`](../interfaces/TokenModify.md)
 
-## Returns
+## القيم المرجعة
 
 `string` \| `undefined`
 
-اللون المُعدل، أو `undefined` عندما يكون `value` ليس لون hex (بحيث يمكن للمتصل الرجوع إلى الحفاظ على المعدّل كبيانات وصفية).
+اللون المعدّل، أو `undefined` عندما لا يكون `value` لونًا سداسيًا (حتى يتمكن المستدعي من الرجوع للحفاظ على المُعدّل كبيانات وصفية).
 
-## Examples
+## أمثلة
 
-**تغميق وتفتيح وإضافة ألفا**
+**تغميق، تفتيح، وإضافة ألفا**
 
 ```ts
 import { applyModify } from "@pantoken/core";
 
-applyModify("#808080", { type: "darken", value: 0.5 }); // → "#404040"
+applyModify("#808080", { type: "darken", value: 0.5 });  // → "#404040"
 applyModify("#808080", { type: "lighten", value: 0.5 }); // → "#c0c0c0"
-applyModify("#ffffff", { type: "alpha", value: 0.5 }); // → "#ffffff80"
+applyModify("#ffffff", { type: "alpha", value: 0.5 });   // → "#ffffff80"
 ```
 
-**إدخال غير hex ومزج إرجاع غير محدد (الحفاظ على البيانات الوصفية)**
+**الإدخال غير السداسي والخلط يُعيدان undefined (احفظ كبيانات وصفية)**
 
 ```ts
 import { applyModify } from "@pantoken/core";
 
-applyModify("var(--x)", { type: "darken", value: 0.1 }); // → undefined
+applyModify("var(--x)", { type: "darken", value: 0.1 });        // → undefined
 applyModify("#fff", { type: "mix", value: 0.5, color: "#000" }); // → undefined
 ```

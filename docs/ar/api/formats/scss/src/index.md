@@ -2,32 +2,33 @@
 
 # scss
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 `@pantoken/scss` — رموز تصميم Instructure كمتغيرات SCSS.
 
-[toScss](functions/toScss.md) يحول أي IR؛ [scss](variables/scss.md) هي مجموعة المتغيرات الجاهزة `rebrand`. يتم نشر ملف ثابت في `@pantoken/scss/tokens.scss`.
+[toScss](functions/toScss.md) يحوّل أي IR؛ [scss](variables/scss.md) هو مجموعة متغيرات `rebrand` الجاهزة. يتم نشر ملف
+ثابت في `@pantoken/scss/tokens.scss`.
 
-## Interfaces
+## واجهات
 
 - [ToScssOptions](interfaces/ToScssOptions.md)
 
-## Variables
+## المتغيرات
 
 - [scss](variables/scss.md)
 
-## Functions
+## الدوال
 
 - [toScss](functions/toScss.md)
 
-## References
+## المراجع
 
 ### Mode
 
-إعادة تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
+يعيد تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
 
----
+***
 
 ### default
 
-إعادة تسمية وإعادة تصدير [scss](variables/scss.md)
+يعيد تسمية ويعيد تصدير [scss](variables/scss.md)

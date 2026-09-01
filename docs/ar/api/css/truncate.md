@@ -1,69 +1,68 @@
 # CSS: truncate
 
-`.--truncate` — اختصار بالحذف مع تثبيت السطر يتم التحكم به بواسطة `--lines` — يمكن استخدامه بمفرده أو ربطه بأي مكون (`.instui-button.--truncate`).
+`.--truncate` — اقتطاع الحروف بنقطة الحذف مع تقييد الأسطر يتحكم به `--lines` — قابل للاستخدام بمفرده أو مضافًا إلى أي مكوّن (`.instui-button.--truncate`).
 
-تستخدم الفئة الأساسية `display: -webkit-box` وتقرأ الخاصية المخصصة `--lines` لتقيد النص بعدد محدد من الأسطر قبل أن ينتهي بحذف.
+تستخدم الفئة الأساسية `display: -webkit-box` وتقرأ الخاصية المخصصة `--lines` لتقييد النص لعدد ثابت من الأسطر قبل أن تنتهي بنقطة الحذف.
 
 **المصدر:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/truncate/index.ts)
 
 <!-- js-requirement -->
-
 > [!TIP]
-> **JS Requirement** — هذا المكون لا يأتي مع CSS خاص به — يأتي الترميز والسلوك بالكامل من `@pantoken/interactions`. معدل `--max-lines-auto` يتم تشغيله بواسطة هذا السلوك. انظر إلى [جدول المعدلات أدناه](#modifiers).
+> **متطلب JS** — لا يرسل هذا المكوّن أي CSS خاص به — علامته وسلوكه يأتيان كليًا من `@pantoken/interactions`. المُعامل `--max-lines-auto` الخاص به يتم دفعه بواسطة ذلك السلوك. انظر [جدول المُعاملات أدناه](#modifiers).
 
-## Usage
+
+## الاستخدام
 
 ```css
 @import "@pantoken/components/utilities.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="--truncate">This text is clamped to one line by default and ends in an ellipsis.</div>
-<div class="--truncate" style="--lines: 3">
-  This text is clamped to three lines and ends in an ellipsis.
-</div>
+<div class="--truncate" style="--lines: 3">This text is clamped to three lines and ends in an ellipsis.</div>
 <button class="instui-button --truncate">…</button>
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier                | Description                                                                                                                                                                                                 |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.--lines-1`            | بديل لـ `--max-lines-1`.                                                                                                                                                                                    |
-| `.--lines-2`            | بديل لـ `--max-lines-2`.                                                                                                                                                                                    |
-| `.--lines-3`            | بديل لـ `--max-lines-3`.                                                                                                                                                                                    |
-| `.--lines-4`            | بديل لـ `--max-lines-4`.                                                                                                                                                                                    |
-| `.--lines-5`            | بديل لـ `--max-lines-5`.                                                                                                                                                                                    |
-| `.--max-lines-1`        | تقيد إلى سطر واحد (افتراضي).                                                                                                                                                                                |
-| `.--max-lines-2`        | تقيد إلى سطرين.                                                                                                                                                                                             |
-| `.--max-lines-3`        | تقيد إلى ثلاثة أسطر.                                                                                                                                                                                        |
-| `.--max-lines-4`        | تقيد إلى أربعة أسطر.                                                                                                                                                                                        |
-| `.--max-lines-5`        | تقيد إلى خمسة أسطر.                                                                                                                                                                                         |
-| `.--max-lines-auto`     | <span class="instui-pill pantoken-doc-tag pantoken-doc-tag-interaction">Interaction</span> — — Clamp to the number of lines that fit in the container, based on its height and the line height of the text. |
-| `.--truncate`           | يتيح الاختصار وتثبيت السطر على العنصر المستهدف.                                                                                                                                                             |
-| `.--truncate-character` | (افتراضي) اختصر على مستوى الأحرف.                                                                                                                                                                           |
-| `.--truncate-word`      | اختصر على مستوى الكلمة.                                                                                                                                                                                     |
+| معدّل | الوصف |
+| --- | --- |
+| `.--lines-1` | اسم مستعار لـ `--max-lines-1`. |
+| `.--lines-2` | اسم مستعار لـ `--max-lines-2`. |
+| `.--lines-3` | اسم مستعار لـ `--max-lines-3`. |
+| `.--lines-4` | اسم مستعار لـ `--max-lines-4`. |
+| `.--lines-5` | اسم مستعار لـ `--max-lines-5`. |
+| `.--max-lines-1` | تقييد إلى سطر واحد (الافتراضي). |
+| `.--max-lines-2` | تقييد إلى سطرين. |
+| `.--max-lines-3` | تقييد إلى ثلاثة أسطر. |
+| `.--max-lines-4` | تقييد إلى أربعة أسطر. |
+| `.--max-lines-5` | تقييد إلى خمسة أسطر. |
+| `.--max-lines-auto` | <span class="instui-pill pantoken-doc-tag pantoken-doc-tag-interaction">Interaction</span> — — Clamp to the number of lines that fit in the container, based on its height and the line height of the text. |
+| `.--truncate` | يُمكّن الاقتطاع وتقييد الأسطر على العنصر الهدف. |
+| `.--truncate-character` | (الافتراضي) اقتطع على مستوى الأحرف. |
+| `.--truncate-word` | اقتطع على مستوى الكلمات. |
 
-## Custom properties
+## خصائص مخصّصة
 
-| Property     | Type                                   | Default    | Description |
-| ------------ | -------------------------------------- | ---------- | ----------- |
-| `--ellipsis` | `clip \| ellipsis \| <string> \| fade` | `ellipsis` | —           |
-| `--lines`    | `<integer>`                            | `1`        | —           |
+| خاصية | نوع | افتراضي | الوصف |
+| --- | --- | --- | --- |
+| `--ellipsis` | `clip \| ellipsis \| <string> \| fade` | `ellipsis` | — |
+| `--lines` | `<integer>` | `1` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                          | Type                                               | Value                                                                        |
-| ---------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
 | `--instui-component-truncate-text-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-line-height-paragraph-base`          | `<percentage>`                                     | `150%`                                                                       |
+| `--instui-line-height-paragraph-base` | `<percentage>` | `150%` |
 
-## Browser support
+## دعم المتصفّح
 
-- يعتمد التثبيت على `-webkit-line-clamp` مع `display: -webkit-box`، مقترنًا مع `line-clamp`.
+- التقييد يعتمد على `-webkit-line-clamp` مع `display: -webkit-box`، مقترنًا بـ `line-clamp` القياسي.
 
-## Related
+## ذات صلة
 
-- [text](/ar/api/css/text.md) — طباعة الجسم التي يقوم هذا بقصها.
+- [text](/ar/api/css/text.md) — تنسيق نص الجسم الذي يقوم هذا الاقتطاع بتقليصه.
+

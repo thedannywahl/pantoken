@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / tokenNames
 
-# Function: tokenNames()
+# دالة: tokenNames()
 
 > **tokenNames**(`ir`): `Set`\<`string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مجموعة أسماء الرموز التي يحددها الأشعة تحت الحمراء.
+مجموعة أسماء الرموز التي يعرّفها IR.
 
-## Parameters
+## المعلمات
 
 ### ir
 
-readonly [`Token`](../../../core/src/interfaces/Token.md)[]
+قابل للقراءة فقط [`Token`](../../../core/src/interfaces/Token.md)[]
 
-## Returns
+## القيم المرجعة
 
 `Set`\<`string`\>
 
-## Example
+## مثال
 
 ```ts
 import { tokenNames } from "@pantoken/utils";

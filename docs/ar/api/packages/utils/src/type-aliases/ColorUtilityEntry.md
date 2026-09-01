@@ -1,9 +1,11 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / ColorUtilityEntry
 
-# Type Alias: ColorUtilityEntry
+# اسم نوع مستعار: ColorUtilityEntry
 
 > **ColorUtilityEntry** = `string` \| readonly \[`string`, `string`\]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إدخال عائلة لون دلالية واحدة: اسم بسيط (يتم حله مقابل `--instui-color-&lt;family&gt;-&lt;name&gt;`) أو زوج `[name, value]` صريح — العنصر الثاني مغلف `var()` إذا كان اسم `--custom-prop`، أو يُستخدم حرفيًا بخلاف ذلك (تعبير `light-dark(…)`، كلمة أساسية خام مثل `transparent`).
+إدخال واحد لعائلة ألوان معنوية: اسم عاري (يُحل مقابل `--instui-color-&lt;family&gt;-&lt;name&gt;`)
+ أو زوج صريح `[name, value]` — العنصر الثاني ملفوف بـ `var()` إذا كان اسمًا `--custom-prop`
+، أو يُستخدم حرفيًا خلاف ذلك (تعبير `light-dark(…)`، كلمة مفتاحية خام مثل `transparent`).

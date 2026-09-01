@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / hexToRgb
 
-# Function: hexToRgb()
+# دالة: hexToRgb()
 
 > **hexToRgb**(`hex`): [`Rgb`](../interfaces/Rgb.md) \| `undefined`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-قم بتحليل `#rgb`/`#rrggbb`/`#rrggbbaa` إلى قنوات 0–255، أو `undefined` إذا لم يكن لون hex.
+قم بتحليل `#rgb`/`#rrggbb`/`#rrggbbaa` إلى قنوات 0–255، أو `undefined` إذا لم يكن لونًا سداسيًا.
 
-## Parameters
+## المعلمات
 
 ### hex
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 [`Rgb`](../interfaces/Rgb.md) \| `undefined`
 
-## Example
+## مثال
 
 ```ts
 import { hexToRgb } from "@pantoken/swatches";

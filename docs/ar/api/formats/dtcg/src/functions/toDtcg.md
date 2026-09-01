@@ -1,34 +1,34 @@
 [pantoken](../../../../index.md) / [formats/dtcg/src](../index.md) / toDtcg
 
-# Function: toDtcg()
+# دالة: toDtcg()
 
 > **toDtcg**(`tokens`, `mode?`): `Record`\<`string`, [`DtcgNode`](../type-aliases/DtcgNode.md)\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 تحويل قائمة رموز IR إلى مستند DTCG.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### mode?
 
 [`Mode`](../type-aliases/Mode.md) = `"light"`
 
-أي وضع ألوان سيتم تحديده (الافتراضي `"light"`).
+أي وضع لون يتم حله (الافتراضي `"light"`).
 
-## Returns
+## القيم المرجعة
 
 `Record`\<`string`, [`DtcgNode`](../type-aliases/DtcgNode.md)\>
 
-شجرة رموز DTCG المتداخلة.
+شجرة رموز DTCG متداخلة.
 
-## Examples
+## أمثلة
 
 **تحويل IR الافتراضي إلى شجرة DTCG**
 

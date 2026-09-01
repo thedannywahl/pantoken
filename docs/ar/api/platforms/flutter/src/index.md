@@ -2,21 +2,22 @@
 
 # flutter
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/flutter` — الإصدار من علامات تصميم Instructure كـ Flutter (Dart)، عبر Style Dictionary. يقوم بتسطيح IR إلى قيم ملموسة أحادية الوضع والحفاظ على العلامات المكتوبة بشكل أصلي.
+`@pantoken/flutter` — إصدار رموز تصميم Instructure إلى Flutter (Dart) عبر Style Dictionary. It
+يبسّط تمثيل IR إلى قيم ملموسة ذات نمط واحد ويحتفظ بالرموز ذات النوع الأصلي.
 
-## Interfaces
+## واجهات
 
 - [GenerateFlutterOptions](interfaces/GenerateFlutterOptions.md)
 
-## Functions
+## الدوال
 
 - [toFlutter](functions/toFlutter.md)
 - [generateFlutter](functions/generateFlutter.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [generateFlutter](functions/generateFlutter.md)
+يعيد تسمية ويعيد تصدير [generateFlutter](functions/generateFlutter.md)

@@ -1,34 +1,35 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/colors/src](../index.md) / alpha
 
-# Function: alpha()
+# دالة: alpha()
 
 > **alpha**(`color`, `percent`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اضبط معتم اللون على `percent`% — المرآة المخصصة بـ CSS فقط لـ ui-color-utils `alpha`. الخلط مع `transparent` ينتج بالضبط اللون عند قناة alpha هذه.
+اضبط عتامة اللون إلى `percent`% — المرآة الخاصة بـ CSS فقط لـ ui-color-utils `alpha`. المزج مع
+`transparent` يُنتج بالضبط اللون عند قناة الألفا تلك.
 
-## Parameters
+## المعلمات
 
 ### color
 
 `string`
 
-اللون الأساسي (حرفي، `var(--token)`، أو نتيجة مساعد متداخل).
+اللون الأساسي (قيمة حرفية، `var(--token)`، أو نتيجة مساعد متداخل).
 
 ### percent
 
 `number`
 
-معتم الهدف، 0–100.
+العتامة المستهدفة، 0–100.
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 تعبير `color-mix()`.
 
-## Example
+## مثال
 
 ```ts
 alpha("var(--brand)", 10); // "color-mix(in srgb, var(--brand) 10%, transparent)"

@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / closeButtonCss
 
-# Variable: closeButtonCss
+# متغير: closeButtonCss
 
 > `const` **closeButtonCss**: `Definition`\[`"css"`\] = `closeButton.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `closeButton` مستقلة — CSS المُبدأ لزر الإغلاق، جاهز للشحن كملف `.css`.
+ورقة أنماط `closeButton` مستقلة — CSS المزوّد بالبادئة لزر الإغلاق، جاهزة للشحن كملف `.css`.

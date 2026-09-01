@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / loadAllIcons
 
-# Function: loadAllIcons()
+# دالة: loadAllIcons()
 
 > **loadAllIcons**(): `Promise`\<[`TaggedIcon`](../interfaces/TaggedIcon.md)[]\>
 
-حمّل ودمج جميع الرموز المتاحة من كلا المصدرين.
-يرجع مصفوفة مرتبة موسومة بحزمة المصدر.
+تحميل ودمج جميع الأيقونات المتاحة من كلا المصدرين.
+يعيد مصفوفة مرتبة موسومة بحزمة المصدر.
 
-ملاحظة: يتم اشتقاق أسماء رموز المكون من معدل `-icon-*` الخاص بالنموذج.
-يجب أن يتم ملؤها من إما `docs/public/icon-manifest.json` (إن كانت قابلة للاستهلاك)
-أو ملف بيان منشور إلى جانب formats/components model.json.
-في الوقت الحالي، تم تضمين رموز بسيطة فقط.
+ملاحظة: أسماء أيقونات المكون مشتقة من المعدل `-icon-*` الخاص بالنموذج.
+يجب تعبئتها إما من `docs/public/icon-manifest.json` (إذا كانت قابلة للاستهلاك)
+أو من ملف مانيفست منشور جنبًا إلى جنب مع formats/components model.json.
+في الوقت الحالي، يتم تضمين simple-icons فقط.
 
-## Returns
+## القيم المرجعة
 
 `Promise`\<[`TaggedIcon`](../interfaces/TaggedIcon.md)[]\>

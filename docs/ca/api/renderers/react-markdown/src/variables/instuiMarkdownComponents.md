@@ -1,9 +1,0 @@
-[pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / instuiMarkdownComponents
-
-# Variable: instuiMarkdownComponents
-
-> `const` **instuiMarkdownComponents**: `Components`
-
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
-
-El mapa de components per defecte (sense opcions).

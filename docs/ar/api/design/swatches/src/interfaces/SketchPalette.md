@@ -1,34 +1,34 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / SketchPalette
 
-# Interface: SketchPalette
+# واجهة: SketchPalette
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-وثيقة `.sketchpalette`.
+مستند `.sketchpalette`.
 
-## Properties
+## الخصائص
 
 ### compatibleVersion
 
 > **compatibleVersion**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### pluginVersion
 
 > **pluginVersion**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### colors
 
 > **colors**: `object`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 #### name
 

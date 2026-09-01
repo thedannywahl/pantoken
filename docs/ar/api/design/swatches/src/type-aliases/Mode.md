@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / Mode
 
-# Type Alias: Mode
+# اسم نوع مستعار: Mode
 
 > **Mode** = `"light"` \| `"dark"`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-وضع اللون المراد تحديده عند تسطيح قيم `light-dark()`.
+وضع اللون الذي يجب تحديده عند تسطيح قيم `light-dark()`.

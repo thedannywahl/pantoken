@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/transition/src](../index.md) / transition
 
-# Function: transition()
+# دالة: transition()
 
 > **transition**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون رموز الانتقال.
+إنشاء مكوّن إضافي لرموز الانتقال.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,8 +16,8 @@
 
 [TransitionOptions](../interfaces/TransitionOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) بخطاف `tokens`.
+مكوّن [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مزود بخطاف `tokens`.

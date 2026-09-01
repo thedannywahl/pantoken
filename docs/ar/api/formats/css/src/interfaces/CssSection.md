@@ -1,25 +1,25 @@
 [pantoken](../../../../index.md) / [formats/css/src](../index.md) / CssSection
 
-# Interface: CssSection
+# واجهة: CssSection
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كتلة واحدة محدودة النطاق من الخصائص المخصصة، مغلفة اختياريًا في `@layer`.
+كتلة واحدة محكومة من الخصائص المخصصة، يمكن تغليفها اختياريًا في `@layer`.
 
-## Properties
+## الخصائص
 
 ### layer?
 
 > `optional` **layer?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم الطبقة العادي (على سبيل المثال `"pantoken"`)، بدون بادئة `@`. تخطي لتخطي المغلف.
+اسم طبقة عادي (مثال `"pantoken"`)، بدون بادئة `@`. احذفه لتخطي الغلاف.
 
----
+***
 
 ### pairs
 
 > **pairs**: \[`string`, `string`\][]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

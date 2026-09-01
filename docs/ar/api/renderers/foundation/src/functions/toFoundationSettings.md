@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/foundation/src](../index.md) / toFoundationSettings
 
-# Function: toFoundationSettings()
+# دالة: toFoundationSettings()
 
 > **toFoundationSettings**(`options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار تجاوز إعدادات Foundation Sass. حمّله قبل `@include foundation-everything`.
+أصدر تجاوز إعدادات Foundation Sass. حمِّله قبل `@include foundation-everything`.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [ToFoundationSettingsOptions](../interfaces/ToFoundationSettingsOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-جزء Sass كسلسلة.
+الجزء الجزئي من Sass كسلسلة.
 
-## Example
+## مثال
 
-**دع إعدادات المستهلك لا تزال تفوز**
+**دع إعدادات المستهلك تظل هي الفائزة**
 
 ```ts
 toFoundationSettings({ useDefault: true });

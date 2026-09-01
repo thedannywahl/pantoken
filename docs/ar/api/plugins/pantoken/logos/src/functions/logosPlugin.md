@@ -1,16 +1,17 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / logosPlugin
 
-# Function: logosPlugin()
+# دالة: logosPlugin()
 
 > **logosPlugin**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون الشعارات الإضافي.
+إنشاء ملحق الشعارات.
 
-يساهم الـ `css` hook برموز الصور `--instui-logo-*` (كقيم `url(data:…)`)، بحيث يمكن لجدول الأنماط المبني بالمكون الإضافي الرجوع إلى أي شعار من خلال `var()`.
+الخطاف `css` يضيف توكنات الصور `--instui-logo-*` (كقيم `url(data:…)`)، لذا يمكن لورقة الأنماط التي تُنشأ باستخدام الملحق الإشارة إلى أي شعار عبر `var()`.
 
-## Parameters
+
+## المعلمات
 
 ### options?
 
@@ -18,15 +19,15 @@
 
 [LogosOptions](../interfaces/LogosOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) بخطاف `css`.
+ملحق [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) يحتوي على الخطاف `css`.
 
-## Example
+## مثال
 
-**أضف رموز صور الشعار عند تجميع CSS من خلال toCss**
+**أضف توكنات صور الشعار عند تجميع CSS عبر toCss**
 
 ```ts
 import { toCss } from "@pantoken/css";

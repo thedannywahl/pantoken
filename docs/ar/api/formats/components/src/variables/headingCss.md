@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / headingCss
 
-# Variable: headingCss
+# متغير: headingCss
 
 > `const` **headingCss**: `Definition`\[`"css"`\] = `heading.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `heading` مستقلة — CSS المُبدأ لنوع العنوان، جاهز للشحن كملف `.css`.
+ورقة أنماط `heading` مستقلة — CSS ذات بادئة لنوع العنوان، جاهزة للشحن كملف `.css`.

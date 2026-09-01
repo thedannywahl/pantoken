@@ -2,15 +2,22 @@
 
 # deprecations
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-deprecations` — shims التوافق التي تدرك دورة الحياة للرموز المسقوطة في المصب.
+`@pantoken/plugin-deprecations` — أغطية توافق واعية بدورة الحياة للرموز المحذوفة من المصدر الأعلى.
 
-عندما تسقط نسخة أساسية رمزًا `--instui-*`، يسجل `DeprecationLedger` المكتوب يدويًا دورة حياته: متى تم إهماله، وإصدار النسخة الأساسية الثانوية التي ستزيله، وكيفية الحفاظ على عمله في الوقت نفسه — إما إعادة توجيه إلى رمز قانوني (`replacement` → `var(...)`) أو تجميد آخر قيمة معروفة لها (`value`). هذا المكون الإضافي يضيف رمزًا واحدًا لكل إدخال. لأن الرمز هو `var(...)` واحد أو قيمة عادية، يسجل `defineToken` `refersTo`/بناء الجملة و`toCss` يصدره، لذا يركب الرمز في css/scss/less/stylus/wordpress/vanilla بدون أسلاك إضافية.
+عندما تزيل نسخة من المصدر الأعلى رمزًا `--instui-*`، يقوم ملف `DeprecationLedger` المؤلف يدويًا
+بتسجيل دورة حياته: متى تم وسمه كمهمَل، والإصدار الفرعي في المصدر الأعلى الذي سيزيله، وكيفية
+إبقائه قيد العمل في الأثناء — إما إعادة التوجيه إلى رمز معياري (`replacement` → `var(...)`) أو
+تجميد نصه الأخير المعروف (`value`). يضيف هذا المكوّن الإضافي قناعًا واحدًا لكل مدخل. ونظرًا لأن
+القناع عبارة عن `var(...)` مفرد أو قيمة عادية، فإن `defineToken` يسجل `refersTo`/بناء الجملة الخاص به و
+`toCss` يصدره، لذلك ينتقل القناع إلى css/scss/less/stylus/wordpress/vanilla دون توصيل إضافي.
 
-يتم فرض التقاعد في مكان آخر (خط أنابيب الترقية يفشل بشدة عند النسخة الثانوية `removeIn` الأساسية للإدخال، مما يفرض تقاعد الإدخال وقطع النسخة الثانوية للمستهلك). [dueForRemoval](functions/dueForRemoval.md) هو الفحص الذي يدعمه؛ [describeLifecycle](functions/describeLifecycle.md) يدعم المستندات.
+يُنفَّذ التقاعد في مكان آخر (خط أنابيب الترقية يفشل بشكل قاسٍ عند ترقية الإصدار الفرعي بمجرد الوصول إلى
+الإصدار الفرعي المصدر الأعلى لـ `removeIn` للمدخل، مما يجبر على تقاعد المدخل وقطع إصدار فرعي للمستهلك).
+[dueForRemoval](functions/dueForRemoval.md) هو الفحص الذي يديره؛ [describeLifecycle](functions/describeLifecycle.md) هو الذي يدعم المستندات.
 
-## Example
+## مثال
 
 ```ts
 import { buildTokens } from "@pantoken/core";
@@ -20,12 +27,12 @@ import ledger from "@pantoken/tokens/deprecations.json" with { type: "json" };
 buildTokens({ theme: "rebrand", plugins: [deprecationShims(ledger)] });
 ```
 
-## Interfaces
+## واجهات
 
 - [UpstreamVersions](interfaces/UpstreamVersions.md)
 - [ParsedRef](interfaces/ParsedRef.md)
 
-## Functions
+## الدوال
 
 - [shimValue](functions/shimValue.md)
 - [shimEntries](functions/shimEntries.md)
@@ -36,8 +43,8 @@ buildTokens({ theme: "rebrand", plugins: [deprecationShims(ledger)] });
 - [describeLifecycle](functions/describeLifecycle.md)
 - [deprecationShims](functions/deprecationShims.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [deprecationShims](functions/deprecationShims.md)
+يعيد تسمية ويعيد تصدير [deprecationShims](functions/deprecationShims.md)

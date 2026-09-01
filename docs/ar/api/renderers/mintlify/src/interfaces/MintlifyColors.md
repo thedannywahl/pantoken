@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [renderers/mintlify/src](../index.md) / MintlifyColors
 
-# Interface: MintlifyColors
+# واجهة: MintlifyColors
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-Mintlify `colors` (docs.json): `primary` مطلوب؛ `light`/`dark` ضبط التركيز لكل وضع.
+Mintlify `colors` (docs.json): `primary` مطلوب؛ `light`/`dark` يضبطان التوكيد لكل وضع.
 
-## Properties
+## الخصائص
 
 ### primary
 
 > **primary**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-لون التركيز في الوضع الفاتح.
+لون التوكيد في الوضع الفاتح.
 
----
+***
 
 ### light
 
 > **light**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-لون التركيز في الوضع الداكن.
+لون التوكيد في الوضع الداكن.
 
----
+***
 
 ### dark
 
 > **dark**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الأزرار وحالات التمرير عبر كلا الوضعين.
+الأزرار وحالات التحويم عبر كلا الوضعين.

@@ -1,17 +1,18 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / UtilityOptions
 
-# Interface: UtilityOptions
+# واجهة: UtilityOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الخيارات المشتركة بين أجهزة إصدار الفئات العملية.
+خيارات مشتركة بين مولدات فئات الأدوات المساعدة.
 
-## Properties
+## الخصائص
 
 ### prefix?
 
 > `optional` **prefix?**: `string` \| `null`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بادئة الفئة. أي سلسلة نصية صحيحة تضيف نطاق اسم لكل فئة (`"instui"` → `.instui-bg-…`); أي قيمة خاطئة (`null`/`undefined`/`""`) تسقط البادئة بالكامل (`.bg-…`).
+بادئة الصنف. أي سلسلة تُقيَّم كقيمة صادقة تُنشئ مساحة أسماء لكل صنف (`"instui"` → `.instui-bg-…`); أي
+قيمة تُقيَّم كقيمة زائفة (`null`/`undefined`/`""`) تُسقط البادئة تمامًا (`.bg-…`).

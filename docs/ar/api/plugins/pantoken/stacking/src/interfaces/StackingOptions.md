@@ -1,17 +1,17 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/stacking/src](../index.md) / StackingOptions
 
-# Interface: StackingOptions
+# واجهة: StackingOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون [stacking](../functions/stacking.md).
+خيارات المكوّن الإضافي [stacking](../functions/stacking.md).
 
-## Properties
+## الخصائص
 
 ### theme?
 
 > `optional` **theme?**: [`Theme`](../../../../../packages/core/src/type-aliases/Theme.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المظهر الذي تشير فيه بذور IR المُشحونة إلى الدقة (الافتراضي `"rebrand"`).
+السمة التي تُحل مراجع بذور IR المشحونة لها (الافتراضي `"rebrand"`).

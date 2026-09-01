@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / modal
 
-# Variable: modal
+# متغير: modal
 
 > `const` **modal**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-modal&gt;` — `&lt;dialog&gt;` حقيقي، لذا يحصل على محاصرة التركيز، Escape-to-close، و
-`::backdrop` مجاني. سمة `open` تشغل `showModal()`/`close()`؛ إلغاء أصلي
-(Escape أو نقرة خلفية) ينعكس مرة أخرى إلى السمة وينطلق مرة أخرى كحدث `close` فقاعة
-. قابلة للتشغيل من light DOM عبر أوامر Invoker — يبدّل
-`<button command="--show|--close|--toggle" commandfor="modal-id">` حسب المعرّف. يذهب المحتوى
-إلى الفتحة الافتراضية.
+`&lt;instui-modal&gt;` — عنصر `&lt;dialog&gt;` حقيقي، لذا يحصل على حجز التركيز، والإغلاق بواسطة مفتاح Escape، و
+`::backdrop` مجانا. السمة `open` تتحكم في `showModal()`/`close()`; الإغلاق الأصلي
+(مفتاح Escape أو النقر على الخلفية) ينعكس على السمة ويُعيد إطلاق حدث `close` قابل للانتشار.
+قابل للتحكم من DOM الخفيف عبر أوامر Invoker — يقوم
+`<button command="--show|--close|--toggle" commandfor="modal-id">` بتبديله بحسب المعرف. يوضع المحتوى
+في الفتحة الافتراضية.
 
-## Example
+## مثال
 
 ```html
 <button command="--show" commandfor="confirm">Delete…</button>

@@ -1,38 +1,38 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / ElementRegistry
 
-# Interface: ElementRegistry
+# واجهة: ElementRegistry
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-نوع بنيوي أساسي لسجل عنصر مخصص (DOM الخاص به `customElements`).
+نوع بنيوي أدنى لسجل العناصر المخصصة (the DOM's `customElements`).
 
-## Methods
+## الطرق
 
 ### get()
 
 > **get**(`name`): `unknown`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-#### Parameters
+#### المعلمات
 
 ##### name
 
 `string`
 
-#### Returns
+#### القيم المرجعة
 
 `unknown`
 
----
+***
 
 ### define()
 
 > **define**(`name`, `ctor`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-#### Parameters
+#### المعلمات
 
 ##### name
 
@@ -42,6 +42,6 @@
 
 `CustomElementConstructor`
 
-#### Returns
+#### القيم المرجعة
 
 `void`

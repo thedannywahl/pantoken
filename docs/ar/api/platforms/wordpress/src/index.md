@@ -2,31 +2,31 @@
 
 # wordpress
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/wordpress` — رموز تصميم Instructure كـ `theme.json` لمظهر كتل WordPress.
+`@pantoken/wordpress` — رموز تصميم Instructure كـ WordPress block-theme `theme.json`.
 
-[toThemeJson](functions/toThemeJson.md) يحول أي IR؛ [themeJson](variables/themeJson.md) هو وثيقة `rebrand` الجاهزة. يمكن لـ CLI كتابتها في دليل المظهر: `pantoken generate wordpress --out ./my-theme`.
+[toThemeJson](functions/toThemeJson.md) يقوم بتحويل أي IR؛ [themeJson](variables/themeJson.md) هو المستند `rebrand` الجاهز. يمكن لأداة CLI كتابته داخل دليل السمة: `pantoken generate wordpress --out ./my-theme`.
 
-## Interfaces
+## واجهات
 
 - [ThemeJson](interfaces/ThemeJson.md)
 - [ToThemeJsonOptions](interfaces/ToThemeJsonOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Mode](type-aliases/Mode.md)
 
-## Variables
+## المتغيرات
 
 - [themeJson](variables/themeJson.md)
 
-## Functions
+## الدوال
 
 - [toThemeJson](functions/toThemeJson.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [themeJson](variables/themeJson.md)
+يعيد تسمية وإعادة تصدير [themeJson](variables/themeJson.md)

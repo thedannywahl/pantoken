@@ -2,32 +2,33 @@
 
 # less
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 `@pantoken/less` — رموز تصميم Instructure كمتغيرات Less.
 
-[toLess](functions/toLess.md) يحول أي IR؛ [less](variables/less.md) هي مجموعة متغيرات `rebrand` الجاهزة. يتم نشر ملف ثابت في `@pantoken/less/tokens.less`.
+[toLess](functions/toLess.md) يحول أي IR؛ [less](variables/less.md) هي مجموعة المتغيرات `rebrand` الجاهزة. ملف ثابت
+منشور في `@pantoken/less/tokens.less`.
 
-## Interfaces
+## واجهات
 
 - [ToLessOptions](interfaces/ToLessOptions.md)
 
-## Variables
+## المتغيرات
 
 - [less](variables/less.md)
 
-## Functions
+## الدوال
 
 - [toLess](functions/toLess.md)
 
-## References
+## المراجع
 
 ### Mode
 
-إعادة تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
+يعيد تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
 
----
+***
 
 ### default
 
-إعادة تسمية وإعادة تصدير [less](variables/less.md)
+يعيد تسمية ويعيد تصدير [less](variables/less.md)

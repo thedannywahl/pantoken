@@ -1,57 +1,57 @@
 [pantoken](../../../../index.md) / [platforms/swift/src](../index.md) / GenerateSwiftOptions
 
-# Interface: GenerateSwiftOptions
+# واجهة: GenerateSwiftOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [generateSwift](../functions/generateSwift.md) / [toSwift](../functions/toSwift.md).
+خيارات لـ [generateSwift](../functions/generateSwift.md) / [toSwift](../functions/toSwift.md).
 
-## Properties
+## الخصائص
 
 ### outDir
 
 > **outDir**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مجلد الإخراج.
+دليل الإخراج.
 
----
+***
 
 ### theme?
 
 > `optional` **theme?**: [`Theme`](../../../../packages/core/src/type-aliases/Theme.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الموضوع المراد إصداره (الافتراضي: `"rebrand"`).
+السمة التي سيتم إنتاجها (الافتراضي: `"rebrand"`).
 
----
+***
 
 ### mode?
 
 > `optional` **mode?**: [`Mode`](../../../../packages/core/src/type-aliases/Mode.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أي وضع `light-dark()` تحتاج إلى حل (الافتراضي: `"light"`).
+أي وضع `light-dark()` لحله (الافتراضي: `"light"`).
 
----
+***
 
 ### className?
 
 > `optional` **className?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اسم فئة Swift المُنشأة (الافتراضي: `PanTokens`).
+اسم فئة Swift المولدة (الافتراضي: `PanTokens`).
 
----
+***
 
 ### icons?
 
 > `optional` **icons?**: `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أسماء الأيقونات المراد بثها أيضاً في `Icons.xcassets` كمجموعات صور محافظة على المتجهات.
+أسماء الرموز التي يجب إصدارها أيضاً داخل `Icons.xcassets` كمجموعات صور تحافظ على المتجهات.

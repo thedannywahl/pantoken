@@ -1,17 +1,16 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / tray
 
-# Variable: tray
+# متغير: tray
 
 > `const` **tray**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-tray&gt;` — لوحة مرسومة إلى حافة عرض، مدعومة بـ native `[popover]` (الطبقة العليا +
-الرفض الخفيف). يعيّن `placement` إلى `-placement-&lt;value&gt;` (مثل `start`، `end`، `top`، `bottom`) و
-`size` إلى `-size-&lt;value&gt;`؛ يقوم زر light-DOM `popovertarget` بتبديله حسب الهوية. يذهب المحتوى في
-الفتحة الافتراضية.
+`&lt;instui-tray&gt;` — لوحة مثبتة على حافة نافذة العرض، مدعومة بواسطة `[popover]` الأصلية (طبقة علوية +
+إغلاق بالخفة). `placement` تُطابق `-placement-&lt;value&gt;` (مثل `start`, `end`, `top`, `bottom`) و
+`size` إلى `-size-&lt;value&gt;`; زر `popovertarget` في DOM الخفيف يبدّلها بواسطة المعرف. يوضع المحتوى في الفتحة الافتراضية.
 
-## Example
+## مثال
 
 ```html
 <button popovertarget="nav">Menu</button>

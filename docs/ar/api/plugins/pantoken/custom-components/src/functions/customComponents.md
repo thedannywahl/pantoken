@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/custom-components/src](../index.md) / customComponents
 
-# Function: customComponents()
+# دالة: customComponents()
 
 > **customComponents**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون الإضافة المخصص.
+إنشاء المكوّن الإضافي custom-components.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,8 +16,8 @@
 
 [CustomComponentsOptions](../interfaces/CustomComponentsOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) بخطاف `css`.
+إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مزوّدة بخطاف `css`.

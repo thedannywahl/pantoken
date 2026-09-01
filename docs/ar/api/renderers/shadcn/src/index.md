@@ -2,29 +2,29 @@
 
 # shadcn
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/shadcn` — ثيم shadcn/ui برموز Instructure.
+`@pantoken/shadcn` — سمة shadcn/ui مع رموز Instructure.
 
-[toShadcnCss](functions/toShadcnCss.md) يصدر كتلة `:root` تشير متغيرات CSS الخاصة بـ shadcn إلى `var(--instui-*)`.
-ضعها إلى جانب `@pantoken/css` (الذي يحدد الخصائص المخصصة) ومكونات shadcn
-تتبنى مظهر Instructure. تتوافق الرموز بحرية — يستخدم كل من shadcn و Instructure Lucide.
+[toShadcnCss](functions/toShadcnCss.md) يصدر كتلة `:root` تشير بمتغيرات CSS الخاصة بـ shadcn إلى `var(--instui-*)`.
+أضفها بجانب `@pantoken/css` (الذي يعرّف الخصائص المخصصة) وستتبنى مكونات shadcn مظهر Instructure.
+تتوافق الأيقونات تلقائيًا — كل من shadcn وInstructure يستخدمان Lucide.
 
-## Interfaces
+## واجهات
 
 - [ToShadcnCssOptions](interfaces/ToShadcnCssOptions.md)
 
-## Variables
+## المتغيرات
 
 - [shadcnCss](variables/shadcnCss.md)
 - [SHADCN\_TO\_INSTUI](variables/SHADCN_TO_INSTUI.md)
 
-## Functions
+## الدوال
 
 - [toShadcnCss](functions/toShadcnCss.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [shadcnCss](variables/shadcnCss.md)
+يعيد تسمية ويُعيد تصدير [shadcnCss](variables/shadcnCss.md)

@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / logos
 
-# Variable: logos
+# متغير: logos
 
 > `const` **logos**: readonly [`LogoMeta`](../interfaces/LogoMeta.md)[]
 
-كل شعار متاح، مرتب حسب الاسم.
+كل شعار متاح، مُرتَّب حسب الاسم.
 
-## Example
+## مثال
 
-**قائمة التخطيطات المتاحة لـ Canvas**
+**قائمة بالتخطيطات المتاحة لـ Canvas**
 
 ```ts
 import { logos } from "@pantoken/plugin-logos";

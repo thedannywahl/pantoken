@@ -1,9 +1,9 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / Product
 
-# Type Alias: Product
+# اسم نوع مستعار: Product
 
 > **Product** = `"canvas"` \| `"igniteai"` \| `"instructure"` \| `"learnplatform"` \| `"mastery"` \| `"parchment"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-منتج Instructure مع شعار.
+منتج من Instructure مع شعار.

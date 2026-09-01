@@ -2,29 +2,35 @@
 
 # css
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/css` — إصدار رموز تصميم Instructure كـ CSS من نوع `@property`.
+`@pantoken/css` — يصدر رموز تصميم Instructure كـ CSS من نوع `@property`.
 
-[toCss](functions/toCss.md) يحول أي token IR إلى CSS؛ [css](variables/css.md) هو ورقة النمط الجاهزة `rebrand` و [leanCss](variables/leanCss.md) هو متغير نحيل يسقط المجموعة الكاملة `--instui-icon-*` (بيانات الرموز URIs ~1,777 التي تهيمن على الورقة) لتسليم CDN/embed — ~سادس الحجم عبر السلك. كلاهما يحمل أساس الارتفاع + محيط التركيز (الخصائص المخصصة المركبة التي تعيش منشئوها النقية في `@pantoken/utils`)، لذا تحل ورقة المكون ظلالها وحلقة التركيز ضد ورقة الرمز وحدها. يوجد إدخال تأثير جانبي DOM في `@pantoken/css/inject`؛ الملفات الثابتة في `@pantoken/css/style.css` و `@pantoken/css/style.lean.css`.
+[toCss](functions/toCss.md) يحول أي IR للرموز إلى CSS؛ [css](variables/css.md) هو ورقة الأنماط الجاهزة من نوع `rebrand` و
+[leanCss](variables/leanCss.md) هو إصدار مُختصر يَسقط مجموعة `--instui-icon-*` الكاملة (حوالي 1,777 من بيانات أيقونات data-URI
+التي تهيمن على الورقة) لتسليم عبر CDN/التضمين — حوالي سدس الحجم على الشبكة. كلاهما يحملان
+أساس الارتفاع + حدود التركيز (خصائص مركبة منشئوها النقي موجودون في
+`@pantoken/utils`), لذا تحل ورقة المكوّن ظلالها وحلقة التركيز مقابل ورقة الرموز
+فقط. مدخل أثر DOM موجود في `@pantoken/css/inject`; والملفات الثابتة في
+`@pantoken/css/style.css` و `@pantoken/css/style.lean.css`.
 
-## Interfaces
+## واجهات
 
 - [CssSection](interfaces/CssSection.md)
 - [ToCssOptions](interfaces/ToCssOptions.md)
 
-## Variables
+## المتغيرات
 
 - [css](variables/css.md)
 - [leanCss](variables/leanCss.md)
 
-## Functions
+## الدوال
 
 - [buildCssFile](functions/buildCssFile.md)
 - [toCss](functions/toCss.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [css](variables/css.md)
+يعيد تسمية ويُعيد تصدير [css](variables/css.md)

@@ -1,13 +1,13 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / demoMarkdownIt
 
-# Function: demoMarkdownIt()
+# دالة: demoMarkdownIt()
 
 > **demoMarkdownIt**(`md`, `options?`): `void`
 
-مكون إضافي markdown-it: تحويل سياجات `demo` إلى لوحة العرض التوضيحي. استخدمه مع
+ملحق لـ markdown-it: حول الحواجز `demo` إلى لوحة العرض التوضيحية. استخدمه مع
 `md.use(demoMarkdownIt, options)`.
 
-## Parameters
+## المعلمات
 
 ### md
 
@@ -21,11 +21,11 @@
 
 [DemoMarkdownItOptions](../interfaces/DemoMarkdownItOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
 ```ts
 import MarkdownIt from "markdown-it";

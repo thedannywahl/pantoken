@@ -1,23 +1,23 @@
 # CSS: breadcrumb
 
-`.instui-breadcrumb` · <span class="instui-pill -color-success pantoken-doc-tag">stable</span> — مسار فتات الخبز مع الفواصل؛ الجزء الأخير هو الصفحة الحالية.
+`.instui-breadcrumb` · <span class="instui-pill -color-success pantoken-doc-tag">ثابت</span> — مسار التنقل مع فواصل؛ الفتة الأخيرة هي الصفحة الحالية.
 
-يطوي تلقائيًا إلى سهم رجوع على الشاشات الصغيرة. استخدم `breadcrumb.link` لكل جزء.
+ينكمش تلقائيًا إلى سهم رجوع على الشاشات الصغيرة. استخدم `breadcrumb.link` لكل عنصر من عناصر المسار.
 
 **المصدر:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)
 
-## Accessibility
+## سهولة الوصول
 
-غلّف `&lt;ol&gt;` في علامة مرجعية `<nav aria-label>`؛ ضع علامة على جزء الصفحة الحالية بـ `aria-current="page"`.
+لفّ `&lt;ol&gt;` داخل معلم `<nav aria-label>`؛ علّم فتة الصفحة الحالية بـ `aria-current="page"`.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/breadcrumb.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <nav class="instui-breadcrumb" aria-label="Breadcrumb">
@@ -32,7 +32,7 @@
 </nav>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-breadcrumb
@@ -53,29 +53,30 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier        | Description                                                                                               |
-| --------------- | --------------------------------------------------------------------------------------------------------- |
-| `.-size-large`  | كبير. @affects breadcrumb.link — يقيّس تباعد فاصل الجزء ليطابق. اسم مستعار طويل لـ `-size-lg`.            |
-| `.-size-lg`     | كبير. @affects breadcrumb.link — يقيّس تباعد فاصل الجزء ليطابق.                                           |
-| `.-size-md`     | متوسط (افتراضي). @affects breadcrumb.link — يقيّس تباعد فاصل الجزء ليطابق.                                |
-| `.-size-medium` | متوسط (افتراضي). @affects breadcrumb.link — يقيّس تباعد فاصل الجزء ليطابق. اسم مستعار طويل لـ `-size-md`. |
-| `.-size-sm`     | صغير. @affects breadcrumb.link — يقيّس تباعد فاصل الجزء ليطابق.                                           |
-| `.-size-small`  | صغير. @affects breadcrumb.link — يقيّس تباعد فاصل الجزء ليطابق. اسم مستعار طويل لـ `-size-sm`.            |
+| معدّل | الوصف |
+| --- | --- |
+| `.-size-large` | كبير. @affects breadcrumb.link — يضبط تباعد فواصل الفتات لتتناسب. اسم مرادف طويل لـ `-size-lg`. |
+| `.-size-lg` | كبير. @affects breadcrumb.link — يضبط تباعد فواصل الفتات لتتناسب. |
+| `.-size-md` | متوسط (الافتراضي). @affects breadcrumb.link — يضبط تباعد فواصل الفتات لتتناسب. |
+| `.-size-medium` | متوسط (الافتراضي). @affects breadcrumb.link — يضبط تباعد فواصل الفتات لتتناسب. اسم مرادف طويل لـ `-size-md`. |
+| `.-size-sm` | صغير. @affects breadcrumb.link — يضبط تباعد فواصل الفتات لتتناسب. |
+| `.-size-small` | صغير. @affects breadcrumb.link — يضبط تباعد فواصل الفتات لتتناسب. اسم مرادف طويل لـ `-size-sm`. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                  | Type                                               | Value                                                                        |
-| -------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-breadcrumb-gap-lg` | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-breadcrumb-gap-md` | `<length>`                                         | `0.25rem`                                                                    |
-| `--instui-component-breadcrumb-gap-sm` | `<length>`                                         | `0.125rem`                                                                   |
-| `--instui-component-link-font-family`  | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-link-font-size-lg` | `<length>`                                         | `1.75rem`                                                                    |
-| `--instui-component-link-font-size-md` | `<length>`                                         | `1rem`                                                                       |
-| `--instui-component-link-font-size-sm` | `<length>`                                         | `0.875rem`                                                                   |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-breadcrumb-gap-lg` | `<length>` | `0.5rem` |
+| `--instui-component-breadcrumb-gap-md` | `<length>` | `0.25rem` |
+| `--instui-component-breadcrumb-gap-sm` | `<length>` | `0.125rem` |
+| `--instui-component-link-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-link-font-size-lg` | `<length>` | `1.75rem` |
+| `--instui-component-link-font-size-md` | `<length>` | `1rem` |
+| `--instui-component-link-font-size-sm` | `<length>` | `0.875rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [breadcrumb.link](/ar/api/css/breadcrumb.link.md)
+

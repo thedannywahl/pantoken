@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/astro/src](../index.md) / pantokenCss
 
-# Function: pantokenCss()
+# دالة: pantokenCss()
 
 > **pantokenCss**(`options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-بناء ورقة أنماط pantoken لموضوع (مع CSS مكون اختياري). معروض للاستخدام المباشر.
+بناء ورقة أنماط pantoken لقالب (مع CSS للمكوّن الإضافي اختيارياً). متاح للاستخدام المباشر.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,13 +16,13 @@
 
 [InstUIOptions](../interfaces/InstUIOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة CSS.
 
-## Example
+## مثال
 
 ```ts
 import { pantokenCss } from "@pantoken/astro";

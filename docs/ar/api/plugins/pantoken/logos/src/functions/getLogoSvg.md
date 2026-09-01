@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / getLogoSvg
 
-# Function: getLogoSvg()
+# دالة: getLogoSvg()
 
 > **getLogoSvg**(`product`, `layout?`, `colorMode?`): `string` \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-احصل على SVG خام للشعار.
+احصل على SVG الخام للشعار.
 
-## Parameters
+## المعلمات
 
 ### product
 
@@ -26,17 +26,17 @@
 
 [`LogoColorMode`](../type-aliases/LogoColorMode.md) = `"full-color"`
 
-معالجة اللون (الافتراضي `"full-color"`).
+معالجة الألوان (الافتراضي `"full-color"`).
 
-## Returns
+## القيم المرجعة
 
 `string` \| `undefined`
 
-سلسلة SVG، أو `undefined` إذا كان هذا المزيج غير موجود.
+سلسلة SVG، أو `undefined` إذا لم توجد تلك التركيبة.
 
-## Examples
+## أمثلة
 
-**احصل على شعار Canvas الأفقي الافتراضي بألوان كاملة**
+**احصل على شعار Canvas الأفقي الافتراضي كامل الألوان**
 
 ```ts
 import { getLogoSvg } from "@pantoken/plugin-logos";
@@ -44,7 +44,7 @@ import { getLogoSvg } from "@pantoken/plugin-logos";
 const svg = getLogoSvg("canvas");
 ```
 
-**اختر تخطيطًا معينًا ومعالجة لونية**
+**اختر تخطيطًا ومعالجة ألوان محددة**
 
 ```ts
 import { getLogoSvg } from "@pantoken/plugin-logos";

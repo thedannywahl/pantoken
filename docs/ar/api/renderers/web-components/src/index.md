@@ -2,24 +2,23 @@
 
 # web-components
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`@pantoken/web-components` — عناصر مخصصة مستقلة عن الإطار لواجهة Instructure UI.
+`@pantoken/web-components` — عناصر مخصصة مستقلة عن الإطار لواجهة مستخدم Instructure.
 
-[register](functions/register.md) (يتم استدعاؤه تلقائيًا في المتصفح) يحدد مجموعة عناصر `<instui-*>` الكاملة في
-أي سجل عناصر مخصص. يرسل كل عنصر CSS `@pantoken/components` المطابق إلى
-جذره العميق؛ الرموز هي خصائص مخصصة موروثة تخترق حدود الظل — قم بتحميل
+[register](functions/register.md) (تُستدعى تلقائيًا في المتصفح) تُعرِّف مجموعة العناصر الكاملة `<instui-*>` في
+أي سجل عناصر مخصصة. كل عنصر يعرض `@pantoken/components` CSS المطابق داخل
+جذر الظل الخاص به؛ الرموز هي خصائص مخصصة موروثة تخترق حد الظل — حمِّل
 `@pantoken/css` لتوفيرها.
 
-لسلاسل واجهة المستخدم المترجمة (تسميات ملاحة التقويم، عنصر نائب للإدخال، نص الرجوع) قم بتمرير
-`locale`, `strings`, أو `dir` خيارات إلى [register](functions/register.md). استخدم `@pantoken/i18n` للمجموعة الكاملة
-المتوافقة مع Canvas من 44 إقليم (3 RTL) والمساعد الذي يلف
-`registerLocalized`[register](functions/register.md).
+للسلاسل المحلية لواجهة المستخدم (تسميات تنقّل التقويم، عنصر نائب حقل التاريخ، نص الرجوع في drilldown) مرِّر
+خيارات `locale` أو `strings` أو `dir` إلى [register](functions/register.md). استخدم `@pantoken/i18n` لمجموعة الحزم الكاملة المطابقة لـ Canvas المكوّنة من 44 لغة (3 منها RTL) والمساعد
+الذي يُغلف [register](functions/register.md) `registerLocalized`.
 
-الوحدة آمنة للعقدة: تُعرّف فئات العناصر داخل [register](functions/register.md)، وهي عملية بلا تأثير عندما لا يكون هناك
-DOM، لذا فإن الاستيراد أثناء SSR أو البناء لا يلمس `HTMLElement`.
+الوحدة آمنة على Node: تُعرّف فئات العناصر داخل [register](functions/register.md)، وهو إجراء لا يؤثر عندما
+لا يوجد DOM، لذلك الاستيراد أثناء SSR أو أثناء البناء لا يمس `HTMLElement`.
 
-## Interfaces
+## واجهات
 
 - [CommandEventish](interfaces/CommandEventish.md)
 - [ElementRegistry](interfaces/ElementRegistry.md)
@@ -28,7 +27,7 @@ DOM، لذا فإن الاستيراد أثناء SSR أو البناء لا ي�
 - [RegisterContextOptions](interfaces/RegisterContextOptions.md)
 - [WebComponentStrings](interfaces/WebComponentStrings.md)
 
-## Variables
+## المتغيرات
 
 - [alert](variables/alert.md)
 - [avatar](variables/avatar.md)
@@ -67,7 +66,7 @@ DOM، لذا فإن الاستيراد أثناء SSR أو البناء لا ي�
 - [DEFAULT\_PREFIX](variables/DEFAULT_PREFIX.md)
 - [ENGLISH\_STRINGS](variables/ENGLISH_STRINGS.md)
 
-## Functions
+## الدوال
 
 - [register](functions/register.md)
 - [iconSvg](functions/iconSvg.md)

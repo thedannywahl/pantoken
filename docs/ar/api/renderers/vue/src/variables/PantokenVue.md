@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [renderers/vue/src](../index.md) / PantokenVue
 
-# Variable: PantokenVue
+# متغير: PantokenVue
 
 > `const` **PantokenVue**: `object`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إضافة pantoken Vue: `app.use(PantokenVue)` أو `app.use(PantokenVue, { locale: "hu" })`.
+مكون pantoken لـ Vue: `app.use(PantokenVue)` أو `app.use(PantokenVue, { locale: "hu" })`.
 
 ## Type Declaration
 
@@ -14,7 +14,7 @@
 
 > **install**(`app`, `options?`): `void`
 
-#### Parameters
+#### المعلمات
 
 ##### app
 
@@ -26,11 +26,11 @@
 
 `string` \| [`LocaleBundle`](#)
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
 ```ts
 import { createApp } from "vue";

@@ -2,25 +2,26 @@
 
 # astro
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 `@pantoken/astro` — تكامل Astro / Starlight لـ pantoken.
 
-[InstUI](functions/InstUI.md) هو مكون Starlight يحقن ورقة أنماط pantoken (وأي CSS مكون، على سبيل المثال حلقة التركيز) في رأس الصفحة. يقوم بنقل منهج `starlight-theme-instui` إلى خط أنابيب `@pantoken/css` المشترك، لذا لم يعد يحمل محلل الرموز الخاص به.
+[InstUI](functions/InstUI.md) هو مكوّن إضافي لـ Starlight يقوم بحقن ورقة أنماط pantoken (وأي CSS لمكوّن إضافي,
+مثل حلقة التركيز) في رأس الصفحة. ينقل النهج الخاص بـ `starlight-theme-instui` إلى خط أنابيب `@pantoken/css` المشترك، لذا لم يعد يحمل محلل الرموز الخاص به.
 
-## Interfaces
+## واجهات
 
 - [HeadEntry](interfaces/HeadEntry.md)
 - [StarlightPluginLike](interfaces/StarlightPluginLike.md)
 - [InstUIOptions](interfaces/InstUIOptions.md)
 
-## Functions
+## الدوال
 
 - [pantokenCss](functions/pantokenCss.md)
 - [InstUI](functions/InstUI.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [InstUI](functions/InstUI.md)
+يعيد تسمية ويُعيد تصدير [InstUI](functions/InstUI.md)

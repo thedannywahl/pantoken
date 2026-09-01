@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / CommandHandler
 
-# Type Alias: CommandHandler
+# اسم نوع مستعار: CommandHandler
 
 > **CommandHandler** = (`command`, `source`) => `void`
 
-استدعاء رجعي يتم استدعاؤه عند حل حدث `command` (أو نقرة fallback) لهدف.
+يُستدعى رد النداء عندما يتحول حدث `command` (أو النقر الاحتياطي) إلى هدف.
 
-## Parameters
+## المعلمات
 
 ### command
 
@@ -16,6 +16,6 @@
 
 `Element` \| `null`
 
-## Returns
+## القيم المرجعة
 
 `void`

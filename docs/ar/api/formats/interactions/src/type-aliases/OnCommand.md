@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / OnCommand
 
-# Type Alias: OnCommand
+# اسم نوع مستعار: OnCommand
 
 > **OnCommand** = (`target`, `handler`) => `void`
 
-دالة ربط حدث الأمر: ربط هدف واحد بمعالج، مع fallback نقرة عند الحاجة.
+دالة توصيل حدث-الأمر: تربط هدفًا واحدًا بمعالج، مع الرجوع إلى النقر كخيار احتياطي عند الحاجة.
 
-## Parameters
+## المعلمات
 
 ### target
 
@@ -16,6 +16,6 @@
 
 [`CommandHandler`](CommandHandler.md)
 
-## Returns
+## القيم المرجعة
 
 `void`

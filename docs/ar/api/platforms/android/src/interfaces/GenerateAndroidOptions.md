@@ -1,47 +1,47 @@
 [pantoken](../../../../index.md) / [platforms/android/src](../index.md) / GenerateAndroidOptions
 
-# Interface: GenerateAndroidOptions
+# واجهة: GenerateAndroidOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [generateAndroid](../functions/generateAndroid.md) / [toAndroid](../functions/toAndroid.md).
+خيارات لـ [generateAndroid](../functions/generateAndroid.md) / [toAndroid](../functions/toAndroid.md).
 
-## Properties
+## الخصائص
 
 ### outDir
 
 > **outDir**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-دليل الإخراج؛ تتم كتابة الملفات ضمن `&lt;outDir&gt;/res/values`.
+دليل الإخراج؛ تُكتب الملفات تحت `&lt;outDir&gt;/res/values`.
 
----
+***
 
 ### theme?
 
 > `optional` **theme?**: [`Theme`](../../../../packages/core/src/type-aliases/Theme.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الموضوع المراد إصداره (الافتراضي: `"rebrand"`).
+السمة لإصدارها (الافتراضي: `"rebrand"`).
 
----
+***
 
 ### mode?
 
 > `optional` **mode?**: [`Mode`](../../../../packages/core/src/type-aliases/Mode.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أي وضع `light-dark()` تحتاج إلى حل (الافتراضي: `"light"`).
+أي وضع `light-dark()` يجب حله (الافتراضي: `"light"`).
 
----
+***
 
 ### icons?
 
 > `optional` **icons?**: `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أسماء الأيقونات التي سيتم إصدارها أيضًا كـ VectorDrawables ضمن `res/drawable` (الافتراضي: بلا).
+أسماء الرموز لإصدارها أيضًا كـ VectorDrawables تحت `res/drawable` (الافتراضي: لا شيء).

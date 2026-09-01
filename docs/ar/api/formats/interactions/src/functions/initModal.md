@@ -1,16 +1,17 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initModal
 
-# Function: initModal()
+# دالة: initModal()
 
 > **initModal**(`host`, `dialog`, `onCommand`): `void`
 
-توصيل `<dialog class="instui-modal">` من CSS أو shadow `<dialog>` من مكون الويب إلى بروتوكول
-خاصية `open` وتوجيه أمر `--show/--close/--toggle`. كلا الاستخدامات تمرر نفس الواجهة:
+قم بتوصيل `<dialog class="instui-modal">` في CSS أو ظل مكوّن الويب
+`<dialog>` إلى بروتوكول السمة `open` وتوجيه الأوامر `--show/--close/--toggle`.
+كلا الاستخدامين يمرران نفس الواجهة:
 
-- CSS: `host === dialog` (الحوار نفسه يحمل معرف وخاصية open)
-- WC: `host` = عنصر مخصص، `dialog` = shadow `&lt;dialog&gt;` خاصته
+- CSS: `host === dialog` (يحمل الحوار نفسه المعرّف ووسمة open)
+- WC: `host` = عنصر مخصّص, `dialog` = ظلّه `&lt;dialog&gt;`
 
-## Parameters
+## المعلمات
 
 ### host
 
@@ -24,6 +25,6 @@
 
 [`OnCommand`](../type-aliases/OnCommand.md)
 
-## Returns
+## القيم المرجعة
 
 `void`

@@ -1,89 +1,89 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / RegisterContext
 
-# Interface: RegisterContext
+# واجهة: RegisterContext
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-الحالة المشتركة التي تنشئها استدعاء `register()` مرة واحدة وتمريرها إلى كل [ElementDefinition](ElementDefinition.md).
-يحمل محول السجل الموعي بالبادئة، والمساعد `tag()` للترميز المتداخل، بادئة فئة CSS `I`، علم دعم أوامر المستدعي + الموجه، مصانع `wrapper`/`variantClass`/`iconSvg`،
-وبيانات الإقليم (`strings`, `locale`, `dir`, `firstDay`).
+الحالة المشتركة التي يبنِيها نداء `register()` مرة واحدة وتُمرَّر إلى كل [ElementDefinition](ElementDefinition.md).
+تحمل محول السجل المدرك للبريفكس، المُساعد `tag()` للعلامات المتداخلة، بادئة فئات CSS
+`I`، علم + موجه دعم أوامر Invoker، المصنّعات `wrapper`/`variantClass`/`iconSvg`، وبيانات المنطقة (locale) (`strings`, `locale`, `dir`, `firstDay`).
 
-## Properties
+## الخصائص
 
 ### registry
 
 > **registry**: [`ElementRegistry`](ElementRegistry.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-السجل المحدد النطاق: يعيد كتابة `instui-&lt;base&gt;` → العلامة ذات البادئة النشطة على `get`/`define`.
+السجل بنطاق محدد: يعيد كتابة `instui-&lt;base&gt;` → الوسم النشط-البادئة على `get`/`define`.
 
----
+***
 
 ### tag
 
 > **tag**: (`base`) => `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-خريطة اسم أساسي إلى العلامة ذات البادئة النشطة (للترميز المتداخل، `querySelector`, `tagName`).
+ربط اسم قاعدة إلى وسم البادئة النشط (للعلامات المتداخلة، `querySelector`, `tagName`).
 
-#### Parameters
+#### المعلمات
 
 ##### base
 
 `string`
 
-#### Returns
+#### القيم المرجعة
 
 `string`
 
----
+***
 
 ### I
 
 > **I**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-بادئة فئة CSS لأوراق المكونات المضمنة — دائمًا `instui`، منفصلة عن بادئة العلامة.
+بادئة فئة CSS لأوراق المكوّن المدرجة — دائمًا `instui`، منفصلة عن بادئة الوسم.
 
 #### prefix
 
 > `readonly` **prefix**: `"instui"`
 
----
+***
 
 ### invokerSupported
 
 > **invokerSupported**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-ما إذا كان المتصفح يدعم API أوامر المستدعي (`command`/`commandfor`).
+ما إذا كان المتصفح يدعم واجهة أوامر Invoker (`command`/`commandfor`).
 
----
+***
 
 ### onCommand
 
 > **onCommand**: `OnCommand`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-توجيه أحداث `command` للهدف (أو بديل النقر) إلى معالج.
+توجيه أحداث `command` للهدف (أو ارتداد النقر) إلى معالج.
 
----
+***
 
 ### wrapper
 
 > **wrapper**: (`tag`, `css`, `render`, `options?`) => `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-عرّف عنصر DOM الظل: `&lt;style&gt;:host{display}css&lt;/style&gt;` + الترميز من `render(host)`.
-`invoker: true` يعيد توجيه `popovertarget`/`command` المضيف إلى `&lt;button&gt;` الداخلي (IDL).
+تعريف عنصر ظل DOM: `&lt;style&gt;:host{display}css&lt;/style&gt;` + العلامة من `render(host)`.
+يقوم `invoker: true` بتمرير `popovertarget`/`command` للمستضيف إلى `&lt;button&gt;` الداخلي (IDL).
 
-#### Parameters
+#### المعلمات
 
 ##### tag
 
@@ -107,21 +107,21 @@
 
 `boolean`
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
----
+***
 
 ### variantClass
 
 > **variantClass**: (`name`, `host`) => `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-بناء فئة `.instui-&lt;name&gt;` مع معدل `-color-&lt;variant&gt;` اختياري من `variant`.
+بناء فئة `.instui-&lt;name&gt;` مع مُعدّل اختياري `-color-&lt;variant&gt;` من `variant`.
 
-#### Parameters
+#### المعلمات
 
 ##### name
 
@@ -131,66 +131,66 @@
 
 `HTMLElement`
 
-#### Returns
+#### القيم المرجعة
 
 `string`
 
----
+***
 
 ### iconSvg
 
 > **iconSvg**: (`name`) => `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-حل اسم الرمز إلى SVG مضمن (سلسلة فارغة عند عدم معرفته).
+حل اسم الأيقونة إلى SVG مضمن (سلسلة فارغة إذا لم تُعرف).
 
-#### Parameters
+#### المعلمات
 
 ##### name
 
 `string`
 
-#### Returns
+#### القيم المرجعة
 
 `string`
 
----
+***
 
 ### locale
 
 > **locale**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-علامة إقليم BCP47 المستخدمة لتنسيق `toLocaleDateString` و `Intl`.
+وسم لغة BCP47 المستخدم لتنسيق `toLocaleDateString` و `Intl`.
 
----
+***
 
 ### dir
 
 > **dir**: `"ltr"` \| `"rtl"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-اتجاه النص المشتق من حزمة الإقليم النشطة.
+اتجاه النص المستمد من حزمة اللغة النشطة.
 
----
+***
 
 ### firstDay
 
 > **firstDay**: `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-اليوم الأول من الأسبوع كفهرس JS `Date.getDay()` (0=الأحد … 6=السبت).
+أول يوم في الأسبوع كمؤشر JS `Date.getDay()` (0=الأحد … 6=السبت).
 
----
+***
 
 ### strings
 
 > **strings**: [`WebComponentStrings`](WebComponentStrings.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 سلاسل واجهة المستخدم المترجمة لجميع العناصر السلوكية.

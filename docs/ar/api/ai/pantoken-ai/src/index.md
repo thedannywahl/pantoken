@@ -2,18 +2,22 @@
 
 # pantoken-ai
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`@pantoken/ai` — موارد وكيل موجهة للمستهلك للمشاريع التي _تستخدم_ pantoken (ليس لتطوير pantoken نفسه).
+`@pantoken/ai` — أصول الوكلاء الموجهة للمستهلك للمشاريع التي *تستخدم* pantoken (ليس لتطوير pantoken
+نفسه).
 
-يحتوي على `AGENTS.md`، و `llms.txt`، ملفات قواعد المحرر/الوكيل (Cursor، Copilot، Windsurf)، ومهارات Claude Code (`init-pantoken`، `create-pantoken-app`)، بالإضافة إلى [installAgentAssets](functions/installAgentAssets.md) / [scaffoldAndInit](functions/scaffoldAndInit.md) / CLI `pantoken-ai` لإسقاطها في مستودع المستهلك في المسارات التقليدية.
+يتضمن توزيعًا لـ `AGENTS.md`، و `llms.txt`، وملفات قواعد المحرر/الوكيل (Cursor, Copilot, Windsurf)، و
+مهارات Claude Code (`init-pantoken`, `create-pantoken-app`)، بالإضافة إلى [installAgentAssets](functions/installAgentAssets.md) /
+[scaffoldAndInit](functions/scaffoldAndInit.md) / واجهة سطر الأوامر `pantoken-ai` لوضعها في مستودع المستهلك في
+المسارات التقليدية.
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [AgentTool](type-aliases/AgentTool.md)
 - [ScaffoldPlatform](type-aliases/ScaffoldPlatform.md)
 
-## Variables
+## المتغيرات
 
 - [ASSETS](variables/ASSETS.md)
 - [AGENTS\_MD](variables/AGENTS_MD.md)
@@ -21,7 +25,7 @@
 - [AGENT\_TOOLS](variables/AGENT_TOOLS.md)
 - [SCAFFOLD\_PLATFORMS](variables/SCAFFOLD_PLATFORMS.md)
 
-## Functions
+## الدوال
 
 - [installAgentAssets](functions/installAgentAssets.md)
 - [scaffoldAndInit](functions/scaffoldAndInit.md)

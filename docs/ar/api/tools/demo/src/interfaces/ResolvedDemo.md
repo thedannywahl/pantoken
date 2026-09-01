@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / ResolvedDemo
 
-# Interface: ResolvedDemo
+# واجهة: ResolvedDemo
 
-عرض توضيحي تم حله: سمات iframe بالإضافة إلى المزود الذي أنتجها.
+عرض توضيحي محلول: سمات iframe بالإضافة إلى الموفر الذي أنتجها.
 
-## Properties
+## الخصائص
 
 ### provider
 
 > **provider**: `string`
 
-المزود الذي أنتج التضمين (`url`, `self`, `stackblitz`, …).
+الموفر الذي أنتج التضمين (`url`, `self`, `stackblitz`, …).
 
----
+***
 
 ### src
 
 > **src**: `string`
 
-إطار iframe `src`.
+عنصر iframe `src`.
 
----
+***
 
 ### sandbox
 

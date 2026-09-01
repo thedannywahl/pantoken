@@ -1,25 +1,25 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / IconHookContext
 
-# Interface: IconHookContext
+# واجهة: IconHookContext
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-السياق الذي يتم تمريره إلى خطاف `icons` للمكون الإضافي.
+السياق الذي يُمرَّر إلى هوك `icons` الخاص بالإضافة.
 
-## Properties
+## الخصائص
 
 ### icons
 
 > **icons**: `Pick`\<[`IconEntry`](IconEntry.md), `"name"` \| `"viewBox"` \| `"source"`\>[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الرموز المسجلة بالفعل في مجموعة الرموز الحالية (بدون SVG - الاسم والبيانات الوصفية فقط).
+الأيقونات المسجَّلة بالفعل في مجموعة الرموز الحالية (لا SVG — الاسم والبيانات الوصفية فقط).
 
----
+***
 
 ### theme
 
 > **theme**: [`Theme`](../type-aliases/Theme.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

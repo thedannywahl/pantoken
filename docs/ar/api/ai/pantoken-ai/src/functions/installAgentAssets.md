@@ -1,36 +1,36 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / installAgentAssets
 
-# Function: installAgentAssets()
+# دالة: installAgentAssets()
 
 > **installAgentAssets**(`tool`, `dir?`): `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-اكتب موارد وكيل pantoken لأداة إلى مستودع المستهلك.
+اكتب أصول وكلاء pantoken لأداة داخل مستودع المستهلك.
 
-## Parameters
+## المعلمات
 
 ### tool
 
 [`AgentTool`](../type-aliases/AgentTool.md) \| `"all"`
 
-أداة وكيل محددة [AgentTool](../type-aliases/AgentTool.md)، أو `"all"` لكل مورد.
+أداة محددة [AgentTool](../type-aliases/AgentTool.md)، أو `"all"` لكل أصل.
 
 ### dir?
 
 `string` = `"."`
 
-الدليل المستهدف (الافتراضي `"."`).
+دليل الهدف (الافتراضي `"."`).
 
-## Returns
+## القيم المرجعة
 
 `string`[]
 
-المسارات المكتوبة.
+المسارات التي تمت كتابتها.
 
-## Examples
+## أمثلة
 
-**تثبيت موارد أداة واحدة في مستودع**
+**تثبيت أصول أداة واحدة في مستودع**
 
 ```ts
 import { installAgentAssets } from "@pantoken/ai";
@@ -39,7 +39,7 @@ const written = installAgentAssets("cursor", "./my-app");
 // → ["my-app/.cursor/rules/pantoken.mdc"]
 ```
 
-**تثبيت كل مورد في المجلد الحالي**
+**تثبيت كل الأصول في الدليل الحالي**
 
 ```ts
 import { installAgentAssets } from "@pantoken/ai";

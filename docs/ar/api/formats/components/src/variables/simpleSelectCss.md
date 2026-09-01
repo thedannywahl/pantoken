@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / simpleSelectCss
 
-# Variable: simpleSelectCss
+# متغير: simpleSelectCss
 
 > `const` **simpleSelectCss**: `Definition`\[`"css"`\] = `simpleSelect.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `simpleSelect` مستقلة — CSS مسبوق للقائمة الأصلية، جاهز للشحن كملف `.css`.
+ورقة أنماط `simpleSelect` مستقلة — CSS ذات بادئات لعنصر select الأصلي، جاهزة للشحن كملف `.css`.

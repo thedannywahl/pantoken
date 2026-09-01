@@ -1,119 +1,119 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / PantokenPlugin
 
-# Interface: PantokenPlugin
+# واجهة: PantokenPlugin
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مكون إضافي pantoken. كل خطاف اختياري؛ يشارك المكون الإضافي فقط في المراحل التي يحدد فيها خطاف.
-لذلك يمكن للمكون الإضافي نفسه أن يحقن في أكثر من طبقة واحدة.
+إضافة pantoken. كل هوك اختياري؛ الإضافة تشارك فقط في المراحل التي تُعرّف لها هوكًا.
+لذلك يمكن لنفس الإضافة أن تُحقن في أكثر من طبقة.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم مكون إضافي فريد وقابل للقراءة من قبل الإنسان.
+اسم إضافة فريد وقابل للقراءة من قبل البشر.
 
-## Methods
+## الطرق
 
 ### tokens()?
 
 > `optional` **tokens**(`ctx`): `void` \| [`Token`](Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة الرمز: إرجاع قائمة الرموز البديلة الكاملة.
+مرحلة الرموز: إرجاع قائمة الرموز البديلة الكاملة.
 
-#### Parameters
+#### المعلمات
 
 ##### ctx
 
 [`TokenHookContext`](TokenHookContext.md)
 
-#### Returns
+#### القيم المرجعة
 
 `void` \| [`Token`](Token.md)[]
 
----
+***
 
 ### icons()?
 
 > `optional` **icons**(`ctx`): `void` \| [`IconEntry`](IconEntry.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة الرمز: إرجاع سجلات [IconEntry](IconEntry.md) جديدة للتسجيل كرموز `&lt;image&gt;`.
+مرحلة الأيقونات: إرجاع سجلات جديدة من [IconEntry](IconEntry.md) للتسجيل كرموز `&lt;image&gt;`.
 إرجاع `undefined` أو مصفوفة فارغة يترك المجموعة الحالية دون تغيير.
 
-#### Parameters
+#### المعلمات
 
 ##### ctx
 
 [`IconHookContext`](IconHookContext.md)
 
-#### Returns
+#### القيم المرجعة
 
 `void` \| [`IconEntry`](IconEntry.md)[]
 
----
+***
 
 ### css()?
 
 > `optional` **css**(`ctx`): `void` \| [`CssContribution`](CssContribution.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة CSS: المساهمة أو ما بعد معالجة CSS.
+مرحلة CSS: المساهمة أو المعالجة اللاحقة لـ CSS.
 
-#### Parameters
+#### المعلمات
 
 ##### ctx
 
 [`CssHookContext`](CssHookContext.md)
 
-#### Returns
+#### القيم المرجعة
 
 `void` \| [`CssContribution`](CssContribution.md)
 
----
+***
 
 ### rehype()?
 
 > `optional` **rehype**(`ctx`): `void` \| \{ `resolve?`: [`IconResolver`](../type-aliases/IconResolver.md); \}
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة Rehype: توفير محلل دمج في مكون Rehype الإضافي.
+مرحلة Rehype: توفير محلل يتم دمجه في مكون rehype الإضافي.
 
-#### Parameters
+#### المعلمات
 
 ##### ctx
 
 [`RehypeHookContext`](RehypeHookContext.md)
 
-#### Returns
+#### القيم المرجعة
 
 `void` \| \{ `resolve?`: [`IconResolver`](../type-aliases/IconResolver.md); \}
 
----
+***
 
 ### native()?
 
 > `optional` **native**(`ctx`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المرحلة الأصلية (Style Dictionary): تسجيل transforms/formats.
+المرحلة الأصلية (Style Dictionary): تسجيل التحويلات/التنسيقات.
 
-#### Parameters
+#### المعلمات
 
 ##### ctx
 
 `unknown`
 
-#### Returns
+#### القيم المرجعة
 
 `void`

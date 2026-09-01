@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / RemoveOptions
 
-# Interface: RemoveOptions
+# واجهة: RemoveOptions
 
-خيارات للحذف المستند إلى المهلة الزمنية.
+خيارات للإزالة المعتمدة على المهلة.
 
-## Properties
+## الخصائص
 
 ### timeout?
 
 > `optional` **timeout?**: `number`
 
-عدد الميلي ثانية قبل الرفض. القيمة الافتراضية هي `--timeout` المحسوبة للهدف.
+مللي ثانية قبل الإغلاق. الافتراضي هو `--timeout` المحسوب للعنصر المستهدف.
 
----
+***
 
 ### transition?
 
 > `optional` **transition?**: `"fade"` \| `"none"`
 
-معالجة الخروج. القيمة الافتراضية هي `"fade"`، تطابق تنبيه InstUI.
+معاملة الخروج. الافتراضي هو `"fade"`، مطابق لتنبيه InstUI.

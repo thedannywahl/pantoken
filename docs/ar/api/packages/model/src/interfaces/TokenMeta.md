@@ -1,80 +1,80 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / TokenMeta
 
-# Interface: TokenMeta
+# واجهة: TokenMeta
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البيانات الوصفية غير المرتبطة بالقيمة المرفقة برمز [Token](Token.md).
+بيانات وصفية غير قيمية مرتبطة بـ [Token](Token.md).
 
-## Properties
+## الخصائص
 
 ### kind?
 
 > `optional` **kind?**: `"icon"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-يعلم رمز الرموز (يكون `syntax` الخاص به `"&lt;image&gt;"`).
+يشير إلى توكن أيقونة (خاصيته `syntax` هي `"&lt;image&gt;"`).
 
----
+***
 
 ### style?
 
 > `optional` **style?**: `"Custom"` \| `"Line"` \| `"Solid"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-نمط مصدر حرف الرموز.
+نمط المصدر لشكل الأيقونة.
 
----
+***
 
 ### viewBox?
 
 > `optional` **viewBox?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-SVG `viewBox` لحرف الرموز.
+خاصية SVG `viewBox` لشكل الأيقونة.
 
----
+***
 
 ### bidirectional?
 
 > `optional` **bidirectional?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ما إذا كان الرمز يقلب أفقياً في السياقات من اليمين إلى اليسار.
+ما إذا كانت الأيقونة تنعكس أفقياً في سياقات من اليمين إلى اليسار.
 
----
+***
 
 ### source?
 
 > `optional` **source?**: `"custom"` \| `"lucide"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أصل حرف الرموز.
+منشأ شكل الأيقونة.
 
----
+***
 
 ### modify?
 
 > `optional` **modify?**: [`TokenModify`](TokenModify.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-معدِّل لون محفوظ للنسب الأصلي (Style Dictionary).
+معدل لون محفوظ للنسب الأصلية (Style Dictionary).
 
----
+***
 
 ### deprecated?
 
 > `optional` **deprecated?**: `object`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-موجود على رمز shim التوافق (من `DeprecationEntry`).
+موجود على توكن وسيط التوافق (من `DeprecationEntry`).
 
 #### replacement?
 

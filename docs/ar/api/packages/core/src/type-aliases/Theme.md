@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / Theme
 
-# Type Alias: Theme
+# اسم نوع مستعار: Theme
 
 > **Theme** = `"rebrand"` \| `"canvas"` \| `"canvasHighContrast"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مظهر لون متاح في `@instructure/instructure-design-tokens`.
+ثيم لوني متاح في `@instructure/instructure-design-tokens`.

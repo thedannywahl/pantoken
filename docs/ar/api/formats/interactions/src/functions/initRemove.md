@@ -1,18 +1,16 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initRemove
 
-# Function: initRemove()
+# دالة: initRemove()
 
 > **initRemove**(`target`, `options?`): [`RemoveHandle`](../interfaces/RemoveHandle.md)
 
-إزالة هدف بعد انتهاء المهلة الزمنية. قبل الإزالة، يطلق حدث `dismiss` قابل للإلغاء وفقاعي.
-منع هذا الحدث يبقي الهدف مثبتًا.
+إزالة الهدف بعد مهلة. قبل الإزالة، يطلق حدث `dismiss` قابلًا للإلغاء وينبثق (bubbling).
+منع ذلك الحدث يُبقي الهدف مُركَّبًا.
 
-المهلة الزمنية هي خيار ميلي ثانية صريح أو خاصية CSS مخصصة محسوبة بلا وحدات للهدف `--timeout`.
-لا تقوم القيم المفقودة وغير المحدودة وغير الموجبة بتسليح مؤقت زمني. يستخدم التلاشي فئات أداة
-`@pantoken/components` `transition` (`.instui-transition` + `-fade-*`)، ثم ينتظر
-`transitionend` (مع بديل)؛ `transition: "none"` يزيل على الفور.
+المهلة عبارة عن خيار صريح بالملي ثانية أو الخاصية المخصصة في CSS المحسوبة للهدف `--timeout` بلا وحدة.
+القيم المفقودة أو غير المنتهية أو غير الموجبة لا تُفعِّل مؤقتًا. يستخدم التلاشي أصناف المرافق `@pantoken/components` `transition` (`.instui-transition` + `-fade-*`)، ثم ينتظر `transitionend` (مع بديل احتياطي)؛ `transition: "none"` يزيل على الفور.
 
-## Parameters
+## المعلمات
 
 ### target
 
@@ -22,6 +20,6 @@
 
 [`RemoveOptions`](../interfaces/RemoveOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 [`RemoveHandle`](../interfaces/RemoveHandle.md)

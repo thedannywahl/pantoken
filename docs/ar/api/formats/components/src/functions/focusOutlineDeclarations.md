@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / focusOutlineDeclarations
 
-# Function: focusOutlineDeclarations()
+# دالة: focusOutlineDeclarations()
 
 > **focusOutlineDeclarations**(): \[`string`, `string`\][]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أزواج الاسم/القيمة `--instui-focus-outline-*` التي تقرأها قواعد الحلقة. يشير اللون/العرض/الإزاحة إلى
-رموز التركيز المشتركة المنسوجة بالموضوع؛ الانتقال وأسلوب الخط والإدراج ثوابت.
+أزواج الاسم/القيمة `--instui-focus-outline-*` التي تقرأها قواعد الحلقة. يشير اللون/العرض/الإزاحة
+إلى الرموز المشتركة للتركيز ذات الطابع؛ الانتقال، نمط الخط، وinset هي ثوابت.
 
-## Returns
+## القيم المرجعة
 
 \[`string`, `string`\][]
 
-زوج `[customProperty, value]` واحد لكل متغير حلقة التركيز.
+زوج واحد من `[customProperty, value]` لكل متغير حلقة التركيز.
 
-## Example
+## مثال
 
 ```ts
 import { focusOutlineDeclarations } from "@pantoken/utils";

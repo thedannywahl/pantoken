@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / stackingUtilityCss
 
-# Variable: stackingUtilityCss
+# متغير: stackingUtilityCss
 
 > `const` **stackingUtilityCss**: `Definition`\[`"css"`\] = `stacking.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أداة التكديس كورقة أنماط مستقلة ومغلفة برأس.
+أداة التكديس كملف أنماط مستقل مغلف بعنصر رأس.

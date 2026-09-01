@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [bundlers/webpack/src](../index.md) / PantokenWebpackPlugin
 
-# Class: PantokenWebpackPlugin
+# فئة: PantokenWebpackPlugin
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مكون إضافي Webpack يصدر ورقة نمط pantoken كأصل إخراج.
+إضافة Webpack تصدر ملف أنماط pantoken كأصل ناتج.
 
-## Examples
+## أمثلة
 
-**صدّر pantoken.css من webpack.config.js الخاص بك**
+**أصدر pantoken.css من webpack.config.js الخاص بك**
 
 ```js
 import { PantokenWebpackPlugin } from "@pantoken/webpack";
@@ -18,7 +18,7 @@ export default {
 };
 ```
 
-**أعد تسمية الأصل المُصدَّر**
+**أعد تسمية الأصل المُصدَّر**
 
 ```js
 import { PantokenWebpackPlugin } from "@pantoken/webpack";
@@ -28,38 +28,38 @@ export default {
 };
 ```
 
-## Constructors
+## البنّائون
 
-### Constructor
+### منشئ
 
 > **new PantokenWebpackPlugin**(`options?`): `PantokenWebpackPlugin`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-#### Parameters
+#### المعلمات
 
 ##### options?
 
 [`PantokenWebpackOptions`](../interfaces/PantokenWebpackOptions.md) = `{}`
 
-#### Returns
+#### القيم المرجعة
 
 `PantokenWebpackPlugin`
 
-## Methods
+## الطرق
 
 ### apply()
 
 > **apply**(`compiler`): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-#### Parameters
+#### المعلمات
 
 ##### compiler
 
 `CompilerLike`
 
-#### Returns
+#### القيم المرجعة
 
 `void`

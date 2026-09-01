@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / syncTruncateAutoLines
 
-# Function: syncTruncateAutoLines()
+# دالة: syncTruncateAutoLines()
 
 > **syncTruncateAutoLines**(`host`, `target`): `void`
 
-حساب وتطبيق قيمة رقمية `--lines` من الارتفاع المتاح.
+احسب وطبّق قيمة رقمية `--lines` من الارتفاع المتاح.
 
-## Parameters
+## المعلمات
 
 ### host
 
@@ -16,6 +16,6 @@
 
 `HTMLElement`
 
-## Returns
+## القيم المرجعة
 
 `void`

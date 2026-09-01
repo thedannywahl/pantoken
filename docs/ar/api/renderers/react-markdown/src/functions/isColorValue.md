@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / isColorValue
 
-# Function: isColorValue()
+# دالة: isColorValue()
 
 > **isColorValue**(`value`): `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-صحيح عندما تكون السلسلة قيمة لون CSS مستقلة (hex أو دالة لون).
+صحيح عندما تكون السلسلة قيمة لون CSS مستقلة (بصيغة سداسية عشرية أو دالة لون).
 
-## Parameters
+## المعلمات
 
 ### value
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `boolean`
 
-## Example
+## مثال
 
 ```ts
 import { isColorValue } from "@pantoken/react-markdown";

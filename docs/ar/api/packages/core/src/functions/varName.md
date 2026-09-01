@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / varName
 
-# Function: varName()
+# دالة: varName()
 
 > **varName**(`prefix`, `path`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء اسم خاصية مخصصة `--instui-[prefix-]<kebab path>`.
+أنشئ اسم خاصية مخصصة `--instui-[prefix-]<kebab path>`.
 
-## Parameters
+## المعلمات
 
 ### prefix
 
@@ -18,17 +18,17 @@
 
 `string`[]
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Example
+## مثال
 
 ```ts
 import { varName } from "@pantoken/core";
 
-varName("primitive", ["color", "white"]); // → "--instui-primitive-color-white"
-varName("", ["spacing", "spaceMd"]); // → "--instui-spacing-space-md"
+varName("primitive", ["color", "white"]);       // → "--instui-primitive-color-white"
+varName("", ["spacing", "spaceMd"]);             // → "--instui-spacing-space-md"
 varName("component", ["baseButton", "primaryBackground"]);
 // → "--instui-component-base-button-primary-background"
 ```

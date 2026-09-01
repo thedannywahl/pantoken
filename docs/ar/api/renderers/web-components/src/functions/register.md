@@ -1,32 +1,37 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / register
 
-# Function: register()
+# دالة: register()
 
 > **register**(`target?`, `options?`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-سجّل عناصر pantoken المخصصة. عدم عملية عندما لا توجد DOM (SSR / build)، لذلك هذه الوحدة آمنة للاستيراد في أي مكان.
+سجّل عناصر pantoken المخصصة. لا تقوم بأي فعل عندما لا يوجد DOM (SSR / أثناء البناء)، لذا فهذه الوحدة
+آمنة للاستيراد في أي مكان.
 
-## Parameters
+## المعلمات
 
 ### target?
 
 [`ElementRegistry`](../interfaces/ElementRegistry.md) \| `undefined`
 
-السجل المراد التعريف فيه (الافتراضي هو `globalThis.customElements`).
+التسجيل الذي سيتم التعريف فيه (الافتراضي هو `globalThis.customElements`).
 
 ### options?
 
 [`RegisterContextOptions`](../interfaces/RegisterContextOptions.md) & `object` = `{}`
 
-`prefix` يعيّن بادئة الوسم، ممسحاً طبقة CSS: مرّر سلسلة غير فارغة مثل `x` لـ `&lt;x-icon&gt;`. يتم تطبيق بادئة دائماً (يجب أن يحتوي اسم العنصر المخصص على واصلة)، لذلك بادئة مُحذوفة أو فارغة أو فارغة تعود إلى الافتراضي `instui` (`&lt;instui-icon&gt;`). `only` يقيّد التسجيل إلى مجموعة فرعية من أسماء القاعدة `ELEMENTS` — يتم سحب تبعيات العرض المتداخلة الخاصة بها تلقائياً، لذلك `{ only: ["date-time-input"] }` أيضاً يعرّف `date-input` و `calendar`. تجاهل `only` لتسجيل كل عنصر (الافتراضي).
+`prefix` يحدد بادئة الوسم، معاكِسًا لطبقة CSS: مرّر سلسلة غير فارغة مثل
+  `x` لـ `&lt;x-icon&gt;`. تُطبَق بادئة دائمًا (يجب أن يحتوي اسم العنصر المخصص على شرطة)، لذا فإن
+  تجاهل البادئة أو كونها فارغة أو غير موجودة أو nullish سيعود إلى الافتراضي `instui` (`&lt;instui-icon&gt;`). تُقَيِّد `only`
+  التسجيل إلى مجموعة فرعية من أسماء الأساس `ELEMENTS` — اعتمادات العرض المتداخلة الخاصة بها تُستدعى تلقائيًا، لذلك يُعرّف `{ only: ["date-time-input"] }` أيضًا
+  `date-input` و `calendar`. اترك `only` لتسجيل كل عنصر (الافتراضي).
 
-## Returns
+## القيم المرجعة
 
 `void`
 
-## Example
+## مثال
 
 ```ts
 import { register } from "@pantoken/web-components";

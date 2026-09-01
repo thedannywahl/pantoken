@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / billboardCss
 
-# Variable: billboardCss
+# متغير: billboardCss
 
 > `const` **billboardCss**: `Definition`\[`"css"`\] = `billboard.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `billboard` مستقلة — CSS المُبدأ لكتلة الحالة الفارغة، جاهز للشحن كملف `.css`.
+ورقة أنماط `billboard` مستقلة — CSS ذات بادئة لكتلة الحالة الفارغة، جاهزة للشحن كملف `.css`.

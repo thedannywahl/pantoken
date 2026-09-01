@@ -1,27 +1,27 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/transition/src](../index.md) / TransitionOptions
 
-# Interface: TransitionOptions
+# واجهة: TransitionOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون [transition](../functions/transition.md) الإضافي.
+خيارات الإضافة [transition](../functions/transition.md).
 
-## Properties
+## الخصائص
 
 ### duration?
 
 > `optional` **duration?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مدة الرسم المتحرك (الإعداد الافتراضي: `300ms` من InstUI).
+مدة الحركة (الافتراضي: InstUI's `300ms`).
 
----
+***
 
 ### timing?
 
 > `optional` **timing?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-دالة التوقيت (الإعداد الافتراضي: `ease-in-out` من InstUI).
+دالة التوقيت (الافتراضي: InstUI's `ease-in-out`).

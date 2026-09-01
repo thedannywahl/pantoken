@@ -1,16 +1,18 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/colors/src](../index.md) / darken
 
-# Function: darken()
+# دالة: darken()
 
 > **darken**(`color`, `percent?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اغمّق بمقدار `percent` نقاط HSL-lightness — المرآة المخصصة بـ CSS فقط لـ ui-color-utils `darken` (tinycolor يقلل HSL lightness). يستخدم بناء جملة اللون النسبي بحيث يتم الحفاظ على الصبغة والتشبع.
+تغميق بمقدار `percent` نقاط سطوع HSL — النسخة الخاصة بـ CSS فقط من ui-color-utils `darken`
+(تقوم tinycolor بخفض سطوع HSL). يستخدم بناء جملة الألوان النسبية بحيث يتم الحفاظ على الدرجة والتشبع.
 
-في `hsl()` النسبي، يتم حل قناة `l` إلى `&lt;number&gt;` على مقياس 0–100 — نفس المقياس الذي يستخدمه `amount` من tinycolor — لذا يتم طرح النقاط مباشرة (لا `%`).
+في `hsl()` النسبية، تتحول قناة `l` إلى `&lt;number&gt;` على مقياس 0–100 — نفس المقياس
+الذي تستخدمه `amount` في tinycolor — لذا تُطرح النقاط مباشرةً (بدون `%`).
 
-## Parameters
+## المعلمات
 
 ### color
 
@@ -22,15 +24,15 @@
 
 `number` = `10`
 
-نقاط الإضاءة المراد طرحها (افتراضي `10`، مطابق الافتراضي من tinycolor).
+نقاط السطوع التي ستُطرح (الافتراضي `10`، مطابق لافتراضي tinycolor).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-تعبير لون نسبي `hsl(from …)`.
+تعبير لون-نسبي من نوع `hsl(from …)`.
 
-## Example
+## مثال
 
 ```ts
 darken("var(--brand)", 10); // "hsl(from var(--brand) h s calc(l - 10))"

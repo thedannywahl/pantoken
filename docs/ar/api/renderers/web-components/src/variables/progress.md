@@ -1,16 +1,19 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / progress
 
-# Variable: progress
+# متغير: progress
 
 > `const` **progress**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-progress&gt;` — مؤشر أفقي مدعوم من `&lt;progress&gt;` الأصلي أو دلالات `&lt;meter&gt;`.
+`&lt;instui-progress&gt;` — مؤشر أفقي مدعوم بدلالات `&lt;progress&gt;` أو `&lt;meter&gt;` الأصلية.
 
-`value-now`/`value` تقود `--value`، بينما `min` و `value-max`/`max` تقود النطاق. الحد الأدنى صفر يعرض `&lt;progress&gt;` أصلي؛ الحد الأدنى غير الصفري يعرض `&lt;meter&gt;`. أضف السمة المنطقية `should-animate` لتحويل تغييرات العداد على مدى نصف ثانية. يعيّن `variant` المكون إلى `-color-&lt;variant&gt;` و يوفر `label` اسمه القابل للوصول.
+`value-now`/`value` تُحرِّك `--value`، بينما `min` و `value-max`/`max` تُحرِّكان النطاق. حد أدنى بقيمة صفر
+يُنتِج `&lt;progress&gt;` أصليًا؛ والحد الأدنى غير الصفري يُنتِج `&lt;meter&gt;`. أضف السمة البوليانية
+`should-animate` لانتقال تغييرات المقياس خلال نصف ثانية. `variant` تُطابق الـ
+مكوّن مع `-color-&lt;variant&gt;` و `label` يوفّر اسمه القابل للوصول.
 
-## Example
+## مثال
 
 ```html
 <instui-progress value-now="40" value-max="60" variant="success" should-animate></instui-progress>

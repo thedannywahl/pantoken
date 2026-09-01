@@ -1,13 +1,13 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / injectContentStylesheet
 
-# Function: injectContentStylesheet()
+# دالة: injectContentStylesheet()
 
 > **injectContentStylesheet**(`editor`, `url`): `void`
 
-يضيف `<link rel="stylesheet">` إلى مستند المحتوى `&lt;head&gt;` للمحرر في وقت التشغيل.
-محايد النتيجة لكل عنوان URL — استدعاء هذا مرتين بنفس `url` لا يعني شيئاً في المرة الثانية.
+يضيف `<link rel="stylesheet">` إلى مستند المحتوى للمحرر `&lt;head&gt;` أثناء وقت التشغيل.
+متكافئ لكل URL — استدعاء هذا مرتين بنفس `url` لا يفعل شيئًا في المرة الثانية.
 
-## Parameters
+## المعلمات
 
 ### editor
 
@@ -17,6 +17,6 @@
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `void`

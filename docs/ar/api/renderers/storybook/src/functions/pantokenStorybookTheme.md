@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/storybook/src](../index.md) / pantokenStorybookTheme
 
-# Function: pantokenStorybookTheme()
+# دالة: pantokenStorybookTheme()
 
 > **pantokenStorybookTheme**(`mode?`): [`StorybookTheme`](../type-aliases/StorybookTheme.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء مظهر Storybook من رموز Instructure.
+بناء سمة Storybook من رموز Instructure.
 
-## Parameters
+## المعلمات
 
 ### mode?
 
@@ -16,13 +16,13 @@
 
 `"light"` أو `"dark"` (الافتراضي `"light"`).
 
-## Returns
+## القيم المرجعة
 
 [`StorybookTheme`](../type-aliases/StorybookTheme.md)
 
-كائن بشكل `ThemeVars`.
+كائن على شكل `ThemeVars`.
 
-## Example
+## مثال
 
 ```ts
 // .storybook/manager.ts

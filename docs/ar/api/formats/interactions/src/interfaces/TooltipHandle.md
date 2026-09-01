@@ -1,10 +1,10 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / TooltipHandle
 
-# Interface: TooltipHandle
+# واجهة: TooltipHandle
 
-المؤشر الذي تُرجعه [initTooltip](../functions/initTooltip.md).
+المعرّف الذي أرجعه [initTooltip](../functions/initTooltip.md).
 
-## Methods
+## الطرق
 
 ### cleanup()
 
@@ -12,18 +12,18 @@
 
 إزالة جميع مستمعي الأحداث وإلغاء أي مؤقت معلق.
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
----
+***
 
 ### cancelAndHide()
 
 > **cancelAndHide**(): `void`
 
-إلغاء فوري لأي مؤقت عرض معلق وإزالة `-show`.
+إلغاء أي مؤقت عرض معلق فورًا وإزالة `-show`.
 
-#### Returns
+#### القيم المرجعة
 
 `void`

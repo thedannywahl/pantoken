@@ -1,10 +1,10 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / LogoMeta
 
-# Interface: LogoMeta
+# واجهة: LogoMeta
 
-البيانات الوصفية لمورد شعار واحد متاح.
+بيانات وصفية لأحد أصول الشعار المتاحة.
 
-## Properties
+## الخصائص
 
 ### product
 
@@ -12,7 +12,7 @@
 
 المنتج الذي ينتمي إليه الشعار.
 
----
+***
 
 ### layout
 
@@ -20,15 +20,15 @@
 
 التخطيط.
 
----
+***
 
 ### colorMode
 
 > **colorMode**: `LogoColorMode`
 
-معالجة اللون.
+نمط اللون.
 
----
+***
 
 ### name
 
@@ -36,7 +36,7 @@
 
 جذر الرمز/الاسم، على سبيل المثال `"canvas-horizontal-full-color"`.
 
----
+***
 
 ### path
 

@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / resolveSpace
 
-# Function: resolveSpace()
+# دالة: resolveSpace()
 
 > **resolveSpace**(`value`): `string`
 
-حل قيمة تباعد واحدة: اسم مستعار لكلمة رئيسية على أساس الرمز، وإلا مرر بدون تغيير.
+قم بحل قيمة تباعد واحدة: حوّل الاسم المستعار المفتاحي إلى توكن، وإلا فمرّره دون تغيير.
 
-## Parameters
+## المعلمات
 
 ### value
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`

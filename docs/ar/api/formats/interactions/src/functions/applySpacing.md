@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / applySpacing
 
-# Function: applySpacing()
+# دالة: applySpacing()
 
 > **applySpacing**(`host`): `void`
 
-تطبيق خصائص المسافة InstUI/CSS على `host` لنمط مضمن.
+تطبيق سمات التباعد InstUI/CSS على `host` في النمط المضمّن.
 
-يتم حذف الخصائص المُدارة أولاً، لذا فإن إزالة الخاصية تزيل أسلوبها.
+يتم مسح الخصائص المدارَة أولًا، لذلك فإن إزالة سمة تُزيل نمطها.
 
-## Parameters
+## المعلمات
 
 ### host
 
 `HTMLElement`
 
-## Returns
+## القيم المرجعة
 
 `void`

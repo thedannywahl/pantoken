@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initTruncateAuto
 
-# Function: initTruncateAuto()
+# دالة: initTruncateAuto()
 
 > **initTruncateAuto**(`host`, `target`, `options?`): [`TruncateAutoHandle`](../interfaces/TruncateAutoHandle.md)
 
-حافظ على `--lines` متزامنًا مع الارتفاع المتاح لهدف اقتطاع مثبت تلقائيًا.
+حافظ على `--lines` متزامناً مع الارتفاع المتاح لهدف القطع المُقيد تلقائياً.
 
-- استخدام CSS: مرر نفس العنصر كـ `host` و `target`.
-- استخدام مكون الويب: مرر مضيف العنصر المخصص + نطاق هدف الاقتطاع في الظل.
+- استخدام CSS: مرّر نفس العنصر كـ `host` و `target`.
+- استخدام مكون الويب: مرّر مضيف العنصر المخصص + عنصر span لهدف القطع في الظل.
 
-## Parameters
+## المعلمات
 
 ### host
 
@@ -23,6 +23,6 @@
 
 [`TruncateAutoOptions`](../interfaces/TruncateAutoOptions.md)
 
-## Returns
+## القيم المرجعة
 
 [`TruncateAutoHandle`](../interfaces/TruncateAutoHandle.md)

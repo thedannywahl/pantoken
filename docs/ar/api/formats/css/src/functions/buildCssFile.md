@@ -1,14 +1,15 @@
 [pantoken](../../../../index.md) / [formats/css/src](../index.md) / buildCssFile
 
-# Function: buildCssFile()
+# دالة: buildCssFile()
 
 > **buildCssFile**(`__namedParameters`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء سلسلة ملف CSS: تسجيلات `@property` مكتوبة (على المستوى الأعلى، غير متعلقة بالمظهر) متبوعة بقسم واحد أو أكثر من أقسام الإعلان المحدود النطاق (الذي قد تعيد كتابة محدده البناء المستهلك).
+بناء سلسلة ملف CSS: تسجيلات مُكتوبة `@property` (عالية المستوى، غير معتمدة على الثيم) متبوعة
+بقسم واحد أو أكثر من التصريحات المقيَّدة (والذي قد تعيد عملية البناء المستهلكة كتابة محدد الاختيار الخاص به).
 
-## Parameters
+## المعلمات
 
 ### \_\_namedParameters
 
@@ -32,13 +33,13 @@
 
 `boolean` = `true`
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-## Examples
+## أمثلة
 
-**تسجيل خاصية واحدة مكتوبة وإصدار إعلان محدود النطاق**
+**تسجيل خاصية مكتوبة واحدة وإصدار تصريح مقيَّد**
 
 ```ts
 import { buildCssFile } from "@pantoken/css";
@@ -51,7 +52,7 @@ buildCssFile({
 });
 ```
 
-**لف قسم في طبقة سقوط CSS**
+**تغليف قسم داخل طبقة تتابع CSS**
 
 ```ts
 import { buildCssFile } from "@pantoken/css";

@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / viewCss
 
-# Variable: viewCss
+# متغير: viewCss
 
 > `const` **viewCss**: `Definition`\[`"css"`\] = `view.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مكون العرض كورقة نمط مستقلة مغلفة برأس.
+مكوّن View كملف أنماط مستقل ملفوف بعنصر رأس.

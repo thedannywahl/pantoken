@@ -1,61 +1,61 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/props-minify/src](../index.md) / PropsMinifyOptions
 
-# Interface: PropsMinifyOptions
+# واجهة: PropsMinifyOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [applyMinify](../functions/applyMinify.md).
+خيارات لـ [applyMinify](../functions/applyMinify.md).
 
-## Properties
+## الخصائص
 
 ### prune?
 
 > `optional` **prune?**: `boolean`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تطبيق [pruneCustomProps](../variables/pruneCustomProps.md) لإزالة رموز `--instui-*` غير المستخدمة قبل التحويلات الأخرى.
+طبق [pruneCustomProps](../variables/pruneCustomProps.md) لإزالة `--instui-*` غير المستخدمة من الشجرة قبل التحويلات الأخرى.
 
-آمن فقط للحزم المكتفية ذاتياً التي تحتوي على تعريفات الرموز والقواعد المكونة
-التي تشير إليها. حذف ورقة الرموز فقط يزيل كل شيء.
+آمن فقط للحزم المستقلة التي تحتوي على تعريفات الرموز وقواعد المكوّنات التي تشير إليها معاً.
+إزالة التقليم من ورقة تحتوي على رموز فقط يحذف كل شيء.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `false`
 
----
+***
 
 ### flatten?
 
 > `optional` **flatten?**: `boolean` \| [`FlattenPropertyOptions`](FlattenPropertyOptions.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تطبيق [flattenProperty](../variables/flattenProperty.md) لتحويل قواعد `@property` إلى تصريحات عادية.
+طبق [flattenProperty](../variables/flattenProperty.md) لتحويل قواعد `@property` من نوع at-rule إلى تصريحات عادية.
 
-`true` يستخدم الإعدادات الافتراضية للمكون الإضافي (`injectSelector: ":root"`، `onMissingInitialValue: "remove"`).
+`true` يستخدم إعدادات الملحق الافتراضية (`injectSelector: ":root"`, `onMissingInitialValue: "remove"`).
 مرّر كائن [FlattenPropertyOptions](FlattenPropertyOptions.md) لتجاوز الإعدادات الافتراضية الفردية.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `false`
 
----
+***
 
 ### mangle?
 
 > `optional` **mangle?**: `boolean` \| [`MangleCustomPropsOptions`](MangleCustomPropsOptions.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-طبّق [mangleCustomProps](../variables/mangleCustomProps.md) لاستبدال أسماء `--instui-*` الطويلة بمعرّفات قصيرة.
+طبق [mangleCustomProps](../variables/mangleCustomProps.md) لاستبدال أسماء `--instui-*` الطويلة بمعرّفات قصيرة.
 
-`true` يستخدم الإعدادات الافتراضية للمكون الإضافي (`prefix: "--instui-"`، `method: "base26"`).
+`true` يستخدم إعدادات الملحق الافتراضية (`prefix: "--instui-"`, `method: "base26"`).
 مرّر كائن [MangleCustomPropsOptions](MangleCustomPropsOptions.md) لتجاوز الإعدادات الافتراضية الفردية — بما في ذلك
-`sharedManifest` للتنسيق بين الملفات.
+`sharedManifest` للتنسيق عبر الملفات.
 
-آمن فقط للحزم المكتفية بذاتها. راجع وثائق مستوى الوحدة.
+آمن فقط للحزم المستقلة. راجع وثائق الوحدة على مستوى الموديول.
 
-#### Default Value
+#### القيمة الافتراضية
 
 `false`

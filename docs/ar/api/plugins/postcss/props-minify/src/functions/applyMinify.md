@@ -1,24 +1,24 @@
 [pantoken](../../../../../index.md) / [plugins/postcss/props-minify/src](../index.md) / applyMinify
 
-# Function: applyMinify()
+# دالة: applyMinify()
 
 > **applyMinify**(`css`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تطبيق تحويلات تصغير الخصائص المخصصة على سلسلة ورقة أنماط.
+تطبيق تحويلات تقليص الخصائص المخصصة على سلسلة ملف الأنماط.
 
-ينشئ مصفوفة ملحقات PostCSS من `options` ويشغلها بشكل متزامن. ترتيب الملحق:
-`pruneCustomProps` → `flattenProperty` → `mangleCustomProps`. يرجع الإدخال دون تغيير عند
-عدم تعيين أي خيارات.
+يبني مصفوفة إضافات PostCSS من `options` ويشغّلها بشكل متزامن. ترتيب الإضافات:
+`pruneCustomProps` → `flattenProperty` → `mangleCustomProps`. يُعيد المدخل دون تغيير عندما
+لا تُضبط أي خيارات.
 
-## Parameters
+## المعلمات
 
 ### css
 
 `string`
 
-سلسلة ورقة الأنماط المراد تحويلها.
+سلسلة ملف الأنماط المراد تحويلها.
 
 ### options?
 
@@ -26,13 +26,13 @@
 
 [PropsMinifyOptions](../interfaces/PropsMinifyOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة CSS المحولة.
+سلسلة CSS المحوّلة.
 
-## Example
+## مثال
 
 ```ts
 import { applyMinify } from "@pantoken/plugin-props-minify";

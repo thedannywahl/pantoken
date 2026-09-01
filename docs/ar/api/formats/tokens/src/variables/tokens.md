@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/tokens/src](../index.md) / tokens
 
-# Variable: tokens
+# متغير: tokens
 
 > `const` **tokens**: [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-IR موضوع `rebrand` (الافتراضي).
+تمثيل IR لموضوع `rebrand` (الافتراضي).
 
-## Example
+## مثال
 
 ```ts
 import { tokens } from "@pantoken/tokens";

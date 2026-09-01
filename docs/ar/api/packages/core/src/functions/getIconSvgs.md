@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / getIconSvgs
 
-# Function: getIconSvgs()
+# دالة: getIconSvgs()
 
 > **getIconSvgs**(`tokens`): `Map`\<`string`, `string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خريطة كل توكن رمز إلى SVG المفك (مفتاح حسب الاسم بدون بادئة `--instui-icon-`).
+قم بتعيين كل رمز أيقونة إلى SVG المفكك الخاص به (مفهرس بالاسم بدون بادئة `--instui-icon-`).
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../interfaces/Token.md)[]
+للقراءة فقط [`Token`](../interfaces/Token.md)[]
 
-## Returns
+## القيم المرجعة
 
 `Map`\<`string`, `string`\>
 
-## Example
+## مثال
 
 ```ts
 import { buildTokens, getIconSvgs } from "@pantoken/core";

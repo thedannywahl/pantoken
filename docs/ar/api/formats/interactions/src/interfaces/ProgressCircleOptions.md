@@ -1,13 +1,13 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / ProgressCircleOptions
 
-# Interface: ProgressCircleOptions
+# واجهة: ProgressCircleOptions
 
-خيارات رسم حركة ربط ProgressCircle.
+خيارات الرسوم المتحركة لعملية التثبيت (mount) لمكوّن ProgressCircle.
 
-## Properties
+## الخصائص
 
 ### animationDelay?
 
 > `optional` **animationDelay?**: `number`
 
-عدد الميلي ثانية قبل إطلاق حالة الربط. القيمة الافتراضية هي `--animation-delay` المحسوبة.
+عدد الملّي ثانية قبل تحرير حالة التثبيت (mount). القيمة الافتراضية هي `--animation-delay` المحسوبة.

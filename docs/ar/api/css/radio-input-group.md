@@ -1,47 +1,43 @@
 # CSS: radio-input-group
 
-`.instui-radio-input-group` — راديو تحديد واحد `&lt;fieldset&gt;`، عادي أو كبديل مقسم متصل.
+`.instui-radio-input-group` — زر اختيار أحادي الاختيار `&lt;fieldset&gt;`، عادي أو كمفتاح مقسم متصل.
 
-يضع `gap` الخاص به بين الراديوهات؛ ربط معدل الخدمة المساعدة للتباعد `-gap-*` يتجاوز تلك القيمة المضمنة.
+يضبط `gap` الخاص به بين أزرار الراديو؛ ربط معدل مسافة `-gap-*` يتجاوز تلك القيمة المضمّنة.
 
 **المصدر:** [radio-input-group.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/radio-input-group/radio-input-group.css)
 
-## Accessibility
+## سهولة الوصول
 
-يعرض `&lt;fieldset&gt;` أصلي مع `&lt;legend&gt;` يسمي المجموعة؛ تشارك الراديوهات الفرعية واحد `name`، لذلك يمكن تحديد واحد فقط في المرة الواحدة.
+يعرض عنصر `&lt;fieldset&gt;` أصليًا مع `&lt;legend&gt;` يسمّي المجموعة؛ تشترك عناصر الراديو الفرعية في `name` واحدة، لذا لا يمكن اختيار إلا واحد منها في كل مرة.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/radio-input-group.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <fieldset class="instui-radio-input-group">
   <legend>T-shirt size</legend>
-  <label class="instui-radio"><input type="radio" name="size" checked /> Small</label>
-  <label class="instui-radio"><input type="radio" name="size" /> Medium</label>
-  <label class="instui-radio"><input type="radio" name="size" /> Large</label>
+  <label class="instui-radio"><input type="radio" name="size" checked> Small</label>
+  <label class="instui-radio"><input type="radio" name="size"> Medium</label>
+  <label class="instui-radio"><input type="radio" name="size"> Large</label>
 </fieldset>
 ```
-
 ### Toggle variant
-
 ```html
 <fieldset class="instui-radio-input-group -variant-toggle">
   <legend>T-shirt size</legend>
-  <label class="instui-radio -variant-toggle"
-    ><input type="radio" name="size" checked /> Small</label
-  >
-  <label class="instui-radio -variant-toggle"><input type="radio" name="size" /> Medium</label>
-  <label class="instui-radio -variant-toggle"><input type="radio" name="size" /> Large</label>
+  <label class="instui-radio -variant-toggle"><input type="radio" name="size" checked> Small</label>
+  <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Medium</label>
+  <label class="instui-radio -variant-toggle"><input type="radio" name="size"> Large</label>
 </fieldset>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-radio-input-group.-variant-toggle
@@ -66,40 +62,41 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier           | Description                                                         |
-| ------------------ | ------------------------------------------------------------------- |
-| `.-layout-columns` | ضع الراديوهات في أعمدة.                                             |
-| `.-layout-inline`  | ضع الراديوهات بشكل متسلسل.                                          |
-| `.-required`       | وضع علامة على المجموعة كمطلوبة.                                     |
-| `.-variant-toggle` | ضع عناصر التبديل الفرعية كعنصر تحكم مقسم (يملأ القطعة المحددة فقط). |
+| معدّل | الوصف |
+| --- | --- |
+| `.-layout-columns` | رتّب أزرار الراديو عموديًا في أعمدة. |
+| `.-layout-inline` | رتّب أزرار الراديو في سطر واحد (متتالية). |
+| `.-required` | وَسم المجموعة بأنها مطلوبة. |
+| `.-variant-toggle` | رتّب المفاتيح الفرعية كعنصر تحكّم مقسم (يمتلئ فقط المقطع المحدد). |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description                                                                               |
-| -------------- | ----------------------------------------------------------------------------------------- |
-| `::after`      | يرسم علامة النجمة الزخرفية للحقل المطلوب بعد نص وسيلة الإيضاح عندما تكون المجموعة مطلوبة. |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::after` | يعرض علامة النجمة الزخرفية للحقل المطلوب بعد نص العنوان عندما تكون المجموعة مطلوبة. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                 | Type                                               | Value                                                                        |
-| ----------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-form-field-layout-asterisk-color` | `<color>`                                          | `light-dark(#CF1F24, #FA917F)`                                               |
-| `--instui-component-form-field-layout-font-family`    | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-form-field-layout-font-size`      | `<length>`                                         | `1rem`                                                                       |
-| `--instui-component-form-field-layout-font-weight`    | `<integer>`                                        | `400`                                                                        |
-| `--instui-component-form-field-layout-gap-inputs`     | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-form-field-layout-gap-primitives` | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-form-field-layout-line-height`    | `<length>`                                         | `1.125rem`                                                                   |
-| `--instui-component-form-field-layout-text-color`     | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
-| `--instui-spacing-space-md`                           | `<length>`                                         | `0.75rem`                                                                    |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-form-field-layout-asterisk-color` | `<color>` | `light-dark(#CF1F24, #FA917F)` |
+| `--instui-component-form-field-layout-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-form-field-layout-font-size` | `<length>` | `1rem` |
+| `--instui-component-form-field-layout-font-weight` | `<integer>` | `400` |
+| `--instui-component-form-field-layout-gap-inputs` | `<length>` | `0.75rem` |
+| `--instui-component-form-field-layout-gap-primitives` | `<length>` | `0.5rem` |
+| `--instui-component-form-field-layout-line-height` | `<length>` | `1.125rem` |
+| `--instui-component-form-field-layout-text-color` | `<color>` | `light-dark(#273540, #ffffff)` |
+| `--instui-spacing-space-md` | `<length>` | `0.75rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [radio](/ar/api/css/radio.md)
 
-## Related
+## ذات صلة
 
 - [radio](/ar/api/css/radio.md) — عنصر التحكم الفردي الذي تجمعه هذه المجموعة.
-- [form-field-group](/ar/api/css/form-field-group.md) — المغلف العام لتجميع وترتيب الحقول.
+- [form-field-group](/ar/api/css/form-field-group.md) — الغلاف العام لتجميع الحقول وترتيبها.
+

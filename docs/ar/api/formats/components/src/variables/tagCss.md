@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / tagCss
 
-# Variable: tagCss
+# متغير: tagCss
 
 > `const` **tagCss**: `Definition`\[`"css"`\] = `tag.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `tag` مستقلة — CSS مسبوق للشريحة، جاهز للشحن كملف `.css`.
+ورقة أنماط `tag` مستقلة — CSS المسبوق لـ chip، جاهزة للشحن كملف `.css`.

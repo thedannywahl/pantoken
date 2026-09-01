@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/css/src](../index.md) / css
 
-# Variable: css
+# متغير: css
 
 > `const` **css**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سلسلة ورقة النمط الجاهزة `rebrand` (مكتوبة: الرموز الملموسة كتسجيلات `@property`).
+سلسلة ورقة الأنماط الجاهزة `rebrand` (مُحددة النوع: الرموز الملموسة كتسجيلات `@property`).
 
-## Example
+## مثال
 
 ```ts
 import { css } from "@pantoken/css";

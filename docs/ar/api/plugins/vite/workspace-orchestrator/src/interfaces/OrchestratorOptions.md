@@ -1,47 +1,49 @@
 [pantoken](../../../../../index.md) / [plugins/vite/workspace-orchestrator/src](../index.md) / OrchestratorOptions
 
-# Interface: OrchestratorOptions
+# واجهة: OrchestratorOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الخيارات لـ [workspaceOrchestrator](../functions/workspaceOrchestrator.md).
+خيارات الخاص بـ [workspaceOrchestrator](../functions/workspaceOrchestrator.md).
 
-## Properties
+## الخصائص
 
 ### upstream
 
 > **upstream**: readonly [`UpstreamNode`](UpstreamNode.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-رسم بياني لتبعيات مساحة العمل الأعلى.
+رسم اعتماد مساحة العمل الصاعد.
 
----
+***
 
 ### outputWatchPaths?
 
 > `optional` **outputWatchPaths?**: readonly `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-المسارات التي يتم مراقبتها باستخدام `fs.watch` الأصلي بحيث يلتقط Vite المخرجات المدمجة بعد إعادة البناء الأعلى (على سبيل المثال، دليل `dist` أو `generated` للحزمة). يستخدم `fs.watch` الأصلي بدلاً من `add()` الخاص بـ chokidar، والذي لا يكتشف بشكل موثوق التغييرات في الأدلة المرمزة بـ pnpm أو خارج الجذر. عند كل تغيير، يتم إرسال حدث `"change"` الاصطناعي على `server.watcher`: بالنسبة لملفات CSS الموجودة بالفعل في رسم بياني الوحدة، يقوم Vite بتشغيل تحديث ساخن موجه؛ لأي شيء آخر، فإنه يعود إلى إعادة تحميل الصفحة الكاملة.
+مسارات للمراقبة باستخدام `fs.watch` الأصلية حتى تلتقط Vite المخرجات المبنية بعد إعادة البناء الصاعد
+(مثلاً دليل `dist` أو `generated` لحزمة). تستخدم `fs.watch` الأصلية بدلاً من
+`add()` الخاص بـ chokidar، الذي لا يكتشف التغييرات بشكل موثوق في الدلائل المرتبطة عبر pnpm أو خارج الجذر. عند كل تغيير يُصدَر حدث `"change"` اصطناعي على `server.watcher`: بالنسبة لملفات CSS الموجودة بالفعل في مخطط الوحدات يقوم Vite بتشغيل تحديث ساخن مستهدف؛ أما لأي شيء آخر فيعود إلى إعادة تحميل الصفحة كاملة.
 
----
+***
 
 ### debounceMs?
 
 > `optional` **debounceMs?**: `number`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-تأخير إزالة الارتداد بالميلي ثانية قبل تشغيل إعادة البناء (الافتراضي: 200).
+زمن التخميد بالميلي ثانية قبل تشغيل إعادة البناء (الافتراضي: 200).
 
----
+***
 
 ### fileServers?
 
 > `optional` **fileServers?**: readonly [`FileServerEntry`](FileServerEntry.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إدخالات برنامج وسيط اختيارية لخدمة الملفات الثابتة.
+إدخالات وسيط خدمة الملفات الثابتة الاختيارية.

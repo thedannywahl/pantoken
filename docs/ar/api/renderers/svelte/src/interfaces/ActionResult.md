@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [renderers/svelte/src](../index.md) / ActionResult
 
-# Interface: ActionResult
+# واجهة: ActionResult
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-شكل العودة لإجراء Svelte.
+بنية الإرجاع لإجراء Svelte.
 
-## Methods
+## الطرق
 
 ### update()
 
 > **update**(`name`): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-#### Parameters
+#### المعلمات
 
 ##### name
 
 `string`
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
----
+***
 
 ### destroy()
 
 > **destroy**(): `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-#### Returns
+#### القيم المرجعة
 
 `void`

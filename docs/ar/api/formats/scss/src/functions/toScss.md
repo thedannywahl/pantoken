@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [formats/scss/src](../index.md) / toScss
 
-# Function: toScss()
+# دالة: toScss()
 
 > **toScss**(`tokens`, `options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إصدار متغيرات SCSS لـ IR الرمز.
+إخراج متغيرات SCSS لتمثيل الرموز (IR).
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+تمثيل IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToScssOptions](../interfaces/ToScssOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 سلسلة مصدر SCSS.
 
-## Examples
+## أمثلة
 
-**إصدار المتغيرات الافتراضية (الفاتحة)**
+**إصدار المتغيرات الافتراضية (الوضع الفاتح)**
 
 ```ts
 import { toScss } from "@pantoken/scss";
@@ -39,7 +39,7 @@ import { tokens } from "@pantoken/tokens";
 toScss(tokens); // "$instui-color-brand: #0374b5;\n…"
 ```
 
-**حل الوضع الداكن لمظهر آخر**
+**تحديد وضع الظلام لموضوع آخر**
 
 ```ts
 import { toScss } from "@pantoken/scss";

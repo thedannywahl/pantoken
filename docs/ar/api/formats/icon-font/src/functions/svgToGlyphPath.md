@@ -1,30 +1,30 @@
 [pantoken](../../../../index.md) / [formats/icon-font/src](../index.md) / svgToGlyphPath
 
-# Function: svgToGlyphPath()
+# دالة: svgToGlyphPath()
 
 > **svgToGlyphPath**(`svg`): [`GlyphPath`](../interfaces/GlyphPath.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنتاج مسار حرف رسومي ممتلئ لـ SVG أيقونة.
+إنشاء مسار الشكل المملوء لأيقونة SVG.
 
-## Parameters
+## المعلمات
 
 ### svg
 
 `string`
 
-علامات SVG مضمنة.
+وسم SVG مضمّن.
 
-## Returns
+## القيم المرجعة
 
 [`GlyphPath`](../interfaces/GlyphPath.md)
 
-مسار الملء `d` (في إحداثيات viewBox) وحجم viewBox.
+المسار المملوء `d` (بإحداثيات viewBox) وحجم viewBox.
 
-## Example
+## مثال
 
-**مخطط تفصيلي لأيقونة قائمة على الخط (Lucide) وأيقونة قائمة على الملء**
+**تحديد مخطط لأيقونة معتمدة على السكتة (Lucide) وأيقونة معتمدة على التعبئة**
 
 ```ts
 import { svgToGlyphPath } from "@pantoken/icon-font";

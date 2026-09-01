@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / ProgressCircleHandle
 
-# Interface: ProgressCircleHandle
+# واجهة: ProgressCircleHandle
 
-المؤشر الذي تُرجعه [initProgressCircle](../functions/initProgressCircle.md).
+قيمة المقبض التي تُعاد بواسطة [initProgressCircle](../functions/initProgressCircle.md).
 
-## Methods
+## الطرق
 
 ### cleanup()
 
 > **cleanup**(): `void`
 
-إلغاء رسم الحركة المعلق في الانتظار.
+إلغاء حركة التركيب المعلقة.
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
----
+***
 
 ### finish()
 
 > **finish**(): `void`
 
-إطلاق حالة الربط فوراً.
+تحرير حالة التركيب فورًا.
 
-#### Returns
+#### القيم المرجعة
 
 `void`

@@ -14,7 +14,8 @@
  * @modifier -color-success — A positive/confirming action.
  * @modifier -color-ai — An AI action.
  * @modifier -color-ai-secondary — A lower-emphasis AI action.
- * @modifier -color-primary-inverse — Primary action for dark backgrounds.
+ * @modifier -color-primary-inverse — @deprecated {@link -on-color}
+ * @modifier -on-color — For a button placed on a coloured (non-neutral) surface. Composed with `-color-primary` (default) fills white with dark text; composed with `-color-secondary` stays transparent with a white border and text.
  * @modifier -size-sm — Small.
  * @modifier -size-md — (default) medium size.
  * @modifier -size-lg — Large.
@@ -154,6 +155,65 @@
   &.-color-primary-inverse:active {
     background: var(--instui-component-base-button-primary-inverse-active-background);
     border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+  }
+
+  /*
+   * --on-color composes with primary (default) and secondary for a button placed on a coloured
+   * surface, reading the full base/hover/active/disabled set from the on-color colour tokens rather
+   * than the component layer (which only aliases hover/active/disabled). Primary fills white with
+   * dark text; secondary stays transparent with a white border and text — there's no
+   * secondary-on-color background token, matching InstUI.
+   */
+  &.-on-color:not([class*="-color-"]),
+  &.-color-primary.-on-color {
+    background: var(--instui-color-background-interactive-action-primary-on-color-base);
+    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);
+    color: var(--instui-color-text-interactive-action-primary-on-color-base);
+  }
+
+  &.-on-color:not([class*="-color-"]):hover,
+  &.-color-primary.-on-color:hover {
+    background: var(--instui-color-background-interactive-action-primary-on-color-hover);
+    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-hover);
+    color: var(--instui-color-text-interactive-action-primary-on-color-hover);
+  }
+
+  &.-on-color:not([class*="-color-"]):active,
+  &.-color-primary.-on-color:active {
+    background: var(--instui-color-background-interactive-action-primary-on-color-active);
+    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-active);
+    color: var(--instui-color-text-interactive-action-primary-on-color-active);
+  }
+
+  &.-on-color:not([class*="-color-"]):disabled,
+  &.-on-color:not([class*="-color-"])[aria-disabled="true"],
+  &.-color-primary.-on-color:disabled,
+  &.-color-primary.-on-color[aria-disabled="true"] {
+    background: var(--instui-color-background-interactive-action-primary-on-color-disabled);
+    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-disabled);
+    color: var(--instui-color-text-interactive-action-primary-on-color-disabled);
+  }
+
+  &.-color-secondary.-on-color {
+    background: transparent;
+    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-base);
+    color: var(--instui-color-text-interactive-action-secondary-on-color-base);
+  }
+
+  &.-color-secondary.-on-color:hover {
+    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-hover);
+    color: var(--instui-color-text-interactive-action-secondary-on-color-hover);
+  }
+
+  &.-color-secondary.-on-color:active {
+    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-active);
+    color: var(--instui-color-text-interactive-action-secondary-on-color-active);
+  }
+
+  &.-color-secondary.-on-color:disabled,
+  &.-color-secondary.-on-color[aria-disabled="true"] {
+    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-disabled);
+    color: var(--instui-color-text-interactive-action-secondary-on-color-disabled);
   }
 
   /*

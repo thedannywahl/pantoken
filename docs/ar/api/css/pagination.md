@@ -1,47 +1,39 @@
 # CSS: pagination
 
-`.instui-pagination` — تنقل الصفحة: صفحات مرقمة، أسهم أولى وسابقة وتالية وأخيرة، وحذف ناقص للفجوات.
+`.instui-pagination` — تنقّل بين الصفحات: صفحات مرقمة، وسهام للصفحة الأولى، السابقة، التالية، والأخيرة، ونقاط الحذف للدلالة على الفجوات.
 
-راجع عضو `pagination.page` للتحكم في الصفحة الفردية.
+انظر العضو `pagination.page` لعناصر التحكم في الصفحات الفردية.
 
 **المصدر:** [page.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/pagination/members/page/page.css)
 
-## Accessibility
+## سهولة الوصول
 
-قم بتسمية `&lt;nav&gt;` بـ aria-label، وضع علامة على الصفحة الحالية بـ aria-current="page"، أعط كل سهم aria-label، وعطل الأسهم الطرفية باستخدام disabled أو aria-disabled="true".
+علّم `&lt;nav&gt;` بوسم aria-label، وعلّم الصفحة الحالية بـ aria-current="page"، وأعطِ كل سهم وسم aria-label، وعطّل الأسهم النهائية باستخدام disabled أو aria-disabled="true".
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/pagination.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <nav class="instui-pagination" aria-label="Pagination">
-  <button class="arrow" type="button" aria-label="First page" disabled>
-    <span class="instui-icon -icon-chevrons-left"></span>
-  </button>
-  <button class="arrow" type="button" aria-label="Previous page" disabled>
-    <span class="instui-icon -icon-chevron-left"></span>
-  </button>
+  <button class="arrow" type="button" aria-label="First page" disabled><span class="instui-icon -icon-chevrons-left"></span></button>
+  <button class="arrow" type="button" aria-label="Previous page" disabled><span class="instui-icon -icon-chevron-left"></span></button>
   <a class="page" href="#" aria-current="page">1</a>
   <a class="page" href="#">2</a>
   <a class="page" href="#">3</a>
   <span class="ellipsis">…</span>
   <a class="page" href="#">12</a>
-  <a class="arrow" href="#" aria-label="Next page"
-    ><span class="instui-icon -icon-chevron-right"></span
-  ></a>
-  <a class="arrow" href="#" aria-label="Last page"
-    ><span class="instui-icon -icon-chevrons-right"></span
-  ></a>
+  <a class="arrow" href="#" aria-label="Next page"><span class="instui-icon -icon-chevron-right"></span></a>
+  <a class="arrow" href="#" aria-label="Last page"><span class="instui-icon -icon-chevrons-right"></span></a>
 </nav>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-pagination
@@ -69,48 +61,49 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier          | Description                                                                |
-| ----------------- | -------------------------------------------------------------------------- |
-| `.-icon-*`        | عرض رموز الأسهم الرسومية داخل عناصر التحكم الأولى/السابقة/التالية/الأخيرة. |
-| `.-variant-input` | متغير مضغوط مع إدخال رقم الصفحة.                                           |
+| معدّل | الوصف |
+| --- | --- |
+| `.-icon-*` | عرض أيقونات أشكال الأسهم داخل عناصر التحكم الأولى/السابق/التالي/الأخيرة. |
+| `.-variant-input` | النسخة المدمجة مع حقل إدخال رقم الصفحة. |
 
-## Parts
+## الأجزاء
 
-| Part                | Description                                    |
-| ------------------- | ---------------------------------------------- |
-| `.arrow`            | عنصر تحكم الأول أو السابق أو التالي أو الأخير. |
-| `.ellipsis`         | علامة الفجوة بين نطاقات الصفحات.               |
-| `.page-input-label` | التسمية لإدخال رقم الصفحة (متغير الإدخال).     |
+| جزء | الوصف |
+| --- | --- |
+| `.arrow` | عنصر تحكم للصفحة الأولى، السابقة، التالية، أو الأخيرة. |
+| `.ellipsis` | علامة الفجوة بين نطاقات الصفحات. |
+| `.page-input-label` | التسمية لحقل إدخال رقم الصفحة (نسخة الإدخال). |
 
-## States
+## الحالات
 
-| State                    | Description |
-| ------------------------ | ----------- |
-| `[aria-disabled="true"]` | —           |
-| `:disabled`              | —           |
+| حالة | الوصف |
+| --- | --- |
+| `[aria-disabled="true"]` | — |
+| `:disabled` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                      | Type                                               | Value                                                                        |
-| ---------------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-border-width-md`                                 | `<length>`                                         | `0.125rem`                                                                   |
-| `--instui-color-background-muted`                          | `<color>`                                          | `light-dark(#F2F4F5, #273540)`                                               |
-| `--instui-color-text-interactive-navigation-primary-base`  | `<color>`                                          | `light-dark(#2369A4, #7FB4F1)`                                               |
-| `--instui-color-text-interactive-navigation-primary-hover` | `<color>`                                          | `light-dark(#1A5281, #ACCDF7)`                                               |
-| `--instui-color-text-muted`                                | `<color>`                                          | `light-dark(#576773, #AAB0B5)`                                               |
-| `--instui-component-base-button-border-radius`             | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-pagination-page-indicator-gap`         | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-pagination-page-input-input-spacing`   | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-pagination-page-input-input-width`     | `<length>`                                         | `4.5rem`                                                                     |
-| `--instui-component-pagination-page-input-label-color`     | `<color>`                                          | `light-dark(#273540, #F2F4F5)`                                               |
-| `--instui-font-family-base`                                | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-font-weight-interactive`                         | `<integer>`                                        | `500`                                                                        |
-| `--instui-opacity-disabled`                                | `<number>`                                         | `0.5`                                                                        |
-| `--instui-spacing-space-xs`                                | `<length>`                                         | `0.25rem`                                                                    |
-| `--instui-spacing-space2xs`                                | `<length>`                                         | `0.125rem`                                                                   |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-border-width-md` | `<length>` | `0.125rem` |
+| `--instui-color-background-muted` | `<color>` | `light-dark(#F2F4F5, #273540)` |
+| `--instui-color-text-interactive-navigation-primary-base` | `<color>` | `light-dark(#2369A4, #7FB4F1)` |
+| `--instui-color-text-interactive-navigation-primary-hover` | `<color>` | `light-dark(#1A5281, #ACCDF7)` |
+| `--instui-color-text-muted` | `<color>` | `light-dark(#576773, #AAB0B5)` |
+| `--instui-component-base-button-border-radius` | `<length>` | `0.75rem` |
+| `--instui-component-pagination-page-indicator-gap` | `<length>` | `0.5rem` |
+| `--instui-component-pagination-page-input-input-spacing` | `<length>` | `0.5rem` |
+| `--instui-component-pagination-page-input-input-width` | `<length>` | `4.5rem` |
+| `--instui-component-pagination-page-input-label-color` | `<color>` | `light-dark(#273540, #F2F4F5)` |
+| `--instui-font-family-base` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-font-weight-interactive` | `<integer>` | `500` |
+| `--instui-opacity-disabled` | `<number>` | `0.5` |
+| `--instui-spacing-space-xs` | `<length>` | `0.25rem` |
+| `--instui-spacing-space2xs` | `<length>` | `0.125rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [pagination.page](/ar/api/css/pagination.page.md)
+

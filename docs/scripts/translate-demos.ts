@@ -7,18 +7,18 @@
  * keyless passthrough. Content-addressed by prose text (`kind: "text"`), so only new or edited demo
  * copy reaches the adapter on a re-run.
  *
- * Logs incremental progress by locale and demo:
+ * Logs incremental per-demo progress by locale, then prints a single summary for the locale after the
+ * batch finishes so it doesn't silently translate thousands of strings before any feedback:
  *   📋 Translating demo snippets
  *   🔄 ar: translating...
- *     alert: 9 string(s)
- *       ✓ 4 cached, 5 translated
- *     avatar: 32 string(s)
- *       ✓ all cached
- *   ✓ ar: rendered 65 demo file(s)
+ *     demos/alert.html: 9 string(s) (5 cached, 4 translated)
+ *     demos/avatar.html: 32 string(s) (32 cached, 0 translated)
+ *   📄 Summary: 65 demo file(s) (58 cached, 7 translated)
+ *   ✓ ar: rendered in docs/ar/demos (7 translated, 58 cached)
  *   ✨ All demo translations complete!
  */
 import { mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative } from "node:path";
 import { resolveVerbatimAction } from "@pantoken/translation-adapters";
 import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { createTranslationAdapter } from "./api-translation.ts";
@@ -64,12 +64,17 @@ for (const locale of NON_ROOT_LOCALES) {
   });
 
   let totalDemoCount = 0;
+  let totalTranslated = 0;
+  let totalCached = 0;
 
   for (const { name, template, assets, strings } of parsed) {
     const stringEntries = Object.entries(strings);
     const demoStringCount = stringEntries.length;
 
     if (demoStringCount === 0) continue;
+
+    const beforeMisses = memory.misses;
+    const beforeHits = memory.hits;
 
     const localized = Object.fromEntries(
       stringEntries.map(([key, source]) => [
@@ -85,16 +90,24 @@ for (const locale of NON_ROOT_LOCALES) {
       writeFileSync(join(outDir, `${name}.${extension}`), renderDemoI18n(source, localized));
     }
 
+    const fileTranslated = memory.misses - beforeMisses;
+    const fileCached = memory.hits - beforeHits;
     totalDemoCount++;
+    totalTranslated += fileTranslated;
+    totalCached += fileCached;
 
-    // Log per-demo summary with string count
-    console.log(`  ${name}: ${demoStringCount} string(s)`);
+    console.log(
+      `    ${name}.html: ${demoStringCount} string(s) (${fileCached} cached, ${fileTranslated} translated)`,
+    );
   }
 
   memory.save();
   console.log(
-    `✓ ${locale}: rendered ${totalDemoCount} demo file(s) via '${adapter.name}' ` +
-      `(${memory.misses} translated, ${memory.hits} cached)\n`,
+    `  📄 Summary: ${totalDemoCount} demo file(s) (${totalCached} cached, ${totalTranslated} translated)`,
+  );
+  console.log(
+    `✓ ${locale}: rendered in ${relative(docsRoot, outDir)} ` +
+      `(${totalTranslated} translated, ${totalCached} cached)\n`,
   );
 }
 

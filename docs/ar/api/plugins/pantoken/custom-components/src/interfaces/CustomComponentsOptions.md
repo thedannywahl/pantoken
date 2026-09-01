@@ -1,17 +1,17 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/custom-components/src](../index.md) / CustomComponentsOptions
 
-# Interface: CustomComponentsOptions
+# واجهة: CustomComponentsOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات لمكون [customComponents](../functions/customComponents.md).
+خيارات إضافة [customComponents](../functions/customComponents.md).
 
-## Properties
+## الخصائص
 
 ### position?
 
 > `optional` **position?**: `"append"` \| `"prepend"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حيث تهبط القواعد بالنسبة إلى ورقة الأنماط: `"append"` (افتراضي) أو `"prepend"`.
+مكان وضع القواعد بالنسبة لورقة الأنماط: `"append"` (الافتراضي) أو `"prepend"`.

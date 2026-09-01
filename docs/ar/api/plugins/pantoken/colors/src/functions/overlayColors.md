@@ -1,14 +1,15 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/colors/src](../index.md) / overlayColors
 
-# Function: overlayColors()
+# دالة: overlayColors()
 
 > **overlayColors**(`base`, `overlay`, `percent?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تسطيح `overlay` (بقوة `percent`%) فوق `base` معتم — بديل CSS فقط لـ ui-color-utils `overlayColors`. يقوم هذا المساعد بمركبة two RGBA colors في نتيجة معتمة واحدة؛ الحالة الشائعة (صبغة شفافة فوق سطح صلب) هي بالضبط `color-mix()` ثنائي اللون. لا يمكن أن يكون التركيب العام RGBA-over-RGBA لون CSS واحد، لذا يغطي هذا حالة opaque-base فقط.
+تسطيح `overlay` (بقوة `percent`%) فوق `base` معتم — بديل يعتمد على CSS فقط لـ
+ui-color-utils `overlayColors`. يقوم هذا المُساعد بتركيب مصدر-عبر (source-over) لونهين RGBA إلى نتيجة واحدة معتمة؛ الحالة الشائعة (صبغة نصف شفافة فوق سطح صلب) هي بالضبط `color-mix()` من لونين. لا يمكن أن يكون التجميع العام RGBA فوق RGBA لون CSS واحدًا، لذا يغطي هذا الحالة ذات القاعدة المعتمة فقط.
 
-## Parameters
+## المعلمات
 
 ### base
 
@@ -26,15 +27,15 @@
 
 `number` = `50`
 
-كم من `overlay` يظهر من خلاله، 0–100 (افتراضي `50`).
+مدى ظهور `overlay`، من 0–100 (الافتراضي `50`).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 تعبير `color-mix()`.
 
-## Example
+## مثال
 
 ```ts
 overlayColors("var(--surface)", "var(--brand)", 12);

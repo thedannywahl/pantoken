@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / createLayoutsPlugin
 
-# Function: createLayoutsPlugin()
+# دالة: createLayoutsPlugin()
 
 > **createLayoutsPlugin**(`options?`): (`editor`) => `object`
 
-ينشئ استدعاء `tinymce.PluginManager.add` لمكون "إدراج التخطيط".
+يبني دالة رد النداء `tinymce.PluginManager.add` للإضافة "Insert layout".
 
-## Parameters
+## المعلمات
 
 ### options?
 
 [`LayoutsPluginOptions`](../interfaces/LayoutsPluginOptions.md) = `{}`
 
-## Returns
+## القيم المرجعة
 
 (`editor`) => `object`

@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [tools/aggregate/src](../index.md) / discoverTargets
 
-# Function: discoverTargets()
+# دالة: discoverTargets()
 
 > **discoverTargets**(`metaDir`): [`Target`](../interfaces/Target.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 اقرأ أهداف `pantoken` من تبعيات حزمة meta.
 
-## Parameters
+## المعلمات
 
 ### metaDir
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 [`Target`](../interfaces/Target.md)[]
 
-## Example
+## مثال
 
-**فحص ما سيتم دمجه، بدون كتابة أي شيء**
+**افحص ما سيُجمَع، دون كتابة أي شيء**
 
 ```ts
 import { discoverTargets } from "@pantoken/aggregate";

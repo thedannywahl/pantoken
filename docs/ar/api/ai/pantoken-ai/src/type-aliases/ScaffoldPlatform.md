@@ -1,9 +1,10 @@
 [pantoken](../../../../index.md) / [ai/pantoken-ai/src](../index.md) / ScaffoldPlatform
 
-# Type Alias: ScaffoldPlatform
+# اسم نوع مستعار: ScaffoldPlatform
 
-> **ScaffoldPlatform** = keyof _typeof_ `PRESET_LEDGER`
+> **ScaffoldPlatform** = keyof *typeof* `PRESET_LEDGER`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-منصة يمكن لـ pantoken حفر مشروع بدء لها — إما مدعومة بـ preset-ledger (Bingo) أو إدخال قديم يحتوي على القالب فقط (مثل `canvas-theme-editor`) بدون preset حتى الآن.
+منصة يمكن لـ pantoken إنشاء مشروع بداية لها — إما مدعوم بسجل مُسبق الإعداد (Bingo)
+أو إدخال قديم يعتمد على القالب فقط (مثلاً `canvas-theme-editor`) دون وجود مُعِدّ مُسبق بعد.

@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [bundlers/vite/src](../index.md) / PantokenViteOptions
 
-# Interface: PantokenViteOptions
+# واجهة: PantokenViteOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات مكون [pantoken](../functions/pantoken.md) الإضافي Vite.
+خيارات مكوّن Vite الإضافي [pantoken](../functions/pantoken.md).
 
-## Properties
+## الخصائص
 
 ### injectCss?
 
 > `optional` **injectCss?**: `boolean`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حقن ورقة النمط في `&lt;head&gt;` لإدخال HTML (الافتراضي: false).
+حقن ورقة الأنماط داخل `&lt;head&gt;` لمدخل HTML (الافتراضي: false).

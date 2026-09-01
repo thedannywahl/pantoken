@@ -1,31 +1,31 @@
 [pantoken](../../../../index.md) / [formats/icon-font/src](../index.md) / GlyphPath
 
-# Interface: GlyphPath
+# واجهة: GlyphPath
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مسار حرف مملوء بالإضافة إلى حجم viewBox من SVG لتغليفه.
+مسار الحرف المملوء بالإضافة إلى حجم viewBox في SVG لاحتوائه.
 
-## Properties
+## الخصائص
 
 ### d
 
 > **d**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### width
 
 > **width**: `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
----
+***
 
 ### height
 
 > **height**: `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>

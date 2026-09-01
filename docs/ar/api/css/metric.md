@@ -1,19 +1,19 @@
 # CSS: metric
 
-`.instui-metric` — إحصائية مُسمّاة — قيمة كبيرة فوق تسمية توضيحية.
+`.instui-metric` — إحصاء معنون — قيمة كبيرة فوق تسمية توضيحية.
 
-تعيّن `gap` الخاص به بين القيمة والتسمية، و`padding` الأفقي الخاص به؛ تسلسل معدّل أداة المسافات `-gap-*`/`-p-*`/`-padding-*` يتجاوز هذه القيم المدمجة.
+يضبط `gap` الخاص به بين القيمة والتسمية، و`padding` الأفقي الخاص به؛ ربط مُعدِّل مسافات `-gap-*`/`-p-*`/`-padding-*` يتجاوز تلك القيم المضمنة.
 
 **المصدر:** [metric.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/metric/metric.css)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/metric.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-metric">
@@ -22,7 +22,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-metric
@@ -43,34 +43,35 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier              | Description                         |
-| --------------------- | ----------------------------------- |
-| `.-text-align-center` | وسّط القيمة والتسمية.               |
-| `.-text-align-end`    | قم بمحاذاة النهاية للقيمة والتسمية. |
-| `.-text-align-start`  | قم بمحاذاة البداية للقيمة والتسمية. |
+| معدّل | الوصف |
+| --- | --- |
+| `.-text-align-center` | وسّط القيمة والتسمية. |
+| `.-text-align-end` | محاذاة القيمة والتسمية عند النهاية. |
+| `.-text-align-start` | محاذاة القيمة والتسمية عند البداية. |
 
-## Parts
+## الأجزاء
 
-| Part     | Description                   |
-| -------- | ----------------------------- |
-| `.label` | التسمية التوضيحية تحت القيمة. |
-| `.value` | رقم المقياس الكبير.           |
+| جزء | الوصف |
+| --- | --- |
+| `.label` | التسمية التوضيحية أسفل القيمة. |
+| `.value` | الرقم الكبير للمقياس. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                          | Type                                               | Value                                                                        |
-| ---------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-metric-gap-texts`          | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-metric-label-color`        | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
-| `--instui-component-metric-label-font-family`  | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-metric-label-font-size`    | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-metric-label-font-weight`  | `<integer>`                                        | `400`                                                                        |
-| `--instui-component-metric-label-line-height`  | `<length>`                                         | `0.75rem`                                                                    |
-| `--instui-component-metric-padding-horizontal` | `<length>`                                         | `0.5rem`                                                                     |
-| `--instui-component-metric-value-color`        | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
-| `--instui-component-metric-value-font-family`  | `[ <font-family-name> \| <generic-font-family> ]#` | `Inclusive Sans, "Helvetica Neue", Helvetica, Arial, sans-serif`             |
-| `--instui-component-metric-value-font-size`    | `<length>`                                         | `1.75rem`                                                                    |
-| `--instui-component-metric-value-font-weight`  | `<integer>`                                        | `600`                                                                        |
-| `--instui-component-metric-value-line-height`  | `<length>`                                         | `1.75rem`                                                                    |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-metric-gap-texts` | `<length>` | `0.5rem` |
+| `--instui-component-metric-label-color` | `<color>` | `light-dark(#273540, #ffffff)` |
+| `--instui-component-metric-label-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-metric-label-font-size` | `<length>` | `0.75rem` |
+| `--instui-component-metric-label-font-weight` | `<integer>` | `400` |
+| `--instui-component-metric-label-line-height` | `<length>` | `0.75rem` |
+| `--instui-component-metric-padding-horizontal` | `<length>` | `0.5rem` |
+| `--instui-component-metric-value-color` | `<color>` | `light-dark(#273540, #ffffff)` |
+| `--instui-component-metric-value-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Inclusive Sans, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-component-metric-value-font-size` | `<length>` | `1.75rem` |
+| `--instui-component-metric-value-font-weight` | `<integer>` | `600` |
+| `--instui-component-metric-value-line-height` | `<length>` | `1.75rem` |
+

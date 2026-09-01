@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / escapeSrcdoc
 
-# Function: escapeSrcdoc()
+# دالة: escapeSrcdoc()
 
 > **escapeSrcdoc**(`value`): `string`
 
-الهروب من سلسلة للتضمين داخل قيمة سمة HTML محددة بـ `"`.
+هروب سلسلة لإدراجها داخل قيمة سمة HTML المحاطة بـ `"`.
 
-## Parameters
+## المعلمات
 
 ### value
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `string`

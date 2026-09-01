@@ -1,30 +1,30 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/deprecations/src](../index.md) / dueForRemoval
 
-# Function: dueForRemoval()
+# دالة: dueForRemoval()
 
 > **dueForRemoval**(`ledger`, `current`): `DeprecationEntry`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإدخالات التي تم الوصول إلى الإصدار الفرعي `removeIn` بواسطة البناء الحالي — أي shims التي
-يجب الآن إحالتها للتقاعد. خط أنابيب الترقية يفشل في بركة بينما يوجد أي منها.
+الإدخالات التي تم الوصول فيها إلى الإصدار الثانوي العلوي `removeIn` بواسطة البناء الحالي — أي الحشوات (shims) التي
+يجب الآن إيقافها. يفشل خط الترقية لعملية البركة (bless) طالما أيٌّ منها موجود.
 
-## Parameters
+## المعلمات
 
 ### ledger
 
 `DeprecationLedger`
 
-دفتر الإهمال.
+سجل الإيقاف التدريجي.
 
 ### current
 
 [`UpstreamVersions`](../interfaces/UpstreamVersions.md)
 
-إصدارات المصب الحالية المحلولة.
+الإصدارات العلوية المحلولة الحالية.
 
-## Returns
+## القيم المرجعة
 
 `DeprecationEntry`[]
 
-الإدخالات المستحقة للإزالة.
+الإدخالات المقرَّر إزالتها.

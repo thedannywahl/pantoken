@@ -2,15 +2,17 @@
 
 # transition
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 `@pantoken/plugin-transition` — الرموز `--instui-transition-duration`/`--instui-transition-timing`
-خلف أداة InstUI `Transition`.
+التي تقف وراء أداة InstUI `Transition`.
 
-ال CSS نفسه (القاعدة الأساسية `.instui-transition` بالإضافة إلى فئات الحالة `fade`/`scale`/`slide-*`)
-يعيش الآن في أداة `transition` الخاصة به `@pantoken/components`؛ هذا المكون الإضافي فقط يمزج رموز المدة/التوقيت في IR رمز لمستهلكي خط أنابيب `@pantoken/css` + `@pantoken/tokens` ذو المستوى الأقل مباشرة.
+يعيش CSS نفسه (قاعدة `.instui-transition` الأساسية بالإضافة إلى فئات الحالة `fade`/`scale`/`slide-*`)
+في أداة `transition` الخاصة بـ `@pantoken/components` الآن؛ هذا المكوّن الإضافي يقوم فقط بتضمين رمزي مدة/توقيت
+في تمثيل IR للرموز للمستهلكين الذين يستخدمون خط أنابيب المستوى الأدنى `@pantoken/css` +
+`@pantoken/tokens` مباشرة.
 
-## Example
+## مثال
 
 ```ts
 import { buildTokens } from "@pantoken/core";
@@ -20,16 +22,16 @@ const tokens = buildTokens({ theme: "rebrand", plugins: [transition()] });
 // → includes --instui-transition-duration: 300ms, --instui-transition-timing: ease-in-out
 ```
 
-## Interfaces
+## واجهات
 
 - [TransitionOptions](interfaces/TransitionOptions.md)
 
-## Functions
+## الدوال
 
 - [transition](functions/transition.md)
 
-## References
+## المراجع
 
 ### default
 
-يعيد تسمية وإعادة تصدير [transition](functions/transition.md)
+يعيد تسمية ويعيد تصدير [transition](functions/transition.md)

@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [renderers/css-in-js/src](../index.md) / toStyledTheme
 
-# Function: toStyledTheme()
+# دالة: toStyledTheme()
 
 > **toStyledTheme**(`tokens`, `options?`): [`StyledTheme`](../type-aliases/StyledTheme.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء كائن موضوع CSS-in-JS من IR رمز.
+بناء كائن موضوع (theme) لـ CSS-in-JS من تمثيل وسيط للرموز (token IR).
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR (على سبيل المثال من `@pantoken/tokens`).
+الـ IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### options?
 
@@ -22,15 +22,15 @@ IR (على سبيل المثال من `@pantoken/tokens`).
 
 [ToStyledThemeOptions](../interfaces/ToStyledThemeOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`StyledTheme`](../type-aliases/StyledTheme.md)
 
-كائن الموضوع، المفتاح حسب اسم الرمز camelCased.
+كائن السمة، مفاتيحه هي أسماء الرموز بتنسيق camelCase.
 
-## Examples
+## أمثلة
 
-**مدعوم بـ var()، تدفقات light/dark من خلال @pantoken/css**
+**مدعومة بواسطة var() — تدفقات فاتح/داكن عبر @pantoken/css**
 
 ```ts
 import { toStyledTheme } from "@pantoken/css-in-js";
@@ -40,7 +40,7 @@ const theme = toStyledTheme(tokens);
 // theme.colorBackgroundBrand → "var(--instui-color-background-brand)"
 ```
 
-**خبز قيم وضع واحد ملموسة (لـ SSR بدون متغيرات CSS)**
+**حفظ قيم أحادية الوضع الثابتة (لـ SSR بدون متغيرات CSS)**
 
 ```ts
 import { toStyledTheme } from "@pantoken/css-in-js";

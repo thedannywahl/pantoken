@@ -1,29 +1,29 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / TruncateAutoHandle
 
-# Interface: TruncateAutoHandle
+# واجهة: TruncateAutoHandle
 
-المؤشر الذي تُرجعه [initTruncateAuto](../functions/initTruncateAuto.md).
+المقبض الذي تم إرجاعه بواسطة [initTruncateAuto](../functions/initTruncateAuto.md).
 
-## Methods
+## الطرق
 
 ### sync()
 
 > **sync**(): `void`
 
-فرض إعادة حساب قيمة `--lines` المشتقة.
+فرض إعادة حساب القيمة المشتقة `--lines`.
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
----
+***
 
 ### cleanup()
 
 > **cleanup**(): `void`
 
-إزالة المراقبين/المستمعين الذين تم إنشاؤهم بواسطة init.
+إزالة المراقبين/المستمعين الذين أنشأهم init.
 
-#### Returns
+#### القيم المرجعة
 
 `void`

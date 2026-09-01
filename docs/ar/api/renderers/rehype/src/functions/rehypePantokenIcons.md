@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/rehype/src](../index.md) / rehypePantokenIcons
 
-# Function: rehypePantokenIcons()
+# دالة: rehypePantokenIcons()
 
 > **rehypePantokenIcons**(`options?`): (`tree`) => `void`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مصنع مكون إضافي rehype. يُرجع محول يعيد كتابة رموز `:code:` إلى SVG مضمن.
+مصنع لإضافة rehype. يُرجع محولًا يعيد كتابة رموز `:code:` إلى SVG مضمن.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [RehypeOptions](../interfaces/RehypeOptions.md).
 
-## Returns
+## القيم المرجعة
 
-محول موحد/rehype.
+محول unified/rehype.
 
 (`tree`) => `void`
 
-## Examples
+## أمثلة
 
-**مجموعة الأيقونات المدمجة**
+**مجموعة أيقونات مدمجة**
 
 ```ts
 import { unified } from "unified";
@@ -41,7 +41,7 @@ const html = await unified()
   .process("go :arrow-left: back");
 ```
 
-**إنشاء معالج مكون إضافي لأيقونة العلامة التجارية**
+**تكوين محلل ملحق brand-icon**
 
 ```ts
 import { rehypePantokenIcons } from "@pantoken/rehype";

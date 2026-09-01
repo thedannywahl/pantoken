@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / toggleGroupCss
 
-# Variable: toggleGroupCss
+# متغير: toggleGroupCss
 
 > `const` **toggleGroupCss**: `Definition`\[`"css"`\] = `toggleGroup.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `toggleGroup` مستقلة — CSS مسبوق لكشف الحدود، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `toggleGroup` — CSS ذات بادئة للإفصاح ذي الحد، جاهزة للشحن كملف `.css`.

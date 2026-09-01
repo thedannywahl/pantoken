@@ -1,14 +1,15 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / spinner
 
-# Variable: spinner
+# متغير: spinner
 
 > `const` **spinner**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-spinner&gt;` — علامة تحميل مع `role="status"`. عرض بحت؛ يتبع الحجم واللون رموز CSS.
+`&lt;instui-spinner&gt;` — مؤشر تحميل مع `role="status"`. عرضي بحت؛ الحجم و
+اللون يتبعان رموز CSS.
 
-## Example
+## مثال
 
 ```html
 <instui-spinner></instui-spinner>

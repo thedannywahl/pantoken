@@ -1,13 +1,13 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / noopIconSvg
 
-# Function: noopIconSvg()
+# دالة: noopIconSvg()
 
 > **noopIconSvg**(): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-محلل بشكل [iconSvg](iconSvg.md) لا يحل أي شيء أبداً — للعناصر التي لا تحتاجها.
+مُحلل على شكل [iconSvg](iconSvg.md) لا يقوم بحل أي شيء أبدًا — للعناصر التي لا تحتاجه.
 
-## Returns
+## القيم المرجعة
 
 `string`

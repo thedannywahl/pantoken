@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / DeprecationLedger
 
-# Interface: DeprecationLedger
+# واجهة: DeprecationLedger
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-دفتر الرموز المهجورة الملتزم به (`formats/tokens/deprecations.json`).
+دفتر إيقاف صلاحية الرموز الملتزم به (`formats/tokens/deprecations.json`).
 
-## Properties
+## الخصائص
 
 ### version
 
 > **version**: `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 إصدار مخطط الدفتر.
 
----
+***
 
 ### entries
 
 > **entries**: [`DeprecationEntry`](DeprecationEntry.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إدخالات الإهمال، واحد لكل رمز أصلي تم إسقاطه.
+إدخالات إلغاء الصلاحية، واحدة لكل رمز من المصدر الأعلى تم إسقاطه.

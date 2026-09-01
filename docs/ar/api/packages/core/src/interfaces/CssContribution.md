@@ -1,57 +1,57 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / CssContribution
 
-# Interface: CssContribution
+# واجهة: CssContribution
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مساهمة CSS يمكن لمكون إضافي إرجاعها من خطافها `css`.
+مساهمة CSS يمكن للمكوّن الإضافي إرجاعها من hook الخاص به `css`.
 
-## Properties
+## الخصائص
 
 ### prepend?
 
 > `optional` **prepend?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-CSS خام مُصدّرة قبل القاعدة المُولّدة.
+CSS خام مُصدر قبل الأساس المُولد.
 
----
+***
 
 ### append?
 
 > `optional` **append?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-CSS خام مُصدّرة بعد القاعدة المُولّدة.
+CSS خام مُصدر بعد الأساس المُولد.
 
----
+***
 
 ### properties?
 
 > `optional` **properties?**: `PropertyRule`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تسجيلات `@property` المكتوبة المراد إضافتها.
+تسجيلات `@property` الموقّعة بالأنواع لإضافتها.
 
----
+***
 
 ### declarations?
 
 > `optional` **declarations?**: \[`string`, `string`\][]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تعريفات `--var: value` ذات نطاق المراد إضافتها.
+إعلانات `--var: value` ذات النطاق لإضافتها.
 
----
+***
 
 ### marker?
 
 > `optional` **marker?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-علامة `data-*` للكتلة المُصدّرة، للتصحيح.
+مؤشر `data-*` للكتلة المصدرة، لأغراض التصحيح.

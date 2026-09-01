@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [renderers/markdown-it/src](../index.md) / PROSE\_CLASS
 
-# Variable: PROSE\_CLASS
+# متغير: PROSE\_CLASS
 
 > `const` **PROSE\_CLASS**: `"pantoken-prose"` = `"pantoken-prose"`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-فئة نطاق النثر التي صُمّم الترميز المنبعث للجلوس بداخلها.
+فئة نطاق النثر التي صُمم الوسم المُصدَر ليتم وضعه داخلها.
 
-## Example
+## مثال
 
 ```ts
 import MarkdownIt from "markdown-it";

@@ -1,37 +1,37 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / resolveReferences
 
-# Function: resolveReferences()
+# دالة: resolveReferences()
 
 > **resolveReferences**(`tokens`, `mode?`): `Map`\<`string`, `string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حل كل توكن إلى قيمة ملموسة وحيدة الوضع: توسيع `var(...)` السلاسل وانهيار
+حلّ كل توكن إلى قيمة ملموسة في وضع واحد: وسّع `var(...)` chains واطوِ
 `light-dark()` إلى `mode` المختار.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../interfaces/Token.md)[]
+للقراءة فقط [`Token`](../interfaces/Token.md)[]
 
-IR.
+الـ IR.
 
 ### mode?
 
 [`Mode`](../type-aliases/Mode.md) = `"light"`
 
-أي جانب من `light-dark()` للاحتفاظ به (افتراضي `"light"`).
+أي جانب من `light-dark()` يجب الاحتفاظ به (الافتراضي `"light"`).
 
-## Returns
+## القيم المرجعة
 
 `Map`\<`string`, `string`\>
 
-خريطة اسم التوكن إلى قيمة ملموسة.
+خريطة من اسم التوكن إلى القيمة الملموسة.
 
-## Example
+## مثال
 
-**حل IR المبني إلى قيم وضع مظلم ملموسة**
+**حلّ الـ IR المبني إلى قيم داكنة ملموسة**
 
 ```ts
 import { buildTokens, resolveReferences } from "@pantoken/core";

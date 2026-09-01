@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / spacingValue
 
-# Function: spacingValue()
+# دالة: spacingValue()
 
 > **spacingValue**(`attr`): `string`
 
-حل اختصار التباعد InstUI بقيمة 1-4 (`margin`/`padding`) إلى قيمة CSS الخاصة به.
+حل اختصار التباعد الخاص بـ InstUI المكوَّن من 1-4 قيم (`margin`/`padding`) إلى قيمته في CSS.
 
-## Parameters
+## المعلمات
 
 ### attr
 
 `string` \| `null`
 
-## Returns
+## القيم المرجعة
 
 `string`

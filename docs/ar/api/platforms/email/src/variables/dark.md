@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [platforms/email/src](../index.md) / dark
 
-# Variable: dark
+# متغير: dark
 
 > `const` **dark**: `Record`\<`string`, `string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-قيم العلامات ملموسة بوضع `dark`.
+قيم الرموز الملموسة لوضع `dark`.
 
-## Example
+## مثال
 
 ```ts
 import { dark } from "@pantoken/email";

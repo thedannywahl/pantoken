@@ -1,9 +1,10 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / ELEVATION\_NAMES
 
-# Variable: ELEVATION\_NAMES
+# متغير: ELEVATION\_NAMES
 
 > `const` **ELEVATION\_NAMES**: readonly `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كل مستوى ارتفاع واسم مستعار مُصدر كـ `--instui-elevation-&lt;name&gt;` (`resting`، `above`، `topmost`، `depth1`–`depth3`، `card`، `cardHover`). مشتق من الهندسة والخرائط المستعارة.
+يتم إصدار كل مستوى ارتفاع واسم مستعار كـ `--instui-elevation-&lt;name&gt;` (`resting`, `above`,
+`topmost`, `depth1`–`depth3`, `card`, `cardHover`). مشتق من خرائط الهندسة + الأسماء المستعارة.

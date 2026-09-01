@@ -1,13 +1,14 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / initResponsiveOverlay
 
-# Function: initResponsiveOverlay()
+# دالة: initResponsiveOverlay()
 
 > **initResponsiveOverlay**(`host`, `onCommand`): `void`
 
-توصيل أوامر الفتح/الإغلاق بالإضافة إلى تبديل الطبقة الموجية المستجيبة على أساس العرض على مضيف:
-يمكن لأي لوحة جانبية قابلة للطي (على سبيل المثال، صينية الدرج) استيراد هذا التفاعل بدلاً من إعادة تنفيذها في كل مكون.
+ربط أوامر الفتح/الإغلاق بالإضافة إلى تبديل التراكب التكيفي القائم على العرض إلى المضيف: أي
+لوح جانبي قابل للطي (على سبيل المثال درج) يمكنه استيراد هذا التفاعل بدلاً من أن
+يعيد كل مكوّن تنفيذه.
 
-## Parameters
+## المعلمات
 
 ### host
 
@@ -17,6 +18,6 @@
 
 [`OnCommand`](../type-aliases/OnCommand.md)
 
-## Returns
+## القيم المرجعة
 
 `void`

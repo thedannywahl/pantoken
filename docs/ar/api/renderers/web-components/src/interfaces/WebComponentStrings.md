@@ -1,87 +1,87 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / WebComponentStrings
 
-# Interface: WebComponentStrings
+# واجهة: WebComponentStrings
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-جميع السلاسل المرئية للمستخدم المشعة بواسطة مجموعة عنصر مكون الويب.
+جميع السلاسل الظاهرة للمستخدم الصادرة عن مجموعة عناصر المكوّن الويب.
 
-## Properties
+## الخصائص
 
 ### prevMonth
 
 > **prevMonth**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 `aria-label` لزر "الشهر السابق" في التقويم.
 
----
+***
 
 ### nextMonth
 
 > **nextMonth**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
 `aria-label` لزر "الشهر التالي" في التقويم.
 
----
+***
 
 ### weekdays
 
 > **weekdays**: readonly \[`string`, `string`, `string`, `string`, `string`, `string`, `string`\]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-رؤوس أعمدة أيام الأسبوع بترتيب اليوم الأول من الأسبوع المناسب للإقليم.
+عناوين أعمدة أيام الأسبوع مرتبة حسب اليوم الأول من الأسبوع المناسب للمنطقة/اللغة.
 
----
+***
 
 ### dateLabel
 
 > **dateLabel**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`aria-label` الافتراضي ل `&lt;instui-date-input&gt;` عندما تكون سمة `label` غائبة.
+القيمة الافتراضية لـ `aria-label` لـ `&lt;instui-date-input&gt;` عند غياب السمة `label`.
 
----
+***
 
 ### datePlaceholder
 
 > **datePlaceholder**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-العنصر النائب الافتراضي لحقل نص التاريخ ISO.
+العنصر النائب الافتراضي لحقل نص التاريخ بتنسيق ISO.
 
----
+***
 
 ### openCalendar
 
 > **openCalendar**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`aria-label` لمشغل فتح التقويم داخل `&lt;instui-date-input&gt;`.
+`aria-label` لمشغّل فتح التقويم داخل `&lt;instui-date-input&gt;`.
 
----
+***
 
 ### timeLabel
 
 > **timeLabel**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`aria-label` لإدخال الوقت الأصلي `&lt;input&gt;` داخل `&lt;instui-date-time-input&gt;`.
+`aria-label` لعنصر الوقت الأصلي `&lt;input&gt;` داخل `&lt;instui-date-time-input&gt;`.
 
----
+***
 
 ### back
 
 > **back**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-نص الصف الخلفي المركب في `&lt;instui-drilldown&gt;`.
+النص لصف "رجوع" المُركّب في `&lt;instui-drilldown&gt;`.

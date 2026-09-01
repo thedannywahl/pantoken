@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/visual-debug/src](../index.md) / visualDebug
 
-# Function: visualDebug()
+# دالة: visualDebug()
 
 > **visualDebug**(`options?`): [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء مكون visual-debug الإضافي.
+إنشاء الإضافة visual-debug.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,8 +16,8 @@
 
 [VisualDebugOptions](../interfaces/VisualDebugOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-إضافة [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) بخطاف `css`.
+مكون إضافي من نوع [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) يحتوي على خطاف `css`.

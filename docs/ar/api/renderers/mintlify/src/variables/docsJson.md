@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/mintlify/src](../index.md) / docsJson
 
-# Variable: docsJson
+# متغير: docsJson
 
 > `const` **docsJson**: [`MintlifyTheme`](../interfaces/MintlifyTheme.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مفاتيح المواضيع `rebrand` من Mintlify `docs.json` الجاهزة (الألوان + الخلفية).
+مفاتيح ثيم جاهزة لـ `rebrand` Mintlify `docs.json` (الألوان + الخلفية).

@@ -1,32 +1,32 @@
 [pantoken](../../../../index.md) / [renderers/svelte/src](../index.md) / icon
 
-# Function: icon()
+# دالة: icon()
 
 > **icon**(`node`, `name`): [`ActionResult`](../interfaces/ActionResult.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إجراء Svelte: `<span use:icon={"arrow-left"} />` يعرض SVG الرمز المضمنة في العقدة.
+إجراء Svelte: `<span use:icon={"arrow-left"} />` يقوم بعرض SVG المضمّن للأيقونة داخل العقدة.
 
-## Parameters
+## المعلمات
 
 ### node
 
 `Element`
 
-عنصر المضيف.
+العنصر المضيف.
 
 ### name
 
 `string`
 
-اسم الرمز.
+اسم الأيقونة.
 
-## Returns
+## القيم المرجعة
 
 [`ActionResult`](../interfaces/ActionResult.md)
 
-## Example
+## مثال
 
 ```svelte
 <script>

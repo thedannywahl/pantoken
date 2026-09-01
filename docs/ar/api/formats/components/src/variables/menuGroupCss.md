@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / menuGroupCss
 
-# Variable: menuGroupCss
+# متغير: menuGroupCss
 
 > `const` **menuGroupCss**: `Definition`\[`"css"`\] = `menuGroup.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `menu.group` مستقلة.
+ورقة أنماط مستقلة `menu.group`.

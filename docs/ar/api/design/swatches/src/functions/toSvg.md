@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [design/swatches/src](../index.md) / toSvg
 
-# Function: toSvg()
+# دالة: toSvg()
 
 > **toSvg**(`swatches`, `options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-عرض العينات كورقة عينة SVG مجمعة.
+عرض عينات الألوان كصفحة نموذج SVG مجمعة.
 
-## Parameters
+## المعلمات
 
 ### swatches
 
-readonly [`Swatch`](../interfaces/Swatch.md)[]
+للقراءة فقط [`Swatch`](../interfaces/Swatch.md)[]
 
-لوحة الألوان (على سبيل المثال من `toSwatches`).
+لوحة الألوان (مثال: من `toSwatches`).
 
 ### options?
 
@@ -22,15 +22,15 @@ readonly [`Swatch`](../interfaces/Swatch.md)[]
 
 [ToSvgOptions](../interfaces/ToSvgOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 مستند SVG كسلسلة نصية.
 
-## Examples
+## أمثلة
 
-**عرض ورقة عينة لـ README**
+**عرض صفحة نموذجية لملف README**
 
 ```ts
 import { writeFileSync } from "node:fs";
@@ -39,7 +39,7 @@ import { swatches, toSvg } from "@pantoken/swatches";
 writeFileSync("palette.svg", toSvg(swatches));
 ```
 
-**عينة فقط لوحة الألوان الأساسية، مع عنوان وشبكة أوسع**
+**عرض نموذج للوحة الأساسية فقط، مع عنوان وشبكة أوسع**
 
 ```ts
 import { swatches, toSvg } from "@pantoken/swatches";

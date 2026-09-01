@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / extractInstuiRefs
 
-# Function: extractInstuiRefs()
+# دالة: extractInstuiRefs()
 
 > **extractInstuiRefs**(`text`): `Set`\<`string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كل `--instui-*` اسم خاصية مخصصة يظهر في أي مكان في `text`.
+كل اسم خاصية مخصصة `--instui-*` الذي يظهر في أي مكان داخل `text`.
 
-## Parameters
+## المعلمات
 
 ### text
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `Set`\<`string`\>
 
-## Example
+## مثال
 
 ```ts
 import { extractInstuiRefs } from "@pantoken/utils";

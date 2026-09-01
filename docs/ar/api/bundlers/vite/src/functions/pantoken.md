@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [bundlers/vite/src](../index.md) / pantoken
 
-# Function: pantoken()
+# دالة: pantoken()
 
 > **pantoken**(`options?`): [`Plugin`](https://vite.dev/guide/api-plugin)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-مكون pantoken الإضافي Vite.
+ملحق pantoken الخاص بـ Vite.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,15 +16,15 @@
 
 [PantokenViteOptions](../interfaces/PantokenViteOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`Plugin`](https://vite.dev/guide/api-plugin)
 
-مكون إضافي Vite [Plugin](https://vite.dev/guide/api-plugin).
+مُلحق Vite [Plugin](https://vite.dev/guide/api-plugin).
 
-## Examples
+## أمثلة
 
-**سجل المكون الإضافي في vite.config.ts**
+**سجّل الملحق في vite.config.ts**
 
 ```ts
 import { defineConfig } from "vite";
@@ -35,7 +35,7 @@ export default defineConfig({
 });
 ```
 
-**حقن ورقة النمط تلقائياً في HTML \<head\>**
+**حقن ورقة الأنماط تلقائيًا في HTML \<head\>**
 
 ```ts
 import { defineConfig } from "vite";
@@ -47,7 +47,7 @@ export default defineConfig({
 });
 ```
 
-**استهلك الوحدات الافتراضية في كود التطبيق**
+**استخدم الوحدات الافتراضية في كود التطبيق**
 
 ```ts
 import css from "virtual:pantoken/css"; // the stylesheet string

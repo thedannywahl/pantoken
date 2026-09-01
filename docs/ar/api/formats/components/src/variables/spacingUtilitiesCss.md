@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / spacingUtilitiesCss
 
-# Variable: spacingUtilitiesCss
+# متغير: spacingUtilitiesCss
 
 > `const` **spacingUtilitiesCss**: `Definition`\[`"css"`\] = `spacing.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أدوات التباعد كورقة أنماط مستقلة ومغلفة برأس.
+أدوات التباعد كملف أنماط مستقل مغلف بعنصر رأس.

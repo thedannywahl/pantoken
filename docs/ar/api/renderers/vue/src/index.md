@@ -2,36 +2,36 @@
 
 # vue
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/vue` — إضافة Vue فوق `@pantoken/web-components`.
+`@pantoken/vue` — إضافة لـ Vue مبنية فوق `@pantoken/web-components`.
 
-`install` يسجل العناصر المخصصة ويخبر مترجم Vue بمعاملة علامات `instui-*` كـ
-عناصر مخصصة. `readToken` يقرأ قيمة `--instui-*` المحلولة (آمنة للتصيير من جانب الخادم).
+`install` يسجّل العناصر المخصصة ويخبر مُجمِّع Vue بأن يعامل وسوم `instui-*` كعناصر مخصصة.
+`readToken` يقرأ قيمة `--instui-*` المحلّلة (آمنة لـ SSR).
 
-## Variables
+## المتغيرات
 
 - [PantokenVue](variables/PantokenVue.md)
 
-## Functions
+## الدوال
 
 - [readToken](functions/readToken.md)
 - [iconSvg](functions/iconSvg.md)
 
-## References
+## المراجع
 
 ### register
 
 إعادة تصدير [register](../../angular/src/functions/register.md)
 
----
+***
 
 ### registerLocalized
 
 إعادة تصدير [registerLocalized](../../svelte/src/functions/registerLocalized.md)
 
----
+***
 
 ### default
 
-إعادة تسمية وإعادة تصدير [PantokenVue](variables/PantokenVue.md)
+يعيد تسمية ويعيد تصدير [PantokenVue](variables/PantokenVue.md)

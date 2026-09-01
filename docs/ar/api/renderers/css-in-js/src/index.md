@@ -2,13 +2,16 @@
 
 # css-in-js
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/css-in-js` — كائن موضوع Instructure لمكتبات CSS-in-JS في وقت التشغيل.
+`@pantoken/css-in-js` — كائن سمة من Instructure لمكتبات CSS-in-JS في وقت التشغيل.
 
-يعمل مع أي مكتبة تقرأ موضوعاً من `props.theme` — Emotion و styled-components و Stitches كلها تشارك هذه الاتفاقية. [pantokenTheme](variables/pantokenTheme.md) هو كائن `rebrand` الجاهز، مدعوم بـ var() بحيث يتم تدفق التبديل light/dark من خلال `@pantoken/css`. [toStyledTheme](functions/toStyledTheme.md) يبني واحداً من أي IR (ويمكنه خبز قيم ملموسة مع `{ resolve }`).
+يعمل مع أي مكتبة تقرأ سمة من `props.theme` — تشترك مكتبات Emotion و styled-components و
+Stitches جميعها في هذا التقليد. [pantokenTheme](variables/pantokenTheme.md) هو كائن `rebrand` الجاهز،
+مدعوم بواسطة var() بحيث ينساب تبديل الوضع الفاتح/الداكن عبر `@pantoken/css`. [toStyledTheme](functions/toStyledTheme.md) يبني
+واحدًا من أي IR (ويمكنه تثبيت قيم ملموسة باستخدام `{ resolve }`).
 
-## Example
+## مثال
 
 **styled-components**
 
@@ -19,31 +22,31 @@ import { pantokenTheme } from "@pantoken/css-in-js";
 // const Btn = styled.button`background: ${({ theme }) => theme.colorBackgroundBrand};`;
 ```
 
-## Interfaces
+## واجهات
 
 - [ToStyledThemeOptions](interfaces/ToStyledThemeOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [StyledTheme](type-aliases/StyledTheme.md)
 
-## Variables
+## المتغيرات
 
 - [pantokenTheme](variables/pantokenTheme.md)
 
-## Functions
+## الدوال
 
 - [toThemeKey](functions/toThemeKey.md)
 - [toStyledTheme](functions/toStyledTheme.md)
 
-## References
+## المراجع
 
 ### Mode
 
-إعادة تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
+يعيد تصدير [Mode](../../../packages/core/src/type-aliases/Mode.md)
 
----
+***
 
 ### default
 
-إعادة تسمية وإعادة تصدير [pantokenTheme](variables/pantokenTheme.md)
+يعيد تسمية ويعيد تصدير [pantokenTheme](variables/pantokenTheme.md)

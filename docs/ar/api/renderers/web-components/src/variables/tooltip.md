@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / tooltip
 
-# Variable: tooltip
+# متغير: tooltip
 
 > `const` **tooltip**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-tooltip&gt;` — يلف محفزاً مدرجاً ويعرض فقاعة `.tip` (من سمة `tip`)
-عند الوضع فوقه/التركيز. يعيّن `placement` إلى `-placement-&lt;value&gt;` (مثل `bottom`، `end`); تحكم `show-delay` و
-`hide-delay` (ms، الافتراضي 0) بالكشف/الإخفاء، ويقفل Escape عليها. JS يملك التوقيت:
-قفل `.-show`-gated `!important` يحايد الكشف التلقائي الخالص من CSS `:hover`/`:focus-within`
-بحيث يتم تطبيق التأخير بالفعل.
+`&lt;instui-tooltip&gt;` — يغلف مشغلًا موضوعةً في فتحة ويعرض فقاعة `.tip` (مأخوذة من الخاصية `tip`)
+عند المرور بالمؤشر/التركيز. تُطابق `placement` مع `-placement-&lt;value&gt;` (مثلاً `bottom`, `end`); تقوم `show-delay` و
+`hide-delay` (ms، القيمة الافتراضية 0) بتحكم تأخير الإظهار/الإخفاء، ويقوم مفتاح Escape بإخفائها. تتحكم JS في توقيت الحدث:
+تجاوز `.-show`-المسيّر لـ `!important` يلغي عمل الإظهار التلقائي المعتمد على CSS الخالص `:hover`/`:focus-within`
+بحيث ينطبق التأخير فعليًا.
 
-## Example
+## مثال
 
 ```html
 <instui-tooltip tip="Placement bottom" placement="bottom" show-delay="200">

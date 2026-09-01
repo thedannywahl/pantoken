@@ -87,6 +87,35 @@ test("primary-inverse resolves its hover border to the on-color hover token", ()
   expect(css).toContain("var(--instui-component-base-button-primary-on-color-hover-border-color)");
 });
 
+test("-on-color fills primary (default) white with dark text and secondary transparent with a white border/text", () => {
+  const css = buttonCss({ prefix: "instui" });
+  expect(css).toContain('&.-on-color:not([class*="-color-"]),');
+  expect(css).toContain("&.-color-primary.-on-color {");
+  expect(css).toContain("var(--instui-color-background-interactive-action-primary-on-color-base)");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-primary-on-color-base)");
+  expect(css).toContain("var(--instui-color-text-interactive-action-primary-on-color-base)");
+  expect(css).toContain("&.-color-primary.-on-color:hover");
+  expect(css).toContain("var(--instui-color-background-interactive-action-primary-on-color-hover)");
+  expect(css).toContain("&.-color-primary.-on-color:active");
+  expect(css).toContain(
+    "var(--instui-color-background-interactive-action-primary-on-color-active)",
+  );
+  expect(css).toContain(
+    "var(--instui-color-background-interactive-action-primary-on-color-disabled)",
+  );
+  expect(css).toContain("&.-color-secondary.-on-color {");
+  expect(css).toContain("background: transparent;");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-secondary-on-color-base)");
+  expect(css).toContain("var(--instui-color-text-interactive-action-secondary-on-color-base)");
+  expect(css).toContain("&.-color-secondary.-on-color:hover");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-secondary-on-color-hover)");
+  expect(css).toContain("&.-color-secondary.-on-color:active");
+  expect(css).toContain("var(--instui-color-stroke-interactive-action-secondary-on-color-active)");
+  expect(css).toContain(
+    "var(--instui-color-stroke-interactive-action-secondary-on-color-disabled)",
+  );
+});
+
 test("button has a ghost (withBackground=false) variant and a block (display) variant", () => {
   const css = buttonCss({ prefix: "instui" });
   expect(css).toContain("&.-without-background");

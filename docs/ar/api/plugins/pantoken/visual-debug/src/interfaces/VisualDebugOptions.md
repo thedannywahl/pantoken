@@ -1,27 +1,27 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/visual-debug/src](../index.md) / VisualDebugOptions
 
-# Interface: VisualDebugOptions
+# واجهة: VisualDebugOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون [visualDebug](../functions/visualDebug.md) الإضافي.
+خيارات المكوّن الإضافي [visualDebug](../functions/visualDebug.md).
 
-## Properties
+## الخصائص
 
 ### color?
 
 > `optional` **color?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-لون الخطوط الموضحة للتصحيح (الإعداد الافتراضي: أرجواني ساطع عبر `--pantoken-visual-debug-color`).
+لون محيط تصحيح الأخطاء (الافتراضي: أرجواني ساطع عبر `--pantoken-visual-debug-color`).
 
----
+***
 
 ### position?
 
 > `optional` **position?**: `"append"` \| `"prepend"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حيث تهبط القواعد بالنسبة إلى ورقة الأنماط: `"append"` (افتراضي) أو `"prepend"`.
+مكان وضع القواعد بالنسبة لملف الأنماط: `"append"` (الافتراضي) أو `"prepend"`.

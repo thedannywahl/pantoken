@@ -1,19 +1,19 @@
 [pantoken](../../../../index.md) / [renderers/react-markdown/src](../index.md) / rehypeColorCodes
 
-# Function: rehypeColorCodes()
+# دالة: rehypeColorCodes()
 
 > **rehypeColorCodes**(): (`tree`) => `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مكون إضافي rehype يلف قيم الألوان المستقلة في `<span data-color-code="…">`، بحيث يمكن لطبقة React
-عرض عينة. يعكس خط أنابيب رمز الأيقونات.
+ملحق rehype يقوم بلف قيم الألوان المستقلة في `<span data-color-code="…">`، حتى تتمكن طبقة React
+من عرض عينة ألوان. يعكس خط أنابيب icon-token.
 
-## Returns
+## القيم المرجعة
 
 (`tree`) => `void`
 
-## Example
+## مثال
 
 ```tsx
 import Markdown from "react-markdown";

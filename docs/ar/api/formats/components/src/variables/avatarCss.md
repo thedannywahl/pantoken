@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / avatarCss
 
-# Variable: avatarCss
+# متغير: avatarCss
 
 > `const` **avatarCss**: `Definition`\[`"css"`\] = `avatar.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `avatar` مستقلة — CSS المُبدأ للصورة الرمزية، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `avatar` — CSS مُسبق البادئة للأفاتار، جاهز للتوزيع كملف `.css`

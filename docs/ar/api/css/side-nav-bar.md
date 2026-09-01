@@ -1,23 +1,23 @@
 # CSS: side-nav-bar
 
-`.instui-side-nav-bar` — سكة تنقل عمودية لعناصر الرموز فوق التسميات، بوضع رموز فقط مصغر.
+`.instui-side-nav-bar` — شريط تنقل عمودي من عناصر أيقونة-فوق-التسمية، مع وضع مصغّر يعرض الأيقونات فقط.
 
-يعين `gap` الخاص به بين عناصر التنقل و `padding` الخاص به؛ ربط معدل أداة المسافة `-gap-*`/`-p-*`/`-padding-*` يعكس تلك القيم المدمجة. انظر إلى عضو `side-nav-bar.item` لإدخالات التنقل الفردية.
+يحدد `gap` الخاص به بين عناصر التنقل و `padding` الخاص به؛ ربط مُعدِّل مسافة من نوع `-gap-*`/`-p-*`/`-padding-*` يتجاوز تلك القيم المضمنة. انظر العضو `side-nav-bar.item` لمدخلات التنقل الفردية.
 
 **المصدر:** [item.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/side-nav-bar/members/item/item.css)
 
-## Accessibility
+## سهولة الوصول
 
-أضف تسمية `&lt;nav&gt;` بـ aria-label حتى يتم الإعلان عنها كنقطة تنقل مسماة.
+ضع aria-label على `&lt;nav&gt;` ليُعلَن كمعلم تنقّل مسمّى.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/side-nav-bar.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <nav class="instui-side-nav-bar" aria-label="Primary">
@@ -40,7 +40,7 @@
 </nav>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-side-nav-bar
@@ -59,30 +59,31 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier      | Description                                                                          |
-| ------------- | ------------------------------------------------------------------------------------ |
-| `.-icon-*`    | عرض رمز حرفي في كل عنصر تنقل.                                                        |
-| `.-minimized` | الطي إلى رموز فقط (التسميات مخفية). @affects side-nav-bar.item — إخفاء تسمية العنصر. |
+| معدّل | الوصف |
+| --- | --- |
+| `.-icon-*` | عرض أيقونة رمزية في كل عنصر تنقّل. |
+| `.-minimized` | انهيار إلى الأيقونات فقط (التسميات مخفية). @affects side-nav-bar.item — يُخفي تسمية العنصر. |
 
-## Parts
+## الأجزاء
 
-| Part     | Description              |
-| -------- | ------------------------ |
-| `.label` | تسمية النص لعنصر التنقل. |
+| جزء | الوصف |
+| --- | --- |
+| `.label` | تسمية نص عنصر التنقل. |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                              | Type                                               | Value                                                                        |
-| -------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `--instui-component-side-nav-bar-background-color` | `<color>`                                          | `light-dark(#ffffff, #273540)`                                               |
-| `--instui-component-side-nav-bar-content-gap`      | `<length>`                                         | `0.25rem`                                                                    |
-| `--instui-component-side-nav-bar-content-margin`   | `<length>`                                         | `0.375rem`                                                                   |
-| `--instui-component-side-nav-bar-font-color`       | `<color>`                                          | `light-dark(#273540, #ffffff)`                                               |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-side-nav-bar-background-color` | `<color>` | `light-dark(#ffffff, #273540)` |
+| `--instui-component-side-nav-bar-content-gap` | `<length>` | `0.25rem` |
+| `--instui-component-side-nav-bar-content-margin` | `<length>` | `0.375rem` |
+| `--instui-component-side-nav-bar-font-color` | `<color>` | `light-dark(#273540, #ffffff)` |
 | `--instui-component-side-nav-bar-item-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
-| `--instui-component-side-nav-bar-minimized-width`  | `<length>`                                         | `3.75rem`                                                                    |
+| `--instui-component-side-nav-bar-minimized-width` | `<length>` | `3.75rem` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [side-nav-bar.item](/ar/api/css/side-nav-bar.item.md)
+

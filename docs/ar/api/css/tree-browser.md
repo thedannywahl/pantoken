@@ -1,23 +1,23 @@
 # CSS: tree-browser
 
-`.instui-tree-browser` — شجرة كشف للمجموعات المتداخلة والعناصر الورقية، مع شيفرونات دوارة.
+`.instui-tree-browser` — شجرة إفشاء من مجموعات متداخلة وعناصر ورقية، مع سَهَام دوّارة.
 
-كل مجموعة هي `&lt;details&gt;` أصلية؛ يؤدي تداخلها داخل بعضها البعض إلى بناء الشجرة، والمتصفح يتعامل مع فتح وإغلاق كل فرع.
+كل مجموعة هي `&lt;details&gt;` أصلية؛ تضمينها داخل بعضها يبني الشجرة، والمتصفح يتولى فتح وإغلاق كل فرع.
 
 **المصدر:** [tree-browser.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/tree-browser/tree-browser.css)
 
-## Accessibility
+## سهولة الوصول
 
-ضع علامة على الجذر بـ role="tree" وكل قائمة متداخلة بـ role="group".
+علّم الجذر بـ role="tree" وكل قائمة متداخلة بـ role="group".
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/tree-browser.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-tree-browser" role="tree">
@@ -32,14 +32,10 @@
           <summary><span class="instui-icon -icon-folder"></span> Week 1</summary>
           <ul role="group">
             <li>
-              <a class="item -selected" href="#"
-                ><span class="instui-icon -icon-file-text"></span> Reading.pdf</a
-              >
+              <a class="item -selected" href="#"><span class="instui-icon -icon-file-text"></span> Reading.pdf</a>
             </li>
             <li>
-              <a class="item" href="#"
-                ><span class="instui-icon -icon-file-text"></span> Slides.pptx</a
-              >
+              <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> Slides.pptx</a>
             </li>
           </ul>
         </details>
@@ -52,7 +48,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-tree-browser
@@ -89,61 +85,62 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier       | Description                                                 |
-| -------------- | ----------------------------------------------------------- |
-| `.-icon-*`     | اعرض أيقونات رمز المجلد/الملف في الملخصات والعناصر الورقية. |
-| `.-size-large` | كبير. اسم مستعار طويل الشكل لـ `-size-lg`.                  |
-| `.-size-lg`    | كبير.                                                       |
-| `.-size-sm`    | صغير.                                                       |
-| `.-size-small` | صغير. اسم مستعار طويل الشكل لـ `-size-sm`.                  |
+| معدّل | الوصف |
+| --- | --- |
+| `.-icon-*` | اعرض أيقونات مجسّم المجلد/الملف في الملخّصات والعناصر الورقية. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
+| `.-size-lg` | كبير. |
+| `.-size-sm` | صغير. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 
-## Parts
+## الأجزاء
 
-| Part    | Description           |
-| ------- | --------------------- |
-| `.item` | إدخال ورقة في الشجرة. |
+| جزء | الوصف |
+| --- | --- |
+| `.item` | إدخال ورقي في الشجرة. |
 
-## Pseudo-elements
+## عناصر زائفة
 
-| Pseudo-element | Description                                                                         |
-| -------------- | ----------------------------------------------------------------------------------- |
-| `::before`     | يرسم شيفرون الكشف لكل مجموعة، رمز مقنع يدور للإشارة لأسفل عندما يكون الفرع مفتوحاً. |
+| عنصر زائف | الوصف |
+| --- | --- |
+| `::before` | يرسم سَهَم الإفشاء لكل مجموعة، مجسّم مقنّع يدور ليشير إلى الأسفل عندما يكون الفرع مفتوحًا. |
 
-## States
+## الحالات
 
-| State          | Description |
-| -------------- | ----------- |
-| `:state(open)` | —           |
+| حالة | الوصف |
+| --- | --- |
+| `:state(open)` | — |
 
-## Tokens consumed
+## الرموز المستهلكة
 
-| Token                                                                   | Type                                               | Value                                                                                                                                                                                                                                                                                                                                                                     |
-| ----------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--instui-component-tree-browser-border-radius`                         | `<length>`                                         | `0.5rem`                                                                                                                                                                                                                                                                                                                                                                  |
-| `--instui-component-tree-browser-tree-button-base-spacing-large`        | `<length>`                                         | `1rem`                                                                                                                                                                                                                                                                                                                                                                    |
-| `--instui-component-tree-browser-tree-button-base-spacing-medium`       | `<length>`                                         | `0.75rem`                                                                                                                                                                                                                                                                                                                                                                 |
-| `--instui-component-tree-browser-tree-button-base-spacing-small`        | `<length>`                                         | `0.5rem`                                                                                                                                                                                                                                                                                                                                                                  |
-| `--instui-component-tree-browser-tree-button-border-radius`             | `<length>`                                         | `0.5rem`                                                                                                                                                                                                                                                                                                                                                                  |
-| `--instui-component-tree-browser-tree-button-hover-background-color`    | `<color>`                                          | `light-dark(#1D354F, #EEF4FD)`                                                                                                                                                                                                                                                                                                                                            |
-| `--instui-component-tree-browser-tree-button-hover-text-color`          | `<color>`                                          | `light-dark(#ffffff, #1C222B)`                                                                                                                                                                                                                                                                                                                                            |
-| `--instui-component-tree-browser-tree-button-icons-margin-right-medium` | `<length>`                                         | `0.5rem`                                                                                                                                                                                                                                                                                                                                                                  |
-| `--instui-component-tree-browser-tree-button-name-font-size-large`      | `<length>`                                         | `1rem`                                                                                                                                                                                                                                                                                                                                                                    |
-| `--instui-component-tree-browser-tree-button-name-font-size-medium`     | `<length>`                                         | `0.875rem`                                                                                                                                                                                                                                                                                                                                                                |
-| `--instui-component-tree-browser-tree-button-name-font-size-small`      | `<length>`                                         | `0.75rem`                                                                                                                                                                                                                                                                                                                                                                 |
-| `--instui-component-tree-browser-tree-button-name-text-color`           | `<color>`                                          | `light-dark(#2369A4, #7FB4F1)`                                                                                                                                                                                                                                                                                                                                            |
-| `--instui-component-tree-browser-tree-button-selected-background-color` | `<color>`                                          | `light-dark(#4A5B68, #576773)`                                                                                                                                                                                                                                                                                                                                            |
-| `--instui-component-tree-browser-tree-button-selected-text-color`       | `<color>`                                          | `#ffffff`                                                                                                                                                                                                                                                                                                                                                                 |
-| `--instui-component-tree-browser-tree-button-text-line-height`          | `<percentage>`                                     | `125%`                                                                                                                                                                                                                                                                                                                                                                    |
-| `--instui-component-tree-browser-tree-collection-base-spacing-medium`   | `<length>`                                         | `0.75rem`                                                                                                                                                                                                                                                                                                                                                                 |
-| `--instui-component-tree-browser-tree-collection-font-family`           | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif`                                                                                                                                                                                                                                                                                              |
-| `--instui-icon-chevron-right`                                           | `<image>`                                          | `url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m9%2018%206-6-6-6%22%2F%3E%3C%2Fsvg%3E')` |
+| رمز | نوع | قيمة |
+| --- | --- | --- |
+| `--instui-component-tree-browser-border-radius` | `<length>` | `0.5rem` |
+| `--instui-component-tree-browser-tree-button-base-spacing-large` | `<length>` | `1rem` |
+| `--instui-component-tree-browser-tree-button-base-spacing-medium` | `<length>` | `0.75rem` |
+| `--instui-component-tree-browser-tree-button-base-spacing-small` | `<length>` | `0.5rem` |
+| `--instui-component-tree-browser-tree-button-border-radius` | `<length>` | `0.5rem` |
+| `--instui-component-tree-browser-tree-button-hover-background-color` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
+| `--instui-component-tree-browser-tree-button-hover-text-color` | `<color>` | `light-dark(#ffffff, #1C222B)` |
+| `--instui-component-tree-browser-tree-button-icons-margin-right-medium` | `<length>` | `0.5rem` |
+| `--instui-component-tree-browser-tree-button-name-font-size-large` | `<length>` | `1rem` |
+| `--instui-component-tree-browser-tree-button-name-font-size-medium` | `<length>` | `0.875rem` |
+| `--instui-component-tree-browser-tree-button-name-font-size-small` | `<length>` | `0.75rem` |
+| `--instui-component-tree-browser-tree-button-name-text-color` | `<color>` | `light-dark(#2369A4, #7FB4F1)` |
+| `--instui-component-tree-browser-tree-button-selected-background-color` | `<color>` | `light-dark(#4A5B68, #576773)` |
+| `--instui-component-tree-browser-tree-button-selected-text-color` | `<color>` | `#ffffff` |
+| `--instui-component-tree-browser-tree-button-text-line-height` | `<percentage>` | `125%` |
+| `--instui-component-tree-browser-tree-collection-base-spacing-medium` | `<length>` | `0.75rem` |
+| `--instui-component-tree-browser-tree-collection-font-family` | `[ <font-family-name> \| <generic-font-family> ]#` | `Atkinson Hyperlegible Next, "Helvetica Neue", Helvetica, Arial, sans-serif` |
+| `--instui-icon-chevron-right` | `<image>` | `url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22m9%2018%206-6-6-6%22%2F%3E%3C%2Fsvg%3E')` |
 
-## Subcomponents
+## مكونات فرعية
 
 - [side-nav-bar.item](/ar/api/css/side-nav-bar.item.md)
 
-## Related
+## ذات صلة
 
-- [menu](/ar/api/css/menu.md) — تعرض كلاهما مدخلات متداخلة قابلة للتحديد.
+- [menu](/ar/api/css/menu.md) — كلاهما يعرض إدخالات متداخلة وقابلة للاختيار.
+

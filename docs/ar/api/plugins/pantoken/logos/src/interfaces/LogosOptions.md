@@ -1,17 +1,18 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / LogosOptions
 
-# Interface: LogosOptions
+# واجهة: LogosOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات مكون الإضافة [logosPlugin](../functions/logosPlugin.md).
+خيارات الإضافة [logosPlugin](../functions/logosPlugin.md).
 
-## Properties
+## الخصائص
 
 ### position?
 
 > `optional` **position?**: `"append"` \| `"prepend"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حيث تهبط قواعد `css` hook بالنسبة لجدول الأنماط: `"append"` (الافتراضي) أو `"prepend"`.
+أين تهبط قواعد هوك `css` بالنسبة إلى ورقة الأنماط: `"append"` (الافتراضي) أو
+`"prepend"`.

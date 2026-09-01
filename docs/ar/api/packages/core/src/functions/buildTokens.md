@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / buildTokens
 
-# Function: buildTokens()
+# دالة: buildTokens()
 
 > **buildTokens**(`options?`): [`Token`](../interfaces/Token.md)[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء IR التوكن الأساسي للمظهر: البدائيات، والتخطيط، والألوان الدلالية، وتوكنات المكونات،
-والرموز الاختيارية، ثم تشغيل خطافات المكون على النتيجة.
+بناء تمثيل IR الرسمي للرموز لموضوع: العناصر الأساسية، التخطيط، الألوان الدلالية، رموز المكونات،
+والأيقونات الاختيارية، ثم تشغيل هوكس الإضافات على النتيجة.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -17,13 +17,13 @@
 
 [BuildTokensOptions](../interfaces/BuildTokensOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../interfaces/Token.md)[]
 
-قائمة [Token](../interfaces/Token.md) المحسنة والمزيلة للتكرار.
+قائمة [Token](../interfaces/Token.md) المحلَّلة والمُخلَّصة من العناصر المكررة.
 
-## Examples
+## أمثلة
 
 **بناء IR الافتراضي (إعادة العلامة التجارية)**
 
@@ -34,7 +34,7 @@ const tokens = buildTokens();
 // → Token[] : { name, syntax, inherits, value, themed?, refersTo?, meta? }
 ```
 
-**اختر مظهرًا واحذف طبقة الرمز**
+**اختر موضوعًا وأزل طبقة الأيقونات**
 
 ```ts
 import { buildTokens } from "@pantoken/core";
@@ -43,7 +43,7 @@ import { buildTokens } from "@pantoken/core";
 const tokens = buildTokens({ theme: "canvas", includeIcons: false });
 ```
 
-**تشغيل خطاف توكنات المكون على IR**
+**تشغيل هوك الرموز الخاص بالمكوّن الإضافي على IR**
 
 ```ts
 import { buildTokens, type PantokenPlugin } from "@pantoken/core";

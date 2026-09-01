@@ -1,41 +1,40 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / RegisterContextOptions
 
-# Interface: RegisterContextOptions
+# واجهة: RegisterContextOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-الخيارات التي `register()` و [buildRegisterContext](../functions/buildRegisterContext.md) تشاركها (كل شيء ما عدا `only`، وهو
-يكون منطقيًا فقط في موقع استدعاء `register()` — يقرر مستدعي `buildRegisterContext` مجموعة العنصر
-الخاصة بهم مباشرة).
+الخياران `register()` و[buildRegisterContext](../functions/buildRegisterContext.md) يتشاركان (كل شيء ما عدا `only`، الذي يكون منطقيًا فقط في موقع الاستدعاء `register()` — مستدعيات `buildRegisterContext` تقرر مباشرة مجموعة
+العناصر الخاصة بها).
 
-## Properties
+## الخصائص
 
 ### prefix?
 
 > `optional` **prefix?**: `string` \| `null`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
----
+***
 
 ### locale?
 
 > `optional` **locale?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
----
+***
 
 ### strings?
 
 > `optional` **strings?**: `Partial`\<[`WebComponentStrings`](WebComponentStrings.md)\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
----
+***
 
 ### dir?
 
 > `optional` **dir?**: `"ltr"` \| `"rtl"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>

@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / TokenUtilityGroup
 
-# Interface: TokenUtilityGroup
+# واجهة: TokenUtilityGroup
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مجموعة من الرموز التي تخطط جميعها إلى خاصية CSS واحدة (على سبيل المثال كل `--instui-font-weight-*` → `font-weight`).
+مجموعة من التوكنات التي ترتبط كلها بخاصية CSS واحدة (على سبيل المثال كل `--instui-font-weight-*` → `font-weight`).
 
-## Properties
+## الخصائص
 
 ### property
 
 > **property**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خاصية CSS التي تقوم الرموز بتعيينها (على سبيل المثال `"font-weight"`، `"border-radius"`، `"box-shadow"`).
+خاصية CSS التي تمثلها مجموعة التوكنات (على سبيل المثال `"font-weight"`, `"border-radius"`, `"box-shadow"`).
 
----
+***
 
 ### tokens
 
 > **tokens**: readonly `string`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أسماء الرموز الكاملة (على سبيل المثال `"--instui-font-weight-body-strong"`); يصبح ذيل `--instui-` الفئة.
+أسماء التوكن الكاملة (على سبيل المثال `"--instui-font-weight-body-strong"`); الجزء اللاحق `--instui-` يصبح الـ class.

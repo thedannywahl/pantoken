@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / sideNavBarCss
 
-# Variable: sideNavBarCss
+# متغير: sideNavBarCss
 
 > `const` **sideNavBarCss**: `Definition`\[`"css"`\] = `sideNavBar.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `sideNavBar` مستقلة — CSS مسبوق لسكة الملاحة، جاهز للشحن كملف `.css`.
+ورقة أنماط مستقلة `sideNavBar` — CSS ذات بادئة لشريط التنقل، جاهزة للشحن كملف `.css`.

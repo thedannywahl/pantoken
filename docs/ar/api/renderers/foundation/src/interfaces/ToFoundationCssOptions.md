@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/foundation/src](../index.md) / ToFoundationCssOptions
 
-# Interface: ToFoundationCssOptions
+# واجهة: ToFoundationCssOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات ل [toFoundationCss](../functions/toFoundationCss.md).
+خيارات لـ [toFoundationCss](../functions/toFoundationCss.md).
 
-## Properties
+## الخصائص
 
 ### scope?
 
 > `optional` **scope?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بادئة محدد لنطاق الطبقة تحتها (على سبيل المثال `.instui`); الافتراضي: بدون نطاق.
+بادئة محدد لتحديد نطاق التراكب تحته (مثلاً `.instui`); الافتراضي: غير محدد.

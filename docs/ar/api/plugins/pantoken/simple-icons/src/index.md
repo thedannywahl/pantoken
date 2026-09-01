@@ -2,29 +2,29 @@
 
 # simple-icons
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/plugin-simple-icons` — إحضار رموز العلامة التجارية Simple Icons إلى pantoken.
+`@pantoken/plugin-simple-icons` — جلب رموز شعارات Simple Icons إلى pantoken.
 
-يحدد المكون خطاف `tokens` (إصدار الرموز الخاصة بالعلامة التجارية المختارة كرموز `&lt;image&gt;`، بحيث تتدفق أيضاً إلى CSS والأصلي) _و_ خطاف `rehype` (حل رموز `:brand:` عند العرض). نفس المكون، أي طبقة — الشكل المعمم لمصنع أيقونات `mcp-stack/portal`.
+تعرف الإضافة على هوك `tokens` (إصدار الشعارات المختارة كـ `&lt;image&gt;` توكنات، بحيث تتدفق أيضًا إلى CSS والأنظمة الأصلية) *و* هوك `rehype` (حل رموز `:brand:` عند العرض). نفس الإضافة، أي طبقة — الشكل المعمم لمُنشئ الأيقونات `mcp-stack/portal`.
 
-## Interfaces
+## واجهات
 
 - [SimpleIcon](interfaces/SimpleIcon.md)
 - [SimpleIconsOptions](interfaces/SimpleIconsOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [SimpleIconsRegistry](type-aliases/SimpleIconsRegistry.md)
 
-## Functions
+## الدوال
 
 - [toExportName](functions/toExportName.md)
 - [defaultRegistry](functions/defaultRegistry.md)
 - [simpleIcons](functions/simpleIcons.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [simpleIcons](functions/simpleIcons.md)
+يعيد تسمية ويُعيد تصدير [simpleIcons](functions/simpleIcons.md)

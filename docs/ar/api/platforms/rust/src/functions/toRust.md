@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [platforms/rust/src](../index.md) / toRust
 
-# Function: toRust()
+# دالة: toRust()
 
 > **toRust**(`tokens`, `options?`): `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-انبعاث ثوابت Rust لـ IR رموز صريح.
+إصدار ثوابت Rust لنموذج IR صريح للرموز.
 
-## Parameters
+## المعلمات
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-IR.
+الـ IR.
 
 ### options?
 
@@ -22,15 +22,15 @@ IR.
 
 [RustOptions](../interfaces/RustOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
 مصدر Rust (وحدة من `pub const`s).
 
-## Examples
+## أمثلة
 
-**egui (Color32)، الصيغة الافتراضية**
+**egui (Color32)، التنسيق الافتراضي**
 
 ```ts
 import { toRust } from "@pantoken/rust";
@@ -40,7 +40,7 @@ const source = toRust(byTheme("rebrand"));
 // "use egui::Color32;\npub const COLOR_BACKGROUND_BRAND: Color32 = Color32::from_rgb(…);"
 ```
 
-**iced (Color)، الوضع الليلي**
+**iced (Color)، الوضع الداكن**
 
 ```ts
 import { toRust } from "@pantoken/rust";

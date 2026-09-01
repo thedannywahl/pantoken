@@ -1,21 +1,20 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / toVectorDrawable
 
-# Function: toVectorDrawable()
+# دالة: toVectorDrawable()
 
 > **toVectorDrawable**(`svg`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تحويل SVG مضمن إلى سلسلة XML VectorDrawable الخاص بـ Android. الرموز المستندة إلى الضربة (Lucide) تنبعث
-`strokeColor`/`strokeWidth`؛ الرموز المستندة إلى الملء (Custom) تنبعث `fillColor`.
+حوّل SVG مضمن إلى سلسلة XML لـ Android VectorDrawable. الأيقونات القائمة على الضرب (Lucide) تصدر `strokeColor`/`strokeWidth`; الأيقونات القائمة على التعبئة (Custom) تصدر `fillColor`.
 
-## Parameters
+## المعلمات
 
 ### svg
 
 `string`
 
-علامات SVG مضمنة.
+وسم SVG المضمّن.
 
 ### options?
 
@@ -23,15 +22,15 @@
 
 [VectorDrawableOptions](../interfaces/VectorDrawableOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-XML VectorDrawable.
+XML الخاص بـ VectorDrawable.
 
-## Examples
+## أمثلة
 
-**رمز مستند إلى الضربة (Lucide) ينبعث strokeColor**
+**أيقونة قائمة على الضرب (Lucide) تصدر strokeColor**
 
 ```ts
 import { toVectorDrawable } from "@pantoken/core";
@@ -43,7 +42,7 @@ const xml = toVectorDrawable(
 // → <vector …> with android:strokeColor and android:pathData="M5 12h14"
 ```
 
-**رمز مستند إلى الملء (Custom) بلون صبغة ينبعث fillColor**
+**أيقونة قائمة على التعبئة (Custom) بلون صبغة تُصدر fillColor**
 
 ```ts
 import { toVectorDrawable } from "@pantoken/core";

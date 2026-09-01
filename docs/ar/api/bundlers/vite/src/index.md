@@ -2,26 +2,25 @@
 
 # vite
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/vite` — مكون إضافي Vite لـ pantoken.
+`@pantoken/vite` — ملحق Vite لـ pantoken.
 
-يفضح وحدتين افتراضيين بحيث تستهلك التطبيقات الرموز دون استيراد الحزم الكبيرة
-مباشرة، ويمكن حقن ورقة النمط تلقائياً في إدخال HTML:
+يُعرِض وحدتين افتراضيتين حتى تستهلك التطبيقات الرموز دون استيراد الحزم الكبيرة\nمباشرةً، ويمكنه حقن ورقة الأنماط تلقائيًا في مدخل HTML:
 
-- `virtual:pantoken/css` — سلسلة ورقة النمط (التصدير الافتراضي).
-- `virtual:pantoken/tokens` — IR الرمز المحلول (`tokens` مسمى + التصدير الافتراضي).
+- `virtual:pantoken/css` — سلسلة ورقة الأنماط (التصدير الافتراضي).
+- `virtual:pantoken/tokens` — تمثيل IR للرموز المحلولة (`tokens` مسمّى + التصدير الافتراضي).
 
-## Interfaces
+## واجهات
 
 - [PantokenViteOptions](interfaces/PantokenViteOptions.md)
 
-## Functions
+## الدوال
 
 - [pantoken](functions/pantoken.md)
 
-## References
+## المراجع
 
 ### default
 
-إعادة تسمية وإعادة تصدير [pantoken](functions/pantoken.md)
+يعيد تسمية ويعيد تصدير [pantoken](functions/pantoken.md)

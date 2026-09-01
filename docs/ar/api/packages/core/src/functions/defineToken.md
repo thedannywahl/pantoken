@@ -1,26 +1,26 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / defineToken
 
-# Function: defineToken()
+# دالة: defineToken()
 
 > **defineToken**(`input`): [`Token`](../interfaces/Token.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء [Token](../interfaces/Token.md) مشكل بالكامل من إدخال جزئي، الافتراضي `inherits` و`syntax`.
+بناء [Token](../interfaces/Token.md) مكتمل من مدخل جزئي، مع افتراض القيم الافتراضية لـ `inherits` و `syntax`.
 
-## Parameters
+## المعلمات
 
 ### input
 
 [`TokenInput`](../interfaces/TokenInput.md)
 
-## Returns
+## القيم المرجعة
 
 [`Token`](../interfaces/Token.md)
 
-## Examples
+## أمثلة
 
-**شم بناء الجملة من قيمة ملموسة**
+**استنتاج الصياغة من قيمة ملموسة**
 
 ```ts
 import { defineToken } from "@pantoken/core";
@@ -29,7 +29,7 @@ defineToken({ name: "--instui-color-x", value: "#0374B5" });
 // → { name: "--instui-color-x", syntax: "<color>", inherits: true, value: "#0374B5" }
 ```
 
-**قيمة var() واحدة تسجل refersTo؛ light-dark() يعين المظهر**
+**قيمة var() واحدة تسجل refersTo؛ و light-dark() تضبط themed**
 
 ```ts
 import { defineToken } from "@pantoken/core";

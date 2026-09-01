@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / pantokenHtmlCompletion
 
-# Function: pantokenHtmlCompletion()
+# دالة: pantokenHtmlCompletion()
 
 > **pantokenHtmlCompletion**(`options`): `Extension`
 
-إنشاء امتداد الإكمال التلقائي CodeMirror 6 لـ pantoken HTML.
-يوفر إكمالات لأسماء المكونات ومعدلاتها.
+إنشاء امتداد إكمال تلقائي لـ CodeMirror 6 لـ pantoken HTML.
+يوفر اقتراحات لإكمال أسماء المكونات والمعدِّلات الخاصة بها.
 
 الاستخدام:
-new EditorView({
-extensions: [
-basicSetup,
-html(),
-pantokenHtmlCompletion({ model }),
-],
-});
+  new EditorView({
+    extensions: [
+      basicSetup,
+      html(),
+      pantokenHtmlCompletion({ model }),
+    ],
+  });
 
-## Parameters
+## المعلمات
 
 ### options
 
 `AutocompleteOptions`
 
-## Returns
+## القيم المرجعة
 
 `Extension`

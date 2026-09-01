@@ -1,27 +1,27 @@
 [pantoken](../../../../index.md) / [design/figma/src](../index.md) / ToFigmaOptions
 
-# Interface: ToFigmaOptions
+# واجهة: ToFigmaOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toFigmaVariables](../functions/toFigmaVariables.md).
+خيارات لـ [toFigmaVariables](../functions/toFigmaVariables.md).
 
-## Properties
+## الخصائص
 
 ### collection?
 
 > `optional` **collection?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-اسم المجموعة (افتراضي `"Instructure"`).
+اسم المجموعة (الافتراضي `"Instructure"`).
 
----
+***
 
 ### modes?
 
 > `optional` **modes?**: \[`string`, `string`\]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أسماء الأوضاع، المعينة إلى جوانب `light-dark()` (افتراضي `["light", "dark"]`).
+أسماء الوضعيات، مُربطة بجوانب `light-dark()` (الافتراضي `["light", "dark"]`).

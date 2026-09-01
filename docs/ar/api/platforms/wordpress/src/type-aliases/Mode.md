@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [platforms/wordpress/src](../index.md) / Mode
 
-# Type Alias: Mode
+# اسم نوع مستعار: Mode
 
 > **Mode** = `"light"` \| `"dark"`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-وضع اللون المراد تحديده عند تسطيح قيم `light-dark()`.
+نمط اللون الذي يجب حله عند تسطيح قيم `light-dark()`.

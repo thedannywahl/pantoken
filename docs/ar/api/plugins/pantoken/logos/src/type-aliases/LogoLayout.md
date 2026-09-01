@@ -1,9 +1,9 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / LogoLayout
 
-# Type Alias: LogoLayout
+# اسم نوع مستعار: LogoLayout
 
 > **LogoLayout** = `"horizontal"` \| `"icon"` \| `"icon-single-dot"` \| `"icon-three-dot"` \| `"stacked"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تخطيط الشعار — ترتيب العلامة والكلمة.
+تخطيط الشعار — ترتيب العلامة والعلامة النصية.

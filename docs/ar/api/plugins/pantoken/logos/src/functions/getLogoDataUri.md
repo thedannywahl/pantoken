@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/logos/src](../index.md) / getLogoDataUri
 
-# Function: getLogoDataUri()
+# دالة: getLogoDataUri()
 
 > **getLogoDataUri**(`product`, `layout?`, `colorMode?`): `string` \| `undefined`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-احصل على شعار كـ URI `data:image/svg+xml` base64.
+الحصول على شعار كـ URI `data:image/svg+xml` مُرمّز بصيغة base64.
 
-## Parameters
+## المعلمات
 
 ### product
 
@@ -28,15 +28,15 @@
 
 معالجة اللون (الافتراضي `"full-color"`).
 
-## Returns
+## القيم المرجعة
 
 `string` \| `undefined`
 
-URI البيانات، أو `undefined` إذا كان هذا المزيج غير موجود.
+URI البيانات، أو `undefined` إذا لم تكن تلك التركيبة موجودة.
 
-## Example
+## مثال
 
-**استخدم شعارًا كـ src \<img\>**
+**استخدم شعارًا كمصدر \<img\> src**
 
 ```ts
 import { getLogoDataUri } from "@pantoken/plugin-logos";

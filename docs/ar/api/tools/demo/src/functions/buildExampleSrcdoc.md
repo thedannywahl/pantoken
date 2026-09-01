@@ -1,18 +1,18 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / buildExampleSrcdoc
 
-# Function: buildExampleSrcdoc()
+# دالة: buildExampleSrcdoc()
 
 > **buildExampleSrcdoc**(`html`, `options`): `string`
 
-بناء سلسلة وثيقة `<!doctype html>` الكاملة لمعاينة مثال حي معزولة.
+إنشاء سلسلة المستند الكاملة `<!doctype html>` لمعاينة مثال حي معزول.
 
-## Parameters
+## المعلمات
 
 ### html
 
 `string`
 
-ترميز المثال الخام (حرفياً من سياجه المصدري).
+العلامات الخام للمثال (حرفيًا من سياج المصدر الخاص به).
 
 ### options
 
@@ -20,19 +20,19 @@
 
 [ExampleSrcdocOptions](../interfaces/ExampleSrcdocOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 
-سلسلة الوثيقة — مررها عبر [escapeSrcdoc](escapeSrcdoc.md) قبل استخدامها كـ iframe
-قيمة سمة `srcdoc`.
+سلسلة المستند — مررها عبر [escapeSrcdoc](escapeSrcdoc.md) قبل استخدامها كقيمة سمة
+`srcdoc` داخل iframe.
 
-## Example
+## مثال
 
 ```ts
 import { buildExampleSrcdoc, escapeSrcdoc } from "@pantoken/demo";
 
-const doc = buildExampleSrcdoc('<button class="instui-button">Save</button>', {
+const doc = buildExampleSrcdoc("<button class=\"instui-button\">Save</button>", {
   cssUrls: ["/demos-assets/components.css"],
 });
 const iframe = `<iframe class="pantoken-demo__frame css-example" sandbox="allow-scripts" srcdoc="${escapeSrcdoc(doc)}"></iframe>`;

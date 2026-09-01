@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [platforms/drupal/src](../index.md) / toDrupalTheme
 
-# Function: toDrupalTheme()
+# دالة: toDrupalTheme()
 
 > **toDrupalTheme**(`options?`): [`DrupalFile`](../interfaces/DrupalFile.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء الملفات لموضوع فرعي Drupal يقوم بتحميل علامات Instructure.
+بناء الملفات لموضوع فرعي في Drupal يقوم بتحميل رموز Instructure.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,13 +16,13 @@
 
 [ToDrupalThemeOptions](../interfaces/ToDrupalThemeOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`DrupalFile`](../interfaces/DrupalFile.md)[]
 
-ملفات الموضوع، المسارات النسبية لدليل الموضوع.
+ملفات القالب، المسارات نسبية إلى دليل القالب.
 
-## Examples
+## أمثلة
 
 **بناء وكتابة موضوع فرعي مستقل**
 
@@ -40,7 +40,7 @@ for (const { path, content } of files) {
 }
 ```
 
-**بناء موضوع فرعي فوق موضوع أساسي**
+**بناء موضوع فرعي فوق قالب أساسي**
 
 ```ts
 import { toDrupalTheme } from "@pantoken/drupal";

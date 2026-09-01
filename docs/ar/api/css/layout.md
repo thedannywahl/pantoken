@@ -1,16 +1,16 @@
 # CSS: layout
 
-`.--display-flex` — أدوات العرض ومحاذاة النص — `.--display-&lt;value&gt;` و `.--text-align-&lt;value&gt;` — كفئات قابلة للتكوين عالمية، قابلة للاستخدام بشكل فردي أو مرتبطة بأي مكون.
+`.--display-flex` — أدوات العرض ومحاذاة النص — `.--display-&lt;value&gt;` و `.--text-align-&lt;value&gt;` — كفئات عالمية قابلة للتركيب، قابلة للاستخدام بمفردها أو متسلسلة على أي مكوّن.
 
 **المصدر:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/layout/index.ts)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/utilities.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="--display-flex --text-align-center">
@@ -19,10 +19,11 @@
 </div>
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier          | Description                                                                      |
-| ----------------- | -------------------------------------------------------------------------------- |
-| `.--display-flex` | يعيّن `display: flex`.                                                           |
-| `.--display-*`    | أدوات العرض: `block`، `inline-block`، `inline`، `flex`، `inline-flex`، و `none`. |
-| `.--text-align-*` | أدوات محاذاة النص: `start`، `center`، `end`، و `justify`.                        |
+| معدّل | الوصف |
+| --- | --- |
+| `.--display-flex` | يضبط `display: flex`. |
+| `.--display-*` | أدوات العرض: `block`, `inline-block`, `inline`, `flex`, `inline-flex`، و `none`. |
+| `.--text-align-*` | أدوات محاذاة النص: `start`, `center`, `end`، و `justify`. |
+

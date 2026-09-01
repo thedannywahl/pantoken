@@ -1,24 +1,24 @@
 [pantoken](../../../../index.md) / [renderers/react/src](../index.md) / Icon
 
-# Function: Icon()
+# دالة: Icon()
 
 > **Icon**(`__namedParameters`): `ReactNode`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-عرض رمز Instructure كعنصر مخصص `&lt;instui-icon&gt;`.
+عرض أيقونة Instructure كعنصر مخصص `&lt;instui-icon&gt;`.
 
-## Parameters
+## المعلمات
 
 ### \_\_namedParameters
 
 [`IconProps`](../interfaces/IconProps.md)
 
-## Returns
+## القيم المرجعة
 
 `ReactNode`
 
-## Example
+## مثال
 
 ```tsx
 import { Icon } from "@pantoken/react";

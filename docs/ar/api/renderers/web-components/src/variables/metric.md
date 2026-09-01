@@ -1,15 +1,15 @@
 [pantoken](../../../../index.md) / [renderers/web-components/src](../index.md) / metric
 
-# Variable: metric
+# متغير: metric
 
 > `const` **metric**: [`ElementDefinition`](../interfaces/ElementDefinition.md)
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Alpha</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">ألفا</span>
 
-`&lt;instui-metric&gt;` — إحصائية معنونة: `value` كبيرة فوق `label` أصغر. يأتي كلاهما من
-السمات (مهروبة)، وليس الفتحات.
+`&lt;instui-metric&gt;` — إحصاء معنّون: `value` كبير فوق `label` أصغر. كلاهما يأتيان من
+attributes (escaped)، وليس من slots.
 
-## Example
+## مثال
 
 ```html
 <instui-metric value="1,024" label="Enrolled"></instui-metric>

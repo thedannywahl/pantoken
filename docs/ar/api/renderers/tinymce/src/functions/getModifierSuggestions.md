@@ -1,13 +1,13 @@
 [pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / getModifierSuggestions
 
-# Function: getModifierSuggestions()
+# دالة: getModifierSuggestions()
 
 > **getModifierSuggestions**(`entryName`, `prefix?`): `object`[]
 
-احصل على جميع اقتراحات المعدل لمكون/أداة، مُفلترة حسب بادئة اختيارية.
-يرجع مصفوفة من كائنات `{ name, prop, value?, description }`.
+الحصول على جميع اقتراحات المُعدِّل للمكوِّن/الأداة المساعدة، مُصفاة وفقًا لبادئة اختيارية.
+تعيد مصفوفة من كائنات `{ name, prop, value?, description }`.
 
-## Parameters
+## المعلمات
 
 ### entryName
 
@@ -17,6 +17,6 @@
 
 `string`
 
-## Returns
+## القيم المرجعة
 
 `object`[]

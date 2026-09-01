@@ -2,16 +2,16 @@
 
 # swatches
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-`@pantoken/swatches` — تصدير ألوان Instructure كلوحات عينات للمصمم.
+`@pantoken/swatches` — تصدير ألوان Instructure كلوحات عينات ألوان للمصممين.
 
-العينات هي تقليل مسطح للرموز إلى ألوان مسماة، يتم تسليمها _مباشرة إلى المصمم_
-للاستيراد في أداته. هذا ليس تنسيق تبادل (استخدم `@pantoken/dtcg` أو
-`@pantoken/figma` لهذا) — إنه ملف لوحة نهائي: Adobe ASE أو GIMP `.gpl` أو Sketch
+العينات هي تقليص مسطح للرموز إلى ألوان مسماة، يتم تسليمها *مباشرةً إلى المصمم*
+ليقوم باستيرادها في أداته. هذا ليس تنسيق تبادل (استخدم `@pantoken/dtcg` أو
+`@pantoken/figma` لذلك) — إنه ملف لوحة نهائي: Adobe ASE، GIMP `.gpl`، أو Sketch
 `.sketchpalette`.
 
-## Interfaces
+## واجهات
 
 - [ToGplOptions](interfaces/ToGplOptions.md)
 - [Swatch](interfaces/Swatch.md)
@@ -19,15 +19,15 @@
 - [SketchPalette](interfaces/SketchPalette.md)
 - [ToSvgOptions](interfaces/ToSvgOptions.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [Mode](type-aliases/Mode.md)
 
-## Variables
+## المتغيرات
 
 - [swatches](variables/swatches.md)
 
-## Functions
+## الدوال
 
 - [toAse](functions/toAse.md)
 - [toGpl](functions/toGpl.md)

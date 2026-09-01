@@ -1,37 +1,37 @@
 [pantoken](../../../../../index.md) / [plugins/pantoken/layouts/src](../index.md) / PageLayout
 
-# Interface: PageLayout
+# واجهة: PageLayout
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تخطيط صفحة البداية: تكوين بسيط من المكونات الموجودة، بدون محددات CSS جديدة.
+تخطيط صفحة بداية: تركيب بسيط من المكونات الموجودة، بدون محددات CSS جديدة.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-معرّف مستقر، يطابق اسم ملف المصدر (على سبيل المثال `"hero"`).
+معرّف ثابت، يطابق اسم ملف المصدر (مثال `"hero"`).
 
----
+***
 
 ### title
 
 > **title**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-التسمية الموضحة في محدد التخطيط.
+التسمية المعروضة في مُحدِّد التخطيط.
 
----
+***
 
 ### html
 
 > **html**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-HTML خام للتخطيط، مبني من فئات `@pantoken/components`.
+كود HTML خام للتخطيط، مبني من أصناف `@pantoken/components`.

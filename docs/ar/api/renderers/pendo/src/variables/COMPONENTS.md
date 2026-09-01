@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/pendo/src](../index.md) / COMPONENTS
 
-# Variable: COMPONENTS
+# متغير: COMPONENTS
 
 > `const` **COMPONENTS**: readonly `ComponentLayer`[]
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-CSS المكون بترتيب التسلسل (يتم التعامل مع طبقات `tokens` و `vars` بشكل منفصل).
+CSS الخاص بالمكوّن بترتيب التراكم (الطبقتان `tokens` و `vars` تتم معالجتهما بشكل منفصل).

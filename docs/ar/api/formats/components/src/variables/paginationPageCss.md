@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [formats/components/src](../index.md) / paginationPageCss
 
-# Variable: paginationPageCss
+# متغير: paginationPageCss
 
 > `const` **paginationPageCss**: `Definition`\[`"css"`\] = `paginationPage.css`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة أنماط `pagination.page` مستقلة.
+ملف أنماط مستقل `pagination.page`.

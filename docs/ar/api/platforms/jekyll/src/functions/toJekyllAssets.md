@@ -1,21 +1,21 @@
 [pantoken](../../../../index.md) / [platforms/jekyll/src](../index.md) / toJekyllAssets
 
-# Function: toJekyllAssets()
+# دالة: toJekyllAssets()
 
 > **toJekyllAssets**(): [`JekyllFile`](../interfaces/JekyllFile.md)[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء ملفات أصول الرموز لموقع Jekyll (المسارات نسبية إلى جذر الموقع).
+بناء ملفات أصول الرموز لموقع Jekyll (المسارات نسبةً إلى جذر الموقع).
 
-## Returns
+## القيم المرجعة
 
 [`JekyllFile`](../interfaces/JekyllFile.md)[]
 
-جزء Sass (`_sass/pantoken.scss`)، ورقة الأنماط العادية
-(`assets/css/pantoken.css`)، وورقة أنماط النثر (`assets/css/pantoken-prose.css`).
+مقطع Sass الجزئي (`_sass/pantoken.scss`), ملف الأنماط العادي
+(`assets/css/pantoken.css`), وملف أنماط النص (`assets/css/pantoken-prose.css`).
 
-## Example
+## مثال
 
 **اكتب الأصول تحت جذر الموقع**
 

@@ -1,23 +1,23 @@
 # CSS: drawer-layout
 
-`.instui-drawer-layout` — تخطيط منقسم مع درج جانبي قابل للطي وجزء محتوى قابل للتمرير الأساسي.
+`.instui-drawer-layout` — تخطيط منقسم مع درج جانبي قابل للطي ولوحة محتوى أساسية قابلة للتمرير.
 
-`-placement-end` والافتراضي (البداية) كلاهما يستخدم الخصائص المنطقية `flex-direction`/`inset-inline-*`، وليس `left`/`right`، لذا يتبع جانب الدرج `direction`/`dir="rtl"` تلقائياً — لا توجد قواعد RTL منفصلة مطلوبة.
+`-placement-end` والافتراضي (start) كلاهما يستخدم خصائص منطقية `flex-direction`/`inset-inline-*`، وليس `left`/`right`، لذا يتبع جانب الدرج `direction`/`dir="rtl"` تلقائيًا — لا حاجة لقواعد RTL منفصلة.
 
 **المصدر:** [drawer-layout.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/drawer-layout/drawer-layout.css)
 
-## Accessibility
+## سهولة الوصول
 
-عندما يعمل الدرج كملاحة، قم بتسميته بعنوان يمكن الوصول إليه أو `aria-label`. امنح `.content` `role="region"` (اتفاقية InstUI's DrawerLayout) وسمه باستخدام `aria-label`/`aria-labelledby` عندما لا يحدد السياق وحده.
+عندما يعمل الدرج كنافِذِة تنقلية، ضع عليه عنوانًا مُتاحًا أو `aria-label`. امنح `.content` `role="region"` (اتفاقية InstUI لـ DrawerLayout) وسمه بـ `aria-label`/`aria-labelledby` عندما لا يحدد السياق وحده هويته.
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/components.css";
 @import "@pantoken/components/drawer-layout.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="instui-drawer-layout" id="drawer" open>
@@ -26,7 +26,7 @@
 </div>
 ```
 
-## Structure
+## الهيكل
 
 ```text
 .instui-drawer-layout
@@ -49,39 +49,40 @@ flowchart TD
   classDef cssdoc-component fill:#fff7ed,stroke:#fb923c,color:#7c2d12;
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier                | Description                                                                                                                                                     |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `.-open`                | عرض الدرج حتى عند غياب السمة `open`.                                                                                                                            |
-| `.-placement-end`       | إرساء الدرج على جانب نهاية السطر.                                                                                                                               |
-| `.-placement-start`     | إرساء الدرج على جانب بداية السطر (الافتراضي؛ يعينه بوضوح).                                                                                                      |
+| معدّل | الوصف |
+| --- | --- |
+| `.-open` | اعرض الدرج حتى عندما يكون السمة `open` غائبة. |
+| `.-placement-end` | ثبت الدرج على جهة النهاية المضمنة. |
+| `.-placement-start` | ثبت الدرج على جهة البداية المضمنة (الافتراضي؛ يتم تعيينه صراحة). |
 | `.-should-overlay-tray` | <span class="instui-pill pantoken-doc-tag pantoken-doc-tag-interaction">Interaction</span> — Render the tray as an overlay instead of shrinking content inline. |
 
-## Parts
+## الأجزاء
 
-| Part       | Description    |
-| ---------- | -------------- |
-| `.content` | الجزء الرئيسي. |
-| `.tray`    | لوحة جانبية.   |
+| جزء | الوصف |
+| --- | --- |
+| `.content` | اللوحة الرئيسية. |
+| `.tray` | لوحة الجانب. |
 
-## Custom properties
+## خصائص مخصّصة
 
-| Property           | Type | Default | Description                                                 |
-| ------------------ | ---- | ------- | ----------------------------------------------------------- |
-| `--pantoken-bp-md` | —    | —       | حد عرض وضع التراكب (`30em`، موضوع من خلال أدوات الاستجابة). |
+| خاصية | نوع | افتراضي | الوصف |
+| --- | --- | --- | --- |
+| `--pantoken-bp-md` | — | — | عتبة العرض لوضع التراكب (`30em`، م temática عبر أدوات الاستجابة). |
 
-## Browser support
+## دعم المتصفّح
 
-- ينتقل الأعضاء `drawer-layout.tray`/`drawer-layout.content` إلى وضع التراكب تلقائياً عبر استعلام `@container` بمجرد انخفاض حجم السطر لهذا العنصر عن عرض الدرج + `--pantoken-bp-md`. يقوم السلوك `@pantoken/interactions` بالتبديل الإضافي لـ `[should-overlay-tray]`/`.-should-overlay-tray` (استبدال يدوي) وإصدار `overlaytraychange` للتطبيقات التي تحتاج إلى التغيير كحدث.
+- يتحوّل أعضاء `drawer-layout.tray`/`drawer-layout.content` تلقائيًا إلى وضع التراكب عبر استعلام `@container` بمجرد أن ينخفض الحجم المضمن لهذا العنصر إلى ما دون عرض الدرج + `--pantoken-bp-md`. كما يقوم السلوك `@pantoken/interactions` بتبديل `[should-overlay-tray]`/`.-should-overlay-tray` (تجاوز يدوي) ويطلق `overlaytraychange` للتطبيقات التي تحتاج التغيير كحدث.
 
-## Subcomponents
+## مكونات فرعية
 
 - [drawer-layout.content](/ar/api/css/drawer-layout.content.md)
 - [drawer-layout.tray](/ar/api/css/drawer-layout.tray.md)
 - [tray](/ar/api/css/tray.md)
 
-## Related
+## ذات صلة
 
-- [tray](/ar/api/css/tray.md) — تراكب حافة مستقل؛ يحافظ هذا التخطيط على الدرج والمحتوى في نفس التدفق.
-- [context-view](/ar/api/css/context-view.md) — سطح مرساة أصغر للإجراءات السياقية والتفاصيل.
+- [tray](/ar/api/css/tray.md) — تراكب حافَة مستقل؛ يحافظ هذا التخطيط على الدرج والمحتوى في نفس التدفق.
+- [context-view](/ar/api/css/context-view.md) — سطح مُثَبَّت أصغر لإجراءات السياق والتفاصيل.
+

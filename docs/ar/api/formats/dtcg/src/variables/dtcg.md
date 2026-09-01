@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [formats/dtcg/src](../index.md) / dtcg
 
-# Variable: dtcg
+# متغير: dtcg
 
 > `const` **dtcg**: `DtcgDoc`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مظهر `rebrand` كمستند DTCG (الافتراضي).
+السمة `rebrand` كوثيقة DTCG (الإعداد الافتراضي).
 
-## Example
+## مثال
 
 ```ts
 import { dtcg } from "@pantoken/dtcg";

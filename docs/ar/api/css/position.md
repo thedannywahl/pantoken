@@ -1,27 +1,28 @@
 # CSS: position
 
-`.--position-relative` — `position` كفئة قابلة للتكوين وعامة — `.--position-&lt;value&gt;` — قابلة للاستخدام بشكل عاري أو متسلسلة على أي مكون (`.instui-button.--position-relative`).
+`.--position-relative` — `position` كصنف مركب وعالمي — `.--position-&lt;value&gt;` — قابل للاستخدام بمفرده أو متسلسلًا على أي مكوّن (`.instui-button.--position-relative`).
 
 **المصدر:** [index.ts](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/utilities/position/index.ts)
 
-## Usage
+## الاستخدام
 
 ```css
 @import "@pantoken/components/utilities.css";
 ```
 
-## Examples
+## أمثلة
 
 ```html
 <div class="--position-relative">…</div>
 ```
 
-## Modifiers
+## المعدّلات
 
-| Modifier               | Description   |
-| ---------------------- | ------------- |
+| معدّل | الوصف |
+| --- | --- |
 | `.--position-absolute` | الموضع: مطلق. |
-| `.--position-fixed`    | الموضع: ثابت. |
+| `.--position-fixed` | الموضع: ثابت. |
 | `.--position-relative` | الموضع: نسبي. |
-| `.--position-static`   | الموضع: ثابت. |
-| `.--position-sticky`   | الموضع: لزج.  |
+| `.--position-static` | الموضع: ثابت (static). |
+| `.--position-sticky` | الموضع: لاصق. |
+

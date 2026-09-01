@@ -1,47 +1,47 @@
 [pantoken](../../../../index.md) / [packages/core/src](../index.md) / TokenModify
 
-# Interface: TokenModify
+# واجهة: TokenModify
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-معدِّل لون Tokens Studio (`$extensions."studio.tokens".modify`).
+مُعدّل لون في Tokens Studio (`$extensions."studio.tokens".modify`).
 
-## Properties
+## الخصائص
 
 ### type
 
 > **type**: `"darken"` \| `"lighten"` \| `"alpha"` \| `"mix"`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-التعديل المطبق على اللون المحلول.
+التعديل المطبق على اللون المحلل.
 
----
+***
 
 ### value
 
 > **value**: `number`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مبلغ المعدِّل، `0`–`1`.
+مقدار المُعدّل، `0`–`1`.
 
----
+***
 
 ### space?
 
 > `optional` **space?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مساحة اللون التي يعمل فيها المعدل (على سبيل المثال `"hsl"`).
+مساحة اللون التي يعمل فيها المُعدّل (مثال: `"hsl"`).
 
----
+***
 
 ### color?
 
 > `optional` **color?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 اللون الثاني، لـ `mix`.

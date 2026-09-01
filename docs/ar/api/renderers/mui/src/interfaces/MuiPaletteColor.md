@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [renderers/mui/src](../index.md) / MuiPaletteColor
 
-# Interface: MuiPaletteColor
+# واجهة: MuiPaletteColor
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-إدخال لوحة ألوان MUI ([https://mui.com/material-ui/customization/palette/](https://mui.com/material-ui/customization/palette/)).
+إدخال لون في لوحة ألوان MUI ([https://mui.com/material-ui/customization/palette/](https://mui.com/material-ui/customization/palette/)).
 
-## Properties
+## الخصائص
 
 ### main
 
 > **main**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### contrastText?
 
 > `optional` **contrastText?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

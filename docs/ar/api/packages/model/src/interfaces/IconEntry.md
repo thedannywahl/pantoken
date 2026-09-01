@@ -1,57 +1,57 @@
 [pantoken](../../../../index.md) / [packages/model/src](../index.md) / IconEntry
 
-# Interface: IconEntry
+# واجهة: IconEntry
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-رمز تم حله، كما يتم إرجاعه بواسطة [IconResolver](../type-aliases/IconResolver.md).
+أيقونة مُحللة، كما يُرجعها [IconResolver](../type-aliases/IconResolver.md).
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم الرمز / الكود.
+اسم/رمز الأيقونة.
 
----
+***
 
 ### svg?
 
 > `optional` **svg?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-علامات SVG المضمنة، عند توفرها.
+وسم SVG المضمّن، عند التوفر.
 
----
+***
 
 ### path?
 
 > `optional` **path?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بيانات مسار SVG، للرموز التجارية بمسار واحد.
+بيانات مسار SVG، لأيقونات العلامة التجارية ذات المسار الواحد.
 
----
+***
 
 ### viewBox?
 
 > `optional` **viewBox?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-SVG `viewBox` (الافتراضي `"0 0 24 24"`).
+الـ SVG `viewBox` (الافتراضي `"0 0 24 24"`).
 
----
+***
 
 ### source?
 
 > `optional` **source?**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المزود الذي أنتج هذا الإدراج.
+المزوِّد الذي أنشأ هذا الإدخال.

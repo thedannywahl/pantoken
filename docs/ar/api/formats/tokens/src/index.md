@@ -2,13 +2,14 @@
 
 # tokens
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`@pantoken/tokens` — IR الرمز المحل النهائي، مقدم كـ JSON ثابت.
+`@pantoken/tokens` — تمثيل IR الموحَّد للتوكنات المحلولة، موزَّع كـ JSON ثابت.
 
-التصدير الافتراضي هو موضوع `rebrand`؛ كل موضوع متاح بالاسم وعبر [byTheme](functions/byTheme.md). يوجد JSON الخام لـ Tokens Studio في `@pantoken/tokens/raw`.
+التصدير الافتراضي هو الثيم `rebrand`; كل ثيم متاح بالاسم وعن طريق
+[byTheme](functions/byTheme.md). ملف JSON الخام لـ Tokens Studio موجود في `@pantoken/tokens/raw`.
 
-## Variables
+## المتغيرات
 
 - [tokens](variables/tokens.md)
 - [rebrandTokens](variables/rebrandTokens.md)
@@ -16,30 +17,30 @@
 - [canvasHighContrastTokens](variables/canvasHighContrastTokens.md)
 - [themes](variables/themes.md)
 
-## Functions
+## الدوال
 
 - [byTheme](functions/byTheme.md)
 
-## References
+## المراجع
 
 ### Theme
 
-إعادة تصدير [Theme](../../../packages/core/src/type-aliases/Theme.md)
+يعيد تصدير [Theme](../../../packages/core/src/type-aliases/Theme.md)
 
----
+***
 
 ### Token
 
-إعادة تصدير [Token](../../../packages/core/src/interfaces/Token.md)
+يعيد تصدير [Token](../../../packages/core/src/interfaces/Token.md)
 
----
+***
 
 ### TokenMeta
 
-إعادة تصدير [TokenMeta](../../../packages/core/src/interfaces/TokenMeta.md)
+يعيد تصدير [TokenMeta](../../../packages/core/src/interfaces/TokenMeta.md)
 
----
+***
 
 ### TokenModify
 
-إعادة تصدير [TokenModify](../../../packages/core/src/interfaces/TokenModify.md)
+يعيد تصدير [TokenModify](../../../packages/core/src/interfaces/TokenModify.md)

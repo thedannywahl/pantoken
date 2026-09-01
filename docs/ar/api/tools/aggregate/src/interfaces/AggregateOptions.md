@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [tools/aggregate/src](../index.md) / AggregateOptions
 
-# Interface: AggregateOptions
+# واجهة: AggregateOptions
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات [aggregate](../functions/aggregate.md).
+خيارات لـ [aggregate](../functions/aggregate.md).
 
-## Properties
+## الخصائص
 
 ### metaDir
 
 > **metaDir**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-دليل حزمة البيانات الوصفية (يحتوي على `package.json` و`src/`).
+دليل meta package (يحتوي على `package.json` و `src/`).

@@ -1,20 +1,20 @@
 [pantoken](../../../../index.md) / [bundlers/next/src](../index.md) / withPantoken
 
-# Function: withPantoken()
+# دالة: withPantoken()
 
 > **withPantoken**(`nextConfig?`, `options?`): [`NextConfigLike`](../interfaces/NextConfigLike.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-لف إعدادات Next.js بحيث يتم نقل حزم Instructure UI.
+تغليف تكوين Next.js بحيث يتم تحويل حزم Instructure UI.
 
-## Parameters
+## المعلمات
 
 ### nextConfig?
 
 [`NextConfigLike`](../interfaces/NextConfigLike.md) = `{}`
 
-إعدادات Next الموجودة (الافتراضي `{}`).
+التكوين الحالي لـ Next (الافتراضي `{}`).
 
 ### options?
 
@@ -22,15 +22,15 @@
 
 [WithPantokenOptions](../interfaces/WithPantokenOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`NextConfigLike`](../interfaces/NextConfigLike.md)
 
-الإعدادات المعززة.
+التكوين المعزّز.
 
-## Examples
+## أمثلة
 
-**لف ملف next.config.mjs الخاص بك**
+**غلف next.config.mjs الخاص بك**
 
 ```js
 import { withPantoken } from "@pantoken/next";
@@ -38,10 +38,13 @@ import { withPantoken } from "@pantoken/next";
 export default withPantoken({ reactStrictMode: true });
 ```
 
-**نقل حزم InstUI الإضافية**
+**قم بتحويل حزم InstUI الإضافية**
 
 ```js
 import { withPantoken } from "@pantoken/next";
 
-export default withPantoken({ reactStrictMode: true }, { transpile: ["@instructure/ui-modal"] });
+export default withPantoken(
+  { reactStrictMode: true },
+  { transpile: ["@instructure/ui-modal"] },
+);
 ```

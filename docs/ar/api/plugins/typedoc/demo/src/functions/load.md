@@ -1,14 +1,14 @@
 [pantoken](../../../../../index.md) / [plugins/typedoc/demo/src](../index.md) / load
 
-# Function: load()
+# دالة: load()
 
 > **load**(`app`): `void`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-نقطة دخول TypeDoc. يسجّل ممر وقت الحل الذي يعيد كتابة علامات `@demo` إلى أسوار العرض التوضيحي.
+نقطة دخول TypeDoc. يسجل تمرير وقت الحل الذي يعيد كتابة الوسوم `@demo` إلى حواجز العرض التوضيحي.
 
-## Parameters
+## المعلمات
 
 ### app
 
@@ -16,6 +16,6 @@
 
 تطبيق TypeDoc.
 
-## Returns
+## القيم المرجعة
 
 `void`

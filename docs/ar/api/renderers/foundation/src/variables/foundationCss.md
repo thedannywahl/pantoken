@@ -1,9 +1,9 @@
 [pantoken](../../../../index.md) / [renderers/foundation/src](../index.md) / foundationCss
 
-# Variable: foundationCss
+# متغير: foundationCss
 
 > `const` **foundationCss**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-طبقة CSS للوقت التشغيلي الجاهزة.
+تراكب CSS الجاهز لوقت التشغيل.

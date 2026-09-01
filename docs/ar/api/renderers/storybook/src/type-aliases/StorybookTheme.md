@@ -1,12 +1,12 @@
 [pantoken](../../../../index.md) / [renderers/storybook/src](../index.md) / StorybookTheme
 
-# Type Alias: StorybookTheme
+# اسم نوع مستعار: StorybookTheme
 
 > **StorybookTheme** = `object` & `Record`\<`string`, `string`\>
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-كائن مظهر Storybook (مجموعة جزئية من `ThemeVars`).
+كائن سمة Storybook (جزء فرعي من `ThemeVars`).
 
 ## Type Declaration
 

@@ -2,9 +2,9 @@
 
 # interactions
 
-`@pantoken/interactions` - حزم تفاعل لكل مكون لمكونات InstUI.
+`@pantoken/interactions` - حزم تفاعلية لكل مكوّن لمكونات InstUI.
 
-## Interfaces
+## واجهات
 
 - [ProgressCircleOptions](interfaces/ProgressCircleOptions.md)
 - [ProgressCircleHandle](interfaces/ProgressCircleHandle.md)
@@ -16,16 +16,16 @@
 - [TruncateAutoHandle](interfaces/TruncateAutoHandle.md)
 - [CommandEventish](interfaces/CommandEventish.md)
 
-## Type Aliases
+## أسماء أنواع مستعارة
 
 - [CommandHandler](type-aliases/CommandHandler.md)
 - [OnCommand](type-aliases/OnCommand.md)
 
-## Variables
+## المتغيرات
 
 - [SPACING\_ATTRS](variables/SPACING_ATTRS.md)
 
-## Functions
+## الدوال
 
 - [initCloseButton](functions/initCloseButton.md)
 - [initInPlaceEdit](functions/initInPlaceEdit.md)

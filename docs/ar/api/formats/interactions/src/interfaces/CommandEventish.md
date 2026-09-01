@@ -1,280 +1,280 @@
 [pantoken](../../../../index.md) / [formats/interactions/src](../index.md) / CommandEventish
 
-# Interface: CommandEventish
+# واجهة: CommandEventish
 
-شكل `command`/`source` لأوامر المستدعي `CommandEvent` (غير موجود بعد في أنواع مكتبة DOM).
+الهيكل `command`/`source` الخاص بـ Invoker Commands `CommandEvent` (لم يتم تضمينه بعد في أنواع مكتبة DOM).
 
-## Extends
+## يمتد
 
 - `Event`
 
-## Properties
+## الخصائص
 
 ### command
 
 > **command**: `string`
 
----
+***
 
 ### source
 
 > **source**: `Element` \| `null`
 
----
+***
 
 ### bubbles
 
 > `readonly` **bubbles**: `boolean`
 
-تشير خاصية **`bubbles`** للقراءة فقط من واجهة Event إلى ما إذا كان الحدث يفقاعة عبر شجرة DOM أم لا.
+تُشير الخاصية للقراءة فقط **`bubbles`** في واجهة Event إلى ما إذا كان الحدث يتصاعد عبر شجرة DOM أم لا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)
 
-#### Inherited from
+#### موروث من
 
 `Event.bubbles`
 
----
+***
 
 ### ~~cancelBubble~~
 
 > **cancelBubble**: `boolean`
 
-خاصية **`cancelBubble`** من واجهة Event مهجورة. استخدم Event.stopPropagation() بدلاً من ذلك. يمنع تعيين قيمتها على true قبل العودة من معالج الحدث انتشار الحدث. في التطبيقات اللاحقة، لا يفعل تعيين هذا على false شيئًا. اطلع على Browser compatibility للتفاصيل.
+الخاصية **`cancelBubble`** في واجهة Event مهجورة. استخدم Event.stopPropagation() بدلاً منها. تعيين قيمتها إلى true قبل العودة من معالج الحدث يمنع انتشار الحدث. في تنفيذات لاحقة، تعيينها إلى false لا يفعل شيئًا. راجع التوافق عبر المتصفحات للتفاصيل.
 
-#### Deprecated
+#### مهجور
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)
 
-#### Inherited from
+#### موروث من
 
 `Event.cancelBubble`
 
----
+***
 
 ### cancelable
 
 > `readonly` **cancelable**: `boolean`
 
-تشير خاصية **`cancelable`** للقراءة فقط من واجهة Event إلى ما إذا كان يمكن إلغاء الحدث، وبالتالي منعه كما لو لم يحدث الحدث أبدًا.
+تُشير الخاصية القابلة للقراءة فقط **`cancelable`** في واجهة Event إلى ما إذا كان يمكن إلغاء الحدث، وبالتالي منعه كما لو أن الحدث لم يحدث.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)
 
-#### Inherited from
+#### موروث من
 
 `Event.cancelable`
 
----
+***
 
 ### composed
 
 > `readonly` **composed**: `boolean`
 
-تعيد خاصية **`composed`** للقراءة فقط من واجهة Event قيمة منطقية تشير إلى ما إذا كان الحدث سينتشر عبر حد shadow DOM إلى DOM القياسي أم لا.
+الخاصية القابلة للقراءة فقط **`composed`** في واجهة Event تُرجع قيمة منطقية تشير إلى ما إذا كان الحدث سينتشر عبر حد الظل (shadow DOM) إلى DOM القياسي أم لا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)
 
-#### Inherited from
+#### موروث من
 
 `Event.composed`
 
----
+***
 
 ### currentTarget
 
 > `readonly` **currentTarget**: `EventTarget` \| `null`
 
-تحدد خاصية **`currentTarget`** للقراءة فقط من واجهة Event العنصر الذي تم إرفاق معالج الحدث به.
+تُحدد الخاصية القابلة للقراءة فقط **`currentTarget`** في واجهة Event العنصر الذي تم ربط معالج الحدث به.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)
 
-#### Inherited from
+#### موروث من
 
 [`CommandEventish`](../../../../renderers/web-components/src/interfaces/CommandEventish.md).[`currentTarget`](../../../../renderers/web-components/src/interfaces/CommandEventish.md#currenttarget)
 
----
+***
 
 ### defaultPrevented
 
 > `readonly` **defaultPrevented**: `boolean`
 
-تعيد خاصية **`defaultPrevented`** للقراءة فقط من واجهة Event قيمة منطقية تشير إلى ما إذا كان الاتصال بـ Event.preventDefault() قد ألغى الحدث أم لا.
+تُرجع الخاصية القابلة للقراءة فقط **`defaultPrevented`** في واجهة Event قيمة منطقية تشير إلى ما إذا كانت استدعاء Event.preventDefault() قد ألغى الحدث أم لا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)
 
-#### Inherited from
+#### موروث من
 
 `Event.defaultPrevented`
 
----
+***
 
 ### eventPhase
 
 > `readonly` **eventPhase**: `number`
 
-تشير خاصية **`eventPhase`** للقراءة فقط من واجهة Event إلى أي مرحلة من مراحل تدفق الحدث يتم تقييمها حاليًا.
+تُشير الخاصية القابلة للقراءة فقط **`eventPhase`** في واجهة Event إلى أي مرحلة من تدفق الحدث يتم تقييمها حاليًا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)
 
-#### Inherited from
+#### موروث من
 
 `Event.eventPhase`
 
----
+***
 
 ### isTrusted
 
 > `readonly` **isTrusted**: `boolean`
 
-خاصية **`isTrusted`** للقراءة فقط من واجهة Event هي قيمة منطقية تكون true عندما يتم إنشاء الحدث بواسطة وكيل المستخدم (بما في ذلك من خلال إجراءات المستخدم والطرق البرمجية مثل HTMLElement.focus())، و false عندما يتم توزيع الحدث عبر EventTarget.dispatchEvent(). الاستثناء الوحيد هو حدث النقر، الذي يهيئ خاصية isTrusted على false في وكلاء المستخدم.
+الخاصية القابلة للقراءة فقط **`isTrusted`** في واجهة Event قيمة منطقية تكون true عندما يكون الحدث قد تم إنشاؤه بواسطة وكيل المستخدم (بما في ذلك عبر إجراءات المستخدم وطرق برمجية مثل HTMLElement.focus())، وfalse عندما يتم إرسال الحدث عبر EventTarget.dispatchEvent(). الاستثناء الوحيد هو حدث click، الذي يُهيئ الخاصية isTrusted إلى false في وكلاء المستخدم.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
 
-#### Inherited from
+#### موروث من
 
 `Event.isTrusted`
 
----
+***
 
 ### ~~returnValue~~
 
 > **returnValue**: `boolean`
 
-خاصية الحدث **`returnValue`** تشير إلى ما إذا كان تم منع الإجراء الافتراضي لهذا الحدث أم لا.
+تُشير الخاصية Event **`returnValue`** إلى ما إذا تم منع الإجراء الافتراضي لهذا الحدث أم لا.
 
-#### Deprecated
+#### مهجور
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)
 
-#### Inherited from
+#### موروث من
 
 `Event.returnValue`
 
----
+***
 
 ### ~~srcElement~~
 
 > `readonly` **srcElement**: `EventTarget` \| `null`
 
-الخاصية المهجورة **`Event.srcElement`** هي بديل لخاصية Event.target. استخدم Event.target بدلاً منها.
+الخاصية المهجورة **`Event.srcElement`** هي اختصار لخاصية Event.target. استخدم Event.target بدلًا منها.
 
-#### Deprecated
+#### مهجور
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)
 
-#### Inherited from
+#### موروث من
 
 [`CommandEventish`](../../../../renderers/web-components/src/interfaces/CommandEventish.md).[`srcElement`](../../../../renderers/web-components/src/interfaces/CommandEventish.md#srcelement)
 
----
+***
 
 ### target
 
 > `readonly` **target**: `EventTarget` \| `null`
 
-خاصية **`target`** للقراءة فقط من واجهة الحدث هي مرجع للكائن الذي تم إرسال الحدث إليه. وهي مختلفة عن Event.currentTarget عندما يتم استدعاء معالج الحدث أثناء مرحلة البثّ أو الالتقاط للحدث.
+الخاصية القابلة للقراءة فقط **`target`** في واجهة Event هي مرجع إلى الكائن الذي تم إرسال الحدث إليه. تختلف عن Event.currentTarget عندما يتم استدعاء معالج الحدث خلال مرحلة الانتشار (bubbling) أو الالتقاط (capturing).
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)
 
-#### Inherited from
+#### موروث من
 
 [`CommandEventish`](../../../../renderers/web-components/src/interfaces/CommandEventish.md).[`target`](../../../../renderers/web-components/src/interfaces/CommandEventish.md#target)
 
----
+***
 
 ### timeStamp
 
 > `readonly` **timeStamp**: `number`
 
-خاصية **`timeStamp`** للقراءة فقط من واجهة الحدث تُرجع الوقت (بالميلي ثانية) الذي تم إنشاء الحدث فيه.
+تُرجع الخاصية القابلة للقراءة فقط **`timeStamp`** في واجهة Event الوقت (بالملي ثانية) الذي تم إنشاء الحدث فيه.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)
 
-#### Inherited from
+#### موروث من
 
 `Event.timeStamp`
 
----
+***
 
 ### type
 
 > `readonly` **type**: `string`
 
-خاصية **`type`** للقراءة فقط من واجهة الحدث تُرجع سلسلة نصية تحتوي على نوع الحدث. يتم تعيينها عند إنشاء الحدث وهي الاسم المستخدم عادةً للإشارة إلى حدث معين، مثل click أو load أو error.
+تُرجع الخاصية القابلة للقراءة فقط **`type`** في واجهة Event سلسلة تحتوي نوع الحدث. يتم تعيينها عند إنشاء الحدث وهي الاسم المستخدم عادةً للإشارة إلى الحدث المحدد، مثل click أو load أو error.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)
 
-#### Inherited from
+#### موروث من
 
 `Event.type`
 
----
+***
 
 ### NONE
 
 > `readonly` **NONE**: `0`
 
-#### Inherited from
+#### موروث من
 
 `Event.NONE`
 
----
+***
 
 ### CAPTURING\_PHASE
 
 > `readonly` **CAPTURING\_PHASE**: `1`
 
-#### Inherited from
+#### موروث من
 
 `Event.CAPTURING_PHASE`
 
----
+***
 
 ### AT\_TARGET
 
 > `readonly` **AT\_TARGET**: `2`
 
-#### Inherited from
+#### موروث من
 
 `Event.AT_TARGET`
 
----
+***
 
 ### BUBBLING\_PHASE
 
 > `readonly` **BUBBLING\_PHASE**: `3`
 
-#### Inherited from
+#### موروث من
 
 `Event.BUBBLING_PHASE`
 
-## Methods
+## الطرق
 
 ### composedPath()
 
 > **composedPath**(): `EventTarget`[]
 
-طريقة **`composedPath()`** من واجهة الحدث تُرجع مسار الحدث وهي مصفوفة من الكائنات التي سيتم استدعاء المستمعين عليها. وهذا لا يشمل العُقد في الأشجار المخفية إذا تم إنشاء جذر الظل مع ShadowRoot.mode مغلق.
+تُرجع طريقة **`composedPath()`** في واجهة Event مسار الحدث، وهو مصفوفة من الكائنات التي سيتم استدعاء المستمعين عليها. هذا لا يشمل العقد داخل أشجار الظل إذا تم إنشاء جذر الظل (shadow root) بوضع ShadowRoot.mode مغلق.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)
 
-#### Returns
+#### القيم المرجعة
 
 `EventTarget`[]
 
-#### Inherited from
+#### موروث من
 
 `Event.composedPath`
 
----
+***
 
 ### ~~initEvent()~~
 
 > **initEvent**(`type`, `bubbles?`, `cancelable?`): `void`
 
-تُستخدم طريقة **`Event.initEvent()`** لتهيئة قيمة حدث تم إنشاؤه باستخدام Document.createEvent().
+تُستخدم الطريقة **`Event.initEvent()`** لتهيئة قيمة حدث تم إنشاؤه باستخدام Document.createEvent().
 
-#### Parameters
+#### المعلمات
 
 ##### type
 
@@ -288,68 +288,68 @@
 
 `boolean`
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
-#### Deprecated
+#### مهجور
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)
 
-#### Inherited from
+#### موروث من
 
 `Event.initEvent`
 
----
+***
 
 ### preventDefault()
 
 > **preventDefault**(): `void`
 
-طريقة **`preventDefault()`** من واجهة الحدث تخبر وكيل المستخدم أن الحدث يتم التعامل معه بشكل صريح، لذلك لا يجب تنفيذ إجراؤه الافتراضي، مثل التمرير على الصفحة أو التنقل بين الروابط أو لصق النص.
+تخبر طريقة **`preventDefault()`** في واجهة Event وكيل المستخدم أن الحدث يتم التعامل معه صراحةً، لذلك يجب ألا تُتخذ أفعالها الافتراضية، مثل تمرير الصفحة أو التنقل بالرابط أو لصق نص.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
-#### Inherited from
+#### موروث من
 
 `Event.preventDefault`
 
----
+***
 
 ### stopImmediatePropagation()
 
 > **stopImmediatePropagation**(): `void`
 
-طريقة **`stopImmediatePropagation()`** من واجهة الحدث تمنع استدعاء مستمعين آخرين لنفس الحدث.
+تمنع طريقة **`stopImmediatePropagation()`** في واجهة Event استدعاء مستمعي نفس الحدث الآخرين.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
-#### Inherited from
+#### موروث من
 
 `Event.stopImmediatePropagation`
 
----
+***
 
 ### stopPropagation()
 
 > **stopPropagation**(): `void`
 
-طريقة **`stopPropagation()`** من واجهة الحدث تمنع المزيد من انتشار الحدث الحالي في مراحل الالتقاط والبثّ. ومع ذلك، فإنها لا تمنع حدوث أي سلوكيات افتراضية؛ على سبيل المثال، لا تزال النقرات على الروابط معالجة. إذا كنت تريد إيقاف هذه السلوكيات، راجع طريقة preventDefault(). كما أنها لا تمنع الانتشار إلى معالجات أحداث أخرى للعنصر الحالي. إذا كنت تريد إيقاف تلك، راجع stopImmediatePropagation().
+تمنع طريقة **`stopPropagation()`** في واجهة Event استمرار انتشار الحدث الحالي في مرحلتي الالتقاط والانتشار. لكنها لا تمنع السلوكيات الافتراضية من الحدوث؛ على سبيل المثال، يتم معالجة النقرات على الروابط. إذا كان الهدف إيقاف تلك السلوكيات، راجع طريقة preventDefault(). كما أنها لا تمنع الانتشار إلى معالجات الأحداث الأخرى على العنصر الحالي. إذا أردت إيقاف ذلك، راجع stopImmediatePropagation().
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)
 
-#### Returns
+#### القيم المرجعة
 
 `void`
 
-#### Inherited from
+#### موروث من
 
 `Event.stopPropagation`

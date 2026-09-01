@@ -1,17 +1,17 @@
 [pantoken](../../../../index.md) / [renderers/bootstrap/src](../index.md) / ToBootstrapCssOptions
 
-# Interface: ToBootstrapCssOptions
+# واجهة: ToBootstrapCssOptions
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-خيارات [toBootstrapCss](../functions/toBootstrapCss.md).
+خيارات لـ [toBootstrapCss](../functions/toBootstrapCss.md).
 
-## Properties
+## الخصائص
 
 ### selector?
 
 > `optional` **selector?**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-المحدد الذي يتم إصدار المتغيرات تحته (افتراضي `":root"`).
+المُحدِّد الذي تُصدَر المتغيرات تحته (الافتراضي `":root"`).

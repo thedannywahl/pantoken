@@ -1,14 +1,14 @@
 [pantoken](../../../../index.md) / [bundlers/tailwind/src](../index.md) / pantokenPreset
 
-# Function: pantokenPreset()
+# دالة: pantokenPreset()
 
 > **pantokenPreset**(`options?`): [`TailwindPreset`](../interfaces/TailwindPreset.md)
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-بناء إعداد Tailwind المسبق لـ pantoken.
+بناء إعداد pantoken المسبق لـ Tailwind.
 
-## Parameters
+## المعلمات
 
 ### options?
 
@@ -16,13 +16,13 @@
 
 [PantokenPresetOptions](../interfaces/PantokenPresetOptions.md).
 
-## Returns
+## القيم المرجعة
 
 [`TailwindPreset`](../interfaces/TailwindPreset.md)
 
-إعداد Tailwind مسبق يساهم في `colors`، `spacing`، و `fontFamily`.
+إعداد مسبق لـ Tailwind يضيف `colors` و `spacing` و `fontFamily`.
 
-## Examples
+## أمثلة
 
 **سجل الإعداد المسبق في tailwind.config.ts**
 
@@ -36,7 +36,7 @@ export default {
 // then use utilities like `bg-color-background-base p-space-md`
 ```
 
-**كما يمكن فضح لوحة الألوان الأساسية تحت بادئة primitive-**
+**اعرض أيضًا لوحة الألوان primitive تحت بادئة primitive-**
 
 ```ts
 import { pantokenPreset } from "@pantoken/tailwind";

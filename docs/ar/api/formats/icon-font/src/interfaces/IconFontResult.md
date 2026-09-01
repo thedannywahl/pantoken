@@ -1,47 +1,47 @@
 [pantoken](../../../../index.md) / [formats/icon-font/src](../index.md) / IconFontResult
 
-# Interface: IconFontResult
+# واجهة: IconFontResult
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تعريفات الخط المُنشأة.
+المخرجات المولَّدة للخط.
 
-## Properties
+## الخصائص
 
 ### ttf
 
 > **ttf**: `Uint8Array`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 بايتات خط TrueType.
 
----
+***
 
 ### woff2
 
 > **woff2**: `Uint8Array`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
 بايتات خط WOFF2.
 
----
+***
 
 ### css
 
 > **css**: `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ورقة النمط `@font-face` + `.instui-icon-&lt;name&gt;`.
+ورقة الأنماط `@font-face` + `.instui-icon-&lt;name&gt;`.
 
----
+***
 
 ### codepoints
 
 > **codepoints**: `Record`\<`string`, `string`\>
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم الرمز → نقطة الرمز السادسة عشرية (مثال `"e001"`).
+اسم الأيقونة → نقطة رمز سداسية عشرية (مثال: `"e001"`).

@@ -1,28 +1,26 @@
 [pantoken](../../../../index.md) / [packages/utils/src](../index.md) / tokenUtilitiesCss
 
-# Function: tokenUtilitiesCss()
+# دالة: tokenUtilitiesCss()
 
 > **tokenUtilitiesCss**(`groups`, `options?`): `string`
 
-<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بناء فئات الأداة المدفوعة بالرمز: فئة واحدة لكل رمز، وتطبيقها على الخاصية
-CSS الطبيعية. ذيل `--instui-` للرمز هو اسم الفئة، لذا `--instui-font-weight-body-strong` تحت الخاصية
-`font-weight` ينتج `.&lt;prefix&gt;-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }`. استخدمها لكل عائلة "رمز واحد → خاصية واحدة"
-(font-family/weight، line-height، border-radius، border-width، opacity، box-shadow). اللون والتباعد يحتفظان
-ببنائهما الخاص — رمز واحد يخطط إلى عدة خصائص هناك. مرر أسماء الرموز لكل خاصية (على سبيل المثال تم تصفيتها من `@pantoken/tokens`).
+بناء قواعد مساعدة مدفوعة بالـ tokens: فئة واحدة لكل رمز، تطَبَّق على خاصية CSS الطبيعية له. لاحقة الرمز `--instui-` هي اسم الفئة، لذا `--instui-font-weight-body-strong` تحت الخاصية `font-weight` تُنتج
+`.&lt;prefix&gt;-font-weight-body-strong { font-weight: var(--instui-font-weight-body-strong); }`. استخدمها لكل عائلة "رمز واحد → خاصية واحدة" (font-family/weight, line-height, border-radius, border-width,
+opacity, box-shadow). اللون والتباعد يحتفظان بمولِّديهما الخاصين — حيث يُطابق رمز واحد عدة خصائص هناك. مرِّر أسماء الرموز لكل خاصية (مثلاً مُرشَّحة من `@pantoken/tokens`).
 
 ```demo
 self:token-utilities
 ```
 
-## Parameters
+## المعلمات
 
 ### groups
 
-readonly [`TokenUtilityGroup`](../interfaces/TokenUtilityGroup.md)[]
+قراءة فقط [`TokenUtilityGroup`](../interfaces/TokenUtilityGroup.md)[]
 
-مجموعة واحدة من [TokenUtilityGroup](../interfaces/TokenUtilityGroup.md) لكل خاصية CSS.
+واحد [TokenUtilityGroup](../interfaces/TokenUtilityGroup.md) لكل خاصية CSS.
 
 ### options?
 
@@ -30,7 +28,7 @@ readonly [`TokenUtilityGroup`](../interfaces/TokenUtilityGroup.md)[]
 
 [UtilityOptions](../interfaces/UtilityOptions.md).
 
-## Returns
+## القيم المرجعة
 
 `string`
 

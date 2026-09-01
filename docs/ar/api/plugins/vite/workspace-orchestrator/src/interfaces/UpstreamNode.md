@@ -1,77 +1,79 @@
 [pantoken](../../../../../index.md) / [plugins/vite/workspace-orchestrator/src](../index.md) / UpstreamNode
 
-# Interface: UpstreamNode
+# واجهة: UpstreamNode
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-حزمة مساحة عمل واحدة من الأعلى يتم مراقبتها وإعادة بناؤها.
+حزمة عمل upstream واحدة للمراقبة وإعادة البناء.
 
-## Properties
+## الخصائص
 
 ### name
 
 > **name**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
 اسم العرض لرسائل السجل.
 
----
+***
 
 ### dir
 
 > **dir**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-دليل جذر الحزمة (الدليل الحالي لأمر البناء).
+دليل جذر الحزمة (دليل العمل للأمر build).
 
----
+***
 
 ### watchPaths
 
 > **watchPaths**: `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-المسارات (الملفات أو الأدلة) المراد مراقبتها — يتم مراقبة الأدلة بشكل متكرر.
+المسارات (ملفات أو مجلدات) للمراقبة — تُراقب المجلدات بشكل متكرر داخلها (recursively).
 
----
+***
 
 ### build
 
 > **build**: readonly \[`string`, `string`\]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أمر البناء: العنصر الأول قابل للتنفيذ، والباقي حجج.
+أمر البناء: العنصر الأول هو القابل للتنفيذ، والباقي هي الوسائط.
 
----
+***
 
 ### dependents
 
 > **dependents**: readonly `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أسماء عقد أخرى من الأعلى لإعادة بناؤها بعد نجاح هذا.
+أسماء العقد upstream الأخرى التي تُعاد بناؤها بعد نجاح هذه العقدة.
 
----
+***
 
 ### include?
 
 > `optional` **include?**: readonly `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أنماط Glob للملفات المراد تضمينها. عند التعيين، تؤدي التغييرات على الملفات المطابقة لنمط واحد على الأقل إلى تشغيل إعادة البناء. تجاهل لتضمين كل شيء.
+أنماط glob للملفات التي تُدرج. عند التعيين، يؤدي التغيير فقط في الملفات التي تطابق
+نمطًا واحدًا على الأقل إلى تحفيز إعادة البناء. اتركها لتضمين كل شيء.
 
----
+***
 
 ### ignore?
 
 > `optional` **ignore?**: readonly `string`[]
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أنماط Glob للملفات المراد تجاهلها. يتم تخطي التغييرات على الملفات المطابقة بصمت. تجاهل لعدم تجاهل شيء.
+أنماط glob للملفات التي تُتجاهل. تُتخطى التغييرات في الملفات المطابقة بصمت. اتركها لعدم
+تجاهل أي شيء.

@@ -1,23 +1,23 @@
 [pantoken](../../../../index.md) / [platforms/drupal/src](../index.md) / DrupalFile
 
-# Interface: DrupalFile
+# واجهة: DrupalFile
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-ملف مُنشأ: مسار نسبي للموضوع ومحتوياته.
+ملف مُنشأ: مسار نسبي للثيم ومحتوياته.
 
-## Properties
+## الخصائص
 
 ### path
 
 > **path**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
----
+***
 
 ### content
 
 > **content**: `string`
 
-<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+<span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>

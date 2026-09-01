@@ -1,36 +1,36 @@
 [pantoken](../../../../index.md) / [tools/demo/src](../index.md) / LiveExampleOptions
 
-# Interface: LiveExampleOptions
+# واجهة: LiveExampleOptions
 
-كيفية دمج معاينة مباشرة في كل سياج HTML `@example` على صفحات مطابقة.
+كيفية إلحاق معاينة حية بكل قفص HTML `@example` في الصفحات المطابقة.
 
-## Properties
+## الخصائص
 
 ### match
 
 > **match**: (`relativePath`) => `boolean`
 
-التفاف السياجات على الصفحات التي تطابق `env.relativePath` الخاص بـ markdown-it فقط (على سبيل المثال، صفحات API للـ CSS).
+غلف الأقفاص فقط على الصفحات التي يطابق فيها `env.relativePath` الخاص بـ markdown-it (مثلاً صفحات CSS-API).
 
-#### Parameters
+#### المعلمات
 
 ##### relativePath
 
 `string`
 
-#### Returns
+#### القيم المرجعة
 
 `boolean`
 
----
+***
 
 ### wrap
 
-> **wrap**: (`html`, `flags`) => `string`
+> **wrap**: (`html`, `flags`, `relativePath`) => `string`
 
-بناء كتلة المعاينة المضافة بعد كل سياج `html` غير متراكب، من ترميزه وأي رموز `-flag` محللة من سلسلة معلومات السياج.
+بِناء كتلة المعاينة المُلحَقَة بعد كل قفص `html` غير التراكبي، من علامته، وأي توكنات `-flag` مُحلَّلة من سلسلة معلومات القفص، و`env.relativePath` الخاصة بالصفحة (لاستعلامات اللغة/اتجاه النص).
 
-#### Parameters
+#### المعلمات
 
 ##### html
 
@@ -40,6 +40,10 @@
 
 `Set`\<`string`\>
 
-#### Returns
+##### relativePath
+
+`string`
+
+#### القيم المرجعة
 
 `string`
