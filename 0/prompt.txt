@@ -1,0 +1,83 @@
+let's add a pendo demo to the docs that showcases the three layouts: popover, alert, banner using the semantic html structure defined here. if you can't find the semantic structure it is available at ~/Scripts/pendo-styles/packages/pendo-guide-mock/src/layouts/<component>.tsx
+
+---
+
+it looks like popovers need some bottom padding.
+
+---
+
+popover is missing its border, the triangle still has it.
+
+---
+
+in the banner component the secondary button border color and text color resolve to white, we should be using the same token(s)
+
+---
+
+button styles for banner prose buttons are done.
+close buttons on all three layouts look good but the hover/focus/active states are incorrect. look at the close-button component for the right tokens.
+primary and secondary button states don't look correct in the popover - compare them to the button demo rendering.
+add buttons to the alert so we can evaluate the rendering, it's likely broken like the popover. evaluate both light and dark mode.
+headings rework:
+Alert:
+* pendo title = banner relaxed styles
+* pendo sub-title = banner compact styles
+Popover:
+* Pendo title = banner compact styles
+* Pendo sub-title: one token size smaller
+banner relaxed:
+* pendo title = banner relaxed styles
+* pendo sub-title: banner compact styles
+banner compact:
+* pendo title = banner compact styles
+* pendo-sub-title: one token size smaller.
+
+---
+
+okay, the way that pendo works is I can upload a single global stylesheet.  Then I can create custom themes that can carry a single additional class and we're trying to keep it as compact as possible so we need to scaffold it this way:
+* "instui" anywhere triggers the style- that's how we keep the scoped styles from bleeding into Canvas (or another app itself)
+* no additional component name: violet banner, 'lightbulb' default glyph
+* -sea: sea banner, 'lightbulb' default glyph.
+* -megaphone: megaphone glyph
+* -poll: message-circle-question-mark glyph
+* -canvas: icon-canvas-icon-reversed glyph
+* repeat for: parchment, mastery, learnplatform
+
+---
+
+I want the dist global.css to carry a comment on line one:
+/* @pantoken/pendo#<version> */
+or 
+/* @pantoken/pendo@<version> */
+
+whichever is the proper syntax, that way we can trace the exact version that the used styles came from.
+
+---
+
+there should be a stylelint / poscss way to add a comment that preserves the comment.
+
+---
+
+don't forget to write a changeset
+
+---
+
+looking at the demo site:
+* the icon placement in the banner got messed up
+* the close button 'x' isn't centered in the button
+
+---
+
+also the banner should not have elevation.
+
+---
+
+server is still running on :5173 and the banner icon is still too high.
+
+---
+
+no, the icon is not supposed to be card-centered, it was supposed to be at the top. I meant the ::after and ::before weren't aligned. so the icon was half in the box and half above it.
+
+---
+
+put back the icon-x glyph, we have to use that to match the component close button, it just needed to be moved down ~2px.
