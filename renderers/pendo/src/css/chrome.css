@@ -92,3 +92,8 @@ hr {
   inset-block-start: var(--instui-component-alert-close-button-margin-top);
   inset-inline-end: var(--instui-component-alert-close-button-margin-right);
 }
+
+:is([class~="instui-banner"], [class~="instui-banner-sea"]) ._pendo-close-guide {
+  inset-block-start: var(--instui-component-banner-close-button-margin-top);
+  inset-inline-end: var(--instui-component-banner-close-button-margin-right);
+}

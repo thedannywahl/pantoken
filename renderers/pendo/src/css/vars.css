@@ -14,6 +14,7 @@
  * @cssproperty --instui-component-text-area-min-height <length> — TextArea floor height; no upstream token yet.
  * @cssproperty --instui-component-text-area-max-height <length> — TextArea ceiling height; no upstream token yet.
  * @cssproperty --instui-component-text-area-max-width <length> — TextArea max-width; no upstream token yet.
+ * @cssproperty --instui-color-text-interactive-primary-on-color-base <color> — Banner transparent-button text fallback; remove when the upstream token ships.
  */
 [class*="instui"] {
   /* Embedded guide max-width (lightboxBlank layout) */
@@ -31,4 +32,7 @@
   --instui-component-text-area-min-height: 4rem;
   --instui-component-text-area-max-height: 6rem;
   --instui-component-text-area-max-width: 20rem;
+  --instui-color-text-interactive-primary-on-color-base: var(
+    --instui-color-text-interactive-action-primary-on-color-base
+  );
 }

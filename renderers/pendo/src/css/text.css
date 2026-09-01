@@ -149,3 +149,34 @@ h3._pendo-simple-text {
     text-align: left;
   }
 }
+
+/* Banner typography follows the banner container rather than an authored size class. */
+[class~="instui-banner"],
+[class~="instui-banner-sea"] {
+  :is(._pendo-simple-text, [class*="_pendo-text-"]) {
+    font-size: var(--instui-component-text-content-font-size);
+    font-weight: var(--instui-component-text-content-font-weight);
+    line-height: var(--instui-component-text-content-line-height);
+  }
+
+  :is(h2._pendo-simple-text, h2._pendo-text-title, h3._pendo-simple-text) {
+    font-size: var(--instui-component-heading-title-card-regular-font-size);
+    font-weight: var(--instui-component-heading-title-card-regular-font-weight);
+  }
+}
+
+@container pantoken-pendo-guide (max-width: 30em) {
+  [class~="instui-banner"],
+  [class~="instui-banner-sea"] {
+    :is(._pendo-simple-text, [class*="_pendo-text-"]) {
+      font-size: var(--instui-component-text-content-small-font-size);
+      font-weight: var(--instui-component-text-content-small-font-weight);
+      line-height: var(--instui-component-text-content-small-line-height);
+    }
+
+    :is(h2._pendo-simple-text, h2._pendo-text-title, h3._pendo-simple-text) {
+      font-size: var(--instui-component-heading-title-card-mini-font-size);
+      font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+    }
+  }
+}

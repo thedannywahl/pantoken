@@ -2,7 +2,7 @@
 
 An Instructure-styled global stylesheet for Pendo guides, built on pantoken tokens.
 
-Pendo injects guide HTML into a host page. This renders that guide DOM (`._pendo-*`) to match Instructure UI: buttons, cards, popovers, alerts, selects, text areas, radios, NPS and number-scale polls, dividers, images, and video. The component CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the `--instui-*` token layer and assembles the result.
+Pendo injects guide HTML into a host page. This renders that guide DOM (`._pendo-*`) to match Instructure UI: buttons, cards, popovers, alerts, banners, selects, text areas, radios, NPS and number-scale polls, dividers, images, and video. The component CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the `--instui-*` token layer and assembles the result.
 
 ## Install
 
@@ -45,6 +45,17 @@ pantoken generate pendo --out ./pendo --theme canvas --no-scope --no-important
 ```
 
 Writes `global.css`.
+
+## Banner guides
+
+Add `instui-banner` to the Pendo guide container for the violet banner treatment, or
+`instui-banner-sea` for the sea treatment. Banner spacing and heading typography respond to the
+guide container's inline size: widths at or below the InstUI `sm` breakpoint (`30em`) use compact
+values, while wider content placements use relaxed values. No authored size class is required.
+
+Inside a banner, Pendo primary and custom buttons use the filled primary-on-colour treatment.
+Secondary and tertiary buttons use the transparent resting treatment and filled interaction states;
+the guide close button keeps its standard appearance and receives banner-specific positioning.
 
 ## How it fits together
 

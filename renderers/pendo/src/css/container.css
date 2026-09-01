@@ -13,6 +13,8 @@
  * @modifier [class*="instui-danger"] danger — Danger/error colour variant (alert only).
  * @modifier [class*="instui-success"] success — Success colour variant (alert only).
  * @modifier [class*="instui-warning"] warning — Warning colour variant (alert only).
+ * @modifier .instui-banner banner — Violet banner; relaxed above the `sm` breakpoint and compact below it.
+ * @modifier .instui-banner-sea sea banner — Sea-coloured banner with the same responsive sizing.
  * @part ._pendo-guide-backdrop_ — Backdrop container.
  * @part ._pendo-backdrop — Fixed full-viewport overlay; display toggled by Pendo at runtime.
  * @part ._pendo-step-container-size — Positioning/sizing wrapper; stacks above the backdrop.
@@ -24,6 +26,8 @@
  * @cssproperty --_alert-color <color> — Private; the variant border/strip colour, set by the variant class.
  * @cssproperty --_alert-icon <url> — Private; the variant status icon, set by the variant class.
  * @cssproperty --caret-color <color> — Private; the caret fill colour (maps to `view-background-primary`).
+ * @cssproperty --_banner-icon-background <color> — Private; the banner icon swatch colour.
+ * @cssproperty --_banner-icon-size <length> — Private; the responsive banner icon swatch size.
  * @structure
  * [class*="instui"] {
  *   ._pendo-guide-backdrop_ {
@@ -133,6 +137,102 @@
     &:not(:has(._pendo-row)) {
       ._pendo-step-container-styles {
         padding-bottom: var(--instui-component-shared-tokens-spacing-padding-card-sm);
+      }
+    }
+  }
+}
+
+/* ─── Banners ─── */
+
+:is([class~="instui-banner"], [class~="instui-banner-sea"]) ._pendo-step-container-size {
+  container: pantoken-pendo-guide / inline-size;
+}
+
+[class~="instui-banner"],
+[class~="instui-banner-sea"] {
+  --_banner-close-button-reserve: 0rem;
+  --_banner-icon-background: var(--instui-component-banner-violet-icon-background);
+  --_banner-icon-size: 2rem;
+
+  ._pendo-step-container-styles {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    border: var(--instui-component-banner-border-width) var(--instui-component-banner-border-style)
+      var(--instui-component-banner-border-color);
+    border-radius: var(--instui-component-banner-border-radius);
+    padding-block: var(--instui-component-banner-relaxed-padding-vertical);
+    padding-inline-start: calc(
+      var(--instui-component-banner-relaxed-padding-horizontal) + var(--_banner-icon-size) +
+        var(--instui-component-banner-relaxed-content-gap-horizontal)
+    );
+    padding-inline-end: calc(
+      var(--instui-component-banner-relaxed-padding-horizontal) +
+        var(--_banner-close-button-reserve)
+    );
+    color: var(--instui-component-banner-color);
+    background: var(--instui-component-banner-violet-background);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: var(--instui-component-banner-relaxed-padding-vertical);
+      inset-inline-start: var(--instui-component-banner-relaxed-padding-horizontal);
+      inline-size: var(--_banner-icon-size);
+      block-size: var(--_banner-icon-size);
+    }
+
+    &::before {
+      border-radius: var(--instui-component-banner-relaxed-icon-border-radius);
+      background: var(--_banner-icon-background);
+    }
+
+    &::after {
+      background: var(--instui-component-banner-icon-color);
+      mask: var(--instui-icon-megaphone) center / 1.125rem no-repeat;
+    }
+
+    &:has(> ._pendo-close-guide) {
+      --_banner-close-button-reserve: calc(
+        var(--instui-component-base-button-medium-height) +
+          var(--instui-component-banner-close-button-margin-right)
+      );
+    }
+  }
+}
+
+[class~="instui-banner-sea"] {
+  --_banner-icon-background: var(--instui-component-banner-sea-icon-background);
+
+  ._pendo-step-container-styles {
+    background: var(--instui-component-banner-sea-background);
+  }
+}
+
+@container pantoken-pendo-guide (max-width: 30em) {
+  [class~="instui-banner"],
+  [class~="instui-banner-sea"] {
+    ._pendo-step-container-styles {
+      --_banner-icon-size: 1.5rem;
+      padding-block: var(--instui-component-banner-compact-padding-vertical);
+      padding-inline-start: calc(
+        var(--instui-component-banner-compact-padding-horizontal) + var(--_banner-icon-size) +
+          var(--instui-component-banner-compact-content-gap-horizontal)
+      );
+      padding-inline-end: calc(
+        var(--instui-component-banner-compact-padding-horizontal) +
+          var(--_banner-close-button-reserve)
+      );
+
+      &::before,
+      &::after {
+        inset-block-start: var(--instui-component-banner-compact-padding-vertical);
+        inset-inline-start: var(--instui-component-banner-compact-padding-horizontal);
+      }
+
+      &::before {
+        border-radius: var(--instui-component-banner-compact-icon-border-radius);
       }
     }
   }

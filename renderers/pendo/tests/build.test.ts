@@ -1,5 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { danglingReferences } from "@pantoken/utils";
+import { buttonCss, chromeCss, containerCss, textCss } from "../generated/embedded.ts";
 import { buildPendoCss } from "../src/build.ts";
 import { COMPONENTS, LAYER_ORDER } from "../src/layers.ts";
 
@@ -69,4 +70,33 @@ test("mangle option renames --instui-* custom properties to short identifiers", 
   const css = buildPendoCss({ mangle: true });
   // After mangling, no long instui primitive names remain.
   expect(css).not.toContain("--instui-primitive-");
+});
+
+test("banner classes select violet and sea container treatments", () => {
+  expect(containerCss).toContain('[class~="instui-banner"]');
+  expect(containerCss).toContain('[class~="instui-banner-sea"]');
+  expect(containerCss).not.toContain("instui-banner-violet");
+  expect(containerCss).toContain("--instui-component-banner-violet-background");
+  expect(containerCss).toContain("--instui-component-banner-sea-background");
+  expect(containerCss).toContain("--instui-icon-megaphone");
+});
+
+test("banner sizing follows the guide container at the InstUI sm breakpoint", () => {
+  expect(containerCss).toContain("container: pantoken-pendo-guide / inline-size");
+  expect(containerCss).toContain("@container pantoken-pendo-guide (max-width: 30em)");
+  expect(containerCss).toContain("--instui-component-banner-relaxed-padding-vertical");
+  expect(containerCss).toContain("--instui-component-banner-compact-padding-vertical");
+  expect(textCss).toContain("@container pantoken-pendo-guide (max-width: 30em)");
+  expect(textCss).toContain("--instui-component-heading-title-card-regular-font-size");
+  expect(textCss).toContain("--instui-component-heading-title-card-mini-font-size");
+});
+
+test("banner buttons map Pendo variants without restyling the close button", () => {
+  expect(buttonCss).toContain("._pendo-button-primaryButton, ._pendo-button-custom");
+  expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-on-color-base");
+  expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
+  expect(buttonCss).toContain("background-color: transparent");
+  expect(buttonCss).toContain('[aria-disabled="true"]');
+  expect(buttonCss).not.toContain("._pendo-close-guide");
+  expect(chromeCss).toContain("--instui-component-banner-close-button-margin-top");
 });
