@@ -1,0 +1,830 @@
+[Terminal 3d4d3482-b877-4e8d-bcc1-a1d3362d377d notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+2026-09-01T22:54:09.3573921Z   📋 Summary: 1045 labels (0 cached, 10 translated)
+2026-09-01T22:54:09.3574254Z ✓ cy: rendered in cy/api (10 translated, 0 cached)
+2026-09-01T22:54:09.3574261Z 
+2026-09-01T22:54:09.3574424Z ✨ All API locales complete!
+2026-09-01T22:54:09.8043492Z 
+2026-09-01T22:54:09.8044089Z ~/docs$ node scripts/check-locale-parity.ts
+2026-09-01T22:54:10.2342705Z node:fs:1954
+2026-09-01T22:54:10.2343468Z   const result = binding.readdir(
+2026-09-01T22:54:10.2344091Z                          ^
+2026-09-01T22:54:10.2344427Z 
+2026-09-01T22:54:10.2345038Z Error: ENOENT: no such file or directory, scandir '/home/runner/work/pantoken/pantoken/docs/it/guide'
+2026-09-01T22:54:10.2345748Z     at readdirSync (node:fs:1954:26)
+2026-09-01T22:54:10.2346472Z     at listBasenames (file:///home/runner/work/pantoken/pantoken/docs/scripts/check-locale-parity.ts:25:17)
+2026-09-01T22:54:10.2347369Z     at file:///home/runner/work/pantoken/pantoken/docs/scripts/check-locale-parity.ts:105:23
+2026-09-01T22:54:10.2348712Z     at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+2026-09-01T22:54:10.2349290Z     at async node:internal/modules/esm/loader:650:26
+2026-09-01T22:54:10.2349784Z     at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+2026-09-01T22:54:10.2350238Z   errno: -2,
+2026-09-01T22:54:10.2350449Z   code: 'ENOENT',
+2026-09-01T22:54:10.2350659Z   syscall: 'scandir',
+2026-09-01T22:54:10.2350961Z   path: '/home/runner/work/pantoken/pantoken/docs/it/guide'
+2026-09-01T22:54:10.2351292Z }
+2026-09-01T22:54:10.2351397Z 
+2026-09-01T22:54:10.2351479Z Node.js v26.8.1
+2026-09-01T22:54:10.2444056Z 
+2026-09-01T22:54:10.2445797Z ---
+2026-09-01T22:54:10.2446959Z vp run: 0/11 cache hit (0%), 1 failed. @pantoken/docs#docs:assets (and 2 more) not cached because they modified their inputs. (Run `vp run --last-details` for full details)
+2026-09-01T22:54:10.3507746Z ##[error]Process completed with exit code 1.
+2026-09-01T22:54:10.3662911Z Post job cleanup.
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && ls it 2>&1; echo ---; ls | grep -E '^(it|hi|ht)$'
+demos    index.md
+---
+hi
+ht
+it
+docs on cli ≡  ~1 via  26.8.1 
+➜  for d in */; do d=${d%/}; [ -d "$d/guide" ] && echo "$d: has guide" || { [ -d "$d" ] && echo "$d: MISSING guide"; }; done 2>&1 | grep MISSING
+api: MISSING guide
+architecture: MISSING guide
+assets: MISSING guide
+conventions: MISSING guide
+coverage: MISSING guide
+demos: MISSING guide
+docs: MISSING guide
+guide: MISSING guide
+i18n-cache: MISSING guide
+internal: MISSING guide
+it: MISSING guide
+ja: MISSING guide
+node_modules: MISSING guide
+public: MISSING guide
+scripts: MISSING guide
+docs on cli ≡  ~1 via  26.8.1 
+➜  grep -rn "\"it\"" .vitepress/*.ts scripts/*.ts 2>/dev/null | head -20; echo ---; grep -n "it" .vitepress/config.ts | grep -i locale | head -20
+---
+316:                  text: locale.sidebar.architecture,
+317:                  link: `${locale.guidePrefix}architecture`,
+353:          text: locale.editText,
+364:        // (VitePress stacks per-locale themeConfig recursively over the root), so the level survives.
+367:        darkModeSwitchLabel: locale.chrome.darkModeSwitchLabel,
+368:        lightModeSwitchTitle: locale.chrome.lightModeSwitchTitle,
+369:        darkModeSwitchTitle: locale.chrome.darkModeSwitchTitle,
+387:// The local-search index reads the *root* themeConfig (not the per-route one), so its per-locale UI
+398:          resetButtonTitle: locale.search.resetButtonTitle,
+399:          backButtonTitle: locale.search.backButtonTitle,
+428:function homeOgTitle(locale: (typeof LOCALES)[DocsLocale]): string {
+440:  if (frontmatter.layout === "home") return homeOgTitle(locale);
+446:// guess (`hu` → `hu_HU`) — good enough for a non-critical SEO tag, not a real locale-to-territory table.
+457:  const localeKey = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
+520:    // LinkedIn, Discord, Facebook). Per-page title/description/url/locale are layered on in
+555:  // Layer per-page Open Graph / Twitter tags, a canonical link, and the page locale on top of the head
+557:  // than the site-wide default. The `hu/` tree mirrors the root, so detect the locale from the path.
+560:    const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, localeInfo.locale);
+577:  // exists in one locale but not the other — is instead prevented by keeping the `hu/` tree in parity
+578:  // (see scripts/check-locale-parity.ts).
+docs on cli ≡  ~1 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git check-ignore -v docs/it/guide docs/ja/guide docs/hu/guide 2>&1; echo ---; git log --oneline -3 -- docs/it docs/ja | cat
+---
+60203487 chore(i18n): update translations
+f5e34d6d chore(i18n): api translations
+bfe9c01e chore(i18n): add lang strings for demos
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  git ls-files docs/it | head -20; echo ---HU---; git ls-files docs/hu | grep guide | head -5; echo ---JA---; git ls-files docs/ja | head -20
+docs/it/demos/alert.css
+docs/it/demos/alert.html
+docs/it/demos/alert.js
+docs/it/demos/avatar.html
+docs/it/demos/badge.css
+docs/it/demos/badge.html
+docs/it/demos/badge.js
+docs/it/demos/base.css
+docs/it/demos/base.html
+docs/it/demos/billboard.html
+docs/it/demos/breadcrumb.html
+docs/it/demos/button.css
+docs/it/demos/button.html
+docs/it/demos/button.js
+docs/it/demos/byline.html
+docs/it/demos/calendar.html
+docs/it/demos/checkbox.html
+docs/it/demos/checkbox.js
+docs/it/demos/color-utilities.html
+docs/it/demos/components.html
+---HU---
+docs/hu/guide/architecture.md
+docs/hu/guide/cdn-picker.md
+docs/hu/guide/cdn.md
+docs/hu/guide/cli.md
+docs/hu/guide/components.md
+---JA---
+docs/ja/demos/alert.css
+docs/ja/demos/alert.html
+docs/ja/demos/alert.js
+docs/ja/demos/avatar.html
+docs/ja/demos/badge.css
+docs/ja/demos/badge.html
+docs/ja/demos/badge.js
+docs/ja/demos/base.css
+docs/ja/demos/base.html
+docs/ja/demos/billboard.html
+docs/ja/demos/breadcrumb.html
+docs/ja/demos/button.css
+docs/ja/demos/button.html
+docs/ja/demos/button.js
+docs/ja/demos/byline.html
+docs/ja/demos/calendar.html
+docs/ja/demos/checkbox.html
+docs/ja/demos/checkbox.js
+docs/ja/demos/color-utilities.html
+docs/ja/demos/components.html
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  git ls-files origin/main -- docs/it/guide 2>&1 | head; echo ---; git show origin/main --stat -- docs/it/guide 2>&1 | head -3; echo ---check---; git cat-file -e origin/main:docs/it/guide/architecture.md && echo EXISTS || echo MISSING
+---
+---check---
+fatal: path 'docs/it/guide/architecture.md' does not exist in 'origin/main'
+MISSING
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  grep -n "docs:guides:locales\|guide.*it\b\|\[it\]\|error.*it\b" /tmp/docs_job.log | head -60
+35916:2026-09-01T22:54:01.2229385Z   ! [it] text unit looks untranslated (identical to source), not cached: "tools"
+35917:2026-09-01T22:54:01.2234980Z   ! [it] text unit looks untranslated (identical to source), not cached: "aggregate"
+35918:2026-09-01T22:54:01.2236585Z   ! [it] text unit looks untranslated (identical to source), not cached: "Target"
+35919:2026-09-01T22:54:01.2238412Z   ! [it] text unit looks untranslated (identical to source), not cached: "AggregateOptions"
+35920:2026-09-01T22:54:01.2240002Z   ! [it] text unit looks untranslated (identical to source), not cached: "discoverTargets"
+35921:2026-09-01T22:54:01.2241242Z   ! [it] text unit looks untranslated (identical to source), not cached: "demo"
+35922:2026-09-01T22:54:01.2242515Z   ! [it] text unit looks untranslated (identical to source), not cached: "ResolveOptions"
+35923:2026-09-01T22:54:01.2243873Z   ! [it] text unit looks untranslated (identical to source), not cached: "ResolvedDemo"
+35924:2026-09-01T22:54:01.2245284Z   ! [it] text unit looks untranslated (identical to source), not cached: "LiveExampleOptions"
+35925:2026-09-01T22:54:01.2246909Z   ! [it] text unit looks untranslated (identical to source), not cached: "DemoMarkdownItOptions"
+35926:2026-09-01T22:54:01.2248427Z   ! [it] text unit looks untranslated (identical to source), not cached: "ExampleSrcdocOptions"
+35927:2026-09-01T22:54:01.2249491Z   ! [it] text unit looks untranslated (identical to source), not cached: "FULLSCREEN_BUTTON_HTML"
+35928:2026-09-01T22:54:01.2259349Z   ! [it] text unit looks untranslated (identical to source), not cached: "resolveDemo"
+35929:2026-09-01T22:54:01.2260417Z   ! [it] text unit looks untranslated (identical to source), not cached: "renderDemoFigure"
+35930:2026-09-01T22:54:01.2261364Z   ! [it] text unit looks untranslated (identical to source), not cached: "demoMarkdownIt"
+35931:2026-09-01T22:54:01.2262286Z   ! [it] text unit looks untranslated (identical to source), not cached: "escapeSrcdoc"
+35932:2026-09-01T22:54:01.2263186Z   ! [it] text unit looks untranslated (identical to source), not cached: "buildExampleSrcdoc"
+35933:2026-09-01T22:54:01.2264037Z   ! [it] text unit looks untranslated (identical to source), not cached: "ai"
+35934:2026-09-01T22:54:01.2264841Z   ! [it] text unit looks untranslated (identical to source), not cached: "pantoken-ai"
+35935:2026-09-01T22:54:01.2265722Z   ! [it] text unit looks untranslated (identical to source), not cached: "AgentTool"
+35936:2026-09-01T22:54:01.2266584Z   ! [it] text unit looks untranslated (identical to source), not cached: "ScaffoldPlatform"
+35937:2026-09-01T22:54:01.2267428Z   ! [it] text unit looks untranslated (identical to source), not cached: "ASSETS"
+35938:2026-09-01T22:54:01.2268606Z   ! [it] text unit looks untranslated (identical to source), not cached: "AGENTS_MD"
+35939:2026-09-01T22:54:01.2269528Z   ! [it] text unit looks untranslated (identical to source), not cached: "LLMS_TXT"
+35940:2026-09-01T22:54:01.2270659Z   ! [it] text unit looks untranslated (identical to source), not cached: "AGENT_TOOLS"
+35941:2026-09-01T22:54:01.2271733Z   ! [it] text unit looks untranslated (identical to source), not cached: "SCAFFOLD_PLATFORMS"
+35942:2026-09-01T22:54:01.2272952Z   ! [it] text unit looks untranslated (identical to source), not cached: "installAgentAssets"
+35943:2026-09-01T22:54:01.2274061Z   ! [it] text unit looks untranslated (identical to source), not cached: "scaffoldAndInit"
+35944:2026-09-01T22:54:01.2275267Z   ! [it] text unit looks untranslated (identical to source), not cached: "isScaffoldPlatform"
+35945:2026-09-01T22:54:01.2276392Z   ! [it] text unit looks untranslated (identical to source), not cached: "scaffoldProject"
+35946:2026-09-01T22:54:01.2277472Z   ! [it] text unit looks untranslated (identical to source), not cached: "platforms"
+35947:2026-09-01T22:54:01.2278666Z   ! [it] text unit looks untranslated (identical to source), not cached: "android"
+35948:2026-09-01T22:54:01.2279810Z   ! [it] text unit looks untranslated (identical to source), not cached: "GenerateAndroidOptions"
+35949:2026-09-01T22:54:01.2280943Z   ! [it] text unit looks untranslated (identical to source), not cached: "toAndroid"
+35950:2026-09-01T22:54:01.2282026Z   ! [it] text unit looks untranslated (identical to source), not cached: "generateAndroid"
+35951:2026-09-01T22:54:01.2283355Z   ! [it] text unit looks untranslated (identical to source), not cached: "canvas-theme-editor"
+35952:2026-09-01T22:54:01.2284494Z   ! [it] text unit looks untranslated (identical to source), not cached: "ThemeStrings"
+35953:2026-09-01T22:54:01.2285635Z   ! [it] text unit looks untranslated (identical to source), not cached: "BuildThemeOptions"
+35954:2026-09-01T22:54:01.2286728Z   ! [it] text unit looks untranslated (identical to source), not cached: "CdnFile"
+35955:2026-09-01T22:54:01.2287777Z   ! [it] text unit looks untranslated (identical to source), not cached: "CdnProvider"
+35956:2026-09-01T22:54:01.2289032Z   ! [it] text unit looks untranslated (identical to source), not cached: "ThemeVariant"
+35957:2026-09-01T22:54:01.2290109Z   ! [it] text unit looks untranslated (identical to source), not cached: "ThemeMode"
+35958:2026-09-01T22:54:01.2291161Z   ! [it] text unit looks untranslated (identical to source), not cached: "THEME_CSS"
+35959:2026-09-01T22:54:01.2292329Z   ! [it] text unit looks untranslated (identical to source), not cached: "THEME_JS"
+35960:2026-09-01T22:54:01.2293397Z   ! [it] text unit looks untranslated (identical to source), not cached: "ENGLISH_THEME_STRINGS"
+35961:2026-09-01T22:54:01.2294657Z   ! [it] text unit looks untranslated (identical to source), not cached: "DEFAULT_THEME_CSS_ASSETS"
+35962:2026-09-01T22:54:01.2296009Z   ! [it] text unit looks untranslated (identical to source), not cached: "DEFAULT_THEME_FONT_ASSETS"
+35963:2026-09-01T22:54:01.2297295Z   ! [it] text unit looks untranslated (identical to source), not cached: "DEFAULT_THEME_JS_ASSETS"
+35964:2026-09-01T22:54:01.2298729Z   ! [it] text unit looks untranslated (identical to source), not cached: "CDN_PROVIDERS"
+35965:2026-09-01T22:54:01.2299917Z   ! [it] text unit looks untranslated (identical to source), not cached: "DEFAULT_CDN_PROVIDER_ID"
+35966:2026-09-01T22:54:01.2301161Z   ! [it] text unit looks untranslated (identical to source), not cached: "defaultThemeCssAssets"
+35967:2026-09-01T22:54:01.2302353Z   ! [it] text unit looks untranslated (identical to source), not cached: "buildThemeCss"
+35968:2026-09-01T22:54:01.2303461Z   ! [it] text unit looks untranslated (identical to source), not cached: "buildThemeJs"
+35969:2026-09-01T22:54:01.2304547Z   ! [it] text unit looks untranslated (identical to source), not cached: "buildTheme"
+35970:2026-09-01T22:54:01.2305568Z   ! [it] text unit looks untranslated (identical to source), not cached: "compose"
+35971:2026-09-01T22:54:01.2306657Z   ! [it] text unit looks untranslated (identical to source), not cached: "GenerateComposeOptions"
+35972:2026-09-01T22:54:01.2322330Z   ! [it] text unit looks untranslated (identical to source), not cached: "toCompose"
+35973:2026-09-01T22:54:01.2323462Z   ! [it] text unit looks untranslated (identical to source), not cached: "generateCompose"
+35974:2026-09-01T22:54:01.2324726Z   ! [it] text unit looks untranslated (identical to source), not cached: "drupal"
+35975:2026-09-01T22:54:01.2325804Z   ! [it] text unit looks untranslated (identical to source), not cached: "DrupalFile"
+pantoken on cli ≡  ~1 via  26.8.1 x 
+➜  grep -n "docs:guides\|building guide\|guides:locales\|Materialize\|check-locale-parity" /tmp/docs_job.log | head -40
+70859:2026-09-01T22:54:09.8044089Z ~/docs$ node scripts/check-locale-parity.ts
+70866:2026-09-01T22:54:10.2346472Z     at listBasenames (file:///home/runner/work/pantoken/pantoken/docs/scripts/check-locale-parity.ts:25:17)
+70867:2026-09-01T22:54:10.2347369Z     at file:///home/runner/work/pantoken/pantoken/docs/scripts/check-locale-parity.ts:105:23
+pantoken on cli ≡  ~1 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && node scripts/check-locale-parity.ts 2>&1 | tail -60; echo "EXIT: $?"
+  [docs.parity] docs/ca/api — 1 in 1 locale(s)
+    locales: ca
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/ca/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: ca
+    - Missing required locale files: ca/api/typedoc-sidebar.json
+  [docs.parity] docs/ca/demos — 1 in 1 locale(s)
+    locales: ca
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/cy/api — 1 in 1 locale(s)
+    locales: cy
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/cy/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: cy
+    - Missing required locale files: cy/api/typedoc-sidebar.json
+  [docs.parity] docs/cy/demos — 1 in 1 locale(s)
+    locales: cy
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/da/api — 1 in 1 locale(s)
+    locales: da
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/da/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: da
+    - Missing required locale files: da/api/typedoc-sidebar.json
+  [docs.parity] docs/da/demos — 1 in 1 locale(s)
+    locales: da
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/de/api — 1 in 1 locale(s)
+    locales: de
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/de/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: de
+    - Missing required locale files: de/api/typedoc-sidebar.json
+  [docs.parity] docs/de/demos — 1 in 1 locale(s)
+    locales: de
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/el/api — 1 in 1 locale(s)
+    locales: el
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/el/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: el
+    - Missing required locale files: el/api/typedoc-sidebar.json
+  [docs.parity] docs/el/demos — 1 in 1 locale(s)
+    locales: el
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/en-AU/api — 1 in 1 locale(s)
+    locales: en-AU
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/en-AU/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: en-AU
+    - Missing required locale files: en-AU/api/typedoc-sidebar.json
+  [docs.parity] docs/en-AU/demos — 1 in 1 locale(s)
+    locales: en-AU
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/en-CA/api — 1 in 1 locale(s)
+    locales: en-CA
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  …and 109 more file(s).
+
+Blocking translation drift. Run `vp run docs:api:locales && vp run docs:demos:locales` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n-policy.json`.
+EXIT: 0
+docs on cli ≡  ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git check-ignore -v docs/ca/api docs/it/guide docs/de/demos 2>&1; echo ---; cat docs/.gitignore 2>/dev/null | grep -E 'api|guide|demo'
+---
+pantoken on cli ≡  ~2 via  26.8.1 x 
+➜  cat .gitignore | grep -n "docs/" 
+34:docs/api/
+35:docs/hu/api/
+36:docs/.vitepress/cache/
+37:docs/docs/.vitepress/cache/
+38:docs/.vitepress/.temp/
+39:docs/docs/.vitepress/.temp/
+40:docs/public/
+41:!docs/public/
+42:docs/public/*
+43:!docs/public/robots.txt
+44:!docs/public/.well-known/
+45:docs/public/.well-known/*
+46:!docs/public/.well-known/api-catalog
+53:docs/internal/
+62:docs/.vitepress/.temp/
+pantoken on cli ≡  ~2 via  26.8.1 
+➜  git ls-files docs/ca/api | wc -l; git ls-files docs/cy/api | wc -l; git ls-files docs/it/api | wc -l; git ls-files docs/ja/api | wc -l; echo ---; ls docs/ca/api 2>&1 | head -3
+       0
+       0
+       0
+       0
+---
+ls: docs/ca/api: No such file or directory
+pantoken on cli ≡  ~2 via  26.8.1 x 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && ls guide/*.md | wc -l; echo ---IT---; ls it 2>&1; echo ---JA---; ls ja 2>&1; echo ---HU-for-compare---; ls hu 2>&1
+       9
+---IT---
+demos    index.md
+---JA---
+demos    index.md
+---HU-for-compare---
+demos    guide    index.md
+docs on cli ≡  ~2 via  26.8.1 
+➜  for d in */; do d=${d%/}; case "$d" in api|architecture|assets|conventions|coverage|demos|docs|guide|i18n-cache|internal|node_modules|public|scripts) continue;; esac; [ -d "$d" ] && [ ! -d "$d/guide" ] && echo "$d missing guide"; done
+it missing guide
+ja missing guide
+docs on cli ≡  ~2 via  26.8.1 x 
+➜  node scripts/translate-guides.ts 2>&1 | tail -80
+  es/guide/packages.md
+  es/guide/plugins.md
+✓ es: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 sv: checking 9 guide page(s) via 'glossary'...
+  sv/guide/architecture.md
+  sv/guide/cdn-picker.md
+  sv/guide/cdn.md
+  sv/guide/cli.md
+  sv/guide/components.md
+  sv/guide/generated-output.md
+  sv/guide/getting-started.md
+  sv/guide/packages.md
+  sv/guide/plugins.md
+✓ sv: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 th: checking 9 guide page(s) via 'glossary'...
+  th/guide/architecture.md
+  th/guide/cdn-picker.md
+  th/guide/cdn.md
+  th/guide/cli.md
+  th/guide/components.md
+  th/guide/generated-output.md
+  th/guide/getting-started.md
+  th/guide/packages.md
+  th/guide/plugins.md
+✓ th: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 zh-Hant: checking 9 guide page(s) via 'glossary'...
+  zh-Hant/guide/architecture.md
+  zh-Hant/guide/cdn-picker.md
+  zh-Hant/guide/cdn.md
+  zh-Hant/guide/cli.md
+  zh-Hant/guide/components.md
+  zh-Hant/guide/generated-output.md
+  zh-Hant/guide/getting-started.md
+  zh-Hant/guide/packages.md
+  zh-Hant/guide/plugins.md
+✓ zh-Hant: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 tr: checking 9 guide page(s) via 'glossary'...
+  tr/guide/architecture.md
+  tr/guide/cdn-picker.md
+  tr/guide/cdn.md
+  tr/guide/cli.md
+  tr/guide/components.md
+  tr/guide/generated-output.md
+  tr/guide/getting-started.md
+  tr/guide/packages.md
+  tr/guide/plugins.md
+✓ tr: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 uk: checking 9 guide page(s) via 'glossary'...
+  uk/guide/architecture.md
+  uk/guide/cdn-picker.md
+  uk/guide/cdn.md
+  uk/guide/cli.md
+  uk/guide/components.md
+  uk/guide/generated-output.md
+  uk/guide/getting-started.md
+  uk/guide/packages.md
+  uk/guide/plugins.md
+✓ uk: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 vi: checking 9 guide page(s) via 'glossary'...
+  vi/guide/architecture.md
+  vi/guide/cdn-picker.md
+  vi/guide/cdn.md
+  vi/guide/cli.md
+  vi/guide/components.md
+  vi/guide/generated-output.md
+  vi/guide/getting-started.md
+  vi/guide/packages.md
+  vi/guide/plugins.md
+✓ vi: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+🔄 cy: checking 9 guide page(s) via 'glossary'...
+  cy/guide/architecture.md
+  cy/guide/cdn-picker.md
+  cy/guide/cdn.md
+  cy/guide/cli.md
+  cy/guide/components.md
+  cy/guide/generated-output.md
+  cy/guide/getting-started.md
+  cy/guide/packages.md
+  cy/guide/plugins.md
+✓ cy: localized 9 guide pages via 'glossary' (0 translated, 9 cached)
+docs on cli ≡  ?2 ~83 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git status --short | grep -v "^ M docs/scripts" 
+ M docs/ar/guide/cli.md
+ M docs/ar/guide/packages.md
+ M docs/cy/guide/cli.md
+ M docs/cy/guide/components.md
+ M docs/cy/guide/packages.md
+ M docs/da/guide/cli.md
+ M docs/da/guide/packages.md
+ M docs/de/guide/cli.md
+ M docs/de/guide/packages.md
+ M docs/el/guide/packages.md
+ M docs/en-AU/guide/cli.md
+ M docs/en-AU/guide/packages.md
+ M docs/en-CA/guide/cli.md
+ M docs/en-CA/guide/packages.md
+ M docs/en-GB/guide/cli.md
+ M docs/en-GB/guide/packages.md
+ M docs/es/guide/cli.md
+ M docs/es/guide/packages.md
+ M docs/fa/guide/cli.md
+ M docs/fa/guide/packages.md
+ M docs/fi/guide/cli.md
+ M docs/fi/guide/packages.md
+ M docs/fr-CA/guide/cli.md
+ M docs/fr-CA/guide/packages.md
+ M docs/fr/guide/cli.md
+ M docs/fr/guide/packages.md
+ M docs/ga/guide/cli.md
+ M docs/ga/guide/packages.md
+ M docs/he/guide/cli.md
+ M docs/he/guide/components.md
+ M docs/he/guide/packages.md
+ M docs/hi/guide/cli.md
+ M docs/hi/guide/packages.md
+ M docs/ht/guide/cli.md
+ M docs/ht/guide/packages.md
+ M docs/hu/guide/cli.md
+ M docs/hu/guide/packages.md
+ M docs/hy/guide/cli.md
+ M docs/hy/guide/packages.md
+ M docs/id/guide/cli.md
+ M docs/id/guide/packages.md
+ M docs/is/guide/cli.md
+ M docs/is/guide/packages.md
+ M docs/ko/guide/cli.md
+ M docs/ko/guide/packages.md
+ M docs/mi/guide/cli.md
+ M docs/mi/guide/packages.md
+ M docs/ms/guide/cli.md
+ M docs/ms/guide/packages.md
+ M docs/nb/guide/cli.md
+ M docs/nb/guide/packages.md
+ M docs/nl/guide/cli.md
+ M docs/nl/guide/packages.md
+ M docs/nn/guide/cli.md
+ M docs/nn/guide/packages.md
+ M docs/pl/guide/cli.md
+ M docs/pl/guide/packages.md
+ M docs/pt-BR/guide/cli.md
+ M docs/pt/guide/cli.md
+ M docs/pt/guide/packages.md
+ M docs/ru/guide/cli.md
+ M docs/ru/guide/packages.md
+ M docs/se/guide/cli.md
+ M docs/se/guide/packages.md
+ M docs/sl/guide/cli.md
+ M docs/sl/guide/packages.md
+ M docs/sv/guide/cli.md
+ M docs/sv/guide/packages.md
+ M docs/th/guide/cli.md
+ M docs/th/guide/packages.md
+ M docs/tr/guide/cli.md
+ M docs/tr/guide/packages.md
+ M docs/uk/guide/cli.md
+ M docs/vi/guide/cli.md
+ M docs/vi/guide/packages.md
+ M docs/zh-Hans/guide/cli.md
+ M docs/zh-Hans/guide/components.md
+ M docs/zh-Hans/guide/getting-started.md
+ M docs/zh-Hans/guide/packages.md
+ M docs/zh-Hant/guide/cli.md
+ M docs/zh-Hant/guide/packages.md
+?? docs/it/guide/
+?? docs/ja/guide/
+pantoken on cli ≡  ?2 ~83 via  26.8.1 
+➜  git diff --stat -- docs/hu/guide/cli.md | cat; echo ---; git diff docs/hu/guide/cli.md | head -30
+ docs/hu/guide/cli.md | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
+---
+diff --git a/docs/hu/guide/cli.md b/docs/hu/guide/cli.md
+index a4bdf79d..7caea4fa 100644
+--- a/docs/hu/guide/cli.md
++++ b/docs/hu/guide/cli.md
+@@ -10,21 +10,21 @@ npx pantoken generate <target> --out <dir> [--theme <name>] [--icons a,b,c]
+ 
+ ## Célok
+ 
+-| Target      | Output                                                                                        |
+-| ----------- | --------------------------------------------------------------------------------------------- |
+-| `swift`     | Swift forrás a `Sources/<name>` alatt, valamint egy `Package.swift` SwiftPM manifest stub.    |
+-| `android`   | Android XML erőforrás fájlok.                                                                 |
+-| `compose`   | Egy Jetpack Compose Kotlin fájl.                                                              |
+-| `flutter`   | Egy Flutter Dart fájl.                                                                        |
+-| `rust`      | Egy `tokens.rs` az egui számára (alapértelmezett) vagy iced (`--format iced`).                |
+-| `wordpress` | Egy block-theme `theme.json`.                                                                 |
+-| `vanilla`   | Egy Vanilla Forums `variables.json`.                                                          |
+-| `drupal`    | Drupal téma erőforrások.                                                                      |
+-| `jekyll`    | Jekyll webhelyadatok.                                                                         |
+-| `hugo`      | Hugo webhelyadatok.                                                                           |
+-| `swatches`  | Színpaletták — `ase` (alapértelmezett), `gpl`, `sketch` vagy `svg` a `--format` segítségével. |
+-| `icon-font` | Egy ikon webfont (TTF, WOFF2), annak CSS-e és egy codepoints térkép.                          |
+-| `pendo`     | Az Instructure-stílusú `global.css` a Pendo útmutatókhoz.                                     |
++| Target      | Output                                                                            |
++| ----------- | --------------------------------------------------------------------------------- |
++| `swift`     | Swift forrás a `Sources/<name>` alatt, valamint egy `Package.swift` SwiftPM manifest stub. |
++| `android`   | Android XML erőforrás fájlok.                                                       |
++| `compose`   | Egy Jetpack Compose Kotlin fájl.                                                    |
++| `flutter`   | Egy Flutter Dart fájl.                                                              |
++| `rust`      | Egy `tokens.rs` az egui számára (alapértelmezett) vagy iced (`--format iced`).                       |
+pantoken on cli ≡  ?2 ~83 via  26.8.1 
+➜  git status --short | grep '^ M docs/' | awk '{print $2}' | xargs git checkout -- ; git status --short | head -20
+?? docs/it/guide/
+?? docs/ja/guide/
+pantoken on cli ≡  ?2 via  26.8.1 
+➜  ls docs/it/guide docs/ja/guide; git status --short
+docs/it/guide:
+architecture.md     cli.md              getting-started.md
+cdn-picker.md       components.md       packages.md
+cdn.md              generated-output.md plugins.md
+
+docs/ja/guide:
+architecture.md     cli.md              getting-started.md
+cdn-picker.md       components.md       packages.md
+cdn.md              generated-output.md plugins.md
+?? docs/it/guide/
+?? docs/ja/guide/
+pantoken on cli ≡  ?2 via  26.8.1 
+➜  grep -n "appendFileSync" docs/scripts/check-locale-drift.test.ts; echo ---; grep -n "if (!existsSync(dir)) return new Set" docs/scripts/check-locale-parity.ts
+---
+pantoken on cli ≡  ?2 via  26.8.1 x 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && GITHUB_STEP_SUMMARY=/tmp/step_summary.md vp test scripts/check-locale-drift.test.ts 2>&1 | tail -20
+
+ RUN  v4.1.11 /Users/dwahl/Scripts/pantoken/docs
+
+
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+   Start at  17:04:29
+   Duration  161ms (transform 52ms, setup 16ms, import 22ms, tests 49ms, environment 0ms)
+
+docs on cli ≡  ?2 ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git status --short
+ M docs/scripts/check-locale-drift.test.ts
+ M docs/scripts/check-locale-parity.ts
+?? docs/it/guide/
+?? docs/ja/guide/
+pantoken on cli ≡  ?2 ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken/docs && node scripts/check-locale-parity.ts 2>&1 | grep -A3 "\[it\]\|\[ja\]\|it/guide\|ja/guide\|it/demos\|ja/demos"
+docs on cli ≡  ?2 ~2 via  26.8.1 x 
+➜  node scripts/check-locale-parity.ts 2>&1 | grep -B1 -A2 "locales: it$\|locales: ja$"
+docs on cli ≡  ?2 ~2 via  26.8.1 x 
+➜  node scripts/check-locale-drift.ts 2>&1 | tail -20; echo "EXIT:$?"
+    - [prose] Start/end placements resolve against `inset-inline` (logical…
+    - [prose] **Source:** [tray.css](https://github.com/thedannywahl/panto…
+  [docs.api] docs/api/css/number-input.md — 722 in 38 locale(s)
+    locales: cy, de, el, en-AU, en-CA, en-GB, +32 more
+    - [prose] `.instui-number-input` — A number-input facade with a +/- sp…
+    - [prose] The `.arrows` buttons are `aria-hidden` and purely presentat…
+    - [prose] **Source:** [number-input.css](https://github.com/thedannywa…
+  [docs.api] docs/api/css/truncate.md — 722 in 38 locale(s)
+    locales: cy, de, el, en-AU, en-CA, en-GB, +32 more
+    - [prose] `.--truncate` — Ellipsis truncation with line clamping contr…
+    - [prose] The base class uses `display: -webkit-box` and reads the `--…
+    - [prose] **Source:** [index.ts](https://github.com/thedannywahl/panto…
+  [docs.api] docs/api/formats/interactions/src/interfaces/CommandEventish.md — 722 in 38 locale(s)
+    locales: cy, de, el, en-AU, en-CA, en-GB, +32 more
+    - [prose] The `command`/`source` shape of an Invoker Commands `Command…
+    - [prose] The **`bubbles`** read-only property of the Event interface …
+    - [prose] The **`cancelBubble`** property of the Event interface is de…
+  …and 795 more file(s).
+
+Advisory only — not blocking this merge. Run `vp run docs:locales:translate` when convenient.
+EXIT:0
+docs on cli ≡  ?2 ~2 via  26.8.1 
+➜  node scripts/check-locale-parity.ts > /tmp/parity.out 2>&1; echo "parity exit: $?"; tail -20 /tmp/parity.out
+parity exit: 1
+    locales: el
+    - Missing required locale files: el/api/typedoc-sidebar.json
+  [docs.parity] docs/el/demos — 1 in 1 locale(s)
+    locales: el
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/en-AU/api — 1 in 1 locale(s)
+    locales: en-AU
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  [docs.parity] docs/en-AU/api/typedoc-sidebar.json — 1 in 1 locale(s)
+    locales: en-AU
+    - Missing required locale files: en-AU/api/typedoc-sidebar.json
+  [docs.parity] docs/en-AU/demos — 1 in 1 locale(s)
+    locales: en-AU
+    - Missing demo snippets; re-run docs:demos:locales: close-button.html, img.html, number-input.html, progress.html, rating.html …and 2 more
+  [docs.parity] docs/en-CA/api — 1 in 1 locale(s)
+    locales: en-CA
+    - Missing 818 API page(s); re-run docs:api:locales: ai/pantoken-ai/src/functions/installAgentAssets.md, ai/pantoken-ai/src/functions/isScaffoldPlatform.md, ai/pantoken-ai/src/functions/scaffoldAndInit.md, ai/pantoken-ai/src/functions/scaffoldProject.md, ai/pantoken-ai/src/index.md …and 813 more
+  …and 107 more file(s).
+
+Blocking translation drift. Run `vp run docs:api:locales && vp run docs:demos:locales` locally, then commit the updated translation cache. Loosen or tighten what blocks in `i18n-policy.json`.
+docs on cli ≡  ?2 ~2 via  26.8.1 
+➜  vp check scripts/check-locale-drift.test.ts scripts/check-locale-parity.ts 2>&1 | tail -40
+pass: All 2 files are correctly formatted (78ms, 10 threads)
+pass: Found no warnings, lint errors, or type errors in 2 files (957ms, 10 threads)
+docs on cli ≡  ?2 ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git status --short; echo ---; git diff --stat
+ M docs/scripts/check-locale-drift.test.ts
+ M docs/scripts/check-locale-parity.ts
+?? docs/it/guide/
+?? docs/ja/guide/
+---
+ docs/scripts/check-locale-drift.test.ts | 2 ++
+ docs/scripts/check-locale-parity.ts     | 2 ++
+ 2 files changed, 4 insertions(+)
+pantoken on cli ≡  ?2 ~2 via  26.8.1 
+➜  git status --short && echo --- && git branch --show-current
+ M docs/scripts/check-locale-drift.test.ts
+ M docs/scripts/check-locale-parity.ts
+?? docs/it/guide/
+?? docs/ja/guide/
+---
+cli
+pantoken on cli ≡  ?2 ~2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git add docs/scripts/check-locale-drift.test.ts && git commit -m "fix(docs): mock appendFileSync in check-locale-drift test
+
+DriftReporter.writeSummary calls appendFileSync when GITHUB_STEP_SUMMARY is
+set (always true in Actions), but the node:fs mock omitted it, so the
+coverage job's vitest run failed with an unmocked-export error." 2>&1 | tail -20 
+[STARTED] Backing up original state...
+[COMPLETED] Backed up original state in git stash (5bafa24a)
+[STARTED] Running tasks for staged files...
+[STARTED] Config object — 1 file
+[STARTED] * — 1 file
+[STARTED] *.css — 0 files
+[SKIPPED] *.css — no files
+[STARTED] vp check --fix
+[COMPLETED] vp check --fix
+[COMPLETED] * — 1 file
+[COMPLETED] Config object — 1 file
+[COMPLETED] Running tasks for staged files...
+[STARTED] Applying modifications from tasks...
+[COMPLETED] Applying modifications from tasks...
+[STARTED] Cleaning up temporary files...
+[COMPLETED] Cleaning up temporary files...
+[cli 6f02c547] fix(docs): mock appendFileSync in check-locale-drift test
+ 1 file changed, 2 insertions(+)
+pantoken on cli ↑1  ?2 ~1 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git add docs/scripts/check-locale-parity.ts && git commit -m "fix(docs): guard check-locale-parity against a missing locale guide dir
+
+listBasenames called readdirSync with no existsSync guard, so a locale
+missing its entire guide/ dir (e.g. it, ja) crashed the whole
+docs:check:locales step with an uncaught ENOENT instead of reporting a
+normal parity finding." 2>&1 | tail -20
+[STARTED] Backing up original state...
+[COMPLETED] Backed up original state in git stash (c9a0fc4c)
+[STARTED] Running tasks for staged files...
+[STARTED] Config object — 1 file
+[STARTED] * — 1 file
+[STARTED] *.css — 0 files
+[SKIPPED] *.css — no files
+[STARTED] vp check --fix
+[COMPLETED] vp check --fix
+[COMPLETED] * — 1 file
+[COMPLETED] Config object — 1 file
+[COMPLETED] Running tasks for staged files...
+[STARTED] Applying modifications from tasks...
+[COMPLETED] Applying modifications from tasks...
+[STARTED] Cleaning up temporary files...
+[COMPLETED] Cleaning up temporary files...
+[cli 994e5b45] fix(docs): guard check-locale-parity against a missing locale guide dir
+ 1 file changed, 2 insertions(+)
+pantoken on cli ↑2  ?2 via  26.8.1 
+➜  cd /Users/dwahl/Scripts/pantoken && git add docs/it/guide docs/ja/guide && git commit -m "chore(i18n): add it/ja guide translations
+
+Backfill the guide/ pages that were missing for these two locales (pre-
+existing gap on main), generated via the deterministic glossary adapter." 2>&1 | tail -30
+[SKIPPED] *.css — no files
+[STARTED] vp check --fix
+[COMPLETED] vp check --fix
+[COMPLETED] * — 18 files
+[COMPLETED] Config object — 18 files
+[COMPLETED] Running tasks for staged files...
+[STARTED] Applying modifications from tasks...
+[COMPLETED] Applying modifications from tasks...
+[STARTED] Cleaning up temporary files...
+[COMPLETED] Cleaning up temporary files...
+[cli 22252db2] chore(i18n): add it/ja guide translations
+ 18 files changed, 1811 insertions(+)
+ create mode 100644 docs/it/guide/architecture.md
+ create mode 100644 docs/it/guide/cdn-picker.md
+ create mode 100644 docs/it/guide/cdn.md
+ create mode 100644 docs/it/guide/cli.md
+ create mode 100644 docs/it/guide/components.md
+ create mode 100644 docs/it/guide/generated-output.md
+ create mode 100644 docs/it/guide/getting-started.md
+ create mode 100644 docs/it/guide/packages.md
+ create mode 100644 docs/it/guide/plugins.md
+ create mode 100644 docs/ja/guide/architecture.md
+ create mode 100644 docs/ja/guide/cdn-picker.md
+ create mode 100644 docs/ja/guide/cdn.md
+ create mode 100644 docs/ja/guide/cli.md
+ create mode 100644 docs/ja/guide/components.md
+ create mode 100644 docs/ja/guide/generated-output.md
+ create mode 100644 docs/ja/guide/getting-started.md
+ create mode 100644 docs/ja/guide/packages.md
+ create mode 100644 docs/ja/guide/plugins.md
+pantoken on cli ↑3 via  26.8.1 
+➜  git status --short; echo ---; ls .changeset/*.md 2>/dev/null | head
+---
+.changeset/README.md
+.changeset/agent-prompt-i18n.md
+.changeset/agent-row-wrap-fix.md
+.changeset/agent-view-pause-toggle-hash.md
+.changeset/agent-view-six-providers.md
+.changeset/banner-button-defaults.md
+.changeset/button-on-color-modifier.md
+.changeset/cache-css-chrome.md
+.changeset/canvas-theme-editor-build-theme.md
+.changeset/canvas-theme-editor-codemirror-source-view.md
+pantoken on cli ↑3 via  26.8.1 
+➜  git push [REDACTED_EMAIL]:thedannywahl/pantoken.git cli:cli 2>&1 | tail -60
+To github.com:thedannywahl/pantoken.git
+   a612d56f..22252db2  cli -> cli
+pantoken on cli ↑3 via  26.8.1 
+➜  sleep 15 && gh run list --repo thedannywahl/pantoken --branch cli --limit 5 2>&1 | cat
+in_progress            Cli     CodeQL  cli     pull_request    33569541170     15s     2026-09-01T23:07:21Z
+in_progress             Cli     Changeset check cli     pull_request    33569541165     15s     2026-09-01T23:07:21Z
+completed       success Cli     Guard release automation        cli     pull_request    33569541332     9s      2026-09-01T23:07:21Z
+in_progress             Cli     CI      cli     pull_request    33569541225     15s     2026-09-01T23:07:21Z
+completed       success Cli     Guard release automation        cli     pull_request    33568206573     6s      2026-09-01T22:50:16Z
+pantoken on cli ↑3 via  26.8.1 
+➜  gh run watch 33569541225 --repo thedannywahl/pantoken --interval 30 2>&1 | tail -100
+  ✓ Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ lint in 3m47s (ID 100060601689)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Lint CSS
+  ✓ Lint JS
+  ✓ Lint TSDoc
+  ✓ Validate generated output
+  ✓ Lint Markdown
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ publint in 3m27s (ID 100060601693)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and publint (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ benchmarks in 4m16s (ID 100060601696)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Run benchmarks
+  ✓ Post Run benchmarks
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+X docs in 2m10s (ID 100060601727)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  X Build docs (locale parity + drift + VitePress build)
+  - Add custom domain file
+  - Upload built docs site
+  - Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ attw in 6m22s (ID 100060601806)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and attw (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+- upstream-drift (ID 100060603140)
+X ci-gate in 2s (ID 100062151122)
+  ✓ Set up job
+  X Verify no CI job failed
+  ✓ Complete job
+
+ANNOTATIONS
+! Commit 11d75a16d7a3a0a1cd2fa984666714d062deb829 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#29
+
+! Commit 4e6833c56647153d58e2e487d46077fb6ecc9d1a has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#28
+
+! Commit ad35027f57ca11a44f97519c1d9e7262e20c3b36 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#27
+
+! Commit 6676a3fd01186ca28022f567d819201d490504df has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#26
+
+! Commit 99719052be9f31fe7838f08a0384c2844c134c8d has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#25
+
+! Commit 73e0cdc568e1471f16519728edfcf9b924c655a0 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#24
+
+! Commit 619850ad9e584a306ebc6fc2ad97666a6ce54e99 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#23
+
+! Commit f124bfca25156fbf82ab7e248792ee13f48c1372 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#22
+
+! Commit 4952cbf1a56bc47334be08c8aa8651103b672e67 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#21
+
+! Commit 1308370fec873de4495158ad90c77f99e1f4d546 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#20
+
+X Process completed with exit code 1.
+ci-gate: .github#154
