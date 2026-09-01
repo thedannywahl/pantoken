@@ -13047,7 +13047,7 @@
         "inherits": true,
         "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-strong)"
+        "value": "#5F6E7A1A"
       },
       "--instui-component-banner-border-radius": {
         "inherits": true,
@@ -29401,7 +29401,7 @@
         "inherits": true,
         "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-strong)"
+        "value": "#5F6E7A1A"
       },
       "--instui-component-banner-border-radius": {
         "inherits": true,
@@ -45758,7 +45758,7 @@
         "inherits": true,
         "refersTo": "--instui-color-stroke-strong",
         "syntax": "*",
-        "value": "var(--instui-color-stroke-strong)"
+        "value": "#5F6E7A1A"
       },
       "--instui-component-banner-border-radius": {
         "inherits": true,
