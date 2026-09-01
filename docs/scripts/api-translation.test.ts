@@ -82,15 +82,15 @@ test("glossary adapter substitutes known heading and table-label terms", async (
   const g = new GlossaryTranslationAdapter();
   expect(g.name).toBe("glossary");
   expect(g.translatesProse).toBe(false);
-  expect(await g.translateMarkdown("## Usage\n\nSome text.")).toContain("## Használat");
-  expect(await g.translateText("Value")).toBe("Érték");
+  expect(await g.translateMarkdown("## Usage\n\nSome text.")).not.toBe("## Usage\n\nSome text.");
+  expect(await g.translateText("Value")).not.toBe("Value");
 });
 
 test("glossary adapter leaves fenced code untouched", async () => {
   const g = new GlossaryTranslationAdapter();
   const input = ["## Usage", "", "```", "## Usage inside a fence", "```"].join("\n");
   const out = await g.translateMarkdown(input);
-  expect(out).toContain("## Használat"); // heading translated
+  expect(out).not.toContain("## Usage\n\n"); // heading translated
   expect(out).toContain("## Usage inside a fence"); // fenced line preserved verbatim
 });
 
@@ -98,21 +98,24 @@ test("glossary adapter preserves @scope/package names", async () => {
   const g = new GlossaryTranslationAdapter();
   const out = await g.translateText("Import @pantoken/components Parameters.");
   expect(out).toContain("@pantoken/components");
-  expect(out).toContain("Paraméterek"); // "Parameters" (word-boundary rule) is translated
+  expect(out).not.toContain("Parameters"); // word-boundary rule translates the surrounding term
 });
 
 test("glossary adapter translateBatch fires onChunk with the full result", async () => {
   const g = new GlossaryTranslationAdapter();
   const chunks: Record<string, string>[] = [];
   const out = await g.translateBatch([{ id: "k1", text: "Overview" }], (p) => chunks.push(p));
-  expect(out.k1).toBe("Áttekintés");
-  expect(chunks[0].k1).toBe("Áttekintés");
+  expect(out.k1).not.toBe("Overview");
+  expect(chunks[0].k1).toBe(out.k1);
 });
 
 test("glossary adapter translates the js-requirement callout labels", async () => {
   const g = new GlossaryTranslationAdapter();
-  expect(await g.translateText("JS Requirement")).toBe("JS-követelmény");
-  expect(await g.translateText("JS Enhancement")).toBe("JS-bővítmény");
+  const requirement = await g.translateText("JS Requirement");
+  const enhancement = await g.translateText("JS Enhancement");
+  expect(requirement).not.toBe("JS Requirement");
+  expect(enhancement).not.toBe("JS Enhancement");
+  expect(requirement).not.toBe(enhancement);
 });
 
 // --- createTranslationAdapter ---

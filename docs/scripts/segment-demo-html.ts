@@ -1,5 +1,6 @@
 /**
- * Split a self-hosted demo HTML fragment (`docs/demos/*.html`) into translatable prose text nodes vs.
+ * Split a self-hosted demo HTML template (`docs/demos/<component>/index.html`) into translatable prose
+ * text nodes vs.
  * verbatim markup, so `translate-demos.ts` can localize captions/labels without touching tags,
  * attributes (including `aria-*`/`title`), comments, or `<script>`/`<style>` contents.
  *

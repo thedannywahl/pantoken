@@ -1,0 +1,62 @@
+{
+  "text1": {
+    "string": "A styled link",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "A large link",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Icon at the start",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Icon at the end",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Read the",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "inline documentation",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "for the full story.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Unstyled link",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "A link on a dark background",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "With a leading icon",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

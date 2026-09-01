@@ -1,0 +1,70 @@
+{
+  "text1": {
+    "string": "Semantic color",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "paints text,",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "a surface, and",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "a border — each from a semantic color token, so overrides stay\n    on-palette and follow the theme.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "text-success",
+    "verbatim": "required"
+  },
+  "text6": {
+    "string": "text-warning",
+    "verbatim": "required"
+  },
+  "text7": {
+    "string": "text-error",
+    "verbatim": "required"
+  },
+  "text8": {
+    "string": "text-info",
+    "verbatim": "required"
+  },
+  "text9": {
+    "string": "Surfaces and borders",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Accent surfaces pair with",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "bg-accent-green",
+    "verbatim": "required"
+  },
+  "text12": {
+    "string": "bg-accent-plum",
+    "verbatim": "required"
+  },
+  "text13": {
+    "string": "border-strong",
+    "verbatim": "required"
+  },
+  "text14": {
+    "string": "border-brand",
+    "verbatim": "required"
+  }
+}

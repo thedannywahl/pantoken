@@ -1,0 +1,44 @@
+{
+  "text1": {
+    "string": "Project name:",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Untitled",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Owner:",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Ada Byron",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Created:",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "March 12, 2026",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Click a value to edit it. The stateful view/edit toggle with confirm and cancel buttons is the\n    web-component tier; this is the pure-CSS editable skin.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -23,7 +23,7 @@
         <span class="instui-badge -color-success -placement-bottom-start">2</span>
       </span>
       <span class="instui-badge-wrapper">
-        <button class="instui-button -color-secondary">صندوق الوارد</button>
+        <button class="instui-button -color-secondary">Inbox</button>
         <span
           class="instui-badge -type-notification -color-danger -placement-top-end -pulse"
         ></span>
@@ -32,22 +32,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .badge-on-color {
-    display: inline-flex;
-    padding: 8px 12px;
-    border-radius: var(--instui-border-radius-md);
-    /* A fixed dark brand surface (the navy primitive doesn't flip with the mode), so the light
-       inverse chip reads in both light and dark. */
-    background: var(--instui-primitive-color-navy-navy170);
-  }
-</style>
-
-<script>
-  // countUntil: when the count reaches the cap, show `${countUntil - 1}+` (e.g. 99+).
-  const countUntil = 100;
-  const count = 250;
-  const el = document.querySelector("[data-count]");
-  el.textContent = count >= countUntil ? `${countUntil - 1}+` : String(count);
-</script>

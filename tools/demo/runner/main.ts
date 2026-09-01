@@ -171,9 +171,9 @@ interface RunnerCtx {
 }
 
 /** Split a demo's raw source into HTML/CSS/JS, plus the card-stripped copy the code view shows/copies. */
-function parseSource(sourceText: string): DemoParts {
-  let css = "";
-  let js = "";
+function parseSource(sourceText: string, externalCss = "", externalJs = ""): DemoParts {
+  let css = externalCss;
+  let js = externalJs;
   const html = sourceText
     .replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, (_match, body: string) => {
       css += `${body.trim()}\n`;
@@ -256,8 +256,10 @@ function createRunnerContext(
   mount: HTMLElement,
   loading: HTMLElement,
   sourceText: string,
+  externalCss = "",
+  externalJs = "",
 ): RunnerCtx {
-  const { original, code, labels, parts } = parseSource(sourceText);
+  const { original, code, labels, parts } = parseSource(sourceText, externalCss, externalJs);
   // The whole demo (toolbar chrome + rendered result) follows the site's theme, chosen by the palette
   // selector in the docs header and pushed here via `pantoken-demo-theme`. The one multi-theme token
   // sheet (in cssUrls) covers every theme, so switching is just toggling the `data-pantoken-theme`
@@ -621,6 +623,28 @@ async function loadSourceText(url: string): Promise<string | null> {
   }
 }
 
+/** Load an optional CSS or JavaScript sibling, treating a missing asset as an absent code part. */
+async function loadOptionalSourceText(url: string): Promise<string> {
+  try {
+    const response = await fetch(url, { cache: "no-cache" });
+    return response.ok ? await response.text() : "";
+  } catch {
+    return "";
+  }
+}
+
+/** The optional sibling asset URL for a staged `.html` source, or null for non-file URLs. */
+function siblingSourceUrl(source: string, extension: "css" | "js"): string | null {
+  try {
+    const url = new URL(source, location.href);
+    if (!url.pathname.endsWith(".html")) return null;
+    url.pathname = url.pathname.slice(0, -".html".length) + `.${extension}`;
+    return url.href;
+  } catch {
+    return null;
+  }
+}
+
 /** Ask the host which theme to use, or (standalone, no parent) resolve the theme gate immediately. */
 function requestTheme(ctx: RunnerCtx): void {
   if (window.parent && window.parent !== window) {
@@ -663,7 +687,13 @@ async function main(): Promise<void> {
   const sourceText = await loadSourceText(requiredSrcUrl);
   if (sourceText === null) return;
 
-  const ctx = createRunnerContext(mount, loading, sourceText);
+  const [externalCss, externalJs] = await Promise.all(
+    (["css", "js"] as const).map((extension) => {
+      const url = siblingSourceUrl(requiredSrcUrl, extension);
+      return url ? loadOptionalSourceText(url) : Promise.resolve("");
+    }),
+  );
+  const ctx = createRunnerContext(mount, loading, sourceText, externalCss, externalJs);
   // The code follows the toggle's scheme (`effectiveDark`); flip the Shiki color variables via a class.
   applyEditorScheme();
   observeBodyResize(ctx);

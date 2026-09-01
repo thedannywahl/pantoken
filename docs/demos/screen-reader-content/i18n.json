@@ -1,0 +1,20 @@
+{
+  "text1": {
+    "string": "This sentence is visible. After it sits screen-reader-only text.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "This text is announced to assistive technology but hidden on screen.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Switch to the HTML tab to see it in the markup.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

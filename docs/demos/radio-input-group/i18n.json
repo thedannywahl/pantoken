@@ -1,0 +1,74 @@
+{
+  "text1": {
+    "string": "T-shirt size",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Medium",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Notification frequency",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Real time",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Daily digest",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Weekly digest",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Contact method",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Email",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "Phone",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Mail",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

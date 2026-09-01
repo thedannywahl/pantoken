@@ -1,0 +1,50 @@
+{
+  "text1": {
+    "string": "Home",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Inbox",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Calendar",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Settings",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Home",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Inbox",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Calendar",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Page content sits beside the rail.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "text1": {
+    "string": "Dismissable with",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "— I fade out when closed.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Dismissable with",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "— I close instantly.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Not dismissable, and flat via",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "(alerts are elevated by default).",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "A custom icon via the",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "class, kept white on the status bar.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Restore alerts",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

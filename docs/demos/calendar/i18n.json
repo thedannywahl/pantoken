@@ -1,0 +1,50 @@
+{
+  "text1": {
+    "string": "March 2026",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Su",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Mo",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Tu",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "We",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Th",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Fr",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Sa",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

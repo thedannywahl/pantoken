@@ -1,4 +1,9 @@
 {
   "version": 1,
-  "entries": {}
+  "entries": {
+    "38177048d5f529073293bb38679b3ee52894918ca159a4a2bbaeee8b7d47ea33": "Composants",
+    "59e0b648149a19380dfb9a259ed880fdfaa11136a83a7f30fe6f2fd3d62ddcbd": "État",
+    "b139442eb0ed70af51ee13d8344dc1ef2b3d2ab9d5776e1773e3704d84d3f6b6": "Aperçu",
+    "ebb79da00867f40648b35943b926255d24207bac8a3f8217dcaa451139f008da": "\n      Classe-based component styles, built from the Instructure tokens, plus a prose layer.\n    "
+  }
 }

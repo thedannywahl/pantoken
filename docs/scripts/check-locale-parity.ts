@@ -23,6 +23,13 @@ const listBasenames = (dir: string, extension: string): Set<string> => {
   return new Set(names);
 };
 
+const listDemoNames = (dir: string): Set<string> =>
+  new Set(
+    readdirSync(dir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name),
+  );
+
 /** Every `.md` file under `dir`, as paths relative to `dir` (so the two locale trees compare directly). */
 const listMarkdownTree = (dir: string): Set<string> => {
   const out = new Set<string>();
@@ -44,7 +51,7 @@ const countHeroActions = (filePath: string): number =>
 const errors: string[] = [];
 const rootPages = listBasenames(rootGuideDir, ".md");
 const rootApi = listMarkdownTree(rootApiDir);
-const rootDemos = listBasenames(rootDemoDir, ".html");
+const rootDemos = listDemoNames(rootDemoDir);
 
 if (!existsSync(rootIndex)) {
   errors.push("Missing required locale file:", `- ${rootIndex}`);

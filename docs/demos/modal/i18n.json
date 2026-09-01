@@ -1,0 +1,140 @@
+{
+  "text1": {
+    "string": "Small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Medium",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Auto",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Full screen",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Media",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "— a narrow modal.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Close",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Medium",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "The default size — no modifier needed.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Close",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "— a wider modal for denser content.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text15": {
+    "string": "Close",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text16": {
+    "string": "Auto",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text17": {
+    "string": "sizes to its content.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text18": {
+    "string": "Close",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text19": {
+    "string": "Full screen",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text20": {
+    "string": "fills the viewport.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text21": {
+    "string": "Close",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text22": {
+    "string": "Media",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text23": {
+    "string": "Close",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

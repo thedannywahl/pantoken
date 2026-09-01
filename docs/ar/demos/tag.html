@@ -6,43 +6,10 @@
     <span class="instui-tag -readonly">للقراءة فقط</span>
     <button class="instui-tag -inline" data-dismiss>قابل للإغلاق</button>
     <button class="instui-tag -inline" data-dismiss>تصفية: مفتوح</button>
-    <button class="instui-tag -inline" data-dismiss>تصفية: خاص بي</button>
+    <button class="instui-tag -inline" data-dismiss>تصفية: لي</button>
   </div>
 
   <button class="instui-button -color-secondary -size-sm" data-role="restore" disabled>
     استعادة الوسوم
   </button>
 </div>
-
-<style>
-  .tag-demo {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: flex-start;
-  }
-</style>
-
-<script>
-  const list = document.querySelector(".tag-list");
-  const restore = document.querySelector('[data-role="restore"]');
-  const initial = list.innerHTML;
-
-  // The -inline tag is dismissible: clicking its close glyph removes it.
-  function wireDismiss(root) {
-    root.querySelectorAll(".-inline[data-dismiss]").forEach((tag) => {
-      tag.addEventListener("click", () => {
-        tag.remove();
-        restore.disabled = false;
-      });
-    });
-  }
-  wireDismiss(list);
-
-  // Put every dismissed tag back.
-  restore.addEventListener("click", () => {
-    list.innerHTML = initial;
-    wireDismiss(list);
-    restore.disabled = true;
-  });
-</script>

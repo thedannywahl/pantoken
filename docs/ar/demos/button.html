@@ -14,29 +14,29 @@
     <section>
       <h4>AI</h4>
       <div class="row">
-        <button class="instui-button -color-ai">AI أساسي</button>
-        <button class="instui-button -color-ai-secondary">AI ثانوي</button>
+        <button class="instui-button -color-ai">الذكاء الاصطناعي أساسي</button>
+        <button class="instui-button -color-ai-secondary">الذكاء الاصطناعي ثانوي</button>
       </div>
     </section>
 
     <section>
-      <h4>أساسي معكوس (على سطح ملون)</h4>
+      <h4>عكسي أساسي (على سطح ملون)</h4>
       <div class="row on-brand">
-        <button class="instui-button -color-primary-inverse">أساسي معكوس</button>
+        <button class="instui-button -color-primary-inverse">عكسي أساسي</button>
       </div>
     </section>
 
     <section>
-      <h4>شفاف (بدون خلفية)</h4>
+      <h4>شبح (بدون خلفية)</h4>
       <div class="row">
-        <button class="instui-button -without-background">أساسي شفاف</button>
-        <button class="instui-button -color-secondary -without-background">ثانوي شفاف</button>
+        <button class="instui-button -without-background">شبح أساسي</button>
+        <button class="instui-button -color-secondary -without-background">شبح ثانوي</button>
       </div>
     </section>
 
     <section>
-      <h4>كتلة (العرض الكامل)</h4>
-      <button class="instui-button -display-block">زر كتلة</button>
+      <h4>كتلة (عرض كامل)</h4>
+      <button class="instui-button -display-block">زر الكتلة</button>
     </section>
 
     <section>
@@ -49,7 +49,7 @@
     </section>
 
     <section>
-      <h4>الأيقونات والأشكال</h4>
+      <h4>الرموز والأشكال</h4>
       <div class="row">
         <button class="instui-button">
           متابعة
@@ -61,7 +61,7 @@
         </button>
         <button class="instui-button -color-secondary" id="star" aria-pressed="false">
           <span class="instui-icon -icon-star"></span>
-          <span id="star-label">نجمة</span>
+          <span id="star-label">مفضل</span>
         </button>
         <!-- Icon-only: the glyph rides the button; name it with aria-label… -->
         <button class="instui-button -shape-square -icon-arrow-right" aria-label="Next"></button>
@@ -73,57 +73,13 @@
     </section>
 
     <section>
-      <h4>مكثف وحالاته</h4>
+      <h4>مضغوط والحالات</h4>
       <div class="row">
-        <button class="instui-button -condensed">مكثف</button>
-        <button class="instui-button -condensed -size-sm">مكثف صغير</button>
+        <button class="instui-button -condensed">مضغوط</button>
+        <button class="instui-button -condensed -size-sm">مضغوط صغير</button>
         <button class="instui-button -toggle" id="toggle" aria-pressed="false">تبديل</button>
         <button class="instui-button" disabled>معطّل</button>
       </div>
     </section>
   </div>
 </div>
-
-<style>
-  .button-demo {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .button-demo .row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  /*
-   * primary-inverse is meant for dark/brand surfaces, so pin this swatch to the brand colour's
-   * light-scheme (dark navy) value in both site modes — otherwise the surface flips light in dark
-   * mode and the white button disappears.
-   */
-  .button-demo .on-brand {
-    color-scheme: light;
-    padding: 12px;
-    border-radius: var(--instui-border-radius-md, 6px);
-    background: var(--instui-color-background-brand, #0770a3);
-  }
-</style>
-
-<script>
-  const star = document.getElementById("star");
-  const starLabel = document.getElementById("star-label");
-  let starred = false;
-  star.addEventListener("click", () => {
-    starred = !starred;
-    starLabel.textContent = starred ? "Starred" : "Star";
-    star.setAttribute("aria-pressed", String(starred));
-  });
-
-  const toggle = document.getElementById("toggle");
-  toggle.addEventListener("click", () => {
-    toggle.setAttribute(
-      "aria-pressed",
-      toggle.getAttribute("aria-pressed") === "true" ? "false" : "true",
-    );
-  });
-</script>

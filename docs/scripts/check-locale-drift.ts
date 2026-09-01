@@ -21,7 +21,7 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
-import { collectDemoUnits, segmentDemoHtml } from "./segment-demo-html.ts";
+import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
@@ -118,22 +118,18 @@ const glossaryDrift = (locale: string): Missing[] => {
   return missing;
 };
 
-const demoFiles = existsSync(demoDir)
-  ? readdirSync(demoDir)
-      .filter((name) => name.endsWith(".html"))
-      .toSorted()
-  : [];
+const demoNames = existsSync(demoDir) ? listDemoNames(demoDir) : [];
 
-/** Demos drift: every prose text node in `docs/demos/*.html` needs a cached translation. */
+/** Demos drift: every demo-local i18n string needs a cached translation. */
 const demosDrift = (locale: string): Missing[] => {
-  if (demoFiles.length === 0) return [];
+  if (demoNames.length === 0) return [];
   const cached = loadCacheKeys(locale, "demos");
   const missing: Missing[] = [];
-  for (const file of demoFiles) {
-    const units = collectDemoUnits(segmentDemoHtml(readFileSync(join(demoDir, file), "utf8")));
-    for (const text of units) {
+  for (const name of demoNames) {
+    const { strings } = loadDemoI18n(join(demoDir, name));
+    for (const text of Object.values(strings)) {
       if (!cached.has(keyFor("text", text))) {
-        missing.push({ file: `demos/${file}`, kind: "text", sample: preview(text) });
+        missing.push({ file: `demos/${name}/i18n.json`, kind: "text", sample: preview(text) });
       }
     }
   }

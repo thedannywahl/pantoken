@@ -1,0 +1,86 @@
+{
+  "text1": {
+    "string": "Standard",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Option A",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Option B",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Disabled",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Toggle buttons (variant=\"toggle\")",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Medium",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Toggle context colors",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "Success",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Danger",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": "Warning",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "Off",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

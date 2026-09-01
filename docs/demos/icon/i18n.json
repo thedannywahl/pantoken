@@ -1,0 +1,20 @@
+{
+  "text1": {
+    "string": "Inline",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "icons scale to the text and inherit\n      its color.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Add",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

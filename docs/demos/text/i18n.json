@@ -1,0 +1,122 @@
+{
+  "text1": {
+    "string": "Text sizes",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "x-small text",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "small text",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "medium text (default)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "large text",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "x-large text",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Text weight, style, and color",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Bold",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Italic",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Brand",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "Success",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Danger",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": "Warning",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "Bold danger (stacked)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text15": {
+    "string": "Secondary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text16": {
+    "string": "Text content variants",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text17": {
+    "string": "Description page",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text18": {
+    "string": "Description section",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text19": {
+    "string": "Content small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text20": {
+    "string": "Legend",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

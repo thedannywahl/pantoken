@@ -1,4 +1,13 @@
 {
   "version": 1,
-  "entries": {}
+  "entries": {
+    "38177048d5f529073293bb38679b3ee52894918ca159a4a2bbaeee8b7d47ea33": "Componentes",
+    "51b66a7d716e55648e126def08eca740b82e7d66d555240d4c9fa1d4eedec16c": "Módulo 3",
+    "59e0b648149a19380dfb9a259ed880fdfaa11136a83a7f30fe6f2fd3d62ddcbd": "Estado",
+    "6f8f931d91cc1a6e0cd17104637fa10e043947ef26be686829d406ebcddac5d3": "Descrição page",
+    "b139442eb0ed70af51ee13d8344dc1ef2b3d2ab9d5776e1773e3704d84d3f6b6": "Visão geral",
+    "b5f2f8e94a8a53adce778fcb909754dd818f062e97ffa976bfbbf245809d7ae2": "Descrição section",
+    "e2478d401fd6f30f5c7a8f31127d77c188fd927a21b883ddccda5b3f5eade932": "Pacote",
+    "ebb79da00867f40648b35943b926255d24207bac8a3f8217dcaa451139f008da": "\n      Classe-based component styles, built from the Instructure tokens, plus a prose layer.\n    "
+  }
 }

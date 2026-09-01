@@ -43,6 +43,6 @@ test("pure whitespace/number/punctuation runs are not treated as prose", () => {
 test("translateDemos resolves each prose unit through resolve()", () => {
   const html = "<p>Hello <b>world</b></p>";
   const segments = segmentDemoHtml(html);
-  const out = reassembleDemoHtml(segments, (t) => (t === "Hello " ? "Szia " : t));
-  expect(out).toBe("<p>Szia <b>world</b></p>");
+  const out = reassembleDemoHtml(segments, (text) => (text === "Hello " ? "translated " : text));
+  expect(out).toBe("<p>translated <b>world</b></p>");
 });

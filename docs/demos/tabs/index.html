@@ -1,0 +1,31 @@
+<div class="instui-card" style="display: flex; flex-direction: column; gap: 24px">
+  <!-- Default variant: underline tabs -->
+  <div class="instui-tabs" data-tabs>
+    <div class="list" role="tablist" aria-label="Default tabs">
+      <button class="tab -selected" role="tab" aria-selected="true" data-panel="Overview">
+        {{text1}}
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="Details">{{text2}}</button>
+      <button class="tab -disabled" role="tab" aria-disabled="true" disabled data-panel="Disabled">
+        {{text3}}
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="History">{{text4}}</button>
+    </div>
+    <div class="panel" role="tabpanel">{{text5}}</div>
+  </div>
+
+  <!-- Secondary variant: connected "folder" tabs (variant on the container) -->
+  <div class="instui-tabs -variant-secondary" data-tabs>
+    <div class="list" role="tablist" aria-label="Secondary tabs">
+      <button class="tab" role="tab" aria-selected="false" data-panel="First">{{text6}}</button>
+      <button class="tab -disabled" role="tab" aria-disabled="true" disabled data-panel="Disabled">
+        {{text7}}
+      </button>
+      <button class="tab -selected" role="tab" aria-selected="true" data-panel="Third">
+        {{text8}}
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="Fourth">{{text9}}</button>
+    </div>
+    <div class="panel" role="tabpanel">{{text10}}</div>
+  </div>
+</div>

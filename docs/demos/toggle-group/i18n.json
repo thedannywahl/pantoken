@@ -1,0 +1,26 @@
+{
+  "text1": {
+    "string": "Advanced settings",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "These options are revealed when the group is expanded. The header row carries a chevron that\n        rotates on open, and the content sits below a divider.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Billing details",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Collapsed by default. Click the summary row to expand.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "text1": {
+    "string": "No items yet",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Create your first item to get started.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Add a file",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Click anywhere in this billboard.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

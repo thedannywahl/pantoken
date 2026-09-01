@@ -1,0 +1,47 @@
+<div class="instui-card">
+  <!-- A tray as a native [popover]: it docks to an edge and opens in the top layer. -->
+  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+    <button class="instui-button -color-secondary" popovertarget="tray-start">{{text1}}</button>
+    <button class="instui-button -color-secondary" popovertarget="tray-end">{{text2}}</button>
+  </div>
+
+  <div id="tray-start" popover class="instui-tray -size-sm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      "
+    >
+      <strong>{{text3}}</strong>
+      <button
+        class="instui-close-button"
+        popovertarget="tray-start"
+        popovertargetaction="hide"
+        aria-label="Close"
+      ></button>
+    </div>
+    <p class="instui-text -size-sm">{{text4}}</p>
+  </div>
+
+  <div id="tray-end" popover class="instui-tray -placement-end -size-sm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      "
+    >
+      <strong>{{text5}}</strong>
+      <button
+        class="instui-close-button"
+        popovertarget="tray-end"
+        popovertargetaction="hide"
+        aria-label="Close"
+      ></button>
+    </div>
+    <p class="instui-text -size-sm">{{text6}}</p>
+  </div>
+</div>

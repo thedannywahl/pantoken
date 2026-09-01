@@ -1,0 +1,86 @@
+{
+  "text1": {
+    "string": "Top-rated films",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Rank",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Title",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Year",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Rating",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "The Shawshank Redemption",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "The Godfather",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "The Godfather: Part II",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Films (stacked)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Title",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "Year",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Rating",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": "The Shawshank Redemption",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "The Godfather",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

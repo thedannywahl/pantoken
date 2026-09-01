@@ -1,0 +1,140 @@
+{
+  "text1": {
+    "string": "Heading level one",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Heading level two",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Heading level three",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Heading level four",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Heading level five",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Heading level six",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Body copy is InstUI's Text",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "style. A paragraph with",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "a link",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "bold text",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "emphasis",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "small print",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": ", and some",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": ". The prose layer styles rendered\n      markdown to match the Heading and Text components.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text15": {
+    "string": "First item",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text16": {
+    "string": "Second item",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text17": {
+    "string": "A blockquote, styled from the Text content-quote type scale.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text18": {
+    "string": "Package",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text19": {
+    "string": "Bucket",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text20": {
+    "string": "@pantoken/css",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text21": {
+    "string": "formats",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text22": {
+    "string": "@pantoken/react",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text23": {
+    "string": "renderers",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

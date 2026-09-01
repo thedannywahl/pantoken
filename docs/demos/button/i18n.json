@@ -1,0 +1,182 @@
+{
+  "text1": {
+    "string": "Colors",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Primary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Secondary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Tertiary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Success",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Danger",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "AI",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "AI primary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "AI secondary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Primary inverse (on a colored surface)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "Primary inverse",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Ghost (no background)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": "Primary ghost",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "Secondary ghost",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text15": {
+    "string": "Block (full width)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text16": {
+    "string": "Block button",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text17": {
+    "string": "Sizes",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text18": {
+    "string": "Small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text19": {
+    "string": "Medium",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text20": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text21": {
+    "string": "Icons and shapes",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text22": {
+    "string": "Continue",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text23": {
+    "string": "Download",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text24": {
+    "string": "Star",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text25": {
+    "string": "Add",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text26": {
+    "string": "Condensed and states",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text27": {
+    "string": "Condensed",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text28": {
+    "string": "Condensed small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text29": {
+    "string": "Toggle",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text30": {
+    "string": "Disabled",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

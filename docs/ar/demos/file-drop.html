@@ -5,10 +5,10 @@
     <label class="instui-file-drop" id="fd" style="cursor: pointer; display: block">
       <span class="instui-icon -icon-cloud-upload" style="font-size: 2.5rem"></span>
       <div class="instui-text" style="margin-top: 8px">
-        <strong>اسحب صورة إلى هنا</strong>، أو انقر للتصفح.
+        <strong>اسحب صورة هنا</strong>، أو انقر للتصفح.
       </div>
       <div class="instui-text -size-sm --text-muted" id="fd-msg" style="margin-top: 4px">
-        PNG أو JPG حتى 5&nbsp;ميجابايت.
+        PNG أو JPG حتى 5&nbsp;ميغابايت.
       </div>
       <input type="file" accept="image/*" hidden id="fd-input" />
     </label>
@@ -22,17 +22,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  const zone = document.getElementById("fd");
-  const input = document.getElementById("fd-input");
-  const msg = document.getElementById("fd-msg");
-  input.addEventListener("change", () => {
-    const file = input.files && input.files[0];
-    zone.classList.remove("-accepted", "-rejected");
-    if (!file) return;
-    const ok = file.type.startsWith("image/");
-    zone.classList.add(ok ? "-accepted" : "-rejected");
-    msg.textContent = ok ? `${file.name} — accepted.` : `${file.name} — not an image.`;
-  });
-</script>

@@ -1,0 +1,14 @@
+{
+  "text1": {
+    "string": "Too short.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Read-only content.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

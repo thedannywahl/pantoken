@@ -1,0 +1,32 @@
+<div class="instui-card">
+  <!-- As a native popover, `popovertarget` toggles it with no JavaScript: it opens in the top layer
+       and light-dismisses on Esc or an outside click. The trigger's `anchor-name` lets it dock below the
+       button (-placement-bottom) where CSS anchor positioning is supported. -->
+  <button
+    class="instui-button -color-secondary"
+    popovertarget="cv-popover"
+    style="anchor-name: --pantoken-anchor"
+  >
+    {{text1}}
+  </button>
+
+  <div
+    id="cv-popover"
+    popover
+    class="instui-context-view -placement-bottom"
+    style="max-width: 320px"
+  >
+    {{text2}}
+  </div>
+
+  <!-- Static placements: the caret sits on the edge facing the thing the view explains. -->
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start">
+    <div class="instui-context-view -placement-top">{{text3}}</div>
+    <div class="instui-context-view -placement-bottom">{{text4}}</div>
+    <div class="instui-context-view -placement-start">{{text5}}</div>
+    <div class="instui-context-view -placement-end">{{text6}}</div>
+    <div class="instui-context-view -color-inverse">{{text7}}</div>
+  </div>
+
+  <p class="instui-text --text-muted" style="margin-top: 16px">{{text8}}</p>
+</div>

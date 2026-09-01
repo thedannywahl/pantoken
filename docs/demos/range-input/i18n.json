@@ -1,0 +1,14 @@
+{
+  "text1": {
+    "string": "Grading range",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

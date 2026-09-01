@@ -3,7 +3,7 @@
  *
  * - the built `@pantoken/demo` runner app → `public/play/`
  * - the token + component stylesheets the runner injects → `public/demos-assets/`
- * - the committed demo snippets in `docs/demos/*.html` → `public/demos/`
+ * - the committed demo templates in `docs/demos/<component>/index.html` → `public/demos/`
  *
  * `public/` is a build artifact (gitignored), so this runs before `vitepress dev`/`build`.
  */
@@ -73,7 +73,7 @@ copyFileSync(require.resolve("@pantoken/demo/card.css"), join(assets, "card.css"
 // links) load them. focus-outline is staged with the component sheets above. See stage-plugin-assets.ts.
 stagePluginAssets();
 
-// The committed demo snippets (docs/demos/*.html) → public/demos/. See stage-demo-snippets.ts.
+// The committed demo templates (docs/demos/<component>/index.html) → public/demos/. See stage-demo-snippets.ts.
 const count = stageDemoSnippets();
 
 console.log(

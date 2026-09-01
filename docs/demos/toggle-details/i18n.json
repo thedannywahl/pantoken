@@ -1,0 +1,50 @@
+{
+  "text1": {
+    "string": "What ships in this package?",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Class-based component styles, built from the Instructure tokens, plus a prose layer.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Filled variant",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "The summary reads as an action-secondary button.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Chevron at the end",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "The disclosure chevron sits after the summary text.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Large",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Larger summary font and content padding.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -1,13 +1,12 @@
 <div class="instui-card">
   <div class="focus-demo">
     <p class="hint">
-      تنقل عبر عناصر التحكم باستخدام زر Tab (أو انقر على الحقل) لرؤية حلقة التركيز. تظهر تلقائيًا
-      على كل عنصر قابل للتركيز مباشرة من <code>base.css</code>؛ وتعمل المعدِّلات على إعادة تلوينها
-      أو إدراجها للداخل أو إيقاف التأثير الحركي.
+      انتقل عبر عناصر التحكم (أو انقر الحقل) لرؤية الحلقة. تظهر على كل عنصر قابل للتركيز افتراضيًا
+      من <code>base.css</code>; تعدل المعدلات لونها، أو تجعلها داخلية، أو تطفئ الحركة.
     </p>
 
     <section>
-      <h4>الحلقة الافتراضية (أي عنصر قابل للتركيز)</h4>
+      <h4>حلقة الافتراضية (أي عنصر قابل للتركيز)</h4>
       <div class="row">
         <button class="instui-button">زر</button>
         <a class="instui-link" href="#focus-demo">رابط</a>
@@ -25,10 +24,10 @@
     </section>
 
     <section>
-      <h4>الموضع والتأثير الحركي</h4>
+      <h4>الموضع والحركة</h4>
       <div class="row">
         <button class="instui-button -focus-position-inset">حلقة داخلية</button>
-        <button class="instui-button -without-focus-animation">بدون تأثير حركي</button>
+        <button class="instui-button -without-focus-animation">لا حركة</button>
       </div>
     </section>
 
@@ -41,48 +40,3 @@
     </section>
   </div>
 </div>
-
-<style>
-  .focus-demo {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
-  .focus-demo .hint {
-    margin: 0;
-    color: var(--instui-color-text-secondary, #6a7883);
-    font-size: var(--instui-component-text-font-size-small, 0.875rem);
-  }
-  .focus-demo h4 {
-    margin: 0 0 12px;
-    font: inherit;
-    font-weight: var(--instui-font-weight-body-strong, 700);
-    color: var(--instui-color-text-secondary, #6a7883);
-  }
-  .focus-demo .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: center;
-  }
-  .focus-demo .field {
-    padding: 0.5rem 0.75rem;
-    border: 0.0625rem solid var(--instui-color-border-primary, #6a7883);
-    border-radius: var(--instui-border-radius-md, 0.375rem);
-    background: var(--instui-color-background-base, #fff);
-    color: var(--instui-color-text-primary, #2d3b45);
-    font: inherit;
-  }
-  .focus-demo .within {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: var(--instui-border-radius-md, 0.375rem);
-    background: var(--instui-color-background-secondary, #f2f4f4);
-  }
-  .focus-demo .within .lbl {
-    font-weight: var(--instui-font-weight-body-strong, 700);
-    color: var(--instui-color-text-secondary, #6a7883);
-  }
-</style>

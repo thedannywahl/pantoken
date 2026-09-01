@@ -1,0 +1,64 @@
+{
+  "text1": {
+    "string": "Gap",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Flex/grid",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "classes on the spacing scale, short (",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": ") or long\n    (",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": ") spelling — usable bare or chained onto any component.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "gap-sm",
+    "verbatim": "required"
+  },
+  "text7": {
+    "string": "One",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Two",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Long spelling",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "gap-large",
+    "verbatim": "required"
+  },
+  "text11": {
+    "string": "One",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

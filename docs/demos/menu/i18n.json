@@ -1,0 +1,26 @@
+{
+  "text1": {
+    "string": "Actions",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Edit",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Duplicate",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Delete",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

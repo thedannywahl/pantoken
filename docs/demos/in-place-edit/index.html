@@ -1,0 +1,30 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 360px">
+    <!-- A native contenteditable: reads as text, click to edit (input chrome appears on focus). Pair
+         with a label; the leading pencil hints it's editable. -->
+    <div class="instui-text">
+      {{text1}}
+      <span
+        class="instui-in-place-edit"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Project name"
+        >{{text2}}</span
+      >
+      <span class="instui-icon -icon-pencil --text-muted"></span>
+    </div>
+
+    <div class="instui-text">
+      {{text3}}
+      <span class="instui-in-place-edit" contenteditable="true" aria-label="Owner">{{text4}}</span>
+    </div>
+
+    <!-- -readonly: shown inline but not editable. -->
+    <div class="instui-text">
+      {{text5}}
+      <span class="instui-in-place-edit -readonly" contenteditable="false">{{text6}}</span>
+    </div>
+  </div>
+
+  <p class="instui-text -size-sm instui-fg-muted" style="margin-top: 12px">{{text7}}</p>
+</div>

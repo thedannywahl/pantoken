@@ -25,7 +25,7 @@
 
   <dialog id="modal-sm" class="instui-modal -size-sm">
     <div class="header"><strong>صغير</strong></div>
-    <div class="body"><code>-size-sm</code> — نافذة مشروطة ضيقة.</div>
+    <div class="body"><code>-size-sm</code> — مربع حوار ضيق.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
       <button class="instui-button" command="close" commandfor="modal-sm">إغلاق</button>
     </div>
@@ -33,7 +33,7 @@
 
   <dialog id="modal-md" class="instui-modal">
     <div class="header"><strong>متوسط</strong></div>
-    <div class="body">الحجم الافتراضي — لا يلزم وجود معدِّل.</div>
+    <div class="body">الحجم الافتراضي — لا حاجة لمعدل.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
       <button class="instui-button" command="close" commandfor="modal-md">إغلاق</button>
     </div>
@@ -41,7 +41,7 @@
 
   <dialog id="modal-lg" class="instui-modal -size-lg">
     <div class="header"><strong>كبير</strong></div>
-    <div class="body"><code>-size-lg</code> — نافذة مشروطة أوسع للمحتوى الأكثر كثافة.</div>
+    <div class="body"><code>-size-lg</code> — مربع حوار أعرض لمحتوى أكثر كثافة.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
       <button class="instui-button" command="close" commandfor="modal-lg">إغلاق</button>
     </div>
@@ -49,7 +49,7 @@
 
   <dialog id="modal-auto" class="instui-modal -size-auto">
     <div class="header"><strong>تلقائي</strong></div>
-    <div class="body"><code>-size-auto</code> يتكيف حجمها وفقاً لمحتواها.</div>
+    <div class="body"><code>-size-auto</code> أحجام حسب المحتوى.</div>
     <div class="footer" style="display: flex; justify-content: flex-end">
       <button class="instui-button" command="close" commandfor="modal-auto">إغلاق</button>
     </div>
@@ -78,17 +78,3 @@
     </div>
   </dialog>
 </div>
-
-<script>
-  // Progressive enhancement: invoker commands (command="show-modal"/"close") are Baseline 2025. On
-  // older browsers, wire the same buttons to the <dialog> API so the demo still works.
-  if (!("command" in HTMLButtonElement.prototype)) {
-    document.querySelectorAll("[command][commandfor]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const dialog = document.getElementById(btn.getAttribute("commandfor"));
-        if (btn.getAttribute("command") === "show-modal") dialog.showModal();
-        else dialog.close();
-      });
-    });
-  }
-</script>

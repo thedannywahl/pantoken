@@ -1,0 +1,32 @@
+{
+  "text1": {
+    "string": "Drag an image here",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": ", or click to browse.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "PNG or JPG up to 5&nbsp;MB.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "photo.png — accepted.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "report.pdf — file type not allowed.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -5,50 +5,29 @@
       <button class="tab -selected" role="tab" aria-selected="true" data-panel="Overview">
         نظرة عامة
       </button>
-      <button class="tab" role="tab" aria-selected="false" data-panel="Details">التفاصيل</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="Details">تفاصيل</button>
       <button class="tab -disabled" role="tab" aria-disabled="true" disabled data-panel="Disabled">
-        معطل
+        معطّل
       </button>
-      <button class="tab" role="tab" aria-selected="false" data-panel="History">السجل</button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="History">التاريخ</button>
     </div>
-    <div class="panel" role="tabpanel">يظهر محتوى علامة التبويب 'نظرة عامة' هنا.</div>
+    <div class="panel" role="tabpanel">يُعرض محتوى تبويب النظرة العامة هنا.</div>
   </div>
 
   <!-- Secondary variant: connected "folder" tabs (variant on the container) -->
   <div class="instui-tabs -variant-secondary" data-tabs>
     <div class="list" role="tablist" aria-label="Secondary tabs">
-      <button class="tab" role="tab" aria-selected="false" data-panel="First">
-        علامة التبويب الأولى
-      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="First">التبويب الأول</button>
       <button class="tab -disabled" role="tab" aria-disabled="true" disabled data-panel="Disabled">
-        معطل
+        معطّل
       </button>
       <button class="tab -selected" role="tab" aria-selected="true" data-panel="Third">
-        علامة التبويب الثالثة
+        التبويب الثالث
       </button>
       <button class="tab" role="tab" aria-selected="false" data-panel="Fourth">
-        علامة التبويب الرابعة
+        التبويب الرابع
       </button>
     </div>
-    <div class="panel" role="tabpanel">يظهر محتوى علامة التبويب الثالثة هنا.</div>
+    <div class="panel" role="tabpanel">يُعرض محتوى التبويب الثالث هنا.</div>
   </div>
 </div>
-
-<script>
-  document.querySelectorAll("[data-tabs]").forEach((root) => {
-    const tabs = root.querySelectorAll(".tab");
-    const panel = root.querySelector(".panel");
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        if (tab.hasAttribute("disabled")) return;
-        tabs.forEach((t) => {
-          t.classList.remove("-selected");
-          t.setAttribute("aria-selected", "false");
-        });
-        tab.classList.add("-selected");
-        tab.setAttribute("aria-selected", "true");
-        panel.textContent = `The ${tab.dataset.panel} tab's content shows here.`;
-      });
-    });
-  });
-</script>

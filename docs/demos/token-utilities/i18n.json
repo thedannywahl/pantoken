@@ -1,0 +1,58 @@
+{
+  "text1": {
+    "string": "Token utilities",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Every \"one token, one property\" family gets a class named after the token — here",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": ", elevation",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": ", and",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "font-weight-body-base",
+    "verbatim": "required"
+  },
+  "text6": {
+    "string": "font-weight-body-strong",
+    "verbatim": "required"
+  },
+  "text7": {
+    "string": "font-family-code",
+    "verbatim": "required"
+  },
+  "text8": {
+    "string": "radius-container-sm",
+    "verbatim": "required"
+  },
+  "text9": {
+    "string": "radius-container-lg",
+    "verbatim": "required"
+  },
+  "text10": {
+    "string": "elevation-resting",
+    "verbatim": "required"
+  },
+  "text11": {
+    "string": "elevation-topmost",
+    "verbatim": "required"
+  },
+  "text12": {
+    "string": "opacity-disabled",
+    "verbatim": "required"
+  }
+}

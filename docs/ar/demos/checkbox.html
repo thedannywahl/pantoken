@@ -2,14 +2,12 @@
   <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
     <label class="instui-checkbox"><input type="checkbox" checked /> محدد</label>
     <label class="instui-checkbox"><input type="checkbox" /> غير محدد</label>
-    <label class="instui-checkbox"
-      ><input type="checkbox" data-indeterminate /> غير محدد القيمة</label
-    >
+    <label class="instui-checkbox"><input type="checkbox" data-indeterminate /> غير حاسم</label>
     <label class="instui-checkbox -size-sm"><input type="checkbox" checked /> صغير</label>
     <label class="instui-checkbox -invalid"><input type="checkbox" /> حالة خطأ</label>
     <label class="instui-checkbox"><input type="checkbox" checked disabled /> معطّل</label>
     <label class="instui-checkbox -variant-toggle">
-      <input type="checkbox" checked /> مفتاح تبديل
+      <input type="checkbox" checked /> مفتاح التبديل
     </label>
 
     <div style="display: flex; gap: 24px; align-items: flex-start; margin-top: 4px">
@@ -25,8 +23,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  // The mixed state is a DOM property, not an attribute, so set it in script.
-  document.querySelectorAll("[data-indeterminate]").forEach((el) => (el.indeterminate = true));
-</script>

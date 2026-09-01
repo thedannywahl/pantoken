@@ -1,0 +1,26 @@
+{
+  "text1": {
+    "string": "Open popover",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Share this page",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "A popover is a lightweight surface anchored to a trigger. This one uses the native",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "attribute.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

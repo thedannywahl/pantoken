@@ -1,0 +1,86 @@
+{
+  "text1": {
+    "string": "Spacing",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Per-side classes on the spacing scale —",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "for margin/padding, an\n    optional logical side\n    (",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "),\n    then a step (",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": ", plus",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "for\n    margin). Every class also has a fully long, word-spelled twin —",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "is the same\n    rule as",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "p-xs, mb-2xs",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "p-sm, mb-2xs",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "p-lg",
+    "verbatim": "required"
+  },
+  "text11": {
+    "string": "Center with auto margins",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "mx-auto",
+    "verbatim": "required"
+  },
+  "text13": {
+    "string": "Short and long spellings, side by side",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "padding-small, margin-bottom-x-small",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text15": {
+    "string": "padding-large",
+    "verbatim": "required"
+  }
+}

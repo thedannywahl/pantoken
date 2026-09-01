@@ -1,0 +1,8 @@
+{
+  "text1": {
+    "string": "Animated after a 500ms delay",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -1,39 +1,17 @@
 <div class="instui-card">
-  <h2 class="instui-heading -level-h3">إعادة ضبط أساسية</h2>
+  <h2 class="instui-heading -level-h3">إعادة ضبط الأساس</h2>
   <p class="instui-text">
-    يتم عرض هذه النتيجة مع تحميل <code>base.css</code> أولاً. سطح الصفحة ولون النص الأساسي والخط،
-    و<code>box-sizing</code> تأتي جميعها من الرموز المميزة — لا حاجة لقاعدة خاصة بك.
+    يتم عرض هذه النتيجة بـ <code>base.css</code> محمّل أولاً. سطح الصفحة، لون النص الأساسي والخط،
+    و<code>box-sizing</code> كلها تأتي من الرموز — لا حاجة لقاعدة خاصة بك.
   </p>
   <p class="instui-text">
-    تكتسب العناصر البسيطة إعدادات افتراضية مناسبة، مثل هذا
-    <a href="#">الرابط الأساسي</a>، وكل شيء يستقر على سطح صفحة الرموز. بدّل السمة (أو الوضع
-    الفاتح/الداكن) وسيتبعها السطح والنص والرابط جميعًا.
+    العناصر العارية تلتقط إعدادات افتراضية معقولة، مثل هذا
+    <a href="#">رابط أساسي</a>، وكل شيء يجلس على سطح صفحة الرموز. غيّر النمط (أو الوضع
+    الفاتح/الداكن) وسيتبع السطح والنص والرابط.
   </p>
 
   <div class="base-swatches">
-    <span class="base-swatch base-swatch--page">background-page</span>
-    <span class="base-swatch base-swatch--base">background-base</span>
+    <span class="base-swatch base-swatch--page">خلفية-الصفحة</span>
+    <span class="base-swatch base-swatch--base">خلفية-الأساس</span>
   </div>
 </div>
-
-<style>
-  .base-swatches {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .base-swatch {
-    display: inline-flex;
-    align-items: center;
-    padding: 12px 16px;
-    border: 1px solid var(--instui-color-stroke-base);
-    border-radius: var(--instui-border-radius-md);
-    font-size: var(--instui-font-size-text-xs);
-  }
-  .base-swatch--page {
-    background: var(--instui-color-background-page);
-  }
-  .base-swatch--base {
-    background: var(--instui-color-background-base);
-  }
-</style>

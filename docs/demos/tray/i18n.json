@@ -1,0 +1,38 @@
+{
+  "text1": {
+    "string": "From start",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "From end",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Filters",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "A tray slides in from the start edge and fills the viewport height.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Details",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "This one docks to the end edge. Press Esc or click away to dismiss.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "text1": {
+    "string": "Heading levels",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Heading h1",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Heading h2",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Heading h3",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Heading h4",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Heading h5",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "Heading h6",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "Heading type variants",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Title page",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "Title section",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text11": {
+    "string": "Title card section",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text12": {
+    "string": "Title card regular",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text13": {
+    "string": "Title card mini",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text14": {
+    "string": "Label",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text15": {
+    "string": "Heading color and treatment",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text16": {
+    "string": "Primary (default)",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text17": {
+    "string": "Secondary",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text18": {
+    "string": "AI gradient",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text19": {
+    "string": "With bottom border",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

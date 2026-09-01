@@ -1,0 +1,33 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 28px">
+    <!-- Toggle variant: the buttons connect into ONE segmented, single-select control (shared name) -->
+    <fieldset class="instui-radio-input-group -variant-toggle">
+      <legend>{{text1}}</legend>
+      <label class="instui-radio -variant-toggle">
+        <input type="radio" name="size" checked /> {{text2}}
+      </label>
+      <label class="instui-radio -variant-toggle">
+        <input type="radio" name="size" /> {{text3}}
+      </label>
+      <label class="instui-radio -variant-toggle">
+        <input type="radio" name="size" /> {{text4}}
+      </label>
+    </fieldset>
+
+    <!-- Simple variant (default): standard radios, stacked -->
+    <fieldset class="instui-radio-input-group">
+      <legend>{{text5}}</legend>
+      <label class="instui-radio"><input type="radio" name="freq" checked /> {{text6}}</label>
+      <label class="instui-radio"><input type="radio" name="freq" /> {{text7}}</label>
+      <label class="instui-radio"><input type="radio" name="freq" /> {{text8}}</label>
+    </fieldset>
+
+    <!-- Simple variant, laid out in a row -->
+    <fieldset class="instui-radio-input-group -layout-columns">
+      <legend>{{text9}}</legend>
+      <label class="instui-radio"><input type="radio" name="contact" checked /> {{text10}}</label>
+      <label class="instui-radio"><input type="radio" name="contact" /> {{text11}}</label>
+      <label class="instui-radio"><input type="radio" name="contact" /> {{text12}}</label>
+    </fieldset>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{
+  "text1": {
+    "string": "Page",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "of 12",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

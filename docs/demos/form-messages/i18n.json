@@ -1,0 +1,26 @@
+{
+  "text1": {
+    "string": "Hint: use 8+ characters.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Error: this field is required.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Success: username is available.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Screen-reader-only: form submitted.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "text1": {
+    "string": "View",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "is InstUI's",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": ". Beyond the neutral box it carries\n    key-value modifiers for its own visual props, so it has the same devex as the other components —\n    no need to reach for utilities for the basics.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Native modifiers",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "-background-primary -border-radius-large -shadow-resting",
+    "verbatim": "required"
+  },
+  "text6": {
+    "string": "-border-width-small -border-color-brand -border-radius-medium",
+    "verbatim": "required"
+  },
+  "text7": {
+    "string": "-background-brand",
+    "verbatim": "required"
+  },
+  "text8": {
+    "string": "Compose utilities too",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text9": {
+    "string": "Spacing, color, and token utilities still layer onto a View — e.g.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "bg-accent-blue surface with on-color text.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

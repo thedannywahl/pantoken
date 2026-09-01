@@ -1,0 +1,44 @@
+{
+  "text1": {
+    "string": "What's new",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "The figure can be any leading visual — an icon, an avatar, or an image.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Documentation",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "With",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "Compact",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text7": {
+    "string": "constrains the max width.",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}

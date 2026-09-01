@@ -1,0 +1,56 @@
+{
+  "text1": {
+    "string": "Active users",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "Uptime",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "3.2s",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "Avg. response",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text5": {
+    "string": "Start",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text6": {
+    "string": "-text-align-start",
+    "verbatim": "required"
+  },
+  "text7": {
+    "string": "Center",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text8": {
+    "string": "-text-align-center",
+    "verbatim": "required"
+  },
+  "text9": {
+    "string": "End",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text10": {
+    "string": "-text-align-end",
+    "verbatim": "required"
+  }
+}

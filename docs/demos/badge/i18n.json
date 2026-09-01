@@ -1,0 +1,26 @@
+{
+  "text1": {
+    "string": "AB",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text2": {
+    "string": "CD",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text3": {
+    "string": "Inbox",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  },
+  "text4": {
+    "string": "New",
+    "verbatim": {
+      "allow": ["en*"]
+    }
+  }
+}
