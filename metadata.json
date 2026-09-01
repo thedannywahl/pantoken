@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1F8HC1Y1DFA8R475WQ6ESDA",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 23,
+  "checkpoints_count": 28,
   "files_touched": [
     ".changeset/banner-button-defaults.md",
     ".changeset/button-on-color-modifier.md",
@@ -2585,6 +2585,7 @@
     "docs/da/demos/color-utilities.html",
     "docs/da/demos/components.html",
     "docs/da/demos/context-view.html",
+    "docs/da/demos/form-field-group.html",
     "docs/da/demos/gap.html",
     "docs/da/demos/icon.html",
     "docs/da/demos/in-place-edit.html",
@@ -3799,6 +3800,7 @@
     "docs/hy/demos/byline.html",
     "docs/hy/demos/calendar.html",
     "docs/hy/demos/color-utilities.html",
+    "docs/hy/demos/components.html",
     "docs/hy/demos/context-view.html",
     "docs/hy/demos/form-field-group.html",
     "docs/hy/demos/form-field.html",
@@ -4810,6 +4812,7 @@
     "docs/nl/demos/byline.html",
     "docs/nl/demos/calendar.html",
     "docs/nl/demos/color-utilities.html",
+    "docs/nl/demos/components.html",
     "docs/nl/demos/context-view.html",
     "docs/nl/demos/form-field-group.html",
     "docs/nl/demos/form-messages.html",
@@ -5175,6 +5178,13 @@
       "compact_transcript": "/5/transcript.jsonl",
       "content_hash": "/5/content_hash.txt",
       "prompt": "/5/prompt.txt"
+    },
+    {
+      "metadata": "/6/metadata.json",
+      "transcript": "/6/full.jsonl",
+      "compact_transcript": "/6/transcript.jsonl",
+      "content_hash": "/6/content_hash.txt",
+      "prompt": "/6/prompt.txt"
     }
   ],
   "token_usage": {
