@@ -2,67 +2,309 @@
   "text1": {
     "string": "Button",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text2": {
     "string": "Secondary",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text3": {
     "string": "Published",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text4": {
     "string": "tag",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text5": {
     "string": "dismissible",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text6": {
     "string": "AB",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text7": {
     "string": "An alert, styled from the tokens.",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text8": {
     "string": "Active users",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text9": {
     "string": "Custom checkbox",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text10": {
     "string": "Toggle",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text11": {
     "string": "Radio",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   }
 }

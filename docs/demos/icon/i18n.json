@@ -2,19 +2,85 @@
   "text1": {
     "string": "Inline",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text2": {
     "string": "icons scale to the text and inherit\n      its color.",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text3": {
     "string": "Add",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   }
 }

@@ -2,43 +2,197 @@
   "text1": {
     "string": "What's new",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text2": {
     "string": "The figure can be any leading visual — an icon, an avatar, or an image.",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text3": {
     "string": "Documentation",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text4": {
     "string": "With",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text5": {
     "string": "the figure pins to the top instead of centering,\n          which reads better when the description runs to several lines like this one does.",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text6": {
     "string": "Compact",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text7": {
     "string": "constrains the max width.",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   }
 }

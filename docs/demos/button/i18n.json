@@ -2,181 +2,841 @@
   "text1": {
     "string": "Colors",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text2": {
     "string": "Primary",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text3": {
     "string": "Secondary",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text4": {
     "string": "Tertiary",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text5": {
     "string": "Success",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text6": {
     "string": "Danger",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text7": {
     "string": "AI",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text8": {
     "string": "AI primary",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text9": {
     "string": "AI secondary",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text10": {
     "string": "Primary inverse (on a colored surface)",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text11": {
     "string": "Primary inverse",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text12": {
     "string": "Ghost (no background)",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text13": {
     "string": "Primary ghost",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text14": {
     "string": "Secondary ghost",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text15": {
     "string": "Block (full width)",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text16": {
     "string": "Block button",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text17": {
     "string": "Sizes",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text18": {
     "string": "Small",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text19": {
     "string": "Medium",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text20": {
     "string": "Large",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text21": {
     "string": "Icons and shapes",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text22": {
     "string": "Continue",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text23": {
     "string": "Download",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text24": {
     "string": "Star",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text25": {
     "string": "Add",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text26": {
     "string": "Condensed and states",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text27": {
     "string": "Condensed",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text28": {
     "string": "Condensed small",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text29": {
     "string": "Toggle",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   },
   "text30": {
     "string": "Disabled",
     "verbatim": {
-      "allow": ["en*"]
+      "allow": [
+        "en*",
+        "ar",
+        "fa",
+        "he",
+        "hu",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ja",
+        "ko",
+        "pt",
+        "pt-BR",
+        "ru",
+        "uk",
+        "zh-Hans",
+        "zh-Hant",
+        "nl",
+        "pl",
+        "tr",
+        "sv"
+      ]
     }
   }
 }
