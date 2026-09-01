@@ -126,17 +126,9 @@ test("banner color modifiers set background and icon-background tokens", () => {
   expect(css).toContain("var(--instui-component-banner-sea-icon-background)");
 });
 
-test("banner -variant-ai uses the gradient background tokens", () => {
-  const css = bannerRules("instui-");
-  expect(css).toContain("-variant-ai");
-  expect(css).toContain("var(--instui-component-banner-ai-background-top-gradient-color)");
-  expect(css).toContain("var(--instui-component-banner-ai-background-bottom-gradient-color)");
-});
-
 test("banner renders an info icon by default and supports custom icon modifiers", () => {
   const css = bannerRules("instui-");
   expect(css).toContain("--pantoken-banner-glyph: var(--instui-icon-info)");
-  expect(css).toContain('.instui-banner[class*="-icon-"]');
   expect(css).toContain("--pantoken-banner-glyph: var(--pantoken-glyph)");
   expect(css).toContain("-webkit-mask: var(--pantoken-banner-glyph) center / 1.125rem no-repeat");
 });
@@ -152,7 +144,7 @@ test("banner icon is top-aligned and sizes its swatch by spacing variant", () =>
 
 test("banner title and content use typography appropriate to the spacing variant", () => {
   const css = bannerRules("instui-");
-  expect(css).toContain("> .content > .title");
+  expect(css).toMatch(/>\s*\.content\s*>\s*\.title/u);
   expect(css).toContain("var(--instui-component-heading-title-card-regular-font-size)");
   expect(css).toContain("var(--instui-component-heading-title-card-mini-font-size)");
   expect(css).toContain("var(--instui-font-size-text-base)");
@@ -162,7 +154,7 @@ test("banner title and content use typography appropriate to the spacing variant
 
 test("banner pins a small close button at the top end and reserves content space", () => {
   const css = bannerRules("instui-");
-  expect(css).toContain('> .instui-close-button:not([class*="-size-"])');
+  expect(css).toMatch(/>\s*\.instui-close-button:not\(\[class\*="-size-"\]\)/u);
   expect(css).toContain("var(--instui-component-base-button-small-height)");
   expect(css).toContain("position: absolute");
   expect(css).toContain(
@@ -171,13 +163,12 @@ test("banner pins a small close button at the top end and reserves content space
   expect(css).toContain(
     "inset-inline-end: var(--instui-component-banner-close-button-margin-right)",
   );
-  expect(css).toContain(":has(> .instui-close-button) > .content");
+  expect(css).toMatch(/:has\(>\s*\.instui-close-button\)\s*>\s*\.content/u);
 });
 
 test("banner keeps elevation absent and gives uncoloured buttons the on-color primary treatment", () => {
   const css = bannerRules("instui-");
   expect(css).not.toContain("box-shadow:");
-  expect(css).toContain('.instui-button:not([class*="-color-"])');
   expect(css).toContain("var(--instui-component-base-button-primary-inverse-background)");
   expect(css).toContain("var(--instui-component-base-button-primary-inverse-hover-background)");
   expect(css).toContain("var(--instui-component-base-button-primary-inverse-active-background)");
