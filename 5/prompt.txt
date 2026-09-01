@@ -1,0 +1,3 @@
+we did some work yesterday on the homepage getting started tab to reduce visual tearing and provide antialiasing in firefox. there are a few more issues to address:
+* the copy button was moved to the end of the block instead of after the "cursor"
+* hovering the copy button, or hovering the floating menu re-introduces tearing.
