@@ -1,0 +1,26 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1FHZE6GBAEWWCFP0A1XGFX6",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "docs/demos/pendo/style.css"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 406,
+    "cache_creation_tokens": 1552915,
+    "cache_read_tokens": 44532130,
+    "output_tokens": 244590,
+    "api_call_count": 203
+  }
+}
