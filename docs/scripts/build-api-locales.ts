@@ -3,19 +3,25 @@
  *
  * EN API docs are generated directly by TypeDoc to `docs/api/`.
  * Every other locale's API docs are cloned to `docs/<locale>/api/` and localized with the configured
- * adapter (see `.vitepress/i18n.ts`'s `NON_ROOT_LOCALES`).
+ * adapter (see `.vitepress/i18n.ts`'s `NON_ROOT_LOCALES`). Markdown files and sidebars are processed
+ * one at a time with real-time per-file progress logging to avoid silently translating thousands
+ * of strings before showing any feedback.
  *
- * Logs incremental progress by phase and locale with hierarchical breakdown:
+ * Logs incremental per-file progress by phase and locale:
  *   📋 Building locale-specific API docs
  *   🔨 Generating EN API docs
  *     ✓ TypeDoc output
  *     ✓ API badge styling
- *     ✓ CSS API docs
+ *     ✓ Overview cards
+ *   🔨 Generating CSS API docs
+ *     ✓ CSS API reference
  *   🔄 ar: translating...
- *     📄 Markdown (32 files, 2,547 prose blocks, 445 glossary terms)
- *       ✓ 1,200 cached, 1,347 translated
- *     📋 Sidebar (1 file, 87 labels)
- *       ✓ 65 cached, 22 translated
+ *     docs/api/classes/Alert.md: 12 prose, 3 glossary (8 cached, 7 translated)
+ *     docs/api/classes/Button.md: 18 prose, 5 glossary (15 cached, 8 translated)
+ *     docs/api/classes/Modal.md: 25 prose, 4 glossary (20 cached, 9 translated)
+ *     docs/api/typedoc-sidebar.json: 87 labels (65 cached, 22 translated)
+ *     📄 Summary: 1,450 prose blocks, 445 glossary terms (1,200 cached, 1,347 translated)
+ *     📋 Summary: 87 labels (65 cached, 22 translated)
  *   ✓ ar: rendered in docs/ar/api (3,534 translated, 1,265 cached)
  *   ✨ All API locales complete!
  */
@@ -167,7 +173,8 @@ const cloneApiForLocale = (localeApiDir: string): void => {
  * rewrite it translated in place. Prose is batched + cached through the selected adapter; headings,
  * badge pills, and table column labels always go through the glossary (deterministic, keyless, never
  * cached); everything else is kept verbatim. Block-level keys survive the scaffolding churn that busted
- * whole-file keys. Returns the glossary-term, prose-block, and cache/miss counts for the summary log.
+ * whole-file keys. Logs per-file progress incrementally. Returns glossary-term, prose-block, and
+ * cache/miss counts aggregated across all files.
  */
 const translateMarkdownFiles = async (
   markdownFiles: string[],
@@ -185,50 +192,83 @@ const translateMarkdownFiles = async (
     filePath,
     segments: segmentMarkdown(readFileSync(filePath, "utf8")),
   }));
-  const units = segmented.flatMap(({ segments }) => collectUnits(segments));
 
-  const glossaryText = new Map<string, string>();
-  for (const unit of units) {
-    if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
-      // The glossary is synchronous under the hood; awaiting is just contract plumbing (instant).
-      glossaryText.set(unit.text, await glossary.translateText(unit.text));
-    }
-  }
-  const proseUnits: TranslationUnit[] = units
-    .filter((unit) => unit.kind === "prose")
-    .map((unit) => ({ kind: "prose", source: unit.text }));
-  const proseTranslations = await translateUnits(adapter, memory, proseUnits, {
-    autosave: true,
-    locale,
-    defaultVerbatim: { allow: ["en*"] },
-  });
+  let totalGlossaryTerms = 0;
+  let totalProseBlocks = 0;
+  let totalProseTranslated = 0;
+  let totalProseCached = 0;
 
-  // Track prose translation stats before and after to measure cache vs. new translations
-  const beforeMisses = memory.misses;
-  const beforeHits = memory.hits;
-
-  const resolve: Resolve = (text, kind) => {
-    if (kind === "glossary") {
-      return glossaryText.get(text) ?? text;
-    }
-
-    const translated = proseTranslations.get(keyFor("prose", text)) ?? text;
-    return escapeBareHtmlTags(translated);
-  };
   for (const { filePath, segments } of segmented) {
+    const fileUnits = collectUnits(segments);
+
+    // Translate glossary terms for this file
+    const glossaryText = new Map<string, string>();
+    for (const unit of fileUnits) {
+      if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
+        glossaryText.set(unit.text, await glossary.translateText(unit.text));
+      }
+    }
+    totalGlossaryTerms += glossaryText.size;
+
+    // Translate prose units for this file
+    const proseUnits: TranslationUnit[] = fileUnits
+      .filter((unit) => unit.kind === "prose")
+      .map((unit) => ({ kind: "prose", source: unit.text }));
+
+    const beforeMisses = memory.misses;
+    const beforeHits = memory.hits;
+
+    const proseTranslations = await translateUnits(adapter, memory, proseUnits, {
+      autosave: true,
+      locale,
+      defaultVerbatim: { allow: ["en*"] },
+    });
+
+    const fileProseTranslated = memory.misses - beforeMisses;
+    const fileProseCached = memory.hits - beforeHits;
+    totalProseTranslated += fileProseTranslated;
+    totalProseCached += fileProseCached;
+
+    const proseBlockCount = new Set(proseUnits.map((u) => u.source)).size;
+    totalProseBlocks += proseBlockCount;
+
+    // Resolve and write the file
+    const resolve: Resolve = (text, kind) => {
+      if (kind === "glossary") {
+        return glossaryText.get(text) ?? text;
+      }
+      const translated = proseTranslations.get(keyFor("prose", text)) ?? text;
+      return escapeBareHtmlTags(translated);
+    };
     writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve), locale));
+
+    // Log per-file progress
+    const relPath = relative(docsRoot, filePath);
+    if (proseBlockCount > 0 || glossaryText.size > 0) {
+      const fileCounts = [
+        glossaryText.size > 0 && `${glossaryText.size} glossary`,
+        proseBlockCount > 0 && `${proseBlockCount} prose`,
+      ]
+        .filter(Boolean)
+        .join(", ");
+      console.log(
+        `    ${relPath}: ${fileCounts} (${fileProseCached} cached, ${fileProseTranslated} translated)`,
+      );
+    }
   }
 
-  const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
-  const proseTranslated = memory.misses - beforeMisses;
-  const proseCached = memory.hits - beforeHits;
-
-  return { glossaryTerms: glossaryText.size, proseBlocks, proseTranslated, proseCached };
+  return {
+    glossaryTerms: totalGlossaryTerms,
+    proseBlocks: totalProseBlocks,
+    proseTranslated: totalProseTranslated,
+    proseCached: totalProseCached,
+  };
 };
 
 /**
- * Collect every sidebar label across all trees, translate the misses in one batched pass, then rebuild
- * and rewrite each tree from the results. Returns the label count and cache/miss stats for the summary log.
+ * Collect every sidebar label across all trees, translate them with incremental per-file feedback,
+ * then rebuild and rewrite each tree from the results. Logs per-file label counts and cache/miss stats.
+ * Returns aggregated label count and cache/miss stats for the summary log.
  */
 const translateSidebars = async (
   sidebarFiles: string[],
@@ -240,29 +280,48 @@ const translateSidebars = async (
     filePath,
     tree: JSON.parse(readFileSync(filePath, "utf8")) as SidebarItem[],
   }));
-  const labels: string[] = [];
-  for (const { tree } of sidebars) collectSidebarText(tree, labels);
 
-  const beforeMisses = memory.misses;
-  const beforeHits = memory.hits;
+  let totalLabelCount = 0;
+  let totalLabelTranslated = 0;
+  let totalLabelCached = 0;
 
-  const labelTranslations = await translateUnits(
-    adapter,
-    memory,
-    labels.map((source) => ({ kind: "text", source })),
-    { locale, defaultVerbatim: { allow: ["en*"] } },
-  );
-  const translateLabel = (text: string): string =>
-    labelTranslations.get(keyFor("text", text)) ?? text;
   for (const { filePath, tree } of sidebars) {
+    const fileLabels: string[] = [];
+    collectSidebarText(tree, fileLabels);
+
+    const beforeMisses = memory.misses;
+    const beforeHits = memory.hits;
+
+    const labelTranslations = await translateUnits(
+      adapter,
+      memory,
+      fileLabels.map((source) => ({ kind: "text", source })),
+      { locale, defaultVerbatim: { allow: ["en*"] } },
+    );
+    const translateLabel = (text: string): string =>
+      labelTranslations.get(keyFor("text", text)) ?? text;
+
     const translated = tree.map((item) => translateSidebar(item, translateLabel, locale));
     writeFileSync(filePath, `${JSON.stringify(translated, null, 2)}\n`);
+
+    const fileLabelTranslated = memory.misses - beforeMisses;
+    const fileLabelCached = memory.hits - beforeHits;
+    totalLabelTranslated += fileLabelTranslated;
+    totalLabelCached += fileLabelCached;
+    totalLabelCount += fileLabels.length;
+
+    // Log per-file progress
+    const relPath = relative(docsRoot, filePath);
+    console.log(
+      `    ${relPath}: ${fileLabels.length} label${fileLabels.length === 1 ? "" : "s"} (${fileLabelCached} cached, ${fileLabelTranslated} translated)`,
+    );
   }
 
-  const labelTranslated = memory.misses - beforeMisses;
-  const labelCached = memory.hits - beforeHits;
-
-  return { labelCount: labels.length, labelTranslated, labelCached };
+  return {
+    labelCount: totalLabelCount,
+    labelTranslated: totalLabelTranslated,
+    labelCached: totalLabelCached,
+  };
 };
 
 /** Clone + translate the EN API tree into one locale's directory. */
@@ -282,7 +341,7 @@ const buildLocale = async (locale: string): Promise<void> => {
 
   console.log(`🔄 ${locale}: translating...`);
 
-  // 1. Markdown blocks
+  // 1. Markdown blocks (logs per-file progress internally)
   const { glossaryTerms, proseBlocks, proseTranslated, proseCached } = await translateMarkdownFiles(
     markdownFiles,
     adapter,
@@ -291,13 +350,12 @@ const buildLocale = async (locale: string): Promise<void> => {
   );
 
   console.log(
-    `  📄 Markdown (${markdownFiles.length} file${markdownFiles.length === 1 ? "" : "s"}, ` +
-      `${proseBlocks} prose block${proseBlocks === 1 ? "" : "s"}, ` +
-      `${glossaryTerms} glossary term${glossaryTerms === 1 ? "" : "s"})`,
+    `  📄 Summary: ${proseBlocks} prose block${proseBlocks === 1 ? "" : "s"}, ` +
+      `${glossaryTerms} glossary term${glossaryTerms === 1 ? "" : "s"} ` +
+      `(${proseCached} cached, ${proseTranslated} translated)`,
   );
-  console.log(`    ✓ ${proseCached} cached, ${proseTranslated} translated`);
 
-  // 2. Sidebar labels
+  // 2. Sidebar labels (logs per-file progress internally)
   const { labelCount, labelTranslated, labelCached } = await translateSidebars(
     sidebarFiles,
     adapter,
@@ -306,10 +364,9 @@ const buildLocale = async (locale: string): Promise<void> => {
   );
 
   console.log(
-    `  📋 Sidebar (${sidebarFiles.length} file${sidebarFiles.length === 1 ? "" : "s"}, ` +
-      `${labelCount} label${labelCount === 1 ? "" : "s"})`,
+    `  📋 Summary: ${labelCount} label${labelCount === 1 ? "" : "s"} ` +
+      `(${labelCached} cached, ${labelTranslated} translated)`,
   );
-  console.log(`    ✓ ${labelCached} cached, ${labelTranslated} translated`);
 
   memory.save();
   const totalTranslated = proseTranslated + labelTranslated;
