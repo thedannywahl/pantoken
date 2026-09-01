@@ -71,6 +71,7 @@ const aiProviderOptions: CommandCycleOption[] = [
 ];
 
 const activeSurface = ref<"terminal" | "agent">("terminal");
+const isFlipping = ref(false);
 const terminalHovered = ref(false);
 const terminalTextHovered = ref(false);
 const agentHovered = ref(false);
@@ -140,9 +141,31 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  clearTimeout(flipTimeoutId);
   terminalCycle.stop();
   agentCycle.stop();
 });
+
+// Duration of the flipper's transform transition, mirrored from CSS; the margin covers the gap
+// between the class landing and the transition actually starting.
+const FLIP_MS = 560;
+let flipTimeoutId: ReturnType<typeof setTimeout> | undefined;
+
+// `transform-style: preserve-3d` and `will-change: transform` make Firefox rasterize the tilted
+// card into a texture in its own local space, so its edges lose antialiasing and its text gets
+// resampled. Both are only needed while the two faces occupy different planes, so they're switched
+// on for the flip and off again once it settles.
+function selectSurface(surface: "terminal" | "agent") {
+  if (surface === activeSurface.value) return;
+  activeSurface.value = surface;
+  if (reducedMotion.value) return;
+
+  isFlipping.value = true;
+  clearTimeout(flipTimeoutId);
+  flipTimeoutId = setTimeout(() => {
+    isFlipping.value = false;
+  }, FLIP_MS + 60);
+}
 
 // Hovering/focusing mid-type or mid-backspace jumps straight to the fully-typed line, not wherever
 // the animation happened to be — pausing shouldn't leave a half-typed or half-erased command visible.
@@ -213,7 +236,7 @@ const highlightColor = computed(() =>
         :class="{ 'is-active': activeSurface === 'terminal' }"
         :aria-selected="activeSurface === 'terminal'"
         aria-label="Terminal mode"
-        @click="activeSurface = 'terminal'"
+        @click="selectSurface('terminal')"
       >
         <span class="instui-screen-reader-content">{{ getStartedTabs.cliInstall }}</span>
       </button>
@@ -223,7 +246,7 @@ const highlightColor = computed(() =>
         :class="{ 'is-active': activeSurface === 'agent' }"
         :aria-selected="activeSurface === 'agent'"
         aria-label="Agent shell mode"
-        @click="activeSurface = 'agent'"
+        @click="selectSurface('agent')"
       >
         <span class="instui-screen-reader-content">{{ getStartedTabs.aiInstall }}</span>
       </button>
@@ -231,7 +254,7 @@ const highlightColor = computed(() =>
 
     <div
       class="gs-started__stage"
-      :class="{ '-agent': activeSurface === 'agent' }"
+      :class="{ '-agent': activeSurface === 'agent', 'is-flipping': isFlipping }"
       :style="{ '--gs-highlight': highlightColor }"
     >
       <div class="gs-started__flipper">
@@ -387,17 +410,22 @@ const highlightColor = computed(() =>
 
 /* A shadow beneath the card, outside the flipper's 3D transform (so it doesn't get its own
    backface-hidden face), but rotated in lockstep with the flipper so it reads as attached to
-   whichever face is currently up rather than a shadow fixed to the terminal face alone. */
+   whichever face is currently up rather than a shadow fixed to the terminal face alone.
+   Drawn as a pre-blurred gradient rather than `filter: blur()`, which would force an offscreen
+   surface that Firefox re-renders on every frame of the rotation. */
 .gs-started__stage::after {
   content: "";
   position: absolute;
   z-index: 0;
-  inset-inline: 4%;
-  inset-block-end: -48px;
-  block-size: 22px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  filter: blur(10px);
+  inset-inline: 2%;
+  inset-block-end: -58px;
+  block-size: 42px;
+  background: radial-gradient(
+    closest-side ellipse at 50% 50%,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.26) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
   pointer-events: none;
   transform: rotateY(-15deg);
   transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -421,11 +449,17 @@ const highlightColor = computed(() =>
   position: absolute;
   z-index: 1;
   inset: 0;
-  transform-style: preserve-3d;
   transform: rotateY(-15deg);
   transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
-  /* Keeps the tilted bitmap on its own compositor layer so per-keystroke typewriter repaints
-     don't force Firefox to re-rasterize it, which otherwise tears the tilted edges. */
+}
+
+/* Only while the two faces are mid-rotation do they need separate planes. At rest a flat context
+   keeps Firefox rasterizing the tilted card in screen space, which is what gives it antialiased
+   edges and unresampled text; `preserve-3d` or `will-change` would force a local-space texture.
+   Flattened, the agent face's own rotateY(180deg) still reads correctly — it cancels the mirroring
+   of the flipper's own back-facing 165deg. */
+.gs-started__stage.is-flipping .gs-started__flipper {
+  transform-style: preserve-3d;
   will-change: transform;
 }
 
@@ -444,13 +478,25 @@ const highlightColor = computed(() =>
 .gs-started__face {
   position: absolute;
   inset: 0;
+  /* Paints nothing itself — `.gs-terminal` carries the surface, inset by a transparent 1px ring so
+     any residual aliasing on the rotated quad's edge lands on transparent pixels. */
+  padding: 1px;
+  background: transparent;
+}
+
+.gs-started__stage.is-flipping .gs-started__face {
   backface-visibility: hidden;
-  will-change: transform;
-  background: light-dark(
-    var(--instui-color-background-container),
-    var(--instui-color-background-page)
-  );
-  border-radius: 8px;
+}
+
+/* Backface culling only works inside a 3D context, so at rest the face that's down is hidden
+   outright instead. */
+.gs-started__stage:not(.is-flipping) .gs-started__face--agent,
+.gs-started__stage:not(.is-flipping).-agent .gs-started__face--terminal {
+  visibility: hidden;
+}
+
+.gs-started__stage:not(.is-flipping).-agent .gs-started__face--agent {
+  visibility: visible;
 }
 
 .gs-started__face--agent {
@@ -467,9 +513,6 @@ const highlightColor = computed(() =>
     var(--instui-color-background-container),
     var(--instui-color-background-page)
   );
-  /* Own compositor layer so interior repaints (copy button hover, popovers) don't re-rasterize
-     the tilted face bitmap and tear its edges. */
-  will-change: transform;
 }
 
 .gs-terminal__body {
