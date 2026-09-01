@@ -42,3 +42,16 @@ okay, the way that pendo works is I can upload a single global stylesheet.  Then
 * -poll: message-circle-question-mark glyph
 * -canvas: icon-canvas-icon-reversed glyph
 * repeat for: parchment, mastery, learnplatform
+
+---
+
+I want the dist global.css to carry a comment on line one:
+/* @pantoken/pendo#<version> */
+or 
+/* @pantoken/pendo@<version> */
+
+whichever is the proper syntax, that way we can trace the exact version that the used styles came from.
+
+---
+
+there should be a stylelint / poscss way to add a comment that preserves the comment.
