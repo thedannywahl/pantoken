@@ -1,3 +1,7 @@
+body {
+  background: var(--instui-color-background-page);
+}
+
 .pendo-showcase {
   display: grid;
   gap: 1.5rem;
