@@ -1,0 +1,7 @@
+look at renderers/web-components/scripts/translate.ts
+packages/scaffold/scripts/translate.ts
+ai/pantoken-ai/scripts/translate.ts
+and how they provide incremental logging by locale, then provide a similar experience in docs/scripts/translate-demos.ts with an added layer undereath the local for the demo.
+<locale>
+    <demo file>
+        <strings>
