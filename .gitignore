@@ -34,7 +34,9 @@ packages/scaffold/.dev/
 docs/api/
 docs/hu/api/
 docs/.vitepress/cache/
+docs/docs/.vitepress/cache/
 docs/.vitepress/.temp/
+docs/docs/.vitepress/.temp/
 docs/public/
 !docs/public/
 docs/public/*

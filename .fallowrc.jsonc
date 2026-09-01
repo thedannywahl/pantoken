@@ -46,6 +46,9 @@
   // files, so nothing here needs to be reachable from the module graph.
   "ignorePatterns": [
     "bench/**",
+    // VitePress dev pre-bundles dependencies here. The folder is gitignored cache output, not source.
+    "docs/.vitepress/cache/**",
+    "docs/docs/.vitepress/cache/**",
     // Locale docs are generated translated mirrors rather than source modules in the package graph.
     "docs/{ar,ca,cy,da,de,el,en-AU,en-CA,en-GB,es,fa,fi,fr,fr-CA,ga,he,hi,ht,hu,hy,id,is,it,ja,ko,mi,ms,nb,nl,nn,pl,pt,pt-BR,ru,se,sl,sv,th,tr,uk,vi,zh-Hans,zh-Hant}/**",
     "ai/create-pantoken-app-site",

@@ -13,5 +13,6 @@
     "jsx": "preserve",
     "jsxImportSource": "vue"
   },
-  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue", ".vitepress/**/*.d.ts"]
+  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue", ".vitepress/**/*.d.ts"],
+  "exclude": [".vitepress/cache/**", "docs/.vitepress/cache/**"]
 }
