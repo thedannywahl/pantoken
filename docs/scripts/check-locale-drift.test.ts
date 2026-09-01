@@ -10,6 +10,7 @@ const readdirSync = vi.fn<(p: string) => string[]>();
 const statSync = vi.fn<(p: string) => { isDirectory: () => boolean }>();
 const mkdirSync = vi.fn();
 const writeFileSync = vi.fn();
+const appendFileSync = vi.fn();
 
 vi.mock("node:fs", () => ({
   existsSync,
@@ -18,6 +19,7 @@ vi.mock("node:fs", () => ({
   statSync,
   mkdirSync,
   writeFileSync,
+  appendFileSync,
 }));
 // One target locale keeps the loop deterministic. ENGLISH_UI_STRINGS is empty so chromeDrift
 // contributes no items to these fixtures; flattenStrings is stubbed rather than pulling in the real
