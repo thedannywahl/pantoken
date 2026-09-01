@@ -1,0 +1,7 @@
+not sure where this vitepress cache keeps getting written, it's gitignored but now fallow it catching it:
+
+#attachment:Pasted text #1
+
+---
+
+now typescript is warning on the cache folder.
