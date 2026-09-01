@@ -1,0 +1,4 @@
+banner has two failing tests. we're going to make some simplification to the styles and then update tests:
+we currently style a button like a pfx-button.-color-primary.-on-color which we'll keep.
+a sibling button (button + button) that's not a close-button should set its background-color to transparent for its default state.  remove all the secondary.-on-color handling and other things. if a user adds a `-color-*` or other modifier, just apply it, even if it's `-color-primary`
+#attachment:Pasted text #1
