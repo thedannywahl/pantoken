@@ -1,0 +1,27 @@
+two failing tests in banner, likely we updated the source and did not update the tests to match:
+ ❯ plugins/pantoken/custom-components/tests/index.test.ts (22 tests | 2 failed) 42ms
+   ✓ is a css-only plugin 7ms
+   ✓ appends by default, prepends when asked 0ms
+   ✓ card root uses the dedicated background, sm border-radius as mobile default, and elevation-card 0ms
+   ✓ card root has overflow:hidden and flex-shrink:0 0ms
+   ✓ responsive breakpoints step padding and border-radius at 320px and 640px 0ms
+   ✓ container variant adds border and responsive gap/border-radius to direct children 0ms
+   ✓ @scope block contains container-variant direct-child rules 0ms
+   ✓ cardRules() and bannerRules() default to instui- prefix and both appear in the plugin css output 0ms
+   ✓ cardRules accepts an explicit prefix 0ms
+   ✓ agentShellRules emits prefixed and unprefixed selectors 0ms
+   ✓ card references only real tokens per theme 2ms
+   ✓ bannerRules emits prefixed and unprefixed selectors 0ms
+   ✓ banner root uses border/color/radius tokens and defaults to relaxed size 0ms
+   ✓ banner -size-compact switches padding/gap/icon-radius tokens 0ms
+   ✓ banner color modifiers set background and icon-background tokens 0ms
+   × banner renders an info icon by default and supports custom icon modifiers 23ms
+   ✓ banner icon is absolutely positioned and sizes its swatch by spacing variant 0ms
+   ✓ banner title and content use typography appropriate to the spacing variant 0ms
+   ✓ banner pins a small close button at the top end and reserves content space 0ms
+   ✓ banner keeps elevation absent and treats only unmodified direct-child buttons as -on-color 1ms
+   ✓ banner defaults buttons to -size-sm unless a size modifier is present 0ms
+   × banner references only real tokens per theme 4ms
+ ✓ docs/scripts/build-api-locales.test.ts (2 tests) 4752ms
+   ✓ build localizes markdown headings, prose, and sidebars, then logs the summary  4336ms
+ ✓ formats/css/scripts/generate.test.ts (4 tests) 4988ms
