@@ -4,6 +4,20 @@
  * EN API docs are generated directly by TypeDoc to `docs/api/`.
  * Every other locale's API docs are cloned to `docs/<locale>/api/` and localized with the configured
  * adapter (see `.vitepress/i18n.ts`'s `NON_ROOT_LOCALES`).
+ *
+ * Logs incremental progress by phase and locale with hierarchical breakdown:
+ *   📋 Building locale-specific API docs
+ *   🔨 Generating EN API docs
+ *     ✓ TypeDoc output
+ *     ✓ API badge styling
+ *     ✓ CSS API docs
+ *   🔄 ar: translating...
+ *     📄 Markdown (32 files, 2,547 prose blocks, 445 glossary terms)
+ *       ✓ 1,200 cached, 1,347 translated
+ *     📋 Sidebar (1 file, 87 labels)
+ *       ✓ 65 cached, 22 translated
+ *   ✓ ar: rendered in docs/ar/api (3,534 translated, 1,265 cached)
+ *   ✨ All API locales complete!
  */
 import {
   cpSync,
@@ -129,13 +143,17 @@ const escapeBareHtmlTags = (text: string): string => {
  * so they're cloned + translated for HU for free.
  */
 const generateBaseApiDocs = (): void => {
-  console.log("Generating EN API docs...");
+  console.log(`🔨 Generating EN API docs`);
   run("vp", ["exec", "typedoc", "--options", "typedoc.json", "--out", "api"]);
+  console.log(`  ✓ TypeDoc output`);
   run("node", ["scripts/style-api-badges.ts"]);
+  console.log(`  ✓ API badge styling`);
   run("node", ["scripts/write-api-overview.ts"]);
+  console.log(`  ✓ Overview cards`);
 
-  console.log("Generating CSS API docs...");
+  console.log(`🔨 Generating CSS API docs`);
   run("node", ["scripts/build-css-api.ts"]);
+  console.log(`  ✓ CSS API reference\n`);
 };
 
 /** Clone the generated EN API tree into a locale directory. */
@@ -149,14 +167,19 @@ const cloneApiForLocale = (localeApiDir: string): void => {
  * rewrite it translated in place. Prose is batched + cached through the selected adapter; headings,
  * badge pills, and table column labels always go through the glossary (deterministic, keyless, never
  * cached); everything else is kept verbatim. Block-level keys survive the scaffolding churn that busted
- * whole-file keys. Returns the glossary-term and prose-block counts for the summary log.
+ * whole-file keys. Returns the glossary-term, prose-block, and cache/miss counts for the summary log.
  */
 const translateMarkdownFiles = async (
   markdownFiles: string[],
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
   locale: string,
-): Promise<{ glossaryTerms: number; proseBlocks: number }> => {
+): Promise<{
+  glossaryTerms: number;
+  proseBlocks: number;
+  proseTranslated: number;
+  proseCached: number;
+}> => {
   const glossary = new GlossaryTranslationAdapter(locale);
   const segmented = markdownFiles.map((filePath) => ({
     filePath,
@@ -180,6 +203,10 @@ const translateMarkdownFiles = async (
     defaultVerbatim: { allow: ["en*"] },
   });
 
+  // Track prose translation stats before and after to measure cache vs. new translations
+  const beforeMisses = memory.misses;
+  const beforeHits = memory.hits;
+
   const resolve: Resolve = (text, kind) => {
     if (kind === "glossary") {
       return glossaryText.get(text) ?? text;
@@ -193,25 +220,32 @@ const translateMarkdownFiles = async (
   }
 
   const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
-  return { glossaryTerms: glossaryText.size, proseBlocks };
+  const proseTranslated = memory.misses - beforeMisses;
+  const proseCached = memory.hits - beforeHits;
+
+  return { glossaryTerms: glossaryText.size, proseBlocks, proseTranslated, proseCached };
 };
 
 /**
  * Collect every sidebar label across all trees, translate the misses in one batched pass, then rebuild
- * and rewrite each tree from the results. Returns the total label count for the summary log.
+ * and rewrite each tree from the results. Returns the label count and cache/miss stats for the summary log.
  */
 const translateSidebars = async (
   sidebarFiles: string[],
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
   locale: string,
-): Promise<number> => {
+): Promise<{ labelCount: number; labelTranslated: number; labelCached: number }> => {
   const sidebars = sidebarFiles.map((filePath) => ({
     filePath,
     tree: JSON.parse(readFileSync(filePath, "utf8")) as SidebarItem[],
   }));
   const labels: string[] = [];
   for (const { tree } of sidebars) collectSidebarText(tree, labels);
+
+  const beforeMisses = memory.misses;
+  const beforeHits = memory.hits;
+
   const labelTranslations = await translateUnits(
     adapter,
     memory,
@@ -224,7 +258,11 @@ const translateSidebars = async (
     const translated = tree.map((item) => translateSidebar(item, translateLabel, locale));
     writeFileSync(filePath, `${JSON.stringify(translated, null, 2)}\n`);
   }
-  return labels.length;
+
+  const labelTranslated = memory.misses - beforeMisses;
+  const labelCached = memory.hits - beforeHits;
+
+  return { labelCount: labels.length, labelTranslated, labelCached };
 };
 
 /** Clone + translate the EN API tree into one locale's directory. */
@@ -242,24 +280,49 @@ const buildLocale = async (locale: string): Promise<void> => {
   // both the TS API and the CSS reference.
   const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
 
-  // 1. Markdown blocks, then 2. sidebar labels — markdown first so both passes share the same memory.
-  const { glossaryTerms, proseBlocks } = await translateMarkdownFiles(
+  console.log(`🔄 ${locale}: translating...`);
+
+  // 1. Markdown blocks
+  const { glossaryTerms, proseBlocks, proseTranslated, proseCached } = await translateMarkdownFiles(
     markdownFiles,
     adapter,
     memory,
     locale,
   );
-  const labelCount = await translateSidebars(sidebarFiles, adapter, memory, locale);
+
+  console.log(
+    `  📄 Markdown (${markdownFiles.length} file${markdownFiles.length === 1 ? "" : "s"}, ` +
+      `${proseBlocks} prose block${proseBlocks === 1 ? "" : "s"}, ` +
+      `${glossaryTerms} glossary term${glossaryTerms === 1 ? "" : "s"})`,
+  );
+  console.log(`    ✓ ${proseCached} cached, ${proseTranslated} translated`);
+
+  // 2. Sidebar labels
+  const { labelCount, labelTranslated, labelCached } = await translateSidebars(
+    sidebarFiles,
+    adapter,
+    memory,
+    locale,
+  );
+
+  console.log(
+    `  📋 Sidebar (${sidebarFiles.length} file${sidebarFiles.length === 1 ? "" : "s"}, ` +
+      `${labelCount} label${labelCount === 1 ? "" : "s"})`,
+  );
+  console.log(`    ✓ ${labelCached} cached, ${labelTranslated} translated`);
 
   memory.save();
+  const totalTranslated = proseTranslated + labelTranslated;
+  const totalCached = proseCached + labelCached;
   console.log(
-    `Localized ${markdownFiles.length} API markdown files for '${locale}' via '${adapter.name}': ` +
-      `${glossaryTerms} glossary terms, ${proseBlocks} prose blocks, ${labelCount} sidebar labels ` +
-      `(${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, localeApiDir)}`,
+    `✓ ${locale}: rendered in ${relative(docsRoot, localeApiDir)} ` +
+      `(${totalTranslated} translated, ${totalCached} cached)\n`,
   );
 };
 
 const build = async (): Promise<void> => {
+  console.log(`📋 Building locale-specific API docs\n`);
+
   rmSync(enApiDir, { recursive: true, force: true });
   for (const locale of NON_ROOT_LOCALES) {
     rmSync(apiDirFor(locale), { recursive: true, force: true });
@@ -270,6 +333,8 @@ const build = async (): Promise<void> => {
   for (const locale of NON_ROOT_LOCALES) {
     await buildLocale(locale);
   }
+
+  console.log(`✨ All API locales complete!`);
 };
 
 build().catch((error: unknown) => {
