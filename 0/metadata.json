@@ -1,0 +1,80 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1D95ND6SMEGTY0ZNESS8WWS",
+  "session_id": "bbdb103d-8bbd-4434-92b7-b11691b5bc2e",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-01T01:26:07.824701Z",
+  "branch": "cli",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".markdownlint.json",
+    "docs/en-AU/guide/cli.md",
+    "docs/scripts/markdown-structure.test.ts",
+    "docs/scripts/markdown-structure.ts",
+    "docs/scripts/translate-guides.ts",
+    "docs/se/guide/architecture.md"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "9d0e87d45b09",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-01T01:26:07.817133Z",
+    "agent_lines": 100,
+    "agent_removed": 26,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 100,
+    "total_lines_changed": 126,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 69,
+      "user_lines_removed": 19,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/CommandCycleRow.vue": 66,
+        "docs/.vitepress/theme/components/useCommandCycle.ts": 3
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/CommandCycleRow.vue": 19
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 39,
+      "user_lines_removed": 19,
+      "agent_lines_added": 96,
+      "agent_lines_removed": 23,
+      "user_added_per_file": {
+        "docs/.vitepress/theme/components/GetStartedTabs.vue": 39
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/theme/components/GetStartedTabs.vue": 19
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 289,
+      "agent_lines_removed": 69
+    }
+  ]
+}
