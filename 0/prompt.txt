@@ -1,0 +1,16 @@
+on the tilted terminal component in firefox it doesn't looks like there's any antialiasing provided on a 1920x1080 monitor.  and there's still a lot of sub-pixel visual tearing in firefox.  neither of these issues occur in safari or chrome. we need a comprehensive fix for firefox so that it renders correctly and performantly.
+
+---
+
+In the pantoken workspace (/Users/dwahl/Scripts/pantoken), find the "tilted terminal" component — likely a docs site hero/landing element in docs/.vitepress/theme/ or a Vue component, that uses CSS 3D transforms (rotate3d/perspective/rotateY) to render a terminal window at an angle.
+
+Report thoroughly:
+1. Full paths of ALL files involved (Vue components, CSS files, TS files).
+2. The complete CSS relevant to the tilt: transform, perspective, transform-style, backface-visibility, will-change, filter, backdrop-filter, box-shadow, border-radius, animations/transitions, and any @media/@supports queries.
+3. Any existing browser-specific hacks (e.g. -moz-, @-moz-document, @supports (-moz-appearance)).
+4. Whether the terminal content is text, SVG, canvas, or an image, and whether it animates (typing effect, scroll, etc).
+5. Any use of masks, clip-path, gradients, or pseudo-elements on the tilted surface.
+6. Whether there are existing prefers-reduced-motion handling blocks.
+7. Any docs/engineering-log.md entries mentioning Firefox rendering, antialiasing, or transforms.
+
+Quote the actual CSS blocks verbatim with file paths and line numbers. Thoroughness: thorough.
