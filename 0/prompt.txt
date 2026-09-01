@@ -1,0 +1,45 @@
+translate-glossary needs verbatim treatment as well:
+```
+  ! text unit looks untranslated (identical to source), not cached: "Variables"
+  ! text unit looks untranslated (identical to source), not cached: "Variable"
+  ! text unit looks untranslated (identical to source), not cached: "Classes"
+  ! text unit looks untranslated (identical to source), not cached: "Constructors"
+  ! text unit looks untranslated (identical to source), not cached: "Constructor"
+  ! text unit looks untranslated (identical to source), not cached: "Parts"
+  ! text unit looks untranslated (identical to source), not cached: "Subcomponents"
+  ! text unit looks untranslated (identical to source), not cached: "Components"
+  ! text unit looks untranslated (identical to source), not cached: "Beta"
+  ! text unit looks untranslated (identical to source), not cached: "Experimental"
+  ! text unit looks untranslated (identical to source), not cached: "Part"
+  ! text unit looks untranslated (identical to source), not cached: "Token"
+  … 96/96 labels + prose blocks translated
+✓ localized 101 glossary terms for 'ca' via 'ai' (84 translated, 0 cached)
+  ! text unit looks untranslated (identical to source), not cached: "Parameter"
+  ! text unit looks untranslated (identical to source), not cached: "Reference"
+  ! text unit looks untranslated (identical to source), not cached: "Demo"
+  ! text unit looks untranslated (identical to source), not cached: "Slots"
+  ! text unit looks untranslated (identical to source), not cached: "Alpha"
+  ! text unit looks untranslated (identical to source), not cached: "Beta"
+  ! text unit looks untranslated (identical to source), not cached: "Pseudo-element"
+  ! text unit looks untranslated (identical to source), not cached: "Slot"
+  ! text unit looks untranslated (identical to source), not cached: "Animation"
+  ! text unit looks untranslated (identical to source), not cached: "Token"
+  ! text unit looks untranslated (identical to source), not cached: "Type"
+  … 96/96 labels + prose blocks translated
+  ```
+
+---
+
+we're going to be translating all ~45 languages.
+
+---
+
+next in the pipeline is translate-demos and then build-api-locales.  review them for necessary changes before we beging the translations.
+
+---
+
+how do we flag those as 'verbatim: true' to prevent them from being translated. Maybe demos should implement a lightweight in-app handlebars that emulates i18n.js so that that json node can get translated and we just render the strings inline?
+
+---
+
+"allow" means that it may be verbatim but doesn't have to be. if we added "required" that would mean "skip the pipeline and copy."
