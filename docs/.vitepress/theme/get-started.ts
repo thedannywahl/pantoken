@@ -32,6 +32,5 @@ export const GET_STARTED_TABS_DEFAULTS: GetStartedTabsStrings = {
   aiInstall: "AI install",
   pauseAnimation: "Pause animation",
   playAnimation: "Resume animation",
-  agentPrompt:
-    '"Set up pantoken (github.com/thedannywahl/pantoken) in this project using create.pantoken.app/SKILL.md."',
+  agentPrompt: '"Set up pantoken in this project using create.pantoken.app/SKILL.md"',
 };
