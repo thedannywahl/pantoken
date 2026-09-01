@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1D981SV8N932TKD1BBXC163",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     ".changeset/khaki-donuts-swim.md",
     "docs/.vitepress/theme/components/GetStartedTabs.vue"
@@ -15,6 +15,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
