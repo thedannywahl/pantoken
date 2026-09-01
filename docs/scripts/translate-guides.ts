@@ -16,6 +16,7 @@ import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { createTranslationAdapter } from "./api-translation.ts";
+import { preservesMarkdownStructure } from "./markdown-structure.ts";
 import { TranslationMemory, keyFor, translateUnits } from "./translation-memory.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
@@ -26,17 +27,30 @@ const pages = readdirSync(guideDir)
   .toSorted();
 
 const targets = NON_ROOT_LOCALES;
+const formatOnly = process.env.DOCS_TRANSLATION_FORMAT_ONLY === "1";
 
 for (const locale of targets) {
   const outDir = join(docsRoot, locale, "guide");
   mkdirSync(outDir, { recursive: true });
 
-  const adapter = createTranslationAdapter(locale);
-  const memory = TranslationMemory.load(locale, "guides");
   const sources = pages.map((page) => ({
     page,
     source: readFileSync(join(guideDir, page), "utf8"),
   }));
+
+  if (formatOnly) {
+    for (const { page, source } of sources) {
+      const outPath = join(outDir, page);
+      const existing = readFileSync(outPath, "utf8");
+      const localized = preservesMarkdownStructure(source, existing) ? existing : source;
+      writeFileSync(outPath, `${localized.trimEnd()}\n`);
+    }
+    console.log(`✓ ${locale}: repaired ${pages.length} guide page(s)`);
+    continue;
+  }
+
+  const adapter = createTranslationAdapter(locale);
+  const memory = TranslationMemory.load(locale, "guides");
 
   console.log(`🔄 ${locale}: checking ${pages.length} guide page(s) via '${adapter.name}'...`);
 
@@ -49,7 +63,8 @@ for (const locale of targets) {
 
   for (const { page, source } of sources) {
     const translated = translations.get(keyFor("markdown", source)) ?? source;
-    writeFileSync(join(outDir, page), `${translated.trimEnd()}\n`);
+    const localized = preservesMarkdownStructure(source, translated) ? translated : source;
+    writeFileSync(join(outDir, page), `${localized.trimEnd()}\n`);
     console.log(`  ${locale}/guide/${page}`);
   }
 
