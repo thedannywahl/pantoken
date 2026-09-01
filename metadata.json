@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1F8HC1Y1DFA8R475WQ6ESDA",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 40,
+  "checkpoints_count": 41,
   "files_touched": [
     ".changeset/banner-button-defaults.md",
     ".changeset/button-on-color-modifier.md",
@@ -5213,6 +5213,13 @@
       "compact_transcript": "/10/transcript.jsonl",
       "content_hash": "/10/content_hash.txt",
       "prompt": "/10/prompt.txt"
+    },
+    {
+      "metadata": "/11/metadata.json",
+      "transcript": "/11/full.jsonl",
+      "compact_transcript": "/11/transcript.jsonl",
+      "content_hash": "/11/content_hash.txt",
+      "prompt": "/11/prompt.txt"
     }
   ],
   "token_usage": {
