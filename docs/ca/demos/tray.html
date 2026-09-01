@@ -1,0 +1,53 @@
+<div class="instui-card">
+  <!-- A tray as a native [popover]: it docks to an edge and opens in the top layer. -->
+  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+    <button class="instui-button -color-secondary" popovertarget="tray-start">
+      Des de l'inici
+    </button>
+    <button class="instui-button -color-secondary" popovertarget="tray-end">Des del final</button>
+  </div>
+
+  <div id="tray-start" popover class="instui-tray -size-sm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      "
+    >
+      <strong>Filtres</strong>
+      <button
+        class="instui-close-button"
+        popovertarget="tray-start"
+        popovertargetaction="hide"
+        aria-label="Close"
+      ></button>
+    </div>
+    <p class="instui-text -size-sm">
+      Una safata llisca des del costat inicial i omple l'alçada de la finestra de visualització.
+    </p>
+  </div>
+
+  <div id="tray-end" popover class="instui-tray -placement-end -size-sm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      "
+    >
+      <strong>Detalls</strong>
+      <button
+        class="instui-close-button"
+        popovertarget="tray-end"
+        popovertargetaction="hide"
+        aria-label="Close"
+      ></button>
+    </div>
+    <p class="instui-text -size-sm">
+      Aquesta s'acobla al costat final. Pressiona Esc o fes clic fora per tancar.
+    </p>
+  </div>
+</div>

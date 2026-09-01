@@ -14,6 +14,7 @@ import { writeComponentsSheet } from "./components-sheet.ts";
 import { stageComponentAssets } from "./stage-component-assets.ts";
 import { stagePluginAssets } from "./stage-plugin-assets.ts";
 import { stageDemoSnippets } from "./stage-demo-snippets.ts";
+import { stagePendoAsset } from "./stage-pendo-asset.ts";
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
@@ -66,6 +67,8 @@ copyFileSync(
 // `.instui-card` — the surface the /demos and the CSS-API live examples share. A static asset
 // (tools/demo/assets/card.css); the host page imports it directly, and the runner loads the same file.
 copyFileSync(require.resolve("@pantoken/demo/card.css"), join(assets, "card.css"));
+
+stagePendoAsset();
 
 // The transition/stacking/visual-debug decoration sheets, copied from each plugin's SOURCE-derived
 // `generated/<name>.css` (NOT the plugin `dist` function) so they stay live during docs:dev — the

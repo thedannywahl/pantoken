@@ -1,0 +1,43 @@
+<div class="instui-card">
+  <div class="focus-demo">
+    <p class="hint">
+      Tab gennem kontrollerne (eller klik på feltet) for at se ringen. Den følger hvert fokuserbart
+      element som standard fra <code>base.css</code>; modifikatorerne ændrer farve på det, gør det
+      indrykket eller slår animationen fra.
+    </p>
+
+    <section>
+      <h4>Standard ring (alle fokusbare elementer)</h4>
+      <div class="row">
+        <button class="instui-button">Knap</button>
+        <a class="instui-link" href="#focus-demo">Link</a>
+        <input class="field" placeholder="Input" />
+      </div>
+    </section>
+
+    <section>
+      <h4>Ringfarve</h4>
+      <div class="row">
+        <button class="instui-button">Info (standard)</button>
+        <button class="instui-button -color-success -focus-color-success">Succes</button>
+        <button class="instui-button -color-danger -focus-color-danger">Fare</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Position og animation</h4>
+      <div class="row">
+        <button class="instui-button -focus-position-inset">Indvendig ring</button>
+        <button class="instui-button -without-focus-animation">Ingen animation</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>Fokus inden for (vises også ved klik)</h4>
+      <label class="within -focus-within">
+        <span class="lbl">Søg</span>
+        <input class="field" placeholder="Focus me — the whole box rings" />
+      </label>
+    </section>
+  </div>
+</div>

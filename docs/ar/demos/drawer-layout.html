@@ -1,0 +1,41 @@
+<div class="instui-card" style="height: 20rem; overflow: hidden">
+  <!-- Drawer layout is a CSS surface; the interactions bundle adds command routing and overlay-state toggling. -->
+  <div style="display: flex; gap: 8px; margin-bottom: 12px">
+    <button class="instui-button -color-secondary" command="--toggle" commandfor="demo-drawer">
+      تبديل اللوحة
+    </button>
+    <button class="instui-button -color-secondary" command="--open" commandfor="demo-drawer">
+      فتح
+    </button>
+    <button class="instui-button -color-secondary" command="--close" commandfor="demo-drawer">
+      إغلاق
+    </button>
+  </div>
+
+  <div
+    id="demo-drawer"
+    class="instui-drawer-layout"
+    open
+    style="height: calc(100% - 48px); --drawer-layout-min-width: 36rem"
+  >
+    <aside class="tray">
+      <div style="padding: 12px">
+        <strong>التنقل</strong>
+        <ul class="instui-list" style="margin-top: 8px">
+          <li class="item">نظرة عامة</li>
+          <li class="item">الوحدات</li>
+          <li class="item">الإعدادات</li>
+        </ul>
+      </div>
+    </aside>
+    <main class="content" role="region">
+      <div style="padding: 16px">
+        <h3 class="instui-heading -level-h3">المحتوى الرئيسي</h3>
+        <p class="instui-text -size-sm">
+          استخدم الأزرار أعلاه لتبديل حالة الفتح. قلّل عرض نافذة العرض لترى أن الدرج يتحول إلى وضع
+          التراكب.
+        </p>
+      </div>
+    </main>
+  </div>
+</div>

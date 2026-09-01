@@ -1,0 +1,19 @@
+.base-swatches {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.base-swatch {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid var(--instui-color-stroke-base);
+  border-radius: var(--instui-border-radius-md);
+  font-size: var(--instui-font-size-text-xs);
+}
+.base-swatch--page {
+  background: var(--instui-color-background-page);
+}
+.base-swatch--base {
+  background: var(--instui-color-background-base);
+}

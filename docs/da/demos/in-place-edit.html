@@ -1,0 +1,33 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 360px">
+    <!-- A native contenteditable: reads as text, click to edit (input chrome appears on focus). Pair
+         with a label; the leading pencil hints it's editable. -->
+    <div class="instui-text">
+      Projektnavn:
+      <span
+        class="instui-in-place-edit"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Project name"
+        >Uden titel</span
+      >
+      <span class="instui-icon -icon-pencil --text-muted"></span>
+    </div>
+
+    <div class="instui-text">
+      Ejer:
+      <span class="instui-in-place-edit" contenteditable="true" aria-label="Owner">Ada Byron</span>
+    </div>
+
+    <!-- -readonly: shown inline but not editable. -->
+    <div class="instui-text">
+      Oprettet:
+      <span class="instui-in-place-edit -readonly" contenteditable="false">12. marts 2026</span>
+    </div>
+  </div>
+
+  <p class="instui-text -size-sm instui-fg-muted" style="margin-top: 12px">
+    Klik på en værdi for at redigere den. Den tilstandsbevarende vis/ret-omskifter med bekræft- og
+    annuller-knapper er web-component-laget; dette er det rene CSS-redigerbare skin.
+  </p>
+</div>

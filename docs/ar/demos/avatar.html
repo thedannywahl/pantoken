@@ -1,0 +1,78 @@
+<div class="instui-card" style="display: flex; flex-direction: column; gap: 20px">
+  <!-- Default: base surface, colored text, gray border -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar">DW</span>
+    <span class="instui-avatar -color-blue">أ ب</span>
+    <span class="instui-avatar -color-green">التسليم المستمر</span>
+    <span class="instui-avatar -color-red">إف</span>
+    <span class="instui-avatar -color-orange">جي إتش</span>
+    <span class="instui-avatar -color-ash">آي جي</span>
+    <span class="instui-avatar -color-grey">كي إل</span>
+    <span class="instui-avatar -color-ai">الذكاء الاصطناعي</span>
+  </div>
+
+  <!-- Inverse: solid fill, on-color text -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar -color-blue -has-inverse-color">أ ب</span>
+    <span class="instui-avatar -color-green -has-inverse-color">التسليم المستمر</span>
+    <span class="instui-avatar -color-red -has-inverse-color">إف</span>
+    <span class="instui-avatar -color-orange -has-inverse-color">جي إتش</span>
+    <span class="instui-avatar -color-ash -has-inverse-color">آي جي</span>
+    <span class="instui-avatar -color-grey -has-inverse-color">كي إل</span>
+    <span class="instui-avatar -color-ai -has-inverse-color">الذكاء الاصطناعي</span>
+  </div>
+
+  <!-- Sizes -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar -size-2xs">صغير جدًا جدًا</span>
+    <span class="instui-avatar -size-xs">صغير جدًا</span>
+    <span class="instui-avatar -size-sm">صغير</span>
+    <span class="instui-avatar">MD</span>
+    <span class="instui-avatar -size-lg">LG</span>
+    <span class="instui-avatar -size-xl">كبير جدًا</span>
+    <span class="instui-avatar -size-2xl">كبير جدًا جدًا</span>
+  </div>
+
+  <!-- Shape, forced border, icon glyph, and a real image -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar -shape-rectangle">MN</span>
+    <span class="instui-avatar -color-green -shape-rectangle -has-inverse-color"
+      >الكاتب الأصلي</span
+    >
+    <span class="instui-avatar -show-border-always">رمز QR</span>
+    <span class="instui-avatar -show-border-never">ST</span>
+    <span class="instui-avatar -icon-user"></span>
+    <span class="instui-avatar -color-blue -has-inverse-color -icon-user"></span>
+  </div>
+
+  <!-- Image avatars: no border by default; -show-border-always forces the ring on (e.g. SideNavBar) -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar -size-lg">
+      <img
+        alt="Portrait"
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234b7bec'/%3E%3Cstop offset='1' stop-color='%2320bf6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='40' r='18' fill='white'/%3E%3Cpath d='M18 92c0-19 14-32 32-32s32 13 32 32z' fill='white'/%3E%3C/svg%3E"
+      />
+    </span>
+    <span class="instui-avatar -size-lg -show-border-always">
+      <img
+        alt="Portrait"
+        src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234b7bec'/%3E%3Cstop offset='1' stop-color='%2320bf6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23g)'/%3E%3Ccircle cx='50' cy='40' r='18' fill='white'/%3E%3Cpath d='M18 92c0-19 14-32 32-32s32 13 32 32z' fill='white'/%3E%3C/svg%3E"
+      />
+    </span>
+  </div>
+
+  <!-- Full display names: data-initials keeps the real name in the accessibility tree while showing
+       a compact "SR" visually; the JS interactions entry auto-fills data-initials when it's omitted;
+       .name is an opt-in single-leading-letter clip for a no-data-initials, no-JS static fallback;
+       .first-name/.last-name is the two-letter version of that same fallback, each independently
+       clipped — omitting either half just leaves the other centred. -->
+  <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap">
+    <span class="instui-avatar" data-initials="SR">سارة روبنسون</span>
+    <span class="instui-avatar -size-sm">كايل مونتغمري</span>
+    <span class="instui-avatar"><span class="name">ألكسندريا وينتربورن</span></span>
+    <span class="instui-avatar">
+      <span class="first-name">ميغيل</span> <span class="last-name">سانشيز</span>
+    </span>
+    <span class="instui-avatar"><span class="first-name">بريا</span></span>
+  </div>
+</div>

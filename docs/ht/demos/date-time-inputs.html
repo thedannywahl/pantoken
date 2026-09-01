@@ -1,0 +1,43 @@
+<div class="instui-card">
+  <!-- Date and time inputs are the base input over a native type — the browser supplies the picker, so
+       there's no JavaScript and no separate component. Wrap each in a form field for the label + hint. -->
+  <div style="display: grid; gap: 16px; max-width: 360px">
+    <div class="instui-form-field">
+      <label class="label" for="di-date">Due date</label>
+      <div class="controls">
+        <input class="instui-text-input" type="date" id="di-date" value="2026-03-12" />
+      </div>
+    </div>
+
+    <div class="instui-form-field">
+      <label class="label" for="di-datetime">Starts at</label>
+      <div class="controls">
+        <input
+          class="instui-text-input"
+          type="datetime-local"
+          id="di-datetime"
+          value="2026-03-12T09:00"
+        />
+      </div>
+    </div>
+
+    <div class="instui-form-field">
+      <label class="label" for="di-time">Reminder time</label>
+      <div class="controls">
+        <input class="instui-text-input" type="time" id="di-time" value="08:30" />
+      </div>
+    </div>
+
+    <div class="instui-form-field">
+      <label class="label" for="di-select">Time zone</label>
+      <div class="controls">
+        <select class="instui-simple-select" id="di-select">
+          <option>Pacific</option>
+          <option>Mountain</option>
+          <option selected>Central</option>
+          <option>Eastern</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

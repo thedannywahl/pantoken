@@ -1,0 +1,36 @@
+<div class="instui-card">
+  <!-- As a native popover, `popovertarget` toggles it with no JavaScript: it opens in the top layer
+       and light-dismisses on Esc or an outside click. The trigger's `anchor-name` lets it dock below the
+       button (-placement-bottom) where CSS anchor positioning is supported. -->
+  <button
+    class="instui-button -color-secondary"
+    popovertarget="cv-popover"
+    style="anchor-name: --pantoken-anchor"
+  >
+    Ցուցադրել մանրամասները
+  </button>
+
+  <div
+    id="cv-popover"
+    popover
+    class="instui-context-view -placement-bottom"
+    style="max-width: 320px"
+  >
+    Կոնտեքստային տեսքը շրջանակի մեջ է դնում կանաչուկը՝ ցուցիչով։ Որպես պոպовер այն գտնվում է վերին
+    շերտում և փակվում երբ կտտացնում եք դրսում կամ սեղմում Esc։
+  </div>
+
+  <!-- Static placements: the caret sits on the edge facing the thing the view explains. -->
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start">
+    <div class="instui-context-view -placement-top">Տեղադրում վերև</div>
+    <div class="instui-context-view -placement-bottom">Տեղադրում ներքև</div>
+    <div class="instui-context-view -placement-start">Տեղադրում սկիզբ</div>
+    <div class="instui-context-view -placement-end">Տեղադրում վերջ</div>
+    <div class="instui-context-view -color-inverse">Հակադարձ ֆոն</div>
+  </div>
+
+  <p class="instui-text --text-muted" style="margin-top: 16px">
+    Նորաձև դիրքավորում տրիգերի կողքին օգտագործում է CSS anchor դիրքավորում երբ աջակցվում է; այլապես
+    պոպովերը կենտրոնացվում է վերին շերտում։
+  </p>
+</div>

@@ -1,0 +1,24 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <!-- A real dropzone: a <label> wrapping a hidden file input, so click-to-browse works with no JS.
+         The demo script toggles the accepted/rejected state from the chosen file's type. -->
+    <label class="instui-file-drop" id="fd" style="cursor: pointer; display: block">
+      <span class="instui-icon -icon-cloud-upload" style="font-size: 2.5rem"></span>
+      <div class="instui-text" style="margin-top: 8px">
+        <strong>اسحب صورة إلى هنا</strong>، أو انقر لتصفح.
+      </div>
+      <div class="instui-text -size-sm --text-muted" id="fd-msg" style="margin-top: 4px">
+        PNG أو JPG بحد أقصى 5 ميغابايت.
+      </div>
+      <input type="file" accept="image/*" hidden id="fd-input" />
+    </label>
+
+    <!-- The accepted and rejected states, shown statically. -->
+    <div class="instui-file-drop -accepted">
+      <span class="instui-icon -icon-circle-check"></span> photo.png — مقبول.
+    </div>
+    <div class="instui-file-drop -rejected">
+      <span class="instui-icon -icon-circle-x"></span> report.pdf — نوع الملف غير مسموح به.
+    </div>
+  </div>
+</div>

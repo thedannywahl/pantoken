@@ -1,0 +1,33 @@
+<div class="instui-card" style="display: flex; flex-direction: column; gap: 24px">
+  <!-- Default variant: underline tabs -->
+  <div class="instui-tabs" data-tabs>
+    <div class="list" role="tablist" aria-label="Default tabs">
+      <button class="tab -selected" role="tab" aria-selected="true" data-panel="Overview">
+        Overzicht
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="Details">Details</button>
+      <button class="tab -disabled" role="tab" aria-disabled="true" disabled data-panel="Disabled">
+        Uitgeschakeld
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="History">
+        Geschiedenis
+      </button>
+    </div>
+    <div class="panel" role="tabpanel">De inhoud van het Overzicht-tabblad wordt hier getoond.</div>
+  </div>
+
+  <!-- Secondary variant: connected "folder" tabs (variant on the container) -->
+  <div class="instui-tabs -variant-secondary" data-tabs>
+    <div class="list" role="tablist" aria-label="Secondary tabs">
+      <button class="tab" role="tab" aria-selected="false" data-panel="First">Eerste tab</button>
+      <button class="tab -disabled" role="tab" aria-disabled="true" disabled data-panel="Disabled">
+        Uitgeschakeld
+      </button>
+      <button class="tab -selected" role="tab" aria-selected="true" data-panel="Third">
+        Derde tab
+      </button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="Fourth">Vierde tab</button>
+    </div>
+    <div class="panel" role="tabpanel">De inhoud van het Derde tabblad wordt hier getoond.</div>
+  </div>
+</div>

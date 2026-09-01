@@ -1,0 +1,45 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <!-- Each crumb is a link; the last (current page) is plain text. A crumb can lead with an icon. -->
+    <nav class="instui-breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li>
+          <a class="-icon-house" href="#">الرئيسية</a>
+        </li>
+        <li><a href="#">أدلة</a></li>
+        <li><a href="#">المكونات</a></li>
+        <li aria-current="page">شريط التنقل</li>
+      </ol>
+    </nav>
+
+    <!-- -size-sm and -size-lg scale the text and separator gap. -->
+    <nav class="instui-breadcrumb -size-sm" aria-label="Breadcrumb (small)">
+      <ol>
+        <li><a href="#">دورة</a></li>
+        <li><a href="#">الوحدة 3</a></li>
+        <li aria-current="page">مهمة</li>
+      </ol>
+    </nav>
+
+    <nav class="instui-breadcrumb -size-lg" aria-label="Breadcrumb (large)">
+      <ol>
+        <li><a href="#">لوحة التحكم</a></li>
+        <li><a href="#">التقارير</a></li>
+        <li aria-current="page">ملخص الربع الثالث</li>
+      </ol>
+    </nav>
+
+    <!-- breadcrumbs without any links are automatically hidden. This code is below:
+      <nav class="instui-breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li class="-icon-house" aria-current="page">Home Page</li>
+        </ol>
+      </nav> 
+    -->
+    <nav class="instui-breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li class="-icon-house" aria-current="page">الصفحة الرئيسية</li>
+      </ol>
+    </nav>
+  </div>
+</div>

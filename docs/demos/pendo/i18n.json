@@ -1,0 +1,78 @@
+{
+  "popoverLabel": {
+    "string": "Popover",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "popoverTitle": {
+    "string": "A quick orientation",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "popoverSubtitle": {
+    "string": "Feature tour",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "popoverBody": {
+    "string": "This anchored guide keeps the next action close to the feature it describes.",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "alertLabel": {
+    "string": "Alert",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "alertTitle": {
+    "string": "Maintenance tonight",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "alertSubtitle": {
+    "string": "Starts at 11:00 PM",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "alertBody": {
+    "string": "Course tools will be unavailable briefly tonight while maintenance is completed.",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "bannerLabel": {
+    "string": "Banner",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "bannerTitle": {
+    "string": "New analytics are ready",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "bannerSubtitle": {
+    "string": "Participation insights",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "bannerBody": {
+    "string": "Review participation trends and identify where learners may need support.",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "closeLabel": {
+    "string": "Close",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "continueLabel": {
+    "string": "Continue",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "laterLabel": {
+    "string": "Later",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "alertPrimaryLabel": {
+    "string": "View details",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "alertSecondaryLabel": {
+    "string": "Dismiss",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "primaryLabel": {
+    "string": "View analytics",
+    "verbatim": { "allow": ["en*"] }
+  },
+  "secondaryLabel": {
+    "string": "Not now",
+    "verbatim": { "allow": ["en*"] }
+  }
+}
