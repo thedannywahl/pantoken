@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Aucun couplage en amont
-    details: Les jetons sont fournis vendored sous forme de JSON statique, donc &grave;npm i pantoken&grave; ne dépend jamais d'une source réservée à GitHub. Publiables, versionnés semver et compatibles hors ligne.
+    details: Les jetons sont fournis vendored sous forme de JSON statique, donc &grave;npm i&grave; ne dépend jamais d'une source réservée à GitHub. Publiables, versionnés semver et compatibles hors ligne.
 ---

@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Dim cysylltiad uwchlaw
-    details: Mae'r tocynnau'n cael eu danfon wedi'u vendorio fel JSON statig, felly nid yw &grave;npm i pantoken&grave; byth yn cyrraedd at ffynhonnell sydd ond ar GitHub. Gallu ei gyhoeddi, gyda semver, ac yn gyfeillgar i weithredu heb gysylltiad.
+    details: Mae'r tocynnau'n cael eu danfon wedi'u vendorio fel JSON statig, felly nid yw &grave;npm i&grave; byth yn cyrraedd at ffynhonnell sydd ond ar GitHub. Gallu ei gyhoeddi, gyda semver, ac yn gyfeillgar i weithredu heb gysylltiad.
 ---

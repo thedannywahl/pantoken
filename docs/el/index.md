@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Χωρίς σύνδεση με upstream
-    details: Τα tokens διανέμονται ως vendored στατικά JSON, οπότε το &grave;npm i pantoken&grave; δεν αναζητά ποτέ πηγή αποκλειστικά στο GitHub. Μπορούν να δημοσιευτούν, έχουν semver και είναι φιλικά για offline χρήση.
+    details: Τα tokens διανέμονται ως vendored στατικά JSON, οπότε το &grave;npm i&grave; δεν αναζητά ποτέ πηγή αποκλειστικά στο GitHub. Μπορούν να δημοσιευτούν, έχουν semver και είναι φιλικά για offline χρήση.
 ---

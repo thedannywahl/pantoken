@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: ไม่มีการผูกกับต้นทาง
-    details: โทเค็นถูกจัดส่งเป็นไฟล์ JSON แบบ vendored ดังนั้น &grave;npm i pantoken&grave; จะไม่ดึงจากแหล่งที่หาได้เฉพาะบน GitHub สามารถเผยแพร่ มีเวอร์ชัน semver และใช้งานแบบออฟไลน์ได้.
+    details: โทเค็นถูกจัดส่งเป็นไฟล์ JSON แบบ vendored ดังนั้น &grave;npm i&grave; จะไม่ดึงจากแหล่งที่หาได้เฉพาะบน GitHub สามารถเผยแพร่ มีเวอร์ชัน semver และใช้งานแบบออฟไลน์ได้.
 ---

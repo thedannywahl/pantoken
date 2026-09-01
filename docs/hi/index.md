@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: कोई अपस्ट्रीम जोड़ाव नहीं
-    details: टोकन वेंडर्ड स्थिर JSON के रूप में शिप होते हैं, इसलिए &grave;npm i pantoken&grave; कभी भी केवल GitHub-स्रोत तक नहीं पहुँचता। प्रकाशित करने योग्य, semver'd, और ऑफ़लाइन-अनुकूल।
+    details: टोकन वेंडर्ड स्थिर JSON के रूप में शिप होते हैं, इसलिए &grave;npm i&grave; कभी भी केवल GitHub-स्रोत तक नहीं पहुँचता। प्रकाशित करने योग्य, semver'd, और ऑफ़लाइन-अनुकूल।
 ---

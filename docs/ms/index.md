@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Tiada pengikatan hulu
-    details: Token dihantar sebagai JSON statik yang dibundel, jadi &grave;npm i pantoken&grave; tidak pernah mengambil dari sumber eksklusif GitHub. Boleh diterbitkan, menggunakan semver, mesra luar talian.
+    details: Token dihantar sebagai JSON statik yang dibundel, jadi &grave;npm i&grave; tidak pernah mengambil dari sumber eksklusif GitHub. Boleh diterbitkan, menggunakan semver, mesra luar talian.
 ---

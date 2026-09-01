@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Brez vezave na upstream
-    details: Tokeni so vključeni kot vendorirana statična JSON datoteka, zato &grave;npm i pantoken&grave; nikoli ne posega po izvoru, ki je omejen na GitHub. Objavljivo, s semver različicami, prijazno za delo brez povezave.
+    details: Tokeni so vključeni kot vendorirana statična JSON datoteka, zato &grave;npm i&grave; nikoli ne posega po izvoru, ki je omejen na GitHub. Objavljivo, s semver različicami, prijazno za delo brez povezave.
 ---

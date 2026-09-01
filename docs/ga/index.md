@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Gan spleáchas upstream
-    details: Seoltar na tóicíní mar JSON statach miondíoltóra, mar sin ní théann &grave;npm i pantoken&grave; riamh i dtaithí ar fhoinse atá ar GitHub amháin. In-foilseach le semver agus oiriúnach le húsáid as líne.
+    details: Seoltar na tóicíní mar JSON statach miondíoltóra, mar sin ní théann &grave;npm i&grave; riamh i dtaithí ar fhoinse atá ar GitHub amháin. In-foilseach le semver agus oiriúnach le húsáid as líne.
 ---

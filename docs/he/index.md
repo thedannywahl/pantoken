@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: ללא תלות במקור עליון
-    details: הטוקנים נשלחים כ‑JSON סטטי בחבילה (vendored), לכן &grave;npm i pantoken&grave; אף פעם לא ניגש למקור הזמין רק ב‑GitHub. ניתן לפרסום, עם semver, וידידותי לעבודה אופליין.
+    details: הטוקנים נשלחים כ‑JSON סטטי בחבילה (vendored), לכן &grave;npm i&grave; אף פעם לא ניגש למקור הזמין רק ב‑GitHub. ניתן לפרסום, עם semver, וידידותי לעבודה אופליין.
 ---

@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Sense acoblament amb l'origen
-    details: Els tokens s'envien empacats com JSON estàtic, així &grave;npm i pantoken&grave; mai no accedeix a una font exclusiva de GitHub. Publicable, amb semver i aptes per a ús fora de línia.
+    details: Els tokens s'envien empacats com JSON estàtic, així &grave;npm i&grave; mai no accedeix a una font exclusiva de GitHub. Publicable, amb semver i aptes per a ús fora de línia.
 ---

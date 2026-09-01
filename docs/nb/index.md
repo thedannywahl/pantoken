@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Ingen oppstrøms avhengighet
-    details: Tokenene leveres som vendorert statisk JSON, så &grave;npm i pantoken&grave; trenger aldri å hente fra en GitHub-only kilde. Publiserbar, semver'd, offline-vennlig.
+    details: Tokenene leveres som vendorert statisk JSON, så &grave;npm i&grave; trenger aldri å hente fra en GitHub-only kilde. Publiserbar, semver'd, offline-vennlig.
 ---

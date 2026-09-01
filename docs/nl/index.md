@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Geen upstream-koppeling
-    details: De tokens worden meegeleverd als vendored statische JSON, dus &grave;npm i pantoken&grave; zoekt nooit naar een GitHub-only bron. Publiceerbaar, semver'd, offline-vriendelijk.
+    details: De tokens worden meegeleverd als vendored statische JSON, dus &grave;npm i&grave; zoekt nooit naar een GitHub-only bron. Publiceerbaar, semver'd, offline-vriendelijk.
 ---

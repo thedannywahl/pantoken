@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Ei upstream-riippuvuutta
-    details: Tokenit toimitetaan mukana staattisina JSON-tiedostoina, joten &grave;npm i pantoken&grave; ei koskaan turvaudu vain GitHub-lähteeseen. Julkaistavia, semveröityjä ja offline-ystävällisiä.
+    details: Tokenit toimitetaan mukana staattisina JSON-tiedostoina, joten &grave;npm i&grave; ei koskaan turvaudu vain GitHub-lähteeseen. Julkaistavia, semveröityjä ja offline-ystävällisiä.
 ---

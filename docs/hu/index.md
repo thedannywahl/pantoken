@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Nincs upstream-függés
-    details: A tokenek vendorizálva, statikus JSON-ként szállnak, így a &grave;npm i pantoken&grave; soha nem támaszkodik kizárólag GitHub-forrásra. Publikálható, semver-szerinti, offline-barát.
+    details: A tokenek vendorizálva, statikus JSON-ként szállnak, így a &grave;npm i&grave; soha nem támaszkodik kizárólag GitHub-forrásra. Publikálható, semver-szerinti, offline-barát.
 ---

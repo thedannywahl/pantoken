@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: بدون اقتران بالأصل
-    details: التوكنات تُوزّع مضمّنة كـ JSON ثابت، لذلك &grave;npm i pantoken&grave; لا يعتمد على مصدر حصري على GitHub. قابلة للنشر، بمعاملات semver، وصديقة للبيئة دون إنترنت.
+    details: التوكنات تُوزّع مضمّنة كـ JSON ثابت، لذلك &grave;npm i&grave; لا يعتمد على مصدر حصري على GitHub. قابلة للنشر، بمعاملات semver، وصديقة للبيئة دون إنترنت.
 ---

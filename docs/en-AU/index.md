@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: No upstream coupling
-    details: The tokens ship vendored as static JSON, so &grave;npm i pantoken&grave; never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
+    details: The tokens ship vendored as static JSON, so &grave;npm i&grave; never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
 ---

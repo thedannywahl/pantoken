@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Ingen uppströmskoppling
-    details: Tokens levereras vendorerade som statisk JSON, så &grave;npm i pantoken&grave; behöver aldrig slå mot en GitHub‑endast källa. Publicerbara, semver-versionerade och offline‑vänliga.
+    details: Tokens levereras vendorerade som statisk JSON, så &grave;npm i&grave; behöver aldrig slå mot en GitHub‑endast källa. Publicerbara, semver-versionerade och offline‑vänliga.
 ---

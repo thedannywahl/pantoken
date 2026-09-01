@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Engin upstream-tenging
-    details: Tákna eru sendir sem meðfylgjandi föst JSON, svo &grave;npm i pantoken&grave; þarf aldrei að ná í GitHub-eina uppsprettu. Birtingarhæfar, með semver og hentugar fyrir offline-notkun.
+    details: Tákna eru sendir sem meðfylgjandi föst JSON, svo &grave;npm i&grave; þarf aldrei að ná í GitHub-eina uppsprettu. Birtingarhæfar, með semver og hentugar fyrir offline-notkun.
 ---

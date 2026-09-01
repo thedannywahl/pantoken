@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Ingen oppstraumskopling
-    details: Tokena blir leverte som vendoriserte statiske JSON-filer, så &grave;npm i pantoken&grave; hentar aldri frå ein GitHub-only kjelde. Publiserbar, semver-merka, offline-vennleg.
+    details: Tokena blir leverte som vendoriserte statiske JSON-filer, så &grave;npm i&grave; hentar aldri frå ein GitHub-only kjelde. Publiserbar, semver-merka, offline-vennleg.
 ---

@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: 无上游耦合
-    details: 这些令牌作为静态 JSON 随包发布，因此 &grave;npm i pantoken&grave; 永远不会依赖仅限 GitHub 的源。可发布、遵循语义化版本控制、离线友好。
+    details: 这些令牌作为静态 JSON 随包发布，因此 &grave;npm i&grave; 永远不会依赖仅限 GitHub 的源。可发布、遵循语义化版本控制、离线友好。
 ---

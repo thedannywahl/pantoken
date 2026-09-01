@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Kāore he here ki te puna matua
-    details: Ka tukuna ngā tohu hei JSON vendored tūwhera, nō reira kāore &grave;npm i pantoken&grave; e rapu i tētahi puna e wātea ana anake i GitHub. Ka taea te whakaputa, kua noho semver, ā, he pai mō te whakamahi tuimotu (offline).
+    details: Ka tukuna ngā tohu hei JSON vendored tūwhera, nō reira kāore &grave;npm i&grave; e rapu i tētahi puna e wātea ana anake i GitHub. Ka taea te whakaputa, kua noho semver, ā, he pai mō te whakamahi tuimotu (offline).
 ---

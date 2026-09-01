@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Tanpa ketergantungan hulu
-    details: Token dikirimkan sebagai JSON statis yang disertakan, sehingga &grave;npm i pantoken&grave; tidak pernah mengambil dari sumber yang hanya ada di GitHub. Dapat diterbitkan, diberi versi semver, dan ramah-luring.
+    details: Token dikirimkan sebagai JSON statis yang disertakan, sehingga &grave;npm i&grave; tidak pernah mengambil dari sumber yang hanya ada di GitHub. Dapat diterbitkan, diberi versi semver, dan ramah-luring.
 ---

@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Không phụ thuộc upstream
-    details: Các token được đóng gói kèm dưới dạng JSON tĩnh, nên &grave;npm i pantoken&grave; không bao giờ truy vấn nguồn chỉ có trên GitHub. Có thể phát hành, dùng semver, và thân thiện với chế độ offline.
+    details: Các token được đóng gói kèm dưới dạng JSON tĩnh, nên &grave;npm i&grave; không bao giờ truy vấn nguồn chỉ có trên GitHub. Có thể phát hành, dùng semver, và thân thiện với chế độ offline.
 ---

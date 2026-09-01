@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: 上流への結合なし
-    details: トークンはベンダリングされた静的 JSON として配布されるため、&grave;npm i pantoken&grave; が GitHub 専用のソースに依存することはありません。公開可能で semver 管理され、オフラインでも利用できます。
+    details: トークンはベンダリングされた静的 JSON として配布されるため、&grave;npm i&grave; が GitHub 専用のソースに依存することはありません。公開可能で semver 管理され、オフラインでも利用できます。
 ---

@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Nessun accoppiamento a monte
-    details: I token vengono forniti vendorizzati come JSON statico, quindi &grave;npm i pantoken&grave; non si appoggia mai a una sorgente disponibile solo su GitHub. Pubblicabile, versionato semver e compatibile offline.
+    details: I token vengono forniti vendorizzati come JSON statico, quindi &grave;npm i&grave; non si appoggia mai a una sorgente disponibile solo su GitHub. Pubblicabile, versionato semver e compatibile offline.
 ---

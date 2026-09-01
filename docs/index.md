@@ -2,7 +2,7 @@
 layout: home
 hero:
   name: pantoken
-  text: Instructure design tokens, everywhere
+  text: InstUI, everywhere
   tagline: One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads.
   actions:
     - theme: brand
@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: No upstream coupling
-    details: The tokens ship vendored as static JSON, so &grave;npm i pantoken&grave; never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
+    details: The tokens ship vendored as static JSON, so &grave;npm i&grave; never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly.
 ---

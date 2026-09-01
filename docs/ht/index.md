@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Pa gen kouplaj ak sous anlè
-    details: Tòken yo anbake kòm JSON estatik, kidonk &grave;npm i pantoken&grave; pa janm depann sou yon sous ki sèlman sou GitHub. Piblikab, semver, epi zanmitay offline.
+    details: Tòken yo anbake kòm JSON estatik, kidonk &grave;npm i&grave; pa janm depann sou yon sous ki sèlman sou GitHub. Piblikab, semver, epi zanmitay offline.
 ---

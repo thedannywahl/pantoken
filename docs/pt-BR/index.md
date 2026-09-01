@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Sem acoplamento upstream
-    details: Os tokens são distribuídos como JSON estático vendorizado, então &grave;npm i pantoken&grave; nunca busca uma fonte exclusiva no GitHub. Publicável, versionado com semver e compatível com uso offline.
+    details: Os tokens são distribuídos como JSON estático vendorizado, então &grave;npm i&grave; nunca busca uma fonte exclusiva no GitHub. Publicável, versionado com semver e compatível com uso offline.
 ---

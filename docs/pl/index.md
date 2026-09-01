@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Brak powiązania z upstream
-    details: Tokeny są dostarczane vendorowane jako statyczne JSON, więc &grave;npm i pantoken&grave; nigdy nie odwołuje się do źródła dostępnego wyłącznie na GitHubie. Można je publikować, są versionowane semver i przyjazne do użytku offline.
+    details: Tokeny są dostarczane vendorowane jako statyczne JSON, więc &grave;npm i&grave; nigdy nie odwołuje się do źródła dostępnego wyłącznie na GitHubie. Można je publikować, są versionowane semver i przyjazne do użytku offline.
 ---

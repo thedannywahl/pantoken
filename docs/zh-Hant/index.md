@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: 不與上游耦合
-    details: 代幣以內嵌（vendored）靜態 JSON 發佈，因此 &grave;npm i pantoken&grave; 不會去取用僅在 GitHub 的來源。可發佈、使用 semver，且支援離線。
+    details: 代幣以內嵌（vendored）靜態 JSON 發佈，因此 &grave;npm i&grave; 不會去取用僅在 GitHub 的來源。可發佈、使用 semver，且支援離線。
 ---

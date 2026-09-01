@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Ingen opstrømskobling
-    details: Tokens leveres som vendored statisk JSON, så &grave;npm i pantoken&grave; aldrig henter fra en GitHub-only-kilde. Publicerbar, semver'd, offline-venlig.
+    details: Tokens leveres som vendored statisk JSON, så &grave;npm i&grave; aldrig henter fra en GitHub-only-kilde. Publicerbar, semver'd, offline-venlig.
 ---

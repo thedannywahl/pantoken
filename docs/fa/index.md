@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: بدون وابستگی به upstream
-    details: توکن‌ها به‌صورت vendored و به شکل JSON ایستا منتشر می‌شوند، بنابراین &grave;npm i pantoken&grave; هرگز به یک منبع مختص GitHub وابسته نمی‌شود. قابل انتشار، نسخه‌بندی‌شده (semver) و مناسب برای حالت آفلاین.
+    details: توکن‌ها به‌صورت vendored و به شکل JSON ایستا منتشر می‌شوند، بنابراین &grave;npm i&grave; هرگز به یک منبع مختص GitHub وابسته نمی‌شود. قابل انتشار، نسخه‌بندی‌شده (semver) و مناسب برای حالت آفلاین.
 ---

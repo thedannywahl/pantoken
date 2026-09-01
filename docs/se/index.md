@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Ii beassadálki giegđen
-    details: Tokenat leat vendorejuhkát stahtalaš JSON:s, doul &grave;npm i pantoken&grave; ii olmmoš gávdno GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre.
+    details: Tokenat leat vendorejuhkát stahtalaš JSON:s, doul &grave;npm i&grave; ii olmmoš gávdno GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre.
 ---

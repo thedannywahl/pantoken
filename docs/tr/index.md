@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: Yukarı akım bağımlılığı yok
-    details: Token'lar statik JSON olarak paketlenir, bu yüzden &grave;npm i pantoken&grave; asla yalnızca GitHub'a özel bir kaynağa başvurmaz. Yayınlanabilir, semver'li ve çevrimdışı dostu.
+    details: Token'lar statik JSON olarak paketlenir, bu yüzden &grave;npm i&grave; asla yalnızca GitHub'a özel bir kaynağa başvurmaz. Yayınlanabilir, semver'li ve çevrimdışı dostu.
 ---

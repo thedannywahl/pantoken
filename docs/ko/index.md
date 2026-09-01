@@ -37,5 +37,5 @@ features:
       light: /unlink-light.svg
       dark: /unlink-dark.svg
     title: 업스트림 결합 없음
-    details: 토큰은 벤더된 정적 JSON으로 배포되므로 &grave;npm i pantoken&grave;은 GitHub 전용 소스를 참조하지 않습니다. 배포 가능하고 semver 규격을 따르며 오프라인 친화적입니다.
+    details: 토큰은 벤더된 정적 JSON으로 배포되므로 &grave;npm i&grave;은 GitHub 전용 소스를 참조하지 않습니다. 배포 가능하고 semver 규격을 따르며 오프라인 친화적입니다.
 ---
