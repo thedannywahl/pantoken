@@ -1,0 +1,19 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1EY8GAHWKE69Y54DJJJB4B2",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "docs/hu/demos/breadcrumb.html",
+    "docs/hu/demos/form-field-group.html",
+    "docs/hu/demos/prose.html",
+    "docs/i18n-cache/hu.demos.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "prompt": ""
+    }
+  ]
+}
