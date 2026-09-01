@@ -1,0 +1,6 @@
+mdlinter should ignore .claude folder:
+```
+Summary: 2 issues in 1 file
+.claude/plans/localization-engine.md:175 error MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
+.claude/plans/localization-engine.md:360 error MD040/fenced-code-language Fenced code blocks should have a language specified [Context: "```"]
+```
