@@ -1,0 +1,16 @@
+we are going to significantly rework pendo by expanding it. right now we have styles that are selected off of a base class like "instui-alert" "instui-alert-info" "instui-popover".
+
+We are going to expand this to include:
+"instui-banner(-violet)" and "instui-banner-sea"
+
+banners have definitions for primary buttons that should be carried over, the banner definitions for non-primary, non-close buttons should carry over to secondary and tertiary pendo buttons.
+
+instead of calling -size-sm or -size-md we're going to use media queries on the container itself, so something in the tray will be small, something on content will be medium, something on mobile will be small.
+
+---
+
+Read-only discovery for a planning task in /Users/dwahl/Scripts/pantoken. Follow repo instructions: first run `entire status`, then make the mandatory first locating action `entire graph search --repo . --profile full --query "expand Pendo guide styles with instui banner variants, button mappings, and responsive container sizing"`; inspect the top hit before any grep/find. Use Entire checkpoint history for key files where available and clearly distinguish recorded intent from code inference. Thoroughness: medium. Map the current renderers/pendo architecture: component source files, selectors for instui-alert / instui-alert-info / instui-popover, how CSS is assembled/transformed, current primary/secondary/tertiary/close button definitions, layer ordering, generated/static outputs, tests/fixtures/snapshots/docs, and exact validation commands/scripts. Identify concrete symbols and full paths likely modified, constraints, and ambiguities. Do not edit files. Return concise findings suitable for an implementation plan.aints, expected tests, files, and unresolved product decisions. Do not edit files. Return concise findings suitable for an implementation plan.
+
+---
+
+Start implementation
