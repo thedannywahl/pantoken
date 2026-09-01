@@ -1,0 +1,18 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1EG94DFCXGCXC33NMPK9VEP",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "docs/hu/demos/drawer-layout.html",
+    "docs/hu/demos/text.html",
+    "docs/hu/demos/toggle-details.html"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "prompt": ""
+    }
+  ]
+}
