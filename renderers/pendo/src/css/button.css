@@ -14,7 +14,7 @@
  * @related pendo-chrome — The dismiss button that shares the guide container.
  */
 
-[class*="instui"] {
+:is(:scope, [class*="instui"]) {
   ._pendo-button {
     height: var(--instui-component-base-button-small-height);
     min-height: var(--instui-component-base-button-small-height);
@@ -40,20 +40,18 @@
   /* Primary/Custom button variant */
   ._pendo-button-primaryButton,
   ._pendo-button-custom {
-    background: var(--instui-component-base-button-primary-background);
-    border-color: var(--instui-component-base-button-primary-border-color);
-    color: var(--instui-component-base-button-primary-color);
+    background: var(--instui-color-background-interactive-action-primary-base);
+    border-color: var(--instui-color-stroke-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
 
     &:hover {
-      background: var(--instui-component-base-button-primary-hover-background);
-      border-color: var(--instui-component-base-button-primary-hover-border-color);
-      color: var(--instui-component-base-button-primary-hover-text-color);
+      background: var(--instui-color-background-interactive-action-primary-hover);
+      border-color: var(--instui-color-stroke-interactive-action-primary-hover);
     }
 
     &:active {
-      background: var(--instui-component-base-button-primary-active-background);
-      border-color: var(--instui-component-base-button-primary-active-border-color);
-      color: var(--instui-component-base-button-primary-active-text-color);
+      background: var(--instui-color-background-interactive-action-primary-active);
+      border-color: var(--instui-color-stroke-interactive-action-primary-active);
     }
 
     &:disabled {
@@ -66,20 +64,18 @@
 
   /* Secondary button variant */
   ._pendo-button-secondaryButton {
-    background: var(--instui-component-base-button-secondary-background);
-    border-color: var(--instui-component-base-button-secondary-border-color);
-    color: var(--instui-component-base-button-secondary-color);
+    background: var(--instui-color-background-interactive-action-secondary-base);
+    border-color: var(--instui-color-stroke-interactive-action-secondary-base);
+    color: var(--instui-color-text-interactive-action-secondary-base);
 
     &:hover {
-      background: var(--instui-component-base-button-secondary-hover-background);
-      border-color: var(--instui-component-base-button-secondary-hover-border-color);
-      color: var(--instui-component-base-button-secondary-hover-text-color);
+      background: var(--instui-color-background-interactive-action-secondary-hover);
+      border-color: var(--instui-color-stroke-interactive-action-secondary-hover);
     }
 
     &:active {
-      background: var(--instui-component-base-button-secondary-active-background);
-      border-color: var(--instui-component-base-button-secondary-active-border-color);
-      color: var(--instui-component-base-button-secondary-active-text-color);
+      background: var(--instui-color-background-interactive-action-secondary-active);
+      border-color: var(--instui-color-stroke-interactive-action-secondary-active);
     }
 
     &:disabled {
@@ -127,8 +123,7 @@
 }
 
 /* Banner buttons use the on-colour treatment from the InstUI banner component. */
-[class~="instui-banner"],
-[class~="instui-banner-sea"] {
+:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
   :is(._pendo-button-primaryButton, ._pendo-button-custom) {
     background: var(--instui-color-background-interactive-action-primary-on-color-base);
     border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);
@@ -156,9 +151,10 @@
 
   :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton) {
     background-color: transparent;
+    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-base);
     color: light-dark(
-      var(--instui-color-text-interactive-primary-on-color-base),
-      var(--instui-color-text-interactive-action-primary-on-color-base)
+      var(--instui-component-base-button-secondary-active-text-color),
+      var(--instui-component-base-button-secondary-on-color-active-text-color)
     );
 
     &:focus {

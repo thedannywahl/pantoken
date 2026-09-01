@@ -39,24 +39,24 @@ const FOCUSABLES =
   "select._pendo-multi-choice-poll-select, ._pendo-open-text-poll-input, input.pendo-radio";
 
 /** Build the `instui.elevation` layer: the named `--instui-elevation-*` box-shadow custom props. */
-function elevationLayer(): string {
-  return `@layer instui.elevation {\n${elevationCss({ selector: GUIDE_SELECTOR })}}`;
+function elevationLayer(selector: string): string {
+  return `@layer instui.elevation {\n${elevationCss({ selector })}}`;
 }
 
 /** Build the `instui.focusOutline` layer: the `--instui-focus-outline-*` token defs + the ring rules
  *  (from `@pantoken/components`), scoped to Pendo's focusables. */
-function focusLayer(): string {
+function focusLayer(selector: string): string {
   const decls = focusOutlineDeclarations()
     .map(([n, v]) => `  ${n}: ${v};`)
     .join("\n");
-  return `@layer instui.focusOutline {\n${GUIDE_SELECTOR} {\n${decls}\n}\n\n${focusOutlineRules(FOCUSABLES)}\n}`;
+  return `@layer instui.focusOutline {\n${selector} {\n${decls}\n}\n\n${focusOutlineRules(FOCUSABLES)}\n}`;
 }
 
 /** Options for {@link buildPendoCss}. */
 export interface BuildPendoCssOptions {
   /** Theme to source the `--instui-*` layer from (default `"rebrand"`). */
   theme?: Theme;
-  /** The `@scope` root selector (default `._pendo-step-container`). */
+  /** The `@scope` root selector (default `[class*="instui"]._pendo-step-container`). */
   scopeSelector?: string;
   /** Wrap component rules in `@scope` for DOM containment (default `true`). */
   scope?: boolean;
@@ -102,7 +102,7 @@ export interface BuildPendoCssOptions {
 export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
   const {
     theme = "rebrand",
-    scopeSelector = "._pendo-step-container",
+    scopeSelector = '[class*="instui"]._pendo-step-container',
     scope = true,
     important = true,
     prune = true,
@@ -110,11 +110,14 @@ export function buildPendoCss(options: BuildPendoCssOptions = {}): string {
     mangle = false,
   } = options;
 
-  const tokenCss = toCss(byTheme(theme), { scope: GUIDE_SELECTOR });
+  const rootSelector = scope ? ":scope" : GUIDE_SELECTOR;
+  const tokenCss = toCss(byTheme(theme), { scope: rootSelector });
   const order = `@layer ${LAYER_ORDER.map((l) => `instui.${l}`).join(", ")};`;
-  const tokenLayer = `@layer instui.tokens {\n${tokenCss}\n\n${PENDO_VARS_CSS}\n}`;
+  const varsCss = scope ? PENDO_VARS_CSS.replaceAll(GUIDE_SELECTOR, ":scope") : PENDO_VARS_CSS;
+  const tokenLayer = `@layer instui.tokens {\n${tokenCss}\n\n${varsCss}\n}`;
   const components = COMPONENTS.map((c) => `@layer instui.${c.layer} {\n${c.css}\n}`).join("\n\n");
-  const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer()}\n\n${components}\n\n${focusLayer()}`;
+  const scopedComponents = scope ? components : components.replaceAll(":scope", ":not(*)");
+  const full = `${order}\n\n${tokenLayer}\n\n${elevationLayer(rootSelector)}\n\n${scopedComponents}\n\n${focusLayer(rootSelector)}`;
 
   // Plugin order: !important → prune → flatten → mangle → scope (scope must be last).
   const plugins = [];

@@ -87,6 +87,22 @@ const orchestrator = workspaceOrchestrator({
       ],
     },
     {
+      // Pendo's source CSS is embedded before the demo asset imports `buildPendoCss`; keeping these
+      // as separate nodes avoids nested `vp` calls and refreshes the runner iframe on source edits.
+      name: "@pantoken/pendo#docs",
+      dir: at("renderers/pendo"),
+      watchPaths: [at("renderers/pendo/src")],
+      build: ["node", "scripts/embed.ts"],
+      dependents: ["@pantoken/docs#pendo-asset"],
+    },
+    {
+      name: "@pantoken/docs#pendo-asset",
+      dir: at("docs"),
+      watchPaths: [],
+      build: ["node", "scripts/stage-pendo-asset.ts"],
+      dependents: [],
+    },
+    {
       // Rewrite the docs-only multi-theme component sheet the previews/demos actually load
       // (theme/generated/components.css + public/demos-assets/components.css). It reads the components
       // SOURCE barrel (see scope-components.ts), so it reflects the recompiled module. The theme copy is
@@ -660,6 +676,7 @@ export default defineConfig({
         `${base}demos-assets/card.css`,
         `${base}demos-assets/custom-components.css`,
         `${base}demos-assets/logos.css`,
+        `${base}demos-assets/pendo.css`,
       ];
       demoMarkdownIt(md, {
         base,

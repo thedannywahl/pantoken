@@ -5,7 +5,8 @@
  * Instructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive
  * violet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The
  * component CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the
- * assembly.
+ * assembly. A single theme class containing `instui` activates the scoped stylesheet; compact
+ * suffixes on that class select banner colors and glyphs.
  *
  * {@link buildPendoCss} composes the stylesheet; {@link pendoCss} is the ready-made `rebrand` build
  * (scoped, `!important`). A static file is published at `@pantoken/pendo/global.css`.
@@ -15,6 +16,8 @@
  * import { pendoCss } from "@pantoken/pendo";
  * // or a variant: buildPendoCss({ theme: "canvas", scope: false })
  * ```
+ *
+ * @demo self:pendo
  *
  * @module
  * @beta

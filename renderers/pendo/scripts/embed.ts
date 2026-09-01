@@ -5,10 +5,26 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
+import { getLogoDataUri, type Product } from "@pantoken/plugin-logos";
 
 const root = resolve(import.meta.dirname, "..");
 const dir = join(root, "src/css");
 const read = (name: string): string => readFileSync(join(dir, `${name}.css`), "utf8");
+const productIcons = [
+  "canvas",
+  "parchment",
+  "mastery",
+  "learnplatform",
+] as const satisfies readonly Product[];
+
+const productLogoCss = `[class*="instui"] {\n${productIcons
+  .map((product) => {
+    const token = `--instui-logo-${product}-icon-reversed`;
+    const uri = getLogoDataUri(product, "icon", "reversed");
+    if (!uri) throw new Error(`Missing generated logo: ${token}`);
+    return `  ${token}: url("${uri}");`;
+  })
+  .join("\n")}\n}`;
 
 // key → camelCase export name (must match the imports in layers.ts).
 const files = ["button", "card", "chrome", "container", "inputs", "text", "vars"];
@@ -21,6 +37,7 @@ const lines = [
   "// Source: @instructure/pendo-global-css (src/css, MIT).",
   "",
   ...files.map((f) => `export const ${toName(f)} = ${JSON.stringify(read(f))};`),
+  `export const productLogoCss = ${JSON.stringify(productLogoCss)};`,
   "",
 ];
 

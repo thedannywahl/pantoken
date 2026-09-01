@@ -1,8 +1,20 @@
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { expect, test } from "vite-plus/test";
 import { danglingReferences } from "@pantoken/utils";
 import { buttonCss, chromeCss, containerCss, textCss } from "../generated/embedded.ts";
 import { buildPendoCss } from "../src/build.ts";
-import { COMPONENTS, LAYER_ORDER } from "../src/layers.ts";
+import { COMPONENTS, LAYER_ORDER, PENDO_VARS_CSS } from "../src/layers.ts";
+
+test("generated global.css starts with the exact package version", () => {
+  const root = resolve(import.meta.dirname, "..");
+  const packageJson = JSON.parse(readFileSync(resolve(root, "package.json"), "utf8")) as {
+    name: string;
+    version: string;
+  };
+  const css = readFileSync(resolve(root, "generated/global.css"), "utf8");
+  expect(css.startsWith(`/*! ${packageJson.name}@${packageJson.version} */\n`)).toBe(true);
+});
 
 test("composes token layer, layer order, and all component layers", () => {
   const css = buildPendoCss();
@@ -29,13 +41,26 @@ test("the focus ring is delegated to the focus-outline plugin in a last-declared
   expect(css).not.toContain("--manual-light-focus-outline");
 });
 
+test("close and standard button interactions use the canonical component tokens", () => {
+  expect(chromeCss).toContain("--instui-color-background-interactive-action-tertiary-hover");
+  expect(chromeCss).toContain("--instui-color-background-interactive-action-tertiary-active");
+  expect(chromeCss).not.toContain("primary-ghost-hover-background");
+  expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-hover");
+  expect(buttonCss).toContain("--instui-color-stroke-interactive-action-primary-active");
+  expect(buttonCss).toContain("--instui-color-background-interactive-action-secondary-hover");
+  expect(buttonCss).toContain("--instui-color-stroke-interactive-action-secondary-active");
+});
+
 test("scope + important are on by default and toggle off", () => {
   const on = buildPendoCss();
-  expect(on).toContain("@scope (._pendo-step-container) {");
+  expect(on).toContain('@scope ([class*="instui"]._pendo-step-container) {');
+  expect(on).toContain(":scope");
   expect(on).toMatch(/!important\s*[;}]/); // declaration-level !important
 
   const off = buildPendoCss({ scope: false, important: false });
   expect(off).not.toContain("@scope");
+  expect(off).not.toContain(":is(:scope");
+  expect(off).toContain(':is(:not(*), [class*="instui"])');
   // No declaration carries !important (a comment in popover.css mentions the word, so match a decl).
   expect(off).not.toMatch(/!important\s*[;}]/);
 });
@@ -72,13 +97,33 @@ test("mangle option renames --instui-* custom properties to short identifiers", 
   expect(css).not.toContain("--instui-primitive-");
 });
 
-test("banner classes select violet and sea container treatments", () => {
-  expect(containerCss).toContain('[class~="instui-banner"]');
-  expect(containerCss).toContain('[class~="instui-banner-sea"]');
-  expect(containerCss).not.toContain("instui-banner-violet");
+test("compact theme class suffixes select banner color and glyph treatments", () => {
+  expect(containerCss).toContain('[class*="instui"])[data-layout="lightboxBlank"]');
+  expect(containerCss).toContain(':not([class*="instui-alert"])');
+  expect(containerCss).toContain('[class*="-sea"]');
+  expect(containerCss).toContain('[class*="-megaphone"]');
+  expect(containerCss).toContain('[class*="-poll"]');
+  expect(containerCss).toContain('[class*="-canvas"]');
+  expect(containerCss).toContain('[class*="-parchment"]');
+  expect(containerCss).toContain('[class*="-mastery"]');
+  expect(containerCss).toContain('[class*="-learnplatform"]');
   expect(containerCss).toContain("--instui-component-banner-violet-background");
   expect(containerCss).toContain("--instui-component-banner-sea-background");
+  expect(containerCss).toContain("--instui-icon-lightbulb");
   expect(containerCss).toContain("--instui-icon-megaphone");
+  expect(containerCss).toContain("--instui-icon-message-circle-question-mark");
+  expect(containerCss).toContain("--instui-logo-canvas-icon-reversed");
+  expect(containerCss).toContain("--instui-logo-parchment-icon-reversed");
+  expect(containerCss).toContain("--instui-logo-mastery-icon-reversed");
+  expect(containerCss).toContain("--instui-logo-learnplatform-icon-reversed");
+  expect(containerCss).toContain('&[class*="-danger"]');
+  expect(containerCss).toContain('&[class*="-success"]');
+  expect(containerCss).toContain('&[class*="-warning"]');
+  expect(PENDO_VARS_CSS).toContain("--instui-logo-canvas-icon-reversed");
+  expect(PENDO_VARS_CSS).toContain("--instui-logo-parchment-icon-reversed");
+  expect(PENDO_VARS_CSS).toContain("--instui-logo-mastery-icon-reversed");
+  expect(PENDO_VARS_CSS).toContain("--instui-logo-learnplatform-icon-reversed");
+  expect(PENDO_VARS_CSS).not.toContain("horizontal");
 });
 
 test("banner sizing follows the guide container at the InstUI sm breakpoint", () => {
@@ -91,11 +136,34 @@ test("banner sizing follows the guide container at the InstUI sm breakpoint", ()
   expect(textCss).toContain("--instui-component-heading-title-card-mini-font-size");
 });
 
+test("layout titles and subtitles follow the banner heading scale", () => {
+  expect(textCss).toContain(':is(:scope, [class*="instui-alert"])[data-layout="lightboxBlank"]');
+  expect(textCss).toContain("--instui-component-heading-title-card-regular-font-size");
+  expect(textCss).toContain('[data-layout="tooltipBlank"]');
+  expect(textCss).toContain("--instui-component-heading-title-card-mini-font-size");
+  expect(textCss).toContain("--instui-font-size-text-sm");
+});
+
+test("popover cards retain their border and small padding on every edge", () => {
+  expect(containerCss).toContain(
+    "border: var(--instui-border-width-sm) solid var(--instui-component-popover-border-color);",
+  );
+  expect(containerCss).toContain(
+    "padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);",
+  );
+});
+
 test("banner buttons map Pendo variants without restyling the close button", () => {
   expect(buttonCss).toContain("._pendo-button-primaryButton, ._pendo-button-custom");
   expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-on-color-base");
   expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
   expect(buttonCss).toContain("background-color: transparent");
+  expect(buttonCss).toContain(
+    "border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);",
+  );
+  expect(buttonCss).toContain(
+    "color: var(--instui-color-stroke-interactive-action-primary-on-color-base);",
+  );
   expect(buttonCss).toContain('[aria-disabled="true"]');
   expect(buttonCss).not.toContain("._pendo-close-guide");
   expect(chromeCss).toContain("--instui-component-banner-close-button-margin-top");

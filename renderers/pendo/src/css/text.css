@@ -58,16 +58,33 @@ h3._pendo-simple-text {
   line-height: var(--instui-component-heading-title-card-large-line-height);
 }
 
-/* Tooltip (popover) heading overrides */
-[data-layout="tooltipBlank"] {
+/* Alert titles match relaxed banners; subtitles match compact banner titles. */
+:is(:scope, [class*="instui-alert"])[data-layout="lightboxBlank"] {
   h2._pendo-simple-text {
     font-size: var(--instui-component-heading-title-card-regular-font-size);
-    line-height: var(--instui-component-heading-title-card-mini-line-height);
+    font-weight: var(--instui-component-heading-title-card-regular-font-weight);
+    line-height: var(--instui-component-heading-title-card-regular-line-height);
   }
 
   h3._pendo-simple-text {
     font-size: var(--instui-component-heading-title-card-mini-font-size);
-    line-height: var(--instui-component-heading-title-card-regular-line-height);
+    font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+    line-height: var(--instui-component-heading-title-card-mini-line-height);
+  }
+}
+
+/* Popover titles match compact banners; subtitles are one font token smaller. */
+[data-layout="tooltipBlank"] {
+  h2._pendo-simple-text {
+    font-size: var(--instui-component-heading-title-card-mini-font-size);
+    font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+    line-height: var(--instui-component-heading-title-card-mini-line-height);
+  }
+
+  h3._pendo-simple-text {
+    font-size: var(--instui-font-size-text-sm);
+    font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+    line-height: var(--instui-component-heading-title-card-mini-line-height);
   }
 }
 
@@ -151,32 +168,44 @@ h3._pendo-simple-text {
 }
 
 /* Banner typography follows the banner container rather than an authored size class. */
-[class~="instui-banner"],
-[class~="instui-banner-sea"] {
+:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
   :is(._pendo-simple-text, [class*="_pendo-text-"]) {
     font-size: var(--instui-component-text-content-font-size);
     font-weight: var(--instui-component-text-content-font-weight);
     line-height: var(--instui-component-text-content-line-height);
   }
 
-  :is(h2._pendo-simple-text, h2._pendo-text-title, h3._pendo-simple-text) {
+  :is(h2._pendo-simple-text, h2._pendo-text-title) {
     font-size: var(--instui-component-heading-title-card-regular-font-size);
     font-weight: var(--instui-component-heading-title-card-regular-font-weight);
+    line-height: var(--instui-component-heading-title-card-regular-line-height);
+  }
+
+  h3._pendo-simple-text {
+    font-size: var(--instui-component-heading-title-card-mini-font-size);
+    font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+    line-height: var(--instui-component-heading-title-card-mini-line-height);
   }
 }
 
 @container pantoken-pendo-guide (max-width: 30em) {
-  [class~="instui-banner"],
-  [class~="instui-banner-sea"] {
+  :is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
     :is(._pendo-simple-text, [class*="_pendo-text-"]) {
       font-size: var(--instui-component-text-content-small-font-size);
       font-weight: var(--instui-component-text-content-small-font-weight);
       line-height: var(--instui-component-text-content-small-line-height);
     }
 
-    :is(h2._pendo-simple-text, h2._pendo-text-title, h3._pendo-simple-text) {
+    :is(h2._pendo-simple-text, h2._pendo-text-title) {
       font-size: var(--instui-component-heading-title-card-mini-font-size);
       font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+      line-height: var(--instui-component-heading-title-card-mini-line-height);
+    }
+
+    h3._pendo-simple-text {
+      font-size: var(--instui-font-size-text-sm);
+      font-weight: var(--instui-component-heading-title-card-mini-font-weight);
+      line-height: var(--instui-component-heading-title-card-mini-line-height);
     }
   }
 }

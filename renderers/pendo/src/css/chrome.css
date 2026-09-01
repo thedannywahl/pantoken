@@ -80,11 +80,11 @@ hr {
   color: var(--instui-component-text-base-color);
 
   &:hover {
-    background-color: var(--instui-component-base-button-primary-ghost-hover-background);
+    background-color: var(--instui-color-background-interactive-action-tertiary-hover);
   }
 
   &:active {
-    background-color: var(--instui-component-base-button-primary-ghost-active-background);
+    background-color: var(--instui-color-background-interactive-action-tertiary-active);
   }
 }
 
@@ -93,7 +93,8 @@ hr {
   inset-inline-end: var(--instui-component-alert-close-button-margin-right);
 }
 
-:is([class~="instui-banner"], [class~="instui-banner-sea"]) ._pendo-close-guide {
+:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"])
+  ._pendo-close-guide {
   inset-block-start: var(--instui-component-banner-close-button-margin-top);
   inset-inline-end: var(--instui-component-banner-close-button-margin-right);
 }

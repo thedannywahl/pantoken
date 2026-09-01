@@ -30,7 +30,7 @@
     "embed": "node scripts/embed.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp run embed && vp run generate && vp pack --watch",
-    "test": "vp run embed && vp test",
+    "test": "vp run embed && vp run generate && vp test",
     "check": "vp check"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
     "postcss": "catalog:"
   },
   "devDependencies": {
+    "@pantoken/plugin-logos": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",

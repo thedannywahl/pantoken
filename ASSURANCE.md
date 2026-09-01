@@ -333,8 +333,8 @@ The following risks remain or are deliberately outside the security claim:
    is not a production server and does not provide rate limiting or authentication.
 6. **Consumer security controls.** Authentication, authorization, Content Security Policy, safe
    handling of user content, and output encoding remain the consuming application's responsibility.
-   Application-controlled Pendo guide classes and layout attributes select presentation rules only;
-   they do not validate or sanitize Pendo-injected guide HTML.
+   Application-controlled Pendo guide classes, compact color/glyph suffixes, and layout attributes
+   select presentation rules only; they do not validate or sanitize Pendo-injected guide HTML.
 7. **Static-analysis availability.** CodeQL runs in CI. The Snyk Code pre-push gate requires local
    authentication and warns when it cannot run, so it is supplementary rather than the sole control.
 8. **Generated GitHub source archives.** GitHub can verify an immutable release tag and attached

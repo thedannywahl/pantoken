@@ -46,12 +46,30 @@ pantoken generate pendo --out ./pendo --theme canvas --no-scope --no-important
 
 Writes `global.css`.
 
+The first line is a minifier-preserved package coordinate such as
+`/*! @pantoken/pendo@0.3.13 */`, so deployed styles can be traced to their exact release.
+
 ## Banner guides
 
-Add `instui-banner` to the Pendo guide container for the violet banner treatment, or
-`instui-banner-sea` for the sea treatment. Banner spacing and heading typography respond to the
-guide container's inline size: widths at or below the InstUI `sm` breakpoint (`30em`) use compact
-values, while wider content placements use relaxed values. No authored size class is required.
+Pendo themes accept one additional class. Any class containing `instui` activates this stylesheet
+without styling the surrounding application. For a `lightboxBlank` guide, plain `instui` selects a
+violet banner with a lightbulb glyph. Add compact suffixes to the same class to change its treatment:
+
+| Suffix           | Treatment                      |
+| ---------------- | ------------------------------ |
+| `-sea`           | Sea background and icon swatch |
+| `-megaphone`     | Megaphone glyph                |
+| `-poll`          | Question-message glyph         |
+| `-canvas`        | Reversed Canvas icon           |
+| `-parchment`     | Reversed Parchment icon        |
+| `-mastery`       | Reversed Mastery icon          |
+| `-learnplatform` | Reversed LearnPlatform icon    |
+
+Suffixes compose inside that one class. For example, `instui-sea-poll` is a sea banner with the poll
+glyph. Use `instui-alert-info` (or `-danger`, `-success`, `-warning`) for an alert, and
+`instui-popover` for a popover. Banner spacing and heading typography respond to the guide
+container's inline size: widths at or below the InstUI `sm` breakpoint (`30em`) use compact values,
+while wider content placements use relaxed values. No authored size class is required.
 
 Inside a banner, Pendo primary and custom buttons use the filled primary-on-colour treatment.
 Secondary and tertiary buttons use the transparent resting treatment and filled interaction states;
@@ -63,7 +81,7 @@ the guide close button keeps its standard appearance and receives banner-specifi
 - **Component layers** — the ported `._pendo-*` rules, assembled in a fixed `@layer` cascade order. Layered `!important` is what keeps guide styles above Pendo's own unlayered `!important`.
 - **Package-local transforms** (`src/plugins/`, PostCSS, scoped to this package — Pendo deployment behavior, not general pantoken plugins):
   - `add-important` — adds `!important` to component declarations.
-  - `add-scope` — wraps everything in `@scope (._pendo-step-container)` for DOM containment.
+  - `add-scope` — wraps everything in `@scope ([class*="instui"]._pendo-step-container)` for DOM containment.
 - **Token pruning** — [`@pantoken/plugin-prune-custom-props`](../../plugins/postcss/prune-custom-props), a shared plugin (any renderer built on the full token layer wants it). It tree-shakes the token set to only what the guide references, dropping ≈1,800 unused icon data-URIs — the full build is ~95 KB instead of ~1.7 MB.
 - **Focus ring** — `focusOutlineDeclarations()` + `focusOutlineRules()` from [`@pantoken/components`](../../formats/components) build the animated ring for the plain focusables (`._pendo-button`, `._pendo-close-guide`, `._pendo-text-link`) in a last-declared `instui.focusOutline` layer. (The ring used to be a standalone plugin; it now ships in `@pantoken/components`, which also bakes it into `base.css`.) Components with custom focus behavior (select/textarea background resets, the radio and number-scale sibling outlines, the card's `:focus-visible` reset) keep their own rules, referencing the `--instui-focus-outline-*` tokens.
 
