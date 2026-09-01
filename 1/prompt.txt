@@ -1,0 +1,13 @@
+rtl docs are not displaying properly you can use the browser at http://localhost:5173/ from `vpr docs:dev`  and switch to an rtl language. the page layout does not flip and text-direction does not seem to be proper.
+
+---
+
+how does an rtl terminal work? for the terminal/agent widget on the homepage?
+
+---
+
+in ar the command prompt is still positioned to the right and types fixed from the right
+
+---
+
+in rtl languages the space between the logo and the search is lost, and the space-end of the light/dark toggle is lost- the toggle touches its end border.
