@@ -1,0 +1,6 @@
+CI is failing on commitlint checks:
+#attachment:Pasted text #1
+
+---
+
+it's not on main, it's on the cli branch that we're on locally.
