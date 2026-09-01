@@ -21,7 +21,9 @@ const rootApiDir = join(docsRoot, "api");
 const rootDemoDir = join(docsRoot, "demos");
 const rootIndex = join(docsRoot, "index.md");
 
+/** A locale directory that hasn't been generated yet reports as zero pages, not a crash. */
 const listBasenames = (dir: string, extension: string): Set<string> => {
+  if (!existsSync(dir)) return new Set();
   const names = readdirSync(dir)
     .filter((name) => name.endsWith(extension))
     .map((name) => name.slice(0, -extension.length));
