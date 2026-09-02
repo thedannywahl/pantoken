@@ -1,0 +1,3 @@
+when you do your conventional commits, then you can push.
+
+do all of the phases sequentially as written when there's confusion about what to do next, continue through all phases until the work is complete.
