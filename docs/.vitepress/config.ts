@@ -10,7 +10,7 @@ import {
 } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
 import { partitionApiSidebar } from "./api-sidebar.js";
-import { LOCALES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
+import { LOCALE_THEMES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
 import { tokenValuePreview } from "./plugins/token-value-preview/index.js";
 
@@ -251,7 +251,10 @@ const orchestrator = workspaceOrchestrator({
   ],
 });
 
-const localeEntries = Object.entries(LOCALES) as [DocsLocale, (typeof LOCALES)[DocsLocale]][];
+const localeEntries = Object.entries(LOCALE_THEMES) as [
+  DocsLocale,
+  (typeof LOCALE_THEMES)[DocsLocale],
+][];
 
 const rootLocaleOnly = process.env.DOCS_ROOT_LOCALE_ONLY === "1";
 
@@ -427,8 +430,8 @@ function canonicalUrl(relativePath: string): string {
  * The Open Graph title: the wordmark plus the hero tagline on the home page (which has no title of
  * its own and is the most-shared URL), otherwise the page's own title, then the site title.
  */
-function homeOgTitle(locale: (typeof LOCALES)[DocsLocale]): string {
-  return locale === LOCALES.root
+function homeOgTitle(locale: (typeof LOCALE_THEMES)[DocsLocale]): string {
+  return locale === LOCALE_THEMES.root
     ? "pantoken — Instructure design tokens, everywhere"
     : `pantoken — ${locale.description}`;
 }
@@ -437,7 +440,7 @@ function ogTitle(
   frontmatter: { layout?: string; title?: string },
   pageTitle: string,
   siteTitle: string,
-  locale: (typeof LOCALES)[DocsLocale],
+  locale: (typeof LOCALE_THEMES)[DocsLocale],
 ): string {
   if (frontmatter.layout === "home") return homeOgTitle(locale);
   return frontmatter.title || pageTitle || siteTitle;
@@ -452,16 +455,16 @@ function ogLocaleFor(lang: string): string {
 
 /** Locale and Open Graph locale tags derived from a page path. */
 function localeHeadInfo(relativePath: string): {
-  locale: (typeof LOCALES)[DocsLocale];
+  locale: (typeof LOCALE_THEMES)[DocsLocale];
   ogLocale: string;
   alternateOgLocale: string;
 } {
   const localeKey = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
-  const locale = localeKey ? LOCALES[localeKey] : LOCALES.root;
+  const locale = localeKey ? LOCALE_THEMES[localeKey] : LOCALE_THEMES.root;
   return {
     locale,
     ogLocale: ogLocaleFor(locale.lang),
-    alternateOgLocale: ogLocaleFor(LOCALES.root.lang),
+    alternateOgLocale: ogLocaleFor(LOCALE_THEMES.root.lang),
   };
 }
 
@@ -711,7 +714,7 @@ export default defineConfig({
             const doc = buildExampleSrcdoc(html, {
               cssUrls,
               card: !flags.has("-nocard"),
-              dir: LOCALES[locale].dir,
+              dir: LOCALE_THEMES[locale].dir,
             });
             return (
               `<div class="css-example-frame">` +

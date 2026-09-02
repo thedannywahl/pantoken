@@ -12,7 +12,7 @@
 import { resolve } from "node:path";
 import { localeFamilyGlobs, runI18nTranslationCli, sha256 } from "@pantoken/translation-adapters";
 import { collectI18nSource } from "./i18n-sources.ts";
-import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
+import { LOCALES } from "./lib/locales.ts";
 
 // Legacy caches may still key entries by sha256(key) instead of the plain key.
 async function main(): Promise<void> {
@@ -20,7 +20,7 @@ async function main(): Promise<void> {
   await runI18nTranslationCli({
     label: "@pantoken/scaffold strings",
     source,
-    targetLocales: Object.keys(CANVAS_LOCALES),
+    targetLocales: Object.keys(LOCALES),
     cachePath: (locale) => `i18n-cache/${locale}.json`,
     isCached: (key, cache) => sha256(key) in cache || key in cache,
     cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],

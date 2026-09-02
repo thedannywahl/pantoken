@@ -1,7 +1,7 @@
 import { expect, test } from "vite-plus/test";
 import {
-  CANVAS_LOCALES,
   ENGLISH_STRINGS,
+  LOCALES,
   createLocaleSet,
   defineBundle,
   en,
@@ -10,14 +10,14 @@ import {
   registerLocalized,
 } from "../src/index.ts";
 
-test("CANVAS_LOCALES contains the three RTL locales", () => {
-  expect(CANVAS_LOCALES["ar"]?.dir).toBe("rtl");
-  expect(CANVAS_LOCALES["he"]?.dir).toBe("rtl");
-  expect(CANVAS_LOCALES["fa"]?.dir).toBe("rtl");
+test("LOCALES contains the three RTL locales", () => {
+  expect(LOCALES["ar"]?.dir).toBe("rtl");
+  expect(LOCALES["he"]?.dir).toBe("rtl");
+  expect(LOCALES["fa"]?.dir).toBe("rtl");
 });
 
-test("CANVAS_LOCALES contains 44 unique BCP47 entries", () => {
-  expect(Object.keys(CANVAS_LOCALES).length).toBe(44);
+test("LOCALES contains 44 unique BCP47 entries", () => {
+  expect(Object.keys(LOCALES).length).toBe(44);
 });
 
 test("getDir returns rtl for Arabic and ltr for Hungarian", () => {

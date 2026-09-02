@@ -14,7 +14,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { DriftReporter, repoRelative } from "@pantoken/translation-adapters";
 import { collectI18nSource } from "./i18n-sources.ts";
-import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
+import { LOCALES } from "./lib/locales.ts";
 
 const { source } = collectI18nSource(resolve("."));
 const cacheDir = resolve("i18n-cache");
@@ -36,7 +36,7 @@ for (const key of Object.keys(source)) {
     });
   }
 
-  for (const locale of Object.keys(CANVAS_LOCALES)) {
+  for (const locale of Object.keys(LOCALES)) {
     if (locale === "en") continue;
     // A locale cache that doesn't exist yet is fine — the whole locale falls back to English.
     const localePath = resolve(cacheDir, `${locale}.json`);

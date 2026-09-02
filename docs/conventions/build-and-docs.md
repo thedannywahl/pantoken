@@ -60,8 +60,8 @@ Root `stylelint.config.js` runs error-only core rules plus `@cssdoc/stylelint-pl
 (Magyar, `/hu/…`) — a symmetric prefix swap that VitePress's default routing already handles (don't
 set a custom `i18nRouting`).
 
-- **Translation layer is `docs/.vitepress/i18n.ts`.** `LOCALES[locale]` holds every localizable UI
-  string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
+- **Translation layer is `docs/.vitepress/i18n.ts`.** `LOCALE_THEMES[locale]` holds every localizable
+  UI string (nav/sidebar labels, `editText`, the theme selector, VitePress chrome labels, and local
   search). `config.ts` expands these into per-locale `themeConfig` (search is the exception — it lives
   in the global `themeConfig.search.options.locales`). Add new UI strings here, never inline.
 - **Block-level API translation.** `build-api-locales.ts` doesn't translate whole `.md` files — it

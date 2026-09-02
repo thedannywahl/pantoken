@@ -17,14 +17,14 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DriftReporter, parseI18nSource, repoRelative } from "@pantoken/translation-adapters";
-import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
+import { LOCALES } from "./lib/locales.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const raw = JSON.parse(readFileSync(resolve(__dirname, "../src/i18n.json"), "utf8"));
 const { strings: source } = parseI18nSource(raw);
 const keys = Object.keys(source);
 const cacheDir = resolve(__dirname, "../i18n-cache");
-const targets = Object.keys(CANVAS_LOCALES).filter((l) => l !== "en");
+const targets = Object.keys(LOCALES).filter((l) => l !== "en");
 
 /** Return every (locale, key) pair missing from its cache file — exported for testing. */
 export function findMissingTranslations(

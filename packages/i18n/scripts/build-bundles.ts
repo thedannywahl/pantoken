@@ -10,7 +10,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { ENGLISH_STRINGS } from "@pantoken/web-components";
-import { CANVAS_LOCALES } from "../src/lib/canvas-locales.ts";
+import { LOCALES } from "../src/lib/locales.ts";
 
 // This bundle only carries `WebComponentStrings` (`weekdays` is derived at runtime, not a key).
 const WEB_COMPONENT_KEYS = Object.keys(ENGLISH_STRINGS).filter((k) => k !== "weekdays");
@@ -35,7 +35,7 @@ export function toIdentifier(locale: string): string {
 
 /** Produce a TS locale file for `locale`. */
 export function buildLocaleFile(locale: string): string {
-  const meta = CANVAS_LOCALES[locale]!;
+  const meta = LOCALES[locale]!;
   const entries = loadCache(locale);
   const id = toIdentifier(locale);
 
@@ -69,7 +69,7 @@ export const ${id}: LocaleBundle = defineBundle({
 `;
 }
 
-const locales = Object.keys(CANVAS_LOCALES);
+const locales = Object.keys(LOCALES);
 for (const locale of locales) {
   const content = buildLocaleFile(locale);
   const id = toIdentifier(locale);

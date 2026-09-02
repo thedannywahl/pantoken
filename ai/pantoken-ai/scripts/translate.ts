@@ -13,7 +13,7 @@ import {
   parseI18nSource,
   runI18nTranslationCli,
 } from "@pantoken/translation-adapters";
-import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
+import { LOCALES } from "./lib/locales.ts";
 
 async function main(): Promise<void> {
   const raw = JSON.parse(readFileSync(resolve("src/i18n.json"), "utf8"));
@@ -21,7 +21,7 @@ async function main(): Promise<void> {
   await runI18nTranslationCli({
     label: "@pantoken/ai strings",
     source,
-    targetLocales: Object.keys(CANVAS_LOCALES),
+    targetLocales: Object.keys(LOCALES),
     cachePath: (locale) => `i18n-cache/${locale}.json`,
     verbatim,
     defaultVerbatim: { allow: localeFamilyGlobs(["en-AU", "en-CA", "en-GB"]) },

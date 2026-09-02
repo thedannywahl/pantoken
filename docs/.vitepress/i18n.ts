@@ -1,22 +1,22 @@
-import { CANVAS_LOCALES } from "@pantoken/i18n";
+import { LOCALES } from "@pantoken/i18n";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import { TranslationMemory } from "../scripts/translation-memory.ts";
 
 /**
- * Every locale the docs site builds: `root` (English) plus every non-`en` Canvas locale from
- * `@pantoken/i18n`'s `CANVAS_LOCALES` (44 BCP47 tags — `en` is dropped since `root` already covers
+ * Every locale the docs site builds: `root` (English) plus every non-`en` locale from
+ * `@pantoken/i18n`'s `LOCALES` (44 BCP47 tags — `en` is dropped since `root` already covers
  * US English). English regional variants (`en-AU`, `en-CA`, `en-GB`) get their own route prefix AND
  * their own translated UI strings — British/Australian/Canadian spelling and phrasing differ from US
  * English (colour/centre, -ise vs. -ize, etc.), so they go through the same translation pipeline as
  * every other locale rather than passing through the `root` English source untouched.
- * `CANVAS_LOCALES` is typed as `Record<string, LocaleMeta>` (its keys aren't a literal union), so
+ * `LOCALES` is typed as `Record<string, LocaleInfo>` (its keys aren't a literal union), so
  * `DocsLocale` is a plain `string`.
  */
 export type DocsLocale = string;
 
-/** The non-`root` locale keys, in `CANVAS_LOCALES` order. */
-export const NON_ROOT_LOCALES = Object.keys(CANVAS_LOCALES).filter((key) => key !== "en");
+/** The non-`root` locale keys, in `LOCALES` order. */
+export const NON_ROOT_LOCALES = Object.keys(LOCALES).filter((key) => key !== "en");
 
 /** Every docs locale, `root` first. */
 const ALL_DOCS_LOCALES: readonly DocsLocale[] = ["root", ...NON_ROOT_LOCALES];
@@ -186,7 +186,7 @@ const structureFor = (locale: DocsLocale): LocaleStructure => {
       typedocSidebarPath: "../api/typedoc-sidebar.json",
     };
   }
-  const meta = CANVAS_LOCALES[locale];
+  const meta = LOCALES[locale];
   return {
     label: meta.label,
     lang: locale,
@@ -243,26 +243,27 @@ const uiStringsFor = (locale: DocsLocale): UiStrings => {
 };
 
 /** Per-locale route structure plus all translated UI chrome strings. */
-export type LocaleMeta = LocaleStructure & UiStrings;
+export type LocaleTheme = LocaleStructure & UiStrings;
 
 // Computed lazily (and memoized) behind a Proxy: merely importing this module — e.g. for
 // `NON_ROOT_LOCALES`/`ENGLISH_UI_STRINGS`/`flattenStrings` — must stay I/O-free (several scripts and
 // their tests only need those). `uiStringsFor` reads a `<locale>.chrome.json` translation-memory file
-// per locale, so it only runs once something actually reads a `LOCALES` property (the real docs build).
-let computedLocales: Record<DocsLocale, LocaleMeta> | undefined;
-const computeLocales = (): Record<DocsLocale, LocaleMeta> => {
+// per locale, so it only runs once something actually reads a `LOCALE_THEMES` property (the real docs
+// build).
+let computedLocales: Record<DocsLocale, LocaleTheme> | undefined;
+const computeLocales = (): Record<DocsLocale, LocaleTheme> => {
   computedLocales ??= Object.fromEntries(
     ALL_DOCS_LOCALES.map((locale) => [
       locale,
       { ...structureFor(locale), ...uiStringsFor(locale) },
     ]),
-  ) as Record<DocsLocale, LocaleMeta>;
+  ) as Record<DocsLocale, LocaleTheme>;
   return computedLocales;
 };
 
 /** Per-locale metadata — route prefixes, nav/sidebar labels, and all translated UI chrome. */
-export const LOCALES: Record<DocsLocale, LocaleMeta> = new Proxy(
-  {} as Record<DocsLocale, LocaleMeta>,
+export const LOCALE_THEMES: Record<DocsLocale, LocaleTheme> = new Proxy(
+  {} as Record<DocsLocale, LocaleTheme>,
   {
     get: (_target, prop) => computeLocales()[prop as DocsLocale],
     has: (_target, prop) => prop in computeLocales(),

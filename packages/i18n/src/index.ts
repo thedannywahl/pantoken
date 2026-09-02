@@ -11,7 +11,7 @@
  * import "@pantoken/css";
  *
  * registerLocalized(hu); // Hungarian UI strings + correct first-day-of-week
- * registerLocalized("ar"); // Arabic auto-derived; dir="rtl" inferred from CANVAS_LOCALES
+ * registerLocalized("ar"); // Arabic auto-derived; dir="rtl" inferred from LOCALES
  * ```
  *
  * Consumers can define custom bundles with {@link defineBundle} for locales not in this package.
@@ -20,21 +20,21 @@
  */
 
 import { makeStrings, register, type ElementRegistry } from "@pantoken/web-components";
-import { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
+import { LOCALES } from "./lib/locales.ts";
 import type { LocaleBundle } from "./locale-bundle.ts";
 
 export type { WebComponentStrings } from "@pantoken/web-components";
 export { ENGLISH_STRINGS, makeStrings } from "@pantoken/web-components";
 
-export { CANVAS_LOCALES } from "./lib/canvas-locales.ts";
-export type { LocaleMeta } from "./lib/canvas-locales.ts";
+export { LOCALES } from "./lib/locales.ts";
+export type { LocaleInfo } from "./lib/locales.ts";
 export { defineBundle } from "./locale-bundle.ts";
 export type { LocaleBundle } from "./locale-bundle.ts";
 
 // ── Locale helpers ────────────────────────────────────────────────────────────
 
 /**
- * Return the text direction for a locale — using the {@link CANVAS_LOCALES} registry for known
+ * Return the text direction for a locale — using the {@link LOCALES} registry for known
  * locales, falling back to `"ltr"` for unknown tags.
  *
  * @example
@@ -45,7 +45,7 @@ export type { LocaleBundle } from "./locale-bundle.ts";
  */
 export function getDir(localeOrBundle: string | LocaleBundle): "ltr" | "rtl" {
   if (typeof localeOrBundle !== "string") return localeOrBundle.dir;
-  return CANVAS_LOCALES[localeOrBundle]?.dir ?? "ltr";
+  return LOCALES[localeOrBundle]?.dir ?? "ltr";
 }
 
 // ── registerLocalized ─────────────────────────────────────────────────────────
@@ -66,7 +66,7 @@ export function getDir(localeOrBundle: string | LocaleBundle): "ltr" | "rtl" {
  * import { registerLocalized, hu } from "@pantoken/i18n";
  *
  * registerLocalized(hu);
- * registerLocalized("ar"); // direction inferred from CANVAS_LOCALES
+ * registerLocalized("ar"); // direction inferred from LOCALES
  * registerLocalized("x-custom", customElements, { prefix: "x" });
  * ```
  */
@@ -76,7 +76,7 @@ export function registerLocalized(
   options: { prefix?: string | null; only?: readonly string[] } = {},
 ): void {
   if (typeof bundle === "string") {
-    const meta = CANVAS_LOCALES[bundle];
+    const meta = LOCALES[bundle];
     register(target, {
       ...options,
       locale: bundle,

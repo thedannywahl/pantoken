@@ -1,13 +1,14 @@
 /**
- * The set of locales Canvas LMS supports, keyed by BCP47 tag.
- * RTL flag and display label sourced from
+ * pantoken's supported-locale registry, keyed by BCP47 tag. Seeded from the Canvas LMS supported-
+ * language list, but the registry itself is pantoken's own — no runtime or build-time dependency on
+ * Canvas. RTL flag and display label sourced from
  * https://community.instructure.com/en/kb/articles/662726-which-languages-does-canvas-support
  *
  * @module
  */
 
-/** Display label and text-direction metadata for a single Canvas locale. */
-export interface LocaleMeta {
+/** Display label and text-direction metadata for a single locale. */
+export interface LocaleInfo {
   /** Human-readable label (English + native name where applicable). */
   label: string;
   /** Text direction. */
@@ -15,8 +16,8 @@ export interface LocaleMeta {
 }
 
 // prettier-ignore
-/** All 44 Canvas-supported locales keyed by BCP47 tag, with direction and display label. */
-export const CANVAS_LOCALES: Record<string, LocaleMeta> = {
+/** All 44 supported locales keyed by BCP47 tag, with direction and display label. */
+export const LOCALES: Record<string, LocaleInfo> = {
   "ar":       { label: "Arabic (العربية)",                     dir: "rtl" },
   "hy":       { label: "Armenian (Հայերեն)",                   dir: "ltr" },
   "ca":       { label: "Catalan (Catalá)",                     dir: "ltr" },

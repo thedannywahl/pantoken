@@ -1,23 +1,23 @@
 /**
- * The set of locales Canvas LMS supports, keyed by BCP47 tag. Build-script-only copy of
- * `@pantoken/i18n`'s `src/lib/canvas-locales.ts` — duplicated (rather than imported) so this
+ * pantoken's supported-locale registry, keyed by BCP47 tag. Build-script-only copy of
+ * `@pantoken/i18n`'s `src/lib/locales.ts` — duplicated (rather than imported) so this
  * package's build scripts don't gain a new workspace dependency just for a label lookup.
  *
- * RTL flag and display label sourced from
+ * Seeded from the Canvas LMS supported-language list: RTL flag and display label sourced from
  * https://community.instructure.com/en/kb/articles/662726-which-languages-does-canvas-support
  *
  * @module
  */
 
-/** Display label metadata for a single Canvas locale. */
-export interface LocaleMeta {
+/** Display label metadata for a single locale. */
+export interface LocaleInfo {
   /** Human-readable label (English + native name where applicable). */
   label: string;
 }
 
 // prettier-ignore
-/** All 44 Canvas-supported locales keyed by BCP47 tag, with display label. */
-export const CANVAS_LOCALES: Record<string, LocaleMeta> = {
+/** All 44 supported locales keyed by BCP47 tag, with display label. */
+export const LOCALES: Record<string, LocaleInfo> = {
   "ar":       { label: "Arabic (العربية)" },
   "hy":       { label: "Armenian (Հայերեն)" },
   "ca":       { label: "Catalan (Catalá)" },

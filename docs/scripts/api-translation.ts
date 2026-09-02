@@ -5,7 +5,7 @@
  * room for higher-quality engines later.
  */
 import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
-import { CANVAS_LOCALES } from "@pantoken/i18n";
+import { LOCALES } from "@pantoken/i18n";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
 import { TranslationMemory } from "./translation-memory.ts";
 
@@ -22,7 +22,7 @@ const ENGLISH_VARIANT_LABELS: Record<string, string> = {
 };
 
 const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
-  Object.entries(CANVAS_LOCALES).map(([locale, meta]) => [
+  Object.entries(LOCALES).map(([locale, meta]) => [
     locale,
     ENGLISH_VARIANT_LABELS[locale] ?? meta.label.replace(/\s*\(.*\)$/, ""),
   ]),
