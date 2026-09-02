@@ -1,0 +1,37 @@
+{
+  "source": "en",
+  "catalogs": {
+    "template": "l10n/{space}.pot",
+    "target": "l10n/{locale}/{space}.po"
+  },
+  "poOptions": {
+    "defaultFlags": ["no-c-format"],
+    "preserveObsolete": true
+  },
+  "locales": {
+    "registry": "@pantoken/i18n#LOCALES",
+    "exclude": [],
+    "tiers": {
+      "source": ["en"],
+      "primary": ["en-*", "hu"],
+      "secondary": ["*"]
+    }
+  },
+  "defaults": {
+    "translate": "always",
+    "drift": { "source": "block", "primary": "warn", "secondary": "warn" }
+  },
+  "spaces": {
+    "docs.guides": {
+      "kind": "content",
+      "include": ["docs/guide/**/*.md"],
+      "render": "docs/{locale}/guide/{path}",
+      "transientRender": false,
+      "segment": "block"
+    },
+    "ui.strings": {
+      "kind": "messages",
+      "source": "renderers/web-components/src/i18n.json"
+    }
+  }
+}

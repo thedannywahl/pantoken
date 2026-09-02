@@ -86,6 +86,12 @@ describe("loadConfig", () => {
   });
 
   test("defaults to i18n.config.json when no path is given", () => {
-    expect(() => loadConfig()).toThrow(/ENOENT/u);
+    const originalCwd = process.cwd();
+    process.chdir(testDir);
+    try {
+      expect(() => loadConfig()).toThrow(/ENOENT/u);
+    } finally {
+      process.chdir(originalCwd);
+    }
   });
 });

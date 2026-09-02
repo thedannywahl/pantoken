@@ -34,6 +34,7 @@
     "messageformat": "catalog:"
   },
   "devDependencies": {
+    "@pantoken/i18n-engine": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

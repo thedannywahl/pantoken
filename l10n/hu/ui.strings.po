@@ -1,0 +1,44 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "prevMonth"
+msgid "Previous month"
+msgstr "Előző hónap"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "nextMonth"
+msgid "Next month"
+msgstr "Következő hónap"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "dateLabel"
+msgid "Date"
+msgstr "Dátum"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "datePlaceholder"
+msgid "yyyy-mm-dd"
+msgstr "yyyy-mm-dd"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "openCalendar"
+msgid "Open calendar"
+msgstr "Naptár megnyitása"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "timeLabel"
+msgid "Time"
+msgstr "Idő"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "back"
+msgid "Back"
+msgstr "Vissza"

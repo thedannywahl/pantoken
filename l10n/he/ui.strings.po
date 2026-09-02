@@ -1,0 +1,44 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "prevMonth"
+msgid "Previous month"
+msgstr "החודש הקודם"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "nextMonth"
+msgid "Next month"
+msgstr "החודש הבא"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "dateLabel"
+msgid "Date"
+msgstr "תאריך"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "datePlaceholder"
+msgid "yyyy-mm-dd"
+msgstr "yyyy-mm-dd"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "openCalendar"
+msgid "Open calendar"
+msgstr "פתח לוח שנה"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "timeLabel"
+msgid "Time"
+msgstr "זמן"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "back"
+msgid "Back"
+msgstr "חזור"

@@ -1,0 +1,44 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "prevMonth"
+msgid "Previous month"
+msgstr "Предыдущий месяц"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "nextMonth"
+msgid "Next month"
+msgstr "Следующий месяц"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "dateLabel"
+msgid "Date"
+msgstr "Дата"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "datePlaceholder"
+msgid "yyyy-mm-dd"
+msgstr "гггг‑мм‑дд"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "openCalendar"
+msgid "Open calendar"
+msgstr "Открыть календарь"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "timeLabel"
+msgid "Time"
+msgstr "Время"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "back"
+msgid "Back"
+msgstr "Назад"

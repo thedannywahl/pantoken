@@ -1,10 +1,10 @@
 import { expect, test } from "vite-plus/test";
 
 // ── build-bundles: toIdentifier + buildLocaleFile ─────────────────────────────
-// buildLocaleFile reads from the real `renderers/web-components/i18n-cache/*.json` (migrated,
-// committed translation memory) — same as it always has, just without the old wc-hash keying.
-// The drift check itself now lives in `renderers/web-components/scripts/check-drift.ts`, the
-// package that owns the source-of-truth English strings and their translations.
+// buildLocaleFile reads from the real `l10n/{locale}/ui.strings.po` catalogs (via
+// `@pantoken/i18n-engine`'s `resolveMessagesForLocale`), sourced from
+// `renderers/web-components/src/i18n.json`. The drift check lives at
+// `vp run @pantoken/web-components#check:drift` (`i18n check ui.strings`).
 
 const { toIdentifier, buildLocaleFile } = await import("../scripts/build-bundles.ts");
 

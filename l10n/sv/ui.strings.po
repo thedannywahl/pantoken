@@ -1,0 +1,44 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "prevMonth"
+msgid "Previous month"
+msgstr "Föregående månad"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "nextMonth"
+msgid "Next month"
+msgstr "Nästa månad"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "dateLabel"
+msgid "Date"
+msgstr "Datum"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "datePlaceholder"
+msgid "yyyy-mm-dd"
+msgstr "åååå-mm-dd"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "openCalendar"
+msgid "Open calendar"
+msgstr "Öppna kalender"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "timeLabel"
+msgid "Time"
+msgstr "Tid"
+
+#: renderers/web-components/src/i18n.json
+#, no-c-format
+msgctxt "back"
+msgid "Back"
+msgstr "Tillbaka"

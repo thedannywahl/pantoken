@@ -234,23 +234,23 @@ export default defineConfig({
         cache: false,
       },
       "ui:translate:agy": {
-        command: "vp run @pantoken/web-components#translate:agy",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:copilot": {
-        command: "vp run @pantoken/web-components#translate:copilot",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force": {
-        command: "vp run @pantoken/web-components#translate:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force:agy": {
-        command: "vp run @pantoken/web-components#translate:agy:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       "ui:translate:force:copilot": {
-        command: "vp run @pantoken/web-components#translate:copilot:force",
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
       // Docs locale translation (both claude and agy variants).
@@ -357,7 +357,7 @@ export default defineConfig({
       // both.
       "i18n:check:drift": {
         command:
-          "vp run @pantoken/translation-adapters#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/i18n-engine#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
       },
       // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
       // prose drift is skipped with a note when `docs/api` is absent.

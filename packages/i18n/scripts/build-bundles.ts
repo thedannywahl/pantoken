@@ -1,14 +1,15 @@
 /**
- * Generate `src/locales/{locale}.ts` files from `@pantoken/web-components`'s committed
- * `i18n-cache/*.json` translation memory (that package owns the source-of-truth English strings
- * and their translations; this script only reshapes them into this package's `LocaleBundle`s).
- * Run via `pnpm generate` or `vp run @pantoken/i18n#generate`.
+ * Generate `src/locales/{locale}.ts` files from the `ui.strings` PO catalogs the `i18n-engine`
+ * pipeline maintains (`l10n/{locale}/ui.strings.po`, keyed by `msgctxt`, sourced from
+ * `renderers/web-components/src/i18n.json`). Run via `pnpm generate` or
+ * `vp run @pantoken/i18n#generate`.
  *
- * Strings absent from a locale's cache fall back to the English source value. Weekday names are
- * always derived at runtime via `Intl.DateTimeFormat` — they are not committed to the cache.
+ * A key untranslated (or `translate: "never"`) in a locale's PO falls back to the English source
+ * value. Weekday names are always derived at runtime via `Intl.DateTimeFormat` — never committed.
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { loadConfig, resolveMessagesForLocale } from "@pantoken/i18n-engine";
 import { ENGLISH_STRINGS } from "@pantoken/web-components";
 import { LOCALES } from "../src/lib/locales.ts";
 
@@ -16,17 +17,20 @@ import { LOCALES } from "../src/lib/locales.ts";
 const WEB_COMPONENT_KEYS = Object.keys(ENGLISH_STRINGS).filter((k) => k !== "weekdays");
 
 const root = new URL("..", import.meta.url).pathname;
-const cacheDir = join(root, "..", "..", "renderers", "web-components", "i18n-cache");
+const repoRoot = join(root, "..", "..");
 const localesDir = join(root, "src", "locales");
 mkdirSync(localesDir, { recursive: true });
 
-function loadCache(locale: string): Record<string, string> {
-  const path = join(cacheDir, `${locale}.json`);
-  if (!existsSync(path)) return {};
-  return JSON.parse(readFileSync(path, "utf8"));
+const config = loadConfig(join(repoRoot, "i18n.config.json"));
+
+function loadStrings(locale: string): Record<string, string> {
+  if (locale === "en") return {}; // en is the source; nothing to resolve against
+  return resolveMessagesForLocale(config, repoRoot, "ui.strings", locale).strings;
 }
 
-const englishSources = loadCache("en");
+const englishSources: Record<string, string> = Object.fromEntries(
+  WEB_COMPONENT_KEYS.map((k) => [k, ENGLISH_STRINGS[k as keyof typeof ENGLISH_STRINGS] as string]),
+);
 
 /** Derive the JS identifier used in the export (handles subtag locales like en-AU → enAU). */
 export function toIdentifier(locale: string): string {
@@ -36,7 +40,7 @@ export function toIdentifier(locale: string): string {
 /** Produce a TS locale file for `locale`. */
 export function buildLocaleFile(locale: string): string {
   const meta = LOCALES[locale]!;
-  const entries = loadCache(locale);
+  const entries = loadStrings(locale);
   const id = toIdentifier(locale);
 
   // Collect only strings that differ from the English source (true translations).

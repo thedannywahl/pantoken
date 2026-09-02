@@ -118,18 +118,18 @@ order, so a specific tier must precede the `"*"` catch-all; patterns use the sam
 scales with locale count — blocking every surface across ~90 locales means no English string lands
 until every translation does.
 
-| Surface         | Checker                                | What it covers                                                     |
-| --------------- | -------------------------------------- | ------------------------------------------------------------------ |
-| `ui.strings`    | `@pantoken/web-components#check:drift` | `src/i18n.json` → `i18n-cache/<locale>.json`                       |
-| `cli.scaffold`  | `@pantoken/scaffold#check:drift`       | scaffold CLI strings                                               |
-| `cli.ai`        | `@pantoken/ai#check:drift`             | `@pantoken/ai` CLI strings                                         |
-| `docs.guides`   | `docs:check:drift`                     | whole-file `docs/guide/*.md` units                                 |
-| `docs.api`      | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                        |
-| `docs.home`     | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features) |
-| `docs.chrome`   | `docs:check:drift`                     | UI-string leaves in `.vitepress/i18n.ts`                           |
-| `docs.glossary` | `docs:check:drift`                     | structural terms in `scripts/glossary.ts`                          |
-| `docs.demos`    | `docs:check:drift`                     | per-demo `i18n.json` strings                                       |
-| `docs.parity`   | `docs:check:locales`                   | structural locale-tree parity                                      |
+| Surface         | Checker                                | What it covers                                                      |
+| --------------- | -------------------------------------- | ------------------------------------------------------------------- |
+| `ui.strings`    | `@pantoken/web-components#check:drift` | `src/i18n.json` → `l10n/<locale>/ui.strings.po` (via `i18n-engine`) |
+| `cli.scaffold`  | `@pantoken/scaffold#check:drift`       | scaffold CLI strings                                                |
+| `cli.ai`        | `@pantoken/ai#check:drift`             | `@pantoken/ai` CLI strings                                          |
+| `docs.guides`   | `docs:check:drift`                     | whole-file `docs/guide/*.md` units                                  |
+| `docs.api`      | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                         |
+| `docs.home`     | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features)  |
+| `docs.chrome`   | `docs:check:drift`                     | UI-string leaves in `.vitepress/i18n.ts`                            |
+| `docs.glossary` | `docs:check:drift`                     | structural terms in `scripts/glossary.ts`                           |
+| `docs.demos`    | `docs:check:drift`                     | per-demo `i18n.json` strings                                        |
+| `docs.parity`   | `docs:check:locales`                   | structural locale-tree parity                                       |
 
 The committed default: **English source integrity blocks, translations warn.** A key missing from an
 `en.json` cache, or a structural parity gap, fails the build — both are fixed by re-running a

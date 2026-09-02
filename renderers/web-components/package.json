@@ -33,13 +33,8 @@
   "scripts": {
     "generate": "node scripts/generate.ts",
     "dev": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
-    "translate": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" node scripts/translate.ts",
-    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" node scripts/translate.ts",
-    "translate:copilot": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" node scripts/translate.ts",
-    "translate:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" node scripts/translate.ts",
-    "translate:agy:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" node scripts/translate.ts",
-    "translate:copilot:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" node scripts/translate.ts",
-    "check:drift": "node scripts/check-drift.ts",
+    "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
+    "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check ui.strings",
     "test": "vp test",
     "check": "vp check"
   },
@@ -51,7 +46,7 @@
     "@pantoken/scaffold-base": "workspace:*"
   },
   "devDependencies": {
-    "@pantoken/translation-adapters": "workspace:*",
+    "@pantoken/i18n-engine": "workspace:*",
     "@types/node": "catalog:",
     "bingo-stratum": "catalog:",
     "happy-dom": "catalog:",

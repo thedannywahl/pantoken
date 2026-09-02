@@ -28,13 +28,13 @@ export interface WebComponentStrings {
 
 /** English defaults used when no locale bundle is provided. */
 export const ENGLISH_STRINGS: WebComponentStrings = {
-  // A src/i18n.json entry may be a plain string or a { string, verbatim } object (see
-  // @pantoken/translation-adapters' parseI18nSource) — flatten inline rather than importing that
+  // A src/i18n.json entry may be a plain string or a { message, translate } object (see
+  // @pantoken/i18n-engine's parseMessageSource) — flatten inline rather than importing that
   // Node-only package into this browser-shipped module.
   ...(Object.fromEntries(
     Object.entries(englishBase).map(([key, value]) => [
       key,
-      typeof value === "string" ? value : value.string,
+      typeof value === "string" ? value : value.message,
     ]),
   ) as Omit<WebComponentStrings, "weekdays">),
   // Weekday names are always derived at runtime via Intl.DateTimeFormat — not in the JSON.

@@ -1,9 +1,9 @@
 {
   "prevMonth": "Previous month",
   "nextMonth": "Next month",
-  "dateLabel": { "string": "Date", "verbatim": "allow" },
-  "datePlaceholder": { "string": "yyyy-mm-dd", "verbatim": "allow" },
+  "dateLabel": { "message": "Date", "translate": "optional" },
+  "datePlaceholder": { "message": "yyyy-mm-dd", "translate": "optional" },
   "openCalendar": "Open calendar",
-  "timeLabel": { "string": "Time", "verbatim": "allow" },
-  "back": { "string": "Back", "verbatim": "allow" }
+  "timeLabel": { "message": "Time", "translate": "optional" },
+  "back": { "message": "Back", "translate": "optional" }
 }
