@@ -1319,6 +1319,9 @@ importers:
       '@pantoken/web-components':
         specifier: workspace:*
         version: link:../../renderers/web-components
+      messageformat:
+        specifier: 'catalog:'
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

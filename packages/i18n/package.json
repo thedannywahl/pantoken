@@ -30,7 +30,8 @@
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/web-components": "workspace:*"
+    "@pantoken/web-components": "workspace:*",
+    "messageformat": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

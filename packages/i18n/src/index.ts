@@ -30,6 +30,14 @@ export { LOCALES } from "./lib/locales.ts";
 export type { LocaleInfo } from "./lib/locales.ts";
 export { defineBundle } from "./locale-bundle.ts";
 export type { LocaleBundle } from "./locale-bundle.ts";
+export {
+  formatDate,
+  formatList,
+  formatMessage,
+  formatNumber,
+  formatRelativeTime,
+  isolate,
+} from "./lib/runtime.ts";
 
 // ── Locale helpers ────────────────────────────────────────────────────────────
 
