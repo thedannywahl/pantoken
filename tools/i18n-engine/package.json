@@ -1,0 +1,35 @@
+{
+  "name": "@pantoken/i18n-engine",
+  "version": "0.0.1",
+  "private": true,
+  "description": "The pantoken localization engine skeleton: i18n.config.json schema/loader, locale tier resolution, and the `i18n` CLI (see .claude/plans/localization-engine.md).",
+  "license": "MIT",
+  "bin": {
+    "i18n": "bin/i18n.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "dependencies": {
+    "commander": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}
