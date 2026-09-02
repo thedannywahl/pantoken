@@ -1,0 +1,203 @@
+[Terminal 441835d1-1b21-40e5-9ceb-8ecec3eaee4d notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on cli ↑1 via  26.8.1 
+➜  gh run watch 33573730286 --repo thedannywahl/pantoken --interval 60 2>&1 | tail -200
+✓ entire-checkpoint-linkage in 9s (ID 100073035263)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Check for Entire-Checkpoint trailers
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ docs-changes in 18s (ID 100073035270)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Detect docs-relevant changes
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ upstream-changes in 20s (ID 100073035289)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Detect upstream-pin changes
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ repository in 40s (ID 100073035320)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Check repository metadata
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ build in 1m19s (ID 100073035328)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore/save vp task cache
+  ✓ Build all packages
+  ✓ Post Restore/save vp task cache
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ commitlint in 48s (ID 100073035330)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Lint PR commit messages
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ fallow in 2m43s (ID 100073339020)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ test in 3m55s (ID 100073339043)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Test all packages
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ coverage in 3m0s (ID 100073339072)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Compute upload flags
+  ✓ Coverage (full on main, scoped to changed packages on PRs)
+  ✓ Upload coverage to Codecov
+  ✓ Upload test results to Codecov
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ lint in 3m20s (ID 100073339091)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Lint CSS
+  ✓ Lint JS
+  ✓ Lint TSDoc
+  ✓ Validate generated output
+  ✓ Lint Markdown
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ benchmarks in 4m19s (ID 100073339099)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Run benchmarks
+  ✓ Post Run benchmarks
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ typecheck in 1m51s (ID 100073339110)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Typecheck
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ i18n-drift in 53s (ID 100073339125)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Check i18n bundle drift
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+X docs in 50m28s (ID 100073339145)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  X Build docs (locale parity + drift + VitePress build)
+  - Add custom domain file
+  - Upload built docs site
+  - Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ publint in 3m33s (ID 100073339182)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and publint (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ attw in 5m23s (ID 100073339220)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and attw (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+- upstream-drift in 0s (ID 100073340495)
+X ci-gate in 3s (ID 100084013464)
+  ✓ Set up job
+  X Verify no CI job failed
+  ✓ Complete job
+
+ANNOTATIONS
+! Commit 11d75a16d7a3a0a1cd2fa984666714d062deb829 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#29
+
+! Commit 4e6833c56647153d58e2e487d46077fb6ecc9d1a has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#28
+
+! Commit ad35027f57ca11a44f97519c1d9e7262e20c3b36 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#27
+
+! Commit 6676a3fd01186ca28022f567d819201d490504df has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#26
+
+! Commit 99719052be9f31fe7838f08a0384c2844c134c8d has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#25
+
+! Commit 73e0cdc568e1471f16519728edfcf9b924c655a0 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#24
+
+! Commit 619850ad9e584a306ebc6fc2ad97666a6ce54e99 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#23
+
+! Commit f124bfca25156fbf82ab7e248792ee13f48c1372 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#22
+
+! Commit 4952cbf1a56bc47334be08c8aa8651103b672e67 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#21
+
+! Commit 1308370fec873de4495158ad90c77f99e1f4d546 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#20
+
+! cli.scaffold: 1 untranslated/drifted unit(s) across 1 locale(s) (nl). Fix with `vp run @pantoken/scaffold#translate`.
+i18n-drift: packages/scaffold/i18n-cache/nl.json#1
+
+! cli.scaffold: 1 untranslated/drifted unit(s) across 1 locale(s) (da). Fix with `vp run @pantoken/scaffold#translate`.
+i18n-drift: packages/scaffold/i18n-cache/da.json#1
+
+! cli.scaffold: 2 untranslated/drifted unit(s) across 1 locale(s) (ca). Fix with `vp run @pantoken/scaffold#translate`.
+i18n-drift: packages/scaffold/i18n-cache/ca.json#1
+
+X Process completed with exit code 1.
+ci-gate: .github#154
