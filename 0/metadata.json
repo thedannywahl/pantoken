@@ -1,0 +1,55 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1HANGQ95SQXQX0CQD56SF9G",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-02T15:09:13.785963Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/i18n-engine-check-drift.md",
+    "pnpm-lock.yaml",
+    "tools/i18n-engine/package.json",
+    "tools/i18n-engine/src/cli.ts",
+    "tools/i18n-engine/src/index.ts",
+    "tools/i18n-engine/src/pipeline.ts",
+    "tools/i18n-engine/tests/cli.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "b61634fb076d",
+  "checkpoint_transcript_start": 2803,
+  "transcript_lines_at_start": 2803,
+  "compact_transcript_start": 564,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-02T15:09:13.732213Z",
+    "agent_lines": 135,
+    "agent_removed": 19,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 135,
+    "total_lines_changed": 154,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
