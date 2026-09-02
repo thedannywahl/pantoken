@@ -136,12 +136,12 @@ export function runRenderGuides(
   return { space: DOCS_GUIDES, locale, filesWritten };
 }
 
-/** `config.locales.tiers` + `config.defaults.drift` shaped as a `DriftPolicy` for {@link DriftReporter}. */
+/** `config.locales.tiers` + `config.drift` shaped as a `DriftPolicy` for {@link DriftReporter}. */
 function buildDriftPolicy(config: I18nConfig): DriftPolicy {
   return {
     tiers: config.locales.tiers,
-    surfaces: {},
-    fallback: { ...config.defaults.drift },
+    surfaces: config.drift.surfaces,
+    fallback: config.drift.fallback,
   };
 }
 

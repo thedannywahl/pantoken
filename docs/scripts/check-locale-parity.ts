@@ -7,7 +7,7 @@
  * the translation layer.
  *
  * Parity is structural, not linguistic — every gap here is filled by re-running a generator, no AI
- * translation pass needed — so `i18n-policy.json` blocks on surface `docs.parity` for every locale by
+ * translation pass needed — so `i18n.config.json` blocks on surface `docs.parity` for every locale by
  * default. It's still routed through the shared policy so it can be loosened like any other surface.
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";

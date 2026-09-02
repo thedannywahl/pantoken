@@ -15,7 +15,7 @@
  * Guides drift is pure (the English source is committed). API drift needs the generated EN tree
  * (`docs/api/**`), so run it after `docs:api:en`; if `docs/api` is absent it is skipped with a note.
  *
- * Whether a given miss blocks the merge or only warns is decided by `i18n-policy.json`, per surface
+ * Whether a given miss blocks the merge or only warns is decided by `i18n.config.json`, per surface
  * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.glossary`, `docs.demos`) and per
  * locale tier — so adding an English guide doesn't have to wait on ~90 translations. See
  * `tools/translation-adapters/src/drift-policy.ts`.

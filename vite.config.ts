@@ -348,7 +348,7 @@ export default defineConfig({
         cache: false,
       },
       // Drift checks for the UI and CLI i18n domains. Severity per surface and locale tier comes from
-      // `i18n-policy.json` — these tasks report every gap but only exit non-zero on a `block`, so an
+      // `i18n.config.json` — these tasks report every gap but only exit non-zero on a `block`, so an
       // English-only change lands without waiting on ~90 translations. Docs drift runs in
       // `@pantoken/docs#docs:build` (it needs the generated EN API tree); `i18n:check:drift:all` runs
       // both.

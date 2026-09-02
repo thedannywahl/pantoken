@@ -1,6 +1,6 @@
 /**
  * `i18n.config.json` schema + loader — Phase 1 of the localization-engine plan
- * (`.claude/plans/localization-engine.md`). One root config absorbing today's `i18n-policy.json`,
+ * (`.claude/plans/localization-engine.md`). One root config containing localization policy,
  * both env-var namespaces, and the 26 root + 55 package translation scripts.
  *
  * This module owns parsing and defaulting only. Locale tier/status resolution lives in
@@ -81,10 +81,15 @@ export interface DriftDefaults {
   secondary: DriftSeverity;
 }
 
+/** Surface-specific drift severities; locale tiers are defined once in {@link LocalesConfig}. */
+export interface DriftConfig {
+  surfaces: Readonly<Record<string, DriftSeverity | Readonly<Record<string, DriftSeverity>>>>;
+  fallback: DriftSeverity | Readonly<Record<string, DriftSeverity>>;
+}
+
 /** Default translation intent and drift policy for spaces. */
 export interface DefaultsConfig {
   translate: TranslateIntent;
-  drift: DriftDefaults;
 }
 
 /** Per-space locale scoping: `only` restricts to a list, `exclude` removes from the full set. */
@@ -129,6 +134,7 @@ export interface I18nConfig {
   locales: LocalesConfig;
   provider: ProviderConfig;
   defaults: DefaultsConfig;
+  drift: DriftConfig;
   spaces: Readonly<Record<string, SpaceConfig>>;
 }
 
@@ -158,7 +164,11 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
       claude: { model: "claude-haiku-4-5-20251001", effort: "low", concurrency: 8 },
     },
   },
-  defaults: { translate: "always", drift: { source: "block", primary: "warn", secondary: "warn" } },
+  defaults: { translate: "always" },
+  drift: {
+    surfaces: {},
+    fallback: { source: "block", secondary: "warn" },
+  },
 };
 
 /** Thrown for a structurally invalid config — never a partial/best-effort parse. */

@@ -102,7 +102,7 @@ translated`) and saves the memory after **each** chunk, so it's resumable — a 
 
 ## Translation drift: what blocks a merge
 
-Every drift checker in the repo reports through one shared policy, `i18n-policy.json` at the repo
+Every drift checker in the repo reports through one shared policy, embedded in `i18n.config.json` at the repo
 root. A checker no longer decides its own exit code — it hands findings to a `DriftReporter`
 (`tools/translation-adapters/src/drift-policy.ts`), which resolves a severity per finding and returns
 the exit code.
@@ -145,11 +145,11 @@ Two escape hatches:
 
 - `I18N_DRIFT_STRICT=1` escalates every `warn` to `block` (it never resurrects an `off`).
   `vp run i18n:check:drift:strict` sweeps every surface that way — use it for a pre-release audit.
-- `I18N_DRIFT_POLICY=/path/to/policy.json` swaps the policy file.
+- `I18N_CONFIG=/path/to/i18n.config.json` swaps the configuration file.
 
 CI wiring: the `i18n-drift` job runs `vp run i18n:check:drift` (UI + CLI) when the i18n path filter
 matches; docs drift and parity run inside `@pantoken/docs#docs:build` in the `docs` job, because API
-prose drift needs the generated EN tree. `i18n-policy.json` and `tools/translation-adapters/**` are in
+prose drift needs the generated EN tree. `i18n.config.json` and `tools/translation-adapters/**` are in
 both path filters — editing what blocks a merge re-runs the gate that reads it. AI translation is
 never wired into CI; fill drift locally with `vp run i18n:translate`.
 

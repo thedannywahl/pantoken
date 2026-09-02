@@ -14,6 +14,7 @@ export {
   type ContentSpaceConfig,
   type DefaultsConfig,
   type DriftDefaults,
+  type DriftConfig,
   type DriftSeverity,
   type I18nConfig,
   type LocalesConfig,
