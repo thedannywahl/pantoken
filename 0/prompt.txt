@@ -1,0 +1,187 @@
+[Terminal 13640382-58d0-4745-9f0c-85d97bc21167 notification: command completed with exit code 1. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡ via  26.8.1 
+➜  gh pr checks 119 --watch --interval 20
+Working...
+no checks reported on the 'i18n2' branch
+
+---
+
+[Terminal 8692dcf8-d854-4a48-a856-dea81e95885e notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡ via  26.8.1 
+➜  gh run watch 33661702228 --interval 20 --exit-status
+✓ i18n2 CI thedannywahl/pantoken#119 · 33661702228
+Triggered via pull_request about 8 minutes ago
+
+JOBS
+✓ commitlint in 31s (ID 100353526913)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Lint PR commit messages
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ i18n-changes in 36s (ID 100353527041)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Detect i18n-relevant changes
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ repository in 32s (ID 100353527087)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Check repository metadata
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ build in 1m6s (ID 100353527103)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore/save vp task cache
+  ✓ Build all packages
+  ✓ Post Restore/save vp task cache
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ docs-changes in 33s (ID 100353527150)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Detect docs-relevant changes
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ entire-checkpoint-linkage in 6s (ID 100353527222)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Check for Entire-Checkpoint trailers
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ upstream-changes in 32s (ID 100353527376)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Detect upstream-pin changes
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ typecheck in 1m37s (ID 100353920557)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Typecheck
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ lint in 3m15s (ID 100353920562)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Lint CSS
+  ✓ Lint JS
+  ✓ Lint TSDoc
+  ✓ Validate generated output
+  ✓ Lint Markdown
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ fallow in 2m17s (ID 100353920645)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ publint in 3m4s (ID 100353920660)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and publint (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ docs in 2m40s (ID 100353920674)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Build docs (English API + VitePress)
+  - Add custom domain file
+  - Upload built docs site
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ attw in 6m38s (ID 100353920680)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and attw (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ coverage in 3m14s (ID 100353920719)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Compute upload flags
+  ✓ Coverage (full on main, scoped to changed packages on PRs)
+  ✓ Upload coverage to Codecov
+  ✓ Upload test results to Codecov
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ test in 2m57s (ID 100353920810)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Test all packages
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ benchmarks in 4m5s (ID 100353920819)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Run benchmarks
+  ✓ Post Run benchmarks
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+- upstream-drift in 0s (ID 100353922443)
+- i18n-drift (ID 100353923442)
+✓ ci-gate in 3s (ID 100356197895)
+  ✓ Set up job
+  - Verify no CI job failed
+  ✓ Complete job
+
+ANNOTATIONS
+! Commit 584869fe93f1402a0d8ddfebf7c70a5b4fa2bba0 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#20
+
+
+✓ Run CI (33661702228) completed with 'success'
+
+---
+
+amend that commit to include it.
+
+---
+
+packages/i18n needs a README.
