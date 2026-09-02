@@ -47,7 +47,7 @@ export interface LocalesConfig {
 
 export interface CircuitBreakerConfig {
   maxConsecutiveFailures: number;
-  /** Ordered profile-name rotation, e.g. `["claude", "agy", "copilot"]`. */
+  /** Ordered profile-name rotation, e.g. `["copilot", "agy", "claude"]`. */
   rotation: readonly string[];
   onExhausted: "fail";
   resetTimeoutMs: number;
@@ -130,20 +130,20 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
     tiers: { source: ["en"], secondary: ["*"] },
   },
   provider: {
-    default: "claude",
+    default: "copilot",
     endpoint: "http://127.0.0.1:8787/v1",
     batchBudget: 4000,
     timeoutMs: 120_000,
     circuitBreaker: {
       maxConsecutiveFailures: 3,
-      rotation: ["claude", "agy", "copilot"],
+      rotation: ["copilot", "agy", "claude"],
       onExhausted: "fail",
       resetTimeoutMs: 300_000,
     },
     profiles: {
-      claude: { model: "claude-haiku-4-5-20251001", effort: "low", concurrency: 8 },
-      agy: { model: "gemini-3.6-flash-low", concurrency: 4 },
       copilot: { model: "gpt-5-mini", effort: "low", concurrency: 4 },
+      agy: { model: "gemini-3.6-flash-low", concurrency: 4 },
+      claude: { model: "claude-haiku-4-5-20251001", effort: "low", concurrency: 8 },
     },
   },
   defaults: { translate: "always", drift: { source: "block", primary: "warn", secondary: "warn" } },

@@ -1,6 +1,6 @@
 /**
  * An OpenAI-compatible `POST /v1/chat/completions` shim over the CLI-agent adapters
- * (`claude -p` / `agy -p` / `copilot -p`), so any off-the-shelf tool that expects an OpenAI-shaped
+ * (`copilot -p` / `agy -p` / `claude -p`), so any off-the-shelf tool that expects an OpenAI-shaped
  * API can run on plans already paid for — no API keys, no new spend.
  *
  * Phase 0 spike (`.claude/plans/localization-engine.md`): settles the per-request timeout and

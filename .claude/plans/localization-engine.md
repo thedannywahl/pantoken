@@ -51,7 +51,7 @@ MF2 in the `msgid` means one message carries all its plural variants, sidesteppi
 
 Keeping the CLI-agent wrappers (zero secrets, zero API spend, existing paid plans) conflicts with every
 off-the-shelf tool, which wants an API key. Resolve it with **one ~100-line local HTTP server**
-implementing `POST /v1/chat/completions`, fulfilled by spawning `claude -p` / `agy -p` / `copilot -p`.
+implementing `POST /v1/chat/completions`, fulfilled by spawning `copilot -p` / `agy -p` / `claude -p`.
 Then _any_ tool runs on plans already paid for. Carry the measured tuning over verbatim:
 `--model claude-haiku-4-5-20251001 --effort low --strict-mcp-config --setting-sources user`,
 `gemini-3.6-flash-low`, `gpt-5-mini --effort low`.
@@ -71,7 +71,7 @@ wedged agent hangs the batch forever (defect 7 below). The shim owns the fix:
   4,000-character batch through `claude -p` routinely runs past 30 s. A 30 s default would trip the
   breaker on healthy runs.
 - **Three consecutive timeouts or non-zero exits open the breaker for that profile.** The shim then
-  **rotates to the next CLI agent** — `claude` → `agy` → `copilot`. Spend stays at zero. It never
+  **rotates to the next CLI agent** — `copilot` → `agy` → `claude`. Spend stays at zero. It never
   reaches for API keys on its own; converting a zero-spend pipeline into a billed one mid-batch is not
   a decision the shim gets to make.
 - **When every profile has tripped, fail fast** rather than hang. Flush already-translated units to
@@ -291,20 +291,20 @@ rather than inherit it. If it's shaky, a JS PO library removes the dependency en
   },
 
   "provider": {
-    "default": "claude",
+    "default": "copilot",
     "endpoint": "http://127.0.0.1:8787/v1",
     "batchBudget": 4000,
     "timeoutMs": 120000,
     "circuitBreaker": {
       "maxConsecutiveFailures": 3,
-      "rotation": ["claude", "agy", "copilot"],
+      "rotation": ["copilot", "agy", "claude"],
       "onExhausted": "fail",
       "resetTimeoutMs": 300000
     },
     "profiles": {
-      "claude": { "model": "claude-haiku-4-5-20251001", "effort": "low", "concurrency": 8 },
+      "copilot": { "model": "gpt-5-mini", "effort": "low", "concurrency": 4 },
       "agy": { "model": "gemini-3.6-flash-low", "concurrency": 4 },
-      "copilot": { "model": "gpt-5-mini", "effort": "low", "concurrency": 4 }
+      "claude": { "model": "claude-haiku-4-5-20251001", "effort": "low", "concurrency": 8 }
     }
   },
 
