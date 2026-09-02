@@ -232,38 +232,6 @@ export type VerbatimPolicy =
       error?: readonly string[];
     };
 
-/** One `src/i18n.json` entry: a plain translatable string, or a string plus its verbatim policy. */
-export type I18nSourceEntry = string | { string: string; verbatim?: VerbatimPolicy };
-
-/** A raw `src/i18n.json`-shaped object, before {@link parseI18nSource} flattens it. */
-export type RawI18nSource = Record<string, I18nSourceEntry>;
-
-/** {@link parseI18nSource}'s result: flattened strings plus each key's declared verbatim policy. */
-export interface ParsedI18nSource {
-  strings: Record<string, string>;
-  verbatim: Record<string, VerbatimPolicy>;
-}
-
-/**
- * Flatten a `src/i18n.json` source into its plain strings and any per-key `verbatim` policy, so a
- * package can declare "this key is allowed to stay untranslated (for some/all locales)" inline with
- * its source string. `{ "datePlaceholder": { "string": "yyyy-mm-dd", "verbatim": "allow" } }` and
- * `{ "dateLabel": "Date" }` both parse cleanly — a plain string entry just has no policy.
- */
-export function parseI18nSource(raw: RawI18nSource): ParsedI18nSource {
-  const strings: Record<string, string> = {};
-  const verbatim: Record<string, VerbatimPolicy> = {};
-  for (const [key, entry] of Object.entries(raw)) {
-    if (typeof entry === "string") {
-      strings[key] = entry;
-    } else {
-      strings[key] = entry.string;
-      if (entry.verbatim !== undefined) verbatim[key] = entry.verbatim;
-    }
-  }
-  return { strings, verbatim };
-}
-
 /** True when `locale` matches a verbatim-policy pattern: an exact code, a `"prefix*"` glob, or `"*"`. */
 function localeMatchesPattern(pattern: string, locale: string): boolean {
   if (pattern === "*") return true;
@@ -345,7 +313,7 @@ export interface I18nTranslationOptions {
   cachedValue?: (key: string, cache: Record<string, string>) => string | undefined;
   /**
    * Per-key verbatim policies (see {@link VerbatimPolicy}), typically produced by
-   * {@link parseI18nSource} from the same `src/i18n.json` `source` came from. For a locale not
+   * the source message map came from. For a locale not
    * covered by a key's own tiers, resolution falls through to `defaultVerbatim` (if set), then the
    * strict default: identical output is treated as a likely AI failure for every locale.
    */

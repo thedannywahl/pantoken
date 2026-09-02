@@ -15,7 +15,15 @@
       "required": ["message", "translate"],
       "properties": {
         "message": { "type": "string" },
-        "translate": { "enum": ["always", "optional", "never"] }
+        "translate": {
+          "oneOf": [
+            { "enum": ["always", "optional", "never"] },
+            {
+              "type": "object",
+              "additionalProperties": { "enum": ["always", "optional", "never"] }
+            }
+          ]
+        }
       }
     }
   }

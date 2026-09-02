@@ -12,7 +12,6 @@ const {
   generateLocaleBundles,
   isPassthroughTranslation,
   localeFamilyGlobs,
-  parseI18nSource,
   resolveVerbatimAction,
   runI18nTranslationCli,
   sha256,
@@ -78,34 +77,6 @@ test("isPassthroughTranslation is false for a genuine translation", () => {
 
 test("isPassthroughTranslation is true for two empty strings", () => {
   expect(isPassthroughTranslation("", "")).toBe(true);
-});
-
-// ── parseI18nSource ────────────────────────────────────────────────────
-
-test("parseI18nSource passes plain string entries through unchanged", () => {
-  expect(parseI18nSource({ back: "Back" })).toEqual({ strings: { back: "Back" }, verbatim: {} });
-});
-
-test("parseI18nSource flattens a rich entry's string and captures its verbatim policy", () => {
-  const result = parseI18nSource({
-    datePlaceholder: { string: "yyyy-mm-dd", verbatim: "allow" },
-  });
-  expect(result.strings).toEqual({ datePlaceholder: "yyyy-mm-dd" });
-  expect(result.verbatim).toEqual({ datePlaceholder: "allow" });
-});
-
-test("parseI18nSource omits the verbatim map entry when a rich entry has no policy", () => {
-  const result = parseI18nSource({ back: { string: "Back" } });
-  expect(result.strings).toEqual({ back: "Back" });
-  expect(result.verbatim).toEqual({});
-});
-
-test("parseI18nSource preserves a required verbatim policy", () => {
-  const result = parseI18nSource({
-    cssClass: { string: "-text-align-start", verbatim: "required" },
-  });
-  expect(result.strings).toEqual({ cssClass: "-text-align-start" });
-  expect(result.verbatim).toEqual({ cssClass: "required" });
 });
 
 // ── resolveVerbatimAction ──────────────────────────────────────────────

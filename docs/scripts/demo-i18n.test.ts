@@ -11,9 +11,9 @@ test("renders HTML, CSS, and JavaScript templates from an adjacent i18n source",
   const source = validateDemoI18n(
     "<p>{{intro}} <code>x</code>{{outro}}</p>",
     {
-      intro: { string: "Hello", verbatim: { allow: ["en*"] } },
-      outro: { string: "!", verbatim: { allow: ["en*"] } },
-      comment: { string: "A localized comment", verbatim: { allow: ["en*"] } },
+      intro: { message: "Hello", translate: "optional" },
+      outro: { message: "!", translate: "optional" },
+      comment: { message: "A localized comment", translate: "optional" },
     },
     { "style.css": "/* {{comment}} */", "script.js": "// {{comment}}" },
   );
@@ -23,14 +23,14 @@ test("renders HTML, CSS, and JavaScript templates from an adjacent i18n source",
   );
   expect(renderDemoI18n(source.assets["style.css"]!, localized)).toBe("/* translated-comment */");
   expect(renderDemoI18n(source.assets["script.js"]!, localized)).toBe("// translated-comment");
-  expect(source.verbatim.intro).toEqual({ allow: ["en*"] });
+  expect(source.verbatim.intro).toBe("allow");
 });
 
 test("rejects missing and unused demo i18n keys", () => {
   expect(() => validateDemoI18n("{{missing}}", {})).toThrow("Missing demo i18n key 'missing'.");
-  expect(() => validateDemoI18n("<p>Ready</p>", { unused: "Unused" })).toThrow(
-    "Unused demo i18n key 'unused'.",
-  );
+  expect(() =>
+    validateDemoI18n("<p>Ready</p>", { unused: { message: "Unused", translate: "always" } }),
+  ).toThrow("Unused demo i18n key 'unused'.");
 });
 
 test("the Pendo demo uses semantic popover, alert, and banner guide shells", () => {
