@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pantoken.app/schemas/i18n.config.schema.json",
+  "title": "pantoken localization configuration",
+  "description": "The shared configuration for pantoken localization extraction, catalogs, providers, and drift policy.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["source", "spaces"],
+  "properties": {
+    "$schema": { "type": "string", "format": "uri-reference" },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The source locale, normally en."
+    },
+    "catalogs": { "$ref": "#/$defs/catalogs" },
+    "poOptions": { "$ref": "#/$defs/poOptions" },
+    "locales": { "$ref": "#/$defs/locales" },
+    "provider": { "$ref": "#/$defs/provider" },
+    "defaults": { "$ref": "#/$defs/defaults" },
+    "drift": { "$ref": "#/$defs/drift" },
+    "spaces": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/space" }
+    }
+  },
+  "$defs": {
+    "severity": { "type": "string", "enum": ["block", "warn", "off"] },
+    "translateIntent": { "type": "string", "enum": ["always", "optional", "never"] },
+    "tierPatterns": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "tierSeverityMap": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/severity" }
+    },
+    "surfacePolicy": {
+      "oneOf": [{ "$ref": "#/$defs/severity" }, { "$ref": "#/$defs/tierSeverityMap" }]
+    },
+    "catalogs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "template": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "minLength": 1 }
+      }
+    },
+    "poOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defaultFlags": { "type": "array", "items": { "type": "string" } },
+        "preserveObsolete": { "type": "boolean" }
+      }
+    },
+    "localeScope": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["only"],
+          "properties": { "only": { "type": "array", "items": { "type": "string" } } }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exclude"],
+          "properties": { "exclude": { "type": "array", "items": { "type": "string" } } }
+        }
+      ]
+    },
+    "locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "registry": { "type": "string", "minLength": 1 },
+        "exclude": { "type": "array", "items": { "type": "string" } },
+        "tiers": { "$ref": "#/$defs/tierPatterns" }
+      }
+    },
+    "circuitBreaker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maxConsecutiveFailures": { "type": "integer", "minimum": 1 },
+        "rotation": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "onExhausted": { "const": "fail" },
+        "resetTimeoutMs": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "providerProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model", "concurrency"],
+      "properties": {
+        "model": { "type": "string", "minLength": 1 },
+        "effort": { "type": "string", "minLength": 1 },
+        "concurrency": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "default": { "type": "string", "minLength": 1 },
+        "endpoint": { "type": "string", "format": "uri" },
+        "batchBudget": { "type": "integer", "minimum": 1 },
+        "timeoutMs": { "type": "integer", "minimum": 0 },
+        "circuitBreaker": { "$ref": "#/$defs/circuitBreaker" },
+        "profiles": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/providerProfile" }
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "translate": { "$ref": "#/$defs/translateIntent" } }
+    },
+    "drift": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "surfaces": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/surfacePolicy" }
+        },
+        "fallback": { "$ref": "#/$defs/surfacePolicy" }
+      }
+    },
+    "contentSpace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "include", "render", "transientRender", "segment"],
+      "properties": {
+        "kind": { "const": "content" },
+        "include": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "render": { "type": "string", "minLength": 1 },
+        "transientRender": { "type": "boolean" },
+        "segment": { "enum": ["block", "frontmatter"] },
+        "rules": { "type": "string" },
+        "locales": { "$ref": "#/$defs/localeScope" }
+      }
+    },
+    "messagesSpace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "source"],
+      "properties": {
+        "kind": { "const": "messages" },
+        "source": { "type": "string", "minLength": 1 },
+        "sourceMerge": { "type": "array", "items": { "type": "string" } },
+        "render": { "type": "string" },
+        "emit": { "type": "string" },
+        "locales": { "$ref": "#/$defs/localeScope" }
+      }
+    },
+    "structuralSpace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "drift"],
+      "properties": {
+        "kind": { "const": "structural" },
+        "drift": { "const": "block" },
+        "locales": { "$ref": "#/$defs/localeScope" }
+      }
+    },
+    "space": {
+      "oneOf": [
+        { "$ref": "#/$defs/contentSpace" },
+        { "$ref": "#/$defs/messagesSpace" },
+        { "$ref": "#/$defs/structuralSpace" }
+      ]
+    }
+  }
+}

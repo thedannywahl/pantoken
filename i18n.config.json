@@ -1,4 +1,5 @@
 {
+  "$schema": "./i18n.config.schema.json",
   "source": "en",
   "catalogs": {
     "template": "l10n/{space}.pot",
