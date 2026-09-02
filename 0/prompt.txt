@@ -1,0 +1,9 @@
+why is cli.scaffold in l10n/sources and not in its package as an i18n.json file?
+
+---
+
+yes, do that.
+
+---
+
+all of these strings need to be updated to the new schema.
