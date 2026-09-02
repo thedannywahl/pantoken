@@ -44,7 +44,8 @@ has no stable message identity. Both are usable as the _AI step_; neither is the
 | Bespoke drift check per surface                              | `msgfmt --statistics`, zero network                                                                   |
 
 MF2 in the `msgid` means one message carries all its plural variants, sidestepping PO's positional
-`nplurals` mismatching CLDR's categories.
+`nplurals` mismatching CLDR's categories. The mechanism is specifically that we never emit
+`msgid_plural` — see "PO flags and what we never emit" below.
 
 ### The unlock: an OpenAI-compatible shim over the CLI agents
 
@@ -58,6 +59,30 @@ Then _any_ tool runs on plans already paid for. Carry the measured tuning over v
 **Settle first:** driving a subscription CLI programmatically for bulk work may bump provider ToS. The
 current wrappers already do this, so the shim is a new transport, not a new category — but confirm.
 Fallback is API keys via dotenvx.
+
+#### Timeouts and the circuit breaker
+
+`spawnPrompt` ([tools/translation-adapters/src/index.ts:62](tools/translation-adapters/src/index.ts#L62))
+spawns, buffers stdout/stderr, and resolves on `close`. There is no timer and no `child.kill()` — a
+wedged agent hangs the batch forever (defect 7 below). The shim owns the fix:
+
+- **Per-request timeout, default 120,000 ms**, configurable per profile. Not 30 s: the batch budget is
+  4,000 characters ([docs/scripts/api-translation.ts:370](docs/scripts/api-translation.ts#L370)), and a
+  4,000-character batch through `claude -p` routinely runs past 30 s. A 30 s default would trip the
+  breaker on healthy runs.
+- **Three consecutive timeouts or non-zero exits open the breaker for that profile.** The shim then
+  **rotates to the next CLI agent** — `claude` → `agy` → `copilot`. Spend stays at zero. It never
+  reaches for API keys on its own; converting a zero-spend pipeline into a billed one mid-batch is not
+  a decision the shim gets to make.
+- **When every profile has tripped, fail fast** rather than hang. Flush already-translated units to
+  their PO files first, so a re-run resumes instead of restarting.
+
+Tradeoff to accept knowingly: rotation can leave one batch translated by more than one model. That's
+tolerable because PO entries are independent and reviewable side by side — but the run summary must
+name which provider produced which entries.
+
+The atomic-write half of defect 7 belongs here too: `TranslationMemory.save()` has no temp-and-rename,
+and its PO replacement needs one, or a breaker-killed run corrupts the catalog it was flushing.
 
 ## Extraction: assemble from `unified`, don't write a segmenter
 
@@ -76,6 +101,14 @@ byte-exact preservation — so it is never called. Instead:
 3. Translate the extracted ranges.
 4. Splice back into the **original source string**, descending by offset.
 
+The splice list holds **disjoint leaf ranges only**. A node that recurses into an embedded extractor
+contributes its children's absolute offsets, never its own — otherwise a fence node and the text nodes
+inside it both land in the list, and descending order silently corrupts the file. So: sort ascending by
+`start`, assert `range[i].end <= range[i+1].start`, then reverse and splice. Any containment or overlap
+is an extractor bug and must fail loudly rather than emit a plausible-looking file. (Sorting descending
+by `start` and by `end` are equivalent once ranges are disjoint; the assertion is the part that earns
+its keep, not the sort key.)
+
 Everything untouched is byte-identical by construction, so `render(extract(x)) == x` holds trivially
 when no translation is applied.
 
@@ -83,6 +116,32 @@ Prior art considered: [`remark-redactable`](https://unifiedjs.com/explore/packag
 (Apache-2.0, Code.org, purpose-built for translation). Right idea, wrong dependency — 6 GitHub stars
 and ~4.3k weekly downloads is too thin for the core of this. The offset-splice approach achieves the
 same redact/restore guarantee with no dependency.
+
+### Frontmatter: parse the YAML CST, not lines
+
+`remark-frontmatter` yields the YAML block as one opaque string node, so per-scalar offsets need a real
+YAML parser. Use **`yaml` (eemeli)** — `parseDocument` gives every scalar a `range`, which drops
+straight into the offset-splice model, and it's the same author as `messageformat`, adopted below for
+MF2. It is **not currently in the workspace**, so it's a new catalog entry.
+
+Parsing the CST isolates scalar values while ignoring structural keys, block scalars (`|`, `>`), and
+comments — the failure mode line-based matching has today.
+
+The key list is **not** `title`/`description`. `docs/index.md` is a VitePress `layout: home` page; its
+translatable copy lives in `hero.text`, `hero.tagline`, `features[].title`, and `features[].details`.
+There is no `description` key at all, and `title` appears only nested inside `features[]`. Today's
+implementation already has this right —
+[docs/scripts/home-i18n.ts:20-23](docs/scripts/home-i18n.ts#L20-L23) matches `text|tagline|title|details`
+at any indentation or list position. Three rules it implements must survive the migration:
+
+- **`hero.name` is never translated.** It's the `pantoken` wordmark — exactly the `"translate": "never"`
+  case formalized below.
+- **`hero.actions[].link` is rewritten, not translated.** `LINK_KEY` prefixes route values with the
+  locale so localized pages don't 404. A render-time transform, not a catalog entry.
+- **`&grave;` round-trips.** Hand-authored frontmatter uses `&grave;…&grave;` for literal backticks
+  because real ones render badly there (`toBackticks` and its inverse). Structural extraction has no
+  masking layer, so decide deliberately: keep the swap as a frontmatter-specific normalize/denormalize
+  pair, or drop the entity from the source now that no mask can chew it.
 
 ### Prose in code fences
 
@@ -111,18 +170,6 @@ dedups repeats across files automatically.
 Marker spelling **joins the existing flag namespace** rather than inventing one. `tools/demo/src/index.ts`
 already lifts trailing `-flag` tokens onto fence info strings and consumes them via
 `/-[a-z][a-z0-9-]*/gu` (`-nocard`, `-noshow` in use today). So: `-translate` / `-notranslate`.
-
-```json
-"codeBlocks": {
-  "default": "preserve",
-  "extractors": {
-    "html": "embedded:html", "jsx": "embedded:html", "vue": "embedded:html",
-    "md": "embedded:markdown", "sh": "embedded:shell", "mermaid": "embedded:mermaid"
-  },
-  "autoExtract": ["html", "jsx", "vue", "md"],
-  "meta": { "-translate": "auto", "-notranslate": "preserve" }
-}
-```
 
 - `autoExtract` languages are extracted with **zero annotation** — this is what makes 818 generated
   files work.
@@ -162,11 +209,24 @@ Checked directly:
 3. **UI/CLI caches are not content-addressed** — editing an English string silently keeps its stale
    translation and drift reports nothing.
 4. **Cache stores no source text** — no review, no diff, no hand-fix without re-deriving a hash.
-5. **`docs/api/` is gitignored** — 818 files, **0 tracked**. The English source for the largest surface
-   is not in git, so API prose changes are invisible in review.
+5. **The API tree is committed backwards.** Measured:
+
+   ```
+   git ls-files 'docs/*/api/**'  →  34,440 files across 42 locales (820 each), 21 MB
+   git ls-files 'docs/api/**'    →  0  (gitignored)
+   .gitignore                    →  docs/api/, docs/hu/api/   — only those two
+   ```
+
+   The repo commits generated _translations_ of a generated source it deliberately doesn't commit, for
+   42 of 44 locales, with `hu` as the lone consistent exception. Confirmed as accidental during v1 of
+   the localization work. So English API prose changes are invisible in review, **and** every regenerated
+   locale tree lands as 820 files of diff noise. The POT fixes the first half; `transientRender` plus a
+   `git rm` fixes the second.
+
 6. **NUL bytes in ~51 `.ts` files** make grep/rg/GitHub code search skip them. One is load-bearing: the
    cache-key separator in `docs/scripts/translation-memory.ts` (offset 1796).
-7. **`spawnPrompt` has no timeout or retry**; `TranslationMemory.save()` has no temp-and-rename.
+7. **`spawnPrompt` has no timeout or retry**; `TranslationMemory.save()` has no temp-and-rename. Both
+   are addressed by the shim's breaker and an atomic PO write — see "Timeouts and the circuit breaker."
 
 Only **5 of 43** locales have `api.json` (`ar`, `ca`, `da`, `hu`, `hy`) — not a 43-locale baseline.
 
@@ -187,12 +247,38 @@ Centralizing is verified safe: **no published package ships its `i18n-cache`.** 
 build-time-only inputs. It also fixes `packages/i18n/scripts/build-bundles.ts` reaching across the
 workspace by relative path, which breaks silently if either package moves.
 
+### PO flags and what we never emit
+
+A `# flag: no-c-format` comment on MF2 entries is sometimes proposed to stop `msgfmt -c` reading
+`{$count}` as a malformed printf specifier. That mechanism doesn't hold here — `msgfmt -c` only runs
+format checks on entries already carrying a format flag, and `xgettext`, the only tool that adds those
+heuristically, is never in this pipeline. We generate the POT ourselves. The flag still goes in as cheap
+insurance, alongside the rules that actually keep MF2 safe through a gettext toolchain:
+
+- **Never emit `c-format`, `python-format`, or `python-brace-format` flags.** `python-brace-format` is
+  the one that would genuinely mangle `{$count}`.
+- **Never emit `msgid_plural`.** MF2 carries every plural variant inside one `msgid`, so no entry has a
+  plural form for `msgfmt` to validate against a `Plural-Forms` header. This is the concrete reason the
+  CLDR/`nplurals` mismatch goes away.
+- **Emit `#, no-c-format` on MF2-bearing entries anyway** — one comment line, and a standing instruction
+  to any future tool whose heuristics we don't control.
+- **Runtime MF2 validity stays with `i18n lint`**, not the gettext tools.
+- `preserveObsolete: true` makes explicit what the `#~` retention above already relies on (`msgmerge`
+  keeps obsolete entries unless `--no-obsolete-entries`). It is the direct replacement for `prune: true`
+  destroying history.
+
+**Open decision, settled in Phase 0:** this plan shells out to `msgmerge` and `msgfmt --statistics`. CI
+is `ubuntu-latest`, where gettext ships preinstalled — but the shim spike must _assert_ that in CI
+rather than inherit it. If it's shaky, a JS PO library removes the dependency entirely.
+
 ## `i18n.config.json` — one root config
 
 ```json
 {
   "source": "en",
   "catalogs": { "template": "l10n/{space}.pot", "target": "l10n/{locale}/{space}.po" },
+
+  "poOptions": { "defaultFlags": ["no-c-format"], "preserveObsolete": true },
 
   "locales": {
     "registry": "@pantoken/i18n#LOCALES",
@@ -208,6 +294,13 @@ workspace by relative path, which breaks silently if either package moves.
     "default": "claude",
     "endpoint": "http://127.0.0.1:8787/v1",
     "batchBudget": 4000,
+    "timeoutMs": 120000,
+    "circuitBreaker": {
+      "maxConsecutiveFailures": 3,
+      "rotation": ["claude", "agy", "copilot"],
+      "onExhausted": "fail",
+      "resetTimeoutMs": 300000
+    },
     "profiles": {
       "claude": { "model": "claude-haiku-4-5-20251001", "effort": "low", "concurrency": 8 },
       "agy": { "model": "gemini-3.6-flash-low", "concurrency": 4 },
@@ -216,6 +309,13 @@ workspace by relative path, which breaks silently if either package moves.
   },
 
   "extract": {
+    "splicing": { "strategy": "descendingOffset", "assertDisjoint": true },
+    "frontmatter": {
+      "parser": "yaml-cst",
+      "includeKeys": ["hero.text", "hero.tagline", "features[].title", "features[].details"],
+      "neverTranslate": ["hero.name"],
+      "localizeLinks": ["hero.actions[].link"]
+    },
     "codeBlocks": {
       "default": "preserve",
       "extractors": {
@@ -242,6 +342,7 @@ workspace by relative path, which breaks silently if either package moves.
       "kind": "content",
       "include": ["docs/api/**/*.md"],
       "render": "docs/{locale}/api/{path}",
+      "transientRender": true,
       "segment": "block",
       "rules": "docs/i18n/api-rules.ts",
       "locales": { "only": ["hy"] }
@@ -250,12 +351,14 @@ workspace by relative path, which breaks silently if either package moves.
       "kind": "content",
       "include": ["docs/guide/**/*.md"],
       "render": "docs/{locale}/guide/{path}",
+      "transientRender": false,
       "segment": "block"
     },
     "docs.home": {
       "kind": "content",
       "include": ["docs/index.md"],
       "render": "docs/{locale}/index.md",
+      "transientRender": false,
       "segment": "frontmatter"
     },
     "docs.demos": {
@@ -290,6 +393,12 @@ workspace by relative path, which breaks silently if either package moves.
 
 Absorbs today's `i18n-policy.json` (severity matrix carries over unchanged), both env-var namespaces,
 the 26 root tasks, and the 55 package scripts.
+
+**`transientRender`.** `docs.api` renders into the working tree at build time and is never tracked —
+the PO catalog is its only committed record. That's not a new policy so much as an admission: the
+34,440 committed locale API files were accidental (defect 5), and `docs/hu/api/` is already ignored.
+`docs.guides` (387 tracked files) and `docs.home` (3,361 tracked `index.md`) stay `false` explicitly —
+they're small, and they're the surfaces where a translation diff is worth reading in a PR.
 
 ## Formalized verbatim: two axes, not six shapes
 
@@ -398,10 +507,14 @@ markup tags balanced; extracted HTML attributes still map to their elements; fla
 **Phase 0 — de-risk. Each independently shippable; stop if 1 or 2 fails.**
 
 1. **Spike the shim** against one CLI agent + one off-the-shelf po-translator. Settles ToS and the
-   architecture.
+   architecture. Also settles two things in the same spike: the 120 s timeout and breaker rotation
+   behave under a deliberately wedged agent, and `msgmerge`/`msgfmt` are actually present on
+   `ubuntu-latest` CI — or we switch to a JS PO library before anything depends on the binaries.
 2. **Spike offset-splice round-trip** on the real generated API tree: materialize `docs/api` (it's
    gitignored), parse all 818 files, extract, splice back unchanged, assert byte-identical. Must include
-   an `embedded:html` fence, the `embedded:shell` prompt, and an `embedded:mermaid` block.
+   an `embedded:html` fence, the `embedded:shell` prompt, and an `embedded:mermaid` block. The
+   disjointness assertion is part of this spike, not a later refinement — the nested `embedded:*` cases
+   are exactly where containment bugs hide.
 3. **De-NUL the source files** (defect 6). Independent.
 4. **`canvas-locales.ts` 4 → 1.** Verified md5s: scaffold and pantoken-ai byte-identical (`035aab66`);
    web-components differs by two comment lines (`7b32abe4`); `packages/i18n/src/lib/canvas-locales.ts`
@@ -432,6 +545,13 @@ markup tags balanced; extracted HTML attributes still map to their elements; fla
 
 5. **Fix the `-nocard` misclassification** (defect 2) in the current pipeline — it ships today.
 
+6. **`git rm` the accidentally-committed locale API trees.** Replace the single `docs/hu/api/` line in
+   `.gitignore` with `docs/*/api/`, `git rm -r --cached` the 34,440 files, and confirm the docs build
+   still produces them. Independently shippable, needs no engine work, and it removes 21 MB and the
+   largest source of review noise in the repo. **Verify the deploy path first:** `docs/*/api/**` must be
+   generated by the render step on a clean checkout, not merely present because someone once ran the
+   pipeline. Land it as one reviewable commit, separate from item 3's de-NUL churn.
+
 **Phase 1 — engine skeleton.** `i18n.config.json` + schema, config loader, locale resolution/status,
 CLI with selectors, and `i18n check` reusing today's `DriftReporter` (already format-agnostic — it
 survives unchanged).
@@ -447,7 +567,9 @@ Convert its cache to PO, backfilling `msgid` where the hash still matches.
 **Phase 4 — migrate the rest, hardest first.** `docs.api` (block granularity + `embedded:html` across
 72 prose fences on two surfaces is the real test), then `docs.home`, `docs.demos` (attribute extraction
 closes the a11y gap), `docs.chrome`, `cli.scaffold`, `cli.ai`. Apply the verbatim migration and delete
-the demos JSON bloat.
+the demos JSON bloat. `docs.home` carries a hard gate: the YAML-CST derivation must produce the same
+unit set as today's `home-i18n.ts`, entry for entry, before the old path is deleted — and `hero.name`,
+`actions[].link`, and the `&grave;` handling must each be covered by a test.
 
 **Restore the CI drift gate before Phase 5.** Re-add `docs:check:drift` to the shared `docs:build`
 pipeline once the new engine produces complete documentation translations. When `i18n check` supersedes
@@ -471,20 +593,33 @@ reaches no pipeline.
 
 - **Round-trip identity is the hard gate:** splice-with-no-changes must be byte-identical across all
   818 API files, both guide trees, `index.md`, and all 65 demos. No migration proceeds without it.
+- **Splice ranges are disjoint leaves.** The extractor asserts `range[i].end <= range[i+1].start` over
+  the ascending-sorted list and throws on any containment or overlap. Cover it with a fixture whose
+  `embedded:html` fence sits inside an `embedded:markdown` block.
 - **Nested extraction correctness:** for every `embedded:html` fence, the spliced result re-parses to an
   equivalent hast tree — same element and attribute structure, only text and allowlisted attribute
   values differ. No `class`, `id`, `href`, `data-*`, or `style` ever changes. For `embedded:shell`, only
   the contents of double-quoted literals differ. For `embedded:mermaid`, the diagram still parses.
+- **`docs.home` unit parity:** the YAML-CST extraction produces exactly the units today's
+  `home-i18n.ts` derives — no more (no `hero.name`, no `link`, no `icon` paths), no fewer.
 - **No translation lost in conversion.** Per space, count PO entries with a non-empty non-fuzzy `msgstr`
   and assert it matches the pre-migration cached-unit count (28,232 units / 220 files today).
 - **Fuzzy actually reuses:** reword one English paragraph and confirm the model receives the prior
   translation rather than translating from scratch.
 - **MF2 correctness:** every message parses; plural variants cover each target's CLDR categories;
   `format()` output matches expected strings for `ar` (6 categories) and `ja` (1).
+- **No PO entry carries a format flag other than `no-c-format`, and none carries `msgid_plural`.** Grep
+  the catalogs; it's a one-line CI assertion.
+- **The breaker behaves:** a stubbed agent that never exits is killed at `timeoutMs`; three such
+  failures rotate to the next profile; exhausting the rotation fails the run **after** flushing
+  translated units, and a re-run resumes from the flushed PO rather than restarting.
 - **The new coverage is real:** after migrating `docs.api`, assert `Congratulations! You're using the
 "success" color.` (`api/css/alert.md`) and `Your changes were saved.`
   (`api/renderers/web-components/src/variables/alert.md`) are translated in a target locale — both are
   English in `docs/ar/**` today.
+- **Transient render leaves no residue:** on a clean checkout, `i18n render` followed by `git status` is
+  clean. No locale API file is ever both generated and tracked, and `git ls-files 'docs/*/api/**'`
+  returns 0.
 - `msgfmt -c` clean on every PO/POT; `grep -c "__PTK_"` returns 0 everywhere.
 - `@pantoken/i18n` stays Node-free — assert no `node:*` in its bundle (existing constraint).
 - Selectors work: `i18n translate docs.api --locale hy` touches only that space and locale;
