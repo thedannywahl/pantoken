@@ -266,7 +266,10 @@
     > .pfx-button-group > .pfx-button:first-of-type ~ .pfx-button:not([class*="-color-"]) {
       background: transparent;
       border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
-      color: var(--instui-component-base-button-primary-inverse-color);
+      color: light-dark(
+        var(--instui-component-base-button-primary-inverse-color),
+        var(--instui-primitive-color-white)
+      );
     }
 
     > .pfx-button-group > .pfx-button:first-of-type ~ .pfx-button:not([class*="-color-"]):hover {
@@ -287,7 +290,10 @@
       ~ .pfx-button:not([class*="-color-"])[aria-disabled="true"] {
       background: transparent;
       border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
-      color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
+      color: light-dark(
+        var(--instui-component-base-button-primary-on-color-disabled-text-color),
+        var(--instui-primitive-color-white)
+      );
     }
   }
 }
