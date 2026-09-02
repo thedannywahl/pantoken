@@ -1,73 +1,73 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "promptPlatform"
 msgid "Select a platform to scaffold:"
 msgstr "Valitse alusta scaffoldattavaksi:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "promptDir"
 msgid "Target directory:"
 msgstr "Kohdekansio:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "spinnerStart"
 msgid "Scaffolding..."
 msgstr "Scaffoldataan..."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "spinnerStop"
 msgid "Done scaffolding."
 msgstr "Scaffoldaus valmis."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsHeading"
 msgid "Next steps:"
 msgstr "Seuraavat vaiheet:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsInstall"
 msgid "Install dependencies: {{command}}"
 msgstr "Asenna riippuvuudet: {{command}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "Käynnistä kehityspalvelin (jos mallissasi on)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "notesHeading"
 msgid "Note:"
 msgstr "Huom:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "caveatsHeading"
 msgid "Caveat:"
 msgstr "Varoitus:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
@@ -75,13 +75,13 @@ msgstr ""
 "Puuttuu vaadittu argumentti \"platform\". Odotettu yksi seuraavista: "
 "{{platforms}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cancelled"
 msgid "Cancelled."
 msgstr "Peruutettu."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpPlatformDescription"
 msgid ""
@@ -92,13 +92,13 @@ msgstr ""
 "vaihtoehdolle, \"theme-editor\" on alias \"canvas-theme-editor\"-"
 "vaihtoehdolle)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
 msgstr "Kohdekansio (kysytään interaktiivisesti TTY:ssä, jos jätetty pois)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpYesDescription"
 msgid ""
@@ -106,31 +106,31 @@ msgid ""
 msgstr ""
 "Älä koskaan kysy; virhe, jos puuttuva platform- tai directory-argumentti"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Ylikirjoita automaattisesti tunnistettu näyttökieli (esim. \"hu\")"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.notes"
 msgid ""
@@ -140,7 +140,7 @@ msgstr ""
 "Lataa theme.css ja theme.js Canvasin Theme Editoriin (Advanced → CSS / "
 "JavaScript), jotta pantokenin luokat ovat käytettävissä kaikilla sivuilla."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.caveats"
 msgid ""
@@ -150,13 +150,13 @@ msgstr ""
 "Canvas puhdistaa liitetyn HTML:n palvelinpuolella — tarkista aina "
 "Canvasissa, että RCE-esikatselusta liitetty sisältö toimii oikein."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.pageTitle"
 msgid "RCE template authoring"
 msgstr "RCE-mallien luominen"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.pageDescription"
 msgid ""
@@ -165,145 +165,145 @@ msgstr ""
 "Laadi Canvas RCE -sivupohjia, jotka on tyylitelty pantokenilla, ja "
 "esikatsele muutoksia reaaliajassa."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.editThemeLabel"
 msgid "Edit theme"
 msgstr "Muokkaa teemaa"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpAriaLabel"
 msgid "Help"
 msgstr "Ohje"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "Kopioi HTML"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.editorPaneLabel"
 msgid "Editor"
 msgstr "Muokkain"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.previewPaneLabel"
 msgid "Preview"
 msgstr "Esikatselu"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.previewFrameTitle"
 msgid "Styled preview"
 msgstr "Tyylitelty esikatselu"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "Kokoruutumuokkain"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "Kokoruutuesikatselu"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "Muokkaa muokkaimen ja esikatselun kokoa"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "Pinoa pystysuoraan"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "Aseta vierekkäin"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.swapPanesLabel"
 msgid "Swap panes"
 msgstr "Vaihda ruudut"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "Teeman asetukset"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabConfigLabel"
 msgid "Config"
 msgstr "Asetukset"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "CDN-palvelu"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.themeLabel"
 msgid "Theme"
 msgstr "Teema"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.modeLabel"
 msgid "Mode"
 msgstr "Tila"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "Lataa theme.css"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "Lataa theme.js"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "Uudelleenluo konfiguraatiosta"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalTitle"
 msgid "How to use this page"
 msgstr "Kuinka tätä sivua käytetään"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody1"
 msgid ""
@@ -319,7 +319,7 @@ msgstr ""
 "palvelinpuolella — tämä esikatselu ei yritä jäljitellä sitä, joten varmista "
 "aina liitetty lopputulos Canvasissa."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody2"
 msgid ""
@@ -331,13 +331,13 @@ msgstr ""
 "teemaa tai tilaa sekä muokataksesi generoituja <code>theme.css</code>/"
 "<code>theme.js</code>-tiedostoja ennen latausta."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.closeLabel"
 msgid "Close"
 msgstr "Sulje"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsDependencies"
 msgid ""
@@ -347,7 +347,7 @@ msgstr ""
 "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
 "install)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsInstallGeneric"
 msgid "2. Függőségek telepítése"

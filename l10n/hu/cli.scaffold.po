@@ -1,85 +1,85 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "promptPlatform"
 msgid "Select a platform to scaffold:"
 msgstr "Válassz platformot a scaffoldinghez:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "promptDir"
 msgid "Target directory:"
 msgstr "Célkönyvtár:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "spinnerStart"
 msgid "Scaffolding..."
 msgstr "Scaffoldolás..."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "spinnerStop"
 msgid "Done scaffolding."
 msgstr "Scaffold kész."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsHeading"
 msgid "Next steps:"
 msgstr "Következő lépések:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsInstall"
 msgid "Install dependencies: {{command}}"
 msgstr "Függőségek telepítése: {{command}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "Indítsd el a fejlesztői szervert (ha a sablonod tartalmaz ilyet)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "notesHeading"
 msgid "Note:"
 msgstr "Megjegyzés:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "caveatsHeading"
 msgid "Caveat:"
 msgstr "Figyelmeztetés:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
 msgstr "Hiányzó kötelező argumentum \"platform\". Egyik várható: {{platforms}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cancelled"
 msgid "Cancelled."
 msgstr "Mégse."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpPlatformDescription"
 msgid ""
@@ -89,13 +89,13 @@ msgstr ""
 "Scaffoldolandó platform ({{platforms}}; \"html\" a \"components\" aliasza, a "
 "\"theme-editor\" a \"canvas-theme-editor\" aliasza)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
 msgstr "Célkönyvtár (TTY esetén interaktívan kérdez, ha kimarad)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpYesDescription"
 msgid ""
@@ -104,31 +104,31 @@ msgstr ""
 "Soha ne kérdezzen; hibázzon, ahelyett hogy egy hiányzó platform/könyvtár "
 "miatt promptolna"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Felülírja az automatikusan észlelt megjelenítési nyelvet (pl. \"hu\")"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.notes"
 msgid ""
@@ -139,7 +139,7 @@ msgstr ""
 "(Advanced → CSS / JavaScript), hogy a pantoken osztályai minden oldalon "
 "elérhetők legyenek."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.caveats"
 msgid ""
@@ -149,13 +149,13 @@ msgstr ""
 "A Canvas szerveroldalon megtisztítja a beillesztett HTML-t — mindig "
 "ellenőrizd a RCE előnézetből Canvasba másolt tartalmat."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.pageTitle"
 msgid "RCE template authoring"
 msgstr "RCE sablon szerkesztés"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.pageDescription"
 msgid ""
@@ -163,145 +163,145 @@ msgid ""
 msgstr ""
 "Canvas RCE oldal sablonok készítése pantoken stílussal, élő előnézettel."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.editThemeLabel"
 msgid "Edit theme"
 msgstr "Téma szerkesztése"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpAriaLabel"
 msgid "Help"
 msgstr "Súgó"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "HTML másolása"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.editorPaneLabel"
 msgid "Editor"
 msgstr "Szerkesztő"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.previewPaneLabel"
 msgid "Preview"
 msgstr "Előnézet"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.previewFrameTitle"
 msgid "Styled preview"
 msgstr "Stilizált előnézet"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "Teljes képernyős szerkesztő"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "Teljes képernyős előnézet"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "Szerkesztő és előnézet átméretezése"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "Függőlegesen egymás alá rendezés"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "Oldalanként egymás mellé rendezés"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.swapPanesLabel"
 msgid "Swap panes"
 msgstr "Panelek felcserélése"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "Téma beállítások"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabConfigLabel"
 msgid "Config"
 msgstr "Konfiguráció"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "CDN szolgáltató"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.themeLabel"
 msgid "Theme"
 msgstr "Téma"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.modeLabel"
 msgid "Mode"
 msgstr "Mód"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "theme.css letöltése"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "theme.js letöltése"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "Újragenerálás a konfigurációból"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalTitle"
 msgid "How to use this page"
 msgstr "Hogyan használd ezt az oldalt"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody1"
 msgid ""
@@ -318,7 +318,7 @@ msgstr ""
 "nem próbálja reprodukálni ezt, ezért mindig ellenőrizd a beillesztett "
 "eredményt Canvasban."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody2"
 msgid ""
@@ -330,13 +330,13 @@ msgstr ""
 "téma vagy mód megváltoztatásához, illetve a generált <code>theme.css</code>/"
 "<code>theme.js</code> kézi szerkesztéséhez letöltés előtt."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.closeLabel"
 msgid "Close"
 msgstr "Bezárás"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsDependencies"
 msgid ""
@@ -346,7 +346,7 @@ msgstr ""
 "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
 "install)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsInstallGeneric"
 msgid "2. Függőségek telepítése"

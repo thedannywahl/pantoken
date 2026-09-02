@@ -1,73 +1,73 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "promptPlatform"
 msgid "Select a platform to scaffold:"
 msgstr "Виберіть платформу для створення каркасу:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "promptDir"
 msgid "Target directory:"
 msgstr "Цільова директорія:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "spinnerStart"
 msgid "Scaffolding..."
 msgstr "Створення каркасу..."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "spinnerStop"
 msgid "Done scaffolding."
 msgstr "Готово — каркас створено."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsHeading"
 msgid "Next steps:"
 msgstr "Наступні кроки:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsInstall"
 msgid "Install dependencies: {{command}}"
 msgstr "Встановити залежності: {{command}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "Запустити dev‑сервер (якщо шаблон його має)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "notesHeading"
 msgid "Note:"
 msgstr "Примітка:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "caveatsHeading"
 msgid "Caveat:"
 msgstr "Попередження:"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
@@ -75,13 +75,13 @@ msgstr ""
 "Відсутній обовʼязковий аргумент \"platform\". Очікується один з: "
 "{{platforms}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cancelled"
 msgid "Cancelled."
 msgstr "Скасовано."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpPlatformDescription"
 msgid ""
@@ -91,13 +91,13 @@ msgstr ""
 "Платформа для створення каркасу ({{platforms}}; \"html\" — псевдонім для "
 "\"components\", \"theme-editor\" — псевдонім для \"canvas-theme-editor\")"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
 msgstr "Цільова директорія (якщо пропущено — запит у TTY)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpYesDescription"
 msgid ""
@@ -105,31 +105,31 @@ msgid ""
 msgstr ""
 "Ніколи не питати; в разі відсутньої платформи/директорії видавати помилку"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Перевизначити автоматично визначену мову інтерфейсу (наприклад \"hu\")"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.notes"
 msgid ""
@@ -139,7 +139,7 @@ msgstr ""
 "Завантажте theme.css та theme.js в Theme Editor Canvas (Advanced → CSS / "
 "JavaScript), щоб класи pantoken були доступні на всіх сторінках."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.caveats"
 msgid ""
@@ -149,13 +149,13 @@ msgstr ""
 "Canvas очищує вставлений HTML на боці сервера — завжди перевіряйте вміст, "
 "вставлений із попереднього перегляду RCE у Canvas."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.pageTitle"
 msgid "RCE template authoring"
 msgstr "Авторинг шаблонів RCE"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.pageDescription"
 msgid ""
@@ -164,145 +164,145 @@ msgstr ""
 "Створюйте шаблони сторінок Canvas RCE, стилізовані за допомогою pantoken, з "
 "живим попереднім переглядом."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.editThemeLabel"
 msgid "Edit theme"
 msgstr "Редагувати тему"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpAriaLabel"
 msgid "Help"
 msgstr "Допомога"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "Копіювати HTML"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.editorPaneLabel"
 msgid "Editor"
 msgstr "Редактор"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.previewPaneLabel"
 msgid "Preview"
 msgstr "Попередній перегляд"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.previewFrameTitle"
 msgid "Styled preview"
 msgstr "Стилізований попередній перегляд"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "Редактор на весь екран"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "Попередній перегляд на весь екран"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "Змінити розмір редактора й попереднього перегляду"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "Вертикальне розташування"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "Розташувати поряд"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.swapPanesLabel"
 msgid "Swap panes"
 msgstr "Поменяти панелі місцями"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "Налаштування теми"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabConfigLabel"
 msgid "Config"
 msgstr "Конфіг"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "Постачальник CDN"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.themeLabel"
 msgid "Theme"
 msgstr "Тема"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.modeLabel"
 msgid "Mode"
 msgstr "Режим"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "Завантажити theme.css"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "Завантажити theme.js"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "Згенерувати з конфігурації"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalTitle"
 msgid "How to use this page"
 msgstr "Як користуватися цією сторінкою"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody1"
 msgid ""
@@ -318,7 +318,7 @@ msgstr ""
 "вставлений HTML на боці сервера — цей попередній перегляд цього не імітує, "
 "тому завжди перевіряйте вставлений результат у Canvas."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody2"
 msgid ""
@@ -330,13 +330,13 @@ msgstr ""
 "тему або режим, а також вручну відредагувати згенеровані <code>theme.css</"
 "code>/<code>theme.js</code> перед їхнім завантаженням."
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "scaffold.canvas-theme-editor.i18n.closeLabel"
 msgid "Close"
 msgstr "Закрити"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsDependencies"
 msgid ""
@@ -346,7 +346,7 @@ msgstr ""
 "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
 "install)"
 
-#: l10n/sources/cli.scaffold.json
+#: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "nextStepsInstallGeneric"
 msgid "2. Függőségek telepítése"

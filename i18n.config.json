@@ -35,7 +35,7 @@
     },
     "cli.scaffold": {
       "kind": "messages",
-      "source": "l10n/sources/cli.scaffold.json"
+      "source": "packages/scaffold/src/i18n.json"
     },
     "cli.ai": {
       "kind": "messages",

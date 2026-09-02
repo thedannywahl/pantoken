@@ -1,60 +1,69 @@
 {
-  "pageTitle": "RCE template authoring",
-  "pageDescription": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
-  "editThemeLabel": "Edit theme",
-  "helpAriaLabel": {
-    "string": "Help",
-    "verbatim": { "warn": ["nl"] }
+  "pageTitle": { "message": "RCE template authoring", "translate": "always" },
+  "pageDescription": {
+    "message": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
+    "translate": "always"
   },
-  "copyHtmlLabel": "Copy HTML",
+  "editThemeLabel": { "message": "Edit theme", "translate": "always" },
+  "helpAriaLabel": {
+    "message": "Help",
+    "translate": "optional"
+  },
+  "copyHtmlLabel": { "message": "Copy HTML", "translate": "always" },
   "editorPaneLabel": {
-    "string": "Editor",
-    "verbatim": { "warn": ["da", "de", "es", "id", "it", "ms", "nb", "nl", "pt*", "se"] }
+    "message": "Editor",
+    "translate": "optional"
   },
   "previewPaneLabel": {
-    "string": "Preview",
-    "verbatim": { "warn": ["da", "se"] }
+    "message": "Preview",
+    "translate": "optional"
   },
-  "previewFrameTitle": "Styled preview",
-  "fullscreenEditorAriaLabel": "Fullscreen editor",
-  "fullscreenPreviewAriaLabel": "Fullscreen preview",
-  "resizePanesAriaLabel": "Resize editor and preview",
-  "stackVerticallyLabel": "Stack vertically",
-  "stackSideBySideLabel": "Stack side by side",
-  "swapPanesLabel": "Swap panes",
-  "themeTrayAriaLabel": "Theme settings",
+  "previewFrameTitle": { "message": "Styled preview", "translate": "always" },
+  "fullscreenEditorAriaLabel": { "message": "Fullscreen editor", "translate": "always" },
+  "fullscreenPreviewAriaLabel": { "message": "Fullscreen preview", "translate": "always" },
+  "resizePanesAriaLabel": { "message": "Resize editor and preview", "translate": "always" },
+  "stackVerticallyLabel": { "message": "Stack vertically", "translate": "always" },
+  "stackSideBySideLabel": { "message": "Stack side by side", "translate": "always" },
+  "swapPanesLabel": { "message": "Swap panes", "translate": "always" },
+  "themeTrayAriaLabel": { "message": "Theme settings", "translate": "always" },
   "tabConfigLabel": {
-    "string": "Config",
-    "verbatim": { "warn": ["nl"] }
+    "message": "Config",
+    "translate": "optional"
   },
   "tabCssLabel": {
-    "string": "CSS",
-    "verbatim": "required"
+    "message": "CSS",
+    "translate": "never"
   },
   "tabJsLabel": {
-    "string": "JS",
-    "verbatim": "required"
+    "message": "JS",
+    "translate": "never"
   },
-  "cdnProviderLabel": "CDN provider",
+  "cdnProviderLabel": { "message": "CDN provider", "translate": "always" },
   "themeLabel": {
-    "string": "Theme",
-    "verbatim": { "warn": ["de", "se"] }
+    "message": "Theme",
+    "translate": "optional"
   },
   "modeLabel": {
-    "string": "Mode",
-    "verbatim": { "warn": ["fr*", "id"] }
+    "message": "Mode",
+    "translate": "optional"
   },
   "downloadCssLabel": {
-    "string": "Download theme.css",
-    "verbatim": { "warn": ["da", "nl", "se"] }
+    "message": "Download theme.css",
+    "translate": "optional"
   },
   "downloadJsLabel": {
-    "string": "Download theme.js",
-    "verbatim": { "warn": ["da", "nl", "se"] }
+    "message": "Download theme.js",
+    "translate": "optional"
   },
-  "regenerateLabel": "Regenerate from config",
-  "helpModalTitle": "How to use this page",
-  "helpModalBody1": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
-  "helpModalBody2": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
-  "closeLabel": "Close"
+  "regenerateLabel": { "message": "Regenerate from config", "translate": "always" },
+  "helpModalTitle": { "message": "How to use this page", "translate": "always" },
+  "helpModalBody1": {
+    "message": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
+    "translate": "always"
+  },
+  "helpModalBody2": {
+    "message": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
+    "translate": "always"
+  },
+  "closeLabel": { "message": "Close", "translate": "always" }
 }

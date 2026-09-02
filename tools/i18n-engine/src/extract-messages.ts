@@ -20,6 +20,7 @@ export type MessageSource = Record<string, MessageSourceEntry>;
  *  translate intent. */
 export interface MessageUnit extends CatalogUnit {
   key: string;
+  msgctxt: string;
   msgid: string;
   reference: string;
   translate: TranslateIntent;
@@ -29,10 +30,11 @@ export interface MessageUnit extends CatalogUnit {
 export function parseMessageSource(raw: MessageSource): MessageUnit[] {
   return Object.entries(raw).map(([key, entry]) => {
     if (typeof entry === "string") {
-      return { key, msgid: entry, reference: key, translate: "always" as const };
+      return { key, msgctxt: key, msgid: entry, reference: key, translate: "always" as const };
     }
     return {
       key,
+      msgctxt: key,
       msgid: entry.message,
       reference: key,
       translate: entry.translate ?? "always",
