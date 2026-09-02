@@ -1,0 +1,54 @@
+next up is the close-button component which needs an explicit -size-md modifier (the default) and its -on-color variant (deprecating -color-inverse):
+close-button:
+* color: icon/baseColor
+* background: transparent
+* border-color: transparent
+* border-width: 0
+hover:
+* color: icon/baseColor
+* background: baseButton/primaryGhostHoverBackground (resolves to #1D354F1A in light mode)
+* border-color: transparent
+* border-width: 0
+active:
+* color: icon/baseColor
+* background: baseButton/primaryGhostActiveBackground (resolves to #1D354F33 in light mode)
+* border: transparent
+* border-width: 0
+disabled:
+* color: icon/disabledBaseColor
+* background transparent
+* border: transparent
+* border-width: 0
+
+close-button.-on-color:
+* color: icon/onColor
+* background: transparent
+* border: transparent
+* border-width: 0
+hover:
+* color: icon/onColor
+* background: baseButton/ghostOncolorHoverBackgroundColor (resolves to #FFFFFF1A)
+* border: transparent
+* border-width: 0
+active:
+* color: icon/onColor
+* background: (baseButton/ghostOncolorActiveBackgroundColor)
+* border: transparent
+* border-widht: 0
+disabled:
+* color: icon/disabledOnColor
+* background: transparent
+* border: transparent
+* border-widht: 0
+
+if the close-button tokens as defined don't carry light/dark values inherintly then we'll need to write it to known-syntax-issues and make the close-button dark the same as close-button.-on-color's values.
+
+investigate and work up a plan before changing anything.
+
+---
+
+yes, proceed.
+
+---
+
+those changes then need to be implemented in the pendo renderer.
