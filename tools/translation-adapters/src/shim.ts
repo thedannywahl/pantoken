@@ -71,6 +71,7 @@ export function makeSpawnPromptFn(timeoutMs: number): PromptFn {
     spawnPrompt(profile.command, [...profile.args, "-p"], prompt, profile.name, { timeoutMs });
 }
 
+/** Dependencies and lifecycle hooks used by the profile-rotation loop. */
 export interface RunShimOptions {
   profiles: ShimProfile[];
   breaker: ProfileBreaker;
@@ -80,6 +81,7 @@ export interface RunShimOptions {
   onExhausted?: () => void;
 }
 
+/** Content returned by a provider and the profile that produced it. */
 export interface ShimResult {
   content: string;
   /** Which profile actually produced `content` — required so a rotated batch stays attributable. */
@@ -112,14 +114,17 @@ export async function runWithBreaker(prompt: string, options: RunShimOptions): P
 }
 
 /** Minimal subset of the OpenAI chat-completions request/response shapes this shim needs. */
+/** Minimal chat message accepted by the OpenAI-compatible shim. */
 export interface ChatMessage {
   role: string;
   content: string;
 }
+/** Minimal chat-completions request accepted by the shim. */
 export interface ChatCompletionsRequest {
   model?: string;
   messages: ChatMessage[];
 }
+/** Minimal chat-completions response emitted by the shim. */
 export interface ChatCompletionsResponse {
   id: string;
   object: "chat.completion";

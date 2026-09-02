@@ -301,7 +301,7 @@ describe("runI18nCli (the real process entry point)", () => {
   test("an unknown command sets process.exitCode from the CommanderError", async () => {
     process.exitCode = undefined;
     await runI18nCli(["--config", configPath, "bogus-command"]);
-    expect(process.exitCode).toBeGreaterThan(0);
+    expect(process.exitCode).toBe(1);
     process.exitCode = undefined;
   });
 

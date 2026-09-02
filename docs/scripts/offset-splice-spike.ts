@@ -8,10 +8,10 @@
  * (`text`, `inlineCode`, `code`) as an opaque range and proves:
  *
  * 1. `splice(md, collectLeafRanges(md), identity) === md` for every real generated `.md` file
- *    (`docs/api/**`, `docs/guide/**`) — including files containing an `html`-lang fence, the
+ *    (the generated API and guide Markdown trees) — including files containing an `html`-lang fence, the
  *    `embedded:shell` agent-bootstrap prompt, and a `mermaid` diagram (all handled as opaque code
  *    leaves here; only their presence in the round-trip corpus is asserted).
- * 2. One real recursive case — a fenced ` ```md ` block — recurses the same collector into the
+ * 2. One real recursive case — a fenced Markdown block with language `md` — recurses the same collector into the
  *    fence's inner text and maps child offsets back to absolute document offsets, contributing only
  *    the children's ranges (never the fence node's own), so nothing overlaps.
  * 3. `assertDisjoint` rejects a deliberately broken extractor that contributes both a parent range
@@ -43,7 +43,7 @@ interface MdastNode {
 }
 
 /**
- * Collect every leaf text range in `md`, recursing into ` ```md ` fences (mapping child offsets back
+ * Collect every leaf text range in `md`, recursing into fenced Markdown blocks (mapping child offsets back
  * to absolute document offsets via `baseOffset`). A fence's own range is NEVER included when it
  * recurses — only its children's — so the result stays disjoint by construction.
  */

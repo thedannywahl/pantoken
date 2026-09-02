@@ -12,6 +12,7 @@ import type { TranslateIntent } from "./config.ts";
  *  explicit `translate` intent. */
 export type MessageSourceEntry = string | { message: string; translate?: TranslateIntent };
 
+/** Flat keyed message source as represented by an `i18n.json` file. */
 export type MessageSource = Record<string, MessageSourceEntry>;
 
 /** One extracted message: its stable key, MF2 (or plain — a valid subset of MF2) source text, and

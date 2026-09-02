@@ -266,7 +266,7 @@ export async function runI18nCli(argv: string[]): Promise<void> {
     await program.parseAsync(argv, { from: "user" });
   } catch (error) {
     if (error instanceof CommanderError) {
-      process.exitCode = error.exitCode;
+      process.exitCode = error.exitCode || 1;
       return;
     }
     console.error("Error:", error instanceof Error ? error.message : error);

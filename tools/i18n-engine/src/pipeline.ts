@@ -20,6 +20,7 @@ import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, serializePot, type PoEntry } from "./po.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
 
+/** Canonical content-space id for the repository's Markdown guides. */
 const DOCS_GUIDES = "docs.guides";
 
 /** Substitute `{space}`/`{locale}` placeholders in a catalog path pattern. */
@@ -41,6 +42,7 @@ function guidesLocales(config: I18nConfig): string[] {
   return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
 }
 
+/** Result of extracting one localization space into a POT file. */
 export interface ExtractResult {
   space: string;
   unitCount: number;
@@ -57,6 +59,7 @@ export function runExtractGuides(config: I18nConfig, configDir: string): Extract
   return { space: DOCS_GUIDES, unitCount: units.length, potPath };
 }
 
+/** Result of synchronizing one locale's PO catalog with its POT template. */
 export interface TranslateResult {
   space: string;
   locale: string;
@@ -94,6 +97,7 @@ export async function runTranslateGuides(
   return { space: DOCS_GUIDES, locale, poPath, ...(await mergeAndCount(potPath, poPath)) };
 }
 
+/** Result of rendering one locale's translated content files. */
 export interface RenderResult {
   space: string;
   locale: string;
@@ -149,6 +153,7 @@ function loadPoEntries(config: I18nConfig, configDir: string, locale: string): P
   return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
 }
 
+/** Drift reporter and exit code returned by a space check. */
 export interface CheckResult {
   reporter: DriftReporter;
   exitCode: number;
@@ -253,9 +258,10 @@ function loadMessagesPoEntries(
   return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
 }
 
+/** Keyed message values resolved for one locale, including English fallbacks. */
 export interface ResolvedMessages {
   locale: string;
-  /** key -> resolved text (translated, or the English `msgid` fallback for an untranslated/`never`
+  /** Key-to-resolved text (translated, or the English `msgid` fallback for an untranslated/`never`
    *  entry). */
   strings: Record<string, string>;
 }

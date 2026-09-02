@@ -6,6 +6,7 @@
  */
 import { isSelectMessage, parseMessage, validate, type Model } from "messageformat";
 
+/** Validation result containing diagnostics and the MF2 features used by a message. */
 export interface Mf2ValidationResult {
   valid: boolean;
   /** Syntax errors and data-model errors (e.g. `missing-fallback`, `duplicate-variant`). */

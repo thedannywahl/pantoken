@@ -22,6 +22,7 @@ export type TranslatePolicy = TranslateIntent | Readonly<Record<string, Translat
 /** What to do when a translation is byte-identical to the source. */
 export type OnIdenticalPolicy = "accept" | "warn" | "reject";
 
+/** File-name patterns for the generated POT template and locale PO catalogs. */
 export interface CatalogsConfig {
   /** POT template path pattern, e.g. `"l10n/{space}.pot"`. */
   template: string;
@@ -29,6 +30,7 @@ export interface CatalogsConfig {
   target: string;
 }
 
+/** Options controlling generated PO entry flags and obsolete-entry retention. */
 export interface PoOptionsConfig {
   /** PO flags stamped on every generated entry (e.g. `["no-c-format"]` — never `msgid_plural`). */
   defaultFlags: readonly string[];
@@ -36,6 +38,7 @@ export interface PoOptionsConfig {
   preserveObsolete: boolean;
 }
 
+/** Supported-locale registry, exclusions, and ordered locale tiers. */
 export interface LocalesConfig {
   /** Where the supported-locale registry comes from, e.g. `"@pantoken/i18n#LOCALES"`. */
   registry: string;
@@ -45,6 +48,7 @@ export interface LocalesConfig {
   tiers: Readonly<Record<string, readonly string[]>>;
 }
 
+/** Provider rotation and failure-recovery settings for translation requests. */
 export interface CircuitBreakerConfig {
   maxConsecutiveFailures: number;
   /** Ordered profile-name rotation, e.g. `["copilot", "agy", "claude"]`. */
@@ -53,12 +57,14 @@ export interface CircuitBreakerConfig {
   resetTimeoutMs: number;
 }
 
+/** Command/model settings for one translation provider profile. */
 export interface ProviderProfileConfig {
   model: string;
   effort?: string;
   concurrency: number;
 }
 
+/** Translation provider endpoint, profiles, budget, and circuit-breaker settings. */
 export interface ProviderConfig {
   default: string;
   endpoint: string;
@@ -68,12 +74,14 @@ export interface ProviderConfig {
   profiles: Readonly<Record<string, ProviderProfileConfig>>;
 }
 
+/** Drift severity defaults for source, primary, and secondary locale tiers. */
 export interface DriftDefaults {
   source: DriftSeverity;
   primary: DriftSeverity;
   secondary: DriftSeverity;
 }
 
+/** Default translation intent and drift policy for spaces. */
 export interface DefaultsConfig {
   translate: TranslateIntent;
   drift: DriftDefaults;
@@ -82,6 +90,7 @@ export interface DefaultsConfig {
 /** Per-space locale scoping: `only` restricts to a list, `exclude` removes from the full set. */
 export type SpaceLocaleScope = { only: readonly string[] } | { exclude: readonly string[] };
 
+/** Configuration for a prose/content translation space. */
 export interface ContentSpaceConfig {
   kind: "content";
   include: readonly string[];
@@ -92,6 +101,7 @@ export interface ContentSpaceConfig {
   locales?: SpaceLocaleScope;
 }
 
+/** Configuration for a keyed message translation space. */
 export interface MessagesSpaceConfig {
   kind: "messages";
   source: string;
@@ -101,12 +111,14 @@ export interface MessagesSpaceConfig {
   locales?: SpaceLocaleScope;
 }
 
+/** Configuration for a structural drift-only space. */
 export interface StructuralSpaceConfig {
   kind: "structural";
   drift: "block";
   locales?: SpaceLocaleScope;
 }
 
+/** Union of supported localization-space configurations. */
 export type SpaceConfig = ContentSpaceConfig | MessagesSpaceConfig | StructuralSpaceConfig;
 
 /** The full `i18n.config.json` shape. Every field beyond `source` and `spaces` has a sane default. */
