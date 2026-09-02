@@ -192,9 +192,18 @@ test("banner buttons map Pendo variants without restyling the close button", () 
   expect(buttonCss).toContain(
     "border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);",
   );
-  expect(buttonCss).toContain("color: var(--instui-component-base-button-primary-inverse-color);");
+  expect(buttonCss).toContain("var(--instui-component-base-button-primary-inverse-color)");
+  expect(buttonCss).toContain(
+    "var(--instui-component-base-button-primary-inverse-ghost-border-color)",
+  );
   expect(buttonCss).toContain(
     "--instui-component-base-button-primary-inverse-ghost-hover-background",
+  );
+  expect(buttonCss).toContain(
+    "var(--instui-component-base-button-primary-on-color-hover-text-color)",
+  );
+  expect(buttonCss).toContain(
+    "var(--instui-component-base-button-primary-on-color-active-text-color)",
   );
   expect(buttonCss).toContain(
     "--instui-component-base-button-secondary-on-color-active-border-color",

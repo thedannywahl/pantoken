@@ -1,0 +1,4897 @@
+[
+  {
+    "text": "tools",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "aggregate",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Target",
+                "link": "/ga/api/tools/aggregate/src/interfaces/Target.md"
+              },
+              {
+                "text": "AggregateOptions",
+                "link": "/ga/api/tools/aggregate/src/interfaces/AggregateOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "discoverTargets",
+                "link": "/ga/api/tools/aggregate/src/functions/discoverTargets.md"
+              },
+              {
+                "text": "aggregate",
+                "link": "/ga/api/tools/aggregate/src/functions/aggregate.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/tools/aggregate/src/"
+      },
+      {
+        "text": "demo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ga/api/tools/demo/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "ResolvedDemo",
+                "link": "/ga/api/tools/demo/src/interfaces/ResolvedDemo.md"
+              },
+              {
+                "text": "LiveExampleOptions",
+                "link": "/ga/api/tools/demo/src/interfaces/LiveExampleOptions.md"
+              },
+              {
+                "text": "DemoMarkdownItOptions",
+                "link": "/ga/api/tools/demo/src/interfaces/DemoMarkdownItOptions.md"
+              },
+              {
+                "text": "ExampleSrcdocOptions",
+                "link": "/ga/api/tools/demo/src/interfaces/ExampleSrcdocOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FULLSCREEN_BUTTON_HTML",
+                "link": "/ga/api/tools/demo/src/variables/FULLSCREEN_BUTTON_HTML.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "resolveDemo",
+                "link": "/ga/api/tools/demo/src/functions/resolveDemo.md"
+              },
+              {
+                "text": "renderDemoFigure",
+                "link": "/ga/api/tools/demo/src/functions/renderDemoFigure.md"
+              },
+              {
+                "text": "demoMarkdownIt",
+                "link": "/ga/api/tools/demo/src/functions/demoMarkdownIt.md"
+              },
+              {
+                "text": "escapeSrcdoc",
+                "link": "/ga/api/tools/demo/src/functions/escapeSrcdoc.md"
+              },
+              {
+                "text": "buildExampleSrcdoc",
+                "link": "/ga/api/tools/demo/src/functions/buildExampleSrcdoc.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/tools/demo/src/"
+      }
+    ]
+  },
+  {
+    "text": "ai",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken-ai",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AgentTool",
+                "link": "/ga/api/ai/pantoken-ai/src/type-aliases/AgentTool.md"
+              },
+              {
+                "text": "ScaffoldPlatform",
+                "link": "/ga/api/ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ASSETS",
+                "link": "/ga/api/ai/pantoken-ai/src/variables/ASSETS.md"
+              },
+              {
+                "text": "AGENTS_MD",
+                "link": "/ga/api/ai/pantoken-ai/src/variables/AGENTS_MD.md"
+              },
+              {
+                "text": "LLMS_TXT",
+                "link": "/ga/api/ai/pantoken-ai/src/variables/LLMS_TXT.md"
+              },
+              {
+                "text": "AGENT_TOOLS",
+                "link": "/ga/api/ai/pantoken-ai/src/variables/AGENT_TOOLS.md"
+              },
+              {
+                "text": "SCAFFOLD_PLATFORMS",
+                "link": "/ga/api/ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "installAgentAssets",
+                "link": "/ga/api/ai/pantoken-ai/src/functions/installAgentAssets.md"
+              },
+              {
+                "text": "scaffoldAndInit",
+                "link": "/ga/api/ai/pantoken-ai/src/functions/scaffoldAndInit.md"
+              },
+              {
+                "text": "isScaffoldPlatform",
+                "link": "/ga/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md"
+              },
+              {
+                "text": "scaffoldProject",
+                "link": "/ga/api/ai/pantoken-ai/src/functions/scaffoldProject.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/ai/pantoken-ai/src/"
+      }
+    ]
+  },
+  {
+    "text": "platforms",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "android",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateAndroidOptions",
+                "link": "/ga/api/platforms/android/src/interfaces/GenerateAndroidOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAndroid",
+                "link": "/ga/api/platforms/android/src/functions/toAndroid.md"
+              },
+              {
+                "text": "generateAndroid",
+                "link": "/ga/api/platforms/android/src/functions/generateAndroid.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/android/src/"
+      },
+      {
+        "text": "canvas-theme-editor",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeStrings",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md"
+              },
+              {
+                "text": "BuildThemeOptions",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md"
+              },
+              {
+                "text": "CdnFile",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/interfaces/CdnFile.md"
+              },
+              {
+                "text": "CdnProvider",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/interfaces/CdnProvider.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeVariant",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/type-aliases/ThemeVariant.md"
+              },
+              {
+                "text": "ThemeMode",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/type-aliases/ThemeMode.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "THEME_CSS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/THEME_CSS.md"
+              },
+              {
+                "text": "THEME_JS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/THEME_JS.md"
+              },
+              {
+                "text": "ENGLISH_THEME_STRINGS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/ENGLISH_THEME_STRINGS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_CSS_ASSETS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_CSS_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_FONT_ASSETS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_FONT_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_JS_ASSETS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_JS_ASSETS.md"
+              },
+              {
+                "text": "CDN_PROVIDERS",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/CDN_PROVIDERS.md"
+              },
+              {
+                "text": "DEFAULT_CDN_PROVIDER_ID",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/variables/DEFAULT_CDN_PROVIDER_ID.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defaultThemeCssAssets",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/functions/defaultThemeCssAssets.md"
+              },
+              {
+                "text": "buildThemeCss",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/functions/buildThemeCss.md"
+              },
+              {
+                "text": "buildThemeJs",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/functions/buildThemeJs.md"
+              },
+              {
+                "text": "buildTheme",
+                "link": "/ga/api/platforms/canvas-theme-editor/src/functions/buildTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/canvas-theme-editor/src/"
+      },
+      {
+        "text": "compose",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateComposeOptions",
+                "link": "/ga/api/platforms/compose/src/interfaces/GenerateComposeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toCompose",
+                "link": "/ga/api/platforms/compose/src/functions/toCompose.md"
+              },
+              {
+                "text": "generateCompose",
+                "link": "/ga/api/platforms/compose/src/functions/generateCompose.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/compose/src/"
+      },
+      {
+        "text": "drupal",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "DrupalFile",
+                "link": "/ga/api/platforms/drupal/src/interfaces/DrupalFile.md"
+              },
+              {
+                "text": "ToDrupalThemeOptions",
+                "link": "/ga/api/platforms/drupal/src/interfaces/ToDrupalThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "machineName",
+                "link": "/ga/api/platforms/drupal/src/functions/machineName.md"
+              },
+              {
+                "text": "toDrupalTheme",
+                "link": "/ga/api/platforms/drupal/src/functions/toDrupalTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/drupal/src/"
+      },
+      {
+        "text": "email",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ga/api/platforms/email/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ga/api/platforms/email/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "emailTokens",
+                "link": "/ga/api/platforms/email/src/functions/emailTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/email/src/"
+      },
+      {
+        "text": "flutter",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateFlutterOptions",
+                "link": "/ga/api/platforms/flutter/src/interfaces/GenerateFlutterOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFlutter",
+                "link": "/ga/api/platforms/flutter/src/functions/toFlutter.md"
+              },
+              {
+                "text": "generateFlutter",
+                "link": "/ga/api/platforms/flutter/src/functions/generateFlutter.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/flutter/src/"
+      },
+      {
+        "text": "hugo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HugoFile",
+                "link": "/ga/api/platforms/hugo/src/interfaces/HugoFile.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toHugoAssets",
+                "link": "/ga/api/platforms/hugo/src/functions/toHugoAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/hugo/src/"
+      },
+      {
+        "text": "jekyll",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "JekyllFile",
+                "link": "/ga/api/platforms/jekyll/src/interfaces/JekyllFile.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toJekyllAssets",
+                "link": "/ga/api/platforms/jekyll/src/functions/toJekyllAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/jekyll/src/"
+      },
+      {
+        "text": "rust",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustOptions",
+                "link": "/ga/api/platforms/rust/src/interfaces/RustOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustFormat",
+                "link": "/ga/api/platforms/rust/src/type-aliases/RustFormat.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toRust",
+                "link": "/ga/api/platforms/rust/src/functions/toRust.md"
+              },
+              {
+                "text": "generateRust",
+                "link": "/ga/api/platforms/rust/src/functions/generateRust.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/rust/src/"
+      },
+      {
+        "text": "swift",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateSwiftOptions",
+                "link": "/ga/api/platforms/swift/src/interfaces/GenerateSwiftOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toSwift",
+                "link": "/ga/api/platforms/swift/src/functions/toSwift.md"
+              },
+              {
+                "text": "generateSwift",
+                "link": "/ga/api/platforms/swift/src/functions/generateSwift.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/swift/src/"
+      },
+      {
+        "text": "vanilla",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVanillaOptions",
+                "link": "/ga/api/platforms/vanilla/src/interfaces/ToVanillaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ga/api/platforms/vanilla/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "variables",
+                "link": "/ga/api/platforms/vanilla/src/variables/variables.md"
+              },
+              {
+                "text": "VANILLA_TO_INSTUI",
+                "link": "/ga/api/platforms/vanilla/src/variables/VANILLA_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toVanillaVariables",
+                "link": "/ga/api/platforms/vanilla/src/functions/toVanillaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/vanilla/src/"
+      },
+      {
+        "text": "wordpress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeJson",
+                "link": "/ga/api/platforms/wordpress/src/interfaces/ThemeJson.md"
+              },
+              {
+                "text": "ToThemeJsonOptions",
+                "link": "/ga/api/platforms/wordpress/src/interfaces/ToThemeJsonOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ga/api/platforms/wordpress/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "themeJson",
+                "link": "/ga/api/platforms/wordpress/src/variables/themeJson.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeJson",
+                "link": "/ga/api/platforms/wordpress/src/functions/toThemeJson.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/platforms/wordpress/src/"
+      }
+    ]
+  },
+  {
+    "text": "renderers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "angular",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerPantokenElements",
+                "link": "/ga/api/renderers/angular/src/functions/registerPantokenElements.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ga/api/renderers/angular/src/functions/readToken.md"
+              },
+              {
+                "text": "register",
+                "link": "/ga/api/renderers/angular/src/functions/register.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/angular/src/"
+      },
+      {
+        "text": "astro",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HeadEntry",
+                "link": "/ga/api/renderers/astro/src/interfaces/HeadEntry.md"
+              },
+              {
+                "text": "StarlightPluginLike",
+                "link": "/ga/api/renderers/astro/src/interfaces/StarlightPluginLike.md"
+              },
+              {
+                "text": "InstUIOptions",
+                "link": "/ga/api/renderers/astro/src/interfaces/InstUIOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenCss",
+                "link": "/ga/api/renderers/astro/src/functions/pantokenCss.md"
+              },
+              {
+                "text": "InstUI",
+                "link": "/ga/api/renderers/astro/src/functions/InstUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/astro/src/"
+      },
+      {
+        "text": "bootstrap",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToBootstrapCssOptions",
+                "link": "/ga/api/renderers/bootstrap/src/interfaces/ToBootstrapCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BOOTSTRAP_TO_INSTUI",
+                "link": "/ga/api/renderers/bootstrap/src/variables/BOOTSTRAP_TO_INSTUI.md"
+              },
+              {
+                "text": "bootstrapCss",
+                "link": "/ga/api/renderers/bootstrap/src/variables/bootstrapCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toBootstrapCss",
+                "link": "/ga/api/renderers/bootstrap/src/functions/toBootstrapCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/bootstrap/src/"
+      },
+      {
+        "text": "css-in-js",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStyledThemeOptions",
+                "link": "/ga/api/renderers/css-in-js/src/interfaces/ToStyledThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StyledTheme",
+                "link": "/ga/api/renderers/css-in-js/src/type-aliases/StyledTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenTheme",
+                "link": "/ga/api/renderers/css-in-js/src/variables/pantokenTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeKey",
+                "link": "/ga/api/renderers/css-in-js/src/functions/toThemeKey.md"
+              },
+              {
+                "text": "toStyledTheme",
+                "link": "/ga/api/renderers/css-in-js/src/functions/toStyledTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/css-in-js/src/"
+      },
+      {
+        "text": "docusaurus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToDocusaurusCssOptions",
+                "link": "/ga/api/renderers/docusaurus/src/interfaces/ToDocusaurusCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INFIMA_TO_INSTUI",
+                "link": "/ga/api/renderers/docusaurus/src/variables/INFIMA_TO_INSTUI.md"
+              },
+              {
+                "text": "docusaurusCss",
+                "link": "/ga/api/renderers/docusaurus/src/variables/docusaurusCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toDocusaurusCss",
+                "link": "/ga/api/renderers/docusaurus/src/functions/toDocusaurusCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/docusaurus/src/"
+      },
+      {
+        "text": "foundation",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToFoundationSettingsOptions",
+                "link": "/ga/api/renderers/foundation/src/interfaces/ToFoundationSettingsOptions.md"
+              },
+              {
+                "text": "ToFoundationCssOptions",
+                "link": "/ga/api/renderers/foundation/src/interfaces/ToFoundationCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FOUNDATION_TO_INSTUI",
+                "link": "/ga/api/renderers/foundation/src/variables/FOUNDATION_TO_INSTUI.md"
+              },
+              {
+                "text": "foundationSettings",
+                "link": "/ga/api/renderers/foundation/src/variables/foundationSettings.md"
+              },
+              {
+                "text": "foundationCss",
+                "link": "/ga/api/renderers/foundation/src/variables/foundationCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFoundationSettings",
+                "link": "/ga/api/renderers/foundation/src/functions/toFoundationSettings.md"
+              },
+              {
+                "text": "toFoundationCss",
+                "link": "/ga/api/renderers/foundation/src/functions/toFoundationCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/foundation/src/"
+      },
+      {
+        "text": "markdown-it",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MarkdownItOptions",
+                "link": "/ga/api/renderers/markdown-it/src/interfaces/MarkdownItOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PROSE_CLASS",
+                "link": "/ga/api/renderers/markdown-it/src/variables/PROSE_CLASS.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenMarkdownIt",
+                "link": "/ga/api/renderers/markdown-it/src/functions/pantokenMarkdownIt.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/markdown-it/src/"
+      },
+      {
+        "text": "mintlify",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MintlifyColors",
+                "link": "/ga/api/renderers/mintlify/src/interfaces/MintlifyColors.md"
+              },
+              {
+                "text": "MintlifyBackground",
+                "link": "/ga/api/renderers/mintlify/src/interfaces/MintlifyBackground.md"
+              },
+              {
+                "text": "MintlifyTheme",
+                "link": "/ga/api/renderers/mintlify/src/interfaces/MintlifyTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "docsJson",
+                "link": "/ga/api/renderers/mintlify/src/variables/docsJson.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMintlifyConfig",
+                "link": "/ga/api/renderers/mintlify/src/functions/toMintlifyConfig.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/mintlify/src/"
+      },
+      {
+        "text": "mui",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MuiPaletteColor",
+                "link": "/ga/api/renderers/mui/src/interfaces/MuiPaletteColor.md"
+              },
+              {
+                "text": "PantokenThemeOptions",
+                "link": "/ga/api/renderers/mui/src/interfaces/PantokenThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "lightTheme",
+                "link": "/ga/api/renderers/mui/src/variables/lightTheme.md"
+              },
+              {
+                "text": "darkTheme",
+                "link": "/ga/api/renderers/mui/src/variables/darkTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMuiTheme",
+                "link": "/ga/api/renderers/mui/src/functions/toMuiTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/mui/src/"
+      },
+      {
+        "text": "pendo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildPendoCssOptions",
+                "link": "/ga/api/renderers/pendo/src/interfaces/BuildPendoCssOptions.md"
+              },
+              {
+                "text": "AddScopeOptions",
+                "link": "/ga/api/renderers/pendo/src/interfaces/AddScopeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pendoCss",
+                "link": "/ga/api/renderers/pendo/src/variables/pendoCss.md"
+              },
+              {
+                "text": "LAYER_ORDER",
+                "link": "/ga/api/renderers/pendo/src/variables/LAYER_ORDER.md"
+              },
+              {
+                "text": "COMPONENTS",
+                "link": "/ga/api/renderers/pendo/src/variables/COMPONENTS.md"
+              },
+              {
+                "text": "addImportant",
+                "link": "/ga/api/renderers/pendo/src/variables/addImportant.md"
+              },
+              {
+                "text": "addScope",
+                "link": "/ga/api/renderers/pendo/src/variables/addScope.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildPendoCss",
+                "link": "/ga/api/renderers/pendo/src/functions/buildPendoCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/pendo/src/"
+      },
+      {
+        "text": "react",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconProps",
+                "link": "/ga/api/renderers/react/src/interfaces/IconProps.md"
+              },
+              {
+                "text": "TokenProviderProps",
+                "link": "/ga/api/renderers/react/src/interfaces/TokenProviderProps.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ga/api/renderers/react/src/functions/readToken.md"
+              },
+              {
+                "text": "useToken",
+                "link": "/ga/api/renderers/react/src/functions/useToken.md"
+              },
+              {
+                "text": "Icon",
+                "link": "/ga/api/renderers/react/src/functions/Icon.md"
+              },
+              {
+                "text": "TokenProvider",
+                "link": "/ga/api/renderers/react/src/functions/TokenProvider.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/react/src/"
+      },
+      {
+        "text": "react-markdown",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "InstuiMarkdownRenderOptions",
+                "link": "/ga/api/renderers/react-markdown/src/interfaces/InstuiMarkdownRenderOptions.md"
+              },
+              {
+                "text": "InstuiMarkdownProps",
+                "link": "/ga/api/renderers/react-markdown/src/interfaces/InstuiMarkdownProps.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AlertMarker",
+                "link": "/ga/api/renderers/react-markdown/src/type-aliases/AlertMarker.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "instuiMarkdownComponents",
+                "link": "/ga/api/renderers/react-markdown/src/variables/instuiMarkdownComponents.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "createInstuiMarkdownComponents",
+                "link": "/ga/api/renderers/react-markdown/src/functions/createInstuiMarkdownComponents.md"
+              },
+              {
+                "text": "buildIconResolver",
+                "link": "/ga/api/renderers/react-markdown/src/functions/buildIconResolver.md"
+              },
+              {
+                "text": "parseAlertMarker",
+                "link": "/ga/api/renderers/react-markdown/src/functions/parseAlertMarker.md"
+              },
+              {
+                "text": "isColorValue",
+                "link": "/ga/api/renderers/react-markdown/src/functions/isColorValue.md"
+              },
+              {
+                "text": "rehypeColorCodes",
+                "link": "/ga/api/renderers/react-markdown/src/functions/rehypeColorCodes.md"
+              },
+              {
+                "text": "rehypeGithubAlerts",
+                "link": "/ga/api/renderers/react-markdown/src/functions/rehypeGithubAlerts.md"
+              },
+              {
+                "text": "InstuiMarkdown",
+                "link": "/ga/api/renderers/react-markdown/src/functions/InstuiMarkdown.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/react-markdown/src/"
+      },
+      {
+        "text": "react-native",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RNTokenValue",
+                "link": "/ga/api/renderers/react-native/src/type-aliases/RNTokenValue.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ga/api/renderers/react-native/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ga/api/renderers/react-native/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokensForScheme",
+                "link": "/ga/api/renderers/react-native/src/functions/tokensForScheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/react-native/src/"
+      },
+      {
+        "text": "rehype",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RehypeOptions",
+                "link": "/ga/api/renderers/rehype/src/interfaces/RehypeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "rehypePantokenIcons",
+                "link": "/ga/api/renderers/rehype/src/functions/rehypePantokenIcons.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/rehype/src/"
+      },
+      {
+        "text": "shadcn",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToShadcnCssOptions",
+                "link": "/ga/api/renderers/shadcn/src/interfaces/ToShadcnCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "shadcnCss",
+                "link": "/ga/api/renderers/shadcn/src/variables/shadcnCss.md"
+              },
+              {
+                "text": "SHADCN_TO_INSTUI",
+                "link": "/ga/api/renderers/shadcn/src/variables/SHADCN_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toShadcnCss",
+                "link": "/ga/api/renderers/shadcn/src/functions/toShadcnCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/shadcn/src/"
+      },
+      {
+        "text": "storybook",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StorybookTheme",
+                "link": "/ga/api/renderers/storybook/src/type-aliases/StorybookTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenStorybookTheme",
+                "link": "/ga/api/renderers/storybook/src/functions/pantokenStorybookTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/storybook/src/"
+      },
+      {
+        "text": "svelte",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ActionResult",
+                "link": "/ga/api/renderers/svelte/src/interfaces/ActionResult.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerLocalized",
+                "link": "/ga/api/renderers/svelte/src/functions/registerLocalized.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ga/api/renderers/svelte/src/functions/readToken.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ga/api/renderers/svelte/src/functions/icon.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/svelte/src/"
+      },
+      {
+        "text": "tinymce",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssDocEntry",
+                "link": "/ga/api/renderers/tinymce/src/interfaces/CssDocEntry.md"
+              },
+              {
+                "text": "PageLayout",
+                "link": "/ga/api/renderers/tinymce/src/interfaces/PageLayout.md"
+              },
+              {
+                "text": "LogoMeta",
+                "link": "/ga/api/renderers/tinymce/src/interfaces/LogoMeta.md"
+              },
+              {
+                "text": "TaggedIcon",
+                "link": "/ga/api/renderers/tinymce/src/interfaces/TaggedIcon.md"
+              },
+              {
+                "text": "LayoutsPluginOptions",
+                "link": "/ga/api/renderers/tinymce/src/interfaces/LayoutsPluginOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Product",
+                "link": "/ga/api/renderers/tinymce/src/type-aliases/Product.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pageLayouts",
+                "link": "/ga/api/renderers/tinymce/src/variables/pageLayouts.md"
+              },
+              {
+                "text": "logos",
+                "link": "/ga/api/renderers/tinymce/src/variables/logos.md"
+              },
+              {
+                "text": "products",
+                "link": "/ga/api/renderers/tinymce/src/variables/products.md"
+              },
+              {
+                "text": "LAYOUTS_PLUGIN_NAME",
+                "link": "/ga/api/renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md"
+              },
+              {
+                "text": "LAYOUTS_TOOLBAR_NAME",
+                "link": "/ga/api/renderers/tinymce/src/variables/LAYOUTS_TOOLBAR_NAME.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenHtmlCompletion",
+                "link": "/ga/api/renderers/tinymce/src/functions/pantokenHtmlCompletion.md"
+              },
+              {
+                "text": "pantokenHtmlLinter",
+                "link": "/ga/api/renderers/tinymce/src/functions/pantokenHtmlLinter.md"
+              },
+              {
+                "text": "pantokenContentCssUrls",
+                "link": "/ga/api/renderers/tinymce/src/functions/pantokenContentCssUrls.md"
+              },
+              {
+                "text": "injectContentStylesheet",
+                "link": "/ga/api/renderers/tinymce/src/functions/injectContentStylesheet.md"
+              },
+              {
+                "text": "findEntry",
+                "link": "/ga/api/renderers/tinymce/src/functions/findEntry.md"
+              },
+              {
+                "text": "listComponents",
+                "link": "/ga/api/renderers/tinymce/src/functions/listComponents.md"
+              },
+              {
+                "text": "listUtilities",
+                "link": "/ga/api/renderers/tinymce/src/functions/listUtilities.md"
+              },
+              {
+                "text": "getModifierSuggestions",
+                "link": "/ga/api/renderers/tinymce/src/functions/getModifierSuggestions.md"
+              },
+              {
+                "text": "validateClassToken",
+                "link": "/ga/api/renderers/tinymce/src/functions/validateClassToken.md"
+              },
+              {
+                "text": "loadAllIcons",
+                "link": "/ga/api/renderers/tinymce/src/functions/loadAllIcons.md"
+              },
+              {
+                "text": "getIconCdnFile",
+                "link": "/ga/api/renderers/tinymce/src/functions/getIconCdnFile.md"
+              },
+              {
+                "text": "createComponentsPlugin",
+                "link": "/ga/api/renderers/tinymce/src/functions/createComponentsPlugin.md"
+              },
+              {
+                "text": "createIconsPlugin",
+                "link": "/ga/api/renderers/tinymce/src/functions/createIconsPlugin.md"
+              },
+              {
+                "text": "createLayoutsPlugin",
+                "link": "/ga/api/renderers/tinymce/src/functions/createLayoutsPlugin.md"
+              },
+              {
+                "text": "createLogosPlugin",
+                "link": "/ga/api/renderers/tinymce/src/functions/createLogosPlugin.md"
+              },
+              {
+                "text": "createTemplatesPlugin",
+                "link": "/ga/api/renderers/tinymce/src/functions/createTemplatesPlugin.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/tinymce/src/"
+      },
+      {
+        "text": "vitepress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVitePressCssOptions",
+                "link": "/ga/api/renderers/vitepress/src/interfaces/ToVitePressCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "VITEPRESS_TO_INSTUI",
+                "link": "/ga/api/renderers/vitepress/src/variables/VITEPRESS_TO_INSTUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/vitepress/src/"
+      },
+      {
+        "text": "vue",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenVue",
+                "link": "/ga/api/renderers/vue/src/variables/PantokenVue.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ga/api/renderers/vue/src/functions/readToken.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ga/api/renderers/vue/src/functions/iconSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/vue/src/"
+      },
+      {
+        "text": "web-components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandEventish",
+                "link": "/ga/api/renderers/web-components/src/interfaces/CommandEventish.md"
+              },
+              {
+                "text": "ElementRegistry",
+                "link": "/ga/api/renderers/web-components/src/interfaces/ElementRegistry.md"
+              },
+              {
+                "text": "RegisterContext",
+                "link": "/ga/api/renderers/web-components/src/interfaces/RegisterContext.md"
+              },
+              {
+                "text": "ElementDefinition",
+                "link": "/ga/api/renderers/web-components/src/interfaces/ElementDefinition.md"
+              },
+              {
+                "text": "RegisterContextOptions",
+                "link": "/ga/api/renderers/web-components/src/interfaces/RegisterContextOptions.md"
+              },
+              {
+                "text": "WebComponentStrings",
+                "link": "/ga/api/renderers/web-components/src/interfaces/WebComponentStrings.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alert",
+                "link": "/ga/api/renderers/web-components/src/variables/alert.md"
+              },
+              {
+                "text": "avatar",
+                "link": "/ga/api/renderers/web-components/src/variables/avatar.md"
+              },
+              {
+                "text": "badge",
+                "link": "/ga/api/renderers/web-components/src/variables/badge.md"
+              },
+              {
+                "text": "button",
+                "link": "/ga/api/renderers/web-components/src/variables/button.md"
+              },
+              {
+                "text": "calendar",
+                "link": "/ga/api/renderers/web-components/src/variables/calendar.md"
+              },
+              {
+                "text": "contextView",
+                "link": "/ga/api/renderers/web-components/src/variables/contextView.md"
+              },
+              {
+                "text": "dateInput",
+                "link": "/ga/api/renderers/web-components/src/variables/dateInput.md"
+              },
+              {
+                "text": "dateTimeInput",
+                "link": "/ga/api/renderers/web-components/src/variables/dateTimeInput.md"
+              },
+              {
+                "text": "drawerLayout",
+                "link": "/ga/api/renderers/web-components/src/variables/drawerLayout.md"
+              },
+              {
+                "text": "drilldown",
+                "link": "/ga/api/renderers/web-components/src/variables/drilldown.md"
+              },
+              {
+                "text": "iconButton",
+                "link": "/ga/api/renderers/web-components/src/variables/iconButton.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ga/api/renderers/web-components/src/variables/icon.md"
+              },
+              {
+                "text": "img",
+                "link": "/ga/api/renderers/web-components/src/variables/img.md"
+              },
+              {
+                "text": "inPlaceEdit",
+                "link": "/ga/api/renderers/web-components/src/variables/inPlaceEdit.md"
+              },
+              {
+                "text": "DEFINITIONS",
+                "link": "/ga/api/renderers/web-components/src/variables/DEFINITIONS.md"
+              },
+              {
+                "text": "metric",
+                "link": "/ga/api/renderers/web-components/src/variables/metric.md"
+              },
+              {
+                "text": "modal",
+                "link": "/ga/api/renderers/web-components/src/variables/modal.md"
+              },
+              {
+                "text": "pages",
+                "link": "/ga/api/renderers/web-components/src/variables/pages.md"
+              },
+              {
+                "text": "pill",
+                "link": "/ga/api/renderers/web-components/src/variables/pill.md"
+              },
+              {
+                "text": "popover",
+                "link": "/ga/api/renderers/web-components/src/variables/popover.md"
+              },
+              {
+                "text": "progressCircle",
+                "link": "/ga/api/renderers/web-components/src/variables/progressCircle.md"
+              },
+              {
+                "text": "progress",
+                "link": "/ga/api/renderers/web-components/src/variables/progress.md"
+              },
+              {
+                "text": "rating",
+                "link": "/ga/api/renderers/web-components/src/variables/rating.md"
+              },
+              {
+                "text": "sideNavBar",
+                "link": "/ga/api/renderers/web-components/src/variables/sideNavBar.md"
+              },
+              {
+                "text": "spinner",
+                "link": "/ga/api/renderers/web-components/src/variables/spinner.md"
+              },
+              {
+                "text": "tag",
+                "link": "/ga/api/renderers/web-components/src/variables/tag.md"
+              },
+              {
+                "text": "toggleButton",
+                "link": "/ga/api/renderers/web-components/src/variables/toggleButton.md"
+              },
+              {
+                "text": "tooltip",
+                "link": "/ga/api/renderers/web-components/src/variables/tooltip.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ga/api/renderers/web-components/src/variables/tray.md"
+              },
+              {
+                "text": "treeBrowser",
+                "link": "/ga/api/renderers/web-components/src/variables/treeBrowser.md"
+              },
+              {
+                "text": "truncate",
+                "link": "/ga/api/renderers/web-components/src/variables/truncate.md"
+              },
+              {
+                "text": "ELEMENTS",
+                "link": "/ga/api/renderers/web-components/src/variables/ELEMENTS.md"
+              },
+              {
+                "text": "NESTED_DEPS",
+                "link": "/ga/api/renderers/web-components/src/variables/NESTED_DEPS.md"
+              },
+              {
+                "text": "ICON_ELEMENTS",
+                "link": "/ga/api/renderers/web-components/src/variables/ICON_ELEMENTS.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ga/api/renderers/web-components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "ENGLISH_STRINGS",
+                "link": "/ga/api/renderers/web-components/src/variables/ENGLISH_STRINGS.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "register",
+                "link": "/ga/api/renderers/web-components/src/functions/register.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ga/api/renderers/web-components/src/functions/iconSvg.md"
+              },
+              {
+                "text": "noopIconSvg",
+                "link": "/ga/api/renderers/web-components/src/functions/noopIconSvg.md"
+              },
+              {
+                "text": "buildRegisterContext",
+                "link": "/ga/api/renderers/web-components/src/functions/buildRegisterContext.md"
+              },
+              {
+                "text": "resolveFirstDay",
+                "link": "/ga/api/renderers/web-components/src/functions/resolveFirstDay.md"
+              },
+              {
+                "text": "makeStrings",
+                "link": "/ga/api/renderers/web-components/src/functions/makeStrings.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/renderers/web-components/src/"
+      }
+    ]
+  },
+  {
+    "text": "packages",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "cli",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CliArgs",
+                "link": "/ga/api/packages/cli/src/interfaces/CliArgs.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "parseArgs",
+                "link": "/ga/api/packages/cli/src/functions/parseArgs.md"
+              },
+              {
+                "text": "run",
+                "link": "/ga/api/packages/cli/src/functions/run.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/packages/cli/src/"
+      },
+      {
+        "text": "core",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildTokensOptions",
+                "link": "/ga/api/packages/core/src/interfaces/BuildTokensOptions.md"
+              },
+              {
+                "text": "VectorDrawableOptions",
+                "link": "/ga/api/packages/core/src/interfaces/VectorDrawableOptions.md"
+              },
+              {
+                "text": "AssetFile",
+                "link": "/ga/api/packages/core/src/interfaces/AssetFile.md"
+              },
+              {
+                "text": "CollectIconsOptions",
+                "link": "/ga/api/packages/core/src/interfaces/CollectIconsOptions.md"
+              },
+              {
+                "text": "IconToken",
+                "link": "/ga/api/packages/core/src/interfaces/IconToken.md"
+              },
+              {
+                "text": "IconLayer",
+                "link": "/ga/api/packages/core/src/interfaces/IconLayer.md"
+              },
+              {
+                "text": "Leaf",
+                "link": "/ga/api/packages/core/src/interfaces/Leaf.md"
+              },
+              {
+                "text": "SdLeaf",
+                "link": "/ga/api/packages/core/src/interfaces/SdLeaf.md"
+              },
+              {
+                "text": "TokenModify",
+                "link": "/ga/api/packages/core/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ga/api/packages/core/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "Tóicín",
+                "link": "/ga/api/packages/core/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ga/api/packages/core/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ga/api/packages/core/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ga/api/packages/core/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ga/api/packages/core/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ga/api/packages/core/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ga/api/packages/core/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ga/api/packages/core/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ga/api/packages/core/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ga/api/packages/core/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ga/api/packages/core/src/type-aliases/IconResolver.md"
+              },
+              {
+                "text": "Mode",
+                "link": "/ga/api/packages/core/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ICON_COLOR_SPECIAL_VALUES",
+                "link": "/ga/api/packages/core/src/variables/ICON_COLOR_SPECIAL_VALUES.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildTokens",
+                "link": "/ga/api/packages/core/src/functions/buildTokens.md"
+              },
+              {
+                "text": "applyModify",
+                "link": "/ga/api/packages/core/src/functions/applyModify.md"
+              },
+              {
+                "text": "decodeIconSvg",
+                "link": "/ga/api/packages/core/src/functions/decodeIconSvg.md"
+              },
+              {
+                "text": "getIconSvgs",
+                "link": "/ga/api/packages/core/src/functions/getIconSvgs.md"
+              },
+              {
+                "text": "toVectorDrawable",
+                "link": "/ga/api/packages/core/src/functions/toVectorDrawable.md"
+              },
+              {
+                "text": "toXcodeImageset",
+                "link": "/ga/api/packages/core/src/functions/toXcodeImageset.md"
+              },
+              {
+                "text": "flutterIconManifest",
+                "link": "/ga/api/packages/core/src/functions/flutterIconManifest.md"
+              },
+              {
+                "text": "collectIcons",
+                "link": "/ga/api/packages/core/src/functions/collectIcons.md"
+              },
+              {
+                "text": "defineToken",
+                "link": "/ga/api/packages/core/src/functions/defineToken.md"
+              },
+              {
+                "text": "dedupeByName",
+                "link": "/ga/api/packages/core/src/functions/dedupeByName.md"
+              },
+              {
+                "text": "runTokenPlugins",
+                "link": "/ga/api/packages/core/src/functions/runTokenPlugins.md"
+              },
+              {
+                "text": "runIconPlugins",
+                "link": "/ga/api/packages/core/src/functions/runIconPlugins.md"
+              },
+              {
+                "text": "collectLeaves",
+                "link": "/ga/api/packages/core/src/functions/collectLeaves.md"
+              },
+              {
+                "text": "referenceToVarName",
+                "link": "/ga/api/packages/core/src/functions/referenceToVarName.md"
+              },
+              {
+                "text": "resolveValue",
+                "link": "/ga/api/packages/core/src/functions/resolveValue.md"
+              },
+              {
+                "text": "varName",
+                "link": "/ga/api/packages/core/src/functions/varName.md"
+              },
+              {
+                "text": "resolveReferences",
+                "link": "/ga/api/packages/core/src/functions/resolveReferences.md"
+              },
+              {
+                "text": "toStyleDictionary",
+                "link": "/ga/api/packages/core/src/functions/toStyleDictionary.md"
+              },
+              {
+                "text": "toKebab",
+                "link": "/ga/api/packages/core/src/functions/toKebab.md"
+              },
+              {
+                "text": "cssSyntaxForValue",
+                "link": "/ga/api/packages/core/src/functions/cssSyntaxForValue.md"
+              },
+              {
+                "text": "isContextual",
+                "link": "/ga/api/packages/core/src/functions/isContextual.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/packages/core/src/"
+      },
+      {
+        "text": "model",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TokenModify",
+                "link": "/ga/api/packages/model/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ga/api/packages/model/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "DeprecationEntry",
+                "link": "/ga/api/packages/model/src/interfaces/DeprecationEntry.md"
+              },
+              {
+                "text": "DeprecationLedger",
+                "link": "/ga/api/packages/model/src/interfaces/DeprecationLedger.md"
+              },
+              {
+                "text": "Tóicín",
+                "link": "/ga/api/packages/model/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ga/api/packages/model/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ga/api/packages/model/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "PropertyRule",
+                "link": "/ga/api/packages/model/src/interfaces/PropertyRule.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ga/api/packages/model/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ga/api/packages/model/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ga/api/packages/model/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ga/api/packages/model/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ga/api/packages/model/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ga/api/packages/model/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ga/api/packages/model/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "UpstreamRef",
+                "link": "/ga/api/packages/model/src/type-aliases/UpstreamRef.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ga/api/packages/model/src/type-aliases/IconResolver.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defineToken",
+                "link": "/ga/api/packages/model/src/functions/defineToken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/packages/model/src/"
+      },
+      {
+        "text": "plugin-kit",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ga/api/packages/plugin-kit/src/interfaces/ResolveOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Stage",
+                "link": "/ga/api/packages/plugin-kit/src/type-aliases/Stage.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "definePlugin",
+                "link": "/ga/api/packages/plugin-kit/src/functions/definePlugin.md"
+              },
+              {
+                "text": "isFactoried",
+                "link": "/ga/api/packages/plugin-kit/src/functions/isFactoried.md"
+              },
+              {
+                "text": "validatePlugin",
+                "link": "/ga/api/packages/plugin-kit/src/functions/validatePlugin.md"
+              },
+              {
+                "text": "capabilitiesOf",
+                "link": "/ga/api/packages/plugin-kit/src/functions/capabilitiesOf.md"
+              },
+              {
+                "text": "checkPlugins",
+                "link": "/ga/api/packages/plugin-kit/src/functions/checkPlugins.md"
+              },
+              {
+                "text": "extendPlugin",
+                "link": "/ga/api/packages/plugin-kit/src/functions/extendPlugin.md"
+              },
+              {
+                "text": "mergePlugin",
+                "link": "/ga/api/packages/plugin-kit/src/functions/mergePlugin.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ga/api/packages/plugin-kit/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ga/api/packages/plugin-kit/src/functions/resolveTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/packages/plugin-kit/src/"
+      },
+      {
+        "text": "utils",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Rgba",
+                "link": "/ga/api/packages/utils/src/interfaces/Rgba.md"
+              },
+              {
+                "text": "ResolveOptions",
+                "link": "/ga/api/packages/utils/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "SpacingStep",
+                "link": "/ga/api/packages/utils/src/interfaces/SpacingStep.md"
+              },
+              {
+                "text": "UtilityOptions",
+                "link": "/ga/api/packages/utils/src/interfaces/UtilityOptions.md"
+              },
+              {
+                "text": "ColorUtilityNames",
+                "link": "/ga/api/packages/utils/src/interfaces/ColorUtilityNames.md"
+              },
+              {
+                "text": "TokenUtilityGroup",
+                "link": "/ga/api/packages/utils/src/interfaces/TokenUtilityGroup.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ga/api/packages/utils/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "ColorUtilityEntry",
+                "link": "/ga/api/packages/utils/src/type-aliases/ColorUtilityEntry.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ga/api/packages/utils/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ga/api/packages/utils/src/variables/FOCUSABLE_SELECTOR.md"
+              },
+              {
+                "text": "VAR_RE",
+                "link": "/ga/api/packages/utils/src/variables/VAR_RE.md"
+              },
+              {
+                "text": "LIGHT_DARK_RE",
+                "link": "/ga/api/packages/utils/src/variables/LIGHT_DARK_RE.md"
+              },
+              {
+                "text": "SPACING_STEPS",
+                "link": "/ga/api/packages/utils/src/variables/SPACING_STEPS.md"
+              },
+              {
+                "text": "SPACING_AUTO_STEP",
+                "link": "/ga/api/packages/utils/src/variables/SPACING_AUTO_STEP.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "camelCase",
+                "link": "/ga/api/packages/utils/src/functions/camelCase.md"
+              },
+              {
+                "text": "parseHexColor",
+                "link": "/ga/api/packages/utils/src/functions/parseHexColor.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ga/api/packages/utils/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ga/api/packages/utils/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ga/api/packages/utils/src/functions/focusOutlineRules.md"
+              },
+              {
+                "text": "extractInstuiRefs",
+                "link": "/ga/api/packages/utils/src/functions/extractInstuiRefs.md"
+              },
+              {
+                "text": "tokenNames",
+                "link": "/ga/api/packages/utils/src/functions/tokenNames.md"
+              },
+              {
+                "text": "unknownReferences",
+                "link": "/ga/api/packages/utils/src/functions/unknownReferences.md"
+              },
+              {
+                "text": "danglingReferences",
+                "link": "/ga/api/packages/utils/src/functions/danglingReferences.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ga/api/packages/utils/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ga/api/packages/utils/src/functions/resolveTokens.md"
+              },
+              {
+                "text": "sanitizeSvg",
+                "link": "/ga/api/packages/utils/src/functions/sanitizeSvg.md"
+              },
+              {
+                "text": "globalModifierSelector",
+                "link": "/ga/api/packages/utils/src/functions/globalModifierSelector.md"
+              },
+              {
+                "text": "colorUtilitiesCss",
+                "link": "/ga/api/packages/utils/src/functions/colorUtilitiesCss.md"
+              },
+              {
+                "text": "tokenUtilitiesCss",
+                "link": "/ga/api/packages/utils/src/functions/tokenUtilitiesCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/packages/utils/src/"
+      }
+    ]
+  },
+  {
+    "text": "formats",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ComponentOptions",
+                "link": "/ga/api/formats/components/src/interfaces/ComponentOptions.md"
+              },
+              {
+                "text": "ProseOptions",
+                "link": "/ga/api/formats/components/src/interfaces/ProseOptions.md"
+              },
+              {
+                "text": "IconGlyphsOptions",
+                "link": "/ga/api/formats/components/src/interfaces/IconGlyphsOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alertCss",
+                "link": "/ga/api/formats/components/src/variables/alertCss.md"
+              },
+              {
+                "text": "avatarCss",
+                "link": "/ga/api/formats/components/src/variables/avatarCss.md"
+              },
+              {
+                "text": "badgeCss",
+                "link": "/ga/api/formats/components/src/variables/badgeCss.md"
+              },
+              {
+                "text": "billboardCss",
+                "link": "/ga/api/formats/components/src/variables/billboardCss.md"
+              },
+              {
+                "text": "breadcrumbCss",
+                "link": "/ga/api/formats/components/src/variables/breadcrumbCss.md"
+              },
+              {
+                "text": "breadcrumbLinkCss",
+                "link": "/ga/api/formats/components/src/variables/breadcrumbLinkCss.md"
+              },
+              {
+                "text": "buttonCss",
+                "link": "/ga/api/formats/components/src/variables/buttonCss.md"
+              },
+              {
+                "text": "bylineCss",
+                "link": "/ga/api/formats/components/src/variables/bylineCss.md"
+              },
+              {
+                "text": "calendarCss",
+                "link": "/ga/api/formats/components/src/variables/calendarCss.md"
+              },
+              {
+                "text": "calendarDayCss",
+                "link": "/ga/api/formats/components/src/variables/calendarDayCss.md"
+              },
+              {
+                "text": "checkboxCss",
+                "link": "/ga/api/formats/components/src/variables/checkboxCss.md"
+              },
+              {
+                "text": "closeButtonCss",
+                "link": "/ga/api/formats/components/src/variables/closeButtonCss.md"
+              },
+              {
+                "text": "contextViewCss",
+                "link": "/ga/api/formats/components/src/variables/contextViewCss.md"
+              },
+              {
+                "text": "drawerLayoutCss",
+                "link": "/ga/api/formats/components/src/variables/drawerLayoutCss.md"
+              },
+              {
+                "text": "drawerLayoutContentCss",
+                "link": "/ga/api/formats/components/src/variables/drawerLayoutContentCss.md"
+              },
+              {
+                "text": "drawerLayoutTrayCss",
+                "link": "/ga/api/formats/components/src/variables/drawerLayoutTrayCss.md"
+              },
+              {
+                "text": "fileDropCss",
+                "link": "/ga/api/formats/components/src/variables/fileDropCss.md"
+              },
+              {
+                "text": "formFieldGroupCss",
+                "link": "/ga/api/formats/components/src/variables/formFieldGroupCss.md"
+              },
+              {
+                "text": "formFieldMessagesCss",
+                "link": "/ga/api/formats/components/src/variables/formFieldMessagesCss.md"
+              },
+              {
+                "text": "formFieldCss",
+                "link": "/ga/api/formats/components/src/variables/formFieldCss.md"
+              },
+              {
+                "text": "headingCss",
+                "link": "/ga/api/formats/components/src/variables/headingCss.md"
+              },
+              {
+                "text": "imgCss",
+                "link": "/ga/api/formats/components/src/variables/imgCss.md"
+              },
+              {
+                "text": "inPlaceEditCss",
+                "link": "/ga/api/formats/components/src/variables/inPlaceEditCss.md"
+              },
+              {
+                "text": "inputGroupCss",
+                "link": "/ga/api/formats/components/src/variables/inputGroupCss.md"
+              },
+              {
+                "text": "linkCss",
+                "link": "/ga/api/formats/components/src/variables/linkCss.md"
+              },
+              {
+                "text": "listCss",
+                "link": "/ga/api/formats/components/src/variables/listCss.md"
+              },
+              {
+                "text": "listItemCss",
+                "link": "/ga/api/formats/components/src/variables/listItemCss.md"
+              },
+              {
+                "text": "maskCss",
+                "link": "/ga/api/formats/components/src/variables/maskCss.md"
+              },
+              {
+                "text": "menuCss",
+                "link": "/ga/api/formats/components/src/variables/menuCss.md"
+              },
+              {
+                "text": "menuGroupCss",
+                "link": "/ga/api/formats/components/src/variables/menuGroupCss.md"
+              },
+              {
+                "text": "menuItemCss",
+                "link": "/ga/api/formats/components/src/variables/menuItemCss.md"
+              },
+              {
+                "text": "menuSeparatorCss",
+                "link": "/ga/api/formats/components/src/variables/menuSeparatorCss.md"
+              },
+              {
+                "text": "metricCss",
+                "link": "/ga/api/formats/components/src/variables/metricCss.md"
+              },
+              {
+                "text": "modalCss",
+                "link": "/ga/api/formats/components/src/variables/modalCss.md"
+              },
+              {
+                "text": "modalBodyCss",
+                "link": "/ga/api/formats/components/src/variables/modalBodyCss.md"
+              },
+              {
+                "text": "modalFooterCss",
+                "link": "/ga/api/formats/components/src/variables/modalFooterCss.md"
+              },
+              {
+                "text": "modalHeaderCss",
+                "link": "/ga/api/formats/components/src/variables/modalHeaderCss.md"
+              },
+              {
+                "text": "numberInputCss",
+                "link": "/ga/api/formats/components/src/variables/numberInputCss.md"
+              },
+              {
+                "text": "paginationCss",
+                "link": "/ga/api/formats/components/src/variables/paginationCss.md"
+              },
+              {
+                "text": "paginationPageCss",
+                "link": "/ga/api/formats/components/src/variables/paginationPageCss.md"
+              },
+              {
+                "text": "pillCss",
+                "link": "/ga/api/formats/components/src/variables/pillCss.md"
+              },
+              {
+                "text": "popoverCss",
+                "link": "/ga/api/formats/components/src/variables/popoverCss.md"
+              },
+              {
+                "text": "progressCircleCss",
+                "link": "/ga/api/formats/components/src/variables/progressCircleCss.md"
+              },
+              {
+                "text": "progressCss",
+                "link": "/ga/api/formats/components/src/variables/progressCss.md"
+              },
+              {
+                "text": "radioInputGroupCss",
+                "link": "/ga/api/formats/components/src/variables/radioInputGroupCss.md"
+              },
+              {
+                "text": "radioCss",
+                "link": "/ga/api/formats/components/src/variables/radioCss.md"
+              },
+              {
+                "text": "rangeInputCss",
+                "link": "/ga/api/formats/components/src/variables/rangeInputCss.md"
+              },
+              {
+                "text": "ratingCss",
+                "link": "/ga/api/formats/components/src/variables/ratingCss.md"
+              },
+              {
+                "text": "sideNavBarCss",
+                "link": "/ga/api/formats/components/src/variables/sideNavBarCss.md"
+              },
+              {
+                "text": "sideNavBarItemCss",
+                "link": "/ga/api/formats/components/src/variables/sideNavBarItemCss.md"
+              },
+              {
+                "text": "simpleSelectCss",
+                "link": "/ga/api/formats/components/src/variables/simpleSelectCss.md"
+              },
+              {
+                "text": "spinnerCss",
+                "link": "/ga/api/formats/components/src/variables/spinnerCss.md"
+              },
+              {
+                "text": "tableCss",
+                "link": "/ga/api/formats/components/src/variables/tableCss.md"
+              },
+              {
+                "text": "tableBodyCss",
+                "link": "/ga/api/formats/components/src/variables/tableBodyCss.md"
+              },
+              {
+                "text": "tableCellCss",
+                "link": "/ga/api/formats/components/src/variables/tableCellCss.md"
+              },
+              {
+                "text": "tableColHeaderCss",
+                "link": "/ga/api/formats/components/src/variables/tableColHeaderCss.md"
+              },
+              {
+                "text": "tableHeadCss",
+                "link": "/ga/api/formats/components/src/variables/tableHeadCss.md"
+              },
+              {
+                "text": "tableRowHeaderCss",
+                "link": "/ga/api/formats/components/src/variables/tableRowHeaderCss.md"
+              },
+              {
+                "text": "tableRowCss",
+                "link": "/ga/api/formats/components/src/variables/tableRowCss.md"
+              },
+              {
+                "text": "tabsCss",
+                "link": "/ga/api/formats/components/src/variables/tabsCss.md"
+              },
+              {
+                "text": "tabsPanelCss",
+                "link": "/ga/api/formats/components/src/variables/tabsPanelCss.md"
+              },
+              {
+                "text": "tabsTabCss",
+                "link": "/ga/api/formats/components/src/variables/tabsTabCss.md"
+              },
+              {
+                "text": "tagCss",
+                "link": "/ga/api/formats/components/src/variables/tagCss.md"
+              },
+              {
+                "text": "textAreaCss",
+                "link": "/ga/api/formats/components/src/variables/textAreaCss.md"
+              },
+              {
+                "text": "textInputCss",
+                "link": "/ga/api/formats/components/src/variables/textInputCss.md"
+              },
+              {
+                "text": "textCss",
+                "link": "/ga/api/formats/components/src/variables/textCss.md"
+              },
+              {
+                "text": "toggleDetailsCss",
+                "link": "/ga/api/formats/components/src/variables/toggleDetailsCss.md"
+              },
+              {
+                "text": "toggleGroupCss",
+                "link": "/ga/api/formats/components/src/variables/toggleGroupCss.md"
+              },
+              {
+                "text": "tooltipCss",
+                "link": "/ga/api/formats/components/src/variables/tooltipCss.md"
+              },
+              {
+                "text": "trayCss",
+                "link": "/ga/api/formats/components/src/variables/trayCss.md"
+              },
+              {
+                "text": "treeBrowserCss",
+                "link": "/ga/api/formats/components/src/variables/treeBrowserCss.md"
+              },
+              {
+                "text": "viewCss",
+                "link": "/ga/api/formats/components/src/variables/viewCss.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ga/api/formats/components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "cursorUtilitiesCss",
+                "link": "/ga/api/formats/components/src/variables/cursorUtilitiesCss.md"
+              },
+              {
+                "text": "gapCss",
+                "link": "/ga/api/formats/components/src/variables/gapCss.md"
+              },
+              {
+                "text": "iconCss",
+                "link": "/ga/api/formats/components/src/variables/iconCss.md"
+              },
+              {
+                "text": "layoutUtilitiesCss",
+                "link": "/ga/api/formats/components/src/variables/layoutUtilitiesCss.md"
+              },
+              {
+                "text": "maskUtilityCss",
+                "link": "/ga/api/formats/components/src/variables/maskUtilityCss.md"
+              },
+              {
+                "text": "overflowUtilitiesCss",
+                "link": "/ga/api/formats/components/src/variables/overflowUtilitiesCss.md"
+              },
+              {
+                "text": "positionUtilitiesCss",
+                "link": "/ga/api/formats/components/src/variables/positionUtilitiesCss.md"
+              },
+              {
+                "text": "responsiveUtilitiesCss",
+                "link": "/ga/api/formats/components/src/variables/responsiveUtilitiesCss.md"
+              },
+              {
+                "text": "screenReaderContentCss",
+                "link": "/ga/api/formats/components/src/variables/screenReaderContentCss.md"
+              },
+              {
+                "text": "spacingUtilitiesCss",
+                "link": "/ga/api/formats/components/src/variables/spacingUtilitiesCss.md"
+              },
+              {
+                "text": "stackingUtilityCss",
+                "link": "/ga/api/formats/components/src/variables/stackingUtilityCss.md"
+              },
+              {
+                "text": "transitionCss",
+                "link": "/ga/api/formats/components/src/variables/transitionCss.md"
+              },
+              {
+                "text": "truncateCss",
+                "link": "/ga/api/formats/components/src/variables/truncateCss.md"
+              },
+              {
+                "text": "visualDebugCss",
+                "link": "/ga/api/formats/components/src/variables/visualDebugCss.md"
+              },
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ga/api/formats/components/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ga/api/formats/components/src/variables/FOCUSABLE_SELECTOR.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "selectCss",
+                "link": "/ga/api/formats/components/src/functions/selectCss.md"
+              },
+              {
+                "text": "elevationCss",
+                "link": "/ga/api/formats/components/src/functions/elevationCss.md"
+              },
+              {
+                "text": "focusOutlineCss",
+                "link": "/ga/api/formats/components/src/functions/focusOutlineCss.md"
+              },
+              {
+                "text": "baseCss",
+                "link": "/ga/api/formats/components/src/functions/baseCss.md"
+              },
+              {
+                "text": "componentsCss",
+                "link": "/ga/api/formats/components/src/functions/componentsCss.md"
+              },
+              {
+                "text": "proseCss",
+                "link": "/ga/api/formats/components/src/functions/proseCss.md"
+              },
+              {
+                "text": "iconGlyphsCss",
+                "link": "/ga/api/formats/components/src/functions/iconGlyphsCss.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ga/api/formats/components/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ga/api/formats/components/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ga/api/formats/components/src/functions/focusOutlineRules.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/components/src/"
+      },
+      {
+        "text": "css",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssSection",
+                "link": "/ga/api/formats/css/src/interfaces/CssSection.md"
+              },
+              {
+                "text": "ToCssOptions",
+                "link": "/ga/api/formats/css/src/interfaces/ToCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "css",
+                "link": "/ga/api/formats/css/src/variables/css.md"
+              },
+              {
+                "text": "leanCss",
+                "link": "/ga/api/formats/css/src/variables/leanCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildCssFile",
+                "link": "/ga/api/formats/css/src/functions/buildCssFile.md"
+              },
+              {
+                "text": "toCss",
+                "link": "/ga/api/formats/css/src/functions/toCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/css/src/"
+      },
+      {
+        "text": "dtcg",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ga/api/formats/dtcg/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "DtcgNode",
+                "link": "/ga/api/formats/dtcg/src/type-aliases/DtcgNode.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "dtcg",
+                "link": "/ga/api/formats/dtcg/src/variables/dtcg.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ga/api/formats/dtcg/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ga/api/formats/dtcg/src/functions/byTheme.md"
+              },
+              {
+                "text": "toDtcg",
+                "link": "/ga/api/formats/dtcg/src/functions/toDtcg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/dtcg/src/"
+      },
+      {
+        "text": "icon-font",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconFontResult",
+                "link": "/ga/api/formats/icon-font/src/interfaces/IconFontResult.md"
+              },
+              {
+                "text": "BuildIconFontOptions",
+                "link": "/ga/api/formats/icon-font/src/interfaces/BuildIconFontOptions.md"
+              },
+              {
+                "text": "GlyphPath",
+                "link": "/ga/api/formats/icon-font/src/interfaces/GlyphPath.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildIconFont",
+                "link": "/ga/api/formats/icon-font/src/functions/buildIconFont.md"
+              },
+              {
+                "text": "svgToGlyphPath",
+                "link": "/ga/api/formats/icon-font/src/functions/svgToGlyphPath.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/icon-font/src/"
+      },
+      {
+        "text": "icons",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenIcon",
+                "link": "/ga/api/formats/icons/src/interfaces/PantokenIcon.md"
+              },
+              {
+                "text": "IconResolverChainOptions",
+                "link": "/ga/api/formats/icons/src/interfaces/IconResolverChainOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "icons",
+                "link": "/ga/api/formats/icons/src/variables/icons.md"
+              },
+              {
+                "text": "iconsByName",
+                "link": "/ga/api/formats/icons/src/variables/iconsByName.md"
+              },
+              {
+                "text": "resolve",
+                "link": "/ga/api/formats/icons/src/variables/resolve.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "getIcon",
+                "link": "/ga/api/formats/icons/src/functions/getIcon.md"
+              },
+              {
+                "text": "buildIconResolverChain",
+                "link": "/ga/api/formats/icons/src/functions/buildIconResolverChain.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/icons/src/"
+      },
+      {
+        "text": "interactions",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ProgressCircleOptions",
+                "link": "/ga/api/formats/interactions/src/interfaces/ProgressCircleOptions.md"
+              },
+              {
+                "text": "ProgressCircleHandle",
+                "link": "/ga/api/formats/interactions/src/interfaces/ProgressCircleHandle.md"
+              },
+              {
+                "text": "RemoveOptions",
+                "link": "/ga/api/formats/interactions/src/interfaces/RemoveOptions.md"
+              },
+              {
+                "text": "RemoveHandle",
+                "link": "/ga/api/formats/interactions/src/interfaces/RemoveHandle.md"
+              },
+              {
+                "text": "TooltipOptions",
+                "link": "/ga/api/formats/interactions/src/interfaces/TooltipOptions.md"
+              },
+              {
+                "text": "TooltipHandle",
+                "link": "/ga/api/formats/interactions/src/interfaces/TooltipHandle.md"
+              },
+              {
+                "text": "TruncateAutoOptions",
+                "link": "/ga/api/formats/interactions/src/interfaces/TruncateAutoOptions.md"
+              },
+              {
+                "text": "TruncateAutoHandle",
+                "link": "/ga/api/formats/interactions/src/interfaces/TruncateAutoHandle.md"
+              },
+              {
+                "text": "CommandEventish",
+                "link": "/ga/api/formats/interactions/src/interfaces/CommandEventish.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandHandler",
+                "link": "/ga/api/formats/interactions/src/type-aliases/CommandHandler.md"
+              },
+              {
+                "text": "OnCommand",
+                "link": "/ga/api/formats/interactions/src/type-aliases/OnCommand.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "SPACING_ATTRS",
+                "link": "/ga/api/formats/interactions/src/variables/SPACING_ATTRS.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "initCloseButton",
+                "link": "/ga/api/formats/interactions/src/functions/initCloseButton.md"
+              },
+              {
+                "text": "initInPlaceEdit",
+                "link": "/ga/api/formats/interactions/src/functions/initInPlaceEdit.md"
+              },
+              {
+                "text": "initModal",
+                "link": "/ga/api/formats/interactions/src/functions/initModal.md"
+              },
+              {
+                "text": "initProgressCircle",
+                "link": "/ga/api/formats/interactions/src/functions/initProgressCircle.md"
+              },
+              {
+                "text": "initRemove",
+                "link": "/ga/api/formats/interactions/src/functions/initRemove.md"
+              },
+              {
+                "text": "initResponsiveOverlay",
+                "link": "/ga/api/formats/interactions/src/functions/initResponsiveOverlay.md"
+              },
+              {
+                "text": "initTooltip",
+                "link": "/ga/api/formats/interactions/src/functions/initTooltip.md"
+              },
+              {
+                "text": "syncTruncateAutoLines",
+                "link": "/ga/api/formats/interactions/src/functions/syncTruncateAutoLines.md"
+              },
+              {
+                "text": "initTruncateAuto",
+                "link": "/ga/api/formats/interactions/src/functions/initTruncateAuto.md"
+              },
+              {
+                "text": "makeOnCommand",
+                "link": "/ga/api/formats/interactions/src/functions/makeOnCommand.md"
+              },
+              {
+                "text": "syncInvoker",
+                "link": "/ga/api/formats/interactions/src/functions/syncInvoker.md"
+              },
+              {
+                "text": "resolveSpace",
+                "link": "/ga/api/formats/interactions/src/functions/resolveSpace.md"
+              },
+              {
+                "text": "spacingValue",
+                "link": "/ga/api/formats/interactions/src/functions/spacingValue.md"
+              },
+              {
+                "text": "applySpacing",
+                "link": "/ga/api/formats/interactions/src/functions/applySpacing.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/interactions/src/"
+      },
+      {
+        "text": "less",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToLessOptions",
+                "link": "/ga/api/formats/less/src/interfaces/ToLessOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "less",
+                "link": "/ga/api/formats/less/src/variables/less.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toLess",
+                "link": "/ga/api/formats/less/src/functions/toLess.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/less/src/"
+      },
+      {
+        "text": "scss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToScssOptions",
+                "link": "/ga/api/formats/scss/src/interfaces/ToScssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "scss",
+                "link": "/ga/api/formats/scss/src/variables/scss.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toScss",
+                "link": "/ga/api/formats/scss/src/functions/toScss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/scss/src/"
+      },
+      {
+        "text": "stylus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStylusOptions",
+                "link": "/ga/api/formats/stylus/src/interfaces/ToStylusOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "stylus",
+                "link": "/ga/api/formats/stylus/src/variables/stylus.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toStylus",
+                "link": "/ga/api/formats/stylus/src/functions/toStylus.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/stylus/src/"
+      },
+      {
+        "text": "tokens",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokens",
+                "link": "/ga/api/formats/tokens/src/variables/tokens.md"
+              },
+              {
+                "text": "rebrandTokens",
+                "link": "/ga/api/formats/tokens/src/variables/rebrandTokens.md"
+              },
+              {
+                "text": "canvasTokens",
+                "link": "/ga/api/formats/tokens/src/variables/canvasTokens.md"
+              },
+              {
+                "text": "canvasHighContrastTokens",
+                "link": "/ga/api/formats/tokens/src/variables/canvasHighContrastTokens.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ga/api/formats/tokens/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ga/api/formats/tokens/src/functions/byTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/formats/tokens/src/"
+      }
+    ]
+  },
+  {
+    "text": "design",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "figma",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FigmaColor",
+                "link": "/ga/api/design/figma/src/interfaces/FigmaColor.md"
+              },
+              {
+                "text": "FigmaVariable",
+                "link": "/ga/api/design/figma/src/interfaces/FigmaVariable.md"
+              },
+              {
+                "text": "FigmaVariablesPayload",
+                "link": "/ga/api/design/figma/src/interfaces/FigmaVariablesPayload.md"
+              },
+              {
+                "text": "ToFigmaOptions",
+                "link": "/ga/api/design/figma/src/interfaces/ToFigmaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFigmaColor",
+                "link": "/ga/api/design/figma/src/functions/toFigmaColor.md"
+              },
+              {
+                "text": "toFigmaVariables",
+                "link": "/ga/api/design/figma/src/functions/toFigmaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/design/figma/src/"
+      },
+      {
+        "text": "swatches",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToGplOptions",
+                "link": "/ga/api/design/swatches/src/interfaces/ToGplOptions.md"
+              },
+              {
+                "text": "Swatch",
+                "link": "/ga/api/design/swatches/src/interfaces/Swatch.md"
+              },
+              {
+                "text": "Rgb",
+                "link": "/ga/api/design/swatches/src/interfaces/Rgb.md"
+              },
+              {
+                "text": "SketchPalette",
+                "link": "/ga/api/design/swatches/src/interfaces/SketchPalette.md"
+              },
+              {
+                "text": "ToSvgOptions",
+                "link": "/ga/api/design/swatches/src/interfaces/ToSvgOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ga/api/design/swatches/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "swatches",
+                "link": "/ga/api/design/swatches/src/variables/swatches.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAse",
+                "link": "/ga/api/design/swatches/src/functions/toAse.md"
+              },
+              {
+                "text": "toGpl",
+                "link": "/ga/api/design/swatches/src/functions/toGpl.md"
+              },
+              {
+                "text": "hexToRgb",
+                "link": "/ga/api/design/swatches/src/functions/hexToRgb.md"
+              },
+              {
+                "text": "toSwatches",
+                "link": "/ga/api/design/swatches/src/functions/toSwatches.md"
+              },
+              {
+                "text": "toSketchPalette",
+                "link": "/ga/api/design/swatches/src/functions/toSketchPalette.md"
+              },
+              {
+                "text": "toSvg",
+                "link": "/ga/api/design/swatches/src/functions/toSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/design/swatches/src/"
+      }
+    ]
+  },
+  {
+    "text": "bundlers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "next",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "NextConfigLike",
+                "link": "/ga/api/bundlers/next/src/interfaces/NextConfigLike.md"
+              },
+              {
+                "text": "WithPantokenOptions",
+                "link": "/ga/api/bundlers/next/src/interfaces/WithPantokenOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INSTUI_TRANSPILE_PACKAGES",
+                "link": "/ga/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "withPantoken",
+                "link": "/ga/api/bundlers/next/src/functions/withPantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/bundlers/next/src/"
+      },
+      {
+        "text": "panda",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaToken",
+                "link": "/ga/api/bundlers/panda/src/interfaces/PandaToken.md"
+              },
+              {
+                "text": "PandaSemanticToken",
+                "link": "/ga/api/bundlers/panda/src/interfaces/PandaSemanticToken.md"
+              },
+              {
+                "text": "PandaPreset",
+                "link": "/ga/api/bundlers/panda/src/interfaces/PandaPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "Aliasanna Cineál",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaCategory",
+                "link": "/ga/api/bundlers/panda/src/type-aliases/PandaCategory.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ga/api/bundlers/panda/src/variables/pantokenPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toPandaPreset",
+                "link": "/ga/api/bundlers/panda/src/functions/toPandaPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/bundlers/panda/src/"
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenPostcssOptions",
+                "link": "/ga/api/bundlers/postcss/src/interfaces/PantokenPostcssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Athróga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ga/api/bundlers/postcss/src/variables/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/bundlers/postcss/src/"
+      },
+      {
+        "text": "tailwind",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TailwindPreset",
+                "link": "/ga/api/bundlers/tailwind/src/interfaces/TailwindPreset.md"
+              },
+              {
+                "text": "PantokenPresetOptions",
+                "link": "/ga/api/bundlers/tailwind/src/interfaces/PantokenPresetOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ga/api/bundlers/tailwind/src/functions/pantokenPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/bundlers/tailwind/src/"
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenViteOptions",
+                "link": "/ga/api/bundlers/vite/src/interfaces/PantokenViteOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Feidhmeanna",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ga/api/bundlers/vite/src/functions/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/bundlers/vite/src/"
+      },
+      {
+        "text": "webpack",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Rangaí",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackPlugin",
+                "link": "/ga/api/bundlers/webpack/src/classes/PantokenWebpackPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Comhéadan",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackOptions",
+                "link": "/ga/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ga/api/bundlers/webpack/src/"
+      }
+    ]
+  },
+  {
+    "text": "plugins",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "colors",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Aliasanna Cineál",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CssColor",
+                    "link": "/ga/api/plugins/pantoken/colors/src/type-aliases/CssColor.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "alpha",
+                    "link": "/ga/api/plugins/pantoken/colors/src/functions/alpha.md"
+                  },
+                  {
+                    "text": "darken",
+                    "link": "/ga/api/plugins/pantoken/colors/src/functions/darken.md"
+                  },
+                  {
+                    "text": "lighten",
+                    "link": "/ga/api/plugins/pantoken/colors/src/functions/lighten.md"
+                  },
+                  {
+                    "text": "overlayColors",
+                    "link": "/ga/api/plugins/pantoken/colors/src/functions/overlayColors.md"
+                  },
+                  {
+                    "text": "onColor",
+                    "link": "/ga/api/plugins/pantoken/colors/src/functions/onColor.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/colors/src/"
+          },
+          {
+            "text": "custom-components",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomComponentsOptions",
+                    "link": "/ga/api/plugins/pantoken/custom-components/src/interfaces/CustomComponentsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "bannerRules",
+                    "link": "/ga/api/plugins/pantoken/custom-components/src/functions/bannerRules.md"
+                  },
+                  {
+                    "text": "cardRules",
+                    "link": "/ga/api/plugins/pantoken/custom-components/src/functions/cardRules.md"
+                  },
+                  {
+                    "text": "customComponents",
+                    "link": "/ga/api/plugins/pantoken/custom-components/src/functions/customComponents.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/custom-components/src/"
+          },
+          {
+            "text": "custom-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomIcon",
+                    "link": "/ga/api/plugins/pantoken/custom-icons/src/interfaces/CustomIcon.md"
+                  },
+                  {
+                    "text": "CustomIconsOptions",
+                    "link": "/ga/api/plugins/pantoken/custom-icons/src/interfaces/CustomIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "icons",
+                    "link": "/ga/api/plugins/pantoken/custom-icons/src/variables/icons.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "customIcons",
+                    "link": "/ga/api/plugins/pantoken/custom-icons/src/functions/customIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/custom-icons/src/"
+          },
+          {
+            "text": "deprecations",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamVersions",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/interfaces/UpstreamVersions.md"
+                  },
+                  {
+                    "text": "ParsedRef",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/interfaces/ParsedRef.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "shimValue",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/shimValue.md"
+                  },
+                  {
+                    "text": "shimEntries",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/shimEntries.md"
+                  },
+                  {
+                    "text": "ledgerCovers",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/ledgerCovers.md"
+                  },
+                  {
+                    "text": "parseUpstreamRef",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/parseUpstreamRef.md"
+                  },
+                  {
+                    "text": "compareVersions",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/compareVersions.md"
+                  },
+                  {
+                    "text": "dueForRemoval",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/dueForRemoval.md"
+                  },
+                  {
+                    "text": "describeLifecycle",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/describeLifecycle.md"
+                  },
+                  {
+                    "text": "deprecationShims",
+                    "link": "/ga/api/plugins/pantoken/deprecations/src/functions/deprecationShims.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/deprecations/src/"
+          },
+          {
+            "text": "layouts",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LayoutsOptions",
+                    "link": "/ga/api/plugins/pantoken/layouts/src/interfaces/LayoutsOptions.md"
+                  },
+                  {
+                    "text": "PageLayout",
+                    "link": "/ga/api/plugins/pantoken/layouts/src/interfaces/PageLayout.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pageLayouts",
+                    "link": "/ga/api/plugins/pantoken/layouts/src/variables/pageLayouts.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "layouts",
+                    "link": "/ga/api/plugins/pantoken/layouts/src/functions/layouts.md"
+                  },
+                  {
+                    "text": "wrapperRules",
+                    "link": "/ga/api/plugins/pantoken/layouts/src/functions/wrapperRules.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/layouts/src/"
+          },
+          {
+            "text": "logos",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LogoMeta",
+                    "link": "/ga/api/plugins/pantoken/logos/src/interfaces/LogoMeta.md"
+                  },
+                  {
+                    "text": "LogosOptions",
+                    "link": "/ga/api/plugins/pantoken/logos/src/interfaces/LogosOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Aliasanna Cineál",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Product",
+                    "link": "/ga/api/plugins/pantoken/logos/src/type-aliases/Product.md"
+                  },
+                  {
+                    "text": "LogoLayout",
+                    "link": "/ga/api/plugins/pantoken/logos/src/type-aliases/LogoLayout.md"
+                  },
+                  {
+                    "text": "LogoColorMode",
+                    "link": "/ga/api/plugins/pantoken/logos/src/type-aliases/LogoColorMode.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "logos",
+                    "link": "/ga/api/plugins/pantoken/logos/src/variables/logos.md"
+                  },
+                  {
+                    "text": "products",
+                    "link": "/ga/api/plugins/pantoken/logos/src/variables/products.md"
+                  },
+                  {
+                    "text": "logosCss",
+                    "link": "/ga/api/plugins/pantoken/logos/src/variables/logosCss.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "getLogoSvg",
+                    "link": "/ga/api/plugins/pantoken/logos/src/functions/getLogoSvg.md"
+                  },
+                  {
+                    "text": "getLogoDataUri",
+                    "link": "/ga/api/plugins/pantoken/logos/src/functions/getLogoDataUri.md"
+                  },
+                  {
+                    "text": "logosPlugin",
+                    "link": "/ga/api/plugins/pantoken/logos/src/functions/logosPlugin.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/logos/src/"
+          },
+          {
+            "text": "primitives",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "PrimitiveTokenNames",
+                    "link": "/ga/api/plugins/pantoken/primitives/src/interfaces/PrimitiveTokenNames.md"
+                  },
+                  {
+                    "text": "PrimitivesOptions",
+                    "link": "/ga/api/plugins/pantoken/primitives/src/interfaces/PrimitivesOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "primitivesCss",
+                    "link": "/ga/api/plugins/pantoken/primitives/src/functions/primitivesCss.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/primitives/src/"
+          },
+          {
+            "text": "simple-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIcon",
+                    "link": "/ga/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIcon.md"
+                  },
+                  {
+                    "text": "SimpleIconsOptions",
+                    "link": "/ga/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Aliasanna Cineál",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIconsRegistry",
+                    "link": "/ga/api/plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toExportName",
+                    "link": "/ga/api/plugins/pantoken/simple-icons/src/functions/toExportName.md"
+                  },
+                  {
+                    "text": "defaultRegistry",
+                    "link": "/ga/api/plugins/pantoken/simple-icons/src/functions/defaultRegistry.md"
+                  },
+                  {
+                    "text": "simpleIcons",
+                    "link": "/ga/api/plugins/pantoken/simple-icons/src/functions/simpleIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/simple-icons/src/"
+          },
+          {
+            "text": "stacking",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "StackingOptions",
+                    "link": "/ga/api/plugins/pantoken/stacking/src/interfaces/StackingOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "STACKING_LEVELS",
+                    "link": "/ga/api/plugins/pantoken/stacking/src/variables/STACKING_LEVELS.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "stacking",
+                    "link": "/ga/api/plugins/pantoken/stacking/src/functions/stacking.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/stacking/src/"
+          },
+          {
+            "text": "transition",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "TransitionOptions",
+                    "link": "/ga/api/plugins/pantoken/transition/src/interfaces/TransitionOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "transition",
+                    "link": "/ga/api/plugins/pantoken/transition/src/functions/transition.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/transition/src/"
+          },
+          {
+            "text": "visual-debug",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VisualDebugOptions",
+                    "link": "/ga/api/plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VISUAL_DEBUG_RULES",
+                    "link": "/ga/api/plugins/pantoken/visual-debug/src/variables/VISUAL_DEBUG_RULES.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "visualDebugRules",
+                    "link": "/ga/api/plugins/pantoken/visual-debug/src/functions/visualDebugRules.md"
+                  },
+                  {
+                    "text": "visualDebug",
+                    "link": "/ga/api/plugins/pantoken/visual-debug/src/functions/visualDebug.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/pantoken/visual-debug/src/"
+          }
+        ]
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "flatten-property",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ga/api/plugins/postcss/flatten-property/src/interfaces/FlattenPropertyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ga/api/plugins/postcss/flatten-property/src/variables/flattenProperty.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/postcss/flatten-property/src/"
+          },
+          {
+            "text": "mangle-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ga/api/plugins/postcss/mangle-custom-props/src/interfaces/MangleCustomPropsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Aliasanna Cineál",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ga/api/plugins/postcss/mangle-custom-props/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ga/api/plugins/postcss/mangle-custom-props/src/variables/mangleCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/postcss/mangle-custom-props/src/"
+          },
+          {
+            "text": "props-minify",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/interfaces/FlattenPropertyOptions.md"
+                  },
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/interfaces/MangleCustomPropsOptions.md"
+                  },
+                  {
+                    "text": "PropsMinifyOptions",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Aliasanna Cineál",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/variables/flattenProperty.md"
+                  },
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/variables/mangleCustomProps.md"
+                  },
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "applyMinify",
+                    "link": "/ga/api/plugins/postcss/props-minify/src/functions/applyMinify.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/postcss/props-minify/src/"
+          },
+          {
+            "text": "prune-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ga/api/plugins/postcss/prune-custom-props/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/postcss/prune-custom-props/src/"
+          },
+          {
+            "text": "theme-custom-media",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "ThemeCustomMediaOptions",
+                    "link": "/ga/api/plugins/postcss/theme-custom-media/src/interfaces/ThemeCustomMediaOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Aliasanna Cineál",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Theme",
+                    "link": "/ga/api/plugins/postcss/theme-custom-media/src/type-aliases/Theme.md"
+                  }
+                ]
+              },
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "themeCustomMedia",
+                    "link": "/ga/api/plugins/postcss/theme-custom-media/src/variables/themeCustomMedia.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/postcss/theme-custom-media/src/"
+          }
+        ]
+      },
+      {
+        "text": "typedoc",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "demo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Athróga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "DEMO_TAG",
+                    "link": "/ga/api/plugins/typedoc/demo/src/variables/DEMO_TAG.md"
+                  },
+                  {
+                    "text": "DEMO_FENCE",
+                    "link": "/ga/api/plugins/typedoc/demo/src/variables/DEMO_FENCE.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toDemoFence",
+                    "link": "/ga/api/plugins/typedoc/demo/src/functions/toDemoFence.md"
+                  },
+                  {
+                    "text": "rewriteComment",
+                    "link": "/ga/api/plugins/typedoc/demo/src/functions/rewriteComment.md"
+                  },
+                  {
+                    "text": "load",
+                    "link": "/ga/api/plugins/typedoc/demo/src/functions/load.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/typedoc/demo/src/"
+          }
+        ]
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "workspace-orchestrator",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Comhéadan",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamNode",
+                    "link": "/ga/api/plugins/vite/workspace-orchestrator/src/interfaces/UpstreamNode.md"
+                  },
+                  {
+                    "text": "FileServerEntry",
+                    "link": "/ga/api/plugins/vite/workspace-orchestrator/src/interfaces/FileServerEntry.md"
+                  },
+                  {
+                    "text": "OrchestratorOptions",
+                    "link": "/ga/api/plugins/vite/workspace-orchestrator/src/interfaces/OrchestratorOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Feidhmeanna",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "matchesFilters",
+                    "link": "/ga/api/plugins/vite/workspace-orchestrator/src/functions/matchesFilters.md"
+                  },
+                  {
+                    "text": "workspaceOrchestrator",
+                    "link": "/ga/api/plugins/vite/workspace-orchestrator/src/functions/workspaceOrchestrator.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ga/api/plugins/vite/workspace-orchestrator/src/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "CSS",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Forbhreathnú",
+        "link": "/ga/api/css/"
+      },
+      {
+        "text": "Comhpháirteanna",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "agent-shell",
+            "link": "/ga/api/css/agent-shell.md"
+          },
+          {
+            "text": "alert",
+            "link": "/ga/api/css/alert.md"
+          },
+          {
+            "text": "avatar",
+            "link": "/ga/api/css/avatar.md"
+          },
+          {
+            "text": "badge",
+            "link": "/ga/api/css/badge.md"
+          },
+          {
+            "text": "banner",
+            "link": "/ga/api/css/banner.md"
+          },
+          {
+            "text": "billboard",
+            "link": "/ga/api/css/billboard.md"
+          },
+          {
+            "text": "breadcrumb",
+            "link": "/ga/api/css/breadcrumb.md",
+            "items": [
+              {
+                "text": "link",
+                "link": "/ga/api/css/breadcrumb.link.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "button",
+            "link": "/ga/api/css/button.md"
+          },
+          {
+            "text": "byline",
+            "link": "/ga/api/css/byline.md"
+          },
+          {
+            "text": "calendar",
+            "link": "/ga/api/css/calendar.md",
+            "items": [
+              {
+                "text": "day",
+                "link": "/ga/api/css/calendar.day.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "card",
+            "link": "/ga/api/css/card.md"
+          },
+          {
+            "text": "checkbox",
+            "link": "/ga/api/css/checkbox.md"
+          },
+          {
+            "text": "close-button",
+            "link": "/ga/api/css/close-button.md"
+          },
+          {
+            "text": "context-view",
+            "link": "/ga/api/css/context-view.md"
+          },
+          {
+            "text": "drawer-layout",
+            "link": "/ga/api/css/drawer-layout.md",
+            "items": [
+              {
+                "text": "content",
+                "link": "/ga/api/css/drawer-layout.content.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ga/api/css/drawer-layout.tray.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "file-drop",
+            "link": "/ga/api/css/file-drop.md"
+          },
+          {
+            "text": "form-field",
+            "link": "/ga/api/css/form-field.md"
+          },
+          {
+            "text": "form-field-group",
+            "link": "/ga/api/css/form-field-group.md"
+          },
+          {
+            "text": "form-field-messages",
+            "link": "/ga/api/css/form-field-messages.md"
+          },
+          {
+            "text": "heading",
+            "link": "/ga/api/css/heading.md"
+          },
+          {
+            "text": "img",
+            "link": "/ga/api/css/img.md"
+          },
+          {
+            "text": "in-place-edit",
+            "link": "/ga/api/css/in-place-edit.md"
+          },
+          {
+            "text": "input-group",
+            "link": "/ga/api/css/input-group.md"
+          },
+          {
+            "text": "link",
+            "link": "/ga/api/css/link.md"
+          },
+          {
+            "text": "list",
+            "link": "/ga/api/css/list.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ga/api/css/list.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "mask",
+            "link": "/ga/api/css/mask.md"
+          },
+          {
+            "text": "menu",
+            "link": "/ga/api/css/menu.md",
+            "items": [
+              {
+                "text": "group",
+                "link": "/ga/api/css/menu.group.md"
+              },
+              {
+                "text": "item",
+                "link": "/ga/api/css/menu.item.md"
+              },
+              {
+                "text": "separator",
+                "link": "/ga/api/css/menu.separator.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "metric",
+            "link": "/ga/api/css/metric.md"
+          },
+          {
+            "text": "modal",
+            "link": "/ga/api/css/modal.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ga/api/css/modal.body.md"
+              },
+              {
+                "text": "footer",
+                "link": "/ga/api/css/modal.footer.md"
+              },
+              {
+                "text": "header",
+                "link": "/ga/api/css/modal.header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "number-input",
+            "link": "/ga/api/css/number-input.md"
+          },
+          {
+            "text": "pagination",
+            "link": "/ga/api/css/pagination.md",
+            "items": [
+              {
+                "text": "page",
+                "link": "/ga/api/css/pagination.page.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "pill",
+            "link": "/ga/api/css/pill.md"
+          },
+          {
+            "text": "popover",
+            "link": "/ga/api/css/popover.md"
+          },
+          {
+            "text": "progress",
+            "link": "/ga/api/css/progress.md"
+          },
+          {
+            "text": "progress-circle",
+            "link": "/ga/api/css/progress-circle.md"
+          },
+          {
+            "text": "radio",
+            "link": "/ga/api/css/radio.md"
+          },
+          {
+            "text": "radio-input-group",
+            "link": "/ga/api/css/radio-input-group.md"
+          },
+          {
+            "text": "range-input",
+            "link": "/ga/api/css/range-input.md"
+          },
+          {
+            "text": "rating",
+            "link": "/ga/api/css/rating.md"
+          },
+          {
+            "text": "side-nav-bar",
+            "link": "/ga/api/css/side-nav-bar.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ga/api/css/side-nav-bar.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "simple-select",
+            "link": "/ga/api/css/simple-select.md"
+          },
+          {
+            "text": "spinner",
+            "link": "/ga/api/css/spinner.md"
+          },
+          {
+            "text": "table",
+            "link": "/ga/api/css/table.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ga/api/css/table.body.md"
+              },
+              {
+                "text": "cell",
+                "link": "/ga/api/css/table.cell.md"
+              },
+              {
+                "text": "col-header",
+                "link": "/ga/api/css/table.col-header.md"
+              },
+              {
+                "text": "head",
+                "link": "/ga/api/css/table.head.md"
+              },
+              {
+                "text": "row",
+                "link": "/ga/api/css/table.row.md"
+              },
+              {
+                "text": "row-header",
+                "link": "/ga/api/css/table.row-header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tabs",
+            "link": "/ga/api/css/tabs.md",
+            "items": [
+              {
+                "text": "panel",
+                "link": "/ga/api/css/tabs.panel.md"
+              },
+              {
+                "text": "tab",
+                "link": "/ga/api/css/tabs.tab.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tag",
+            "link": "/ga/api/css/tag.md"
+          },
+          {
+            "text": "text",
+            "link": "/ga/api/css/text.md"
+          },
+          {
+            "text": "text-area",
+            "link": "/ga/api/css/text-area.md"
+          },
+          {
+            "text": "text-input",
+            "link": "/ga/api/css/text-input.md"
+          },
+          {
+            "text": "toggle-details",
+            "link": "/ga/api/css/toggle-details.md"
+          },
+          {
+            "text": "toggle-group",
+            "link": "/ga/api/css/toggle-group.md"
+          },
+          {
+            "text": "tooltip",
+            "link": "/ga/api/css/tooltip.md"
+          },
+          {
+            "text": "tray",
+            "link": "/ga/api/css/tray.md"
+          },
+          {
+            "text": "tree-browser",
+            "link": "/ga/api/css/tree-browser.md"
+          },
+          {
+            "text": "view",
+            "link": "/ga/api/css/view.md"
+          }
+        ]
+      },
+      {
+        "text": "Uirlisí",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "color",
+            "link": "/ga/api/css/color.md"
+          },
+          {
+            "text": "cursor",
+            "link": "/ga/api/css/cursor.md"
+          },
+          {
+            "text": "gap",
+            "link": "/ga/api/css/gap.md"
+          },
+          {
+            "text": "icon",
+            "link": "/ga/api/css/icon.md"
+          },
+          {
+            "text": "layout",
+            "link": "/ga/api/css/layout.md"
+          },
+          {
+            "text": "maskglobal",
+            "link": "/ga/api/css/maskglobal.md"
+          },
+          {
+            "text": "overflow",
+            "link": "/ga/api/css/overflow.md"
+          },
+          {
+            "text": "position",
+            "link": "/ga/api/css/position.md"
+          },
+          {
+            "text": "responsive",
+            "link": "/ga/api/css/responsive.md"
+          },
+          {
+            "text": "screen-reader-content",
+            "link": "/ga/api/css/screen-reader-content.md"
+          },
+          {
+            "text": "spacing",
+            "link": "/ga/api/css/spacing.md"
+          },
+          {
+            "text": "stacking",
+            "link": "/ga/api/css/stacking.md"
+          },
+          {
+            "text": "transition",
+            "link": "/ga/api/css/transition.md"
+          },
+          {
+            "text": "truncate",
+            "link": "/ga/api/css/truncate.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ga/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "Rialacha",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "base",
+            "link": "/ga/api/css/base.md"
+          },
+          {
+            "text": "prose",
+            "link": "/ga/api/css/prose.md"
+          }
+        ]
+      },
+      {
+        "text": "Plugins",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "logos",
+            "link": "/ga/api/css/logos.md"
+          },
+          {
+            "text": "primitives",
+            "link": "/ga/api/css/primitives.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ga/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "layout",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "callout",
+            "link": "/ga/api/css/callout.md"
+          },
+          {
+            "text": "hero",
+            "link": "/ga/api/css/hero.md"
+          },
+          {
+            "text": "page-layout",
+            "link": "/ga/api/css/page-layout.md"
+          },
+          {
+            "text": "rubric-note",
+            "link": "/ga/api/css/rubric-note.md"
+          },
+          {
+            "text": "testimonial",
+            "link": "/ga/api/css/testimonial.md"
+          },
+          {
+            "text": "two-column",
+            "link": "/ga/api/css/two-column.md"
+          },
+          {
+            "text": "wrapper",
+            "link": "/ga/api/css/wrapper.md"
+          }
+        ]
+      }
+    ]
+  }
+]

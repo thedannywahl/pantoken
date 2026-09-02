@@ -1,0 +1,50 @@
+[pantoken](../../../../index.md) / [platforms/wordpress/src](../index.md) / toThemeJson
+
+# Ֆունկցիա: toThemeJson()
+
+> **toThemeJson**(`tokens`, `options?`): [`ThemeJson`](../interfaces/ThemeJson.md)
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Փորձարկումային</span>
+
+IR տոկենների ցուցակը փոխակերպեք WordPress `theme.json`-ի:
+
+## Պարամետրեր
+
+### tokens
+
+readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+
+IR (օր. `@pantoken/tokens`-ից):
+
+### options?
+
+[`ToThemeJsonOptions`](../interfaces/ToThemeJsonOptions.md) = `{}`
+
+[ToThemeJsonOptions](../interfaces/ToThemeJsonOptions.md).
+
+## Վերադարձվող արժեք
+
+[`ThemeJson`](../interfaces/ThemeJson.md)
+
+Մի `theme.json` փաստաթուղթ:
+
+## Օրինակներ
+
+**IR-ը փոխակերպեք light-mode theme.json-ի**
+
+```ts
+import { toThemeJson } from "@pantoken/wordpress";
+import { byTheme } from "@pantoken/tokens";
+
+const doc = toThemeJson(byTheme("rebrand"));
+doc.settings.color.palette; // [{ slug, name, color }, …]
+```
+
+**Մութ ռեժիմ**
+
+```ts
+import { toThemeJson } from "@pantoken/wordpress";
+import { byTheme } from "@pantoken/tokens";
+
+const doc = toThemeJson(byTheme("canvas"), { mode: "dark" });
+```

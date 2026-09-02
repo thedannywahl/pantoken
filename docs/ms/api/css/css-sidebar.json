@@ -1,0 +1,444 @@
+[
+  {
+    "text": "Overview",
+    "link": "/api/css/"
+  },
+  {
+    "text": "Components",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "agent-shell",
+        "link": "/api/css/agent-shell.md"
+      },
+      {
+        "text": "alert",
+        "link": "/api/css/alert.md"
+      },
+      {
+        "text": "avatar",
+        "link": "/api/css/avatar.md"
+      },
+      {
+        "text": "badge",
+        "link": "/api/css/badge.md"
+      },
+      {
+        "text": "banner",
+        "link": "/api/css/banner.md"
+      },
+      {
+        "text": "billboard",
+        "link": "/api/css/billboard.md"
+      },
+      {
+        "text": "breadcrumb",
+        "link": "/api/css/breadcrumb.md"
+      },
+      {
+        "text": "breadcrumb.link",
+        "link": "/api/css/breadcrumb.link.md"
+      },
+      {
+        "text": "button",
+        "link": "/api/css/button.md"
+      },
+      {
+        "text": "byline",
+        "link": "/api/css/byline.md"
+      },
+      {
+        "text": "calendar",
+        "link": "/api/css/calendar.md"
+      },
+      {
+        "text": "calendar.day",
+        "link": "/api/css/calendar.day.md"
+      },
+      {
+        "text": "card",
+        "link": "/api/css/card.md"
+      },
+      {
+        "text": "checkbox",
+        "link": "/api/css/checkbox.md"
+      },
+      {
+        "text": "close-button",
+        "link": "/api/css/close-button.md"
+      },
+      {
+        "text": "context-view",
+        "link": "/api/css/context-view.md"
+      },
+      {
+        "text": "drawer-layout",
+        "link": "/api/css/drawer-layout.md"
+      },
+      {
+        "text": "drawer-layout.content",
+        "link": "/api/css/drawer-layout.content.md"
+      },
+      {
+        "text": "drawer-layout.tray",
+        "link": "/api/css/drawer-layout.tray.md"
+      },
+      {
+        "text": "file-drop",
+        "link": "/api/css/file-drop.md"
+      },
+      {
+        "text": "form-field",
+        "link": "/api/css/form-field.md"
+      },
+      {
+        "text": "form-field-group",
+        "link": "/api/css/form-field-group.md"
+      },
+      {
+        "text": "form-field-messages",
+        "link": "/api/css/form-field-messages.md"
+      },
+      {
+        "text": "heading",
+        "link": "/api/css/heading.md"
+      },
+      {
+        "text": "img",
+        "link": "/api/css/img.md"
+      },
+      {
+        "text": "in-place-edit",
+        "link": "/api/css/in-place-edit.md"
+      },
+      {
+        "text": "input-group",
+        "link": "/api/css/input-group.md"
+      },
+      {
+        "text": "link",
+        "link": "/api/css/link.md"
+      },
+      {
+        "text": "list",
+        "link": "/api/css/list.md"
+      },
+      {
+        "text": "list.item",
+        "link": "/api/css/list.item.md"
+      },
+      {
+        "text": "mask",
+        "link": "/api/css/mask.md"
+      },
+      {
+        "text": "menu",
+        "link": "/api/css/menu.md"
+      },
+      {
+        "text": "menu.group",
+        "link": "/api/css/menu.group.md"
+      },
+      {
+        "text": "menu.item",
+        "link": "/api/css/menu.item.md"
+      },
+      {
+        "text": "menu.separator",
+        "link": "/api/css/menu.separator.md"
+      },
+      {
+        "text": "metric",
+        "link": "/api/css/metric.md"
+      },
+      {
+        "text": "modal",
+        "link": "/api/css/modal.md"
+      },
+      {
+        "text": "modal.body",
+        "link": "/api/css/modal.body.md"
+      },
+      {
+        "text": "modal.footer",
+        "link": "/api/css/modal.footer.md"
+      },
+      {
+        "text": "modal.header",
+        "link": "/api/css/modal.header.md"
+      },
+      {
+        "text": "number-input",
+        "link": "/api/css/number-input.md"
+      },
+      {
+        "text": "pagination",
+        "link": "/api/css/pagination.md"
+      },
+      {
+        "text": "pagination.page",
+        "link": "/api/css/pagination.page.md"
+      },
+      {
+        "text": "pill",
+        "link": "/api/css/pill.md"
+      },
+      {
+        "text": "popover",
+        "link": "/api/css/popover.md"
+      },
+      {
+        "text": "progress",
+        "link": "/api/css/progress.md"
+      },
+      {
+        "text": "progress-circle",
+        "link": "/api/css/progress-circle.md"
+      },
+      {
+        "text": "radio",
+        "link": "/api/css/radio.md"
+      },
+      {
+        "text": "radio-input-group",
+        "link": "/api/css/radio-input-group.md"
+      },
+      {
+        "text": "range-input",
+        "link": "/api/css/range-input.md"
+      },
+      {
+        "text": "rating",
+        "link": "/api/css/rating.md"
+      },
+      {
+        "text": "side-nav-bar",
+        "link": "/api/css/side-nav-bar.md"
+      },
+      {
+        "text": "side-nav-bar.item",
+        "link": "/api/css/side-nav-bar.item.md"
+      },
+      {
+        "text": "simple-select",
+        "link": "/api/css/simple-select.md"
+      },
+      {
+        "text": "spinner",
+        "link": "/api/css/spinner.md"
+      },
+      {
+        "text": "table",
+        "link": "/api/css/table.md"
+      },
+      {
+        "text": "table.body",
+        "link": "/api/css/table.body.md"
+      },
+      {
+        "text": "table.cell",
+        "link": "/api/css/table.cell.md"
+      },
+      {
+        "text": "table.col-header",
+        "link": "/api/css/table.col-header.md"
+      },
+      {
+        "text": "table.head",
+        "link": "/api/css/table.head.md"
+      },
+      {
+        "text": "table.row",
+        "link": "/api/css/table.row.md"
+      },
+      {
+        "text": "table.row-header",
+        "link": "/api/css/table.row-header.md"
+      },
+      {
+        "text": "tabs",
+        "link": "/api/css/tabs.md"
+      },
+      {
+        "text": "tabs.panel",
+        "link": "/api/css/tabs.panel.md"
+      },
+      {
+        "text": "tabs.tab",
+        "link": "/api/css/tabs.tab.md"
+      },
+      {
+        "text": "tag",
+        "link": "/api/css/tag.md"
+      },
+      {
+        "text": "text",
+        "link": "/api/css/text.md"
+      },
+      {
+        "text": "text-area",
+        "link": "/api/css/text-area.md"
+      },
+      {
+        "text": "text-input",
+        "link": "/api/css/text-input.md"
+      },
+      {
+        "text": "toggle-details",
+        "link": "/api/css/toggle-details.md"
+      },
+      {
+        "text": "toggle-group",
+        "link": "/api/css/toggle-group.md"
+      },
+      {
+        "text": "tooltip",
+        "link": "/api/css/tooltip.md"
+      },
+      {
+        "text": "tray",
+        "link": "/api/css/tray.md"
+      },
+      {
+        "text": "tree-browser",
+        "link": "/api/css/tree-browser.md"
+      },
+      {
+        "text": "view",
+        "link": "/api/css/view.md"
+      }
+    ]
+  },
+  {
+    "text": "Utilities",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "color",
+        "link": "/api/css/color.md"
+      },
+      {
+        "text": "cursor",
+        "link": "/api/css/cursor.md"
+      },
+      {
+        "text": "gap",
+        "link": "/api/css/gap.md"
+      },
+      {
+        "text": "icon",
+        "link": "/api/css/icon.md"
+      },
+      {
+        "text": "layout",
+        "link": "/api/css/layout.md"
+      },
+      {
+        "text": "maskglobal",
+        "link": "/api/css/maskglobal.md"
+      },
+      {
+        "text": "overflow",
+        "link": "/api/css/overflow.md"
+      },
+      {
+        "text": "position",
+        "link": "/api/css/position.md"
+      },
+      {
+        "text": "responsive",
+        "link": "/api/css/responsive.md"
+      },
+      {
+        "text": "screen-reader-content",
+        "link": "/api/css/screen-reader-content.md"
+      },
+      {
+        "text": "spacing",
+        "link": "/api/css/spacing.md"
+      },
+      {
+        "text": "stacking",
+        "link": "/api/css/stacking.md"
+      },
+      {
+        "text": "transition",
+        "link": "/api/css/transition.md"
+      },
+      {
+        "text": "truncate",
+        "link": "/api/css/truncate.md"
+      },
+      {
+        "text": "visual-debug",
+        "link": "/api/css/visual-debug.md"
+      }
+    ]
+  },
+  {
+    "text": "Rules",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "base",
+        "link": "/api/css/base.md"
+      },
+      {
+        "text": "prose",
+        "link": "/api/css/prose.md"
+      }
+    ]
+  },
+  {
+    "text": "Plugins",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "logos",
+        "link": "/api/css/logos.md"
+      },
+      {
+        "text": "primitives",
+        "link": "/api/css/primitives.md"
+      },
+      {
+        "text": "visual-debug",
+        "link": "/api/css/visual-debug.md"
+      }
+    ]
+  },
+  {
+    "text": "layout",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "callout",
+        "link": "/api/css/callout.md"
+      },
+      {
+        "text": "hero",
+        "link": "/api/css/hero.md"
+      },
+      {
+        "text": "page-layout",
+        "link": "/api/css/page-layout.md"
+      },
+      {
+        "text": "rubric-note",
+        "link": "/api/css/rubric-note.md"
+      },
+      {
+        "text": "testimonial",
+        "link": "/api/css/testimonial.md"
+      },
+      {
+        "text": "two-column",
+        "link": "/api/css/two-column.md"
+      },
+      {
+        "text": "wrapper",
+        "link": "/api/css/wrapper.md"
+      }
+    ]
+  }
+]

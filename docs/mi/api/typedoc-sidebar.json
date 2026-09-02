@@ -1,0 +1,4897 @@
+[
+  {
+    "text": "tools",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "aggregate",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Target",
+                "link": "/mi/api/tools/aggregate/src/interfaces/Target.md"
+              },
+              {
+                "text": "AggregateOptions",
+                "link": "/mi/api/tools/aggregate/src/interfaces/AggregateOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "discoverTargets",
+                "link": "/mi/api/tools/aggregate/src/functions/discoverTargets.md"
+              },
+              {
+                "text": "aggregate",
+                "link": "/mi/api/tools/aggregate/src/functions/aggregate.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/tools/aggregate/src/"
+      },
+      {
+        "text": "demo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/mi/api/tools/demo/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "ResolvedDemo",
+                "link": "/mi/api/tools/demo/src/interfaces/ResolvedDemo.md"
+              },
+              {
+                "text": "LiveExampleOptions",
+                "link": "/mi/api/tools/demo/src/interfaces/LiveExampleOptions.md"
+              },
+              {
+                "text": "DemoMarkdownItOptions",
+                "link": "/mi/api/tools/demo/src/interfaces/DemoMarkdownItOptions.md"
+              },
+              {
+                "text": "ExampleSrcdocOptions",
+                "link": "/mi/api/tools/demo/src/interfaces/ExampleSrcdocOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FULLSCREEN_BUTTON_HTML",
+                "link": "/mi/api/tools/demo/src/variables/FULLSCREEN_BUTTON_HTML.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "resolveDemo",
+                "link": "/mi/api/tools/demo/src/functions/resolveDemo.md"
+              },
+              {
+                "text": "renderDemoFigure",
+                "link": "/mi/api/tools/demo/src/functions/renderDemoFigure.md"
+              },
+              {
+                "text": "demoMarkdownIt",
+                "link": "/mi/api/tools/demo/src/functions/demoMarkdownIt.md"
+              },
+              {
+                "text": "escapeSrcdoc",
+                "link": "/mi/api/tools/demo/src/functions/escapeSrcdoc.md"
+              },
+              {
+                "text": "buildExampleSrcdoc",
+                "link": "/mi/api/tools/demo/src/functions/buildExampleSrcdoc.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/tools/demo/src/"
+      }
+    ]
+  },
+  {
+    "text": "ai",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken-ai",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AgentTool",
+                "link": "/mi/api/ai/pantoken-ai/src/type-aliases/AgentTool.md"
+              },
+              {
+                "text": "ScaffoldPlatform",
+                "link": "/mi/api/ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ASSETS",
+                "link": "/mi/api/ai/pantoken-ai/src/variables/ASSETS.md"
+              },
+              {
+                "text": "AGENTS_MD",
+                "link": "/mi/api/ai/pantoken-ai/src/variables/AGENTS_MD.md"
+              },
+              {
+                "text": "LLMS_TXT",
+                "link": "/mi/api/ai/pantoken-ai/src/variables/LLMS_TXT.md"
+              },
+              {
+                "text": "AGENT_TOOLS",
+                "link": "/mi/api/ai/pantoken-ai/src/variables/AGENT_TOOLS.md"
+              },
+              {
+                "text": "SCAFFOLD_PLATFORMS",
+                "link": "/mi/api/ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "installAgentAssets",
+                "link": "/mi/api/ai/pantoken-ai/src/functions/installAgentAssets.md"
+              },
+              {
+                "text": "scaffoldAndInit",
+                "link": "/mi/api/ai/pantoken-ai/src/functions/scaffoldAndInit.md"
+              },
+              {
+                "text": "isScaffoldPlatform",
+                "link": "/mi/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md"
+              },
+              {
+                "text": "scaffoldProject",
+                "link": "/mi/api/ai/pantoken-ai/src/functions/scaffoldProject.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/ai/pantoken-ai/src/"
+      }
+    ]
+  },
+  {
+    "text": "platforms",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "android",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateAndroidOptions",
+                "link": "/mi/api/platforms/android/src/interfaces/GenerateAndroidOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAndroid",
+                "link": "/mi/api/platforms/android/src/functions/toAndroid.md"
+              },
+              {
+                "text": "generateAndroid",
+                "link": "/mi/api/platforms/android/src/functions/generateAndroid.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/android/src/"
+      },
+      {
+        "text": "canvas-theme-editor",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeStrings",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md"
+              },
+              {
+                "text": "BuildThemeOptions",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md"
+              },
+              {
+                "text": "CdnFile",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/interfaces/CdnFile.md"
+              },
+              {
+                "text": "CdnProvider",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/interfaces/CdnProvider.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeVariant",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/type-aliases/ThemeVariant.md"
+              },
+              {
+                "text": "ThemeMode",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/type-aliases/ThemeMode.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "THEME_CSS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/THEME_CSS.md"
+              },
+              {
+                "text": "THEME_JS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/THEME_JS.md"
+              },
+              {
+                "text": "ENGLISH_THEME_STRINGS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/ENGLISH_THEME_STRINGS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_CSS_ASSETS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_CSS_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_FONT_ASSETS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_FONT_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_JS_ASSETS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_JS_ASSETS.md"
+              },
+              {
+                "text": "CDN_PROVIDERS",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/CDN_PROVIDERS.md"
+              },
+              {
+                "text": "DEFAULT_CDN_PROVIDER_ID",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/variables/DEFAULT_CDN_PROVIDER_ID.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defaultThemeCssAssets",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/functions/defaultThemeCssAssets.md"
+              },
+              {
+                "text": "buildThemeCss",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/functions/buildThemeCss.md"
+              },
+              {
+                "text": "buildThemeJs",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/functions/buildThemeJs.md"
+              },
+              {
+                "text": "buildTheme",
+                "link": "/mi/api/platforms/canvas-theme-editor/src/functions/buildTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/canvas-theme-editor/src/"
+      },
+      {
+        "text": "compose",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateComposeOptions",
+                "link": "/mi/api/platforms/compose/src/interfaces/GenerateComposeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toCompose",
+                "link": "/mi/api/platforms/compose/src/functions/toCompose.md"
+              },
+              {
+                "text": "generateCompose",
+                "link": "/mi/api/platforms/compose/src/functions/generateCompose.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/compose/src/"
+      },
+      {
+        "text": "drupal",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "DrupalFile",
+                "link": "/mi/api/platforms/drupal/src/interfaces/DrupalFile.md"
+              },
+              {
+                "text": "ToDrupalThemeOptions",
+                "link": "/mi/api/platforms/drupal/src/interfaces/ToDrupalThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "machineName",
+                "link": "/mi/api/platforms/drupal/src/functions/machineName.md"
+              },
+              {
+                "text": "toDrupalTheme",
+                "link": "/mi/api/platforms/drupal/src/functions/toDrupalTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/drupal/src/"
+      },
+      {
+        "text": "email",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/mi/api/platforms/email/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/mi/api/platforms/email/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "emailTokens",
+                "link": "/mi/api/platforms/email/src/functions/emailTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/email/src/"
+      },
+      {
+        "text": "flutter",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateFlutterOptions",
+                "link": "/mi/api/platforms/flutter/src/interfaces/GenerateFlutterOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFlutter",
+                "link": "/mi/api/platforms/flutter/src/functions/toFlutter.md"
+              },
+              {
+                "text": "generateFlutter",
+                "link": "/mi/api/platforms/flutter/src/functions/generateFlutter.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/flutter/src/"
+      },
+      {
+        "text": "hugo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HugoFile",
+                "link": "/mi/api/platforms/hugo/src/interfaces/HugoFile.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toHugoAssets",
+                "link": "/mi/api/platforms/hugo/src/functions/toHugoAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/hugo/src/"
+      },
+      {
+        "text": "jekyll",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "JekyllFile",
+                "link": "/mi/api/platforms/jekyll/src/interfaces/JekyllFile.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toJekyllAssets",
+                "link": "/mi/api/platforms/jekyll/src/functions/toJekyllAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/jekyll/src/"
+      },
+      {
+        "text": "rust",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustOptions",
+                "link": "/mi/api/platforms/rust/src/interfaces/RustOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustFormat",
+                "link": "/mi/api/platforms/rust/src/type-aliases/RustFormat.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toRust",
+                "link": "/mi/api/platforms/rust/src/functions/toRust.md"
+              },
+              {
+                "text": "generateRust",
+                "link": "/mi/api/platforms/rust/src/functions/generateRust.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/rust/src/"
+      },
+      {
+        "text": "swift",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateSwiftOptions",
+                "link": "/mi/api/platforms/swift/src/interfaces/GenerateSwiftOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toSwift",
+                "link": "/mi/api/platforms/swift/src/functions/toSwift.md"
+              },
+              {
+                "text": "generateSwift",
+                "link": "/mi/api/platforms/swift/src/functions/generateSwift.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/swift/src/"
+      },
+      {
+        "text": "vanilla",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVanillaOptions",
+                "link": "/mi/api/platforms/vanilla/src/interfaces/ToVanillaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/mi/api/platforms/vanilla/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "variables",
+                "link": "/mi/api/platforms/vanilla/src/variables/variables.md"
+              },
+              {
+                "text": "VANILLA_TO_INSTUI",
+                "link": "/mi/api/platforms/vanilla/src/variables/VANILLA_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toVanillaVariables",
+                "link": "/mi/api/platforms/vanilla/src/functions/toVanillaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/vanilla/src/"
+      },
+      {
+        "text": "wordpress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeJson",
+                "link": "/mi/api/platforms/wordpress/src/interfaces/ThemeJson.md"
+              },
+              {
+                "text": "ToThemeJsonOptions",
+                "link": "/mi/api/platforms/wordpress/src/interfaces/ToThemeJsonOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/mi/api/platforms/wordpress/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "themeJson",
+                "link": "/mi/api/platforms/wordpress/src/variables/themeJson.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeJson",
+                "link": "/mi/api/platforms/wordpress/src/functions/toThemeJson.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/platforms/wordpress/src/"
+      }
+    ]
+  },
+  {
+    "text": "renderers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "angular",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerPantokenElements",
+                "link": "/mi/api/renderers/angular/src/functions/registerPantokenElements.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/mi/api/renderers/angular/src/functions/readToken.md"
+              },
+              {
+                "text": "register",
+                "link": "/mi/api/renderers/angular/src/functions/register.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/angular/src/"
+      },
+      {
+        "text": "astro",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HeadEntry",
+                "link": "/mi/api/renderers/astro/src/interfaces/HeadEntry.md"
+              },
+              {
+                "text": "StarlightPluginLike",
+                "link": "/mi/api/renderers/astro/src/interfaces/StarlightPluginLike.md"
+              },
+              {
+                "text": "InstUIOptions",
+                "link": "/mi/api/renderers/astro/src/interfaces/InstUIOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenCss",
+                "link": "/mi/api/renderers/astro/src/functions/pantokenCss.md"
+              },
+              {
+                "text": "InstUI",
+                "link": "/mi/api/renderers/astro/src/functions/InstUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/astro/src/"
+      },
+      {
+        "text": "bootstrap",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToBootstrapCssOptions",
+                "link": "/mi/api/renderers/bootstrap/src/interfaces/ToBootstrapCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BOOTSTRAP_TO_INSTUI",
+                "link": "/mi/api/renderers/bootstrap/src/variables/BOOTSTRAP_TO_INSTUI.md"
+              },
+              {
+                "text": "bootstrapCss",
+                "link": "/mi/api/renderers/bootstrap/src/variables/bootstrapCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toBootstrapCss",
+                "link": "/mi/api/renderers/bootstrap/src/functions/toBootstrapCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/bootstrap/src/"
+      },
+      {
+        "text": "css-in-js",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStyledThemeOptions",
+                "link": "/mi/api/renderers/css-in-js/src/interfaces/ToStyledThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StyledTheme",
+                "link": "/mi/api/renderers/css-in-js/src/type-aliases/StyledTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenTheme",
+                "link": "/mi/api/renderers/css-in-js/src/variables/pantokenTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeKey",
+                "link": "/mi/api/renderers/css-in-js/src/functions/toThemeKey.md"
+              },
+              {
+                "text": "toStyledTheme",
+                "link": "/mi/api/renderers/css-in-js/src/functions/toStyledTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/css-in-js/src/"
+      },
+      {
+        "text": "docusaurus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToDocusaurusCssOptions",
+                "link": "/mi/api/renderers/docusaurus/src/interfaces/ToDocusaurusCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INFIMA_TO_INSTUI",
+                "link": "/mi/api/renderers/docusaurus/src/variables/INFIMA_TO_INSTUI.md"
+              },
+              {
+                "text": "docusaurusCss",
+                "link": "/mi/api/renderers/docusaurus/src/variables/docusaurusCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toDocusaurusCss",
+                "link": "/mi/api/renderers/docusaurus/src/functions/toDocusaurusCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/docusaurus/src/"
+      },
+      {
+        "text": "foundation",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToFoundationSettingsOptions",
+                "link": "/mi/api/renderers/foundation/src/interfaces/ToFoundationSettingsOptions.md"
+              },
+              {
+                "text": "ToFoundationCssOptions",
+                "link": "/mi/api/renderers/foundation/src/interfaces/ToFoundationCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FOUNDATION_TO_INSTUI",
+                "link": "/mi/api/renderers/foundation/src/variables/FOUNDATION_TO_INSTUI.md"
+              },
+              {
+                "text": "foundationSettings",
+                "link": "/mi/api/renderers/foundation/src/variables/foundationSettings.md"
+              },
+              {
+                "text": "foundationCss",
+                "link": "/mi/api/renderers/foundation/src/variables/foundationCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFoundationSettings",
+                "link": "/mi/api/renderers/foundation/src/functions/toFoundationSettings.md"
+              },
+              {
+                "text": "toFoundationCss",
+                "link": "/mi/api/renderers/foundation/src/functions/toFoundationCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/foundation/src/"
+      },
+      {
+        "text": "markdown-it",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MarkdownItOptions",
+                "link": "/mi/api/renderers/markdown-it/src/interfaces/MarkdownItOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PROSE_CLASS",
+                "link": "/mi/api/renderers/markdown-it/src/variables/PROSE_CLASS.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenMarkdownIt",
+                "link": "/mi/api/renderers/markdown-it/src/functions/pantokenMarkdownIt.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/markdown-it/src/"
+      },
+      {
+        "text": "mintlify",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MintlifyColors",
+                "link": "/mi/api/renderers/mintlify/src/interfaces/MintlifyColors.md"
+              },
+              {
+                "text": "MintlifyBackground",
+                "link": "/mi/api/renderers/mintlify/src/interfaces/MintlifyBackground.md"
+              },
+              {
+                "text": "MintlifyTheme",
+                "link": "/mi/api/renderers/mintlify/src/interfaces/MintlifyTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "docsJson",
+                "link": "/mi/api/renderers/mintlify/src/variables/docsJson.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMintlifyConfig",
+                "link": "/mi/api/renderers/mintlify/src/functions/toMintlifyConfig.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/mintlify/src/"
+      },
+      {
+        "text": "mui",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MuiPaletteColor",
+                "link": "/mi/api/renderers/mui/src/interfaces/MuiPaletteColor.md"
+              },
+              {
+                "text": "PantokenThemeOptions",
+                "link": "/mi/api/renderers/mui/src/interfaces/PantokenThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "lightTheme",
+                "link": "/mi/api/renderers/mui/src/variables/lightTheme.md"
+              },
+              {
+                "text": "darkTheme",
+                "link": "/mi/api/renderers/mui/src/variables/darkTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMuiTheme",
+                "link": "/mi/api/renderers/mui/src/functions/toMuiTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/mui/src/"
+      },
+      {
+        "text": "pendo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildPendoCssOptions",
+                "link": "/mi/api/renderers/pendo/src/interfaces/BuildPendoCssOptions.md"
+              },
+              {
+                "text": "AddScopeOptions",
+                "link": "/mi/api/renderers/pendo/src/interfaces/AddScopeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pendoCss",
+                "link": "/mi/api/renderers/pendo/src/variables/pendoCss.md"
+              },
+              {
+                "text": "LAYER_ORDER",
+                "link": "/mi/api/renderers/pendo/src/variables/LAYER_ORDER.md"
+              },
+              {
+                "text": "COMPONENTS",
+                "link": "/mi/api/renderers/pendo/src/variables/COMPONENTS.md"
+              },
+              {
+                "text": "addImportant",
+                "link": "/mi/api/renderers/pendo/src/variables/addImportant.md"
+              },
+              {
+                "text": "addScope",
+                "link": "/mi/api/renderers/pendo/src/variables/addScope.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildPendoCss",
+                "link": "/mi/api/renderers/pendo/src/functions/buildPendoCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/pendo/src/"
+      },
+      {
+        "text": "react",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconProps",
+                "link": "/mi/api/renderers/react/src/interfaces/IconProps.md"
+              },
+              {
+                "text": "TokenProviderProps",
+                "link": "/mi/api/renderers/react/src/interfaces/TokenProviderProps.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/mi/api/renderers/react/src/functions/readToken.md"
+              },
+              {
+                "text": "useToken",
+                "link": "/mi/api/renderers/react/src/functions/useToken.md"
+              },
+              {
+                "text": "Icon",
+                "link": "/mi/api/renderers/react/src/functions/Icon.md"
+              },
+              {
+                "text": "TokenProvider",
+                "link": "/mi/api/renderers/react/src/functions/TokenProvider.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/react/src/"
+      },
+      {
+        "text": "react-markdown",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "InstuiMarkdownRenderOptions",
+                "link": "/mi/api/renderers/react-markdown/src/interfaces/InstuiMarkdownRenderOptions.md"
+              },
+              {
+                "text": "InstuiMarkdownProps",
+                "link": "/mi/api/renderers/react-markdown/src/interfaces/InstuiMarkdownProps.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AlertMarker",
+                "link": "/mi/api/renderers/react-markdown/src/type-aliases/AlertMarker.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "instuiMarkdownComponents",
+                "link": "/mi/api/renderers/react-markdown/src/variables/instuiMarkdownComponents.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "createInstuiMarkdownComponents",
+                "link": "/mi/api/renderers/react-markdown/src/functions/createInstuiMarkdownComponents.md"
+              },
+              {
+                "text": "buildIconResolver",
+                "link": "/mi/api/renderers/react-markdown/src/functions/buildIconResolver.md"
+              },
+              {
+                "text": "parseAlertMarker",
+                "link": "/mi/api/renderers/react-markdown/src/functions/parseAlertMarker.md"
+              },
+              {
+                "text": "isColorValue",
+                "link": "/mi/api/renderers/react-markdown/src/functions/isColorValue.md"
+              },
+              {
+                "text": "rehypeColorCodes",
+                "link": "/mi/api/renderers/react-markdown/src/functions/rehypeColorCodes.md"
+              },
+              {
+                "text": "rehypeGithubAlerts",
+                "link": "/mi/api/renderers/react-markdown/src/functions/rehypeGithubAlerts.md"
+              },
+              {
+                "text": "InstuiMarkdown",
+                "link": "/mi/api/renderers/react-markdown/src/functions/InstuiMarkdown.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/react-markdown/src/"
+      },
+      {
+        "text": "react-native",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RNTokenValue",
+                "link": "/mi/api/renderers/react-native/src/type-aliases/RNTokenValue.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/mi/api/renderers/react-native/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/mi/api/renderers/react-native/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokensForScheme",
+                "link": "/mi/api/renderers/react-native/src/functions/tokensForScheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/react-native/src/"
+      },
+      {
+        "text": "rehype",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RehypeOptions",
+                "link": "/mi/api/renderers/rehype/src/interfaces/RehypeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "rehypePantokenIcons",
+                "link": "/mi/api/renderers/rehype/src/functions/rehypePantokenIcons.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/rehype/src/"
+      },
+      {
+        "text": "shadcn",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToShadcnCssOptions",
+                "link": "/mi/api/renderers/shadcn/src/interfaces/ToShadcnCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "shadcnCss",
+                "link": "/mi/api/renderers/shadcn/src/variables/shadcnCss.md"
+              },
+              {
+                "text": "SHADCN_TO_INSTUI",
+                "link": "/mi/api/renderers/shadcn/src/variables/SHADCN_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toShadcnCss",
+                "link": "/mi/api/renderers/shadcn/src/functions/toShadcnCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/shadcn/src/"
+      },
+      {
+        "text": "storybook",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StorybookTheme",
+                "link": "/mi/api/renderers/storybook/src/type-aliases/StorybookTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenStorybookTheme",
+                "link": "/mi/api/renderers/storybook/src/functions/pantokenStorybookTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/storybook/src/"
+      },
+      {
+        "text": "svelte",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ActionResult",
+                "link": "/mi/api/renderers/svelte/src/interfaces/ActionResult.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerLocalized",
+                "link": "/mi/api/renderers/svelte/src/functions/registerLocalized.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/mi/api/renderers/svelte/src/functions/readToken.md"
+              },
+              {
+                "text": "icon",
+                "link": "/mi/api/renderers/svelte/src/functions/icon.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/svelte/src/"
+      },
+      {
+        "text": "tinymce",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssDocEntry",
+                "link": "/mi/api/renderers/tinymce/src/interfaces/CssDocEntry.md"
+              },
+              {
+                "text": "PageLayout",
+                "link": "/mi/api/renderers/tinymce/src/interfaces/PageLayout.md"
+              },
+              {
+                "text": "LogoMeta",
+                "link": "/mi/api/renderers/tinymce/src/interfaces/LogoMeta.md"
+              },
+              {
+                "text": "TaggedIcon",
+                "link": "/mi/api/renderers/tinymce/src/interfaces/TaggedIcon.md"
+              },
+              {
+                "text": "LayoutsPluginOptions",
+                "link": "/mi/api/renderers/tinymce/src/interfaces/LayoutsPluginOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Product",
+                "link": "/mi/api/renderers/tinymce/src/type-aliases/Product.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pageLayouts",
+                "link": "/mi/api/renderers/tinymce/src/variables/pageLayouts.md"
+              },
+              {
+                "text": "logos",
+                "link": "/mi/api/renderers/tinymce/src/variables/logos.md"
+              },
+              {
+                "text": "products",
+                "link": "/mi/api/renderers/tinymce/src/variables/products.md"
+              },
+              {
+                "text": "LAYOUTS_PLUGIN_NAME",
+                "link": "/mi/api/renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md"
+              },
+              {
+                "text": "LAYOUTS_TOOLBAR_NAME",
+                "link": "/mi/api/renderers/tinymce/src/variables/LAYOUTS_TOOLBAR_NAME.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenHtmlCompletion",
+                "link": "/mi/api/renderers/tinymce/src/functions/pantokenHtmlCompletion.md"
+              },
+              {
+                "text": "pantokenHtmlLinter",
+                "link": "/mi/api/renderers/tinymce/src/functions/pantokenHtmlLinter.md"
+              },
+              {
+                "text": "pantokenContentCssUrls",
+                "link": "/mi/api/renderers/tinymce/src/functions/pantokenContentCssUrls.md"
+              },
+              {
+                "text": "injectContentStylesheet",
+                "link": "/mi/api/renderers/tinymce/src/functions/injectContentStylesheet.md"
+              },
+              {
+                "text": "findEntry",
+                "link": "/mi/api/renderers/tinymce/src/functions/findEntry.md"
+              },
+              {
+                "text": "listComponents",
+                "link": "/mi/api/renderers/tinymce/src/functions/listComponents.md"
+              },
+              {
+                "text": "listUtilities",
+                "link": "/mi/api/renderers/tinymce/src/functions/listUtilities.md"
+              },
+              {
+                "text": "getModifierSuggestions",
+                "link": "/mi/api/renderers/tinymce/src/functions/getModifierSuggestions.md"
+              },
+              {
+                "text": "validateClassToken",
+                "link": "/mi/api/renderers/tinymce/src/functions/validateClassToken.md"
+              },
+              {
+                "text": "loadAllIcons",
+                "link": "/mi/api/renderers/tinymce/src/functions/loadAllIcons.md"
+              },
+              {
+                "text": "getIconCdnFile",
+                "link": "/mi/api/renderers/tinymce/src/functions/getIconCdnFile.md"
+              },
+              {
+                "text": "createComponentsPlugin",
+                "link": "/mi/api/renderers/tinymce/src/functions/createComponentsPlugin.md"
+              },
+              {
+                "text": "createIconsPlugin",
+                "link": "/mi/api/renderers/tinymce/src/functions/createIconsPlugin.md"
+              },
+              {
+                "text": "createLayoutsPlugin",
+                "link": "/mi/api/renderers/tinymce/src/functions/createLayoutsPlugin.md"
+              },
+              {
+                "text": "createLogosPlugin",
+                "link": "/mi/api/renderers/tinymce/src/functions/createLogosPlugin.md"
+              },
+              {
+                "text": "createTemplatesPlugin",
+                "link": "/mi/api/renderers/tinymce/src/functions/createTemplatesPlugin.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/tinymce/src/"
+      },
+      {
+        "text": "vitepress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVitePressCssOptions",
+                "link": "/mi/api/renderers/vitepress/src/interfaces/ToVitePressCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "VITEPRESS_TO_INSTUI",
+                "link": "/mi/api/renderers/vitepress/src/variables/VITEPRESS_TO_INSTUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/vitepress/src/"
+      },
+      {
+        "text": "vue",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenVue",
+                "link": "/mi/api/renderers/vue/src/variables/PantokenVue.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/mi/api/renderers/vue/src/functions/readToken.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/mi/api/renderers/vue/src/functions/iconSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/vue/src/"
+      },
+      {
+        "text": "web-components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandEventish",
+                "link": "/mi/api/renderers/web-components/src/interfaces/CommandEventish.md"
+              },
+              {
+                "text": "ElementRegistry",
+                "link": "/mi/api/renderers/web-components/src/interfaces/ElementRegistry.md"
+              },
+              {
+                "text": "RegisterContext",
+                "link": "/mi/api/renderers/web-components/src/interfaces/RegisterContext.md"
+              },
+              {
+                "text": "ElementDefinition",
+                "link": "/mi/api/renderers/web-components/src/interfaces/ElementDefinition.md"
+              },
+              {
+                "text": "RegisterContextOptions",
+                "link": "/mi/api/renderers/web-components/src/interfaces/RegisterContextOptions.md"
+              },
+              {
+                "text": "WebComponentStrings",
+                "link": "/mi/api/renderers/web-components/src/interfaces/WebComponentStrings.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alert",
+                "link": "/mi/api/renderers/web-components/src/variables/alert.md"
+              },
+              {
+                "text": "avatar",
+                "link": "/mi/api/renderers/web-components/src/variables/avatar.md"
+              },
+              {
+                "text": "badge",
+                "link": "/mi/api/renderers/web-components/src/variables/badge.md"
+              },
+              {
+                "text": "button",
+                "link": "/mi/api/renderers/web-components/src/variables/button.md"
+              },
+              {
+                "text": "calendar",
+                "link": "/mi/api/renderers/web-components/src/variables/calendar.md"
+              },
+              {
+                "text": "contextView",
+                "link": "/mi/api/renderers/web-components/src/variables/contextView.md"
+              },
+              {
+                "text": "dateInput",
+                "link": "/mi/api/renderers/web-components/src/variables/dateInput.md"
+              },
+              {
+                "text": "dateTimeInput",
+                "link": "/mi/api/renderers/web-components/src/variables/dateTimeInput.md"
+              },
+              {
+                "text": "drawerLayout",
+                "link": "/mi/api/renderers/web-components/src/variables/drawerLayout.md"
+              },
+              {
+                "text": "drilldown",
+                "link": "/mi/api/renderers/web-components/src/variables/drilldown.md"
+              },
+              {
+                "text": "iconButton",
+                "link": "/mi/api/renderers/web-components/src/variables/iconButton.md"
+              },
+              {
+                "text": "icon",
+                "link": "/mi/api/renderers/web-components/src/variables/icon.md"
+              },
+              {
+                "text": "img",
+                "link": "/mi/api/renderers/web-components/src/variables/img.md"
+              },
+              {
+                "text": "inPlaceEdit",
+                "link": "/mi/api/renderers/web-components/src/variables/inPlaceEdit.md"
+              },
+              {
+                "text": "DEFINITIONS",
+                "link": "/mi/api/renderers/web-components/src/variables/DEFINITIONS.md"
+              },
+              {
+                "text": "metric",
+                "link": "/mi/api/renderers/web-components/src/variables/metric.md"
+              },
+              {
+                "text": "modal",
+                "link": "/mi/api/renderers/web-components/src/variables/modal.md"
+              },
+              {
+                "text": "pages",
+                "link": "/mi/api/renderers/web-components/src/variables/pages.md"
+              },
+              {
+                "text": "pill",
+                "link": "/mi/api/renderers/web-components/src/variables/pill.md"
+              },
+              {
+                "text": "popover",
+                "link": "/mi/api/renderers/web-components/src/variables/popover.md"
+              },
+              {
+                "text": "progressCircle",
+                "link": "/mi/api/renderers/web-components/src/variables/progressCircle.md"
+              },
+              {
+                "text": "progress",
+                "link": "/mi/api/renderers/web-components/src/variables/progress.md"
+              },
+              {
+                "text": "rating",
+                "link": "/mi/api/renderers/web-components/src/variables/rating.md"
+              },
+              {
+                "text": "sideNavBar",
+                "link": "/mi/api/renderers/web-components/src/variables/sideNavBar.md"
+              },
+              {
+                "text": "spinner",
+                "link": "/mi/api/renderers/web-components/src/variables/spinner.md"
+              },
+              {
+                "text": "tag",
+                "link": "/mi/api/renderers/web-components/src/variables/tag.md"
+              },
+              {
+                "text": "toggleButton",
+                "link": "/mi/api/renderers/web-components/src/variables/toggleButton.md"
+              },
+              {
+                "text": "tooltip",
+                "link": "/mi/api/renderers/web-components/src/variables/tooltip.md"
+              },
+              {
+                "text": "tray",
+                "link": "/mi/api/renderers/web-components/src/variables/tray.md"
+              },
+              {
+                "text": "treeBrowser",
+                "link": "/mi/api/renderers/web-components/src/variables/treeBrowser.md"
+              },
+              {
+                "text": "truncate",
+                "link": "/mi/api/renderers/web-components/src/variables/truncate.md"
+              },
+              {
+                "text": "ELEMENTS",
+                "link": "/mi/api/renderers/web-components/src/variables/ELEMENTS.md"
+              },
+              {
+                "text": "NESTED_DEPS",
+                "link": "/mi/api/renderers/web-components/src/variables/NESTED_DEPS.md"
+              },
+              {
+                "text": "ICON_ELEMENTS",
+                "link": "/mi/api/renderers/web-components/src/variables/ICON_ELEMENTS.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/mi/api/renderers/web-components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "ENGLISH_STRINGS",
+                "link": "/mi/api/renderers/web-components/src/variables/ENGLISH_STRINGS.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "register",
+                "link": "/mi/api/renderers/web-components/src/functions/register.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/mi/api/renderers/web-components/src/functions/iconSvg.md"
+              },
+              {
+                "text": "noopIconSvg",
+                "link": "/mi/api/renderers/web-components/src/functions/noopIconSvg.md"
+              },
+              {
+                "text": "buildRegisterContext",
+                "link": "/mi/api/renderers/web-components/src/functions/buildRegisterContext.md"
+              },
+              {
+                "text": "resolveFirstDay",
+                "link": "/mi/api/renderers/web-components/src/functions/resolveFirstDay.md"
+              },
+              {
+                "text": "makeStrings",
+                "link": "/mi/api/renderers/web-components/src/functions/makeStrings.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/renderers/web-components/src/"
+      }
+    ]
+  },
+  {
+    "text": "packages",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "cli",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CliArgs",
+                "link": "/mi/api/packages/cli/src/interfaces/CliArgs.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "parseArgs",
+                "link": "/mi/api/packages/cli/src/functions/parseArgs.md"
+              },
+              {
+                "text": "run",
+                "link": "/mi/api/packages/cli/src/functions/run.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/packages/cli/src/"
+      },
+      {
+        "text": "core",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildTokensOptions",
+                "link": "/mi/api/packages/core/src/interfaces/BuildTokensOptions.md"
+              },
+              {
+                "text": "VectorDrawableOptions",
+                "link": "/mi/api/packages/core/src/interfaces/VectorDrawableOptions.md"
+              },
+              {
+                "text": "AssetFile",
+                "link": "/mi/api/packages/core/src/interfaces/AssetFile.md"
+              },
+              {
+                "text": "CollectIconsOptions",
+                "link": "/mi/api/packages/core/src/interfaces/CollectIconsOptions.md"
+              },
+              {
+                "text": "IconToken",
+                "link": "/mi/api/packages/core/src/interfaces/IconToken.md"
+              },
+              {
+                "text": "IconLayer",
+                "link": "/mi/api/packages/core/src/interfaces/IconLayer.md"
+              },
+              {
+                "text": "Leaf",
+                "link": "/mi/api/packages/core/src/interfaces/Leaf.md"
+              },
+              {
+                "text": "SdLeaf",
+                "link": "/mi/api/packages/core/src/interfaces/SdLeaf.md"
+              },
+              {
+                "text": "TokenModify",
+                "link": "/mi/api/packages/core/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/mi/api/packages/core/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "Tohu",
+                "link": "/mi/api/packages/core/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/mi/api/packages/core/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/mi/api/packages/core/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/mi/api/packages/core/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/mi/api/packages/core/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/mi/api/packages/core/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/mi/api/packages/core/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/mi/api/packages/core/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/mi/api/packages/core/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/mi/api/packages/core/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/mi/api/packages/core/src/type-aliases/IconResolver.md"
+              },
+              {
+                "text": "Mode",
+                "link": "/mi/api/packages/core/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ICON_COLOR_SPECIAL_VALUES",
+                "link": "/mi/api/packages/core/src/variables/ICON_COLOR_SPECIAL_VALUES.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildTokens",
+                "link": "/mi/api/packages/core/src/functions/buildTokens.md"
+              },
+              {
+                "text": "applyModify",
+                "link": "/mi/api/packages/core/src/functions/applyModify.md"
+              },
+              {
+                "text": "decodeIconSvg",
+                "link": "/mi/api/packages/core/src/functions/decodeIconSvg.md"
+              },
+              {
+                "text": "getIconSvgs",
+                "link": "/mi/api/packages/core/src/functions/getIconSvgs.md"
+              },
+              {
+                "text": "toVectorDrawable",
+                "link": "/mi/api/packages/core/src/functions/toVectorDrawable.md"
+              },
+              {
+                "text": "toXcodeImageset",
+                "link": "/mi/api/packages/core/src/functions/toXcodeImageset.md"
+              },
+              {
+                "text": "flutterIconManifest",
+                "link": "/mi/api/packages/core/src/functions/flutterIconManifest.md"
+              },
+              {
+                "text": "collectIcons",
+                "link": "/mi/api/packages/core/src/functions/collectIcons.md"
+              },
+              {
+                "text": "defineToken",
+                "link": "/mi/api/packages/core/src/functions/defineToken.md"
+              },
+              {
+                "text": "dedupeByName",
+                "link": "/mi/api/packages/core/src/functions/dedupeByName.md"
+              },
+              {
+                "text": "runTokenPlugins",
+                "link": "/mi/api/packages/core/src/functions/runTokenPlugins.md"
+              },
+              {
+                "text": "runIconPlugins",
+                "link": "/mi/api/packages/core/src/functions/runIconPlugins.md"
+              },
+              {
+                "text": "collectLeaves",
+                "link": "/mi/api/packages/core/src/functions/collectLeaves.md"
+              },
+              {
+                "text": "referenceToVarName",
+                "link": "/mi/api/packages/core/src/functions/referenceToVarName.md"
+              },
+              {
+                "text": "resolveValue",
+                "link": "/mi/api/packages/core/src/functions/resolveValue.md"
+              },
+              {
+                "text": "varName",
+                "link": "/mi/api/packages/core/src/functions/varName.md"
+              },
+              {
+                "text": "resolveReferences",
+                "link": "/mi/api/packages/core/src/functions/resolveReferences.md"
+              },
+              {
+                "text": "toStyleDictionary",
+                "link": "/mi/api/packages/core/src/functions/toStyleDictionary.md"
+              },
+              {
+                "text": "toKebab",
+                "link": "/mi/api/packages/core/src/functions/toKebab.md"
+              },
+              {
+                "text": "cssSyntaxForValue",
+                "link": "/mi/api/packages/core/src/functions/cssSyntaxForValue.md"
+              },
+              {
+                "text": "isContextual",
+                "link": "/mi/api/packages/core/src/functions/isContextual.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/packages/core/src/"
+      },
+      {
+        "text": "model",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TokenModify",
+                "link": "/mi/api/packages/model/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/mi/api/packages/model/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "DeprecationEntry",
+                "link": "/mi/api/packages/model/src/interfaces/DeprecationEntry.md"
+              },
+              {
+                "text": "DeprecationLedger",
+                "link": "/mi/api/packages/model/src/interfaces/DeprecationLedger.md"
+              },
+              {
+                "text": "Tohu",
+                "link": "/mi/api/packages/model/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/mi/api/packages/model/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/mi/api/packages/model/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "PropertyRule",
+                "link": "/mi/api/packages/model/src/interfaces/PropertyRule.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/mi/api/packages/model/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/mi/api/packages/model/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/mi/api/packages/model/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/mi/api/packages/model/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/mi/api/packages/model/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/mi/api/packages/model/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/mi/api/packages/model/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "UpstreamRef",
+                "link": "/mi/api/packages/model/src/type-aliases/UpstreamRef.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/mi/api/packages/model/src/type-aliases/IconResolver.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defineToken",
+                "link": "/mi/api/packages/model/src/functions/defineToken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/packages/model/src/"
+      },
+      {
+        "text": "plugin-kit",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/mi/api/packages/plugin-kit/src/interfaces/ResolveOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Stage",
+                "link": "/mi/api/packages/plugin-kit/src/type-aliases/Stage.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "definePlugin",
+                "link": "/mi/api/packages/plugin-kit/src/functions/definePlugin.md"
+              },
+              {
+                "text": "isFactoried",
+                "link": "/mi/api/packages/plugin-kit/src/functions/isFactoried.md"
+              },
+              {
+                "text": "validatePlugin",
+                "link": "/mi/api/packages/plugin-kit/src/functions/validatePlugin.md"
+              },
+              {
+                "text": "capabilitiesOf",
+                "link": "/mi/api/packages/plugin-kit/src/functions/capabilitiesOf.md"
+              },
+              {
+                "text": "checkPlugins",
+                "link": "/mi/api/packages/plugin-kit/src/functions/checkPlugins.md"
+              },
+              {
+                "text": "extendPlugin",
+                "link": "/mi/api/packages/plugin-kit/src/functions/extendPlugin.md"
+              },
+              {
+                "text": "mergePlugin",
+                "link": "/mi/api/packages/plugin-kit/src/functions/mergePlugin.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/mi/api/packages/plugin-kit/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/mi/api/packages/plugin-kit/src/functions/resolveTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/packages/plugin-kit/src/"
+      },
+      {
+        "text": "utils",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Rgba",
+                "link": "/mi/api/packages/utils/src/interfaces/Rgba.md"
+              },
+              {
+                "text": "ResolveOptions",
+                "link": "/mi/api/packages/utils/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "SpacingStep",
+                "link": "/mi/api/packages/utils/src/interfaces/SpacingStep.md"
+              },
+              {
+                "text": "UtilityOptions",
+                "link": "/mi/api/packages/utils/src/interfaces/UtilityOptions.md"
+              },
+              {
+                "text": "ColorUtilityNames",
+                "link": "/mi/api/packages/utils/src/interfaces/ColorUtilityNames.md"
+              },
+              {
+                "text": "TokenUtilityGroup",
+                "link": "/mi/api/packages/utils/src/interfaces/TokenUtilityGroup.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/mi/api/packages/utils/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "ColorUtilityEntry",
+                "link": "/mi/api/packages/utils/src/type-aliases/ColorUtilityEntry.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/mi/api/packages/utils/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/mi/api/packages/utils/src/variables/FOCUSABLE_SELECTOR.md"
+              },
+              {
+                "text": "VAR_RE",
+                "link": "/mi/api/packages/utils/src/variables/VAR_RE.md"
+              },
+              {
+                "text": "LIGHT_DARK_RE",
+                "link": "/mi/api/packages/utils/src/variables/LIGHT_DARK_RE.md"
+              },
+              {
+                "text": "SPACING_STEPS",
+                "link": "/mi/api/packages/utils/src/variables/SPACING_STEPS.md"
+              },
+              {
+                "text": "SPACING_AUTO_STEP",
+                "link": "/mi/api/packages/utils/src/variables/SPACING_AUTO_STEP.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "camelCase",
+                "link": "/mi/api/packages/utils/src/functions/camelCase.md"
+              },
+              {
+                "text": "parseHexColor",
+                "link": "/mi/api/packages/utils/src/functions/parseHexColor.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/mi/api/packages/utils/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/mi/api/packages/utils/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/mi/api/packages/utils/src/functions/focusOutlineRules.md"
+              },
+              {
+                "text": "extractInstuiRefs",
+                "link": "/mi/api/packages/utils/src/functions/extractInstuiRefs.md"
+              },
+              {
+                "text": "tokenNames",
+                "link": "/mi/api/packages/utils/src/functions/tokenNames.md"
+              },
+              {
+                "text": "unknownReferences",
+                "link": "/mi/api/packages/utils/src/functions/unknownReferences.md"
+              },
+              {
+                "text": "danglingReferences",
+                "link": "/mi/api/packages/utils/src/functions/danglingReferences.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/mi/api/packages/utils/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/mi/api/packages/utils/src/functions/resolveTokens.md"
+              },
+              {
+                "text": "sanitizeSvg",
+                "link": "/mi/api/packages/utils/src/functions/sanitizeSvg.md"
+              },
+              {
+                "text": "globalModifierSelector",
+                "link": "/mi/api/packages/utils/src/functions/globalModifierSelector.md"
+              },
+              {
+                "text": "colorUtilitiesCss",
+                "link": "/mi/api/packages/utils/src/functions/colorUtilitiesCss.md"
+              },
+              {
+                "text": "tokenUtilitiesCss",
+                "link": "/mi/api/packages/utils/src/functions/tokenUtilitiesCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/packages/utils/src/"
+      }
+    ]
+  },
+  {
+    "text": "formats",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ComponentOptions",
+                "link": "/mi/api/formats/components/src/interfaces/ComponentOptions.md"
+              },
+              {
+                "text": "ProseOptions",
+                "link": "/mi/api/formats/components/src/interfaces/ProseOptions.md"
+              },
+              {
+                "text": "IconGlyphsOptions",
+                "link": "/mi/api/formats/components/src/interfaces/IconGlyphsOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alertCss",
+                "link": "/mi/api/formats/components/src/variables/alertCss.md"
+              },
+              {
+                "text": "avatarCss",
+                "link": "/mi/api/formats/components/src/variables/avatarCss.md"
+              },
+              {
+                "text": "badgeCss",
+                "link": "/mi/api/formats/components/src/variables/badgeCss.md"
+              },
+              {
+                "text": "billboardCss",
+                "link": "/mi/api/formats/components/src/variables/billboardCss.md"
+              },
+              {
+                "text": "breadcrumbCss",
+                "link": "/mi/api/formats/components/src/variables/breadcrumbCss.md"
+              },
+              {
+                "text": "breadcrumbLinkCss",
+                "link": "/mi/api/formats/components/src/variables/breadcrumbLinkCss.md"
+              },
+              {
+                "text": "buttonCss",
+                "link": "/mi/api/formats/components/src/variables/buttonCss.md"
+              },
+              {
+                "text": "bylineCss",
+                "link": "/mi/api/formats/components/src/variables/bylineCss.md"
+              },
+              {
+                "text": "calendarCss",
+                "link": "/mi/api/formats/components/src/variables/calendarCss.md"
+              },
+              {
+                "text": "calendarDayCss",
+                "link": "/mi/api/formats/components/src/variables/calendarDayCss.md"
+              },
+              {
+                "text": "checkboxCss",
+                "link": "/mi/api/formats/components/src/variables/checkboxCss.md"
+              },
+              {
+                "text": "closeButtonCss",
+                "link": "/mi/api/formats/components/src/variables/closeButtonCss.md"
+              },
+              {
+                "text": "contextViewCss",
+                "link": "/mi/api/formats/components/src/variables/contextViewCss.md"
+              },
+              {
+                "text": "drawerLayoutCss",
+                "link": "/mi/api/formats/components/src/variables/drawerLayoutCss.md"
+              },
+              {
+                "text": "drawerLayoutContentCss",
+                "link": "/mi/api/formats/components/src/variables/drawerLayoutContentCss.md"
+              },
+              {
+                "text": "drawerLayoutTrayCss",
+                "link": "/mi/api/formats/components/src/variables/drawerLayoutTrayCss.md"
+              },
+              {
+                "text": "fileDropCss",
+                "link": "/mi/api/formats/components/src/variables/fileDropCss.md"
+              },
+              {
+                "text": "formFieldGroupCss",
+                "link": "/mi/api/formats/components/src/variables/formFieldGroupCss.md"
+              },
+              {
+                "text": "formFieldMessagesCss",
+                "link": "/mi/api/formats/components/src/variables/formFieldMessagesCss.md"
+              },
+              {
+                "text": "formFieldCss",
+                "link": "/mi/api/formats/components/src/variables/formFieldCss.md"
+              },
+              {
+                "text": "headingCss",
+                "link": "/mi/api/formats/components/src/variables/headingCss.md"
+              },
+              {
+                "text": "imgCss",
+                "link": "/mi/api/formats/components/src/variables/imgCss.md"
+              },
+              {
+                "text": "inPlaceEditCss",
+                "link": "/mi/api/formats/components/src/variables/inPlaceEditCss.md"
+              },
+              {
+                "text": "inputGroupCss",
+                "link": "/mi/api/formats/components/src/variables/inputGroupCss.md"
+              },
+              {
+                "text": "linkCss",
+                "link": "/mi/api/formats/components/src/variables/linkCss.md"
+              },
+              {
+                "text": "listCss",
+                "link": "/mi/api/formats/components/src/variables/listCss.md"
+              },
+              {
+                "text": "listItemCss",
+                "link": "/mi/api/formats/components/src/variables/listItemCss.md"
+              },
+              {
+                "text": "maskCss",
+                "link": "/mi/api/formats/components/src/variables/maskCss.md"
+              },
+              {
+                "text": "menuCss",
+                "link": "/mi/api/formats/components/src/variables/menuCss.md"
+              },
+              {
+                "text": "menuGroupCss",
+                "link": "/mi/api/formats/components/src/variables/menuGroupCss.md"
+              },
+              {
+                "text": "menuItemCss",
+                "link": "/mi/api/formats/components/src/variables/menuItemCss.md"
+              },
+              {
+                "text": "menuSeparatorCss",
+                "link": "/mi/api/formats/components/src/variables/menuSeparatorCss.md"
+              },
+              {
+                "text": "metricCss",
+                "link": "/mi/api/formats/components/src/variables/metricCss.md"
+              },
+              {
+                "text": "modalCss",
+                "link": "/mi/api/formats/components/src/variables/modalCss.md"
+              },
+              {
+                "text": "modalBodyCss",
+                "link": "/mi/api/formats/components/src/variables/modalBodyCss.md"
+              },
+              {
+                "text": "modalFooterCss",
+                "link": "/mi/api/formats/components/src/variables/modalFooterCss.md"
+              },
+              {
+                "text": "modalHeaderCss",
+                "link": "/mi/api/formats/components/src/variables/modalHeaderCss.md"
+              },
+              {
+                "text": "numberInputCss",
+                "link": "/mi/api/formats/components/src/variables/numberInputCss.md"
+              },
+              {
+                "text": "paginationCss",
+                "link": "/mi/api/formats/components/src/variables/paginationCss.md"
+              },
+              {
+                "text": "paginationPageCss",
+                "link": "/mi/api/formats/components/src/variables/paginationPageCss.md"
+              },
+              {
+                "text": "pillCss",
+                "link": "/mi/api/formats/components/src/variables/pillCss.md"
+              },
+              {
+                "text": "popoverCss",
+                "link": "/mi/api/formats/components/src/variables/popoverCss.md"
+              },
+              {
+                "text": "progressCircleCss",
+                "link": "/mi/api/formats/components/src/variables/progressCircleCss.md"
+              },
+              {
+                "text": "progressCss",
+                "link": "/mi/api/formats/components/src/variables/progressCss.md"
+              },
+              {
+                "text": "radioInputGroupCss",
+                "link": "/mi/api/formats/components/src/variables/radioInputGroupCss.md"
+              },
+              {
+                "text": "radioCss",
+                "link": "/mi/api/formats/components/src/variables/radioCss.md"
+              },
+              {
+                "text": "rangeInputCss",
+                "link": "/mi/api/formats/components/src/variables/rangeInputCss.md"
+              },
+              {
+                "text": "ratingCss",
+                "link": "/mi/api/formats/components/src/variables/ratingCss.md"
+              },
+              {
+                "text": "sideNavBarCss",
+                "link": "/mi/api/formats/components/src/variables/sideNavBarCss.md"
+              },
+              {
+                "text": "sideNavBarItemCss",
+                "link": "/mi/api/formats/components/src/variables/sideNavBarItemCss.md"
+              },
+              {
+                "text": "simpleSelectCss",
+                "link": "/mi/api/formats/components/src/variables/simpleSelectCss.md"
+              },
+              {
+                "text": "spinnerCss",
+                "link": "/mi/api/formats/components/src/variables/spinnerCss.md"
+              },
+              {
+                "text": "tableCss",
+                "link": "/mi/api/formats/components/src/variables/tableCss.md"
+              },
+              {
+                "text": "tableBodyCss",
+                "link": "/mi/api/formats/components/src/variables/tableBodyCss.md"
+              },
+              {
+                "text": "tableCellCss",
+                "link": "/mi/api/formats/components/src/variables/tableCellCss.md"
+              },
+              {
+                "text": "tableColHeaderCss",
+                "link": "/mi/api/formats/components/src/variables/tableColHeaderCss.md"
+              },
+              {
+                "text": "tableHeadCss",
+                "link": "/mi/api/formats/components/src/variables/tableHeadCss.md"
+              },
+              {
+                "text": "tableRowHeaderCss",
+                "link": "/mi/api/formats/components/src/variables/tableRowHeaderCss.md"
+              },
+              {
+                "text": "tableRowCss",
+                "link": "/mi/api/formats/components/src/variables/tableRowCss.md"
+              },
+              {
+                "text": "tabsCss",
+                "link": "/mi/api/formats/components/src/variables/tabsCss.md"
+              },
+              {
+                "text": "tabsPanelCss",
+                "link": "/mi/api/formats/components/src/variables/tabsPanelCss.md"
+              },
+              {
+                "text": "tabsTabCss",
+                "link": "/mi/api/formats/components/src/variables/tabsTabCss.md"
+              },
+              {
+                "text": "tagCss",
+                "link": "/mi/api/formats/components/src/variables/tagCss.md"
+              },
+              {
+                "text": "textAreaCss",
+                "link": "/mi/api/formats/components/src/variables/textAreaCss.md"
+              },
+              {
+                "text": "textInputCss",
+                "link": "/mi/api/formats/components/src/variables/textInputCss.md"
+              },
+              {
+                "text": "textCss",
+                "link": "/mi/api/formats/components/src/variables/textCss.md"
+              },
+              {
+                "text": "toggleDetailsCss",
+                "link": "/mi/api/formats/components/src/variables/toggleDetailsCss.md"
+              },
+              {
+                "text": "toggleGroupCss",
+                "link": "/mi/api/formats/components/src/variables/toggleGroupCss.md"
+              },
+              {
+                "text": "tooltipCss",
+                "link": "/mi/api/formats/components/src/variables/tooltipCss.md"
+              },
+              {
+                "text": "trayCss",
+                "link": "/mi/api/formats/components/src/variables/trayCss.md"
+              },
+              {
+                "text": "treeBrowserCss",
+                "link": "/mi/api/formats/components/src/variables/treeBrowserCss.md"
+              },
+              {
+                "text": "viewCss",
+                "link": "/mi/api/formats/components/src/variables/viewCss.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/mi/api/formats/components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "cursorUtilitiesCss",
+                "link": "/mi/api/formats/components/src/variables/cursorUtilitiesCss.md"
+              },
+              {
+                "text": "gapCss",
+                "link": "/mi/api/formats/components/src/variables/gapCss.md"
+              },
+              {
+                "text": "iconCss",
+                "link": "/mi/api/formats/components/src/variables/iconCss.md"
+              },
+              {
+                "text": "layoutUtilitiesCss",
+                "link": "/mi/api/formats/components/src/variables/layoutUtilitiesCss.md"
+              },
+              {
+                "text": "maskUtilityCss",
+                "link": "/mi/api/formats/components/src/variables/maskUtilityCss.md"
+              },
+              {
+                "text": "overflowUtilitiesCss",
+                "link": "/mi/api/formats/components/src/variables/overflowUtilitiesCss.md"
+              },
+              {
+                "text": "positionUtilitiesCss",
+                "link": "/mi/api/formats/components/src/variables/positionUtilitiesCss.md"
+              },
+              {
+                "text": "responsiveUtilitiesCss",
+                "link": "/mi/api/formats/components/src/variables/responsiveUtilitiesCss.md"
+              },
+              {
+                "text": "screenReaderContentCss",
+                "link": "/mi/api/formats/components/src/variables/screenReaderContentCss.md"
+              },
+              {
+                "text": "spacingUtilitiesCss",
+                "link": "/mi/api/formats/components/src/variables/spacingUtilitiesCss.md"
+              },
+              {
+                "text": "stackingUtilityCss",
+                "link": "/mi/api/formats/components/src/variables/stackingUtilityCss.md"
+              },
+              {
+                "text": "transitionCss",
+                "link": "/mi/api/formats/components/src/variables/transitionCss.md"
+              },
+              {
+                "text": "truncateCss",
+                "link": "/mi/api/formats/components/src/variables/truncateCss.md"
+              },
+              {
+                "text": "visualDebugCss",
+                "link": "/mi/api/formats/components/src/variables/visualDebugCss.md"
+              },
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/mi/api/formats/components/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/mi/api/formats/components/src/variables/FOCUSABLE_SELECTOR.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "selectCss",
+                "link": "/mi/api/formats/components/src/functions/selectCss.md"
+              },
+              {
+                "text": "elevationCss",
+                "link": "/mi/api/formats/components/src/functions/elevationCss.md"
+              },
+              {
+                "text": "focusOutlineCss",
+                "link": "/mi/api/formats/components/src/functions/focusOutlineCss.md"
+              },
+              {
+                "text": "baseCss",
+                "link": "/mi/api/formats/components/src/functions/baseCss.md"
+              },
+              {
+                "text": "componentsCss",
+                "link": "/mi/api/formats/components/src/functions/componentsCss.md"
+              },
+              {
+                "text": "proseCss",
+                "link": "/mi/api/formats/components/src/functions/proseCss.md"
+              },
+              {
+                "text": "iconGlyphsCss",
+                "link": "/mi/api/formats/components/src/functions/iconGlyphsCss.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/mi/api/formats/components/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/mi/api/formats/components/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/mi/api/formats/components/src/functions/focusOutlineRules.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/components/src/"
+      },
+      {
+        "text": "css",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssSection",
+                "link": "/mi/api/formats/css/src/interfaces/CssSection.md"
+              },
+              {
+                "text": "ToCssOptions",
+                "link": "/mi/api/formats/css/src/interfaces/ToCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "css",
+                "link": "/mi/api/formats/css/src/variables/css.md"
+              },
+              {
+                "text": "leanCss",
+                "link": "/mi/api/formats/css/src/variables/leanCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildCssFile",
+                "link": "/mi/api/formats/css/src/functions/buildCssFile.md"
+              },
+              {
+                "text": "toCss",
+                "link": "/mi/api/formats/css/src/functions/toCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/css/src/"
+      },
+      {
+        "text": "dtcg",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/mi/api/formats/dtcg/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "DtcgNode",
+                "link": "/mi/api/formats/dtcg/src/type-aliases/DtcgNode.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "dtcg",
+                "link": "/mi/api/formats/dtcg/src/variables/dtcg.md"
+              },
+              {
+                "text": "themes",
+                "link": "/mi/api/formats/dtcg/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/mi/api/formats/dtcg/src/functions/byTheme.md"
+              },
+              {
+                "text": "toDtcg",
+                "link": "/mi/api/formats/dtcg/src/functions/toDtcg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/dtcg/src/"
+      },
+      {
+        "text": "icon-font",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconFontResult",
+                "link": "/mi/api/formats/icon-font/src/interfaces/IconFontResult.md"
+              },
+              {
+                "text": "BuildIconFontOptions",
+                "link": "/mi/api/formats/icon-font/src/interfaces/BuildIconFontOptions.md"
+              },
+              {
+                "text": "GlyphPath",
+                "link": "/mi/api/formats/icon-font/src/interfaces/GlyphPath.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildIconFont",
+                "link": "/mi/api/formats/icon-font/src/functions/buildIconFont.md"
+              },
+              {
+                "text": "svgToGlyphPath",
+                "link": "/mi/api/formats/icon-font/src/functions/svgToGlyphPath.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/icon-font/src/"
+      },
+      {
+        "text": "icons",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenIcon",
+                "link": "/mi/api/formats/icons/src/interfaces/PantokenIcon.md"
+              },
+              {
+                "text": "IconResolverChainOptions",
+                "link": "/mi/api/formats/icons/src/interfaces/IconResolverChainOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "icons",
+                "link": "/mi/api/formats/icons/src/variables/icons.md"
+              },
+              {
+                "text": "iconsByName",
+                "link": "/mi/api/formats/icons/src/variables/iconsByName.md"
+              },
+              {
+                "text": "resolve",
+                "link": "/mi/api/formats/icons/src/variables/resolve.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "getIcon",
+                "link": "/mi/api/formats/icons/src/functions/getIcon.md"
+              },
+              {
+                "text": "buildIconResolverChain",
+                "link": "/mi/api/formats/icons/src/functions/buildIconResolverChain.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/icons/src/"
+      },
+      {
+        "text": "interactions",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ProgressCircleOptions",
+                "link": "/mi/api/formats/interactions/src/interfaces/ProgressCircleOptions.md"
+              },
+              {
+                "text": "ProgressCircleHandle",
+                "link": "/mi/api/formats/interactions/src/interfaces/ProgressCircleHandle.md"
+              },
+              {
+                "text": "RemoveOptions",
+                "link": "/mi/api/formats/interactions/src/interfaces/RemoveOptions.md"
+              },
+              {
+                "text": "RemoveHandle",
+                "link": "/mi/api/formats/interactions/src/interfaces/RemoveHandle.md"
+              },
+              {
+                "text": "TooltipOptions",
+                "link": "/mi/api/formats/interactions/src/interfaces/TooltipOptions.md"
+              },
+              {
+                "text": "TooltipHandle",
+                "link": "/mi/api/formats/interactions/src/interfaces/TooltipHandle.md"
+              },
+              {
+                "text": "TruncateAutoOptions",
+                "link": "/mi/api/formats/interactions/src/interfaces/TruncateAutoOptions.md"
+              },
+              {
+                "text": "TruncateAutoHandle",
+                "link": "/mi/api/formats/interactions/src/interfaces/TruncateAutoHandle.md"
+              },
+              {
+                "text": "CommandEventish",
+                "link": "/mi/api/formats/interactions/src/interfaces/CommandEventish.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandHandler",
+                "link": "/mi/api/formats/interactions/src/type-aliases/CommandHandler.md"
+              },
+              {
+                "text": "OnCommand",
+                "link": "/mi/api/formats/interactions/src/type-aliases/OnCommand.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "SPACING_ATTRS",
+                "link": "/mi/api/formats/interactions/src/variables/SPACING_ATTRS.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "initCloseButton",
+                "link": "/mi/api/formats/interactions/src/functions/initCloseButton.md"
+              },
+              {
+                "text": "initInPlaceEdit",
+                "link": "/mi/api/formats/interactions/src/functions/initInPlaceEdit.md"
+              },
+              {
+                "text": "initModal",
+                "link": "/mi/api/formats/interactions/src/functions/initModal.md"
+              },
+              {
+                "text": "initProgressCircle",
+                "link": "/mi/api/formats/interactions/src/functions/initProgressCircle.md"
+              },
+              {
+                "text": "initRemove",
+                "link": "/mi/api/formats/interactions/src/functions/initRemove.md"
+              },
+              {
+                "text": "initResponsiveOverlay",
+                "link": "/mi/api/formats/interactions/src/functions/initResponsiveOverlay.md"
+              },
+              {
+                "text": "initTooltip",
+                "link": "/mi/api/formats/interactions/src/functions/initTooltip.md"
+              },
+              {
+                "text": "syncTruncateAutoLines",
+                "link": "/mi/api/formats/interactions/src/functions/syncTruncateAutoLines.md"
+              },
+              {
+                "text": "initTruncateAuto",
+                "link": "/mi/api/formats/interactions/src/functions/initTruncateAuto.md"
+              },
+              {
+                "text": "makeOnCommand",
+                "link": "/mi/api/formats/interactions/src/functions/makeOnCommand.md"
+              },
+              {
+                "text": "syncInvoker",
+                "link": "/mi/api/formats/interactions/src/functions/syncInvoker.md"
+              },
+              {
+                "text": "resolveSpace",
+                "link": "/mi/api/formats/interactions/src/functions/resolveSpace.md"
+              },
+              {
+                "text": "spacingValue",
+                "link": "/mi/api/formats/interactions/src/functions/spacingValue.md"
+              },
+              {
+                "text": "applySpacing",
+                "link": "/mi/api/formats/interactions/src/functions/applySpacing.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/interactions/src/"
+      },
+      {
+        "text": "less",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToLessOptions",
+                "link": "/mi/api/formats/less/src/interfaces/ToLessOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "less",
+                "link": "/mi/api/formats/less/src/variables/less.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toLess",
+                "link": "/mi/api/formats/less/src/functions/toLess.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/less/src/"
+      },
+      {
+        "text": "scss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToScssOptions",
+                "link": "/mi/api/formats/scss/src/interfaces/ToScssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "scss",
+                "link": "/mi/api/formats/scss/src/variables/scss.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toScss",
+                "link": "/mi/api/formats/scss/src/functions/toScss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/scss/src/"
+      },
+      {
+        "text": "stylus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStylusOptions",
+                "link": "/mi/api/formats/stylus/src/interfaces/ToStylusOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "stylus",
+                "link": "/mi/api/formats/stylus/src/variables/stylus.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toStylus",
+                "link": "/mi/api/formats/stylus/src/functions/toStylus.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/stylus/src/"
+      },
+      {
+        "text": "tokens",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokens",
+                "link": "/mi/api/formats/tokens/src/variables/tokens.md"
+              },
+              {
+                "text": "rebrandTokens",
+                "link": "/mi/api/formats/tokens/src/variables/rebrandTokens.md"
+              },
+              {
+                "text": "canvasTokens",
+                "link": "/mi/api/formats/tokens/src/variables/canvasTokens.md"
+              },
+              {
+                "text": "canvasHighContrastTokens",
+                "link": "/mi/api/formats/tokens/src/variables/canvasHighContrastTokens.md"
+              },
+              {
+                "text": "themes",
+                "link": "/mi/api/formats/tokens/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/mi/api/formats/tokens/src/functions/byTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/formats/tokens/src/"
+      }
+    ]
+  },
+  {
+    "text": "design",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "figma",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FigmaColor",
+                "link": "/mi/api/design/figma/src/interfaces/FigmaColor.md"
+              },
+              {
+                "text": "FigmaVariable",
+                "link": "/mi/api/design/figma/src/interfaces/FigmaVariable.md"
+              },
+              {
+                "text": "FigmaVariablesPayload",
+                "link": "/mi/api/design/figma/src/interfaces/FigmaVariablesPayload.md"
+              },
+              {
+                "text": "ToFigmaOptions",
+                "link": "/mi/api/design/figma/src/interfaces/ToFigmaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFigmaColor",
+                "link": "/mi/api/design/figma/src/functions/toFigmaColor.md"
+              },
+              {
+                "text": "toFigmaVariables",
+                "link": "/mi/api/design/figma/src/functions/toFigmaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/design/figma/src/"
+      },
+      {
+        "text": "swatches",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToGplOptions",
+                "link": "/mi/api/design/swatches/src/interfaces/ToGplOptions.md"
+              },
+              {
+                "text": "Swatch",
+                "link": "/mi/api/design/swatches/src/interfaces/Swatch.md"
+              },
+              {
+                "text": "Rgb",
+                "link": "/mi/api/design/swatches/src/interfaces/Rgb.md"
+              },
+              {
+                "text": "SketchPalette",
+                "link": "/mi/api/design/swatches/src/interfaces/SketchPalette.md"
+              },
+              {
+                "text": "ToSvgOptions",
+                "link": "/mi/api/design/swatches/src/interfaces/ToSvgOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/mi/api/design/swatches/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "swatches",
+                "link": "/mi/api/design/swatches/src/variables/swatches.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAse",
+                "link": "/mi/api/design/swatches/src/functions/toAse.md"
+              },
+              {
+                "text": "toGpl",
+                "link": "/mi/api/design/swatches/src/functions/toGpl.md"
+              },
+              {
+                "text": "hexToRgb",
+                "link": "/mi/api/design/swatches/src/functions/hexToRgb.md"
+              },
+              {
+                "text": "toSwatches",
+                "link": "/mi/api/design/swatches/src/functions/toSwatches.md"
+              },
+              {
+                "text": "toSketchPalette",
+                "link": "/mi/api/design/swatches/src/functions/toSketchPalette.md"
+              },
+              {
+                "text": "toSvg",
+                "link": "/mi/api/design/swatches/src/functions/toSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/design/swatches/src/"
+      }
+    ]
+  },
+  {
+    "text": "bundlers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "next",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "NextConfigLike",
+                "link": "/mi/api/bundlers/next/src/interfaces/NextConfigLike.md"
+              },
+              {
+                "text": "WithPantokenOptions",
+                "link": "/mi/api/bundlers/next/src/interfaces/WithPantokenOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INSTUI_TRANSPILE_PACKAGES",
+                "link": "/mi/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "withPantoken",
+                "link": "/mi/api/bundlers/next/src/functions/withPantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/bundlers/next/src/"
+      },
+      {
+        "text": "panda",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaToken",
+                "link": "/mi/api/bundlers/panda/src/interfaces/PandaToken.md"
+              },
+              {
+                "text": "PandaSemanticToken",
+                "link": "/mi/api/bundlers/panda/src/interfaces/PandaSemanticToken.md"
+              },
+              {
+                "text": "PandaPreset",
+                "link": "/mi/api/bundlers/panda/src/interfaces/PandaPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Ingoa Momo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaCategory",
+                "link": "/mi/api/bundlers/panda/src/type-aliases/PandaCategory.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/mi/api/bundlers/panda/src/variables/pantokenPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toPandaPreset",
+                "link": "/mi/api/bundlers/panda/src/functions/toPandaPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/bundlers/panda/src/"
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenPostcssOptions",
+                "link": "/mi/api/bundlers/postcss/src/interfaces/PantokenPostcssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Taipūtī",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/mi/api/bundlers/postcss/src/variables/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/bundlers/postcss/src/"
+      },
+      {
+        "text": "tailwind",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TailwindPreset",
+                "link": "/mi/api/bundlers/tailwind/src/interfaces/TailwindPreset.md"
+              },
+              {
+                "text": "PantokenPresetOptions",
+                "link": "/mi/api/bundlers/tailwind/src/interfaces/PantokenPresetOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/mi/api/bundlers/tailwind/src/functions/pantokenPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/bundlers/tailwind/src/"
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenViteOptions",
+                "link": "/mi/api/bundlers/vite/src/interfaces/PantokenViteOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Mahi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/mi/api/bundlers/vite/src/functions/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/bundlers/vite/src/"
+      },
+      {
+        "text": "webpack",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Ngā Kāwai",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackPlugin",
+                "link": "/mi/api/bundlers/webpack/src/classes/PantokenWebpackPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Ngā Atanga",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackOptions",
+                "link": "/mi/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md"
+              }
+            ]
+          }
+        ],
+        "link": "/mi/api/bundlers/webpack/src/"
+      }
+    ]
+  },
+  {
+    "text": "plugins",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "colors",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Ingoa Momo",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CssColor",
+                    "link": "/mi/api/plugins/pantoken/colors/src/type-aliases/CssColor.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "alpha",
+                    "link": "/mi/api/plugins/pantoken/colors/src/functions/alpha.md"
+                  },
+                  {
+                    "text": "darken",
+                    "link": "/mi/api/plugins/pantoken/colors/src/functions/darken.md"
+                  },
+                  {
+                    "text": "lighten",
+                    "link": "/mi/api/plugins/pantoken/colors/src/functions/lighten.md"
+                  },
+                  {
+                    "text": "overlayColors",
+                    "link": "/mi/api/plugins/pantoken/colors/src/functions/overlayColors.md"
+                  },
+                  {
+                    "text": "onColor",
+                    "link": "/mi/api/plugins/pantoken/colors/src/functions/onColor.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/colors/src/"
+          },
+          {
+            "text": "custom-components",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomComponentsOptions",
+                    "link": "/mi/api/plugins/pantoken/custom-components/src/interfaces/CustomComponentsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "bannerRules",
+                    "link": "/mi/api/plugins/pantoken/custom-components/src/functions/bannerRules.md"
+                  },
+                  {
+                    "text": "cardRules",
+                    "link": "/mi/api/plugins/pantoken/custom-components/src/functions/cardRules.md"
+                  },
+                  {
+                    "text": "customComponents",
+                    "link": "/mi/api/plugins/pantoken/custom-components/src/functions/customComponents.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/custom-components/src/"
+          },
+          {
+            "text": "custom-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomIcon",
+                    "link": "/mi/api/plugins/pantoken/custom-icons/src/interfaces/CustomIcon.md"
+                  },
+                  {
+                    "text": "CustomIconsOptions",
+                    "link": "/mi/api/plugins/pantoken/custom-icons/src/interfaces/CustomIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "icons",
+                    "link": "/mi/api/plugins/pantoken/custom-icons/src/variables/icons.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "customIcons",
+                    "link": "/mi/api/plugins/pantoken/custom-icons/src/functions/customIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/custom-icons/src/"
+          },
+          {
+            "text": "deprecations",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamVersions",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/interfaces/UpstreamVersions.md"
+                  },
+                  {
+                    "text": "ParsedRef",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/interfaces/ParsedRef.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "shimValue",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/shimValue.md"
+                  },
+                  {
+                    "text": "shimEntries",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/shimEntries.md"
+                  },
+                  {
+                    "text": "ledgerCovers",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/ledgerCovers.md"
+                  },
+                  {
+                    "text": "parseUpstreamRef",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/parseUpstreamRef.md"
+                  },
+                  {
+                    "text": "compareVersions",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/compareVersions.md"
+                  },
+                  {
+                    "text": "dueForRemoval",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/dueForRemoval.md"
+                  },
+                  {
+                    "text": "describeLifecycle",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/describeLifecycle.md"
+                  },
+                  {
+                    "text": "deprecationShims",
+                    "link": "/mi/api/plugins/pantoken/deprecations/src/functions/deprecationShims.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/deprecations/src/"
+          },
+          {
+            "text": "layouts",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LayoutsOptions",
+                    "link": "/mi/api/plugins/pantoken/layouts/src/interfaces/LayoutsOptions.md"
+                  },
+                  {
+                    "text": "PageLayout",
+                    "link": "/mi/api/plugins/pantoken/layouts/src/interfaces/PageLayout.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pageLayouts",
+                    "link": "/mi/api/plugins/pantoken/layouts/src/variables/pageLayouts.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "layouts",
+                    "link": "/mi/api/plugins/pantoken/layouts/src/functions/layouts.md"
+                  },
+                  {
+                    "text": "wrapperRules",
+                    "link": "/mi/api/plugins/pantoken/layouts/src/functions/wrapperRules.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/layouts/src/"
+          },
+          {
+            "text": "logos",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LogoMeta",
+                    "link": "/mi/api/plugins/pantoken/logos/src/interfaces/LogoMeta.md"
+                  },
+                  {
+                    "text": "LogosOptions",
+                    "link": "/mi/api/plugins/pantoken/logos/src/interfaces/LogosOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Ingoa Momo",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Product",
+                    "link": "/mi/api/plugins/pantoken/logos/src/type-aliases/Product.md"
+                  },
+                  {
+                    "text": "LogoLayout",
+                    "link": "/mi/api/plugins/pantoken/logos/src/type-aliases/LogoLayout.md"
+                  },
+                  {
+                    "text": "LogoColorMode",
+                    "link": "/mi/api/plugins/pantoken/logos/src/type-aliases/LogoColorMode.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "logos",
+                    "link": "/mi/api/plugins/pantoken/logos/src/variables/logos.md"
+                  },
+                  {
+                    "text": "products",
+                    "link": "/mi/api/plugins/pantoken/logos/src/variables/products.md"
+                  },
+                  {
+                    "text": "logosCss",
+                    "link": "/mi/api/plugins/pantoken/logos/src/variables/logosCss.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "getLogoSvg",
+                    "link": "/mi/api/plugins/pantoken/logos/src/functions/getLogoSvg.md"
+                  },
+                  {
+                    "text": "getLogoDataUri",
+                    "link": "/mi/api/plugins/pantoken/logos/src/functions/getLogoDataUri.md"
+                  },
+                  {
+                    "text": "logosPlugin",
+                    "link": "/mi/api/plugins/pantoken/logos/src/functions/logosPlugin.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/logos/src/"
+          },
+          {
+            "text": "primitives",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "PrimitiveTokenNames",
+                    "link": "/mi/api/plugins/pantoken/primitives/src/interfaces/PrimitiveTokenNames.md"
+                  },
+                  {
+                    "text": "PrimitivesOptions",
+                    "link": "/mi/api/plugins/pantoken/primitives/src/interfaces/PrimitivesOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "primitivesCss",
+                    "link": "/mi/api/plugins/pantoken/primitives/src/functions/primitivesCss.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/primitives/src/"
+          },
+          {
+            "text": "simple-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIcon",
+                    "link": "/mi/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIcon.md"
+                  },
+                  {
+                    "text": "SimpleIconsOptions",
+                    "link": "/mi/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Ingoa Momo",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIconsRegistry",
+                    "link": "/mi/api/plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toExportName",
+                    "link": "/mi/api/plugins/pantoken/simple-icons/src/functions/toExportName.md"
+                  },
+                  {
+                    "text": "defaultRegistry",
+                    "link": "/mi/api/plugins/pantoken/simple-icons/src/functions/defaultRegistry.md"
+                  },
+                  {
+                    "text": "simpleIcons",
+                    "link": "/mi/api/plugins/pantoken/simple-icons/src/functions/simpleIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/simple-icons/src/"
+          },
+          {
+            "text": "stacking",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "StackingOptions",
+                    "link": "/mi/api/plugins/pantoken/stacking/src/interfaces/StackingOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "STACKING_LEVELS",
+                    "link": "/mi/api/plugins/pantoken/stacking/src/variables/STACKING_LEVELS.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "stacking",
+                    "link": "/mi/api/plugins/pantoken/stacking/src/functions/stacking.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/stacking/src/"
+          },
+          {
+            "text": "transition",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "TransitionOptions",
+                    "link": "/mi/api/plugins/pantoken/transition/src/interfaces/TransitionOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "transition",
+                    "link": "/mi/api/plugins/pantoken/transition/src/functions/transition.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/transition/src/"
+          },
+          {
+            "text": "visual-debug",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VisualDebugOptions",
+                    "link": "/mi/api/plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VISUAL_DEBUG_RULES",
+                    "link": "/mi/api/plugins/pantoken/visual-debug/src/variables/VISUAL_DEBUG_RULES.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "visualDebugRules",
+                    "link": "/mi/api/plugins/pantoken/visual-debug/src/functions/visualDebugRules.md"
+                  },
+                  {
+                    "text": "visualDebug",
+                    "link": "/mi/api/plugins/pantoken/visual-debug/src/functions/visualDebug.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/pantoken/visual-debug/src/"
+          }
+        ]
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "flatten-property",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/mi/api/plugins/postcss/flatten-property/src/interfaces/FlattenPropertyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/mi/api/plugins/postcss/flatten-property/src/variables/flattenProperty.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/postcss/flatten-property/src/"
+          },
+          {
+            "text": "mangle-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/mi/api/plugins/postcss/mangle-custom-props/src/interfaces/MangleCustomPropsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Ingoa Momo",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/mi/api/plugins/postcss/mangle-custom-props/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/mi/api/plugins/postcss/mangle-custom-props/src/variables/mangleCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/postcss/mangle-custom-props/src/"
+          },
+          {
+            "text": "props-minify",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/interfaces/FlattenPropertyOptions.md"
+                  },
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/interfaces/MangleCustomPropsOptions.md"
+                  },
+                  {
+                    "text": "PropsMinifyOptions",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Ingoa Momo",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/variables/flattenProperty.md"
+                  },
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/variables/mangleCustomProps.md"
+                  },
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "applyMinify",
+                    "link": "/mi/api/plugins/postcss/props-minify/src/functions/applyMinify.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/postcss/props-minify/src/"
+          },
+          {
+            "text": "prune-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/mi/api/plugins/postcss/prune-custom-props/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/postcss/prune-custom-props/src/"
+          },
+          {
+            "text": "theme-custom-media",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "ThemeCustomMediaOptions",
+                    "link": "/mi/api/plugins/postcss/theme-custom-media/src/interfaces/ThemeCustomMediaOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Ingoa Momo",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Theme",
+                    "link": "/mi/api/plugins/postcss/theme-custom-media/src/type-aliases/Theme.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "themeCustomMedia",
+                    "link": "/mi/api/plugins/postcss/theme-custom-media/src/variables/themeCustomMedia.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/postcss/theme-custom-media/src/"
+          }
+        ]
+      },
+      {
+        "text": "typedoc",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "demo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Taipūtī",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "DEMO_TAG",
+                    "link": "/mi/api/plugins/typedoc/demo/src/variables/DEMO_TAG.md"
+                  },
+                  {
+                    "text": "DEMO_FENCE",
+                    "link": "/mi/api/plugins/typedoc/demo/src/variables/DEMO_FENCE.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toDemoFence",
+                    "link": "/mi/api/plugins/typedoc/demo/src/functions/toDemoFence.md"
+                  },
+                  {
+                    "text": "rewriteComment",
+                    "link": "/mi/api/plugins/typedoc/demo/src/functions/rewriteComment.md"
+                  },
+                  {
+                    "text": "load",
+                    "link": "/mi/api/plugins/typedoc/demo/src/functions/load.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/typedoc/demo/src/"
+          }
+        ]
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "workspace-orchestrator",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Ngā Atanga",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamNode",
+                    "link": "/mi/api/plugins/vite/workspace-orchestrator/src/interfaces/UpstreamNode.md"
+                  },
+                  {
+                    "text": "FileServerEntry",
+                    "link": "/mi/api/plugins/vite/workspace-orchestrator/src/interfaces/FileServerEntry.md"
+                  },
+                  {
+                    "text": "OrchestratorOptions",
+                    "link": "/mi/api/plugins/vite/workspace-orchestrator/src/interfaces/OrchestratorOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Ngā Mahi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "matchesFilters",
+                    "link": "/mi/api/plugins/vite/workspace-orchestrator/src/functions/matchesFilters.md"
+                  },
+                  {
+                    "text": "workspaceOrchestrator",
+                    "link": "/mi/api/plugins/vite/workspace-orchestrator/src/functions/workspaceOrchestrator.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/mi/api/plugins/vite/workspace-orchestrator/src/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "CSS",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Tirohanga whānui",
+        "link": "/mi/api/css/"
+      },
+      {
+        "text": "Ngā Wāhanga",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "agent-shell",
+            "link": "/mi/api/css/agent-shell.md"
+          },
+          {
+            "text": "alert",
+            "link": "/mi/api/css/alert.md"
+          },
+          {
+            "text": "avatar",
+            "link": "/mi/api/css/avatar.md"
+          },
+          {
+            "text": "badge",
+            "link": "/mi/api/css/badge.md"
+          },
+          {
+            "text": "banner",
+            "link": "/mi/api/css/banner.md"
+          },
+          {
+            "text": "billboard",
+            "link": "/mi/api/css/billboard.md"
+          },
+          {
+            "text": "breadcrumb",
+            "link": "/mi/api/css/breadcrumb.md",
+            "items": [
+              {
+                "text": "link",
+                "link": "/mi/api/css/breadcrumb.link.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "button",
+            "link": "/mi/api/css/button.md"
+          },
+          {
+            "text": "byline",
+            "link": "/mi/api/css/byline.md"
+          },
+          {
+            "text": "calendar",
+            "link": "/mi/api/css/calendar.md",
+            "items": [
+              {
+                "text": "day",
+                "link": "/mi/api/css/calendar.day.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "card",
+            "link": "/mi/api/css/card.md"
+          },
+          {
+            "text": "checkbox",
+            "link": "/mi/api/css/checkbox.md"
+          },
+          {
+            "text": "close-button",
+            "link": "/mi/api/css/close-button.md"
+          },
+          {
+            "text": "context-view",
+            "link": "/mi/api/css/context-view.md"
+          },
+          {
+            "text": "drawer-layout",
+            "link": "/mi/api/css/drawer-layout.md",
+            "items": [
+              {
+                "text": "content",
+                "link": "/mi/api/css/drawer-layout.content.md"
+              },
+              {
+                "text": "tray",
+                "link": "/mi/api/css/drawer-layout.tray.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "file-drop",
+            "link": "/mi/api/css/file-drop.md"
+          },
+          {
+            "text": "form-field",
+            "link": "/mi/api/css/form-field.md"
+          },
+          {
+            "text": "form-field-group",
+            "link": "/mi/api/css/form-field-group.md"
+          },
+          {
+            "text": "form-field-messages",
+            "link": "/mi/api/css/form-field-messages.md"
+          },
+          {
+            "text": "heading",
+            "link": "/mi/api/css/heading.md"
+          },
+          {
+            "text": "img",
+            "link": "/mi/api/css/img.md"
+          },
+          {
+            "text": "in-place-edit",
+            "link": "/mi/api/css/in-place-edit.md"
+          },
+          {
+            "text": "input-group",
+            "link": "/mi/api/css/input-group.md"
+          },
+          {
+            "text": "link",
+            "link": "/mi/api/css/link.md"
+          },
+          {
+            "text": "list",
+            "link": "/mi/api/css/list.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/mi/api/css/list.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "mask",
+            "link": "/mi/api/css/mask.md"
+          },
+          {
+            "text": "menu",
+            "link": "/mi/api/css/menu.md",
+            "items": [
+              {
+                "text": "group",
+                "link": "/mi/api/css/menu.group.md"
+              },
+              {
+                "text": "item",
+                "link": "/mi/api/css/menu.item.md"
+              },
+              {
+                "text": "separator",
+                "link": "/mi/api/css/menu.separator.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "metric",
+            "link": "/mi/api/css/metric.md"
+          },
+          {
+            "text": "modal",
+            "link": "/mi/api/css/modal.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/mi/api/css/modal.body.md"
+              },
+              {
+                "text": "footer",
+                "link": "/mi/api/css/modal.footer.md"
+              },
+              {
+                "text": "header",
+                "link": "/mi/api/css/modal.header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "number-input",
+            "link": "/mi/api/css/number-input.md"
+          },
+          {
+            "text": "pagination",
+            "link": "/mi/api/css/pagination.md",
+            "items": [
+              {
+                "text": "page",
+                "link": "/mi/api/css/pagination.page.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "pill",
+            "link": "/mi/api/css/pill.md"
+          },
+          {
+            "text": "popover",
+            "link": "/mi/api/css/popover.md"
+          },
+          {
+            "text": "progress",
+            "link": "/mi/api/css/progress.md"
+          },
+          {
+            "text": "progress-circle",
+            "link": "/mi/api/css/progress-circle.md"
+          },
+          {
+            "text": "radio",
+            "link": "/mi/api/css/radio.md"
+          },
+          {
+            "text": "radio-input-group",
+            "link": "/mi/api/css/radio-input-group.md"
+          },
+          {
+            "text": "range-input",
+            "link": "/mi/api/css/range-input.md"
+          },
+          {
+            "text": "rating",
+            "link": "/mi/api/css/rating.md"
+          },
+          {
+            "text": "side-nav-bar",
+            "link": "/mi/api/css/side-nav-bar.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/mi/api/css/side-nav-bar.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "simple-select",
+            "link": "/mi/api/css/simple-select.md"
+          },
+          {
+            "text": "spinner",
+            "link": "/mi/api/css/spinner.md"
+          },
+          {
+            "text": "table",
+            "link": "/mi/api/css/table.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/mi/api/css/table.body.md"
+              },
+              {
+                "text": "cell",
+                "link": "/mi/api/css/table.cell.md"
+              },
+              {
+                "text": "col-header",
+                "link": "/mi/api/css/table.col-header.md"
+              },
+              {
+                "text": "head",
+                "link": "/mi/api/css/table.head.md"
+              },
+              {
+                "text": "row",
+                "link": "/mi/api/css/table.row.md"
+              },
+              {
+                "text": "row-header",
+                "link": "/mi/api/css/table.row-header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tabs",
+            "link": "/mi/api/css/tabs.md",
+            "items": [
+              {
+                "text": "panel",
+                "link": "/mi/api/css/tabs.panel.md"
+              },
+              {
+                "text": "tab",
+                "link": "/mi/api/css/tabs.tab.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tag",
+            "link": "/mi/api/css/tag.md"
+          },
+          {
+            "text": "text",
+            "link": "/mi/api/css/text.md"
+          },
+          {
+            "text": "text-area",
+            "link": "/mi/api/css/text-area.md"
+          },
+          {
+            "text": "text-input",
+            "link": "/mi/api/css/text-input.md"
+          },
+          {
+            "text": "toggle-details",
+            "link": "/mi/api/css/toggle-details.md"
+          },
+          {
+            "text": "toggle-group",
+            "link": "/mi/api/css/toggle-group.md"
+          },
+          {
+            "text": "tooltip",
+            "link": "/mi/api/css/tooltip.md"
+          },
+          {
+            "text": "tray",
+            "link": "/mi/api/css/tray.md"
+          },
+          {
+            "text": "tree-browser",
+            "link": "/mi/api/css/tree-browser.md"
+          },
+          {
+            "text": "view",
+            "link": "/mi/api/css/view.md"
+          }
+        ]
+      },
+      {
+        "text": "Ngā Utauta",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "color",
+            "link": "/mi/api/css/color.md"
+          },
+          {
+            "text": "cursor",
+            "link": "/mi/api/css/cursor.md"
+          },
+          {
+            "text": "gap",
+            "link": "/mi/api/css/gap.md"
+          },
+          {
+            "text": "icon",
+            "link": "/mi/api/css/icon.md"
+          },
+          {
+            "text": "layout",
+            "link": "/mi/api/css/layout.md"
+          },
+          {
+            "text": "maskglobal",
+            "link": "/mi/api/css/maskglobal.md"
+          },
+          {
+            "text": "overflow",
+            "link": "/mi/api/css/overflow.md"
+          },
+          {
+            "text": "position",
+            "link": "/mi/api/css/position.md"
+          },
+          {
+            "text": "responsive",
+            "link": "/mi/api/css/responsive.md"
+          },
+          {
+            "text": "screen-reader-content",
+            "link": "/mi/api/css/screen-reader-content.md"
+          },
+          {
+            "text": "spacing",
+            "link": "/mi/api/css/spacing.md"
+          },
+          {
+            "text": "stacking",
+            "link": "/mi/api/css/stacking.md"
+          },
+          {
+            "text": "transition",
+            "link": "/mi/api/css/transition.md"
+          },
+          {
+            "text": "truncate",
+            "link": "/mi/api/css/truncate.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/mi/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "Ngā Ture",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "base",
+            "link": "/mi/api/css/base.md"
+          },
+          {
+            "text": "prose",
+            "link": "/mi/api/css/prose.md"
+          }
+        ]
+      },
+      {
+        "text": "Plugins",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "logos",
+            "link": "/mi/api/css/logos.md"
+          },
+          {
+            "text": "primitives",
+            "link": "/mi/api/css/primitives.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/mi/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "layout",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "callout",
+            "link": "/mi/api/css/callout.md"
+          },
+          {
+            "text": "hero",
+            "link": "/mi/api/css/hero.md"
+          },
+          {
+            "text": "page-layout",
+            "link": "/mi/api/css/page-layout.md"
+          },
+          {
+            "text": "rubric-note",
+            "link": "/mi/api/css/rubric-note.md"
+          },
+          {
+            "text": "testimonial",
+            "link": "/mi/api/css/testimonial.md"
+          },
+          {
+            "text": "two-column",
+            "link": "/mi/api/css/two-column.md"
+          },
+          {
+            "text": "wrapper",
+            "link": "/mi/api/css/wrapper.md"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -149,30 +149,45 @@
   :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton) {
     background: transparent;
     border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
-    color: var(--instui-component-base-button-primary-inverse-color);
+    color: light-dark(
+      var(--instui-component-base-button-primary-inverse-color),
+      var(--instui-component-base-button-primary-inverse-ghost-border-color)
+    );
 
     &:focus {
       background: var(--instui-component-base-button-primary-inverse-background);
       border-color: var(--instui-component-base-button-primary-inverse-border-color);
-      color: var(--instui-component-base-button-primary-inverse-color);
+      color: light-dark(
+        var(--instui-component-base-button-primary-inverse-color),
+        var(--instui-component-base-button-primary-inverse-ghost-border-color)
+      );
     }
 
     &:hover {
       background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
       border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
-      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+      color: light-dark(
+        var(--instui-component-base-button-primary-on-color-hover-text-color),
+        var(--instui-component-base-button-primary-inverse-ghost-border-color)
+      );
     }
 
     &:active {
       background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
       border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
-      color: var(--instui-component-base-button-primary-on-color-active-text-color);
+      color: light-dark(
+        var(--instui-component-base-button-primary-on-color-active-text-color),
+        var(--instui-component-base-button-primary-inverse-ghost-border-color)
+      );
     }
 
     &:is(:disabled, [aria-disabled="true"]) {
       background: transparent;
       border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
-      color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
+      color: light-dark(
+        var(--instui-component-base-button-primary-on-color-disabled-text-color),
+        var(--instui-component-base-button-primary-inverse-ghost-border-color)
+      );
       cursor: not-allowed;
     }
   }

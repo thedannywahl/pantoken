@@ -1,0 +1,9 @@
+[pantoken](../../../../index.md) / [renderers/docusaurus/src](../index.md) / docusaurusCss
+
+# Variável: docusaurusCss
+
+> `const` **docusaurusCss**: `string`
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Experimental</span>
+
+The ready-made bridge stylesheet.

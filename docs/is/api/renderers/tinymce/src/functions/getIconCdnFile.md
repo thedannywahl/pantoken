@@ -1,0 +1,26 @@
+[pantoken](../../../../index.md) / [renderers/tinymce/src](../index.md) / getIconCdnFile
+
+# Fall: getIconCdnFile()
+
+> **getIconCdnFile**(`icon`): `object`
+
+Compute the CdnFile for an icon given its source.
+Returns `{ package, path }` for use with @pantoken/cdn's buildFileUrl.
+
+## Færibreytur
+
+### icon
+
+[`TaggedIcon`](../interfaces/TaggedIcon.md)
+
+## Skilar
+
+`object`
+
+### package
+
+> **package**: `string`
+
+### path
+
+> **path**: `string`

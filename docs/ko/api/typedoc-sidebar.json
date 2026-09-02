@@ -1,0 +1,4897 @@
+[
+  {
+    "text": "tools",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "aggregate",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Target",
+                "link": "/ko/api/tools/aggregate/src/interfaces/Target.md"
+              },
+              {
+                "text": "AggregateOptions",
+                "link": "/ko/api/tools/aggregate/src/interfaces/AggregateOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "discoverTargets",
+                "link": "/ko/api/tools/aggregate/src/functions/discoverTargets.md"
+              },
+              {
+                "text": "aggregate",
+                "link": "/ko/api/tools/aggregate/src/functions/aggregate.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/tools/aggregate/src/"
+      },
+      {
+        "text": "demo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ko/api/tools/demo/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "ResolvedDemo",
+                "link": "/ko/api/tools/demo/src/interfaces/ResolvedDemo.md"
+              },
+              {
+                "text": "LiveExampleOptions",
+                "link": "/ko/api/tools/demo/src/interfaces/LiveExampleOptions.md"
+              },
+              {
+                "text": "DemoMarkdownItOptions",
+                "link": "/ko/api/tools/demo/src/interfaces/DemoMarkdownItOptions.md"
+              },
+              {
+                "text": "ExampleSrcdocOptions",
+                "link": "/ko/api/tools/demo/src/interfaces/ExampleSrcdocOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FULLSCREEN_BUTTON_HTML",
+                "link": "/ko/api/tools/demo/src/variables/FULLSCREEN_BUTTON_HTML.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "resolveDemo",
+                "link": "/ko/api/tools/demo/src/functions/resolveDemo.md"
+              },
+              {
+                "text": "renderDemoFigure",
+                "link": "/ko/api/tools/demo/src/functions/renderDemoFigure.md"
+              },
+              {
+                "text": "demoMarkdownIt",
+                "link": "/ko/api/tools/demo/src/functions/demoMarkdownIt.md"
+              },
+              {
+                "text": "escapeSrcdoc",
+                "link": "/ko/api/tools/demo/src/functions/escapeSrcdoc.md"
+              },
+              {
+                "text": "buildExampleSrcdoc",
+                "link": "/ko/api/tools/demo/src/functions/buildExampleSrcdoc.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/tools/demo/src/"
+      }
+    ]
+  },
+  {
+    "text": "ai",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken-ai",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AgentTool",
+                "link": "/ko/api/ai/pantoken-ai/src/type-aliases/AgentTool.md"
+              },
+              {
+                "text": "ScaffoldPlatform",
+                "link": "/ko/api/ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ASSETS",
+                "link": "/ko/api/ai/pantoken-ai/src/variables/ASSETS.md"
+              },
+              {
+                "text": "AGENTS_MD",
+                "link": "/ko/api/ai/pantoken-ai/src/variables/AGENTS_MD.md"
+              },
+              {
+                "text": "LLMS_TXT",
+                "link": "/ko/api/ai/pantoken-ai/src/variables/LLMS_TXT.md"
+              },
+              {
+                "text": "AGENT_TOOLS",
+                "link": "/ko/api/ai/pantoken-ai/src/variables/AGENT_TOOLS.md"
+              },
+              {
+                "text": "SCAFFOLD_PLATFORMS",
+                "link": "/ko/api/ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "installAgentAssets",
+                "link": "/ko/api/ai/pantoken-ai/src/functions/installAgentAssets.md"
+              },
+              {
+                "text": "scaffoldAndInit",
+                "link": "/ko/api/ai/pantoken-ai/src/functions/scaffoldAndInit.md"
+              },
+              {
+                "text": "isScaffoldPlatform",
+                "link": "/ko/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md"
+              },
+              {
+                "text": "scaffoldProject",
+                "link": "/ko/api/ai/pantoken-ai/src/functions/scaffoldProject.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/ai/pantoken-ai/src/"
+      }
+    ]
+  },
+  {
+    "text": "platforms",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "android",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateAndroidOptions",
+                "link": "/ko/api/platforms/android/src/interfaces/GenerateAndroidOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAndroid",
+                "link": "/ko/api/platforms/android/src/functions/toAndroid.md"
+              },
+              {
+                "text": "generateAndroid",
+                "link": "/ko/api/platforms/android/src/functions/generateAndroid.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/android/src/"
+      },
+      {
+        "text": "canvas-theme-editor",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeStrings",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md"
+              },
+              {
+                "text": "BuildThemeOptions",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md"
+              },
+              {
+                "text": "CdnFile",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/interfaces/CdnFile.md"
+              },
+              {
+                "text": "CdnProvider",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/interfaces/CdnProvider.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeVariant",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/type-aliases/ThemeVariant.md"
+              },
+              {
+                "text": "ThemeMode",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/type-aliases/ThemeMode.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "THEME_CSS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/THEME_CSS.md"
+              },
+              {
+                "text": "THEME_JS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/THEME_JS.md"
+              },
+              {
+                "text": "ENGLISH_THEME_STRINGS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/ENGLISH_THEME_STRINGS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_CSS_ASSETS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_CSS_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_FONT_ASSETS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_FONT_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_JS_ASSETS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_JS_ASSETS.md"
+              },
+              {
+                "text": "CDN_PROVIDERS",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/CDN_PROVIDERS.md"
+              },
+              {
+                "text": "DEFAULT_CDN_PROVIDER_ID",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/variables/DEFAULT_CDN_PROVIDER_ID.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defaultThemeCssAssets",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/functions/defaultThemeCssAssets.md"
+              },
+              {
+                "text": "buildThemeCss",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/functions/buildThemeCss.md"
+              },
+              {
+                "text": "buildThemeJs",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/functions/buildThemeJs.md"
+              },
+              {
+                "text": "buildTheme",
+                "link": "/ko/api/platforms/canvas-theme-editor/src/functions/buildTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/canvas-theme-editor/src/"
+      },
+      {
+        "text": "compose",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateComposeOptions",
+                "link": "/ko/api/platforms/compose/src/interfaces/GenerateComposeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toCompose",
+                "link": "/ko/api/platforms/compose/src/functions/toCompose.md"
+              },
+              {
+                "text": "generateCompose",
+                "link": "/ko/api/platforms/compose/src/functions/generateCompose.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/compose/src/"
+      },
+      {
+        "text": "drupal",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "DrupalFile",
+                "link": "/ko/api/platforms/drupal/src/interfaces/DrupalFile.md"
+              },
+              {
+                "text": "ToDrupalThemeOptions",
+                "link": "/ko/api/platforms/drupal/src/interfaces/ToDrupalThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "machineName",
+                "link": "/ko/api/platforms/drupal/src/functions/machineName.md"
+              },
+              {
+                "text": "toDrupalTheme",
+                "link": "/ko/api/platforms/drupal/src/functions/toDrupalTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/drupal/src/"
+      },
+      {
+        "text": "email",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ko/api/platforms/email/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ko/api/platforms/email/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "emailTokens",
+                "link": "/ko/api/platforms/email/src/functions/emailTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/email/src/"
+      },
+      {
+        "text": "flutter",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateFlutterOptions",
+                "link": "/ko/api/platforms/flutter/src/interfaces/GenerateFlutterOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFlutter",
+                "link": "/ko/api/platforms/flutter/src/functions/toFlutter.md"
+              },
+              {
+                "text": "generateFlutter",
+                "link": "/ko/api/platforms/flutter/src/functions/generateFlutter.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/flutter/src/"
+      },
+      {
+        "text": "hugo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HugoFile",
+                "link": "/ko/api/platforms/hugo/src/interfaces/HugoFile.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toHugoAssets",
+                "link": "/ko/api/platforms/hugo/src/functions/toHugoAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/hugo/src/"
+      },
+      {
+        "text": "jekyll",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "JekyllFile",
+                "link": "/ko/api/platforms/jekyll/src/interfaces/JekyllFile.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toJekyllAssets",
+                "link": "/ko/api/platforms/jekyll/src/functions/toJekyllAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/jekyll/src/"
+      },
+      {
+        "text": "rust",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustOptions",
+                "link": "/ko/api/platforms/rust/src/interfaces/RustOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustFormat",
+                "link": "/ko/api/platforms/rust/src/type-aliases/RustFormat.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toRust",
+                "link": "/ko/api/platforms/rust/src/functions/toRust.md"
+              },
+              {
+                "text": "generateRust",
+                "link": "/ko/api/platforms/rust/src/functions/generateRust.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/rust/src/"
+      },
+      {
+        "text": "swift",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateSwiftOptions",
+                "link": "/ko/api/platforms/swift/src/interfaces/GenerateSwiftOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toSwift",
+                "link": "/ko/api/platforms/swift/src/functions/toSwift.md"
+              },
+              {
+                "text": "generateSwift",
+                "link": "/ko/api/platforms/swift/src/functions/generateSwift.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/swift/src/"
+      },
+      {
+        "text": "vanilla",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVanillaOptions",
+                "link": "/ko/api/platforms/vanilla/src/interfaces/ToVanillaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ko/api/platforms/vanilla/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "variables",
+                "link": "/ko/api/platforms/vanilla/src/variables/variables.md"
+              },
+              {
+                "text": "VANILLA_TO_INSTUI",
+                "link": "/ko/api/platforms/vanilla/src/variables/VANILLA_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toVanillaVariables",
+                "link": "/ko/api/platforms/vanilla/src/functions/toVanillaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/vanilla/src/"
+      },
+      {
+        "text": "wordpress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeJson",
+                "link": "/ko/api/platforms/wordpress/src/interfaces/ThemeJson.md"
+              },
+              {
+                "text": "ToThemeJsonOptions",
+                "link": "/ko/api/platforms/wordpress/src/interfaces/ToThemeJsonOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ko/api/platforms/wordpress/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "themeJson",
+                "link": "/ko/api/platforms/wordpress/src/variables/themeJson.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeJson",
+                "link": "/ko/api/platforms/wordpress/src/functions/toThemeJson.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/platforms/wordpress/src/"
+      }
+    ]
+  },
+  {
+    "text": "renderers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "angular",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerPantokenElements",
+                "link": "/ko/api/renderers/angular/src/functions/registerPantokenElements.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ko/api/renderers/angular/src/functions/readToken.md"
+              },
+              {
+                "text": "register",
+                "link": "/ko/api/renderers/angular/src/functions/register.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/angular/src/"
+      },
+      {
+        "text": "astro",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HeadEntry",
+                "link": "/ko/api/renderers/astro/src/interfaces/HeadEntry.md"
+              },
+              {
+                "text": "StarlightPluginLike",
+                "link": "/ko/api/renderers/astro/src/interfaces/StarlightPluginLike.md"
+              },
+              {
+                "text": "InstUIOptions",
+                "link": "/ko/api/renderers/astro/src/interfaces/InstUIOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenCss",
+                "link": "/ko/api/renderers/astro/src/functions/pantokenCss.md"
+              },
+              {
+                "text": "InstUI",
+                "link": "/ko/api/renderers/astro/src/functions/InstUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/astro/src/"
+      },
+      {
+        "text": "bootstrap",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToBootstrapCssOptions",
+                "link": "/ko/api/renderers/bootstrap/src/interfaces/ToBootstrapCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BOOTSTRAP_TO_INSTUI",
+                "link": "/ko/api/renderers/bootstrap/src/variables/BOOTSTRAP_TO_INSTUI.md"
+              },
+              {
+                "text": "bootstrapCss",
+                "link": "/ko/api/renderers/bootstrap/src/variables/bootstrapCss.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toBootstrapCss",
+                "link": "/ko/api/renderers/bootstrap/src/functions/toBootstrapCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/bootstrap/src/"
+      },
+      {
+        "text": "css-in-js",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStyledThemeOptions",
+                "link": "/ko/api/renderers/css-in-js/src/interfaces/ToStyledThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StyledTheme",
+                "link": "/ko/api/renderers/css-in-js/src/type-aliases/StyledTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenTheme",
+                "link": "/ko/api/renderers/css-in-js/src/variables/pantokenTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeKey",
+                "link": "/ko/api/renderers/css-in-js/src/functions/toThemeKey.md"
+              },
+              {
+                "text": "toStyledTheme",
+                "link": "/ko/api/renderers/css-in-js/src/functions/toStyledTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/css-in-js/src/"
+      },
+      {
+        "text": "docusaurus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToDocusaurusCssOptions",
+                "link": "/ko/api/renderers/docusaurus/src/interfaces/ToDocusaurusCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INFIMA_TO_INSTUI",
+                "link": "/ko/api/renderers/docusaurus/src/variables/INFIMA_TO_INSTUI.md"
+              },
+              {
+                "text": "docusaurusCss",
+                "link": "/ko/api/renderers/docusaurus/src/variables/docusaurusCss.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toDocusaurusCss",
+                "link": "/ko/api/renderers/docusaurus/src/functions/toDocusaurusCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/docusaurus/src/"
+      },
+      {
+        "text": "foundation",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToFoundationSettingsOptions",
+                "link": "/ko/api/renderers/foundation/src/interfaces/ToFoundationSettingsOptions.md"
+              },
+              {
+                "text": "ToFoundationCssOptions",
+                "link": "/ko/api/renderers/foundation/src/interfaces/ToFoundationCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FOUNDATION_TO_INSTUI",
+                "link": "/ko/api/renderers/foundation/src/variables/FOUNDATION_TO_INSTUI.md"
+              },
+              {
+                "text": "foundationSettings",
+                "link": "/ko/api/renderers/foundation/src/variables/foundationSettings.md"
+              },
+              {
+                "text": "foundationCss",
+                "link": "/ko/api/renderers/foundation/src/variables/foundationCss.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFoundationSettings",
+                "link": "/ko/api/renderers/foundation/src/functions/toFoundationSettings.md"
+              },
+              {
+                "text": "toFoundationCss",
+                "link": "/ko/api/renderers/foundation/src/functions/toFoundationCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/foundation/src/"
+      },
+      {
+        "text": "markdown-it",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MarkdownItOptions",
+                "link": "/ko/api/renderers/markdown-it/src/interfaces/MarkdownItOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PROSE_CLASS",
+                "link": "/ko/api/renderers/markdown-it/src/variables/PROSE_CLASS.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenMarkdownIt",
+                "link": "/ko/api/renderers/markdown-it/src/functions/pantokenMarkdownIt.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/markdown-it/src/"
+      },
+      {
+        "text": "mintlify",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MintlifyColors",
+                "link": "/ko/api/renderers/mintlify/src/interfaces/MintlifyColors.md"
+              },
+              {
+                "text": "MintlifyBackground",
+                "link": "/ko/api/renderers/mintlify/src/interfaces/MintlifyBackground.md"
+              },
+              {
+                "text": "MintlifyTheme",
+                "link": "/ko/api/renderers/mintlify/src/interfaces/MintlifyTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "docsJson",
+                "link": "/ko/api/renderers/mintlify/src/variables/docsJson.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMintlifyConfig",
+                "link": "/ko/api/renderers/mintlify/src/functions/toMintlifyConfig.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/mintlify/src/"
+      },
+      {
+        "text": "mui",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MuiPaletteColor",
+                "link": "/ko/api/renderers/mui/src/interfaces/MuiPaletteColor.md"
+              },
+              {
+                "text": "PantokenThemeOptions",
+                "link": "/ko/api/renderers/mui/src/interfaces/PantokenThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "lightTheme",
+                "link": "/ko/api/renderers/mui/src/variables/lightTheme.md"
+              },
+              {
+                "text": "darkTheme",
+                "link": "/ko/api/renderers/mui/src/variables/darkTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMuiTheme",
+                "link": "/ko/api/renderers/mui/src/functions/toMuiTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/mui/src/"
+      },
+      {
+        "text": "pendo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildPendoCssOptions",
+                "link": "/ko/api/renderers/pendo/src/interfaces/BuildPendoCssOptions.md"
+              },
+              {
+                "text": "AddScopeOptions",
+                "link": "/ko/api/renderers/pendo/src/interfaces/AddScopeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pendoCss",
+                "link": "/ko/api/renderers/pendo/src/variables/pendoCss.md"
+              },
+              {
+                "text": "LAYER_ORDER",
+                "link": "/ko/api/renderers/pendo/src/variables/LAYER_ORDER.md"
+              },
+              {
+                "text": "COMPONENTS",
+                "link": "/ko/api/renderers/pendo/src/variables/COMPONENTS.md"
+              },
+              {
+                "text": "addImportant",
+                "link": "/ko/api/renderers/pendo/src/variables/addImportant.md"
+              },
+              {
+                "text": "addScope",
+                "link": "/ko/api/renderers/pendo/src/variables/addScope.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildPendoCss",
+                "link": "/ko/api/renderers/pendo/src/functions/buildPendoCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/pendo/src/"
+      },
+      {
+        "text": "react",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconProps",
+                "link": "/ko/api/renderers/react/src/interfaces/IconProps.md"
+              },
+              {
+                "text": "TokenProviderProps",
+                "link": "/ko/api/renderers/react/src/interfaces/TokenProviderProps.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ko/api/renderers/react/src/functions/readToken.md"
+              },
+              {
+                "text": "useToken",
+                "link": "/ko/api/renderers/react/src/functions/useToken.md"
+              },
+              {
+                "text": "Icon",
+                "link": "/ko/api/renderers/react/src/functions/Icon.md"
+              },
+              {
+                "text": "TokenProvider",
+                "link": "/ko/api/renderers/react/src/functions/TokenProvider.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/react/src/"
+      },
+      {
+        "text": "react-markdown",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "InstuiMarkdownRenderOptions",
+                "link": "/ko/api/renderers/react-markdown/src/interfaces/InstuiMarkdownRenderOptions.md"
+              },
+              {
+                "text": "InstuiMarkdownProps",
+                "link": "/ko/api/renderers/react-markdown/src/interfaces/InstuiMarkdownProps.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AlertMarker",
+                "link": "/ko/api/renderers/react-markdown/src/type-aliases/AlertMarker.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "instuiMarkdownComponents",
+                "link": "/ko/api/renderers/react-markdown/src/variables/instuiMarkdownComponents.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "createInstuiMarkdownComponents",
+                "link": "/ko/api/renderers/react-markdown/src/functions/createInstuiMarkdownComponents.md"
+              },
+              {
+                "text": "buildIconResolver",
+                "link": "/ko/api/renderers/react-markdown/src/functions/buildIconResolver.md"
+              },
+              {
+                "text": "parseAlertMarker",
+                "link": "/ko/api/renderers/react-markdown/src/functions/parseAlertMarker.md"
+              },
+              {
+                "text": "isColorValue",
+                "link": "/ko/api/renderers/react-markdown/src/functions/isColorValue.md"
+              },
+              {
+                "text": "rehypeColorCodes",
+                "link": "/ko/api/renderers/react-markdown/src/functions/rehypeColorCodes.md"
+              },
+              {
+                "text": "rehypeGithubAlerts",
+                "link": "/ko/api/renderers/react-markdown/src/functions/rehypeGithubAlerts.md"
+              },
+              {
+                "text": "InstuiMarkdown",
+                "link": "/ko/api/renderers/react-markdown/src/functions/InstuiMarkdown.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/react-markdown/src/"
+      },
+      {
+        "text": "react-native",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RNTokenValue",
+                "link": "/ko/api/renderers/react-native/src/type-aliases/RNTokenValue.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ko/api/renderers/react-native/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ko/api/renderers/react-native/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokensForScheme",
+                "link": "/ko/api/renderers/react-native/src/functions/tokensForScheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/react-native/src/"
+      },
+      {
+        "text": "rehype",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RehypeOptions",
+                "link": "/ko/api/renderers/rehype/src/interfaces/RehypeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "rehypePantokenIcons",
+                "link": "/ko/api/renderers/rehype/src/functions/rehypePantokenIcons.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/rehype/src/"
+      },
+      {
+        "text": "shadcn",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToShadcnCssOptions",
+                "link": "/ko/api/renderers/shadcn/src/interfaces/ToShadcnCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "shadcnCss",
+                "link": "/ko/api/renderers/shadcn/src/variables/shadcnCss.md"
+              },
+              {
+                "text": "SHADCN_TO_INSTUI",
+                "link": "/ko/api/renderers/shadcn/src/variables/SHADCN_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toShadcnCss",
+                "link": "/ko/api/renderers/shadcn/src/functions/toShadcnCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/shadcn/src/"
+      },
+      {
+        "text": "storybook",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StorybookTheme",
+                "link": "/ko/api/renderers/storybook/src/type-aliases/StorybookTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenStorybookTheme",
+                "link": "/ko/api/renderers/storybook/src/functions/pantokenStorybookTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/storybook/src/"
+      },
+      {
+        "text": "svelte",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ActionResult",
+                "link": "/ko/api/renderers/svelte/src/interfaces/ActionResult.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerLocalized",
+                "link": "/ko/api/renderers/svelte/src/functions/registerLocalized.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ko/api/renderers/svelte/src/functions/readToken.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ko/api/renderers/svelte/src/functions/icon.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/svelte/src/"
+      },
+      {
+        "text": "tinymce",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssDocEntry",
+                "link": "/ko/api/renderers/tinymce/src/interfaces/CssDocEntry.md"
+              },
+              {
+                "text": "PageLayout",
+                "link": "/ko/api/renderers/tinymce/src/interfaces/PageLayout.md"
+              },
+              {
+                "text": "LogoMeta",
+                "link": "/ko/api/renderers/tinymce/src/interfaces/LogoMeta.md"
+              },
+              {
+                "text": "TaggedIcon",
+                "link": "/ko/api/renderers/tinymce/src/interfaces/TaggedIcon.md"
+              },
+              {
+                "text": "LayoutsPluginOptions",
+                "link": "/ko/api/renderers/tinymce/src/interfaces/LayoutsPluginOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Product",
+                "link": "/ko/api/renderers/tinymce/src/type-aliases/Product.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pageLayouts",
+                "link": "/ko/api/renderers/tinymce/src/variables/pageLayouts.md"
+              },
+              {
+                "text": "logos",
+                "link": "/ko/api/renderers/tinymce/src/variables/logos.md"
+              },
+              {
+                "text": "products",
+                "link": "/ko/api/renderers/tinymce/src/variables/products.md"
+              },
+              {
+                "text": "LAYOUTS_PLUGIN_NAME",
+                "link": "/ko/api/renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md"
+              },
+              {
+                "text": "LAYOUTS_TOOLBAR_NAME",
+                "link": "/ko/api/renderers/tinymce/src/variables/LAYOUTS_TOOLBAR_NAME.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenHtmlCompletion",
+                "link": "/ko/api/renderers/tinymce/src/functions/pantokenHtmlCompletion.md"
+              },
+              {
+                "text": "pantokenHtmlLinter",
+                "link": "/ko/api/renderers/tinymce/src/functions/pantokenHtmlLinter.md"
+              },
+              {
+                "text": "pantokenContentCssUrls",
+                "link": "/ko/api/renderers/tinymce/src/functions/pantokenContentCssUrls.md"
+              },
+              {
+                "text": "injectContentStylesheet",
+                "link": "/ko/api/renderers/tinymce/src/functions/injectContentStylesheet.md"
+              },
+              {
+                "text": "findEntry",
+                "link": "/ko/api/renderers/tinymce/src/functions/findEntry.md"
+              },
+              {
+                "text": "listComponents",
+                "link": "/ko/api/renderers/tinymce/src/functions/listComponents.md"
+              },
+              {
+                "text": "listUtilities",
+                "link": "/ko/api/renderers/tinymce/src/functions/listUtilities.md"
+              },
+              {
+                "text": "getModifierSuggestions",
+                "link": "/ko/api/renderers/tinymce/src/functions/getModifierSuggestions.md"
+              },
+              {
+                "text": "validateClassToken",
+                "link": "/ko/api/renderers/tinymce/src/functions/validateClassToken.md"
+              },
+              {
+                "text": "loadAllIcons",
+                "link": "/ko/api/renderers/tinymce/src/functions/loadAllIcons.md"
+              },
+              {
+                "text": "getIconCdnFile",
+                "link": "/ko/api/renderers/tinymce/src/functions/getIconCdnFile.md"
+              },
+              {
+                "text": "createComponentsPlugin",
+                "link": "/ko/api/renderers/tinymce/src/functions/createComponentsPlugin.md"
+              },
+              {
+                "text": "createIconsPlugin",
+                "link": "/ko/api/renderers/tinymce/src/functions/createIconsPlugin.md"
+              },
+              {
+                "text": "createLayoutsPlugin",
+                "link": "/ko/api/renderers/tinymce/src/functions/createLayoutsPlugin.md"
+              },
+              {
+                "text": "createLogosPlugin",
+                "link": "/ko/api/renderers/tinymce/src/functions/createLogosPlugin.md"
+              },
+              {
+                "text": "createTemplatesPlugin",
+                "link": "/ko/api/renderers/tinymce/src/functions/createTemplatesPlugin.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/tinymce/src/"
+      },
+      {
+        "text": "vitepress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVitePressCssOptions",
+                "link": "/ko/api/renderers/vitepress/src/interfaces/ToVitePressCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "VITEPRESS_TO_INSTUI",
+                "link": "/ko/api/renderers/vitepress/src/variables/VITEPRESS_TO_INSTUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/vitepress/src/"
+      },
+      {
+        "text": "vue",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenVue",
+                "link": "/ko/api/renderers/vue/src/variables/PantokenVue.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ko/api/renderers/vue/src/functions/readToken.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ko/api/renderers/vue/src/functions/iconSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/vue/src/"
+      },
+      {
+        "text": "web-components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandEventish",
+                "link": "/ko/api/renderers/web-components/src/interfaces/CommandEventish.md"
+              },
+              {
+                "text": "ElementRegistry",
+                "link": "/ko/api/renderers/web-components/src/interfaces/ElementRegistry.md"
+              },
+              {
+                "text": "RegisterContext",
+                "link": "/ko/api/renderers/web-components/src/interfaces/RegisterContext.md"
+              },
+              {
+                "text": "ElementDefinition",
+                "link": "/ko/api/renderers/web-components/src/interfaces/ElementDefinition.md"
+              },
+              {
+                "text": "RegisterContextOptions",
+                "link": "/ko/api/renderers/web-components/src/interfaces/RegisterContextOptions.md"
+              },
+              {
+                "text": "WebComponentStrings",
+                "link": "/ko/api/renderers/web-components/src/interfaces/WebComponentStrings.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alert",
+                "link": "/ko/api/renderers/web-components/src/variables/alert.md"
+              },
+              {
+                "text": "avatar",
+                "link": "/ko/api/renderers/web-components/src/variables/avatar.md"
+              },
+              {
+                "text": "badge",
+                "link": "/ko/api/renderers/web-components/src/variables/badge.md"
+              },
+              {
+                "text": "button",
+                "link": "/ko/api/renderers/web-components/src/variables/button.md"
+              },
+              {
+                "text": "calendar",
+                "link": "/ko/api/renderers/web-components/src/variables/calendar.md"
+              },
+              {
+                "text": "contextView",
+                "link": "/ko/api/renderers/web-components/src/variables/contextView.md"
+              },
+              {
+                "text": "dateInput",
+                "link": "/ko/api/renderers/web-components/src/variables/dateInput.md"
+              },
+              {
+                "text": "dateTimeInput",
+                "link": "/ko/api/renderers/web-components/src/variables/dateTimeInput.md"
+              },
+              {
+                "text": "drawerLayout",
+                "link": "/ko/api/renderers/web-components/src/variables/drawerLayout.md"
+              },
+              {
+                "text": "drilldown",
+                "link": "/ko/api/renderers/web-components/src/variables/drilldown.md"
+              },
+              {
+                "text": "iconButton",
+                "link": "/ko/api/renderers/web-components/src/variables/iconButton.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ko/api/renderers/web-components/src/variables/icon.md"
+              },
+              {
+                "text": "img",
+                "link": "/ko/api/renderers/web-components/src/variables/img.md"
+              },
+              {
+                "text": "inPlaceEdit",
+                "link": "/ko/api/renderers/web-components/src/variables/inPlaceEdit.md"
+              },
+              {
+                "text": "DEFINITIONS",
+                "link": "/ko/api/renderers/web-components/src/variables/DEFINITIONS.md"
+              },
+              {
+                "text": "metric",
+                "link": "/ko/api/renderers/web-components/src/variables/metric.md"
+              },
+              {
+                "text": "modal",
+                "link": "/ko/api/renderers/web-components/src/variables/modal.md"
+              },
+              {
+                "text": "pages",
+                "link": "/ko/api/renderers/web-components/src/variables/pages.md"
+              },
+              {
+                "text": "pill",
+                "link": "/ko/api/renderers/web-components/src/variables/pill.md"
+              },
+              {
+                "text": "popover",
+                "link": "/ko/api/renderers/web-components/src/variables/popover.md"
+              },
+              {
+                "text": "progressCircle",
+                "link": "/ko/api/renderers/web-components/src/variables/progressCircle.md"
+              },
+              {
+                "text": "progress",
+                "link": "/ko/api/renderers/web-components/src/variables/progress.md"
+              },
+              {
+                "text": "rating",
+                "link": "/ko/api/renderers/web-components/src/variables/rating.md"
+              },
+              {
+                "text": "sideNavBar",
+                "link": "/ko/api/renderers/web-components/src/variables/sideNavBar.md"
+              },
+              {
+                "text": "spinner",
+                "link": "/ko/api/renderers/web-components/src/variables/spinner.md"
+              },
+              {
+                "text": "tag",
+                "link": "/ko/api/renderers/web-components/src/variables/tag.md"
+              },
+              {
+                "text": "toggleButton",
+                "link": "/ko/api/renderers/web-components/src/variables/toggleButton.md"
+              },
+              {
+                "text": "tooltip",
+                "link": "/ko/api/renderers/web-components/src/variables/tooltip.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ko/api/renderers/web-components/src/variables/tray.md"
+              },
+              {
+                "text": "treeBrowser",
+                "link": "/ko/api/renderers/web-components/src/variables/treeBrowser.md"
+              },
+              {
+                "text": "truncate",
+                "link": "/ko/api/renderers/web-components/src/variables/truncate.md"
+              },
+              {
+                "text": "ELEMENTS",
+                "link": "/ko/api/renderers/web-components/src/variables/ELEMENTS.md"
+              },
+              {
+                "text": "NESTED_DEPS",
+                "link": "/ko/api/renderers/web-components/src/variables/NESTED_DEPS.md"
+              },
+              {
+                "text": "ICON_ELEMENTS",
+                "link": "/ko/api/renderers/web-components/src/variables/ICON_ELEMENTS.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ko/api/renderers/web-components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "ENGLISH_STRINGS",
+                "link": "/ko/api/renderers/web-components/src/variables/ENGLISH_STRINGS.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "register",
+                "link": "/ko/api/renderers/web-components/src/functions/register.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ko/api/renderers/web-components/src/functions/iconSvg.md"
+              },
+              {
+                "text": "noopIconSvg",
+                "link": "/ko/api/renderers/web-components/src/functions/noopIconSvg.md"
+              },
+              {
+                "text": "buildRegisterContext",
+                "link": "/ko/api/renderers/web-components/src/functions/buildRegisterContext.md"
+              },
+              {
+                "text": "resolveFirstDay",
+                "link": "/ko/api/renderers/web-components/src/functions/resolveFirstDay.md"
+              },
+              {
+                "text": "makeStrings",
+                "link": "/ko/api/renderers/web-components/src/functions/makeStrings.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/renderers/web-components/src/"
+      }
+    ]
+  },
+  {
+    "text": "packages",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "cli",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CliArgs",
+                "link": "/ko/api/packages/cli/src/interfaces/CliArgs.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "parseArgs",
+                "link": "/ko/api/packages/cli/src/functions/parseArgs.md"
+              },
+              {
+                "text": "run",
+                "link": "/ko/api/packages/cli/src/functions/run.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/packages/cli/src/"
+      },
+      {
+        "text": "core",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildTokensOptions",
+                "link": "/ko/api/packages/core/src/interfaces/BuildTokensOptions.md"
+              },
+              {
+                "text": "VectorDrawableOptions",
+                "link": "/ko/api/packages/core/src/interfaces/VectorDrawableOptions.md"
+              },
+              {
+                "text": "AssetFile",
+                "link": "/ko/api/packages/core/src/interfaces/AssetFile.md"
+              },
+              {
+                "text": "CollectIconsOptions",
+                "link": "/ko/api/packages/core/src/interfaces/CollectIconsOptions.md"
+              },
+              {
+                "text": "IconToken",
+                "link": "/ko/api/packages/core/src/interfaces/IconToken.md"
+              },
+              {
+                "text": "IconLayer",
+                "link": "/ko/api/packages/core/src/interfaces/IconLayer.md"
+              },
+              {
+                "text": "Leaf",
+                "link": "/ko/api/packages/core/src/interfaces/Leaf.md"
+              },
+              {
+                "text": "SdLeaf",
+                "link": "/ko/api/packages/core/src/interfaces/SdLeaf.md"
+              },
+              {
+                "text": "TokenModify",
+                "link": "/ko/api/packages/core/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ko/api/packages/core/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "토큰",
+                "link": "/ko/api/packages/core/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ko/api/packages/core/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ko/api/packages/core/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ko/api/packages/core/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ko/api/packages/core/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ko/api/packages/core/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ko/api/packages/core/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ko/api/packages/core/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ko/api/packages/core/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ko/api/packages/core/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ko/api/packages/core/src/type-aliases/IconResolver.md"
+              },
+              {
+                "text": "Mode",
+                "link": "/ko/api/packages/core/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ICON_COLOR_SPECIAL_VALUES",
+                "link": "/ko/api/packages/core/src/variables/ICON_COLOR_SPECIAL_VALUES.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildTokens",
+                "link": "/ko/api/packages/core/src/functions/buildTokens.md"
+              },
+              {
+                "text": "applyModify",
+                "link": "/ko/api/packages/core/src/functions/applyModify.md"
+              },
+              {
+                "text": "decodeIconSvg",
+                "link": "/ko/api/packages/core/src/functions/decodeIconSvg.md"
+              },
+              {
+                "text": "getIconSvgs",
+                "link": "/ko/api/packages/core/src/functions/getIconSvgs.md"
+              },
+              {
+                "text": "toVectorDrawable",
+                "link": "/ko/api/packages/core/src/functions/toVectorDrawable.md"
+              },
+              {
+                "text": "toXcodeImageset",
+                "link": "/ko/api/packages/core/src/functions/toXcodeImageset.md"
+              },
+              {
+                "text": "flutterIconManifest",
+                "link": "/ko/api/packages/core/src/functions/flutterIconManifest.md"
+              },
+              {
+                "text": "collectIcons",
+                "link": "/ko/api/packages/core/src/functions/collectIcons.md"
+              },
+              {
+                "text": "defineToken",
+                "link": "/ko/api/packages/core/src/functions/defineToken.md"
+              },
+              {
+                "text": "dedupeByName",
+                "link": "/ko/api/packages/core/src/functions/dedupeByName.md"
+              },
+              {
+                "text": "runTokenPlugins",
+                "link": "/ko/api/packages/core/src/functions/runTokenPlugins.md"
+              },
+              {
+                "text": "runIconPlugins",
+                "link": "/ko/api/packages/core/src/functions/runIconPlugins.md"
+              },
+              {
+                "text": "collectLeaves",
+                "link": "/ko/api/packages/core/src/functions/collectLeaves.md"
+              },
+              {
+                "text": "referenceToVarName",
+                "link": "/ko/api/packages/core/src/functions/referenceToVarName.md"
+              },
+              {
+                "text": "resolveValue",
+                "link": "/ko/api/packages/core/src/functions/resolveValue.md"
+              },
+              {
+                "text": "varName",
+                "link": "/ko/api/packages/core/src/functions/varName.md"
+              },
+              {
+                "text": "resolveReferences",
+                "link": "/ko/api/packages/core/src/functions/resolveReferences.md"
+              },
+              {
+                "text": "toStyleDictionary",
+                "link": "/ko/api/packages/core/src/functions/toStyleDictionary.md"
+              },
+              {
+                "text": "toKebab",
+                "link": "/ko/api/packages/core/src/functions/toKebab.md"
+              },
+              {
+                "text": "cssSyntaxForValue",
+                "link": "/ko/api/packages/core/src/functions/cssSyntaxForValue.md"
+              },
+              {
+                "text": "isContextual",
+                "link": "/ko/api/packages/core/src/functions/isContextual.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/packages/core/src/"
+      },
+      {
+        "text": "model",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TokenModify",
+                "link": "/ko/api/packages/model/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ko/api/packages/model/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "DeprecationEntry",
+                "link": "/ko/api/packages/model/src/interfaces/DeprecationEntry.md"
+              },
+              {
+                "text": "DeprecationLedger",
+                "link": "/ko/api/packages/model/src/interfaces/DeprecationLedger.md"
+              },
+              {
+                "text": "토큰",
+                "link": "/ko/api/packages/model/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ko/api/packages/model/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ko/api/packages/model/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "PropertyRule",
+                "link": "/ko/api/packages/model/src/interfaces/PropertyRule.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ko/api/packages/model/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ko/api/packages/model/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ko/api/packages/model/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ko/api/packages/model/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ko/api/packages/model/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ko/api/packages/model/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ko/api/packages/model/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "UpstreamRef",
+                "link": "/ko/api/packages/model/src/type-aliases/UpstreamRef.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ko/api/packages/model/src/type-aliases/IconResolver.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defineToken",
+                "link": "/ko/api/packages/model/src/functions/defineToken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/packages/model/src/"
+      },
+      {
+        "text": "plugin-kit",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ko/api/packages/plugin-kit/src/interfaces/ResolveOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Stage",
+                "link": "/ko/api/packages/plugin-kit/src/type-aliases/Stage.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "definePlugin",
+                "link": "/ko/api/packages/plugin-kit/src/functions/definePlugin.md"
+              },
+              {
+                "text": "isFactoried",
+                "link": "/ko/api/packages/plugin-kit/src/functions/isFactoried.md"
+              },
+              {
+                "text": "validatePlugin",
+                "link": "/ko/api/packages/plugin-kit/src/functions/validatePlugin.md"
+              },
+              {
+                "text": "capabilitiesOf",
+                "link": "/ko/api/packages/plugin-kit/src/functions/capabilitiesOf.md"
+              },
+              {
+                "text": "checkPlugins",
+                "link": "/ko/api/packages/plugin-kit/src/functions/checkPlugins.md"
+              },
+              {
+                "text": "extendPlugin",
+                "link": "/ko/api/packages/plugin-kit/src/functions/extendPlugin.md"
+              },
+              {
+                "text": "mergePlugin",
+                "link": "/ko/api/packages/plugin-kit/src/functions/mergePlugin.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ko/api/packages/plugin-kit/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ko/api/packages/plugin-kit/src/functions/resolveTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/packages/plugin-kit/src/"
+      },
+      {
+        "text": "utils",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Rgba",
+                "link": "/ko/api/packages/utils/src/interfaces/Rgba.md"
+              },
+              {
+                "text": "ResolveOptions",
+                "link": "/ko/api/packages/utils/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "SpacingStep",
+                "link": "/ko/api/packages/utils/src/interfaces/SpacingStep.md"
+              },
+              {
+                "text": "UtilityOptions",
+                "link": "/ko/api/packages/utils/src/interfaces/UtilityOptions.md"
+              },
+              {
+                "text": "ColorUtilityNames",
+                "link": "/ko/api/packages/utils/src/interfaces/ColorUtilityNames.md"
+              },
+              {
+                "text": "TokenUtilityGroup",
+                "link": "/ko/api/packages/utils/src/interfaces/TokenUtilityGroup.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ko/api/packages/utils/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "ColorUtilityEntry",
+                "link": "/ko/api/packages/utils/src/type-aliases/ColorUtilityEntry.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ko/api/packages/utils/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ko/api/packages/utils/src/variables/FOCUSABLE_SELECTOR.md"
+              },
+              {
+                "text": "VAR_RE",
+                "link": "/ko/api/packages/utils/src/variables/VAR_RE.md"
+              },
+              {
+                "text": "LIGHT_DARK_RE",
+                "link": "/ko/api/packages/utils/src/variables/LIGHT_DARK_RE.md"
+              },
+              {
+                "text": "SPACING_STEPS",
+                "link": "/ko/api/packages/utils/src/variables/SPACING_STEPS.md"
+              },
+              {
+                "text": "SPACING_AUTO_STEP",
+                "link": "/ko/api/packages/utils/src/variables/SPACING_AUTO_STEP.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "camelCase",
+                "link": "/ko/api/packages/utils/src/functions/camelCase.md"
+              },
+              {
+                "text": "parseHexColor",
+                "link": "/ko/api/packages/utils/src/functions/parseHexColor.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ko/api/packages/utils/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ko/api/packages/utils/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ko/api/packages/utils/src/functions/focusOutlineRules.md"
+              },
+              {
+                "text": "extractInstuiRefs",
+                "link": "/ko/api/packages/utils/src/functions/extractInstuiRefs.md"
+              },
+              {
+                "text": "tokenNames",
+                "link": "/ko/api/packages/utils/src/functions/tokenNames.md"
+              },
+              {
+                "text": "unknownReferences",
+                "link": "/ko/api/packages/utils/src/functions/unknownReferences.md"
+              },
+              {
+                "text": "danglingReferences",
+                "link": "/ko/api/packages/utils/src/functions/danglingReferences.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ko/api/packages/utils/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ko/api/packages/utils/src/functions/resolveTokens.md"
+              },
+              {
+                "text": "sanitizeSvg",
+                "link": "/ko/api/packages/utils/src/functions/sanitizeSvg.md"
+              },
+              {
+                "text": "globalModifierSelector",
+                "link": "/ko/api/packages/utils/src/functions/globalModifierSelector.md"
+              },
+              {
+                "text": "colorUtilitiesCss",
+                "link": "/ko/api/packages/utils/src/functions/colorUtilitiesCss.md"
+              },
+              {
+                "text": "tokenUtilitiesCss",
+                "link": "/ko/api/packages/utils/src/functions/tokenUtilitiesCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/packages/utils/src/"
+      }
+    ]
+  },
+  {
+    "text": "formats",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ComponentOptions",
+                "link": "/ko/api/formats/components/src/interfaces/ComponentOptions.md"
+              },
+              {
+                "text": "ProseOptions",
+                "link": "/ko/api/formats/components/src/interfaces/ProseOptions.md"
+              },
+              {
+                "text": "IconGlyphsOptions",
+                "link": "/ko/api/formats/components/src/interfaces/IconGlyphsOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alertCss",
+                "link": "/ko/api/formats/components/src/variables/alertCss.md"
+              },
+              {
+                "text": "avatarCss",
+                "link": "/ko/api/formats/components/src/variables/avatarCss.md"
+              },
+              {
+                "text": "badgeCss",
+                "link": "/ko/api/formats/components/src/variables/badgeCss.md"
+              },
+              {
+                "text": "billboardCss",
+                "link": "/ko/api/formats/components/src/variables/billboardCss.md"
+              },
+              {
+                "text": "breadcrumbCss",
+                "link": "/ko/api/formats/components/src/variables/breadcrumbCss.md"
+              },
+              {
+                "text": "breadcrumbLinkCss",
+                "link": "/ko/api/formats/components/src/variables/breadcrumbLinkCss.md"
+              },
+              {
+                "text": "buttonCss",
+                "link": "/ko/api/formats/components/src/variables/buttonCss.md"
+              },
+              {
+                "text": "bylineCss",
+                "link": "/ko/api/formats/components/src/variables/bylineCss.md"
+              },
+              {
+                "text": "calendarCss",
+                "link": "/ko/api/formats/components/src/variables/calendarCss.md"
+              },
+              {
+                "text": "calendarDayCss",
+                "link": "/ko/api/formats/components/src/variables/calendarDayCss.md"
+              },
+              {
+                "text": "checkboxCss",
+                "link": "/ko/api/formats/components/src/variables/checkboxCss.md"
+              },
+              {
+                "text": "closeButtonCss",
+                "link": "/ko/api/formats/components/src/variables/closeButtonCss.md"
+              },
+              {
+                "text": "contextViewCss",
+                "link": "/ko/api/formats/components/src/variables/contextViewCss.md"
+              },
+              {
+                "text": "drawerLayoutCss",
+                "link": "/ko/api/formats/components/src/variables/drawerLayoutCss.md"
+              },
+              {
+                "text": "drawerLayoutContentCss",
+                "link": "/ko/api/formats/components/src/variables/drawerLayoutContentCss.md"
+              },
+              {
+                "text": "drawerLayoutTrayCss",
+                "link": "/ko/api/formats/components/src/variables/drawerLayoutTrayCss.md"
+              },
+              {
+                "text": "fileDropCss",
+                "link": "/ko/api/formats/components/src/variables/fileDropCss.md"
+              },
+              {
+                "text": "formFieldGroupCss",
+                "link": "/ko/api/formats/components/src/variables/formFieldGroupCss.md"
+              },
+              {
+                "text": "formFieldMessagesCss",
+                "link": "/ko/api/formats/components/src/variables/formFieldMessagesCss.md"
+              },
+              {
+                "text": "formFieldCss",
+                "link": "/ko/api/formats/components/src/variables/formFieldCss.md"
+              },
+              {
+                "text": "headingCss",
+                "link": "/ko/api/formats/components/src/variables/headingCss.md"
+              },
+              {
+                "text": "imgCss",
+                "link": "/ko/api/formats/components/src/variables/imgCss.md"
+              },
+              {
+                "text": "inPlaceEditCss",
+                "link": "/ko/api/formats/components/src/variables/inPlaceEditCss.md"
+              },
+              {
+                "text": "inputGroupCss",
+                "link": "/ko/api/formats/components/src/variables/inputGroupCss.md"
+              },
+              {
+                "text": "linkCss",
+                "link": "/ko/api/formats/components/src/variables/linkCss.md"
+              },
+              {
+                "text": "listCss",
+                "link": "/ko/api/formats/components/src/variables/listCss.md"
+              },
+              {
+                "text": "listItemCss",
+                "link": "/ko/api/formats/components/src/variables/listItemCss.md"
+              },
+              {
+                "text": "maskCss",
+                "link": "/ko/api/formats/components/src/variables/maskCss.md"
+              },
+              {
+                "text": "menuCss",
+                "link": "/ko/api/formats/components/src/variables/menuCss.md"
+              },
+              {
+                "text": "menuGroupCss",
+                "link": "/ko/api/formats/components/src/variables/menuGroupCss.md"
+              },
+              {
+                "text": "menuItemCss",
+                "link": "/ko/api/formats/components/src/variables/menuItemCss.md"
+              },
+              {
+                "text": "menuSeparatorCss",
+                "link": "/ko/api/formats/components/src/variables/menuSeparatorCss.md"
+              },
+              {
+                "text": "metricCss",
+                "link": "/ko/api/formats/components/src/variables/metricCss.md"
+              },
+              {
+                "text": "modalCss",
+                "link": "/ko/api/formats/components/src/variables/modalCss.md"
+              },
+              {
+                "text": "modalBodyCss",
+                "link": "/ko/api/formats/components/src/variables/modalBodyCss.md"
+              },
+              {
+                "text": "modalFooterCss",
+                "link": "/ko/api/formats/components/src/variables/modalFooterCss.md"
+              },
+              {
+                "text": "modalHeaderCss",
+                "link": "/ko/api/formats/components/src/variables/modalHeaderCss.md"
+              },
+              {
+                "text": "numberInputCss",
+                "link": "/ko/api/formats/components/src/variables/numberInputCss.md"
+              },
+              {
+                "text": "paginationCss",
+                "link": "/ko/api/formats/components/src/variables/paginationCss.md"
+              },
+              {
+                "text": "paginationPageCss",
+                "link": "/ko/api/formats/components/src/variables/paginationPageCss.md"
+              },
+              {
+                "text": "pillCss",
+                "link": "/ko/api/formats/components/src/variables/pillCss.md"
+              },
+              {
+                "text": "popoverCss",
+                "link": "/ko/api/formats/components/src/variables/popoverCss.md"
+              },
+              {
+                "text": "progressCircleCss",
+                "link": "/ko/api/formats/components/src/variables/progressCircleCss.md"
+              },
+              {
+                "text": "progressCss",
+                "link": "/ko/api/formats/components/src/variables/progressCss.md"
+              },
+              {
+                "text": "radioInputGroupCss",
+                "link": "/ko/api/formats/components/src/variables/radioInputGroupCss.md"
+              },
+              {
+                "text": "radioCss",
+                "link": "/ko/api/formats/components/src/variables/radioCss.md"
+              },
+              {
+                "text": "rangeInputCss",
+                "link": "/ko/api/formats/components/src/variables/rangeInputCss.md"
+              },
+              {
+                "text": "ratingCss",
+                "link": "/ko/api/formats/components/src/variables/ratingCss.md"
+              },
+              {
+                "text": "sideNavBarCss",
+                "link": "/ko/api/formats/components/src/variables/sideNavBarCss.md"
+              },
+              {
+                "text": "sideNavBarItemCss",
+                "link": "/ko/api/formats/components/src/variables/sideNavBarItemCss.md"
+              },
+              {
+                "text": "simpleSelectCss",
+                "link": "/ko/api/formats/components/src/variables/simpleSelectCss.md"
+              },
+              {
+                "text": "spinnerCss",
+                "link": "/ko/api/formats/components/src/variables/spinnerCss.md"
+              },
+              {
+                "text": "tableCss",
+                "link": "/ko/api/formats/components/src/variables/tableCss.md"
+              },
+              {
+                "text": "tableBodyCss",
+                "link": "/ko/api/formats/components/src/variables/tableBodyCss.md"
+              },
+              {
+                "text": "tableCellCss",
+                "link": "/ko/api/formats/components/src/variables/tableCellCss.md"
+              },
+              {
+                "text": "tableColHeaderCss",
+                "link": "/ko/api/formats/components/src/variables/tableColHeaderCss.md"
+              },
+              {
+                "text": "tableHeadCss",
+                "link": "/ko/api/formats/components/src/variables/tableHeadCss.md"
+              },
+              {
+                "text": "tableRowHeaderCss",
+                "link": "/ko/api/formats/components/src/variables/tableRowHeaderCss.md"
+              },
+              {
+                "text": "tableRowCss",
+                "link": "/ko/api/formats/components/src/variables/tableRowCss.md"
+              },
+              {
+                "text": "tabsCss",
+                "link": "/ko/api/formats/components/src/variables/tabsCss.md"
+              },
+              {
+                "text": "tabsPanelCss",
+                "link": "/ko/api/formats/components/src/variables/tabsPanelCss.md"
+              },
+              {
+                "text": "tabsTabCss",
+                "link": "/ko/api/formats/components/src/variables/tabsTabCss.md"
+              },
+              {
+                "text": "tagCss",
+                "link": "/ko/api/formats/components/src/variables/tagCss.md"
+              },
+              {
+                "text": "textAreaCss",
+                "link": "/ko/api/formats/components/src/variables/textAreaCss.md"
+              },
+              {
+                "text": "textInputCss",
+                "link": "/ko/api/formats/components/src/variables/textInputCss.md"
+              },
+              {
+                "text": "textCss",
+                "link": "/ko/api/formats/components/src/variables/textCss.md"
+              },
+              {
+                "text": "toggleDetailsCss",
+                "link": "/ko/api/formats/components/src/variables/toggleDetailsCss.md"
+              },
+              {
+                "text": "toggleGroupCss",
+                "link": "/ko/api/formats/components/src/variables/toggleGroupCss.md"
+              },
+              {
+                "text": "tooltipCss",
+                "link": "/ko/api/formats/components/src/variables/tooltipCss.md"
+              },
+              {
+                "text": "trayCss",
+                "link": "/ko/api/formats/components/src/variables/trayCss.md"
+              },
+              {
+                "text": "treeBrowserCss",
+                "link": "/ko/api/formats/components/src/variables/treeBrowserCss.md"
+              },
+              {
+                "text": "viewCss",
+                "link": "/ko/api/formats/components/src/variables/viewCss.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ko/api/formats/components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "cursorUtilitiesCss",
+                "link": "/ko/api/formats/components/src/variables/cursorUtilitiesCss.md"
+              },
+              {
+                "text": "gapCss",
+                "link": "/ko/api/formats/components/src/variables/gapCss.md"
+              },
+              {
+                "text": "iconCss",
+                "link": "/ko/api/formats/components/src/variables/iconCss.md"
+              },
+              {
+                "text": "layoutUtilitiesCss",
+                "link": "/ko/api/formats/components/src/variables/layoutUtilitiesCss.md"
+              },
+              {
+                "text": "maskUtilityCss",
+                "link": "/ko/api/formats/components/src/variables/maskUtilityCss.md"
+              },
+              {
+                "text": "overflowUtilitiesCss",
+                "link": "/ko/api/formats/components/src/variables/overflowUtilitiesCss.md"
+              },
+              {
+                "text": "positionUtilitiesCss",
+                "link": "/ko/api/formats/components/src/variables/positionUtilitiesCss.md"
+              },
+              {
+                "text": "responsiveUtilitiesCss",
+                "link": "/ko/api/formats/components/src/variables/responsiveUtilitiesCss.md"
+              },
+              {
+                "text": "screenReaderContentCss",
+                "link": "/ko/api/formats/components/src/variables/screenReaderContentCss.md"
+              },
+              {
+                "text": "spacingUtilitiesCss",
+                "link": "/ko/api/formats/components/src/variables/spacingUtilitiesCss.md"
+              },
+              {
+                "text": "stackingUtilityCss",
+                "link": "/ko/api/formats/components/src/variables/stackingUtilityCss.md"
+              },
+              {
+                "text": "transitionCss",
+                "link": "/ko/api/formats/components/src/variables/transitionCss.md"
+              },
+              {
+                "text": "truncateCss",
+                "link": "/ko/api/formats/components/src/variables/truncateCss.md"
+              },
+              {
+                "text": "visualDebugCss",
+                "link": "/ko/api/formats/components/src/variables/visualDebugCss.md"
+              },
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ko/api/formats/components/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ko/api/formats/components/src/variables/FOCUSABLE_SELECTOR.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "selectCss",
+                "link": "/ko/api/formats/components/src/functions/selectCss.md"
+              },
+              {
+                "text": "elevationCss",
+                "link": "/ko/api/formats/components/src/functions/elevationCss.md"
+              },
+              {
+                "text": "focusOutlineCss",
+                "link": "/ko/api/formats/components/src/functions/focusOutlineCss.md"
+              },
+              {
+                "text": "baseCss",
+                "link": "/ko/api/formats/components/src/functions/baseCss.md"
+              },
+              {
+                "text": "componentsCss",
+                "link": "/ko/api/formats/components/src/functions/componentsCss.md"
+              },
+              {
+                "text": "proseCss",
+                "link": "/ko/api/formats/components/src/functions/proseCss.md"
+              },
+              {
+                "text": "iconGlyphsCss",
+                "link": "/ko/api/formats/components/src/functions/iconGlyphsCss.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ko/api/formats/components/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ko/api/formats/components/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ko/api/formats/components/src/functions/focusOutlineRules.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/components/src/"
+      },
+      {
+        "text": "css",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssSection",
+                "link": "/ko/api/formats/css/src/interfaces/CssSection.md"
+              },
+              {
+                "text": "ToCssOptions",
+                "link": "/ko/api/formats/css/src/interfaces/ToCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "css",
+                "link": "/ko/api/formats/css/src/variables/css.md"
+              },
+              {
+                "text": "leanCss",
+                "link": "/ko/api/formats/css/src/variables/leanCss.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildCssFile",
+                "link": "/ko/api/formats/css/src/functions/buildCssFile.md"
+              },
+              {
+                "text": "toCss",
+                "link": "/ko/api/formats/css/src/functions/toCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/css/src/"
+      },
+      {
+        "text": "dtcg",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ko/api/formats/dtcg/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "DtcgNode",
+                "link": "/ko/api/formats/dtcg/src/type-aliases/DtcgNode.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "dtcg",
+                "link": "/ko/api/formats/dtcg/src/variables/dtcg.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ko/api/formats/dtcg/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ko/api/formats/dtcg/src/functions/byTheme.md"
+              },
+              {
+                "text": "toDtcg",
+                "link": "/ko/api/formats/dtcg/src/functions/toDtcg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/dtcg/src/"
+      },
+      {
+        "text": "icon-font",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconFontResult",
+                "link": "/ko/api/formats/icon-font/src/interfaces/IconFontResult.md"
+              },
+              {
+                "text": "BuildIconFontOptions",
+                "link": "/ko/api/formats/icon-font/src/interfaces/BuildIconFontOptions.md"
+              },
+              {
+                "text": "GlyphPath",
+                "link": "/ko/api/formats/icon-font/src/interfaces/GlyphPath.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildIconFont",
+                "link": "/ko/api/formats/icon-font/src/functions/buildIconFont.md"
+              },
+              {
+                "text": "svgToGlyphPath",
+                "link": "/ko/api/formats/icon-font/src/functions/svgToGlyphPath.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/icon-font/src/"
+      },
+      {
+        "text": "icons",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenIcon",
+                "link": "/ko/api/formats/icons/src/interfaces/PantokenIcon.md"
+              },
+              {
+                "text": "IconResolverChainOptions",
+                "link": "/ko/api/formats/icons/src/interfaces/IconResolverChainOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "icons",
+                "link": "/ko/api/formats/icons/src/variables/icons.md"
+              },
+              {
+                "text": "iconsByName",
+                "link": "/ko/api/formats/icons/src/variables/iconsByName.md"
+              },
+              {
+                "text": "resolve",
+                "link": "/ko/api/formats/icons/src/variables/resolve.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "getIcon",
+                "link": "/ko/api/formats/icons/src/functions/getIcon.md"
+              },
+              {
+                "text": "buildIconResolverChain",
+                "link": "/ko/api/formats/icons/src/functions/buildIconResolverChain.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/icons/src/"
+      },
+      {
+        "text": "interactions",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ProgressCircleOptions",
+                "link": "/ko/api/formats/interactions/src/interfaces/ProgressCircleOptions.md"
+              },
+              {
+                "text": "ProgressCircleHandle",
+                "link": "/ko/api/formats/interactions/src/interfaces/ProgressCircleHandle.md"
+              },
+              {
+                "text": "RemoveOptions",
+                "link": "/ko/api/formats/interactions/src/interfaces/RemoveOptions.md"
+              },
+              {
+                "text": "RemoveHandle",
+                "link": "/ko/api/formats/interactions/src/interfaces/RemoveHandle.md"
+              },
+              {
+                "text": "TooltipOptions",
+                "link": "/ko/api/formats/interactions/src/interfaces/TooltipOptions.md"
+              },
+              {
+                "text": "TooltipHandle",
+                "link": "/ko/api/formats/interactions/src/interfaces/TooltipHandle.md"
+              },
+              {
+                "text": "TruncateAutoOptions",
+                "link": "/ko/api/formats/interactions/src/interfaces/TruncateAutoOptions.md"
+              },
+              {
+                "text": "TruncateAutoHandle",
+                "link": "/ko/api/formats/interactions/src/interfaces/TruncateAutoHandle.md"
+              },
+              {
+                "text": "CommandEventish",
+                "link": "/ko/api/formats/interactions/src/interfaces/CommandEventish.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandHandler",
+                "link": "/ko/api/formats/interactions/src/type-aliases/CommandHandler.md"
+              },
+              {
+                "text": "OnCommand",
+                "link": "/ko/api/formats/interactions/src/type-aliases/OnCommand.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "SPACING_ATTRS",
+                "link": "/ko/api/formats/interactions/src/variables/SPACING_ATTRS.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "initCloseButton",
+                "link": "/ko/api/formats/interactions/src/functions/initCloseButton.md"
+              },
+              {
+                "text": "initInPlaceEdit",
+                "link": "/ko/api/formats/interactions/src/functions/initInPlaceEdit.md"
+              },
+              {
+                "text": "initModal",
+                "link": "/ko/api/formats/interactions/src/functions/initModal.md"
+              },
+              {
+                "text": "initProgressCircle",
+                "link": "/ko/api/formats/interactions/src/functions/initProgressCircle.md"
+              },
+              {
+                "text": "initRemove",
+                "link": "/ko/api/formats/interactions/src/functions/initRemove.md"
+              },
+              {
+                "text": "initResponsiveOverlay",
+                "link": "/ko/api/formats/interactions/src/functions/initResponsiveOverlay.md"
+              },
+              {
+                "text": "initTooltip",
+                "link": "/ko/api/formats/interactions/src/functions/initTooltip.md"
+              },
+              {
+                "text": "syncTruncateAutoLines",
+                "link": "/ko/api/formats/interactions/src/functions/syncTruncateAutoLines.md"
+              },
+              {
+                "text": "initTruncateAuto",
+                "link": "/ko/api/formats/interactions/src/functions/initTruncateAuto.md"
+              },
+              {
+                "text": "makeOnCommand",
+                "link": "/ko/api/formats/interactions/src/functions/makeOnCommand.md"
+              },
+              {
+                "text": "syncInvoker",
+                "link": "/ko/api/formats/interactions/src/functions/syncInvoker.md"
+              },
+              {
+                "text": "resolveSpace",
+                "link": "/ko/api/formats/interactions/src/functions/resolveSpace.md"
+              },
+              {
+                "text": "spacingValue",
+                "link": "/ko/api/formats/interactions/src/functions/spacingValue.md"
+              },
+              {
+                "text": "applySpacing",
+                "link": "/ko/api/formats/interactions/src/functions/applySpacing.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/interactions/src/"
+      },
+      {
+        "text": "less",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToLessOptions",
+                "link": "/ko/api/formats/less/src/interfaces/ToLessOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "less",
+                "link": "/ko/api/formats/less/src/variables/less.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toLess",
+                "link": "/ko/api/formats/less/src/functions/toLess.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/less/src/"
+      },
+      {
+        "text": "scss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToScssOptions",
+                "link": "/ko/api/formats/scss/src/interfaces/ToScssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "scss",
+                "link": "/ko/api/formats/scss/src/variables/scss.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toScss",
+                "link": "/ko/api/formats/scss/src/functions/toScss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/scss/src/"
+      },
+      {
+        "text": "stylus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStylusOptions",
+                "link": "/ko/api/formats/stylus/src/interfaces/ToStylusOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "stylus",
+                "link": "/ko/api/formats/stylus/src/variables/stylus.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toStylus",
+                "link": "/ko/api/formats/stylus/src/functions/toStylus.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/stylus/src/"
+      },
+      {
+        "text": "tokens",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokens",
+                "link": "/ko/api/formats/tokens/src/variables/tokens.md"
+              },
+              {
+                "text": "rebrandTokens",
+                "link": "/ko/api/formats/tokens/src/variables/rebrandTokens.md"
+              },
+              {
+                "text": "canvasTokens",
+                "link": "/ko/api/formats/tokens/src/variables/canvasTokens.md"
+              },
+              {
+                "text": "canvasHighContrastTokens",
+                "link": "/ko/api/formats/tokens/src/variables/canvasHighContrastTokens.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ko/api/formats/tokens/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ko/api/formats/tokens/src/functions/byTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/formats/tokens/src/"
+      }
+    ]
+  },
+  {
+    "text": "design",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "figma",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FigmaColor",
+                "link": "/ko/api/design/figma/src/interfaces/FigmaColor.md"
+              },
+              {
+                "text": "FigmaVariable",
+                "link": "/ko/api/design/figma/src/interfaces/FigmaVariable.md"
+              },
+              {
+                "text": "FigmaVariablesPayload",
+                "link": "/ko/api/design/figma/src/interfaces/FigmaVariablesPayload.md"
+              },
+              {
+                "text": "ToFigmaOptions",
+                "link": "/ko/api/design/figma/src/interfaces/ToFigmaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFigmaColor",
+                "link": "/ko/api/design/figma/src/functions/toFigmaColor.md"
+              },
+              {
+                "text": "toFigmaVariables",
+                "link": "/ko/api/design/figma/src/functions/toFigmaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/design/figma/src/"
+      },
+      {
+        "text": "swatches",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToGplOptions",
+                "link": "/ko/api/design/swatches/src/interfaces/ToGplOptions.md"
+              },
+              {
+                "text": "Swatch",
+                "link": "/ko/api/design/swatches/src/interfaces/Swatch.md"
+              },
+              {
+                "text": "Rgb",
+                "link": "/ko/api/design/swatches/src/interfaces/Rgb.md"
+              },
+              {
+                "text": "SketchPalette",
+                "link": "/ko/api/design/swatches/src/interfaces/SketchPalette.md"
+              },
+              {
+                "text": "ToSvgOptions",
+                "link": "/ko/api/design/swatches/src/interfaces/ToSvgOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ko/api/design/swatches/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "swatches",
+                "link": "/ko/api/design/swatches/src/variables/swatches.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAse",
+                "link": "/ko/api/design/swatches/src/functions/toAse.md"
+              },
+              {
+                "text": "toGpl",
+                "link": "/ko/api/design/swatches/src/functions/toGpl.md"
+              },
+              {
+                "text": "hexToRgb",
+                "link": "/ko/api/design/swatches/src/functions/hexToRgb.md"
+              },
+              {
+                "text": "toSwatches",
+                "link": "/ko/api/design/swatches/src/functions/toSwatches.md"
+              },
+              {
+                "text": "toSketchPalette",
+                "link": "/ko/api/design/swatches/src/functions/toSketchPalette.md"
+              },
+              {
+                "text": "toSvg",
+                "link": "/ko/api/design/swatches/src/functions/toSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/design/swatches/src/"
+      }
+    ]
+  },
+  {
+    "text": "bundlers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "next",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "NextConfigLike",
+                "link": "/ko/api/bundlers/next/src/interfaces/NextConfigLike.md"
+              },
+              {
+                "text": "WithPantokenOptions",
+                "link": "/ko/api/bundlers/next/src/interfaces/WithPantokenOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INSTUI_TRANSPILE_PACKAGES",
+                "link": "/ko/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "withPantoken",
+                "link": "/ko/api/bundlers/next/src/functions/withPantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/bundlers/next/src/"
+      },
+      {
+        "text": "panda",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaToken",
+                "link": "/ko/api/bundlers/panda/src/interfaces/PandaToken.md"
+              },
+              {
+                "text": "PandaSemanticToken",
+                "link": "/ko/api/bundlers/panda/src/interfaces/PandaSemanticToken.md"
+              },
+              {
+                "text": "PandaPreset",
+                "link": "/ko/api/bundlers/panda/src/interfaces/PandaPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "타입 별칭",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaCategory",
+                "link": "/ko/api/bundlers/panda/src/type-aliases/PandaCategory.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ko/api/bundlers/panda/src/variables/pantokenPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toPandaPreset",
+                "link": "/ko/api/bundlers/panda/src/functions/toPandaPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/bundlers/panda/src/"
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenPostcssOptions",
+                "link": "/ko/api/bundlers/postcss/src/interfaces/PantokenPostcssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "변수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ko/api/bundlers/postcss/src/variables/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/bundlers/postcss/src/"
+      },
+      {
+        "text": "tailwind",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TailwindPreset",
+                "link": "/ko/api/bundlers/tailwind/src/interfaces/TailwindPreset.md"
+              },
+              {
+                "text": "PantokenPresetOptions",
+                "link": "/ko/api/bundlers/tailwind/src/interfaces/PantokenPresetOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ko/api/bundlers/tailwind/src/functions/pantokenPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/bundlers/tailwind/src/"
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenViteOptions",
+                "link": "/ko/api/bundlers/vite/src/interfaces/PantokenViteOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "함수",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ko/api/bundlers/vite/src/functions/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/bundlers/vite/src/"
+      },
+      {
+        "text": "webpack",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "클래스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackPlugin",
+                "link": "/ko/api/bundlers/webpack/src/classes/PantokenWebpackPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "인터페이스",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackOptions",
+                "link": "/ko/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ko/api/bundlers/webpack/src/"
+      }
+    ]
+  },
+  {
+    "text": "plugins",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "colors",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "타입 별칭",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CssColor",
+                    "link": "/ko/api/plugins/pantoken/colors/src/type-aliases/CssColor.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "alpha",
+                    "link": "/ko/api/plugins/pantoken/colors/src/functions/alpha.md"
+                  },
+                  {
+                    "text": "darken",
+                    "link": "/ko/api/plugins/pantoken/colors/src/functions/darken.md"
+                  },
+                  {
+                    "text": "lighten",
+                    "link": "/ko/api/plugins/pantoken/colors/src/functions/lighten.md"
+                  },
+                  {
+                    "text": "overlayColors",
+                    "link": "/ko/api/plugins/pantoken/colors/src/functions/overlayColors.md"
+                  },
+                  {
+                    "text": "onColor",
+                    "link": "/ko/api/plugins/pantoken/colors/src/functions/onColor.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/colors/src/"
+          },
+          {
+            "text": "custom-components",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomComponentsOptions",
+                    "link": "/ko/api/plugins/pantoken/custom-components/src/interfaces/CustomComponentsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "bannerRules",
+                    "link": "/ko/api/plugins/pantoken/custom-components/src/functions/bannerRules.md"
+                  },
+                  {
+                    "text": "cardRules",
+                    "link": "/ko/api/plugins/pantoken/custom-components/src/functions/cardRules.md"
+                  },
+                  {
+                    "text": "customComponents",
+                    "link": "/ko/api/plugins/pantoken/custom-components/src/functions/customComponents.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/custom-components/src/"
+          },
+          {
+            "text": "custom-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomIcon",
+                    "link": "/ko/api/plugins/pantoken/custom-icons/src/interfaces/CustomIcon.md"
+                  },
+                  {
+                    "text": "CustomIconsOptions",
+                    "link": "/ko/api/plugins/pantoken/custom-icons/src/interfaces/CustomIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "icons",
+                    "link": "/ko/api/plugins/pantoken/custom-icons/src/variables/icons.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "customIcons",
+                    "link": "/ko/api/plugins/pantoken/custom-icons/src/functions/customIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/custom-icons/src/"
+          },
+          {
+            "text": "deprecations",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamVersions",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/interfaces/UpstreamVersions.md"
+                  },
+                  {
+                    "text": "ParsedRef",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/interfaces/ParsedRef.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "shimValue",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/shimValue.md"
+                  },
+                  {
+                    "text": "shimEntries",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/shimEntries.md"
+                  },
+                  {
+                    "text": "ledgerCovers",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/ledgerCovers.md"
+                  },
+                  {
+                    "text": "parseUpstreamRef",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/parseUpstreamRef.md"
+                  },
+                  {
+                    "text": "compareVersions",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/compareVersions.md"
+                  },
+                  {
+                    "text": "dueForRemoval",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/dueForRemoval.md"
+                  },
+                  {
+                    "text": "describeLifecycle",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/describeLifecycle.md"
+                  },
+                  {
+                    "text": "deprecationShims",
+                    "link": "/ko/api/plugins/pantoken/deprecations/src/functions/deprecationShims.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/deprecations/src/"
+          },
+          {
+            "text": "layouts",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LayoutsOptions",
+                    "link": "/ko/api/plugins/pantoken/layouts/src/interfaces/LayoutsOptions.md"
+                  },
+                  {
+                    "text": "PageLayout",
+                    "link": "/ko/api/plugins/pantoken/layouts/src/interfaces/PageLayout.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pageLayouts",
+                    "link": "/ko/api/plugins/pantoken/layouts/src/variables/pageLayouts.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "layouts",
+                    "link": "/ko/api/plugins/pantoken/layouts/src/functions/layouts.md"
+                  },
+                  {
+                    "text": "wrapperRules",
+                    "link": "/ko/api/plugins/pantoken/layouts/src/functions/wrapperRules.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/layouts/src/"
+          },
+          {
+            "text": "logos",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LogoMeta",
+                    "link": "/ko/api/plugins/pantoken/logos/src/interfaces/LogoMeta.md"
+                  },
+                  {
+                    "text": "LogosOptions",
+                    "link": "/ko/api/plugins/pantoken/logos/src/interfaces/LogosOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "타입 별칭",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Product",
+                    "link": "/ko/api/plugins/pantoken/logos/src/type-aliases/Product.md"
+                  },
+                  {
+                    "text": "LogoLayout",
+                    "link": "/ko/api/plugins/pantoken/logos/src/type-aliases/LogoLayout.md"
+                  },
+                  {
+                    "text": "LogoColorMode",
+                    "link": "/ko/api/plugins/pantoken/logos/src/type-aliases/LogoColorMode.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "logos",
+                    "link": "/ko/api/plugins/pantoken/logos/src/variables/logos.md"
+                  },
+                  {
+                    "text": "products",
+                    "link": "/ko/api/plugins/pantoken/logos/src/variables/products.md"
+                  },
+                  {
+                    "text": "logosCss",
+                    "link": "/ko/api/plugins/pantoken/logos/src/variables/logosCss.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "getLogoSvg",
+                    "link": "/ko/api/plugins/pantoken/logos/src/functions/getLogoSvg.md"
+                  },
+                  {
+                    "text": "getLogoDataUri",
+                    "link": "/ko/api/plugins/pantoken/logos/src/functions/getLogoDataUri.md"
+                  },
+                  {
+                    "text": "logosPlugin",
+                    "link": "/ko/api/plugins/pantoken/logos/src/functions/logosPlugin.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/logos/src/"
+          },
+          {
+            "text": "primitives",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "PrimitiveTokenNames",
+                    "link": "/ko/api/plugins/pantoken/primitives/src/interfaces/PrimitiveTokenNames.md"
+                  },
+                  {
+                    "text": "PrimitivesOptions",
+                    "link": "/ko/api/plugins/pantoken/primitives/src/interfaces/PrimitivesOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "primitivesCss",
+                    "link": "/ko/api/plugins/pantoken/primitives/src/functions/primitivesCss.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/primitives/src/"
+          },
+          {
+            "text": "simple-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIcon",
+                    "link": "/ko/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIcon.md"
+                  },
+                  {
+                    "text": "SimpleIconsOptions",
+                    "link": "/ko/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "타입 별칭",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIconsRegistry",
+                    "link": "/ko/api/plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toExportName",
+                    "link": "/ko/api/plugins/pantoken/simple-icons/src/functions/toExportName.md"
+                  },
+                  {
+                    "text": "defaultRegistry",
+                    "link": "/ko/api/plugins/pantoken/simple-icons/src/functions/defaultRegistry.md"
+                  },
+                  {
+                    "text": "simpleIcons",
+                    "link": "/ko/api/plugins/pantoken/simple-icons/src/functions/simpleIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/simple-icons/src/"
+          },
+          {
+            "text": "stacking",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "StackingOptions",
+                    "link": "/ko/api/plugins/pantoken/stacking/src/interfaces/StackingOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "STACKING_LEVELS",
+                    "link": "/ko/api/plugins/pantoken/stacking/src/variables/STACKING_LEVELS.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "stacking",
+                    "link": "/ko/api/plugins/pantoken/stacking/src/functions/stacking.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/stacking/src/"
+          },
+          {
+            "text": "transition",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "TransitionOptions",
+                    "link": "/ko/api/plugins/pantoken/transition/src/interfaces/TransitionOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "transition",
+                    "link": "/ko/api/plugins/pantoken/transition/src/functions/transition.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/transition/src/"
+          },
+          {
+            "text": "visual-debug",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VisualDebugOptions",
+                    "link": "/ko/api/plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VISUAL_DEBUG_RULES",
+                    "link": "/ko/api/plugins/pantoken/visual-debug/src/variables/VISUAL_DEBUG_RULES.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "visualDebugRules",
+                    "link": "/ko/api/plugins/pantoken/visual-debug/src/functions/visualDebugRules.md"
+                  },
+                  {
+                    "text": "visualDebug",
+                    "link": "/ko/api/plugins/pantoken/visual-debug/src/functions/visualDebug.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/pantoken/visual-debug/src/"
+          }
+        ]
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "flatten-property",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ko/api/plugins/postcss/flatten-property/src/interfaces/FlattenPropertyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ko/api/plugins/postcss/flatten-property/src/variables/flattenProperty.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/postcss/flatten-property/src/"
+          },
+          {
+            "text": "mangle-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ko/api/plugins/postcss/mangle-custom-props/src/interfaces/MangleCustomPropsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "타입 별칭",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ko/api/plugins/postcss/mangle-custom-props/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ko/api/plugins/postcss/mangle-custom-props/src/variables/mangleCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/postcss/mangle-custom-props/src/"
+          },
+          {
+            "text": "props-minify",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/interfaces/FlattenPropertyOptions.md"
+                  },
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/interfaces/MangleCustomPropsOptions.md"
+                  },
+                  {
+                    "text": "PropsMinifyOptions",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "타입 별칭",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/variables/flattenProperty.md"
+                  },
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/variables/mangleCustomProps.md"
+                  },
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "applyMinify",
+                    "link": "/ko/api/plugins/postcss/props-minify/src/functions/applyMinify.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/postcss/props-minify/src/"
+          },
+          {
+            "text": "prune-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ko/api/plugins/postcss/prune-custom-props/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/postcss/prune-custom-props/src/"
+          },
+          {
+            "text": "theme-custom-media",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "ThemeCustomMediaOptions",
+                    "link": "/ko/api/plugins/postcss/theme-custom-media/src/interfaces/ThemeCustomMediaOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "타입 별칭",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Theme",
+                    "link": "/ko/api/plugins/postcss/theme-custom-media/src/type-aliases/Theme.md"
+                  }
+                ]
+              },
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "themeCustomMedia",
+                    "link": "/ko/api/plugins/postcss/theme-custom-media/src/variables/themeCustomMedia.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/postcss/theme-custom-media/src/"
+          }
+        ]
+      },
+      {
+        "text": "typedoc",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "demo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "변수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "DEMO_TAG",
+                    "link": "/ko/api/plugins/typedoc/demo/src/variables/DEMO_TAG.md"
+                  },
+                  {
+                    "text": "DEMO_FENCE",
+                    "link": "/ko/api/plugins/typedoc/demo/src/variables/DEMO_FENCE.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toDemoFence",
+                    "link": "/ko/api/plugins/typedoc/demo/src/functions/toDemoFence.md"
+                  },
+                  {
+                    "text": "rewriteComment",
+                    "link": "/ko/api/plugins/typedoc/demo/src/functions/rewriteComment.md"
+                  },
+                  {
+                    "text": "load",
+                    "link": "/ko/api/plugins/typedoc/demo/src/functions/load.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/typedoc/demo/src/"
+          }
+        ]
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "workspace-orchestrator",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "인터페이스",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamNode",
+                    "link": "/ko/api/plugins/vite/workspace-orchestrator/src/interfaces/UpstreamNode.md"
+                  },
+                  {
+                    "text": "FileServerEntry",
+                    "link": "/ko/api/plugins/vite/workspace-orchestrator/src/interfaces/FileServerEntry.md"
+                  },
+                  {
+                    "text": "OrchestratorOptions",
+                    "link": "/ko/api/plugins/vite/workspace-orchestrator/src/interfaces/OrchestratorOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "함수",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "matchesFilters",
+                    "link": "/ko/api/plugins/vite/workspace-orchestrator/src/functions/matchesFilters.md"
+                  },
+                  {
+                    "text": "workspaceOrchestrator",
+                    "link": "/ko/api/plugins/vite/workspace-orchestrator/src/functions/workspaceOrchestrator.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ko/api/plugins/vite/workspace-orchestrator/src/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "CSS",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "개요",
+        "link": "/ko/api/css/"
+      },
+      {
+        "text": "컴포넌트",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "agent-shell",
+            "link": "/ko/api/css/agent-shell.md"
+          },
+          {
+            "text": "alert",
+            "link": "/ko/api/css/alert.md"
+          },
+          {
+            "text": "avatar",
+            "link": "/ko/api/css/avatar.md"
+          },
+          {
+            "text": "badge",
+            "link": "/ko/api/css/badge.md"
+          },
+          {
+            "text": "banner",
+            "link": "/ko/api/css/banner.md"
+          },
+          {
+            "text": "billboard",
+            "link": "/ko/api/css/billboard.md"
+          },
+          {
+            "text": "breadcrumb",
+            "link": "/ko/api/css/breadcrumb.md",
+            "items": [
+              {
+                "text": "link",
+                "link": "/ko/api/css/breadcrumb.link.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "button",
+            "link": "/ko/api/css/button.md"
+          },
+          {
+            "text": "byline",
+            "link": "/ko/api/css/byline.md"
+          },
+          {
+            "text": "calendar",
+            "link": "/ko/api/css/calendar.md",
+            "items": [
+              {
+                "text": "day",
+                "link": "/ko/api/css/calendar.day.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "card",
+            "link": "/ko/api/css/card.md"
+          },
+          {
+            "text": "checkbox",
+            "link": "/ko/api/css/checkbox.md"
+          },
+          {
+            "text": "close-button",
+            "link": "/ko/api/css/close-button.md"
+          },
+          {
+            "text": "context-view",
+            "link": "/ko/api/css/context-view.md"
+          },
+          {
+            "text": "drawer-layout",
+            "link": "/ko/api/css/drawer-layout.md",
+            "items": [
+              {
+                "text": "content",
+                "link": "/ko/api/css/drawer-layout.content.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ko/api/css/drawer-layout.tray.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "file-drop",
+            "link": "/ko/api/css/file-drop.md"
+          },
+          {
+            "text": "form-field",
+            "link": "/ko/api/css/form-field.md"
+          },
+          {
+            "text": "form-field-group",
+            "link": "/ko/api/css/form-field-group.md"
+          },
+          {
+            "text": "form-field-messages",
+            "link": "/ko/api/css/form-field-messages.md"
+          },
+          {
+            "text": "heading",
+            "link": "/ko/api/css/heading.md"
+          },
+          {
+            "text": "img",
+            "link": "/ko/api/css/img.md"
+          },
+          {
+            "text": "in-place-edit",
+            "link": "/ko/api/css/in-place-edit.md"
+          },
+          {
+            "text": "input-group",
+            "link": "/ko/api/css/input-group.md"
+          },
+          {
+            "text": "link",
+            "link": "/ko/api/css/link.md"
+          },
+          {
+            "text": "list",
+            "link": "/ko/api/css/list.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ko/api/css/list.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "mask",
+            "link": "/ko/api/css/mask.md"
+          },
+          {
+            "text": "menu",
+            "link": "/ko/api/css/menu.md",
+            "items": [
+              {
+                "text": "group",
+                "link": "/ko/api/css/menu.group.md"
+              },
+              {
+                "text": "item",
+                "link": "/ko/api/css/menu.item.md"
+              },
+              {
+                "text": "separator",
+                "link": "/ko/api/css/menu.separator.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "metric",
+            "link": "/ko/api/css/metric.md"
+          },
+          {
+            "text": "modal",
+            "link": "/ko/api/css/modal.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ko/api/css/modal.body.md"
+              },
+              {
+                "text": "footer",
+                "link": "/ko/api/css/modal.footer.md"
+              },
+              {
+                "text": "header",
+                "link": "/ko/api/css/modal.header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "number-input",
+            "link": "/ko/api/css/number-input.md"
+          },
+          {
+            "text": "pagination",
+            "link": "/ko/api/css/pagination.md",
+            "items": [
+              {
+                "text": "page",
+                "link": "/ko/api/css/pagination.page.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "pill",
+            "link": "/ko/api/css/pill.md"
+          },
+          {
+            "text": "popover",
+            "link": "/ko/api/css/popover.md"
+          },
+          {
+            "text": "progress",
+            "link": "/ko/api/css/progress.md"
+          },
+          {
+            "text": "progress-circle",
+            "link": "/ko/api/css/progress-circle.md"
+          },
+          {
+            "text": "radio",
+            "link": "/ko/api/css/radio.md"
+          },
+          {
+            "text": "radio-input-group",
+            "link": "/ko/api/css/radio-input-group.md"
+          },
+          {
+            "text": "range-input",
+            "link": "/ko/api/css/range-input.md"
+          },
+          {
+            "text": "rating",
+            "link": "/ko/api/css/rating.md"
+          },
+          {
+            "text": "side-nav-bar",
+            "link": "/ko/api/css/side-nav-bar.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ko/api/css/side-nav-bar.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "simple-select",
+            "link": "/ko/api/css/simple-select.md"
+          },
+          {
+            "text": "spinner",
+            "link": "/ko/api/css/spinner.md"
+          },
+          {
+            "text": "table",
+            "link": "/ko/api/css/table.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ko/api/css/table.body.md"
+              },
+              {
+                "text": "cell",
+                "link": "/ko/api/css/table.cell.md"
+              },
+              {
+                "text": "col-header",
+                "link": "/ko/api/css/table.col-header.md"
+              },
+              {
+                "text": "head",
+                "link": "/ko/api/css/table.head.md"
+              },
+              {
+                "text": "row",
+                "link": "/ko/api/css/table.row.md"
+              },
+              {
+                "text": "row-header",
+                "link": "/ko/api/css/table.row-header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tabs",
+            "link": "/ko/api/css/tabs.md",
+            "items": [
+              {
+                "text": "panel",
+                "link": "/ko/api/css/tabs.panel.md"
+              },
+              {
+                "text": "tab",
+                "link": "/ko/api/css/tabs.tab.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tag",
+            "link": "/ko/api/css/tag.md"
+          },
+          {
+            "text": "text",
+            "link": "/ko/api/css/text.md"
+          },
+          {
+            "text": "text-area",
+            "link": "/ko/api/css/text-area.md"
+          },
+          {
+            "text": "text-input",
+            "link": "/ko/api/css/text-input.md"
+          },
+          {
+            "text": "toggle-details",
+            "link": "/ko/api/css/toggle-details.md"
+          },
+          {
+            "text": "toggle-group",
+            "link": "/ko/api/css/toggle-group.md"
+          },
+          {
+            "text": "tooltip",
+            "link": "/ko/api/css/tooltip.md"
+          },
+          {
+            "text": "tray",
+            "link": "/ko/api/css/tray.md"
+          },
+          {
+            "text": "tree-browser",
+            "link": "/ko/api/css/tree-browser.md"
+          },
+          {
+            "text": "view",
+            "link": "/ko/api/css/view.md"
+          }
+        ]
+      },
+      {
+        "text": "유틸리티",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "color",
+            "link": "/ko/api/css/color.md"
+          },
+          {
+            "text": "cursor",
+            "link": "/ko/api/css/cursor.md"
+          },
+          {
+            "text": "gap",
+            "link": "/ko/api/css/gap.md"
+          },
+          {
+            "text": "icon",
+            "link": "/ko/api/css/icon.md"
+          },
+          {
+            "text": "layout",
+            "link": "/ko/api/css/layout.md"
+          },
+          {
+            "text": "maskglobal",
+            "link": "/ko/api/css/maskglobal.md"
+          },
+          {
+            "text": "overflow",
+            "link": "/ko/api/css/overflow.md"
+          },
+          {
+            "text": "position",
+            "link": "/ko/api/css/position.md"
+          },
+          {
+            "text": "responsive",
+            "link": "/ko/api/css/responsive.md"
+          },
+          {
+            "text": "screen-reader-content",
+            "link": "/ko/api/css/screen-reader-content.md"
+          },
+          {
+            "text": "spacing",
+            "link": "/ko/api/css/spacing.md"
+          },
+          {
+            "text": "stacking",
+            "link": "/ko/api/css/stacking.md"
+          },
+          {
+            "text": "transition",
+            "link": "/ko/api/css/transition.md"
+          },
+          {
+            "text": "truncate",
+            "link": "/ko/api/css/truncate.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ko/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "규칙",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "base",
+            "link": "/ko/api/css/base.md"
+          },
+          {
+            "text": "prose",
+            "link": "/ko/api/css/prose.md"
+          }
+        ]
+      },
+      {
+        "text": "Plugins",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "logos",
+            "link": "/ko/api/css/logos.md"
+          },
+          {
+            "text": "primitives",
+            "link": "/ko/api/css/primitives.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ko/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "layout",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "callout",
+            "link": "/ko/api/css/callout.md"
+          },
+          {
+            "text": "hero",
+            "link": "/ko/api/css/hero.md"
+          },
+          {
+            "text": "page-layout",
+            "link": "/ko/api/css/page-layout.md"
+          },
+          {
+            "text": "rubric-note",
+            "link": "/ko/api/css/rubric-note.md"
+          },
+          {
+            "text": "testimonial",
+            "link": "/ko/api/css/testimonial.md"
+          },
+          {
+            "text": "two-column",
+            "link": "/ko/api/css/two-column.md"
+          },
+          {
+            "text": "wrapper",
+            "link": "/ko/api/css/wrapper.md"
+          }
+        ]
+      }
+    ]
+  }
+]

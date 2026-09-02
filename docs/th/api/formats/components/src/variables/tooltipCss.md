@@ -1,0 +1,9 @@
+[pantoken](../../../../index.md) / [formats/components/src](../index.md) / tooltipCss
+
+# ตัวแปร: tooltipCss
+
+> `const` **tooltipCss**: `Definition`\[`"css"`\] = `tooltip.css`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">เบต้า</span>
+
+Standalone `tooltip` stylesheet — the prefixed CSS for the tooltip bubble, ready to ship as a `.css` file.

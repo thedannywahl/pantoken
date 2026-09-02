@@ -1,0 +1,23 @@
+[pantoken](../../../../index.md) / [tools/demo/src](../index.md) / renderDemoFigure
+
+# Função: renderDemoFigure()
+
+> **renderDemoFigure**(`resolved`): `string`
+
+Render the demo panel HTML for a resolved demo: a bare, sandboxed, lazy-loaded iframe framed like a
+live example (no host chrome — the runner inside carries its own tab toolbar). Style it with
+`@pantoken/demo/demo.css`.
+
+## Parâmetros
+
+### resolved
+
+[`ResolvedDemo`](../interfaces/ResolvedDemo.md)
+
+A [ResolvedDemo](../interfaces/ResolvedDemo.md).
+
+## Retorna
+
+`string`
+
+The panel HTML string.

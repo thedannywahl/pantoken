@@ -1,0 +1,18 @@
+[pantoken](../../../../index.md) / [formats/tokens/src](../index.md) / tokens
+
+# 변수: tokens
+
+> `const` **tokens**: [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+
+<span class="instui-pill -color-warning pantoken-doc-tag">베타</span>
+
+The `rebrand` theme IR (the default).
+
+## 예제
+
+```ts
+import { tokens } from "@pantoken/tokens";
+import { toCss } from "@pantoken/css";
+
+const stylesheet = toCss(tokens);
+```
