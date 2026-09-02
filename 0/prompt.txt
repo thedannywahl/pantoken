@@ -1,0 +1,9 @@
+I don't think we need `.i18n` in the namespace.
+
+---
+
+if scaffold is already in the parent namespace shen we shouldn't need scaffold here either, right?
+
+---
+
+this should be part of the i18n.json for its package, not in l10n
