@@ -1,0 +1,57 @@
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
+import { extractMessagesSpace, parseMessageSource } from "../src/extract-messages.ts";
+
+describe("parseMessageSource", () => {
+  test("a bare string is always-translate", () => {
+    expect(parseMessageSource({ back: "Back" })).toEqual([
+      { key: "back", msgid: "Back", translate: "always" },
+    ]);
+  });
+
+  test("an object entry carries its own translate intent", () => {
+    expect(
+      parseMessageSource({ datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" } }),
+    ).toEqual([{ key: "datePlaceholder", msgid: "yyyy-mm-dd", translate: "optional" }]);
+  });
+
+  test("an object entry with no translate field defaults to always", () => {
+    expect(parseMessageSource({ x: { message: "y" } })).toEqual([
+      { key: "x", msgid: "y", translate: "always" },
+    ]);
+  });
+
+  test("preserves key order", () => {
+    const units = parseMessageSource({ b: "B", a: "A" });
+    expect(units.map((u) => u.key)).toEqual(["b", "a"]);
+  });
+});
+
+describe("extractMessagesSpace", () => {
+  let testDir: string;
+
+  beforeEach(() => {
+    testDir = mkdtempSync(join(tmpdir(), "pantoken-i18n-messages-"));
+  });
+
+  afterEach(() => {
+    rmSync(testDir, { recursive: true, force: true });
+  });
+
+  test("reads and parses a real i18n.json file", () => {
+    const path = join(testDir, "i18n.json");
+    writeFileSync(
+      path,
+      JSON.stringify({
+        prevMonth: "Previous month",
+        datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" },
+      }),
+    );
+    expect(extractMessagesSpace(path)).toEqual([
+      { key: "prevMonth", msgid: "Previous month", translate: "always" },
+      { key: "datePlaceholder", msgid: "yyyy-mm-dd", translate: "optional" },
+    ]);
+  });
+});

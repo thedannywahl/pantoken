@@ -171,6 +171,77 @@ describe("docs.guides: extract -> translate -> render (real, no AI provider)", (
   });
 });
 
+describe("ui.strings (a messages-kind space): extract -> translate -> check", () => {
+  beforeEach(() => {
+    writeFileSync(
+      configPath,
+      JSON.stringify({
+        ...MINIMAL_CONFIG,
+        spaces: {
+          ...MINIMAL_CONFIG.spaces,
+          "ui.strings": { kind: "messages", source: "i18n.json" },
+        },
+      }),
+    );
+    writeFileSync(
+      join(testDir, "i18n.json"),
+      JSON.stringify({
+        back: "Back",
+        datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" },
+      }),
+    );
+  });
+
+  test("extract writes a msgctxt-keyed POT", async () => {
+    await run(["extract", "ui.strings"]);
+    const pot = readFileSync(join(testDir, "l10n", "ui.strings.pot"), "utf8");
+    expect(pot).toContain('msgctxt "back"');
+    expect(pot).toContain('msgid "Back"');
+    expect(pot).toContain('msgctxt "datePlaceholder"');
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Extracted 2 unit(s)"));
+  });
+
+  test("translate keeps the PO current (untranslated, since no AI provider is authorized)", async () => {
+    await run(["extract", "ui.strings"]);
+    await run(["translate", "ui.strings", "--locale", "hu"]);
+    expect(existsSync(join(testDir, "l10n", "hu", "ui.strings.po"))).toBe(true);
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining("ui.strings (hu): 0 translated, 2 untranslated"),
+    );
+  });
+
+  test("render for a messages space is a documented no-op", async () => {
+    await run(["render", "ui.strings"]);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("no-op"));
+  });
+
+  test("check reports untranslated drift for a messages space", async () => {
+    await run(["extract", "ui.strings"]);
+    await run(["translate", "ui.strings", "--locale", "hu"]);
+    process.exitCode = undefined;
+    await run(["check", "ui.strings"]);
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("ui.strings — translation drift"));
+    process.exitCode = undefined;
+  });
+
+  test("check reports no drift once every key is translated", async () => {
+    await run(["extract", "ui.strings"]);
+    await run(["translate", "ui.strings", "--locale", "hu"]);
+    const poPath = join(testDir, "l10n", "hu", "ui.strings.po");
+    writeFileSync(
+      poPath,
+      readFileSync(poPath, "utf8")
+        .replace('msgid "Back"\nmsgstr ""', 'msgid "Back"\nmsgstr "Vissza"')
+        .replace('msgid "yyyy-mm-dd"\nmsgstr ""', 'msgid "yyyy-mm-dd"\nmsgstr "éééé-hh-nn"'),
+    );
+    process.exitCode = undefined;
+    await run(["check", "ui.strings"]);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("no translation drift"));
+    expect(process.exitCode).toBe(0);
+    process.exitCode = undefined;
+  });
+});
+
 describe("locale promote/demote/exclude/include", () => {
   test("promote defaults to the primary tier", async () => {
     await run(["locale", "promote", "mi"]);

@@ -16,9 +16,13 @@ import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import {
   DOCS_GUIDES,
   guidesLocales,
+  messagesLocales,
   runCheckGuides,
+  runCheckMessages,
   runExtractGuides,
+  runExtractMessages,
   runRenderGuides,
+  runTranslateMessages,
   runTranslateGuides,
 } from "./pipeline.ts";
 
@@ -75,33 +79,47 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
 
   const configDirOf = (): string => dirname(program.opts<{ config: string }>().config);
 
-  /** Runs `fn` for `docs.guides` (or an omitted space); any other space falls back to `command`'s
-   *  stub message instead. */
-  function withDocsGuidesSpace(
+  /** Runs `guidesFn` for `docs.guides` (or an omitted space, which defaults to it), `messagesFn`
+   *  for any space configured with `kind: "messages"`, or falls back to `command`'s stub message
+   *  for anything else (e.g. an unconfigured or `"content"`/`"structural"` space with no handler). */
+  function withSpace(
     command: string,
     space: string | undefined,
-    fn: (config: I18nConfig) => void | Promise<void>,
+    guidesFn: (config: I18nConfig) => void | Promise<void>,
+    messagesFn: (config: I18nConfig, spaceId: string) => void | Promise<void>,
   ): void | Promise<void> {
-    if (space !== undefined && space !== DOCS_GUIDES) {
-      stubAction(command)();
-      return;
-    }
     const configPath = program.opts<{ config: string }>().config;
     const loaded = loadConfigOrExit(configPath);
     if (!loaded) return;
-    return fn(loaded.config);
+    const spaceId = space ?? DOCS_GUIDES;
+    if (spaceId === DOCS_GUIDES) return guidesFn(loaded.config);
+    if (loaded.config.spaces[spaceId]?.kind === "messages") {
+      return messagesFn(loaded.config, spaceId);
+    }
+    stubAction(command)();
+    return undefined;
   }
 
   program
     .command("extract")
     .addArgument(new Argument("[space]", "space id").argOptional())
     .action((space?: string) =>
-      withDocsGuidesSpace("extract", space, (config) => {
-        const result = runExtractGuides(config, configDirOf());
-        console.log(
-          `Extracted ${String(result.unitCount)} unit(s) from ${DOCS_GUIDES} to ${result.potPath}.`,
-        );
-      }),
+      withSpace(
+        "extract",
+        space,
+        (config) => {
+          const result = runExtractGuides(config, configDirOf());
+          console.log(
+            `Extracted ${String(result.unitCount)} unit(s) from ${DOCS_GUIDES} to ${result.potPath}.`,
+          );
+        },
+        (config, spaceId) => {
+          const result = runExtractMessages(config, configDirOf(), spaceId);
+          console.log(
+            `Extracted ${String(result.unitCount)} unit(s) from ${spaceId} to ${result.potPath}.`,
+          );
+        },
+      ),
     );
 
   program
@@ -113,16 +131,30 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .option("--concurrency <n>", "override provider concurrency", Number)
     .option("--force", "retranslate even when the cache/PO entry is up to date", false)
     .action((space: string | undefined, opts: { locale?: string }) =>
-      withDocsGuidesSpace("translate", space, async (config) => {
-        const locales = opts.locale ? [opts.locale] : guidesLocales(config);
-        for (const locale of locales) {
-          const result = await runTranslateGuides(config, configDirOf(), locale);
-          console.log(
-            `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
-              `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
-          );
-        }
-      }),
+      withSpace(
+        "translate",
+        space,
+        async (config) => {
+          const locales = opts.locale ? [opts.locale] : guidesLocales(config);
+          for (const locale of locales) {
+            const result = await runTranslateGuides(config, configDirOf(), locale);
+            console.log(
+              `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
+                `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
+            );
+          }
+        },
+        async (config, spaceId) => {
+          const locales = opts.locale ? [opts.locale] : messagesLocales(config, spaceId);
+          for (const locale of locales) {
+            const result = await runTranslateMessages(config, configDirOf(), spaceId, locale);
+            console.log(
+              `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
+                `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
+            );
+          }
+        },
+      ),
     );
 
   program
@@ -130,15 +162,25 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .addArgument(new Argument("[space]", "space id").argOptional())
     .option("--locale <locale>", "one locale")
     .action((space: string | undefined, opts: { locale?: string }) =>
-      withDocsGuidesSpace("render", space, (config) => {
-        const locales = opts.locale ? [opts.locale] : guidesLocales(config);
-        for (const locale of locales) {
-          const result = runRenderGuides(config, configDirOf(), locale);
-          console.log(
-            `${DOCS_GUIDES} (${locale}): wrote ${String(result.filesWritten.length)} file(s).`,
-          );
-        }
-      }),
+      withSpace(
+        "render",
+        space,
+        (config) => {
+          const locales = opts.locale ? [opts.locale] : guidesLocales(config);
+          for (const locale of locales) {
+            const result = runRenderGuides(config, configDirOf(), locale);
+            console.log(
+              `${DOCS_GUIDES} (${locale}): wrote ${String(result.filesWritten.length)} file(s).`,
+            );
+          }
+        },
+        () => {
+          // Messages spaces don't have a generic file-render step — a space's own codegen
+          // (e.g. `packages/i18n/scripts/build-bundles.ts`) reads its PO catalogs directly via
+          // `resolveMessagesForLocale`. Nothing to do here.
+          console.log(`"render" for a messages space is a no-op — its package owns codegen.`);
+        },
+      ),
     );
 
   program
@@ -146,11 +188,20 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .addArgument(new Argument("[space]", "space id").argOptional())
     .option("--strict", "treat every warn-level finding as blocking", false)
     .action((space: string | undefined, opts: { strict: boolean }) =>
-      withDocsGuidesSpace("check", space, (config) => {
-        if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
-        const { exitCode } = runCheckGuides(config, configDirOf());
-        process.exitCode = exitCode;
-      }),
+      withSpace(
+        "check",
+        space,
+        (config) => {
+          if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
+          const { exitCode } = runCheckGuides(config, configDirOf());
+          process.exitCode = exitCode;
+        },
+        (config, spaceId) => {
+          if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
+          const { exitCode } = runCheckMessages(config, configDirOf(), spaceId);
+          process.exitCode = exitCode;
+        },
+      ),
     );
 
   for (const name of ["lint", "stats"] as const) {
@@ -188,27 +239,22 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       });
     });
 
-  locale
-    .command("exclude")
-    .addArgument(new Argument("<locale>", "BCP47 locale tag"))
-    .action((localeTag: string) => {
-      const configPath = program.opts<{ config: string }>().config;
-      withLoadedConfig(configPath, (config) => {
-        config.locales = excludeLocale(config.locales, localeTag);
-        console.log(`Excluded "${localeTag}" from the pipeline.`);
+  const membershipCommands = [
+    { name: "exclude", verb: "Excluded", preposition: "from", apply: excludeLocale },
+    { name: "include", verb: "Included", preposition: "in", apply: includeLocale },
+  ] as const;
+  for (const { name, verb, preposition, apply } of membershipCommands) {
+    locale
+      .command(name)
+      .addArgument(new Argument("<locale>", "BCP47 locale tag"))
+      .action((localeTag: string) => {
+        const configPath = program.opts<{ config: string }>().config;
+        withLoadedConfig(configPath, (config) => {
+          config.locales = apply(config.locales, localeTag);
+          console.log(`${verb} "${localeTag}" ${preposition} the pipeline.`);
+        });
       });
-    });
-
-  locale
-    .command("include")
-    .addArgument(new Argument("<locale>", "BCP47 locale tag"))
-    .action((localeTag: string) => {
-      const configPath = program.opts<{ config: string }>().config;
-      withLoadedConfig(configPath, (config) => {
-        config.locales = includeLocale(config.locales, localeTag);
-        console.log(`Included "${localeTag}" in the pipeline.`);
-      });
-    });
+  }
 
   return program;
 }

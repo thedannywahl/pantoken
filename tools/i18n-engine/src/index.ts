@@ -62,16 +62,29 @@ export {
   type ProseRange,
 } from "./extract.ts";
 export {
+  parseMessageSource,
+  extractMessagesSpace,
+  type MessageSource,
+  type MessageSourceEntry,
+  type MessageUnit,
+} from "./extract-messages.ts";
+export {
   DOCS_GUIDES,
   guidesLocales,
+  messagesLocales,
   runCheckGuides,
+  runCheckMessages,
   runExtractGuides,
+  runExtractMessages,
   runRenderGuides,
+  runTranslateMessages,
   runTranslateGuides,
+  resolveMessagesForLocale,
   type CheckResult,
   type ExtractResult,
   type RenderResult,
   type TranslateResult,
+  type ResolvedMessages,
 } from "./pipeline.ts";
 export { missingPluralCategories, validateMf2, type Mf2ValidationResult } from "./mf2.ts";
 export { createI18nCommand, runI18nCli } from "./cli.ts";

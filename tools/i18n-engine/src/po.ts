@@ -13,6 +13,9 @@
 export interface PoEntry {
   msgid: string;
   msgstr: string;
+  /** Disambiguates a keyed message from a plain (content-addressed) one, e.g. a UI-string key like
+   *  `"prevMonth"`. `undefined` for content spaces, which have no stable key of their own. */
+  msgctxt?: string;
   /** Repo-relative source locations, e.g. `"docs/guide/getting-started.md:5"`. */
   references: readonly string[];
   /** PO flags, e.g. `["no-c-format", "fuzzy"]`. `fuzzy` is also exposed as {@link PoEntry.fuzzy}. */
@@ -70,7 +73,8 @@ interface ParseCursor {
   references: string[];
   flags: string[];
   obsolete: boolean;
-  field: "none" | "msgid" | "msgstr";
+  field: "none" | "msgctxt" | "msgid" | "msgstr";
+  msgctxtParts: string[];
   msgidParts: string[];
   msgstrParts: string[];
 }
@@ -81,6 +85,7 @@ function freshCursor(): ParseCursor {
     flags: [],
     obsolete: false,
     field: "none",
+    msgctxtParts: [],
     msgidParts: [],
     msgstrParts: [],
   };
@@ -88,12 +93,12 @@ function freshCursor(): ParseCursor {
 
 /** Push `cursor`'s completed entry onto `entries`, skipping the header (empty `msgid`). */
 function pushEntry(cursor: ParseCursor, entries: PoEntry[]): void {
-  if (cursor.field === "none") return;
   const msgid = cursor.msgidParts.join("");
   if (msgid === "") return;
   entries.push({
     msgid,
     msgstr: cursor.msgstrParts.join(""),
+    msgctxt: cursor.msgctxtParts.length > 0 ? cursor.msgctxtParts.join("") : undefined,
     references: cursor.references,
     flags: cursor.flags,
     fuzzy: cursor.flags.includes("fuzzy"),
@@ -101,34 +106,40 @@ function pushEntry(cursor: ParseCursor, entries: PoEntry[]): void {
   });
 }
 
+/** The parts array on `cursor` that a given field's continuation/quoted lines accumulate into. */
+function partsFor(cursor: ParseCursor, field: "msgctxt" | "msgid" | "msgstr"): string[] {
+  if (field === "msgctxt") return cursor.msgctxtParts;
+  if (field === "msgid") return cursor.msgidParts;
+  return cursor.msgstrParts;
+}
+
 /**
  * Apply one content line (a `#~` obsolete prefix, if any, is already stripped by the caller).
  * Starting a new `msgid` flushes the previous entry into `entries` and returns a fresh cursor,
- * carrying over any pending reference/flag comments and the current obsolete-prefix state.
+ * carrying over any pending reference/flag/msgctxt comments and the current obsolete-prefix state.
  */
 function applyContentLine(line: string, cursor: ParseCursor, entries: PoEntry[]): ParseCursor {
-  if (line.startsWith("msgid ")) {
+  for (const field of ["msgctxt", "msgid", "msgstr"] as const) {
+    const prefix = `${field} `;
+    if (!line.startsWith(prefix)) continue;
+    const quoted = parseQuotedLine(line.slice(prefix.length));
+    if (field !== "msgid") {
+      cursor.field = field;
+      if (quoted !== null) partsFor(cursor, field).push(quoted);
+      return cursor;
+    }
     pushEntry(cursor, entries);
     const next = freshCursor();
     next.references = cursor.references;
     next.flags = cursor.flags;
     next.obsolete = cursor.obsolete;
+    next.msgctxtParts = cursor.msgctxtParts;
     next.field = "msgid";
-    const quoted = parseQuotedLine(line.slice("msgid ".length));
     if (quoted !== null) next.msgidParts.push(quoted);
     return next;
   }
-  if (line.startsWith("msgstr ")) {
-    cursor.field = "msgstr";
-    const quoted = parseQuotedLine(line.slice("msgstr ".length));
-    if (quoted !== null) cursor.msgstrParts.push(quoted);
-    return cursor;
-  }
   const quoted = parseQuotedLine(line);
-  if (quoted !== null) {
-    if (cursor.field === "msgid") cursor.msgidParts.push(quoted);
-    else if (cursor.field === "msgstr") cursor.msgstrParts.push(quoted);
-  }
+  if (quoted !== null && cursor.field !== "none") partsFor(cursor, cursor.field).push(quoted);
   return cursor;
 }
 
@@ -175,6 +186,8 @@ function serializeEntry(entry: PoEntry): string {
   const prefix = entry.obsolete ? "#~ " : "";
   for (const reference of entry.references) lines.push(`#: ${reference}`);
   if (entry.flags.length > 0) lines.push(`#, ${entry.flags.join(", ")}`);
+  if (entry.msgctxt !== undefined)
+    lines.push(`${prefix}msgctxt "${escapePoString(entry.msgctxt)}"`);
   lines.push(`${prefix}msgid "${escapePoString(entry.msgid)}"`);
   lines.push(`${prefix}msgstr "${escapePoString(entry.msgstr)}"`);
   return lines.join("\n");
@@ -186,25 +199,41 @@ function header(): string {
 }
 
 /**
- * Serialize a POT template: one entry per unique `msgid` (later `references` for a repeated msgid
- * are merged into the first occurrence — PO's own dedup-by-content), each stamped with
- * `defaultFlags` (e.g. `["no-c-format"]` — never `msgid_plural`, see the plan's "PO flags" section).
+ * Serialize a POT template: one entry per unique `(msgctxt, msgid)` pair (later `references` for a
+ * repeat are merged into the first occurrence), each stamped with `defaultFlags` (e.g.
+ * `["no-c-format"]` — never `msgid_plural`, see the plan's "PO flags" section).
  */
 export function serializePot(
-  units: readonly { msgid: string; reference: string }[],
+  units: readonly {
+    msgid: string;
+    reference: string;
+    msgctxt?: string;
+    flags?: readonly string[];
+  }[],
   defaultFlags: readonly string[] = [],
 ): string {
-  const byMsgid = new Map<string, string[]>();
+  const byKey = new Map<
+    string,
+    { msgid: string; msgctxt?: string; references: string[]; flags: string[] }
+  >();
   for (const unit of units) {
-    const refs = byMsgid.get(unit.msgid);
-    if (refs) refs.push(unit.reference);
-    else byMsgid.set(unit.msgid, [unit.reference]);
+    const key = `${unit.msgctxt ?? ""}\0${unit.msgid}`;
+    const existing = byKey.get(key);
+    if (existing) existing.references.push(unit.reference);
+    else
+      byKey.set(key, {
+        msgid: unit.msgid,
+        msgctxt: unit.msgctxt,
+        references: [unit.reference],
+        flags: [...(unit.flags ?? [])],
+      });
   }
-  const entries = [...byMsgid.entries()].map(([msgid, references]): PoEntry => ({
+  const entries = [...byKey.values()].map(({ msgid, msgctxt, references, flags }): PoEntry => ({
     msgid,
+    msgctxt,
     msgstr: "",
     references,
-    flags: [...defaultFlags],
+    flags: [...defaultFlags, ...flags],
     fuzzy: false,
     obsolete: false,
   }));

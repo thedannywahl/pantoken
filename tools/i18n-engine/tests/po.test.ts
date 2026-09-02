@@ -135,6 +135,41 @@ describe("parsePo", () => {
     expect(parsePo(po)).toHaveLength(1);
   });
 
+  test("parses a msgctxt-keyed entry", () => {
+    const po = [
+      'msgid ""',
+      'msgstr ""',
+      "",
+      'msgctxt "prevMonth"',
+      'msgid "Previous month"',
+      'msgstr "El\u0151z\u0151 h\u00f3nap"',
+    ].join("\n");
+    const entries = parsePo(po);
+    expect(entries[0]).toMatchObject({
+      msgctxt: "prevMonth",
+      msgid: "Previous month",
+      msgstr: "El\u0151z\u0151 h\u00f3nap",
+    });
+  });
+
+  test("two entries with the same msgid but different msgctxt stay distinct", () => {
+    const po = [
+      'msgid ""',
+      'msgstr ""',
+      "",
+      'msgctxt "keyA"',
+      'msgid "Back"',
+      'msgstr "A"',
+      "",
+      'msgctxt "keyB"',
+      'msgid "Back"',
+      'msgstr "B"',
+    ].join("\n");
+    const entries = parsePo(po);
+    expect(entries).toHaveLength(2);
+    expect(entries.map((e) => e.msgstr).sort()).toEqual(["A", "B"]);
+  });
+
   test("round-trips serializePo(parsePo(x)) for a full catalog", () => {
     const entries: PoEntry[] = [
       {
@@ -156,5 +191,32 @@ describe("parsePo", () => {
     ];
     const serialized = serializePo(entries);
     expect(parsePo(serialized)).toEqual(entries);
+  });
+});
+
+describe("serializePot with msgctxt", () => {
+  test("two units with the same msgid but different msgctxt each get their own entry", () => {
+    const pot = serializePot([
+      { msgid: "Back", reference: "a:1", msgctxt: "keyA" },
+      { msgid: "Back", reference: "b:1", msgctxt: "keyB" },
+    ]);
+    expect(pot.match(/msgid "Back"/gu)).toHaveLength(2);
+    expect(pot).toContain('msgctxt "keyA"');
+    expect(pot).toContain('msgctxt "keyB"');
+  });
+
+  test("round-trips a msgctxt entry through serializePo/parsePo", () => {
+    const entries: PoEntry[] = [
+      {
+        msgid: "Previous month",
+        msgctxt: "prevMonth",
+        msgstr: "El\u0151z\u0151 h\u00f3nap",
+        references: [],
+        flags: [],
+        fuzzy: false,
+        obsolete: false,
+      },
+    ];
+    expect(parsePo(serializePo(entries))).toEqual(entries);
   });
 });
