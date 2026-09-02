@@ -1,0 +1,4 @@
+1 use the best practice / future forward solution.
+2 replace, we don't need to keep any legacy translation code.
+3. map it to the new schema.
+continue
