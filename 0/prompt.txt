@@ -1,0 +1,1 @@
+the pendo renderer does need these styles carried over because it has hand-authored close-buttons styles to map to its html semantics, and it is using the incorrect tokens.
