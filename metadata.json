@@ -1,0 +1,35 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1HQ0GREG5N6JQYZ61G6AY4X",
+  "strategy": "manual-commit",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".changeset/i18n-normalize-units.md",
+    "tools/i18n-engine/src/extract-messages.ts",
+    "tools/i18n-engine/src/extract.ts",
+    "tools/i18n-engine/src/index.ts",
+    "tools/i18n-engine/src/pipeline.ts",
+    "tools/i18n-engine/src/po.ts",
+    "tools/i18n-engine/src/units.ts",
+    "tools/i18n-engine/tests/extract-messages.test.ts",
+    "tools/i18n-engine/tests/extract.test.ts",
+    "tools/i18n-engine/tests/units.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

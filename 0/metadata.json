@@ -1,0 +1,61 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1HQ0GREG5N6JQYZ61G6AY4X",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-02T18:44:57.234412Z",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "files_touched": [
+    ".changeset/i18n-normalize-units.md",
+    "tools/i18n-engine/src/extract-messages.ts",
+    "tools/i18n-engine/src/extract.ts",
+    "tools/i18n-engine/src/index.ts",
+    "tools/i18n-engine/src/pipeline.ts",
+    "tools/i18n-engine/src/po.ts",
+    "tools/i18n-engine/src/units.ts",
+    "tools/i18n-engine/tests/extract-messages.test.ts",
+    "tools/i18n-engine/tests/extract.test.ts",
+    "tools/i18n-engine/tests/units.test.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "abb1ff6a6bbe",
+  "checkpoint_transcript_start": 4945,
+  "transcript_lines_at_start": 4945,
+  "compact_transcript_start": 997,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 16
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-02T18:44:57.150847Z",
+    "agent_lines": 144,
+    "agent_removed": 20,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 144,
+    "total_lines_changed": 164,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 73,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "scripts/migrate-docs-caches.mts": 73
+      }
+    }
+  ]
+}

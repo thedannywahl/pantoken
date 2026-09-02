@@ -1,0 +1,21 @@
+what are our next steps? I see only ui.strings.pot exists.
+
+---
+
+but what about the other catalogs?
+
+cli.scaffold
+cli.ai
+etc?
+
+---
+
+do that.
+
+---
+
+we need all the surfaces.
+
+---
+
+we should normalize the extractor/renderers if possible.  we want everything to be as consistent as possible.
