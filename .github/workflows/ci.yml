@@ -664,6 +664,9 @@ jobs:
         env:
           DOCS_BASE: /
           DOCS_HOSTNAME: https://pantoken.app/
+          # vitepress-plugin-llms walks every locale's rendered pages; V8's auto-detected heap
+          # ceiling isn't enough once all ~44 locales carry full content, so raise it explicitly.
+          NODE_OPTIONS: --max-old-space-size=8192
       # On main, hand the built site to the Deploy docs workflow (workflow_run) so it publishes without
       # rebuilding. The CNAME is baked in here so the downloaded artifact is deploy-ready as-is.
       - name: Add custom domain file

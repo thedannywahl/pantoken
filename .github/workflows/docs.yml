@@ -99,6 +99,9 @@ jobs:
         env:
           DOCS_BASE: /
           DOCS_HOSTNAME: https://pantoken.app/
+          # vitepress-plugin-llms walks every locale's rendered pages; V8's auto-detected heap
+          # ceiling isn't enough once all ~44 locales carry full content, so raise it explicitly.
+          NODE_OPTIONS: --max-old-space-size=8192
       - name: Write custom domain file
         if: github.event_name == 'workflow_dispatch'
         run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
