@@ -735,7 +735,7 @@ afterEach(() => {
   rmSync(localeTestDir, { recursive: true, force: true });
 });
 
-test("generateLocaleBundles writes one module per locale plus an index re-exporting LOCALES", () => {
+test("generateLocaleBundles writes one module per locale plus an index re-exporting MESSAGES", () => {
   const root = join(localeTestDir, "root");
   const outDir = join(localeTestDir, "out");
   mkdirSync(join(root, "i18n-cache"), { recursive: true });
@@ -783,7 +783,7 @@ test("generateLocaleBundles sanitizes hyphenated locale tags into valid JS ident
   expect(indexContent).toContain('"en-AU": LOCALE_EN_AU,');
 });
 
-test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn't exist", () => {
+test("generateLocaleBundles writes an empty MESSAGES index when i18n-cache doesn't exist", () => {
   const root = join(localeTestDir, "no-cache-root");
   const outDir = join(localeTestDir, "out");
   mkdirSync(root, { recursive: true });
@@ -792,7 +792,7 @@ test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn'
 
   const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
   expect(indexContent).toContain(
-    "export const LOCALES: Record<string, Record<string, string>> = {",
+    "export const MESSAGES: Record<string, Record<string, string>> = {",
   );
   expect(existsSync(join(outDir, "locales", "hu.ts"))).toBe(false);
 });

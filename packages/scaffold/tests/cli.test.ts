@@ -16,7 +16,7 @@ import {
   scaffoldWithSpinner,
   shouldPrompt,
   validateScaffoldPlatform,
-  LOCALES,
+  MESSAGES,
 } from "../src/cli.ts";
 import { select, spinner, text } from "@clack/prompts";
 import { collectI18nSource } from "../scripts/i18n-sources.ts";
@@ -41,7 +41,7 @@ function mktemp(): string {
   return mkdtempSync(join(tmpdir(), "pantoken-scaffold-cli-"));
 }
 
-const { t } = createLocaleLookup(LOCALES, "en");
+const { t } = createLocaleLookup(MESSAGES, "en");
 
 const bin = new URL("../bin/pantoken-scaffold.mjs", import.meta.url).pathname;
 

@@ -250,10 +250,11 @@ function localeMatchesPattern(pattern: string, locale: string): boolean {
 
 /**
  * Derive one `"<lang>*"` glob per unique base language present in `locales` (e.g. the ~47 keys of
- * `CANVAS_LOCALES`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error` lists without
- * hand-typing every regional variant. `"en-GB"` and `"en-AU"` both collapse to `"en*"`; a locale
- * with no region subtag (e.g. `"hu"`) becomes `"hu*"` too. Returned sorted and deduped — callers
- * pick which families go in which tier, e.g. `{ allow: localeFamilyGlobs(["en-GB", "en-AU"]) }`.
+ * `LOCALES` from `@pantoken/i18n`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error`
+ * lists without hand-typing every regional variant. `"en-GB"` and `"en-AU"` both collapse to
+ * `"en*"`; a locale with no region subtag (e.g. `"hu"`) becomes `"hu*"` too. Returned sorted and
+ * deduped — callers pick which families go in which tier, e.g.
+ * `{ allow: localeFamilyGlobs(["en-GB", "en-AU"]) }`.
  */
 export function localeFamilyGlobs(locales: readonly string[]): string[] {
   const families = new Set(locales.map((locale) => locale.split("-")[0]));
@@ -562,7 +563,7 @@ ${Object.entries(localeMap)
   .map(([locale, varName]) => `import { ${varName} } from "./${locale}.js";`)
   .join("\n")}
 
-export const LOCALES: Record<string, Record<string, string>> = {
+export const MESSAGES: Record<string, Record<string, string>> = {
 ${Object.entries(localeMap)
   .map(([locale, varName]) => `  ${JSON.stringify(locale)}: ${varName},`)
   .join("\n")}

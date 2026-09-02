@@ -20,15 +20,15 @@ import {
   scaffoldWithSpinner,
   printNextSteps,
   SCAFFOLD_PLATFORMS,
-  LOCALES as SCAFFOLD_LOCALES,
+  MESSAGES as SCAFFOLD_MESSAGES,
 } from "@pantoken/scaffold/cli";
 
 import { installAgentAssets, AGENT_TOOLS } from "./index.ts";
-import { LOCALES } from "../generated/locales/index.ts";
+import { MESSAGES } from "../generated/locales/index.ts";
 
 export { installAgentAssets, type AgentTool } from "./index.ts";
 export { detectLocale, createLocaleLookup, type LocaleLookup } from "@pantoken/scaffold/cli";
-export { LOCALES } from "../generated/locales/index.ts";
+export { MESSAGES } from "../generated/locales/index.ts";
 
 /** Options for {@link createAiCommand}. */
 export interface AiCommandOptions {
@@ -70,7 +70,7 @@ export function createAiCommand(options?: AiCommandOptions): Command {
     .action((opts) => {
       const rootOpts = program.opts();
       const locale = detectLocale({ langFlag: rootOpts.lang });
-      const { t } = createLocaleLookup(LOCALES, locale);
+      const { t } = createLocaleLookup(MESSAGES, locale);
 
       try {
         const written = installAgentAssets(opts.tool, opts.dir);
@@ -105,8 +105,8 @@ export function createAiCommand(options?: AiCommandOptions): Command {
     .action(async (platformArg, opts) => {
       const rootOpts = program.opts();
       const locale = detectLocale({ langFlag: rootOpts.lang });
-      const { t: aiT } = createLocaleLookup(LOCALES, locale); // ai/pantoken-ai's own bundle
-      const { t: scaffoldT } = createLocaleLookup(SCAFFOLD_LOCALES, locale); // @pantoken/scaffold's bundle
+      const { t: aiT } = createLocaleLookup(MESSAGES, locale); // ai/pantoken-ai's own bundle
+      const { t: scaffoldT } = createLocaleLookup(SCAFFOLD_MESSAGES, locale); // @pantoken/scaffold's bundle
 
       // Resolve platform and directory using scaffold's logic
       const { platform, dir } = await resolveScaffoldTarget({
