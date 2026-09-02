@@ -169,10 +169,12 @@ Both tasks only stage the local working tree. The submodule is a separate GitHub
 a skill update to `create.pantoken.app` needs a commit + push inside it. `.github/workflows/
 publish-create-pantoken-app.yml` automates this: on every push to `main` that touches
 `ai/pantoken-ai/skills/create-pantoken-app/**`, it re-runs the staging script, commits+pushes the
-submodule if changed, then bumps the submodule pointer in this repo. It needs a repo secret
+submodule if changed, then opens a PR that bumps the submodule pointer in this repo. It needs a repo secret
 `CREATE_PANTOKEN_APP_PAT` (a fine-grained PAT scoped to just `thedannywahl/create-pantoken-app`,
 Contents: Read and write — the default `GITHUB_TOKEN` can't push to a different repo); without it
-the workflow warns and skips the push instead of failing.
+the workflow warns and skips the push instead of failing. The pointer PR uses `RELEASE_PAT` when
+available so CI runs automatically; otherwise it uses `GITHUB_TOKEN`, and its checks must be run
+manually before merging.
 
 To do the same thing manually (e.g. testing a change before it's merged, or if the secret isn't set
 yet):
