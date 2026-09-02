@@ -1,0 +1,351 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "promptPlatform"
+msgid "Select a platform to scaffold:"
+msgstr "스캐폴딩할 플랫폼 선택:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "promptDir"
+msgid "Target directory:"
+msgstr "대상 디렉터리:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "spinnerStart"
+msgid "Scaffolding..."
+msgstr "스캐폴딩 중..."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "spinnerStop"
+msgid "Done scaffolding."
+msgstr "스캐폴딩 완료."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsHeading"
+msgid "Next steps:"
+msgstr "다음 단계:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsNav"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsInstall"
+msgid "Install dependencies: {{command}}"
+msgstr "의존성 설치: {{command}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsDevServer"
+msgid "Start the dev server (if your template has one)"
+msgstr "개발 서버 시작 (템플릿에 해당 기능이 있는 경우)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "notesHeading"
+msgid "Note:"
+msgstr "참고:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "caveatsHeading"
+msgid "Caveat:"
+msgstr "주의:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "errorMissingPlatform"
+msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
+msgstr "필수 인수 \"platform\" 누락. 다음 중 하나여야 합니다: {{platforms}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "cancelled"
+msgid "Cancelled."
+msgstr "취소됨."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpPlatformDescription"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"스캐폴딩할 플랫폼 ({{platforms}}; \"html\"은 \"components\"의 별칭, \"theme-"
+"editor\"는 \"canvas-theme-editor\"의 별칭)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpDirDescription"
+msgid "Target directory (prompts interactively on a TTY if omitted)"
+msgstr "대상 디렉터리 (TTY에서 생략하면 대화형으로 묻습니다)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpYesDescription"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"절대 프롬프트하지 않음; 플랫폼/디렉터리가 없으면 프롬프트 대신 오류 발생"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "자동 감지된 표시 언어를 재정의 (예: \"hu\")"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.nextSteps.0"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.nextSteps.1"
+msgid "{{install}}"
+msgstr "{{install}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.nextSteps.2"
+msgid "{{dev}}"
+msgstr "{{dev}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.notes"
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"theme.css와 theme.js를 Canvas의 테마 편집기(고급 → CSS / JavaScript)에 업로드"
+"하여 pantoken의 클래스가 모든 페이지에서 사용 가능하도록 하세요."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.caveats"
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas는 서버 측에서 붙여넣은 HTML을 정리(사전 처리)합니다 — RCE 미리보기에"
+"서 복사한 내용을 Canvas에서 항상 확인하세요."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.pageTitle"
+msgid "RCE template authoring"
+msgstr "RCE 템플릿 작성"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.pageDescription"
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"pantoken으로 스타일된 Canvas RCE 페이지 템플릿을 작성하고 실시간 미리보기를 "
+"확인합니다."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.editThemeLabel"
+msgid "Edit theme"
+msgstr "테마 편집"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpAriaLabel"
+msgid "Help"
+msgstr "도움말"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
+msgid "Copy HTML"
+msgstr "HTML 복사"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.editorPaneLabel"
+msgid "Editor"
+msgstr "편집기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.previewPaneLabel"
+msgid "Preview"
+msgstr "미리보기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.previewFrameTitle"
+msgid "Styled preview"
+msgstr "스타일된 미리보기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
+msgid "Fullscreen editor"
+msgstr "전체화면 편집기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
+msgid "Fullscreen preview"
+msgstr "전체화면 미리보기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
+msgid "Resize editor and preview"
+msgstr "편집기와 미리보기 크기 조절"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
+msgid "Stack vertically"
+msgstr "수직으로 쌓기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
+msgid "Stack side by side"
+msgstr "나란히 배치"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.swapPanesLabel"
+msgid "Swap panes"
+msgstr "창 교체"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
+msgid "Theme settings"
+msgstr "테마 설정"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.tabConfigLabel"
+msgid "Config"
+msgstr "구성"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.tabCssLabel"
+msgid "CSS"
+msgstr "CSS"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.tabJsLabel"
+msgid "JS"
+msgstr "JS"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
+msgid "CDN provider"
+msgstr "CDN 제공자"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.themeLabel"
+msgid "Theme"
+msgstr "테마"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.modeLabel"
+msgid "Mode"
+msgstr "모드"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.downloadCssLabel"
+msgid "Download theme.css"
+msgstr "theme.css 다운로드"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.downloadJsLabel"
+msgid "Download theme.js"
+msgstr "theme.js 다운로드"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.regenerateLabel"
+msgid "Regenerate from config"
+msgstr "구성에서 재생성"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpModalTitle"
+msgid "How to use this page"
+msgstr "이 페이지 사용 방법"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody1"
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"시작 템플릿을 선택하고 Canvas의 리치 콘텐츠 편집기에서 편집하듯 템플릿을 수정"
+"한 다음 <strong>HTML 복사</strong>를 클릭하여 결과를 Canvas 페이지에 붙여넣으"
+"세요 (먼저 HTML 편집기 보기로 전환). Canvas는 서버 측에서 붙여넣은 HTML을 정"
+"리하므로 이 미리보기와 동작이 다를 수 있으니 Canvas에서 붙여넣은 결과를 항상 "
+"확인하세요."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody2"
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"<strong>테마 편집</strong>을 사용해 CDN 제공자, 테마 또는 모드를 변경하고, 다"
+"운로드하기 전에 생성된 <code>theme.css</code>/<code>theme.js</code>를 수동으"
+"로 편집할 수 있습니다."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.closeLabel"
+msgid "Close"
+msgstr "닫기"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsDependencies"
+msgid ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsInstallGeneric"
+msgid "2. Függőségek telepítése"
+msgstr "2. Függőségek telepítése"

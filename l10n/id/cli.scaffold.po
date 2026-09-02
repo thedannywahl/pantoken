@@ -1,0 +1,354 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "promptPlatform"
+msgid "Select a platform to scaffold:"
+msgstr "Pilih platform untuk dibuat:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "promptDir"
+msgid "Target directory:"
+msgstr "Direktori target:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "spinnerStart"
+msgid "Scaffolding..."
+msgstr "Membuat kerangka..."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "spinnerStop"
+msgid "Done scaffolding."
+msgstr "Selesai membuat kerangka."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsHeading"
+msgid "Next steps:"
+msgstr "Langkah selanjutnya:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsNav"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsInstall"
+msgid "Install dependencies: {{command}}"
+msgstr "Pasang dependensi: {{command}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsDevServer"
+msgid "Start the dev server (if your template has one)"
+msgstr "Jalankan server pengembangan (jika template Anda memilikinya)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "notesHeading"
+msgid "Note:"
+msgstr "Catatan:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "caveatsHeading"
+msgid "Caveat:"
+msgstr "Peringatan:"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "errorMissingPlatform"
+msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
+msgstr ""
+"Argumen wajib \"platform\" hilang. Diharapkan salah satu: {{platforms}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "cancelled"
+msgid "Cancelled."
+msgstr "Dibatalkan."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpPlatformDescription"
+msgid ""
+"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
+"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr ""
+"Platform untuk dibuat ({{platforms}}; \"html\" adalah alias untuk "
+"\"components\", \"theme-editor\" adalah alias untuk \"canvas-theme-editor\")"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpDirDescription"
+msgid "Target directory (prompts interactively on a TTY if omitted)"
+msgstr ""
+"Direktori target (akan diminta secara interaktif pada TTY jika dihilangkan)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpYesDescription"
+msgid ""
+"Never prompt; error instead of prompting for a missing platform/directory"
+msgstr ""
+"Jangan pernah meminta konfirmasi; keluarkan kesalahan jika platform/"
+"direktori hilang"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "Timpa bahasa tampilan yang terdeteksi otomatis (mis. \"hu\")"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.nextSteps.0"
+msgid "cd {{dir}}"
+msgstr "cd {{dir}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.nextSteps.1"
+msgid "{{install}}"
+msgstr "{{install}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.nextSteps.2"
+msgid "{{dev}}"
+msgstr "{{dev}}"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.notes"
+msgid ""
+"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
+"JavaScript) so pantoken's classes are available on every page."
+msgstr ""
+"Unggah theme.css dan theme.js ke Theme Editor Canvas (Advanced → CSS / "
+"JavaScript) agar kelas pantoken tersedia di setiap halaman."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.caveats"
+msgid ""
+"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
+"the RCE preview in Canvas."
+msgstr ""
+"Canvas menyanitasi HTML yang ditempel di sisi server — selalu periksa konten "
+"yang ditempel dari pratinjau RCE di Canvas."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.pageTitle"
+msgid "RCE template authoring"
+msgstr "Pembuatan template RCE"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.pageDescription"
+msgid ""
+"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr ""
+"Buat template halaman Canvas RCE yang distilasi dengan pantoken, dengan "
+"pratinjau langsung."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.editThemeLabel"
+msgid "Edit theme"
+msgstr "Sunting tema"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpAriaLabel"
+msgid "Help"
+msgstr "Bantuan"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
+msgid "Copy HTML"
+msgstr "Salin HTML"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.editorPaneLabel"
+msgid "Editor"
+msgstr "Editor"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.previewPaneLabel"
+msgid "Preview"
+msgstr "Pratinjau"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.previewFrameTitle"
+msgid "Styled preview"
+msgstr "Pratinjau bergaya"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
+msgid "Fullscreen editor"
+msgstr "Editor layar penuh"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
+msgid "Fullscreen preview"
+msgstr "Pratinjau layar penuh"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
+msgid "Resize editor and preview"
+msgstr "Ubah ukuran editor dan pratinjau"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
+msgid "Stack vertically"
+msgstr "Tumpuk secara vertikal"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
+msgid "Stack side by side"
+msgstr "Tumpuk berdampingan"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.swapPanesLabel"
+msgid "Swap panes"
+msgstr "Tukar panel"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
+msgid "Theme settings"
+msgstr "Pengaturan tema"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.tabConfigLabel"
+msgid "Config"
+msgstr "Konfigurasi"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.tabCssLabel"
+msgid "CSS"
+msgstr "CSS"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.tabJsLabel"
+msgid "JS"
+msgstr "JS"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
+msgid "CDN provider"
+msgstr "Penyedia CDN"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.themeLabel"
+msgid "Theme"
+msgstr "Tema"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.modeLabel"
+msgid "Mode"
+msgstr "Mode"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.downloadCssLabel"
+msgid "Download theme.css"
+msgstr "Unduh theme.css"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.downloadJsLabel"
+msgid "Download theme.js"
+msgstr "Unduh theme.js"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.regenerateLabel"
+msgid "Regenerate from config"
+msgstr "Hasilkan ulang dari konfigurasi"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpModalTitle"
+msgid "How to use this page"
+msgstr "Cara menggunakan halaman ini"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody1"
+msgid ""
+"Pick a starter template, edit it like you would in the Canvas Rich Content "
+"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
+"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
+"HTML server-side — this preview doesn't attempt to replicate that, so always "
+"verify the pasted result in Canvas."
+msgstr ""
+"Pilih template awal, sunting seperti di Canvas Rich Content Editor, lalu "
+"klik <strong>Copy HTML</strong> dan tempel hasilnya ke halaman Canvas "
+"(alihkan ke tampilan editor HTML terlebih dahulu). Canvas menyanitasi HTML "
+"yang ditempel di sisi server — pratinjau ini tidak mencoba meniru itu, jadi "
+"selalu verifikasi hasil yang ditempel di Canvas."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody2"
+msgid ""
+"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
+"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
+"before downloading them."
+msgstr ""
+"Gunakan <strong>Edit theme</strong> untuk mengubah penyedia CDN, tema, atau "
+"mode, dan untuk menyunting <code>theme.css</code>/<code>theme.js</code> yang "
+"dihasilkan sebelum mengunduhnya."
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "scaffold.canvas-theme-editor.i18n.closeLabel"
+msgid "Close"
+msgstr "Tutup"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsDependencies"
+msgid ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
+msgstr ""
+"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"install)"
+
+#: l10n/sources/cli.scaffold.json
+#, no-c-format
+msgctxt "nextStepsInstallGeneric"
+msgid "2. Függőségek telepítése"
+msgstr "2. Függőségek telepítése"

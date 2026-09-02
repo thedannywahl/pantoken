@@ -121,8 +121,8 @@ until every translation does.
 | Surface         | Checker                                | What it covers                                                      |
 | --------------- | -------------------------------------- | ------------------------------------------------------------------- |
 | `ui.strings`    | `@pantoken/web-components#check:drift` | `src/i18n.json` → `l10n/<locale>/ui.strings.po` (via `i18n-engine`) |
-| `cli.scaffold`  | `@pantoken/scaffold#check:drift`       | scaffold CLI strings                                                |
-| `cli.ai`        | `@pantoken/ai#check:drift`             | `@pantoken/ai` CLI strings                                          |
+| `cli.scaffold`  | `@pantoken/scaffold#check:drift`       | `l10n/<locale>/cli.scaffold.po` (via `i18n-engine`)                 |
+| `cli.ai`        | `@pantoken/ai#check:drift`             | `l10n/<locale>/cli.ai.po` (via `i18n-engine`)                       |
 | `docs.guides`   | `docs:check:drift`                     | whole-file `docs/guide/*.md` units                                  |
 | `docs.api`      | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                         |
 | `docs.home`     | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features)  |

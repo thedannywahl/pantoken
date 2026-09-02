@@ -557,9 +557,9 @@ importers:
       '@clack/prompts':
         specifier: 'catalog:'
         version: 1.7.0
-      '@pantoken/translation-adapters':
+      '@pantoken/i18n-engine':
         specifier: workspace:*
-        version: link:../../tools/translation-adapters
+        version: link:../../tools/i18n-engine
       '@types/node':
         specifier: 'catalog:'
         version: 26.4.0
@@ -1599,12 +1599,12 @@ importers:
         specifier: 'catalog:'
         version: 15.0.0
     devDependencies:
+      '@pantoken/i18n-engine':
+        specifier: workspace:*
+        version: link:../../tools/i18n-engine
       '@pantoken/plugin-layouts':
         specifier: workspace:*
         version: link:../../plugins/pantoken/layouts
-      '@pantoken/translation-adapters':
-        specifier: workspace:*
-        version: link:../../tools/translation-adapters
       '@types/node':
         specifier: 'catalog:'
         version: 26.4.0

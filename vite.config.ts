@@ -284,26 +284,23 @@ export default defineConfig({
         cache: false,
       },
       "cli:translate:agy": {
-        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:copilot": {
-        command:
-          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force": {
-        command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force:agy": {
-        command:
-          "vp run @pantoken/scaffold#translate:agy:force && vp run @pantoken/ai#translate:agy:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       "cli:translate:force:copilot": {
-        command:
-          "vp run @pantoken/scaffold#translate:copilot:force && vp run @pantoken/ai#translate:copilot:force",
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
         cache: false,
       },
       // Umbrella tasks for all translation domains.

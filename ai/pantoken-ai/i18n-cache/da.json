@@ -1,9 +1,0 @@
-{
-  "wroteFile": "✓ {{path}}",
-  "helpInitDescription": "Skriv pantokens agentressourcer ind i et repo",
-  "helpInitToolDescription": "Agentværktøj (all|cursor|copilot|windsurf)",
-  "helpInitDirDescription": "Målmappe",
-  "helpScaffoldDescription": "Generer et startprojekt (via @pantoken/scaffold) og installer agentressourcer i det",
-  "helpScaffoldToolDescription": "Agentværktøj (all|cursor|copilot|windsurf)",
-  "helpLangDescription": "Overskriv det automatisk registrerede visningssprog (f.eks. \"hu\")"
-}

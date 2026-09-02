@@ -1,0 +1,47 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitDescription"
+msgid "Write pantoken's agent assets into a repo"
+msgstr "리포지토리에 pantoken의 에이전트 자산을 작성합니다"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "에이전트 도구 (all|cursor|copilot|windsurf)"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitDirDescription"
+msgid "Target directory"
+msgstr "대상 디렉터리"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpScaffoldDescription"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"초기 프로젝트를 생성(@pantoken/scaffold 사용)하고 에이전트 자산을 설치합니다"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpScaffoldToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "에이전트 도구 (all|cursor|copilot|windsurf)"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "자동으로 감지된 표시 언어를 재정의합니다(예: \"hu\")"

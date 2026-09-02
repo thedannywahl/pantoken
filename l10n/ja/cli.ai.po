@@ -1,0 +1,48 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ {{path}}"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitDescription"
+msgid "Write pantoken's agent assets into a repo"
+msgstr "pantoken のエージェント資産をリポジトリに書き込む"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "エージェントツール (all|cursor|copilot|windsurf)"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitDirDescription"
+msgid "Target directory"
+msgstr "対象ディレクトリ"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpScaffoldDescription"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"@pantoken/scaffold を使ってスタータープロジェクトを生成し、エージェント資産を"
+"インストールする"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpScaffoldToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "エージェントツール (all|cursor|copilot|windsurf)"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "自動検出された表示言語を上書きします（例: \"hu\"）"

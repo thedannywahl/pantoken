@@ -32,6 +32,14 @@
     "ui.strings": {
       "kind": "messages",
       "source": "renderers/web-components/src/i18n.json"
+    },
+    "cli.scaffold": {
+      "kind": "messages",
+      "source": "l10n/sources/cli.scaffold.json"
+    },
+    "cli.ai": {
+      "kind": "messages",
+      "source": "l10n/sources/cli.ai.json"
     }
   }
 }

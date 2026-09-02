@@ -1,0 +1,46 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "wroteFile"
+msgid "✓ {{path}}"
+msgstr "✓ 已写入：{{path}}"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitDescription"
+msgid "Write pantoken's agent assets into a repo"
+msgstr "将 pantoken 的代理资产写入仓库"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "代理工具（all|cursor|copilot|windsurf）"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpInitDirDescription"
+msgid "Target directory"
+msgstr "目标目录"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpScaffoldDescription"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr "搭建入门项目（通过 @pantoken/scaffold）并将代理资产安装到其中"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpScaffoldToolDescription"
+msgid "Agent tool (all|cursor|copilot|windsurf)"
+msgstr "代理工具（all|cursor|copilot|windsurf）"
+
+#: l10n/sources/cli.ai.json
+#, no-c-format
+msgctxt "helpLangDescription"
+msgid "Override the auto-detected display language (e.g. \"hu\")"
+msgstr "覆盖自动检测的显示语言（例如：\"hu\"）"

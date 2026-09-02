@@ -88,3 +88,4 @@ export {
 } from "./pipeline.ts";
 export { missingPluralCategories, validateMf2, type Mf2ValidationResult } from "./mf2.ts";
 export { createI18nCommand, runI18nCli } from "./cli.ts";
+export { generateMessageBundles } from "./bundles.ts";

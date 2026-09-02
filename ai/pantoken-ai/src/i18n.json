@@ -1,7 +1,7 @@
 {
   "wroteFile": {
-    "string": "✓ {{path}}",
-    "verbatim": "required"
+    "message": "✓ {{path}}",
+    "translate": "never"
   },
   "helpInitDescription": "Write pantoken's agent assets into a repo",
   "helpInitToolDescription": "Agent tool (all|cursor|copilot|windsurf)",
