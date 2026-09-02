@@ -1,0 +1,1 @@
+banner dark mode secondary/tertiary button color should be the -on-color color (#fff) light mode is correct.
