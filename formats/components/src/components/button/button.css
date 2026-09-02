@@ -1,7 +1,7 @@
 /**
  * @component button
  * @summary An accessible action control, styled from the token palette; primary by default.
- * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. Ghost hover and active derive a low-opacity, slightly-darkened brand wash rather than using the raw hover-background tokens, which would print same-colour-on-same-colour text. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values.
+ * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. `-without-background` hover and active derive a low-opacity, slightly-darkened brand wash rather than using the raw hover-background tokens, which would print same-colour-on-same-colour text. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. The optional `.pfx-button-group` wrapper maps Figma's `.buttonGroup` and owns adjacent button spacing.
  * @selector .pfx-button
  * @modifier -color-primary — (default) the primary action.
  * @modifier -color-secondary — A lower-emphasis secondary action.
@@ -21,7 +21,7 @@
  * @modifier -size-lg — Large.
  * @modifier -shape-square — A square icon button.
  * @modifier -display-block — Full-width block button.
- * @modifier -ghost — Outline (ghost) style: a border in the colour's ghost tokens, no fill.
+ * @modifier -ghost — @deprecated {@link -color-tertiary}
  * @modifier -without-border — Remove the border.
  * @modifier -icon-* — Render a glyph from the icon set before the label (e.g. `-icon-arrow-right`), painted in the button's text colour; pair with `-shape-square`/`-shape-circle` for an icon-only button.
  * @pseudo ::before — The AI glyph, added automatically to AI buttons and masked in the variant's own colour.
@@ -31,9 +31,17 @@
  * @a11y Drive the `-toggle` variant's pressed state with `aria-pressed`, and mark a disabled button with `aria-disabled` (or the native `disabled`).
  * @example
  * ```html
- * <button class="pfx-button">Primary</button>
- * <button class="pfx-button -color-secondary">Secondary</button>
+ * <div class="pfx-button-group">
+ *   <button class="pfx-button">Primary</button>
+ *   <button class="pfx-button -color-secondary">Secondary</button>
+ * </div>
  * ```
+ * @wrapper pfx-button-group
+ * @structure
+ * A group wrapper lays out adjacent buttons with the shared button gap.
+ * .pfx-button-group:opt {
+ *   .pfx-button:one-or-more {}
+ * }
  * @related close-button — The icon-only dismiss button.
  * @demo self:button
  */
@@ -50,7 +58,7 @@
     font-size: var(--instui-component-base-button-medium-font-size);
     font-weight: var(--instui-font-weight-interactive);
     line-height: var(--instui-line-height-standalone-text-base);
-    border: var(--instui-border-width-md) solid transparent;
+    border: var(--instui-border-width-sm) solid transparent;
     border-radius: var(--instui-component-base-button-border-radius);
     cursor: pointer;
     background: var(--instui-color-background-interactive-action-primary-base);
@@ -67,8 +75,9 @@
 
   &:disabled,
   &[aria-disabled="true"] {
-    background: var(--instui-color-background-interactive-action-primary-disabled);
-    color: var(--instui-color-text-interactive-action-primary-disabled);
+    background: var(--instui-component-base-button-primary-disabled-background-color);
+    border-color: var(--instui-component-base-button-primary-disabled-border-color);
+    color: var(--instui-component-base-button-primary-color);
     cursor: not-allowed;
   }
 
@@ -88,20 +97,36 @@
     border-color: var(--instui-color-stroke-interactive-action-primary-active);
   }
 
+  &.-color-primary:disabled,
+  &.-color-primary[aria-disabled="true"] {
+    background: var(--instui-component-base-button-primary-disabled-background-color);
+    border-color: var(--instui-component-base-button-primary-disabled-border-color);
+    color: var(--instui-component-base-button-primary-color);
+  }
+
   &.-color-secondary {
-    background: var(--instui-color-background-interactive-action-secondary-base);
-    color: var(--instui-color-text-interactive-action-secondary-base);
-    border-color: var(--instui-color-stroke-interactive-action-secondary-base);
+    background: var(--instui-component-base-button-secondary-background);
+    color: var(--instui-component-base-button-secondary-color);
+    border-color: var(--instui-component-base-button-secondary-border-color);
   }
 
   &.-color-secondary:hover {
-    background: var(--instui-color-background-interactive-action-secondary-hover);
-    border-color: var(--instui-color-stroke-interactive-action-secondary-hover);
+    background: var(--instui-component-base-button-secondary-hover-background);
+    border-color: var(--instui-component-base-button-secondary-hover-border-color);
+    color: var(--instui-component-base-button-secondary-hover-text-color);
   }
 
   &.-color-secondary:active {
-    background: var(--instui-color-background-interactive-action-secondary-active);
-    border-color: var(--instui-color-stroke-interactive-action-secondary-active);
+    background: var(--instui-component-base-button-secondary-active-background);
+    border-color: var(--instui-component-base-button-secondary-active-border-color);
+    color: var(--instui-component-base-button-secondary-active-text-color);
+  }
+
+  &.-color-secondary:disabled,
+  &.-color-secondary[aria-disabled="true"] {
+    background: var(--instui-component-base-button-secondary-disabled-background-color);
+    border-color: var(--instui-component-base-button-secondary-disabled-border-color);
+    color: var(--instui-component-base-button-secondary-disabled-text-color);
   }
 
   &.-color-danger {
@@ -126,18 +151,34 @@
     background: var(--instui-color-background-interactive-action-success-hover);
   }
 
-  &.-color-tertiary {
+  &.-color-tertiary,
+  &.-ghost {
     background: transparent;
-    color: var(--instui-color-text-interactive-action-tertiary-base);
-    border-color: var(--instui-color-stroke-interactive-action-tertiary-base);
+    color: var(--instui-component-base-button-primary-ghost-color);
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
   }
 
-  &.-color-tertiary:hover {
-    background: var(--instui-color-background-interactive-action-tertiary-hover);
+  &.-color-tertiary:hover,
+  &.-ghost:hover {
+    background: var(--instui-component-base-button-primary-ghost-hover-background);
+    border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+    color: var(--instui-component-base-button-tertiary-hover-text-color);
   }
 
-  &.-color-tertiary:active {
-    background: var(--instui-color-background-interactive-action-tertiary-active);
+  &.-color-tertiary:active,
+  &.-ghost:active {
+    background: var(--instui-component-base-button-primary-ghost-active-background);
+    border-color: var(--instui-component-base-button-tertiary-active-border-color);
+    color: var(--instui-component-base-button-tertiary-active-text-color);
+  }
+
+  &.-color-tertiary:disabled,
+  &.-color-tertiary[aria-disabled="true"],
+  &.-ghost:disabled,
+  &.-ghost[aria-disabled="true"] {
+    background: transparent;
+    border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+    color: var(--instui-component-base-button-tertiary-disabled-text-color);
   }
 
   &.-color-primary-inverse {
@@ -166,54 +207,57 @@
    */
   &.-on-color:not([class*="-color-"]),
   &.-color-primary.-on-color {
-    background: var(--instui-color-background-interactive-action-primary-on-color-base);
-    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);
-    color: var(--instui-color-text-interactive-action-primary-on-color-base);
+    background: var(--instui-component-base-button-primary-inverse-background);
+    border-color: var(--instui-component-base-button-primary-inverse-border-color);
+    color: var(--instui-component-base-button-primary-inverse-color);
   }
 
   &.-on-color:not([class*="-color-"]):hover,
   &.-color-primary.-on-color:hover {
-    background: var(--instui-color-background-interactive-action-primary-on-color-hover);
-    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-hover);
-    color: var(--instui-color-text-interactive-action-primary-on-color-hover);
+    background: var(--instui-component-base-button-primary-inverse-hover-background);
+    border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+    color: var(--instui-component-base-button-primary-on-color-hover-text-color);
   }
 
   &.-on-color:not([class*="-color-"]):active,
   &.-color-primary.-on-color:active {
-    background: var(--instui-color-background-interactive-action-primary-on-color-active);
-    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-active);
-    color: var(--instui-color-text-interactive-action-primary-on-color-active);
+    background: var(--instui-component-base-button-primary-inverse-active-background);
+    border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+    color: var(--instui-component-base-button-primary-on-color-active-text-color);
   }
 
   &.-on-color:not([class*="-color-"]):disabled,
   &.-on-color:not([class*="-color-"])[aria-disabled="true"],
   &.-color-primary.-on-color:disabled,
   &.-color-primary.-on-color[aria-disabled="true"] {
-    background: var(--instui-color-background-interactive-action-primary-on-color-disabled);
-    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-disabled);
-    color: var(--instui-color-text-interactive-action-primary-on-color-disabled);
+    background: var(--instui-component-base-button-primary-on-color-disabled-background-color);
+    border-color: var(--instui-component-base-button-primary-on-color-disabled-border-color);
+    color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
   }
 
   &.-color-secondary.-on-color {
     background: transparent;
-    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-base);
-    color: var(--instui-color-text-interactive-action-secondary-on-color-base);
+    border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
+    color: var(--instui-component-base-button-primary-inverse-ghost-color);
   }
 
   &.-color-secondary.-on-color:hover {
-    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-hover);
-    color: var(--instui-color-text-interactive-action-secondary-on-color-hover);
+    background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
+    border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+    color: var(--instui-component-base-button-secondary-on-color-hover-text-color);
   }
 
   &.-color-secondary.-on-color:active {
-    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-active);
-    color: var(--instui-color-text-interactive-action-secondary-on-color-active);
+    background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
+    border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
+    color: var(--instui-component-base-button-secondary-on-color-active-text-color);
   }
 
   &.-color-secondary.-on-color:disabled,
   &.-color-secondary.-on-color[aria-disabled="true"] {
-    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-disabled);
-    color: var(--instui-color-text-interactive-action-secondary-on-color-disabled);
+    background: transparent;
+    border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
+    color: var(--instui-component-base-button-secondary-on-color-disabled-text-color);
   }
 
   /*
@@ -271,6 +315,13 @@
           var(--instui-color-stroke-interactive-action-ai-bottom-gradient-active) 100%
         )
         border-box;
+  }
+
+  &.-color-ai:disabled,
+  &.-color-ai[aria-disabled="true"] {
+    color: var(--instui-component-base-button-ai-disabled-text-color);
+    border-color: var(--instui-component-base-button-ai-disabled-border-color);
+    background: var(--instui-component-base-button-ai-disabled-background-color);
   }
 
   /*
@@ -348,6 +399,14 @@
     );
   }
 
+  &.-color-ai-secondary:disabled,
+  &.-color-ai-secondary[aria-disabled="true"] {
+    background: transparent;
+    border-color: var(--instui-component-base-button-ai-disabled-border-color);
+    color: var(--instui-component-base-button-ai-disabled-text-color);
+    -webkit-text-fill-color: currentColor;
+  }
+
   /* The ai glyph's background; the mask itself is appended in index.ts (needs the shared AI_ICON_MASK). */
   &.-color-ai::before {
     background: var(--instui-color-text-interactive-action-ai-base);
@@ -361,21 +420,21 @@
     );
   }
 
+  &.-color-ai:disabled::before,
+  &.-color-ai[aria-disabled="true"]::before,
+  &.-color-ai-secondary:disabled::before,
+  &.-color-ai-secondary[aria-disabled="true"]::before {
+    background: var(--instui-component-icon-action-ai-disabled-color);
+  }
+
   /*
-   * --ghost is InstUI's withBackground={false}: an outline button in the colour's ghost tokens
-   * (transparent fill, coloured border + text). Defaults to primary; compose with --secondary for the
-   * secondary ghost.
+   * --without-background is InstUI's withBackground={false}: a transparent button in the
+   * primary ghost tokens. `-ghost` is a deprecated alias of `-color-tertiary` above.
    */
   &.-without-background {
     background: var(--instui-component-base-button-primary-ghost-background);
     color: var(--instui-component-base-button-primary-ghost-color);
     border-color: var(--instui-component-base-button-primary-ghost-border-color);
-  }
-
-  &.-color-secondary.-ghost {
-    background: var(--instui-component-base-button-secondary-ghost-background);
-    color: var(--instui-component-base-button-secondary-ghost-color);
-    border-color: var(--instui-component-base-button-secondary-ghost-border-color);
   }
 
   /* --block is InstUI's display="block": a full-width button. */
@@ -447,4 +506,11 @@
   &.-without-border {
     border-style: none;
   }
+}
+
+.pfx-button-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
 }
