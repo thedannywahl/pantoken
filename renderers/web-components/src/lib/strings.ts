@@ -32,10 +32,9 @@ export const ENGLISH_STRINGS: WebComponentStrings = {
   // @pantoken/i18n-engine's parseMessageSource) — flatten inline rather than importing that
   // Node-only package into this browser-shipped module.
   ...(Object.fromEntries(
-    Object.entries(englishBase).map(([key, value]) => [
-      key,
-      typeof value === "string" ? value : value.message,
-    ]),
+    Object.entries(englishBase)
+      .filter(([key]) => key !== "$schema")
+      .map(([key, value]) => [key, typeof value === "string" ? value : value.message]),
   ) as Omit<WebComponentStrings, "weekdays">),
   // Weekday names are always derived at runtime via Intl.DateTimeFormat — not in the JSON.
   weekdays: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
