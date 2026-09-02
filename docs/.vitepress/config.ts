@@ -253,6 +253,8 @@ const orchestrator = workspaceOrchestrator({
 
 const localeEntries = Object.entries(LOCALES) as [DocsLocale, (typeof LOCALES)[DocsLocale]][];
 
+const rootLocaleOnly = process.env.DOCS_ROOT_LOCALE_ONLY === "1";
+
 const loadSidebar = (relativePath: string): DefaultTheme.SidebarItem[] => {
   const sidebarPath = fileURLToPath(new URL(relativePath, import.meta.url));
   return existsSync(sidebarPath)
@@ -581,7 +583,12 @@ export default defineConfig({
   lastUpdated: true,
   sitemap: { hostname },
   // Only index.md belongs in the public site at the docs root; all others are repo-internal.
-  srcExclude: ["CHANGELOG.md", "compatibility.md", "engineering-log.md"],
+  srcExclude: [
+    "CHANGELOG.md",
+    "compatibility.md",
+    "engineering-log.md",
+    ...(rootLocaleOnly ? NON_ROOT_LOCALES.map((locale) => `${locale}/api/**`) : []),
+  ],
   // The generated API pages cross-link heavily; don't fail the build on a link TypeDoc emitted.
   ignoreDeadLinks: true,
   // Treat `instui-*` tags as custom elements, not Vue components — so the web-components API pages can
