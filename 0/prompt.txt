@@ -1,0 +1,127 @@
+I've been trying to chase down some downstream visual issues and have finally traced it back to the fact that secondary buttons in formats/components aren't using the base-button-secondary styles.
+
+We need a comprehensive rewrite - and can remove known-syntax-issues related to secondary buttons.
+
+Then the tertiary button according to the upstream figma design (but dark mode isn't documented)
+* color: baseButton/primaryGhostColor | #1D354F
+* border-color: baseButton/primaryGhostBorderColor | #1D354F66
+* background-color: transparent
+hover
+* color: baseButton/tertiaryHoverTextColor | #1D354F
+* border-color: baseButton/tertiaryHoverBorderColor | #1D354F33
+* background: baseButton/primaryGhostHoverBackground | #1D354F1A
+active
+* color: baseButton/tertiaryActiveTextColor | #1D354F
+* border: baseButton/tertiaryActiveBorderColor | #1D354F4D
+* background: baseButton/primaryGhostActiveBackground | #1D354F33
+
+Primary -on-color: (no dark mode)
+* color: baseButton/primaryInverseColor | #213D5B
+* background: baseButton/primaryInverseBackground | #FFFFFF
+* border: baseButton/primaryInverseBorderColor | #FFFFFF
+hover:
+* color: baseButton/primaryOnColorHoverTextColor | #213D5B
+background: baseButton/primaryInverseHoverBackground | #EEF4FD
+border: baseButton/primaryOnColorHoverBorderColor | #D5E2F6
+active:
+* color: baseButton/primaryOnColorActiveTextColor | #213D5B
+* background: baseButton/primaryInverseActiveBackground | #E2EAF7
+* border: baseButton/primaryOnColorActiveBorderColor | #B6CCEA
+
+secondary -on-color (no dark mode):
+* color: baseButton/primaryInverseGhostColor | #FFFFFF
+* background: transparent
+* border: baseButton/primaryInverseGhostBorderColor | #FFFFFF
+hover: color: baseButton/secondaryOnColorHoverTextColor | #FFFFFF
+background: baseButton/primaryInverseGhostHoverBackground | #FFFFFF1A
+border: baseButton/primaryOnColorHoverBorderColor | #D5E2F6
+active:
+* color: baseButton/secondaryOnColorActiveTextColor
+* background: baseButton/primaryInverseGhostActiveBackground | #FFFFFF1A
+* border: baseButton/secondaryOnColorActiveBorderColor | #B6CCEA
+
+all borders are 1px width on all buttons on all states.
+
+---
+
+Read-only discovery for a planning task in /Users/dwahl/Scripts/pantoken. First follow repo guidance: run `entire graph search --repo . --profile full --query "secondary buttons in formats/components should use base-button-secondary tokens; tertiary and on-color button states need token rewrites"` if terminal tools are available, then inspect the top relevant source. Goal: map the implementation plan for rewriting button CSS/token usage, removing known-syntax-issues entries for secondary buttons, and updating tests/docs/demos if needed. Focus on: formats/components button source and tests, token generation path and known-syntax-issues handling, generated CSS expectations, Pendo button CSS if it shares the same tokens, docs/demo files for button variants, validation commands in this repo. Return concise findings with exact files, key symbols/functions/patterns, and likely verification commands. Do not edit files.
+
+---
+
+disabled states:
+primary:
+* color: baseButton/primaryColor | #FFFFFF
+* background: baseButton/primaryDisabledBackgroundColor | #DFE1E3
+* border: baseButton/primaryDisabledBorderColor | #DFE1E3
+secondary:
+* color: baseButton/secondaryDisabledTextColor | #9EA6AD
+* background: baseButton/secondaryDisabledBackgroundColor | #DFE1E3
+* border: baseButton/secondaryDisabledBorderColor | #DFE1E3
+tertiary:
+* color: baseButton/tertiaryDisabledTextColor | #AAB0B5
+* background: transparent
+* border: baseButton/tertiaryDisabledBorderColor | #C7CACD
+primary -on-color
+* color: baseButton/primaryOnColorDisabledTextColor | #4A5B68
+* background: baseButton/primaryOnColorDisabledBackgroundColor | #8D959F
+* border: baseButton/primaryOnColorDisabledBorderColor | #8D959F
+secondary -on-color
+* color: baseButton/secondaryOnColorDisabledTextColor | #9EA6AD
+* background: transparent
+* border-color: baseButton/secondaryOnColorDisabledBorderColor | #8D959F
+
+---
+
+-without-background and -without-border are still valid modifiers, deprecate -ghost and point it to -color-tertiary. -color-primary-inverse should still be deprecated and point to -on-color modifier.
+
+another thing that might not be in there- disabled ai-primary and ai-secondary button icon colors should be:
+icon/actionAiDisabledColor | #9EA6AD but the same glyph.
+
+---
+
+buttonGroups (refferenced as .buttonGroup in figma) should use sharedTokens/spacing/gap/buttons | 12px
+
+---
+
+I'm thinking we should treat buttonGroup as an optional wrapper around buttons in the cssdoc for the button component.
+
+---
+
+the wrapper is how we should apply the gap in the banner and in the pendo button spacing.
+
+---
+
+the banner is in custom-components. the style currently has a `+ button` selector but we should update the styles to `button-group` and update the example to use a button group.
+
+---
+
+sibbling buttons in the banner are kind of custom right now, let's change them to be styled like -color-tertiary. so the first button in a button group (in a banner) should be styles like -color-primary.-on-color and subsequent buttons should be styled like -color-secondary.-on-color BUT with the -color-primary.-on-color text color.  Still maintain the rules where if a user specifies a different -color-* modifier on the buttons in the button group, it takes precedence.
+
+---
+
+Start implementation
+
+---
+
+.pfx-button-group doesn't get documented in banner, it becomes the optional wrapper in button.  the `@component button` reference in banner means optionally a button-group.
+
+---
+
+the ai variants aren't rendering their glyph:
+http://localhost:5173/api/css/button
+
+---
+
+okay, good now, go back to the secondary button looking at the hex colors I posted and add them to the known-syntax-issues for light-mode and keep the secondary-button values for dark mode. the blue values stored in the tokens are not the current ones in figma, and will liekly get resolved soon upstream, but until them we'll adopt them.
+
+---
+
+now do the same for tertiary.
+
+---
+
+tertiary dark hover background and active background is solid white with solid white text, let's add it to the known issues and use the secondary-on-color background color for those states.  light mode is fine.
+
+---
+
+incremental conventional commits on your changes and push.
