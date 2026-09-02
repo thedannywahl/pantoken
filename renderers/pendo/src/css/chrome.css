@@ -75,7 +75,8 @@ hr {
   inset-inline: auto var(--instui-component-shared-tokens-spacing-general-space-xs);
   inset-block-start: var(--instui-component-shared-tokens-spacing-general-space-xs);
   font-size: 0;
-  color: var(--instui-component-text-base-color);
+  color: var(--instui-component-icon-base-color);
+  cursor: pointer;
 
   &::before {
     content: "";
@@ -87,11 +88,17 @@ hr {
   }
 
   &:hover {
-    background-color: var(--instui-color-background-interactive-action-tertiary-hover);
+    background-color: var(--instui-component-base-button-primary-ghost-hover-background);
   }
 
   &:active {
-    background-color: var(--instui-color-background-interactive-action-tertiary-active);
+    background-color: var(--instui-component-base-button-primary-ghost-active-background);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    color: var(--instui-component-icon-disabled-base-color);
+    cursor: not-allowed;
   }
 }
 

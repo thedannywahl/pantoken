@@ -54,9 +54,14 @@ test("close and standard button interactions use the canonical component tokens"
   expect(chromeCss).toContain("justify-content: center");
   expect(chromeCss).toContain("mask: var(--instui-icon-x) center / contain no-repeat");
   expect(chromeCss).toContain("transform: translateY(2px)");
-  expect(chromeCss).toContain("--instui-color-background-interactive-action-tertiary-hover");
-  expect(chromeCss).toContain("--instui-color-background-interactive-action-tertiary-active");
-  expect(chromeCss).not.toContain("primary-ghost-hover-background");
+  expect(chromeCss).toContain("color: var(--instui-component-icon-base-color)");
+  expect(chromeCss).toContain("var(--instui-component-icon-disabled-base-color)");
+  expect(chromeCss).toContain("var(--instui-component-base-button-primary-ghost-hover-background)");
+  expect(chromeCss).toContain(
+    "var(--instui-component-base-button-primary-ghost-active-background)",
+  );
+  expect(chromeCss).not.toContain("tertiary-hover");
+  expect(chromeCss).not.toContain("tertiary-active");
   expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-hover");
   expect(buttonCss).toContain("--instui-color-stroke-interactive-action-primary-active");
   expect(buttonCss).toContain("--instui-component-base-button-secondary-hover-background");
