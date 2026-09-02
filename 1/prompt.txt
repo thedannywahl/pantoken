@@ -1,0 +1,153 @@
+[Terminal 57f74995-05e4-46ad-a5bb-00158ca4e06c notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on cli ≡ via  26.8.1 
+➜  gh run watch 33570569034 --repo thedannywahl/pantoken --interval 30 2>&1 | tail -150
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ coverage in 3m21s (ID 100063725581)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Compute upload flags
+  ✓ Coverage (full on main, scoped to changed packages on PRs)
+  ✓ Upload coverage to Codecov
+  ✓ Upload test results to Codecov
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ benchmarks in 4m12s (ID 100063725586)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Run benchmarks
+  ✓ Post Run benchmarks
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ publint in 3m19s (ID 100063725589)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and publint (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ typecheck in 2m6s (ID 100063725620)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Typecheck
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ fallow in 2m38s (ID 100063725645)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Fallow gate (dead-code error, grade-B health floor, dupes advisory)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ attw in 6m13s (ID 100063725650)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Resolve changed packages
+  ✓ Build and attw (scoped to changed packages)
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ lint in 3m25s (ID 100063725675)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Lint CSS
+  ✓ Lint JS
+  ✓ Lint TSDoc
+  ✓ Validate generated output
+  ✓ Lint Markdown
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ test in 3m25s (ID 100063725695)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  ✓ Test all packages
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+✓ i18n-drift in 45s (ID 100063725718)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Check i18n bundle drift
+  ✓ Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+X docs in 39m54s (ID 100063725741)
+  ✓ Set up job
+  ✓ Checkout code
+  ✓ Set up Vite+
+  ✓ Restore vp task cache
+  ✓ Materialize generated output
+  X Build docs (locale parity + drift + VitePress build)
+  - Add custom domain file
+  - Upload built docs site
+  - Post Set up Vite+
+  ✓ Post Checkout code
+  ✓ Complete job
+- upstream-drift (ID 100063727021)
+X ci-gate in 3s (ID 100072568052)
+  ✓ Set up job
+  X Verify no CI job failed
+  ✓ Complete job
+
+ANNOTATIONS
+! Commit 11d75a16d7a3a0a1cd2fa984666714d062deb829 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#29
+
+! Commit 4e6833c56647153d58e2e487d46077fb6ecc9d1a has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#28
+
+! Commit ad35027f57ca11a44f97519c1d9e7262e20c3b36 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#27
+
+! Commit 6676a3fd01186ca28022f567d819201d490504df has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#26
+
+! Commit 99719052be9f31fe7838f08a0384c2844c134c8d has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#25
+
+! Commit 73e0cdc568e1471f16519728edfcf9b924c655a0 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#24
+
+! Commit 619850ad9e584a306ebc6fc2ad97666a6ce54e99 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#23
+
+! Commit f124bfca25156fbf82ab7e248792ee13f48c1372 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#22
+
+! Commit 4952cbf1a56bc47334be08c8aa8651103b672e67 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#21
+
+! Commit 1308370fec873de4495158ad90c77f99e1f4d546 has no linked Entire checkpoint (missing Entire-Checkpoint trailer)
+entire-checkpoint-linkage: .github#20
+
+X Process completed with exit code 1.
+ci-gate: .github#154
