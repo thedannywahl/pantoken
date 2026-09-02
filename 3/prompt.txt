@@ -1,0 +1,13 @@
+we need to temporarily disable the docs gate in CI until the new translation engine lands.
+
+---
+
+Medium thoroughness, read-only exploration. In /Users/dwahl/Scripts/pantoken, investigate how the docs gate is wired into CI and identify the smallest precise change to temporarily disable it until a translation engine lands. Read relevant instructions including .entire/graph-agent.md, use Entire/git provenance where available, inspect .github workflows and scripts/config invoked by CI. Return: exact files and symbols/lines to change, whether disabling job vs step vs condition is safest, impacts on dependent jobs/required checks, existing patterns for temporary skips, focused validation commands, and any ambiguity that needs a user decision. Do not edit files.
+
+---
+
+Start implementation
+
+---
+
+update the plan in /.claude/plans to include re-adding the drift check in CI once that work's complete.

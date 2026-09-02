@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1G14MF015N7F12VF07JNBYP",
   "strategy": "manual-commit",
   "branch": "cli",
-  "checkpoints_count": 3,
+  "checkpoints_count": 4,
   "files_touched": [
     "docs/fr/api/bundlers/next/src/interfaces/WithPantokenOptions.md",
     "docs/fr/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md",
@@ -23832,6 +23832,13 @@
       "compact_transcript": "/2/transcript.jsonl",
       "content_hash": "/2/content_hash.txt",
       "prompt": ""
+    },
+    {
+      "metadata": "/3/metadata.json",
+      "transcript": "/3/full.jsonl",
+      "compact_transcript": "/3/transcript.jsonl",
+      "content_hash": "/3/content_hash.txt",
+      "prompt": "/3/prompt.txt"
     }
   ],
   "token_usage": {
