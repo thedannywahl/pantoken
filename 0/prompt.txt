@@ -1,0 +1,9 @@
+now where are we on normalizing every package to have a single i18n.json and those getting converted to po/pot files in our translation pipeline?  and havign them all updated to the appropriate format - actually they should probably have a schema too.
+
+---
+
+continue with the next steps.
+
+---
+
+okay do those next steps.
