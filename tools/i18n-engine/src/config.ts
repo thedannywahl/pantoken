@@ -120,6 +120,7 @@ export interface MessagesSpaceConfig {
 export interface StructuralSpaceConfig {
   kind: "structural";
   drift: "block";
+  source?: string;
   locales?: SpaceLocaleScope;
 }
 
@@ -194,16 +195,28 @@ function mergeDefaults<T>(base: T, override: unknown): T {
   return merged as T;
 }
 
-/** Parse and default-fill a config object already read from JSON (exported for in-memory testing). */
-export function parseConfig(raw: unknown): I18nConfig {
-  if (!isPlainObject(raw)) throw new InvalidConfigError("root must be an object");
+function validateConfigRoot(raw: Record<string, unknown>): void {
   if (typeof raw.source !== "string" || raw.source.length === 0) {
     throw new InvalidConfigError('"source" must be a non-empty string');
   }
   if (!isPlainObject(raw.spaces)) throw new InvalidConfigError('"spaces" must be an object');
+}
+
+function validateSpaces(spaces: Readonly<Record<string, SpaceConfig>>): void {
+  for (const [name, space] of Object.entries(spaces)) {
+    if (!isPlainObject(space) || typeof (space as { kind?: unknown }).kind !== "string") {
+      throw new InvalidConfigError(`space "${name}" must have a "kind"`);
+    }
+  }
+}
+
+/** Parse and default-fill a config object already read from JSON (exported for in-memory testing). */
+export function parseConfig(raw: unknown): I18nConfig {
+  if (!isPlainObject(raw)) throw new InvalidConfigError("root must be an object");
+  validateConfigRoot(raw);
 
   const merged = mergeDefaults(CONFIG_DEFAULTS, raw) as I18nConfig;
-  merged.source = raw.source;
+  merged.source = raw.source as string;
   merged.spaces = raw.spaces as Record<string, SpaceConfig>;
   // `tiers`' key order IS its precedence order, so a provided map replaces the default wholesale
   // rather than deep-merging (which would silently interleave it with the default tier names).
@@ -211,11 +224,7 @@ export function parseConfig(raw: unknown): I18nConfig {
     merged.locales.tiers = raw.locales.tiers as LocalesConfig["tiers"];
   }
 
-  for (const [name, space] of Object.entries(merged.spaces)) {
-    if (!isPlainObject(space) || typeof (space as { kind?: unknown }).kind !== "string") {
-      throw new InvalidConfigError(`space "${name}" must have a "kind"`);
-    }
-  }
+  validateSpaces(merged.spaces);
   return merged;
 }
 

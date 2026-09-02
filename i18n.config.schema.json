@@ -173,6 +173,7 @@
       "properties": {
         "kind": { "const": "structural" },
         "drift": { "const": "block" },
+        "source": { "type": "string", "minLength": 1 },
         "locales": { "$ref": "#/$defs/localeScope" }
       }
     },

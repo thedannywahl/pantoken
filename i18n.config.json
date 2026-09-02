@@ -55,6 +55,40 @@
     "cli.ai": {
       "kind": "messages",
       "source": "ai/pantoken-ai/src/i18n.json"
+    },
+    "docs.api": {
+      "kind": "content",
+      "include": ["docs/api/**/*.md"],
+      "render": "docs/{locale}/api/{path}",
+      "transientRender": true,
+      "segment": "block"
+    },
+    "docs.home": {
+      "kind": "content",
+      "include": ["docs/index.md"],
+      "render": "docs/{locale}/index.md",
+      "transientRender": false,
+      "segment": "frontmatter"
+    },
+    "docs.chrome": {
+      "kind": "structural",
+      "drift": "block",
+      "source": "docs/.vitepress/i18n.ts"
+    },
+    "docs.glossary": {
+      "kind": "structural",
+      "drift": "block",
+      "source": "docs/scripts/glossary.ts"
+    },
+    "docs.demos": {
+      "kind": "structural",
+      "drift": "block",
+      "source": "docs/demos"
+    },
+    "docs.parity": {
+      "kind": "structural",
+      "drift": "block",
+      "source": "docs"
     }
   }
 }
