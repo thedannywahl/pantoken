@@ -2,7 +2,14 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { expect, test } from "vite-plus/test";
 import { danglingReferences } from "@pantoken/utils";
-import { buttonCss, chromeCss, containerCss, textCss } from "../generated/embedded.ts";
+import {
+  buttonCss,
+  cardCss,
+  chromeCss,
+  containerCss,
+  inputsCss,
+  textCss,
+} from "../generated/embedded.ts";
 import { buildPendoCss } from "../src/build.ts";
 import { COMPONENTS, LAYER_ORDER, PENDO_VARS_CSS } from "../src/layers.ts";
 
@@ -52,8 +59,14 @@ test("close and standard button interactions use the canonical component tokens"
   expect(chromeCss).not.toContain("primary-ghost-hover-background");
   expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-hover");
   expect(buttonCss).toContain("--instui-color-stroke-interactive-action-primary-active");
-  expect(buttonCss).toContain("--instui-color-background-interactive-action-secondary-hover");
-  expect(buttonCss).toContain("--instui-color-stroke-interactive-action-secondary-active");
+  expect(buttonCss).toContain("--instui-component-base-button-secondary-hover-background");
+  expect(buttonCss).toContain("--instui-component-base-button-secondary-active-border-color");
+  expect(buttonCss).toContain("border-width: var(--instui-border-width-sm)");
+  expect(buttonCss).toContain("margin: var(--pendo-space-0)");
+  expect(buttonCss).not.toContain("gap-button-content-md");
+  expect(cardCss).toContain(".pendo-mock-flexbox-row:has(._pendo-button)");
+  expect(cardCss).toContain("--instui-component-shared-tokens-spacing-gap-buttons");
+  expect(inputsCss).toContain("--instui-component-shared-tokens-spacing-gap-buttons");
 });
 
 test("scope + important are on by default and toggle off", () => {
@@ -172,14 +185,22 @@ test("popover cards retain their border and small padding on every edge", () => 
 
 test("banner buttons map Pendo variants without restyling the close button", () => {
   expect(buttonCss).toContain("._pendo-button-primaryButton, ._pendo-button-custom");
-  expect(buttonCss).toContain("--instui-color-background-interactive-action-primary-on-color-base");
+  expect(buttonCss).toContain("--instui-component-base-button-primary-inverse-background");
+  expect(buttonCss).toContain("--instui-component-base-button-primary-on-color-hover-text-color");
   expect(buttonCss).toContain("._pendo-button-secondaryButton, ._pendo-button-tertiaryButton");
-  expect(buttonCss).toContain("background-color: transparent");
+  expect(buttonCss).toContain("background: transparent");
   expect(buttonCss).toContain(
-    "border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);",
+    "border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);",
+  );
+  expect(buttonCss).toContain("color: var(--instui-component-base-button-primary-inverse-color);");
+  expect(buttonCss).toContain(
+    "--instui-component-base-button-primary-inverse-ghost-hover-background",
   );
   expect(buttonCss).toContain(
-    "color: var(--instui-color-stroke-interactive-action-primary-on-color-base);",
+    "--instui-component-base-button-secondary-on-color-active-border-color",
+  );
+  expect(buttonCss).toContain(
+    "--instui-component-base-button-secondary-on-color-disabled-border-color",
   );
   expect(buttonCss).toContain('[aria-disabled="true"]');
   expect(buttonCss).not.toContain("._pendo-close-guide");

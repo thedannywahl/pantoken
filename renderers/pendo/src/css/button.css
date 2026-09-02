@@ -4,7 +4,7 @@
  * @summary Styles `._pendo-button` elements as InstUI BaseButton (small size).
  * @remarks Applies to all three layout types (tooltipBlank, lightboxBlank, surveys).
  *   In surveys, a lone primary button in its container is centred via a `:has()` rule.
- *   The last button in a `.pendo-mock-flexbox-element` row loses its trailing margin automatically.
+ *   Adjacent button spacing belongs to the owning row wrapper, using the shared button-group gap.
  * @part ._pendo-button — Shared button base; always small-height.
  * @part ._pendo-button-primaryButton — Primary (filled) variant.
  * @part ._pendo-button-custom — Treated as primary; used when the guide author sets a custom colour.
@@ -20,7 +20,7 @@
     min-height: var(--instui-component-base-button-small-height);
     padding: var(--instui-component-base-button-padding-vertical)
       var(--instui-component-base-button-small-padding-horizontal);
-    border-width: var(--instui-component-base-button-border-width);
+    border-width: var(--instui-border-width-sm);
     border-radius: var(--instui-component-base-button-border-radius);
     border-style: var(--instui-component-base-button-border-style);
     font-family: var(--instui-component-base-button-font-family);
@@ -29,12 +29,7 @@
     line-height: var(--instui-component-base-button-line-height);
     letter-spacing: var(--instui-component-base-button-letter-spacing);
     cursor: pointer;
-    margin: var(--pendo-space-0) var(--instui-component-base-button-gap-button-content-md)
-      var(--pendo-space-0) var(--pendo-space-0);
-
-    .pendo-mock-flexbox-element:last-child > & {
-      margin-right: var(--pendo-space-0);
-    }
+    margin: var(--pendo-space-0);
   }
 
   /* Primary/Custom button variant */
@@ -64,18 +59,20 @@
 
   /* Secondary button variant */
   ._pendo-button-secondaryButton {
-    background: var(--instui-color-background-interactive-action-secondary-base);
-    border-color: var(--instui-color-stroke-interactive-action-secondary-base);
-    color: var(--instui-color-text-interactive-action-secondary-base);
+    background: var(--instui-component-base-button-secondary-background);
+    border-color: var(--instui-component-base-button-secondary-border-color);
+    color: var(--instui-component-base-button-secondary-color);
 
     &:hover {
-      background: var(--instui-color-background-interactive-action-secondary-hover);
-      border-color: var(--instui-color-stroke-interactive-action-secondary-hover);
+      background: var(--instui-component-base-button-secondary-hover-background);
+      border-color: var(--instui-component-base-button-secondary-hover-border-color);
+      color: var(--instui-component-base-button-secondary-hover-text-color);
     }
 
     &:active {
-      background: var(--instui-color-background-interactive-action-secondary-active);
-      border-color: var(--instui-color-stroke-interactive-action-secondary-active);
+      background: var(--instui-component-base-button-secondary-active-background);
+      border-color: var(--instui-component-base-button-secondary-active-border-color);
+      color: var(--instui-component-base-button-secondary-active-text-color);
     }
 
     &:disabled {
@@ -89,17 +86,17 @@
   /* Tertiary button variant */
   ._pendo-button-tertiaryButton {
     background: transparent;
-    border-color: var(--instui-color-stroke-interactive-action-tertiary-base);
-    color: var(--instui-color-text-interactive-action-tertiary-base);
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
+    color: var(--instui-component-base-button-primary-ghost-color);
 
     &:hover {
-      background: var(--instui-color-background-interactive-action-tertiary-hover);
+      background: var(--instui-component-base-button-primary-ghost-hover-background);
       border-color: var(--instui-component-base-button-tertiary-hover-border-color);
       color: var(--instui-component-base-button-tertiary-hover-text-color);
     }
 
     &:active {
-      background: var(--instui-color-background-interactive-action-tertiary-active);
+      background: var(--instui-component-base-button-primary-ghost-active-background);
       border-color: var(--instui-component-base-button-tertiary-active-border-color);
       color: var(--instui-component-base-button-tertiary-active-text-color);
     }
@@ -125,60 +122,57 @@
 /* Banner buttons use the on-colour treatment from the InstUI banner component. */
 :is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
   :is(._pendo-button-primaryButton, ._pendo-button-custom) {
-    background: var(--instui-color-background-interactive-action-primary-on-color-base);
-    border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);
-    color: var(--instui-color-text-interactive-action-primary-on-color-base);
+    background: var(--instui-component-base-button-primary-inverse-background);
+    border-color: var(--instui-component-base-button-primary-inverse-border-color);
+    color: var(--instui-component-base-button-primary-inverse-color);
 
     &:hover {
-      background: var(--instui-color-background-interactive-action-primary-on-color-hover);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-hover);
-      color: var(--instui-color-text-interactive-action-primary-on-color-hover);
+      background: var(--instui-component-base-button-primary-inverse-hover-background);
+      border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
     }
 
     &:active {
-      background: var(--instui-color-background-interactive-action-primary-on-color-active);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-active);
-      color: var(--instui-color-text-interactive-action-primary-on-color-active);
+      background: var(--instui-component-base-button-primary-inverse-active-background);
+      border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+      color: var(--instui-component-base-button-primary-on-color-active-text-color);
     }
 
     &:is(:disabled, [aria-disabled="true"]) {
-      background: var(--instui-color-background-interactive-action-primary-on-color-disabled);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-disabled);
-      color: var(--instui-color-text-interactive-action-primary-on-color-disabled);
+      background: var(--instui-component-base-button-primary-on-color-disabled-background-color);
+      border-color: var(--instui-component-base-button-primary-on-color-disabled-border-color);
+      color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
       cursor: not-allowed;
     }
   }
 
   :is(._pendo-button-secondaryButton, ._pendo-button-tertiaryButton) {
-    background-color: transparent;
-    border-color: var(--instui-color-stroke-interactive-action-secondary-on-color-base);
-    color: light-dark(
-      var(--instui-component-base-button-secondary-active-text-color),
-      var(--instui-component-base-button-secondary-on-color-active-text-color)
-    );
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
+    color: var(--instui-component-base-button-primary-inverse-color);
 
     &:focus {
-      background: var(--instui-color-background-interactive-action-primary-on-color-base);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-base);
-      color: var(--instui-color-text-interactive-action-primary-on-color-base);
+      background: var(--instui-component-base-button-primary-inverse-background);
+      border-color: var(--instui-component-base-button-primary-inverse-border-color);
+      color: var(--instui-component-base-button-primary-inverse-color);
     }
 
     &:hover {
-      background: var(--instui-color-background-interactive-action-primary-on-color-hover);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-hover);
-      color: var(--instui-color-text-interactive-action-primary-on-color-hover);
+      background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
+      border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+      color: var(--instui-component-base-button-primary-on-color-hover-text-color);
     }
 
     &:active {
-      background: var(--instui-color-background-interactive-action-primary-on-color-active);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-active);
-      color: var(--instui-color-text-interactive-action-primary-on-color-active);
+      background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
+      border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
+      color: var(--instui-component-base-button-primary-on-color-active-text-color);
     }
 
     &:is(:disabled, [aria-disabled="true"]) {
-      background: var(--instui-color-background-interactive-action-primary-on-color-disabled);
-      border-color: var(--instui-color-stroke-interactive-action-primary-on-color-disabled);
-      color: var(--instui-color-text-interactive-action-primary-on-color-disabled);
+      background: transparent;
+      border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
+      color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
       cursor: not-allowed;
     }
   }

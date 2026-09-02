@@ -77,6 +77,10 @@
   min-height: 0;
 }
 
+[data-pendo-justify-content] .pendo-mock-flexbox-row:has(._pendo-button) {
+  gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
+}
+
 [data-pendo-justify-content="flex-start"] .pendo-mock-flexbox-row {
   justify-content: flex-start;
 }
