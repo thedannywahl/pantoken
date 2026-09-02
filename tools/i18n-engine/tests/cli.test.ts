@@ -1,4 +1,4 @@
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vite-plus/test";
@@ -44,8 +44,8 @@ async function run(args: string[]): Promise<void> {
   await program.parseAsync(args, { from: "user" });
 }
 
-describe("stub commands", () => {
-  for (const name of ["extract", "translate", "render", "check", "lint", "stats"]) {
+describe("stub commands (check/lint/stats — no docs.guides implementation yet)", () => {
+  for (const name of ["check", "lint", "stats"]) {
     test(`"${name}" parses and reports not-yet-implemented`, async () => {
       await run([name]);
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`"${name}" is not implemented`));
@@ -53,26 +53,82 @@ describe("stub commands", () => {
     });
   }
 
-  test("translate accepts a space and every selector flag", async () => {
-    await run([
-      "translate",
-      "docs.guides",
-      "--locale",
-      "hu",
-      "--tier",
-      "primary",
-      "--provider",
-      "agy",
-      "--concurrency",
-      "4",
-      "--force",
-    ]);
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('"translate" is not implemented'));
-  });
-
   test("check accepts --strict", async () => {
     await run(["check", "--strict"]);
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('"check" is not implemented'));
+  });
+});
+
+describe("extract/translate/render fall back to stub for a non-docs.guides space", () => {
+  for (const name of ["extract", "translate", "render"]) {
+    test(`"${name} bogus.space" reports not-yet-implemented`, async () => {
+      await run([name, "bogus.space"]);
+      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`"${name}" is not implemented`));
+      expect(exitSpy).toHaveBeenCalledWith(1);
+    });
+  }
+});
+
+describe("docs.guides: extract -> translate -> render (real, no AI provider)", () => {
+  beforeEach(() => {
+    mkdirSync(join(testDir, "docs", "guide"), { recursive: true });
+    writeFileSync(join(testDir, "docs", "guide", "a.md"), "Hello world.\n");
+  });
+
+  test("extract writes a POT with the real prose unit", async () => {
+    await run(["extract", "docs.guides"]);
+    const pot = readFileSync(join(testDir, "l10n", "docs.guides.pot"), "utf8");
+    expect(pot).toContain('msgid "Hello world."');
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Extracted 1 unit(s)"));
+  });
+
+  test("extract with no space argument also runs for docs.guides", async () => {
+    await run(["extract"]);
+    expect(existsSync(join(testDir, "l10n", "docs.guides.pot"))).toBe(true);
+  });
+
+  test("translate keeps the PO current (untranslated, since no AI provider is authorized)", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides", "--locale", "hu"]);
+    expect(existsSync(join(testDir, "l10n", "hu", "docs.guides.po"))).toBe(true);
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining("docs.guides (hu): 0 translated, 1 untranslated"),
+    );
+  });
+
+  test("render falls back to the English source for an untranslated unit", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides", "--locale", "hu"]);
+    await run(["render", "docs.guides", "--locale", "hu"]);
+    const rendered = readFileSync(join(testDir, "docs", "hu", "guide", "a.md"), "utf8");
+    expect(rendered).toBe("Hello world.\n");
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining("docs.guides (hu): wrote 1 file(s)."),
+    );
+  });
+
+  test("render reflects a hand-added translation in the PO", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides", "--locale", "hu"]);
+    const poPath = join(testDir, "l10n", "hu", "docs.guides.po");
+    writeFileSync(
+      poPath,
+      readFileSync(poPath, "utf8").replace(
+        'msgid "Hello world."\nmsgstr ""',
+        'msgid "Hello world."\nmsgstr "Szia világ."',
+      ),
+    );
+    await run(["render", "docs.guides", "--locale", "hu"]);
+    expect(readFileSync(join(testDir, "docs", "hu", "guide", "a.md"), "utf8")).toBe(
+      "Szia világ.\n",
+    );
+  });
+
+  test("translate/render with no --locale iterate every non-excluded locale", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides"]);
+    await run(["render", "docs.guides"]);
+    expect(existsSync(join(testDir, "docs", "hu", "guide", "a.md"))).toBe(true);
   });
 });
 

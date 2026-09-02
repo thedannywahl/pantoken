@@ -24,7 +24,11 @@
     "check": "vp check"
   },
   "dependencies": {
-    "commander": "catalog:"
+    "commander": "catalog:",
+    "remark-gfm": "catalog:",
+    "remark-parse": "catalog:",
+    "unified": "catalog:",
+    "unist-util-visit": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

@@ -1,21 +1,25 @@
 /**
- * The `i18n` CLI skeleton — Phase 1 of the localization-engine plan.
+ * The `i18n` CLI skeleton — Phase 1/2 of the localization-engine plan.
  *
  * `locale promote/demote/exclude/include` are real (read-modify-write `i18n.config.json`'s
- * `locales` block). `extract`/`translate`/`render`/`check`/`lint`/`stats` parse their full selector
- * surface (space, `--locale`, `--tier`, `--provider`, `--concurrency`, `--force`, `--strict`) but are
- * not yet implemented — that's Phase 2+ (per-space extraction, the shim-backed translate pipeline,
- * and reusing `DriftReporter` for `check`).
+ * `locales` block). `extract`/`translate`/`render` are real for the `docs.guides` space only (see
+ * `pipeline.ts`) — every other space, and `check`/`lint`/`stats`, still just parse their selector
+ * surface and report not-yet-implemented.
  *
  * @module
  */
 import { readFileSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
 import { Argument, Command, CommanderError, Option } from "commander";
 import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
-
-/** Commands that select work by space/locale/tier but aren't implemented past selector parsing yet. */
-const NOT_YET_IMPLEMENTED = ["extract", "translate", "render", "check", "lint", "stats"] as const;
+import {
+  DOCS_GUIDES,
+  guidesLocales,
+  runExtractGuides,
+  runRenderGuides,
+  runTranslateGuides,
+} from "./pipeline.ts";
 
 /** `undefined` when loading failed — the caller must bail without crashing (`process.exit` is
  *  mocked to a no-op in tests, so callers can't assume it truly terminates execution). */
@@ -68,21 +72,79 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     options.configPath ?? "i18n.config.json",
   );
 
-  for (const name of NOT_YET_IMPLEMENTED) {
-    const cmd = program.command(name);
-    if (name === "translate") {
-      cmd
-        .addArgument(new Argument("[space]", "space id, e.g. docs.guides").argOptional())
-        .option("--locale <locale>", "one locale")
-        .option("--tier <tier>", "every locale in a tier")
-        .option("--provider <provider>", "override the default provider profile")
-        .option("--concurrency <n>", "override provider concurrency", Number)
-        .option("--force", "retranslate even when the cache/PO entry is up to date", false);
-    } else if (name === "extract" || name === "render" || name === "stats") {
-      cmd.addArgument(new Argument("[space]", "space id").argOptional());
-    } else if (name === "check") {
-      cmd.option("--strict", "treat every warn-level finding as blocking", false);
+  const configDirOf = (): string => dirname(program.opts<{ config: string }>().config);
+
+  /** Runs `fn` for `docs.guides` (or an omitted space); any other space falls back to `command`'s
+   *  stub message instead. */
+  function withDocsGuidesSpace(
+    command: string,
+    space: string | undefined,
+    fn: (config: I18nConfig) => void | Promise<void>,
+  ): void | Promise<void> {
+    if (space !== undefined && space !== DOCS_GUIDES) {
+      stubAction(command)();
+      return;
     }
+    const configPath = program.opts<{ config: string }>().config;
+    const loaded = loadConfigOrExit(configPath);
+    if (!loaded) return;
+    return fn(loaded.config);
+  }
+
+  program
+    .command("extract")
+    .addArgument(new Argument("[space]", "space id").argOptional())
+    .action((space?: string) =>
+      withDocsGuidesSpace("extract", space, (config) => {
+        const result = runExtractGuides(config, configDirOf());
+        console.log(
+          `Extracted ${String(result.unitCount)} unit(s) from ${DOCS_GUIDES} to ${result.potPath}.`,
+        );
+      }),
+    );
+
+  program
+    .command("translate")
+    .addArgument(new Argument("[space]", "space id, e.g. docs.guides").argOptional())
+    .option("--locale <locale>", "one locale")
+    .option("--tier <tier>", "every locale in a tier")
+    .option("--provider <provider>", "override the default provider profile")
+    .option("--concurrency <n>", "override provider concurrency", Number)
+    .option("--force", "retranslate even when the cache/PO entry is up to date", false)
+    .action((space: string | undefined, opts: { locale?: string }) =>
+      withDocsGuidesSpace("translate", space, async (config) => {
+        const locales = opts.locale ? [opts.locale] : guidesLocales(config);
+        for (const locale of locales) {
+          const result = await runTranslateGuides(config, configDirOf(), locale);
+          console.log(
+            `${DOCS_GUIDES} (${locale}): ${String(result.translated)} translated, ` +
+              `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
+          );
+        }
+      }),
+    );
+
+  program
+    .command("render")
+    .addArgument(new Argument("[space]", "space id").argOptional())
+    .option("--locale <locale>", "one locale")
+    .action((space: string | undefined, opts: { locale?: string }) =>
+      withDocsGuidesSpace("render", space, (config) => {
+        const locales = opts.locale ? [opts.locale] : guidesLocales(config);
+        for (const locale of locales) {
+          const result = runRenderGuides(config, configDirOf(), locale);
+          console.log(
+            `${DOCS_GUIDES} (${locale}): wrote ${String(result.filesWritten.length)} file(s).`,
+          );
+        }
+      }),
+    );
+
+  for (const name of ["check", "lint", "stats"] as const) {
+    const cmd = program.command(name);
+    if (name === "stats") cmd.addArgument(new Argument("[space]", "space id").argOptional());
+    if (name === "check")
+      cmd.option("--strict", "treat every warn-level finding as blocking", false);
     cmd.action(stubAction(name));
   }
 

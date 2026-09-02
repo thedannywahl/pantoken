@@ -3164,6 +3164,18 @@ importers:
       commander:
         specifier: 'catalog:'
         version: 15.0.0
+      remark-gfm:
+        specifier: 'catalog:'
+        version: 4.0.1(supports-color@10.2.2)
+      remark-parse:
+        specifier: 'catalog:'
+        version: 11.0.0(supports-color@10.2.2)
+      unified:
+        specifier: 'catalog:'
+        version: 11.0.5
+      unist-util-visit:
+        specifier: 'catalog:'
+        version: 5.1.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

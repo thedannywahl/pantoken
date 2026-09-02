@@ -52,4 +52,23 @@ export {
   mergePoWithTemplate,
   type PoStatistics,
 } from "./gettext.ts";
+export {
+  collectProseRanges,
+  extractFileUnits,
+  extractGuideSpace,
+  listGuideFiles,
+  renderFile,
+  type ExtractedUnit,
+  type ProseRange,
+} from "./extract.ts";
+export {
+  DOCS_GUIDES,
+  guidesLocales,
+  runExtractGuides,
+  runRenderGuides,
+  runTranslateGuides,
+  type ExtractResult,
+  type RenderResult,
+  type TranslateResult,
+} from "./pipeline.ts";
 export { createI18nCommand, runI18nCli } from "./cli.ts";
