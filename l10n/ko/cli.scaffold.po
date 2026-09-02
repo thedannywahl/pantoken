@@ -1,5 +1,6 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -82,12 +83,8 @@ msgstr "취소됨."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid ""
-"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
-"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr ""
-"스캐폴딩할 플랫폼 ({{platforms}}; \"html\"은 \"components\"의 별칭, \"theme-"
-"editor\"는 \"canvas-theme-editor\"의 별칭)"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "스캐폴딩할 플랫폼 ({{platforms}}; \"html\"은 \"components\"의 별칭, \"theme-editor\"는 \"canvas-theme-editor\"의 별칭)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -98,10 +95,8 @@ msgstr "대상 디렉터리 (TTY에서 생략하면 대화형으로 묻습니다
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid ""
-"Never prompt; error instead of prompting for a missing platform/directory"
-msgstr ""
-"절대 프롬프트하지 않음; 플랫폼/디렉터리가 없으면 프롬프트 대신 오류 발생"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
+msgstr "절대 프롬프트하지 않음; 플랫폼/디렉터리가 없으면 프롬프트 대신 오류 발생"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -111,240 +106,207 @@ msgstr "자동 감지된 표시 언어를 재정의 (예: \"hu\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.0"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.1"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.2"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.notes"
-msgid ""
-"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
-"JavaScript) so pantoken's classes are available on every page."
-msgstr ""
-"theme.css와 theme.js를 Canvas의 테마 편집기(고급 → CSS / JavaScript)에 업로드"
-"하여 pantoken의 클래스가 모든 페이지에서 사용 가능하도록 하세요."
+msgctxt "cli.scaffold:canvas-theme-editor.notes"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "theme.css와 theme.js를 Canvas의 테마 편집기(고급 → CSS / JavaScript)에 업로드하여 pantoken의 클래스가 모든 페이지에서 사용 가능하도록 하세요."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.caveats"
-msgid ""
-"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
-"the RCE preview in Canvas."
-msgstr ""
-"Canvas는 서버 측에서 붙여넣은 HTML을 정리(사전 처리)합니다 — RCE 미리보기에"
-"서 복사한 내용을 Canvas에서 항상 확인하세요."
+msgctxt "cli.scaffold:canvas-theme-editor.caveats"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas는 서버 측에서 붙여넣은 HTML을 정리(사전 처리)합니다 — RCE 미리보기에서 복사한 내용을 Canvas에서 항상 확인하세요."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
 msgid "RCE template authoring"
 msgstr "RCE 템플릿 작성"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageDescription"
-msgid ""
-"Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr ""
-"pantoken으로 스타일된 Canvas RCE 페이지 템플릿을 작성하고 실시간 미리보기를 "
-"확인합니다."
+msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr "pantoken으로 스타일된 Canvas RCE 페이지 템플릿을 작성하고 실시간 미리보기를 확인합니다."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editThemeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
 msgid "Edit theme"
 msgstr "테마 편집"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
 msgid "Help"
 msgstr "도움말"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "HTML 복사"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editorPaneLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
 msgid "Editor"
 msgstr "편집기"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewPaneLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
 msgid "Preview"
 msgstr "미리보기"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewFrameTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
 msgid "Styled preview"
 msgstr "스타일된 미리보기"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt ""
-"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "전체화면 편집기"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt ""
-"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "전체화면 미리보기"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "편집기와 미리보기 크기 조절"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "수직으로 쌓기"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "나란히 배치"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.swapPanesLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
 msgid "Swap panes"
 msgstr "창 교체"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "테마 설정"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabConfigLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
 msgid "Config"
 msgstr "구성"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabCssLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabJsLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "CDN 제공자"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
 msgid "Theme"
 msgstr "테마"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.modeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
 msgid "Mode"
 msgstr "모드"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadCssLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "theme.css 다운로드"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadJsLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "theme.js 다운로드"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.regenerateLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "구성에서 재생성"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
 msgid "How to use this page"
 msgstr "이 페이지 사용 방법"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody1"
-msgid ""
-"Pick a starter template, edit it like you would in the Canvas Rich Content "
-"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
-"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
-"HTML server-side — this preview doesn't attempt to replicate that, so always "
-"verify the pasted result in Canvas."
-msgstr ""
-"시작 템플릿을 선택하고 Canvas의 리치 콘텐츠 편집기에서 편집하듯 템플릿을 수정"
-"한 다음 <strong>HTML 복사</strong>를 클릭하여 결과를 Canvas 페이지에 붙여넣으"
-"세요 (먼저 HTML 편집기 보기로 전환). Canvas는 서버 측에서 붙여넣은 HTML을 정"
-"리하므로 이 미리보기와 동작이 다를 수 있으니 Canvas에서 붙여넣은 결과를 항상 "
-"확인하세요."
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "시작 템플릿을 선택하고 Canvas의 리치 콘텐츠 편집기에서 편집하듯 템플릿을 수정한 다음 <strong>HTML 복사</strong>를 클릭하여 결과를 Canvas 페이지에 붙여넣으세요 (먼저 HTML 편집기 보기로 전환). Canvas는 서버 측에서 붙여넣은 HTML을 정리하므로 이 미리보기와 동작이 다를 수 있으니 Canvas에서 붙여넣은 결과를 항상 확인하세요."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody2"
-msgid ""
-"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
-"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
-"before downloading them."
-msgstr ""
-"<strong>테마 편집</strong>을 사용해 CDN 제공자, 테마 또는 모드를 변경하고, 다"
-"운로드하기 전에 생성된 <code>theme.css</code>/<code>theme.js</code>를 수동으"
-"로 편집할 수 있습니다."
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "<strong>테마 편집</strong>을 사용해 CDN 제공자, 테마 또는 모드를 변경하고, 다운로드하기 전에 생성된 <code>theme.css</code>/<code>theme.js</code>를 수동으로 편집할 수 있습니다."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.closeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
 msgid "Close"
 msgstr "닫기"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid ""
-"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
-"install)"
-msgstr ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
-"install)"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

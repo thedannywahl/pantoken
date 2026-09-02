@@ -1,5 +1,6 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -71,9 +72,7 @@ msgstr "Whakatūpato:"
 #, no-c-format
 msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
-msgstr ""
-"Kua ngaro te kupu whakahau hiahia \"platform\". Me kotahi o ēnei: "
-"{{platforms}}"
+msgstr "Kua ngaro te kupu whakahau hiahia \"platform\". Me kotahi o ēnei: {{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -84,26 +83,19 @@ msgstr "Kua whakakorea."
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid ""
-"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
-"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr ""
-"Te papanga hei hanga ({{platforms}}; ko \"html\" he ingoa taurima mō "
-"\"components\", ko \"theme-editor\" he ingoa taurima mō \"canvas-theme-"
-"editor\")"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "Te papanga hei hanga ({{platforms}}; ko \"html\" he ingoa taurima mō \"components\", ko \"theme-editor\" he ingoa taurima mō \"canvas-theme-editor\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
-msgstr ""
-"Kōpaki ūkaipō (ka uiui ā-āheinga i runga i te TTY mēnā kāore i whakakīa)"
+msgstr "Kōpaki ūkaipō (ka uiui ā-āheinga i runga i te TTY mēnā kāore i whakakīa)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid ""
-"Never prompt; error instead of prompting for a missing platform/directory"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "Kāore he pātai; ka hapa ina kore te papanga/kōpaki"
 
 #: packages/scaffold/src/i18n.json
@@ -114,242 +106,207 @@ msgstr "Te reo whakaatu hei whakakapi i te tautuhi aunoa (hei tauira \"hu\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.0"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.1"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.2"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.notes"
-msgid ""
-"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
-"JavaScript) so pantoken's classes are available on every page."
-msgstr ""
-"Tukuake te theme.css me te theme.js ki te Kaiwhakatika Kaupapa o Canvas "
-"(Advanced → CSS / JavaScript) kia wātea ai ngā kara o pantoken ki ia "
-"whārangi."
+msgctxt "cli.scaffold:canvas-theme-editor.notes"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "Tukuake te theme.css me te theme.js ki te Kaiwhakatika Kaupapa o Canvas (Advanced → CSS / JavaScript) kia wātea ai ngā kara o pantoken ki ia whārangi."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.caveats"
-msgid ""
-"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
-"the RCE preview in Canvas."
-msgstr ""
-"Ka ārai a Canvas i te HTML i whakapirihia i te taha tūmau — tirohia tonu te "
-"ihirangi i whakapirihia mai i te rōpū matapaki RCE i roto i Canvas."
+msgctxt "cli.scaffold:canvas-theme-editor.caveats"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Ka ārai a Canvas i te HTML i whakapirihia i te taha tūmau — tirohia tonu te ihirangi i whakapirihia mai i te rōpū matapaki RCE i roto i Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
 msgid "RCE template authoring"
 msgstr "Te tuhi tauira RCE"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageDescription"
-msgid ""
-"Author Canvas RCE page templates styled with pantoken, with a live preview."
-msgstr ""
-"Tuhia ngā tauira whārangi RCE o Canvas kua āta hoahoa ki te pantoken, me "
-"tētahi matakitaki ora."
+msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgstr "Tuhia ngā tauira whārangi RCE o Canvas kua āta hoahoa ki te pantoken, me tētahi matakitaki ora."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editThemeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
 msgid "Edit theme"
 msgstr "Whakatika kaupapa"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
 msgid "Help"
 msgstr "Āwhina"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "Tāpiri HTML"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editorPaneLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
 msgid "Editor"
 msgstr "Kaitaipitopito"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewPaneLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
 msgid "Preview"
 msgstr "Tirohanga"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewFrameTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
 msgid "Styled preview"
 msgstr "Tirohanga kua hōtaka"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt ""
-"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "Kaituhi whakakīanga-whānui"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt ""
-"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "Tirohanga whakakīanga-whānui"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "Whanui / whiti i te kaitaipitopito me te tirohanga"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "Tāpiri ā-rārangi"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "Tāpiri taha ki taha"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.swapPanesLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
 msgid "Swap panes"
 msgstr "Huri ngā pae"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "Tautuhinga kaupapa"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabConfigLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
 msgid "Config"
 msgstr "Kōwhiringa"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabCssLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabJsLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "Kaiwhakarato CDN"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
 msgid "Theme"
 msgstr "Kaupapa"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.modeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
 msgid "Mode"
 msgstr "Aratau"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadCssLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "Tikiake theme.css"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadJsLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "Tikiake theme.js"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.regenerateLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "Hangarua mai i te whirihora"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
 msgid "How to use this page"
 msgstr "Me pēhea te whakamahi i tēnei whārangi"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody1"
-msgid ""
-"Pick a starter template, edit it like you would in the Canvas Rich Content "
-"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
-"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
-"HTML server-side — this preview doesn't attempt to replicate that, so always "
-"verify the pasted result in Canvas."
-msgstr ""
-"Tīpakohia he tauira tīmatanga, whakatikahia pēnei i roto i te Kaiwhakatika "
-"Ihirangi Rawa o Canvas, katahi ka pāwhiri <strong>Copy HTML</strong> ka "
-"whakapiri te hua ki tētahi whārangi Canvas (hurihia ki te tirohanga "
-"kaiwhakatika HTML i te tuatahi). Ka ārai a Canvas i te HTML i whakapirihia i "
-"te taha tūmau — kāore tēnei matakitaki e kopa i tērā, nō reira me whakamātau "
-"tonu i te hua kua whakapirihia i roto i Canvas."
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "Tīpakohia he tauira tīmatanga, whakatikahia pēnei i roto i te Kaiwhakatika Ihirangi Rawa o Canvas, katahi ka pāwhiri <strong>Copy HTML</strong> ka whakapiri te hua ki tētahi whārangi Canvas (hurihia ki te tirohanga kaiwhakatika HTML i te tuatahi). Ka ārai a Canvas i te HTML i whakapirihia i te taha tūmau — kāore tēnei matakitaki e kopa i tērā, nō reira me whakamātau tonu i te hua kua whakapirihia i roto i Canvas."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody2"
-msgid ""
-"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
-"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
-"before downloading them."
-msgstr ""
-"Whakamahia te <strong>Edit theme</strong> ki te huri i te kaiwhakarato CDN, "
-"te kaupapa, te aratau, me te āta whakatika i ngā kōnae whakauru "
-"<code>theme.css</code>/<code>theme.js</code> i mua i te tikiake."
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "Whakamahia te <strong>Edit theme</strong> ki te huri i te kaiwhakarato CDN, te kaupapa, te aratau, me te āta whakatika i ngā kōnae whakauru <code>theme.css</code>/<code>theme.js</code> i mua i te tikiake."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.closeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
 msgid "Close"
 msgstr "Katia"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid ""
-"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
-"install)"
-msgstr ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
-"install)"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format

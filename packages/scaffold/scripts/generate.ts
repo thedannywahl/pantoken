@@ -82,7 +82,7 @@ for (const platform of readdirSync(templatesRoot, { withFileTypes: true })) {
   if (!existsSync(metaPath)) continue;
 
   const meta = JSON.parse(readFileSync(metaPath, "utf8")) as ScaffoldMetadata;
-  const prefix = `scaffold.${platform.name}`;
+  const prefix = platform.name;
   scaffoldMetadata[platform.name] = {
     nextStepsKeys: (meta.nextSteps ?? []).map((_, i) => `${prefix}.nextSteps.${i}`),
     ...(meta.notes ? { notesKey: `${prefix}.notes` } : {}),

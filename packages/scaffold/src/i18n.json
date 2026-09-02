@@ -1,29 +1,56 @@
 {
-  "promptPlatform": { "message": "Select a platform to scaffold:", "translate": "always" },
-  "promptDir": { "message": "Target directory:", "translate": "always" },
-  "spinnerStart": { "message": "Scaffolding...", "translate": "always" },
-  "spinnerStop": { "message": "Done scaffolding.", "translate": "always" },
+  "promptPlatform": {
+    "message": "Select a platform to scaffold:",
+    "translate": "always"
+  },
+  "promptDir": {
+    "message": "Target directory:",
+    "translate": "always"
+  },
+  "spinnerStart": {
+    "message": "Scaffolding...",
+    "translate": "always"
+  },
+  "spinnerStop": {
+    "message": "Done scaffolding.",
+    "translate": "always"
+  },
   "wroteFile": {
     "message": "✓ {{path}}",
     "translate": "never"
   },
-  "nextStepsHeading": { "message": "Next steps:", "translate": "always" },
+  "nextStepsHeading": {
+    "message": "Next steps:",
+    "translate": "always"
+  },
   "nextStepsNav": {
     "message": "cd {{dir}}",
     "translate": "never"
   },
-  "nextStepsInstall": { "message": "Install dependencies: {{command}}", "translate": "always" },
+  "nextStepsInstall": {
+    "message": "Install dependencies: {{command}}",
+    "translate": "always"
+  },
   "nextStepsDevServer": {
     "message": "Start the dev server (if your template has one)",
     "translate": "always"
   },
-  "notesHeading": { "message": "Note:", "translate": "always" },
-  "caveatsHeading": { "message": "Caveat:", "translate": "always" },
+  "notesHeading": {
+    "message": "Note:",
+    "translate": "always"
+  },
+  "caveatsHeading": {
+    "message": "Caveat:",
+    "translate": "always"
+  },
   "errorMissingPlatform": {
     "message": "Missing required argument \"platform\". Expected one of: {{platforms}}",
     "translate": "always"
   },
-  "cancelled": { "message": "Cancelled.", "translate": "always" },
+  "cancelled": {
+    "message": "Cancelled.",
+    "translate": "always"
+  },
   "helpPlatformDescription": {
     "message": "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")",
     "translate": "always"
@@ -40,114 +67,144 @@
     "message": "Override the auto-detected display language (e.g. \"hu\")",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.nextSteps.0": { "message": "cd {{dir}}", "translate": "always" },
-  "scaffold.canvas-theme-editor.nextSteps.1": { "message": "{{install}}", "translate": "always" },
-  "scaffold.canvas-theme-editor.nextSteps.2": { "message": "{{dev}}", "translate": "always" },
-  "scaffold.canvas-theme-editor.notes": {
+  "canvas-theme-editor.nextSteps.0": {
+    "message": "cd {{dir}}",
+    "translate": "always"
+  },
+  "canvas-theme-editor.nextSteps.1": {
+    "message": "{{install}}",
+    "translate": "always"
+  },
+  "canvas-theme-editor.nextSteps.2": {
+    "message": "{{dev}}",
+    "translate": "always"
+  },
+  "canvas-theme-editor.notes": {
     "message": "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page.",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.caveats": {
+  "canvas-theme-editor.caveats": {
     "message": "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas.",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.pageTitle": {
+  "canvas-theme-editor.pageTitle": {
     "message": "RCE template authoring",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.pageDescription": {
+  "canvas-theme-editor.pageDescription": {
     "message": "Author Canvas RCE page templates styled with pantoken, with a live preview.",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.editThemeLabel": {
+  "canvas-theme-editor.editThemeLabel": {
     "message": "Edit theme",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.helpAriaLabel": { "message": "Help", "translate": "always" },
-  "scaffold.canvas-theme-editor.i18n.copyHtmlLabel": {
+  "canvas-theme-editor.helpAriaLabel": {
+    "message": "Help",
+    "translate": "always"
+  },
+  "canvas-theme-editor.copyHtmlLabel": {
     "message": "Copy HTML",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.editorPaneLabel": {
+  "canvas-theme-editor.editorPaneLabel": {
     "message": "Editor",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.previewPaneLabel": {
+  "canvas-theme-editor.previewPaneLabel": {
     "message": "Preview",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.previewFrameTitle": {
+  "canvas-theme-editor.previewFrameTitle": {
     "message": "Styled preview",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel": {
+  "canvas-theme-editor.fullscreenEditorAriaLabel": {
     "message": "Fullscreen editor",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel": {
+  "canvas-theme-editor.fullscreenPreviewAriaLabel": {
     "message": "Fullscreen preview",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel": {
+  "canvas-theme-editor.resizePanesAriaLabel": {
     "message": "Resize editor and preview",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel": {
+  "canvas-theme-editor.stackVerticallyLabel": {
     "message": "Stack vertically",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel": {
+  "canvas-theme-editor.stackSideBySideLabel": {
     "message": "Stack side by side",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.swapPanesLabel": {
+  "canvas-theme-editor.swapPanesLabel": {
     "message": "Swap panes",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel": {
+  "canvas-theme-editor.themeTrayAriaLabel": {
     "message": "Theme settings",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.tabConfigLabel": {
+  "canvas-theme-editor.tabConfigLabel": {
     "message": "Config",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.tabCssLabel": { "message": "CSS", "translate": "always" },
-  "scaffold.canvas-theme-editor.i18n.tabJsLabel": { "message": "JS", "translate": "always" },
-  "scaffold.canvas-theme-editor.i18n.cdnProviderLabel": {
+  "canvas-theme-editor.tabCssLabel": {
+    "message": "CSS",
+    "translate": "always"
+  },
+  "canvas-theme-editor.tabJsLabel": {
+    "message": "JS",
+    "translate": "always"
+  },
+  "canvas-theme-editor.cdnProviderLabel": {
     "message": "CDN provider",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.themeLabel": { "message": "Theme", "translate": "always" },
-  "scaffold.canvas-theme-editor.i18n.modeLabel": { "message": "Mode", "translate": "always" },
-  "scaffold.canvas-theme-editor.i18n.downloadCssLabel": {
+  "canvas-theme-editor.themeLabel": {
+    "message": "Theme",
+    "translate": "always"
+  },
+  "canvas-theme-editor.modeLabel": {
+    "message": "Mode",
+    "translate": "always"
+  },
+  "canvas-theme-editor.downloadCssLabel": {
     "message": "Download theme.css",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.downloadJsLabel": {
+  "canvas-theme-editor.downloadJsLabel": {
     "message": "Download theme.js",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.regenerateLabel": {
+  "canvas-theme-editor.regenerateLabel": {
     "message": "Regenerate from config",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.helpModalTitle": {
+  "canvas-theme-editor.helpModalTitle": {
     "message": "How to use this page",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.helpModalBody1": {
+  "canvas-theme-editor.helpModalBody1": {
     "message": "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas.",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.helpModalBody2": {
+  "canvas-theme-editor.helpModalBody2": {
     "message": "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them.",
     "translate": "always"
   },
-  "scaffold.canvas-theme-editor.i18n.closeLabel": { "message": "Close", "translate": "always" },
-  "nextStepsDependencies": {
-    "message": "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)",
+  "canvas-theme-editor.closeLabel": {
+    "message": "Close",
     "translate": "always"
   },
-  "nextStepsInstallGeneric": { "message": "2. Függőségek telepítése", "translate": "always" }
+  "nextStepsDependencies": {
+    "message": "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)",
+    "translate": "always"
+  },
+  "nextStepsInstallGeneric": {
+    "message": "2. Installing dependencies",
+    "translate": "always"
+  }
 }

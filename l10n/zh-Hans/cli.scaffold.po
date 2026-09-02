@@ -1,5 +1,6 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -82,12 +83,8 @@ msgstr "已取消。"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpPlatformDescription"
-msgid ""
-"Platform to scaffold ({{platforms}}; \"html\" is an alias for "
-"\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
-msgstr ""
-"要生成的平台 ({{platforms}}；\"html\" 为 \"components\" 的别名，\"theme-"
-"editor\" 为 \"canvas-theme-editor\" 的别名)"
+msgid "Platform to scaffold ({{platforms}}; \"html\" is an alias for \"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
+msgstr "要生成的平台 ({{platforms}}；\"html\" 为 \"components\" 的别名，\"theme-editor\" 为 \"canvas-theme-editor\" 的别名)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
@@ -98,8 +95,7 @@ msgstr "目标目录（若在 TTY 中省略则会交互提示）"
 #: packages/scaffold/src/i18n.json
 #, no-c-format
 msgctxt "cli.scaffold:helpYesDescription"
-msgid ""
-"Never prompt; error instead of prompting for a missing platform/directory"
+msgid "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "从不提示；若缺少 platform/目录 则报错而不是提示"
 
 #: packages/scaffold/src/i18n.json
@@ -110,236 +106,207 @@ msgstr "覆盖自动检测的显示语言（例如：\"hu\"）"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.0"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.1"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.2"
+msgctxt "cli.scaffold:canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.notes"
-msgid ""
-"Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
-"JavaScript) so pantoken's classes are available on every page."
-msgstr ""
-"将 theme.css 和 theme.js 上传到 Canvas 的主题编辑器（高级 → CSS / "
-"JavaScript），以便 pantoken 的类在每个页面上可用。"
+msgctxt "cli.scaffold:canvas-theme-editor.notes"
+msgid "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page."
+msgstr "将 theme.css 和 theme.js 上传到 Canvas 的主题编辑器（高级 → CSS / JavaScript），以便 pantoken 的类在每个页面上可用。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.caveats"
-msgid ""
-"Canvas sanitizes pasted HTML server-side — always verify content pasted from "
-"the RCE preview in Canvas."
-msgstr ""
-"Canvas 会在服务器端清理粘贴的 HTML —— 始终在 Canvas 中验证从 RCE 预览粘贴的内"
-"容。"
+msgctxt "cli.scaffold:canvas-theme-editor.caveats"
+msgid "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+msgstr "Canvas 会在服务器端清理粘贴的 HTML —— 始终在 Canvas 中验证从 RCE 预览粘贴的内容。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.pageTitle"
 msgid "RCE template authoring"
 msgstr "RCE 模板创作"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageDescription"
-msgid ""
-"Author Canvas RCE page templates styled with pantoken, with a live preview."
+msgctxt "cli.scaffold:canvas-theme-editor.pageDescription"
+msgid "Author Canvas RCE page templates styled with pantoken, with a live preview."
 msgstr "创作使用 pantoken 样式的 Canvas RCE 页面模板，并提供实时预览。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editThemeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.editThemeLabel"
 msgid "Edit theme"
 msgstr "编辑主题"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.helpAriaLabel"
 msgid "Help"
 msgstr "帮助"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "复制 HTML"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editorPaneLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.editorPaneLabel"
 msgid "Editor"
 msgstr "编辑器"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewPaneLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.previewPaneLabel"
 msgid "Preview"
 msgstr "预览"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewFrameTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.previewFrameTitle"
 msgid "Styled preview"
 msgstr "样式化预览"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt ""
-"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "全屏编辑器"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt ""
-"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "全屏预览"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "调整编辑器和预览大小"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "垂直堆叠"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "并排显示"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.swapPanesLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.swapPanesLabel"
 msgid "Swap panes"
 msgstr "交换窗格"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "主题设置"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabConfigLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabConfigLabel"
 msgid "Config"
 msgstr "配置"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabCssLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabJsLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "CDN 提供商"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.themeLabel"
 msgid "Theme"
 msgstr "主题"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.modeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.modeLabel"
 msgid "Mode"
 msgstr "模式"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadCssLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "下载 theme.css"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadJsLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "下载 theme.js"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.regenerateLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "从配置重新生成"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalTitle"
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalTitle"
 msgid "How to use this page"
 msgstr "如何使用此页面"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody1"
-msgid ""
-"Pick a starter template, edit it like you would in the Canvas Rich Content "
-"Editor, then click <strong>Copy HTML</strong> and paste the result into a "
-"Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted "
-"HTML server-side — this preview doesn't attempt to replicate that, so always "
-"verify the pasted result in Canvas."
-msgstr ""
-"选择一个入门模板，像在 Canvas 富文本编辑器中那样编辑，然后点击 <strong>复制 "
-"HTML</strong> 并将结果粘贴到 Canvas 页面（请先切换到 HTML 编辑视图）。Canvas "
-"会在服务器端清理粘贴的 HTML——此预览不会尝试完全复现该行为，因此务必在 Canvas "
-"中验证粘贴结果。"
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody1"
+msgid "Pick a starter template, edit it like you would in the Canvas Rich Content Editor, then click <strong>Copy HTML</strong> and paste the result into a Canvas page (switch to the HTML editor view first). Canvas sanitizes pasted HTML server-side — this preview doesn't attempt to replicate that, so always verify the pasted result in Canvas."
+msgstr "选择一个入门模板，像在 Canvas 富文本编辑器中那样编辑，然后点击 <strong>复制 HTML</strong> 并将结果粘贴到 Canvas 页面（请先切换到 HTML 编辑视图）。Canvas 会在服务器端清理粘贴的 HTML——此预览不会尝试完全复现该行为，因此务必在 Canvas 中验证粘贴结果。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody2"
-msgid ""
-"Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
-"and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
-"before downloading them."
-msgstr ""
-"使用 <strong>编辑主题</strong> 可以更改 CDN 提供商、主题或模式，并在下载前手"
-"动编辑生成的 <code>theme.css</code>/<code>theme.js</code>。"
+msgctxt "cli.scaffold:canvas-theme-editor.helpModalBody2"
+msgid "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> before downloading them."
+msgstr "使用 <strong>编辑主题</strong> 可以更改 CDN 提供商、主题或模式，并在下载前手动编辑生成的 <code>theme.css</code>/<code>theme.js</code>。"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.closeLabel"
+msgctxt "cli.scaffold:canvas-theme-editor.closeLabel"
 msgid "Close"
 msgstr "关闭"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
 msgctxt "cli.scaffold:nextStepsDependencies"
-msgid ""
-"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
-"install)"
-msgstr ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
-"install)"
+msgid "2. Installing dependencies (npm install, pnpm install, yarn install or bun install)"
+msgstr "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun install)"
 
 #: packages/scaffold/src/i18n.json
 #, fuzzy, no-c-format
