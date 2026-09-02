@@ -284,17 +284,21 @@ test("TranslationMemory exposes the file path", () => {
 
 type Responder = (prompt: string) => { stdout: string; code?: number; stderr?: string };
 
+/** Basic responder-driven mock; `kill` is a no-op spy (only `useWedgedSpawn` exercises it). */
 function useSpawn(responder: Responder): void {
+  const kill = vi.fn();
   spawn.mockImplementation(() => {
     const child = new EventEmitter() as EventEmitter & {
       stdout: EventEmitter & { setEncoding: () => void };
       stderr: EventEmitter & { setEncoding: () => void };
       stdin: { end: (s: string) => void };
+      kill: typeof kill;
     };
     const stdout = Object.assign(new EventEmitter(), { setEncoding: () => {} });
     const stderr = Object.assign(new EventEmitter(), { setEncoding: () => {} });
     child.stdout = stdout;
     child.stderr = stderr;
+    child.kill = kill;
     child.stdin = {
       end: (prompt: string) => {
         queueMicrotask(() => {
@@ -307,6 +311,25 @@ function useSpawn(responder: Responder): void {
     };
     return child;
   });
+}
+
+/** A child that never emits `close` — simulates a wedged AI agent for timeout testing. */
+function useWedgedSpawn(): { kill: ReturnType<typeof vi.fn> } {
+  const kill = vi.fn();
+  spawn.mockImplementation(() => {
+    const child = new EventEmitter() as EventEmitter & {
+      stdout: EventEmitter & { setEncoding: () => void };
+      stderr: EventEmitter & { setEncoding: () => void };
+      stdin: { end: (s: string) => void };
+      kill: typeof kill;
+    };
+    child.stdout = Object.assign(new EventEmitter(), { setEncoding: () => {} });
+    child.stderr = Object.assign(new EventEmitter(), { setEncoding: () => {} });
+    child.kill = kill;
+    child.stdin = { end: () => {} };
+    return child;
+  });
+  return { kill };
 }
 
 test("spawnPrompt resolves with trimmed stdout on exit 0", async () => {
@@ -328,6 +351,30 @@ test("spawnPrompt includes context in the error message when provided", async ()
 test("spawnPrompt omits the context clause when context is not provided", async () => {
   useSpawn(() => ({ stdout: "", code: 1, stderr: "oops" }));
   await expect(spawnPrompt("cmd", ["-p"], "p")).rejects.toThrow(/exited 1: oops/u);
+});
+
+test("spawnPrompt has no timeout by default — a wedged process hangs forever", async () => {
+  useWedgedSpawn();
+  let settled = false;
+  void spawnPrompt("cmd", ["-p"], "p").finally(() => {
+    settled = true;
+  });
+  await new Promise((r) => setTimeout(r, 10));
+  expect(settled).toBe(false);
+});
+
+test("spawnPrompt kills a wedged process and rejects at timeoutMs", async () => {
+  const { kill } = useWedgedSpawn();
+  await expect(spawnPrompt("cmd", ["-p"], "p", "locale 'hu'", { timeoutMs: 5 })).rejects.toThrow(
+    /timed out after 5ms.*locale 'hu'/u,
+  );
+  expect(kill).toHaveBeenCalledWith("SIGKILL");
+});
+
+test("spawnPrompt does not time out when the process closes before timeoutMs", async () => {
+  useSpawn(() => ({ stdout: "fast\n" }));
+  const out = await spawnPrompt("cmd", ["-p"], "p", undefined, { timeoutMs: 5000 });
+  expect(out).toBe("fast");
 });
 
 // ── runI18nTranslationCli ─────────────────────────────────────────────────────

@@ -58,17 +58,31 @@ export function extractJsonObject(raw: string): Record<string, unknown> | null {
  * @param args    - Extra flags plus the terminal `-p` sentinel (e.g. `["--model", "x", "-p"]`).
  * @param prompt  - The prompt text; written to the child's stdin then the pipe is closed.
  * @param context - Optional label for the error message (e.g. `"locale 'hu'"` or `"foo.md"`).
+ * @param options - `timeoutMs` kills the child and rejects if it hasn't closed in time (no timeout
+ *   by default, preserving existing callers' behavior).
  */
 export function spawnPrompt(
   command: string,
   args: string[],
   prompt: string,
   context?: string,
+  options?: { timeoutMs?: number },
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const child = spawn(command, args, { stdio: ["pipe", "pipe", "pipe"] });
     let out = "";
     let err = "";
+    let settled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    if (options?.timeoutMs !== undefined) {
+      timer = setTimeout(() => {
+        if (settled) return;
+        settled = true;
+        child.kill("SIGKILL");
+        const where = context ? ` for ${context}` : "";
+        reject(new Error(`AI command timed out after ${String(options.timeoutMs)}ms${where}`));
+      }, options.timeoutMs);
+    }
     child.stdout.setEncoding("utf8");
     child.stderr.setEncoding("utf8");
     child.stdout.on("data", (chunk: string) => {
@@ -82,10 +96,18 @@ export function spawnPrompt(
       on(event: "error", listener: (e: Error) => void): void;
       on(event: "close", listener: (code: number | null) => void): void;
     };
-    proc.on("error", reject);
+    proc.on("error", (e) => {
+      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      reject(e);
+    });
     proc.on("close", (code) => {
+      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      const where = context ? ` for ${context}` : "";
       if (code !== 0) {
-        const where = context ? ` for ${context}` : "";
         reject(new Error(`AI command exited ${String(code)}${where}: ${err.trim()}`));
       } else {
         resolve(out.trimEnd());
