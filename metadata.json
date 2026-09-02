@@ -1,0 +1,16 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1G0RWVND5G4JT0GMQH7CXHR",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "packages/scaffold/i18n-cache/en-CA.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "prompt": ""
+    }
+  ]
+}
