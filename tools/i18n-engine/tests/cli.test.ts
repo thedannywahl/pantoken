@@ -10,6 +10,7 @@ let configPath: string;
 let exitSpy: ReturnType<typeof vi.spyOn>;
 let logSpy: ReturnType<typeof vi.spyOn>;
 let errSpy: ReturnType<typeof vi.spyOn>;
+let warnSpy: ReturnType<typeof vi.spyOn>;
 
 const MINIMAL_CONFIG = {
   source: "en",
@@ -28,6 +29,7 @@ beforeEach(() => {
   exitSpy = vi.spyOn(process, "exit").mockImplementation(() => undefined as never);
   logSpy = vi.spyOn(console, "log").mockImplementation(() => {});
   errSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
 });
 
 afterEach(() => {
@@ -44,23 +46,18 @@ async function run(args: string[]): Promise<void> {
   await program.parseAsync(args, { from: "user" });
 }
 
-describe("stub commands (check/lint/stats — no docs.guides implementation yet)", () => {
-  for (const name of ["check", "lint", "stats"]) {
+describe("stub commands (lint/stats — no docs.guides implementation yet)", () => {
+  for (const name of ["lint", "stats"]) {
     test(`"${name}" parses and reports not-yet-implemented`, async () => {
       await run([name]);
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`"${name}" is not implemented`));
       expect(exitSpy).toHaveBeenCalledWith(1);
     });
   }
-
-  test("check accepts --strict", async () => {
-    await run(["check", "--strict"]);
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('"check" is not implemented'));
-  });
 });
 
-describe("extract/translate/render fall back to stub for a non-docs.guides space", () => {
-  for (const name of ["extract", "translate", "render"]) {
+describe("extract/translate/render/check fall back to stub for a non-docs.guides space", () => {
+  for (const name of ["extract", "translate", "render", "check"]) {
     test(`"${name} bogus.space" reports not-yet-implemented`, async () => {
       await run([name, "bogus.space"]);
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`"${name}" is not implemented`));
@@ -129,6 +126,48 @@ describe("docs.guides: extract -> translate -> render (real, no AI provider)", (
     await run(["translate", "docs.guides"]);
     await run(["render", "docs.guides"]);
     expect(existsSync(join(testDir, "docs", "hu", "guide", "a.md"))).toBe(true);
+  });
+
+  test("check reports untranslated drift and sets a warn (non-blocking) exit code", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides", "--locale", "hu"]);
+    process.exitCode = undefined;
+    await run(["check", "docs.guides"]);
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining("docs.guides — translation drift"),
+    );
+    expect(process.exitCode).toBe(0); // primary tier defaults to "warn", not "block"
+    process.exitCode = undefined;
+  });
+
+  test("check --strict escalates warn findings to blocking", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides", "--locale", "hu"]);
+    process.exitCode = undefined;
+    const originalStrict = process.env.I18N_DRIFT_STRICT;
+    await run(["check", "docs.guides", "--strict"]);
+    expect(process.exitCode).toBe(1);
+    process.exitCode = undefined;
+    if (originalStrict === undefined) delete process.env.I18N_DRIFT_STRICT;
+    else process.env.I18N_DRIFT_STRICT = originalStrict;
+  });
+
+  test("check reports no drift once every unit is translated", async () => {
+    await run(["extract", "docs.guides"]);
+    await run(["translate", "docs.guides", "--locale", "hu"]);
+    const poPath = join(testDir, "l10n", "hu", "docs.guides.po");
+    writeFileSync(
+      poPath,
+      readFileSync(poPath, "utf8").replace(
+        'msgid "Hello world."\nmsgstr ""',
+        'msgid "Hello world."\nmsgstr "Szia világ."',
+      ),
+    );
+    process.exitCode = undefined;
+    await run(["check", "docs.guides"]);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("no translation drift"));
+    expect(process.exitCode).toBe(0);
+    process.exitCode = undefined;
   });
 });
 

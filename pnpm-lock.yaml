@@ -3161,6 +3161,9 @@ importers:
 
   tools/i18n-engine:
     dependencies:
+      '@pantoken/translation-adapters':
+        specifier: workspace:*
+        version: link:../translation-adapters
       commander:
         specifier: 'catalog:'
         version: 15.0.0

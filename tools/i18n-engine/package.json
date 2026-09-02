@@ -24,6 +24,7 @@
     "check": "vp check"
   },
   "dependencies": {
+    "@pantoken/translation-adapters": "workspace:*",
     "commander": "catalog:",
     "remark-gfm": "catalog:",
     "remark-parse": "catalog:",

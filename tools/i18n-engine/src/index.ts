@@ -64,9 +64,11 @@ export {
 export {
   DOCS_GUIDES,
   guidesLocales,
+  runCheckGuides,
   runExtractGuides,
   runRenderGuides,
   runTranslateGuides,
+  type CheckResult,
   type ExtractResult,
   type RenderResult,
   type TranslateResult,

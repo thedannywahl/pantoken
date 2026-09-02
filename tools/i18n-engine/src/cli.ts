@@ -2,8 +2,8 @@
  * The `i18n` CLI skeleton — Phase 1/2 of the localization-engine plan.
  *
  * `locale promote/demote/exclude/include` are real (read-modify-write `i18n.config.json`'s
- * `locales` block). `extract`/`translate`/`render` are real for the `docs.guides` space only (see
- * `pipeline.ts`) — every other space, and `check`/`lint`/`stats`, still just parse their selector
+ * `locales` block). `extract`/`translate`/`render`/`check` are real for the `docs.guides` space only
+ * (see `pipeline.ts`) — every other space, and `lint`/`stats`, still just parse their selector
  * surface and report not-yet-implemented.
  *
  * @module
@@ -16,6 +16,7 @@ import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import {
   DOCS_GUIDES,
   guidesLocales,
+  runCheckGuides,
   runExtractGuides,
   runRenderGuides,
   runTranslateGuides,
@@ -140,11 +141,21 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       }),
     );
 
-  for (const name of ["check", "lint", "stats"] as const) {
+  program
+    .command("check")
+    .addArgument(new Argument("[space]", "space id").argOptional())
+    .option("--strict", "treat every warn-level finding as blocking", false)
+    .action((space: string | undefined, opts: { strict: boolean }) =>
+      withDocsGuidesSpace("check", space, (config) => {
+        if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
+        const { exitCode } = runCheckGuides(config, configDirOf());
+        process.exitCode = exitCode;
+      }),
+    );
+
+  for (const name of ["lint", "stats"] as const) {
     const cmd = program.command(name);
     if (name === "stats") cmd.addArgument(new Argument("[space]", "space id").argOptional());
-    if (name === "check")
-      cmd.option("--strict", "treat every warn-level finding as blocking", false);
     cmd.action(stubAction(name));
   }
 

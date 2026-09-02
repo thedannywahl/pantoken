@@ -12,6 +12,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
 import type { I18nConfig } from "./config.ts";
 import { extractGuideSpace, listGuideFiles, renderFile } from "./extract.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
@@ -96,11 +97,7 @@ export function runRenderGuides(
   locale: string,
 ): RenderResult {
   const docsRoot = join(configDir, "docs");
-  const poPath = join(
-    configDir,
-    resolvePattern(config.catalogs.target, { space: DOCS_GUIDES, locale }),
-  );
-  const entries: PoEntry[] = existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
+  const entries = loadPoEntries(config, configDir, locale);
   const byMsgid = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgid, e.msgstr]));
   const resolve = (text: string): string => byMsgid.get(text) ?? text; // untranslated -> English fallback
 
@@ -122,6 +119,59 @@ export function runRenderGuides(
     filesWritten.push(outPath);
   }
   return { space: DOCS_GUIDES, locale, filesWritten };
+}
+
+/** `config.locales.tiers` + `config.defaults.drift` shaped as a `DriftPolicy` for {@link DriftReporter}. */
+function buildDriftPolicy(config: I18nConfig): DriftPolicy {
+  return {
+    tiers: config.locales.tiers,
+    surfaces: {},
+    fallback: { ...config.defaults.drift },
+  };
+}
+
+/** `locale`'s `docs.guides` PO entries, or `[]` if no PO has been generated for it yet. */
+function loadPoEntries(config: I18nConfig, configDir: string, locale: string): PoEntry[] {
+  const poPath = join(
+    configDir,
+    resolvePattern(config.catalogs.target, { space: DOCS_GUIDES, locale }),
+  );
+  return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
+}
+
+export interface CheckResult {
+  reporter: DriftReporter;
+  exitCode: number;
+}
+
+/** `i18n check docs.guides`: reports untranslated units per locale via {@link DriftReporter}. */
+export function runCheckGuides(config: I18nConfig, configDir: string): CheckResult {
+  const docsRoot = join(configDir, "docs");
+  const units = extractGuideSpace(docsRoot);
+  const reporter = new DriftReporter({
+    label: DOCS_GUIDES,
+    fixCommand: "i18n translate docs.guides && i18n render docs.guides",
+    policy: buildDriftPolicy(config),
+  });
+
+  for (const locale of guidesLocales(config)) {
+    if (locale === config.source) continue; // nothing to translate for the source locale itself
+    const entries = loadPoEntries(config, configDir, locale);
+    const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgid));
+    for (const unit of units) {
+      if (translated.has(unit.msgid)) continue;
+      const [file, line] = unit.reference.split(":");
+      reporter.add({
+        surface: DOCS_GUIDES,
+        locale,
+        file,
+        line: line ? Number(line) : undefined,
+        detail: `Untranslated: ${unit.msgid.slice(0, 60)}`,
+      });
+    }
+  }
+
+  return { reporter, exitCode: reporter.report() };
 }
 
 export { DOCS_GUIDES, guidesLocales };
