@@ -1,0 +1,32 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1HB0ZK1CJ4TDNNWSK1367B1",
+  "strategy": "manual-commit",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/i18n-engine-mf2.md",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "tools/i18n-engine/package.json",
+    "tools/i18n-engine/src/index.ts",
+    "tools/i18n-engine/src/mf2.ts",
+    "tools/i18n-engine/tests/mf2.test.ts"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": ""
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}
