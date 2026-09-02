@@ -38,4 +38,18 @@ export {
   resolveTier,
   type LocaleStatus,
 } from "./locales.ts";
+export {
+  escapePoString,
+  parsePo,
+  serializePo,
+  serializePot,
+  unescapePoString,
+  type PoEntry,
+} from "./po.ts";
+export {
+  checkPoFile,
+  isGettextAvailable,
+  mergePoWithTemplate,
+  type PoStatistics,
+} from "./gettext.ts";
 export { createI18nCommand, runI18nCli } from "./cli.ts";
