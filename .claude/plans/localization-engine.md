@@ -449,6 +449,11 @@ Convert its cache to PO, backfilling `msgid` where the hash still matches.
 closes the a11y gap), `docs.chrome`, `cli.scaffold`, `cli.ai`. Apply the verbatim migration and delete
 the demos JSON bloat.
 
+**Restore the CI drift gate before Phase 5.** Re-add `docs:check:drift` to the shared `docs:build`
+pipeline once the new engine produces complete documentation translations. When `i18n check` supersedes
+the legacy check, replace that command in the same CI pipeline so translation drift remains blocking;
+do not delete the legacy drift implementation while CI has no equivalent gate.
+
 **Phase 5 — delete.** `TranslationMemory`, `keyFor`, `segment-markdown.ts`, `segment-demo-html.ts`, the
 `__PTK_` masking layer, `chunkByBudget`, `mapPool`, the poison-cache guard, `AiTranslationAdapter`,
 three `translate.ts`, three `check-drift.ts`, both env-var namespaces, `tools/translation-adapters`.

@@ -629,8 +629,8 @@ jobs:
         run: vp run i18n:check:drift
 
   # Build the site as part of CI, so:
-  #  - PRs get the exact deploy command run — a broken build OR a stale translation cache
-  #    (check-locale-drift) blocks the PR instead of only surfacing in the post-merge Deploy docs run.
+  #  - PRs get the deploy build without regenerating or checking every localized API tree. Those
+  #    full-locale operations remain available locally through `docs:build:all`.
   #  - main pushes upload the built site as `docs-site`, which the Deploy docs workflow publishes
   #    directly (no rebuild).
   # Gated on docs-relevant changes with the same path set the Deploy docs `changes` job uses, so the
@@ -659,7 +659,7 @@ jobs:
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
-      - name: Build docs (locale parity + drift + VitePress build)
+      - name: Build docs (English API + VitePress)
         run: vp run @pantoken/docs#docs:build
         env:
           DOCS_BASE: /
