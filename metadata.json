@@ -1,0 +1,16 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1G1S917MEYCRXSK0JFS257G",
+  "strategy": "manual-commit",
+  "branch": "cli",
+  "checkpoints_count": 3,
+  "files_touched": [
+    "renderers/web-components/src/i18n.json"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "prompt": ""
+    }
+  ]
+}
