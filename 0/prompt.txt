@@ -1,0 +1,1 @@
+we should be working through each of the steps in phase 0 sequentially, and then moving through the other phases sequentially until phase 6 is complete.
