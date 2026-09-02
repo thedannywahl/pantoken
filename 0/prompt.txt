@@ -1,0 +1,7 @@
+review this localization engine plan and beging implementation with the following considerations:
+* incremental conventional commits
+* changesets
+* `vp check`
+* `vp test`
+* robust test coverage
+* passing fallow thresholds
