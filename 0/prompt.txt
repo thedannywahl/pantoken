@@ -1,0 +1,1 @@
+i18n config should carry a proper "$schema" if we need a toolset like c12 that's fine.
