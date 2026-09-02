@@ -33,6 +33,9 @@ catalog:
   "@tokens-studio/sd-transforms": ^2.0.3
   # Rehype / unist
   unist-util-visit: ^5.1.0
+  # Localization-engine offset-splice extraction (see .claude/plans/localization-engine.md)
+  unified: ^11.0.5
+  remark-parse: ^11.0.0
   # markdown-it integration
   markdown-it: ^15.0.1
   # Brand icons (plugin)
