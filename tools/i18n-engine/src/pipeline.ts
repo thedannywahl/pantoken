@@ -223,7 +223,10 @@ export function runExtractMessages(
     msgid: unit.msgid,
     msgctxt: unit.msgctxt,
     reference: space.source,
-    flags: unit.translate === "always" ? [] : [`x-translate-${unit.translate}`],
+    flags:
+      typeof unit.translate === "string" && unit.translate !== "always"
+        ? [`x-translate-${unit.translate}`]
+        : [],
   }));
   writeFileSync(potPath, serializePot(potUnits, config.poOptions.defaultFlags));
   return { space: spaceId, unitCount: units.length, potPath };
