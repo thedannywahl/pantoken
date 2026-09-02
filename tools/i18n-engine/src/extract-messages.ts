@@ -6,12 +6,15 @@
  * @module
  */
 import { readFileSync } from "node:fs";
-import type { TranslateIntent } from "./config.ts";
+import type { TranslateIntent, TranslatePolicy } from "./config.ts";
 import type { CatalogUnit } from "./units.ts";
 
 /** One entry in an `i18n.json` source: a bare string (always translated), or an object with an
  *  explicit `translate` intent. */
-export type MessageSourceEntry = { message: string; translate: TranslateIntent };
+export type MessageSourceEntry = {
+  message: string;
+  translate: TranslateIntent | Readonly<Record<string, TranslateIntent>>;
+};
 
 /** Flat keyed message source as represented by an `i18n.json` file. */
 export type MessageSource = Record<string, MessageSourceEntry>;
@@ -23,7 +26,7 @@ export interface MessageUnit extends CatalogUnit {
   msgctxt: string;
   msgid: string;
   reference: string;
-  translate: TranslateIntent;
+  translate: TranslatePolicy;
 }
 
 /** Parse an already-loaded source into keyed units, optionally qualifying contexts by space. */

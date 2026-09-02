@@ -1,6 +1,6 @@
 /** Shared catalog-unit contracts used by content and messages localization spaces. */
 
-import type { TranslateIntent } from "./config.ts";
+import type { TranslatePolicy } from "./config.ts";
 
 /** One source unit ready for POT generation and PO lookup. */
 export interface CatalogUnit {
@@ -11,7 +11,7 @@ export interface CatalogUnit {
   /** Source location used in PO references and drift annotations. */
   reference: string;
   /** Whether this unit may be sent to a translation provider. */
-  translate: TranslateIntent;
+  translate: TranslatePolicy;
 }
 
 /** Build the collision-safe identity used to deduplicate and resolve catalog units. */
