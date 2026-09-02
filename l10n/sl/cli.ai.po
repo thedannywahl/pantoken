@@ -1,48 +1,45 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "wroteFile"
+msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDescription"
+msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Zapiši pantokenove agentne vire v repozitorij"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitToolDescription"
+msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Orodje agenta (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDirDescription"
+msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Ciljna mapa"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldDescription"
-msgid ""
-"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
-"into it"
-msgstr ""
-"Ustvari začetni projekt (prek @pantoken/scaffold) in vanj namesti agentne "
-"vire"
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
+msgstr "Ustvari začetni projekt (prek @pantoken/scaffold) in vanj namesti agentne vire"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldToolDescription"
+msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Orodje agenta (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpLangDescription"
+msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Prepiši samodejno zaznan jezik prikaza (npr. \"hu\")"

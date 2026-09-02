@@ -216,12 +216,12 @@ export function runExtractMessages(
   spaceId: string,
 ): ExtractResult {
   const space = messagesSpaceConfig(config, spaceId);
-  const units = extractMessagesSpace(join(configDir, space.source));
+  const units = extractMessagesSpace(join(configDir, space.source), spaceId);
   const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
   mkdirSync(dirname(potPath), { recursive: true });
   const potUnits = units.map((unit) => ({
     msgid: unit.msgid,
-    msgctxt: unit.key,
+    msgctxt: unit.msgctxt,
     reference: space.source,
     flags: unit.translate === "always" ? [] : [`x-translate-${unit.translate}`],
   }));
@@ -277,7 +277,7 @@ export function resolveMessagesForLocale(
   locale: string,
 ): ResolvedMessages {
   const space = messagesSpaceConfig(config, spaceId);
-  const units = extractMessagesSpace(join(configDir, space.source));
+  const units = extractMessagesSpace(join(configDir, space.source), spaceId);
   const entries = loadMessagesPoEntries(config, configDir, spaceId, locale);
   const byKey = new Map(
     entries.filter((e) => e.msgstr !== "").map((e) => [catalogUnitKey(e), e.msgstr]),
@@ -295,7 +295,7 @@ export function runCheckMessages(
   spaceId: string,
 ): CheckResult {
   const space = messagesSpaceConfig(config, spaceId);
-  const units: MessageUnit[] = extractMessagesSpace(join(configDir, space.source)).filter(
+  const units: MessageUnit[] = extractMessagesSpace(join(configDir, space.source), spaceId).filter(
     (u) => u.translate !== "never",
   );
   const reporter = new DriftReporter({

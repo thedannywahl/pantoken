@@ -26,15 +26,16 @@ export interface MessageUnit extends CatalogUnit {
   translate: TranslateIntent;
 }
 
-/** Parse an already-loaded `i18n.json`-shaped object into {@link MessageUnit}s, in key order. */
-export function parseMessageSource(raw: MessageSource): MessageUnit[] {
+/** Parse an already-loaded source into keyed units, optionally qualifying contexts by space. */
+export function parseMessageSource(raw: MessageSource, contextPrefix?: string): MessageUnit[] {
   return Object.entries(raw).map(([key, entry]) => {
+    const msgctxt = contextPrefix ? `${contextPrefix}:${key}` : key;
     if (typeof entry === "string") {
-      return { key, msgctxt: key, msgid: entry, reference: key, translate: "always" as const };
+      return { key, msgctxt, msgid: entry, reference: key, translate: "always" as const };
     }
     return {
       key,
-      msgctxt: key,
+      msgctxt,
       msgid: entry.message,
       reference: key,
       translate: entry.translate ?? "always",
@@ -43,7 +44,7 @@ export function parseMessageSource(raw: MessageSource): MessageUnit[] {
 }
 
 /** Read and parse a `src/i18n.json` file at `sourcePath`. */
-export function extractMessagesSpace(sourcePath: string): MessageUnit[] {
+export function extractMessagesSpace(sourcePath: string, contextPrefix?: string): MessageUnit[] {
   const raw = JSON.parse(readFileSync(sourcePath, "utf8")) as MessageSource;
-  return parseMessageSource(raw);
+  return parseMessageSource(raw, contextPrefix);
 }

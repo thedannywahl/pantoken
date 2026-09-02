@@ -195,9 +195,9 @@ describe("ui.strings (a messages-kind space): extract -> translate -> check", ()
   test("extract writes a msgctxt-keyed POT", async () => {
     await run(["extract", "ui.strings"]);
     const pot = readFileSync(join(testDir, "l10n", "ui.strings.pot"), "utf8");
-    expect(pot).toContain('msgctxt "back"');
+    expect(pot).toContain('msgctxt "ui.strings:back"');
     expect(pot).toContain('msgid "Back"');
-    expect(pot).toContain('msgctxt "datePlaceholder"');
+    expect(pot).toContain('msgctxt "ui.strings:datePlaceholder"');
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Extracted 2 unit(s)"));
   });
 

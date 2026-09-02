@@ -1,48 +1,45 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "wroteFile"
+msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDescription"
+msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Գրել pantoken-ի գործակալների ակտիվները ռեպոյի մեջ"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitToolDescription"
+msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Գործակալային գործիք (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDirDescription"
+msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Նպատակային թղթապանակ"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldDescription"
-msgid ""
-"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
-"into it"
-msgstr ""
-"Սկզբնական նախագիծ կառուցել (@pantoken/scaffold միջոցով) և տեղադրել դրա մեջ "
-"գործակալների ակտիվները"
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
+msgstr "Սկզբնական նախագիծ կառուցել (@pantoken/scaffold միջոցով) և տեղադրել դրա մեջ գործակալների ակտիվները"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldToolDescription"
+msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Գործակալային գործիք (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpLangDescription"
+msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Փոխարինել ավտոմատ կերպով հայտնաբերված ցուցադրման լեզուն (օր. \"hu\")"

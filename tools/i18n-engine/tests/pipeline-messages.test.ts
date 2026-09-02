@@ -42,9 +42,9 @@ describe("runExtractMessages", () => {
     const result = runExtractMessages(CONFIG, testDir, "ui.strings");
     expect(result.unitCount).toBe(2);
     const pot = readFileSync(result.potPath, "utf8");
-    expect(pot).toContain('msgctxt "back"');
+    expect(pot).toContain('msgctxt "ui.strings:back"');
     expect(pot).toContain('msgid "Back"');
-    expect(pot).toContain('msgctxt "datePlaceholder"');
+    expect(pot).toContain('msgctxt "ui.strings:datePlaceholder"');
     expect(pot).toContain('msgid "yyyy-mm-dd"');
     expect(pot).toContain("x-translate-optional");
   });

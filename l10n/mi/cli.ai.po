@@ -1,48 +1,45 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "wroteFile"
+msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ Kua tuhia te kōnae: {{path}}"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDescription"
+msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Tuhia ngā rawa ejeneti o pantoken ki roto i te repo"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitToolDescription"
+msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Utauta ejeneti (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDirDescription"
+msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Kōpaki ūnga"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldDescription"
-msgid ""
-"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
-"into it"
-msgstr ""
-"Whakarite he kaupapa tīmatanga (mā @pantoken/scaffold), ka tāuta ngā rawa "
-"ejeneti ki reira"
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
+msgstr "Whakarite he kaupapa tīmatanga (mā @pantoken/scaffold), ka tāuta ngā rawa ejeneti ki reira"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldToolDescription"
+msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Utauta ejeneti (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpLangDescription"
+msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Whakakē i te reo whakaatu i tautuhia aunoa (hei tauira \"hu\")"

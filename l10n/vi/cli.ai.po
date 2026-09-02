@@ -1,48 +1,45 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "wroteFile"
+msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDescription"
+msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Ghi các tài sản agent của pantoken vào repo"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitToolDescription"
+msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Công cụ agent (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpInitDirDescription"
+msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Thư mục đích"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldDescription"
-msgid ""
-"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
-"into it"
-msgstr ""
-"Tạo khung dự án khởi đầu (qua @pantoken/scaffold) và cài đặt các tài sản "
-"agent vào đó"
+msgctxt "cli.ai:helpScaffoldDescription"
+msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
+msgstr "Tạo khung dự án khởi đầu (qua @pantoken/scaffold) và cài đặt các tài sản agent vào đó"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpScaffoldToolDescription"
+msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Công cụ agent (all|cursor|copilot|windsurf)"
 
 #: l10n/sources/cli.ai.json
 #, no-c-format
-msgctxt "helpLangDescription"
+msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Ghi đè ngôn ngữ hiển thị được tự động nhận diện (ví dụ \"hu\")"

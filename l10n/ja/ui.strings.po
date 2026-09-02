@@ -1,44 +1,45 @@
 msgid ""
-msgstr "Content-Type: text/plain; charset=UTF-8\n"
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "prevMonth"
+msgctxt "ui.strings:prevMonth"
 msgid "Previous month"
 msgstr "前の月"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "nextMonth"
+msgctxt "ui.strings:nextMonth"
 msgid "Next month"
 msgstr "次の月"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "dateLabel"
+msgctxt "ui.strings:dateLabel"
 msgid "Date"
 msgstr "日付"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "datePlaceholder"
+msgctxt "ui.strings:datePlaceholder"
 msgid "yyyy-mm-dd"
 msgstr "yyyy-mm-dd"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "openCalendar"
+msgctxt "ui.strings:openCalendar"
 msgid "Open calendar"
 msgstr "カレンダーを開く"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "timeLabel"
+msgctxt "ui.strings:timeLabel"
 msgid "Time"
 msgstr "時刻"
 
 #: renderers/web-components/src/i18n.json
 #, no-c-format
-msgctxt "back"
+msgctxt "ui.strings:back"
 msgid "Back"
 msgstr "戻る"

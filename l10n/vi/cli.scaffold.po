@@ -3,85 +3,85 @@ msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "promptPlatform"
+msgctxt "cli.scaffold:promptPlatform"
 msgid "Select a platform to scaffold:"
 msgstr "Chọn nền tảng để khởi tạo:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "promptDir"
+msgctxt "cli.scaffold:promptDir"
 msgid "Target directory:"
 msgstr "Thư mục đích:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "spinnerStart"
+msgctxt "cli.scaffold:spinnerStart"
 msgid "Scaffolding..."
 msgstr "Đang khởi tạo..."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "spinnerStop"
+msgctxt "cli.scaffold:spinnerStop"
 msgid "Done scaffolding."
 msgstr "Hoàn tất khởi tạo."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "wroteFile"
+msgctxt "cli.scaffold:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "nextStepsHeading"
+msgctxt "cli.scaffold:nextStepsHeading"
 msgid "Next steps:"
 msgstr "Bước tiếp theo:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "nextStepsNav"
+msgctxt "cli.scaffold:nextStepsNav"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "nextStepsInstall"
+msgctxt "cli.scaffold:nextStepsInstall"
 msgid "Install dependencies: {{command}}"
 msgstr "Cài đặt phụ thuộc: {{command}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "nextStepsDevServer"
+msgctxt "cli.scaffold:nextStepsDevServer"
 msgid "Start the dev server (if your template has one)"
 msgstr "Khởi động máy chủ dev (nếu mẫu có)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "notesHeading"
+msgctxt "cli.scaffold:notesHeading"
 msgid "Note:"
 msgstr "Lưu ý:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "caveatsHeading"
+msgctxt "cli.scaffold:caveatsHeading"
 msgid "Caveat:"
 msgstr "Cảnh báo:"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "errorMissingPlatform"
+msgctxt "cli.scaffold:errorMissingPlatform"
 msgid "Missing required argument \"platform\". Expected one of: {{platforms}}"
 msgstr "Thiếu tham số bắt buộc \"platform\". Mong đợi một trong: {{platforms}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "cancelled"
+msgctxt "cli.scaffold:cancelled"
 msgid "Cancelled."
 msgstr "Đã hủy."
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "helpPlatformDescription"
+msgctxt "cli.scaffold:helpPlatformDescription"
 msgid ""
 "Platform to scaffold ({{platforms}}; \"html\" is an alias for "
 "\"components\", \"theme-editor\" is an alias for \"canvas-theme-editor\")"
@@ -91,44 +91,44 @@ msgstr ""
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "helpDirDescription"
+msgctxt "cli.scaffold:helpDirDescription"
 msgid "Target directory (prompts interactively on a TTY if omitted)"
 msgstr "Thư mục đích (nếu bỏ qua sẽ hỏi tương tác khi chạy trên TTY)"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "helpYesDescription"
+msgctxt "cli.scaffold:helpYesDescription"
 msgid ""
 "Never prompt; error instead of prompting for a missing platform/directory"
 msgstr "Không hỏi; báo lỗi thay vì hỏi khi thiếu platform/thư mục"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "helpLangDescription"
+msgctxt "cli.scaffold:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
 msgstr "Ghi đè ngôn ngữ hiển thị được tự động phát hiện (ví dụ: \"hu\")"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.nextSteps.0"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.0"
 msgid "cd {{dir}}"
 msgstr "cd {{dir}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.nextSteps.1"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.1"
 msgid "{{install}}"
 msgstr "{{install}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.nextSteps.2"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.nextSteps.2"
 msgid "{{dev}}"
 msgstr "{{dev}}"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.notes"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.notes"
 msgid ""
 "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / "
 "JavaScript) so pantoken's classes are available on every page."
@@ -138,7 +138,7 @@ msgstr ""
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.caveats"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.caveats"
 msgid ""
 "Canvas sanitizes pasted HTML server-side — always verify content pasted from "
 "the RCE preview in Canvas."
@@ -148,13 +148,13 @@ msgstr ""
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.pageTitle"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageTitle"
 msgid "RCE template authoring"
 msgstr "Soạn mẫu RCE"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.pageDescription"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.pageDescription"
 msgid ""
 "Author Canvas RCE page templates styled with pantoken, with a live preview."
 msgstr ""
@@ -163,145 +163,147 @@ msgstr ""
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.editThemeLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editThemeLabel"
 msgid "Edit theme"
 msgstr "Chỉnh sửa theme"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.helpAriaLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpAriaLabel"
 msgid "Help"
 msgstr "Trợ giúp"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.copyHtmlLabel"
 msgid "Copy HTML"
 msgstr "Sao chép HTML"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.editorPaneLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.editorPaneLabel"
 msgid "Editor"
 msgstr "Trình chỉnh sửa"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.previewPaneLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewPaneLabel"
 msgid "Preview"
 msgstr "Xem trước"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.previewFrameTitle"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.previewFrameTitle"
 msgid "Styled preview"
 msgstr "Bản xem trước đã style"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
+msgctxt ""
+"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenEditorAriaLabel"
 msgid "Fullscreen editor"
 msgstr "Trình chỉnh sửa toàn màn hình"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
+msgctxt ""
+"cli.scaffold:scaffold.canvas-theme-editor.i18n.fullscreenPreviewAriaLabel"
 msgid "Fullscreen preview"
 msgstr "Xem trước toàn màn hình"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.resizePanesAriaLabel"
 msgid "Resize editor and preview"
 msgstr "Thay đổi kích thước trình chỉnh sửa và xem trước"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackVerticallyLabel"
 msgid "Stack vertically"
 msgstr "Xếp theo chiều dọc"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.stackSideBySideLabel"
 msgid "Stack side by side"
 msgstr "Xếp cạnh nhau"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.swapPanesLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.swapPanesLabel"
 msgid "Swap panes"
 msgstr "Đổi chỗ cửa sổ"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeTrayAriaLabel"
 msgid "Theme settings"
 msgstr "Cài đặt theme"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.tabConfigLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabConfigLabel"
 msgid "Config"
 msgstr "Cấu hình"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.tabCssLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabCssLabel"
 msgid "CSS"
 msgstr "CSS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.tabJsLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.tabJsLabel"
 msgid "JS"
 msgstr "JS"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.cdnProviderLabel"
 msgid "CDN provider"
 msgstr "Nhà cung cấp CDN"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.themeLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.themeLabel"
 msgid "Theme"
 msgstr "Giao diện"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.modeLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.modeLabel"
 msgid "Mode"
 msgstr "Chế độ"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.downloadCssLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadCssLabel"
 msgid "Download theme.css"
 msgstr "Tải xuống theme.css"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.downloadJsLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.downloadJsLabel"
 msgid "Download theme.js"
 msgstr "Tải xuống theme.js"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.regenerateLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.regenerateLabel"
 msgid "Regenerate from config"
 msgstr "Tạo lại từ cấu hình"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.helpModalTitle"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalTitle"
 msgid "How to use this page"
 msgstr "Cách sử dụng trang này"
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody1"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody1"
 msgid ""
 "Pick a starter template, edit it like you would in the Canvas Rich Content "
 "Editor, then click <strong>Copy HTML</strong> and paste the result into a "
@@ -317,7 +319,7 @@ msgstr ""
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.helpModalBody2"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.helpModalBody2"
 msgid ""
 "Use <strong>Edit theme</strong> to change the CDN provider, theme, or mode, "
 "and to hand-edit the generated <code>theme.css</code>/<code>theme.js</code> "
@@ -329,22 +331,27 @@ msgstr ""
 
 #: packages/scaffold/src/i18n.json
 #, no-c-format
-msgctxt "scaffold.canvas-theme-editor.i18n.closeLabel"
+msgctxt "cli.scaffold:scaffold.canvas-theme-editor.i18n.closeLabel"
 msgid "Close"
 msgstr "Đóng"
 
 #: packages/scaffold/src/i18n.json
-#, no-c-format
-msgctxt "nextStepsDependencies"
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsDependencies"
 msgid ""
-"2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
+"2. Installing dependencies (npm install, pnpm install, yarn install or bun "
 "install)"
 msgstr ""
 "2. Függőségek telepítése (npm install, pnpm install, yarn install vagy bun "
 "install)"
 
 #: packages/scaffold/src/i18n.json
+#, fuzzy, no-c-format
+msgctxt "cli.scaffold:nextStepsInstallGeneric"
+msgid "2. Installing dependencies"
+msgstr "Cài đặt phụ thuộc: {{command}}"
+
 #, no-c-format
-msgctxt "nextStepsInstallGeneric"
-msgid "2. Függőségek telepítése"
-msgstr "2. Függőségek telepítése"
+#~ msgctxt "cli.scaffold:nextStepsInstallGeneric"
+#~ msgid "2. Függőségek telepítése"
+#~ msgstr "2. Függőségek telepítése"
