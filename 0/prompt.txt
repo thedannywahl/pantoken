@@ -121,3 +121,7 @@ now do the same for tertiary.
 ---
 
 tertiary dark hover background and active background is solid white with solid white text, let's add it to the known issues and use the secondary-on-color background color for those states.  light mode is fine.
+
+---
+
+incremental conventional commits on your changes and push.
