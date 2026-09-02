@@ -24,7 +24,7 @@
 
 ## أمثلة
 
-**إصدار IR لموضوع محدد**
+**إخراج IR لسمة محددة**
 
 ```ts
 import { toCompose } from "@pantoken/compose";

@@ -38,7 +38,7 @@ self:button
 | `.-color-ai-secondary` | إجراء AI ذو تأكيد منخفض. |
 | `.-color-danger` | إجراء مدمّر. |
 | `.-color-primary` | (الافتراضي) الإجراء الأساسي. |
-| `.-color-primary-inverse` | الإجراء الأساسي للخلفيات الداكنة. |
+| `.-color-primary-inverse` | <span class="instui-pill -color-danger pantoken-doc-tag">مهجور</span> — use `.-on-color`. |
 | `.-color-secondary` | إجراء ثانوي بتقليل التركيز. |
 | `.-color-success` | إجراء إيجابي/تأكيدي. |
 | `.-color-tertiary` | إجراء بنمط نصي (بدون تعبئة أو حد حتى التمرير). |
@@ -46,17 +46,18 @@ self:button
 | `.-display-block` | زر عرض كامل بعرض الكتلة. |
 | `.-ghost` | نمط الحدود (شبح): حد بلون رموز الشبح، بدون تعبئة. |
 | `.-icon-*` | عرض رمز من مجموعة الأيقونات قبل التسمية (مثل `-icon-arrow-right`)، مرسوم بلون نص الزر؛ اقترانه بـ `-shape-square`/`-shape-circle` لإنشاء زر أيقونة فقط. |
+| `.-on-color` | For a button placed on a coloured (non-neutral) surface. Composed with `-color-primary` (default) fills white with dark text; composed with `-color-secondary` stays transparent with a white border and text. |
 | `.-shape-circle` | زر أيقونة دائري. |
 | `.-shape-square` | زر أيقونة مربع. |
-| `.-size-large` | كبير. اسم بديل طويل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-md` | (الافتراضي) الحجم المتوسط. |
 | `.-size-medium` | (الافتراضي) الحجم المتوسط. اسم بديل طويل لـ `-size-md`. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم بديل طويل لـ `-size-sm`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 | `.-toggle` | زر تبديل بحالة مضغوطة (تحكّم عبر aria-pressed). |
 | `.-without-background` | إسقاط التعبئة (شبح). |
-| `.-without-border` | إزالة الحد. |
+| `.-without-border` | إزالة الحدود. |
 
 ## عناصر زائفة
 
@@ -97,6 +98,10 @@ self:button
 | `--instui-color-background-interactive-action-primary-base` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
 | `--instui-color-background-interactive-action-primary-disabled` | `<color>` | `light-dark(#DFE1E3, #334450)` |
 | `--instui-color-background-interactive-action-primary-hover` | `<color>` | `light-dark(#234465, #ffffff)` |
+| `--instui-color-background-interactive-action-primary-on-color-active` | `<color>` | `#B6CCEA` |
+| `--instui-color-background-interactive-action-primary-on-color-base` | `<color>` | `#ffffff` |
+| `--instui-color-background-interactive-action-primary-on-color-disabled` | `<color>` | `#8D959F` |
+| `--instui-color-background-interactive-action-primary-on-color-hover` | `<color>` | `#D5E2F6` |
 | `--instui-color-background-interactive-action-secondary-active` | `<color>` | `light-dark(#44709F, #2E5177)` |
 | `--instui-color-background-interactive-action-secondary-base` | `<color>` | `light-dark(#44709F, #345B84)` |
 | `--instui-color-background-interactive-action-secondary-hover` | `<color>` | `light-dark(#44709F, #3E6895)` |
@@ -114,9 +119,17 @@ self:button
 | `--instui-color-stroke-interactive-action-primary-active` | `<color>` | `light-dark(#061C30, #D5E2F6)` |
 | `--instui-color-stroke-interactive-action-primary-base` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
 | `--instui-color-stroke-interactive-action-primary-hover` | `<color>` | `light-dark(#234465, #ffffff)` |
+| `--instui-color-stroke-interactive-action-primary-on-color-active` | `<color>` | `#B6CCEA` |
+| `--instui-color-stroke-interactive-action-primary-on-color-base` | `<color>` | `#ffffff` |
+| `--instui-color-stroke-interactive-action-primary-on-color-disabled` | `<color>` | `#8D959F` |
+| `--instui-color-stroke-interactive-action-primary-on-color-hover` | `<color>` | `#D5E2F6` |
 | `--instui-color-stroke-interactive-action-secondary-active` | `<color>` | `light-dark(#44709F, #2E5177)` |
 | `--instui-color-stroke-interactive-action-secondary-base` | `<color>` | `light-dark(#44709F, #345B84)` |
 | `--instui-color-stroke-interactive-action-secondary-hover` | `<color>` | `light-dark(#44709F, #3E6895)` |
+| `--instui-color-stroke-interactive-action-secondary-on-color-active` | `<color>` | `#B6CCEA` |
+| `--instui-color-stroke-interactive-action-secondary-on-color-base` | `<color>` | `#ffffff` |
+| `--instui-color-stroke-interactive-action-secondary-on-color-disabled` | `<color>` | `#8D959F` |
+| `--instui-color-stroke-interactive-action-secondary-on-color-hover` | `<color>` | `#D5E2F6` |
 | `--instui-color-stroke-interactive-action-tertiary-base` | `<color>` | `light-dark(#86A8D5, #7097C7)` |
 | `--instui-color-text-interactive-action-ai-active` | `<color>` | `#ffffff` |
 | `--instui-color-text-interactive-action-ai-base` | `<color>` | `#ffffff` |
@@ -125,7 +138,15 @@ self:button
 | `--instui-color-text-interactive-action-ai-secondary-top-gradient-base` | `<color>` | `light-dark(#944FB3, #CAA1D9)` |
 | `--instui-color-text-interactive-action-primary-base` | `<color>` | `light-dark(#ffffff, #1D354F)` |
 | `--instui-color-text-interactive-action-primary-disabled` | `<color>` | `light-dark(#9EA6AD, #6A7883)` |
+| `--instui-color-text-interactive-action-primary-on-color-active` | `<color>` | `#213D5B` |
+| `--instui-color-text-interactive-action-primary-on-color-base` | `<color>` | `#213D5B` |
+| `--instui-color-text-interactive-action-primary-on-color-disabled` | `<color>` | `#4A5B68` |
+| `--instui-color-text-interactive-action-primary-on-color-hover` | `<color>` | `#213D5B` |
 | `--instui-color-text-interactive-action-secondary-base` | `<color>` | `light-dark(#1D354F, #ffffff)` |
+| `--instui-color-text-interactive-action-secondary-on-color-active` | `<color>` | `#ffffff` |
+| `--instui-color-text-interactive-action-secondary-on-color-base` | `<color>` | `#ffffff` |
+| `--instui-color-text-interactive-action-secondary-on-color-disabled` | `<color>` | `#9EA6AD` |
+| `--instui-color-text-interactive-action-secondary-on-color-hover` | `<color>` | `#ffffff` |
 | `--instui-color-text-interactive-action-status-base` | `<color>` | `#ffffff` |
 | `--instui-color-text-interactive-action-tertiary-base` | `<color>` | `light-dark(#1D354F, #EEF4FD)` |
 | `--instui-component-base-button-border-radius` | `<length>` | `0.75rem` |

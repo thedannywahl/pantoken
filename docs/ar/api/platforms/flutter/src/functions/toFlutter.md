@@ -24,7 +24,7 @@
 
 ## أمثلة
 
-**إصدار IR لسمة محددة**
+**إخراج IR لسمة محددة**
 
 ```ts
 import { toFlutter } from "@pantoken/flutter";

@@ -24,7 +24,7 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-السمة التي سيتم إنتاجها (الافتراضي: `"rebrand"`).
+السمة التي سيتم إصدارها (الافتراضي: `"rebrand"`).
 
 ***
 

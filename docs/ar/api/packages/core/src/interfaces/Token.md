@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-رمز تصميم واحد في تمثيل IR القياسي المتوافق مع `@property`.
+رمز تصميم واحد في IR المعتمد المحاذي لـ `@property`.
 
 ## الخصائص
 
@@ -20,7 +20,8 @@
 
 > **syntax**: `string`
 
-وَاصِف `syntax` الخاص بـ `@property` (`"&lt;color&gt;"`, `"&lt;length&gt;"`, `"&lt;image&gt;"`, …) أو `"*"` للقيم السياقية.
+مُوَصِّف `syntax` الخاص بـ `@property` (`"&lt;color&gt;"`, `"&lt;length&gt;"`,
+  `"&lt;image&gt;"`, …) أو `"*"` للقيم السياقية.
 
 ***
 
@@ -36,7 +37,7 @@
 
 > **value**: `string`
 
-قيمة ملموسة، إشارة `var(...)`، أو زوج `light-dark(a, b)`.
+قيمة محددة، أو مرجع `var(...)`، أو زوج `light-dark(a, b)`.
 
 ***
 
@@ -46,7 +47,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-صحيح عندما تختلف النسختان الفاتحة والداكنة (القيمة هي `light-dark()`).
+صحيح عندما تختلف حلول الضوء والظلام (القيمة هي `light-dark()`).
 
 ***
 
@@ -56,7 +57,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الرمز الذي يشير إليه هذا العنصر، عندما يكون `value` عبارة عن `var(...)` واحد.
+الرمز الذي يشير إليه هذا، عندما يكون `value` هو `var(...)` واحد.
 
 ***
 

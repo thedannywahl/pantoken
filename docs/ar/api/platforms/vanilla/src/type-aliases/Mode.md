@@ -6,4 +6,4 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-وضع اللون الذي سيتم حله عند تسطيح قيم `light-dark()`.
+نمط اللون الذي يجب حله عند تسطيح قيم `light-dark()`.

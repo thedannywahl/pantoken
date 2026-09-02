@@ -6,11 +6,11 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء إضافة PostCSS mangle-custom-properties.
+إنشاء ملحق PostCSS mangle-custom-properties.
 
-يجمع جميع أسماء الخصائص المخصصة التي تطابق `prefix` من خصائص التصريحات، مراجع `var()`،
-ومعاملات `@property`. يرتبها أبجديًا للحصول على ترميز ثابت وحتمي، ثم
-يعين أسماء قصيرة باستخدام `method` المختار. يستبدل كل ظهور في كامل ورقة الأنماط.
+يجمع جميع أسماء الخصائص المخصصة المطابقة لـ `prefix` من خصائص التعريف، `var()` المراجع،
+ومعاملات `@property`. يقوم بفرزها أبجديًا للحصول على تعيين ثابت وحتمي، ثم
+يُسند أسماء قصيرة باستخدام `method` المختار. يستبدل كل ظهور في ورقة الأنماط بأكملها.
 
 ## Type Declaration
 
@@ -26,7 +26,7 @@
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكوّن إضافي لـ PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
@@ -36,7 +36,7 @@
 
 ## أمثلة
 
-**تشويش بالإعدادات الافتراضية (--instui-\\*, base26)**
+**تشويه بالإعدادات الافتراضية (--instui-\*, base26)**
 
 ```ts
 import postcss from "postcss";
@@ -45,7 +45,7 @@ import { mangleCustomProps } from "@pantoken/plugin-mangle-custom-props";
 const out = postcss([mangleCustomProps()]).process(css, { from: undefined }).css;
 ```
 
-**مشاركة المخطط بين ملفين يتم تحميلهما معًا**
+**مشاركة التعيين عبر ملفين تم تحميلهما معًا**
 
 ```ts
 import postcss from "postcss";
@@ -57,7 +57,7 @@ const componentCss = postcss([mangleCustomProps({ sharedManifest: manifest })]).
 // both files use the same --instui-* → --a mapping
 ```
 
-**استخدام أسماء base36 وإخراج المخطط عبر result.messages**
+**استخدام أسماء base36 وإخراج التعيين عبر result.messages**
 
 ```ts
 import postcss from "postcss";

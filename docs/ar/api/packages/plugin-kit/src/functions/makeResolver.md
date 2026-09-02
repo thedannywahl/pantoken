@@ -6,17 +6,15 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء محلل يحوّل مراجع `var(--x)` إلى قيم نهائية ملموسة مقابل `base` (بالإضافة إلى
-أي `overrides`). مع `mode` يقوم بطي `light-dark()` إلى ذلك الفرع؛ وبدونه يترك
-`light-dark()` في مكانه.
+بِنِاء محلل يوسِّع مراجع `var(--x)` إلى قيم أوراق ملموسة مقابل `base` (بالإضافة إلى\nأي `overrides`). مع `mode` يطوي `light-dark()` إلى ذلك الفرع؛ وبدونه، يترك\n`light-dark()` في مكانه.
 
 ## المعلمات
 
 ### base
 
-readonly [`Token`](../../../core/src/interfaces/Token.md)[]
+قابل للقراءة فقط [`Token`](../../../core/src/interfaces/Token.md)[]
 
-مجموعة الرموز المستخدمة لحل المراجع مقابلها.
+مجموعة الرموز لحل المراجع مقابلها.
 
 ### options?
 
@@ -26,13 +24,13 @@ readonly [`Token`](../../../core/src/interfaces/Token.md)[]
 
 ## القيم المرجعة
 
-دالة تقوم بحل سلسلة القيمة.
+دالة تحل سلسلة قيمة.
 
 (`value`) => `string`
 
 ## أمثلة
 
-**توسيع سلسلة المراجع إلى قيمتها النهائية الملموسة**
+**توسيع سلسلة المرجع إلى ورقتها النهائية الملموسة**
 
 ```ts
 import { makeResolver } from "@pantoken/utils";
@@ -47,7 +45,7 @@ const resolve = makeResolver(ir);
 resolve("var(--instui-brand)"); // → "#0374B5"
 ```
 
-**طي light-dark() باستخدام وضع، أو الاحتفاظ به بدون وضع**
+**طي light-dark() بوضع، أو الاحتفاظ بها بدون واحد**
 
 ```ts
 import { makeResolver } from "@pantoken/utils";
@@ -62,7 +60,7 @@ makeResolver(ir, { mode: "light" })("var(--instui-bg)"); // → "#fff"
 makeResolver(ir, { mode: "dark" })("var(--instui-bg)");  // → "#000"
 ```
 
-**تراكب التجاوزات التي تنتصر عند تصادم الأسماء**
+**تراكب تجاوزات تفوز عند تضارب الأسماء**
 
 ```ts
 import { makeResolver } from "@pantoken/utils";

@@ -12,7 +12,7 @@
 
 ### swatches
 
-readonly [`Swatch`](../interfaces/Swatch.md)[]
+للقراءة فقط [`Swatch`](../interfaces/Swatch.md)[]
 
 لوحة الألوان.
 

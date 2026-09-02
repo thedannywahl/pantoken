@@ -14,7 +14,7 @@
 
 للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-تمثيل الرموز (IR) (مثلًا من `@pantoken/tokens`).
+الـ IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### options?
 
@@ -30,7 +30,7 @@
 
 ## أمثلة
 
-**تصدير المتغيرات الافتراضية (الوضع الفاتح)**
+**إصدار المتغيرات الافتراضية (الوضع الفاتح)**
 
 ```ts
 import { toLess } from "@pantoken/less";
@@ -39,7 +39,7 @@ import { tokens } from "@pantoken/tokens";
 toLess(tokens); // "@instui-color-brand: #0374b5;\n…"
 ```
 
-**تحديد وضع الظلام لموضوع آخر**
+**حل وضع الظلام لموضوع آخر**
 
 ```ts
 import { toLess } from "@pantoken/less";

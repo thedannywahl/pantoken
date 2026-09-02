@@ -59,12 +59,12 @@ flowchart TD
 | `.-align-content-center` | محاذاة النص عمودياً في منتصف جانب الشخصية الرئيسية. |
 | `.-align-content-top` | محاذاة النص إلى أعلى الشخصية الرئيسية. |
 | `.-icon-*` | عرض رمز غليف قيادي قبل كتلة النص. |
-| `.-size-large` | كبير. اسم طويل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-md` | متوسط. |
-| `.-size-medium` | متوسط. اسم طويل لـ `-size-md`. |
+| `.-size-medium` | متوسط. تسمية طويلة لـ `-size-md`. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم طويل لـ `-size-sm`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 
 ## الأجزاء
 
@@ -94,5 +94,5 @@ flowchart TD
 
 ## دعم المتصفّح
 
-- يحتوي أنماط عنصره باستخدام قاعدة CSS `@scope` at-rule؛ يتطلب إصدار حديث من Chromium أو Firefox أو Safari.
+- يحتوي أنماط عنصره باستخدام قاعدة CSS `@scope`; يتطلب متصفح Chromium أو Firefox أو Safari حديث.
 

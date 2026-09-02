@@ -38,14 +38,14 @@
 | `.-color-secondary-on` | اللون الثانوي للنص على خلفية ملونة. |
 | `.-color-success` | لون نص النجاح. |
 | `.-color-warning` | لون نص التحذير. |
-| `.-size-large` | كبير. اسم بديل طويل المدى لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم بديل طويل المدى لـ `-size-sm`. |
-| `.-size-x-large` | كبير جدًّا. اسم بديل طويل المدى لـ `-size-xl`. |
-| `.-size-x-small` | صغير جدًّا. اسم بديل طويل المدى لـ `-size-xs`. |
-| `.-size-xl` | كبير جدًّا. |
-| `.-size-xs` | صغير جدًّا. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
+| `.-size-x-large` | كبير جدًا. اسم بديل طويل لـ `-size-xl`. |
+| `.-size-x-small` | صغير جدًا. اسم بديل طويل لـ `-size-xs`. |
+| `.-size-xl` | كبير جدًا. |
+| `.-size-xs` | صغير جدًا. |
 | `.-style-italic` | مائل. |
 | `.-transform-capitalize` | اجعل كل كلمة تبدأ بحرف كبير. |
 | `.-transform-lowercase` | حوّل النص إلى أحرف صغيرة. |

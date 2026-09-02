@@ -20,7 +20,7 @@
 
 [`Mode`](../type-aliases/Mode.md) = `"light"`
 
-أي وضع لون يتم حله (الافتراضي `"light"`).
+أي وضع ألوان يجب حله (الافتراضي `"light"`).
 
 ## القيم المرجعة
 
@@ -40,7 +40,7 @@ const doc = toDtcg(tokens);
 // doc.color.background.brand === { $value: "#0374b5", $type: "color" }
 ```
 
-**حل الوضع الداكن لمظهر آخر**
+**حل وضع الظلام لموضوع آخر**
 
 ```ts
 import { toDtcg } from "@pantoken/dtcg";

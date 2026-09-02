@@ -20,14 +20,14 @@
 
 | معدّل | الوصف |
 | --- | --- |
-| `.--overflow-x-auto` | overflow-x: auto. |
-| `.--overflow-x-clip` | overflow-x: clip. |
-| `.--overflow-x-hidden` | overflow-x: hidden. |
-| `.--overflow-x-scroll` | overflow-x: scroll. |
-| `.--overflow-x-visible` | overflow-x: visible. |
-| `.--overflow-y-auto` | overflow-y: auto. |
-| `.--overflow-y-clip` | overflow-y: clip. |
-| `.--overflow-y-hidden` | overflow-y: hidden. |
-| `.--overflow-y-scroll` | overflow-y: scroll. |
-| `.--overflow-y-visible` | overflow-y: visible. |
+| `.--overflow-x-auto` | الانسياب-أفقي: auto. |
+| `.--overflow-x-clip` | الانسياب-أفقي: clip. |
+| `.--overflow-x-hidden` | الانسياب-أفقي: hidden. |
+| `.--overflow-x-scroll` | الانسياب-أفقي: scroll. |
+| `.--overflow-x-visible` | الانسياب-أفقي: visible. |
+| `.--overflow-y-auto` | الانسياب-عمودي: auto. |
+| `.--overflow-y-clip` | الانسياب-عمودي: clip. |
+| `.--overflow-y-hidden` | الانسياب-عمودي: hidden. |
+| `.--overflow-y-scroll` | الانسياب-عمودي: scroll. |
+| `.--overflow-y-visible` | الانسياب-عمودي: visible. |
 

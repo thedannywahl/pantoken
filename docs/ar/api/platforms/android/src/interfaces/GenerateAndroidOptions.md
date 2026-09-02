@@ -24,7 +24,7 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-السمة لإصدارها (الافتراضي: `"rebrand"`).
+السمة التي سيتم إصدارها (الافتراضي: `"rebrand"`).
 
 ***
 
@@ -34,7 +34,7 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-أي وضع `light-dark()` يجب حله (الافتراضي: `"light"`).
+أي وضع `light-dark()` لحله (الافتراضي: `"light"`).
 
 ***
 

@@ -14,7 +14,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مُحلل صريح، يُجرَّب قبل مجموعة أيقونات pantoken المدمجة.
+مُحلل محدد صراحةً، يُجرب قبل مجموعة أيقونات pantoken المدمجة.
 
 ***
 
@@ -24,4 +24,4 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الإضافات التي تُساهم خطافات `rehype` الخاصة بها في المُحللات (تُجرَّب أولاً).
+الإضافات التي تُساهم خطافات `rehype` فيها بالمحللات (تُجرب أولاً).

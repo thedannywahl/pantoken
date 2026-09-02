@@ -23,7 +23,7 @@
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-ملحق [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) يحتوي على الخطاف `css`.
+مكون إضافي من نوع [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) يحتوي على خطاف `css`.
 
 ## مثال
 

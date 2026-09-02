@@ -6,11 +6,11 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كل شعار متاح، مرتّب حسب الاسم.
+كل شعار متاح، مُرتَّب حسب الاسم.
 
 ## مثال
 
-**سرد التخطيطات المتاحة لـ Canvas**
+**قائمة بالتخطيطات المتاحة لـ Canvas**
 
 ```ts
 import { logos } from "@pantoken/plugin-logos";

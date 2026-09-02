@@ -6,4 +6,4 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-ورقة أنماط الجسر الجاهزة.
+ورقة الأنماط الجاهزة للجسر.

@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مُعدّل لون في Tokens Studio (`$extensions."studio.tokens".modify`).
+مُعدِّل ألوان في Tokens Studio (`$extensions."studio.tokens".modify`).
 
 ## الخصائص
 
@@ -14,7 +14,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-التعديل المطبق على اللون المحلل.
+التعديل المُطبّق على اللون المحلّل.
 
 ***
 
@@ -24,7 +24,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مقدار المُعدّل، `0`–`1`.
+مقدار المُعدِّل، `0`–`1`.
 
 ***
 
@@ -34,7 +34,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مساحة اللون التي يعمل فيها المُعدّل (مثال: `"hsl"`).
+فضاء اللون الذي يعمل فيه المُعدِّل (مثال: `"hsl"`).
 
 ***
 

@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بيانات وصفية غير متعلقة بالقيمة مرتبطة بـ [Token](Token.md).
+بيانات وصفية غير قيمية مرتبطة بـ [Token](Token.md).
 
 ## الخصائص
 
@@ -14,7 +14,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-يعرّف توكن أيقونة (حقل `syntax` له قيمة `"&lt;image&gt;"`).
+يشير إلى توكن أيقونة (خاصيته `syntax` هي `"&lt;image&gt;"`).
 
 ***
 
@@ -34,7 +34,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-الـ `viewBox` بصيغة SVG لشكل الأيقونة.
+خاصية SVG `viewBox` لشكل الأيقونة.
 
 ***
 
@@ -54,7 +54,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مصدر شكل الأيقونة.
+منشأ شكل الأيقونة.
 
 ***
 
@@ -64,7 +64,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مُعدِّل لون محفوظ للنسب الأصلية (Style Dictionary).
+معدل لون محفوظ للنسب الأصلية (Style Dictionary).
 
 ***
 
@@ -74,7 +74,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-موجود في توكن سد التوافق (من `DeprecationEntry`).
+موجود على توكن وسيط التوافق (من `DeprecationEntry`).
 
 #### replacement?
 

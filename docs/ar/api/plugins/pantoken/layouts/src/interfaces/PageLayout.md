@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تخطيط صفحة بداية: تركيب بسيط من المكونات الموجودة، بدون محددات CSS جديدة.
+تخطيط صفحة مبدئي: تركيب بسيط للمكونات الموجودة، دون محددات CSS جديدة.
 
 ## الخصائص
 
@@ -14,7 +14,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-معرّف ثابت، يطابق اسم ملف المصدر (مثال `"hero"`).
+معرّف ثابت، يطابق اسم الملف المصدر (مثال `"hero"`).
 
 ***
 
@@ -24,7 +24,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-التسمية المعروضة في مُحدِّد التخطيط.
+التسمية المعروضة في أداة اختيار التخطيط.
 
 ***
 
@@ -34,4 +34,4 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-كود HTML خام للتخطيط، مبني من أصناف `@pantoken/components`.
+HTML خام للتخطيط، مبني من أصناف `@pantoken/components`.

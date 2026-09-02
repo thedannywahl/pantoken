@@ -34,5 +34,5 @@ import { addScope } from "@pantoken/pendo";
 
 const { css } = postcss([addScope({ selector: "._pendo-step-container" })])
   .process(".x{color:red}", { from: undefined });
-// "@scope (._pendo-step-container) { .x{color:red} }"
+// "@scope ([class*=\"instui\"]._pendo-step-container) { .x{color:red} }"
 ```

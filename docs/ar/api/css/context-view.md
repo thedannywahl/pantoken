@@ -24,10 +24,10 @@
 | معدّل | الوصف |
 | --- | --- |
 | `.-color-inverse` | نظام ألوان داكن (عكسي). |
-| `.-placement-bottom` | يظهر أسفل العنصر المرساة. |
-| `.-placement-end` | يظهر عند النهاية الداخلية للعنصر المرساة (inline-end). |
-| `.-placement-start` | يظهر عند البداية الداخلية للعنصر المرساة (inline-start). |
-| `.-placement-top` | يظهر أعلى العنصر المرساة. |
+| `.-placement-bottom` | الجلوس أسفل المرساة. |
+| `.-placement-end` | الجلوس عند النهاية (inline-end) من المرساة. |
+| `.-placement-start` | الجلوس عند البداية (inline-start) من المرساة. |
+| `.-placement-top` | الجلوس فوق المرساة. |
 
 ## عناصر زائفة
 

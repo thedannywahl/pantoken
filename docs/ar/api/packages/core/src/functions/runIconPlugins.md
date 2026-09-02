@@ -18,7 +18,7 @@
 
 ### plugins
 
-للقراءة فقط [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]
+قراءة فقط [`PantokenPlugin`](../interfaces/PantokenPlugin.md)[]
 
 ### theme?
 

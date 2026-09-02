@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-السياق المُمرّر إلى خطاف `tokens` الخاص بالمكوّن الإضافي.
+السياق الممرَّر إلى هوك `tokens` الخاص بالإضافة.
 
 ## الخصائص
 

@@ -26,13 +26,13 @@
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-ملحق PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-علامة ملحق PostCSS المطلوبة.
+علامة مكوّن PostCSS المطلوبة.
 
 ## أمثلة
 

@@ -6,13 +6,13 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-حوّل قيمة كل توكن مقابل المجموعة (انظر [makeResolver](makeResolver.md))، مفهرسة حسب الاسم.
+حل قيمة كل توكن مقابل المجموعة (انظر [makeResolver](makeResolver.md))، مفهرسة حسب الاسم.
 
 ## المعلمات
 
 ### base
 
-للقراءة فقط [`Token`](../../../core/src/interfaces/Token.md)[]
+قابل للقراءة فقط [`Token`](../../../core/src/interfaces/Token.md)[]
 
 ### options?
 
@@ -24,7 +24,7 @@
 
 ## مثال
 
-**حل تمثيل IR كامل إلى خريطة اسم → قيمة**
+**حل IR كامل إلى خريطة اسم → قيمة**
 
 ```ts
 import { resolveTokens } from "@pantoken/utils";

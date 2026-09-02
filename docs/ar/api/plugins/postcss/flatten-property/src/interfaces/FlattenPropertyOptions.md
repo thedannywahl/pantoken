@@ -28,10 +28,10 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ماذا يُفعل مع at-rule من نوع `@property` لا يحتوي على واصف `initial-value`.
+ماذا يجب فعله مع قاعدة `@property` (at-rule) التي لا تحتوي على واصف `initial-value`.
 
-- `"remove"` — إسقاط الـ at-rule (الافتراضي).
-- `"keep"` — إبقاؤه في الإخراج دون تغيير.
+- `"remove"` — استبعد الـ at-rule (افتراضي).
+- `"keep"` — اتركها في الناتج دون تغيير.
 
 #### القيمة الافتراضية
 

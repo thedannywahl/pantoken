@@ -20,4 +20,4 @@
 
 [`PantokenPlugin`](../../../../../packages/core/src/interfaces/PantokenPlugin.md)
 
-مكوّن [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مع هوك `tokens`.
+مكوّن [PantokenPlugin](../../../../../packages/core/src/interfaces/PantokenPlugin.md) مزود بخطاف `tokens`.

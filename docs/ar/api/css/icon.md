@@ -36,5 +36,5 @@
 
 | رمز | نوع | قيمة |
 | --- | --- | --- |
-| `--pantoken-glyph` | `<url>` | — |
+| `--pantoken-glyph` | `<url>` | `url("data:image/svg+xml` |
 

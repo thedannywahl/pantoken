@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-خيارات __PTK_INLINE_CODE_0__ لمعالجة [mangleCustomProps](../variables/mangleCustomProps.md).
+خيارات لـ [mangleCustomProps](../variables/mangleCustomProps.md).
 
 ## الخصائص
 
@@ -14,7 +14,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-سيتم تشفير أسماء الخصائص المخصصة فقط إذا كانت تبدأ بهذه السلسلة.
+يتم تغيير أسماء الخصائص المخصصة فقط إذا بدأت بهذه السلسلة.
 
 #### القيمة الافتراضية
 
@@ -46,8 +46,8 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-عند `true`، يُضاف إدخال `mangle-map` إلى `result.messages` الخاص بـ PostCSS بعد المعالجة.
-الشكل العام للرسالة هو `{ type: "mangle-map", plugin: "pantoken-mangle-custom-props", map: Map<string, string> }`.
+عند `true`، تُضيف إدخال `mangle-map` إلى PostCSS `result.messages` بعد المعالجة.
+الرسالة لها الشكل `{ type: "mangle-map", plugin: "pantoken-mangle-custom-props", map: Map<string, string> }`.
 
 #### القيمة الافتراضية
 
@@ -61,9 +61,8 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-`Map` قابل للتغيير ومشترك عبر تمريرات PostCSS متعددة.
+`Map` قابل للتغيير ويُشارك عبر عدة تمريرات PostCSS.
 
-في كل تمريرة يقرأ الملحق الإدخالات الموجودة (مستعملاً أسماؤها القصيرة القائمة) ويكتب إدخالات جديدة
-(مُتابعًا العداد من `sharedManifest.size`). مرِّر نفس مثيل `Map` إلى كل استدعاء `mangleCustomProps` أو `applyMinify` الذي يعالج ملفات CSS التي ستُحمَّل معًا في المتصفح — هذا يضمن أن جميع الملفات تستخدم تخطيط أسماء مطابق.
+في كل تمريرة يقرأ الملحق الإدخالات الموجودة (مع إعادة استخدام أسمائها القصيرة) ويكتب إدخالات جديدة (مع استمرار العداد من `sharedManifest.size`). مرّر نفس مثيل `Map` إلى كل استدعاء `mangleCustomProps` أو `applyMinify` الذي يعالج ملفات CSS التي ستُحمَّل معًا في المتصفح — هذا يضمن أن جميع الملفات تستخدم خريطة أسماء متطابقة.
 
-عالج ورقة الرموز أولاً حتى تُزرع أسماؤها في البيان (manifest) قبل أن تضيف أوراق المكوّنات مراجعها (التي عادةً ما تتداخل).
+عالج ورقة الرموز أولًا حتى تُزرَع أسماؤها في البيان (manifest) قبل أن تضيف أوراق المكونات مراجعها (التي تتداخل عادةً).

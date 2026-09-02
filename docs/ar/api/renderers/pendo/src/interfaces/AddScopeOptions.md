@@ -14,4 +14,4 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-محدد جذر النطاق (الافتراضي `._pendo-step-container`).
+The scope root selector (default `[class*="instui"]._pendo-step-container`).

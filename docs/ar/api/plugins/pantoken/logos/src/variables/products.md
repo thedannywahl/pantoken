@@ -6,7 +6,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المنتجات التي تحتوي على شعارات.
+المنتجات التي لها شعارات.
 
 ## مثال
 

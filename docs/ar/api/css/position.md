@@ -20,9 +20,9 @@
 
 | معدّل | الوصف |
 | --- | --- |
-| `.--position-absolute` | الموضع: مطلق. |
-| `.--position-fixed` | الموضع: ثابت. |
-| `.--position-relative` | الموضع: نسبي. |
-| `.--position-static` | الموضع: ثابت (static). |
-| `.--position-sticky` | الموضع: لاصق. |
+| `.--position-absolute` | الموضع: absolute. |
+| `.--position-fixed` | الموضع: fixed. |
+| `.--position-relative` | الموضع: relative. |
+| `.--position-static` | الموضع: static. |
+| `.--position-sticky` | الموضع: sticky. |
 

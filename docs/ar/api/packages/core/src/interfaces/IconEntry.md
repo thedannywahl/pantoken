@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-أيقونة محلولة، كما يعيدها [IconResolver](../type-aliases/IconResolver.md).
+أيقونة مُحللة، كما يُرجعها [IconResolver](../type-aliases/IconResolver.md).
 
 ## الخصائص
 
@@ -24,7 +24,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-علامة SVG مضمنة، عندما تكون متاحة.
+وسم SVG المضمّن، عند التوفر.
 
 ***
 
@@ -34,7 +34,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-بيانات مسار SVG، للأيقونات العلامية ذات المسار الواحد.
+بيانات مسار SVG، لأيقونات العلامة التجارية ذات المسار الواحد.
 
 ***
 
@@ -54,4 +54,4 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المزود الذي أنشأ هذا الإدخال.
+المزوِّد الذي أنشأ هذا الإدخال.

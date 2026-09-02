@@ -14,4 +14,4 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-الوضع اللوني الذي سيتم حله (الافتراضي `"light"`).
+أي وضع ألوان يجب حله (الافتراضي `"light"`).

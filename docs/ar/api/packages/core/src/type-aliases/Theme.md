@@ -6,4 +6,4 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-ثيم لوني متاح في `@instructure/instructure-design-tokens`.
+سمة ألوان متاحة في `@instructure/instructure-design-tokens`.

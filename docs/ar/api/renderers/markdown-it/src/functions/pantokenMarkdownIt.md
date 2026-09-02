@@ -28,7 +28,7 @@
 
 ## مثال
 
-**تأليف مُحلّل مكوّن إضافي لأيقونة العلامة التجارية**
+**تكوين محلل ملحق brand-icon**
 
 ```ts
 import MarkdownIt from "markdown-it";

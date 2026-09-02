@@ -18,7 +18,7 @@
 
 `Promise`\<`string`[]\>
 
-مسارات ملفات `colors.xml` و `dimens.xml` المكتوبة.
+مسارات الـ `colors.xml` و `dimens.xml` المكتوبة.
 
 ## مثال
 

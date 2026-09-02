@@ -6,12 +6,19 @@
 
 `@pantoken/pendo` — ورقة أنماط عالمية بنمط Instructure لأدلة Pendo.
 
-يقوم Pendo بحقن HTML الخاص بالدليل داخل صفحة المستضيف؛ هذا يقوم بعرض DOM الخاص بالدليل (`._pendo-*`) ليتطابق مع
-Instructure UI، باستخدام طبقة الرموز `--instui-*` من pantoken للمحاذاة. تم
-نقل CSS الخاص بالمكون من `@instructure/pendo-global-css`; يوفر pantoken الرموز والتجميع.
+Pendo injects guide HTML into a host page; this renders that guide DOM (`._pendo-*`) to match
+Instructure UI, using pantoken's `--instui-*` token layer for alignment. It includes responsive
+violet and sea banner guide treatments alongside alerts, popovers, surveys, and controls. The
+component CSS is ported from `@instructure/pendo-global-css`; pantoken supplies the tokens and the
+assembly. A single theme class containing `instui` activates the scoped stylesheet; compact
+suffixes on that class select banner colors and glyphs.
 
 [buildPendoCss](functions/buildPendoCss.md) يؤلف ورقة الأنماط؛ [pendoCss](variables/pendoCss.md) هو بناء `rebrand` الجاهز
 (مقيد، `!important`). يتم نشر ملف ثابت في `@pantoken/pendo/global.css`.
+
+```demo
+self:pendo
+```
 
 ## مثال
 

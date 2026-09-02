@@ -2,7 +2,7 @@
 
 # واجهة: CommandEventish
 
-الهيكل `command`/`source` الخاص بـ Invoker Commands `CommandEvent` (لم يتم تضمينه بعد في أنواع مكتبة DOM).
+الشكل `command`/`source` لِـ Invoker Commands `CommandEvent` (غير موجود بعد في أنواع مكتبة DOM).
 
 ## يمتد
 
@@ -40,7 +40,7 @@
 
 > **cancelBubble**: `boolean`
 
-الخاصية **`cancelBubble`** في واجهة Event مهجورة. استخدم Event.stopPropagation() بدلاً منها. تعيين قيمتها إلى true قبل العودة من معالج الحدث يمنع انتشار الحدث. في تنفيذات لاحقة، تعيينها إلى false لا يفعل شيئًا. راجع التوافق عبر المتصفحات للتفاصيل.
+الخاصية **`cancelBubble`** في واجهة Event مهجورة. استخدم Event.stopPropagation() بدلًا منها. تعيين قيمتها إلى true قبل العودة من معالج الحدث يمنع انتشار الحدث. في تنفيذات لاحقة، لا يفعل تعيينها إلى false شيئًا. راجع توافق المتصفحات للتفاصيل.
 
 #### مهجور
 
@@ -56,7 +56,7 @@
 
 > `readonly` **cancelable**: `boolean`
 
-تُشير الخاصية القابلة للقراءة فقط **`cancelable`** في واجهة Event إلى ما إذا كان يمكن إلغاء الحدث، وبالتالي منعه كما لو أن الحدث لم يحدث.
+تُشير الخاصية للقراءة فقط **`cancelable`** في واجهة Event إلى ما إذا كان يمكن إلغاء الحدث، وبالتالي منعه كما لو أن الحدث لم يحدث.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)
 
@@ -70,7 +70,7 @@
 
 > `readonly` **composed**: `boolean`
 
-الخاصية القابلة للقراءة فقط **`composed`** في واجهة Event تُرجع قيمة منطقية تشير إلى ما إذا كان الحدث سينتشر عبر حد الظل (shadow DOM) إلى DOM القياسي أم لا.
+الخاصية للقراءة فقط **`composed`** في واجهة Event تُرجع قيمة منطقية تشير إلى ما إذا كان الحدث سينتشر عبر حد ظل الظل (shadow DOM) إلى DOM القياسي أم لا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)
 
@@ -84,7 +84,7 @@
 
 > `readonly` **currentTarget**: `EventTarget` \| `null`
 
-تُحدد الخاصية القابلة للقراءة فقط **`currentTarget`** في واجهة Event العنصر الذي تم ربط معالج الحدث به.
+تُحدد الخاصية للقراءة فقط **`currentTarget`** في واجهة Event العنصر الذي تم ربط معالج الحدث به.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)
 
@@ -98,7 +98,7 @@
 
 > `readonly` **defaultPrevented**: `boolean`
 
-تُرجع الخاصية القابلة للقراءة فقط **`defaultPrevented`** في واجهة Event قيمة منطقية تشير إلى ما إذا كانت استدعاء Event.preventDefault() قد ألغى الحدث أم لا.
+تُرجع الخاصية للقراءة فقط **`defaultPrevented`** في واجهة Event قيمة منطقية تشير إلى ما إذا كانت استدعاء Event.preventDefault() قد ألغى الحدث أم لا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)
 
@@ -112,7 +112,7 @@
 
 > `readonly` **eventPhase**: `number`
 
-تُشير الخاصية القابلة للقراءة فقط **`eventPhase`** في واجهة Event إلى أي مرحلة من تدفق الحدث يتم تقييمها حاليًا.
+تُشير الخاصية للقراءة فقط **`eventPhase`** في واجهة Event إلى أي مرحلة من تدفق الحدث يتم تقييمها حاليًا.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)
 
@@ -126,7 +126,7 @@
 
 > `readonly` **isTrusted**: `boolean`
 
-الخاصية القابلة للقراءة فقط **`isTrusted`** في واجهة Event قيمة منطقية تكون true عندما يكون الحدث قد تم إنشاؤه بواسطة وكيل المستخدم (بما في ذلك عبر إجراءات المستخدم وطرق برمجية مثل HTMLElement.focus())، وfalse عندما يتم إرسال الحدث عبر EventTarget.dispatchEvent(). الاستثناء الوحيد هو حدث click، الذي يُهيئ الخاصية isTrusted إلى false في وكلاء المستخدم.
+الخاصية للقراءة فقط **`isTrusted`** في واجهة Event قيمة منطقية تكون true عندما يتم إنشاء الحدث بواسطة وكيل المستخدم (بما في ذلك عبر إجراءات المستخدم والطرق البرمجية مثل HTMLElement.focus())، وfalse عندما يتم إرسال الحدث عبر EventTarget.dispatchEvent(). الاستثناء الوحيد هو حدث click، الذي يقوم بتهيئة الخاصية isTrusted إلى false في وكلاء المستخدم.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)
 
@@ -156,7 +156,7 @@
 
 > `readonly` **srcElement**: `EventTarget` \| `null`
 
-الخاصية المهجورة **`Event.srcElement`** هي اختصار لخاصية Event.target. استخدم Event.target بدلًا منها.
+الخاصية المهجورة **`Event.srcElement`** هي مرادف لخاصية Event.target. استخدم Event.target بدلًا منها.
 
 #### مهجور
 
@@ -172,7 +172,7 @@
 
 > `readonly` **target**: `EventTarget` \| `null`
 
-الخاصية القابلة للقراءة فقط **`target`** في واجهة Event هي مرجع إلى الكائن الذي تم إرسال الحدث إليه. تختلف عن Event.currentTarget عندما يتم استدعاء معالج الحدث خلال مرحلة الانتشار (bubbling) أو الالتقاط (capturing).
+الخاصية للقراءة فقط **`target`** في واجهة Event هي إشارة إلى الكائن الذي تم إرسال الحدث إليه. تختلف عن Event.currentTarget عندما يتم استدعاء معالج الحدث أثناء مرحلة الالتقاط أو الفقاعات.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)
 
@@ -186,7 +186,7 @@
 
 > `readonly` **timeStamp**: `number`
 
-تُرجع الخاصية القابلة للقراءة فقط **`timeStamp`** في واجهة Event الوقت (بالملي ثانية) الذي تم إنشاء الحدث فيه.
+تُرجع الخاصية للقراءة فقط **`timeStamp`** في واجهة Event الوقت (بالميلي ثانية) الذي تم فيه إنشاء الحدث.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)
 
@@ -200,7 +200,7 @@
 
 > `readonly` **type**: `string`
 
-تُرجع الخاصية القابلة للقراءة فقط **`type`** في واجهة Event سلسلة تحتوي نوع الحدث. يتم تعيينها عند إنشاء الحدث وهي الاسم المستخدم عادةً للإشارة إلى الحدث المحدد، مثل click أو load أو error.
+تُرجع الخاصية للقراءة فقط **`type`** في واجهة Event سلسلة نصية تحتوي نوع الحدث. يتم تعيينها عند إنشاء الحدث وهي الاسم المستخدم عادة للإشارة إلى الحدث المحدد، مثل click أو load أو error.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)
 
@@ -254,7 +254,7 @@
 
 > **composedPath**(): `EventTarget`[]
 
-تُرجع طريقة **`composedPath()`** في واجهة Event مسار الحدث، وهو مصفوفة من الكائنات التي سيتم استدعاء المستمعين عليها. هذا لا يشمل العقد داخل أشجار الظل إذا تم إنشاء جذر الظل (shadow root) بوضع ShadowRoot.mode مغلق.
+تُرجع طريقة **`composedPath()`** في واجهة Event مسار الحدث، وهو مصفوفة من الكائنات التي سيتم استدعاء المستمعين عليها. هذا لا يشمل العقد داخل أشجار الظل إذا تم إنشاء جذر الظل بوضع ShadowRoot.mode مغلق.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)
 
@@ -306,7 +306,7 @@
 
 > **preventDefault**(): `void`
 
-تخبر طريقة **`preventDefault()`** في واجهة Event وكيل المستخدم أن الحدث يتم التعامل معه صراحةً، لذلك يجب ألا تُتخذ أفعالها الافتراضية، مثل تمرير الصفحة أو التنقل بالرابط أو لصق نص.
+تُعلِم طريقة **`preventDefault()`** في واجهة Event وكيل المستخدم أن الحدث يتم معالجته صراحةً، لذا يجب عدم تنفيذ الإجراء الافتراضي مثل التمرير في الصفحة أو الانتقال إلى رابط أو لصق نص.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)
 
@@ -324,7 +324,7 @@
 
 > **stopImmediatePropagation**(): `void`
 
-تمنع طريقة **`stopImmediatePropagation()`** في واجهة Event استدعاء مستمعي نفس الحدث الآخرين.
+تمنع طريقة **`stopImmediatePropagation()`** في واجهة Event استدعاء المستمعين الآخرين لنفس الحدث.
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)
 
@@ -342,7 +342,7 @@
 
 > **stopPropagation**(): `void`
 
-تمنع طريقة **`stopPropagation()`** في واجهة Event استمرار انتشار الحدث الحالي في مرحلتي الالتقاط والانتشار. لكنها لا تمنع السلوكيات الافتراضية من الحدوث؛ على سبيل المثال، يتم معالجة النقرات على الروابط. إذا كان الهدف إيقاف تلك السلوكيات، راجع طريقة preventDefault(). كما أنها لا تمنع الانتشار إلى معالجات الأحداث الأخرى على العنصر الحالي. إذا أردت إيقاف ذلك، راجع stopImmediatePropagation().
+تمنع طريقة **`stopPropagation()`** في واجهة Event استمرار انتشار الحدث الحالي في مرحلتي الالتقاط والفقاعات. مع ذلك، فهي لا تمنع السلوكيات الافتراضية من الحدوث؛ على سبيل المثال، تظل نقرات الروابط مُعالجة. إذا أردت إيقاف تلك السلوكيات، انظر إلى طريقة preventDefault(). كما أنها لا تمنع الانتشار إلى معالجات الأحداث الأخرى للعنصر الحالي. إذا أردت إيقافها، انظر إلى stopImmediatePropagation().
 
 [MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)
 

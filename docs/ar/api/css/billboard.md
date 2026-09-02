@@ -103,7 +103,7 @@ flowchart TD
 
 ## دعم المتصفّح
 
-- يحتوي أنماط عنصره بواسطة توجيه CSS `@scope`; يحتاج إلى إصدار حديث من Chromium أو Firefox أو Safari.
+- يحتوي أنماط عنصره باستخدام قاعدة CSS `@scope`; يتطلب متصفح Chromium أو Firefox أو Safari حديث.
 
 ## مكونات فرعية
 

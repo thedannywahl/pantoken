@@ -6,11 +6,9 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء ملحق PostCSS المسمى flatten-`@property`.
+إنشاء إضافة PostCSS flatten-`@property`.
 
-يمر على جميع تعليمات at-rule من نوع `@property` في ورقة الأنماط، ويستخرج كل واصف `initial-value`، ويزيل
-تعليمات at-rule، ثم يضيف في البداية قاعدة واحدة `injectSelector { --name: value; … }` تحتوي على جميع
-التصريحات المستخرجة. تُسقط القواعد الفارغة وكتل `@layer` المتبقية بعد الإزالة.
+يتجوّل في جميع at-rules من نوع `@property` في ملف الأنماط، يستخرج كل واصف `initial-value`، يُزيل الـ at-rule، ويُقدّم قاعدة واحدة من نوع `injectSelector { --name: value; … }` تحتوي على كل الإعلانات المُستخرَجة. تُحذف القواعد الفارغة وكتل `@layer` المتبقية بعد الإزالة.
 
 ## Type Declaration
 
@@ -26,13 +24,13 @@
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-ملحق PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-مؤشر ملحق PostCSS المطلوب.
+علامة مكوّن PostCSS المطلوبة.
 
 ## أمثلة
 
@@ -45,7 +43,7 @@ import { flattenProperty } from "@pantoken/plugin-flatten-property";
 const out = postcss([flattenProperty()]).process(css, { from: undefined }).css;
 ```
 
-**الحقن في :scope (لاستخدامه داخل كتل النطاق)**
+**الحقن في :scope (للاستخدام داخل كتل النطاق)**
 
 ```ts
 import postcss from "postcss";

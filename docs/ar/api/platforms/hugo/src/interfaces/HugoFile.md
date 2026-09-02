@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-ملف مُولَّد: مسار نسبي للموقع ومحتوياته.
+ملف مُنشأ: مسار نسبي للموقع ومحتوياته.
 
 ## الخصائص
 

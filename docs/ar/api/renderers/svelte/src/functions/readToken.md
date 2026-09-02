@@ -6,7 +6,7 @@
 
 <span class="instui-pill -color-danger pantoken-doc-tag">تجريبي</span>
 
-قراءة قيمة توكن محلولة. يُرجع `fallback` على الخادم.
+اقرأ قيمة توكن محلولة. تُعيد `fallback` على الخادم.
 
 ## المعلمات
 

@@ -30,7 +30,7 @@
 
 `string`
 
-تعبير لون-نسبي من نوع `hsl(from …)`.
+تعبير relative-color من النوع `hsl(from …)`.
 
 ## مثال
 

@@ -26,7 +26,7 @@
 
 [`LogoColorMode`](../type-aliases/LogoColorMode.md) = `"full-color"`
 
-معالجة اللون (الافتراضي `"full-color"`).
+معالجة الألوان (الافتراضي `"full-color"`).
 
 ## القيم المرجعة
 

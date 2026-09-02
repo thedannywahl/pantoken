@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مساهمة CSS يمكن للمكوّن الإضافي إرجاعها من hook الخاص به `css`.
+مساهمة CSS يمكن أن تُعيدها الإضافة من هوك `css`.
 
 ## الخصائص
 
@@ -14,7 +14,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-CSS خام مُصدر قبل الأساس المُولد.
+CSS خام يتم إخراجه قبل الأساس المولَّد.
 
 ***
 
@@ -24,7 +24,7 @@ CSS خام مُصدر قبل الأساس المُولد.
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-CSS خام مُصدر بعد الأساس المُولد.
+CSS خام يتم إخراجه بعد الأساس المولَّد.
 
 ***
 
@@ -34,7 +34,7 @@ CSS خام مُصدر بعد الأساس المُولد.
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تسجيلات `@property` الموقّعة بالأنواع لإضافتها.
+تسجيلات `@property` الممَيَّزة بالأنواع لإضافتها.
 
 ***
 
@@ -44,7 +44,7 @@ CSS خام مُصدر بعد الأساس المُولد.
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إعلانات `--var: value` ذات النطاق لإضافتها.
+إعلانات `--var: value` المقيَّدة بالنطاق لإضافتها.
 
 ***
 
@@ -54,4 +54,4 @@ CSS خام مُصدر بعد الأساس المُولد.
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مؤشر `data-*` للكتلة المصدرة، لأغراض التصحيح.
+علامة `data-*` للكتلة المُصدرة، لأغراض التصحيح.

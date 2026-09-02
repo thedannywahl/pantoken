@@ -24,7 +24,7 @@
 
 `ElementRegistry`
 
-سجل التعريف الذي سيتم التعريف فيه (الافتراضي هو `globalThis.customElements`).
+التسجيل الذي سيتم التعريف فيه (الافتراضي هو `globalThis.customElements`).
 
 ### options?
 

@@ -40,10 +40,10 @@ self:spinner
 | معدّل | الوصف |
 | --- | --- |
 | `.-color-inverse` | على سطح داكن. |
-| `.-size-large` | كبير. اسم بديل مطوّل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم بديل مطوّل لـ `-size-sm`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 | `.-size-x-small` | صغير جدًا. اسم بديل مطوّل لـ `-size-xs`. |
 | `.-size-xs` | صغير جدًا. |
 

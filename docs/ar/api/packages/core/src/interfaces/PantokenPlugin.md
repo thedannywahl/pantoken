@@ -4,8 +4,8 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مكوّن إضافي لـ pantoken. كل خطاف اختياري؛ يشارك المكوّن الإضافي فقط في المراحل التي يعرف لها خطافًا.
-لذلك يمكن لنفس المكوّن الإضافي الحقن في أكثر من طبقة واحدة.
+إضافة pantoken. كل هوك اختياري؛ الإضافة تشارك فقط في المراحل التي تُعرّف لها هوكًا.
+لذلك يمكن لنفس الإضافة أن تُحقن في أكثر من طبقة.
 
 ## الخصائص
 
@@ -15,7 +15,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-اسم مكوّن إضافي فريد وقابل للقراءة من قبل البشر.
+اسم إضافة فريد وقابل للقراءة من قبل البشر.
 
 ## الطرق
 
@@ -45,7 +45,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة الأيقونات: إرجاع سجلات جديدة من [IconEntry](IconEntry.md) للتسجيل كـ `&lt;image&gt;` توكنات.
+مرحلة الأيقونات: إرجاع سجلات جديدة من [IconEntry](IconEntry.md) للتسجيل كرموز `&lt;image&gt;`.
 إرجاع `undefined` أو مصفوفة فارغة يترك المجموعة الحالية دون تغيير.
 
 #### المعلمات
@@ -66,7 +66,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة CSS: المساهمة أو معالجة CSS بعد الإنشاء.
+مرحلة CSS: المساهمة أو المعالجة اللاحقة لـ CSS.
 
 #### المعلمات
 
@@ -86,7 +86,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-مرحلة Rehype: توفير محلّل يُدمج داخل مكوّن rehype الإضافي.
+مرحلة Rehype: توفير محلل يتم دمجه في مكون rehype الإضافي.
 
 #### المعلمات
 
@@ -106,7 +106,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-المرحلة الأصلية (Style Dictionary): تسجيل التحويلات/الصيغ.
+المرحلة الأصلية (Style Dictionary): تسجيل التحويلات/التنسيقات.
 
 #### المعلمات
 

@@ -20,7 +20,7 @@
 
 ### ir
 
-readonly [`Token`](../../../core/src/interfaces/Token.md)[]
+قابل للقراءة فقط [`Token`](../../../core/src/interfaces/Token.md)[]
 
 نموذج IR للتوكن المصدر.
 

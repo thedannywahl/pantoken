@@ -23,4 +23,4 @@
 
 ### register
 
-يعيد تصدير [register](../../angular/src/functions/register.md)
+إعادة تصدير [register](../../angular/src/functions/register.md)

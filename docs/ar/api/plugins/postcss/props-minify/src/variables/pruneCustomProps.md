@@ -6,7 +6,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-إنشاء البرنامج المساعد لـ PostCSS prune-unused-custom-properties.
+إنشاء مكوّن PostCSS prune-unused-custom-properties.
 
 ## Type Declaration
 
@@ -14,17 +14,17 @@
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكوّن لـ PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 
 > **postcss**: `true`
 
-علامة المكوّن المطلوبة لـ PostCSS.
+علامة مكوّن PostCSS المطلوبة.
 
 ## مثال
 
-**قم بتشغيله كمرحلة PostCSS مستقلة**
+**شغّله كمرور PostCSS مستقل**
 
 ```ts
 import postcss from "postcss";

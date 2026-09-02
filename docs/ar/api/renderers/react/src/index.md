@@ -27,10 +27,10 @@
 
 ### register
 
-يعيد تصدير [register](../../angular/src/functions/register.md)
+إعادة تصدير [register](../../angular/src/functions/register.md)
 
 ***
 
 ### registerLocalized
 
-يعيد تصدير [registerLocalized](../../svelte/src/functions/registerLocalized.md)
+إعادة تصدير [registerLocalized](../../svelte/src/functions/registerLocalized.md)

@@ -14,7 +14,7 @@
 
 [`Plugin`](https://postcss.org/api/#plugin)
 
-مكوّن PostCSS [Plugin](https://postcss.org/api/#plugin).
+إضافة PostCSS [Plugin](https://postcss.org/api/#plugin).
 
 ### postcss
 

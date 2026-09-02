@@ -1,0 +1,17 @@
+[pantoken](../../../../index.md) / [renderers/pendo/src](../index.md) / AddScopeOptions
+
+# Interface: AddScopeOptions
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+Indstillinger for [addScope](../variables/addScope.md).
+
+## Egenskaber
+
+### selector?
+
+> `optional` **selector?**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+The scope root selector (default `[class*="instui"]._pendo-step-container`).

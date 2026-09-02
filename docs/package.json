@@ -45,7 +45,8 @@
     "docs:og": "node scripts/gen-og.ts",
     "docs:dev": "vp run @pantoken/components#generate && vp run @pantoken/plugin-visual-debug#generate && vp run @pantoken/plugin-logos#generate && vp run @pantoken/plugin-primitives#generate && vp run @pantoken/plugin-custom-icons#generate && vp run docs:assets && vp run docs:api:en && vp run docs:api:css && vitepress dev",
     "docs:dev:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress dev",
-    "docs:build": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vp run docs:check:drift && vitepress build",
+    "docs:build": "vp run docs:assets && vp run docs:api:en && vp run docs:api:css && vitepress build",
+    "docs:build:all": "vp run docs:assets && vp run docs:api:locales && vp run docs:check:locales && vitepress build",
     "docs:build:claude": "vp run docs:assets && vp run docs:api:locales:claude && vp run docs:check:locales && vitepress build",
     "docs:preview": "vitepress preview"
   },

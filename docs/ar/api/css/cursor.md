@@ -20,12 +20,12 @@
 
 | معدّل | الوصف |
 | --- | --- |
-| `.--cursor-auto` | cursor: تلقائي. |
-| `.--cursor-default` | cursor: افتراضي. |
-| `.--cursor-grab` | cursor: قابل للسحب. |
-| `.--cursor-move` | cursor: نقل. |
-| `.--cursor-not-allowed` | cursor: غير مسموح. |
-| `.--cursor-pointer` | cursor: مؤشر (قابل للنقر). |
-| `.--cursor-text` | cursor: نص. |
-| `.--cursor-wait` | cursor: انتظار. |
+| `.--cursor-auto` | المؤشر: auto. |
+| `.--cursor-default` | المؤشر: default. |
+| `.--cursor-grab` | المؤشر: grab. |
+| `.--cursor-move` | المؤشر: move. |
+| `.--cursor-not-allowed` | المؤشر: not-allowed. |
+| `.--cursor-pointer` | المؤشر: pointer. |
+| `.--cursor-text` | المؤشر: text. |
+| `.--cursor-wait` | المؤشر: wait. |
 

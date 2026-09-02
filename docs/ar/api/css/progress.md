@@ -95,12 +95,12 @@ flowchart TD
 | `.-meter-color-warning` | <span class="instui-pill -color-danger pantoken-doc-tag">مهجور</span> — use `.-color-warning`. |
 | `.-render-value-inside` | يعرض `.value` داخل المسار، بمحاذاة بدايته، بدلًا من جانبه؛ صممه ليكون مقروءًا فوق لون المقياس. |
 | `.-should-animate` | <span class="instui-pill pantoken-doc-tag pantoken-doc-tag-interaction">Interaction</span> — Animate meter changes over half a second. |
-| `.-size-large` | كبير. اسم بديل طويل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-md` | متوسط (افتراضي). |
 | `.-size-medium` | متوسط (افتراضي). اسم بديل طويل لـ `-size-md`. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم بديل طويل لـ `-size-sm`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 | `.-size-x-small` | صغير جدًا. اسم بديل طويل لـ `-size-xs`. |
 | `.-size-xs` | صغير جدًا. |
 

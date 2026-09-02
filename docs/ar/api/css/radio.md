@@ -32,10 +32,10 @@
 | `.-context-success` | لون سياق النجاح (النسخة القابلة للتبديل). |
 | `.-context-warning` | لون سياق التحذير (النسخة القابلة للتبديل). |
 | `.-readonly` | حالة للقراءة فقط. |
-| `.-size-large` | كبير. اسم بديل مطوّل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم بديل مطوّل لـ `-size-sm`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 | `.-toggle` | <span class="instui-pill -color-info pantoken-doc-tag">Alias</span> — maps to `.-variant-toggle`. |
 | `.-variant-toggle` | العرض كزر تبديل مجزّأ. |
 

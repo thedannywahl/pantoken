@@ -6,4 +6,4 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-استراتيجية إنشاء الاسم القصير لـ [mangleCustomProps](../variables/mangleCustomProps.md).
+استراتيجية إنشاء اسم قصير لـ [mangleCustomProps](../variables/mangleCustomProps.md).

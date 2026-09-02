@@ -14,7 +14,7 @@
 
 `string`
 
-منصة [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md).
+من نوع [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md).
 
 ### dir?
 

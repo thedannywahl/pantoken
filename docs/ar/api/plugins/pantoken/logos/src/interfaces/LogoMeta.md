@@ -34,7 +34,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-معالجة اللون.
+نمط اللون.
 
 ***
 

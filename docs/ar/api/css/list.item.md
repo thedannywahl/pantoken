@@ -18,9 +18,9 @@
 | `.-delimiter-dashed` | فصل العناصر بواسطة خط منقّط. @affects list.item — يضيف قاعدة فاصل بين العناصر. |
 | `.-delimiter-solid` | فصل العناصر بواسطة خط متصل. @affects list.item — يضيف قاعدة فاصل بين العناصر. |
 | `.-ordered` | ترقيم القوائم المرتبة. @affects list.item — يضيف ثِقل العلامة والمسافة البادئة. |
-| `.-size-large` | اسم بديل طويل لـ `-size-lg`. |
+| `.-size-large` | اسم مرادف مطوّل لـ `-size-lg`. |
 | `.-size-medium` | اسم بديل طويل لـ `-size-md`. |
-| `.-size-small` | اسم بديل طويل لـ `-size-sm`. |
+| `.-size-small` | اسم مرادف مطوّل لـ `-size-sm`. |
 
 ## عناصر زائفة
 

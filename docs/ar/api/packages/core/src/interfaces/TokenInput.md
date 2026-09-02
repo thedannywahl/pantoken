@@ -4,7 +4,7 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-البنية التي يقبلها المُساعد `define()`; القيمة الافتراضية لـ `inherits` هي `true`.
+الشكل الذي يقبله المُساعد `define()`; `inherits` افتراضيًا يساوي `true`.
 
 ## الخصائص
 

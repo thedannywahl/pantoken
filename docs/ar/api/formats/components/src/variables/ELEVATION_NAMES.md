@@ -6,5 +6,5 @@
 
 <span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
 
-تم إصدار كل مستوى ارتفاع واسم مستعار كـ `--instui-elevation-&lt;name&gt;` (`resting`, `above`,
-`topmost`, `depth1`–`depth3`, `card`, `cardHover`). مشتق من خرائط الهندسة وخرائط الأسماء المستعارة.
+يتم إصدار كل مستوى ارتفاع واسم مستعار كـ `--instui-elevation-&lt;name&gt;` (`resting`, `above`,
+`topmost`, `depth1`–`depth3`, `card`, `cardHover`). مشتق من خرائط الهندسة + الأسماء المستعارة.

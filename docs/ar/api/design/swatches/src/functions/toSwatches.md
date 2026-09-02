@@ -15,13 +15,13 @@
 
 للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
-الـ IR (مثلاً من `@pantoken/tokens`).
+الـ IR (على سبيل المثال من `@pantoken/tokens`).
 
 ### mode?
 
 [`Mode`](../type-aliases/Mode.md) = `"light"`
 
-أي وضع لوني سيتم حله (الافتراضي `"light"`).
+أي وضع ألوان يجب حله (الافتراضي `"light"`).
 
 ## القيم المرجعة
 

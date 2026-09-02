@@ -57,13 +57,13 @@ flowchart TD
 | `.-placement-end` | ثبتها على الحافة النهائية (inline-end). |
 | `.-placement-start` | (الافتراضي) ثبتها على الحافة البادئة (inline-start). |
 | `.-placement-top` | ثبتها على الحافة العلوية. |
-| `.-size-large` | كبير. اسم بديل طويل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
 | `.-size-md` | (الافتراضي) متوسط. |
 | `.-size-medium` | (الافتراضي) متوسط. اسم بديل طويل لـ `-size-md`. |
 | `.-size-regular` | <span class="instui-pill -color-danger pantoken-doc-tag">مهجور</span> — use `.-size-md`. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. اسم بديل طويل لـ `-size-sm`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
 | `.-size-x-large` | كبير جدًا. اسم بديل طويل لـ `-size-xl`. |
 | `.-size-x-small` | صغير جدًا. اسم بديل طويل لـ `-size-xs`. |
 | `.-size-xl` | كبير جدًا. |

@@ -13,7 +13,7 @@
 
 ## سهولة الوصول
 
-استخدم `&lt;progress&gt;` الأصلي لنطاق إكمال المهمة الذي يبدأ من صفر، و `&lt;meter&gt;` عندما لا يكون الحد الأدنى صفراً. امنح أي من العنصرين اسمًا قابلاً للوصول عن طريق تضمينه في `&lt;label&gt;` أو ربط `&lt;label&gt;` منفصل من خلال مطابقة قيم `for` و `id`.
+استخدم `&lt;progress&gt;` الأصلي لنطاق إكمال المهمة الذي يبدأ من الصفر و `&lt;meter&gt;` عندما لا يكون الحد الأدنى صفرًا. امنح أيًا من العنصرين اسمًا قابلاً للوصول عن طريق تضمينه في `&lt;label&gt;` أو ربط `&lt;label&gt;` منفصل عبر مطابقة قيم `for` و `id`.
 
 ## الاستخدام
 
@@ -81,8 +81,8 @@ flowchart TD
 | --- | --- |
 | `.-color-brand` | لون مقياس العلامة التجارية. |
 | `.-color-danger` | لون مقياس الخطر. |
-| `.-color-info` | لون مقياس المعلومات. |
-| `.-color-primary-inverse` | لون المقياس على الخلفية الداكنة (العكسي الأساسي). |
+| `.-color-info` | لون المقياس المعلوماتي. |
+| `.-color-primary-inverse` | لون المقياس على الداكن (العكسي الأساسي). |
 | `.-color-success` | لون مقياس النجاح. |
 | `.-color-warning` | لون مقياس التحذير. |
 | `.-meter-color-alert` | <span class="instui-pill -color-danger pantoken-doc-tag">مهجور</span> — use `.-color-warning`. |
@@ -94,13 +94,13 @@ flowchart TD
 | `.-shold-animate-on-mount` | <span class="instui-pill -color-info pantoken-doc-tag">Alias</span> — maps to `.-should-animate`. |
 | `.-should-animate` | <span class="instui-pill pantoken-doc-tag pantoken-doc-tag-interaction">Interaction</span> — Animate the meter, ring, and centered value into place on mount. |
 | `.-should-animate-on-mount` | <span class="instui-pill -color-info pantoken-doc-tag">Alias</span> — maps to `.-should-animate`. |
-| `.-size-large` | كبير. مرادف وصف طويل لـ `-size-lg`. |
+| `.-size-large` | كبير. تسمية مطوّلة لـ `-size-lg`. |
 | `.-size-lg` | كبير. |
-| `.-size-md` | متوسط (الافتراضي). |
-| `.-size-medium` | متوسط (الافتراضي). مرادف وصف طويل لـ `-size-md`. |
+| `.-size-md` | متوسط (افتراضي). |
+| `.-size-medium` | متوسط (افتراضي). اسم بديل طويل لـ `-size-md`. |
 | `.-size-sm` | صغير. |
-| `.-size-small` | صغير. مرادف وصف طويل لـ `-size-sm`. |
-| `.-size-x-small` | صغير جدًا. مرادف وصف طويل لـ `-size-xs`. |
+| `.-size-small` | صغير. تسمية مطوّلة لـ `-size-sm`. |
+| `.-size-x-small` | صغير جدًا. اسم بديل طويل لـ `-size-xs`. |
 | `.-size-xs` | صغير جدًا. |
 
 ## الأجزاء
@@ -127,14 +127,14 @@ flowchart TD
 | خاصية | نوع | افتراضي | الوصف |
 | --- | --- | --- | --- |
 | `--animation-delay` | `<number>` | — | المللي ثانية للانتظار قبل بدء رسوم متحركة التركيب (الافتراضي `0`). |
-| `--max` | `<number>` | — | الحد الأقصى لقيمة التقدم (الافتراضي `100`). |
-| `--min` | `<number>` | — | الحد الأدنى لقيمة المقياس (الافتراضي `0`). |
+| `--max` | `<number>` | — | القيمة القصوى للتقدم (الافتراضية `100`). |
+| `--min` | `<number>` | — | قيمة المقياس الدنيا (الافتراضية `0`). |
 | `--pantoken-pc-fill` | `<color>` | — | لون القوس الممتلئ (المقياس)؛ تحدد المُعدّلات -color-* لونه. |
 | `--pantoken-pc-stroke` | `<length>` | — | عرض ضربة الحلقة؛ ضبطته المُعدّلات -size-*.  |
 | `--pantoken-pc-track` | `<color>` | — | لون المسار غير الممتلئ. |
 | `--value` | `<number>` | — | قيمة التقدّم الحالية؛ مسجَّلة مع @property حتى يمكنها الانتقال. |
-| `--value-max` | `<number>` | — | @alias {@link --max} الحد الأقصى لقيمة التقدم (الافتراضي `100`). |
-| `--value-now` | `<number>` | — | @alias مرادف لـ `--value`. |
+| `--value-max` | `<number>` | — | @alias {@link --max} القيمة القصوى للتقدم (الافتراضية `100`). |
+| `--value-now` | `<number>` | — | @alias اسم مرادف لـ `--value`. |
 
 ## التحريكات
 

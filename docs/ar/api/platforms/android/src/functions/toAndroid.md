@@ -12,7 +12,7 @@
 
 ### tokens
 
-readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
+للقراءة فقط [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
 ### options
 
@@ -26,7 +26,7 @@ readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]
 
 ## أمثلة
 
-**إصدار IR لموضوع محدد**
+**إخراج IR لسمة محددة**
 
 ```ts
 import { toAndroid } from "@pantoken/android";
