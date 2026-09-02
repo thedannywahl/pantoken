@@ -26,37 +26,97 @@
   {
     "name": "--instui-component-base-button-secondary-background",
     "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
-    "rewriteValue": "#44709F33",
-    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+    "rewriteValue": "light-dark(#44709F33, var(--instui-primitive-color-navy-navy60))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode value while preserving the existing secondary-button dark-mode value."
   },
   {
     "name": "--instui-component-base-button-secondary-border-color",
     "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
-    "rewriteValue": "#44709F00",
-    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+    "rewriteValue": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode value while preserving the existing secondary-button dark-mode value."
   },
   {
     "name": "--instui-component-base-button-secondary-hover-background",
     "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
-    "rewriteValue": "#4D7EB333",
-    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+    "rewriteValue": "light-dark(#4D7EB333, var(--instui-primitive-color-navy-navy60))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode value while preserving the existing secondary-button dark-mode value."
   },
   {
     "name": "--instui-component-base-button-secondary-hover-border-color",
     "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
-    "rewriteValue": "#44709F00",
-    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+    "rewriteValue": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode value while preserving the existing secondary-button dark-mode value."
   },
   {
     "name": "--instui-component-base-button-secondary-active-background",
     "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
-    "rewriteValue": "#3D658F33",
-    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+    "rewriteValue": "light-dark(#3D658F33, var(--instui-primitive-color-navy-navy60))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode value while preserving the existing secondary-button dark-mode value."
   },
   {
     "name": "--instui-component-base-button-secondary-active-border-color",
     "upstreamValue": "var(--instui-color-institutional-brand-button-secondary-bgd)",
-    "rewriteValue": "#44709F00",
-    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0"
+    "rewriteValue": "light-dark(#44709F00, var(--instui-primitive-color-navy-navy60))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode value while preserving the existing secondary-button dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-primary-ghost-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-primary-ghost-border-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F66, var(--instui-primitive-color-navy-navy10))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-primary-ghost-hover-background",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F1A, var(--instui-color-background-interactive-action-ghost-on-color-hover))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while using the secondary-on-color background in dark mode."
+  },
+  {
+    "name": "--instui-component-base-button-primary-ghost-active-background",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F33, var(--instui-color-background-interactive-action-ghost-on-color-hover))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while using the secondary-on-color background in dark mode."
+  },
+  {
+    "name": "--instui-component-base-button-tertiary-hover-text-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-tertiary-hover-border-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F33, var(--instui-primitive-color-navy-navy10))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-tertiary-active-text-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F, var(--instui-primitive-color-navy-navy10))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-tertiary-active-border-color",
+    "upstreamValue": "var(--instui-color-institutional-brand-button-primary-bgd)",
+    "rewriteValue": "light-dark(#1D354F4D, var(--instui-primitive-color-navy-navy10))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-tertiary-disabled-text-color",
+    "upstreamValue": "var(--instui-color-text-interactive-action-tertiary-disabled)",
+    "rewriteValue": "light-dark(#AAB0B5, var(--instui-primitive-color-grey-grey130))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary disabled value while preserving the existing dark-mode value."
+  },
+  {
+    "name": "--instui-component-base-button-tertiary-disabled-border-color",
+    "upstreamValue": "var(--instui-color-stroke-interactive-action-tertiary-disabled)",
+    "rewriteValue": "light-dark(#C7CACD, var(--instui-primitive-color-grey-grey130))",
+    "note": "InstUI Component Library beta definition has changed since instructure-design-tokens#1.8.0; adopt the current Figma light-mode tertiary disabled value while preserving the existing dark-mode value."
   }
 ]
