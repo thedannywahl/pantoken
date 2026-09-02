@@ -10,6 +10,7 @@ export const fr: LocaleBundle = defineBundle({
   strings: makeStrings("fr", {
     prevMonth: "Mois précédent",
     nextMonth: "Mois suivant",
+    datePlaceholder: "aaaa-mm-jj",
     openCalendar: "Ouvrir le calendrier",
     timeLabel: "Heure",
     back: "Retour",

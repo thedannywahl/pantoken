@@ -1,0 +1,43 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 24px; max-width: 520px">
+    <!-- Required via the native `required` attribute — the asterisk shows with no extra class. The
+         error message below stays hidden until the field is :user-invalid (blur it empty to see it). -->
+    <label class="instui-form-field">
+      <span class="label">عنوان البريد الإلكتروني</span>
+      <span class="controls">
+        <input class="instui-text-input" type="email" required placeholder="you@example.com" />
+      </span>
+      <div class="instui-form-field-messages">
+        <span class="instui-form-field-message -type-hint">لن نشاركها أبدًا.</span>
+        <span class="instui-form-field-message -type-error">أدخل عنوان بريد إلكتروني صالح.</span>
+      </div>
+    </label>
+
+    <!-- Explicit error state: `-invalid` on the field reveals the error message + red control border. -->
+    <label class="instui-form-field -invalid">
+      <span class="label">اسم المستخدم</span>
+      <span class="controls">
+        <input class="instui-text-input -invalid" value="a" />
+      </span>
+      <div class="instui-form-field-messages">
+        <span class="instui-form-field-message -type-error">يجب أن تتكون من 3 أحرف على الأقل.</span>
+      </div>
+    </label>
+
+    <!-- Inline layout: label beside the control -->
+    <label class="instui-form-field -layout-inline -label-align-end">
+      <span class="label">الاسم المستعار</span>
+      <span class="controls">
+        <input class="instui-text-input" placeholder="Optional" />
+      </span>
+    </label>
+
+    <!-- Readonly + required-by-class -->
+    <label class="instui-form-field -readonly -required">
+      <span class="label">معرّف الحساب</span>
+      <span class="controls">
+        <input class="instui-text-input -readonly" value="ACME-00421" readonly />
+      </span>
+    </label>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
+import { DEFAULT_CDN_PROVIDER_ID } from "@pantoken/cdn";
 import { CDN_PICKER_DEFAULTS } from "../cdn";
 import { usePickerTheme } from "../composables/usePickerTheme";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
@@ -30,6 +31,8 @@ const pickerControlStrings = computed(() => ({
 }));
 
 const { themeKey, mode, showMode } = usePickerTheme();
+const provider = ref(readHashParam("cdn_provider") ?? DEFAULT_CDN_PROVIDER_ID);
+watch(provider, (v) => writeHashParam("cdn_provider", v, DEFAULT_CDN_PROVIDER_ID));
 
 type TabKey = "components" | "icons" | "web-components";
 const initialTab = readHashParam("tab");
@@ -52,8 +55,10 @@ watch(activeTab, (tab) => writeHashParam("tab", tab, "components"));
         :mode="mode"
         :show-mode="showMode"
         :strings="pickerControlStrings"
+        :provider="provider"
         @update:theme-key="themeKey = $event"
         @update:mode="mode = $event"
+        @update:provider="provider = $event"
       />
     </div>
 
@@ -85,9 +90,14 @@ watch(activeTab, (tab) => writeHashParam("tab", tab, "components"));
         </button>
       </div>
       <div class="panel" role="tabpanel">
-        <ComponentsPicker v-if="activeTab === 'components'" :theme-key="themeKey" :mode="mode" />
-        <IconPicker v-else-if="activeTab === 'icons'" />
-        <WebComponentsPicker v-else :theme-key="themeKey" :mode="mode" />
+        <ComponentsPicker
+          v-if="activeTab === 'components'"
+          :theme-key="themeKey"
+          :mode="mode"
+          :provider="provider"
+        />
+        <IconPicker v-else-if="activeTab === 'icons'" :provider="provider" />
+        <WebComponentsPicker v-else :theme-key="themeKey" :mode="mode" :provider="provider" />
       </div>
     </div>
   </div>

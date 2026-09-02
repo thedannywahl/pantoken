@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Edellinen kuukausi",
+  "nextMonth": "Seuraava kuukausi",
+  "dateLabel": "Päivämäärä",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Avaa kalenteri",
+  "timeLabel": "Aika",
+  "back": "Takaisin"
+}

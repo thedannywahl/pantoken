@@ -8,8 +8,8 @@ export const ja: LocaleBundle = defineBundle({
   dir: "ltr",
   label: "Japanese (日本語)",
   strings: makeStrings("ja", {
-    prevMonth: "前月",
-    nextMonth: "翌月",
+    prevMonth: "前の月",
+    nextMonth: "次の月",
     dateLabel: "日付",
     openCalendar: "カレンダーを開く",
     timeLabel: "時刻",

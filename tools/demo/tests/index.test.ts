@@ -95,6 +95,40 @@ test("demoMarkdownIt rewrites a demo fence and leaves other fences alone", () =>
   expect(tsOut).toBe("<pre>const x = 1;</pre>");
 });
 
+test("demoMarkdownIt routes a demo:self fence through localePrefix using env.relativePath", () => {
+  const md = {
+    renderer: {
+      rules: {
+        fence: (_tokens: { info: string; content: string }[], _i: number, ..._rest: unknown[]) =>
+          "",
+      },
+    },
+  };
+  demoMarkdownIt(md as unknown as Parameters<typeof demoMarkdownIt>[0], {
+    base: "/pantoken/",
+    localePrefix: (relativePath) => (relativePath.startsWith("hu/") ? "hu/" : ""),
+  });
+
+  const render = md.renderer.rules.fence;
+  const rootOut = render(
+    [{ info: "demo", content: "self:button" }],
+    0,
+    {},
+    { relativePath: "guide/components.md" },
+    {},
+  );
+  expect(rootOut).toContain(encodeURIComponent("/pantoken/demos/button.html"));
+
+  const huOut = render(
+    [{ info: "demo", content: "self:button" }],
+    0,
+    {},
+    { relativePath: "hu/guide/components.md" },
+    {},
+  );
+  expect(huOut).toContain(encodeURIComponent("/pantoken/hu/demos/button.html"));
+});
+
 test("liveExample seams a preview onto html fences on matching pages, skipping overlays", () => {
   const coreRules: Array<[string, (state: { tokens: unknown[] }) => void]> = [];
   const md = {

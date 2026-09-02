@@ -175,8 +175,8 @@ export function renderDemoFigure(resolved: ResolvedDemo): string {
 export interface LiveExampleOptions {
   /** Only wrap fences on pages whose markdown-it `env.relativePath` matches (e.g. the CSS-API pages). */
   match: (relativePath: string) => boolean;
-  /** Build the preview block appended after each non-overlay `html` fence, from its markup and any `-flag` tokens parsed from the fence info string. */
-  wrap: (html: string, flags: Set<string>) => string;
+  /** Build the preview block appended after each non-overlay `html` fence, from its markup, any `-flag` tokens parsed from the fence info string, and the page's `env.relativePath` (for locale/direction lookups). */
+  wrap: (html: string, flags: Set<string>, relativePath: string) => string;
 }
 
 /** Options for {@link demoMarkdownIt}: the {@link resolveDemo} fields plus optional live-example seaming. */
@@ -187,6 +187,13 @@ export interface DemoMarkdownItOptions extends ResolveOptions {
    * hidden until opened, so a `## Demo` iframe drives their preview instead.
    */
   liveExample?: LiveExampleOptions;
+  /**
+   * Route a `demo:self:<name>` fence to a locale-specific self-hosted demo directory, from the current
+   * page's markdown-it `env.relativePath` (e.g. `"hu/"` for pages under `hu/`, `""` for the root
+   * locale). Prepended to `demosPath` so the localized clone of a demo (translated prose, same markup)
+   * loads instead of the English source. Omit for a single-locale site.
+   */
+  localePrefix?: (relativePath: string) => string;
 }
 
 /** An example that's hidden until opened (a `<dialog>` or a `[popover]`), so its live preview is skipped. */
@@ -493,7 +500,12 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
     const token = tokens[index];
     const info = token.info.trim();
     if (info === "demo") {
-      return renderDemoFigure(resolveDemo(token.content.trim(), options));
+      const relativePath = (env as { relativePath?: string } | undefined)?.relativePath ?? "";
+      const prefix = options.localePrefix?.(relativePath) ?? "";
+      const demoOptions = prefix
+        ? { ...options, demosPath: `${prefix}${options.demosPath ?? "demos/"}` }
+        : options;
+      return renderDemoFigure(resolveDemo(token.content.trim(), demoOptions));
     }
     const flags = new Set<string>(info.match(/-[a-z][a-z0-9-]*/gu) ?? []);
     // `-noshow` strips the html source fence and its live preview from rendered output.
@@ -509,7 +521,7 @@ export function demoMarkdownIt(md: MarkdownItLike, options: DemoMarkdownItOption
       const html = token.content.replace(/\n$/u, "");
       // Parse -flag tokens from the info string (migrated by the core rule above).
       if (live.match(relativePath) && !isOverlay(html)) {
-        return `${rendered}\n${live.wrap(html, flags)}\n`;
+        return `${rendered}\n${live.wrap(html, flags, relativePath)}\n`;
       }
     }
     return rendered;

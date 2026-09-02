@@ -5,6 +5,28 @@
  * room for higher-quality engines later.
  */
 import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
+import { CANVAS_LOCALES } from "@pantoken/i18n";
+import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
+import { TranslationMemory } from "./translation-memory.ts";
+
+// English display name per locale (e.g. "Hungarian (Magyar)" \u2192 the adapter prompt only needs the
+// leading English name, not the native parenthetical), used to phrase the `AiTranslationAdapter`
+// prompt for any target locale instead of a hardcoded "Hungarian". The three English regional variants
+// are named explicitly instead — stripping their parenthetical would collapse all three (and root) to
+// the bare word "English", losing the spelling/phrasing distinction (colour vs. color, etc.) the prompt
+// needs to actually produce a localized (not identical) translation.
+const ENGLISH_VARIANT_LABELS: Record<string, string> = {
+  "en-AU": "Australian English",
+  "en-CA": "Canadian English",
+  "en-GB": "British English",
+};
+
+const LOCALE_LABELS: Record<string, string> = Object.fromEntries(
+  Object.entries(CANVAS_LOCALES).map(([locale, meta]) => [
+    locale,
+    ENGLISH_VARIANT_LABELS[locale] ?? meta.label.replace(/\s*\(.*\)$/, ""),
+  ]),
+);
 
 /** A pluggable translation engine: named, with markdown/text/batch translate methods. */
 export interface TranslationAdapter {
@@ -31,137 +53,59 @@ export interface TranslationAdapter {
   ): Promise<Record<string, string>>;
 }
 
-const SORTED_REPLACEMENTS: Array<[RegExp, string]> = [
-  [/\bType Parameters\b/g, "Típusparaméterek"],
-  [/\bType parameter\b/g, "Típusparaméter"],
-  [/\bParameters\b/g, "Paraméterek"],
-  [/\bParameter\b/g, "Parameter"],
-  [/\bReturns\b/g, "Visszatérés"],
-  [/\bReturn type\b/g, "Visszatérési típus"],
-  [/\bThrows\b/g, "Kivételek"],
-  [/\bDefined in\b/g, "Definiálva itt"],
-  [/\bInherited from\b/g, "Örökölve innen"],
-  [/\bImplemented by\b/g, "Implementálja"],
-  [/\bImplementation of\b/g, "Implementációja"],
-  [/\bOverrides\b/g, "Felülírja"],
-  [/\bProperties\b/g, "Tulajdonságok"],
-  [/\bProperty\b/g, "Tulajdonság"],
-  [/\bMethods\b/g, "Metódusok"],
-  [/\bMethod\b/g, "Metódus"],
-  [/\bFunctions\b/g, "Függvények"],
-  [/\bFunction\b/g, "Függvény"],
-  [/\bVariables\b/g, "Változók"],
-  [/\bVariable\b/g, "Változó"],
-  [/\bInterfaces\b/g, "Interfészek"],
-  [/\bInterface\b/g, "Interfész"],
-  [/\bClasses\b/g, "Osztályok"],
-  [/\bClass\b/g, "Osztály"],
-  [/\bConstructors\b/g, "Konstruktorok"],
-  [/\bConstructor\b/g, "Konstruktor"],
-  [/\bEnumerations\b/g, "Felsorolások"],
-  [/\bEnumeration\b/g, "Felsorolás"],
-  [/\bType Aliases\b/g, "Típusaliasok"],
-  [/\bType Alias\b/g, "Típusalias"],
-  [/\bReferences\b/g, "Hivatkozások"],
-  [/\bReference\b/g, "Hivatkozás"],
-  [/\bReadonly\b/g, "Csak olvasható"],
-  [/\bOptional\b/g, "Opcionális"],
-  [/\bDeprecated\b/g, "Elavult"],
-  [/\bExample\b/g, "Példa"],
-  [/\bExamples\b/g, "Példák"],
-  [/\bSee also\b/g, "Lásd még"],
-  [/\bHierarchy\b/g, "Hierarchia"],
-  [/\bIndex\b/g, "Index"],
-  [/\bPackage\b/g, "Csomag"],
-  [/\bModule\b/g, "Modul"],
-  [/\bNamespaces\b/g, "Névterek"],
-  [/\bNamespace\b/g, "Névtér"],
-  [/\bCall Signature\b/g, "Hívási szignatúra"],
-  [/\bSignatures\b/g, "Szignatúrák"],
-  [/\bSignature\b/g, "Szignatúra"],
-  [/\bDescription\b/g, "Leírás"],
-  [/\bDefault Value\b/g, "Alapértelmezett érték"],
-  [/\bSource\b/g, "Forrás"],
-  [/\bGenerated using\b/g, "Generálva ezzel"],
-  [/\bAPI reference\b/g, "API referencia"],
-  // cssdoc section headings. These arrived with the cssdoc doc-block tags (@accessibility, @usage,
-  // @modifier, …) after the glossary was last touched, so they rendered in English. Anchored to a
-  // whole heading line (^…$) on purpose: many are common words ("usage", "related", "states",
-  // "structure") that must NOT be translated when they appear in prose — only as a section heading.
-  [/^(#{1,6} )Accessibility$/gm, "$1Akadálymentesség"],
-  [/^(#{1,6} )Usage$/gm, "$1Használat"],
-  [/^(#{1,6} )Demo$/gm, "$1Demó"],
-  [/^(#{1,6} )Structure$/gm, "$1Felépítés"],
-  [/^(#{1,6} )Slots$/gm, "$1Slotok"],
-  [/^(#{1,6} )Modifiers$/gm, "$1Módosítók"],
-  [/^(#{1,6} )Parts$/gm, "$1Részek"],
-  [/^(#{1,6} )Pseudo-elements$/gm, "$1Pszeudoelemek"],
-  [/^(#{1,6} )States$/gm, "$1Állapotok"],
-  [/^(#{1,6} )Custom properties$/gm, "$1Egyéni tulajdonságok"],
-  [/^(#{1,6} )Conditions$/gm, "$1Feltételek"],
-  [/^(#{1,6} )Animations$/gm, "$1Animációk"],
-  [/^(#{1,6} )Tokens consumed$/gm, "$1Felhasznált tokenek"],
-  [/^(#{1,6} )Browser support$/gm, "$1Böngészőtámogatás"],
-  [/^(#{1,6} )Subcomponents$/gm, "$1Alkomponensek"],
-  [/^(#{1,6} )Related$/gm, "$1Kapcsolódó"],
-  [/^(#{1,6} )Extends$/gm, "$1Kiterjeszti"],
-  // API overview (write-api-overview.ts) section headings.
-  [/^(#{1,6} )Start here$/gm, "$1Kezdd itt"],
-  [/^(#{1,6} )Browse by group$/gm, "$1Böngéssz csoport szerint"],
-  // Stability-tier badge labels. Anchored to the doc-tag pill so a stray "Beta"/"Alpha" in prose is
-  // never touched. Deprecated is covered by the \bDeprecated\b entry above.
-  [/(pantoken-doc-tag">)Alpha(<)/g, "$1Alfa$2"],
-  [/(pantoken-doc-tag">)Beta(<)/g, "$1Béta$2"],
-  [/(pantoken-doc-tag">)Experimental(<)/g, "$1Kísérleti$2"],
-  // cssdoc table column labels. Anchored to the WHOLE string (^…$): the segmenter feeds each header
-  // cell as its own glossary unit, so these fire on an isolated "Value"/"Name"/"Type" cell but never
-  // on those common words inside a prose sentence. Description/Class are already handled above.
-  [/^Modifier$/g, "Módosító"],
-  [/^Pseudo-element$/g, "Pszeudoelem"],
-  [/^Part$/g, "Rész"],
-  [/^State$/g, "Állapot"],
-  [/^Slot$/g, "Slot"],
-  [/^Animation$/g, "Animáció"],
-  [/^Token$/g, "Token"],
-  [/^Type$/g, "Típus"],
-  [/^Value$/g, "Érték"],
-  [/^Query$/g, "Lekérdezés"],
-  [/^Name$/g, "Név"],
-  [/^Summary$/g, "Összegzés"],
-  [/^Default$/g, "Alapértelmezett"],
-  // API-overview table first-column headers (the second column is `Description`, handled above).
-  [/^Area$/g, "Terület"],
-  [/^Group$/g, "Csoport"],
-  // The `<!-- js-requirement -->` callout's bold label (build-css-api.ts / segment-markdown.ts).
-  // Whole-string anchored — it's an isolated glossary unit, never a substring inside prose.
-  [/^JS Requirement$/g, "JS-követelmény"],
-  [/^JS Enhancement$/g, "JS-bővítmény"],
-  // CSS reference section groups (from formats/components via @cssdoc/typedoc). These label the CSS
-  // nav tree (typedoc-sidebar.json) as isolated strings AND appear as `## …` headings in
-  // api/css/index.md, so each gets both a whole-string form (^…$) for the sidebar label and a
-  // heading-anchored form (^# …$) for the overview page. Common words, so both are anchored to never
-  // fire inside prose.
-  [/^(#{1,6} )Overview$/gm, "$1Áttekintés"],
-  [/^(#{1,6} )Components$/gm, "$1Komponensek"],
-  [/^(#{1,6} )Utilities$/gm, "$1Segédosztályok"],
-  [/^(#{1,6} )Rules$/gm, "$1Szabályok"],
-  [/^(#{1,6} )Declarations$/gm, "$1Deklarációk"],
-  [/^Overview$/g, "Áttekintés"],
-  [/^Components$/g, "Komponensek"],
-  [/^Utilities$/g, "Segédosztályok"],
-  [/^Rules$/g, "Szabályok"],
-  [/^Declarations$/g, "Deklarációk"],
-];
+/** Escape regex metacharacters so a glossary term can be dropped into a `RegExp` literally. */
+const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Build the match pattern for a glossary term, based on how it's shaped in generated markdown. */
+const patternFor = (kind: GlossaryKind, term: string): RegExp => {
+  const escaped = escapeRegExp(term);
+  switch (kind) {
+    case "heading":
+      return new RegExp(`^(#{1,6} )${escaped}$`, "gm");
+    case "line":
+      return new RegExp(`^${escaped}$`, "g");
+    case "badge":
+      return new RegExp(`(pantoken-doc-tag">)${escaped}(<)`, "g");
+    default:
+      return new RegExp(`\\b${escaped}\\b`, "g");
+  }
+};
+
+/** Build the replacement string for a translated term, preserving any capture groups `patternFor` used. */
+const replacementFor = (kind: GlossaryKind, translated: string): string => {
+  switch (kind) {
+    case "heading":
+      return `$1${translated}`;
+    case "badge":
+      return `$1${translated}$2`;
+    default:
+      return translated;
+  }
+};
 
 /**
- * Deterministic, keyless adapter: substitutes known structural terms only (headings, badges, table
- * labels). It can't translate prose, so `translatesProse` is `false`. Safe to run in CI.
+ * Deterministic adapter: substitutes known structural terms only (headings, badges, table labels),
+ * looked up from the `<locale>.glossary.json` translation-memory cache (see `glossary.ts` for the term
+ * list and `translate-glossary.ts` for how the cache is filled). It can't translate prose, so
+ * `translatesProse` is `false`. Safe to run in CI — it never spawns an adapter or hits the network.
  */
 export class GlossaryTranslationAdapter implements TranslationAdapter {
   readonly name = "glossary";
   // Deterministic term substitution only — it cannot translate prose, so the memory must never cache
   // its output under a prose key.
   readonly translatesProse = false;
+  private readonly replacements: Array<[RegExp, string]>;
+
+  constructor(locale = "hu") {
+    const memory = TranslationMemory.load(locale, "glossary");
+    // Untranslated terms are skipped (identity passthrough) rather than matched against an empty
+    // string, so an in-progress locale still renders every OTHER already-translated term correctly.
+    this.replacements = GLOSSARY_TERMS.flatMap(({ kind, term }) => {
+      const translated = memory.get("text", term);
+      if (translated === undefined) return [];
+      return [[patternFor(kind, term), replacementFor(kind, translated)] as [RegExp, string]];
+    });
+  }
 
   translateMarkdown(input: string): Promise<string> {
     return Promise.resolve(translateWithoutFencedCode(input, (text) => this.translateSync(text)));
@@ -175,7 +119,7 @@ export class GlossaryTranslationAdapter implements TranslationAdapter {
   private translateSync(input: string): string {
     const preserved = preservePackageNames(input);
     let out = preserved.text;
-    for (const [pattern, value] of SORTED_REPLACEMENTS) {
+    for (const [pattern, value] of this.replacements) {
       out = out.replace(pattern, value);
     }
     return restorePackageNames(out, preserved.packageNames);
@@ -259,6 +203,33 @@ const restorePackageNames = (input: string, packageNames: string[]): string => {
   return out;
 };
 
+// TypeDoc renders a generic type as several separately backtick-wrapped tokens joined by bare escaped
+// angle brackets (e.g. `` `Readonly`\<`Record`\<`string`, `string`\>\> ``) — each `` `Token` `` is
+// masked on its own by preserveMarkdownSensitiveBlocks, but the `\<`/`\>` glue between them is NOT (it's
+// outside any code span), so it reaches the model as bare punctuation in an otherwise-prose sentence or
+// caption. Asked to "translate" text containing that, a model has duplicated/mangled the brackets
+// (`\>` → `>>>>>>>\>`) rather than leaving them alone. Masking them unconditionally, everywhere text
+// reaches the model, removes the ambiguity instead of relying on the model to recognize and preserve it.
+const ESCAPED_ANGLE_BRACKET = /\\[<>]/g;
+
+const preserveEscapedAngleBrackets = (input: string): { text: string; brackets: string[] } => {
+  const brackets: string[] = [];
+  const text = input.replace(ESCAPED_ANGLE_BRACKET, (match) => {
+    const marker = `__PTK_ESC_${brackets.length}__`;
+    brackets.push(match);
+    return marker;
+  });
+  return { text, brackets };
+};
+
+const restoreEscapedAngleBrackets = (input: string, brackets: string[]): string => {
+  let out = input;
+  for (const [index, bracket] of brackets.entries()) {
+    out = out.replaceAll(`__PTK_ESC_${index}__`, bracket);
+  }
+  return out;
+};
+
 const translateWithoutFencedCode = (input: string, translate: (line: string) => string): string => {
   const lines = input.split("\n");
   const out: string[] = [];
@@ -330,35 +301,40 @@ export class AiTranslationAdapter implements TranslationAdapter {
 
   private readonly command: string;
   private readonly args: string[];
+  private readonly targetLanguage: string;
 
-  constructor() {
+  constructor(locale = "hu") {
     this.command = process.env.DOCS_TRANSLATION_COMMAND ?? "claude";
     this.args = (process.env.DOCS_TRANSLATION_COMMAND_ARGS ?? "")
       .split(" ")
       .map((part) => part.trim())
       .filter((part) => part.length > 0);
+    this.targetLanguage = LOCALE_LABELS[locale] ?? locale;
   }
 
   async translateMarkdown(input: string, filePath: string): Promise<string> {
     const preservedMarkdown = preserveMarkdownSensitiveBlocks(input);
     const preservedPackages = preservePackageNames(preservedMarkdown.text);
+    const preservedBrackets = preserveEscapedAngleBrackets(preservedPackages.text);
     const prompt = [
-      "Translate this technical markdown from English to Hungarian.",
+      `Translate this technical markdown from English to ${this.targetLanguage}.`,
       "Return only the translated markdown.",
       "Rules:",
       "- Keep markdown structure unchanged.",
+      "- Translate heading text too (the words after the leading # symbols) — do not leave headings in English.",
       "- Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__ or __PTK_INLINE_CODE_#__.",
-      "- Do not alter placeholder tokens like __PTK_PACKAGE_#__.",
+      "- Do not alter placeholder tokens like __PTK_PACKAGE_#__ or __PTK_ESC_#__.",
       "- Preserve whitespace and line breaks.",
       "- Keep import paths, package names, URLs, and identifiers intact.",
       `File: ${filePath}`,
       "--- BEGIN MARKDOWN ---",
-      preservedPackages.text,
+      preservedBrackets.text,
       "--- END MARKDOWN ---",
     ].join("\n");
 
     const translated = await this.runClaude(prompt, `markdown file ${filePath}`);
-    const restoredPackages = restorePackageNames(translated, preservedPackages.packageNames);
+    const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
+    const restoredPackages = restorePackageNames(restoredBrackets, preservedPackages.packageNames);
     return restoreMarkdownSensitiveBlocks(
       restoredPackages,
       preservedMarkdown.codeBlocks,
@@ -368,17 +344,19 @@ export class AiTranslationAdapter implements TranslationAdapter {
 
   async translateText(input: string): Promise<string> {
     const preserved = preservePackageNames(input);
+    const preservedBrackets = preserveEscapedAngleBrackets(preserved.text);
     const prompt = [
-      "Translate this technical UI text from English to Hungarian.",
+      `Translate this technical UI text from English to ${this.targetLanguage}.`,
       "Return only the translation.",
       "Keep identifiers and package names unchanged.",
-      "Do not alter placeholder tokens like __PTK_PACKAGE_#__.",
+      "Do not alter placeholder tokens like __PTK_PACKAGE_#__ or __PTK_ESC_#__.",
       "Text:",
-      preserved.text,
+      preservedBrackets.text,
     ].join("\n");
 
     const translated = (await this.runClaude(prompt, "single text line")).trim();
-    return restorePackageNames(translated, preserved.packageNames);
+    const restoredBrackets = restoreEscapedAngleBrackets(translated, preservedBrackets.brackets);
+    return restorePackageNames(restoredBrackets, preserved.packageNames);
   }
 
   async translateBatch(
@@ -415,27 +393,32 @@ export class AiTranslationAdapter implements TranslationAdapter {
   private async runBatch(
     items: readonly { id: string; text: string }[],
   ): Promise<Record<string, string>> {
-    // Protect code and package names in every value before it reaches the model — prose cells and
-    // captions carry inline code and `@scope/pkg` names that must survive verbatim — then restore per
-    // id. Without this the batch path (unlike translateMarkdown) would let the model rewrite them.
+    // Protect code, package names, and escaped generic-type brackets in every value before it reaches
+    // the model — prose cells and captions carry inline code, `@scope/pkg` names, and TypeDoc's
+    // `` `Foo`\<`Bar`\> `` bracket glue that must survive verbatim — then restore per id. Without this
+    // the batch path (unlike translateMarkdown) would let the model rewrite them.
     const masked = items.map((item) => {
       const markdown = preserveMarkdownSensitiveBlocks(item.text);
       const packages = preservePackageNames(markdown.text);
-      return { id: item.id, masked: packages.text, markdown, packages };
+      const brackets = preserveEscapedAngleBrackets(packages.text);
+      return { id: item.id, masked: brackets.text, markdown, packages, brackets };
     });
     const restore = (entry: (typeof masked)[number], value: string): string =>
       restoreMarkdownSensitiveBlocks(
-        restorePackageNames(value, entry.packages.packageNames),
+        restorePackageNames(
+          restoreEscapedAngleBrackets(value, entry.brackets.brackets),
+          entry.packages.packageNames,
+        ),
         entry.markdown.codeBlocks,
         entry.markdown.inlineCodeBlocks,
       );
 
     const payload = Object.fromEntries(masked.map((entry) => [entry.id, entry.masked]));
     const prompt = [
-      "Translate the VALUES of this JSON object from English to Hungarian.",
+      `Translate the VALUES of this JSON object from English to ${this.targetLanguage}.`,
       "Return ONLY a JSON object with the same keys and translated values.",
       "Do not translate, add, or remove keys. Keep identifiers, package names, and URLs unchanged.",
-      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, or __PTK_PACKAGE_#__.",
+      "Do not alter placeholder tokens like __PTK_CODE_BLOCK_#__, __PTK_INLINE_CODE_#__, __PTK_PACKAGE_#__, or __PTK_ESC_#__.",
       JSON.stringify(payload, null, 2),
     ].join("\n");
 
@@ -462,19 +445,20 @@ export class AiTranslationAdapter implements TranslationAdapter {
 }
 
 /**
- * Build the adapter named by `DOCS_TRANSLATION_ADAPTER` (default `glossary`). Throws on an unknown
- * name. Supported values are `glossary` and `ai`.
+ * Build the adapter named by `DOCS_TRANSLATION_ADAPTER` (default `glossary`), targeting `locale`
+ * (default `hu`, kept as the default for backward-compatible callers). Throws on an unknown name.
+ * Supported values are `glossary` and `ai`.
  */
-export const createTranslationAdapter = (): TranslationAdapter => {
+export const createTranslationAdapter = (locale = "hu"): TranslationAdapter => {
   // A pluggable selector means we can drop in a richer provider later without changing callers.
   const selected = (process.env.DOCS_TRANSLATION_ADAPTER ?? "glossary").toLowerCase();
 
   if (selected === "glossary") {
-    return new GlossaryTranslationAdapter();
+    return new GlossaryTranslationAdapter(locale);
   }
 
   if (selected === "ai") {
-    return new AiTranslationAdapter();
+    return new AiTranslationAdapter(locale);
   }
 
   throw new Error(

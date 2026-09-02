@@ -2,7 +2,28 @@
  * Build locale-specific TypeDoc output.
  *
  * EN API docs are generated directly by TypeDoc to `docs/api/`.
- * HU API docs are cloned to `docs/hu/api/` and then localized with the configured adapter.
+ * Every other locale's API docs are cloned to `docs/<locale>/api/` and localized with the configured
+ * adapter (see `.vitepress/i18n.ts`'s `NON_ROOT_LOCALES`). Markdown files and sidebars are processed
+ * one at a time with real-time per-file progress logging to avoid silently translating thousands
+ * of strings before showing any feedback.
+ *
+ * Logs incremental per-file progress by phase and locale:
+ *   📋 Building locale-specific API docs
+ *   🔨 Generating EN API docs
+ *     ✓ TypeDoc output
+ *     ✓ API badge styling
+ *     ✓ Overview cards
+ *   🔨 Generating CSS API docs
+ *     ✓ CSS API reference
+ *   🔄 ar: translating...
+ *     docs/api/classes/Alert.md: 12 prose, 3 glossary (8 cached, 7 translated)
+ *     docs/api/classes/Button.md: 18 prose, 5 glossary (15 cached, 8 translated)
+ *     docs/api/classes/Modal.md: 25 prose, 4 glossary (20 cached, 9 translated)
+ *     docs/api/typedoc-sidebar.json: 87 labels (65 cached, 22 translated)
+ *     📄 Summary: 1,450 prose blocks, 445 glossary terms (1,200 cached, 1,347 translated)
+ *     📋 Summary: 87 labels (65 cached, 22 translated)
+ *   ✓ ar: rendered in docs/ar/api (3,534 translated, 1,265 cached)
+ *   ✨ All API locales complete!
  */
 import {
   cpSync,
@@ -16,6 +37,7 @@ import {
 } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
+import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
 import { type Resolve, collectUnits, reassemble, segmentMarkdown } from "./segment-markdown.ts";
 import {
@@ -27,7 +49,7 @@ import {
 
 const docsRoot = join(import.meta.dirname, "..");
 const enApiDir = join(docsRoot, "api");
-const huApiDir = join(docsRoot, "hu/api");
+const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 
 const run = (command: string, args: string[]): void => {
   const result = spawnSync(command, args, {
@@ -64,17 +86,22 @@ type SidebarItem = {
   items?: SidebarItem[];
 };
 
-// TypeDoc emits absolute API links as `/api/...`; the cloned HU tree must point at `/hu/api/...` or the
-// Hungarian sidebar navigates back into the English pages. Idempotent — never double-prefixes.
-const localizeApiLink = (link: string): string => (/^\/api(\/|$)/.test(link) ? `/hu${link}` : link);
+// TypeDoc emits absolute API links as `/api/...`; the cloned tree must point at `/<locale>/api/...` or
+// the localized sidebar navigates back into the English pages. Idempotent — never double-prefixes.
+const localizeApiLink = (link: string, locale: string): string =>
+  /^\/api(\/|$)/.test(link) ? `/${locale}${link}` : link;
 
 // Same rewrite for absolute `/api/...` links inside the cloned markdown (overview cards, CSS
 // breadcrumbs). Only touches markdown-link `](…)` and `href="…"` targets, so it leaves relative links
 // (`../index.md`) and any prose mentioning `/api` alone.
-const localizeMarkdownApiLinks = (markdown: string): string =>
-  markdown.replace(/(\]\(|href=")\/api(?=[/")])/g, "$1/hu/api");
+const localizeMarkdownApiLinks = (markdown: string, locale: string): string =>
+  markdown.replace(/(\]\(|href=")\/api(?=[/")])/g, `$1/${locale}/api`);
 
-const translateSidebar = (item: SidebarItem, translate: (text: string) => string): SidebarItem => {
+const translateSidebar = (
+  item: SidebarItem,
+  translate: (text: string) => string,
+  locale: string,
+): SidebarItem => {
   const translated: SidebarItem = { ...item };
 
   if (translated.text) {
@@ -82,11 +109,11 @@ const translateSidebar = (item: SidebarItem, translate: (text: string) => string
   }
 
   if (translated.link) {
-    translated.link = localizeApiLink(translated.link);
+    translated.link = localizeApiLink(translated.link, locale);
   }
 
   if (translated.items) {
-    translated.items = translated.items.map((child) => translateSidebar(child, translate));
+    translated.items = translated.items.map((child) => translateSidebar(child, translate, locale));
   }
 
   return translated;
@@ -122,20 +149,23 @@ const escapeBareHtmlTags = (text: string): string => {
  * so they're cloned + translated for HU for free.
  */
 const generateBaseApiDocs = (): void => {
-  console.log("Generating EN API docs...");
+  console.log(`🔨 Generating EN API docs`);
   run("vp", ["exec", "typedoc", "--options", "typedoc.json", "--out", "api"]);
+  console.log(`  ✓ TypeDoc output`);
   run("node", ["scripts/style-api-badges.ts"]);
+  console.log(`  ✓ API badge styling`);
   run("node", ["scripts/write-api-overview.ts"]);
+  console.log(`  ✓ Overview cards`);
 
-  console.log("Generating CSS API docs...");
+  console.log(`🔨 Generating CSS API docs`);
   run("node", ["scripts/build-css-api.ts"]);
+  console.log(`  ✓ CSS API reference\n`);
 };
 
-/** Clone the generated EN API tree into the HU locale directory. */
-const cloneApiForHu = (): void => {
-  console.log("Cloning API docs for HU locale...");
-  mkdirSync(dirname(huApiDir), { recursive: true });
-  cpSync(enApiDir, huApiDir, { recursive: true });
+/** Clone the generated EN API tree into a locale directory. */
+const cloneApiForLocale = (localeApiDir: string): void => {
+  mkdirSync(dirname(localeApiDir), { recursive: true });
+  cpSync(enApiDir, localeApiDir, { recursive: true });
 };
 
 /**
@@ -143,107 +173,225 @@ const cloneApiForHu = (): void => {
  * rewrite it translated in place. Prose is batched + cached through the selected adapter; headings,
  * badge pills, and table column labels always go through the glossary (deterministic, keyless, never
  * cached); everything else is kept verbatim. Block-level keys survive the scaffolding churn that busted
- * whole-file keys. Returns the glossary-term and prose-block counts for the summary log.
+ * whole-file keys. Logs per-file progress incrementally. Returns glossary-term, prose-block, and
+ * cache/miss counts aggregated across all files.
  */
 const translateMarkdownFiles = async (
   markdownFiles: string[],
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
-): Promise<{ glossaryTerms: number; proseBlocks: number }> => {
-  const glossary = new GlossaryTranslationAdapter();
+  locale: string,
+): Promise<{
+  glossaryTerms: number;
+  proseBlocks: number;
+  proseTranslated: number;
+  proseCached: number;
+}> => {
+  const glossary = new GlossaryTranslationAdapter(locale);
   const segmented = markdownFiles.map((filePath) => ({
     filePath,
     segments: segmentMarkdown(readFileSync(filePath, "utf8")),
   }));
-  const units = segmented.flatMap(({ segments }) => collectUnits(segments));
 
-  const glossaryText = new Map<string, string>();
-  for (const unit of units) {
-    if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
-      // The glossary is synchronous under the hood; awaiting is just contract plumbing (instant).
-      glossaryText.set(unit.text, await glossary.translateText(unit.text));
-    }
-  }
-  const proseUnits: TranslationUnit[] = units
-    .filter((unit) => unit.kind === "prose")
-    .map((unit) => ({ kind: "prose", source: unit.text }));
-  const proseTranslations = await translateUnits(adapter, memory, proseUnits, { autosave: true });
+  let totalGlossaryTerms = 0;
+  let totalProseBlocks = 0;
+  let totalProseTranslated = 0;
+  let totalProseCached = 0;
 
-  const resolve: Resolve = (text, kind) => {
-    if (kind === "glossary") {
-      return glossaryText.get(text) ?? text;
-    }
-
-    const translated = proseTranslations.get(keyFor("prose", text)) ?? text;
-    return escapeBareHtmlTags(translated);
-  };
   for (const { filePath, segments } of segmented) {
-    writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve)));
+    const fileUnits = collectUnits(segments);
+
+    // Translate glossary terms for this file
+    const glossaryText = new Map<string, string>();
+    for (const unit of fileUnits) {
+      if (unit.kind === "glossary" && !glossaryText.has(unit.text)) {
+        glossaryText.set(unit.text, await glossary.translateText(unit.text));
+      }
+    }
+    totalGlossaryTerms += glossaryText.size;
+
+    // Translate prose units for this file
+    const proseUnits: TranslationUnit[] = fileUnits
+      .filter((unit) => unit.kind === "prose")
+      .map((unit) => ({ kind: "prose", source: unit.text }));
+
+    const beforeMisses = memory.misses;
+    const beforeHits = memory.hits;
+
+    const proseTranslations = await translateUnits(adapter, memory, proseUnits, {
+      autosave: true,
+      locale,
+      defaultVerbatim: { allow: ["en*"] },
+    });
+
+    const fileProseTranslated = memory.misses - beforeMisses;
+    const fileProseCached = memory.hits - beforeHits;
+    totalProseTranslated += fileProseTranslated;
+    totalProseCached += fileProseCached;
+
+    const proseBlockCount = new Set(proseUnits.map((u) => u.source)).size;
+    totalProseBlocks += proseBlockCount;
+
+    // Resolve and write the file
+    const resolve: Resolve = (text, kind) => {
+      if (kind === "glossary") {
+        return glossaryText.get(text) ?? text;
+      }
+      const translated = proseTranslations.get(keyFor("prose", text)) ?? text;
+      return escapeBareHtmlTags(translated);
+    };
+    writeFileSync(filePath, localizeMarkdownApiLinks(reassemble(segments, resolve), locale));
+
+    // Log per-file progress
+    const relPath = relative(docsRoot, filePath);
+    if (proseBlockCount > 0 || glossaryText.size > 0) {
+      const fileCounts = [
+        glossaryText.size > 0 && `${glossaryText.size} glossary`,
+        proseBlockCount > 0 && `${proseBlockCount} prose`,
+      ]
+        .filter(Boolean)
+        .join(", ");
+      console.log(
+        `    ${relPath}: ${fileCounts} (${fileProseCached} cached, ${fileProseTranslated} translated)`,
+      );
+    }
   }
 
-  const proseBlocks = new Set(proseUnits.map((u) => u.source)).size;
-  return { glossaryTerms: glossaryText.size, proseBlocks };
+  return {
+    glossaryTerms: totalGlossaryTerms,
+    proseBlocks: totalProseBlocks,
+    proseTranslated: totalProseTranslated,
+    proseCached: totalProseCached,
+  };
 };
 
 /**
- * Collect every sidebar label across all trees, translate the misses in one batched pass, then rebuild
- * and rewrite each tree from the results. Returns the total label count for the summary log.
+ * Collect every sidebar label across all trees, translate them with incremental per-file feedback,
+ * then rebuild and rewrite each tree from the results. Logs per-file label counts and cache/miss stats.
+ * Returns aggregated label count and cache/miss stats for the summary log.
  */
 const translateSidebars = async (
   sidebarFiles: string[],
   adapter: ReturnType<typeof createTranslationAdapter>,
   memory: TranslationMemory,
-): Promise<number> => {
+  locale: string,
+): Promise<{ labelCount: number; labelTranslated: number; labelCached: number }> => {
   const sidebars = sidebarFiles.map((filePath) => ({
     filePath,
     tree: JSON.parse(readFileSync(filePath, "utf8")) as SidebarItem[],
   }));
-  const labels: string[] = [];
-  for (const { tree } of sidebars) collectSidebarText(tree, labels);
-  const labelTranslations = await translateUnits(
-    adapter,
-    memory,
-    labels.map((source) => ({ kind: "text", source })),
-  );
-  const translateLabel = (text: string): string =>
-    labelTranslations.get(keyFor("text", text)) ?? text;
+
+  let totalLabelCount = 0;
+  let totalLabelTranslated = 0;
+  let totalLabelCached = 0;
+
   for (const { filePath, tree } of sidebars) {
-    const translated = tree.map((item) => translateSidebar(item, translateLabel));
+    const fileLabels: string[] = [];
+    collectSidebarText(tree, fileLabels);
+
+    const beforeMisses = memory.misses;
+    const beforeHits = memory.hits;
+
+    const labelTranslations = await translateUnits(
+      adapter,
+      memory,
+      fileLabels.map((source) => ({ kind: "text", source })),
+      { locale, defaultVerbatim: { allow: ["en*"] } },
+    );
+    const translateLabel = (text: string): string =>
+      labelTranslations.get(keyFor("text", text)) ?? text;
+
+    const translated = tree.map((item) => translateSidebar(item, translateLabel, locale));
     writeFileSync(filePath, `${JSON.stringify(translated, null, 2)}\n`);
+
+    const fileLabelTranslated = memory.misses - beforeMisses;
+    const fileLabelCached = memory.hits - beforeHits;
+    totalLabelTranslated += fileLabelTranslated;
+    totalLabelCached += fileLabelCached;
+    totalLabelCount += fileLabels.length;
+
+    // Log per-file progress
+    const relPath = relative(docsRoot, filePath);
+    console.log(
+      `    ${relPath}: ${fileLabels.length} label${fileLabels.length === 1 ? "" : "s"} (${fileLabelCached} cached, ${fileLabelTranslated} translated)`,
+    );
   }
-  return labels.length;
+
+  return {
+    labelCount: totalLabelCount,
+    labelTranslated: totalLabelTranslated,
+    labelCached: totalLabelCached,
+  };
 };
 
-const build = async (): Promise<void> => {
-  const adapter = createTranslationAdapter();
-  const memory = TranslationMemory.load("hu", "api");
+/** Clone + translate the EN API tree into one locale's directory. */
+const buildLocale = async (locale: string): Promise<void> => {
+  const adapter = createTranslationAdapter(locale);
+  const memory = TranslationMemory.load(locale, "api");
+  const localeApiDir = apiDirFor(locale);
 
-  rmSync(enApiDir, { recursive: true, force: true });
-  rmSync(huApiDir, { recursive: true, force: true });
+  rmSync(localeApiDir, { recursive: true, force: true });
+  cloneApiForLocale(localeApiDir);
 
-  generateBaseApiDocs();
-  cloneApiForHu();
-
-  const files = walkFiles(huApiDir);
+  const files = walkFiles(localeApiDir);
   const markdownFiles = files.filter((f) => f.endsWith(".md"));
   // The TypeDoc sidebar carries the CSS section too (merged by @cssdoc/typedoc), so its labels cover
   // both the TS API and the CSS reference.
   const sidebarFiles = files.filter((f) => f.endsWith("typedoc-sidebar.json"));
 
-  // 1. Markdown blocks, then 2. sidebar labels — markdown first so both passes share the same memory.
-  const { glossaryTerms, proseBlocks } = await translateMarkdownFiles(
+  console.log(`🔄 ${locale}: translating...`);
+
+  // 1. Markdown blocks (logs per-file progress internally)
+  const { glossaryTerms, proseBlocks, proseTranslated, proseCached } = await translateMarkdownFiles(
     markdownFiles,
     adapter,
     memory,
+    locale,
   );
-  const labelCount = await translateSidebars(sidebarFiles, adapter, memory);
+
+  console.log(
+    `  📄 Summary: ${proseBlocks} prose block${proseBlocks === 1 ? "" : "s"}, ` +
+      `${glossaryTerms} glossary term${glossaryTerms === 1 ? "" : "s"} ` +
+      `(${proseCached} cached, ${proseTranslated} translated)`,
+  );
+
+  // 2. Sidebar labels (logs per-file progress internally)
+  const { labelCount, labelTranslated, labelCached } = await translateSidebars(
+    sidebarFiles,
+    adapter,
+    memory,
+    locale,
+  );
+
+  console.log(
+    `  📋 Summary: ${labelCount} label${labelCount === 1 ? "" : "s"} ` +
+      `(${labelCached} cached, ${labelTranslated} translated)`,
+  );
 
   memory.save();
+  const totalTranslated = proseTranslated + labelTranslated;
+  const totalCached = proseCached + labelCached;
   console.log(
-    `Localized ${markdownFiles.length} API markdown files for HU via '${adapter.name}': ` +
-      `${glossaryTerms} glossary terms, ${proseBlocks} prose blocks, ${labelCount} sidebar labels ` +
-      `(${memory.misses} translated, ${memory.hits} cached) in ${relative(docsRoot, huApiDir)}`,
+    `✓ ${locale}: rendered in ${relative(docsRoot, localeApiDir)} ` +
+      `(${totalTranslated} translated, ${totalCached} cached)\n`,
   );
+};
+
+const build = async (): Promise<void> => {
+  console.log(`📋 Building locale-specific API docs\n`);
+
+  rmSync(enApiDir, { recursive: true, force: true });
+  for (const locale of NON_ROOT_LOCALES) {
+    rmSync(apiDirFor(locale), { recursive: true, force: true });
+  }
+
+  generateBaseApiDocs();
+
+  for (const locale of NON_ROOT_LOCALES) {
+    await buildLocale(locale);
+  }
+
+  console.log(`✨ All API locales complete!`);
 };
 
 build().catch((error: unknown) => {

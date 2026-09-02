@@ -1,0 +1,158 @@
+<div class="container">
+  <div class="header">
+    <div class="info">
+      <div class="title">{{pageTitle}}</div>
+      <div class="description">{{pageDescription}}</div>
+    </div>
+    <div class="actions">
+      <button class="instui-button" type="button" popovertarget="theme-tray">
+        {{editThemeLabel}}
+      </button>
+      <button
+        class="instui-button -color-secondary"
+        type="button"
+        command="show-modal"
+        commandfor="help-modal"
+        aria-label="{{helpAriaLabel}}"
+      >
+        ?
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <slot name="content" class="main">
+      <p>
+        <button type="button" id="copy-html">{{copyHtmlLabel}}</button>
+        <span id="copy-status" role="status"></span>
+      </p>
+      <div class="split-pane" id="split-pane">
+        <div class="pane editor-pane" id="editor-pane">
+          <div class="pane-toolbar" data-pane-handle="editor-pane">
+            <span>{{editorPaneLabel}}</span>
+            <button
+              type="button"
+              class="pane-fullscreen"
+              data-pane="editor-pane"
+              aria-label="{{fullscreenEditorAriaLabel}}"
+            >
+              ⤢
+            </button>
+          </div>
+          <textarea id="editor"></textarea>
+        </div>
+        <div
+          class="split-handle"
+          id="split-handle"
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="{{resizePanesAriaLabel}}"
+          tabindex="0"
+        ></div>
+        <div class="pane preview-pane" id="preview-pane">
+          <div class="pane-toolbar" data-pane-handle="preview-pane">
+            <span>{{previewPaneLabel}}</span>
+            <button
+              type="button"
+              class="pane-fullscreen"
+              data-pane="preview-pane"
+              aria-label="{{fullscreenPreviewAriaLabel}}"
+            >
+              ⤢
+            </button>
+          </div>
+          <iframe id="preview" title="{{previewFrameTitle}}"></iframe>
+        </div>
+      </div>
+      <p class="split-controls">
+        <button type="button" id="toggle-orientation">{{stackVerticallyLabel}}</button>
+        <button type="button" id="swap-panes">{{swapPanesLabel}}</button>
+      </p>
+    </slot>
+  </div>
+</div>
+<div
+  class="instui-tray -placement-end -size-md"
+  popover
+  id="theme-tray"
+  aria-label="{{themeTrayAriaLabel}}"
+>
+  <div class="instui-tabs">
+    <div class="list" role="tablist" aria-label="{{themeTrayAriaLabel}}">
+      <button
+        class="tab -selected"
+        role="tab"
+        aria-selected="true"
+        id="tab-config"
+        aria-controls="panel-config"
+        type="button"
+      >
+        {{tabConfigLabel}}
+      </button>
+      <button
+        class="tab"
+        role="tab"
+        aria-selected="false"
+        id="tab-css"
+        aria-controls="panel-css"
+        type="button"
+      >
+        {{tabCssLabel}}
+      </button>
+      <button
+        class="tab"
+        role="tab"
+        aria-selected="false"
+        id="tab-js"
+        aria-controls="panel-js"
+        type="button"
+      >
+        {{tabJsLabel}}
+      </button>
+    </div>
+    <div class="panel" role="tabpanel" id="panel-config" aria-labelledby="tab-config">
+      <label>
+        {{cdnProviderLabel}}
+        <select id="cdn-provider"></select>
+      </label>
+      <label>
+        {{themeLabel}}
+        <select id="theme-variant">
+          <option value="rebrand">rebrand</option>
+          <option value="canvas">canvas</option>
+          <option value="canvasHighContrast">canvasHighContrast</option>
+        </select>
+      </label>
+      <label>
+        {{modeLabel}}
+        <select id="theme-mode">
+          <option value="light">light</option>
+          <option value="adaptive">adaptive</option>
+        </select>
+      </label>
+      <p>
+        <a id="download-theme-css" download="theme.css">{{downloadCssLabel}}</a>
+        <a id="download-theme-js" download="theme.js">{{downloadJsLabel}}</a>
+      </p>
+    </div>
+    <div class="panel" role="tabpanel" id="panel-css" hidden aria-labelledby="tab-css">
+      <p><button type="button" id="regenerate-css" hidden>{{regenerateLabel}}</button></p>
+      <div id="css-editor" class="code-editor"></div>
+    </div>
+    <div class="panel" role="tabpanel" id="panel-js" hidden aria-labelledby="tab-js">
+      <p><button type="button" id="regenerate-js" hidden>{{regenerateLabel}}</button></p>
+      <div id="js-editor" class="code-editor"></div>
+    </div>
+  </div>
+</div>
+<dialog class="instui-modal" id="help-modal" aria-labelledby="help-modal-title">
+  <div class="header"><strong id="help-modal-title">{{helpModalTitle}}</strong></div>
+  <div class="body">
+    <p>{{helpModalBody1}}</p>
+    <p>{{helpModalBody2}}</p>
+  </div>
+  <div class="footer">
+    <button class="instui-button" type="button" command="close" commandfor="help-modal">
+      {{closeLabel}}
+    </button>
+  </div>
+</dialog>

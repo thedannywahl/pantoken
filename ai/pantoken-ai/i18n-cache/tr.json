@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "pantoken'in ajan varlıklarını bir depoya yaz",
+  "helpInitToolDescription": "Ajan aracı (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Hedef dizin",
+  "helpScaffoldDescription": "Başlangıç projesi oluştur (@pantoken/scaffold üzerinden) ve içine ajan varlıklarını yükle",
+  "helpScaffoldToolDescription": "Ajan aracı (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Otomatik algılanan gösterim dilini geçersiz kıl (örn. \"hu\")"
+}

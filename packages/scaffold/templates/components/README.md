@@ -20,4 +20,4 @@ npm run dev
 - The markup follows the `wrapper` app-shell layout from `@pantoken/plugin-layouts` (`.container` /
   `.header` / `.content` parts) — see that package's README for what each part is for.
 - Apply classes like `class="instui-button"` to markup; see the
-  [component reference](https://pantoken.iywahl.com/api/css) for the full class list.
+  [component reference](https://pantoken.app/api/css) for the full class list.

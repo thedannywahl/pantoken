@@ -1,0 +1,33 @@
+<div class="instui-card">
+  <!-- A tree of nested <details> collections and leaf .item links. The chevron rotates on open. -->
+  <div class="instui-tree-browser" role="tree" style="max-width: 320px">
+    <details open>
+      <summary><span class="instui-icon -icon-folder"></span> {{text1}}</summary>
+      <ul role="group">
+        <li>
+          <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> {{text2}}</a>
+        </li>
+        <li>
+          <details>
+            <summary><span class="instui-icon -icon-folder"></span> {{text3}}</summary>
+            <ul role="group">
+              <li>
+                <a class="item -selected" href="#"
+                  ><span class="instui-icon -icon-file-text"></span> {{text4}}</a
+                >
+              </li>
+              <li>
+                <a class="item" href="#"
+                  ><span class="instui-icon -icon-file-text"></span> {{text5}}</a
+                >
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <a class="item" href="#"><span class="instui-icon -icon-file-text"></span> {{text6}}</a>
+        </li>
+      </ul>
+    </details>
+  </div>
+</div>

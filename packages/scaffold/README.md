@@ -13,13 +13,27 @@ npx @pantoken/scaffold components      # plain HTML/CSS (Vite + TS) + @pantoken/
 npx @pantoken/scaffold react           # Vite + React + @pantoken/react
 npx @pantoken/scaffold vue             # Vite + Vue 3 + @pantoken/vue
 npx @pantoken/scaffold web-components  # Vite + @pantoken/web-components (no framework)
+npx @pantoken/scaffold canvas-theme-editor  # Canvas Theme Editor uploads + RCE template starter
 
 # Target a directory other than the current one:
 npx @pantoken/scaffold react ./my-app
+
+# Omit the platform (and/or directory) on a TTY to be prompted interactively:
+npx @pantoken/scaffold
+
+# Non-interactive (CI-safe): errors instead of prompting for a missing platform/directory
+npx @pantoken/scaffold react --dir ./my-app --yes
+
+# Override the auto-detected display language
+npx @pantoken/scaffold --lang hu
 ```
 
-`npx` works regardless of which package manager you use. Substitute `pnpm dlx`, `yarn dlx`, or
-`bunx` for `npx` if you prefer.
+`npx` works regardless of which package manager you use. Substitute `pnpm dlx`, `yarn dlx`,
+`bunx`, or `deno run npm:` for `npx` if you prefer — the printed "Next steps" install command
+matches whichever one invoked the CLI (detected from `npm_config_user_agent`).
+
+Run `npx @pantoken/scaffold --help` for the full flag reference, or `npx @pantoken/scaffold
+completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
 
 Or use it programmatically:
 
@@ -35,8 +49,27 @@ await scaffoldProject("react", "./my-app");
   `ScaffoldPlatform` into `dir` (defaults to `"."`). Its basename (or `"pantoken-app"` for `"."`)
   is passed as the project name to the Bingo preset. Returns the paths written.
 - **`SCAFFOLD_PLATFORMS: readonly ScaffoldPlatform[]`** — every scaffoldable platform key (discovered
-  from available presets at build time).
-- **`ScaffoldPlatform`** — the platform union, derived from preset registry.
+  from available presets at build time, plus legacy template-only platforms like
+  `canvas-theme-editor` that aren't backed by a preset yet).
+- **`ScaffoldPlatform`** — the platform union, derived from the preset registry and the legacy
+  template map.
+
+## CLI flags
+
+| Flag                  | Description                                                               |
+| --------------------- | ------------------------------------------------------------------------- |
+| `[platform]`          | Platform to scaffold (prompted interactively if omitted on a TTY)         |
+| `-d, --dir <path>`    | Target directory (prompted interactively if omitted on a TTY)             |
+| `-y, --yes`           | Never prompt; error instead of prompting for a missing platform/directory |
+| `-l, --lang <tag>`    | Override the auto-detected display language (e.g. `"hu"`)                 |
+| `--theme <name>`      | Token theme: `rebrand` (default), `canvas`, `canvasHighContrast`          |
+| `--theme-mode <mode>` | Rebrand token mode: `light` (default) or `adaptive`                       |
+| `-v, --version`       | Print the installed version                                               |
+| `-h, --help`          | Print usage                                                               |
+| `completion <shell>`  | Generate a bash/zsh/fish/PowerShell completion script                     |
+
+The CLI auto-detects its display language from `--lang` > `LC_ALL`/`LANG` > the runtime's `Intl`
+locale > English, falling back to English for any untranslated string.
 
 ## Architecture
 

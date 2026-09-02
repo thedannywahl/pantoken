@@ -2,7 +2,7 @@
   "name": "@pantoken/vitepress",
   "version": "0.2.1",
   "description": "Theme a VitePress site with Instructure tokens: maps VitePress --vp-* CSS variables to var(--instui-*).",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ kirjoitettu: {{path}}",
+  "helpInitDescription": "Lisää pantokenin agenttiresurssit repositorioon",
+  "helpInitToolDescription": "Agenttityökalu (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Kohdekansio",
+  "helpScaffoldDescription": "Luo aloitusprojektin (@pantoken/scaffold) ja asenna siihen agenttiresurssit",
+  "helpScaffoldToolDescription": "Agenttityökalu (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Ohittaa automaattisesti tunnistetun näyttökielen (esim. \"hu\")"
+}

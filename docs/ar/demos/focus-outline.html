@@ -1,0 +1,43 @@
+<div class="instui-card">
+  <div class="focus-demo">
+    <p class="hint">
+      انتقل عبر عناصر التحكم باستخدام مفتاح Tab (أو انقر الحقل) لرؤية الحلقة. تظهر تلقائيًا على كل
+      عنصر قابل للتركيز خارج الصندوق بدءًا من <code>base.css</code>; تقوم المُعدِّلات بإعادة تلوينه،
+      أو جعله داخلياً، أو إيقاف الرسوم المتحركة.
+    </p>
+
+    <section>
+      <h4>الحلقة الافتراضية (أي عنصر قابل للتركيز)</h4>
+      <div class="row">
+        <button class="instui-button">زر</button>
+        <a class="instui-link" href="#focus-demo">رابط</a>
+        <input class="field" placeholder="Input" />
+      </div>
+    </section>
+
+    <section>
+      <h4>لون الحلقة</h4>
+      <div class="row">
+        <button class="instui-button">معلومات (افتراضي)</button>
+        <button class="instui-button -color-success -focus-color-success">نجاح</button>
+        <button class="instui-button -color-danger -focus-color-danger">خطر</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>الموضع والرسوم المتحركة</h4>
+      <div class="row">
+        <button class="instui-button -focus-position-inset">حلقة داخلية</button>
+        <button class="instui-button -without-focus-animation">بدون حركة</button>
+      </div>
+    </section>
+
+    <section>
+      <h4>التركيز داخل العنصر (يظهر عند النقر أيضًا)</h4>
+      <label class="within -focus-within">
+        <span class="lbl">بحث</span>
+        <input class="field" placeholder="Focus me — the whole box rings" />
+      </label>
+    </section>
+  </div>
+</div>

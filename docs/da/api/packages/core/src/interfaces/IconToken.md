@@ -1,0 +1,31 @@
+[pantoken](../../../../index.md) / [packages/core/src](../index.md) / IconToken
+
+# Interface: IconToken
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+En glyf-token: dets custom-property-navn, data-URI-værdi og ikon-metadata.
+
+## Egenskaber
+
+### name
+
+> **name**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+***
+
+### value
+
+> **value**: `string`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+***
+
+### meta
+
+> **meta**: [`TokenMeta`](TokenMeta.md)
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>

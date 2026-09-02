@@ -2,7 +2,7 @@
   "name": "@pantoken/foundation",
   "version": "0.1.3",
   "description": "Theme Foundation for Sites with Instructure tokens: a Sass settings override plus a thin CSS overlay pointing at var(--instui-*).",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

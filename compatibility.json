@@ -6,48 +6,48 @@
       "feeds": "token-ir"
     },
     "@instructure/ui-icons": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "icons"
     },
     "@instructure/ui-heading": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-text": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-link": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-list": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-table": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-view": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-img": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     },
     "@instructure/ui-alerts": {
-      "range": "^11.7.4",
-      "resolved": "11.7.4",
+      "range": "^11.7.5",
+      "resolved": "11.7.5",
       "feeds": "instui-react"
     }
   },
@@ -55,6 +55,11 @@
     {
       "package": "@pantoken/android",
       "path": "platforms/android",
+      "governedBy": "token-ir"
+    },
+    {
+      "package": "@pantoken/canvas-theme-editor",
+      "path": "platforms/canvas-theme-editor",
       "governedBy": "token-ir"
     },
     {
@@ -193,6 +198,11 @@
       "governedBy": "token-ir"
     },
     {
+      "package": "@pantoken/tinymce",
+      "path": "renderers/tinymce",
+      "governedBy": "token-ir"
+    },
+    {
       "package": "@pantoken/vitepress",
       "path": "renderers/vitepress",
       "governedBy": "token-ir"
@@ -208,19 +218,5 @@
       "governedBy": "token-ir"
     }
   ],
-  "deprecations": [
-    {
-      "token": "--instui-component-badge-notification-z-index",
-      "deprecatedIn": "design-tokens@v1.5.0",
-      "removeIn": "design-tokens@v1.6.0",
-      "note": "Dropped upstream in design-tokens v1.5.0 with no replacement; frozen to its last-known value so any consumer keeps resolving it through the deprecation window."
-    },
-    {
-      "token": "--instui-component-truncate-text-line-height",
-      "deprecatedIn": "design-tokens@v1.5.0",
-      "removeIn": "design-tokens@v1.6.0",
-      "replacement": "--instui-line-height-paragraph-base",
-      "note": "TruncateText v2 no longer sets line-height (it inherits); the design-tokens repo dropped the component token. Forwarded to its last-known target for the deprecation window."
-    }
-  ]
+  "deprecations": []
 }

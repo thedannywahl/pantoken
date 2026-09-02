@@ -1,0 +1,479 @@
+/**
+ * Authors starter page templates against pantoken's classes: TinyMCE for editing (pinned/
+ * configured to match instructure/canvas-lms's own RCE — see README), a custom "Insert template"
+ * plugin for the bundled starters, and a live styled preview pane fed by the chosen CDN
+ * provider/theme/mode. The page shell itself is built with pantoken (wrapper layout, tray, modal,
+ * tabs) so this authoring tool dogfoods the same library it's previewing.
+ */
+import "@pantoken/css/style.rebrand.light.lean.css"; // this app's own chrome always uses this theme, independent of the preview's chosen theme
+import "@pantoken/components/base.css";
+import "@pantoken/components/components.css";
+import "@pantoken/plugin-layouts/layouts.css";
+import "./app.css";
+import appHtml from "./app.html?raw";
+import { STRINGS } from "./strings.ts";
+import tinymce from "tinymce";
+import "tinymce/themes/silver/theme";
+import "tinymce/icons/default";
+// canvas-lms injects its skin CSS as a raw string via a custom mechanism (RCEWrapper.tsx's
+// injectTinySkin()) — out of scope here; plain side-effect imports achieve the same look.
+import "tinymce/skins/ui/oxide/skin.css";
+import "tinymce/skins/ui/oxide/content.css";
+import "tinymce/skins/content/default/content.css";
+import {
+  buildTheme,
+  buildThemeCss,
+  buildThemeJs,
+  CDN_PROVIDERS,
+  DEFAULT_CDN_PROVIDER_ID,
+  type ThemeMode,
+  type ThemeVariant,
+} from "@pantoken/canvas-theme-editor";
+import type { Editor, Ui } from "tinymce";
+import { basicSetup, EditorView } from "codemirror";
+import { css } from "@codemirror/lang-css";
+import { html } from "@codemirror/lang-html";
+import { javascript } from "@codemirror/lang-javascript";
+import type { CdnFile } from "@pantoken/cdn";
+import {
+  createLayoutsPlugin,
+  createComponentsPlugin,
+  createIconsPlugin,
+  createLogosPlugin,
+  listComponents,
+  listUtilities,
+  loadAllIcons,
+  logos,
+  products,
+  pantokenHtmlLinter,
+  pantokenHtmlCompletion,
+} from "@pantoken/tinymce";
+
+// Shared with the toolbar's source-view editor so both stay the same size.
+const EDITOR_HEIGHT_PX = 400;
+// Canvas's content area caps out at this width — the preview mirrors that constraint.
+const CANVAS_CONTENT_MAX_WIDTH = "59.25rem";
+
+/** Minimal `{{key}}` substitution — every key must exist in `strings`, values are inserted raw. */
+function render(template: string, strings: Record<string, string>): string {
+  return template.replace(/\{\{(\w+)\}\}/g, (match, key: string) => strings[key] ?? match);
+}
+
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = render(appHtml, STRINGS);
+
+// Tabs (Config | CSS | JS) — the .instui-tabs record is CSS-only; wiring selection is the
+// consumer's job, same as the component's own documented @example.
+const tabButtons = document.querySelectorAll<HTMLButtonElement>('.instui-tabs [role="tab"]');
+for (const tab of tabButtons) {
+  tab.addEventListener("click", (): void => {
+    for (const other of tabButtons) {
+      const selected = other === tab;
+      other.classList.toggle("-selected", selected);
+      other.setAttribute("aria-selected", String(selected));
+      const panel = document.getElementById(other.getAttribute("aria-controls")!);
+      if (panel) panel.hidden = !selected;
+    }
+  });
+}
+
+// Shared CSS assets array — tracks stylesheet URLs for dynamic injection into WYSIWYG editor.
+// Each picker plugin calls onMissingAsset to add new assets, and they're injected when an item is inserted.
+const currentAssets: CdnFile[] = [];
+const onMissingAsset = (asset: CdnFile) => {
+  currentAssets.push(asset);
+  // In a real app, you'd also trigger a download/export of the aggregated theme.css here.
+};
+
+// Register the Layouts plugin (replaces whole document on layout selection), sourced from
+// pantoken's own bundled starter page layouts (@pantoken/plugin-layouts).
+const layoutsPlugin = createLayoutsPlugin();
+tinymce.PluginManager.add("pantoken_layouts", function (editor: Editor) {
+  layoutsPlugin(editor);
+  // Wire the layout selection to also update the source view and refresh preview.
+  const originalInsertContent = editor.insertContent;
+  editor.insertContent = function (value: string) {
+    originalInsertContent.call(this, value);
+    replaceSourceDoc(editor.getContent());
+    refreshAll();
+  };
+  return {};
+});
+
+/** Creates a CodeMirror editor for the given language, wired to call `onChange` on edits. */
+function createEditor(
+  container: HTMLElement,
+  lang: "html" | "css" | "javascript",
+  value: string,
+  onChange: () => void,
+): EditorView {
+  const langExtension = lang === "css" ? css() : lang === "javascript" ? javascript() : html();
+  const extensions: any[] = [
+    basicSetup,
+    langExtension,
+    EditorView.lineWrapping,
+    EditorView.updateListener.of((update: any): void => {
+      if (update.docChanged) onChange();
+    }),
+  ];
+  
+  // Add pantoken linter + autocomplete for HTML editor only.
+  if (lang === "html") {
+    extensions.push(
+      pantokenHtmlLinter({ model: [...listComponents(), ...listUtilities()] as any }),
+      pantokenHtmlCompletion({ model: [...listComponents(), ...listUtilities()] as any })
+    );
+  }
+  
+  return new EditorView({
+    doc: value,
+    extensions,
+    parent: container,
+  });
+}
+
+/** Replaces an editor's full document contents. */
+function replaceEditorDoc(view: EditorView, content: string): void {
+  view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: content } });
+}
+
+/** Lazily creates the CodeMirror instance (HTML syntax highlighting) alongside the hidden iframe. */
+function ensureSourceView(editor: Editor): EditorView {
+  if (sourceView) return sourceView;
+  const container = document.createElement("div");
+  container.style.cssText = `display: none; width: 100%; height: ${EDITOR_HEIGHT_PX}px; box-sizing: border-box; overflow: auto; border: 1px solid #ccc; font-size: 13px;`;
+  editor.contentAreaContainer.insertAdjacentElement("afterend", container);
+  sourceContainer = container;
+  sourceView = createEditor(container, "html", "", debouncedUpdatePreview);
+  return sourceView;
+}
+
+/** Replaces the CodeMirror document's full contents, if the source view has been created. */
+function replaceSourceDoc(content: string): void {
+  if (!sourceView) return;
+  replaceEditorDoc(sourceView, content);
+}
+
+// Register the three pantoken pickers (components, icons, logos) as TinyMCE plugins.
+// Each picker has its own toolbar button and manages CSS asset tracking. tinymce.init() below
+// awaits this promise first — plugin names must be registered before init() resolves them.
+const registerPickerPlugins = (async () => {
+  const componentModel = [...listComponents(), ...listUtilities()];
+  const allIcons = await loadAllIcons();
+  
+  const componentsPlugin = createComponentsPlugin({
+    model: componentModel as any,
+    currentAssets,
+    onMissingAsset,
+  });
+  tinymce.PluginManager.add("pantoken_components", componentsPlugin);
+  
+  const iconsPlugin = createIconsPlugin({
+    icons: allIcons,
+    currentAssets,
+    onMissingAsset,
+  });
+  tinymce.PluginManager.add("pantoken_icons", iconsPlugin);
+  
+  const logosPlugin = createLogosPlugin({
+    logos,
+    products,
+    currentAssets,
+    onMissingAsset,
+  });
+  tinymce.PluginManager.add("pantoken_logos", logosPlugin);
+})();
+
+// Toggles between TinyMCE's WYSIWYG view and a syntax-highlighted CodeMirror source view.
+// The source view also includes pantoken linter (validation) and autocomplete (IntelliSense).
+tinymce.PluginManager.add("pantoken_source_toggle", function (editor: Editor) {
+  const toggle = (api: Ui.Toolbar.ToolbarToggleButtonInstanceApi) => {
+    sourceMode = !sourceMode;
+    api.setActive(sourceMode);
+    const view = ensureSourceView(editor);
+    const contentArea = editor.contentAreaContainer;
+    if (sourceMode) {
+      replaceSourceDoc(editor.getContent());
+      contentArea.style.display = "none";
+      sourceContainer!.style.display = "block";
+      view.focus();
+    } else {
+      contentArea.style.display = "";
+      sourceContainer!.style.display = "none";
+      editor.setContent(view.state.doc.toString());
+    }
+    refreshAll();
+  };
+
+  editor.ui.registry.addToggleButton("sourcecode", {
+    icon: "sourcecode",
+    tooltip: "Source code",
+    onAction: toggle,
+  });
+
+  return {};
+});
+
+const providerSelect = document.querySelector<HTMLSelectElement>("#cdn-provider")!;
+for (const [id, provider] of Object.entries(CDN_PROVIDERS)) {
+  const option = document.createElement("option");
+  option.value = id;
+  option.textContent = provider.label;
+  providerSelect.append(option);
+}
+providerSelect.value = DEFAULT_CDN_PROVIDER_ID;
+
+const themeSelect = document.querySelector<HTMLSelectElement>("#theme-variant")!;
+const modeSelect = document.querySelector<HTMLSelectElement>("#theme-mode")!;
+const previewFrame = document.querySelector<HTMLIFrameElement>("#preview")!;
+const downloadCss = document.querySelector<HTMLAnchorElement>("#download-theme-css")!;
+const downloadJs = document.querySelector<HTMLAnchorElement>("#download-theme-js")!;
+const copyButton = document.querySelector<HTMLButtonElement>("#copy-html")!;
+const copyStatus = document.querySelector<HTMLElement>("#copy-status")!;
+const regenerateCssButton = document.querySelector<HTMLButtonElement>("#regenerate-css")!;
+const regenerateJsButton = document.querySelector<HTMLButtonElement>("#regenerate-js")!;
+
+let activeEditor: Editor | undefined;
+let cssObjectUrl: string | undefined;
+let jsObjectUrl: string | undefined;
+let sourceView: EditorView | undefined;
+let sourceContainer: HTMLDivElement | undefined;
+let sourceMode = false;
+// Once the author hand-edits the CSS/JS tab, config-select changes no longer overwrite it —
+// they only re-enable "Regenerate from config" so the edit isn't silently discarded.
+let cssDirty = false;
+let jsDirty = false;
+
+/** Reads the author's current HTML from whichever view (WYSIWYG or raw source) is active. */
+function getEditorHtml(): string {
+  if (sourceMode && sourceView) return sourceView.state.doc.toString();
+  return activeEditor?.getContent() ?? "";
+}
+
+function currentSelection(): { provider: string; theme: ThemeVariant; mode: ThemeMode } {
+  return {
+    provider: providerSelect.value,
+    theme: themeSelect.value as ThemeVariant,
+    mode: modeSelect.value as ThemeMode,
+  };
+}
+
+/** Debounce helper — the preview pane only needs to refresh a beat after typing settles. */
+function debounce<Args extends unknown[]>(fn: (...args: Args) => void, ms: number) {
+  let handle: ReturnType<typeof setTimeout> | undefined;
+  return (...args: Args) => {
+    if (handle) clearTimeout(handle);
+    handle = setTimeout(() => fn(...args), ms);
+  };
+}
+
+/**
+ * Renders the editor's current HTML with the CSS/JS tab's *current editable text* embedded
+ * directly (not linked from the CDN) — so hand-edits in those tabs show up in the preview too.
+ * The body content is wrapped to match Canvas's own content-area background and max width.
+ */
+function updatePreview(): void {
+  if (!activeEditor) return;
+  const themeCss = cssEditorView.state.doc.toString();
+  const themeJs = jsEditorView.state.doc.toString();
+  previewFrame.srcdoc = `<!doctype html><html><head><style>${themeCss}</style></head><body>
+    <div class="instui-view -background-primary" style="max-width: ${CANVAS_CONTENT_MAX_WIDTH}; margin-inline: auto;">
+      ${getEditorHtml()}
+    </div>
+    <script>${themeJs}</script>
+  </body></html>`;
+}
+const debouncedUpdatePreview = debounce(updatePreview, 300);
+
+/** Regenerates the downloadable theme.css/theme.js blobs for the chosen provider/theme/mode. */
+function updateDownloads(): void {
+  const { provider, theme, mode } = currentSelection();
+  const { css: generatedCss, js: generatedJs } = buildTheme({ provider, theme, mode });
+  if (cssObjectUrl) URL.revokeObjectURL(cssObjectUrl);
+  if (jsObjectUrl) URL.revokeObjectURL(jsObjectUrl);
+  cssObjectUrl = URL.createObjectURL(new Blob([generatedCss], { type: "text/css" }));
+  jsObjectUrl = URL.createObjectURL(new Blob([generatedJs], { type: "text/javascript" }));
+  downloadCss.href = cssObjectUrl;
+  downloadJs.href = jsObjectUrl;
+}
+
+/** Re-seeds the CSS/JS editors from the current config, unless the author has hand-edited them. */
+function updateThemeEditors(): void {
+  const { provider, theme, mode } = currentSelection();
+  if (!cssDirty) replaceEditorDoc(cssEditorView, buildThemeCss({ provider, theme, mode }));
+  if (!jsDirty) replaceEditorDoc(jsEditorView, buildThemeJs({ provider, theme, mode }));
+}
+
+function refreshAll(): void {
+  updateThemeEditors();
+  updatePreview();
+  updateDownloads();
+}
+
+// CSS/JS editors, seeded from the initial config selection.
+const cssEditorView = createEditor(
+  document.querySelector<HTMLElement>("#css-editor")!,
+  "css",
+  buildThemeCss(currentSelection()),
+  () => {
+    cssDirty = true;
+    regenerateCssButton.hidden = false;
+    debouncedUpdatePreview();
+  },
+);
+const jsEditorView = createEditor(
+  document.querySelector<HTMLElement>("#js-editor")!,
+  "javascript",
+  buildThemeJs(currentSelection()),
+  () => {
+    jsDirty = true;
+    regenerateJsButton.hidden = false;
+    debouncedUpdatePreview();
+  },
+);
+
+regenerateCssButton.addEventListener("click", () => {
+  replaceEditorDoc(cssEditorView, buildThemeCss(currentSelection()));
+  cssDirty = false;
+  regenerateCssButton.hidden = true;
+  debouncedUpdatePreview();
+});
+regenerateJsButton.addEventListener("click", () => {
+  replaceEditorDoc(jsEditorView, buildThemeJs(currentSelection()));
+  jsDirty = false;
+  regenerateJsButton.hidden = true;
+  debouncedUpdatePreview();
+});
+
+providerSelect.addEventListener("change", refreshAll);
+themeSelect.addEventListener("change", refreshAll);
+modeSelect.addEventListener("change", refreshAll);
+
+copyButton.addEventListener("click", () => {
+  void navigator.clipboard.writeText(getEditorHtml()).then(() => {
+    copyStatus.textContent = "Copied. Paste into the Canvas Rich Content Editor HTML view.";
+  });
+});
+
+// --- Editor/preview split-pane: orientation toggle, drag-resize, drag-to-swap, fullscreen. ---
+const splitPane = document.querySelector<HTMLElement>("#split-pane")!;
+const splitHandle = document.querySelector<HTMLElement>("#split-handle")!;
+const editorPane = document.querySelector<HTMLElement>("#editor-pane")!;
+const previewPane = document.querySelector<HTMLElement>("#preview-pane")!;
+const orientationButton = document.querySelector<HTMLButtonElement>("#toggle-orientation")!;
+const swapButton = document.querySelector<HTMLButtonElement>("#swap-panes")!;
+
+let orientation: "row" | "column" = "row";
+
+function setPaneFlexBasis(fraction: number): void {
+  const clamped = Math.min(0.85, Math.max(0.15, fraction));
+  editorPane.style.flexBasis = `${clamped * 100}%`;
+  previewPane.style.flexBasis = `${(1 - clamped) * 100}%`;
+}
+
+orientationButton.addEventListener("click", () => {
+  orientation = orientation === "row" ? "column" : "row";
+  splitPane.classList.toggle("-orientation-column", orientation === "column");
+  splitHandle.setAttribute("aria-orientation", orientation === "row" ? "vertical" : "horizontal");
+  orientationButton.textContent =
+    orientation === "row" ? STRINGS.stackVerticallyLabel : STRINGS.stackSideBySideLabel;
+  setPaneFlexBasis(0.5);
+});
+
+/** Reorders the editor/preview panes (used by both the drag gesture and the fallback button). */
+function swapPanes(): void {
+  const parent = editorPane.parentElement!;
+  const firstIsEditor = parent.firstElementChild === editorPane;
+  if (firstIsEditor) parent.insertBefore(previewPane, editorPane);
+  else parent.insertBefore(editorPane, previewPane);
+}
+swapButton.addEventListener("click", swapPanes);
+
+// Drag-resize the split via the handle.
+splitHandle.addEventListener("pointerdown", (event) => {
+  splitHandle.classList.add("-dragging");
+  splitHandle.setPointerCapture(event.pointerId);
+  const onMove = (moveEvent: PointerEvent): void => {
+    const rect = splitPane.getBoundingClientRect();
+    const fraction =
+      orientation === "row"
+        ? (moveEvent.clientX - rect.left) / rect.width
+        : (moveEvent.clientY - rect.top) / rect.height;
+    setPaneFlexBasis(fraction);
+  };
+  const onUp = (): void => {
+    splitHandle.classList.remove("-dragging");
+    splitHandle.removeEventListener("pointermove", onMove);
+    splitHandle.removeEventListener("pointerup", onUp);
+  };
+  splitHandle.addEventListener("pointermove", onMove);
+  splitHandle.addEventListener("pointerup", onUp);
+});
+
+// Drag a pane's toolbar onto the other pane to swap their order (a pointer-based reorder gesture;
+// `swapButton` above is the keyboard-accessible equivalent for anyone who can't drag).
+for (const handle of document.querySelectorAll<HTMLElement>("[data-pane-handle]")) {
+  const paneId = handle.dataset.paneHandle!;
+  const pane = document.getElementById(paneId)!;
+  const otherPane = pane === editorPane ? previewPane : editorPane;
+
+  handle.addEventListener("pointerdown", (event: PointerEvent): void => {
+    handle.classList.add("-dragging");
+    handle.setPointerCapture(event.pointerId);
+    const onMove = (moveEvent: PointerEvent): void => {
+      const rect = otherPane.getBoundingClientRect();
+      const over =
+        moveEvent.clientX >= rect.left &&
+        moveEvent.clientX <= rect.right &&
+        moveEvent.clientY >= rect.top &&
+        moveEvent.clientY <= rect.bottom;
+      otherPane.classList.toggle("-drop-target", over);
+    };
+    const onUp = (upEvent: PointerEvent): void => {
+      handle.classList.remove("-dragging");
+      const droppedOnOther = otherPane.classList.contains("-drop-target");
+      otherPane.classList.remove("-drop-target");
+      if (droppedOnOther) swapPanes();
+      handle.removeEventListener("pointermove", onMove);
+      handle.removeEventListener("pointerup", onUp);
+      void upEvent;
+    };
+    handle.addEventListener("pointermove", onMove);
+    handle.addEventListener("pointerup", onUp);
+  });
+}
+
+// Per-pane fullscreen toggle.
+for (const button of document.querySelectorAll<HTMLButtonElement>(".pane-fullscreen")) {
+  const pane = document.getElementById(button.dataset.pane!)!;
+  button.addEventListener("click", (): void => {
+    if (document.fullscreenElement === pane) void document.exitFullscreen();
+    else void pane.requestFullscreen();
+  });
+}
+
+void registerPickerPlugins.then(() =>
+  tinymce
+    .init({
+      selector: "#editor",
+      // Load all five plugin modules: layouts, source-toggle (custom), and three pickers (from @pantoken/tinymce).
+      plugins: "pantoken_layouts pantoken_source_toggle pantoken_components pantoken_icons pantoken_logos",
+      // Toolbar includes the layouts button, source-view toggle, and the three picker buttons.
+      toolbar: "pantokenLayouts sourcecode | pantokenComponents pantokenIcons pantokenLogos",
+      menubar: false,
+      theme: "silver",
+      branding: false,
+      browser_spellcheck: true,
+      convert_urls: false,
+      toolbar_mode: "floating",
+      height: EDITOR_HEIGHT_PX,
+      skin: false,
+      content_css: false,
+      setup(editor: Editor): void {
+        editor.on("input change Undo Redo SetContent", () => debouncedUpdatePreview());
+      },
+    })
+    .then((editors: Editor[]) => {
+      activeEditor = editors[0];
+      refreshAll();
+    }),
+);

@@ -11,7 +11,7 @@ export const nl: LocaleBundle = defineBundle({
     prevMonth: "Vorige maand",
     nextMonth: "Volgende maand",
     dateLabel: "Datum",
-    openCalendar: "Kalender openen",
+    openCalendar: "Open kalender",
     timeLabel: "Tijd",
     back: "Terug",
   }),

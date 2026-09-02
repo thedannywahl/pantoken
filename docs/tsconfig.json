@@ -6,11 +6,13 @@
     "esModuleInterop": true,
     "skipLibCheck": false,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "strict": true,
     "types": ["node", "vite/client"],
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "jsxImportSource": "vue"
   },
-  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue", ".vitepress/**/*.d.ts"]
+  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue", ".vitepress/**/*.d.ts"],
+  "exclude": [".vitepress/cache/**", "docs/.vitepress/cache/**"]
 }

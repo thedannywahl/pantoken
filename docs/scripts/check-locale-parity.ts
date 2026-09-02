@@ -1,34 +1,41 @@
 /**
  * Validate locale content parity for docs.
  *
- * Ensures HU guide pages mirror root guide routes, the generated HU API tree mirrors the root API
- * tree page-for-page, required locale files exist, and the localized home page keeps the same hero
- * actions as the root. These catch English-only additions that never reached the translation layer.
+ * Ensures every non-root locale's guide pages and demo snippets mirror the root's, its generated API
+ * tree mirrors the root API tree page-for-page, required locale files exist, and the localized home
+ * page keeps the same hero actions as the root. These catch English-only additions that never reached
+ * the translation layer.
+ *
+ * Parity is structural, not linguistic — every gap here is filled by re-running a generator, no AI
+ * translation pass needed — so `i18n-policy.json` blocks on surface `docs.parity` for every locale by
+ * default. It's still routed through the shared policy so it can be loosened like any other surface.
  */
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join, relative } from "node:path";
+import { DriftReporter } from "@pantoken/translation-adapters";
+import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const rootGuideDir = join(docsRoot, "guide");
-const huGuideDir = join(docsRoot, "hu/guide");
 const rootApiDir = join(docsRoot, "api");
-const huApiDir = join(docsRoot, "hu/api");
+const rootDemoDir = join(docsRoot, "demos");
 const rootIndex = join(docsRoot, "index.md");
-const huIndex = join(docsRoot, "hu/index.md");
 
-const requiredFiles = [
-  rootIndex,
-  huIndex,
-  join(docsRoot, "api/typedoc-sidebar.json"),
-  join(docsRoot, "hu/api/typedoc-sidebar.json"),
-];
-
-const listMarkdownBasenames = (dir: string): Set<string> => {
+/** A locale directory that hasn't been generated yet reports as zero pages, not a crash. */
+const listBasenames = (dir: string, extension: string): Set<string> => {
+  if (!existsSync(dir)) return new Set();
   const names = readdirSync(dir)
-    .filter((name) => name.endsWith(".md"))
-    .map((name) => name.replace(/\.md$/, ""));
+    .filter((name) => name.endsWith(extension))
+    .map((name) => name.slice(0, -extension.length));
   return new Set(names);
 };
+
+const listDemoNames = (dir: string): Set<string> =>
+  new Set(
+    readdirSync(dir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name),
+  );
 
 /** Every `.md` file under `dir`, as paths relative to `dir` (so the two locale trees compare directly). */
 const listMarkdownTree = (dir: string): Set<string> => {
@@ -48,65 +55,136 @@ const listMarkdownTree = (dir: string): Set<string> => {
 const countHeroActions = (filePath: string): number =>
   (readFileSync(filePath, "utf8").match(/^\s*- theme:/gm) ?? []).length;
 
-const errors: string[] = [];
+const reporter = new DriftReporter({
+  label: "@pantoken/docs locale parity",
+  fixCommand: "vp run docs:api:locales && vp run docs:demos:locales",
+});
 
-const missingRequired = requiredFiles.filter((filePath) => !existsSync(filePath));
-if (missingRequired.length > 0) {
-  errors.push("Missing required locale files:", ...missingRequired.map((f) => `- ${f}`));
-}
+/** Record one parity gap. `items` are docs-relative paths; only the first few are shown per gap. */
+const fail = (
+  locale: string,
+  file: string,
+  detail: string,
+  items: readonly string[] = [],
+): void => {
+  const shown = items.slice(0, 5).join(", ");
+  const more = items.length > 5 ? ` …and ${items.length - 5} more` : "";
+  reporter.add({
+    surface: "docs.parity",
+    locale,
+    file: `docs/${file}`,
+    detail: items.length > 0 ? `${detail}: ${shown}${more}` : detail,
+  });
+};
 
-const rootPages = listMarkdownBasenames(rootGuideDir);
-const huPages = listMarkdownBasenames(huGuideDir);
-const missingInHu = [...rootPages].filter((page) => !huPages.has(page));
-const extraInHu = [...huPages].filter((page) => !rootPages.has(page));
-if (missingInHu.length > 0) {
-  errors.push("Missing Hungarian guide pages:", ...missingInHu.map((p) => `- hu/guide/${p}.md`));
-}
-if (extraInHu.length > 0) {
-  errors.push(
-    "Hungarian-only guide pages without root equivalent:",
-    ...extraInHu.map((p) => `- hu/guide/${p}.md`),
-  );
-}
-
-// The HU API tree is a translated clone of the root API tree, so its page set must match exactly.
+const rootPages = listBasenames(rootGuideDir, ".md");
 const rootApi = listMarkdownTree(rootApiDir);
-const huApi = listMarkdownTree(huApiDir);
-const missingApi = [...rootApi].filter((page) => !huApi.has(page));
-const extraApi = [...huApi].filter((page) => !rootApi.has(page));
-if (missingApi.length > 0) {
-  errors.push(
-    `Missing Hungarian API pages (${missingApi.length}); re-run docs:api:locales:`,
-    ...missingApi.slice(0, 20).map((p) => `- hu/api/${p}`),
-    ...(missingApi.length > 20 ? [`  …and ${missingApi.length - 20} more`] : []),
-  );
-}
-if (extraApi.length > 0) {
-  errors.push(
-    `Stale Hungarian API pages with no root equivalent (${extraApi.length}); re-run docs:api:locales:`,
-    ...extraApi.slice(0, 20).map((p) => `- hu/api/${p}`),
-    ...(extraApi.length > 20 ? [`  …and ${extraApi.length - 20} more`] : []),
-  );
+const rootDemos = listDemoNames(rootDemoDir);
+
+if (!existsSync(rootIndex)) {
+  fail("en", "index.md", "Missing required root locale file");
 }
 
-// The localized home page must offer the same set of hero actions as the root.
-if (existsSync(rootIndex) && existsSync(huIndex)) {
-  const rootActions = countHeroActions(rootIndex);
-  const huActions = countHeroActions(huIndex);
-  if (rootActions !== huActions) {
-    errors.push(
-      `Home page hero actions out of sync: index.md has ${rootActions}, hu/index.md has ${huActions}.`,
+for (const locale of NON_ROOT_LOCALES) {
+  const guideDir = join(docsRoot, locale, "guide");
+  const apiDir = join(docsRoot, locale, "api");
+  const localeIndex = join(docsRoot, locale, "index.md");
+
+  // Only `api/typedoc-sidebar.json` is auto-generated for every locale; the localized home page
+  // (`<locale>/index.md`) is hand-authored (like `hu/index.md`) and optional until someone writes it.
+  const missingRequired = [join(docsRoot, locale, "api/typedoc-sidebar.json")].filter(
+    (filePath) => !existsSync(filePath),
+  );
+  if (missingRequired.length > 0) {
+    fail(
+      locale,
+      `${locale}/api/typedoc-sidebar.json`,
+      "Missing required locale files",
+      missingRequired.map((f) => relative(docsRoot, f)),
     );
+  }
+
+  const localePages = listBasenames(guideDir, ".md");
+  const missingInLocale = [...rootPages].filter((page) => !localePages.has(page));
+  const extraInLocale = [...localePages].filter((page) => !rootPages.has(page));
+  if (missingInLocale.length > 0) {
+    fail(
+      locale,
+      `${locale}/guide`,
+      "Missing guide pages",
+      missingInLocale.map((p) => `${p}.md`),
+    );
+  }
+  if (extraInLocale.length > 0) {
+    fail(
+      locale,
+      `${locale}/guide`,
+      "Locale-only guide pages without a root equivalent",
+      extraInLocale.map((p) => `${p}.md`),
+    );
+  }
+
+  // The locale demo snippets mirror the root demos 1:1 (translated prose, same markup) so a
+  // `demo:self:<name>` fence never 404s under a locale route. See translate-demos.ts.
+  const localeDemos = listBasenames(join(docsRoot, locale, "demos"), ".html");
+  const missingDemos = [...rootDemos].filter((name) => !localeDemos.has(name));
+  const extraDemos = [...localeDemos].filter((name) => !rootDemos.has(name));
+  if (missingDemos.length > 0) {
+    fail(
+      locale,
+      `${locale}/demos`,
+      "Missing demo snippets; re-run docs:demos:locales",
+      missingDemos.map((p) => `${p}.html`),
+    );
+  }
+  if (extraDemos.length > 0) {
+    fail(
+      locale,
+      `${locale}/demos`,
+      "Locale-only demo snippets with no root equivalent",
+      extraDemos.map((p) => `${p}.html`),
+    );
+  }
+
+  // The locale API tree is a translated clone of the root API tree, so its page set must match exactly.
+  const localeApi = listMarkdownTree(apiDir);
+  const missingApi = [...rootApi].filter((page) => !localeApi.has(page));
+  const extraApi = [...localeApi].filter((page) => !rootApi.has(page));
+  if (missingApi.length > 0) {
+    fail(
+      locale,
+      `${locale}/api`,
+      `Missing ${missingApi.length} API page(s); re-run docs:api:locales`,
+      missingApi,
+    );
+  }
+  if (extraApi.length > 0) {
+    fail(
+      locale,
+      `${locale}/api`,
+      `Stale ${extraApi.length} API page(s) with no root equivalent; re-run docs:api:locales`,
+      extraApi,
+    );
+  }
+
+  // The localized home page must offer the same set of hero actions as the root.
+  if (existsSync(rootIndex) && existsSync(localeIndex)) {
+    const rootActions = countHeroActions(rootIndex);
+    const localeActions = countHeroActions(localeIndex);
+    if (rootActions !== localeActions) {
+      fail(
+        locale,
+        `${locale}/index.md`,
+        `Home page hero actions out of sync: index.md has ${rootActions}, this locale has ${localeActions}`,
+      );
+    }
   }
 }
 
-if (errors.length > 0) {
-  console.error("Locale parity check failed.");
-  for (const line of errors) console.error(line);
-  process.exit(1);
+if (!reporter.blocking) {
+  console.log(
+    `Locale parity: ${rootPages.size} guide pages and ${rootApi.size} API pages checked across ` +
+      `${NON_ROOT_LOCALES.length} locales.`,
+  );
 }
-
-console.log(
-  `Locale parity OK: ${rootPages.size} guide pages and ${rootApi.size} API pages matched, ` +
-    `required locale files present, hero actions in sync.`,
-);
+process.exitCode = reporter.report();

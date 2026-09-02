@@ -1,0 +1,94 @@
+/**
+ * @component text-area
+ * @summary A styled, resizable native `<textarea>` with the same states and sizes as the text input.
+ * @remarks Shares its border, background, and focus states with `text-input` and `simple-select`; only `resize: vertical` and the taller minimum height are unique to it.
+ * @selector .pfx-text-area
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — (default) Medium.
+ * @modifier -size-lg — Large.
+ * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
+ * @cssstate disabled
+ * @example
+ * <textarea class="pfx-text-area" placeholder="Write a comment…"></textarea>
+ * @related text-input — The single-line counterpart with the same states and sizes.
+ */
+@scope (.pfx-text-area) {
+  & {
+    display: block;
+    inline-size: 100%;
+    box-sizing: border-box;
+    font-family: var(--instui-component-text-area-font-family);
+    font-weight: var(--instui-component-text-area-font-weight);
+    color: var(--instui-component-text-area-text-color);
+    background-color: var(--instui-component-text-area-background-color);
+    border: var(--instui-component-text-area-border-width) solid
+      var(--instui-component-text-area-border-color);
+    border-radius: var(--instui-component-text-area-border-radius);
+    padding: var(--instui-component-text-area-padding);
+    font-size: var(--instui-component-text-area-font-size-md);
+    line-height: 1.5;
+    min-block-size: 4rem;
+    resize: vertical;
+  }
+
+  &::placeholder {
+    color: var(--instui-component-text-area-placeholder-color);
+  }
+
+  &:hover {
+    background-color: var(--instui-component-text-area-background-hover-color);
+    border-color: var(--instui-component-text-area-border-hover-color);
+  }
+
+  &:hover::placeholder {
+    color: var(--instui-component-text-area-placeholder-hover-color);
+  }
+
+  &:disabled,
+  &.-disabled {
+    background-color: var(--instui-component-text-area-background-disabled-color);
+    border-color: var(--instui-component-text-area-border-disabled-color);
+    color: var(--instui-component-text-area-text-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &.-readonly {
+    background-color: var(--instui-component-text-area-background-readonly-color);
+    border-color: var(--instui-component-text-area-border-readonly-color);
+    color: var(--instui-component-text-area-text-readonly-color);
+  }
+
+  &.-invalid {
+    border-color: var(--instui-component-text-area-error-border-color);
+  }
+
+  &.-success {
+    border-color: var(--instui-component-text-area-success-border-color);
+  }
+
+  /* Focus ring tracks the validity: danger when explicitly -invalid OR natively :user-invalid (after
+   the user has interacted), success on -success — overriding base.css's info-blue ring for focusables. */
+  &:is(.-invalid, :user-invalid):focus-visible {
+    outline-color: var(--instui-focus-outline-color-danger);
+  }
+
+  &.-success:focus-visible {
+    outline-color: var(--instui-focus-outline-color-success);
+  }
+
+  &.-size-sm {
+    font-size: var(--instui-component-text-area-font-size-sm);
+  }
+
+  &.-size-md {
+    font-size: var(--instui-component-text-area-font-size-md);
+  }
+
+  &.-size-lg {
+    font-size: var(--instui-component-text-area-font-size-lg);
+  }
+}

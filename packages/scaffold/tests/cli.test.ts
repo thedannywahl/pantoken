@@ -3,191 +3,479 @@ import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
-import { runScaffoldCli, shouldPromptForDir } from "../src/cli.ts";
+import { InvalidArgumentError } from "commander";
+import {
+  ScaffoldCliError,
+  createLocaleLookup,
+  createScaffoldCommand,
+  detectPackageManager,
+  expandHome,
+  printNextSteps,
+  resolveScaffoldTarget,
+  runScaffoldCli,
+  scaffoldWithSpinner,
+  shouldPrompt,
+  validateScaffoldPlatform,
+  LOCALES,
+} from "../src/cli.ts";
+import { select, spinner, text } from "@clack/prompts";
+import { collectI18nSource } from "../scripts/i18n-sources.ts";
+
+// clack's real cancel sentinel is a module-private `Symbol("clack:cancel")`, unreachable from
+// outside the package, so tests use their own well-known sentinel and mock `isCancel` to match it.
+const { CANCEL_SYMBOL } = vi.hoisted(() => ({ CANCEL_SYMBOL: Symbol("test-cancel") }));
+
+vi.mock("@clack/prompts", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@clack/prompts")>();
+  return {
+    ...actual,
+    select: vi.fn(),
+    text: vi.fn(),
+    isCancel: (value: unknown) => value === CANCEL_SYMBOL,
+    cancel: vi.fn(),
+    spinner: vi.fn(() => ({ start: vi.fn(), stop: vi.fn() })),
+  };
+});
 
 function mktemp(): string {
   return mkdtempSync(join(tmpdir(), "pantoken-scaffold-cli-"));
 }
 
-/** Thrown by the `process.exit` spy below, so an exiting code path surfaces as a rejected promise. */
-class ProcessExitError extends Error {
-  constructor(public code: number | string | null | undefined) {
-    super(`process.exit(${code})`);
-  }
-}
-
-test("shouldPromptForDir only prompts when --dir is omitted on a TTY", () => {
-  expect(shouldPromptForDir(undefined, true)).toBe(true);
-  expect(shouldPromptForDir(undefined, false)).toBe(false);
-  expect(shouldPromptForDir(undefined, undefined)).toBe(false);
-  expect(shouldPromptForDir("./my-app", true)).toBe(false);
-});
+const { t } = createLocaleLookup(LOCALES, "en");
 
 const bin = new URL("../bin/pantoken-scaffold.mjs", import.meta.url).pathname;
 
-test("--help does not scaffold anything", () => {
-  const output = execFileSync("node", [bin, "--help"], { encoding: "utf8" });
-  expect(output).toContain("pantoken-scaffold");
+// ---------------------------------------------------------------------------
+// shouldPrompt
+// ---------------------------------------------------------------------------
+
+test("shouldPrompt only prompts when the value is omitted, --yes is unset, and it's a TTY", () => {
+  expect(shouldPrompt(undefined, { isTTY: true })).toBe(true);
+  expect(shouldPrompt(undefined, { isTTY: false })).toBe(false);
+  expect(shouldPrompt(undefined, {})).toBe(false);
+  expect(shouldPrompt("./my-app", { isTTY: true })).toBe(false);
+  expect(shouldPrompt(undefined, { yes: true, isTTY: true })).toBe(false);
 });
 
-test("prints vp install as the preferred next step", () => {
+// ---------------------------------------------------------------------------
+// expandHome
+// ---------------------------------------------------------------------------
+
+test("expandHome expands ~ to the home directory", () => {
+  const home = process.env.HOME || "";
+  expect(expandHome("~/my-app")).toBe(`${home}/my-app`);
+  expect(expandHome("~/Desktop/test")).toBe(`${home}/Desktop/test`);
+});
+
+test("expandHome returns non-tilde paths unchanged", () => {
+  expect(expandHome("./my-app")).toBe("./my-app");
+  expect(expandHome("/absolute/path")).toBe("/absolute/path");
+  expect(expandHome("relative/path")).toBe("relative/path");
+});
+
+test("expandHome handles bare tilde correctly", () => {
+  const home = process.env.HOME || "";
+  expect(expandHome("~")).toBe(home);
+});
+
+// ---------------------------------------------------------------------------
+// detectPackageManager
+// ---------------------------------------------------------------------------
+
+test("detectPackageManager reads npm_config_user_agent", () => {
+  expect(detectPackageManager({ npm_config_user_agent: "pnpm/9.0.0 node/22" })).toBe("pnpm");
+  expect(detectPackageManager({ npm_config_user_agent: "yarn/4.0.0 node/22" })).toBe("yarn");
+  expect(detectPackageManager({ npm_config_user_agent: "bun/1.0.0" })).toBe("bun");
+  expect(detectPackageManager({ npm_config_user_agent: "deno/2.1.0 npm/? node/22" })).toBe("deno");
+  expect(detectPackageManager({ npm_config_user_agent: "npm/10.0.0 node/22" })).toBe("npm");
+  expect(detectPackageManager({}, "/usr/local/bin/node")).toBeUndefined();
+});
+
+test("detectPackageManager falls back to vp when running under a vite-plus-managed node", () => {
+  expect(
+    detectPackageManager({}, "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node"),
+  ).toBe("vp");
+});
+
+test("detectPackageManager prefers npm_config_user_agent over the vite-plus execPath fallback", () => {
+  expect(
+    detectPackageManager(
+      { npm_config_user_agent: "pnpm/9.0.0 node/22" },
+      "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node",
+    ),
+  ).toBe("pnpm");
+});
+
+test("detectPackageManager returns undefined for a plain system node with no user agent", () => {
+  expect(detectPackageManager({}, "/usr/local/bin/node")).toBeUndefined();
+});
+
+// ---------------------------------------------------------------------------
+// validateScaffoldPlatform
+// ---------------------------------------------------------------------------
+
+test("validateScaffoldPlatform accepts a known platform and rejects unknown ones", () => {
+  expect(validateScaffoldPlatform("react")).toBe("react");
+  expect(() => validateScaffoldPlatform("not-a-real-platform")).toThrow(InvalidArgumentError);
+});
+
+test("validateScaffoldPlatform accepts canvas-theme-editor and its theme-editor alias", () => {
+  expect(validateScaffoldPlatform("canvas-theme-editor")).toBe("canvas-theme-editor");
+  expect(validateScaffoldPlatform("theme-editor")).toBe("theme-editor");
+});
+
+// ---------------------------------------------------------------------------
+// printNextSteps
+// ---------------------------------------------------------------------------
+
+test("printNextSteps prints an install command using the detected package manager", () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "pnpm/9.0.0 node/22";
+  let printed: string;
+  try {
+    printNextSteps("./my-app", ["./my-app/package.json"], t);
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+    logSpy.mockRestore();
+  }
+  expect(printed).toContain("pnpm install");
+  expect(printed).toContain("./my-app");
+});
+
+test("printNextSteps falls back to npm install when no package manager is detected", () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const originalUserAgent = process.env.npm_config_user_agent;
+  const originalExecPath = process.execPath;
+  delete process.env.npm_config_user_agent;
+  Object.defineProperty(process, "execPath", { value: "/usr/local/bin/node", configurable: true });
+  let printed: string;
+  try {
+    printNextSteps(".", [], t);
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    if (originalUserAgent !== undefined) process.env.npm_config_user_agent = originalUserAgent;
+    Object.defineProperty(process, "execPath", { value: originalExecPath, configurable: true });
+    logSpy.mockRestore();
+  }
+  expect(printed).toContain("npm install");
+});
+
+test("printNextSteps renders scaffold.json-authored next steps/notes/caveats for canvas-theme-editor under vp", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-theme-app");
+  const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const originalUserAgent = process.env.npm_config_user_agent;
+  const originalExecPath = process.execPath;
+  delete process.env.npm_config_user_agent;
+  Object.defineProperty(process, "execPath", {
+    value: "/Users/x/.local/share/vite-plus/js_runtime/node/26.8.1/bin/node",
+    configurable: true,
+  });
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "canvas-theme-editor");
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    if (originalUserAgent !== undefined) process.env.npm_config_user_agent = originalUserAgent;
+    Object.defineProperty(process, "execPath", { value: originalExecPath, configurable: true });
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain(`cd ${target}`);
+  expect(printed).toContain("vp install");
+  expect(printed).toContain("vp run dev");
+  expect(printed).toContain("Theme Editor");
+  expect(printed).toContain("Canvas sanitizes pasted HTML");
+});
+
+test("printNextSteps uses the generic fallback (with detected dev script) for platforms with no scaffold.json", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-react-app");
+  const written = await scaffoldWithSpinner("react", target, t);
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const originalUserAgent = process.env.npm_config_user_agent;
+  process.env.npm_config_user_agent = "pnpm/9.0.0 node/22";
+  let printed: string;
+  try {
+    printNextSteps(target, written, t, "react");
+    printed = logSpy.mock.calls.map((call: unknown[]) => call.join(" ")).join("\n");
+  } finally {
+    if (originalUserAgent === undefined) delete process.env.npm_config_user_agent;
+    else process.env.npm_config_user_agent = originalUserAgent;
+    logSpy.mockRestore();
+  }
+
+  expect(printed).toContain("pnpm install");
+  expect(printed).toContain("pnpm run dev");
+});
+
+test("canvas-theme-editor's scaffolded output doesn't include scaffold.json", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-theme-app");
+  const written = await scaffoldWithSpinner("canvas-theme-editor", target, t);
+  expect(written.some((p) => p.endsWith("scaffold.json"))).toBe(false);
+});
+
+// ---------------------------------------------------------------------------
+// collectI18nSource
+// ---------------------------------------------------------------------------
+
+test("collectI18nSource merges src/i18n.json with every template's scaffold.json without mutating either", () => {
+  const root = new URL("..", import.meta.url).pathname;
+  const { source, verbatim } = collectI18nSource(root);
+
+  // Static CLI copy is present.
+  expect(source.nextStepsHeading).toBe("Next steps:");
+  // Template-derived keys are present, namespaced by platform.
+  expect(source["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("cd {{dir}}");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.0"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.1"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.nextSteps.2"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabCssLabel"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.tabJsLabel"]).toBe("required");
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.editorPaneLabel"]).toEqual({
+    warn: ["da", "de", "es", "id", "it", "ms", "nb", "nl", "pt*", "se"],
+  });
+  expect(verbatim["scaffold.canvas-theme-editor.i18n.modeLabel"]).toEqual({
+    warn: ["fr*", "id"],
+  });
+  expect(source["scaffold.canvas-theme-editor.notes"]).toContain("Theme Editor");
+  // Platforms with no scaffold.json contribute no derived keys.
+  expect(Object.keys(source).some((k) => k.startsWith("scaffold.react."))).toBe(false);
+});
+
+// ---------------------------------------------------------------------------
+// resolveScaffoldTarget
+// ---------------------------------------------------------------------------
+
+test("resolveScaffoldTarget throws when the platform is missing under --yes", async () => {
+  await expect(resolveScaffoldTarget({ yes: true, isTTY: true, t })).rejects.toThrow(
+    ScaffoldCliError,
+  );
+});
+
+test("resolveScaffoldTarget throws when the platform is missing on a non-TTY", async () => {
+  await expect(resolveScaffoldTarget({ isTTY: false, t })).rejects.toThrow(ScaffoldCliError);
+});
+
+test("resolveScaffoldTarget throws for an unknown platform", async () => {
+  await expect(
+    resolveScaffoldTarget({ platformArg: "not-a-real-platform", isTTY: false, t }),
+  ).rejects.toThrow(ScaffoldCliError);
+});
+
+test("resolveScaffoldTarget defaults dir to '.' when omitted non-interactively", async () => {
+  const result = await resolveScaffoldTarget({ platformArg: "react", isTTY: false, t });
+  expect(result).toEqual({ platform: "react", dir: "." });
+});
+
+test("resolveScaffoldTarget prompts for a missing platform and directory on a TTY", async () => {
+  vi.mocked(select).mockResolvedValueOnce("vue");
+  vi.mocked(text).mockResolvedValueOnce("./prompted-app");
+  const result = await resolveScaffoldTarget({ isTTY: true, t });
+  expect(result).toEqual({ platform: "vue", dir: "./prompted-app" });
+});
+
+test("resolveScaffoldTarget throws ScaffoldCliError when the platform prompt is cancelled", async () => {
+  vi.mocked(select).mockResolvedValueOnce(CANCEL_SYMBOL as never);
+  await expect(resolveScaffoldTarget({ isTTY: true, t })).rejects.toThrow(ScaffoldCliError);
+});
+
+test("resolveScaffoldTarget throws ScaffoldCliError when the directory prompt is cancelled", async () => {
+  vi.mocked(select).mockResolvedValueOnce("react");
+  vi.mocked(text).mockResolvedValueOnce(CANCEL_SYMBOL as never);
+  await expect(resolveScaffoldTarget({ platformArg: "react", isTTY: true, t })).rejects.toThrow(
+    ScaffoldCliError,
+  );
+});
+
+test("resolveScaffoldTarget falls back to '.' for a blank prompted directory", async () => {
+  vi.mocked(text).mockResolvedValueOnce("");
+  const result = await resolveScaffoldTarget({ platformArg: "react", isTTY: true, t });
+  expect(result).toEqual({ platform: "react", dir: "." });
+});
+
+// ---------------------------------------------------------------------------
+// scaffoldWithSpinner
+// ---------------------------------------------------------------------------
+
+test("scaffoldWithSpinner scaffolds and starts/stops the spinner", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
-  const output = execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
-  expect(output).toContain("vp install");
+  const written = await scaffoldWithSpinner("react", target, t);
+  expect(written.length).toBeGreaterThan(0);
   expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(spinner).toHaveBeenCalled();
 });
 
-test("still substitutes projectName with the shared CLI", () => {
+test("scaffoldWithSpinner stops the spinner and rethrows on failure", async () => {
   const dir = mktemp();
-  const target = join(dir, "my-app");
-  execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
-  expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
+  const notADirectory = join(dir, "im-a-file");
+  writeFileSync(notADirectory, "not a directory");
+  await expect(scaffoldWithSpinner("react", notADirectory, t)).rejects.toThrow();
 });
 
-// The tests above only exercise the built bin as a black box (a child process, so it never
-// contributes to this file's coverage). The tests below call `runScaffoldCli` directly.
+// ---------------------------------------------------------------------------
+// createScaffoldCommand / runScaffoldCli
+// ---------------------------------------------------------------------------
 
 let logSpy: ReturnType<typeof vi.spyOn>;
 let errSpy: ReturnType<typeof vi.spyOn>;
 let exitSpy: ReturnType<typeof vi.spyOn>;
+let stdoutSpy: ReturnType<typeof vi.spyOn>;
+let stderrSpy: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
   logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
   errSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
-  exitSpy = vi.spyOn(process, "exit").mockImplementation((code?: number | string | null) => {
-    throw new ProcessExitError(code);
-  });
+  exitSpy = vi.spyOn(process, "exit").mockImplementation(() => undefined as never);
+  stdoutSpy = vi.spyOn(process.stdout, "write").mockImplementation(() => true);
+  stderrSpy = vi.spyOn(process.stderr, "write").mockImplementation(() => true);
 });
 
 afterEach(() => {
   logSpy.mockRestore();
   errSpy.mockRestore();
   exitSpy.mockRestore();
+  stdoutSpy.mockRestore();
+  stderrSpy.mockRestore();
+  vi.mocked(select).mockReset();
+  vi.mocked(text).mockReset();
 });
 
-test("--help prints usage and returns without exiting", async () => {
+test("createScaffoldCommand builds a command named after the given name", () => {
+  const program = createScaffoldCommand({ name: "pantoken-scaffold", enableCompletions: false });
+  expect(program.name()).toBe("pantoken-scaffold");
+});
+
+test("--help prints usage to stdout", async () => {
   await runScaffoldCli(["--help"], { usageCommand: "pantoken-scaffold" });
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("pantoken-scaffold"));
-  expect(exitSpy).not.toHaveBeenCalled();
+  const printed = stdoutSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("pantoken-scaffold");
+});
+
+test("--version prints the given version to stdout", async () => {
+  await runScaffoldCli(["--version"], { usageCommand: "pantoken-scaffold", version: "1.2.3" });
+  const printed = stdoutSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("1.2.3");
 });
 
 test("rejects an unrecognized flag", async () => {
-  await expect(runScaffoldCli(["--bogus"], { usageCommand: "pantoken-scaffold" })).rejects.toThrow(
-    ProcessExitError,
-  );
-  expect(errSpy).toHaveBeenCalledWith('Unknown option "--bogus".');
+  await runScaffoldCli(["--bogus"], { usageCommand: "pantoken-scaffold" });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("unknown option");
+  expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
 test("rejects a second positional argument", async () => {
-  await expect(
-    runScaffoldCli(["react", "extra"], { usageCommand: "pantoken-scaffold" }),
-  ).rejects.toThrow(ProcessExitError);
-  expect(errSpy).toHaveBeenCalledWith('Unknown option "extra".');
+  await runScaffoldCli(["react", "extra"], { usageCommand: "pantoken-scaffold" });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("too many arguments");
+  expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
 test("rejects an unknown platform", async () => {
-  await expect(
-    runScaffoldCli(["not-a-real-platform"], { usageCommand: "pantoken-scaffold" }),
-  ).rejects.toThrow(ProcessExitError);
-  expect(errSpy).toHaveBeenCalledWith('Unknown platform "not-a-real-platform".');
+  await runScaffoldCli(["not-a-real-platform"], { usageCommand: "pantoken-scaffold" });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-real-platform");
+  expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
-test("requires a platform argument", async () => {
-  await expect(runScaffoldCli([], { usageCommand: "pantoken-scaffold" })).rejects.toThrow(
-    ProcessExitError,
-  );
-  expect(errSpy).toHaveBeenCalledWith('Unknown platform "".');
+test("requires a platform argument under --yes", async () => {
+  await runScaffoldCli(["--yes"], { usageCommand: "pantoken-scaffold" });
+  expect(errSpy).toHaveBeenCalledWith(expect.stringContaining("Missing required argument"));
+  expect(exitSpy).toHaveBeenCalledWith(1);
 });
 
-test("scaffolds and prints vp install when --dir is given", async () => {
+test("scaffolds and prints next steps when --dir is given", async () => {
   const dir = mktemp();
   const target = join(dir, "my-app");
-  await runScaffoldCli(["react", "--dir", target], { usageCommand: "pantoken-scaffold" });
+  await runScaffoldCli(["react", "--dir", target, "--yes"], { usageCommand: "pantoken-scaffold" });
   expect(existsSync(join(target, "package.json"))).toBe(true);
-  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("vp install"));
+  expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Next steps"));
 });
 
-test("prompts for a directory when --dir is omitted on a TTY", async () => {
+test("--theme selects which @pantoken/css sheet the scaffolded project imports", async () => {
   const dir = mktemp();
-  const target = join(dir, "prompted-app");
-  const question = vi.fn().mockResolvedValue(target);
-  const close = vi.fn();
-  vi.doMock("node:readline/promises", () => ({ createInterface: () => ({ question, close }) }));
-  vi.resetModules();
-  const originalIsTTY = process.stdin.isTTY;
-  Object.defineProperty(process.stdin, "isTTY", { value: true, configurable: true });
-  try {
-    const { runScaffoldCli: freshRunScaffoldCli } = await import("../src/cli.ts");
-    await freshRunScaffoldCli(["react"], { usageCommand: "pantoken-scaffold" });
-  } finally {
-    Object.defineProperty(process.stdin, "isTTY", { value: originalIsTTY, configurable: true });
-    vi.doUnmock("node:readline/promises");
-    vi.resetModules();
-  }
-  expect(question).toHaveBeenCalledWith("Project directory (. for current folder): ");
-  expect(close).toHaveBeenCalled();
-  expect(existsSync(join(target, "package.json"))).toBe(true);
-});
-
-test("a blank prompt answer falls back to the current folder", async () => {
-  const dir = mktemp();
-  const question = vi.fn().mockResolvedValue("   ");
-  const close = vi.fn();
-  vi.doMock("node:readline/promises", () => ({ createInterface: () => ({ question, close }) }));
-  vi.resetModules();
-  const originalIsTTY = process.stdin.isTTY;
-  Object.defineProperty(process.stdin, "isTTY", { value: true, configurable: true });
-  const cwd = process.cwd();
-  process.chdir(dir);
-  try {
-    const { runScaffoldCli: freshRunScaffoldCli } = await import("../src/cli.ts");
-    await freshRunScaffoldCli(["react"], { usageCommand: "pantoken-scaffold" });
-  } finally {
-    process.chdir(cwd);
-    Object.defineProperty(process.stdin, "isTTY", { value: originalIsTTY, configurable: true });
-    vi.doUnmock("node:readline/promises");
-    vi.resetModules();
-  }
-  expect(existsSync(join(dir, "package.json"))).toBe(true);
-});
-
-test("defaults to the current folder when --dir is omitted on a non-TTY", async () => {
-  const dir = mktemp();
-  const cwd = process.cwd();
-  process.chdir(dir);
-  try {
-    await runScaffoldCli(["components"], { usageCommand: "pantoken-scaffold" });
-  } finally {
-    process.chdir(cwd);
-  }
-  expect(existsSync(join(dir, "package.json"))).toBe(true);
-});
-
-test("reports a non-Error scaffolding failure", async () => {
-  vi.doMock("../src/index.ts", async (importActual) => {
-    const actual = await importActual<typeof import("../src/index.ts")>();
-    return { ...actual, scaffoldProject: () => Promise.reject("boom") };
+  const target = join(dir, "my-app");
+  await runScaffoldCli(["vue", "--dir", target, "--yes", "--theme", "canvas"], {
+    usageCommand: "pantoken-scaffold",
   });
-  vi.resetModules();
-  try {
-    const { runScaffoldCli: freshRunScaffoldCli } = await import("../src/cli.ts");
-    await expect(
-      freshRunScaffoldCli(["react", "--dir", mktemp()], { usageCommand: "pantoken-scaffold" }),
-    ).rejects.toThrow(ProcessExitError);
-  } finally {
-    vi.doUnmock("../src/index.ts");
-    vi.resetModules();
-  }
-  expect(errSpy).toHaveBeenCalledWith("Error scaffolding project:", "boom");
+  expect(readFileSync(join(target, "src/main.ts"), "utf8")).toContain(
+    'import "@pantoken/css/style.canvas.lean.css";',
+  );
 });
 
-test("reports a scaffolding failure", async () => {
+test("rejects an unknown --theme value", async () => {
+  await runScaffoldCli(["react", "--yes", "--theme", "not-a-theme"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-theme");
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+test("rejects an unknown --theme-mode value", async () => {
+  await runScaffoldCli(["react", "--yes", "--theme-mode", "not-a-mode"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-mode");
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+test("--cdn selects the CDN provider canvas-theme-editor's theme.css is built for", async () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  await runScaffoldCli(
+    ["canvas-theme-editor", "--dir", target, "--yes", "--cdn", "unpkg", "--theme", "canvas"],
+    { usageCommand: "pantoken-scaffold" },
+  );
+  const themeCss = readFileSync(join(target, "theme.css"), "utf8");
+  expect(themeCss).toContain("unpkg.com");
+  expect(themeCss).toContain("style.canvas.lean.css");
+});
+
+test("rejects an unknown --cdn value", async () => {
+  await runScaffoldCli(["react", "--yes", "--cdn", "not-a-provider"], {
+    usageCommand: "pantoken-scaffold",
+  });
+  const printed = stderrSpy.mock.calls.map((call: unknown[]) => String(call[0])).join("");
+  expect(printed).toContain("not-a-provider");
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+test("reports a scaffolding failure and exits non-zero", async () => {
   const dir = mktemp();
   const notADirectory = join(dir, "im-a-file");
   writeFileSync(notADirectory, "not a directory");
-  await expect(
-    runScaffoldCli(["react", "--dir", notADirectory], { usageCommand: "pantoken-scaffold" }),
-  ).rejects.toThrow(ProcessExitError);
+  await runScaffoldCli(["react", "--dir", notADirectory, "--yes"], {
+    usageCommand: "pantoken-scaffold",
+  });
   expect(errSpy).toHaveBeenCalledWith("Error scaffolding project:", expect.any(String));
+  expect(exitSpy).toHaveBeenCalledWith(1);
+});
+
+// ---------------------------------------------------------------------------
+// bin script black-box tests (real @clack/prompts, no mocks apply across processes)
+// ---------------------------------------------------------------------------
+
+test("bin --help does not scaffold anything", () => {
+  const output = execFileSync("node", [bin, "--help"], { encoding: "utf8" });
+  expect(output).toContain("pantoken-scaffold");
+});
+
+test("bin prints an install command and substitutes projectName", () => {
+  const dir = mktemp();
+  const target = join(dir, "my-app");
+  const output = execFileSync("node", [bin, "react", "--dir", target], { encoding: "utf8" });
+  expect(output).toContain("install");
+  expect(existsSync(join(target, "package.json"))).toBe(true);
+  expect(readFileSync(join(target, "package.json"), "utf8")).toContain('"name": "my-app"');
 });

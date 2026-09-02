@@ -21,5 +21,14 @@
   },
   "snyk.advanced.autoSelectOrganization": true,
   "css.lint.unknownAtRules": "ignore",
-  "css.lint.emptyRules": "ignore"
+  "css.lint.emptyRules": "ignore",
+  // Scaffold template source files (packages/scaffold/templates/**) keep the real extension plus a
+  // `.tmpl` suffix (generate.ts strips it when inlining) — associate them with their real language
+  // so editor features (highlighting, IntelliSense, formatting) work as if `.tmpl` weren't there.
+  "files.associations": {
+    "*.ts.tmpl": "typescript",
+    "*.tsx.tmpl": "typescriptreact",
+    "*.vue.tmpl": "vue",
+    "*.svelte.tmpl": "svelte"
+  }
 }

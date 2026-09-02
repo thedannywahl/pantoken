@@ -1,0 +1,9 @@
+{
+  "prevMonth": "ماه قبل",
+  "nextMonth": "ماه بعد",
+  "dateLabel": "تاریخ",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "باز کردن تقویم",
+  "timeLabel": "زمان",
+  "back": "بازگشت"
+}

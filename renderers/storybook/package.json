@@ -2,7 +2,7 @@
   "name": "@pantoken/storybook",
   "version": "0.1.13",
   "description": "A Storybook theme built from Instructure tokens (maps to Storybook ThemeVars).",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

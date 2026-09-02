@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Schrijf de agent-assets van pantoken in een repository",
+  "helpInitToolDescription": "Agenttool (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Doelmap",
+  "helpScaffoldDescription": "Maak een startersproject (via @pantoken/scaffold) en installeer de agent-assets erin",
+  "helpScaffoldToolDescription": "Agenttool (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Overschrijf de automatisch gedetecteerde weergavetaal (bijv. \"hu\")"
+}

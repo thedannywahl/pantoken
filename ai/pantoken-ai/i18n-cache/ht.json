@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ Ekri {{path}}",
+  "helpInitDescription": "Ekri resous ajan pantoken nan yon depo",
+  "helpInitToolDescription": "Zouti ajan (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Katab destinasyon",
+  "helpScaffoldDescription": "Eskafonnen yon pwojè demaraj (via @pantoken/scaffold) epi enstale resous ajan ladan li",
+  "helpScaffoldToolDescription": "Zouti ajan (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Ranplase lang afichaj otomatikman detekte a (egzanp \"hu\")"
+}

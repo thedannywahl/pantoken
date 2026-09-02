@@ -1,0 +1,30 @@
+[pantoken](../../../../index.md) / [formats/icons/src](../index.md) / buildIconResolverChain
+
+# ฟังก์ชัน: buildIconResolverChain()
+
+> **buildIconResolverChain**(`options`): [`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
+
+<span class="instui-pill -color-warning pantoken-doc-tag">เบต้า</span>
+
+Build the shared icon-resolver chain: plugin `rehype` resolvers first, then an explicit
+`resolve`, then the built-in pantoken icon set. Used by `@pantoken/rehype` and
+`@pantoken/markdown-it` so the resolution order stays identical across renderers.
+
+## พารามิเตอร์
+
+### options
+
+[`IconResolverChainOptions`](../interfaces/IconResolverChainOptions.md)
+
+## คืนค่า
+
+[`IconResolver`](../../../../packages/core/src/type-aliases/IconResolver.md)
+
+## ตัวอย่าง
+
+```ts
+import { buildIconResolverChain } from "@pantoken/icons";
+
+const resolveIcon = buildIconResolverChain({ plugins: [myBrandIconsPlugin] });
+resolveIcon("arrow-left"); // { name, svg, viewBox, source } | undefined
+```

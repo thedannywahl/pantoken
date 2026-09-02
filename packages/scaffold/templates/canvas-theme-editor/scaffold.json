@@ -1,0 +1,5 @@
+{
+  "nextSteps": ["cd {{dir}}", "{{install}}", "{{dev}}"],
+  "notes": "Upload theme.css and theme.js to Canvas's Theme Editor (Advanced → CSS / JavaScript) so pantoken's classes are available on every page.",
+  "caveats": "Canvas sanitizes pasted HTML server-side — always verify content pasted from the RCE preview in Canvas."
+}

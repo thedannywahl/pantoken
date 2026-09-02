@@ -2,7 +2,7 @@
   "name": "@pantoken/angular",
   "version": "0.1.27",
   "description": "Angular helpers for pantoken: register the web components and read tokens.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

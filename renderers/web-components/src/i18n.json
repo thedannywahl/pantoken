@@ -1,9 +1,9 @@
 {
   "prevMonth": "Previous month",
   "nextMonth": "Next month",
-  "dateLabel": "Date",
-  "datePlaceholder": "yyyy-mm-dd",
+  "dateLabel": { "string": "Date", "verbatim": "allow" },
+  "datePlaceholder": { "string": "yyyy-mm-dd", "verbatim": "allow" },
   "openCalendar": "Open calendar",
-  "timeLabel": "Time",
-  "back": "Back"
+  "timeLabel": { "string": "Time", "verbatim": "allow" },
+  "back": { "string": "Back", "verbatim": "allow" }
 }

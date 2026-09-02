@@ -6,6 +6,9 @@
     { "tagName": "@module", "syntaxKind": "block" },
     { "tagName": "@demo", "syntaxKind": "block" },
     { "tagName": "@accessibility", "syntaxKind": "block" },
-    { "tagName": "@a11y", "syntaxKind": "block" }
+    { "tagName": "@a11y", "syntaxKind": "block" },
+    { "tagName": "@part", "syntaxKind": "inline" },
+    { "tagName": "@slot", "syntaxKind": "inline" },
+    { "tagName": "@selector", "syntaxKind": "inline" }
   ]
 }

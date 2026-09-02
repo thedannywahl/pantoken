@@ -1,0 +1,516 @@
+/**
+ * @component button
+ * @summary An accessible action control, styled from the token palette; primary by default.
+ * @remarks The AI variants layer two gradients — a padding-box fill and a border-box stroke — for their frame, and `-color-ai-secondary` can't paint gradient text and a fill at once, so its centre stays transparent at rest and fills on hover or active. `-without-background` hover and active derive a low-opacity, slightly-darkened brand wash rather than using the raw hover-background tokens, which would print same-colour-on-same-colour text. Also sets its own icon/label `gap` and horizontal `padding`; chaining a `-gap-*`/`-p-*`/`-padding-*` spacing utility modifier overrides those built-in values. The optional `.pfx-button-group` wrapper maps Figma's `.buttonGroup` and owns adjacent button spacing.
+ * @selector .pfx-button
+ * @modifier -color-primary — (default) the primary action.
+ * @modifier -color-secondary — A lower-emphasis secondary action.
+ * @modifier -color-tertiary — A text-style action (no fill or border until hover).
+ * @modifier -color-danger — A destructive action.
+ * @modifier -shape-circle — A round icon button.
+ * @modifier -condensed — Tighter padding for dense toolbars.
+ * @modifier -toggle — A pressed-state toggle button (drive with aria-pressed).
+ * @modifier -without-background — Drop the fill (ghost).
+ * @modifier -color-success — A positive/confirming action.
+ * @modifier -color-ai — An AI action.
+ * @modifier -color-ai-secondary — A lower-emphasis AI action.
+ * @modifier -color-primary-inverse — @deprecated {@link -on-color}
+ * @modifier -on-color — For a button placed on a coloured (non-neutral) surface. Composed with `-color-primary` (default) fills white with dark text; composed with `-color-secondary` stays transparent with a white border and text.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — (default) medium size.
+ * @modifier -size-lg — Large.
+ * @modifier -shape-square — A square icon button.
+ * @modifier -display-block — Full-width block button.
+ * @modifier -ghost — @deprecated {@link -color-tertiary}
+ * @modifier -without-border — Remove the border.
+ * @modifier -icon-* — Render a glyph from the icon set before the label (e.g. `-icon-arrow-right`), painted in the button's text colour; pair with `-shape-square`/`-shape-circle` for an icon-only button.
+ * @pseudo ::before — The AI glyph, added automatically to AI buttons and masked in the variant's own colour.
+ * @pseudo ::after — The AI-secondary gradient border ring, masked to just the button's frame.
+ * @cssstate disabled
+ * @cssstate pressed
+ * @a11y Drive the `-toggle` variant's pressed state with `aria-pressed`, and mark a disabled button with `aria-disabled` (or the native `disabled`).
+ * @example
+ * ```html
+ * <div class="pfx-button-group">
+ *   <button class="pfx-button">Primary</button>
+ *   <button class="pfx-button -color-secondary">Secondary</button>
+ * </div>
+ * ```
+ * @wrapper pfx-button-group
+ * @structure
+ * A group wrapper lays out adjacent buttons with the shared button gap.
+ * .pfx-button-group:opt {
+ *   .pfx-button:one-or-more {}
+ * }
+ * @related close-button — The icon-only dismiss button.
+ * @demo self:button
+ */
+@scope (.pfx-button) {
+  & {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--instui-spacing-space-xs);
+    min-height: var(--instui-component-base-button-medium-height);
+    padding: var(--instui-spacing-space-xs)
+      var(--instui-component-base-button-medium-padding-horizontal);
+    font-family: var(--instui-font-family-base);
+    font-size: var(--instui-component-base-button-medium-font-size);
+    font-weight: var(--instui-font-weight-interactive);
+    line-height: var(--instui-line-height-standalone-text-base);
+    border: var(--instui-border-width-sm) solid transparent;
+    border-radius: var(--instui-component-base-button-border-radius);
+    cursor: pointer;
+    background: var(--instui-color-background-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
+  }
+
+  &:hover {
+    background: var(--instui-color-background-interactive-action-primary-hover);
+  }
+
+  &:active {
+    background: var(--instui-color-background-interactive-action-primary-active);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    background: var(--instui-component-base-button-primary-disabled-background-color);
+    border-color: var(--instui-component-base-button-primary-disabled-border-color);
+    color: var(--instui-component-base-button-primary-color);
+    cursor: not-allowed;
+  }
+
+  &.-color-primary {
+    background: var(--instui-color-background-interactive-action-primary-base);
+    color: var(--instui-color-text-interactive-action-primary-base);
+    border-color: var(--instui-color-stroke-interactive-action-primary-base);
+  }
+
+  &.-color-primary:hover {
+    background: var(--instui-color-background-interactive-action-primary-hover);
+    border-color: var(--instui-color-stroke-interactive-action-primary-hover);
+  }
+
+  &.-color-primary:active {
+    background: var(--instui-color-background-interactive-action-primary-active);
+    border-color: var(--instui-color-stroke-interactive-action-primary-active);
+  }
+
+  &.-color-primary:disabled,
+  &.-color-primary[aria-disabled="true"] {
+    background: var(--instui-component-base-button-primary-disabled-background-color);
+    border-color: var(--instui-component-base-button-primary-disabled-border-color);
+    color: var(--instui-component-base-button-primary-color);
+  }
+
+  &.-color-secondary {
+    background: var(--instui-component-base-button-secondary-background);
+    color: var(--instui-component-base-button-secondary-color);
+    border-color: var(--instui-component-base-button-secondary-border-color);
+  }
+
+  &.-color-secondary:hover {
+    background: var(--instui-component-base-button-secondary-hover-background);
+    border-color: var(--instui-component-base-button-secondary-hover-border-color);
+    color: var(--instui-component-base-button-secondary-hover-text-color);
+  }
+
+  &.-color-secondary:active {
+    background: var(--instui-component-base-button-secondary-active-background);
+    border-color: var(--instui-component-base-button-secondary-active-border-color);
+    color: var(--instui-component-base-button-secondary-active-text-color);
+  }
+
+  &.-color-secondary:disabled,
+  &.-color-secondary[aria-disabled="true"] {
+    background: var(--instui-component-base-button-secondary-disabled-background-color);
+    border-color: var(--instui-component-base-button-secondary-disabled-border-color);
+    color: var(--instui-component-base-button-secondary-disabled-text-color);
+  }
+
+  &.-color-danger {
+    background: var(--instui-color-background-interactive-action-destructive-base);
+    color: var(--instui-color-text-interactive-action-status-base);
+  }
+
+  &.-color-danger:hover {
+    background: var(--instui-color-background-interactive-action-destructive-hover);
+  }
+
+  &.-color-danger:active {
+    background: var(--instui-color-background-interactive-action-destructive-active);
+  }
+
+  &.-color-success {
+    background: var(--instui-color-background-interactive-action-success-base);
+    color: var(--instui-color-text-interactive-action-status-base);
+  }
+
+  &.-color-success:hover {
+    background: var(--instui-color-background-interactive-action-success-hover);
+  }
+
+  &.-color-tertiary,
+  &.-ghost {
+    background: transparent;
+    color: var(--instui-component-base-button-primary-ghost-color);
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
+  }
+
+  &.-color-tertiary:hover,
+  &.-ghost:hover {
+    background: var(--instui-component-base-button-primary-ghost-hover-background);
+    border-color: var(--instui-component-base-button-tertiary-hover-border-color);
+    color: var(--instui-component-base-button-tertiary-hover-text-color);
+  }
+
+  &.-color-tertiary:active,
+  &.-ghost:active {
+    background: var(--instui-component-base-button-primary-ghost-active-background);
+    border-color: var(--instui-component-base-button-tertiary-active-border-color);
+    color: var(--instui-component-base-button-tertiary-active-text-color);
+  }
+
+  &.-color-tertiary:disabled,
+  &.-color-tertiary[aria-disabled="true"],
+  &.-ghost:disabled,
+  &.-ghost[aria-disabled="true"] {
+    background: transparent;
+    border-color: var(--instui-component-base-button-tertiary-disabled-border-color);
+    color: var(--instui-component-base-button-tertiary-disabled-text-color);
+  }
+
+  &.-color-primary-inverse {
+    background: var(--instui-component-base-button-primary-inverse-background);
+    color: var(--instui-component-base-button-primary-inverse-color);
+    border-color: var(--instui-component-base-button-primary-inverse-border-color);
+  }
+
+  /* On hover the border tracks the (light) hover fill, so it reads as no visible border. */
+  &.-color-primary-inverse:hover {
+    background: var(--instui-component-base-button-primary-inverse-hover-background);
+    border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+  }
+
+  &.-color-primary-inverse:active {
+    background: var(--instui-component-base-button-primary-inverse-active-background);
+    border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+  }
+
+  /*
+   * --on-color composes with primary (default) and secondary for a button placed on a coloured
+   * surface, reading the full base/hover/active/disabled set from the on-color colour tokens rather
+   * than the component layer (which only aliases hover/active/disabled). Primary fills white with
+   * dark text; secondary stays transparent with a white border and text — there's no
+   * secondary-on-color background token, matching InstUI.
+   */
+  &.-on-color:not([class*="-color-"]),
+  &.-color-primary.-on-color {
+    background: var(--instui-component-base-button-primary-inverse-background);
+    border-color: var(--instui-component-base-button-primary-inverse-border-color);
+    color: var(--instui-component-base-button-primary-inverse-color);
+  }
+
+  &.-on-color:not([class*="-color-"]):hover,
+  &.-color-primary.-on-color:hover {
+    background: var(--instui-component-base-button-primary-inverse-hover-background);
+    border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+    color: var(--instui-component-base-button-primary-on-color-hover-text-color);
+  }
+
+  &.-on-color:not([class*="-color-"]):active,
+  &.-color-primary.-on-color:active {
+    background: var(--instui-component-base-button-primary-inverse-active-background);
+    border-color: var(--instui-component-base-button-primary-on-color-active-border-color);
+    color: var(--instui-component-base-button-primary-on-color-active-text-color);
+  }
+
+  &.-on-color:not([class*="-color-"]):disabled,
+  &.-on-color:not([class*="-color-"])[aria-disabled="true"],
+  &.-color-primary.-on-color:disabled,
+  &.-color-primary.-on-color[aria-disabled="true"] {
+    background: var(--instui-component-base-button-primary-on-color-disabled-background-color);
+    border-color: var(--instui-component-base-button-primary-on-color-disabled-border-color);
+    color: var(--instui-component-base-button-primary-on-color-disabled-text-color);
+  }
+
+  &.-color-secondary.-on-color {
+    background: transparent;
+    border-color: var(--instui-component-base-button-primary-inverse-ghost-border-color);
+    color: var(--instui-component-base-button-primary-inverse-ghost-color);
+  }
+
+  &.-color-secondary.-on-color:hover {
+    background: var(--instui-component-base-button-primary-inverse-ghost-hover-background);
+    border-color: var(--instui-component-base-button-primary-on-color-hover-border-color);
+    color: var(--instui-component-base-button-secondary-on-color-hover-text-color);
+  }
+
+  &.-color-secondary.-on-color:active {
+    background: var(--instui-component-base-button-primary-inverse-ghost-active-background);
+    border-color: var(--instui-component-base-button-secondary-on-color-active-border-color);
+    color: var(--instui-component-base-button-secondary-on-color-active-text-color);
+  }
+
+  &.-color-secondary.-on-color:disabled,
+  &.-color-secondary.-on-color[aria-disabled="true"] {
+    background: transparent;
+    border-color: var(--instui-component-base-button-secondary-on-color-disabled-border-color);
+    color: var(--instui-component-base-button-secondary-on-color-disabled-text-color);
+  }
+
+  /*
+   * AI buttons carry two gradients: the fill (padding-box) and a distinct stroke gradient (border-box)
+   * that shows through the transparent border — InstUI's ai-primary technique. The ai glyph is added
+   * automatically via ::before (appended in index.ts, which needs the shared AI_ICON_MASK constant).
+   */
+  &.-color-ai {
+    color: var(--instui-color-text-interactive-action-ai-base);
+    border-color: transparent;
+    background:
+      linear-gradient(
+          to bottom,
+          var(--instui-color-background-interactive-action-ai-top-gradient-base) 0%,
+          var(--instui-color-background-interactive-action-ai-bottom-gradient-base) 100%
+        )
+        padding-box,
+      linear-gradient(
+          to bottom,
+          var(--instui-color-stroke-interactive-action-ai-top-gradient-base) 0%,
+          var(--instui-color-stroke-interactive-action-ai-bottom-gradient-base) 100%
+        )
+        border-box;
+  }
+
+  &.-color-ai:hover {
+    color: var(--instui-color-text-interactive-action-ai-hover);
+    background:
+      linear-gradient(
+          to bottom,
+          var(--instui-color-background-interactive-action-ai-top-gradient-hover) 0%,
+          var(--instui-color-background-interactive-action-ai-bottom-gradient-hover) 100%
+        )
+        padding-box,
+      linear-gradient(
+          to bottom,
+          var(--instui-color-stroke-interactive-action-ai-top-gradient-hover) 0%,
+          var(--instui-color-stroke-interactive-action-ai-bottom-gradient-hover) 100%
+        )
+        border-box;
+  }
+
+  &.-color-ai:active {
+    color: var(--instui-color-text-interactive-action-ai-active);
+    background:
+      linear-gradient(
+          to bottom,
+          var(--instui-color-background-interactive-action-ai-top-gradient-active) 0%,
+          var(--instui-color-background-interactive-action-ai-bottom-gradient-active) 100%
+        )
+        padding-box,
+      linear-gradient(
+          to bottom,
+          var(--instui-color-stroke-interactive-action-ai-top-gradient-active) 0%,
+          var(--instui-color-stroke-interactive-action-ai-bottom-gradient-active) 100%
+        )
+        border-box;
+  }
+
+  &.-color-ai:disabled,
+  &.-color-ai[aria-disabled="true"] {
+    color: var(--instui-component-base-button-ai-disabled-text-color);
+    border-color: var(--instui-component-base-button-ai-disabled-border-color);
+    background: var(--instui-component-base-button-ai-disabled-background-color);
+  }
+
+  /*
+   * ai-secondary matches InstUI: a transparent rest fill, a violet→sea gradient border ring (::after,
+   * masked to just the frame), and violet→sea gradient text (background-clip: text). The ai glyph
+   * (::before) picks up the same gradient. A single element can't paint gradient text and a fill at
+   * once, so — like InstUI's rest state — the centre stays transparent.
+   */
+  &.-color-ai-secondary {
+    position: relative;
+    border-color: transparent;
+    background: linear-gradient(
+      to bottom,
+      var(--instui-color-text-interactive-action-ai-secondary-top-gradient-base) 0%,
+      var(--instui-color-text-interactive-action-ai-secondary-bottom-gradient-base) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /*
+   * The ring spans the border-box (outermost) edge, so it isn't inset past the base button's
+   * transparent border. The negative inset reaches out over that border; the radius is inherited, so
+   * it stays concentric with the button's outer corners.
+   */
+  &.-color-ai-secondary::after {
+    content: "";
+    position: absolute;
+    inset: calc(-1 * var(--instui-border-width-md));
+    border-radius: inherit;
+    padding: var(--instui-border-width-sm);
+    background: linear-gradient(
+      to bottom,
+      var(--instui-color-stroke-interactive-action-ai-top-gradient-base) 0%,
+      var(--instui-color-stroke-interactive-action-ai-bottom-gradient-base) 100%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /*
+   * Hover/active trade the clipped gradient text for InstUI's subtle gradient fill plus solid text —
+   * one element can't paint clipped gradient text and a fill at once, so the interactive states fill.
+   */
+  &.-color-ai-secondary:hover,
+  &.-color-ai-secondary:active {
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: var(--instui-color-text-interactive-action-ai-secondary-top-gradient-base);
+    -webkit-text-fill-color: currentColor;
+  }
+
+  &.-color-ai-secondary:hover {
+    background: linear-gradient(
+      to bottom,
+      var(--instui-color-background-interactive-action-ai-secondary-hover-top-gradient) 0%,
+      var(--instui-color-background-interactive-action-ai-secondary-hover-bottom-gradient) 100%
+    );
+  }
+
+  &.-color-ai-secondary:active {
+    background: linear-gradient(
+      to bottom,
+      var(--instui-color-background-interactive-action-ai-secondary-active-top-gradient) 0%,
+      var(--instui-color-background-interactive-action-ai-secondary-active-bottom-gradient) 100%
+    );
+  }
+
+  &.-color-ai-secondary:disabled,
+  &.-color-ai-secondary[aria-disabled="true"] {
+    background: transparent;
+    border-color: var(--instui-component-base-button-ai-disabled-border-color);
+    color: var(--instui-component-base-button-ai-disabled-text-color);
+    -webkit-text-fill-color: currentColor;
+  }
+
+  /* The ai glyph's background; the mask itself is appended in index.ts (needs the shared AI_ICON_MASK). */
+  &.-color-ai::before {
+    background: var(--instui-color-text-interactive-action-ai-base);
+  }
+
+  &.-color-ai-secondary::before {
+    background: linear-gradient(
+      to bottom,
+      var(--instui-color-stroke-interactive-action-ai-top-gradient-base) 0%,
+      var(--instui-color-stroke-interactive-action-ai-bottom-gradient-base) 100%
+    );
+  }
+
+  &.-color-ai:disabled::before,
+  &.-color-ai[aria-disabled="true"]::before,
+  &.-color-ai-secondary:disabled::before,
+  &.-color-ai-secondary[aria-disabled="true"]::before {
+    background: var(--instui-component-icon-action-ai-disabled-color);
+  }
+
+  /*
+   * --without-background is InstUI's withBackground={false}: a transparent button in the
+   * primary ghost tokens. `-ghost` is a deprecated alias of `-color-tertiary` above.
+   */
+  &.-without-background {
+    background: var(--instui-component-base-button-primary-ghost-background);
+    color: var(--instui-component-base-button-primary-ghost-color);
+    border-color: var(--instui-component-base-button-primary-ghost-border-color);
+  }
+
+  /* --block is InstUI's display="block": a full-width button. */
+  &.-display-block {
+    display: flex;
+    width: 100%;
+  }
+
+  &.-size-sm {
+    font-size: var(--instui-component-base-button-small-font-size);
+    min-height: var(--instui-component-base-button-small-height);
+    padding-inline: var(--instui-component-base-button-small-padding-horizontal);
+  }
+
+  &.-size-md {
+    font-size: var(--instui-component-base-button-medium-font-size);
+    min-height: var(--instui-component-base-button-medium-height);
+    padding-inline: var(--instui-component-base-button-medium-padding-horizontal);
+  }
+
+  &.-size-lg {
+    font-size: var(--instui-component-base-button-large-font-size);
+    min-height: var(--instui-component-base-button-large-height);
+    padding-inline: var(--instui-component-base-button-large-padding-horizontal);
+  }
+
+  &.-shape-square {
+    padding: var(--instui-spacing-space-xs);
+    aspect-ratio: 1;
+  }
+
+  &.-shape-circle {
+    padding: var(--instui-spacing-space-xs);
+    aspect-ratio: 1;
+    border-radius: 50%;
+  }
+
+  /*
+   * A composed `-icon-<name>` rides the shared icon painter (utilities/icon), so a text button needs no
+   * button-specific glyph CSS — the ::before already inherits the label's colour and 1em size. Icon-only
+   * shape buttons carry no label, so grow the glyph to fill the square control rather than tracking a
+   * (missing) label's cap height.
+   */
+  &.-shape-square[class*="-icon-"]::before,
+  &.-shape-circle[class*="-icon-"]::before {
+    inline-size: 1.25em;
+    block-size: 1.25em;
+  }
+
+  &.-condensed {
+    background: transparent;
+    border-color: transparent;
+    min-height: 0;
+    color: var(--instui-color-text-interactive-action-secondary-base);
+    padding-inline: var(--instui-spacing-space-xs);
+  }
+
+  &.-condensed:hover {
+    background: var(--instui-color-background-muted);
+  }
+
+  &.-toggle[aria-pressed="true"] {
+    background: var(--instui-color-background-interactive-action-secondary-active);
+    border-color: var(--instui-color-stroke-interactive-action-secondary-active);
+    color: var(--instui-color-text-interactive-action-secondary-base);
+  }
+
+  /* InstUI's withBorder={false}: drop the border but keep the button's box (border-box sizing). */
+  &.-without-border {
+    border-style: none;
+  }
+}
+
+.pfx-button-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
+}

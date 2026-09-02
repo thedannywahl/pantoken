@@ -1,0 +1,37 @@
+[pantoken](../../../../index.md) / [renderers/mintlify/src](../index.md) / MintlifyColors
+
+# Giao diện: MintlifyColors
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Thử nghiệm</span>
+
+Mintlify `colors` (docs.json): `primary` is required; `light`/`dark` tune emphasis per mode.
+
+## Thuộc tính
+
+### primary
+
+> **primary**: `string`
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Thử nghiệm</span>
+
+Emphasis colour in light mode.
+
+***
+
+### light
+
+> **light**: `string`
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Thử nghiệm</span>
+
+Emphasis colour in dark mode.
+
+***
+
+### dark
+
+> **dark**: `string`
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Thử nghiệm</span>
+
+Buttons and hover states across both modes.

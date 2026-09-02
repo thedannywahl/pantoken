@@ -62,22 +62,30 @@ hr {
 /* ─── Close button ─── */
 
 ._pendo-close-guide {
-  padding-bottom: var(--instui-component-shared-tokens-spacing-general-space-xs);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   height: var(--instui-component-base-button-small-height);
   aspect-ratio: 1;
   border-radius: var(--instui-component-base-button-border-radius);
   background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
   border-width: var(--pendo-space-0);
-  background-size: var(--instui-component-icon-size-sm);
   position: absolute;
   inset-inline: auto var(--instui-component-shared-tokens-spacing-general-space-xs);
   inset-block-start: var(--instui-component-shared-tokens-spacing-general-space-xs);
-  font-size: var(--instui-font-size-text-lg);
-  font-family: var(--instui-component-base-button-font-family);
-  font-weight: var(--instui-primitive-font-weight-medium);
-  color: var(--instui-component-text-base-color);
+  font-size: 0;
+  color: var(--instui-component-icon-base-color);
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    inline-size: var(--instui-component-icon-size-sm);
+    block-size: var(--instui-component-icon-size-sm);
+    background: currentColor;
+    mask: var(--instui-icon-x) center / contain no-repeat;
+    transform: translateY(2px);
+  }
 
   &:hover {
     background-color: var(--instui-component-base-button-primary-ghost-hover-background);
@@ -86,9 +94,21 @@ hr {
   &:active {
     background-color: var(--instui-component-base-button-primary-ghost-active-background);
   }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    color: var(--instui-component-icon-disabled-base-color);
+    cursor: not-allowed;
+  }
 }
 
 [data-layout="lightboxBlank"] ._pendo-close-guide {
   inset-block-start: var(--instui-component-alert-close-button-margin-top);
   inset-inline-end: var(--instui-component-alert-close-button-margin-right);
+}
+
+:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"])
+  ._pendo-close-guide {
+  inset-block-start: var(--instui-component-banner-close-button-margin-top);
+  inset-inline-end: var(--instui-component-banner-close-button-margin-right);
 }

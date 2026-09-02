@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ เขียนไฟล์ {{path}}",
+  "helpInitDescription": "เขียนแอสเซ็ตของเอเจนต์ pantoken ลงในรีโพ",
+  "helpInitToolDescription": "เครื่องมือเอเจนต์ (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "ไดเรกทอรีเป้าหมาย",
+  "helpScaffoldDescription": "สร้างโครงงานเริ่มต้น (ผ่าน @pantoken/scaffold) และติดตั้งแอสเซ็ตเอเจนต์ลงในนั้น",
+  "helpScaffoldToolDescription": "เครื่องมือเอเจนต์ (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "แทนที่ภาษาที่ตรวจจับอัตโนมัติสำหรับการแสดงผล (เช่น \"hu\")"
+}

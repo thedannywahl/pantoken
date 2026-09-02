@@ -2,7 +2,7 @@
   "name": "@pantoken/scaffold",
   "version": "0.4.1",
   "description": "npx @pantoken/scaffold <platform> — scaffold a starter project (html, react, next, angular, web-components, ...) with pantoken already installed and wired in.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
@@ -31,22 +31,34 @@
   "scripts": {
     "scan": "node scripts/scan-presets.ts",
     "generate": "node scripts/generate.ts",
+    "translate": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" node scripts/translate.ts",
+    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" node scripts/translate.ts",
+    "translate:copilot": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" node scripts/translate.ts",
+    "translate:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" node scripts/translate.ts",
+    "translate:agy:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" node scripts/translate.ts",
+    "translate:copilot:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" node scripts/translate.ts",
+    "check:drift": "node scripts/check-drift.ts",
     "dev": "vp pack --watch",
     "test": "vp run scan && vp run generate && vp test",
-    "check": "vp run scan && vp check"
+    "check": "vp run scan && vp check && node scripts/check-drift.ts"
   },
   "dependencies": {
+    "@bomb.sh/tab": "catalog:",
+    "@clack/prompts": "catalog:",
     "@pantoken/angular": "workspace:*",
+    "@pantoken/canvas-theme-editor": "workspace:*",
     "@pantoken/components": "workspace:*",
     "@pantoken/react": "workspace:*",
     "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/svelte": "workspace:*",
     "@pantoken/vue": "workspace:*",
     "@pantoken/web-components": "workspace:*",
-    "bingo-stratum": "catalog:"
+    "bingo-stratum": "catalog:",
+    "commander": "catalog:"
   },
   "devDependencies": {
     "@pantoken/plugin-layouts": "workspace:*",
+    "@pantoken/translation-adapters": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

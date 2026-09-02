@@ -1,0 +1,85 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 16px">
+    <!-- Meter colour lives on the bar root (our normalized -color-* scheme); .value nests beside .bar -->
+    <div style="display: flex; align-items: center; gap: 8px">
+      <progress
+        class="instui-progress -color-brand"
+        style="--value: 40; flex: 1"
+        value="40"
+        max="100"
+        aria-label="40 percent"
+      >
+        <span class="value">40%</span>
+      </progress>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <progress
+        class="instui-progress -color-success -size-sm"
+        style="--value: 70; flex: 1"
+        value="70"
+        max="100"
+        aria-label="70 percent"
+      >
+        <span class="value">70%</span>
+      </progress>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <progress
+        class="instui-progress -color-warning"
+        style="--value: 55; flex: 1"
+        value="55"
+        max="100"
+        aria-label="55 percent"
+      >
+        <span class="value">55%</span>
+      </progress>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <progress
+        class="instui-progress -color-danger -size-lg"
+        style="--value: 25; flex: 1"
+        value="25"
+        max="100"
+        aria-label="25 percent"
+      >
+        <span class="value">25%</span>
+      </progress>
+    </div>
+  </div>
+
+  <!-- color="primary-inverse": the on-dark scheme; it overrides any meter colour, so pair it with a
+       dark surface. -->
+  <div
+    style="
+      margin-block-start: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--instui-color-background-inverse);
+    "
+  >
+    <progress
+      class="instui-progress -color-primary-inverse"
+      style="--value: 60"
+      value="60"
+      max="100"
+      aria-label="60 percent"
+    >
+      <span class="value">60%</span>
+    </progress>
+  </div>
+
+  <!-- -render-value-inside aligns .value to the track's start (matching InstUI); style it for contrast. -->
+  <div style="margin-block-start: 16px">
+    <progress
+      class="instui-progress -color-brand -size-lg -render-value-inside"
+      style="--value: 65"
+      value="65"
+      max="100"
+      aria-label="65 percent"
+    >
+      <span class="value" style="color: var(--instui-component-progress-bar-text-color-inverse)"
+        >65%</span
+      >
+    </progress>
+  </div>
+</div>

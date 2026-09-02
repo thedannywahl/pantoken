@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "리포지토리에 pantoken의 에이전트 자산을 작성합니다",
+  "helpInitToolDescription": "에이전트 도구 (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "대상 디렉터리",
+  "helpScaffoldDescription": "초기 프로젝트를 생성(@pantoken/scaffold 사용)하고 에이전트 자산을 설치합니다",
+  "helpScaffoldToolDescription": "에이전트 도구 (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "자동으로 감지된 표시 언어를 재정의합니다(예: \"hu\")"
+}

@@ -11,7 +11,7 @@ export const is: LocaleBundle = defineBundle({
     prevMonth: "Fyrri mánuður",
     nextMonth: "Næsti mánuður",
     dateLabel: "Dagsetning",
-    openCalendar: "Opna dagatal",
+    openCalendar: "Opna dagatalið",
     timeLabel: "Tími",
     back: "Til baka",
   }),

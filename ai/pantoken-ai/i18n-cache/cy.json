@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ Wedi ysgrifennu {{path}}",
+  "helpInitDescription": "Ysgrifennu asedau asiant pantoken i mewn i'r repo",
+  "helpInitToolDescription": "Offer asiant (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Cyfeiriadur targed",
+  "helpScaffoldDescription": "Creu prosiect cychwynnol (drwy @pantoken/scaffold) a gosod asedau asiant ynddo",
+  "helpScaffoldToolDescription": "Offer asiant (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Gorchymyn yr iaith arddangos a ganfuwyd yn awtomatig (e.e. \"hu\")"
+}

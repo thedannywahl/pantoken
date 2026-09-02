@@ -3,7 +3,7 @@
  *
  * - the built `@pantoken/demo` runner app → `public/play/`
  * - the token + component stylesheets the runner injects → `public/demos-assets/`
- * - the committed demo snippets in `docs/demos/*.html` → `public/demos/`
+ * - the committed demo templates in `docs/demos/<component>/index.html` → `public/demos/`
  *
  * `public/` is a build artifact (gitignored), so this runs before `vitepress dev`/`build`.
  */
@@ -14,6 +14,7 @@ import { writeComponentsSheet } from "./components-sheet.ts";
 import { stageComponentAssets } from "./stage-component-assets.ts";
 import { stagePluginAssets } from "./stage-plugin-assets.ts";
 import { stageDemoSnippets } from "./stage-demo-snippets.ts";
+import { stagePendoAsset } from "./stage-pendo-asset.ts";
 
 const require = createRequire(import.meta.url);
 const docsRoot = join(import.meta.dirname, "..");
@@ -67,13 +68,15 @@ copyFileSync(
 // (tools/demo/assets/card.css); the host page imports it directly, and the runner loads the same file.
 copyFileSync(require.resolve("@pantoken/demo/card.css"), join(assets, "card.css"));
 
+stagePendoAsset();
+
 // The transition/stacking/visual-debug decoration sheets, copied from each plugin's SOURCE-derived
 // `generated/<name>.css` (NOT the plugin `dist` function) so they stay live during docs:dev — the
 // orchestrator re-runs this on a plugin edit. Both the runner (via ?css=) and the main site (via <head>
 // links) load them. focus-outline is staged with the component sheets above. See stage-plugin-assets.ts.
 stagePluginAssets();
 
-// The committed demo snippets (docs/demos/*.html) → public/demos/. See stage-demo-snippets.ts.
+// The committed demo templates (docs/demos/<component>/index.html) → public/demos/. See stage-demo-snippets.ts.
 const count = stageDemoSnippets();
 
 console.log(

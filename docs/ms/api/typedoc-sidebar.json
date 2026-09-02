@@ -1,0 +1,4897 @@
+[
+  {
+    "text": "tools",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "aggregate",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Target",
+                "link": "/ms/api/tools/aggregate/src/interfaces/Target.md"
+              },
+              {
+                "text": "AggregateOptions",
+                "link": "/ms/api/tools/aggregate/src/interfaces/AggregateOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "discoverTargets",
+                "link": "/ms/api/tools/aggregate/src/functions/discoverTargets.md"
+              },
+              {
+                "text": "aggregate",
+                "link": "/ms/api/tools/aggregate/src/functions/aggregate.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/tools/aggregate/src/"
+      },
+      {
+        "text": "demo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ms/api/tools/demo/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "ResolvedDemo",
+                "link": "/ms/api/tools/demo/src/interfaces/ResolvedDemo.md"
+              },
+              {
+                "text": "LiveExampleOptions",
+                "link": "/ms/api/tools/demo/src/interfaces/LiveExampleOptions.md"
+              },
+              {
+                "text": "DemoMarkdownItOptions",
+                "link": "/ms/api/tools/demo/src/interfaces/DemoMarkdownItOptions.md"
+              },
+              {
+                "text": "ExampleSrcdocOptions",
+                "link": "/ms/api/tools/demo/src/interfaces/ExampleSrcdocOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FULLSCREEN_BUTTON_HTML",
+                "link": "/ms/api/tools/demo/src/variables/FULLSCREEN_BUTTON_HTML.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "resolveDemo",
+                "link": "/ms/api/tools/demo/src/functions/resolveDemo.md"
+              },
+              {
+                "text": "renderDemoFigure",
+                "link": "/ms/api/tools/demo/src/functions/renderDemoFigure.md"
+              },
+              {
+                "text": "demoMarkdownIt",
+                "link": "/ms/api/tools/demo/src/functions/demoMarkdownIt.md"
+              },
+              {
+                "text": "escapeSrcdoc",
+                "link": "/ms/api/tools/demo/src/functions/escapeSrcdoc.md"
+              },
+              {
+                "text": "buildExampleSrcdoc",
+                "link": "/ms/api/tools/demo/src/functions/buildExampleSrcdoc.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/tools/demo/src/"
+      }
+    ]
+  },
+  {
+    "text": "ai",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken-ai",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AgentTool",
+                "link": "/ms/api/ai/pantoken-ai/src/type-aliases/AgentTool.md"
+              },
+              {
+                "text": "ScaffoldPlatform",
+                "link": "/ms/api/ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ASSETS",
+                "link": "/ms/api/ai/pantoken-ai/src/variables/ASSETS.md"
+              },
+              {
+                "text": "AGENTS_MD",
+                "link": "/ms/api/ai/pantoken-ai/src/variables/AGENTS_MD.md"
+              },
+              {
+                "text": "LLMS_TXT",
+                "link": "/ms/api/ai/pantoken-ai/src/variables/LLMS_TXT.md"
+              },
+              {
+                "text": "AGENT_TOOLS",
+                "link": "/ms/api/ai/pantoken-ai/src/variables/AGENT_TOOLS.md"
+              },
+              {
+                "text": "SCAFFOLD_PLATFORMS",
+                "link": "/ms/api/ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "installAgentAssets",
+                "link": "/ms/api/ai/pantoken-ai/src/functions/installAgentAssets.md"
+              },
+              {
+                "text": "scaffoldAndInit",
+                "link": "/ms/api/ai/pantoken-ai/src/functions/scaffoldAndInit.md"
+              },
+              {
+                "text": "isScaffoldPlatform",
+                "link": "/ms/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md"
+              },
+              {
+                "text": "scaffoldProject",
+                "link": "/ms/api/ai/pantoken-ai/src/functions/scaffoldProject.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/ai/pantoken-ai/src/"
+      }
+    ]
+  },
+  {
+    "text": "platforms",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "android",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateAndroidOptions",
+                "link": "/ms/api/platforms/android/src/interfaces/GenerateAndroidOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAndroid",
+                "link": "/ms/api/platforms/android/src/functions/toAndroid.md"
+              },
+              {
+                "text": "generateAndroid",
+                "link": "/ms/api/platforms/android/src/functions/generateAndroid.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/android/src/"
+      },
+      {
+        "text": "canvas-theme-editor",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeStrings",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md"
+              },
+              {
+                "text": "BuildThemeOptions",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md"
+              },
+              {
+                "text": "CdnFile",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/interfaces/CdnFile.md"
+              },
+              {
+                "text": "CdnProvider",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/interfaces/CdnProvider.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeVariant",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/type-aliases/ThemeVariant.md"
+              },
+              {
+                "text": "ThemeMode",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/type-aliases/ThemeMode.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "THEME_CSS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/THEME_CSS.md"
+              },
+              {
+                "text": "THEME_JS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/THEME_JS.md"
+              },
+              {
+                "text": "ENGLISH_THEME_STRINGS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/ENGLISH_THEME_STRINGS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_CSS_ASSETS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_CSS_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_FONT_ASSETS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_FONT_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_JS_ASSETS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_JS_ASSETS.md"
+              },
+              {
+                "text": "CDN_PROVIDERS",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/CDN_PROVIDERS.md"
+              },
+              {
+                "text": "DEFAULT_CDN_PROVIDER_ID",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/variables/DEFAULT_CDN_PROVIDER_ID.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defaultThemeCssAssets",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/functions/defaultThemeCssAssets.md"
+              },
+              {
+                "text": "buildThemeCss",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/functions/buildThemeCss.md"
+              },
+              {
+                "text": "buildThemeJs",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/functions/buildThemeJs.md"
+              },
+              {
+                "text": "buildTheme",
+                "link": "/ms/api/platforms/canvas-theme-editor/src/functions/buildTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/canvas-theme-editor/src/"
+      },
+      {
+        "text": "compose",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateComposeOptions",
+                "link": "/ms/api/platforms/compose/src/interfaces/GenerateComposeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toCompose",
+                "link": "/ms/api/platforms/compose/src/functions/toCompose.md"
+              },
+              {
+                "text": "generateCompose",
+                "link": "/ms/api/platforms/compose/src/functions/generateCompose.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/compose/src/"
+      },
+      {
+        "text": "drupal",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "DrupalFile",
+                "link": "/ms/api/platforms/drupal/src/interfaces/DrupalFile.md"
+              },
+              {
+                "text": "ToDrupalThemeOptions",
+                "link": "/ms/api/platforms/drupal/src/interfaces/ToDrupalThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "machineName",
+                "link": "/ms/api/platforms/drupal/src/functions/machineName.md"
+              },
+              {
+                "text": "toDrupalTheme",
+                "link": "/ms/api/platforms/drupal/src/functions/toDrupalTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/drupal/src/"
+      },
+      {
+        "text": "email",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ms/api/platforms/email/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ms/api/platforms/email/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "emailTokens",
+                "link": "/ms/api/platforms/email/src/functions/emailTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/email/src/"
+      },
+      {
+        "text": "flutter",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateFlutterOptions",
+                "link": "/ms/api/platforms/flutter/src/interfaces/GenerateFlutterOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFlutter",
+                "link": "/ms/api/platforms/flutter/src/functions/toFlutter.md"
+              },
+              {
+                "text": "generateFlutter",
+                "link": "/ms/api/platforms/flutter/src/functions/generateFlutter.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/flutter/src/"
+      },
+      {
+        "text": "hugo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HugoFile",
+                "link": "/ms/api/platforms/hugo/src/interfaces/HugoFile.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toHugoAssets",
+                "link": "/ms/api/platforms/hugo/src/functions/toHugoAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/hugo/src/"
+      },
+      {
+        "text": "jekyll",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "JekyllFile",
+                "link": "/ms/api/platforms/jekyll/src/interfaces/JekyllFile.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toJekyllAssets",
+                "link": "/ms/api/platforms/jekyll/src/functions/toJekyllAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/jekyll/src/"
+      },
+      {
+        "text": "rust",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustOptions",
+                "link": "/ms/api/platforms/rust/src/interfaces/RustOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustFormat",
+                "link": "/ms/api/platforms/rust/src/type-aliases/RustFormat.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toRust",
+                "link": "/ms/api/platforms/rust/src/functions/toRust.md"
+              },
+              {
+                "text": "generateRust",
+                "link": "/ms/api/platforms/rust/src/functions/generateRust.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/rust/src/"
+      },
+      {
+        "text": "swift",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateSwiftOptions",
+                "link": "/ms/api/platforms/swift/src/interfaces/GenerateSwiftOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toSwift",
+                "link": "/ms/api/platforms/swift/src/functions/toSwift.md"
+              },
+              {
+                "text": "generateSwift",
+                "link": "/ms/api/platforms/swift/src/functions/generateSwift.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/swift/src/"
+      },
+      {
+        "text": "vanilla",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVanillaOptions",
+                "link": "/ms/api/platforms/vanilla/src/interfaces/ToVanillaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ms/api/platforms/vanilla/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "variables",
+                "link": "/ms/api/platforms/vanilla/src/variables/variables.md"
+              },
+              {
+                "text": "VANILLA_TO_INSTUI",
+                "link": "/ms/api/platforms/vanilla/src/variables/VANILLA_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toVanillaVariables",
+                "link": "/ms/api/platforms/vanilla/src/functions/toVanillaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/vanilla/src/"
+      },
+      {
+        "text": "wordpress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeJson",
+                "link": "/ms/api/platforms/wordpress/src/interfaces/ThemeJson.md"
+              },
+              {
+                "text": "ToThemeJsonOptions",
+                "link": "/ms/api/platforms/wordpress/src/interfaces/ToThemeJsonOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ms/api/platforms/wordpress/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "themeJson",
+                "link": "/ms/api/platforms/wordpress/src/variables/themeJson.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeJson",
+                "link": "/ms/api/platforms/wordpress/src/functions/toThemeJson.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/platforms/wordpress/src/"
+      }
+    ]
+  },
+  {
+    "text": "renderers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "angular",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerPantokenElements",
+                "link": "/ms/api/renderers/angular/src/functions/registerPantokenElements.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ms/api/renderers/angular/src/functions/readToken.md"
+              },
+              {
+                "text": "register",
+                "link": "/ms/api/renderers/angular/src/functions/register.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/angular/src/"
+      },
+      {
+        "text": "astro",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HeadEntry",
+                "link": "/ms/api/renderers/astro/src/interfaces/HeadEntry.md"
+              },
+              {
+                "text": "StarlightPluginLike",
+                "link": "/ms/api/renderers/astro/src/interfaces/StarlightPluginLike.md"
+              },
+              {
+                "text": "InstUIOptions",
+                "link": "/ms/api/renderers/astro/src/interfaces/InstUIOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenCss",
+                "link": "/ms/api/renderers/astro/src/functions/pantokenCss.md"
+              },
+              {
+                "text": "InstUI",
+                "link": "/ms/api/renderers/astro/src/functions/InstUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/astro/src/"
+      },
+      {
+        "text": "bootstrap",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToBootstrapCssOptions",
+                "link": "/ms/api/renderers/bootstrap/src/interfaces/ToBootstrapCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BOOTSTRAP_TO_INSTUI",
+                "link": "/ms/api/renderers/bootstrap/src/variables/BOOTSTRAP_TO_INSTUI.md"
+              },
+              {
+                "text": "bootstrapCss",
+                "link": "/ms/api/renderers/bootstrap/src/variables/bootstrapCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toBootstrapCss",
+                "link": "/ms/api/renderers/bootstrap/src/functions/toBootstrapCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/bootstrap/src/"
+      },
+      {
+        "text": "css-in-js",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStyledThemeOptions",
+                "link": "/ms/api/renderers/css-in-js/src/interfaces/ToStyledThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StyledTheme",
+                "link": "/ms/api/renderers/css-in-js/src/type-aliases/StyledTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenTheme",
+                "link": "/ms/api/renderers/css-in-js/src/variables/pantokenTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeKey",
+                "link": "/ms/api/renderers/css-in-js/src/functions/toThemeKey.md"
+              },
+              {
+                "text": "toStyledTheme",
+                "link": "/ms/api/renderers/css-in-js/src/functions/toStyledTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/css-in-js/src/"
+      },
+      {
+        "text": "docusaurus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToDocusaurusCssOptions",
+                "link": "/ms/api/renderers/docusaurus/src/interfaces/ToDocusaurusCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INFIMA_TO_INSTUI",
+                "link": "/ms/api/renderers/docusaurus/src/variables/INFIMA_TO_INSTUI.md"
+              },
+              {
+                "text": "docusaurusCss",
+                "link": "/ms/api/renderers/docusaurus/src/variables/docusaurusCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toDocusaurusCss",
+                "link": "/ms/api/renderers/docusaurus/src/functions/toDocusaurusCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/docusaurus/src/"
+      },
+      {
+        "text": "foundation",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToFoundationSettingsOptions",
+                "link": "/ms/api/renderers/foundation/src/interfaces/ToFoundationSettingsOptions.md"
+              },
+              {
+                "text": "ToFoundationCssOptions",
+                "link": "/ms/api/renderers/foundation/src/interfaces/ToFoundationCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FOUNDATION_TO_INSTUI",
+                "link": "/ms/api/renderers/foundation/src/variables/FOUNDATION_TO_INSTUI.md"
+              },
+              {
+                "text": "foundationSettings",
+                "link": "/ms/api/renderers/foundation/src/variables/foundationSettings.md"
+              },
+              {
+                "text": "foundationCss",
+                "link": "/ms/api/renderers/foundation/src/variables/foundationCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFoundationSettings",
+                "link": "/ms/api/renderers/foundation/src/functions/toFoundationSettings.md"
+              },
+              {
+                "text": "toFoundationCss",
+                "link": "/ms/api/renderers/foundation/src/functions/toFoundationCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/foundation/src/"
+      },
+      {
+        "text": "markdown-it",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MarkdownItOptions",
+                "link": "/ms/api/renderers/markdown-it/src/interfaces/MarkdownItOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PROSE_CLASS",
+                "link": "/ms/api/renderers/markdown-it/src/variables/PROSE_CLASS.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenMarkdownIt",
+                "link": "/ms/api/renderers/markdown-it/src/functions/pantokenMarkdownIt.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/markdown-it/src/"
+      },
+      {
+        "text": "mintlify",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MintlifyColors",
+                "link": "/ms/api/renderers/mintlify/src/interfaces/MintlifyColors.md"
+              },
+              {
+                "text": "MintlifyBackground",
+                "link": "/ms/api/renderers/mintlify/src/interfaces/MintlifyBackground.md"
+              },
+              {
+                "text": "MintlifyTheme",
+                "link": "/ms/api/renderers/mintlify/src/interfaces/MintlifyTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "docsJson",
+                "link": "/ms/api/renderers/mintlify/src/variables/docsJson.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMintlifyConfig",
+                "link": "/ms/api/renderers/mintlify/src/functions/toMintlifyConfig.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/mintlify/src/"
+      },
+      {
+        "text": "mui",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MuiPaletteColor",
+                "link": "/ms/api/renderers/mui/src/interfaces/MuiPaletteColor.md"
+              },
+              {
+                "text": "PantokenThemeOptions",
+                "link": "/ms/api/renderers/mui/src/interfaces/PantokenThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "lightTheme",
+                "link": "/ms/api/renderers/mui/src/variables/lightTheme.md"
+              },
+              {
+                "text": "darkTheme",
+                "link": "/ms/api/renderers/mui/src/variables/darkTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMuiTheme",
+                "link": "/ms/api/renderers/mui/src/functions/toMuiTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/mui/src/"
+      },
+      {
+        "text": "pendo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildPendoCssOptions",
+                "link": "/ms/api/renderers/pendo/src/interfaces/BuildPendoCssOptions.md"
+              },
+              {
+                "text": "AddScopeOptions",
+                "link": "/ms/api/renderers/pendo/src/interfaces/AddScopeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pendoCss",
+                "link": "/ms/api/renderers/pendo/src/variables/pendoCss.md"
+              },
+              {
+                "text": "LAYER_ORDER",
+                "link": "/ms/api/renderers/pendo/src/variables/LAYER_ORDER.md"
+              },
+              {
+                "text": "COMPONENTS",
+                "link": "/ms/api/renderers/pendo/src/variables/COMPONENTS.md"
+              },
+              {
+                "text": "addImportant",
+                "link": "/ms/api/renderers/pendo/src/variables/addImportant.md"
+              },
+              {
+                "text": "addScope",
+                "link": "/ms/api/renderers/pendo/src/variables/addScope.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildPendoCss",
+                "link": "/ms/api/renderers/pendo/src/functions/buildPendoCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/pendo/src/"
+      },
+      {
+        "text": "react",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconProps",
+                "link": "/ms/api/renderers/react/src/interfaces/IconProps.md"
+              },
+              {
+                "text": "TokenProviderProps",
+                "link": "/ms/api/renderers/react/src/interfaces/TokenProviderProps.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ms/api/renderers/react/src/functions/readToken.md"
+              },
+              {
+                "text": "useToken",
+                "link": "/ms/api/renderers/react/src/functions/useToken.md"
+              },
+              {
+                "text": "Icon",
+                "link": "/ms/api/renderers/react/src/functions/Icon.md"
+              },
+              {
+                "text": "TokenProvider",
+                "link": "/ms/api/renderers/react/src/functions/TokenProvider.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/react/src/"
+      },
+      {
+        "text": "react-markdown",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "InstuiMarkdownRenderOptions",
+                "link": "/ms/api/renderers/react-markdown/src/interfaces/InstuiMarkdownRenderOptions.md"
+              },
+              {
+                "text": "InstuiMarkdownProps",
+                "link": "/ms/api/renderers/react-markdown/src/interfaces/InstuiMarkdownProps.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AlertMarker",
+                "link": "/ms/api/renderers/react-markdown/src/type-aliases/AlertMarker.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "instuiMarkdownComponents",
+                "link": "/ms/api/renderers/react-markdown/src/variables/instuiMarkdownComponents.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "createInstuiMarkdownComponents",
+                "link": "/ms/api/renderers/react-markdown/src/functions/createInstuiMarkdownComponents.md"
+              },
+              {
+                "text": "buildIconResolver",
+                "link": "/ms/api/renderers/react-markdown/src/functions/buildIconResolver.md"
+              },
+              {
+                "text": "parseAlertMarker",
+                "link": "/ms/api/renderers/react-markdown/src/functions/parseAlertMarker.md"
+              },
+              {
+                "text": "isColorValue",
+                "link": "/ms/api/renderers/react-markdown/src/functions/isColorValue.md"
+              },
+              {
+                "text": "rehypeColorCodes",
+                "link": "/ms/api/renderers/react-markdown/src/functions/rehypeColorCodes.md"
+              },
+              {
+                "text": "rehypeGithubAlerts",
+                "link": "/ms/api/renderers/react-markdown/src/functions/rehypeGithubAlerts.md"
+              },
+              {
+                "text": "InstuiMarkdown",
+                "link": "/ms/api/renderers/react-markdown/src/functions/InstuiMarkdown.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/react-markdown/src/"
+      },
+      {
+        "text": "react-native",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RNTokenValue",
+                "link": "/ms/api/renderers/react-native/src/type-aliases/RNTokenValue.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ms/api/renderers/react-native/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ms/api/renderers/react-native/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokensForScheme",
+                "link": "/ms/api/renderers/react-native/src/functions/tokensForScheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/react-native/src/"
+      },
+      {
+        "text": "rehype",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RehypeOptions",
+                "link": "/ms/api/renderers/rehype/src/interfaces/RehypeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "rehypePantokenIcons",
+                "link": "/ms/api/renderers/rehype/src/functions/rehypePantokenIcons.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/rehype/src/"
+      },
+      {
+        "text": "shadcn",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToShadcnCssOptions",
+                "link": "/ms/api/renderers/shadcn/src/interfaces/ToShadcnCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "shadcnCss",
+                "link": "/ms/api/renderers/shadcn/src/variables/shadcnCss.md"
+              },
+              {
+                "text": "SHADCN_TO_INSTUI",
+                "link": "/ms/api/renderers/shadcn/src/variables/SHADCN_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toShadcnCss",
+                "link": "/ms/api/renderers/shadcn/src/functions/toShadcnCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/shadcn/src/"
+      },
+      {
+        "text": "storybook",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StorybookTheme",
+                "link": "/ms/api/renderers/storybook/src/type-aliases/StorybookTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenStorybookTheme",
+                "link": "/ms/api/renderers/storybook/src/functions/pantokenStorybookTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/storybook/src/"
+      },
+      {
+        "text": "svelte",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ActionResult",
+                "link": "/ms/api/renderers/svelte/src/interfaces/ActionResult.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerLocalized",
+                "link": "/ms/api/renderers/svelte/src/functions/registerLocalized.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ms/api/renderers/svelte/src/functions/readToken.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ms/api/renderers/svelte/src/functions/icon.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/svelte/src/"
+      },
+      {
+        "text": "tinymce",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssDocEntry",
+                "link": "/ms/api/renderers/tinymce/src/interfaces/CssDocEntry.md"
+              },
+              {
+                "text": "PageLayout",
+                "link": "/ms/api/renderers/tinymce/src/interfaces/PageLayout.md"
+              },
+              {
+                "text": "LogoMeta",
+                "link": "/ms/api/renderers/tinymce/src/interfaces/LogoMeta.md"
+              },
+              {
+                "text": "TaggedIcon",
+                "link": "/ms/api/renderers/tinymce/src/interfaces/TaggedIcon.md"
+              },
+              {
+                "text": "LayoutsPluginOptions",
+                "link": "/ms/api/renderers/tinymce/src/interfaces/LayoutsPluginOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Product",
+                "link": "/ms/api/renderers/tinymce/src/type-aliases/Product.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pageLayouts",
+                "link": "/ms/api/renderers/tinymce/src/variables/pageLayouts.md"
+              },
+              {
+                "text": "logos",
+                "link": "/ms/api/renderers/tinymce/src/variables/logos.md"
+              },
+              {
+                "text": "products",
+                "link": "/ms/api/renderers/tinymce/src/variables/products.md"
+              },
+              {
+                "text": "LAYOUTS_PLUGIN_NAME",
+                "link": "/ms/api/renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md"
+              },
+              {
+                "text": "LAYOUTS_TOOLBAR_NAME",
+                "link": "/ms/api/renderers/tinymce/src/variables/LAYOUTS_TOOLBAR_NAME.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenHtmlCompletion",
+                "link": "/ms/api/renderers/tinymce/src/functions/pantokenHtmlCompletion.md"
+              },
+              {
+                "text": "pantokenHtmlLinter",
+                "link": "/ms/api/renderers/tinymce/src/functions/pantokenHtmlLinter.md"
+              },
+              {
+                "text": "pantokenContentCssUrls",
+                "link": "/ms/api/renderers/tinymce/src/functions/pantokenContentCssUrls.md"
+              },
+              {
+                "text": "injectContentStylesheet",
+                "link": "/ms/api/renderers/tinymce/src/functions/injectContentStylesheet.md"
+              },
+              {
+                "text": "findEntry",
+                "link": "/ms/api/renderers/tinymce/src/functions/findEntry.md"
+              },
+              {
+                "text": "listComponents",
+                "link": "/ms/api/renderers/tinymce/src/functions/listComponents.md"
+              },
+              {
+                "text": "listUtilities",
+                "link": "/ms/api/renderers/tinymce/src/functions/listUtilities.md"
+              },
+              {
+                "text": "getModifierSuggestions",
+                "link": "/ms/api/renderers/tinymce/src/functions/getModifierSuggestions.md"
+              },
+              {
+                "text": "validateClassToken",
+                "link": "/ms/api/renderers/tinymce/src/functions/validateClassToken.md"
+              },
+              {
+                "text": "loadAllIcons",
+                "link": "/ms/api/renderers/tinymce/src/functions/loadAllIcons.md"
+              },
+              {
+                "text": "getIconCdnFile",
+                "link": "/ms/api/renderers/tinymce/src/functions/getIconCdnFile.md"
+              },
+              {
+                "text": "createComponentsPlugin",
+                "link": "/ms/api/renderers/tinymce/src/functions/createComponentsPlugin.md"
+              },
+              {
+                "text": "createIconsPlugin",
+                "link": "/ms/api/renderers/tinymce/src/functions/createIconsPlugin.md"
+              },
+              {
+                "text": "createLayoutsPlugin",
+                "link": "/ms/api/renderers/tinymce/src/functions/createLayoutsPlugin.md"
+              },
+              {
+                "text": "createLogosPlugin",
+                "link": "/ms/api/renderers/tinymce/src/functions/createLogosPlugin.md"
+              },
+              {
+                "text": "createTemplatesPlugin",
+                "link": "/ms/api/renderers/tinymce/src/functions/createTemplatesPlugin.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/tinymce/src/"
+      },
+      {
+        "text": "vitepress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVitePressCssOptions",
+                "link": "/ms/api/renderers/vitepress/src/interfaces/ToVitePressCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "VITEPRESS_TO_INSTUI",
+                "link": "/ms/api/renderers/vitepress/src/variables/VITEPRESS_TO_INSTUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/vitepress/src/"
+      },
+      {
+        "text": "vue",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenVue",
+                "link": "/ms/api/renderers/vue/src/variables/PantokenVue.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ms/api/renderers/vue/src/functions/readToken.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ms/api/renderers/vue/src/functions/iconSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/vue/src/"
+      },
+      {
+        "text": "web-components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandEventish",
+                "link": "/ms/api/renderers/web-components/src/interfaces/CommandEventish.md"
+              },
+              {
+                "text": "ElementRegistry",
+                "link": "/ms/api/renderers/web-components/src/interfaces/ElementRegistry.md"
+              },
+              {
+                "text": "RegisterContext",
+                "link": "/ms/api/renderers/web-components/src/interfaces/RegisterContext.md"
+              },
+              {
+                "text": "ElementDefinition",
+                "link": "/ms/api/renderers/web-components/src/interfaces/ElementDefinition.md"
+              },
+              {
+                "text": "RegisterContextOptions",
+                "link": "/ms/api/renderers/web-components/src/interfaces/RegisterContextOptions.md"
+              },
+              {
+                "text": "WebComponentStrings",
+                "link": "/ms/api/renderers/web-components/src/interfaces/WebComponentStrings.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alert",
+                "link": "/ms/api/renderers/web-components/src/variables/alert.md"
+              },
+              {
+                "text": "avatar",
+                "link": "/ms/api/renderers/web-components/src/variables/avatar.md"
+              },
+              {
+                "text": "badge",
+                "link": "/ms/api/renderers/web-components/src/variables/badge.md"
+              },
+              {
+                "text": "button",
+                "link": "/ms/api/renderers/web-components/src/variables/button.md"
+              },
+              {
+                "text": "calendar",
+                "link": "/ms/api/renderers/web-components/src/variables/calendar.md"
+              },
+              {
+                "text": "contextView",
+                "link": "/ms/api/renderers/web-components/src/variables/contextView.md"
+              },
+              {
+                "text": "dateInput",
+                "link": "/ms/api/renderers/web-components/src/variables/dateInput.md"
+              },
+              {
+                "text": "dateTimeInput",
+                "link": "/ms/api/renderers/web-components/src/variables/dateTimeInput.md"
+              },
+              {
+                "text": "drawerLayout",
+                "link": "/ms/api/renderers/web-components/src/variables/drawerLayout.md"
+              },
+              {
+                "text": "drilldown",
+                "link": "/ms/api/renderers/web-components/src/variables/drilldown.md"
+              },
+              {
+                "text": "iconButton",
+                "link": "/ms/api/renderers/web-components/src/variables/iconButton.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ms/api/renderers/web-components/src/variables/icon.md"
+              },
+              {
+                "text": "img",
+                "link": "/ms/api/renderers/web-components/src/variables/img.md"
+              },
+              {
+                "text": "inPlaceEdit",
+                "link": "/ms/api/renderers/web-components/src/variables/inPlaceEdit.md"
+              },
+              {
+                "text": "DEFINITIONS",
+                "link": "/ms/api/renderers/web-components/src/variables/DEFINITIONS.md"
+              },
+              {
+                "text": "metric",
+                "link": "/ms/api/renderers/web-components/src/variables/metric.md"
+              },
+              {
+                "text": "modal",
+                "link": "/ms/api/renderers/web-components/src/variables/modal.md"
+              },
+              {
+                "text": "pages",
+                "link": "/ms/api/renderers/web-components/src/variables/pages.md"
+              },
+              {
+                "text": "pill",
+                "link": "/ms/api/renderers/web-components/src/variables/pill.md"
+              },
+              {
+                "text": "popover",
+                "link": "/ms/api/renderers/web-components/src/variables/popover.md"
+              },
+              {
+                "text": "progressCircle",
+                "link": "/ms/api/renderers/web-components/src/variables/progressCircle.md"
+              },
+              {
+                "text": "progress",
+                "link": "/ms/api/renderers/web-components/src/variables/progress.md"
+              },
+              {
+                "text": "rating",
+                "link": "/ms/api/renderers/web-components/src/variables/rating.md"
+              },
+              {
+                "text": "sideNavBar",
+                "link": "/ms/api/renderers/web-components/src/variables/sideNavBar.md"
+              },
+              {
+                "text": "spinner",
+                "link": "/ms/api/renderers/web-components/src/variables/spinner.md"
+              },
+              {
+                "text": "tag",
+                "link": "/ms/api/renderers/web-components/src/variables/tag.md"
+              },
+              {
+                "text": "toggleButton",
+                "link": "/ms/api/renderers/web-components/src/variables/toggleButton.md"
+              },
+              {
+                "text": "tooltip",
+                "link": "/ms/api/renderers/web-components/src/variables/tooltip.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ms/api/renderers/web-components/src/variables/tray.md"
+              },
+              {
+                "text": "treeBrowser",
+                "link": "/ms/api/renderers/web-components/src/variables/treeBrowser.md"
+              },
+              {
+                "text": "truncate",
+                "link": "/ms/api/renderers/web-components/src/variables/truncate.md"
+              },
+              {
+                "text": "ELEMENTS",
+                "link": "/ms/api/renderers/web-components/src/variables/ELEMENTS.md"
+              },
+              {
+                "text": "NESTED_DEPS",
+                "link": "/ms/api/renderers/web-components/src/variables/NESTED_DEPS.md"
+              },
+              {
+                "text": "ICON_ELEMENTS",
+                "link": "/ms/api/renderers/web-components/src/variables/ICON_ELEMENTS.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ms/api/renderers/web-components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "ENGLISH_STRINGS",
+                "link": "/ms/api/renderers/web-components/src/variables/ENGLISH_STRINGS.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "register",
+                "link": "/ms/api/renderers/web-components/src/functions/register.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ms/api/renderers/web-components/src/functions/iconSvg.md"
+              },
+              {
+                "text": "noopIconSvg",
+                "link": "/ms/api/renderers/web-components/src/functions/noopIconSvg.md"
+              },
+              {
+                "text": "buildRegisterContext",
+                "link": "/ms/api/renderers/web-components/src/functions/buildRegisterContext.md"
+              },
+              {
+                "text": "resolveFirstDay",
+                "link": "/ms/api/renderers/web-components/src/functions/resolveFirstDay.md"
+              },
+              {
+                "text": "makeStrings",
+                "link": "/ms/api/renderers/web-components/src/functions/makeStrings.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/renderers/web-components/src/"
+      }
+    ]
+  },
+  {
+    "text": "packages",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "cli",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CliArgs",
+                "link": "/ms/api/packages/cli/src/interfaces/CliArgs.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "parseArgs",
+                "link": "/ms/api/packages/cli/src/functions/parseArgs.md"
+              },
+              {
+                "text": "run",
+                "link": "/ms/api/packages/cli/src/functions/run.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/packages/cli/src/"
+      },
+      {
+        "text": "core",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildTokensOptions",
+                "link": "/ms/api/packages/core/src/interfaces/BuildTokensOptions.md"
+              },
+              {
+                "text": "VectorDrawableOptions",
+                "link": "/ms/api/packages/core/src/interfaces/VectorDrawableOptions.md"
+              },
+              {
+                "text": "AssetFile",
+                "link": "/ms/api/packages/core/src/interfaces/AssetFile.md"
+              },
+              {
+                "text": "CollectIconsOptions",
+                "link": "/ms/api/packages/core/src/interfaces/CollectIconsOptions.md"
+              },
+              {
+                "text": "IconToken",
+                "link": "/ms/api/packages/core/src/interfaces/IconToken.md"
+              },
+              {
+                "text": "IconLayer",
+                "link": "/ms/api/packages/core/src/interfaces/IconLayer.md"
+              },
+              {
+                "text": "Leaf",
+                "link": "/ms/api/packages/core/src/interfaces/Leaf.md"
+              },
+              {
+                "text": "SdLeaf",
+                "link": "/ms/api/packages/core/src/interfaces/SdLeaf.md"
+              },
+              {
+                "text": "TokenModify",
+                "link": "/ms/api/packages/core/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ms/api/packages/core/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "Token",
+                "link": "/ms/api/packages/core/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ms/api/packages/core/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ms/api/packages/core/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ms/api/packages/core/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ms/api/packages/core/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ms/api/packages/core/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ms/api/packages/core/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ms/api/packages/core/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ms/api/packages/core/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ms/api/packages/core/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ms/api/packages/core/src/type-aliases/IconResolver.md"
+              },
+              {
+                "text": "Mode",
+                "link": "/ms/api/packages/core/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ICON_COLOR_SPECIAL_VALUES",
+                "link": "/ms/api/packages/core/src/variables/ICON_COLOR_SPECIAL_VALUES.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildTokens",
+                "link": "/ms/api/packages/core/src/functions/buildTokens.md"
+              },
+              {
+                "text": "applyModify",
+                "link": "/ms/api/packages/core/src/functions/applyModify.md"
+              },
+              {
+                "text": "decodeIconSvg",
+                "link": "/ms/api/packages/core/src/functions/decodeIconSvg.md"
+              },
+              {
+                "text": "getIconSvgs",
+                "link": "/ms/api/packages/core/src/functions/getIconSvgs.md"
+              },
+              {
+                "text": "toVectorDrawable",
+                "link": "/ms/api/packages/core/src/functions/toVectorDrawable.md"
+              },
+              {
+                "text": "toXcodeImageset",
+                "link": "/ms/api/packages/core/src/functions/toXcodeImageset.md"
+              },
+              {
+                "text": "flutterIconManifest",
+                "link": "/ms/api/packages/core/src/functions/flutterIconManifest.md"
+              },
+              {
+                "text": "collectIcons",
+                "link": "/ms/api/packages/core/src/functions/collectIcons.md"
+              },
+              {
+                "text": "defineToken",
+                "link": "/ms/api/packages/core/src/functions/defineToken.md"
+              },
+              {
+                "text": "dedupeByName",
+                "link": "/ms/api/packages/core/src/functions/dedupeByName.md"
+              },
+              {
+                "text": "runTokenPlugins",
+                "link": "/ms/api/packages/core/src/functions/runTokenPlugins.md"
+              },
+              {
+                "text": "runIconPlugins",
+                "link": "/ms/api/packages/core/src/functions/runIconPlugins.md"
+              },
+              {
+                "text": "collectLeaves",
+                "link": "/ms/api/packages/core/src/functions/collectLeaves.md"
+              },
+              {
+                "text": "referenceToVarName",
+                "link": "/ms/api/packages/core/src/functions/referenceToVarName.md"
+              },
+              {
+                "text": "resolveValue",
+                "link": "/ms/api/packages/core/src/functions/resolveValue.md"
+              },
+              {
+                "text": "varName",
+                "link": "/ms/api/packages/core/src/functions/varName.md"
+              },
+              {
+                "text": "resolveReferences",
+                "link": "/ms/api/packages/core/src/functions/resolveReferences.md"
+              },
+              {
+                "text": "toStyleDictionary",
+                "link": "/ms/api/packages/core/src/functions/toStyleDictionary.md"
+              },
+              {
+                "text": "toKebab",
+                "link": "/ms/api/packages/core/src/functions/toKebab.md"
+              },
+              {
+                "text": "cssSyntaxForValue",
+                "link": "/ms/api/packages/core/src/functions/cssSyntaxForValue.md"
+              },
+              {
+                "text": "isContextual",
+                "link": "/ms/api/packages/core/src/functions/isContextual.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/packages/core/src/"
+      },
+      {
+        "text": "model",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TokenModify",
+                "link": "/ms/api/packages/model/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ms/api/packages/model/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "DeprecationEntry",
+                "link": "/ms/api/packages/model/src/interfaces/DeprecationEntry.md"
+              },
+              {
+                "text": "DeprecationLedger",
+                "link": "/ms/api/packages/model/src/interfaces/DeprecationLedger.md"
+              },
+              {
+                "text": "Token",
+                "link": "/ms/api/packages/model/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ms/api/packages/model/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ms/api/packages/model/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "PropertyRule",
+                "link": "/ms/api/packages/model/src/interfaces/PropertyRule.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ms/api/packages/model/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ms/api/packages/model/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ms/api/packages/model/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ms/api/packages/model/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ms/api/packages/model/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ms/api/packages/model/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ms/api/packages/model/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "UpstreamRef",
+                "link": "/ms/api/packages/model/src/type-aliases/UpstreamRef.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ms/api/packages/model/src/type-aliases/IconResolver.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defineToken",
+                "link": "/ms/api/packages/model/src/functions/defineToken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/packages/model/src/"
+      },
+      {
+        "text": "plugin-kit",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ms/api/packages/plugin-kit/src/interfaces/ResolveOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Stage",
+                "link": "/ms/api/packages/plugin-kit/src/type-aliases/Stage.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "definePlugin",
+                "link": "/ms/api/packages/plugin-kit/src/functions/definePlugin.md"
+              },
+              {
+                "text": "isFactoried",
+                "link": "/ms/api/packages/plugin-kit/src/functions/isFactoried.md"
+              },
+              {
+                "text": "validatePlugin",
+                "link": "/ms/api/packages/plugin-kit/src/functions/validatePlugin.md"
+              },
+              {
+                "text": "capabilitiesOf",
+                "link": "/ms/api/packages/plugin-kit/src/functions/capabilitiesOf.md"
+              },
+              {
+                "text": "checkPlugins",
+                "link": "/ms/api/packages/plugin-kit/src/functions/checkPlugins.md"
+              },
+              {
+                "text": "extendPlugin",
+                "link": "/ms/api/packages/plugin-kit/src/functions/extendPlugin.md"
+              },
+              {
+                "text": "mergePlugin",
+                "link": "/ms/api/packages/plugin-kit/src/functions/mergePlugin.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ms/api/packages/plugin-kit/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ms/api/packages/plugin-kit/src/functions/resolveTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/packages/plugin-kit/src/"
+      },
+      {
+        "text": "utils",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Rgba",
+                "link": "/ms/api/packages/utils/src/interfaces/Rgba.md"
+              },
+              {
+                "text": "ResolveOptions",
+                "link": "/ms/api/packages/utils/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "SpacingStep",
+                "link": "/ms/api/packages/utils/src/interfaces/SpacingStep.md"
+              },
+              {
+                "text": "UtilityOptions",
+                "link": "/ms/api/packages/utils/src/interfaces/UtilityOptions.md"
+              },
+              {
+                "text": "ColorUtilityNames",
+                "link": "/ms/api/packages/utils/src/interfaces/ColorUtilityNames.md"
+              },
+              {
+                "text": "TokenUtilityGroup",
+                "link": "/ms/api/packages/utils/src/interfaces/TokenUtilityGroup.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ms/api/packages/utils/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "ColorUtilityEntry",
+                "link": "/ms/api/packages/utils/src/type-aliases/ColorUtilityEntry.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ms/api/packages/utils/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ms/api/packages/utils/src/variables/FOCUSABLE_SELECTOR.md"
+              },
+              {
+                "text": "VAR_RE",
+                "link": "/ms/api/packages/utils/src/variables/VAR_RE.md"
+              },
+              {
+                "text": "LIGHT_DARK_RE",
+                "link": "/ms/api/packages/utils/src/variables/LIGHT_DARK_RE.md"
+              },
+              {
+                "text": "SPACING_STEPS",
+                "link": "/ms/api/packages/utils/src/variables/SPACING_STEPS.md"
+              },
+              {
+                "text": "SPACING_AUTO_STEP",
+                "link": "/ms/api/packages/utils/src/variables/SPACING_AUTO_STEP.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "camelCase",
+                "link": "/ms/api/packages/utils/src/functions/camelCase.md"
+              },
+              {
+                "text": "parseHexColor",
+                "link": "/ms/api/packages/utils/src/functions/parseHexColor.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ms/api/packages/utils/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ms/api/packages/utils/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ms/api/packages/utils/src/functions/focusOutlineRules.md"
+              },
+              {
+                "text": "extractInstuiRefs",
+                "link": "/ms/api/packages/utils/src/functions/extractInstuiRefs.md"
+              },
+              {
+                "text": "tokenNames",
+                "link": "/ms/api/packages/utils/src/functions/tokenNames.md"
+              },
+              {
+                "text": "unknownReferences",
+                "link": "/ms/api/packages/utils/src/functions/unknownReferences.md"
+              },
+              {
+                "text": "danglingReferences",
+                "link": "/ms/api/packages/utils/src/functions/danglingReferences.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ms/api/packages/utils/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ms/api/packages/utils/src/functions/resolveTokens.md"
+              },
+              {
+                "text": "sanitizeSvg",
+                "link": "/ms/api/packages/utils/src/functions/sanitizeSvg.md"
+              },
+              {
+                "text": "globalModifierSelector",
+                "link": "/ms/api/packages/utils/src/functions/globalModifierSelector.md"
+              },
+              {
+                "text": "colorUtilitiesCss",
+                "link": "/ms/api/packages/utils/src/functions/colorUtilitiesCss.md"
+              },
+              {
+                "text": "tokenUtilitiesCss",
+                "link": "/ms/api/packages/utils/src/functions/tokenUtilitiesCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/packages/utils/src/"
+      }
+    ]
+  },
+  {
+    "text": "formats",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ComponentOptions",
+                "link": "/ms/api/formats/components/src/interfaces/ComponentOptions.md"
+              },
+              {
+                "text": "ProseOptions",
+                "link": "/ms/api/formats/components/src/interfaces/ProseOptions.md"
+              },
+              {
+                "text": "IconGlyphsOptions",
+                "link": "/ms/api/formats/components/src/interfaces/IconGlyphsOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alertCss",
+                "link": "/ms/api/formats/components/src/variables/alertCss.md"
+              },
+              {
+                "text": "avatarCss",
+                "link": "/ms/api/formats/components/src/variables/avatarCss.md"
+              },
+              {
+                "text": "badgeCss",
+                "link": "/ms/api/formats/components/src/variables/badgeCss.md"
+              },
+              {
+                "text": "billboardCss",
+                "link": "/ms/api/formats/components/src/variables/billboardCss.md"
+              },
+              {
+                "text": "breadcrumbCss",
+                "link": "/ms/api/formats/components/src/variables/breadcrumbCss.md"
+              },
+              {
+                "text": "breadcrumbLinkCss",
+                "link": "/ms/api/formats/components/src/variables/breadcrumbLinkCss.md"
+              },
+              {
+                "text": "buttonCss",
+                "link": "/ms/api/formats/components/src/variables/buttonCss.md"
+              },
+              {
+                "text": "bylineCss",
+                "link": "/ms/api/formats/components/src/variables/bylineCss.md"
+              },
+              {
+                "text": "calendarCss",
+                "link": "/ms/api/formats/components/src/variables/calendarCss.md"
+              },
+              {
+                "text": "calendarDayCss",
+                "link": "/ms/api/formats/components/src/variables/calendarDayCss.md"
+              },
+              {
+                "text": "checkboxCss",
+                "link": "/ms/api/formats/components/src/variables/checkboxCss.md"
+              },
+              {
+                "text": "closeButtonCss",
+                "link": "/ms/api/formats/components/src/variables/closeButtonCss.md"
+              },
+              {
+                "text": "contextViewCss",
+                "link": "/ms/api/formats/components/src/variables/contextViewCss.md"
+              },
+              {
+                "text": "drawerLayoutCss",
+                "link": "/ms/api/formats/components/src/variables/drawerLayoutCss.md"
+              },
+              {
+                "text": "drawerLayoutContentCss",
+                "link": "/ms/api/formats/components/src/variables/drawerLayoutContentCss.md"
+              },
+              {
+                "text": "drawerLayoutTrayCss",
+                "link": "/ms/api/formats/components/src/variables/drawerLayoutTrayCss.md"
+              },
+              {
+                "text": "fileDropCss",
+                "link": "/ms/api/formats/components/src/variables/fileDropCss.md"
+              },
+              {
+                "text": "formFieldGroupCss",
+                "link": "/ms/api/formats/components/src/variables/formFieldGroupCss.md"
+              },
+              {
+                "text": "formFieldMessagesCss",
+                "link": "/ms/api/formats/components/src/variables/formFieldMessagesCss.md"
+              },
+              {
+                "text": "formFieldCss",
+                "link": "/ms/api/formats/components/src/variables/formFieldCss.md"
+              },
+              {
+                "text": "headingCss",
+                "link": "/ms/api/formats/components/src/variables/headingCss.md"
+              },
+              {
+                "text": "imgCss",
+                "link": "/ms/api/formats/components/src/variables/imgCss.md"
+              },
+              {
+                "text": "inPlaceEditCss",
+                "link": "/ms/api/formats/components/src/variables/inPlaceEditCss.md"
+              },
+              {
+                "text": "inputGroupCss",
+                "link": "/ms/api/formats/components/src/variables/inputGroupCss.md"
+              },
+              {
+                "text": "linkCss",
+                "link": "/ms/api/formats/components/src/variables/linkCss.md"
+              },
+              {
+                "text": "listCss",
+                "link": "/ms/api/formats/components/src/variables/listCss.md"
+              },
+              {
+                "text": "listItemCss",
+                "link": "/ms/api/formats/components/src/variables/listItemCss.md"
+              },
+              {
+                "text": "maskCss",
+                "link": "/ms/api/formats/components/src/variables/maskCss.md"
+              },
+              {
+                "text": "menuCss",
+                "link": "/ms/api/formats/components/src/variables/menuCss.md"
+              },
+              {
+                "text": "menuGroupCss",
+                "link": "/ms/api/formats/components/src/variables/menuGroupCss.md"
+              },
+              {
+                "text": "menuItemCss",
+                "link": "/ms/api/formats/components/src/variables/menuItemCss.md"
+              },
+              {
+                "text": "menuSeparatorCss",
+                "link": "/ms/api/formats/components/src/variables/menuSeparatorCss.md"
+              },
+              {
+                "text": "metricCss",
+                "link": "/ms/api/formats/components/src/variables/metricCss.md"
+              },
+              {
+                "text": "modalCss",
+                "link": "/ms/api/formats/components/src/variables/modalCss.md"
+              },
+              {
+                "text": "modalBodyCss",
+                "link": "/ms/api/formats/components/src/variables/modalBodyCss.md"
+              },
+              {
+                "text": "modalFooterCss",
+                "link": "/ms/api/formats/components/src/variables/modalFooterCss.md"
+              },
+              {
+                "text": "modalHeaderCss",
+                "link": "/ms/api/formats/components/src/variables/modalHeaderCss.md"
+              },
+              {
+                "text": "numberInputCss",
+                "link": "/ms/api/formats/components/src/variables/numberInputCss.md"
+              },
+              {
+                "text": "paginationCss",
+                "link": "/ms/api/formats/components/src/variables/paginationCss.md"
+              },
+              {
+                "text": "paginationPageCss",
+                "link": "/ms/api/formats/components/src/variables/paginationPageCss.md"
+              },
+              {
+                "text": "pillCss",
+                "link": "/ms/api/formats/components/src/variables/pillCss.md"
+              },
+              {
+                "text": "popoverCss",
+                "link": "/ms/api/formats/components/src/variables/popoverCss.md"
+              },
+              {
+                "text": "progressCircleCss",
+                "link": "/ms/api/formats/components/src/variables/progressCircleCss.md"
+              },
+              {
+                "text": "progressCss",
+                "link": "/ms/api/formats/components/src/variables/progressCss.md"
+              },
+              {
+                "text": "radioInputGroupCss",
+                "link": "/ms/api/formats/components/src/variables/radioInputGroupCss.md"
+              },
+              {
+                "text": "radioCss",
+                "link": "/ms/api/formats/components/src/variables/radioCss.md"
+              },
+              {
+                "text": "rangeInputCss",
+                "link": "/ms/api/formats/components/src/variables/rangeInputCss.md"
+              },
+              {
+                "text": "ratingCss",
+                "link": "/ms/api/formats/components/src/variables/ratingCss.md"
+              },
+              {
+                "text": "sideNavBarCss",
+                "link": "/ms/api/formats/components/src/variables/sideNavBarCss.md"
+              },
+              {
+                "text": "sideNavBarItemCss",
+                "link": "/ms/api/formats/components/src/variables/sideNavBarItemCss.md"
+              },
+              {
+                "text": "simpleSelectCss",
+                "link": "/ms/api/formats/components/src/variables/simpleSelectCss.md"
+              },
+              {
+                "text": "spinnerCss",
+                "link": "/ms/api/formats/components/src/variables/spinnerCss.md"
+              },
+              {
+                "text": "tableCss",
+                "link": "/ms/api/formats/components/src/variables/tableCss.md"
+              },
+              {
+                "text": "tableBodyCss",
+                "link": "/ms/api/formats/components/src/variables/tableBodyCss.md"
+              },
+              {
+                "text": "tableCellCss",
+                "link": "/ms/api/formats/components/src/variables/tableCellCss.md"
+              },
+              {
+                "text": "tableColHeaderCss",
+                "link": "/ms/api/formats/components/src/variables/tableColHeaderCss.md"
+              },
+              {
+                "text": "tableHeadCss",
+                "link": "/ms/api/formats/components/src/variables/tableHeadCss.md"
+              },
+              {
+                "text": "tableRowHeaderCss",
+                "link": "/ms/api/formats/components/src/variables/tableRowHeaderCss.md"
+              },
+              {
+                "text": "tableRowCss",
+                "link": "/ms/api/formats/components/src/variables/tableRowCss.md"
+              },
+              {
+                "text": "tabsCss",
+                "link": "/ms/api/formats/components/src/variables/tabsCss.md"
+              },
+              {
+                "text": "tabsPanelCss",
+                "link": "/ms/api/formats/components/src/variables/tabsPanelCss.md"
+              },
+              {
+                "text": "tabsTabCss",
+                "link": "/ms/api/formats/components/src/variables/tabsTabCss.md"
+              },
+              {
+                "text": "tagCss",
+                "link": "/ms/api/formats/components/src/variables/tagCss.md"
+              },
+              {
+                "text": "textAreaCss",
+                "link": "/ms/api/formats/components/src/variables/textAreaCss.md"
+              },
+              {
+                "text": "textInputCss",
+                "link": "/ms/api/formats/components/src/variables/textInputCss.md"
+              },
+              {
+                "text": "textCss",
+                "link": "/ms/api/formats/components/src/variables/textCss.md"
+              },
+              {
+                "text": "toggleDetailsCss",
+                "link": "/ms/api/formats/components/src/variables/toggleDetailsCss.md"
+              },
+              {
+                "text": "toggleGroupCss",
+                "link": "/ms/api/formats/components/src/variables/toggleGroupCss.md"
+              },
+              {
+                "text": "tooltipCss",
+                "link": "/ms/api/formats/components/src/variables/tooltipCss.md"
+              },
+              {
+                "text": "trayCss",
+                "link": "/ms/api/formats/components/src/variables/trayCss.md"
+              },
+              {
+                "text": "treeBrowserCss",
+                "link": "/ms/api/formats/components/src/variables/treeBrowserCss.md"
+              },
+              {
+                "text": "viewCss",
+                "link": "/ms/api/formats/components/src/variables/viewCss.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ms/api/formats/components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "cursorUtilitiesCss",
+                "link": "/ms/api/formats/components/src/variables/cursorUtilitiesCss.md"
+              },
+              {
+                "text": "gapCss",
+                "link": "/ms/api/formats/components/src/variables/gapCss.md"
+              },
+              {
+                "text": "iconCss",
+                "link": "/ms/api/formats/components/src/variables/iconCss.md"
+              },
+              {
+                "text": "layoutUtilitiesCss",
+                "link": "/ms/api/formats/components/src/variables/layoutUtilitiesCss.md"
+              },
+              {
+                "text": "maskUtilityCss",
+                "link": "/ms/api/formats/components/src/variables/maskUtilityCss.md"
+              },
+              {
+                "text": "overflowUtilitiesCss",
+                "link": "/ms/api/formats/components/src/variables/overflowUtilitiesCss.md"
+              },
+              {
+                "text": "positionUtilitiesCss",
+                "link": "/ms/api/formats/components/src/variables/positionUtilitiesCss.md"
+              },
+              {
+                "text": "responsiveUtilitiesCss",
+                "link": "/ms/api/formats/components/src/variables/responsiveUtilitiesCss.md"
+              },
+              {
+                "text": "screenReaderContentCss",
+                "link": "/ms/api/formats/components/src/variables/screenReaderContentCss.md"
+              },
+              {
+                "text": "spacingUtilitiesCss",
+                "link": "/ms/api/formats/components/src/variables/spacingUtilitiesCss.md"
+              },
+              {
+                "text": "stackingUtilityCss",
+                "link": "/ms/api/formats/components/src/variables/stackingUtilityCss.md"
+              },
+              {
+                "text": "transitionCss",
+                "link": "/ms/api/formats/components/src/variables/transitionCss.md"
+              },
+              {
+                "text": "truncateCss",
+                "link": "/ms/api/formats/components/src/variables/truncateCss.md"
+              },
+              {
+                "text": "visualDebugCss",
+                "link": "/ms/api/formats/components/src/variables/visualDebugCss.md"
+              },
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ms/api/formats/components/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ms/api/formats/components/src/variables/FOCUSABLE_SELECTOR.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "selectCss",
+                "link": "/ms/api/formats/components/src/functions/selectCss.md"
+              },
+              {
+                "text": "elevationCss",
+                "link": "/ms/api/formats/components/src/functions/elevationCss.md"
+              },
+              {
+                "text": "focusOutlineCss",
+                "link": "/ms/api/formats/components/src/functions/focusOutlineCss.md"
+              },
+              {
+                "text": "baseCss",
+                "link": "/ms/api/formats/components/src/functions/baseCss.md"
+              },
+              {
+                "text": "componentsCss",
+                "link": "/ms/api/formats/components/src/functions/componentsCss.md"
+              },
+              {
+                "text": "proseCss",
+                "link": "/ms/api/formats/components/src/functions/proseCss.md"
+              },
+              {
+                "text": "iconGlyphsCss",
+                "link": "/ms/api/formats/components/src/functions/iconGlyphsCss.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ms/api/formats/components/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ms/api/formats/components/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ms/api/formats/components/src/functions/focusOutlineRules.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/components/src/"
+      },
+      {
+        "text": "css",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssSection",
+                "link": "/ms/api/formats/css/src/interfaces/CssSection.md"
+              },
+              {
+                "text": "ToCssOptions",
+                "link": "/ms/api/formats/css/src/interfaces/ToCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "css",
+                "link": "/ms/api/formats/css/src/variables/css.md"
+              },
+              {
+                "text": "leanCss",
+                "link": "/ms/api/formats/css/src/variables/leanCss.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildCssFile",
+                "link": "/ms/api/formats/css/src/functions/buildCssFile.md"
+              },
+              {
+                "text": "toCss",
+                "link": "/ms/api/formats/css/src/functions/toCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/css/src/"
+      },
+      {
+        "text": "dtcg",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ms/api/formats/dtcg/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "DtcgNode",
+                "link": "/ms/api/formats/dtcg/src/type-aliases/DtcgNode.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "dtcg",
+                "link": "/ms/api/formats/dtcg/src/variables/dtcg.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ms/api/formats/dtcg/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ms/api/formats/dtcg/src/functions/byTheme.md"
+              },
+              {
+                "text": "toDtcg",
+                "link": "/ms/api/formats/dtcg/src/functions/toDtcg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/dtcg/src/"
+      },
+      {
+        "text": "icon-font",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconFontResult",
+                "link": "/ms/api/formats/icon-font/src/interfaces/IconFontResult.md"
+              },
+              {
+                "text": "BuildIconFontOptions",
+                "link": "/ms/api/formats/icon-font/src/interfaces/BuildIconFontOptions.md"
+              },
+              {
+                "text": "GlyphPath",
+                "link": "/ms/api/formats/icon-font/src/interfaces/GlyphPath.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildIconFont",
+                "link": "/ms/api/formats/icon-font/src/functions/buildIconFont.md"
+              },
+              {
+                "text": "svgToGlyphPath",
+                "link": "/ms/api/formats/icon-font/src/functions/svgToGlyphPath.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/icon-font/src/"
+      },
+      {
+        "text": "icons",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenIcon",
+                "link": "/ms/api/formats/icons/src/interfaces/PantokenIcon.md"
+              },
+              {
+                "text": "IconResolverChainOptions",
+                "link": "/ms/api/formats/icons/src/interfaces/IconResolverChainOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "icons",
+                "link": "/ms/api/formats/icons/src/variables/icons.md"
+              },
+              {
+                "text": "iconsByName",
+                "link": "/ms/api/formats/icons/src/variables/iconsByName.md"
+              },
+              {
+                "text": "resolve",
+                "link": "/ms/api/formats/icons/src/variables/resolve.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "getIcon",
+                "link": "/ms/api/formats/icons/src/functions/getIcon.md"
+              },
+              {
+                "text": "buildIconResolverChain",
+                "link": "/ms/api/formats/icons/src/functions/buildIconResolverChain.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/icons/src/"
+      },
+      {
+        "text": "interactions",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ProgressCircleOptions",
+                "link": "/ms/api/formats/interactions/src/interfaces/ProgressCircleOptions.md"
+              },
+              {
+                "text": "ProgressCircleHandle",
+                "link": "/ms/api/formats/interactions/src/interfaces/ProgressCircleHandle.md"
+              },
+              {
+                "text": "RemoveOptions",
+                "link": "/ms/api/formats/interactions/src/interfaces/RemoveOptions.md"
+              },
+              {
+                "text": "RemoveHandle",
+                "link": "/ms/api/formats/interactions/src/interfaces/RemoveHandle.md"
+              },
+              {
+                "text": "TooltipOptions",
+                "link": "/ms/api/formats/interactions/src/interfaces/TooltipOptions.md"
+              },
+              {
+                "text": "TooltipHandle",
+                "link": "/ms/api/formats/interactions/src/interfaces/TooltipHandle.md"
+              },
+              {
+                "text": "TruncateAutoOptions",
+                "link": "/ms/api/formats/interactions/src/interfaces/TruncateAutoOptions.md"
+              },
+              {
+                "text": "TruncateAutoHandle",
+                "link": "/ms/api/formats/interactions/src/interfaces/TruncateAutoHandle.md"
+              },
+              {
+                "text": "CommandEventish",
+                "link": "/ms/api/formats/interactions/src/interfaces/CommandEventish.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandHandler",
+                "link": "/ms/api/formats/interactions/src/type-aliases/CommandHandler.md"
+              },
+              {
+                "text": "OnCommand",
+                "link": "/ms/api/formats/interactions/src/type-aliases/OnCommand.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "SPACING_ATTRS",
+                "link": "/ms/api/formats/interactions/src/variables/SPACING_ATTRS.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "initCloseButton",
+                "link": "/ms/api/formats/interactions/src/functions/initCloseButton.md"
+              },
+              {
+                "text": "initInPlaceEdit",
+                "link": "/ms/api/formats/interactions/src/functions/initInPlaceEdit.md"
+              },
+              {
+                "text": "initModal",
+                "link": "/ms/api/formats/interactions/src/functions/initModal.md"
+              },
+              {
+                "text": "initProgressCircle",
+                "link": "/ms/api/formats/interactions/src/functions/initProgressCircle.md"
+              },
+              {
+                "text": "initRemove",
+                "link": "/ms/api/formats/interactions/src/functions/initRemove.md"
+              },
+              {
+                "text": "initResponsiveOverlay",
+                "link": "/ms/api/formats/interactions/src/functions/initResponsiveOverlay.md"
+              },
+              {
+                "text": "initTooltip",
+                "link": "/ms/api/formats/interactions/src/functions/initTooltip.md"
+              },
+              {
+                "text": "syncTruncateAutoLines",
+                "link": "/ms/api/formats/interactions/src/functions/syncTruncateAutoLines.md"
+              },
+              {
+                "text": "initTruncateAuto",
+                "link": "/ms/api/formats/interactions/src/functions/initTruncateAuto.md"
+              },
+              {
+                "text": "makeOnCommand",
+                "link": "/ms/api/formats/interactions/src/functions/makeOnCommand.md"
+              },
+              {
+                "text": "syncInvoker",
+                "link": "/ms/api/formats/interactions/src/functions/syncInvoker.md"
+              },
+              {
+                "text": "resolveSpace",
+                "link": "/ms/api/formats/interactions/src/functions/resolveSpace.md"
+              },
+              {
+                "text": "spacingValue",
+                "link": "/ms/api/formats/interactions/src/functions/spacingValue.md"
+              },
+              {
+                "text": "applySpacing",
+                "link": "/ms/api/formats/interactions/src/functions/applySpacing.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/interactions/src/"
+      },
+      {
+        "text": "less",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToLessOptions",
+                "link": "/ms/api/formats/less/src/interfaces/ToLessOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "less",
+                "link": "/ms/api/formats/less/src/variables/less.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toLess",
+                "link": "/ms/api/formats/less/src/functions/toLess.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/less/src/"
+      },
+      {
+        "text": "scss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToScssOptions",
+                "link": "/ms/api/formats/scss/src/interfaces/ToScssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "scss",
+                "link": "/ms/api/formats/scss/src/variables/scss.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toScss",
+                "link": "/ms/api/formats/scss/src/functions/toScss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/scss/src/"
+      },
+      {
+        "text": "stylus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStylusOptions",
+                "link": "/ms/api/formats/stylus/src/interfaces/ToStylusOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "stylus",
+                "link": "/ms/api/formats/stylus/src/variables/stylus.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toStylus",
+                "link": "/ms/api/formats/stylus/src/functions/toStylus.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/stylus/src/"
+      },
+      {
+        "text": "tokens",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokens",
+                "link": "/ms/api/formats/tokens/src/variables/tokens.md"
+              },
+              {
+                "text": "rebrandTokens",
+                "link": "/ms/api/formats/tokens/src/variables/rebrandTokens.md"
+              },
+              {
+                "text": "canvasTokens",
+                "link": "/ms/api/formats/tokens/src/variables/canvasTokens.md"
+              },
+              {
+                "text": "canvasHighContrastTokens",
+                "link": "/ms/api/formats/tokens/src/variables/canvasHighContrastTokens.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ms/api/formats/tokens/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ms/api/formats/tokens/src/functions/byTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/formats/tokens/src/"
+      }
+    ]
+  },
+  {
+    "text": "design",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "figma",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FigmaColor",
+                "link": "/ms/api/design/figma/src/interfaces/FigmaColor.md"
+              },
+              {
+                "text": "FigmaVariable",
+                "link": "/ms/api/design/figma/src/interfaces/FigmaVariable.md"
+              },
+              {
+                "text": "FigmaVariablesPayload",
+                "link": "/ms/api/design/figma/src/interfaces/FigmaVariablesPayload.md"
+              },
+              {
+                "text": "ToFigmaOptions",
+                "link": "/ms/api/design/figma/src/interfaces/ToFigmaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFigmaColor",
+                "link": "/ms/api/design/figma/src/functions/toFigmaColor.md"
+              },
+              {
+                "text": "toFigmaVariables",
+                "link": "/ms/api/design/figma/src/functions/toFigmaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/design/figma/src/"
+      },
+      {
+        "text": "swatches",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToGplOptions",
+                "link": "/ms/api/design/swatches/src/interfaces/ToGplOptions.md"
+              },
+              {
+                "text": "Swatch",
+                "link": "/ms/api/design/swatches/src/interfaces/Swatch.md"
+              },
+              {
+                "text": "Rgb",
+                "link": "/ms/api/design/swatches/src/interfaces/Rgb.md"
+              },
+              {
+                "text": "SketchPalette",
+                "link": "/ms/api/design/swatches/src/interfaces/SketchPalette.md"
+              },
+              {
+                "text": "ToSvgOptions",
+                "link": "/ms/api/design/swatches/src/interfaces/ToSvgOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ms/api/design/swatches/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "swatches",
+                "link": "/ms/api/design/swatches/src/variables/swatches.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAse",
+                "link": "/ms/api/design/swatches/src/functions/toAse.md"
+              },
+              {
+                "text": "toGpl",
+                "link": "/ms/api/design/swatches/src/functions/toGpl.md"
+              },
+              {
+                "text": "hexToRgb",
+                "link": "/ms/api/design/swatches/src/functions/hexToRgb.md"
+              },
+              {
+                "text": "toSwatches",
+                "link": "/ms/api/design/swatches/src/functions/toSwatches.md"
+              },
+              {
+                "text": "toSketchPalette",
+                "link": "/ms/api/design/swatches/src/functions/toSketchPalette.md"
+              },
+              {
+                "text": "toSvg",
+                "link": "/ms/api/design/swatches/src/functions/toSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/design/swatches/src/"
+      }
+    ]
+  },
+  {
+    "text": "bundlers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "next",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "NextConfigLike",
+                "link": "/ms/api/bundlers/next/src/interfaces/NextConfigLike.md"
+              },
+              {
+                "text": "WithPantokenOptions",
+                "link": "/ms/api/bundlers/next/src/interfaces/WithPantokenOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INSTUI_TRANSPILE_PACKAGES",
+                "link": "/ms/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "withPantoken",
+                "link": "/ms/api/bundlers/next/src/functions/withPantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/bundlers/next/src/"
+      },
+      {
+        "text": "panda",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaToken",
+                "link": "/ms/api/bundlers/panda/src/interfaces/PandaToken.md"
+              },
+              {
+                "text": "PandaSemanticToken",
+                "link": "/ms/api/bundlers/panda/src/interfaces/PandaSemanticToken.md"
+              },
+              {
+                "text": "PandaPreset",
+                "link": "/ms/api/bundlers/panda/src/interfaces/PandaPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "Alias Jenis",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaCategory",
+                "link": "/ms/api/bundlers/panda/src/type-aliases/PandaCategory.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ms/api/bundlers/panda/src/variables/pantokenPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toPandaPreset",
+                "link": "/ms/api/bundlers/panda/src/functions/toPandaPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/bundlers/panda/src/"
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenPostcssOptions",
+                "link": "/ms/api/bundlers/postcss/src/interfaces/PantokenPostcssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Pembolehubah",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ms/api/bundlers/postcss/src/variables/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/bundlers/postcss/src/"
+      },
+      {
+        "text": "tailwind",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TailwindPreset",
+                "link": "/ms/api/bundlers/tailwind/src/interfaces/TailwindPreset.md"
+              },
+              {
+                "text": "PantokenPresetOptions",
+                "link": "/ms/api/bundlers/tailwind/src/interfaces/PantokenPresetOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ms/api/bundlers/tailwind/src/functions/pantokenPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/bundlers/tailwind/src/"
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenViteOptions",
+                "link": "/ms/api/bundlers/vite/src/interfaces/PantokenViteOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "Fungsi",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ms/api/bundlers/vite/src/functions/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/bundlers/vite/src/"
+      },
+      {
+        "text": "webpack",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Kelas",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackPlugin",
+                "link": "/ms/api/bundlers/webpack/src/classes/PantokenWebpackPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "Antaramuka",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackOptions",
+                "link": "/ms/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ms/api/bundlers/webpack/src/"
+      }
+    ]
+  },
+  {
+    "text": "plugins",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "colors",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Alias Jenis",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CssColor",
+                    "link": "/ms/api/plugins/pantoken/colors/src/type-aliases/CssColor.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "alpha",
+                    "link": "/ms/api/plugins/pantoken/colors/src/functions/alpha.md"
+                  },
+                  {
+                    "text": "darken",
+                    "link": "/ms/api/plugins/pantoken/colors/src/functions/darken.md"
+                  },
+                  {
+                    "text": "lighten",
+                    "link": "/ms/api/plugins/pantoken/colors/src/functions/lighten.md"
+                  },
+                  {
+                    "text": "overlayColors",
+                    "link": "/ms/api/plugins/pantoken/colors/src/functions/overlayColors.md"
+                  },
+                  {
+                    "text": "onColor",
+                    "link": "/ms/api/plugins/pantoken/colors/src/functions/onColor.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/colors/src/"
+          },
+          {
+            "text": "custom-components",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomComponentsOptions",
+                    "link": "/ms/api/plugins/pantoken/custom-components/src/interfaces/CustomComponentsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "bannerRules",
+                    "link": "/ms/api/plugins/pantoken/custom-components/src/functions/bannerRules.md"
+                  },
+                  {
+                    "text": "cardRules",
+                    "link": "/ms/api/plugins/pantoken/custom-components/src/functions/cardRules.md"
+                  },
+                  {
+                    "text": "customComponents",
+                    "link": "/ms/api/plugins/pantoken/custom-components/src/functions/customComponents.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/custom-components/src/"
+          },
+          {
+            "text": "custom-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomIcon",
+                    "link": "/ms/api/plugins/pantoken/custom-icons/src/interfaces/CustomIcon.md"
+                  },
+                  {
+                    "text": "CustomIconsOptions",
+                    "link": "/ms/api/plugins/pantoken/custom-icons/src/interfaces/CustomIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "icons",
+                    "link": "/ms/api/plugins/pantoken/custom-icons/src/variables/icons.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "customIcons",
+                    "link": "/ms/api/plugins/pantoken/custom-icons/src/functions/customIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/custom-icons/src/"
+          },
+          {
+            "text": "deprecations",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamVersions",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/interfaces/UpstreamVersions.md"
+                  },
+                  {
+                    "text": "ParsedRef",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/interfaces/ParsedRef.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "shimValue",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/shimValue.md"
+                  },
+                  {
+                    "text": "shimEntries",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/shimEntries.md"
+                  },
+                  {
+                    "text": "ledgerCovers",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/ledgerCovers.md"
+                  },
+                  {
+                    "text": "parseUpstreamRef",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/parseUpstreamRef.md"
+                  },
+                  {
+                    "text": "compareVersions",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/compareVersions.md"
+                  },
+                  {
+                    "text": "dueForRemoval",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/dueForRemoval.md"
+                  },
+                  {
+                    "text": "describeLifecycle",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/describeLifecycle.md"
+                  },
+                  {
+                    "text": "deprecationShims",
+                    "link": "/ms/api/plugins/pantoken/deprecations/src/functions/deprecationShims.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/deprecations/src/"
+          },
+          {
+            "text": "layouts",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LayoutsOptions",
+                    "link": "/ms/api/plugins/pantoken/layouts/src/interfaces/LayoutsOptions.md"
+                  },
+                  {
+                    "text": "PageLayout",
+                    "link": "/ms/api/plugins/pantoken/layouts/src/interfaces/PageLayout.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pageLayouts",
+                    "link": "/ms/api/plugins/pantoken/layouts/src/variables/pageLayouts.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "layouts",
+                    "link": "/ms/api/plugins/pantoken/layouts/src/functions/layouts.md"
+                  },
+                  {
+                    "text": "wrapperRules",
+                    "link": "/ms/api/plugins/pantoken/layouts/src/functions/wrapperRules.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/layouts/src/"
+          },
+          {
+            "text": "logos",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LogoMeta",
+                    "link": "/ms/api/plugins/pantoken/logos/src/interfaces/LogoMeta.md"
+                  },
+                  {
+                    "text": "LogosOptions",
+                    "link": "/ms/api/plugins/pantoken/logos/src/interfaces/LogosOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Alias Jenis",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Product",
+                    "link": "/ms/api/plugins/pantoken/logos/src/type-aliases/Product.md"
+                  },
+                  {
+                    "text": "LogoLayout",
+                    "link": "/ms/api/plugins/pantoken/logos/src/type-aliases/LogoLayout.md"
+                  },
+                  {
+                    "text": "LogoColorMode",
+                    "link": "/ms/api/plugins/pantoken/logos/src/type-aliases/LogoColorMode.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "logos",
+                    "link": "/ms/api/plugins/pantoken/logos/src/variables/logos.md"
+                  },
+                  {
+                    "text": "products",
+                    "link": "/ms/api/plugins/pantoken/logos/src/variables/products.md"
+                  },
+                  {
+                    "text": "logosCss",
+                    "link": "/ms/api/plugins/pantoken/logos/src/variables/logosCss.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "getLogoSvg",
+                    "link": "/ms/api/plugins/pantoken/logos/src/functions/getLogoSvg.md"
+                  },
+                  {
+                    "text": "getLogoDataUri",
+                    "link": "/ms/api/plugins/pantoken/logos/src/functions/getLogoDataUri.md"
+                  },
+                  {
+                    "text": "logosPlugin",
+                    "link": "/ms/api/plugins/pantoken/logos/src/functions/logosPlugin.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/logos/src/"
+          },
+          {
+            "text": "primitives",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "PrimitiveTokenNames",
+                    "link": "/ms/api/plugins/pantoken/primitives/src/interfaces/PrimitiveTokenNames.md"
+                  },
+                  {
+                    "text": "PrimitivesOptions",
+                    "link": "/ms/api/plugins/pantoken/primitives/src/interfaces/PrimitivesOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "primitivesCss",
+                    "link": "/ms/api/plugins/pantoken/primitives/src/functions/primitivesCss.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/primitives/src/"
+          },
+          {
+            "text": "simple-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIcon",
+                    "link": "/ms/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIcon.md"
+                  },
+                  {
+                    "text": "SimpleIconsOptions",
+                    "link": "/ms/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Alias Jenis",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIconsRegistry",
+                    "link": "/ms/api/plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toExportName",
+                    "link": "/ms/api/plugins/pantoken/simple-icons/src/functions/toExportName.md"
+                  },
+                  {
+                    "text": "defaultRegistry",
+                    "link": "/ms/api/plugins/pantoken/simple-icons/src/functions/defaultRegistry.md"
+                  },
+                  {
+                    "text": "simpleIcons",
+                    "link": "/ms/api/plugins/pantoken/simple-icons/src/functions/simpleIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/simple-icons/src/"
+          },
+          {
+            "text": "stacking",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "StackingOptions",
+                    "link": "/ms/api/plugins/pantoken/stacking/src/interfaces/StackingOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "STACKING_LEVELS",
+                    "link": "/ms/api/plugins/pantoken/stacking/src/variables/STACKING_LEVELS.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "stacking",
+                    "link": "/ms/api/plugins/pantoken/stacking/src/functions/stacking.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/stacking/src/"
+          },
+          {
+            "text": "transition",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "TransitionOptions",
+                    "link": "/ms/api/plugins/pantoken/transition/src/interfaces/TransitionOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "transition",
+                    "link": "/ms/api/plugins/pantoken/transition/src/functions/transition.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/transition/src/"
+          },
+          {
+            "text": "visual-debug",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VisualDebugOptions",
+                    "link": "/ms/api/plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VISUAL_DEBUG_RULES",
+                    "link": "/ms/api/plugins/pantoken/visual-debug/src/variables/VISUAL_DEBUG_RULES.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "visualDebugRules",
+                    "link": "/ms/api/plugins/pantoken/visual-debug/src/functions/visualDebugRules.md"
+                  },
+                  {
+                    "text": "visualDebug",
+                    "link": "/ms/api/plugins/pantoken/visual-debug/src/functions/visualDebug.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/pantoken/visual-debug/src/"
+          }
+        ]
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "flatten-property",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ms/api/plugins/postcss/flatten-property/src/interfaces/FlattenPropertyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ms/api/plugins/postcss/flatten-property/src/variables/flattenProperty.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/postcss/flatten-property/src/"
+          },
+          {
+            "text": "mangle-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ms/api/plugins/postcss/mangle-custom-props/src/interfaces/MangleCustomPropsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Alias Jenis",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ms/api/plugins/postcss/mangle-custom-props/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ms/api/plugins/postcss/mangle-custom-props/src/variables/mangleCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/postcss/mangle-custom-props/src/"
+          },
+          {
+            "text": "props-minify",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/interfaces/FlattenPropertyOptions.md"
+                  },
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/interfaces/MangleCustomPropsOptions.md"
+                  },
+                  {
+                    "text": "PropsMinifyOptions",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Alias Jenis",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/variables/flattenProperty.md"
+                  },
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/variables/mangleCustomProps.md"
+                  },
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "applyMinify",
+                    "link": "/ms/api/plugins/postcss/props-minify/src/functions/applyMinify.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/postcss/props-minify/src/"
+          },
+          {
+            "text": "prune-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ms/api/plugins/postcss/prune-custom-props/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/postcss/prune-custom-props/src/"
+          },
+          {
+            "text": "theme-custom-media",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "ThemeCustomMediaOptions",
+                    "link": "/ms/api/plugins/postcss/theme-custom-media/src/interfaces/ThemeCustomMediaOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Alias Jenis",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Theme",
+                    "link": "/ms/api/plugins/postcss/theme-custom-media/src/type-aliases/Theme.md"
+                  }
+                ]
+              },
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "themeCustomMedia",
+                    "link": "/ms/api/plugins/postcss/theme-custom-media/src/variables/themeCustomMedia.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/postcss/theme-custom-media/src/"
+          }
+        ]
+      },
+      {
+        "text": "typedoc",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "demo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Pembolehubah",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "DEMO_TAG",
+                    "link": "/ms/api/plugins/typedoc/demo/src/variables/DEMO_TAG.md"
+                  },
+                  {
+                    "text": "DEMO_FENCE",
+                    "link": "/ms/api/plugins/typedoc/demo/src/variables/DEMO_FENCE.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toDemoFence",
+                    "link": "/ms/api/plugins/typedoc/demo/src/functions/toDemoFence.md"
+                  },
+                  {
+                    "text": "rewriteComment",
+                    "link": "/ms/api/plugins/typedoc/demo/src/functions/rewriteComment.md"
+                  },
+                  {
+                    "text": "load",
+                    "link": "/ms/api/plugins/typedoc/demo/src/functions/load.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/typedoc/demo/src/"
+          }
+        ]
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "workspace-orchestrator",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Antaramuka",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamNode",
+                    "link": "/ms/api/plugins/vite/workspace-orchestrator/src/interfaces/UpstreamNode.md"
+                  },
+                  {
+                    "text": "FileServerEntry",
+                    "link": "/ms/api/plugins/vite/workspace-orchestrator/src/interfaces/FileServerEntry.md"
+                  },
+                  {
+                    "text": "OrchestratorOptions",
+                    "link": "/ms/api/plugins/vite/workspace-orchestrator/src/interfaces/OrchestratorOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "Fungsi",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "matchesFilters",
+                    "link": "/ms/api/plugins/vite/workspace-orchestrator/src/functions/matchesFilters.md"
+                  },
+                  {
+                    "text": "workspaceOrchestrator",
+                    "link": "/ms/api/plugins/vite/workspace-orchestrator/src/functions/workspaceOrchestrator.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ms/api/plugins/vite/workspace-orchestrator/src/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "CSS",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Gambaran keseluruhan",
+        "link": "/ms/api/css/"
+      },
+      {
+        "text": "Komponen",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "agent-shell",
+            "link": "/ms/api/css/agent-shell.md"
+          },
+          {
+            "text": "alert",
+            "link": "/ms/api/css/alert.md"
+          },
+          {
+            "text": "avatar",
+            "link": "/ms/api/css/avatar.md"
+          },
+          {
+            "text": "badge",
+            "link": "/ms/api/css/badge.md"
+          },
+          {
+            "text": "banner",
+            "link": "/ms/api/css/banner.md"
+          },
+          {
+            "text": "billboard",
+            "link": "/ms/api/css/billboard.md"
+          },
+          {
+            "text": "breadcrumb",
+            "link": "/ms/api/css/breadcrumb.md",
+            "items": [
+              {
+                "text": "link",
+                "link": "/ms/api/css/breadcrumb.link.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "button",
+            "link": "/ms/api/css/button.md"
+          },
+          {
+            "text": "byline",
+            "link": "/ms/api/css/byline.md"
+          },
+          {
+            "text": "calendar",
+            "link": "/ms/api/css/calendar.md",
+            "items": [
+              {
+                "text": "day",
+                "link": "/ms/api/css/calendar.day.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "card",
+            "link": "/ms/api/css/card.md"
+          },
+          {
+            "text": "checkbox",
+            "link": "/ms/api/css/checkbox.md"
+          },
+          {
+            "text": "close-button",
+            "link": "/ms/api/css/close-button.md"
+          },
+          {
+            "text": "context-view",
+            "link": "/ms/api/css/context-view.md"
+          },
+          {
+            "text": "drawer-layout",
+            "link": "/ms/api/css/drawer-layout.md",
+            "items": [
+              {
+                "text": "content",
+                "link": "/ms/api/css/drawer-layout.content.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ms/api/css/drawer-layout.tray.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "file-drop",
+            "link": "/ms/api/css/file-drop.md"
+          },
+          {
+            "text": "form-field",
+            "link": "/ms/api/css/form-field.md"
+          },
+          {
+            "text": "form-field-group",
+            "link": "/ms/api/css/form-field-group.md"
+          },
+          {
+            "text": "form-field-messages",
+            "link": "/ms/api/css/form-field-messages.md"
+          },
+          {
+            "text": "heading",
+            "link": "/ms/api/css/heading.md"
+          },
+          {
+            "text": "img",
+            "link": "/ms/api/css/img.md"
+          },
+          {
+            "text": "in-place-edit",
+            "link": "/ms/api/css/in-place-edit.md"
+          },
+          {
+            "text": "input-group",
+            "link": "/ms/api/css/input-group.md"
+          },
+          {
+            "text": "link",
+            "link": "/ms/api/css/link.md"
+          },
+          {
+            "text": "list",
+            "link": "/ms/api/css/list.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ms/api/css/list.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "mask",
+            "link": "/ms/api/css/mask.md"
+          },
+          {
+            "text": "menu",
+            "link": "/ms/api/css/menu.md",
+            "items": [
+              {
+                "text": "group",
+                "link": "/ms/api/css/menu.group.md"
+              },
+              {
+                "text": "item",
+                "link": "/ms/api/css/menu.item.md"
+              },
+              {
+                "text": "separator",
+                "link": "/ms/api/css/menu.separator.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "metric",
+            "link": "/ms/api/css/metric.md"
+          },
+          {
+            "text": "modal",
+            "link": "/ms/api/css/modal.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ms/api/css/modal.body.md"
+              },
+              {
+                "text": "footer",
+                "link": "/ms/api/css/modal.footer.md"
+              },
+              {
+                "text": "header",
+                "link": "/ms/api/css/modal.header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "number-input",
+            "link": "/ms/api/css/number-input.md"
+          },
+          {
+            "text": "pagination",
+            "link": "/ms/api/css/pagination.md",
+            "items": [
+              {
+                "text": "page",
+                "link": "/ms/api/css/pagination.page.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "pill",
+            "link": "/ms/api/css/pill.md"
+          },
+          {
+            "text": "popover",
+            "link": "/ms/api/css/popover.md"
+          },
+          {
+            "text": "progress",
+            "link": "/ms/api/css/progress.md"
+          },
+          {
+            "text": "progress-circle",
+            "link": "/ms/api/css/progress-circle.md"
+          },
+          {
+            "text": "radio",
+            "link": "/ms/api/css/radio.md"
+          },
+          {
+            "text": "radio-input-group",
+            "link": "/ms/api/css/radio-input-group.md"
+          },
+          {
+            "text": "range-input",
+            "link": "/ms/api/css/range-input.md"
+          },
+          {
+            "text": "rating",
+            "link": "/ms/api/css/rating.md"
+          },
+          {
+            "text": "side-nav-bar",
+            "link": "/ms/api/css/side-nav-bar.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ms/api/css/side-nav-bar.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "simple-select",
+            "link": "/ms/api/css/simple-select.md"
+          },
+          {
+            "text": "spinner",
+            "link": "/ms/api/css/spinner.md"
+          },
+          {
+            "text": "table",
+            "link": "/ms/api/css/table.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ms/api/css/table.body.md"
+              },
+              {
+                "text": "cell",
+                "link": "/ms/api/css/table.cell.md"
+              },
+              {
+                "text": "col-header",
+                "link": "/ms/api/css/table.col-header.md"
+              },
+              {
+                "text": "head",
+                "link": "/ms/api/css/table.head.md"
+              },
+              {
+                "text": "row",
+                "link": "/ms/api/css/table.row.md"
+              },
+              {
+                "text": "row-header",
+                "link": "/ms/api/css/table.row-header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tabs",
+            "link": "/ms/api/css/tabs.md",
+            "items": [
+              {
+                "text": "panel",
+                "link": "/ms/api/css/tabs.panel.md"
+              },
+              {
+                "text": "tab",
+                "link": "/ms/api/css/tabs.tab.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tag",
+            "link": "/ms/api/css/tag.md"
+          },
+          {
+            "text": "text",
+            "link": "/ms/api/css/text.md"
+          },
+          {
+            "text": "text-area",
+            "link": "/ms/api/css/text-area.md"
+          },
+          {
+            "text": "text-input",
+            "link": "/ms/api/css/text-input.md"
+          },
+          {
+            "text": "toggle-details",
+            "link": "/ms/api/css/toggle-details.md"
+          },
+          {
+            "text": "toggle-group",
+            "link": "/ms/api/css/toggle-group.md"
+          },
+          {
+            "text": "tooltip",
+            "link": "/ms/api/css/tooltip.md"
+          },
+          {
+            "text": "tray",
+            "link": "/ms/api/css/tray.md"
+          },
+          {
+            "text": "tree-browser",
+            "link": "/ms/api/css/tree-browser.md"
+          },
+          {
+            "text": "view",
+            "link": "/ms/api/css/view.md"
+          }
+        ]
+      },
+      {
+        "text": "Utiliti",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "color",
+            "link": "/ms/api/css/color.md"
+          },
+          {
+            "text": "cursor",
+            "link": "/ms/api/css/cursor.md"
+          },
+          {
+            "text": "gap",
+            "link": "/ms/api/css/gap.md"
+          },
+          {
+            "text": "icon",
+            "link": "/ms/api/css/icon.md"
+          },
+          {
+            "text": "layout",
+            "link": "/ms/api/css/layout.md"
+          },
+          {
+            "text": "maskglobal",
+            "link": "/ms/api/css/maskglobal.md"
+          },
+          {
+            "text": "overflow",
+            "link": "/ms/api/css/overflow.md"
+          },
+          {
+            "text": "position",
+            "link": "/ms/api/css/position.md"
+          },
+          {
+            "text": "responsive",
+            "link": "/ms/api/css/responsive.md"
+          },
+          {
+            "text": "screen-reader-content",
+            "link": "/ms/api/css/screen-reader-content.md"
+          },
+          {
+            "text": "spacing",
+            "link": "/ms/api/css/spacing.md"
+          },
+          {
+            "text": "stacking",
+            "link": "/ms/api/css/stacking.md"
+          },
+          {
+            "text": "transition",
+            "link": "/ms/api/css/transition.md"
+          },
+          {
+            "text": "truncate",
+            "link": "/ms/api/css/truncate.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ms/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "Peraturan",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "base",
+            "link": "/ms/api/css/base.md"
+          },
+          {
+            "text": "prose",
+            "link": "/ms/api/css/prose.md"
+          }
+        ]
+      },
+      {
+        "text": "Plugins",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "logos",
+            "link": "/ms/api/css/logos.md"
+          },
+          {
+            "text": "primitives",
+            "link": "/ms/api/css/primitives.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ms/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "layout",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "callout",
+            "link": "/ms/api/css/callout.md"
+          },
+          {
+            "text": "hero",
+            "link": "/ms/api/css/hero.md"
+          },
+          {
+            "text": "page-layout",
+            "link": "/ms/api/css/page-layout.md"
+          },
+          {
+            "text": "rubric-note",
+            "link": "/ms/api/css/rubric-note.md"
+          },
+          {
+            "text": "testimonial",
+            "link": "/ms/api/css/testimonial.md"
+          },
+          {
+            "text": "two-column",
+            "link": "/ms/api/css/two-column.md"
+          },
+          {
+            "text": "wrapper",
+            "link": "/ms/api/css/wrapper.md"
+          }
+        ]
+      }
+    ]
+  }
+]

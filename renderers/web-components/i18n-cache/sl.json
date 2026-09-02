@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Prejšnji mesec",
+  "nextMonth": "Naslednji mesec",
+  "dateLabel": "Datum",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Odpri koledar",
+  "timeLabel": "Čas",
+  "back": "Nazaj"
+}

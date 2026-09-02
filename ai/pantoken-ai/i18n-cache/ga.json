@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ Comhad scríofa: {{path}}",
+  "helpInitDescription": "Scríobh sócmhainní gníomhaire pantoken isteach i stór",
+  "helpInitToolDescription": "Uirlis ghníomhaire (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Eolaire sprioc",
+  "helpScaffoldDescription": "Cruthaigh tionscadal tosaigh (trí @pantoken/scaffold) agus suiteáil sócmhainní gníomhaire ann",
+  "helpScaffoldToolDescription": "Uirlis ghníomhaire (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Sárshocrú teanga taispeána a aithníodh go huathoibríoch (m.sh. \"hu\")"
+}

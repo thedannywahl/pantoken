@@ -1,0 +1,18 @@
+<div class="instui-card">
+  <!-- Responsive visibility utilities react to the viewport width, matched to the size scale. Resize the
+       preview to see them swap: the first shows only on narrow viewports, the second only on wide ones. -->
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <div class="instui-alert -color-info instui-hidden-min-md">
+      تخطيط ضيق — مخفٍ عند <code>md</code> (48rem) وما فوق عبر <code>-hidden-min-md</code>.
+    </div>
+    <div class="instui-alert -color-success instui-hidden-max-md">
+      تخطيط واسع — مخفٍ عند <code>md</code> وأدناه عبر <code>-hidden-max-md</code>.
+    </div>
+    <p class="instui-text -size-sm --text-muted">
+      نقاط التوقف: <code>sm</code> 30rem، <code>md</code> 48rem، <code>lg</code> 64rem،
+      <code>xl</code> 80rem. لمكوّن يتكيّف مع عرضه بدلًا من نافذة العرض، غلفه في
+      <code>container-type: inline-size</code> عنصر واستخدم <code>@container</code> الاستعلامات بنفس
+      العروض.
+    </p>
+  </div>
+</div>

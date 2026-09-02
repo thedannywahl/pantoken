@@ -24,6 +24,12 @@ env:
   # vp's task cache stores task OUTPUTS as .tar.zst tarballs, so a cache hit re-materializes the
   # gitignored generated dirs. The `build` job warms it; downstream jobs restore and replay
   # `vp run -r build` as a fast cache-extract instead of a cold rebuild.
+  #
+  # The primary key is scoped to run_id/run_attempt (not github.sha): GH Actions cache keys are
+  # immutable, so a sha-based key can never be resaved by a rerun — a `build` job whose auto-tracked
+  # output snapshot was incomplete for that attempt would keep every downstream job (and every rerun
+  # of the same commit) replaying that same broken tarball forever. A fresh key per attempt means a
+  # rerun always saves (and downstream jobs in this attempt always restore) this attempt's own build.
   VP_TASK_CACHE: node_modules/.vite/task-cache
   VP_CACHE_KEY_PREFIX: vp-taskcache-
 
@@ -44,7 +50,7 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -70,7 +76,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -96,7 +102,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -129,7 +135,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -161,7 +167,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -255,7 +261,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -290,7 +296,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -324,7 +330,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -379,7 +385,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -449,6 +455,36 @@ jobs:
       - name: Lint PR commit messages
         run: vp exec commitlint --from "${{ github.event.pull_request.base.sha }}" --to "${{ github.event.pull_request.head.sha }}" --verbose
 
+  # Advisory only: warns when a PR commit has no linked Entire checkpoint (missing `Entire-Checkpoint`
+  # trailer), but never blocks merge. Pure git — no Entire CLI, login, or agent credentials needed,
+  # since checkpoint linkage is recorded as a commit trailer at commit time.
+  entire-checkpoint-linkage:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Check for Entire-Checkpoint trailers
+        shell: bash
+        run: |
+          missing=0
+          for sha in $(git log --no-merges --format=%H "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"); do
+            author_email="$(git log -1 --format=%ae "$sha")"
+            # Skip bot-authored commits (e.g. release automation) — they never go through an agent session.
+            case "$author_email" in
+              *"[bot]"*@users.noreply.github.com) continue ;;
+            esac
+            if ! git log -1 --format=%B "$sha" | grep -q '^Entire-Checkpoint:'; then
+              echo "::warning::Commit ${sha} has no linked Entire checkpoint (missing Entire-Checkpoint trailer)"
+              missing=$((missing + 1))
+            fi
+          done
+          echo "${missing} commit(s) without an Entire checkpoint link. Advisory only; does not block merge."
+
   # Detect changes that could shift the vendored token IR, so the upstream-drift gate runs only when a
   # bump (or the pipeline itself) changed. Runs on both events so `upstream-drift`'s `needs` resolves.
   upstream-changes:
@@ -493,7 +529,7 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
@@ -534,10 +570,14 @@ jobs:
               - 'renderers/**'
               - 'plugins/**'
               - 'design/**'
+              - 'tools/translation-adapters/**'
+              - 'i18n-policy.json'
               - 'pnpm-lock.yaml'
               - 'pnpm-workspace.yaml'
 
-  # Detect changes that could introduce translation drift in the i18n bundle caches.
+  # Detect changes that could introduce translation drift in the i18n bundle caches. `i18n-policy.json`
+  # and the shared policy module are in the path set too — editing what blocks a merge has to re-run
+  # the gate that reads it.
   i18n-changes:
     runs-on: ubuntu-latest
     outputs:
@@ -556,8 +596,20 @@ jobs:
             i18n:
               - 'packages/i18n/**'
               - 'renderers/web-components/src/lib/strings.ts'
+              - 'packages/scaffold/src/i18n.json'
+              - 'packages/scaffold/i18n-cache/**'
+              - 'ai/pantoken-ai/src/i18n.json'
+              - 'ai/pantoken-ai/i18n-cache/**'
+              - 'tools/translation-adapters/**'
+              - 'i18n-policy.json'
 
   # Verify all Canvas locale caches are current relative to the English source strings.
+  #
+  # `i18n-policy.json` decides, per surface and per locale tier, which gaps block the merge and which
+  # only warn — so this job fails on English source drift but reports the translation long tail as
+  # GitHub annotations plus a job-summary table without parking the PR. Escalate everything locally
+  # with `vp run i18n:check:drift:strict`.
+  #
   # AI translation is never wired here — fill drift locally with `vp run i18n:translate`.
   i18n-drift:
     needs: [build, i18n-changes]
@@ -577,8 +629,8 @@ jobs:
         run: vp run i18n:check:drift
 
   # Build the site as part of CI, so:
-  #  - PRs get the exact deploy command run — a broken build OR a stale translation cache
-  #    (check-locale-drift) blocks the PR instead of only surfacing in the post-merge Deploy docs run.
+  #  - PRs get the deploy build without regenerating or checking every localized API tree. Those
+  #    full-locale operations remain available locally through `docs:build:all`.
   #  - main pushes upload the built site as `docs-site`, which the Deploy docs workflow publishes
   #    directly (no rebuild).
   # Gated on docs-relevant changes with the same path set the Deploy docs `changes` job uses, so the
@@ -601,22 +653,25 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: ${{ env.VP_TASK_CACHE }}
-          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-${{ github.sha }}
+          key: ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml', 'vite.config.ts') }}-
             ${{ env.VP_CACHE_KEY_PREFIX }}${{ runner.os }}-
       - name: Materialize generated output
         run: vp run -r build
-      - name: Build docs (locale parity + drift + VitePress build)
+      - name: Build docs (English API + VitePress)
         run: vp run @pantoken/docs#docs:build
         env:
           DOCS_BASE: /
-          DOCS_HOSTNAME: https://pantoken.iywahl.com/
+          DOCS_HOSTNAME: https://pantoken.app/
+          # vitepress-plugin-llms walks every locale's rendered pages; V8's auto-detected heap
+          # ceiling isn't enough once all ~44 locales carry full content, so raise it explicitly.
+          NODE_OPTIONS: --max-old-space-size=8192
       # On main, hand the built site to the Deploy docs workflow (workflow_run) so it publishes without
       # rebuilding. The CNAME is baked in here so the downloaded artifact is deploy-ready as-is.
       - name: Add custom domain file
         if: github.ref == 'refs/heads/main'
-        run: echo "pantoken.iywahl.com" > docs/.vitepress/dist/CNAME
+        run: echo "pantoken.app" > docs/.vitepress/dist/CNAME
       - name: Upload built docs site
         if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
@@ -650,6 +705,8 @@ jobs:
         upstream-drift,
         docs-changes,
         docs,
+        i18n-changes,
+        i18n-drift,
       ]
     if: always()
     runs-on: ubuntu-latest

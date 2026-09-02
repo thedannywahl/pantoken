@@ -2,7 +2,7 @@
   "name": "@pantoken/sd-config",
   "version": "0.1.5",
   "description": "Shared Style Dictionary setup for pantoken's native emitters (Swift, Compose, Flutter, SCSS, JSON).",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

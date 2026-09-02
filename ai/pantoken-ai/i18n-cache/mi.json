@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ Kua tuhia te kōnae: {{path}}",
+  "helpInitDescription": "Tuhia ngā rawa ejeneti o pantoken ki roto i te repo",
+  "helpInitToolDescription": "Utauta ejeneti (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Kōpaki ūnga",
+  "helpScaffoldDescription": "Whakarite he kaupapa tīmatanga (mā @pantoken/scaffold), ka tāuta ngā rawa ejeneti ki reira",
+  "helpScaffoldToolDescription": "Utauta ejeneti (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Whakakē i te reo whakaatu i tautuhia aunoa (hei tauira \"hu\")"
+}

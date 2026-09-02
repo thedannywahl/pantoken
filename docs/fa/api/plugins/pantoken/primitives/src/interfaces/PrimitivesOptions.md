@@ -1,0 +1,18 @@
+[pantoken](../../../../../index.md) / [plugins/pantoken/primitives/src](../index.md) / PrimitivesOptions
+
+# رابط: PrimitivesOptions
+
+<span class="instui-pill -color-warning pantoken-doc-tag">بتا</span>
+
+Options for [primitivesCss](../functions/primitivesCss.md).
+
+## خصوصیات
+
+### prefix?
+
+> `optional` **prefix?**: `string` \| `null`
+
+<span class="instui-pill -color-warning pantoken-doc-tag">بتا</span>
+
+The class prefix. A truthy string namespaces every class (`"instui"` → `.instui-bg-…`); any falsy
+value drops the prefix entirely (`.bg-…`). The shipped `primitives.css` is built with `"instui"`.

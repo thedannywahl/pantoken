@@ -1,0 +1,4897 @@
+[
+  {
+    "text": "tools",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "aggregate",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Target",
+                "link": "/ar/api/tools/aggregate/src/interfaces/Target.md"
+              },
+              {
+                "text": "AggregateOptions",
+                "link": "/ar/api/tools/aggregate/src/interfaces/AggregateOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "discoverTargets",
+                "link": "/ar/api/tools/aggregate/src/functions/discoverTargets.md"
+              },
+              {
+                "text": "aggregate",
+                "link": "/ar/api/tools/aggregate/src/functions/aggregate.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/tools/aggregate/src/"
+      },
+      {
+        "text": "demo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ar/api/tools/demo/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "ResolvedDemo",
+                "link": "/ar/api/tools/demo/src/interfaces/ResolvedDemo.md"
+              },
+              {
+                "text": "LiveExampleOptions",
+                "link": "/ar/api/tools/demo/src/interfaces/LiveExampleOptions.md"
+              },
+              {
+                "text": "DemoMarkdownItOptions",
+                "link": "/ar/api/tools/demo/src/interfaces/DemoMarkdownItOptions.md"
+              },
+              {
+                "text": "ExampleSrcdocOptions",
+                "link": "/ar/api/tools/demo/src/interfaces/ExampleSrcdocOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FULLSCREEN_BUTTON_HTML",
+                "link": "/ar/api/tools/demo/src/variables/FULLSCREEN_BUTTON_HTML.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "resolveDemo",
+                "link": "/ar/api/tools/demo/src/functions/resolveDemo.md"
+              },
+              {
+                "text": "renderDemoFigure",
+                "link": "/ar/api/tools/demo/src/functions/renderDemoFigure.md"
+              },
+              {
+                "text": "demoMarkdownIt",
+                "link": "/ar/api/tools/demo/src/functions/demoMarkdownIt.md"
+              },
+              {
+                "text": "escapeSrcdoc",
+                "link": "/ar/api/tools/demo/src/functions/escapeSrcdoc.md"
+              },
+              {
+                "text": "buildExampleSrcdoc",
+                "link": "/ar/api/tools/demo/src/functions/buildExampleSrcdoc.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/tools/demo/src/"
+      }
+    ]
+  },
+  {
+    "text": "ai",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken-ai",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AgentTool",
+                "link": "/ar/api/ai/pantoken-ai/src/type-aliases/AgentTool.md"
+              },
+              {
+                "text": "ScaffoldPlatform",
+                "link": "/ar/api/ai/pantoken-ai/src/type-aliases/ScaffoldPlatform.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ASSETS",
+                "link": "/ar/api/ai/pantoken-ai/src/variables/ASSETS.md"
+              },
+              {
+                "text": "AGENTS_MD",
+                "link": "/ar/api/ai/pantoken-ai/src/variables/AGENTS_MD.md"
+              },
+              {
+                "text": "LLMS_TXT",
+                "link": "/ar/api/ai/pantoken-ai/src/variables/LLMS_TXT.md"
+              },
+              {
+                "text": "AGENT_TOOLS",
+                "link": "/ar/api/ai/pantoken-ai/src/variables/AGENT_TOOLS.md"
+              },
+              {
+                "text": "SCAFFOLD_PLATFORMS",
+                "link": "/ar/api/ai/pantoken-ai/src/variables/SCAFFOLD_PLATFORMS.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "installAgentAssets",
+                "link": "/ar/api/ai/pantoken-ai/src/functions/installAgentAssets.md"
+              },
+              {
+                "text": "scaffoldAndInit",
+                "link": "/ar/api/ai/pantoken-ai/src/functions/scaffoldAndInit.md"
+              },
+              {
+                "text": "isScaffoldPlatform",
+                "link": "/ar/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md"
+              },
+              {
+                "text": "scaffoldProject",
+                "link": "/ar/api/ai/pantoken-ai/src/functions/scaffoldProject.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/ai/pantoken-ai/src/"
+      }
+    ]
+  },
+  {
+    "text": "platforms",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "android",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateAndroidOptions",
+                "link": "/ar/api/platforms/android/src/interfaces/GenerateAndroidOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAndroid",
+                "link": "/ar/api/platforms/android/src/functions/toAndroid.md"
+              },
+              {
+                "text": "generateAndroid",
+                "link": "/ar/api/platforms/android/src/functions/generateAndroid.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/android/src/"
+      },
+      {
+        "text": "canvas-theme-editor",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeStrings",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/interfaces/ThemeStrings.md"
+              },
+              {
+                "text": "BuildThemeOptions",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/interfaces/BuildThemeOptions.md"
+              },
+              {
+                "text": "CdnFile",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/interfaces/CdnFile.md"
+              },
+              {
+                "text": "CdnProvider",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/interfaces/CdnProvider.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeVariant",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/type-aliases/ThemeVariant.md"
+              },
+              {
+                "text": "ThemeMode",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/type-aliases/ThemeMode.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "THEME_CSS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/THEME_CSS.md"
+              },
+              {
+                "text": "THEME_JS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/THEME_JS.md"
+              },
+              {
+                "text": "ENGLISH_THEME_STRINGS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/ENGLISH_THEME_STRINGS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_CSS_ASSETS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_CSS_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_FONT_ASSETS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_FONT_ASSETS.md"
+              },
+              {
+                "text": "DEFAULT_THEME_JS_ASSETS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/DEFAULT_THEME_JS_ASSETS.md"
+              },
+              {
+                "text": "CDN_PROVIDERS",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/CDN_PROVIDERS.md"
+              },
+              {
+                "text": "DEFAULT_CDN_PROVIDER_ID",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/variables/DEFAULT_CDN_PROVIDER_ID.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defaultThemeCssAssets",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/functions/defaultThemeCssAssets.md"
+              },
+              {
+                "text": "buildThemeCss",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/functions/buildThemeCss.md"
+              },
+              {
+                "text": "buildThemeJs",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/functions/buildThemeJs.md"
+              },
+              {
+                "text": "buildTheme",
+                "link": "/ar/api/platforms/canvas-theme-editor/src/functions/buildTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/canvas-theme-editor/src/"
+      },
+      {
+        "text": "compose",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateComposeOptions",
+                "link": "/ar/api/platforms/compose/src/interfaces/GenerateComposeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toCompose",
+                "link": "/ar/api/platforms/compose/src/functions/toCompose.md"
+              },
+              {
+                "text": "generateCompose",
+                "link": "/ar/api/platforms/compose/src/functions/generateCompose.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/compose/src/"
+      },
+      {
+        "text": "drupal",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "DrupalFile",
+                "link": "/ar/api/platforms/drupal/src/interfaces/DrupalFile.md"
+              },
+              {
+                "text": "ToDrupalThemeOptions",
+                "link": "/ar/api/platforms/drupal/src/interfaces/ToDrupalThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "machineName",
+                "link": "/ar/api/platforms/drupal/src/functions/machineName.md"
+              },
+              {
+                "text": "toDrupalTheme",
+                "link": "/ar/api/platforms/drupal/src/functions/toDrupalTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/drupal/src/"
+      },
+      {
+        "text": "email",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ar/api/platforms/email/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ar/api/platforms/email/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "emailTokens",
+                "link": "/ar/api/platforms/email/src/functions/emailTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/email/src/"
+      },
+      {
+        "text": "flutter",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateFlutterOptions",
+                "link": "/ar/api/platforms/flutter/src/interfaces/GenerateFlutterOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFlutter",
+                "link": "/ar/api/platforms/flutter/src/functions/toFlutter.md"
+              },
+              {
+                "text": "generateFlutter",
+                "link": "/ar/api/platforms/flutter/src/functions/generateFlutter.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/flutter/src/"
+      },
+      {
+        "text": "hugo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HugoFile",
+                "link": "/ar/api/platforms/hugo/src/interfaces/HugoFile.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toHugoAssets",
+                "link": "/ar/api/platforms/hugo/src/functions/toHugoAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/hugo/src/"
+      },
+      {
+        "text": "jekyll",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "JekyllFile",
+                "link": "/ar/api/platforms/jekyll/src/interfaces/JekyllFile.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toJekyllAssets",
+                "link": "/ar/api/platforms/jekyll/src/functions/toJekyllAssets.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/jekyll/src/"
+      },
+      {
+        "text": "rust",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustOptions",
+                "link": "/ar/api/platforms/rust/src/interfaces/RustOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RustFormat",
+                "link": "/ar/api/platforms/rust/src/type-aliases/RustFormat.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toRust",
+                "link": "/ar/api/platforms/rust/src/functions/toRust.md"
+              },
+              {
+                "text": "generateRust",
+                "link": "/ar/api/platforms/rust/src/functions/generateRust.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/rust/src/"
+      },
+      {
+        "text": "swift",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "GenerateSwiftOptions",
+                "link": "/ar/api/platforms/swift/src/interfaces/GenerateSwiftOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toSwift",
+                "link": "/ar/api/platforms/swift/src/functions/toSwift.md"
+              },
+              {
+                "text": "generateSwift",
+                "link": "/ar/api/platforms/swift/src/functions/generateSwift.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/swift/src/"
+      },
+      {
+        "text": "vanilla",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVanillaOptions",
+                "link": "/ar/api/platforms/vanilla/src/interfaces/ToVanillaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ar/api/platforms/vanilla/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "variables",
+                "link": "/ar/api/platforms/vanilla/src/variables/variables.md"
+              },
+              {
+                "text": "VANILLA_TO_INSTUI",
+                "link": "/ar/api/platforms/vanilla/src/variables/VANILLA_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toVanillaVariables",
+                "link": "/ar/api/platforms/vanilla/src/functions/toVanillaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/vanilla/src/"
+      },
+      {
+        "text": "wordpress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ThemeJson",
+                "link": "/ar/api/platforms/wordpress/src/interfaces/ThemeJson.md"
+              },
+              {
+                "text": "ToThemeJsonOptions",
+                "link": "/ar/api/platforms/wordpress/src/interfaces/ToThemeJsonOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ar/api/platforms/wordpress/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "themeJson",
+                "link": "/ar/api/platforms/wordpress/src/variables/themeJson.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeJson",
+                "link": "/ar/api/platforms/wordpress/src/functions/toThemeJson.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/platforms/wordpress/src/"
+      }
+    ]
+  },
+  {
+    "text": "renderers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "angular",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerPantokenElements",
+                "link": "/ar/api/renderers/angular/src/functions/registerPantokenElements.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ar/api/renderers/angular/src/functions/readToken.md"
+              },
+              {
+                "text": "register",
+                "link": "/ar/api/renderers/angular/src/functions/register.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/angular/src/"
+      },
+      {
+        "text": "astro",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "HeadEntry",
+                "link": "/ar/api/renderers/astro/src/interfaces/HeadEntry.md"
+              },
+              {
+                "text": "StarlightPluginLike",
+                "link": "/ar/api/renderers/astro/src/interfaces/StarlightPluginLike.md"
+              },
+              {
+                "text": "InstUIOptions",
+                "link": "/ar/api/renderers/astro/src/interfaces/InstUIOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenCss",
+                "link": "/ar/api/renderers/astro/src/functions/pantokenCss.md"
+              },
+              {
+                "text": "InstUI",
+                "link": "/ar/api/renderers/astro/src/functions/InstUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/astro/src/"
+      },
+      {
+        "text": "bootstrap",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToBootstrapCssOptions",
+                "link": "/ar/api/renderers/bootstrap/src/interfaces/ToBootstrapCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BOOTSTRAP_TO_INSTUI",
+                "link": "/ar/api/renderers/bootstrap/src/variables/BOOTSTRAP_TO_INSTUI.md"
+              },
+              {
+                "text": "bootstrapCss",
+                "link": "/ar/api/renderers/bootstrap/src/variables/bootstrapCss.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toBootstrapCss",
+                "link": "/ar/api/renderers/bootstrap/src/functions/toBootstrapCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/bootstrap/src/"
+      },
+      {
+        "text": "css-in-js",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStyledThemeOptions",
+                "link": "/ar/api/renderers/css-in-js/src/interfaces/ToStyledThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StyledTheme",
+                "link": "/ar/api/renderers/css-in-js/src/type-aliases/StyledTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenTheme",
+                "link": "/ar/api/renderers/css-in-js/src/variables/pantokenTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toThemeKey",
+                "link": "/ar/api/renderers/css-in-js/src/functions/toThemeKey.md"
+              },
+              {
+                "text": "toStyledTheme",
+                "link": "/ar/api/renderers/css-in-js/src/functions/toStyledTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/css-in-js/src/"
+      },
+      {
+        "text": "docusaurus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToDocusaurusCssOptions",
+                "link": "/ar/api/renderers/docusaurus/src/interfaces/ToDocusaurusCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INFIMA_TO_INSTUI",
+                "link": "/ar/api/renderers/docusaurus/src/variables/INFIMA_TO_INSTUI.md"
+              },
+              {
+                "text": "docusaurusCss",
+                "link": "/ar/api/renderers/docusaurus/src/variables/docusaurusCss.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toDocusaurusCss",
+                "link": "/ar/api/renderers/docusaurus/src/functions/toDocusaurusCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/docusaurus/src/"
+      },
+      {
+        "text": "foundation",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToFoundationSettingsOptions",
+                "link": "/ar/api/renderers/foundation/src/interfaces/ToFoundationSettingsOptions.md"
+              },
+              {
+                "text": "ToFoundationCssOptions",
+                "link": "/ar/api/renderers/foundation/src/interfaces/ToFoundationCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FOUNDATION_TO_INSTUI",
+                "link": "/ar/api/renderers/foundation/src/variables/FOUNDATION_TO_INSTUI.md"
+              },
+              {
+                "text": "foundationSettings",
+                "link": "/ar/api/renderers/foundation/src/variables/foundationSettings.md"
+              },
+              {
+                "text": "foundationCss",
+                "link": "/ar/api/renderers/foundation/src/variables/foundationCss.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFoundationSettings",
+                "link": "/ar/api/renderers/foundation/src/functions/toFoundationSettings.md"
+              },
+              {
+                "text": "toFoundationCss",
+                "link": "/ar/api/renderers/foundation/src/functions/toFoundationCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/foundation/src/"
+      },
+      {
+        "text": "markdown-it",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MarkdownItOptions",
+                "link": "/ar/api/renderers/markdown-it/src/interfaces/MarkdownItOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PROSE_CLASS",
+                "link": "/ar/api/renderers/markdown-it/src/variables/PROSE_CLASS.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenMarkdownIt",
+                "link": "/ar/api/renderers/markdown-it/src/functions/pantokenMarkdownIt.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/markdown-it/src/"
+      },
+      {
+        "text": "mintlify",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MintlifyColors",
+                "link": "/ar/api/renderers/mintlify/src/interfaces/MintlifyColors.md"
+              },
+              {
+                "text": "MintlifyBackground",
+                "link": "/ar/api/renderers/mintlify/src/interfaces/MintlifyBackground.md"
+              },
+              {
+                "text": "MintlifyTheme",
+                "link": "/ar/api/renderers/mintlify/src/interfaces/MintlifyTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "docsJson",
+                "link": "/ar/api/renderers/mintlify/src/variables/docsJson.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMintlifyConfig",
+                "link": "/ar/api/renderers/mintlify/src/functions/toMintlifyConfig.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/mintlify/src/"
+      },
+      {
+        "text": "mui",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "MuiPaletteColor",
+                "link": "/ar/api/renderers/mui/src/interfaces/MuiPaletteColor.md"
+              },
+              {
+                "text": "PantokenThemeOptions",
+                "link": "/ar/api/renderers/mui/src/interfaces/PantokenThemeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "lightTheme",
+                "link": "/ar/api/renderers/mui/src/variables/lightTheme.md"
+              },
+              {
+                "text": "darkTheme",
+                "link": "/ar/api/renderers/mui/src/variables/darkTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toMuiTheme",
+                "link": "/ar/api/renderers/mui/src/functions/toMuiTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/mui/src/"
+      },
+      {
+        "text": "pendo",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildPendoCssOptions",
+                "link": "/ar/api/renderers/pendo/src/interfaces/BuildPendoCssOptions.md"
+              },
+              {
+                "text": "AddScopeOptions",
+                "link": "/ar/api/renderers/pendo/src/interfaces/AddScopeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pendoCss",
+                "link": "/ar/api/renderers/pendo/src/variables/pendoCss.md"
+              },
+              {
+                "text": "LAYER_ORDER",
+                "link": "/ar/api/renderers/pendo/src/variables/LAYER_ORDER.md"
+              },
+              {
+                "text": "COMPONENTS",
+                "link": "/ar/api/renderers/pendo/src/variables/COMPONENTS.md"
+              },
+              {
+                "text": "addImportant",
+                "link": "/ar/api/renderers/pendo/src/variables/addImportant.md"
+              },
+              {
+                "text": "addScope",
+                "link": "/ar/api/renderers/pendo/src/variables/addScope.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildPendoCss",
+                "link": "/ar/api/renderers/pendo/src/functions/buildPendoCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/pendo/src/"
+      },
+      {
+        "text": "react",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconProps",
+                "link": "/ar/api/renderers/react/src/interfaces/IconProps.md"
+              },
+              {
+                "text": "TokenProviderProps",
+                "link": "/ar/api/renderers/react/src/interfaces/TokenProviderProps.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ar/api/renderers/react/src/functions/readToken.md"
+              },
+              {
+                "text": "useToken",
+                "link": "/ar/api/renderers/react/src/functions/useToken.md"
+              },
+              {
+                "text": "Icon",
+                "link": "/ar/api/renderers/react/src/functions/Icon.md"
+              },
+              {
+                "text": "TokenProvider",
+                "link": "/ar/api/renderers/react/src/functions/TokenProvider.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/react/src/"
+      },
+      {
+        "text": "react-markdown",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "InstuiMarkdownRenderOptions",
+                "link": "/ar/api/renderers/react-markdown/src/interfaces/InstuiMarkdownRenderOptions.md"
+              },
+              {
+                "text": "InstuiMarkdownProps",
+                "link": "/ar/api/renderers/react-markdown/src/interfaces/InstuiMarkdownProps.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "AlertMarker",
+                "link": "/ar/api/renderers/react-markdown/src/type-aliases/AlertMarker.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "instuiMarkdownComponents",
+                "link": "/ar/api/renderers/react-markdown/src/variables/instuiMarkdownComponents.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "createInstuiMarkdownComponents",
+                "link": "/ar/api/renderers/react-markdown/src/functions/createInstuiMarkdownComponents.md"
+              },
+              {
+                "text": "buildIconResolver",
+                "link": "/ar/api/renderers/react-markdown/src/functions/buildIconResolver.md"
+              },
+              {
+                "text": "parseAlertMarker",
+                "link": "/ar/api/renderers/react-markdown/src/functions/parseAlertMarker.md"
+              },
+              {
+                "text": "isColorValue",
+                "link": "/ar/api/renderers/react-markdown/src/functions/isColorValue.md"
+              },
+              {
+                "text": "rehypeColorCodes",
+                "link": "/ar/api/renderers/react-markdown/src/functions/rehypeColorCodes.md"
+              },
+              {
+                "text": "rehypeGithubAlerts",
+                "link": "/ar/api/renderers/react-markdown/src/functions/rehypeGithubAlerts.md"
+              },
+              {
+                "text": "InstuiMarkdown",
+                "link": "/ar/api/renderers/react-markdown/src/functions/InstuiMarkdown.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/react-markdown/src/"
+      },
+      {
+        "text": "react-native",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RNTokenValue",
+                "link": "/ar/api/renderers/react-native/src/type-aliases/RNTokenValue.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "light",
+                "link": "/ar/api/renderers/react-native/src/variables/light.md"
+              },
+              {
+                "text": "dark",
+                "link": "/ar/api/renderers/react-native/src/variables/dark.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokensForScheme",
+                "link": "/ar/api/renderers/react-native/src/functions/tokensForScheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/react-native/src/"
+      },
+      {
+        "text": "rehype",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "RehypeOptions",
+                "link": "/ar/api/renderers/rehype/src/interfaces/RehypeOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "rehypePantokenIcons",
+                "link": "/ar/api/renderers/rehype/src/functions/rehypePantokenIcons.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/rehype/src/"
+      },
+      {
+        "text": "shadcn",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToShadcnCssOptions",
+                "link": "/ar/api/renderers/shadcn/src/interfaces/ToShadcnCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "shadcnCss",
+                "link": "/ar/api/renderers/shadcn/src/variables/shadcnCss.md"
+              },
+              {
+                "text": "SHADCN_TO_INSTUI",
+                "link": "/ar/api/renderers/shadcn/src/variables/SHADCN_TO_INSTUI.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toShadcnCss",
+                "link": "/ar/api/renderers/shadcn/src/functions/toShadcnCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/shadcn/src/"
+      },
+      {
+        "text": "storybook",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "StorybookTheme",
+                "link": "/ar/api/renderers/storybook/src/type-aliases/StorybookTheme.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenStorybookTheme",
+                "link": "/ar/api/renderers/storybook/src/functions/pantokenStorybookTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/storybook/src/"
+      },
+      {
+        "text": "svelte",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ActionResult",
+                "link": "/ar/api/renderers/svelte/src/interfaces/ActionResult.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "registerLocalized",
+                "link": "/ar/api/renderers/svelte/src/functions/registerLocalized.md"
+              },
+              {
+                "text": "readToken",
+                "link": "/ar/api/renderers/svelte/src/functions/readToken.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ar/api/renderers/svelte/src/functions/icon.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/svelte/src/"
+      },
+      {
+        "text": "tinymce",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssDocEntry",
+                "link": "/ar/api/renderers/tinymce/src/interfaces/CssDocEntry.md"
+              },
+              {
+                "text": "PageLayout",
+                "link": "/ar/api/renderers/tinymce/src/interfaces/PageLayout.md"
+              },
+              {
+                "text": "LogoMeta",
+                "link": "/ar/api/renderers/tinymce/src/interfaces/LogoMeta.md"
+              },
+              {
+                "text": "TaggedIcon",
+                "link": "/ar/api/renderers/tinymce/src/interfaces/TaggedIcon.md"
+              },
+              {
+                "text": "LayoutsPluginOptions",
+                "link": "/ar/api/renderers/tinymce/src/interfaces/LayoutsPluginOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Product",
+                "link": "/ar/api/renderers/tinymce/src/type-aliases/Product.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pageLayouts",
+                "link": "/ar/api/renderers/tinymce/src/variables/pageLayouts.md"
+              },
+              {
+                "text": "logos",
+                "link": "/ar/api/renderers/tinymce/src/variables/logos.md"
+              },
+              {
+                "text": "products",
+                "link": "/ar/api/renderers/tinymce/src/variables/products.md"
+              },
+              {
+                "text": "LAYOUTS_PLUGIN_NAME",
+                "link": "/ar/api/renderers/tinymce/src/variables/LAYOUTS_PLUGIN_NAME.md"
+              },
+              {
+                "text": "LAYOUTS_TOOLBAR_NAME",
+                "link": "/ar/api/renderers/tinymce/src/variables/LAYOUTS_TOOLBAR_NAME.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenHtmlCompletion",
+                "link": "/ar/api/renderers/tinymce/src/functions/pantokenHtmlCompletion.md"
+              },
+              {
+                "text": "pantokenHtmlLinter",
+                "link": "/ar/api/renderers/tinymce/src/functions/pantokenHtmlLinter.md"
+              },
+              {
+                "text": "pantokenContentCssUrls",
+                "link": "/ar/api/renderers/tinymce/src/functions/pantokenContentCssUrls.md"
+              },
+              {
+                "text": "injectContentStylesheet",
+                "link": "/ar/api/renderers/tinymce/src/functions/injectContentStylesheet.md"
+              },
+              {
+                "text": "findEntry",
+                "link": "/ar/api/renderers/tinymce/src/functions/findEntry.md"
+              },
+              {
+                "text": "listComponents",
+                "link": "/ar/api/renderers/tinymce/src/functions/listComponents.md"
+              },
+              {
+                "text": "listUtilities",
+                "link": "/ar/api/renderers/tinymce/src/functions/listUtilities.md"
+              },
+              {
+                "text": "getModifierSuggestions",
+                "link": "/ar/api/renderers/tinymce/src/functions/getModifierSuggestions.md"
+              },
+              {
+                "text": "validateClassToken",
+                "link": "/ar/api/renderers/tinymce/src/functions/validateClassToken.md"
+              },
+              {
+                "text": "loadAllIcons",
+                "link": "/ar/api/renderers/tinymce/src/functions/loadAllIcons.md"
+              },
+              {
+                "text": "getIconCdnFile",
+                "link": "/ar/api/renderers/tinymce/src/functions/getIconCdnFile.md"
+              },
+              {
+                "text": "createComponentsPlugin",
+                "link": "/ar/api/renderers/tinymce/src/functions/createComponentsPlugin.md"
+              },
+              {
+                "text": "createIconsPlugin",
+                "link": "/ar/api/renderers/tinymce/src/functions/createIconsPlugin.md"
+              },
+              {
+                "text": "createLayoutsPlugin",
+                "link": "/ar/api/renderers/tinymce/src/functions/createLayoutsPlugin.md"
+              },
+              {
+                "text": "createLogosPlugin",
+                "link": "/ar/api/renderers/tinymce/src/functions/createLogosPlugin.md"
+              },
+              {
+                "text": "createTemplatesPlugin",
+                "link": "/ar/api/renderers/tinymce/src/functions/createTemplatesPlugin.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/tinymce/src/"
+      },
+      {
+        "text": "vitepress",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToVitePressCssOptions",
+                "link": "/ar/api/renderers/vitepress/src/interfaces/ToVitePressCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "VITEPRESS_TO_INSTUI",
+                "link": "/ar/api/renderers/vitepress/src/variables/VITEPRESS_TO_INSTUI.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/vitepress/src/"
+      },
+      {
+        "text": "vue",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenVue",
+                "link": "/ar/api/renderers/vue/src/variables/PantokenVue.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "readToken",
+                "link": "/ar/api/renderers/vue/src/functions/readToken.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ar/api/renderers/vue/src/functions/iconSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/vue/src/"
+      },
+      {
+        "text": "web-components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandEventish",
+                "link": "/ar/api/renderers/web-components/src/interfaces/CommandEventish.md"
+              },
+              {
+                "text": "ElementRegistry",
+                "link": "/ar/api/renderers/web-components/src/interfaces/ElementRegistry.md"
+              },
+              {
+                "text": "RegisterContext",
+                "link": "/ar/api/renderers/web-components/src/interfaces/RegisterContext.md"
+              },
+              {
+                "text": "ElementDefinition",
+                "link": "/ar/api/renderers/web-components/src/interfaces/ElementDefinition.md"
+              },
+              {
+                "text": "RegisterContextOptions",
+                "link": "/ar/api/renderers/web-components/src/interfaces/RegisterContextOptions.md"
+              },
+              {
+                "text": "WebComponentStrings",
+                "link": "/ar/api/renderers/web-components/src/interfaces/WebComponentStrings.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alert",
+                "link": "/ar/api/renderers/web-components/src/variables/alert.md"
+              },
+              {
+                "text": "avatar",
+                "link": "/ar/api/renderers/web-components/src/variables/avatar.md"
+              },
+              {
+                "text": "badge",
+                "link": "/ar/api/renderers/web-components/src/variables/badge.md"
+              },
+              {
+                "text": "button",
+                "link": "/ar/api/renderers/web-components/src/variables/button.md"
+              },
+              {
+                "text": "calendar",
+                "link": "/ar/api/renderers/web-components/src/variables/calendar.md"
+              },
+              {
+                "text": "contextView",
+                "link": "/ar/api/renderers/web-components/src/variables/contextView.md"
+              },
+              {
+                "text": "dateInput",
+                "link": "/ar/api/renderers/web-components/src/variables/dateInput.md"
+              },
+              {
+                "text": "dateTimeInput",
+                "link": "/ar/api/renderers/web-components/src/variables/dateTimeInput.md"
+              },
+              {
+                "text": "drawerLayout",
+                "link": "/ar/api/renderers/web-components/src/variables/drawerLayout.md"
+              },
+              {
+                "text": "drilldown",
+                "link": "/ar/api/renderers/web-components/src/variables/drilldown.md"
+              },
+              {
+                "text": "iconButton",
+                "link": "/ar/api/renderers/web-components/src/variables/iconButton.md"
+              },
+              {
+                "text": "icon",
+                "link": "/ar/api/renderers/web-components/src/variables/icon.md"
+              },
+              {
+                "text": "img",
+                "link": "/ar/api/renderers/web-components/src/variables/img.md"
+              },
+              {
+                "text": "inPlaceEdit",
+                "link": "/ar/api/renderers/web-components/src/variables/inPlaceEdit.md"
+              },
+              {
+                "text": "DEFINITIONS",
+                "link": "/ar/api/renderers/web-components/src/variables/DEFINITIONS.md"
+              },
+              {
+                "text": "metric",
+                "link": "/ar/api/renderers/web-components/src/variables/metric.md"
+              },
+              {
+                "text": "modal",
+                "link": "/ar/api/renderers/web-components/src/variables/modal.md"
+              },
+              {
+                "text": "pages",
+                "link": "/ar/api/renderers/web-components/src/variables/pages.md"
+              },
+              {
+                "text": "pill",
+                "link": "/ar/api/renderers/web-components/src/variables/pill.md"
+              },
+              {
+                "text": "popover",
+                "link": "/ar/api/renderers/web-components/src/variables/popover.md"
+              },
+              {
+                "text": "progressCircle",
+                "link": "/ar/api/renderers/web-components/src/variables/progressCircle.md"
+              },
+              {
+                "text": "progress",
+                "link": "/ar/api/renderers/web-components/src/variables/progress.md"
+              },
+              {
+                "text": "rating",
+                "link": "/ar/api/renderers/web-components/src/variables/rating.md"
+              },
+              {
+                "text": "sideNavBar",
+                "link": "/ar/api/renderers/web-components/src/variables/sideNavBar.md"
+              },
+              {
+                "text": "spinner",
+                "link": "/ar/api/renderers/web-components/src/variables/spinner.md"
+              },
+              {
+                "text": "tag",
+                "link": "/ar/api/renderers/web-components/src/variables/tag.md"
+              },
+              {
+                "text": "toggleButton",
+                "link": "/ar/api/renderers/web-components/src/variables/toggleButton.md"
+              },
+              {
+                "text": "tooltip",
+                "link": "/ar/api/renderers/web-components/src/variables/tooltip.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ar/api/renderers/web-components/src/variables/tray.md"
+              },
+              {
+                "text": "treeBrowser",
+                "link": "/ar/api/renderers/web-components/src/variables/treeBrowser.md"
+              },
+              {
+                "text": "truncate",
+                "link": "/ar/api/renderers/web-components/src/variables/truncate.md"
+              },
+              {
+                "text": "ELEMENTS",
+                "link": "/ar/api/renderers/web-components/src/variables/ELEMENTS.md"
+              },
+              {
+                "text": "NESTED_DEPS",
+                "link": "/ar/api/renderers/web-components/src/variables/NESTED_DEPS.md"
+              },
+              {
+                "text": "ICON_ELEMENTS",
+                "link": "/ar/api/renderers/web-components/src/variables/ICON_ELEMENTS.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ar/api/renderers/web-components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "ENGLISH_STRINGS",
+                "link": "/ar/api/renderers/web-components/src/variables/ENGLISH_STRINGS.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "register",
+                "link": "/ar/api/renderers/web-components/src/functions/register.md"
+              },
+              {
+                "text": "iconSvg",
+                "link": "/ar/api/renderers/web-components/src/functions/iconSvg.md"
+              },
+              {
+                "text": "noopIconSvg",
+                "link": "/ar/api/renderers/web-components/src/functions/noopIconSvg.md"
+              },
+              {
+                "text": "buildRegisterContext",
+                "link": "/ar/api/renderers/web-components/src/functions/buildRegisterContext.md"
+              },
+              {
+                "text": "resolveFirstDay",
+                "link": "/ar/api/renderers/web-components/src/functions/resolveFirstDay.md"
+              },
+              {
+                "text": "makeStrings",
+                "link": "/ar/api/renderers/web-components/src/functions/makeStrings.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/renderers/web-components/src/"
+      }
+    ]
+  },
+  {
+    "text": "packages",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "cli",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CliArgs",
+                "link": "/ar/api/packages/cli/src/interfaces/CliArgs.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "parseArgs",
+                "link": "/ar/api/packages/cli/src/functions/parseArgs.md"
+              },
+              {
+                "text": "run",
+                "link": "/ar/api/packages/cli/src/functions/run.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/packages/cli/src/"
+      },
+      {
+        "text": "core",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "BuildTokensOptions",
+                "link": "/ar/api/packages/core/src/interfaces/BuildTokensOptions.md"
+              },
+              {
+                "text": "VectorDrawableOptions",
+                "link": "/ar/api/packages/core/src/interfaces/VectorDrawableOptions.md"
+              },
+              {
+                "text": "AssetFile",
+                "link": "/ar/api/packages/core/src/interfaces/AssetFile.md"
+              },
+              {
+                "text": "CollectIconsOptions",
+                "link": "/ar/api/packages/core/src/interfaces/CollectIconsOptions.md"
+              },
+              {
+                "text": "IconToken",
+                "link": "/ar/api/packages/core/src/interfaces/IconToken.md"
+              },
+              {
+                "text": "IconLayer",
+                "link": "/ar/api/packages/core/src/interfaces/IconLayer.md"
+              },
+              {
+                "text": "Leaf",
+                "link": "/ar/api/packages/core/src/interfaces/Leaf.md"
+              },
+              {
+                "text": "SdLeaf",
+                "link": "/ar/api/packages/core/src/interfaces/SdLeaf.md"
+              },
+              {
+                "text": "TokenModify",
+                "link": "/ar/api/packages/core/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ar/api/packages/core/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "رمز",
+                "link": "/ar/api/packages/core/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ar/api/packages/core/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ar/api/packages/core/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ar/api/packages/core/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ar/api/packages/core/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ar/api/packages/core/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ar/api/packages/core/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ar/api/packages/core/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ar/api/packages/core/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ar/api/packages/core/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ar/api/packages/core/src/type-aliases/IconResolver.md"
+              },
+              {
+                "text": "Mode",
+                "link": "/ar/api/packages/core/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ICON_COLOR_SPECIAL_VALUES",
+                "link": "/ar/api/packages/core/src/variables/ICON_COLOR_SPECIAL_VALUES.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildTokens",
+                "link": "/ar/api/packages/core/src/functions/buildTokens.md"
+              },
+              {
+                "text": "applyModify",
+                "link": "/ar/api/packages/core/src/functions/applyModify.md"
+              },
+              {
+                "text": "decodeIconSvg",
+                "link": "/ar/api/packages/core/src/functions/decodeIconSvg.md"
+              },
+              {
+                "text": "getIconSvgs",
+                "link": "/ar/api/packages/core/src/functions/getIconSvgs.md"
+              },
+              {
+                "text": "toVectorDrawable",
+                "link": "/ar/api/packages/core/src/functions/toVectorDrawable.md"
+              },
+              {
+                "text": "toXcodeImageset",
+                "link": "/ar/api/packages/core/src/functions/toXcodeImageset.md"
+              },
+              {
+                "text": "flutterIconManifest",
+                "link": "/ar/api/packages/core/src/functions/flutterIconManifest.md"
+              },
+              {
+                "text": "collectIcons",
+                "link": "/ar/api/packages/core/src/functions/collectIcons.md"
+              },
+              {
+                "text": "defineToken",
+                "link": "/ar/api/packages/core/src/functions/defineToken.md"
+              },
+              {
+                "text": "dedupeByName",
+                "link": "/ar/api/packages/core/src/functions/dedupeByName.md"
+              },
+              {
+                "text": "runTokenPlugins",
+                "link": "/ar/api/packages/core/src/functions/runTokenPlugins.md"
+              },
+              {
+                "text": "runIconPlugins",
+                "link": "/ar/api/packages/core/src/functions/runIconPlugins.md"
+              },
+              {
+                "text": "collectLeaves",
+                "link": "/ar/api/packages/core/src/functions/collectLeaves.md"
+              },
+              {
+                "text": "referenceToVarName",
+                "link": "/ar/api/packages/core/src/functions/referenceToVarName.md"
+              },
+              {
+                "text": "resolveValue",
+                "link": "/ar/api/packages/core/src/functions/resolveValue.md"
+              },
+              {
+                "text": "varName",
+                "link": "/ar/api/packages/core/src/functions/varName.md"
+              },
+              {
+                "text": "resolveReferences",
+                "link": "/ar/api/packages/core/src/functions/resolveReferences.md"
+              },
+              {
+                "text": "toStyleDictionary",
+                "link": "/ar/api/packages/core/src/functions/toStyleDictionary.md"
+              },
+              {
+                "text": "toKebab",
+                "link": "/ar/api/packages/core/src/functions/toKebab.md"
+              },
+              {
+                "text": "cssSyntaxForValue",
+                "link": "/ar/api/packages/core/src/functions/cssSyntaxForValue.md"
+              },
+              {
+                "text": "isContextual",
+                "link": "/ar/api/packages/core/src/functions/isContextual.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/packages/core/src/"
+      },
+      {
+        "text": "model",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TokenModify",
+                "link": "/ar/api/packages/model/src/interfaces/TokenModify.md"
+              },
+              {
+                "text": "TokenMeta",
+                "link": "/ar/api/packages/model/src/interfaces/TokenMeta.md"
+              },
+              {
+                "text": "DeprecationEntry",
+                "link": "/ar/api/packages/model/src/interfaces/DeprecationEntry.md"
+              },
+              {
+                "text": "DeprecationLedger",
+                "link": "/ar/api/packages/model/src/interfaces/DeprecationLedger.md"
+              },
+              {
+                "text": "رمز",
+                "link": "/ar/api/packages/model/src/interfaces/Token.md"
+              },
+              {
+                "text": "TokenInput",
+                "link": "/ar/api/packages/model/src/interfaces/TokenInput.md"
+              },
+              {
+                "text": "IconEntry",
+                "link": "/ar/api/packages/model/src/interfaces/IconEntry.md"
+              },
+              {
+                "text": "PropertyRule",
+                "link": "/ar/api/packages/model/src/interfaces/PropertyRule.md"
+              },
+              {
+                "text": "CssContribution",
+                "link": "/ar/api/packages/model/src/interfaces/CssContribution.md"
+              },
+              {
+                "text": "TokenHookContext",
+                "link": "/ar/api/packages/model/src/interfaces/TokenHookContext.md"
+              },
+              {
+                "text": "IconHookContext",
+                "link": "/ar/api/packages/model/src/interfaces/IconHookContext.md"
+              },
+              {
+                "text": "CssHookContext",
+                "link": "/ar/api/packages/model/src/interfaces/CssHookContext.md"
+              },
+              {
+                "text": "RehypeHookContext",
+                "link": "/ar/api/packages/model/src/interfaces/RehypeHookContext.md"
+              },
+              {
+                "text": "PantokenPlugin",
+                "link": "/ar/api/packages/model/src/interfaces/PantokenPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Theme",
+                "link": "/ar/api/packages/model/src/type-aliases/Theme.md"
+              },
+              {
+                "text": "UpstreamRef",
+                "link": "/ar/api/packages/model/src/type-aliases/UpstreamRef.md"
+              },
+              {
+                "text": "IconResolver",
+                "link": "/ar/api/packages/model/src/type-aliases/IconResolver.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "defineToken",
+                "link": "/ar/api/packages/model/src/functions/defineToken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/packages/model/src/"
+      },
+      {
+        "text": "plugin-kit",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ResolveOptions",
+                "link": "/ar/api/packages/plugin-kit/src/interfaces/ResolveOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Stage",
+                "link": "/ar/api/packages/plugin-kit/src/type-aliases/Stage.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "definePlugin",
+                "link": "/ar/api/packages/plugin-kit/src/functions/definePlugin.md"
+              },
+              {
+                "text": "isFactoried",
+                "link": "/ar/api/packages/plugin-kit/src/functions/isFactoried.md"
+              },
+              {
+                "text": "validatePlugin",
+                "link": "/ar/api/packages/plugin-kit/src/functions/validatePlugin.md"
+              },
+              {
+                "text": "capabilitiesOf",
+                "link": "/ar/api/packages/plugin-kit/src/functions/capabilitiesOf.md"
+              },
+              {
+                "text": "checkPlugins",
+                "link": "/ar/api/packages/plugin-kit/src/functions/checkPlugins.md"
+              },
+              {
+                "text": "extendPlugin",
+                "link": "/ar/api/packages/plugin-kit/src/functions/extendPlugin.md"
+              },
+              {
+                "text": "mergePlugin",
+                "link": "/ar/api/packages/plugin-kit/src/functions/mergePlugin.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ar/api/packages/plugin-kit/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ar/api/packages/plugin-kit/src/functions/resolveTokens.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/packages/plugin-kit/src/"
+      },
+      {
+        "text": "utils",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Rgba",
+                "link": "/ar/api/packages/utils/src/interfaces/Rgba.md"
+              },
+              {
+                "text": "ResolveOptions",
+                "link": "/ar/api/packages/utils/src/interfaces/ResolveOptions.md"
+              },
+              {
+                "text": "SpacingStep",
+                "link": "/ar/api/packages/utils/src/interfaces/SpacingStep.md"
+              },
+              {
+                "text": "UtilityOptions",
+                "link": "/ar/api/packages/utils/src/interfaces/UtilityOptions.md"
+              },
+              {
+                "text": "ColorUtilityNames",
+                "link": "/ar/api/packages/utils/src/interfaces/ColorUtilityNames.md"
+              },
+              {
+                "text": "TokenUtilityGroup",
+                "link": "/ar/api/packages/utils/src/interfaces/TokenUtilityGroup.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ar/api/packages/utils/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "ColorUtilityEntry",
+                "link": "/ar/api/packages/utils/src/type-aliases/ColorUtilityEntry.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ar/api/packages/utils/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ar/api/packages/utils/src/variables/FOCUSABLE_SELECTOR.md"
+              },
+              {
+                "text": "VAR_RE",
+                "link": "/ar/api/packages/utils/src/variables/VAR_RE.md"
+              },
+              {
+                "text": "LIGHT_DARK_RE",
+                "link": "/ar/api/packages/utils/src/variables/LIGHT_DARK_RE.md"
+              },
+              {
+                "text": "SPACING_STEPS",
+                "link": "/ar/api/packages/utils/src/variables/SPACING_STEPS.md"
+              },
+              {
+                "text": "SPACING_AUTO_STEP",
+                "link": "/ar/api/packages/utils/src/variables/SPACING_AUTO_STEP.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "camelCase",
+                "link": "/ar/api/packages/utils/src/functions/camelCase.md"
+              },
+              {
+                "text": "parseHexColor",
+                "link": "/ar/api/packages/utils/src/functions/parseHexColor.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ar/api/packages/utils/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ar/api/packages/utils/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ar/api/packages/utils/src/functions/focusOutlineRules.md"
+              },
+              {
+                "text": "extractInstuiRefs",
+                "link": "/ar/api/packages/utils/src/functions/extractInstuiRefs.md"
+              },
+              {
+                "text": "tokenNames",
+                "link": "/ar/api/packages/utils/src/functions/tokenNames.md"
+              },
+              {
+                "text": "unknownReferences",
+                "link": "/ar/api/packages/utils/src/functions/unknownReferences.md"
+              },
+              {
+                "text": "danglingReferences",
+                "link": "/ar/api/packages/utils/src/functions/danglingReferences.md"
+              },
+              {
+                "text": "makeResolver",
+                "link": "/ar/api/packages/utils/src/functions/makeResolver.md"
+              },
+              {
+                "text": "resolveTokens",
+                "link": "/ar/api/packages/utils/src/functions/resolveTokens.md"
+              },
+              {
+                "text": "sanitizeSvg",
+                "link": "/ar/api/packages/utils/src/functions/sanitizeSvg.md"
+              },
+              {
+                "text": "globalModifierSelector",
+                "link": "/ar/api/packages/utils/src/functions/globalModifierSelector.md"
+              },
+              {
+                "text": "colorUtilitiesCss",
+                "link": "/ar/api/packages/utils/src/functions/colorUtilitiesCss.md"
+              },
+              {
+                "text": "tokenUtilitiesCss",
+                "link": "/ar/api/packages/utils/src/functions/tokenUtilitiesCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/packages/utils/src/"
+      }
+    ]
+  },
+  {
+    "text": "formats",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "components",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ComponentOptions",
+                "link": "/ar/api/formats/components/src/interfaces/ComponentOptions.md"
+              },
+              {
+                "text": "ProseOptions",
+                "link": "/ar/api/formats/components/src/interfaces/ProseOptions.md"
+              },
+              {
+                "text": "IconGlyphsOptions",
+                "link": "/ar/api/formats/components/src/interfaces/IconGlyphsOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "alertCss",
+                "link": "/ar/api/formats/components/src/variables/alertCss.md"
+              },
+              {
+                "text": "avatarCss",
+                "link": "/ar/api/formats/components/src/variables/avatarCss.md"
+              },
+              {
+                "text": "badgeCss",
+                "link": "/ar/api/formats/components/src/variables/badgeCss.md"
+              },
+              {
+                "text": "billboardCss",
+                "link": "/ar/api/formats/components/src/variables/billboardCss.md"
+              },
+              {
+                "text": "breadcrumbCss",
+                "link": "/ar/api/formats/components/src/variables/breadcrumbCss.md"
+              },
+              {
+                "text": "breadcrumbLinkCss",
+                "link": "/ar/api/formats/components/src/variables/breadcrumbLinkCss.md"
+              },
+              {
+                "text": "buttonCss",
+                "link": "/ar/api/formats/components/src/variables/buttonCss.md"
+              },
+              {
+                "text": "bylineCss",
+                "link": "/ar/api/formats/components/src/variables/bylineCss.md"
+              },
+              {
+                "text": "calendarCss",
+                "link": "/ar/api/formats/components/src/variables/calendarCss.md"
+              },
+              {
+                "text": "calendarDayCss",
+                "link": "/ar/api/formats/components/src/variables/calendarDayCss.md"
+              },
+              {
+                "text": "checkboxCss",
+                "link": "/ar/api/formats/components/src/variables/checkboxCss.md"
+              },
+              {
+                "text": "closeButtonCss",
+                "link": "/ar/api/formats/components/src/variables/closeButtonCss.md"
+              },
+              {
+                "text": "contextViewCss",
+                "link": "/ar/api/formats/components/src/variables/contextViewCss.md"
+              },
+              {
+                "text": "drawerLayoutCss",
+                "link": "/ar/api/formats/components/src/variables/drawerLayoutCss.md"
+              },
+              {
+                "text": "drawerLayoutContentCss",
+                "link": "/ar/api/formats/components/src/variables/drawerLayoutContentCss.md"
+              },
+              {
+                "text": "drawerLayoutTrayCss",
+                "link": "/ar/api/formats/components/src/variables/drawerLayoutTrayCss.md"
+              },
+              {
+                "text": "fileDropCss",
+                "link": "/ar/api/formats/components/src/variables/fileDropCss.md"
+              },
+              {
+                "text": "formFieldGroupCss",
+                "link": "/ar/api/formats/components/src/variables/formFieldGroupCss.md"
+              },
+              {
+                "text": "formFieldMessagesCss",
+                "link": "/ar/api/formats/components/src/variables/formFieldMessagesCss.md"
+              },
+              {
+                "text": "formFieldCss",
+                "link": "/ar/api/formats/components/src/variables/formFieldCss.md"
+              },
+              {
+                "text": "headingCss",
+                "link": "/ar/api/formats/components/src/variables/headingCss.md"
+              },
+              {
+                "text": "imgCss",
+                "link": "/ar/api/formats/components/src/variables/imgCss.md"
+              },
+              {
+                "text": "inPlaceEditCss",
+                "link": "/ar/api/formats/components/src/variables/inPlaceEditCss.md"
+              },
+              {
+                "text": "inputGroupCss",
+                "link": "/ar/api/formats/components/src/variables/inputGroupCss.md"
+              },
+              {
+                "text": "linkCss",
+                "link": "/ar/api/formats/components/src/variables/linkCss.md"
+              },
+              {
+                "text": "listCss",
+                "link": "/ar/api/formats/components/src/variables/listCss.md"
+              },
+              {
+                "text": "listItemCss",
+                "link": "/ar/api/formats/components/src/variables/listItemCss.md"
+              },
+              {
+                "text": "maskCss",
+                "link": "/ar/api/formats/components/src/variables/maskCss.md"
+              },
+              {
+                "text": "menuCss",
+                "link": "/ar/api/formats/components/src/variables/menuCss.md"
+              },
+              {
+                "text": "menuGroupCss",
+                "link": "/ar/api/formats/components/src/variables/menuGroupCss.md"
+              },
+              {
+                "text": "menuItemCss",
+                "link": "/ar/api/formats/components/src/variables/menuItemCss.md"
+              },
+              {
+                "text": "menuSeparatorCss",
+                "link": "/ar/api/formats/components/src/variables/menuSeparatorCss.md"
+              },
+              {
+                "text": "metricCss",
+                "link": "/ar/api/formats/components/src/variables/metricCss.md"
+              },
+              {
+                "text": "modalCss",
+                "link": "/ar/api/formats/components/src/variables/modalCss.md"
+              },
+              {
+                "text": "modalBodyCss",
+                "link": "/ar/api/formats/components/src/variables/modalBodyCss.md"
+              },
+              {
+                "text": "modalFooterCss",
+                "link": "/ar/api/formats/components/src/variables/modalFooterCss.md"
+              },
+              {
+                "text": "modalHeaderCss",
+                "link": "/ar/api/formats/components/src/variables/modalHeaderCss.md"
+              },
+              {
+                "text": "numberInputCss",
+                "link": "/ar/api/formats/components/src/variables/numberInputCss.md"
+              },
+              {
+                "text": "paginationCss",
+                "link": "/ar/api/formats/components/src/variables/paginationCss.md"
+              },
+              {
+                "text": "paginationPageCss",
+                "link": "/ar/api/formats/components/src/variables/paginationPageCss.md"
+              },
+              {
+                "text": "pillCss",
+                "link": "/ar/api/formats/components/src/variables/pillCss.md"
+              },
+              {
+                "text": "popoverCss",
+                "link": "/ar/api/formats/components/src/variables/popoverCss.md"
+              },
+              {
+                "text": "progressCircleCss",
+                "link": "/ar/api/formats/components/src/variables/progressCircleCss.md"
+              },
+              {
+                "text": "progressCss",
+                "link": "/ar/api/formats/components/src/variables/progressCss.md"
+              },
+              {
+                "text": "radioInputGroupCss",
+                "link": "/ar/api/formats/components/src/variables/radioInputGroupCss.md"
+              },
+              {
+                "text": "radioCss",
+                "link": "/ar/api/formats/components/src/variables/radioCss.md"
+              },
+              {
+                "text": "rangeInputCss",
+                "link": "/ar/api/formats/components/src/variables/rangeInputCss.md"
+              },
+              {
+                "text": "ratingCss",
+                "link": "/ar/api/formats/components/src/variables/ratingCss.md"
+              },
+              {
+                "text": "sideNavBarCss",
+                "link": "/ar/api/formats/components/src/variables/sideNavBarCss.md"
+              },
+              {
+                "text": "sideNavBarItemCss",
+                "link": "/ar/api/formats/components/src/variables/sideNavBarItemCss.md"
+              },
+              {
+                "text": "simpleSelectCss",
+                "link": "/ar/api/formats/components/src/variables/simpleSelectCss.md"
+              },
+              {
+                "text": "spinnerCss",
+                "link": "/ar/api/formats/components/src/variables/spinnerCss.md"
+              },
+              {
+                "text": "tableCss",
+                "link": "/ar/api/formats/components/src/variables/tableCss.md"
+              },
+              {
+                "text": "tableBodyCss",
+                "link": "/ar/api/formats/components/src/variables/tableBodyCss.md"
+              },
+              {
+                "text": "tableCellCss",
+                "link": "/ar/api/formats/components/src/variables/tableCellCss.md"
+              },
+              {
+                "text": "tableColHeaderCss",
+                "link": "/ar/api/formats/components/src/variables/tableColHeaderCss.md"
+              },
+              {
+                "text": "tableHeadCss",
+                "link": "/ar/api/formats/components/src/variables/tableHeadCss.md"
+              },
+              {
+                "text": "tableRowHeaderCss",
+                "link": "/ar/api/formats/components/src/variables/tableRowHeaderCss.md"
+              },
+              {
+                "text": "tableRowCss",
+                "link": "/ar/api/formats/components/src/variables/tableRowCss.md"
+              },
+              {
+                "text": "tabsCss",
+                "link": "/ar/api/formats/components/src/variables/tabsCss.md"
+              },
+              {
+                "text": "tabsPanelCss",
+                "link": "/ar/api/formats/components/src/variables/tabsPanelCss.md"
+              },
+              {
+                "text": "tabsTabCss",
+                "link": "/ar/api/formats/components/src/variables/tabsTabCss.md"
+              },
+              {
+                "text": "tagCss",
+                "link": "/ar/api/formats/components/src/variables/tagCss.md"
+              },
+              {
+                "text": "textAreaCss",
+                "link": "/ar/api/formats/components/src/variables/textAreaCss.md"
+              },
+              {
+                "text": "textInputCss",
+                "link": "/ar/api/formats/components/src/variables/textInputCss.md"
+              },
+              {
+                "text": "textCss",
+                "link": "/ar/api/formats/components/src/variables/textCss.md"
+              },
+              {
+                "text": "toggleDetailsCss",
+                "link": "/ar/api/formats/components/src/variables/toggleDetailsCss.md"
+              },
+              {
+                "text": "toggleGroupCss",
+                "link": "/ar/api/formats/components/src/variables/toggleGroupCss.md"
+              },
+              {
+                "text": "tooltipCss",
+                "link": "/ar/api/formats/components/src/variables/tooltipCss.md"
+              },
+              {
+                "text": "trayCss",
+                "link": "/ar/api/formats/components/src/variables/trayCss.md"
+              },
+              {
+                "text": "treeBrowserCss",
+                "link": "/ar/api/formats/components/src/variables/treeBrowserCss.md"
+              },
+              {
+                "text": "viewCss",
+                "link": "/ar/api/formats/components/src/variables/viewCss.md"
+              },
+              {
+                "text": "DEFAULT_PREFIX",
+                "link": "/ar/api/formats/components/src/variables/DEFAULT_PREFIX.md"
+              },
+              {
+                "text": "cursorUtilitiesCss",
+                "link": "/ar/api/formats/components/src/variables/cursorUtilitiesCss.md"
+              },
+              {
+                "text": "gapCss",
+                "link": "/ar/api/formats/components/src/variables/gapCss.md"
+              },
+              {
+                "text": "iconCss",
+                "link": "/ar/api/formats/components/src/variables/iconCss.md"
+              },
+              {
+                "text": "layoutUtilitiesCss",
+                "link": "/ar/api/formats/components/src/variables/layoutUtilitiesCss.md"
+              },
+              {
+                "text": "maskUtilityCss",
+                "link": "/ar/api/formats/components/src/variables/maskUtilityCss.md"
+              },
+              {
+                "text": "overflowUtilitiesCss",
+                "link": "/ar/api/formats/components/src/variables/overflowUtilitiesCss.md"
+              },
+              {
+                "text": "positionUtilitiesCss",
+                "link": "/ar/api/formats/components/src/variables/positionUtilitiesCss.md"
+              },
+              {
+                "text": "responsiveUtilitiesCss",
+                "link": "/ar/api/formats/components/src/variables/responsiveUtilitiesCss.md"
+              },
+              {
+                "text": "screenReaderContentCss",
+                "link": "/ar/api/formats/components/src/variables/screenReaderContentCss.md"
+              },
+              {
+                "text": "spacingUtilitiesCss",
+                "link": "/ar/api/formats/components/src/variables/spacingUtilitiesCss.md"
+              },
+              {
+                "text": "stackingUtilityCss",
+                "link": "/ar/api/formats/components/src/variables/stackingUtilityCss.md"
+              },
+              {
+                "text": "transitionCss",
+                "link": "/ar/api/formats/components/src/variables/transitionCss.md"
+              },
+              {
+                "text": "truncateCss",
+                "link": "/ar/api/formats/components/src/variables/truncateCss.md"
+              },
+              {
+                "text": "visualDebugCss",
+                "link": "/ar/api/formats/components/src/variables/visualDebugCss.md"
+              },
+              {
+                "text": "ELEVATION_NAMES",
+                "link": "/ar/api/formats/components/src/variables/ELEVATION_NAMES.md"
+              },
+              {
+                "text": "FOCUSABLE_SELECTOR",
+                "link": "/ar/api/formats/components/src/variables/FOCUSABLE_SELECTOR.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "selectCss",
+                "link": "/ar/api/formats/components/src/functions/selectCss.md"
+              },
+              {
+                "text": "elevationCss",
+                "link": "/ar/api/formats/components/src/functions/elevationCss.md"
+              },
+              {
+                "text": "focusOutlineCss",
+                "link": "/ar/api/formats/components/src/functions/focusOutlineCss.md"
+              },
+              {
+                "text": "baseCss",
+                "link": "/ar/api/formats/components/src/functions/baseCss.md"
+              },
+              {
+                "text": "componentsCss",
+                "link": "/ar/api/formats/components/src/functions/componentsCss.md"
+              },
+              {
+                "text": "proseCss",
+                "link": "/ar/api/formats/components/src/functions/proseCss.md"
+              },
+              {
+                "text": "iconGlyphsCss",
+                "link": "/ar/api/formats/components/src/functions/iconGlyphsCss.md"
+              },
+              {
+                "text": "elevationDeclarations",
+                "link": "/ar/api/formats/components/src/functions/elevationDeclarations.md"
+              },
+              {
+                "text": "focusOutlineDeclarations",
+                "link": "/ar/api/formats/components/src/functions/focusOutlineDeclarations.md"
+              },
+              {
+                "text": "focusOutlineRules",
+                "link": "/ar/api/formats/components/src/functions/focusOutlineRules.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/components/src/"
+      },
+      {
+        "text": "css",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CssSection",
+                "link": "/ar/api/formats/css/src/interfaces/CssSection.md"
+              },
+              {
+                "text": "ToCssOptions",
+                "link": "/ar/api/formats/css/src/interfaces/ToCssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "css",
+                "link": "/ar/api/formats/css/src/variables/css.md"
+              },
+              {
+                "text": "leanCss",
+                "link": "/ar/api/formats/css/src/variables/leanCss.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildCssFile",
+                "link": "/ar/api/formats/css/src/functions/buildCssFile.md"
+              },
+              {
+                "text": "toCss",
+                "link": "/ar/api/formats/css/src/functions/toCss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/css/src/"
+      },
+      {
+        "text": "dtcg",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ar/api/formats/dtcg/src/type-aliases/Mode.md"
+              },
+              {
+                "text": "DtcgNode",
+                "link": "/ar/api/formats/dtcg/src/type-aliases/DtcgNode.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "dtcg",
+                "link": "/ar/api/formats/dtcg/src/variables/dtcg.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ar/api/formats/dtcg/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ar/api/formats/dtcg/src/functions/byTheme.md"
+              },
+              {
+                "text": "toDtcg",
+                "link": "/ar/api/formats/dtcg/src/functions/toDtcg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/dtcg/src/"
+      },
+      {
+        "text": "icon-font",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "IconFontResult",
+                "link": "/ar/api/formats/icon-font/src/interfaces/IconFontResult.md"
+              },
+              {
+                "text": "BuildIconFontOptions",
+                "link": "/ar/api/formats/icon-font/src/interfaces/BuildIconFontOptions.md"
+              },
+              {
+                "text": "GlyphPath",
+                "link": "/ar/api/formats/icon-font/src/interfaces/GlyphPath.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "buildIconFont",
+                "link": "/ar/api/formats/icon-font/src/functions/buildIconFont.md"
+              },
+              {
+                "text": "svgToGlyphPath",
+                "link": "/ar/api/formats/icon-font/src/functions/svgToGlyphPath.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/icon-font/src/"
+      },
+      {
+        "text": "icons",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenIcon",
+                "link": "/ar/api/formats/icons/src/interfaces/PantokenIcon.md"
+              },
+              {
+                "text": "IconResolverChainOptions",
+                "link": "/ar/api/formats/icons/src/interfaces/IconResolverChainOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "icons",
+                "link": "/ar/api/formats/icons/src/variables/icons.md"
+              },
+              {
+                "text": "iconsByName",
+                "link": "/ar/api/formats/icons/src/variables/iconsByName.md"
+              },
+              {
+                "text": "resolve",
+                "link": "/ar/api/formats/icons/src/variables/resolve.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "getIcon",
+                "link": "/ar/api/formats/icons/src/functions/getIcon.md"
+              },
+              {
+                "text": "buildIconResolverChain",
+                "link": "/ar/api/formats/icons/src/functions/buildIconResolverChain.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/icons/src/"
+      },
+      {
+        "text": "interactions",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ProgressCircleOptions",
+                "link": "/ar/api/formats/interactions/src/interfaces/ProgressCircleOptions.md"
+              },
+              {
+                "text": "ProgressCircleHandle",
+                "link": "/ar/api/formats/interactions/src/interfaces/ProgressCircleHandle.md"
+              },
+              {
+                "text": "RemoveOptions",
+                "link": "/ar/api/formats/interactions/src/interfaces/RemoveOptions.md"
+              },
+              {
+                "text": "RemoveHandle",
+                "link": "/ar/api/formats/interactions/src/interfaces/RemoveHandle.md"
+              },
+              {
+                "text": "TooltipOptions",
+                "link": "/ar/api/formats/interactions/src/interfaces/TooltipOptions.md"
+              },
+              {
+                "text": "TooltipHandle",
+                "link": "/ar/api/formats/interactions/src/interfaces/TooltipHandle.md"
+              },
+              {
+                "text": "TruncateAutoOptions",
+                "link": "/ar/api/formats/interactions/src/interfaces/TruncateAutoOptions.md"
+              },
+              {
+                "text": "TruncateAutoHandle",
+                "link": "/ar/api/formats/interactions/src/interfaces/TruncateAutoHandle.md"
+              },
+              {
+                "text": "CommandEventish",
+                "link": "/ar/api/formats/interactions/src/interfaces/CommandEventish.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "CommandHandler",
+                "link": "/ar/api/formats/interactions/src/type-aliases/CommandHandler.md"
+              },
+              {
+                "text": "OnCommand",
+                "link": "/ar/api/formats/interactions/src/type-aliases/OnCommand.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "SPACING_ATTRS",
+                "link": "/ar/api/formats/interactions/src/variables/SPACING_ATTRS.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "initCloseButton",
+                "link": "/ar/api/formats/interactions/src/functions/initCloseButton.md"
+              },
+              {
+                "text": "initInPlaceEdit",
+                "link": "/ar/api/formats/interactions/src/functions/initInPlaceEdit.md"
+              },
+              {
+                "text": "initModal",
+                "link": "/ar/api/formats/interactions/src/functions/initModal.md"
+              },
+              {
+                "text": "initProgressCircle",
+                "link": "/ar/api/formats/interactions/src/functions/initProgressCircle.md"
+              },
+              {
+                "text": "initRemove",
+                "link": "/ar/api/formats/interactions/src/functions/initRemove.md"
+              },
+              {
+                "text": "initResponsiveOverlay",
+                "link": "/ar/api/formats/interactions/src/functions/initResponsiveOverlay.md"
+              },
+              {
+                "text": "initTooltip",
+                "link": "/ar/api/formats/interactions/src/functions/initTooltip.md"
+              },
+              {
+                "text": "syncTruncateAutoLines",
+                "link": "/ar/api/formats/interactions/src/functions/syncTruncateAutoLines.md"
+              },
+              {
+                "text": "initTruncateAuto",
+                "link": "/ar/api/formats/interactions/src/functions/initTruncateAuto.md"
+              },
+              {
+                "text": "makeOnCommand",
+                "link": "/ar/api/formats/interactions/src/functions/makeOnCommand.md"
+              },
+              {
+                "text": "syncInvoker",
+                "link": "/ar/api/formats/interactions/src/functions/syncInvoker.md"
+              },
+              {
+                "text": "resolveSpace",
+                "link": "/ar/api/formats/interactions/src/functions/resolveSpace.md"
+              },
+              {
+                "text": "spacingValue",
+                "link": "/ar/api/formats/interactions/src/functions/spacingValue.md"
+              },
+              {
+                "text": "applySpacing",
+                "link": "/ar/api/formats/interactions/src/functions/applySpacing.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/interactions/src/"
+      },
+      {
+        "text": "less",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToLessOptions",
+                "link": "/ar/api/formats/less/src/interfaces/ToLessOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "less",
+                "link": "/ar/api/formats/less/src/variables/less.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toLess",
+                "link": "/ar/api/formats/less/src/functions/toLess.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/less/src/"
+      },
+      {
+        "text": "scss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToScssOptions",
+                "link": "/ar/api/formats/scss/src/interfaces/ToScssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "scss",
+                "link": "/ar/api/formats/scss/src/variables/scss.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toScss",
+                "link": "/ar/api/formats/scss/src/functions/toScss.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/scss/src/"
+      },
+      {
+        "text": "stylus",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToStylusOptions",
+                "link": "/ar/api/formats/stylus/src/interfaces/ToStylusOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "stylus",
+                "link": "/ar/api/formats/stylus/src/variables/stylus.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toStylus",
+                "link": "/ar/api/formats/stylus/src/functions/toStylus.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/stylus/src/"
+      },
+      {
+        "text": "tokens",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "tokens",
+                "link": "/ar/api/formats/tokens/src/variables/tokens.md"
+              },
+              {
+                "text": "rebrandTokens",
+                "link": "/ar/api/formats/tokens/src/variables/rebrandTokens.md"
+              },
+              {
+                "text": "canvasTokens",
+                "link": "/ar/api/formats/tokens/src/variables/canvasTokens.md"
+              },
+              {
+                "text": "canvasHighContrastTokens",
+                "link": "/ar/api/formats/tokens/src/variables/canvasHighContrastTokens.md"
+              },
+              {
+                "text": "themes",
+                "link": "/ar/api/formats/tokens/src/variables/themes.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "byTheme",
+                "link": "/ar/api/formats/tokens/src/functions/byTheme.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/formats/tokens/src/"
+      }
+    ]
+  },
+  {
+    "text": "design",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "figma",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "FigmaColor",
+                "link": "/ar/api/design/figma/src/interfaces/FigmaColor.md"
+              },
+              {
+                "text": "FigmaVariable",
+                "link": "/ar/api/design/figma/src/interfaces/FigmaVariable.md"
+              },
+              {
+                "text": "FigmaVariablesPayload",
+                "link": "/ar/api/design/figma/src/interfaces/FigmaVariablesPayload.md"
+              },
+              {
+                "text": "ToFigmaOptions",
+                "link": "/ar/api/design/figma/src/interfaces/ToFigmaOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toFigmaColor",
+                "link": "/ar/api/design/figma/src/functions/toFigmaColor.md"
+              },
+              {
+                "text": "toFigmaVariables",
+                "link": "/ar/api/design/figma/src/functions/toFigmaVariables.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/design/figma/src/"
+      },
+      {
+        "text": "swatches",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "ToGplOptions",
+                "link": "/ar/api/design/swatches/src/interfaces/ToGplOptions.md"
+              },
+              {
+                "text": "Swatch",
+                "link": "/ar/api/design/swatches/src/interfaces/Swatch.md"
+              },
+              {
+                "text": "Rgb",
+                "link": "/ar/api/design/swatches/src/interfaces/Rgb.md"
+              },
+              {
+                "text": "SketchPalette",
+                "link": "/ar/api/design/swatches/src/interfaces/SketchPalette.md"
+              },
+              {
+                "text": "ToSvgOptions",
+                "link": "/ar/api/design/swatches/src/interfaces/ToSvgOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "Mode",
+                "link": "/ar/api/design/swatches/src/type-aliases/Mode.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "swatches",
+                "link": "/ar/api/design/swatches/src/variables/swatches.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toAse",
+                "link": "/ar/api/design/swatches/src/functions/toAse.md"
+              },
+              {
+                "text": "toGpl",
+                "link": "/ar/api/design/swatches/src/functions/toGpl.md"
+              },
+              {
+                "text": "hexToRgb",
+                "link": "/ar/api/design/swatches/src/functions/hexToRgb.md"
+              },
+              {
+                "text": "toSwatches",
+                "link": "/ar/api/design/swatches/src/functions/toSwatches.md"
+              },
+              {
+                "text": "toSketchPalette",
+                "link": "/ar/api/design/swatches/src/functions/toSketchPalette.md"
+              },
+              {
+                "text": "toSvg",
+                "link": "/ar/api/design/swatches/src/functions/toSvg.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/design/swatches/src/"
+      }
+    ]
+  },
+  {
+    "text": "bundlers",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "next",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "NextConfigLike",
+                "link": "/ar/api/bundlers/next/src/interfaces/NextConfigLike.md"
+              },
+              {
+                "text": "WithPantokenOptions",
+                "link": "/ar/api/bundlers/next/src/interfaces/WithPantokenOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "INSTUI_TRANSPILE_PACKAGES",
+                "link": "/ar/api/bundlers/next/src/variables/INSTUI_TRANSPILE_PACKAGES.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "withPantoken",
+                "link": "/ar/api/bundlers/next/src/functions/withPantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/bundlers/next/src/"
+      },
+      {
+        "text": "panda",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaToken",
+                "link": "/ar/api/bundlers/panda/src/interfaces/PandaToken.md"
+              },
+              {
+                "text": "PandaSemanticToken",
+                "link": "/ar/api/bundlers/panda/src/interfaces/PandaSemanticToken.md"
+              },
+              {
+                "text": "PandaPreset",
+                "link": "/ar/api/bundlers/panda/src/interfaces/PandaPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "أسماء أنواع مستعارة",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PandaCategory",
+                "link": "/ar/api/bundlers/panda/src/type-aliases/PandaCategory.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ar/api/bundlers/panda/src/variables/pantokenPreset.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "toPandaPreset",
+                "link": "/ar/api/bundlers/panda/src/functions/toPandaPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/bundlers/panda/src/"
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenPostcssOptions",
+                "link": "/ar/api/bundlers/postcss/src/interfaces/PantokenPostcssOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "المتغيرات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ar/api/bundlers/postcss/src/variables/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/bundlers/postcss/src/"
+      },
+      {
+        "text": "tailwind",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "TailwindPreset",
+                "link": "/ar/api/bundlers/tailwind/src/interfaces/TailwindPreset.md"
+              },
+              {
+                "text": "PantokenPresetOptions",
+                "link": "/ar/api/bundlers/tailwind/src/interfaces/PantokenPresetOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantokenPreset",
+                "link": "/ar/api/bundlers/tailwind/src/functions/pantokenPreset.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/bundlers/tailwind/src/"
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenViteOptions",
+                "link": "/ar/api/bundlers/vite/src/interfaces/PantokenViteOptions.md"
+              }
+            ]
+          },
+          {
+            "text": "الدوال",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "pantoken",
+                "link": "/ar/api/bundlers/vite/src/functions/pantoken.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/bundlers/vite/src/"
+      },
+      {
+        "text": "webpack",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "فئات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackPlugin",
+                "link": "/ar/api/bundlers/webpack/src/classes/PantokenWebpackPlugin.md"
+              }
+            ]
+          },
+          {
+            "text": "واجهات",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "PantokenWebpackOptions",
+                "link": "/ar/api/bundlers/webpack/src/interfaces/PantokenWebpackOptions.md"
+              }
+            ]
+          }
+        ],
+        "link": "/ar/api/bundlers/webpack/src/"
+      }
+    ]
+  },
+  {
+    "text": "plugins",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "pantoken",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "colors",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "أسماء أنواع مستعارة",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CssColor",
+                    "link": "/ar/api/plugins/pantoken/colors/src/type-aliases/CssColor.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "alpha",
+                    "link": "/ar/api/plugins/pantoken/colors/src/functions/alpha.md"
+                  },
+                  {
+                    "text": "darken",
+                    "link": "/ar/api/plugins/pantoken/colors/src/functions/darken.md"
+                  },
+                  {
+                    "text": "lighten",
+                    "link": "/ar/api/plugins/pantoken/colors/src/functions/lighten.md"
+                  },
+                  {
+                    "text": "overlayColors",
+                    "link": "/ar/api/plugins/pantoken/colors/src/functions/overlayColors.md"
+                  },
+                  {
+                    "text": "onColor",
+                    "link": "/ar/api/plugins/pantoken/colors/src/functions/onColor.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/colors/src/"
+          },
+          {
+            "text": "custom-components",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomComponentsOptions",
+                    "link": "/ar/api/plugins/pantoken/custom-components/src/interfaces/CustomComponentsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "bannerRules",
+                    "link": "/ar/api/plugins/pantoken/custom-components/src/functions/bannerRules.md"
+                  },
+                  {
+                    "text": "cardRules",
+                    "link": "/ar/api/plugins/pantoken/custom-components/src/functions/cardRules.md"
+                  },
+                  {
+                    "text": "customComponents",
+                    "link": "/ar/api/plugins/pantoken/custom-components/src/functions/customComponents.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/custom-components/src/"
+          },
+          {
+            "text": "custom-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "CustomIcon",
+                    "link": "/ar/api/plugins/pantoken/custom-icons/src/interfaces/CustomIcon.md"
+                  },
+                  {
+                    "text": "CustomIconsOptions",
+                    "link": "/ar/api/plugins/pantoken/custom-icons/src/interfaces/CustomIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "icons",
+                    "link": "/ar/api/plugins/pantoken/custom-icons/src/variables/icons.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "customIcons",
+                    "link": "/ar/api/plugins/pantoken/custom-icons/src/functions/customIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/custom-icons/src/"
+          },
+          {
+            "text": "deprecations",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamVersions",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/interfaces/UpstreamVersions.md"
+                  },
+                  {
+                    "text": "ParsedRef",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/interfaces/ParsedRef.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "shimValue",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/shimValue.md"
+                  },
+                  {
+                    "text": "shimEntries",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/shimEntries.md"
+                  },
+                  {
+                    "text": "ledgerCovers",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/ledgerCovers.md"
+                  },
+                  {
+                    "text": "parseUpstreamRef",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/parseUpstreamRef.md"
+                  },
+                  {
+                    "text": "compareVersions",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/compareVersions.md"
+                  },
+                  {
+                    "text": "dueForRemoval",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/dueForRemoval.md"
+                  },
+                  {
+                    "text": "describeLifecycle",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/describeLifecycle.md"
+                  },
+                  {
+                    "text": "deprecationShims",
+                    "link": "/ar/api/plugins/pantoken/deprecations/src/functions/deprecationShims.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/deprecations/src/"
+          },
+          {
+            "text": "layouts",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LayoutsOptions",
+                    "link": "/ar/api/plugins/pantoken/layouts/src/interfaces/LayoutsOptions.md"
+                  },
+                  {
+                    "text": "PageLayout",
+                    "link": "/ar/api/plugins/pantoken/layouts/src/interfaces/PageLayout.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pageLayouts",
+                    "link": "/ar/api/plugins/pantoken/layouts/src/variables/pageLayouts.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "layouts",
+                    "link": "/ar/api/plugins/pantoken/layouts/src/functions/layouts.md"
+                  },
+                  {
+                    "text": "wrapperRules",
+                    "link": "/ar/api/plugins/pantoken/layouts/src/functions/wrapperRules.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/layouts/src/"
+          },
+          {
+            "text": "logos",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "LogoMeta",
+                    "link": "/ar/api/plugins/pantoken/logos/src/interfaces/LogoMeta.md"
+                  },
+                  {
+                    "text": "LogosOptions",
+                    "link": "/ar/api/plugins/pantoken/logos/src/interfaces/LogosOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "أسماء أنواع مستعارة",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Product",
+                    "link": "/ar/api/plugins/pantoken/logos/src/type-aliases/Product.md"
+                  },
+                  {
+                    "text": "LogoLayout",
+                    "link": "/ar/api/plugins/pantoken/logos/src/type-aliases/LogoLayout.md"
+                  },
+                  {
+                    "text": "LogoColorMode",
+                    "link": "/ar/api/plugins/pantoken/logos/src/type-aliases/LogoColorMode.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "logos",
+                    "link": "/ar/api/plugins/pantoken/logos/src/variables/logos.md"
+                  },
+                  {
+                    "text": "products",
+                    "link": "/ar/api/plugins/pantoken/logos/src/variables/products.md"
+                  },
+                  {
+                    "text": "logosCss",
+                    "link": "/ar/api/plugins/pantoken/logos/src/variables/logosCss.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "getLogoSvg",
+                    "link": "/ar/api/plugins/pantoken/logos/src/functions/getLogoSvg.md"
+                  },
+                  {
+                    "text": "getLogoDataUri",
+                    "link": "/ar/api/plugins/pantoken/logos/src/functions/getLogoDataUri.md"
+                  },
+                  {
+                    "text": "logosPlugin",
+                    "link": "/ar/api/plugins/pantoken/logos/src/functions/logosPlugin.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/logos/src/"
+          },
+          {
+            "text": "primitives",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "PrimitiveTokenNames",
+                    "link": "/ar/api/plugins/pantoken/primitives/src/interfaces/PrimitiveTokenNames.md"
+                  },
+                  {
+                    "text": "PrimitivesOptions",
+                    "link": "/ar/api/plugins/pantoken/primitives/src/interfaces/PrimitivesOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "primitivesCss",
+                    "link": "/ar/api/plugins/pantoken/primitives/src/functions/primitivesCss.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/primitives/src/"
+          },
+          {
+            "text": "simple-icons",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIcon",
+                    "link": "/ar/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIcon.md"
+                  },
+                  {
+                    "text": "SimpleIconsOptions",
+                    "link": "/ar/api/plugins/pantoken/simple-icons/src/interfaces/SimpleIconsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "أسماء أنواع مستعارة",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "SimpleIconsRegistry",
+                    "link": "/ar/api/plugins/pantoken/simple-icons/src/type-aliases/SimpleIconsRegistry.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toExportName",
+                    "link": "/ar/api/plugins/pantoken/simple-icons/src/functions/toExportName.md"
+                  },
+                  {
+                    "text": "defaultRegistry",
+                    "link": "/ar/api/plugins/pantoken/simple-icons/src/functions/defaultRegistry.md"
+                  },
+                  {
+                    "text": "simpleIcons",
+                    "link": "/ar/api/plugins/pantoken/simple-icons/src/functions/simpleIcons.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/simple-icons/src/"
+          },
+          {
+            "text": "stacking",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "StackingOptions",
+                    "link": "/ar/api/plugins/pantoken/stacking/src/interfaces/StackingOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "STACKING_LEVELS",
+                    "link": "/ar/api/plugins/pantoken/stacking/src/variables/STACKING_LEVELS.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "stacking",
+                    "link": "/ar/api/plugins/pantoken/stacking/src/functions/stacking.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/stacking/src/"
+          },
+          {
+            "text": "transition",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "TransitionOptions",
+                    "link": "/ar/api/plugins/pantoken/transition/src/interfaces/TransitionOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "transition",
+                    "link": "/ar/api/plugins/pantoken/transition/src/functions/transition.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/transition/src/"
+          },
+          {
+            "text": "visual-debug",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VisualDebugOptions",
+                    "link": "/ar/api/plugins/pantoken/visual-debug/src/interfaces/VisualDebugOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "VISUAL_DEBUG_RULES",
+                    "link": "/ar/api/plugins/pantoken/visual-debug/src/variables/VISUAL_DEBUG_RULES.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "visualDebugRules",
+                    "link": "/ar/api/plugins/pantoken/visual-debug/src/functions/visualDebugRules.md"
+                  },
+                  {
+                    "text": "visualDebug",
+                    "link": "/ar/api/plugins/pantoken/visual-debug/src/functions/visualDebug.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/pantoken/visual-debug/src/"
+          }
+        ]
+      },
+      {
+        "text": "postcss",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "flatten-property",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ar/api/plugins/postcss/flatten-property/src/interfaces/FlattenPropertyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ar/api/plugins/postcss/flatten-property/src/variables/flattenProperty.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/postcss/flatten-property/src/"
+          },
+          {
+            "text": "mangle-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ar/api/plugins/postcss/mangle-custom-props/src/interfaces/MangleCustomPropsOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "أسماء أنواع مستعارة",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ar/api/plugins/postcss/mangle-custom-props/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ar/api/plugins/postcss/mangle-custom-props/src/variables/mangleCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/postcss/mangle-custom-props/src/"
+          },
+          {
+            "text": "props-minify",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "FlattenPropertyOptions",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/interfaces/FlattenPropertyOptions.md"
+                  },
+                  {
+                    "text": "MangleCustomPropsOptions",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/interfaces/MangleCustomPropsOptions.md"
+                  },
+                  {
+                    "text": "PropsMinifyOptions",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/interfaces/PropsMinifyOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "أسماء أنواع مستعارة",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "MangleMethod",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/type-aliases/MangleMethod.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "flattenProperty",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/variables/flattenProperty.md"
+                  },
+                  {
+                    "text": "mangleCustomProps",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/variables/mangleCustomProps.md"
+                  },
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "applyMinify",
+                    "link": "/ar/api/plugins/postcss/props-minify/src/functions/applyMinify.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/postcss/props-minify/src/"
+          },
+          {
+            "text": "prune-custom-props",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "pruneCustomProps",
+                    "link": "/ar/api/plugins/postcss/prune-custom-props/src/variables/pruneCustomProps.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/postcss/prune-custom-props/src/"
+          },
+          {
+            "text": "theme-custom-media",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "ThemeCustomMediaOptions",
+                    "link": "/ar/api/plugins/postcss/theme-custom-media/src/interfaces/ThemeCustomMediaOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "أسماء أنواع مستعارة",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "Theme",
+                    "link": "/ar/api/plugins/postcss/theme-custom-media/src/type-aliases/Theme.md"
+                  }
+                ]
+              },
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "themeCustomMedia",
+                    "link": "/ar/api/plugins/postcss/theme-custom-media/src/variables/themeCustomMedia.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/postcss/theme-custom-media/src/"
+          }
+        ]
+      },
+      {
+        "text": "typedoc",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "demo",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "المتغيرات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "DEMO_TAG",
+                    "link": "/ar/api/plugins/typedoc/demo/src/variables/DEMO_TAG.md"
+                  },
+                  {
+                    "text": "DEMO_FENCE",
+                    "link": "/ar/api/plugins/typedoc/demo/src/variables/DEMO_FENCE.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "toDemoFence",
+                    "link": "/ar/api/plugins/typedoc/demo/src/functions/toDemoFence.md"
+                  },
+                  {
+                    "text": "rewriteComment",
+                    "link": "/ar/api/plugins/typedoc/demo/src/functions/rewriteComment.md"
+                  },
+                  {
+                    "text": "load",
+                    "link": "/ar/api/plugins/typedoc/demo/src/functions/load.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/typedoc/demo/src/"
+          }
+        ]
+      },
+      {
+        "text": "vite",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "workspace-orchestrator",
+            "collapsed": true,
+            "items": [
+              {
+                "text": "واجهات",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "UpstreamNode",
+                    "link": "/ar/api/plugins/vite/workspace-orchestrator/src/interfaces/UpstreamNode.md"
+                  },
+                  {
+                    "text": "FileServerEntry",
+                    "link": "/ar/api/plugins/vite/workspace-orchestrator/src/interfaces/FileServerEntry.md"
+                  },
+                  {
+                    "text": "OrchestratorOptions",
+                    "link": "/ar/api/plugins/vite/workspace-orchestrator/src/interfaces/OrchestratorOptions.md"
+                  }
+                ]
+              },
+              {
+                "text": "الدوال",
+                "collapsed": true,
+                "items": [
+                  {
+                    "text": "matchesFilters",
+                    "link": "/ar/api/plugins/vite/workspace-orchestrator/src/functions/matchesFilters.md"
+                  },
+                  {
+                    "text": "workspaceOrchestrator",
+                    "link": "/ar/api/plugins/vite/workspace-orchestrator/src/functions/workspaceOrchestrator.md"
+                  }
+                ]
+              }
+            ],
+            "link": "/ar/api/plugins/vite/workspace-orchestrator/src/"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "CSS",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "نظرة عامة",
+        "link": "/ar/api/css/"
+      },
+      {
+        "text": "المكونات",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "agent-shell",
+            "link": "/ar/api/css/agent-shell.md"
+          },
+          {
+            "text": "alert",
+            "link": "/ar/api/css/alert.md"
+          },
+          {
+            "text": "avatar",
+            "link": "/ar/api/css/avatar.md"
+          },
+          {
+            "text": "badge",
+            "link": "/ar/api/css/badge.md"
+          },
+          {
+            "text": "banner",
+            "link": "/ar/api/css/banner.md"
+          },
+          {
+            "text": "billboard",
+            "link": "/ar/api/css/billboard.md"
+          },
+          {
+            "text": "breadcrumb",
+            "link": "/ar/api/css/breadcrumb.md",
+            "items": [
+              {
+                "text": "link",
+                "link": "/ar/api/css/breadcrumb.link.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "button",
+            "link": "/ar/api/css/button.md"
+          },
+          {
+            "text": "byline",
+            "link": "/ar/api/css/byline.md"
+          },
+          {
+            "text": "calendar",
+            "link": "/ar/api/css/calendar.md",
+            "items": [
+              {
+                "text": "day",
+                "link": "/ar/api/css/calendar.day.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "card",
+            "link": "/ar/api/css/card.md"
+          },
+          {
+            "text": "checkbox",
+            "link": "/ar/api/css/checkbox.md"
+          },
+          {
+            "text": "close-button",
+            "link": "/ar/api/css/close-button.md"
+          },
+          {
+            "text": "context-view",
+            "link": "/ar/api/css/context-view.md"
+          },
+          {
+            "text": "drawer-layout",
+            "link": "/ar/api/css/drawer-layout.md",
+            "items": [
+              {
+                "text": "content",
+                "link": "/ar/api/css/drawer-layout.content.md"
+              },
+              {
+                "text": "tray",
+                "link": "/ar/api/css/drawer-layout.tray.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "file-drop",
+            "link": "/ar/api/css/file-drop.md"
+          },
+          {
+            "text": "form-field",
+            "link": "/ar/api/css/form-field.md"
+          },
+          {
+            "text": "form-field-group",
+            "link": "/ar/api/css/form-field-group.md"
+          },
+          {
+            "text": "form-field-messages",
+            "link": "/ar/api/css/form-field-messages.md"
+          },
+          {
+            "text": "heading",
+            "link": "/ar/api/css/heading.md"
+          },
+          {
+            "text": "img",
+            "link": "/ar/api/css/img.md"
+          },
+          {
+            "text": "in-place-edit",
+            "link": "/ar/api/css/in-place-edit.md"
+          },
+          {
+            "text": "input-group",
+            "link": "/ar/api/css/input-group.md"
+          },
+          {
+            "text": "link",
+            "link": "/ar/api/css/link.md"
+          },
+          {
+            "text": "list",
+            "link": "/ar/api/css/list.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ar/api/css/list.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "mask",
+            "link": "/ar/api/css/mask.md"
+          },
+          {
+            "text": "menu",
+            "link": "/ar/api/css/menu.md",
+            "items": [
+              {
+                "text": "group",
+                "link": "/ar/api/css/menu.group.md"
+              },
+              {
+                "text": "item",
+                "link": "/ar/api/css/menu.item.md"
+              },
+              {
+                "text": "separator",
+                "link": "/ar/api/css/menu.separator.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "metric",
+            "link": "/ar/api/css/metric.md"
+          },
+          {
+            "text": "modal",
+            "link": "/ar/api/css/modal.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ar/api/css/modal.body.md"
+              },
+              {
+                "text": "footer",
+                "link": "/ar/api/css/modal.footer.md"
+              },
+              {
+                "text": "header",
+                "link": "/ar/api/css/modal.header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "number-input",
+            "link": "/ar/api/css/number-input.md"
+          },
+          {
+            "text": "pagination",
+            "link": "/ar/api/css/pagination.md",
+            "items": [
+              {
+                "text": "page",
+                "link": "/ar/api/css/pagination.page.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "pill",
+            "link": "/ar/api/css/pill.md"
+          },
+          {
+            "text": "popover",
+            "link": "/ar/api/css/popover.md"
+          },
+          {
+            "text": "progress",
+            "link": "/ar/api/css/progress.md"
+          },
+          {
+            "text": "progress-circle",
+            "link": "/ar/api/css/progress-circle.md"
+          },
+          {
+            "text": "radio",
+            "link": "/ar/api/css/radio.md"
+          },
+          {
+            "text": "radio-input-group",
+            "link": "/ar/api/css/radio-input-group.md"
+          },
+          {
+            "text": "range-input",
+            "link": "/ar/api/css/range-input.md"
+          },
+          {
+            "text": "rating",
+            "link": "/ar/api/css/rating.md"
+          },
+          {
+            "text": "side-nav-bar",
+            "link": "/ar/api/css/side-nav-bar.md",
+            "items": [
+              {
+                "text": "item",
+                "link": "/ar/api/css/side-nav-bar.item.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "simple-select",
+            "link": "/ar/api/css/simple-select.md"
+          },
+          {
+            "text": "spinner",
+            "link": "/ar/api/css/spinner.md"
+          },
+          {
+            "text": "table",
+            "link": "/ar/api/css/table.md",
+            "items": [
+              {
+                "text": "body",
+                "link": "/ar/api/css/table.body.md"
+              },
+              {
+                "text": "cell",
+                "link": "/ar/api/css/table.cell.md"
+              },
+              {
+                "text": "col-header",
+                "link": "/ar/api/css/table.col-header.md"
+              },
+              {
+                "text": "head",
+                "link": "/ar/api/css/table.head.md"
+              },
+              {
+                "text": "row",
+                "link": "/ar/api/css/table.row.md"
+              },
+              {
+                "text": "row-header",
+                "link": "/ar/api/css/table.row-header.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tabs",
+            "link": "/ar/api/css/tabs.md",
+            "items": [
+              {
+                "text": "panel",
+                "link": "/ar/api/css/tabs.panel.md"
+              },
+              {
+                "text": "tab",
+                "link": "/ar/api/css/tabs.tab.md"
+              }
+            ],
+            "collapsed": true
+          },
+          {
+            "text": "tag",
+            "link": "/ar/api/css/tag.md"
+          },
+          {
+            "text": "text",
+            "link": "/ar/api/css/text.md"
+          },
+          {
+            "text": "text-area",
+            "link": "/ar/api/css/text-area.md"
+          },
+          {
+            "text": "text-input",
+            "link": "/ar/api/css/text-input.md"
+          },
+          {
+            "text": "toggle-details",
+            "link": "/ar/api/css/toggle-details.md"
+          },
+          {
+            "text": "toggle-group",
+            "link": "/ar/api/css/toggle-group.md"
+          },
+          {
+            "text": "tooltip",
+            "link": "/ar/api/css/tooltip.md"
+          },
+          {
+            "text": "tray",
+            "link": "/ar/api/css/tray.md"
+          },
+          {
+            "text": "tree-browser",
+            "link": "/ar/api/css/tree-browser.md"
+          },
+          {
+            "text": "view",
+            "link": "/ar/api/css/view.md"
+          }
+        ]
+      },
+      {
+        "text": "الأدوات المساعدة",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "color",
+            "link": "/ar/api/css/color.md"
+          },
+          {
+            "text": "cursor",
+            "link": "/ar/api/css/cursor.md"
+          },
+          {
+            "text": "gap",
+            "link": "/ar/api/css/gap.md"
+          },
+          {
+            "text": "icon",
+            "link": "/ar/api/css/icon.md"
+          },
+          {
+            "text": "layout",
+            "link": "/ar/api/css/layout.md"
+          },
+          {
+            "text": "maskglobal",
+            "link": "/ar/api/css/maskglobal.md"
+          },
+          {
+            "text": "overflow",
+            "link": "/ar/api/css/overflow.md"
+          },
+          {
+            "text": "position",
+            "link": "/ar/api/css/position.md"
+          },
+          {
+            "text": "responsive",
+            "link": "/ar/api/css/responsive.md"
+          },
+          {
+            "text": "screen-reader-content",
+            "link": "/ar/api/css/screen-reader-content.md"
+          },
+          {
+            "text": "spacing",
+            "link": "/ar/api/css/spacing.md"
+          },
+          {
+            "text": "stacking",
+            "link": "/ar/api/css/stacking.md"
+          },
+          {
+            "text": "transition",
+            "link": "/ar/api/css/transition.md"
+          },
+          {
+            "text": "truncate",
+            "link": "/ar/api/css/truncate.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ar/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "القواعد",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "base",
+            "link": "/ar/api/css/base.md"
+          },
+          {
+            "text": "prose",
+            "link": "/ar/api/css/prose.md"
+          }
+        ]
+      },
+      {
+        "text": "Plugins",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "logos",
+            "link": "/ar/api/css/logos.md"
+          },
+          {
+            "text": "primitives",
+            "link": "/ar/api/css/primitives.md"
+          },
+          {
+            "text": "visual-debug",
+            "link": "/ar/api/css/visual-debug.md"
+          }
+        ]
+      },
+      {
+        "text": "layout",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "callout",
+            "link": "/ar/api/css/callout.md"
+          },
+          {
+            "text": "hero",
+            "link": "/ar/api/css/hero.md"
+          },
+          {
+            "text": "page-layout",
+            "link": "/ar/api/css/page-layout.md"
+          },
+          {
+            "text": "rubric-note",
+            "link": "/ar/api/css/rubric-note.md"
+          },
+          {
+            "text": "testimonial",
+            "link": "/ar/api/css/testimonial.md"
+          },
+          {
+            "text": "two-column",
+            "link": "/ar/api/css/two-column.md"
+          },
+          {
+            "text": "wrapper",
+            "link": "/ar/api/css/wrapper.md"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,36 @@
+<div class="instui-card">
+  <!-- As a native popover, `popovertarget` toggles it with no JavaScript: it opens in the top layer
+       and light-dismisses on Esc or an outside click. The trigger's `anchor-name` lets it dock below the
+       button (-placement-bottom) where CSS anchor positioning is supported. -->
+  <button
+    class="instui-button -color-secondary"
+    popovertarget="cv-popover"
+    style="anchor-name: --pantoken-anchor"
+  >
+    Mostra els detalls
+  </button>
+
+  <div
+    id="cv-popover"
+    popover
+    class="instui-context-view -placement-bottom"
+    style="max-width: 320px"
+  >
+    Una vista de context emmarca una crida d’atenció amb una punta (caret). Com a popover, es
+    col·loca a la capa superior i es tanca quan fas clic fora o prems Esc.
+  </div>
+
+  <!-- Static placements: the caret sits on the edge facing the thing the view explains. -->
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start">
+    <div class="instui-context-view -placement-top">Posició superior</div>
+    <div class="instui-context-view -placement-bottom">Posició inferior</div>
+    <div class="instui-context-view -placement-start">Posició inicial</div>
+    <div class="instui-context-view -placement-end">Col·locació final</div>
+    <div class="instui-context-view -color-inverse">Fons invertit</div>
+  </div>
+
+  <p class="instui-text --text-muted" style="margin-top: 16px">
+    El posicionament al costat d'un activador utilitza el posicionament amb ancres CSS quan és
+    compatible; en altres casos el popover es centra a la capa superior.
+  </p>
+</div>

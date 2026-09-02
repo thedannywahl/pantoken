@@ -2,7 +2,6 @@
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 import { useData } from "vitepress";
 import VPFlyout from "vitepress/dist/client/theme-default/components/VPFlyout.vue";
-import VPMenuLink from "vitepress/dist/client/theme-default/components/VPMenuLink.vue";
 import VPSocialLinks from "vitepress/dist/client/theme-default/components/VPSocialLinks.vue";
 import VPSwitchAppearance from "vitepress/dist/client/theme-default/components/VPSwitchAppearance.vue";
 import { useLangs } from "vitepress/dist/client/theme-default/composables/langs.js";
@@ -46,10 +45,21 @@ const showAppearance = computed(
     site.value.appearance !== "force-auto",
 );
 const appearanceLabel = computed(() => theme.value.darkModeSwitchLabel || "Appearance");
+// Read by the language `<select>` below: falls back to the VitePress default so an untranslated
+// locale (English-passthrough UI strings) still gets a sensible label.
+const langMenuLabel = computed(() => theme.value.langMenuLabel || "Change language");
 
 function select(t: PantokenTheme): void {
   current.value = t;
   applyTheme(t);
+}
+
+// A `<select>` scales to many locales far better than a flat link list (44+ Canvas locales) and gives
+// free type-to-search in every browser. Navigation is a full page load across locale sub-sites, so a
+// plain `location.assign` (not the SPA router) is correct here — same as the anchor it replaces.
+function onLangChange(event: Event): void {
+  const target = (event.target as HTMLSelectElement).value;
+  if (target) window.location.assign(target);
 }
 
 onMounted(() => {
@@ -60,18 +70,21 @@ onMounted(() => {
 <template>
   <VPFlyout v-if="hasExtraContent" class="VPNavBarExtra" label="extra navigation">
     <div v-if="showTranslations" class="group translations">
-      <p class="trans-title">{{ currentLang.label }}</p>
+      <label class="trans-title" for="lang-select">{{ langMenuLabel }}</label>
 
-      <template v-for="locale in localeLinks" :key="locale.link">
-        <VPMenuLink
-          :item="locale"
-          :external="false"
-          :lang="locale.lang"
-          :hreflang="locale.lang"
-          rel="alternate"
-          :dir="locale.dir"
-        />
-      </template>
+      <div class="item">
+        <select
+          id="lang-select"
+          class="lang-select"
+          :value="currentLang.link"
+          @change="onLangChange"
+        >
+          <option :value="currentLang.link">{{ currentLang.label }}</option>
+          <option v-for="locale in localeLinks" :key="locale.link" :value="locale.link">
+            {{ locale.text }}
+          </option>
+        </select>
+      </div>
     </div>
 
     <div class="group">
@@ -136,6 +149,10 @@ onMounted(() => {
   color: var(--vp-c-text-1);
 }
 
+.group.translations .item {
+  padding: 0 12px;
+}
+
 .item.appearance,
 .item.social-links {
   display: flex;
@@ -153,6 +170,18 @@ onMounted(() => {
 
 .social-links-list {
   margin: -4px -8px;
+}
+
+.lang-select {
+  width: 100%;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 0 12px;
+  height: 32px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg-soft);
 }
 
 .theme-option {

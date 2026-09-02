@@ -20,6 +20,43 @@ test("html is accepted as an alias for components", async () => {
   expect(existsSync(join(target, "package.json"))).toBe(true);
 });
 
+test("canvas-theme-editor is a known, template-only platform (no preset)", async () => {
+  expect(SCAFFOLD_PLATFORMS).toContain("canvas-theme-editor");
+  expect(isScaffoldPlatform("canvas-theme-editor")).toBe(true);
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-canvas-"));
+  const target = join(dir, "my-app");
+  const written = await scaffoldProject("canvas-theme-editor", target);
+  expect(written.length).toBeGreaterThan(0);
+  expect(existsSync(join(target, "theme.css"))).toBe(true);
+  expect(existsSync(join(target, "theme.js"))).toBe(true);
+  expect(existsSync(join(target, "index.html"))).toBe(true);
+  expect(existsSync(join(target, "src/main.ts"))).toBe(true);
+  expect(readFileSync(join(target, "theme.css"), "utf8")).toContain(
+    "@pantoken/css/dist/style.rebrand.light.lean.css",
+  );
+  const pkg = readFileSync(join(target, "package.json"), "utf8");
+  expect(pkg).toContain('"name": "my-app"');
+  expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("canvas-theme-editor's theme.css/theme.js honor --cdn/--theme at scaffold time", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-canvas-cdn-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("canvas-theme-editor", target, { cdn: "unpkg", theme: "canvas" });
+  const themeCss = readFileSync(join(target, "theme.css"), "utf8");
+  expect(themeCss).toContain("unpkg.com");
+  expect(themeCss).toContain("style.canvas.lean.css");
+});
+
+test("theme-editor is accepted as an alias for canvas-theme-editor", async () => {
+  expect(isScaffoldPlatform("theme-editor")).toBe(true);
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-editor-"));
+  const target = join(dir, "my-app");
+  const written = await scaffoldProject("theme-editor", target);
+  expect(written.length).toBeGreaterThan(0);
+  expect(existsSync(join(target, "theme.css"))).toBe(true);
+});
+
 test("scaffolds a platform with projectName substituted", async () => {
   const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-"));
   const target = join(dir, "my-app");
@@ -28,6 +65,30 @@ test("scaffolds a platform with projectName substituted", async () => {
   const pkg = readFileSync(join(target, "package.json"), "utf8");
   expect(pkg).toContain('"name": "my-app"');
   expect(pkg).not.toContain("{{projectName}}");
+});
+
+test("defaults every scaffold's pantoken CSS import to the rebrand/light theme", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-default-"));
+  const target = join(dir, "my-app");
+  await scaffoldProject("react", target);
+  const main = readFileSync(join(target, "src/main.tsx"), "utf8");
+  expect(main).toContain('import "@pantoken/css/style.rebrand.light.lean.css";');
+  expect(main).not.toContain("{{pantokenCssImport}}");
+});
+
+test("--theme/--theme-mode select which @pantoken/css sheet a scaffold imports", async () => {
+  const dir = mkdtempSync(join(tmpdir(), "pantoken-scaffold-theme-"));
+  const canvasTarget = join(dir, "canvas-app");
+  await scaffoldProject("vue", canvasTarget, { theme: "canvas" });
+  expect(readFileSync(join(canvasTarget, "src/main.ts"), "utf8")).toContain(
+    'import "@pantoken/css/style.canvas.lean.css";',
+  );
+
+  const adaptiveTarget = join(dir, "adaptive-app");
+  await scaffoldProject("svelte", adaptiveTarget, { theme: "rebrand", mode: "adaptive" });
+  expect(readFileSync(join(adaptiveTarget, "src/main.ts"), "utf8")).toContain(
+    'import "@pantoken/css/style.lean.css";',
+  );
 });
 
 test("defaults to pantoken-app when dir is '.'", async () => {

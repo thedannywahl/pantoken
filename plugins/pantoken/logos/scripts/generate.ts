@@ -119,11 +119,20 @@ export const dataUri = (svg: string): string =>
 // registrations below (so the base64 is computed a single time, not twice).
 const uriByName = new Map(logos.map((l) => [l.name, `url("${dataUri(svgs[l.name])}")`]));
 
+// Every logo asset is a solid-fill SVG (a single flat color, or `currentColor`), so each one is
+// maskable — pair it with the shared `-icon-<name>` painter (formats/components' `icon` utility,
+// same convention as the InstUI icon set, Simple Icons, and custom-icons) so e.g.
+// `-icon-canvas-icon-reversed` masks `--instui-logo-canvas-icon-reversed` in `currentColor`.
+const glyphRule = (l: LogoMeta): string =>
+  `.-icon-${l.name} { --pantoken-glyph: var(--instui-logo-${l.name}); }`;
+
 const logosCss = [
   "/* Instructure product logos as image tokens (pantoken logos plugin) — generated, do not edit. */",
   ":root {",
   ...logos.map((l) => `  --instui-logo-${l.name}: ${uriByName.get(l.name)};`),
   "}",
+  "",
+  ...logos.map(glyphRule),
   "",
 ].join("\n");
 
@@ -170,13 +179,14 @@ function sheetFor(subset: LogoMeta[]): string {
     "}",
     "",
   ].join("\n");
+  const glyphs = subset.map(glyphRule).join("\n");
   const props = subset
     .map(
       (l) =>
         `@property --instui-logo-${l.name} { syntax: "<url>"; inherits: true; initial-value: ${uriByName.get(l.name)}; }`,
     )
     .join("\n");
-  return `${root}${props}\n`;
+  return `${root}${glyphs}\n${props}\n`;
 }
 
 let productSheetCount = 0;

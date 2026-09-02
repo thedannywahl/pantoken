@@ -1,0 +1,87 @@
+.pendo-showcase {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pendo-example {
+  min-inline-size: 0;
+}
+
+.pendo-example__label {
+  margin: 0 0 0.5rem;
+  color: var(--instui-component-text-muted-color);
+  font: var(--instui-font-weight-bold) var(--instui-font-size-text-sm) / 1.5
+    var(--instui-font-family-base);
+}
+
+.pendo-example ._pendo-step-container {
+  position: relative;
+  visibility: visible;
+  inline-size: 100%;
+}
+
+/* The docs runner also loads the component bundle, where these semantic class names paint standalone
+     component surfaces. In Pendo they select the nested `._pendo-*` guide instead, so keep the root
+     structural and let the renderer style its dialog card. */
+.pendo-example > ._pendo-step-container {
+  display: block;
+  gap: 0;
+  overflow: visible;
+  padding: 0;
+  color: inherit;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.pendo-example > ._pendo-step-container::before,
+.pendo-example > ._pendo-step-container::after {
+  content: none;
+}
+
+.pendo-example ._pendo-step-container-size {
+  position: relative;
+  visibility: visible;
+  inline-size: 100%;
+}
+
+.pendo-example ._pendo-backdrop {
+  display: none;
+}
+
+.pendo-example ._pendo-step-container-styles {
+  box-sizing: border-box;
+}
+
+.pendo-example [data-layout="tooltipBlank"] ._pendo-step-container-styles {
+  position: relative;
+}
+
+.pendo-example [data-component="title"] h2,
+.pendo-example [data-component="text"] p {
+  margin: 0;
+}
+
+.pendo-example .pendo-tooltip-caret--top {
+  border-inline: 16px solid transparent;
+  border-block-start: 16px solid var(--instui-component-view-background-primary);
+  position: absolute;
+  inset-inline-start: 2rem;
+  z-index: 11;
+}
+
+.pendo-example .pendo-tooltip-caret-border {
+  border-inline: 17px solid transparent;
+  border-block-start: 17px solid var(--instui-component-popover-border-color);
+  position: absolute;
+  inset-inline-start: calc(2rem - 1px);
+  z-index: 10;
+}
+
+@media (min-width: 64rem) {
+  .pendo-showcase {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+}

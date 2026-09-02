@@ -128,6 +128,43 @@ tag.startsWith("instui-")` in `docs/.vitepress/config.ts`. In an `@example`, use
 `src` or a custom-element `src` — avoid a native `<img>` with a local path. Escape raw `<tag>`/`&#123;&#123;` in
 prose the emitter renders (an `escProse()` handles this; backticked code spans are exempt).
 
+### `will-change` and `preserve-3d` cost antialiasing in Firefox
+
+**Symptom** — The home page's tilted terminal card (`GetStartedTabs.vue`) had hard staircase edges
+and shimmering text in Firefox at 1x device pixel ratio. Chrome and Safari were fine, and so was
+Firefox on a HiDPI display, which hid it.
+
+**Root cause** — `will-change: transform` and `transform-style: preserve-3d` make Firefox's
+WebRender treat the element as a raster root: it rasterizes the subtree into a texture in the
+element's own local space, then the compositor applies the 3D transform to that texture. The
+texture's quad edge gets no antialiasing and its text is resampled. Chrome and Safari rasterize
+3D-transformed content in screen space instead, so neither symptom shows up there.
+
+Those properties had been added to stop the typewriter animation from tearing the card — but the
+tearing came from the animation resizing its own row on every keystroke, which reflowed and
+invalidated the whole card. The promotion masked one bug by causing another.
+
+**Fix / rule** — Don't promote a 3D-transformed surface to fight repaint cost; remove the repaint
+cost. `CommandCycleRow.vue` now lays every command option out hidden in the same grid cell as the
+live text (zero-height, so only the width contributes), pinning the row's width to the longest
+command so typing never reflows. With that gone, `will-change` and `preserve-3d` are only applied
+while the flip transition is actually running (an `.is-flipping` class cleared on a timer), so the
+card rests in a flat context that Firefox rasterizes in screen space. Likewise prefer a pre-blurred
+gradient over `filter: blur()` on anything that animates — the filter forces an offscreen surface
+that gets re-rendered every frame.
+
+**Follow-up** — The same tearing came back on hover, from two remaining wide invalidations: the copy
+button's 120ms `background-color`/`border-color`/`color` transitions (~8 repaint frames each) and the
+`--vp-shadow-2`/`--vp-shadow-3` blurs on the two popovers, whose blur radius pushed the dirty rect
+past the card's edge. Hover state now flips in a single frame (only `opacity` still transitions) and
+both popovers use a tight custom shadow, with `contain` on the button and the popover so their
+repaints stay inside their own boxes.
+
+The width-pinning trick has one consequence worth remembering: anything laid out _after_ the shared
+grid cell sits at the widest command's right edge, not at the cursor. The copy button therefore lives
+inside the live text, immediately after the cursor, and each hidden sizer carries a blank same-width
+twin so the pinned track still accounts for it.
+
 ## CSS API surface
 
 ### A `-icon-` modifier hits the glyph painter

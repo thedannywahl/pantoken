@@ -1,0 +1,16 @@
+id: negative-trigger-001
+name: Negative Trigger 1
+description: A near-miss request that belongs to init-pantoken (agent assets only), not create-pantoken-app (installs packages/wires code).
+tags:
+  - negative-trigger
+inputs:
+  prompt: "Just set up Copilot rules for pantoken here, don't install any packages"
+expected:
+  should_trigger: false
+graders:
+  - type: text
+    name: omits-skill-keywords
+    config:
+      not_contains:
+        - "npm i @pantoken"
+        - "scaffold"

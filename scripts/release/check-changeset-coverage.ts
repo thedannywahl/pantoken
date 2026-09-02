@@ -100,25 +100,39 @@ function readArg(flag: string): string | undefined {
   return index >= 0 && index + 1 < process.argv.length ? process.argv[index + 1] : undefined;
 }
 
+// Default spawnSync maxBuffer (1 MB) truncates before a huge diff's --name-only output finishes,
+// which surfaces as a silent ENOBUFS (null status, empty stderr) instead of a real git error.
+const MAX_BUFFER = 64 * 1024 * 1024;
+
 function gitDiffFiles(base: string): string[] {
   // Three-dot diff from the merge base, so unrelated changes already on the base don't count.
   const result = spawnSync("git", ["diff", "--name-only", `${base}...HEAD`], {
     encoding: "utf8",
     shell: false,
+    maxBuffer: MAX_BUFFER,
   });
+  if (result.error) throw new Error(`git diff failed: ${result.error.message}`);
   if (result.status !== 0) throw new Error(`git diff failed: ${result.stderr.trim()}`);
   return result.stdout.split("\n").filter(Boolean);
 }
 
 /** The merge base of `base` and HEAD (the point the three-dot diff is measured from). */
 function mergeBaseRef(base: string): string {
-  const r = spawnSync("git", ["merge-base", base, "HEAD"], { encoding: "utf8", shell: false });
+  const r = spawnSync("git", ["merge-base", base, "HEAD"], {
+    encoding: "utf8",
+    shell: false,
+    maxBuffer: MAX_BUFFER,
+  });
   return r.status === 0 ? r.stdout.trim() : base;
 }
 
 /** A file's content at `ref`, or null if it didn't exist there. */
 function gitShow(ref: string, file: string): string | null {
-  const r = spawnSync("git", ["show", `${ref}:${file}`], { encoding: "utf8", shell: false });
+  const r = spawnSync("git", ["show", `${ref}:${file}`], {
+    encoding: "utf8",
+    shell: false,
+    maxBuffer: MAX_BUFFER,
+  });
   return r.status === 0 ? r.stdout : null;
 }
 

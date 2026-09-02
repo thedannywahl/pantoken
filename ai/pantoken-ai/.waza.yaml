@@ -4,4 +4,4 @@ tokens:
     defaults:
       "SKILL.md": 500
     overrides:
-      "skills/scaffold-pantoken/SKILL.md": 2200
+      "skills/create-pantoken-app/SKILL.md": 2200

@@ -1,0 +1,51 @@
+<div class="instui-card">
+  <!-- A tray as a native [popover]: it docks to an edge and opens in the top layer. -->
+  <div style="display: flex; gap: 8px; flex-wrap: wrap">
+    <button class="instui-button -color-secondary" popovertarget="tray-start">From start</button>
+    <button class="instui-button -color-secondary" popovertarget="tray-end">From end</button>
+  </div>
+
+  <div id="tray-start" popover class="instui-tray -size-sm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      "
+    >
+      <strong>Filters</strong>
+      <button
+        class="instui-close-button"
+        popovertarget="tray-start"
+        popovertargetaction="hide"
+        aria-label="Close"
+      ></button>
+    </div>
+    <p class="instui-text -size-sm">
+      A tray slides in from the start edge and fills the viewport height.
+    </p>
+  </div>
+
+  <div id="tray-end" popover class="instui-tray -placement-end -size-sm">
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      "
+    >
+      <strong>Details</strong>
+      <button
+        class="instui-close-button"
+        popovertarget="tray-end"
+        popovertargetaction="hide"
+        aria-label="Close"
+      ></button>
+    </div>
+    <p class="instui-text -size-sm">
+      This one docks to the end edge. Press Esc or click away to dismiss.
+    </p>
+  </div>
+</div>

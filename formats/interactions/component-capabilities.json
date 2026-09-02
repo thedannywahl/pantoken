@@ -1,5 +1,5 @@
 {
-  "$schema": "https://pantoken.iywahl.com/component-capabilities.schema.json",
+  "$schema": "https://pantoken.app/component-capabilities.schema.json",
   "description": "InstUI component capability map: which components need CSS, JS (interactions), or both, with CDN URLs and dependency graph.",
   "components": [
     {
@@ -169,6 +169,7 @@
     {
       "name": "number-input",
       "type": "css-only",
+      "needsIcons": true,
       "css": "https://cdn.jsdelivr.net/npm/@pantoken/components/dist/number-input.css"
     },
     {

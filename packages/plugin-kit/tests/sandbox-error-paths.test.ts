@@ -8,7 +8,7 @@ import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { afterEach, expect, test, vi } from "vite-plus/test";
-import type { SandboxedPluginEntry } from "../src/index.ts";
+import type { SandboxedPluginEntry } from "../src/sandbox.ts";
 
 // ── module-level mocks (hoisted by vitest) ──────────────────────────────────
 
@@ -42,7 +42,7 @@ vi.mock("node:child_process", () => {
 afterEach(() => vi.restoreAllMocks());
 
 test("runPluginHook(thread) rejects when the Worker emits an error event", async () => {
-  const { runPluginHook } = await import("../src/index.ts");
+  const { runPluginHook } = await import("../src/sandbox.ts");
   const dir = mkdtempSync(join(tmpdir(), "pantoken-pk-err-ev-"));
   try {
     writeFileSync(join(dir, "plugin.mjs"), `export const tokens = () => [];\n`);
@@ -54,7 +54,7 @@ test("runPluginHook(thread) rejects when the Worker emits an error event", async
 });
 
 test("runPluginHook(thread) rejects when the Worker exits with non-zero code", async () => {
-  const { runPluginHook } = await import("../src/index.ts");
+  const { runPluginHook } = await import("../src/sandbox.ts");
   const dir = mkdtempSync(join(tmpdir(), "pantoken-pk-exit-"));
   try {
     writeFileSync(join(dir, "plugin.mjs"), `export const tokens = () => [];\n`);

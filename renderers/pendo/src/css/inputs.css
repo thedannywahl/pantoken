@@ -371,7 +371,7 @@ select._pendo-multi-choice-poll-select option {
 ._pendo-number-scale-poll-wrapper > div[role*="radiogroup"],
 ._pendo-nps-poll-wrapper > div[role*="radiogroup"],
 .pendo-survey-wrapper > div:not([id*="survey-single-choice"]):has(input[type="radio"]) {
-  gap: var(--instui-component-shared-tokens-spacing-general-space-md);
+  gap: var(--instui-component-shared-tokens-spacing-gap-buttons);
   display: flex;
   flex-direction: row;
   width: fit-content;
@@ -409,7 +409,7 @@ label.pendo-radio[class*="_pendo-nps-poll-"],
   min-height: var(--instui-component-base-button-small-height);
   width: var(--instui-component-base-button-small-height);
   aspect-ratio: 1 / 1;
-  border-width: var(--instui-component-base-button-border-width);
+  border-width: var(--instui-border-width-sm);
   border-radius: var(--instui-component-base-button-border-radius);
   border-style: var(--instui-component-base-button-border-style);
   font-size: var(--instui-component-base-button-small-font-size);

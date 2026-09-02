@@ -13,7 +13,7 @@ import type { ChildNode, Plugin } from "postcss";
 
 /** Options for {@link addScope}. */
 export interface AddScopeOptions {
-  /** The scope root selector (default `._pendo-step-container`). */
+  /** The scope root selector (default `[class*="instui"]._pendo-step-container`). */
   selector?: string;
 }
 
@@ -27,7 +27,7 @@ export interface AddScopeOptions {
  *
  * const { css } = postcss([addScope({ selector: "._pendo-step-container" })])
  *   .process(".x{color:red}", { from: undefined });
- * // "@scope (._pendo-step-container) { .x{color:red} }"
+ * // "@scope ([class*=\"instui\"]._pendo-step-container) { .x{color:red} }"
  * ```
  */
 export const addScope: {
@@ -36,7 +36,7 @@ export const addScope: {
   postcss: true;
 } = Object.assign(
   function addScope(options: AddScopeOptions = {}): Plugin {
-    const selector = options.selector ?? "._pendo-step-container";
+    const selector = options.selector ?? '[class*="instui"]._pendo-step-container';
     return {
       postcssPlugin: "pendo-add-scope",
       OnceExit(root, { AtRule }) {

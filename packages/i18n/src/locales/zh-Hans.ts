@@ -8,8 +8,8 @@ export const zhHans: LocaleBundle = defineBundle({
   dir: "ltr",
   label: "Simplified Chinese (简体中文)",
   strings: makeStrings("zh-Hans", {
-    prevMonth: "上一月",
-    nextMonth: "下一月",
+    prevMonth: "上个月",
+    nextMonth: "下个月",
     dateLabel: "日期",
     openCalendar: "打开日历",
     timeLabel: "时间",

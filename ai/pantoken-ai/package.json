@@ -1,8 +1,8 @@
 {
   "name": "@pantoken/ai",
   "version": "0.2.3",
-  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and init-pantoken/scaffold-pantoken Claude Code skills, with an installer CLI (init, scaffold <platform>).",
-  "homepage": "https://pantoken.iywahl.com",
+  "description": "Agent assets for projects that use pantoken: AGENTS.md, llms.txt, Cursor/Copilot/Windsurf rules, and init-pantoken/create-pantoken-app Claude Code skills, with an installer CLI (init, scaffold <platform>).",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
@@ -23,6 +23,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./cli": "./dist/cli.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -31,15 +32,26 @@
   },
   "scripts": {
     "generate": "node scripts/generate.ts",
+    "translate": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" node scripts/translate.ts",
+    "translate:agy": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" node scripts/translate.ts",
+    "translate:copilot": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" node scripts/translate.ts",
+    "translate:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low\" node scripts/translate.ts",
+    "translate:agy:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" node scripts/translate.ts",
+    "translate:copilot:force": "I18N_TRANSLATION_ADAPTER=ai I18N_TRANSLATION_FORCE=1 I18N_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" I18N_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" node scripts/translate.ts",
+    "check:drift": "node scripts/check-drift.ts",
     "dev": "vp pack --watch",
     "test": "vp run generate && vp test",
-    "check": "vp check",
+    "check": "vp check && node scripts/check-drift.ts",
     "eval": "waza run evals --discover -v"
   },
   "dependencies": {
-    "@pantoken/scaffold": "workspace:*"
+    "@bomb.sh/tab": "catalog:",
+    "@pantoken/scaffold": "workspace:*",
+    "commander": "catalog:"
   },
   "devDependencies": {
+    "@clack/prompts": "catalog:",
+    "@pantoken/translation-adapters": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",

@@ -2,7 +2,7 @@
   "name": "@pantoken/pendo",
   "version": "0.3.13",
   "description": "Instructure-styled global CSS for Pendo guides, built on pantoken tokens (ported from @instructure/pendo-global-css).",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
@@ -30,7 +30,7 @@
     "embed": "node scripts/embed.ts",
     "generate": "node scripts/generate.ts",
     "dev": "vp run embed && vp run generate && vp pack --watch",
-    "test": "vp run embed && vp test",
+    "test": "vp run embed && vp run generate && vp test",
     "check": "vp check"
   },
   "dependencies": {
@@ -42,6 +42,7 @@
     "postcss": "catalog:"
   },
   "devDependencies": {
+    "@pantoken/plugin-logos": "workspace:*",
     "@pantoken/utils": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:",

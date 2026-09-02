@@ -1,0 +1,9 @@
+{
+  "prevMonth": "上個月",
+  "nextMonth": "下個月",
+  "dateLabel": "日期",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "開啟日曆",
+  "timeLabel": "時間",
+  "back": "返回"
+}

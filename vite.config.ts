@@ -9,6 +9,9 @@ export default defineConfig({
     // Reads FC_NUM_RUNS to adjust fast-check iteration counts without changing test source.
     // Default: 100 (fast). Stress runs (vp run property:stress): 10 000.
     setupFiles: [`${__dir}/scripts/quality/fast-check-setup.ts`],
+    // Default (5000ms) is too tight for a full-suite local run (277 files) where module transform/
+    // import contends for CPU; slower CI/gh runners need the same headroom.
+    testTimeout: 20_000,
     include: [
       "packages/**/*.{test,spec}.?(c|m)[jt]s?(x)",
       "formats/**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -54,6 +57,8 @@ export default defineConfig({
         "**/dist/**",
         "**/*.config.*",
         "**/*.d.ts",
+        // Data files, not executable code — nothing for v8 to instrument.
+        "**/*.json",
         // Type-only package — no runtime statements to cover, so it can't meet an 85% floor.
         "packages/model/**",
       ],
@@ -70,6 +75,16 @@ export default defineConfig({
   },
   fmt: {
     overrides: [{ files: ["**/*.jsonc"], options: { trailingComma: "none" } }],
+    // Generated TypeDoc API reference (including per-locale copies) is never hand-edited and is
+    // rebuilt by `docs:build`; oxfmt's markdown formatter isn't idempotent on the escaped generic-type
+    // angle brackets TypeDoc emits in signature lines (e.g. `` `Readonly`\<`Record`\<`string`,
+    // `string`\>\> ``) — each pass through `vp check --fix` (including the `staged` pre-commit hook)
+    // duplicated more `>` characters into already-committed locale API docs. Excluded the same way
+    // `.markdownlint-cli2.yaml` already excludes this tree.
+    // `ai/create-pantoken-app-site` is a separate git submodule (github.com/thedannywahl/
+    // create-pantoken-app): its `index.html` is plain-text skill content wearing an `.html`
+    // extension only so GitHub Pages resolves it as the directory index, not real markup to format.
+    ignorePatterns: ["docs/api/**", "docs/*/api/**", "ai/create-pantoken-app-site/**"],
   },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
@@ -213,21 +228,150 @@ export default defineConfig({
       },
       // i18n locale bundle management. translate is local-only (AI credentials required);
       // check:drift asserts committed caches are current (CI-safe, no network).
-      "i18n:translate": {
-        command: "vp run @pantoken/i18n#translate",
+      // UI (web-components) string localization.
+      "ui:translate": {
+        command: "vp run @pantoken/web-components#translate",
         cache: false,
       },
-      "i18n:translate:agy": {
-        command: "vp run @pantoken/i18n#translate:agy",
+      "ui:translate:agy": {
+        command: "vp run @pantoken/web-components#translate:agy",
         cache: false,
       },
-      // docs locale translation via agy — local-only (AI credentials required).
+      "ui:translate:copilot": {
+        command: "vp run @pantoken/web-components#translate:copilot",
+        cache: false,
+      },
+      "ui:translate:force": {
+        command: "vp run @pantoken/web-components#translate:force",
+        cache: false,
+      },
+      "ui:translate:force:agy": {
+        command: "vp run @pantoken/web-components#translate:agy:force",
+        cache: false,
+      },
+      "ui:translate:force:copilot": {
+        command: "vp run @pantoken/web-components#translate:copilot:force",
+        cache: false,
+      },
+      // Docs locale translation (both claude and agy variants).
+      "docs:translate": {
+        command: "vp run @pantoken/docs#docs:locales:translate",
+        cache: false,
+      },
       "docs:translate:agy": {
         command: "vp run @pantoken/docs#docs:locales:translate:agy",
         cache: false,
       },
+      "docs:translate:copilot": {
+        command: "vp run @pantoken/docs#docs:locales:translate:copilot",
+        cache: false,
+      },
+      "docs:translate:force": {
+        command: "vp run @pantoken/docs#docs:locales:translate:force",
+        cache: false,
+      },
+      "docs:translate:force:agy": {
+        command: "vp run @pantoken/docs#docs:locales:translate:agy:force",
+        cache: false,
+      },
+      "docs:translate:force:copilot": {
+        command: "vp run @pantoken/docs#docs:locales:translate:copilot:force",
+        cache: false,
+      },
+      // CLI (scaffold and ai) string localization.
+      "cli:translate": {
+        command: "vp run @pantoken/scaffold#translate && vp run @pantoken/ai#translate",
+        cache: false,
+      },
+      "cli:translate:agy": {
+        command: "vp run @pantoken/scaffold#translate:agy && vp run @pantoken/ai#translate:agy",
+        cache: false,
+      },
+      "cli:translate:copilot": {
+        command:
+          "vp run @pantoken/scaffold#translate:copilot && vp run @pantoken/ai#translate:copilot",
+        cache: false,
+      },
+      "cli:translate:force": {
+        command: "vp run @pantoken/scaffold#translate:force && vp run @pantoken/ai#translate:force",
+        cache: false,
+      },
+      "cli:translate:force:agy": {
+        command:
+          "vp run @pantoken/scaffold#translate:agy:force && vp run @pantoken/ai#translate:agy:force",
+        cache: false,
+      },
+      "cli:translate:force:copilot": {
+        command:
+          "vp run @pantoken/scaffold#translate:copilot:force && vp run @pantoken/ai#translate:copilot:force",
+        cache: false,
+      },
+      // Umbrella tasks for all translation domains.
+      "i18n:translate": {
+        command: "true",
+        dependsOn: ["ui:translate", "docs:translate", "cli:translate"],
+        cache: false,
+      },
+      "i18n:translate:agy": {
+        command: "true",
+        dependsOn: ["ui:translate:agy", "docs:translate:agy", "cli:translate:agy"],
+        cache: false,
+      },
+      "i18n:translate:copilot": {
+        command: "true",
+        dependsOn: ["ui:translate:copilot", "docs:translate:copilot", "cli:translate:copilot"],
+        cache: false,
+      },
+      // Bypasses every domain's translation-memory cache — retranslates and overwrites everything,
+      // even already-cached content. Use after fixing an adapter bug or a bad translation; see
+      // DOCS_TRANSLATION_FORCE / I18N_TRANSLATION_FORCE in the respective translation pipelines.
+      "i18n:translate:force": {
+        command: "true",
+        dependsOn: ["ui:translate:force", "docs:translate:force", "cli:translate:force"],
+        cache: false,
+      },
+      // Same as i18n:translate:force but routed through the agy adapter wrapper.
+      "i18n:translate:force:agy": {
+        command: "true",
+        dependsOn: [
+          "ui:translate:force:agy",
+          "docs:translate:force:agy",
+          "cli:translate:force:agy",
+        ],
+        cache: false,
+      },
+      // Same as i18n:translate:force but routed through the copilot adapter wrapper.
+      "i18n:translate:force:copilot": {
+        command: "true",
+        dependsOn: [
+          "ui:translate:force:copilot",
+          "docs:translate:force:copilot",
+          "cli:translate:force:copilot",
+        ],
+        cache: false,
+      },
+      // Drift checks for the UI and CLI i18n domains. Severity per surface and locale tier comes from
+      // `i18n-policy.json` — these tasks report every gap but only exit non-zero on a `block`, so an
+      // English-only change lands without waiting on ~90 translations. Docs drift runs in
+      // `@pantoken/docs#docs:build` (it needs the generated EN API tree); `i18n:check:drift:all` runs
+      // both.
       "i18n:check:drift": {
-        command: "vp run @pantoken/i18n#check:drift",
+        command:
+          "vp run @pantoken/translation-adapters#build && vp run @pantoken/web-components#check:drift && vp run @pantoken/scaffold#check:drift && vp run @pantoken/ai#check:drift",
+      },
+      // Every i18n surface at once, including the docs ones. Assumes `docs:api:en` already ran — API
+      // prose drift is skipped with a note when `docs/api` is absent.
+      "i18n:check:drift:all": {
+        command:
+          "vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
+        cache: false,
+      },
+      // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the
+      // "show me every gap, fail if any remain" command for a local audit or a scheduled full-locale
+      // run before a release.
+      "i18n:check:drift:strict": {
+        command: "I18N_DRIFT_STRICT=1 vp run i18n:check:drift:all",
+        cache: false,
       },
       "i18n:bundles:build": {
         command: "vp run @pantoken/i18n#generate",
@@ -294,6 +438,12 @@ export default defineConfig({
       "gate:publish": {
         command: "true",
         dependsOn: ["gate:repository", "gate:publint", "gate:attw"],
+      },
+      // Root convenience alias so `vp run scaffold:dev <platform>` works from anywhere in the repo;
+      // args pass through to the underlying package task. See packages/scaffold/scripts/scaffold-dev.ts.
+      "scaffold:dev": {
+        command: "vp run @pantoken/scaffold#scaffold:dev",
+        cache: false,
       },
     },
   },

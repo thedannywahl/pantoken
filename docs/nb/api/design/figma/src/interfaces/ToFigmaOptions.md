@@ -1,0 +1,27 @@
+[pantoken](../../../../index.md) / [design/figma/src](../index.md) / ToFigmaOptions
+
+# Grensesnitt: ToFigmaOptions
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Eksperimentell</span>
+
+Options for [toFigmaVariables](../functions/toFigmaVariables.md).
+
+## Egenskaper
+
+### collection?
+
+> `optional` **collection?**: `string`
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Eksperimentell</span>
+
+The collection name (default `"Instructure"`).
+
+***
+
+### modes?
+
+> `optional` **modes?**: \[`string`, `string`\]
+
+<span class="instui-pill -color-danger pantoken-doc-tag">Eksperimentell</span>
+
+The mode names, mapped to `light-dark()` sides (default `["light", "dark"]`).

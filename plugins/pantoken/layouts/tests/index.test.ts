@@ -1,6 +1,6 @@
 import { expect, test } from "vite-plus/test";
 import { capabilitiesOf } from "@pantoken/plugin-kit";
-import { layouts, wrapperRules } from "../src/index.ts";
+import { layouts, pageLayouts, wrapperRules } from "../src/index.ts";
 import { SENTINEL } from "../src/lib/sentinel.ts";
 
 const cssOf = (plugin: ReturnType<typeof layouts>): string => {
@@ -36,4 +36,12 @@ test("wrapperRules supports custom and empty prefixes", () => {
 
 test("wrapperRules matches the plugin css payload", () => {
   expect(wrapperRules()).toBe(cssOf(layouts()));
+});
+
+test("pageLayouts exposes the bundled starter page layouts", () => {
+  const names = pageLayouts.map((layout) => layout.name).sort((a, b) => a.localeCompare(b));
+  expect(names).toEqual(["callout", "hero", "rubric-note", "testimonial", "two-column"]);
+  for (const layout of pageLayouts) {
+    expect(layout.html).toContain("instui-");
+  }
 });

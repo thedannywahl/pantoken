@@ -11,6 +11,7 @@ export const uk: LocaleBundle = defineBundle({
     prevMonth: "Попередній місяць",
     nextMonth: "Наступний місяць",
     dateLabel: "Дата",
+    datePlaceholder: "рррр-mm-dd",
     openCalendar: "Відкрити календар",
     timeLabel: "Час",
     back: "Назад",

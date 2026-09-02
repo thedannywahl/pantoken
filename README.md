@@ -7,14 +7,19 @@
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/thedannywahl/pantoken/badge)](https://securityscorecards.dev/viewer/?uri=github.com/thedannywahl/pantoken)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/13875/badge)](https://www.bestpractices.dev/projects/13875)
 
-![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.iywahl.com/og.png)
+![Pantoken: Instructure design tokens and icons, reshaped for every platform.](https://pantoken.app/og.png)
 
 pantoken resolves Instructure UI's design tokens and icons once, then turns that single model into
 many small, publishable packages: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more. You install the
 smallest package that fits your task, or the unified `pantoken` package that re-exports them all.
 
-[Learn more](https://pantoken.iywahl.com)
+> pantoken is built and used internally at Instructure, then open-sourced; Instructure doesn't
+> provide official warranty or support for it as a product, which is why it's published under
+> [`thedannywahl`](https://github.com/thedannywahl/pantoken) rather than the `instructure` org — it
+> may move there later.
+
+[Learn more](https://pantoken.app)
 
 ## Quick start
 
@@ -42,7 +47,7 @@ npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
 Or skip the install entirely and pull a lean token foundation plus only the components you need from a
-CDN — see [CDN & distribution](https://pantoken.iywahl.com/guide/cdn) for the interactive URL builder.
+CDN — see [CDN & distribution](https://pantoken.app/guide/cdn) for the interactive URL builder.
 
 ## The token model
 
@@ -66,7 +71,7 @@ The monorepo is organized into buckets. A few highlights:
 | `plugins/`   | Optional token and CSS transforms    | `@pantoken/plugin-stacking`, `@pantoken/plugin-simple-icons`                |
 | `tools/`     | Private build tooling                | `@pantoken/aggregate`, `@pantoken/validate-generated`                       |
 
-The docs site has the [full package map](https://pantoken.iywahl.com/guide/packages).
+The docs site has the [full package map](https://pantoken.app/guide/packages).
 
 ## Architecture
 
@@ -79,7 +84,7 @@ upstream. Every other bucket consumes the IR.
 ## Documentation
 
 The site is built with VitePress and TypeDoc and deploys to GitHub Pages:
-[pantoken.iywahl.com](https://pantoken.iywahl.com).
+[pantoken.app](https://pantoken.app).
 
 ```sh
 pnpm run docs:dev      # local dev server with hot reload
@@ -98,7 +103,7 @@ pnpm run check:publish       # publint every publishable package
 ```
 
 Generated files are never committed — a build reproduces them into each package's `generated/`
-directory. See the [generated-output guide](https://pantoken.iywahl.com/guide/generated-output).
+directory. See the [generated-output guide](https://pantoken.app/guide/generated-output).
 
 ## License
 

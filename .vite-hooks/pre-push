@@ -1,7 +1,7 @@
 # Block a push that changes a publishable package with no covering changeset (bypass: --no-verify).
 vp run release:coverage
 # Guard against stale i18n bundle caches when strings.ts or i18n package files changed.
-if git diff --name-only "@{upstream}...HEAD" 2>/dev/null | grep -qE '^(packages/i18n/|renderers/web-components/src/lib/strings\.ts)'; then
+if git diff --name-only "@{upstream}...HEAD" 2>/dev/null | grep -qE '^(packages/i18n/|renderers/web-components/src/lib/strings\.ts|packages/scaffold/(src/i18n\.json|i18n-cache/)|ai/pantoken-ai/(src/i18n\.json|i18n-cache/))'; then
   vp run i18n:check:drift
 fi
 # Block a push that introduces new fallow findings (dead code / complexity) in the changed files,
@@ -15,3 +15,5 @@ vp run snyk:code
 vp run lint:markdown
 # Property-based tests run at default iterations (100) in the CI `test` job on every PR. No separate
 # pre-push gate needed — fast-check failures surface in CI before merge.
+# Report (non-blocking) stuck/uncondensed Entire sessions; no --force, so it only reports, never discards.
+if command -v entire >/dev/null 2>&1; then entire doctor || true; fi

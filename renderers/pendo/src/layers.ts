@@ -19,12 +19,13 @@ import {
   chromeCss,
   containerCss,
   inputsCss,
+  productLogoCss,
   textCss,
   varsCss,
 } from "../generated/embedded.ts";
 
 /** The `--pendo-*` local aliases, override tokens, and logo references. */
-export const PENDO_VARS_CSS: string = varsCss;
+export const PENDO_VARS_CSS: string = `${varsCss}\n${productLogoCss}`;
 
 /**
  * Cascade order (lowest → highest). Layered `!important` beats Pendo's

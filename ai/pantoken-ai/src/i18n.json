@@ -1,0 +1,12 @@
+{
+  "wroteFile": {
+    "string": "✓ {{path}}",
+    "verbatim": "required"
+  },
+  "helpInitDescription": "Write pantoken's agent assets into a repo",
+  "helpInitToolDescription": "Agent tool (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Target directory",
+  "helpScaffoldDescription": "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it",
+  "helpScaffoldToolDescription": "Agent tool (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Override the auto-detected display language (e.g. \"hu\")"
+}

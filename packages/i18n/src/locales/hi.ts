@@ -10,7 +10,7 @@ export const hi: LocaleBundle = defineBundle({
   strings: makeStrings("hi", {
     prevMonth: "पिछला महीना",
     nextMonth: "अगला महीना",
-    dateLabel: "दिनांक",
+    dateLabel: "तारीख",
     openCalendar: "कैलेंडर खोलें",
     timeLabel: "समय",
     back: "वापस",

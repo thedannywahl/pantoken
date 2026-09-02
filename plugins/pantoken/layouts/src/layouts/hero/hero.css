@@ -1,0 +1,89 @@
+/**
+ * @layout hero
+ * @summary Full-width header section with title, subtitle, and optional background image.
+ * @remarks
+ * ✅ Use Hero when:
+ * - You need a prominent page header with visual hierarchy
+ * - The page benefits from a large, eye-catching opening section
+ * - You want to include background imagery or gradient accents
+ * 🚫 Don't use Hero when:
+ * - Building a simple page header — use Page-Layout instead
+ * - The hero competes with critical content — prioritize readability
+ * @accessibility
+ * - Ensure the title is in an `<h1>` tag for semantic structure
+ * - If using background images, provide sufficient color contrast for text
+ * - Avoid autoplay on video or animation that could distract from content
+ * @selector div[class~="pfx-hero"]
+ * @part .pfx-background - Optional background layer (image or gradient).
+ * @part .pfx-overlay - Optional semi-transparent overlay for text contrast.
+ * @part .pfx-content - Container for hero text and actions.
+ * @part .pfx-title - Main hero title (typically `<h1>`).
+ * @part .pfx-subtitle - Optional supporting text or description.
+ * @part .pfx-actions - Optional action buttons or links.
+ * @slot title - Hero title content
+ * @slot subtitle - Hero subtitle content
+ * @related card
+ */
+div[class~="pfx-hero"] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: var(--instui-space-large);
+  overflow: hidden;
+  background-color: var(--instui-color-primary-background);
+}
+
+div[class~="pfx-hero"] .pfx-background:optional {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+div[class~="pfx-hero"] .pfx-overlay:optional {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+div[class~="pfx-hero"] .pfx-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+}
+
+div[class~="pfx-hero"] .pfx-title {
+  font-size: var(--instui-font-size-hero);
+  font-weight: var(--instui-font-weight-bold);
+  margin: 0 0 var(--instui-space-medium) 0;
+}
+
+div[class~="pfx-hero"] .pfx-title slot[name="title"]::before {
+  content: "Page title";
+}
+
+div[class~="pfx-hero"] .pfx-subtitle:optional {
+  font-size: var(--instui-font-size-large);
+  margin: 0 0 var(--instui-space-large) 0;
+}
+
+div[class~="pfx-hero"] .pfx-subtitle slot[name="subtitle"]::before {
+  content: "Page description";
+}
+
+div[class~="pfx-hero"] .pfx-actions:optional {
+  display: flex;
+  gap: var(--instui-space-medium);
+  justify-content: center;
+}

@@ -4,7 +4,7 @@ import { useData } from "vitepress";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet } from "../composables/usePickerTheme";
+import { tokenLeanSheet } from "../composables/tokenSheetPaths";
 import PickerOutput from "./PickerOutput.vue";
 
 const ELEMENTS = [

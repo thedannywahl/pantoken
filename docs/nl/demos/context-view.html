@@ -1,0 +1,36 @@
+<div class="instui-card">
+  <!-- As a native popover, `popovertarget` toggles it with no JavaScript: it opens in the top layer
+       and light-dismisses on Esc or an outside click. The trigger's `anchor-name` lets it dock below the
+       button (-placement-bottom) where CSS anchor positioning is supported. -->
+  <button
+    class="instui-button -color-secondary"
+    popovertarget="cv-popover"
+    style="anchor-name: --pantoken-anchor"
+  >
+    Toon details
+  </button>
+
+  <div
+    id="cv-popover"
+    popover
+    class="instui-context-view -placement-bottom"
+    style="max-width: 320px"
+  >
+    Een contextweergave omlijst een callout met een pijlpunt. Als popover ligt het bovenaan en sluit
+    het wanneer je ergens buiten klikt of Esc drukt.
+  </div>
+
+  <!-- Static placements: the caret sits on the edge facing the thing the view explains. -->
+  <div style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start">
+    <div class="instui-context-view -placement-top">Plaatsing boven</div>
+    <div class="instui-context-view -placement-bottom">Plaatsing onder</div>
+    <div class="instui-context-view -placement-start">Plaatsing begin</div>
+    <div class="instui-context-view -placement-end">Plaatsing einde</div>
+    <div class="instui-context-view -color-inverse">Inverse achtergrond</div>
+  </div>
+
+  <p class="instui-text --text-muted" style="margin-top: 16px">
+    Positionering naast een trigger gebruikt CSS-ankerpositionering waar ondersteund; elders
+    centreert de popover in de bovenste laag.
+  </p>
+</div>

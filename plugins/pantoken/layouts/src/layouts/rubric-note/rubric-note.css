@@ -1,0 +1,70 @@
+/**
+ * @layout rubric-note
+ * @summary Structured note with rubric categories and scoring indicators.
+ * @remarks
+ * ✅ Use Rubric-Note when:
+ * - Displaying grading rubric or assessment criteria
+ * - You need to structure content by category with scores or indicators
+ * - The layout should emphasize structure and hierarchy
+ * 🚫 Don't use Rubric-Note when:
+ * - Displaying simple notes or comments — use Callout instead
+ * - Complex grading logic is needed — consider a custom component
+ * @accessibility
+ * - Use table semantics if displaying a true rubric with rows and columns
+ * - Ensure score indicators are not color-only
+ * - Provide descriptive labels for each category
+ * @selector div[class~="pfx-rubric-note"]
+ * @part .pfx-header - Header with title and metadata.
+ * @part .pfx-criteria - Container for rubric criteria rows.
+ * @part .pfx-row - Individual criterion row.
+ * @part .pfx-name - Criterion name or category.
+ * @part .pfx-score - Score indicator or badge.
+ * @part .pfx-description - Detailed description of the criterion.
+ * @related card
+ */
+div[class~="pfx-rubric-note"] {
+  padding: var(--instui-space-medium);
+  border: 1px solid var(--instui-color-border);
+  border-radius: var(--instui-radius-medium);
+  background-color: var(--instui-color-background);
+}
+
+div[class~="pfx-rubric-note"] .pfx-header:optional {
+  margin-bottom: var(--instui-space-medium);
+  padding-bottom: var(--instui-space-medium);
+  border-bottom: 2px solid var(--instui-color-border);
+}
+
+div[class~="pfx-rubric-note"] .pfx-criteria {
+  display: flex;
+  flex-direction: column;
+  gap: var(--instui-space-small);
+}
+
+div[class~="pfx-rubric-note"] .pfx-criteria .pfx-row:one-or-more {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: var(--instui-space-medium);
+  padding: var(--instui-space-small);
+  border-left: 4px solid var(--instui-color-primary);
+  background-color: var(--instui-color-surface);
+}
+
+div[class~="pfx-rubric-note"] .pfx-criteria .pfx-row .pfx-name {
+  font-weight: var(--instui-font-weight-semibold);
+}
+
+div[class~="pfx-rubric-note"] .pfx-criteria .pfx-row .pfx-score {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--instui-color-info-background);
+  color: var(--instui-color-info-text);
+  font-weight: var(--instui-font-weight-semibold);
+  text-align: center;
+}
+
+div[class~="pfx-rubric-note"] .pfx-criteria .pfx-row .pfx-description {
+  font-size: var(--instui-font-size-small);
+  color: var(--instui-color-text-secondary);
+}

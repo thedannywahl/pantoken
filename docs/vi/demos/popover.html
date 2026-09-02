@@ -1,0 +1,21 @@
+<div class="instui-card">
+  <!-- A native [popover] surface: popovertarget toggles it with no JavaScript. It opens in the top
+       layer and light-dismisses on Esc or an outside click. The trigger declares `anchor-name`, so where
+       CSS anchor positioning is supported the popover docks below it (-placement-bottom) and flips to
+       stay on-screen; elsewhere the browser centers it. -->
+  <button
+    class="instui-button -color-secondary"
+    popovertarget="pop-1"
+    style="anchor-name: --pantoken-anchor"
+  >
+    Open popover
+  </button>
+
+  <div id="pop-1" popover class="instui-popover -placement-bottom" style="max-width: 280px">
+    <div class="instui-heading -level-h4" style="margin-bottom: 8px">Share this page</div>
+    <p class="instui-text -size-sm" style="margin: 0">
+      A popover is a lightweight surface anchored to a trigger. This one uses the native
+      <code>popover</code> attribute.
+    </p>
+  </div>
+</div>

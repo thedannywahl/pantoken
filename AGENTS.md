@@ -137,3 +137,11 @@ Owner of the VitePress docs site, i18n, the cssdoc integration, and the release 
   API tree and the `ai` adapter only for hand-written guides.
 - The docs orchestrator and CSS-API node spawn `node scripts/x.ts`, not a nested `vp run`.
 - Full rules live in `docs/conventions/build-and-docs.md`.
+
+<!-- entire-graph:begin -->
+
+This repo has the entire-graph code graph installed. Before exploring code with
+grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
+for using graph retrieval, focused source inspection, and verification.
+@.entire/graph-agent.md
+<!-- entire-graph:end -->

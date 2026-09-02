@@ -35,3 +35,10 @@ run = [
   # Requires the Swift toolchain (Xcode on macOS, or `mise use swift` on Linux).
   "swift build --package-path ./native/swift",
 ]
+
+# Umbrella for every native-platform generate+compile proof. Only Swift is wired today; add
+# `depends` entries here as gradle/dart/php toolchains and their own build-verify tasks land.
+[tasks."verify:native"]
+description = "Verify every native platform proof end-to-end (Swift today; more as toolchains land)"
+depends = ["generate:swift"]
+run = "true"

@@ -2,7 +2,7 @@
 
 Agent assets for projects that use pantoken (not for developing pantoken itself). It ships an
 `AGENTS.md`, an `llms.txt`, editor and agent rule files (Cursor, Copilot, Windsurf), and two Claude
-Code skills (`init-pantoken`, `scaffold-pantoken`) — plus an installer CLI with two commands:
+Code skills (`init-pantoken`, `create-pantoken-app`) — plus an installer CLI with two commands:
 `init` (write those assets into a consumer repo) and `scaffold <platform>` (scaffold a starter
 project via [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) and install
 the agent assets into the same directory).
@@ -32,8 +32,8 @@ npx pantoken-ai init --tool claude --dir ./my-app
 ```
 
 `npx` works regardless of which package manager your project uses. If you prefer to run it through
-your own package manager instead: `pnpm dlx pantoken-ai init`, `yarn dlx pantoken-ai init`, or
-`bunx pantoken-ai init`.
+your own package manager instead: `pnpm dlx pantoken-ai init`, `yarn dlx pantoken-ai init`,
+`bunx pantoken-ai init`, or `deno run npm:pantoken-ai init`.
 
 Tools: `agents`, `llms`, `cursor`, `copilot`, `windsurf`, `claude`, or `all`.
 
@@ -45,12 +45,20 @@ npx pantoken-ai scaffold components      # plain HTML/CSS (Vite + TS) + @pantoke
 npx pantoken-ai scaffold react           # Vite + React + @pantoken/react
 npx pantoken-ai scaffold vue             # Vite + Vue 3 + @pantoken/vue
 npx pantoken-ai scaffold web-components  # Vite + @pantoken/web-components (no framework)
+npx pantoken-ai scaffold canvas-theme-editor  # Canvas Theme Editor uploads + RCE template starter
+
+# Non-interactive (CI-safe): errors instead of prompting for a missing platform/directory
+npx pantoken-ai scaffold react --dir ./my-app --yes --tool cursor
+
+# Override the auto-detected display language
+npx pantoken-ai --lang hu scaffold react
 ```
 
 If you only want the starter project without the agent assets, run
 [`npx @pantoken/scaffold <platform>`](https://www.npmjs.com/package/@pantoken/scaffold) directly.
 
-Use `npx pantoken-ai --help` to print usage.
+Run `npx pantoken-ai --help` (or `init --help`/`scaffold --help`) for the full flag reference, or
+`npx pantoken-ai completion <shell>` to generate a bash/zsh/fish/PowerShell completion script.
 
 Or install programmatically:
 
@@ -70,7 +78,7 @@ assistant rules stay synchronized with pantoken package and CLI changes.
 
 ## Evals
 
-The `init-pantoken` and `scaffold-pantoken` Claude Code skills each have an eval suite under
+The `init-pantoken` and `create-pantoken-app` Claude Code skills each have an eval suite under
 `evals/<skill-name>/` (skill definitions live under `skills/<skill-name>/`), run with
 [waza](https://github.com/microsoft/waza), Microsoft's CLI for evaluating agent Skills:
 

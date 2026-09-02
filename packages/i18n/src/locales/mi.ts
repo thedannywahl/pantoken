@@ -11,7 +11,7 @@ export const mi: LocaleBundle = defineBundle({
     prevMonth: "Marama o mua",
     nextMonth: "Marama o muri",
     dateLabel: "Rā",
-    openCalendar: "Whakatūwhera maramataka",
+    openCalendar: "Whakatuwhera maramataka",
     timeLabel: "Wā",
     back: "Hoki",
   }),

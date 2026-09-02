@@ -2,7 +2,7 @@
   "name": "@pantoken/plugin-colors",
   "version": "0.1.2",
   "description": "pantoken plugin: CSS-only color math (alpha, darken, lighten, overlayColors) that mirrors the InstUI ui-color-utils, built on color-mix() and relative color syntax.",
-  "homepage": "https://pantoken.iywahl.com",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {

@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "vue";
 import { useData } from "vitepress";
+import { buildFileUrl, buildFileUrls, toScriptTagLines, type CdnFile } from "@pantoken/cdn";
 import type { PantokenTheme } from "../theme";
 import { useIndeterminateCheckbox } from "../composables/useIndeterminateCheckbox";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import { toggleStringInSet, useHashParamRef } from "../composables/usePickerHelpers";
-import { tokenLeanSheet, type PickerMode } from "../composables/usePickerTheme";
+import { type PickerMode } from "../composables/pickerMode";
+import { tokenSheetFile } from "../composables/tokenSheetPaths";
 import PickerOutput from "./PickerOutput.vue";
 
 const props = defineProps<{
   themeKey: PantokenTheme;
   mode: PickerMode;
+  provider: string;
 }>();
 
 // The base (unprefixed) element names `@pantoken/web-components` registers — mirrors
@@ -190,50 +193,64 @@ const needsIcons = computed(() => {
 
 // The lean token sheet is enough unless the selection touches an icon-rendering element, mirroring
 // CdnPicker.vue's needsIconSheet pattern — never the full style.css regardless of selection.
-const tokenLink = computed(() => {
-  const tokenSheet = tokenLeanSheet(props.themeKey, props.mode);
-  return needsIcons.value
-    ? `https://cdn.jsdelivr.net/combine/${tokenSheet},npm/@pantoken/components/dist/component-icons.css`
-    : `https://cdn.jsdelivr.net/${tokenSheet}`;
+const tokenFiles = computed<CdnFile[]>(() => {
+  const files: CdnFile[] = [tokenSheetFile(props.themeKey, props.mode)];
+  if (needsIcons.value)
+    files.push({ package: "@pantoken/components", path: "dist/component-icons.css" });
+  return files;
 });
+const tokenUrls = computed(() => buildFileUrls(tokenFiles.value, props.provider));
+
+// The real package entry point — `raw: false` lets esm.sh apply its normal ESM transform instead of
+// serving the file verbatim (needed since this is a genuine `import`, not a prebuilt asset).
+const wcPackageUrl = computed(() =>
+  buildFileUrl({ package: "@pantoken/web-components", raw: false }, props.provider),
+);
 
 // A bare URL/statement, not a full script-tag snippet — see the token note below the output for the
 // separate token sheet these elements still need to resolve their tokens.
 const esmSnippet = computed(() => {
-  if (allSelected.value) return `import "https://esm.sh/@pantoken/web-components";`;
+  if (allSelected.value) return `import "${wcPackageUrl.value}";`;
   const only = [...selected.value].sort();
   const onlyList = only.map((name) => `"${name}"`).join(", ");
-  return `import { register } from "https://esm.sh/@pantoken/web-components";\nregister(customElements, { only: [${onlyList}] });`;
+  return `import { register } from "${wcPackageUrl.value}";\nregister(customElements, { only: [${onlyList}] });`;
 });
 
 // No specific subset chosen (nothing selected, or literally everything) — the single "everything"
-// bundle is simpler and already exists; only build a combine URL for a genuine partial selection.
-const iifeScriptUrl = computed(() => {
+// bundle is simpler and already exists; only build per-element files for a genuine partial selection.
+const wcFiles = computed<CdnFile[]>(() => {
   if (selected.value.size === 0 || allSelected.value) {
-    return "https://cdn.jsdelivr.net/npm/@pantoken/web-components/dist/web-components.iife.js";
+    return [{ package: "@pantoken/web-components", path: "dist/web-components.iife.js" }];
   }
-  const files = orderForCombine(selected.value).map(
-    (name) => `npm/@pantoken/web-components/dist/${name}.iife.js`,
-  );
-  return files.length === 1
-    ? `https://cdn.jsdelivr.net/${files[0]}`
-    : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+  return orderForCombine(selected.value).map((name) => ({
+    package: "@pantoken/web-components",
+    path: `dist/${name}.iife.js`,
+  }));
 });
+const wcUrls = computed(() => buildFileUrls(wcFiles.value, props.provider));
 
-// A self-contained bootstrapper: it injects both the token stylesheet and the script bundle itself, so
-// dropping this one snippet in is enough — no separate link/script tags to write by hand. Built from
-// DOM calls rather than literal tag text, which also sidesteps writing a literal closing-script-tag
-// substring inside this file's own script block (the SFC parser would misread it as this block's end).
+function toLinkTagLines(urls: string[]): string {
+  return urls
+    .map(
+      (url) =>
+        `  var link = document.createElement("link");\n` +
+        `  link.rel = "stylesheet";\n` +
+        `  link.href = "${url}";\n` +
+        `  document.head.appendChild(link);`,
+    )
+    .join("\n");
+}
+
+// A self-contained bootstrapper: it injects both the token stylesheet(s) and the script bundle(s)
+// itself, so dropping this one snippet in is enough — no separate link/script tags to write by hand.
+// Built from DOM calls rather than literal tag text, which also sidesteps writing a literal
+// closing-script-tag substring inside this file's own script block (the SFC parser would misread it
+// as this block's end).
 const iifeSnippet = computed(
   () => `(function () {
-  var link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = "${tokenLink.value}";
-  document.head.appendChild(link);
+${toLinkTagLines(tokenUrls.value)}
 
-  var script = document.createElement("script");
-  script.src = "${iifeScriptUrl.value}";
-  document.head.appendChild(script);
+${toScriptTagLines(wcUrls.value)}
 })();`,
 );
 

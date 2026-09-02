@@ -1,0 +1,34 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 360px">
+    <!-- A native contenteditable: reads as text, click to edit (input chrome appears on focus). Pair
+         with a label; the leading pencil hints it's editable. -->
+    <div class="instui-text">
+      Nom del projecte:
+      <span
+        class="instui-in-place-edit"
+        contenteditable="true"
+        role="textbox"
+        aria-label="Project name"
+        >Sense títol</span
+      >
+      <span class="instui-icon -icon-pencil --text-muted"></span>
+    </div>
+
+    <div class="instui-text">
+      Propietari:
+      <span class="instui-in-place-edit" contenteditable="true" aria-label="Owner">Ada Byron</span>
+    </div>
+
+    <!-- -readonly: shown inline but not editable. -->
+    <div class="instui-text">
+      Creat:
+      <span class="instui-in-place-edit -readonly" contenteditable="false">12 de març de 2026</span>
+    </div>
+  </div>
+
+  <p class="instui-text -size-sm instui-fg-muted" style="margin-top: 12px">
+    Feu clic en un valor per editar-lo. L'alternador amb estat de visualització/edició amb els
+    botons de confirmar i cancel·lar és la capa de components web; aquesta és l'aparença editable
+    purament en CSS.
+  </p>
+</div>

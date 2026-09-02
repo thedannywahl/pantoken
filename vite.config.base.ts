@@ -37,17 +37,17 @@ const baseConfig = {
   run: { tasks: { build: { input: packInput } } },
   pack: {
     dts: true,
-    plugins:
-      process.env.CI === "true"
-        ? [
-            codecovVitePlugin({
-              enableBundleAnalysis: true,
-              bundleName: readPackageName(),
-              uploadToken: process.env.CODECOV_TOKEN,
-              telemetry: false,
-            }),
-          ]
-        : [],
+    // Cast avoids isolatedDeclarations needing to name unplugin's Plugin type here.
+    plugins: (process.env.CI === "true"
+      ? [
+          codecovVitePlugin({
+            enableBundleAnalysis: true,
+            bundleName: readPackageName(),
+            uploadToken: process.env.CODECOV_TOKEN,
+            telemetry: false,
+          }),
+        ]
+      : []) as unknown[],
   },
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],

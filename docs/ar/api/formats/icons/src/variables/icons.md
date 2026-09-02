@@ -1,0 +1,18 @@
+[pantoken](../../../../index.md) / [formats/icons/src](../index.md) / icons
+
+# متغير: icons
+
+> `const` **icons**: [`PantokenIcon`](../interfaces/PantokenIcon.md)[]
+
+<span class="instui-pill -color-warning pantoken-doc-tag">بيتا</span>
+
+كل أيقونات pantoken، مرتبة حسب الاسم.
+
+## مثال
+
+```ts
+import { icons } from "@pantoken/icons";
+
+icons.length; // the full set
+icons.filter((i) => i.source === "lucide"); // just the Lucide glyphs
+```

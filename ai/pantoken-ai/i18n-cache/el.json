@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ Έγραψε: {{path}}",
+  "helpInitDescription": "Εγγράφει τα αρχεία agent του pantoken σε αποθετήριο",
+  "helpInitToolDescription": "Εργαλείο agent (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Κατάλογος προορισμού",
+  "helpScaffoldDescription": "Δημιουργεί ένα αρχικό έργο (μέσω @pantoken/scaffold) και εγκαθιστά τα αρχεία agent σε αυτό",
+  "helpScaffoldToolDescription": "Εργαλείο agent (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Αντικαθιστά τη γλώσσα εμφάνισης που εντοπίστηκε αυτόματα (π.χ. \"hu\")"
+}

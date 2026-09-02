@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "Ghi các tài sản agent của pantoken vào repo",
+  "helpInitToolDescription": "Công cụ agent (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Thư mục đích",
+  "helpScaffoldDescription": "Tạo khung dự án khởi đầu (qua @pantoken/scaffold) và cài đặt các tài sản agent vào đó",
+  "helpScaffoldToolDescription": "Công cụ agent (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Ghi đè ngôn ngữ hiển thị được tự động nhận diện (ví dụ \"hu\")"
+}

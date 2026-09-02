@@ -8,11 +8,11 @@ export const he: LocaleBundle = defineBundle({
   dir: "rtl",
   label: "Hebrew (עִברִית)",
   strings: makeStrings("he", {
-    prevMonth: "חודש קודם",
-    nextMonth: "חודש הבא",
+    prevMonth: "החודש הקודם",
+    nextMonth: "החודש הבא",
     dateLabel: "תאריך",
     openCalendar: "פתח לוח שנה",
-    timeLabel: "שעה",
+    timeLabel: "זמן",
     back: "חזור",
   }),
 });

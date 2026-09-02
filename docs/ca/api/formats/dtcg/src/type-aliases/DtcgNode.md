@@ -1,0 +1,9 @@
+[pantoken](../../../../index.md) / [formats/dtcg/src](../index.md) / DtcgNode
+
+# Àlies de tipus: DtcgNode
+
+> **DtcgNode** = \{ `$value`: `string`; `$type?`: `string`; \} \| \{\[`key`: `string`\]: `DtcgNode`; \}
+
+<span class="instui-pill -color-warning pantoken-doc-tag">Beta</span>
+
+Una fulla o grup de token DTCG.

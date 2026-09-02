@@ -1,0 +1,42 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start">
+    <a class="instui-link" href="#">رابط مُنسّق</a>
+    <a class="instui-link -size-lg" href="#">رابط كبير</a>
+
+    <!-- iconPlacement is just DOM order: an .instui-icon child before or after the text. -->
+    <a class="instui-link" href="#">
+      <span class="instui-icon -icon-download"></span>
+      أيقونة في البداية
+    </a>
+    <a class="instui-link" href="#">
+      أيقونة في النهاية
+      <span class="instui-icon -icon-arrow-right"></span>
+    </a>
+
+    <p class="instui-text">
+      اقرأ الـ <a class="instui-link -inline" href="#">توثيق مضمّن</a> للقصة كاملة.
+    </p>
+
+    <a class="instui-link -unstyled" href="#">رابط غير منسّق</a>
+  </div>
+
+  <!-- color="link-inverse": for links on a dark surface. -->
+  <div
+    style="
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--instui-color-background-inverse);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    "
+  >
+    <a class="instui-link -color-inverse" href="#">رابط على خلفية داكنة</a>
+    <a class="instui-link -color-inverse" href="#">
+      <span class="instui-icon -icon-external-link"></span>
+      مع أيقونة بادئة
+    </a>
+  </div>
+</div>

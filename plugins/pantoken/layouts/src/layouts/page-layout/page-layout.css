@@ -1,0 +1,62 @@
+/**
+ * @layout page-layout
+ * @summary Standard three-column page layout with header, sidebar, and main content.
+ * @remarks
+ * ✅ Use Page-Layout when:
+ * - You need a classic page structure with navigation and content areas
+ * - The page has a clear main content area flanked by complementary regions
+ * - You want consistent spacing and alignment across the layout
+ * 🚫 Don't use Page-Layout when:
+ * - Building a single-column page — use a simpler layout instead
+ * - The sidebar competes with main content for importance
+ * @accessibility
+ * - Map the main content area to a `<main>` landmark
+ * - Give the sidebar `role="navigation"` or `role="complementary"` as appropriate
+ * - Ensure landmark regions have distinct aria-labels
+ * @selector div[class~="pfx-page-layout"]
+ * @part .pfx-header - Top header region.
+ * @part .pfx-body - Main body containing sidebar and content.
+ * @part .pfx-sidebar - Left navigation or auxiliary column.
+ * @part .pfx-main - Central content area.
+ * @part .pfx-footer - Bottom footer region.
+ * @related wrapper
+ */
+div[class~="pfx-page-layout"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+div[class~="pfx-page-layout"] .pfx-header:optional {
+  padding: var(--instui-space-medium);
+  background-color: var(--instui-color-header-background);
+  border-bottom: 1px solid var(--instui-color-border);
+}
+
+div[class~="pfx-page-layout"] .pfx-body {
+  display: flex;
+  flex: 1;
+}
+
+div[class~="pfx-page-layout"] .pfx-sidebar:optional {
+  width: 250px;
+  padding: var(--instui-space-medium);
+  background-color: var(--instui-color-sidebar-background);
+  border-right: 1px solid var(--instui-color-border);
+  overflow-y: auto;
+}
+
+div[class~="pfx-page-layout"] slot[name="content"].pfx-main {
+  flex: 1;
+  padding: var(--instui-space-medium);
+  overflow-y: auto;
+}
+
+div[class~="pfx-page-layout"] .pfx-footer:optional {
+  padding: var(--instui-space-medium);
+  background-color: var(--instui-color-footer-background);
+  border-top: 1px solid var(--instui-color-border);
+  text-align: center;
+  font-size: var(--instui-font-size-small);
+  color: var(--instui-color-footer-text);
+}

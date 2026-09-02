@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}}",
+  "helpInitDescription": "A pantoken ügynök-erőforrásainak írása egy repóba",
+  "helpInitToolDescription": "Ügynök eszköz (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "Célkönyvtár",
+  "helpScaffoldDescription": "Kezdő projekt létrehozása (@pantoken/scaffold segítségével) és az ügynök-erőforrások telepítése bele",
+  "helpScaffoldToolDescription": "Ügynök eszköz (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "Felülírja az automatikusan érzékelt megjelenítési nyelvet (pl. \"hu\")"
+}

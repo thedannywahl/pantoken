@@ -1,7 +1,7 @@
 /**
  * Shared primitives for the component builders: the class-prefix namespace helper, the standalone-sheet
- * `wrap` header, the masked-glyph constants, and the spacing scales. These carry no per-record content —
- * every `src/{components,utilities,rules,declarations}` module imports what it needs from here.
+ * `wrap` header, and the spacing scales. These carry no per-record content — every
+ * `src/{components,utilities,rules,declarations}` module imports what it needs from here.
  *
  * @module
  */
@@ -40,29 +40,6 @@ export const ns = (prefix: string | null | undefined): string => (prefix ? `${pr
 /** Prepend the standalone-sheet header comment to a rules string (used by each exported `xxxCss`). */
 export const wrap = (name: string, prefix: string, rules: string): string =>
   `/* InstUI ${name} (@pantoken/components) — prefix: ${prefix} */\n${rules.trim()}\n`;
-
-// ── Masked-glyph constants ─────────────────────────────────────────────────────
-/**
- * A contained, centred mask value pointing at a shared `--instui-icon-<name>` token, painted via
- * `background` (so the glyph takes the element's colour). Masks only — the token's `stroke=currentColor`
- * is irrelevant since the alpha channel drives the mask. Painting a glyph as a `background-image`
- * (which can't read `currentColor`) still needs a colour-baked data URI: see {@link SELECT_CHEVRON}.
- *
- * Only the glyphs still consumed by the TypeScript-authored records (button, the input controls) live
- * here now; the migrated `.css` records inline their `var(--instui-icon-*)` masks directly.
- */
-const iconMask = (name: string): string => `var(--instui-icon-${name}) center / contain no-repeat`;
-
-/** Lucide `chevron-down` in the InstUI icon grey — the SimpleSelect caret. A native `<select>` is a
- *  replaced element (no pseudo-elements), so the caret is a `background-image`, not `::after`; a data-URI
- *  background can't read `currentColor`, so the stroke is a fixed neutral grey that reads in both modes. */
-export const SELECT_CHEVRON =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a7883' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")";
-
-/** Lucide `chevron-up`/`chevron-down`, masked — the NumberInput spinner glyphs (painted in currentColor). */
-export const CHEVRON_UP_ICON: string = iconMask("chevron-up");
-/** Lucide `chevron-down`, masked — the NumberInput down spinner glyph (painted in currentColor). */
-export const CHEVRON_DOWN_ICON: string = iconMask("chevron-down");
 
 /**
  * InstUI's `ai` glyph (Solid), inlined as a mask so it paints in the button's own colour — solid

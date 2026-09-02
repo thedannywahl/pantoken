@@ -11,6 +11,7 @@ export const ca: LocaleBundle = defineBundle({
     prevMonth: "Mes anterior",
     nextMonth: "Mes següent",
     dateLabel: "Data",
+    datePlaceholder: "aaaa-mm-dd",
     openCalendar: "Obrir el calendari",
     timeLabel: "Hora",
     back: "Enrere",

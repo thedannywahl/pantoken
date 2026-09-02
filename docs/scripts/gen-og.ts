@@ -1,5 +1,5 @@
 /**
- * Generate the social card served at https://pantoken.iywahl.com/og.png — the image link
+ * Generate the social card served at https://pantoken.app/og.png — the image link
  * scrapers (Slack, iMessage, X, LinkedIn, Discord, Facebook) show when a pantoken docs URL unfurls.
  * Renders a 1200×630 PNG from an inline SVG that reuses the docs theme's home background (the navy
  * field with concentric blue circles bleeding off the bottom-right corner, see
@@ -71,7 +71,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <text x="100" y="473" font-family="${FONT}" font-size="29" font-weight="500" fill="${MUTED}">framework bindings, native code, and design-tool payloads.</text>
 
   <!-- Footer URL. -->
-  <text x="100" y="556" font-family="${FONT}" font-size="24" font-weight="400" fill="${URL_FILL}">pantoken.iywahl.com</text>
+  <text x="100" y="556" font-family="${FONT}" font-size="24" font-weight="400" fill="${URL_FILL}">pantoken.app</text>
 </svg>`;
 
 const png = new Resvg(svg, {

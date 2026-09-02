@@ -1,8 +1,8 @@
 {
   "name": "create-pantoken-app",
   "version": "0.3.1",
-  "description": "npm create pantoken-app -- <platform> — flat-name alias for @pantoken/scaffold, so `npm create pantoken-app` works the way npm's create-* convention expects.",
-  "homepage": "https://pantoken.iywahl.com",
+  "description": "npm create pantoken-app -- <platform> — flat-name alias for @pantoken/scaffold, so `npm create pantoken-app` works the way npm's create-* convention expects. Also `generate <target>` — flat-name alias for @pantoken/cli's native/non-npm token output.",
+  "homepage": "https://pantoken.app",
   "bugs": "https://github.com/thedannywahl/pantoken/issues",
   "license": "MIT",
   "repository": {
@@ -27,6 +27,7 @@
     "check": "vp check"
   },
   "dependencies": {
+    "@pantoken/cli": "workspace:*",
     "@pantoken/scaffold": "workspace:*"
   },
   "devDependencies": {

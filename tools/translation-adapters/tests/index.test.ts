@@ -7,8 +7,18 @@ import { afterEach, beforeEach, expect, test, vi } from "vite-plus/test";
 const spawn = vi.fn();
 vi.mock("node:child_process", () => ({ spawn }));
 
-const { extractJsonObject, sha256, spawnPrompt, TranslationMemory } =
-  await import("../src/index.ts");
+const {
+  extractJsonObject,
+  generateLocaleBundles,
+  isPassthroughTranslation,
+  localeFamilyGlobs,
+  parseI18nSource,
+  resolveVerbatimAction,
+  runI18nTranslationCli,
+  sha256,
+  spawnPrompt,
+  TranslationMemory,
+} = await import("../src/index.ts");
 
 // ── extractJsonObject ─────────────────────────────────────────────────────────
 
@@ -50,6 +60,127 @@ test("sha256 is deterministic for the same input", () => {
 
 test("sha256 produces different digests for different inputs", () => {
   expect(sha256("a")).not.toBe(sha256("b"));
+});
+
+// ── isPassthroughTranslation ──────────────────────────────────────────────────
+
+test("isPassthroughTranslation is true for an identical echo", () => {
+  expect(isPassthroughTranslation("Back", "Back")).toBe(true);
+});
+
+test("isPassthroughTranslation ignores case and surrounding whitespace", () => {
+  expect(isPassthroughTranslation("Back", "  back  ")).toBe(true);
+});
+
+test("isPassthroughTranslation is false for a genuine translation", () => {
+  expect(isPassthroughTranslation("Back", "Terug")).toBe(false);
+});
+
+test("isPassthroughTranslation is true for two empty strings", () => {
+  expect(isPassthroughTranslation("", "")).toBe(true);
+});
+
+// ── parseI18nSource ────────────────────────────────────────────────────
+
+test("parseI18nSource passes plain string entries through unchanged", () => {
+  expect(parseI18nSource({ back: "Back" })).toEqual({ strings: { back: "Back" }, verbatim: {} });
+});
+
+test("parseI18nSource flattens a rich entry's string and captures its verbatim policy", () => {
+  const result = parseI18nSource({
+    datePlaceholder: { string: "yyyy-mm-dd", verbatim: "allow" },
+  });
+  expect(result.strings).toEqual({ datePlaceholder: "yyyy-mm-dd" });
+  expect(result.verbatim).toEqual({ datePlaceholder: "allow" });
+});
+
+test("parseI18nSource omits the verbatim map entry when a rich entry has no policy", () => {
+  const result = parseI18nSource({ back: { string: "Back" } });
+  expect(result.strings).toEqual({ back: "Back" });
+  expect(result.verbatim).toEqual({});
+});
+
+test("parseI18nSource preserves a required verbatim policy", () => {
+  const result = parseI18nSource({
+    cssClass: { string: "-text-align-start", verbatim: "required" },
+  });
+  expect(result.strings).toEqual({ cssClass: "-text-align-start" });
+  expect(result.verbatim).toEqual({ cssClass: "required" });
+});
+
+// ── resolveVerbatimAction ──────────────────────────────────────────────
+
+test("resolveVerbatimAction defaults to error when no policy is declared", () => {
+  expect(resolveVerbatimAction(undefined, "hu")).toBe("error");
+});
+
+test('resolveVerbatimAction treats "allow" as allow for every locale', () => {
+  expect(resolveVerbatimAction("allow", "hu")).toBe("allow");
+});
+
+test('resolveVerbatimAction treats "required" as required for every locale', () => {
+  expect(resolveVerbatimAction("required", "hu")).toBe("required");
+});
+
+test("resolveVerbatimAction matches a locale-specific required tier", () => {
+  expect(resolveVerbatimAction({ required: ["ca"] }, "ca")).toBe("required");
+  expect(resolveVerbatimAction({ required: ["ca"] }, "hu")).toBe("error");
+});
+
+test("resolveVerbatimAction matches an exact locale code in the allow tier", () => {
+  expect(resolveVerbatimAction({ allow: ["en-GB"] }, "en-GB")).toBe("allow");
+  expect(resolveVerbatimAction({ allow: ["en-GB"] }, "en-CA")).toBe("error");
+});
+
+test("resolveVerbatimAction matches a prefix glob", () => {
+  expect(resolveVerbatimAction({ allow: ["en*"] }, "en-GB")).toBe("allow");
+  expect(resolveVerbatimAction({ allow: ["en*"] }, "hu")).toBe("error");
+});
+
+test("resolveVerbatimAction matches the wildcard for every locale", () => {
+  expect(resolveVerbatimAction({ warn: ["*"] }, "hu")).toBe("warn");
+});
+
+test("resolveVerbatimAction checks allow before warn", () => {
+  expect(resolveVerbatimAction({ allow: ["hu"], warn: ["*"] }, "hu")).toBe("allow");
+});
+
+test("resolveVerbatimAction falls back to error when no tier matches", () => {
+  expect(resolveVerbatimAction({ allow: ["en*"], warn: ["fr"] }, "hu")).toBe("error");
+});
+
+test("resolveVerbatimAction falls through to defaultPolicy when the key's own tiers don't match", () => {
+  expect(resolveVerbatimAction({ warn: ["nl"] }, "en-GB", { allow: ["en*"] })).toBe("allow");
+});
+
+test("resolveVerbatimAction lets a key's own error tier override a permissive defaultPolicy", () => {
+  expect(resolveVerbatimAction({ error: ["en-GB"] }, "en-GB", "allow")).toBe("error");
+});
+
+test("resolveVerbatimAction lets a key's own error tier override a required defaultPolicy", () => {
+  expect(resolveVerbatimAction({ error: ["hu"] }, "hu", "required")).toBe("error");
+});
+
+test("resolveVerbatimAction lets a key's own tiers win over defaultPolicy when both match", () => {
+  expect(resolveVerbatimAction({ warn: ["en-GB"] }, "en-GB", "allow")).toBe("warn");
+});
+
+// ── localeFamilyGlobs ───────────────────────────────────────────
+
+test("localeFamilyGlobs collapses regional variants to one glob per base language", () => {
+  expect(localeFamilyGlobs(["en-GB", "en-AU", "en-CA"])).toEqual(["en*"]);
+});
+
+test("localeFamilyGlobs handles a locale with no region subtag", () => {
+  expect(localeFamilyGlobs(["hu"])).toEqual(["hu*"]);
+});
+
+test("localeFamilyGlobs returns a sorted, deduped glob per unique base language", () => {
+  expect(localeFamilyGlobs(["fr-CA", "en-GB", "fr", "en-AU", "hu"])).toEqual(["en*", "fr*", "hu*"]);
+});
+
+test("localeFamilyGlobs returns an empty array for an empty locale list", () => {
+  expect(localeFamilyGlobs([])).toEqual([]);
 });
 
 // ── TranslationMemory ─────────────────────────────────────────────────────────
@@ -197,4 +328,500 @@ test("spawnPrompt includes context in the error message when provided", async ()
 test("spawnPrompt omits the context clause when context is not provided", async () => {
   useSpawn(() => ({ stdout: "", code: 1, stderr: "oops" }));
   await expect(spawnPrompt("cmd", ["-p"], "p")).rejects.toThrow(/exited 1: oops/u);
+});
+
+// ── runI18nTranslationCli ─────────────────────────────────────────────────────
+
+let cliTestDir: string;
+
+beforeEach(() => {
+  cliTestDir = join(tmpdir(), `ptk-i18n-cli-${Date.now()}-${Math.random().toString(36).slice(2)}`);
+  mkdirSync(cliTestDir, { recursive: true });
+});
+
+afterEach(() => {
+  rmSync(cliTestDir, { recursive: true, force: true });
+});
+
+test("runI18nTranslationCli creates a new cache and saves translated missing keys", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Szia" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    hello: "Szia",
+  });
+});
+
+test("runI18nTranslationCli skips a locale whose cache already has every key", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ hello: "Szia" }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(spawn).not.toHaveBeenCalled();
+});
+
+test("I18N_TRANSLATION_FORCE=1 retranslates and overwrites an already-cached key", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ hello: "stale" }));
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Szia" }) }));
+  process.env.I18N_TRANSLATION_FORCE = "1";
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+  } finally {
+    logSpy.mockRestore();
+    delete process.env.I18N_TRANSLATION_FORCE;
+  }
+  expect(spawn).toHaveBeenCalled();
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    hello: "Szia",
+  });
+});
+
+test("required verbatim keys bypass translation and overwrite stale caches even when forced", async () => {
+  const cachePath = join(cliTestDir, "hu.json");
+  writeFileSync(
+    cachePath,
+    JSON.stringify({ literal: "translated", [sha256("literal")]: "legacy" }),
+  );
+  process.env.I18N_TRANSLATION_FORCE = "1";
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { literal: "-text-align-start" },
+      targetLocales: ["hu"],
+      cachePath: () => cachePath,
+      isCached: (key, cache) => sha256(key) in cache || key in cache,
+      cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],
+      verbatim: { literal: "required" },
+    });
+  } finally {
+    logSpy.mockRestore();
+    delete process.env.I18N_TRANSLATION_FORCE;
+  }
+  expect(spawn).not.toHaveBeenCalled();
+  expect(JSON.parse(readFileSync(cachePath, "utf8"))).toEqual({ literal: "-text-align-start" });
+});
+
+test("runI18nTranslationCli always skips the 'en' locale, without touching its cache path", async () => {
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["en"],
+      cachePath: () => join(cliTestDir, "unreachable.json"),
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(spawn).not.toHaveBeenCalled();
+  expect(existsSync(join(cliTestDir, "unreachable.json"))).toBe(false);
+});
+
+test("runI18nTranslationCli supports a custom isCached predicate for legacy hash-keyed caches", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ [sha256("hello")]: "Szia" }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      isCached: (key, cache) => sha256(key) in cache,
+    });
+  } finally {
+    logSpy.mockRestore();
+  }
+  expect(spawn).not.toHaveBeenCalled();
+});
+
+test("runI18nTranslationCli exits the process when a locale's translation request fails", async () => {
+  useSpawn(() => ({ stdout: "", code: 1, stderr: "boom" }));
+  const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => undefined as never);
+  const errorSpy = vi.spyOn(console, "error").mockImplementation(() => undefined);
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+    expect(exitSpy).toHaveBeenCalledWith(1);
+    expect(errorSpy).toHaveBeenCalledWith(
+      expect.stringContaining("Failed to translate for locale hu"),
+      expect.anything(),
+    );
+  } finally {
+    exitSpy.mockRestore();
+    errorSpy.mockRestore();
+    logSpy.mockRestore();
+  }
+});
+
+test("runI18nTranslationCli does not cache an AI response identical to the English source", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Hello" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+    expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({});
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("identical to source"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+});
+
+test("runI18nTranslationCli resets a previously-cached entry that matches the English source", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ hello: "Hello" }));
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Szia" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+    expect(spawn).toHaveBeenCalled();
+    expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+      hello: "Szia",
+    });
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("reset 1 previously-cached"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+});
+
+test("runI18nTranslationCli warns and skips a missing or empty response value", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "   " }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+    });
+    expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({});
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("missing or empty"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+});
+
+test("runI18nTranslationCli audits a legacy hash-keyed cache via a custom cachedValue", async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ [sha256("hello")]: "Hello" }));
+  useSpawn(() => ({ stdout: JSON.stringify({ hello: "Szia" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { hello: "Hello" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      isCached: (key, cache) => sha256(key) in cache || key in cache,
+      cachedValue: (key, cache) => cache[sha256(key)] ?? cache[key],
+    });
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  // The stale hash-keyed entry is stripped and the fresh translation is saved under the plain key.
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({ hello: "Szia" });
+});
+
+test('runI18nTranslationCli caches an "allow" verbatim entry even when identical to the source', async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatim: { datePlaceholder: "allow" },
+    });
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    datePlaceholder: "yyyy-mm-dd",
+  });
+});
+
+test('runI18nTranslationCli does not reset a previously-cached "allow" verbatim entry', async () => {
+  writeFileSync(join(cliTestDir, "hu.json"), JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatim: { datePlaceholder: "allow" },
+    });
+    expect(spawn).not.toHaveBeenCalled();
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+});
+
+test('runI18nTranslationCli caches but warns on a "warn"-tier verbatim entry identical to the source', async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["hu"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatim: { datePlaceholder: { warn: ["hu"] } },
+    });
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("verbatim policy: warn"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "hu.json"), "utf8"))).toEqual({
+    datePlaceholder: "yyyy-mm-dd",
+  });
+});
+
+test('runI18nTranslationCli still resets a verbatim entry for a locale outside its "allow" tier', async () => {
+  writeFileSync(join(cliTestDir, "fr.json"), JSON.stringify({ datePlaceholder: "yyyy-mm-dd" }));
+  useSpawn(() => ({ stdout: JSON.stringify({ datePlaceholder: "aaaa-mm-jj" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { datePlaceholder: "yyyy-mm-dd" },
+      targetLocales: ["fr"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      verbatim: { datePlaceholder: { allow: ["en*"] } },
+    });
+    expect(spawn).toHaveBeenCalled();
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("reset 1 previously-cached"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "fr.json"), "utf8"))).toEqual({
+    datePlaceholder: "aaaa-mm-jj",
+  });
+});
+
+test("runI18nTranslationCli applies defaultVerbatim to a key with no per-key policy", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { back: "Back" },
+      targetLocales: ["en-GB"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      defaultVerbatim: { allow: localeFamilyGlobs(["en-GB", "en-AU"]) },
+    });
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "en-GB.json"), "utf8"))).toEqual({
+    back: "Back",
+  });
+});
+
+test("runI18nTranslationCli falls through to defaultVerbatim when a per-key policy doesn't cover the locale", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { back: "Back" },
+      targetLocales: ["en-GB"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      defaultVerbatim: "allow",
+      verbatim: { back: { warn: ["nl"] } },
+    });
+    expect(warnSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "en-GB.json"), "utf8"))).toEqual({
+    back: "Back",
+  });
+});
+
+test("runI18nTranslationCli lets a per-key error tier override a permissive defaultVerbatim", async () => {
+  useSpawn(() => ({ stdout: JSON.stringify({ back: "Back" }) }));
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+  try {
+    await runI18nTranslationCli({
+      label: "test strings",
+      source: { back: "Back" },
+      targetLocales: ["en-GB"],
+      cachePath: (locale) => join(cliTestDir, `${locale}.json`),
+      defaultVerbatim: "allow",
+      verbatim: { back: { error: ["en-GB"] } },
+    });
+    expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("identical to source"));
+  } finally {
+    logSpy.mockRestore();
+    warnSpy.mockRestore();
+  }
+  expect(JSON.parse(readFileSync(join(cliTestDir, "en-GB.json"), "utf8"))).toEqual({});
+});
+
+// ── generateLocaleBundles ──────────────────────────────────────────────────────
+
+let localeTestDir: string;
+
+beforeEach(() => {
+  localeTestDir = join(
+    tmpdir(),
+    `ptk-locales-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+  );
+  mkdirSync(localeTestDir, { recursive: true });
+});
+
+afterEach(() => {
+  rmSync(localeTestDir, { recursive: true, force: true });
+});
+
+test("generateLocaleBundles writes one module per locale plus an index re-exporting LOCALES", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "hu.json"), JSON.stringify({ greeting: "Szia" }));
+  writeFileSync(join(root, "i18n-cache", "fr.json"), JSON.stringify({ greeting: "Salut" }));
+
+  generateLocaleBundles(root, outDir);
+
+  const localesDir = join(outDir, "locales");
+  const huContent = readFileSync(join(localesDir, "hu.ts"), "utf8");
+  expect(huContent).toContain("export const LOCALE_HU");
+  expect(huContent).toContain("Szia");
+
+  const indexContent = readFileSync(join(localesDir, "index.ts"), "utf8");
+  expect(indexContent).toContain('import { LOCALE_HU } from "./hu.js";');
+  expect(indexContent).toContain('import { LOCALE_FR } from "./fr.js";');
+  expect(indexContent).toContain('"hu": LOCALE_HU,');
+  expect(indexContent).toContain('"fr": LOCALE_FR,');
+});
+
+test("generateLocaleBundles ignores non-JSON files in the cache directory", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "hu.json"), JSON.stringify({ greeting: "Szia" }));
+  writeFileSync(join(root, "i18n-cache", "README.md"), "not a locale");
+
+  generateLocaleBundles(root, outDir);
+
+  const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
+  expect(indexContent).toContain('"hu": LOCALE_HU,');
+  expect(indexContent).not.toContain("README");
+});
+
+test("generateLocaleBundles sanitizes hyphenated locale tags into valid JS identifiers", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "en-AU.json"), JSON.stringify({ greeting: "G'day" }));
+
+  generateLocaleBundles(root, outDir);
+
+  const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
+  expect(indexContent).toContain('import { LOCALE_EN_AU } from "./en-AU.js";');
+  expect(indexContent).toContain('"en-AU": LOCALE_EN_AU,');
+});
+
+test("generateLocaleBundles writes an empty LOCALES index when i18n-cache doesn't exist", () => {
+  const root = join(localeTestDir, "no-cache-root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(root, { recursive: true });
+
+  generateLocaleBundles(root, outDir);
+
+  const indexContent = readFileSync(join(outDir, "locales", "index.ts"), "utf8");
+  expect(indexContent).toContain(
+    "export const LOCALES: Record<string, Record<string, string>> = {",
+  );
+  expect(existsSync(join(outDir, "locales", "hu.ts"))).toBe(false);
+});
+
+test("generateLocaleBundles logs the generated locales when at least one is produced", () => {
+  const root = join(localeTestDir, "root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(join(root, "i18n-cache"), { recursive: true });
+  writeFileSync(join(root, "i18n-cache", "hu.json"), JSON.stringify({ greeting: "Szia" }));
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    generateLocaleBundles(root, outDir);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("hu"));
+  } finally {
+    logSpy.mockRestore();
+  }
+});
+
+test("generateLocaleBundles does not log when no locales were produced", () => {
+  const root = join(localeTestDir, "no-cache-root");
+  const outDir = join(localeTestDir, "out");
+  mkdirSync(root, { recursive: true });
+
+  const logSpy = vi.spyOn(console, "log").mockImplementation(() => undefined);
+  try {
+    generateLocaleBundles(root, outDir);
+    expect(logSpy).not.toHaveBeenCalled();
+  } finally {
+    logSpy.mockRestore();
+  }
 });

@@ -1,0 +1,9 @@
+{
+  "prevMonth": "Előző hónap",
+  "nextMonth": "Következő hónap",
+  "dateLabel": "Dátum",
+  "datePlaceholder": "yyyy-mm-dd",
+  "openCalendar": "Naptár megnyitása",
+  "timeLabel": "Idő",
+  "back": "Vissza"
+}

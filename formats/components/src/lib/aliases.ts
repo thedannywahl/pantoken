@@ -34,6 +34,37 @@ export function deprecatedAliasPairs(rawRecord: string): AliasPair[] {
   return [...rawRecord.matchAll(DEPRECATED_ALIAS)].map((m) => ({ alias: m[1], canonical: m[2] }));
 }
 
+/**
+ * Append generated rules to a record body, landing them INSIDE a trailing `@scope (...) { … }` block
+ * (right before its closing brace) rather than after it — a top-level `&` outside any nesting context
+ * is invalid CSS, and several `.css`-authored records wrap their whole body in `@scope`. Falls back to a
+ * plain append when the body doesn't end in a `@scope` block. Exported for records that need to append
+ * their own interpolated, scope-relative (`&`) rules — e.g. button's AI-glyph mask and ghost washes.
+ */
+export function appendGenerated(css: string, extra: string): string {
+  const trimmed = css.trimEnd();
+  const startsWithScope = trimmed.startsWith("@scope ");
+  const scopeAt = startsWithScope ? 0 : trimmed.lastIndexOf("\n@scope ") + 1;
+  const openBrace = startsWithScope || scopeAt > 0 ? trimmed.indexOf("{", scopeAt) : -1;
+  if (openBrace < 0 || !trimmed.endsWith("}")) return `${css}\n${extra}\n`;
+
+  let depth = 0;
+  let closeIdx = -1;
+  for (let i = openBrace; i < trimmed.length; i++) {
+    if (trimmed[i] === "{") depth++;
+    else if (trimmed[i] === "}") {
+      depth--;
+      if (depth === 0) {
+        closeIdx = i;
+        break;
+      }
+    }
+  }
+  if (closeIdx !== trimmed.length - 1) return `${css}\n${extra}\n`; // @scope isn't the trailing block
+
+  return `${trimmed.slice(0, closeIdx)}\n${extra}\n${trimmed.slice(closeIdx)}\n`;
+}
+
 /** Long-form spellings for the size scale — emitted as first-class aliases beside the short forms. */
 const SIZE_LONG: Record<string, string> = {
   "2xs": "xx-small",
@@ -60,7 +91,7 @@ export function withSizeAliases(css: string): string {
       .trim();
     extra.push(`${long} ${body}`);
   }
-  return extra.length ? `${css}\n/* size aliases */\n${extra.join("\n")}\n` : css;
+  return extra.length ? appendGenerated(css, `/* size aliases */\n${extra.join("\n")}`) : css;
 }
 
 /**
@@ -129,5 +160,5 @@ export function withAliases(css: string, aliases: AliasPair[]): string {
       extra.push(`/* alias of .${canonical} */\n${dep} ${body}`);
     }
   }
-  return extra.length ? `${css}\n${extra.join("\n")}\n` : css;
+  return extra.length ? appendGenerated(css, extra.join("\n")) : css;
 }

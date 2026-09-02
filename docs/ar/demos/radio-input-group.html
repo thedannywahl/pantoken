@@ -1,0 +1,31 @@
+<div class="instui-card">
+  <div style="display: flex; flex-direction: column; gap: 28px">
+    <!-- Toggle variant: the buttons connect into ONE segmented, single-select control (shared name) -->
+    <fieldset class="instui-radio-input-group -variant-toggle">
+      <legend>مقاس قميص</legend>
+      <label class="instui-radio -variant-toggle">
+        <input type="radio" name="size" checked /> صغير
+      </label>
+      <label class="instui-radio -variant-toggle"> <input type="radio" name="size" /> متوسط </label>
+      <label class="instui-radio -variant-toggle"> <input type="radio" name="size" /> كبير </label>
+    </fieldset>
+
+    <!-- Simple variant (default): standard radios, stacked -->
+    <fieldset class="instui-radio-input-group">
+      <legend>تكرار الإشعارات</legend>
+      <label class="instui-radio"><input type="radio" name="freq" checked /> زمن حقيقي</label>
+      <label class="instui-radio"><input type="radio" name="freq" /> ملخص يومي</label>
+      <label class="instui-radio"><input type="radio" name="freq" /> ملخص أسبوعي</label>
+    </fieldset>
+
+    <!-- Simple variant, laid out in a row -->
+    <fieldset class="instui-radio-input-group -layout-columns">
+      <legend>طريقة الاتصال</legend>
+      <label class="instui-radio"
+        ><input type="radio" name="contact" checked /> بريد إلكتروني</label
+      >
+      <label class="instui-radio"><input type="radio" name="contact" /> هاتف</label>
+      <label class="instui-radio"><input type="radio" name="contact" /> بريد</label>
+    </fieldset>
+  </div>
+</div>

@@ -9,10 +9,18 @@
  * @modifier [data-layout="lightboxBlank"] alert — Embedded alert guide; full-width with a coloured sidebar strip and status icon.
  * @modifier [data-layout="tooltipBlank"] popover — Overlay tooltip/popover guide; fixed width with optional caret.
  * @modifier ._pendo-guide-walkthrough_ survey — Survey guide; no data-layout value, auto width.
- * @modifier [class*="instui-info"] info — Informational colour variant (alert only).
- * @modifier [class*="instui-danger"] danger — Danger/error colour variant (alert only).
- * @modifier [class*="instui-success"] success — Success colour variant (alert only).
- * @modifier [class*="instui-warning"] warning — Warning colour variant (alert only).
+ * @modifier -info info — Informational colour variant (alert only).
+ * @modifier -danger danger — Danger/error colour variant (alert only).
+ * @modifier -success success — Success colour variant (alert only).
+ * @modifier -warning warning — Warning colour variant (alert only).
+ * @modifier instui banner — A `lightboxBlank` guide whose class contains `instui` is a violet banner by default.
+ * @modifier -sea sea banner — Use the sea surface and icon swatch.
+ * @modifier -megaphone megaphone — Replace the default lightbulb glyph with a megaphone.
+ * @modifier -poll poll — Replace the default lightbulb glyph with a question-message glyph.
+ * @modifier -canvas canvas — Replace the default lightbulb glyph with the reversed Canvas icon.
+ * @modifier -parchment parchment — Replace the default lightbulb glyph with the reversed Parchment icon.
+ * @modifier -mastery mastery — Replace the default lightbulb glyph with the reversed Mastery icon.
+ * @modifier -learnplatform learnplatform — Replace the default lightbulb glyph with the reversed LearnPlatform icon.
  * @part ._pendo-guide-backdrop_ — Backdrop container.
  * @part ._pendo-backdrop — Fixed full-viewport overlay; display toggled by Pendo at runtime.
  * @part ._pendo-step-container-size — Positioning/sizing wrapper; stacks above the backdrop.
@@ -24,6 +32,8 @@
  * @cssproperty --_alert-color <color> — Private; the variant border/strip colour, set by the variant class.
  * @cssproperty --_alert-icon <url> — Private; the variant status icon, set by the variant class.
  * @cssproperty --caret-color <color> — Private; the caret fill colour (maps to `view-background-primary`).
+ * @cssproperty --_banner-icon-background <color> — Private; the banner icon swatch colour.
+ * @cssproperty --_banner-icon-size <length> — Private; the responsive banner icon swatch size.
  * @structure
  * [class*="instui"] {
  *   ._pendo-guide-backdrop_ {
@@ -44,7 +54,7 @@
 
 /* ─── Overlay guides and surveys ─── */
 
-[class*="instui"]:is([data-layout="tooltipBlank"], ._pendo-guide-walkthrough_) {
+:is(:scope, [class*="instui"]):is([data-layout="tooltipBlank"], ._pendo-guide-walkthrough_) {
   ._pendo-step-container-size {
     height: auto;
   }
@@ -54,7 +64,7 @@
     /* @TODO: overflow-y causes scrollbar to break border-radius */
     /* 2x border radius + 2x caret size */
     border-radius: var(--instui-component-popover-border-radius);
-    border-color: var(--instui-component-popover-border-color);
+    border: var(--instui-border-width-sm) solid var(--instui-component-popover-border-color);
     box-shadow: var(--instui-elevation-above);
     /* gap-cards-md + box-shadow y + box-shadow spread */
     margin-bottom: calc(4px + var(--instui-component-shared-tokens-spacing-gap-cards-md));
@@ -114,8 +124,7 @@
   &[data-layout="tooltipBlank"] {
     ._pendo-step-container-styles {
       width: var(--pendo-overlay-width);
-      padding: var(--instui-component-shared-tokens-spacing-padding-card-sm)
-        var(--instui-component-shared-tokens-spacing-padding-card-sm) var(--pendo-space-0);
+      padding: var(--instui-component-shared-tokens-spacing-padding-card-sm);
     }
   }
 
@@ -138,27 +147,152 @@
   }
 }
 
+/* ─── Banners ─── */
+
+:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"])
+  ._pendo-step-container-size {
+  container: pantoken-pendo-guide / inline-size;
+}
+
+:is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+  --_banner-close-button-reserve: 0rem;
+  --_banner-glyph: var(--instui-icon-lightbulb);
+  --_banner-icon-background: var(--instui-component-banner-violet-icon-background);
+  --_banner-icon-size: 2rem;
+
+  ._pendo-step-container-styles {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+    border: var(--instui-component-banner-border-width) var(--instui-component-banner-border-style)
+      var(--instui-component-banner-border-color);
+    border-radius: var(--instui-component-banner-border-radius);
+    padding-block: var(--instui-component-banner-relaxed-padding-vertical);
+    padding-inline-start: calc(
+      var(--instui-component-banner-relaxed-padding-horizontal) + var(--_banner-icon-size) +
+        var(--instui-component-banner-relaxed-content-gap-horizontal)
+    );
+    padding-inline-end: calc(
+      var(--instui-component-banner-relaxed-padding-horizontal) +
+        var(--_banner-close-button-reserve)
+    );
+    box-shadow: none;
+    color: var(--instui-component-banner-color);
+    background: var(--instui-component-banner-violet-background);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      inset-block-start: var(--instui-component-banner-relaxed-padding-vertical);
+      inset-inline-start: var(--instui-component-banner-relaxed-padding-horizontal);
+      inline-size: var(--_banner-icon-size);
+      block-size: var(--_banner-icon-size);
+    }
+
+    &::before {
+      border-radius: var(--instui-component-banner-relaxed-icon-border-radius);
+      background: var(--_banner-icon-background);
+    }
+
+    &::after {
+      background: var(--instui-component-banner-icon-color);
+      mask: var(--_banner-glyph) center / 1.125rem no-repeat;
+    }
+
+    &:has(> ._pendo-close-guide) {
+      --_banner-close-button-reserve: calc(
+        var(--instui-component-base-button-medium-height) +
+          var(--instui-component-banner-close-button-margin-right)
+      );
+    }
+  }
+
+  &[class*="-sea"] {
+    --_banner-icon-background: var(--instui-component-banner-sea-icon-background);
+
+    ._pendo-step-container-styles {
+      background: var(--instui-component-banner-sea-background);
+    }
+  }
+
+  &[class*="-megaphone"] {
+    --_banner-glyph: var(--instui-icon-megaphone);
+  }
+
+  &[class*="-verified"] {
+    --_banner-glyph: var(--instui-icon-shield-check);
+  }
+
+  &[class*="-poll"] {
+    --_banner-glyph: var(--instui-icon-message-circle-question-mark);
+  }
+
+  &[class*="-canvas"] {
+    --_banner-glyph: var(--instui-logo-canvas-icon-reversed);
+  }
+
+  &[class*="-parchment"] {
+    --_banner-glyph: var(--instui-logo-parchment-icon-reversed);
+  }
+
+  &[class*="-mastery"] {
+    --_banner-glyph: var(--instui-logo-mastery-icon-reversed);
+  }
+
+  &[class*="-learnplatform"] {
+    --_banner-glyph: var(--instui-logo-learnplatform-icon-reversed);
+  }
+}
+
+@container pantoken-pendo-guide (max-width: 30em) {
+  :is(:scope, [class*="instui"])[data-layout="lightboxBlank"]:not([class*="instui-alert"]) {
+    ._pendo-step-container-styles {
+      --_banner-icon-size: 1.5rem;
+      padding-block: var(--instui-component-banner-compact-padding-vertical);
+      padding-inline-start: calc(
+        var(--instui-component-banner-compact-padding-horizontal) + var(--_banner-icon-size) +
+          var(--instui-component-banner-compact-content-gap-horizontal)
+      );
+      padding-inline-end: calc(
+        var(--instui-component-banner-compact-padding-horizontal) +
+          var(--_banner-close-button-reserve)
+      );
+
+      &::before,
+      &::after {
+        inset-block-start: var(--instui-component-banner-compact-padding-vertical);
+        inset-inline-start: var(--instui-component-banner-compact-padding-horizontal);
+      }
+
+      &::before {
+        border-radius: var(--instui-component-banner-compact-icon-border-radius);
+      }
+    }
+  }
+}
+
 /* ─── Embedded alert ─── */
 
-[class*="instui"][data-layout="lightboxBlank"] {
+:is(:scope[class*="instui-alert"], [class*="instui-alert"])[data-layout="lightboxBlank"] {
   /* Variant tokens — set on the container, inherited by all children */
   &,
-  &[class*="instui-info"] {
+  &[class*="-info"] {
     --_alert-color: var(--instui-component-alert-info-border-color);
     --_alert-icon: var(--instui-icon-info);
   }
 
-  &[class*="instui-danger"] {
+  &[class*="-danger"] {
     --_alert-color: var(--instui-component-alert-danger-border-color);
     --_alert-icon: var(--instui-icon-circle-x);
   }
 
-  &[class*="instui-success"] {
+  &[class*="-success"] {
     --_alert-color: var(--instui-component-alert-success-border-color);
     --_alert-icon: var(--instui-icon-circle-check);
   }
 
-  &[class*="instui-warning"] {
+  &[class*="-warning"] {
     --_alert-color: var(--instui-component-alert-warning-border-color);
     --_alert-icon: var(--instui-icon-triangle-alert);
   }

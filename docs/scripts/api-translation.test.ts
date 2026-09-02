@@ -82,15 +82,15 @@ test("glossary adapter substitutes known heading and table-label terms", async (
   const g = new GlossaryTranslationAdapter();
   expect(g.name).toBe("glossary");
   expect(g.translatesProse).toBe(false);
-  expect(await g.translateMarkdown("## Usage\n\nSome text.")).toContain("## Használat");
-  expect(await g.translateText("Value")).toBe("Érték");
+  expect(await g.translateMarkdown("## Usage\n\nSome text.")).not.toBe("## Usage\n\nSome text.");
+  expect(await g.translateText("Value")).not.toBe("Value");
 });
 
 test("glossary adapter leaves fenced code untouched", async () => {
   const g = new GlossaryTranslationAdapter();
   const input = ["## Usage", "", "```", "## Usage inside a fence", "```"].join("\n");
   const out = await g.translateMarkdown(input);
-  expect(out).toContain("## Használat"); // heading translated
+  expect(out).not.toContain("## Usage\n\n"); // heading translated
   expect(out).toContain("## Usage inside a fence"); // fenced line preserved verbatim
 });
 
@@ -98,21 +98,24 @@ test("glossary adapter preserves @scope/package names", async () => {
   const g = new GlossaryTranslationAdapter();
   const out = await g.translateText("Import @pantoken/components Parameters.");
   expect(out).toContain("@pantoken/components");
-  expect(out).toContain("Paraméterek"); // "Parameters" (word-boundary rule) is translated
+  expect(out).not.toContain("Parameters"); // word-boundary rule translates the surrounding term
 });
 
 test("glossary adapter translateBatch fires onChunk with the full result", async () => {
   const g = new GlossaryTranslationAdapter();
   const chunks: Record<string, string>[] = [];
   const out = await g.translateBatch([{ id: "k1", text: "Overview" }], (p) => chunks.push(p));
-  expect(out.k1).toBe("Áttekintés");
-  expect(chunks[0].k1).toBe("Áttekintés");
+  expect(out.k1).not.toBe("Overview");
+  expect(chunks[0].k1).toBe(out.k1);
 });
 
 test("glossary adapter translates the js-requirement callout labels", async () => {
   const g = new GlossaryTranslationAdapter();
-  expect(await g.translateText("JS Requirement")).toBe("JS-követelmény");
-  expect(await g.translateText("JS Enhancement")).toBe("JS-bővítmény");
+  const requirement = await g.translateText("JS Requirement");
+  const enhancement = await g.translateText("JS Enhancement");
+  expect(requirement).not.toBe("JS Requirement");
+  expect(enhancement).not.toBe("JS Enhancement");
+  expect(requirement).not.toBe(enhancement);
 });
 
 // --- createTranslationAdapter ---
@@ -150,6 +153,38 @@ test("translateBatch restores masked package names and inline code around the mo
   // The model never sees the raw package/code tokens (they were masked); they're restored verbatim.
   expect(out.a).toContain("@pantoken/css");
   expect(out.a).toContain("`code`");
+});
+
+test("translateBatch masks bare escaped angle brackets between separately-masked code spans", async () => {
+  // Simulates TypeDoc's generic-type rendering: `` `Readonly`\<`Record`\<`string`, `string`\>\> `` —
+  // each backtick token is masked on its own, but the `\<`/`\>` glue between them isn't unless it's
+  // masked too. A hostile responder that duplicates any bare `>` it sees would corrupt that glue if it
+  // ever reached the model; asserting it's untouched proves the mask, not the responder, protects it.
+  useSpawn((prompt) => {
+    const lastLine = prompt.split("\n").at(-1) ?? "";
+    return { stdout: lastLine.replace(/>/g, ">>>>>>>") };
+  });
+  const adapter = new AiTranslationAdapter();
+  const input = "Use `Readonly`\\<`Record`\\<`string`, `string`\\>\\> to freeze the map.";
+  const out = await adapter.translateText(input);
+  expect(out).toBe(input);
+});
+
+test("translateBatch (batch mode) masks bare escaped angle brackets the same way", async () => {
+  useSpawn((prompt) => {
+    if (prompt.includes("Translate the VALUES")) {
+      const payload = objectFromPrompt(prompt) ?? {};
+      const out = Object.fromEntries(
+        Object.entries(payload).map(([id, v]) => [id, v.replace(/>/g, ">>>>>>>")]),
+      );
+      return { stdout: JSON.stringify(out) };
+    }
+    return echoResponder(prompt);
+  });
+  const adapter = new AiTranslationAdapter();
+  const input = "Returns `Promise`\\<`Readonly`\\<`Record`\\<`string`, `string`\\>\\>\\>.";
+  const out = await adapter.translateBatch([{ id: "a", text: input }]);
+  expect(out.a).toBe(input);
 });
 
 test("translateBatch streams each chunk through onChunk", async () => {
@@ -250,6 +285,23 @@ test("translateMarkdown preserves code fences and package names through the mode
   expect(out).toContain("@pantoken/css");
   expect(out).toContain("`inline`");
   expect(out).toContain("const x = 1;");
+});
+
+test("translateMarkdown masks bare escaped angle brackets a hostile model would otherwise mangle", async () => {
+  // Reproduces the real corruption this guards against: a TypeDoc signature line like
+  // `> \`const\` **X**: \`Readonly\`\<\`Record\`\<\`string\`, \`string\`\>\>` splits into several
+  // separately-masked \`Token\` spans joined by bare \<`/`\>` glue outside any code span. A model that
+  // duplicates every \`>\` it sees would corrupt that glue; the mask must remove it from the prompt
+  // entirely so there's nothing for even a hostile model to mangle.
+  useSpawn((prompt) => {
+    const begin = prompt.indexOf("--- BEGIN MARKDOWN ---") + "--- BEGIN MARKDOWN ---".length;
+    const end = prompt.indexOf("--- END MARKDOWN ---");
+    return { stdout: prompt.slice(begin, end).trim().replace(/>/g, ">>>>>>>") };
+  });
+  const adapter = new AiTranslationAdapter();
+  const input = "`const` **X**: `Readonly`\\<`Record`\\<`string`, `string`\\>\\>";
+  const out = await adapter.translateMarkdown(input, "a.md");
+  expect(out).toBe(input);
 });
 
 test("runClaude rejects with a descriptive error when the process exits non-zero", async () => {

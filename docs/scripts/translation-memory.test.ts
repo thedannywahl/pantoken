@@ -53,12 +53,13 @@ test("load starts empty when no cache file exists", () => {
 
 test("load reads and parses an existing cache file, and get counts hits", () => {
   const key = keyFor("prose", "Hello");
+  const cached = "cached-translation";
   existsSync.mockReturnValue(true);
-  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "Szia" } }));
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: cached } }));
 
   const memory = TranslationMemory.load("hu", "api");
-  expect(memory.get("prose", "Hello")).toBe("Szia");
-  expect(memory.get("prose", "Hello")).toBe("Szia");
+  expect(memory.get("prose", "Hello")).toBe(cached);
+  expect(memory.get("prose", "Hello")).toBe(cached);
   expect(memory.hits).toBe(2);
   expect(memory.get("prose", "missing")).toBeUndefined();
 });
@@ -96,20 +97,22 @@ test("save prunes to keys touched this run and writes sorted JSON with a trailin
 
 test("set records a miss and marks the key used so save keeps it", () => {
   const memory = TranslationMemory.load("hu", "api");
-  memory.set("text", "Home", "Kezdőlap");
+  const translated = "cached-translation";
+  memory.set("text", "Home", translated);
   expect(memory.misses).toBe(1);
-  expect(memory.get("text", "Home")).toBe("Kezdőlap");
+  expect(memory.get("text", "Home")).toBe(translated);
   memory.save();
   const payload = JSON.parse(writeFileSync.mock.calls[0][1]) as {
     entries: Record<string, string>;
   };
-  expect(payload.entries[keyFor("text", "Home")]).toBe("Kezdőlap");
+  expect(payload.entries[keyFor("text", "Home")]).toBe(translated);
 });
 
 test("translateUnits serves cache hits without calling the adapter", async () => {
   const key = keyFor("text", "Home");
+  const cached = "cached-translation";
   existsSync.mockReturnValue(true);
-  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "Kezdőlap" } }));
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: cached } }));
   const memory = TranslationMemory.load("hu", "api");
   const translateText = vi.fn();
 
@@ -117,9 +120,51 @@ test("translateUnits serves cache hits without calling the adapter", async () =>
     { kind: "text", source: "Home" },
   ]);
 
-  expect(result.get(key)).toBe("Kezdőlap");
+  expect(result.get(key)).toBe(cached);
   expect(translateText).not.toHaveBeenCalled();
   expect(memory.hits).toBe(1);
+});
+
+test("translateUnits force option retranslates and overwrites an existing cache hit", async () => {
+  const key = keyFor("text", "Home");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "stale" } }));
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
+
+  const result = await translateUnits(
+    adapter({ translateText, translateBatch: undefined }),
+    memory,
+    [{ kind: "text", source: "Home" }],
+    { force: true },
+  );
+
+  expect(translateText).toHaveBeenCalledWith("Home");
+  expect(result.get(key)).toBe("fresh:Home");
+  memory.save();
+  const payload = JSON.parse(writeFileSync.mock.calls[0][1]) as { entries: Record<string, string> };
+  expect(payload.entries[key]).toBe("fresh:Home");
+});
+
+test("translateUnits defaults force to the DOCS_TRANSLATION_FORCE env var", async () => {
+  const key = keyFor("text", "Home");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "stale" } }));
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
+  process.env.DOCS_TRANSLATION_FORCE = "1";
+
+  try {
+    const result = await translateUnits(
+      adapter({ translateText, translateBatch: undefined }),
+      memory,
+      [{ kind: "text", source: "Home" }],
+    );
+    expect(translateText).toHaveBeenCalledWith("Home");
+    expect(result.get(key)).toBe("fresh:Home");
+  } finally {
+    delete process.env.DOCS_TRANSLATION_FORCE;
+  }
 });
 
 test("translateUnits dedupes identical sources into one translation", async () => {
@@ -157,17 +202,16 @@ test("translateUnits autosaves after each markdown miss when asked", async () =>
   expect(writeFileSync).toHaveBeenCalled();
 });
 
-test("translateUnits logs progress every 25 markdown files", async () => {
+test("translateUnits logs progress for each markdown file translated", async () => {
   const memory = TranslationMemory.load("hu", "api");
-  const units: TranslationUnit[] = Array.from({ length: 25 }, (_, i) => ({
+  const units: TranslationUnit[] = Array.from({ length: 3 }, (_, i) => ({
     kind: "markdown",
     source: `# File ${i}`,
     filePath: `f${i}.md`,
   }));
   await translateUnits(adapter(), memory, units);
-  expect(
-    logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("25/25 markdown files")),
-  ).toBe(true);
+  expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("1/3 f0.md"))).toBe(true);
+  expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("3/3 f2.md"))).toBe(true);
 });
 
 test("translateUnits logs and skips a markdown file that fails, without caching it", async () => {
@@ -304,4 +348,135 @@ test("translateUnits persist ignores a re-seen chunk without double counting", a
 
   // One real unit → set exactly once despite the duplicate stream.
   expect(memory.misses).toBe(1);
+});
+
+test("translateUnits does not cache a markdown translation identical to its source", async () => {
+  const memory = TranslationMemory.load("hu", "api");
+  const translateMarkdown = vi.fn((input: string) => Promise.resolve(input));
+
+  const result = await translateUnits(adapter({ translateMarkdown }), memory, [
+    { kind: "markdown", source: "# Same", filePath: "same.md" },
+  ]);
+
+  expect(result.has(keyFor("markdown", "# Same"))).toBe(false);
+  expect(memory.misses).toBe(0);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(true);
+});
+
+test("translateUnits does not cache a batched translation identical to its source", async () => {
+  const memory = TranslationMemory.load("hu", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((i) => [i.id, i.text]))),
+  );
+
+  const result = await translateUnits(adapter({ translateBatch }), memory, [
+    { kind: "text", source: "Home" },
+  ]);
+
+  expect(result.get(keyFor("text", "Home"))).toBe("Home");
+  expect(memory.misses).toBe(0);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(true);
+});
+
+test("translateUnits identifies the locale and source file for an untranslated batch unit", async () => {
+  const memory = TranslationMemory.load("hu", "demos");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((item) => [item.id, item.text]))),
+  );
+
+  await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source: "Modifier", filePath: "demos/view/i18n.json#text5" }],
+    { locale: "hu" },
+  );
+
+  expect(
+    warnSpy.mock.calls.some((call: unknown[]) =>
+      String(call[0]).includes("[hu demos/view/i18n.json#text5]"),
+    ),
+  ).toBe(true);
+});
+
+test("translateUnits retranslates a cached hit that matches its source instead of serving it", async () => {
+  const key = keyFor("text", "Home");
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "Home" } }));
+  const memory = TranslationMemory.load("hu", "api");
+  const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
+
+  const result = await translateUnits(
+    adapter({ translateText, translateBatch: undefined }),
+    memory,
+    [{ kind: "text", source: "Home" }],
+  );
+
+  expect(translateText).toHaveBeenCalledWith("Home");
+  expect(result.get(key)).toBe("fresh:Home");
+});
+
+test("translateUnits verbatimSources exempts a matching source from the passthrough guard", async () => {
+  const memory = TranslationMemory.load("hu", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((i) => [i.id, i.text]))),
+  );
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source: "yyyy-mm-dd" }],
+    { verbatimSources: new Set(["yyyy-mm-dd"]) },
+  );
+
+  expect(result.get(keyFor("text", "yyyy-mm-dd"))).toBe("yyyy-mm-dd");
+  expect(memory.misses).toBe(1);
+  expect(
+    warnSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("looks untranslated")),
+  ).toBe(false);
+});
+
+test("translateUnits requiredVerbatimSources bypasses translation and overwrites stale cache", async () => {
+  const source = "-text-align-start";
+  const key = keyFor("text", source);
+  existsSync.mockReturnValue(true);
+  readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "translated" } }));
+  const memory = TranslationMemory.load("hu", "demos");
+  const translateBatch = vi.fn();
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source }],
+    { force: true, requiredVerbatimSources: new Set([source]) },
+  );
+
+  expect(translateBatch).not.toHaveBeenCalled();
+  expect(result.get(key)).toBe(source);
+  memory.save();
+  const payload = JSON.parse(writeFileSync.mock.calls[0][1]) as { entries: Record<string, string> };
+  expect(payload.entries[key]).toBe(source);
+});
+
+test("translateUnits defaultVerbatim caches an English regional identity translation", async () => {
+  const memory = TranslationMemory.load("en-GB", "api");
+  const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
+    Promise.resolve(Object.fromEntries(items.map((item) => [item.id, item.text]))),
+  );
+
+  const result = await translateUnits(
+    adapter({ translateBatch }),
+    memory,
+    [{ kind: "text", source: "Home" }],
+    { locale: "en-GB", defaultVerbatim: { allow: ["en*"] } },
+  );
+
+  expect(result.get(keyFor("text", "Home"))).toBe("Home");
+  expect(memory.misses).toBe(1);
+  expect(
+    warnSpy.mock.calls.some((call: unknown[]) => String(call[0]).includes("looks untranslated")),
+  ).toBe(false);
 });

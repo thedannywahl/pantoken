@@ -18,6 +18,7 @@ import { definePlugin } from "@pantoken/plugin-kit";
 import type { PantokenPlugin } from "@pantoken/model";
 import { wrapperRules } from "./layouts/index.ts";
 export { wrapperRules } from "./layouts/index.ts";
+export { pageLayouts, type PageLayout } from "./layouts/index.ts";
 
 /** Options for the {@link layouts} plugin. */
 export interface LayoutsOptions {

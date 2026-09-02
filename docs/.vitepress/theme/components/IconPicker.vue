@@ -1,11 +1,22 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, shallowRef, watch } from "vue";
 import { useData } from "vitepress";
+import {
+  buildFileUrls,
+  toEsmImportStatements,
+  toImportStatements,
+  toLinkTags,
+  type CdnFile,
+} from "@pantoken/cdn";
 import { readHashParam, writeHashParam } from "../composables/useHashParams";
 import pluginManifest from "../generated/cdn-plugin-manifest.json";
 import PickerOutput from "./PickerOutput.vue";
 import PickerSection from "./PickerSection.vue";
 import PickerToggleGroup from "./PickerToggleGroup.vue";
+
+const props = defineProps<{
+  provider: string;
+}>();
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface InstUiEntry {
@@ -237,89 +248,63 @@ const hasSelection = computed(
     selectedLogos.value.size > 0,
 );
 
-// ── URL builder — merges every source into one combine URL / ESM snippet ────────────────────────
+// ── URL builder — merges every source into one CSS output / ESM snippet ─────────────────────────
 // The InstUI icon sheet is pushed last: :root custom properties resolve last-wins, so on a name
 // collision with a vendored custom icon (or, in principle, a brand glyph), the built-in wins.
-const c = "npm/@pantoken/components/dist";
-const si = "npm/@pantoken/plugin-simple-icons/dist";
-const ci = "npm/@pantoken/plugin-custom-icons/dist";
-const li = "npm/@pantoken/plugin-logos/dist";
+const SIMPLE_ICONS_PKG = "@pantoken/plugin-simple-icons";
+const CUSTOM_ICONS_PKG = "@pantoken/plugin-custom-icons";
+const LOGOS_PKG = "@pantoken/plugin-logos";
+const INSTUI_ICONS_PKG = "@pantoken/components";
 
 // 3-tier collapse: a fully-selected product folds into its own barrel, and every product selected
 // folds into the full logos.css barrel — mirrors the Components tab's collapse-to-barrel pattern.
-function logoFiles(prefix: string): string[] {
-  if (allLogosSelected.value) return [`${prefix}/logos.css`];
-  const files: string[] = [];
+function logoFiles(): CdnFile[] {
+  if (allLogosSelected.value) return [{ package: LOGOS_PKG, path: "dist/logos.css" }];
+  const files: CdnFile[] = [];
   for (const group of logoGroups) {
     const names = group.items.map((i) => i.name);
     if (names.length > 0 && names.every((n) => selectedLogos.value.has(n))) {
-      files.push(`${prefix}/${group.product}.css`);
+      files.push({ package: LOGOS_PKG, path: `dist/${group.product}.css` });
     } else {
       for (const name of names) {
-        if (selectedLogos.value.has(name)) files.push(`${prefix}/${name}.css`);
+        if (selectedLogos.value.has(name))
+          files.push({ package: LOGOS_PKG, path: `dist/${name}.css` });
       }
     }
   }
   return files;
 }
 
-const combineUrl = computed(() => {
-  const files: string[] = [];
+const iconFiles = computed<CdnFile[]>(() => {
+  const files: CdnFile[] = [];
   if (allSimpleSelected.value) {
-    files.push(`${si}/simple-icons.css`);
+    files.push({ package: SIMPLE_ICONS_PKG, path: "dist/simple-icons.css" });
   } else {
-    for (const slug of selectedSimple.value) files.push(`${si}/icons/${slug}.css`);
+    for (const slug of selectedSimple.value)
+      files.push({ package: SIMPLE_ICONS_PKG, path: `dist/icons/${slug}.css` });
   }
   if (allCustomIconsSelected.value) {
-    files.push(`${ci}/custom-icons.css`);
+    files.push({ package: CUSTOM_ICONS_PKG, path: "dist/custom-icons.css" });
   } else {
-    for (const name of selectedCustomIcons.value) files.push(`${ci}/icons/${name}.css`);
+    for (const name of selectedCustomIcons.value)
+      files.push({ package: CUSTOM_ICONS_PKG, path: `dist/icons/${name}.css` });
   }
-  files.push(...logoFiles(li));
+  files.push(...logoFiles());
   if (allInstuiSelected.value) {
-    files.push(`${c}/icons.css`);
+    files.push({ package: INSTUI_ICONS_PKG, path: "dist/icons.css" });
   } else {
-    for (const name of selectedInstui.value) files.push(`${c}/icons/${name}.css`);
+    for (const name of selectedInstui.value)
+      files.push({ package: INSTUI_ICONS_PKG, path: `dist/icons/${name}.css` });
   }
-  return files.length === 0 ? null : `https://cdn.jsdelivr.net/combine/${files.join(",")}`;
+  return files;
 });
 
-const esmSnippet = computed(() => {
-  const lines: string[] = [];
-  if (allSimpleSelected.value) {
-    lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/simple-icons.css";`);
-  } else {
-    for (const slug of selectedSimple.value) {
-      lines.push(`import "https://esm.sh/@pantoken/plugin-simple-icons/icons/${slug}.css";`);
-    }
-  }
-  if (allCustomIconsSelected.value) {
-    lines.push(`import "https://esm.sh/@pantoken/plugin-custom-icons/custom-icons.css";`);
-  } else {
-    for (const name of selectedCustomIcons.value) {
-      lines.push(`import "https://esm.sh/@pantoken/plugin-custom-icons/icons/${name}.css";`);
-    }
-  }
-  for (const file of logoFiles("@pantoken/plugin-logos")) {
-    lines.push(`import "https://esm.sh/${file}";`);
-  }
-  if (allInstuiSelected.value) {
-    lines.push(`import "https://esm.sh/@pantoken/components/icons.css";`);
-  } else {
-    for (const name of selectedInstui.value) {
-      lines.push(`import "https://esm.sh/@pantoken/components/icons/${name}.css";`);
-    }
-  }
-  return lines.length === 0 ? null : lines.join("\n");
-});
+const iconUrls = computed(() => buildFileUrls(iconFiles.value, props.provider));
 
 const output = computed(() => {
-  if (format.value === "esm") return esmSnippet.value ?? "";
-  const url = combineUrl.value;
-  if (!url) return "";
-  return format.value === "link"
-    ? `<link rel="stylesheet" href="${url}">`
-    : `@import url("${url}");`;
+  if (iconUrls.value.length === 0) return "";
+  if (format.value === "esm") return toEsmImportStatements(iconUrls.value);
+  return format.value === "link" ? toLinkTags(iconUrls.value) : toImportStatements(iconUrls.value);
 });
 </script>
 

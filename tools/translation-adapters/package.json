@@ -6,7 +6,8 @@
   "license": "MIT",
   "files": [
     "dist",
-    "agy-wrapper.sh"
+    "agy-wrapper.sh",
+    "copilot-wrapper.sh"
   ],
   "type": "module",
   "sideEffects": false,

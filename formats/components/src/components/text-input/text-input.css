@@ -1,0 +1,103 @@
+/**
+ * @component text-input
+ * @summary A styled native `<input>` — including `date`, `time`, and `datetime-local`, where the browser supplies the picker — with validation states and sizes.
+ * @remarks Shares its border, background, and state chrome with `text-area`, `simple-select`, `number-input`, and `input-group`; for `date`/`time`/`datetime-local` types the browser supplies its own picker UI, which this stylesheet doesn't style.
+ * @selector .pfx-text-input
+ * @modifier -disabled — Disabled state.
+ * @modifier -invalid — Invalid (error) state.
+ * @modifier -readonly — Read-only state.
+ * @modifier -success — Success (valid) state.
+ * @modifier -size-sm — Small.
+ * @modifier -size-md — (default) Medium.
+ * @modifier -size-lg — Large.
+ * @pseudo ::placeholder — The placeholder text, in a muted color that shifts on hover.
+ * @cssstate disabled
+ * @example
+ * ```html
+ * <input class="pfx-text-input" placeholder="Default">
+ * ```
+ * @related text-area — The multi-line counterpart with the same states and sizes.
+ * @related number-input — The numeric-entry input sharing this chrome.
+ * @related simple-select — The native select sharing this field chrome.
+ * @related input-group — Wraps this input with leading and trailing slots.
+ */
+@scope (.pfx-text-input) {
+  & {
+    display: block;
+    inline-size: 100%;
+    box-sizing: border-box;
+    font-family: var(--instui-component-text-input-font-family);
+    font-weight: var(--instui-component-text-input-font-weight);
+    color: var(--instui-component-text-input-text-color);
+    background-color: var(--instui-component-text-input-background-color);
+    border: var(--instui-component-text-input-border-width) solid
+      var(--instui-component-text-input-border-color);
+    border-radius: var(--instui-component-text-input-border-radius);
+    block-size: var(--instui-component-text-input-height-md);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-md);
+    font-size: var(--instui-component-text-input-font-size-md);
+  }
+
+  &::placeholder {
+    color: var(--instui-component-text-input-placeholder-color);
+  }
+
+  &:hover {
+    background-color: var(--instui-component-text-input-background-hover-color);
+    border-color: var(--instui-component-text-input-border-hover-color);
+  }
+
+  &:hover::placeholder {
+    color: var(--instui-component-text-input-placeholder-hover-color);
+  }
+
+  &:disabled,
+  &.-disabled {
+    background-color: var(--instui-component-text-input-background-disabled-color);
+    border-color: var(--instui-component-text-input-border-disabled-color);
+    color: var(--instui-component-text-input-text-disabled-color);
+    cursor: not-allowed;
+  }
+
+  &.-readonly {
+    background-color: var(--instui-component-text-input-background-readonly-color);
+    border-color: var(--instui-component-text-input-border-readonly-color);
+    color: var(--instui-component-text-input-text-readonly-color);
+  }
+
+  &.-invalid {
+    border-color: var(--instui-component-text-input-error-border-color);
+  }
+
+  &.-success {
+    border-color: var(--instui-component-text-input-success-border-color);
+  }
+
+  /* Focus ring tracks the validity: danger when explicitly -invalid OR natively :user-invalid (after
+   the user has interacted), success on -success — overriding base.css's info-blue ring for focusables. */
+  &:is(.-invalid, :user-invalid):focus-visible {
+    outline-color: var(--instui-focus-outline-color-danger);
+  }
+
+  &.-success:focus-visible {
+    outline-color: var(--instui-focus-outline-color-success);
+  }
+
+  &.-size-sm {
+    block-size: var(--instui-component-text-input-height-sm);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-sm);
+    font-size: var(--instui-component-text-input-font-size-sm);
+  }
+
+  &.-size-md {
+    block-size: var(--instui-component-text-input-height-md);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-md);
+    font-size: var(--instui-component-text-input-font-size-md);
+  }
+
+  &.-size-lg {
+    block-size: var(--instui-component-text-input-height-lg);
+    padding-inline: var(--instui-component-text-input-padding-horizontal-lg);
+    font-size: var(--instui-component-text-input-font-size-lg);
+  }
+}

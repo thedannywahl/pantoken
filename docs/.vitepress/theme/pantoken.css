@@ -199,6 +199,100 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   background-color: var(--vp-nav-bg-color);
 }
 
+@media (min-width: 768px) {
+  html[dir="rtl"] .VPNavBarSearch {
+    padding-right: 24px;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  html[dir="rtl"] .VPNavBarSearch {
+    padding-right: 32px;
+    padding-left: 0;
+  }
+
+  html[dir="rtl"] .VPSidebar {
+    right: 0;
+    left: auto;
+  }
+
+  html[dir="rtl"] .VPContent.has-sidebar {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .title {
+    right: 0;
+    left: auto;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .content {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 32px;
+  }
+
+  html[dir="rtl"] .VPNavBar:not(.home.top) .content-body {
+    margin-right: 0;
+    margin-left: -100vw;
+    padding-right: 0;
+    padding-left: 100vw;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .divider {
+    padding-right: var(--vp-sidebar-width);
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  html[dir="rtl"] .VPDoc .aside {
+    order: 2;
+    padding-right: 32px;
+    padding-left: 0;
+  }
+
+  html[dir="rtl"] .VPDoc .content {
+    order: 1;
+  }
+
+  html[dir="rtl"] .VPNavBar .content-body .appearance {
+    margin-left: 8px;
+  }
+
+  html[dir="rtl"] .VPNavBar .content-body .social-links {
+    margin-right: 0;
+    margin-left: -8px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html[dir="rtl"] .VPSidebar {
+    padding-right: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: 32px;
+  }
+
+  html[dir="rtl"] .VPContent.has-sidebar {
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: calc((100% - var(--vp-layout-max-width)) / 2);
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .title {
+    padding-right: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
+    padding-left: 32px;
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .content {
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: calc((100% - var(--vp-layout-max-width)) / 2 + 32px);
+  }
+
+  html[dir="rtl"] .VPNavBar.has-sidebar .divider {
+    padding-right: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
+    padding-left: 0;
+  }
+}
+
 .VPHomeHero {
   .heading {
     color: var(--instui-primitive-color-white);
@@ -214,6 +308,24 @@ div[class*="language-"]:has(+ .css-example-frame) > pre {
   }
 }
 
+.VPHomeFeatures .box:has(.VPImage) {
+  grid-template-columns: 1.25rem 1fr;
+  align-items: start;
+  gap: 0.5rem 0.75rem;
+  display: grid;
+
+  .VPImage {
+    grid-area: 1/1;
+    width: 1.25rem;
+    margin: 0;
+  }
+
+  .details {
+    grid-column: 1/-1;
+    margin: 0;
+  }
+}
+
 /* Only the rebrand theme ships light/dark values; canvas and canvas-high-contrast are single-scheme,
    so the appearance toggle does nothing for them — hide it (nav bar + mobile nav screen). */
 html:not([data-pantoken-theme="rebrand"]) .VPNavBarAppearance,
@@ -224,6 +336,30 @@ html:not([data-pantoken-theme="rebrand"]) .VPNavScreenAppearance {
 /* Keep custom outline social icons from inheriting VitePress's solid icon fill. */
 .VPSocialLink > svg {
   fill: none !important;
+}
+
+/* VitePress rounds and scrolls `.VPMenu` on the same box; the translations flyout lists 40+ locales,
+   so its native scrollbar routinely squares off the corners it touches. Move the radius + shadow to
+   the flyout's outer `.menu` wrapper and clip through `overflow: hidden` there instead, leaving
+   `.VPMenu` to scroll unconstrained by rounding. */
+.VPNavBarTranslations .menu {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--vp-shadow-3);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.VPNavBarTranslations .menu .VPMenu {
+  border-radius: 0;
+  box-shadow: none;
+  border: 0 none;
+}
+
+@media (min-width: 768px) {
+  .VPNavBarTranslations .menu,
+  .VPNavBarTranslations .menu .VPMenu {
+    max-height: 50vh;
+  }
 }
 
 @media (min-width: 960px) {

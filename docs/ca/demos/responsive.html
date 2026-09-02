@@ -1,0 +1,19 @@
+<div class="instui-card">
+  <!-- Responsive visibility utilities react to the viewport width, matched to the size scale. Resize the
+       preview to see them swap: the first shows only on narrow viewports, the second only on wide ones. -->
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <div class="instui-alert -color-info instui-hidden-min-md">
+      Disseny estret — ocult a <code>md</code> (48rem) i cap amunt mitjançant
+      <code>-hidden-min-md</code>.
+    </div>
+    <div class="instui-alert -color-success instui-hidden-max-md">
+      Disseny ample — ocult a <code>md</code> i avall mitjançant <code>-hidden-max-md</code>.
+    </div>
+    <p class="instui-text -size-sm --text-muted">
+      Punts de tall: <code>sm</code> 30rem, <code>md</code> 48rem, <code>lg</code> 64rem,
+      <code>xl</code> 80rem. Per a un component que s'adapta a la seva pròpia amplada en lloc de la
+      finestra de visualització, embolcalla'l en un <code>container-type: inline-size</code> element
+      i utilitza <code>@container</code> consultes amb les mateixes amplades.
+    </p>
+  </div>
+</div>

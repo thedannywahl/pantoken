@@ -2,11 +2,11 @@
 layout: home
 hero:
   name: pantoken
-  text: Instructure design tokenek, mindenhol
-  tagline: Egy feloldott tokenmodell, amelyet stíluslapokká, framework-kötésekké, natív kóddá és designeszköz-payloadokká alakítunk.
+  text: InstUI, mindenhol
+  tagline: Egy feloldott token-modell, átalakítva stíluslapokká, keretrendszer-kötésekké, natív kóddá és dizájneszközöknek szánt adatcsomagokká.
   actions:
     - theme: brand
-      text: Kezdés
+      text: Első lépések
       link: /hu/guide/getting-started
     - theme: alt
       text: A csomagtérkép
@@ -18,12 +18,24 @@ hero:
       text: CSS referencia
       link: /hu/api/css
 features:
-  - title: Egyetlen igaz forrás
-    details: Minden csomag ugyanazt a feloldott token IR-t olvassa. Ha egy token változik, ugyanúgy jut el CSS-be, SCSS-be, natív kódba és Figmába.
-  - title: A legkisebb csomag választása
-    details: Telepíts csak `@pantoken/css` csomagot stíluslaphoz, `@pantoken/react` csomagot hookokhoz és ikonokhoz, vagy bundler presetet Tailwindhez, Pandához és MUI-hoz. Az egységes pantoken csomag mindet újraexportálja.
-  - title: Generálás bármely platformra
-    details: Futtasd a pantoken generate parancsot, hogy Swift, Kotlin, Compose, Flutter, Rust, WordPress és további kimenetek készüljenek ugyanabból a tokenmodellből.
-  - title: Nincs upstream csatolás
-    details: A tokenek statikus JSON-ként vannak csomagolva, így az npm i pantoken nem függ GitHub-only forrástól. Kiadható, semver-kompatibilis, offline-barát.
+  - icon:
+      light: /book-check-light.svg
+      dark: /book-check-dark.svg
+    title: Egyetlen igazságforrás
+    details: Minden csomag ugyanazt a feloldott token IR-t olvassa. Ha a forrásban megváltoztatod a tokent, ugyanúgy eljut a CSS‑be, SCSS‑be, natív kódba és Figma‑ba.
+  - icon:
+      light: /package-light.svg
+      dark: /package-dark.svg
+    title: Használd a legkisebb csomagot
+    details: Telepítsd csak a @pantoken/css-t stíluslaphoz, a @pantoken/react-et hookokhoz és ikonokhoz, vagy használj bundler-presetet Tailwindhez, Pandához vagy MUI-hoz.
+  - icon:
+      light: /workflow-light.svg
+      dark: /workflow-dark.svg
+    title: Generálás bármely platformra
+    details: Futtasd a &grave;pantoken generate&grave;-t, hogy Swift, Kotlin, Compose, Flutter, Rust, WordPress és további platformok számára állítsd elő. Ugyanazok a tokenek, minden ökoszisztéma saját idiomájában.
+  - icon:
+      light: /unlink-light.svg
+      dark: /unlink-dark.svg
+    title: Nincs upstream-függés
+    details: A tokenek vendorizálva, statikus JSON-ként szállnak, így a &grave;npm i&grave; soha nem támaszkodik kizárólag GitHub-forrásra. Publikálható, semver-szerinti, offline-barát.
 ---

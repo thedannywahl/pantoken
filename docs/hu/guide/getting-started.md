@@ -1,37 +1,34 @@
 # Első lépések
 
-A pantoken átveszi az Instructure UI designtokenjeit és ikonjait, egyszer feloldja őket, és ezt az egyetlen
-modellt számos platformhoz készült csomagokká formálja: egyszerű stíluslapok, SCSS és Less, React, Vue és Svelte,
-Tailwind és Panda, natív Swift és Kotlin, WordPress és Drupal, Figma és még sok más.
+A pantoken átalakítja az Instructure UI design tokenjeit és ikonait: egyszer feloldja őket, majd azt az egy modellt több platformra bontja — egyszerű stíluslapok, SCSS és Less, React és Vue és Svelte, Tailwind és Panda, natív Swift és Kotlin, WordPress és Drupal, Figma és még több célpont számára.
 
-A feladatodhoz legjobban illeszkedő, legkisebb csomagot telepíted. Az egységesített
-`pantoken` csomag mindent újraexportál, így kezdhetsz ott is, és később leszűkítheted.
+Telepítsd azt a legkisebb csomagot, amely megfelel a feladatodnak. Minden emellett újra-exportálva van az egységes `pantoken` csomagon keresztül, így ott kezdhetsz, és később szűkíthetsz.
 
-## Kezdőprojekt létrehozása
+## Kezdő projekt létrehozása
 
-A leggyorsabb módja a pantoken kipróbálásának: egy olyan kezdőprojekt generálása, amelybe már telepítve és bekötve érkezik.
+A leggyorsabb mód a pantoken kipróbálására: scaffoldd egy kezdő projektet, amely már telepítve és bekötve van.
 
 ```sh
 npx create-pantoken-app react
 ```
 
-Platformok: `components` (egyszerű HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Lásd:
-[`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) a(z) `--dir <path>` és
-programozott használathoz. AI kódoló ágenst használsz? A(z) `npx @pantoken/ai init` ágens-szabályokat és egy olyan
-`/scaffold-pantoken` skillt telepít, amely ugyanezt teszi közvetlenül a szerkesztődből.
+Platformok: `components` (egyszerű HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. Lásd a [`@pantoken/scaffold`](https://www.npmjs.com/package/@pantoken/scaffold) csomagot `--dir <path>` és programozott használat esetén.
 
-## A tokenmodell
+Használni szeretnél egy AI kódoló ügynököt? Nincs szükség telepítésre — mutasd meg neki közvetlenül a skillt:
 
-A tokenek `--instui-<group>-<name>` nevű egyéni CSS-tulajdonságok, például
-`--instui-color-background-brand` vagy `--instui-spacing-space-md`. Három téma érhető el: `rebrand`
-(az alapértelmezett, `light-dark()` értékekkel, ahol a világos és a sötét eltér), `canvas` és `canvasHighContrast`.
-Az ikonok `<image>` tokenek (`--instui-icon-<name>`), amelyek a Lucide-ból és az Instructure egyedi
-glifáiból származnak.
+```sh
+claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```
+
+Ugyanez működik a Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI és Amazon Q Developer CLI esetén is — cseréld le `claude`-t `gemini`-re, `agent`-re, `codex`-re, `copilot -p`-ra vagy `q chat`-re. Ha inkább véglegesen be akarod kötni a pantoken ügynök-szabályait a tárba (AGENTS.md, editor szabályok, a skill helyi másolata), futtasd helyette a `npx @pantoken/ai init`-t.
+
+## A token modell
+
+A tokenek CSS egyéni tulajdonságok névvel (`--instui-<group>-<name>`), például `--instui-color-background-brand` vagy `--instui-spacing-space-md`. Három téma jár együtt: `rebrand` (alapértelmezett, ahol a világos és sötét különbözik: `light-dark()`), `canvas` és `canvasHighContrast`. Az ikonok `<image>` tokenek (`--instui-icon-<name>`), amelyek a Lucide-ból és az Instructure egyedi glyfjából származnak.
 
 ## Webalkalmazás stílusozása
 
-Telepítsd a stíluslapot, és importáld egyszer. Ez definiál minden egyes `--instui-*` tulajdonságot, így közvetlenül
-hivatkozhatsz rájuk a saját CSS-edből.
+Telepítsd a stíluslapot és importáld egyszer. Meghatároz minden `--instui-*` tulajdonságot, így közvetlenül a saját CSS-edből hivatkozhatsz rájuk.
 
 ```sh
 npm i @pantoken/css
@@ -64,10 +61,9 @@ import "@pantoken/web-components";
 <instui-icon name="check-mark"></instui-icon>
 ```
 
-### CSS-tokenek
+### CSS tokenek
 
-Az ikonok egyéni CSS-tulajdonságok (`--instui-icon-<name>`). Töltsd be a stíluslapot egyszer, és hivatkozz bármelyik
-ikonra mint `mask-image` vagy `background-image` — nincs szükség ikononkénti importálásra.
+Az ikonok CSS egyéni tulajdonságok (`--instui-icon-<name>`). Töltsd be egyszer a stíluslapot, és hivatkozz bármely ikonra `mask-image` vagy `background-image` formában — nincs szükség ikononkénti importálásra.
 
 ```css
 .my-icon {
@@ -75,10 +71,9 @@ ikonra mint `mask-image` vagy `background-image` — nincs szükség ikononként
 }
 ```
 
-### JavaScript — egyetlen ikon vs. teljes készlet
+### JavaScript — egy ikon vs. az egész készlet
 
-A(z) `@pantoken/icons` két nevesített exportot biztosít. Használd a(z) `iconsByName` exportot egyetlen ikon lekéréséhez a teljes tömb
-bejárása nélkül:
+`@pantoken/icons` két névvel exportált elemet tesz elérhetővé. Használd a `iconsByName`-t, hogy egyetlen ikont húzz be a teljes tömb bejárása nélkül:
 
 ```ts
 import { iconsByName } from "@pantoken/icons";
@@ -87,7 +82,7 @@ const icon = iconsByName.get("check-mark"); // only one lookup
 icon?.svg; // inline SVG markup
 ```
 
-Használd a(z) `icons` exportot, amikor a teljes készletre szükséged van (pl. egy választó építéséhez):
+Használd a `icons`-et, amikor az egész készletre van szükséged (például egy kiválasztó felépítéséhez):
 
 ```ts
 import { icons } from "@pantoken/icons";
@@ -96,32 +91,29 @@ icons.length; // ~1,800
 icons.filter((i) => i.source === "lucide");
 ```
 
-Mindkét export betölti a teljes IR-t a modul inicializálásakor — ezen a szinten nincs ikononkénti
-tree-shaking. A karcsú, csak CSS-alapú betöltéshez használd a [CDN-választót](/guide/cdn-picker), hogy létrehozz egy combine URL-t
-kizárólag a szükséges ikonokhoz.
+Mindkét export a teljes IR-t betölti modul inicializációkor — ezen a szinten nincs ikononkénti tree-shaking. Karcsú, csak CSS betöltéshez használd a [CDN pickert](/guide/cdn-picker), hogy csak a szükséges ikonokhoz generálj összevont URL-t.
 
 ## Generálás natív platformra
 
-A CLI beírja a token forráskódját a célrepóba. A futtatón kívül nincs szükség más telepítésre:
+A CLI token forrást ír egy célrepo-ba. A futtatón kívül nincs szükség telepítésre:
 
 ```sh
 npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Lásd [a pantoken CLI-t](/guide/cli) az összes célplatformhoz.
+Lásd a [pantoken CLI-t](/guide/cli) minden célpontért.
 
 ## VS Code szerkesztési tippek
 
-A(z) `@pantoken/pantoken` mostantól tartalmazza a VS Code custom-data fájljait, így a felhasználó projektek osztály- és
-token-kiegészítést kaphatnak HTML/CSS-ben anélkül, hogy külön pantoken-specifikus kiterjesztést kellene telepíteniük.
+A `@pantoken/pantoken` most VS Code custom-data fájlokat szállít, így a fogyasztói projektek osztály- és token-kiegészítést kaphatnak HTML/CSS-ben anélkül, hogy pantoken-specifikus kiegészítőt telepítenének.
 
-1. Telepítsd az egységesített csomagot:
+1. Telepítsd az egységes csomagot:
 
 ```sh
 npm i @pantoken/pantoken
 ```
 
-1. Irányítsd a VS Code-ot a mellékelt custom-data JSON-ra a munkaterületedről:
+1. Mutasd meg a VS Code-nak a szállított custom-data JSON-t a fogyasztói munkaterületedből:
 
 ```json
 {
@@ -130,14 +122,13 @@ npm i @pantoken/pantoken
 }
 ```
 
-1. Töltsd újra a VS Code-ot (vagy futtasd a "Developer: Reload Window" parancsot) az új adatok alkalmazásához.
+1. Indítsd újra a VS Code-ot (vagy futtasd a "Developer: Reload Window" parancsot) a új adatok alkalmazásához.
 
-Ez engedélyezi a javaslatokat a(z) `instui-*` osztálytokenekhez (és a(z) `-modifier` osztálytokenekhez), valamint
-a(z) `--instui-*` egyéni tulajdonságokhoz.
+Ez engedélyezi a `instui-*` osztály-tokenek (és `-modifier` osztály-tokenek) valamint a `--instui-*` egyéni tulajdonságok javaslatait.
 
-## Merre tovább
+## Hová tovább
 
-- [A csomagtérkép](/guide/packages) — melyik csomagot válaszd, feladat szerint.
-- [@pantoken/ai](/api/ai/pantoken-ai/src/) — ágenseszközök és szabályok telepítése a fogadó repóban.
-- [Architektúra](/guide/architecture) — hogyan illeszkedik össze a tokenmodell, a mag (core) és a kimenetek.
-- [API-referencia](/api/) — minden exportált szimbólum, a forrásból generálva.
+- [A csomagtérkép](/guide/packages) — melyik csomagot érdemes kézbe venni feladattól függően.
+- [@pantoken/ai](/api/ai/pantoken-ai/src/) — telepítsd az ügynök-erőforrásokat és szabályokat egy fogyasztói repo-ba.
+- [Architektúra](/guide/architecture) — hogyan illeszkedik a token modell, a core és a kimenetek rendszere.
+- [API referencia](/api/) — minden exportált szimbólum, a forrásból generálva.

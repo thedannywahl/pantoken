@@ -11,6 +11,7 @@ export const tr: LocaleBundle = defineBundle({
     prevMonth: "Önceki ay",
     nextMonth: "Sonraki ay",
     dateLabel: "Tarih",
+    datePlaceholder: "yyyy-aa-gg",
     openCalendar: "Takvimi aç",
     timeLabel: "Saat",
     back: "Geri",

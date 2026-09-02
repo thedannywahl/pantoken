@@ -8,7 +8,12 @@ export default extendBase({
   run: {
     tasks: {
       build: {
-        command: ["node scripts/generate.ts", "vp pack", "node scripts/post-pack.ts"],
+        command: [
+          "node scripts/generate.ts",
+          "vp pack",
+          "node scripts/post-pack.ts",
+          "node scripts/generate-manifest.ts",
+        ],
       },
     },
   },

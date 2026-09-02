@@ -1,0 +1,9 @@
+{
+  "wroteFile": "✓ {{path}} लिख दिया",
+  "helpInitDescription": "pantoken के एजेंट एसेट्स को रिपॉज़िटरी में लिखें",
+  "helpInitToolDescription": "एजेंट टूल (all|cursor|copilot|windsurf)",
+  "helpInitDirDescription": "लक्षित निर्देशिका",
+  "helpScaffoldDescription": "एक स्टार्टर प्रोजेक्ट स्कैफ़ोल्ड करें (via @pantoken/scaffold) और उसमें एजेंट एसेट्स स्थापित करें",
+  "helpScaffoldToolDescription": "एजेंट टूल (all|cursor|copilot|windsurf)",
+  "helpLangDescription": "स्वचालित पहचान की गई प्रदर्शन भाषा को ओवरराइड करें (उदा. \"hu\")"
+}
