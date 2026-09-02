@@ -32,7 +32,7 @@ packages/scaffold/.dev/
 
 # Docs site build output (TypeDoc API markdown, VitePress cache, generated nav logos; reproduced by `docs:build`).
 docs/api/
-docs/hu/api/
+docs/*/api/
 docs/.vitepress/cache/
 docs/docs/.vitepress/cache/
 docs/.vitepress/.temp/
