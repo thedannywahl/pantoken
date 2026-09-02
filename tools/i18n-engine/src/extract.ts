@@ -16,6 +16,7 @@ import { unified } from "unified";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import { visit } from "unist-util-visit";
+import type { CatalogUnit } from "./units.ts";
 
 /** A translatable leaf: an absolute `[start, end)` byte range into the source string. */
 export interface ProseRange {
@@ -25,10 +26,9 @@ export interface ProseRange {
 }
 
 /** One extracted unit for a POT template: the source text plus where it came from. */
-export interface ExtractedUnit {
+export interface ExtractedUnit extends CatalogUnit {
   msgid: string;
   /** `"<repo-relative path>:<1-indexed line>"`. */
-  reference: string;
 }
 
 const parser = unified().use(remarkParse).use(remarkGfm);
@@ -59,7 +59,11 @@ export function collectProseRanges(source: string): ProseRange[] {
 export function extractFileUnits(source: string, filePath: string): ExtractedUnit[] {
   return collectProseRanges(source).map((range) => {
     const line = source.slice(0, range.start).split("\n").length;
-    return { msgid: range.text, reference: `${filePath}:${String(line)}` };
+    return {
+      msgid: range.text,
+      reference: `${filePath}:${String(line)}`,
+      translate: "always",
+    };
   });
 }
 
@@ -79,11 +83,20 @@ export function extractGuideSpace(docsRoot: string): ExtractedUnit[] {
  * Splice `resolve`d prose back into `source` — descends by offset so earlier splices don't shift
  * later ones. `resolve` returning its input verbatim (the identity function) round-trips exactly.
  */
-export function renderFile(source: string, resolve: (text: string) => string): string {
-  const ranges = [...collectProseRanges(source)].sort((a, b) => b.start - a.start);
+export function renderRanges(
+  source: string,
+  ranges: readonly ProseRange[],
+  resolve: (text: string) => string,
+): string {
+  const orderedRanges = [...ranges].sort((a, b) => b.start - a.start);
   let out = source;
-  for (const range of ranges) {
+  for (const range of orderedRanges) {
     out = out.slice(0, range.start) + resolve(range.text) + out.slice(range.end);
   }
   return out;
+}
+
+/** Splice resolved prose units back into a source file without reserializing its syntax tree. */
+export function renderFile(source: string, resolve: (text: string) => string): string {
+  return renderRanges(source, collectProseRanges(source), resolve);
 }

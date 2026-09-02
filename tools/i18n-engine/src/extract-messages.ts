@@ -7,6 +7,7 @@
  */
 import { readFileSync } from "node:fs";
 import type { TranslateIntent } from "./config.ts";
+import type { CatalogUnit } from "./units.ts";
 
 /** One entry in an `i18n.json` source: a bare string (always translated), or an object with an
  *  explicit `translate` intent. */
@@ -17,17 +18,25 @@ export type MessageSource = Record<string, MessageSourceEntry>;
 
 /** One extracted message: its stable key, MF2 (or plain — a valid subset of MF2) source text, and
  *  translate intent. */
-export interface MessageUnit {
+export interface MessageUnit extends CatalogUnit {
   key: string;
   msgid: string;
+  reference: string;
   translate: TranslateIntent;
 }
 
 /** Parse an already-loaded `i18n.json`-shaped object into {@link MessageUnit}s, in key order. */
 export function parseMessageSource(raw: MessageSource): MessageUnit[] {
   return Object.entries(raw).map(([key, entry]) => {
-    if (typeof entry === "string") return { key, msgid: entry, translate: "always" as const };
-    return { key, msgid: entry.message, translate: entry.translate ?? "always" };
+    if (typeof entry === "string") {
+      return { key, msgid: entry, reference: key, translate: "always" as const };
+    }
+    return {
+      key,
+      msgid: entry.message,
+      reference: key,
+      translate: entry.translate ?? "always",
+    };
   });
 }
 

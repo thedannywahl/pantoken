@@ -7,19 +7,26 @@ import { extractMessagesSpace, parseMessageSource } from "../src/extract-message
 describe("parseMessageSource", () => {
   test("a bare string is always-translate", () => {
     expect(parseMessageSource({ back: "Back" })).toEqual([
-      { key: "back", msgid: "Back", translate: "always" },
+      { key: "back", msgid: "Back", reference: "back", translate: "always" },
     ]);
   });
 
   test("an object entry carries its own translate intent", () => {
     expect(
       parseMessageSource({ datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" } }),
-    ).toEqual([{ key: "datePlaceholder", msgid: "yyyy-mm-dd", translate: "optional" }]);
+    ).toEqual([
+      {
+        key: "datePlaceholder",
+        msgid: "yyyy-mm-dd",
+        reference: "datePlaceholder",
+        translate: "optional",
+      },
+    ]);
   });
 
   test("an object entry with no translate field defaults to always", () => {
     expect(parseMessageSource({ x: { message: "y" } })).toEqual([
-      { key: "x", msgid: "y", translate: "always" },
+      { key: "x", msgid: "y", reference: "x", translate: "always" },
     ]);
   });
 
@@ -50,8 +57,13 @@ describe("extractMessagesSpace", () => {
       }),
     );
     expect(extractMessagesSpace(path)).toEqual([
-      { key: "prevMonth", msgid: "Previous month", translate: "always" },
-      { key: "datePlaceholder", msgid: "yyyy-mm-dd", translate: "optional" },
+      { key: "prevMonth", msgid: "Previous month", reference: "prevMonth", translate: "always" },
+      {
+        key: "datePlaceholder",
+        msgid: "yyyy-mm-dd",
+        reference: "datePlaceholder",
+        translate: "optional",
+      },
     ]);
   });
 });

@@ -8,6 +8,7 @@
  *
  * @module
  */
+import { catalogUnitKey } from "./units.ts";
 
 /** One translatable entry. `msgstr` is `""` for an untranslated/obsolete-pending entry. */
 export interface PoEntry {
@@ -217,7 +218,7 @@ export function serializePot(
     { msgid: string; msgctxt?: string; references: string[]; flags: string[] }
   >();
   for (const unit of units) {
-    const key = `${unit.msgctxt ?? ""}\0${unit.msgid}`;
+    const key = catalogUnitKey(unit);
     const existing = byKey.get(key);
     if (existing) existing.references.push(unit.reference);
     else

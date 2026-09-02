@@ -4,6 +4,7 @@ import {
   extractFileUnits,
   extractGuideSpace,
   renderFile,
+  renderRanges,
 } from "../src/extract.ts";
 
 const docsRoot = new URL("../../../docs/", import.meta.url).pathname;
@@ -45,7 +46,11 @@ describe("collectProseRanges / renderFile", () => {
 describe("extractFileUnits", () => {
   test("attaches a 1-indexed line reference", () => {
     const units = extractFileUnits("line one\n\nline two\n", "guide/x.md");
-    expect(units[0]).toEqual({ msgid: "line one", reference: "guide/x.md:1" });
+    expect(units[0]).toEqual({
+      msgid: "line one",
+      reference: "guide/x.md:1",
+      translate: "always",
+    });
     expect(units.find((u) => u.msgid === "line two")?.reference).toBe("guide/x.md:3");
   });
 });
@@ -70,5 +75,14 @@ describe("extractGuideSpace (the real docs/guide corpus)", () => {
 
   test("real prose from getting-started.md IS extracted", () => {
     expect(units.some((u) => u.reference.startsWith("guide/getting-started.md"))).toBe(true);
+  });
+
+  test("renderRanges accepts an extractor-specific range set", () => {
+    const source = "alpha beta";
+    const ranges = [
+      { start: 0, end: 5, text: "alpha" },
+      { start: 6, end: 10, text: "beta" },
+    ];
+    expect(renderRanges(source, ranges, (text) => text.toUpperCase())).toBe("ALPHA BETA");
   });
 });

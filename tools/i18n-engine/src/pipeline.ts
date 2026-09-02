@@ -19,6 +19,7 @@ import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, serializePot, type PoEntry } from "./po.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
+import { catalogUnitKey } from "./units.ts";
 
 /** Canonical content-space id for the repository's Markdown guides. */
 const DOCS_GUIDES = "docs.guides";
@@ -278,9 +279,11 @@ export function resolveMessagesForLocale(
   const space = messagesSpaceConfig(config, spaceId);
   const units = extractMessagesSpace(join(configDir, space.source));
   const entries = loadMessagesPoEntries(config, configDir, spaceId, locale);
-  const byKey = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgctxt, e.msgstr]));
+  const byKey = new Map(
+    entries.filter((e) => e.msgstr !== "").map((e) => [catalogUnitKey(e), e.msgstr]),
+  );
   const strings: Record<string, string> = {};
-  for (const unit of units) strings[unit.key] = byKey.get(unit.key) ?? unit.msgid;
+  for (const unit of units) strings[unit.key] = byKey.get(catalogUnitKey(unit)) ?? unit.msgid;
   return { locale, strings };
 }
 
@@ -304,9 +307,11 @@ export function runCheckMessages(
   for (const locale of messagesLocales(config, spaceId)) {
     if (locale === config.source) continue;
     const entries = loadMessagesPoEntries(config, configDir, spaceId, locale);
-    const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgctxt));
+    const translated = new Set(
+      entries.filter((e) => e.msgstr !== "").map((e) => catalogUnitKey(e)),
+    );
     for (const unit of units) {
-      if (translated.has(unit.key)) continue;
+      if (translated.has(catalogUnitKey(unit))) continue;
       reporter.add({
         surface: spaceId,
         locale,
