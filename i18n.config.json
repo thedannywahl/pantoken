@@ -39,7 +39,7 @@
     },
     "cli.ai": {
       "kind": "messages",
-      "source": "l10n/sources/cli.ai.json"
+      "source": "ai/pantoken-ai/src/i18n.json"
     }
   }
 }

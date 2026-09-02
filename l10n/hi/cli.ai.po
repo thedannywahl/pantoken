@@ -1,44 +1,46 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}} लिख दिया"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "pantoken के एजेंट एसेट्स को रिपॉज़िटरी में लिखें"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "एजेंट टूल (all|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "लक्षित निर्देशिका"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldDescription"
-msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
-msgstr "एक स्टार्टर प्रोजेक्ट स्कैफ़ोल्ड करें (via @pantoken/scaffold) और उसमें एजेंट एसेट्स स्थापित करें"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"एक स्टार्टर प्रोजेक्ट स्कैफ़ोल्ड करें (via @pantoken/scaffold) और उसमें एजेंट एसेट्स स्थापित करें"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "एजेंट टूल (all|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"

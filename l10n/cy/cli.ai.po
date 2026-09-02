@@ -1,44 +1,47 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ Wedi ysgrifennu {{path}}"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Ysgrifennu asedau asiant pantoken i mewn i'r repo"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Offer asiant (all|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Cyfeiriadur targed"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldDescription"
-msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
-msgstr "Creu prosiect cychwynnol (drwy @pantoken/scaffold) a gosod asedau asiant ynddo"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"Creu prosiect cychwynnol (drwy @pantoken/scaffold) a gosod asedau asiant "
+"ynddo"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Offer asiant (all|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"

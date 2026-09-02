@@ -1,44 +1,47 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ {{path}}"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Escriu els actius d'agent de pantoken en un repositori"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Eina d'agent (all|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Directori de destinació"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldDescription"
-msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
-msgstr "Genera un projecte inicial (via @pantoken/scaffold) i hi instal·la els actius d'agent"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"Genera un projecte inicial (via @pantoken/scaffold) i hi instal·la els "
+"actius d'agent"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Eina d'agent (all|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"

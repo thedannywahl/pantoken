@@ -1,44 +1,47 @@
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:wroteFile"
 msgid "✓ {{path}}"
 msgstr "✓ Skrifað: {{path}}"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDescription"
 msgid "Write pantoken's agent assets into a repo"
 msgstr "Skrifa pantoken agent-auðlindir í geymslu"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Agenttól (allt|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpInitDirDescription"
 msgid "Target directory"
 msgstr "Áfangamappa"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldDescription"
-msgid "Scaffold a starter project (via @pantoken/scaffold) and install agent assets into it"
-msgstr "Búa til upphafsverkefni (með @pantoken/scaffold) og setja agent-auðlindir í það"
+msgid ""
+"Scaffold a starter project (via @pantoken/scaffold) and install agent assets "
+"into it"
+msgstr ""
+"Búa til upphafsverkefni (með @pantoken/scaffold) og setja agent-auðlindir í "
+"það"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpScaffoldToolDescription"
 msgid "Agent tool (all|cursor|copilot|windsurf)"
 msgstr "Agenttól (allt|cursor|copilot|windsurf)"
 
-#: l10n/sources/cli.ai.json
+#: ai/pantoken-ai/src/i18n.json
 #, no-c-format
 msgctxt "cli.ai:helpLangDescription"
 msgid "Override the auto-detected display language (e.g. \"hu\")"
