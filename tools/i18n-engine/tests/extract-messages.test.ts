@@ -35,6 +35,13 @@ describe("parseMessageSource", () => {
     const units = parseMessageSource({ b: "B", a: "A" });
     expect(units.map((u) => u.key)).toEqual(["b", "a"]);
   });
+
+  test("qualifies contexts without changing runtime keys", () => {
+    expect(parseMessageSource({ back: "Back" }, "cli.ai")[0]).toMatchObject({
+      key: "back",
+      msgctxt: "cli.ai:back",
+    });
+  });
 });
 
 describe("extractMessagesSpace", () => {
