@@ -140,6 +140,17 @@ describe("classification", () => {
     const tables = cssdoc.filter((s) => s.kind === "table");
     expect(tables.length).toBe(2);
   });
+
+  test("a standalone -flag paragraph (e.g. -nocard before an @example fence) is preserved", () => {
+    const page = ["## Examples", "", "-nocard", "```html", "<div></div>", "```", ""].join("\n");
+    const segments = segmentMarkdown(page);
+    expect(find(segments, "-nocard").kind).toBe("preserve");
+    expect(reassemble(segments, identity)).toBe(page);
+  });
+
+  test("multiple -flag tokens on one line are also preserved", () => {
+    expect(find(segmentMarkdown("-nocard -noshow\n"), "-nocard -noshow").kind).toBe("preserve");
+  });
 });
 
 describe("the js-requirement callout", () => {

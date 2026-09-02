@@ -77,6 +77,15 @@ const hasProseWords = (input: string): boolean => stripNonProse(input).length > 
 const isBreadcrumb = (line: string): boolean =>
   /^\[[^\]]+\]\([^)]+\)/.test(line) && line.includes(" / ");
 
+/**
+ * A block that is only `-flag` tokens (e.g. the standalone `-nocard` paragraph
+ * `build-css-api.ts` emits before an `@example` fence). Shares the flag grammar with
+ * `tools/demo/src/index.ts`'s flag-token regex — matches `hasProseWords` would otherwise wave
+ * through, since stripping the leading `-` still leaves Latin letters.
+ */
+const isFlagOnly = (text: string): boolean =>
+  /^(?:-[a-z][a-z0-9-]*)(?:\s+-[a-z][a-z0-9-]*)*$/u.test(text);
+
 /** An em-dash-only or blank table cell carries no prose. */
 const isEmptyCell = (cell: string): boolean => cell === "" || cell === "—" || cell === "-";
 
@@ -153,6 +162,7 @@ const classifyBlock = (lines: string[]): Segment => {
   // Signatures/blockquotes, breadcrumbs, and lines that are only links/code/type expressions.
   if (first.trimStart().startsWith(">")) return { kind: "preserve", text };
   if (isBreadcrumb(first)) return { kind: "preserve", text };
+  if (isFlagOnly(text)) return { kind: "preserve", text };
   if (!hasProseWords(text)) return { kind: "preserve", text };
 
   return { kind: "prose", text };
