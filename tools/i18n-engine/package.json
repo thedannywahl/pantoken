@@ -26,6 +26,7 @@
   "dependencies": {
     "@pantoken/translation-adapters": "workspace:*",
     "commander": "catalog:",
+    "messageformat": "catalog:",
     "remark-gfm": "catalog:",
     "remark-parse": "catalog:",
     "unified": "catalog:",

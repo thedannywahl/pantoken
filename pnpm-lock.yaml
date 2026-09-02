@@ -370,6 +370,9 @@ catalogs:
     mermaid:
       specifier: ^11.17.2
       version: 11.17.2
+    messageformat:
+      specifier: ^4.0.0
+      version: 4.0.0
     oxc-minify:
       specifier: ^0.147.0
       version: 0.147.0
@@ -3167,6 +3170,9 @@ importers:
       commander:
         specifier: 'catalog:'
         version: 15.0.0
+      messageformat:
+        specifier: 'catalog:'
+        version: 4.0.0
       remark-gfm:
         specifier: 'catalog:'
         version: 4.0.1(supports-color@10.2.2)
@@ -8145,6 +8151,10 @@ packages:
 
   mermaid@11.17.2:
     resolution: {integrity: sha512-V6K3C8EBdEsPFZXSKMJe6ppQOENxuHARr9GvHX4hh47lAbhMRD9qf4oEK7LoaRQxULMa80/qt5gHO73aCleBBg==}
+
+  messageformat@4.0.0:
+    resolution: {integrity: sha512-XKmJ/ffTWToWOlHJzt85ZChQgVGC0LHzNWuNK8zuYpNySsB0nIEmytOdSAOW9ETKtkajAUJf520m5gFHHnrTYg==}
+    engines: {node: ^20.19 || ^22.12 || >=24}
 
   microbuffer@1.0.0:
     resolution: {integrity: sha512-O/SUXauVN4x6RaEJFqSPcXNtLFL+QzJHKZlyDVYFwcDDRVca3Fa/37QXXC+4zAGGa4YhHrHxKXuuHvLDIQECtA==}
@@ -15246,6 +15256,8 @@ snapshots:
       stylis: 4.4.0
       ts-dedent: 2.3.0
       uuid: 14.0.2
+
+  messageformat@4.0.0: {}
 
   microbuffer@1.0.0: {}
 

@@ -36,6 +36,8 @@ catalog:
   # Localization-engine offset-splice extraction (see .claude/plans/localization-engine.md)
   unified: ^11.0.5
   remark-parse: ^11.0.0
+  # Localization-engine MF2 messages (Phase 3)
+  messageformat: ^4.0.0
   # markdown-it integration
   markdown-it: ^15.0.1
   # Brand icons (plugin)
