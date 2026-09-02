@@ -1,19 +1,71 @@
 {
-  "cssHeaderTitle": "pantoken for Canvas Theme Editor",
-  "cssHeaderUpload": "Upload this file under Theme Editor → Advanced → CSS",
-  "cssHeaderRequirement": "Some components require the interactions javascript library to function correctly",
-  "cssDocsNote": "See https://pantoken.app for documentation",
-  "jsHeaderTitle": "pantoken for Canvas Theme Editor",
-  "jsHeaderUpload": "Upload this file under Theme Editor → Advanced → JavaScript",
-  "jsHeaderRequirement": "This script loads pantoken's interactions library, which is required for some components to function correctly",
-  "jsDocsNote": "See https://pantoken.app for documentation",
-  "sectionComponentStyles": "1. Component styles — every .instui-* class used by the starter page templates.",
-  "sectionFonts": "2. Fonts for the components",
-  "sectionAdditional": "3. Additional pantoken styles",
-  "additionalHintIntro": "Anything you want to include from https://pantoken.app/guide/cdn-picker",
-  "additionalHintExample": "For example, to include the \"backpack\" icon, add:",
-  "overridesCssNote1": "Your overrides go below this line. Canvas loads Theme Editor CSS after its own stylesheet, so",
-  "overridesCssNote2": "anything added here can safely override pantoken's defaults too.",
-  "overridesJsNote1": "Your overrides go below this line. Canvas loads Theme Editor JavaScript after its own scripts, so",
-  "overridesJsNote2": "anything added here can safely override pantoken's defaults too."
+  "$schema": "../../../i18n.source.schema.json",
+  "cssHeaderTitle": {
+    "message": "pantoken for Canvas Theme Editor",
+    "translate": "always"
+  },
+  "cssHeaderUpload": {
+    "message": "Upload this file under Theme Editor → Advanced → CSS",
+    "translate": "always"
+  },
+  "cssHeaderRequirement": {
+    "message": "Some components require the interactions javascript library to function correctly",
+    "translate": "always"
+  },
+  "cssDocsNote": {
+    "message": "See https://pantoken.app for documentation",
+    "translate": "always"
+  },
+  "jsHeaderTitle": {
+    "message": "pantoken for Canvas Theme Editor",
+    "translate": "always"
+  },
+  "jsHeaderUpload": {
+    "message": "Upload this file under Theme Editor → Advanced → JavaScript",
+    "translate": "always"
+  },
+  "jsHeaderRequirement": {
+    "message": "This script loads pantoken's interactions library, which is required for some components to function correctly",
+    "translate": "always"
+  },
+  "jsDocsNote": {
+    "message": "See https://pantoken.app for documentation",
+    "translate": "always"
+  },
+  "sectionComponentStyles": {
+    "message": "1. Component styles — every .instui-* class used by the starter page templates.",
+    "translate": "always"
+  },
+  "sectionFonts": {
+    "message": "2. Fonts for the components",
+    "translate": "always"
+  },
+  "sectionAdditional": {
+    "message": "3. Additional pantoken styles",
+    "translate": "always"
+  },
+  "additionalHintIntro": {
+    "message": "Anything you want to include from https://pantoken.app/guide/cdn-picker",
+    "translate": "always"
+  },
+  "additionalHintExample": {
+    "message": "For example, to include the \"backpack\" icon, add:",
+    "translate": "always"
+  },
+  "overridesCssNote1": {
+    "message": "Your overrides go below this line. Canvas loads Theme Editor CSS after its own stylesheet, so",
+    "translate": "always"
+  },
+  "overridesCssNote2": {
+    "message": "anything added here can safely override pantoken's defaults too.",
+    "translate": "always"
+  },
+  "overridesJsNote1": {
+    "message": "Your overrides go below this line. Canvas loads Theme Editor JavaScript after its own scripts, so",
+    "translate": "always"
+  },
+  "overridesJsNote2": {
+    "message": "anything added here can safely override pantoken's defaults too.",
+    "translate": "always"
+  }
 }

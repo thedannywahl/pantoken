@@ -27,7 +27,7 @@ beforeEach(() => {
   writeFileSync(
     join(testDir, "i18n.json"),
     JSON.stringify({
-      back: "Back",
+      back: { message: "Back", translate: "always" },
       datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" },
     }),
   );

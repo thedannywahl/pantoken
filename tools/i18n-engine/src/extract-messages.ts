@@ -11,7 +11,7 @@ import type { CatalogUnit } from "./units.ts";
 
 /** One entry in an `i18n.json` source: a bare string (always translated), or an object with an
  *  explicit `translate` intent. */
-export type MessageSourceEntry = string | { message: string; translate?: TranslateIntent };
+export type MessageSourceEntry = { message: string; translate: TranslateIntent };
 
 /** Flat keyed message source as represented by an `i18n.json` file. */
 export type MessageSource = Record<string, MessageSourceEntry>;
@@ -28,19 +28,18 @@ export interface MessageUnit extends CatalogUnit {
 
 /** Parse an already-loaded source into keyed units, optionally qualifying contexts by space. */
 export function parseMessageSource(raw: MessageSource, contextPrefix?: string): MessageUnit[] {
-  return Object.entries(raw).map(([key, entry]) => {
-    const msgctxt = contextPrefix ? `${contextPrefix}:${key}` : key;
-    if (typeof entry === "string") {
-      return { key, msgctxt, msgid: entry, reference: key, translate: "always" as const };
-    }
-    return {
-      key,
-      msgctxt,
-      msgid: entry.message,
-      reference: key,
-      translate: entry.translate ?? "always",
-    };
-  });
+  return Object.entries(raw)
+    .filter(([key]) => key !== "$schema")
+    .map(([key, entry]) => {
+      const msgctxt = contextPrefix ? `${contextPrefix}:${key}` : key;
+      return {
+        key,
+        msgctxt,
+        msgid: entry.message,
+        reference: key,
+        translate: entry.translate ?? "always",
+      };
+    });
 }
 
 /** Read and parse a `src/i18n.json` file at `sourcePath`. */

@@ -1,4 +1,6 @@
 {
+  "$schema": "../../../i18n.source.schema.json",
+  "$schema": "../../../i18n.source.schema.json",
   "promptPlatform": {
     "message": "Select a platform to scaffold:",
     "translate": "always"

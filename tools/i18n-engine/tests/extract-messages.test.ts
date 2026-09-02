@@ -5,8 +5,8 @@ import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
 import { extractMessagesSpace, parseMessageSource } from "../src/extract-messages.ts";
 
 describe("parseMessageSource", () => {
-  test("a bare string is always-translate", () => {
-    expect(parseMessageSource({ back: "Back" })).toEqual([
+  test("an explicit message entry is always-translate", () => {
+    expect(parseMessageSource({ back: { message: "Back", translate: "always" } })).toEqual([
       { key: "back", msgctxt: "back", msgid: "Back", reference: "back", translate: "always" },
     ]);
   });
@@ -25,19 +25,33 @@ describe("parseMessageSource", () => {
     ]);
   });
 
-  test("an object entry with no translate field defaults to always", () => {
-    expect(parseMessageSource({ x: { message: "y" } })).toEqual([
+  test("an object entry carries an explicit always intent", () => {
+    expect(parseMessageSource({ x: { message: "y", translate: "always" } })).toEqual([
       { key: "x", msgctxt: "x", msgid: "y", reference: "x", translate: "always" },
     ]);
   });
 
   test("preserves key order", () => {
-    const units = parseMessageSource({ b: "B", a: "A" });
+    const units = parseMessageSource({
+      b: { message: "B", translate: "always" },
+      a: { message: "A", translate: "always" },
+    });
     expect(units.map((u) => u.key)).toEqual(["b", "a"]);
   });
 
+  test("ignores the JSON Schema metadata key", () => {
+    expect(
+      parseMessageSource({
+        $schema: "./i18n.source.schema.json",
+        back: { message: "Back", translate: "always" },
+      } as never),
+    ).toHaveLength(1);
+  });
+
   test("qualifies contexts without changing runtime keys", () => {
-    expect(parseMessageSource({ back: "Back" }, "cli.ai")[0]).toMatchObject({
+    expect(
+      parseMessageSource({ back: { message: "Back", translate: "always" } }, "cli.ai")[0],
+    ).toMatchObject({
       key: "back",
       msgctxt: "cli.ai:back",
     });
@@ -60,7 +74,7 @@ describe("extractMessagesSpace", () => {
     writeFileSync(
       path,
       JSON.stringify({
-        prevMonth: "Previous month",
+        prevMonth: { message: "Previous month", translate: "always" },
         datePlaceholder: { message: "yyyy-mm-dd", translate: "optional" },
       }),
     );
