@@ -1,0 +1,4 @@
+/home/runner/work/pantoken/pantoken/docs/.vitepress/i18n.ts
+  29:14  error  Missing TSDoc for variable NON_LATIN_LOCALES  tsdoc-require-2/require
+
+✖ 1 problem (1 error, 0 warnings)
