@@ -1,6 +1,5 @@
 ---
 "@pantoken/i18n-engine": patch
-"@pantoken/i18n": patch
 "@pantoken/scaffold": patch
 "@pantoken/ai": patch
 ---

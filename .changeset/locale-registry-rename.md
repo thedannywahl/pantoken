@@ -1,5 +1,5 @@
 ---
-"@pantoken/i18n": patch
+"@pantoken/i18n-engine": patch
 ---
 
 Renamed the internal locale registry: `CANVAS_LOCALES` → `LOCALES`, the `LocaleMeta` interface →

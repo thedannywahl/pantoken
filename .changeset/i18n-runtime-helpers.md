@@ -1,5 +1,5 @@
 ---
-"@pantoken/i18n": minor
+"@pantoken/i18n-engine": minor
 ---
 
 Phase 3 (localization-engine plan): runtime helpers for MF2 messages and locale-aware formatting.

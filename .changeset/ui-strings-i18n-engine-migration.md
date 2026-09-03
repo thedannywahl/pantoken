@@ -1,6 +1,6 @@
 ---
 "@pantoken/web-components": minor
-"@pantoken/i18n": minor
+"@pantoken/i18n-engine": minor
 ---
 
 Replaces `@pantoken/web-components`'s legacy `ui.strings` translation pipeline with the
