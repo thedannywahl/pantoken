@@ -1,0 +1,12 @@
+yes, I made some changes to the 'getting started' guide, including changing the language of one of the code blocks to `prompt` as specified by `.language-prompt` class.  we previously skipped implmeneting parsing of code blocks for complexity, now let's go in and set prompts to be translated and then run the guide update translation script.
+
+---
+
+vitepress throws a lot of warnings now about the prompt:
+```
+The language 'prompt' is not loaded, falling back to 'txt' for syntax highlighting.
+
+The language 'prompt' is not loaded, falling back to 'txt' for syntax highlighting.
+5:42:32 AM [vitepress] (client) hmr update /guide/getting-started.md
+```
+it should use txt but how do we register prompt as a language to use to reduce he noise?
