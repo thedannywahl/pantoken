@@ -1,0 +1,92 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KND1DTHXVSDZJVXG533GZA",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T12:55:19.276496Z",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "save_step_count": 5,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "8f5c613d9b5a",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 62
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 4,
+      "user_lines_removed": 4,
+      "agent_lines_added": 6132,
+      "agent_lines_removed": 216,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 4
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 4
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 15,
+      "user_lines_removed": 15,
+      "agent_lines_added": 6136,
+      "agent_lines_removed": 220,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 15
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 15
+      }
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 7,
+      "user_lines_removed": 7,
+      "agent_lines_added": 6151,
+      "agent_lines_removed": 235,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 7
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 7
+      }
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 24,
+      "user_lines_removed": 24,
+      "agent_lines_added": 6166,
+      "agent_lines_removed": 250,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 24
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 24
+      }
+    },
+    {
+      "checkpoint_number": 6,
+      "user_lines_added": 8,
+      "user_lines_removed": 8,
+      "agent_lines_added": 6211,
+      "agent_lines_removed": 295,
+      "user_added_per_file": {
+        "l10n/fr/docs.api.po": 8
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 8
+      }
+    }
+  ]
+}

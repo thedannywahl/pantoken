@@ -1,0 +1,25 @@
+no, don't just jump to arabic, update the i18n coverage and look for the smallest gap(s) to completion.
+
+---
+
+do incremental conventional commits on the files you touch as you work, ignoring other changes from other agents.
+
+---
+
+while we wait, something materialized this file and it broke this link, compare it to the default string.
+
+---
+
+should our markdownlint config have caught that and fixed it?
+
+---
+
+so a space is okay in the link url?
+
+---
+
+translation status
+
+---
+
+I'm not sure where these unstages po files came from, but are all the linebreaks okay?
