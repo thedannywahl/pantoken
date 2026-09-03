@@ -12,7 +12,7 @@ msgstr "Instructure-designtoken og ikonar, omforma for kvar plattform og rammeve
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
-msgstr ""
+msgstr "Guide"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -90,7 +90,7 @@ msgstr "pantoken CLI"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Utvidingar"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -126,7 +126,7 @@ msgstr "Vel tema"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Omprofilering"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Tema"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Omprofilering"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -210,7 +210,7 @@ msgstr "Alle komponentar"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
-msgstr ""
+msgstr "Utdata"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

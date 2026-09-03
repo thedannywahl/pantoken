@@ -72,7 +72,7 @@ msgstr "Komponenten"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdn"
 msgid "CDN & distribution"
-msgstr ""
+msgstr "CDN & Bereitstellung"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -90,7 +90,7 @@ msgstr "Das pantoken CLI"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -126,7 +126,7 @@ msgstr "Design auswählen"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Rebranding"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Thema"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Rebranding"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -246,7 +246,7 @@ msgstr "Der optional aktivierbare globale Reset: box‑sizing, Seitenoberfläche
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeUtilities"
 msgid "Utilities"
-msgstr ""
+msgstr "Hilfsprogramme"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

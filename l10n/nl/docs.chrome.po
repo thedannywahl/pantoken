@@ -90,7 +90,7 @@ msgstr "De pantoken CLI"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Plug-ins"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -126,7 +126,7 @@ msgstr "Selecteer thema"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Herbranding"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Thema"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Herbranding"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -210,7 +210,7 @@ msgstr "Alle componenten"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
-msgstr ""
+msgstr "Uitvoer"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -366,7 +366,7 @@ msgstr "Schakel over naar donker thema"
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

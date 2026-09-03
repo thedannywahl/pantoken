@@ -90,7 +90,7 @@ msgstr "pantoken CLI"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Utvidelser"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -126,7 +126,7 @@ msgstr "Velg tema"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Merkevareendring"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Tema"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Merkevareendring"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -210,7 +210,7 @@ msgstr "Alle komponenter"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.formatLabel"
 msgid "Output"
-msgstr ""
+msgstr "Utdata"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -228,7 +228,7 @@ msgstr "@import"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
-msgstr ""
+msgstr "Grunnlag"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

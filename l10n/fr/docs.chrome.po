@@ -12,13 +12,13 @@ msgstr "Tokens de design et icônes Instructure, réorganisés pour chaque plate
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
-msgstr ""
+msgstr "Guide"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:nav.packages"
 msgid "Packages"
-msgstr ""
+msgstr "Paquets"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -36,13 +36,13 @@ msgstr "Référence API"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.intro"
 msgid "Introduction"
-msgstr ""
+msgstr "Introduction"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:sidebar.guides"
 msgid "Guides"
-msgstr ""
+msgstr "Guides"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -60,7 +60,7 @@ msgstr "La carte des packages"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.architecture"
 msgid "Architecture"
-msgstr ""
+msgstr "Architecture"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -90,7 +90,7 @@ msgstr "L'interface en ligne de commande pantoken"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Extensions"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -228,7 +228,7 @@ msgstr "@import"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
-msgstr ""
+msgstr "De base"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -366,7 +366,7 @@ msgstr "Passer au thème sombre"
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

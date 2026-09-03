@@ -126,7 +126,7 @@ msgstr "Válgget tema"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "rebranda"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Tema"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "rebranda"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -300,13 +300,13 @@ msgstr "Koperevet"
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.cliInstall"
 msgid "CLI install"
-msgstr ""
+msgstr "CLI-installere"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:getStartedTabs.aiInstall"
 msgid "AI install"
-msgstr ""
+msgstr "AI-installere"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -366,7 +366,7 @@ msgstr "Válgget báktimodus"
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
-msgstr ""
+msgstr "Meny"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -432,13 +432,13 @@ msgstr "Nuvttá fasta listu"
 #, no-c-format
 msgctxt "docs.chrome:search.resetButtonTitle"
 msgid "Reset search"
-msgstr ""
+msgstr "Gaskavuođat geavahit"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
 msgctxt "docs.chrome:search.backButtonTitle"
 msgid "Close search"
-msgstr ""
+msgstr "Geavahit boahtte"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

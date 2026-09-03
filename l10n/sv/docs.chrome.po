@@ -12,7 +12,7 @@ msgstr "Instructure designtokens och ikoner, omformade för varje plattform och 
 #, no-c-format
 msgctxt "docs.chrome:nav.guide"
 msgid "Guide"
-msgstr ""
+msgstr "Vägledning"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -72,7 +72,7 @@ msgstr "Komponenter"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.cdn"
 msgid "CDN & distribution"
-msgstr ""
+msgstr "CDN och distribution"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

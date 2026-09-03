@@ -90,7 +90,7 @@ msgstr "La CLI de pantoken"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Complementos"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -228,7 +228,7 @@ msgstr "@import"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.includeBase"
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

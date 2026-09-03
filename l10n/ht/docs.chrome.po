@@ -90,7 +90,7 @@ msgstr "CLI pantoken"
 #, no-c-format
 msgctxt "docs.chrome:sidebar.plugins"
 msgid "Plugins"
-msgstr ""
+msgstr "Plòg-in yo"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -126,7 +126,7 @@ msgstr "Chwazi tèm"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Refè mak"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Tèm"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Refè mak"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

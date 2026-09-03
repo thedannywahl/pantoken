@@ -126,7 +126,7 @@ msgstr "Pilih tema"
 #, no-c-format
 msgctxt "docs.chrome:themeSelector.rebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Rebranding"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -150,7 +150,7 @@ msgstr "Tema"
 #, no-c-format
 msgctxt "docs.chrome:cdnPicker.themeRebrand"
 msgid "Rebrand"
-msgstr ""
+msgstr "Rebranding"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
@@ -366,7 +366,7 @@ msgstr "Beralih ke tema gelap"
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

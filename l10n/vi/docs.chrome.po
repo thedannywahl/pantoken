@@ -366,7 +366,7 @@ msgstr "Chuyển sang chủ đề tối"
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
-msgstr ""
+msgstr "Trình đơn"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format

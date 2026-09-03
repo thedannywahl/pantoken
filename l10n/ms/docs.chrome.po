@@ -366,7 +366,7 @@ msgstr "Tukar ke tema gelap"
 #, no-c-format
 msgctxt "docs.chrome:chrome.sidebarMenuLabel"
 msgid "Menu"
-msgstr ""
+msgstr "Menu"
 
 #: docs/.vitepress/i18n.json
 #, no-c-format
