@@ -1,0 +1,5 @@
+watch ci for failures on pr 119 using the `gh` cli and remediate them.
+
+---
+
+you're stuck in an interactive shell trying to upgrade entire.
