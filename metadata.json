@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1ME3BMXHZAY3Z2YAR1QWZXM",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 4,
+  "checkpoints_count": 9,
   "files_touched": [
     ".changeset/og-cards-every-locale.md",
     ".gitignore",
@@ -11,6 +11,7 @@
     "SECURITY.md",
     "docs/.vitepress/config.ts",
     "docs/.vitepress/i18n.ts",
+    "docs/.vitepress/theme/pantoken.css",
     "docs/package.json",
     "docs/scripts/gen-og.ts",
     "docs/scripts/lib/og-fonts.ts",
@@ -23,6 +24,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
