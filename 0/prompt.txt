@@ -1,0 +1,34 @@
+I want .i18n/coverage to have an html format that uses a pantoken sortable/filterable table based on the coverage json we should make it an additional output flag.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+we should be able to filter by locale too.
+
+---
+
+internal tools get changesets too because they have changelogs.
+
+---
+
+configure the vite task `vpr i18n:coverage` to generate the html report.
+
+---
+
+how is french at 101%?
+```
+docs.api 	fr 	secondary 	warn 	
+101.68%
+	4241 	0 	4171
+```
+
+---
+
+this is a bespoke html layout, it should be using the workspace pantoken/components and class-based structure.
+
+---
+
+use instui-progress too.
