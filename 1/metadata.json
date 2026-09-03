@@ -1,0 +1,58 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KN20QG4Z3P3YM8PWV4G43M",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T12:49:18.13096Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "save_step_count": 2,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "6905ff44d050",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 58
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 6062,
+      "user_lines_removed": 118,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".gitignore": 2,
+        "docs/hy/guide/getting-started.md": 1,
+        "docs/public/logo-dark.svg": 13,
+        "docs/public/logo-light.svg": 13,
+        "docs/tr/guide/getting-started.md": 1,
+        "l10n/cy/docs.guides.po": 3000,
+        "l10n/fr/docs.api.po": 74,
+        "l10n/vi/docs.guides.po": 2958
+      },
+      "user_removed_per_file": {
+        "docs/hy/guide/getting-started.md": 1,
+        "docs/tr/guide/getting-started.md": 1,
+        "l10n/cy/docs.guides.po": 21,
+        "l10n/fr/docs.api.po": 74,
+        "l10n/vi/docs.guides.po": 21
+      }
+    }
+  ]
+}
