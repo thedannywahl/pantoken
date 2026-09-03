@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1M1VMJ8RSMNJ8BM6ZDWZ03Q",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 2,
+  "checkpoints_count": 3,
   "files_touched": [
     ".changeset/live-i18n-coverage.md",
     "docs/scripts/build-api-en.ts",
@@ -32,6 +32,13 @@
       "compact_transcript": "/1/transcript.jsonl",
       "content_hash": "/1/content_hash.txt",
       "prompt": ""
+    },
+    {
+      "metadata": "/2/metadata.json",
+      "transcript": "/2/full.jsonl",
+      "compact_transcript": "/2/transcript.jsonl",
+      "content_hash": "/2/content_hash.txt",
+      "prompt": "/2/prompt.txt"
     }
   ],
   "token_usage": {

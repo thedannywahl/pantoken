@@ -1,0 +1,5 @@
+okay, I want a 'watch' or 'live' flag on the coverage report so that as the coverage.json file gets updated the report updates too.
+
+let's have our i18n translation workflow run the coverage command to generate the report everytime a translation is written to the po/pot file.
+
+on the coverage html report "All spaces" default selection shouldn't list all spaces (docs.api, ui.strings...) it should be a roll-up "all" with one row per locale.
