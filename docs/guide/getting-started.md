@@ -1,6 +1,6 @@
 # Getting started
 
-pantoken takes Instructure UI's design tokens and icons, resolves them once, and reshapes that one
+Pantoken takes the [Instructure UI](https://instructure.design) design tokens and icons, resolves them once, and reshapes that one
 model into packages for many platforms: plain stylesheets, SCSS and Less, React and Vue and Svelte,
 Tailwind and Panda, native Swift and Kotlin, WordPress and Drupal, Figma, and more.
 
