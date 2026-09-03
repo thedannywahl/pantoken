@@ -459,6 +459,36 @@ function ogImageUrl(localeKey: DocsLocale): string {
   return `${hostname}og${localeKey === "root" ? "" : `-${localeKey}`}.png`;
 }
 
+/**
+ * `hreflang` alternate links for every locale of this page, plus one `x-default` entry pointing at the
+ * root (English) URL — lets search engines serve a native-language searcher the matching localized
+ * URL instead of the English one. Locale routing is a symmetric prefix swap with full content parity
+ * across locales (enforced by `scripts/check-locale-parity.ts`), so every locale's URL is derived by
+ * prefix-swapping this page's own relative path rather than needing a per-page lookup table.
+ */
+function alternateLinks(relativePath: string): HeadConfig[] {
+  const currentLocaleKey =
+    NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
+  const suffix =
+    currentLocaleKey === "root" ? relativePath : relativePath.slice(`${currentLocaleKey}/`.length);
+  // Non-root API pages aren't built at all under `DOCS_ROOT_LOCALE_ONLY=1` (see `srcExclude` below),
+  // so linking to them would 404.
+  const isNonRootExcluded = rootLocaleOnly && suffix.startsWith("api/");
+  const entries = isNonRootExcluded
+    ? localeEntries.filter(([key]) => key === "root")
+    : localeEntries;
+  const links: HeadConfig[] = entries.map(([key, locale]) => [
+    "link",
+    {
+      rel: "alternate",
+      hreflang: locale.lang,
+      href: canonicalUrl(key === "root" ? suffix : `${key}/${suffix}`),
+    },
+  ]);
+  links.push(["link", { rel: "alternate", hreflang: "x-default", href: canonicalUrl(suffix) }]);
+  return links;
+}
+
 /** Per-page social/canonical head tags layered on top of site defaults. */
 function pageSocialHead(params: {
   title: string;
@@ -572,6 +602,7 @@ export default defineConfig({
         imageAlt: homeOgTitle(localeInfo.locale),
       }),
       websiteJsonLd({ localeKey: localeInfo.localeKey, locale: localeInfo.locale, image }),
+      ...alternateLinks(pageData.relativePath),
     ];
   },
   // i18n routing audit (VitePress 2.0.0-alpha.18 / PR #5239): `themeConfig.i18nRouting` now accepts a
