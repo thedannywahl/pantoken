@@ -345,7 +345,7 @@ export function runExtractMessages(
   const potUnits = units.map((unit) => ({
     msgid: unit.msgid,
     msgctxt: unit.msgctxt,
-    reference: space.source,
+    reference: unit.reference || space.source,
     flags:
       typeof unit.translate === "string" && unit.translate !== "always"
         ? [`x-translate-${unit.translate}`]

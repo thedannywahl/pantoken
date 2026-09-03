@@ -5,7 +5,8 @@
  *
  * @module
  */
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync, statSync } from "node:fs";
+import { join } from "node:path";
 import type { TranslateIntent, TranslatePolicy } from "./config.ts";
 import type { CatalogUnit } from "./units.ts";
 
@@ -30,7 +31,11 @@ export interface MessageUnit extends CatalogUnit {
 }
 
 /** Parse an already-loaded source into keyed units, optionally qualifying contexts by space. */
-export function parseMessageSource(raw: MessageSource, contextPrefix?: string): MessageUnit[] {
+export function parseMessageSource(
+  raw: MessageSource,
+  contextPrefix?: string,
+  referencePrefix?: string,
+): MessageUnit[] {
   return Object.entries(raw)
     .filter(([key]) => key !== "$schema")
     .map(([key, entry]) => {
@@ -39,7 +44,7 @@ export function parseMessageSource(raw: MessageSource, contextPrefix?: string): 
         key,
         msgctxt,
         msgid: entry.message,
-        reference: key,
+        reference: `${referencePrefix ?? ""}${key}`,
         translate: entry.translate ?? "always",
       };
     });
@@ -47,6 +52,18 @@ export function parseMessageSource(raw: MessageSource, contextPrefix?: string): 
 
 /** Read and parse a `src/i18n.json` file at `sourcePath`. */
 export function extractMessagesSpace(sourcePath: string, contextPrefix?: string): MessageUnit[] {
+  if (statSync(sourcePath).isDirectory()) {
+    return readdirSync(sourcePath, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .flatMap((entry) => {
+        const file = join(sourcePath, entry.name, "i18n.json");
+        return parseMessageSource(
+          JSON.parse(readFileSync(file, "utf8")) as MessageSource,
+          contextPrefix ? `${contextPrefix}:${entry.name}` : entry.name,
+          `${entry.name}/i18n.json#`,
+        );
+      });
+  }
   const raw = JSON.parse(readFileSync(sourcePath, "utf8")) as MessageSource;
   return parseMessageSource(raw, contextPrefix);
 }

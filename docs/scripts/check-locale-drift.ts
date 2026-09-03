@@ -171,6 +171,28 @@ const demoNames = existsSync(demoDir) ? listDemoNames(demoDir) : [];
 /** Demos drift: every demo-local i18n string needs a cached translation. */
 const demosDrift = (locale: string): Missing[] => {
   if (demoNames.length === 0) return [];
+  const poPath = join(l10nDir, locale, "docs.demos.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgctxt),
+    );
+    const missing: Missing[] = [];
+    for (const name of demoNames) {
+      const { strings } = loadDemoI18n(join(demoDir, name));
+      for (const key of Object.keys(strings)) {
+        if (!translated.has(`docs.demos:${name}:${key}`)) {
+          missing.push({
+            file: `demos/${name}/i18n.json#${key}`,
+            kind: "text",
+            sample: preview(strings[key]),
+          });
+        }
+      }
+    }
+    return missing;
+  }
   const cached = loadCacheKeys(locale, "demos");
   const missing: Missing[] = [];
   for (const name of demoNames) {

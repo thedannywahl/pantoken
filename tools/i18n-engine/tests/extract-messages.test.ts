@@ -1,4 +1,4 @@
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
@@ -92,6 +92,32 @@ describe("extractMessagesSpace", () => {
         msgid: "yyyy-mm-dd",
         reference: "datePlaceholder",
         translate: "optional",
+      },
+    ]);
+  });
+
+  test("aggregates a directory of sources with qualified contexts", () => {
+    mkdirSync(join(testDir, "alert"));
+    mkdirSync(join(testDir, "button"));
+    for (const [name, message] of [
+      ["alert", "Dismiss"],
+      ["button", "Save"],
+    ] as const) {
+      writeFileSync(
+        join(testDir, name, "i18n.json"),
+        JSON.stringify({ label: { message, translate: "always" } }),
+      );
+    }
+    expect(extractMessagesSpace(testDir, "docs.demos")).toMatchObject([
+      {
+        key: "label",
+        msgctxt: "docs.demos:alert:label",
+        reference: "alert/i18n.json#label",
+      },
+      {
+        key: "label",
+        msgctxt: "docs.demos:button:label",
+        reference: "button/i18n.json#label",
       },
     ]);
   });

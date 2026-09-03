@@ -127,7 +127,7 @@ until every translation does.
 | `docs.api`     | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                         |
 | `docs.home`    | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features)  |
 | `docs.chrome`  | `docs:check:drift`                     | `.vitepress/i18n.json` → `l10n/<locale>/docs.chrome.po`             |
-| `docs.demos`   | `docs:check:drift`                     | per-demo `i18n.json` strings                                        |
+| `docs.demos`   | `docs:check:drift`                     | `demos/*/i18n.json` → `l10n/<locale>/docs.demos.po`                 |
 | `docs.parity`  | `docs:check:locales`                   | structural locale-tree parity                                       |
 
 The committed default: **English source integrity blocks, translations warn.** A key missing from an
