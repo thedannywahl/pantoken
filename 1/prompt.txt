@@ -4,3 +4,7 @@ take a look at the logs from an api translation run for hu- there's lots that we
 ---
 
 this will work for all languages, right?
+
+---
+
+okay, let's regenerate the cache and then I'll try re-running the translations and there should be none needed.
