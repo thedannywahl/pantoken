@@ -1,0 +1,13 @@
+does the html file have a mechanism to refresh automatically when a change lands or can we serve it so it has a hot refresh?
+
+---
+
+now we have a good picture of coverage, and we need to get our primary languages translated.
+
+---
+
+tell me the cli command to run in my terminal.
+
+---
+
+I think there's a vite task that we can pass flags to?
