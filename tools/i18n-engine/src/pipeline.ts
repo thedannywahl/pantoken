@@ -29,6 +29,7 @@ import { catalogUnitKey } from "./units.ts";
 
 /** Canonical content-space id for the repository's Markdown guides. */
 const DOCS_GUIDES = "docs.guides";
+/** Canonical content-space id for the documentation home page. */
 const DOCS_HOME = "docs.home";
 
 /** Substitute `{space}`/`{locale}` placeholders in a catalog path pattern. */
@@ -48,6 +49,7 @@ function guidesLocales(config: I18nConfig): string[] {
   return contentLocales(config, DOCS_GUIDES);
 }
 
+/** Resolve configured locales that are eligible for a content localization space. */
 function contentLocales(config: I18nConfig, spaceId: string): string[] {
   const space = config.spaces[spaceId];
   const nonExcluded = nonExcludedKnownLocales(config);

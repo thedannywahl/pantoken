@@ -116,6 +116,7 @@ function unflattenStrings(flat: Record<string, string>): UiStrings {
   return result as unknown as UiStrings;
 }
 
+/** English UI strings used as the fallback for localized documentation chrome. */
 export const ENGLISH_UI_STRINGS: UiStrings = unflattenStrings(sourceUiStrings);
 
 /** Structural, non-translated per-locale metadata: route prefixes, BCP47 tag, direction, sidebar path. */

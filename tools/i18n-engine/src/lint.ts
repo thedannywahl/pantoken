@@ -5,6 +5,7 @@ import { checkPoFile } from "./gettext.ts";
 import { parsePo } from "./po.ts";
 import { parseConfig, type I18nConfig } from "./config.ts";
 
+/** Counts recorded after a successful localization contract validation. */
 export interface LintResult {
   checkedSpaces: number;
   checkedLocales: number;

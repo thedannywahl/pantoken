@@ -8,7 +8,7 @@
  *
  * Each segment is one of:
  * - `preserve` — emitted verbatim (non-prompt code fences, signatures, breadcrumbs, type/link-only lines, HTML).
- * - `prompt` — a ` ```prompt ` fence whose body is translated while its fence markers stay intact.
+ * - `prompt` — a prompt fence whose body is translated while its fence markers stay intact.
  * - `glossary` — deterministic term substitution (section headings, stability-badge pills, table
  *   column labels). Cheap, keyless, never cached.
  * - `prose`    — real translation (descriptions, remarks, `@example` captions, table Description cells).

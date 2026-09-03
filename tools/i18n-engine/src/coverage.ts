@@ -9,6 +9,7 @@ import {
 import type { I18nConfig } from "./config.ts";
 import { parsePo } from "./po.ts";
 
+/** Coverage counts for one localization space and locale. */
 export interface CoverageRow {
   space: string;
   locale: string;
@@ -20,6 +21,7 @@ export interface CoverageRow {
   percent: number;
 }
 
+/** Full localization coverage report and its applied filters. */
 export interface CoverageReport {
   generatedAt: string;
   source: string;
@@ -27,6 +29,7 @@ export interface CoverageReport {
   rows: CoverageRow[];
 }
 
+/** Optional filters and destination for a localization coverage report. */
 export interface CoverageOptions {
   space?: string;
   policy?: DriftSeverity | "all";
@@ -113,6 +116,7 @@ export function writeCoverageReport(
   return report;
 }
 
+/** Format a coverage report as a Markdown table. */
 export function formatCoverageReport(report: CoverageReport): string {
   const lines = [
     `# i18n coverage (${report.filters.policy}${report.filters.space ? `, ${report.filters.space}` : ""})`,

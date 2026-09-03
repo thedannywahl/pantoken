@@ -6,6 +6,7 @@
  */
 export type SourceEntry = { message: string; translate: "always" | "optional" | "never" };
 
+/** Flatten source metadata into the message-key-to-string format used by the localization pipeline. */
 export function flattenSource(raw: Record<string, SourceEntry>): Record<string, string> {
   return Object.fromEntries(Object.entries(raw).map(([key, entry]) => [key, entry.message]));
 }

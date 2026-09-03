@@ -1,11 +1,8 @@
 /**
  * The `i18n` CLI skeleton — Phase 1/2 of the localization-engine plan.
  *
- * `locale promote/demote/exclude/include` are real (read-modify-write `i18n.config.json`'s
-        const configPath = program.opts<{ config: string }>().config;
-        const report = writeCoverageReport(loadConfig(configPath), configPath, {
- * (see `pipeline.ts`) — every other space, and `lint`/`stats`, still just parse their selector
- * surface and report not-yet-implemented.
+ * Locale membership commands update `i18n.config.json`; content, lint, and statistics commands
+ * delegate to their respective pipeline modules.
  *
  * @module
  */
