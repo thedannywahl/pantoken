@@ -1,0 +1,93 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KYW1BAQAG8KNAZJSPTFQ7T",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T15:40:47.917129Z",
+  "branch": "i18n2",
+  "checkpoints_count": 2,
+  "files_touched": [
+    "l10n/fr/docs.api.po"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "772f9dc309d9",
+  "checkpoint_transcript_start": 11431,
+  "transcript_lines_at_start": 11431,
+  "compact_transcript_start": 2228,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T15:40:47.742921Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 2554,
+    "total_committed": 0,
+    "total_lines_changed": 2554,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 2932,
+      "user_lines_removed": 2559,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/i18n-coverage-html-report.md": 5,
+        ".changeset/i18n-coverage-stale-entries-fix.md": 5,
+        "l10n/fr/docs.api.po": 2566,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-full-color.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-ar.svg": 12,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-el.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-fa.svg": 11,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-he.svg": 11,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-hi.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed-hy.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/horizontal-reversed.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/icon-color.svg": 4,
+        "plugins/pantoken/logos/assets/logos/pantoken/icon-current-color.svg": 4,
+        "plugins/pantoken/logos/assets/logos/pantoken/icon-dark.svg": 4,
+        "plugins/pantoken/logos/assets/logos/pantoken/icon-reversed.svg": 4,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-dark-jp.svg": 10,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-dark-ko.svg": 10,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-dark-ru.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-dark-th.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-dark-uk.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-dark-zh.svg": 8,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-ar.svg": 12,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-el.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-fa.svg": 11,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-he.svg": 11,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-hi.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-hy.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-jp.svg": 10,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-ko.svg": 10,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-ru.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-th.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-uk.svg": 13,
+        "plugins/pantoken/logos/assets/logos/pantoken/logo-light-zh.svg": 8,
+        "tools/i18n-engine/src/cli.ts": 17,
+        "tools/i18n-engine/src/index.ts": 1,
+        "tools/i18n-engine/tests/cli.test.ts": 15,
+        "vite.config.ts": 1
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 2554,
+        "tools/i18n-engine/src/cli.ts": 4,
+        "vite.config.ts": 1
+      }
+    }
+  ]
+}
