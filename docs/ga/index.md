@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, i ngach áit
   tagline: Múnla aon-thóicín réitithe, athmhúnlaithe i stíleanna-scríofa, bannaí fráma, cód dúchasach agus pacáistí uirlisí dearaidh.
   actions:

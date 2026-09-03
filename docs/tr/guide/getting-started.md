@@ -103,7 +103,7 @@ CLI, hedef depoya token kaynağını yazar. Koşucu dışında bir kurulum gerek
 npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
-Her hedef için [pantoken CLI](/guide/cli)'ına bakın.
+Her hedef için pantoken CLI'ına bakın: [pantoken CLI](/guide/cli).
 
 ## VS Code yazarlık ipuçları
 

@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: pantoken
+  name: Pantoken
   text: InstUI, toupatou
   tagline: Yon sèl modèl tòken rezoud, refòme an fichye stil, lyen pou kad (framework), kòd natif, ak chaj pou zouti konsepsyon.
   actions:
