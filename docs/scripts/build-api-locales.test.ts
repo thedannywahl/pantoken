@@ -172,3 +172,28 @@ test("build surfaces a generation failure as a non-zero exit code", async () => 
   await vi.waitFor(() => expect(process.exitCode).toBe(1), { timeout: 15000 });
   expect(errSpy).toHaveBeenCalled();
 });
+
+test("keeps API identifiers and code-shaped prose verbatim", async () => {
+  const { isRequiredVerbatimApiUnit } = await import("./build-api-locales.ts");
+
+  for (const source of [
+    "AggregateOptions",
+    "buildThemeCss",
+    "canvas-theme-editor",
+    "**panda.config.ts**",
+    "- https://www.figma.com/design/EmUrCpRWx",
+    "cursor: auto.",
+    '@import "@pantoken/plugin-custom-components";',
+    "readonly `string`[]",
+  ]) {
+    expect(isRequiredVerbatimApiUnit(source), source).toBe(true);
+  }
+
+  for (const source of [
+    "Overview",
+    "Functions",
+    "Build the preview block appended after each example.",
+  ]) {
+    expect(isRequiredVerbatimApiUnit(source), source).toBe(false);
+  }
+});

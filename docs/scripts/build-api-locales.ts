@@ -46,12 +46,40 @@ import {
   keyFor,
   translateUnits,
 } from "./translation-memory.ts";
+import { GLOSSARY_TERMS } from "./glossary.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
 const enApiDir = join(docsRoot, "api");
 const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 const requestedLocale = process.env.DOCS_TRANSLATION_LOCALE;
 const locales = requestedLocale ? [requestedLocale] : NON_ROOT_LOCALES;
+const GLOSSARY_TEXT = new Set(GLOSSARY_TERMS.map(({ term }) => term));
+
+/**
+ * API identifiers, literal URLs, declarations, and other code-shaped fragments must remain English.
+ * Mark them as required verbatim so the translation memory records the deliberate passthrough instead
+ * of asking the model to translate them on every build.
+ */
+export const isRequiredVerbatimApiUnit = (source: string): boolean => {
+  const text = source.trim();
+  const withoutListMarker = text.replace(/^(?:-|\*)\s+/u, "");
+  const unwrapped = withoutListMarker.replace(/^\*\*(.+)\*\*$/u, "$1");
+  if (/^(?:https?:\/\/|www\.)\S+$/iu.test(unwrapped)) return true;
+  if (/^\*\*Source:\*\*\s+\[[^\]]+\]\(https?:\/\//u.test(text)) return true;
+  if (/^@(?:import|supports|media|scope)\b/u.test(unwrapped)) return true;
+  if (/^(?:--[a-z][\w-]*|[a-z-]+):\s*[^\n]+\.?$/iu.test(unwrapped)) return true;
+  if (/^readonly\s+`[^`]+`(?:\[\])?$/u.test(unwrapped)) return true;
+
+  return (
+    !GLOSSARY_TEXT.has(unwrapped) &&
+    /^[A-Za-z_$][\w$]*(?:[.-][A-Za-z0-9_$-]+)*(?:\(\))?\??$/u.test(unwrapped)
+  );
+};
+
+const requiredVerbatimSources = (units: readonly TranslationUnit[]): ReadonlySet<string> =>
+  new Set(
+    units.filter(({ source }) => isRequiredVerbatimApiUnit(source)).map(({ source }) => source),
+  );
 
 const run = (command: string, args: string[]): void => {
   const result = spawnSync(command, args, {
@@ -224,6 +252,7 @@ const translateMarkdownFiles = async (
       autosave: true,
       locale,
       defaultVerbatim: { allow: ["en*"] },
+      requiredVerbatimSources: requiredVerbatimSources(proseUnits),
     });
 
     const fileProseTranslated = memory.misses - beforeMisses;
@@ -298,7 +327,13 @@ const translateSidebars = async (
       adapter,
       memory,
       fileLabels.map((source) => ({ kind: "text", source })),
-      { locale, defaultVerbatim: { allow: ["en*"] } },
+      {
+        locale,
+        defaultVerbatim: { allow: ["en*"] },
+        requiredVerbatimSources: requiredVerbatimSources(
+          fileLabels.map((source) => ({ kind: "text", source })),
+        ),
+      },
     );
     const translateLabel = (text: string): string =>
       labelTranslations.get(keyFor("text", text)) ?? text;

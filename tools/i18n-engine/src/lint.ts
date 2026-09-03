@@ -5,6 +5,8 @@ import { checkPoFile } from "./gettext.ts";
 import { parsePo } from "./po.ts";
 import { parseConfig, type I18nConfig } from "./config.ts";
 
+const GETTEXT_CHECK_CONCURRENCY = 8;
+
 /** Counts recorded after a successful localization contract validation. */
 export interface LintResult {
   checkedSpaces: number;
@@ -52,6 +54,28 @@ function validateUniqueEntries(path: string, errors: string[]): void {
   }
 }
 
+async function checkPoFiles(paths: readonly string[]): Promise<string[]> {
+  const errors: (string | undefined)[] = [];
+  let nextPathIndex = 0;
+
+  async function worker(): Promise<void> {
+    while (nextPathIndex < paths.length) {
+      const pathIndex = nextPathIndex;
+      nextPathIndex += 1;
+      const poPath = paths[pathIndex];
+      try {
+        await checkPoFile(poPath);
+      } catch (error) {
+        errors[pathIndex] = `${poPath}: ${error instanceof Error ? error.message : String(error)}`;
+      }
+    }
+  }
+
+  const workerCount = Math.min(GETTEXT_CHECK_CONCURRENCY, paths.length);
+  await Promise.all(Array.from({ length: workerCount }, () => worker()));
+  return errors.filter((error): error is string => error !== undefined);
+}
+
 /** Validate the configured localization sources and catalogs. */
 export async function runLint(configPath = "i18n.config.json"): Promise<LintResult> {
   const configDir = dirname(configPath);
@@ -95,6 +119,7 @@ export async function runLint(configPath = "i18n.config.json"): Promise<LintResu
         .map((entry) => entry.name)
     : [];
   let checkedCatalogs = 0;
+  const poPathsToCheck: string[] = [];
   for (const spaceId of requiredSpaces) {
     const potPath = join(configDir, resolvePattern(config.catalogs.template, spaceId));
     if (!existsSync(potPath)) errors.push(`${spaceId}: missing POT template: ${potPath}`);
@@ -107,15 +132,12 @@ export async function runLint(configPath = "i18n.config.json"): Promise<LintResu
       if (!existsSync(poPath)) errors.push(`${spaceId}: missing PO catalog: ${poPath}`);
       else {
         validateUniqueEntries(poPath, errors);
-        try {
-          await checkPoFile(poPath);
-        } catch (error) {
-          errors.push(`${poPath}: ${error instanceof Error ? error.message : String(error)}`);
-        }
+        poPathsToCheck.push(poPath);
         checkedCatalogs++;
       }
     }
   }
+  errors.push(...(await checkPoFiles(poPathsToCheck)));
   if (errors.length > 0)
     throw new Error(`i18n lint failed:\n${errors.map((error) => `- ${error}`).join("\n")}`);
   return { checkedSpaces: requiredSpaces.length, checkedLocales: locales.length, checkedCatalogs };
