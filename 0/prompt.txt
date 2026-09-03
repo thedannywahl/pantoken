@@ -1,0 +1,25 @@
+it started translating other locales:
+```
+DOCS_TRANSLATION_LOCALE=hu vpr @pantoken/docs#docs:api:locales:copilot
+~/docs$ DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts
+📋 Building locale-specific API docs
+
+🔨 Generating EN API docs
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+  ✓ TypeDoc output
+✓ API badges: styled 707 markdown file(s)
+  ✓ API badge styling
+✓ API overview: wrote docs/api/index.md
+  ✓ Overview cards
+🔨 Generating CSS API docs
+✓ CSS API: wrote 102 record page(s) to api/css/ + merged the CSS section into the TypeDoc sidebar
+  ✓ CSS API reference
+
+🔄 ar: translating...
+  … 6/6 labels + prose blocks translated
+    ar/api/ai/pantoken-ai/src/functions/installAgentAssets.md: 7 glossary, 6 prose (0 cached, 6 translated)
+    ar/api/ai/pantoken-ai/src/functions/isScaffoldPlatform.md: 5 glossary, 1 prose (0 cached, 1 translated)
+```
