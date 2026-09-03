@@ -12,7 +12,7 @@ You install the smallest package that fits your task. Everything is also re-expo
 The fastest way to try pantoken: scaffold a starter project with it already installed and wired in.
 
 ```sh
-npx create-pantoken-app react
+npx create-pantoken-app
 ```
 
 Platforms: `components` (plain HTML/CSS), `react`, `vue`, `svelte`, `web-components`, `angular`. See
@@ -25,10 +25,7 @@ Using an AI coding agent? No install needed — point it at the skill directly:
 Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
-Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
-Developer CLI — swap `claude` for `gemini`, `agent`, `codex`, `copilot -p`, or `q chat`. If you'd
-rather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy
-of this skill), run `npx @pantoken/ai init` instead.
+If you'drather wire pantoken's agent rules into the repo permanently (AGENTS.md, editor rules, a local copy of this skill), run `npx @pantoken/ai init` instead.
 
 ## The token model
 
@@ -115,7 +112,7 @@ for only the icons you need.
 The CLI writes token source into a target repo. No install beyond the runner:
 
 ```sh
-npx pantoken generate swift --out ./ios/Tokens --icons arrow-left,check-mark
+npx @pantoken/cli generate swift --out ./ios/Tokens --icons arrow-left,check-mark
 ```
 
 See [the pantoken CLI](/guide/cli) for every target.
