@@ -17,7 +17,7 @@ packages:
 catalogMode: prefer
 
 catalog:
-  "@types/node": ^26.4.0
+  "@types/node": ^26.4.1
   typescript: ^7.0.2
   arkregex: ^0.0.8
   vite: npm:@voidzero-dev/vite-plus-core@0.3.0
@@ -46,10 +46,10 @@ catalog:
   react: ^19.2.8
   react-dom: ^19.2.8
   "@types/react": ^19.2.18
-  "@types/react-dom": ^19.2.5
+  "@types/react-dom": ^19.2.7
   react-markdown: ^10.1.0
   remark-gfm: ^4.0.1
-  postcss: ^8.5.26
+  postcss: ^8.5.27
   # Icon font chain
   points-on-path: ^0.2.1
   clipper-lib: ^6.4.2
@@ -78,8 +78,8 @@ catalog:
   "@vitest/coverage-v8": 4.1.11
   markdownlint-cli2: ^0.23.2
   "@manypkg/cli": ^0.25.1
-  fallow: ^3.21.0
-  happy-dom: ^20.12.0
+  fallow: ^3.22.0
+  happy-dom: ^20.13.2
   snyk: ^1.1307.0
   publint: ^0.3.24
   "@arethetypeswrong/cli": ^0.18.5
@@ -142,7 +142,7 @@ catalog:
   "@codemirror/lint": ^6.9.7
   "@codemirror/autocomplete": ^6.20.3
   "@codemirror/state": ^6.7.2
-  "@codemirror/view": ^6.43.10
+  "@codemirror/view": ^6.43.11
 overrides:
   vite@*: "catalog:"
   # next 16.2.10 (auto-installed as @pantoken/next's optional peer) has 3 High CVEs; 16.2.11 patches
