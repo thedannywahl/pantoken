@@ -1,0 +1,244 @@
+[Terminal d0223232-2f07-4b32-8839-30a931869bbf notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡  ?1 ~40 via  26.8.1 
+➜  node --input-type=module -e 'import {readFileSync,readdirSync} from "node:fs"; import {parsePo} from "./tools/i18n-engine/dist/index.mjs"; let total=0; const left=[]; for(const d of readdirSync("l10n",{withFileTypes:true}).filter(e=>e.isDirectory()&&e.name!=="en")){const n=parsePo(readFileSync(`l10n/${d.name}/docs.demos.po`,`utf8`)).filter(e=>!e.obsolete&&!e.msgstr).length; total+=n;if(n)left.push(`${d.name}:${n}`)} console.log(`active_gaps=${total}`); console.log(left.join(" "));'
+active_gaps=0
+
+pantoken on i18n2 ≡  ?1 ~40 via  26.8.1 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix docs/scripts/translate-demo-po.ts docs/package.json && git diff --check && git status --short --branch | tail -30
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (2.1s)
+pass: Found no warnings, lint errors, or type errors in 1 file (1.8s, 10 threads)
+ M l10n/fr/docs.demos.po
+ M l10n/ga/docs.demos.po
+ M l10n/he/docs.demos.po
+ M l10n/hi/docs.demos.po
+ M l10n/ht/docs.demos.po
+ M l10n/hy/docs.demos.po
+ M l10n/id/docs.demos.po
+ M l10n/is/docs.demos.po
+ M l10n/it/docs.demos.po
+ M l10n/ja/docs.demos.po
+ M l10n/ko/docs.demos.po
+ M l10n/mi/docs.demos.po
+ M l10n/ms/docs.demos.po
+ M l10n/nb/docs.demos.po
+ M l10n/nl/docs.demos.po
+ M l10n/nn/docs.demos.po
+ M l10n/pl/docs.demos.po
+ M l10n/pt-BR/docs.demos.po
+ M l10n/pt/docs.demos.po
+ M l10n/ru/docs.demos.po
+ M l10n/se/docs.demos.po
+ M l10n/sl/docs.demos.po
+ M l10n/sv/docs.demos.po
+ M l10n/th/docs.demos.po
+ M l10n/tr/docs.demos.po
+ M l10n/uk/docs.demos.po
+ M l10n/vi/docs.demos.po
+ M l10n/zh-Hans/docs.demos.po
+ M l10n/zh-Hant/docs.demos.po
+?? docs/scripts/translate-demo-po.ts
+pantoken on i18n2 ≡  ?1 ~40 via  26.8.1 
+➜  git diff --stat -- l10n docs/package.json docs/scripts/translate-demo-po.ts && git check-ignore -q .i18n/coverage.json && echo 'coverage report remains ignored'
+ docs/package.json          |  8 ++++----
+ l10n/ar/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ca/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/cy/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/da/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/de/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/el/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/es/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/fa/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/fi/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/fr-CA/docs.demos.po   | 34 +++++++++++++++++-----------------
+ l10n/fr/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ga/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/he/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/hi/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ht/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/hy/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/id/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/is/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/it/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ja/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ko/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/mi/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ms/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/nb/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/nl/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/nn/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/pl/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/pt-BR/docs.demos.po   | 34 +++++++++++++++++-----------------
+ l10n/pt/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/ru/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/se/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/sl/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/sv/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/th/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/tr/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/uk/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/vi/docs.demos.po      | 34 +++++++++++++++++-----------------
+ l10n/zh-Hans/docs.demos.po | 34 +++++++++++++++++-----------------
+ l10n/zh-Hant/docs.demos.po | 34 +++++++++++++++++-----------------
+ 40 files changed, 667 insertions(+), 667 deletions(-)
+coverage report remains ignored
+pantoken on i18n2 ≡  ?1 ~40 via  26.8.1 
+➜  printf 'changed demo PO files: '; git status --short | rg '^ M l10n/.+/docs\.demos\.po$' | wc -l; git diff --check; git add docs/package.json docs/scripts/translate-demo-po.ts l10n/*/docs.demos.po .changeset/docs-demos-all-locales.md && git commit -m "feat(docs): complete demo translations" && git push origin i18n2 && git status --short --branch
+changed demo PO files:       39
+✔ Backed up original state in git stash (8578c4e70)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+[i18n2 62c22bd29] feat(docs): complete demo translations
+ 42 files changed, 695 insertions(+), 667 deletions(-)
+ create mode 100644 .changeset/docs-demos-all-locales.md
+ create mode 100644 docs/scripts/translate-demo-po.ts
+[entire] Pushing 2 checkpoint ref(s) to origin..... done
+Enumerating objects: 136, done.
+Counting objects: 100% (136/136), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (87/87), done.
+Writing objects: 100% (87/87), 61.49 KiB | 8.78 MiB/s, done.
+Total 87 (delta 82), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (82/82), completed with 48 local objects.
+To https://github.com/thedannywahl/pantoken.git
+   efe0aef08..62c22bd29  i18n2 -> i18n2
+## i18n2...origin/i18n2
+pantoken on i18n2 ≡ via  26.8.1 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp run i18n:coverage >/tmp/i18n-coverage.log 2>&1 && tail -8 /tmp/i18n-coverage.log && node --input-type=module -e 'import {readFileSync} from "node:fs"; const r=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); const sums=new Map(); for(const row of r.rows){let x=sums.get(row.space)??{total:0,translated:0,untranslated:0};x.total+=row.total;x.translated+=row.translated;x.untranslated+=row.untranslated;sums.set(row.space,x)} for(const [space,x] of sums) console.log(`${space}: ${x.untranslated} untranslated / ${x.total} total (${(x.translated/x.total*100).toFixed(1)}%)`);'
+ℹ 6 files, total: 85.39 kB
+✔ Build complete in 149ms
+
+$ node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json stats ⊘ cache disabled
+Wrote 344 coverage rows to .i18n/coverage.json.
+
+---
+vp run: 1/2 cache hit (50%), 755ms saved. (Run `vp run --last-details` for full details)
+ui.strings: 0 untranslated / 301 total (100.0%)
+cli.scaffold: 0 untranslated / 2236 total (100.0%)
+cli.ai: 0 untranslated / 301 total (100.0%)
+docs.home: 0 untranslated / 602 total (100.0%)
+docs.chrome: 0 untranslated / 3311 total (100.0%)
+docs.demos: 0 untranslated / 24467 total (100.0%)
+docs.guides: 0 untranslated / 387 total (100.0%)
+docs.api: 47200 untranslated / 179353 total (75.1%)
+pantoken on i18n2 ≡ via  26.8.1 
+➜  node --input-type=module -e 'import {readFileSync} from "node:fs"; const r=JSON.parse(readFileSync(".i18n/coverage.json","utf8")); for(const row of r.rows.filter(x=>x.space==="docs.api").sort((a,b)=>b.untranslated-a.untranslated)) console.log(`${row.locale} ${row.tier} ${row.policy} ${row.untranslated}/${row.total} untranslated (${row.percent}%)`);' | sed -n '1,50p'
+ar secondary warn 3124/4171 untranslated (25.1%)
+hy secondary warn 2135/4171 untranslated (48.81%)
+cy secondary warn 1224/4171 untranslated (70.65%)
+de secondary warn 1224/4171 untranslated (70.65%)
+el secondary warn 1224/4171 untranslated (70.65%)
+es secondary warn 1224/4171 untranslated (70.65%)
+fa secondary warn 1224/4171 untranslated (70.65%)
+fi secondary warn 1224/4171 untranslated (70.65%)
+ga secondary warn 1224/4171 untranslated (70.65%)
+he secondary warn 1224/4171 untranslated (70.65%)
+hi secondary warn 1224/4171 untranslated (70.65%)
+ht secondary warn 1224/4171 untranslated (70.65%)
+id secondary warn 1224/4171 untranslated (70.65%)
+is secondary warn 1224/4171 untranslated (70.65%)
+it secondary warn 1224/4171 untranslated (70.65%)
+ja secondary warn 1224/4171 untranslated (70.65%)
+ko secondary warn 1224/4171 untranslated (70.65%)
+mi secondary warn 1224/4171 untranslated (70.65%)
+ms secondary warn 1224/4171 untranslated (70.65%)
+nb secondary warn 1224/4171 untranslated (70.65%)
+nl secondary warn 1224/4171 untranslated (70.65%)
+nn secondary warn 1224/4171 untranslated (70.65%)
+pl secondary warn 1224/4171 untranslated (70.65%)
+pt secondary warn 1224/4171 untranslated (70.65%)
+pt-BR secondary warn 1224/4171 untranslated (70.65%)
+ru secondary warn 1224/4171 untranslated (70.65%)
+se secondary warn 1224/4171 untranslated (70.65%)
+sl secondary warn 1224/4171 untranslated (70.65%)
+sv secondary warn 1224/4171 untranslated (70.65%)
+th secondary warn 1224/4171 untranslated (70.65%)
+tr secondary warn 1224/4171 untranslated (70.65%)
+uk secondary warn 1224/4171 untranslated (70.65%)
+vi secondary warn 1224/4171 untranslated (70.65%)
+zh-Hans secondary warn 1224/4171 untranslated (70.65%)
+zh-Hant secondary warn 1224/4171 untranslated (70.65%)
+ca secondary warn 495/4171 untranslated (88.13%)
+da secondary warn 495/4171 untranslated (88.13%)
+hu primary warn 495/4171 untranslated (88.13%)
+fr secondary warn 32/4171 untranslated (99.23%)
+fr-CA secondary warn 32/4171 untranslated (99.23%)
+en-AU primary warn 0/4171 untranslated (120.67%)
+en-CA primary warn 0/4171 untranslated (120.67%)
+en-GB primary warn 0/4171 untranslated (120.67%)
+pantoken on i18n2 ≡ via  26.8.1 
+➜  git status --short --branch && node --input-type=module -e 'import {readFileSync} from "node:fs"; import {parsePo} from "./tools/i18n-engine/dist/index.mjs"; const p=parsePo(readFileSync("l10n/hu/docs.api.po","utf8")); const missing=p.filter(e=>!e.obsolete&&!e.msgstr); const counts={}; for(const e of missing){const k=e.msgctxt??"none";counts[k]=(counts[k]??0)+1} console.log(`missing=${missing.length}`); console.log(Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,20).map(([k,n])=>`${k}:${n}`).join("\n"));'
+## i18n2...origin/i18n2
+missing=1357
+docs.api:prose:1128
+docs.api:text:229
+pantoken on i18n2 ≡ via  26.8.1 
+➜  rg -n 'docs\.api|build-api-locales|translate.*api|AiTranslationAdapter' docs/package.json docs/scripts tools/i18n-engine --glob '!**/dist/**' | sed -n '1,180p'
+docs/package.json:9:    "docs:api": "node scripts/build-api-locales.ts",
+docs/package.json:12:    "docs:api:locales": "node scripts/build-api-locales.ts",
+docs/package.json:13:    "docs:api:locales:claude": "DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_CONCURRENCY=8 DOCS_TRANSLATION_COMMAND_ARGS=\"--model claude-haiku-4-5-20251001 --effort low --strict-mcp-config --setting-sources user\" node scripts/build-api-locales.ts",
+docs/package.json:14:    "docs:api:locales:agy": "DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/agy-wrapper.sh\" DOCS_TRANSLATION_COMMAND_ARGS=\"--model gemini-3.6-flash-low\" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts",
+docs/package.json:15:    "docs:api:locales:copilot": "DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND=\"$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh\" DOCS_TRANSLATION_COMMAND_ARGS=\"--model gpt-5-mini --effort low\" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts",
+docs/package.json:29:    "docs:locales:translate": "vp run docs:guides:locales:claude && vp run docs:home:locales && vp run docs:chrome:locales:claude && vp run docs:demos:locales:claude && vp run docs:api:locales:claude",
+docs/package.json:30:    "docs:locales:translate:agy": "vp run docs:guides:locales:agy && vp run docs:home:locales && vp run docs:chrome:locales:agy && vp run docs:demos:locales:agy && vp run docs:api:locales:agy",
+docs/package.json:31:    "docs:locales:translate:copilot": "vp run docs:guides:locales:copilot && vp run docs:home:locales && vp run docs:chrome:locales:copilot && vp run docs:demos:locales:copilot && vp run docs:api:locales:copilot",
+docs/package.json:32:    "docs:locales:translate:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:claude && vp run docs:home:locales && vp run docs:chrome:locales:claude && vp run docs:demos:locales:claude && vp run docs:api:locales:claude",
+docs/package.json:33:    "docs:locales:translate:agy:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:agy && vp run docs:home:locales && vp run docs:chrome:locales:agy && vp run docs:demos:locales:agy && vp run docs:api:locales:agy",
+docs/package.json:34:    "docs:locales:translate:copilot:force": "export DOCS_TRANSLATION_FORCE=1; vp run docs:guides:locales:copilot && vp run docs:home:locales && vp run docs:chrome:locales:copilot && vp run docs:demos:locales:copilot && vp run docs:api:locales:copilot",
+docs/scripts/translation-memory.ts:77:      const poPath = join(import.meta.dirname, "..", "..", "l10n", locale, "docs.api.po");
+docs/scripts/translation-memory.ts:92:      const translation = this._poByKey.get(`docs.api:${kind}\0${source}`)?.msgstr;
+docs/scripts/translation-memory.ts:101:      const key = `docs.api:${kind}\0${source}`;
+docs/scripts/translation-memory.ts:108:          msgctxt: `docs.api:${kind}`,
+docs/scripts/translation-memory.ts:150:   * `build-api-locales.ts` — honors it without a code change.
+docs/scripts/translate-chrome-po.ts:4:import { AiTranslationAdapter } from "./api-translation.ts";
+docs/scripts/translate-chrome-po.ts:24:  const adapter = new AiTranslationAdapter(entry.name);
+docs/scripts/check-locale-drift.ts:20: * (`docs.guides`, `docs.api`, `docs.home`, `docs.chrome`, `docs.demos`) and per
+docs/scripts/check-locale-drift.ts:104:  const poPath = join(l10nDir, locale, "docs.api.po");
+docs/scripts/check-locale-drift.ts:114:        if (!translated.has(`docs.api:${unit.kind}\0${unit.text}`)) {
+docs/scripts/check-locale-drift.ts:278:  if (apiGenerated) record("docs.api", locale, apiDrift(locale));
+docs/scripts/api-translation.ts:13:// leading English name, not the native parenthetical), used to phrase the `AiTranslationAdapter`
+docs/scripts/api-translation.ts:88: * looked up from the `<locale>/docs.api.po` catalog (see `glossary.ts` for the term list). It can't translate prose, so
+docs/scripts/api-translation.ts:298:export class AiTranslationAdapter implements TranslationAdapter {
+docs/scripts/api-translation.ts:460:    return new AiTranslationAdapter(locale);
+docs/scripts/style-api-badges.test.ts:3:// style-api-badges runs build() on import, so (like build-api-locales.test) we drive it entirely
+docs/scripts/build-api-locales.test.ts:3:// build-api-locales runs build() on import, so we drive it entirely through mocked fs + child_process
+docs/scripts/build-api-locales.test.ts:74:      'msgctxt "docs.api:text"',
+docs/scripts/build-api-locales.test.ts:96:    if (path.endsWith("docs.api.po")) return GLOSSARY_PO;
+docs/scripts/build-api-locales.test.ts:118:  await import("./build-api-locales.ts");
+docs/scripts/build-api-locales.test.ts:141:  // The sidebar labels are translated and its absolute /api links point into the HU tree.
+docs/scripts/build-api-locales.test.ts:161:}, 20000); // dynamic import of build-api-locales.ts can exceed the default 5s under full-suite load
+docs/scripts/build-api-locales.test.ts:165:  await import("./build-api-locales.ts");
+docs/scripts/api-translation.test.ts:8:const { GlossaryTranslationAdapter, AiTranslationAdapter, createTranslationAdapter } =
+docs/scripts/api-translation.test.ts:137:// --- AiTranslationAdapter.translateBatch → runBatch → extractJsonObject / chunkByBudget ---
+docs/scripts/api-translation.test.ts:141:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:151:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:167:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:184:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:192:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:206:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:219:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:229:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:244:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:258:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:268:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:282:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:301:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:309:  const adapter = new AiTranslationAdapter();
+docs/scripts/api-translation.test.ts:317:  const adapter = new AiTranslationAdapter();
+docs/scripts/check-locale-drift.test.ts:83:    "docs.api": { source: "block", rest: "block" },
+docs/scripts/check-locale-drift.test.ts:302:    expect(out).toContain("[docs.api]");
+docs/scripts/check-locale-drift.test.ts:318:    expect(warned).toContain("[docs.api]");
+docs/scripts/translate-demo-po.ts:4:import { AiTranslationAdapter } from "./api-translation.ts";
+docs/scripts/translate-demo-po.ts:16:  const adapter = new AiTranslationAdapter(entry.name);
+pantoken on i18n2 ≡ via  26.8.1 
+➜  /Users/dwahl/.local/share/vite-plus/0.3.0/bin/vp check --fix docs/scripts/translate-api-po.ts && git diff --check
+VITE+ - The Unified Toolchain for the Web
+
+pass: Formatting completed for checked files (1.8s)
+pass: Found no warnings, lint errors, or type errors in 1 file (1.5s, 10 threads)
+pantoken on i18n2 ≡  ?1 via  26.8.1 
+➜  export DOCS_TRANSLATION_COMMAND=/Users/dwahl/Scripts/pantoken/tools/translation-adapters/copilot-wrapper.sh DOCS_TRANSLATION_COMMAND_ARGS='--model gpt-5-mini --effort low' DOCS_TRANSLATION_BATCH_BUDGET=12000 DOCS_TRANSLATION_CONCURRENCY=8; cd /Users/dwahl/Scripts/pantoken && node docs/scripts/translate-api-po.ts
+hu: filled 1357; remaining 0

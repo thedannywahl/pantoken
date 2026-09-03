@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1KHBAE16JGZK3Z2AFG4M7NR",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 1,
+  "checkpoints_count": 2,
   "files_touched": [
     ".changeset/docs-api-hu.md",
     "l10n/hu/docs.api.po"
@@ -15,6 +15,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": ""
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
