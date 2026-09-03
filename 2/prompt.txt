@@ -1,0 +1,40 @@
+I need a regex to match any digit in this string:
+```
+courses/163/content_migrations
+```
+
+---
+
+is this the best way to do url detection in an iife to match this dynamic path in 2026 with modern esnext?
+
+---
+
+is this a good one-liner?
+
+---
+
+should we use a named capturegroup?
+
+---
+
+what's the right way to chain this function?
+
+---
+
+there's only 1 <input> on this page and it has a click handler that inserts a span at the bottom of the page (it pretends to be a select), I need an onClick or an event handler or a mutation observer that removes all these list items except value empty, canvas_cartridge_importer and course_copy_importer
+
+---
+
+can't we use modern css `li:has(span[value]:not([value="none"]))` etc?
+
+---
+
+no, I meant for the querySelectorAll.
+
+---
+
+do not rewrite this structurally. this code is always loaded in canvas last and is fired as an iife document.body will always be present.
+
+---
+
+why does o(); fire ro() before registering the mutation observer?
