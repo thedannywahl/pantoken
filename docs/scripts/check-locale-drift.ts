@@ -25,10 +25,11 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { DriftReporter } from "@pantoken/translation-adapters";
+import { extractFrontmatterUnits } from "@pantoken/i18n-engine";
+import { parsePo } from "@pantoken/i18n-engine";
 import { ENGLISH_UI_STRINGS, NON_ROOT_LOCALES, flattenStrings } from "../.vitepress/i18n.ts";
 import { GLOSSARY_TERMS } from "./glossary.ts";
 import { listDemoNames, loadDemoI18n } from "./demo-i18n.ts";
-import { collectHomeUnits } from "./home-i18n.ts";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 import { keyFor } from "./translation-memory.ts";
 
@@ -38,6 +39,7 @@ const guideDir = join(docsRoot, "guide");
 const demoDir = join(docsRoot, "demos");
 const apiDir = join(docsRoot, "api");
 const homeIndex = join(docsRoot, "index.md");
+const l10nDir = join(docsRoot, "..", "l10n");
 
 const targets = NON_ROOT_LOCALES;
 
@@ -118,7 +120,9 @@ const chromeDrift = (locale: string): Missing[] => {
   return missing;
 };
 
-const homeUnits = existsSync(homeIndex) ? collectHomeUnits(readFileSync(homeIndex, "utf8")) : [];
+const homeUnits = existsSync(homeIndex)
+  ? extractFrontmatterUnits(readFileSync(homeIndex, "utf8"), "index.md")
+  : [];
 
 /**
  * Home drift: every translatable `docs/index.md` frontmatter value (hero text/tagline, action labels,
@@ -127,11 +131,22 @@ const homeUnits = existsSync(homeIndex) ? collectHomeUnits(readFileSync(homeInde
  */
 const homeDrift = (locale: string): Missing[] => {
   if (homeUnits.length === 0) return [];
+  const poPath = join(l10nDir, locale, "docs.home.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgid),
+    );
+    return homeUnits
+      .filter((unit) => !translated.has(unit.msgid))
+      .map((unit) => ({ file: unit.reference, kind: "text", sample: preview(unit.msgid) }));
+  }
   const cached = loadCacheKeys(locale, "home");
   const missing: Missing[] = [];
-  for (const text of homeUnits) {
-    if (!cached.has(keyFor("text", text))) {
-      missing.push({ file: "index.md", kind: "text", sample: preview(text) });
+  for (const unit of homeUnits) {
+    if (!cached.has(keyFor("text", unit.msgid))) {
+      missing.push({ file: "index.md", kind: "text", sample: preview(unit.msgid) });
     }
   }
   return missing;

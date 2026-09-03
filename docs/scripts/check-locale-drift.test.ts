@@ -121,6 +121,7 @@ const fixtures: Fixtures = {
 
 /** Resolve whether a mocked path should be treated as existing. */
 function fixtureExists(pathName: string): boolean {
+  if (pathName.endsWith(".home.po")) return false;
   const cacheStates = [
     [".guides.json", fixtures.guidesCache],
     [".api.json", fixtures.apiCache],

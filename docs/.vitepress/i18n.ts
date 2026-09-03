@@ -1,11 +1,11 @@
-import { LOCALES } from "@pantoken/i18n";
+import { LOCALES } from "@pantoken/web-components";
 import { CDN_PICKER_DEFAULTS, type CdnPickerStrings } from "./theme/cdn.ts";
 import type { GetStartedTabsStrings } from "./theme/get-started.ts";
 import { TranslationMemory } from "../scripts/translation-memory.ts";
 
 /**
  * Every locale the docs site builds: `root` (English) plus every non-`en` locale from
- * `@pantoken/i18n`'s `LOCALES` (44 BCP47 tags — `en` is dropped since `root` already covers
+ * `@pantoken/web-components`'s `LOCALES` (44 BCP47 tags — `en` is dropped since `root` already covers
  * US English). English regional variants (`en-AU`, `en-CA`, `en-GB`) get their own route prefix AND
  * their own translated UI strings — British/Australian/Canadian spelling and phrasing differ from US
  * English (colour/centre, -ise vs. -ize, etc.), so they go through the same translation pipeline as
