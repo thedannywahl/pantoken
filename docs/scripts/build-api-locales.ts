@@ -50,6 +50,8 @@ import {
 const docsRoot = join(import.meta.dirname, "..");
 const enApiDir = join(docsRoot, "api");
 const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
+const requestedLocale = process.env.DOCS_TRANSLATION_LOCALE;
+const locales = requestedLocale ? [requestedLocale] : NON_ROOT_LOCALES;
 
 const run = (command: string, args: string[]): void => {
   const result = spawnSync(command, args, {
@@ -381,17 +383,17 @@ const build = async (): Promise<void> => {
   console.log(`📋 Building locale-specific API docs\n`);
 
   rmSync(enApiDir, { recursive: true, force: true });
-  for (const locale of NON_ROOT_LOCALES) {
+  for (const locale of locales) {
     rmSync(apiDirFor(locale), { recursive: true, force: true });
   }
 
   generateBaseApiDocs();
 
-  for (const locale of NON_ROOT_LOCALES) {
+  for (const locale of locales) {
     await buildLocale(locale);
   }
 
-  console.log(`✨ All API locales complete!`);
+  console.log(`✨ API locale build complete for ${locales.join(", ")}`);
 };
 
 build().catch((error: unknown) => {
