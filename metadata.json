@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1M0MWZHSM6832M5Q7SCFSV2",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 6,
+  "checkpoints_count": 8,
   "files_touched": [
     ".changeset/docs-og-locale-metadata.md",
     ".changeset/i18n-coverage-html-instui-progress.md",
@@ -46,6 +46,13 @@
       "compact_transcript": "/3/transcript.jsonl",
       "content_hash": "/3/content_hash.txt",
       "prompt": "/3/prompt.txt"
+    },
+    {
+      "metadata": "/4/metadata.json",
+      "transcript": "/4/full.jsonl",
+      "compact_transcript": "/4/transcript.jsonl",
+      "content_hash": "/4/content_hash.txt",
+      "prompt": "/4/prompt.txt"
     }
   ],
   "token_usage": {

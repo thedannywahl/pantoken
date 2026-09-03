@@ -1,0 +1,13 @@
+all of the html metadata, including the text of this og image should be translated on a per-locale basis, the good news is the strings are already available in the homepage namespace.  also the the other descriptions aren't currently translated either:
+```
+<script type="`application/ld+json`">{"@context":"https://schema.org","@type":"WebSite","name":"pantoken","url":"https://pantoken.iywahl.com/","description":"Instructure design tokens and icons, reshaped for every platform and framework.","image":"https://pantoken.iywahl.com/og.png","author":{"@type":"Person","name":"Danny Wahl","url":"https://iywahl.com"}}</script>
+```
+this is from the /hu path.
+
+---
+
+Continue: "Continue to iterate?"
+
+---
+
+how do I make this svg have a white background?
