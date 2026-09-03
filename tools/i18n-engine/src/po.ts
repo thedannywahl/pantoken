@@ -196,7 +196,19 @@ function serializeEntry(entry: PoEntry): string {
 
 /** The PO header block every catalog opens with (empty `msgid`, metadata `msgstr`). */
 function header(): string {
-  return ['msgid ""', 'msgstr ""', '"Content-Type: text/plain; charset=UTF-8\\n"'].join("\n");
+  const revisionDate = new Date().toISOString().replace("T", " ").slice(0, 16) + "+0000";
+  return [
+    'msgid ""',
+    'msgstr ""',
+    '"Project-Id-Version: pantoken\\n"',
+    `"PO-Revision-Date: ${revisionDate}\\n"`,
+    '"Last-Translator: pantoken localization engine\\n"',
+    '"Language-Team: pantoken\\n"',
+    '"MIME-Version: 1.0\\n"',
+    '"Content-Type: text/plain; charset=UTF-8\\n"',
+    '"Content-Transfer-Encoding: 8bit\\n"',
+    '"Language: und\\n"',
+  ].join("\n");
 }
 
 /**

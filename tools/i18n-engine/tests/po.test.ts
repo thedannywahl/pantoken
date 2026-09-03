@@ -49,7 +49,11 @@ describe("serializePot", () => {
   test("includes the header entry", () => {
     const pot = serializePot([]);
     expect(pot).toContain('msgid ""');
-    expect(pot).toContain("Content-Type");
+    expect(pot).toContain('"Project-Id-Version: pantoken\\n"');
+    expect(pot).toMatch(/"PO-Revision-Date: \d{4}-\d{2}-\d{2} \d{2}:\d{2}\+0000\\n"/u);
+    expect(pot).toContain('"MIME-Version: 1.0\\n"');
+    expect(pot).toContain('"Content-Transfer-Encoding: 8bit\\n"');
+    expect(pot).toContain('"Language: und\\n"');
   });
 });
 
