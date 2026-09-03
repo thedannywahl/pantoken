@@ -1,0 +1,79 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KMPN7TNRP2F83SWW3DVSJM",
+  "session_id": "f56f5e0b-8923-45a4-a132-b4262a820bca",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T12:43:06.002368Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "files_touched": [
+    ".changeset/pr-119-localization-coverage.md",
+    ".github/workflows/ci.yml",
+    "docs/.vitepress/i18n.ts",
+    "docs/scripts/segment-markdown.ts",
+    "packages/scaffold/scripts/i18n-sources.ts",
+    "tools/i18n-engine/src/cli.ts",
+    "tools/i18n-engine/src/coverage.ts",
+    "tools/i18n-engine/src/lint.ts",
+    "tools/i18n-engine/src/pipeline.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "fd4234727884",
+  "checkpoint_transcript_start": 150,
+  "transcript_lines_at_start": 150,
+  "compact_transcript_start": 21,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T12:43:05.991746Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 16,
+    "human_modified": 12,
+    "human_removed": 0,
+    "total_committed": 16,
+    "total_lines_changed": 28,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 6025,
+      "user_lines_removed": 87,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/pr-119-localization-coverage.md": 12,
+        ".github/workflows/ci.yml": 4,
+        "docs/.vitepress/i18n.ts": 1,
+        "docs/hy/guide/getting-started.md": 1,
+        "docs/scripts/segment-markdown.ts": 1,
+        "docs/tr/guide/getting-started.md": 1,
+        "l10n/cy/docs.guides.po": 3000,
+        "l10n/fr/docs.api.po": 37,
+        "l10n/vi/docs.guides.po": 2958,
+        "packages/scaffold/scripts/i18n-sources.ts": 1,
+        "tools/i18n-engine/src/cli.ts": 2,
+        "tools/i18n-engine/src/coverage.ts": 4,
+        "tools/i18n-engine/src/lint.ts": 1,
+        "tools/i18n-engine/src/pipeline.ts": 2
+      },
+      "user_removed_per_file": {
+        "docs/hy/guide/getting-started.md": 1,
+        "docs/scripts/segment-markdown.ts": 1,
+        "docs/tr/guide/getting-started.md": 1,
+        "l10n/cy/docs.guides.po": 21,
+        "l10n/fr/docs.api.po": 37,
+        "l10n/vi/docs.guides.po": 21,
+        "tools/i18n-engine/src/cli.ts": 5
+      }
+    }
+  ]
+}

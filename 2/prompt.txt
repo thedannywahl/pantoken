@@ -1,0 +1,5 @@
+Continue: "Continue to iterate?"
+
+---
+
+do incremental conventional commits on the files you touch as you work, ignoring other changes from other agents.
