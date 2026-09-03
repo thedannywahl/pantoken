@@ -38,12 +38,16 @@ const apiRoot = join(dirname(new URL(import.meta.url).pathname), "../api");
 const units = globSync("**/*.md", { cwd: apiRoot })
   .sort()
   .flatMap((file) =>
-    collectUnits(segmentMarkdown(readFileSync(join(apiRoot, file), "utf8"))).map((unit) => ({
-      msgid: unit.text,
-      msgctxt: `docs.api:${unit.kind}`,
-      reference: relative(apiRoot, join(apiRoot, file)),
-      translate: "always" as const,
-    })),
+    collectUnits(segmentMarkdown(readFileSync(join(apiRoot, file), "utf8")))
+      // Glossary units are deterministically substituted and never written to the PO catalog
+      // (see segment-markdown.ts) — including them here would make 100% coverage unreachable.
+      .filter((unit) => unit.kind === "prose")
+      .map((unit) => ({
+        msgid: unit.text,
+        msgctxt: `docs.api:${unit.kind}`,
+        reference: relative(apiRoot, join(apiRoot, file)),
+        translate: "always" as const,
+      })),
   );
 writeFileSync(join(apiRoot, "../../l10n/docs.api.pot"), serializePot(units, ["no-c-format"]));
 refreshCoverageReports(join(apiRoot, "../../i18n.config.json"));

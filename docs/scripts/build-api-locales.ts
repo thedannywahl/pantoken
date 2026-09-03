@@ -28,6 +28,7 @@
 import {
   cpSync,
   existsSync,
+  globSync,
   mkdirSync,
   readdirSync,
   readFileSync,
@@ -37,6 +38,7 @@ import {
 } from "node:fs";
 import { dirname, join, relative } from "node:path";
 import { spawnSync } from "node:child_process";
+import { refreshCoverageReports, serializePot } from "@pantoken/i18n-engine";
 import { NON_ROOT_LOCALES } from "../.vitepress/i18n.ts";
 import { GlossaryTranslationAdapter, createTranslationAdapter } from "./api-translation.ts";
 import { type Resolve, collectUnits, reassemble, segmentMarkdown } from "./segment-markdown.ts";
@@ -49,6 +51,7 @@ import {
 import { GLOSSARY_TERMS } from "./glossary.ts";
 
 const docsRoot = join(import.meta.dirname, "..");
+const repoRoot = join(docsRoot, "..");
 const enApiDir = join(docsRoot, "api");
 const apiDirFor = (locale: string): string => join(docsRoot, locale, "api");
 const requestedLocale = process.env.DOCS_TRANSLATION_LOCALE;
@@ -191,6 +194,31 @@ const generateBaseApiDocs = (): void => {
   console.log(`🔨 Generating CSS API docs`);
   run("node", ["scripts/build-css-api.ts"]);
   console.log(`  ✓ CSS API reference\n`);
+};
+
+/**
+ * Rebuild `l10n/docs.api.pot` from the EN API tree this run just generated and refresh the coverage
+ * reports off it. Keeps the coverage denominator in sync with the content being translated below —
+ * `docs:api:en` regenerates the same catalog independently, so a coverage report run against a build
+ * that only ran `docs:api:locales` would otherwise compare stale POT keys to fresh PO entries.
+ */
+const refreshApiPot = (): void => {
+  const units = globSync("**/*.md", { cwd: enApiDir })
+    .sort()
+    .flatMap((file) =>
+      collectUnits(segmentMarkdown(readFileSync(join(enApiDir, file), "utf8")))
+        // Glossary units are deterministically substituted and never written to the PO catalog
+        // (see segment-markdown.ts) — including them here would make 100% coverage unreachable.
+        .filter((unit) => unit.kind === "prose")
+        .map((unit) => ({
+          msgid: unit.text,
+          msgctxt: `docs.api:${unit.kind}`,
+          reference: relative(enApiDir, join(enApiDir, file)),
+          translate: "always" as const,
+        })),
+    );
+  writeFileSync(join(repoRoot, "l10n", "docs.api.pot"), serializePot(units, ["no-c-format"]));
+  refreshCoverageReports(join(repoRoot, "i18n.config.json"));
 };
 
 /** Clone the generated EN API tree into a locale directory. */
@@ -424,6 +452,7 @@ const build = async (): Promise<void> => {
   }
 
   generateBaseApiDocs();
+  refreshApiPot();
 
   for (const locale of locales) {
     await buildLocale(locale);
