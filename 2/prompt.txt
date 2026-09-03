@@ -626,3 +626,54 @@ ssCss"
 ---
 
 if I run `vpr i18n:coverage` I still see 64.49% for French, do we need to build something first?
+
+---
+
+shoudl we do that before we look at the next language anyways, to make sure we're measuring accurately?
+
+---
+
+[Terminal 776543b3-db0f-4002-8929-08f3cc627d1f notification: command completed. The terminal has been cleaned up.]
+Terminal output:
+pantoken on i18n2 ≡  ?4 ~8 via  26.8.1 
+➜  ps -axo pid,ppid,stat,etime,%cpu,command | rg 'build-api-locales|translate-guide-po|docs:api|i18n.*extract|i18n.*translate' | rg -v 'rg ' || true
+pantoken on i18n2 ≡  ?4 ~8 via  26.8.1 
+➜  git status --short --branch | sed -n '1,120p' && git log --oneline -5
+## i18n2...origin/i18n2
+ M docs/.vitepress/config.ts
+ M docs/.vitepress/i18n.ts
+ M tools/i18n-engine/src/cli.ts
+ M tools/i18n-engine/src/coverage.ts
+ M tools/i18n-engine/src/index.ts
+ M tools/i18n-engine/tests/cli.test.ts
+ M tools/i18n-engine/tests/coverage.test.ts
+ M vite.config.ts
+?? .changeset/i18n-coverage-html-pantoken-components.md
+?? .changeset/i18n-coverage-html-report.md
+?? .changeset/i18n-coverage-stale-entries-fix.md
+?? plugins/pantoken/logos/assets/logos/pantoken/
+fb1831e11 (HEAD -> i18n2, origin/i18n2) feat(docs): complete French API translations
+3ee2b162a feat: add pantoken icon to custom icons plugin
+98d3d0523 feat(custom-icons): add pantoken SVG icon
+af72ab995 chore: update dependencies
+c24bfcf61 perf(ci): reuse cached build for coverage
+pantoken on i18n2 ≡  ?4 ~8 via  26.8.1 
+➜  stat -f '%Sm %N' -t '%H:%M:%S' l10n/docs.api.pot docs/api/index.md 2>/dev/null || true; node --input-type=module -e 'import {readFileSync} from "node:fs"; import {parsePo} from "./tools/i18n-engine/src/po.ts"; for(const f of ["l10n/docs.api.pot","l10n/fr/docs.api.po"]){const e=parsePo(readFileSync(f,"utf8")).filter(x=>!x.obsolete); console.log(f,e.length)}'
+19:35:20 l10n/docs.api.pot
+09:16:43 docs/api/index.md
+l10n/docs.api.pot 4171
+l10n/fr/docs.api.po 5036
+pantoken on i18n2 ≡  ?4 ~8 via  26.8.1 
+➜  vpr docs:api:en && node tools/i18n-engine/bin/i18n.mjs extract docs.api
+Selected task: @pantoken/docs#docs:api:en
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[info] Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[info] markdown generated at ./api
+✓ API badges: styled 707 markdown file(s)
+✓ API overview: wrote docs/api/index.md
+
+---
+vp run: @pantoken/docs#docs:api:en not cached because it modified its input. (Run `vp run --last-details` for full details)
+Extracted 817 unit(s) from docs.api to l10n/docs.api.pot.
