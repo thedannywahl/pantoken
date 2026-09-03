@@ -40,6 +40,8 @@ docs/docs/.vitepress/.temp/
 docs/public/
 !docs/public/
 docs/public/*
+!docs/public/logo-dark.svg
+!docs/public/logo-light.svg
 !docs/public/robots.txt
 !docs/public/.well-known/
 docs/public/.well-known/*
