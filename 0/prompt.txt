@@ -1,0 +1,1 @@
+I'm still not seeing an `og:image` attribute in the generated locale home pages that point to the og-<code> url.
