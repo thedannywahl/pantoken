@@ -1,0 +1,73 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1M0MAZPHXY0SH3Q0QFN10R6",
+  "session_id": "8f2e9b75-bec5-49e0-9cc2-d95586fa1cb0",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T16:11:32.796265Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "vite.config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "753ecef6d41c",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T16:11:32.79064Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 1,
+    "total_committed": 0,
+    "total_lines_changed": 1,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 611,
+      "user_lines_removed": 107,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/i18n-coverage-html-instui-progress.md": 5,
+        ".changeset/i18n-coverage-html-pantoken-components.md": 5,
+        ".changeset/i18n-coverage-html-report.md": 5,
+        ".changeset/i18n-coverage-stale-entries-fix.md": 5,
+        "docs/.vitepress/config.ts": 69,
+        "docs/.vitepress/i18n.json": 1,
+        "docs/.vitepress/i18n.ts": 20,
+        "docs/scripts/gen-og.ts": 161,
+        "tools/i18n-engine/src/cli.ts": 25,
+        "tools/i18n-engine/src/coverage.ts": 243,
+        "tools/i18n-engine/src/index.ts": 1,
+        "tools/i18n-engine/tests/cli.test.ts": 15,
+        "tools/i18n-engine/tests/coverage.test.ts": 55,
+        "vite.config.ts": 1
+      },
+      "user_removed_per_file": {
+        "docs/.vitepress/config.ts": 65,
+        "docs/.vitepress/i18n.json": 1,
+        "docs/scripts/gen-og.ts": 25,
+        "tools/i18n-engine/src/cli.ts": 4,
+        "tools/i18n-engine/src/coverage.ts": 9,
+        "tools/i18n-engine/tests/coverage.test.ts": 2,
+        "vite.config.ts": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+are these schemas actually getting written to vitepress at build time?
