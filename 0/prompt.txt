@@ -1,0 +1,12 @@
+this rule is getting overridden by vitepress's own:
+```
+.vp-doc [class*="language-"] pre
+```
+
+---
+
+how can I have the prompt word-wrap?
+```
+<div class="language-prompt"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">prompt</span><pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e;" tabindex="0" dir="ltr"><code><span class="line"><span>"Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project."</span></span></code></pre></div>
+```
+instead of be a single line?
