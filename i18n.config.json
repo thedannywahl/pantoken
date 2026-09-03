@@ -70,9 +70,8 @@
       "segment": "frontmatter"
     },
     "docs.chrome": {
-      "kind": "structural",
-      "drift": "block",
-      "source": "docs/.vitepress/i18n.ts"
+      "kind": "messages",
+      "source": "docs/.vitepress/i18n.json"
     },
     "docs.demos": {
       "kind": "structural",
