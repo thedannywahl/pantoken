@@ -1,0 +1,6 @@
+take a look at the logs from an api translation run for hu- there's lots that weren't cached, it it looks like we need to update many of them to 'never' translate as they're technical terms or other things.
+#attachment:Pasted text #1
+
+---
+
+this will work for all languages, right?
