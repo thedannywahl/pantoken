@@ -1,5 +1,5 @@
 {
-  "$schema": "./i18n.config.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.config.schema.json",
   "source": "en",
   "catalogs": {
     "template": "l10n/{space}.pot",

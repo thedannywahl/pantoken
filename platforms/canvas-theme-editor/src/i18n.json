@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "cssHeaderTitle": {
     "message": "pantoken for Canvas Theme Editor",
     "translate": "always"

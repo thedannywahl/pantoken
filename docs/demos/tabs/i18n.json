@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "text1": {
     "message": "Overview",
     "translate": {

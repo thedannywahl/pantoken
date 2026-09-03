@@ -1,5 +1,5 @@
 {
-  "$schema": "../../../i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "text1": {
     "message": "Tab through the controls (or click the field) to see the ring. It rides every focusable out of\n      the box from",
     "translate": {

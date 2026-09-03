@@ -42,7 +42,7 @@ describe("parseMessageSource", () => {
   test("ignores the JSON Schema metadata key", () => {
     expect(
       parseMessageSource({
-        $schema: "./i18n.source.schema.json",
+        $schema: "https://pantoken.app/schemas/i18n.source.schema.json",
         back: { message: "Back", translate: "always" },
       } as never),
     ).toHaveLength(1);

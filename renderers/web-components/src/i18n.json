@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../i18n.source.schema.json",
-  "$schema": "../../../i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
+  "$schema": "https://pantoken.app/schemas/i18n.source.schema.json",
   "prevMonth": { "message": "Previous month", "translate": "always" },
   "nextMonth": { "message": "Next month", "translate": "always" },
   "dateLabel": { "message": "Date", "translate": "optional" },
