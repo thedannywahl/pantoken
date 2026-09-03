@@ -1,0 +1,30 @@
+we updated the docs:api translation helpers to add 'never' to some strings and now translations are complete for en-AU, en-CA, and en-GB. However, when I generate a coverage report, it still shows ~60% due to the old structure.
+
+---
+
+zero translations on a re-run:
+
+#attachment:Pasted text #1
+
+---
+
+zero translations on a re-run:
+
+#attachment:Pasted text #1
+
+---
+
+the chart layout looks a little wonky because it's not fixed space or left-aligned text for the percentage in the coverage report:
+```
+   [===] 100%
+[===] 99.96%
+```
+the bars should be left-aligned and the text should be right-aligned.
+
+---
+
+okay, so this command should one-shot the remaining gaps, right?
+```
+DOCS_TRANSLATION_ADAPTER=ai DOCS_TRANSLATION_COMMAND="$(git rev-parse --show-toplevel)/tools/translation-adapters/copilot-wrapper.sh" DOCS_TRANSLATION_COMMAND_ARGS="--model gpt-5-mini --effort low" DOCS_TRANSLATION_CONCURRENCY=4 node scripts/build-api-locales.ts
+```
+?
