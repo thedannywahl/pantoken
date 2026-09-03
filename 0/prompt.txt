@@ -1,0 +1,13 @@
+I have added new logos directly to vitepress so we don't need logo.ts, or its dependencies anymore, we can remove that build workflow and update the package.json and the pnpm catalog if necessary.
+
+---
+
+let's replace this wordmark with the new logo-dark logo in docs/.vitepress
+
+---
+
+this needs to be scaled down about 30%
+
+---
+
+let's try .8
