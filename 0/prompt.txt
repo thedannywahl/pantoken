@@ -1,0 +1,8 @@
+Loaded plugin /Users/dwahl/Scripts/pantoken/plugins/typedoc/demo/dist/index.mjs
+[warning] The comment for renderers/react/src.TokenProviderProps.locale links to "LocaleBundle" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/web-components": { "LocaleBundle": "#" }} to the externalSymbolLinkMappings option
+[warning] The comment for renderers/svelte/src.registerLocalized links to "LocaleBundle" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/web-components": { "LocaleBundle": "#" }} to the externalSymbolLinkMappings option
+[warning] The comment for renderers/svelte/src.registerLocalized.bundle links to "LocaleBundle" which was resolved but is not included in the documentation. To fix this warning export it or add { "@pantoken/web-components": { "LocaleBundle": "#" }} to the externalSymbolLinkMappings option
+[info] markdown generated at ./api
+[warning] Found 0 errors and 3 warnings
+✓ API badges: styled 706 markdown file(s)
+✓ API overview: wrote docs/api/index.md
