@@ -1,0 +1,85 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1MM8S97D06QVEEPE7G2QXK5",
+  "session_id": "dca1d6cc-f73a-4086-9bc8-229041a1ba25",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T21:54:45.441109Z",
+  "branch": "i18n2",
+  "checkpoints_count": 3,
+  "save_step_count": 3,
+  "files_touched": [
+    "docs/.vitepress/config.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "a90d85ac37a4",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 3
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T21:54:45.428119Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 31,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 31,
+    "total_lines_changed": 31,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 1915,
+      "user_lines_removed": 9023,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/ar/docs.api.po": 1914,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "l10n/ar/docs.api.po": 1878,
+        "l10n/docs.api.pot": 7145
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 20,
+      "user_lines_removed": 20,
+      "agent_lines_added": 1925,
+      "agent_lines_removed": 9033,
+      "user_added_per_file": {
+        "l10n/ar/docs.api.po": 20
+      },
+      "user_removed_per_file": {
+        "l10n/ar/docs.api.po": 20
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 110,
+      "user_lines_removed": 75,
+      "agent_lines_added": 1999,
+      "agent_lines_removed": 9107,
+      "user_added_per_file": {
+        "docs/.vitepress/config.ts": 31,
+        "l10n/ar/docs.api.po": 78,
+        "l10n/docs.api.pot": 1
+      },
+      "user_removed_per_file": {
+        "l10n/ar/docs.api.po": 74,
+        "l10n/docs.api.pot": 1
+      }
+    }
+  ]
+}
