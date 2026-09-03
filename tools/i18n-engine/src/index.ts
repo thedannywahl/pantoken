@@ -103,6 +103,7 @@ export { runLint, type LintResult } from "./lint.ts";
 export {
   formatCoverageReport,
   formatCoverageReportHtml,
+  refreshCoverageReports,
   writeCoverageReport,
   type CoverageOptions,
   type CoverageReport,

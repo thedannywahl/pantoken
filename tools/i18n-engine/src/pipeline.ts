@@ -24,6 +24,7 @@ import {
 import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, serializePot, type PoEntry } from "./po.ts";
+import { refreshCoverageReports } from "./coverage.ts";
 import { localesForSpace, resolveLocaleStatus } from "./locales.ts";
 import { catalogUnitKey } from "./units.ts";
 
@@ -98,6 +99,7 @@ export function runExtractContent(
   const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
   mkdirSync(dirname(potPath), { recursive: true });
   writeFileSync(potPath, serializePot(units, config.poOptions.defaultFlags));
+  refreshCoverageReports(join(configDir, "i18n.config.json"));
   return { space: spaceId, unitCount: units.length, potPath };
 }
 
@@ -146,7 +148,9 @@ export async function runTranslateContent(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
-  return { space: spaceId, locale, poPath, ...(await mergeAndCount(potPath, poPath)) };
+  const result = await mergeAndCount(potPath, poPath);
+  refreshCoverageReports(join(configDir, "i18n.config.json"));
+  return { space: spaceId, locale, poPath, ...result };
 }
 
 /** Result of rendering one locale's translated content files. */
@@ -339,7 +343,9 @@ export async function runTranslateMessages(
     configDir,
     resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
-  return { space: spaceId, locale, poPath, ...(await mergeAndCount(potPath, poPath)) };
+  const result = await mergeAndCount(potPath, poPath);
+  refreshCoverageReports(join(configDir, "i18n.config.json"));
+  return { space: spaceId, locale, poPath, ...result };
 }
 
 /** `locale`'s `<space>` PO entries, or `[]` if no PO has been generated for it yet. */

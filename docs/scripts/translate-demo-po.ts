@@ -2,7 +2,7 @@
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { AiTranslationAdapter } from "./api-translation.ts";
-import { parsePo, serializePo } from "@pantoken/i18n-engine";
+import { parsePo, refreshCoverageReports, serializePo } from "@pantoken/i18n-engine";
 
 const repoRoot = new URL("../../", import.meta.url).pathname;
 
@@ -19,5 +19,6 @@ for (const entry of readdirSync(join(repoRoot, "l10n"), { withFileTypes: true })
   );
   for (const item of missing) item.msgstr = translations[item.msgctxt ?? item.msgid] ?? "";
   writeFileSync(path, serializePo(entries));
+  refreshCoverageReports(join(repoRoot, "i18n.config.json"));
   console.log(`${entry.name}: filled ${missing.length}`);
 }

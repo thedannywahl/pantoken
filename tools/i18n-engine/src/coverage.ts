@@ -1,12 +1,12 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, relative, sep } from "node:path";
 import {
   parseDriftPolicy,
   resolveDriftSeverity,
   resolveTier,
   type DriftSeverity,
 } from "@pantoken/translation-adapters";
-import type { I18nConfig } from "./config.ts";
+import { loadConfig, type I18nConfig } from "./config.ts";
 import { parsePo } from "./po.ts";
 import { catalogUnitKey } from "./units.ts";
 
@@ -35,6 +35,36 @@ export interface CoverageOptions {
   space?: string;
   policy?: DriftSeverity | "all";
   output?: string;
+}
+
+/** Roll up all space rows into one comparable row per locale. */
+export function rollupCoverageRows(rows: readonly CoverageRow[]): CoverageRow[] {
+  const byLocale = new Map<string, CoverageRow[]>();
+  for (const row of rows) {
+    const localeRows = byLocale.get(row.locale) ?? [];
+    localeRows.push(row);
+    byLocale.set(row.locale, localeRows);
+  }
+  return [...byLocale.entries()].map(([locale, localeRows]) => {
+    const total = localeRows.reduce((sum, row) => sum + row.total, 0);
+    const translated = localeRows.reduce((sum, row) => sum + row.translated, 0);
+    const policy = localeRows.some((row) => row.policy === "block")
+      ? "block"
+      : localeRows.some((row) => row.policy === "warn")
+        ? "warn"
+        : "off";
+    const first = localeRows[0];
+    return {
+      space: "all",
+      locale,
+      tier: first.tier,
+      policy,
+      total,
+      translated,
+      untranslated: total - translated,
+      percent: total === 0 ? 100 : Math.round((translated / total) * 10000) / 100,
+    } satisfies CoverageRow;
+  });
 }
 
 function resolvePattern(pattern: string, space: string, locale?: string): string {
@@ -122,6 +152,23 @@ export function writeCoverageReport(
   return report;
 }
 
+/** Refresh both ignored coverage artifacts after a PO or POT catalog write. */
+export function refreshCoverageReports(configPath: string): void {
+  if (!existsSync(configPath)) return;
+  const config = loadConfig(configPath);
+  const root = dirname(configPath);
+  const jsonPath = join(root, ".i18n", "coverage.json");
+  const htmlPath = join(root, ".i18n", "coverage.html");
+  const report = writeCoverageReport(config, configPath, { output: jsonPath });
+  const cssHrefs = [
+    "formats/css/dist/style.css",
+    "formats/components/dist/base.css",
+    "formats/components/dist/components.css",
+  ].map((path) => relative(dirname(htmlPath), join(root, path)).split(sep).join("/"));
+  mkdirSync(dirname(htmlPath), { recursive: true });
+  writeFileSync(htmlPath, formatCoverageReportHtml(report, cssHrefs));
+}
+
 /** Format a coverage report as a Markdown table. */
 export function formatCoverageReport(report: CoverageReport): string {
   const lines = [
@@ -183,7 +230,8 @@ export function formatCoverageReportHtml(
   report: CoverageReport,
   cssHrefs: readonly string[] = DEFAULT_CSS_HREFS,
 ): string {
-  const rowsHtml = report.rows
+  const rollupRows = rollupCoverageRows(report.rows);
+  const rowsHtml = [...rollupRows, ...report.rows]
     .map((row) => {
       const tier = row.tier ?? "unmatched";
       const color = policyColor(row.policy);
@@ -268,7 +316,7 @@ ${stylesheetLinks}
 </head>
 <body>
   <h1>i18n coverage</h1>
-  <p class="meta">Generated ${escapeHtml(report.generatedAt)} from source locale <strong>${escapeHtml(report.source)}</strong> &mdash; policy filter: ${escapeHtml(report.filters.policy)}${report.filters.space ? `, space: ${escapeHtml(report.filters.space)}` : ""}. Showing <span id="visible-count"></span> of ${String(report.rows.length)} rows.</p>
+  <p class="meta">Generated ${escapeHtml(report.generatedAt)} from source locale <strong>${escapeHtml(report.source)}</strong> &mdash; policy filter: ${escapeHtml(report.filters.policy)}${report.filters.space ? `, space: ${escapeHtml(report.filters.space)}` : ""}. Showing <span id="visible-count"></span> of <span id="total-count"></span> rows.</p>
   <div class="toolbar">
     <input class="instui-text-input" id="search" type="search" placeholder="Filter by space or locale&hellip;" aria-label="Filter rows">
     <select class="instui-simple-select" id="filter-space" aria-label="Filter by space"><option value="">All spaces</option>${spaceOptions}</select>
@@ -332,6 +380,7 @@ ${rowsHtml}
   var tierFilter = document.getElementById("filter-tier");
   var policyFilter = document.getElementById("filter-policy");
   var visibleCount = document.getElementById("visible-count");
+  var totalCount = document.getElementById("total-count");
 
   function applyFilters() {
     var q = search.value.trim().toLowerCase();
@@ -346,11 +395,13 @@ ${rowsHtml}
       var matchesLocale = !locale || row.dataset.locale === locale;
       var matchesTier = !tier || row.dataset.tier === tier;
       var matchesPolicy = !policy || row.dataset.policy === policy;
-      var show = matchesQuery && matchesSpace && matchesLocale && matchesTier && matchesPolicy;
+      var matchesDefault = space || row.dataset.space === "all";
+      var show = matchesDefault && matchesQuery && matchesSpace && matchesLocale && matchesTier && matchesPolicy;
       row.hidden = !show;
       if (show) visible++;
     });
     visibleCount.textContent = String(visible);
+    totalCount.textContent = String(rows.filter(function (row) { return !space || row.dataset.space === space; }).length);
   }
 
   search.addEventListener("input", applyFilters);

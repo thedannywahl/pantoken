@@ -5,6 +5,7 @@ import {
   loadConfig,
   listGuideFiles,
   parsePo,
+  refreshCoverageReports,
   serializePo,
   runExtractGuides,
   runTranslateGuides,
@@ -53,6 +54,7 @@ for (const locale of locales) {
     entry.fuzzy = false;
     entry.flags = entry.flags.filter((flag) => flag !== "fuzzy");
     writeFileSync(poPath, serializePo(entries));
+    refreshCoverageReports(join(repoRoot, "i18n.config.json"));
     writeFileSync(join(docsRoot, locale, file), entry.msgstr);
     console.log(`${locale}: translated ${file}`);
   }

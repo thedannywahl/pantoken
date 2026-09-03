@@ -6,7 +6,7 @@
  *
  * @module
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, watch, writeFileSync } from "node:fs";
 import { dirname, join, relative, sep } from "node:path";
 import { Argument, Command, CommanderError, Option } from "commander";
 import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
@@ -265,10 +265,19 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       "--html [path]",
       "also write a sortable, filterable HTML report (default .i18n/coverage.html)",
     )
+    .option("--watch", "keep the HTML report synchronized with coverage.json")
+    .option("--live", "alias for --watch")
     .action(
       async (
         space: string | undefined,
-        options: { policy: string; format: string; out: string; html?: string | boolean },
+        options: {
+          policy: string;
+          format: string;
+          out: string;
+          html?: string | boolean;
+          watch?: boolean;
+          live?: boolean;
+        },
       ) => {
         if (!["all", "block", "warn", "off"].includes(options.policy)) {
           console.error(`Invalid policy filter: ${options.policy}`);
@@ -294,7 +303,7 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           );
           if (options.format === "markdown") console.log(formatCoverageReport(report));
           else console.log(`Wrote ${String(report.rows.length)} coverage rows to ${options.out}.`);
-          if (options.html) {
+          if (options.html || options.watch || options.live) {
             const htmlPath =
               typeof options.html === "string"
                 ? options.html
@@ -310,6 +319,20 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
             mkdirSync(dirname(htmlPath), { recursive: true });
             writeFileSync(htmlPath, formatCoverageReportHtml(report, cssHrefs));
             console.log(`Wrote an HTML coverage report to ${htmlPath}.`);
+            if (options.watch || options.live) {
+              const coveragePath = join(configDirOf(), options.out);
+              let timer: ReturnType<typeof setTimeout> | undefined;
+              const refresh = (): void => {
+                if (timer) clearTimeout(timer);
+                timer = setTimeout(() => {
+                  const next = JSON.parse(readFileSync(coveragePath, "utf8")) as typeof report;
+                  writeFileSync(htmlPath, formatCoverageReportHtml(next, cssHrefs));
+                  console.log(`Updated HTML coverage report at ${htmlPath}.`);
+                }, 50);
+              };
+              watch(coveragePath, refresh);
+              console.log(`Watching ${coveragePath} for coverage updates.`);
+            }
           }
         } catch (error) {
           console.error(error instanceof Error ? error.message : String(error));

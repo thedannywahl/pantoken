@@ -5,6 +5,7 @@ import { afterEach, describe, expect, test } from "vite-plus/test";
 import {
   formatCoverageReport,
   formatCoverageReportHtml,
+  rollupCoverageRows,
   writeCoverageReport,
 } from "../src/coverage.ts";
 import { loadConfig } from "../src/config.ts";
@@ -24,6 +25,42 @@ function outputPath(): string {
 }
 
 describe("writeCoverageReport", () => {
+  test("rolls all spaces into one row per locale", () => {
+    const rows = rollupCoverageRows([
+      {
+        space: "docs.home",
+        locale: "fr",
+        tier: "secondary",
+        policy: "block",
+        total: 10,
+        translated: 9,
+        untranslated: 1,
+        percent: 90,
+      },
+      {
+        space: "docs.api",
+        locale: "fr",
+        tier: "secondary",
+        policy: "warn",
+        total: 90,
+        translated: 45,
+        untranslated: 45,
+        percent: 50,
+      },
+    ]);
+    expect(rows).toEqual([
+      expect.objectContaining({
+        space: "all",
+        locale: "fr",
+        policy: "block",
+        total: 100,
+        translated: 54,
+        untranslated: 46,
+        percent: 54,
+      }),
+    ]);
+  });
+
   test("reports every configured surface and locale", () => {
     const output = outputPath();
     const report = writeCoverageReport(config, join(root, "i18n.config.json"), { output });
@@ -35,11 +72,11 @@ describe("writeCoverageReport", () => {
     const output = outputPath();
     const report = writeCoverageReport(config, join(root, "i18n.config.json"), {
       space: "docs.home",
-      policy: "warn",
+      policy: "block",
       output,
     });
     expect(report.rows).toHaveLength(43);
-    expect(report.rows.every((row) => row.space === "docs.home" && row.policy === "warn")).toBe(
+    expect(report.rows.every((row) => row.space === "docs.home" && row.policy === "block")).toBe(
       true,
     );
   });
@@ -55,18 +92,19 @@ describe("writeCoverageReport", () => {
   test("formats a report as a sortable/filterable HTML table", () => {
     const report = writeCoverageReport(config, join(root, "i18n.config.json"), {
       space: "docs.home",
-      policy: "warn",
+      policy: "block",
       output: outputPath(),
     });
     const html = formatCoverageReportHtml(report);
     expect(html).toContain("<!doctype html>");
     expect(html).toContain('data-space="docs.home" data-locale="ar"');
+    expect(html).toContain('data-space="all" data-locale="ar"');
     expect(html).toContain('<option value="docs.home">docs.home</option>');
-    expect(html).toContain('<progress class="instui-progress -color-warning -size-sm"');
+    expect(html).toContain('<progress class="instui-progress -color-danger -size-sm"');
     expect(html).toContain('<span class="value">');
     expect(html).toContain("th.addEventListener");
     expect(html).toContain('<table class="instui-table -hover">');
-    expect(html).toContain('<span class="instui-pill -color-warning">warn</span>');
+    expect(html).toContain('<span class="instui-pill -color-danger">block</span>');
     expect(html).toContain('<input class="instui-text-input"');
     expect(html).toContain('<select class="instui-simple-select"');
     expect(html).toContain('<link rel="stylesheet" href="../formats/css/dist/style.css">');

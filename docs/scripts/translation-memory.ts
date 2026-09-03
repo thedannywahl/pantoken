@@ -22,7 +22,7 @@ import {
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
 import type { TranslationAdapter } from "./api-translation.ts";
-import { parsePo, serializePo, type PoEntry } from "@pantoken/i18n-engine";
+import { parsePo, refreshCoverageReports, serializePo, type PoEntry } from "@pantoken/i18n-engine";
 
 /**
  * A translatable unit. `markdown` is translated per file (whole-file, e.g. guides); `text` (short
@@ -122,6 +122,7 @@ export class TranslationMemory {
     if (this._poEntries && this._poPath) {
       mkdirSync(dirname(this._poPath), { recursive: true });
       writeFileSync(this._poPath, serializePo(this._poEntries));
+      refreshCoverageReports(join(import.meta.dirname, "..", "..", "i18n.config.json"));
     } else this._mem!.save();
   }
 }

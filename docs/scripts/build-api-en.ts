@@ -14,7 +14,7 @@ import { spawnSync } from "node:child_process";
 import { createRequire } from "node:module";
 import { dirname, join, relative } from "node:path";
 import { globSync, readFileSync, writeFileSync } from "node:fs";
-import { serializePot } from "@pantoken/i18n-engine";
+import { refreshCoverageReports, serializePot } from "@pantoken/i18n-engine";
 import { collectUnits, segmentMarkdown } from "./segment-markdown.ts";
 
 const require = createRequire(import.meta.url);
@@ -46,3 +46,4 @@ const units = globSync("**/*.md", { cwd: apiRoot })
     })),
   );
 writeFileSync(join(apiRoot, "../../l10n/docs.api.pot"), serializePot(units, ["no-c-format"]));
+refreshCoverageReports(join(apiRoot, "../../i18n.config.json"));
