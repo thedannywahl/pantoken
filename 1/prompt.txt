@@ -1,1 +1,5 @@
 I've added the pantoken logos to the assets/ folder -but they come with a new classifier which is a trailing lang code which we should be able to support by expanding our interface.
+
+---
+
+create a changeset and commit the changes to this package only.
