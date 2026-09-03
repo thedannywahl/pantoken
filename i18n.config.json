@@ -33,14 +33,14 @@
   },
   "drift": {
     "surfaces": {
-      "ui.strings": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "cli.scaffold": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "cli.ai": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "docs.guides": { "source": "block", "primary": "warn", "secondary": "warn" },
+      "ui.strings": { "source": "block", "primary": "block", "secondary": "block" },
+      "cli.scaffold": { "source": "block", "primary": "block", "secondary": "block" },
+      "cli.ai": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.guides": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.api": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "docs.demos": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "docs.home": { "source": "block", "primary": "warn", "secondary": "warn" },
-      "docs.chrome": { "source": "block", "primary": "warn", "secondary": "warn" },
+      "docs.demos": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.home": { "source": "block", "primary": "block", "secondary": "block" },
+      "docs.chrome": { "source": "block", "primary": "block", "secondary": "block" },
       "docs.parity": "block"
     },
     "fallback": { "source": "block", "primary": "warn", "secondary": "warn" }
