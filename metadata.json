@@ -1,0 +1,43 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1JG2CCFZW3ZZ9N90WEEDKBJ",
+  "strategy": "manual-commit",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "files_touched": [
+    "docs/package.json",
+    "docs/scripts/translate-chrome-po.ts",
+    "l10n/ca/docs.chrome.po",
+    "l10n/da/docs.chrome.po",
+    "l10n/de/docs.chrome.po",
+    "l10n/es/docs.chrome.po",
+    "l10n/fr-CA/docs.chrome.po",
+    "l10n/fr/docs.chrome.po",
+    "l10n/ht/docs.chrome.po",
+    "l10n/id/docs.chrome.po",
+    "l10n/it/docs.chrome.po",
+    "l10n/ms/docs.chrome.po",
+    "l10n/nb/docs.chrome.po",
+    "l10n/nl/docs.chrome.po",
+    "l10n/nn/docs.chrome.po",
+    "l10n/pl/docs.chrome.po",
+    "l10n/pt-BR/docs.chrome.po",
+    "l10n/pt/docs.chrome.po"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  }
+}

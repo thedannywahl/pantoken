@@ -1,0 +1,92 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1JG2CCFZW3ZZ9N90WEEDKBJ",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T02:02:52.739573Z",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "save_step_count": 1,
+  "files_touched": [
+    "docs/package.json",
+    "docs/scripts/translate-chrome-po.ts",
+    "l10n/ca/docs.chrome.po",
+    "l10n/da/docs.chrome.po",
+    "l10n/de/docs.chrome.po",
+    "l10n/es/docs.chrome.po",
+    "l10n/fr-CA/docs.chrome.po",
+    "l10n/fr/docs.chrome.po",
+    "l10n/ht/docs.chrome.po",
+    "l10n/id/docs.chrome.po",
+    "l10n/it/docs.chrome.po",
+    "l10n/ms/docs.chrome.po",
+    "l10n/nb/docs.chrome.po",
+    "l10n/nl/docs.chrome.po",
+    "l10n/nn/docs.chrome.po",
+    "l10n/pl/docs.chrome.po",
+    "l10n/pt-BR/docs.chrome.po",
+    "l10n/pt/docs.chrome.po"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "ea95863686d7",
+  "checkpoint_transcript_start": 9004,
+  "transcript_lines_at_start": 9004,
+  "compact_transcript_start": 1766,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 37
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T02:02:52.601773Z",
+    "agent_lines": 71,
+    "agent_removed": 56,
+    "human_added": 5,
+    "human_modified": 34,
+    "human_removed": 0,
+    "total_committed": 99,
+    "total_lines_changed": 178,
+    "agent_percentage": 71.34831460674157,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 23,
+      "user_lines_removed": 23,
+      "agent_lines_added": 105,
+      "agent_lines_removed": 67,
+      "user_added_per_file": {
+        "l10n/pl/docs.chrome.po": 1,
+        "l10n/pt-BR/docs.chrome.po": 5,
+        "l10n/pt/docs.chrome.po": 5,
+        "l10n/se/docs.chrome.po": 7,
+        "l10n/sl/docs.chrome.po": 2,
+        "l10n/sv/docs.chrome.po": 2,
+        "l10n/vi/docs.chrome.po": 1
+      },
+      "user_removed_per_file": {
+        "l10n/pl/docs.chrome.po": 1,
+        "l10n/pt-BR/docs.chrome.po": 5,
+        "l10n/pt/docs.chrome.po": 5,
+        "l10n/se/docs.chrome.po": 7,
+        "l10n/sl/docs.chrome.po": 2,
+        "l10n/sv/docs.chrome.po": 2,
+        "l10n/vi/docs.chrome.po": 1
+      }
+    }
+  ]
+}

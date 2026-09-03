@@ -1,0 +1,22 @@
+what's next?  on this branch I want:
+* Full en
+* Full hu
+* all languages translates on homepage.
+
+---
+
+the config and source schema should ive in tools/i18n-engine as exportable assets.
+
+---
+
+okay, what's next we want:
+* all strings everywhere translated to hu
+* all chrome translated to all languages
+
+---
+
+plau. we
+
+---
+
+okay, we'll come back to HU - first chrome.
