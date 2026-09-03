@@ -23,3 +23,9 @@ translation status
 ---
 
 I'm not sure where these unstages po files came from, but are all the linebreaks okay?
+
+---
+
+> `msgfmt` reports missing optional header metadata such as `Language` and `PO-Revision-Date`, but that is unrelated to line-break correctness.
+
+we should build this into our po generator then.
