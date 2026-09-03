@@ -89,7 +89,9 @@ beforeEach(() => {
   delete process.env.DOCS_TRANSLATION_ADAPTER; // default glossary adapter (no real spawns)
 
   // The merged API cache contains the glossary entries used by this fixture.
-  existsSync.mockReturnValue(true);
+  // memory.save() refreshes the (ignored) coverage reports via i18n.config.json; treat it as absent
+  // so that real coverage-report pipeline is skipped instead of misreading the markdown/PO fixtures.
+  existsSync.mockImplementation((path) => !path.endsWith("i18n.config.json"));
   readdirSync.mockReturnValue(["index.md", "typedoc-sidebar.json"]);
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
@@ -116,10 +118,14 @@ function writtenTo(suffix: string): string | undefined {
 
 test("build localizes markdown headings, prose, and sidebars, then logs the summary", async () => {
   await import("./build-api-locales.ts");
-  await vi.waitFor(() =>
-    expect(logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("✓ hu: rendered"))).toBe(
-      true,
-    ),
+  // vi.waitFor's own default timeout (1s) is independent of the test's 20s timeout and can be too
+  // short under a slow/loaded CI runner.
+  await vi.waitFor(
+    () =>
+      expect(
+        logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("✓ hu: rendered")),
+      ).toBe(true),
+    { timeout: 15000 },
   );
 
   const glossaryEntryFor = (source: string): string => {
@@ -163,6 +169,6 @@ test("build localizes markdown headings, prose, and sidebars, then logs the summ
 test("build surfaces a generation failure as a non-zero exit code", async () => {
   spawnSync.mockReturnValue({ status: 1 }); // TypeDoc/run() fails
   await import("./build-api-locales.ts");
-  await vi.waitFor(() => expect(process.exitCode).toBe(1));
+  await vi.waitFor(() => expect(process.exitCode).toBe(1), { timeout: 15000 });
   expect(errSpy).toHaveBeenCalled();
 });
