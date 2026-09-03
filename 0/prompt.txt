@@ -1,0 +1,22 @@
+```
+⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tools/i18n-engine/tests/lint.test.ts > runLint > accepts the repository localization contract
+Error: Test timed out in 20000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ tools/i18n-engine/tests/lint.test.ts:15:3
+     13|
+     14| describe("runLint", () => {
+     15|   test("accepts the repository localization contract", async () => {
+       |   ^
+     16|     const result = await runLint(join(root, "i18n.config.json"));
+     17|     expect(result.checkedSpaces).toBe(8);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 296 passed (297)
+      Tests  1 failed | 2039 passed (2040)
+   Start at  12:05:41
+   Duration  62.53s (transform 81.53s, setup 10.28s, import 272.99s, tests 163.84s, environment 15.84s)
+   ```
