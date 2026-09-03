@@ -1,0 +1,15 @@
+watch ci for failures on pr 119 using the `gh` cli and remediate them.
+
+---
+
+you're stuck in an interactive shell trying to upgrade entire.
+
+---
+
+Run vp run lint:tsdoc
+$ vp exec eslint . ⊘ cache disabled
+
+/home/runner/work/pantoken/pantoken/docs/scripts/build-api-locales.ts
+  464:14  error  Missing TSDoc for variable buildPromise  tsdoc-require-2/require
+
+✖ 1 problem (1 error, 0 warnings)
