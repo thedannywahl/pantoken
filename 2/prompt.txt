@@ -1,0 +1,1 @@
+does the html file have a mechanism to refresh automatically when a change lands or can we serve it so it has a hot refresh?
