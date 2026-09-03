@@ -83,7 +83,8 @@ const identity = (text: string): string => text;
 /** Find the single segment whose text contains `needle`. */
 const find = (segments: Segment[], needle: string): Segment => {
   const match = segments.filter(
-    (s) => s.kind !== "table" && s.kind !== "callout" && s.text.includes(needle),
+    (s) =>
+      s.kind !== "table" && s.kind !== "callout" && s.kind !== "prompt" && s.text.includes(needle),
   );
   expect(match.length, `exactly one segment contains ${JSON.stringify(needle)}`).toBe(1);
   return match[0];
@@ -134,6 +135,33 @@ describe("classification", () => {
     expect(find(typedoc, "import { withPantoken }").kind).toBe("preserve"); // inside a fence
     expect(find(typedoc, "= `{}`").kind).toBe("preserve"); // link + inline-code only
     expect(find(cssdoc, '@import "@pantoken/components').kind).toBe("preserve");
+  });
+
+  test("prompt fences translate their body but preserve the fence markers", () => {
+    const page = [
+      "Before.",
+      "",
+      "```prompt",
+      "Ask the agent to set up pantoken.",
+      "```",
+      "",
+      "After.",
+    ].join("\n");
+    const segments = segmentMarkdown(page);
+    const prompt = segments.find((segment) => segment.kind === "prompt");
+    expect(prompt).toMatchObject({
+      kind: "prompt",
+      opening: "```prompt",
+      body: "Ask the agent to set up pantoken.",
+      closing: "```",
+    });
+    expect(collectUnits(segments)).toContainEqual({
+      kind: "prose",
+      text: "Ask the agent to set up pantoken.",
+    });
+    expect(reassemble(segments, (text) => `HU: ${text}`)).toContain(
+      "```prompt\nHU: Ask the agent to set up pantoken.\n```",
+    );
   });
 
   test("tables become table segments", () => {
