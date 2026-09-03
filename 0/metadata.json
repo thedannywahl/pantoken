@@ -1,0 +1,51 @@
+{
+  "cli_version": "0.10.3",
+  "checkpoint_id": "01M1JH7V2FC6V1SVBGAQREGQZT",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T02:23:20.135442Z",
+  "branch": "i18n2",
+  "checkpoints_count": 3,
+  "files_touched": [
+    ".changeset/docs-demos-hu.md",
+    "docs/hu/demos/pendo.html",
+    "l10n/hu/docs.demos.po"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "1560a9740e6f",
+  "checkpoint_transcript_start": 9654,
+  "transcript_lines_at_start": 9654,
+  "compact_transcript_start": 1882,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 41
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T02:23:19.997144Z",
+    "agent_lines": 43,
+    "agent_removed": 35,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 43,
+    "total_lines_changed": 78,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}

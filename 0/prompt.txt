@@ -1,0 +1,9 @@
+great, what's the next lowest hanging fruit? we had previously done translation passes on everything except api and one other large surface area.
+
+---
+
+I don't care about a sub-space like docs.demos:pendo I mean the top-level names spaces like docs.* or ???
+
+---
+
+finish docs.demos
