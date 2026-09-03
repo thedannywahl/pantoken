@@ -1,0 +1,66 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KYW1BAQAG8KNAZJSPTFQ7T",
+  "session_id": "feea95a5-d68b-4bbb-bd2e-e07dcd8a09b3",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T15:40:48.266884Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [
+    "l10n/fr/docs.api.po"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "7465eaea38af",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 1
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T15:40:48.262981Z",
+    "agent_lines": 0,
+    "agent_removed": 5,
+    "human_added": 0,
+    "human_modified": 157,
+    "human_removed": 2392,
+    "total_committed": 5,
+    "total_lines_changed": 2554,
+    "agent_percentage": 0.19577133907595928,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 2752,
+      "user_lines_removed": 2408,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".changeset/i18n-coverage-html-report.md": 5,
+        ".changeset/i18n-coverage-stale-entries-fix.md": 5,
+        "l10n/fr/docs.api.po": 2404,
+        "tools/i18n-engine/src/cli.ts": 17,
+        "tools/i18n-engine/src/coverage.ts": 253,
+        "tools/i18n-engine/src/index.ts": 1,
+        "tools/i18n-engine/tests/cli.test.ts": 15,
+        "tools/i18n-engine/tests/coverage.test.ts": 51,
+        "vite.config.ts": 1
+      },
+      "user_removed_per_file": {
+        "l10n/fr/docs.api.po": 2392,
+        "tools/i18n-engine/src/cli.ts": 4,
+        "tools/i18n-engine/src/coverage.ts": 9,
+        "tools/i18n-engine/tests/coverage.test.ts": 2,
+        "vite.config.ts": 1
+      }
+    }
+  ]
+}
