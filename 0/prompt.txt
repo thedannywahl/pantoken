@@ -1,0 +1,5 @@
+continue
+
+---
+
+the purpose of the glossary was a one-time translation of key terms so we didn't have to pass them through the translation workflow over and over, we've now resolved the need for that separation with the unified i18n config, so the glossary terms should be migrated (maybe just to docs?) and deprecated as a separate namespace.  then we should continue with ht next steps.
