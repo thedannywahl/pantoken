@@ -1,0 +1,13 @@
+I'm confused why there are locales in packages/i18n/locales - those should be source strings in an english i18n.json file in web-components with po/pot files in /l10n.
+
+---
+
+what's the best practice for the unified experience? this is only the web-components srings and nothing else.
+
+---
+
+yes.
+
+---
+
+continue with the next steps.
