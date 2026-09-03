@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-03 17:30+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -528,7 +535,7 @@ msgstr "### tokens"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
-msgstr "readonly [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
+msgstr "csak olvasható [`Token`](../../../../packages/core/src/interfaces/Token.md)[]"
 
 #: bundlers/panda/src/functions/toPandaPreset.md
 #, no-c-format
@@ -1169,7 +1176,7 @@ msgstr "A custom `-icon-<name>` kicseréli a státuszigazolót, de megtartja a v
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
-msgstr "**Source:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
+msgstr "**Forrás:** [alert.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/alert/alert.css)"
 
 #: css/alert.md
 #, no-c-format
@@ -1445,7 +1452,7 @@ msgstr "Alapértelmezés szerint a paletta színe tónusosítja a kezdőbetűket
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
-msgstr "**Source:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
+msgstr "**Forrás:** [avatar.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/avatar/avatar.css)"
 
 #: css/avatar.md
 #, no-c-format
@@ -1715,7 +1722,7 @@ msgstr "Ahhoz, hogy egy badget egy cél fölé helyezz, csomagold mindkettőt eg
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
-msgstr "**Source:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
+msgstr "**Forrás:** [badge.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/badge/badge.css)"
 
 #: css/badge.md
 #, no-c-format
@@ -1955,7 +1962,7 @@ msgstr "`*` — Az opt-in globális reset: `box-sizing`, az oldal felülete, ala
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
-msgstr "**Source:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
+msgstr "**Forrás:** [base.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/rules/base/base.css)"
 
 #: css/base.md
 #, no-c-format
@@ -1991,7 +1998,7 @@ msgstr "A `.hero`/`.heading`/`.message` részeket a fogyasztó markupja alkotja,
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
-msgstr "**Source:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
+msgstr "**Forrás:** [billboard.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/billboard/billboard.css)"
 
 #: css/billboard.md
 #, no-c-format
@@ -2165,7 +2172,7 @@ msgstr "Kis képernyőkön automatikusan vissza nyílra csukódik. Használd `br
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
-msgstr "**Source:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
+msgstr "**Forrás:** [breadcrumb.css](https://github.com/thedannywahl/pantoken/blob/main/formats/components/src/components/breadcrumb/breadcrumb.css)"
 
 #: css/breadcrumb.md
 #, no-c-format
@@ -29336,3 +29343,27 @@ msgstr "Béta"
 msgctxt "docs.api:text"
 msgid "Experimental"
 msgstr "Kísérleti"
+
+msgctxt "docs.api:prose"
+msgid "pantoken horizontal logo (full-color)."
+msgstr "pantoken vízszintes logó (teljes színű)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken horizontal logo (reversed)."
+msgstr "pantoken vízszintes logó (inverz)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (color)."
+msgstr "pantoken ikon logó (színes)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (current-color)."
+msgstr "pantoken ikon logó (aktuális színű)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (dark)."
+msgstr "pantoken ikon logó (sötét)."
+
+msgctxt "docs.api:prose"
+msgid "pantoken icon logo (reversed)."
+msgstr "pantoken ikon logó (inverz)."

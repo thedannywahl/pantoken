@@ -1,6 +1,13 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: pantoken\n"
+"PO-Revision-Date: 2026-09-03 17:31+0000\n"
+"Last-Translator: pantoken localization engine\n"
+"Language-Team: pantoken\n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: und\n"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -18,7 +25,7 @@ msgstr "<span class=\"instui-pill -color-warning pantoken-doc-tag\">ألفا</sp
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Write pantoken's agent assets for a tool into a consumer repo."
-msgstr ""
+msgstr "اكتب أصول وكيل pantoken لأداة في مستودع المستهلك."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -36,7 +43,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A specific [AgentTool](../type-aliases/AgentTool.md), or `\"all\"` for every asset."
-msgstr ""
+msgstr "أداة محددة من نوع [AgentTool](../type-aliases/AgentTool.md)، أو `\"all\"` لكل أصل."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -48,7 +55,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The target directory (default `\".\"`)."
-msgstr ""
+msgstr "الدليل الهدف (الافتراضي `\".\"`)."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -60,7 +67,7 @@ msgstr "## القيم المرجعة"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The paths written."
-msgstr ""
+msgstr "المسارات المكتوبة."
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
@@ -72,13 +79,13 @@ msgstr "## أمثلة"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Install one tool's assets into a repo**"
-msgstr ""
+msgstr "**تثبيت أصول أداة واحدة في مستودع**"
 
 #: ai/pantoken-ai/src/functions/installAgentAssets.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Install every asset into the current directory**"
-msgstr ""
+msgstr "**تثبيت كل الأصول في الدليل الحالي**"
 
 #: ai/pantoken-ai/src/functions/isScaffoldPlatform.md
 #, no-c-format
@@ -90,7 +97,7 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Whether `platform` is a known [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) or one of its aliases (e.g. `html`)."
-msgstr ""
+msgstr "هل `platform` منصة معروفة من نوع [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md) أم أحد ألقابها (مثلاً `html`)."
 
 #: ai/pantoken-ai/src/functions/isScaffoldPlatform.md
 #, no-c-format
@@ -108,19 +115,19 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Scaffold a starter project for a platform (via `@pantoken/scaffold`), and install pantoken's\nagent assets (via [installAgentAssets](installAgentAssets.md)) into the same directory."
-msgstr ""
+msgstr "إنشاء مشروع بداية لمنصة (عبر `@pantoken/scaffold`)، وتثبيت أصول الوكيل الخاصة بـ pantoken (عبر [installAgentAssets](installAgentAssets.md)) في نفس الدليل."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "A [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md)."
-msgstr ""
+msgstr "نوع [ScaffoldPlatform](../type-aliases/ScaffoldPlatform.md)."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The target directory (default `\".\"`). Its basename (or `\"pantoken-app\"` for `\".\"`)\n  is substituted for `{{projectName}}` in the scaffold's template files."
-msgstr ""
+msgstr "الدليل الهدف (الافتراضي `\".\"`). اسم القاعدة الخاص به (أو `\"pantoken-app\"` لـ `\".\"`)\n  يتم استبداله بـ `{{projectName}}` في ملفات قالب السقالة."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
@@ -132,13 +139,13 @@ msgstr ""
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "Which agent tool's assets to install alongside the scaffold (default `\"all\"`)."
-msgstr ""
+msgstr "أصول أداة الوكيل التي سيتم تثبيتها بجانب السقالة (الافتراضي `\"all\"`)."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "The paths written, scaffold files first."
-msgstr ""
+msgstr "المسارات المكتوبة، ملفات السقالة أولاً."
 
 #: ai/pantoken-ai/src/functions/scaffoldAndInit.md
 #, no-c-format
@@ -150,7 +157,7 @@ msgstr "## مثال"
 #, no-c-format
 msgctxt "docs.api:prose"
 msgid "**Scaffold a React starter with every agent asset installed**"
-msgstr ""
+msgstr "**إنشاء مشروع بداية React مع تثبيت جميع أصول الوكلاء**"
 
 #: ai/pantoken-ai/src/functions/scaffoldProject.md
 #, no-c-format
