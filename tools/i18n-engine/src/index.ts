@@ -102,6 +102,7 @@ export { generateMessageBundles } from "./bundles.ts";
 export { runLint, type LintResult } from "./lint.ts";
 export {
   formatCoverageReport,
+  formatCoverageReportHtml,
   writeCoverageReport,
   type CoverageOptions,
   type CoverageReport,

@@ -59,6 +59,21 @@ describe("lint and stats commands", () => {
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("coverage rows"));
     expect(process.exitCode).toBeUndefined();
   });
+
+  test("stats --html writes a sortable/filterable HTML report", async () => {
+    const htmlPath = join(testDir, ".i18n", "coverage.html");
+    await run(["stats", "--html", htmlPath]);
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(`HTML coverage report to ${htmlPath}`),
+    );
+    expect(readFileSync(htmlPath, "utf8")).toContain("<!doctype html>");
+    expect(process.exitCode).toBeUndefined();
+  });
+
+  test("stats --html with no path defaults to .i18n/coverage.html", async () => {
+    await run(["stats", "--html"]);
+    expect(existsSync(join(testDir, ".i18n", "coverage.html"))).toBe(true);
+  });
 });
 
 describe("extract/translate/render/check fall back to stub for a non-docs.guides space", () => {

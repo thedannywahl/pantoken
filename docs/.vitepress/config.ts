@@ -9,8 +9,9 @@ import {
   FULLSCREEN_BUTTON_HTML,
 } from "@pantoken/demo";
 import llmstxt from "vitepress-plugin-llms";
+import type { HeadConfig } from "vitepress";
 import { partitionApiSidebar } from "./api-sidebar.js";
-import { LOCALE_THEMES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
+import { LOCALE_THEMES, NON_LATIN_LOCALES, NON_ROOT_LOCALES, type DocsLocale } from "./i18n.js";
 import { mermaidPlugin } from "./plugins/vitepress-mermaid/index.js";
 import { tokenValuePreview } from "./plugins/token-value-preview/index.js";
 
@@ -269,25 +270,8 @@ const typedocSidebarByLocale = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [localeKey, loadSidebar(locale.typedocSidebarPath)]),
 ) as Record<DocsLocale, DefaultTheme.SidebarItem[]>;
 
-// Non-Latin scripts ship a purpose-drawn wordmark (`docs/public/logo-{light,dark}-<code>.svg`,
-// hand-added); every other locale falls back to the default Latin logo set below. `zh-Hans`/`zh-Hant`
-// share one Han-script mark; the Japanese file is suffixed `jp`.
-const LOGO_VARIANT: Partial<Record<DocsLocale, string>> = {
-  ar: "ar",
-  el: "el",
-  fa: "fa",
-  he: "he",
-  hi: "hi",
-  hy: "hy",
-  ja: "jp",
-  ko: "ko",
-  ru: "ru",
-  th: "th",
-  uk: "uk",
-  "zh-Hans": "zh",
-  "zh-Hant": "zh",
-};
-
+// A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` in i18n.ts); every other
+// locale falls back to the default Latin logo set below.
 const localesConfig = Object.fromEntries(
   localeEntries.map(([localeKey, locale]) => [
     localeKey,
@@ -357,12 +341,12 @@ const localesConfig = Object.fromEntries(
           pattern: "https://github.com/thedannywahl/pantoken/edit/main/docs/:path",
           text: locale.editText,
         },
-        // A script-specific wordmark, when one exists (see `LOGO_VARIANT` above); VitePress stacks
-        // this over the root `themeConfig.logo` set below.
-        ...(LOGO_VARIANT[localeKey] && {
+        // A script-specific wordmark, when one exists (see `NON_LATIN_LOCALES` above); VitePress
+        // stacks this over the root `themeConfig.logo` set below.
+        ...(NON_LATIN_LOCALES[localeKey] && {
           logo: {
-            light: `/logo-light-${LOGO_VARIANT[localeKey]}.svg`,
-            dark: `/logo-dark-${LOGO_VARIANT[localeKey]}.svg`,
+            light: `/logo-light-${NON_LATIN_LOCALES[localeKey]}.svg`,
+            dark: `/logo-dark-${NON_LATIN_LOCALES[localeKey]}.svg`,
           },
         }),
         // Localized default-theme chrome. `outline.label` merges over the global `outline.level`
@@ -455,17 +439,27 @@ function ogLocaleFor(lang: string): string {
 
 /** Locale and Open Graph locale tags derived from a page path. */
 function localeHeadInfo(relativePath: string): {
+  localeKey: DocsLocale;
   locale: (typeof LOCALE_THEMES)[DocsLocale];
   ogLocale: string;
   alternateOgLocale: string;
 } {
-  const localeKey = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`));
-  const locale = localeKey ? LOCALE_THEMES[localeKey] : LOCALE_THEMES.root;
+  const localeKey = NON_ROOT_LOCALES.find((key) => relativePath.startsWith(`${key}/`)) ?? "root";
+  const locale = LOCALE_THEMES[localeKey];
   return {
+    localeKey,
     locale,
     ogLocale: ogLocaleFor(locale.lang),
     alternateOgLocale: ogLocaleFor(LOCALE_THEMES.root.lang),
   };
+}
+
+// `gen-og.ts` only renders localized card text for Latin-script locales (it bundles a Latin webfont);
+// non-Latin locales (see `NON_LATIN_LOCALES`) fall back to the English card. English regional variants
+// share the root card's text, so they aren't re-rendered either — see `gen-og.ts` for the exact set.
+function ogImageUrl(localeKey: DocsLocale): string {
+  const needsOwnCard = localeKey !== "root" && !NON_LATIN_LOCALES[localeKey];
+  return `${hostname}og${needsOwnCard ? `-${localeKey}` : ""}.png`;
 }
 
 /** Per-page social/canonical head tags layered on top of site defaults. */
@@ -475,7 +469,9 @@ function pageSocialHead(params: {
   canonical: string;
   ogLocale: string;
   alternateOgLocale: string;
-}): [string, Record<string, string>][] {
+  image: string;
+  imageAlt: string;
+}): HeadConfig[] {
   return [
     ["link", { rel: "canonical", href: params.canonical }],
     ["meta", { property: "og:title", content: params.title }],
@@ -483,8 +479,34 @@ function pageSocialHead(params: {
     ["meta", { property: "og:url", content: params.canonical }],
     ["meta", { property: "og:locale", content: params.ogLocale }],
     ["meta", { property: "og:locale:alternate", content: params.alternateOgLocale }],
+    ["meta", { property: "og:image", content: params.image }],
+    ["meta", { property: "og:image:alt", content: params.imageAlt }],
     ["meta", { name: "twitter:title", content: params.title }],
     ["meta", { name: "twitter:description", content: params.description }],
+    ["meta", { name: "twitter:image", content: params.image }],
+    ["meta", { name: "twitter:image:alt", content: params.imageAlt }],
+  ];
+}
+
+/** Schema.org `WebSite` structured data, translated per locale. */
+function websiteJsonLd(params: {
+  localeKey: DocsLocale;
+  locale: (typeof LOCALE_THEMES)[DocsLocale];
+  image: string;
+}): HeadConfig {
+  return [
+    "script",
+    { type: "application/ld+json" },
+    JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "pantoken",
+      url: params.localeKey === "root" ? hostname : `${hostname}${params.localeKey}/`,
+      description: params.locale.description,
+      inLanguage: params.locale.lang,
+      image: params.image,
+      author: { "@type": "Person", name: "Danny Wahl", url: "https://iywahl.com" },
+    }),
   ];
 }
 
@@ -522,56 +544,38 @@ export default defineConfig({
       },
     ],
     // Social-card defaults so pantoken docs links unfurl into rich previews (Slack, iMessage, X,
-    // LinkedIn, Discord, Facebook). Per-page title/description/url/locale are layered on in
-    // transformHead; the constant image + card type live here. The card lives in public/ (served at
-    // the base root), regenerated by `vp run docs:og`.
+    // LinkedIn, Discord, Facebook). Per-locale title/description/url/locale/image and the structured
+    // data are layered on in transformHead (see `pageSocialHead`/`websiteJsonLd`); only the locale-
+    // independent card dimensions and card type live here.
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:site_name", content: "pantoken" }],
-    ["meta", { property: "og:image", content: `${hostname}og.png` }],
     ["meta", { property: "og:image:width", content: "1200" }],
     ["meta", { property: "og:image:height", content: "630" }],
-    [
-      "meta",
-      { property: "og:image:alt", content: "pantoken — Instructure design tokens, everywhere" },
-    ],
     ["meta", { name: "twitter:card", content: "summary_large_image" }],
     ["meta", { name: "twitter:site", content: "@thedannywahl" }],
     ["meta", { name: "twitter:creator", content: "@thedannywahl" }],
-    ["meta", { name: "twitter:image", content: `${hostname}og.png` }],
-    [
-      "meta",
-      { name: "twitter:image:alt", content: "pantoken — Instructure design tokens, everywhere" },
-    ],
-    // Schema.org structured data describing the site and its author.
-    [
-      "script",
-      { type: "application/ld+json" },
-      JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "pantoken",
-        url: hostname,
-        description,
-        image: `${hostname}og.png`,
-        author: { "@type": "Person", name: "Danny Wahl", url: "https://iywahl.com" },
-      }),
-    ],
   ],
-  // Layer per-page Open Graph / Twitter tags, a canonical link, and the page locale on top of the head
-  // defaults, so each shared URL previews with its own title, description, address, and language rather
-  // than the site-wide default. The `hu/` tree mirrors the root, so detect the locale from the path.
+  // Layer per-page Open Graph / Twitter tags, a canonical link, the page locale, and translated
+  // structured data on top of the head defaults, so each shared URL previews with its own title,
+  // description, social-card image, address, and language rather than the site-wide English default.
   transformHead: ({ pageData, siteData }) => {
     const localeInfo = localeHeadInfo(pageData.relativePath);
     const title = ogTitle(pageData.frontmatter, pageData.title, siteData.title, localeInfo.locale);
     const pageDescription =
       pageData.frontmatter.description || pageData.description || localeInfo.locale.description;
-    return pageSocialHead({
-      title,
-      description: pageDescription,
-      canonical: canonicalUrl(pageData.relativePath),
-      ogLocale: localeInfo.ogLocale,
-      alternateOgLocale: localeInfo.alternateOgLocale,
-    });
+    const image = ogImageUrl(localeInfo.localeKey);
+    return [
+      ...pageSocialHead({
+        title,
+        description: pageDescription,
+        canonical: canonicalUrl(pageData.relativePath),
+        ogLocale: localeInfo.ogLocale,
+        alternateOgLocale: localeInfo.alternateOgLocale,
+        image,
+        imageAlt: homeOgTitle(localeInfo.locale),
+      }),
+      websiteJsonLd({ localeKey: localeInfo.localeKey, locale: localeInfo.locale, image }),
+    ];
   },
   // i18n routing audit (VitePress 2.0.0-alpha.18 / PR #5239): `themeConfig.i18nRouting` now accepts a
   // function to build custom locale links. We deliberately don't set one — our locales are a symmetric

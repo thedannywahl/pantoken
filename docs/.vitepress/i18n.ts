@@ -22,6 +22,26 @@ export const NON_ROOT_LOCALES = Object.keys(LOCALES).filter((key) => key !== "en
 /** Every docs locale, `root` first. */
 const ALL_DOCS_LOCALES: readonly DocsLocale[] = ["root", ...NON_ROOT_LOCALES];
 
+// Non-Latin scripts ship a purpose-drawn wordmark (`docs/public/logo-{light,dark}-<code>.svg`,
+// hand-added) instead of the bundled Latin logo, and are skipped by the OG-image text renderer
+// (`docs/scripts/gen-og.ts`), which only bundles a Latin webfont. `zh-Hans`/`zh-Hant` share one
+// Han-script mark; the Japanese file is suffixed `jp`.
+export const NON_LATIN_LOCALES: Partial<Record<DocsLocale, string>> = {
+  ar: "ar",
+  el: "el",
+  fa: "fa",
+  he: "he",
+  hi: "hi",
+  hy: "hy",
+  ja: "jp",
+  ko: "ko",
+  ru: "ru",
+  th: "th",
+  uk: "uk",
+  "zh-Hans": "zh",
+  "zh-Hant": "zh",
+};
+
 /**
  * Translatable UI chrome — everything that gets translated into the `docs.chrome` PO catalog (see
  * `docs/.vitepress/i18n.json`). Structural, non-translated metadata (route prefixes, the

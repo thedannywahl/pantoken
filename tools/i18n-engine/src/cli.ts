@@ -6,12 +6,12 @@
  *
  * @module
  */
-import { readFileSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join, relative, sep } from "node:path";
 import { Argument, Command, CommanderError, Option } from "commander";
 import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
 import { runLint } from "./lint.ts";
-import { formatCoverageReport, writeCoverageReport } from "./coverage.ts";
+import { formatCoverageReport, formatCoverageReportHtml, writeCoverageReport } from "./coverage.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import {
   DOCS_GUIDES,
@@ -261,10 +261,14 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     .option("--policy <severity>", "filter rows by drift policy", "all")
     .option("--format <format>", "report format: json or markdown", "json")
     .option("--out <path>", "report path", ".i18n/coverage.json")
+    .option(
+      "--html [path]",
+      "also write a sortable, filterable HTML report (default .i18n/coverage.html)",
+    )
     .action(
       async (
         space: string | undefined,
-        options: { policy: string; format: string; out: string },
+        options: { policy: string; format: string; out: string; html?: string | boolean },
       ) => {
         if (!["all", "block", "warn", "off"].includes(options.policy)) {
           console.error(`Invalid policy filter: ${options.policy}`);
@@ -290,6 +294,23 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           );
           if (options.format === "markdown") console.log(formatCoverageReport(report));
           else console.log(`Wrote ${String(report.rows.length)} coverage rows to ${options.out}.`);
+          if (options.html) {
+            const htmlPath =
+              typeof options.html === "string"
+                ? options.html
+                : join(configDirOf(), ".i18n", "coverage.html");
+            const assetRoot = configDirOf();
+            const cssHrefs = [
+              "formats/css/dist/style.css",
+              "formats/components/dist/base.css",
+              "formats/components/dist/components.css",
+            ].map((path) =>
+              relative(dirname(htmlPath), join(assetRoot, path)).split(sep).join("/"),
+            );
+            mkdirSync(dirname(htmlPath), { recursive: true });
+            writeFileSync(htmlPath, formatCoverageReportHtml(report, cssHrefs));
+            console.log(`Wrote an HTML coverage report to ${htmlPath}.`);
+          }
         } catch (error) {
           console.error(error instanceof Error ? error.message : String(error));
           process.exitCode = 1;
