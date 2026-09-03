@@ -23,6 +23,7 @@ export type Product =
   | "instructure"
   | "learnplatform"
   | "mastery"
+  | "pantoken"
   | "parchment";
 
 /** A logo layout — the arrangement of mark and wordmark. */
@@ -39,6 +40,21 @@ export type LogoColorMode =
   | "reversed"
   | "reversed-bg";
 
+/** A trailing language code on a localized wordmark variant, e.g. `"horizontal-full-color-ar"`. */
+export type LogoLang =
+  | "ar"
+  | "el"
+  | "fa"
+  | "he"
+  | "hi"
+  | "hy"
+  | "jp"
+  | "ko"
+  | "ru"
+  | "th"
+  | "uk"
+  | "zh";
+
 /** Metadata for one available logo asset. */
 export interface LogoMeta {
   /** The product the logo belongs to. */
@@ -47,6 +63,8 @@ export interface LogoMeta {
   layout: LogoLayout;
   /** The color treatment. */
   colorMode: LogoColorMode;
+  /** The localized wordmark's language, absent for the default (English) variant. */
+  lang?: LogoLang;
   /** The token/name stem, e.g. `"canvas-horizontal-full-color"`. */
   name: string;
   /** The path within `assets/logos`, e.g. `"canvas/horizontal-full-color.svg"`. */
@@ -98,6 +116,7 @@ export const logosCss: string = LOGOS_CSS;
  * @param product - The product.
  * @param layout - The layout (default `"horizontal"`).
  * @param colorMode - The color treatment (default `"full-color"`).
+ * @param lang - The localized wordmark's language, if a translated variant is wanted.
  * @returns The SVG string, or `undefined` if that combination doesn't exist.
  *
  * @example Get the default horizontal, full-color Canvas logo
@@ -118,8 +137,9 @@ export function getLogoSvg(
   product: Product,
   layout: LogoLayout = "horizontal",
   colorMode: LogoColorMode = "full-color",
+  lang?: LogoLang,
 ): string | undefined {
-  return LOGO_SVGS[`${product}-${layout}-${colorMode}`];
+  return LOGO_SVGS[`${product}-${layout}-${colorMode}${lang ? `-${lang}` : ""}`];
 }
 
 /**
@@ -128,6 +148,7 @@ export function getLogoSvg(
  * @param product - The product.
  * @param layout - The layout (default `"horizontal"`).
  * @param colorMode - The color treatment (default `"full-color"`).
+ * @param lang - The localized wordmark's language, if a translated variant is wanted.
  * @returns The data URI, or `undefined` if that combination doesn't exist.
  *
  * @example Use a logo as an <img> src
@@ -143,8 +164,9 @@ export function getLogoDataUri(
   product: Product,
   layout: LogoLayout = "horizontal",
   colorMode: LogoColorMode = "full-color",
+  lang?: LogoLang,
 ): string | undefined {
-  const svg = getLogoSvg(product, layout, colorMode);
+  const svg = getLogoSvg(product, layout, colorMode, lang);
   if (svg === undefined) return undefined;
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`;
 }
