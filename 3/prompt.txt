@@ -1,0 +1,13 @@
+this image should be flipped horizontally in rtl mode.
+
+---
+
+wouldn't it be easier to just add a transform to a rtl .is-home background declaration?
+
+---
+
+ok make that change
+
+---
+
+I thought you wre going to use a pseudo class? using html.is-home and flipping it flips the content too.
