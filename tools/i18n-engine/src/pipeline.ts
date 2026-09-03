@@ -17,7 +17,6 @@ import type { I18nConfig, MessagesSpaceConfig } from "./config.ts";
 import {
   extractFileUnits,
   extractFrontmatterUnits,
-  extractGuideSpace,
   listGuideFiles,
   renderFile,
   renderFrontmatterFile,
@@ -46,9 +45,7 @@ function nonExcludedKnownLocales(config: I18nConfig): string[] {
 
 /** Every non-excluded, in-scope locale for `docs.guides`, per `locales.exclude` + the space's own scope. */
 function guidesLocales(config: I18nConfig): string[] {
-  const space = config.spaces[DOCS_GUIDES];
-  const nonExcluded = nonExcludedKnownLocales(config);
-  return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
+  return contentLocales(config, DOCS_GUIDES);
 }
 
 function contentLocales(config: I18nConfig, spaceId: string): string[] {
@@ -63,6 +60,9 @@ function contentSpaceUnits(config: I18nConfig, configDir: string, spaceId: strin
   const files = spaceId === DOCS_HOME ? ["index.md"] : listGuideFiles(join(configDir, "docs"));
   return files.flatMap((file) => {
     const source = readFileSync(join(configDir, "docs", file), "utf8");
+    if (spaceId === DOCS_GUIDES) {
+      return [{ msgid: source, reference: file, translate: "always" as const }];
+    }
     return space.segment === "frontmatter"
       ? extractFrontmatterUnits(source, file)
       : extractFileUnits(source, file);
@@ -78,12 +78,7 @@ export interface ExtractResult {
 
 /** `i18n extract docs.guides`: write `l10n/docs.guides.pot` from the real `docs/guide/**` corpus. */
 export function runExtractGuides(config: I18nConfig, configDir: string): ExtractResult {
-  const docsRoot = join(configDir, "docs");
-  const units = extractGuideSpace(docsRoot);
-  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: DOCS_GUIDES }));
-  mkdirSync(dirname(potPath), { recursive: true });
-  writeFileSync(potPath, serializePot(units, config.poOptions.defaultFlags));
-  return { space: DOCS_GUIDES, unitCount: units.length, potPath };
+  return runExtractContent(config, configDir, DOCS_GUIDES);
 }
 
 /** Extract a content space, including frontmatter-only spaces such as `docs.home`. */
@@ -129,12 +124,7 @@ export async function runTranslateGuides(
   configDir: string,
   locale: string,
 ): Promise<TranslateResult> {
-  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: DOCS_GUIDES }));
-  const poPath = join(
-    configDir,
-    resolvePattern(config.catalogs.target, { space: DOCS_GUIDES, locale }),
-  );
-  return { space: DOCS_GUIDES, locale, poPath, ...(await mergeAndCount(potPath, poPath)) };
+  return runTranslateContent(config, configDir, DOCS_GUIDES, locale);
 }
 
 /** Synchronize one locale's PO catalog for a content space. */
@@ -168,7 +158,6 @@ export function runRenderGuides(
   const docsRoot = join(configDir, "docs");
   const entries = loadPoEntries(config, configDir, locale);
   const byMsgid = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgid, e.msgstr]));
-  const resolve = (text: string): string => byMsgid.get(text) ?? text; // untranslated -> English fallback
 
   const space = config.spaces[DOCS_GUIDES];
   const renderPattern =
@@ -178,13 +167,13 @@ export function runRenderGuides(
   const filesWritten: string[] = [];
   for (const file of listGuideFiles(docsRoot)) {
     const source = readFileSync(join(docsRoot, file), "utf8");
-    const rendered = renderFile(source, resolve);
+    const rendered = byMsgid.get(source) ?? source;
     const outPath = join(
       configDir,
       resolvePattern(renderPattern, { locale, path: file.replace(/^guide\//u, "") }),
     );
     mkdirSync(dirname(outPath), { recursive: true });
-    writeFileSync(outPath, rendered);
+    writeFileSync(outPath, `${rendered.trimEnd()}\n`);
     filesWritten.push(outPath);
   }
   return { space: DOCS_GUIDES, locale, filesWritten };
@@ -253,32 +242,7 @@ export interface CheckResult {
 
 /** `i18n check docs.guides`: reports untranslated units per locale via {@link DriftReporter}. */
 export function runCheckGuides(config: I18nConfig, configDir: string): CheckResult {
-  const docsRoot = join(configDir, "docs");
-  const units = extractGuideSpace(docsRoot);
-  const reporter = new DriftReporter({
-    label: DOCS_GUIDES,
-    fixCommand: "i18n translate docs.guides && i18n render docs.guides",
-    policy: buildDriftPolicy(config),
-  });
-
-  for (const locale of guidesLocales(config)) {
-    if (locale === config.source) continue; // nothing to translate for the source locale itself
-    const entries = loadPoEntries(config, configDir, locale);
-    const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgid));
-    for (const unit of units) {
-      if (translated.has(unit.msgid)) continue;
-      const [file, line] = unit.reference.split(":");
-      reporter.add({
-        surface: DOCS_GUIDES,
-        locale,
-        file,
-        line: line ? Number(line) : undefined,
-        detail: `Untranslated: ${unit.msgid.slice(0, 60)}`,
-      });
-    }
-  }
-
-  return { reporter, exitCode: reporter.report() };
+  return runCheckContent(config, configDir, DOCS_GUIDES);
 }
 
 /** Check translated entries for a frontmatter content space such as `docs.home`. */

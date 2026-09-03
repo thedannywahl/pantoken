@@ -124,6 +124,7 @@ function fixtureExists(pathName: string): boolean {
   if (pathName.endsWith(".home.po")) return false;
   if (pathName.endsWith(".chrome.po")) return false;
   if (pathName.endsWith(".demos.po")) return false;
+  if (pathName.endsWith(".guides.po")) return false;
   const cacheStates = [
     [".guides.json", fixtures.guidesCache],
     [".api.json", fixtures.apiCache],

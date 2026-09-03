@@ -123,7 +123,7 @@ until every translation does.
 | `ui.strings`   | `@pantoken/web-components#check:drift` | `src/i18n.json` → `l10n/<locale>/ui.strings.po` (via `i18n-engine`) |
 | `cli.scaffold` | `@pantoken/scaffold#check:drift`       | `l10n/<locale>/cli.scaffold.po` (via `i18n-engine`)                 |
 | `cli.ai`       | `@pantoken/ai#check:drift`             | `l10n/<locale>/cli.ai.po` (via `i18n-engine`)                       |
-| `docs.guides`  | `docs:check:drift`                     | whole-file `docs/guide/*.md` units                                  |
+| `docs.guides`  | `docs:check:drift`                     | `docs/guide/*.md` → `l10n/<locale>/docs.guides.po` whole-file units |
 | `docs.api`     | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                         |
 | `docs.home`    | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features)  |
 | `docs.chrome`  | `docs:check:drift`                     | `.vitepress/i18n.json` → `l10n/<locale>/docs.chrome.po`             |

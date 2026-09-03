@@ -75,7 +75,7 @@ describe("docs.guides: extract -> translate -> render (real, no AI provider)", (
   test("extract writes a POT with the real prose unit", async () => {
     await run(["extract", "docs.guides"]);
     const pot = readFileSync(join(testDir, "l10n", "docs.guides.pot"), "utf8");
-    expect(pot).toContain('msgid "Hello world."');
+    expect(pot).toContain('msgid "Hello world.\\n"');
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("Extracted 1 unit(s)"));
   });
 
@@ -111,8 +111,8 @@ describe("docs.guides: extract -> translate -> render (real, no AI provider)", (
     writeFileSync(
       poPath,
       readFileSync(poPath, "utf8").replace(
-        'msgid "Hello world."\nmsgstr ""',
-        'msgid "Hello world."\nmsgstr "Szia világ."',
+        'msgid "Hello world.\\n"\nmsgstr ""',
+        'msgid "Hello world.\\n"\nmsgstr "Szia világ.\\n"',
       ),
     );
     await run(["render", "docs.guides", "--locale", "hu"]);
@@ -159,8 +159,8 @@ describe("docs.guides: extract -> translate -> render (real, no AI provider)", (
     writeFileSync(
       poPath,
       readFileSync(poPath, "utf8").replace(
-        'msgid "Hello world."\nmsgstr ""',
-        'msgid "Hello world."\nmsgstr "Szia világ."',
+        'msgid "Hello world.\\n"\nmsgstr ""',
+        'msgid "Hello world.\\n"\nmsgstr "Szia világ.\\n"',
       ),
     );
     process.exitCode = undefined;

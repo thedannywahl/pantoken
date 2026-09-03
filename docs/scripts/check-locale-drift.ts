@@ -72,6 +72,21 @@ const preview = (text: string): string =>
 
 /** Guide drift: each `docs/guide/*.md` is one whole-file `markdown` unit. */
 const guideDrift = (locale: string): Missing[] => {
+  const poPath = join(l10nDir, locale, "docs.guides.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => entry.msgid),
+    );
+    return walkMarkdown(guideDir)
+      .map((file) => ({
+        file: relative(docsRoot, file),
+        source: readFileSync(file, "utf8"),
+      }))
+      .filter(({ source }) => !translated.has(source))
+      .map(({ file, source }) => ({ file, kind: "markdown", sample: preview(source) }));
+  }
   const cached = loadCacheKeys(locale, "guides");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(guideDir)) {
