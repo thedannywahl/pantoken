@@ -316,8 +316,11 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
             ].map((path) =>
               relative(dirname(htmlPath), join(assetRoot, path)).split(sep).join("/"),
             );
+            const coverageHref = relative(dirname(htmlPath), join(configDirOf(), options.out))
+              .split(sep)
+              .join("/");
             mkdirSync(dirname(htmlPath), { recursive: true });
-            writeFileSync(htmlPath, formatCoverageReportHtml(report, cssHrefs));
+            writeFileSync(htmlPath, formatCoverageReportHtml(report, cssHrefs, coverageHref));
             console.log(`Wrote an HTML coverage report to ${htmlPath}.`);
             if (options.watch || options.live) {
               const coveragePath = join(configDirOf(), options.out);
@@ -326,7 +329,7 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
                 if (timer) clearTimeout(timer);
                 timer = setTimeout(() => {
                   const next = JSON.parse(readFileSync(coveragePath, "utf8")) as typeof report;
-                  writeFileSync(htmlPath, formatCoverageReportHtml(next, cssHrefs));
+                  writeFileSync(htmlPath, formatCoverageReportHtml(next, cssHrefs, coverageHref));
                   console.log(`Updated HTML coverage report at ${htmlPath}.`);
                 }, 50);
               };

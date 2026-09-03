@@ -108,6 +108,9 @@ describe("writeCoverageReport", () => {
     expect(html).toContain('<input class="instui-text-input"');
     expect(html).toContain('<select class="instui-simple-select"');
     expect(html).toContain('<link rel="stylesheet" href="../formats/css/dist/style.css">');
+    expect(html).toContain('var coverageHref = "coverage.json";');
+    expect(html).toContain('fetch(coverageHref, { cache: "no-store" })');
+    expect(html).toContain("window.location.reload()");
   });
 
   test("ignores stale PO entries no longer in the POT, so coverage can't exceed 100%", () => {

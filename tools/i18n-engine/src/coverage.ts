@@ -229,7 +229,9 @@ function policyColor(policy: DriftSeverity): "danger" | "warning" | "brand" {
 export function formatCoverageReportHtml(
   report: CoverageReport,
   cssHrefs: readonly string[] = DEFAULT_CSS_HREFS,
+  coverageHref = "coverage.json",
 ): string {
+  // The generated page polls `coverageHref` and reloads itself when the JSON report's generation timestamp changes.
   const rollupRows = rollupCoverageRows(report.rows);
   const rowsHtml = [...rollupRows, ...report.rows]
     .map((row) => {
@@ -346,6 +348,8 @@ ${rowsHtml}
   </div>
 <script>
 (function () {
+  var coverageHref = ${JSON.stringify(coverageHref)};
+  var generatedAt = ${JSON.stringify(report.generatedAt)};
   var table = document.querySelector("table");
   var tbody = table.tBodies[0];
   var rows = Array.prototype.slice.call(tbody.rows);
@@ -410,6 +414,15 @@ ${rowsHtml}
   tierFilter.addEventListener("change", applyFilters);
   policyFilter.addEventListener("change", applyFilters);
   applyFilters();
+
+  setInterval(function () {
+    fetch(coverageHref, { cache: "no-store" })
+      .then(function (response) { return response.ok ? response.json() : null; })
+      .then(function (next) {
+        if (next && next.generatedAt && next.generatedAt !== generatedAt) window.location.reload();
+      })
+      .catch(function () {});
+  }, 2000);
 })();
 </script>
 </body>
