@@ -130,6 +130,7 @@ export type SpaceConfig = ContentSpaceConfig | MessagesSpaceConfig | StructuralS
 /** The full `i18n.config.json` shape. Every field beyond `source` and `spaces` has a sane default. */
 export interface I18nConfig {
   source: string;
+  requiredSpaces: readonly string[];
   catalogs: CatalogsConfig;
   poOptions: PoOptionsConfig;
   locales: LocalesConfig;
@@ -166,6 +167,7 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
     },
   },
   defaults: { translate: "always" },
+  requiredSpaces: [],
   drift: {
     surfaces: {},
     fallback: { source: "block", secondary: "warn" },

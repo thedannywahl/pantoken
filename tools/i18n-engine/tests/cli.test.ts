@@ -46,14 +46,18 @@ async function run(args: string[]): Promise<void> {
   await program.parseAsync(args, { from: "user" });
 }
 
-describe("stub commands (lint/stats — no docs.guides implementation yet)", () => {
-  for (const name of ["lint", "stats"]) {
-    test(`"${name}" parses and reports not-yet-implemented`, async () => {
-      await run([name]);
-      expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(`"${name}" is not implemented`));
-      expect(exitSpy).toHaveBeenCalledWith(1);
-    });
-  }
+describe("lint and stats commands", () => {
+  test("lint validates the selected config and reports failures", async () => {
+    await run(["lint"]);
+    expect(errSpy).toHaveBeenCalledWith(expect.stringContaining("i18n lint failed"));
+    expect(process.exitCode).toBe(1);
+  });
+
+  test("stats remains not-yet-implemented", async () => {
+    await run(["stats"]);
+    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining('"stats" is not implemented'));
+    expect(exitSpy).toHaveBeenCalledWith(1);
+  });
 });
 
 describe("extract/translate/render/check fall back to stub for a non-docs.guides space", () => {

@@ -322,6 +322,9 @@ catalogs:
     '@vitest/coverage-v8':
       specifier: 4.1.11
       version: 4.1.11
+    ajv:
+      specifier: ^8.20.0
+      version: 8.20.0
     arkregex:
       specifier: ^0.0.8
       version: 0.0.8
@@ -3142,6 +3145,9 @@ importers:
       '@pantoken/translation-adapters':
         specifier: workspace:*
         version: link:../translation-adapters
+      ajv:
+        specifier: 'catalog:'
+        version: 8.20.0
       commander:
         specifier: 'catalog:'
         version: 15.0.0

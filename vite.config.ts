@@ -363,7 +363,7 @@ export default defineConfig({
       // prose drift is skipped with a note when `docs/api` is absent.
       "i18n:check:drift:all": {
         command:
-          "vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
+          "vp run @pantoken/i18n-engine#build && node tools/i18n-engine/bin/i18n.mjs --config i18n.config.json lint && vp run i18n:check:drift && vp run @pantoken/docs#docs:check:locales && vp run @pantoken/docs#docs:check:drift",
         cache: false,
       },
       // Same sweep with every policy `warn` escalated to `block`. Not wired into PR CI — this is the

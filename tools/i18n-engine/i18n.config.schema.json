@@ -5,13 +5,19 @@
   "description": "The shared configuration for pantoken localization extraction, catalogs, providers, and drift policy.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["source", "spaces"],
+  "required": ["source", "requiredSpaces", "spaces"],
   "properties": {
     "$schema": { "type": "string", "format": "uri-reference" },
     "source": {
       "type": "string",
       "minLength": 1,
       "description": "The source locale, normally en."
+    },
+    "requiredSpaces": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
     },
     "catalogs": { "$ref": "#/$defs/catalogs" },
     "poOptions": { "$ref": "#/$defs/poOptions" },

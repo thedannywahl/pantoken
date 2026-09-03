@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@pantoken/translation-adapters": "workspace:*",
+    "ajv": "catalog:",
     "commander": "catalog:",
     "messageformat": "catalog:",
     "remark-gfm": "catalog:",

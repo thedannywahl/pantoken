@@ -12,6 +12,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 import { Argument, Command, CommanderError, Option } from "commander";
 import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
+import { runLint } from "./lint.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import {
   DOCS_GUIDES,
@@ -243,11 +244,21 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
       ),
     );
 
-  for (const name of ["lint", "stats"] as const) {
-    const cmd = program.command(name);
-    if (name === "stats") cmd.addArgument(new Argument("[space]", "space id").argOptional());
-    cmd.action(stubAction(name));
-  }
+  program.command("lint").action(async () => {
+    try {
+      const result = await runLint(program.opts<{ config: string }>().config);
+      console.log(
+        `Validated ${String(result.checkedSpaces)} spaces, ${String(result.checkedLocales)} locales, and ${String(result.checkedCatalogs)} catalogs.`,
+      );
+    } catch (error) {
+      console.error(error instanceof Error ? error.message : String(error));
+      process.exitCode = 1;
+    }
+  });
+
+  const stats = program.command("stats");
+  stats.addArgument(new Argument("[space]", "space id").argOptional());
+  stats.action(stubAction("stats"));
 
   const locale = program
     .command("locale")
