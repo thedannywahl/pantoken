@@ -3,7 +3,7 @@
   "checkpoint_id": "01M1KXM96P9S73BWS850QPZTBP",
   "strategy": "manual-commit",
   "branch": "i18n2",
-  "checkpoints_count": 3,
+  "checkpoints_count": 5,
   "files_touched": [
     "tools/i18n-engine/src/coverage.ts",
     "tools/i18n-engine/tests/coverage.test.ts"
@@ -15,6 +15,13 @@
       "compact_transcript": "/0/transcript.jsonl",
       "content_hash": "/0/content_hash.txt",
       "prompt": "/0/prompt.txt"
+    },
+    {
+      "metadata": "/1/metadata.json",
+      "transcript": "/1/full.jsonl",
+      "compact_transcript": "/1/transcript.jsonl",
+      "content_hash": "/1/content_hash.txt",
+      "prompt": "/1/prompt.txt"
     }
   ],
   "token_usage": {
