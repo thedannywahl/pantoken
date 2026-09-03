@@ -1,0 +1,55 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1KMPN7TNRP2F83SWW3DVSJM",
+  "session_id": "e5adabd6-d13c-4b22-a74e-2a8ef51aa991",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T12:43:05.913742Z",
+  "branch": "i18n2",
+  "checkpoints_count": 1,
+  "save_step_count": 1,
+  "files_touched": [],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "cb6ce85eb5aa",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 57
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 51,
+      "user_lines_removed": 29,
+      "agent_lines_added": 5975,
+      "agent_lines_removed": 59,
+      "user_added_per_file": {
+        ".changeset/pr-119-localization-coverage.md": 12,
+        ".github/workflows/ci.yml": 4,
+        "docs/.vitepress/i18n.ts": 1,
+        "docs/hy/guide/getting-started.md": 1,
+        "docs/scripts/segment-markdown.ts": 1,
+        "docs/tr/guide/getting-started.md": 1,
+        "l10n/fr/docs.api.po": 21,
+        "packages/scaffold/scripts/i18n-sources.ts": 1,
+        "tools/i18n-engine/src/cli.ts": 2,
+        "tools/i18n-engine/src/coverage.ts": 4,
+        "tools/i18n-engine/src/lint.ts": 1,
+        "tools/i18n-engine/src/pipeline.ts": 2
+      },
+      "user_removed_per_file": {
+        "docs/hy/guide/getting-started.md": 1,
+        "docs/scripts/segment-markdown.ts": 1,
+        "docs/tr/guide/getting-started.md": 1,
+        "l10n/fr/docs.api.po": 21,
+        "tools/i18n-engine/src/cli.ts": 5
+      }
+    }
+  ]
+}
