@@ -2052,31 +2052,31 @@ msgstr "แนะนำฟีเจอร์"
 #, no-c-format
 msgctxt "docs.demos:pendo:popoverBody"
 msgid "This anchored guide keeps the next action close to the feature it describes."
-msgstr "คำแนะนำแบบยึดตำแหน่งนี้จะทำให้การดำเนินการถัดไปอยู่ใกล้กับฟีเจอร์ที่อธิบาย"
+msgstr "คำแนะนำที่ยึดตำแหน่งนี้ช่วยให้การกระทำถัดไปอยู่ใกล้กับฟีเจอร์ที่อธิบาย"
 
 #: pendo/i18n.json#alertLabel
 #, no-c-format
 msgctxt "docs.demos:pendo:alertLabel"
 msgid "Alert"
-msgstr "การแจ้งเตือน"
+msgstr "แจ้งเตือน"
 
 #: pendo/i18n.json#alertTitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertTitle"
 msgid "Maintenance tonight"
-msgstr "การบำรุงรักษาคืนนี้"
+msgstr "บำรุงรักษาคืนนี้"
 
 #: pendo/i18n.json#alertSubtitle
 #, no-c-format
 msgctxt "docs.demos:pendo:alertSubtitle"
 msgid "Starts at 11:00 PM"
-msgstr "เริ่มเวลา 23:00"
+msgstr "เริ่มเวลา 23:00 น."
 
 #: pendo/i18n.json#alertBody
 #, no-c-format
 msgctxt "docs.demos:pendo:alertBody"
 msgid "Course tools will be unavailable briefly tonight while maintenance is completed."
-msgstr "เครื่องมือของหลักสูตรจะไม่สามารถใช้งานได้เป็นเวลาสั้น ๆ คืนนี้ขณะดำเนินการบำรุงรักษา"
+msgstr "เครื่องมือคอร์สจะไม่สามารถใช้งานได้ชั่วคราวคืนนี้ในระหว่างการบำรุงรักษา"
 
 #: pendo/i18n.json#bannerLabel
 #, no-c-format
