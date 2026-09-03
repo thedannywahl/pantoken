@@ -31,8 +31,8 @@
     "provenance": true
   },
   "scripts": {
-    "generate": "node scripts/generate.ts",
-    "dev": "node scripts/generate.ts && node scripts/build-entries.ts && vp pack --watch",
+    "generate": "node scripts/generate.ts && node scripts/build-bundles.ts",
+    "dev": "node scripts/generate.ts && node scripts/build-bundles.ts && node scripts/build-entries.ts && vp pack --watch",
     "translate": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" translate ui.strings",
     "check:drift": "i18n --config \"$(git rev-parse --show-toplevel)/i18n.config.json\" check ui.strings",
     "test": "vp test",
@@ -43,7 +43,8 @@
     "@pantoken/icons": "workspace:*",
     "@pantoken/interactions": "workspace:*",
     "@pantoken/model": "workspace:*",
-    "@pantoken/scaffold-base": "workspace:*"
+    "@pantoken/scaffold-base": "workspace:*",
+    "messageformat": "catalog:"
   },
   "devDependencies": {
     "@pantoken/i18n-engine": "workspace:*",

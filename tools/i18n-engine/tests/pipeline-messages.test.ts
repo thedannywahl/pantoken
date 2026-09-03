@@ -12,7 +12,7 @@ import {
 const CONFIG = parseConfig({
   source: "en",
   locales: {
-    registry: "@pantoken/i18n#LOCALES",
+    registry: "@pantoken/web-components#LOCALES",
     exclude: [],
     tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
   },

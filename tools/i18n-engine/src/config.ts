@@ -40,7 +40,7 @@ export interface PoOptionsConfig {
 
 /** Supported-locale registry, exclusions, and ordered locale tiers. */
 export interface LocalesConfig {
-  /** Where the supported-locale registry comes from, e.g. `"@pantoken/i18n#LOCALES"`. */
+  /** Where the supported-locale registry comes from, e.g. `"@pantoken/web-components#LOCALES"`. */
   registry: string;
   /** Locales dropped from the pipeline entirely — not translated, rendered, or checked. */
   exclude: readonly string[];
@@ -144,7 +144,7 @@ export const CONFIG_DEFAULTS: Omit<I18nConfig, "source" | "spaces"> = {
   catalogs: { template: "l10n/{space}.pot", target: "l10n/{locale}/{space}.po" },
   poOptions: { defaultFlags: ["no-c-format"], preserveObsolete: true },
   locales: {
-    registry: "@pantoken/i18n#LOCALES",
+    registry: "@pantoken/web-components#LOCALES",
     exclude: [],
     tiers: { source: ["en"], secondary: ["*"] },
   },

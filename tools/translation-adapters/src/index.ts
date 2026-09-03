@@ -240,7 +240,7 @@ function localeMatchesPattern(pattern: string, locale: string): boolean {
 
 /**
  * Derive one `"<lang>*"` glob per unique base language present in `locales` (e.g. the ~47 keys of
- * `LOCALES` from `@pantoken/i18n`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error`
+ * `LOCALES` from `@pantoken/web-components`), for building a {@link VerbatimPolicy}'s `allow`/`warn`/`error`
  * lists without hand-typing every regional variant. `"en-GB"` and `"en-AU"` both collapse to
  * `"en*"`; a locale with no region subtag (e.g. `"hu"`) becomes `"hu*"` too. Returned sorted and
  * deduped — callers pick which families go in which tier, e.g.

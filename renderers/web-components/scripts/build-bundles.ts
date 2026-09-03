@@ -1,8 +1,8 @@
 /**
- * Generate `src/locales/{locale}.ts` files from the `ui.strings` PO catalogs the `i18n-engine`
+ * Generate web-components locale runtime files from the `ui.strings` PO catalogs the `i18n-engine`
  * pipeline maintains (`l10n/{locale}/ui.strings.po`, keyed by `msgctxt`, sourced from
- * `renderers/web-components/src/i18n.json`). Run via `pnpm generate` or
- * `vp run @pantoken/i18n#generate`.
+ * `renderers/web-components/src/i18n.json`). Run via
+ * `vp run @pantoken/web-components#generate`.
  *
  * A key untranslated (or `translate: "never"`) in a locale's PO falls back to the English source
  * value. Weekday names are always derived at runtime via `Intl.DateTimeFormat` — never committed.
@@ -10,7 +10,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadConfig, resolveMessagesForLocale } from "@pantoken/i18n-engine";
-import { ENGLISH_STRINGS } from "@pantoken/web-components";
+import { ENGLISH_STRINGS } from "../src/lib/strings.ts";
 import { LOCALES } from "../src/lib/locales.ts";
 
 // This bundle only carries `WebComponentStrings` (`weekdays` is derived at runtime, not a key).

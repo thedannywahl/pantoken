@@ -778,9 +778,6 @@ importers:
       '@pantoken/demo':
         specifier: workspace:*
         version: link:../tools/demo
-      '@pantoken/i18n':
-        specifier: workspace:*
-        version: link:../packages/i18n
       '@pantoken/interactions':
         specifier: workspace:*
         version: link:../formats/interactions
@@ -1301,31 +1298,6 @@ importers:
         specifier: workspace:*
         version: link:../scaffold
     devDependencies:
-      '@types/node':
-        specifier: 'catalog:'
-        version: 26.4.0
-      typescript:
-        specifier: 'catalog:'
-        version: 7.0.2
-      vite:
-        specifier: 'catalog:'
-        version: '@voidzero-dev/vite-plus-core@0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(esbuild@0.25.12)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0)'
-      vite-plus:
-        specifier: 'catalog:'
-        version: 0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(@vitest/coverage-v8@4.1.11)(@voidzero-dev/vite-plus-core@0.3.0(@arethetypeswrong/core@0.18.5)(@types/node@26.4.0)(jiti@2.6.1)(publint@0.3.24)(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0))(happy-dom@20.12.0)(jiti@2.6.1)(publint@0.3.24)(svelte@5.57.0(@typescript-eslint/types@8.69.0))(terser@5.51.2)(typescript@7.0.2)(yaml@2.9.0)
-
-  packages/i18n:
-    dependencies:
-      '@pantoken/web-components':
-        specifier: workspace:*
-        version: link:../../renderers/web-components
-      messageformat:
-        specifier: 'catalog:'
-        version: 4.0.0
-    devDependencies:
-      '@pantoken/i18n-engine':
-        specifier: workspace:*
-        version: link:../../tools/i18n-engine
       '@types/node':
         specifier: 'catalog:'
         version: 26.4.0
@@ -2677,9 +2649,6 @@ importers:
 
   renderers/react:
     dependencies:
-      '@pantoken/i18n':
-        specifier: workspace:*
-        version: link:../../packages/i18n
       '@pantoken/scaffold-base':
         specifier: workspace:*
         version: link:../../packages/scaffold-base
@@ -2913,9 +2882,6 @@ importers:
 
   renderers/svelte:
     dependencies:
-      '@pantoken/i18n':
-        specifier: workspace:*
-        version: link:../../packages/i18n
       '@pantoken/scaffold-base':
         specifier: workspace:*
         version: link:../../packages/scaffold-base
@@ -3029,9 +2995,6 @@ importers:
 
   renderers/vue:
     dependencies:
-      '@pantoken/i18n':
-        specifier: workspace:*
-        version: link:../../packages/i18n
       '@pantoken/scaffold-base':
         specifier: workspace:*
         version: link:../../packages/scaffold-base
@@ -3078,6 +3041,9 @@ importers:
       '@pantoken/scaffold-base':
         specifier: workspace:*
         version: link:../../packages/scaffold-base
+      messageformat:
+        specifier: 'catalog:'
+        version: 4.0.0
     devDependencies:
       '@pantoken/i18n-engine':
         specifier: workspace:*

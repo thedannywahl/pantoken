@@ -176,7 +176,7 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
         },
         () => {
           // Messages spaces don't have a generic file-render step — a space's own codegen
-          // (e.g. `packages/i18n/scripts/build-bundles.ts`) reads its PO catalogs directly via
+          // (e.g. `renderers/web-components/scripts/build-bundles.ts`) reads its PO catalogs directly via
           // `resolveMessagesForLocale`. Nothing to do here.
           console.log(`"render" for a messages space is a no-op — its package owns codegen.`);
         },

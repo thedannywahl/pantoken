@@ -5,8 +5,8 @@
  *
  * @module
  */
-import { makeStrings } from "@pantoken/web-components";
-import type { WebComponentStrings } from "@pantoken/web-components";
+import { makeStrings } from "./lib/strings.ts";
+import type { WebComponentStrings } from "./lib/strings.ts";
 
 export type { WebComponentStrings };
 export { makeStrings };

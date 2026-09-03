@@ -272,7 +272,7 @@ export interface ResolvedMessages {
 
 /** Resolve `spaceId`'s messages for `locale`: each source unit's `msgid`, overridden by its PO
  *  `msgstr` when translated (and non-empty). Exported for the package-specific codegen step
- *  (e.g. `packages/i18n/scripts/build-bundles.ts`) that turns this into its own bundle format. */
+ *  (e.g. `renderers/web-components/scripts/build-bundles.ts`) that turns this into its own bundle format. */
 export function resolveMessagesForLocale(
   config: I18nConfig,
   configDir: string,

@@ -5,7 +5,7 @@
  * room for higher-quality engines later.
  */
 import { extractJsonObject, spawnPrompt } from "@pantoken/translation-adapters";
-import { LOCALES } from "@pantoken/i18n";
+import { LOCALES } from "@pantoken/web-components";
 import { GLOSSARY_TERMS, type GlossaryKind } from "./glossary.ts";
 import { TranslationMemory } from "./translation-memory.ts";
 

@@ -1,5 +1,5 @@
 /**
- * `@pantoken/i18n` — Canvas-parity locale bundles for `@pantoken/web-components`.
+ * `@pantoken/web-components` localization helpers and locale bundles.
  *
  * Ships pre-built {@link LocaleBundle} objects for all 45 Canvas-supported locales (including 3
  * RTL: Arabic, Hebrew, Persian/Farsi). Pass any bundle — or a raw BCP47 tag — to
@@ -7,7 +7,7 @@
  *
  * @example
  * ```ts
- * import { registerLocalized, hu } from "@pantoken/i18n";
+ * import { registerLocalized, hu } from "@pantoken/web-components";
  * import "@pantoken/css";
  *
  * registerLocalized(hu); // Hungarian UI strings + correct first-day-of-week
@@ -19,12 +19,14 @@
  * @module
  */
 
-import { makeStrings, register, type ElementRegistry } from "@pantoken/web-components";
+import { register } from "./register.ts";
+import type { ElementRegistry } from "./lib/context.ts";
+import { ENGLISH_STRINGS, makeStrings, type WebComponentStrings } from "./lib/strings.ts";
 import { LOCALES } from "./lib/locales.ts";
 import type { LocaleBundle } from "./locale-bundle.ts";
 
-export type { WebComponentStrings } from "@pantoken/web-components";
-export { ENGLISH_STRINGS, makeStrings } from "@pantoken/web-components";
+export type { WebComponentStrings };
+export { ENGLISH_STRINGS, makeStrings };
 
 export { LOCALES } from "./lib/locales.ts";
 export type { LocaleInfo } from "./lib/locales.ts";
@@ -59,7 +61,7 @@ export function getDir(localeOrBundle: string | LocaleBundle): "ltr" | "rtl" {
 // ── registerLocalized ─────────────────────────────────────────────────────────
 
 /**
- * Register `@pantoken/web-components` custom elements with locale-specific strings and direction.
+ * Register custom elements with locale-specific strings and direction.
  *
  * Accepts a fully resolved {@link LocaleBundle} *or* a raw BCP47 tag string. When a string is
  * passed, {@link makeStrings} derives weekday names via `Intl.DateTimeFormat` and all other strings
@@ -71,7 +73,7 @@ export function getDir(localeOrBundle: string | LocaleBundle): "ltr" | "rtl" {
  *
  * @example
  * ```ts
- * import { registerLocalized, hu } from "@pantoken/i18n";
+ * import { registerLocalized, hu } from "@pantoken/web-components";
  *
  * registerLocalized(hu);
  * registerLocalized("ar"); // direction inferred from LOCALES
@@ -133,7 +135,7 @@ export interface LocaleSet<K extends string> {
  *
  * @example
  * ```ts
- * import { createLocaleSet, en, hu, de } from "@pantoken/i18n";
+ * import { createLocaleSet, en, hu, de } from "@pantoken/web-components";
  *
  * const locales = createLocaleSet({ en, hu, de });
  *

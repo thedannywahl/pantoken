@@ -34,7 +34,6 @@
     "check": "vp check"
   },
   "dependencies": {
-    "@pantoken/i18n": "workspace:*",
     "@pantoken/scaffold-base": "workspace:*",
     "@pantoken/web-components": "workspace:*"
   },

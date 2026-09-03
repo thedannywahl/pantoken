@@ -54,7 +54,6 @@
     "@pantoken/components": "workspace:*",
     "@pantoken/css": "workspace:*",
     "@pantoken/demo": "workspace:*",
-    "@pantoken/i18n": "workspace:*",
     "@pantoken/interactions": "workspace:*",
     "@pantoken/plugin-custom-icons": "workspace:*",
     "@pantoken/plugin-logos": "workspace:*",

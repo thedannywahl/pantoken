@@ -10,7 +10,7 @@
     "preserveObsolete": true
   },
   "locales": {
-    "registry": "@pantoken/i18n#LOCALES",
+    "registry": "@pantoken/web-components#LOCALES",
     "exclude": [],
     "tiers": {
       "source": ["en"],

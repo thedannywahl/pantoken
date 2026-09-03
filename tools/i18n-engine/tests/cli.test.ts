@@ -15,7 +15,7 @@ let warnSpy: ReturnType<typeof vi.spyOn>;
 const MINIMAL_CONFIG = {
   source: "en",
   locales: {
-    registry: "@pantoken/i18n#LOCALES",
+    registry: "@pantoken/web-components#LOCALES",
     exclude: [],
     tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
   },

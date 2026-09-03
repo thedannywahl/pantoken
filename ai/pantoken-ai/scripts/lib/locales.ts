@@ -1,6 +1,6 @@
 /**
  * pantoken's supported-locale registry, keyed by BCP47 tag. Build-script-only copy of
- * `@pantoken/i18n`'s `src/lib/locales.ts` — duplicated (rather than imported) so this
+ * `@pantoken/web-components`'s `src/lib/locales.ts` — duplicated (rather than imported) so this
  * package's build scripts don't gain a new workspace dependency just for a label lookup.
  *
  * Seeded from the Canvas LMS supported-language list: RTL flag and display label sourced from

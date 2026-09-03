@@ -47,8 +47,11 @@ export default defineConfig({
         "formats/*/scripts/{fonts,generate}.ts",
         "docs/scripts/{translation-memory,api-translation,build-api-locales,build-css-api,check-locale-drift,style-api-badges}.ts",
         "docs/scripts/lib/scope-components.ts",
-        "packages/i18n/src/**",
-        "packages/i18n/scripts/**",
+        "renderers/web-components/src/locales/**",
+        "renderers/web-components/src/i18n.ts",
+        "renderers/web-components/src/locale-bundle.ts",
+        "renderers/web-components/src/lib/{locales,runtime}.ts",
+        "renderers/web-components/scripts/build-bundles.ts",
       ],
       exclude: [
         "**/*.{test,spec}.?(c|m)[jt]s?(x)",
@@ -371,7 +374,7 @@ export default defineConfig({
         cache: false,
       },
       "i18n:bundles:build": {
-        command: "vp run @pantoken/i18n#generate",
+        command: "vp run @pantoken/web-components#generate",
         dependsOn: ["build:all"],
       },
       "changeset:add": {
