@@ -22,3 +22,7 @@ Run vp run @pantoken/docs#docs:api:en
     at TracingChannel.tracePromise (node:diagnostics_channel:547:22)
 [error] Found 2 errors and 0 warnings
 ```
+
+---
+
+there should be build in the cache from the ci workflow so we don't have to rebuild.
