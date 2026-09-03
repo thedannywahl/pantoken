@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, toupatou"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Yon sèl modèl tòken rezoud, refòme an fichye stil, lyen pou kad (framework), kòd natif, ak chaj pou zouti konsepsyon."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Kòmanse"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Kat pakè a"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Referans API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Referans CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Yon sèl sous laverite"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Chak pakè li menm IR tòken rezoud la. Chanje yon tòken anwo, epi li pral rive nan CSS, SCSS, kòd natif, ak Figma menm jan an."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Sèvi ak pi piti pakè a"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Enstale sèlman @pantoken/css pou yon fichye stil, @pantoken/react pou hooks ak ikon, oswa yon preset bundler pou Tailwind, Panda, oswa MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Jenere pou nenpòt platfòm"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Egzekite `pantoken generate` pou pwodui Swift, Kotlin, Compose, Flutter, Rust, WordPress, ak plis ankò. Menm tòken yo, nan idyòm chak ekosistèm."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Pa gen kouplaj ak sous anlè"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Tòken yo anbake kòm JSON estatik, kidonk `npm i` pa janm depann sou yon sous ki sèlman sou GitHub. Piblikab, semver, epi zanmitay offline."

@@ -14,7 +14,14 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { DriftReporter, type DriftPolicy } from "@pantoken/translation-adapters";
 import type { I18nConfig, MessagesSpaceConfig } from "./config.ts";
-import { extractGuideSpace, listGuideFiles, renderFile } from "./extract.ts";
+import {
+  extractFileUnits,
+  extractFrontmatterUnits,
+  extractGuideSpace,
+  listGuideFiles,
+  renderFile,
+  renderFrontmatterFile,
+} from "./extract.ts";
 import { extractMessagesSpace, type MessageUnit } from "./extract-messages.ts";
 import { mergePoWithTemplate } from "./gettext.ts";
 import { parsePo, serializePot, type PoEntry } from "./po.ts";
@@ -23,6 +30,7 @@ import { catalogUnitKey } from "./units.ts";
 
 /** Canonical content-space id for the repository's Markdown guides. */
 const DOCS_GUIDES = "docs.guides";
+const DOCS_HOME = "docs.home";
 
 /** Substitute `{space}`/`{locale}` placeholders in a catalog path pattern. */
 function resolvePattern(pattern: string, vars: Readonly<Record<string, string>>): string {
@@ -43,6 +51,24 @@ function guidesLocales(config: I18nConfig): string[] {
   return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
 }
 
+function contentLocales(config: I18nConfig, spaceId: string): string[] {
+  const space = config.spaces[spaceId];
+  const nonExcluded = nonExcludedKnownLocales(config);
+  return [...localesForSpace(nonExcluded, space?.kind === "content" ? space.locales : undefined)];
+}
+
+function contentSpaceUnits(config: I18nConfig, configDir: string, spaceId: string) {
+  const space = config.spaces[spaceId];
+  if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
+  const files = spaceId === DOCS_HOME ? ["index.md"] : listGuideFiles(join(configDir, "docs"));
+  return files.flatMap((file) => {
+    const source = readFileSync(join(configDir, "docs", file), "utf8");
+    return space.segment === "frontmatter"
+      ? extractFrontmatterUnits(source, file)
+      : extractFileUnits(source, file);
+  });
+}
+
 /** Result of extracting one localization space into a POT file. */
 export interface ExtractResult {
   space: string;
@@ -58,6 +84,19 @@ export function runExtractGuides(config: I18nConfig, configDir: string): Extract
   mkdirSync(dirname(potPath), { recursive: true });
   writeFileSync(potPath, serializePot(units, config.poOptions.defaultFlags));
   return { space: DOCS_GUIDES, unitCount: units.length, potPath };
+}
+
+/** Extract a content space, including frontmatter-only spaces such as `docs.home`. */
+export function runExtractContent(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+): ExtractResult {
+  const units = contentSpaceUnits(config, configDir, spaceId);
+  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
+  mkdirSync(dirname(potPath), { recursive: true });
+  writeFileSync(potPath, serializePot(units, config.poOptions.defaultFlags));
+  return { space: spaceId, unitCount: units.length, potPath };
 }
 
 /** Result of synchronizing one locale's PO catalog with its POT template. */
@@ -98,6 +137,21 @@ export async function runTranslateGuides(
   return { space: DOCS_GUIDES, locale, poPath, ...(await mergeAndCount(potPath, poPath)) };
 }
 
+/** Synchronize one locale's PO catalog for a content space. */
+export async function runTranslateContent(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  locale: string,
+): Promise<TranslateResult> {
+  const potPath = join(configDir, resolvePattern(config.catalogs.template, { space: spaceId }));
+  const poPath = join(
+    configDir,
+    resolvePattern(config.catalogs.target, { space: spaceId, locale }),
+  );
+  return { space: spaceId, locale, poPath, ...(await mergeAndCount(potPath, poPath)) };
+}
+
 /** Result of rendering one locale's translated content files. */
 export interface RenderResult {
   space: string;
@@ -136,6 +190,30 @@ export function runRenderGuides(
   return { space: DOCS_GUIDES, locale, filesWritten };
 }
 
+/** Render a translated content space's locale output with English fallback for empty PO entries. */
+export function runRenderContent(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  locale: string,
+): RenderResult {
+  const space = config.spaces[spaceId];
+  if (!space || space.kind !== "content") throw new Error(`"${spaceId}" is not a content space.`);
+  const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
+  const byMsgid = new Map(entries.filter((e) => e.msgstr !== "").map((e) => [e.msgid, e.msgstr]));
+  const sourcePath = spaceId === DOCS_HOME ? "index.md" : undefined;
+  if (!sourcePath) throw new Error(`No generic renderer is configured for "${spaceId}".`);
+  const source = readFileSync(join(configDir, "docs", sourcePath), "utf8");
+  const rendered =
+    space.segment === "frontmatter"
+      ? renderFrontmatterFile(source, (text) => byMsgid.get(text) ?? text, locale)
+      : renderFile(source, (text) => byMsgid.get(text) ?? text);
+  const outPath = join(configDir, resolvePattern(space.render, { locale, path: sourcePath }));
+  mkdirSync(dirname(outPath), { recursive: true });
+  writeFileSync(outPath, rendered);
+  return { space: spaceId, locale, filesWritten: [outPath] };
+}
+
 /** `config.locales.tiers` + `config.drift` shaped as a `DriftPolicy` for {@link DriftReporter}. */
 function buildDriftPolicy(config: I18nConfig): DriftPolicy {
   return {
@@ -150,6 +228,19 @@ function loadPoEntries(config: I18nConfig, configDir: string, locale: string): P
   const poPath = join(
     configDir,
     resolvePattern(config.catalogs.target, { space: DOCS_GUIDES, locale }),
+  );
+  return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
+}
+
+function loadPoEntriesForSpace(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+  locale: string,
+): PoEntry[] {
+  const poPath = join(
+    configDir,
+    resolvePattern(config.catalogs.target, { space: spaceId, locale }),
   );
   return existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [];
 }
@@ -190,7 +281,39 @@ export function runCheckGuides(config: I18nConfig, configDir: string): CheckResu
   return { reporter, exitCode: reporter.report() };
 }
 
+/** Check translated entries for a frontmatter content space such as `docs.home`. */
+export function runCheckContent(
+  config: I18nConfig,
+  configDir: string,
+  spaceId: string,
+): CheckResult {
+  const units = contentSpaceUnits(config, configDir, spaceId);
+  const reporter = new DriftReporter({
+    label: spaceId,
+    fixCommand: `i18n translate ${spaceId} && i18n render ${spaceId}`,
+    policy: buildDriftPolicy(config),
+  });
+  for (const locale of contentLocales(config, spaceId)) {
+    if (locale === config.source) continue;
+    const entries = loadPoEntriesForSpace(config, configDir, spaceId, locale);
+    const translated = new Set(entries.filter((e) => e.msgstr !== "").map((e) => e.msgid));
+    for (const unit of units) {
+      if (translated.has(unit.msgid)) continue;
+      const [file, line] = unit.reference.split(":");
+      reporter.add({
+        surface: spaceId,
+        locale,
+        file,
+        line: line ? Number(line) : undefined,
+        detail: `Untranslated: ${unit.msgid.slice(0, 60)}`,
+      });
+    }
+  }
+  return { reporter, exitCode: reporter.report() };
+}
+
 export { DOCS_GUIDES, guidesLocales };
+export { DOCS_HOME, contentLocales };
 
 /** Every non-excluded, in-scope locale for a given messages space, per `locales.exclude` + the
  *  space's own scope. */

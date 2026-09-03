@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, overal"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Één opgelost tokenmodel, omgevormd tot stylesheets, framework-bindings, native code en design-tool payloads."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Aan de slag"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Het pakketoverzicht"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API-referentie"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS-referentie"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Één bron van waarheid"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Elk pakket leest dezelfde opgeloste token-IR. Verander een token upstream en het stroomt op dezelfde manier naar CSS, SCSS, native code en Figma."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Gebruik het kleinste pakket"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Installeer alleen @pantoken/css voor een stylesheet, @pantoken/react voor hooks en iconen, of een bundler-preset voor Tailwind, Panda of MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Genereer voor elk platform"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Voer `pantoken generate` uit om Swift, Kotlin, Compose, Flutter, Rust, WordPress en meer te genereren. Dezelfde tokens, in de idiomen van elk ecosysteem."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Geen upstream-koppeling"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "De tokens worden meegeleverd als vendored statische JSON, dus `npm i` zoekt nooit naar een GitHub-only bron. Publiceerbaar, semver'd, offline-vriendelijk."

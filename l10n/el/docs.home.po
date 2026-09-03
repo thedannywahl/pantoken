@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, παντού"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Ένα επιλυμένο μοντέλο token, διαμορφωμένο σε stylesheets, συνδέσεις framework, native κώδικα και δεδομένα για εργαλεία σχεδίασης."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Ξεκινώντας"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Ο χάρτης πακέτων"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Αναφορά API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Αναφορά CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Μία πηγή αλήθειας"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Κάθε πακέτο χρησιμοποιεί την ίδια επιλυμένη αναπαράσταση token (IR). Αλλάξτε ένα token στην upstream πηγή και αυτό μεταδίδεται στην CSS, SCSS, native κώδικα και Figma με τον ίδιο τρόπο."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Χρησιμοποιήστε το μικρότερο πακέτο"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Εγκαταστήστε μόνο @pantoken/css για ένα stylesheet, @pantoken/react για hooks και εικονίδια, ή ένα preset bundler για Tailwind, Panda ή MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Δημιουργία για οποιαδήποτε πλατφόρμα"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Εκτελέστε `pantoken generate` για να παράγετε Swift, Kotlin, Compose, Flutter, Rust, WordPress και άλλα. Τα ίδια tokens, στην ιδιωματική μορφή κάθε οικοσυστήματος."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Χωρίς σύνδεση με upstream"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Τα tokens διανέμονται ως vendored στατικά JSON, οπότε το `npm i` δεν αναζητά ποτέ πηγή αποκλειστικά στο GitHub. Μπορούν να δημοσιευτούν, έχουν semver και είναι φιλικά για offline χρήση."

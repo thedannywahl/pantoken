@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, povsod"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "En razrešen model tokenov, preoblikovan v slogovne liste, vezave za ogrodja, nativen kodo in pakete za oblikovalska orodja."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Začetek"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Zemljevid paketov"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Referenca API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Referenca za CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "En sam vir resnice"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Vsak paket uporablja isti razrešeni token IR. Spremenite token v izvoru in sprememba se enako prenese v CSS, SCSS, nativen kodo in Figma."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Uporabite najmanjši paket"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Namestite le @pantoken/css za slogovno datoteko, @pantoken/react za hooke in ikone, ali prednastavitev bundlerja za Tailwind, Panda ali MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Generirajte za katero koli platformo"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Zaženite `pantoken generate`, da izvozite Swift, Kotlin, Compose, Flutter, Rust, WordPress in še več. Isti tokeni, v idiomu vsakega ekosistema."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Brez vezave na upstream"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Tokeni so vključeni kot vendorirana statična JSON datoteka, zato `npm i` nikoli ne posega po izvoru, ki je omejen na GitHub. Objavljivo, s semver različicami, prijazno za delo brez povezave."

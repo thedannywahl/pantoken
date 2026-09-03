@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, buotruoktot"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Okta ráddjeduvvon token-mudel, mánuheapmái rievdasašša, framework-binnttaga, nativkoda ja design-ovttasvuođa čađaheapmái."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Oktavuođaid ožžot"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Pakkea mapa"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API-birra"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS-birra"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Okta čuovgga máŋggabeaivi"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Buot pakki čállá das rávdna ráddjeduvvon token-IR. Vázzit token mii gávdno álgguheapmái ja son vuođđá CSS:s, SCSS:s, nativkodas ja Figma:s diŋgga."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Galgá leat čoahkkán pakkea"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Instalere doar @pantoken/css vuođđu rievdasaššiin, @pantoken/react hooks ja ikonavuotna, vai bundler-preset Tailwind, Panda, dahje MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Generere mihkke platvorma"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Rádjái `pantoken generate` emit Swift, Kotlin, Compose, Flutter, Rust, WordPress ja máŋga. Dihte sama tokenat, buot ekošystemain dihte."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Ii beassadálki giegđen"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Tokenat leat vendorejuhkát stahtalaš JSON:s, doul `npm i` ii olmmoš gávdno GitHub-olmmoš vuohtas. Publiserevdu, semver-dávjá ja offline-buorre."

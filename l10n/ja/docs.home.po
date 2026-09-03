@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "あらゆる場所に、InstUIを。"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "1つの解決済みトークンモデルが、スタイルシート、フレームワークバインディング、ネイティブコード、デザインツール用ペイロードに変換されます。"
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "はじめに"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "パッケージマップ"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API リファレンス"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS リファレンス"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "単一の信頼できる情報源"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "すべてのパッケージは同じ解決済みトークン IR を参照します。上流でトークンを変更すると、CSS、SCSS、ネイティブコード、Figma に同じように反映されます。"
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "最小のパッケージを使う"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "スタイルシートには @pantoken/css のみ、フックとアイコンには @pantoken/react を、Tailwind、Panda、または MUI にはバンドラ用プリセットをインストールしてください。"
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "任意のプラットフォーム向けに生成"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Swift、Kotlin、Compose、Flutter、Rust、WordPress などを出力するには `pantoken generate` を実行してください。同じトークンを各エコシステムの慣用表現で提供します。"
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "上流への結合なし"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "トークンはベンダリングされた静的 JSON として配布されるため、`npm i` が GitHub 専用のソースに依存することはありません。公開可能で semver 管理され、オフラインでも利用できます。"

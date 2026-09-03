@@ -4,6 +4,9 @@ import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, test } from "vite-plus/test";
 import { parseConfig } from "../src/config.ts";
 import {
+  runExtractContent,
+  runRenderContent,
+  runTranslateContent,
   resolveMessagesForLocale,
   runExtractMessages,
   runTranslateMessages,
@@ -47,6 +50,48 @@ describe("runExtractMessages", () => {
     expect(pot).toContain('msgctxt "ui.strings:datePlaceholder"');
     expect(pot).toContain('msgid "yyyy-mm-dd"');
     expect(pot).toContain("x-translate-optional");
+  });
+});
+
+describe("frontmatter content pipeline", () => {
+  const config = parseConfig({
+    source: "en",
+    locales: {
+      registry: "@pantoken/web-components#LOCALES",
+      exclude: [],
+      tiers: { source: ["en"], primary: ["hu"], secondary: ["*"] },
+    },
+    spaces: {
+      "docs.home": {
+        kind: "content",
+        include: ["docs/index.md"],
+        render: "docs/{locale}/index.md",
+        transientRender: false,
+        segment: "frontmatter",
+      },
+    },
+  });
+
+  test("extracts, resolves, and renders a translated frontmatter catalog", async () => {
+    mkdirSync(join(testDir, "docs"), { recursive: true });
+    writeFileSync(
+      join(testDir, "docs/index.md"),
+      ["---", "hero:", "  text: Hello home", "---", "", "Body stays English."].join("\n"),
+    );
+    const extracted = runExtractContent(config, testDir, "docs.home");
+    expect(extracted.unitCount).toBe(1);
+    await runTranslateContent(config, testDir, "docs.home", "hu");
+    const poPath = join(testDir, "l10n/hu/docs.home.po");
+    writeFileSync(
+      poPath,
+      readFileSync(poPath, "utf8").replace(
+        'msgid "Hello home"\nmsgstr ""',
+        'msgid "Hello home"\nmsgstr "Szia otthon"',
+      ),
+    );
+    const rendered = runRenderContent(config, testDir, "docs.home", "hu");
+    expect(rendered.filesWritten).toHaveLength(1);
+    expect(readFileSync(join(testDir, "docs/hu/index.md"), "utf8")).toContain("text: Szia otthon");
   });
 });
 

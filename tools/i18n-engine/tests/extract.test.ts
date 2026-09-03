@@ -2,8 +2,10 @@ import { describe, expect, test } from "vite-plus/test";
 import {
   collectProseRanges,
   extractFileUnits,
+  extractFrontmatterUnits,
   extractGuideSpace,
   renderFile,
+  renderFrontmatterFile,
   renderRanges,
 } from "../src/extract.ts";
 
@@ -52,6 +54,44 @@ describe("extractFileUnits", () => {
       translate: "always",
     });
     expect(units.find((u) => u.msgid === "line two")?.reference).toBe("guide/x.md:3");
+  });
+});
+
+describe("frontmatter content extraction", () => {
+  const source = [
+    "---",
+    "hero:",
+    "  text: InstUI, everywhere",
+    "  tagline: One resolved token model.",
+    "  link: /guide/",
+    "features:",
+    "  - title: Vendored tokens",
+    "    details: Run &grave;npm i&grave; and go.",
+    "---",
+    "",
+    "- title: body prose, not frontmatter",
+  ].join("\n");
+
+  test("extracts visible values, preserves references, and normalizes grave markers", () => {
+    expect(extractFrontmatterUnits(source, "index.md")).toEqual([
+      { msgid: "InstUI, everywhere", reference: "index.md:3", translate: "always" },
+      { msgid: "One resolved token model.", reference: "index.md:4", translate: "always" },
+      { msgid: "Vendored tokens", reference: "index.md:7", translate: "always" },
+      { msgid: "Run `npm i` and go.", reference: "index.md:8", translate: "always" },
+    ]);
+  });
+
+  test("renders translated values while leaving links and body prose untouched", () => {
+    expect(renderFrontmatterFile(source, (text) => `X:${text}`, "hu")).toContain(
+      "text: X:InstUI, everywhere",
+    );
+    expect(renderFrontmatterFile(source, (text) => `X:${text}`, "hu")).toContain(
+      "details: X:Run &grave;npm i&grave; and go.",
+    );
+    expect(renderFrontmatterFile(source, (text) => `X:${text}`, "hu")).toContain(
+      "- title: body prose, not frontmatter",
+    );
+    expect(renderFrontmatterFile(source, (text) => text, "hu")).toContain("link: /hu/guide/");
   });
 });
 

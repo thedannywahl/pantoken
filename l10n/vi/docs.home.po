@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, ở mọi nơi"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Một mô hình token đã được giải quyết, chuyển thành bảng kiểu, ràng buộc framework, mã native và dữ liệu cho công cụ thiết kế."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Bắt đầu"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Bản đồ gói"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Tham khảo API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Tham khảo CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Một nguồn dữ liệu duy nhất"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Mỗi gói đều đọc cùng một IR token đã được giải quyết. Thay đổi một token ở phía trên và nó sẽ chảy đến CSS, SCSS, mã native và Figma theo cùng một cách."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Dùng gói nhỏ nhất"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Chỉ cài @pantoken/css cho stylesheet, @pantoken/react cho hooks và icons, hoặc một preset bundler cho Tailwind, Panda, hoặc MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Sinh cho mọi nền tảng"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Chạy `pantoken generate` để xuất Swift, Kotlin, Compose, Flutter, Rust, WordPress và nhiều hơn nữa. Các token giống nhau, theo cách diễn đạt của từng hệ sinh thái."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Không phụ thuộc upstream"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Các token được đóng gói kèm dưới dạng JSON tĩnh, nên `npm i` không bao giờ truy vấn nguồn chỉ có trên GitHub. Có thể phát hành, dùng semver, và thân thiện với chế độ offline."

@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "رابط کاربری InstUI، همه جا"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "یک مدل توکن حل‌شده که به فایل‌های استایل، بایندینگ‌های فریم‌ورک، کد بومی و داده‌های ابزار طراحی تبدیل شده‌است."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "شروع به کار"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "نقشهٔ بسته‌ها"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "مرجع API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "مرجع CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "یک منبع حقیقت"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "هر بسته همان IR توکن حل‌شده را می‌خواند. یک توکن را در upstream تغییر دهید و همان تغییر به یک شکل به CSS، SCSS، کد بومی و Figma منتقل می‌شود."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "از کوچک‌ترین بسته استفاده کنید"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "فقط @pantoken/css را برای یک stylesheet نصب کنید، @pantoken/react را برای هوک‌ها و آیکون‌ها، یا یک پیش‌تنظیم bundler برای Tailwind، Panda یا MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "تولید برای هر پلتفرم"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "اجرای `pantoken generate` برای تولید Swift، Kotlin، Compose، Flutter، Rust، WordPress و موارد دیگر. همان توکن‌ها، به زبان هر اکوسیستم."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "بدون وابستگی به upstream"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "توکن‌ها به‌صورت vendored و به شکل JSON ایستا منتشر می‌شوند، بنابراین `npm i` هرگز به یک منبع مختص GitHub وابسته نمی‌شود. قابل انتشار، نسخه‌بندی‌شده (semver) و مناسب برای حالت آفلاین."

@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, i ngā wāhi katoa"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Tētahi tauira tohu kua whakatauhia, kua hurihia hei stylesheets, here anga, waehere taketake, me ngā raraunga mō ngā taputapu hoahoa."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Tīmatanga"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Mahere mō ngā mōkī"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Tohu API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Tohu CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Kotahi te puna pono"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Ka pānuitia e ngā mōkī katoa te IR o ngā tohu kua whakatauhia. Mēnā ka huri tētahi tohu ki te puna matua, ka pā tonu aua huri ki CSS, SCSS, waehere taketake, me Figma."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Whakamahia te mōkī iti rawa"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Tāuta noa @pantoken/css mō tētahi stylesheet, @pantoken/react mō ngā hooks me ngā icons, rānei he preset bundler mō Tailwind, Panda, rānei MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Hangaia mō ngā tūāpapa katoa"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Whakarewa `pantoken generate` kia whakaputa Swift, Kotlin, Compose, Flutter, Rust, WordPress, me ētahi atu. Ngā tohu kotahi — i ia reo o ia pūnaha."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Kāore he here ki te puna matua"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Ka tukuna ngā tohu hei JSON vendored tūwhera, nō reira kāore `npm i` e rapu i tētahi puna e wātea ana anake i GitHub. Ka taea te whakaputa, kua noho semver, ā, he pai mō te whakamahi tuimotu (offline)."

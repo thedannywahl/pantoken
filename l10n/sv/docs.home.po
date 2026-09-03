@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, överallt"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "En enda upplöst tokenmodell, omformad till stilmallar, ramverksbindningar, nativekod och data för designverktyg."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Kom igång"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Paketkartan"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API-referens"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS-referens"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "En enda sanningskälla"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Varje paket läser samma upplösta token-IR. Ändra en token uppströms och den förs vidare till CSS, SCSS, nativekod och Figma på samma sätt."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Använd det minsta paketet"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Installera bara @pantoken/css för en stilmall, @pantoken/react för hooks och ikoner, eller ett bundler‑preset för Tailwind, Panda eller MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Generera för vilken plattform som helst"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Kör `pantoken generate` för att generera Swift, Kotlin, Compose, Flutter, Rust, WordPress med mera. Samma tokens, i varje ekosystems idiom."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Ingen uppströmskoppling"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Tokens levereras vendorerade som statisk JSON, så `npm i` behöver aldrig slå mot en GitHub‑endast källa. Publicerbara, semver-versionerade och offline‑vänliga."

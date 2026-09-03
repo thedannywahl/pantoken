@@ -15,13 +15,18 @@ import { loadConfig, parseConfig, type I18nConfig } from "./config.ts";
 import { excludeLocale, includeLocale, moveLocaleToTier } from "./locales.ts";
 import {
   DOCS_GUIDES,
+  contentLocales,
   guidesLocales,
   messagesLocales,
+  runCheckContent,
   runCheckGuides,
   runCheckMessages,
+  runExtractContent,
   runExtractGuides,
   runExtractMessages,
+  runRenderContent,
   runRenderGuides,
+  runTranslateContent,
   runTranslateMessages,
   runTranslateGuides,
 } from "./pipeline.ts";
@@ -87,6 +92,7 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     space: string | undefined,
     guidesFn: (config: I18nConfig) => void | Promise<void>,
     messagesFn: (config: I18nConfig, spaceId: string) => void | Promise<void>,
+    contentFn: (config: I18nConfig, spaceId: string) => void | Promise<void>,
   ): void | Promise<void> {
     const configPath = program.opts<{ config: string }>().config;
     const loaded = loadConfigOrExit(configPath);
@@ -95,6 +101,9 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
     if (spaceId === DOCS_GUIDES) return guidesFn(loaded.config);
     if (loaded.config.spaces[spaceId]?.kind === "messages") {
       return messagesFn(loaded.config, spaceId);
+    }
+    if (loaded.config.spaces[spaceId]?.kind === "content") {
+      return contentFn(loaded.config, spaceId);
     }
     stubAction(command)();
     return undefined;
@@ -115,6 +124,12 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
         },
         (config, spaceId) => {
           const result = runExtractMessages(config, configDirOf(), spaceId);
+          console.log(
+            `Extracted ${String(result.unitCount)} unit(s) from ${spaceId} to ${result.potPath}.`,
+          );
+        },
+        (config, spaceId) => {
+          const result = runExtractContent(config, configDirOf(), spaceId);
           console.log(
             `Extracted ${String(result.unitCount)} unit(s) from ${spaceId} to ${result.potPath}.`,
           );
@@ -154,6 +169,16 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
             );
           }
         },
+        async (config, spaceId) => {
+          const locales = opts.locale ? [opts.locale] : contentLocales(config, spaceId);
+          for (const locale of locales) {
+            const result = await runTranslateContent(config, configDirOf(), spaceId, locale);
+            console.log(
+              `${spaceId} (${locale}): ${String(result.translated)} translated, ` +
+                `${String(result.untranslated)} untranslated (no AI provider authorized yet) — ${result.poPath}`,
+            );
+          }
+        },
       ),
     );
 
@@ -180,6 +205,15 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
           // `resolveMessagesForLocale`. Nothing to do here.
           console.log(`"render" for a messages space is a no-op — its package owns codegen.`);
         },
+        (config, spaceId) => {
+          const locales = opts.locale ? [opts.locale] : contentLocales(config, spaceId);
+          for (const locale of locales) {
+            const result = runRenderContent(config, configDirOf(), spaceId, locale);
+            console.log(
+              `${spaceId} (${locale}): wrote ${String(result.filesWritten.length)} file(s).`,
+            );
+          }
+        },
       ),
     );
 
@@ -199,6 +233,11 @@ export function createI18nCommand(options: { configPath?: string } = {}): Comman
         (config, spaceId) => {
           if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
           const { exitCode } = runCheckMessages(config, configDirOf(), spaceId);
+          process.exitCode = exitCode;
+        },
+        (config, spaceId) => {
+          if (opts.strict) process.env.I18N_DRIFT_STRICT = "1";
+          const { exitCode } = runCheckContent(config, configDirOf(), spaceId);
           process.exitCode = exitCode;
         },
       ),

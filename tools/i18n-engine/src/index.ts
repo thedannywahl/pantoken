@@ -55,11 +55,13 @@ export {
 } from "./gettext.ts";
 export {
   collectProseRanges,
+  extractFrontmatterUnits,
   extractFileUnits,
   extractGuideSpace,
   listGuideFiles,
   renderRanges,
   renderFile,
+  renderFrontmatterFile,
   type ExtractedUnit,
   type ProseRange,
 } from "./extract.ts";
@@ -72,15 +74,21 @@ export {
 } from "./extract-messages.ts";
 export {
   DOCS_GUIDES,
+  DOCS_HOME,
+  contentLocales,
   guidesLocales,
   messagesLocales,
   runCheckGuides,
+  runCheckContent,
   runCheckMessages,
   runExtractGuides,
+  runExtractContent,
   runExtractMessages,
   runRenderGuides,
+  runRenderContent,
   runTranslateMessages,
   runTranslateGuides,
+  runTranslateContent,
   resolveMessagesForLocale,
   type CheckResult,
   type ExtractResult,

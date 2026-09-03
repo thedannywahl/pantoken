@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, בכל מקום"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "דגם טוקנים אחד מפוענח, מעוצב מחדש לגיליונות סגנון, חיבורי פריימוורק, קוד מקומי ונתוני כלי עיצוב."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "התחלה"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "מפת החבילות"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "מדריך API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "מדריך CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "מקור אמת יחיד"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "כל חבילה קוראת את אותו IR של הטוקנים המפוענחים. שנה טוקן במקור והוא יזרום ל‑CSS, SCSS, קוד מקומי ו‑Figma באותו אופן."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "השתמש בחבילה הקטנה ביותר"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "התקן רק @pantoken/css עבור גיליון סגנון, @pantoken/react עבור hooks ואייקונים, או preset של bundler ל‑Tailwind, Panda או MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "ייצר לכל פלטפורמה"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "הרץ `pantoken generate` כדי לייצא Swift, Kotlin, Compose, Flutter, Rust, WordPress ועוד. אותם טוקנים, בסגנון של כל אקוסיסטם."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "ללא תלות במקור עליון"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "הטוקנים נשלחים כ‑JSON סטטי בחבילה (vendored), לכן `npm i` אף פעם לא ניגש למקור הזמין רק ב‑GitHub. ניתן לפרסום, עם semver, וידידותי לעבודה אופליין."

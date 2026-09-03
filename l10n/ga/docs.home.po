@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI, i ngach áit"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Múnla aon-thóicín réitithe, athmhúnlaithe i stíleanna-scríofa, bannaí fráma, cód dúchasach agus pacáistí uirlisí dearaidh."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Tús a chur"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "An léarscáil phacáiste"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Tagairt API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Tagairt CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Foinse amháin na fírinne"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Léann gach pacáiste an IR réitithe céanna do thóicín. Athraigh tóicín sa fhoinse agus sruthóidh sé go CSS, SCSS, cód dúchasach agus Figma ar an mbealach céanna."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Úsáid an pacáiste is lú"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Suiteáil ach @pantoken/css le haghaidh stíleála-scríofa, @pantoken/react le haghaidh hooks agus deilbhíní, nó réamhshocrú bundlera do Tailwind, Panda, nó MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Gineann do aon ardán"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Rith `pantoken generate` chun Swift, Kotlin, Compose, Flutter, Rust, WordPress agus níos mó a ghiniúint. Na tóicíní céanna, i bhfoclóir gach éiceachórais."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Gan spleáchas upstream"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Seoltar na tóicíní mar JSON statach miondíoltóra, mar sin ní théann `npm i` riamh i dtaithí ar fhoinse atá ar GitHub amháin. In-foilseach le semver agus oiriúnach le húsáid as líne."

@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "InstUI，无处不在"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "一个解析后的令牌模型，重塑为样式表、框架绑定、本地代码和设计工具的载荷。"
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "快速入门"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "包映射"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "API 参考"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "CSS 参考"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "单一事实来源"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "每个包都读取相同的已解析令牌 IR。在上游更改令牌后，它会以相同方式流向 CSS、SCSS、本地代码和 Figma。"
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "使用最小化包"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "仅安装 @pantoken/css 获取样式表，安装 @pantoken/react 获取 hooks 和图标，或安装针对 Tailwind、Panda 或 MUI 的打包器预设。"
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "为任意平台生成"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "运行 `pantoken generate` 来生成 Swift、Kotlin、Compose、Flutter、Rust、WordPress 等。相同的令牌，以每个生态系统的习惯用法呈现。"
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "无上游耦合"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "这些令牌作为静态 JSON 随包发布，因此 `npm i` 永远不会依赖仅限 GitHub 的源。可发布、遵循语义化版本控制、离线友好。"

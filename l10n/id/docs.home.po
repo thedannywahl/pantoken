@@ -1,0 +1,73 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#: index.md:5
+#, no-c-format
+msgid "InstUI, everywhere"
+msgstr "Token desain Instructure, di mana-mana"
+
+#: index.md:6
+#, no-c-format
+msgid "One resolved token model, reshaped into stylesheets, framework bindings, native code, and design-tool payloads."
+msgstr "Satu model token yang telah diselesaikan, dibentuk ulang menjadi stylesheet, pengikatan framework, kode native, dan payload alat desain."
+
+#: index.md:9
+#, no-c-format
+msgid "Getting started"
+msgstr "Memulai"
+
+#: index.md:12
+#, no-c-format
+msgid "The package map"
+msgstr "Peta paket"
+
+#: index.md:15
+#, no-c-format
+msgid "API reference"
+msgstr "Referensi API"
+
+#: index.md:18
+#, no-c-format
+msgid "CSS reference"
+msgstr "Referensi CSS"
+
+#: index.md:24
+#, no-c-format
+msgid "One source of truth"
+msgstr "Satu sumber kebenaran"
+
+#: index.md:25
+#, no-c-format
+msgid "Every package reads the same resolved token IR. Change a token upstream and it flows to CSS, SCSS, native code, and Figma the same way."
+msgstr "Setiap paket membaca IR token yang sama setelah diselesaikan. Ubah token di hulu dan itu mengalir ke CSS, SCSS, kode native, dan Figma dengan cara yang sama."
+
+#: index.md:29
+#, no-c-format
+msgid "Use the smallest package"
+msgstr "Gunakan paket terkecil"
+
+#: index.md:30
+#, no-c-format
+msgid "Install just @pantoken/css for a stylesheet, @pantoken/react for hooks and icons, or a bundler preset for Tailwind, Panda, or MUI."
+msgstr "Pasang hanya @pantoken/css untuk stylesheet, @pantoken/react untuk hooks dan ikon, atau preset bundler untuk Tailwind, Panda, atau MUI."
+
+#: index.md:34
+#, no-c-format
+msgid "Generate for any platform"
+msgstr "Hasilkan untuk platform apa pun"
+
+#: index.md:35
+#, no-c-format
+msgid "Run `pantoken generate` to emit Swift, Kotlin, Compose, Flutter, Rust, WordPress, and more. The same tokens, in each ecosystem's idiom."
+msgstr "Jalankan `pantoken generate` untuk menghasilkan Swift, Kotlin, Compose, Flutter, Rust, WordPress, dan lainnya. Token yang sama, dalam idiom setiap ekosistem."
+
+#: index.md:39
+#, no-c-format
+msgid "No upstream coupling"
+msgstr "Tanpa ketergantungan hulu"
+
+#: index.md:40
+#, no-c-format
+msgid "The tokens ship vendored as static JSON, so `npm i` never reaches for a GitHub-only source. Publishable, semver'd, offline-friendly."
+msgstr "Token dikirimkan sebagai JSON statis yang disertakan, sehingga `npm i` tidak pernah mengambil dari sumber yang hanya ada di GitHub. Dapat diterbitkan, diberi versi semver, dan ramah-luring."
