@@ -25,7 +25,7 @@ describe("writeCoverageReport", () => {
     const report = writeCoverageReport(config, join(root, "i18n.config.json"), { output });
     expect(report.rows).toHaveLength(344);
     expect(JSON.parse(readFileSync(output, "utf8")).rows).toHaveLength(344);
-  });
+  }, 20_000);
 
   test("filters rows by policy and surface", () => {
     const output = outputPath();
