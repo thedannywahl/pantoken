@@ -85,8 +85,7 @@ const replacementFor = (kind: GlossaryKind, translated: string): string => {
 
 /**
  * Deterministic adapter: substitutes known structural terms only (headings, badges, table labels),
- * looked up from the `<locale>.api.json` translation-memory cache (see `glossary.ts` for the term
- * list and the API translation workflow for how the cache is filled). It can't translate prose, so
+ * looked up from the `<locale>/docs.api.po` catalog (see `glossary.ts` for the term list). It can't translate prose, so
  * `translatesProse` is `false`. Safe to run in CI — it never spawns an adapter or hits the network.
  */
 export class GlossaryTranslationAdapter implements TranslationAdapter {

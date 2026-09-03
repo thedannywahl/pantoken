@@ -45,7 +45,7 @@ test("keyFor is deterministic and separates kinds", () => {
 
 test("load starts empty when no cache file exists", () => {
   existsSync.mockReturnValue(false);
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   expect(readFileSync).not.toHaveBeenCalled();
   expect(memory.get("prose", "anything")).toBeUndefined();
   expect(memory.hits).toBe(0);
@@ -57,7 +57,7 @@ test("load reads and parses an existing cache file, and get counts hits", () => 
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: cached } }));
 
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   expect(memory.get("prose", "Hello")).toBe(cached);
   expect(memory.get("prose", "Hello")).toBe(cached);
   expect(memory.hits).toBe(2);
@@ -67,7 +67,7 @@ test("load reads and parses an existing cache file, and get counts hits", () => 
 test("load tolerates a cache file with no entries field", () => {
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(JSON.stringify({ version: 1 }));
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   expect(memory.get("prose", "x")).toBeUndefined();
 });
 
@@ -80,7 +80,7 @@ test("save prunes to keys touched this run and writes sorted JSON with a trailin
     JSON.stringify({ version: 1, entries: { [keptKey]: "megtartott", [staleKey]: "elavult" } }),
   );
 
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   memory.get("prose", "kept"); // marks keptKey used
   memory.save();
 
@@ -96,7 +96,7 @@ test("save prunes to keys touched this run and writes sorted JSON with a trailin
 });
 
 test("set records a miss and marks the key used so save keeps it", () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translated = "cached-translation";
   memory.set("text", "Home", translated);
   expect(memory.misses).toBe(1);
@@ -113,7 +113,7 @@ test("translateUnits serves cache hits without calling the adapter", async () =>
   const cached = "cached-translation";
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: cached } }));
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateText = vi.fn();
 
   const result = await translateUnits(adapter({ translateText }), memory, [
@@ -129,7 +129,7 @@ test("translateUnits force option retranslates and overwrites an existing cache 
   const key = keyFor("text", "Home");
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "stale" } }));
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
 
   const result = await translateUnits(
@@ -150,7 +150,7 @@ test("translateUnits defaults force to the DOCS_TRANSLATION_FORCE env var", asyn
   const key = keyFor("text", "Home");
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "stale" } }));
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
   process.env.DOCS_TRANSLATION_FORCE = "1";
 
@@ -168,7 +168,7 @@ test("translateUnits defaults force to the DOCS_TRANSLATION_FORCE env var", asyn
 });
 
 test("translateUnits dedupes identical sources into one translation", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateText = vi.fn((input: string) => Promise.resolve(`text:${input}`));
 
   const units: TranslationUnit[] = [
@@ -182,7 +182,7 @@ test("translateUnits dedupes identical sources into one translation", async () =
 });
 
 test("translateUnits translates markdown misses per file and caches them", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateMarkdown = vi.fn((input: string) => Promise.resolve(`HU(${input})`));
 
   const result = await translateUnits(adapter({ translateMarkdown }), memory, [
@@ -195,7 +195,7 @@ test("translateUnits translates markdown misses per file and caches them", async
 });
 
 test("translateUnits autosaves after each markdown miss when asked", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   await translateUnits(adapter(), memory, [{ kind: "markdown", source: "# A", filePath: "a.md" }], {
     autosave: true,
   });
@@ -203,7 +203,7 @@ test("translateUnits autosaves after each markdown miss when asked", async () =>
 });
 
 test("translateUnits logs progress for each markdown file translated", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const units: TranslationUnit[] = Array.from({ length: 3 }, (_, i) => ({
     kind: "markdown",
     source: `# File ${i}`,
@@ -215,7 +215,7 @@ test("translateUnits logs progress for each markdown file translated", async () 
 });
 
 test("translateUnits logs and skips a markdown file that fails, without caching it", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateMarkdown = vi.fn(() => Promise.reject(new Error("boom")));
 
   const result = await translateUnits(adapter({ translateMarkdown }), memory, [
@@ -230,7 +230,7 @@ test("translateUnits logs and skips a markdown file that fails, without caching 
 });
 
 test("translateUnits skip message falls back to a label and stringifies non-Error throws", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateMarkdown = vi.fn(() => Promise.reject("plain string failure"));
 
   await translateUnits(adapter({ translateMarkdown }), memory, [
@@ -243,7 +243,7 @@ test("translateUnits skip message falls back to a label and stringifies non-Erro
 });
 
 test("translateUnits batches text + prose misses through translateBatch and streams persistence", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const seen: number[] = [];
   const translateBatch = vi.fn(
     (
@@ -278,7 +278,7 @@ test("translateUnits batches text + prose misses through translateBatch and stre
 });
 
 test("translateUnits falls back to per-item translateText when translateBatch is absent", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateText = vi.fn((input: string) => Promise.resolve(`text:${input}`));
 
   const result = await translateUnits(
@@ -296,7 +296,7 @@ test("translateUnits falls back to per-item translateText when translateBatch is
 });
 
 test("translateUnits passes a batchable miss through as source (uncached) when the model drops it", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   // Return only one of the two ids; the dropped one must render as source and stay a miss.
   const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
     Promise.resolve({ [items[0].id]: `HU:${items[0].text}` }),
@@ -314,7 +314,7 @@ test("translateUnits passes a batchable miss through as source (uncached) when t
 });
 
 test("translateUnits does not cache glossary-only prose (poison-cache guard)", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateBatch = vi.fn();
 
   const result = await translateUnits(adapter({ translatesProse: false, translateBatch }), memory, [
@@ -328,7 +328,7 @@ test("translateUnits does not cache glossary-only prose (poison-cache guard)", a
 });
 
 test("translateUnits persist ignores a re-seen chunk without double counting", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   // Stream the same chunk twice; the second persist call must be a no-op (added === 0).
   const translateBatch = vi.fn(
     (
@@ -351,7 +351,7 @@ test("translateUnits persist ignores a re-seen chunk without double counting", a
 });
 
 test("translateUnits does not cache a markdown translation identical to its source", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateMarkdown = vi.fn((input: string) => Promise.resolve(input));
 
   const result = await translateUnits(adapter({ translateMarkdown }), memory, [
@@ -366,7 +366,7 @@ test("translateUnits does not cache a markdown translation identical to its sour
 });
 
 test("translateUnits does not cache a batched translation identical to its source", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
     Promise.resolve(Object.fromEntries(items.map((i) => [i.id, i.text]))),
   );
@@ -406,7 +406,7 @@ test("translateUnits retranslates a cached hit that matches its source instead o
   const key = keyFor("text", "Home");
   existsSync.mockReturnValue(true);
   readFileSync.mockReturnValue(JSON.stringify({ version: 1, entries: { [key]: "Home" } }));
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateText = vi.fn((input: string) => Promise.resolve(`fresh:${input}`));
 
   const result = await translateUnits(
@@ -420,7 +420,7 @@ test("translateUnits retranslates a cached hit that matches its source instead o
 });
 
 test("translateUnits verbatimSources exempts a matching source from the passthrough guard", async () => {
-  const memory = TranslationMemory.load("hu", "api");
+  const memory = TranslationMemory.load("hu", "test");
   const translateBatch = vi.fn((items: readonly { id: string; text: string }[]) =>
     Promise.resolve(Object.fromEntries(items.map((i) => [i.id, i.text]))),
   );

@@ -124,7 +124,7 @@ until every translation does.
 | `cli.scaffold` | `@pantoken/scaffold#check:drift`       | `l10n/<locale>/cli.scaffold.po` (via `i18n-engine`)                 |
 | `cli.ai`       | `@pantoken/ai#check:drift`             | `l10n/<locale>/cli.ai.po` (via `i18n-engine`)                       |
 | `docs.guides`  | `docs:check:drift`                     | `docs/guide/*.md` → `l10n/<locale>/docs.guides.po` whole-file units |
-| `docs.api`     | `docs:check:drift`                     | `prose` blocks in the generated EN API tree                         |
+| `docs.api`     | `docs:check:drift`                     | generated API segments → `l10n/<locale>/docs.api.po`                |
 | `docs.home`    | `docs:check:drift`                     | translatable `docs/index.md` frontmatter (hero, actions, features)  |
 | `docs.chrome`  | `docs:check:drift`                     | `.vitepress/i18n.json` → `l10n/<locale>/docs.chrome.po`             |
 | `docs.demos`   | `docs:check:drift`                     | `demos/*/i18n.json` → `l10n/<locale>/docs.demos.po`                 |

@@ -4,15 +4,16 @@
  * The pipelines used to re-translate every file on every run — one `claude -p` spawn per API
  * markdown file and per sidebar label. This module cuts that to the diff: each translatable unit is
  * keyed by a hash of its source text, so unchanged content is served from a committed cache and only
- * new or edited units reach the adapter. Small units (sidebar labels) are objectified into a single
+ * new or edited units reach the adapter. API catalogs use PO entries keyed by kind and source. Small units (sidebar labels) are objectified into a single
  * batched request; large markdown is translated per file on a miss to keep fidelity.
  *
  * The flow is: diff (hash vs. cache) → objectify (batch the misses) → translate → destructure (map
- * results back by hash) → save (prune to the units seen this run, write JSON).
+ * results back by hash) → save (prune to the units seen this run, write the catalog).
  *
  * @module
  */
-import { join } from "node:path";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import {
   isPassthroughTranslation,
   resolveVerbatimAction,
@@ -21,6 +22,7 @@ import {
   type VerbatimPolicy,
 } from "@pantoken/translation-adapters";
 import type { TranslationAdapter } from "./api-translation.ts";
+import { parsePo, serializePo, type PoEntry } from "@pantoken/i18n-engine";
 
 /**
  * A translatable unit. `markdown` is translated per file (whole-file, e.g. guides); `text` (short
@@ -41,23 +43,44 @@ export function keyFor(kind: string, source: string): string {
   return sha256(`${kind}\0${source}`);
 }
 
-/** Docs facade: `(kind, source)` API over the shared memory; prunes to touched keys on save. */
+/** Docs facade: `(kind, source)` API over JSON memory, or PO memory for the API surface. */
 export class TranslationMemory {
-  private readonly _mem: SharedTranslationMemory;
+  private readonly _mem?: SharedTranslationMemory;
+  private readonly _poEntries?: PoEntry[];
+  private readonly _poByKey?: Map<string, PoEntry>;
+  private readonly _poPath?: string;
+  private _poHits = 0;
   get path(): string {
-    return this._mem.path;
+    return this._mem?.path ?? this._poPath!;
   }
   get hits(): number {
-    return this._mem.hits;
+    return this._mem?.hits ?? this._poHits;
   }
   misses = 0;
 
-  private constructor(mem: SharedTranslationMemory) {
+  private constructor(
+    mem: SharedTranslationMemory | undefined,
+    poPath?: string,
+    poEntries?: PoEntry[],
+  ) {
     this._mem = mem;
+    this._poPath = poPath;
+    this._poEntries = poEntries;
+    this._poByKey = poEntries
+      ? new Map(poEntries.map((entry) => [`${entry.msgctxt ?? ""}\0${entry.msgid}`, entry]))
+      : undefined;
   }
 
-  /** Load (or start) the memory for `<locale>.<namespace>.json`. */
+  /** Load (or start) the memory for a docs namespace. The API namespace uses a PO catalog. */
   static load(locale: string, namespace: string): TranslationMemory {
+    if (namespace === "api") {
+      const poPath = join(import.meta.dirname, "..", "..", "l10n", locale, "docs.api.po");
+      return new TranslationMemory(
+        undefined,
+        poPath,
+        existsSync(poPath) ? parsePo(readFileSync(poPath, "utf8")) : [],
+      );
+    }
     const path = join(cacheDir, `${locale}.${namespace}.json`);
     return new TranslationMemory(
       SharedTranslationMemory.open(path, { prune: namespace !== "api" }),
@@ -65,16 +88,41 @@ export class TranslationMemory {
   }
 
   get(kind: string, source: string): string | undefined {
-    return this._mem.get(keyFor(kind, source));
+    if (this._poByKey) {
+      const translation = this._poByKey.get(`docs.api:${kind}\0${source}`)?.msgstr;
+      if (translation) this._poHits++;
+      return translation || undefined;
+    }
+    return this._mem!.get(keyFor(kind, source));
   }
 
   set(kind: string, source: string, translation: string): void {
-    this._mem.set(keyFor(kind, source), translation);
+    if (this._poByKey && this._poEntries) {
+      const key = `docs.api:${kind}\0${source}`;
+      const existing = this._poByKey.get(key);
+      if (existing) existing.msgstr = translation;
+      else {
+        const entry: PoEntry = {
+          msgid: source,
+          msgstr: translation,
+          msgctxt: `docs.api:${kind}`,
+          references: [],
+          flags: [],
+          fuzzy: false,
+          obsolete: false,
+        };
+        this._poEntries.push(entry);
+        this._poByKey.set(key, entry);
+      }
+    } else this._mem!.set(keyFor(kind, source), translation);
     this.misses++;
   }
 
   save(): void {
-    this._mem.save();
+    if (this._poEntries && this._poPath) {
+      mkdirSync(dirname(this._poPath), { recursive: true });
+      writeFileSync(this._poPath, serializePo(this._poEntries));
+    } else this._mem!.save();
   }
 }
 

@@ -50,6 +50,7 @@ const SIDEBAR = JSON.stringify([
 // against uninitialized bindings.
 let keyFor: (kind: string, source: string) => string;
 let GLOSSARY_JSON: string;
+let GLOSSARY_PO: string;
 
 beforeAll(async () => {
   ({ keyFor } = await import("./translation-memory.ts"));
@@ -60,6 +61,22 @@ beforeAll(async () => {
     [keyFor("text", "Functions")]: "Függvények",
   };
   GLOSSARY_JSON = JSON.stringify({ version: 1, entries });
+  GLOSSARY_PO = [
+    'msgid ""',
+    'msgstr ""',
+    '"Content-Type: text/plain; charset=UTF-8\\n"',
+    "",
+    ...Object.entries({
+      Usage: "Használat",
+      Overview: "Áttekintés",
+      Functions: "Függvények",
+    }).flatMap(([source, translation]) => [
+      'msgctxt "docs.api:text"',
+      `msgid "${source}"`,
+      `msgstr "${translation}"`,
+      "",
+    ]),
+  ].join("\n");
 });
 
 let logSpy: ReturnType<typeof vi.spyOn>;
@@ -76,7 +93,7 @@ beforeEach(() => {
   readdirSync.mockReturnValue(["index.md", "typedoc-sidebar.json"]);
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
-    if (path.endsWith("hu.api.json")) return GLOSSARY_JSON;
+    if (path.endsWith("docs.api.po")) return GLOSSARY_PO;
     return path.endsWith("typedoc-sidebar.json") ? SIDEBAR : MARKDOWN;
   });
   spawnSync.mockReturnValue({ status: 0 });

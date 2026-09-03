@@ -1,13 +1,14 @@
 /**
  * Detect translation drift: English content whose translation is missing or stale.
  *
- * The committed translation memory (`docs/i18n-cache/<locale>.<namespace>.json`) is content-addressed
+ * The committed translation catalogs under `/l10n` are keyed by source identity; legacy JSON memory
+ * remains only for surfaces not yet migrated.
  * — a unit's key is `sha256(kind \0 source)`. So the key for a block of *current* English is present
  * only if that exact text was translated (and the prose poison-cache guard means a prose key is only
  * ever written by a real `:claude` run, never by the glossary passthrough). Edit the English and its
  * hash changes, so the old entry no longer matches: a missing key == untranslated or drifted.
  *
- * This check derives the keys the current English needs and asserts each is in the cache. It is
+ * This check derives the keys the current English needs and asserts each is in its catalog. It is
  * adapter-free — it never constructs an adapter or spawns `claude` — so it is safe to run in CI
  * (`docs/conventions/build-and-docs.md`: never wire the `:claude` cold pass into CI). Fill drift
  * locally with `vp run docs:locales:translate`, then commit the updated cache.
@@ -100,6 +101,27 @@ const guideDrift = (locale: string): Missing[] => {
 
 /** API drift: every `prose` block across the generated EN tree needs a cached `:claude` translation. */
 export const apiDrift = (locale: string): Missing[] => {
+  const poPath = join(l10nDir, locale, "docs.api.po");
+  if (existsSync(poPath)) {
+    const translated = new Set(
+      parsePo(readFileSync(poPath, "utf8"))
+        .filter((entry) => entry.msgstr !== "")
+        .map((entry) => `${entry.msgctxt ?? ""}\0${entry.msgid}`),
+    );
+    const missing: Missing[] = [];
+    for (const file of walkMarkdown(apiDir)) {
+      for (const unit of collectUnits(segmentMarkdown(readFileSync(file, "utf8")))) {
+        if (!translated.has(`docs.api:${unit.kind}\0${unit.text}`)) {
+          missing.push({
+            file: relative(docsRoot, file),
+            kind: unit.kind,
+            sample: preview(unit.text),
+          });
+        }
+      }
+    }
+    return missing;
+  }
   const cached = loadCacheKeys(locale, "api");
   const missing: Missing[] = [];
   for (const file of walkMarkdown(apiDir)) {
