@@ -21,8 +21,8 @@ programmatic use.
 
 Using an AI coding agent? No install needed — point it at the skill directly:
 
-```sh
-claude "Fetch https://create.pantoken.app and follow it to set up pantoken in this project."
+```prompt
+Fetch create.pantoken.app/SKILL.md and follow it to set up pantoken in this project.
 ```
 
 Works the same way for Gemini CLI, Cursor CLI, OpenAI Codex CLI, GitHub Copilot CLI, and Amazon Q
