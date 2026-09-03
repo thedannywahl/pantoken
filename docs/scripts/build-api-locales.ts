@@ -461,7 +461,7 @@ const build = async (): Promise<void> => {
   console.log(`✨ API locale build complete for ${locales.join(", ")}`);
 };
 
-build().catch((error: unknown) => {
+export const buildPromise = build().catch((error: unknown) => {
   console.error(error);
   process.exitCode = 1;
 });

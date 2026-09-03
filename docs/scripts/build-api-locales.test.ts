@@ -7,6 +7,7 @@ interface Stat {
 }
 const cpSync = vi.fn();
 const existsSync = vi.fn<(path: string) => boolean>();
+const globSync = vi.fn<(pattern: string, options: { cwd: string }) => string[]>();
 const mkdirSync = vi.fn();
 const readdirSync = vi.fn<(path: string) => string[]>();
 const readFileSync = vi.fn<(path: string) => string>();
@@ -19,6 +20,7 @@ const spawn = vi.fn();
 vi.mock("node:fs", () => ({
   cpSync,
   existsSync,
+  globSync,
   mkdirSync,
   readdirSync,
   readFileSync,
@@ -92,6 +94,7 @@ beforeEach(() => {
   // memory.save() refreshes the (ignored) coverage reports via i18n.config.json; treat it as absent
   // so that real coverage-report pipeline is skipped instead of misreading the markdown/PO fixtures.
   existsSync.mockImplementation((path) => !path.endsWith("i18n.config.json"));
+  globSync.mockReturnValue(["index.md"]);
   readdirSync.mockReturnValue(["index.md", "typedoc-sidebar.json"]);
   statSync.mockReturnValue({ isDirectory: () => false });
   readFileSync.mockImplementation((path) => {
@@ -117,16 +120,8 @@ function writtenTo(suffix: string): string | undefined {
 }
 
 test("build localizes markdown headings, prose, and sidebars, then logs the summary", async () => {
-  await import("./build-api-locales.ts");
-  // vi.waitFor's own default timeout (1s) is independent of the test's 20s timeout and can be too
-  // short under a slow/loaded CI runner.
-  await vi.waitFor(
-    () =>
-      expect(
-        logSpy.mock.calls.some((c: unknown[]) => String(c[0]).includes("✓ hu: rendered")),
-      ).toBe(true),
-    { timeout: 15000 },
-  );
+  const { buildPromise } = await import("./build-api-locales.ts");
+  await buildPromise;
 
   const glossaryEntryFor = (source: string): string => {
     const entries = JSON.parse(GLOSSARY_JSON) as { entries: Record<string, string> };
