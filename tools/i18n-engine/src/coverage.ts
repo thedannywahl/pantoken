@@ -309,10 +309,11 @@ ${stylesheetLinks}
   .bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: var(--instui-spacing-space-xs);
   }
   .bar .instui-progress { flex: none; }
+  .bar .value { flex: 1 1 auto; text-align: right; }
   #visible-count { font-weight: 600; }
 </style>
 </head>
