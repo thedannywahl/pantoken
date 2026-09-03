@@ -1,1 +1,24 @@
 still some failures
+
+---
+
+coverage is failing on a build:
+```
+Run vp run @pantoken/docs#docs:api:en
+~/docs$ node scripts/build-api-en.ts
+[info] Loaded plugin typedoc-plugin-markdown
+[info] Loaded plugin typedoc-vitepress-theme
+[error] The plugin /home/runner/work/pantoken/pantoken/plugins/typedoc/demo/dist/index.mjs could not be loaded
+[error] Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/runner/work/pantoken/pantoken/plugins/typedoc/demo/dist/index.mjs' imported from /home/runner/work/pantoken/pantoken/node_modules/.pnpm/typedoc@0.28.20_typescript@6.0.3/node_modules/typedoc/dist/node-utils.js
+    at finalizeResolution (node:internal/modules/esm/resolve:272:11)
+    at moduleResolve (node:internal/modules/esm/resolve:879:10)
+    at defaultResolve (node:internal/modules/esm/resolve:1006:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:708:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:728:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:766:56)
+    at #resolve (node:internal/modules/esm/loader:690:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:610:35)
+    at node:internal/modules/esm/loader:639:32
+    at TracingChannel.tracePromise (node:diagnostics_channel:547:22)
+[error] Found 2 errors and 0 warnings
+```
