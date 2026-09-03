@@ -665,6 +665,7 @@ export default defineConfig({
     },
   },
   markdown: {
+    languageAlias: { prompt: "txt" },
     config: (md) => {
       mermaidPlugin(md);
       tokenValuePreview(md);
