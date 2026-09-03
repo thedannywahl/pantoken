@@ -1,0 +1,93 @@
+{
+  "cli_version": "0.10.4",
+  "checkpoint_id": "01M1ME3BMXHZAY3Z2YAR1QWZXM",
+  "session_id": "70b6d578-dc24-4ac5-8e35-4e6f23017273",
+  "strategy": "manual-commit",
+  "created_at": "2026-09-03T20:06:56.31508Z",
+  "branch": "i18n2",
+  "checkpoints_count": 4,
+  "save_step_count": 3,
+  "files_touched": [
+    ".changeset/og-cards-every-locale.md",
+    ".gitignore",
+    "ASSURANCE.md",
+    "SECURITY.md",
+    "docs/.vitepress/config.ts",
+    "docs/.vitepress/i18n.ts",
+    "docs/package.json",
+    "docs/scripts/gen-og.ts",
+    "docs/scripts/lib/og-fonts.ts",
+    "docs/scripts/stage-locale-logos.ts"
+  ],
+  "agent": "Copilot CLI",
+  "model": "",
+  "turn_id": "553c536ddeef",
+  "checkpoint_transcript_start": 80,
+  "transcript_lines_at_start": 80,
+  "compact_transcript_start": 17,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 0,
+    "api_call_count": 0
+  },
+  "session_metrics": {
+    "turn_count": 4
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-09-03T20:06:56.293813Z",
+    "agent_lines": 412,
+    "agent_removed": 55,
+    "human_added": 48,
+    "human_modified": 1,
+    "human_removed": 0,
+    "total_committed": 461,
+    "total_lines_changed": 517,
+    "agent_percentage": 90.32882011605416,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 59,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "l10n/en-GB/docs.api.po": 59
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 21,
+      "user_lines_removed": 1,
+      "agent_lines_added": 592,
+      "agent_lines_removed": 56,
+      "user_added_per_file": {
+        "docs/scripts/gen-og.ts": 9,
+        "docs/scripts/lib/og-fonts.ts": 12
+      },
+      "user_removed_per_file": {
+        "docs/scripts/gen-og.ts": 1
+      }
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 9877,
+      "user_lines_removed": 15,
+      "agent_lines_added": 603,
+      "agent_lines_removed": 57,
+      "user_added_per_file": {
+        "docs/scripts/build-api-locales.ts": 25,
+        "docs/scripts/lib/og-fonts.ts": 15,
+        "l10n/docs.api.pot": 9836,
+        "l10n/en-AU/docs.api.po": 1
+      },
+      "user_removed_per_file": {
+        "l10n/docs.api.pot": 14,
+        "l10n/en-AU/docs.api.po": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+I don't know why we landed on this- we should be building all the locales, and using their local logo from plugins/pantoken/logos, and rtl languages should be generating in the rtl with the background flipped as well.
+
+---
+
+japanese and hebrew need a heavier stroke for the muted text and the title text.
+
+---
+
+korean and chinese also need the font weights added.
+
+---
+
+og-vi has broken glyphs.
