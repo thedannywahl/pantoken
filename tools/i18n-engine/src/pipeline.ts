@@ -37,6 +37,11 @@ function resolvePattern(pattern: string, vars: Readonly<Record<string, string>>)
   return pattern.replace(/\{(\w+)\}/gu, (match, key: string) => vars[key] ?? match);
 }
 
+/** Normalize whole-file Markdown translations to the formatter's stable paragraph indentation. */
+export function normalizeWholeFileMarkdown(content: string): string {
+  return content.trim().replace(/^ (?=\S)/gmu, "");
+}
+
 /** Every known, non-excluded locale across every tier (before a space narrows it further). */
 function nonExcludedKnownLocales(config: I18nConfig): string[] {
   const allTiered = Object.values(config.locales.tiers).flat();
@@ -175,7 +180,7 @@ export function runRenderGuides(
       resolvePattern(renderPattern, { locale, path: file.replace(/^guide\//u, "") }),
     );
     mkdirSync(dirname(outPath), { recursive: true });
-    writeFileSync(outPath, `${rendered.trimEnd()}\n`);
+    writeFileSync(outPath, `${normalizeWholeFileMarkdown(rendered)}\n`);
     filesWritten.push(outPath);
   }
   return { space: DOCS_GUIDES, locale, filesWritten };

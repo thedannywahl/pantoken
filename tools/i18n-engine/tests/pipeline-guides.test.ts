@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { describe, expect, test } from "vite-plus/test";
 import { listGuideFiles } from "../src/extract.ts";
 import { parsePo } from "../src/po.ts";
+import { normalizeWholeFileMarkdown } from "../src/pipeline.ts";
 
 const root = new URL("../../../", import.meta.url).pathname;
 
@@ -21,7 +22,7 @@ describe("docs.guides PO migration", () => {
       );
       for (const file of files) {
         const source = readFileSync(join(root, "docs", file), "utf8");
-        expect(translations.get(source)?.trimEnd() + "\n").toBe(
+        expect(normalizeWholeFileMarkdown(translations.get(source) ?? "") + "\n").toBe(
           readFileSync(join(root, "docs", locale, file), "utf8"),
         );
       }

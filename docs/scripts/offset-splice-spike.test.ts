@@ -129,7 +129,7 @@ describe.runIf(apiFiles.length > 0 && guideFiles.length > 0)(
       const allGuide = guideFiles.map((f) => readFileSync(join(docsRoot, f), "utf8")).join("\n");
       const allApi = apiFiles.map((f) => readFileSync(join(docsRoot, f), "utf8")).join("\n");
       expect(allApi.includes("```html") || allGuide.includes("```html")).toBe(true);
-      expect(allGuide).toContain('claude "Fetch https://create.pantoken.app');
+      expect(allGuide).toContain("```prompt");
       expect(allGuide.includes("```mermaid")).toBe(true);
     });
   },
